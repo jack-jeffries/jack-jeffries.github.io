@@ -549,7 +549,7 @@ On the other hand, $\Ab$ is a full subcategory of $\Grp$, and $\Grp$ is a full s
 \end{ex}
 
 
-\begin{comment}
+\Aug{27}
 
 
 \begin{defn} Given a category $\sC$ and an object $A\in \Ob(\sC)$, the \DEF{coslice category} \Def{$\sC_A$} is the category with objects given by all arrows from $A$: namely morphisms of the form 
@@ -562,6 +562,7 @@ Equivalently, we can think of such a morphism as a triangle:
 X \ar[rr]^{\gamma}&&Y
 }   \]
 The composition rule comes from the composition rule on $\sC$: if $X \xrightarrow{\gamma}Y$ and $Y \xrightarrow{\delta\circ \gamma} Z$.
+\end{defn}
 
 This construction may be less new to you than you think!
 
@@ -580,45 +581,69 @@ This construction may be less new to you than you think!
 A \ar[r]^{\alpha} \ar[d]_{\gamma}& B \ar[d]^{\beta}\\
 C \ar[r]^{\delta} &D 
 }\]
-commutes is to say that $\beta\circ \alpha = \delta \circ \gamma$ in $\Hom_{\cC}(A,D)$.
+commutes is to say that $\beta\circ \alpha = \delta \circ \gamma$ in $\Hom_{\sC}(A,D)$.
 \end{ex}
 
 
 
 \begin{defn}
-Let $\mathscr{C}$ be any category. 
-\end{defn}
+Let $\mathscr{C}$ be any category and $A\xra{\alpha} B$ a morphism.
 
 \begin{itemize}
-	\item A morphism $\alpha \in \Hom_{\mathscr{C}}(A,B)$ is a \DEF{isomorphism} if there exists $\beta \in \Hom_{\mathscr{C}}(B,A)$ such that $\beta \circ \alpha = 1_A$ and $\alpha\circ \beta = 1_B$. Such an  $\beta$ is called the \DEF{inverse} of $f$.
-	\item A morphism $\alpha \in \Hom_{\mathscr{C}}(A,B)$ has $\beta$ as a \DEF{left inverse} if $\beta \circ \alpha = 1_A$. Similarly define \DEF{right inverse}.
-	\item A morphism $\alpha \in \textrm{Hom}_{\mathscr{C}}(B,C)$ is a \DEF{monomorphism} or is \DEF{monic} if for all arrows  
-$$\xymatrix{A \ar@<0.5ex>[r]^-{\beta_1} \ar@<-0.5ex>[r]_-{\beta_2} & B \ar[r]^-\alpha & C}$$
-if $\alpha \beta_1 =\alpha \beta_2$ then $\beta_1 = \beta_2$. That is, $\alpha$ can be cancelled on the left.
-	\item Similarly, a morphism $\alpha \in \textrm{Hom}_{\mathscr{C}}(A,B)$ is an \DEF{epimorphism} or is \DEF{epic} if for all arrows 
+	\item $\alpha$ is an \DEF{isomorphism} if there exists $B \xra{\beta} A$ such that $\beta \circ \alpha = 1_A$ and $\alpha\circ \beta = 1_B$. Such an  $\beta$ is called the \DEF{inverse} of $f$.
+	\item $\alpha$ has $\beta$ as a \DEF{left inverse} if $\beta \circ \alpha = 1_A$. Similarly define \DEF{right inverse}.
+	\item $\alpha$ is a \DEF{monomorphism} or is \DEF{monic} if for all arrows  
+$$\xymatrix{C \ar@<0.5ex>[r]^-{\beta_1} \ar@<-0.5ex>[r]_-{\beta_2} & A \ar[r]^-\alpha & B}$$
+if $\alpha \beta_1 =\alpha \beta_2$ then $\beta_1 = \beta_2$. That is, $\alpha$ can be cancelled from the left.
+	\item $\alpha$ is an \DEF{epimorphism} or is \DEF{epic} if for all arrows 
 $$\xymatrix{A \ar[r]^-\alpha & B \ar@<0.5ex>[r]^-{\beta_1} \ar@<-0.5ex>[r]_-{\beta_2} & C}$$
-if $\beta_1\alpha = \beta_2\alpha$ then $\beta_1 = \beta_2$. That is, $\alpha$ can be cancelled on the right.
+if $\beta_1\alpha = \beta_2\alpha$ then $\beta_1 = \beta_2$. That is, $\alpha$ can be cancelled from the right.
 \end{itemize}
 \end{defn}
 
-\begin{lem} Let $\sC$ be a category. If a morphism $\alpha\in \Hom_{\sC}(A,B)$ has an inverse, it is unique.
+\begin{rem}
+Note that $\alpha$ has a left inverse in $\sC$ if and only if $\alpha^{\op}$ has a right inverse in $\sC^{\op}$, and that $\alpha$ is monic in $\sC$ if and only if $\alpha^{\op}$ is epic in $\sC^{\op}$. We say that these are \DEF{dual} notions in category theory.
+\end{rem}
+
+\begin{lem} If $\alpha$ has a left inverse, then $\alpha$ is monic. Similarly for ``right inverse'' and ``epic''.
 \end{lem}
 \begin{proof}
-Let $\beta,\gamma\in \Hom_{\sC}(B,A)$ be such that $\beta \circ \alpha = \gamma\circ\alpha = 1_A$ and $\alpha\circ \beta = \alpha\circ \gamma = 1_B$. Then $(\beta\circ \alpha)\circ \beta=(\gamma\circ\alpha) \circ \beta$, so $\beta=1_A\circ \beta = 1_A \circ \gamma =\gamma$.
+If $\beta\circ \alpha = 1_A$ and $\gamma_1,\gamma_2$ are two morphisms from $C \to A$ such that $\alpha\circ \gamma_1 = \alpha\circ \gamma_2$, then 
+\[ \gamma_1 = (\beta\circ \alpha) \circ \gamma_1 = \beta\circ (\alpha \circ \gamma_1)=\beta\circ (\alpha \circ \gamma_2) = (\beta\circ \alpha) \circ \gamma_2 = \gamma_2. \]
+Similarly for ``right inverse'' and ``epic''.
 \end{proof}
 
-\begin{ex} In $\Set$, the monomorphisms are the injective functions, the epimorphisms are the surjective functions, and the isomorphisms are the bijections.
+\begin{ex} In $\Set$, the monomorphisms and  left-invertible morphisms agree, and these are the injective functions. The epimorphisms and right-invertible morphisms agree, and there are the surjective functions.
 \end{ex}
 
-\begin{exer} Show that $\alpha$ is has a left inverse, then $\alpha$ is a monomorphism. Show that if $\alpha$ has a right inverse, then $\alpha$ is an epimorphism. Is the converse of either statement true?
+\begin{exer} For any poset $P$, in $\PO(P)$, every morphism is both monic and epic, but no nonidentity morphism has a left or right-inverse.
 \end{exer}
 
 
 \subsection{Products and coproducts}
 
-Often, objects in categories are determined by their relationship to others through a universal mapping property. 
+A property or construction is \DEF{category theoretic} if can be described just in terms of the data of the category rather than aspects of a particular category.
 
-\sssec{Definitions}
+\begin{ex}
+Can we identify $\varnothing$ in $\Set$ without looking at the objects' and morphisms' names? We can:
+for every set $S$, there is a unique function $f:\varnothing \to S$; $\varnothing$ is the only set with this property.
+\end{ex}
+
+\begin{defn}
+\begin{enumerate} \item An object $X$ in a category $\sC$ is \DEF{initial} if there for every $Y\in \Ob(\sC)$, there is a unique morphism $X\to Y$.
+\item An object $X$ in a category $\sC$ is \DEF{terminal} if there for every $Y\in \Ob(\sC)$, there is a unique morphism $Y\to X$.
+\end{enumerate}
+\end{defn}
+
+\begin{ex}
+\begin{enumerate} \item We just saw that $\varnothing$ is initial in $\Set$. Any singleton is terminal.
+\item A group with only one element $\{e\}$ is both initial and terminal in $\Grp$.
+\item $\Z$ is initial in $\Ring$.
+\end{enumerate}
+\end{ex}
+
+
+\sssec{Definitions of product and coproduct}
 
 \begin{defn} Let $\sC$ be a category, and $\{ X_\lambda\}_{\lambda\in \Lambda}$ be a family of objects. A \DEF{product} of $\{ X_\lambda\}_{\lambda\in \Lambda}$ is given by an object $P$ and a family of morphisms $\{p_\lambda : P \to X_\lambda\}_{\lambda\in \Lambda}$ that is universal in the following sense:
 
@@ -635,7 +660,7 @@ Y \ar@{-->}[uurrr]^-{\alpha}\ar[urrrrr]^-{f_1}  \ar[rrrrr]^-{f_2} \ar[drrrrr]^-{
 We can also take a ``big picture'' view of this universal property:
 \[\xymatrix{ & P\ar@{~>}[dr]^{\alpha} & \\
 Y \ar@{-->}[ur]^{\{i_\lambda\}} \ar@{~>}[rr]_{\{f_\lambda\}} & & \{X_{\lambda}\},}\]
-where the squiggly arrows are again collections of maps instead of maps.
+where the squiggly arrows are again collections of maps instead of maps. The data of $Y$ with a family of maps to each $X_\lambda$ is the sort of thing a product might be, so we may think of it as a ``product candidate.'' In this way, we can think of a product as a ``terminal product candidate.''
 
 
 \begin{rem}
@@ -663,7 +688,7 @@ X_1\ar[uuuurrr]^-{i_1} \ar[uurrrrr]^-{f_1} & & & & &}\]
 We can also take a ``big picture'' view of the universal property:
 \[\xymatrix{ & C\ar@{-->}[dr]^{\alpha} & \\
 \{ X_{\lambda}\} \ar@{~>}[ur]^{\{i_\lambda\}} \ar@{~>}[rr]_{\{f_\lambda\}} & & Y,}\]
-where the squiggly arrows are now collections of maps instead of maps.
+where the squiggly arrows are now collections of maps instead of maps. We can again think of the coproduct as the ``initial coproduct candidate.''
 
 \begin{rem}
 Note that $(C,\{i_\lambda\}_{\lambda\in\Lambda})$ is a coproduct of $\{ X_\lambda\}_{\lambda\in \Lambda}$ if and only if the function
@@ -688,6 +713,8 @@ Consider the composition $\beta\circ \alpha:P\to P$. We have $p_\lambda \circ \b
 
 We use the notation \Def{$\prod_{\lambda \in \Lambda} X_\lambda$} to denote the (object part of the) product of $\{X_{\lambda}\}$ and \Def{$\coprod_{\lambda \in \Lambda} X_\lambda$} to denote the (object part of the) coproduct of $\{X_{\lambda}\}$.
 
+
+Observe that products and coproducts are dual notions in the same way as monic versus epic morphisms. The product of a family in $\sC$ is the coproduct of the same family in $\sC^{\op}$.
 
 \sssec{Products in familiar categories}
 
@@ -740,9 +767,10 @@ and the check for scalar multiplication is similar. For uniqueness of $\alpha$, 
 \begin{itemize}
 \item In $\Top$, disjoint unions serve as coproducts.
 \item In $\Sgrp$ and $\Grp$, coproducts exist, and are given as free products. You may see or have seen them in topology in the context of Van Kampen's theorem.
-\item In $\Ring$, the story is more complicated. Let's note first that neither disjoint unions won't work, since they aren't rings. Direct sums of infinitely many rings don't have $1$, so aren't rings, but even finite direct sums/products won't work, since the inclusion maps don't send $1$ to $1$. It turns out that $\Ring$ has no coproducts, but the full subcategory of commutative rings, \Def{$\cRing$}, does! We will construct this later.
+\item In $\Ring$, the story is more complicated. Let's note first that neither disjoint unions won't work, since they aren't rings. Direct sums of infinitely many rings don't have $1$, so aren't rings, but even finite direct sums/products won't work, since the inclusion maps don't send $1$ to $1$. We will later on construct coproducts in \Def{$\cRing$}, the full subcategory $\Ring$ consisting of commutative rings.
 \end{itemize}
 \end{rem}
+
 
 
 \begin{comment}
