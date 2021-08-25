@@ -1,0 +1,1172 @@
+\documentclass{amsart}[12pt]
+\usepackage{graphicx}
+\usepackage{comment}
+\usepackage{amscd,mathabx}
+\usepackage{amssymb,setspace}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath,amscd,stmaryrd,mathrsfs,xcolor}
+\usepackage[all, knot]{xy}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+\xyoption{all}
+\xyoption{arc}
+\usepackage{hyperref}
+
+
+%\usepackage[notcite,notref]{showkeys}
+ 
+%\CompileMatricesx
+\newcommand{\edit}[1]{\marginpar{\footnotesize{#1}}}
+%\newcommand{\edit}[1]{}
+\newcommand{\rperf}[2]{\operatorname{RPerf}(#1 \into #2)}
+
+
+
+\newcommand{\vectwo}[2]{\begin{bmatrix} #1 \\ #2 \end{bmatrix}}
+
+\newcommand{\vecfour}[4]{\begin{bmatrix} #1 \\ #2 \\ #3 \\ #4 \end{bmatrix}}
+
+\newcommand{\Cat}[1]{\left<\left< \text{#1} \right>\right>}
+
+
+\def\htpy{\simeq_{\mathrm{htpc}}}
+\def\tor{\text{ or }}
+\def\fg{finitely generated~}
+
+\def\Ass{\operatorname{Ass}}
+\def\ann{\operatorname{ann}}
+\def\sign{\operatorname{sign}}
+
+\def\ob{{\mathfrak{ob}} }
+\def\BiAdd{\operatorname{BiAdd}}
+\def\BiLin{\operatorname{BiLin}}
+
+\def\Syl{\operatorname{Syl}}
+\def\span{\operatorname{span}}
+
+\def\sdp{\rtimes}
+\def\cL{\mathcal L}
+\def\cR{\mathcal R}
+
+
+
+\def\ay{??}
+\def\Aut{\operatorname{Aut}}
+\def\End{\operatorname{End}}
+\def\Mat{\operatorname{Mat}}
+
+
+\def\a{\alpha}
+
+
+
+\def\etale{\'etale~}
+\def\tW{\tilde{W}}
+\def\tH{\tilde{H}}
+\def\tC{\tilde{C}}
+\def\tS{\tilde{S}}
+\def\tX{\tilde{X}}
+\def\tZ{\tilde{Z}}
+\def\HBM{H^{\text{BM}}}
+\def\tHBM{\tilde{H}^{\text{BM}}}
+\def\Hc{H_{\text{c}}}
+\def\Hs{H_{\text{sing}}}
+\def\cHs{{\mathcal H}_{\text{sing}}}
+\def\sing{{\text{sing}}}
+\def\Hms{H^{\text{sing}}}
+\def\Hm{\Hms}
+\def\tHms{\tilde{H}^{\text{sing}}}
+\def\Grass{\operatorname{Grass}}
+\def\image{\operatorname{im}}
+\def\im{\image}
+\def\ker{\operatorname{ker}}
+\def\cone{\operatorname{cone}}
+\newcommand{\Hom}{\mathrm{Hom}}
+
+
+\def\ku{ku}
+\def\bbu{\bf bu}
+\def\KR{K{\mathbb R}}
+
+\def\CW{\underline{CW}}
+\def\cP{\mathcal P}
+\def\cE{\mathcal E}
+\def\cL{\mathcal L}
+\def\cJ{\mathcal J}
+\def\cJmor{\cJ^\mor}
+\def\ctJ{\tilde{\mathcal J}}
+\def\tPhi{\tilde{\Phi}}
+\def\cA{\mathcal A}
+\def\cB{\mathcal B}
+\def\cC{\mathcal C}
+\def\cZ{\mathcal Z}
+\def\cD{\mathcal D}
+\def\cF{\mathcal F}
+\def\cG{\mathcal G}
+\def\cO{\mathcal O}
+\def\cI{\mathcal I}
+\def\cS{\mathcal S}
+\def\cT{\mathcal T}
+\def\cM{\mathcal M}
+\def\cN{\mathcal N}
+\def\cMpc{{\mathcal M}_{pc}}
+\def\cMpctf{{\mathcal M}_{pctf}}
+\def\L{\Lambda}
+
+\def\sA{\mathscr A}
+\def\sB{\mathscr B}
+\def\sC{\mathscr C}
+\def\sZ{\mathscr  Z}
+\def\sD{\mathscr  D}
+\def\sF{\mathscr  F}
+\def\sG{\mathscr G}
+\def\sO{\mathscr  O}
+\def\sI{\mathscr I}
+\def\sS{\mathscr S}
+\def\sT{\mathscr  T}
+\def\sM{\mathscr M}
+\def\sN{\mathscr N}
+
+
+\newcommand{\Aug}[1]{\textcolor{violet}{Lecture of August #1, 2021}}
+\newcommand{\Sept}[1]{\textcolor{violet}{Lecture of September #1, 2021}}
+\newcommand{\Oct}[1]{\textcolor{violet}{Lecture of October #1, 2021}}
+\newcommand{\Nov}[1]{\textcolor{violet}{Lecture of November #1, 2021}}
+\newcommand{\Dec}[1]{\textcolor{violet}{Lecture of December #1, 2021}}
+
+\def\Ext{\operatorname{Ext}}
+ \def\ext{\operatorname{ext}}
+
+
+
+\def\ov#1{{\overline{#1}}}
+
+\def\vecthree#1#2#3{\begin{bmatrix} #1 \\ #2 \\ #3 \end{bmatrix}}
+
+\def\tOmega{\tilde{\Omega}}
+\def\tDelta{\tilde{\Delta}}
+\def\tSigma{\tilde{\Sigma}}
+\def\tsigma{\tilde{\sigma}}
+
+
+\def\d{\delta}
+\def\td{\tilde{\delta}}
+
+\def\e{\epsilon}
+\def\nsg{\unlhd}
+\def\pnsg{\lhd}
+
+\newcommand{\tensor}{\otimes}
+\newcommand{\homotopic}{\simeq}
+\newcommand{\homeq}{\cong}
+\newcommand{\iso}{\approx}
+
+\DeclareMathOperator{\ho}{Ho}
+\DeclareMathOperator*{\colim}{colim}
+
+
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\H}{\mathbb{H}}
+
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bM}{\mathbb{M}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\bH}{{\mathbb{H}}}
+\newcommand{\G}{\mathbb{G}}
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\bL}{{\mathbb{L}}}
+\newcommand{\R}{{\mathbb{R}}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\bK}{\mathbb{K}}
+
+
+\newcommand{\bD}{\mathbb{D}}
+\newcommand{\bS}{\mathbb{S}}
+
+\newcommand{\bN}{\mathbb{N}}
+
+
+\newcommand{\bG}{\mathbb{G}}
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\W}{\mathcal{W}}
+
+
+
+\newcommand{\itilde}{\tilde{\imath}}
+\newcommand{\jtilde}{\tilde{\jmath}}
+\newcommand{\ihat}{\hat{\imath}}
+\newcommand{\jhat}{\hat{\jmath}}
+
+\newcommand{\fc}{{\mathfrak c}}
+\newcommand{\fp}{{\mathfrak p}}
+\newcommand{\fm}{{\mathfrak m}}
+\newcommand{\fn}{{\mathfrak n}}
+\newcommand{\fq}{{\mathfrak q}}
+
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\dual}{\vee}
+
+\newcommand{\DEF}[1]{\emph{#1}\index{#1}}
+\newcommand{\Def}[1]{#1 \index{#1}}
+
+
+% The following causes equations to be numbered within sections
+\numberwithin{equation}{section}
+
+
+\theoremstyle{plain} %% This is the default, anyway
+\newtheorem{thm}[equation]{Theorem}
+\newtheorem{thmdef}[equation]{TheoremDefinition}
+\newtheorem{introthm}{Theorem}
+\newtheorem{introcor}[introthm]{Corollary}
+\newtheorem*{introthm*}{Theorem}
+\newtheorem{question}{Question}
+\newtheorem{cor}[equation]{Corollary}
+\newtheorem{por}[equation]{Porism}
+\newtheorem{lem}[equation]{Lemma}
+\newtheorem{lemminition}[equation]{Lemminition}
+\newtheorem{prop}[equation]{Proposition}
+\newtheorem{porism}[equation]{Porism}
+
+\newtheorem{conj}[equation]{Conjecture}
+\newtheorem{quest}[equation]{Question}
+
+\theoremstyle{definition}
+\newtheorem{defn}[equation]{Definition}
+\newtheorem{chunk}[equation]{}
+\newtheorem{ex}[equation]{Example}
+
+\newtheorem{exer}[equation]{Optional Exercise}
+
+\theoremstyle{remark}
+\newtheorem{rem}[equation]{Remark}
+
+\newtheorem{notation}[equation]{Notation}
+\newtheorem{terminology}[equation]{Terminology}
+
+
+
+\renewcommand{\sec}[1]{\section{#1}}
+\newcommand{\ssec}[1]{\subsection{#1}}
+\newcommand{\sssec}[1]{\subsubsection{#1}}
+
+\newcommand{\br}[1]{\lbrace \, #1 \, \rbrace}
+\newcommand{\li}{ < \infty}
+\newcommand{\quis}{\simeq}
+\newcommand{\xra}[1]{\xrightarrow{#1}}
+\newcommand{\xla}[1]{\xleftarrow{#1}}
+\newcommand{\xlra}[1]{\overset{#1}{\longleftrightarrow}}
+
+\newcommand{\xroa}[1]{\overset{#1}{\twoheadrightarrow}}
+\newcommand{\xria}[1]{\overset{#1}{\hookrightarrow}}
+\newcommand{\ps}[1]{\mathbb{P}_{#1}^{\text{c}-1}}
+
+
+
+
+\def\and{{ \text{ and } }}
+\def\oor{{ \text{ or } }}
+
+\def\Perm{\operatorname{Perm}}
+\newcommand{\Ss}{\mathbb{S}}
+
+\def\Op{\operatorname{Op}}
+\def\res{\operatorname{res}}
+\def\ind{\operatorname{ind}}
+
+\def\sign{{\mathrm{sign}}}
+\def\naive{{\mathrm{naive}}}
+\def\l{\lambda}
+
+
+\def\ov#1{\overline{#1}}
+\def\cV{{\mathcal V}}
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+
+\newcommand{\chara}{\operatorname{char}}
+\newcommand{\Kos}{\operatorname{Kos}}
+\newcommand{\opp}{\operatorname{opp}}
+\newcommand{\perf}{\operatorname{perf}}
+
+\newcommand{\Fun}{\operatorname{Fun}}
+\newcommand{\GL}{\operatorname{GL}}
+\newcommand{\SL}{\operatorname{SL}}
+\def\o{\omega}
+\def\oo{\overline{\omega}}
+
+\def\cont{\operatorname{cont}}
+\def\te{\tilde{e}}
+\def\gcd{\operatorname{gcd}}
+
+\def\stab{\operatorname{stab}}
+
+\def\va{\underline{a}}
+
+\def\ua{\underline{a}}
+\def\ub{\underline{b}}
+
+
+\newcommand{\Ob}{\mathrm{Ob}}
+\newcommand{\Set}{\mathbf{Set}}
+\newcommand{\Grp}{\mathbf{Grp}}
+\newcommand{\Ab}{\mathbf{Ab}}
+\newcommand{\Sgrp}{\mathbf{Sgrp}}
+\newcommand{\Ring}{\mathbf{Ring}}
+\newcommand{\Fld}{\mathbf{Fld}}
+\newcommand{\cRing}{\mathbf{cRing}}
+\newcommand{\Mod}[1]{#1-\mathbf{Mod}}
+\newcommand{\vs}[1]{#1-\mathbf{vect}}
+\newcommand{\Vs}[1]{#1-\mathbf{Vect}}
+\newcommand{\vsp}[1]{#1-\mathbf{vect}^+}
+\newcommand{\Top}{\mathbf{Top}}
+\newcommand{\Setp}{\mathbf{Set}_*}
+\newcommand{\Alg}[1]{#1-\mathbf{Alg}}
+\newcommand{\cAlg}[1]{#1-\mathbf{cAlg}}
+\newcommand{\PO}{\mathbf{PO}}
+\newcommand{\Cont}{\mathrm{Cont}}
+\newcommand{\MaT}[1]{\mathbf{Mat}_{#1}}
+
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+
+\makeindex
+\title{Math 901 Lecture Notes, Fall 2021}
+
+
+\begin{document}
+\onehalfspacing
+
+\maketitle
+
+\tableofcontents
+
+\sec{Category Theory}
+
+\ssec{Categories}
+
+\
+
+\Aug{23}
+
+
+\sssec{Definition of category}
+
+
+
+\begin{defn} A \DEF{category} $\sC$ consists of the following data:
+\begin{enumerate}
+\item a collection of \DEF{objects}, denoted $\Ob(\sC)$\index{$\Ob$},
+\item for each pair of objects $A,B\in \Ob(\sC)$, a set \Def{$\Hom_{\sC}(A,B)$} of \emph{morphisms}\index{morphisms} (also known as \emph{arrows}\index{arrows}) from $A$ to $B$,
+\item for each triple of objects $A,B,C\in \Ob(\sC)$, a function
+\[\Hom_{\sC}(A,B) \times \Hom_{\sC}(B,C)\longrightarrow \Hom_{\sC}(A,C) \]
+written as $(\alpha,\beta)\mapsto \beta \circ \alpha$ that we call the \emph{composition rule}\index{composition}.
+\end{enumerate}
+These data are required to satisfy the following axioms:
+\begin{enumerate}
+\item (Disjointness) the Hom sets are disjoint: if $A\neq A'$ or $B\neq B'$, then \[\Hom_{\sC}(A,B)\cap \Hom_{\sC}(A',B')=\varnothing.\]
+\item (Identities) for every object $A$, there is an \DEF{identity morphism} $1_A\in \Hom_{\sC}(A,A)$\index{$1_A$} such that $1_A \circ f = f$ and $g \circ 1_A = g$ for all $f\in \Hom_{\sC}(B,A)$ and all $g\in \Hom_{\sC}(A,B)$.
+\item (Associativity) composition is associative: $f \circ (g \circ h) = (f\circ g) \circ h$.
+\end{enumerate}
+\end{defn}
+
+\begin{rem}
+\begin{enumerate}
+\item The word ``collection'' as opposed to ``set'' is important here. The point is that there is no set of all sets, but by utilizing bigger collecting objects in set theory, we can sensibly talk about the collection of all sets. We'll sweep all of the set theory under the rug there, but it's worth keeping in mind that the objects of a category don't necessarily form a set. We did assume that the collections of morphisms between a pair of objects  form a set, though not everyone does. 
+\item The first axiom above guarantees that every morphism $\alpha$ in a category $\sC$ has a well-defined \DEF{source} and \DEF{target} in $\Ob(\sC)$, namely, the unique $A$ and $B$ (respectively) such that ${\alpha\in \Hom_{\sC}(A,B)}$.
+\end{enumerate}
+\end{rem}
+
+The name arrow dovetails with the common practice of depicting a morphism $\alpha\in \Hom_{\sC}(A,B)$ as
+\[ A \stackrel{\alpha}{\longrightarrow} B.\]
+The composition of $A \xra{\alpha} B$ and $B\xra{\beta} C$ is $A\xra{\beta \circ \alpha} C$.
+
+\begin{exer} Prove that every element in a category has a unique identity morphism (i.e., a unique morphism that satisfies the hypothesis of axiom (2)).
+\end{exer}
+
+\sssec{Examples of categories}
+
+Many of our favorite objects from algebra naturally congregate in categories!
+
+\begin{ex}
+\begin{enumerate}
+\item There is a category \Def{$\Set$} where
+\begin{itemize}
+\item $\Ob(\Set)$ is the collection of all sets
+\item for two sets $X$, $Y$, $\Hom_{\Set}(X,Y)$ is the the set of functions from $X$ to $Y$
+\item the composition rule is composition of functions
+\end{itemize}
+We observe that every set has an identity function, which behaves as an identity for composition, and that composition of functions is associative.
+\item There is a category \Def{$\Grp$} where
+\begin{itemize}
+\item $\Ob(\Grp)$ is the collection of all groups
+\item for two sets $X$, $Y$, $\Hom_{\Grp}(X,Y)$ is the the set of group homomorphisms from $X$ to $Y$
+\item the composition rule is composition of functions
+\end{itemize}
+Note that the identity function on a group is a group homomorphism, and that a composition of two group homomorphisms is a group homomorphism.
+\item There is a category \Def{$\Ab$} where
+\begin{itemize}
+\item $\Ob(\Ab)$ is the collection of all abelian groups
+\item for two sets $X$, $Y$, $\Hom_{\Ab}(X,Y)$ is the the set of group homomorphisms from $X$ to $Y$
+\item the composition rule is composition of functions
+\end{itemize}
+\item In this class,
+\begin{itemize}
+\item A \DEF{semigroup} is a set $S$ with an associative operation $\cdot$ that has an identity element; some may prefer the term \DEF{monoid}, but I don't. 
+\item A \DEF{semigroup homomorphism} from semigroups $S\to T$ is a function that preserves the operation and maps the identity element to the identity element.
+\end{itemize}
+There is a category $\Sgrp$ where the objects are all semigroups and the morphisms are semigroup homomorphisms. (The composition rule is composition again.)
+
+\item In this class, 
+\begin{itemize}
+\item A \DEF{ring} is a set $R$ with two operations $+$ and $\cdot$ such that
+$(R,+)$ is abelian group, with identity $0$, and $(R, \cdot)$ is a semigroup with identity $1$, and such that
+the left and right distributive laws hold: $(r+s)t = rt + st$ and $t(r+s) = tr + ts$. 
+\item A \DEF{ring homomorphism} is a function that preserves $+$ and $\cdot$ and sends $1$ to $1$.
+\end{itemize}
+There is a category \Def{$\Ring$} where the objects are all rings and the morphisms are ring homomorphisms. 
+
+\item Let $R$ be a ring. In this class, 
+\begin{itemize}
+\item A \DEF{left $R$-module} is an abelian group $(M, +)$ equipped with a pairing $R \times M \to M$, written $(r,m) \mapsto rm$ or $(r,m)\mapsto r \cdot m$
+such that 
+\begin{enumerate}
+\item $r_1(r_2m)  = (r_1r_2)m$,
+\item  $(r_1+r_2)m  = r_1m + r_2m$,
+\item $r(m_1 + m_2) = rm_1 + rm_2$, and 
+\item $1m = m$.
+\end{enumerate}
+\item A \DEF{left module homomorphism} or \DEF{$R$-linear map} between left $R$-modules $\phi:M\to N$ is a homomorphism of abelian groups from $(M,+)\to (N,+)$ such that $\phi(r m) = r \phi(m)$.
+\end{itemize}
+There is a category \Def{$\Mod{R}$} where the objects are all left $R$-modules and the morphisms are $R$-linear maps.
+
+\item There is a category \Def{$\Fld$} where the objects are all fields and the morphisms are all field homomorphisms.
+
+\item There is a category \Def{$\Top$} where the objects are all topological spaces and the morphisms are all continuous functions.
+\end{enumerate}
+\end{ex}
+
+
+\begin{rem}
+There are two special cases of the category of $R$-modules that are worth singling out:
+\begin{itemize}
+\item Every abelian group $M$ is a $\Z$-module in a unique way, by setting
+\[n\cdot m = \underbrace{m + \cdots + m}_{n-\text{times}} \quad \text{and} \quad  -n\cdot  m = -(\underbrace{m + \cdots + m}_{n-\text{times}}) \qquad\text{for $n\geq0$}. \]
+Thus, $\Ab$ is basically just $\Mod{\Z}$.
+\item When $R=K$ happens to be a field, we are accustomed to calling $K$-modules \DEF{vector spaces}. Thus, we might write \Def{$\Vs{K}$} for $\Mod{K}$.
+\end{itemize}
+\end{rem}
+
+
+
+\Aug{25}
+
+\begin{ex}
+Here are some variations on the category $\Vs{K}$.
+\begin{enumerate}
+\item The collection of finite dimensional $K$-vector spaces with all linear transformations is a category; call it \Def{$\vs{K}$}.
+\item The collection of all $n$-dimensional $K$-vector spaces with all linear transformations is a category.
+\item The collection of all $K$-vector spaces (or $n$-dimensional vector spaces) with linear isomorphisms is a category.
+\item The collection of all $K$-vector spaces (or $n$-dimensional vector spaces) with nonzero linear transformations  is not a category, since it's not closed under composition.
+\item The collection of all $n$-dimensional vector spaces with singular linear transformations is not a category, since it doesn't have identity maps.
+\end{enumerate}
+\end{ex}
+
+\begin{ex}\label{eg:1.4}
+\begin{enumerate}
+\item There is a category \Def{$\Setp$} of \DEF{pointed sets} where
+\begin{itemize}
+\item the objects are pairs $(X,x)$ where $X$ is a set and $x\in X$,
+\item for two pointed sets, the morphisms from $(X,x)$ to $(Y,y)$ are functions $f:X\to Y$ such that $f(x)=y$,
+\item usual composition.
+\end{itemize}
+\item For a commutative ring $A$, 
+\begin{itemize}
+\item A \DEF{commutative $A$-algebra} is a commutative ring $R$ plus a homomorphism $\phi:A\to R$.
+\item Slightly more generally, an \DEF{$A$-algebra} is a ring $R$ plus a homomorphism $\phi:A\to R$ such that $\phi(A)$ lies in the center of $R$: $r\cdot \phi(a) = \phi(a) \cdot r$ for any $a\in A$ and $r\in R$. (In the more general situation, $A$ is still commutative but $R$ may not be.) 
+\item An \DEF{$A$-algebra homomorphism} between two $A$-algebras $(R,\phi)$ and $(S,\psi)$ is a ring homomorphism $\alpha:R\to S$ such that $\alpha\circ \phi = \psi$.
+\end{itemize}
+The category of $A$-algebras is denoted \Def{$\Alg{A}$}, and the category of commutative $A$-algebras is \Def{$\cAlg{A}$}.
+
+
+\item Fix a field $K$, and define a category $\MaT{K}$ as follows: the objects are the positive natural numbers $n\in \N_{>0}$, and $\Hom_{\sC}(a,b)$ is the set of $b\times a$ matrices with entries in $K$. To see this as a category, we need a composition rule. Given $B\in \Hom_{\sC}(b,c)$ and $A\in \Hom_{\sC}(a,b)$, take the composition $A\circ B\in \Hom_{\sC}(a,c)$ to be the product $AB$. Since matrix multiplication is associative, axiom (3) holds, and the $n\times n$ identity matrix serves as an identity morphism in the sense of axiom (2). Finally, if $A\in \Hom_{\sC}(a,b)\cap \Hom_{\sC}(a',b')$, then $A$ is a $b\times a$ matrix and a $b'\times a'$ matrix, so $a=a'$ and $b=b'$. Notably, the morphisms in this category are not functions.
+\end{enumerate}
+\end{ex}
+
+We can also make a bunch of categories in a hands-on way as follows:
+
+\begin{ex} Let $(P,\leq)$ be a poset.
+We define a category \Def{$\PO(P)$} from $P$ as follows. The objects of $\PO(P)$ are just the elements of $P$.
+For each pair $a,b\in P$ with $a\leq b$, form a symbol $f_a^b$. Then we set
+\[ \Hom_{\PO(P)}(a,b) = \begin{cases} \{f_a^b\} &\text{if}\  a\leq b \\ \varnothing & \text{otherwise}. \end{cases}\]
+There is only one possible composition rule:
+\[ \Hom_{\PO(P)}(a,b) \times \Hom_{\PO(P)}(b,c) \longrightarrow \Hom_{\PO(P)}(a,c)\]
+when $a\leq b$ and $b\leq c$ we also have $a\leq c$, and the unique pair on the left must map to the unique element on the right, so $f_b^c \circ f_a^b = f_a^c$; when either $a\not\leq b$ or $b\not\leq c$, there is nothing to compose!
+
+Each morphism $f_a^b$ is in only one Hom set (with source $a$ and target $b$). Composition is associative since there is at most one function between one element sets. For any $a$, $f_a^a\in \Hom_{\PO(P)}(a,a)$ is the identity morphism.
+
+For a specific example, we can think of $\N_{> 0}$ as a category this way. Drawing all of the morphisms would be a mess, but any morphism is a composition of the ones depicted:
+
+\[  1 \longrightarrow 2 \longrightarrow 3 \longrightarrow 4 \longrightarrow 5 \longrightarrow \cdots .\] 
+Note that the objects of this category are exactly the same as in Example~\ref{eg:1.4}(3), but with much fewer morphisms!
+\end{ex}
+
+\begin{ex} A category with one object is nothing but a semigroup.\end{ex}
+
+\sssec{Constructions of categories}
+
+Here are a few more basic constructions of categories:
+
+\begin{defn} Given a category $\sC$, the \DEF{opposite category} \Def{$\sC^{\mathrm{op}}$} is the category with $\Ob(\sC^{\mathrm{op}})=\Ob(\sC)$, and $\Hom_{\sC}(A,B) = \Hom_{\sC}(B,A)$ for all $A,B\in \Ob(\sC)$.
+\end{defn}
+
+That is, the opposite category is the ``same category with the arrows reversed.'' To avoid confusion, we might write $\alpha^{\mathrm{op}}$ for the morphism $B\stackrel{\alpha^{\mathrm{op}}}{\longrightarrow} A$ in $\sC^{\mathrm{op}}$ corresponding to $A \stackrel{\alpha}{\longrightarrow} B$ in $\sC$.
+
+\begin{defn} Given two categories $\sC$ and $\sD$, the \DEF{product category} \Def{$\sC \times \sD$} is the category with $\Ob(\sC \times \sD)$ given by the collection of pairs $(C,D)$ with $C\in \Ob(\sC)$ and $D\in \Ob(\sD)$, and $\Hom_{\sC \times \sD}((A,B),(C,D))=\Hom_{\sC}(A,C) \times \Hom_{\sD}(B,D)$. We leave it to you to pin down the composition rule.
+\end{defn}
+
+\begin{defn} A category $\sD$ is a \DEF{subcategory} of another category $\sC$ provided 
+\begin{enumerate}
+\item every object of $\sD$ is an object of $\sC$
+\item for every $A,B\in \Ob(\sD)$, $\Hom_{\sD}(A,B)\subseteq \Hom_{\sC}(A,B)$, and
+\item for every $A \xra{\alpha} B$ and $B \xra{\beta} C$ in $\sD$, the composition of $\alpha$ and $\beta$ in $\sD$ equals the composition of $\alpha$ and $\beta$ in $\sC$.
+\end{enumerate}
+If equality hold in (2) (for all $A,B$), we say that $\sD$ is a \DEF{full subcategory} of $\sC$.
+\end{defn}
+
+\begin{ex} Since every group is a set, and every homomorphism is a function, $\Grp$ is a subcategory of $\Set$. However, since not every function between groups is a homomorphism, $\Grp$ is not a full subcategory of $\Set$. Similarly, $\Ab$, $\Ring$, $\Mod{R}$, and $\Top$ are all subcategories of $\Set$.
+
+On the other hand, $\Ab$ is a full subcategory of $\Grp$, and $\Grp$ is a full subcategory of $\Sgrp$: a morphism of abelian groups is a morphism of groups that happens to be between abelian groups (and likewise for groups and semigroups)!
+\end{ex}
+
+
+\begin{comment}
+
+
+\begin{defn} Given a category $\sC$ and an object $A\in \Ob(\sC)$, the \DEF{coslice category} \Def{$\sC_A$} is the category with objects given by all arrows from $A$: namely morphisms of the form 
+\[ A \stackrel{\alpha}{\longrightarrow} X \ \quad\text{with}\quad \ X\in \Ob(\sC)\]
+and morphisms 
+\[ \Hom_{\sC_A}(A \stackrel{\alpha}{\longrightarrow} X,A \stackrel{\beta}{\longrightarrow} Y) = \{ X \stackrel{\gamma}{\longrightarrow} Y \ | \ \gamma \circ \alpha = \beta\}.\]
+Equivalently, we can think of such a morphism as a triangle:
+ \[\xymatrix{
+&A \ar[dl]_{\alpha} \ar[dr]^{\beta}& \\
+X \ar[rr]^{\gamma}&&Y
+}   \]
+The composition rule comes from the composition rule on $\sC$: if $X \xrightarrow{\gamma}Y$ and $Y \xrightarrow{\delta\circ \gamma} Z$.
+
+This construction may be less new to you than you think!
+
+\begin{exer} Explain how $\cAlg{A}$ and $\Setp$ are special cases of the coslice category construction. Can you describe the category $\Alg{A}$ in terms of the terms above?
+\end{exer}
+
+
+
+\subsection{Basic notions with morphisms}
+
+\begin{defn} A \DEF{diagram} in a category $\sC$ is a directed multigraph whose vertices are objects in $\sC$ and whose arrows/edges are morphisms in $\sC$. A \DEF{commutative diagram} in $\cC$ is a diagram in which for each pair of vertices $A,B$, any two paths from $A$ to $B$ compose to the same morphism.
+\end{defn}
+
+\begin{ex} To say that the diagram
+\[\xymatrix{
+A \ar[r]^{\alpha} \ar[d]_{\gamma}& B \ar[d]^{\beta}\\
+C \ar[r]^{\delta} &D 
+}\]
+commutes is to say that $\beta\circ \alpha = \delta \circ \gamma$ in $\Hom_{\cC}(A,D)$.
+\end{ex}
+
+
+
+\begin{defn}
+Let $\mathscr{C}$ be any category. 
+\end{defn}
+
+\begin{itemize}
+	\item A morphism $\alpha \in \Hom_{\mathscr{C}}(A,B)$ is a \DEF{isomorphism} if there exists $\beta \in \Hom_{\mathscr{C}}(B,A)$ such that $\beta \circ \alpha = 1_A$ and $\alpha\circ \beta = 1_B$. Such an  $\beta$ is called the \DEF{inverse} of $f$.
+	\item A morphism $\alpha \in \Hom_{\mathscr{C}}(A,B)$ has $\beta$ as a \DEF{left inverse} if $\beta \circ \alpha = 1_A$. Similarly define \DEF{right inverse}.
+	\item A morphism $\alpha \in \textrm{Hom}_{\mathscr{C}}(B,C)$ is a \DEF{monomorphism} or is \DEF{monic} if for all arrows  
+$$\xymatrix{A \ar@<0.5ex>[r]^-{\beta_1} \ar@<-0.5ex>[r]_-{\beta_2} & B \ar[r]^-\alpha & C}$$
+if $\alpha \beta_1 =\alpha \beta_2$ then $\beta_1 = \beta_2$. That is, $\alpha$ can be cancelled on the left.
+	\item Similarly, a morphism $\alpha \in \textrm{Hom}_{\mathscr{C}}(A,B)$ is an \DEF{epimorphism} or is \DEF{epic} if for all arrows 
+$$\xymatrix{A \ar[r]^-\alpha & B \ar@<0.5ex>[r]^-{\beta_1} \ar@<-0.5ex>[r]_-{\beta_2} & C}$$
+if $\beta_1\alpha = \beta_2\alpha$ then $\beta_1 = \beta_2$. That is, $\alpha$ can be cancelled on the right.
+\end{itemize}
+\end{defn}
+
+\begin{lem} Let $\sC$ be a category. If a morphism $\alpha\in \Hom_{\sC}(A,B)$ has an inverse, it is unique.
+\end{lem}
+\begin{proof}
+Let $\beta,\gamma\in \Hom_{\sC}(B,A)$ be such that $\beta \circ \alpha = \gamma\circ\alpha = 1_A$ and $\alpha\circ \beta = \alpha\circ \gamma = 1_B$. Then $(\beta\circ \alpha)\circ \beta=(\gamma\circ\alpha) \circ \beta$, so $\beta=1_A\circ \beta = 1_A \circ \gamma =\gamma$.
+\end{proof}
+
+\begin{ex} In $\Set$, the monomorphisms are the injective functions, the epimorphisms are the surjective functions, and the isomorphisms are the bijections.
+\end{ex}
+
+\begin{exer} Show that $\alpha$ is has a left inverse, then $\alpha$ is a monomorphism. Show that if $\alpha$ has a right inverse, then $\alpha$ is an epimorphism. Is the converse of either statement true?
+\end{exer}
+
+
+\subsection{Products and coproducts}
+
+Often, objects in categories are determined by their relationship to others through a universal mapping property. 
+
+\sssec{Definitions}
+
+\begin{defn} Let $\sC$ be a category, and $\{ X_\lambda\}_{\lambda\in \Lambda}$ be a family of objects. A \DEF{product} of $\{ X_\lambda\}_{\lambda\in \Lambda}$ is given by an object $P$ and a family of morphisms $\{p_\lambda : P \to X_\lambda\}_{\lambda\in \Lambda}$ that is universal in the following sense:
+
+Given an object $Y$ and a family of morphisms $\{f_\lambda:Y\to X_\lambda\}_{\lambda\in \Lambda}$, there is a unique morphism $\alpha: Y\to P$ such that $p_\lambda \circ \alpha = f_\lambda$ for all $\lambda$.
+\end{defn}
+
+Here is a diagram for the (first few) maps involved when $\Lambda=\N$ is countable:
+\[\xymatrix{  & & & P \ar[drr]^-{p_1} \ar[ddrr]^-{p_2} \ar[dddrr]^-{p_3} \ar[ddddrr]  & & \\
+ & & & & & X_1\\
+Y \ar@{-->}[uurrr]^-{\alpha}\ar[urrrrr]^-{f_1}  \ar[rrrrr]^-{f_2} \ar[drrrrr]^-{f_3} \ar[ddrrrrr]&  & & & & X_2\\
+& & & & & X_3\\
+& & & & & \vdots }\]
+
+We can also take a ``big picture'' view of this universal property:
+\[\xymatrix{ & P\ar@{~>}[dr]^{\alpha} & \\
+Y \ar@{-->}[ur]^{\{i_\lambda\}} \ar@{~>}[rr]_{\{f_\lambda\}} & & \{X_{\lambda}\},}\]
+where the squiggly arrows are again collections of maps instead of maps.
+
+
+\begin{rem}
+Note that $(P,\{p_\lambda\}_{\lambda\in\Lambda})$ is a product of $\{ X_\lambda\}_{\lambda\in \Lambda}$ if and only if the function
+\[ \xymatrix{ \Hom_{\sC}(Y,P) \ar[rr] & & \bigtimes_{\lambda\in\Lambda} \Hom_{\sC}(Y,X_\lambda)\\
+\alpha \ar@{|->}[rr] & &  ( p_\lambda \circ \alpha )_{\lambda\in \Lambda}}\]
+is a bijection: the universal property says that everything in the target comes from a unique thing in the source.
+\end{rem}
+
+
+
+\begin{defn} Let $\sC$ be a category, and $\{ X_\lambda\}_{\lambda\in \Lambda}$ be a family of objects. A \DEF{coproduct} of $\{ X_\lambda\}_{\lambda\in \Lambda}$ is given by an object $C$ and a family of morphisms $\{i_\lambda : X_\lambda \to Y\}_{\lambda\in \Lambda}$ that is universal in the following sense:
+
+Given an object $Y$ and a family of morphisms $\{f_\lambda:X_\lambda \to Y\}_{\lambda\in \Lambda}$, there is a unique morphism $\alpha: C\to Y$ such that $\alpha \circ i_\lambda = f_\lambda$ for all $\lambda$.
+\end{defn}
+
+
+Here is a diagram for the (first few) maps involved when $\Lambda=\N$ is countable:
+\[\xymatrix{  & & & C \ar@{-->}[ddrr]_{\alpha}& & \\
+\vdots\ar[urrr] \ar[drrrrr]  & & & & & \\
+X_3\ar[uurrr]^-{i_3} \ar[rrrrr]^-{f_3} & & & & & Y\\
+X_2\ar[uuurrr]^-{i_2} \ar[urrrrr]^-{f_2}  & & & & & \\
+X_1\ar[uuuurrr]^-{i_1} \ar[uurrrrr]^-{f_1} & & & & &}\]
+
+We can also take a ``big picture'' view of the universal property:
+\[\xymatrix{ & C\ar@{-->}[dr]^{\alpha} & \\
+\{ X_{\lambda}\} \ar@{~>}[ur]^{\{i_\lambda\}} \ar@{~>}[rr]_{\{f_\lambda\}} & & Y,}\]
+where the squiggly arrows are now collections of maps instead of maps.
+
+\begin{rem}
+Note that $(C,\{i_\lambda\}_{\lambda\in\Lambda})$ is a coproduct of $\{ X_\lambda\}_{\lambda\in \Lambda}$ if and only if the function
+\[ \xymatrix{ \Hom_{\sC}(C,Y) \ar[rr] & & \bigtimes_{\lambda\in\Lambda} \Hom_{\sC}(X_\lambda,Y)\\
+\alpha \ar@{|->}[rr] & &  ( \alpha \circ i_\lambda )_{\lambda\in \Lambda}}\]
+is a bijection: the universal property says that everything in the target comes from a unique thing in the source.
+\end{rem}
+
+\begin{prop} If $(P,\{p_\lambda:P\to X_\lambda\}_{\lambda\in \Lambda})$ and $(P',\{p'_\lambda:P'\to X_\lambda\}_{\lambda\in \Lambda})$ are both products for the same family of objects $\{X_\lambda\}_{\lambda\in \Lambda}$ in a category $\sC$, then there is a unique isomorphism $\alpha: P \xrightarrow{\sim} P'$ such that $p'_\lambda \circ \alpha = p_\lambda$ for all $\lambda$. The analogous statement holds for coproducts.
+\end{prop}
+\begin{proof} We will just deal with products. The following picture is a rough guide:
+\[\xymatrix{ P \ar@{-->}[rr]^{\alpha} \ar@{~>}[drrrrr]_-{\{p_\lambda\}}   & & P' \ar@{-->}[rr]^{\beta} \ar@{~>}[drrr]^-{\{p'_\lambda\}} & & P \ar@{~>}[dr]^-{\{p_\lambda\}}   & \\
+& & & & & \{ X_\lambda\} }\]
+
+Since $(P,\{p_\lambda\})$ is a product and $(P',\{p'_\lambda\})$ is an object with maps to each $X_\lambda$, there is a unique map $\beta:P'\to P$ such that $p_\lambda\circ \beta = p'_\lambda$. Switching roles, we obtain a unique map $\alpha:P\to P'$ such that $p'_\lambda\circ \alpha = p_\lambda$. 
+
+Consider the composition $\beta\circ \alpha:P\to P$. We have $p_\lambda \circ \beta \circ \alpha = p'_\lambda \circ \alpha = p_\lambda$ for all $\lambda$. The identity map $1_P:P\to P$ also satisfies the condition $p_\lambda \circ 1_P = p_\lambda$ for all $\lambda$, so by the uniqueness property of products, $\beta\circ \alpha = 1_P$. We can again switch roles to see that $\alpha\circ\beta = 1_{P'}$. Thus $\alpha$ is an isomorphism. The uniqueness of $\alpha$ in the statement is part of the universal property.
+\end{proof}
+\begin{exer} Prove the analogous statement for coproducts.\end{exer}
+
+
+
+We use the notation \Def{$\prod_{\lambda \in \Lambda} X_\lambda$} to denote the (object part of the) product of $\{X_{\lambda}\}$ and \Def{$\coprod_{\lambda \in \Lambda} X_\lambda$} to denote the (object part of the) coproduct of $\{X_{\lambda}\}$.
+
+
+\sssec{Products in familiar categories}
+
+The familiar notion of Cartesian product or direct product serves as a product in many of our favorite categories. Let's note first that given a family of objects $\{X_\lambda\}_{\lambda\in \Lambda}$ in any of the categories $\Set,\Sgrp,\Grp,\Ring,\Mod{R},\Top$, the direct product $\bigtimes_{\lambda\in\Lambda} X_\lambda$ is an object of the same category:
+\begin{itemize}
+\item for sets, this is clear;
+\item for semigroups, groups, and rings, take the operation coordinate by coordinate: $(x_{\lambda})_{\lambda\in \Lambda} \cdot (y_\lambda)_{\lambda\in \Lambda} = (x_\lambda \cdot y_\lambda)_{\lambda\in \Lambda}$;
+\item for modules, addition is coordinate by coordinate, and the action is the same on each coordinate: $r\cdot (x_\lambda)_{\lambda\in \Lambda}=(r\cdot x_\lambda)_{\lambda\in \Lambda}$;
+\item for topological spaces, use the product topology.
+\end{itemize}
+Note that this is not true for fields!
+
+\begin{prop} In each of the categories $\Set,\Sgrp,\Grp,\Ring,\Mod{R}, \Top$, given a family $\{X_\lambda\}_{\lambda\in\Lambda}$, the direct product $\bigtimes_{\lambda\in\Lambda} X_\lambda$ along with the projection maps $\pi_{\lambda}:\bigtimes_{\gamma\in\Lambda} X_\gamma \to X_\lambda$ forms a product in the category.
+\end{prop}
+\begin{proof} We observe that in each category, the direct product is an object, and the projection maps $\pi_{\lambda}$ are morphisms in the category. 
+
+Let $\sC$ be one of these categories, and suppose that we have morphisms $g_{\lambda}:Y \to X_\lambda$ for all $\lambda$ in $\sC$. We need to show there is a unique morphism $\alpha:Y \to \bigtimes_{\lambda\in\Lambda} X_\lambda$ such that $\pi_\lambda \circ \alpha = g_\lambda$ for all $\lambda$. The last condition
+ is equivalent to $(\alpha(y))_\lambda=(p_\lambda\circ\alpha)(y) =g_\lambda(y)$ for all $\lambda$, which is equivalent to $\alpha(y)=(g_\lambda)_{\lambda\in \Lambda}$, so if this is a valid morphism, it is unique.  Thus, it suffices to show that the map $\alpha(y)=(g_\lambda)_{\lambda\in \Lambda}$ is a morphism in~$\sC$, which is easy to see in each case.
+\end{proof}
+
+\begin{rem} We already saw that direct products are not products in the category of fields. In fact, there are no products in the category of fields in general. For example, suppose that $P$ was a product of $\F_p$ and $\F_q$ in $\Fld$ for two primes $p\neq q$. Then $\Hom_{\Fld}(K,P)$ is bijective with $\Hom_{\Fld}(K,\F_p) \times \Hom_{\Fld}(K,\F_q)$ for all $K$, so in particular, $\Hom_{\Fld}(\F_p,P)\neq 0$ and $\Hom_{\Fld}(\F_q,P)\neq 0$, but no such field exists!
+\end{rem}
+
+
+
+\sssec{Coproducts in familiar categories}
+
+
+
+\begin{ex} Let $\{X_\lambda\}_{\lambda\in \Lambda}$ be a family of sets. The product of $\{X_\lambda\}_{\lambda\in \Lambda}$ is given by the cartesian product along with the projection maps. The coproduct of $\{X_\lambda\}_{\lambda\in \Lambda}$ is given by the ``disjoint union'' with the various inclusion maps. By disjoint union, we simply mean union if the sets are disjoint; in general do something like replace $X_\lambda$ with $X_\lambda \times \{\lambda\}$ to make them disjoint.
+\end{ex}
+
+
+
+
+
+\begin{prop} Let $R$ be a ring, and $\{M_\lambda\}_{\lambda\in \Lambda}$ be a family of left $R$-modules. A coproduct for the family $\{M_\lambda\}_{\lambda\in \Lambda}$ is  $\left(\bigoplus_{\lambda \in \Lambda} M_\lambda, \{\iota_\lambda\}_{\lambda\in \Lambda}\right)$, where \[\bigoplus_{\lambda \in \Lambda} M_\lambda=\{ (x_\lambda)_{\lambda\in \Lambda} \ | \ x_\lambda\neq 0 \ \text{for at most finitely many} \ \lambda\} \subseteq \ \prod_{\lambda \in \Lambda} M_\lambda\] is the direct sum of the modules $M_\lambda$, and $\iota_\lambda$ is the inclusion map to the $\lambda$ coordinate.
+\end{prop}
+\begin{rem} If the index set $\Lambda$ is finite, then the objects $\prod_{\lambda \in \Lambda} M_\lambda$ and $\bigoplus_{\lambda \in \Lambda} M_\lambda$ are identical, but the product and coproduct are not the same since one involves projection maps and the other involves inclusion maps.
+\end{rem}
+\begin{proof}
+Given $R$-module homomorphisms $g_\lambda:M_\lambda \to N$ for each $\lambda$, we need to show that there is a unique $R$-module homomorphism $\alpha: \bigoplus_{\lambda \in \Lambda} M_\lambda \to N$ such that $\alpha\circ \iota_\lambda = g_\lambda$. We define
+\[ \alpha((m_\lambda)_{\lambda\in\Lambda}) = \sum_{\lambda\in \Lambda} g_\lambda(m_\lambda).\]
+Note that since $(m_\lambda)_{\lambda\in\Lambda}$ is in the direct sum, at most finitely many $m_\lambda$ are nonzero, so the sum on the right hand side is finite, and hence makes sense in $N$. We need to check that $\alpha$ is $R$-linear; indeed,
+\[ \alpha((m_\lambda) + (n_\lambda)) = \alpha((m_\lambda+n_\lambda)) = \sum g_\lambda(m_\lambda + n_\lambda) = \sum g_\lambda(m_\lambda) +\sum g_\lambda(n_\lambda) = \alpha((m_\lambda))+\alpha((n_\lambda)),\]
+and the check for scalar multiplication is similar. For uniqueness of $\alpha$, note that $\bigoplus_{\lambda \in \Lambda} M_\lambda$ is generated by the elements $\iota_\lambda(m_\lambda)$ for $m_\lambda\in M_\lambda$. Thus, if $\alpha'$ also satisfies $\alpha \circ \iota_\lambda = g_\lambda$ for all $\lambda$, then $\alpha(\iota_\lambda(m_\lambda))= g_\lambda(m_\lambda) = \alpha'(\iota_\lambda(m_\lambda))$ so the maps must be equal.
+\end{proof}
+
+\begin{rem}
+\begin{itemize}
+\item In $\Top$, disjoint unions serve as coproducts.
+\item In $\Sgrp$ and $\Grp$, coproducts exist, and are given as free products. You may see or have seen them in topology in the context of Van Kampen's theorem.
+\item In $\Ring$, the story is more complicated. Let's note first that neither disjoint unions won't work, since they aren't rings. Direct sums of infinitely many rings don't have $1$, so aren't rings, but even finite direct sums/products won't work, since the inclusion maps don't send $1$ to $1$. It turns out that $\Ring$ has no coproducts, but the full subcategory of commutative rings, \Def{$\cRing$}, does! We will construct this later.
+\end{itemize}
+\end{rem}
+
+
+\begin{comment}
+
+
+
+\sec{Rings, Modules, and Representation Theory}
+
+
+\ssec{Ring and module basics}
+
+\sssec{Rings}
+
+In this class, 
+
+\begin{itemize}
+\item A \DEF{ring} is a set $R$ with two binary operations $+$ and $\cdot$ such that
+$(R,+)$ is abelian group, with identity $0$, and $(R, \cdot)$ is a (possibly noncommutative) semigroup with identity $1$, and such that
+the left and right distributive laws hold: $(r+s)t = rt + st$ and $t(r+s) = tr + ts$. 
+\item A \DEF{ring homomorphism} is a function that preserves $+$ and $\cdot$ and sends $1$ to $1$.
+\end{itemize}
+
+Note that $0\neq 1$ in $R$ unless $R=\{0\}$; if $0=1$, then $r=r\cdot 1 = r\cdot 0 = 0$ for all $r\in R$.
+
+
+\begin{ex} The map $\Z \to \Z\times \Z$ that sends $n\mapsto (n,n)$ is a ring homomorphism, but the map that sends $n\mapsto (n,0)$ is not, since the $1$ element of $\Z$ does not map to the $1$ element of $\Z\times \Z$.
+\end{ex}
+
+You've seen many examples of commutative rings before: E.g., fields, $\Z$, $\Z/n\Z$, polynomial rings, rings of integers
+(such as $\Z[\sqrt{-5}]$), etc.
+Here's are some noncommutative examples:
+
+\begin{ex}
+  For any $n \geq 1$ and ring $R$, \Def{$\Mat_n(R)$} is a ring under the usual rules for matrix addition and multiplication, even if $R$ isn't commutative. The multiplicative identity is $I_n$.  It is noncommutative if $1 \ne 0$ and $n > 1$. 
+\end{ex}
+
+
+\begin{ex}
+Let $A$ be any abelian group. An \DEF{endomorphisms} of $A$ as an abelian group is just a group homomorphism from $A$ to itself. The set \Def{$\End_{\Z}(A)$} of $A$ as an abelian group forms a ring.
+
+Namely,  given $f,g\in \End_{\Z}(A)$, 
+define the function $f + g$ by the rule
+  $(f+g)(a) = f(a) + g(a)$. Since 
+  \[(f+g)(a+b) = f(a+b) + g(a+b) = f(a) + f(b) + g(a) + g(b) = f(a) + g(a) + f(b) + g(b) = 
+(f+g)(a) + (f+g)(b),\] we see that $f+g\in \End_{\Z}(A)$. It's easy to see that $\End_{\Z}(A)$ is again an abelian group under this rule.
+For the multiplication, take composition of functions. Associativity of multiplication is a special case of associativity of composition of functions. For distributive laws, we have
+\[ ((f+g)h) (a) = (f+g)(h(a)) =f(h(a)) + g(h(a)) = (fh)(a) + (gh)(a);\] \[(f(g+h)) (a) = f(g(a)+h(a)) = f(g(a)) + f(h(a)) = (fg) (a) + (fh)(a);\]
+for the latter distributive law, it was crucial that we are dealing with homomorphisms of abelian groups.
+\end{ex}
+
+\begin{ex}[The \Def{Quaternions}] Let $\H$ be the $4$-dimensional $\R$-vector space with basis $1, i , j, k$; that is, $\H = \R \oplus
+  \R i \oplus \R j \oplus \R k$. There is a unique associative,
+  bilinear pairing, $- \cdot- $, on $\H$
+  that is $\R$-bilinear (i.e., it satisfies both distributive laws and $(qv) \cdot w = q(v \cdot w) = v \cdot (qw)$ for
+  all $v, w \in Q$ and $q \in \R$) and is such that $1$ is a two-sided multiplicative identity and 
+  $i^2 = -1$, $j^2 = -1$, $k^2=-1$, $ij = k$, $jk = 1$, and  $ki=j$. Then $(\H, +, \cdot)$ is a noncommutative
+  ring and, in fact, it is a \DEF{division ring}, meaning every nonzero element has a two-sided inverse
+  (i.e., is a field without the commutativity assumption).
+
+It's not so obvious that what I wrote just now is true, but there is 
+another way of describing $\H$: It is the $\R$ subspace of  $\Mat_2(\C)$ spanned by $I_2$,
+$\sqrt{-1} \cdot I_2$, 
+$\begin{bmatrix} 0 & -\sqrt{-1} \\ \sqrt{-1} & 0 \end{bmatrix}$,
+and $\begin{bmatrix} 0 & 1 \\ -1 & 0 \end{bmatrix}$ (representing $1$, $i$, $j$, and $k$ in
+the notation above). A tedious check shows that this subspace is indeed closed
+under matrix multiplication and hence forms a ring.
+\end{ex}
+
+
+
+If $R$ is a ring and $I$ is a two-sided ideal $I$ then $R/I$ is also a ring under the induced operations.
+
+Given a ring $R$, let \Def{$R^{\op}$}\index{opposite ring} refer to the same set, same rule for $+$ but with multiplication defined by $x \cdot_{\op} y := yx$. Then $R^{\op}$ is also a ring.
+
+  \begin{exer} Prove that for any ring $R$ and integer $n \geq 1$, there is a ring isomorphism
+  $$
+  \Mat_n(R)^{op} \cong \Mat_n(R^{op}).
+  $$
+\end{exer}
+
+
+\sssec{Semigroup rings}
+
+Another interesting source of rings (some of which are noncommutative) is semigroup rings. A special subclass of these will be group rings.
+
+In this class, 
+\begin{itemize}
+\item A \DEF{semigroup} is a set $S$ with an associative operation that has an identity element.
+\item A \DEF{semigroup homomorphism} is a map between semigroups that preserves $\cdot$ and maps the identity to the identity.
+\end{itemize}
+
+For any ring $R$ and semigroup $G$,   we define the \DEF{semigroup ring} \Def{$R[G]$} as follows: 
+
+As a set, $R[G]$ is the free left $R$-module with basis $G$; that is, a typical element has the
+form 
+$\sum_g r_g g$, where it is understood that $r_g = 0_R$ for all by a finite number of $g$'s.
+More formally, an element is a function $f: G \to R$ such
+that $f(g) = 0_R$ for all but a finite number of $g$'s. As a matter of notation,
+the element $1_R \, g$ will be written as just $g$ and the element $r \, e_G$ as just $r$,
+so that we will regard $G$ and $R$ as subsets of $R[G]$. (They overlap in the one element $1_R \,  e_G$ which will be written as just $1$). 
+
+We define addition as module addition; that is,
+  $$
+  (\sum_g r_g g) + (\sum_h s_h h) = \sum_{f \in G} (r_f + s_f) f.
+  $$
+  
+  Multiplication is given formulaically as
+  $$
+  (\sum_g r_g g) \cdot (\sum_h s_h h) = \sum_{f \in G} (\sum_{(g,h) \in G \times G, gh= f} r_g s_h)   f.
+  $$
+where the inner sum is over pairs of semigroup elements whose product is $f$. This is the unique pairing that obeys the distributive laws
+  and is such that $R$ is a subring, $G$ is a subsemigroup of the semigroup $(R[G], \cdot)$, and every element of $R$ commutes  with every element of $G$.
+  
+
+
+If $G$ is a group, then $R[G]$ is called a \DEF{group ring}.
+In this case $G$ is a subgroup of $R[G]^\times$, the group of units of the ring $R[G]$.
+The most common usages of this construction occur when $G$ is a group and $R$ is a field. 
+
+\begin{ex}
+Let's understand the semigroup ring $R[G]$ when $G=(\Z_{\geq 0},+)$. To avoid confusing ourselves with notation, let's replace $G$ by the isomorphic semigroup $H=\{1,x,x^2,x^3,\dots\}$ with multiplication $x^i \cdot x^j = x^{i+j}$; the map $i\mapsto x^i$ is an isomorphism. Now, $R[H]$ is just the polynomial ring $R[x]$.
+
+More generally, $R[\N^{\times n}]\cong R[x_1,\dots,x_n]$.
+\end{ex}
+
+\begin{ex}
+The group ring $R[(\Z,+)]$ is isomorphic to $R[x,x^{-1}]$, and more generally, $R[\Z^{\times n}] \cong R[x_1, x_1^{-1}, \dots, x_n, x_n^{-1}]$.
+\end{ex}
+
+
+\begin{ex}
+The \DEF{free semigroup} $F$ on a set $S=\{x_1,\dots,x_n\}$ is the set of finite sequences with values in $S$ (including the empty sequence), and concatenation as the multiplication. For example, typical elements in $F$ include
+\[ x_1 x_3 x_2 x_2 x_2 x_1 \qquad\text{and}\qquad x_3 x_3 x_3\]
+with operation
+\[ x_1 x_3 x_2 x_2 x_2 x_1 \cdot x_3 x_3 x_3 = x_1 x_3 x_2 x_2 x_2 x_1 x_3 x_3 x_3.\]
+The semigroup ring of $R$ on the free semigroup on a set is a noncommutative version of a polynomial ring.
+\end{ex}
+
+
+\begin{exer} For and $R$ and $G = C_n$ (the multiplicative cyclic group of order $n$),
+  prove there is a ring isomorphism $R[G] \cong R[x]/(x^n -1)$. 
+\end{exer}
+ %%%%%%%%%%%%%%%%%% 
+ 
+ Let $R$ be a ring and $G$ a semigroup. 
+If $A$ is any other ring
+and $f: R[G] \to A$ is a ring map, then the restriction of $f$ to $R$ determines a ring map, $f|_R: R \to A$,
+and the restriction of $f$ to $G$
+determines semi-group homomorphism, $f|_G: G \to (A, \cdot)$. When $G$ is a group, the latter is a group homomorphism $f|_G: G \to A^\times$,
+the group of units of $A$. Moreover, we have that $f(r)$ and and $f(g)$ commute in $A$ for all $r \in R$ and $g \in G$.
+
+
+This process is ``reversible'':
+
+
+\begin{prop}``The Universal Mapping Property of semigroup rings''.
+  Let $R$ be a ring, $(G, \cdot)$ a semigroup, and $A$ an arbitrary ring.
+  Given a ring homomorphism $\rho: R \to A$ and a semigroup
+  homomorphism $\a: G \to (A, \cdot)$ such that $\rho(r)$ and $\a(g)$ commute in $A$ for all $r \in R$ and $g \in G$,
+there is a unique ring homomorphism $\phi: R[G] \to A$ such that $f|_R = \rho$
+  and $\phi|_G = \a$. Explicitly, $f$ is given by
+   $$
+  \phi\left(\sum_g r_g g\right) = \sum_g \rho(r_g) \a(g).
+  $$
+\end{prop}
+\begin{proof}
+Uniqueness is clear, since we must have $\phi(g)=\alpha(g)$, $\phi(r_g)=\rho(r_g)$, and hence $\phi(\sum_g r_g g) = \sum_g \rho(r_g) \a(g)$ by the fact that we have a ring homomorphism. We need to check that $\phi$ preserves addition, multiplication, and maps $1$ to $1$. The latter is clear. The conditions on addition and mulitplication can be checked directly using the formulas and the condition that elements $\alpha(g)$ commute with elements of the form $\rho(r_g)$.
+\end{proof}
+
+\begin{ex} Let's see what this says when $H=\{1,x,x^2,x^3,\dots\}$ as before. Let $R$ and $A$ be any rings. A semigroup homomorphism from $H$ to $A$ is uniquely determined by the image of $x$. Thus, given any ring homomorphism $\rho:R\to A$ and any element $a\in A$ that commutes with the image of $\rho$, there is a unique homomorphism from $R \to A$ that extends $\rho$ and maps $x\to a$. This is universal mapping property of a polynomial ring.
+\end{ex}
+
+
+\sssec{Modules}
+
+
+Given a ring $R$, a \DEF{left $R$-module} is an abelian group $(M, +)$ equipped with a pairing $R \times M \to M$, written $(r,m) \mapsto rm$ or $(r,m)\mapsto r \cdot m$.
+such that 
+\begin{enumerate}
+\item $r_1(r_2m)  = (r_1r_2)m$,
+\item  $(r_1+r_2)m  = r_1m + r_2m$,
+\item $r(m_1 + m_2) = rm_1 + rm_2$, and 
+\item $1m = m$.
+\end{enumerate}
+
+We will give a useful reinterpretation of module structures. It is based on the following idea, which will show up multiple times.
+
+\begin{rem} Given sets $A,B,C$, there is a bijection
+\[\xymatrix{ 
+{{\begin{array}{c} \Fun(A\times B, C) \\ \text{functions $A\times B\to C$} \end{array} }} 
+\ar@{<->}[r] & 
+{{\begin{array}{c} \Fun(A,\Fun(B,C)) \\ \text{functions $A \to$(functions $B \to C$)} \end{array} }} \\
+(a,b) \mapsto c \ar@{<->}[r] & a \mapsto (b\mapsto c)
+}\]
+that associates to a function $\phi:A\times B \to C$ the function $\psi: A\to \Fun(B,C)$ related by the rule
+\[ \phi(a,b) = \psi(a)(b).\]
+\end{rem}
+
+
+
+\begin{lem}
+Let $R$ be a ring and $(M, +)$  an abelian group. There is a bijective correspondence
+\[ \xymatrix{ \{ R-\text{module actions} \ R \times M \to M \text{(with given +)} \}  \ar@{<->}[r] & \{ \text{ring homomorphisms} \ \rho: R \to \End_{\Z}(M) \}\\
+\cdot  \ar@{|->}[r] & \rho(r)(m) = r\cdot m \\
+r\cdot m = \rho(r)(m)  & \ar@{|->}[l] \rho.}
+\]
+\end{lem}
+\begin{proof}
+We clearly have a bijection as long as the maps are well-defined.
+
+Given an $R$-module action $\cdot$, property (3) translates to the condition that $\rho(r)$ is $\Z$-linear; (4) means $\rho(1_R)$ is the identity function on $M$, which is the $1$ element in $\End_\Z(M)$; (2) means $\rho$ preserves addition; and (1) means $\rho$ preserves multiplication. Thus, $\rho$ is a ring homomorphism.
+
+That a ring map $\rho$ induces a module action by the rule above is similar.
+\end{proof}
+
+
+A \DEF{right $R$-module} is defined analogously, starting with a pairing $M\times R \to M$ written $(m,r)\mapsto mr$ or $(m,r)\mapsto m\cdot r$. Similarly to the previous lemma, a right $R$-module action on $M$ is equivalent to specifying a ring homomorphism from $R^{\op}\to \End_{\Z}(M)$. In particular, a right $R$-module is equivalent to an $R^\op$-module.
+
+Our convention in this class is that modules will be left modules, unless we say otherwise.
+
+\begin{ex} Recall that for any ring $A$, there is a unique homomorphism $\Z\to A$. Thus, a $\Z$-module is the same thing as an abelian group, since there is a unique ring homomorphism $\Z\to \End_{\Z}(M)$. Of course, the action is given explicitly by \[n\cdot m = \underbrace{m + \cdots + m}_{n-\text{times}} \quad \text{and} \quad  -n\cdot m = -(\underbrace{m + \cdots + m}_{n-\text{times}}) \qquad\text{for $n\geq0$}. \]
+\end{ex}
+
+Though we have used the notion already, let's recall the following.
+
+\begin{defn} A module $M$ is \DEF{free} with \DEF{free basis} $\Lambda$ if for every element $m\in M$ there is a unique finite subset $\{\lambda_1,\dots,\lambda_t\}\subset \Lambda$ (possibly empty) and unique sequence of elements $r_1,\dots r_t\in R\smallsetminus \{0\}$ such that $m=r_1 \lambda_1 + \cdots + r_t \lambda_t$.
+\end{defn}
+
+You are familiar with the fact that every module over a field is free. Moreover, one has:
+
+\begin{exer} 
+
+\begin{enumerate}
+\item If $D$ is a division ring, every module is free.
+\item If $R\neq 0$ is a ring and every $R$-module is free, then $R$ is a division ring.
+\end{enumerate}
+\end{exer}
+
+The following lemma will be handy later.
+
+\begin{lem} For rings $R_1, \dots, R_n$, let $A = R_1 \times \cdots \times R_n$. There is a bijective correspondence (up to isomorphism)
+\[ \xymatrix{ \{ \text{left} \ A-\text{modules} \}  \ar@{<->}[r] & \{ n-\text{tuples} \ (M_1,\dots,M_n) \ | \ M_i \ \text{a left} \ R_i-\text{module} \}\\
+M_1 \times \cdots \times M_n & \ar@{|->}[l] (M_1,\dots,M_n) \\
+M \ar@{|->}[r] & (e_1 \cdot M, e_2 \cdot M, \dots, e_n \cdot M),}
+\]
+where $e_i  = (0, \dots, 0, 1, 0, \dots, 0)$.
+\end{lem}
+\begin{proof}
+First we note that if $M_1,\dots,M_n$ are $R$-modules, there is an obvious $A$-module action on $M_1\times \cdots \times M_n$, where $(r_1,\dots,r_n)\cdot (m_1,\dots,m_n)=(r_1\cdot_{R_1} m_1,\dots,r_n \cdot_{R_n} m_n)$. 
+
+Given an $A$-module $M$, $e_i \cdot M$, which we'll call $L_i$ for a moment, has a natural $R_i$-module structure by setting $r \cdot l = (r e_i) \cdot l =(0,\dots,r,\dots, 0) \cdot_A l$ for $l\in L_i$.  Writing $l=e_i \cdot m$, for some $m\in M$, we have $r\cdot l = (r e_i)(e_i \cdot m) = (r e_i^2)\cdot m =  e_i \cdot rm \in L_i$. $L_i$ is clearly closed under $+$ as well, and we get a module structure like so.
+
+If we start with a tuple $(M_1,\dots M_n)$ and apply the $\leftarrow$ and $\rightarrow$ constructions, we get the same tuple back. If we start with an $A$-module $M$ and apply the $\rightarrow$ and $\leftarrow$ constructions, we get $(e_1 \cdot M)\times \cdots \times (e_n \cdot M)$. For an $A$-module, there is an isomorphism  \[(e_1 \cdot M)\times \cdots \times (e_n \cdot M) \rightarrow M\] given by sending $(l_1,\dots l_n)\mapsto l_1+\cdots + l_n$.
+\end{proof}
+
+
+\sssec{Bimodules}
+
+It turns out that we often have a left module structure and a right module structure on something in a compatible way.
+
+\begin{defn} Let $R$ and $S$ be rings. An $(R,S)$-\DEF{bimodule} is an abelian group $M$ equipped with a left $R$-module structure and a right $S$-module structure that commute with each other:
+\[ (r \cdot m) \cdot s = r \cdot (m \cdot s) \qquad \text{for all}\ m\in M, r\in R, s\in S.\]
+\end{defn} 
+
+\begin{ex} Here are some basic sources of bimodules:
+\begin{enumerate}
+\item If $R$ is a ring, then $M=R$ is an $(R,R)$-bimodule in the obvious way. More generally, if $A\subseteq R$ are rings, $R$ is an $(A,A)$-bimodule.
+\item If $R$ is a commutative ring and $M$ is any left module, then $M$ is also a right module by the same action, and $M$ is an $(R,R)$-bimodule with these structures. I.e., starting with an action $r\cdot m$, we set $m\cdot s$ to be $s\cdot m$, and \[(r\cdot m) \cdot s = s\cdot (r\cdot m) = sr \cdot m = rs \cdot m = r\cdot (s\cdot m) = r \cdot (m\cdot s).\]
+\item Every left $R$-module is automatically an $(R,\Z)$-bimodule: \[(r\cdot m) \cdot n= \underbrace{(r\cdot m) + \cdots + (r\cdot m)}_{n \ \text{times}} = r \cdot (\underbrace{m+\cdots + m}_{n \ \text{times}}) = r \cdot (m \cdot n) \qquad \text{for $n\in \Z_{\geq 0}$},\]
+and similarly for $n\leq 0$.
+Likewise, every right $R$-module is automatically a $(\Z,R)$-bimodule.
+\end{enumerate}
+\end{ex}
+
+\begin{ex} For a ring $R$, the set of columns vectors of length $n$, $R^n$, is a $(\Mat_n(R),R)$-bimodule.
+\end{ex}
+
+Sometimes, when we want to keep track of various module and bimodule structures, we may write something like \Def{$_R M _S$} to indicate that $M$ is an $(R,S)$-bimodule, or $_R M$ to indicate that $M$ is a left $R$-module.
+
+\sssec{Modules over semigroup rings}
+
+\begin{defn} Let $S$ be a semigroup and $R$ be a ring. An $R$-linear \DEF{representation} of $S$ consists of an $R$-module $M$ and a pairing $S\times M\to M$, written $(s,m)\mapsto sm$ or $(s,m)\mapsto s\cdot m$ such that
+\begin{enumerate}
+\item $s_1 \cdot (s_2 \cdot m) = (s_1 s_2) \cdot m$
+\item $e_S \cdot m = m$
+\item $s \cdot (m_1 + m_2) = s \cdot m_1 + s\cdot m_2$
+\item $s\cdot (r \cdot m) = r \cdot (s\cdot m)$.
+\end{enumerate}
+\end{defn}
+
+The case where $S=G$ is a group and $M=V$ is a vector space over a field $R=K$ is the one of most interest. A representation of $G$ on $V$ is just a group action on $V$ where each group element acts by a linear transformation.
+
+\begin{ex}
+The permutation group $G=\Ss^n$ acts on $K^n$ for field $K$ by permuting coordinates: $\sigma \cdot (a_1,\dots,a_n)=(a_{\sigma(1)} ,\dots,a_{\sigma(n)})$; this is a $K$-linear representation.
+\end{ex}
+
+\begin{ex}
+Let $G = D_{2n}$, symmetries of the equilateral polygon on $n$ vertices.    Then $G$ acts linearly on $V=\R^2$ by rotations and reflections.
+    If $G$ is generated by $r$ (rotation by $2\pi/n$) and $l$ (reflection about the $y$-axis), then
+ we have
+         \[ r\cdot \begin{bmatrix} x\\ y\end{bmatrix}=\begin{bmatrix}
+      \cos(2 \pi/n) & -\sin(2 \pi/n)  \\ \sin(2 \pi/n)  & \cos(2 \pi/n)  \end{bmatrix} \begin{bmatrix} x\\ y\end{bmatrix}
+      \qquad
+l \cdot \begin{bmatrix} x\\ y\end{bmatrix}=\begin{bmatrix}
+      -1  & 0 \\ 0 & 1 \end{bmatrix} \begin{bmatrix} x\\ y\end{bmatrix}.
+      \]
+      \end{ex}
+
+
+\begin{defn} Let $M$ and $N$ be two $R$-linear representations of a semigroup $S$. An $R$-module homomorphism $\phi:M\to N$ is $R$-\DEF{equivariant} if $\phi(s\cdot m) = s\cdot \phi(m)$.
+\end{defn}
+
+\begin{prop}
+Let $S$ be a semigroup, $R$ be a ring, and $M$ be an $R$-module. There are bijections
+$$\xymatrix{ \left\{{\begin{array}{c} \textrm{$R$-linear representations} \\ \textrm{of $S$ on $M$} \end{array} }\ \right\}\ar@{<->}[r] & \left\{ {\begin{array}{c} \text{semigroup homoms} \\ 
+S\to (\End_{R}(M),\circ) \end{array} }   \right\} \ar@{<->}[r] & \left\{ { \begin{array}{c}  R[S]\text{-module structures on $M$} \\ \text{(extending given action of $R$)} \end{array} } \right\} \\
+\cdot \ar@{|->}[r] & \rho: \ \rho(s)(m) = s\cdot m & \\
+& \alpha \ar@{|->}[r] & (\sum r_s \, s) m = \sum  r_s \alpha(s)(m)} 
+$$
+\end{prop}
+\begin{proof}
+Fix an $R$-linear representation of $S$ on $M$, and define $\rho:S\to \End_{R}(M)$ by the rule $\rho(s)(m)=s\cdot m$. The map $\rho(s):M\to M$ is $R$-linear for any $s$ by conditions (3) and (4) of the definition.n Conditions (1) and (2) ensure that the map is a semigroup homomorphism. Conversely, given a semigroup homomorphism $\rho:S\to \End_R(M)$, $s\cdot m := \rho(s)(m)$ is easily verified to satisfy the conditions of a representation.
+
+Now, given a semigroup homomorphism $\alpha:S\to \End_{R}(M)$, observe that $\End_{R}(M)\subseteq \End_{\Z}(M)$, since any $R$-linear map is $\Z$-linear. The $R$-module structure on $M$ gives us a ring homomorphism $\beta:R\to \End_{\Z}(M)$. Given $s\in S$ and $r\in R$, we claim that $\beta(r)$ and $\alpha(s)$ commute. Indeed, \[(\beta(r) \alpha(s))(m)=\beta(r) (s\cdot m) = r \cdot (s\cdot m) = s\cdot (r\cdot m) = \alpha(s) (r\cdot m) = (\alpha(s) \beta(r))(m).\]
+The universal property of semigroup rings gives us a ring homomorphism $R[G] \to \End_{\Z}(M)$ that extends $\alpha$ on $G$ and $\beta$ on $R$. This ring homomorphism is equivalent to an $R[G]$-module structure on $M$, which is easily unpackaged to be given by the formula above. 
+
+Finally, given an $R[S]$-module structure on $M$, the map $\alpha:S \to \End_{R}(M)$ given by $\alpha(s)(m)= s \cdot m$ is a semigroup homomorphism, and this construction is inverse to the previous one.
+\end{proof}
+
+When $G$ is a group, the image any semigroup homomorphism from $G$ consists of invertible elements. In particular, a homomorphism from $G$ to $\End_R(M)$ is really a homomorphism from $G$ to $\Aut_R(M)$.
+
+\begin{cor}
+Let $G$ be a group and $V$ be a vector space over a field $K$. There are bijections
+$$\xymatrix{ \left\{{\begin{array}{c} \textrm{$K$-linear representations} \\ \textrm{of $G$ on $V$} \end{array} }\ \right\}\ar@{<->}[r] & \left\{ {\begin{array}{c} \text{group homoms} \\ 
+G\to \Aut_{K}(V) \end{array} }   \right\} \ar@{<->}[r] & \left\{ { \begin{array}{c}  K[G]\text{-module structures on $V$} \\ \text{(extending $K$-vs structure on $V$)} \end{array} } \right\} } 
+$$
+\end{cor}
+
+\begin{ex}
+Let $\Ss_3$ act on $\R^3$ by permuting coordinates, as discussed above. This gives $\R^3$ a $\R[\Ss^3]$-module structure. To try it out on typical elements:
+\[ ( (12) - \pi(23)) \cdot (3,4,5) = (4,3,5) - \pi(3,5,4) = (4- 3\pi, 3- 5\pi, 5-4\pi).\]
+\end{ex}
+
+\begin{ex} Any group ring $R[G]$ (or any semigroup ring) is a module over itself, so we can think of it as a representation. Concretely, this is the representation where the module is free with basis equal to the elements of the group, and we have $h\cdot \sum r_g \, g = \sum r_g (hg)$. This is called the \emph{(left)} \DEF{regular representation} of $G$.
+\end{ex}
+
+\begin{ex} What does the correspondence above say about $R[x]$-modules? Recall that $R[x]\cong R[\Z_{\geq 0}]$. Thus, an $R[x]$-module is equivalent to an $R$-module $M$ with a semigroup homomorphism $\Z_{\geq 0} \to \End_R(M)$. A semigroup homomorphism from $\Z_{\geq 0}$ is freely determined by the image of $1$,  an $R[x]$-module is equivalent to an $R$-module $M$ plus an $R$-linear endomorphism of $M$.
+
+This equivalence should be familiar from Math 817-818 in the case $R=K$ is a field: a $K[x]$-module is equivalent to a vector space $V$ with a linear endomorphism $V\to V$ (which is the action of $x$); you used this to deduce structure theorems for linear transformations from the structure theorem of modules over PIDs.
+\end{ex}
+
+\begin{exer}
+\begin{enumerate}
+\item Show that a module over $R[x_1,\dots,x_n]$ is equivalent to an $R$-module with $n$-commuting $R$-linear endomorphisms.
+\item Show that a module over $K[C_n]$, where $C_n$ is the cyclic group of order $n$, is equivalent to a vector space $V$ with an invertible endomorphism with order dividing $n$.
+\end{enumerate}
+\end{exer}
+
+\sssec{Structure of $\Hom_R(M,N)$}
+
+Recall that, for two (left) $R$-modules $M,N$, \Def{$\Hom_R(M,N)$} denotes the set of all $R$-module homomorphisms from $M$ to $N$.
+
+\begin{prop} Let $M,N$ be $R$-modules.
+\begin{enumerate}
+\item $\Hom_R(M,N)$ admits the structure of an abelian group by the rule $(\alpha+\beta)(m) = \alpha(m)+\beta(m)$.
+\item If $R$ is commutative, then $\Hom_R(M,N)$ admits the structure of an $R$-module with addition as in (1) and  action \[(r\cdot \alpha)(m) = r\cdot \alpha(m) = \alpha(r\cdot m).\]
+\item If $M$ is an $(R,S)$-bimodule, and $N$ is an $(R,T)$-bimodule, then $\Hom_R(M,N)$ admits the structure of an $(S,T)$-bimodule with addition as in (1) and  actions
+\[ (s\cdot \alpha \cdot t)(m) = \alpha(m \cdot s) \cdot t.\]
+\end{enumerate}
+\end{prop}
+\begin{proof}
+Part (1) is easy to check and omitted.
+
+For (2), note first that $r\cdot \alpha(m) = \alpha(r \cdot m)$ for $r\in R$ simply because $\alpha$ is an $R$-module homomorphism. Let's check that the map $r \cdot \alpha$ is an $R$-module homomorphism. Indeed, we have
+\[ (r \cdot \alpha)(m_1 + m_2) = r \cdot \alpha(m_1 + m_2) = r \cdot ( \alpha(m_1) + \alpha(m_2)) = r\cdot \alpha(m_1) + r\cdot \alpha(m_2) = (r\cdot \alpha)(m_1) + (r\cdot \alpha)(m_2)\]
+and
+\[ (r\cdot \alpha)(sm) = r \cdot \alpha(sm) =  r \cdot s \alpha(m) =(rs) \cdot\alpha(m) = (sr) \cdot \alpha(m) =  s \cdot (r\cdot \alpha)(m).\]
+The other axioms are easy to check.
+
+Part (3) we leave as an exercise.
+\end{proof}
+
+Note the importance in commutativity in part (2).
+
+As a special case of part (3), if only $M$ is a bimodule, then we get a left module structure on $\Hom$: we can give $N$ the trivial bimodule structure with $\Z$ acting on the right; similarly if only $N$ is a bimodule, we get a right module structure on $\Hom$.
+
+\begin{ex} Let $R$ be a ring and $M$ be an $R$-module. For any $m\in M$ there is a unique $R$-module map from $R$ to $M$ that sends $1 \to m$, namely $\mu_m:R\to M$ given by $\mu_m(r)=r\cdot m$. On the other hand, any homomorphism from $R$ to $M$ is determined by the image of $1$, so
+\[\xymatrix{ M \ar@{<->}[r] & \Hom_R(R,M) \\
+m \ar@{|->}[r] & \mu_m \\
+\phi(1) & \ar@{|->}[l] \phi}\]
+is a bijection. Since $R$ is an $(R,R)$-bimodule, $\Hom_R(R,M)$ picks up a \emph{left} module structure coming from the \emph{right} action of $R$ on $R$. We claim that the bijection above is an isomorphism with this $R$-module structure. Indeed,
+\[ (\mu_{m} +\mu_{n})(r) = \mu_m (r) + \mu_n(r) = r m + r n = r (m+n) = \mu_{m+n}(r), \ \text{so} \ \mu_m + \mu_n = \mu_{m+n}\]
+\[ (s \mu_m) (r) = \mu_m(rs) = rs m = r (sm) = \mu_{sm}(r),\ \text{so} \ s\mu_m = \mu{sm}.\]
+\end{ex}
+
+
+\begin{ex} Similarly, for any left module $M$, there is an isomorphism of left modules
+$\Hom_{R}(R^n,M)\cong M^n$, via
+\[ \phi \mapsto (\phi((1,0,\dots,0),\phi(0,1,\dots 0),\dots,\phi(0,0,\dots,1)).\]
+\end{ex}
+
+\begin{ex}
+If $R[S]$ is a semigroup ring, what is as $R[S]$-module homomorphism? If $M$ and $N$ are $R[S]$-modules, then they are in particular $R$-modules, and if $\phi:M\to N$ is $R[S]$-linear, it is at least $R$-linear. Considering $s\in S$ as an element of $R[S]$, we have $\phi(s m) = s \phi(m)$ for all $s\in S$ and $m\in M$. Thus, an $R[S]$-linear map is an equivariant map of $R$-modules. Conversely,\dots
+\end{ex}
+
+$\End_R(M)$ is a ring.
+
+\sssec{Direct sums and products}
+
+\end{comment}
+
+
+\printindex
+
+
+\end{document}
+
+
+
+
+
+
+
+  
+ 
+
+
