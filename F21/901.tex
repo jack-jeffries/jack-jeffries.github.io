@@ -552,22 +552,22 @@ On the other hand, $\Ab$ is a full subcategory of $\Grp$, and $\Grp$ is a full s
 \Aug{27}
 
 
-%\begin{defn} Given a category $\sC$ and an object $A\in \Ob(\sC)$, the \DEF{coslice category} \Def{$\sC_A$} is the category with objects given by all arrows from $A$: namely morphisms of the form 
-%\[ A \stackrel{\alpha}{\longrightarrow} X \ \quad\text{with}\quad \ X\in \Ob(\sC)\]
-%and morphisms 
-%\[ \Hom_{\sC_A}(A \stackrel{\alpha}{\longrightarrow} X,A \stackrel{\beta}{\longrightarrow} Y) = \{ X \stackrel{\gamma}{\longrightarrow} Y \ | \ \gamma \circ \alpha = \beta\}.\]
-%Equivalently, we can think of such a morphism as a triangle:
-% \[\xymatrix{
-%&A \ar[dl]_{\alpha} \ar[dr]^{\beta}& \\
-%X \ar[rr]^{\gamma}&&Y
-%}   \]
-%The composition rule comes from the composition rule on $\sC$: if $X \xrightarrow{\gamma}Y$ and $Y \xrightarrow{\delta\circ \gamma} Z$.
-%\end{defn}
-%
-%This construction may be less new to you than you think!
-%
-%\begin{exer} Explain how $\cAlg{A}$ and $\Setp$ are special cases of the coslice category construction. Can you describe the category $\Alg{A}$ in terms of the terms above?
-%\end{exer}
+\begin{defn} Given a category $\sC$ and an object $A\in \Ob(\sC)$, the \DEF{coslice category} \Def{$\sC_A$} is the category with objects given by all arrows from $A$: namely morphisms of the form 
+\[ A \stackrel{\alpha}{\longrightarrow} X \ \quad\text{with}\quad \ X\in \Ob(\sC)\]
+and morphisms 
+\[ \Hom_{\sC_A}(A \stackrel{\alpha}{\longrightarrow} X,A \stackrel{\beta}{\longrightarrow} Y) = \{ X \stackrel{\gamma}{\longrightarrow} Y \ | \ \gamma \circ \alpha = \beta\}.\]
+Equivalently, we can think of such a morphism as a triangle:
+ \[\xymatrix{
+&A \ar[dl]_{\alpha} \ar[dr]^{\beta}& \\
+X \ar[rr]^{\gamma}&&Y
+}   \]
+The composition rule comes from the composition rule on $\sC$: if $X \xrightarrow{\gamma}Y$ and $Y \xrightarrow{\delta\circ \gamma} Z$.
+\end{defn}
+
+This construction may be less new to you than you think!
+
+\begin{exer} Explain how $\cAlg{A}$ and $\Setp$ are special cases of the coslice category construction. Can you describe the category $\Alg{A}$ in terms of the terms above?
+\end{exer}
 
 
 
@@ -620,7 +620,7 @@ Similarly for ``right inverse'' and ``epic''.
 \end{exer}
 
 
-\subsection{Category-theoretic constructions of objects}
+\subsection{Products and coproducts}
 
 A property or construction is \DEF{category theoretic} if can be described just in terms of the data of the category rather than aspects of a particular category.
 
@@ -647,59 +647,54 @@ for every set $S$, there is a unique function $f:\varnothing \to S$; $\varnothin
 
 \begin{defn} Let $\sC$ be a category, and $\{ X_\lambda\}_{\lambda\in \Lambda}$ be a family of objects. A \DEF{product} of $\{ X_\lambda\}_{\lambda\in \Lambda}$ is given by an object $P$ and a family of morphisms $\{p_\lambda : P \to X_\lambda\}_{\lambda\in \Lambda}$ that is universal in the following sense:
 
-Given an object $Y$ and a family of morphisms $\{f_\lambda:Y\to X_\lambda\}_{\lambda\in \Lambda}$, there is a unique morphism $\phi: Y\to P$ such that $p_\lambda \circ \phi = f_\lambda$ for all $\lambda$.
+Given an object $Y$ and a family of morphisms $\{f_\lambda:Y\to X_\lambda\}_{\lambda\in \Lambda}$, there is a unique morphism $\alpha: Y\to P$ such that $p_\lambda \circ \alpha = f_\lambda$ for all $\lambda$.
 \end{defn}
 
 Here is a diagram for the (first few) maps involved when $\Lambda=\N$ is countable:
 \[\xymatrix{  & & & P \ar[drr]^-{p_1} \ar[ddrr]^-{p_2} \ar[dddrr]^-{p_3} \ar[ddddrr]  & & \\
  & & & & & X_1\\
-Y \ar@{-->}[uurrr]^-{\phi}\ar[urrrrr]^-{f_1}  \ar[rrrrr]^-{f_2} \ar[drrrrr]^-{f_3} \ar[ddrrrrr]&  & & & & X_2\\
+Y \ar@{-->}[uurrr]^-{\alpha}\ar[urrrrr]^-{f_1}  \ar[rrrrr]^-{f_2} \ar[drrrrr]^-{f_3} \ar[ddrrrrr]&  & & & & X_2\\
 & & & & & X_3\\
 & & & & & \vdots }\]
 
 We can also take a ``big picture'' view of this universal property:
-\[\xymatrix{ & P\ar@{~>}[dr]^{\{p_\lambda\}} & \\
-Y \ar@{-->}[ur]^{\phi} \ar@{~>}[rr]_{\{f_\lambda\}} & & \{X_{\lambda}\},}\]
+\[\xymatrix{ & P\ar@{~>}[dr]^{\alpha} & \\
+Y \ar@{-->}[ur]^{\{i_\lambda\}} \ar@{~>}[rr]_{\{f_\lambda\}} & & \{X_{\lambda}\},}\]
 where the squiggly arrows are again collections of maps instead of maps. The data of $Y$ with a family of maps to each $X_\lambda$ is the sort of thing a product might be, so we may think of it as a ``product candidate.'' In this way, we can think of a product as a ``terminal product candidate.''
 
-
-\begin{comment}
 
 \begin{rem}
 Note that $(P,\{p_\lambda\}_{\lambda\in\Lambda})$ is a product of $\{ X_\lambda\}_{\lambda\in \Lambda}$ if and only if the function
 \[ \xymatrix{ \Hom_{\sC}(Y,P) \ar[rr] & & \bigtimes_{\lambda\in\Lambda} \Hom_{\sC}(Y,X_\lambda)\\
-\phi \ar@{|->}[rr] & &  ( p_\lambda \circ \phi )_{\lambda\in \Lambda}}\]
-is a bijection for all objects $Y$: the universal property says that everything in the target comes from a unique thing in the source.
+\alpha \ar@{|->}[rr] & &  ( p_\lambda \circ \alpha )_{\lambda\in \Lambda}}\]
+is a bijection: the universal property says that everything in the target comes from a unique thing in the source.
 \end{rem}
 
 
 
+\begin{defn} Let $\sC$ be a category, and $\{ X_\lambda\}_{\lambda\in \Lambda}$ be a family of objects. A \DEF{coproduct} of $\{ X_\lambda\}_{\lambda\in \Lambda}$ is given by an object $C$ and a family of morphisms $\{i_\lambda : X_\lambda \to Y\}_{\lambda\in \Lambda}$ that is universal in the following sense:
 
-\begin{defn} Let $\sC$ be a category, and $\{ X_\lambda\}_{\lambda\in \Lambda}$ be a family of objects. A \DEF{coproduct} of $\{ X_\lambda\}_{\lambda\in \Lambda}$ is given by an object $C$ and a family of morphisms $\{i_\lambda : X_\lambda \to C\}_{\lambda\in \Lambda}$ that is universal in the following sense:
-
-Given an object $Y$ and a family of morphisms $\{f_\lambda:X_\lambda \to Y\}_{\lambda\in \Lambda}$, there is a unique morphism $\phi: C\to Y$ such that $\phi \circ i_\lambda = f_\lambda$ for all $\lambda$.
+Given an object $Y$ and a family of morphisms $\{f_\lambda:X_\lambda \to Y\}_{\lambda\in \Lambda}$, there is a unique morphism $\alpha: C\to Y$ such that $\alpha \circ i_\lambda = f_\lambda$ for all $\lambda$.
 \end{defn}
 
 
 Here is a diagram for the (first few) maps involved when $\Lambda=\N$ is countable:
-\[\xymatrix{  & & & C \ar@{-->}[ddrr]^{\phi}& & \\
+\[\xymatrix{  & & & C \ar@{-->}[ddrr]_{\alpha}& & \\
 \vdots\ar[urrr] \ar[drrrrr]  & & & & & \\
 X_3\ar[uurrr]^-{i_3} \ar[rrrrr]^-{f_3} & & & & & Y\\
 X_2\ar[uuurrr]^-{i_2} \ar[urrrrr]^-{f_2}  & & & & & \\
 X_1\ar[uuuurrr]^-{i_1} \ar[uurrrrr]^-{f_1} & & & & &}\]
 
 We can also take a ``big picture'' view of the universal property:
-\[\xymatrix{ & C\ar@{-->}[dr]^{\phi} & \\
+\[\xymatrix{ & C\ar@{-->}[dr]^{\alpha} & \\
 \{ X_{\lambda}\} \ar@{~>}[ur]^{\{i_\lambda\}} \ar@{~>}[rr]_{\{f_\lambda\}} & & Y,}\]
 where the squiggly arrows are now collections of maps instead of maps. We can again think of the coproduct as the ``initial coproduct candidate.''
-
-
 
 \begin{rem}
 Note that $(C,\{i_\lambda\}_{\lambda\in\Lambda})$ is a coproduct of $\{ X_\lambda\}_{\lambda\in \Lambda}$ if and only if the function
 \[ \xymatrix{ \Hom_{\sC}(C,Y) \ar[rr] & & \bigtimes_{\lambda\in\Lambda} \Hom_{\sC}(X_\lambda,Y)\\
-\phi \ar@{|->}[rr] & &  ( \phi \circ i_\lambda )_{\lambda\in \Lambda}}\]
-is a bijection for all objects $Y$: the universal property says that everything in the target comes from a unique thing in the source.
+\alpha \ar@{|->}[rr] & &  ( \alpha \circ i_\lambda )_{\lambda\in \Lambda}}\]
+is a bijection: the universal property says that everything in the target comes from a unique thing in the source.
 \end{rem}
 
 \begin{prop} If $(P,\{p_\lambda:P\to X_\lambda\}_{\lambda\in \Lambda})$ and $(P',\{p'_\lambda:P'\to X_\lambda\}_{\lambda\in \Lambda})$ are both products for the same family of objects $\{X_\lambda\}_{\lambda\in \Lambda}$ in a category $\sC$, then there is a unique isomorphism $\alpha: P \xrightarrow{\sim} P'$ such that $p'_\lambda \circ \alpha = p_\lambda$ for all $\lambda$. The analogous statement holds for coproducts.
@@ -714,7 +709,9 @@ Consider the composition $\beta\circ \alpha:P\to P$. We have $p_\lambda \circ \b
 \end{proof}
 \begin{exer} Prove the analogous statement for coproducts.\end{exer}
 
-
+\begin{rem}
+If we drop the ``uniqueness'' clause in the definition of product, the notion we get is not well-defined up to isomorphism on objects. For example, let $X$ be an object in $\Set$. We claim that any set $Z$ and surjective function $p:Z\to X$ satisfies the ``existence''  part of the ``exists a unique'' criterion in the definition of product for the family consisting of the single set $X$ in $\Set$. Indeed, given any set $Y$ and function $f:Y\to X$, there is a map $\phi: Y\to Z$ given by taking $\phi(y)$ to be any preimage of $f(y)$ under $p$. Note that if $p$ is not bijective, then there are different functions we can choose this way (as long as there is an element in the image of $\phi$ with multiple preimages under $f$), so $Z$ is not a product unless $p$ is a bijection.
+\end{rem}
 
 We use the notation \Def{$\prod_{\lambda \in \Lambda} X_\lambda$} to denote the (object part of the) product of $\{X_{\lambda}\}$ and \Def{$\coprod_{\lambda \in \Lambda} X_\lambda$} to denote the (object part of the) coproduct of $\{X_{\lambda}\}$.
 
@@ -736,8 +733,8 @@ Note that this is not true for fields!
 \end{prop}
 \begin{proof} We observe that in each category, the direct product is an object, and the projection maps $\pi_{\lambda}$ are morphisms in the category. 
 
-Let $\sC$ be one of these categories, and suppose that we have morphisms $g_{\lambda}:Y \to X_\lambda$ for all $\lambda$ in $\sC$. We need to show there is a unique morphism $\phi:Y \to \bigtimes_{\lambda\in\Lambda} X_\lambda$ such that $\pi_\lambda \circ \phi = g_\lambda$ for all $\lambda$. The last condition
- is equivalent to $(\phi(y))_\lambda=(\pi_\lambda\circ\phi)(y) =g_\lambda(y)$ for all $\lambda$, which is equivalent to $\phi(y)=(g_\lambda(y))_{\lambda\in \Lambda}$, so if this is a valid morphism, it is unique.  Thus, it suffices to show that the map $\alpha(y)=(g_\lambda)_{\lambda\in \Lambda}$ is a morphism in~$\sC$, which is easy to see in each case.
+Let $\sC$ be one of these categories, and suppose that we have morphisms $g_{\lambda}:Y \to X_\lambda$ for all $\lambda$ in $\sC$. We need to show there is a unique morphism $\alpha:Y \to \bigtimes_{\lambda\in\Lambda} X_\lambda$ such that $\pi_\lambda \circ \alpha = g_\lambda$ for all $\lambda$. The last condition
+ is equivalent to $(\alpha(y))_\lambda=(p_\lambda\circ\alpha)(y) =g_\lambda(y)$ for all $\lambda$, which is equivalent to $\alpha(y)=(g_\lambda)_{\lambda\in \Lambda}$, so if this is a valid morphism, it is unique.  Thus, it suffices to show that the map $\alpha(y)=(g_\lambda)_{\lambda\in \Lambda}$ is a morphism in~$\sC$, which is easy to see in each case.
 \end{proof}
 
 \begin{rem} We already saw that direct products are not products in the category of fields. In fact, there are no products in the category of fields in general. For example, suppose that $P$ was a product of $\F_p$ and $\F_q$ in $\Fld$ for two primes $p\neq q$. Then $\Hom_{\Fld}(K,P)$ is bijective with $\Hom_{\Fld}(K,\F_p) \times \Hom_{\Fld}(K,\F_q)$ for all $K$, so in particular, $\Hom_{\Fld}(\F_p,P)\neq 0$ and $\Hom_{\Fld}(\F_q,P)\neq 0$, but no such field exists!
@@ -755,9 +752,12 @@ Let $\sC$ be one of these categories, and suppose that we have morphisms $g_{\la
 
 
 
-
 \begin{prop} Let $R$ be a ring, and $\{M_\lambda\}_{\lambda\in \Lambda}$ be a family of left $R$-modules. A coproduct for the family $\{M_\lambda\}_{\lambda\in \Lambda}$ is  $\left(\bigoplus_{\lambda \in \Lambda} M_\lambda, \{\iota_\lambda\}_{\lambda\in \Lambda}\right)$, where \[\bigoplus_{\lambda \in \Lambda} M_\lambda=\{ (x_\lambda)_{\lambda\in \Lambda} \ | \ x_\lambda\neq 0 \ \text{for at most finitely many} \ \lambda\} \subseteq \ \prod_{\lambda \in \Lambda} M_\lambda\] is the direct sum of the modules $M_\lambda$, and $\iota_\lambda$ is the inclusion map to the $\lambda$ coordinate.
 \end{prop}
+
+
+\begin{comment}
+
 \begin{rem} If the index set $\Lambda$ is finite, then the objects $\prod_{\lambda \in \Lambda} M_\lambda$ and $\bigoplus_{\lambda \in \Lambda} M_\lambda$ are identical, but the product and coproduct are not the same since one involves projection maps and the other involves inclusion maps.
 \end{rem}
 \begin{proof}
@@ -772,95 +772,9 @@ and the check for scalar multiplication is similar. For uniqueness of $\alpha$, 
 \begin{itemize}
 \item In $\Top$, disjoint unions serve as coproducts.
 \item In $\Sgrp$ and $\Grp$, coproducts exist, and are given as free products. You may see or have seen them in topology in the context of Van Kampen's theorem.
-\item In $\Ring$, the story is more complicated. Let's note first that disjoint unions won't work, since they aren't rings. Direct sums of infinitely many rings don't have $1$, so aren't rings, but even finite direct sums/products won't work, since the inclusion maps don't send $1$ to $1$. We will later on construct coproducts in \Def{$\cRing$}, the full subcategory $\Ring$ consisting of commutative rings.
+\item In $\Ring$, the story is more complicated. Let's note first that neither disjoint unions won't work, since they aren't rings. Direct sums of infinitely many rings don't have $1$, so aren't rings, but even finite direct sums/products won't work, since the inclusion maps don't send $1$ to $1$. We will later on construct coproducts in \Def{$\cRing$}, the full subcategory $\Ring$ consisting of commutative rings.
 \end{itemize}
 \end{rem}
-
-\sssec{Definition of direct limit}
-
-
-\begin{defn} We say a poset $P$ is \DEF{filtered} if for any $p,q\in P$, there is some $r\in P$ with $r\geq p$ and $r\geq q$.
-\end{defn}
-
-\begin{ex}
-\begin{itemize}
-\item Any totally ordered poset is filtered. The positive integers $\N_{> 0}$ are a key example.
-\item The collection of finite subsets of a set under containment is a filtered poset.
-\end{itemize}
-\end{ex}
-
-\begin{defn}
-Given a filtered poset $(\Lambda,\leq)$ and a category $\sC$, a \DEF{direct limit system} in $\sC$ indexed by $\Lambda$ or a \DEF{$\Lambda$-diagram} \emph{in $\sC$} is a commutative diagram with vertices corresponding to elements of $P$ and arrows corresponding to inequalities in $P$. To unpackage this, we have
-\begin{itemize}
-\item an object $X_\lambda\in \Ob(\cC)$ for each $\lambda\in \Lambda$
-\item a morphism $X_\lambda \xrightarrow{t_{\lambda}^{\mu}} X_{\mu}$ for each pair $\lambda \leq \mu$ 
-\end{itemize}
- such that
-\begin{enumerate}
-\item each $t_{\lambda}^{\lambda}$ is the identity on $X_\lambda$ and
-\item if $\lambda \leq \mu \leq \nu$, then $t_{\lambda}^{\nu} = t_{\mu}^{\nu}\circ t_{\lambda}^{\mu}$.
-\end{enumerate}
-
-\end{defn}
-
-\begin{ex} A direct limit system in a category $\sC$ indexed by $\N_{>0}$ is determined by a diagram of the form 
-\[ X_1 \xrightarrow{a_1} X_2  \xrightarrow{a_2} X_3 \xrightarrow{a_3} X_4 \xrightarrow{a_4} X_5 \rightarrow \cdots.\]
-All the other maps $X_i \to X_j$ for $i<j$ are given by composition: $a_{j-1} \circ \cdots \circ a_i$.
-\end{ex} 
-
-
-
-
-
-\begin{defn} Let $\cC$ be a category, $\Lambda$ be a filtered poset, and $\{ X_\lambda\}_{\lambda\in \Lambda}$ be a direct limit system indexed by $\Lambda$. A \DEF{direct limit} of $\{ X_\lambda\}_{\lambda\in \Lambda}$ is given by an object $C$ and a family of morphisms $\{i_\lambda : X_\lambda \to C\}_{\lambda\in \Lambda}$ such that for all $\lambda\leq \mu$, $i_{\lambda}=i_\mu \circ t_{\lambda,\mu}$, that is universal in the following sense:
-
-Given an object $Y$ and a family of morphisms $g_\lambda:X_\lambda \to Y$ that satisfy the condition for all $\lambda\leq \mu$, $g_{\lambda}=g_\mu \circ t_{\lambda}^{\mu}$, there is a unique morphism $\alpha: C\to Y$ such that $\alpha \circ i_\lambda = g_\lambda$ for all $\lambda$.
-\end{defn}
-
-Here is a diagram for the (first few) maps involved when $\Lambda=\N$:
-\[\xymatrix{  & & & C \ar@{-->}[ddrr]^{\phi}& & \\
-\vdots\ar[urrr] \ar[drrrrr] & & & & & \\
-X_3\ar[uurrr]^-{i_3} \ar[u]^-{t_3^4} \ar[rrrrr]^-{g_3} & & & & & Y\\
-X_2\ar[uuurrr]^-{i_2} \ar[u]^-{t_2^3} \ar[urrrrr]^-{g_2}  & & & & & \\
-X_1\ar[uuuurrr]^-{i_1} \ar[u]^-{t_1^2} \ar[uurrrrr]^-{g_1} & & & & &}\]
-
-We can also take a ``big picture'' view of the universal property:
-\[\xymatrix{ & C\ar@{-->}[dr]^{\phi} & \\
-\stackrel{\{ X_{\lambda}\}}{\longrightarrow} \ar@{~>}[ur]^{\{i_\lambda\}} \ar@{~>}[rr]_{\{g_\lambda\}} & & Y,}\]
-where $\stackrel{\{ X_{\lambda}\}}{\longrightarrow}$ represents the collection of $X$'s and the maps between them, and
-where the squiggly arrows are now collections of maps that commute with the maps between the $X$'s.
-
-
-These are not guaranteed to exist, but are unique when they do, by an argument analogous to that for coproducts.
-
-\sssec{Constructions of direct limits}
-
-\begin{ex} Let $\sC$ be $\Set$, $\Grp$, $\Ab$, $\Ring$, $\Mod{R}$, or $\Top$.
-Let's start with the special case where all of the $X_\lambda$ are subobjects of some fixed object $Z$, and the transition maps are inclusion maps. In this case, the union is a subobject of $Z$ (for $\Grp$, $\Ab$, $\Ring$, $\Mod{R}$, the union is closed under the operations since any pair of elements lie in a common $X_\lambda$), and the inclusion maps $\iota_\lambda: X_\lambda \to \bigcup_{\gamma\in \Lambda} X_\gamma$ commute with the transition maps. In this case, a direct limit is $(\bigcup_{\lambda\in \Lambda} X_\lambda, \iota_\lambda)$. The point is that a bunch of consistent maps from the sets $X_\lambda$ uniquely determine a map from their union. In this case, we call the direct limit a \DEF{directed union}.\end{ex}
-
-\begin{prop} Let $\sC$ be $\Set$, $\Grp$, $\Ab$, $\Ring$, $\Mod{R}$, or $\Top$, and let $\{X_\lambda\}_{\lambda\in \Lambda}$ be a directed system on a poset $\Lambda$ in $\sC$. A direct limit for $\{X_\lambda\}$ is given by 
-\begin{itemize}
-\item the disjoint union of $\{X_\lambda\}$, where we will write $(x,\lambda)$ for an element $x \in X_\alpha$
-\item modulo the equivalence relation $\sim$ generated by
-\[ (x,\alpha) \sim (t_\alpha^\beta(x), \beta) \qquad \text{for all $\alpha\leq \beta$ in $\Lambda$ and all $x\in X_\alpha$},\]
-\item with the maps $i_\alpha$ that send each element in $X_\alpha$ to its equivalence class.
-\end{itemize}
-\end{prop}
-\begin{proof} First, we show it for sets. We have $g_\lambda(x) = \phi \circ i_\lambda (x) = \phi( [(x,\lambda)])$ for all $x\in X_\lambda$, so this is our map $\phi$ is unique and given by this formula as well as this is well-defined. We note that the equivalence relation can be realized as
-\[ (x,\alpha) \sim (y,\beta) \quad \Longleftrightarrow \quad \exists \gamma \geq \alpha,\beta : t_\alpha^\gamma(x) = t_\beta^\gamma(y).\]
-Thus, if $(x,\alpha)\sim (y,\beta)$, then 
-\[g_\alpha(x) = g_\gamma \circ t_\alpha^\gamma(x) = g_\gamma \circ t_\beta^\gamma(y) = g_\beta(y),\]
-so $\phi$ is well-defined by this formula. This concludes the proof for $\Set$.
-
-The cases of the other categories $\sC$ will follow as long as the object specified is an object in $\sC$ and the morphisms $i_\alpha$ and $\phi$ are morphisms in $\sC$. To see that our proposed direct limit object is an object of the same sort, we need to that it admits the same operations. Let's explain this for $\Grp$; the cases $\Ab$, $\Ring$, $\Mod{R}$ will be similar. We define $[(x,\alpha)] \cdot [(y,\beta)]$ to be $[(t_\alpha^\gamma(x) \cdot t_\beta^\gamma(y), \gamma)]$ for some $\gamma\geq\alpha,\beta$. If we choose some other $\delta\geq \alpha,\beta$, then for some $\varepsilon\geq \gamma,\delta$, we have
-\[ t_\gamma^\varepsilon(t_\alpha^\gamma(x) \cdot t_\beta^\gamma(y) ) = t_\gamma^\varepsilon(t_\alpha^\gamma(x))\cdot  t_\gamma^\varepsilon(t_\beta^\gamma(x)) = t_\delta^\varepsilon(t_\alpha^\delta(x))\cdot  t_\delta^\varepsilon(t_\beta^\delta(x))= t_\delta^\varepsilon(t_\alpha^\delta(x) \cdot t_\beta^\delta(y) ) ,\]
-(using that our morphisms in $\Grp$ preserve $\cdot$),
-which means that 
-\[ [(t_\alpha^\gamma(x) \cdot t_\beta^\gamma(y), \gamma)] = [(t_\alpha^\delta(x) \cdot t_\beta^\delta(y) ,\delta)].\] 
-To check that the operation is associative, for any three elements we can find an $X_\lambda$ where they all have a representative, and associativity in $X_\lambda$ implies those three associate. Similarly for checking the other axioms of the other structures. It's then easy to see that the maps $i_\lambda$ and $\phi$ are morphisms in the respective categories.
-\end{proof}
-
-
 
 
 
