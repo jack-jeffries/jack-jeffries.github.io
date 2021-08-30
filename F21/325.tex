@@ -923,10 +923,10 @@ In more natural terms, $P$ holds for $S$ means that ``there are arbitrarily larg
 
 
 
-\begin{comment}
 
 
-\section*{Discussion Questions, February 3}
+
+\Aug{30}
 
 	
 	\begin{itemize}
@@ -936,12 +936,13 @@ In more natural terms, $P$ holds for $S$ means that ``there are arbitrarily larg
 			\begin{framed}
 			Contrapositive: ``If $1/a$ is rational, then $a$ is rational. [True]\\
 			Converse: ``If $1/a$ is irrational, then $a$ is irrational. [True]\end{framed}
-			\item If $a$ and $b$ are both irrational, then $ab$ is irrational.\begin{framed}
-			Contrapositive: ``If $ab$ is rational, then either $a$ or $b$ is rational. [False]\\
-			Converse: ``If $ab$ is irrational, then $a$ and $b$ are both irrational. [False]\end{framed}
+
 			\item If $x>3$ then $x^2>9$.\begin{framed}
 			Contrapositive: ``If $x^2 \leq 9$, then  $x\leq 3$. [True]\\
 			Converse: ``If $x^2 > 9$, then $x> 3$. [False]\end{framed}
+						\item If $a$ and $b$ are both irrational, then $ab$ is irrational.\begin{framed}
+			Contrapositive: ``If $ab$ is rational, then either $a$ or $b$ is rational. [False]\\
+			Converse: ``If $ab$ is irrational, then $a$ and $b$ are both irrational. [False]\end{framed}
 		\end{itemize}
 	\item Write the negation of each statement. Is the statement true or false? Explain why (but don't write a full proof).
 	\begin{itemize}
@@ -969,29 +970,30 @@ In more natural terms, $P$ holds for $S$ means that ``there are arbitrarily larg
 	We argue the contrapositive. Let $x$ be zero. Then, for any $y\in\R$, we have $xy=0$, by a fact we proved in class. In particular, we have $xy\neq 0$, as required.\end{framed}
 
 
-\item If $x$ is a nonzero real number, then $x^2$ is also nonzero.\footnote{Hint: Use $x^{-1}$ and the previous statement.}
+\item If $x$ and $y$ is a nonzero real numbers, then $xy$ is also nonzero.\footnote{Hint: Use $x^{-1}$ and the previous statement.}
 
 \begin{framed}
-	Let $x$ be a nonzero real number. By Axiom 7, there is an element $x^{-1}\in \R$ such that $x x^{-1}=1$. Then $x^2 \cdot (x^{-1})^2 = (x x^{-1}) (x x^{-1}) =1$, using Axioms 2 and 3 in the first equality and Axiom 5 in the second. By the previous fact (using $y=(x^{-1})^2$) we conclude that $x^2\neq 0$.\end{framed}
+	Let $x$ and $y$ be nonzero real numbers. By Axiom 7, there are element $x^{-1},y^{-1}\in \R$ such that $x x^{-1}=1$ and $y y^{-1}=1$. Then $xy \cdot (x^{-1}y^{-1}) = (x x^{-1}) (y y^{-1}) =1$, using Axioms 2 and 3 in the first equality and Axiom 5 in the second. By the previous fact (applies to $xy$) we conclude that $xy\neq 0$.\end{framed}
 	
-	\item For any real number $x$, $x\geq 0$ if and only if $-x \leq 0$.\footnote{Hint: Add something to both sides.}
+	\item For any real numbers $x$ and $y$, $x\geq y$ if and only if $-{x \leq -y}$.\footnote{Hint: Add something to both sides.}
 	\begin{framed}
-		Let $x\geq 0$. Adding $(-x)$ to both sides (which exists by Axiom~6), we obtain $0=x+(-x) \geq 0+(-x) = -x$ (by Axiom 9 and Axiom~5).
-		Conversely, let $-x \leq 0$. Adding $x$ to both sides, we obtain $0=x+(-x) \leq x+0 = x$ (by Axiom~9 and Axiom~5).\end{framed} 
-	\item $0\leq 1$. \footnote{Hint: Try a proof by contradiction and use the previous fact.}
+		Let $x\geq y$. Adding $(-x) + (-y)$ to both sides (which exists by Axiom~6), we obtain $-y=x+((-x)+ (-y)) \geq y+((-x)+(-y)) = -x$ (by Axiom 9 and Axiom~5).
+		Conversely, let $-x \leq -y$. Adding $x+y$ to both sides, we obtain $y=(x+y)+(-x) \leq (x+y)+(-y) = x$ (by Axiom~9 and Axiom~5).\end{framed} 
+
+	\item For any real numbers $x$ and $y$, $(-x) \cdot y  = -xy$.
 	\begin{framed}
-		To obtain a contradiction, suppose that $1<0$. Then $0=-1 + 1 < -1 + 0 = -1$. By the previous fact, we then have $1>0$, which contradicts the hypothesis.
-		\end{framed}
-	\item For any real number $x$, $(-1) \cdot x = -x$.
-	\begin{framed}
-		Observe that \[x + (-1)\cdot x = 1 \cdot x + (-1) \cdot x = (1+-1) \cdot x = 0 \cdot x = 0.\]
-		We also have $x + (-x) = 0$, so $x+ (-1)x = x + (-x)$. By cancellation of addition, we conclude that $(-1)x = -x$.
-		\end{framed}
+		Observe that \[(-x) \cdot y + x\cdot y = (-x + x) \cdot y = 0 \cdot y = 0.\]
+	Thus,
+	\[ -x\cdot y = -x \cdot y + xy + -xy = 0 + -xy = -xy.\]
+			\end{framed}
 	\item The product of two negative real numbers is nonnegative.
+	\begin{framed}
+	Assume that $x<0$ and $y<0$. Then, we also have $0<-x$. It follows that $-xy = (-x) \cdot y \leq 0 \cdot y = 0$, Thus, $xy\geq 0$. Moreover, since $x\neq 0$ and $y\neq 0$, we have that $xy\neq 0$, so we must have $xy>0$.
+	\end{framed}
 \end{itemize}
 	\end{itemize}
 
-
+\begin{comment}
 
 \section{Friday, February 5}
 
@@ -1043,7 +1045,6 @@ As this is not possible, it must be that $b < 1$ is false, and hence $b \geq 1$.
 This claim proves the (intuitively obvious) fact that $1$ is ``least upper bound'' of the set $(0,1)$. The notion of ``least upper bound''
 will be an extremely important one in this class.
 
-%\section{Notes to Accompany Video Lecture 3} 
 
 \begin{defn} A subset $S$ of $\R$ is called {\em bounded above} if there exists at least one upper bound for $S$. That is, $S$ is bounded above provided there
   is a real number $b$ such that $s \leq b$ for all $s \in S$.
