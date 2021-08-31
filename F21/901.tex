@@ -552,28 +552,28 @@ On the other hand, $\Ab$ is a full subcategory of $\Grp$, and $\Grp$ is a full s
 \Aug{27}
 
 
-\begin{defn} Given a category $\sC$ and an object $A\in \Ob(\sC)$, the \DEF{coslice category} \Def{$\sC_A$} is the category with objects given by all arrows from $A$: namely morphisms of the form 
-\[ A \stackrel{\alpha}{\longrightarrow} X \ \quad\text{with}\quad \ X\in \Ob(\sC)\]
-and morphisms 
-\[ \Hom_{\sC_A}(A \stackrel{\alpha}{\longrightarrow} X,A \stackrel{\beta}{\longrightarrow} Y) = \{ X \stackrel{\gamma}{\longrightarrow} Y \ | \ \gamma \circ \alpha = \beta\}.\]
-Equivalently, we can think of such a morphism as a triangle:
- \[\xymatrix{
-&A \ar[dl]_{\alpha} \ar[dr]^{\beta}& \\
-X \ar[rr]^{\gamma}&&Y
-}   \]
-The composition rule comes from the composition rule on $\sC$: if $X \xrightarrow{\gamma}Y$ and $Y \xrightarrow{\delta\circ \gamma} Z$.
-\end{defn}
-
-This construction may be less new to you than you think!
-
-\begin{exer} Explain how $\cAlg{A}$ and $\Setp$ are special cases of the coslice category construction. Can you describe the category $\Alg{A}$ in terms of the terms above?
-\end{exer}
+%\begin{defn} Given a category $\sC$ and an object $A\in \Ob(\sC)$, the \DEF{coslice category} \Def{$\sC_A$} is the category with objects given by all arrows from $A$: namely morphisms of the form 
+%\[ A \stackrel{\alpha}{\longrightarrow} X \ \quad\text{with}\quad \ X\in \Ob(\sC)\]
+%and morphisms 
+%\[ \Hom_{\sC_A}(A \stackrel{\alpha}{\longrightarrow} X,A \stackrel{\beta}{\longrightarrow} Y) = \{ X \stackrel{\gamma}{\longrightarrow} Y \ | \ \gamma \circ \alpha = \beta\}.\]
+%Equivalently, we can think of such a morphism as a triangle:
+% \[\xymatrix{
+%&A \ar[dl]_{\alpha} \ar[dr]^{\beta}& \\
+%X \ar[rr]^{\gamma}&&Y
+%}   \]
+%The composition rule comes from the composition rule on $\sC$: if $X \xrightarrow{\gamma}Y$ and $Y \xrightarrow{\delta\circ \gamma} Z$.
+%\end{defn}
+%
+%This construction may be less new to you than you think!
+%
+%\begin{exer} Explain how $\cAlg{A}$ and $\Setp$ are special cases of the coslice category construction. Can you describe the category $\Alg{A}$ in terms of the terms above?
+%\end{exer}
 
 
 
 \subsection{Basic notions with morphisms}
 
-\begin{defn} A \DEF{diagram} in a category $\sC$ is a directed multigraph whose vertices are objects in $\sC$ and whose arrows/edges are morphisms in $\sC$. A \DEF{commutative diagram} in $\cC$ is a diagram in which for each pair of vertices $A,B$, any two paths from $A$ to $B$ compose to the same morphism.
+\begin{defn} A \DEF{diagram} in a category $\sC$ is a directed multigraph whose vertices are objects in $\sC$ and whose arrows/edges are morphisms in $\sC$. A \DEF{commutative diagram} in $\sC$ is a diagram in which for each pair of vertices $A,B$, any two paths from $A$ to $B$ compose to the same morphism.
 \end{defn}
 
 \begin{ex} To say that the diagram
@@ -620,7 +620,7 @@ Similarly for ``right inverse'' and ``epic''.
 \end{exer}
 
 
-\subsection{Products and coproducts}
+\subsection{Category-theoretic constructions of objects}
 
 A property or construction is \DEF{category theoretic} if can be described just in terms of the data of the category rather than aspects of a particular category.
 
@@ -647,55 +647,62 @@ for every set $S$, there is a unique function $f:\varnothing \to S$; $\varnothin
 
 \begin{defn} Let $\sC$ be a category, and $\{ X_\lambda\}_{\lambda\in \Lambda}$ be a family of objects. A \DEF{product} of $\{ X_\lambda\}_{\lambda\in \Lambda}$ is given by an object $P$ and a family of morphisms $\{p_\lambda : P \to X_\lambda\}_{\lambda\in \Lambda}$ that is universal in the following sense:
 
-Given an object $Y$ and a family of morphisms $\{f_\lambda:Y\to X_\lambda\}_{\lambda\in \Lambda}$, there is a unique morphism $\alpha: Y\to P$ such that $p_\lambda \circ \alpha = f_\lambda$ for all $\lambda$.
+Given an object $Y$ and a family of morphisms $\{f_\lambda:Y\to X_\lambda\}_{\lambda\in \Lambda}$, there is a unique morphism $\phi: Y\to P$ such that $p_\lambda \circ \phi = f_\lambda$ for all $\lambda$.
 \end{defn}
 
 Here is a diagram for the (first few) maps involved when $\Lambda=\N$ is countable:
 \[\xymatrix{  & & & P \ar[drr]^-{p_1} \ar[ddrr]^-{p_2} \ar[dddrr]^-{p_3} \ar[ddddrr]  & & \\
  & & & & & X_1\\
-Y \ar@{-->}[uurrr]^-{\alpha}\ar[urrrrr]^-{f_1}  \ar[rrrrr]^-{f_2} \ar[drrrrr]^-{f_3} \ar[ddrrrrr]&  & & & & X_2\\
+Y \ar@{-->}[uurrr]^-{\phi}\ar[urrrrr]^-{f_1}  \ar[rrrrr]^-{f_2} \ar[drrrrr]^-{f_3} \ar[ddrrrrr]&  & & & & X_2\\
 & & & & & X_3\\
 & & & & & \vdots }\]
 
 We can also take a ``big picture'' view of this universal property:
-\[\xymatrix{ & P\ar@{~>}[dr]^{\alpha} & \\
-Y \ar@{-->}[ur]^{\{i_\lambda\}} \ar@{~>}[rr]_{\{f_\lambda\}} & & \{X_{\lambda}\},}\]
+\[\xymatrix{ & P\ar@{~>}[dr]^{\{p_\lambda\}} & \\
+Y \ar@{-->}[ur]^{\phi} \ar@{~>}[rr]_{\{f_\lambda\}} & & \{X_{\lambda}\},}\]
 where the squiggly arrows are again collections of maps instead of maps. The data of $Y$ with a family of maps to each $X_\lambda$ is the sort of thing a product might be, so we may think of it as a ``product candidate.'' In this way, we can think of a product as a ``terminal product candidate.''
 
+
+
 \Aug{30}
+
+
 
 \begin{rem}
 Note that $(P,\{p_\lambda\}_{\lambda\in\Lambda})$ is a product of $\{ X_\lambda\}_{\lambda\in \Lambda}$ if and only if the function
 \[ \xymatrix{ \Hom_{\sC}(Y,P) \ar[rr] & & \bigtimes_{\lambda\in\Lambda} \Hom_{\sC}(Y,X_\lambda)\\
-\alpha \ar@{|->}[rr] & &  ( p_\lambda \circ \alpha )_{\lambda\in \Lambda}}\]
-is a bijection: the universal property says that everything in the target comes from a unique thing in the source.
+\phi \ar@{|->}[rr] & &  ( p_\lambda \circ \phi )_{\lambda\in \Lambda}}\]
+is a bijection for all objects $Y$: the universal property says that everything in the target comes from a unique thing in the source.
 \end{rem}
 
 
 
-\begin{defn} Let $\sC$ be a category, and $\{ X_\lambda\}_{\lambda\in \Lambda}$ be a family of objects. A \DEF{coproduct} of $\{ X_\lambda\}_{\lambda\in \Lambda}$ is given by an object $C$ and a family of morphisms $\{i_\lambda : X_\lambda \to Y\}_{\lambda\in \Lambda}$ that is universal in the following sense:
 
-Given an object $Y$ and a family of morphisms $\{f_\lambda:X_\lambda \to Y\}_{\lambda\in \Lambda}$, there is a unique morphism $\alpha: C\to Y$ such that $\alpha \circ i_\lambda = f_\lambda$ for all $\lambda$.
+\begin{defn} Let $\sC$ be a category, and $\{ X_\lambda\}_{\lambda\in \Lambda}$ be a family of objects. A \DEF{coproduct} of $\{ X_\lambda\}_{\lambda\in \Lambda}$ is given by an object $C$ and a family of morphisms $\{i_\lambda : X_\lambda \to C\}_{\lambda\in \Lambda}$ that is universal in the following sense:
+
+Given an object $Y$ and a family of morphisms $\{f_\lambda:X_\lambda \to Y\}_{\lambda\in \Lambda}$, there is a unique morphism $\phi: C\to Y$ such that $\phi \circ i_\lambda = f_\lambda$ for all $\lambda$.
 \end{defn}
 
 
 Here is a diagram for the (first few) maps involved when $\Lambda=\N$ is countable:
-\[\xymatrix{  & & & C \ar@{-->}[ddrr]_{\alpha}& & \\
+\[\xymatrix{  & & & C \ar@{-->}[ddrr]^{\phi}& & \\
 \vdots\ar[urrr] \ar[drrrrr]  & & & & & \\
 X_3\ar[uurrr]^-{i_3} \ar[rrrrr]^-{f_3} & & & & & Y\\
 X_2\ar[uuurrr]^-{i_2} \ar[urrrrr]^-{f_2}  & & & & & \\
 X_1\ar[uuuurrr]^-{i_1} \ar[uurrrrr]^-{f_1} & & & & &}\]
 
 We can also take a ``big picture'' view of the universal property:
-\[\xymatrix{ & C\ar@{-->}[dr]^{\alpha} & \\
+\[\xymatrix{ & C\ar@{-->}[dr]^{\phi} & \\
 \{ X_{\lambda}\} \ar@{~>}[ur]^{\{i_\lambda\}} \ar@{~>}[rr]_{\{f_\lambda\}} & & Y,}\]
 where the squiggly arrows are now collections of maps instead of maps. We can again think of the coproduct as the ``initial coproduct candidate.''
+
+
 
 \begin{rem}
 Note that $(C,\{i_\lambda\}_{\lambda\in\Lambda})$ is a coproduct of $\{ X_\lambda\}_{\lambda\in \Lambda}$ if and only if the function
 \[ \xymatrix{ \Hom_{\sC}(C,Y) \ar[rr] & & \bigtimes_{\lambda\in\Lambda} \Hom_{\sC}(X_\lambda,Y)\\
-\alpha \ar@{|->}[rr] & &  ( \alpha \circ i_\lambda )_{\lambda\in \Lambda}}\]
-is a bijection: the universal property says that everything in the target comes from a unique thing in the source.
+\phi \ar@{|->}[rr] & &  ( \phi \circ i_\lambda )_{\lambda\in \Lambda}}\]
+is a bijection for all objects $Y$: the universal property says that everything in the target comes from a unique thing in the source.
 \end{rem}
 
 \begin{prop} If $(P,\{p_\lambda:P\to X_\lambda\}_{\lambda\in \Lambda})$ and $(P',\{p'_\lambda:P'\to X_\lambda\}_{\lambda\in \Lambda})$ are both products for the same family of objects $\{X_\lambda\}_{\lambda\in \Lambda}$ in a category $\sC$, then there is a unique isomorphism $\alpha: P \xrightarrow{\sim} P'$ such that $p'_\lambda \circ \alpha = p_\lambda$ for all $\lambda$. The analogous statement holds for coproducts.
@@ -710,9 +717,7 @@ Consider the composition $\beta\circ \alpha:P\to P$. We have $p_\lambda \circ \b
 \end{proof}
 \begin{exer} Prove the analogous statement for coproducts.\end{exer}
 
-\begin{rem}
-If we drop the ``uniqueness'' clause in the definition of product, the notion we get is not well-defined up to isomorphism on objects. For example, let $X$ be an object in $\Set$. We claim that any set $Z$ and surjective function $p:Z\to X$ satisfies the ``existence''  part of the ``exists a unique'' criterion in the definition of product for the family consisting of the single set $X$ in $\Set$. Indeed, given any set $Y$ and function $f:Y\to X$, there is a map $\phi: Y\to Z$ given by taking $\phi(y)$ to be any preimage of $f(y)$ under $p$. Note that if $p$ is not bijective, then there are different functions we can choose this way (as long as there is an element in the image of $\phi$ with multiple preimages under $f$), so $Z$ is not a product unless $p$ is a bijection.
-\end{rem}
+
 
 We use the notation \Def{$\prod_{\lambda \in \Lambda} X_\lambda$} to denote the (object part of the) product of $\{X_{\lambda}\}$ and \Def{$\coprod_{\lambda \in \Lambda} X_\lambda$} to denote the (object part of the) coproduct of $\{X_{\lambda}\}$.
 
@@ -734,8 +739,8 @@ Note that this is not true for fields!
 \end{prop}
 \begin{proof} We observe that in each category, the direct product is an object, and the projection maps $\pi_{\lambda}$ are morphisms in the category. 
 
-Let $\sC$ be one of these categories, and suppose that we have morphisms $g_{\lambda}:Y \to X_\lambda$ for all $\lambda$ in $\sC$. We need to show there is a unique morphism $\alpha:Y \to \bigtimes_{\lambda\in\Lambda} X_\lambda$ such that $\pi_\lambda \circ \alpha = g_\lambda$ for all $\lambda$. The last condition
- is equivalent to $(\alpha(y))_\lambda=(p_\lambda\circ\alpha)(y) =g_\lambda(y)$ for all $\lambda$, which is equivalent to $\alpha(y)=(g_\lambda)_{\lambda\in \Lambda}$, so if this is a valid morphism, it is unique.  Thus, it suffices to show that the map $\alpha(y)=(g_\lambda)_{\lambda\in \Lambda}$ is a morphism in~$\sC$, which is easy to see in each case.
+Let $\sC$ be one of these categories, and suppose that we have morphisms $g_{\lambda}:Y \to X_\lambda$ for all $\lambda$ in $\sC$. We need to show there is a unique morphism $\phi:Y \to \bigtimes_{\lambda\in\Lambda} X_\lambda$ such that $\pi_\lambda \circ \phi = g_\lambda$ for all $\lambda$. The last condition
+ is equivalent to $(\phi(y))_\lambda=(\pi_\lambda\circ\phi)(y) =g_\lambda(y)$ for all $\lambda$, which is equivalent to $\phi(y)=(g_\lambda(y))_{\lambda\in \Lambda}$, so if this is a valid morphism, it is unique.  Thus, it suffices to show that the map $\phi(y)=(g_\lambda(y))_{\lambda\in \Lambda}$ is a morphism in~$\sC$, which is easy to see in each case.
 \end{proof}
 
 %\begin{rem} We already saw that direct products are not products in the category of fields. In fact, there are no products in the category of fields in general. For example, suppose that $P$ was a product of $\F_p$ and $\F_q$ in $\Fld$ for two primes $p\neq q$. Then $\Hom_{\Fld}(K,P)$ is bijective with $\Hom_{\Fld}(K,\F_p) \times \Hom_{\Fld}(K,\F_q)$ for all $K$, so in particular, $\Hom_{\Fld}(\F_p,P)\neq 0$ and $\Hom_{\Fld}(\F_q,P)\neq 0$, but no such field exists!
@@ -753,12 +758,11 @@ Let $\sC$ be one of these categories, and suppose that we have morphisms $g_{\la
 
 
 
+
 \begin{prop} Let $R$ be a ring, and $\{M_\lambda\}_{\lambda\in \Lambda}$ be a family of left $R$-modules. A coproduct for the family $\{M_\lambda\}_{\lambda\in \Lambda}$ is  $\left(\bigoplus_{\lambda \in \Lambda} M_\lambda, \{\iota_\lambda\}_{\lambda\in \Lambda}\right)$, where \[\bigoplus_{\lambda \in \Lambda} M_\lambda=\{ (x_\lambda)_{\lambda\in \Lambda} \ | \ x_\lambda\neq 0 \ \text{for at most finitely many} \ \lambda\} \subseteq \ \prod_{\lambda \in \Lambda} M_\lambda\] is the direct sum of the modules $M_\lambda$, and $\iota_\lambda$ is the inclusion map to the $\lambda$ coordinate.
 \end{prop}
 
-
 \begin{comment}
-
 \begin{rem} If the index set $\Lambda$ is finite, then the objects $\prod_{\lambda \in \Lambda} M_\lambda$ and $\bigoplus_{\lambda \in \Lambda} M_\lambda$ are identical, but the product and coproduct are not the same since one involves projection maps and the other involves inclusion maps.
 \end{rem}
 \begin{proof}
@@ -766,17 +770,282 @@ Given $R$-module homomorphisms $g_\lambda:M_\lambda \to N$ for each $\lambda$, w
 \[ \alpha((m_\lambda)_{\lambda\in\Lambda}) = \sum_{\lambda\in \Lambda} g_\lambda(m_\lambda).\]
 Note that since $(m_\lambda)_{\lambda\in\Lambda}$ is in the direct sum, at most finitely many $m_\lambda$ are nonzero, so the sum on the right hand side is finite, and hence makes sense in $N$. We need to check that $\alpha$ is $R$-linear; indeed,
 \[ \alpha((m_\lambda) + (n_\lambda)) = \alpha((m_\lambda+n_\lambda)) = \sum g_\lambda(m_\lambda + n_\lambda) = \sum g_\lambda(m_\lambda) +\sum g_\lambda(n_\lambda) = \alpha((m_\lambda))+\alpha((n_\lambda)),\]
-and the check for scalar multiplication is similar. For uniqueness of $\alpha$, note that $\bigoplus_{\lambda \in \Lambda} M_\lambda$ is generated by the elements $\iota_\lambda(m_\lambda)$ for $m_\lambda\in M_\lambda$. Thus, if $\alpha'$ also satisfies $\alpha \circ \iota_\lambda = g_\lambda$ for all $\lambda$, then $\alpha(\iota_\lambda(m_\lambda))= g_\lambda(m_\lambda) = \alpha'(\iota_\lambda(m_\lambda))$ so the maps must be equal.
+and the check for scalar multiplication is similar. For uniqueness of $\alpha$, note that $\bigoplus_{\lambda \in \Lambda} M_\lambda$ is generated by the elements $\iota_\lambda(m_\lambda)$ for $m_\lambda\in M_\lambda$. Thus, if $\alpha'$ also satisfies $\alpha' \circ \iota_\lambda = g_\lambda$ for all $\lambda$, then $\alpha(\iota_\lambda(m_\lambda))= g_\lambda(m_\lambda) = \alpha'(\iota_\lambda(m_\lambda))$ so the maps must be equal.
 \end{proof}
+
+\begin{rem} For any indexing set $\Lambda$, $\coprod_{\lambda\in \Lambda} R$ is a free $R$-module. If $R=K$ happens to be a field, then $\prod_{\lambda\in \Lambda} K$ is free, since all vector spaces are free modules, but in general, $\prod_{\lambda\in \Lambda} R$ is not free for an infinite set~$\Lambda$.
+\end{rem}
 
 \begin{rem}
 \begin{itemize}
 \item In $\Top$, disjoint unions serve as coproducts.
 \item In $\Sgrp$ and $\Grp$, coproducts exist, and are given as free products. You may see or have seen them in topology in the context of Van Kampen's theorem.
-\item In $\Ring$, the story is more complicated. Let's note first that neither disjoint unions won't work, since they aren't rings. Direct sums of infinitely many rings don't have $1$, so aren't rings, but even finite direct sums/products won't work, since the inclusion maps don't send $1$ to $1$. We will later on construct coproducts in \Def{$\cRing$}, the full subcategory $\Ring$ consisting of commutative rings.
+\item In $\Ring$, the story is more complicated. Let's note first that disjoint unions won't work, since they aren't rings. Direct sums of infinitely many rings don't have $1$, so aren't rings, but even finite direct sums/products won't work, since the inclusion maps don't send $1$ to $1$. We will later on construct coproducts in \Def{$\cRing$}, the full subcategory of $\Ring$ consisting of commutative rings.
 \end{itemize}
 \end{rem}
 
+%\sssec{Definition of direct limit}
+%
+%
+%\begin{defn} We say a poset $P$ is \DEF{filtered} if for any $p,q\in P$, there is some $r\in P$ with $r\geq p$ and $r\geq q$.
+%\end{defn}
+%
+%\begin{ex}
+%\begin{itemize}
+%\item Any totally ordered poset is filtered. The positive integers $\N_{> 0}$ are a key example.
+%\item The collection of finite subsets of a set under containment is a filtered poset.
+%\end{itemize}
+%\end{ex}
+%
+%\begin{defn}
+%Given a filtered poset $(\Lambda,\leq)$ and a category $\sC$, a \DEF{direct limit system} in $\sC$ indexed by $\Lambda$ or a \DEF{$\Lambda$-diagram} \emph{in $\sC$} is a commutative diagram with vertices corresponding to elements of $P$ and arrows corresponding to inequalities in $P$. To unpackage this, we have
+%\begin{itemize}
+%\item an object $X_\lambda\in \Ob(\sC)$ for each $\lambda\in \Lambda$
+%\item a morphism $X_\lambda \xrightarrow{t_{\lambda}^{\mu}} X_{\mu}$ for each pair $\lambda \leq \mu$ 
+%\end{itemize}
+% such that
+%\begin{enumerate}
+%\item each $t_{\lambda}^{\lambda}$ is the identity on $X_\lambda$ and
+%\item if $\lambda \leq \mu \leq \nu$, then $t_{\lambda}^{\nu} = t_{\mu}^{\nu}\circ t_{\lambda}^{\mu}$.
+%\end{enumerate}
+%
+%\end{defn}
+%
+%\begin{ex} A direct limit system in a category $\sC$ indexed by $\N_{>0}$ is determined by a diagram of the form 
+%\[ X_1 \xrightarrow{a_1} X_2  \xrightarrow{a_2} X_3 \xrightarrow{a_3} X_4 \xrightarrow{a_4} X_5 \rightarrow \cdots.\]
+%All the other maps $X_i \to X_j$ for $i<j$ are given by composition: $a_{j-1} \circ \cdots \circ a_i$.
+%\end{ex} 
+%
+%
+%
+%
+%
+%\begin{defn} Let $\sC$ be a category, $\Lambda$ be a filtered poset, and $\{ X_\lambda\}_{\lambda\in \Lambda}$ be a direct limit system indexed by $\Lambda$. A \DEF{direct limit} of $\{ X_\lambda\}_{\lambda\in \Lambda}$ is given by an object $C$ and a family of morphisms $\{i_\lambda : X_\lambda \to C\}_{\lambda\in \Lambda}$ such that for all $\lambda\leq \mu$, $i_{\lambda}=i_\mu \circ t_{\lambda,\mu}$, that is universal in the following sense:
+%
+%Given an object $Y$ and a family of morphisms $g_\lambda:X_\lambda \to Y$ that satisfy the condition for all $\lambda\leq \mu$, $g_{\lambda}=g_\mu \circ t_{\lambda}^{\mu}$, there is a unique morphism $\alpha: C\to Y$ such that $\alpha \circ i_\lambda = g_\lambda$ for all $\lambda$.
+%\end{defn}
+%
+%Here is a diagram for the (first few) maps involved when $\Lambda=\N$:
+%\[\xymatrix{  & & & C \ar@{-->}[ddrr]^{\phi}& & \\
+%\vdots\ar[urrr] \ar[drrrrr] & & & & & \\
+%X_3\ar[uurrr]^-{i_3} \ar[u]^-{t_3^4} \ar[rrrrr]^-{g_3} & & & & & Y\\
+%X_2\ar[uuurrr]^-{i_2} \ar[u]^-{t_2^3} \ar[urrrrr]^-{g_2}  & & & & & \\
+%X_1\ar[uuuurrr]^-{i_1} \ar[u]^-{t_1^2} \ar[uurrrrr]^-{g_1} & & & & &}\]
+%
+%We can also take a ``big picture'' view of the universal property:
+%\[\xymatrix{ & C\ar@{-->}[dr]^{\phi} & \\
+%\stackrel{\{ X_{\lambda}\}}{\longrightarrow} \ar@{~>}[ur]^{\{i_\lambda\}} \ar@{~>}[rr]_{\{g_\lambda\}} & & Y,}\]
+%where $\stackrel{\{ X_{\lambda}\}}{\longrightarrow}$ represents the collection of $X$'s and the maps between them, and
+%where the squiggly arrows are now collections of maps that commute with the maps between the $X$'s.
+%
+%
+%These are not guaranteed to exist, but are unique when they do, by an argument analogous to that for coproducts.
+%
+%\sssec{Constructions of direct limits}
+%
+%\begin{ex} Let $\sC$ be $\Set$, $\Grp$, $\Ab$, $\Ring$, $\Mod{R}$, or $\Top$.
+%Let's start with the special case where all of the $X_\lambda$ are subobjects of some fixed object $Z$, and the transition maps are inclusion maps. In this case, the union is a subobject of $Z$ (for $\Grp$, $\Ab$, $\Ring$, $\Mod{R}$, the union is closed under the operations since any pair of elements lie in a common $X_\lambda$), and the inclusion maps $\iota_\lambda: X_\lambda \to \bigcup_{\gamma\in \Lambda} X_\gamma$ commute with the transition maps. In this case, a direct limit is $(\bigcup_{\lambda\in \Lambda} X_\lambda, \iota_\lambda)$. The point is that a bunch of consistent maps from the sets $X_\lambda$ uniquely determine a map from their union. In this case, we call the direct limit a \DEF{directed union}.\end{ex}
+%
+%\begin{prop} Let $\sC$ be $\Set$, $\Grp$, $\Ab$, $\Ring$, $\Mod{R}$, or $\Top$, and let $\{X_\lambda\}_{\lambda\in \Lambda}$ be a directed system on a poset $\Lambda$ in $\sC$. A direct limit for $\{X_\lambda\}$ is given by 
+%\begin{itemize}
+%\item the disjoint union of $\{X_\lambda\}$, where we will write $(x,\lambda)$ for an element $x \in X_\alpha$
+%\item modulo the equivalence relation $\sim$ generated by
+%\[ (x,\alpha) \sim (t_\alpha^\beta(x), \beta) \qquad \text{for all $\alpha\leq \beta$ in $\Lambda$ and all $x\in X_\alpha$},\]
+%\item with the maps $i_\alpha$ that send each element in $X_\alpha$ to its equivalence class.
+%\end{itemize}
+%\end{prop}
+%\begin{proof} First, we show it for sets. We have $g_\lambda(x) = \phi \circ i_\lambda (x) = \phi( [(x,\lambda)])$ for all $x\in X_\lambda$, so this is our map $\phi$ is unique and given by this formula as well as this is well-defined. We note that the equivalence relation can be realized as
+%\[ (x,\alpha) \sim (y,\beta) \quad \Longleftrightarrow \quad \exists \gamma \geq \alpha,\beta : t_\alpha^\gamma(x) = t_\beta^\gamma(y).\]
+%Thus, if $(x,\alpha)\sim (y,\beta)$, then 
+%\[g_\alpha(x) = g_\gamma \circ t_\alpha^\gamma(x) = g_\gamma \circ t_\beta^\gamma(y) = g_\beta(y),\]
+%so $\phi$ is well-defined by this formula. This concludes the proof for $\Set$.
+%
+%The cases of the other categories $\sC$ will follow as long as the object specified is an object in $\sC$ and the morphisms $i_\alpha$ and $\phi$ are morphisms in $\sC$. To see that our proposed direct limit object is an object of the same sort, we need to that it admits the same operations. Let's explain this for $\Grp$; the cases $\Ab$, $\Ring$, $\Mod{R}$ will be similar. We define $[(x,\alpha)] \cdot [(y,\beta)]$ to be $[(t_\alpha^\gamma(x) \cdot t_\beta^\gamma(y), \gamma)]$ for some $\gamma\geq\alpha,\beta$. If we choose some other $\delta\geq \alpha,\beta$, then for some $\varepsilon\geq \gamma,\delta$, we have
+%\[ t_\gamma^\varepsilon(t_\alpha^\gamma(x) \cdot t_\beta^\gamma(y) ) = t_\gamma^\varepsilon(t_\alpha^\gamma(x))\cdot  t_\gamma^\varepsilon(t_\beta^\gamma(x)) = t_\delta^\varepsilon(t_\alpha^\delta(x))\cdot  t_\delta^\varepsilon(t_\beta^\delta(x))= t_\delta^\varepsilon(t_\alpha^\delta(x) \cdot t_\beta^\delta(y) ) ,\]
+%(using that our morphisms in $\Grp$ preserve $\cdot$),
+%which means that 
+%\[ [(t_\alpha^\gamma(x) \cdot t_\beta^\gamma(y), \gamma)] = [(t_\alpha^\delta(x) \cdot t_\beta^\delta(y) ,\delta)].\] 
+%To check that the operation is associative, for any three elements we can find an $X_\lambda$ where they all have a representative, and associativity in $X_\lambda$ implies those three associate. Similarly for checking the other axioms of the other structures. It's then easy to see that the maps $i_\lambda$ and $\phi$ are morphisms in the respective categories.
+%\end{proof}
+
+\ssec{Functors}
+
+\begin{defn} Let $\sC$ and $\sD$ be categories. A \DEF{covariant functor} $F:\sC \to \sD$ is a mapping that assigns to each object $A\in \Ob(\sC)$ an object $F(A) \in \Ob(\sD)$ and to each morphism $\alpha\in \Hom_{\sC}(A,B)$ a morphism $F(f)\in \Hom_{\sD}(F(A),F(B))$ such that
+\begin{enumerate}
+\item $F$ preserves compositions, meaning $F(\alpha \circ \beta) = F(\alpha) \circ F(\beta)$ for all morphisms $\alpha,\beta$ in $\sC$, and
+\item $F$ preserves identity morphisms, meaning $F(1_A) = 1_{F(A)}$ for all objects $A$ in $\sC$.
+\end{enumerate}
+
+A \DEF{contravariant functor} $F:\sC \to \sD$ is a mapping that assigns to each object $A\in \Ob(\sC)$ an object $F(A) \in \Ob(\sD)$ and to each morphism $\alpha\in \Hom_{\sC}(A,B)$ a morphism $F(\alpha)\in \Hom_{\sD}(F(B),F(A))$ such that
+\begin{enumerate}
+\item $F$ preserves compositions, meaning $F(\alpha \circ \beta) =  F(\beta) \circ F(\alpha)$ for all morphisms $\alpha,\beta$ in $\sC$, and
+\item $F$ preserves identity morphisms, meaning $F(1_A) = 1_{F(A)}$ for all objects $A$ in $\sC$.
+\end{enumerate}
+\end{defn}
+
+\begin{rem} One can also interpret a contravariant functor as a covariant functor from $\sC^{\op} \to \sD$, or as a covariant functor from $\sC \to \sD^{\op}$.
+\end{rem}
+
+It follows from the definition of covariant functor that if we apply a covariant functor $F$ to a commutative diagram, we get another commutative diagram of the same shape, e.g.:
+\[ 
+\xymatrix{
+A \ar[r]^{\alpha} \ar[d]_{\gamma}& B \ar[d]^{\beta}\\
+C \ar[r]^{\delta} &D } \qquad \stackrel{F}{\rightsquigarrow} \qquad 
+\xymatrix{
+F(A) \ar[r]^{F(\alpha)} \ar[d]_{F(\gamma)}& F(B) \ar[d]^{F(\beta)}\\
+F(C) \ar[r]^{F(\delta)} &F(D).
+}
+\]
+
+
+
+If we apply a contravariant functor $G$ to a commutative diagram, we get a commutative diagram of the same shape with the arrows reversed, e.g.:
+\[ 
+\xymatrix{
+A \ar[r]^{\alpha} \ar[d]_{\gamma}& B \ar[d]^{\beta}\\
+C \ar[r]^{\delta} &D } \qquad \stackrel{G}{\rightsquigarrow} \qquad 
+\xymatrix{
+G(A)  & G(B) \ar[l]_{G(\alpha)} \\
+G(C) \ar[u]^{G(\gamma)} &G(D) \ar[u]_{G(\beta)} \ar[l]_{G(\delta)} .
+}
+\]
+
+\begin{ex} Here are some examples of functors.
+\begin{enumerate}
+\item Many of the categories we considered before are sets with extra structure, and the morphisms are functions that preserve the extra structure. The \DEF{forgetful functor} from such a category $\sC$ to $\Set$, is the covariant functor that forgets that extra structure are returns the underlying set of the object. For example the forgetful functor $\Grp \to \Set$ sends each group to its set of elements, and each homomorphism to its corresponding function of sets. Along similar lines, a ring is a group under addition with the bonus structure of multiplication, and we can talk about the forgetful functor from $\Ring$ to $\Grp$, etc.
+\item The \DEF{identity functor} \Def{$1_{\sC}$} on any category $\sC$ sends each object to itself and each morphism to itself. It is covariant.
+\item There is a covariant functor $(-)^{\times 2}:\Set\to\Set$ that sends every set $S$ to its cartesian square $S\times S$, and every function $f:S\to T$ to the function $(f,f): S\times S \to T\times T$ that sends $(s_1,s_2)\mapsto (f(s_1),f(s_2))$. Let's check the axioms: given $g:S\to T$ and $f:T\to U$, we need to see that $(f, f)\circ (g, g) = (f\circ g,f\circ g)$, which is clear, and that $(1_S,1_S)$ is the identity map on $S\times S$, which is also clear.
+\item Given a group $G$, the subgroup $G'\leq G$ generated by the set of commutators $\{ghg^{-1}h^{-1} \ | \ g,h\in G\}$ is a normal subgroup, and the quotient $G^{\mathrm{ab}}:=G/G'$\index{$G^{\mathrm{ab}}$} is called the \DEF{abelianization} of $G$. The group $G^{\mathrm{ab}}$ is abelian. Given a group homomorphism $\phi:G\to H$, $\phi$ automatically takes commutators to commutators, so it induces a homomorphism $G^{\mathrm{ab}} \to H^{\mathrm{ab}}$. Put together, abelianization gives a covariant functor from $\Grp$ to $\Ab$. 
+%Alternatively, we can think of abelianization as a functor from $\Grp \to \Grp$.
+\item Given any topological space $X$, the set of continuous functions from $X$ to $\R$, \Def{$\Cont(X,\R)$} is a ring with pointwise addition and multiplication. Given a continuous map $X\xrightarrow{\alpha}Y$, and a continuous map $Y \xrightarrow{f} \R$, the composition $X\xrightarrow{\alpha \circ f} \R$ is a continuous function. In this way, we get a map from $\Cont(Y,\R)$ to $\Cont(X,\R)$. In fact, this map is a ring homomorphism. Put together, we obtain a contravariant functor from $\Top$ to $\Ring$.
+\item You may be familiar with the fundamental group of a pointed topological space; this is a group $\pi_1(X,x)$ assigned to a topological space and a point in it. The rule $\pi_1$ gives a functor from pointed topological spaces to groups.
+\item Fix a field $K$. Given a vector space $V$, the collection \Def{$V^*$} of linear transformations from $V$ to $K$ is again a $K$-vector space, the \DEF{dual vector space} of $V$. If $\phi:W\to V$ is a linear transformation and $\ell:V\to K$ is in $V^*$ then $\ell \circ \phi:W\to K$ is in $W^*$, so there is a map $V^* \to W^*$. You can check that this together forms a functor \Def{$(-)^*$} that is contravariant.
+\end{enumerate}
+\end{ex}
+
+\begin{rem} A composition of two covariant functors, or of two contravariant functors, is a covariant functor. The composition of a covariant functor and a contravariant functor, or vice versa, is a contravariant functor.
+\end{rem}
+
+Here is another simple but essential source of functors.
+
+\begin{ex} Let $\sC$ be a category, and $A$ be an object of $\sC$.
+\index{Hom functors}
+		\begin{itemize}
+		\item The covariant functor \Def{$\Hom_{\sC}(A,-)$} $: {\sC} \longrightarrow  {\bf Set}$ sends each object $B$ to the set $\Hom_{\sC}(A,B)$, and each $\alpha \in \Hom_{\sC}(B,C)$ to the function \Def{$\Hom_{\sC}(A,\alpha)$}  $=:$ \Def{$\alpha_*$} of ``postcomposition by $\alpha$'':
+		$$\xymatrix@R=1mm{\Hom_{\sC}(A,B) \ar[r]^{\alpha_*} & \Hom_{\sC}(A,C) \\f \ar@{|->}[r] & \alpha\circ f
+		\\ A \xrightarrow{f}B  & A \xrightarrow{f} B \xrightarrow{\alpha} C.  }$$
+		\item The contravariant functor \Def{$\Hom_{\sC}(-,A)$} $: {\sC}\longrightarrow  {\bf Set}$ sends each object $B$ to the set $\Hom_{\sC}(B,A)$, and each $\alpha \in \Hom_{\sC}(B,C)$ to the function \Def{$\Hom_\mathscr{C}(\alpha,A)$} $=:$ \Def{$ \alpha^*$} of ``precomposition by $\alpha$'':
+		$$\xymatrix@R=1mm{\Hom_{\sC}(C,A) \ar[r]^{\alpha^*} & \Hom_{\sC}(B,A) \\f \ar@{|->}[r] & f\circ \alpha
+		\\ C\xrightarrow{f} A & B\xrightarrow{\alpha} C \xrightarrow{f} A.}$$
+		\end{itemize}
+		We may say that $\Hom_{\sC}(A,-)$ is the \DEF{covariant functor represented by $A$} and $\Hom_{\sC}(-,A)$ is the \DEF{contravariant functor represented by $A$}.
+		
+		The contravariant Hom functor does preserve compositions in a contravariant way:
+given maps
+\[ \xymatrix{ 								& C \ar[dr]^{\beta} 	& 	\\
+		B \ar[ur]^\alpha \ar[rr]_{\beta\circ \alpha} 	&				& D }\]
+		we get
+		
+{\[\xymatrix{ 
+					&				& \Hom_\sC(C,A)  \ar[lldddd]_{\alpha^*} 		&				&\\
+					&             	    	 	&{\color{blue}f \circ \beta} \ar@{|->}@[blue][ddl]	& 				&\\
+					&				&							&				&\\
+					&{\color{blue}(f\circ \beta)\circ \alpha }	&							&  {\color{blue}f}\ar@{|->}@[blue][uul]  \ar@{|->}@[blue][ll] &&\\
+\Hom_\sC(B,A)	&				&							&				&
+\Hom_\sC(D,A).\ar[uuuull]_{\beta^*} \ar[llll]^-{(\beta\circ\alpha)^*}}\]}
+		\end{ex}
+		
+	\begin{exer}
+	Let $\alpha$ be a morphism in a category $\sC$.
+	\begin{enumerate}
+	\item Show that $\alpha$ is monic if and only if $\Hom_\sC(Y,\alpha)$ is injective for all objects $Y$.
+	\item Show that $\alpha$ is epic if and only if $\Hom_\sC(\alpha,Y)$ is injective for all objects $Y$.
+	\item Show that $\alpha$ has a right inverse if and only if $\Hom_\sC(Y,\alpha)$ is surjective for all objects $Y$.
+	\item Show that $\alpha$ has a left inverse if and only if $\Hom_\sC(\alpha,Y)$ is surjective for all objects $Y$.
+	\end{enumerate}
+	\end{exer}
+
+\sssec{Natural transformations}
+
+\begin{defn}
+	Let $F$ and $G$ be covariant functors $\mathscr{C} \longrightarrow \mathscr{D}$. A \DEF{natural transformation} between $F$ and $G$ is a mapping that to each object $A$ in $\mathscr{C}$ assigns a morphism $\eta_A \in \Hom_\mathscr{D}(F(A),G(A))$ such that for all $f \in \Hom_\mathscr{C}(A,B)$, the diagram
+	$$\xymatrix{F(A) \ar[d]_-{F(f)} \ar[r]^-{\eta_A} & G(A) \ar[d]^-{G(f)} \\ F(B) \ar[r]_-{\eta_B} & G(B)}$$
+	commutes. We sometimes write $\eta: F \implies G$\index{$F\implies G$}.
+	
+	A {\bf natural isomorphism} is a natural transformation $\eta$ where each $\eta_A$ is an isomorphism. 
+\end{defn}
+
+In short, a natural transformation is a rule to turn $F$ of whatever into $G$ of whatever in a reasonable way.
+
+\begin{ex} Let $F,G: \sC \to \sD$ be covariant functors. Show that a natural transformation $\eta: F\implies G$ is a natural isomorphism if and only if there is another natural transformation $\mu:G\implies F$ such that $\mu \circ \eta=\eta \circ \mu = 1_{\sC}$.
+\end{ex}
+
+We can make make a similar definition for contravariant functors.
+
+\begin{defn}
+	Let $F$ and $G$ be contravariant functors $\mathscr{C} \longrightarrow \mathscr{D}$. A \DEF{natural transformation} between $F$ and $G$ is a mapping that to each object $A$ in $\mathscr{C}$ assigns a morphism $\eta_A \in \Hom_\mathscr{D}(F(A),G(A))$ such that for all $f \in \Hom_\mathscr{C}(A,B)$, the diagram
+	$$\xymatrix{F(A)  \ar[r]^-{\eta_A} & G(A)  \\ F(B) \ar[u]^-{F(f)} \ar[r]_-{\eta_B} & G(B) \ar[u]_-{G(f)}}$$
+	commutes. \end{defn}
+
+
+\begin{ex} 
+Let's describe a natural transformation of functors $(-)^{\times 2} \implies 1_{\Set}$, namely we take 
+\[p_{1,S}:S\times S \to S \qquad (s_1,s_2) \mapsto s_1. \]
+(In the terminology of the definition this is the map $\eta_S$.) We need to check for every map $f:S\to T$ the commutativity of a diagram:
+$$\xymatrix{S\times S \ar[d]_-{(f,f)} \ar[r]^-{p_{1,S}} & S \ar[d]^-{f} \\ T\times T \ar[r]_-{p_{1,T}} & T.}$$
+Going either down then left or right then down, $(s_1,s_2)$ maps to $f(s_1)$, so this does commute, and we indeed have a natural transformation. This is not a natural isomorphism, since the map $p_{1,S}$ is not always (almost never) an isomorphism of sets. 
+\end{ex}
+
+\begin{ex}
+Recall the contravariant functor $(-)^*:\vs{K}\to \vs{K}$. Composing this functor with itself twice we get the covariant double-dual functor $(-)^{**}:\vs{K}\to\vs{K}$. We will show that there is a natural isomorphism $1_{\vs{K}}\implies (-)^{**}$.
+
+For every $v\in V$, there is a map $\mathrm{ev}_v:V^{*}\to V$ given by evaluation at $v$: $\mathrm{ev}_v(\ell) = \ell(v)$. So, $\mathrm{ev}_v\in V^{**}$. Since we have one for each $v$, there is a function $\mathrm{ev}:V\to V^{**}$ given by $\mathrm{ev}(v)=\mathrm{ev}_v$.
+
+The map $\mathrm{ev}$ is a linear transformation:
+\[ \mathrm{ev}_{cv+w} (\ell) = \ell(cv+w) = c\ell(v) +\ell(w) = c \,\mathrm{ev}_v(\ell) + \mathrm{ev}_w(\ell).\]
+It is injective, since any nonzero vector takes on a nonzero value for some linear functional. It is then a bijection since $\dim(V)=\dim(V^{*})=\dim(V^{**})$.
+
+We just need to check commutativity of the square:
+\[\xymatrix{ V \ar[r]^{\mathrm{ev}} \ar[d]^{\phi} & V^{**} \ar[d]^{\phi^{**}} \\ W \ar[r]^{\mathrm{ev}} & W^{**} }\]
+This translates to \[ \mathrm{ev}_{\phi(v)} = (\mathrm{ev} \circ \phi) (v) \stackrel{?}{=} (\phi^{**} \circ \mathrm{ev})(v) = \phi^{**}(\mathrm{ev}_v)\]
+in $W^{**}$ for all $v\in V$. But, for all $\ell\in W^{*}$,
+\[ \mathrm{ev}_{\phi(v)}(\ell)=\ell(\phi(v)) = \phi^*(\ell)(v) = (\mathrm{ev}_v \circ \phi^*)(\ell) = \phi^{**}(\mathrm{ev}_v)(\ell),\]
+so the equality holds.
+\end{ex}
+
+
+\begin{comment}
+\subsection{Equivalence of categories}
+
+There is an obvious notion of isomorphism of categories: two categories $\cC$ and $\cD$ are isomorphic if there are covariant functors $F:\cC\to \cD$ and $G:\cD\to \cC$ such that $G\circ F= 1_{\cC}$ and $F\circ G = 1_{\cD}$. The following more flexible notion is much more useful:
+
+\begin{defn} Let $\cC$ and $\cD$ be categories. A pair of covariant functors $F:\cC\to \cD$ and $G:\cD\to \cC$ is an \DEF{equivalence of categories} if there are natural isomorphisms $G\circ F\Rightarrow 1_{\cC}$ and $F\circ G \Rightarrow 1_{\cD}$. We say that $\cC$ and $\cD$ are \emph{equivalent} if there exists an equivalence of categories between them.
+\end{defn}
+
+This notion has a more concrete characterization:
+
+\begin{fact} A pair of covariant functors $F:\cC\to \cD$ and $G:\cD\to \cC$ is an equivalnce of categories if and only
+~if
+\begin{itemize}
+\item for every $A,B\in\Ob(\cC)$, the map $\Hom_{\cC}(A,B) \to \Hom_{\cD}(F(A),F(B))$ given by $\alpha\to F(\alpha)$ is a bijection, and,
+\item for every $D\in \Ob(\cD)$, there is some $C\in\Ob(\cC)$ such that $D$ is isomorphic to $F(C)$.
+\end{itemize}
+\end{fact}
+We won't really use this fact, but it does add some meaning to this notion.
+
+
+\begin{eg} Partial functions
+\end{eg}
+
+\begin{eg} Recall the category $\MaT{K}$ of matrices over a field: the objects are positive natural numbers, and the morphisms from $m \to n$ are $n\times m$ matrices over $K$. For convenience, let $\vsp{K}$ be the category of finite-dimensional $K$-vector spaces with the zero-dimensional ones and all morphisms to and from them removed.
+
+I claim that $\MaT{K}$ is equivalent to $\vsp{K}$. Let's construct functors that realize this. Let $F:\MaT{K} \to \vsp{K}$ be the functor that on objects sends $n$ to $K^n$, the vector space of $n$-tuples, and on morphisms sends the matrix $A$ to the map of left multiplication by $A$. This is a functor because composition of linear transformations agrees corresponds to multiplication of matrices. To construct $G:\vsp{K} \to \MaT{K}$, choose a basis $\cB_{V}$ for every $V\in \Ob(\vsp{K})$ (this requires a pretty hefty version of the axiom of choice!); among these, choose the standard bases for the vector spaces $K^n$. Then, for every $V\in \Ob(\vsp{K})$, we set $G(V)=\dim(V)$, and for every linear transformation $V\xrightarrow{\alpha}W$ we set $G(\alpha)$ to be the matrix of $\alpha$ in the bases $\cB_{V}, \cB_{W}$. It is not hard to see that this is a functor.
+
+We need to show that $G\circ F$ is naturally isomorphic to the identity functor on $\MaT{K}$. In fact, it is the identity functor: on objects $n\mapsto K^n \mapsto n$, and on morphisms, $m \xrightarrow{A}  n \mapsto K^n \xrightarrow{A\cdot} K^m \mapsto m\xrightarrow{A}n$, since we chose the standard bases for $K^n$ and $K^m$.
+
+We also need to show that $F\circ G$ is naturally isomorphic to the identity functor on $\vsp{K}$. On objects $(F\circ G)(V)=K^{\dim V}$, and on morphisms, $(F\circ G)(V\xrightarrow{\alpha} W) = K^{\dim(V)} \xrightarrow{A\cdot} K^{\dim(W)}$ where $A$ is the matrix of $\alpha$ in $(\cB_V,\cB_W)$-coordinates. We construct a natural isomorphism $1_{\vsp{K}} \implies F\circ G$ by taking $V \xrightarrow{\sim} K^{\dim(V)}$ to be the $\cB_V$ coordinate map\dots
+
+\end{eg}
 
 
 \begin{comment}
