@@ -1236,10 +1236,10 @@ that $\ell$ satisfies $\ell^8 = 147$.
 The completeness axiom is also at the core of the Intermediate Value Theorem and many of the other major theorems we will
 cover in this class. 
 
-\begin{comment}
 
 
-\section{Wednesday, February 10}
+
+\Sept{8}
 
 We now discuss a few consequence of the completeness axiom. 
 
@@ -1261,7 +1261,7 @@ since $m + 1 \in \N$, this contradicts that assumption that $\ell$ is the suprem
 We conclude that, given any real number $x$,  there must exist a natural number  $n$ such that $n > x$.
 \end{proof}
 
-\begin{cor}[Archimedean Principle] If $a \in R$, $a >0$ and $b \in \R$, then for some natural number $n$ we have $na > b$.
+\begin{cor}[Archimedean Principle] If $a \in R$, $a >0$, and $b \in \R$, then for some natural number $n$ we have $na > b$.
 \end{cor}
 
 
@@ -1272,10 +1272,10 @@ We conclude that, given any real number $x$,  there must exist a natural number 
   by $a$ we get $n \cdot a  > b$.
 \end{proof}
 
-\begin{cor}[Density of the Rational Numbers] 
+\begin{thm}[Density of the Rational Numbers] 
 Between any two distinct  real numbers there is a rational number; more precisely, if $x, y \in \R$ and $x < y$, then there
   exists $q \in \Q$ such that $x < q < y$.
-\end{cor}
+\end{thm}
 
 
 
@@ -1292,10 +1292,10 @@ $$
 0 < \frac{1}{n} < y-x.
 $$
 
-Since $\frac{1}{n} > 0$, using the Archimedean principle again, there is at least one natural number $p$ such that 
-${p \cdot \frac{1}{n} > x}$. By the Well Ordering Axiom, there is a smallest natural number such that ${m \cdot \frac{1}{n} > x}$; call it $m$. 
+Consider the set $S=\{p\in \N \ | \ p \, \frac{1}{n} >x \}$.
+Since $\frac{1}{n} > 0$, using the Archimedean principle again, there is at least one natural number $p\in S$. By the Well Ordering Axiom, there is a smallest natural number $m\in S$. 
 
-We claim that $\frac{m-1}{n} \leq x$. Indeed, if $m>1$, then $m-1 \in \N\smallsetminus S$ (because $m-1$ is less than the minimum), so $\frac{m-1}{n}\leq x$; if $m=1$, then $m-1=0$, so $\frac{m-1}{n} = 0 \leq x$.
+We claim that $\frac{m-1}{n} \leq x$. Indeed, if $m>1$, then $m-1\in \N \smallsetminus S$ (because $m-1$ is less than the minimum), so $\frac{m-1}{n}\leq x$; if $m=1$, then $m-1=0$, so $\frac{m-1}{n} = 0 \leq x$.
 
 So, we have
 $$
@@ -1315,7 +1315,7 @@ We now consider the case $x < 0$. The idea here is to simply ``shift'' up to the
 By Theorem \ref{thm120}, we can find a natural number $j$ such that $j > -x$ and thus $0 < x +j < y +j$. Using the first case, which we have already proven,
 applied 
 to the number $x + j$ (which is positive), there is a rational number $q$ such that $x+j < q < y+j$. We deduce that $x < q-j < y$, and, since $q - j$ is also
-rational, this proves the corollary in this case.
+rational, this proves the theorem in this case.
 \end{proof}
 
 
@@ -1475,9 +1475,8 @@ $$
 - (|a| + |b|) = -|a| -|b| \leq a+b \leq |a| + |b|
 $$
 Applying part (3) of the previous Proposition (with $k = |x| + |y|$ and the $x$ in that Proposition replaced by $a + b$), we get
-$$
-|a+b| \leq |a| + |b|.
-$$
+\[
+|a+b| \leq |a| + |b|. \ \hrulefill \qedhere\]
 \end{proof}
 
 
