@@ -78,8 +78,11 @@
 \def\image{\operatorname{im}}
 \def\im{\image}
 \def\ker{\operatorname{ker}}
+\def\coker{\operatorname{coker}}
 \def\cone{\operatorname{cone}}
 \newcommand{\Hom}{\mathrm{Hom}}
+
+\newcommand{\onto}{\twoheadrightarrow}
 
 
 \def\ku{ku}
@@ -124,6 +127,9 @@
 \def\sT{\mathscr  T}
 \def\sM{\mathscr M}
 \def\sN{\mathscr N}
+
+%\newcommand{\inc}{\subseteq}
+\newcommand{\id}{\mathrm{id}}
 
 
 \newcommand{\Aug}[1]{\textcolor{violet}{Lecture of August #1, 2021}}
@@ -1091,7 +1097,458 @@ We won't really use this fact, but it does add some meaning to this notion.
 
 It turns out that $\MaT{K}$ is equivalent to $\vsp{K}$: we can take a functor $F:\MaT{K} \to \vsp{K}$ that sends $n$ to $K^n$ and $M$ to multiplication by $M$, and we can construct a functor $G:\vsp{K} \to \MaT{K}$ by picking a basis for every $V\in \vsp{K}$, sending $V$ to its dimension, and every transformation to the matrix in the corresponding bases for the source and target.
 \end{ex}
+\end{comment}
 
+\sec{$R$-Modules}
+
+
+\Sept{8}
+
+
+\sssec{Left vs right vs both}
+
+Recall that a left $R$-module is an abelian group $M$ with an action map $R\times M \to M$ written $(r,m)\mapsto rm$ such that $r(sm) = (rs)m$, along with two distributive properties and the condition that $1$ acts as the identity.
+A \DEF{right module} over $R$ is defined similarly; we usually write the action as $(r,m)\mapsto mr$, and we have $(mr)s = m(rs)$, along with distributive and identity properties. The point is that when we act by a product $rs\in R$, we can think of it as an iterated action; in a left module, the left factor acts last while in a right module the right factor acts last.
+
+\begin{defn} If $R$ is a ring, the \DEF{opposite ring} \Def{$R^{\mathrm{op}}$} is the ring with the same underlying set and same addition, but with multiplication given by $r \cdot_{R^{\mathrm{op}}} s = s \cdot_{R} r$.
+\end{defn}
+
+A right $R$-module is exactly the same thing as a left $R^{\mathrm{op}}$-module (except our convention for writing the action). In particular, if $R$ is commutative, then a left $R$-module is exactly the same thing as a right $R$-module, and we will just say ``module'' in this case. By default, in general, when we say module, we will mean left $R$-module.
+
+\begin{ex}
+Let $R$ be a ring. The collection \Def{$M_n(R)$} of $n\times n$ matrices with entries in $R$ forms a ring that in general is not commutative. The collection of column vectors of length $n$ with entries in $R$ is naturally a left $M_n(R)$-module. The collection of row vectors of length $n$ with entries in $R$ is naturally a right $M_n(R)$-module.
+\end{ex}
+
+We can think of $R$-module structures in a different way. To prepare, let's record a lemma.
+
+\begin{lem}
+If $M$ is an abelian group, then \Def{$\End_{\Ab}(M)$} $:=\Hom_{\Ab}(M,M)$ forms a ring with pointwise addition and composition as multiplication. More generally, if $M$ is a left $R$-module, then \Def{$\End_{R}(M)$}$:=\Hom_{\Mod{R}}(M,M)$ forms a ring (with the aforementioned operations).
+\end{lem}
+\begin{proof}
+The first statement is a special case of the first, since an abelian group is the same thing as a $\Z$-module, so we'll prove the second. Let $f,g\in \End_R(M)$. Since 
+  \[(f+g)(rm+n) = f(rm+n)+g(rm+n)= rf(m)+f(n) +rg(m)+g(n) = r(f+g)(m) + (f+g)(n)\]
+we see that $f+g\in \End_{R}(M)$. It's easy to see that $\End_{R}(M)$ is an abelian group under $+$.
+Associativity of multiplication is a special case of associativity of composition of functions. For distributive laws, we have
+\[\begin{aligned} ((f+g)h) (m) &= (f+g)(h(m)) =f(h(m)) + g(h(m)) = (fh)(m) + (gh)(m) 
+\\ (f(g+h)) (m) &= f(g(m)+h(m)) = f(g(m)) + f(h(m)) = (fg) (m) + (fh)(m);
+\end{aligned}\]
+for the latter distributive law, it was crucial that we are dealing with homomorphisms of abelian groups. We also have the identity map on $M$ as a mutliplicative identity.
+\end{proof}
+
+
+\begin{exer} Show that there is a ring isomorphism $\End_R(R) \cong R^{\mathrm{op}}$.
+\end{exer}
+
+\begin{prop}
+Let $R$ be a ring and $(M, +)$  an abelian group. There is a bijective correspondence
+\[ \xymatrix@R=.6em{ \{ R-\text{module actions} \ R \times M \to M \text{(with given +)} \}  \ar@{<->}[r] & \{ \text{ring homomorphisms} \ \rho: R \to \End_{\Z}(M) \}\\
+\cdot  \ar@{|->}[r] & \rho(r)(m) = r\cdot m \\
+r\cdot m = \rho(r)(m)  & \ar@{|->}[l] \rho.}
+\]
+\end{prop}
+\begin{proof}
+We clearly have a bijection as long as the maps are well-defined.
+
+Given an $R$-module action $\cdot$, one distributive property translates to the condition that $\rho(r)$ is $\Z$-linear; the identity condition means $\rho(1_R)$ is the identity function on $M$, which is the $1$ element in $\End_\Z(M)$; the other distributive condition means $\rho$ preserves addition; and the associativity condition means $\rho$ preserves multiplication. Thus, $\rho$ is a ring homomorphism. And conversely. 
+\end{proof}
+
+It turns out that we often have a left module structure and a right module structure on something in a compatible way.
+
+\begin{defn} Let $R$ and $S$ be rings. An $(R,S)$-\DEF{bimodule} is an abelian group $M$ equipped with a left $R$-module structure and a right $S$-module structure that commute with each other:
+\[ (r \cdot m) \cdot s = r \cdot (m \cdot s) \qquad \text{for all}\ m\in M, r\in R, s\in S.\]
+\end{defn} 
+
+\begin{ex} Here are some basic sources of bimodules:
+\begin{enumerate}
+\item If $R$ is a ring, then $M=R$ is an $(R,R)$-bimodule in the obvious way. More generally, if $\phi:A\to R$ is a ring homomorphism, then $R$ is an $(R,A)$-bimodule by
+\[ s \cdot r \cdot a = sr\phi(a) \qquad \text{for} \ r,s\in R, a\in A;\]
+equally well, $R$ is an $(A,R)$ or $(A,A)$-bimodule.
+\item If $R$ is a commutative ring and $M$ is any left module, then $M$ is also a right module by the same action, and $M$ is an $(R,R)$-bimodule with these structures. I.e., starting with an action $r\cdot m$, we set $m\cdot s$ to be $s\cdot m$, and \[(r\cdot m) \cdot s = s\cdot (r\cdot m) = sr \cdot m = rs \cdot m = r\cdot (s\cdot m) = r \cdot (m\cdot s).\]
+\item Every left $R$-module is automatically an $(R,\Z)$-bimodule in a unique way: \[(r\cdot m) \cdot n= \underbrace{(r\cdot m) + \cdots + (r\cdot m)}_{n \ \text{times}} = r \cdot (\underbrace{m+\cdots + m}_{n \ \text{times}}) = r \cdot (m \cdot n) \qquad \text{for $n\in \Z_{\geq 0}$},\]
+and similarly for $n\leq 0$.
+Likewise, every right $R$-module is automatically a $(\Z,R)$-bimodule.
+\end{enumerate}
+\end{ex}
+
+\begin{ex} For a ring $R$, the set of columns vectors of length $n$, $R^n$, is a $(\Mat_n(R),R)$-bimodule.
+\end{ex}
+
+Sometimes, when we want to keep track of various module and bimodule structures, we may write something like \Def{$_R M _S$} to indicate that $M$ is an $(R,S)$-bimodule, or $_R M$ to indicate that $M$ is a left $R$-module.
+
+\ssec{Kernels, images, and exact sequences}
+
+To every homomorphism $\phi:M\to N$ in $\Mod{R}$, the kernel \Def{$\ker(\phi)$}$\subseteq M$ and image \Def{$\im(\phi)$}$\subseteq N$ are in $\Mod{R}$, and the inclusion maps are homomorphisms of $R$-modules. It is surprisingly convenient to keep track of and compare these data in terms of exact sequences.
+
+\begin{defn}
+ A sequence of $R$-modules and $R$-module maps of the form
+  $$
+  \cdots \xra{d_{i+1}}  M_i \xra{d_i} M_{i-1} \xra{d_{i-1}} \cdots
+    $$
+    (possible infinite, possibly not)
+    is a \DEF{chain complex}, or just \DEF{complex} for short, if $d_i \circ d_{i+1} = 0$ for all $i$ or, equivalently, $\im(d_{i+1}) \subseteq \ker(d_i)$ for all $i$. 
+    
+    A chain complex is \DEF{exact} at $M_i$ if  $\im(d_{i+1}) = \ker(d_i)$; it is exact if it is exact at every module that has a map in and a map out.
+\end{defn}
+
+\begin{comment}
+
+\begin{ex} Let $A$ be a $b\times a$ matrix and $B$ be a $c\times b$ matrix of real numbers. The sequence of maps
+\[ \R^a \xra{A\cdot} \R^b \xra{B\cdot} \R^c \]
+is a complex if and only if $BA=0$; equivalently, the columns of $A$ are in the solution space (nullspace) of $B$.
+It is exact if and only if the columns of $A$ span the solution space of~$B$.
+\end{ex}
+
+
+    \begin{rem} 
+    \begin{itemize}
+    \item A sequence of the form $M \xra{g} N \to 0$ is exact if and only if $g$ is surjective.
+    \item A sequence of the form  $0 \to M \xra{f} N$ is exact if and only if $f$ is injective.
+    \item A sequence of the form $0 \to M \to 0$ is exact if and only if $M=0$.
+    \end{itemize}
+\end{rem}
+
+\begin{defn}
+\begin{itemize}
+\item      A \DEF{left exact sequence} is an exact sequence of the form
+      $$
+      0 \to M' \xra{i} M \xra{g} M'' 
+      $$
+This means $i$ is injective and  $M'\cong \im(i)=\ker(g)$. 
+
+
+\item      A \DEF{right exact sequence} is an exact sequence of the form
+      $$
+      M' \xra{f} M \xra{p} M'' \to 0
+      $$
+This means $p$ is onto and $\im(f)=\ker(p)$,
+so, $M'' \cong M/\ker(p) = M/\im(f)$. We denote $M/\im(f)=\coker(f)$ and call it the \DEF{cokernel} of $f$. Thus in a right exact sequence as above, $M''\cong \coker(f)$.
+
+\item      A \DEF{short exact sequence} (\DEF{SES}) is an exact sequence of the form
+      $$
+      0 \to M' \xra{i} M \xra{p} M'' \to 0
+      $$
+             Note that in a short exact sequence $M'\cong \ker(p)$ and $M''\cong \coker(i)$. In particular, $M''\cong M/M'$.
+We also say that $M$ is an \DEF{extension} of $M'$ and $M''$ if it fits in a short exact sequence as above.
+\end{itemize}
+    \end{defn}
+
+
+    
+    Given modules $M'$ and $M''$, we have the ``trivial'' s.e.s.
+$$
+0 \to M' \xra{\iota} M' \oplus M'' \xra{\pi} M'' \to 0
+$$
+where $\iota$ is the canonical inclusion and $\pi$ is the canonical projection. The following result gives equivalent conditions for 
+when a SES is equivalent to a split one.
+
+\begin{thm}[The splitting theorem] \label{prop93}
+Given a SES of left $R$-modules 
+\[0 \to M' \xra{i} M \xra{p} M'' \to 0,\]
+ the following are equivalent:
+
+\begin{enumerate}
+ \item There is a commutative diagram where each  vertical arrow is an isomorphism
+$$
+\xymatrix{
+0 \ar[r] & M' \ar[r]^-i \ar[d]^-{\id} & M \ar[r]^-p \ar[d]^-{\theta}  & M'' \ar[r] \ar[d]^-{\id}  & 0 \\
+0 \ar[r] & M' \ar[r]^-{\iota}           & M' \oplus M'' \ar[r]^-\pi            & M'' \ar[r]           & 0.
+}
+$$
+
+\item There is an isomorphism $\theta: M \xra{\cong} M' \oplus M''$ such that $\theta \circ i = \iota$ and $\pi \circ \theta = p$. 
+
+\item The map $i$ has a left inverse $q$ in $\Mod{R}$.
+
+\item The map $p$ has a right inverse $j$ in $\Mod{R}$.
+
+\item There are maps 
+$q: M \to M'$ and $j: M'' \to M$ such that 
+$q \circ i = \id_{M'}$, 
+$p \circ j = \id_{M''}$, and
+$i \circ q + j \circ p = \id_M$.
+\end{enumerate}
+
+If these equivalent conditions hold, we call the SES a \DEF{split exact sequence}.
+\end{thm}
+
+
+
+
+\begin{proof}
+
+(1) $\Leftrightarrow$ (2) follows by definition of commutative diagram.
+
+
+(1) $\Rightarrow$ (5): The main idea is that there are obvious splitting maps for the bottom SES. Define $\pi'$ to be the canonical projection $\pi':M'\oplus M''\to M', (m',m'')\mapsto m'$ and $\iota''$ to be the inclusion $\iota'':M''\to M'\oplus M'', m''\mapsto (0,m'')$. Notice that $\pi'\circ \iota =\id_{M'}$ and $\pi\circ \iota''=\id_{M''}$ and $i\circ \pi'+ \iota''\circ p=\id_{M'\oplus M''}$.
+
+We can use this to set $q=\pi'\circ\theta$ and $j= \theta^{-1}\circ \iota''$ and check
+\begin{eqnarray*}
+q\circ i &=\pi'\circ\theta \circ i =\pi'\circ \iota =\id_{M'}\\
+p\circ j& =p\circ \theta^{-1}\circ \iota'' =\pi\circ \iota''=\id_{M''}
+\end{eqnarray*}
+\begin{eqnarray*}
+i\circ q+j\circ p &=i\circ \pi'\circ\theta+ \theta^{-1}\circ \iota''\circ p=\theta^{-1}\circ ( \theta\circ i\circ \pi'+\iota''\circ p \circ \theta^{-1})\circ \theta\\
+&=\theta^{-1}\circ (\iota\circ \pi'+\iota''\circ\pi)\circ \theta =\theta^{-1}\circ \id_{M'\oplus M''} \circ \theta=\id_M.
+\end{eqnarray*}
+
+(5) $\Rightarrow$ (3, 4) is clear. 
+
+(3) $\Rightarrow$ (2): Given such a $q$, define  $\theta(m) = (q(m), p(m))$. It is clear $\theta \circ i = \iota$ and $\pi \circ \theta = p$. 
+We will now show that $\theta$ is injective: if $\theta(m)=0$ then $p(m)=0$ so $m\in \im(i)$ therefore $m=i(m')$ for some $m'\in M'$. But now $0=q(m)=q(i(m'))=m'$ so $m'=0$ and thus $m=0$. 
+
+We next show that $\theta$ is surjective: $(m',m'')\in M'\oplus M''$. Since $p$ is onto, then there exists some $u\in M$ so thar $p(u)=m''$. Let $m=i(m')+u-i(q(u))$. Then 
+\[
+\begin{split}
+\theta(m) &=(q(i(m'))+q(u)-q(i(q(u))), p(i(m'))+p(u)-p(i(q(u))))\\
+&= (m'+q(u)-q(u),m''+0-0)=(m',m'').
+\end{split}
+\]
+Therefore $\theta$ is bijective, so it is an isomorphism. 
+
+The proof that (4) $\Rightarrow$ (2) is similar, and omitted.
+\end{proof}
+
+We can also use splittings to show exactness.
+
+\begin{prop}
+Given a complex of $R$-modules of the form
+\[0 \to M' \xra{i} M \xra{p} M'' \to 0,\]
+if there are maps 
+$q: M \to M'$ and $j: M'' \to M$ such that 
+$q \circ i = \id_{M'}$, 
+$p \circ j = \id_{M''}$, and
+$i \circ q + j \circ p = \id_M$, then
+the complex is exact, and hence split exact.
+\end{prop}
+\begin{proof}
+Since $i$ has a left inverse, it is injective, and since $p$ has a right inverse, it is surjective. To show exactness in the middle, let $m\in \ker(p)$. Then \[m= (i\circ q)(m) + (j\circ p)(m) = i(q(m))\in \im(i).\qedhere\]
+\end{proof}
+
+
+
+
+\begin{ex} Suppose $R = k$ is a field. Then every short exact sequence of $R$-modules splits. We could verify any of the four equivalent conditions
+  directly; I'll do (3). Given a surjection $p: V \onto V''$ of $k$-vector spaces, pick a basis $B$ of $V''$. For each $w \in B$ pick any element
+  $\tilde{w}$ of $V$ such that $p(\tilde{w}) = w$. The  function $w \mapsto \tilde{w}$ from $B$ to $V$ 
+extends uniquely to a $k$-linear map $j: V'' \to V$ such that $j(w) = \tilde{w}$ for all $w \in B$. The composition
+  $p \circ j$ is the identity on $V''$ since it is the identity on the basis $B$ by construction.
+\end{ex}
+
+\begin{rem} The proof in the previous example actually shows that, for any ring $R$, a   SES whose right-most term is free is split exact.
+\end{rem}
+
+
+
+
+\begin{ex} Here is an example of a non-split exact sequence: 
+Take $R$ to be any (commutative) integral domain and $r \in R$ any non-zero, non-unit element. Then, using that $R$ is a domain, the
+sequence
+$$
+0 \to R \xra{r} R \to R/r \to 0
+$$
+is exact (where the second map is the canonical surjection).
+But it cannot by split exact: If it were, then we would have an isomorphism $R \cong R \oplus R/r$ of modules
+and so in particular there would be an ideal $I$ of $R$ isomorphic as a module to $R/r$. But then  $r I = 0$ and since $R$ is a domain, 
+this could only happen if $I = 0$, which would mean $r$ is a unit.
+
+For example
+$$
+0 \to \Z \xra{2} \Z \to \Z/2 \to 0
+$$
+is an exact, but not split exact, sequence of $\Z$-modules.
+\end{ex}
+
+
+
+
+\ssec{Homomorphisms of $R$-modules}
+
+\sssec{Structure of $\Hom_R(M,N)$}
+
+In general, we write \Def{$\Hom_R(M,N)$} for the set $\Hom_{\Mod{R}}(M,N)$ of $R$-module morphisms between two left $R$-modules $M$ and $N$.
+
+It turns out that the set of homomorphisms between two $R$-modules has additional structure.
+
+\begin{prop}
+Let $R$ be a ring, and $M,N$ be two left $R$-modules.
+\begin{enumerate}
+\item $\Hom_R(M,N)$ is an abelian group by pointwise addition, i.e.,
+\[ (\alpha+\beta)(m) := \alpha(m) + \beta(m)  \qquad \alpha,\beta\in\Hom_R(M,N),\ m\in M.\]
+\item If $R$ is commutative, then $\Hom_R(M,N)$ is an $R$-module via the action
+\[ (r\alpha) (m) := r \alpha(m) = \alpha(rm) \qquad \alpha\in \Hom_R(M,N),\ r\in R, \ m\in M.\]
+\item More generally, 
+\begin{itemize}
+\item if $M$ is a $(R,S)$-bimodule, then $\Hom_R(M,N)$ is a left $S$-module by the action $(s \alpha)(m) = \alpha(ms)$;
+\item if $N$ is a $(R,T)$-bimodule, then $\Hom_R(M,N)$ is a right $T$-module by the action $(\alpha t)(m)=\alpha(m)t$;
+\item if $M$ is a $(R,S)$-bimodule and $N$ is a $(R,T)$-bimodule, then $\Hom_R(M,N)$ is a $(S,T)$-bimodule by the previous two actions.
+\end{itemize}
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+(1) is easy to check, and similar to what we checked with module endomorphisms.
+
+Let's consider (2): The first thing to note is that $r\alpha(m)=\alpha(rm)$ by linearity of $\alpha$. Let us check that the map $r\alpha$ defined this way is an $R$-module morphism:
+\[ (r\alpha)(m+m') = r \alpha(m+m') = r(\alpha(m) +\alpha(m'))=r\alpha(m) +r\alpha(m') = r\alpha(m) + r\alpha(m')\]
+\[ (r\alpha)(sm)= r \alpha(sm) = rs \alpha(m) = sr \alpha(m) = s (r\alpha(m));\]
+note that commutativity of $R$ is essential here.
+
+The distributive rules are straightforward, and $((rs) \alpha)(m) = rs\alpha(m) = (r(s\alpha))(m)$, so $(rs)\alpha=r(s\alpha)$.
+
+For (3), let's just focus on the first case. To see $s\alpha$ is $R$-linear, addition is similar to above, and
+\[ (s\alpha)(rm) = \alpha(rms) = r\alpha(ms) = r (s\alpha)(m).\]
+Let's check the associativity property for the action: given $s,s'\in S$, \[(s s')\alpha(m) = \alpha(m s s') = s' \alpha(m s) = (s(s' \alpha))(m).\]
+The other axioms are straightforward.
+\end{proof}
+
+The bonus module structures in case (3) are often useful, even for commutative rings. However, for many statements below we will just focus on cases (1) and (2) above for clarity.
+
+\sssec{Hom as functors}
+
+\begin{defn}[Covariant Hom] Let $R$ be a ring and $M$ be an $R$-module. There is a covariant functor \index{$\Hom_R(M,-)$}\index{covariant Hom functor}
+\[ \Hom_R(M,-) : \Mod{R} \to \Ab\]
+that maps each module $A$ to  $\Hom_R(M,A)$, and each morphism $A\xra{f} B$ to the homomorphism {\Def{$\Hom_{R}(M,f)$}  $=:$ \Def{$f_*$}} of ``postcomposition by $f$'':
+		$$\xymatrix@R=1mm{\Hom_{R}(M,A) \ar[r]^{f_*} & \Hom_{R}(M,B) \\g \ar@{|->}[r] & f\circ g
+		\\ M \xrightarrow{g}A & M \xrightarrow{g} A \xrightarrow{f} B.  }$$
+		
+	If $R$ is commutative, then we consider $\Hom_R(M,-)$ as a functor from $ \Mod{R} \to \Mod{R}$ by the same rule.
+\end{defn}
+There are some things to check to verify that this is a functor.
+\begin{proof}
+We need to check that $f_*$ is a valid morphism in $\Ab$, or in $\Mod{R}$ in the commutative case.
+Given $g,h\in \Hom_{R}(A,B)$, we have \[f_*(g)(x+y)=f(g(x+y)) = f(g(x)) + f(g(y)) = f_*(g)(x) + f_*(g)(y).\]
+If $R$ is commutative,
+\[ f_*(g)(rx) = f(g(rx)) = r f(g(x)) = r f_*(g)(x).\]
+
+We also need to see that these satisfy the functor axioms. We have $(1_A)_*(g) = 1_A \circ g = g$, so $(1_A)_*$ is the identity map on $\Hom_R(M,A)$. Given $A\xra{g}B\xra{f} C$, and $h\in \Hom_R(M,A)$, \[(fg)_* (h) = f\circ g \circ h = f \circ (g_*(h))= f^*(g^*(h)) = (f_* \circ g_*)(h).\qedhere\]
+\end{proof}
+
+\begin{defn}[Contravariant Hom] Let $R$ be a ring and $M$ be an $R$-module. There is a contravariant functor \index{$\Hom_R(-,M)$}\index{covariant Hom functor}
+\[ \Hom_R(-,M) : \Mod{R} \to \Ab\]
+that maps each module $A$ to  $\Hom_R(A,M)$, and each morphism $A\xra{f} B$ to the homomorphism {\Def{$\Hom_{R}(f,M)$}  $=:$ \Def{$f^*$}} of ``precomposition by $f$'':
+		$$\xymatrix@R=1mm{\Hom_{R}(M,B) \ar[r]^{f_*} & \Hom_{R}(M,A) \\g \ar@{|->}[r] &  g\circ f
+		\\ B \xrightarrow{g}M & A \xrightarrow{f} B \xrightarrow{g} M.  }$$
+		
+	If $R$ is commutative, then we consider $\Hom_R(-,M)$ as a functor from $ \Mod{R} \to \Mod{R}$ by the same rule.
+\end{defn}
+There are some things to check to verify that this is a functor.
+\begin{proof}
+We need to check that $f^*$ is a valid morphism in $\Ab$, or in $\Mod{R}$ in the commutative case.
+Given $g,h\in \Hom_{R}(A,B)$, we have \[f^*(g)(x+y)=g(f(x+y)) = g(f(x)) + g(f(y)) = f^*(g)(x) + f^*(g)(y).\]
+If $R$ is commutative,
+\[ f^*(g)(rx) = g(f(rx)) = r g(f(x)) = r f^*(g)(x).\]
+
+We also need to see that these satisfy the functor axioms. We have $(1_A)^*(g) = g \circ 1_A = g$, so $(1_A)^*$ is the identity map on $\Hom_R(A,M)$. Given $A\xra{g}B\xra{f} C$, and $h\in \Hom_R(C,M)$, \[(fg)^* (h) =h\circ  f\circ g = f^*(h) \circ g = g^*(f^*(h)) = (g^* \circ f^*)(h).\qedhere\]
+\end{proof}
+
+\sssec{Examples of Hom modules}
+
+\begin{ex}
+Let $R$ be a ring, and $M$ a left $R$-module. Then $\Hom_R(R,M)$ is a left $R$-module as well: 
+\begin{itemize}
+\item when $R$ is commutative the action is by $(r \phi)(s) = \phi(rs) = r\phi(s)$
+\item in general, the $R$-module structure comes from the right $R$-module structure on $R$, so we have to premultiply the input on the right: $(r\phi)(s) = \phi(sr)$, but in the commutative case, it's the same thing as the above.
+\end{itemize}
+ There is an isomorphism
+\[\xymatrix@R=.6em { \Hom_R(R,M) \ar[r]^-{\psi} &M \\
+\phi \ar@{|->}[r] &\phi(1)\\
+(r\mapsto rm) & \ar@{|->}[l] m }\]
+This is injective, since $\phi$ is determined by the image of $1$, and surjective since the map $r \mapsto rm$ is $R$-linear for any $m\in M$. To see that $\psi$ is $R$-linear, we have $\psi(r\phi)=(r\phi)(1) = \phi(1\,r) = \phi(r) = r \phi(1) = r \psi(\phi)$.
+\end{ex}
+
+\begin{prop}
+Let $\{M_\lambda\}_{\lambda\in \Lambda}$ be a family of $R$-modules, and $N$ be an  $R$-module.
+There are isomorphisms of abelian groups
+\[\begin{aligned} \Hom_R(\bigoplus_{\lambda\in \Lambda} M_\lambda, N) &\cong \prod_{\lambda\in \Lambda} \Hom_R(M_\lambda,N)\\
+\Hom_R(N,\prod_{\lambda\in \Lambda} M_\lambda) &\cong \prod_{\lambda\in \Lambda} \Hom_R(N,M_\lambda)\end{aligned}\]
+Moreover, these are isomorphisms of $R$-modules if $R$ is commutative.
+\end{prop}
+\begin{proof}
+Since $\bigoplus_{\lambda\in \Lambda} M_\lambda$ is the coproduct of $\{M_\lambda\}_{\lambda\in \Lambda}$ in $\Mod{R}$, we have a bijection for every $R$-module $N$
+\[\xymatrix@R=.6em { \Hom_R(\bigoplus_{\lambda\in \Lambda} M_\lambda, N) \ar[r] & \prod_{\lambda\in \Lambda} \Hom_R(M_\lambda,N) \\
+\phi \ar@{|->}[r] &(\phi \circ \iota_\lambda).}\]
+We only have to observe that these maps preserve the abelian group and/or $R$-module structures.
+Similarly, since $\prod_{\lambda\in \Lambda} M_\lambda$ is the product of $\{M_\lambda\}_{\lambda\in \Lambda}$ in $\Mod{R}$, we have a bijection for every $R$-module $N$
+\[\xymatrix@R=.6em { \Hom_R(N,\prod_{\lambda\in \Lambda} M_\lambda) \ar[r] & \prod_{\lambda\in \Lambda} \Hom_R(N,M_\lambda) \\
+\phi \ar@{|->}[r] &(\pi_\lambda \circ \phi),}\]
+and one verifies the additivity / linearity of this map.
+\end{proof}
+
+Hom and direct sums and products
+
+
+
+
+
+Hom as functors
+
+Additivity
+
+
+
+
+
+
+
+Exactness of Hom functors
+
+
+\ssec{Projective and injective modules}
+
+
+
+\end{comment}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{comment}
 
