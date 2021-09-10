@@ -1329,6 +1329,60 @@ that between any two distinct real numbers there are {\em infinitely many} ratio
 obtain the existence of a rational number $q_2$ with $x < q_2 < q_1$, and yet again using $x$ and
 $q_2$ to obtain $q_3 \in \Q$ with $x < q_3 < q_2$, and so on forever.
 
+
+\Sept{10}
+
+\begin{enumerate}
+
+\item Let $S\subseteq \R$ be nonempty and bounded above, and set $\ell=\sup(S)$. Let $T=\{3x \ | \ x\in S\}$. Show that $\sup(T)=3\ell$.
+
+\begin{framed} First, we show that $3\ell$ is an upper bound for $T$. Let $t\in T$. We can write $t=3s$ for some $s\in S$. Since $s\leq \ell$, we have $t=3s\leq 3\ell$, so $3\ell$ is indeed an upper bound.
+
+Next, we show that if $b$ is any upper bound for $T$, then $b\geq \ell$. Let $b$ be an upper bound for $T$. This means that $b\geq t$ for any $t\in T$. Note that $b/3$ is an upper bound for $S$: if $s\in S$, then $t=3s\in T$, so $3s=t\leq b$, so $s\leq b/3$. By definition of supremum, $b/3\geq \ell$, but then $b\geq 3\ell$, as required.
+\end{framed}
+
+\end{enumerate}
+
+\begin{cor}[Density of the Irrational Numbers] 
+Between any two distinct real numbers there is an irrational number; more precisely, if $x,y \in \R$ and $x < y$, then there exists an irrational number $z$ such that $x < z < y$.
+\end{cor}
+
+\begin{enumerate}\setcounter{enumi}{1}
+\item Prove\footnote{Hint: What can you say about the numbers $x-\sqrt{2} < y-\sqrt{2}$.} Corollary 8.1.
+
+\begin{framed}
+Let $x< y$. We have $x-\sqrt{2}<y-\sqrt{2}$, so by Density of Rational Numbers, there is some rational number $q$ such that $x-\sqrt{2} < q < y-\sqrt{2}$. Then $x< q+\sqrt{2} < y$. Since $q$ is rational and $\sqrt{2}$ is irrational, $q+\sqrt{2}$ is irrational, as we proved in class. Thus, $q+\sqrt{2}$ is the number we seek.
+\end{framed}
+
+\item Explain why there are \emph{infinitely many} irrational numbers between $x$ and $y$.
+
+\begin{framed}
+Given $x<y$, by Density of Irrational Numbers, there is some $z_1\in \R\smallsetminus\Q$ such that $x<z_1 < y$. By Density of Irrational Numbers applied to $z_1<y$, there is some $z_1\in \R\smallsetminus\Q$ such that $x<z_1 < z_2 < y$. We can continue like this forever.
+\end{framed}
+\end{enumerate}
+
+\begin{thm} For any real number $r$, there is a unique integer $n$ such that $n\leq r < n+1$.
+\end{thm}
+
+\begin{enumerate}\setcounter{enumi}{3}
+\item Proof of Theorem 8.2:
+\begin{enumerate}
+\item First, assume that $r\geq 0$. Complete the following sentence:
+``The number  $n+1$ \ should be the smallest natural number that \underline{\phantom{bananananananana}}.''
+\begin{framed} is larger than $r$.\end{framed}
+\item Take your sentence and turn it into a recipe for $n$ to prove that such an integer $n$ exists in this case.
+\begin{framed} Assume that $r\geq 0$. Consider the set $S=\{ m\in \N \ | \ m> r\}$. By Theorem 7.1, $S$ is nonempty, so by the Well-Ordering Axiom for $\N$, there is a minimum element in $S$. Set $n=\min(S)-1$; note that $r<n+1$ because $n+1\in S$. If $\min(S)>1$, $n\in \N \smallsetminus S$, since $n$ is less than the minimum for $S$, so $n\leq r$.  If $\min(S)=1$, then $n=0$, so by our assumption, $n=0\leq r$.
+Either way, $n\in \N\cup \{0\} \subseteq \Z$ and $n\leq r \leq n+1$, as required.
+\end{framed}
+\item Now, assume that $r<0$. Explain why there is some $j\in \N$ such that $j+r >0$. Deduce that an integer $n$ as in the statement exists in this case too.
+\begin{framed}
+Now assume that $r<0$. By Theorem~7.1, there is some $j\in \N$ such that $j>-r$, so $j+r>0$. By the case we already established, there is some integer $n\in \Z$ such that $n \leq j+r < n+1$. We then have $n-j \leq r < (n-j)+1$, so $n-j\in \Z$ is the integer we seek.
+\end{framed}
+\item Finally, prove that $n$ is unique. You can use without proof that there are no integers in between $0$ and $1$.
+\begin{framed} To see that $n$ is unique, suppose that $n,m\in \Z$ with $n\leq r < n+1$ and $m\leq r < m+1$. We then have $n < m+1$, so $n\leq m$, and, switching roles, $m\leq n$. Thus, $m=n$.
+\end{framed}
+\end{enumerate}\end{enumerate}
+
 \begin{comment}
 
 A real number is called {\em irrational} if it is not rational. For example,  $\sqrt{2}$ is irrational, a fact we have proven: we proved it exists as a real number, using the
