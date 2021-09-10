@@ -1116,7 +1116,8 @@ A \DEF{right module} over $R$ is defined similarly; we usually write the action 
 A right $R$-module is exactly the same thing as a left $R^{\mathrm{op}}$-module (except our convention for writing the action). In particular, if $R$ is commutative, then a left $R$-module is exactly the same thing as a right $R$-module, and we will just say ``module'' in this case. By default, in general, when we say module, we will mean left $R$-module.
 
 \begin{ex}
-Let $R$ be a ring. The collection \Def{$M_n(R)$} of $n\times n$ matrices with entries in $R$ forms a ring that in general is not commutative. The collection of column vectors of length $n$ with entries in $R$ is naturally a left $M_n(R)$-module. The collection of row vectors of length $n$ with entries in $R$ is naturally a right $M_n(R)$-module.
+Let $R$ be a ring. The collection \Def{$M_n(R)$} of $n\times n$ matrices with entries in $R$ forms a ring that in general is not commutative. The set \Def{$R^n$} of column vectors of length $n$ with entries in $R$ is naturally a left $M_n(R)$-module. The collection of row vectors of length $n$ with entries in $R$ is naturally a right $M_n(R)$-module. We can also identify this latter action with a right module action on $R^n$ by transposing any column vector into a row vector, acting, then transposing back:
+\[ v \cdot M = (v^T M)^T=M^T v.\]
 \end{ex}
 
 We can think of $R$-module structures in a different way. To prepare, let's record a lemma.
@@ -1170,7 +1171,7 @@ Likewise, every right $R$-module is automatically a $(\Z,R)$-bimodule.
 \end{enumerate}
 \end{ex}
 
-\begin{ex} For a ring $R$, the set of columns vectors of length $n$, $R^n$, is a $(\Mat_n(R),R)$-bimodule.
+\begin{ex} For a ring $R$, the set of column vectors of length $n$, $R^n$, is a $(M_n(R),R)$-bimodule. However, if we take the natural left action together with the right action $v\cdot M = M^T v$ discussed above, we do not get a bimodule structure, since $(M\cdot v)\cdot N = N^T M v$ generally differs from $M \cdot (v \cdot N) = M N^T v$.
 \end{ex}
 
 Sometimes, when we want to keep track of various module and bimodule structures, we may write something like \Def{$_R M _S$} to indicate that $M$ is an $(R,S)$-bimodule, or $_R M$ to indicate that $M$ is a left $R$-module.
@@ -1190,7 +1191,9 @@ To every homomorphism $\phi:M\to N$ in $\Mod{R}$, the kernel \Def{$\ker(\phi)$}$
     A chain complex is \DEF{exact} at $M_i$ if  $\im(d_{i+1}) = \ker(d_i)$; it is exact if it is exact at every module that has a map in and a map out.
 \end{defn}
 
-\begin{comment}
+
+\Sept{10}
+
 
 \begin{ex} Let $A$ be a $b\times a$ matrix and $B$ be a $c\times b$ matrix of real numbers. The sequence of maps
 \[ \R^a \xra{A\cdot} \R^b \xra{B\cdot} \R^c \]
@@ -1203,6 +1206,7 @@ It is exact if and only if the columns of $A$ span the solution space of~$B$.
     \begin{itemize}
     \item A sequence of the form $M \xra{g} N \to 0$ is exact if and only if $g$ is surjective.
     \item A sequence of the form  $0 \to M \xra{f} N$ is exact if and only if $f$ is injective.
+    \item A sequence of the form  $0 \to M \xra{h} N \to 0$ is exact if and only if $h$ is an isomorphism.
     \item A sequence of the form $0 \to M \to 0$ is exact if and only if $M=0$.
     \end{itemize}
 \end{rem}
@@ -1232,9 +1236,35 @@ We also say that $M$ is an \DEF{extension} of $M'$ and $M''$ if it fits in a sho
 \end{itemize}
     \end{defn}
 
+\begin{ex} Let $A$ be a $b\times a$ matrix and $B$ be a $c\times b$ matrix of real numbers. The sequence of maps
+\[ 0 \to \R^a \xra{A\cdot} \R^b \xra{B\cdot} \R^c \]
+is a left exact sequence if and only if the columns of $A$ form a basis for the null space of $B$.
+\end{ex}
+
+\sssec{Presentations} Recall that a set of elements $B$ in a module $M$ is a \DEF{free basis} if every element of $M$ can be written as a (finite) $R$-linear combination of elements of $B$ in a unique way, and a module $M$ is a \DEF{free module} if it admits a free basis (which almost never is unique, by the way). As mentioned before, a free module is isomorphic to a direct sum of copies of the ring (considered as a module), which we may write as $R^n$ or \Def{$R^{\Gamma}$} for some index $\Gamma$; such a free module has as a \DEF{standard basis} $\{$\Def{$e_\lambda$}$\}_{\lambda\in\Lambda}$ consisting the elements that have a 1 in the $\lambda$ coordinate and 0 in each of the others. Free modules are also characterized by a universal property:
+
+If $F$ free with basis $B$, then for any module $M$, and any function $f:B\to M$, there is a unique module homomorphism $\phi:F\to M$ such that the diagram commutes:
+\[\xymatrix{ & F \ar@{-->}[dr]^-{\phi} & \\ B \ar@{^{(}->}[ur]^-{\subseteq} \ar[rr]^-{f} & & M \;}\]
+i.e., any homomorphism is uniquely and freely specified by its values on the basis.
+
+Note that a set of elements $\{m_\lambda\}_{\lambda\in \Lambda} \subseteq M$ generates $M$ if and only if the homomorphism 
+\[\xymatrix@R=.7em{ R^{\Lambda} \ar[r] & M \\
+e_{\lambda} \ar@{|->}[r] & m_{\lambda} }\]
+is surjective. The kernel of such a map consists of the set of $\Lambda$-tuples $(r_\lambda)$ such that $\sum_{\lambda\in\Lambda} r_\lambda m_\lambda =0$; this is called the module of \DEF{relations} on the elements $\{m_\lambda\}$.
+
+\begin{defn} A \DEF{presentation} of a module $M$ consists of a set of elements $\{m_\lambda\}$ that generates $M$, and a set of relations on $\{m_\lambda\}$ that generates the  whole module of relations on $\{m_\lambda\}$.
+\end{defn}
+
+We can express the data of a presentation in terms of a right exact sequence. Namely, if $\{m_\lambda\}_{\lambda\in \Lambda}$ is a generating set of $M$, and $\{ (r_\lambda)_\gamma\}_{\gamma\in \Gamma}$ generates the module of relations on our generating set, then
+\[ R^{\Gamma} \to R^{\Lambda} \to M \to 0\] is a right exact sequence, where the standard basis of $R^{\Lambda}$ maps to $\{m_\lambda\}$ and the standard basis of $R^{\Gamma}$ maps to $\{ (r_\lambda)_\gamma\}$. Conversely, a right exact sequence of the form
+\[ R^{\Gamma} \to R^{\Lambda} \to M \to 0\] 
+ is equivalent to the data of a presentation.
+
+\sssec{Split exact sequences}
 
     
-    Given modules $M'$ and $M''$, we have the ``trivial'' s.e.s.
+    
+    Given modules $M'$ and $M''$, we have the ``trivial'' SES
 $$
 0 \to M' \xra{\iota} M' \oplus M'' \xra{\pi} M'' \to 0
 $$
@@ -1280,6 +1310,9 @@ If these equivalent conditions hold, we call the SES a \DEF{split exact sequence
 
 
 (1) $\Rightarrow$ (5): The main idea is that there are obvious splitting maps for the bottom SES. Define $\pi'$ to be the canonical projection $\pi':M'\oplus M''\to M', (m',m'')\mapsto m'$ and $\iota''$ to be the inclusion $\iota'':M''\to M'\oplus M'', m''\mapsto (0,m'')$. Notice that $\pi'\circ \iota =\id_{M'}$ and $\pi\circ \iota''=\id_{M''}$ and $i\circ \pi'+ \iota''\circ p=\id_{M'\oplus M''}$.
+
+
+\begin{comment}
 
 We can use this to set $q=\pi'\circ\theta$ and $j= \theta^{-1}\circ \iota''$ and check
 \begin{eqnarray*}
@@ -1486,7 +1519,7 @@ Additivity
 
 
 
-
+\begin{comment}
 
 
 
