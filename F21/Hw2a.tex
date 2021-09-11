@@ -1,0 +1,445 @@
+\documentclass{amsart}[12pt]
+\usepackage{graphicx}
+\usepackage{comment}
+\usepackage{amscd,mathabx}
+\usepackage{amssymb,setspace}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath,amscd,stmaryrd,mathrsfs}
+\usepackage[all, knot]{xy}
+\usepackage[top=1in, bottom=.9in, left=1in, right=1in]{geometry}
+\xyoption{all}
+\xyoption{arc}
+%\usepackage{hyperref}
+
+
+%\usepackage[notcite,notref]{showkeys}
+ 
+%\CompileMatricesx
+\newcommand{\edit}[1]{\marginpar{\footnotesize{#1}}}
+%\newcommand{\edit}[1]{}
+\newcommand{\rperf}[2]{\operatorname{RPerf}(#1 \into #2)}
+
+
+
+\newcommand{\vectwo}[2]{\begin{bmatrix} #1 \\ #2 \end{bmatrix}}
+
+\newcommand{\vecfour}[4]{\begin{bmatrix} #1 \\ #2 \\ #3 \\ #4 \end{bmatrix}}
+
+\newcommand{\Cat}[1]{\left<\left< \text{#1} \right>\right>}
+
+
+\def\htpy{\simeq_{\mathrm{htpc}}}
+\def\tor{\text{ or }}
+\def\fg{finitely generated~}
+
+\def\Ass{\operatorname{Ass}}
+\def\ann{\operatorname{ann}}
+\def\sign{\operatorname{sign}}
+
+\def\ob{{\mathfrak{ob}} }
+\def\BiAdd{\operatorname{BiAdd}}
+\def\BiLin{\operatorname{BiLin}}
+
+\def\Syl{\operatorname{Syl}}
+\def\span{\operatorname{span}}
+
+\def\sdp{\rtimes}
+\def\cL{\mathcal L}
+\def\cR{\mathcal R}
+
+
+
+\def\ay{??}
+\def\Aut{\operatorname{Aut}}
+\def\End{\operatorname{End}}
+\def\Mat{\operatorname{Mat}}
+
+
+\def\a{\alpha}
+
+
+
+\def\etale{\'etale~}
+\def\tW{\tilde{W}}
+\def\tH{\tilde{H}}
+\def\tC{\tilde{C}}
+\def\tS{\tilde{S}}
+\def\tX{\tilde{X}}
+\def\tZ{\tilde{Z}}
+\def\HBM{H^{\text{BM}}}
+\def\tHBM{\tilde{H}^{\text{BM}}}
+\def\Hc{H_{\text{c}}}
+\def\Hs{H_{\text{sing}}}
+\def\cHs{{\mathcal H}_{\text{sing}}}
+\def\sing{{\text{sing}}}
+\def\Hms{H^{\text{sing}}}
+\def\Hm{\Hms}
+\def\tHms{\tilde{H}^{\text{sing}}}
+\def\Grass{\operatorname{Grass}}
+\def\image{\operatorname{im}}
+\def\im{\image}
+\def\ker{\operatorname{ker}}
+\def\cone{\operatorname{cone}}
+\newcommand{\Hom}{\mathrm{Hom}}
+
+
+\def\ku{ku}
+\def\bbu{\bf bu}
+\def\KR{K{\mathbb R}}
+
+\def\CW{\underline{CW}}
+\def\cP{\mathcal P}
+\def\cE{\mathcal E}
+\def\cL{\mathcal L}
+\def\cJ{\mathcal J}
+\def\cJmor{\cJ^\mor}
+\def\ctJ{\tilde{\mathcal J}}
+\def\tPhi{\tilde{\Phi}}
+\def\cA{\mathcal A}
+\def\cB{\mathcal B}
+\def\cC{\mathcal C}
+\def\cZ{\mathcal Z}
+\def\cD{\mathcal D}
+\def\cF{\mathcal F}
+\def\cG{\mathcal G}
+\def\cO{\mathcal O}
+\def\cI{\mathcal I}
+\def\cS{\mathcal S}
+\def\cT{\mathcal T}
+\def\cM{\mathcal M}
+\def\cN{\mathcal N}
+\def\cMpc{{\mathcal M}_{pc}}
+\def\cMpctf{{\mathcal M}_{pctf}}
+\def\L{\Lambda}
+
+\def\sA{\mathscr A}
+\def\sB{\mathscr B}
+\def\sC{\mathscr C}
+\def\sZ{\mathscr  Z}
+\def\sD{\mathscr  D}
+\def\sF{\mathscr  F}
+\def\sG{\mathscr G}
+\def\sO{\mathscr  O}
+\def\sI{\mathscr I}
+\def\sS{\mathscr S}
+\def\sT{\mathscr  T}
+\def\sM{\mathscr M}
+\def\sN{\mathscr N}
+
+
+
+\def\Ext{\operatorname{Ext}}
+ \def\ext{\operatorname{ext}}
+
+
+
+\def\ov#1{{\overline{#1}}}
+
+\def\vecthree#1#2#3{\begin{bmatrix} #1 \\ #2 \\ #3 \end{bmatrix}}
+
+\def\tOmega{\tilde{\Omega}}
+\def\tDelta{\tilde{\Delta}}
+\def\tSigma{\tilde{\Sigma}}
+\def\tsigma{\tilde{\sigma}}
+
+
+\def\d{\delta}
+\def\td{\tilde{\delta}}
+
+\def\e{\epsilon}
+\def\nsg{\unlhd}
+\def\pnsg{\lhd}
+
+\newcommand{\tensor}{\otimes}
+\newcommand{\homotopic}{\simeq}
+\newcommand{\homeq}{\cong}
+\newcommand{\iso}{\approx}
+
+\DeclareMathOperator{\ho}{Ho}
+\DeclareMathOperator*{\colim}{colim}
+
+
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\H}{\mathbb{H}}
+
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bM}{\mathbb{M}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\bH}{{\mathbb{H}}}
+\newcommand{\G}{\mathbb{G}}
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\bL}{{\mathbb{L}}}
+\newcommand{\R}{{\mathbb{R}}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\bK}{\mathbb{K}}
+
+
+\newcommand{\bD}{\mathbb{D}}
+\newcommand{\bS}{\mathbb{S}}
+
+\newcommand{\bN}{\mathbb{N}}
+
+
+\newcommand{\bG}{\mathbb{G}}
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\W}{\mathcal{W}}
+
+
+
+\newcommand{\itilde}{\tilde{\imath}}
+\newcommand{\jtilde}{\tilde{\jmath}}
+\newcommand{\ihat}{\hat{\imath}}
+\newcommand{\jhat}{\hat{\jmath}}
+
+\newcommand{\fc}{{\mathfrak c}}
+\newcommand{\fp}{{\mathfrak p}}
+\newcommand{\fm}{{\mathfrak m}}
+\newcommand{\fn}{{\mathfrak n}}
+\newcommand{\fq}{{\mathfrak q}}
+
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\dual}{\vee}
+
+\newcommand{\DEF}[1]{\emph{#1}\index{#1}}
+\newcommand{\Def}[1]{#1 \index{#1}}
+
+
+% The following causes equations to be numbered within sections
+\numberwithin{equation}{section}
+
+
+\theoremstyle{plain} %% This is the default, anyway
+\newtheorem{thm}[equation]{Theorem}
+\newtheorem{thmdef}[equation]{TheoremDefinition}
+\newtheorem{introthm}{Theorem}
+\newtheorem{introcor}[introthm]{Corollary}
+\newtheorem*{introthm*}{Theorem}
+\newtheorem{question}{Question}
+\newtheorem{cor}[equation]{Corollary}
+\newtheorem{por}[equation]{Porism}
+\newtheorem{lem}[equation]{Lemma}
+\newtheorem{lemminition}[equation]{Lemminition}
+\newtheorem{prop}[equation]{Proposition}
+\newtheorem{porism}[equation]{Porism}
+
+\newtheorem{conj}[equation]{Conjecture}
+\newtheorem{quest}[equation]{Question}
+
+\theoremstyle{definition}
+\newtheorem{defn}[equation]{Definition}
+\newtheorem{chunk}[equation]{}
+\newtheorem{ex}[equation]{Example}
+
+\newtheorem{exer}[equation]{Optional Exercise}
+
+\theoremstyle{remark}
+\newtheorem{rem}[equation]{Remark}
+
+\newtheorem{notation}[equation]{Notation}
+\newtheorem{terminology}[equation]{Terminology}
+
+
+
+\renewcommand{\sec}[1]{\section{#1}}
+\newcommand{\ssec}[1]{\subsection{#1}}
+\newcommand{\sssec}[1]{\subsubsection{#1}}
+
+\newcommand{\br}[1]{\lbrace \, #1 \, \rbrace}
+\newcommand{\li}{ < \infty}
+\newcommand{\quis}{\simeq}
+\newcommand{\xra}[1]{\xrightarrow{#1}}
+\newcommand{\xla}[1]{\xleftarrow{#1}}
+\newcommand{\xlra}[1]{\overset{#1}{\longleftrightarrow}}
+
+\newcommand{\xroa}[1]{\overset{#1}{\twoheadrightarrow}}
+\newcommand{\xria}[1]{\overset{#1}{\hookrightarrow}}
+\newcommand{\ps}[1]{\mathbb{P}_{#1}^{\text{c}-1}}
+
+
+
+
+\def\and{{ \text{ and } }}
+\def\oor{{ \text{ or } }}
+
+\def\Perm{\operatorname{Perm}}
+\newcommand{\Ss}{\mathbb{S}}
+
+\def\Op{\operatorname{Op}}
+\def\res{\operatorname{res}}
+\def\ind{\operatorname{ind}}
+
+\def\sign{{\mathrm{sign}}}
+\def\naive{{\mathrm{naive}}}
+\def\l{\lambda}
+
+
+\def\ov#1{\overline{#1}}
+\def\cV{{\mathcal V}}
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+
+\newcommand{\chara}{\operatorname{char}}
+\newcommand{\Kos}{\operatorname{Kos}}
+\newcommand{\opp}{\operatorname{opp}}
+\newcommand{\perf}{\operatorname{perf}}
+
+\newcommand{\Fun}{\operatorname{Fun}}
+\newcommand{\GL}{\operatorname{GL}}
+\newcommand{\SL}{\operatorname{SL}}
+\def\o{\omega}
+\def\oo{\overline{\omega}}
+
+\def\cont{\operatorname{cont}}
+\def\te{\tilde{e}}
+\def\gcd{\operatorname{gcd}}
+
+\def\stab{\operatorname{stab}}
+
+\def\va{\underline{a}}
+
+\def\ua{\underline{a}}
+\def\ub{\underline{b}}
+
+
+\newcommand{\Ob}{\mathrm{Ob}}
+\newcommand{\Set}{\mathbf{Set}}
+\newcommand{\Grp}{\mathbf{Grp}}
+\newcommand{\Ab}{\mathbf{Ab}}
+\newcommand{\Sgrp}{\mathbf{Sgrp}}
+\newcommand{\Ring}{\mathbf{Ring}}
+\newcommand{\Fld}{\mathbf{Fld}}
+\newcommand{\cRing}{\mathbf{cRing}}
+\newcommand{\Mod}[1]{#1-\mathbf{Mod}}
+\newcommand{\vs}[1]{#1-\mathbf{vect}}
+\newcommand{\Vs}[1]{#1-\mathbf{Vect}}
+\newcommand{\vsp}[1]{#1-\mathbf{vect}^+}
+\newcommand{\Top}{\mathbf{Top}}
+\newcommand{\Setp}{\mathbf{Set}_*}
+\newcommand{\Alg}[1]{#1-\mathbf{Alg}}
+\newcommand{\cAlg}[1]{#1-\mathbf{cAlg}}
+\newcommand{\PO}{\mathbf{PO}}
+\newcommand{\Cont}{\mathrm{Cont}}
+\newcommand{\MaT}[1]{\mathbf{Mat}_{#1}}
+
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+
+\makeindex
+\title{Assignment \#2}
+
+
+\begin{document}
+\onehalfspacing
+
+\maketitle
+
+
+
+
+\begin{enumerate}
+
+\item Opposites: Let $R$ be a ring.
+\begin{enumerate}
+\item Prove that there is an isomorphism\footnote{Hint: Your map should involve transposes.} $M_n(R^\mathrm{op}) \cong M_n(R)^{\mathrm{op}}$.
+\item Prove that there is an isomorphism $\End_R(R) \cong R^{\mathrm{op}}$.
+\end{enumerate}
+
+\
+
+\item A module is \emph{finitely generated} if it has a finite generating set, and \emph{finitely presented} if it as a finite generating set for which the module of relations is finitely generated. Let 
+\[0 \to M' \xra{i} M \xra{p} M'' \to 0\] be a short exact sequence of $R$-modules.
+\begin{enumerate}
+\item Show that if $M'$ and $M''$ are finitely generated, then $M$ is finitely generated.
+\item[(b*)] Show that if $M'$ and $M''$ are finitely presented, then $M$ is finitely presented. 
+\end{enumerate}
+
+\
+
+
+\item Fix a field $K$. The collection of pairs $(V,W)$ where $W\subseteq V$ are vector spaces forms a category $\sC$, where the morphisms from $(V,W)\to(V',W')$ are linear transformations $\phi:V\to V'$ such that $\phi(W)\subseteq W'$. There are covariant functors $F,G:\sC \to \Vs{K}$ given by
+\[\begin{aligned} &F(V,W)= V  \quad	&F(\phi)&=\phi \\
+&G(V,W) = W\oplus V/W 	\quad	 &G(\phi)&= \phi|_W \oplus \overline{\phi}\end{aligned}\]
+where $\overline{\phi}:V/W\to V'/W'$ is the induced map $\overline{\phi}(v+W)=\phi(v) + W'$ on the quotient spaces.
+\begin{enumerate}
+\item Show that for every $(V,W)\in \Ob(\sC)$, there is an isomorphism of vector spaces $F(V) \cong G(V)$.
+\item Let $W=K\oplus \{0\} \subseteq V= K^2$, and take $\phi:K^2 \to K^2$ to be the map given by the matrix $\begin{bmatrix} 1 & 1 \\ 0 & 1\end{bmatrix}$. Check that $\phi$ is a morphism in $\sC$, and compute $F(\phi)$ and $G(\phi)$.
+\item Show that there is no natural isomorphism\footnote{Moral: Every short exact sequence of vector spaces splits, but \emph{not} naturally!} $\eta: F\Rightarrow G$.
+\end{enumerate}
+
+\
+
+\item A covariant functor $F:\Mod{R} \to \Mod{S}$ is \emph{additive} if for every $M,N\in \Mod{R}$, the map
+\[\xymatrix@R=.2em{ \Hom_R(M,N) \ar[r] & \Hom_S(F(M),F(N)) \\ f \ar@{|->}[r] & F(f) }\]
+is a homomorphism of abelian groups. Show that if $F$ is an additive covariant functor, and \[ 0 \to M' \xra{i} M \xra{p} M'' \to 0\]
+is a split exact sequence, then
+\[ 0 \to F(M') \xra{F(i)} F(M) \xra{F(p)} F(M'') \to 0\]
+is exact\footnote{Moral: Functors (additive or not) between module categories don't always preserve short exact sequences, but (at least additive functors) always preserve \emph{split} exact sequences.}.
+
+\
+
+\item The localization functor:
+
+ Let $R$ be a commutative ring. A subset $S$ of $R$ is \emph{multiplicatively closed} if $1 \in S$ and $s,t \in S \Rightarrow st \in S$. Define a new ring $S^{-1}R$ as follows:
+\[S^{-1}R =\left \{\frac{r}{s} \mid  r \in R, s \in S \right \}/\sim\]
+where $\sim$ is the equivalence relation  $\frac{r}{s} \sim \frac{r'}{s'}$ if and only if $t(rs' - r's) = 0$ for some $t \in S$.
+This\footnote{This generalizes the construction of the fraction field of a domain $R$, where $S=R\smallsetminus \{0\}$ gives $S^{-1}R={\rm Frac}(R)$.} set is a ring (a fact you need not check) with respect to the operations
+\[
+\frac{r}{s}+\frac{r'}{s'}=\frac{rs'+r's}{ss'} \qquad
+\frac{r}{s}\cdot\frac{r'}{s'}=\frac{rr'}{ss'}.
+\]
+For an $R$-module $M$ define  
+\[S^{-1}M =\left \{\frac{m}{s} \mid  m \in M, s \in S \right \}/\sim\]
+where $\sim$ is the equivalence relation  $\frac{m}{s} \sim \frac{m'}{s'}$ if and only if $t(ms' - m's) = 0$ for some $t \in S$.
+Then $S^{-1}M$ is an $S^{-1}R$-module (a fact you need not check) via the operations
+\[
+\frac{m}{s}+\frac{m'}{s'}=\frac{ms'+m's}{ss'} \qquad
+\frac{r}{s}\cdot\frac{m}{s'}=\frac{rm}{ss'}.
+\]
+\begin{enumerate}
+\item Show that there is a functor $S^{-1}:\Mod{R}\to \Mod{{S^{-1}R}}$ that on objects maps $M\mapsto S^{-1}M$ and on morphisms maps $f\mapsto S^{-1}f$ where $(S^{-1}f)(\frac{m}{s})=\frac{f(m)}{s}$.
+\item Prove that this functor is exact.
+\end{enumerate}
+
+\
+
+
+\item[(6*)]
+\begin{enumerate}
+\item We only defined a notion of natural transformation/isomorphism for $F,G$ both covariant or $F,G$ both contravariant. Come up with a definition of natural transformation/isomorphism for $F$ covariant and $G$ contravariant.
+\item Show that with this definition, for a field $K$, the functors $1_{\vs{K}},(-)^*:\vs{K}\to \vs{K}$ are still not naturally isomorphic.
+\item Let $K-\mathbf{inn}$ where 
+\begin{itemize}
+\item objects are finite dimensional $K$-vector spaces equipped with a nondegenerate\footnote{That is, for every $v\in V\smallsetminus\{0\}$, there is some $v'\in V$ such that $\langle v, v' \rangle_V\neq 0$.} symmetric bilinear form $\langle - , - \rangle_V: V\times V \to K$, and the 
+\item morphisms are linear maps $\phi:V\to W$ such that $\langle v, v' \rangle_V = \langle \phi(v) , \phi(v')\rangle_W$.
+\end{itemize}
+ Show that the functors $F,G:K-\mathbf{inn}\to \vs{K}$ given by
+\[\begin{aligned} &F(V)= V  \quad	&F(\phi)&=\phi \\
+&G(V) = V* 	\quad	 &G(\phi)&= \phi^*\end{aligned}\]
+ are naturally isomorphic.
+\end{enumerate}
+\end{enumerate}
+
+
+
+\end{document}
+
+
+
+
+
+
+
+  
+ 
+
+
