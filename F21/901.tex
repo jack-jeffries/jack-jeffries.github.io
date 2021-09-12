@@ -1312,7 +1312,7 @@ If these equivalent conditions hold, we call the SES a \DEF{split exact sequence
 (1) $\Rightarrow$ (5): The main idea is that there are obvious splitting maps for the bottom SES. Define $\pi'$ to be the canonical projection $\pi':M'\oplus M''\to M', (m',m'')\mapsto m'$ and $\iota''$ to be the inclusion $\iota'':M''\to M'\oplus M'', m''\mapsto (0,m'')$. Notice that $\pi'\circ \iota =\id_{M'}$ and $\pi\circ \iota''=\id_{M''}$ and $i\circ \pi'+ \iota''\circ p=\id_{M'\oplus M''}$.
 
 
-\begin{comment}
+
 
 We can use this to set $q=\pi'\circ\theta$ and $j= \theta^{-1}\circ \iota''$ and check
 \begin{eqnarray*}
@@ -1434,7 +1434,16 @@ Let's check the associativity property for the action: given $s,s'\in S$, \[(s s
 The other axioms are straightforward.
 \end{proof}
 
+
+ 
+
 The bonus module structures in case (3) are often useful, even for commutative rings. However, for many statements below we will just focus on cases (1) and (2) above for clarity.
+
+\begin{ex} Let $K$ be a field.
+Since $K$ is commutative, $\Hom_K(K,K[x])$ and $\Hom_K(K[x],K)$ are $K$-vector spaces.
+The polynomial ring $K[x]$ is a $(K,K[x])$-bimodule. This gives $\Hom_K(K,K[x])$ a $K[x]$-module structure by postmultiplication: e.g., if $\alpha$ is the $K$-linear map such that $\alpha(1)=f(x)$, and $g(x)\in K[x]$, then $g(x) \alpha$ is the map that sends $1$ to $f(x)g(x)$.
+Likewise, $\Hom_K(K[x],K)$ a $K[x]$-module structure by premultiplication: e.g., if $\alpha$ is the $K$-linear map such that $\alpha(x^i)=\gamma_i\in K$ , then $x \alpha$ is the map that sends $x^i$ to $\gamma_{i+1}$.
+\end{ex}
 
 \sssec{Hom as functors}
 
@@ -1474,20 +1483,52 @@ If $R$ is commutative,
 We also need to see that these satisfy the functor axioms. We have $(1_A)^*(g) = g \circ 1_A = g$, so $(1_A)^*$ is the identity map on $\Hom_R(A,M)$. Given $A\xra{g}B\xra{f} C$, and $h\in \Hom_R(C,M)$, \[(fg)^* (h) =h\circ  f\circ g = f^*(h) \circ g = g^*(f^*(h)) = (g^* \circ f^*)(h).\qedhere\]
 \end{proof}
 
-\sssec{Examples of Hom modules}
+\sssec{Examples of Hom}
+
+\begin{ex} Let $R$ be a ring. Then, by the universal property of free modules, since $\{1\}$ is a free basis for $R$ as an $R$-module, the map
+\[\xymatrix@R=.5em { \Hom_R(R,M) \ar[r]^-{\psi_M} &M \\
+\phi \ar@{|->}[r] &\phi(1) }\]
+is a bijection. Moreover, this is an isomorphism of abelian groups in general, and of $R$-modules in the commutative case:
+\[ \psi_M(\alpha+\beta) = (\alpha+\beta)(1) = \alpha(1) + \beta(1) = \psi_M(\alpha) + \psi_M(\beta)\]
+\[\psi_M(r\alpha) = (r\alpha)(1) = r\alpha(1) = r\psi_M(\alpha).\]
+Even better, in the commutative case, the collection of isomorphisms $\psi_M$ form a natural isomorphism $\psi: \Hom_R(R,-) \Rightarrow 1_{\Mod{R}}$. For this, we need to check that, given $\beta:M\to N$, the following diagram commutes:
+\[\xymatrix{ \Hom_R(R,M) \ar[r]^-{\beta_*} \ar[d]^-{\psi_M} & \Hom_R(R,N) \ar[d]^-{\psi_N}\\ M \ar[r]^-{\beta}  & N.}\]
+Along either path, we get $\alpha \mapsto \beta(\alpha(1))$, so this is indeed the case.
+\end{ex}
+
 
 \begin{ex}
-Let $R$ be a ring, and $M$ a left $R$-module. Then $\Hom_R(R,M)$ is a left $R$-module as well: 
-\begin{itemize}
-\item when $R$ is commutative the action is by $(r \phi)(s) = \phi(rs) = r\phi(s)$
-\item in general, the $R$-module structure comes from the right $R$-module structure on $R$, so we have to premultiply the input on the right: $(r\phi)(s) = \phi(sr)$, but in the commutative case, it's the same thing as the above.
-\end{itemize}
- There is an isomorphism
-\[\xymatrix@R=.6em { \Hom_R(R,M) \ar[r]^-{\psi} &M \\
-\phi \ar@{|->}[r] &\phi(1)\\
-(r\mapsto rm) & \ar@{|->}[l] m }\]
-This is injective, since $\phi$ is determined by the image of $1$, and surjective since the map $r \mapsto rm$ is $R$-linear for any $m\in M$. To see that $\psi$ is $R$-linear, we have $\psi(r\phi)=(r\phi)(1) = \phi(1\,r) = \phi(r) = r \phi(1) = r \psi(\phi)$.
+Similarly, if $F=R^{\Lambda}$ is a free module, then $\Hom_R(R^{\Lambda},M) \cong M^{\Lambda}$ by the map that sends a morphism to its tuple of values on the standard basis: as abelian groups, and as $R$-modules in the commutative case. 
+
+We can interpret the right-hand side as the values of a functor: set $F(M) = M^{\Lambda}$, and for $f:M\to N$, set $F(f)$ to be the map given by $f$ on each coordinate. Interpreted like so, the isomorphisms form a natural isomorphism.
 \end{ex}
+
+\begin{ex} If $R^{\Gamma}$ and $R^{\Lambda}$ are free modules, then every $R$-linear homomorphism $\alpha:R^{\Gamma} \to R^{\Lambda}$ is given by left multiplication by the (possibly infinite) $\Lambda \times \Gamma$ matrix where the $\gamma$ column is the $\Lambda$-tuple $(\alpha(e_\gamma))_\lambda$.
+\end{ex}
+
+
+\begin{exer} Show that when $R$ is not necessarily commutative, if we give $\Hom_R(R^\Lambda,M)$ the $R$-module structure via the $(R,R)$-bimodule structure on $R^{\Lambda}$, the isomorphisms $\Hom_R(R^{\Lambda},M)\cong M^{\Lambda}$ are natrual isomorphisms of $R$-modules.
+\end{exer}
+
+\begin{ex} Let $R$ be a commutative ring, and consider the module $R/I$ for some ideal $I$. For every module $M$, there is an isomorphism $\Hom_R(R/I,M) \cong (0 :_M I)$, where $(0 :_M I)$ is the set of elements $m\in M$ such that $Im=0$.
+\end{ex}
+
+\begin{ex} For a field $K$, the functor $\Hom_K(-,K)$ is exactly the ``dual'' functor $(-)^*$.
+\end{ex}
+
+%
+%\begin{ex}
+%Let $R$ be a ring, and $M$ a left $R$-module. Then $\Hom_R(R,M)$ is a left $R$-module as well: 
+%\begin{itemize}
+%\item when $R$ is commutative the action is by $(r \phi)(s) = \phi(rs) = r\phi(s)$
+%\item in general, the $R$-module structure comes from the right $R$-module structure on $R$, so we have to premultiply the input on the right: $(r\phi)(s) = \phi(sr)$, but in the commutative case, it's the same thing as the above.
+%\end{itemize}
+% There is an isomorphism
+%\[\xymatrix@R=.6em { \Hom_R(R,M) \ar[r]^-{\psi} &M \\
+%\phi \ar@{|->}[r] &\phi(1)\\
+%(r\mapsto rm) & \ar@{|->}[l] m }\]
+%This is injective, since $\phi$ is determined by the image of $1$, and surjective since the map $r \mapsto rm$ is $R$-linear for any $m\in M$. To see that $\psi$ is $R$-linear, we have $\psi(r\phi)=(r\phi)(1) = \phi(1\,r) = \phi(r) = r \phi(1) = r \psi(\phi)$.
+%\end{ex}
 
 \begin{prop}
 Let $\{M_\lambda\}_{\lambda\in \Lambda}$ be a family of $R$-modules, and $N$ be an  $R$-module.
@@ -1507,24 +1548,87 @@ Similarly, since $\prod_{\lambda\in \Lambda} M_\lambda$ is the product of $\{M_\
 and one verifies the additivity / linearity of this map.
 \end{proof}
 
-Hom and direct sums and products
+\sec{Exact functors and left exactness of Hom}
+
+\begin{defn} Let $R,S$ be rings. A covariant functor $F:\Mod{R} \to \Mod{S}$ is \DEF{additive} if the function
+\[\xymatrix@R=.5em{ \Hom_R(M,N) \ar[r] & \Hom_S(F(M),F(N)) \\ f \ar@{|->}[r] & F(f)}\]
+is a homomorphism of abelian groups. Likewise, a contravariant functor $G:\Mod{R} \to \Mod{S}$ is {additive} if the function
+\[\xymatrix@R=.5em{ \Hom_R(M,N) \ar[r] & \Hom_S(F(N),F(M)) \\ f \ar@{|->}[r] & F(f)}\]
+is a homomorphism of abelian groups.
+\end{defn}
 
 
+Additive functors preserve a number of basic properties, e.g., zero morphisms go to zero morphisms, and the zero module maps to the zero module (since it's characterized by the fact that its identity map is its zero map).
+
+\begin{exer} The covariant and contravariant Hom functors are additive functors.
+\end{exer}
+
+\begin{defn} Let $F:\Mod{R}\to\Mod{S}$ be an additive covariant functor.
+\begin{itemize}
+\item $F$ is \DEF{right exact}  if
+whenever
+$$
+M' \xra{g} M \xra{p} M'' \to 0
+$$
+is exact, then so is
+$$
+F(M') \xra{F(g)}  F(M) \xra{F(p)} F(M'') \to 0.
+$$
+ (Recall $F(0) = 0$ since $F$ is additive.)
+
+\item $F$ is \DEF{left exact} if 
+whenever
+$$
+0 \to M' \xra{g} M \xra{p} M'' 
+$$
+is exact, then so is
+$$
+0 \to F(M') \xra{F(g)}  F(M) \xra{F(p)} F(M'').
+$$
+
+\item $F$ is {\em exact} if it is both left and right exact.
+\end{itemize}
+\end{defn}
+
+\begin{rem}
+An exact functor takes any SES to a SES.
+\end{rem}
+
+\begin{defn} Let $G:\Mod{R}\to\Mod{S}$ be an additive contravariant functor.
+\begin{itemize}
+\item $G$ is \DEF{right exact}  if
+whenever
+$$
+0 \to M'' \xra{g} M \xra{p} M'
+$$
+is exact, then so is
+$$
+G(M') \xra{G(g)}  G(M) \xra{F(p)} G(M'') \to 0.
+$$
+
+\item $G$ is \DEF{left exact} if 
+whenever
+$$
+M'' \xra{g} M \xra{p} M' \to 0
+$$
+is exact, then so is
+$$
+0 \to G(M') \xra{G(g)}  G(M) \xra{G(p)} G(M'').
+$$
+
+\item $G$ is \DEF{exact} if it is additive and both left and right exact.
+\end{itemize}
+\end{defn}
 
 
-
-Hom as functors
-
-Additivity
-
+\begin{thm} Let $M$ be an $R$-module.
+\begin{enumerate}
+\item The functor $\Hom_R(M,-)$ is left exact.
+\item The functor $\Hom_R(-,M)$ is left exact.
+\end{enumerate}
 
 
 \begin{comment}
-
-
-
-Exactness of Hom functors
-
 
 \ssec{Projective and injective modules}
 
