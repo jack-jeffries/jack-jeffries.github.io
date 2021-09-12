@@ -1383,61 +1383,7 @@ Now assume that $r<0$. By Theorem~7.1, there is some $j\in \N$ such that $j>-r$,
 \end{framed}
 \end{enumerate}\end{enumerate}
 
-\begin{comment}
-
-A real number is called {\em irrational} if it is not rational. For example,  $\sqrt{2}$ is irrational, a fact we have proven: we proved it exists as a real number, using the
-axioms, and earlier we showed that it cannot be rational. 
-
-
-\begin{cor}[Density of the Irrational Numbers] 
-Between any two distinct real numbers there is an irrational number; more precisely, if $x,y \in \R$ and $x < y$, then there
-  exists an irrational number $z$ such that $x < z < y$.
-\end{cor}
-
-\begin{proof} We will prove this by using the Density of the Rational Numbers along with the fact that we know of at least one irrational number: $\sqrt{2}$.
-
-Suppose $x,y \in \R$ and $x < y$. Then $x - \sqrt{2} < y - \sqrt{2}$ and, by the Density of Rational Numbers, there is a rational number $q$ such that $x -
-\sqrt{2} < q < y - \sqrt{2}$. By adding though by $\sqrt{2}$ we obtain
-$$
-x < q + \sqrt{2} < y.
-$$
- As we showed earlier, the sum of a rational and
- an irrational number is always irrational. In particular, 
-$q + \sqrt{2}$ is irrational. By letting $z = q + \sqrt{2}$ we have
-proven the Corollary. 
-\end{proof}
-
-As with rational numbers, between any two distinct real numbers there are in fact infinitely many irrational numbers.
-(In particular, there are infinitely many irrational 
-numbers, which is not something we've proven up until this point.)
-
-\section*{Discussion Questions, February 12}
-
-
-\begin{enumerate}
-	\item Let $S\subseteq \R$ be bounded above. Prove that there are infinitely many distinct upper bounds for $S$.
-	
-	\begin{framed}
-		Let $S\subseteq \R$ be bounded above. Let $b$ be an upper bound for $S$. For any $n\in \N$, $b+n$ is an upper bound for $S$, since, given $s\in S$, we have $s \leq b \leq b+n$. As the set of numbers of the form $b+n$ for $n\in \N$ is infinite, we have exhibited infinitely many upper bounds.
-		\end{framed}
-	
-	\item Let $S\subseteq \R$ be nonempty and bounded above. Let $T={\{ 3x \ | \ x\in S\}}$.  Prove that $\sup(T) = 3 \sup(S)$.
-	
-	\
-	
-	\item Compute the supremum of the set $S=\{ \frac{2n-1}{n+1} \ | \ n\in \N\}$, and prove your answer is correct.
-	\begin{framed}
-		We will show that $2$ is the supremum of this set.
-		
-		 First we show that $2$ is an upper bound. Let $s\in S$. We can write $s=\frac{2n-1}{n+1}$ for some $n\in \N$. We then have $s=\frac{2n-1}{n+1}\leq \frac{2n+2}{n+1} = 2$, as required.
-		 
-		 Now, let $b$ be an upper bound for $S$. We need to show that $b\geq 2$. To obtain a contradiction, suppose that $b<2$, and let $\e=2-b$.  We will show that there exists some element of $s$ that is greater than $b$, which will be the desired contradiction. Since $\e>0$, by Theorem 5.1, there exists $n\in \N$ such that $n>\frac{3}{\e}$. Multiplying both sides by $\frac{\e}{n}$, this implies that $\e > \frac{3}{n}$. Then, $\frac{2n-1}{n+1}=2 - \frac{3}{n+1} > 2 - \frac{3}{n} > 2-\e = b$. This contradicts that $b$ is an upper bound for $S$, so we must have $b\geq 2$, as required.
-		 \end{framed}
-\end{enumerate}
-
-
-\section{Monday, February 15}
-
+\Sept{13}
 
 
 We will move on to next main topic of this class soon: sequences. But first, it is useful to talk a bit about absolute values.
