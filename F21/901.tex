@@ -1311,7 +1311,7 @@ If these equivalent conditions hold, we call the SES a \DEF{split exact sequence
 
 (1) $\Rightarrow$ (5): The main idea is that there are obvious splitting maps for the bottom SES. Define $\pi'$ to be the canonical projection $\pi':M'\oplus M''\to M', (m',m'')\mapsto m'$ and $\iota''$ to be the inclusion $\iota'':M''\to M'\oplus M'', m''\mapsto (0,m'')$. Notice that $\pi'\circ \iota =\id_{M'}$ and $\pi\circ \iota''=\id_{M''}$ and $i\circ \pi'+ \iota''\circ p=\id_{M'\oplus M''}$.
 
-
+\Sept{13}
 
 
 We can use this to set $q=\pi'\circ\theta$ and $j= \theta^{-1}\circ \iota''$ and check
@@ -1360,12 +1360,7 @@ Since $i$ has a left inverse, it is injective, and since $p$ has a right inverse
 
 
 
-\begin{ex} Suppose $R = k$ is a field. Then every short exact sequence of $R$-modules splits. We could verify any of the four equivalent conditions
-  directly; I'll do (3). Given a surjection $p: V \onto V''$ of $k$-vector spaces, pick a basis $B$ of $V''$. For each $w \in B$ pick any element
-  $\tilde{w}$ of $V$ such that $p(\tilde{w}) = w$. The  function $w \mapsto \tilde{w}$ from $B$ to $V$ 
-extends uniquely to a $k$-linear map $j: V'' \to V$ such that $j(w) = \tilde{w}$ for all $w \in B$. The composition
-  $p \circ j$ is the identity on $V''$ since it is the identity on the basis $B$ by construction.
-\end{ex}
+
 
 \begin{rem} The proof in the previous example actually shows that, for any ring $R$, a   SES whose right-most term is free is split exact.
 \end{rem}
@@ -1389,6 +1384,11 @@ $$
 0 \to \Z \xra{2} \Z \to \Z/2 \to 0
 $$
 is an exact, but not split exact, sequence of $\Z$-modules.
+\end{ex}
+
+\begin{ex} Suppose $R = k$ is a field. Then every short exact sequence of $R$-modules 
+\[0 \to W\to V \to V/W \to 0\]
+splits.
 \end{ex}
 
 
@@ -1444,6 +1444,10 @@ Since $K$ is commutative, $\Hom_K(K,K[x])$ and $\Hom_K(K[x],K)$ are $K$-vector s
 The polynomial ring $K[x]$ is a $(K,K[x])$-bimodule. This gives $\Hom_K(K,K[x])$ a $K[x]$-module structure by postmultiplication: e.g., if $\alpha$ is the $K$-linear map such that $\alpha(1)=f(x)$, and $g(x)\in K[x]$, then $g(x) \alpha$ is the map that sends $1$ to $f(x)g(x)$.
 Likewise, $\Hom_K(K[x],K)$ a $K[x]$-module structure by premultiplication: e.g., if $\alpha$ is the $K$-linear map such that $\alpha(x^i)=\gamma_i\in K$ , then $x \alpha$ is the map that sends $x^i$ to $\gamma_{i+1}$.
 \end{ex}
+
+
+
+\begin{comment}
 
 \sssec{Hom as functors}
 
