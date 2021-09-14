@@ -1447,7 +1447,7 @@ Likewise, $\Hom_K(K[x],K)$ a $K[x]$-module structure by premultiplication: e.g.,
 
 
 
-\begin{comment}
+\Sept{15}
 
 \sssec{Hom as functors}
 
@@ -1457,17 +1457,19 @@ that maps each module $A$ to  $\Hom_R(M,A)$, and each morphism $A\xra{f} B$ to t
 		$$\xymatrix@R=1mm{\Hom_{R}(M,A) \ar[r]^{f_*} & \Hom_{R}(M,B) \\g \ar@{|->}[r] & f\circ g
 		\\ M \xrightarrow{g}A & M \xrightarrow{g} A \xrightarrow{f} B.  }$$
 		
-	If $R$ is commutative, then we consider $\Hom_R(M,-)$ as a functor from $ \Mod{R} \to \Mod{R}$ by the same rule.
+If $R$ is commutative, then we consider $\Hom_R(M,-)$ as a functor from $ \Mod{R} \to \Mod{R}$ by the same rule.
 \end{defn}
 There are some things to check to verify that this is a functor.
 \begin{proof}
 We need to check that $f_*$ is a valid morphism in $\Ab$, or in $\Mod{R}$ in the commutative case.
-Given $g,h\in \Hom_{R}(A,B)$, we have \[f_*(g)(x+y)=f(g(x+y)) = f(g(x)) + f(g(y)) = f_*(g)(x) + f_*(g)(y).\]
+Given $g,h\in \Hom_{R}(A,B)$, we have \[f_*(g+h)(m)=f((g+h)(m))=f(g(m)+h(m))=f(g(m))+f(h(m)) = f_*(g)(m) + f_*(h)(m).\]
 If $R$ is commutative,
-\[ f_*(g)(rx) = f(g(rx)) = r f(g(x)) = r f_*(g)(x).\]
+\[ f_*(rg)(m) = f(g(rm)) = r f(g(m)) = (r f_*)(g)(m).\]
 
 We also need to see that these satisfy the functor axioms. We have $(1_A)_*(g) = 1_A \circ g = g$, so $(1_A)_*$ is the identity map on $\Hom_R(M,A)$. Given $A\xra{g}B\xra{f} C$, and $h\in \Hom_R(M,A)$, \[(fg)_* (h) = f\circ g \circ h = f \circ (g_*(h))= f^*(g^*(h)) = (f_* \circ g_*)(h).\qedhere\]
 \end{proof}
+
+\begin{rem}If $M$ is an $(R,S)$-bimodule, then consider $\Hom_R(M,-)$ as a functor from $ \Mod{R} \to \Mod{S}$ by the same rule.\end{rem}
 
 \begin{defn}[Contravariant Hom] Let $R$ be a ring and $M$ be an $R$-module. There is a contravariant functor \index{$\Hom_R(-,M)$}\index{covariant Hom functor}
 \[ \Hom_R(-,M) : \Mod{R} \to \Ab\]
@@ -1480,12 +1482,14 @@ that maps each module $A$ to  $\Hom_R(A,M)$, and each morphism $A\xra{f} B$ to t
 There are some things to check to verify that this is a functor.
 \begin{proof}
 We need to check that $f^*$ is a valid morphism in $\Ab$, or in $\Mod{R}$ in the commutative case.
-Given $g,h\in \Hom_{R}(A,B)$, we have \[f^*(g)(x+y)=g(f(x+y)) = g(f(x)) + g(f(y)) = f^*(g)(x) + f^*(g)(y).\]
+Given $g,h\in \Hom_{R}(A,B)$, we have \[f^*(g+h)(m)=(g+h)(f(m)) = g(f(m)) + h(f(m)) = f^*(g)(m) + f^*(h)(m).\]
 If $R$ is commutative,
-\[ f^*(g)(rx) = g(f(rx)) = r g(f(x)) = r f^*(g)(x).\]
+\[ f^*(rg)(m) = rg(f(m)) = (r f^*(g))(m).\]
 
 We also need to see that these satisfy the functor axioms. We have $(1_A)^*(g) = g \circ 1_A = g$, so $(1_A)^*$ is the identity map on $\Hom_R(A,M)$. Given $A\xra{g}B\xra{f} C$, and $h\in \Hom_R(C,M)$, \[(fg)^* (h) =h\circ  f\circ g = f^*(h) \circ g = g^*(f^*(h)) = (g^* \circ f^*)(h).\qedhere\]
 \end{proof}
+\begin{rem}If $M$ is an $(R,S)$-bimodule, then consider $\Hom_R(M,-)$ as a functor from $ \Mod{R} \to \Mod{S^{\mathrm{op}}}$ by the same rule.
+\end{rem}
 
 \sssec{Examples of Hom}
 
@@ -1507,14 +1511,18 @@ Similarly, if $F=R^{\Lambda}$ is a free module, then $\Hom_R(R^{\Lambda},M) \con
 We can interpret the right-hand side as the values of a functor: set $F(M) = M^{\Lambda}$, and for $f:M\to N$, set $F(f)$ to be the map given by $f$ on each coordinate. Interpreted like so, the isomorphisms form a natural isomorphism.
 \end{ex}
 
-\begin{ex} If $R^{\Gamma}$ and $R^{\Lambda}$ are free modules, then every $R$-linear homomorphism $\alpha:R^{\Gamma} \to R^{\Lambda}$ is given by left multiplication by the (possibly infinite) $\Lambda \times \Gamma$ matrix where the $\gamma$ column is the $\Lambda$-tuple $(\alpha(e_\gamma))_\lambda$.
+\begin{ex} As an important special case of the previous example, if $R^{\Gamma}$ and $R^{\Lambda}$ are free modules, then every $R$-linear homomorphism $\alpha:R^{\Gamma} \to R^{\Lambda}$ is given by left multiplication by the (possibly infinite) $\Lambda \times \Gamma$ matrix where the $\gamma$ column is the $\Lambda$-tuple $(\alpha(e_\gamma))_\lambda$.
 \end{ex}
 
 
-\begin{exer} Show that when $R$ is not necessarily commutative, if we give $\Hom_R(R^\Lambda,M)$ the $R$-module structure via the $(R,R)$-bimodule structure on $R^{\Lambda}$, the isomorphisms $\Hom_R(R^{\Lambda},M)\cong M^{\Lambda}$ are natrual isomorphisms of $R$-modules.
+\begin{exer} Show that when $R$ is not necessarily commutative, if we give $\Hom_R(R^\Lambda,M)$ the $R$-module structure via the $(R,R)$-bimodule structure on $R^{\Lambda}$, the isomorphisms $\Hom_R(R^{\Lambda},M)\cong M^{\Lambda}$ are natural isomorphisms of $R$-modules.
 \end{exer}
 
-\begin{ex} Let $R$ be a commutative ring, and consider the module $R/I$ for some ideal $I$. For every module $M$, there is an isomorphism $\Hom_R(R/I,M) \cong (0 :_M I)$, where $(0 :_M I)$ is the set of elements $m\in M$ such that $Im=0$.
+\begin{ex} Let $R$ be a commutative ring, and consider the module $R/I$ for some ideal $I$. For every module $M$, there is an isomorphism $\Hom_R(R/I,M) \cong \ann_M(I)$, where $\ann_M(I)$ is the set of elements $m\in M$ such that $Im=0$.
+
+Indeed, every $R$-module homomorphism from $R/I$ is determined by the image of $1$, so the map $\Hom_R(R/I,M) \to M$ of evaluation at 1 is injective. The image consists of the set of elements $m\in M$ for which the map $r\mapsto rm$ is well-defined; this is the collection of elements that satisfy $Im=0$.
+
+Again, we can think of the right hand side as a functor $F:\Mod{R}\to\Mod{R}$ where  on objects $F(M) = \ann_M(I)$, and on morphisms $M\xra{\alpha} N$ maps to the restriction of $\alpha$ to $\ann_M(I)$. This is a natural isomorphism again.  
 \end{ex}
 
 \begin{ex} For a field $K$, the functor $\Hom_K(-,K)$ is exactly the ``dual'' functor $(-)^*$.
@@ -1552,7 +1560,7 @@ Similarly, since $\prod_{\lambda\in \Lambda} M_\lambda$ is the product of $\{M_\
 and one verifies the additivity / linearity of this map.
 \end{proof}
 
-\sec{Exact functors and left exactness of Hom}
+\ssec{Exact functors and left exactness of Hom}
 
 \begin{defn} Let $R,S$ be rings. A covariant functor $F:\Mod{R} \to \Mod{S}$ is \DEF{additive} if the function
 \[\xymatrix@R=.5em{ \Hom_R(M,N) \ar[r] & \Hom_S(F(M),F(N)) \\ f \ar@{|->}[r] & F(f)}\]
@@ -1572,25 +1580,25 @@ Additive functors preserve a number of basic properties, e.g., zero morphisms go
 \item $F$ is \DEF{right exact}  if
 whenever
 $$
-M' \xra{g} M \xra{p} M'' \to 0
+M' \xra{i} M \xra{p} M'' \to 0
 $$
 is exact, then so is
 $$
-F(M') \xra{F(g)}  F(M) \xra{F(p)} F(M'') \to 0.
+F(M') \xra{F(i)}  F(M) \xra{F(p)} F(M'') \to 0.
 $$
  (Recall $F(0) = 0$ since $F$ is additive.)
 
 \item $F$ is \DEF{left exact} if 
 whenever
 $$
-0 \to M' \xra{g} M \xra{p} M'' 
+0 \to M' \xra{i} M \xra{p} M'' 
 $$
 is exact, then so is
 $$
-0 \to F(M') \xra{F(g)}  F(M) \xra{F(p)} F(M'').
+0 \to F(M') \xra{F(i)}  F(M) \xra{F(p)} F(M'').
 $$
 
-\item $F$ is {\em exact} if it is both left and right exact.
+\item $F$ is \DEF{exact} if it is both left and right exact.
 \end{itemize}
 \end{defn}
 
@@ -1603,26 +1611,45 @@ An exact functor takes any SES to a SES.
 \item $G$ is \DEF{right exact}  if
 whenever
 $$
-0 \to M'' \xra{g} M \xra{p} M'
+0 \to M' \xra{i} M \xra{p} M''
 $$
 is exact, then so is
 $$
-G(M') \xra{G(g)}  G(M) \xra{F(p)} G(M'') \to 0.
+G(M'') \xra{G(p)}  G(M) \xra{G(i)} G(M') \to 0.
 $$
 
 \item $G$ is \DEF{left exact} if 
 whenever
 $$
-M'' \xra{g} M \xra{p} M' \to 0
+M' \xra{i} M \xra{p} M'' \to 0
 $$
 is exact, then so is
 $$
-0 \to G(M') \xra{G(g)}  G(M) \xra{G(p)} G(M'').
+0 \to G(M'') \xra{G(p)}  G(M) \xra{G(i)} G(M').
 $$
 
 \item $G$ is \DEF{exact} if it is additive and both left and right exact.
 \end{itemize}
 \end{defn}
+
+\begin{exer} The definitions above all stay unchanged if for each condition we start with a short exact sequence. For example, a covariant additive functor $F$ is left exact if for every short exact sequence
+	$$\xymatrix{0 \ar[r] & A \ar[r]^-f & B \ar[r]^-g & C \ar[r] & 0}$$
+	of $R$-modules,
+	$$\xymatrix{0 \ar[r] & F(A) \ar[r]^-{F(f)} & F(B) \ar[r]^-{F(g)} & F(C)}$$
+	is exact.
+\end{exer}
+
+\begin{rem} If $F,G:\Mod{R} \to \Mod{S}$ are naturally isomorphic additive functors, then $F$ is exact if and only if $G$ is exact. Indeed, given a short exact sequence
+\[ 0 \to M' \xra{i} M \xra{p} M'' \to 0\]
+we obtain a commutative diagram
+\[\xymatrix{
+0 \ar[r] & F(M') \ar[r]^{F(i)} \ar[d]^-{\theta'} & F(M) \ar[r]^{F(p)} \ar[d]^-{\theta} & F(M'') \ar[r]\ar[d]^-{\theta''} & 0 \\
+0 \ar[r] & G(M') \ar[r]^{G(i)}  & G(M) \ar[r]^{G(p)}  & G(M'') \ar[r] & 0 }\]
+where $\theta',\theta,\theta''$ isomorphisms.
+Then if the top row is exact, $G(i)=\theta^{-1} F(i) \theta'$ is injective, $G(p)=(\theta'') ^{-1} F(p) \theta$ is surjective, and \[x\in \ker G(p) \iff \theta^{-1} (x) \in \ker F(p) \iff \theta^{-1} (x) \in \im F(i) \iff x\in \im G(i).\]
+
+Similarly for ``left exact'' or ``right exact''.
+\end{rem}
 
 
 \begin{thm} Let $M$ be an $R$-module.
@@ -1630,6 +1657,42 @@ $$
 \item The functor $\Hom_R(M,-)$ is left exact.
 \item The functor $\Hom_R(-,M)$ is left exact.
 \end{enumerate}
+\end{thm}
+\begin{proof} 
+\begin{enumerate}
+\item Let \[ 0 \to A \xra{i} B \xra{p} C\]
+be  exact. We need to show that
+\[ 0 \to \Hom_R(M,A) \xra{i_*} \Hom_R(M,B) \xra{p_*} \Hom_R(M,C)\]
+is exact.
+\begin{itemize}
+\item $i_*$ is injective: Let $f\in \Hom_R(M,A)$ be nonzero, so $f(m)\neq 0$ for some $m\in M$. Then $i_*(f)(m) = i(f(m))\neq 0$ since $i$ is injective, so $i_*(f)\in \Hom_R(M,B)$ is nonzero.
+\item $\im(i_*)\subseteq \ker(p_*)$: Let $g\in \Hom_R(M,B)$ be in the image of $i_*$, so we can write $g=i_*(f)$ for some $f\in \Hom_R(M,A)$. We have $p_*(i_*(f))=p\circ i \circ f=0$.
+\item $\ker(p_*)\subseteq\im(i_*)$: Let $g\in \Hom_R(M,B)$ be in the kernel of $p_*$, so $p\circ g=0$. Then, for every $m\in M$, $g(m)\in \ker(p) = \im(i)$. As $i$ is injective, $i$ induces an isomorphism from $i$ to the image of $A$ in $B$, so there is an $R$-module homomorphism $q:\im(A) \to A$ such that $i \circ q=1_{\im(A)}$. Thus, we obtain an $R$-module map $f:= q\circ g :M\to A$ such that $i_*(f) = i \circ q \circ g = g$.
+\end{itemize}
+\item Let \[ A \xra{i} B \xra{p} C \to 0\]
+be  exact. We need to show that
+\[ 0 \to \Hom_R(C,M)\xra{p^*}  \Hom_R(B,M) \xra{i^*} \Hom_R(A,M)  \]
+is exact.
+\begin{itemize}
+\item $p^*$ is injective: Let $f\in \Hom_R(C,M)$ be nonzero, so $f(c)\neq 0$ for some $m\in M$. Then, since $p$ is surjective, there is some $b\in B$ such that $p(b)=c$, and hence $p^*(f)(b)=f(p(b))=f(c)\neq 0$, so $p^*(f)\neq 0$.
+
+\item $\im(p^*)\subseteq \ker(i^*)$: Let $g\in \Hom_R(B,M)$ be in the image of $p_*$, so we can write $g=p^*(f)$ for some $f\in \Hom_R(M,C)$. We have $i^*(p^*(f))=f \circ p \circ i=0$.
+
+\item $\ker(i^*)\subseteq\im(p^*)$: Let $g\in \Hom_R(B,M)$ be in the kernel of $i^*$, so $g\circ i=0$. Thus, as $g|_{\im(i)} = 0$, we obtain a well-defined map $\overline{g}:B/\im(i) \to M$. Note that, since $p$ is surjective, it induces an isomorphism $\overline{p}:B/\im(i) = B/\ker(p) \to C$, so there is a map $j:C\to B/\ker(p)$ such that $ j \circ p$ is the quotient map $B\to B/\im(i)$. Set $f=\overline{g} \circ j$. We then have $p^*(f)(b) = \overline{g} \circ j \circ p(b) = \overline{g}(\overline{b})=g(b)$, so $p^*(f) = g$. Thus $g\in \im(p^*)$.\qedhere\end{itemize}
+\end{enumerate}
+\end{proof}
+
+We can use these exactness statements to compute various Hom modules. 
+
+\begin{ex} Let $M$ be a finitely presented $R$-module with presentation
+\[  R^m \xra{A\cdot} R^n \to M \to 0.\]
+Then $\Hom_R(M,R)$ sits in a left exact sequence
+\[ 0\to \Hom(M,R) \to \Hom_R(R^n,R) \xra{\Hom_R(A\cdot, R)} \Hom_R(R^m,R). \]
+We have $\Hom_R(R^n,R)$ is free with free basis given by the coordinate functions; likewise for $\Hom_R(R^m,R)$. In these bases, the map $\Hom_R(A\cdot, R)$ is given by $A^T$, so we get a left exact sequence
+\[ 0\to \Hom(M,R) \to R^n \xra{A^T \cdot} R^m,\]
+so $\Hom(M,R)\cong \ker(A^T)$.
+\end{ex}
+
 
 
 \begin{comment}
