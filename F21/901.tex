@@ -1504,14 +1504,16 @@ Even better, in the commutative case, the collection of isomorphisms $\psi_M$ fo
 Along either path, we get $\alpha \mapsto \beta(\alpha(1))$, so this is indeed the case.
 \end{ex}
 
-\begin{comment}
-\begin{ex}
-Similarly, if $F=R^{\Lambda}$ is a free module, then $\Hom_R(R^{\Lambda},M) \cong M^{\Lambda}$ by the map that sends a morphism to its tuple of values on the standard basis: as abelian groups, and as $R$-modules in the commutative case. 
 
-We can interpret the right-hand side as the values of a functor: set $F(M) = M^{\Lambda}$, and for $f:M\to N$, set $F(f)$ to be the map given by $f$ on each coordinate. Interpreted like so, the isomorphisms form a natural isomorphism.
+\Sept{17}
+
+\begin{ex}
+Similarly, if $F=R^{\Lambda}$ is a free module, then $\Hom_R(R^{\Lambda},M) \cong M^{\oplus \Lambda}$, where $M^{\oplus \Lambda}= \bigoplus_{\lambda\in \Lambda} M$ by the map that sends a morphism to its tuple of values on the standard basis: as abelian groups, and as $R$-modules in the commutative case. 
+
+We can interpret the right-hand side as the values of a functor: set $F(M) = M^{\oplus \Lambda}$, and for $f:M\to N$, set $F(f)$ to be the map given by $f$ on each coordinate. Interpreted like so, the isomorphisms again form a natural isomorphism.
 \end{ex}
 
-\begin{ex} As an important special case of the previous example, if $R^{\Gamma}$ and $R^{\Lambda}$ are free modules, then every $R$-linear homomorphism $\alpha:R^{\Gamma} \to R^{\Lambda}$ is given by left multiplication by the (possibly infinite) $\Lambda \times \Gamma$ matrix where the $\gamma$ column is the $\Lambda$-tuple $(\alpha(e_\gamma))_\lambda$.
+\begin{ex} As an important special case of the previous example, if $R$ is commutative, and $R^{\Gamma}$ and $R^{\Lambda}$ are free modules, then every $R$-linear homomorphism $\alpha:R^{\Gamma} \to R^{\Lambda}$ is given by left multiplication by the (possibly infinite) $\Lambda \times \Gamma$ matrix where the $\gamma$ column is the $\Lambda$-tuple $(\alpha(e_\gamma))_\lambda$.
 \end{ex}
 
 
@@ -1525,7 +1527,7 @@ Indeed, every $R$-module homomorphism from $R/I$ is determined by the image of $
 Again, we can think of the right hand side as a functor $F:\Mod{R}\to\Mod{R}$ where  on objects $F(M) = \ann_M(I)$, and on morphisms $M\xra{\alpha} N$ maps to the restriction of $\alpha$ to $\ann_M(I)$. This is a natural isomorphism again.  
 \end{ex}
 
-\begin{ex} For a field $K$, the functor $\Hom_K(-,K)$ is exactly the ``dual'' functor $(-)^*$.
+\begin{ex} For a field $K$, the functor $\Hom_K(-,K)$ is exactly the ``vector space dual'' functor $(-)^*$.
 \end{ex}
 
 %
@@ -1646,7 +1648,7 @@ we obtain a commutative diagram
 0 \ar[r] & F(M') \ar[r]^{F(i)} \ar[d]^-{\theta'} & F(M) \ar[r]^{F(p)} \ar[d]^-{\theta} & F(M'') \ar[r]\ar[d]^-{\theta''} & 0 \\
 0 \ar[r] & G(M') \ar[r]^{G(i)}  & G(M) \ar[r]^{G(p)}  & G(M'') \ar[r] & 0 }\]
 where $\theta',\theta,\theta''$ isomorphisms.
-Then if the top row is exact, $G(i)=\theta^{-1} F(i) \theta'$ is injective, $G(p)=(\theta'') ^{-1} F(p) \theta$ is surjective, and \[x\in \ker G(p) \iff \theta^{-1} (x) \in \ker F(p) \iff \theta^{-1} (x) \in \im F(i) \iff x\in \im G(i).\]
+Then if the top row is exact, $G(i)=\theta F(i) (\theta')^{-1}$ is injective, $G(p)=\theta''  F(p) \theta^{-1}$ is surjective, and \[x\in \ker G(p) = \ker(\theta''  F(p) \theta^{-1}) \iff \theta^{-1} (x) \in \ker F(p) \iff \theta^{-1} (x) \in \im F(i) \iff x\in \im(\theta F(i) (\theta')^{-1}) = \im G(i).\]
 
 Similarly for ``left exact'' or ``right exact''.
 \end{rem}
@@ -1684,24 +1686,267 @@ is exact.
 
 We can use these exactness statements to compute various Hom modules. 
 
-\begin{ex} Let $M$ be a finitely presented $R$-module with presentation
+\begin{ex} Let $R$ be commutative, and $M$ be a finitely presented $R$-module with presentation
 \[  R^m \xra{A\cdot} R^n \to M \to 0.\]
 Then $\Hom_R(M,R)$ sits in a left exact sequence
 \[ 0\to \Hom(M,R) \to \Hom_R(R^n,R) \xra{\Hom_R(A\cdot, R)} \Hom_R(R^m,R). \]
-We have $\Hom_R(R^n,R)$ is free with free basis given by the coordinate functions; likewise for $\Hom_R(R^m,R)$. In these bases, the map $\Hom_R(A\cdot, R)$ is given by $A^T$, so we get a left exact sequence
+We have $\Hom_R(R^n,R)$ is free with free basis given by the coordinate functions $\{e_1^*,\dots,e_n^*\}$; likewise for $\Hom_R(R^m,R)$ with basis $\{ \bar{e}_1^*,\dots,\bar{e}_m^*\}$ (we will write bars for basis elements in $R^m$). In these bases, to compute the $j$th column of the matrix,
+we have that $e_j^*$ maps to $e_j^* A$, and to compute $e_j^*A$ in terms of the given basis (to find the entry in the $i$th row), we observe $(e_j^*A)(\bar{e}_i)$ is $A_{ji}$, so the map $\Hom_R(A\cdot, R)$ is given by $A^T \cdot$.  We get a left exact sequence
 \[ 0\to \Hom(M,R) \to R^n \xra{A^T \cdot} R^m,\]
 so $\Hom(M,R)\cong \ker(A^T)$.
 \end{ex}
 
+\
 
+
+
+\ssec{Tensor products}
+
+\sssec{Definition of tensor product}
+
+\begin{defn} 
+For a ring $R$, a right $R$-module $M$, a left $R$-module $N$, and an abelian group $A$, a function
+$$
+b: M \times N \to A
+$$
+is called \DEF{$R$-balanced biadditive} if the following conditions hold:
+\begin{enumerate}
+\item $b(m+m', n) = b(m, n) + b(m', n)$ for all $m, m' \in M$, $n \in N$,
+\item $b(m,n +n') = b(m, n) + b(m, n')$ for all $m \in M$, $n, n' \in N$, and
+\item $b(mr, n) = b(m, rn)$ for all $m \in M$, $n, \in N$, and $r \in R$.
+\end{enumerate}
+
+Assume $R$ is commutative and $A$ is an $R$-module
+(not just an abelian group). Such a pairing $b$ is called
+  \DEF{$R$-bilinear} if we also have
+\begin{enumerate}
+  \item[(4)]
+    $b(mr, n) = b(m, rn) = rb(m,n) \text{ for all $m \in M$, $n, \in N$, and $r \in R$.}$
+\end{enumerate}
+\end{defn}
+
+\begin{ex} Examples of bilinear maps include
+\begin{itemize}
+\item $f:R\times R \to R, f(r,s)=rs$ 
+\item for an $R$-module $M$, $f:R^2\times M \to M^2, f((r,s),m)=(rm,sm)$
+\item for a right ideal $I$ and a left module $M$, $f:(R/I)\times M\to M/IM, f(\ov{r},m)=\ov{rm}$
+\item for $K$ a field, $f:K\times K \to K$ given by the usual dot product.
+\end{itemize}
+\end{ex}
+
+We now define tensor products using a universal property.
+
+\begin{defn}
+\label{def:tensorprod}
+  Let $R$ be a (not necessarily commutative) ring, let $M$ be a right $R$-module, let $N$ be a left $R$-module. 
+
+An abelian group $M \otimes_R N$ together with an $R$-balanced biadditive map $h : M\times N \to M\otimes_R N$ is called the \DEF{tensor product} of $M$ and $N$ if it has the following universal property: for any abelian group $A$ and $R$-balanced biadditive map $f : M\times N \to A$, there exists a unique abelian group homomorphism $g : M \otimes_R N\to A$ such that $f = g\circ h$.
+
+\[
+\xymatrix{ M\times N \ar[r]^f \ar[d]^h& A \\
+M\otimes_R N  \ar@{-->}[ur]_{\exists ! g}
+}
+\]
+\end{defn}
+
+\begin{lem} 
+If $(X,h)$, $(Y,k)$ are two tensor products for $M$ and $N$, then there is a unique isomorphism of abelian groups $\alpha:X\to Y$ such that $k=h\circ \alpha$.
+\end{lem}
+\begin{proof}
+The following diagram is a rough guide for the argument:
+\[ \xymatrix{ & X \ar@{-->}[r]^{\alpha} & Y\ar@{-->}[r]^{\beta } & X . \\ M\times N \ar[ur]^-{h} \ar[urr]^-{k} \ar[urrr]_-{h} }\]
+Applying the universal property of $(X,h)$ with the $R$-balanced biadditive map $k$, we get a unique abelian group homomorphism $\alpha$ above that makes its triangle commute; in particular, the uniqueness statement is clear. Likewise, applying the universal property of $(Y,k)$ with $h$, we get an abelian group homomorphism $\beta$ that makes its triangle commute. Then, $\beta\circ\alpha$ is an abelian group homomorphism such that $(\beta\circ\alpha) \circ h = h$, and the identity map is another. By the uniqueness property of $(X,h)$, $\beta\circ \alpha$ is the identity, so $\alpha$ is an isomorphism.
+\end{proof}
+
+\begin{thm}
+\label{thm:tensor}
+Let $R$ be a (not necessarily commutative) ring, let $M$ be a right $R$-module, let $N$ be a left $R$-module.  Then a tensor product $M\otimes_R N$ exists and is given by defining an abelian group $M \otimes_R N$ by generators and relations as follows:
+
+\begin{itemize}
+\item The generators are all expressions of the form $m \otimes n$ for $m \in M$ and $n \in N$. 
+\item The relations are
+\begin{enumerate}
+\item  $(m + m') \otimes n = m \otimes n + m' \otimes n$ for all $m, m' \in M$ and $n \in N$,
+\item $m \otimes (n + n') = m \otimes n + m \otimes n'$ for all $m \in M$ and $n, n' \in N$, and
+\item $(mr) \otimes n = m \otimes (rn)$ for all $m \in M$, $n\in N$, and $r \in R$.
+\end{enumerate}
+\end{itemize}
+Equivalently, $M \otimes_R N$ is the quotient 
+$$
+\frac{\bigoplus_{(m,n) \in M \times N} \Z \cdot (m \otimes n)}{(Y)}
+$$
+where 
+$$
+Y =  \{(m + m') \otimes  n) -m \otimes n - m' \otimes n \} \cup
+\{m \otimes  (n +n') - m \otimes n - m \otimes n'\} \cup
+\{(mr) \otimes  n  - m \otimes (rn)\} .
+$$
+Further we define $h: M \times N \to M \otimes_R N$ to be the function $h(m,n)=m \otimes n$. 
+
+Then the pair $(M \otimes_R N,h)$ defined above is the tensor product of $M$ and $N$.
+\end{thm}
+
+
+
+
+\begin{proof}
+It is immediate from the construction that $h$ is $R$-biadditive. 
+Given a biadditive map  $b: M \times N \to A$, define $\tilde{b}: \bigoplus_{(m,n) \in M \times N} \Z  \cdot (m \otimes n) \to A$ to be the unique homomorphism of abelian groups  
+sending the basis element $m \otimes n$  to $b(m,n)$. Since $b$ is biadditive, we have
+$$
+\tilde{b}((m + m') \otimes  n -m \otimes n - m' \otimes n) =
+b(m + m',n) - b(m,n) - b(m',n) = 0,
+$$
+$$
+\tilde{b}(m \otimes  (n +n') - m \otimes n - m \otimes n)
+= b(m, n+n') - b(m,n) - b(m,n') = 0,
+$$
+and
+$$
+\tilde{b}((mr) \otimes  n  - m \otimes (rn)) = b(mr,n) - b(m,rn) = 0.
+$$
+Thus $\tilde{b}(<Y>) = 0$  and so it induces a homomorphism of abelian groups
+$$
+\alpha: M \otimes_R N \to A.
+$$
+It is evident from the construction that $\alpha \circ h = b$. Since the image of $B$ generates $M \otimes_A N$ as an abelian group, $\alpha$ is the unique
+homomorphism satisfying this equation.
+\end{proof}
+
+\begin{rem} In this explicit construction, every element is a \emph{sum} of \DEF{simple tensors} (elements of the form $m\otimes n$) but in general, not every element is itself a simple tensor.
+\end{rem}
+
+\begin{rem} While the construction of tensor products may feel easier to work with at first, it is important to keep in mind that it is hard to tell when two combinations of simple tensors are equal. In general, when we want to define a map from a tensor product, it is better to use the universal property, since we don't have to worry about well-definedness. However, to define a map into a tensor product, using the concrete description is often easier.
+\end{rem}
+
+\begin{exer}
+In $M\otimes_RN$ we have $0_M\otimes n=0_{M\otimes_R N} =m\otimes 0_N$ for each $m\in M,n\in N$.
+\end{exer}
+
+
+
+\begin{ex} I claim $\Z/m \otimes_\Z \Z/n \cong \Z/g$ where $g = gcd(m,n)$.
+\end{ex}
+
+
+\begin{proof}
+Define a function
+$$
+b: \Z/m \times \Z/n \to \Z/g
+$$ 
+by $b(\overline{i}, \overline{j}) = \overline{ij}$. It is not hard to see that $b$ is well-defined (exercise!) 
+and $\Z$-biadditive.
+By the Theorem, it therefore induces a homomorphism of abelian groups
+$$
+\a: \Z/m \otimes_\Z \Z/n \to \Z/g
+$$ 
+such that $\a(\overline{i} \otimes \overline{j}) = \overline{ij}$. 
+
+Now define a homomorphism $\phi: \Z \to \Z/m \otimes_\Z \Z/n$ by sending $1$ to $1 \otimes 1$. Notice that 
+$$
+\phi(g) = g \cdot (1 \otimes 1) = g \otimes 1 = 1 \otimes g.
+$$
+Recall that $g = i m + j n$ for some $i,j \in \Z$. So
+$$
+g \otimes 1 = i m \otimes 1 + 1 \otimes j n = 0 \otimes 1 + 1 \otimes 0 = 0 + 0 = 0.
+$$
+So, $\phi$ induces a homomorphism
+$$
+\beta = \overline{\phi}: \Z/g \to \Z/m \otimes_\Z \Z/n
+$$
+with $\beta(\overline{i}) = \overline{i} \otimes 1 = 1 \otimes \overline{i}$.
+
+We have $\a(\beta(\overline{i})) = \a(\overline{i} \otimes 1) = \overline{i}$ so that $\a \circ \beta = \id$. 
+
+A typical element of  $\Z/m \times \Z/n$ has the form $\sum_t \overline{i_t} \otimes \overline{j_t}$. We have 
+$$
+\beta(\alpha(\sum_t \overline{i_t} \otimes \overline{j_t}))
+= \sum_t \overline{i_t} \cdot \overline{j_t} \otimes 1
+= \sum_t \overline{i_t}   \otimes  \overline{j_t}
+$$
+and so $\beta \circ \alpha = \id$. 
+\end{proof}
+
+
+\sssec{Module structure of tensor product}
+
+\begin{prop} \begin{enumerate}
+\item If $R$ is commutative, and $M$ and $N$ are $R$-modules, then
+\begin{enumerate}
+\item $M\otimes_R N$ is an $R$-module via the action
+\[ r \cdot (\sum_i m_i \otimes n_i) = \sum_i (r m_i) \otimes n_i = \sum_i m_i \otimes (r n_i).\]
+\item The natural map $h: M\times N \to M\otimes_R N$ is $R$-bilinear.
+\item For any $R$-module $A$ and $R$-bilinear map $f: M\times N \to A$, there is a unique $R$-module homomorphism $g: M\otimes_R N \to A$ such that $f=g\circ h$.
+\end{enumerate}
+\item If $M$ is an $(S,R)$-bimodule, and $N$ is an $R$-module, then consider $M\times N$ as an $S$-module by the action $s (m,n) = (sm,n)$. We have
+\begin{enumerate}
+\item $M\times_R N$ is an $S$-module via the action
+\[ s \cdot (\sum_i m_i \otimes n_i) = \sum_i (s m_i) \otimes n_i.\]
+\item The natural map $h: M\times N \to M\otimes_R N$ is $S$-linear.
+\item For any $S$-module $A$ and $S$-linear $R$-balanced biadditive map $f: M\times N \to A$, there is a unique $S$-module homomorphism $g: M\otimes_R N \to A$ such that $f=g\circ h$.
+\end{enumerate}
+\item If $M$ is an $R$-module, and $N$ is an $(R,S)$-bimodule, then consider $M\times N$ as a right $S$-module by the action $ (m,n)s = (m,ns)$. We have
+\begin{enumerate}
+\item $M\times_R N$ is a right $S$-module via the action
+\[ s \cdot (\sum_i m_i \otimes n_i) = \sum_i m_i \otimes (n_i s).\]
+\item The natural map $h: M\times N \to M\otimes_R N$ is right $S$-linear.
+\item For any right $S$-module $A$ and right $S$-linear $R$-balanced biadditive map $f: M\times N \to A$, there is a unique right $S$-module homomorphism $g: M\otimes_R N \to A$ such that $f=g\circ h$.
+\end{enumerate}
+\end{enumerate}
+\end{prop}
+\begin{proof} 
+Let's consider case (2).
+
+For (a), the first thing we need to show that the action of an element $s\in S$ on $M\otimes_R N$ is a well-defined function. To do this, consider the map $\mu_s: M\times N \to A$ given by the rule $\mu_s(m,n) = sm\times n$. We claim that this is $R$-balanced biadditive. Indeed,
+\[ \mu_s(m+m',n) = (s(m+m')) \times n = (sm+sm') \times n = sm \times n + sm' \times n = \mu_s(m,n) + \mu_s(m',n),\]
+similarly $\mu_s(m,n+n')=\mu_s(m,n)+\mu_s(m,n')$, and
+\[ \mu_s(mr,n) = smr\otimes n = sm \otimes rn = \mu_s(m,rn).\]
+Thus, we obtain a well-defined map $M\otimes_R N\to M\otimes_R N$ that sends $m\otimes n\mapsto sm \otimes n$, and the given formula follows. It is easy to check that this action satisfies the module axioms.
+
+For (b), we already know this map is additive. To see that it is $S$-linear, we compute
+\[ h(s(m,n))=h(sm,n) = sm\otimes n = s(m\otimes n) =s h(m,n).\]
+
+For (c), we know that since $f$ is $R$-balanced biadditive map there exists a unique additive map $g$ such that $f=g\circ h$. We just need to show that this map is $S$-linear:
+\[\begin{aligned}
+ g(s(\sum_i m_i\otimes n_i )) &= g(\sum_i sm_i \otimes n_i) = \sum_ig( sm_i \otimes n_i) = \sum_i g(h(sm_i , n_i))\\ &= \sum_i f(sm_i,n_i) = s(\sum_i f(m_i,n_i))=s(\sum_i g(m_i\otimes n_i)).
+ \end{aligned}\]
+ 
+ Case (3) is quite analogous. Case (1) is a special case of (2): we consider $M$ as an $(R,R)$-bimodule. The extra equality in (a) follows from  $rm \otimes n = mr \otimes n = m \otimes rn$. For (b) and (c), we note that $R$-bilinear is equivalent to $R$-balanced biadditive plus $R$-linear with respect to the module structure given in case (2).
+\end{proof}
+
+We can also realize tensor as a covariant functor.
+
+\begin{defn} Let $R$ be a ring and $M$ be a right $R$-module. There is a covariant functor \index{$M\otimes_R -$}
+\[M\otimes_R -: \Mod{R} \to \Ab\] that on objects sends $N$ to $M\otimes_R N$, and on morphisms sends $f:N\to N'$ to the map \index{$1_M\otimes f$}\[1_M \otimes f : M\otimes_R N \to M\otimes_R N'\] that is given by the rule\[ (1_M \otimes_R f )(\sum_i m_i \otimes n_i) = \sum_i m_i \otimes f(n_i).\]
+
+If $R$ is commutative, we can consider $M\otimes_R -$ as a functor from $\Mod{R} \to \Mod{R}$.
+
+If $M$ is a $(S,R)$-bimodule, we can consider $M\otimes_R -$ as a functor from $\Mod{R} \to \Mod{S}$.
+\end{defn}
+\begin{proof}
+We check first that $1_M\otimes f$ is well-defined. There is an $R$-balanced bilinear map $a:M\times N \to M\otimes_R N'$ given by $a(m,n)=m\otimes f(n)$ (easy to check), which induces a well-defined map of the stated form. It is straightforward to check that this map has the desired linearity properties, and behaves well with compositions/identities.
+\end{proof}
+
+Of course, there is an equally valid functor $-\otimes_R N: \Mod{R^{\op}} \to \Ab$.
+
+
+\sssec{Examples of tensors}
+
+$R\otimes_R M$
+
+$R/I\otimes_R M$ (commut)
+
+direct sums
+
+free modules
+
+associativity of tensor
+
+\sssec{Right exactness of tensor}
+
+\sssec{Hom tensor adjointess}
 
 \begin{comment}
-
-\ssec{Projective and injective modules}
-
-
-
-\end{comment}
 
 
 
