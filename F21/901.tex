@@ -1504,7 +1504,7 @@ Even better, in the commutative case, the collection of isomorphisms $\psi_M$ fo
 Along either path, we get $\alpha \mapsto \beta(\alpha(1))$, so this is indeed the case.
 \end{ex}
 
-\begin{comment}
+
 
 \Sept{17}
 
@@ -1513,6 +1513,25 @@ Similarly, if $F=R^{\Lambda}$ is a free module, then $\Hom_R(R^{\Lambda},M) \con
 
 We can interpret the right-hand side as the values of a functor: set $F(M) = M^{\oplus \Lambda}$, and for $f:M\to N$, set $F(f)$ to be the map given by $f$ on each coordinate. Interpreted like so, the isomorphisms again form a natural isomorphism.
 \end{ex}
+
+\begin{prop}
+Let $\{M_\lambda\}_{\lambda\in \Lambda}$ be a family of $R$-modules, and $N$ be an  $R$-module.
+There are isomorphisms of abelian groups
+\[\begin{aligned} \Hom_R(\bigoplus_{\lambda\in \Lambda} M_\lambda, N) &\cong \prod_{\lambda\in \Lambda} \Hom_R(M_\lambda,N)\\
+\Hom_R(N,\prod_{\lambda\in \Lambda} M_\lambda) &\cong \prod_{\lambda\in \Lambda} \Hom_R(N,M_\lambda)\end{aligned}\]
+Moreover, these are isomorphisms of $R$-modules if $R$ is commutative.
+\end{prop}
+\begin{proof}
+Since $\bigoplus_{\lambda\in \Lambda} M_\lambda$ is the coproduct of $\{M_\lambda\}_{\lambda\in \Lambda}$ in $\Mod{R}$, we have a bijection for every $R$-module $N$
+\[\xymatrix@R=.6em { \Hom_R(\bigoplus_{\lambda\in \Lambda} M_\lambda, N) \ar[r] & \prod_{\lambda\in \Lambda} \Hom_R(M_\lambda,N) \\
+\phi \ar@{|->}[r] &(\phi \circ \iota_\lambda).}\]
+We only have to observe that these maps preserve the abelian group and/or $R$-module structures.
+Similarly, since $\prod_{\lambda\in \Lambda} M_\lambda$ is the product of $\{M_\lambda\}_{\lambda\in \Lambda}$ in $\Mod{R}$, we have a bijection for every $R$-module $N$
+\[\xymatrix@R=.6em { \Hom_R(N,\prod_{\lambda\in \Lambda} M_\lambda) \ar[r] & \prod_{\lambda\in \Lambda} \Hom_R(N,M_\lambda) \\
+\phi \ar@{|->}[r] &(\pi_\lambda \circ \phi),}\]
+and one verifies the additivity / linearity of this map.
+\end{proof}
+
 
 \begin{ex} As an important special case of the previous example, if $R$ is commutative, and $R^{\Gamma}$ and $R^{\Lambda}$ are free modules, then every $R$-linear homomorphism $\alpha:R^{\Gamma} \to R^{\Lambda}$ is given by left multiplication by the (possibly infinite) $\Lambda \times \Gamma$ matrix where the $\gamma$ column is the $\Lambda$-tuple $(\alpha(e_\gamma))_\lambda$.
 \end{ex}
@@ -1545,23 +1564,6 @@ Again, we can think of the right hand side as a functor $F:\Mod{R}\to\Mod{R}$ wh
 %This is injective, since $\phi$ is determined by the image of $1$, and surjective since the map $r \mapsto rm$ is $R$-linear for any $m\in M$. To see that $\psi$ is $R$-linear, we have $\psi(r\phi)=(r\phi)(1) = \phi(1\,r) = \phi(r) = r \phi(1) = r \psi(\phi)$.
 %\end{ex}
 
-\begin{prop}
-Let $\{M_\lambda\}_{\lambda\in \Lambda}$ be a family of $R$-modules, and $N$ be an  $R$-module.
-There are isomorphisms of abelian groups
-\[\begin{aligned} \Hom_R(\bigoplus_{\lambda\in \Lambda} M_\lambda, N) &\cong \prod_{\lambda\in \Lambda} \Hom_R(M_\lambda,N)\\
-\Hom_R(N,\prod_{\lambda\in \Lambda} M_\lambda) &\cong \prod_{\lambda\in \Lambda} \Hom_R(N,M_\lambda)\end{aligned}\]
-Moreover, these are isomorphisms of $R$-modules if $R$ is commutative.
-\end{prop}
-\begin{proof}
-Since $\bigoplus_{\lambda\in \Lambda} M_\lambda$ is the coproduct of $\{M_\lambda\}_{\lambda\in \Lambda}$ in $\Mod{R}$, we have a bijection for every $R$-module $N$
-\[\xymatrix@R=.6em { \Hom_R(\bigoplus_{\lambda\in \Lambda} M_\lambda, N) \ar[r] & \prod_{\lambda\in \Lambda} \Hom_R(M_\lambda,N) \\
-\phi \ar@{|->}[r] &(\phi \circ \iota_\lambda).}\]
-We only have to observe that these maps preserve the abelian group and/or $R$-module structures.
-Similarly, since $\prod_{\lambda\in \Lambda} M_\lambda$ is the product of $\{M_\lambda\}_{\lambda\in \Lambda}$ in $\Mod{R}$, we have a bijection for every $R$-module $N$
-\[\xymatrix@R=.6em { \Hom_R(N,\prod_{\lambda\in \Lambda} M_\lambda) \ar[r] & \prod_{\lambda\in \Lambda} \Hom_R(N,M_\lambda) \\
-\phi \ar@{|->}[r] &(\pi_\lambda \circ \phi),}\]
-and one verifies the additivity / linearity of this map.
-\end{proof}
 
 \ssec{Exact functors and left exactness of Hom}
 
@@ -1661,6 +1663,7 @@ Similarly for ``left exact'' or ``right exact''.
 \item The functor $\Hom_R(-,M)$ is left exact.
 \end{enumerate}
 \end{thm}
+\begin{comment}
 \begin{proof} 
 \begin{enumerate}
 \item Let \[ 0 \to A \xra{i} B \xra{p} C\]
