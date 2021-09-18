@@ -1241,7 +1241,7 @@ We also say that $M$ is an \DEF{extension} of $M'$ and $M''$ if it fits in a sho
 is a left exact sequence if and only if the columns of $A$ form a basis for the null space of $B$.
 \end{ex}
 
-\sssec{Presentations} Recall that a set of elements $B$ in a module $M$ is a \DEF{free basis} if every element of $M$ can be written as a (finite) $R$-linear combination of elements of $B$ in a unique way, and a module $M$ is a \DEF{free module} if it admits a free basis (which almost never is unique, by the way). As mentioned before, a free module is isomorphic to a direct sum of copies of the ring (considered as a module), which we may write as $R^n$ or \Def{$R^{\Gamma}$} for some index $\Gamma$; such a free module has as a \DEF{standard basis} $\{$\Def{$e_\lambda$}$\}_{\lambda\in\Lambda}$ consisting the elements that have a 1 in the $\lambda$ coordinate and 0 in each of the others. Free modules are also characterized by a universal property:
+\sssec{Presentations} Recall that a set of elements $B$ in a module $M$ is a \DEF{free basis} if every element of $M$ can be written as a (finite) $R$-linear combination of elements of $B$ in a unique way, and a module $M$ is a \DEF{free module} if it admits a free basis (which almost never is unique, by the way). As mentioned before, a free module is isomorphic to a direct sum of copies of the ring (considered as a module), which we may write as $R^n$ or \Def{$R^{\oplus\Gamma}$} for some index $\Gamma$; such a free module has as a \DEF{standard basis} $\{$\Def{$e_\lambda$}$\}_{\lambda\in\Lambda}$ consisting the elements that have a 1 in the $\lambda$ coordinate and 0 in each of the others. Free modules are also characterized by a universal property:
 
 If $F$ free with basis $B$, then for any module $M$, and any function $f:B\to M$, there is a unique module homomorphism $\phi:F\to M$ such that the diagram commutes:
 \[\xymatrix{ & F \ar@{-->}[dr]^-{\phi} & \\ B \ar@{^{(}->}[ur]^-{\subseteq} \ar[rr]^-{f} & & M \;}\]
@@ -1256,8 +1256,8 @@ is surjective. The kernel of such a map consists of the set of $\Lambda$-tuples 
 \end{defn}
 
 We can express the data of a presentation in terms of a right exact sequence. Namely, if $\{m_\lambda\}_{\lambda\in \Lambda}$ is a generating set of $M$, and $\{ (r_\lambda)_\gamma\}_{\gamma\in \Gamma}$ generates the module of relations on our generating set, then
-\[ R^{\Gamma} \to R^{\Lambda} \to M \to 0\] is a right exact sequence, where the standard basis of $R^{\Lambda}$ maps to $\{m_\lambda\}$ and the standard basis of $R^{\Gamma}$ maps to $\{ (r_\lambda)_\gamma\}$. Conversely, a right exact sequence of the form
-\[ R^{\Gamma} \to R^{\Lambda} \to M \to 0\] 
+\[ R^{\oplus\Gamma} \to R^{\oplus\Lambda} \to M \to 0\] is a right exact sequence, where the standard basis of $R^{\oplus\Lambda}$ maps to $\{m_\lambda\}$ and the standard basis of $R^{\oplus\Gamma}$ maps to $\{ (r_\lambda)_\gamma\}$. Conversely, a right exact sequence of the form
+\[ R^{\oplus\Gamma} \to R^{\oplus\Lambda} \to M \to 0\] 
  is equivalent to the data of a presentation.
 
 \sssec{Split exact sequences}
@@ -1509,9 +1509,9 @@ Along either path, we get $\alpha \mapsto \beta(\alpha(1))$, so this is indeed t
 \Sept{17}
 
 \begin{ex}
-Similarly, if $F=R^{\Lambda}$ is a free module, then $\Hom_R(R^{\Lambda},M) \cong M^{\oplus \Lambda}$, where $M^{\oplus \Lambda}= \bigoplus_{\lambda\in \Lambda} M$ by the map that sends a morphism to its tuple of values on the standard basis: as abelian groups, and as $R$-modules in the commutative case. 
+Similarly, if $F=R^{\oplus \Lambda}$ is a free module, then $\Hom_R(R^{\oplus \Lambda},M) \cong M^{\oplus \Lambda}$, where $M^{\times \Lambda}= \prod_{\lambda\in \Lambda} M$ by the map that sends a morphism to its tuple of values on the standard basis: as abelian groups, and as $R$-modules in the commutative case. 
 
-We can interpret the right-hand side as the values of a functor: set $F(M) = M^{\oplus \Lambda}$, and for $f:M\to N$, set $F(f)$ to be the map given by $f$ on each coordinate. Interpreted like so, the isomorphisms again form a natural isomorphism.
+We can interpret the right-hand side as the values of a functor: set $F(M) = M^{\times \Lambda}$, and for $f:M\to N$, set $F(f)$ to be the map given by $f$ on each coordinate. Interpreted like so, the isomorphisms again form a natural isomorphism.
 \end{ex}
 
 \begin{prop}
@@ -1533,11 +1533,11 @@ and one verifies the additivity / linearity of this map.
 \end{proof}
 
 
-\begin{ex} As an important special case of the previous example, if $R$ is commutative, and $R^{\Gamma}$ and $R^{\Lambda}$ are free modules, then every $R$-linear homomorphism $\alpha:R^{\Gamma} \to R^{\Lambda}$ is given by left multiplication by the (possibly infinite) $\Lambda \times \Gamma$ matrix where the $\gamma$ column is the $\Lambda$-tuple $(\alpha(e_\gamma))_\lambda$.
+\begin{ex} As an important special case of the previous example, if $R$ is commutative, and $R^{\oplus\Gamma}$ and $R^{\oplus\Lambda}$ are free modules, then every $R$-linear homomorphism $\alpha:R^{\oplus\Gamma} \to R^{\oplus\Lambda}$ is given by left multiplication by the (possibly infinite) $\Lambda \times \Gamma$ matrix where the $\gamma$ column is the $\Lambda$-tuple $(\alpha(e_\gamma))_\lambda$.
 \end{ex}
 
 
-\begin{exer} Show that when $R$ is not necessarily commutative, if we give $\Hom_R(R^\Lambda,M)$ the $R$-module structure via the $(R,R)$-bimodule structure on $R^{\Lambda}$, the isomorphisms $\Hom_R(R^{\Lambda},M)\cong M^{\Lambda}$ are natural isomorphisms of $R$-modules.
+\begin{exer} Show that when $R$ is not necessarily commutative, if we give $\Hom_R(R^{\oplus\Lambda},M)$ the $R$-module structure via the $(R,R)$-bimodule structure on $R^{\oplus\Lambda}$, the isomorphisms $\Hom_R(R^{\oplus\Lambda},M)\cong M^{\times \Lambda}$ are natural isomorphisms of $R$-modules.
 \end{exer}
 
 \begin{ex} Let $R$ be a commutative ring, and consider the module $R/I$ for some ideal $I$. For every module $M$, there is an isomorphism $\Hom_R(R/I,M) \cong \ann_M(I)$, where $\ann_M(I)$ is the set of elements $m\in M$ such that $Im=0$.
@@ -1664,6 +1664,8 @@ Similarly for ``left exact'' or ``right exact''.
 \end{enumerate}
 \end{thm}
 \begin{comment}
+
+\Sept{20}
 \begin{proof} 
 \begin{enumerate}
 \item Let \[ 0 \to A \xra{i} B \xra{p} C\]
@@ -1688,7 +1690,17 @@ is exact.
 \end{enumerate}
 \end{proof}
 
-We can use these exactness statements to compute various Hom modules. 
+\begin{ex} Neither Hom functor is exact. For example, consider the short exact sequence
+\[ 0 \to \Z \xra{2} \Z \to \Z/2\Z \to 0.\]
+If we apply $\Hom_\Z(\Z/2\Z ,-)$ to this sequence, we get
+\[ 0 \to 0 \to 0 \to \Z/2\Z \to 0.\]
+This is exact up until $\Z/2\Z$ (which agrees with the left exactness), but not at $\Z/2\Z$.
+Likewise, apply $\Hom_\Z(-,\Z/2\Z)$ to get
+\[ 0 \to \Z/2\Z \xra{1} \Z/2\Z \xra{0} \Z/2\Z \to 0.\]
+This is again exact up to the last $\Z/2\Z$, but not there.
+\end{ex}
+
+We can use left exactness to compute various Hom modules. 
 
 \begin{ex} Let $R$ be commutative, and $M$ be a finitely presented $R$-module with presentation
 \[  R^m \xra{A\cdot} R^n \to M \to 0.\]
@@ -1918,25 +1930,103 @@ For (c), we know that since $f$ is $R$-balanced biadditive map there exists a un
  Case (3) is quite analogous. Case (1) is a special case of (2): we consider $M$ as an $(R,R)$-bimodule. The extra equality in (a) follows from  $rm \otimes n = mr \otimes n = m \otimes rn$. For (b) and (c), we note that $R$-bilinear is equivalent to $R$-balanced biadditive plus $R$-linear with respect to the module structure given in case (2).
 \end{proof}
 
-We can also realize tensor as a covariant functor.
+We can take tensor products of maps as well.
+
+
+\begin{lem}
+	Let $f: M \to M'$ be a homomorphism or right $R$-modules and  $g: N \to N'$ be a homomorphism of left $R$-modules. There exists a unique homomorphism of abelian groups \index{$f\otimes g$}$f \otimes g : M \otimes_R N \to M' \otimes_R N'$ such that
+	$$(f \otimes g)(m \otimes n) = f(m) \otimes g(n)$$
+	for all $a \in A$ and $b \in B$.\index{$f \otimes g$}\index{tensor product of maps}
+	
+	If $R$ is commutative, this map is $R$-linear.
+	
+	If $A$ and $C$ are $(S,R)$-bimodules, and $f$ is also $S$-linear, then this map is an $S$-module homomorphism.
+\end{lem}
+
+\begin{proof}
+	The function 
+	$$\xymatrix@R=2mm{M \times N \ar[r] & M' \otimes_R N'\\ (m,n) \ar@{|->}[r] & f(m) \otimes g(n)}$$
+	is $R$-balanced biadditive (and bilinear when $R$ is commutative), so the universal property of tensor products gives the desired $R$-module homomorphism, which is unique. In the bimodule case, $S$-linearity follows from observing that the function displayed above is $S$-linear.
+\end{proof}
+
+
 
 \begin{defn} Let $R$ be a ring and $M$ be a right $R$-module. There is a covariant functor \index{$M\otimes_R -$}
-\[M\otimes_R -: \Mod{R} \to \Ab\] that on objects sends $N$ to $M\otimes_R N$, and on morphisms sends $f:N\to N'$ to the map \index{$1_M\otimes f$}\[1_M \otimes f : M\otimes_R N \to M\otimes_R N'\] that is given by the rule\[ (1_M \otimes_R f )(\sum_i m_i \otimes n_i) = \sum_i m_i \otimes f(n_i).\]
+\[M\otimes_R -: \Mod{R} \to \Ab\] that on objects sends $N$ to $M\otimes_R N$, and on morphisms sends $f:N\to N'$ to the map $1_M \otimes f$.
 
 If $R$ is commutative, we can consider $M\otimes_R -$ as a functor from $\Mod{R} \to \Mod{R}$.
 
 If $M$ is a $(S,R)$-bimodule, we can consider $M\otimes_R -$ as a functor from $\Mod{R} \to \Mod{S}$.
 \end{defn}
 \begin{proof}
-We check first that $1_M\otimes f$ is well-defined. There is an $R$-balanced bilinear map $a:M\times N \to M\otimes_R N'$ given by $a(m,n)=m\otimes f(n)$ (easy to check), which induces a well-defined map of the stated form. It is straightforward to check that this map has the desired linearity properties, and behaves well with compositions/identities.
+Well definedness of the maps comes from the lemma. Given $A\xra{g} B\xra{f} C$, we have \[(1_M \otimes (fg) )(m\otimes a) = m\otimes (fg)(a) = (1_M \otimes f)(1_M \otimes g)(m\otimes a),\] so $(1_M \otimes (fg)) - (1_M \otimes f)(1_M \otimes g)$ vanishes on a generating set for $M\otimes_R A$, and hence is zero. Similarly for the identity property.
 \end{proof}
-
-Of course, there is an equally valid functor $-\otimes_R N: \Mod{R^{\op}} \to \Ab$.
-
 
 \sssec{Examples of tensors}
 
-$R\otimes_R M$
+\begin{prop}
+Let $R$ be a ring. There is a natural isomorphism between $R\otimes_R -$ and the identity functor on $\Mod{R}$. In particular, for every $R$-module $M$, there is an $R$-module isomorphism $R\otimes_R M \cong M$ for every (left) $R$-module $M$.
+\end{prop}
+\begin{proof}Note that $R$ is an $(R,R)$-bimodule, so $R\otimes_R M$ is again an $R$-module.
+Now, 	$$\xymatrix@R=2mm{R \times M \ar[r] & M \\
+	(r,m) \ar@{|->}[r] & rm}$$
+	is biadditive (by distributive laws), $R$-balanced (by associativity module axiom), and $R$-linear, so it
+	induces a homomorphism of $R$-modules $\xymatrix{R \otimes_R M \ar[r]^-{\varphi_M} & M.}$ By construction, $\varphi_M$ is surjective. Moreover, the map 
+	$$\xymatrix@R=1mm{M \ar[r]^-{f_M} & R \otimes_R M \\ m \ar@{|->}[r] & 1 \otimes m}$$ 
+	is a homomorphism of $R$-modules, since 
+	\[f_M(a+b) = 1 \otimes (a+b) = 1 \otimes a + 1 \otimes b\]
+	\[ f_M(ra) = 1 \otimes (ra) =  r\otimes a = r(1 \otimes a) = rf_M(a).\]
+	For every $m \in M$, $\varphi_M f_M(m) = \varphi_M(1 \otimes m) = 1m = m$, and for every simple tensor, $f_M \varphi_M (r \otimes m) = f_M(rm) = 1 \otimes (rm) = r \otimes m$. This shows that $\varphi_M$ is an isomorphism.
+	
+	Finally, given any $f \in \Hom_R(M,N)$, since $f$ is $R$-linear we conclude that the diagram
+	$$\xymatrix@R=5mm@C=5mm{
+	 R \otimes_R M \ar[rrr]^-{\varphi_M} \ar[dd]_-{1 \otimes f} &&& M \ar[dd]^-{f} \\
+	&&&&\\
+	 R \otimes N \ar[rrr]_-{\varphi_N} &&& N
+	}$$
+	commutes, as $r\otimes m \mapsto rf(m)$ either way, so our isomorphism is natural.
+\end{proof}
+
+
+
+\begin{prop} Let  $R$ be a ring, $\{M_\lambda\}_{\lambda\in \Lambda}$ be  a family of right $R$-modules, $N$ be a left $R$-module. There is an isomorphism
+$$
+\phi: \left(\bigoplus_{\lambda\in \Lambda} M_\lambda \right) \otimes_R N \xra{\cong} \bigoplus_{\lambda\in \Lambda} \left(M_\lambda \otimes_R N\right)
+$$
+that sends $(m_i)_{i \in I} \otimes n$ to $(m_i \otimes n)_{i \in I}$.
+This is an isomorphism of abelian groups in general, of $R$-modules in the commutative case, of $S$-modules if each $M_\lambda$ is an $(S,R)$-bimodule, and of right $S$-modules if $N$ is an $(R,S)$-bimodule.
+\end{prop}
+
+
+\begin{proof} Define 
+$$
+b: \left(\bigoplus_I M\right) \times N\to \bigoplus_{I} M_i \otimes_R N
+$$
+by 
+$$
+b((m_i)_i , n) = (m_i \otimes n)_{i}.
+$$
+I leave it to you to check that $b$ is $R$-bi-linear and hence induces an $R$-module homomorphism $\phi$ as in  the statement. 
+
+To show $\phi$  is an isomorphism, we construct an inverse. 
+For each $i$ we define a pairing
+$$
+b_i: M_i \times N \to \left(\bigoplus_{i \in I} M_i \right) \otimes N 
+$$
+by $b_i(x, n) = \iota_i(x) \otimes n$, where $\iota_i: M_i \into \left(\bigoplus_{i \in I} M_i \right)$ is the canonical inclusion map.
+Then $b_i$ is $R$-bi-linear  and hence induces an $R$-map
+$\psi_i:  M_i \otimes_R N \to \left(\bigoplus_{i \in I} M_i \right) \otimes N$.
+
+By the universal mapping property for coproducts the maps $\psi_i, i \in I$ 
+determine an $R$-map
+$$
+\psi:  \bigoplus_i (M_i \otimes_R N) \to \left(\bigoplus_{i \in I} M_i \right) \otimes N.
+$$
+
+It is easy to see that both $\psi \circ \phi$ and $\phi \circ \psi$ are the identity maps. 
+\end{proof}
+
+
 
 $R/I\otimes_R M$ (commut)
 
