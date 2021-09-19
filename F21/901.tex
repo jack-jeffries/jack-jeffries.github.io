@@ -1663,7 +1663,7 @@ Similarly for ``left exact'' or ``right exact''.
 \item The functor $\Hom_R(-,M)$ is left exact.
 \end{enumerate}
 \end{thm}
-\begin{comment}
+%\begin{comment}
 
 \Sept{20}
 \begin{proof} 
@@ -1951,7 +1951,7 @@ We can take tensor products of maps as well.
 
 
 
-\begin{defn} Let $R$ be a ring and $M$ be a right $R$-module. There is a covariant functor \index{$M\otimes_R -$}
+\begin{defn} Let $R$ be a ring and $M$ be a right $R$-module. There is an additive covariant functor \index{$M\otimes_R -$}
 \[M\otimes_R -: \Mod{R} \to \Ab\] that on objects sends $N$ to $M\otimes_R N$, and on morphisms sends $f:N\to N'$ to the map $1_M \otimes f$.
 
 If $R$ is commutative, we can consider $M\otimes_R -$ as a functor from $\Mod{R} \to \Mod{R}$.
@@ -1960,6 +1960,8 @@ If $M$ is a $(S,R)$-bimodule, we can consider $M\otimes_R -$ as a functor from $
 \end{defn}
 \begin{proof}
 Well definedness of the maps comes from the lemma. Given $A\xra{g} B\xra{f} C$, we have \[(1_M \otimes (fg) )(m\otimes a) = m\otimes (fg)(a) = (1_M \otimes f)(1_M \otimes g)(m\otimes a),\] so $(1_M \otimes (fg)) - (1_M \otimes f)(1_M \otimes g)$ vanishes on a generating set for $M\otimes_R A$, and hence is zero. Similarly for the identity property.
+
+For additivity
 \end{proof}
 
 \sssec{Examples of tensors}
@@ -2000,45 +2002,81 @@ This is an isomorphism of abelian groups in general, of $R$-modules in the commu
 
 \begin{proof} Define 
 $$
-b: \left(\bigoplus_I M\right) \times N\to \bigoplus_{I} M_i \otimes_R N
+b: \left(\bigoplus_{\lambda\in\Lambda} M\right) \times N\to \bigoplus_{\lambda\in\Lambda}  \left(M_\lambda \otimes_R N\right)
 $$
 by 
 $$
-b((m_i)_i , n) = (m_i \otimes n)_{i}.
+b((m_\lambda) , n) = (m_\lambda \otimes n).
 $$
-I leave it to you to check that $b$ is $R$-bi-linear and hence induces an $R$-module homomorphism $\phi$ as in  the statement. 
+The map $b$ is $R$-balanced biadditive in general, and linear with respect to the specified action in each of the other cases. Thus, it induces a morphism $\phi$ of the specified type.
 
 To show $\phi$  is an isomorphism, we construct an inverse. 
 For each $i$ we define a pairing
 $$
-b_i: M_i \times N \to \left(\bigoplus_{i \in I} M_i \right) \otimes N 
+b_\lambda: M_\lambda \times N \to \left(\bigoplus_{\lambda\in\Lambda} M_\lambda \right) \otimes N 
 $$
-by $b_i(x, n) = \iota_i(x) \otimes n$, where $\iota_i: M_i \into \left(\bigoplus_{i \in I} M_i \right)$ is the canonical inclusion map.
-Then $b_i$ is $R$-bi-linear  and hence induces an $R$-map
-$\psi_i:  M_i \otimes_R N \to \left(\bigoplus_{i \in I} M_i \right) \otimes N$.
+by $b_\lambda(x, n) = \iota_\lambda(x) \otimes n$, where $\iota_\lambda: M_\lambda \to \left( \bigoplus_{\lambda\in\Lambda} M_\lambda \right)$ is the canonical inclusion map.
+Then $b_\lambda$ is $R$-balanced biadditive in general, and linear with respect to the specified action in each of the other cases and hence induces a morphism
+$\psi_i:  M_\lambda \otimes_R N \to \left(\bigoplus_{\lambda \in \Lambda} M_\lambda \right) \otimes N$.
 
-By the universal mapping property for coproducts the maps $\psi_i, i \in I$ 
-determine an $R$-map
+By the universal mapping property for coproducts the maps $\psi_\lambda, \lambda\in \Lambda$ 
+determine a morphism 
 $$
-\psi:  \bigoplus_i (M_i \otimes_R N) \to \left(\bigoplus_{i \in I} M_i \right) \otimes N.
+\psi:  \bigoplus_{\lambda\in\Lambda} (M_\lambda \otimes_R N) \to \left(\bigoplus_{\lambda \in \Lambda} M_\lambda \right) \otimes N.
 $$
 
-It is easy to see that both $\psi \circ \phi$ and $\phi \circ \psi$ are the identity maps. 
+It is easy to see that both $\psi \circ \phi$ and $\phi \circ \psi$ are the identity maps by observing that they act as the identity on simple tensors.
 \end{proof}
 
+\begin{rem} The same property holds on the right side of the tensor.
+\end{rem}
 
+\begin{ex} If $F=R^{\oplus \Lambda}$ is a free module, and $M$ is any $R$-module, then $R^{\oplus \Lambda} \otimes_R M \cong M^{\oplus \Lambda}$, and this isomorphism is natural in $M$.
+\end{ex}
 
-$R/I\otimes_R M$ (commut)
+\begin{ex} As a special case, $R^{\oplus \Gamma} \otimes R^{\oplus \Lambda}$ is a free module on the basis $\{e_\gamma \otimes e_\lambda \ | \ (\gamma,\lambda)\in \Gamma\times\Lambda\}$. 
 
-direct sums
-
-free modules
-
-associativity of tensor
+Even more concretely, if $K$ is a field, $K^m \otimes K^n \cong K^{m\times n}$ is isomorphic to the collection of $m\times n$ matrices, by the isomorphism that takes $e_i\otimes e_j$ to the matrix that has a $1$ in the $i,j$ entry and zeroes elsewhere. This morphism then sends $(a_1,\dots,a_m)\otimes (b_1,\dots,b_n)$ to $[a_i b_j]$, the outer product of these matrices. Observe that the simple tensors correspond exactly to the matrices of rank at most one.
+\end{ex}
 
 \sssec{Right exactness of tensor}
 
-\sssec{Hom tensor adjointess}
+The key to unlocking more examples of tensor will be to prove that it is right exact.
+
+\begin{thm} Let $M$ be a right $R$-module. The functor $M \otimes_R - : \Mod{R} \to \Ab$ is right exact.
+\end{thm}
+\begin{proof} \item Let \[ A \xra{i} B \xra{p} C \to 0\]
+be  exact. We need to show that
+\[ M\otimes_R A \xra{1_M \otimes i}  M\otimes_R B \xra{1_M \otimes p} M\otimes_R C \to 0  \]
+is exact.
+\begin{itemize}
+\item $1_M \otimes p$ is surjective: Given $\sum_i m_i \otimes c_i \in M\otimes_R C$, we can find $b_i\in B$ such that $p(b_i)=c_i$ for all $i$; then $(1_M \otimes p)(\sum_i m_i \otimes b_i)=\sum_i m_i \otimes c_i$.
+
+\item $\im(1_M \otimes i)\subseteq \ker(1_M \otimes p)$: We have $(1_M \otimes p)(1_M \otimes i) = 1_M \otimes (pi) = 1_M \otimes 0 = 0$.
+
+\item $\ker(1_M \otimes p)\subseteq \im(1_M \otimes i)$: From above, the map $1_M\otimes p$ induces a surjection $\alpha:(M\otimes_R B)/\im(1_M \otimes i) \to M\otimes_R C$ that maps $m\otimes b \mapsto m\otimes p(b)$. We will construct an inverse for this map.
+
+Consider the map 
+\[\xymatrix@R=.5em{\mu: M\times C \ar[r] & (M\otimes_R B)/\im(1_M \otimes i)& \\
+(m,c) \ar@{|->}[r] & m\otimes b &\text{for some $b$ with $p(b)=c$.}}\]
+To see this is well-defined, note that if $p(b)=p(b')=c$, then $p(b-b')=0$, so $b-b'=i(a)$ for some $a\in A$, so 
+\[ (m\otimes b) - (m\otimes b') = m\otimes(b-b') =m\otimes i(a) \in \im(1_M\otimes i).\]
+We then check $\mu$ is $R$-balanced biadditive:
+\[ \mu(m+m',c)=(m+m')\otimes b = m\otimes b + m' \otimes b = \mu(m,c) + \mu(m',c).\]
+If $p(b)=c$ and $p(b')=c'$, then $p(b+b')=c+c'$, so
+\[ \mu(m,c+c')=m\otimes (b+b') = m\otimes b + m\otimes b' = \mu(m,c) + \mu(m,c'),\]
+and, if $p(b)=c)$, then $p(rb)=rc$, so
+\[ \mu(mr, c) = mr\otimes b = m \otimes rb = \mu(m,rc).\]
+Thus, $\mu$ induces an additive homomorphism $\beta:M\otimes_R C \to(M\otimes_R B)/\im(1_M \otimes i) $. By construction, we have $\beta\circ \alpha (m\otimes b) = m\otimes b$ for all simple tensors, and thus this is the identity map since simple tensors generate.
+
+It follows that $\alpha$ is injective, so $\im(1_M \otimes i)$ is equal to the kernel of $1_M \otimes p$.
+\end{itemize}
+\end{enumerate}
+
+
+\sssec{Hom tensor adjointess and extension of scalars}
+
+\sssec{Associativity and multilinear maps}
 
 \begin{comment}
 
