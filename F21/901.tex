@@ -1686,7 +1686,7 @@ is exact.
 
 \item $\im(p^*)\subseteq \ker(i^*)$: Let $g\in \Hom_R(B,M)$ be in the image of $p_*$, so we can write $g=p^*(f)$ for some $f\in \Hom_R(M,C)$. We have $i^*(p^*(f))=f \circ p \circ i=0$.
 
-\item $\ker(i^*)\subseteq\im(p^*)$: Let $g\in \Hom_R(B,M)$ be in the kernel of $i^*$, so $g\circ i=0$. Thus, as $g|_{\im(i)} = 0$, we obtain a well-defined map $\overline{g}:B/\im(i) \to M$. Note that, since $p$ is surjective, it induces an isomorphism $\overline{p}:B/\im(i) = B/\ker(p) \to C$, so there is a map $j:C\to B/\ker(p)$ such that $ j \circ p$ is the quotient map $B\to B/\im(i)$. Set $f=\overline{g} \circ j$. We then have $p^*(f)(b) = \overline{g} \circ j \circ p(b) = \overline{g}(\overline{b})=g(b)$, so $p^*(f) = g$. Thus $g\in \im(p^*)$.\qedhere\end{itemize}
+\item $\ker(i^*)\subseteq\im(p^*)$: Let $g\in \Hom_R(B,M)$ be in the kernel of $i^*$, so $g\circ i=0$. Thus, as $g|_{\im(i)} = 0$, we can factor $g=\overline{g} \circ \pi$, where $\pi:B\to B/\im(i)=B/\ker(p)$ is the quotient map, and $\overline{g}:B/\im(i) \to M$. Note that, since $p$ is surjective, writing $p=\overline{p} \circ \pi$, the map $\overline{p}:B/\im(i) = B/\ker(p) \to C$ is an isomorphism, so there is a map $j:C\to B/\ker(p)$ such that $ j \circ \overline{p}$ is the identity on $B/\im(i)$, so $j\circ p = j\circ \overline{p} = \circ \pi = \pi$. Set $f=\overline{g} \circ j$. We then have $p^*(f)= \overline{g} \circ j \circ p = \overline{g} \circ \pi=g$. Thus $g\in \im(p^*)$.\qedhere\end{itemize}
 \end{enumerate}
 \end{proof}
 
@@ -1714,6 +1714,7 @@ so $\Hom(M,R)\cong \ker(A^T)$.
 
 \
 
+\begin{comment}
 
 
 \ssec{Tensor products}
@@ -1759,8 +1760,9 @@ We now define tensor products using a universal property.
 An abelian group $M \otimes_R N$ together with an $R$-balanced biadditive map $h : M\times N \to M\otimes_R N$ is called the \DEF{tensor product} of $M$ and $N$ if it has the following universal property: for any abelian group $A$ and $R$-balanced biadditive map $f : M\times N \to A$, there exists a unique abelian group homomorphism $g : M \otimes_R N\to A$ such that $f = g\circ h$.
 
 \[
-\xymatrix{ M\times N \ar[r]^f \ar[d]^h& A \\
-M\otimes_R N  \ar@{-->}[ur]_{\exists ! g}
+\xymatrix{
+& M\otimes_R N  \ar@{-->}[dr]^{\exists ! g}&\\
+ M\times N \ar[ur]^f \ar[rr]^h& & A
 }
 \]
 \end{defn}
@@ -1829,6 +1831,8 @@ It is evident from the construction that $\alpha \circ h = b$. Since the image o
 homomorphism satisfying this equation.
 \end{proof}
 
+Note that the map induced by a biadditive map $b$ sends $m\otimes n\mapsto b(m,n)$.
+
 \begin{rem} In this explicit construction, every element is a \emph{sum} of \DEF{simple tensors} (elements of the form $m\otimes n$) but in general, not every element is itself a simple tensor.
 \end{rem}
 
@@ -1841,24 +1845,24 @@ In $M\otimes_RN$ we have $0_M\otimes n=0_{M\otimes_R N} =m\otimes 0_N$ for each 
 
 
 
-\begin{ex} I claim $\Z/m \otimes_\Z \Z/n \cong \Z/g$ where $g = gcd(m,n)$.
+\begin{ex} I claim $\Z/m\Z \otimes_\Z \Z/n\Z \cong \Z/g\Z$ where $g = \mathrm{gcd}(m,n)$.
 \end{ex}
 
 
 \begin{proof}
 Define a function
 $$
-b: \Z/m \times \Z/n \to \Z/g
+b: \Z/m\Z \times \Z/n\Z \to \Z/g\Z
 $$ 
 by $b(\overline{i}, \overline{j}) = \overline{ij}$. It is not hard to see that $b$ is well-defined (exercise!) 
-and $\Z$-biadditive.
-By the Theorem, it therefore induces a homomorphism of abelian groups
+and $\Z$-balanced biadditive.
+By the universal property, it therefore induces a homomorphism of abelian groups
 $$
-\a: \Z/m \otimes_\Z \Z/n \to \Z/g
+\a: \Z/m\Z \otimes_\Z \Z/n\Z \to \Z/g\Z
 $$ 
 such that $\a(\overline{i} \otimes \overline{j}) = \overline{ij}$. 
 
-Now define a homomorphism $\phi: \Z \to \Z/m \otimes_\Z \Z/n$ by sending $1$ to $1 \otimes 1$. Notice that 
+Now define a homomorphism $\phi: \Z \to \Z/m\Z \otimes_\Z \Z/n\Z$ by sending $1$ to $1 \otimes 1$. Notice that 
 $$
 \phi(g) = g \cdot (1 \otimes 1) = g \otimes 1 = 1 \otimes g.
 $$
@@ -1868,13 +1872,13 @@ g \otimes 1 = i m \otimes 1 + 1 \otimes j n = 0 \otimes 1 + 1 \otimes 0 = 0 + 0 
 $$
 So, $\phi$ induces a homomorphism
 $$
-\beta = \overline{\phi}: \Z/g \to \Z/m \otimes_\Z \Z/n
+\beta = \overline{\phi}: \Z/g\Z \to \Z/m\Z \otimes_\Z \Z/n\Z
 $$
 with $\beta(\overline{i}) = \overline{i} \otimes 1 = 1 \otimes \overline{i}$.
 
 We have $\a(\beta(\overline{i})) = \a(\overline{i} \otimes 1) = \overline{i}$ so that $\a \circ \beta = \id$. 
 
-A typical element of  $\Z/m \times \Z/n$ has the form $\sum_t \overline{i_t} \otimes \overline{j_t}$. We have 
+A typical element of  $\Z/m\Z \otimes \Z/n\Z$ has the form $\sum_t \overline{i_t} \otimes \overline{j_t}$. We have 
 $$
 \beta(\alpha(\sum_t \overline{i_t} \otimes \overline{j_t}))
 = \sum_t \overline{i_t} \cdot \overline{j_t} \otimes 1
@@ -1934,7 +1938,7 @@ We can take tensor products of maps as well.
 
 
 \begin{lem}
-	Let $f: M \to M'$ be a homomorphism or right $R$-modules and  $g: N \to N'$ be a homomorphism of left $R$-modules. There exists a unique homomorphism of abelian groups \index{$f\otimes g$}$f \otimes g : M \otimes_R N \to M' \otimes_R N'$ such that
+	Let $f: M \to M'$ be a homomorphism of right $R$-modules and  $g: N \to N'$ be a homomorphism of left $R$-modules. There exists a unique homomorphism of abelian groups \index{$f\otimes g$}$f \otimes g : M \otimes_R N \to M' \otimes_R N'$ such that
 	$$(f \otimes g)(m \otimes n) = f(m) \otimes g(n)$$
 	for all $a \in A$ and $b \in B$.\index{$f \otimes g$}\index{tensor product of maps}
 	
@@ -2071,7 +2075,7 @@ Thus, $\mu$ induces an additive homomorphism $\beta:M\otimes_R C \to(M\otimes_R 
 
 It follows that $\alpha$ is injective, so $\im(1_M \otimes i)$ is equal to the kernel of $1_M \otimes p$.
 \end{itemize}
-\end{enumerate}
+\end{proof}
 
 
 \sssec{Hom tensor adjointess and extension of scalars}
