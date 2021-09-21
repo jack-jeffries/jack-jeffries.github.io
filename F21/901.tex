@@ -1714,7 +1714,7 @@ so $\Hom(M,R)\cong \ker(A^T)$.
 
 \
 
-\begin{comment}
+%\begin{comment}
 
 
 \ssec{Tensor products}
@@ -1742,13 +1742,16 @@ Assume $R$ is commutative and $A$ is an $R$-module
 \end{enumerate}
 \end{defn}
 
-\begin{ex} Examples of bilinear maps include
-\begin{itemize}
-\item $f:R\times R \to R, f(r,s)=rs$ 
-\item for an $R$-module $M$, $f:R^2\times M \to M^2, f((r,s),m)=(rm,sm)$
-\item for a right ideal $I$ and a left module $M$, $f:(R/I)\times M\to M/IM, f(\ov{r},m)=\ov{rm}$
-\item for $K$ a field, $f:K\times K \to K$ given by the usual dot product.
-\end{itemize}
+Conditions (1) and (2) alone are the biadditive part, and condition (3) is the balancedness. Condition (4) says that the biadditive map $b$ is an $R$-linear function in either argument if we fix the other one.
+
+\begin{ex} 
+\begin{enumerate}
+\item If $R$ is any ring, the map $f:R\times R \to R, f(r,s)=rs$ is $R$-balanced biadditive, and bilinear if $R$ is commutative.
+%\item for an $R$-module $M$, $f:R^2\times M \to M^2, f((r,s),m)=(rm,sm)$
+\item For $R$ commutative, an ideal $I$, and a left module $M$, the map $f:(R/I)\times M\to M/IM, f(\ov{r},m)=\ov{rm}$ is $R$-bilinear.
+\item For $K$ a field, $f:K^n\times K^n \to K$ given by the usual dot product is $K$-bilinear. Recall that we can view $K^n$ as a right $M_n(K)$ module via $v \cdot A = A^T v$ and as a left $M_n(K)$ module via $A\cdot v = Av$. With these structures, $f$ is $M_n(K)$-balanced biadditive. The balanced part is the least obvious one:
+\[ f(v \cdot A,w) = (A^T v) \cdot w = v^T A w = v \cdot (Aw) = f(v, A\cdot w).\]
+\end{enumerate}
 \end{ex}
 
 We now define tensor products using a universal property.
@@ -1757,29 +1760,29 @@ We now define tensor products using a universal property.
 \label{def:tensorprod}
   Let $R$ be a (not necessarily commutative) ring, let $M$ be a right $R$-module, let $N$ be a left $R$-module. 
 
-An abelian group $M \otimes_R N$ together with an $R$-balanced biadditive map $h : M\times N \to M\otimes_R N$ is called the \DEF{tensor product} of $M$ and $N$ if it has the following universal property: for any abelian group $A$ and $R$-balanced biadditive map $f : M\times N \to A$, there exists a unique abelian group homomorphism $g : M \otimes_R N\to A$ such that $f = g\circ h$.
+An abelian group $M \otimes_R N$ together with an $R$-balanced biadditive map $h : M\times N \to M\otimes_R N$ is called a \DEF{tensor product} of $M$ and $N$ if it has the following universal property: for any abelian group $A$ and $R$-balanced biadditive map $f : M\times N \to A$, there exists a unique abelian group homomorphism $g : M \otimes_R N\to A$ such that $f = g\circ h$.
 
 \[
 \xymatrix{
 & M\otimes_R N  \ar@{-->}[dr]^{\exists ! g}&\\
- M\times N \ar[ur]^f \ar[rr]^h& & A
+ M\times N \ar[ur]^h \ar[rr]^f& & A
 }
 \]
 \end{defn}
 
 \begin{lem} 
-If $(X,h)$, $(Y,k)$ are two tensor products for $M$ and $N$, then there is a unique isomorphism of abelian groups $\alpha:X\to Y$ such that $k=h\circ \alpha$.
+If $(X,h)$, $(Y,k)$ are two tensor products for $M$ and $N$, then there is a unique isomorphism of abelian groups $\alpha:X\to Y$ such that $k= \alpha\circ h$.
 \end{lem}
 \begin{proof}
 The following diagram is a rough guide for the argument:
 \[ \xymatrix{ & X \ar@{-->}[r]^{\alpha} & Y\ar@{-->}[r]^{\beta } & X . \\ M\times N \ar[ur]^-{h} \ar[urr]^-{k} \ar[urrr]_-{h} }\]
-Applying the universal property of $(X,h)$ with the $R$-balanced biadditive map $k$, we get a unique abelian group homomorphism $\alpha$ above that makes its triangle commute; in particular, the uniqueness statement is clear. Likewise, applying the universal property of $(Y,k)$ with $h$, we get an abelian group homomorphism $\beta$ that makes its triangle commute. Then, $\beta\circ\alpha$ is an abelian group homomorphism such that $(\beta\circ\alpha) \circ h = h$, and the identity map is another. By the uniqueness property of $(X,h)$, $\beta\circ \alpha$ is the identity, so $\alpha$ is an isomorphism.
+Applying the universal property of $(X,h)$ with the $R$-balanced biadditive map $k$, we get a unique abelian group homomorphism $\alpha$ above that makes its triangle commute; in particular, the uniqueness statement is clear. Likewise, applying the universal property of $(Y,k)$ with $h$, we get an abelian group homomorphism $\beta$ that makes its triangle commute. Then, $\beta\circ\alpha$ is an abelian group homomorphism such that $(\beta\circ\alpha) \circ h = h$, and the identity map is another. By the uniqueness property of $(X,h)$, $\beta\circ \alpha$ is the identity. A similar argument shows that $\alpha \circ \beta$ is the identity too, so $\alpha$ is an isomorphism.
 \end{proof}
 
 \begin{thm}
 \label{thm:tensor}
 Let $R$ be a (not necessarily commutative) ring, let $M$ be a right $R$-module, let $N$ be a left $R$-module.  Then a tensor product $M\otimes_R N$ exists and is given by defining an abelian group $M \otimes_R N$ by generators and relations as follows:
-
+\index{$m\otimes n$}
 \begin{itemize}
 \item The generators are all expressions of the form $m \otimes n$ for $m \in M$ and $n \in N$. 
 \item The relations are
@@ -1808,7 +1811,7 @@ Then the pair $(M \otimes_R N,h)$ defined above is the tensor product of $M$ and
 
 
 \begin{proof}
-It is immediate from the construction that $h$ is $R$-biadditive. 
+It is immediate from the construction that $h$ is $R$-balanced biadditive. 
 Given a biadditive map  $b: M \times N \to A$, define $\tilde{b}: \bigoplus_{(m,n) \in M \times N} \Z  \cdot (m \otimes n) \to A$ to be the unique homomorphism of abelian groups  
 sending the basis element $m \otimes n$  to $b(m,n)$. Since $b$ is biadditive, we have
 $$
@@ -1829,6 +1832,8 @@ $$
 $$
 It is evident from the construction that $\alpha \circ h = b$. Since the image of $B$ generates $M \otimes_A N$ as an abelian group, $\alpha$ is the unique
 homomorphism satisfying this equation.
+
+If $\beta$ is any abelian group homomorphism with $\beta\circ h=b$, we have $\beta(m\otimes n) = \beta(h(m,n))=b(m,n)=\alpha(m\otimes n)$. Since the elements of the form $m\otimes n$ generate $M\otimes_R N$ as an abelian group, we must have $\beta=\alpha$.
 \end{proof}
 
 Note that the map induced by a biadditive map $b$ sends $m\otimes n\mapsto b(m,n)$.
@@ -1928,7 +1933,7 @@ For (b), we already know this map is additive. To see that it is $S$-linear, we 
 
 For (c), we know that since $f$ is $R$-balanced biadditive map there exists a unique additive map $g$ such that $f=g\circ h$. We just need to show that this map is $S$-linear:
 \[\begin{aligned}
- g(s(\sum_i m_i\otimes n_i )) &= g(\sum_i sm_i \otimes n_i) = \sum_ig( sm_i \otimes n_i) = \sum_i g(h(sm_i , n_i))\\ &= \sum_i f(sm_i,n_i) = s(\sum_i f(m_i,n_i))=s(\sum_i g(m_i\otimes n_i)).
+ &g(s(\sum_i m_i\otimes n_i )) = g(\sum_i sm_i \otimes n_i) = \sum_ig( sm_i \otimes n_i) = \sum_i g(h(sm_i , n_i))\\ &= \sum_i f(sm_i,n_i) = s(\sum_i f(m_i,n_i))=s(\sum_i g(m_i\otimes n_i)) = s(g(\sum_i m_i \otimes n_i)).
  \end{aligned}\]
  
  Case (3) is quite analogous. Case (1) is a special case of (2): we consider $M$ as an $(R,R)$-bimodule. The extra equality in (a) follows from  $rm \otimes n = mr \otimes n = m \otimes rn$. For (b) and (c), we note that $R$-bilinear is equivalent to $R$-balanced biadditive plus $R$-linear with respect to the module structure given in case (2).
