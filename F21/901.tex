@@ -1719,6 +1719,10 @@ so $\Hom(M,R)\cong \ker(A^T)$.
 
 \ssec{Tensor products}
 
+\
+
+\Sept{22}
+
 \sssec{Definition of tensor product}
 
 \begin{defn} 
@@ -1760,12 +1764,12 @@ We now define tensor products using a universal property.
 \label{def:tensorprod}
   Let $R$ be a (not necessarily commutative) ring, let $M$ be a right $R$-module, let $N$ be a left $R$-module. 
 
-An abelian group $M \otimes_R N$ together with an $R$-balanced biadditive map $h : M\times N \to M\otimes_R N$ is called a \DEF{tensor product} of $M$ and $N$ if it has the following universal property: for any abelian group $A$ and $R$-balanced biadditive map $f : M\times N \to A$, there exists a unique abelian group homomorphism $g : M \otimes_R N\to A$ such that $f = g\circ h$.
+An abelian group $M \otimes_R N$ together with an $R$-balanced biadditive map $h : M\times N \to M\otimes_R N$ is called a \DEF{tensor product} of $M$ and $N$ if it has the following universal property: for any abelian group $A$ and $R$-balanced biadditive map $b : M\times N \to A$, there exists a unique abelian group homomorphism $\alpha : M \otimes_R N\to A$ such that $b = \alpha \circ h$.
 
 \[
 \xymatrix{
-& M\otimes_R N  \ar@{-->}[dr]^{\exists ! g}&\\
- M\times N \ar[ur]^h \ar[rr]^f& & A
+& M\otimes_R N  \ar@{-->}[dr]^{\exists ! \alpha}&\\
+ M\times N \ar[ur]^h \ar[rr]^b& & A
 }
 \]
 \end{defn}
@@ -1844,11 +1848,13 @@ Note that the map induced by a biadditive map $b$ sends $m\otimes n\mapsto b(m,n
 \begin{rem} While the construction of tensor products may feel easier to work with at first, it is important to keep in mind that it is hard to tell when two combinations of simple tensors are equal. In general, when we want to define a map from a tensor product, it is better to use the universal property, since we don't have to worry about well-definedness. However, to define a map into a tensor product, using the concrete description is often easier.
 \end{rem}
 
+
+
 \begin{exer}
 In $M\otimes_RN$ we have $0_M\otimes n=0_{M\otimes_R N} =m\otimes 0_N$ for each $m\in M,n\in N$.
 \end{exer}
 
-
+\begin{comment}
 
 \begin{ex} I claim $\Z/m\Z \otimes_\Z \Z/n\Z \cong \Z/g\Z$ where $g = \mathrm{gcd}(m,n)$.
 \end{ex}
@@ -1901,29 +1907,29 @@ and so $\beta \circ \alpha = \id$.
 \item $M\otimes_R N$ is an $R$-module via the action
 \[ r \cdot (\sum_i m_i \otimes n_i) = \sum_i (r m_i) \otimes n_i = \sum_i m_i \otimes (r n_i).\]
 \item The natural map $h: M\times N \to M\otimes_R N$ is $R$-bilinear.
-\item For any $R$-module $A$ and $R$-bilinear map $f: M\times N \to A$, there is a unique $R$-module homomorphism $g: M\otimes_R N \to A$ such that $f=g\circ h$.
+\item For any $R$-module $A$ and $R$-bilinear map $b: M\times N \to A$, there is a unique $R$-module homomorphism $\alpha: M\otimes_R N \to A$ such that $b=\alpha\circ h$.
 \end{enumerate}
 \item If $M$ is an $(S,R)$-bimodule, and $N$ is an $R$-module, then consider $M\times N$ as an $S$-module by the action $s (m,n) = (sm,n)$. We have
 \begin{enumerate}
-\item $M\times_R N$ is an $S$-module via the action
+\item $M\otimes_R N$ is an $S$-module via the action
 \[ s \cdot (\sum_i m_i \otimes n_i) = \sum_i (s m_i) \otimes n_i.\]
 \item The natural map $h: M\times N \to M\otimes_R N$ is $S$-linear.
-\item For any $S$-module $A$ and $S$-linear $R$-balanced biadditive map $f: M\times N \to A$, there is a unique $S$-module homomorphism $g: M\otimes_R N \to A$ such that $f=g\circ h$.
+\item For any $S$-module $A$ and $S$-linear $R$-balanced biadditive map $b: M\times N \to A$, there is a unique $S$-module homomorphism $\alpha: M\otimes_R N \to A$ such that $b=\alpha\circ h$.
 \end{enumerate}
 \item If $M$ is an $R$-module, and $N$ is an $(R,S)$-bimodule, then consider $M\times N$ as a right $S$-module by the action $ (m,n)s = (m,ns)$. We have
 \begin{enumerate}
-\item $M\times_R N$ is a right $S$-module via the action
+\item $M\otimes_R N$ is a right $S$-module via the action
 \[ s \cdot (\sum_i m_i \otimes n_i) = \sum_i m_i \otimes (n_i s).\]
 \item The natural map $h: M\times N \to M\otimes_R N$ is right $S$-linear.
-\item For any right $S$-module $A$ and right $S$-linear $R$-balanced biadditive map $f: M\times N \to A$, there is a unique right $S$-module homomorphism $g: M\otimes_R N \to A$ such that $f=g\circ h$.
+\item For any right $S$-module $A$ and right $S$-linear $R$-balanced biadditive map $b: M\times N \to A$, there is a unique right $S$-module homomorphism $\alpha: M\otimes_R N \to A$ such that $b=\alpha\circ h$.
 \end{enumerate}
 \end{enumerate}
 \end{prop}
 \begin{proof} 
 Let's consider case (2).
 
-For (a), the first thing we need to show that the action of an element $s\in S$ on $M\otimes_R N$ is a well-defined function. To do this, consider the map $\mu_s: M\times N \to A$ given by the rule $\mu_s(m,n) = sm\times n$. We claim that this is $R$-balanced biadditive. Indeed,
-\[ \mu_s(m+m',n) = (s(m+m')) \times n = (sm+sm') \times n = sm \times n + sm' \times n = \mu_s(m,n) + \mu_s(m',n),\]
+For (a), the first thing we need to show that the action of an element $s\in S$ on $M\otimes_R N$ is a well-defined function. To do this, consider the map $\mu_s: M\times N \to A$ given by the rule $\mu_s(m,n) = sm\otimes n$. We claim that this is $R$-balanced biadditive. Indeed,
+\[ \mu_s(m+m',n) = (s(m+m')) \otimes n = (sm+sm') \otimes n = sm \otimes n + sm' \otimes n = \mu_s(m,n) + \mu_s(m',n),\]
 similarly $\mu_s(m,n+n')=\mu_s(m,n)+\mu_s(m,n')$, and
 \[ \mu_s(mr,n) = smr\otimes n = sm \otimes rn = \mu_s(m,rn).\]
 Thus, we obtain a well-defined map $M\otimes_R N\to M\otimes_R N$ that sends $m\otimes n\mapsto sm \otimes n$, and the given formula follows. It is easy to check that this action satisfies the module axioms.
@@ -1931,9 +1937,9 @@ Thus, we obtain a well-defined map $M\otimes_R N\to M\otimes_R N$ that sends $m\
 For (b), we already know this map is additive. To see that it is $S$-linear, we compute
 \[ h(s(m,n))=h(sm,n) = sm\otimes n = s(m\otimes n) =s h(m,n).\]
 
-For (c), we know that since $f$ is $R$-balanced biadditive map there exists a unique additive map $g$ such that $f=g\circ h$. We just need to show that this map is $S$-linear:
+For (c), we know that since $f$ is $R$-balanced biadditive map there exists a unique additive map $\alpha$ such that $b=\alpha\circ h$. We just need to show that this map is $S$-linear:
 \[\begin{aligned}
- &g(s(\sum_i m_i\otimes n_i )) = g(\sum_i sm_i \otimes n_i) = \sum_ig( sm_i \otimes n_i) = \sum_i g(h(sm_i , n_i))\\ &= \sum_i f(sm_i,n_i) = s(\sum_i f(m_i,n_i))=s(\sum_i g(m_i\otimes n_i)) = s(g(\sum_i m_i \otimes n_i)).
+ &\alpha(s(\sum_i m_i\otimes n_i )) = \alpha(\sum_i sm_i \otimes n_i) = \sum_i \alpha( sm_i \otimes n_i) = \sum_i \alpha(h(sm_i , n_i))\\ &= \sum_i b(sm_i,n_i) = s(\sum_i b(m_i,n_i))=s(\sum_i \alpha(m_i\otimes n_i)) = s(\alpha(\sum_i m_i \otimes n_i)).
  \end{aligned}\]
  
  Case (3) is quite analogous. Case (1) is a special case of (2): we consider $M$ as an $(R,R)$-bimodule. The extra equality in (a) follows from  $rm \otimes n = mr \otimes n = m \otimes rn$. For (b) and (c), we note that $R$-bilinear is equivalent to $R$-balanced biadditive plus $R$-linear with respect to the module structure given in case (2).
@@ -1970,7 +1976,8 @@ If $M$ is a $(S,R)$-bimodule, we can consider $M\otimes_R -$ as a functor from $
 \begin{proof}
 Well definedness of the maps comes from the lemma. Given $A\xra{g} B\xra{f} C$, we have \[(1_M \otimes (fg) )(m\otimes a) = m\otimes (fg)(a) = (1_M \otimes f)(1_M \otimes g)(m\otimes a),\] so $(1_M \otimes (fg)) - (1_M \otimes f)(1_M \otimes g)$ vanishes on a generating set for $M\otimes_R A$, and hence is zero. Similarly for the identity property.
 
-For additivity
+For additivity, we observe that \[(1_M \otimes (f+g))(m\otimes n) = m\otimes (f+g)(n) = m\otimes f(n) + m\otimes g(n)= ((1_M\otimes f)+(1_M \otimes g))(m\otimes n),\]
+and since simple tensors generate, we have $1_M \otimes (f+g) = 1_M \otimes f + 1_M \otimes g$.
 \end{proof}
 
 \sssec{Examples of tensors}
@@ -2043,9 +2050,9 @@ It is easy to see that both $\psi \circ \phi$ and $\phi \circ \psi$ are the iden
 \begin{ex} If $F=R^{\oplus \Lambda}$ is a free module, and $M$ is any $R$-module, then $R^{\oplus \Lambda} \otimes_R M \cong M^{\oplus \Lambda}$, and this isomorphism is natural in $M$.
 \end{ex}
 
-\begin{ex} As a special case, $R^{\oplus \Gamma} \otimes R^{\oplus \Lambda}$ is a free module on the basis $\{e_\gamma \otimes e_\lambda \ | \ (\gamma,\lambda)\in \Gamma\times\Lambda\}$. 
+\begin{ex} As a special case, $R^{\oplus \Gamma} \otimes_R R^{\oplus \Lambda}$ is a free module on the basis $\{e_\gamma \otimes e_\lambda \ | \ (\gamma,\lambda)\in \Gamma\times\Lambda\}$. 
 
-Even more concretely, if $K$ is a field, $K^m \otimes K^n \cong K^{m\times n}$ is isomorphic to the collection of $m\times n$ matrices, by the isomorphism that takes $e_i\otimes e_j$ to the matrix that has a $1$ in the $i,j$ entry and zeroes elsewhere. This morphism then sends $(a_1,\dots,a_m)\otimes (b_1,\dots,b_n)$ to $[a_i b_j]$, the outer product of these matrices. Observe that the simple tensors correspond exactly to the matrices of rank at most one.
+Even more concretely, if $K$ is a field, $K^m \otimes_K K^n \cong K^{m\times n}$ is isomorphic to the collection of $m\times n$ matrices, by the isomorphism that takes $e_i\otimes e_j$ to the matrix that has a $1$ in the $i,j$ entry and zeroes elsewhere. This morphism then sends $(a_1,\dots,a_m)\otimes (b_1,\dots,b_n)$ to $[a_i b_j]$, the outer product of these matrices. Observe that the simple tensors correspond exactly to the matrices of rank at most one.
 \end{ex}
 
 \sssec{Right exactness of tensor}
@@ -2054,7 +2061,7 @@ The key to unlocking more examples of tensor will be to prove that it is right e
 
 \begin{thm} Let $M$ be a right $R$-module. The functor $M \otimes_R - : \Mod{R} \to \Ab$ is right exact.
 \end{thm}
-\begin{proof} \item Let \[ A \xra{i} B \xra{p} C \to 0\]
+\begin{proof} Let \[ A \xra{i} B \xra{p} C \to 0\]
 be  exact. We need to show that
 \[ M\otimes_R A \xra{1_M \otimes i}  M\otimes_R B \xra{1_M \otimes p} M\otimes_R C \to 0  \]
 is exact.
@@ -2074,14 +2081,29 @@ We then check $\mu$ is $R$-balanced biadditive:
 \[ \mu(m+m',c)=(m+m')\otimes b = m\otimes b + m' \otimes b = \mu(m,c) + \mu(m',c).\]
 If $p(b)=c$ and $p(b')=c'$, then $p(b+b')=c+c'$, so
 \[ \mu(m,c+c')=m\otimes (b+b') = m\otimes b + m\otimes b' = \mu(m,c) + \mu(m,c'),\]
-and, if $p(b)=c)$, then $p(rb)=rc$, so
+and, if $p(b)=c$, then $p(rb)=rc$, so
 \[ \mu(mr, c) = mr\otimes b = m \otimes rb = \mu(m,rc).\]
 Thus, $\mu$ induces an additive homomorphism $\beta:M\otimes_R C \to(M\otimes_R B)/\im(1_M \otimes i) $. By construction, we have $\beta\circ \alpha (m\otimes b) = m\otimes b$ for all simple tensors, and thus this is the identity map since simple tensors generate.
 
-It follows that $\alpha$ is injective, so $\im(1_M \otimes i)$ is equal to the kernel of $1_M \otimes p$.
+Since $\alpha$ has a left inverse, it follows that $\alpha$ is injective, so $\im(1_M \otimes i)$ is equal to the kernel of $1_M \otimes p$.\qedhere
 \end{itemize}
 \end{proof}
 
+\begin{cor}
+Let $R$ be a commutative ring, and 
+\[ R^{\oplus \Gamma} \xra {A\cdot} R^{\oplus \Lambda} \to N \to 0\]
+be a presentation of a module $M$. Then there is a right exact sequence
+\[ M^{\oplus \Gamma} \xra {A\cdot} M^{\oplus \Lambda} \to M \otimes_R N \to 0.\qedhere\]
+\end{cor}
+
+\begin{ex}
+Let $R$ be a commutative ring, $I$ an ideal, and $M$ a module. There is an isomorphism
+$R/I \otimes_R M \cong M/IM$. Indeed, if $I=(\{f_\gamma\})$, then we have a presentation
+\[ R^{\oplus \Gamma} \xra{\cdot [ \{f_\gamma\} ] } R \to R/I \to 0,\]
+so
+\[ M^{\oplus \Gamma} \xra{\cdot [ \{f_\gamma\} ] } M \to R/I \otimes_R M \to 0\]
+is exact. The image of the first map is just $IM$, so we obtain the isomorphism.
+\end{ex}
 
 \sssec{Hom tensor adjointess and extension of scalars}
 
