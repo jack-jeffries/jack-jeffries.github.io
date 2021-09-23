@@ -879,7 +879,7 @@ and the check for scalar multiplication is similar. For uniqueness of $\alpha$, 
 
 \ssec{Functors}
 
-\begin{defn} Let $\sC$ and $\sD$ be categories. A \DEF{covariant functor} $F:\sC \to \sD$ is a mapping that assigns to each object $A\in \Ob(\sC)$ an object $F(A) \in \Ob(\sD)$ and to each morphism $\alpha\in \Hom_{\sC}(A,B)$ a morphism $F(f)\in \Hom_{\sD}(F(A),F(B))$ such that
+\begin{defn} Let $\sC$ and $\sD$ be categories. A \DEF{covariant functor} $F:\sC \to \sD$ is a mapping that assigns to each object $A\in \Ob(\sC)$ an object $F(A) \in \Ob(\sD)$ and to each morphism $\alpha\in \Hom_{\sC}(A,B)$ a morphism $F(\alpha)\in \Hom_{\sD}(F(A),F(B))$ such that
 \begin{enumerate}
 \item $F$ preserves compositions, meaning $F(\alpha \circ \beta) = F(\alpha) \circ F(\beta)$ for all morphisms $\alpha,\beta$ in $\sC$, and
 \item $F$ preserves identity morphisms, meaning $F(1_A) = 1_{F(A)}$ for all objects $A$ in $\sC$.
@@ -1848,6 +1848,7 @@ Note that the map induced by a biadditive map $b$ sends $m\otimes n\mapsto b(m,n
 \begin{rem} While the construction of tensor products may feel easier to work with at first, it is important to keep in mind that it is hard to tell when two combinations of simple tensors are equal. In general, when we want to define a map from a tensor product, it is better to use the universal property, since we don't have to worry about well-definedness. However, to define a map into a tensor product, using the concrete description is often easier.
 \end{rem}
 
+\begin{comment}
 
 
 \begin{exer}
