@@ -1854,7 +1854,9 @@ Note that the map induced by a biadditive map $b$ sends $m\otimes n\mapsto b(m,n
 In $M\otimes_RN$ we have $0_M\otimes n=0_{M\otimes_R N} =m\otimes 0_N$ for each $m\in M,n\in N$.
 \end{exer}
 
-\begin{comment}
+
+\Sept{24}
+%\begin{comment}
 
 \begin{ex} I claim $\Z/m\Z \otimes_\Z \Z/n\Z \cong \Z/g\Z$ where $g = \mathrm{gcd}(m,n)$.
 \end{ex}
@@ -1951,17 +1953,17 @@ We can take tensor products of maps as well.
 \begin{lem}
 	Let $f: M \to M'$ be a homomorphism of right $R$-modules and  $g: N \to N'$ be a homomorphism of left $R$-modules. There exists a unique homomorphism of abelian groups \index{$f\otimes g$}$f \otimes g : M \otimes_R N \to M' \otimes_R N'$ such that
 	$$(f \otimes g)(m \otimes n) = f(m) \otimes g(n)$$
-	for all $a \in A$ and $b \in B$.\index{$f \otimes g$}\index{tensor product of maps}
+	for all $m \in M$ and $n \in N$.\index{$f \otimes g$}\index{tensor product of maps}
 	
 	If $R$ is commutative, this map is $R$-linear.
 	
-	If $A$ and $C$ are $(S,R)$-bimodules, and $f$ is also $S$-linear, then this map is an $S$-module homomorphism.
+	If $M$ and $M'$ are $(S,R)$-bimodules, and $f$ is also $S$-linear, then this map is an $S$-module homomorphism.
 \end{lem}
 
 \begin{proof}
 	The function 
 	$$\xymatrix@R=2mm{M \times N \ar[r] & M' \otimes_R N'\\ (m,n) \ar@{|->}[r] & f(m) \otimes g(n)}$$
-	is $R$-balanced biadditive (and bilinear when $R$ is commutative), so the universal property of tensor products gives the desired $R$-module homomorphism, which is unique. In the bimodule case, $S$-linearity follows from observing that the function displayed above is $S$-linear.
+	is $R$-balanced biadditive (and bilinear when $R$ is commutative), so the universal property of tensor products gives the desired $R$-module homomorphism, which is unique. In the bimodule case, $S$-linearity follows from observing that the function displayed above is $S$-linear on the first argument.
 \end{proof}
 
 
