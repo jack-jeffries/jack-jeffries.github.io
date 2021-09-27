@@ -2100,24 +2100,24 @@ and hence $|b_n - L| < \e$.
 This proves $\{b_n\}_{n=1}^\infty$ converges to $L$. 
 \end{proof}
 
-\begin{comment}
+%\begin{comment}
 
-\Sept{22}
+\Sept{24}
 
 \begin{ex} We can use the Squeeze Theorem to give a short proof that $\{ 5 + (-1)^n \frac{1}{n} \}_{n=1}^\infty$ converges to $5$. Note that Theorem \ref{thm99} alone cannot be used in this
   example. However, from Theorem~\ref{thm99}, it follows that $\{5-\frac{1}{n}\}_{n=1}^\infty$ and  $\{5+\frac{1}{n}\}_{n=1}^\infty$ both converge to $5$. Then, since \[5-\frac{1}{n} \leq  5 + (-1)^n \frac{1}{n} \leq 5+\frac{1}{n}\] for all $n$, our sequence also converges to $5$.\end{ex}
 
 
 
-Here is a corollary of the Squeeze Theorem that is sometimes handy.
+%Here is a corollary of the Squeeze Theorem that is sometimes handy.
 
-\begin{cor} If $\{|a_n|\}_{n=1}^\infty$ converges to $0$, then $\{ a_n\}$ converges to~$0$.
-\end{cor}
-\begin{proof}
-By Theorem~\ref{thm99}(1), $\{-|a_n|\}_{n=1}^\infty$ converges to $0$ as well. We have 
-\[ -|a_n| \leq a_n \leq |a_n|\]
-for all $n$, so by the Squeeze Theorem, $\{ a_n\}$ converges to $0$.
-\end{proof}
+%\begin{cor} If $\{|a_n|\}_{n=1}^\infty$ converges to $0$, then $\{ a_n\}$ converges to~$0$.
+%\end{cor}
+%\begin{proof}
+%By Theorem~\ref{thm99}(1), $\{-|a_n|\}_{n=1}^\infty$ converges to $0$ as well. We have 
+%\[ -|a_n| \leq a_n \leq |a_n|\]
+%for all $n$, so by the Squeeze Theorem, $\{ a_n\}$ converges to $0$.
+%\end{proof}
 
 %\begin{cor}\begin{enumerate}
 %		\item 	If  the sequence $\{a_n\}_{n=1}^\infty$ converges to $0$, then the sequence
@@ -2200,10 +2200,14 @@ $$
 It follows that  $|a_n - L| < \e$. We have proven the sequence converges to~$L$.
 \end{proof}
 
-You will prove in the homework that any decreasing, bounded below sequence converges. Putting this together with the previous theorem yields the following.
+\begin{rem} Note that any increasing sequence is bounded below, for example, by its first term. Thus, an increasing sequence is bounded if and only if it is bounded below. Likewise, and decreasing sequence is bounded if and only if it is bounded above.
+\end{rem}
 
 \begin{thm}[Monotone Converge Theorem]\label{thm:MCT} Every bounded monotone sequence converges.
 \end{thm}
+\begin{proof}
+If $\{a_n\}_{n=1}^\infty$ is increasing, then this is the content of Theorem~\ref{thm226}. If $\{a_n\}_{n=1}^\infty$ is decreasing and bounded, consider the sequence $\{-a_n\}_{n=1}^\infty$. If $a_n\leq M$ for all $n$, then $-a_n\geq -M$ for all $n$, so $\{-a_n\}_{n=1}^\infty$ is bounded below. Also, since $a_n \geq a_{n+1}$ for all $n$, we have $-a_n \leq -a_{n+1}$ for all $n$, so $\{-a_n\}_{n=1}^\infty$ is increasing. Thus, by Theorem~\ref{thm226}, $\{-a_n\}_{n=1}^\infty$ converges, say to $L$. Then by Theorem~\ref{thm99}(1), $\{a_n\}_{n=1}^\infty=\{-(-a_n)\}_{n=1}^\infty$ converges to $-L$.
+\end{proof}
 
 \begin{ex}
 	Consider the sequence $\{a_n\}_{n=1}^\infty$ given by the formula
@@ -2470,7 +2474,6 @@ a_n &= 1 + \frac{1}{2^2} + \frac{1}{3^2} + \cdots + \frac{1}{n^2} \\
 
 
 
-\section{Friday, February 26}
 
 
 
@@ -2480,9 +2483,6 @@ a_n &= 1 + \frac{1}{2^2} + \frac{1}{3^2} + \cdots + \frac{1}{n^2} \\
 
 
 
-
-
-\begin{center}{\large{End of material for exam 1}}\end{center}
 
 
 
@@ -2511,6 +2511,20 @@ that diverge because they ``head toward infinity''.
 
 Intuitively, a sequence diverges to $\infty$ provided that, no matter how big $M$ is, if you go far enough along the sequence, eventually all of the terms are
 bigger than $M$. Similarly for diverges to $-\infty$.
+
+
+\begin{ex} \begin{enumerate}
+\item $\{ n^2+3\}_{n=1}^\infty$ diverges to $\infty$.
+\item $\{ -\sqrt{n} \}_{n=1}^\infty$ diverges to $-\infty$.
+\item $\{ (-1)^n\}_{n=1}^\infty$ diverges, but not to $\infty$ nor to $-\infty$.
+\item $\{(-1)^n n\}_{n=1}^\infty$ diverges, but not to $\infty$ nor to $-\infty$.
+\end{enumerate}
+\end{ex}
+
+\begin{comment}
+
+\Sept{27}
+
 
 
 
