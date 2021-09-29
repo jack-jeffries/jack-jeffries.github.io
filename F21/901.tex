@@ -1,0 +1,2405 @@
+\documentclass{amsart}[12pt]
+\usepackage{graphicx}
+\usepackage{comment}
+\usepackage{amscd,mathabx}
+\usepackage{amssymb,setspace}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath,amscd,stmaryrd,mathrsfs,xcolor}
+\usepackage[all, knot]{xy}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+\xyoption{all}
+\xyoption{arc}
+\usepackage{hyperref}
+
+
+%\usepackage[notcite,notref]{showkeys}
+ 
+%\CompileMatricesx
+\newcommand{\edit}[1]{\marginpar{\footnotesize{#1}}}
+%\newcommand{\edit}[1]{}
+\newcommand{\rperf}[2]{\operatorname{RPerf}(#1 \into #2)}
+
+
+
+\newcommand{\vectwo}[2]{\begin{bmatrix} #1 \\ #2 \end{bmatrix}}
+
+\newcommand{\vecfour}[4]{\begin{bmatrix} #1 \\ #2 \\ #3 \\ #4 \end{bmatrix}}
+
+\newcommand{\Cat}[1]{\left<\left< \text{#1} \right>\right>}
+
+
+\def\htpy{\simeq_{\mathrm{htpc}}}
+\def\tor{\text{ or }}
+\def\fg{finitely generated~}
+
+\def\Ass{\operatorname{Ass}}
+\def\ann{\operatorname{ann}}
+\def\sign{\operatorname{sign}}
+
+\def\ob{{\mathfrak{ob}} }
+\def\BiAdd{\operatorname{BiAdd}}
+\def\BiLin{\operatorname{BiLin}}
+
+\def\Syl{\operatorname{Syl}}
+\def\span{\operatorname{span}}
+
+\def\sdp{\rtimes}
+\def\cL{\mathcal L}
+\def\cR{\mathcal R}
+
+
+
+\def\ay{??}
+\def\Aut{\operatorname{Aut}}
+\def\End{\operatorname{End}}
+\def\Mat{\operatorname{Mat}}
+
+
+\def\a{\alpha}
+
+
+
+\def\etale{\'etale~}
+\def\tW{\tilde{W}}
+\def\tH{\tilde{H}}
+\def\tC{\tilde{C}}
+\def\tS{\tilde{S}}
+\def\tX{\tilde{X}}
+\def\tZ{\tilde{Z}}
+\def\HBM{H^{\text{BM}}}
+\def\tHBM{\tilde{H}^{\text{BM}}}
+\def\Hc{H_{\text{c}}}
+\def\Hs{H_{\text{sing}}}
+\def\cHs{{\mathcal H}_{\text{sing}}}
+\def\sing{{\text{sing}}}
+\def\Hms{H^{\text{sing}}}
+\def\Hm{\Hms}
+\def\tHms{\tilde{H}^{\text{sing}}}
+\def\Grass{\operatorname{Grass}}
+\def\image{\operatorname{im}}
+\def\im{\image}
+\def\ker{\operatorname{ker}}
+\def\coker{\operatorname{coker}}
+\def\cone{\operatorname{cone}}
+\newcommand{\Hom}{\mathrm{Hom}}
+
+\newcommand{\onto}{\twoheadrightarrow}
+
+
+\def\ku{ku}
+\def\bbu{\bf bu}
+\def\KR{K{\mathbb R}}
+
+\def\CW{\underline{CW}}
+\def\cP{\mathcal P}
+\def\cE{\mathcal E}
+\def\cL{\mathcal L}
+\def\cJ{\mathcal J}
+\def\cJmor{\cJ^\mor}
+\def\ctJ{\tilde{\mathcal J}}
+\def\tPhi{\tilde{\Phi}}
+\def\cA{\mathcal A}
+\def\cB{\mathcal B}
+\def\cC{\mathcal C}
+\def\cZ{\mathcal Z}
+\def\cD{\mathcal D}
+\def\cF{\mathcal F}
+\def\cG{\mathcal G}
+\def\cO{\mathcal O}
+%\def\cI{\mathcal I}
+\def\cS{\mathcal S}
+\def\cT{\mathcal T}
+\def\cM{\mathcal M}
+\def\cN{\mathcal N}
+\def\cMpc{{\mathcal M}_{pc}}
+\def\cMpctf{{\mathcal M}_{pctf}}
+\def\L{\Lambda}
+
+\def\sA{\mathscr A}
+\def\sB{\mathscr B}
+\def\sC{\mathscr C}
+\def\sZ{\mathscr  Z}
+\def\sD{\mathscr  D}
+\def\sF{\mathscr  F}
+\def\sG{\mathscr G}
+\def\sO{\mathscr  O}
+\def\sI{\mathscr I}
+\def\sS{\mathscr S}
+\def\sT{\mathscr  T}
+\def\sM{\mathscr M}
+\def\sN{\mathscr N}
+
+%\newcommand{\inc}{\subseteq}
+\newcommand{\id}{\mathrm{id}}
+
+
+\newcommand{\Aug}[1]{\textcolor{violet}{Lecture of August #1, 2021}}
+\newcommand{\Sept}[1]{\textcolor{violet}{Lecture of September #1, 2021}}
+\newcommand{\Oct}[1]{\textcolor{violet}{Lecture of October #1, 2021}}
+\newcommand{\Nov}[1]{\textcolor{violet}{Lecture of November #1, 2021}}
+\newcommand{\Dec}[1]{\textcolor{violet}{Lecture of December #1, 2021}}
+
+\def\Ext{\operatorname{Ext}}
+ \def\ext{\operatorname{ext}}
+
+
+
+\def\ov#1{{\overline{#1}}}
+
+\def\vecthree#1#2#3{\begin{bmatrix} #1 \\ #2 \\ #3 \end{bmatrix}}
+
+\def\tOmega{\tilde{\Omega}}
+\def\tDelta{\tilde{\Delta}}
+\def\tSigma{\tilde{\Sigma}}
+\def\tsigma{\tilde{\sigma}}
+
+
+\def\d{\delta}
+\def\td{\tilde{\delta}}
+
+\def\e{\epsilon}
+\def\nsg{\unlhd}
+\def\pnsg{\lhd}
+
+\newcommand{\tensor}{\otimes}
+\newcommand{\homotopic}{\simeq}
+\newcommand{\homeq}{\cong}
+\newcommand{\iso}{\approx}
+
+\DeclareMathOperator{\ho}{Ho}
+\DeclareMathOperator*{\colim}{colim}
+
+
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\H}{\mathbb{H}}
+
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bM}{\mathbb{M}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\bH}{{\mathbb{H}}}
+\newcommand{\G}{\mathbb{G}}
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\bL}{{\mathbb{L}}}
+\newcommand{\R}{{\mathbb{R}}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\bK}{\mathbb{K}}
+
+
+\newcommand{\bD}{\mathbb{D}}
+\newcommand{\bS}{\mathbb{S}}
+
+\newcommand{\bN}{\mathbb{N}}
+
+
+\newcommand{\bG}{\mathbb{G}}
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\W}{\mathcal{W}}
+
+
+
+\newcommand{\itilde}{\tilde{\imath}}
+\newcommand{\jtilde}{\tilde{\jmath}}
+\newcommand{\ihat}{\hat{\imath}}
+\newcommand{\jhat}{\hat{\jmath}}
+
+\newcommand{\fc}{{\mathfrak c}}
+\newcommand{\fp}{{\mathfrak p}}
+\newcommand{\fm}{{\mathfrak m}}
+\newcommand{\fn}{{\mathfrak n}}
+\newcommand{\fq}{{\mathfrak q}}
+
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\dual}{\vee}
+
+\newcommand{\DEF}[1]{\emph{#1}\index{#1}}
+\newcommand{\Def}[1]{#1 \index{#1}}
+
+
+% The following causes equations to be numbered within sections
+\numberwithin{equation}{section}
+
+
+\theoremstyle{plain} %% This is the default, anyway
+\newtheorem{thm}[equation]{Theorem}
+\newtheorem{thmdef}[equation]{TheoremDefinition}
+\newtheorem{introthm}{Theorem}
+\newtheorem{introcor}[introthm]{Corollary}
+\newtheorem*{introthm*}{Theorem}
+\newtheorem{question}{Question}
+\newtheorem{cor}[equation]{Corollary}
+\newtheorem{por}[equation]{Porism}
+\newtheorem{lem}[equation]{Lemma}
+\newtheorem{lemminition}[equation]{Lemminition}
+\newtheorem{prop}[equation]{Proposition}
+\newtheorem{porism}[equation]{Porism}
+\newtheorem{fact}[equation]{Fact}
+
+
+\newtheorem{conj}[equation]{Conjecture}
+\newtheorem{quest}[equation]{Question}
+
+\theoremstyle{definition}
+\newtheorem{defn}[equation]{Definition}
+\newtheorem{chunk}[equation]{}
+\newtheorem{ex}[equation]{Example}
+
+\newtheorem{exer}[equation]{Optional Exercise}
+
+\theoremstyle{remark}
+\newtheorem{rem}[equation]{Remark}
+
+\newtheorem{notation}[equation]{Notation}
+\newtheorem{terminology}[equation]{Terminology}
+
+
+
+\renewcommand{\sec}[1]{\section{#1}}
+\newcommand{\ssec}[1]{\subsection{#1}}
+\newcommand{\sssec}[1]{\subsubsection{#1}}
+
+\newcommand{\br}[1]{\lbrace \, #1 \, \rbrace}
+\newcommand{\li}{ < \infty}
+\newcommand{\quis}{\simeq}
+\newcommand{\xra}[1]{\xrightarrow{#1}}
+\newcommand{\xla}[1]{\xleftarrow{#1}}
+\newcommand{\xlra}[1]{\overset{#1}{\longleftrightarrow}}
+
+\newcommand{\xroa}[1]{\overset{#1}{\twoheadrightarrow}}
+\newcommand{\xria}[1]{\overset{#1}{\hookrightarrow}}
+\newcommand{\ps}[1]{\mathbb{P}_{#1}^{\text{c}-1}}
+
+
+
+
+\def\and{{ \text{ and } }}
+\def\oor{{ \text{ or } }}
+
+\def\Perm{\operatorname{Perm}}
+\newcommand{\Ss}{\mathbb{S}}
+
+\def\Op{\operatorname{Op}}
+\def\res{\operatorname{res}}
+\def\ind{\operatorname{ind}}
+
+\def\sign{{\mathrm{sign}}}
+\def\naive{{\mathrm{naive}}}
+\def\l{\lambda}
+
+
+\def\ov#1{\overline{#1}}
+\def\cV{{\mathcal V}}
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+
+\newcommand{\chara}{\operatorname{char}}
+\newcommand{\Kos}{\operatorname{Kos}}
+\newcommand{\opp}{\operatorname{opp}}
+\newcommand{\perf}{\operatorname{perf}}
+
+\newcommand{\Fun}{\operatorname{Fun}}
+\newcommand{\GL}{\operatorname{GL}}
+\newcommand{\SL}{\operatorname{SL}}
+\def\o{\omega}
+\def\oo{\overline{\omega}}
+
+\def\cont{\operatorname{cont}}
+\def\te{\tilde{e}}
+\def\gcd{\operatorname{gcd}}
+
+\def\stab{\operatorname{stab}}
+
+\def\va{\underline{a}}
+
+\def\ua{\underline{a}}
+\def\ub{\underline{b}}
+
+
+\newcommand{\Ob}{\mathrm{Ob}}
+\newcommand{\Set}{\mathbf{Set}}
+\newcommand{\Grp}{\mathbf{Grp}}
+\newcommand{\Ab}{\mathbf{Ab}}
+\newcommand{\Sgrp}{\mathbf{Sgrp}}
+\newcommand{\Ring}{\mathbf{Ring}}
+\newcommand{\Fld}{\mathbf{Fld}}
+\newcommand{\cRing}{\mathbf{cRing}}
+\newcommand{\Mod}[1]{#1-\mathbf{Mod}}
+\newcommand{\vs}[1]{#1-\mathbf{vect}}
+\newcommand{\Vs}[1]{#1-\mathbf{Vect}}
+\newcommand{\vsp}[1]{#1-\mathbf{vect}^+}
+\newcommand{\Top}{\mathbf{Top}}
+\newcommand{\Setp}{\mathbf{Set}_*}
+\newcommand{\Alg}[1]{#1-\mathbf{Alg}}
+\newcommand{\cAlg}[1]{#1-\mathbf{cAlg}}
+\newcommand{\PO}{\mathbf{PO}}
+\newcommand{\Cont}{\mathrm{Cont}}
+\newcommand{\MaT}[1]{\mathbf{Mat}_{#1}}
+
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+
+\makeindex
+\title{Math 901 Lecture Notes, Fall 2021}
+
+
+\begin{document}
+\onehalfspacing
+
+\maketitle
+
+\tableofcontents
+
+\sec{Category Theory}
+
+\ssec{Categories}
+
+\
+
+\Aug{23}
+
+
+\sssec{Definition of category}
+
+
+
+\begin{defn} A \DEF{category} $\sC$ consists of the following data:
+\begin{enumerate}
+\item a collection of \DEF{objects}, denoted $\Ob(\sC)$\index{$\Ob$},
+\item for each pair of objects $A,B\in \Ob(\sC)$, a set \Def{$\Hom_{\sC}(A,B)$} of \emph{morphisms}\index{morphisms} (also known as \emph{arrows}\index{arrows}) from $A$ to $B$,
+\item for each triple of objects $A,B,C\in \Ob(\sC)$, a function
+\[\Hom_{\sC}(A,B) \times \Hom_{\sC}(B,C)\longrightarrow \Hom_{\sC}(A,C) \]
+written as $(\alpha,\beta)\mapsto \beta \circ \alpha$ that we call the \emph{composition rule}\index{composition}.
+\end{enumerate}
+These data are required to satisfy the following axioms:
+\begin{enumerate}
+\item (Disjointness) the Hom sets are disjoint: if $A\neq A'$ or $B\neq B'$, then \[\Hom_{\sC}(A,B)\cap \Hom_{\sC}(A',B')=\varnothing.\]
+\item (Identities) for every object $A$, there is an \DEF{identity morphism} $1_A\in \Hom_{\sC}(A,A)$\index{$1_A$} such that $1_A \circ f = f$ and $g \circ 1_A = g$ for all $f\in \Hom_{\sC}(B,A)$ and all $g\in \Hom_{\sC}(A,B)$.
+\item (Associativity) composition is associative: $f \circ (g \circ h) = (f\circ g) \circ h$.
+\end{enumerate}
+\end{defn}
+
+\begin{rem}
+\begin{enumerate}
+\item The word ``collection'' as opposed to ``set'' is important here. The point is that there is no set of all sets, but by utilizing bigger collecting objects in set theory, we can sensibly talk about the collection of all sets. We'll sweep all of the set theory under the rug there, but it's worth keeping in mind that the objects of a category don't necessarily form a set. We did assume that the collections of morphisms between a pair of objects  form a set, though not everyone does. 
+\item The first axiom above guarantees that every morphism $\alpha$ in a category $\sC$ has a well-defined \DEF{source} and \DEF{target} in $\Ob(\sC)$, namely, the unique $A$ and $B$ (respectively) such that ${\alpha\in \Hom_{\sC}(A,B)}$.
+\end{enumerate}
+\end{rem}
+
+The name arrow dovetails with the common practice of depicting a morphism $\alpha\in \Hom_{\sC}(A,B)$ as
+\[ A \stackrel{\alpha}{\longrightarrow} B.\]
+The composition of $A \xra{\alpha} B$ and $B\xra{\beta} C$ is $A\xra{\beta \circ \alpha} C$.
+
+\begin{exer} Prove that every element in a category has a unique identity morphism (i.e., a unique morphism that satisfies the hypothesis of axiom (2)).
+\end{exer}
+
+\sssec{Examples of categories}
+
+Many of our favorite objects from algebra naturally congregate in categories!
+
+\begin{ex}
+\begin{enumerate}
+\item There is a category \Def{$\Set$} where
+\begin{itemize}
+\item $\Ob(\Set)$ is the collection of all sets
+\item for two sets $X$, $Y$, $\Hom_{\Set}(X,Y)$ is the the set of functions from $X$ to $Y$
+\item the composition rule is composition of functions
+\end{itemize}
+We observe that every set has an identity function, which behaves as an identity for composition, and that composition of functions is associative.
+\item There is a category \Def{$\Grp$} where
+\begin{itemize}
+\item $\Ob(\Grp)$ is the collection of all groups
+\item for two sets $X$, $Y$, $\Hom_{\Grp}(X,Y)$ is the the set of group homomorphisms from $X$ to $Y$
+\item the composition rule is composition of functions
+\end{itemize}
+Note that the identity function on a group is a group homomorphism, and that a composition of two group homomorphisms is a group homomorphism.
+\item There is a category \Def{$\Ab$} where
+\begin{itemize}
+\item $\Ob(\Ab)$ is the collection of all abelian groups
+\item for two sets $X$, $Y$, $\Hom_{\Ab}(X,Y)$ is the the set of group homomorphisms from $X$ to $Y$
+\item the composition rule is composition of functions
+\end{itemize}
+\item In this class,
+\begin{itemize}
+\item A \DEF{semigroup} is a set $S$ with an associative operation $\cdot$ that has an identity element; some may prefer the term \DEF{monoid}, but I don't. 
+\item A \DEF{semigroup homomorphism} from semigroups $S\to T$ is a function that preserves the operation and maps the identity element to the identity element.
+\end{itemize}
+There is a category $\Sgrp$ where the objects are all semigroups and the morphisms are semigroup homomorphisms. (The composition rule is composition again.)
+
+\item In this class, 
+\begin{itemize}
+\item A \DEF{ring} is a set $R$ with two operations $+$ and $\cdot$ such that
+$(R,+)$ is abelian group, with identity $0$, and $(R, \cdot)$ is a semigroup with identity $1$, and such that
+the left and right distributive laws hold: $(r+s)t = rt + st$ and $t(r+s) = tr + ts$. 
+\item A \DEF{ring homomorphism} is a function that preserves $+$ and $\cdot$ and sends $1$ to $1$.
+\end{itemize}
+There is a category \Def{$\Ring$} where the objects are all rings and the morphisms are ring homomorphisms. 
+
+\item Let $R$ be a ring. In this class, 
+\begin{itemize}
+\item A \DEF{left $R$-module} is an abelian group $(M, +)$ equipped with a pairing $R \times M \to M$, written $(r,m) \mapsto rm$ or $(r,m)\mapsto r \cdot m$
+such that 
+\begin{enumerate}
+\item $r_1(r_2m)  = (r_1r_2)m$,
+\item  $(r_1+r_2)m  = r_1m + r_2m$,
+\item $r(m_1 + m_2) = rm_1 + rm_2$, and 
+\item $1m = m$.
+\end{enumerate}
+\item A \DEF{left module homomorphism} or \DEF{$R$-linear map} between left $R$-modules $\phi:M\to N$ is a homomorphism of abelian groups from $(M,+)\to (N,+)$ such that $\phi(r m) = r \phi(m)$.
+\end{itemize}
+There is a category \Def{$\Mod{R}$} where the objects are all left $R$-modules and the morphisms are $R$-linear maps.
+
+\item There is a category \Def{$\Fld$} where the objects are all fields and the morphisms are all field homomorphisms.
+
+\item There is a category \Def{$\Top$} where the objects are all topological spaces and the morphisms are all continuous functions.
+\end{enumerate}
+\end{ex}
+
+
+\begin{rem}
+There are two special cases of the category of $R$-modules that are worth singling out:
+\begin{itemize}
+\item Every abelian group $M$ is a $\Z$-module in a unique way, by setting
+\[n\cdot m = \underbrace{m + \cdots + m}_{n-\text{times}} \quad \text{and} \quad  -n\cdot  m = -(\underbrace{m + \cdots + m}_{n-\text{times}}) \qquad\text{for $n\geq0$}. \]
+Thus, $\Ab$ is basically just $\Mod{\Z}$.
+\item When $R=K$ happens to be a field, we are accustomed to calling $K$-modules \DEF{vector spaces}. Thus, we might write \Def{$\Vs{K}$} for $\Mod{K}$.
+\end{itemize}
+\end{rem}
+
+
+
+\Aug{25}
+
+\begin{ex}
+Here are some variations on the category $\Vs{K}$.
+\begin{enumerate}
+\item The collection of finite dimensional $K$-vector spaces with all linear transformations is a category; call it \Def{$\vs{K}$}.
+\item The collection of all $n$-dimensional $K$-vector spaces with all linear transformations is a category.
+\item The collection of all $K$-vector spaces (or $n$-dimensional vector spaces) with linear isomorphisms is a category.
+\item The collection of all $K$-vector spaces (or $n$-dimensional vector spaces) with nonzero linear transformations  is not a category, since it's not closed under composition.
+\item The collection of all $n$-dimensional vector spaces with singular linear transformations is not a category, since it doesn't have identity maps.
+\end{enumerate}
+\end{ex}
+
+\begin{ex}\label{eg:1.4}
+\begin{enumerate}
+\item There is a category \Def{$\Setp$} of \DEF{pointed sets} where
+\begin{itemize}
+\item the objects are pairs $(X,x)$ where $X$ is a set and $x\in X$,
+\item for two pointed sets, the morphisms from $(X,x)$ to $(Y,y)$ are functions $f:X\to Y$ such that $f(x)=y$,
+\item usual composition.
+\end{itemize}
+\item For a commutative ring $A$, 
+\begin{itemize}
+\item A \DEF{commutative $A$-algebra} is a commutative ring $R$ plus a homomorphism $\phi:A\to R$.
+\item Slightly more generally, an \DEF{$A$-algebra} is a ring $R$ plus a homomorphism $\phi:A\to R$ such that $\phi(A)$ lies in the center of $R$: $r\cdot \phi(a) = \phi(a) \cdot r$ for any $a\in A$ and $r\in R$. (In the more general situation, $A$ is still commutative but $R$ may not be.) 
+\item An \DEF{$A$-algebra homomorphism} between two $A$-algebras $(R,\phi)$ and $(S,\psi)$ is a ring homomorphism $\alpha:R\to S$ such that $\alpha\circ \phi = \psi$.
+\end{itemize}
+The category of $A$-algebras is denoted \Def{$\Alg{A}$}, and the category of commutative $A$-algebras is \Def{$\cAlg{A}$}.
+
+
+\item Fix a field $K$, and define a category $\MaT{K}$ as follows: the objects are the positive natural numbers $n\in \N_{>0}$, and $\Hom_{\sC}(a,b)$ is the set of $b\times a$ matrices with entries in $K$. To see this as a category, we need a composition rule. Given $B\in \Hom_{\sC}(b,c)$ and $A\in \Hom_{\sC}(a,b)$, take the composition $A\circ B\in \Hom_{\sC}(a,c)$ to be the product $AB$. Since matrix multiplication is associative, axiom (3) holds, and the $n\times n$ identity matrix serves as an identity morphism in the sense of axiom (2). Finally, if $A\in \Hom_{\sC}(a,b)\cap \Hom_{\sC}(a',b')$, then $A$ is a $b\times a$ matrix and a $b'\times a'$ matrix, so $a=a'$ and $b=b'$. Notably, the morphisms in this category are not functions.
+\end{enumerate}
+\end{ex}
+
+We can also make a bunch of categories in a hands-on way as follows:
+
+\begin{ex} Let $(P,\leq)$ be a poset.
+We define a category \Def{$\PO(P)$} from $P$ as follows. The objects of $\PO(P)$ are just the elements of $P$.
+For each pair $a,b\in P$ with $a\leq b$, form a symbol $f_a^b$. Then we set
+\[ \Hom_{\PO(P)}(a,b) = \begin{cases} \{f_a^b\} &\text{if}\  a\leq b \\ \varnothing & \text{otherwise}. \end{cases}\]
+There is only one possible composition rule:
+\[ \Hom_{\PO(P)}(a,b) \times \Hom_{\PO(P)}(b,c) \longrightarrow \Hom_{\PO(P)}(a,c)\]
+when $a\leq b$ and $b\leq c$ we also have $a\leq c$, and the unique pair on the left must map to the unique element on the right, so $f_b^c \circ f_a^b = f_a^c$; when either $a\not\leq b$ or $b\not\leq c$, there is nothing to compose!
+
+Each morphism $f_a^b$ is in only one Hom set (with source $a$ and target $b$). Composition is associative since there is at most one function between one element sets. For any $a$, $f_a^a\in \Hom_{\PO(P)}(a,a)$ is the identity morphism.
+
+For a specific example, we can think of $\N_{> 0}$ as a category this way. Drawing all of the morphisms would be a mess, but any morphism is a composition of the ones depicted:
+
+\[  1 \longrightarrow 2 \longrightarrow 3 \longrightarrow 4 \longrightarrow 5 \longrightarrow \cdots .\] 
+Note that the objects of this category are exactly the same as in Example~\ref{eg:1.4}(3), but with much fewer morphisms!
+\end{ex}
+
+\begin{ex} A category with one object is nothing but a semigroup.\end{ex}
+
+\sssec{Constructions of categories}
+
+Here are a few more basic constructions of categories:
+
+\begin{defn} Given a category $\sC$, the \DEF{opposite category} \Def{$\sC^{\mathrm{op}}$} is the category with $\Ob(\sC^{\mathrm{op}})=\Ob(\sC)$, and $\Hom_{\sC}(A,B) = \Hom_{\sC}(B,A)$ for all $A,B\in \Ob(\sC)$.
+\end{defn}
+
+That is, the opposite category is the ``same category with the arrows reversed.'' To avoid confusion, we might write $\alpha^{\mathrm{op}}$ for the morphism $B\stackrel{\alpha^{\mathrm{op}}}{\longrightarrow} A$ in $\sC^{\mathrm{op}}$ corresponding to $A \stackrel{\alpha}{\longrightarrow} B$ in $\sC$.
+
+\begin{defn} Given two categories $\sC$ and $\sD$, the \DEF{product category} \Def{$\sC \times \sD$} is the category with $\Ob(\sC \times \sD)$ given by the collection of pairs $(C,D)$ with $C\in \Ob(\sC)$ and $D\in \Ob(\sD)$, and $\Hom_{\sC \times \sD}((A,B),(C,D))=\Hom_{\sC}(A,C) \times \Hom_{\sD}(B,D)$. We leave it to you to pin down the composition rule.
+\end{defn}
+
+\begin{defn} A category $\sD$ is a \DEF{subcategory} of another category $\sC$ provided 
+\begin{enumerate}
+\item every object of $\sD$ is an object of $\sC$
+\item for every $A,B\in \Ob(\sD)$, $\Hom_{\sD}(A,B)\subseteq \Hom_{\sC}(A,B)$, and
+\item for every $A \xra{\alpha} B$ and $B \xra{\beta} C$ in $\sD$, the composition of $\alpha$ and $\beta$ in $\sD$ equals the composition of $\alpha$ and $\beta$ in $\sC$.
+\end{enumerate}
+If equality hold in (2) (for all $A,B$), we say that $\sD$ is a \DEF{full subcategory} of $\sC$.
+\end{defn}
+
+\begin{ex} Since every group is a set, and every homomorphism is a function, $\Grp$ is a subcategory of $\Set$. However, since not every function between groups is a homomorphism, $\Grp$ is not a full subcategory of $\Set$. Similarly, $\Ab$, $\Ring$, $\Mod{R}$, and $\Top$ are all subcategories of $\Set$.
+
+On the other hand, $\Ab$ is a full subcategory of $\Grp$, and $\Grp$ is a full subcategory of $\Sgrp$: a morphism of abelian groups is a morphism of groups that happens to be between abelian groups (and likewise for groups and semigroups)!
+\end{ex}
+
+
+\Aug{27}
+
+
+%\begin{defn} Given a category $\sC$ and an object $A\in \Ob(\sC)$, the \DEF{coslice category} \Def{$\sC_A$} is the category with objects given by all arrows from $A$: namely morphisms of the form 
+%\[ A \stackrel{\alpha}{\longrightarrow} X \ \quad\text{with}\quad \ X\in \Ob(\sC)\]
+%and morphisms 
+%\[ \Hom_{\sC_A}(A \stackrel{\alpha}{\longrightarrow} X,A \stackrel{\beta}{\longrightarrow} Y) = \{ X \stackrel{\gamma}{\longrightarrow} Y \ | \ \gamma \circ \alpha = \beta\}.\]
+%Equivalently, we can think of such a morphism as a triangle:
+% \[\xymatrix{
+%&A \ar[dl]_{\alpha} \ar[dr]^{\beta}& \\
+%X \ar[rr]^{\gamma}&&Y
+%}   \]
+%The composition rule comes from the composition rule on $\sC$: if $X \xrightarrow{\gamma}Y$ and $Y \xrightarrow{\delta\circ \gamma} Z$.
+%\end{defn}
+%
+%This construction may be less new to you than you think!
+%
+%\begin{exer} Explain how $\cAlg{A}$ and $\Setp$ are special cases of the coslice category construction. Can you describe the category $\Alg{A}$ in terms of the terms above?
+%\end{exer}
+
+
+
+\subsection{Basic notions with morphisms}
+
+\begin{defn} A \DEF{diagram} in a category $\sC$ is a directed multigraph whose vertices are objects in $\sC$ and whose arrows/edges are morphisms in $\sC$. A \DEF{commutative diagram} in $\sC$ is a diagram in which for each pair of vertices $A,B$, any two paths from $A$ to $B$ compose to the same morphism.
+\end{defn}
+
+\begin{ex} To say that the diagram
+\[\xymatrix{
+A \ar[r]^{\alpha} \ar[d]_{\gamma}& B \ar[d]^{\beta}\\
+C \ar[r]^{\delta} &D 
+}\]
+commutes is to say that $\beta\circ \alpha = \delta \circ \gamma$ in $\Hom_{\sC}(A,D)$.
+\end{ex}
+
+
+
+\begin{defn}
+Let $\mathscr{C}$ be any category and $A\xra{\alpha} B$ a morphism.
+
+\begin{itemize}
+	\item $\alpha$ is an \DEF{isomorphism} if there exists $B \xra{\beta} A$ such that $\beta \circ \alpha = 1_A$ and $\alpha\circ \beta = 1_B$. Such an  $\beta$ is called the \DEF{inverse} of $f$.
+	\item $\alpha$ has $\beta$ as a \DEF{left inverse} if $\beta \circ \alpha = 1_A$. Similarly define \DEF{right inverse}.
+	\item $\alpha$ is a \DEF{monomorphism} or is \DEF{monic} if for all arrows  
+$$\xymatrix{C \ar@<0.5ex>[r]^-{\beta_1} \ar@<-0.5ex>[r]_-{\beta_2} & A \ar[r]^-\alpha & B}$$
+if $\alpha \beta_1 =\alpha \beta_2$ then $\beta_1 = \beta_2$. That is, $\alpha$ can be cancelled from the left.
+	\item $\alpha$ is an \DEF{epimorphism} or is \DEF{epic} if for all arrows 
+$$\xymatrix{A \ar[r]^-\alpha & B \ar@<0.5ex>[r]^-{\beta_1} \ar@<-0.5ex>[r]_-{\beta_2} & C}$$
+if $\beta_1\alpha = \beta_2\alpha$ then $\beta_1 = \beta_2$. That is, $\alpha$ can be cancelled from the right.
+\end{itemize}
+\end{defn}
+
+\begin{rem}
+Note that $\alpha$ has a left inverse in $\sC$ if and only if $\alpha^{\op}$ has a right inverse in $\sC^{\op}$, and that $\alpha$ is monic in $\sC$ if and only if $\alpha^{\op}$ is epic in $\sC^{\op}$. We say that these are \DEF{dual} notions in category theory.
+\end{rem}
+
+\begin{lem} If $\alpha$ has a left inverse, then $\alpha$ is monic. Similarly for ``right inverse'' and ``epic''.
+\end{lem}
+\begin{proof}
+If $\beta\circ \alpha = 1_A$ and $\gamma_1,\gamma_2$ are two morphisms from $C \to A$ such that $\alpha\circ \gamma_1 = \alpha\circ \gamma_2$, then 
+\[ \gamma_1 = (\beta\circ \alpha) \circ \gamma_1 = \beta\circ (\alpha \circ \gamma_1)=\beta\circ (\alpha \circ \gamma_2) = (\beta\circ \alpha) \circ \gamma_2 = \gamma_2. \]
+Similarly for ``right inverse'' and ``epic''.
+\end{proof}
+
+\begin{ex} In $\Set$, the monomorphisms and  left-invertible morphisms agree, and these are the injective functions. The epimorphisms and right-invertible morphisms agree, and there are the surjective functions.
+\end{ex}
+
+\begin{exer} For any poset $P$, in $\PO(P)$, every morphism is both monic and epic, but no nonidentity morphism has a left or right-inverse.
+\end{exer}
+
+
+\subsection{Category-theoretic constructions of objects}
+
+A property or construction is \DEF{category theoretic} if can be described just in terms of the data of the category rather than aspects of a particular category.
+
+\begin{ex}
+Can we identify $\varnothing$ in $\Set$ without looking at the objects' and morphisms' names? We can:
+for every set $S$, there is a unique function $f:\varnothing \to S$; $\varnothing$ is the only set with this property.
+\end{ex}
+
+\begin{defn}
+\begin{enumerate} \item An object $X$ in a category $\sC$ is \DEF{initial} if there for every $Y\in \Ob(\sC)$, there is a unique morphism $X\to Y$.
+\item An object $X$ in a category $\sC$ is \DEF{terminal} if there for every $Y\in \Ob(\sC)$, there is a unique morphism $Y\to X$.
+\end{enumerate}
+\end{defn}
+
+\begin{ex}
+\begin{enumerate} \item We just saw that $\varnothing$ is initial in $\Set$. Any singleton is terminal.
+\item A group with only one element $\{e\}$ is both initial and terminal in $\Grp$.
+\item $\Z$ is initial in $\Ring$.
+\end{enumerate}
+\end{ex}
+
+
+\sssec{Definitions of product and coproduct}
+
+\begin{defn} Let $\sC$ be a category, and $\{ X_\lambda\}_{\lambda\in \Lambda}$ be a family of objects. A \DEF{product} of $\{ X_\lambda\}_{\lambda\in \Lambda}$ is given by an object $P$ and a family of morphisms $\{p_\lambda : P \to X_\lambda\}_{\lambda\in \Lambda}$ that is universal in the following sense:
+
+Given an object $Y$ and a family of morphisms $\{f_\lambda:Y\to X_\lambda\}_{\lambda\in \Lambda}$, there is a unique morphism $\phi: Y\to P$ such that $p_\lambda \circ \phi = f_\lambda$ for all $\lambda$.
+\end{defn}
+
+Here is a diagram for the (first few) maps involved when $\Lambda=\N$ is countable:
+\[\xymatrix{  & & & P \ar[drr]^-{p_1} \ar[ddrr]^-{p_2} \ar[dddrr]^-{p_3} \ar[ddddrr]  & & \\
+ & & & & & X_1\\
+Y \ar@{-->}[uurrr]^-{\phi}\ar[urrrrr]^-{f_1}  \ar[rrrrr]^-{f_2} \ar[drrrrr]^-{f_3} \ar[ddrrrrr]&  & & & & X_2\\
+& & & & & X_3\\
+& & & & & \vdots }\]
+
+We can also take a ``big picture'' view of this universal property:
+\[\xymatrix{ & P\ar@{~>}[dr]^{\{p_\lambda\}} & \\
+Y \ar@{-->}[ur]^{\phi} \ar@{~>}[rr]_{\{f_\lambda\}} & & \{X_{\lambda}\},}\]
+where the squiggly arrows are again collections of maps instead of maps. The data of $Y$ with a family of maps to each $X_\lambda$ is the sort of thing a product might be, so we may think of it as a ``product candidate.'' In this way, we can think of a product as a ``terminal product candidate.''
+
+
+
+\Aug{30}
+
+
+
+\begin{rem}
+Note that $(P,\{p_\lambda\}_{\lambda\in\Lambda})$ is a product of $\{ X_\lambda\}_{\lambda\in \Lambda}$ if and only if the function
+\[ \xymatrix{ \Hom_{\sC}(Y,P) \ar[rr] & & \bigtimes_{\lambda\in\Lambda} \Hom_{\sC}(Y,X_\lambda)\\
+\phi \ar@{|->}[rr] & &  ( p_\lambda \circ \phi )_{\lambda\in \Lambda}}\]
+is a bijection for all objects $Y$: the universal property says that everything in the target comes from a unique thing in the source.
+\end{rem}
+
+
+
+
+\begin{defn} Let $\sC$ be a category, and $\{ X_\lambda\}_{\lambda\in \Lambda}$ be a family of objects. A \DEF{coproduct} of $\{ X_\lambda\}_{\lambda\in \Lambda}$ is given by an object $C$ and a family of morphisms $\{i_\lambda : X_\lambda \to C\}_{\lambda\in \Lambda}$ that is universal in the following sense:
+
+Given an object $Y$ and a family of morphisms $\{f_\lambda:X_\lambda \to Y\}_{\lambda\in \Lambda}$, there is a unique morphism $\phi: C\to Y$ such that $\phi \circ i_\lambda = f_\lambda$ for all $\lambda$.
+\end{defn}
+
+
+Here is a diagram for the (first few) maps involved when $\Lambda=\N$ is countable:
+\[\xymatrix{  & & & C \ar@{-->}[ddrr]^{\phi}& & \\
+\vdots\ar[urrr] \ar[drrrrr]  & & & & & \\
+X_3\ar[uurrr]^-{i_3} \ar[rrrrr]^-{f_3} & & & & & Y\\
+X_2\ar[uuurrr]^-{i_2} \ar[urrrrr]^-{f_2}  & & & & & \\
+X_1\ar[uuuurrr]^-{i_1} \ar[uurrrrr]^-{f_1} & & & & &}\]
+
+We can also take a ``big picture'' view of the universal property:
+\[\xymatrix{ & C\ar@{-->}[dr]^{\phi} & \\
+\{ X_{\lambda}\} \ar@{~>}[ur]^{\{i_\lambda\}} \ar@{~>}[rr]_{\{f_\lambda\}} & & Y,}\]
+where the squiggly arrows are now collections of maps instead of maps. We can again think of the coproduct as the ``initial coproduct candidate.''
+
+
+
+\begin{rem}
+Note that $(C,\{i_\lambda\}_{\lambda\in\Lambda})$ is a coproduct of $\{ X_\lambda\}_{\lambda\in \Lambda}$ if and only if the function
+\[ \xymatrix{ \Hom_{\sC}(C,Y) \ar[rr] & & \bigtimes_{\lambda\in\Lambda} \Hom_{\sC}(X_\lambda,Y)\\
+\phi \ar@{|->}[rr] & &  ( \phi \circ i_\lambda )_{\lambda\in \Lambda}}\]
+is a bijection for all objects $Y$: the universal property says that everything in the target comes from a unique thing in the source.
+\end{rem}
+
+\begin{prop} If $(P,\{p_\lambda:P\to X_\lambda\}_{\lambda\in \Lambda})$ and $(P',\{p'_\lambda:P'\to X_\lambda\}_{\lambda\in \Lambda})$ are both products for the same family of objects $\{X_\lambda\}_{\lambda\in \Lambda}$ in a category $\sC$, then there is a unique isomorphism $\alpha: P \xrightarrow{\sim} P'$ such that $p'_\lambda \circ \alpha = p_\lambda$ for all $\lambda$. The analogous statement holds for coproducts.
+\end{prop}
+\begin{proof} We will just deal with products. The following picture is a rough guide:
+\[\xymatrix{ P \ar@{-->}[rr]^{\alpha} \ar@{~>}[drrrrr]_-{\{p_\lambda\}}   & & P' \ar@{-->}[rr]^{\beta} \ar@{~>}[drrr]^-{\{p'_\lambda\}} & & P \ar@{~>}[dr]^-{\{p_\lambda\}}   & \\
+& & & & & \{ X_\lambda\} }\]
+
+Since $(P,\{p_\lambda\})$ is a product and $(P',\{p'_\lambda\})$ is an object with maps to each $X_\lambda$, there is a unique map $\beta:P'\to P$ such that $p_\lambda\circ \beta = p'_\lambda$. Switching roles, we obtain a unique map $\alpha:P\to P'$ such that $p'_\lambda\circ \alpha = p_\lambda$. 
+
+Consider the composition $\beta\circ \alpha:P\to P$. We have $p_\lambda \circ \beta \circ \alpha = p'_\lambda \circ \alpha = p_\lambda$ for all $\lambda$. The identity map $1_P:P\to P$ also satisfies the condition $p_\lambda \circ 1_P = p_\lambda$ for all $\lambda$, so by the uniqueness property of products, $\beta\circ \alpha = 1_P$. We can again switch roles to see that $\alpha\circ\beta = 1_{P'}$. Thus $\alpha$ is an isomorphism. The uniqueness of $\alpha$ in the statement is part of the universal property.
+\end{proof}
+\begin{exer} Prove the analogous statement for coproducts.\end{exer}
+
+
+
+We use the notation \Def{$\prod_{\lambda \in \Lambda} X_\lambda$} to denote the (object part of the) product of $\{X_{\lambda}\}$ and \Def{$\coprod_{\lambda \in \Lambda} X_\lambda$} to denote the (object part of the) coproduct of $\{X_{\lambda}\}$.
+
+
+Observe that products and coproducts are dual notions in the same way as monic versus epic morphisms. The product of a family in $\sC$ is the coproduct of the same family in $\sC^{\op}$.
+
+\sssec{Products in familiar categories}
+
+The familiar notion of Cartesian product or direct product serves as a product in many of our favorite categories. Let's note first that given a family of objects $\{X_\lambda\}_{\lambda\in \Lambda}$ in any of the categories $\Set,\Sgrp,\Grp,\Ring,\Mod{R},\Top$, the direct product $\bigtimes_{\lambda\in\Lambda} X_\lambda$ is an object of the same category:
+\begin{itemize}
+\item for sets, this is clear;
+\item for semigroups, groups, and rings, take the operation coordinate by coordinate: $(x_{\lambda})_{\lambda\in \Lambda} \cdot (y_\lambda)_{\lambda\in \Lambda} = (x_\lambda \cdot y_\lambda)_{\lambda\in \Lambda}$;
+\item for modules, addition is coordinate by coordinate, and the action is the same on each coordinate: $r\cdot (x_\lambda)_{\lambda\in \Lambda}=(r\cdot x_\lambda)_{\lambda\in \Lambda}$;
+\item for topological spaces, use the product topology.
+\end{itemize}
+Note that this is not true for fields!
+
+\begin{prop} In each of the categories $\Set,\Sgrp,\Grp,\Ring,\Mod{R}, \Top$, given a family $\{X_\lambda\}_{\lambda\in\Lambda}$, the direct product $\bigtimes_{\lambda\in\Lambda} X_\lambda$ along with the projection maps $\pi_{\lambda}:\bigtimes_{\gamma\in\Lambda} X_\gamma \to X_\lambda$ forms a product in the category.
+\end{prop}
+\begin{proof} We observe that in each category, the direct product is an object, and the projection maps $\pi_{\lambda}$ are morphisms in the category. 
+
+Let $\sC$ be one of these categories, and suppose that we have morphisms $g_{\lambda}:Y \to X_\lambda$ for all $\lambda$ in $\sC$. We need to show there is a unique morphism $\phi:Y \to \bigtimes_{\lambda\in\Lambda} X_\lambda$ such that $\pi_\lambda \circ \phi = g_\lambda$ for all $\lambda$. The last condition
+ is equivalent to $(\phi(y))_\lambda=(\pi_\lambda\circ\phi)(y) =g_\lambda(y)$ for all $\lambda$, which is equivalent to $\phi(y)=(g_\lambda(y))_{\lambda\in \Lambda}$, so if this is a valid morphism, it is unique.  Thus, it suffices to show that the map $\phi(y)=(g_\lambda(y))_{\lambda\in \Lambda}$ is a morphism in~$\sC$, which is easy to see in each case.
+\end{proof}
+
+%\begin{rem} We already saw that direct products are not products in the category of fields. In fact, there are no products in the category of fields in general. For example, suppose that $P$ was a product of $\F_p$ and $\F_q$ in $\Fld$ for two primes $p\neq q$. Then $\Hom_{\Fld}(K,P)$ is bijective with $\Hom_{\Fld}(K,\F_p) \times \Hom_{\Fld}(K,\F_q)$ for all $K$, so in particular, $\Hom_{\Fld}(\F_p,P)\neq 0$ and $\Hom_{\Fld}(\F_q,P)\neq 0$, but no such field exists!
+%\end{rem}
+
+
+
+\sssec{Coproducts in familiar categories}
+
+
+
+\begin{ex} Let $\{X_\lambda\}_{\lambda\in \Lambda}$ be a family of sets. The product of $\{X_\lambda\}_{\lambda\in \Lambda}$ is given by the cartesian product along with the projection maps. The coproduct of $\{X_\lambda\}_{\lambda\in \Lambda}$ is given by the ``disjoint union'' with the various inclusion maps. By disjoint union, we simply mean union if the sets are disjoint; in general do something like replace $X_\lambda$ with $X_\lambda \times \{\lambda\}$ to make them disjoint.
+\end{ex}
+
+
+
+
+
+\begin{prop} Let $R$ be a ring, and $\{M_\lambda\}_{\lambda\in \Lambda}$ be a family of left $R$-modules. A coproduct for the family $\{M_\lambda\}_{\lambda\in \Lambda}$ is  $\left(\bigoplus_{\lambda \in \Lambda} M_\lambda, \{\iota_\lambda\}_{\lambda\in \Lambda}\right)$, where \[\bigoplus_{\lambda \in \Lambda} M_\lambda=\{ (x_\lambda)_{\lambda\in \Lambda} \ | \ x_\lambda\neq 0 \ \text{for at most finitely many} \ \lambda\} \subseteq \ \prod_{\lambda \in \Lambda} M_\lambda\] is the direct sum of the modules $M_\lambda$, and $\iota_\lambda$ is the inclusion map to the $\lambda$ coordinate.
+\end{prop}
+
+\Sept{1}
+
+\begin{rem} If the index set $\Lambda$ is finite, then the objects $\prod_{\lambda \in \Lambda} M_\lambda$ and $\bigoplus_{\lambda \in \Lambda} M_\lambda$ are identical, but the product and coproduct are not the same since one involves projection maps and the other involves inclusion maps.
+\end{rem}
+\begin{proof}
+Given $R$-module homomorphisms $g_\lambda:M_\lambda \to N$ for each $\lambda$, we need to show that there is a unique $R$-module homomorphism $\alpha: \bigoplus_{\lambda \in \Lambda} M_\lambda \to N$ such that $\alpha\circ \iota_\lambda = g_\lambda$. We define
+\[ \alpha((m_\lambda)_{\lambda\in\Lambda}) = \sum_{\lambda\in \Lambda} g_\lambda(m_\lambda).\]
+Note that since $(m_\lambda)_{\lambda\in\Lambda}$ is in the direct sum, at most finitely many $m_\lambda$ are nonzero, so the sum on the right hand side is finite, and hence makes sense in $N$. We need to check that $\alpha$ is $R$-linear; indeed,
+\[ \alpha((m_\lambda) + (n_\lambda)) = \alpha((m_\lambda+n_\lambda)) = \sum g_\lambda(m_\lambda + n_\lambda) = \sum g_\lambda(m_\lambda) +\sum g_\lambda(n_\lambda) = \alpha((m_\lambda))+\alpha((n_\lambda)),\]
+and the check for scalar multiplication is similar. For uniqueness of $\alpha$, note that $\bigoplus_{\lambda \in \Lambda} M_\lambda$ is generated by the elements $\iota_\lambda(m_\lambda)$ for $m_\lambda\in M_\lambda$. Thus, if $\alpha'$ also satisfies $\alpha' \circ \iota_\lambda = g_\lambda$ for all $\lambda$, then $\alpha(\iota_\lambda(m_\lambda))= g_\lambda(m_\lambda) = \alpha'(\iota_\lambda(m_\lambda))$ so the maps must be equal.
+\end{proof}
+
+\begin{rem} For any indexing set $\Lambda$, $\coprod_{\lambda\in \Lambda} R$ is a free $R$-module. If $R=K$ happens to be a field, then $\prod_{\lambda\in \Lambda} K$ is free, since all vector spaces are free modules, but in general, $\prod_{\lambda\in \Lambda} R$ is not free for an infinite set~$\Lambda$.
+\end{rem}
+
+\begin{rem}
+\begin{itemize}
+\item In $\Top$, disjoint unions serve as coproducts.
+\item In $\Sgrp$ and $\Grp$, coproducts exist, and are given as free products. You may see or have seen them in topology in the context of Van Kampen's theorem.
+\item In $\Ring$, the story is more complicated. Let's note first that disjoint unions won't work, since they aren't rings. Direct sums of infinitely many rings don't have $1$, so aren't rings, but even finite direct sums/products won't work, since the inclusion maps don't send $1$ to $1$. We will later on construct coproducts in \Def{$\cRing$}, the full subcategory of $\Ring$ consisting of commutative rings.
+\end{itemize}
+\end{rem}
+
+%\sssec{Definition of direct limit}
+%
+%
+%\begin{defn} We say a poset $P$ is \DEF{filtered} if for any $p,q\in P$, there is some $r\in P$ with $r\geq p$ and $r\geq q$.
+%\end{defn}
+%
+%\begin{ex}
+%\begin{itemize}
+%\item Any totally ordered poset is filtered. The positive integers $\N_{> 0}$ are a key example.
+%\item The collection of finite subsets of a set under containment is a filtered poset.
+%\end{itemize}
+%\end{ex}
+%
+%\begin{defn}
+%Given a filtered poset $(\Lambda,\leq)$ and a category $\sC$, a \DEF{direct limit system} in $\sC$ indexed by $\Lambda$ or a \DEF{$\Lambda$-diagram} \emph{in $\sC$} is a commutative diagram with vertices corresponding to elements of $P$ and arrows corresponding to inequalities in $P$. To unpackage this, we have
+%\begin{itemize}
+%\item an object $X_\lambda\in \Ob(\sC)$ for each $\lambda\in \Lambda$
+%\item a morphism $X_\lambda \xrightarrow{t_{\lambda}^{\mu}} X_{\mu}$ for each pair $\lambda \leq \mu$ 
+%\end{itemize}
+% such that
+%\begin{enumerate}
+%\item each $t_{\lambda}^{\lambda}$ is the identity on $X_\lambda$ and
+%\item if $\lambda \leq \mu \leq \nu$, then $t_{\lambda}^{\nu} = t_{\mu}^{\nu}\circ t_{\lambda}^{\mu}$.
+%\end{enumerate}
+%
+%\end{defn}
+%
+%\begin{ex} A direct limit system in a category $\sC$ indexed by $\N_{>0}$ is determined by a diagram of the form 
+%\[ X_1 \xrightarrow{a_1} X_2  \xrightarrow{a_2} X_3 \xrightarrow{a_3} X_4 \xrightarrow{a_4} X_5 \rightarrow \cdots.\]
+%All the other maps $X_i \to X_j$ for $i<j$ are given by composition: $a_{j-1} \circ \cdots \circ a_i$.
+%\end{ex} 
+%
+%
+%
+%
+%
+%\begin{defn} Let $\sC$ be a category, $\Lambda$ be a filtered poset, and $\{ X_\lambda\}_{\lambda\in \Lambda}$ be a direct limit system indexed by $\Lambda$. A \DEF{direct limit} of $\{ X_\lambda\}_{\lambda\in \Lambda}$ is given by an object $C$ and a family of morphisms $\{i_\lambda : X_\lambda \to C\}_{\lambda\in \Lambda}$ such that for all $\lambda\leq \mu$, $i_{\lambda}=i_\mu \circ t_{\lambda,\mu}$, that is universal in the following sense:
+%
+%Given an object $Y$ and a family of morphisms $g_\lambda:X_\lambda \to Y$ that satisfy the condition for all $\lambda\leq \mu$, $g_{\lambda}=g_\mu \circ t_{\lambda}^{\mu}$, there is a unique morphism $\alpha: C\to Y$ such that $\alpha \circ i_\lambda = g_\lambda$ for all $\lambda$.
+%\end{defn}
+%
+%Here is a diagram for the (first few) maps involved when $\Lambda=\N$:
+%\[\xymatrix{  & & & C \ar@{-->}[ddrr]^{\phi}& & \\
+%\vdots\ar[urrr] \ar[drrrrr] & & & & & \\
+%X_3\ar[uurrr]^-{i_3} \ar[u]^-{t_3^4} \ar[rrrrr]^-{g_3} & & & & & Y\\
+%X_2\ar[uuurrr]^-{i_2} \ar[u]^-{t_2^3} \ar[urrrrr]^-{g_2}  & & & & & \\
+%X_1\ar[uuuurrr]^-{i_1} \ar[u]^-{t_1^2} \ar[uurrrrr]^-{g_1} & & & & &}\]
+%
+%We can also take a ``big picture'' view of the universal property:
+%\[\xymatrix{ & C\ar@{-->}[dr]^{\phi} & \\
+%\stackrel{\{ X_{\lambda}\}}{\longrightarrow} \ar@{~>}[ur]^{\{i_\lambda\}} \ar@{~>}[rr]_{\{g_\lambda\}} & & Y,}\]
+%where $\stackrel{\{ X_{\lambda}\}}{\longrightarrow}$ represents the collection of $X$'s and the maps between them, and
+%where the squiggly arrows are now collections of maps that commute with the maps between the $X$'s.
+%
+%
+%These are not guaranteed to exist, but are unique when they do, by an argument analogous to that for coproducts.
+%
+%\sssec{Constructions of direct limits}
+%
+%\begin{ex} Let $\sC$ be $\Set$, $\Grp$, $\Ab$, $\Ring$, $\Mod{R}$, or $\Top$.
+%Let's start with the special case where all of the $X_\lambda$ are subobjects of some fixed object $Z$, and the transition maps are inclusion maps. In this case, the union is a subobject of $Z$ (for $\Grp$, $\Ab$, $\Ring$, $\Mod{R}$, the union is closed under the operations since any pair of elements lie in a common $X_\lambda$), and the inclusion maps $\iota_\lambda: X_\lambda \to \bigcup_{\gamma\in \Lambda} X_\gamma$ commute with the transition maps. In this case, a direct limit is $(\bigcup_{\lambda\in \Lambda} X_\lambda, \iota_\lambda)$. The point is that a bunch of consistent maps from the sets $X_\lambda$ uniquely determine a map from their union. In this case, we call the direct limit a \DEF{directed union}.\end{ex}
+%
+%\begin{prop} Let $\sC$ be $\Set$, $\Grp$, $\Ab$, $\Ring$, $\Mod{R}$, or $\Top$, and let $\{X_\lambda\}_{\lambda\in \Lambda}$ be a directed system on a poset $\Lambda$ in $\sC$. A direct limit for $\{X_\lambda\}$ is given by 
+%\begin{itemize}
+%\item the disjoint union of $\{X_\lambda\}$, where we will write $(x,\lambda)$ for an element $x \in X_\alpha$
+%\item modulo the equivalence relation $\sim$ generated by
+%\[ (x,\alpha) \sim (t_\alpha^\beta(x), \beta) \qquad \text{for all $\alpha\leq \beta$ in $\Lambda$ and all $x\in X_\alpha$},\]
+%\item with the maps $i_\alpha$ that send each element in $X_\alpha$ to its equivalence class.
+%\end{itemize}
+%\end{prop}
+%\begin{proof} First, we show it for sets. We have $g_\lambda(x) = \phi \circ i_\lambda (x) = \phi( [(x,\lambda)])$ for all $x\in X_\lambda$, so this is our map $\phi$ is unique and given by this formula as well as this is well-defined. We note that the equivalence relation can be realized as
+%\[ (x,\alpha) \sim (y,\beta) \quad \Longleftrightarrow \quad \exists \gamma \geq \alpha,\beta : t_\alpha^\gamma(x) = t_\beta^\gamma(y).\]
+%Thus, if $(x,\alpha)\sim (y,\beta)$, then 
+%\[g_\alpha(x) = g_\gamma \circ t_\alpha^\gamma(x) = g_\gamma \circ t_\beta^\gamma(y) = g_\beta(y),\]
+%so $\phi$ is well-defined by this formula. This concludes the proof for $\Set$.
+%
+%The cases of the other categories $\sC$ will follow as long as the object specified is an object in $\sC$ and the morphisms $i_\alpha$ and $\phi$ are morphisms in $\sC$. To see that our proposed direct limit object is an object of the same sort, we need to that it admits the same operations. Let's explain this for $\Grp$; the cases $\Ab$, $\Ring$, $\Mod{R}$ will be similar. We define $[(x,\alpha)] \cdot [(y,\beta)]$ to be $[(t_\alpha^\gamma(x) \cdot t_\beta^\gamma(y), \gamma)]$ for some $\gamma\geq\alpha,\beta$. If we choose some other $\delta\geq \alpha,\beta$, then for some $\varepsilon\geq \gamma,\delta$, we have
+%\[ t_\gamma^\varepsilon(t_\alpha^\gamma(x) \cdot t_\beta^\gamma(y) ) = t_\gamma^\varepsilon(t_\alpha^\gamma(x))\cdot  t_\gamma^\varepsilon(t_\beta^\gamma(x)) = t_\delta^\varepsilon(t_\alpha^\delta(x))\cdot  t_\delta^\varepsilon(t_\beta^\delta(x))= t_\delta^\varepsilon(t_\alpha^\delta(x) \cdot t_\beta^\delta(y) ) ,\]
+%(using that our morphisms in $\Grp$ preserve $\cdot$),
+%which means that 
+%\[ [(t_\alpha^\gamma(x) \cdot t_\beta^\gamma(y), \gamma)] = [(t_\alpha^\delta(x) \cdot t_\beta^\delta(y) ,\delta)].\] 
+%To check that the operation is associative, for any three elements we can find an $X_\lambda$ where they all have a representative, and associativity in $X_\lambda$ implies those three associate. Similarly for checking the other axioms of the other structures. It's then easy to see that the maps $i_\lambda$ and $\phi$ are morphisms in the respective categories.
+%\end{proof}
+
+\ssec{Functors}
+
+\begin{defn} Let $\sC$ and $\sD$ be categories. A \DEF{covariant functor} $F:\sC \to \sD$ is a mapping that assigns to each object $A\in \Ob(\sC)$ an object $F(A) \in \Ob(\sD)$ and to each morphism $\alpha\in \Hom_{\sC}(A,B)$ a morphism $F(\alpha)\in \Hom_{\sD}(F(A),F(B))$ such that
+\begin{enumerate}
+\item $F$ preserves compositions, meaning $F(\alpha \circ \beta) = F(\alpha) \circ F(\beta)$ for all morphisms $\alpha,\beta$ in $\sC$, and
+\item $F$ preserves identity morphisms, meaning $F(1_A) = 1_{F(A)}$ for all objects $A$ in $\sC$.
+\end{enumerate}
+
+A \DEF{contravariant functor} $F:\sC \to \sD$ is a mapping that assigns to each object $A\in \Ob(\sC)$ an object $F(A) \in \Ob(\sD)$ and to each morphism $\alpha\in \Hom_{\sC}(A,B)$ a morphism $F(\alpha)\in \Hom_{\sD}(F(B),F(A))$ such that
+\begin{enumerate}
+\item $F$ preserves compositions, meaning $F(\alpha \circ \beta) =  F(\beta) \circ F(\alpha)$ for all morphisms $\alpha,\beta$ in $\sC$, and
+\item $F$ preserves identity morphisms, meaning $F(1_A) = 1_{F(A)}$ for all objects $A$ in $\sC$.
+\end{enumerate}
+\end{defn}
+
+\begin{rem} One can also interpret a contravariant functor as a covariant functor from $\sC^{\op} \to \sD$, or as a covariant functor from $\sC \to \sD^{\op}$.
+\end{rem}
+
+
+\begin{ex} Here are some examples of functors.
+\begin{enumerate}
+\item Many of the categories we considered before are sets with extra structure, and the morphisms are functions that preserve the extra structure. The \DEF{forgetful functor} from such a category $\sC$ to $\Set$, is the covariant functor that forgets that extra structure are returns the underlying set of the object. For example the forgetful functor $\Grp \to \Set$ sends each group to its set of elements, and each homomorphism to its corresponding function of sets. Along similar lines, a ring is a group under addition with the bonus structure of multiplication, and we can talk about the forgetful functor from $\Ring$ to $\Grp$, etc.
+\item The \DEF{identity functor} \Def{$1_{\sC}$} on any category $\sC$ sends each object to itself and each morphism to itself. It is covariant.
+\item There is a covariant functor $(-)^{\times 2}:\Set\to\Set$ that sends every set $S$ to its cartesian square $S\times S$, and every function $f:S\to T$ to the function $(f,f): S\times S \to T\times T$ that sends $(s_1,s_2)\mapsto (f(s_1),f(s_2))$. Let's check the axioms: given $g:S\to T$ and $f:T\to U$, we need to see that $(f, f)\circ (g, g) = (f\circ g,f\circ g)$, which is clear, and that $(1_S,1_S)$ is the identity map on $S\times S$, which is also clear.
+\item Given a group $G$, the subgroup $G'\leq G$ generated by the set of commutators $\{ghg^{-1}h^{-1} \ | \ g,h\in G\}$ is a normal subgroup, and the quotient $G^{\mathrm{ab}}:=G/G'$\index{$G^{\mathrm{ab}}$} is called the \DEF{abelianization} of $G$. The group $G^{\mathrm{ab}}$ is abelian. Given a group homomorphism $\phi:G\to H$, $\phi$ automatically takes commutators to commutators, so it induces a homomorphism $G^{\mathrm{ab}} \to H^{\mathrm{ab}}$. Put together, abelianization gives a covariant functor from $\Grp$ to $\Ab$. 
+%Alternatively, we can think of abelianization as a functor from $\Grp \to \Grp$.
+\item Given any topological space $X$, the set of continuous functions from $X$ to $\R$, \Def{$\Cont(X,\R)$} is a ring with pointwise addition and multiplication. Given a continuous map $X\xrightarrow{\alpha}Y$, and a continuous map $Y \xrightarrow{f} \R$, the composition $X\xrightarrow{\alpha \circ f} \R$ is a continuous function. In this way, we get a map from $\Cont(Y,\R)$ to $\Cont(X,\R)$. In fact, this map is a ring homomorphism. Put together, we obtain a contravariant functor from $\Top$ to $\Ring$.
+\item Fix a field $K$. Given a vector space $V$, the collection \Def{$V^*$} of linear transformations from $V$ to $K$ is again a $K$-vector space, the \DEF{dual vector space} of $V$. If $\phi:W\to V$ is a linear transformation and $\ell:V\to K$ is in $V^*$ then $\ell \circ \phi:W\to K$ is in $W^*$, so there is a map $V^* \to W^*$. You can check that this together forms a functor \Def{$(-)^*$} that is contravariant.
+\item You may be familiar with the fundamental group of a pointed topological space; this is a group $\pi_1(X,x)$ assigned to a topological space and a point in it. The rule $\pi_1$ gives a functor from pointed topological spaces to groups.
+\item The unit group functor $\Ring\to \Grp$ sends each ring to its group of units. A homomorphism of rings restricts to a group homomorphism on the units: if $x\in R$ is a unit, so $xy=1$, and $\phi:R\to S$ is a group homomorphism, then $1=\phi(xy)=\phi(x) \phi(y)$, so $\phi(x)$ is a unit; $\phi$ preserves multiplication as well. This is covariant.
+\end{enumerate}
+\end{ex}
+
+\Sept{3}
+
+It follows from the definition of covariant functor that if we apply a covariant functor $F$ to a commutative diagram, we get another commutative diagram of the same shape, e.g.:
+\[ 
+\xymatrix{
+A \ar[r]^{\alpha} \ar[d]_{\gamma}& B \ar[d]^{\beta}\\
+C \ar[r]^{\delta} &D } \qquad \stackrel{F}{\rightsquigarrow} \qquad 
+\xymatrix{
+F(A) \ar[r]^{F(\alpha)} \ar[d]_{F(\gamma)}& F(B) \ar[d]^{F(\beta)}\\
+F(C) \ar[r]^{F(\delta)} &F(D).
+}
+\]
+
+
+
+If we apply a contravariant functor $G$ to a commutative diagram, we get a commutative diagram of the same shape with the arrows reversed, e.g.:
+\[ 
+\xymatrix{
+A \ar[r]^{\alpha} \ar[d]_{\gamma}& B \ar[d]^{\beta}\\
+C \ar[r]^{\delta} &D } \qquad \stackrel{G}{\rightsquigarrow} \qquad 
+\xymatrix{
+G(A)  & G(B) \ar[l]_{G(\alpha)} \\
+G(C) \ar[u]^{G(\gamma)} &G(D) \ar[u]_{G(\beta)} \ar[l]_{G(\delta)} .
+}
+\]
+
+
+\begin{rem} A composition of two covariant functors, or of two contravariant functors, is a covariant functor. The composition of a covariant functor and a contravariant functor, or vice versa, is a contravariant functor.
+\end{rem}
+
+\begin{comment}
+Here is another simple but essential source of functors.
+
+\begin{ex} Let $\sC$ be a category, and $A$ be an object of $\sC$.
+\index{Hom functors}
+		\begin{itemize}
+		\item The covariant functor \Def{$\Hom_{\sC}(A,-)$} $: {\sC} \longrightarrow  {\bf Set}$ sends each object $B$ to the set $\Hom_{\sC}(A,B)$, and each $\alpha \in \Hom_{\sC}(B,C)$ to the function \Def{$\Hom_{\sC}(A,\alpha)$}  $=:$ \Def{$\alpha_*$} of ``postcomposition by $\alpha$'':
+		$$\xymatrix@R=1mm{\Hom_{\sC}(A,B) \ar[r]^{\alpha_*} & \Hom_{\sC}(A,C) \\f \ar@{|->}[r] & \alpha\circ f
+		\\ A \xrightarrow{f}B  & A \xrightarrow{f} B \xrightarrow{\alpha} C.  }$$
+		\item The contravariant functor \Def{$\Hom_{\sC}(-,A)$} $: {\sC}\longrightarrow  {\bf Set}$ sends each object $B$ to the set $\Hom_{\sC}(B,A)$, and each $\alpha \in \Hom_{\sC}(B,C)$ to the function \Def{$\Hom_\mathscr{C}(\alpha,A)$} $=:$ \Def{$ \alpha^*$} of ``precomposition by $\alpha$'':
+		$$\xymatrix@R=1mm{\Hom_{\sC}(C,A) \ar[r]^{\alpha^*} & \Hom_{\sC}(B,A) \\f \ar@{|->}[r] & f\circ \alpha
+		\\ C\xrightarrow{f} A & B\xrightarrow{\alpha} C \xrightarrow{f} A.}$$
+		\end{itemize}
+		We may say that $\Hom_{\sC}(A,-)$ is the \DEF{covariant functor represented by $A$} and $\Hom_{\sC}(-,A)$ is the \DEF{contravariant functor represented by $A$}.
+		
+		The contravariant Hom functor does preserve compositions in a contravariant way:
+given maps
+\[ \xymatrix{ 								& C \ar[dr]^{\beta} 	& 	\\
+		B \ar[ur]^\alpha \ar[rr]_{\beta\circ \alpha} 	&				& D }\]
+		we get
+		
+{\[\xymatrix@R-1.2pc@C-1pc{ 
+					&				& \Hom_\sC(C,A)  \ar[lldddd]_{\alpha^*} 		&				&\\
+					&             	    	 	&{\color{blue}f \circ \beta} \ar@{|->}@[blue][ddl]	& 				&\\
+					&				&							&				&\\
+					&{\color{blue}(f\circ \beta)\circ \alpha }	&							&  {\color{blue}f}\ar@{|->}@[blue][uul]  \ar@{|->}@[blue][ll] &&\\
+\Hom_\sC(B,A)	&				&							&				&
+\Hom_\sC(D,A).\ar[uuuull]_{\beta^*} \ar[llll]^-{(\beta\circ\alpha)^*}}\]}
+		\end{ex}
+		
+	\begin{exer}
+	Let $\alpha$ be a morphism in a category $\sC$.
+	\begin{enumerate}
+	\item Show that $\alpha$ is monic if and only if $\Hom_\sC(Y,\alpha)$ is injective for all objects $Y$.
+	\item Show that $\alpha$ is epic if and only if $\Hom_\sC(\alpha,Y)$ is injective for all objects $Y$.
+	\item Show that $\alpha$ has a right inverse if and only if $\Hom_\sC(Y,\alpha)$ is surjective for all objects $Y$.
+	\item Show that $\alpha$ has a left inverse if and only if $\Hom_\sC(\alpha,Y)$ is surjective for all objects $Y$.
+	\end{enumerate}
+	\end{exer}
+	\end{comment}
+
+\ssec{Natural transformations}
+
+\begin{defn}
+	Let $F$ and $G$ be covariant functors $\mathscr{C} \longrightarrow \mathscr{D}$. A \DEF{natural transformation} $\eta$ between $F$ and $G$ is a mapping that to each object $A$ in $\mathscr{C}$ assigns a morphism $\eta_A \in \Hom_\mathscr{D}(F(A),G(A))$ such that for all $f \in \Hom_\mathscr{C}(A,B)$, the diagram
+	$$\xymatrix{F(A) \ar[d]_-{F(f)} \ar[r]^-{\eta_A} & G(A) \ar[d]^-{G(f)} \\ F(B) \ar[r]_-{\eta_B} & G(B)}$$
+	commutes. We sometimes write $\eta: F \implies G$\index{$F\implies G$}.
+	
+	A \DEF{natural isomorphism} is a natural transformation $\eta$ where each $\eta_A$ is an isomorphism. 
+\end{defn}
+
+In short, a natural transformation is a rule to turn $F$ of whatever into $G$ of whatever in a reasonable way.
+
+\begin{exer} Let $F,G: \sC \to \sD$ be covariant functors. Show that a natural transformation $\eta: F\implies G$ is a natural isomorphism if and only if there is another natural transformation $\mu:G\implies F$ such that $\mu \circ \eta$ is the identity natural isomorphism on $F$ and $\eta\circ \mu$ is the identity natural transformation on $G$.
+\end{exer}
+
+We can make make a similar definition for contravariant functors.
+
+\begin{defn}
+	Let $F$ and $G$ be contravariant functors $\mathscr{C} \longrightarrow \mathscr{D}$. A \DEF{natural transformation} between $F$ and $G$ is a mapping that to each object $A$ in $\mathscr{C}$ assigns a morphism $\eta_A \in \Hom_\mathscr{D}(F(A),G(A))$ such that for all $f \in \Hom_\mathscr{C}(A,B)$, the diagram
+	$$\xymatrix{F(A)  \ar[r]^-{\eta_A} & G(A)  \\ F(B) \ar[u]^-{F(f)} \ar[r]_-{\eta_B} & G(B) \ar[u]_-{G(f)}}$$
+	commutes. \end{defn}
+
+
+\begin{ex} 
+Let's describe a natural transformation of functors $\eta:(-)^{\times 2} \implies 1_{\Set}$, namely we take 
+\[\eta_S:S\times S \to S \qquad (s_1,s_2) \mapsto s_1. \]
+We need to check for every map $f:S\to T$ the commutativity of a diagram:
+$$\xymatrix{S\times S \ar[d]_-{(f,f)} \ar[r]^-{\eta_{S}} & S \ar[d]^-{f} \\ T\times T \ar[r]_-{\eta_{T}} & T.}$$
+Going either down then left or right then down, $(s_1,s_2)$ maps to $f(s_1)$, so this does commute, and we indeed have a natural transformation. This is not a natural isomorphism, since the map $\eta_S$ is not always (almost never) an isomorphism of sets. 
+\end{ex}
+
+
+\begin{ex}
+Let $\sC$ be the full subcategory of $\Set$ consisting of countable sets. For every $S\in \Ob(\sC)$, there is a $\sC$-isomorphism, i.e., a bijection, $\eta_S:S \to S\times S$. Namely, we can take $\eta_S$ as follows: enumerate $S$ as $S=\{s_1,s_2,s_3,\dots\}$, and do the usual zigzag trick\\
+\begin{minipage}[c]{0.4 \textwidth}
+\[\begin{split}
+s_1&\mapsto (s_1,s_1)\\
+s_2&\mapsto (s_2,s_1)\\
+s_3&\mapsto (s_1,s_2)\\
+s_4&\mapsto (s_1,s_3)\\
+s_5&\mapsto (s_2,s_2)\\
+s_6&\mapsto (s_3,s_1)\\
+&\vdots
+\end{split}\]
+\end{minipage}
+\begin{minipage}[c]{0.4 \textwidth}
+\xymatrix@C=1em@R=1em{ 
+\vdots & \vdots & \vdots & \vdots &  \reflectbox{$\ddots$} \\
+(s_1,s_4) \ar@{.}@[blue][u] & (s_2,s_4) \ar@{->}@[blue][dr] \ar@{.}@[blue][ul]& (s_3,s_4)  \ar@{.}@[blue][ul] & (s_4,s_4) \ar@{.}@[blue][ul] \ar@{.}@[blue][dr] & \cdots \\
+(s_1,s_3) \ar@{->}@[blue][dr] & (s_2,s_3) \ar@{->}@[blue][ul] & (s_3,s_3) \ar@{->}@[blue][dr] & (s_4,s_3) \ar@{->}@[blue][ul] \ar@{.}@[blue][dr]& \cdots \\
+(s_1,s_2) \ar@{->}@[blue][u] & (s_2,s_2)\ar@{->}@[blue][dr]  & (s_3,s_2)\ar@{->}@[blue][ul]  & (s_4,s_2) \ar@{.}@[blue][dr] & \cdots \\
+(s_1,s_1)\ar@{->}@[blue][r]  & (s_2,s_1)\ar@{->}@[blue][ul]   & (s_3,s_1)\ar@{->}@[blue][r]   & (s_4,s_1)\ar@{->}@[blue][ul]  & \cdots }
+\end{minipage}
+
+\
+
+
+However, the bijections $\eta_S$ do not form a natural bijection (in fact, if we just choose $\eta_S$ like so for one set $S$, no matter what the other choices are, we can't get a natural transformation). Let $f:S\to S$ satisfy $f(s_1)=s_2$ and $f(s_2)=s_1$. Then in the diagram
+$$\xymatrix{S \ar[d]_-{f} \ar[r]^-{\eta_S} & S \times S \ar[d]^-{(f,f)} \\ S \ar[r]_-{\eta_S} & S\times S,}$$
+we have $\eta_S(f(s_1)) =(s_2,s_1)$ while $(f,f)(\eta_S(s_1)) = (s_2,s_2)$, so the diagram does not commute.
+
+Intuitively, we can blame the fact that our map $\eta$ decided on a \emph{choice} of enumeration of the set.
+
+\end{ex}
+
+
+\begin{ex}
+Recall the contravariant functor $(-)^*:\vs{K}\to \vs{K}$; here we are restricting to finite dimensional vector spaces. 
+
+For every $V\in \vs{K}$, there is an isomorphism $V\cong V^*$: if we fix a basis $\cB$ for $V$, there is a dual basis for $V^*$ (the $\cB$-coordinate functions) of the same size, so they are isomorphic. However, there is no natural isomorphism $\eta: 1_{\vs{K}} \implies (-)^*$, since $1_{\vs{K}}$ is covariant and $(-)^*$ is contravariant. We will actually see a more compelling version of this nonnatruality statement in the homework.
+
+Composing the dual functor with itself twice we get the covariant double-dual functor $(-)^{**}:\vs{K}\to\vs{K}$. We will show that there is a natural isomorphism $1_{\vs{K}}\implies (-)^{**}$.
+
+For every $v\in V$, there is a map $\mathrm{ev}_v:V^{*}\to V$ given by evaluation at $v$: $\mathrm{ev}_v(\ell) = \ell(v)$. So, $\mathrm{ev}_v\in V^{**}$. Since we have one for each $v$, there is a function $\mathrm{ev}:V\to V^{**}$ given by $\mathrm{ev}(v)=\mathrm{ev}_v$.
+
+The map $\mathrm{ev}$ is a linear transformation:
+\[ \mathrm{ev}_{cv+w} (\ell) = \ell(cv+w) = c\ell(v) +\ell(w) = c \,\mathrm{ev}_v(\ell) + \mathrm{ev}_w(\ell).\]
+It is injective, since any nonzero vector takes on a nonzero value for some linear functional. It is then a bijection since $\dim(V)=\dim(V^{*})=\dim(V^{**})$.
+
+We just need to check commutativity of the square:
+\[\xymatrix{ V \ar[r]^{\mathrm{ev}} \ar[d]^{\phi} & V^{**} \ar[d]^{\phi^{**}} \\ W \ar[r]^{\mathrm{ev}} & W^{**} }\]
+This translates to \[ \mathrm{ev}_{\phi(v)} = (\mathrm{ev} \circ \phi) (v) \stackrel{?}{=} (\phi^{**} \circ \mathrm{ev})(v) = \phi^{**}(\mathrm{ev}_v)\]
+in $W^{**}$ for all $v\in V$. But, for all $\ell\in W^{*}$,
+\[ \mathrm{ev}_{\phi(v)}(\ell)=\ell(\phi(v)) = \phi^*(\ell)(v) = (\mathrm{ev}_v \circ \phi^*)(\ell) = \phi^{**}(\mathrm{ev}_v)(\ell),\]
+so the equality holds.
+\end{ex}
+
+In the homework, we will discuss some more examples from linear algebra. For example, for a pair of vector spaces $W\leq V$, there are isomorphisms $V\cong W\oplus V/W$, but no natural isomorphism of the sort. On the bright side, we will see that if $V$ has an inner product, then $V$ and $V^*$ are naturally isomorphic in a suitable sense.
+
+\begin{comment}
+\subsection{Equivalence of categories}
+
+There is an obvious notion of isomorphism of categories: two categories $\cC$ and $\cD$ are isomorphic if there are covariant functors $F:\cC\to \cD$ and $G:\cD\to \cC$ such that $G\circ F= 1_{\cC}$ and $F\circ G = 1_{\cD}$. The following more flexible notion is much more useful:
+
+\begin{defn} Let $\cC$ and $\cD$ be categories. A pair of covariant functors $F:\cC\to \cD$ and $G:\cD\to \cC$ is an \DEF{equivalence of categories} if there are natural isomorphisms $G\circ F\Rightarrow 1_{\cC}$ and $F\circ G \Rightarrow 1_{\cD}$. We say that $\cC$ and $\cD$ are \emph{equivalent} if there exists an equivalence of categories between them.
+\end{defn}
+
+This notion has a more concrete characterization:
+
+\begin{fact} A pair of covariant functors $F:\cC\to \cD$ and $G:\cD\to \cC$ is an equivalence of categories if and only
+~if
+\begin{itemize}
+\item for every $A,B\in\Ob(\cC)$, the map $\Hom_{\cC}(A,B) \to \Hom_{\cD}(F(A),F(B))$ given by $\alpha\to F(\alpha)$ is a bijection, and,
+\item for every $D\in \Ob(\cD)$, there is some $C\in\Ob(\cC)$ such that $D$ is isomorphic to $F(C)$.
+\end{itemize}
+\end{fact}
+We won't really use this fact, but it does add some meaning to this notion.
+
+
+%\begin{eg} Partial functions
+%\end{eg}
+
+\begin{ex} Recall the category $\MaT{K}$ of matrices over a field: the objects are positive natural numbers, and the morphisms from $m \to n$ are $n\times m$ matrices over $K$. For convenience, let $\vsp{K}$ be the category of finite-dimensional $K$-vector spaces with the zero-dimensional ones and all morphisms to and from them removed.
+
+It turns out that $\MaT{K}$ is equivalent to $\vsp{K}$: we can take a functor $F:\MaT{K} \to \vsp{K}$ that sends $n$ to $K^n$ and $M$ to multiplication by $M$, and we can construct a functor $G:\vsp{K} \to \MaT{K}$ by picking a basis for every $V\in \vsp{K}$, sending $V$ to its dimension, and every transformation to the matrix in the corresponding bases for the source and target.
+\end{ex}
+\end{comment}
+
+\sec{$R$-Modules}
+
+
+\Sept{8}
+
+
+\sssec{Left vs right vs both}
+
+Recall that a left $R$-module is an abelian group $M$ with an action map $R\times M \to M$ written $(r,m)\mapsto rm$ such that $r(sm) = (rs)m$, along with two distributive properties and the condition that $1$ acts as the identity.
+A \DEF{right module} over $R$ is defined similarly; we usually write the action as $(r,m)\mapsto mr$, and we have $(mr)s = m(rs)$, along with distributive and identity properties. The point is that when we act by a product $rs\in R$, we can think of it as an iterated action; in a left module, the left factor acts last while in a right module the right factor acts last.
+
+\begin{defn} If $R$ is a ring, the \DEF{opposite ring} \Def{$R^{\mathrm{op}}$} is the ring with the same underlying set and same addition, but with multiplication given by $r \cdot_{R^{\mathrm{op}}} s = s \cdot_{R} r$.
+\end{defn}
+
+A right $R$-module is exactly the same thing as a left $R^{\mathrm{op}}$-module (except our convention for writing the action). In particular, if $R$ is commutative, then a left $R$-module is exactly the same thing as a right $R$-module, and we will just say ``module'' in this case. By default, in general, when we say module, we will mean left $R$-module.
+
+\begin{ex}
+Let $R$ be a ring. The collection \Def{$M_n(R)$} of $n\times n$ matrices with entries in $R$ forms a ring that in general is not commutative. The set \Def{$R^n$} of column vectors of length $n$ with entries in $R$ is naturally a left $M_n(R)$-module. The collection of row vectors of length $n$ with entries in $R$ is naturally a right $M_n(R)$-module. We can also identify this latter action with a right module action on $R^n$ by transposing any column vector into a row vector, acting, then transposing back:
+\[ v \cdot M = (v^T M)^T=M^T v.\]
+\end{ex}
+
+We can think of $R$-module structures in a different way. To prepare, let's record a lemma.
+
+\begin{lem}
+If $M$ is an abelian group, then \Def{$\End_{\Ab}(M)$} $:=\Hom_{\Ab}(M,M)$ forms a ring with pointwise addition and composition as multiplication. More generally, if $M$ is a left $R$-module, then \Def{$\End_{R}(M)$}$:=\Hom_{\Mod{R}}(M,M)$ forms a ring (with the aforementioned operations).
+\end{lem}
+\begin{proof}
+The first statement is a special case of the first, since an abelian group is the same thing as a $\Z$-module, so we'll prove the second. Let $f,g\in \End_R(M)$. Since 
+  \[(f+g)(rm+n) = f(rm+n)+g(rm+n)= rf(m)+f(n) +rg(m)+g(n) = r(f+g)(m) + (f+g)(n)\]
+we see that $f+g\in \End_{R}(M)$. It's easy to see that $\End_{R}(M)$ is an abelian group under $+$.
+Associativity of multiplication is a special case of associativity of composition of functions. For distributive laws, we have
+\[\begin{aligned} ((f+g)h) (m) &= (f+g)(h(m)) =f(h(m)) + g(h(m)) = (fh)(m) + (gh)(m) 
+\\ (f(g+h)) (m) &= f(g(m)+h(m)) = f(g(m)) + f(h(m)) = (fg) (m) + (fh)(m);
+\end{aligned}\]
+for the latter distributive law, it was crucial that we are dealing with homomorphisms of abelian groups. We also have the identity map on $M$ as a mutliplicative identity.
+\end{proof}
+
+
+\begin{exer} Show that there is a ring isomorphism $\End_R(R) \cong R^{\mathrm{op}}$.
+\end{exer}
+
+\begin{prop}
+Let $R$ be a ring and $(M, +)$  an abelian group. There is a bijective correspondence
+\[ \xymatrix@R=.6em{ \{ R-\text{module actions} \ R \times M \to M \text{(with given +)} \}  \ar@{<->}[r] & \{ \text{ring homomorphisms} \ \rho: R \to \End_{\Z}(M) \}\\
+\cdot  \ar@{|->}[r] & \rho(r)(m) = r\cdot m \\
+r\cdot m = \rho(r)(m)  & \ar@{|->}[l] \rho.}
+\]
+\end{prop}
+\begin{proof}
+We clearly have a bijection as long as the maps are well-defined.
+
+Given an $R$-module action $\cdot$, one distributive property translates to the condition that $\rho(r)$ is $\Z$-linear; the identity condition means $\rho(1_R)$ is the identity function on $M$, which is the $1$ element in $\End_\Z(M)$; the other distributive condition means $\rho$ preserves addition; and the associativity condition means $\rho$ preserves multiplication. Thus, $\rho$ is a ring homomorphism. And conversely. 
+\end{proof}
+
+It turns out that we often have a left module structure and a right module structure on something in a compatible way.
+
+\begin{defn} Let $R$ and $S$ be rings. An $(R,S)$-\DEF{bimodule} is an abelian group $M$ equipped with a left $R$-module structure and a right $S$-module structure that commute with each other:
+\[ (r \cdot m) \cdot s = r \cdot (m \cdot s) \qquad \text{for all}\ m\in M, r\in R, s\in S.\]
+\end{defn} 
+
+\begin{ex} Here are some basic sources of bimodules:
+\begin{enumerate}
+\item If $R$ is a ring, then $M=R$ is an $(R,R)$-bimodule in the obvious way. More generally, if $\phi:A\to R$ is a ring homomorphism, then $R$ is an $(R,A)$-bimodule by
+\[ s \cdot r \cdot a = sr\phi(a) \qquad \text{for} \ r,s\in R, a\in A;\]
+equally well, $R$ is an $(A,R)$ or $(A,A)$-bimodule.
+\item If $R$ is a commutative ring and $M$ is any left module, then $M$ is also a right module by the same action, and $M$ is an $(R,R)$-bimodule with these structures. I.e., starting with an action $r\cdot m$, we set $m\cdot s$ to be $s\cdot m$, and \[(r\cdot m) \cdot s = s\cdot (r\cdot m) = sr \cdot m = rs \cdot m = r\cdot (s\cdot m) = r \cdot (m\cdot s).\]
+\item Every left $R$-module is automatically an $(R,\Z)$-bimodule in a unique way: \[(r\cdot m) \cdot n= \underbrace{(r\cdot m) + \cdots + (r\cdot m)}_{n \ \text{times}} = r \cdot (\underbrace{m+\cdots + m}_{n \ \text{times}}) = r \cdot (m \cdot n) \qquad \text{for $n\in \Z_{\geq 0}$},\]
+and similarly for $n\leq 0$.
+Likewise, every right $R$-module is automatically a $(\Z,R)$-bimodule.
+\end{enumerate}
+\end{ex}
+
+\begin{ex} For a ring $R$, the set of column vectors of length $n$, $R^n$, is a $(M_n(R),R)$-bimodule. However, if we take the natural left action together with the right action $v\cdot M = M^T v$ discussed above, we do not get a bimodule structure, since $(M\cdot v)\cdot N = N^T M v$ generally differs from $M \cdot (v \cdot N) = M N^T v$.
+\end{ex}
+
+Sometimes, when we want to keep track of various module and bimodule structures, we may write something like \Def{$_R M _S$} to indicate that $M$ is an $(R,S)$-bimodule, or $_R M$ to indicate that $M$ is a left $R$-module.
+
+\ssec{Kernels, images, and exact sequences}
+
+To every homomorphism $\phi:M\to N$ in $\Mod{R}$, the kernel \Def{$\ker(\phi)$}$\subseteq M$ and image \Def{$\im(\phi)$}$\subseteq N$ are in $\Mod{R}$, and the inclusion maps are homomorphisms of $R$-modules. It is surprisingly convenient to keep track of and compare these data in terms of exact sequences.
+
+\begin{defn}
+ A sequence of $R$-modules and $R$-module maps of the form
+  $$
+  \cdots \xra{d_{i+1}}  M_i \xra{d_i} M_{i-1} \xra{d_{i-1}} \cdots
+    $$
+    (possible infinite, possibly not)
+    is a \DEF{chain complex}, or just \DEF{complex} for short, if $d_i \circ d_{i+1} = 0$ for all $i$ or, equivalently, $\im(d_{i+1}) \subseteq \ker(d_i)$ for all $i$. 
+    
+    A chain complex is \DEF{exact} at $M_i$ if  $\im(d_{i+1}) = \ker(d_i)$; it is exact if it is exact at every module that has a map in and a map out.
+\end{defn}
+
+
+\Sept{10}
+
+
+\begin{ex} Let $A$ be a $b\times a$ matrix and $B$ be a $c\times b$ matrix of real numbers. The sequence of maps
+\[ \R^a \xra{A\cdot} \R^b \xra{B\cdot} \R^c \]
+is a complex if and only if $BA=0$; equivalently, the columns of $A$ are in the solution space (nullspace) of $B$.
+It is exact if and only if the columns of $A$ span the solution space of~$B$.
+\end{ex}
+
+
+    \begin{rem} 
+    \begin{itemize}
+    \item A sequence of the form $M \xra{g} N \to 0$ is exact if and only if $g$ is surjective.
+    \item A sequence of the form  $0 \to M \xra{f} N$ is exact if and only if $f$ is injective.
+    \item A sequence of the form  $0 \to M \xra{h} N \to 0$ is exact if and only if $h$ is an isomorphism.
+    \item A sequence of the form $0 \to M \to 0$ is exact if and only if $M=0$.
+    \end{itemize}
+\end{rem}
+
+\begin{defn}
+\begin{itemize}
+\item      A \DEF{left exact sequence} is an exact sequence of the form
+      $$
+      0 \to M' \xra{i} M \xra{g} M'' 
+      $$
+This means $i$ is injective and  $M'\cong \im(i)=\ker(g)$. 
+
+
+\item      A \DEF{right exact sequence} is an exact sequence of the form
+      $$
+      M' \xra{f} M \xra{p} M'' \to 0
+      $$
+This means $p$ is onto and $\im(f)=\ker(p)$,
+so, $M'' \cong M/\ker(p) = M/\im(f)$. We denote $M/\im(f)=\coker(f)$ and call it the \DEF{cokernel} of $f$. Thus in a right exact sequence as above, $M''\cong \coker(f)$.
+
+\item      A \DEF{short exact sequence} (\DEF{SES}) is an exact sequence of the form
+      $$
+      0 \to M' \xra{i} M \xra{p} M'' \to 0
+      $$
+             Note that in a short exact sequence $M'\cong \ker(p)$ and $M''\cong \coker(i)$. In particular, $M''\cong M/M'$.
+We also say that $M$ is an \DEF{extension} of $M'$ and $M''$ if it fits in a short exact sequence as above.
+\end{itemize}
+    \end{defn}
+
+\begin{ex} Let $A$ be a $b\times a$ matrix and $B$ be a $c\times b$ matrix of real numbers. The sequence of maps
+\[ 0 \to \R^a \xra{A\cdot} \R^b \xra{B\cdot} \R^c \]
+is a left exact sequence if and only if the columns of $A$ form a basis for the null space of $B$.
+\end{ex}
+
+\sssec{Presentations} Recall that a set of elements $B$ in a module $M$ is a \DEF{free basis} if every element of $M$ can be written as a (finite) $R$-linear combination of elements of $B$ in a unique way, and a module $M$ is a \DEF{free module} if it admits a free basis (which almost never is unique, by the way). As mentioned before, a free module is isomorphic to a direct sum of copies of the ring (considered as a module), which we may write as $R^n$ or \Def{$R^{\oplus\Gamma}$} for some index $\Gamma$; such a free module has as a \DEF{standard basis} $\{$\Def{$e_\lambda$}$\}_{\lambda\in\Lambda}$ consisting the elements that have a 1 in the $\lambda$ coordinate and 0 in each of the others. Free modules are also characterized by a universal property:
+
+If $F$ free with basis $B$, then for any module $M$, and any function $f:B\to M$, there is a unique module homomorphism $\phi:F\to M$ such that the diagram commutes:
+\[\xymatrix{ & F \ar@{-->}[dr]^-{\phi} & \\ B \ar@{^{(}->}[ur]^-{\subseteq} \ar[rr]^-{f} & & M \;}\]
+i.e., any homomorphism is uniquely and freely specified by its values on the basis.
+
+Note that a set of elements $\{m_\lambda\}_{\lambda\in \Lambda} \subseteq M$ generates $M$ if and only if the homomorphism 
+\[\xymatrix@R=.7em{ R^{\Lambda} \ar[r] & M \\
+e_{\lambda} \ar@{|->}[r] & m_{\lambda} }\]
+is surjective. The kernel of such a map consists of the set of $\Lambda$-tuples $(r_\lambda)$ such that $\sum_{\lambda\in\Lambda} r_\lambda m_\lambda =0$; this is called the module of \DEF{relations} on the elements $\{m_\lambda\}$.
+
+\begin{defn} A \DEF{presentation} of a module $M$ consists of a set of elements $\{m_\lambda\}$ that generates $M$, and a set of relations on $\{m_\lambda\}$ that generates the  whole module of relations on $\{m_\lambda\}$.
+\end{defn}
+
+We can express the data of a presentation in terms of a right exact sequence. Namely, if $\{m_\lambda\}_{\lambda\in \Lambda}$ is a generating set of $M$, and $\{ (r_\lambda)_\gamma\}_{\gamma\in \Gamma}$ generates the module of relations on our generating set, then
+\[ R^{\oplus\Gamma} \to R^{\oplus\Lambda} \to M \to 0\] is a right exact sequence, where the standard basis of $R^{\oplus\Lambda}$ maps to $\{m_\lambda\}$ and the standard basis of $R^{\oplus\Gamma}$ maps to $\{ (r_\lambda)_\gamma\}$. Conversely, a right exact sequence of the form
+\[ R^{\oplus\Gamma} \to R^{\oplus\Lambda} \to M \to 0\] 
+ is equivalent to the data of a presentation.
+
+\sssec{Split exact sequences}
+
+    
+    
+    Given modules $M'$ and $M''$, we have the ``trivial'' SES
+$$
+0 \to M' \xra{\iota} M' \oplus M'' \xra{\pi} M'' \to 0
+$$
+where $\iota$ is the canonical inclusion and $\pi$ is the canonical projection. The following result gives equivalent conditions for 
+when a SES is equivalent to a split one.
+
+\begin{thm}[The splitting theorem] \label{prop93}
+Given a SES of left $R$-modules 
+\[0 \to M' \xra{i} M \xra{p} M'' \to 0,\]
+ the following are equivalent:
+
+\begin{enumerate}
+ \item There is a commutative diagram where each  vertical arrow is an isomorphism
+$$
+\xymatrix{
+0 \ar[r] & M' \ar[r]^-i \ar[d]^-{\id} & M \ar[r]^-p \ar[d]^-{\theta}  & M'' \ar[r] \ar[d]^-{\id}  & 0 \\
+0 \ar[r] & M' \ar[r]^-{\iota}           & M' \oplus M'' \ar[r]^-\pi            & M'' \ar[r]           & 0.
+}
+$$
+
+\item There is an isomorphism $\theta: M \xra{\cong} M' \oplus M''$ such that $\theta \circ i = \iota$ and $\pi \circ \theta = p$. 
+
+\item The map $i$ has a left inverse $q$ in $\Mod{R}$.
+
+\item The map $p$ has a right inverse $j$ in $\Mod{R}$.
+
+\item There are maps 
+$q: M \to M'$ and $j: M'' \to M$ such that 
+$q \circ i = \id_{M'}$, 
+$p \circ j = \id_{M''}$, and
+$i \circ q + j \circ p = \id_M$.
+\end{enumerate}
+
+If these equivalent conditions hold, we call the SES a \DEF{split exact sequence}.
+\end{thm}
+
+
+
+
+\begin{proof}
+
+(1) $\Leftrightarrow$ (2) follows by definition of commutative diagram.
+
+
+(1) $\Rightarrow$ (5): The main idea is that there are obvious splitting maps for the bottom SES. Define $\pi'$ to be the canonical projection $\pi':M'\oplus M''\to M', (m',m'')\mapsto m'$ and $\iota''$ to be the inclusion $\iota'':M''\to M'\oplus M'', m''\mapsto (0,m'')$. Notice that $\pi'\circ \iota =\id_{M'}$ and $\pi\circ \iota''=\id_{M''}$ and $i\circ \pi'+ \iota''\circ p=\id_{M'\oplus M''}$.
+
+\Sept{13}
+
+
+We can use this to set $q=\pi'\circ\theta$ and $j= \theta^{-1}\circ \iota''$ and check
+\begin{eqnarray*}
+q\circ i &=\pi'\circ\theta \circ i =\pi'\circ \iota =\id_{M'}\\
+p\circ j& =p\circ \theta^{-1}\circ \iota'' =\pi\circ \iota''=\id_{M''}
+\end{eqnarray*}
+\begin{eqnarray*}
+i\circ q+j\circ p &=i\circ \pi'\circ\theta+ \theta^{-1}\circ \iota''\circ p=\theta^{-1}\circ ( \theta\circ i\circ \pi'+\iota''\circ p \circ \theta^{-1})\circ \theta\\
+&=\theta^{-1}\circ (\iota\circ \pi'+\iota''\circ\pi)\circ \theta =\theta^{-1}\circ \id_{M'\oplus M''} \circ \theta=\id_M.
+\end{eqnarray*}
+
+(5) $\Rightarrow$ (3, 4) is clear. 
+
+(3) $\Rightarrow$ (2): Given such a $q$, define  $\theta(m) = (q(m), p(m))$. It is clear $\theta \circ i = \iota$ and $\pi \circ \theta = p$. 
+We will now show that $\theta$ is injective: if $\theta(m)=0$ then $p(m)=0$ so $m\in \im(i)$ therefore $m=i(m')$ for some $m'\in M'$. But now $0=q(m)=q(i(m'))=m'$ so $m'=0$ and thus $m=0$. 
+
+We next show that $\theta$ is surjective: $(m',m'')\in M'\oplus M''$. Since $p$ is onto, then there exists some $u\in M$ so thar $p(u)=m''$. Let $m=i(m')+u-i(q(u))$. Then 
+\[
+\begin{split}
+\theta(m) &=(q(i(m'))+q(u)-q(i(q(u))), p(i(m'))+p(u)-p(i(q(u))))\\
+&= (m'+q(u)-q(u),m''+0-0)=(m',m'').
+\end{split}
+\]
+Therefore $\theta$ is bijective, so it is an isomorphism. 
+
+The proof that (4) $\Rightarrow$ (2) is similar, and omitted.
+\end{proof}
+
+We can also use splittings to show exactness.
+
+\begin{prop}
+Given a complex of $R$-modules of the form
+\[0 \to M' \xra{i} M \xra{p} M'' \to 0,\]
+if there are maps 
+$q: M \to M'$ and $j: M'' \to M$ such that 
+$q \circ i = \id_{M'}$, 
+$p \circ j = \id_{M''}$, and
+$i \circ q + j \circ p = \id_M$, then
+the complex is exact, and hence split exact.
+\end{prop}
+\begin{proof}
+Since $i$ has a left inverse, it is injective, and since $p$ has a right inverse, it is surjective. To show exactness in the middle, let $m\in \ker(p)$. Then \[m= (i\circ q)(m) + (j\circ p)(m) = i(q(m))\in \im(i).\qedhere\]
+\end{proof}
+
+
+
+
+
+
+\begin{rem} The proof in the previous example actually shows that, for any ring $R$, a   SES whose right-most term is free is split exact.
+\end{rem}
+
+
+
+
+\begin{ex} Here is an example of a non-split exact sequence: 
+Take $R$ to be any (commutative) integral domain and $r \in R$ any non-zero, non-unit element. Then, using that $R$ is a domain, the
+sequence
+$$
+0 \to R \xra{r} R \to R/r \to 0
+$$
+is exact (where the second map is the canonical surjection).
+But it cannot by split exact: If it were, then we would have an isomorphism $R \cong R \oplus R/r$ of modules
+and so in particular there would be an ideal $I$ of $R$ isomorphic as a module to $R/r$. But then  $r I = 0$ and since $R$ is a domain, 
+this could only happen if $I = 0$, which would mean $r$ is a unit.
+
+For example
+$$
+0 \to \Z \xra{2} \Z \to \Z/2 \to 0
+$$
+is an exact, but not split exact, sequence of $\Z$-modules.
+\end{ex}
+
+\begin{ex} Suppose $R = k$ is a field. Then every short exact sequence of $R$-modules 
+\[0 \to W\to V \to V/W \to 0\]
+splits.
+\end{ex}
+
+
+
+
+\ssec{Homomorphisms of $R$-modules}
+
+\sssec{Structure of $\Hom_R(M,N)$}
+
+In general, we write \Def{$\Hom_R(M,N)$} for the set $\Hom_{\Mod{R}}(M,N)$ of $R$-module morphisms between two left $R$-modules $M$ and $N$.
+
+It turns out that the set of homomorphisms between two $R$-modules has additional structure.
+
+\begin{prop}
+Let $R$ be a ring, and $M,N$ be two left $R$-modules.
+\begin{enumerate}
+\item $\Hom_R(M,N)$ is an abelian group by pointwise addition, i.e.,
+\[ (\alpha+\beta)(m) := \alpha(m) + \beta(m)  \qquad \alpha,\beta\in\Hom_R(M,N),\ m\in M.\]
+\item If $R$ is commutative, then $\Hom_R(M,N)$ is an $R$-module via the action
+\[ (r\alpha) (m) := r \alpha(m) = \alpha(rm) \qquad \alpha\in \Hom_R(M,N),\ r\in R, \ m\in M.\]
+\item More generally, 
+\begin{itemize}
+\item if $M$ is a $(R,S)$-bimodule, then $\Hom_R(M,N)$ is a left $S$-module by the action $(s \alpha)(m) = \alpha(ms)$;
+\item if $N$ is a $(R,T)$-bimodule, then $\Hom_R(M,N)$ is a right $T$-module by the action $(\alpha t)(m)=\alpha(m)t$;
+\item if $M$ is a $(R,S)$-bimodule and $N$ is a $(R,T)$-bimodule, then $\Hom_R(M,N)$ is a $(S,T)$-bimodule by the previous two actions.
+\end{itemize}
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+(1) is easy to check, and similar to what we checked with module endomorphisms.
+
+Let's consider (2): The first thing to note is that $r\alpha(m)=\alpha(rm)$ by linearity of $\alpha$. Let us check that the map $r\alpha$ defined this way is an $R$-module morphism:
+\[ (r\alpha)(m+m') = r \alpha(m+m') = r(\alpha(m) +\alpha(m'))=r\alpha(m) +r\alpha(m') = r\alpha(m) + r\alpha(m')\]
+\[ (r\alpha)(sm)= r \alpha(sm) = rs \alpha(m) = sr \alpha(m) = s (r\alpha(m));\]
+note that commutativity of $R$ is essential here.
+
+The distributive rules are straightforward, and $((rs) \alpha)(m) = rs\alpha(m) = (r(s\alpha))(m)$, so $(rs)\alpha=r(s\alpha)$.
+
+For (3), let's just focus on the first case. To see $s\alpha$ is $R$-linear, addition is similar to above, and
+\[ (s\alpha)(rm) = \alpha(rms) = r\alpha(ms) = r (s\alpha)(m).\]
+Let's check the associativity property for the action: given $s,s'\in S$, \[(s s')\alpha(m) = \alpha(m s s') = s' \alpha(m s) = (s(s' \alpha))(m).\]
+The other axioms are straightforward.
+\end{proof}
+
+
+ 
+
+The bonus module structures in case (3) are often useful, even for commutative rings. However, for many statements below we will just focus on cases (1) and (2) above for clarity.
+
+\begin{ex} Let $K$ be a field.
+Since $K$ is commutative, $\Hom_K(K,K[x])$ and $\Hom_K(K[x],K)$ are $K$-vector spaces.
+The polynomial ring $K[x]$ is a $(K,K[x])$-bimodule. This gives $\Hom_K(K,K[x])$ a $K[x]$-module structure by postmultiplication: e.g., if $\alpha$ is the $K$-linear map such that $\alpha(1)=f(x)$, and $g(x)\in K[x]$, then $g(x) \alpha$ is the map that sends $1$ to $f(x)g(x)$.
+Likewise, $\Hom_K(K[x],K)$ a $K[x]$-module structure by premultiplication: e.g., if $\alpha$ is the $K$-linear map such that $\alpha(x^i)=\gamma_i\in K$ , then $x \alpha$ is the map that sends $x^i$ to $\gamma_{i+1}$.
+\end{ex}
+
+
+
+\Sept{15}
+
+\sssec{Hom as functors}
+
+\begin{defn}[Covariant Hom] Let $R$ be a ring and $M$ be an $R$-module. There is a covariant functor \index{$\Hom_R(M,-)$}\index{covariant Hom functor}
+\[ \Hom_R(M,-) : \Mod{R} \to \Ab\]
+that maps each module $A$ to  $\Hom_R(M,A)$, and each morphism $A\xra{f} B$ to the homomorphism {\Def{$\Hom_{R}(M,f)$}  $=:$ \Def{$f_*$}} of ``postcomposition by $f$'':
+		$$\xymatrix@R=1mm{\Hom_{R}(M,A) \ar[r]^{f_*} & \Hom_{R}(M,B) \\g \ar@{|->}[r] & f\circ g
+		\\ M \xrightarrow{g}A & M \xrightarrow{g} A \xrightarrow{f} B.  }$$
+		
+If $R$ is commutative, then we consider $\Hom_R(M,-)$ as a functor from $ \Mod{R} \to \Mod{R}$ by the same rule.
+\end{defn}
+There are some things to check to verify that this is a functor.
+\begin{proof}
+We need to check that $f_*$ is a valid morphism in $\Ab$, or in $\Mod{R}$ in the commutative case.
+Given $g,h\in \Hom_{R}(A,B)$, we have \[f_*(g+h)(m)=f((g+h)(m))=f(g(m)+h(m))=f(g(m))+f(h(m)) = f_*(g)(m) + f_*(h)(m).\]
+If $R$ is commutative,
+\[ f_*(rg)(m) = f(g(rm)) = r f(g(m)) = (r f_*)(g)(m).\]
+
+We also need to see that these satisfy the functor axioms. We have $(1_A)_*(g) = 1_A \circ g = g$, so $(1_A)_*$ is the identity map on $\Hom_R(M,A)$. Given $A\xra{g}B\xra{f} C$, and $h\in \Hom_R(M,A)$, \[(fg)_* (h) = f\circ g \circ h = f \circ (g_*(h))= f^*(g^*(h)) = (f_* \circ g_*)(h).\qedhere\]
+\end{proof}
+
+\begin{rem}If $M$ is an $(R,S)$-bimodule, then consider $\Hom_R(M,-)$ as a functor from $ \Mod{R} \to \Mod{S}$ by the same rule.\end{rem}
+
+\begin{defn}[Contravariant Hom] Let $R$ be a ring and $M$ be an $R$-module. There is a contravariant functor \index{$\Hom_R(-,M)$}\index{covariant Hom functor}
+\[ \Hom_R(-,M) : \Mod{R} \to \Ab\]
+that maps each module $A$ to  $\Hom_R(A,M)$, and each morphism $A\xra{f} B$ to the homomorphism {\Def{$\Hom_{R}(f,M)$}  $=:$ \Def{$f^*$}} of ``precomposition by $f$'':
+		$$\xymatrix@R=1mm{\Hom_{R}(M,B) \ar[r]^{f_*} & \Hom_{R}(M,A) \\g \ar@{|->}[r] &  g\circ f
+		\\ B \xrightarrow{g}M & A \xrightarrow{f} B \xrightarrow{g} M.  }$$
+		
+	If $R$ is commutative, then we consider $\Hom_R(-,M)$ as a functor from $ \Mod{R} \to \Mod{R}$ by the same rule.
+\end{defn}
+There are some things to check to verify that this is a functor.
+\begin{proof}
+We need to check that $f^*$ is a valid morphism in $\Ab$, or in $\Mod{R}$ in the commutative case.
+Given $g,h\in \Hom_{R}(A,B)$, we have \[f^*(g+h)(m)=(g+h)(f(m)) = g(f(m)) + h(f(m)) = f^*(g)(m) + f^*(h)(m).\]
+If $R$ is commutative,
+\[ f^*(rg)(m) = rg(f(m)) = (r f^*(g))(m).\]
+
+We also need to see that these satisfy the functor axioms. We have $(1_A)^*(g) = g \circ 1_A = g$, so $(1_A)^*$ is the identity map on $\Hom_R(A,M)$. Given $A\xra{g}B\xra{f} C$, and $h\in \Hom_R(C,M)$, \[(fg)^* (h) =h\circ  f\circ g = f^*(h) \circ g = g^*(f^*(h)) = (g^* \circ f^*)(h).\qedhere\]
+\end{proof}
+\begin{rem}If $M$ is an $(R,S)$-bimodule, then consider $\Hom_R(M,-)$ as a functor from $ \Mod{R} \to \Mod{S^{\mathrm{op}}}$ by the same rule.
+\end{rem}
+
+\sssec{Examples of Hom}
+
+\begin{ex} Let $R$ be a ring. Then, by the universal property of free modules, since $\{1\}$ is a free basis for $R$ as an $R$-module, the map
+\[\xymatrix@R=.5em { \Hom_R(R,M) \ar[r]^-{\psi_M} &M \\
+\phi \ar@{|->}[r] &\phi(1) }\]
+is a bijection. Moreover, this is an isomorphism of abelian groups in general, and of $R$-modules in the commutative case:
+\[ \psi_M(\alpha+\beta) = (\alpha+\beta)(1) = \alpha(1) + \beta(1) = \psi_M(\alpha) + \psi_M(\beta)\]
+\[\psi_M(r\alpha) = (r\alpha)(1) = r\alpha(1) = r\psi_M(\alpha).\]
+Even better, in the commutative case, the collection of isomorphisms $\psi_M$ form a natural isomorphism $\psi: \Hom_R(R,-) \Rightarrow 1_{\Mod{R}}$. For this, we need to check that, given $\beta:M\to N$, the following diagram commutes:
+\[\xymatrix{ \Hom_R(R,M) \ar[r]^-{\beta_*} \ar[d]^-{\psi_M} & \Hom_R(R,N) \ar[d]^-{\psi_N}\\ M \ar[r]^-{\beta}  & N.}\]
+Along either path, we get $\alpha \mapsto \beta(\alpha(1))$, so this is indeed the case.
+\end{ex}
+
+
+
+\Sept{17}
+
+\begin{ex}
+Similarly, if $F=R^{\oplus \Lambda}$ is a free module, then $\Hom_R(R^{\oplus \Lambda},M) \cong M^{\oplus \Lambda}$, where $M^{\times \Lambda}= \prod_{\lambda\in \Lambda} M$ by the map that sends a morphism to its tuple of values on the standard basis: as abelian groups, and as $R$-modules in the commutative case. 
+
+We can interpret the right-hand side as the values of a functor: set $F(M) = M^{\times \Lambda}$, and for $f:M\to N$, set $F(f)$ to be the map given by $f$ on each coordinate. Interpreted like so, the isomorphisms again form a natural isomorphism.
+\end{ex}
+
+\begin{prop}
+Let $\{M_\lambda\}_{\lambda\in \Lambda}$ be a family of $R$-modules, and $N$ be an  $R$-module.
+There are isomorphisms of abelian groups
+\[\begin{aligned} \Hom_R(\bigoplus_{\lambda\in \Lambda} M_\lambda, N) &\cong \prod_{\lambda\in \Lambda} \Hom_R(M_\lambda,N)\\
+\Hom_R(N,\prod_{\lambda\in \Lambda} M_\lambda) &\cong \prod_{\lambda\in \Lambda} \Hom_R(N,M_\lambda)\end{aligned}\]
+Moreover, these are isomorphisms of $R$-modules if $R$ is commutative.
+\end{prop}
+\begin{proof}
+Since $\bigoplus_{\lambda\in \Lambda} M_\lambda$ is the coproduct of $\{M_\lambda\}_{\lambda\in \Lambda}$ in $\Mod{R}$, we have a bijection for every $R$-module $N$
+\[\xymatrix@R=.6em { \Hom_R(\bigoplus_{\lambda\in \Lambda} M_\lambda, N) \ar[r] & \prod_{\lambda\in \Lambda} \Hom_R(M_\lambda,N) \\
+\phi \ar@{|->}[r] &(\phi \circ \iota_\lambda).}\]
+We only have to observe that these maps preserve the abelian group and/or $R$-module structures.
+Similarly, since $\prod_{\lambda\in \Lambda} M_\lambda$ is the product of $\{M_\lambda\}_{\lambda\in \Lambda}$ in $\Mod{R}$, we have a bijection for every $R$-module $N$
+\[\xymatrix@R=.6em { \Hom_R(N,\prod_{\lambda\in \Lambda} M_\lambda) \ar[r] & \prod_{\lambda\in \Lambda} \Hom_R(N,M_\lambda) \\
+\phi \ar@{|->}[r] &(\pi_\lambda \circ \phi),}\]
+and one verifies the additivity / linearity of this map.
+\end{proof}
+
+
+\begin{ex} As an important special case of the previous example, if $R$ is commutative, and $R^{\oplus\Gamma}$ and $R^{\oplus\Lambda}$ are free modules, then every $R$-linear homomorphism $\alpha:R^{\oplus\Gamma} \to R^{\oplus\Lambda}$ is given by left multiplication by the (possibly infinite) $\Lambda \times \Gamma$ matrix where the $\gamma$ column is the $\Lambda$-tuple $(\alpha(e_\gamma))_\lambda$.
+\end{ex}
+
+
+\begin{exer} Show that when $R$ is not necessarily commutative, if we give $\Hom_R(R^{\oplus\Lambda},M)$ the $R$-module structure via the $(R,R)$-bimodule structure on $R^{\oplus\Lambda}$, the isomorphisms $\Hom_R(R^{\oplus\Lambda},M)\cong M^{\times \Lambda}$ are natural isomorphisms of $R$-modules.
+\end{exer}
+
+\begin{ex} Let $R$ be a commutative ring, and consider the module $R/I$ for some ideal $I$. For every module $M$, there is an isomorphism $\Hom_R(R/I,M) \cong \ann_M(I)$, where $\ann_M(I)$ is the set of elements $m\in M$ such that $Im=0$.
+
+Indeed, every $R$-module homomorphism from $R/I$ is determined by the image of $1$, so the map $\Hom_R(R/I,M) \to M$ of evaluation at 1 is injective. The image consists of the set of elements $m\in M$ for which the map $r\mapsto rm$ is well-defined; this is the collection of elements that satisfy $Im=0$.
+
+Again, we can think of the right hand side as a functor $F:\Mod{R}\to\Mod{R}$ where  on objects $F(M) = \ann_M(I)$, and on morphisms $M\xra{\alpha} N$ maps to the restriction of $\alpha$ to $\ann_M(I)$. This is a natural isomorphism again.  
+\end{ex}
+
+\begin{ex} For a field $K$, the functor $\Hom_K(-,K)$ is exactly the ``vector space dual'' functor $(-)^*$.
+\end{ex}
+
+%
+%\begin{ex}
+%Let $R$ be a ring, and $M$ a left $R$-module. Then $\Hom_R(R,M)$ is a left $R$-module as well: 
+%\begin{itemize}
+%\item when $R$ is commutative the action is by $(r \phi)(s) = \phi(rs) = r\phi(s)$
+%\item in general, the $R$-module structure comes from the right $R$-module structure on $R$, so we have to premultiply the input on the right: $(r\phi)(s) = \phi(sr)$, but in the commutative case, it's the same thing as the above.
+%\end{itemize}
+% There is an isomorphism
+%\[\xymatrix@R=.6em { \Hom_R(R,M) \ar[r]^-{\psi} &M \\
+%\phi \ar@{|->}[r] &\phi(1)\\
+%(r\mapsto rm) & \ar@{|->}[l] m }\]
+%This is injective, since $\phi$ is determined by the image of $1$, and surjective since the map $r \mapsto rm$ is $R$-linear for any $m\in M$. To see that $\psi$ is $R$-linear, we have $\psi(r\phi)=(r\phi)(1) = \phi(1\,r) = \phi(r) = r \phi(1) = r \psi(\phi)$.
+%\end{ex}
+
+
+\ssec{Exact functors and left exactness of Hom}
+
+\begin{defn} Let $R,S$ be rings. A covariant functor $F:\Mod{R} \to \Mod{S}$ is \DEF{additive} if the function
+\[\xymatrix@R=.5em{ \Hom_R(M,N) \ar[r] & \Hom_S(F(M),F(N)) \\ f \ar@{|->}[r] & F(f)}\]
+is a homomorphism of abelian groups. Likewise, a contravariant functor $G:\Mod{R} \to \Mod{S}$ is {additive} if the function
+\[\xymatrix@R=.5em{ \Hom_R(M,N) \ar[r] & \Hom_S(F(N),F(M)) \\ f \ar@{|->}[r] & F(f)}\]
+is a homomorphism of abelian groups.
+\end{defn}
+
+
+Additive functors preserve a number of basic properties, e.g., zero morphisms go to zero morphisms, and the zero module maps to the zero module (since it's characterized by the fact that its identity map is its zero map).
+
+\begin{exer} The covariant and contravariant Hom functors are additive functors.
+\end{exer}
+
+\begin{defn} Let $F:\Mod{R}\to\Mod{S}$ be an additive covariant functor.
+\begin{itemize}
+\item $F$ is \DEF{right exact}  if
+whenever
+$$
+M' \xra{i} M \xra{p} M'' \to 0
+$$
+is exact, then so is
+$$
+F(M') \xra{F(i)}  F(M) \xra{F(p)} F(M'') \to 0.
+$$
+ (Recall $F(0) = 0$ since $F$ is additive.)
+
+\item $F$ is \DEF{left exact} if 
+whenever
+$$
+0 \to M' \xra{i} M \xra{p} M'' 
+$$
+is exact, then so is
+$$
+0 \to F(M') \xra{F(i)}  F(M) \xra{F(p)} F(M'').
+$$
+
+\item $F$ is \DEF{exact} if it is both left and right exact.
+\end{itemize}
+\end{defn}
+
+\begin{rem}
+An exact functor takes any SES to a SES.
+\end{rem}
+
+\begin{defn} Let $G:\Mod{R}\to\Mod{S}$ be an additive contravariant functor.
+\begin{itemize}
+\item $G$ is \DEF{right exact}  if
+whenever
+$$
+0 \to M' \xra{i} M \xra{p} M''
+$$
+is exact, then so is
+$$
+G(M'') \xra{G(p)}  G(M) \xra{G(i)} G(M') \to 0.
+$$
+
+\item $G$ is \DEF{left exact} if 
+whenever
+$$
+M' \xra{i} M \xra{p} M'' \to 0
+$$
+is exact, then so is
+$$
+0 \to G(M'') \xra{G(p)}  G(M) \xra{G(i)} G(M').
+$$
+
+\item $G$ is \DEF{exact} if it is additive and both left and right exact.
+\end{itemize}
+\end{defn}
+
+\begin{exer} The definitions above all stay unchanged if for each condition we start with a short exact sequence. For example, a covariant additive functor $F$ is left exact if for every short exact sequence
+	$$\xymatrix{0 \ar[r] & A \ar[r]^-f & B \ar[r]^-g & C \ar[r] & 0}$$
+	of $R$-modules,
+	$$\xymatrix{0 \ar[r] & F(A) \ar[r]^-{F(f)} & F(B) \ar[r]^-{F(g)} & F(C)}$$
+	is exact.
+\end{exer}
+
+\begin{rem} If $F,G:\Mod{R} \to \Mod{S}$ are naturally isomorphic additive functors, then $F$ is exact if and only if $G$ is exact. Indeed, given a short exact sequence
+\[ 0 \to M' \xra{i} M \xra{p} M'' \to 0\]
+we obtain a commutative diagram
+\[\xymatrix{
+0 \ar[r] & F(M') \ar[r]^{F(i)} \ar[d]^-{\theta'} & F(M) \ar[r]^{F(p)} \ar[d]^-{\theta} & F(M'') \ar[r]\ar[d]^-{\theta''} & 0 \\
+0 \ar[r] & G(M') \ar[r]^{G(i)}  & G(M) \ar[r]^{G(p)}  & G(M'') \ar[r] & 0 }\]
+where $\theta',\theta,\theta''$ isomorphisms.
+Then if the top row is exact, $G(i)=\theta F(i) (\theta')^{-1}$ is injective, $G(p)=\theta''  F(p) \theta^{-1}$ is surjective, and \[x\in \ker G(p) = \ker(\theta''  F(p) \theta^{-1}) \iff \theta^{-1} (x) \in \ker F(p) \iff \theta^{-1} (x) \in \im F(i) \iff x\in \im(\theta F(i) (\theta')^{-1}) = \im G(i).\]
+
+Similarly for ``left exact'' or ``right exact''.
+\end{rem}
+
+
+\begin{thm} Let $M$ be an $R$-module.
+\begin{enumerate}
+\item The functor $\Hom_R(M,-)$ is left exact.
+\item The functor $\Hom_R(-,M)$ is left exact.
+\end{enumerate}
+\end{thm}
+%\begin{comment}
+
+\Sept{20}
+\begin{proof} 
+\begin{enumerate}
+\item Let \[ 0 \to A \xra{i} B \xra{p} C\]
+be  exact. We need to show that
+\[ 0 \to \Hom_R(M,A) \xra{i_*} \Hom_R(M,B) \xra{p_*} \Hom_R(M,C)\]
+is exact.
+\begin{itemize}
+\item $i_*$ is injective: Let $f\in \Hom_R(M,A)$ be nonzero, so $f(m)\neq 0$ for some $m\in M$. Then $i_*(f)(m) = i(f(m))\neq 0$ since $i$ is injective, so $i_*(f)\in \Hom_R(M,B)$ is nonzero.
+\item $\im(i_*)\subseteq \ker(p_*)$: Let $g\in \Hom_R(M,B)$ be in the image of $i_*$, so we can write $g=i_*(f)$ for some $f\in \Hom_R(M,A)$. We have $p_*(i_*(f))=p\circ i \circ f=0$.
+\item $\ker(p_*)\subseteq\im(i_*)$: Let $g\in \Hom_R(M,B)$ be in the kernel of $p_*$, so $p\circ g=0$. Then, for every $m\in M$, $g(m)\in \ker(p) = \im(i)$. As $i$ is injective, $i$ induces an isomorphism from $i$ to the image of $A$ in $B$, so there is an $R$-module homomorphism $q:\im(A) \to A$ such that $i \circ q=1_{\im(A)}$. Thus, we obtain an $R$-module map $f:= q\circ g :M\to A$ such that $i_*(f) = i \circ q \circ g = g$.
+\end{itemize}
+\item Let \[ A \xra{i} B \xra{p} C \to 0\]
+be  exact. We need to show that
+\[ 0 \to \Hom_R(C,M)\xra{p^*}  \Hom_R(B,M) \xra{i^*} \Hom_R(A,M)  \]
+is exact.
+\begin{itemize}
+\item $p^*$ is injective: Let $f\in \Hom_R(C,M)$ be nonzero, so $f(c)\neq 0$ for some $m\in M$. Then, since $p$ is surjective, there is some $b\in B$ such that $p(b)=c$, and hence $p^*(f)(b)=f(p(b))=f(c)\neq 0$, so $p^*(f)\neq 0$.
+
+\item $\im(p^*)\subseteq \ker(i^*)$: Let $g\in \Hom_R(B,M)$ be in the image of $p_*$, so we can write $g=p^*(f)$ for some $f\in \Hom_R(M,C)$. We have $i^*(p^*(f))=f \circ p \circ i=0$.
+
+\item $\ker(i^*)\subseteq\im(p^*)$: Let $g\in \Hom_R(B,M)$ be in the kernel of $i^*$, so $g\circ i=0$. Thus, as $g|_{\im(i)} = 0$, we can factor $g=\overline{g} \circ \pi$, where $\pi:B\to B/\im(i)=B/\ker(p)$ is the quotient map, and $\overline{g}:B/\im(i) \to M$. Note that, since $p$ is surjective, writing $p=\overline{p} \circ \pi$, the map $\overline{p}:B/\im(i) = B/\ker(p) \to C$ is an isomorphism, so there is a map $j:C\to B/\ker(p)$ such that $ j \circ \overline{p}$ is the identity on $B/\im(i)$, so $j\circ p = j\circ \overline{p} = \circ \pi = \pi$. Set $f=\overline{g} \circ j$. We then have $p^*(f)= \overline{g} \circ j \circ p = \overline{g} \circ \pi=g$. Thus $g\in \im(p^*)$.\qedhere\end{itemize}
+\end{enumerate}
+\end{proof}
+
+\begin{ex} Neither Hom functor is exact. For example, consider the short exact sequence
+\[ 0 \to \Z \xra{2} \Z \to \Z/2\Z \to 0.\]
+If we apply $\Hom_\Z(\Z/2\Z ,-)$ to this sequence, we get
+\[ 0 \to 0 \to 0 \to \Z/2\Z \to 0.\]
+This is exact up until $\Z/2\Z$ (which agrees with the left exactness), but not at $\Z/2\Z$.
+Likewise, apply $\Hom_\Z(-,\Z/2\Z)$ to get
+\[ 0 \to \Z/2\Z \xra{1} \Z/2\Z \xra{0} \Z/2\Z \to 0.\]
+This is again exact up to the last $\Z/2\Z$, but not there.
+\end{ex}
+
+We can use left exactness to compute various Hom modules. 
+
+\begin{ex} Let $R$ be commutative, and $M$ be a finitely presented $R$-module with presentation
+\[  R^m \xra{A\cdot} R^n \to M \to 0.\]
+Then $\Hom_R(M,R)$ sits in a left exact sequence
+\[ 0\to \Hom(M,R) \to \Hom_R(R^n,R) \xra{\Hom_R(A\cdot, R)} \Hom_R(R^m,R). \]
+We have $\Hom_R(R^n,R)$ is free with free basis given by the coordinate functions $\{e_1^*,\dots,e_n^*\}$; likewise for $\Hom_R(R^m,R)$ with basis $\{ \bar{e}_1^*,\dots,\bar{e}_m^*\}$ (we will write bars for basis elements in $R^m$). In these bases, to compute the $j$th column of the matrix,
+we have that $e_j^*$ maps to $e_j^* A$, and to compute $e_j^*A$ in terms of the given basis (to find the entry in the $i$th row), we observe $(e_j^*A)(\bar{e}_i)$ is $A_{ji}$, so the map $\Hom_R(A\cdot, R)$ is given by $A^T \cdot$.  We get a left exact sequence
+\[ 0\to \Hom(M,R) \to R^n \xra{A^T \cdot} R^m,\]
+so $\Hom(M,R)\cong \ker(A^T)$.
+\end{ex}
+
+\
+
+%\begin{comment}
+
+
+\ssec{Tensor products}
+
+\
+
+\Sept{22}
+
+\sssec{Definition of tensor product}
+
+\begin{defn} 
+For a ring $R$, a right $R$-module $M$, a left $R$-module $N$, and an abelian group $A$, a function
+$$
+b: M \times N \to A
+$$
+is called \DEF{$R$-balanced biadditive} if the following conditions hold:
+\begin{enumerate}
+\item $b(m+m', n) = b(m, n) + b(m', n)$ for all $m, m' \in M$, $n \in N$,
+\item $b(m,n +n') = b(m, n) + b(m, n')$ for all $m \in M$, $n, n' \in N$, and
+\item $b(mr, n) = b(m, rn)$ for all $m \in M$, $n, \in N$, and $r \in R$.
+\end{enumerate}
+
+Assume $R$ is commutative and $A$ is an $R$-module
+(not just an abelian group). Such a pairing $b$ is called
+  \DEF{$R$-bilinear} if we also have
+\begin{enumerate}
+  \item[(4)]
+    $b(mr, n) = b(m, rn) = rb(m,n) \text{ for all $m \in M$, $n, \in N$, and $r \in R$.}$
+\end{enumerate}
+\end{defn}
+
+Conditions (1) and (2) alone are the biadditive part, and condition (3) is the balancedness. Condition (4) says that the biadditive map $b$ is an $R$-linear function in either argument if we fix the other one.
+
+\begin{ex} 
+\begin{enumerate}
+\item If $R$ is any ring, the map $f:R\times R \to R, f(r,s)=rs$ is $R$-balanced biadditive, and bilinear if $R$ is commutative.
+%\item for an $R$-module $M$, $f:R^2\times M \to M^2, f((r,s),m)=(rm,sm)$
+\item For $R$ commutative, an ideal $I$, and a left module $M$, the map $f:(R/I)\times M\to M/IM, f(\ov{r},m)=\ov{rm}$ is $R$-bilinear.
+\item For $K$ a field, $f:K^n\times K^n \to K$ given by the usual dot product is $K$-bilinear. Recall that we can view $K^n$ as a right $M_n(K)$ module via $v \cdot A = A^T v$ and as a left $M_n(K)$ module via $A\cdot v = Av$. With these structures, $f$ is $M_n(K)$-balanced biadditive. The balanced part is the least obvious one:
+\[ f(v \cdot A,w) = (A^T v) \cdot w = v^T A w = v \cdot (Aw) = f(v, A\cdot w).\]
+\end{enumerate}
+\end{ex}
+
+We now define tensor products using a universal property.
+
+\begin{defn}
+\label{def:tensorprod}
+  Let $R$ be a (not necessarily commutative) ring, let $M$ be a right $R$-module, let $N$ be a left $R$-module. 
+
+An abelian group $M \otimes_R N$ together with an $R$-balanced biadditive map $h : M\times N \to M\otimes_R N$ is called a \DEF{tensor product} of $M$ and $N$ if it has the following universal property: for any abelian group $A$ and $R$-balanced biadditive map $b : M\times N \to A$, there exists a unique abelian group homomorphism $\alpha : M \otimes_R N\to A$ such that $b = \alpha \circ h$.
+
+\[
+\xymatrix{
+& M\otimes_R N  \ar@{-->}[dr]^{\exists ! \alpha}&\\
+ M\times N \ar[ur]^h \ar[rr]^b& & A
+}
+\]
+\end{defn}
+
+\begin{lem} 
+If $(X,h)$, $(Y,k)$ are two tensor products for $M$ and $N$, then there is a unique isomorphism of abelian groups $\alpha:X\to Y$ such that $k= \alpha\circ h$.
+\end{lem}
+\begin{proof}
+The following diagram is a rough guide for the argument:
+\[ \xymatrix{ & X \ar@{-->}[r]^{\alpha} & Y\ar@{-->}[r]^{\beta } & X . \\ M\times N \ar[ur]^-{h} \ar[urr]^-{k} \ar[urrr]_-{h} }\]
+Applying the universal property of $(X,h)$ with the $R$-balanced biadditive map $k$, we get a unique abelian group homomorphism $\alpha$ above that makes its triangle commute; in particular, the uniqueness statement is clear. Likewise, applying the universal property of $(Y,k)$ with $h$, we get an abelian group homomorphism $\beta$ that makes its triangle commute. Then, $\beta\circ\alpha$ is an abelian group homomorphism such that $(\beta\circ\alpha) \circ h = h$, and the identity map is another. By the uniqueness property of $(X,h)$, $\beta\circ \alpha$ is the identity. A similar argument shows that $\alpha \circ \beta$ is the identity too, so $\alpha$ is an isomorphism.
+\end{proof}
+
+\begin{thm}
+\label{thm:tensor}
+Let $R$ be a (not necessarily commutative) ring, let $M$ be a right $R$-module, let $N$ be a left $R$-module.  Then a tensor product $M\otimes_R N$ exists and is given by defining an abelian group $M \otimes_R N$ by generators and relations as follows:
+\index{$m\otimes n$}
+\begin{itemize}
+\item The generators are all expressions of the form $m \otimes n$ for $m \in M$ and $n \in N$. 
+\item The relations are
+\begin{enumerate}
+\item  $(m + m') \otimes n = m \otimes n + m' \otimes n$ for all $m, m' \in M$ and $n \in N$,
+\item $m \otimes (n + n') = m \otimes n + m \otimes n'$ for all $m \in M$ and $n, n' \in N$, and
+\item $(mr) \otimes n = m \otimes (rn)$ for all $m \in M$, $n\in N$, and $r \in R$.
+\end{enumerate}
+\end{itemize}
+Equivalently, $M \otimes_R N$ is the quotient 
+$$
+\frac{\bigoplus_{(m,n) \in M \times N} \Z \cdot (m \otimes n)}{(Y)}
+$$
+where 
+$$
+Y =  \{(m + m') \otimes  n) -m \otimes n - m' \otimes n \} \cup
+\{m \otimes  (n +n') - m \otimes n - m \otimes n'\} \cup
+\{(mr) \otimes  n  - m \otimes (rn)\} .
+$$
+Further we define $h: M \times N \to M \otimes_R N$ to be the function $h(m,n)=m \otimes n$. 
+
+Then the pair $(M \otimes_R N,h)$ defined above is the tensor product of $M$ and $N$.
+\end{thm}
+
+
+
+
+\begin{proof}
+It is immediate from the construction that $h$ is $R$-balanced biadditive. 
+Given a biadditive map  $b: M \times N \to A$, define $\tilde{b}: \bigoplus_{(m,n) \in M \times N} \Z  \cdot (m \otimes n) \to A$ to be the unique homomorphism of abelian groups  
+sending the basis element $m \otimes n$  to $b(m,n)$. Since $b$ is biadditive, we have
+$$
+\tilde{b}((m + m') \otimes  n -m \otimes n - m' \otimes n) =
+b(m + m',n) - b(m,n) - b(m',n) = 0,
+$$
+$$
+\tilde{b}(m \otimes  (n +n') - m \otimes n - m \otimes n)
+= b(m, n+n') - b(m,n) - b(m,n') = 0,
+$$
+and
+$$
+\tilde{b}((mr) \otimes  n  - m \otimes (rn)) = b(mr,n) - b(m,rn) = 0.
+$$
+Thus $\tilde{b}(<Y>) = 0$  and so it induces a homomorphism of abelian groups
+$$
+\alpha: M \otimes_R N \to A.
+$$
+It is evident from the construction that $\alpha \circ h = b$. Since the image of $B$ generates $M \otimes_A N$ as an abelian group, $\alpha$ is the unique
+homomorphism satisfying this equation.
+
+If $\beta$ is any abelian group homomorphism with $\beta\circ h=b$, we have $\beta(m\otimes n) = \beta(h(m,n))=b(m,n)=\alpha(m\otimes n)$. Since the elements of the form $m\otimes n$ generate $M\otimes_R N$ as an abelian group, we must have $\beta=\alpha$.
+\end{proof}
+
+Note that the map induced by a biadditive map $b$ sends $m\otimes n\mapsto b(m,n)$.
+
+\begin{rem} In this explicit construction, every element is a \emph{sum} of \DEF{simple tensors} (elements of the form $m\otimes n$) but in general, not every element is itself a simple tensor.
+\end{rem}
+
+\begin{rem} While the construction of tensor products may feel easier to work with at first, it is important to keep in mind that it is hard to tell when two combinations of simple tensors are equal. In general, when we want to define a map from a tensor product, it is better to use the universal property, since we don't have to worry about well-definedness. However, to define a map into a tensor product, using the concrete description is often easier.
+\end{rem}
+
+
+
+\begin{exer}
+In $M\otimes_RN$ we have $0_M\otimes n=0_{M\otimes_R N} =m\otimes 0_N$ for each $m\in M,n\in N$.
+\end{exer}
+
+
+\Sept{24}
+%\begin{comment}
+
+\begin{ex} I claim $\Z/m\Z \otimes_\Z \Z/n\Z \cong \Z/g\Z$ where $g = \mathrm{gcd}(m,n)$.
+\end{ex}
+
+
+\begin{proof}
+Define a function
+$$
+b: \Z/m\Z \times \Z/n\Z \to \Z/g\Z
+$$ 
+by $b(\overline{i}, \overline{j}) = \overline{ij}$. It is not hard to see that $b$ is well-defined (exercise!) 
+and $\Z$-balanced biadditive.
+By the universal property, it therefore induces a homomorphism of abelian groups
+$$
+\a: \Z/m\Z \otimes_\Z \Z/n\Z \to \Z/g\Z
+$$ 
+such that $\a(\overline{i} \otimes \overline{j}) = \overline{ij}$. 
+
+Now define a homomorphism $\phi: \Z \to \Z/m\Z \otimes_\Z \Z/n\Z$ by sending $1$ to $1 \otimes 1$. Notice that 
+$$
+\phi(g) = g \cdot (1 \otimes 1) = g \otimes 1 = 1 \otimes g.
+$$
+Recall that $g = i m + j n$ for some $i,j \in \Z$. So
+$$
+g \otimes 1 = i m \otimes 1 + 1 \otimes j n = 0 \otimes 1 + 1 \otimes 0 = 0 + 0 = 0.
+$$
+So, $\phi$ induces a homomorphism
+$$
+\beta = \overline{\phi}: \Z/g\Z \to \Z/m\Z \otimes_\Z \Z/n\Z
+$$
+with $\beta(\overline{i}) = \overline{i} \otimes 1 = 1 \otimes \overline{i}$.
+
+We have $\a(\beta(\overline{i})) = \a(\overline{i} \otimes 1) = \overline{i}$ so that $\a \circ \beta = \id$. 
+
+A typical element of  $\Z/m\Z \otimes \Z/n\Z$ has the form $\sum_t \overline{i_t} \otimes \overline{j_t}$. We have 
+$$
+\beta(\alpha(\sum_t \overline{i_t} \otimes \overline{j_t}))
+= \sum_t \overline{i_t} \cdot \overline{j_t} \otimes 1
+= \sum_t \overline{i_t}   \otimes  \overline{j_t}
+$$
+and so $\beta \circ \alpha = \id$. 
+\end{proof}
+
+
+\sssec{Module structure of tensor product}
+
+\begin{prop} \begin{enumerate}
+\item If $R$ is commutative, and $M$ and $N$ are $R$-modules, then
+\begin{enumerate}
+\item $M\otimes_R N$ is an $R$-module via the action
+\[ r \cdot (\sum_i m_i \otimes n_i) = \sum_i (r m_i) \otimes n_i = \sum_i m_i \otimes (r n_i).\]
+\item The natural map $h: M\times N \to M\otimes_R N$ is $R$-bilinear.
+\item For any $R$-module $A$ and $R$-bilinear map $b: M\times N \to A$, there is a unique $R$-module homomorphism $\alpha: M\otimes_R N \to A$ such that $b=\alpha\circ h$.
+\end{enumerate}
+\item If $M$ is an $(S,R)$-bimodule, and $N$ is an $R$-module, then consider $M\times N$ as an $S$-module by the action $s (m,n) = (sm,n)$. We have
+\begin{enumerate}
+\item $M\otimes_R N$ is an $S$-module via the action
+\[ s \cdot (\sum_i m_i \otimes n_i) = \sum_i (s m_i) \otimes n_i.\]
+\item The natural map $h: M\times N \to M\otimes_R N$ is $S$-linear.
+\item For any $S$-module $A$ and $S$-linear $R$-balanced biadditive map $b: M\times N \to A$, there is a unique $S$-module homomorphism $\alpha: M\otimes_R N \to A$ such that $b=\alpha\circ h$.
+\end{enumerate}
+\item If $M$ is an $R$-module, and $N$ is an $(R,S)$-bimodule, then consider $M\times N$ as a right $S$-module by the action $ (m,n)s = (m,ns)$. We have
+\begin{enumerate}
+\item $M\otimes_R N$ is a right $S$-module via the action
+\[ s \cdot (\sum_i m_i \otimes n_i) = \sum_i m_i \otimes (n_i s).\]
+\item The natural map $h: M\times N \to M\otimes_R N$ is right $S$-linear.
+\item For any right $S$-module $A$ and right $S$-linear $R$-balanced biadditive map $b: M\times N \to A$, there is a unique right $S$-module homomorphism $\alpha: M\otimes_R N \to A$ such that $b=\alpha\circ h$.
+\end{enumerate}
+\end{enumerate}
+\end{prop}
+\begin{proof} 
+Let's consider case (2).
+
+For (a), the first thing we need to show that the action of an element $s\in S$ on $M\otimes_R N$ is a well-defined function. To do this, consider the map $\mu_s: M\times N \to A$ given by the rule $\mu_s(m,n) = sm\otimes n$. We claim that this is $R$-balanced biadditive. Indeed,
+\[ \mu_s(m+m',n) = (s(m+m')) \otimes n = (sm+sm') \otimes n = sm \otimes n + sm' \otimes n = \mu_s(m,n) + \mu_s(m',n),\]
+similarly $\mu_s(m,n+n')=\mu_s(m,n)+\mu_s(m,n')$, and
+\[ \mu_s(mr,n) = smr\otimes n = sm \otimes rn = \mu_s(m,rn).\]
+Thus, we obtain a well-defined map $M\otimes_R N\to M\otimes_R N$ that sends $m\otimes n\mapsto sm \otimes n$, and the given formula follows. It is easy to check that this action satisfies the module axioms.
+
+For (b), we already know this map is additive. To see that it is $S$-linear, we compute
+\[ h(s(m,n))=h(sm,n) = sm\otimes n = s(m\otimes n) =s h(m,n).\]
+
+For (c), we know that since $f$ is $R$-balanced biadditive map there exists a unique additive map $\alpha$ such that $b=\alpha\circ h$. We just need to show that this map is $S$-linear:
+\[\begin{aligned}
+ &\alpha(s(\sum_i m_i\otimes n_i )) = \alpha(\sum_i sm_i \otimes n_i) = \sum_i \alpha( sm_i \otimes n_i) = \sum_i \alpha(h(sm_i , n_i))\\ &= \sum_i b(sm_i,n_i) = s(\sum_i b(m_i,n_i))=s(\sum_i \alpha(m_i\otimes n_i)) = s(\alpha(\sum_i m_i \otimes n_i)).
+ \end{aligned}\]
+ 
+ Case (3) is quite analogous. Case (1) is a special case of (2): we consider $M$ as an $(R,R)$-bimodule. The extra equality in (a) follows from  $rm \otimes n = mr \otimes n = m \otimes rn$. For (b) and (c), we note that $R$-bilinear is equivalent to $R$-balanced biadditive plus $R$-linear with respect to the module structure given in case (2).
+\end{proof}
+
+We can take tensor products of maps as well.
+
+
+\begin{lem}
+	Let $f: M \to M'$ be a homomorphism of right $R$-modules and  $g: N \to N'$ be a homomorphism of left $R$-modules. There exists a unique homomorphism of abelian groups \index{$f\otimes g$}$f \otimes g : M \otimes_R N \to M' \otimes_R N'$ such that
+	$$(f \otimes g)(m \otimes n) = f(m) \otimes g(n)$$
+	for all $m \in M$ and $n \in N$.\index{$f \otimes g$}\index{tensor product of maps}
+	
+	If $R$ is commutative, this map is $R$-linear.
+	
+	If $M$ and $M'$ are $(S,R)$-bimodules, and $f$ is also $S$-linear, then this map is an $S$-module homomorphism.
+\end{lem}
+
+\begin{proof}
+	The function 
+	$$\xymatrix@R=2mm{M \times N \ar[r] & M' \otimes_R N'\\ (m,n) \ar@{|->}[r] & f(m) \otimes g(n)}$$
+	is $R$-balanced biadditive (and bilinear when $R$ is commutative), so the universal property of tensor products gives the desired $R$-module homomorphism, which is unique. In the bimodule case, $S$-linearity follows from observing that the function displayed above is $S$-linear on the first argument.
+\end{proof}
+
+
+
+\begin{defn} Let $R$ be a ring and $M$ be a right $R$-module. There is an additive covariant functor \index{$M\otimes_R -$}
+\[M\otimes_R -: \Mod{R} \to \Ab\] that on objects sends $N$ to $M\otimes_R N$, and on morphisms sends $f:N\to N'$ to the map $1_M \otimes f$.
+
+If $R$ is commutative, we can consider $M\otimes_R -$ as a functor from $\Mod{R} \to \Mod{R}$.
+
+If $M$ is a $(S,R)$-bimodule, we can consider $M\otimes_R -$ as a functor from $\Mod{R} \to \Mod{S}$.
+\end{defn}
+\begin{proof}
+Well definedness of the maps comes from the lemma. Given $A\xra{g} B\xra{f} C$, we have \[(1_M \otimes (fg) )(m\otimes a) = m\otimes (fg)(a) = (1_M \otimes f)(1_M \otimes g)(m\otimes a),\] so $(1_M \otimes (fg)) - (1_M \otimes f)(1_M \otimes g)$ vanishes on a generating set for $M\otimes_R A$, and hence is zero. Similarly for the identity property.
+
+For additivity, we observe that \[(1_M \otimes (f+g))(m\otimes n) = m\otimes (f+g)(n) = m\otimes f(n) + m\otimes g(n)= ((1_M\otimes f)+(1_M \otimes g))(m\otimes n),\]
+and since simple tensors generate, we have $1_M \otimes (f+g) = 1_M \otimes f + 1_M \otimes g$.
+\end{proof}
+
+\begin{rem} We can equally well discuss $- \otimes_R N : \Mod{R^\op} \to \Ab$ (or other targets when we have more structure akin to above).
+\end{rem}
+
+\Sept{27}
+
+
+The key to unlocking more examples of tensor will be to prove that it is right exact.
+
+\begin{thm} Let $M$ be a right $R$-module. The functor $M \otimes_R - : \Mod{R} \to \Ab$ is right exact.
+\end{thm}
+\begin{proof} Let \[ A \xra{i} B \xra{p} C \to 0\]
+be  exact. We need to show that
+\[ M\otimes_R A \xra{1_M \otimes i}  M\otimes_R B \xra{1_M \otimes p} M\otimes_R C \to 0  \]
+is exact.
+\begin{itemize}
+\item $1_M \otimes p$ is surjective: Given $\sum_i m_i \otimes c_i \in M\otimes_R C$, we can find $b_i\in B$ such that $p(b_i)=c_i$ for all $i$; then $(1_M \otimes p)(\sum_i m_i \otimes b_i)=\sum_i m_i \otimes c_i$.
+
+\item $\im(1_M \otimes i)\subseteq \ker(1_M \otimes p)$: We have $(1_M \otimes p)(1_M \otimes i) = 1_M \otimes (pi) = 1_M \otimes 0 = 0$.
+
+\item $\ker(1_M \otimes p)\subseteq \im(1_M \otimes i)$: From above, the map $1_M\otimes p$ induces a surjection $\alpha:(M\otimes_R B)/\im(1_M \otimes i) \to M\otimes_R C$ that maps $m\otimes b \mapsto m\otimes p(b)$. We will construct an inverse for this map.
+
+Consider the map 
+\[\xymatrix@R=.5em{\mu: M\times C \ar[r] & (M\otimes_R B)/\im(1_M \otimes i)& \\
+(m,c) \ar@{|->}[r] & m\otimes b &\text{for some $b$ with $p(b)=c$.}}\]
+To see this is well-defined, note that if $p(b)=p(b')=c$, then $p(b-b')=0$, so $b-b'=i(a)$ for some $a\in A$, so 
+\[ (m\otimes b) - (m\otimes b') = m\otimes(b-b') =m\otimes i(a) \in \im(1_M\otimes i).\]
+We then check $\mu$ is $R$-balanced biadditive:
+\[ \mu(m+m',c)=(m+m')\otimes b = m\otimes b + m' \otimes b = \mu(m,c) + \mu(m',c).\]
+If $p(b)=c$ and $p(b')=c'$, then $p(b+b')=c+c'$, so
+\[ \mu(m,c+c')=m\otimes (b+b') = m\otimes b + m\otimes b' = \mu(m,c) + \mu(m,c'),\]
+and, if $p(b)=c$, then $p(rb)=rc$, so
+\[ \mu(mr, c) = mr\otimes b = m \otimes rb = \mu(m,rc).\]
+Thus, $\mu$ induces an additive homomorphism $\beta:M\otimes_R C \to(M\otimes_R B)/\im(1_M \otimes i) $. By construction, we have $\beta\circ \alpha (m\otimes b) = m\otimes b$ for all simple tensors, and thus this is the identity map since simple tensors generate.
+
+Since $\alpha$ has a left inverse, it follows that $\alpha$ is injective, so $\im(1_M \otimes i)$ is equal to the kernel of $1_M \otimes p$.\qedhere
+\end{itemize}
+\end{proof}
+
+
+\sssec{Examples of tensors}
+
+\begin{prop}
+Let $R$ be a ring. There is a natural isomorphism between $R\otimes_R -$ and the identity functor on $\Mod{R}$. In particular, for every $R$-module $M$, there is an $R$-module isomorphism $R\otimes_R M \cong M$ for every (left) $R$-module $M$.
+\end{prop}
+\begin{proof}Note that $R$ is an $(R,R)$-bimodule, so $R\otimes_R M$ is again an $R$-module.
+Now, 	$$\xymatrix@R=2mm{R \times M \ar[r] & M \\
+	(r,m) \ar@{|->}[r] & rm}$$
+	is biadditive (by distributive laws), $R$-balanced (by associativity module axiom), and $R$-linear, so it
+	induces a homomorphism of $R$-modules $\xymatrix{R \otimes_R M \ar[r]^-{\varphi_M} & M.}$ By construction, $\varphi_M$ is surjective. Moreover, the map 
+	$$\xymatrix@R=1mm{M \ar[r]^-{f_M} & R \otimes_R M \\ m \ar@{|->}[r] & 1 \otimes m}$$ 
+	is a homomorphism of $R$-modules, since 
+	\[f_M(a+b) = 1 \otimes (a+b) = 1 \otimes a + 1 \otimes b\]
+	\[ f_M(ra) = 1 \otimes (ra) =  r\otimes a = r(1 \otimes a) = rf_M(a).\]
+	For every $m \in M$, $\varphi_M f_M(m) = \varphi_M(1 \otimes m) = 1m = m$, and for every simple tensor, $f_M \varphi_M (r \otimes m) = f_M(rm) = 1 \otimes (rm) = r \otimes m$. This shows that $\varphi_M$ is an isomorphism.
+	
+	Finally, given any $f \in \Hom_R(M,N)$, since $f$ is $R$-linear we conclude that the diagram
+	$$\xymatrix@R=5mm@C=5mm{
+	 R \otimes_R M \ar[rrr]^-{\varphi_M} \ar[dd]_-{1 \otimes f} &&& M \ar[dd]^-{f} \\
+	&&&&\\
+	 R \otimes N \ar[rrr]_-{\varphi_N} &&& N
+	}$$
+	commutes, as $r\otimes m \mapsto rf(m)$ either way, so our isomorphism is natural.
+\end{proof}
+
+
+
+\begin{prop} Let  $R$ be a ring, $\{M_\lambda\}_{\lambda\in \Lambda}$ be  a family of right $R$-modules, $N$ be a left $R$-module. There is an isomorphism
+$$
+\phi: \left(\bigoplus_{\lambda\in \Lambda} M_\lambda \right) \otimes_R N \xra{\cong} \bigoplus_{\lambda\in \Lambda} \left(M_\lambda \otimes_R N\right)
+$$
+that sends $(m_i)_{i \in I} \otimes n$ to $(m_i \otimes n)_{i \in I}$.
+This is an isomorphism of abelian groups in general, of $R$-modules in the commutative case, of $S$-modules if each $M_\lambda$ is an $(S,R)$-bimodule, and of right $S$-modules if $N$ is an $(R,S)$-bimodule.
+\end{prop}
+
+
+\begin{proof} Define 
+$$
+b: \left(\bigoplus_{\lambda\in\Lambda} M\right) \times N\to \bigoplus_{\lambda\in\Lambda}  \left(M_\lambda \otimes_R N\right)
+$$
+by 
+$$
+b((m_\lambda) , n) = (m_\lambda \otimes n).
+$$
+The map $b$ is $R$-balanced biadditive in general, and linear with respect to the specified action in each of the other cases. Thus, it induces a morphism $\phi$ of the specified type.
+
+To show $\phi$  is an isomorphism, we construct an inverse. 
+For each $i$ we define a pairing
+$$
+b_\lambda: M_\lambda \times N \to \left(\bigoplus_{\lambda\in\Lambda} M_\lambda \right) \otimes N 
+$$
+by $b_\lambda(x, n) = \iota_\lambda(x) \otimes n$, where $\iota_\lambda: M_\lambda \to \left( \bigoplus_{\lambda\in\Lambda} M_\lambda \right)$ is the canonical inclusion map.
+Then $b_\lambda$ is $R$-balanced biadditive in general, and linear with respect to the specified action in each of the other cases and hence induces a morphism
+$\psi_i:  M_\lambda \otimes_R N \to \left(\bigoplus_{\lambda \in \Lambda} M_\lambda \right) \otimes N$.
+
+By the universal mapping property for coproducts the maps $\psi_\lambda, \lambda\in \Lambda$ 
+determine a morphism 
+$$
+\psi:  \bigoplus_{\lambda\in\Lambda} (M_\lambda \otimes_R N) \to \left(\bigoplus_{\lambda \in \Lambda} M_\lambda \right) \otimes N.
+$$
+
+It is easy to see that both $\psi \circ \phi$ and $\phi \circ \psi$ are the identity maps by observing that they act as the identity on simple tensors.
+\end{proof}
+
+\begin{rem} The same property holds on the right side of the tensor.
+\end{rem}
+
+\begin{ex} If $F=R^{\oplus \Lambda}$ is a free module, and $M$ is any $R$-module, then $R^{\oplus \Lambda} \otimes_R M \cong M^{\oplus \Lambda}$, and this isomorphism is natural in $M$.
+\end{ex}
+
+\begin{ex} As a special case, $R^{\oplus \Gamma} \otimes_R R^{\oplus \Lambda}$ is a free module on the basis $\{e_\gamma \otimes e_\lambda \ | \ (\gamma,\lambda)\in \Gamma\times\Lambda\}$. 
+
+Even more concretely, if $K$ is a field, $K^m \otimes_K K^n \cong K^{m\times n}$ is isomorphic to the collection of $m\times n$ matrices, by the isomorphism that takes $e_i\otimes e_j$ to the matrix that has a $1$ in the $i,j$ entry and zeroes elsewhere. This morphism then sends $(a_1,\dots,a_m)\otimes (b_1,\dots,b_n)$ to $[a_i b_j]$, the outer product of these matrices. Observe that the simple tensors correspond exactly to the matrices of rank at most one.
+\end{ex}
+
+
+\begin{rem}
+Let $R$ be a ring, $M$ be a right $R$-module, and $N$ be a left $R$-module. We can compute $M\otimes_R N$ by taking a presentation of $M$
+\[ R^{\oplus \Gamma} \xra {\phi} R^{\oplus \Lambda} \to M \to 0\]
+and tensoring with $N$ to get
+\[ N^{\oplus \Gamma} \xra{} N^{\oplus \Lambda} \to M \otimes_R N \to 0,\]
+so $M\otimes_R N$ is isomorphic to the cokernel of the map $N^{\oplus \Gamma} \to N^{\oplus \Lambda}$ induced by $\phi$. We can also compute $M\otimes_R N$ by taking a presentation of $M$
+\[ R^{\oplus \Xi} \xra {\psi} R^{\oplus \Omega} \to N \to 0\]
+and tensoring with $M$ to get
+\[ M^{\oplus \Xi} \xra{} M^{\oplus \Omega} \to M \otimes_R N \to 0,\]
+so $M\otimes_R N$ is isomorphic to the cokernel of the map $M^{\oplus \Gamma} \to M^{\oplus \Lambda}$ induced by $\psi$. 
+\end{rem}
+
+\begin{ex}
+Let $R$ be a commutative ring, $I$ an ideal, and $M$ a module. There is an isomorphism
+$R/I \otimes_R M \cong M/IM$. Indeed, if $I=(\{f_\gamma\})$, then we have a presentation
+\[ R^{\oplus \Gamma} \xra{\cdot [ \{f_\gamma\} ] } R \to R/I \to 0,\]
+so
+\[ M^{\oplus \Gamma} \xra{\cdot [ \{f_\gamma\} ] } M \to R/I \otimes_R M \to 0\]
+is exact. The image of the first map is just $IM$, so we obtain the isomorphism.
+\end{ex}
+
+\Sept{29}
+<<<<<<< HEAD
+
+Tensor is not exact in general.
+
+\begin{ex} Consider the short exact sequence 
+\[ 0 \to \Z \xra{2} \Z \to \Z/2\Z \to 0\] and apply $-\otimes_R \Z/2\Z$. We obtain the complex
+=======
+
+Tensor is not exact in general.
+
+\begin{ex} Consider the short exact sequence 
+\[ 0 \to \Z \xra{2} \Z \to \Z/2\Z \to 0\] and apply $\otimes_R \Z/2\Z$. We obtain the complex
+>>>>>>> b7974dba4e11d8aa520731630cbab30071e69b03
+\[ 0 \to \Z/2\Z \xra{0} \Z/2\Z \xra{1} \Z/2\Z \to 0,\]
+which is exact at the last two $\Z/2\Z$'s but not at the first one.
+\end{ex}
+
+The following properties are also useful properties for computing tensors.
+
+\begin{exer} Let $R$ be commutative and $M$ and $N$ be $R$-modules. There is an isomorphism $M\otimes_R N \cong N \otimes_R M$.
+\end{exer}
+
+\begin{exer} Let $R$ and $S$ be rings. Let $L$ be a right $R$-modules, $M$ be an $(R,S)$-bimodule, and $N$ be an $S$-module. Then $(L\otimes_R M) \otimes_S N \cong L \otimes_R (M\otimes_S N)$.
+\end{exer}
+
+An important case of the tensor functor is tensoring with a ring.
+
+\begin{defn}
+Let $\phi: R \to S$ be a ring homomorphism. The functor
+\[ S \times_R - : \Mod{R} \to \Mod{S}\]
+is called the functor of \DEF{extension of scalars} from $R$ to $S$.
+\end{defn}
+
+Observe that $S$ is an $(S,R)$-bimodule, so this functor does indeed return $S$-modules. By the discussion above, extension of scalars turns an $R$-module into the $S$-module with the same presentation.
+
+
+\sssec{Hom tensor adjointess}
+
+The Hom and tensor functors are closely related.
+
+\begin{thm} Let $R,S$ be rings, and $A$ be an $(R,S)$-bimodule, $B$ be an $S$-module, and $C$ be and $R$-module. There is an isomorphism
+<<<<<<< HEAD
+\[ \Hom_R(A\otimes_S B, C) \cong \Hom_S(B,\Hom_R(A,C)).\]
+=======
+\[ \Hom_R(A\otimes_S B, C) \cong \Hom_S(B,\Hom_R(A,C).\]
+>>>>>>> b7974dba4e11d8aa520731630cbab30071e69b03
+Moreover, these isomorphisms are natural in each argument.
+\end{thm}
+\begin{proof}
+Take 
+\[\eta:\Hom_R(A\otimes_S B, C) \to \Hom_S(B,\Hom_R(A,C)) \]
+by the rule $\eta(\phi)(b)(a) = \phi(a\otimes b)$. We check
+
+The map $\eta(\phi)(b)$ that sends $a\mapsto \phi(a\otimes b)$ for fixed $b$ is $R$-linear: addition is fine and \[\eta(\phi)(b)(ra)=\phi(ra \otimes b) = \phi(r(a\otimes b))=r\phi(a \otimes b) = r \eta(\phi)(b)(a). \]
+
+The map $\eta(\phi)$ that sends $b \mapsto \phi(-\otimes b)$ is $S$-linear: addition is fine and
+\[ \eta(\phi)(sb)(a)= \phi(a \otimes sb) = \phi(as \otimes b) = (s\eta(\phi)(b))(a).\]
+
+Now take
+\[ \mu: \Hom_S(B,\Hom_R(A,C)) \to \Hom_R(A\otimes_S B, C) \]
+by the rule $\mu(\psi)(a\otimes b) = \psi(b)(a)$.
+We need to check that $\mu(\psi)$ is well-defined and $R$-linear: to do this we check that the map $A\times B \to C$ given by $(a,b)\mapsto \psi(b)(a)$ is $S$-balanced biadditive and $R$-linear on the left factor (omitted). 
+
+We then see that $\mu$ and $\eta$ are mutually inverse: 
+\[(\mu\circ\eta)(\phi)(a\otimes b) = \eta(\phi)(b)(a) = \phi(a\otimes b)\]
+\[ (\eta\circ \mu)(\psi)(b)(a) = \mu(\psi)(a\otimes b) = \psi(b)(a).\]
+
+What do the naturality claims mean? First, this is a natural isomorphism as a functor of $A$:
+\[ \Hom_R( - \otimes_S B, C) \stackrel{\cong}{\implies} \Hom_S( B,\Hom_R(-,C)),\]
+and likewise for $B$ and $C$. We won't write these out, but they are straghtforward.
+\end{proof}
+
+Hom-tensor adjunction has a nice consequence in terms of extension of scalars.
+
+\begin{defn} Let $\phi:R\to S$. There is a functor\index{$\mathrm{Res}_\phi$}
+\[ \mathrm{Res}_{\phi}: \Mod{S} \to \Mod{R}\]
+called the functor of \DEF{restriction of scalars} that maps an $S$-module $M$ to the $R$-module that is the same abelian group as $M$ with action $r \cdot m = \phi(r) m$, and is the identity mapping on morphisms.
+\end{defn}
+
+When $\phi$ is injective, this restriction is literally just restricting the action. Evidently, this functor is exact, as it does nothing on the level of abelian groups, and exactness can be characterized there.
+
+\begin{prop} Let $\phi:R\to S$ be a ring homomorphism. Let $M$ be an $R$-module and $N$ be an $S$-module. There is an isomorphism
+\[ \Hom_R(M,\mathrm{Res}_\phi(N)) \cong \Hom_S(S\otimes_R M , N).\]
+These isomorphisms are natural in $M$ and in $N$.
+\end{prop}
+\begin{proof}
+Consider $S$ as an $(S,R)$-bimodule, where the right action is through $\phi$. With this structure, $\Hom_S(S,N) \cong \mathrm{Res}_\phi(N)$. Thus, this follows from Hom-tensor adjunction.
+\end{proof}
+
+<<<<<<< HEAD
+\begin{comment}
+
+\sssec{Multilinear maps}
+
+\begin{defn}
+Let $R$ be a commutative ring, and $M_1,\dots,M_n,N$ be $R$-modules. We say that a map $\psi: M_1 \times \cdots \times M_n \to N$ is \DEF{multilinear} or \DEF{$R$-multilinear} if it is  $R$-linear in each argument: i.e., for each $i$,
+\[ \psi(m_1,\dots,r m_i + m'_i,\dots,m_n) = r \psi(m_1,\dots,m_i,\dots,m_n) + \psi(m_1,\dots,m'_i,\dots,m_n).\]
+=======
+\sssec{Multilinear maps}
+
+\begin{defn}
+Let $R$ be a commutative ring, and $M_1,\dots,M_n,N$ be $R$-modules. We say that a map $\psi: M_1 \times \cdots \times M_n \to N$ is \DEF{multilinear} or \DEF{$R$-multilinear} if it is  $R$-linear in each argument: i.e., for each $i$,
+\[ \psi(m_1,\dots,r m_i + m'_i,\dots,m_n) = r \psi(m_1,\dots,m_i,\dots,m_n) + \psi(m_1,\dots,m'_i,\dots,m_n).\]
+\end{defn}
+
+Note that when $n=2$, this is just the notion of $R$-bilinear. 
+
+\begin{prop} There is a multilinear map
+\[ h: M_1 \times \cdots \times M_n \to M_1 \otimes_R \cdots  \otimes_R M_n \] that satisfies the following universal property: for any multilinear map $\psi: M_1 \times \cdots \times M_n \to N$, there is an $R$-linear map $\alpha: M_1 \otimes_R \cdots  \otimes_R M_n \to N$ such that $\psi = \alpha\circ h$.
+\end{prop}
+
+\begin{proof}
+First, we note that by associativity of tensor, the module $M_1 \otimes_R \cdots  \otimes_R M_n$ makes sense without parentheses. For the map $h$, we take $h(m_1,\dots,m_n) = m_1\otimes \cdots \otimes m_n$. Then, if such a map $\alpha$ exists, we must have $\alpha(m_1\otimes\cdots\otimes m_n)= \psi(m_1,\dots,m_n)$; since simple tensors generate, $\alpha$ is unique if it exists. For existence, we can proceed by induction on $n$. For any fixed $m_n\in M_n$, the map $\psi$ is a multilinear map on the first $n-1$ arguments, so by the inductive hypothesis, we obtain an $R$-linear map $M_1 \otimes_R \cdots  \otimes_R M_{n-1} \to N$ that sends $m_1\otimes \dots \otimes m_{n-1} \mapsto \psi(m_1,\dots,m_n)$. Since we have such a map for each $m_n$, we get a map $M_1 \otimes_R \cdots  \otimes_R M_{n-1} \times M_n \to N$ that we can check to be bilinear, and this induces the desired map.
+\end{proof}
+
+\begin{defn} Let $M$ and $N$ be $R$-modules.
+\begin{enumerate}
+\item A multilinear map $\psi: M^n \to R$ is \DEF{symmetric} if permuting any two entries does not affect the value of $\psi$.
+\item A multilinear map 
+$\psi: M^n \to R$ is \DEF{skew-symmetric} if permuting any two entries negates the corresponding value of $\psi$.
+\end{enumerate}
+\end{defn}
+
+\begin{defn} Let $R$ be a commutative ring, and $M$ be an $R$-module. 
+\begin{enumerate}
+\item
+The $n$th \DEF{symmetric power} of $M$ is the $R$-module $\mathrm{Sym}^n(M) = M^{\otimes n} / (Y)$, where $Y$ is the submodule generated by differences of simple tensors that are $1$ in all but two entries and the two nontrivial entries are switched. We often just write $m_1 m_2 \cdots m_n$ for the class of $m_1\otimes m_2 \otimes\cdots m_n$.
+\item The $n$th \DEF{exterior power} of $M$ is the $R$-module $\bigwedge^n(R) = M^{\otimes n} / (Z)$, where $Y$ is the submodule generated by sums of simple tensors that are $1$ in all but two entries and the two nontrivial entries are switched. We often just write $m_1 \wedge m_2 \wedge \cdots \wedge m_n$ for the class of $m_1\otimes m_2 \otimes\cdots m_n$.
+\end{enumerate}
+>>>>>>> b7974dba4e11d8aa520731630cbab30071e69b03
+\end{defn}
+
+Note that when $n=2$, this is just the notion of $R$-bilinear. 
+
+<<<<<<< HEAD
+\begin{prop} There is a multilinear map
+\[ h: M_1 \times \cdots \times M_n \to M_1 \otimes_R \cdots  \otimes_R M_n \] that satisfies the following universal property: for any multilinear map $\psi: M_1 \times \cdots \times M_n \to N$, there is an $R$-linear map $\alpha: M_1 \otimes_R \cdots  \otimes_R M_n \to N$ such that $\psi = \alpha\circ h$.
+\end{prop}
+
+\begin{proof}
+First, we note that by associativity of tensor, the module $M_1 \otimes_R \cdots  \otimes_R M_n$ makes sense without parentheses. For the map $h$, we take $h(m_1,\dots,m_n) = m_1\otimes \cdots \otimes m_n$. Then, if such a map $\alpha$ exists, we must have $\alpha(m_1\otimes\cdots\otimes m_n)= \psi(m_1,\dots,m_n)$; since simple tensors generate, $\alpha$ is unique if it exists. For existence, we can proceed by induction on $n$. For any fixed $m_n\in M_n$, the map $\psi$ is a multilinear map on the first $n-1$ arguments, so by the inductive hypothesis, we obtain an $R$-linear map $M_1 \otimes_R \cdots  \otimes_R M_{n-1} \to N$ that sends $m_1\otimes \dots \otimes m_{n-1} \mapsto \psi(m_1,\dots,m_n)$. Since we have such a map for each $m_n$, we get a map $M_1 \otimes_R \cdots  \otimes_R M_{n-1} \times M_n \to N$ that we can check to be bilinear, and this induces the desired map.
+\end{proof}
+
+\begin{defn} Let $M$ and $N$ be $R$-modules.
+\begin{enumerate}
+\item A multilinear map $\psi: M^n \to R$ is \DEF{symmetric} if permuting any two entries does not affect the value of $\psi$.
+\item A multilinear map 
+$\psi: M^n \to R$ is \DEF{skew-symmetric} if permuting any two entries negates the corresponding value of $\psi$.
+\end{enumerate}
+\end{defn}
+
+\begin{defn} Let $R$ be a commutative ring, and $M$ be an $R$-module. 
+\begin{enumerate}
+\item
+The $n$th \DEF{symmetric power} of $M$ is the $R$-module $\mathrm{Sym}^n(M) = M^{\otimes n} / (Y)$, where $Y$ is the submodule generated by differences of simple tensors that are $1$ in all but two entries and the two nontrivial entries are switched. We often just write $m_1 m_2 \cdots m_n$ for the class of $m_1\otimes m_2 \otimes\cdots m_n$.
+\item The $n$th \DEF{exterior power} of $M$ is the $R$-module $\bigwedge^n(R) = M^{\otimes n} / (Z)$, where $Y$ is the submodule generated by sums of simple tensors that are $1$ in all but two entries and the two nontrivial entries are switched. We often just write $m_1 \wedge m_2 \wedge \cdots \wedge m_n$ for the class of $m_1\otimes m_2 \otimes\cdots m_n$.
+\end{enumerate}
+\end{defn}
+
+
+For example, \[\mathrm{Sym}^2(M) = M\otimes_R M / \langle \{m\otimes n - n\otimes m \ | \ m,n\in M\}\rangle\] and \[\bigwedge^2(M) = M\otimes_R M / \langle \{m\otimes n + n\otimes m \ | \ m,n\in M\}\rangle.\]
+
+\begin{thm} Let $M$ be an $R$-module.
+\begin{enumerate}
+\item
+ There is a symmetric multilinear map $h:M^{\times n} \to \mathrm{Sym}^n(M)$ such that for every symmetric multilinear map $\psi: M^{\times n} \to N$, there is a unique $R$-module homomorphism $\alpha:\mathrm{Sym}^n(M) \to N$ such that $\psi=\alpha\circ h$.
+ \item
+ There is a skew-symmetric alternating multilinear map $h:M^{\times n} \to \bigwedge^n(M)$ such that for every skew-symmetric multilinear map $\psi: M^{\times n} \to N$, there is a unique $R$-module homomorphism ${\alpha:\bigwedge^n(M) \to N}$ such that $\psi=\alpha\circ h$.
+ \end{enumerate}
+ \end{thm}
+\begin{proof}
+\begin{enumerate}
+\item By construction, there is a map $h$ that comes from the map to the tensor product followed by the quotient map. It is symmetric and multilinear by construction. By the universal property for tensor, there is a map from $M^{\otimes n} \to N$; since it is symmetric, $Y$ maps to $0$, so it factors through $\mathrm{Sym}^n(M)$.
+\item Similar.\qedhere
+\end{enumerate}
+\end{proof}
+
+We can compute symmetric and exterior powers of free modules concretely.
+
+\begin{prop} Let $F= R^{\oplus n}$ be a free module with basis $\{e_1,\dots,e_t\}$.
+\begin{enumerate}
+\item $\mathrm{Sym}^t(F)$ is a free $R$-module with basis $\{ e_1^{a_1} \cdots e_n^{a_n} \ | \ a_1+\cdots+a_n=t\}$.
+\item $\bigwedge ^n F$ is a free $R$-module with basis $\{ e_{i_1} \wedge e_{i_2} \wedge\cdots \wedge e_{i_t} \ | \ 1\leq i_1 < i_2 <\cdots < i_t \leq n\}$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+\begin{enumerate}
+\item We note first that any simple tensor in $M^{\otimes n}$ is an $R$-linear combination of simple tensors where each entry is a basis vector. In $\mathrm{Sym}^t(F)$ in the class of any such simple tensor, there is one where all the $e_1$'s come before all the $e_2$'s, etc., so the displayed set is in fact a generating set. This gives a surjection from the free module to the symmetric power. We can use the universal property to obtain a left inverse, and see that this is an isomorphism.
+\item Similar.
+\end{enumerate}
+\end{proof}
+
+
+
+=======
+For example, \[\mathrm{Sym}^2(M) = M\otimes_R M / \langle \{m\otimes n - n\otimes m \ | \ m,n\in M\}\rangle\] and \[\bigwedge^2(M) = M\otimes_R M / \langle \{m\otimes n + n\otimes m \ | \ m,n\in M\}\rangle.\]
+
+\begin{thm} Let $M$ be an $R$-module.
+\begin{enumerate}
+\item
+ There is a symmetric multilinear map $h:M^{\times n} \to \mathrm{Sym}^n(M)$ such that for every symmetric multilinear map $\psi: M^{\times n} \to N$, there is a unique $R$-module homomorphism $\alpha:\mathrm{Sym}^n(M) \to N$ such that $\psi=\alpha\circ h$.
+ \item
+ There is a skew-symmetric alternating multilinear map $h:M^{\times n} \to \bigwedge^n(M)$ such that for every skew-symmetric multilinear map $\psi: M^{\times n} \to N$, there is a unique $R$-module homomorphism ${\alpha:\bigwedge^n(M) \to N}$ such that $\psi=\alpha\circ h$.
+ \end{enumerate}
+ \end{thm}
+\begin{proof}
+\begin{enumerate}
+\item By construction, there is a map $h$ that comes from the map to the tensor product followed by the quotient map. It is symmetric and multilinear by construction. By the universal property for tensor, there is a map from $M^{\otimes n} \to N$; since it is symmetric, $Y$ maps to $0$, so it factors through $\mathrm{Sym}^n(M)$.
+\item Similar.\qedhere
+\end{enumerate}
+\end{proof}
+
+We can compute symmetric and exterior powers of free modules concretely.
+
+\begin{prop} Let $F= R^{\oplus n}$ be a free module with basis $\{e_1,\dots,e_t\}$.
+\begin{enumerate}
+\item $\mathrm{Sym}^t(F)$ is a free $R$-module with basis $\{ e_1^{a_1} \cdots e_n^{a_n} \ | \ a_1+\cdots+a_n=t\}$.
+\item $\bigwedge ^n F$ is a free $R$-module with basis $\{ e_{i_1} \wedge e_{i_2} \wedge\cdots \wedge e_{i_t} \ | \ 1\leq i_1 < i_2 <\cdots < i_t \leq n\}$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+\begin{enumerate}
+\item We note first that any simple tensor in $M^{\otimes n}$ is an $R$-linear combination of simple tensors where each entry is a basis vector. In $\mathrm{Sym}^t(F)$ in the class of any such simple tensor, there is one where all the $e_1$'s come before all the $e_2$'s, etc., so the displayed set is in fact a generating set. This gives a surjection from the free module to the symmetric power. We can use the universal property to obtain a left inverse, and see that this is an isomorphism.
+\item Similar.
+\end{enumerate}
+\end{proof}
+
+
+
+>>>>>>> b7974dba4e11d8aa520731630cbab30071e69b03
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+  
+ 
+
+
