@@ -1985,8 +1985,41 @@ and since simple tensors generate, we have $1_M \otimes (f+g) = 1_M \otimes f + 
 \begin{rem} We can equally well discuss $- \otimes_R N : \Mod{R^\op} \to \Ab$ (or other targets when we have more structure akin to above).
 \end{rem}
 
+\Sept{27}
 
-\begin{comment}
+
+The key to unlocking more examples of tensor will be to prove that it is right exact.
+
+\begin{thm} Let $M$ be a right $R$-module. The functor $M \otimes_R - : \Mod{R} \to \Ab$ is right exact.
+\end{thm}
+\begin{proof} Let \[ A \xra{i} B \xra{p} C \to 0\]
+be  exact. We need to show that
+\[ M\otimes_R A \xra{1_M \otimes i}  M\otimes_R B \xra{1_M \otimes p} M\otimes_R C \to 0  \]
+is exact.
+\begin{itemize}
+\item $1_M \otimes p$ is surjective: Given $\sum_i m_i \otimes c_i \in M\otimes_R C$, we can find $b_i\in B$ such that $p(b_i)=c_i$ for all $i$; then $(1_M \otimes p)(\sum_i m_i \otimes b_i)=\sum_i m_i \otimes c_i$.
+
+\item $\im(1_M \otimes i)\subseteq \ker(1_M \otimes p)$: We have $(1_M \otimes p)(1_M \otimes i) = 1_M \otimes (pi) = 1_M \otimes 0 = 0$.
+
+\item $\ker(1_M \otimes p)\subseteq \im(1_M \otimes i)$: From above, the map $1_M\otimes p$ induces a surjection $\alpha:(M\otimes_R B)/\im(1_M \otimes i) \to M\otimes_R C$ that maps $m\otimes b \mapsto m\otimes p(b)$. We will construct an inverse for this map.
+
+Consider the map 
+\[\xymatrix@R=.5em{\mu: M\times C \ar[r] & (M\otimes_R B)/\im(1_M \otimes i)& \\
+(m,c) \ar@{|->}[r] & m\otimes b &\text{for some $b$ with $p(b)=c$.}}\]
+To see this is well-defined, note that if $p(b)=p(b')=c$, then $p(b-b')=0$, so $b-b'=i(a)$ for some $a\in A$, so 
+\[ (m\otimes b) - (m\otimes b') = m\otimes(b-b') =m\otimes i(a) \in \im(1_M\otimes i).\]
+We then check $\mu$ is $R$-balanced biadditive:
+\[ \mu(m+m',c)=(m+m')\otimes b = m\otimes b + m' \otimes b = \mu(m,c) + \mu(m',c).\]
+If $p(b)=c$ and $p(b')=c'$, then $p(b+b')=c+c'$, so
+\[ \mu(m,c+c')=m\otimes (b+b') = m\otimes b + m\otimes b' = \mu(m,c) + \mu(m,c'),\]
+and, if $p(b)=c$, then $p(rb)=rc$, so
+\[ \mu(mr, c) = mr\otimes b = m \otimes rb = \mu(m,rc).\]
+Thus, $\mu$ induces an additive homomorphism $\beta:M\otimes_R C \to(M\otimes_R B)/\im(1_M \otimes i) $. By construction, we have $\beta\circ \alpha (m\otimes b) = m\otimes b$ for all simple tensors, and thus this is the identity map since simple tensors generate.
+
+Since $\alpha$ has a left inverse, it follows that $\alpha$ is injective, so $\im(1_M \otimes i)$ is equal to the kernel of $1_M \otimes p$.\qedhere
+\end{itemize}
+\end{proof}
+
 
 \sssec{Examples of tensors}
 
@@ -2063,46 +2096,18 @@ It is easy to see that both $\psi \circ \phi$ and $\phi \circ \psi$ are the iden
 Even more concretely, if $K$ is a field, $K^m \otimes_K K^n \cong K^{m\times n}$ is isomorphic to the collection of $m\times n$ matrices, by the isomorphism that takes $e_i\otimes e_j$ to the matrix that has a $1$ in the $i,j$ entry and zeroes elsewhere. This morphism then sends $(a_1,\dots,a_m)\otimes (b_1,\dots,b_n)$ to $[a_i b_j]$, the outer product of these matrices. Observe that the simple tensors correspond exactly to the matrices of rank at most one.
 \end{ex}
 
-\sssec{Right exactness of tensor}
 
-The key to unlocking more examples of tensor will be to prove that it is right exact.
-
-\begin{thm} Let $M$ be a right $R$-module. The functor $M \otimes_R - : \Mod{R} \to \Ab$ is right exact.
-\end{thm}
-\begin{proof} Let \[ A \xra{i} B \xra{p} C \to 0\]
-be  exact. We need to show that
-\[ M\otimes_R A \xra{1_M \otimes i}  M\otimes_R B \xra{1_M \otimes p} M\otimes_R C \to 0  \]
-is exact.
-\begin{itemize}
-\item $1_M \otimes p$ is surjective: Given $\sum_i m_i \otimes c_i \in M\otimes_R C$, we can find $b_i\in B$ such that $p(b_i)=c_i$ for all $i$; then $(1_M \otimes p)(\sum_i m_i \otimes b_i)=\sum_i m_i \otimes c_i$.
-
-\item $\im(1_M \otimes i)\subseteq \ker(1_M \otimes p)$: We have $(1_M \otimes p)(1_M \otimes i) = 1_M \otimes (pi) = 1_M \otimes 0 = 0$.
-
-\item $\ker(1_M \otimes p)\subseteq \im(1_M \otimes i)$: From above, the map $1_M\otimes p$ induces a surjection $\alpha:(M\otimes_R B)/\im(1_M \otimes i) \to M\otimes_R C$ that maps $m\otimes b \mapsto m\otimes p(b)$. We will construct an inverse for this map.
-
-Consider the map 
-\[\xymatrix@R=.5em{\mu: M\times C \ar[r] & (M\otimes_R B)/\im(1_M \otimes i)& \\
-(m,c) \ar@{|->}[r] & m\otimes b &\text{for some $b$ with $p(b)=c$.}}\]
-To see this is well-defined, note that if $p(b)=p(b')=c$, then $p(b-b')=0$, so $b-b'=i(a)$ for some $a\in A$, so 
-\[ (m\otimes b) - (m\otimes b') = m\otimes(b-b') =m\otimes i(a) \in \im(1_M\otimes i).\]
-We then check $\mu$ is $R$-balanced biadditive:
-\[ \mu(m+m',c)=(m+m')\otimes b = m\otimes b + m' \otimes b = \mu(m,c) + \mu(m',c).\]
-If $p(b)=c$ and $p(b')=c'$, then $p(b+b')=c+c'$, so
-\[ \mu(m,c+c')=m\otimes (b+b') = m\otimes b + m\otimes b' = \mu(m,c) + \mu(m,c'),\]
-and, if $p(b)=c$, then $p(rb)=rc$, so
-\[ \mu(mr, c) = mr\otimes b = m \otimes rb = \mu(m,rc).\]
-Thus, $\mu$ induces an additive homomorphism $\beta:M\otimes_R C \to(M\otimes_R B)/\im(1_M \otimes i) $. By construction, we have $\beta\circ \alpha (m\otimes b) = m\otimes b$ for all simple tensors, and thus this is the identity map since simple tensors generate.
-
-Since $\alpha$ has a left inverse, it follows that $\alpha$ is injective, so $\im(1_M \otimes i)$ is equal to the kernel of $1_M \otimes p$.\qedhere
-\end{itemize}
-\end{proof}
-
-\begin{cor}
-Let $R$ be a commutative ring, and 
-\[ R^{\oplus \Gamma} \xra {A\cdot} R^{\oplus \Lambda} \to N \to 0\]
-be a presentation of a module $M$. Then there is a right exact sequence
-\[ M^{\oplus \Gamma} \xra {A\cdot} M^{\oplus \Lambda} \to M \otimes_R N \to 0.\qedhere\]
-\end{cor}
+\begin{rem}
+Let $R$ be a ring, $M$ be a right $R$-module, and $N$ be a left $R$-module. We can compute $M\otimes_R N$ by taking a presentation of $M$
+\[ R^{\oplus \Gamma} \xra {\phi} R^{\oplus \Lambda} \to M \to 0\]
+and tensoring with $N$ to get
+\[ N^{\oplus \Gamma} \xra{} N^{\oplus \Lambda} \to M \otimes_R N \to 0,\]
+so $M\otimes_R N$ is isomorphic to the cokernel of the map $N^{\oplus \Gamma} \to N^{\oplus \Lambda}$ induced by $\phi$. We can also compute $M\otimes_R N$ by taking a presentation of $M$
+\[ R^{\oplus \Xi} \xra {\psi} R^{\oplus \Omega} \to N \to 0\]
+and tensoring with $M$ to get
+\[ M^{\oplus \Xi} \xra{} M^{\oplus \Omega} \to M \otimes_R N \to 0,\]
+so $M\otimes_R N$ is isomorphic to the cokernel of the map $M^{\oplus \Gamma} \to M^{\oplus \Lambda}$ induced by $\psi$. 
+\end{rem}
 
 \begin{ex}
 Let $R$ be a commutative ring, $I$ an ideal, and $M$ a module. There is an isomorphism
@@ -2113,474 +2118,194 @@ so
 is exact. The image of the first map is just $IM$, so we obtain the isomorphism.
 \end{ex}
 
-\sssec{Hom tensor adjointess and extension of scalars}
+\Sept{29}
 
-\sssec{Associativity and multilinear maps}
+Tensor is not exact in general.
+
+\begin{ex} Consider the short exact sequence 
+\[ 0 \to \Z \xra{2} \Z \to \Z/2\Z \to 0\] and apply $-\otimes_R \Z/2\Z$. We obtain the complex
+\[ 0 \to \Z/2\Z \xra{0} \Z/2\Z \xra{1} \Z/2\Z \to 0,\]
+which is exact at the last two $\Z/2\Z$'s but not at the first one.
+\end{ex}
+
+The following properties are also useful properties for computing tensors.
+
+\begin{exer} Let $R$ be commutative and $M$ and $N$ be $R$-modules. There is an isomorphism $M\otimes_R N \cong N \otimes_R M$.
+\end{exer}
+
+\begin{exer} Let $R$ and $S$ be rings. Let $L$ be a right $R$-modules, $M$ be an $(R,S)$-bimodule, and $N$ be an $S$-module. Then $(L\otimes_R M) \otimes_S N \cong L \otimes_R (M\otimes_S N)$.
+\end{exer}
+
+An important case of the tensor functor is tensoring with a ring.
+
+\begin{defn}
+Let $\phi: R \to S$ be a ring homomorphism. The functor
+\[ S \times_R - : \Mod{R} \to \Mod{S}\]
+is called the functor of \DEF{extension of scalars} from $R$ to $S$.
+\end{defn}
+
+Observe that $S$ is an $(S,R)$-bimodule, so this functor does indeed return $S$-modules. By the discussion above, extension of scalars turns an $R$-module into the $S$-module with the same presentation.
+
+
+\sssec{Hom tensor adjointess}
+
+The Hom and tensor functors are closely related.
+
+\begin{thm} Let $R,S$ be rings, and $A$ be an $(R,S)$-bimodule, $B$ be an $S$-module, and $C$ be and $R$-module. There is an isomorphism
+\[ \Hom_R(A\otimes_S B, C) \cong \Hom_S(B,\Hom_R(A,C)).\]
+Moreover, these isomorphisms are natural in each argument.
+\end{thm}
+\begin{proof}
+Take 
+\[\eta:\Hom_R(A\otimes_S B, C) \to \Hom_S(B,\Hom_R(A,C)) \]
+by the rule $\eta(\phi)(b)(a) = \phi(a\otimes b)$. We check
+
+The map $\eta(\phi)(b)$ that sends $a\mapsto \phi(a\otimes b)$ for fixed $b$ is $R$-linear: addition is fine and \[\eta(\phi)(b)(ra)=\phi(ra \otimes b) = \phi(r(a\otimes b))=r\phi(a \otimes b) = r \eta(\phi)(b)(a). \]
+
+The map $\eta(\phi)$ that sends $b \mapsto \phi(-\otimes b)$ is $S$-linear: addition is fine and
+\[ \eta(\phi)(sb)(a)= \phi(a \otimes sb) = \phi(as \otimes b) = (s\eta(\phi)(b))(a).\]
+
+Now take
+\[ \mu: \Hom_S(B,\Hom_R(A,C)) \to \Hom_R(A\otimes_S B, C) \]
+by the rule $\mu(\psi)(a\otimes b) = \psi(b)(a)$.
+We need to check that $\mu(\psi)$ is well-defined and $R$-linear: to do this we check that the map $A\times B \to C$ given by $(a,b)\mapsto \psi(b)(a)$ is $S$-balanced biadditive and $R$-linear on the left factor (omitted). 
+
+We then see that $\mu$ and $\eta$ are mutually inverse: 
+\[(\mu\circ\eta)(\phi)(a\otimes b) = \eta(\phi)(b)(a) = \phi(a\otimes b)\]
+\[ (\eta\circ \mu)(\psi)(b)(a) = \mu(\psi)(a\otimes b) = \psi(b)(a).\]
+
+What do the naturality claims mean? First, this is a natural isomorphism as a functor of $A$:
+\[ \Hom_R( - \otimes_S B, C) \stackrel{\cong}{\implies} \Hom_S( B,\Hom_R(-,C)),\]
+and likewise for $B$ and $C$. We won't write these out, but they are straghtforward.
+\end{proof}
+
+Hom-tensor adjunction has a nice consequence in terms of extension of scalars.
+
+\begin{defn} Let $\phi:R\to S$. There is a functor\index{$\mathrm{Res}_\phi$}
+\[ \mathrm{Res}_{\phi}: \Mod{S} \to \Mod{R}\]
+called the functor of \DEF{restriction of scalars} that maps an $S$-module $M$ to the $R$-module that is the same abelian group as $M$ with action $r \cdot m = \phi(r) m$, and is the identity mapping on morphisms.
+\end{defn}
+
+When $\phi$ is injective, this restriction is literally just restricting the action. Evidently, this functor is exact, as it does nothing on the level of abelian groups, and exactness can be characterized there.
+
+\begin{prop} Let $\phi:R\to S$ be a ring homomorphism. Let $M$ be an $R$-module and $N$ be an $S$-module. There is an isomorphism
+\[ \Hom_R(M,\mathrm{Res}_\phi(N)) \cong \Hom_S(S\otimes_R M , N).\]
+These isomorphisms are natural in $M$ and in $N$.
+\end{prop}
+\begin{proof}
+Consider $S$ as an $(S,R)$-bimodule, where the right action is through $\phi$. With this structure, $\Hom_S(S,N) \cong \mathrm{Res}_\phi(N)$. Thus, this follows from Hom-tensor adjunction.
+\end{proof}
 
 \begin{comment}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{comment}
-
-
-
-\sec{Rings, Modules, and Representation Theory}
-
-
-\ssec{Ring and module basics}
-
-\sssec{Rings}
-
-In this class, 
-
-\begin{itemize}
-\item A \DEF{ring} is a set $R$ with two binary operations $+$ and $\cdot$ such that
-$(R,+)$ is abelian group, with identity $0$, and $(R, \cdot)$ is a (possibly noncommutative) semigroup with identity $1$, and such that
-the left and right distributive laws hold: $(r+s)t = rt + st$ and $t(r+s) = tr + ts$. 
-\item A \DEF{ring homomorphism} is a function that preserves $+$ and $\cdot$ and sends $1$ to $1$.
-\end{itemize}
-
-Note that $0\neq 1$ in $R$ unless $R=\{0\}$; if $0=1$, then $r=r\cdot 1 = r\cdot 0 = 0$ for all $r\in R$.
-
-
-\begin{ex} The map $\Z \to \Z\times \Z$ that sends $n\mapsto (n,n)$ is a ring homomorphism, but the map that sends $n\mapsto (n,0)$ is not, since the $1$ element of $\Z$ does not map to the $1$ element of $\Z\times \Z$.
-\end{ex}
-
-You've seen many examples of commutative rings before: E.g., fields, $\Z$, $\Z/n\Z$, polynomial rings, rings of integers
-(such as $\Z[\sqrt{-5}]$), etc.
-Here's are some noncommutative examples:
-
-\begin{ex}
-  For any $n \geq 1$ and ring $R$, \Def{$\Mat_n(R)$} is a ring under the usual rules for matrix addition and multiplication, even if $R$ isn't commutative. The multiplicative identity is $I_n$.  It is noncommutative if $1 \ne 0$ and $n > 1$. 
-\end{ex}
-
-
-\begin{ex}
-Let $A$ be any abelian group. An \DEF{endomorphisms} of $A$ as an abelian group is just a group homomorphism from $A$ to itself. The set \Def{$\End_{\Z}(A)$} of $A$ as an abelian group forms a ring.
-
-Namely,  given $f,g\in \End_{\Z}(A)$, 
-define the function $f + g$ by the rule
-  $(f+g)(a) = f(a) + g(a)$. Since 
-  \[(f+g)(a+b) = f(a+b) + g(a+b) = f(a) + f(b) + g(a) + g(b) = f(a) + g(a) + f(b) + g(b) = 
-(f+g)(a) + (f+g)(b),\] we see that $f+g\in \End_{\Z}(A)$. It's easy to see that $\End_{\Z}(A)$ is again an abelian group under this rule.
-For the multiplication, take composition of functions. Associativity of multiplication is a special case of associativity of composition of functions. For distributive laws, we have
-\[ ((f+g)h) (a) = (f+g)(h(a)) =f(h(a)) + g(h(a)) = (fh)(a) + (gh)(a);\] \[(f(g+h)) (a) = f(g(a)+h(a)) = f(g(a)) + f(h(a)) = (fg) (a) + (fh)(a);\]
-for the latter distributive law, it was crucial that we are dealing with homomorphisms of abelian groups.
-\end{ex}
-
-\begin{ex}[The \Def{Quaternions}] Let $\H$ be the $4$-dimensional $\R$-vector space with basis $1, i , j, k$; that is, $\H = \R \oplus
-  \R i \oplus \R j \oplus \R k$. There is a unique associative,
-  bilinear pairing, $- \cdot- $, on $\H$
-  that is $\R$-bilinear (i.e., it satisfies both distributive laws and $(qv) \cdot w = q(v \cdot w) = v \cdot (qw)$ for
-  all $v, w \in Q$ and $q \in \R$) and is such that $1$ is a two-sided multiplicative identity and 
-  $i^2 = -1$, $j^2 = -1$, $k^2=-1$, $ij = k$, $jk = 1$, and  $ki=j$. Then $(\H, +, \cdot)$ is a noncommutative
-  ring and, in fact, it is a \DEF{division ring}, meaning every nonzero element has a two-sided inverse
-  (i.e., is a field without the commutativity assumption).
-
-It's not so obvious that what I wrote just now is true, but there is 
-another way of describing $\H$: It is the $\R$ subspace of  $\Mat_2(\C)$ spanned by $I_2$,
-$\sqrt{-1} \cdot I_2$, 
-$\begin{bmatrix} 0 & -\sqrt{-1} \\ \sqrt{-1} & 0 \end{bmatrix}$,
-and $\begin{bmatrix} 0 & 1 \\ -1 & 0 \end{bmatrix}$ (representing $1$, $i$, $j$, and $k$ in
-the notation above). A tedious check shows that this subspace is indeed closed
-under matrix multiplication and hence forms a ring.
-\end{ex}
-
-
-
-If $R$ is a ring and $I$ is a two-sided ideal $I$ then $R/I$ is also a ring under the induced operations.
-
-Given a ring $R$, let \Def{$R^{\op}$}\index{opposite ring} refer to the same set, same rule for $+$ but with multiplication defined by $x \cdot_{\op} y := yx$. Then $R^{\op}$ is also a ring.
-
-  \begin{exer} Prove that for any ring $R$ and integer $n \geq 1$, there is a ring isomorphism
-  $$
-  \Mat_n(R)^{op} \cong \Mat_n(R^{op}).
-  $$
-\end{exer}
-
-
-\sssec{Semigroup rings}
-
-Another interesting source of rings (some of which are noncommutative) is semigroup rings. A special subclass of these will be group rings.
-
-In this class, 
-\begin{itemize}
-\item A \DEF{semigroup} is a set $S$ with an associative operation that has an identity element.
-\item A \DEF{semigroup homomorphism} is a map between semigroups that preserves $\cdot$ and maps the identity to the identity.
-\end{itemize}
-
-For any ring $R$ and semigroup $G$,   we define the \DEF{semigroup ring} \Def{$R[G]$} as follows: 
-
-As a set, $R[G]$ is the free left $R$-module with basis $G$; that is, a typical element has the
-form 
-$\sum_g r_g g$, where it is understood that $r_g = 0_R$ for all by a finite number of $g$'s.
-More formally, an element is a function $f: G \to R$ such
-that $f(g) = 0_R$ for all but a finite number of $g$'s. As a matter of notation,
-the element $1_R \, g$ will be written as just $g$ and the element $r \, e_G$ as just $r$,
-so that we will regard $G$ and $R$ as subsets of $R[G]$. (They overlap in the one element $1_R \,  e_G$ which will be written as just $1$). 
-
-We define addition as module addition; that is,
-  $$
-  (\sum_g r_g g) + (\sum_h s_h h) = \sum_{f \in G} (r_f + s_f) f.
-  $$
-  
-  Multiplication is given formulaically as
-  $$
-  (\sum_g r_g g) \cdot (\sum_h s_h h) = \sum_{f \in G} (\sum_{(g,h) \in G \times G, gh= f} r_g s_h)   f.
-  $$
-where the inner sum is over pairs of semigroup elements whose product is $f$. This is the unique pairing that obeys the distributive laws
-  and is such that $R$ is a subring, $G$ is a subsemigroup of the semigroup $(R[G], \cdot)$, and every element of $R$ commutes  with every element of $G$.
-  
-
-
-If $G$ is a group, then $R[G]$ is called a \DEF{group ring}.
-In this case $G$ is a subgroup of $R[G]^\times$, the group of units of the ring $R[G]$.
-The most common usages of this construction occur when $G$ is a group and $R$ is a field. 
-
-\begin{ex}
-Let's understand the semigroup ring $R[G]$ when $G=(\Z_{\geq 0},+)$. To avoid confusing ourselves with notation, let's replace $G$ by the isomorphic semigroup $H=\{1,x,x^2,x^3,\dots\}$ with multiplication $x^i \cdot x^j = x^{i+j}$; the map $i\mapsto x^i$ is an isomorphism. Now, $R[H]$ is just the polynomial ring $R[x]$.
-
-More generally, $R[\N^{\times n}]\cong R[x_1,\dots,x_n]$.
-\end{ex}
-
-\begin{ex}
-The group ring $R[(\Z,+)]$ is isomorphic to $R[x,x^{-1}]$, and more generally, $R[\Z^{\times n}] \cong R[x_1, x_1^{-1}, \dots, x_n, x_n^{-1}]$.
-\end{ex}
-
-
-\begin{ex}
-The \DEF{free semigroup} $F$ on a set $S=\{x_1,\dots,x_n\}$ is the set of finite sequences with values in $S$ (including the empty sequence), and concatenation as the multiplication. For example, typical elements in $F$ include
-\[ x_1 x_3 x_2 x_2 x_2 x_1 \qquad\text{and}\qquad x_3 x_3 x_3\]
-with operation
-\[ x_1 x_3 x_2 x_2 x_2 x_1 \cdot x_3 x_3 x_3 = x_1 x_3 x_2 x_2 x_2 x_1 x_3 x_3 x_3.\]
-The semigroup ring of $R$ on the free semigroup on a set is a noncommutative version of a polynomial ring.
-\end{ex}
-
-
-\begin{exer} For and $R$ and $G = C_n$ (the multiplicative cyclic group of order $n$),
-  prove there is a ring isomorphism $R[G] \cong R[x]/(x^n -1)$. 
-\end{exer}
- %%%%%%%%%%%%%%%%%% 
- 
- Let $R$ be a ring and $G$ a semigroup. 
-If $A$ is any other ring
-and $f: R[G] \to A$ is a ring map, then the restriction of $f$ to $R$ determines a ring map, $f|_R: R \to A$,
-and the restriction of $f$ to $G$
-determines semi-group homomorphism, $f|_G: G \to (A, \cdot)$. When $G$ is a group, the latter is a group homomorphism $f|_G: G \to A^\times$,
-the group of units of $A$. Moreover, we have that $f(r)$ and and $f(g)$ commute in $A$ for all $r \in R$ and $g \in G$.
-
-
-This process is ``reversible'':
-
-
-\begin{prop}``The Universal Mapping Property of semigroup rings''.
-  Let $R$ be a ring, $(G, \cdot)$ a semigroup, and $A$ an arbitrary ring.
-  Given a ring homomorphism $\rho: R \to A$ and a semigroup
-  homomorphism $\a: G \to (A, \cdot)$ such that $\rho(r)$ and $\a(g)$ commute in $A$ for all $r \in R$ and $g \in G$,
-there is a unique ring homomorphism $\phi: R[G] \to A$ such that $f|_R = \rho$
-  and $\phi|_G = \a$. Explicitly, $f$ is given by
-   $$
-  \phi\left(\sum_g r_g g\right) = \sum_g \rho(r_g) \a(g).
-  $$
-\end{prop}
-\begin{proof}
-Uniqueness is clear, since we must have $\phi(g)=\alpha(g)$, $\phi(r_g)=\rho(r_g)$, and hence $\phi(\sum_g r_g g) = \sum_g \rho(r_g) \a(g)$ by the fact that we have a ring homomorphism. We need to check that $\phi$ preserves addition, multiplication, and maps $1$ to $1$. The latter is clear. The conditions on addition and mulitplication can be checked directly using the formulas and the condition that elements $\alpha(g)$ commute with elements of the form $\rho(r_g)$.
-\end{proof}
-
-\begin{ex} Let's see what this says when $H=\{1,x,x^2,x^3,\dots\}$ as before. Let $R$ and $A$ be any rings. A semigroup homomorphism from $H$ to $A$ is uniquely determined by the image of $x$. Thus, given any ring homomorphism $\rho:R\to A$ and any element $a\in A$ that commutes with the image of $\rho$, there is a unique homomorphism from $R \to A$ that extends $\rho$ and maps $x\to a$. This is universal mapping property of a polynomial ring.
-\end{ex}
-
-
-\sssec{Modules}
-
-
-Given a ring $R$, a \DEF{left $R$-module} is an abelian group $(M, +)$ equipped with a pairing $R \times M \to M$, written $(r,m) \mapsto rm$ or $(r,m)\mapsto r \cdot m$.
-such that 
-\begin{enumerate}
-\item $r_1(r_2m)  = (r_1r_2)m$,
-\item  $(r_1+r_2)m  = r_1m + r_2m$,
-\item $r(m_1 + m_2) = rm_1 + rm_2$, and 
-\item $1m = m$.
-\end{enumerate}
-
-We will give a useful reinterpretation of module structures. It is based on the following idea, which will show up multiple times.
-
-\begin{rem} Given sets $A,B,C$, there is a bijection
-\[\xymatrix{ 
-{{\begin{array}{c} \Fun(A\times B, C) \\ \text{functions $A\times B\to C$} \end{array} }} 
-\ar@{<->}[r] & 
-{{\begin{array}{c} \Fun(A,\Fun(B,C)) \\ \text{functions $A \to$(functions $B \to C$)} \end{array} }} \\
-(a,b) \mapsto c \ar@{<->}[r] & a \mapsto (b\mapsto c)
-}\]
-that associates to a function $\phi:A\times B \to C$ the function $\psi: A\to \Fun(B,C)$ related by the rule
-\[ \phi(a,b) = \psi(a)(b).\]
-\end{rem}
-
-
-
-\begin{lem}
-Let $R$ be a ring and $(M, +)$  an abelian group. There is a bijective correspondence
-\[ \xymatrix{ \{ R-\text{module actions} \ R \times M \to M \text{(with given +)} \}  \ar@{<->}[r] & \{ \text{ring homomorphisms} \ \rho: R \to \End_{\Z}(M) \}\\
-\cdot  \ar@{|->}[r] & \rho(r)(m) = r\cdot m \\
-r\cdot m = \rho(r)(m)  & \ar@{|->}[l] \rho.}
-\]
-\end{lem}
-\begin{proof}
-We clearly have a bijection as long as the maps are well-defined.
-
-Given an $R$-module action $\cdot$, property (3) translates to the condition that $\rho(r)$ is $\Z$-linear; (4) means $\rho(1_R)$ is the identity function on $M$, which is the $1$ element in $\End_\Z(M)$; (2) means $\rho$ preserves addition; and (1) means $\rho$ preserves multiplication. Thus, $\rho$ is a ring homomorphism.
-
-That a ring map $\rho$ induces a module action by the rule above is similar.
-\end{proof}
-
-
-A \DEF{right $R$-module} is defined analogously, starting with a pairing $M\times R \to M$ written $(m,r)\mapsto mr$ or $(m,r)\mapsto m\cdot r$. Similarly to the previous lemma, a right $R$-module action on $M$ is equivalent to specifying a ring homomorphism from $R^{\op}\to \End_{\Z}(M)$. In particular, a right $R$-module is equivalent to an $R^\op$-module.
-
-Our convention in this class is that modules will be left modules, unless we say otherwise.
-
-\begin{ex} Recall that for any ring $A$, there is a unique homomorphism $\Z\to A$. Thus, a $\Z$-module is the same thing as an abelian group, since there is a unique ring homomorphism $\Z\to \End_{\Z}(M)$. Of course, the action is given explicitly by \[n\cdot m = \underbrace{m + \cdots + m}_{n-\text{times}} \quad \text{and} \quad  -n\cdot m = -(\underbrace{m + \cdots + m}_{n-\text{times}}) \qquad\text{for $n\geq0$}. \]
-\end{ex}
-
-Though we have used the notion already, let's recall the following.
-
-\begin{defn} A module $M$ is \DEF{free} with \DEF{free basis} $\Lambda$ if for every element $m\in M$ there is a unique finite subset $\{\lambda_1,\dots,\lambda_t\}\subset \Lambda$ (possibly empty) and unique sequence of elements $r_1,\dots r_t\in R\smallsetminus \{0\}$ such that $m=r_1 \lambda_1 + \cdots + r_t \lambda_t$.
+\sssec{Multilinear maps}
+
+\begin{defn}
+Let $R$ be a commutative ring, and $M_1,\dots,M_n,N$ be $R$-modules. We say that a map $\psi: M_1 \times \cdots \times M_n \to N$ is \DEF{multilinear} or \DEF{$R$-multilinear} if it is  $R$-linear in each argument: i.e., for each $i$,
+\[ \psi(m_1,\dots,r m_i + m'_i,\dots,m_n) = r \psi(m_1,\dots,m_i,\dots,m_n) + \psi(m_1,\dots,m'_i,\dots,m_n).\]
 \end{defn}
 
-You are familiar with the fact that every module over a field is free. Moreover, one has:
+Note that when $n=2$, this is just the notion of $R$-bilinear. 
 
-\begin{exer} 
+\begin{prop} There is a multilinear map
+\[ h: M_1 \times \cdots \times M_n \to M_1 \otimes_R \cdots  \otimes_R M_n \] that satisfies the following universal property: for any multilinear map $\psi: M_1 \times \cdots \times M_n \to N$, there is an $R$-linear map $\alpha: M_1 \otimes_R \cdots  \otimes_R M_n \to N$ such that $\psi = \alpha\circ h$.
+\end{prop}
 
-\begin{enumerate}
-\item If $D$ is a division ring, every module is free.
-\item If $R\neq 0$ is a ring and every $R$-module is free, then $R$ is a division ring.
-\end{enumerate}
-\end{exer}
-
-The following lemma will be handy later.
-
-\begin{lem} For rings $R_1, \dots, R_n$, let $A = R_1 \times \cdots \times R_n$. There is a bijective correspondence (up to isomorphism)
-\[ \xymatrix{ \{ \text{left} \ A-\text{modules} \}  \ar@{<->}[r] & \{ n-\text{tuples} \ (M_1,\dots,M_n) \ | \ M_i \ \text{a left} \ R_i-\text{module} \}\\
-M_1 \times \cdots \times M_n & \ar@{|->}[l] (M_1,\dots,M_n) \\
-M \ar@{|->}[r] & (e_1 \cdot M, e_2 \cdot M, \dots, e_n \cdot M),}
-\]
-where $e_i  = (0, \dots, 0, 1, 0, \dots, 0)$.
-\end{lem}
 \begin{proof}
-First we note that if $M_1,\dots,M_n$ are $R$-modules, there is an obvious $A$-module action on $M_1\times \cdots \times M_n$, where $(r_1,\dots,r_n)\cdot (m_1,\dots,m_n)=(r_1\cdot_{R_1} m_1,\dots,r_n \cdot_{R_n} m_n)$. 
-
-Given an $A$-module $M$, $e_i \cdot M$, which we'll call $L_i$ for a moment, has a natural $R_i$-module structure by setting $r \cdot l = (r e_i) \cdot l =(0,\dots,r,\dots, 0) \cdot_A l$ for $l\in L_i$.  Writing $l=e_i \cdot m$, for some $m\in M$, we have $r\cdot l = (r e_i)(e_i \cdot m) = (r e_i^2)\cdot m =  e_i \cdot rm \in L_i$. $L_i$ is clearly closed under $+$ as well, and we get a module structure like so.
-
-If we start with a tuple $(M_1,\dots M_n)$ and apply the $\leftarrow$ and $\rightarrow$ constructions, we get the same tuple back. If we start with an $A$-module $M$ and apply the $\rightarrow$ and $\leftarrow$ constructions, we get $(e_1 \cdot M)\times \cdots \times (e_n \cdot M)$. For an $A$-module, there is an isomorphism  \[(e_1 \cdot M)\times \cdots \times (e_n \cdot M) \rightarrow M\] given by sending $(l_1,\dots l_n)\mapsto l_1+\cdots + l_n$.
+First, we note that by associativity of tensor, the module $M_1 \otimes_R \cdots  \otimes_R M_n$ makes sense without parentheses. For the map $h$, we take $h(m_1,\dots,m_n) = m_1\otimes \cdots \otimes m_n$. Then, if such a map $\alpha$ exists, we must have $\alpha(m_1\otimes\cdots\otimes m_n)= \psi(m_1,\dots,m_n)$; since simple tensors generate, $\alpha$ is unique if it exists. For existence, we can proceed by induction on $n$. For any fixed $m_n\in M_n$, the map $\psi$ is a multilinear map on the first $n-1$ arguments, so by the inductive hypothesis, we obtain an $R$-linear map $M_1 \otimes_R \cdots  \otimes_R M_{n-1} \to N$ that sends $m_1\otimes \dots \otimes m_{n-1} \mapsto \psi(m_1,\dots,m_n)$. Since we have such a map for each $m_n$, we get a map $M_1 \otimes_R \cdots  \otimes_R M_{n-1} \times M_n \to N$ that we can check to be bilinear, and this induces the desired map.
 \end{proof}
 
-
-\sssec{Bimodules}
-
-It turns out that we often have a left module structure and a right module structure on something in a compatible way.
-
-\begin{defn} Let $R$ and $S$ be rings. An $(R,S)$-\DEF{bimodule} is an abelian group $M$ equipped with a left $R$-module structure and a right $S$-module structure that commute with each other:
-\[ (r \cdot m) \cdot s = r \cdot (m \cdot s) \qquad \text{for all}\ m\in M, r\in R, s\in S.\]
-\end{defn} 
-
-\begin{ex} Here are some basic sources of bimodules:
+\begin{defn} Let $M$ and $N$ be $R$-modules.
 \begin{enumerate}
-\item If $R$ is a ring, then $M=R$ is an $(R,R)$-bimodule in the obvious way. More generally, if $A\subseteq R$ are rings, $R$ is an $(A,A)$-bimodule.
-\item If $R$ is a commutative ring and $M$ is any left module, then $M$ is also a right module by the same action, and $M$ is an $(R,R)$-bimodule with these structures. I.e., starting with an action $r\cdot m$, we set $m\cdot s$ to be $s\cdot m$, and \[(r\cdot m) \cdot s = s\cdot (r\cdot m) = sr \cdot m = rs \cdot m = r\cdot (s\cdot m) = r \cdot (m\cdot s).\]
-\item Every left $R$-module is automatically an $(R,\Z)$-bimodule: \[(r\cdot m) \cdot n= \underbrace{(r\cdot m) + \cdots + (r\cdot m)}_{n \ \text{times}} = r \cdot (\underbrace{m+\cdots + m}_{n \ \text{times}}) = r \cdot (m \cdot n) \qquad \text{for $n\in \Z_{\geq 0}$},\]
-and similarly for $n\leq 0$.
-Likewise, every right $R$-module is automatically a $(\Z,R)$-bimodule.
-\end{enumerate}
-\end{ex}
-
-\begin{ex} For a ring $R$, the set of columns vectors of length $n$, $R^n$, is a $(\Mat_n(R),R)$-bimodule.
-\end{ex}
-
-Sometimes, when we want to keep track of various module and bimodule structures, we may write something like \Def{$_R M _S$} to indicate that $M$ is an $(R,S)$-bimodule, or $_R M$ to indicate that $M$ is a left $R$-module.
-
-\sssec{Modules over semigroup rings}
-
-\begin{defn} Let $S$ be a semigroup and $R$ be a ring. An $R$-linear \DEF{representation} of $S$ consists of an $R$-module $M$ and a pairing $S\times M\to M$, written $(s,m)\mapsto sm$ or $(s,m)\mapsto s\cdot m$ such that
-\begin{enumerate}
-\item $s_1 \cdot (s_2 \cdot m) = (s_1 s_2) \cdot m$
-\item $e_S \cdot m = m$
-\item $s \cdot (m_1 + m_2) = s \cdot m_1 + s\cdot m_2$
-\item $s\cdot (r \cdot m) = r \cdot (s\cdot m)$.
+\item A multilinear map $\psi: M^n \to R$ is \DEF{symmetric} if permuting any two entries does not affect the value of $\psi$.
+\item A multilinear map 
+$\psi: M^n \to R$ is \DEF{skew-symmetric} if permuting any two entries negates the corresponding value of $\psi$.
 \end{enumerate}
 \end{defn}
 
-The case where $S=G$ is a group and $M=V$ is a vector space over a field $R=K$ is the one of most interest. A representation of $G$ on $V$ is just a group action on $V$ where each group element acts by a linear transformation.
-
-\begin{ex}
-The permutation group $G=\Ss^n$ acts on $K^n$ for field $K$ by permuting coordinates: $\sigma \cdot (a_1,\dots,a_n)=(a_{\sigma(1)} ,\dots,a_{\sigma(n)})$; this is a $K$-linear representation.
-\end{ex}
-
-\begin{ex}
-Let $G = D_{2n}$, symmetries of the equilateral polygon on $n$ vertices.    Then $G$ acts linearly on $V=\R^2$ by rotations and reflections.
-    If $G$ is generated by $r$ (rotation by $2\pi/n$) and $l$ (reflection about the $y$-axis), then
- we have
-         \[ r\cdot \begin{bmatrix} x\\ y\end{bmatrix}=\begin{bmatrix}
-      \cos(2 \pi/n) & -\sin(2 \pi/n)  \\ \sin(2 \pi/n)  & \cos(2 \pi/n)  \end{bmatrix} \begin{bmatrix} x\\ y\end{bmatrix}
-      \qquad
-l \cdot \begin{bmatrix} x\\ y\end{bmatrix}=\begin{bmatrix}
-      -1  & 0 \\ 0 & 1 \end{bmatrix} \begin{bmatrix} x\\ y\end{bmatrix}.
-      \]
-      \end{ex}
-
-
-\begin{defn} Let $M$ and $N$ be two $R$-linear representations of a semigroup $S$. An $R$-module homomorphism $\phi:M\to N$ is $R$-\DEF{equivariant} if $\phi(s\cdot m) = s\cdot \phi(m)$.
+\begin{defn} Let $R$ be a commutative ring, and $M$ be an $R$-module. 
+\begin{enumerate}
+\item
+The $n$th \DEF{symmetric power} of $M$ is the $R$-module $\mathrm{Sym}^n(M) = M^{\otimes n} / (Y)$, where $Y$ is the submodule generated by differences of simple tensors that are $1$ in all but two entries and the two nontrivial entries are switched. We often just write $m_1 m_2 \cdots m_n$ for the class of $m_1\otimes m_2 \otimes\cdots m_n$.
+\item The $n$th \DEF{exterior power} of $M$ is the $R$-module $\bigwedge^n(R) = M^{\otimes n} / (Z)$, where $Y$ is the submodule generated by sums of simple tensors that are $1$ in all but two entries and the two nontrivial entries are switched. We often just write $m_1 \wedge m_2 \wedge \cdots \wedge m_n$ for the class of $m_1\otimes m_2 \otimes\cdots m_n$.
+\end{enumerate}
 \end{defn}
 
-\begin{prop}
-Let $S$ be a semigroup, $R$ be a ring, and $M$ be an $R$-module. There are bijections
-$$\xymatrix{ \left\{{\begin{array}{c} \textrm{$R$-linear representations} \\ \textrm{of $S$ on $M$} \end{array} }\ \right\}\ar@{<->}[r] & \left\{ {\begin{array}{c} \text{semigroup homoms} \\ 
-S\to (\End_{R}(M),\circ) \end{array} }   \right\} \ar@{<->}[r] & \left\{ { \begin{array}{c}  R[S]\text{-module structures on $M$} \\ \text{(extending given action of $R$)} \end{array} } \right\} \\
-\cdot \ar@{|->}[r] & \rho: \ \rho(s)(m) = s\cdot m & \\
-& \alpha \ar@{|->}[r] & (\sum r_s \, s) m = \sum  r_s \alpha(s)(m)} 
-$$
-\end{prop}
+
+For example, \[\mathrm{Sym}^2(M) = M\otimes_R M / \langle \{m\otimes n - n\otimes m \ | \ m,n\in M\}\rangle\] and \[\bigwedge^2(M) = M\otimes_R M / \langle \{m\otimes n + n\otimes m \ | \ m,n\in M\}\rangle.\]
+
+\begin{thm} Let $M$ be an $R$-module.
+\begin{enumerate}
+\item
+ There is a symmetric multilinear map $h:M^{\times n} \to \mathrm{Sym}^n(M)$ such that for every symmetric multilinear map $\psi: M^{\times n} \to N$, there is a unique $R$-module homomorphism $\alpha:\mathrm{Sym}^n(M) \to N$ such that $\psi=\alpha\circ h$.
+ \item
+ There is a skew-symmetric alternating multilinear map $h:M^{\times n} \to \bigwedge^n(M)$ such that for every skew-symmetric multilinear map $\psi: M^{\times n} \to N$, there is a unique $R$-module homomorphism ${\alpha:\bigwedge^n(M) \to N}$ such that $\psi=\alpha\circ h$.
+ \end{enumerate}
+ \end{thm}
 \begin{proof}
-Fix an $R$-linear representation of $S$ on $M$, and define $\rho:S\to \End_{R}(M)$ by the rule $\rho(s)(m)=s\cdot m$. The map $\rho(s):M\to M$ is $R$-linear for any $s$ by conditions (3) and (4) of the definition.n Conditions (1) and (2) ensure that the map is a semigroup homomorphism. Conversely, given a semigroup homomorphism $\rho:S\to \End_R(M)$, $s\cdot m := \rho(s)(m)$ is easily verified to satisfy the conditions of a representation.
-
-Now, given a semigroup homomorphism $\alpha:S\to \End_{R}(M)$, observe that $\End_{R}(M)\subseteq \End_{\Z}(M)$, since any $R$-linear map is $\Z$-linear. The $R$-module structure on $M$ gives us a ring homomorphism $\beta:R\to \End_{\Z}(M)$. Given $s\in S$ and $r\in R$, we claim that $\beta(r)$ and $\alpha(s)$ commute. Indeed, \[(\beta(r) \alpha(s))(m)=\beta(r) (s\cdot m) = r \cdot (s\cdot m) = s\cdot (r\cdot m) = \alpha(s) (r\cdot m) = (\alpha(s) \beta(r))(m).\]
-The universal property of semigroup rings gives us a ring homomorphism $R[G] \to \End_{\Z}(M)$ that extends $\alpha$ on $G$ and $\beta$ on $R$. This ring homomorphism is equivalent to an $R[G]$-module structure on $M$, which is easily unpackaged to be given by the formula above. 
-
-Finally, given an $R[S]$-module structure on $M$, the map $\alpha:S \to \End_{R}(M)$ given by $\alpha(s)(m)= s \cdot m$ is a semigroup homomorphism, and this construction is inverse to the previous one.
+\begin{enumerate}
+\item By construction, there is a map $h$ that comes from the map to the tensor product followed by the quotient map. It is symmetric and multilinear by construction. By the universal property for tensor, there is a map from $M^{\otimes n} \to N$; since it is symmetric, $Y$ maps to $0$, so it factors through $\mathrm{Sym}^n(M)$.
+\item Similar.\qedhere
+\end{enumerate}
 \end{proof}
 
-When $G$ is a group, the image any semigroup homomorphism from $G$ consists of invertible elements. In particular, a homomorphism from $G$ to $\End_R(M)$ is really a homomorphism from $G$ to $\Aut_R(M)$.
+We can compute symmetric and exterior powers of free modules concretely.
 
-\begin{cor}
-Let $G$ be a group and $V$ be a vector space over a field $K$. There are bijections
-$$\xymatrix{ \left\{{\begin{array}{c} \textrm{$K$-linear representations} \\ \textrm{of $G$ on $V$} \end{array} }\ \right\}\ar@{<->}[r] & \left\{ {\begin{array}{c} \text{group homoms} \\ 
-G\to \Aut_{K}(V) \end{array} }   \right\} \ar@{<->}[r] & \left\{ { \begin{array}{c}  K[G]\text{-module structures on $V$} \\ \text{(extending $K$-vs structure on $V$)} \end{array} } \right\} } 
-$$
-\end{cor}
-
-\begin{ex}
-Let $\Ss_3$ act on $\R^3$ by permuting coordinates, as discussed above. This gives $\R^3$ a $\R[\Ss^3]$-module structure. To try it out on typical elements:
-\[ ( (12) - \pi(23)) \cdot (3,4,5) = (4,3,5) - \pi(3,5,4) = (4- 3\pi, 3- 5\pi, 5-4\pi).\]
-\end{ex}
-
-\begin{ex} Any group ring $R[G]$ (or any semigroup ring) is a module over itself, so we can think of it as a representation. Concretely, this is the representation where the module is free with basis equal to the elements of the group, and we have $h\cdot \sum r_g \, g = \sum r_g (hg)$. This is called the \emph{(left)} \DEF{regular representation} of $G$.
-\end{ex}
-
-\begin{ex} What does the correspondence above say about $R[x]$-modules? Recall that $R[x]\cong R[\Z_{\geq 0}]$. Thus, an $R[x]$-module is equivalent to an $R$-module $M$ with a semigroup homomorphism $\Z_{\geq 0} \to \End_R(M)$. A semigroup homomorphism from $\Z_{\geq 0}$ is freely determined by the image of $1$,  an $R[x]$-module is equivalent to an $R$-module $M$ plus an $R$-linear endomorphism of $M$.
-
-This equivalence should be familiar from Math 817-818 in the case $R=K$ is a field: a $K[x]$-module is equivalent to a vector space $V$ with a linear endomorphism $V\to V$ (which is the action of $x$); you used this to deduce structure theorems for linear transformations from the structure theorem of modules over PIDs.
-\end{ex}
-
-\begin{exer}
+\begin{prop} Let $F= R^{\oplus n}$ be a free module with basis $\{e_1,\dots,e_t\}$.
 \begin{enumerate}
-\item Show that a module over $R[x_1,\dots,x_n]$ is equivalent to an $R$-module with $n$-commuting $R$-linear endomorphisms.
-\item Show that a module over $K[C_n]$, where $C_n$ is the cyclic group of order $n$, is equivalent to a vector space $V$ with an invertible endomorphism with order dividing $n$.
-\end{enumerate}
-\end{exer}
-
-\sssec{Structure of $\Hom_R(M,N)$}
-
-Recall that, for two (left) $R$-modules $M,N$, \Def{$\Hom_R(M,N)$} denotes the set of all $R$-module homomorphisms from $M$ to $N$.
-
-\begin{prop} Let $M,N$ be $R$-modules.
-\begin{enumerate}
-\item $\Hom_R(M,N)$ admits the structure of an abelian group by the rule $(\alpha+\beta)(m) = \alpha(m)+\beta(m)$.
-\item If $R$ is commutative, then $\Hom_R(M,N)$ admits the structure of an $R$-module with addition as in (1) and  action \[(r\cdot \alpha)(m) = r\cdot \alpha(m) = \alpha(r\cdot m).\]
-\item If $M$ is an $(R,S)$-bimodule, and $N$ is an $(R,T)$-bimodule, then $\Hom_R(M,N)$ admits the structure of an $(S,T)$-bimodule with addition as in (1) and  actions
-\[ (s\cdot \alpha \cdot t)(m) = \alpha(m \cdot s) \cdot t.\]
+\item $\mathrm{Sym}^t(F)$ is a free $R$-module with basis $\{ e_1^{a_1} \cdots e_n^{a_n} \ | \ a_1+\cdots+a_n=t\}$.
+\item $\bigwedge ^n F$ is a free $R$-module with basis $\{ e_{i_1} \wedge e_{i_2} \wedge\cdots \wedge e_{i_t} \ | \ 1\leq i_1 < i_2 <\cdots < i_t \leq n\}$.
 \end{enumerate}
 \end{prop}
 \begin{proof}
-Part (1) is easy to check and omitted.
-
-For (2), note first that $r\cdot \alpha(m) = \alpha(r \cdot m)$ for $r\in R$ simply because $\alpha$ is an $R$-module homomorphism. Let's check that the map $r \cdot \alpha$ is an $R$-module homomorphism. Indeed, we have
-\[ (r \cdot \alpha)(m_1 + m_2) = r \cdot \alpha(m_1 + m_2) = r \cdot ( \alpha(m_1) + \alpha(m_2)) = r\cdot \alpha(m_1) + r\cdot \alpha(m_2) = (r\cdot \alpha)(m_1) + (r\cdot \alpha)(m_2)\]
-and
-\[ (r\cdot \alpha)(sm) = r \cdot \alpha(sm) =  r \cdot s \alpha(m) =(rs) \cdot\alpha(m) = (sr) \cdot \alpha(m) =  s \cdot (r\cdot \alpha)(m).\]
-The other axioms are easy to check.
-
-Part (3) we leave as an exercise.
+\begin{enumerate}
+\item We note first that any simple tensor in $M^{\otimes n}$ is an $R$-linear combination of simple tensors where each entry is a basis vector. In $\mathrm{Sym}^t(F)$ in the class of any such simple tensor, there is one where all the $e_1$'s come before all the $e_2$'s, etc., so the displayed set is in fact a generating set. This gives a surjection from the free module to the symmetric power. We can use the universal property to obtain a left inverse, and see that this is an isomorphism.
+\item Similar.
+\end{enumerate}
 \end{proof}
 
-Note the importance in commutativity in part (2).
-
-As a special case of part (3), if only $M$ is a bimodule, then we get a left module structure on $\Hom$: we can give $N$ the trivial bimodule structure with $\Z$ acting on the right; similarly if only $N$ is a bimodule, we get a right module structure on $\Hom$.
-
-\begin{ex} Let $R$ be a ring and $M$ be an $R$-module. For any $m\in M$ there is a unique $R$-module map from $R$ to $M$ that sends $1 \to m$, namely $\mu_m:R\to M$ given by $\mu_m(r)=r\cdot m$. On the other hand, any homomorphism from $R$ to $M$ is determined by the image of $1$, so
-\[\xymatrix{ M \ar@{<->}[r] & \Hom_R(R,M) \\
-m \ar@{|->}[r] & \mu_m \\
-\phi(1) & \ar@{|->}[l] \phi}\]
-is a bijection. Since $R$ is an $(R,R)$-bimodule, $\Hom_R(R,M)$ picks up a \emph{left} module structure coming from the \emph{right} action of $R$ on $R$. We claim that the bijection above is an isomorphism with this $R$-module structure. Indeed,
-\[ (\mu_{m} +\mu_{n})(r) = \mu_m (r) + \mu_n(r) = r m + r n = r (m+n) = \mu_{m+n}(r), \ \text{so} \ \mu_m + \mu_n = \mu_{m+n}\]
-\[ (s \mu_m) (r) = \mu_m(rs) = rs m = r (sm) = \mu_{sm}(r),\ \text{so} \ s\mu_m = \mu{sm}.\]
-\end{ex}
 
 
-\begin{ex} Similarly, for any left module $M$, there is an isomorphism of left modules
-$\Hom_{R}(R^n,M)\cong M^n$, via
-\[ \phi \mapsto (\phi((1,0,\dots,0),\phi(0,1,\dots 0),\dots,\phi(0,0,\dots,1)).\]
-\end{ex}
-
-\begin{ex}
-If $R[S]$ is a semigroup ring, what is as $R[S]$-module homomorphism? If $M$ and $N$ are $R[S]$-modules, then they are in particular $R$-modules, and if $\phi:M\to N$ is $R[S]$-linear, it is at least $R$-linear. Considering $s\in S$ as an element of $R[S]$, we have $\phi(s m) = s \phi(m)$ for all $s\in S$ and $m\in M$. Thus, an $R[S]$-linear map is an equivariant map of $R$-modules. Conversely,\dots
-\end{ex}
-
-$\End_R(M)$ is a ring.
-
-\sssec{Direct sums and products}
-
-\end{comment}
 
 
-\printindex
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 \end{document}
