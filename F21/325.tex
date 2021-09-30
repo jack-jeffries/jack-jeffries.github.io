@@ -2817,6 +2817,51 @@ conclude that $S$ must be the empty set.
 
 The above proof shows that the Principle of Mathematical Induction is a consequence of the Well-Ordering Principle. The converse is also true.
 
+\Sept{29}
+
+(1) Show that if $\{a_n\}_{n=1}^\infty$ is increasing and not bounded above, then $\{a_n\}_{n=1}^\infty$ diverges to $\infty$.
+\begin{framed}
+Suppose that $\{a_n\}_{n=1}^\infty$ is increasing and not bounded above.
+Let $M\in \R$ be arbitrary. Since $\{a_n\}_{n=1}^\infty$ is not bounded above, $M$ is not an upper bound, so there exists some $N\in \N$ such that $a_N > M$. We claim that for all natural numbers $n>N$, we have $a_n>M$ Indeed, if $n>N$, since the sequence is increasing, we have $a_n \geq a_N >M$, as desired. Thus, for every $M\in \R$, there is some $N\in \R$ such that for all natural numbers $n>N$, we have $a_n>M$. This means that $\{a_n\}_{n=1}^\infty$ diverges to $\infty$.
+
+\hrulefill
+
+
+Alternative argument:
+
+
+\hrulefill
+
+
+Suppose that $\{a_n\}_{n=1}^\infty$ is increasing and not bounded above. By way of contradiction, suppose that $\{a_n\}_{n=1}^\infty$ does not diverge to $\infty$. This means that there exists some $M\in \R$ such that for all $N\in \R$, there exists a natural number $n>N$ with $a_n \leq M$. We claim that $M$ is an upper bound for $\{a_n\}_{n=1}^\infty$, which will be the desired contradiction. Let $k\in \N$; we need to show that $a_k \leq M$. Taking $k=N$ in the statement above, there is some natural number $n>k$ with $a_n \leq M$. But since $\{a_n\}_{n=1}^\infty$ is increasing, we have $a_k \leq a_n \leq M$, as desired, so $M$ is an upper bound. We have obtained a contradiction, so we must have that $\{a_n\}_{n=1}^\infty$ does indeed diverge to $\infty$.
+\end{framed}
+
+
+(2) Let $S$ be a nonempty bounded above set and $\ell=\sup(S)$.
+
+$\bullet$ Show that, for every $n\in \N$, there is some $x\in S$ such that $\ell-\frac{1}{n} < x \leq \ell$.
+
+\begin{framed}
+Since $\ell-\frac1n < \ell = \sup(S)$, $\ell-\frac1n$ is not an upper bound for $S$, so there exists some $x\in S$ with $\ell-\frac1n < x$. Since $\ell$ is an upper bound of $S$, we also have $x\leq \ell$.
+\end{framed}
+
+$\bullet$ Show that there is a sequence $\{a_n\}_{n=1}^\infty$ with $a_n\in S$ for all $n\in \N$ that converges to $\ell$.
+
+\begin{framed}
+For each $n$, pick some $a_n\in S$ such that $\ell-\frac1n < a_n \leq \ell$. We claim that this sequence converges to $\ell$. Note that the sequence  $\{\ell \}_{n=1}^\infty$ converges to $\ell$ since it is constant, and $\{ \ell-\frac1n \}_{n=1}^\infty$ converges to $\ell$ also by Theorem 12.2. Thus, by the Squeeze Theorem, $\{\ell \}_{n=1}^\infty$ converges to $\ell$ too.
+
+
+\hrulefill
+
+
+Alternative argument:
+
+
+\hrulefill
+
+For each $n$, pick some $a_n\in S$ such that $\ell-\frac1n < a_n \leq \ell$. We claim that this sequence converges to $\ell$. Let $\e>0$. Take $N=1/\e$. Then for a natural number $n>N$, using the inequalities above, we have that $|a_n-\ell|<\frac1n <\frac1N =\e$.
+
+\end{framed}
 
 
 \begin{comment}
