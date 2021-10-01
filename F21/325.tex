@@ -2864,27 +2864,63 @@ For each $n$, pick some $a_n\in S$ such that $\ell-\frac1n < a_n \leq \ell$. We 
 \end{framed}
 
 
-\begin{comment}
+
+\Oct{1}
 
 
 
-\begin{ex} For any $n \in \N$, if  $S$ is a set with $n$ elements, then there are $2^n$ possible subset of $S$ (including the empty set and $S$ itself). 
 
-To prove this, we let $P_n$ be the statement: If a set has $n$ elements, then it has $2^n$ subsets.
 
-The statement $P_1$ is true since a one element set has $2$ subsets: itself and the empty set. Let $k \in \N$ and assume $P_k$ is true. Let $S$ be any set with
-$k+1$ elements, and let $x$ be one of its elements. Let $S' = S \setminus \{x\}$. There are two types of subsets of $S$: those that contain $x$ and those that
-don't or, equivalently, those that are contained in $S'$ and those that are not. 
+\begin{ex} Let's show that for every $x\in \R$, the equality
+\[ (1-x)(1+ x + \cdots + x^n) = 1-x^{n+1}\]
+holds for all $n\in \N$.
+Fix a real number $x\in \R$. We will show by induction on $n$ that the equality \[ (1-x)(1+ x + \cdots + x^n) = 1-x^{n+1}\]
+holds this real number $x$ and for all $n\in \N$. For $n=1$, we have \[(1-x)(1+x) = 1-x^2,\]
+so the equality holds in this case. Assume that the equality holds for some natural number $n=k$. Then 
+\begin{align*}
+(1-x)(1+ x + \cdots + x^{k+1}) &= (1-x)((1+x+\cdots + x^k)+x^{k+1})\\&=(1-x)(1+ x + \cdots + x^k) + x^{k+1} - x^{k+2} \\&= 1-x^{k+1} + x^{k+1} - x^{k+2} \\&= 1-x^{k+2}\end{align*}
+so the equality holds for $n=k+1$. Thus, by induction, the equality holds for all $n\in \N$.\qed
+\end{ex} 
 
-Since $P_k$ is true and $S'$ has $k$ elements, there are $2^k$ subsets of $S'$. That is, there are $2^k$ subsets of $S$ that don't contain $x$. Now, every subset
-of $S$ that does contain $x$ has the form $\{x\} \cup X$ for a unique subset $X$ of $S'$. Thus there are also $2^k$ subsets of $S$ that do contain $x$. In
-total, there are thus $2^k + 2^k = 2^{k+1}$ subsets of $S$. That is, $P_{k+1}$ is true.
-
-By PMI, $P_n$ is true for all $n$.
+\begin{ex} Let's show that every finite set has a minimum element. It's not obvious that induction makes any sense here, but we can rephrase the statement as saying that for every $n\in \N$, a set of real numbers with $n$ elements has a minimum. So, let us prove by induction on $n$ that for every set of $n$ real numbers, the set has a minimum.
+ When $n=1$, any set with one element clearly has its only element as a minimum, so the statement is true in this case.
+Assume that for some natural number $n=k$, every set of $k$ elements has a minimum element; we need to show that every set of $k+1$ elements has a minimum. Let $S$ be a set of $k+1$ elements, and fix some $x\in S$. Then $T=S\smallsetminus\{x\}$ has $k$ elements, so it has a minimum, which we will call $y$. Either $x<y$ or $x\geq y$. If $x<y$, and $z\in S$, either $z \in T$ so $z\geq y > x$, or else $z=x$ so $z\geq x$; thus, $x=\min (S)$ in this case. If $x\geq y$, and $z\in S$, if $z\in T$ then $z\geq y$, and otherwise $z=x\geq y$; thus $y=\min (S)$ in this case. We have shown that $S$ has a minimum element. This completes the inductive step, and hence completes the proof.\qed
 \end{ex}
 
+Now, I want to apply what we've done so far to decimal expansions. Let us say that $d_1,d_2,d_3,\dots$ is a ``digit sequence'' if $d_i\in\{0,1,\dots,9\}$ for each $i\in\N$. We will say that an integer $k$ and a digit sequence $d_1,d_2,d_3,\dots$ is a ``decimal expansion'' and write $k. d_1 d_2 d_3 \dots$ to denote a decimal expansion. We say that the decimal expansion $k. d_1 d_2 d_3 \dots$  ``corresponds to a real number $r$'' if the sequence
+\begin{align*}
+a_1 &= k + \frac{d_1}{10^1} \\
+a_2 &= k + \frac{d_1}{10^1} + \frac{d_2}{10^2} \\
+a_3 &= k + \frac{d_1}{10^1} + \frac{d_2}{10^2} + \frac{d_3}{10^3}\\
+&\vdots
+\end{align*}
+converges to $r$.
 
+\begin{thm}
+Every decimal expansion corresponds to a real number.
+\end{thm}
+\begin{proof}
+Let $k$ be an integer, and $d_1,d_2,d_3,\dots$ be a sequence such that $d_i\in \{0,1,\dots,9\}$ for each $i\in \N$. We need to show that the sequence 
+\begin{align*}
+a_1 &= k + \frac{d_1}{10^1} \\
+a_2 &= k + \frac{d_1}{10^1} + \frac{d_2}{10^2} \\
+a_3 &= k + \frac{d_1}{10^1} + \frac{d_2}{10^2} + \frac{d_3}{10^3}\\
+&\vdots
+\end{align*}
+converges. Observe that $\{a_n\}_{n=1}^\infty$ is increasing. Note now that for any $n\in \N$, we have
+\begin{align*}
+a_n &=k + \frac{d_1}{10^1} + \frac{d_2}{10^2} + \cdots + \frac{d_n}{10^n}\\
+&=k + \frac{9}{10^1} + \frac{9}{10^2} + \cdots + \frac{9}{10^n}\\
+&=k + \frac{9}{10} \left( 1 + \frac{1}{10^1} + \cdots + \frac{1}{10^{n-1}} \right) \\
+&= k+ \frac{9}{10} \frac{ 1 - \frac{1}{10^n} }{1- \frac{1}{10}}\\
+&= k+ \frac{9}{10} \frac{ 1 - \frac{1}{10^n} }{\frac{9}{10}}\\
+&= k+ 1-\frac{1}{10} \leq k+1.\end{align*}
+Since this holds for all $n$, $\{a_n\}_{n=1}^\infty$ is bounded above by $k+1$. By the Monotone Convergence Theorem, $\{a_n\}_{n=1}^\infty$ converges.
+\end{proof}
 
+\begin{ex} The decimal expansion $0.25$ corresponds to $\frac{1}{4}$. The decimal expansion $0.99999\dots$ corresponds to $1$.\end{ex}
+
+\begin{comment}
 
 
 
