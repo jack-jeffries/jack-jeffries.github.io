@@ -2388,7 +2388,7 @@ The equivalence of (3) and (4) follows from the Splitting Theorem. Note that giv
 Suppose (1) holds and  $p: N \onto P$ is onto. Applying the definition with $f = \id_P$ and $p = p$ gives an $R$-linear map $g$ 
 such that $p \circ f = \id_P$.  So (1) $\Rightarrow$ (4).
 
-
+To see (1) implies (4), let $p:N\onto P$ be surjective, and consider the identity map on $P$. By (1), the identity map factors through $p$, so $p$ has a right inverse.
 
 Assume (3) holds. By choosing a generating set for $P$ (e.g., all of $P$) we may find a surjection $p: F \onto P$ with $F$ a free $R$-module.
 This map splits by assumption, and thus  $P \oplus \ker(p) \cong F$, so that (5) holds. So (3) $\Rightarrow$ (5).
@@ -2452,6 +2452,9 @@ and in particular this shows $P$ is projective.
 
 It's not free; can you prove it? Tip: Hairy Ball Theorem.
 \end{ex}
+
+
+\begin{comment}
 
 The following technical result is sometimes useful:
 
@@ -2529,7 +2532,7 @@ A {\em pushout} of a diagram
 Show that in the category $\Mod{R}$ the pushout exists and is given (in the notation of Definition \ref{def:pushout}) as an object by \[ D=\frac{ B\bigoplus C}{\{(i(a), -j(a)) \mid a\in A \}}\] with maps $f, g$ given by the inclusions of the
 two summands into $B\oplus C$ followed by the quotient map $B\oplus C\to D$.
 \end{exer}
-\end{comment}
+
 
 \begin{proof} As with the previous proposition, the equivalence of (1) and (2) is essentially by definition, since $\Hom_R(-, E)$ is left exact for any module $E$, so this functor is right exact if and only if it takes injections $i:N'\to N$ to surjections $\Hom_R(i,E):\Hom_R(N,E)\to \Hom_R(N',E)$. 
 Likewise, the equivalence of (3) and (4) follows from the Splitting Theorem. 
@@ -2762,6 +2765,8 @@ The converse does over a PID.
 \end{proof}
 
 
+
+\end{comment}
 
 \printindex
 
