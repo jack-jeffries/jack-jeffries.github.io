@@ -2070,16 +2070,16 @@ The map $b$ is $R$-balanced biadditive in general, and linear with respect to th
 To show $\phi$  is an isomorphism, we construct an inverse. 
 For each $i$ we define a pairing
 $$
-b_\lambda: M_\lambda \times N \to \left(\bigoplus_{\lambda\in\Lambda} M_\lambda \right) \otimes N 
+b_\lambda: M_\lambda \times N \to \left(\bigoplus_{\lambda\in\Lambda} M_\lambda \right) \otimes_R N 
 $$
 by $b_\lambda(x, n) = \iota_\lambda(x) \otimes n$, where $\iota_\lambda: M_\lambda \to \left( \bigoplus_{\lambda\in\Lambda} M_\lambda \right)$ is the canonical inclusion map.
 Then $b_\lambda$ is $R$-balanced biadditive in general, and linear with respect to the specified action in each of the other cases and hence induces a morphism
-$\psi_i:  M_\lambda \otimes_R N \to \left(\bigoplus_{\lambda \in \Lambda} M_\lambda \right) \otimes N$.
+$\psi_i:  M_\lambda \otimes_R N \to \left(\bigoplus_{\lambda \in \Lambda} M_\lambda \right) \otimes_R N$.
 
 By the universal mapping property for coproducts the maps $\psi_\lambda, \lambda\in \Lambda$ 
 determine a morphism 
 $$
-\psi:  \bigoplus_{\lambda\in\Lambda} (M_\lambda \otimes_R N) \to \left(\bigoplus_{\lambda \in \Lambda} M_\lambda \right) \otimes N.
+\psi:  \bigoplus_{\lambda\in\Lambda} (M_\lambda \otimes_R N) \to \left(\bigoplus_{\lambda \in \Lambda} M_\lambda \right) \otimes_R N.
 $$
 
 It is easy to see that both $\psi \circ \phi$ and $\phi \circ \psi$ are the identity maps by observing that they act as the identity on simple tensors.
@@ -2454,7 +2454,7 @@ It's not free; can you prove it? Tip: Hairy Ball Theorem.
 \end{ex}
 
 
-\begin{comment}
+
 
 The following technical result is sometimes useful:
 
@@ -2504,36 +2504,6 @@ since such a map would send $2$ to $1$.
 \end{prop}
 
 
-In the proof we'll use the following notion
-
-\begin{comment}
-\begin{defn}
-\label{def:pushout}
-A {\em pushout} of a diagram 
- $$
-  \xymatrix{
-    A \ar[r]^i \ar[d]^j & B \\
-    C & }
-  $$in a category $\cC$ is a triple $(D,f,g)$ so that the diagram below commutes
-   $$
-  \xymatrix{
-    A \ar[r]^i \ar[d]^j & B \ar[d]^f\\
-    C\ar[r]^g & D}
-    $$
-    and satisfies the following universal property: for any other commutative diagram as above with $D$ replaced by $Y$ there is a unique dotted map  that makes the big diagram below commute
-      $$
-  \xymatrix{
-    A \ar[r]^i \ar[d]^j & B \ar[d]_f\ar[ddr]^{f'} &\\
-    C\ar[r]^g \ar[drr]_{g'}& D \ar@{-->}[dr]& \\
-   & & Y.  }
-   $$
-\end{defn}
-\begin{exer}
-Show that in the category $\Mod{R}$ the pushout exists and is given (in the notation of Definition \ref{def:pushout}) as an object by \[ D=\frac{ B\bigoplus C}{\{(i(a), -j(a)) \mid a\in A \}}\] with maps $f, g$ given by the inclusions of the
-two summands into $B\oplus C$ followed by the quotient map $B\oplus C\to D$.
-\end{exer}
-
-
 \begin{proof} As with the previous proposition, the equivalence of (1) and (2) is essentially by definition, since $\Hom_R(-, E)$ is left exact for any module $E$, so this functor is right exact if and only if it takes injections $i:N'\to N$ to surjections $\Hom_R(i,E):\Hom_R(N,E)\to \Hom_R(N',E)$. 
 Likewise, the equivalence of (3) and (4) follows from the Splitting Theorem. 
 
@@ -2564,7 +2534,7 @@ and I claim that $j$ is injective. The former is clear by construction of $M$: g
 If $j(a) = \overline{(a,0)} = 0$ in $M$, then there is an $n' \in N'$ such
 that $f(n') = a$ and $i(n') = 0$. But $i$ is injective and hence $a = 0$. 
 
-By assumption (i.e. statement (4)), there is a map $q: M \onto  E$ such that $q \circ j = \id_M$. Define $g: N \to E$ as $g := q \circ h$.
+By assumption (i.e. statement (4)), there is a map $q: M \onto  E$ such that $q \circ j = \id_E$. Define $g: N \to E$ as $g := q \circ h$.
 Then $g \circ i = q \circ h \circ i = q \circ j \circ f  = \id_E \circ f = f$. 
 
 This proves $E$ is injective. 
@@ -2583,7 +2553,7 @@ This proves $E$ is injective.
 To see this, just apply the definition to the diagram
 $$
 \xymatrix{
-0 \ar[r] & R \ar[d]_{x} \ar[r]^r & R \ar@{-->}[dl]^{\exists g} \\ 
+0 \ar[r] & R \ar[d]_-{x} \ar[r]^r & R \ar@{-->}[dl]^{\exists g} \\ 
 & E \\
 }
 $$
@@ -2601,7 +2571,7 @@ An $R$-module $E$ is called {\em divisible} if it satisfies for all $x \in E$ an
  For any ring $R$, an $R$-module  $E$ is injective if and only if every diagram of the form represented below in solid arrows
 $$
 \xymatrix{
-0 \ar[r] & J \ar[d]^f \ar[r]^\iota & R \ar@{-->}[dl]^{\exists g} \\ 
+0 \ar[r] & J \ar[d]_-f \ar[r]^\iota & R \ar@{-->}[dl]^{\exists g} \\ 
 & E \\
 }
 $$
@@ -2613,7 +2583,7 @@ where $J$ is an ideal of $R$  and $\iota$ is the inclusion map,  can be complete
   Suppose each diagram as in the statement can be completed and let a diagram
 $$
 \xymatrix{
-0 \ar[r] & N' \ar[d]^f \ar[r]^i & N \ar@{-->}[dl]^{\exists g} \\ 
+0 \ar[r] & N' \ar[d]_-f \ar[r]^i & N \ar@{-->}[dl]^{\exists g} \\ 
 & E \\
 }
 $$
@@ -2766,7 +2736,6 @@ The converse does over a PID.
 
 
 
-\end{comment}
 
 \printindex
 
