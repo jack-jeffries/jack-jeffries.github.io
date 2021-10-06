@@ -2453,7 +2453,7 @@ and in particular this shows $P$ is projective.
 It's not free; can you prove it? Tip: Hairy Ball Theorem.
 \end{ex}
 
-
+\Oct{6}
 
 
 The following technical result is sometimes useful:
@@ -2474,6 +2474,16 @@ $$
 $$
 in which the top row is exact, there exists at least one dotted arrow that causes the triangle to commute.
 \end{defn}
+
+\begin{ex} If $K$ is a field, then $K$ is an injective $K$-module. Given a diagram
+$$
+\xymatrix{
+0 \ar[r] & W \ar[d]_-f \ar[r]^i & V \ar@{-->}[dl] \\ 
+& K \\
+}
+$$
+of $K$ vector spaces, there is a splitting $q$ of $i$, and we can take $f\circ q$ as the desired map.
+\end{ex}
 
 \begin{ex}
 $\Z$ is not an injective $\Z$-module: there is no $\Z$-linear map making the diagram commute below
@@ -2541,15 +2551,16 @@ This proves $E$ is injective.
 \end{proof}
 
 
-\begin{lem} If $\{M_\lambda\}_{\lambda\in \Lambda}$ is a collection of modules, then $\prod_{\lambda\in\Lambda} M_\lambda$ is injective if and only if each $M_\lambda$ is injective.
-\end{lem}
-
-\begin{proof} This holds since there is a natural isomorphism $$\Hom_R(-, \prod_\lambda M_\lambda) \stackrel{\cong}{\Longrightarrow} \prod_\lambda \Hom_R(-,M_\lambda)$$ and a product of functors is exact if and only if each of them is.
-\end{proof}
+\begin{exer} If $\{M_\lambda\}_{\lambda\in \Lambda}$ is a collection of modules, then $\prod_{\lambda\in\Lambda} M_\lambda$ is injective if and only if each $M_\lambda$ is injective.
+\end{exer}
 
 
+\begin{ex} If $K$ is a field and $R$ is a $K$-algebra, then $\Hom_K(R,K)$ is an injective $R$-module. Indeed, $\Hom_R(-,\Hom_K(R,K))\stackrel{\cong}{\implies} \Hom_K(R\otimes_R - ,K) \stackrel{\cong}{\implies} \Hom_K( - ,K)$, which is exact, since $K$ is an injective $K$-vector space.
+\end{ex}
 
-\begin{ex} Suppose $R$ is an integral domain and $E$ is an injective $R$-module. I claim $E$ must have the following property:  for all $x \in E$ and $0 \ne r \in R$, there is an element $y \in E$ such that $ry = x$ i.e., every element of $E$ can be divided by every nonzero element of $R$. 
+
+
+\begin{ex} Suppose $R$ is an integral domain and $E$ is an injective $R$-module. The $E$ is \DEF{divisible}: for every $x\in E$ and $r\in R\smallsetminus 0$, there is a $y\in E$ such that $x=ry$.
 To see this, just apply the definition to the diagram
 $$
 \xymatrix{
@@ -2559,11 +2570,6 @@ $$
 $$
 \end{ex}
 
-We give this necessary condition a suggestive name -- ``divisible".
-
-\begin{defn}
-An $R$-module $E$ is called {\em divisible} if it satisfies for all $x \in E$ and $0 \ne r \in R$, there is an element $y \in E$ such that $ry = x$.
-\end{defn}
 
 
 \begin{thm}[Baer's criterion]
@@ -2601,7 +2607,7 @@ Let us show $\cS$ satisfies the hypotheses of Zorn's Lemma. Suppose $\{(M_i, h_i
 submodule of $N$ (since the collection is totally ordered) and the function $h: M \to E$ defined as $h(m) = h_i(m)$ for any $i$ such that $m \in M_i$ is a well-defined
 $R$-map (again, since the collection is totally ordered). So $(M,h) \in \cS$ and $(M,h) \geq (M_i, h_i)$ for all $i$. 
 
-By Zorn's Lemma, $\cS$ has a maximal element $(M, h)$. It suffices to prove $M = N$. If not pick $x \in N \setminus M$ and let $T = M + Rx$. I will show $h$ 
+By Zorn's Lemma, $\cS$ has a maximal element $(M, h)$. It suffices to prove $M = N$. If not pick $x \in N \smallsetminus M$ and let $T = M + Rx$. I will show $h$ 
 can be extended to $T$, arriving at a contradiction:
 
 Set $I = \{r \in R \mid rx \in M\}$. The map $R \xra{x} T$ (sending $r$ to $tx$) restricts to a map $I \xra{x} M$ by definition of $I$, and so we have a commutative
@@ -2629,6 +2635,8 @@ I leave it to you to prove $\gamma$ is well-defined (note that $m + rx$ can equa
 and $r = r'$) and an $R$-map. Granting this, we clearly have $\gamma|_M = h$. So $(M,h) < (T, \gamma)$ in $\cS$,  a contradiction. It must be the $M = N$, and 
 so we have proven $E$ is injective. 
 \end{proof}
+
+\begin{comment}
 
 \begin{cor} For a PID, $E$ is an injective $R$-module if and only if it is divisible.
 \end{cor}
@@ -2735,7 +2743,7 @@ The converse does over a PID.
 \end{proof}
 
 
-
+\end{comment}
 
 \printindex
 
