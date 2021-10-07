@@ -2636,7 +2636,7 @@ and $r = r'$) and an $R$-map. Granting this, we clearly have $\gamma|_M = h$. So
 so we have proven $E$ is injective. 
 \end{proof}
 
-\begin{comment}
+\Oct{8}
 
 \begin{cor} For a PID, $E$ is an injective $R$-module if and only if it is divisible.
 \end{cor}
@@ -2655,6 +2655,33 @@ can be completed, where $r$ is any element of $R$. If $r = 0$, we may take $g = 
 \begin{ex} Using the above criterion, $\Q$, $\Q/\Z$, and $\C^\times$ 
 are injective $\Z$-modules.  
 \end{ex}
+
+Not every divisible module is injective.
+
+\begin{ex}
+Let $K$ be a field,  $R=K[x,y]$, and $Q=K(x,y)$ be the fraction field. Since $Q$ is divisible, $Q/R$ is as well. However, $Q/R$ is not injective.
+
+Let $I=(x,y)$, and consider the map $f:I\to Q/R$ given by $f(ax+by)=a [\frac{1}{y}]$. To see that this is well defined, note that if $ax+by=cx+dy$, then $(a-c)x=(d-b)y$, so $y|(a-c)$, as $K[x,y]$ is a UFD; then $f(ax+by)-f(cx+dy) = (a-c)[\frac{1}{y}] =0$. It is easy to see that $f$ is $R$-linear.
+
+We claim that $f$ cannot be extended to $g:R\to Q/R$. Indeed, given an extension $g$, we have $x g(1) = g(x) = f(x) = [\frac{1}{y}]$, so $g(1) = [\frac{1}{xy}]$, but then we would have $f(y) = g(y) = y g(1) = [\frac{1}{x}]$, but $f(y)=0$.
+\end{ex}
+
+Note that every $R$-module admits a surjection from a projective $R$-module: there is a surjection from a free module. The dual statement is true for injectives as well.
+
+\begin{prop} Let $M$ be an $R$-module. There exists an injective module $E$ and an injective homomorphism $i:M\to E$.
+\end{prop}
+\begin{proof}
+First, we deal with the case that $R=\Z$.
+
+Observe that if $\Z x$ is a nonzero cyclic group, there is a nonzero additive map $M\to \Q/\Z$: map $x$ to $[1/n]$ for some $n$ that divides the order of $x$ if finite, or to an arbitrary $[1/n]$ if infinite. Now, for an arbitrary abelian group $A$, for any nonzero $x$ we have
+\[ 0 \to \Z x \to A \to A/ \Z x \to 0\]
+exact, so since $\Q/\Z$ is injective, we can extend any map from $\Z x \to \Q/\Z$ to a map from $A$. For every nonzero $a\in A$, fix an additive map $\phi_a: A \to \Q/\Z$ and let $\phi:A \to \prod_{a\in A\smallsetminus 0} \Q/\Z$ be given by $\phi(x) = (\phi_a(x))_{a\in A\smallsetminus 0}$. By construction this is an injective homomorphism, and $\Q/\Z$ is an injective module.
+
+Now let $R$ be arbitrary, and $M$ be an $R$-module. Considering $M$ as an abelian group, there is an injective abelian group $D$ and additive map $j:M\to D$ by the case above. By left exactness of $\Hom$, there is an injection $\Hom_\Z(R,M) \xra{j_*} \Hom_\Z(R,D)$. This map is $R$-linear: \[ r j_* (\alpha)(s) = r(j \alpha)(s)=j\alpha(sr) = j (r \alpha)(s)= j_*(r \alpha)(s).\]
+Furthermore, there is an injection $M \cong \Hom_R(R,M) \subseteq \Hom_\Z(R,M)$. Put together, we obtain an $R$-linear injection $M\to \Hom_\Z(R,D)$. 
+
+It remains to see that $\Hom_\Z(R,D)$ is an injective $R$-module. But \[\Hom_R(- \Hom_\Z(R,D)) \stackrel{\cong}{\implies} \Hom_\Z(R\otimes_R - , D)  \stackrel{\cong}{\implies} \Hom_\Z ( - ,D)\] is exact, so this is the case.
+\end{proof}
 
 \sssec{Flat modules}
 

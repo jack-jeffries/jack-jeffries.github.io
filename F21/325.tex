@@ -2920,7 +2920,7 @@ Since this holds for all $n$, $\{a_n\}_{n=1}^\infty$ is bounded above by $k+1$. 
 
 \begin{ex} The decimal expansion $0.25$ corresponds to $\frac{1}{4}$. The decimal expansion $0.99999\dots$ corresponds to $1$.\end{ex}
 
-\begin{comment}
+
 
 
 
@@ -2950,24 +2950,7 @@ Since this holds for all $n$, $\{a_n\}_{n=1}^\infty$ is bounded above by $k+1$. 
 
 
 
-\begin{ex}
- What is wrong with the following ``proof by induction'':
-
- \begin{quote} I claim that all horses are of the same color. To prove this, I will show that for every set of $n$ horses, all the horses in that set have the same color.
-
-   This is clearly true when $n = 1$. Let $n \in \N$ and assume it is true for any set of $n$ horses. Now consider an arbitrary set of $n+1$ horses, call them $h_1, h_2, \dots, h_{n+1}$. Divide
-   this set into two subsets of $n$ horses each, namely  $h_1, h_2, \dots, h_n$ and $h_2, h_3, \dots, h_{n+1}$. By induction, each of these two sets of horses are all of the same color.
-   But then since $h_2$ belongs to both sets, it follows that all the horses in the full list $h_1, \dots, h_{n+1}$ must be all of the same color. 
-
-   By PMI, for any $n \in \N$, all sets of $n$ horses have the same color. Thus all horses have the same color.
- \end{quote}
-\end{ex}
-
-
-
-\section{Wednesday, March 9}
-
-I want to briefly discuss the relationship between induction and recursion, in the sense of recursively defined sequences. Recall that one way of describing a sequence is by a pair of formulas: one that gives a value for $a_1$, and another that gives a value for $a_{n+1}$ in terms of $a_{n}$. The fact that such a pair of formulas yields a well-defined value of $a_n$ for every $n\in \N$ is justified by induction. If we take $P_n$ to be the statement that ``the formulas determine a unique value for $a_n$'', then $P_1$ is true since we have a given value for $a_1$, and $P_n$ is true implies that $P_{n+1}$ is true, since we have a formula for $a_{n+1}$ in terms of $a_n$. By induction, $P_n$ is true for all $n\in \N$.
+\Oct{8}
 
 The next example of a proof by induction will establish a fact that is perhaps
 intuitively obvious.  Since it will play an important role in later proofs, we state it as a Lemma here:
@@ -2984,7 +2967,7 @@ intuitively obvious.  Since it will play an important role in later proofs, we s
 	the statement that $b_n \geq n$. 
 	
 	$P_1$ is true since $b_1 \in \N$ and so $b_1 \geq 1$. Given $k \in \N$, assume $P_k$ is true; that is, assume $b_k \geq k$. Since $b_{k+1} >
-	b_k$ and both are natural numbers, we have $b_{k+1} \geq b_k + 1 \geq k+1$; that is, $P_{k+1}$ is true too. By PMI, $P_n$ is true for all $n \in \N$. 
+	b_k$ and both are natural numbers, we have $b_{k+1} \geq b_k + 1 \geq k+1$; that is, $P_{k+1}$ is true too. By induction, $P_n$ is true for all $n \in \N$. 
 \end{proof}
 
 
@@ -3243,7 +3226,7 @@ $\{a_{n_k}\}_{k=1}^\infty$ converges to $L$.
 
 \item If there is a subsequence of this sequence that diverges, then the sequence itself diverges.
 
-\item If there are two subsequence of this sequence that converge to different values, then  the sequence itself diverges.
+\item If there are two subsequences of this sequence that converge to different values, then  the sequence itself diverges.
 
 \end{enumerate}
 
