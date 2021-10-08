@@ -2629,8 +2629,8 @@ $$
 $$
 in which the inner square and the outer quadrilateral both commute.
 I claim there is an $R$-map $\gamma: T \to E$ (the dashed arrow in the diagram) causing both triangles to commute. It is given abstractly by the fact that the square in this
-diagram is a push-out. More concretely, 
-define $\gamma: T \to E$ by $\gamma(m + rx) = h(m) + \beta(r)$ for $m \in M$ and $r \in R$.  
+diagram is a push-out. 
+Define $\gamma: T \to E$ by $\gamma(m + rx) = h(m) + \beta(r)$ for $m \in M$ and $r \in R$.  
 I leave it to you to prove $\gamma$ is well-defined (note that $m + rx$ can equal $m' + r'x$ without $m' = m$
 and $r = r'$) and an $R$-map. Granting this, we clearly have $\gamma|_M = h$. So $(M,h) < (T, \gamma)$ in $\cS$,  a contradiction. It must be the $M = N$, and 
 so we have proven $E$ is injective. 
@@ -2663,7 +2663,7 @@ Let $K$ be a field,  $R=K[x,y]$, and $Q=K(x,y)$ be the fraction field. Since $Q$
 
 Let $I=(x,y)$, and consider the map $f:I\to Q/R$ given by $f(ax+by)=a [\frac{1}{y}]$. To see that this is well defined, note that if $ax+by=cx+dy$, then $(a-c)x=(d-b)y$, so $y|(a-c)$, as $K[x,y]$ is a UFD; then $f(ax+by)-f(cx+dy) = (a-c)[\frac{1}{y}] =0$. It is easy to see that $f$ is $R$-linear.
 
-We claim that $f$ cannot be extended to $g:R\to Q/R$. Indeed, given an extension $g$, we have $x g(1) = g(x) = f(x) = [\frac{1}{y}]$, so $g(1) = [\frac{1}{xy}]$, but then we would have $f(y) = g(y) = y g(1) = [\frac{1}{x}]$, but $f(y)=0$.
+We claim that $f$ cannot be extended to $g:R\to Q/R$. Indeed, given an extension $g$, write $g(1)=[\frac{a}{b}]$ with $a,b\in R$  and $a/b$ in lowest terms (which makes sense since $R$ is a UFD). Note that $b$ cannot be a unit, since then $a/b\in R$, so $[\frac ab]=0$, so $g$ is the zero map and hence $f$ is the zero map, which it is not. We have $0=f(y) = g(y) = y g(1) = y [\frac{a}{b}]$, so $\frac{ya}{b}\in R$. Thus $b|y$ in $R$, so without loss of generality, $b=y$. We also have $ [\frac{1}{y}]= f(x) = g(x) = x g(1)= x[\frac ay]$, which means that $ \frac{1-ax}{y} \in R$, so $y|(1-ax)$, which is a contradiction. 
 \end{ex}
 
 Note that every $R$-module admits a surjection from a projective $R$-module: there is a surjection from a free module. The dual statement is true for injectives as well.
@@ -2680,7 +2680,7 @@ exact, so since $\Q/\Z$ is injective, we can extend any map from $\Z x \to \Q/\Z
 Now let $R$ be arbitrary, and $M$ be an $R$-module. Considering $M$ as an abelian group, there is an injective abelian group $D$ and additive map $j:M\to D$ by the case above. By left exactness of $\Hom$, there is an injection $\Hom_\Z(R,M) \xra{j_*} \Hom_\Z(R,D)$. This map is $R$-linear: \[ r j_* (\alpha)(s) = r(j \alpha)(s)=j\alpha(sr) = j (r \alpha)(s)= j_*(r \alpha)(s).\]
 Furthermore, there is an injection $M \cong \Hom_R(R,M) \subseteq \Hom_\Z(R,M)$. Put together, we obtain an $R$-linear injection $M\to \Hom_\Z(R,D)$. 
 
-It remains to see that $\Hom_\Z(R,D)$ is an injective $R$-module. But \[\Hom_R(- \Hom_\Z(R,D)) \stackrel{\cong}{\implies} \Hom_\Z(R\otimes_R - , D)  \stackrel{\cong}{\implies} \Hom_\Z ( - ,D)\] is exact, so this is the case.
+It remains to see that $\Hom_\Z(R,D)$ is an injective $R$-module. But \[\Hom_R(- , \Hom_\Z(R,D)) \stackrel{\cong}{\implies} \Hom_\Z(R\otimes_R - , D)  \stackrel{\cong}{\implies} \Hom_\Z ( - ,D)\] is exact, so this is the case.
 \end{proof}
 
 \sssec{Flat modules}
@@ -2713,6 +2713,28 @@ All projectives are flat.
 You showed on the homework that the functor $- \otimes_R S^{-1}R$ is naturally isomorphic to the localization functor, which is exact.
 \end{proof}
 
+\begin{comment}
+
+\begin{lem}\label{flat implies torsion free}
+	If $R$ is a domain and $M$ is a flat $R$-module, then $M$ is torsion free.
+\end{lem}
+
+\begin{proof}
+	For $r\in R\smallsetminus 0$, consider the short exact sequence
+	\[ 0 \to R \xra{r} R \to R/rR \to 0\]
+	and tensor with $M$ to get
+	\[ 0 \to M \xra{r} M \to M/rM \to 0\]
+	which is exact by flatness. Injectivity of the map of multiplication by $r$ on $M$ means that no element of $M$ is killed by $r$.
+\end{proof}
+
+In general, the converse does not hold.
+
+\begin{ex}
+	Let $k$ be a field and $R = k[x,y]$. Consider the ideal $\fm = (x,y)$. This is a submodule of the torsion free module $R$, and thus torsion free. However, it is not flat. For example, when we apply $R/\fm \otimes_R -$ to the inclusion	$\fm \subseteq R$ we obtain a map of $R/\fm$-vector spaces
+	$$\xymatrix{\fm/\fm^2 \ar[r] & R/\fm}.$$
+	This map cannot possibly be injective: $\fm / \fm^2$ is a $2$-dimensional $R/\fm$-vector space, and $R/\fm$ is $1$-dimensional.
+\end{ex}
+
 We can test whether a given module if flat by looking at the finitely generated submodules.
 
 \begin{thm}
@@ -2729,7 +2751,7 @@ We can test whether a given module if flat by looking at the finitely generated 
 	
 	Let's say that $u = a_1 \otimes n_1 + \cdots + a_t \otimes n_t$. Consider the tensor product $B \otimes_R N$ as a quotient of the free abelian group with generating set consisting of elements of $B \times N$ by the submodule $Y$ with all the necessary relations we need to impose. This gives us a short exact sequence
 	$$\xymatrix{0 \ar[r] & Y \ar[r] & F \ar[r]^-\pi & B \otimes_R N \ar[r] & 0.}$$
-	The fact that $i(a_1) \otimes  n_1 + \cdots + i(a_t) \otimes n_t= 0$ means we can rewrite this element as $\pi(y)$ for some $y \in Y$. This element $y$ is a $\Z$-linear combination of elements of finitely many $(b,n) \in B \times N$. Let $m_1, \ldots, m_s$ be all the $M$-coordinates of those elements.
+	The fact that $i(a_1) \otimes  n_1 + \cdots + i(a_t) \otimes n_t= 0$ means we can rewrite this element as $\pi(y)$ for some $y \in Y$. This element $y$ is a $\Z$-linear combination of elements of finitely many $(b,n) \in B \times N$. Let $m_1, \ldots, m_s$ be all the $N$-coordinates of those elements.
 
 	Now we take $M$ to be the finitely generated submodule of $N$ generated by $n_1, \ldots, n_t$ and $m_1, \ldots, m_s$, and $v = a_1 \otimes n_1 + \cdots + a_t \otimes n_t \in A \otimes_R M$. Now
 	$$(1_A \otimes j)(a_1 \otimes n_1 + \cdots + a_t \otimes n_t) = a_1 \otimes n_1 + \cdots + a_t \otimes n_t \in A \otimes_R N,$$
@@ -2738,23 +2760,8 @@ We can test whether a given module if flat by looking at the finitely generated 
 	as desired.
 \end{proof}
 
-\begin{lem}\label{flat implies torsion free}
-	If $R$ is a domain and $M$ is a flat $R$-module, then $M$ is torsion free.
-\end{lem}
 
-\begin{proof}
-	Let $Q = \textrm{frac}(R)$ be the fraction field of $R$, which is a torsion free $R$-module. Now $M \otimes_R Q$ is a $Q$-vector space, so isomorphic to a direct sum of copies of $Q$. In particular, $M \otimes_R Q$ is torsion free as an $R$-module. Since $M$ is flat, the inclusion $R \subseteq Q$ induces an injective $R$-module map
-	$$\xymatrix{0 \ar[r] & M \otimes_R R \ar[r] & M \otimes_R Q,}$$
-	and since $M \cong M \otimes_R R$, we conclude that $M$ is isomorphic to a submodule of $M \otimes_R Q$. Submodules of torsion free modules are also torsion free, so $M \otimes_R Q$ is torsion free.
-\end{proof}
 
-In general, the converse does not hold.
-
-\begin{ex}
-	Let $k$ be a field and $R = k[x,y]$. Consider the ideal $\fm = (x,y)$. This is a submodule of the torsion free module $R$, and thus torsion free. However, it is not flat. For example, when we apply $R/\fm \otimes_R -$ to the inclusion	$\fm \subseteq R$ we obtain a map of $R/\fm$-vector spaces
-	$$\xymatrix{\fm/\fm^2 \ar[r] & R/\fm}.$$
-	This map cannot possibly be injective: $\fm / \fm^2$ is a $2$-dimensional $R/\fm$-vector space, and $R/\fm$ is $1$-dimensional.
-\end{ex}
 
 
 The converse does over a PID.
