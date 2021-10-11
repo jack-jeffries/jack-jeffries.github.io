@@ -3338,7 +3338,7 @@ We can improve this a bit:
 In particular, the sequence $\{q_n\}_{n=1}^\infty$ in this Corollary has the following property: For each rational number $q$, there is a subsequence of it that converges to
 $q$. Namely, for any $q \in \Q$,  form the constant subsequence $q,q,q, \dots$ of the sequence, which is possible since $q$ occurs an infinite number of times. 
 
-\begin{comment}
+\Oct{11}
 
 In fact, we can do even better: I claim that every {\em real} number occurs as a limit of the sequence of the Corollary!
 
@@ -3380,7 +3380,7 @@ Recall that if $d_1,d_2,d_3,\dots$ is a sequence of ``digits'', where $d_i\in\{0
 \[ q_n = \frac{d_1}{10^1} + \frac{d_2}{10^2} + \cdots + \frac{d_n}{10^n}\]
 converges, and we say that $.d_1d_2d_3\cdots$ is a \textit{decimal expansion} for the real number $r=\lim_{n\to \infty} q_n$.
 
-\section{Monday, March 15}
+
 
 
 \begin{thm}[Cantor's Theorem] There is no sequence that contains every real number.
@@ -3399,11 +3399,9 @@ converges, and we say that $.d_1d_2d_3\cdots$ is a \textit{decimal expansion} fo
 	$$
 	where each $d_{i,j}\in \{0,1,2,3,4,5,6,7,8,9\}$ is a digit. Now form a real number $x$ as $0.e_1 e_2 e_3 \cdots$ where the $e_i$'s are digits chosen as follows: 
 	Let 
-	\[e_1=\begin{cases} 1 & \text{if} \ d_{1,1}\neq 1\\
-	2 & \text{if}\ d_{1,1}= 1,\end{cases} \ e_2=\begin{cases} 1 & \text{if} \ d_{2,2}\neq 1\\
-	2 & \text{if}\ d_{2,2}= 1,\end{cases} \ e_3=\begin{cases} 1 & \text{if} \ d_{3,3}\neq 1\\
-	2 & \text{if}\ d_{3,3}= 1,\end{cases}\]
-	and so on. In particular, $e_i\neq d_{i,i}$ for every $i$.
+	\[e_i=\begin{cases} 9 & \text{if} \ d_{i,i}\leq 5\\
+	0 & \text{if}\ d_{i,i}> 5.\end{cases}\]
+	 In particular, $e_i\neq d_{i,i}$ for every $i$.
 	 Then 
 	$x \ne a_1$ since these two numbers have different  first digits, 
 	$x \ne a_2$ since these two numbers have different  second digits, etc.; in general, for any $n$, $x \ne a_n$ since these two numbers have different digits in
@@ -3412,7 +3410,7 @@ converges, and we say that $.d_1d_2d_3\cdots$ is a \textit{decimal expansion} fo
 	Thus $x$ is not a member of this sequence, contrary to what we assumed. 
 \end{proof}
 
-It is worth noting that the proof given above is not quite correct as written: just because two decimal expansions have different digits does not mean that they yield different numbers. For example, $ 1 = 1.0000\ldots = 0.99999\ldots$ However, if a number has two decimal expansions, one of them ends in all $0$'s and the other ends in all $9$'s, so with our choices above, we are safe.
+It is worth noting that the proof given above needs a little more justification because two different decimal expansions can converge to the same number. I'll leave it as a challenge to you to prove that 
 
 
 Our next big theorem has a very short statement, but is surprisingly hard to prove.
@@ -3446,7 +3444,7 @@ The proof for the case of sequences that are not bounded below is similar.
 \end{proof}
 
 
-
+\begin{comment}
 
 \begin{lem} \label{lem214b}
 Let $\{a_n\}_{n=1}^\infty$ be a sequence.
