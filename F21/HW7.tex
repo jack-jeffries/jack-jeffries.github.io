@@ -1,0 +1,156 @@
+\documentclass{amsart}
+\usepackage{amstext,amsfonts,amssymb,amscd,amsbsy,amsmath}
+\usepackage{geometry}[margin=.7in]
+\pagestyle{empty}
+%\parindent = 0in
+
+
+\def\sol#1{{\bf Solution: } #1}
+%\def\sol#1{}
+\def\bl{\vskip .1in}
+\def\star{${}^*$}
+\def\cS{\mathcal S}
+\def\cT{\mathcal T}
+\def\cB{\mathcal B}
+
+\def\R{\mathbb R}
+\def\N{\mathbb N}
+\def\Q{\mathbb Q}
+\def\Z{\mathbb Z}
+
+\def\cC{\mathcal C}
+
+\def\e{\epsilon}
+\def\d{\delta}
+
+\begin{document}
+
+
+
+\begin{center}
+{\large\bfseries
+Math 325-002 --- Problem Set \#7\\
+Due: Wednesday, October 22 by 5 pm}
+\end{center}
+
+
+
+
+
+{\bf Instructions:} You are encouraged to work together on these
+problems, but each student should hand in their own final draft,
+written in a way that indicates their individual understanding of
+the solutions. Never submit something for grading
+that you do not completely understand. 
+
+Please write neatly, using complete sentences and correct
+punctuation. Label the problems clearly. 
+
+
+
+
+
+
+\begin{enumerate}
+
+
+	\item Define a sequence $\{a_n\}_{n=1}^\infty$ recursively by $a_1 = 2$ and $a_n = \frac{a_{n-1}}{2} + \frac{1}{a_{n-1}}$ for all $n \geq 2$. 
+	
+	\begin{enumerate}
+		
+		\item Prove $a_n > 0$ for all $n \in \N$ by induction on $n$. 
+		
+		\item Prove\footnote{Hint: Write $a_n-2$ in terms of $a_{n-1}$, and factor the expression.} $a_n^2 \geq 2$ for all $n \in \N$. 
+		
+		\item Prove\footnote{Hint: Consider $a_n - a_{n-1}$ and use (b).} the sequence is decreasing.
+		
+		\item Since the sequence is decreasing and bounded below, it
+		necessarily converges. 
+		Determine what the sequence converges to.\footnote{Hint: Use that
+		$$
+		\lim_{n \to \infty} a_n = \frac{\lim_{n \to \infty} a_{n-1}}{2} +
+		\frac{1}{\lim_{n \to \infty} a_{n-1}}
+		$$
+		so that if we set $L = \lim_{n \to \infty} a_n$ then we have $L =
+		\frac{L}2 + \frac{1}{L}$.}
+		
+		\
+		
+			\end{enumerate}
+		
+			\item For each of the following, give an explicit example as indicated. No proofs are necessary.
+	
+	\begin{enumerate}
+		
+		\item A sequence that has a subsequence that converge to $1$, another subsequence that converges to $2$, and a third subsequence that converges to $3$. 
+		
+		\item A sequence that has one subsequence that is monotone and converges to $0$ and another subsequence that is monotone and diverges to $+ \infty$.
+		
+		\item A sequence of natural numbers such that for each $j \in \N$, it has a subsequence that converges to $j$. (Feel free to just describe the pattern -- no formulas needed.
+		As a hint, recall that the constant sequence $j$ converges to $j$.)
+		
+	\end{enumerate}
+	
+	\
+	
+	\item Prove that if $\{a_n\}_{n=1}^{\infty}$ is a sequence that diverges to $\infty$, then every subsequence of $\{a_n\}_{n=1}^{\infty}$ diverges to $\infty$.
+	
+	\
+	
+	\item Prove that for every real number $x$, there is a sequence of irrational numbers that converges to $x$.
+	
+	\
+	
+		\item  Let $\{a_n\}_{n=1}^\infty$ be any sequence and $L$ any real
+	number. 
+	Prove that if $\{a_n\}_{n=1}^\infty$ does not converge to $L$,  then
+	there exists an $\e > 0$ and a subsequence
+	$\{a_{n_k}\}_{k=1}^\infty$ such that $|a_{n_k} - L| \geq \e$ for all $k$.
+
+	
+\
+
+\item Determine whether each of the following sequences is Cauchy, and prove your answer just using the definition of Cauchy (not any theorems).
+	\begin{enumerate}
+		
+	%	\item $\left\{   \frac{(-1)^n}{n}  \right\}_{n=1}^\infty$
+		
+			\item $\left\{ \sqrt{n}  \right\}_{n=1}^\infty$
+			
+			
+		\item $\left\{  \frac{n}{n+1}   \right\}_{n=1}^\infty$
+		
+	
+		
+	\end{enumerate}
+
+
+\end{enumerate}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
