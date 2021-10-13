@@ -3019,12 +3019,23 @@ A module has finite length if it can be built from finitely many simple modules 
 	with $M_{i+1}/M_i$ simple for each $i$; such a filtration is called a \DEF{composition series} of \emph{length} $n$. We say a composition series is \DEF{strict} if $M_i \neq M_{i+1}$ for all $i$. Two composition series are \DEF{equivalent} if the collections of composition factors $M_{i+1}/M_i$ are the same up to reordering. The \DEF{length} of a finite length module $M$, denoted \Def{$\ell(M)$}, is the minimum of the lengths of a  composition series~of~$M$. If $M$ has does not have finite length, we say that $M$ has infinite length, or $\ell(M) = \infty$.
 \end{defn}
 
+\begin{rem} Let \[ 0 \to A \xra{i} B \xra{p} C\to 0\]
+be a short exact sequence. Given filtrations / composition series / strict composition series
+\[ A_\bullet: \qquad 0 = A_0 \subseteq A_1 \subseteq A_2 \subseteq \cdots \subseteq A_n = A\]
+and
+\[ C_\bullet: \qquad 0 = C_0 \subseteq C_1 \subseteq C_2 \subseteq \cdots \subseteq C_n = C\]
+we can make a filtration / composition series / strict composition series of $B$ by
+\[ 0 = i(A_0) \subseteq i(A_1) \subseteq i(A_2) \subseteq \cdots \subseteq i(A_n) = i(A) = p^{-1}(C_0) \subseteq p^{-1}(C_1) \subseteq p^{-1}(C_2) \subseteq \cdots \subseteq p^{-1}(C_n) = B.\]
+
+Conversely, given a filtration / composition series / strict composition series of $B$ that contains $i(L)$ as a term, we can obtain filtrations / composition series / strict composition series of $A$ and $C$ by applying $i^{-1}$ to the terms up through $i(L)$ and applying $p$ to the terms from $i(L)$ on. However, not every filtration / composition series of a module will contain a fixed submodule as a term.
+\end{rem}
+
 
 \begin{thm}[Jordan-Holder theorem]
 Let $M$ be a module of finite length.
 \begin{enumerate}
 		\item If $L\subseteq M$ is a proper submodule, then $\ell(L) < \ell(M)$.
-		\item If $L\subseteq M$ is a nonzero submodule and $N=M/L$, then $\ell(N)< \ell(M)$.
+		\item If $L\subseteq M$ is a nonzero submodule and $\overline{M}=M/L$, then $\ell(\overline{M})< \ell(M)$.
 		\item Any filtration of $M$ can be refined to a composition series.
 %	\item Any two composition series of $M$ admit refinements that are equivalent.
 	\item All strict composition series for $M$ are equivalent, and hence have the same length.
@@ -3033,49 +3044,57 @@ Let $M$ be a module of finite length.
 
 
 \begin{proof}
-If $n := \ell(M)$, consider a strict composition series of $M$ of length $n$, say
-	\[\tag{$\alpha$}  0 = M_0 \subsetneqq M_1 \subsetneqq M_2 \subsetneqq \cdots \subsetneqq M_n = M.\]
+If $m := \ell(M)$, consider a strict composition series of $M$ of length $m$, say
+	\[M_\bullet: \qquad  0 = M_0 \subsetneqq M_1 \subsetneqq M_2 \subsetneqq \cdots \subsetneqq M_m = M.\]
 	
 \begin{enumerate}
 	\item Consider the filtration
-	$$ 0 = M_0 \cap L \subseteq M_1 \cap L \subseteq M_2 \cap L \subseteq \cdots \subseteq M_n \cap L = L.$$
+	$$L_\bullet: \qquad  0 = M_0 \cap L \subseteq M_1 \cap L \subseteq M_2 \cap L \subseteq \cdots \subseteq M_m \cap L = L.$$
 	By the Second Isomorphism Theorem, its composition factors satisfy
-	$$\frac{M_{i+1} \cap L}{M_i \cap L} \cong \frac{M_{i+1} \cap L + M_i} {M_i}.$$
-	This is a submodule of $M_{i+1}/M_i$, which by assumption is simple. Then either 
-	$$(M_{i+1} \cap L + M_i) / M_i = 0 \quad \textrm{ or } \quad (M_{i+1} \cap L + M_i) / M_i = M_{i+1} / M_i.$$
-	The quotients that are zero correspond to terms that we can delete; the remaining ones are simple modules. The resulting filtration is a strict composition series for $N$, so this shows that $\ell(L) \leqslant n$. Moreover, if there are no zero coefficients to delete, then 
-	$$(M_{i+1} \cap L + M_i) / M_i = M_{i+1} / M_i$$
-	for all $i$, and in particular when we take $i + 1 = n$ we obtain
-	$$L + M_{n-1} = M_n \cap L + M_{n-1} = M_n = M,$$ 
-	Since $M/M_{n-1}$ is simple by assumption, we must have $L = M$. This contradicts that $L$ is a proper submodule, so $\ell(L) < n$.
-	
+	$$\frac{M_{i+1} \cap L}{M_i \cap L} = \frac{M_{i+1} \cap L}{(M_{i+1} \cap L) \cap M_i} \cong \frac{M_{i+1} \cap L + M_i} {M_i}.$$
+	The right hand side is a submodule of $M_{i+1}/M_i$, which by assumption is simple, so our filtration is in fact a composition series of length $n$. Then for any $i$ either 
+	$$\frac{M_{i+1} \cap L}{M_i \cap L} = 0 \quad \textrm{ or } \quad \frac{M_{i+1} \cap L}{M_i \cap L}\cong \frac{M_{i+1}}{M_i}.$$
+	We claim that the latter case does not hold for all $i$: if it did, we would have $0=M_0 = M_0 \cap L$, and inductively $M_{i+1} \cap L = M_{i+1}$ for all $i$ and in particular for $i=m-1$, we have $M = M\cap L$, contradicting that $L$ is proper. Thus, for some $i$, the first case holds. We can then skip that $i$ and obtain a composition series of length less than $n$, so $\ell(L)<m$.	
 	\item Consider the filtration
-	\[ 0 = \frac{M_0 + L }{L} \subseteq \frac{M_1 + L }{L} \subseteq \cdots \subseteq \frac{M_n + L }{L} = N.\]
+	\[ \overline{M}_\bullet: \qquad 0 = \frac{M_0 + L }{L} \subseteq \frac{M_1 + L }{L} \subseteq \cdots \subseteq \frac{M_n + L }{L} = \overline{M}.\]
 	The factors satisfy
-	\[ \frac{(M_{i+1} + L )/ L }{(M_i + L) / L} \cong \frac{M_{i+1} + L}{M_{i} + L} \cong \frac{M_{i+1} + (M_i+L)}{M_i+L}\cong \frac{M_{i+1} }{M_{i+1} \cap( M_i + L)},\] and since $M_i \subseteq M_{i+1} \cap (M_i+L)$, these are quotient modules of the simple module $M_{i+1}/M_i$, so this is a composition series. Again we discard the zero factors to get a strict series. If there are no zero factors, then $M_{i+1} \cap (M_i+L) = M_{i}$ for all $i$, so \[ \frac{M_{i+1} + L}{M_{i+1}} \cong \frac{L+M_i}{(L+M_i) \cap M_{i+1}} =\frac{L+M_i}{M_i}\]
-	for all $i$, and hence $L \cong (L+M_0)/M_0 \cong (L+M_n)/M_n \cong 0$, contradicting that $L\neq 0$.
+	\[ \frac{(M_{i+1} + L )/ L }{(M_i + L) / L} \cong \frac{M_{i+1} + L}{M_{i} + L} \cong \frac{M_{i+1} + (M_i+L)}{M_i+L}\cong \frac{M_{i+1} }{M_{i+1} \cap( M_i + L)},\] and since $M_i \subseteq M_{i+1} \cap (M_i+L)$, these are quotient modules of the simple module $M_{i+1}/M_i$, so this is a composition series. Then for any $i$ either 
+	$$\frac{(M_{i+1} + L )/ L }{(M_i + L) / L}  = 0 \quad \textrm{ or } \quad \frac{M_{i+1} }{M_{i+1} \cap( M_i + L)}  \cong  \frac{M_{i+1}}{M_i}.$$
+
+	We claim that the latter case does not hold for all $i$: if it did, we would have then $M_{i+1} \cap (M_i+L) = M_{i}$ for all $i$, so \[ \frac{M_{i+1} + L}{M_{i+1}} \cong \frac{L+M_i}{(L+M_i) \cap M_{i+1}} =\frac{L+M_i}{M_i}\]
+	for all $i$, and hence $L \cong (L+M_0)/M_0 \cong (L+M_n)/M_n \cong 0$, contradicting that $L\neq 0$. Thus, for some $i$, the first case holds, and we can skip that $i$ to obtain a composition series of length less than $n$, so $\ell(\overline{M})<m$.
+	
 		 
-	\item We proceed by induction on length again. Given a filtration of $M$, we can suppose that there is some nonzero proper submodule $L$ in the filtration, since otherwise we could just take any composition series. Then $L$ and $M/L$ has length less than $M$. The filtration up to $L$ can be refined to a strict composition series by the induction hypothesis, and the filtration from $L$ to $M$ taken mod $L$ can be refined to a strict composition series for $M/L$; pulling back we get the strict composition series we want.
+	\item We proceed by induction on length again. Given a filtration of $M$, we can suppose that there is some nonzero proper submodule $L$ in the filtration, since otherwise we could just take any composition series. Then $L$ and $\overline{M}$ has length less than $M$. The filtration up to $L$ can be refined to a strict composition series by the induction hypothesis, and the filtration from $L$ to $M$ taken mod $L$ can be refined to a strict composition series for $\overline{M}$; pulling back as in the remark above, we get the strict composition series we want.
 	
 	
-	\item We show by induction on $n$ that for any module of length $n$, all of its strict composition series are equivalent.
-	Assume that $\ell(M)=n$. If $n=1$, the claim is clear.
+	\item We show by induction on $m$ that for any module of length $m$, all of its strict composition series are equivalent.
+	Assume that $\ell(M)=m$. If $m=1$, the claim is clear since we are dealing with a simple module.
 	Suppose that
-	$$0 = N_0 \subsetneqq N_1 \subsetneqq \cdots \subsetneqq N_k = M$$
-	is another strict composition series for $M$, so $k\geq n$. If $N_k=M_{n-1}$, then the two composition series we have for $M_{n-1}$ are equivalent by induction, so the two given series are equivalent. If $N_k \neq M_{n-1}$, set $K=N_k \cap M_{n-1}$. Since $M/M_{n-1}$ is simple, we must have $N_{k-1}+M_{n-1} = M$. By the second isomorphism theorem, we then have
-	\[\frac{M}{M_{n-1}} = \frac{M_{n-1}+N_{k-1}}{M_{n-1}} \cong \frac{N_{k-1}}{K}\]
-	and similarly $M/N_{k-1} \cong M_{n-1} / K$, and both of these modules are simple.
+	$$N_\bullet: \qquad 0 = N_0 \subsetneqq N_1 \subsetneqq \cdots \subsetneqq N_n = M$$
+	is another strict composition series for $M$, so $n\geq m$. If $N_{n-1}=M_{m-1}$, then since $\ell(M_{m-1})\leq m-1$ the two composition series we have for $M_{m-1}$ are equivalent by induction, so the two given series are equivalent. 
+	
+	If $N_{n-1} \neq M_{m-1}$, since $M/M_{m-1}$ is simple, $M_{m-1}$ is not properly contained in $N_{n-1}$, so the image of $M_{m-1}$ in $M/N_{n-1}$ is nonzero, so equals all of $M$, which means that  $N_{n-1}+M_{m-1} = M$. Set $K=N_{n-1}\cap M_{m-1}$. By the second isomorphism theorem, we then have
+	\[\frac{M}{M_{m-1}} = \frac{M_{m-1}+N_{n-1}}{M_{m-1}} \cong \frac{N_{n-1}}{K}\]
+	and similarly $M/N_{n-1} \cong M_{m-1} / K$, and both of these modules are simple.
+	
+	
 	Fix a strict composition series for $K$:
-$$0 = K_0 \subsetneqq K_1 \subsetneqq \cdots \subsetneqq K_m = K$$
-and extend to a strict series for $M_{n-1}$:
-$$0 = K_0 \subsetneqq K_1 \subsetneqq \cdots \subsetneqq K_m = K \subsetneqq M_{n-1}.$$
-Since we also have the composition series 
-$$0 = M_0 \subsetneqq M_1 \subsetneqq M_2 \subsetneqq \cdots \subsetneqq M_{n-1}$$
-of length $n-1$, we must have that $m=n-2$ and these two series are equivalent. Now, 
-$$0 = K_0 \subsetneqq K_1 \subsetneqq \cdots \subsetneqq K_{n-2} = K \subsetneqq N_{k-1}$$
-is a strict composition series, so $k=n$, and this is equivalent to 
-	$$0 = N_0 \subsetneqq N_1 \subsetneqq \cdots \subsetneqq N_{k-1}.$$
-	Thus, altogether, the factors in the two series agree.
+$$K_{\bullet}: \qquad 0 = K_0 \subsetneqq K_1 \subsetneqq \cdots \subsetneqq K_k = K$$
+and extend to a strict composition series for $M_{m-1}$:
+$$K'_{\bullet}: \qquad 0 = K_0 \subsetneqq K_1 \subsetneqq \cdots \subsetneqq K_k = K \subsetneqq M_{m-1}.$$
+Since we also have the strict composition series 
+$$M_{\bullet \leq m-1} : \qquad 0 = M_0 \subsetneqq M_1 \subsetneqq M_2 \subsetneqq \cdots \subsetneqq M_{m-1}$$
+of length $m-1$, we must have that $k=m-2$ and $K'_{\bullet}$ is equivalent to $M_{\bullet \leq n-1}$. Thus, the composition factors of $M_{\bullet \leq m-1}$ are those of $K$ plus one copy of $M_{m-1} / K \cong M/N_{n-1}$.
+
+ Now, 
+$$K''_{\bullet}: \qquad  0 = K_0 \subsetneqq K_1 \subsetneqq \cdots \subsetneqq K_{m-2} = K \subsetneqq N_{n-1}$$
+is a strict composition series for $N_{n-1}$, so $n=m$. Then, $K''_{\bullet}$ is equivalent to the strict composition series 
+	$$N_{\bullet \leq n-1}: \qquad 0 = N_0 \subsetneqq N_1 \subsetneqq \cdots \subsetneqq N_{n-1}.$$
+Thus, the composition factors of $N_{\bullet \leq n-1}$ are those of $K$ plus one copy of $N_{n-1} / K \cong M/M_{n-1}$.
+
+It follows that the composition series $M_\bullet$ and $N_\bullet$ are equivalent.
+	
 	\qedhere
 	\end{enumerate}
 \end{proof}
