@@ -2997,7 +2997,7 @@ Indeed, if $v=(a_1,\dots,a_n)\neq 0$, say $a_i\neq 0$; then $a_i^{-1} E_{ij} v =
 \end{enumerate}
 \end{ex}
 
-\begin{comment}
+
 
 \begin{lem}[Schur's Lemma] Let $R$ be a ring, and $M,N$ be two simple $R$-modules. Then every nonzero $R$-module homomorphism $\phi:M\to N$ is an isomorphism. In particular, $\End_R(M)$ is a division ring.
 \end{lem}
@@ -3024,6 +3024,10 @@ A module has finite length if it can be built from finitely many simple modules 
 	\[ 0 = M_0 \subseteq M_1 \subseteq M_2 \subseteq \cdots \subseteq M_n = M\]
 	with $M_{i+1}/M_i$ simple for each $i$; such a filtration is called a \DEF{composition series} of \emph{length} $n$. We say a composition series is \DEF{strict} if $M_i \neq M_{i+1}$ for all $i$. Two composition series are \DEF{equivalent} if the collections of composition factors $M_{i+1}/M_i$ are the same up to reordering. The \DEF{length} of a finite length module $M$, denoted \Def{$\ell(M)$}, is the minimum of the lengths of a  composition series~of~$M$. If $M$ has does not have finite length, we say that $M$ has infinite length, or $\ell(M) = \infty$.
 \end{defn}
+
+\begin{ex}
+Let $K$ be a field and $V=K^2$. Then any filtration of the form $0 \subseteq W \subseteq V$ where $W$ is a line through the origin is a strict composition series.
+\end{ex}
 
 \begin{rem} Let \[ 0 \to A \xra{i} B \xra{p} C\to 0\]
 be a short exact sequence. Given filtrations / composition series / strict composition series
@@ -3112,6 +3116,33 @@ It follows that the composition series $M_\bullet$ and $N_\bullet$ are equivalen
 \item The ring $R=K[x]$ does not have finite length as a module over itself.
 \item $\Z/p^n$ has length $n$ as a $\Z$-module, with strict composition series \[ 0 \subseteq \langle \overline{p^{n-1}} \rangle \subseteq \cdots \subseteq \langle \overline{p} \rangle \subseteq \Z/p^n.\]
 \end{enumerate}
+
+
+\ssec{Chain conditions}
+
+We say a poset $(P,\leq)$ satisfies ACC if for every totally ordered subset has a maximum element.
+
+A module has ACC or is Noetherian if every ascending chain of submodules stabilizes.
+
+A module has DCC or is Artinian if every descending chain of submodules stabilizes.
+
+
+
+\begin{exer}
+Let $0 \to M' \to M \to M''\to0$ be a short exact sequence. Then $M$ has ACC (resp DCC) if and only if $M'$ and $M''$ have ACC (resp. DCC).
+\end{exer}
+
+\begin{prop}Let $M$ be an $R$-module. Then $M$ has ACC if and only if every submodule of $M$ is finitely generated.
+\end{prop}
+\begin{proof}
+
+
+\begin{defn}
+Let $R$ be a ring. $R$ is left Noetherian if it is Noetherian as a left $R$-module. $R$ is left Artinian if it is Artinian as a left $R$-module.
+\end{defn}
+
+\begin{prop} Let $R$ be left Noetherian. Then a module is finitely generated if and only if it is left Noetherian. In particular, every submodule of a finitely generated module is finitely generated.
+\end{prop}
 
 
 \end{comment}

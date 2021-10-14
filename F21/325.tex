@@ -3509,7 +3509,7 @@ For any $k$, given $n_k$, the subsequence $a_{n_k +1} , a_{n_k+2},a_{n_k+3},\ldo
 By construction, we have $n_{k+1} > n_k$ for all $k$. Note that $a_{n_{k}} = \beta_{k}$ is the supremum of a set that contains $a_{n_{k+1}}=\beta_{k+1}$. It follows that $a_{n_k} \geq a_{n_{k+1}}$. That is, we have constructed a decreasing subsequence of the original sequence.
 \end{proof}
 
-\begin{comment}
+\Oct{15}
 
 
 
@@ -3524,27 +3524,25 @@ The result follows since every monotone bounded sequence converges by the Monoto
 \end{proof}
 
 
-\section*{Discussion Questions, March 17}
 
-\noindent \textsc{Definition:} A sequence $\{a_n\}_{n=1}^\infty$ is called a Cauchy sequence if for every $\e>0$, there is some $N\in \R$ such that for all $m,n\in \N$ such that $m>n>N$, we have $|a_m - a_n|<\e$.
+\begin{defn} A sequence $\{a_n\}_{n=1}^\infty$ is called a Cauchy sequence if for every $\e>0$, there is some $N\in \R$ such that for all $m,n\in \N$ such that $m>n>N$, we have $|a_m - a_n|<\e$.
+\end{defn}
 
-\
+ Loosely speaking sequence is Cauchy if eventually all the terms are very close together. The most important fact about Cauchy sequences is the following:
 
-\noindent Loosely speaking sequence is Cauchy if eventually all the terms are very close together. The most important fact about Cauchy sequences is the following:
 
-\
 
-\noindent  \textsc{Theorem:}	A sequence is a Cauchy sequence if and only if it converges.
-
+\begin{thm} A sequence is a Cauchy sequence if and only if it converges.
+\end{thm}
 
 \begin{enumerate}
-	\item Prove that the sequence $\{ \frac{1}{n} \}_{n=1}^\infty$ is a Cauchy sequence using the definition.\footnote{Hint: Take $N=\frac{1}{\e}$.}
+	\item Prove that the sequence $\{ \frac{1}{n} \}_{n=1}^\infty$ is a Cauchy sequence using the definition.%\footnote{Hint: Take $N=\frac{1}{\e}$.}
 	\begin{framed}
 	 Pick $\e > 0$. (Scratch work: we need to figure out
 			how big $m$ and $n$ need to be in order that $|\frac{1}{n} - \frac{1}{m}| < \e$.
 			Note that if both $\frac{1}{n}$ and $\frac{1}{m}$ are between $0$ and $\e$, then the distance between them will be at most $\e$,
 			and this occurs so long as $n,m > \frac{1}{\e}$. So we will set $N = \frac{1}{\e}$. Back to the proof.) 
-			Let $N = \frac{1}{\e}$. Let  $m,n \in \N$ be such that $m > N$ and $n > N$. Then $0 < \frac{1}{n} < \frac{1}{N} = \e$
+			Let $N = \frac{1}{\e}$. Let  $m,n \in \N$ be such that $m > n > N$. Then $0 < \frac{1}{n} < \frac{1}{N} = \e$
 			and     $0 < \frac{1}{m} < \frac{1}{N} = \e$. It follows that 
 			$$
 			|a_m - a_n| = |\frac{1}{m} -  \frac{1}{n}| <  = \e
@@ -3557,10 +3555,10 @@ The result follows since every monotone bounded sequence converges by the Monoto
 	\item Write, in simplified form, precisely what it means for a sequence to \textit{not} be a Cauchy sequence.
 	
 \begin{framed}
-	There exists some $\e>0$ such that for all $N\in \R$, there are natural numbers $m,n$ with $m>n>N$ such that $|a_m - a_n|\geq \e$.
+	There exists some $\e>0$ such that for all $N\in \R$, there are natural numbers $m,n$ with $m>n>N$ such that ${|a_m - a_n|\geq \e}$.
 	\end{framed}
 	
-	\item Prove that every convergent sequence is a Cauchy sequence.\footnote{Hint: Given $\e>0$, apply the definition of ``converges to $L$'' with the positive number $\frac{\e}{2}$ (where we usually write $\e$).}
+	\item Prove that every convergent sequence is a Cauchy sequence.%\footnote{Hint: Given $\e>0$, apply the definition of ``converges to $L$'' with the positive number $\frac{\e}{2}$ (where we usually write $\e$).}
 	
 	\begin{framed}
 		Assume $\{a_n\}_{n=1}^\infty$ converges to $L$.  Pick $\e > 0$. We
@@ -3574,7 +3572,7 @@ The result follows since every monotone bounded sequence converges by the Monoto
 		This proves $\{a_n\}_{n=1}^\infty$ is a Cauchy sequence.
 		\end{framed}
 	
-	\item Prove that every Cauchy sequence is bounded.\footnote{Hint: Take $\e=1$ (or any other positive number. Consider $a_n$ for some $n>N$ where $N$ is the number we get from the definition. Focus first on bounding all of the values $a_m$ with $m>n$.}
+	\item Prove that every Cauchy sequence is bounded.%\footnote{Hint: Take $\e=1$ (or any other positive number. Consider $a_n$ for some $n>N$ where $N$ is the number we get from the definition. Focus first on bounding all of the values $a_m$ with $m>n$.}
 	
 	
 	\begin{framed}
@@ -3597,10 +3595,10 @@ The result follows since every monotone bounded sequence converges by the Monoto
 	\begin{framed} Since a Cauchy sequence is bounded, it has a convergent subsequence by the Main Corollary to Bolzano-Weierstrass.
 		\end{framed}
 	
-	\item Prove that every Cauchy sequence converges.\footnote{Hint: By the previous part, we can take a subsequence $\{a_{n_k}\}_{k=1}^\infty$ that converges to some real number $L$. Taking $\frac{\e}{2}$ in the definition of $\{a_n\}_{n=1}^\infty$ is Cauchy gives us a ``magic number'' $N_1$, and taking $\frac{\e}{2}$ in the definition of $\{a_{n_k}\}_{k=1}^\infty$ converges to  $L$ gives us a ``magic number'' $N_2$. Use the triangle inequality with $|a_{n_k} - L|$ and $|a_n - a_{n_k}|$ for some $k>\max\{N_1,N_2\}$.}
+	\item Prove that every Cauchy sequence converges.%\footnote{Hint: By the previous part, we can take a subsequence $\{a_{n_k}\}_{k=1}^\infty$ that converges to some real number $L$. Taking $\frac{\e}{2}$ in the definition of $\{a_n\}_{n=1}^\infty$ is Cauchy gives us a ``magic number'' $N_1$, and taking $\frac{\e}{2}$ in the definition of $\{a_{n_k}\}_{k=1}^\infty$ converges to  $L$ gives us a ``magic number'' $N_2$. Use the triangle inequality with $|a_{n_k} - L|$ and $|a_n - a_{n_k}|$ for some $k>\max\{N_1,N_2\}$.}
 	
 	\begin{framed}
-		it
+		Given a Cauchy sequence, it
 		has a convergent subsequence $\{a_{n_k}\}_{k=1}^\infty$; let's say that this subsequence converges to $L$. We will prove
 		$\{a_n\}_{n=1}^\infty$ itself converges to $L$, using that it is Cauchy.   
 		
@@ -3629,7 +3627,7 @@ The result follows since every monotone bounded sequence converges by the Monoto
 
 
 
-
+\begin{comment}
 
 
 
