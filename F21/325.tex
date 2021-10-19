@@ -3539,24 +3539,24 @@ The result follows since every monotone bounded sequence converges by the Monoto
 	\item Prove that the sequence $\{ \frac{1}{n} \}_{n=1}^\infty$ is a Cauchy sequence using the definition.%\footnote{Hint: Take $N=\frac{1}{\e}$.}
 	\begin{framed}
 	 Pick $\e > 0$. (Scratch work: we need to figure out
-			how big $m$ and $n$ need to be in order that $|\frac{1}{n} - \frac{1}{m}| < \e$.
+			how big $m$ and $n$ need to be in order that $|\frac{1}{m} - \frac{1}{n}| < \e$.
 			Note that if both $\frac{1}{n}$ and $\frac{1}{m}$ are between $0$ and $\e$, then the distance between them will be at most $\e$,
 			and this occurs so long as $n,m > \frac{1}{\e}$. So we will set $N = \frac{1}{\e}$. Back to the proof.) 
 			Let $N = \frac{1}{\e}$. Let  $m,n \in \N$ be such that $m > n > N$. Then $0 < \frac{1}{n} < \frac{1}{N} = \e$
 			and     $0 < \frac{1}{m} < \frac{1}{N} = \e$. It follows that 
 			$$
-			|a_m - a_n| = |\frac{1}{m} -  \frac{1}{n}| <  = \e
+			|a_m - a_n| = |\frac{1}{m} -  \frac{1}{n}| < \e
 			$$
 			and this proves the sequence is Cauchy.
 		
 	\end{framed}
 	
 	
-	\item Write, in simplified form, precisely what it means for a sequence to \textit{not} be a Cauchy sequence.
+%	\item Write, in simplified form, precisely what it means for a sequence to \textit{not} be a Cauchy sequence.
 	
-\begin{framed}
-	There exists some $\e>0$ such that for all $N\in \R$, there are natural numbers $m,n$ with $m>n>N$ such that ${|a_m - a_n|\geq \e}$.
-	\end{framed}
+%\begin{framed}
+%	There exists some $\e>0$ such that for all $N\in \R$, there are natural numbers $m,n$ with $m>n>N$ such %that ${|a_m - a_n|\geq \e}$.
+%	\end{framed}
 	
 	\item Prove that every convergent sequence is a Cauchy sequence.%\footnote{Hint: Given $\e>0$, apply the definition of ``converges to $L$'' with the positive number $\frac{\e}{2}$ (where we usually write $\e$).}
 	
@@ -3602,23 +3602,20 @@ The result follows since every monotone bounded sequence converges by the Monoto
 		has a convergent subsequence $\{a_{n_k}\}_{k=1}^\infty$; let's say that this subsequence converges to $L$. We will prove
 		$\{a_n\}_{n=1}^\infty$ itself converges to $L$, using that it is Cauchy.   
 		
-		Pick $\e > 0$. Since the sequence is Cauchy and $\e/2 > 0$, by definition
-		there is a number $N_1$ such that if $m > N_1$ and $n > N_1$ then $|a_m - a_n| <
-		\e/2$. We will prove that this $N_1$ ``works'' to show $\{a_n\}_{n=1}^\infty$ converges to $L$; that is, I claim that if $n > N_1$, then $|a_n -L| < \e$.
+		Pick $\e > 0$. Since the sequence is Cauchy and $\frac\e2 > 0$, by definition
+		there is a number $N$ such that if $m > n > N$ then $|a_m - a_n| <
+		\frac\e2$. We will prove that this $N$ ``works'' to show $\{a_n\}_{n=1}^\infty$ converges to $L$; that is, I claim that if $n > N$, then $|a_n -L| < \e$. 
 		
-		To show this, we use that
-		since the subsequence $\{a_{n_k}\}_{k=1}^\infty$ converges to  $L$ and
-		$\e/2$ is positive  $0$, there is a real number $N_2$ such that if $k > N_2$ then $|a_{n_k} - L| < \e/2$. 
-		Let $k$ be any natural number such that $k > \max\{N_1, N_2\}$. Recall that $n_k \geq k$ and so we have $n_k > N_1$. 
+		So, let $n>N$. Since the subsequence $\{a_{n_k}\}_{k=1}^\infty$ converges to  $L$ and
+		$\frac\e2$ is positive, there is a real number $K$ such that if $k > K$ then $|a_{n_k} - L| < \e/2$. 
+		Let $k$ be any natural number such that $k > \max\{K,n\}$. We have $n_k > n >N$ and, since $n_k \geq k$, $n_k > K$.
 		
-		Let $n$ be any natural number such that $n > N$. By the Triangle Inequality 
+Thus,  by the bounds above and the triangle inequality,
 		$$
-		|a_n - L| \leq |a_n - a_{n_k}| + |a_{n_k} - L|. 
+		|a_n - L| \leq |a_n - a_{n_k}| + |a_{n_k} - L| < \frac\e2 + \frac\e2 = \e.
 		$$
-		Since $n >N$ and  $n_k > N$, we have  $|a_n - a_{n_k}| < \e/2$, and  since $k > N_2$, we have  $|a_{n_k} - L| < \e/2$.
-		It follows that $|a_n - L| < \e/2 + \e/2 = \e$.
-		We have proven $\{a_n\}_{n=1}^\infty$ converges to $L$. 
-		\end{framed}
+		This shows that $\{a_n\}_{n=1}^\infty$ converges to $L$.
+				\end{framed}
 	
 \end{enumerate}
 
