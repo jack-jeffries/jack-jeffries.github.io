@@ -3065,7 +3065,10 @@ If $m := \ell(M)$, consider a strict composition series of $M$ of length $m$, sa
 	The right hand side is a submodule of $M_{i+1}/M_i$, which by assumption is simple, so our filtration is in fact a composition series of length $n$. Then for any $i$ either 
 	$$\frac{M_{i+1} \cap L}{M_i \cap L} = 0 \quad \textrm{ or } \quad \frac{M_{i+1} \cap L}{M_i \cap L}\cong \frac{M_{i+1}}{M_i}.$$
 	We claim that the latter case does not hold for all $i$: if it did, we would have $0=M_0 = M_0 \cap L$, and inductively $M_{i+1} \cap L = M_{i+1}$ for all $i$ and in particular for $i=m-1$, we have $M = M\cap L$, contradicting that $L$ is proper. Thus, for some $i$, the first case holds. We can then skip that $i$ and obtain a composition series of length less than $n$, so $\ell(L)<m$.	
+	
 	\begin{comment}
+	\Oct{20}
+	
 	\item Consider the filtration
 	\[ \overline{M}_\bullet: \qquad 0 = \frac{M_0 + L }{L} \subseteq \frac{M_1 + L }{L} \subseteq \cdots \subseteq \frac{M_n + L }{L} = \overline{M}.\]
 	The factors satisfy
@@ -3119,29 +3122,202 @@ It follows that the composition series $M_\bullet$ and $N_\bullet$ are equivalen
 
 \ssec{Chain conditions}
 
-We say a poset $(P,\leq)$ satisfies ACC if for every totally ordered subset has a maximum element.
+\begin{defn}
+We say a poset $(P,\leq)$ satisfies the \DEF{ascending chain condition} or \DEF{ACC} if every totally ordered nonempty subset of $P$ has a maximum element. Similarly,  $(P,\leq)$ satisfies the \DEF{descending chain condition} or \DEF{DCC} if every totally ordered nonempty subset of $P$ has a minimum element.
+\end{defn}
 
-A module has ACC or is Noetherian if every ascending chain of submodules stabilizes.
+\begin{rem} For a poset $(P,\leq)$, the following are equivalent:
+\begin{enumerate}
+\item Every totally ordered nonempty subset has a maximum element (i.e., $P$ has ACC)
+\item Every totally ordered subset indexed by $\N$, $p_1 \leq p_2 \leq p_3 \leq \cdots$ has a maximum element (i.e., $\exists k: p_k=p_{k+1} = \cdots$)
+\item Every nonempty subset of $P$ has a maximum element.
+\end{enumerate}
+Indeed, (3) $\Rightarrow$ (1) $\Rightarrow$ (2) is clear. Given a totally ordered nonempty subset with no maximum, one can inductively keep choosing larger elements and obtain a countable such subset, so (2) $\Rightarrow$ (1). If any totally ordered nonempty subset of $P$ has a maximum element, then the same property holds for any nonempty subset $Q$ of $P$, so by Zorn's Lemma, such a $Q$ has a maximum element. The analogous equivalences hold with DCC.\end{rem}
 
-A module has DCC or is Artinian if every descending chain of submodules stabilizes.
+Note that the condition (3) asserts that any nonempty subset of $P$ has an element that is maximal \emph{within the subset}, not maximal \emph{within $P$}.
 
+\begin{defn} Let $R$ be a ring and $M$ be an $R$-module.
+\begin{enumerate}
+\item We say that $M$ is \DEF{Noetherian} if the poset of submodules of $M$ partially ordered by containment has ACC.
+\item We say that $M$ is \DEF{Artinian} if the poset of submodules of $M$ partially ordered by containment has DCC.
+\item We say that $R$ is \DEF{left Noetherian} if $R$ is Noetherian as a left $R$-module; i.e., the poset of left ideals of $R$ under containment has ACC.
+\item We say that $R$ is \DEF{left Artinian} if $R$ is Artinian as a left $R$-module; i.e., the poset of left ideals of $R$ under containment has DCC.
+\end{enumerate}
+\end{defn}
 
+If $R$ is commutative, left ideals and right ideals are the same, so we will jsut say $R$ is Noetherian or Artinian.
+
+\begin{ex} Let $K$ be a field, and $R=K[x]$ be a polynomial ring in one variable. Then $R$ is Noetherian: $R$ is a PID, so any ideal $I$ is determined by a collection of irreducible factors with multiplicities of a generator of $I$. Moreover, $I \subseteq J$ if and only if a generator of $J$ has as its irreducible factors a subset of those of $I$, and with smaller or equal multiplicities. It is clear that any increasing chain must stabilize. On the other hand, $R$ is not Artinian: we have a descending chain
+\[ (x) \supsetneqq (x^2) \supsetneqq (x^3) \supsetneqq (x^4) \supsetneqq \cdots\]
+that does not stabilize.
+\end{ex}
 
 \begin{exer}
 Let $0 \to M' \to M \to M''\to0$ be a short exact sequence. Then $M$ has ACC (resp DCC) if and only if $M'$ and $M''$ have ACC (resp. DCC).
 \end{exer}
 
-\begin{prop}Let $M$ be an $R$-module. Then $M$ has ACC if and only if every submodule of $M$ is finitely generated.
+The Noetherian condition is intimately tied to finite generation.
+
+\begin{prop} Let $M$ be an $R$-module. Then $M$ has ACC if and only if every submodule of $M$ is finitely generated.
 \end{prop}
 \begin{proof}
+Suppose $M$ has ACC. Let $P$ be the set of finitely generated submodules of $M$ partially ordered by inclusion. Clearly $P$ is nonempty (since it contains $R m \subseteq M$ for any $m\in M$, for example), so by hypothesis, $P$ has a maximal element $N$. We claim that $N=M$; otherwise, if $m\in M\smallsetminus N$, then $N \subsetneqq N+Rm$, and $N+Rm$ is finitely generated (by the finite generating set of $N$ union $\{m\}$), which contradicts maximality of $N$ in $P$.
+
+Now suppose that every submodule of $M$ is finitely generated. Given a countable ascending chain of submodules
+\[ M_1 \subseteq M_2 \subseteq M_3 \subseteq M_4 \subseteq \cdots\]
+let $N=\bigcup _{n\in \N} M_n$; this is a submodule of $M$. Take a finite generating set $\{n_1,\dots,n_t\}$ for $N$. For each $i=1,\dots,t$, we have $n_i \in M_j$ for some $j$. Since there are finitely many $n_i$'s there is some $M_j$ that contains them all. But then $M_j=N$, so the chain stabilizes (i.e., achieves a maximum element).
+\end{proof}
 
 
-\begin{defn}
-Let $R$ be a ring. $R$ is left Noetherian if it is Noetherian as a left $R$-module. $R$ is left Artinian if it is Artinian as a left $R$-module.
+
+
+\begin{prop} Let $R$ be left Noetherian. Then a module is finitely generated if and only if it is left Noetherian. In particular, in a left Noetherian ring, every submodule of a finitely generated module is finitely generated.
+\end{prop}
+\begin{proof} For the first statement, the ``if'' implication holds in general without the hypothesis on $R$. For the other implication, observe that there are short exact sequences
+\[ 0 \to R^{n-1} \to R^{n} \to R \to 0 \]
+for all $n>0$. So, by the exercise above and induction on $n$, every finitely generated free module is Noetherian. Now, if $M$ is finitely generated, there is a short exact sequence of the form
+\[ 0 \to K \to R^{n} \to M \to 0\]
+so by the exercise above again, $M$ is Noetherian.
+
+The second statement follows from the first as a submodule of a Noetherian module is Noetherian, again by the exercise.
+\end{proof}
+
+Now we tie these chain conditions to length.
+
+\begin{prop} A module $M$ has finite length if and only if it is both Noetherian and Artinian.
+\end{prop}
+\begin{proof}
+Assume that $M$ has finite length. Suppose that $M$ is not Noetherian. Then there is a chain 
+\[ M_0 \subsetneq M_1 \subsetneqq M_2 \subseteqq  \cdots\]
+Since each $M_i$ is a submodule of $M$, its length is finite, and is a nonnegative integer. Then $\ell(M_0) < \ell(M_1) < \ell(M_2) < \cdots \leq \ell(M)$, which yields a contradiction. The argument that $M$ is Artinian is similar.
+
+Now assume that $M$ is both Noetherian and Artinian. We will construct a composition series for $M$. We can assume that $M\neq 0$. Consider the collection of proper submodules of $M$. This is nonempty, so has a maximal element $M^1$ by the Noetherian hypothesis. We must have $M/M^1$ is simple, or else there is a module in between $M^1$ and $M$. Using Noetherianity again, if $M^1\neq 0$ (we're done otherwise), there is a maximal proper submodule of $M^1$; call it $M^2$. This process yields a descending chain with simple quotients, and this must stop (i.e., yield $M^i=0$ for some $i$) by the Artinian hypothesis. Thus, there is a composition series for $M$.
+\end{proof}
+
+\ssec{Semisimple modules}
+
+We now study an important condition that is somewhat orthogonal (yet somewhat related) to our chain conditions. The condition of finite length, and to some extent the Noetherian and Artinian conditions, were related to how a module is made out of building blocks, or how big it is in terms of its pieces. The condition of semisimplicity says that a module is composed of basic building blocks in the simplest possible way.
+
+\begin{defn} For any ring $R$, a left $R$-module $M$ is called \DEF{semisimple} if it is a (possibly infinite) direct sum of simple modules. The empty direct sum is allowed, so that the $0$ module {\em is} considered to be semisimple. %This is equivalent to the condition that $M$ is isomorphic to a (possibly infinite) internal direct sum of simple submodules.
 \end{defn}
 
-\begin{prop} Let $R$ be left Noetherian. Then a module is finitely generated if and only if it is left Noetherian. In particular, every submodule of a finitely generated module is finitely generated.
+
+\begin{ex} Let $M$ be a finitely general $\Z$-module. Then by the FTFGAG, $M$ is isomorphic to
+  $\Z^r \oplus \Z/p_1^{e_1} \oplus \cdots \oplus \Z/p_n^{e_n}$ for some $r \geq 0$, $n \geq 0$, primes $p_i$ and positive integers $e_i$.
+  Such a module is semisimple if and only if $r = 0$ and $e_i = 1$ for all $i$.
+\end{ex}
+
+
+
+
+
+\begin{ex} Every module over a division ring $D$ is semisimple because any such module has a basis, hence it is a free module. %which gives that it is the internal direct sum of the one-dimensional subspaces spanned by the elements of any chosen  basis.
+\end{ex}
+
+
+\begin{lem} 
+\label{lem:matrixsemisimple}
+Let $D$ be a division ring and set $R = \Mat_n(D)$ for some $n \geq 1$. I claim $R$ is semisimple as a left module over itself. 
+\end{lem}
+  \begin{proof}
+  For each $1 \leq i \leq n$, let $I_i$ denote the subset of $R$ consisting of matrices whose only non-zero entires belong to the $i$-th column.
+The rules for matrix addition and multiplication show that $I_i$ is a left ideal (i.e., a left submodule) of $R$. Moreover, there is evident bijection between $I_i$ and $D^n$ (column vectors) and this bijection is an isomorphism of left $R$-modules. We proved $D^n$ is simple as an $R$-module  and hence so is $I_i$. Finally, $R$ is the internal direct sum of $I_1, \dots, I_n$:
+\[
+R=I_1\oplus \cdots \oplus I_n
+\]
+because 
+ each matrix $X$ is uniquely a sum of the form $X_1 + \cdots + X_n$ with $X_i \in M_i$.
+\end{proof}
+
+\begin{prop}[Equivalent conditions for semisimple modules]
+ \label{prop93b} 
+For any ring $R$ and left $R$-module $M$, the following are equivalent:
+  \begin{enumerate}
+  \item $M$ is semisimple,
+  \item every submodule of $M$ is a summand; i.e., for every submodule $N$ of $M$ there is a submodule $N'$ such that
+    $M=N\oplus N'$ is the internal direct sum of $N$ and $N'$,
+  \item every injective $R$-map $i: M' \to M$ is split has a left inverse,
+  \item every s.e.s of the form $0 \to M' \to M \to M'' \to 0$ is split exact,
+  \item every surjective $R$-map $p: M \to M''$ has a right inverse.
+  \end{enumerate}
 \end{prop}
+
+\begin{proof} 
+The equivalence of (3), (4), and (5) is given by the Splitting Theorem.
+
+$(2) \Rightarrow (3)$ holds since given an injective map $i$ as in (3), we have by (2) that $i(M')$ is a summand of $M$, hence there is a projection homomorphism $\pi:M\to i(M')$ that splits the inclusion of the summand into $M$, that is $\pi|_{i(M')}=\id_{i(M')}$. Now $i:M'\to i(M')$ is an isomorphims so we may consider the $R$-module homomorphism $i^{-1}:i(M')\to M'$ and set $s:M\to M'$ to be $s=i^{-1}\circ \pi$. Then 
+\[s\circ i=i^{-1}\circ \pi \circ i=i^{-1}\circ \pi_{i(M')} \circ i= i^{-1}\circ i=\id_{M'}.\]
+
+$(3) \Rightarrow (2)$ holds since we can split the inclusion $N\to M$ and thus also the s.e.s.
+\[
+0\to N\to M\to M/N \to 0.
+\]
+Therefore the Splitting Theorem yields $M=N\oplus s(M/N)$ where $s$ denotes the splitting of the quotient map $M\to M/N$.
+
+The hard part is proving $(1) \Leftrightarrow (2)$. 
+ $(1) \Rightarrow (2)$ Assume (1), so that $M = \oplus_{i \in I} M_i$ for some collection of simple submodules $M_i$,  and let $N \subseteq M$ be any submodule. {\em It is important to note that it does not necessarily follow that $N$ is one of the $M_i$;} see Example \ref{ex:diagonalsimple}. 
+  Consider the collection $\cS$ of subsets $J$ of $I$ such that $N \cap M_J = 0$ where we define $M_J := \oplus_{j \in J} M_j$. View $\cS$ as a poset by inclusion.
+  It's non-empty since $J = \emptyset$ belongs to $\cS$. If $\{J_\alpha\}$ is a totally ordered sub-collection of $\cS$, let
+  $J = \cup_\a J_\a$. I claim $M_J \cap N = 0$. If not, there is a non-zero element $(m_j) \in M_J \cap N$. But since $m_j = 0$ for all but a finite number of $j$'s
+  and since the collection of $J_\a$'s was totally ordered, there is some $\a$ such that $(m_j) \in M_{J_\a} \cap N$, a contradiction.
+  We may thus apply Zorn's Lemma to get a maximal $J \in \cS$.
+
+  I claim $M$ is the internal direct sum of $N$ and $M_J$.
+  We have $N \cap M_J = 0$ by construction and so  it suffices to prove $N + M_J = M$. Since $M = \sum_{i \in I} M_i$, the latter is equivalent to proving
+  that $M_i \subseteq N + M_J$ for all $i \in I$. If this fails for some $i$, then since
+$M_i \cap (N + M_J)$ is a proper submodule of $M_i$, which is simple, and hence 
+$M_i \cap (N + M_J) = 0$. But then $N \cap M_{J'} = 0$ where $J' = J \cup \{i\} \supset J$. Indeed, if $n \in N$ and $n = m_i + \sum_{j \in J} m_j$,
+then $m_i = n - \sum_j -m_j \in M_i \cap (N + M_J) = 0$. So, $J'$ is member of $\cS$ that strictly contains $J$, a contradiction.
+It must be the $M = N \oplus M_J$.
+
+
+$(2) \Rightarrow (1)$  Now assume that every submodule of $M$ is a summand. We proceed in three steps:
+
+(i) I claim that every submodule $T$ of $M$  inherits this property; i.e., every submodule of $T$ is a summand of $T$.
+For say $U \subseteq T$ is a submodule. By assumption on $M$, we have $M = U \oplus V$ (internal direct sum) for some $V$.  
+Since $U \subseteq T$, it follows that  $T = U + (V \cap T)$. (Given $t \in T$, we have $t  =  u +v$ for some $u \in U, v \in V$. Since $U \subseteq T$, $v =
+t-u \in V \cap T$.) Since $U \cap (V \cap T) = 0$, this shows $T = U \oplus (V \cap T)$. 
+
+
+(ii) I claim that every non-zero submodule $T$ of $M$ contains a simple summand. Pick $0 \ne x \in T$ and apply Zorn's Lemma to show 
+that there is a maximal submodule $U$ of $T$ with respect to the property that $x \notin U$. We have $T = U \oplus W$ by (i) for some  $W \neq 0$.
+If $W$ is not
+simple, then $W$ contains a nonzero, proper submodule $W_1$ and hence, by using (i) again, we get that 
+$W = W_1 \oplus W_2$ for some proper non-zero submodule $W_2$. 
+
+
+These properties implies that $(U \oplus W_1) \cap (U \oplus W_2) = U$. One containment is clear. If $v$ belongs to the left side,
+then $v = u + w_1 = u' + w_2$. It follows that
+$w_1 - w_2 = u - u' \in U \cap W = 0$ and so $w_1 = w_2 \in W_1 \cap W_2 = 0$, and hence $w_1  = w_2 = 0$. 
+So, either $x \notin U \oplus W_1$ or $x \notin U \oplus W_2$, and either way we reach a  contradiction to the maximality of $U$. 
+
+(iii) For this part we consider the collection of all  families  $\{S_j\}_{j \in J}$ of submodules of $M$ satisfy the two properties
+\begin{itemize}
+\item each $S_j$ is a simple submodule of $M$ and
+\item  they form an internal direct sum of the submodule that they generate; i.e., $\sum_j S_i = \oplus_j S_j$. 
+(This is equivalent to saying that for all $l \in J$ we have $S_l \cap \sum_{j \in J, j \ne l} S_j = 0$.)
+\end{itemize}
+Define an order relation on the collection of all such families by declaring $\{S_j\}_{j \in J} \leq  \{T_i\}_{i \in I}$ iff $J \subseteq I$
+and $S_j = T_j$ for all $j \in J$.
+Take my word for it that we may apply Zorn's Lemma to show that there is a member $\{S_j\}_{j \in J}$ of this collection  that is maximal.
+Set $U = \oplus_j S_j = \sum_j S_j$. We need to prove $U = M$. By (i) we have $M = U \oplus V$ for some $V$. 
+If $V = 0$ we are done. Otherwise by (ii) (and (i) again) we have $V = S \oplus V'$ for some simple submodule $S$. But then $\{S_j\}_{j \in J} \cup \{S\}$ is a
+larger member of the collection, a contradiction.
+\end{proof}
+
+
+\begin{cor} \label{cor93}
+If $M$  semisimple, so is every submodule and quotient module of $M$.
+\end{cor}
+
+\begin{proof} Say $N \subseteq M$ is a submodule. By the claim marked (i) in the proof of Proposition \ref{prop93b} every submodule of $N$ is a summand, and hence $N$ is semisimple by Proposition \ref{prop93b} $(2)\Rightarrow (1)$.
+  
+  Given a surjection $M \onto P$, it splits by Proposition \ref{prop93b}, so that $P$ is isomorphic to a submodule of $M$, namely the image of $P$ under the splitting map. Hence $P$ is semisimple by the case already proven.
+\end{proof}
+
+
+
+\begin{comment}
 
 
 \end{comment}
