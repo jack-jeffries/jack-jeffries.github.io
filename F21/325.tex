@@ -3621,19 +3621,7 @@ Thus,  by the bounds above and the triangle inequality,
 
 
 
-
-
-
-\begin{comment}
-
-
-
-
-
-
-
-%%%%%%%%%%%%%%%
-\section{Monday, March 22}
+\Oct{20}
 
 
 
@@ -3667,7 +3655,7 @@ we will usually be a bit sloppy in specifying its domain $S$. For example, if I 
 example, that would be $S = \R \setminus \{1\} = \{ x \in \R \mid x
 \ne 1 \}$. Following this convention, $f(x) = \frac{x^2-1}{x-1}$ and $g(x)=x+1$ are two different functions, since their domains are different.
 
-It is also worth noting that while most of the functions we consider will be given by formulas, there are many funstions that cannot be expressed in terms of formulas. Imagine for every real number $x$ flipping a coin and setting $f(x)=1$ if coin $x$ turns up heads and $f(x)=0$ if coin $x$ turns up tails. The result will certainly be a function, albeit an unimaginably wild one.
+It is also worth noting that while most of the functions we consider will be given by formulas, there are many functions that cannot be expressed in terms of formulas. Imagine for every real number $x$ flipping a coin and setting $f(x)=1$ if coin $x$ turns up heads and $f(x)=0$ if coin $x$ turns up tails. The result will certainly be a function, albeit an unimaginably wild one.
 
 Many times, the domain of the functions we talk about will be intervals:
 $$
@@ -3706,24 +3694,9 @@ $$
 \begin{quote}
   For every $\e > 0$, there is $\d > 0$ such that if $x$ is any real number such that $0 < |x-a| < \d$, then $f$ is defined at $x$ and $|f(x) - L| < \e$. 
 \end{quote}
-As a matter of shorthand, we write $\lim_{x \to a} f(x) = L$ to mean
-the limit of $f(x)$ as $x$ approaches $a$ is $L$.
+
 \end{defn}
 
-Here is an equivalent formulation: 
-\begin{quote}
-  For every $\e > 0$, there is $\d > 0$ such that if $x$ is any real number such that either $a-\d < x < a$ or $a < x < a + \d$, then $f$ is defined at $x$ and $|f(x) - L| < \e$. 
-\end{quote}
-
-
-
-Note that in order for the limit of $f$ at $a$ to exist,
-we need in particular that there is a $\d > 0$ such that $f$ is defined at every point on $(a-\d, a)$ and $(a, a+ \d)$. Loosely, $f$ needs to be defined
-at all points near, but not necessarily equal to, $a$. If the domain of $f$ is $\R$ or  $\R \setminus \{a\}$, this condition is automatic.
-
-The more important condition is that if $0 < |x-a| < \d$, then $|f(x) - L| < \e$. Intuitively, this is saying that no matter how small of a positive number $\e$ you pick,
-if you only look at  inputs very close to (but not equal to) $a$,
-the function values at these inputs are within a distance of $\e$ of the limiting value $L$. 
 
 
 \begin{ex} Let $f$ be the function given by the formula
@@ -3735,30 +3708,40 @@ Recall our convention that we interpret the domain of $f$ to be all real numbers
 I claim that the limit of $f(x)$  as $x$ approaches $1$ is $10$.
 Pick $\e > 0$.
 
-(Scratch work: Since $f$ is defined at all points other that $1$, the condition about $f$ being defined for all $x$ such that $0 < |x-a| < \d$ will be  met for any choice of $\delta$. 
-We need $|f(x) - 10| < \e$ to
-hold. Manipulating this a bit, we see that it is equivalent to $|x-1|  < \frac{\e}{5}$. Thus setting $\d = \frac{\e}{5}$ is the way to go. Back to the proof....)
+%(Scratch work: Since $f$ is defined at all points other that $1$, the condition about $f$ being defined for all $x$ such that $0 < |x-a| < \d$ will be  met for any choice of $\delta$. 
+%We need $|f(x) - 10| < \e$ to
+%hold. Manipulating this a bit, we see that it is equivalent to $|x-1|  < \frac{\e}{5}$. Thus setting $\d = \frac{\e}{5}$ is the way to go. Back to the proof....)
 
 Let $\d = \frac{\e}{5}$. Pick $x$ such that $0 < |x-1| < \d$. Then $x \ne 1$ and hence $f$ is defined at $x$. We have
 $$
 \begin{aligned}
-|f(x) - 10| & =  \left|\frac{5x^2-5}{x-1} - 10\right| \\
-& =  \left|\frac{5x^2-5-10x+10}{x-1}\right| \\
-& =  \left|\frac{5x^2-10x + 5}{x-1}\right| \\ 
-& =  \left|\frac{5(x^2-2x +1)}{x-1}\right| \\
-& =  \left|\frac{5(x-1)^2 }{x-1}\right| \\
-& =  |5x-5| \\
-& =  5|x-1| \\
-& < 5 \d \\
-& = \e \\
+|f(x) &- 10|  =  \left|\frac{5x^2-5}{x-1} - 10\right|=  \left|\frac{5x^2-5-10x+10}{x-1}\right|  =  \left|\frac{5x^2-10x + 5}{x-1}\right| \\ 
+& =  \left|\frac{5(x^2-2x +1)}{x-1}\right| =  \left|\frac{5(x-1)^2 }{x-1}\right|  =  |5x-5|  =  5|x-1| < 5 \d  = \e \\
 \end{aligned}
 $$
 We have shown that for any $\e>0$ there is a $\d>0$ such that 
 if $0 < |x-1|< \d$, then $f$ is defined at $x$ and $|f(x) - 10| < \e$. This proves $\lim_{x \to 1} f(x) = 10$.  
 \end{ex}
 
+\begin{comment}
+
 \section{Wednesday, March 24}
 
+Here is an equivalent formulation of the definition of limit: 
+\begin{quote}
+  For every $\e > 0$, there is $\d > 0$ such that if $x$ is any real number such that either $a-\d < x < a$ or $a < x < a + \d$, then $f$ is defined at $x$ and $|f(x) - L| < \e$. 
+\end{quote}
+
+As a matter of shorthand, we write $\lim_{x \to a} f(x) = L$ to mean
+the limit of $f(x)$ as $x$ approaches $a$ is $L$.
+
+Note that in order for the limit of $f$ at $a$ to exist,
+we need in particular that there is a $\d > 0$ such that $f$ is defined at every point on $(a-\d, a)$ and $(a, a+ \d)$. Loosely, $f$ needs to be defined
+at all points near, but not necessarily equal to, $a$. If the domain of $f$ is $\R$ or  $\R \setminus \{a\}$, this condition is automatic.
+
+The more important condition is that if $0 < |x-a| < \d$, then $|f(x) - L| < \e$. Intuitively, this is saying that no matter how small of a positive number $\e$ you pick,
+if you only look at  inputs very close to (but not equal to) $a$,
+the function values at these inputs are within a distance of $\e$ of the limiting value $L$. 
 
 
 \begin{ex} Let's do a more complicated example: Let $f(x) = x^2$ with  domain all of $\R$. I claim that $\lim_{x \to 2} x^2 = 4$. This is intuitively
