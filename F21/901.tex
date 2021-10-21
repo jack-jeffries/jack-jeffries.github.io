@@ -3145,9 +3145,9 @@ Note that the condition (3) asserts that any nonempty subset of $P$ has an eleme
 \end{enumerate}
 \end{defn}
 
-\begin{comment}
 
-If $R$ is commutative, left ideals and right ideals are the same, so we will jsut say $R$ is Noetherian or Artinian.
+
+If $R$ is commutative, left ideals and right ideals are the same, so we will just say $R$ is Noetherian or Artinian.
 
 \begin{ex} Let $K$ be a field, and $R=K[x]$ be a polynomial ring in one variable. Then $R$ is Noetherian: $R$ is a PID, so any ideal $I$ is determined by a collection of irreducible factors with multiplicities of a generator of $I$. Moreover, $I \subseteq J$ if and only if a generator of $J$ has as its irreducible factors a subset of those of $I$, and with smaller or equal multiplicities. It is clear that any increasing chain must stabilize. On the other hand, $R$ is not Artinian: we have a descending chain
 \[ (x) \supsetneqq (x^2) \supsetneqq (x^3) \supsetneqq (x^4) \supsetneqq \cdots\]
@@ -3190,7 +3190,7 @@ Now we tie these chain conditions to length.
 \end{prop}
 \begin{proof}
 Assume that $M$ has finite length. Suppose that $M$ is not Noetherian. Then there is a chain 
-\[ M_0 \subsetneq M_1 \subsetneqq M_2 \subseteqq  \cdots\]
+\[ M_0 \subsetneqq M_1 \subsetneqq M_2 \subsetneqq  \cdots\]
 Since each $M_i$ is a submodule of $M$, its length is finite, and is a nonnegative integer. Then $\ell(M_0) < \ell(M_1) < \ell(M_2) < \cdots \leq \ell(M)$, which yields a contradiction. The argument that $M$ is Artinian is similar.
 
 Now assume that $M$ is both Noetherian and Artinian. We will construct a composition series for $M$. We can assume that $M\neq 0$. Consider the collection of proper submodules of $M$. This is nonempty, so has a maximal element $M^1$ by the Noetherian hypothesis. We must have $M/M^1$ is simple, or else there is a module in between $M^1$ and $M$. Using Noetherianity again, if $M^1\neq 0$ (we're done otherwise), there is a maximal proper submodule of $M^1$; call it $M^2$. This process yields a descending chain with simple quotients, and this must stop (i.e., yield $M^i=0$ for some $i$) by the Artinian hypothesis. Thus, there is a composition series for $M$.
@@ -3229,6 +3229,22 @@ R=I_1\oplus \cdots \oplus I_n
 \]
 because 
  each matrix $X$ is uniquely a sum of the form $X_1 + \cdots + X_n$ with $X_i \in M_i$.
+\end{proof}
+
+\begin{exer} Let $\{M_\lambda\}_{\lambda\in \Lambda}$ be an infinite collection of nonzero modules. Then $\bigoplus_{\lambda\in \Lambda} M_\lambda$ is not finitely generated.
+\end{exer}
+
+\begin{rem} As a consequence of the above exercise, a module is a finitely generated semisimple module if and only if it is a finite direct sum of simple modules. In this case if we write $M=M_1 \oplus \cdots \oplus M_n$ as a sum of simple modules, there is a strict composition series
+ \[0\subset M_1 \subset M_1 \oplus M_2 \subset \cdots \subset M_1 \oplus \cdots \oplus M_{n-1} \subset M\]
+ so $M$ has finite length, namely length $n$, and the composition factors are the modules $M_i$.
+ \end{rem}
+ 
+ \begin{prop}[Krull-Schmidt for semisimple modules]
+ Let $M$ be a finitely generated semisimple module. Given two direct sum decompositions as simple modules
+ \[ M = M_1 \oplus  \cdots  \oplus M_m = N_1 \oplus  \cdots  \oplus N_n\]
+ then $m=n$, and there is a permutation $\sigma$ such that $M_{\sigma(i)} \cong N_i$ for all $i$.
+ \end{prop}
+\begin{proof} Follows from the previous remark and the Jordan-Holder theorem.
 \end{proof}
 
 \begin{prop}[Equivalent conditions for semisimple modules]
