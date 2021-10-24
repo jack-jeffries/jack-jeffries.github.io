@@ -3205,7 +3205,8 @@ Since each $M_i$ is a submodule of $M$, its length is finite, and is a nonnegati
 Now assume that $M$ is both Noetherian and Artinian. We will construct a composition series for $M$. We can assume that $M\neq 0$. Consider the collection of proper submodules of $M$. This is nonempty, so has a maximal element $M^1$ by the Noetherian hypothesis. We must have $M/M^1$ is simple, or else there is a module in between $M^1$ and $M$. Using Noetherianity again, if $M^1\neq 0$ (we're done otherwise), there is a maximal proper submodule of $M^1$; call it $M^2$. This process yields a descending chain with simple quotients, and this must stop (i.e., yield $M^i=0$ for some $i$) by the Artinian hypothesis. Thus, there is a composition series for $M$.
 \end{proof}
 
-\begin{comment}
+\Oct{25}
+
 \ssec{Semisimple modules}
 
 We now study an important condition that is somewhat orthogonal (yet somewhat related) to our chain conditions. The condition of finite length, and to some extent the Noetherian and Artinian conditions, were related to how a module is made out of building blocks, or how big it is in terms of its pieces. The condition of semisimplicity says that a module is composed of basic building blocks in the simplest possible way.
@@ -3214,7 +3215,7 @@ We now study an important condition that is somewhat orthogonal (yet somewhat re
 \end{defn}
 
 
-\begin{ex} Let $M$ be a finitely general $\Z$-module. Then by the FTFGAG, $M$ is isomorphic to
+\begin{ex} Let $M$ be a finitely generated $\Z$-module. Then by the FTFGAG, $M$ is isomorphic to
   $\Z^r \oplus \Z/p_1^{e_1} \oplus \cdots \oplus \Z/p_n^{e_n}$ for some $r \geq 0$, $n \geq 0$, primes $p_i$ and positive integers $e_i$.
   Such a module is semisimple if and only if $r = 0$ and $e_i = 1$ for all $i$.
 \end{ex}
@@ -3229,10 +3230,10 @@ We now study an important condition that is somewhat orthogonal (yet somewhat re
 
 \begin{lem} 
 \label{lem:matrixsemisimple}
-Let $D$ be a division ring and set $R = \Mat_n(D)$ for some $n \geq 1$. I claim $R$ is semisimple as a left module over itself. 
+Let $D$ be a division ring and set $R = M_n(D)$ for some $n \geq 1$. I claim $R$ is semisimple as a left module over itself. 
 \end{lem}
   \begin{proof}
-  For each $1 \leq i \leq n$, let $I_i$ denote the subset of $R$ consisting of matrices whose only non-zero entires belong to the $i$-th column.
+  For each $1 \leq i \leq n$, let $I_i$ denote the subset of $R$ consisting of matrices whose only nonzero entires belong to the $i$-th column.
 The rules for matrix addition and multiplication show that $I_i$ is a left ideal (i.e., a left submodule) of $R$. Moreover, there is evident bijection between $I_i$ and $D^n$ (column vectors) and this bijection is an isomorphism of left $R$-modules. We proved $D^n$ is simple as an $R$-module  and hence so is $I_i$. Finally, $R$ is the internal direct sum of $I_1, \dots, I_n$:
 \[
 R=I_1\oplus \cdots \oplus I_n
@@ -3257,7 +3258,7 @@ because
 \begin{proof} Follows from the previous remark and the Jordan-Holder theorem.
 \end{proof}
 
-\begin{prop}[Equivalent conditions for semisimple modules]
+\begin{thm}[Equivalent conditions for semisimple modules]
  \label{prop93b} 
 For any ring $R$ and left $R$-module $M$, the following are equivalent:
   \begin{enumerate}
@@ -3265,53 +3266,52 @@ For any ring $R$ and left $R$-module $M$, the following are equivalent:
   \item every submodule of $M$ is a summand; i.e., for every submodule $N$ of $M$ there is a submodule $N'$ such that
     $M=N\oplus N'$ is the internal direct sum of $N$ and $N'$,
   \item every injective $R$-map $i: M' \to M$ is split has a left inverse,
-  \item every s.e.s of the form $0 \to M' \to M \to M'' \to 0$ is split exact,
+  \item every SES of the form $0 \to M' \to M \to M'' \to 0$ is split exact,
   \item every surjective $R$-map $p: M \to M''$ has a right inverse.
   \end{enumerate}
-\end{prop}
+\end{thm}
 
 \begin{proof} 
 The equivalence of (3), (4), and (5) is given by the Splitting Theorem.
 
-$(2) \Rightarrow (3)$ holds since given an injective map $i$ as in (3), we have by (2) that $i(M')$ is a summand of $M$, hence there is a projection homomorphism $\pi:M\to i(M')$ that splits the inclusion of the summand into $M$, that is $\pi|_{i(M')}=\id_{i(M')}$. Now $i:M'\to i(M')$ is an isomorphims so we may consider the $R$-module homomorphism $i^{-1}:i(M')\to M'$ and set $s:M\to M'$ to be $s=i^{-1}\circ \pi$. Then 
-\[s\circ i=i^{-1}\circ \pi \circ i=i^{-1}\circ \pi_{i(M')} \circ i= i^{-1}\circ i=\id_{M'}.\]
+$(2) \Rightarrow (3)$ holds since given an injective map $i$ as in (3), we have by (2) that $i(M')$ is a summand of $M$, hence there is a projection homomorphism $\pi:M\to i(M')$ that splits the inclusion of the summand into $M$, that is $\pi|_{i(M')}=\id_{i(M')}$. Now $i:M'\to i(M')$ is an isomorphism so we may consider the $R$-module homomorphism $i^{-1}:i(M')\to M'$ and set $q:M\to M'$ to be $q=i^{-1}\circ \pi$. Then 
+\[q\circ i=i^{-1}\circ \pi \circ i=i^{-1}\circ \pi_{i(M')} \circ i= i^{-1}\circ i=\id_{M'}.\]
 
-$(3) \Rightarrow (2)$ holds since we can split the inclusion $N\to M$ and thus also the s.e.s.
+$(3) \Rightarrow (2)$ holds since we can split the inclusion $N\to M$ and thus also the SES
 \[
 0\to N\to M\to M/N \to 0.
 \]
 Therefore the Splitting Theorem yields $M=N\oplus s(M/N)$ where $s$ denotes the splitting of the quotient map $M\to M/N$.
 
 The hard part is proving $(1) \Leftrightarrow (2)$. 
- $(1) \Rightarrow (2)$ Assume (1), so that $M = \oplus_{i \in I} M_i$ for some collection of simple submodules $M_i$,  and let $N \subseteq M$ be any submodule. {\em It is important to note that it does not necessarily follow that $N$ is one of the $M_i$;} see Example \ref{ex:diagonalsimple}. 
-  Consider the collection $\cS$ of subsets $J$ of $I$ such that $N \cap M_J = 0$ where we define $M_J := \oplus_{j \in J} M_j$. View $\cS$ as a poset by inclusion.
-  It's non-empty since $J = \emptyset$ belongs to $\cS$. If $\{J_\alpha\}$ is a totally ordered sub-collection of $\cS$, let
-  $J = \cup_\a J_\a$. I claim $M_J \cap N = 0$. If not, there is a non-zero element $(m_j) \in M_J \cap N$. But since $m_j = 0$ for all but a finite number of $j$'s
-  and since the collection of $J_\a$'s was totally ordered, there is some $\a$ such that $(m_j) \in M_{J_\a} \cap N$, a contradiction.
-  We may thus apply Zorn's Lemma to get a maximal $J \in \cS$.
+ $(1) \Rightarrow (2)$ Assume (1), so that $M = \oplus_{\lambda \in \Lambda} M_\lambda$ for some collection of simple submodules $M_\lambda$,  and let $N \subseteq M$ be any submodule. (It is important to note that it does not necessarily follow that $N$ is a sum of some subcollection of the $M_\lambda$}) . 
+  Consider the collection $\cS$ of subsets $\Gamma$ of $\Lambda$ such that $N \cap M_\Gamma = 0$ where we define $M_\Gamma := \oplus_{\lambda \in \Gamma} M_\lambda$. View $\cS$ as a poset by inclusion.
+  It is nonempty since $J = \emptyset$ belongs to $\cS$. If $\{\Gamma_\alpha\}$ is a totally ordered subcollection of $\cS$, let
+  $\Gamma = \cup_\alpha \Gamma_\alpha$. I claim $M_\Gamma \cap N = 0$. If not, there is a nonzero element $(m_\gamma) \in M_\Gamma \cap N$. But since $m_\gamma = 0$ for all but a finite number of $\gamma$'s
+  and since the collection of $\Gamma_\alpha$'s was totally ordered, there is some $\alpha$ such that $(m_\gamma) \in M_{\Gamma_\alpha} \cap N$, a contradiction.
+  We may thus apply Zorn's Lemma to get a maximal $\Gamma \in \cS$.
 
-  I claim $M$ is the internal direct sum of $N$ and $M_J$.
-  We have $N \cap M_J = 0$ by construction and so  it suffices to prove $N + M_J = M$. Since $M = \sum_{i \in I} M_i$, the latter is equivalent to proving
-  that $M_i \subseteq N + M_J$ for all $i \in I$. If this fails for some $i$, then since
-$M_i \cap (N + M_J)$ is a proper submodule of $M_i$, which is simple, and hence 
-$M_i \cap (N + M_J) = 0$. But then $N \cap M_{J'} = 0$ where $J' = J \cup \{i\} \supset J$. Indeed, if $n \in N$ and $n = m_i + \sum_{j \in J} m_j$,
-then $m_i = n - \sum_j -m_j \in M_i \cap (N + M_J) = 0$. So, $J'$ is member of $\cS$ that strictly contains $J$, a contradiction.
-It must be the $M = N \oplus M_J$.
+  I claim $M$ is the internal direct sum of $N$ and $M_\Gamma$.
+  We have $N \cap M_\Gamma = 0$ since $\Gamma\in\cS$ and so  it suffices to prove $N + M_\Gamma = M$. Since $M = \sum_{\lambda \in \Lambda\} M_\lambda$, the latter is equivalent to proving
+  that $M_\lambda \subseteq N + M_\Gamma$ for all $\lambda \in \Lambda$. If this fails for some $\lambda$, then since
+$M_\lambda \cap (N + M_\Gamma)$ is a proper submodule of $M_\lambda$, which is simple, and hence 
+$M_\lambda \cap (N + M_\Gamma) = 0$. But then $N \cap (M_{\Gamma} \oplus M_\lambda) = 0$ (if $n \in N$ and $n = m + m'$, with $m\in M_\Gamma$ and $m'\in M_\lambda$, then $m'=n-m$ so $m'=0$ and $n=m$, and then $n=0$.) So, $\Gamma\cup\{ \lambda\}$ is a member of $\cS$ that strictly contains $\Gamma$, a contradiction.
+It must be thar $M = N \oplus M_\Gamma$.
 
 
 $(2) \Rightarrow (1)$  Now assume that every submodule of $M$ is a summand. We proceed in three steps:
 
-(i) I claim that every submodule $T$ of $M$  inherits this property; i.e., every submodule of $T$ is a summand of $T$.
+(i) We claim that every submodule $T$ of $M$  inherits this property; i.e., every submodule of $T$ is a summand of $T$.
 For say $U \subseteq T$ is a submodule. By assumption on $M$, we have $M = U \oplus V$ (internal direct sum) for some $V$.  
 Since $U \subseteq T$, it follows that  $T = U + (V \cap T)$. (Given $t \in T$, we have $t  =  u +v$ for some $u \in U, v \in V$. Since $U \subseteq T$, $v =
 t-u \in V \cap T$.) Since $U \cap (V \cap T) = 0$, this shows $T = U \oplus (V \cap T)$. 
 
 
-(ii) I claim that every non-zero submodule $T$ of $M$ contains a simple summand. Pick $0 \ne x \in T$ and apply Zorn's Lemma to show 
+(ii) We claim that every nonzero submodule $T$ of $M$ contains a simple summand. Pick $0 \ne x \in T$ and apply Zorn's Lemma to show 
 that there is a maximal submodule $U$ of $T$ with respect to the property that $x \notin U$. We have $T = U \oplus W$ by (i) for some  $W \neq 0$.
 If $W$ is not
 simple, then $W$ contains a nonzero, proper submodule $W_1$ and hence, by using (i) again, we get that 
-$W = W_1 \oplus W_2$ for some proper non-zero submodule $W_2$. 
+$W = W_1 \oplus W_2$ for some proper nonzero submodule $W_2$. 
 
 
 These properties implies that $(U \oplus W_1) \cap (U \oplus W_2) = U$. One containment is clear. If $v$ belongs to the left side,
