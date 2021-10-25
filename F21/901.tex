@@ -3205,6 +3205,7 @@ Since each $M_i$ is a submodule of $M$, its length is finite, and is a nonnegati
 Now assume that $M$ is both Noetherian and Artinian. We will construct a composition series for $M$. We can assume that $M\neq 0$. Consider the collection of proper submodules of $M$. This is nonempty, so has a maximal element $M^1$ by the Noetherian hypothesis. We must have $M/M^1$ is simple, or else there is a module in between $M^1$ and $M$. Using Noetherianity again, if $M^1\neq 0$ (we're done otherwise), there is a maximal proper submodule of $M^1$; call it $M^2$. This process yields a descending chain with simple quotients, and this must stop (i.e., yield $M^i=0$ for some $i$) by the Artinian hypothesis. Thus, there is a composition series for $M$.
 \end{proof}
 
+\newpage
 \Oct{25}
 
 \ssec{Semisimple modules}
@@ -3284,7 +3285,7 @@ $(3) \Rightarrow (2)$ holds since we can split the inclusion $N\to M$ and thus a
 Therefore the Splitting Theorem yields $M=N\oplus s(M/N)$ where $s$ denotes the splitting of the quotient map $M\to M/N$.
 
 The hard part is proving $(1) \Leftrightarrow (2)$. 
- $(1) \Rightarrow (2)$ Assume (1), so that $M = \oplus_{\lambda \in \Lambda} M_\lambda$ for some collection of simple submodules $M_\lambda$,  and let $N \subseteq M$ be any submodule. (It is important to note that it does not necessarily follow that $N$ is a sum of some subcollection of the $M_\lambda$}) . 
+ $(1) \Rightarrow (2)$ Assume (1), so that $M = \oplus_{\lambda \in \Lambda} M_\lambda$ for some collection of simple submodules $M_\lambda$,  and let $N \subseteq M$ be any submodule. (It is important to note that it does not necessarily follow that $N$ is a sum of some subcollection of the $M_\lambda$) . 
   Consider the collection $\cS$ of subsets $\Gamma$ of $\Lambda$ such that $N \cap M_\Gamma = 0$ where we define $M_\Gamma := \oplus_{\lambda \in \Gamma} M_\lambda$. View $\cS$ as a poset by inclusion.
   It is nonempty since $J = \emptyset$ belongs to $\cS$. If $\{\Gamma_\alpha\}$ is a totally ordered subcollection of $\cS$, let
   $\Gamma = \cup_\alpha \Gamma_\alpha$. I claim $M_\Gamma \cap N = 0$. If not, there is a nonzero element $(m_\gamma) \in M_\Gamma \cap N$. But since $m_\gamma = 0$ for all but a finite number of $\gamma$'s
@@ -3292,12 +3293,13 @@ The hard part is proving $(1) \Leftrightarrow (2)$.
   We may thus apply Zorn's Lemma to get a maximal $\Gamma \in \cS$.
 
   I claim $M$ is the internal direct sum of $N$ and $M_\Gamma$.
-  We have $N \cap M_\Gamma = 0$ since $\Gamma\in\cS$ and so  it suffices to prove $N + M_\Gamma = M$. Since $M = \sum_{\lambda \in \Lambda\} M_\lambda$, the latter is equivalent to proving
+  We have $N \cap M_\Gamma = 0$ since $\Gamma\in\cS$ and so  it suffices to prove $N + M_\Gamma = M$. Since $M = \sum_{\lambda \in \Lambda} M_\lambda$, the latter is equivalent to proving
   that $M_\lambda \subseteq N + M_\Gamma$ for all $\lambda \in \Lambda$. If this fails for some $\lambda$, then since
 $M_\lambda \cap (N + M_\Gamma)$ is a proper submodule of $M_\lambda$, which is simple, and hence 
 $M_\lambda \cap (N + M_\Gamma) = 0$. But then $N \cap (M_{\Gamma} \oplus M_\lambda) = 0$ (if $n \in N$ and $n = m + m'$, with $m\in M_\Gamma$ and $m'\in M_\lambda$, then $m'=n-m$ so $m'=0$ and $n=m$, and then $n=0$.) So, $\Gamma\cup\{ \lambda\}$ is a member of $\cS$ that strictly contains $\Gamma$, a contradiction.
 It must be thar $M = N \oplus M_\Gamma$.
 
+\begin{comment}
 
 $(2) \Rightarrow (1)$  Now assume that every submodule of $M$ is a summand. We proceed in three steps:
 
