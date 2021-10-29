@@ -3251,7 +3251,7 @@ because
  so $M$ has finite length, namely length $n$, and the composition factors are the modules $M_i$.
  \end{rem}
  
- \begin{prop}[Krull-Schmidt for semisimple modules]
+ \begin{prop}[Krull-Schmidt for semisimple modules]\index{Krull-Schmidt}
  Let $M$ be a finitely generated semisimple module. Given two direct sum decompositions as simple modules
  \[ M = M_1 \oplus  \cdots  \oplus M_m = N_1 \oplus  \cdots  \oplus N_n\]
  then $m=n$, and there is a permutation $\sigma$ such that $M_{\sigma(i)} \cong N_i$ for all $i$.
@@ -3345,6 +3345,8 @@ A major source of semisimple modules comes from group rings.
 
 \subsection{Semisimple rings and the Artin-Wedderburn theorem}
 
+\sssec{Semisimple rings}
+
 \begin{defn} A ring $R$ is \DEF{left semisimple} if  $R$ is semisimple as a left module over itself. 
 $R$ is  \DEF{right semisimple} if $R$ is semisimple as a right modules over itself.
 \end{defn}
@@ -3388,31 +3390,35 @@ $R = I_1 \oplus \cdots \oplus I_m$ for some finite collection $I_1, \dots, I_m$ 
         it follows that $M$ is semisimple since it is a quotient of a semisimple module $M\cong \oplus_\Lambda R/\ker(p)$.
       \end{proof}
 
-\begin{comment}
+\Oct{29}
+
       \begin{prop} Let $R$ be a left semisimple ring and write  $R = I_1 \oplus \cdots \oplus I_m$ as an internal direct sum with $I_1, \dots, I_m$ minimal
         left ideals. 
 Let $J_1, \dots, J_n$ be a complete list of representatives of isomorphism classes as left $R$-modules
 taken from the list $I_1, \dots, I_m$; so, for each $i$ with $1 \leq i \leq m$, there is a unique $j$ with $1 \leq j \leq l$ so
 that $I_i \cong J_j$ as left $R$-modules.
 
-        Then every finitely generated left $R$-module is isomorphic to $J_1^{\oplus e_1} \oplus \cdots \oplus J_n^{\oplus e_n}$ for a unique
-        list $e_1, \dots, e_n$ of nonnegative integers.
+        Then every $R$-module is isomorphic to $J_1^{\oplus \Lambda_1} \oplus \cdots \oplus J_n^{\oplus \Lambda_n}$ for some index sets $\Lambda_1,\dots,\Lambda_n$.
+        
+If $M$ is finitely generated, $M$ is isomorphic to $J_1^{\oplus e_1} \oplus \cdots \oplus J_n^{\oplus e_n}$ for a unique   list $e_1, \dots, e_n$ of nonnegative integers.
       \end{prop}
 
-      \begin{proof} 
-        Since $M$ is finitely generated there is a surjection $R^n \onto M$. Using  Proposition \ref{prop916}
+      \begin{proof}
+   If $M$ is finitely generated there is a surjection $R^a \onto M$. Using  Proposition \ref{prop916}
 this surjection splits,         so that $R^n \cong M \oplus N$ for some $N$, and each of $M$ and $N$ is semisimple and finitely generated.
 So $M = \oplus_{i=1}^s M_i$ and $N = \oplus_{j=1}^s N_j$ with $M_i, N_j$ simple. Clearly $R^n$ is isomorphic to a finite direct sum of copies of the $J_i$'s,
-and so the result follows from the Krull-Schmidt Theorem for semisimple modules. 
+and so the result follows from the Krull-Schmidt Theorem for semisimple modules.
+
+In the general case, we know that $M$ is a direct sum of simple modules; if some simple summand $N$ of $M$ is not isomorphic to one of the $J_i$, then $N$ is a finitely generated counterexample to the f.g. case.
          \end{proof}
       
-
+In short, if $R$ is left semisimple, and we know the simple decomposition of $R$ itself, then we have a complete classification of \emph{all} $R$-modules: they are just direct sums of the simple summands of $R$!
         
-Much of the interest in semisimple modules arises from the following:
+Much of the interest in semisimple rings arises from the following:
   
 
-      \begin{thm}[Maschke's Theorem] If $k$ is a field and $G$ is a finite group such that $\mathrm{char}(K)$ does not divide $|G|$, then
-        the group ring $K[G]$ is semisimple.
+      \begin{thm}[Maschke's Theorem]\index{Maschke's Theorem} If $K$ is a field and $G$ is a finite group such that $\mathrm{char}(K)$ does not divide $|G|$, then
+        the group ring $K[G]$ is left semisimple.
         \end{thm}
 
         \begin{proof} Let $i: N \to M$ be any injection of left $K[G]$-modules. It suffices to prove that there is an $K[G]$-linear
@@ -3439,7 +3445,7 @@ where the second equality is given by identifying $x$ with $gh$.
             = \frac{1}{|G|} \sum_{g \in G} g^{-1} gn
             = \frac{1}{|G|} \sum_{g \in G} n  = n
             $$
-            where the second equalty uses that $i$ is $K[G]$-linear
+            where the second equality uses that $i$ is $K[G]$-linear
             and the third one  uses that $f \circ i =
             \id$.
           \end{proof}
@@ -3454,7 +3460,7 @@ where the second equality is given by identifying $x$ with $gh$.
          Let $G$ be a finite group and $K$ a field. The representation of $G$ corresponding to $K[G]$ viewed as a left module over itself can be described
          explicitly as following:
             As a $K$-vector space, $K[G]$ has  $G$ as a basis: $K[G] = \oplus_{g \in G} k \cdot g$. $G$ acts on this vector space by permuting the basis via
-            left multiplicaiton: $h \cdot (\sum_g c_g g) = \sum_g c_g (hg)$. This is sometimes called the \DEF{(left) regular representation of $G$}.
+            left multiplication: $h \cdot (\sum_g c_g g) = \sum_g c_g (hg)$. This is sometimes called the \DEF{(left) regular representation of $G$}.
 
 
          \begin{cor}[Corollary of Maschke's Theorem] If $G$ is a finite group and $K$ is a field such that $\mathrm{char}(K) \nmid |G|$,
@@ -3465,7 +3471,140 @@ and every finite dimensional representation is uniquely a finite direct sum of i
 Moreover, every irreducible representation arises as a summand of the left regular
            representation.
              \end{cor}
+             
+             \begin{ex} Let $G=C_3$. We can use Maschke's Theorem and the theory of semisimple rings so far to classify every representation of $G$ over $\R$ or over $\C$ (or more generally over any field of characteristic not equal to 3). In any case, the left regular representation $V$ of $C_3$ is the three-dimensional representation with basis $\{1,g,g^2\}$ such that $g\cdot 1 = g, g\cdot g=g^2, g\cdot g^2 =1$, i.e.,
+             \[ g \mapsto \begin{bmatrix} 0 & 0 & 1 \\ 1 & 0 & 0 \\ 0 & 1 & 0\end{bmatrix}\]
+             in this basis. Also in any case, the subspace $W$ spanned by $1+g+g^2$, which is the vector $(1,1,1)$ in these coordinates, is a 1-dimensional $G$-stable subspace, so a simple subrepresentation. Moreover, this is the trivial representation, since this vector is fixed by $g$. Then $V/W$ obtains the structure of a representation. We can take $1+W,g+W$ as a basis for $V/W$, and $g\cdot (1+W) = g+W$, and $g\cdot (g+W) = g^2+W = -1-g +W$, i.e., in our coordinates,
+             \[ g\mapsto \begin{bmatrix} 0 & -1 \\ 1 & -1 \end{bmatrix}.\]
+            A $G$-stable subspace must correspond to an eigenvector of $g$ (which is equivalently an eigenvector of $g^{-1}$). The characteristic equation of this matrix shows that the eigenvalues are precisely the primitive cube roots of unity. 
+            
+            If $K=\R$ (or more generally if there are no primitive cube roots of unity), then the $2$-dimensional representation $V/W$ we just found is simple since there are no stable subspaces.              
+                         If $K=\C$ (or more generally if there are primitive cube roots of unity), let $\omega$ be a primitive cube root of unity. The $2$-dimensional representation $V/W$ has $\omega$ and $\omega^2$ as eigenvalues, and there are corresponding eigenvectors, so $V/W$ is a direct sum of two 1-dimensional stable subspaces $T, T'$ such that $g\cdot t= \omega t$ for all $t\in T$ and $g\cdot t' = \omega^2 t'$ for all $t'\in T'$. 
+               \begin{comment}          
+                         
+                   We conclude that \emph{every} real representation of $C_3$ is isomorphic to a direct sum of copies of the trivial representation and copies of $V/W$. That is, for any such representation $U$, there is a basis of $U$, $\{e_\alpha \}_{\alpha\in A}$, $\{e'_\beta, e''_\beta\}_{\beta\in B}$, such that $g\cdot e_\alpha = e_\alpha$, $g\cdot e'_\beta = e''_\beta$, and $g\cdot e''_\beta = - e'_\beta - e''_\beta$.
 
+
+We conclude that \emph{every} complex representation of $C_3$ is isomorphic to a direct sum of copies of the trivial representation, $T$, and $T'$. That is, for any such representation $U$, there is a basis of $U$, $\{e_\alpha \}_{\alpha\in A}$, $\{e'_\beta\}_{\beta\in B}$, $\{e''_\gamma\}_{\gamma\in C}$, such that $g\cdot e_\alpha = e_\alpha$, $g\cdot e'_\beta = \omega e'_\beta$, and $g\cdot e''_\gamma = e''_\gamma$.
+                         
+             We can also understand these decompositions more ring theoretically. We have $K[C_3] \cong K[g]/(g^3-1)$. If $K=\R$, then $g^3-1 = (g-1)(g^2+g+1)$ is a factorization into irreducibles, so \[\R[C_3] \cong \R[g]/(g-1) \times \R[g]/(g^2+ g+1)\cong \R \times \C.\] If $K=\C$, then $g^3-1 = (g-1)(g-\omega)(g-\omega^2)$ is a factorization into irreducibles, so \[\C[C_3] \cong \C[g]/(g-1) \times \C[g]/(g-\omega) \times \C[g]/(g-\omega^2)\cong \C \times \C \times \C.\]
+             \end{ex}
+             
+\sssec{Artin-Wedderburn Theorem}
+
+We will now give a classification of \emph{all} left semisimple rings. To start, we collect some examples.
+
+\begin{lem} If $R$ and $S$ are left semisimple, so is the product ring $R \times S$.
+\end{lem}
+
+\begin{proof} Say we have internal direct sum decompositions
+  $R = I_1 \oplus \cdots \oplus I_m$ and
+  $S = J_1 \oplus \cdots \oplus J_n$ involving minimal left ideals. Then for all $a$ and $b$,
+  $I_a \times \{0\}$ and $\{0\} \times J_b$ are minimal left ideals of $R \times S$
+  and they determine an internal direct sum decomposition of $R \times S$. 
+\end{proof}
+
+\begin{ex}
+The previous lemma and Lemma \ref{lem:matrixsemisimple} show that for any integer $m \geq 0$, list of division rings $D_1, \dots, D_m$ and positive integers $n_1, \dots, n_m$, the ring
+  $$
+  R =\Mat_{n_1}(D_1) \times \cdots \times \Mat_{n_m}(D_m)
+  $$
+  is left semisimple. \end{ex}
+
+The Artin-Wedderburn Theorem asserts that the last example accounts for {\em all} examples!
+
+In the proof, we will use the following observations.
+
+\begin{lem} Let $M$ be an $R$-module. The map
+\[ \xymatrix@R=1mm{ \End_R(M^{\oplus n}) \ar[r]^-{\Theta} & \Mat_n(\End_R(M)) \\
+\phi \ar@{|->}[r] & [\pi_i \phi  \iota_j]_{i,j} }\]
+is a ring isomorphism, where $\iota_k$ and $\pi_k$ denote the natural inclusion and projection maps.
+\end{lem}
+\begin{proof}
+It is clear that this map is additive, as each $\iota_i$ and $\pi_j$ is. Observe that $\pi_j  \iota_i$ is the identity on $M$ if $i=j$, and the zero map otherwise and that $1_{M^{\oplus n}} = \sum_{k} \iota_k  \pi_k$.
+
+The map
+\[ \xymatrix@R=1mm{ \End_R(M^{\oplus n}) &\ar[l]_-{\zeta}  \Mat_n(\End_R(M)) \\
+\sum_{i,j} \iota_i  \alpha_{i,j}  \pi_j & \ar@{|->}[l]  [\alpha_{i,j}]_{i,j} }\]
+is a two-sided inverse for $\Theta$:
+\[ \zeta (\Theta(\phi)) = \zeta ( [\pi_i  \phi  \iota_j]_{i,j} ) = \sum_{i,j} \iota_i \pi_i  \phi  \iota_j \pi_j =(\sum_i \iota_i \pi_i) \phi (\sum_j \iota_j \pi_j)=\phi, \quad\text{and}\]
+\[ \Theta(\zeta([\alpha_{i,j}]_{i,j}]))_{k,\ell} = \Theta ( \sum_{i,j} \iota_i  \alpha_{i,j}  \pi_j)_{k,\ell} = \pi_k (\sum_{i,j} \iota_i  \alpha_{i,j}  \pi_j) \iota_\ell = \sum_{i,j}  (\pi_k \iota_i) \alpha_{i,j} (\pi_j \iota_\ell) = \alpha_{k,\ell}. \]
+
+
+
+To see that $\Theta$ respects multiplication, we have 
+\[ [\Theta (\psi) \Theta(\phi) ]_{i,j}= \sum_k (\pi_i  \psi  \iota_k) (\pi_k  \phi  \iota_j) = \pi_i  \psi\phi  \iota_j = \Theta(\psi \phi)_{i,j}.\qedhere\]
+\end{proof}
+
+\begin{exer} Let $D$ be a division ring. Then $\End_{\Mat_n(D)}(D^n)\cong D^{\op}$, where $D^n$ is the simple module of column vectors.
+\end{exer}
+
+
+We now come to the main theorem regarding semisimple rings
+
+\begin{thm}[Artin-Wedderburn Theorem]
+\label{thm:AW}
+ Let $R$ be a left semisimple ring. Then for some $m \geq 0$, positive integers $n_1, \dots, n_m$,
+  and division rings $D_1, \dots, D_m$, there is a ring isomorphism
+$$
+R \cong \Mat_{n_1}(D_1) \times \cdots \times \Mat_{n_m}(D_m).
+$$
+
+Moreover,  
+\begin{enumerate}
+\item 
+$m$ is the number of isomorphism classes of simple left $R$-modules.
+\item  Say $M_1, \dots, M_m$  are simple modules forming a complete set of representatives of these  isomorphism classes. Then, after reordering,  $D_i\cong \End_R(M_i)^{\op}$ and
+\item  $n_j$ is the number of times summands isomorphic to $M_j$ occur in the decomposition of $R$ into a direct sum of simple left modules.
+\end{enumerate}
+
+Moreover, the data $(m; n_1, \dots, n_m; D_1, \dots, D_m)$ is unique up to a permutation of $\{1, \dots, m\}$  and isomorphisms of division rings.
+\end{thm}
+\begin{proof}
+  Since $R$ is left semisimple, we have $R \cong I_1 \oplus \cdots \oplus I_t$ with each $I_i$ is simple (in fact a minimal ideal). Group by isomorphism to rewrite this as $R \cong M_1^{\oplus n_1} \oplus \cdots \oplus M_m^{\oplus n_m}$ with each $M_i$ simple, $n_j \geq 1$, 
+  and such that $M_i$ is not isomorphic to $M_j$ for all $i \ne j$. We compute the endomorphisms of both sides:
+  
+  \begin{eqnarray*} \label{E912}
+  \End_R(R) &=& \Hom_R(\bigoplus_{i=1}^m M_i^{\oplus n_i}, \prod_{j=1}^m M_j^{\oplus n_j}) \cong  \prod_j \Hom_R(M_i^{\oplus n_i}, \prod_i  M_i^{\oplus n_j})\\
+  &\cong&  \prod_{i=1}^m \prod_{j=1}^m \Hom_R(M_i^{\oplus n_i}, M_j^{\oplus n_j}) \\
+  &=& \prod_{i=1}^m \Hom_R(M_i^{\oplus n_i}, M_i^{\oplus n_i}) \\
+  &=& \End_R(M_i^{\oplus n_i})\cong \Mat_{n_i}(\End_R(M_i)).
+\end{eqnarray*}
+
+Above the second line follows from the first by properties of $\Hom$, the third follows because Schur's lemma gives that $\Hom_R(M_i,M_j)=0$, and consequently $\Hom_R(M_i^{\oplus n_i},M_j^{\oplus n_j})=0$, when $i\neq j$. The final isomorphism is the previous lemma.
+
+  On the one hand, we have $\End_R(R) \cong R^{\op}$ by a problem from the homework.  On the other hand, applying Schur's Lemma again, $D'_i := \End_R(M_i)$ is a division ring for all $i$.
+
+
+Combining these gives
+$$
+R^{\op} \cong \Mat_{n_1}(D'_1) \times \cdots \times \Mat_{n_m}(D'_m)
+$$
+and hence, also by a homework problem, we have
+$$
+R \cong
+\left(\Mat_{n_1}(D'_1) \times \cdots \times \Mat_{n_m}(D'_m)\right)^{\op} \cong
+\Mat_{n_1}(D_1) \times \cdots \times \Mat_{n_m}(D_m)
+$$
+with $D_i := (D_i')^{\op}$.
+
+%Concerning uniqueness, Schur's Lemma allows us to conclude the $D_i, n_i$, and $m$ are unique provided the decomposition of $R$ as a product of matrix rings arises from a decomposition of $R$ into simple modules $R \cong M_1^{\oplus n_1} \oplus \cdots \oplus M_m^{\oplus n_m}$ as above. We show this is always the case.
+
+%Towards establishing uniqueness, %we will show any isomorphism between $R$ and a product of matrix rings over division rings arises as above. That is, given an isomorphism between $R$ and a product of matrix rings over division rings, there is a direct sum decomposition of $R$ into simples such that the assertions (1)--(3) in the statement hold. Once we have done this, the Krull-Schmidt theorem will guarantee that the data $(m; n_1, \dots, n_m; D_1, \dots, D_m)$ is unique up to a permutation of $\{1, \dots, m\}$  and isomorphisms of division rings, since the isomorphism classes and multiplicities of simple summands are unique.
+
+
+Say we are given an isomorphism of rings $R \cong \prod_i \Mat_{t_i}(Q_i)$. Then since $\Mat_{t_i}(Q_i)$ decomposes as a direct sum of $t_i$ copies of $N_i:=Q_i^{t_i}$, and $N_i$ is a simple $\Mat_{t_i}(Q_i)$-module, hence also a simple $R$-module, we have a semisimple $R$-module decomposition of $R$ as
+\[ M_1^{\oplus n_1} \oplus  \cdots \oplus M_m^{\oplus n_m} \cong R \cong N_1^{\oplus t_1} \oplus \cdots \oplus N_k^{\oplus t_k}.\]
+By Krull-Schmidt, we must have $m=k$, and after a permutation, $M_i \cong N_i = Q_i^{\oplus t_i}$ and $n_i=t_i$ for each $i$.
+
+
+Moreover, we have
+\[
+D_i\cong  \End_R(M_i)^{\op} \cong  \End_R(N_i)^{\op}. \]
+We recall that $N_i\cong Q_i^{\oplus n_i}$, with the natural column vector action from $\Mat_{n_i}(Q_i)$, and the trivial action from the other factors. Thus,
+\[  \End_R(N_i)^{\op} = \End_{\Mat_{n_i}(Q_i)} (Q_i^{n_i}) ^{\op}= Q_i,\]
+using the exercise above.
+\end{proof}
 
 
 \begin{comment}
