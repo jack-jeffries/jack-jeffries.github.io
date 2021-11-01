@@ -3480,14 +3480,16 @@ Moreover, every irreducible representation arises as a summand of the left regul
             
             If $K=\R$ (or more generally if there are no primitive cube roots of unity), then the $2$-dimensional representation $V/W$ we just found is simple since there are no stable subspaces.              
                          If $K=\C$ (or more generally if there are primitive cube roots of unity), let $\omega$ be a primitive cube root of unity. The $2$-dimensional representation $V/W$ has $\omega$ and $\omega^2$ as eigenvalues, and there are corresponding eigenvectors, so $V/W$ is a direct sum of two 1-dimensional stable subspaces $T, T'$ such that $g\cdot t= \omega t$ for all $t\in T$ and $g\cdot t' = \omega^2 t'$ for all $t'\in T'$. 
-               \begin{comment}          
+              
+              
+              \Nov{1}    
                          
                    We conclude that \emph{every} real representation of $C_3$ is isomorphic to a direct sum of copies of the trivial representation and copies of $V/W$. That is, for any such representation $U$, there is a basis of $U$, $\{e_\alpha \}_{\alpha\in A}$, $\{e'_\beta, e''_\beta\}_{\beta\in B}$, such that $g\cdot e_\alpha = e_\alpha$, $g\cdot e'_\beta = e''_\beta$, and $g\cdot e''_\beta = - e'_\beta - e''_\beta$.
 
 
 We conclude that \emph{every} complex representation of $C_3$ is isomorphic to a direct sum of copies of the trivial representation, $T$, and $T'$. That is, for any such representation $U$, there is a basis of $U$, $\{e_\alpha \}_{\alpha\in A}$, $\{e'_\beta\}_{\beta\in B}$, $\{e''_\gamma\}_{\gamma\in C}$, such that $g\cdot e_\alpha = e_\alpha$, $g\cdot e'_\beta = \omega e'_\beta$, and $g\cdot e''_\gamma = e''_\gamma$.
                          
-             We can also understand these decompositions more ring theoretically. We have $K[C_3] \cong K[g]/(g^3-1)$. If $K=\R$, then $g^3-1 = (g-1)(g^2+g+1)$ is a factorization into irreducibles, so \[\R[C_3] \cong \R[g]/(g-1) \times \R[g]/(g^2+ g+1)\cong \R \times \C.\] If $K=\C$, then $g^3-1 = (g-1)(g-\omega)(g-\omega^2)$ is a factorization into irreducibles, so \[\C[C_3] \cong \C[g]/(g-1) \times \C[g]/(g-\omega) \times \C[g]/(g-\omega^2)\cong \C \times \C \times \C.\]
+%             We can also understand these decompositions more ring theoretically. We have $K[C_3] \cong K[g]/(g^3-1)$. If $K=\R$, then $g^3-1 = (g-1)(g^2+g+1)$ is a factorization into irreducibles, so \[\R[C_3] \cong \R[g]/(g-1) \times \R[g]/(g^2+ g+1)\cong \R \times \C.\] If $K=\C$, then $g^3-1 = (g-1)(g-\omega)(g-\omega^2)$ is a factorization into irreducibles, so \[\C[C_3] \cong \C[g]/(g-1) \times \C[g]/(g-\omega) \times \C[g]/(g-\omega^2)\cong \C \times \C \times \C.\]
              \end{ex}
              
 \sssec{Artin-Wedderburn Theorem}
@@ -3513,7 +3515,36 @@ The previous lemma and Lemma \ref{lem:matrixsemisimple} show that for any intege
 
 The Artin-Wedderburn Theorem asserts that the last example accounts for {\em all} examples!
 
-In the proof, we will use the following observations.
+\begin{thm}[Artin-Wedderburn Theorem]
+\label{thm:AW}
+ Let $R$ be a left semisimple ring. Then for some $m \geq 0$, positive integers $n_1, \dots, n_m$,
+  and division rings $D_1, \dots, D_m$, there is a ring isomorphism
+$$
+R \cong \Mat_{n_1}(D_1) \times \cdots \times \Mat_{n_m}(D_m).
+$$
+
+Moreover,  
+\begin{enumerate}
+\item 
+$m$ is the number of isomorphism classes of simple left $R$-modules.
+\item  Say $M_1, \dots, M_m$  are simple modules forming a complete set of representatives of these  isomorphism classes. Then, after reordering,  $D_i\cong \End_R(M_i)^{\op}$ and
+\item  $n_j$ is the number of times summands isomorphic to $M_j$ occur in the decomposition of $R$ into a direct sum of simple left modules.
+\end{enumerate}
+
+Moreover, the data $(m; n_1, \dots, n_m; D_1, \dots, D_m)$ is unique up to a permutation of $\{1, \dots, m\}$  and isomorphisms of division rings.
+\end{thm}
+
+\begin{ex} We saw before that the module decomposition in terms of simple modules is $\R[C_3] = W \oplus U$, where $W$ is the one-dimensional trivial representation, and $U$ is the $2$-dimensional representation given by $g \mapsto \begin{bmatrix} 0  & -1 \\ 1 & -1\end{bmatrix}$. On the other hand, as rings, 
+\[\R[C_3] \cong \R[g]/(g^3-1) \cong \R[g]/(g-1) \times \R[g]/ (g^2+g+1) \cong \R \times \C.\]
+
+
+To reconcile these decompositions by the Artin-Wedderburn Theorem, one can check that $\End_{\R[C_3]}(W) \cong \R$ and $\End_{\R[C_3]}(V/W) \cong \C$.
+
+We have $\End_{\R[C_3]}(W) \cong \R$. To compute the endomorphism ring of $V/W$, observe that an $\R$-linear endomorphism of $V/W$ is $\R[C_3]$-linear if and only if it commutes with the action of $g$. We can write any $\R$-linear endomorphism of $V/W$ as a $2\times 2$ matrix; for it to commute with $g$ means it commutes with $\begin{bmatrix} 0  & -1 \\ 1 & -1\end{bmatrix}$. We have 
+\[ \begin{bmatrix} a & b \\ c& d \end{bmatrix} \begin{bmatrix} 0  & -1 \\ 1 & -1\end{bmatrix} - \begin{bmatrix} 0  & -1 \\ 1 & -1\end{bmatrix}  \begin{bmatrix} a & b \\ c& d \end{bmatrix} = \begin{bmatrix} b + c & -a-b+d \\ d -a + c & -b-c \end{bmatrix}, \]
+so the matrices we seek are of the form \[\begin{bmatrix} a & -c \\ c & a-c \end{bmatrix}= a \begin{bmatrix} 1 & 0 \\ 0 & 1\end{bmatrix} + c \begin{bmatrix} 0 & -1 \\ 1 & -1\end{bmatrix}. \] Any pair of matrices in this set commutes (since the two vectorspace generators do) so they form a commutative ring and hence a field by Schur's Lemma;  any matrix in this collection is algebraic over the subring of scalar matrices (since both generators are). It follows that this collection of matrices is isomorphic as a ring to $\C$. \end{ex}
+
+\begin{comment}
 
 \begin{lem} Let $M$ be an $R$-module. The map
 \[ \xymatrix@R=1mm{ \End_R(M^{\oplus n}) \ar[r]^-{\Theta} & \Mat_n(\End_R(M)) \\
@@ -3542,24 +3573,6 @@ To see that $\Theta$ respects multiplication, we have
 
 We now come to the main theorem regarding semisimple rings
 
-\begin{thm}[Artin-Wedderburn Theorem]
-\label{thm:AW}
- Let $R$ be a left semisimple ring. Then for some $m \geq 0$, positive integers $n_1, \dots, n_m$,
-  and division rings $D_1, \dots, D_m$, there is a ring isomorphism
-$$
-R \cong \Mat_{n_1}(D_1) \times \cdots \times \Mat_{n_m}(D_m).
-$$
-
-Moreover,  
-\begin{enumerate}
-\item 
-$m$ is the number of isomorphism classes of simple left $R$-modules.
-\item  Say $M_1, \dots, M_m$  are simple modules forming a complete set of representatives of these  isomorphism classes. Then, after reordering,  $D_i\cong \End_R(M_i)^{\op}$ and
-\item  $n_j$ is the number of times summands isomorphic to $M_j$ occur in the decomposition of $R$ into a direct sum of simple left modules.
-\end{enumerate}
-
-Moreover, the data $(m; n_1, \dots, n_m; D_1, \dots, D_m)$ is unique up to a permutation of $\{1, \dots, m\}$  and isomorphisms of division rings.
-\end{thm}
 \begin{proof}
   Since $R$ is left semisimple, we have $R \cong I_1 \oplus \cdots \oplus I_t$ with each $I_i$ is simple (in fact a minimal ideal). Group by isomorphism to rewrite this as $R \cong M_1^{\oplus n_1} \oplus \cdots \oplus M_m^{\oplus n_m}$ with each $M_i$ simple, $n_j \geq 1$, 
   and such that $M_i$ is not isomorphic to $M_j$ for all $i \ne j$. We compute the endomorphisms of both sides:
@@ -3568,7 +3581,7 @@ Moreover, the data $(m; n_1, \dots, n_m; D_1, \dots, D_m)$ is unique up to a per
   \End_R(R) &=& \Hom_R(\bigoplus_{i=1}^m M_i^{\oplus n_i}, \prod_{j=1}^m M_j^{\oplus n_j}) \cong  \prod_j \Hom_R(M_i^{\oplus n_i}, \prod_i  M_i^{\oplus n_j})\\
   &\cong&  \prod_{i=1}^m \prod_{j=1}^m \Hom_R(M_i^{\oplus n_i}, M_j^{\oplus n_j}) \\
   &=& \prod_{i=1}^m \Hom_R(M_i^{\oplus n_i}, M_i^{\oplus n_i}) \\
-  &=& \End_R(M_i^{\oplus n_i})\cong \Mat_{n_i}(\End_R(M_i)).
+  &=& \prod_{i=1}^m  \End_R(M_i^{\oplus n_i})\cong \prod_{i=1}^m  \Mat_{n_i}(\End_R(M_i)).
 \end{eqnarray*}
 
 Above the second line follows from the first by properties of $\Hom$, the third follows because Schur's lemma gives that $\Hom_R(M_i,M_j)=0$, and consequently $\Hom_R(M_i^{\oplus n_i},M_j^{\oplus n_j})=0$, when $i\neq j$. The final isomorphism is the previous lemma.
@@ -3586,14 +3599,15 @@ R \cong
 \left(\Mat_{n_1}(D'_1) \times \cdots \times \Mat_{n_m}(D'_m)\right)^{\op} \cong
 \Mat_{n_1}(D_1) \times \cdots \times \Mat_{n_m}(D_m)
 $$
-with $D_i := (D_i')^{\op}$.
+with $D_i := (D_i')^{\op}=\End_R(M_i)^\op$.
 
 %Concerning uniqueness, Schur's Lemma allows us to conclude the $D_i, n_i$, and $m$ are unique provided the decomposition of $R$ as a product of matrix rings arises from a decomposition of $R$ into simple modules $R \cong M_1^{\oplus n_1} \oplus \cdots \oplus M_m^{\oplus n_m}$ as above. We show this is always the case.
 
 %Towards establishing uniqueness, %we will show any isomorphism between $R$ and a product of matrix rings over division rings arises as above. That is, given an isomorphism between $R$ and a product of matrix rings over division rings, there is a direct sum decomposition of $R$ into simples such that the assertions (1)--(3) in the statement hold. Once we have done this, the Krull-Schmidt theorem will guarantee that the data $(m; n_1, \dots, n_m; D_1, \dots, D_m)$ is unique up to a permutation of $\{1, \dots, m\}$  and isomorphisms of division rings, since the isomorphism classes and multiplicities of simple summands are unique.
 
+This shows that given a decomposition of $R$ as a left semisimple module, there is a ring decomposition as a product of matrix rings over division rings, and the data of division rings and matrix sizes is related to the data of simple modules and multiplicities by the formulas (1)--(3). We just need to prove uniqueness. 
 
-Say we are given an isomorphism of rings $R \cong \prod_i \Mat_{t_i}(Q_i)$. Then since $\Mat_{t_i}(Q_i)$ decomposes as a direct sum of $t_i$ copies of $N_i:=Q_i^{t_i}$, and $N_i$ is a simple $\Mat_{t_i}(Q_i)$-module, hence also a simple $R$-module, we have a semisimple $R$-module decomposition of $R$ as
+Say we are given an isomorphism of rings $R \cong \prod_{i=1}^k \Mat_{t_i}(Q_i)$ for some division rings $Q_1,\dots,Q_k$. Then since $\Mat_{t_i}(Q_i)$ decomposes as a direct sum of $t_i$ copies of $N_i:=Q_i^{t_i}$, and $N_i$ is a simple $\Mat_{t_i}(Q_i)$-module, hence also a simple $R$-module, we have a semisimple $R$-module decomposition of $R$ as
 \[ M_1^{\oplus n_1} \oplus  \cdots \oplus M_m^{\oplus n_m} \cong R \cong N_1^{\oplus t_1} \oplus \cdots \oplus N_k^{\oplus t_k}.\]
 By Krull-Schmidt, we must have $m=k$, and after a permutation, $M_i \cong N_i = Q_i^{\oplus t_i}$ and $n_i=t_i$ for each $i$.
 
@@ -3602,9 +3616,224 @@ Moreover, we have
 \[
 D_i\cong  \End_R(M_i)^{\op} \cong  \End_R(N_i)^{\op}. \]
 We recall that $N_i\cong Q_i^{\oplus n_i}$, with the natural column vector action from $\Mat_{n_i}(Q_i)$, and the trivial action from the other factors. Thus,
-\[  \End_R(N_i)^{\op} = \End_{\Mat_{n_i}(Q_i)} (Q_i^{n_i}) ^{\op}= Q_i,\]
+\[  \End_R(N_i)^{\op} = \End_{\Mat_{n_i}(Q_i)} (Q_i^{\oplus n_i}) ^{\op}\cong Q_i,\]
 using the exercise above.
 \end{proof}
+
+
+
+\begin{cor} A ring is left semisimple if and only if it is right semisimple.\end{cor}
+\begin{proof} The claim is equivalent to showing $R$ is left semisimple if and only $R^\op$ is, which in turn follows from just one of the implications. If $R$ is left semisimple, then $R\cong \prod_{i} \Mat_{n_i}(D_i) $, so $R^{\op} \cong \prod_i \Mat_{n_i}(D_i)^{\op} \cong \prod_i \Mat_{n_i}(D_i^{\op})$ so $R^{\op}$ is left semisimple.
+\end{proof}
+
+Henceforth, we just say that $R$ is \DEF{semisimple} if it is left semisimple.
+
+\ssec{Applications to representation theory}
+
+Let us start by restating the Artin-Wedderburn theorem in the context of group rings.
+
+
+\begin{thm}[Artin-Wedderburn for group rings] \label{cor919} If $G$ is a finite group and $K$ is a field such that $\mathrm{char}(K) \nmid |G|$, then
+there is an isomorphism of rings
+$$
+K[G] \cong \Mat_{n_1}(D_1) \times \cdots \times \Mat_{n_m}(D_m),
+$$
+where $D_1, \dots, D_m$ are division rings. Furthermore,
+each $D_i$ contains $K$ (up to isomorphism) as a subring of its center and the above isomorphism is $K$-linear. In particular,
+$\dim_K(D_i) < \infty$. 
+
+Moroever, we have:
+\begin{enumerate}
+\item $m$ is the number of irreducible $k$-linear representation of $G$ (up to isomorphism),
+\item the $D_i$'s are the opposite rings of the endomorphism rings of these representations,
+\item  the $n_j$'s give the number of times each irreducible representation occurs in the decomposition of the regular representation of $G$,
+\item the numbers $n_1 \cdot \dim_k(D_1), \dots, n_m \cdot \dim_k(D_m)$ give the dimensions of these representations, and
+\item $n_1^2 \cdot \dim_k(D_1) + \cdots + n_m^2 \cdot \dim_k(D_m) = |G|$.
+\end{enumerate}
+\end{thm}
+\begin{proof} This mostly follows from Artin-Wedderburn and Maschke's Theorem. What needs to be noted is that each division ring here contains a copy of $K$ in its center.
+ Indeed, we recall that each $D_i$ is given as the opposite ring of $\End_{K[G]}(M_i)$ for some simple module $M_i$. For $\lambda\in K$, we have the map $M_i \xrightarrow{\lambda \cdot} M_i$ which commutes with any $K[G]$-linear map from $M_i$ to itself.
+\end{proof}
+
+\begin{cor} Let $G$ be a finite group, and $K$ be a field such that $\mathrm{char}(K) \nmid |G|$. Then $G$ is abelian if and only if $K[G]$ is isomorphic to a product of fields.
+\end{cor}
+
+
+\begin{lem} 
+Let $G$ be any group and $K$ any field. Given two group homomorphisms $\rho_1, \rho_2: G \to K^\times = \GL_1(K)$, the associated $K[G]$-modules $M_1$ and $M_2$ are isomorphic if and only if $\rho_1 =\rho_2$. 
+\end{lem}
+
+\begin{proof}
+Suppose that $\alpha:M_1 \to M_2$ is an isomorphism of $K[G]$-modules. Identifying $M_1=M_2=K$ as vector spaces, we have $\alpha(k) = ck$ for some $c\neq 0$. Then, \[ c \rho_1(g) (k) = \alpha \rho_1(g) (k) = \rho_2(g) \alpha(k) = \rho_2(g) (ck) = c \rho_2(g) (k)\] for all $k\in K$, so $\rho_1(g)(k)=\rho_2(g)(k)$ for all $k\in K$.
+\end{proof}
+
+\begin{prop} If $D$ is a division ring that contains $\R$ in its center and $\dim_\R(D) =2$, then $D \cong \C$ .
+\end{prop}
+
+\begin{proof} Pick $x \in D \smallsetminus \R$. Then $\R \subsetneqq \R[x] \subseteq D$, and since $\R[x]$ is an $\R$-vectorspace, we must have $\R[x] = D$ for dimension reasons. Thus $D$ is commutative and is a field. Since $D$ is a finite extension of $\R$, it is algebraic, so $\R \subsetneqq D \subseteq \C$, and we must have $D=\C$.
+\end{proof}
+
+
+
+\begin{ex} Let $k = \R$ and $G = S_3$. We find all the simple modules over the ring $\R[S_3]$ or, equivalently,
+  all irreducible $\R$-linear representations of $S_3$. We also find the Artin-Wedderburn decomposition of $\R[S_3]$.
+
+The one dimensional represenatations are given by group homomorphisms of the form $S_3 \to \R^\times$, and any such map factors as
+  $$
+  S_3 \onto S_3^{\mathrm{ab}} \to \R^\times.
+  $$
+  Note that $S_3^{\mathrm{ab}} = S_3/A_3 \cong C_2$ and there are two group homomorphisms $C_2 \to \R^\times$, sending the generator to
+  either $1$ or $-1$ (the only elements of $\R^\times$ of order $1$ or $2$).
+This gives two representations: $M_1 = \R$ with $S_3$ acting trivially and $M_2 = \R$ with $S_3$ acting by the sign representation. These are not isomorphic by the previous lemma.
+
+We have that $1= \dim_{\R}(M_1) = n_1 \cdot \dim_{\R}(D_1)$ so $n_1=1$ and $\dim_{\R}(D_1)=1$, and likewise $1= \dim_{\R}(M_2) = n_2 \cdot \dim_{\R}(D_2)$ so $n_2=1$ and $\dim_{\R}(D_2)=1$. So, the Artin-Wedderburn decomposition starts as
+
+\[ \R[S_3] \cong \R \times \R \times \cdots.\]
+
+Note that there are no further factors of $\R$, since we found all of the one-dimensional simple modules.
+
+
+Recall also that $S_3$ acts on $\R^3$ by permuting the basis (corresponding to the group homomorphism $S_3 \to \GL_3(\R)$ sending
+a permutation to its associated permutation matrix). 
+The subspace $M_3 = \{(a,b,c) \in \R^3 \mid a + b + c = 0\}$ is a subrepresenation of $\R^3$ of dimension $2$.
+We claim it is irreducible:  Say $0 \ne (a,b,c) \in M_3$. 
+
+By applying a permutation and scaling appropriately we obtain an
+element of the form $(1,x,-1-x) \in M_3$ and hence $(1, -1-x, x) \in M_3$. Adding these gives $(2,-1,-1) \in M_3$ and
+hence $(-1, 2,-1) \in M_3$. The latter two are linearly independent and so must span $M_3$. This proves $(a,b,c)$ generates $M_3$ as a left $\R[S_3]$-module
+and hence that $M_3$ is simple.
+Note that $M_3$ is not isomorphic to either $M_1$ nor $M_2$ by dimension considerations.
+
+We have that $2=\dim{\R}(M_3) = n_3 \cdot \dim_{\R}(D_3)$, so there are two possibilities.
+
+\begin{enumerate}
+\item One possibility is $n_3=1$ and $\dim_{\R}(D_3)=2$, in which case $D_3\cong \C$, so the Artin-Wedderburn decomposition reads as
+\[ \R[S_3] \cong \R \times \R \times \C \times S\] 
+for some $S$. We must have $\dim_{\R}(S)=2$. We know that $S$ cannot have any one-dimensional simple modules (since we already accounted for all of the one-dimensional simple modules for $\R[S_3]$), so $S$ cannot be $\R \times \R$. Then, for dimension reasons, we must have that $S\cong D_4$ with $\dim_{\R}(D_4)=2$, so $S\cong \C$. But then
+\[ \R[S_3] \cong \R \times \R \times \C \times \C\] 
+would be commutative, which it is not, as $S_3$ is not abelian.
+\item The other possibility is $n_3=2$ and $D_3=\R$. We obtain the AW decomposition
+\[ \R[S_3] \cong \R \times\R \times \Mat_2(\R).\]
+\end{enumerate}
+
+We have found the AW decomposition of $\R[S_3]$. As a consequence, we have identified all of the irreducible real representations of $S_3$.
+\end{ex}
+
+
+
+I claim that the endomorphism ring of $M_3$ is just $\R$. It contains $\R$ as a subring, given by the scaling operators (see the Proposition below).
+Say $\a: M_3 \to M_3$ is in $\End_{\R[S_3]}(M_3)$. So $\a$ is both $\R$-linear and commutes with the given action of $S_3$.
+Note that $v = (1,-1,0)$ and $w = (0,1,-1)$ form
+a basis of $M_3$. Since $\alpha$ commutes with the action of the transposition $\tau = (1 \, 2)$ and $\tau \cdot v = -v$ we get:
+$$
+- \alpha(v) = \alpha(-v) = \alpha(\tau \cdot v) = \tau \a(v)
+$$
+Letting $\alpha(v) = (a,b,-a-b)$ it follows that $a=-b$, and hence $\alpha(v) = av$ for some $a \in \R$.
+Similarly, $\alpha(w) = c w$ for some $c$. Finally, the cyclic permutation $\sigma = (1 \, 2 \, 3)$ satisfies $\sigma \cdot v = w$
+and so
+$$
+c w = \alpha(w) = \alpha(\sigma \cdot v) = \sigma \alpha(v) = \sigma a v = a w
+$$
+and hence $c = a$. This proves $\sigma$ is scaling by $a$ for some $a \in \R$.
+
+
+Applying the Corollary some more we get
+$$
+\R[S_3] \cong \R \times \R \times \Mat_m(\R) \times \cdots
+$$
+
+If $m \geq 3$, then the right hand side
+having dimension at least $2 + 9$. Recall that the isomorphism is $k$-linear, and so this is not possible.
+I claim that  $m = 1$ is also not possible:
+If $m=1$, then 
+$$
+\R[S_3] \cong \R \times \R \times \R \times \Mat_{n_4}(D_4) \times \cdots
+$$
+with the $D_i$'s division rings containing $\R$ in their centers. 
+By dimension considerations we would have to have $n_4 = n_5 = \cdots = 1$
+and so
+$$
+\R[S_3] \cong \R \times \R \times \R \times D_4 \times \cdots
+$$
+I now use the following fact: If $D$ is a division ring containing $\R$ in its center, then $D \cong \R$, $D \cong \C$ or
+$\dm_\R(D) \geq 4$. See the Proposition below.
+We are left with
+$$
+\R[S_3] \cong \R \times \R \times \R \times (\R \tor \C) \times (\R \tor \C) \times \cdots
+$$
+But the right side is a commutative ring and $\R[S_3]$ is not. So we have reached a contradiction.
+
+
+We thus conclude that $m = 2$.\footnote{In fact, there is another, much simpler way to conlcude $m=2$: Using item (3) of the Corollary,
+it follows immediately that $m = 2$.}
+Thus we have 
+$$
+\R[S_3] \cong \R \times \R \times \Mat_2(\R) \times ??
+$$
+But by dimension considerations, $?? = 0$ and so
+$$
+\R[S_3] \cong \R \times \R \times \Mat_2(\R) 
+$$
+
+
+What do we conclude from this? There are precisely 
+$3$ $\R$-linear irreducible representations of $S_3$, and so we have found them all. The two $M_1$ and $M_2$ occur exactly once in
+the decomposition of $\R[S_3]$ into an internal direct sum of minimal left modules, and $M_3$ occurs twice.
+Every $\R$-linear representation of $S_3$ is direct sum of copies of these three, uniquely so for finite dimensional representations. 
+\end{ex}
+
+
+\sssec{Algebraically closed fields}
+
+When working over an algebraically closed field, the Artin-Wedderburn Theorem takes a simpler form. 
+
+
+\begin{cor}[Artin-Wedderburn for group rings over algebraically closed fields]  If $G$ is a finite group and $K$ is an algebraically closed field such that $\mathrm{char}(K) \nmid |G|$, then
+there is an isomorphism of rings
+$$
+k[G] \cong \Mat_{n_1}(K) \times \cdots \times \Mat_{n_m}(K).
+$$
+
+Moroever, we have:
+\begin{enumerate}
+\item $m$ is the number of irreducible $K$-linear representation of $G$ (up to isomorphism),
+\item the $D_i$'s are the opposite rings of the endomorphism rings of these representations,
+\item  the $n_j$'s give the number of times each irreducible representation occurs in the decomposition of the regular representation of $G$,
+\item the $n_j$'s also give the dimensions of these representations, and
+\item $n_1^2  + \cdots + n_m^2 = |G|$.
+\end{enumerate}
+\end{cor}
+\begin{proof} The point is that in this setting, for each irreducible representation $M_i$, $D_i \cong \End_{K[G]}(M_i)^{\op}$ is equal to $K$. Let $\theta\in \End_{K[G]}(M_i)$. In particular, $\theta$ is a $K$-linear endomorphism of the finite dimensional vector space $M_i$. Since $K$ is algebraically closed, $\theta$ has an eigenvaluse, say $\lambda$. Then $\theta-\lambda 1_{M_i}$ is a $K[G]$-linear endomorphism of $M_i$ that is not injective, so by Schur's Lemma is must be $0$. Thus, $\theta = \lambda 1_{M_i}$.
+\end{proof}
+
+
+\begin{ex} Let $k = \C$ and consider the alternating group $G = A_4$ of order 12. We find all the simple modules over the ring $\C[A_4]$ or, equivalently, all irreducible $\C$-linear representations of $A_4$. We also find the Artin-Wedderburn decomposition of $\C[A_4]$.
+
+As before we start by finding 1-dimensional representations given by group homomorphisms of the form $A_4 \to \C^\times$. Any such map factors as
+  $$
+A_4 \onto A_4^{ab}\cong C_3 \to \C^\times
+  $$
+and thus there are three non-isomorphic 1-dimensional representations given by $\rho_i:C_3=\langle g\rangle \to \C^\times$, $\rho_i(g)=e^\frac{2\pi i}{3}$, with $i=0,1,2$. Note that $\rho_0$ corresponds to the trivial representation. Also $\rho_1$ and $\rho_2$ make essential use of the fact that we are working over $\C$ as opposed to, say, $\R$ where there are no primitive cubic roots of 1.
+
+With respect to the Artin-Wedderburn decomposition we have so far
+$$
+\C[A_4] \cong \C \times \C \times \C  \times \Mat_{n_4}(\C)\times \cdots \times \Mat_{n_m}(\C).
+$$
+where $n_3, \ldots, n_m\geq 2$ because we have already found all the 1-dimensional representations ($n_i=1$) above. Counting dimensions we obtain
+$$
+12= 1+ 1 + 1 +\sum_{i=4}^m {n_i}^2.
+$$
+It is easy to see there is only one solution $m=4$ and $n_4=3$.  Hence there is a unique up to isomorphism $\C$-linear irreducible representation of $A_4$ which is a 3 dimensional $\C$-vector space. We give an example of such a representation: let $A_4$ act on $V=\C^4$ by permuting the standard basis elements and thus the coordinates of any vector in $V$. We see that the vector subspace 
+\[
+W=\{(a,a,a,a) \mid a\in \C \} \cong \C
+\]
+is invariant under this action, hence a subrepresentation of $V$. It follows that the quotient vector space $V/W$ is also a $\C$-linear representation of $A_4$ and $\dim_\C(V/W)=3$.
+
+\end{ex}
+
+
+
+
 
 
 \begin{comment}
