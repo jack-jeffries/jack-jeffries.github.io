@@ -4064,17 +4064,16 @@ Here is another example of the same idea.
 		Let $f,g,h,a,r,L$ be as in the statement. Let $\{x_n\}_{n=1}^\infty$ be a sequence that converges to $a$ and such that $0<|x_n-a|<r$ for all $n$. By Theorem~\ref{lem228}, it suffices to show that $\lim_{n \to \infty} g(x_n) = L$. By Theorem~\ref{lem228}, we know that $\lim_{n \to \infty} f(x_n) = L=\lim_{n \to \infty} h(x_n)$. Since $f(x_n)\leq g(x_n) \leq h(x_n)$ for all $n$, we have $\lim_{n \to \infty} g(x_n) = L$ by the Squeeze Theorem (for sequences).
 		\end{proof}
 		
-		\begin{comment}
-
-\begin{ex} We claim that $\lim_{x\to 0} x\sin(1/x) = 0$. Indeed, for all $x\neq 0$, since $|\sin(1/x)| \leq 1$ we have \[ |x \sin(1/x)| = |x| |\sin(1/x) | \leq |x|, \ \text{so}\]
-\[ -|x| \leq x\sin(1/x) \leq |x|.\]
-By the quiz, we have $\lim_{x\to 0} |x| = 0$, and using Theorem~\ref{thm33b}, we have 
-$\lim_{x\to 0} - |x| = -0 = 0$. Thus, by the Squeeze Theorem, the result holds.
-\end{ex}
 
 
+%\begin{ex} We claim that $\lim_{x\to 0} x\sin(1/x) = 0$. Indeed, for all $x\neq 0$, since $|\sin(1/x)| \leq 1$ we have \[ |x \sin(1/x)| = |x| |\sin(1/x) | \leq |x|, \ \text{so}\]
+%\[ -|x| \leq x\sin(1/x) \leq |x|.\]
+%By the quiz, we have $\lim_{x\to 0} |x| = 0$, and using Theorem~\ref{thm33b}, we have 
+%$\lim_{x\to 0} - |x| = -0 = 0$. Thus, by the Squeeze Theorem, the result holds.
+%\end{ex}
 
-\section{Friday, April 2}
+\Nov{1}
+
 
 We come to the formal definition of continuity. We first define what it means for a function to be continuous {\em at a single point}, but ultimately we will be
 interested in functions that are continuous on entire intervals.
@@ -4131,11 +4130,6 @@ Suppose $f$ is a function and $a$ is a real number and assume that $f$ is define
 \end{thm}
 
 
-\begin{rem} Remember, when we write $\lim_{x \to a} f(x) = f(a)$ we
-  mean that the limit exists and is equal to the number $f(a)$. So, by
-  this Lemma, if $\lim_{x \to a} f(x)$ does not exist, then $f$ is not
-  continuous at $a$.
-\end{rem}
 
 \begin{proof} ($\Rightarrow$) This is immediate from the definitions.
 
@@ -4146,20 +4140,13 @@ case is the case $x = a$. But if $x = a$, then $f$ is defined at $a$ by assumpti
 \end{proof}
 
 
+\begin{rem} Remember, when we write $\lim_{x \to a} f(x) = f(a)$ we
+  mean that the limit exists and is equal to the number $f(a)$. So, by
+  this Lemma, if $\lim_{x \to a} f(x)$ does not exist, then $f$ is not
+  continuous at $a$.
+\end{rem}
 
-\begin{ex} Polynomials are continuous everywhere: Suppose $f(x)  =
-  c_nx^n + \cdots + c_1x + c_0$ for some integer $n \geq 0$ and some
-  real numbers $c_0, \dots, c_n$. The domain of $f$ is all of $\R$. Let $a \in \R$ be any real 
-  number. I claim $f$ is continuous at $a$. We should probably prove this by
-induction on $n$, but let's be a little less formal: For any $a$,
-using the Theorem about sums, products, etc. of limits of functions
-and the facts that $\lim_{x \to a} c = c$  and $\lim_{x \to a} x = a$, we get
-$$
-\lim_{x \to a} f(x) = c_n \left(\lim_{x \to a} x\right)^n + \cdots + c_1 \left(\lim_{x \to a} x\right) + c_0 =
-c_n a ^n + \cdots + c_1 a + c_0 =
-f(a).
-$$
-\end{ex}
+
 
 
 
@@ -4190,6 +4177,14 @@ $f(x)$ is continuous at $x = 0$, but not continuous at all other
 points. So, somewhat counterintuitively, it is possible for a function defined on all of $\R$ to be continuous at one and only one spot! 
 \end{ex}
 
+\begin{ex}  The function $f(x)=\sqrt{x}$ is  continuous at $a$ for every $a>0$. This holds since for any $a > 0$, as you proved on the homework we have
+  $$
+  \lim_{x \to a} \sqrt{x} = \sqrt{a}.
+  $$
+\end{ex}
+
+\begin{comment}
+
 \section{Monday, April 5}
 
 
@@ -4207,6 +4202,9 @@ points. So, somewhat counterintuitively, it is possible for a function defined o
 \begin{proof}
 Follows from Theorems~\ref{thm36} and \ref{thm33b}.\end{proof}
 
+\begin{ex} Polynomials are continuous everywhere. The function $x$ is continuous everywhere (since $\lim_{x\to a} \, x = a$). By part (3) above and a simple induction, $x^n$ is continuous everywhere for every $n$. Then by parts (1) and (2), it follows that every polynomial is continuous everywhere.
+\end{ex}
+
 Recall that for functions $f$ and $g$, $f \circ g$ is the {\em composition}: it is the function that
 sends $x$ to $f(g(x))$. The domain of $f \circ g$ is
 $$
@@ -4219,14 +4217,9 @@ $$
 \end{thm}
 
 \begin{ex} 
-\begin{itemize}
-\item  The function $f(x)=\sqrt{x}$ is  continuous at $a$ for every $a>0$. This holds since for any $a > 0$, as you proved on the homework we have
-  $$
-  \lim_{x \to a} \sqrt{x} = \sqrt{a}.
-  $$
-\item The function $\sqrt{x^2 + 5}$ is continuous at every real number: let $g(x) = x^2 + 5$ and $f(x) = \sqrt{x}$. Then $g$ is continuous at $a$ for every $a\in \R$
+ The function $\sqrt{x^2 + 5}$ is continuous at every real number: let $g(x) = x^2 + 5$ and $f(x) = \sqrt{x}$. Then $g$ is continuous at $a$ for every $a\in \R$
   since it is a polynomial. For each $x \in \R$, $g(x) > 0$ and hence $f$ is continuous at $g(x)$. So $\sqrt{x^2 + 5}$ is continuous at every $a\in\R$ by the Theorem.
-  \end{itemize}
+
 \end{ex}
 
 \begin{ex} You can apply the Theorem to the compositions of more than two functions too. For example $\sqrt{|x^3| + 1}$ is continuous at $a$ for and $a\in\R$.
@@ -4248,7 +4241,7 @@ I am calling this number $\gamma$, and not $\d$, since it is
 f(g(a))| < \e$. This proves $f \circ g$ is continuous at $a$.
 \end{proof}
 
-We are probably getting a bit tired of saying ``continuous at $a$ for every $a\in \R$''. The following definition we then be convenient.
+We are probably getting a bit tired of saying ``continuous at $a$ for every $a\in \R$''. The following definition will then be convenient.
 
 
 
