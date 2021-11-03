@@ -4183,14 +4183,12 @@ points. So, somewhat counterintuitively, it is possible for a function defined o
   $$
 \end{ex}
 
-\begin{comment}
 
-\section{Monday, April 5}
-
+\Nov{3}
 
 
 
-\begin{thm} Let $a\in \R$ and suppose $f$ and $g$ are two function that are both
+\begin{thm} Let $a\in \R$ and suppose $f$ and $g$ are two functions that are both
   continuous at $a$. Then so are
 \begin{enumerate}
 \item $f(x) + g(x)$,
@@ -4215,6 +4213,20 @@ $$
 \begin{thm} Suppose $g$ is continuous at a point $a$ and $f$ is continuous at $g(a)$. Then $f \circ
   g$ is continuous at $a$.
 \end{thm}
+\begin{proof}
+  Let $a \in \R$ be such that that $g$ is continuous at $a$ and $f$ is continuous at $g(a)$.
+  I prove $f \circ g$ is continuous at $a$ using the definition.
+  
+ Pick $\e > 0$. Since $f$ is continuous at $g(a)$, there is a $\gamma > 0$ such that if $|y
+  - g(a)| < \gamma$ then $f$ is defined at $y$ and $|f(y) - f(g(a))| < \e$. (I am using $y$ in place of the usual $x$ for clarity below, and 
+I am calling this number $\gamma$, and not $\d$, since it is
+  not the $\d$ I am seeking.) Since $\gamma > 0$ and $g$ is continuous at $a$, there is a $\d > 0$ such
+  that if $|x - a| < \d$ then $g$ is defined at $x$ and $|g(x) - a| < \gamma$. 
+
+  This $\d$ ``works'' to prove $f \circ g$ is continuous at $a$: Let $x$ be any real number such that  $|x-a| < \d$. Then $g$ is defined at $x$ and {${|g(x) - g(a)| < \gamma}$}.
+  Taking $y = g(x)$ above, this gives that $f$ is defined at $g(x)$ and $|f(g(x)) -
+f(g(a))| < \e$. This proves $f \circ g$ is continuous at~$a$.
+\end{proof}
 
 \begin{ex} 
  The function $\sqrt{x^2 + 5}$ is continuous at every real number: let $g(x) = x^2 + 5$ and $f(x) = \sqrt{x}$. Then $g$ is continuous at $a$ for every $a\in \R$
@@ -4226,20 +4238,6 @@ $$
 \end{ex}
 
 
-\begin{proof}[Proof of Theorem] 
-  Let $a \in \R$ be such that that $g$ is continuous at $a$ and $f$ is continuous at $g(a)$.
-  I prove $f \circ g$ is continuous at $a$ using the definition.
-  
- Pick $\e > 0$. Since $f$ is continuous at $g(a)$, there is a $\gamma > 0$ such that if $|y
-  - g(a)| < \gamma$ then $f$ is defined at $y$ and $|f(y) - f(g(a))| < \e$. (I am using $y$ in place of the usual $x$ for clarity below, and 
-I am calling this number $\gamma$, and not $\d$, since it is
-  not the $\d$ I am seeking.) Since $\gamma > 0$ and $g$ is continuous at $a$, there is a $\d > 0$ such
-  that if $|x - a| < \d$ then $g$ is defined at $x$ and $|g(x) - a| < \gamma$. 
-
-  This $\d$ ``works'' to prove $f \circ g$ is continuous at $a$: Let $x$ be any real number such that  $|x-a| < \d$. Then $g$ is defined at $x$ and $|g(x) - g(a)| < \gamma$.
-  Taking $y = g(x)$ above, this gives that $f$ is defined at $g(x)$ and $|f(g(x)) -
-f(g(a))| < \e$. This proves $f \circ g$ is continuous at $a$.
-\end{proof}
 
 We are probably getting a bit tired of saying ``continuous at $a$ for every $a\in \R$''. The following definition will then be convenient.
 
@@ -4262,6 +4260,8 @@ We are probably getting a bit tired of saying ``continuous at $a$ for every $a\i
 
 
 Since the function $\sqrt{x}$ does not jump at $x=0$, we would like to say the function is continuous on all of $[0,\infty)$. However, the definition for $f$ to be continuous at a point $a$ requires that $f$ is defined on $(a-\d,a+\d)$ for some $\d>0$, so we have to change our definition a bit.
+
+\begin{comment}
 
 \begin{defn} 
 Given a function $f(x)$ and real numbers $a < b$,
