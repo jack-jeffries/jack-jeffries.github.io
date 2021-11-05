@@ -3655,7 +3655,7 @@ Moroever, we have:
  Indeed, we recall that each $D_i$ is given as the opposite ring of $\End_{K[G]}(M_i)$ for some simple module $M_i$. For $\lambda\in K$, we have the map $M_i \xrightarrow{\lambda \cdot} M_i$ which commutes with any $K[G]$-linear map from $M_i$ to itself.
 \end{proof}
 
-\begin{comment}
+\Nov{5}
 \begin{cor} Let $G$ be a finite group, and $K$ be a field such that $\mathrm{char}(K) \nmid |G|$. Then $G$ is abelian if and only if $K[G]$ is isomorphic to a product of fields.
 \end{cor}
 
@@ -3718,71 +3718,73 @@ would be commutative, which it is not, as $S_3$ is not abelian.
 \[ \R[S_3] \cong \R \times\R \times \Mat_2(\R).\]
 \end{enumerate}
 
+(Alternatively, we could compute the endomorphism ring of $M_3$ and see that it contains only scalars.)
+
 We have found the AW decomposition of $\R[S_3]$. As a consequence, we have identified all of the irreducible real representations of $S_3$.
 \end{ex}
 
 
 
-I claim that the endomorphism ring of $M_3$ is just $\R$. It contains $\R$ as a subring, given by the scaling operators (see the Proposition below).
-Say $\a: M_3 \to M_3$ is in $\End_{\R[S_3]}(M_3)$. So $\a$ is both $\R$-linear and commutes with the given action of $S_3$.
-Note that $v = (1,-1,0)$ and $w = (0,1,-1)$ form
-a basis of $M_3$. Since $\alpha$ commutes with the action of the transposition $\tau = (1 \, 2)$ and $\tau \cdot v = -v$ we get:
-$$
-- \alpha(v) = \alpha(-v) = \alpha(\tau \cdot v) = \tau \a(v)
-$$
-Letting $\alpha(v) = (a,b,-a-b)$ it follows that $a=-b$, and hence $\alpha(v) = av$ for some $a \in \R$.
-Similarly, $\alpha(w) = c w$ for some $c$. Finally, the cyclic permutation $\sigma = (1 \, 2 \, 3)$ satisfies $\sigma \cdot v = w$
-and so
-$$
-c w = \alpha(w) = \alpha(\sigma \cdot v) = \sigma \alpha(v) = \sigma a v = a w
-$$
-and hence $c = a$. This proves $\sigma$ is scaling by $a$ for some $a \in \R$.
+%I claim that the endomorphism ring of $Ms_3$ is just $\R$. It contains $\R$ as a subring, given by the scaling operators (see the Proposition below).
+%Say $\a: M_3 \to M_3$ is in $\End_{\R[S_3]}(M_3)$. So $\a$ is both $\R$-linear and commutes with the given action of $S_3$.
+%Note that $v = (1,-1,0)$ and $w = (0,1,-1)$ form
+%a basis of $M_3$. Since $\alpha$ commutes with the action of the transposition $\tau = (1 \, 2)$ and $\tau \cdot v = -v$ we get:
+%$$
+%- \alpha(v) = \alpha(-v) = \alpha(\tau \cdot v) = \tau \a(v)
+%$$
+%Letting $\alpha(v) = (a,b,-a-b)$ it follows that $a=-b$, and hence $\alpha(v) = av$ for some $a \in \R$.
+%Similarly, $\alpha(w) = c w$ for some $c$. Finally, the cyclic permutation $\sigma = (1 \, 2 \, 3)$ satisfies $\sigma \cdot v = w$
+%and so
+%$$
+%c w = \alpha(w) = \alpha(\sigma \cdot v) = \sigma \alpha(v) = \sigma a v = a w
+%$$
+%and hence $c = a$. This proves $\sigma$ is scaling by $a$ for some $a \in \R$.
 
 
-Applying the Corollary some more we get
-$$
-\R[S_3] \cong \R \times \R \times \Mat_m(\R) \times \cdots
-$$
-
-If $m \geq 3$, then the right hand side
-having dimension at least $2 + 9$. Recall that the isomorphism is $k$-linear, and so this is not possible.
-I claim that  $m = 1$ is also not possible:
-If $m=1$, then 
-$$
-\R[S_3] \cong \R \times \R \times \R \times \Mat_{n_4}(D_4) \times \cdots
-$$
-with the $D_i$'s division rings containing $\R$ in their centers. 
-By dimension considerations we would have to have $n_4 = n_5 = \cdots = 1$
-and so
-$$
-\R[S_3] \cong \R \times \R \times \R \times D_4 \times \cdots
-$$
-I now use the following fact: If $D$ is a division ring containing $\R$ in its center, then $D \cong \R$, $D \cong \C$ or
-$\dm_\R(D) \geq 4$. See the Proposition below.
-We are left with
-$$
-\R[S_3] \cong \R \times \R \times \R \times (\R \tor \C) \times (\R \tor \C) \times \cdots
-$$
-But the right side is a commutative ring and $\R[S_3]$ is not. So we have reached a contradiction.
-
-
-We thus conclude that $m = 2$.\footnote{In fact, there is another, much simpler way to conlcude $m=2$: Using item (3) of the Corollary,
-it follows immediately that $m = 2$.}
-Thus we have 
-$$
-\R[S_3] \cong \R \times \R \times \Mat_2(\R) \times ??
-$$
-But by dimension considerations, $?? = 0$ and so
-$$
-\R[S_3] \cong \R \times \R \times \Mat_2(\R) 
-$$
-
-
-What do we conclude from this? There are precisely 
-$3$ $\R$-linear irreducible representations of $S_3$, and so we have found them all. The two $M_1$ and $M_2$ occur exactly once in
-the decomposition of $\R[S_3]$ into an internal direct sum of minimal left modules, and $M_3$ occurs twice.
-Every $\R$-linear representation of $S_3$ is direct sum of copies of these three, uniquely so for finite dimensional representations. 
-\end{ex}
+%Applying the Corollary some more we get
+%$$
+%\R[S_3] \cong \R \times \R \times \Mat_m(\R) \times \cdots
+%$$
+%
+%If $m \geq 3$, then the right hand side
+%having dimension at least $2 + 9$. Recall that the isomorphism is $k$-linear, and so this is not possible.
+%I claim that  $m = 1$ is also not possible:
+%If $m=1$, then 
+%$$
+%\R[S_3] \cong \R \times \R \times \R \times \Mat_{n_4}(D_4) \times \cdots
+%$$
+%with the $D_i$'s division rings containing $\R$ in their centers. 
+%By dimension considerations we would have to have $n_4 = n_5 = \cdots = 1$
+%and so
+%$$
+%\R[S_3] \cong \R \times \R \times \R \times D_4 \times \cdots
+%$$
+%I now use the following fact: If $D$ is a division ring containing $\R$ in its center, then $D \cong \R$, $D \cong \C$ or
+%$\dm_\R(D) \geq 4$. See the Proposition below.
+%We are left with
+%$$
+%\R[S_3] \cong \R \times \R \times \R \times (\R \tor \C) \times (\R \tor \C) \times \cdots
+%$$
+%But the right side is a commutative ring and $\R[S_3]$ is not. So we have reached a contradiction.
+%
+%
+%We thus conclude that $m = 2$.\footnote{In fact, there is another, much simpler way to conlcude $m=2$: Using item (3) of the Corollary,
+%it follows immediately that $m = 2$.}
+%Thus we have 
+%$$
+%\R[S_3] \cong \R \times \R \times \Mat_2(\R) \times ??
+%$$
+%But by dimension considerations, $?? = 0$ and so
+%$$
+%\R[S_3] \cong \R \times \R \times \Mat_2(\R) 
+%$$
+%
+%
+%What do we conclude from this? There are precisely 
+%$3$ $\R$-linear irreducible representations of $S_3$, and so we have found them all. The two $M_1$ and $M_2$ occur exactly once in
+%the decomposition of $\R[S_3]$ into an internal direct sum of minimal left modules, and $M_3$ occurs twice.
+%Every $\R$-linear representation of $S_3$ is direct sum of copies of these three, uniquely so for finite dimensional representations. 
+%\end{ex}
 
 
 \sssec{Algebraically closed fields}
@@ -3808,6 +3810,7 @@ Moroever, we have:
 \begin{proof} The point is that in this setting, for each irreducible representation $M_i$, $D_i \cong \End_{K[G]}(M_i)^{\op}$ is equal to $K$. Let $\theta\in \End_{K[G]}(M_i)$. In particular, $\theta$ is a $K$-linear endomorphism of the finite dimensional vector space $M_i$. Since $K$ is algebraically closed, $\theta$ has an eigenvaluse, say $\lambda$. Then $\theta-\lambda 1_{M_i}$ is a $K[G]$-linear endomorphism of $M_i$ that is not injective, so by Schur's Lemma is must be $0$. Thus, $\theta = \lambda 1_{M_i}$.
 \end{proof}
 
+\begin{comment}
 
 \begin{ex} Let $k = \C$ and consider the alternating group $G = A_4$ of order 12. We find all the simple modules over the ring $\C[A_4]$ or, equivalently, all irreducible $\C$-linear representations of $A_4$. We also find the Artin-Wedderburn decomposition of $\C[A_4]$.
 
