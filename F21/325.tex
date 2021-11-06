@@ -4261,21 +4261,115 @@ We are probably getting a bit tired of saying ``continuous at $a$ for every $a\i
 
 Since the function $\sqrt{x}$ does not jump at $x=0$, we would like to say the function is continuous on all of $[0,\infty)$. However, the definition for $f$ to be continuous at a point $a$ requires that $f$ is defined on $(a-\d,a+\d)$ for some $\d>0$, so we have to change our definition a bit.
 
-\begin{comment}
+\Nov{5}
 
 \begin{defn} 
-Given a function $f(x)$ and real numbers $a < b$,
+ Given a function $f(x)$ and real numbers $a < b$,
 we say $f$ is {\em continous on the closed interval $[a,b]$} provided 
 \begin{enumerate}
 \item for every $r \in (a,b)$, $f$ is  continuous at $r$ in the sense defined already,
-\item for every $\e > 0$ there is a $\d > 0$ such that if $x \in [a,b]$ and $a \leq x < a+\d$, then $|f(x)
-  - f(a)| < \e$.
-\item for every $\e > 0$ there is a $\d > 0$ such that if $x \in [a,b]$ and $b -\d < x \leq b$, then $|f(x)
-  - f(a)| < \e$.
+\item for every $\e > 0$ there is a $\d > 0$ such that if $x \in [a,b]$ and $a \leq x < a+\d$, then ${|f(x)
+  - f(a)| < \e}$.
+\item for every $\e > 0$ there is a $\d > 0$ such that if $x \in [a,b]$ and $b -\d < x \leq b$, then ${|f(x)
+  - f(b)| < \e}$.
 \end{enumerate}
 \end{defn}
 
-In short, $f$ is continuous on $[a,b]$ if is it continuous on $(a,b)$, if it is ``continuous from the right at $a$'', and it is ``continuous from the left at $b$''. We can also discuss continuity on intervals of the form $[a,\infty)$: such a function must be continuous on $(a,\infty)$ and ``continuous from the right at $a$''.
+\
+
+In short, condition (1) says that $f$ is continuous on the open interval $(a,b)$, condition (2) says that $f$ is ``continuous from the right'' at $a$, and condition (3) says $f$ is ``continuous from the left'' at $b$.
+
+
+\
+
+\begin{thm}[Intermediate Value Theorem] Suppose $f$ is a function, that $a < b$ are real numbers, and that $f$ is continuous on the closed interval
+  $[a,b]$. If $y$ is any number between $f(a)$ and $f(b)$ (i.e., $f(a) \leq y \leq f(b)$ or
+$f(a) \geq y \geq f(b)$), then there is a $c \in [a,b]$ such that $f(c) = y$.\end{thm}
+
+\begin{enumerate}
+
+\item Explain why if $f$ is continuous at $x$ for every $x\in[a,b]$, then $f$ is continuous on the closed interval $[a,b]$. Conclude that every polynomial is continuous on every closed interval.
+
+\begin{framed}
+Suppose that $f$ is continuous at $r$ for all $r\in [a,b]$. Then, in particular $f$ is continuous at $r$ for all $r\in (a,b)$ so (1) holds. Since $f$ is continuous at $a$, then condition (2) holds (with the same $\d$ for any given $\e$); since $f$ is continuous at $b$, then condition (3) holds (with the same $\d$ for any given $\e$).
+\end{framed}
+
+
+
+\item Show that the function $f(x) = \sqrt{1-x^2}$ is continuous on the closed interval $[-1,1]$:
+\begin{itemize}
+\item For showing condition (1), I recommend using a Theorem from last class. 
+\item For condition (2), it may help to write $\sqrt{1-x^2}=\sqrt{1-x}\sqrt{1+x}$. \footnote{You can ask me for a $\delta$ if you get stuck.}
+\item Condition (3) is similar to condition (2) so you can just say ``Similar to (2)'' for that.
+\end{itemize}
+\begin{framed}
+  It is continuous at $a$ for all $a$ such that $-1 < a < 1$ since $1 - x^2$ is continuous on all of $\R$,
+  $\sqrt{y}$ is continuous on $(0, \infty)$, and $1 - x^2 > 0$ for all $-1 < x < 1$. 
+
+To prove the condition at the endpoint $-1$, pick $\e > 0$. (Scratch work:
+$\sqrt{1-x^2} < \e$ if and only if $|1-x||1+x| < \e^2$. So long as $-1
+\leq x \leq 1$ we have $|1-x| \leq 2$.) Let $\d =\e^2/2$.
+Assume $x$ is any real number such that 
+$-1 \leq x < -1 + \d$ and $x\in [-1,1]$. We have that $|1+x| \leq 2$
+and hence $\sqrt{|1+x|} \leq \sqrt{2}$. 
+We have $\sqrt{|1-x|} \leq \sqrt{\e^2/2} = \e/\sqrt2$.
+Thus we obtain
+$$
+\sqrt{1-x^2} = \sqrt{|1-x|}\sqrt{|1+x|} < \sqrt{2} \e/\sqrt{2} = \e.
+$$
+
+
+The other endpoint $1$ is dealt with in a similar way.
+\end{framed}
+
+\item Explain why if $f$ is continuous on the closed interval $[a,b]$, then it does not follow in general that $f$ is continuous at $x$ for every $x\in[a,b]$.
+
+\begin{framed} The function $f(x)=\sqrt{1-x^2}$ is continuous on the closed interval $[-1,1]$, but not continuous at $-1$.
+\end{framed}
+
+\item Use the Intermediate Value Theorem to give a quick proof that there is a positive real number $x$ such that $x^2=2$.
+
+\begin{framed} Let $f(x)=x^2$. This is continuous on $[1,2]$. We have $f(1) = 1 < 2 < 4=f(2)$, so there is some $x$ (between 1 and 2) such that $f(x)=2$.
+\end{framed}
+
+\item Use the Intermediate Value Theorem to give a quick proof that every real number has a cube root.
+
+\begin{framed}
+ Let  $f(x) = x^3$. 
+
+  I claim that there are numbers $a$ and $b$ such that $f(a) \leq r \leq f(b)$: 
+If $r \geq 1$, then $a = 0$ and $b = r$ work; 
+if $r \leq -1$, then $a = r$ and $b  = 0$ work; and
+if $-1 \leq r < 1$, then $a = -1$ and $b = 1$ work.
+
+Since $f$ is a polynomial, it is continuous on all of $\R$ and hence on the closed interval $[a,b]$.
+Thus, since $f(a) \leq r \leq f(b)$  by the Intermediate Value Theorem, there is a real number  $s$
+such that $a \leq s \leq b$ and $f(s) = r$; that is, $s^3 =r$. 
+\end{framed}
+
+\item Explain why the statement of the Intermediate Value Theorem would be false if we did not assume that $f$ is continuous on $[a,b]$.
+
+\begin{framed}
+Suppose $f(x) = x$ for $x  < 0$ and $f(x) = x+1$ for $x \geq 0$.
+  Then $f$ is defined on $[-1,1]$, $f(-1) = -1$ and $f(1) = 2$. So $f(-1) < 1/2 < f(1)$, there there is clearly no $x$ such that $f(x) = 1/2$. \end{framed}
+
+\item True or False: The polynomial $f(x) = x^3 - 4x +1$ has two roots in the interval $[0,2]$.
+
+\begin{framed}
+Note that $f(0)=1$ and $f(1)=-2$. Since $f$ is continuous on $[0,1]$, there is some $c_1\in [0,1]$ such that $f(c_1)=0$. Now note that $f(2)=1$. Since $f$ is continuous on $[1,2]$, there is some $c_2\in [1,2]$ such that $f(c_2) = 0$. We must have $c_1<1$ since $f(c_1)\neq 0$, so $c_1\neq c_2$; these are two distinct roots in $[0,2]$.
+\end{framed}
+
+%\item True or False: If $f$ is a function, $a<b$ are real numbers, and for every number $y$ between $f(a)$ and $f(b)$, there is some $c\in [a,b]$ such that $f(y)=c$, then $f$ is continuous on $[a,b]$.
+
+%\
+
+%\item True or False: If $f$ is a function with domain $\R$, and for every pair $a<b$ of real numbers and for every number $y$ between $f(a)$ and $f(b)$, there is some $c\in [a,b]$ such that $f(y)=c$, then $f$ is continuous on $\R$.
+
+
+\end{enumerate}
+
+\begin{comment}
+
 
 \section{Wednesday, April 7}
 
