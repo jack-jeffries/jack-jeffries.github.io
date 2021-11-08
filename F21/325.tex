@@ -4291,7 +4291,7 @@ $f(a) \geq y \geq f(b)$), then there is a $c \in [a,b]$ such that $f(c) = y$.\en
 \item Explain why if $f$ is continuous at $x$ for every $x\in[a,b]$, then $f$ is continuous on the closed interval $[a,b]$. Conclude that every polynomial is continuous on every closed interval.
 
 \begin{framed}
-Suppose that $f$ is continuous at $r$ for all $r\in [a,b]$. Then, in particular $f$ is continuous at $r$ for all $r\in (a,b)$ so (1) holds. Since $f$ is continuous at $a$, then condition (2) holds (with the same $\d$ for any given $\e$); since $f$ is continuous at $b$, then condition (3) holds (with the same $\d$ for any given $\e$).
+Suppose that $f$ is continuous at $r$ for all $r\in [a,b]$. Then, in particular $f$ is continuous at $r$ for all $r\in (a,b)$ so (1) holds. Since $f$ is continuous at $a$, then condition (2) holds (with the same $\d$ for any given $\e$); since $f$ is continuous at $b$, then condition (3) holds (with the same $\d$ for any given~$\e$).
 \end{framed}
 
 
@@ -4427,7 +4427,12 @@ We arrive at a batch of well-known and pleasing theorems pertaining to continuou
   $[a,b]$. If $y$ is any number between $f(a)$ and $f(b)$ (i.e., $f(a) \leq y \leq f(b)$ or
 $f(a) \geq y \geq f(b)$), then there is an $c \in [a,b]$ such that $f(c) = y$.
 \end{thm}
-\begin{proof} Assume $f$ is continuous on $[a,b]$ and $y$ is a real
+
+\end{comment}
+
+\Nov{8}
+
+\begin{proof}[Proof of Intermediate Value Theorem] Assume $f$ is continuous on $[a,b]$ and $y$ is a real
   number such that  $f(a) \leq y \leq f(b)$ or $f(b) \leq y \leq f(a)$. We need to prove there is a $c \in [a,b]$ such that $f(c) = y$.
 
   Let us assume $f(a) \leq y \leq f(b)$ --- the other case may be proved in a very similar manner, or by appealing to this case using the function $-f(x)$ instead.
@@ -4478,38 +4483,38 @@ So, we have shown that if $x \leq c + \d/2$, then $f(x) < y$. This shows that
 \end{proof}
 
 
-\section{Friday, April 9}
+%\section{Friday, April 9}
 %%%%%
 
-\begin{ex} As a ``real world'' example, of the Intermediate Value Theorem, if the temperature at midnight last night was 45 degrees, and it is now 54 degrees, then there was an instant where it was exactly 51.3 degrees.\end{ex}
+%\begin{ex} As a ``real world'' example, of the Intermediate Value Theorem, if the temperature at midnight last night was 45 degrees, and it is now 54 degrees, then there was an instant where it was exactly 51.3 degrees.\end{ex}
 
 
 
-\begin{ex} Let $f(x) = x^2$. Then $f$ is continuous on $[0,2]$ (and, for that matter, on any closed interval) since it is a polynomial.
-  We have $f(0) \leq 2 \leq f(2)$ and hence by the IVT there is an $x \in [0,2]$ such that $x^2 = 2$. That is, the square root of two exists as a real number.
-\end{ex}
+%\begin{ex} Let $f(x) = x^2$. Then $f$ is continuous on $[0,2]$ (and, for that matter, on any closed interval) since it is a polynomial.
+%  We have $f(0) \leq 2 \leq f(2)$ and hence by the IVT there is an $x \in [0,2]$ such that $x^2 = 2$. That is, the square root of two exists as a real number.
+%\end{ex}
 
 
 
-\begin{ex} We can also prove that cube roots exist using the IVT.
+%\begin{ex} We can also prove that cube roots exist using the IVT.
 
-\begin{proof} Let  $f(x) = x^3$. 
+%\begin{proof} Let  $f(x) = x^3$. 
 
-  I claim that there are numbers $a$ and $b$ such that $f(a) \leq r \leq f(b)$: 
-If $r \geq 1$, then $a = 0$ and $b = r$ work; 
-if $r \leq -1$, then $a = r$ and $b  = 0$ work; and
-if $-1 \leq r < 1$, then $a = -1$ and $b = 1$ work.
-
-Since $f$ is a polynomial, it is continuous on all of $\R$ and hence on the closed interval $[a,b]$.
-Thus, since $f(a) \leq r \leq f(b)$  by the Intermediate Value Theorem, there is a real number  $s$
-such that $a \leq s \leq b$ and $f(s) = r$; that is, $s^3 =r$. 
-\end{proof}
-\end{ex}
-
-
-\begin{ex} The Intermediate Value Theorem would become false if we omitted the continuity assumption. For instance, suppose $f(x) = x$ for $x  < 0$ and $f(x) = x+1$ for $x \geq 0$.
-  Then $f$ is defined on $[-1,1]$, $f(-1) = -1$ and $f(1) = 2$. So $f(-1) < 1/2 < f(1)$, there there is clearly no $x$ such that $f(x) = 1/2$. 
-\end{ex}
+%  I claim that there are numbers $a$ and $b$ such that $f(a) \leq r \leq f(b)$: 
+%If $r \geq 1$, then $a = 0$ and $b = r$ work; 
+%if $r \leq -1$, then $a = r$ and $b  = 0$ work; and
+%if $-1 \leq r < 1$, then $a = -1$ and $b = 1$ work.
+%
+%Since $f$ is a polynomial, it is continuous on all of $\R$ and hence on the closed interval $[a,b]$.
+%Thus, since $f(a) \leq r \leq f(b)$  by the Intermediate Value Theorem, there is a real number  $s$
+%such that $a \leq s \leq b$ and $f(s) = r$; that is, $s^3 =r$. 
+%\end{proof}
+%\end{ex}
+%
+%
+%\begin{ex} The Intermediate Value Theorem would become false if we omitted the continuity assumption. For instance, suppose $f(x) = x$ for $x  < 0$ and $f(x) = x+1$ for $x \geq 0$.
+%  Then $f$ is defined on $[-1,1]$, $f(-1) = -1$ and $f(1) = 2$. So $f(-1) < 1/2 < f(1)$, there there is clearly no $x$ such that $f(x) = 1/2$. 
+%\end{ex}
 
 
 
@@ -4551,11 +4556,11 @@ there exists a number $s \in [a,b]$ such that $f(x) \geq f(s)$ for all $x \in [a
   Theorem in order to prove the Extreme Value Theorem.
 \end{rem}
 
-\begin{center}{\large{End of material for exam 2}}\end{center}
+%\begin{center}{\large{End of material for exam 2}}\end{center}
 
 
 
-\section{Monday, April 12}
+
 
 
 For the proofs of both of these theorems, we will need the following Lemma.
@@ -4569,6 +4574,8 @@ Assume $f$ is continuous on $[a,b]$ and that $\{x_n\}_{n=1}^\infty$ is any seque
 \item $\lim_{n \to \infty} f(x_n) = f(r)$.
 \end{enumerate}
 \end{lem}
+
+\begin{comment}
 
 \begin{proof} For part (1), to show that $r\leq b$, by way of contradiction suppose that $r>b$. Taking $\e=r-b$ in the definition of ``converges to $r$'' we see that there is some $N\in \R$ such that if $n>N$ and $n\in \N$ then $a_n> r-\e =b$, which contradicts that $a_n\leq b$ for all $n$. The inequality $r\geq a$ is similar.
 
@@ -4633,7 +4640,7 @@ Since $\{y_{n_k}\}$ is a subsequence of $\{y_n\}$ and the latter converges to $M
 By definition of $M$, we have $f(x) \leq M = f(r)$ for all $x \in [a,b]$.
  
 To prove $f$ attains a minimum value on $[a,b]$, apply what we just proven to the function $-f(x)$. This gives us that $-f(x)$ attains its maximum value $N$
-at some point $s$. It follows that $f(x)$ attaints its minimum value (which is $-N$) at $s$. 
+at some point $s$. It follows that $f(x)$ attains its minimum value (which is $-N$) at $s$. 
 \end{proof}
 
 
