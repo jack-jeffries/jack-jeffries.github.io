@@ -3810,15 +3810,15 @@ Moroever, we have:
 \begin{proof} The point is that in this setting, for each irreducible representation $M_i$, $D_i \cong \End_{K[G]}(M_i)^{\op}$ is equal to $K$. Let $\theta\in \End_{K[G]}(M_i)$. In particular, $\theta$ is a $K$-linear endomorphism of the finite dimensional vector space $M_i$. Since $K$ is algebraically closed, $\theta$ has an eigenvaluse, say $\lambda$. Then $\theta-\lambda 1_{M_i}$ is a $K[G]$-linear endomorphism of $M_i$ that is not injective, so by Schur's Lemma is must be $0$. Thus, $\theta = \lambda 1_{M_i}$.
 \end{proof}
 
-\begin{comment}
+\Nov{8}
 
 \begin{ex} Let $k = \C$ and consider the alternating group $G = A_4$ of order 12. We find all the simple modules over the ring $\C[A_4]$ or, equivalently, all irreducible $\C$-linear representations of $A_4$. We also find the Artin-Wedderburn decomposition of $\C[A_4]$.
 
 As before we start by finding 1-dimensional representations given by group homomorphisms of the form $A_4 \to \C^\times$. Any such map factors as
   $$
-A_4 \onto A_4^{ab}\cong C_3 \to \C^\times
+A_4 \onto A_4^{\mathrm{ab}}\cong C_3 \to \C^\times
   $$
-and thus there are three non-isomorphic 1-dimensional representations given by $\rho_i:C_3=\langle g\rangle \to \C^\times$, $\rho_i(g)=e^\frac{2\pi i}{3}$, with $i=0,1,2$. Note that $\rho_0$ corresponds to the trivial representation. Also $\rho_1$ and $\rho_2$ make essential use of the fact that we are working over $\C$ as opposed to, say, $\R$ where there are no primitive cubic roots of 1.
+and thus there are three nonisomorphic 1-dimensional representations given by $\rho_i:C_3=\langle g\rangle \to \C^\times$, $\rho_i(g)=e^\frac{2\pi i}{3}$, with $i=0,1,2$. Note that $\rho_0$ corresponds to the trivial representation. Also $\rho_1$ and $\rho_2$ make essential use of the fact that we are working over $\C$ as opposed to, say, $\R$ where there are no primitive cubic roots of~1.
 
 With respect to the Artin-Wedderburn decomposition we have so far
 $$
@@ -3828,13 +3828,50 @@ where $n_3, \ldots, n_m\geq 2$ because we have already found all the 1-dimension
 $$
 12= 1+ 1 + 1 +\sum_{i=4}^m {n_i}^2.
 $$
-It is easy to see there is only one solution $m=4$ and $n_4=3$.  Hence there is a unique up to isomorphism $\C$-linear irreducible representation of $A_4$ which is a 3 dimensional $\C$-vector space. We give an example of such a representation: let $A_4$ act on $V=\C^4$ by permuting the standard basis elements and thus the coordinates of any vector in $V$. We see that the vector subspace 
-\[
-W=\{(a,a,a,a) \mid a\in \C \} \cong \C
-\]
-is invariant under this action, hence a subrepresentation of $V$. It follows that the quotient vector space $V/W$ is also a $\C$-linear representation of $A_4$ and $\dim_\C(V/W)=3$.
+It is easy to see there is only one solution: $m=4$ and $n_4=3$.  Hence there is a unique up to isomorphism $\C$-linear irreducible representation of $A_4$ which is a 3 dimensional $\C$-vector space.
 
+To exhibit such a representation, let $A_4$ act on $V=\C^4$ by permuting the standard basis elements and thus any vector in $V$. The subspace $W\subseteq V$ given by
+\[ W = \{ (a,b,c,d) \ | \ a+b+c+d=0\}\]
+is an $A_4$-stable subspace. This is an irreducible representation: if $v\in W\smallsetminus 0$, after permuting and scaling, we can write $v=(1,x,y,-1-x-y)$. We also have $(1,-1-x-y,x,y)$ and $(1,y,-1-x-y,x)$ in $\langle v \rangle$, so the sum $(3,-1,-1,-1)\in \langle v \rangle$. Then $(-1,3,-1,-1)$ and $(-1,-1,3,-1)$ are also in $\langle v \rangle$, and these are three linearly independent vectors, so we must have $\langle v \rangle=W$.
 \end{ex}
+
+\begin{rem} Let's consider what the Artin-Wedderburn Theorem says about complex representations of finite abelian groups: the group ring must be a product of copies of $\C$, so every irreducible representation is one-dimensional. Thus, every representation is a sum of one-dimensional representations. Concretely, this means that there is a basis in which every group element acts as a diagonal matrix.
+
+This special case actually just follows from basic facts in linear algebra. Let $\rho:G\to \GL_n(\C)$ be a representation. Then every $g\in G$ has finite order, so $g^k-1$ for some $k$. This implies that the matrix $\rho(g)$ satisfies $\rho(g)^k = I_n$, so its minimal polynomial divides $x^k-1$. This polynomial splits into distinct linear factors over $\C$, so $\rho(g)$ is diagonalizable for every $g\in G$. (So far, we've only used that $G$ is finite.) Now, since $g$ is abelian, we have $gh=hg$ for all $g,h\in G$, so $\rho(g) \rho(h) = \rho(h) \rho(g)$; i.e., the matrices commute. Commuting diagonalizable matrices are simultaneously diagonalizable; i.e., there is a basis as above.
+\end{rem}
+
+
+
+\begin{prop} Let $G$ be a finite group. The number of one-dimensional complex representations of $G$ (up to isomorphism) is $|G^{\mathrm{ab}}|$. Thus, in the Artin-Wedderburn decomposition of $\C[G]$, there are exactly $|G^{\mathrm{ab}}|$ copies of $\C$.
+\end{prop}
+\begin{proof}
+We have that $\Hom_{\Grp}(G,\C^\times) \cong \Hom_{\Ab}(G^{\mathrm{ab}},\C^\times)$, and by the discussion above, there are $|G^{\mathrm{ab}}|$ distinct one-dimensional representations of $G^{\mathrm{ab}}$.
+\end{proof}
+
+\begin{prop} For any finite group $G$, the number of irreducible complex representations (up to isomorphism) is equal to the
+  number of conjugacy classes.
+\end{prop}
+
+\begin{proof} We have
+  $$
+  \C[G] \cong \Mat_{n_1}(\C) \times \cdots \times \Mat_{n_m}(\C)
+  $$
+  and $m$ is the number of irreducible complex representations up to isomorphism. 
+  A key point is that the center of the right side is $\C I_{n_1} \times \cdots \times \C I_{n_m}$, which has dimension $m$ as a complex
+  vector space. Since this ring  isomorphism is $\C$-linear, it induces a $\C$-linear isomorphism of the centers, and thus
+we just need to show that $\dim_\C(Z(\C[G]))$ is equal to the number of conjugacy classes.
+
+  Let $C_1, \dots, C_h$  denote the conjugacy classes of $G$ (i.e., the orbits for the action of $G$ on itself by conjugation).
+  For each $i$ set $z_i = \sum_{g \in C_i} g \in \C[G]$. Then for all $x \in G$,
+  $x z_i x ^{-1}  = \sum_{g \in C_i} x g x^{-1} = z_i$ and it follows that $z_i \in Z(\C[G])$. Since that $z_i$'s are sums of disjoint subsets of a basis of $\C[G]$,
+  they are linearly independent. Now say $\sum_g c_g g$ belongs to the center. Then for each $x \in G$, 
+$$
+\sum_g c_g xgx^{-1} =
+x(\sum_g c_g g)x^{-1} = \sum_g c_g g
+$$
+and it follows that $c_g = c_h$ whenever $g,h$ are conjugate. This proves that $Z(\C[G])$ is spanned by $z_1, \dots, z_h$. We
+conclude that $h = \dim_\C(Z(\C[G])) = m$.
+\end{proof}
 
 
 
