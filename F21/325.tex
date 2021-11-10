@@ -4575,6 +4575,8 @@ Assume $f$ is continuous on $[a,b]$ and that $\{x_n\}_{n=1}^\infty$ is any seque
 \end{enumerate}
 \end{lem}
 
+We will return to the proof soon.
+
 \begin{comment}
 
 \begin{proof} For part (1), to show that $r\leq b$, by way of contradiction suppose that $r>b$. Taking $\e=r-b$ in the definition of ``converges to $r$'' we see that there is some $N\in \R$ such that if $n>N$ and $n\in \N$ then $a_n> r-\e =b$, which contradicts that $a_n\leq b$ for all $n$. The inequality $r\geq a$ is similar.
@@ -4589,7 +4591,9 @@ To prove (2) we proceed in cases:
 \end{proof}
 
 
+\end{comment}
 
+\Nov{10}
 
 
 \begin{proof}[Proof of the Boundedness Theorem]
@@ -4645,9 +4649,22 @@ at some point $s$. It follows that $f(x)$ attains its minimum value (which is $-
 
 
 
+\begin{cor} Let $f:[a,b]\to \R$ be continuous. The range of $f$ is either a single point or a closed interval.
+\end{cor}
+\begin{proof} By the Extreme Value Theorem, the range of $f$ contains a minimum value $m$ and a maximum value $M$. If $m=M$, then the range is the single point $m=M$. Otherwise, we have $m<M$. We claim that the range of $f$ is equal to $[m,M]$. Clearly the range of $f$ is contained in $[m,M]$ by definition of minimum and maximum. For the other containment, take $y\in [m,M]$. Take $r,s\in [a,b]$ such that $f(r)=m$ and $f(s)=M$.
+ 
+Case 1: $r<s$. In this case, $f$ is continuous on $[r,s]$, and by the Intermediate Value Theorem, there is some $c\in [r,s] \subseteq [a,b]$ such that $f(c) = y$, so $y$ is in the range of $f$.
+
+Case 2: $s<r$. In this case, $f$ is continuous on $[s,r]$, and by the Intermediate Value Theorem, there is some $c\in [s,r] \subseteq [a,b]$ such that $f(c) = y$, so $y$ is in the range of $f$.
+
+We conclude that the range is the closed interval $[m,M]$.
+\end{proof}
 
 
+\begin{center}{\large{End of material for exam 2}}\end{center}
 
+
+\begin{comment}
 
 \section{Monday, April 19}
 
