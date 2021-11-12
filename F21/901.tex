@@ -330,6 +330,7 @@
 \newcommand{\Fld}{\mathbf{Fld}}
 \newcommand{\cRing}{\mathbf{cRing}}
 \newcommand{\Mod}[1]{#1-\mathbf{Mod}}
+\newcommand{\Cx}[1]{#1-\mathbf{Comp}}
 \newcommand{\vs}[1]{#1-\mathbf{vect}}
 \newcommand{\Vs}[1]{#1-\mathbf{Vect}}
 \newcommand{\vsp}[1]{#1-\mathbf{vect}^+}
@@ -3873,9 +3874,432 @@ and it follows that $c_g = c_h$ whenever $g,h$ are conjugate. This proves that $
 conclude that $h = \dim_\C(Z(\C[G])) = m$.
 \end{proof}
 
+\Nov{10}
+
+
+\sec{Homological Algebra}
+
+
+Homological algebra is the study of homology - a measure for the nonexactness of chain complexes which we shall define below.
 
 
 
+\ssec{The category of chain complexes of $R$-modules}
+Let's define ``chain complex'' carefully.
+
+\begin{defn} For a ring $R$, a \DEF{chain complex} of left $R$-modules is a pair 
+consisting of 
+\begin{itemize}
+\item a family of left $R$-modules indexed by $\Z$, $\{M_i\}_{i \in \Z}$ 
+\item a family of $R$-module homomorphisms 
+$\{d_i: M_i \to M_{i-1}\}_{i \in \Z}$ such that $d_{i-1} \circ d_i = 0$ for all $i$, i.e., ``$d^2 = 0$''. 
+\end{itemize}
+Such a pair is usually written
+as $(M_\bullet, d)$ or $(M_\bullet, d^M)$ or just $M_\bullet$. 
+The  map $d$ (really, the family of maps) is called the \DEF{differential} of the    chain complex. We may say that the \DEF{homological degree} of $M_i$ is $i$.
+\end{defn}
+
+\begin{ex}
+Infinitely many of the modules $M_i$ in a chain complex could be zero of course.  So, for example,
+    a short exact sequence
+    $$
+    0 \to M_2 \to M_1 \to M_0 \to 0
+    $$
+    will be regarded as a chain complex with $M_i = 0$ for all $i \notin \{0,1,2\}$. %In fact, it is an exact complex.
+\end{ex}
+
+    \begin{ex}
+    \label{ex:simplicialhomology}
+     For those who have taken (or will take) a course in algebraic topology, given a topological space $X$, we form a chain complex $C_\bullet(X):=C_\bullet(X; \Z)$
+      over the ring
+      $\Z$, called the \DEF{singular chain complex} associated to $X$, as follows.
+     
+     \begin{itemize}
+     \item  Define $C_n(X)$ to be the free $\Z$-module with basis given by the set of all continuous functions $\Delta^n \to X$ where $\Delta^n$ is the standard topological
+      $n$-simplex: \[\Delta^n := \{(r_0, \dots, r_n) \in \R^{n+1} \mid r_i \geq 0, \sum_i r_i = 1\}.\]
+      For $n < 0$, $C_n(X) : = 0$. 
+      \item The map $d_n: C_{n}(X) \to C_{n-1}(X)$ is the unique homomorphism of abelian groups sending a basis element $g: \Delta^n \to X$ to $\sum_{i=0}^n (-1)^i g \circ \a^n_i$ where $\a^n_i: \Delta^{n-1} \to  \Delta^n$ is the map $(r_0, \dots, r_{n-1}) \mapsto (r_0, \dots, r_{i-1}, 0 , r_i, \dots, r_{n-1})$.
+      \end{itemize}
+      
+  Since the singular chain complex associated to $X$ is huge (the modules $C_n$ are usually not finitely generated), in practice it is more convenient to work with $X$ being a simplicial complex (union of simplices) and $C_\bullet(X)$ being the  {\em simplicial chain complex} of $X$. This complex has \[C_n(X)=\textrm{ the free $\Z$ module with basis given by the $n$-dimensional simplices of $X$}\]
+   and $d_n: C_{n}(X) \to C_{n-1}(X)$ is given by sending \[d_n (\{r_0, \dots, r_{n-1}\}) =\sum_{i=0}^n (-1)^i \{r_0,\ldots, \hat{r_i}, \ldots, r_n\}\] where the hat indicates removing one vertex to get an $n-1$-dimensional simplex.
+      
+  For a very concrete example, let's take $X$ to be the following (hollow) triangle 
+  \[
+ \xymatrix{
+  & 1\ar@{-}[dl]\ar@{-}[dr] &\\
+  2 \ar@{-}[rr] & & 3. 
+}
+  \]    
+  This gives the simplicial chain complex
+  \[
+ C_\bullet(X):  0 \xra{d_2} \Z^3 \xra{d_1} \Z^3 \xra{d_0} 0, 
+  \]
+  where the maps $d_i=0$ for $i\neq 0$ and the map $d_1$ is given by the following matrix 
+  \[
+  d_1=\begin{bmatrix}
+  1 & 1 & 0 \\
+  -1 & 0 & 1\\
+  0 & -1 & -1
+  \end{bmatrix}
+  \]
+  with respect to the ordered bases $\{1,2\}, \{1,3\}, \{2,3\}$  and  $\{1\}, \{2\}, \{3\}$. Here $\{i\}$ denotes the map 
+  $\{i\}: \Delta^0\to X$ which maps $\Delta^0$ to the vertex $i$ of $X$ and $\{i,j\}$ denotes the map 
+  $\{i,j\}: \Delta^1\to X$ which maps $\Delta^1$ to the edge $[i,j]$ of $X$.
+    \end{ex}
+
+    
+
+\begin{defn}    
+    A {\em chain map} from one chain complex of left $R$-modules 
+    $(M_\bullet, d^M)$ to another $(N_\bullet, d^N)$ is a family of left $R$-module homomorphisms $f_i: M_i \to N_i$, for $i \in \Z$, such that $d_i^N \circ f_i = f_{i-1} \circ d_i^M$ for all $i$.  We often write a chain map as just $f: (M_\bullet,d^M) \to (N_\bullet,d^N)$, or even just $f: M_\bullet \to N_\bullet$.
+\end{defn}
+
+
+Pictorially, a chain map is a commutative diagram of the form
+$$
+\xymatrix{
+\cdots \ar[r] & M_{i+1} \ar[r] \ar[d] & M_i \ar[r] \ar[d] & M_{i-1} \ar[r] \ar[d] & \cdots \\
+\cdots \ar[r] & N_{i+1} \ar[r]  & N_i \ar[r]  & N_{i-1} \ar[r]  & \cdots \\
+}
+$$
+in which both rows are complexes and all squares commute. 
+%Again, $M_\bullet$ and $N_\bullet$ might have only a finite number of non-zero components, in which case a chain map is given by just a finite list of maps. The rest are all the zero map.
+
+\begin{ex}
+Straightforward examples of maps between chain complexes include:
+\begin{itemize}
+\item the identity map $\id_{M_\bullet}:(M_\bullet ,d^M)\to (M_\bullet ,d^M)$, $f_i=\id_{M_i}$
+\item the zero map $0:(M_\bullet ,d^M)\to (N_\bullet ,d^N)$, $f_i=0$
+\end{itemize}
+\end{ex}
+
+   \begin{ex} If $f: X \to Y$ is a continuous map between topological spaces, there is an induced chain map $f_*: (C_\bullet(X), d) \to (C_\bullet(Y), d)$ between
+      associated singular chain complexes defined by composition with $f$ in the evident way.
+    \end{ex}
+
+\begin{ex} Consider the complexes $(M_\bullet, d^M)$, $(N_\bullet, d^N)$, $(N'_\bullet, d^{N'})$ of $\Z$-modules given by
+\[ \xymatrix{ M_\bullet =  & & 0 \ar[r] & \Z \ar[r]^{\begin{bmatrix} 1 \\ -1 \end{bmatrix}} & \Z^2 \ar[r]^{\begin{bmatrix} 1 & 1 \end{bmatrix}} & \Z \ar[r] & 0 \\
+N_\bullet =  & & 0 \ar[r] & \Z \ar[r]^{1} & \Z \ar[r]  & 0 \ar[r] & 0 \\
+N'_\bullet =  & & 0 \ar[r] & 0 \ar[r] &\Z \ar[r]^{1} & \Z \ar[r]  &  0},\]
+where we consider the last column to be homological degree $-1$.
+The map $f:(N_\bullet, d^N) \to (M_\bullet, d^M)$ given by $f_2=1$, $f_1=\begin{bmatrix} 1 \\ 0\end{bmatrix}$ is not a chain map, since the square with $f_1$ and $f_0$ does not commute: one composition in the 0,1 square is zero and the other isn't. However, the map $f:(N'_\bullet, d^{N'}) \to (M_\bullet, d^M)$ given by $f_1=\begin{bmatrix} 1 \\ 0\end{bmatrix}$, $f_0=1$ is a chain map; the 1,2 square has both compositions zero, and the both compositions in the 0,1 square are multiplication by 1 on $\Z$. Also, the map $f:(M_\bullet, d^{M}) \to (N_\bullet, d^N)$ given by $f_2=1$, $f_1=\begin{bmatrix} 1 & 0\end{bmatrix}$ is a chain map.
+\end{ex}
+
+    \begin{prop} For any ring $R$, chain complexes and chain maps of left $R$-modules 
+form a category, written \Def{$\Cx{R}$}.
+\end{prop}
+\begin{proof} We need to give a rule for composing morphisms and check that it satisfies the axioms. Of course, composition will take place degree-by-degree. We should check that a composition of chain maps is a chain map, and that composition is associative. Let $f:  (L_\bullet ,d^L)\to (M_\bullet ,d^M)$ and $g: (M_\bullet ,d^M)\to (N_\bullet ,d^N)$ be chain maps. Then \[(g\circ f)_i d^L_{i+1} = g_i f_i d^L_{i+1} = g_i d^M_{i+1} f_{i+1} = d^N_{i+1} g_{i+1} f_{i+1} = d^N_{i+1} (g \circ f)_{i+1}.\]
+Associativity of composition follows directly from the same fact for module maps.
+\end{proof}
+
+\Nov{12}
+
+The category $\Cx{R}$ has many similarities to $\Mod{R}$. These similarities are axiomatized in the definition of \DEF{abelian category}, which we won't pursue here. Rather, let's just notice a few.
+
+\begin{rem} 
+\begin{itemize}
+\item Given any two chain maps $f,g: (M_\bullet ,d^M)\to (N_\bullet ,d^N)$, the sum $(f+g)_i = f_i + g_i$ is a chain map. Under this operation, the set $\Hom_{\Cx{R}}( (M_\bullet ,d^M),(N_\bullet ,d^N))$ is an abelian group.
+\item 
+ There is an initial and terminal ``$0$ object'': the chain complex consisting entirely of $0$ modules with $0$ differential. 
+\item For any two elements in $\Cx{R}$, the product and coproduct exist, and are given by isomorphic objects. Namely, for chain complexes $(M_\bullet, d^M), (N_\bullet, d^N)$ the product is the chain complex $(M_\bullet \oplus N_\bullet, d^M\oplus d^N)$ for which the modules are $M_i\oplus N_i$ and the differential is \[d_i^M\oplus d_i^N=
+\left[
+\begin{array}{c|c}
+d_i^M & 0 \\
+\hline
+0 & d_i^N
+\end{array}
+\right]: M_i\oplus N_i\to M_{i-1}\oplus N_{i-1}.\]
+We also call this the \DEF{direct sum} of these complexes.
+\item We can also talk about the kernel and cokernel of a chain map:
+\begin{itemize}
+\item
+the \DEF{kernel} of $f: (M_\bullet ,d^M)\to (N_\bullet ,d^N)$ is the complex $(K_\bullet, d^K)$ with $K_i = \ker(f_i)$ and $d_i^K = d^i_M|_{K_i}$.
+\item the \DEF{cokernel} of $f: (M_\bullet ,d^M)\to (N_\bullet ,d^N)$ is the complex $(C_\bullet, d^K)$ with $C_i = \coker(f_i)$ and $d_i^C$ is map induced by $d$ on the quotient modules $C_i \to C_{i-1}$.
+\end{itemize}
+\end{itemize}
+    \end{rem}
+    
+    \begin{ex} Let's return to the complexes of $\Z$-modules from before. We can compute $\Hom_{\Cx{R}}((N_\bullet, d^N),(M_\bullet, d^M))$. For a chain map $f$, we need to specify $f_2=\begin{bmatrix} a \end{bmatrix}$ and $f_1=\begin{bmatrix} b \\ c \end{bmatrix}$. The commutativity of the square forces $\begin{bmatrix} a \\ -a \end{bmatrix}=\begin{bmatrix} b \\ c \end{bmatrix}$, so we conclude that this hom group is $\Z$.
+    
+    Let's also compute a direct sum: $(N_\bullet \oplus N'_\bullet, d^N\oplus d^{N'})$ is the complex
+    \[ \xymatrix{ 0 \ar[r] & \Z \ar[r]^{\begin{bmatrix} 1 \\ 0 \end{bmatrix}} & \Z^2 \ar[r]^{\begin{bmatrix} 0 & 1\end{bmatrix}} & \Z \ar[r] & 0.}\]
+    \end{ex}
+    
+      
+
+We can define exact sequences in $\Cx{R}$.
+\begin{defn}
+A \DEF{short exact sequence} of chain complexes is a sequence of chain complexes of chain maps of the form
+$$
+0 \to (M'_\bullet, d') \to (M_\bullet, d) \to (M''_\bullet, d'') \to  0
+$$
+that is an exact sequence of $R$-modules in each degree. Pictorially, a short exact sequence of chain complexes is a commutative diagram
+
+$$
+\xymatrix{
+  & 0 \ar[d] & 0 \ar[d] & 0 \ar[d] \\
+  \cdots \ar[r] & M'_{i+1} \ar[r] \ar[d] & M'_i \ar[r] \ar[d] & M'_{i-1} \ar[r] \ar[d] & \cdots \\
+\cdots \ar[r] & M_{i+1} \ar[r] \ar[d] & M_i \ar[r] \ar[d] & M_{i-1} \ar[r] \ar[d] & \cdots \\
+\cdots \ar[r] & M''_{i+1} \ar[r] \ar[d]  & M''_i \ar[r] \ar[d] & M''_{i-1} \ar[r]  \ar[d] & \cdots \\
+& 0 & 0 & 0 \\
+}
+$$
+in which each row is a complex and each column is a short exact sequence of modules. (One might add horizontal arrows between the $0$
+modules along the top and the bottom, but they are redundant and just add clutter.)
+    \end{defn}
+    
+    \begin{ex} Returning to our same running examples, there is a short exact sequence
+    
+    \[\xymatrix@R=15mm@C=15mm{
+     0 \ar[r] & 0 \ar[r] \ar[d] &\Z \ar[r]^{\begin{matrix} 1\end{matrix}} \ar[d]^{\begin{bmatrix}1 \\ 0\end{bmatrix}} & \Z \ar[r]\ar[d]^{\begin{matrix} 1\end{matrix}}  &  0       \\
+    0 \ar[r] & \Z \ar[r]^{\begin{bmatrix} 1 \\ -1 \end{bmatrix}} \ar[d]^{\begin{matrix} 1\end{matrix}} & \Z^2 \ar[r]^{\begin{bmatrix} 1 & 1 \end{bmatrix}} \ar[d]^{\begin{bmatrix} 0 & 1\end{bmatrix}} & \Z \ar[r]\ar[d] & 0     \\
+    0 \ar[r] & \Z \ar[r]^{\begin{matrix} 1\end{matrix}} & \Z \ar[r]  & 0 \ar[r] & 0}\]
+    \end{ex}
+    
+    
+       \ssec{Homology}
+    
+    \begin{defn} 
+    Given a chain complex $M_\bullet = (M_\bullet, d)$ of left $R$ modules, its \DEF{homology} is the sequence of left $R$-modules indexed by $\Z$ defined by
+    $$
+    H_i(M_\bullet) = H_i(M_\bullet,d) := \frac{\ker(d_i: M_i \to M_{i-1})}{\im(d_{i+1}: M_{i+1} \to M_{i})}
+    $$
+    for $i \in \Z$. 
+We also give names to the modules in the numerator and denominator above    
+\[ Z_i:=\ker(d_i: M_i \to M_{i-1}) \text{ is called the module of $i$-cycles}\]\index{$Z_i$}\index{cycles}
+\[ B_i:=\im(d_{i+1}: M_{i+1} \to M_{i}) \text{ is called the module of $i$-boundaries}.\]\index{$B_i$}\index{boundaries}
+\end{defn}
+
+
+\begin{rem}
+A chain complex $M_\bullet$ is exact if and only if  $H_i(M_\bullet) = 0$ for all $i$.
+\end{rem}
+
+
+\begin{ex} For a module $M$, we write $M[0]$ for the complex with $M[0]_i = 0$ for all $i \ne 0$ and $M[0]_0 = M$. The differential is (necessarily) the $0$ map
+  in each degree. The homology modules of $M[0]$ is $H_i(M[0]) = 0$ for $i \ne 0$ and $H_0(M[0]) \cong M$. 
+\end{ex}
+
+
+
+\begin{ex} The homology of a complex with just two nonzero modules located in degrees $0$ and $1$, 
+$$
+\cdots 0 \to M_1 \xra{d_1} M_0 \to 0 \to \cdots,
+$$
+is $H_i(M,d) = 0$ for all $i \ne 0, 1$, $H_0(M,d) = \coker(d_1)$ and $H_1(M,d)  = \ker(d_1)$. 
+\end{ex}
+
+\begin{ex} If $(V_\bullet, d)$ is a complex of $K$-vector spaces, then, by the rank nullity theorem \[\dim_K H_i(V_\bullet,d)=\dim_K(V_i) - \mathrm{rank}(d_{i+1}) -\mathrm{rank}(d_{i}).\]
+\end{ex}
+
+\begin{ex}[Homology groups in topology] 
+\label{ex:homologygps}
+The homology of the singular chain complex $C_\bullet(X)$ of a topological space $X$ are known as the {\em homology groups} of $X$.
+
+Let's compute the homology groups of the simplicial complex $X$ from Example \ref{ex:simplicialhomology} where the relevant chain complex is
+
+$$
+\cdots 0 \to C_1(X)=\Z^3 \xra{d_1} C_0(X)=\Z^3 \to 0 \to \cdots,
+$$
+
+To compute the homology let's perform row reduction on the matrix of the differential $d_1$:
+ \[
+ \begin{bmatrix}
+  1 & 1 & 0 \\
+  -1 & 0 & 1\\
+  0 & -1 & -1
+  \end{bmatrix}
+  \xra{R_1+R_2 \to R_2}
+  \begin{bmatrix}
+  1 & 1 & 0 \\
+  0 & 1 & 1\\
+  0 & -1 & -1
+  \end{bmatrix}
+   \xra{R_2+R_3\to R_3}
+   \begin{bmatrix}
+  1 & 1 & 0 \\
+  0 & 1 & 1\\
+  0 & 0 & 0
+  \end{bmatrix}
+  \xra{C_2-C_1-C_3\to C_2}
+   \begin{bmatrix}
+  1 & 0 & 0 \\
+  0 & 0 & 1\\
+  0 & 0 & 0
+  \end{bmatrix}.
+  \]
+The row and column operations amount to performing changes of basis on the free modules $C_0(X)=\Z^3$ and $C_1(X)=\Z^3$. The last matrix above gives a new description for the differential $d_1$ with respect to the ordered bases $\{1,2\}, \{1,3\}-\{1,2\}-\{2,3\}, \{2,3\}$ and $\{1\}, \{1\}+\{2\}, \{1\}+\{2\}+\{3\}$. 
+We now see that
+\begin{eqnarray*}
+H_1(C_\bullet(X))&=&\ker(d_1)=\Z(\{1,3\}-\{1,2\}-\{2,3\}) \cong \Z\\
+H_0(C_\bullet(X))&=&\coker(d_1)=\frac{\Z\{1\}\oplus\Z(\{1\}+\{2\})\oplus \Z(\{1\}+\{2\}+\{3\})}{\Z\{1\}\oplus\Z(\{1\}+\{2\})}\\
+&\cong& \Z(\{1\}+\{2\}+\{3\})\cong \Z.
+\end{eqnarray*}
+
+Now suppose that $Y$ is the simplicial complex obtained by filling in the triangle $X$ with a 2-dimensional simplex.
+Then $C_\bullet(Y)$ is
+$$
+\cdots 0 \to C_2(Y)=\Z \xra{d_2} C_1(X)=\Z^3 \xra{d_1} C_0(X)=\Z^3 \to 0 \to \cdots,
+$$
+where $d_2=\begin{bmatrix} 1 & -1 & 1\end{bmatrix}^T$ with respect to the bases $\{1,2,3\}$ and $\{1,2\}, \{1,3\}, \{2,3\}$, i.e. $\im(d_2)=\Z(\{1,2\}-\{1,3\}+\{2,3\})$.
+
+From the computations above we see that $\ker(d_1)=\Z( \{1,3\}-\{1,2\}-\{2,3\})$. Hence $H_1(C_\bullet(Y))=0$ since $\ker(d_1)=\im(d_2)$ and $H_2(C_\bullet(Y))=0$ because $d_2$ is injective.
+
+The topological significance of the computations above is that
+\begin{itemize}
+\item  the rank of $H_0$ measures the number of connected components: both for $X$ and for $Y$ there is one connected component and $H_0\cong \Z$ has rank one;
+\item  the rank of $H_1$ measures the number of 1-dimensional ``holes'': $X$ has one such hole ($X$ is homotopic to the circle $S^1$) and $H_1(C_\bullet(X))\cong \Z$ but $Y$ has no such holes and $H_1(C_\bullet(Y))=0$;
+\item the rank of $H_2$ measures the number of 2-dimensional ``holes'' etc.
+\end{itemize}
+\end{ex}
+
+%We see from this example that computing homology can be made into an algorithmic procedure, however it is not something that one would typically want to do by hand. We will turn our attention to alternate methods for computing homology below.
+
+
+\begin{defn}[Induced map in homology] 
+\label{def:inducedmap}
+    Given a chain map $f: (M_\bullet,d) \to (N_\bullet, d)$ for each $i$ write $H_i(f): H_i(M_\bullet) \to H_i(N_\bullet)$
+    for the map induced by $f$ in the following manner: given $z \in \ker(d_i: M_i \to M_{i-1})$,
+    we define   $H_i(f)(\overline{z}) = \overline{f(z)}$. 
+\end{defn}
+ 
+\begin{rem}
+The function $H_i(f)$ is indeed a well-defined $R$-linear map: 
+Note, first of all, that for 
+$z \in \ker(d_i: M_i \to M_{i-1})$ we have $d_i(f_i(z)) = f_{i-1}(d_i(z))  = f_{i-1}(0) = 0$, and hence $f_i(z) \in \ker(d_i: N_i \to N_{i-1})$.
+Thus, we have a well-defined element $\overline{f_i(z)}$ of $H_i(N_\bullet)$. Moreover,  
+if $\overline{z} = \overline{y}$ in $H_i(M_\bullet)$ for elements
+$y,z \in \ker(d_i: M_i \to M_{i-1})$, then $y-z = d^M_{i+1}(w)$ for some $w \in M_{i+1}$. It follows that
+$$
+f_i(y) - f_i(z) = f_i(y-z) = f_i(d^M_{i+1}(w)) = d^N_{i+1}(f_{i+1}(w)), 
+$$
+since $f$ is a chain map,  and hence $\overline{f_i(y)} = \overline{f_i(z)}$ holds in $H_i(N_\bullet)$. 
+This proves $H_i(f)$ is well-defined. It is easy to see that it is an $R$-module homomorphism.
+\end{rem}
+
+\begin{comment}
+
+Next we promote homology to being a functor.
+
+
+\begin{lem} For each fixed $i$, $H_i(-)$ is an additive functor 
+\[H_i(-):\Cx{R} \to \Mod{R}.\]
+Recall that this means $H_i(f\circ g) = H_i(f) \circ H_i(g)$ and $H_i(\id) =
+  \id$.
+    \end{lem}
+ \begin{proof}
+These follow easily from Definition \ref{def:inducedmap}.
+ \end{proof}   
+ 
+ However, the homology functors are not exact.
+ 
+ \begin{ex}
+ Consider the following short exact sequence of complexes $K$-vector spaces (where each row is a complex, and the vertical maps are chain maps)
+ \[ \xymatrix{M'_\bullet: && 0 \ar[r] & 0 \ar[r]\ar[d] & K^a \ar[r] \ar[d]^-i& 0 \\
+M_\bullet: && 0\ar[r] &  K^b \ar[r]^-\cong \ar[d]^-\cong & K^b\ar[r]\ar[d]^p & 0 \\
+M''_\bullet: && 0 \ar[r]  & K^b \ar[r]^-p & K^c \ar[r] & 0}\]
+Then applying $H_0$ yields
+\[ \xymatrix{ K^a \ar[r] & 0 \ar[r] & 0}\]
+and applying $H_1$ yields
+\[ \xymatrix{ 0 \ar[r] & 0 \ar[r] & \ker(p)\cong K^a.}\]
+Note that neither of these is exact.
+\end{ex}
+ 
+ 
+\subsection{Snake lemma}       
+
+\begin{prop}[Snake Lemma] For a ring $R$, suppose
+$$
+\xymatrix{
+ & M' \ar[r]^i \ar[d]^{f'} & M \ar[r]^p \ar[d]^{f}  & M'' \ar[r] \ar[d]^{f''}  & 0 \\
+0 \ar[r] & N' \ar[r]^j            & N \ar[r]^q            & N''          &  \\
+}
+$$
+is a commutative diagram of left $R$-modules such that each row is an exact sequence. 
+Then there is an exact sequence of the form
+$$
+\ker(f') \xra{i|} \ker(f) \xra{p|} \ker(f'') \xra{\partial} \coker(f') \xra{\overline{j}}  \coker(f) \xra{\overline{q}} \coker(f'') .
+$$
+which can be visualized in relation to the previous diagram as follows
+$$\xymatrix{
+  & \ker f' \ar[r]\ar[d] & \ker f \ar[r] \ar[d] & \ker f'' \ar[d]\\
+  & M' \ar[r] \ar[d]_(.6){f'}|(.3)\hole
+      & M \ar[r] \ar[d]_(.6){f}|(.3)\hole
+      & M'' \ar[d]_(.6){f''}|(.3)\hole="hole" &  \\
+   & N' \ar[r] \ar[d] & N \ar[r]\ar[d] & N'' \ar[d] \\
+  & \coker f' \ar[r]
+      \ar@{<-} `l [lu]-(.5,0) `"hole" `[rrruu]+(.5,0) `[rruuu]_-\partial [rruuu]
+      & \coker f \ar[r] & \coker f''}$$
+
+
+The map $\partial$ is called the \DEF{connecting homomorphism}, as is given as follows: For $m'' \in \ker(f'')$,
+pick $m \in M$ such that $p(m) = m''$.
+Then $qf(m) =0$ and hence $f(m) = j(n')$ for a element $n' \in N'$. Set
+$$
+\partial(m) = n' + \im(f') \in \coker(f').
+$$
+ 
+Moreover, if $i$ is injective and if $q$ is surjective they lead to an exact sequence
+$$
+0 \to \ker(f') \xra{i|} \ker(f) \xra{p|} \ker(f'') \xra{\partial} \coker(f') \xra{\overline{j}}  \coker(f) \xra{\overline{q}} \coker(f'') \to 0.
+$$
+\end{prop}
+
+
+\[ \xymatrix@R=.8mm@C=.8mm{ 
+&&& & && & & {\color{blue}m'' }\ar@{|->}@[blue][dddd] & \\
+&\ker(f')\ar[dddd]&& & & \ker(f)\ar[dddd]& & & & \ker(f'')\ar[dddd] \\
+&&& & & && & &\\ 
+&&& & & && & &\\ 
+&&& & {\color{blue}m}\ar@{|->}@[blue][dddd]\ar@{|-->}@[blue][rrrr]&& & & {\color{blue}m''} & \\
+&M'\ar[dddd]\ar[rrrr]& & & & M \ar[rrrr]\ar[dddd]&& & & M'' \ar[dddd]\\
+&&& & & && & & \\
+&&& & & && & & \\
+{\color{blue}n'}\ar@{|->}@[blue][dddd]\ar@{|-->}@[blue][rrrr]&& & & {\color{blue}n} && & & &\\
+& N'\ar[dddd]\ar[rrrr]& &&& N\ar[dddd]\ar[rrrr] &&&& N''\ar[dddd]\\
+& &&&&&&&&\\
+& &&&&&&&&\\
+{\color{blue}n' + \im(f')} &&&&&&&&&\\
+&\coker(f') &&&& \coker(f) &&&& \coker(f'')}\]
+
+\begin{proof} One needs to show:
+
+$\bullet$ well-definedness of $i|$ and $p|$, specifically the fact that the images of these maps land in $\ker(f)$ and $\ker(f'')$ respectively.
+
+To show this for $i|$, consider $u\in \ker(f')$. Then $i|(u)=i(u)$ and $f(i(u))=j(f'(u))=j(0)=0$ by the commutativity of the given diagram. Thus $i|(u)\in \ker(f)$ as desired.
+
+$\bullet$ well-definedness of $\ov{j}$ and $\ov{q}$, specifically independence of coset representative.
+
+To show this for $\ov{j}$, consider $n-\tilde{n}\in \im(f)$. Then we have $q(n)-q(\tilde{n})=q(n-\tilde{n})\in q(\im(f))=f''(\im(p))\subseteq \im(f'')$ yields that $\ov{q}(n + \im(f))=q(n) + \im(f'')=q(\tilde(n))+  \im(f'')=\ov{q}(\tilde{n} + \im(f))$.
+
+$\bullet$ well-definedness of $\partial$
+
+First, given $m''\in \ker(f'')$, $p$ is surjective, so we can write $p(m)=m''$. Then $0=f''(p(m))=q(f(m))$, so $n=f(m)\in \ker(q)=\im(j)$, and hence we can choose $n'$ such that $j(n')=n$.
+
+To see that $\partial(m'')$ is independent of the choice of $m$ occurring in its construction, suppose $m_1$ and $m_2$ 
+satisfy $p(m_1) = m'' = p(m_2)$, and let $n'_1, n'_2$ be the unique elements satisfying $j(n'_1) = f(m_1)$ and $j(n'_2) = f(m_2)$.
+Then $p(m_1 - m_2) = 0$ and hence by exactness of the top row, there is a $m'$ such that $i(m') = m_1 - m_2$. By
+the commutativity of the left square we get
+$$
+j(f'(m')) = fi(m') = f(m_1) - f(m_2) = j(n'_1) - j(n'_2) = j(n'_1 - n'_2).
+$$
+Since $j$ is injective, it follows that $f'(m') = n'_1 - n'_2$ and hence that $n'_1 + \im(f') = n'_2 + \im(f')$.
+So, we have proven $\partial$ is a well-defined function. The fact that it is $R$-linear is proven similarly. 
+
+$\bullet$ $\im(p|) = \ker(\partial)$:
+
+If $m'' \in \ker(f'')$ satisfies $m' = p(x)$ for some $x \in \ker(f)$, then in the construction of $\partial$ we may take $m = x$ and it follows
+that $f(m) = 0$ and hence $\partial(m') = 0$. This proves $\im(p|) \subseteq \ker(f'')$.
+If $\partial(m'')  = 0$, then in the construction $n' = f'(m')$ for some $m'$. Then
+$p(m - i(m')) = p(m) = m''$ and $f(m - i(m')) = f(m) - jf'(m') = 0$, which proves that $m'' \in \im(p|)$. This proves the other containment.
+
+$\bullet$ $\im(\partial)=\ker\bar{j}$: 
+
+For $m''\in M''$, write $\partial(m'')=n'+\im(f')$; then $j(n')=n\in \im(f)$, so $\im(\partial)\subseteq \ker\bar{j}$. If $\bar{j}(n' + \im(f') )=0$, then $j(n')\in \im(f)$, so write $n=j(n') = f(m)$. Then $f''(p(m))=q(f(m))=q(j(n'))=0$, so $p(m)\in \ker(f'')$, and $\partial(p(m))=n'+\im(f)$ by definition, which proves that $n'+\im(f)\in \im(\partial)$.
+
+The ``moreover" part of the statement is clear since $i|$ and $\ov{q}$ are obtained from $i$ and $q$ respectively.
+\end{proof}
 
 
 \begin{comment}
