@@ -4306,7 +4306,7 @@ To show this for $\ov{q}$, consider $n-\tilde{n}\in \im(f)$. Then we have $q(n)-
 
 It is clear that $\im(\bar{j})\subseteq\ker(\bar{q})$. If $\bar{n}\in \ker(\bar{q})$, then $q(n)\in \im(f'')$, so there is some $m''$ such that $q(n)=f''(m'')$. We can write $m''=p(m)$ for some $m\in M$. Then $q(n) = f''(p(m))=q(f(m))$ so $q(n-f(m))=0$. Thus $n-f(m) = j(n')$ for some $n'\in N'$, so $\bar{n} = \bar{j}(\ov{n'})$.
 
-\begin{comment}
+\Nov{17}
 
 \item Well-definedness of $\partial$:
 
@@ -4320,7 +4320,9 @@ $$
 j(f'(m')) = fi(m') = f(m_1) - f(m_2) = j(n'_1) - j(n'_2) = j(n'_1 - n'_2).
 $$
 Since $j$ is injective, it follows that $f'(m') = n'_1 - n'_2$ and hence that $n'_1 + \im(f') = n'_2 + \im(f')$.
-So, we have proven $\partial$ is a well-defined function. The fact that it is $R$-linear is proven similarly. 
+So, we have proven $\partial$ is a well-defined function. 
+
+The fact that $\partial$ is $R$-linear follows from  noting that if $p(m_1) = m''_1$ and $p(m_2)=m''_2$, then we have $p(rm_1 + m_2) = rm''_1 + m''_2$, and likewise with $j$.
 
 \item $\im(p|) = \ker(\partial)$:
 
@@ -4338,6 +4340,22 @@ For $m''\in M''$, write $\partial(m'')=n'+\im(f')$; then, in the construction, $
 Clear, since the restriction of an injective map is injective, and the map induced on a quotient by a surjective map is surjective.\qedhere
 \end{itemize}
 \end{proof}
+
+\begin{ex} Given an $m\times n$ matrix $A$ and a prime $p$, write $\bar{A}$ for the reduction of $A$ modulo $p$. In general, there may be solutions of $\bar{A}v=0$ that are not of the form $v=\bar{w}$ for any $w$ such that $Aw=0$. We can use the Snake Lemma to understand the difference: there is a chain map of short exact sequences
+\[ \xymatrix{ 0\ar[r] & \Z^n \ar[r]^{p}\ar[d]^A & \Z^n \ar[r]^{p}\ar[d]^A & \F^n_p \ar[r]\ar[d]^{\bar{A}} & 0 \\
+0\ar[r] & \Z^m \ar[r]^{p} & \Z^m \ar[r]^{p} & \F^m_p \ar[r] & 0,}\]
+which by the snake lemma yields an exact sequence
+\[ 0 \to \ker(A) \xra{p} \ker(A) \to \ker(\bar{A}) \xra{\partial} \coker(A) \xra{p} \coker(A) \to \coker(\bar{A}) \to 0.\]
+This gives a short exact sequence
+\[ 0 \to \frac{\ker(A)}{p \, \ker(A)} \to \ker(\bar{A}) \to \im(\partial) \to 0,\]
+so the image of the connecting map measures how many solutions mod $p$ do not come from solutions in $\Z$. We also have an isomorphism $\im(\partial) \cong \ker( \coker(A) \xra{p} \coker(A))$.
+
+The connecting homomorphism is given by the formula $\partial(v) = [ \frac{1}{p} A \tilde{v} ]$, where $\tilde{v}$ is a lift of $v$: any vector in $\Z$ whose coordinates are representatives for the coordinates of $v$.
+\end{ex}
+
+\begin{comment}
+
+\Nov{19}
 
 
 
@@ -4463,7 +4481,7 @@ $$
       The presence of the 0 homology modules implies that $\partial_i=0=H_{i-1}(p)$, and the exactness yields $H_{i-1}(M'_\bullet)=\ker(H_{i-1}(j))=\im(\partial_i)=0$ for any $i\in \Z$. Thus $M'_\bullet$ is exact.
 \end{proof}
 
-\subsection{Comparing chain maps through homotopy}
+\subsection{Homotopy of chain maps}
 
   \begin{defn} Suppose $M_\bullet$ and $N_\bullet$ are two chain complexes of $R$-modules and $f,g: M_\bullet \to N_\bullet$ are two chain maps joining them.
     We say $f$ and $g$ are 
@@ -4593,9 +4611,54 @@ If $f \htpy g$, then $f- g$ is null-homotopic, so that $H_i(f-g) = 0$, by what w
    are the $0$ map and the inclusion map. Neither works.
  \end{ex}
  
+
+
+ 
  \begin{rem}
  Homotopy is an equivalence relation on chain maps. Moreover, if $f \htpy g$, then $f\circ h \htpy g \circ h$ and $h\circ f \htpy h \circ g$, whenever these make sense.
  \end{rem}
+ 
+ \ssec{Projective and Injective Resolutions}
+
+
+\sssec{Free and Projective resolutions}
+
+\begin{defn} Let $M$ be an $R$-module. A \DEF{free resolution} of $M$ is a chain complex $F_\bullet$ of free $R$-modules 
+\[ \cdots F_3 \xra{d_3} F_2 \xra{d_2} F_1 \xra{d_1} F_0 \to 0 \cdots \]
+along with a map $\pi: F_0\to M$ such that the augmented complex
+\[ \cdots F_3 \xra{d_3} F_2 \xra{d_2} F_1 \xra{d_1} F_0 \xra{\pi} M \to 0 \cdots \]
+is exact.
+Similarly, a \DEF{projective resolution} is a complex of projective modules that satisfies the same conditions.\end{defn}
+
+In particular, a free or projective resolution of $M$ is a chain complex such that $H_i(P_\bullet) = 0$ for $i\neq 0$ and $H_0(P_\bullet) \cong M$.
+
+
+Free resolutions always exist:
+
+\begin{lem} Every $R$-module admits a free resolution.
+\end{lem}
+\begin{proof}
+Let $M$ be an $R$-module. There is a surjection $\pi$ from a free module $F_0$ onto $M$ (given by mapping a free basis of a free module to a generating set for $M$). Then, $\ker(\pi)\subseteq F_0$ is a module, and there is a surjection $\pi_1$ from a free module $F_1$ onto $\ker(\pi)$; let $d_1:F_1 \to F_0$ be the composition of $\pi_1$ and the inclusion map. Take a surjection from a free module onto $\ker(d_1)$, and continue like so.
+\end{proof}
+
+A free or projective resolution can be thought of as an approximation of $M$ by free/projective modules via a sort of inclusion/exclusion method: A crude approximation of $M$ is a free module $F_0$ that surjects onto it. Such an approximation is too big, so we want to subtract the kernel of $\pi$, and we take a free module that surjects onto the kernel for $F_1 \xra{d_1} F_0$. But we might consider this as subtracting too much, since $F_1$ may properly surject onto, so be bigger than, the kernel. And so on.
+
+
+They need not be unique.
+
+\begin{ex} For a ring $R$, a free resolution of the free module $R$ is $0 \to R \to 0$, with the map $\pi:R\xra{1} R$. We could also take $0 \to R \xra{\begin{bmatrix} 1 \\ -1\end{bmatrix}} R^2 \to 0$, with the map $\pi: R^2 \xra{ \begin{bmatrix} 1 & 1\end{bmatrix} } R$.
+\end{ex}
+
+
+\begin{ex} Let $K$ be a field, and $R=K[x,y]$ be a polynomial ring over $K$. Take $M=R/(x,y)$. There is a surjection $\pi:R\to M$. The kernel of $\pi$ is generated by $x$ and $y$, so we can take $d_1:R^2 \xra{\begin{bmatrix} x & y\end{bmatrix}} R$. We need to find the kernel of $d_1$: if $xf+yg=0$ in $R$, then $xf=-yg$, and since $R$ is a UFD, we have $f=yh, g=-xh$ for some $h\in R$. Thus, $\ker(d_1) = R\cdot \begin{bmatrix} y \\ -x\end{bmatrix}$, so we can take
+\[ 0 \to R \xra{\begin{bmatrix} y \\ -x\end{bmatrix}} R^2 \xra{\begin{bmatrix} x & y\end{bmatrix}} R \to 0\]
+as a free resolution.
+\end{ex}
+
+\begin{ex} Let $K$ be a field, and $R=K[x,y]/(xy)$. Take $M=R/(x)$. There is a surjection $\pi:R\to M$. The kernel of this surjection is the ideal generated by $x$, and since the annihilator of $x$ is $(y)$, we can take $d_1: R\xra{y} R$. Now, the kernel of this is the ideal generated by $y$, which has annihilator $(x)$, so we can take $d_2:R\xra{x} R$. This keeps going back and forth, so we have a free resolution
+\[ \cdots \to R \xra{x} R \xra{y} R \xra{x} R \xra{y} R  \xra{x} R \to 0. \]
+\end{ex}
+
 
 
 \begin{comment}
