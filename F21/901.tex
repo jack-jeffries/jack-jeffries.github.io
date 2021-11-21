@@ -4710,6 +4710,90 @@ $E^1 = \frac{\Q}{\Z + \Z \cdot \frac{1}{n}}$. Then $E^1$ is divisible and hence 
 \end{ex}
 
 
+
+
+\begin{thm} \label{thm121b} Let $M$ and $N$ be $R$-modules, $f: M \to N$ an $R$-module homomorphism. 
+Consider two complexes
+\[
+\overbrace{\cdots \to P_2 \to P_1\to P_0}^{P_\bullet} \to M\to 0
+\]
+\[
+\underbrace{\cdots \to Q_2 \to Q_1\to Q_0}_{Q_\bullet} \to N\to 0
+\]
+such that $P_i$ is projective for all $i$ and the second complex displayed above is exact.
+  
+    Then there is
+a chain map $\tilde{f}: P_\bullet \to Q_\bullet$ causing the square diagram 
+$$
+\xymatrix{
+  P_\bullet \ar[d]^p_\sim \ar[r]^{\tilde{f}} &  Q_\bullet \ar[d]^q_\sim \\  
+M \ar[r]^f & N \\
+}
+$$
+of chain complexes to commute. Moreover, $\tilde{f}$ is unique up to homotopy: if $\tilde{f}': P_\bullet \to Q_\bullet$ is another
+chain map causing this square to commute, then $\tilde{f} \htpy \tilde{f}'$. 
+\end{thm}
+
+\def\tf{\tilde{f}}
+
+\begin{proof} For existence,  we need to construct maps $\tf_i: P_i \to Q_i$ for $i   \geq 0$ such that $q \circ \tf_0 = f \circ p$
+and $d^Q_i \circ \tf_i = \tf_{i-1} \circ d^P_i$ for $i \geq 1$. To construct $\tf_0$, we merely use the definition of projective and the diagram
+$$
+\xymatrix{
+& P_0 \ar[d]^{f \circ p}   \ar@{-->}[dl]_{\exists \tf_0} \\
+Q_0 \ar[r]^q & N \ar[r] & 0. \\
+}
+$$
+Suppose we have consructed maps $\tf_0, \dots, \tf_n$ for some $n \geq 0$  so that
+ $d^Q_i \circ \tf_i = \tf_{i-1} \circ d^P_i$ for $1 \leq i \leq n$. (When $n = 0$, the condition is vacuous.)
+Consider $Z_{n}(Q_\bullet)= \ker(Q_n \to Q_{n-1})$.  Use the definition of projective again with the diagram
+$$
+\xymatrix{
+& P_{n+1} \ar[d]^{\tf_n \circ d^P_{n+1}}   \ar@{-->}[dl]_{\exists \tf_{n+1}} \\
+Q_{n+1} \ar[r]^{d^Q_{n+1}} & Z_{n}(Q_\bullet) \ar[r] & 0 \\
+}
+$$
+to construct $\tf_{n+1}$ such that  $d^Q_{n+1} \circ \tf_{n+1} = \tf_{n} \circ d^P_n$ holds too.  This proves existence. 
+
+
+
+
+For uniqueness, suppose $\tilde{f}'$ is another such chain map.  Observe that $\tilde{f} - \tilde{f}'$ is a chain map from $P_\bullet \to Q_\bullet$ that extends the zero map from $M$
+to $N$. Thus, it suffices to prove that if $g: P_\bullet \to Q_\bullet$ is a chain map such that $q g = 0$, then $g$ is null-homotopic. That is, we need to show there are maps
+$h_i: P_i \to Q_{i+1}$ for $i \geq 0$ such that $d^Q_{i+1} \circ h_i + h_{i-1} \circ d^P_i = g_i$ for all $i \geq 0$. (In the latter equation,
+when $i = 0$ we have $h_{-1} = 0$.)
+
+Since $q \circ g_0 = 0$, the image of $g_0$ is contained in $\ker(q) = \im(d^Q_1)=B_0(Q_\bullet)$ and so since $P_0$ is projective, considering the diagram
+$$
+\xymatrix{
+& P_0 \ar[d]^{g_0}   \ar@{-->}[dl]_{\exists h_0} \\
+Q_1 \ar[r]^{d_1} & B_0(Q_\bullet) \ar[r] & 0. \\
+}
+$$ there is a map $h_0: P_0 \to Q_1$ such 
+that $d_1^Q \circ h_0 = g_0$ as needed. 
+
+
+Suppose maps $h_0, \dots, h_n$ have been constructed for some $n \geq 0$ with $g_n = d^Q_{n+1} \circ h_n + h_{n-1} \circ d^P_n$, and that $\im(g_{n+1} - h_n d^P_{n+1}) \subseteq B_{n+1}(Q_\bullet)$. 
+
+Since $P_{n+1}$ is projective, considering the diagram
+$$
+\xymatrix{
+& P_{n+1} \ar[d]^{g_{n+1}-h_n d^P_{n+1}}   \ar@{-->}[dl]_{\exists h_{n+1}} \\
+Q_{n+2} \ar[r]^{d^Q_{n+2}} & B_{n+1}(Q_\bullet) \ar[r] & 0, \\
+}
+$$ there is a map $h_{n+1}: P_{n+1} \to Q_{n+2}$ such 
+that $d_{n+2}^Q \circ h_{n+1} = g_{n+1}-h_n d^P_{n+1}$. Then
+\[ d^Q_{n+2}(g_{n+2} - h_{n+1} d^P_{n+2}) = g_{n+1} d^P_{n+2} - d^Q_{n+2} h_{n+1} d^P_{n+2} = (g_{n+1} - d^Q_{n+2} h_{n+1}) d^P_{n+2} = h_n d^P_{n+1} d^P_{n+2} = 0.\]
+Thus, by induction, we can construct such a map $h$.
+\end{proof}
+
+\begin{defn} We say that two complexes $P_\bullet, Q_\bullet$ are \DEF{homotopy equivalent} if there are maps $f:P_\bullet \to Q_\bullet$ and $g:Q_\bullet \to P_\bullet$ such that $fg \htpy 1_{Q_\bullet}$ and $gf \htpy 1_{P_\bullet}$.
+\end{defn}
+
+\begin{cor} Any two projective resolutions for a fixed module $M$ are homotopy equivalent.
+\end{cor}
+
+
 \begin{comment}
 
 
