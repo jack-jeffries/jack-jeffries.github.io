@@ -4353,7 +4353,7 @@ so the image of the connecting map measures how many solutions mod $p$ do not co
 The connecting homomorphism is given by the formula $\partial(v) = [ \frac{1}{p} A \tilde{v} ]$, where $\tilde{v}$ is a lift of $v$: any vector in $\Z$ whose coordinates are representatives for the coordinates of $v$.
 \end{ex}
 
-\begin{comment}
+
 
 \Nov{19}
 
@@ -4433,6 +4433,7 @@ Comparing the description of $\partial$ given by the Snake Lemma and the descrip
 \end{itemize}
 \end{proof}
 
+\begin{comment}
 \begin{ex}
 The long exact sequence in homology is used in topology to compute the homology groups of quotient spaces. Let $X$ be the simplicial complex of Example \ref{ex:simplicialhomology} and let $A$ be the subset formed by the three vertices. Then there is an obvious inclusion $A\subseteq X$, which leads to an inclusion of chain complexes $C_\bullet(A)\hookrightarrow C_\bullet(X)$. Ler $D_\bullet$ be the cokernel of this inclusion, leading to a s.e.s of chain complexes
 \[
@@ -4468,6 +4469,7 @@ H_i(X/A)=\begin{cases}\Z & i=0, \\ \Z^3& i=1, \\ 0 &\text{ otherwise}.\end{cases
 
 
 \end{ex}
+\end{comment}
 
 \begin{cor}[Two out of three exactness]
  If $0 \to M'_\bullet \to M_\bullet \to M''_\bullet\to 0$ is a short exact sequence of chain complexes of left $R$-modules and if any two of the three complexes are exact, then the third complex is also exact.
@@ -4584,7 +4586,7 @@ then the induced maps on singular chain complexes $f_*, g_*: C_\bullet(X) \to C_
 
  \begin{prop}
  \label{prop:homotopy}
-  Homotopic chain maps induced the same map on homology: If $f$ and $g$ are chain maps from $(M_\bullet, d^M)$ to $(N_\bullet, d^N)$ and they are homotopic,
+  Homotopic chain maps induce the same map on homology: If $f$ and $g$ are chain maps from $(M_\bullet, d^M)$ to $(N_\bullet, d^N)$ and they are homotopic,
    then $H_i(f) = H_i(g)$ for all $i$. 
    
    In particular, a null homotopic map induces the $0$ map on homology. 
@@ -4602,21 +4604,18 @@ If $f \htpy g$, then $f- g$ is null-homotopic, so that $H_i(f-g) = 0$, by what w
    \begin{ex} The converse of this proposition is false. For example, the chain map of $\Z$-modules pictured as
    $$
    \xymatrix{
-     \cdots \ar[r] & 0 \ar[r]\ar[d] &   0 \ar[d] \ar[r] &  \langle 2 \rangle  \Z/4 \ar[r] \ar[d]^{inc} & 0 \ar[r] \ar[d]& \cdots \\
-     \cdots \ar[r] & 0 \ar[r] &   \Z/4 \ar[r]^{2} &  \Z/4 \ar[r] & 0 \ar[r] & \cdots \\
+     \cdots \ar[r] & 0 \ar[r]\ar[d] &   0 \ar[d] \ar[r] &   \Z/2\Z \ar[r] \ar[d]^{2} & 0 \ar[r] \ar[d]& \cdots \\
+     \cdots \ar[r] & 0 \ar[r] &   \Z/4\Z \ar[r]^{2} &  \Z/4\Z \ar[r] & 0 \ar[r] & \cdots \\
    }
    $$
    induces the $0$ map on all homology groups, but it  is not null homotopic. Indeed, the only possible homotopy would
-   be $0$ in all degrees except one, in which it would be a map $h_0: \langle 2  \rangle \to \Z/4$. The only possibilities for $h_0$
-   are the $0$ map and the inclusion map. Neither works.
+   be $0$ in all degrees except one, in which it would be a map $h_0: \langle \Z/2\Z  \rangle \to \Z/4\Z$. The only possibilities for $h_0$
+   are the $0$ map and the map of multiplication by 2, but neither works.
  \end{ex}
  
 
 
- 
- \begin{rem}
- Homotopy is an equivalence relation on chain maps. Moreover, if $f \htpy g$, then $f\circ h \htpy g \circ h$ and $h\circ f \htpy h \circ g$, whenever these make sense.
- \end{rem}
+\Nov{22}
  
  \ssec{Projective and Injective Resolutions}
 
@@ -4659,6 +4658,56 @@ as a free resolution.
 \[ \cdots \to R \xra{x} R \xra{y} R \xra{x} R \xra{y} R  \xra{x} R \to 0. \]
 \end{ex}
 
+\sssec{Injective resolutions}
+
+\begin{defn} For a ring $R$ and $R$-module $M$, an \DEF{injective resolution} of $M$ is complex of the form
+$$
+\cdots \to 0 \to E^0 \xra{d^0} E^1 \xra{d^1}  E^2 \xra{d^2}  \cdots,
+$$
+(with $E^0$ in homological degree zero) such that each $E^i$ is injective for all $i$, 
+together with an $R$-map $M \xra{i} E^0$ such that the augmented sequence
+$$
+0 \to M \xra{i} E^0 \xra{d^0} E^1 \xra{d^1}  E^2 \xra{d^2}  \cdots
+$$
+is an exact complex.
+\end{defn}
+
+\begin{rem} The notation above follows \DEF{cohmological indexing}, in which we write a complex \[ \cdots \to M_2 \xra{d_2} M_1 \xra{d_1} \to M_0 \xra{d_0}  M_{-1} \xra{d_{-1}} M_{-2} \to\cdots\] 
+as 
+\[ \cdots \to N^{-2} \xra{d^{-2}} N^{-1} \xra{d_{-1}} \to N^0 \xra{d^0}  N^{1} \xra{d^1} N^{2} \to\cdots,\]
+where $N^i = M_{-i}$ and $d^{i}=d_{-i}$.
+\end{rem} 
+
+Injective resolutions also exist.
+
+\begin{prop} Every $R$-module admits an injective resolution.
+\end{prop}
+
+\begin{proof} Given a module $M$, by a result above we can find an injective $R$-linear map $j: M \to E^0$ with $E^0$ injective. 
+Let $N = \coker(j) = E^1/\im(j)$ and apply this result again to obtain a injective $R$-module map $N \to E^1$ with $E^1$ injective. 
+Let $E^0 \to E^1$ be the composition of $E^0 \to N \to E^1$. Then we have a l.e.s $0 \to N \to E^1 \to E^2$.
+Repeating this process (by taking the cokernel of $E^1 \to E^2$ and injecting it into an injective $R$-module, etc.), we build a (possibly never-ending)
+injective resolution of $M$.
+\end{proof}
+
+
+\begin{ex} Let us  find an injective resolution of $\Z$ as a module over itself. We have the evident embedding $\Z \to \Q$ and we know $\Q$ is injective since
+  it is divisible. The cokernel is $\Q/\Z$, which is injective since it too is divisible. Thus
+$$
+0 \to \Z \to \Q \to \Q/\Z \to 0 \to \cdots
+$$
+is an injective resolution of $\Z$.
+\end{ex}
+
+
+\begin{ex} 
+Let's find an injective resolution of $\Z/n\Z$ as a $\Z$-module. We have
+$$
+0 \to \Z/n\Z \to \Q/\Z \to E^1 \to 0 \to \cdots
+$$
+where $E^1$ is the quotient of $\Q/\Z$ by the subgroup generated by $1/n + \Z$. In other words
+$E^1 = \frac{\Q}{\Z + \Z \cdot \frac{1}{n}}$. Then $E^1$ is divisible and hence injective. 
+\end{ex}
 
 
 \begin{comment}

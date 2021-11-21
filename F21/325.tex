@@ -4664,9 +4664,9 @@ We conclude that the range is the closed interval $[m,M]$.
 \begin{center}{\large{End of material for exam 2}}\end{center}
 
 
-\begin{comment}
 
-\section{Monday, April 19}
+
+\Nov{19}
 
 
 \begin{defn} Suppose $f$ is a function and $r$ is a real number.
@@ -4759,43 +4759,33 @@ letting $y_n = \frac{-1}{n}$ we have $\lim_{n \to \infty} y_n = 0$
 and $\lim_{n \to \infty} f(y_n) = -1$. This proves the limit does not exist.
 \end{ex}
 
-\section{Wednesday, April 21}
-
-
-All of the familiar rules from calculus concerning derivative of functions are not too difficult to prove rigorously using what we have preciously established
-concerning limits. We list several of them here, but prove only a few:
-
-\begin{thm} The following six facts are true.
-  \begin{enumerate}
-  \item The derivative of a constant function is $0$ at all points. 
-  \item If $h(x) = x$ then $h'(x) = 1$.
-  \end{enumerate}
-  
-    For the remaining four parts, 
-    suppose $f$ and $g$ are two functions that are both differentiable at a number $r$.  Then:
+\begin{ex} 
+ The derivative of a constant function is $0$ at all points. Also, if $h(x) = x$ then $h'(x) = 1$. These both follow immediately from the definition.
+ \end{ex}
+ 
+ \begin{thm} Suppose $f$ and $g$ are two functions that are both differentiable at a number $r$.  Then:
 
     \begin{enumerate}
-\item[(3)] $f + g$ is differentiable at $r$ and $(f + g)'(r)  = f'(r) + g'(r)$.
-\item[(4)] For any constant $c$, $cf$ is differentiable at $r$ and
+\item $f + g$ is differentiable at $r$ and $(f + g)'(r)  = f'(r) + g'(r)$.
+\item For any constant $c$, $cf$ is differentiable at $r$ and
   $(cf)'(r) = c f'(r)$.
-\item[(5)] (``The Product Rule'') $f \cdot g$ is differentiable at $r$ and $(f \cdot g)'(r)  = f'(r) g(r) + f(r) g'(r)$.
-\item[(6)] If $g(r) \ne 0$, then $\frac{1}{g}$ is differentiable at $r$ and
+\item (``The Product Rule'') $f \cdot g$ is differentiable at $r$ and $(f \cdot g)'(r)  = f'(r) g(r) + f(r) g'(r)$.
+\item If $g(r) \ne 0$, then $\frac{1}{g}$ is differentiable at $r$ and
 $$
 \left(\frac{1}{g}\right)'(r) = - \frac{1}{g^2(r)} g'(r).
 $$
 \end{enumerate}
 \end{thm}
+\begin{proof}
+For part (1), we note that \[ \frac{(f+g)(x) - (f+g)(r)}{x-r} = \frac{f(x) + g(x) - f(r) - g(r)}{x-r} = \frac{f(x)-f(r)}{x-r} + \frac{g(x) - g(r)}{x-r}.\] When we take the limit as $x$ approaches $r$, this is $f'(r) + g'(r)$, using the definition of $f'(r)$ and $g'(r)$ and the fact that the limit of a sum of two functions is the sum of the limits (when they both exist).
+
+For (2),   we note that \[ \frac{(cf)(x) - (cf)(r)}{x-r} = c \frac{f(x) - f(r)}{x-r},\] and it follows from our limit theorems that the limit as $x$ approaches $r$ is $cf'(r)$.
+\begin{comment}
 
 
-\begin{proof} For part (1), if $f(x) = c$ for all $x$, then $\frac{f(x) - f(r)}{x-r} = 0$ for all $x\neq r$, so $\lim_{x\to r} \frac{f(x) - f(r)}{x-r} = 0$.
 
-We skip (2).
 
-For part (3), we note that \[ \frac{(f+g)(x) - (f+g)(r)}{x-r} = \frac{f(x) + g(x) - f(r) - g(r)}{x-r} = \frac{f(x)-f(r)}{x-r} + \frac{g(x) - g(r)}{x-r}.\] When we take the limit as $x$ approaches $r$, this is $f'(r) + g'(r)$, using the definition of $f'(r)$ and $g'(r)$ and the fact that the limit of a sum of two functions is the sum of the limits (when they both exist).
-
-We skip (4) since it is similar.
-
-  For (5), using what we know about limits we get 
+  For (3), using what we know about limits we get 
 $$
 \begin{aligned}
 & \lim_{x \to r} \frac{f(x)g(x) - f(r)g(r)}{x-r} 
@@ -4807,7 +4797,7 @@ $$
 $$
 where for the last step we use that $\lim_{x \to r} g(x) = g(r)$ since $g$ is continuous at $r$ (since differentiable implies continuous).
 
-For (6), we have
+For (4), we have
 $$
 \begin{aligned}
 \lim_{x \to r} \frac{\frac{1}{g(x)} - \frac{1}{g(r)}}{1-r} 
@@ -4824,7 +4814,7 @@ In this chain of equalities, we have used that $g(x)$ is continuous at $r$ to ge
 \begin{rem} We can deduce the ``Quotient rule'' from parts (5) and (6) above. Indeed, if $f$ and $g$ are differentiable at $r$ and $g'(r)\neq 0$, then $(f/g)'(r) = (f \cdot 1/g )'(r) = f(r) (1/g)'(r) + f'(r) (1/g)(r) = \frac{f(r) (-g'(r))}{g^2(r)} + \frac{f'(r)}{g(r)} = \frac{f'(r) g(r) - f(r) g'(r)}{g^2(r)}$.
 \end{rem}
 
-\begin{rem} Using parts (2) and (5) of this theorem, we can show (by induction) that if $f(x) = x^n$ for any integer $n \geq 0$, then $f$ is differentiable on all of $\R$ and
+\begin{rem} Using this Theorem and the previous example, we can show (by induction) that if $f(x) = x^n$ for any integer $n \geq 0$, then $f$ is differentiable on all of $\R$ and
 we have $f'(x) = nx^{n-1}$ for all $x$. 
 
 Using that differentiation is linear, if $f$ is a polynomial, so that
@@ -4862,7 +4852,7 @@ Since $f$ is differentiable at $r=g(s)$, we have that
 \[f'(r)=\lim_{y\to r} \frac{f(y)-f(r)}{y-r}.\]
 We can rewrite this by setting
 \[d(y)=\frac{f(y)-f(r)}{y-r} - f'(r) \]
-and observing that $f$ is differentiable at $r$ if and only if $\lim_{y\to r} d(y) =0$. At the moment, $d(y)$ is not defined at $y=r$, but we can extend the definition by setting
+and observing that $f$ is differentiable at $r$ implies that $\lim_{y\to r} d(y) =0$. At the moment, $d(y)$ is not defined at $y=r$, but we can extend the definition by setting
 \[d(y) = \begin{cases} \frac{f(y)-f(r)}{y-r} - f'(r) & \text{if } y\neq r \\
 0& \text{if } y= r. \end{cases}\]
 By the limit condition for continuity, $d(y)$ is continuous at $y=r$. The point is that we can now write
