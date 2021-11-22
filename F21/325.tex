@@ -4780,7 +4780,9 @@ $$
 For part (1), we note that \[ \frac{(f+g)(x) - (f+g)(r)}{x-r} = \frac{f(x) + g(x) - f(r) - g(r)}{x-r} = \frac{f(x)-f(r)}{x-r} + \frac{g(x) - g(r)}{x-r}.\] When we take the limit as $x$ approaches $r$, this is $f'(r) + g'(r)$, using the definition of $f'(r)$ and $g'(r)$ and the fact that the limit of a sum of two functions is the sum of the limits (when they both exist).
 
 For (2),   we note that \[ \frac{(cf)(x) - (cf)(r)}{x-r} = c \frac{f(x) - f(r)}{x-r},\] and it follows from our limit theorems that the limit as $x$ approaches $r$ is $cf'(r)$.
-\begin{comment}
+
+
+\Nov{22}
 
 
 
@@ -4847,7 +4849,25 @@ $$
 $$
 \end{thm}
 
-\begin{proof}
+
+\begin{ex} Say $h(x) = \sqrt{x^4 + 1}$. Then $h = f \circ g$ where $g(x) = x^4 + 1$ and $f(x) = \sqrt{x}$. Since $g$ is a polynomial, it is differentiable on
+  all of $\R$ and $g'(x) = 4x^3$. The range of $g$ is $[1, \infty)$
+  and as we showed above $f(x)$ is differentiable on all of $(0, \infty)$ and
+  that $f'(x) = \frac{1}{2 \sqrt{x}}$ at such points.  Using the Chain Rule we get that $h(x)$ is differentiable on all of $\R$ and that
+$$
+h'(x) = \frac{4x^3}{2 \sqrt{x^4 + 1}}.
+$$
+\end{ex}
+
+Before we prove the chain rule, it's worth discussing the most natural approach: we can write 
+\[ \lim_{x\to s} \frac{(f\circ g)(x) - (f\circ g)(s)}{x-s} = \lim_{x\to s} \frac{f(g(x)) - f(g(s))}{g(x) - g(s)}  \frac{g(x) - g(s)} {x-s}.\]
+Then $\displaystyle \lim_{x\to s} \frac{g(x) - g(s)} {x-s} = g'(s)$, and we would be done if we could also show that 
+$\displaystyle \lim_{x\to s} \frac{f(g(x)) - f(g(s))}{g(x) - g(s)} = f'(g(s))$. This certainly looks right at first, especially if we let $r=g(s)$, we think of $g(x)$ as $y$ and observe that the limit as $x$ approaches $s$ of $y=g(x)$ is $r$, since $g$ is continuous, so we would \emph{want} to say that \[ \lim_{x\to s} \frac{f(g(x)) - f(g(s))}{g(x) - g(s)} = \lim_{y\to r} \frac{f(y) - f(r)}{y - r} = f'(r) = f'(g(s)).\]
+But there is a problem with this: when $g(x)-g(r)=0$, the function $\displaystyle \frac{f(g(x)) - f(g(s))}{g(x) - g(s)}$ is not defined, so if $g(x)=g(x)$ for values of $x$ that are arbitrarily close to $s$, there is no limit! 
+\begin{comment}
+\section{Friday, April 23}
+
+\begin{proof}[Proof of Chain rule]
 Since $f$ is differentiable at $r=g(s)$, we have that
 \[f'(r)=\lim_{y\to r} \frac{f(y)-f(r)}{y-r}.\]
 We can rewrite this by setting
@@ -4864,17 +4884,6 @@ We can divide both sides to get
 We want to take the limit as $x$ approaches $s$ of both sides. Since $g$ is continuous at $x=s$, and $d$ is continuous at $y=r=g(s)$, $d\circ g$ is continuous, which implies that $\lim_{x\to s} d(g(x)) = d(g(s))=0$. Using the algebra rules for limits and the definition of the derivative, we have that the limit of the right hand side above is $f'(g(s)) \cdot g'(s)$. By definition, the limit of the left hand side is $(f\circ g)'(s)$. Thus, we have shown the stated equality.
 \end{proof}
 
-\begin{ex} Say $h(x) = \sqrt{x^4 + 1}$. Then $h = f \circ g$ where $g(x) = x^4 + 1$ and $f(x) = \sqrt{x}$. Since $g$ is a polynomial, it is differentiable on
-  all of $\R$ and $g'(x) = 4x^3$. The range of $g$ is $[1, \infty)$
-  and as we showed above $f(x)$ is differentiable on all of $(0, \infty)$ and
-  that $f'(x) = \frac{1}{2 \sqrt{x}}$ at such points.  Using the Chain Rule we get that $h(x)$ is differentiable on all of $\R$ and that
-$$
-h'(x) = \frac{4x^3}{2 \sqrt{x^4 + 1}}.
-$$
-\end{ex}
-
-
-\section{Friday, April 23}
 
 \begin{ex}
 Consider the function $f(x)=\begin{cases} x^2 \sin(\frac{1}{x}) & \text{if } x\neq 0 \\ 0 & \text{if } x=0.\end{cases}$
