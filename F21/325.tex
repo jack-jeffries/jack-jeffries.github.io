@@ -4864,9 +4864,98 @@ Before we prove the chain rule, it's worth discussing the most natural approach:
 Then $\displaystyle \lim_{x\to s} \frac{g(x) - g(s)} {x-s} = g'(s)$, and we would be done if we could also show that 
 $\displaystyle \lim_{x\to s} \frac{f(g(x)) - f(g(s))}{g(x) - g(s)} = f'(g(s))$. This certainly looks right at first, especially if we let $r=g(s)$, we think of $g(x)$ as $y$ and observe that the limit as $x$ approaches $s$ of $y=g(x)$ is $r$, since $g$ is continuous, so we would \emph{want} to say that \[ \lim_{x\to s} \frac{f(g(x)) - f(g(s))}{g(x) - g(s)} = \lim_{y\to r} \frac{f(y) - f(r)}{y - r} = f'(r) = f'(g(s)).\]
 But there is a problem with this: when $g(x)-g(r)=0$, the function $\displaystyle \frac{f(g(x)) - f(g(s))}{g(x) - g(s)}$ is not defined, so if $g(x)=g(x)$ for values of $x$ that are arbitrarily close to $s$, there is no limit! 
-\begin{comment}
+
 
 \Nov{29}
+
+
+\begin{prop}\label{prop-deri} Let $f$ be a function and $r$ be a real number. Assume that $f$ is differentiable at $r$.
+\begin{enumerate}
+\item If $f'(r)>0$, then there is some $\delta>0$ such that 
+\begin{itemize} 
+\item$f(x)>f(r)$ for all $x\in (r,r+\delta)$, and
+\item$f(x)<f(r)$ for all $x\in (r-\delta,r)$.
+\end{itemize}
+\item If $f'(r)<0$, then there is some $\delta>0$ such that 
+\begin{itemize} 
+\item$f(x)<f(r)$ for all $x\in (r,r+\delta)$, and
+\item$f(x)>f(r)$ for all $x\in (r-\delta,r)$.
+\end{itemize}
+\end{enumerate}
+\end{prop}
+
+
+
+
+\begin{thm}[Min-Max Theorem]   Let $f$ be a function, $(a,b)$ be an open interval contained in the domain of $f$, and  $r\in (a,b)$. Assume that $f$ is differerentiable at $r$. If
+$f$ attains its maximum or minimum value on $(a,b)$ at~$r$ (i.e., either $f(r) \geq f(x)$ for all $x \in (a,b)$ or $f(r) \leq f(x)$ for all $x \in (a,b)$), then $f'(r) = 0$.
+\end{thm}
+
+
+
+
+
+
+
+\begin{enumerate}
+
+\item Explain how the Min-Max Theorem follows from Proposition~\ref{prop-deri} (which will prove below).
+
+\begin{framed}
+We prove the contrapositive. If $f'(r)\neq 0$, then either $f'(r)>0$ or $f'(r)<0$. In either case, it follows from Proposition~\ref{prop-deri} that there are value of $x$ for which $f(x)$ is larger than $f(r)$ and values of $x$ for which $f(x)$ is smaller than $f(r)$, so $f$ achieves neither a minimum nor a maximum at $r$.
+\end{framed}
+
+\item Give a counterexample to the converse of the Min-Max Theorem.
+
+\begin{framed}
+If $f(x) = x^3$ on $(-1,1)$, then $f'(x)=0$ but $f(1/2) = 1/8>0 = f(0)$ (so $x=0$ is not a maximum) and $f(-1/2) = -1/8<0=f(0)$  (so $x=0$ is not a minimum).
+\end{framed}
+
+\item Let $h$ be a function and $r$ be a real number. Use the definition of limit to show that if $\lim_{x\to r} h(x) >0$, then there is some $\delta>0$ such that $h(x)>0$ for all ${x\in (r-\delta,r) \cup (r,r+\delta)}$.
+
+\begin{framed}
+Let $\lim_{x\to r} h(x) = L >0$, and take $\e = L$. Then, by the definition, there is some $\delta>0$ such that if $0<|x-r|<\delta$, then $|h(x) - L|<L$. Rewriting this, if $x\in (r-\delta,r) \cup (r,r+\delta)$, then $ 0< h(x) < 2L$, and in particular, $h(x)>0$. 
+\end{framed}
+
+
+\item Use the definition of derivative and the previous problem to prove part (1) of Proposition~\ref{prop-deri}.
+
+\begin{framed}
+Suppose that $f'(r)>0$, and consider $h(x) = \frac{ f(x) - f(r)}{x-r}$. Since $\lim_{x\to r} h(x) > 0$, we know that there is some $\delta>0$ such that if $x\in (r-\delta,r) \cup (r,r+\delta)$, then $h(x)>0$. If $x\in (r,r+\delta)$, then $h(x) > 0$ and $x-r > 0$, so $f(x) - f(r) = h(x) ( x-r) >0$, and hence $f(x) >  f(r)$.
+If $x\in (r-\delta,r)$, then $h(x) > 0$ and $x-r < 0$, so $f(x) - f(r) = h(x) ( x-r) <0$, and hence $f(x) <  f(r)$.
+\end{framed}
+
+\item Deduce part (2) of Proposition~\ref{prop-deri} from the previous problem (by applying it to a different function).
+
+\begin{framed}
+If $f'(r)>0$, then let $g(x) = -f(x)$. Then $g'(r) = -f'(r) >0$, so there is some $\delta>0$ such that $g(x)>g(r)$ for all $x\in (r,r+\delta)$, and
+$g(x)<g(r)$ for all $x\in (r-\delta,r)$. Thus, $f(x)<f(r)$ for all $x\in (r,r+\delta)$, and
+$f(x)>f(r)$ for all $x\in (r-\delta,r)$.
+\end{framed}
+
+\noindent \textbf{Definition:} Let $S$ be a set of real numbers, and $f:S\to \R$ be a function. We say that $f$ is \emph{increasing} on $S$ if for any $a,b\in S$ with $a<b$, we have $f(a) \leq f(b)$.
+
+\
+
+\item Prove or disprove: If $f:\R \to \R$ is differentiable at $r$, and $f'(r)>0$, then there is some $\delta>0$ such that $f$ is increasing on $(r-\delta,r+\delta)$.
+
+\begin{framed}
+For a counterexample, consider the function \[ f(x) = \begin{cases} x^2 & \text{if} \ x \in \Q \\ 0 & \text{if} \ x \notin \Q,\end{cases} \]
+and let $g(x) = f(x) + x$. Then since $f'(0)=0$, we have $g'(0) = 0 +1 = 1 >0$. However, $f$ is not increasing on any interval of the form $(-\delta,\delta)$. Indeed, there is some rational number $q\in (0,\delta)$, so $f(q) = q^2+ q >q$ since $q>0$. Then there is an irrational number $z\in (q, \min{q^2+q, \delta})$. We have $q<z$ but $f(q) = q^2+q > z = f(z)$, so $f$ is not increasing.
+\end{framed}
+
+\item Prove or disprove: If $f$ is continuous on $[a,b]$, and there exist $s,t\in (a,b)$ such that $f'(s) > 0$ and $f'(t)< 0$, then there exist $c,d\in [a,b]$ such that $c\neq d$ and $f(c) = f(d)$.
+
+\begin{framed}
+We prove the statement. We consider a few cases. First, let's assume that $s<t$ and $f(s)<f(t)$. Then, using the Proposition above we can find some $r$ such that $s<r<t$ and $f(r)<f(s)$. Let $y$ be any number such that ${f(r)< y< f(s)}$. By the IVT, there is some $c\in [s,r]$ such that $f(c) = y$; note that $c\neq r$. Also, since ${f(r) < y < f(t)}$, by the IVT, there is some $d\in [r,t]$ such that $f(d) = y$; note that $c\neq d$ since $c\notin [r,t]$, so we are done in this case.
+
+The other cases ($s<t$ and $f(s)>f(t)$, $s>t$ and $f(s)<f(t)$, $s>t$ and $f(s)>f(t)$) are similar.
+\end{framed}
+
+\end{enumerate}
+
+\begin{comment}
+
 
 \begin{proof}[Proof of Chain rule]
 Since $f$ is differentiable at $r=g(s)$, we have that
@@ -4886,6 +4975,7 @@ We want to take the limit as $x$ approaches $s$ of both sides. Since $g$ is cont
 \end{proof}
 
 
+
 \begin{ex}
 Consider the function $f(x)=\begin{cases} x^2 \sin(\frac{1}{x}) & \text{if } x\neq 0 \\ 0 & \text{if } x=0.\end{cases}$
 First, let's consider whether $f(x)$ is differentiable at $x=0$. 
@@ -4897,53 +4987,6 @@ If we take for granted that $\sin'(x)=\cos(x)$ for all $x$, then it follows from
 This derivative function is not continuous at $x=0$. One way to see this is to consider the two sequences $\{\frac{1}{2\pi n}\}_{n=1}^\infty$ and $\{\frac{1}{2\pi n + \pi}\}_{n=1}^\infty$ which both converge to $0$, but the resulting sequences after $f'$ is applied converge to $1$ and $-1$, respectively, so $\lim_{x\to 0} f'(x)$ does not exist.
 \end{ex}
 
-
-
-We now want to explore the relationship between derivatives and local minima and maxima of functions. Here is the key fact.
-
-\begin{prop}
-Let $f$ be a function that is differentiable at $r$.
-\begin{enumerate}
-\item If $f'(r) >0$, then there is some $\delta>0$ such that $f(x) > f(r)$ for all $x\in (r,r+\delta)$ and $f(x)< f(r)$ for all $x\in (r-\d,r)$.
-\item If $f'(r) <0$, then there is some $\delta>0$ such that $f(x)$ is defined and $f(x) < f(r)$ for all $x\in (r,r+\delta)$ and $f(x)>f(r)$ for all $x\in (r-\d,r)$.
-\end{enumerate}
-\end{prop}
-\begin{proof}
-We focus on the first statement. Suppose that $f'(r)>0$. By definition, we have that $\lim_{x\to r} \frac{f(x) - f(r)}{x-r} = f'(r)>0$. Thus, there is some $\delta>0$ such that $\frac{f(x) - f(r)}{x-r}$ is defined and $\frac{f(x) - f(r)}{x-r}>0$ for all $x$ such that $0<|x-r|<\delta$.  (Why?) Now, if $x\in (r,r+\d)$, then $0<|x-r|<\delta$ and $x-r >0$, so $f(x)-f(r)>0$ and hence $f(x)>f(r)$. Similarly, if $x\in (r-\d,r)$, then $0<|x-r|<\delta$ and $x-r <0$, so $f(x)-f(r)<0$ and hence $f(x)<f(r)$. This proves the first statement.
-
-The proof of the second statement is similar (or we can apply the first statement to $-f(x)$).
-\end{proof}
-
-
-The following Theorem records a fact you should recall from Calculus:
-if a function has a local minimum or local maximum at a point (and it is
-differentiable there),  then its derivative must vanish
-at that point. 
-
-\begin{thm}[Min-Max Theorem] Assume $f$ is differentiable at $r$ and that for some open interval $(a,b)$ contained in the domain of $f$  with $r \in (a,b)$, 
-$f$ attains its maximum or minimum value on $(a,b)$ at~$r$ (i.e., assume either $f(r) \geq f(x)$ for all $x \in (a,b)$ or 
-$f(r) \leq f(x)$ for all $x \in (a,b)$).   Then $f'(r) = 0$.
-\end{thm}
-
-\begin{rem} The converse of this theorem is not true. 
-
-For one example, take $f(x)=x^3-3x$ on the interval $(-4,4)$ with $x=1$; we have $f'(1)=0$, but, since $f(-3) = -18 < f(1) = -2 < f(3) = 18$, $f$ attains neither a minimum nor a maximum at $x=1$. However, $1$ is a minimum for $f$ on the smaller interval $(0,2)$.
-
-For another example, take $f(x)=x^3$ on the interval $(-1,1)$ with $x=0$; this is neither a minimum nor maximum for $f$ on this interval. Moreover, $0$ is not a minimum nor a maximum for $f$ on any interval.
-\end{rem}
-
-\section{Monday, April 26}
-
-\begin{proof} Assume $f$ is differentiable at $r$, $r \in (a,b)$, and $f$ is defined on all of $(a,b)$. 
-We need to show that if $f$ attains its minimum or maximum value on $(a,b)$ at $r$, then $f'(r) = 0$. 
-Let us prove the contrapositive: Assume $f'(r) \ne 0$. Our goal is to show $f$ does not obtain its maximum nor its minimum value on $(a,b)$ at $r$. 
-
-Since $f'(r) \ne 0$, then  either $f'(r) > 0$ or $f'(r) < 0$. 
-
-If $f'(r)>0$, then by the previous proposition, there is some $\d>0$ such that $f(x) > f(r)$ for all $x\in (r,r+\delta)$. We can pick an $x$ value that is in this interval and also in $(a,b)$, for example, the minimum of $r+\d/2$ and $(r+b)/2$; this $x$ value gives a larger value of $f(x)$ on $(a,b)$, so $f$ does not attain its maximum at $r$. Likewise, we have $f(x) < f(r)$ for all $x\in (r-\d,r)$, and we can pick an $x$ value in this interval that is also in $(a,b)$ to see that $f$ does not attain a minimum at $r$.
-
-The argument in the case $f'(r)<0$ is similar.
-\end{proof}
 
 
 
