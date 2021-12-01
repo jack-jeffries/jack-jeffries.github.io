@@ -4954,7 +4954,7 @@ The other cases ($s<t$ and $f(s)>f(t)$, $s>t$ and $f(s)<f(t)$, $s>t$ and $f(s)>f
 
 \end{enumerate}
 
-\begin{comment}
+\Dec{1}
 
 
 \begin{proof}[Proof of Chain rule]
@@ -4974,49 +4974,86 @@ We can divide both sides to get
 We want to take the limit as $x$ approaches $s$ of both sides. Since $g$ is continuous at $x=s$, and $d$ is continuous at $y=r=g(s)$, $d\circ g$ is continuous, which implies that $\lim_{x\to s} d(g(x)) = d(g(s))=0$. Using the algebra rules for limits and the definition of the derivative, we have that the limit of the right hand side above is $f'(g(s)) \cdot g'(s)$. By definition, the limit of the left hand side is $(f\circ g)'(s)$. Thus, we have shown the stated equality.
 \end{proof}
 
-
+%In the homework, we have seen an example of a function that is differentiable at only one point. We also saw an example of a function that is differentiable on $\R$, but the derivative is in fact no longer differentiable. Here is a simpler version of this example.
+%
+%\begin{ex} Let 
+%\[ f(x) = \begin{cases} x^2 &\text{if} \ x\geq 0 \\ 0 &\text{if} \ x<0.\end{cases}\]
+%For $r>0$, on some open interval containing $r$, $f(x) = x^2$, so $f'(r)$ equals the derivative of $x^2$ at $r$, which is $2r$. For $r<0$, on some open interval containing $r$, $f(x) = x^2$, so $f'(r)$ equals the derivative of $0$ at $r$, which is $0$. For $r=0$, we need to use the definition.
+%\[ \lim_{x\to 0} \frac{f(x) - f(0)}{x-0} = \lim_{x\to 0}\frac{f(x) }{x} = \lim_{x\to 0} \begin{cases} x &\text{if} \ x> 0 \\ 0&\text{if}\  x < 0\end{cases}.\]
+%We claim the limit is $0$. Indeed, given $\e>0$, take $\d=\e$. Fix $x$ such that $0<|x|<\d$. If $x>0$, then $|\frac{f(x)}{x}| = x <\d = \e$, and if $x<0$, then $\frac{f(x)}{x}| =0<\e$. This proves the claim. Thus,
+%\[ f'(x) = \begin{cases} 2x &\text{if} \ x\geq 0 \\ 0 &\text{if} \ x < 0.\end{cases}\]
+%However, this function is not differentiable at $x=0$, as 
+%\[ \lim_{x\to 0} \frac{f'(x) - f'(0)}{x-0} = \lim_{x\to 0}\frac{f'(x) }{x} = \lim_{x\to 0} \begin{cases} 2 &\text{if} \ x> 0 \\ 0&\text{if}\ x < 0\end{cases}\]
+%does not exist.
+%\end{ex}
+%
+%When the derivative of a function is again differentiable, we call that derivative the second derivative of the original function.
+%
+%Must the derivative of a function be continuous? If we try to make the derivative ``jump'' at a point, we have a problem. For example, if we take a function $f(x)$ with $f(0)=0$ and $f'(x)=1$, and another function $g(x)$ with $g(0)=0$ and $g'(0)=-1$, then the function obtained by combining these
+%\[ h(x) = \begin{cases} f(x) &\text{if} \ x\geq 0 \\ g(x) &\text{if} \ x< 0\end{cases}\]
+%is no longer differentiable at $x=0$.
 
 \begin{ex}
 Consider the function $f(x)=\begin{cases} x^2 \sin(\frac{1}{x}) & \text{if } x\neq 0 \\ 0 & \text{if } x=0.\end{cases}$
 First, let's consider whether $f(x)$ is differentiable at $x=0$. 
 
 \[ \lim_{x\to 0} \frac{f(x) - f(0)}{x-0} = \lim_{x\to 0} \frac{x^2 \sin(\frac{1}{x})}{x} = \lim_{x\to 0} x \sin\left(\frac{1}{x}\right) =0,\]
-as you computed on the homework. Thus $f'(0)=0$.
+as you showed using the Squeeze Theorem. Thus $f'(0)=0$.
 If we take for granted that $\sin'(x)=\cos(x)$ for all $x$, then it follows from the chain rule that $f$ is differentiable for all $x\neq 0$ and in particular that $f'(x) = 2x \sin(\frac{1}{x}) - \cos(\frac{1}{x})$ for $x\neq 0$. Altogether, we have that $f$ is differentiable on all of $\R$, and
 \[ f'(x) = \begin{cases}   2x \sin(\frac{1}{x}) - \cos(\frac{1}{x}) &\text{if} \ x\neq 0 \\0 &\text{if} \ x=0 .\end{cases}\]
 This derivative function is not continuous at $x=0$. One way to see this is to consider the two sequences $\{\frac{1}{2\pi n}\}_{n=1}^\infty$ and $\{\frac{1}{2\pi n + \pi}\}_{n=1}^\infty$ which both converge to $0$, but the resulting sequences after $f'$ is applied converge to $1$ and $-1$, respectively, so $\lim_{x\to 0} f'(x)$ does not exist.
 \end{ex}
 
 
+%I want to mention a Corollary of the Min-Max Theorem.
+%
+%
+%
+%\begin{cor} Suppose $f$ is continuous on the closed interval $[a,b]$.
+%Then $f$ attains its maximum and minimum values
+%  on $[a,b]$ and both of these occur at points $x$ such that one of the following conditions hold:
+%\begin{enumerate}
+%\item $x = a$,
+%\item  $x = b$, 
+%\item $f$ is differentiable at $x$ and $f'(x) = 0$, or
+%\item $f$ is not differentiable at $x$.
+%\end{enumerate}
+%\end{cor}
+%
+%\begin{proof} The Extreme Value Theorem shows that $f$ attains its maximum and minimum --- say its maximum occurs at $r$ and its minimum occurs at $s$. 
+%  We need to show that $r = a$, $r = b$, $f'(r) = 0$, or $f$ is not differentiable at $r$, and similarly for $s$.
+%
+%  Assume the first, second, and fourth conditions
+%do not hold --- i.e. assume $r \ne a$, $r \ne b$, and that $f$ is differentiable. Then by the Min-Max
+%Theorem, $f'(r) = 0$.
+%
+%Similarly one shows that one of these four properties holds for $s$.
+%\end{proof}
+%
+%\begin{rem} Each of the four cases above is possible. For example:
+%\begin{itemize}
+%\item $f(x)=x$ achieves its maximum on $[-1,1]$ at $x=1$ and its minimum on $[-1,1]$ at $x=-1$, but $f'(x)=1\neq 0$ at both of these points.
+%\item $f(x)=|x|$ achieves its minimum on $[-1,1]$ at $x=0$, where $f$ is not differentiable.
+%\end{itemize}
+%\end{rem}
+%
+%
+%
+%Our last big goal in studying derivatives is to pin down the relationship between derivatives and increasing/decreasing functions. We will need the following definition.
 
+\begin{comment}
 
-\begin{cor} Suppose $f$ is continuous on the closed interval $[a,b]$.
-Then $f$ attains its maximum and minimum values
-  on $[a,b]$ and both of these occur at points $x$ such that one of the following conditions hold:
-\begin{enumerate}
-\item $x = a$,
-\item  $x = b$, 
-\item $f$ is differentiable at $x$ and $f'(x) = 0$, or
-\item $f$ is not differentiable at $x$.
-\end{enumerate}
-\end{cor}
-
-\begin{proof} The Extreme Value Theorem shows that $f$ attains its maximum and minimum --- say its maximum occurs at $r$ and its minimum occurs at $s$. 
-  We need to show that $r = a$, $r = b$, $f'(r) = 0$, or $f$ is not differentiable at $r$, and similarly for $s$.
-
-  Assume the first, second and fourth conditions
-do not hold --- i.e. assume $r \ne a$, $r \ne b$ and that $f$ is differentiable. Then by the Min-Max
-Theorem, $f'(r) = 0$.
-
-Similarly one shows that one of these four properties holds for $s$.
-\end{proof}
-
-\begin{rem} Each of the four cases above is possible. For example:
+\begin{defn} Let $f$ be a function, and $S\subseteq \R$ be a set of real numbers contained in domain of $f$. We say that 
 \begin{itemize}
-\item $f(x)=x$ achieves its maximum on $[-1,1]$ at $x=1$ and its minimum on $[-1,1]$ at $x=-1$, but $f'(x)=1\neq 0$ at both of these points.
-\item $f(x)=|x|$ achieves its minimum on $[-1,1]$ at $x=0$, where $f$ is not differentiable.
+\item $f$ is \emph{increasing} on $S$ if for any $a,b\in S$ with $a<b$ we have $f(a) \leq f(b)$;
+\item $f$ is \emph{decreasing} on $S$ if for any $a,b\in S$ with $a<b$ we have $f(a) \geq f(b)$;
+\item $f$ is \emph{constant} on $S$ if for any $a,b\in S$ with $a<b$ we have $f(a) = f(b)$;
+\item  $f$ is \emph{strictly increasing} on $S$ if for any $a,b\in S$ with $a<b$ we have $f(a) < f(b)$;
+\item $f$ is \emph{strictly decreasing} on $S$ if for any $a,b\in S$ with $a<b$ we have $f(a) > f(b)$.
 \end{itemize}
-\end{rem}
+\end{defn}
+
+
 
 
 \begin{thm}[Rolle's Theorem] 
