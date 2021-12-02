@@ -4947,9 +4947,13 @@ and let $g(x) = f(x) + x$. Then since $f'(0)=0$, we have $g'(0) = 0 +1 = 1 >0$. 
 \item Prove or disprove: If $f$ is continuous on $[a,b]$, and there exist $s,t\in (a,b)$ such that $f'(s) > 0$ and $f'(t)< 0$, then there exist $c,d\in [a,b]$ such that $c\neq d$ and $f(c) = f(d)$.
 
 \begin{framed}
-We prove the statement. We consider a few cases. First, let's assume that $s<t$ and $f(s)<f(t)$. Then, using the Proposition above we can find some $r$ such that $s<r<t$ and $f(r)<f(s)$. Let $y$ be any number such that ${f(r)< y< f(s)}$. By the IVT, there is some $c\in [s,r]$ such that $f(c) = y$; note that $c\neq r$. Also, since ${f(r) < y < f(t)}$, by the IVT, there is some $d\in [r,t]$ such that $f(d) = y$; note that $c\neq d$ since $c\notin [r,t]$, so we are done in this case.
+We prove the statement. We consider a few cases. 
 
-The other cases ($s<t$ and $f(s)>f(t)$, $s>t$ and $f(s)<f(t)$, $s>t$ and $f(s)>f(t)$) are similar.
+First, let's assume that $s<t$ and $f(s)<f(t)$. Then, using the Proposition above we can find some $r$ such that $s<r<t$ and $f(r)>f(t)$. Let $y$ be any number such that ${f(t)< y< f(r)}$. By the IVT, there is some $c\in [r,t]$ such that $f(c) = y$; note that $c\neq r$. Also, since ${f(s) < y < f(r)}$, by the IVT, there is some $d\in [s,r]$ such that $f(d) = y$; note that $c\neq d$ since $c\notin [s,r]$, so we are done in this case.
+
+Second, let's assume that $s<t$ and $f(s)>f(t)$. Then, using the Proposition above we can find some $r$ such that $s<r<t$ and $f(r)>f(s)$. Let $y$ be any number such that ${f(s)< y< f(r)}$. By the IVT, there is some $c\in [s,r]$ such that $f(c) = y$; note that $c\neq r$. Also, since ${f(t) < y < f(r)}$, by the IVT, there is some $d\in [r,t]$ such that $f(d) = y$; note that $c\neq d$ since $c\notin [r,t]$, so we are done in this case.
+
+The other cases ($s>t$ and $f(s)<f(t)$, $s>t$ and $f(s)>f(t)$) are similar.
 \end{framed}
 
 \end{enumerate}
