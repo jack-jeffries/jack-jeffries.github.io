@@ -5008,6 +5008,105 @@ If we take for granted that $\sin'(x)=\cos(x)$ for all $x$, then it follows from
 This derivative function is not continuous at $x=0$. One way to see this is to consider the two sequences $\{\frac{1}{2\pi n}\}_{n=1}^\infty$ and $\{\frac{1}{2\pi n + \pi}\}_{n=1}^\infty$ which both converge to $0$, but the resulting sequences after $f'$ is applied converge to $1$ and $-1$, respectively, so $\lim_{x\to 0} f'(x)$ does not exist.
 \end{ex}
 
+\Dec{3}
+
+\begin{thm}[Rolle's Theorem]
+Let $f$ be continuous on the closed interval $[a,b]$ and differentiable at every point of $(a,b)$. If $f(a) = f(b)$, then there exists a $c \in
+  (a,b)$ such that $f'(c) = 0$.
+\end{thm}
+
+
+
+\begin{thm}[Mean Value Theorem] Assume $f$ is continuous on the closed interval $[a,b]$ and differentiable at every point of $(a,b)$. Then there exists a $c \in
+  (a,b)$ such that 
+$$
+f'(c) = \frac{f(b) - f(a)}{b-a}.
+$$
+\end{thm}
+
+
+
+
+\begin{defn} Let $f$ be a function, and $S\subseteq \R$ be a set of real numbers contained in domain of~$f$. We say that 
+\begin{itemize}
+\item $f$ is \emph{increasing} on $S$ if for any $a,b\in S$ with $a<b$ we have $f(a) \leq f(b)$;
+\item $f$ is \emph{decreasing} on $S$ if for any $a,b\in S$ with $a<b$ we have $f(a) \geq f(b)$;
+\item $f$ is \emph{constant} on $S$ if for any $a,b\in S$ with $a<b$ we have $f(a) = f(b)$;
+\item  $f$ is \emph{strictly increasing} on $S$ if for any $a,b\in S$ with $a<b$ we have $f(a) < f(b)$;
+\item $f$ is \emph{strictly decreasing} on $S$ if for any $a,b\in S$ with $a<b$ we have $f(a) > f(b)$.
+\end{itemize}
+\end{defn}
+
+
+
+\begin{cor}
+Suppose $I$ is an open interval (that is, $I = (a,b)$, $(a, \infty)$, $(-\infty, b)$, or $(\infty, \infty)$) and $f$ is differentiable on all of $I$.  
+\begin{enumerate}
+\item $f'(x) \geq 0$ for all $x \in I$ if and only if $f$ is increasing on all of $I$.
+\item $f'(x) \leq 0$ for all $x \in I$ if and only if $f$ is decreasing on all of $I$.
+\item $f'(x) = 0$ for all $x \in I$ if and only if $f$ is a constant function on $I$. 
+\end{enumerate}
+\end{cor}
+
+
+
+
+\begin{enumerate}
+\item In this problem, we prove Rolle's Theorem. \begin{enumerate}
+\item First, assume that $f$ is constant on $[a,b]$, and prove the Theorem in this case.
+\item Explain why $f$ has a minimum value and a maximum value on $[a,b]$.
+\item Explain why, in the case that $f$ is not constant, either the minimum or maximum value for $f$ occurs in $(a,b)$, and conclude the proof.
+\end{enumerate}
+
+\begin{framed}
+If $f$ is constant on $[a,b]$, then the derivative of $f$ is zero at every point. By the Extreme Value Theorem, $f$ attains a minimum and a maximum on $[a,b]$; say $m$ and $M$, respectively. We have $m \leq f(a) = f(b) \leq M$. If $m$ and $M$ are both equal to $f(a)$ and $f(b)$, then $f$ is constant on $[a,b]$, and we're done. Otherwise, either the minimum or maximum occurs at some $c$  other than $a$ and $b$, so in $c\in (a,b)$. Then the Min-Max Theorem says that $f'(c)=0$.
+\end{framed}
+
+
+\item Prove the Mean Value Theorem.
+\begin{itemize}
+\item Suggestion: Let $\ell(x) = \frac{f(b) - f(a)}{b-a}\, x$, and show that $f(x) - \ell(x)$ satisfies the hypotheses of Rolle's Theorem.
+\end{itemize}
+
+\begin{framed}
+Let $\ell(x) = \frac{f(b) - f(a)}{b-a}\, x$. Note that \[\begin{aligned} (f(b) -\ell(b))& - (f(a) - \ell(a)) = (f(b) - f(a)) - (\ell(b) - \ell(a)) \\&= (f(b)-f(a)) - (\frac{f(b)-f(a)}{b-a} \ (b-a)) = 0,\end{aligned}\]
+and $f(x) - \ell(x)$ is continuous on $[a,b]$ and differentiable on $(a,b)$. Thus, by Rolle's Theorem, there is some $c\in (a,b)$ such that \[0=(f-\ell)'(c)=f'(c) - \frac{f(b)-f(a)}{b-a},\]
+and the theorem follows.
+\end{framed}
+
+\item In this problem, we prove Corollary~36.4.
+\begin{enumerate}
+\item For the $(\Rightarrow)$ direction of (1), let $a,b\in I$ with $a<b$. Explain why the Mean Value Theorem applies to $f$ on $[a,b]$, and apply it.
+\item For the $(\Leftarrow)$ direction of (1), prove the contrapositive using a result from Monday.
+\item Prove the rest of the Corollary.
+\end{enumerate}
+
+\begin{framed}
+Assume that $f'(x) \geq 0$ for all $x\in I$. For $a<b$ in $I$, we have that $f$ is continuous on $[a,b]$ and differentiable on $(a,b)$, so the MVT applies: there is some $c\in (a,b)$ such that $f'(c) = \frac{f(b)-f(a)}{b-a}$. Since $f'(c) \geq 0$ and $b-a>0$, we must have $f(b)-f(a)\geq 0$, so $f(a) \leq f(b)$.
+
+Now assume that $f'(x) < 0$ for all some $x\in I$. By Proposition~34.1, there is some $\delta>0$ such that $f(y) < f(x)$ for all $y\in (x,x+\d)$, so there is some $y\in I$ with $x<y$ and $f(x) > f(y)$. This implies that $f$ is not increasing on $I$.
+
+For (2), we can argue similarly or apply (1) to $-f(x)$.
+
+For (3), we can argue similarly or observe that $f$ is constant if and only if it is both increasing and decreasing on $I$, and that $f'(x) = 0$ on $I$ if and only if $f'(x)\geq 0$ and $f'(x)\leq 0$ for all $x\in I$.
+\end{framed}
+
+\item Prove or disprove: If $J= (-\infty,0) \cup (0,\infty)$ and that $f'(x) = 0$ for all $x\in J$, then $f$ is constant on $J$.
+
+\
+
+\item Prove or disprove: If $f$ is differentiable on $\R$ and $f'(r)>0$, then there is some $\delta>0$ such that $f$ is increasing on $(r-\delta,r+\delta)$.
+
+\
+
+
+\item Let $f$ be a function and $r$ be a real number. Suppose that $f$ is differentiable on an open interval containing $r$, and $f'$ is also differentiable at $r$. Show that if $f'(r)=0$  and $f''(r)<0$, then there is some $\delta>0$ such that $f$ achieves its maximum on $(r-\delta,r+\delta)$ at $x=r$.
+
+\
+
+\item Come up with a precise definition of \emph{concave up/down} on an interval $I$, then state and prove the analogue of Corollary~36.4 for concavity using second derivatives.
+
+
 
 %I want to mention a Corollary of the Min-Max Theorem.
 %
