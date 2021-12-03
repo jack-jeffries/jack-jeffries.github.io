@@ -4232,7 +4232,7 @@ Note that neither of these is exact.
 \end{ex}
  
  
-\ssec{The long exact sequence of homology}       
+\sssec{The long exact sequence of homology}       
 
 
 
@@ -4766,7 +4766,7 @@ Q_{n+1} \ar[r]^{d^Q_{n+1}} & B_{n}(Q_\bullet) \ar[r] & 0
 $$
  to construct $\tf_{n+1}$ such that  $d^Q_{n+1} \tf_{n+1} = \tf_{n}  d^P_n$ holds too.  This proves existence. 
 
-\begin{comment}
+\Dec{1}
 
 
 For uniqueness, suppose $\tilde{f}'$ is another such chain map.  Observe that $\tilde{f} - \tilde{f}'$ is a chain map from $P_\bullet \to Q_\bullet$ that extends the zero map from $M$
@@ -4910,6 +4910,7 @@ For every $R$-module fix a projective resolution $P_\bullet^M \xra{p_M} M$, and 
 \end{itemize} 
 We call $\bL_j F$ the \emph{$j$th} \DEF{left derived functor} of $F$.
 \end{defn}
+\Dec{3}
 
 In fact, this definition is \emph{not} well defined! However, it is well-defined up to natural isomorphism, and we follow the standard abuse of notation by calling it ``the'' derived functor rather than ``a'' derived functor.
 
@@ -4942,7 +4943,9 @@ This is exactly the commutativity of the square.
 Let $R$ and $S$ be rings and $F: \Mod{R} \to \Mod{S}$ be a right exact covariant functor. Then $\bL_j F$ is additive.
 \end{exer}
 
-\subsubsection{The $\Tor$ functor}
+Here is the key example of a left derived functor.
+
+\sssec{The Tor functor}
 
 \begin{defn}
 For a ring $R$, right $R$-module $N$ and left $R$-module
@@ -4951,47 +4954,227 @@ $$
 \Tor^R_j(N, M) := \bL_j (N \otimes_R -)(M)
 $$
 to be the $j$-th left derived functor of the functor $N \otimes_R -: \Mod{R} \to
-\Cat{$\Z$-modules}$. So, for each $j$, $\Tor^R_j(N, M)$ is an abelian group. When $R$ is commutative, $N \otimes_R -$ can be viewed as taking values in $\Mod{R}$ and hence $\Tor^R_j(N, M)$ is an $R$-module.
+\Ab$. So, for each $j$, $\Tor^R_j(N, M)$ is an abelian group. When $R$ is commutative, $N \otimes_R -$ can be viewed as taking values in $\Mod{R}$ and hence $\Tor^R_j(N, M)$ is an $R$-module; analogously when $N$ is a bimodule.
 \end{defn}
 
 
 
 Explicitly, 
 $$
-\Tor_R^i(N, M) = H_j( \cdots \xra{\id_N \otimes d_3} N \otimes_R P_2 \xra{\id_N \otimes d_2} N \otimes_R P_1
+\Tor^R_j(N, M) = H_j( \cdots \xra{\id_N \otimes d_3} N \otimes_R P_2 \xra{\id_N \otimes d_2} N \otimes_R P_1
 \xra{\id_N \otimes d_1} N \otimes_R P_0 \to 0 \to \cdots)
 $$
 where $P_\bullet \xra{\sim} M$ is a projective resolution of $M$. 
 
-\begin{ex} 
-Let's compute $\Tor^\Z_j(N, \Z/n)$ for any $\Z$-module $N$ and integers $n \geq 1$, and $j$. 
 
-We have the projective resolution $\cdots \to 0 \to \Z \xra{n} \Z \xra{\can} \Z/n \to 0$ of $\Z/n$ and so $\Tor^R_j(N,\Z/n)$ is the homology of the complex
+\begin{comment}
+\begin{ex} 
+Let's compute $\Tor^\Z_j(N, \Z/n\Z)$ for any $\Z$-module $N$ and integers $n \geq 1$, and $j$. 
+
+We have the projective resolution $\cdots \to 0 \to \Z \xra{n} \Z (\to \Z/n\Z) \to 0$ of $\Z/n\Z$ and so $\Tor^R_j(N,\Z/n\Z)$ is the homology of the complex
 $$
 \cdots 0 \to N \otimes_\Z \Z \xra{\id_N \otimes n} N \otimes_\Z \Z \to 0
 $$
- (where the two non-zero terms lie in degrees $0$ and $1$).  This complex is isomorphic to the complex
+ (where the two nonzero terms lie in degrees $0$ and $1$).  This complex is isomorphic to the complex
 $$
 \cdots 0 \to N \xra{n} N  \to 0
 $$
 and hence
 $$
-\Tor_0^R(N, \Z/n) \cong N/nN \cong N \otimes_\Z \Z/n
+\Tor_0^R(N, \Z/n\Z) \cong N/nN \cong N \otimes_\Z \Z/n\Z
 $$
 (as the Proposition below tells us), 
 $$
-\Tor_1^R(N, \Z/n) \cong \ker(N \xra{n} N) = \{x \in N \mid n \cdot x = 0\},
+\Tor_1^R(N, \Z/n\Z) \cong \ker(N \xra{n} N) = \{x \in N \mid n \cdot x = 0\},
 $$
 and
 $$
-\Tor_j^R(N, \Z/n) = \bL_j F(\Z/n) = 0
+\Tor_j^R(N, \Z/n\Z) = \bL_j F(\Z/n\Z) = 0
 $$
 for all $j \notin \{0,1\}$.
 
-Note that $\Tor_1^R(N, \Z/n)$ is the $n$-torsion submodule of $N$ --- this explains the notation $\Tor$.
+Note that $\Tor_1^R(N, \Z/n\Z)$ is the $n$-torsion submodule of $N$ --- this explains the notation $\Tor$.
 \end{ex}
 
-Returning to the general situation of a right exact (covariant) functor $F$,  let's compute a ``formula" for the 0th left derived functor $\bL_0F(M)$.
+
+
+\begin{ex} Let $R = k[x,y]$ for a field $k$ and let $M$ be an $R$-module. Let's compute $\Tor_*^R(M, R/(x,y))$. 
+The kernel of the canonical surjection $R \onto R/(x,y)$ is the ideal $(x,y)$ and from before we saw how to resolve $(x,y)$ freely. This gives the resolution
+$$
+\cdots \to 0 \to R \xra{\begin{bmatrix} -y \\ x \end{bmatrix}} R^2 \xra{(x,y)} R \to R/(x,y) \to 0.
+$$
+It follows that $\Tor_*^R(M, R/(x,y))$ is the homology of the complex
+$$
+\cdots \to 0 \to M \xra{\begin{bmatrix} -y \\ x \end{bmatrix}} M^{\oplus 2} \xra{(x,y)} M \to 0 \to \cdots.
+$$
+So $\Tor_2^R(M, R/(x,y)) = \{m \in M \mid x m = 0 = y m \}$. The module $\Tor_1^R(M, R/(x,y))$ is a bit more complicated: It consists
+of pairs $(m,n)$ in $M \oplus M$ such that $x m + y n = 0$, modulo the ``obvious'' pairs that satisfy this condition, namely those of the form
+$(-yt, xt)$ for some $t \in M$.
+\end{ex}
+
+Returning to the general situation of a right exact covariant functor $F$,  let's compute a ``formula" for the 0th left derived functor $\bL_0F(M)$.
+
+\begin{prop} For any covariant right exact functor $F$ and $R$-module $M$, there is a natural isomorphism 
+$$
+\bL_0 F(M) \cong F(M)
+$$
+In particular,
+$$
+\Tor_0^R(N,M) \cong N \otimes_R M
+$$
+for all right $R$-modules $N$ and left $R$-modules $M$. 
+\end{prop}
+\begin{proof}
+Let $P_\bullet \xra{\sim} M$ be a projective resolution for $M$.
+Since $P_1 \xra{d_1} P_0 \xra{p} M \to 0$ is right exact, so is
+$$
+F(P_1) \xra{F(d_1)} F(P_0) \xra{F(p)}  F(M) \to 0.
+$$
+The homology in degree $0$ of $F(P_\bullet)$ is the cokernel of $F(P_1) \xra{F(d_1)} F(P_0)$, which is isomorphic to $F(M)$ via $H_0(F(p))$.
+
+The check of naturality is left as an exercise.
+\end{proof}
+
+The following proposition is a first justification of the idea that derived functors measure the failure of exactness.
+
+
+
+\begin{prop} If $F$ is an exact covariant functor, then $\bL_i F \equiv 0$ for all $i>0$.
+\end{prop}
+\begin{proof}
+If $P_\bullet$ is a projective resolution of a module $M$, then $P_\bullet \xra{p} M \to 0$ is exact, and so is $F (P_\bullet ) \xra{F (p)} F( M)$. Thus, $H_i (F  (P_\bullet)) \cong 0$ for $i>0$.
+\end{proof}
+
+
+\subsubsection{Right derived functors}
+
+
+
+\begin{defn}
+\label{def:rightderived}
+ Let $R$ and $S$ be rings and $F: \Mod{R} \to \Mod{S}$ be a left exact covariant functor. 
+For each $j \geq 0$, we define a functor $\bR^j F : \Mod{R} \to \Mod{S}$ as follows:
+
+For every $R$-module fix an injective resolution $M \xra{\varepsilon^M} E^\bullet_M$, and for every $R$-module homomorphism $f: M \to N$, fix a chain map $\tilde{f}: E^\bullet_M \to E^\bullet_N$ lifting $f$.
+\begin{itemize}
+\item On objects, for an $R$-module $M$, we set $\bR^j F(M) := H^j(F(E^\bullet_M)).$
+\item On morphisms, for $f:M\to N$, we set $\bR^j F(f) := H^j(F(\tilde{f}))$.
+\end{itemize} 
+We call $\bR^j F$ the \emph{$j$th} \DEF{right derived functor} of $F$.
+\end{defn}
+
+\begin{defn}
+\label{def:rightderived}
+ Let $R$ and $S$ be rings and $G: \Mod{R} \to \Mod{S}$ be a left exact contravariant functor. Recall that such a functor turns right exact sequences into left exact sequences.
+For each $j \geq 0$, we define a functor $\bR^j G : \Mod{R} \to \Mod{S}$ as follows:
+
+For every $R$-module fix a projective resolution $P^M_\bullet \xra{p_M} M$, and for every $R$-module homomorphism $f: M \to N$, fix a chain map $\tilde{f}: P^M_\bullet \to P^N_\bullet$ lifting $f$.
+\begin{itemize}
+\item On objects, for an $R$-module $M$, we set $\bR^j G(M) := H^j(G(P_\bullet^M)).$
+\item On morphisms, for $f:M\to N$, we set $\bR^j G(f) := H^j(G(\tilde{f}))$.
+\end{itemize} 
+We call $\bR^j G$ the \emph{$j$th} \DEF{right derived functor} of $F$.
+\end{defn}
+
+
+
+
+The following summarizes properties analogous to those worked out carefully above for right exact covariant functors:
+
+\begin{prop}
+\label{prop:rightderived}
+ Let $R$, $S$, $F$, and $G$ be as in the  definitions above. 
+\begin{itemize}
+\item The functors $\bR^iF$ and $\bR^i G$ are well-defined up to natural isomorphism.
+  \item We have canonical isomorphisms $\bR^0F(M) \cong F(M)$ and $\bR^0G(M) \cong G(M)$. 
+  \item If $F$ or $G$ is exact, $\bR^{>0}F \equiv 0$ or $\bR^{>0} G \equiv 0$, respectively.
+  \end{itemize}
+\end{prop}
+
+\subsubsection{The $\Ext$ functor}
+
+
+\begin{defn} For a pair of left $R$-modules $M$ and $N$, we write
+  $$
+  \Ext^j_R(M, N)^I = \R^j  \Hom_R(M, -)(N)
+  $$
+  where $F$ in Definition \ref{def:rderI} is taken to be the left-exact covariant functor $F := \Hom_R(M, -)$. 
+  
+We define
+  $$
+  \Ext^j_R(M, N)^{II} = \R^j  \Hom_R(-,N)(M)
+  $$
+  where $G$ in Definition \ref{def:rderII} is taken to be the left exact contravariant functor $G := \Hom_R(-,N)$. 
+  
+ Both $\Ext^j_R(M, N)^I$ and $\Ext^j_R(M, N)^{II}$ are abelian groups in general and $R$-modules when $R$ is commutative. 
+\end{defn}
+
+\begin{defn}
+By the balancedness of $\Ext$, which I will formally state later, there is a canonical isomorphism
+$\Ext_R^j(M,N)^{I} \cong \Ext_R^j(M,N)^{II}$. Then one just writes 
+\[ \Ext_R^j(M,N):=\Ext_R^j(M,N)^{I} = \Ext_R^j(M,N)^{II}.\]
+ For now I'll keep the superscripts.
+\end{defn}
+
+
+  
+\begin{ex} Let's compute $\Ext^*_\Z(\Z/m, \Z/n)^I$ and $\Ext^*_\Z(\Z/m, \Z/n)^{II}$.
+
+    For the latter, we start with the free resolution $\cdots 0 \to \Z \xra{m} \Z \to \Z/m \to 0$ of $\Z/m$ and apply $\Hom_\Z(-, \Z/n)$ to obtain
+    $$
+    \cdots \to 0 \to \Hom_\Z(\Z, \Z/n) \xra{m}\Hom_\Z(\Z, \Z/n) \to 0
+    $$
+    which is isomorphic to
+    $$
+    \cdots \to 0 \to \Z/n \xra{m}  \Z/n \to 0.
+    $$
+    The two non-zero homology modules are both isomorphic to $\Z/g$ where $g = gcd(m,n)$. So
+    \[
+\Ext^i_\Z(\Z/m, \Z/n)^{II} \cong  
+  \begin{cases}
+\Z/g & i=0,1\\
+0 & i\geq 2.
+\end{cases}
+\]
+
+
+    For the former, we will use the following fact: For any integer $j$ there is a short exact sequence
+    $$
+    0 \to \Z/j\Z \xra{\overline{1} \mapsto \overline{1/n}} \Q/\Z \xra{j} \Q/\Z \to 0.
+    $$
+    This holds since $\Q/\Z$ is divisible and the kernel of multiplicaition by $j$ is $\{\overline{\frac{i}{j}} \mid 0 \leq i \leq j-1\}$,
+    which is generated by $\overline{1/n}$. 
+    
+
+In particular, we have an injective resolution 
+$$
+0 \to \Z/n\Z \to \Q/\Z \xra{n} \Q/\Z \to 0 \to \cdots
+$$
+of $\Z/n$. 
+Applying $\Hom_\Z(\Z/m\Z,-)$ gives
+    $$
+    0 \to \Hom_\Z(\Z/m\Z, \Q/\Z) \xra{n} \Hom_\Z(Z/m\Z, \Q/\Z) \to 0 \to \cdots.
+    $$
+    Now, the only elements of $\Q/\Z$ have have order a multiple of $m$ are the elements $\frac{j}{m} + \Z$ for $0 \leq j < m$,
+    and they form a cyclic subgroup of order $m$. 
+It follows that 
+$$
+\Hom_\Z(\Z/m, \Q/\Z) \cong \Hom_\Z(\Z/m\Z, \Z/m\Z) \cong \Z/m\Z
+$$
+and that the previous complex is isomorphic to
+$$
+\cdots \to    0 \to \Z/m \xra{n} \Z/m \to 0 \to \cdots
+$$
+This gives
+\[
+\Ext^i_\Z(\Z/m, \Z/n)^I \cong  
+  \begin{cases}
+\Z/g & i=0,1\\
+0 & i\geq 2.
+\end{cases}
+\]
+    \end{ex}
+
 
 \begin{comment}
 
