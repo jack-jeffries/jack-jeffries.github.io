@@ -4966,8 +4966,8 @@ $$
 $$
 where $P_\bullet \xra{\sim} M$ is a projective resolution of $M$. 
 
+\Dec{6}
 
-\begin{comment}
 \begin{ex} 
 Let's compute $\Tor^\Z_j(N, \Z/n\Z)$ for any $\Z$-module $N$ and integers $n \geq 1$, and $j$. 
 
@@ -4981,9 +4981,9 @@ $$
 $$
 and hence
 $$
-\Tor_0^R(N, \Z/n\Z) \cong N/nN \cong N \otimes_\Z \Z/n\Z
+\Tor_0^R(N, \Z/n\Z) \cong N/nN \cong N \otimes_\Z \Z/n\Z,
 $$
-(as the Proposition below tells us), 
+
 $$
 \Tor_1^R(N, \Z/n\Z) \cong \ker(N \xra{n} N) = \{x \in N \mid n \cdot x = 0\},
 $$
@@ -5045,13 +5045,22 @@ The following proposition is a first justification of the idea that derived func
 If $P_\bullet$ is a projective resolution of a module $M$, then $P_\bullet \xra{p} M \to 0$ is exact, and so is $F (P_\bullet ) \xra{F (p)} F( M)$. Thus, $H_i (F  (P_\bullet)) \cong 0$ for $i>0$.
 \end{proof}
 
+A large part of the magic of Tor comes from the following fact, called balancedness of Tor. For every $R$-module $M$, there is a right exact functor 
+\[ - \otimes_R M : \Mod{R^\op} \to \Ab.\]
+We can take the left derived functors of this; let's say 
+\[\Tor'_i^R(-,M) := \bL_i (-\otimes_R M).\]
+Then Balancedness of Tor states that for every  right $R$-module $N$ and every left $R$-module $M$, there is an isomorphism $\Tor_i^R(N,M) \cong {\Tor'}_i^R(N,M)$.
+Concretely, if $P_\bullet$ is a projective resolution of $M$ and $Q_\bullet$ is a projective resolution of $N$, then
+\[ H_i(P_\bullet \otimes_R N) \cong H_i(M\otimes_R Q_\bullet).\]
+
+Maybe we'll prove this later if we have time.
 
 \subsubsection{Right derived functors}
 
 
 
 \begin{defn}
-\label{def:rightderived}
+\label{def:rightderived1}
  Let $R$ and $S$ be rings and $F: \Mod{R} \to \Mod{S}$ be a left exact covariant functor. 
 For each $j \geq 0$, we define a functor $\bR^j F : \Mod{R} \to \Mod{S}$ as follows:
 
@@ -5064,7 +5073,7 @@ We call $\bR^j F$ the \emph{$j$th} \DEF{right derived functor} of $F$.
 \end{defn}
 
 \begin{defn}
-\label{def:rightderived}
+\label{def:rightderived2}
  Let $R$ and $S$ be rings and $G: \Mod{R} \to \Mod{S}$ be a left exact contravariant functor. Recall that such a functor turns right exact sequences into left exact sequences.
 For each $j \geq 0$, we define a functor $\bR^j G : \Mod{R} \to \Mod{S}$ as follows:
 
@@ -5098,22 +5107,21 @@ The following summarizes properties analogous to those worked out carefully abov
   $$
   \Ext^j_R(M, N)^I = \R^j  \Hom_R(M, -)(N)
   $$
-  where $F$ in Definition \ref{def:rderI} is taken to be the left-exact covariant functor $F := \Hom_R(M, -)$. 
+  where $F$ in Definition \ref{def:rightderived1} is taken to be the left exact covariant functor $F := \Hom_R(M, -)$. 
   
 We define
   $$
   \Ext^j_R(M, N)^{II} = \R^j  \Hom_R(-,N)(M)
   $$
-  where $G$ in Definition \ref{def:rderII} is taken to be the left exact contravariant functor $G := \Hom_R(-,N)$. 
+  where $G$ in Definition \ref{def:rightderived2} is taken to be the left exact contravariant functor $G := \Hom_R(-,N)$. 
   
  Both $\Ext^j_R(M, N)^I$ and $\Ext^j_R(M, N)^{II}$ are abelian groups in general and $R$-modules when $R$ is commutative. 
 \end{defn}
 
-\begin{defn}
-By the balancedness of $\Ext$, which I will formally state later, there is a canonical isomorphism
-$\Ext_R^j(M,N)^{I} \cong \Ext_R^j(M,N)^{II}$. Then one just writes 
+There is a balancedness statement for Ext as well: for every pair of $R$-modules $M$ and $N$,
+$\Ext_R^j(M,N)^{I} \cong \Ext_R^j(M,N)^{II}$. Then one just writes \index{\Ext}
 \[ \Ext_R^j(M,N):=\Ext_R^j(M,N)^{I} = \Ext_R^j(M,N)^{II}.\]
- For now I'll keep the superscripts.
+ For now we'll keep the superscripts.
 \end{defn}
 
 
