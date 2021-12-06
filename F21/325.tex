@@ -5105,6 +5105,80 @@ For (3), we can argue similarly or observe that $f$ is constant if and only if i
 \
 
 \item Come up with a precise definition of \emph{concave up/down} on an interval $I$, then state and prove the analogue of Corollary~36.4 for concavity using second derivatives.
+\end{enumerate}
+
+\Dec{6}
+
+\begin{defn} Let $S$ and $T$ be two subsets of $\R$, and $f:S\to T$ be a function. We say that a function $g: T\to S$ is the \emph{inverse function} of $f$ if $(g\circ f)(x)= x$ for all $x\in S$ and $(f\circ g)(y) = y$ for all $y\in T$. When an inverse function exists, we denote it by $f^{-1}$.
+\end{defn}
+
+\begin{ex} For $f:[0,\infty) \to [0,\infty)$ given by the rule $f(x)=x^2$, the inverse function $f^{-1}:[0,\infty) \to [0,\infty)$ is given by $f^{-1}(x) = \sqrt{x}$.
+\end{ex}
+
+\begin{rem} A function $f: S\to T$  has an inverse function if for every $t\in T$ there is a unique $s\in S$ such that $f(s)=t$ (by setting $f^{-1}(t)$ to be this unique $s$). The converse is also true.
+\end{rem}
+
+\begin{lem}\label{lem:oi} Let $I$ be an open interval and $f: I \to \R$ be a strictly increasing function. Then for any $a,b\in I$ with $a<b$, the function $f:(a,b) \to (f(a),f(b))$ given by restricting the domain of $f$ to $(a,b)$ has an inverse function $f^{-1}:(f(a),f(b)) \to (a,b)$.
+\end{lem}
+\begin{proof} Fix $a,b\in I$ with $a<b$. We will show that for any $y\in (f(a),f(b))$, there is a unique $c\in (a,b)$ such that $f(c) = y$.
+
+For existence, we apply the IVT to $f$ on $[a,b]$: we get that there is a $c\in [a,b]$ such that $f(c)=y$. Since $y\neq f(a)$ and $y\neq f(b)$, we must have $c\neq a$ and $c\neq b$, so $c\in (a,b)$.
+
+For uniqueness, suppose that $c,d\in(a,b)$ with $f(c)=f(d)=y$. Both $c<d$ and $d<c$ are impossible: if $c<d$ then $f(c)<f(d)$, and if $d<c$ then $f(d)<f(c)$. Thus $c=d$.
+\end{proof}
+
+%\begin{lem} Let $S$ and $T$ be two subsets of $\R$, and $f:S\to T$ be a function. $f$ has an inverse function if and only if for every $t\in T$ there is a unique $s\in S$ such that $f(s)=t$.
+%\end{lem}
+%\begin{proof}
+%Suppose that $f$ has an inverse function $f^{-1}:T\to S$. Let $t\in T$. Note that for $s=f^{-1}(t)$ we have $f(s) = f(f^{-1}(t))=t$. If $f(s)=t$ and $f(s')=t$ then $s=f^{-1}(f(s))=f^{-1}(t)$ and likewise $s'=f^{-1}(t)$.
+
+%Suppose that $f$ satisfies the condition that or every $t\in T$ there is a unique $s\in S$ such that $f(s)=t$.
+%We define a function $g:T\to S$ by the rule $
+
+\begin{prop}\label{prop:oi} Let $I$ and $J$ be open intervals. Let $f:I\to J$ be a function, and $f^{-1}: J \to I$ be its inverse. If $f$ is strictly increasing and continuous, then $f^{-1}$ is strictly increasing and continuous.
+\end{prop}
+\begin{proof}
+First we show that $f^{-1}$ is strictly increasing. Let $c,d\in J$ with $c<d$. Let $a=f^{-1}(c)$ and $b=f^{-1}(d)$. We must have $a<b$; otherwise, $a\geq b$, and since $f$ is strictly increasing, $c=f(a) \geq f(b) =d$, which contradicts that $c<d$. This shows that $f^{-1}$ is strictly increasing.
+
+Now we show that $f^{-1}$ is continuous. This means that $f^{-1}$ is continuous at $t$ for every $t\in J$. Let $t\in J$ be given, and set $s=f^{-1}(t)$. Let $\e>0$ be arbitrary. We can find some $\e_0>0$ such that $\e_0 \leq \e$ and $[s-\e_0 , s+\e_0] \subseteq I$ (e.g., if $I=(u,v)$, take $\e_0= \min\{\e, s-u,v-t\}$). Since $f$ is strictly increasing
+\[ f(s-\e_0) < f(s) =t < f(s+\e_0).\]
+Take $\d$ to be any positive number such that
+\[ f(s-\e_0) < t-\d < t + \d < f(s+\e_0)\]
+(e.g., $\d = \frac{1}{2} \min\{ t- f(s-\e_0), f(s+\e_0) -t\}$.)
+We claim that this $\d$ works to show that $f^{-1}$ is continuous at $t$. Indeed, if $y$ is any real number such that $|y-t|<\d$, then 
+\[ f(s-\e_0) < y < f(s+\e_0),\]
+so
+\[ s-\e_0 = f^{-1}(f(s-\e_0)) < f^{-1}(y) < f^{-1}(f(s+\e_0)) = s+\e_0,\]
+since $f^{-1}$ is strictly increasing.
+Thus, \[ |f^{-1}(y) -f^{-1}(t)| = |f^{-1}(y) - s| < \e_0 \leq \e.\]
+This proves that $f^{-1}$ is continuous at $y=t$.
+\end{proof}
+
+\begin{thm}[Inverse Function Theorem] Let $f:S\to \R$ be a function. Suppose that $f$ is differentiable at $s$, that $f'(s) \neq 0$, and that $f'$ is continuous at $s$. (In particular, $f$ is differentiable on some interval around $s$.) Then there is some open interval $I$ that contains $s$ and an open interval $J$ that contains $f(s)$ such that $f: I\to J$ has an inverse function $f^{-1}:J \to I$. Furthermore, $f^{-1}$ is differentiable at $f(s)$, and $(f^{-1})'(f(s))=\frac{1}{f'(s)}$.
+\end{thm}
+\begin{proof}
+Let $f$ be as in the statement. We either have $f'(s)>0$ or $f'(s)<0$. 
+
+First, we consider the case $f'(s)>0$. Since $f'$ is continuous at $s$, there is some $\d>0$ such that $f'(x)>0$ for all $x\in (s-\d,s+\d)$. Let $I'=(s-\d,s+\d)$. By an argument similar to Corollary~36.4, $f$ is strictly increasing on $I'$. Since $f$ is differentiable on $I$, it is also continuous on $I$. Let $a,b\in I'$ with $a<s<b$. Set $I=(a,b)$.
+
+Then, by Lemma~\ref{lem:oi} $f:(a,b) \to (f(a),f(b))$ is strictly increasing and continuous and has an inverse function $f^{-1}:(f(a),f(b))\to (a,b)$. By Proposition~\ref{prop:oi}, $f^{-1}$ is also strictly increasing and continuous.
+
+Now we show that $f^{-1}$ is differentiable at $f(s)$. Let $\{y_n\}_{n=1}^\infty$ be a sequence with $y_n\neq f(s)$ for all $n$ that converges to $f(s)$. Let $x_n = f^{-1}(y_n)$ for all $n$, so $f(x_n) = f(f^{-1}(y_n))=y_n$. Since $f^{-1}$ is continuous at $f(s)$, 
+\[ \lim_{n\to \infty} x_n = \lim_{n\to \infty} f^{-1}(y_n) = f^{-1}  \left( \lim_{n\to \infty} y_n\right) = f^{-1}(f(s)) = s.\]
+Then
+\[ \lim_{n\to \infty} \frac{f^{-1}(y_n) - f^{-1}(f(s))}{y_n - f(s)} = \lim_{n\to \infty} \frac{x_n - s}{f(x_n) - f(s)},\]
+and since
+\[ \lim_{x\to s} {f(s)-f(s)}{x-s} = f'(s)\neq 0,\]
+we have
+\[ \lim_{n\to \infty} \frac{f(x_n) - f(s)}{x_n - s} = f'(s) \qquad \lim_{n\to \infty} \frac{x_n - s}{f(x_n) - f(s)} = \frac{1}{f'(s)}\]
+by Theorem~25.1.
+Since this holds for all sequences $\{y_n\}_{n=1}^\infty$, we conclude that 
+\[ \lim_{y\to s} \frac{f^{-1}(y) - f^{-1}(f(s))}{y - f(s)} = \frac{1}{f'(s)}.\]
+This concludes this case.
+
+Now, suppose that $f'(s)<0$. Set $g(x) =-f(x)$. Then since $f'$ is continuous at $s$, $g'$ is as well, and $g'(s)>0$. By the first case, there exist $a<s<b$ such that $g:(a,b)\to (g(a),g(b))$ has an inverse $g^{-1}: (g(a),g(b)) \to (a,b)$. Define the function $h:(f(b),f(a)) \to (a,b)$ by the rule $h(y) = g^{-1}(-y)$. Then, if $x\in (a,b)$, $(h\circ f)(x) = g^{-1}(-(-g(x))) = g^{-1}(g(x))=x$, and if $y\in (f(b),f(a))$, $-y\in (g(a),g(b))$, so $f\circ h)(y) = - g(g^{-1}(-y))=-(-y)=y$. Thus, $h=f^{-1}$ is an inverse for $f$ on $(a,b)$. Finally, by the Chain rule, since the function $-x$ is differentiable everywhere, we get 
+\[h'(f(y)) = -1 \cdot (g^{-1})'(-f(y)) = -1 \cdot (g^{-1})'(g(y)) = \frac{-1}{g'(y)} = \frac{1}{f'(y)}.\qedhere\]
+\end{proof}
 
 
 
