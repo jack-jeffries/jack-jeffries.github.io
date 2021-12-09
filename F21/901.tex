@@ -5119,19 +5119,20 @@ There is a balancedness statement for Ext as well: for every pair of $R$-modules
 $\Ext_R^j(M,N)^{I} \cong \Ext_R^j(M,N)^{II}$. Then one just writes \index{\Ext}
 \[ \Ext_R^j(M,N):=\Ext_R^j(M,N)^{I} = \Ext_R^j(M,N)^{II}.\]
  For now we'll keep the superscripts.
-\begin{comment}
+ 
+ \Dec{8}
 
 
   
-\begin{ex} Let's compute $\Ext^*_\Z(\Z/m, \Z/n)^I$ and $\Ext^*_\Z(\Z/m, \Z/n)^{II}$.
+\begin{ex} Let's compute $\Ext^*_\Z(\Z/m\Z, \Z/n\Z)^I$ and $\Ext^*_\Z(\Z/m\Z, \Z/n\Z)^{II}$.
 
-    For the latter, we start with the free resolution $\cdots 0 \to \Z \xra{m} \Z (\to \Z/m\Z) \to 0$ of $\Z/m$ and apply $\Hom_\Z(-, \Z/n)$ to obtain
+    For the latter, we start with the free resolution $\cdots 0 \to \Z \xra{m} \Z (\to \Z/m\Z) \to 0$ of $\Z/m$ and apply $\Hom_\Z(-, \Z/n\Z)$ to obtain
     $$
     \cdots \leftarrow 0 \leftarrow \Hom_\Z(\Z, \Z/n\Z) \xleftarrow{m}\Hom_\Z(\Z, \Z/n\Z) \leftarrow 0
     $$
     which is isomorphic to
     $$
-    \cdots \leftarrow  0 \leftarrow  \Z/n \xleftarrow{m}  \Z/n \leftarrow  0.
+    \cdots \leftarrow  0 \leftarrow  \Z/n\Z \xleftarrow{m}  \Z/n\Z \leftarrow  0.
     $$
     The two nonzero homology modules are both isomorphic to $\Z/g\Z$ where $g = gcd(m,n)$. So
     \[
@@ -5179,7 +5180,151 @@ This gives
 \end{cases}
 \]
     \end{ex}
+    
+    \ssec{Long exact sequence of a derived functor}
+    
+    Our next goal is to explain how we can use derived functors to extend a left exact or right exact sequence obtained from a functor into a long exact sequence.
+    
+    The technical ingredient we need is a method to lift short exact sequences to resolutions.
+    
+    \begin{lem} Let 
+    \[ 0 \to A \xra{f} B \xra{g} C \to 0\]
+    be a short exact sequence. 
+    
+    Then there exist projective resolutions
+  $P_\bullet^A \to A$, $P_\bullet^B\to B$, $P_\bullet^C \to C$ and lifts $P_\bullet^A \xra{\tilde{f}} P_\bullet^B$, $P_\bullet^B \xra{\tilde{g}} P_\bullet^C$ such that 
+   \[ 0 \to P_i^A \xra{\tilde{f}_i} P_i^B \xra{\tilde{g}_i} P_i^C \to 0\] is exact for all $i$. 
+   
+   Likewise, there exist injective resolutions
+  $A \to E_A^\bullet$, $B \to E_B^\bullet$, $C \to E_C^\bullet$ and lifts $E_A^\bullet \xra{\tilde{f}} E_B^\bullet$, $E_B^\bullet \xra{\tilde{g}} E_C^\bullet$ such that 
+   \[ 0 \to E_A^i \xra{\tilde{f}_i} E_B^i \xra{\tilde{g}_i} E_C^i \to 0\] is exact for all $i$. 
+   \end{lem}
 
+
+   \begin{proof}
+   Start with any projective resolutions for $A$ and $C$, $P_\bullet^A \to A$ and $P_\bullet^C \to C$. For all $i$, set $P_i^B := P_i^A \oplus P_i^C$ for all $i$, $\tilde{f}_i: P_i^A \to P_i^A \oplus P_i^C$ to be the inclusion map, and $\tilde{g}_i: P_i^A \oplus P_i^C \to P_i^C$ to be the projection map. Clearly 
+      \[ 0 \to P_i^A \xra{\tilde{f}_i} P_i^B \xra{\tilde{g}_i} P_i^C \to 0\] is exact for all $i$. 
+      
+      We need to construct differentials (including an augmentation) on $P_i^B$ that make $P_i^B\to B$ an exact complex and $\tilde{f}$ and $\tilde{g}$ chain maps. Since $P_0^C$ is projective and $g:B\to C$ is surjective, we can lift
+      \[ \xymatrix{ 0 \ar[r] & P_0^A \ar[r]^{\tilde{f}_0} \ar[d]_{p_A} & P_0^B \ar[r]^{\tilde{g}_0}  & P_0^C \ar[r] \ar[d]^{p_C} \ar@{-->}[dl]_{\gamma} & 0 \\ 
+      0 \ar[r] & A \ar[r]^f &  B \ar[r]^g &  C \ar[r] & 0,}\]
+      so $g \gamma= p_C$.
+      Set $p_B: P^B_0 (=P^A_0 \oplus P_0^C) \to B$ to be $f p_A \oplus \gamma$.
+
+Then the diagram commutes:
+ \[ \xymatrix{ 0 \ar[r] & P_0^A \ar[r]^{\tilde{f}_0} \ar[d]_{p_A} & P_0^B \ar[r]^{\tilde{g}_0} \ar[d]^{p_B}  & P_0^C \ar[r] \ar[d]^{p_C}  & 0 \\ 
+      0 \ar[r] & A \ar[r]^f &  B \ar[r]^g &  C \ar[r] & 0;}\]
+      the left square is clear, and for the right
+      \[ p_C \tilde{g}_0 (u,w) =p_C(w) = g \gamma (w); \quad g p_b(u,w) = g(f p_A(u) + \gamma(w)) = g \gamma(w).\]
+      
+      By the Snake Lemma,
+      \[  \coker(p_A) \to \coker(p_B) \to \coker(p_C) \to 0\]
+      is exact, so $p_B$ is surjective. Also, 
+      \[  0 \to \ker(p_A) \to \ker(p_B) \to \ker(p_C) \to \coker(A) \] is exact, so 
+   \[  0 \to \ker(p_A) \to \ker(p_B) \to \ker(p_C) \to 0 \] is.
+   
+   We can now proceed inductively on $i$ (precisely, that we have constructed $d^B_1,\dots,d^B_i$ such that $H_j(P^B_\bullet)=0$ for $i=0,\dots,i$, the maps $\tilde{f}$ and $\tilde{g}$ are chain maps up through the $i$th spot, and that the $i$th induced maps on cycles also form a short exact sequence), at each step applying essentially the previous case to
+       \[ \xymatrix{ 0 \ar[r] & P_{i+1}^A \ar[r]^{\tilde{f}_{i+1}} \ar[d]_{d_{i+1}^A} & P_{i+1}^B \ar[r]^{\tilde{g}_{i+1}}  & P_{i+1}^C \ar[r] \ar[d]^{d_{i+1}^C}  & 0 \\ 
+      0 \ar[r] & Z_i(P_\bullet^A) \ar[r]^{\tilde{f}_{i}} &  Z_i(P_\bullet^B) \ar[r]^{\tilde{g}_{i}} &  Z_i(P_\bullet^C) \ar[r] & 0.}\]
+      
+      The injective case is similar.
+      \end{proof}
+
+
+\begin{thm} Let 
+    \[ 0 \to A \xra{f} B \xra{g} C \to 0\]
+    be a short exact sequence. 
+ \begin{enumerate}
+\item Let $F:\Mod{R} \to \Mod{S}$ be a covariant right exact functor. Then there is a long exact sequence
+\[ \cdots \to \bL_i F(A) \xra{\bL_iF(f)}  \bL_i F(B) \xra{\bL_iF(g)}  \bL_i F(C) \xra{\partial_i} \bL_{i-1} F(A) \to \cdots \to \bL_1 F (C)  \xra{\partial_1 } F(A) \xra{F(f)} F(B) \xra{F(g)} F(C) \to 0.\]
+\item Let $F:\Mod{R} \to \Mod{S}$ be a covariant left exact functor. Then there is a long exact sequence
+\[ 0 \to F(A) \xra{F(f)} F(B) \xra{F(g)} F(C) \xra{\partial_1 } \bR^1 F (A) \to \cdots\to  \bR^{i-1} F(C) \xra{\partial_{i-1}} \bR^i F(A) \xra{\bR^iF(f)}  \bR^i F(B) \xra{\bR^iF(g)}  \bR^i F(C) \to\cdots\]
+\item Let $G:\Mod{R} \to \Mod{S}$ be a contravariant left exact functor. Then there is a long exact sequence
+\[ 0 \to G(C) \xra{G(g)} G(B) \xra{G(f)} G(A) \xra{\partial_1 } \bR^1 G (C) \to \cdots\to  \bR^{i-1} G(A) \xra{\partial_{i-1}} \bR^i G(C) \xra{\bR^iG(g)}  \bR^i G(B) \xra{\bR^iG(f)}  \bR^i G(A) \to\cdots\]
+\end{enumerate}
+\end{thm}
+\begin{proof}
+For (1),  take projective resolutions $P_\bullet^A \to A$, $P_\bullet^B\to B$, $P_\bullet^C \to C$ and lifts $P_\bullet^A \xra{\tilde{f}} P_\bullet^B$, $P_\bullet^B \xra{\tilde{g}} P_\bullet^C$ such that 
+   \[ 0 \to P_i^A \xra{\tilde{f}_i} P_i^B \xra{\tilde{g}_i} P_i^C \to 0\] is exact for all $i$. Observe that these sequences are all split exact, since $P_i^C$ is projective. Then 
+    \[ 0 \to F(P_i^A) \xra{F(\tilde{f}_i}) F(P_i^B) \xra{F(\tilde{g}_i)} F(P_i^C) \to 0\] is split exact for all $i$, as well. That is,
+    \[ 0 \to F(P^A_\bullet) \xra{F(\tilde{f})} F(P^B_\bullet) \xra{F(\tilde{g})} F(P^C_\bullet) \to 0\]
+    is a short exact sequence of complexes. We obtain a long exact sequence in homology. Applying the definitions, this is exactly the long exact sequence above.
+    
+    (2) and (3) are similar.
+\end{proof}
+
+We apply these to Ext and Tor.
+
+\begin{thm} Let 
+    \[ 0 \to A \xra{f} B \xra{g} C \to 0\]
+    be a short exact sequence of $R$-modules.
+    \begin{enumerate}
+    \item For any right $R$-module $N$, there is a long exact sequence
+    \[\begin{aligned}
+     \cdots \to \Tor^R_i(N,A) \xra{\Tor^R_i(N,f)} &\Tor^R_i(N,B) \xra{\Tor^R_i(N,g)}  \Tor^R_i(N,C) \xra{\partial_i} \Tor^R_{i-1}(N,A) \to \cdots \\ & \cdots \to  \Tor^R_1(N, C)  \xra{\partial_1 } N\otimes_R A \xra{N\otimes_R f} N\otimes_R B \xra{N\otimes_R g} N\otimes_R C \to 0.\end{aligned}\]
+     
+         \item For any $R$-module $M$, there is a long exact sequence (thinking of $\Ext$ as $\Ext^I$)
+    \[\begin{aligned}
+  0 \to &\Hom_R(M,A) \xra{\Hom_R(M,f)} \Hom_R(M,B) \xra{\Hom_R(M,g)} \Hom_R(M,C) \xra{\partial_1 } \Ext^1_R(M,A) \to \cdots\\
+  &\cdots \to  \Ext^{i-1}_R(M,C) \xra{\partial_{i-1}} \Ext^i_R(M,A) \xra{\Ext^i_R(M,f)}  \Ext^i_R(M,B) \xra{\Ext^i_R(M,g)}  \Ext^i_R(M,C) \to\cdots
+  \end{aligned}\]
+  
+      \item For any $R$-module $M$, there is a long exact sequence (thinking of $\Ext$ as $\Ext^{II}$)
+    \[\begin{aligned}
+  0 \to &\Hom_R(C,M) \xra{\Hom_R(g,M)} \Hom_R(B,M) \xra{\Hom_R(f,M)} \Hom_R(A,M) \xra{\partial_1 } \Ext^1_R(C,M) \to \cdots\\
+  &\cdots \to  \Ext^{i-1}_R(A,M) \xra{\partial_{i-1}} \Ext^i_R(C,M) \xra{\Ext^i_R(g,M)}  \Ext^i_R(B,M) \xra{\Ext^i_R(g,M)}  \Ext^i_R(A,M) \to\cdots
+  \end{aligned}\]
+    \end{enumerate}
+    \end{thm}
+    
+    
+In particular, the long exact sequences give us the correction term for failure of left exactness of Tor / right exactness of Ext: they are given by connecting maps in the corresponding long exact sequences.
+
+Here is an application of the long exact sequence.
+
+\begin{prop} Let $R$ be a ring, and $M$ be an $R$-module. The following are equivalent:
+\begin{enumerate}
+\item $M$ is projective.
+\item $\Ext^i_R(M,N)=0$ for all $i>0$ and all $R$-modules $N$.
+\item $\Ext^1_R(M,N)=0$ for all $i>0$ and all $R$-modules $N$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+If $M$ is projective, then $\Hom_R(M,-)$ is exact. Hence, its (nontrivial) right derived functors all vanish, as shown above.
+
+If  $\Ext^1_R(M,N)=0$ for all $i>0$, we claim that $\Hom_R(M,-)$ is exact. Indeed, given a short exact sequence
+  \[ 0 \to A \xra{f} B \xra{g} C \to 0\]
+  the long exact sequence of $\Ext^i_R(M,-)$ starts
+  \[  0 \to \Hom_R(M,A) \xra{ \Hom_R(M,f)}  \Hom_R(M,B) \xra{ \Hom_R(M,g)}  \Hom_R(M,C) \to \Ext^1_R(M,A) \to \cdots.\]
+  By assumption, we then have that  \[  0 \to \Hom_R(M,A) \xra{ \Hom_R(M,f)}  \Hom_R(M,B) \xra{ \Hom_R(M,g)}  \Hom_R(M,C) \to 0 \]is exact. Thus, $\Hom_R(M,-)$ is an exact functor, and $M$ is projective.
+  \end{proof}
+  
+  \begin{rem} 
+ In this argument, we showed that $M$ is projective if and only if $\Ext^{>0}(M,N)^I \equiv 0$ for all $N$; no balancing of Ext was used. Note that if $M$ is projective, we clearly also have   $\Ext^{>0}(M,N)^{II} \equiv 0$ for all $N$, since we can take a projective resolution for $M$ that only lives in degree 0.
+ \end{rem}
+ 
+ \begin{comment}
+ Similarly, 
+ 
+ \begin{prop} Let $R$ be a ring, and $M$ be an $R$-module. The following are equivalent:
+\begin{enumerate}
+\item $N$ is injective.
+\item $\Ext^i_R(M,N)=0$ for all $i>0$ and all $R$-modules $M$.
+\item $\Ext^1_R(M,N)=0$ for all $i>0$ and all $R$-modules $M$.
+\end{enumerate}
+\end{prop}
+
+Here is a slightly more subtle fact.
+
+\begin{prop} Let $L$ and $N$ be $R$-modules. 
+If $\Ext^1_R(N,L)=0$ then every short exact sequence of the form
+\[X_\bullet: \qquad 0 \to L \xra{f} M \xra{g} N \to 0\] splits.
+\end{prop}
+\begin{proof}
+Recall that $X_\bullet$ splits if and only if there is some $q:M\to L$ such that $qf=1_L$; equivalently, $1_L\in \im(\Hom_R(f,L))$. Consider the long exact sequence of $\Ext^i_R(-,L)$:
+\[ 0 \to \Hom_R(N,L) \xra{\Hom_R(g,L)} \Hom_R(M,L) \xra{\Hom_R(f,L)} \Hom_R(L,L) \xra{\partial} \Ext^1_R(N,L) \to \cdots.\]
+From the assumption, we have $\partial=0$, so $\Hom_R(f,L)$ is surjective, and the claim follows.
+\end{proof}
 
 \begin{comment}
 
