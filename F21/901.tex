@@ -3123,6 +3123,7 @@ It follows that the composition series $M_\bullet$ and $N_\bullet$ are equivalen
 \item The ring $R=K[x]$ does not have finite length as a module over itself.
 \item $\Z/p^n$ has length $n$ as a $\Z$-module, with strict composition series \[ 0 \subseteq \langle \overline{p^{n-1}} \rangle \subseteq \cdots \subseteq \langle \overline{p} \rangle \subseteq \Z/p^n.\]
 \end{enumerate}
+\end{ex}
 
 
 \ssec{Chain conditions}
@@ -4486,6 +4487,53 @@ $$
       The presence of the 0 homology modules implies that $\partial_i=0=H_{i-1}(p)$, and the exactness yields $H_{i-1}(M'_\bullet)=\ker(H_{i-1}(j))=\im(\partial_i)=0$ for any $i\in \Z$. Thus $M'_\bullet$ is exact.
 \end{proof}
 
+\begin{ex} Let $M_\bullet$ be a chain complex. We can make chain complexes $Z_\bullet(M_\bullet), B_\bullet(M_\bullet)$ with differential zero. Then we obtain a short exact sequence of complexes
+\[ 0 \to Z_\bullet(M_\bullet) \xra{j'} M_\bullet \xra{d} B_\bullet[-1](M_\bullet) \to 0,\]
+where $d$ is given by the differential on $M_\bullet$:
+\[ \xymatrix{ & \vdots \ar[d] & \vdots \ar[d] & \vdots \ar[d] & \\ 
+0 \ar[r] & Z_n(M_\bullet) \ar[r] \ar[d]_0 & M_n \ar[d]_{d_n} \ar[r]^-{d_n} & B_{n-1}(M_\bullet) \ar[r] \ar[d]^0 & 0\\
+0 \ar[r] & Z_{n-1}(M_\bullet) \ar[r] \ar[d] & M_{n-1} \ar[d] \ar[r]^-{d_{n-1}} & B_{n-2}(M_\bullet) \ar[r] \ar[d] & 0 \\
+& \vdots & \vdots & \vdots &}\]
+(The $[-1]$ after $B_\bullet$ is to keep track of the fact that the homological indices are off by 1.)
+We compute the long exact sequence of homology:
+\[ \cdots \to H_n(Z_\bullet(M_\bullet)) \xra{H_n(j')} H_i(M_\bullet) \xra{H_n(d)} H_n(B_\bullet[-1](M_\bullet)) \xra{\partial} H_{n-1}(Z_\bullet(M_\bullet)) \to \cdots.\]
+Since $Z_\bullet(M_\bullet)$ and $B_\bullet[-1](M_\bullet)$ have zero differential, the homology modules are just the modules of those complexes. The map $H_i(j')$ maps a cycle to its homology class in $H_i(M_\bullet)$. The map $H_i(d)$ takes a homology class, and applies the differential to a representative, which yields zero since a representative is a cycle, so this is the zero map. The connecting map is just the inclusion map of the boundaries into the cycles. Thus the long exact sequence is
+\[ \cdots \to H_{n+1}(M_\bullet) \xra{0} B_n(M_\bullet)  \to Z_n(M_\bullet)  \to   H_{n}(M_\bullet) \xra{0} B_{n-1}(M_\bullet) \to \cdots,\]
+which breaks into short exact sequences
+\[ 0\to B_n(M_\bullet) \to Z_n(M_\bullet) \to H_n(M_\bullet) \to 0.\]
+\end{ex}
+
+Here is an application.
+
+\begin{prop}
+Let $F$ be an exact functor and $M_\bullet$ be a chain complex. There are isomorphisms $H_n(F(M_\bullet)) \cong F(H_n(M_\bullet))$ for all $n\in \Z$.
+\end{prop}
+
+\begin{proof}
+Write $j'_n :B_n(M_\bullet) \to Z_n(M_\bullet)$, $j''_n:Z_n(M_\bullet) \to M_n$, and $j''_n \circ j'_n = j_n: B_n(M_\bullet) \to M_n$ for the inclusion maps.
+We have a short exact sequence
+\[ 0 \to B_n(M_\bullet) \xra{j'_n} Z_n(M_\bullet) \to H_n(M_\bullet) \to 0,\] and hence also
+\[ 0 \to F(B_n(M_\bullet)) \xra{F(j'_n)} F(Z_n(M_\bullet)) \to F(H_n(M_\bullet)) \to 0.\]
+
+Observe that the differential $d_n: M_n \to M_{n-1}$ can be written as $d_n=j_n \circ d'_n$, with $d'_n:M_n \to B_{n-1}(M_\bullet)$.
+Apply $F$ to the short exact sequence of complexes
+\[ 0 \to Z_\bullet(M_\bullet) \xra{j''} M_\bullet \xra{d'} B_\bullet[-1](M_\bullet) \to 0,\]
+to get
+\[ 0 \to F(Z_\bullet(M_\bullet)) \xra{F(j'')} F(M_\bullet) \xra{F(d')} F(B_\bullet[-1](M_\bullet)) \to 0,\]
+i.e.,
+\[ \xymatrix{ & \vdots \ar[d] & \vdots \ar[d] & \vdots \ar[d] & \\ 
+0 \ar[r] & F(Z_n(M_\bullet)) \ar[r]^-{F(j''_n)} \ar[d]_0 & F(M_n) \ar[d]_{F(d_n)} \ar[r]^-{F(d'_n)} & F(B_{n-1}(M_\bullet)) \ar[r] \ar[d]^0 & 0\\
+0 \ar[r] & F(Z_{n-1}(M_\bullet)) \ar[r]^-{F(j''_{n-1})} \ar[d] & F(M_{n-1}) \ar[d] \ar[r]^-{F(d'_{n-1})} & F(B_{n-2}(M_\bullet)) \ar[r] \ar[d] & 0 \\
+& \vdots & \vdots & \vdots &}\]
+Take the long exact sequence of homology:
+\[ \cdots \to F(Z_n(M_\bullet)) \xra{H_n(j'')} H_n(F(M_\bullet)) \xra{H_n(F(d'))} F(B_{n-1}(M_\bullet)) \xra{\partial} F(Z_{n-1}(M_\bullet)) \to \cdots.\]
+As $F(d)$ is the differential on $F(M_\bullet)$, the map $H_n(F(d'))$ is zero. We claim that the connecting morphism is $F(j'_{n-1})$. Indeed, for $b\in F(B_{n-1}(M_\bullet))$, take $m\in F(M_n)$ with $F(d'_n)(m)=b$. Then \[F(d_n)(m) = F(j_{n-1})(b) = F(j''_{n-1}) ( F(j'_{n-1})(b)),\] so $\partial(b) = F(j'_{n-1})(b)$. Thus, the long each sequence in homology reads
+\[ \cdots \to H_{n+1}(F(M_\bullet)) \xra{0} F(B_{n}(M_\bullet)) \xra{F(j'_{n})} F(Z_{n}(M_\bullet)) \to H_{n}(F(M_\bullet)) \xra{0}  F(B_{n-1}(M_\bullet)) \to \cdots,\]
+which yields short exact sequences
+\[ 0\to F(B_{n}(M_\bullet)) \xra{F(j'_{n}} F(Z_{n}(M_\bullet)) \to H_{n}(F(M_\bullet))  \to 0.\]
+Thus, we obtain isomorphisms $F(H_n(M_\bullet)) \cong H_{n}(F(M_\bullet))$.
+\end{proof}
+
 \subsection{Homotopy of chain maps}
 
   \begin{defn} Suppose $M_\bullet$ and $N_\bullet$ are two chain complexes of $R$-modules and $f,g: M_\bullet \to N_\bullet$ are two chain maps joining them.
@@ -5464,7 +5512,7 @@ Thus, the isomorphism holds for all $n$.
 
 
 
-\end{proof}
+
 
 \begin{comment}
 
