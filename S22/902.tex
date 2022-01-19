@@ -1,0 +1,1547 @@
+\documentclass{amsart}[12pt]
+\usepackage{graphicx}
+\usepackage{comment}
+\usepackage{amscd,mathabx}
+\usepackage{amssymb,setspace}
+\usepackage{tikz-cd}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath,amscd,stmaryrd,mathrsfs,xcolor}
+\usepackage[all, knot]{xy}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+\xyoption{all}
+\xyoption{arc}
+\usepackage{hyperref}
+
+
+%\usepackage[notcite,notref]{showkeys}
+ 
+%\CompileMatricesx
+\newcommand{\edit}[1]{\marginpar{\footnotesize{#1}}}
+%\newcommand{\edit}[1]{}
+\newcommand{\rperf}[2]{\operatorname{RPerf}(#1 \into #2)}
+
+
+
+\newcommand{\vectwo}[2]{\begin{bmatrix} #1 \\ #2 \end{bmatrix}}
+
+\newcommand{\vecfour}[4]{\begin{bmatrix} #1 \\ #2 \\ #3 \\ #4 \end{bmatrix}}
+
+\newcommand{\Cat}[1]{\left<\left< \text{#1} \right>\right>}
+
+
+\def\htpy{\simeq_{\mathrm{htpc}}}
+\def\tor{\text{ or }}
+\def\fg{finitely generated~}
+
+\def\Ass{\operatorname{Ass}}
+\def\ann{\operatorname{ann}}
+\def\sign{\operatorname{sign}}
+
+\newcommand{\Tor}{\mathrm{Tor}}
+\newcommand{\can}{\mathrm{can}}
+
+\def\ob{{\mathfrak{ob}} }
+\def\BiAdd{\operatorname{BiAdd}}
+\def\BiLin{\operatorname{BiLin}}
+
+\def\Syl{\operatorname{Syl}}
+\def\span{\operatorname{span}}
+
+\def\sdp{\rtimes}
+\def\cL{\mathcal L}
+\def\cR{\mathcal R}
+
+
+
+\def\ay{??}
+\def\Aut{\operatorname{Aut}}
+\def\End{\operatorname{End}}
+\def\Mat{\operatorname{Mat}}
+
+
+\def\a{\alpha}
+
+
+
+\def\etale{\'etale~}
+\def\tW{\tilde{W}}
+\def\tH{\tilde{H}}
+\def\tC{\tilde{C}}
+\def\tS{\tilde{S}}
+\def\tX{\tilde{X}}
+\def\tZ{\tilde{Z}}
+\def\HBM{H^{\text{BM}}}
+\def\tHBM{\tilde{H}^{\text{BM}}}
+\def\Hc{H_{\text{c}}}
+\def\Hs{H_{\text{sing}}}
+\def\cHs{{\mathcal H}_{\text{sing}}}
+\def\sing{{\text{sing}}}
+\def\Hms{H^{\text{sing}}}
+\def\Hm{\Hms}
+\def\tHms{\tilde{H}^{\text{sing}}}
+\def\Grass{\operatorname{Grass}}
+\def\image{\operatorname{im}}
+\def\im{\image}
+\def\ker{\operatorname{ker}}
+\def\coker{\operatorname{coker}}
+\def\cone{\operatorname{cone}}
+\newcommand{\Hom}{\mathrm{Hom}}
+
+\newcommand{\onto}{\twoheadrightarrow}
+
+
+\def\ku{ku}
+\def\bbu{\bf bu}
+\def\KR{K{\mathbb R}}
+
+\def\CW{\underline{CW}}
+\def\cP{\mathcal P}
+\def\cE{\mathcal E}
+\def\cL{\mathcal L}
+\def\cJ{\mathcal J}
+\def\cJmor{\cJ^\mor}
+\def\ctJ{\tilde{\mathcal J}}
+\def\tPhi{\tilde{\Phi}}
+\def\cA{\mathcal A}
+\def\cB{\mathcal B}
+\def\cC{\mathcal C}
+%\def\cZ{\mathcal Z}
+\def\cD{\mathcal D}
+\def\cF{\mathcal F}
+\def\cG{\mathcal G}
+\def\cO{\mathcal O}
+%\def\cI{\mathcal I}
+\def\cS{\mathcal S}
+\def\cT{\mathcal T}
+\def\cM{\mathcal M}
+\def\cN{\mathcal N}
+\def\cMpc{{\mathcal M}_{pc}}
+\def\cMpctf{{\mathcal M}_{pctf}}
+\def\L{\Lambda}
+
+\def\sA{\mathscr A}
+\def\sB{\mathscr B}
+\def\sC{\mathscr C}
+\def\sZ{\mathscr  Z}
+\def\sD{\mathscr  D}
+\def\sF{\mathscr  F}
+\def\sG{\mathscr G}
+\def\sO{\mathscr  O}
+\def\sI{\mathscr I}
+\def\sS{\mathscr S}
+\def\sT{\mathscr  T}
+\def\sM{\mathscr M}
+\def\sN{\mathscr N}
+
+\newcommand{\va}{\underline{a}}
+\newcommand{\vx}{\underline{x}}
+\newcommand{\vy}{\underline{y}}
+
+%\def\vx{\mathbf{x}}
+
+%\newcommand{\inc}{\subseteq}
+\newcommand{\id}{\mathrm{id}}
+
+
+\newcommand{\Jan}[1]{\textcolor{violet}{Lecture of January #1, 2021}}
+\newcommand{\Feb}[1]{\textcolor{violet}{Lecture of February #1, 2021}}
+\newcommand{\Mar}[1]{\textcolor{violet}{Lecture of March #1, 2021}}
+\newcommand{\Apr}[1]{\textcolor{violet}{Lecture of April #1, 2021}}
+\newcommand{\May}[1]{\textcolor{violet}{Lecture of May #1, 2021}}
+
+\def\Ext{\operatorname{Ext}}
+ \def\ext{\operatorname{ext}}
+
+
+
+\def\ov#1{{\overline{#1}}}
+
+\def\vecthree#1#2#3{\begin{bmatrix} #1 \\ #2 \\ #3 \end{bmatrix}}
+
+\def\tOmega{\tilde{\Omega}}
+\def\tDelta{\tilde{\Delta}}
+\def\tSigma{\tilde{\Sigma}}
+\def\tsigma{\tilde{\sigma}}
+
+
+\def\d{\delta}
+\def\td{\tilde{\delta}}
+
+\def\e{\epsilon}
+\def\nsg{\unlhd}
+\def\pnsg{\lhd}
+
+\newcommand{\tensor}{\otimes}
+\newcommand{\homotopic}{\simeq}
+\newcommand{\homeq}{\cong}
+\newcommand{\iso}{\approx}
+
+\DeclareMathOperator{\ho}{Ho}
+\DeclareMathOperator*{\colim}{colim}
+
+
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\H}{\mathbb{H}}
+
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bM}{\mathbb{M}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\bH}{{\mathbb{H}}}
+\newcommand{\G}{\mathbb{G}}
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\bL}{{\mathbb{L}}}
+\newcommand{\R}{{\mathbb{R}}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\bK}{\mathbb{K}}
+
+
+\newcommand{\bD}{\mathbb{D}}
+\newcommand{\bS}{\mathbb{S}}
+
+\newcommand{\bN}{\mathbb{N}}
+
+
+\newcommand{\bG}{\mathbb{G}}
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\NN}{\mathbb{N}}
+
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\W}{\mathcal{W}}
+
+\newcommand{\cZ}{\mathcal{Z}}
+\newcommand{\cI}{\mathcal{I}}
+\newcommand{\cV}{\mathcal{V}}
+
+
+
+\newcommand{\itilde}{\tilde{\imath}}
+\newcommand{\jtilde}{\tilde{\jmath}}
+\newcommand{\ihat}{\hat{\imath}}
+\newcommand{\jhat}{\hat{\jmath}}
+
+\newcommand{\fc}{{\mathfrak c}}
+\newcommand{\fp}{{\mathfrak p}}
+\newcommand{\fm}{{\mathfrak m}}
+\newcommand{\fn}{{\mathfrak n}}
+\newcommand{\fq}{{\mathfrak q}}
+
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\dual}{\vee}
+
+\newcommand{\DEF}[1]{\emph{#1}\index{#1}}
+\newcommand{\Def}[1]{#1 \index{#1}}
+
+
+% The following causes equations to be numbered within sections
+\numberwithin{equation}{section}
+
+
+\theoremstyle{plain} %% This is the default, anyway
+\newtheorem{thm}[equation]{Theorem}
+\newtheorem{theorem}[equation]{Theorem}
+\newtheorem{thmdef}[equation]{TheoremDefinition}
+\newtheorem{introthm}{Theorem}
+\newtheorem{introcor}[introthm]{Corollary}
+\newtheorem*{introthm*}{Theorem}
+\newtheorem{question}{Question}
+\newtheorem{cor}[equation]{Corollary}
+\newtheorem{corollary}[equation]{Corollary}
+\newtheorem{por}[equation]{Porism}
+\newtheorem{lem}[equation]{Lemma}
+\newtheorem{lemma}[equation]{Lemma}
+\newtheorem{lemminition}[equation]{Lemminition}
+\newtheorem{prop}[equation]{Proposition}
+\newtheorem{proposition}[equation]{Proposition}
+
+\newtheorem{porism}[equation]{Porism}
+\newtheorem{fact}[equation]{Fact}
+
+
+\newtheorem{conj}[equation]{Conjecture}
+\newtheorem{quest}[equation]{Question}
+
+\theoremstyle{definition}
+\newtheorem{defn}[equation]{Definition}
+\newtheorem{definition}[equation]{Definition}
+\newtheorem{chunk}[equation]{}
+\newtheorem{ex}[equation]{Example}
+\newtheorem{example}[equation]{Example}
+
+\newtheorem{exer}[equation]{Optional Exercise}
+
+\theoremstyle{remark}
+\newtheorem{rem}[equation]{Remark}
+\newtheorem{remark}[equation]{Remark}
+
+\newtheorem{notation}[equation]{Notation}
+\newtheorem{terminology}[equation]{Terminology}
+
+
+
+\renewcommand{\sec}[1]{\section{#1}}
+\newcommand{\ssec}[1]{\subsection{#1}}
+\newcommand{\sssec}[1]{\subsubsection{#1}}
+
+\newcommand{\br}[1]{\lbrace \, #1 \, \rbrace}
+\newcommand{\li}{ < \infty}
+\newcommand{\quis}{\simeq}
+\newcommand{\xra}[1]{\xrightarrow{#1}}
+\newcommand{\xla}[1]{\xleftarrow{#1}}
+\newcommand{\xlra}[1]{\overset{#1}{\longleftrightarrow}}
+
+\newcommand{\xroa}[1]{\overset{#1}{\twoheadrightarrow}}
+\newcommand{\xria}[1]{\overset{#1}{\hookrightarrow}}
+\newcommand{\ps}[1]{\mathbb{P}_{#1}^{\text{c}-1}}
+
+
+
+
+\def\and{{ \text{ and } }}
+\def\oor{{ \text{ or } }}
+
+\def\Perm{\operatorname{Perm}}
+\newcommand{\Ss}{\mathbb{S}}
+
+\def\Op{\operatorname{Op}}
+\def\res{\operatorname{res}}
+\def\ind{\operatorname{ind}}
+
+\def\sign{{\mathrm{sign}}}
+\def\naive{{\mathrm{naive}}}
+\def\l{\lambda}
+
+
+\def\ov#1{\overline{#1}}
+\def\cV{{\mathcal V}}
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+
+\newcommand{\chara}{\operatorname{char}}
+\newcommand{\Kos}{\operatorname{Kos}}
+\newcommand{\opp}{\operatorname{opp}}
+\newcommand{\perf}{\operatorname{perf}}
+
+\newcommand{\Fun}{\operatorname{Fun}}
+\newcommand{\GL}{\operatorname{GL}}
+\newcommand{\SL}{\operatorname{SL}}
+\def\o{\omega}
+\def\oo{\overline{\omega}}
+
+\def\cont{\operatorname{cont}}
+\def\te{\tilde{e}}
+\def\gcd{\operatorname{gcd}}
+
+\def\stab{\operatorname{stab}}
+
+\def\va{\underline{a}}
+
+\def\ua{\underline{a}}
+\def\ub{\underline{b}}
+
+
+\newcommand{\Ob}{\mathrm{Ob}}
+\newcommand{\Set}{\mathbf{Set}}
+\newcommand{\Grp}{\mathbf{Grp}}
+\newcommand{\Ab}{\mathbf{Ab}}
+\newcommand{\Sgrp}{\mathbf{Sgrp}}
+\newcommand{\Ring}{\mathbf{Ring}}
+\newcommand{\Fld}{\mathbf{Fld}}
+\newcommand{\cRing}{\mathbf{cRing}}
+\newcommand{\Mod}[1]{#1-\mathbf{Mod}}
+\newcommand{\Cx}[1]{#1-\mathbf{Comp}}
+\newcommand{\vs}[1]{#1-\mathbf{vect}}
+\newcommand{\Vs}[1]{#1-\mathbf{Vect}}
+\newcommand{\vsp}[1]{#1-\mathbf{vect}^+}
+\newcommand{\Top}{\mathbf{Top}}
+\newcommand{\Setp}{\mathbf{Set}_*}
+\newcommand{\Alg}[1]{#1-\mathbf{Alg}}
+\newcommand{\cAlg}[1]{#1-\mathbf{cAlg}}
+\newcommand{\PO}{\mathbf{PO}}
+\newcommand{\Cont}{\mathrm{Cont}}
+\newcommand{\MaT}[1]{\mathbf{Mat}_{#1}}
+\newcommand{\Rep}[2]{\mathbf{Rep}_{#1}(#2)}
+
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+
+\makeindex
+\title{Math 902 Lecture Notes, Spring 2022}
+
+
+\begin{document}
+\onehalfspacing
+
+\maketitle
+
+\tableofcontents
+
+In this class, all rings are assumed to be commutative, with associative multiplication and containing 1.
+
+\sec{Finiteness conditions}
+
+\ssec{Finitely generated algebras}
+
+We start by recalling a definition from last semester, specialized to the setting of commutative rings.
+
+\begin{defn} [Algebra]
+Given a ring $A$, an $A$-\DEF{algebra} is a ring $R$ equipped with a ring homomorphism $\phi:A\to R$. This defines an $A$-module structure on $R$ given by restriction of scalars, that is, for $a\in A$ and $r\in R$, $ar:=\phi(a)r$ that is compatible with the internal multiplication of $R$ i.e.,
+\[
+a(rs)=(ar)s=r(as) \text{ for all } a\in A, rs\in R. 
+\]
+We will call $\phi$ the \DEF{structure homomorphism} of the $A$-algebra $R$.
+\end{defn}
+
+
+
+\begin{ex}
+\begin{itemize} \item If $A$ is a ring and $x_1,\dots,x_n$ are indeterminates, the inclusion map $A \hookrightarrow A[x_1,\dots,x_n]$ makes the polynomial ring into an $A$-algebra.
+\item When $A\subseteq R$ the inclusion map makes $R$ an $A$-algebra. In this case the $A$-module multiplication $ar$ coincides with the internal (ring) multiplication on $R$.
+\item Any ring comes with a unique structure as a $\Z$-algebra.
+\end{itemize}
+\end{ex}
+
+The collection of $A$-algebras forms a category where the morphisms are ring homomorphisms $f:R\to S$ such that  the following diagram commutes
+\[
+\xymatrix{
+ & A  \ar[dl]_{\phi} \ar[dr]^{\psi} & \\
+R \ar[rr]_{f} && S
+}
+\]
+for structural homomorphisms $\varphi:A\to R$ and $\psi:A\to S$.
+
+\begin{defn}[Algebra generation]
+Let $R$ be an $A$-algebra and let $\Lambda \subseteq R$ be a set. The $A$-\DEF{algebra generated by} a subset $\Lambda$ of $R$, denoted \Def{$A[\Lambda]$}, is the smallest (w.r.t containment) subring of $R$ containing $\Lambda$ and $\varphi(A)$.
+
+A set of elements $\Lambda \subseteq R$ \DEF{generates} $R$ as an $A$-algebra if $R=A[\Lambda]$.
+\end{defn}
+
+Note that there are two different meanings for the notation $A[S]$ for a ring $A$ and set $S$: one calls for a polynomial ring, and the other calls for a subring of something.
+
+
+This can be unpackaged more concretely in a number of equivalent ways:
+
+\begin{lem}
+\label{lem:algebragen}
+The following are equivalent
+\begin{enumerate}
+	\item\label{fgalg-1} $\Lambda$ generates $R$ as an $A$-algebra.
+	\item\label{fgalg-3} Every element in $R$ admits a polynomial expression in $\Lambda$ with coefficients in $\phi(A)$, i.e.
+	\[
+	R=\left\{\sum_{\mathrm{finite}} \phi(a) \lambda_1^{i_1} \cdots \lambda_n^{i_n} \mid a\in A, \lambda_j\in\Lambda, i_j\in \N\right\}.
+\]
+	\item\label{fgalg-4} The $A$-algebra homomorphism $\psi:A[X]\rightarrow R$, where $A[X]$ is a polynomial ring on a set of indeterminates $X$ in bijection with $\Lambda$ and $\psi(x_i)=\lambda_i$, is surjective.
+\end{enumerate}
+\end{lem}
+\begin{proof} Let $S= \left\{\sum_{\mathrm{finite}} \phi(a) \lambda_1^{i_1} \cdots \lambda_n^{i_n} \mid a\in A, \lambda_j\in\Lambda, i_j\in \N\right\}$.
+For the equivalence between (2) and (3) we note that $S$ is the image of $\psi$.
+In particular, $S$ is a subring of $R$. It then follows from the definition that (1) implies (2). Conversely, any subring of $R$ containing $\phi(A)$ and $\Lambda$ certainly must contain $S$, so (2) implies~(1).
+\end{proof}
+
+\begin{ex} We may have also seen these brackets used in $\Z[\sqrt{d}]$ for some $d\in \Z$ to describe the ring 
+\[ \{ a + b \sqrt{d} \ | \ a,b\in \Z\}.\]
+In fact, this is a special instance of generating: the $\Z$-algebra generated by $\sqrt{d}$ in the most natural place, the algebraic closure of $\Q$, is exactly the set above. The point is that for any power $(\sqrt{2})^n$, write $n=2q+r$ with $r\in \{0,1\}$, so $(\sqrt{2})^n=2^d (\sqrt{2})^r$. Similarly, the ring $\Z[\sqrt[3]{d}]$ can be written as 
+\[ \{ a + b \sqrt[3]{d} + c \sqrt[3]{d^2}  \ | \ a,b,c\in \Z\}.\]
+\end{ex}
+
+
+Note that the homomorphism $\psi$ in part (3) need not be injective.
+\begin{itemize}
+\item If the homomorphism $\psi$ is injective (so an isomorphism) we say that $A$ is a {\em free} algebra.
+\item the set $\ker(\psi)$ measures how far $R$ is from being a free $A$-algebra and is called the set of {\em relations} on $\Lambda$.
+\end{itemize}
+
+\begin{defn}[Algebra-finite]
+We say that $\varphi:A\to R$ is \DEF{algebra-finite}, or $R$ is a \DEF{finitely generated $A$-algebra}, if there exists a {finite} set of elements $f_1,\ldots, f_d$ that generates $R$ as an $A$-algebra. We write $R=A[f_1,\dots,f_d]$\index{$A[f_1,\dots,f_d]$} to denote this.
+
+The term \DEF{finite-type} is also used to mean this.% A better name might be \emph{finitely generatable}, since to say that an algebra is finitely generated does not require knowing any actual finite set of generators.
+\end{defn}
+
+\begin{rem} Note that, by the lemma on generating sets, an $A$-algebra is finitely generated if and only if it is isomorphic to a quotient of a polynomial ring over $A$ in finitely many variables. The choice of an isomorphism with a quotient of a polynomial ring is equivalent to a choice of generating set.
+\end{rem}
+
+\begin{comment}
+
+\begin{ex} Let $K$ be a field, and $B=K[x,xy,xy^2,xy^3,\dots] \subseteq C=K[x,y]$, where $x$ and $y$ are indeterminates. Let $A$ be a finitely generated subalgebra of $B$, and write $A=K[f_1,\dots,f_d]$.  Since each $f_i$ is a (finite) polynomial expression in the monomials $\{x y^i \ | \ i\in \N\}$, it involves only finitely many of these monomials. Thus, there is an $m$ such that $\{f_1,\dots,f_d\} \subset K[x,xy,\dots,xy^m]$, and hence $A \subseteq K[x,xy,\dots,xy^m]$. But, every element of $K[x,xy,\dots,xy^m]$ is a $K$-linear combination of monomials with the property that the $y$ exponent is no more than $m$ times the $x$ exponent, so this ring does not contain $xy^{m+1}$. Thus, $B$ is not a finitely generated $K$-algebra.
+\end{ex}
+
+\begin{exer} Let $A \xra{\phi} B \xra{\psi} C$ be ring homomorphisms (so $B$ is an $A$-algebra via $\phi$, $C$ is a $B$-algebra via $\psi$, and $C$ is an $A$-algebra via $\psi \circ \phi$). Then
+\begin{itemize}
+\item If $A\xra{\phi} B$ and $B\xra{\psi}C$ are algebra-finite, then $A\xra{\psi\phi} C$ is algebra-finite. (Take the union of the generating sets.)
+\item If $A\xra{\psi\phi} C$ is algebra-finite, then $B \xra{\psi} C$  is algebra-finite. (Use the same generating set.)
+\item If $A\xra{\psi\phi} C$ is algebra-finite, then $A\xra{\phi} B$ may \emph{not} be algebra-finite. (Use the previous example.) \end{itemize}
+
+\end{exer}
+
+\begin{rem}
+Any surjective $\varphi$ is algebra-finite: the target is generated by $1$. Since any homomorphism $\phi:A\to R$ can be factored as $\phi=\psi\circ \varphi$ where $\varphi$ is the surjection $\varphi:A\to A/\ker (\varphi)$ and $\psi$ is the inclusion $\psi:A/\ker (\varphi) \hookrightarrow R$, to understand algebra-finiteness, it suffices to restrict our attention to injective homomorphisms by the last bullet point of the previous exercise.
+\end{rem}
+
+
+There are many basic questions about algebra generators that are surprisingly difficult. Let $R=\C[x_1,\dots,x_n]$ and $f_1,\dots,f_n\in R$. When do $f_1,\dots,f_n$ generate $R$ over $\C$? It is not too hard to show that the Jacobian determinant\index{Jacobian}
+\[ \det \begin{bmatrix} \frac{\partial f_1}{\partial x_1} & \cdots & \frac{\partial f_1}{\partial x_n} \\ \vdots & \ddots & \vdots \\
+\frac{\partial f_n}{\partial x_1} & \cdots & \frac{\partial f_n}{\partial x_n} \end{bmatrix}\]
+must be a nonzero constant. It is a big open question whether this is in fact a sufficient condition!
+
+
+
+
+\ssec{Finitely generated modules}
+
+We will also find it quite useful to consider a stronger finiteness property for maps. 
+
+%Recall that if $\varphi:A\to R$ is a ring homomorphism, then $R$ acquires an $A$-module structure via $\varphi$ by $a \cdot r = \varphi(a)r$; this is a particular case of \emph{restriction of scalars}\index{restriction of scalars}. We may write ${}_{\varphi}R$ \index{${}_{\varphi}R$} for this $A$-module if we think we will have trouble remembering the map. Of course, if $\varphi$ is injective and we identify it with the inclusion $A\subseteq R$, then this $A$-action is just $a \cdot r = ar$.
+
+\begin{defn}(Module generation)
+Let $M$ be an $A$-module and let $\Gamma \subseteq M$ be a set. The $A$-\index{module generated by a set}{\em submodule} of $M$ {\em generated by} $\Gamma$, denoted $\sum_{\gamma \in \Gamma} A \gamma$\index{$\sum_{\gamma \in \Gamma} A \gamma$}, is the smallest (w.r.t containment) submodule of $M$ containing $\Gamma$.
+
+A set of elements $\Gamma \subseteq M$ \index{generates as a module}\emph{generates} $M$ as an $A$-module if the submodule of $M$ generated by $\Gamma$ is $M$ itself, i.e. $M=\sum_{\gamma \in \Gamma} A \gamma$.
+\end{defn}
+
+
+This also has some equivalent realizations:
+
+\begin{lem}
+\label{lem:modulegen}
+The following are equivalent:
+\begin{enumerate}
+	\item $\Gamma$ generates $M$ as an $A$-module.
+	\item Every element of $M$ admits a linear combination expression in the elements of $\Gamma$ with coefficients in~$A$.
+	\item The homomorphism $\theta:A^{\oplus Y} \to M$, where $A^{\oplus Y}$ is a free $A$-module with basis  $Y$ in bijection with $\Gamma$ via $\theta(y_i)=\gamma_i$, is surjective.
+\end{enumerate}
+\end{lem}
+
+\begin{exer} Prove the previous lemma.
+\end{exer}
+
+\begin{defn}[Module-finite]
+We say that a ring homomorphism $\varphi:A\to R$ is \emph{module-finite}\index{module-finite} if $R$ is a finitely-generated $A$-module, that is, there is a {\em finite} set $m_1,\ldots, m_n \in M$ so that $M=\sum_{i=1}^n  A m_i$. 
+\end{defn}
+
+
+As with algebra-finiteness, surjective maps are always module-finite in a trivial way. 
+The notion of module-finite is much stronger than algebra-finite, since a linear combination is a very special type of polynomial expression. To be specific:
+
+\begin{lem}[Module-finite $\Rightarrow$ algebra-finite]
+\label{lem:MFimpliesAF}
+If $\varphi:A\to R$ is module-finite then it is algebra-finite.
+\end{lem}
+
+The converse is not true.
+
+\begin{ex}
+	\begin{enumerate}
+		\item If $K\subseteq L$ are fields, $L$ is module-finite over $K$ just means that $L$ is a finite field extension of $K$.
+		\item The Gaussian integers\index{Gaussian integers} $\Z[i]$ satisfy the well-known property (or definition, depending on your source) that any element $z\in\Z[i]$ admits a unique expression $z=a+bi$ with $a,b\in \Z$. That is, $\Z[i]$ is generated as a $\Z$-module by $\{1,i\}$; moreover, they form a free module basis!
+		\item If $R$ is a ring and $x$ an indeterminate, $R\subseteq R[x]$ is not module-finite. Indeed, $R[x]$ is a free $R$-module on the basis $\{1,x,x^2,x^3,\dots\}$. It is however algebra-finite.
+		\item Another map that is \emph{not} module-finite is the inclusion of $K[x] \subseteq K[x,1/x]$. Note that any element of $K[x,1/x]$ can be written in the form $f(x)/x^n$ for some $f(x)\in K[x]$ and $n\in \N$. Then, any finitely generated $K[x]$-submodule $M$ of $K[x,1/x]$ is of the form $M=\sum_i \frac{f_i(x)}{x^{n_i}} \cdot K[x]$; taking $N=\max\{n_i \ | \ i\}$, we find that $M\subseteq 1/x^N \cdot K[x] \neq K[x,1/x]$.
+	\end{enumerate}
+\end{ex}
+
+\begin{exer} Let $A \xra{\phi} B \xra{\psi} C$ be ring homomorphisms. Then
+\begin{itemize}
+\item If $A\xra{\phi} B$ and $B\xra{\psi}C$ are module-finite, then $A\xra{\psi\phi} C$ is module-finite.
+\item If $A\xra{\psi\phi} C$ is module-finite, then $B \xra{\psi} C$  is module-finite.
+\end{itemize}
+\end{exer}
+
+We will see that $A\xra{\psi\phi} C$ is module-finite does not imply $A\xra{\phi} B$ is module-finite soon.
+
+\ssec{Integral extensions}
+
+In field theory, there is a close relationship between (vector space-)finite field extensions and algebraic equations. The situation for rings is similar.
+
+\begin{definition}[Integral element/extension] Let $\phi: A \to R$ be a ring homomorphism (for which we will denote $\phi(a)$ by $a$) and $r\in R$. 
+The element $r$ is \emph{integral}\index{integral element} if there are elements $a_0,\dots,a_{n-1}\in A$ such that
+	\[ r^n + a_{n-1} r^{n-1} + \cdots + a_1 r + a_0 = 0;\]
+	i.e., $r$ satisfies a \emph{equation of integral dependence} over $A$.\index{equation of integral dependence} The homomorphism $\phi$ is \emph{integral} if every element of $R$ is integral over $A$.
+\end{definition}
+
+
+
+\begin{ex} Let  $A= \Z[\sqrt{2}]= \{ a +b \sqrt{2} \ | \ a,b\in \Z\}$. The element $t=\sqrt{2} \in A$ is integral over $\Z$, since $t^2-2=0$. Likewise, $s=1+\sqrt{2}$ is integral over $\Z$, as $s^2=3+2\sqrt{2}$, so $s^2-2s-1=0$. 
+
+On the other hand, $\frac{1}{2} \in \Q$ is not integral over $\Z$: if
+\[ \left(\frac{1}{2}\right)^n + a_{n-1} \left(\frac{1}{2}\right)^{n-1} + \cdots + a_0 =0\]
+with $a_i\in \Z$, multiply through by $2^n$ to get $1+ 2 a_{n-1} + 2^2 a_{n-2} + \cdots + 2^n a_0=0$, which is impossible.
+\end{ex}
+
+
+\begin{proposition}
+\label{fg-by-intl-modfin}
+	Let $A\subseteq R$ be rings. 
+	\begin{enumerate}
+		\item If $r\in R$ is integral over $A$ then $A[r]$ is module-finite over $A$.
+		\item If $r_1,\dots,r_t \in R$ are integral over $A$ then $A[r_1,\dots,r_t]$ is module-finite over $A$.
+	\end{enumerate}
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item Suppose $r$ is integral over $A$, satisfying the equation $ r^n + a_{n-1} r^{n-1} + \cdots + a_1 r + a_0 = 0$. Then $A[r] = \sum_{i=0}^{n-1} A r^i$. Indeed, given a polynomial in $p(r)$ of degree $\geq n$, we can use the equation above to rewrite the leading term $a^m r^m$ as $-a_m r^{m-n}(a_{n-1} r^{n-1} + \cdots + a_1 r + a_0)$, and decrease the degree in $r$.
+		\item 	Write $A_0:=A \subseteq A_1:=A[r_1] \subseteq A_2:=A[r_1,r_2] \subseteq \cdots \subseteq A_t:=A[r_1,\dots,r_t]$. Note that $r_i$ is integral over $A_{i-1}$: use the same monic equation of $r_i$ over $A$. Then, the inclusion $A \subseteq A[r_1,\dots,r_t]$ is a composition of module-finite maps, hence is module-finite.\qedhere
+	\end{enumerate}	
+\end{proof}
+
+We recall that the \DEF{classical adjoint} of an $n\times n$ matrix $A$ is the $n \times n$ matrix whose $(i,j)$-entry is $(-1)^{i+j}$ times the determimant of the matrix obtained from $A$ by removing the $i$th column and the $j$th row.
+
+\begin{lemma}[Determinantal trick]\label{determinantal trick}\index{determinantal trick}
+Let $R$ be a ring, $B \in M_{n\times n}(R)$, $v\in R^{\oplus n}$, and $r\in R$.
+	\begin{enumerate}
+		\item $\mathrm{adj}(B) B = \det(B) I_{n\times n}$.
+		\item If $B v = r v$, then $\det(r I_{n\times n} - B) v=0$.
+	\end{enumerate} 
+\end{lemma}
+
+
+
+\begin{proof}
+	\begin{enumerate}
+		\item When $R$ is a field, this is a basic linear algebra fact. We deduce the case of a general ring from the field case.
+		
+		The ring $R$ is a $\ZZ$-algebra, so we can write $R$ as a quotient of some polynomial ring $\ZZ[X]$. Let $\xymatrix@C=6mm{\psi:\ZZ[X] \ar@{->>}[r] & R}$ be a surjection, $a_{ij}\in \ZZ[X]$ be such that $\psi(a_{ij})=b_{ij}$, and let $A=[a_{ij}]$. Note that
+		$$\psi(\mathrm{adj}(A)_{ij})=\mathrm{adj}(B)_{ij} \quad \textrm{ and } \quad \psi((\mathrm{adj}(A) A)_{ij}) = (\mathrm{adj}(B) B)_{ij},$$ 
+		since $\psi$ is a homomorphism, and the entries are the same polynomial functions of the entries of the matrices $A$ and $B$, respectively. Thus, it suffices to establish 
+		$$\mathrm{adj}(B) B = \det(B) I_{n\times n}$$
+		in the case when $R=\ZZ[X]$, and we can do this entry by entry. Now, $R=\ZZ[X]$ is an integral domain, hence a subring of a field (its fraction field). Since both sides of the equation 
+		$$\left( \mathrm{adj}(B) B \right)_{ij} = \left( \det(B) I_{n\times n}\right)_{ij}$$
+		live in $R$ and are equal in the fraction field (by linear algebra) they are equal in $R$. This holds for all $i, j$, and thus 1) holds.
+		
+		\item We have $(r I_{n\times n} - B) v=0$, so by part 1)
+		$$\det(r I_{n\times n} - B) v=\mathrm{adj}(r I_{n\times n} - B) (r I_{n\times n} - B) v = 0.\hfill\qedhere$$
+	\end{enumerate}
+	
+\end{proof}
+
+
+
+\begin{theorem}[Module finite implies integral]
+	Let $A\subseteq R$ be module-finite. Then $R$ is integral over $A$.
+\end{theorem}
+\begin{proof} Given $r\in R$, we want to show that $r$ is integral over $A$. The idea is to show that multiplication by $r$, realized as a linear transformation over $A$, satisfies the characteristic polynomial of that linear transformation.
+	
+	Write $R = A r_1 + \cdots A r_t$. We may assume that $r_1=1$, perhaps by adding module generators. By assumption, we can find $a_{ij}\in A$ such that \[ r r_i = \sum_{j=1}^t a_{ij} r_j \] for each $i$. Let $C=[a_{ij}]$, and $v$ be the column vector $(r_1,\dots,r_t)$. We have $r  v = C v$, so by the determinant trick, $\det(r I_{n\times n} - C)v=0$. Since we chose one of the entries of $v$ to be $1$, we have in particular that $\det(r I_{n\times n} - C)=0$. Expanding this determinant as a polynomial in $r$, this is a monic equation with coefficients in $A$.
+\end{proof}
+
+Collecting the previous results, we now have a useful characterization of module-finite extensions:
+
+\begin{corollary}[Characterization of module-finite extensions]\label{characterization of mod-fin alg-fin integral}
+	Let $A\subseteq R$ be rings. $R$ is module-finite over $A$ if and only if $R$ is integral and algebra-finite over $A$.
+\end{corollary}
+\begin{proof}
+	($\Rightarrow$): A generating set for $R$ as an $A$-module serves as a generating set as an $A$-algebra. The remainder of this direction comes from the previous theorem.
+	($\Leftarrow$): If $R=A[r_1,\dots,r_t]$ is integral over $A$, so that each $r_i$ is integral over $A$, then $R$ is module-finite over $A$ by Proposition~\ref{fg-by-intl-modfin}.
+\end{proof}
+
+
+
+
+\begin{ex}
+	\begin{enumerate}
+		\item Let $x,y,z$ be indeterminates. Set $R=\C[x,y]$ to be a polynomial ring, and $S=\C[x,y,z]/(x^2+y^2+z^2)$ to be a quotient of a polynomial ring. We claim that we can realize $R$ as a subring of $S$; i.e., the $\C$-algebra homomorphism from $R$ to $S$ that sends $x$ to $x$ and $y$ to $y$ is injective. Indeed, the kernel is the set of polynomials in $x,y$ that are multiples of $z^2+x^2+y^2$, but, thinking of $\C[x,y,z]$ as $R[z]$, any nonzero multiple of $z^2+x^2+y^2$ must have $z$-degree at least $2$, so none only involve $x,y$. Thus, we have an inclusion $R\subseteq S$.	
+				
+		The ring $S$ is module-finite over $R$: indeed, $S$ is generated over $R$ as an algebra by one element $z$ that is integral over $R$.
+		\item Let $R=\C[u,v] \subseteq S=\C[u,v,w]/(u^2+vw)$; this is injective by a similar argument tot he previous example. Note that this $S$ is isomorphic to the previous $S$ by the map $u\mapsto x, v\mapsto y+iz, w\mapsto y-iz$.
+		
+		 We claim that $S$ is \emph{not} integral and hence \emph{not} module-finite over $R$. Indeed, the minimal polynomial of $w$ over the fraction field of $R$ is $f(t)=vt+u^2$. Any equation that $w$ satisfies is a $\C(u,v)[t]$-multiple of this: write $g(t)=f(t)h(t)$ with $g(t)\in\C(u,v)[t]$ monic. By Gauss' lemma, there is some $a\in \C(u,v)$ such that $a^{-1} f(t), a h(t)\in \C[u,v][t]$. Since the leading coefficient of $h$ is $v^{-1}$, the numerator of $a$ must be a multiple of $v$ when written in lowest terms. But this contradicts that $a^{-1} f(t)\in \C[u,v][t]$.
+		\item Not all integral extensions are module-finite. Let $K=\overline{K}$, and consider the ring \[R=K[x,x^{1/2},x^{1/3},x^{1/4},x^{1/5},\dots]\subseteq \overline{K(x)}.\] Clearly $R$ is generated by integral elements over $K[x]$, but is not algebra-finite over $K[x]$.
+	\end{enumerate}
+\end{ex}
+
+\begin{exer} Prove that $K[x] \subseteq K[x,x^{1/2},x^{1/3},x^{1/4},x^{1/5},\dots]$ is not algebra-finite.
+\end{exer}
+
+
+\begin{corollary}
+	If $R$ is generated over $A$ by integral elements, then $R$ is integral. Thus, if $A\subseteq S$, the set of elements of $S$ that are integral over $A$ form a subring of $S$.
+\end{corollary}
+\begin{proof}
+	Let $R=A[\Lambda]$, with $\lambda$ integral over $A$ for all $\lambda\in\Lambda$. Given $r\in R$, there is a finite subset $L\subseteq \Lambda$ such that $r\in A[L]$. By the theorem, $A[L]$ is module-finite over $A$, and $r\in A[L]$ is integral over $A$.
+	
+	For the latter statement, the first statement implies that
+	\[ \{\text{integral elements}\} \subseteq A[\{\text{integral elements}\}] \subseteq \{\text{integral elements}\}, \] so equality holds throughout, and $\{\text{integral elements}\}$ is a ring.
+\end{proof}
+
+\begin{exer} Let $A \xra{\phi} B \xra{\psi} C$ be ring homomorphisms. Then $A \xra{\phi} B$ and $B \xra{\psi} C$ are integral if and only if $A \xra{\psi\phi} C$ is integral.
+\end{exer}
+
+
+\begin{definition}
+	If $A\subseteq R$, the \emph{integral closure of $A$ in $R$}\index{integral closure} is the set of elements of $R$ that are integral over~$A$.
+\end{definition}
+
+\begin{ex}
+$\Z$ is integrally closed in $\Q$: this follows from essentially the same argument we used to show that $\frac{1}{2}$ is not integral over $\Q$.
+\end{ex}
+
+\begin{exer}
+The integral closure of $\ZZ$ in $\Q(\sqrt{d})$ is
+$
+\begin{cases}
+\ZZ[\sqrt{d}] & \text{ if } d\not\equiv 1 \pmod 4\\
+\ZZ[\frac{1+\sqrt{d}}{2}] & \text{ if } d\equiv 1 \pmod 4.
+\end{cases}
+$
+
+\end{exer}
+
+Here is a useful fact about integral extensions that we will use multiple times; it also gives a flavor for the power of the integrality condition on a map.
+
+\begin{prop} Let $R$ and $S$ be domains and $R\subseteq S$ be integral. Then $R$ is a field if and only if $S$ is a field.
+\end{prop}
+\begin{proof}
+($\Rightarrow$) Say $R=K$ is a field and let $s\in S$ be nonzero. The ring $K[s]$ is integral over $K$ and algebra-finite, hence module finite; i.e., a finite dimensional vector space. Then multiplication by $s$ on $K[s]$ is  an injective $K$-linear map, since $K[s]\subseteq S$ is a domain, and hence surjective. This means that $s$ has an inverse, and hence $S$ is a field.
+
+($\Leftarrow$) Say $S=L$ is a field and let $r\in R$. Then $r^{-1}\in L$ and is hence integral over $R$. Take an integral equation
+\[ (r^{-1})^n + a_1 (r^{-1})^{n-1} + \cdots + a_n =0\]
+with $a_i\in R$, and multiply through by $r^{n-1}$ to get
+\[ r^{-1} + a_1 + a_2 r + \cdots + a_n r^{n-1} = 0,\]
+so $r^{-1}\in R$.
+\end{proof}
+
+\ssec{Commutative Noetherian rings and modules}
+
+We recall that a ring $R$ is \DEF{Noetherian} if the following equivalent conditions hold:
+
+\begin{enumerate}
+\item The set of ideals of $R$ has ACC (every ascending chain has a maximal element)
+\item Every nonempty collection of ideals  of $R$ has a maximal element (i.e., an ideal not contained in any other; not necessarily a maximal ideal though)
+\item Every ideal of $R$ is finitely generated.
+\end{enumerate}
+
+Similarly, a module $M$ is  \DEF{Noetherian} if the following equivalent conditions hold:
+
+\begin{enumerate}
+\item The set of submodules of $M$ has ACC (every ascending chain has a maximal element)
+\item Every nonempty collection of sumbodules of $M$ has a maximal element 
+\item Every submodule of $M$ is finitely generated.
+\end{enumerate}
+
+When $R$ is Noetherian, a module is finitely generated if and only if it is Noetherian, and hence every submodule of a finitely generated module is finitely generated.
+
+\begin{ex}
+	\begin{enumerate}
+		\item If $K$ is a field, the only ideals in $K$ are $(0)$ and $(1)=K$, so $K$ is a Noetherian ring.
+		\item $\mathbb{Z}$ is a Noetherian ring. More generally, if $R$ is a PID, then $R$ is Noetherian. Indeed, every ideal is finitely generated!
+		\item As a special case of the previous example, consider the ring of germs of complex analytic functions near $0$, \index{$\C\{z\}$} 
+		\[\C\{z\} := \{ f(z) \in \C\llbracket z \rrbracket  \ | \ f \text{ is analytic on a neighborhood of $z=0$}\}.\]
+		 This ring is a PID: every ideal is of the form $(z^n)$, since any $f\in \C\{z\}$ can be written as $z^n g(z)$ for some $g(z)\neq 0$, and any such $g(z)$ is a unit in $\C\{z\}$.
+		\item A ring that is \emph{not} Noetherian is a polynomial ring in infinitely many variables over a field $k$, $R = k[x_1, x_2, \ldots]$: the ascending chain of ideals 
+		$$(x_1)\subseteq (x_1,x_2) \subseteq (x_1,x_2,x_3) \subseteq \cdots$$
+		does \emph{not} stabilize.
+		\item The ring $R=K[x,x^{1/2},x^{1/3},x^{1/4},x^{1/5},\dots]$ is also \emph{not} Noetherian. A nice ascending chain of ideals is
+		\[ (x) \subsetneqq (x^{1/2}) \subsetneqq (x^{1/3})\subsetneqq (x^{1/4}) \subsetneqq \cdots.\]
+%		\item A variation on the last example: the ring of \emph{nonnegatively valued Puiseux series}\index{Puiseux series}: $R=\bigcup_{n\in \NN} \CC\llbracket z^{1/n} \rrbracket \subseteq \overline{\CC((z))}$.\footnote{In fact, the algebraic closure of the field of Laurent series $\CC((z))$ is $\bigcup_{n\in \NN} \CC(( z^{1/n} )) = R[1/t]$.}
+		\item The ring of continuous real-valued functions $\mathcal{C}(\R,\R)$\index{$\mathcal{C}(\R,\R)$} is \emph{not} Noetherian: the chain of ideals 
+		$$I_{n}=\{ f(x) \ | \ f|_{[-1/n,1/n]}\equiv 0 \}$$
+		is increasing and proper. The same construction shows that the ring of infinitely differentiable real functions $\mathcal{C}^{\infty}(\R,\R)$\index{$\mathcal{C}^{\infty}(\R,\R)$} is not Noetherian: properness of the chain follows from, e.g., Urysohn's lemma (though it's not too hard to find functions distinguishing the ideals in the chain). Note that if we asked for analytic functions instead of infinitely-differentiable functions, every element of the chain would be the zero ideal!
+	\end{enumerate}
+\end{ex}
+
+\begin{rem} If $R$ is Noetherian and $I\subseteq R$, then $R/I$ is Noetherian as well, since there is an order-preserving bijection
+\[ \{ \text{ideals of } R \text{ that contain } I \} \leftrightarrow \{\text{ideals of }R/I\}. \]
+\end{rem}
+
+\begin{defn}
+If $R$ is a commutative ring and $x$ is an indeterminate the set 
+\[R\llbracket x \rrbracket=\left\{\sum_{i\geq 0} r_i x^i \mid r_i\in R\right\}\]
+with the obvious addition and multiplication
+is called the {\em power series ring} in the variable $x$ with coefficients in $R$.
+
+If $x_1,\ldots, x_d$ are distinct indeterminates the \DEF{power series ring} in all of these variables is defined inductively as 
+\[R\llbracket x_1,\ldots,x_n \rrbracket=\left(R\llbracket x_1,\ldots,x_{d-1}\rrbracket \right)\llbracket x_d\rrbracket.\]
+\end{defn}
+
+
+
+
+
+
+We will now give a huge family of Noetherian rings.
+
+
+
+\begin{theorem}[Hilbert's Basis Theorem]
+	Let $R$ be a Noetherian ring. Then the rings $R[x_1,\dots,x_d]$ and $R\llbracket x_1,\dots,x_d\rrbracket$ are Noetherian.
+\end{theorem}
+
+\begin{proof}
+	We give the proof for polynomial rings, and indicate the difference in the power series argument. By induction on $d$, we can reduce to the case $d=1$. Given $I\subseteq R[x]$, let 
+	\[ J = \{ a \in R \ \mid  \ \textrm{there is some } a x^n + \text{lower order terms (wrt }x) \in I\}.\]
+	So $J \subseteq R$ consists of all the leading coefficients of polynomials in $I$. We can check (exercise) that this is an ideal of $R$. By our hypothesis, $J$ is finitely generated, so let $J = (a_1,\dots,a_t)$. Pick $f_1,\dots,f_t\in R[x]$ such that the leading coefficient of $f_i$ is $a_i$, and set $N=\displaystyle\max_i \{\deg{f_i} \}$.
+	
+	Given any $f\in I$ of degree greater than $N$, we can cancel off the leading term of $f$ by subtracting a suitable combination of the $f_i$, so any $f \in I$ can be written as $f = g+h$ where $h\in (f_1, \ldots, f_t)$ and $g \in I$ has degree at most $N$, so $g \in I \cap (R + Rx + \cdots + R x^N)$. Note that since $I \cap (R + Rx + \cdots + R x^N)$ is a submodule of the finitely generated free $R$-module $R + Rx + \cdots + R x^N$, it is also finitely generated as an $R$-module. Given such a generating set, say $I \cap (R + Rx + \cdots + Rx^N) = (f_{t+1}, \ldots, f_s)$, we can write any such $f \in I$ as an $R[x]$-linear combination of these generators and the $f_i$'s. Therefore, $I = (f_1, \ldots, f_t, f_{t+1}, \ldots, f_s)$ is finitely generated, and $R[x]$ is a Noetherian ring.
+	
+	In the power series case, take $J$ to be the coefficients of \emph{lowest degree} terms.
+\end{proof}
+
+\begin{cor} If $R$ is Noetherian, then any finitely generated $R$-algebra is Noetherian as well.
+\end{cor}
+\begin{proof} A finitely generated $R$-algebra is a quotient ring of a polynomial ring in finitely many variables over~$R$.
+\end{proof}
+
+Note that the converse to this is false, e.g., a power series ring over a field is Noetherian, but is not a finitely generated algebra.
+
+We now give a subtle connection between the finiteness conditions discussed. 
+
+
+\begin{theorem}[Artin-Tate Lemma]
+	Let $A\subseteq B \subseteq C$ be rings. Assume that
+	\begin{itemize}
+		\item $A$ is Noetherian,
+		\item $C$ is module-finite over $B$, and
+		\item $C$ is algebra-finite over $A$.
+	\end{itemize}
+	Then, $B$ is algebra-finite over $A$.
+\end{theorem}
+
+\begin{proof}
+	Let $C=A[f_1,\dots,f_r]$ and $C=B g_1 + \cdots + B g_s$. Then, 
+	$$f_i = \sum_j b_{ij} g_j \quad \text{and} \quad g_i g_j = \sum_k b_{ijk} g_k$$
+	for some $b_{ij}, b_{ijk}\in B$. Let $B_0 = A[\{b_{ij}, b_{ijk}\}] \subseteq B$. Since $A$ is Noetherian, so is $B_0$.
+	
+	We claim that $C=B_0 \, g_1 + \cdots + B_0 g_s$. Given an element $c\in C$, write $c$ as a polynomial expression in $f_1, \ldots, f_r$, and since the $f_i$ are linear combinations of the $g_i$, we can rewrite $c\in A[\{b_{ij}\}][g_1,\dots,g_s]$. Then using the equations for $g_i g_j$ we can write $c$ in the form required.
+	
+	Now, since $B_0$ is Noetherian, $C$ is a finitely generated $B_0$-module, and $B\subseteq C$, then $B$ is a finitely generated $B_0$-module, too. In particular, $B_0 \subseteq B$ is algebra-finite. We conclude that $A  \subseteq B$ is algebra-finite, as required.
+\end{proof}
+
+\ssec{Application: Finite generation of rings of invariants}
+
+Historically, commutative algebra has roots in classical questions of algebraic and geometric flavors, including the following natural question:
+
+\begin{question}
+	Given a (finite) set of symmetries, consider the collection of polynomial functions that are fixed by all of those symmetries. Can we describe all the fixed polynomials in terms of finitely many of them?
+\end{question}
+
+
+To make this precise, let $G$ be a group acting on a ring $R$, or just as well, a group of automorphisms of $R$. The main case we have in mind is when $R=K[x_1,\dots,x_d]$ is a polynomial ring and $K$ is a field. We are interested in the set of elements that are \emph{invariant}\index{invariant}\index{$R^G$} under the action,
+\[ R^G : = \{ r \in R \ | \ g(r) = r \ \text{for all} \ g\in G\}. \]
+Note that $R^G$ is a subring of $R$. Indeed, given $r,s\in R^G$, then
+\[r+s=g(r)+g(s)=g(r+s) \quad \text{and}\quad r s = g(r) g(s) = g(rs) \qquad \text{for all} \ g\in G,\]
+since each $g$ is a homomorphism. Note also that if $G=\langle g_1,\dots,g_t\rangle$, then $r\in R^G$ if and only if $g_i(r)=r$ for $i=1,\dots,t$. The question above can now be rephrased as follows:
+
+\begin{question}
+	Given a finite group $G$ acting on $R=K[x_1,\dots,x_d]$, is $R^G$ a finitely generated $K$-algebra?
+\end{question}
+
+Observe that, in this setting, $R^G$ is a $K$-subalgebra of $R$, which is a finitely generated $K$-algebra, but this does not guarantee a priori that $R^G$ is a finitely generated $K$-algebra.
+
+\begin{ex}[Standard representation of the symmetric group]
+\label{ex:symmetric}
+	Let $S_n$\index{$S_n$} be the symmetric group on $n$ letters acting on $R=K[x_1,\dots,x_n]$ via $\sigma(x_i)=x_{\sigma(i)}$.
+	
+	For example, if $n=3$, then $f=x_1^2+x_2^2+x_3^2$ is invariant, while $g=x_1^2+x_1x_2+x_2^2+x_3^2$ is not, since swapping 1 with 3 gives a different polynomial.
+	
+	You may recall the Fundamental Theorem of Symmetric Polynomials says that every element of $R^{S_n}$ can be written as polynomial expression in the elementary symmetric polynomials 	
+		\begin{eqnarray*}
+	e_1 =&x_1+\dots +x_n\\
+	e_2 =&\sum x_i x_j\\
+	\vdots \\
+	e_n =&x_1x_2\cdots x_n.
+	\end{eqnarray*}
+	E.g, $f$ above is $e_1^2-2 e_2$. (Moreover, any symmetric polynomial can be written like so in a \emph{unique} way, so $R^{S_n}$ is a free $K$-algebra.) So even though we have infinitely many invariant polynomials, we can understand them in terms of only finitely many of them, which are {\em fundamental} invariants.
+\end{ex}
+
+\begin{example}[Roots of unity]\label{rootofunityinvariants}
+	Let $G=\{e,g\}$ act on $R=K[x_1,\dots,x_d]$ by negating the variables: $g \cdot x_i = -x_i$ for all $i$, so $g \cdot f(\underline{x}) = f(-\underline{x})$. Suppose that the characteristic of $K$ is not 2, so $-1\neq 1$. Given a general $f$, we can write it as a sum of its \emph{homogeneous} pieces: that is,
+	\[ f = f_r + f_{r-1} +  \cdots + f_1 + f_0, \]
+	where each $f_i$ is a sum of monomials of degree $i$. We have $g(f_i)=(-1)^i f_i$, so
+	\[ g(f) = (-1)^r f_r + (-1)^{r-1}f_{r-1} +  \cdots - f_1 + f_0, \]
+	which differs from $f$ unless every homogeneous piece of $f$ has even degree. That is,
+	\[ R^G = \{ f \in R \ | \ \text{every term of $f$ has even degree}\}.\]
+	Any polynomial of even degree can be written as a $K$-linear combination of products of monomials of degree two. This means that $R^G=K[\{x_i x_j \ | \ 1 \leq i \leq j \leq d\}] \subseteq K[x_1,\dots,x_n]$.
+	
+	This computation readily generalizes to the case of a field $K$ that contains $t$-th roots of unity, and a cyclic group $G=\langle g \rangle$ of order $t$ acting on $R$ by the rule $g(x_i)=\zeta_t \cdot x_i$ for all $i$. In this case, we have
+	\[ R^G = \{ f \in R \ | \ \text{every term of $f$ has degree a multiple of $t$}\} = K[ \{x_{i_1} \cdots x_{i_t} \ | \ 1 \leq i_1 \leq  \cdots \leq i_t \leq d\}].\]
+	This ring is called the \emph{$t$-th Veronese ring}\index{Veronese ring}. \end{example}
+
+
+
+\begin{proposition}
+Let $k$ be a field, $R$ be a finitely-generated $k$-algebra, and $G$ a finite group of automorphisms of $R$ that fix $k$. Then $R^G \subseteq R$ is module-finite.
+\end{proposition}
+
+\begin{proof} 
+Since integral implies module-finite, we will show that $R$ is algebra-finite and integral over $R^G$.
+
+First, since $R$ is generated by a finite set as a $k$-algebra, and $k\subseteq R^G$, it is generated by the same finite set as an $R^G$-algebra as well. Extend the action of $G$ on $R$ to $R[t]$ with $G$ fixing $t$. Now, for $r\in R$, consider the polynomial $F_r(t)=\prod_{g\in G} (t-g(r)) \in R[t]$. Then $G$ fixes $F_r(t)$, since for each $h \in G$,
+$$h(F_r(t)) = h \prod_{g\in G} (t-g(r)) = \prod_{g\in G} (h \cdot t-hg(r)) = F_r(t)$$
+Thus, $F_r(t)\in (R[t])^{G}$. Notice that $(R[t])^G = R^G[t]$, since 
+
+$g (a_nt^n + \cdots + a_0) = a_nt^n + \cdots + a_0 \implies (g \cdot a_n)t^n + \cdots + (g \cdot a_0) = a_nt^n + \cdots + a_0.$
+\noindent
+Therefore, $F_r(t) \in R^G[t]$. The leading term (with respect to $t$) of $F_r(t)$ is $t^{|G|}$, so $F_r(t)$ is monic, and $r$ is integral over $R^G$. Therefore, $R$ is integral over $R^G$.
+\end{proof}
+
+\begin{theorem}[Noether's finiteness theorem for invariants of finite groups]
+Let $K$ be a field, $R$ be a polynomial ring over $K$, and $G$ be a finite group acting $K$-linearly on $R$. Then $R^G$ is a finitely generated $K$-algebra.
+\end{theorem}
+
+\begin{proof}
+Observe that $K \subseteq R^G \subseteq R$, that $K$ is Noetherian, $K\subseteq R$ is algebra-finite, and $R^G\subseteq R$ is module-finite. Thus, by the Artin-Tate Lemma, we are done!
+\end{proof}
+
+
+\section{Graded rings} 
+
+\ssec{Basics of graded rings}
+
+When we think of a polynomial ring $R$, we often think of $R$ with its graded structure, in terms of degrees of elements. Other rings we have seen also have a graded structure, and this structure is actually very powerful.
+
+
+\begin{definition}
+	A ring $R$ is {\em $\mathbb{N}$-graded}\index{$\N$-graded} \index{graded ring} if we can write a direct sum decomposition of $R$ as an abelian group indexed by $\mathbb{N}$ (Our convention is that $0\in \N$):
+		$$R=\bigoplus_{a \geqslant 0} R_a,$$
+	where $R_a R_b \subseteq R_{a+b}$ for every $a,b \in \mathbb{N}$, meaning that for any $r\in R_a$ and $s\in R_b$, we have $rs\in R_{a+b}$. 
+	
+	We say $R$ is a \DEF{positively graded $A$-algebra} if $R$ is $\N$-graded with $R_0=A$.
+	
+	More generally, given a semigroup $T$, the ring $R$ is {\em $T$-graded}\index{$T$-graded} if there exists a direct sum decomposition of $R$ as an abelian group indexed by $T$:
+	$$R=\bigoplus_{a\in T} R_a$$
+	satisfying $R_a R_b \subseteq R_{a+b}$.
+
+	An element that lies in one of the summands $R_a$ is said to be {\em homogeneous}\index{homogeneous element} of {\em degree}\index{degree of a homogeneous element} $a$; we write $|r|$\index{$\mid r \mid$} or $\deg(r)$\index{$\deg(r)$} to denote the degree of a homogeneous element $r$.
+\end{definition}
+
+
+By definition, an element in a graded ring is uniquely a sum of homogeneous elements, which we call its {\em homogeneous components}\index{homogeneous components} \index{graded components} or {\em graded components}; we may write \Def{$[f]_d$} for the $d$th homogeneous component of $f$.  One nice thing about graded rings is that many properties can usually be sufficiently checked on homogeneous elements, and these are often easier to deal with.
+
+
+\begin{remark}
+Note that whenever $R$ is a graded ring, the multiplicative identity $1$ must be a homogeneous element whose degree is the identity in $T$. In particular, if $R$ is $\NN$ or $\ZZ$-graded, then $1 \in R_0$ and $R_0$ is a subring of $R$.
+\end{remark}
+
+
+\begin{example}
+	\begin{enumerate}
+	
+		\item Any ring $R$ is trivially an $\NN$-graded ring, by setting $R_0 = R$ and $R_n = 0$ for $n \neq 0$.
+		
+		\item If $K$ is a field and $R=k[x_1,\dots,x_n]$ is a polynomial ring, there is an $\NN$-grading on $R$ called the \emph{standard grading}\index{standard grading} where $R_d$ is the $K$-vector space with basis given by the monomials of total degree $d$, meaning those of the form $x_1^{\alpha_1}\cdots x_n^{\alpha_n}$ with $\sum_i \alpha_i =d$. Of course, this is the notion of degree familiar from middle school. So $x_1^2+x_2x_3$ is homogeneous in the standard grading, while $x_1^2+x_2$ is not.
+		
+		\item If $K$ is a field, and $R=K[x_1,\dots,x_n]$ is a polynomial ring, we can give different $\NN$-gradings on $R$ by fixing some tuple $(\beta_1,\dots,\beta_n)\in \NN^n$ and letting $x_i$ be a homogeneous element of degree $\beta_i$; we call this a grading with \emph{weights}\index{weights} $(\beta_1,\dots,\beta_n)$.
+		
+		For example, in $K[x_1,x_2]$, $x_1^2+x_2^3$ is not homogeneous in the standard grading, but it is homogeneous of degree $6$ under the $\mathbb{N}$-grading with weights $(3,2)$.
+	
+		\item A polynomial ring $R = K[x_1, \ldots, x_n]$ also admits a natural $\NN^n$-grading, with $R_{(d_1,\dots,d_n)}= {K \cdot x_1^{d_1}\cdots x_n^{d_n}}$. This is called the \emph{fine grading}\index{fine grading}.
+			
+			\item Let $\Gamma \subseteq \mathbb{N}^n$ be a subsemigroup of $\mathbb{N}^n$. Then 
+			$$\bigoplus_{\gamma \in \Gamma} K \cdot \vx ^ {\gamma} \subseteq K[\vx] = K[x_1, \ldots, x_n]$$
+			is an $\mathbb{N}^n$-graded subring of $K[x_1,\dots,x_n]$. Conversely, every $\NN^n$-graded subring of $K[x_1,\dots,x_n]$ is of this form.
+					\end{enumerate}	
+\end{example}
+
+\begin{remark}
+	You may have seen the term \emph{homogeneous polynomial} used to refer to a polynomial $f(x_1, \ldots, x_n) \in K[x_1, \ldots, x_n]$ that satisfies 
+	$$f(\lambda x_1, \ldots, \lambda x_n) = \lambda^d f(x_1, \ldots, x_n)$$
+	for some $d$. This is equivalent to saying that all the terms in $f$ have the same total degree, or that $f$ is homogeneous with respect to the standard grading.
+	
+	Similarly, a polynomial is \emph{quasi-homogeneous}, \index{quasi-homogeneous polynomial} or \emph{weighted homogeneous}, if there exist integers $w_1, \ldots, w_n$ such that the sum $w = a_1 w_1 + \cdots + a_n w_n$ is the same for all monomials $x_1^{a_1} \cdots x_n^{a_n}$ appearing in $f$. So $f$ satisfies
+	$$f(\lambda^{w_1} x_1, \ldots, \lambda^{w_n} x_n) = \lambda^{w} f(x_1, \ldots, x_n),$$
+	and $f(x_1^{w_1}, \ldots, x_n^{w_n})$ is homogeneous (in the previous sense, so with respect to the standard grading). 
+	This condition is equivalent to asking that $f$ be homogeneous with respect to some weighted grading on $K[x_1, \ldots, x_n]$.
+\end{remark}
+
+
+
+\begin{definition}
+	An ideal $I$ in a graded ring $R$ is called \emph{homogeneous}\index{homogeneous ideal} if it can be generated by homogeneous elements.
+\end{definition}
+
+
+\begin{lem} Let $I$ be an ideal in a graded ring $R$.
+The following are equivalent:
+	
+	\begin{enumerate}
+	\item $I$ is homogeneous.
+	\item  For any element $f\in R$ we have $f\in I$ if and only if every homogeneous component of $f$ lies in $I$. 
+	\item $I = \bigoplus_{a \in T} I_a$, where $I_a = I \cap R_a$.
+	\end{enumerate}
+	\end{lem}
+	\begin{proof}
+	(1) $\Rightarrow$ (2):  If $I$ is homogeneous and $f\in I$, write $f$ as a combination of the (homogeneous) generators of $I$, say $f_1, \ldots, f_n$:
+$$f = r_1 f_1 + \cdots + r_n f_n.$$
+Write each $r_i$ as a sum of its components, say $r_i = [r_i]_{d_{i,1}} + \cdots + [r_i]_{d_{i,m_i}} $. Then, after substituting and collecting, 
+\[ f= \sum_{d} ( [r_1]_{d-|f_1|} f_1 + \cdots +   [r_n]_{d-|f_n|} f_n)\]
+expresses $f$ as a sum of homogeneous elements of different degrees, so 
+\[ f_d =  [r_1]_{d-|f_1|} f_1 + \cdots +   [r_n]_{d-|f_n|} f_n \in I.\]
+
+(2) $\Rightarrow$ (1): Any element of $I$ is a sum of its homogeneous components. Thus, in this case, the set of homogeneous elements in $I$ is a generating set for $I$.
+
+(2) $\Rightarrow$ (3): As above, $I$ is generated by the collection of additive subgroups $\{I_a\}$ in this case; the sum is direct as there is no nontrivial $\Z$-linear combination of elements of different degrees.
+
+(3) $\Rightarrow$ (2): Clear.
+\end{proof}
+	
+
+
+\begin{example}
+Given an $\NN$-graded ring $R$, then $R_+=\bigoplus_{d>0} R_d$ is a homogeneous ideal.
+\end{example}
+
+
+We now observe the following:
+
+\begin{lemma}
+	Let $R$ be an $T$-graded ring, and $I$ be a homogeneous ideal. Then $R/I$ has a natural $T$-graded structure induced by the $T$-graded structure on $R$.
+\end{lemma}
+
+\begin{proof}
+	The ideal $I$ decomposes as the direct sum of its graded components, so we can write
+	$$R/I = \frac{\oplus R_a}{\oplus I_a} \cong \oplus \frac{R_a}{I_a}.\qedhere$$
+\end{proof}
+
+
+
+\begin{example}
+	\begin{enumerate}
+		
+		\item The ideal $I = (w^2x+wyz+z^3,x^2+3xy+5xz+7yz+11z^2)$ in $R=K[w,x,y,z]$ is homogeneous with respect to the standard grading on $R$, and thus the ring $R/I$ admits an $\NN$-grading with $|w|=|x|=|y|=|z|=1$.
+		
+		\item In contrast, the ring $R=k[x,y,z]/(x^2+y^3+z^5)$ does not admit a grading with $|x|=|y|=|z|=1$, but does admit a grading with $|x|=15,|y|=10,|z|=6$.
+	\end{enumerate}
+\end{example}
+
+\begin{definition}
+Let $R$ be a $T$-graded ring, and $M$ an $R$-module. The module $R$ is {\bf $T$-graded}\index{$T$-graded module}\index{graded module} if there exists a direct sum decomposition of $M$ as an abelian group indexed by $T$:
+	$$M=\bigoplus_{a\in T} M_a \textrm{ such that } R_a M_b \subseteq M_{a+b}$$ for all $a,b\in T$.
+	\end{definition}
+	
+	The notions of homogeneous element of a module and degree of a homogeneous element of a module take the obvious meanings. A notable abuse of notation: we will often talk about $\ZZ$-graded modules over $\NN$-graded rings, and likewise.
+	
+	We can also talk about graded homomorphisms.
+	
+\begin{definition}
+Let $R$ and $S$ be $T$-graded rings with the same grading monoid $T$. A ring homomorphism $\varphi:R\to S$ is {\em graded} or {\em degree-preserving}\index{graded ring homomorphism} \index{degree preserving homomorphism} if $\varphi(R_a) \subseteq S_{a}$ for all $a \in T$.
+\end{definition}
+
+Note that our definition of ring homomorphism requires $1_R \mapsto 1_S$, and thus it does not make sense to talk about graded ring homomorphisms of degree $d \neq 0$. But we can have graded module homomorphisms of any degree.
+
+\begin{definition}	
+Let $M$ and $N$ be $\ZZ$-graded modules over the $\NN$-graded ring $R$. A homomorphism of $R$-modules $\varphi:R\to S$ is {\em graded} \index{graded homomorphism} if $\varphi(M_a) \subseteq N_{a+d}$ for all $a \in \ZZ$ and some fixed $d \in \mathbb{Z}$, called the {\em degree}\index{degree of a graded module homomorphism} of $\varphi$. A graded homomorphism of degree $0$ is also called {\em degree-preserving}\index{degree-preserving homomorphism}.
+\end{definition}
+
+
+\begin{example}\label{example shift}
+\begin{enumerate}
+\item Consider the ring map $K[x,y,z]\to K[s,t]$ given by $x\mapsto s^2, y\mapsto st, z\mapsto t^2$. If $K[s,t]$ has the fine grading, meaning $|s|=(1,0)$ and $|t|=(0,1)$, then the given map is degree preserving if and only if $k[x,y,z]$ is graded by 
+$$|x|=(2,0), |y|=(1,1), |z|=(0,2).$$
+
+\item Let $K$ be a field, and let $R=K[x_1,\dots,x_n]$ be a polynomial ring with the standard grading. Given $c\in K=R_0$, the homomorphism of $R$-modules $R\to R$ given by $f\mapsto cf$ is degree preserving. However, if instead we take $g\in K=R_d$ for some $d>0$, then the map 
+$$\xymatrix@R=1mm{R \ar[r] & R \\
+f \ar@{|->}[r] & gf}$$
+is not degree preserving, although it is a graded map of degree $d$. We can make this a degree-preserving map if we shift the grading on $R$ by defining $R(-d)$ \index{$R(d)$}to be the $R$-module $R$ but with the $\ZZ$-grading given by $R(-d)_t=R_{t-d}$. With this grading, the component of degree $d$ of $R(-d)$ is $R(-d)_d=R_0=K$. Now the map 
+$$\xymatrix@R=1mm{R(-d) \ar[r] & R \\
+f \ar@{|->}[r] & gf}$$
+is degree preserving.
+\end{enumerate}
+\end{example}
+
+
+
+We observed earlier an important relationship between algebra-finiteness and Noetherianity that followed from the Hilbert basis theorem: if $R$ is Noetherian, then any algebra-finite extension of $R$ is also Noetherian. There isn't a converse to this in general: there are lots of algebras over fields $K$ that are Noetherian but not algebra-finite over $K$. However, for graded rings, this converse relation holds.
+
+%\lec{January 25}
+
+\begin{proposition}
+	Let $R$ be an $\NN$-graded ring, and consider homogeneous elements $f_1,\dots,f_n \in R$ of positive degree. Then $f_1,\dots,f_n$ generate the ideal $R_+ := \bigoplus_{d>0} R_d$ if and only if $f_1,\dots,f_n$ generate $R$ as an $R_0$-algebra.
+	
+	Therefore, an $\NN$-graded ring $R$ is Noetherian if and only if $R_0$ is Noetherian and $R$ is algebra-finite over~$R_0$.
+\end{proposition}
+\begin{proof}
+	If $R=R_0[f_1,\dots,f_n]$, then any element $r\in R_+$ can be written as a polynomial expression $r=P(f_1,\dots,f_n)$ for some $P\in R_0[\underline{x}]$ with no constant term. Each monomial of $P$ is a multiple of some $x_i$, and thus $r\in (f_1,\dots,f_n)$.
+	
+	To show that $R_+= (f_1,\dots,f_n)$ implies $R=R_0[f_1,\dots,f_n]$, it suffices to show that any homogeneous element $r\in R$ can be written as a polynomial expression in the $f$'s with coefficients in $R_0$. We induce on the degree of $r$, with degree 0 as a trivial base case. For $r$ homogeneous of positive degree, we must have $r\in R_+$, so by assumption we can write $r= a_1 f_1 + \dots + a_n f_n$; moreover, since $r$ and $f_1, \ldots, f_n$ are all homogeneous, we can choose each coefficient $a_i$ to be homogeneous of degree $|r|-|f_i|$. By the induction hypothesis, each $a_i$ is a polynomial expression in the $f$'s, so we are done.
+	
+	For the final statement, if $R_0$ is Noetherian and $R$ algebra-finite over $R_0$, then $R$ is Noetherian by the Hilbert Basis Theorem. If $R$ is Noetherian, then $R_0 \cong R/R_+$ is Noetherian. Moreover, $R$ is algebra-finite over $R_0$ since $R_+$ is generated as an ideal by finitely many homogeneous elements by Noetherianity, so  by the first statement, we get a finite algebra generating set for $R$ over $R_0$.
+\end{proof}
+
+
+
+There are many interesting examples of $\NN$-graded algebras with $R_0 = K$; in that case, $R_+$ is the largest homogeneous ideal in $R$. In fact, $R_0$ is the only maximal ideal of $R$ that is also homogeneous, so we can call it \emph{the} {\bf homogeneous maximal ideal}; it is sometimes also called the {\bf irrelevant maximal ideal} of $R$. This ideal plays a very important role --- in many ways, $R$ and $R_+$ behave similarly to a local ring $R$ and its unique maximal ideal. We will discuss this further when we learn about local rings.
+
+
+
+
+
+\ssec{Application: Finite generation rings of invariants }
+
+If $R$ is a graded ring, and $G$ is a group acting on $R$ by degree-preserving automorphisms, then $R^G$ is a graded subring of $R$, meaning $R^G$ is graded with respect to the same grading monoid. In particular, if $G$ acts $K$-linearly on a polynomial ring over $K$, the invariant ring is $\NN$-graded.
+
+Using this perspective, we can now give a different proof of the finite generation of invariant rings that works under different hypotheses. The proof we will discuss now is essentially Hilbert's proof. To do that, we need another notion that is very useful in commutative algebra.
+
+\begin{definition} 
+Let $S$ be an $R$-algebra corresponding to the ring homomorphism $\varphi:R \to S$. We say that $R$ is a {\em direct summand}\index{direct summand} of $S$ if the map $\varphi$ admits a left inverse as a map of $R$-modules.
+\end{definition}
+
+Since the condition forces $\varphi$ to be injective, we can assume it is an inclusion map (after renaming elements). Note that given any $R$-linear map $\pi: S \to R$, if $\pi(1)=1$ then $\pi$ is a splitting: indeed, $\pi(R)=\pi(r \cdot 1) = r \pi(1)=r$ for all $r \in R$.
+
+
+Being a direct summand is really nice, since many good properties of $S$ pass onto its direct summands.
+
+\begin{defn} Let $\phi:R\to S$ be a ring homomorphism.
+\begin{itemize}
+\item Given an ideal $J$ in $S$, the preimage of $J$ under $\phi$ is the \DEF{contraction} of $J$, denoted \Def{$\phi^{-1}(J)$} or \Def{$J \cap R$}, even if $\phi$ is not an inclusion map.
+\item Given an ideal $I$ in $R$, the \DEF{expansion} of $I$ in $S$ is the ideal of $S$ generated by $\phi(I)$; we naturally denote this by \Def{$IS$}.
+\end{itemize}
+\end{defn}
+
+
+\begin{lemma}\label{direct summand ideals contract}
+Let $R$ be a direct summand of $S$. Then, for any ideal $I \subseteq R$, we have $IS \cap R=I$.
+\end{lemma}
+
+\begin{proof}
+	Let $\pi$ be the corresponding splitting. Clearly, $I \subseteq IS \cap R$. Conversely, if $r \in IS \cap R$, we can write $r = s_1 f_1 + \cdots + s_t f_t$ for some $f_i \in I$, $s_i \in S$. Applying $\pi$, we have
+	$$r = \pi(r) = \pi \left( \sum_{i=1}^t s_i f_i \right) = \sum_{i=1}^t \pi\left( s_i f_i \right) = \sum_{i=1}^t \pi \left( s_i \right) f_i \in I.$$
+\end{proof}
+
+\begin{proposition}\label{direct summand noetherian}
+	Let $R$ be a direct summand of $S$. If $S$ is Noetherian, then so is $R$.
+\end{proposition}
+
+\begin{proof}
+	Let 
+	$$I_1\subseteq I_2 \subseteq I_3 \subseteq \cdots$$ 
+	be a chain of ideals in $R$. The chain of ideals in $S$
+	$$I_1 S \subseteq I_2 S \subseteq I_3 S \subseteq \cdots$$ 
+	stabilizes, so there exist $J$, $N$ such that $I_n R = J$ for $n \geqslant N$. Contracting to $R$, we get that $I_n = I_n S \cap R = J \cap R$ for $n\geqslant N$, so the original chain also stabilizes.
+\end{proof}
+
+
+\begin{proposition}
+Let $K$ be a field, and $R$ be a polynomial ring over $K$. Let $G$ be a finite group acting $K$-linearly on $R$. Assume that the characteristic of $k$ does not divide~$|G|$. Then $R^G$ is a direct summand of~$R$.
+\end{proposition}
+
+\begin{proof}
+	We consider the map $\rho: R \to R^G$ given by 
+	$$\rho(r)=\frac{1}{|G|} \sum_{g\in G} g\cdot r.$$ 
+	First, note that the image of this map lies in $R^G$, since acting by $g$ just permutes the elements in the sum, so the sum itself remains the same. We claim that this map $\rho$ is a splitting for the inclusion $R^G \subseteq R$. To see that, let $s\in R^G$ and $r\in R$. We have 
+	$$
+	\rho(sr)=\frac{1}{|G|} \sum_{g\in G} g\cdot (sr) =\frac{1}{|G|} \sum_{g\in G} (g\cdot s)(g\cdot r) =\frac{1}{|G|} \sum_{g\in G} s(g\cdot r) = s \frac{1}{|G|} \sum_{g\in G} (g\cdot r) = s \rho(r),$$
+	so $\rho$ is $R^G$-linear, and for $s\in R^G$, 
+	$$\rho(s)=\frac{1}{|G|} \sum_{g\in G} g\cdot s=s.$$
+\end{proof}
+
+
+\begin{theorem}[Hilbert's finiteness theorem for invariants]
+Let $k$ be a field, and $R$ be a polynomial ring over $k$. Let $G$ be a group acting $k$-linearly on $R$. Assume that $G$ is finite and  $|G|$ does not divide the characteristic of $k$, or more generally, that $R^G$ is a direct summand of $R$. Then $R^G$ is a finitely generated $k$-algebra.
+\end{theorem}
+
+\begin{proof}
+	Since $G$ acts linearly, $R^G$ is an $\NN$-graded subring of $R$ with $R_0=k$. Since $R^G$ is a direct summand of $R$, $R^G$ is Noetherian by Proposition \ref{direct summand noetherian}. By our characterization of Noetherian graded rings, $R^G$ is finitely generated over $R_0=k$.
+\end{proof}
+
+One important thing about this proof is that it applies to many infinite groups. In particular, for any \emph{linearly reductive group}\index{linearly reductive group}, including $\mathrm{GL}_n(\CC)$, $\mathrm{SL}_n(\CC)$, and $(\CC^{\times})^n$, we can construct a splitting map $\rho$.
+
+\sec{Affine varieties}
+
+
+
+\ssec{Definition and examples of affine varieties}
+
+Our next goal is to study solution sets of polynomial equations. Such solutions sets have a fancy name.
+
+\begin{defn} Let $K$ be a field. We define \DEF{affine $n$-space} over $K$, denoted \Def{$\A^n_K$}, to be the set of $n$-tuples over $K$:
+\[ \A^n_K = \{ (a_1,\dots,a_n) \ | \ a_i\in K\}.\]
+\end{defn}
+
+Observe that any $f\in K[x_1,\dots,x_n]$ can be considered as a function on $\A^n_K$, where $f(a_1,\dots,a_n)$ is result of specializing $x_i$ to $a_i$ for each $i$.
+
+\begin{defn} For any subset $S\subseteq K[x_1,\dots,x_n]$, we set \[\cZ(S):= \{(a_1,\dots,a_n) \in \A^n_K \ | \ f(a_1,\dots,a_n)=0 \ \text{for all} \ f\in S\}.\]\index{$\cZ(I)$} We may write $\cZ_K$ when we want to emphasize the field.
+We call $\cZ(S)$ the \DEF{zero set} of $S$. A \DEF{subvariety} of $\A^n_K$ is a set of the form $\cZ(S)$. An \DEF{affine variety}, or just a \DEF{variety}, is a subvariety of $\A^n_K$ for some $n$.
+\end{defn}
+
+\begin{ex}
+\begin{enumerate}
+%\item
+%For any field, we have
+%$\cZ(0) = \A^n_k$ and  $\cZ(1) = \emptyset$. 
+
+
+\item For $K = \mathbb{R}$ and $n = 2$, $\mathcal{Z}(y^2 + x^2(x-1))$ is a ``nodal curve'' in $\A^2_\mathbb{R}$, the real plane. Note that we've written $x$ for $x_1$ and $y$ for $x_2$ here.
+\begin{center}
+% \includegraphics[width = 2in, height = 2in]{v1.png} 
+ \end{center}
+\item
+For $K = \mathbb{R}$ and $n = 3$, $\mathcal{Z}(z - x^2 - y^2)$ is a paraboloid in $\A^3_\mathbb{R}$, real three space. 
+% Note that $x = x_1$, $ y = x_2$ and $z = x_3$.
+\begin{center}
+% \includegraphics[width = 2in, height = 2in]{v2.png} 
+ \end{center}
+\item For $K = \mathbb{R}$ and $n = 3$, $\mathcal{Z}(z - x^2 - y^2, 3x - 2y + 7z - 7)$ is circle in $\A^3_\mathbb{R}$.
+\begin{center}
+% \includegraphics[width = 2in, height = 2in]{v3.png} 
+ \end{center}
+ 
+ \item Over an arbitrary field $K$, a linear subspace of $\A^n_K = K^n$ is a subvariety: such a subset is defined by some linear equations.
+ 
+
+ 
+ \item For $K = \mathbb{R}$, $\mathcal{Z}_\mathbb{R}(x^2 + y^2 + 1) = \emptyset$. Note that $\mathcal{Z}_\mathbb{C}(x^2 + y^2 +1 ) \neq \emptyset$, since it contains $(i,0)$.
+ 
+   \item For $K = \mathbb{R}$, $\mathcal{Z}_\mathbb{R}(x^2 + y^2) = \{(0,0)\}$. On the other hand, $\mathcal{Z}_\mathbb{C}(x^2 + y^2)$ is a union of two ``lines'' in $\C^2$ (or two planes, in the ``real'' sense), given by the equations $x+iy=0$ and $x-iy=0$.
+
+
+
+\item The subset $\A^2_K \setminus \{(0,0)\}$ is not an algebraic subset of $\A^2_K$ if $K$ is infinite. Why?
+
+
+\item The graph of the sine function is not an algebraic subset of $\A^2_\mathbb{R}$. Why not?
+
+\item For $K = \mathbb{R}$ or $\C$, the set
+\[ X= \{ (t,t^2,t^3) \ | \ t\in K\} \] is an algebraic variety, though it isn't clear from this description. In fact, $X=\mathcal{Z}(y-x^2, z-x^3)$. To see the containment ``$\subseteq$'', for $(t,t^2,t^3)\in X$, we have $t^2- t^2=0$ and $t^3 - t ^3=0$. For the containment ``$\supseteq$'', let $(a,b,c)\in  \mathcal{Z}(y-x^2,  z-x^3)$, so $b=a^2$ and $c=a^3$. Setting $t=a$, we get that $(a,b,c)=(t,t^2,t^3)\in X$. The same argument works over $\C$. 
+
+\item For $K = \mathbb{R}$ or $\C$, the set
+\[ X= \{ (t^3,t^4,t^5) \ | \ t\in \R\} \] is an algebraic variety, though again it needs justification. Consider $Y=\cZ(y^3-x^4,z^3-x^5)$; clearly $X\subseteq Y$. Over $\R$, for $(a,b,c)\in Y$, take $t=\sqrt[3]{a}$; then $a=t^3$, $b^3=a^4$ means $b=\sqrt[3]{a}^4$, so $b=t^4$, and similarly $c=t^5$, so $X=Y$. We were using uniqueness of cube roots in this argument though, so we need to reconsider over $\C$. Indeed, if $\omega$ is a cube root of unity, then $(\omega,1,1)\in Y\smallsetminus X$, so we need to do better. Let's try $Z=\cZ(y^3-x^4,z^3-x^5,z^4-y^5)$. Again, $X\subseteq Z$. Say that $(a,b,c)\in \A^3_{\C}$ are in $Z$, and let $s$ be a cube root of $a$. Then $b^3=a^4 = (s^4)^3$ implies that $b=\omega s^4$ for some cube root of unity $\omega'$ (maybe $1$, maybe not). Similarly $c^3=a^4= (s^5)^3$ implies that $c=\omega'' s^5$ for some cube root of unity $\omega''$ (maybe $1$, maybe $\omega'$, maybe not). So at least $(a,b,c)=(s^3,\omega' s^4, \omega'' s^5)$. Let $t=\omega' s$. Then $(s^3,\omega' s^4, \omega'' s^5) = (t^3,t^4, \omega s^5)$, where $\omega= (\omega')^2 \omega''$ is again some cube root of unity. The equation $b^5=c^4$ shows that $t^20 = \omega^5 t^20$. If $t\neq 0$, this shows $\omega=1$, so $(a,b,c)=(t^3,t^4,t^5)$; if $t=0$, then $(a,b,c) = (0,0,0) = (0^3,0^4,0^5)$. Thus, $X=Z$.
+
+\item For any field $K$ and elements $a_1, \dots, a_d \in k$, we have
+$$\mathcal{Z}(x_1 - a_1, \dots, x_d -a_d) = \{(a_1, \dots, a_d)\}.$$
+So, all one element subsets of $\A^d_K$ are algebraic subsets. 
+
+\item Here is an example from linear algebra. Fix a field $K$ and consider the set of pairs $(A,v)$ of $2\times 2$ matrices and $2\times 1$ vectors over $K$. We can again identify this with $\A^6_K$; let's call our variables $x_{11}, x_{12}, x_{21}, x_{22}, y_1, y_2$, where we are thinking of $A= \begin{bmatrix} x_{11} & x_{12} \\ x_{21}& x_{22}\end{bmatrix}$ and $v= \begin{bmatrix} y_1 \\ y_2\end{bmatrix}$. The set $X$ of pairs $(A,v)$ such that $Av=0$ is a subvariety of $\A^6_K$:
+\[ X = \cZ( x_{11} y_1 + x_{12} y_2, x_{21} y_1 + x_{22} y_2 ).\]
+
+
+\item Let's take another linear algebra example. We can identify the set of $2 \times 3$ matrices over a field $K$ with~$\A^6_K$. To make this line up a little more naturally, let's label our variables as $x_{11}, x_{12}, x_{13}, x_{21}, x_{22}, x_{23}$. I claim that the set $X$ of matrices of rank $<2$ is a subvariety of $\A^{6}_K$. To see this, we need to find equations. For a $2\times 3$ matrix $A$ to have rank $<2$, it is necessary and sufficient that each $2\times 2$ submatrix have rank $<2$, which is equivalent to each of the $2\times 2$ minors (subdeterminants) of the matrix to be zero. Thus, 
+\[ X = \cZ( x_{11} x_{22} - x_{12} x_{21} , x_{11} x_{23} - x_{13} x_{21} , x_{12} x_{23} - x_{13} x_{22} ).\]
+
+\end{enumerate}
+\end{ex}
+
+ 
+ \begin{prop}
+  Let $K$ be a field and $R=K[x_1, \dots,x_n]$. Let $S, S_{\lambda}, T \subseteq R$ be arbitrary subsets, and $I, I_\lambda, J\subseteq R$ be ideals.
+  \begin{enumerate}
+  \item[(0)] $\cZ(1) = \varnothing$ and $\cZ(0) = \A^n_K$.
+  \item If $S\subseteq T$, then $\cZ(S) \supseteq \cZ(T)$.
+  \item If $I= (S)$ is the ideal generated by $S$, then $\cZ(S) = \cZ(I)= \cZ(\sqrt{I})$.
+  \item $\displaystyle \cZ(\bigcup_{\lambda \in \Lambda} S_\lambda)=\bigcap_{\lambda \in \Lambda} \cZ(S_\lambda)$.
+  \item[(3')] $\displaystyle \cZ(\sum_{\lambda \in \Lambda} I_\lambda)=\bigcap_{\lambda \in \Lambda} \cZ(I_\lambda)$.
+  \item $\displaystyle \cZ(\{fg \ | \ f\in S,  g\in T\}) = \cZ(S) \cup \cZ(T)$.
+
+  \item[(4')]  $\displaystyle \cZ(I \cap J)=\cZ(IJ) = \cZ(I) \cup \cZ(J)$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+(0) is clear, since $1$ is never equal to zero and $0$ is always zero. (1) is also clear, since imposing more equations cannot enlarge the solution set.
+
+For (2), we have $\cZ(I) \subseteq \cZ(S)$ by (1). On the other hand, if $f_1,\dots,f_m\in S$ and $r_1,\dots,r_n\in R$, and $(a_1,\dots,a_n)\in \cZ(S)$, then $f_i(a_1,\dots,a_n)=0$ for all $i$, so \[(\sum_i r_i f_i)(a_1,\dots,a_n) = \sum_i r_i(a_1,\dots,a_n) f_i(a_1,\dots,a_n) = 0,\] so $(a_1,\dots,a_n)\in \cZ(\sum_i r_i f_i)$. Thus, $(a_1,\dots,a_n)\in \cZ(I)$. That is, $\cZ(S) \subseteq \cZ(I)$. Similarly\dots
+
+(3) is clear: for a point to satisfy be a solution to all of the equations in each set $S_\lambda$, it is equivalent to be a solution of each set of equations $S_\lambda$. For (3'), using (2) and (3), since $\sum_{\lambda \in \Lambda} I_\lambda$ is the ideal generated by $\bigcup_{\lambda\in\Lambda} I_\lambda$, we have
+\[ \cZ(\sum_{\lambda \in \Lambda} I_\lambda) =  \cZ(\bigcup_{\lambda \in \Lambda} I_\lambda) = \bigcap_{\lambda \in \Lambda} \cZ(I_\lambda).\]
+
+For (4), it is clear that \[\cZ(S) \cup \cZ(T) \subseteq \cZ(\{fg \ | \ f\in S,  g\in T\}),\] since $f(a_1,\dots,a_n)=0$ for all $f\in S$ implies $f(a_1,\dots,a_n) g(a_1,\dots,a_n)=0$ for all $f\in S$ and all $g\in T$. On the other hand, if $(a_1,\dots,a_n)\notin \cZ(S) \cup \cZ(T)$, then there is some $f\in S$ and some $g\in T$ with $f(a_1,\dots,a_n) \neq 0$ and $g(a_1,\dots,a_n)\neq 0$, so $f(a_1,\dots,a_n) g(a_1,\dots,a_n)\neq 0$.
+
+For (4'), since $IJ \subseteq I \cap J \subseteq I$ and $I \cap J \subseteq J$), by (1) we get
+\[ \cZ(I) \cup \cZ(J) \subseteq \cZ(I \cap J) \subseteq  \cZ(IJ).\] On the other hand, by (2) and (4) we get
+\[ \cZ(IJ) \subseteq \cZ( \{ fg \ | \ f\in I , g\in J\}) = \cZ(I) \cup \cZ(J),\]
+so the equalities hold throughout.
+\end{proof}
+
+
+\begin{rem}
+A basic corollary of (3) above and the Hilbert basis theorem says that every system of polynomial equations is equivalent to a finite one! Indeed, for any set $S$, $\cZ(S) = \cZ(I)$ for $I=(S)$, and since $K[x_1,\dots,x_n]$ is Noetherian, $S=(f_1,\dots,f_m)$ for some $m$, so $\cZ(S) = \cZ(f_1,\dots,f_m)$.
+\end{rem}
+
+
+\begin{defn} Let $K$ be a field, and $X\subseteq \A^n_K$ be a subset. We define
+\[\cI(X):= \{ f\in K[x_1,\dots,x_n] \ | \ f(a_1,\dots,a_n)=0 \ \textrm{for all} \ (a_1,\dots,a_n)\in X\}\]
+\end{defn}
+
+One evident relation between the two notions: for a subset $X\subseteq \A^n_K$ and a subset $S \subseteq K[x_1,\dots,x_n]$, we have 
+\[ X \subseteq \cZ(S) \Longleftrightarrow \text{each $s\in S$ vanishes at each $x\in X$} \Longleftrightarrow S \subseteq \cI(X).\]
+
+\begin{definition}
+	The {\bf radical}\index{radical of an ideal}\index{$\sqrt{I}$} of an ideal $I$ in a ring $R$ is the ideal
+	$$\sqrt{I} := \{f\in R \ | \ f^n\in I \textrm{ for some } n\}.$$ 
+	An ideal is a {\bf radical ideal}\index{radical ideal} if $I=\sqrt{I}$.
+\end{definition}
+ 
+ To see that $\sqrt{I}$ is an ideal, note that if $f^m, g^n \in I$, then 
+ \[ \begin{aligned} (f+g)^{m+n-1} &= \sum_{i=0}^{m+n-1} \binom{m+n-1}{i} f^i g^{m+n-1-i} \\
+ &= f^m \left(f^{n-1} + \binom{m+n-1}{1} f^{n-2}g + \cdots + \binom{m+n-1}{n-1} g^{n-1}\right) \\
+ &+ g^n \left(\binom{m+n-1}{n} f^{m-1} + \binom{m+n-1}{n+1} f^{m-2} g + \cdots + g^{m-1} \right) \in I,
+  \end{aligned}\]
+ and $(rf)^m=r^m f^m \in I$.
+
+
+\begin{prop} Let $K$ be a field, and $X,X_\lambda,Y$ be subsets of $\A^n_K$.
+\begin{enumerate}
+\item[(0)] $\cI(\varnothing) = R$ and, if $K$ is infinite, $\cI(\A^n_K) =  0$.
+\item If $X \subseteq Y$, then $\cI(X) \supseteq \cI(Y)$.
+\item $\cI(X)$ is a radical ideal.
+\item $\cI( \bigcup_{\lambda\in \Lambda} X_\lambda) = \bigcap_{\lambda\in \Lambda} \cI(X_\lambda)$.
+%\item $\cI( X \cap Y) = \cI(X) + \cI(Y)$.
+%\item $\displaystyle \cI( \bigcap_{\lambda\in \Lambda} X_\lambda) = \sum_{\lambda\in \Lambda} \cI(X_\lambda)$.
+%\item $\cI(X \cup Y) = \cI(X) \cap \cI(Y)$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+For (0), it is clear that $\cI(\varnothing) = R$. Assume $K$ is infinite. We show by induction on $n$ that a nonzero polynomial in  $K[x_1,\dots,x_n]$ is nonzero at some point in $\A^n_K$. The case $n=1$ is standard: a polynomial in $K[x]$ of degree $d$ can have at most $d$ roots. Now, let $f(x_1,\dots,x_n)\in K[x_1,\dots,x_n]$ be a nonzero polynomial. If $f$ is a nonzero constant, it is nonzero at any point. Otherwise, we can assume that $f$ nontrivally involves some variable, say $x_n$. Write
+\[f(x_1,\dots,x_n) = f_d(x_1,\dots,x_{n-1}) x_n^d + \cdots + f_0(x_1,\dots,x_{n-1}).\]
+If $f$ is identically zero, then for every $(a_1,\dots,a_{n-1})\in \A^{n-1}_K$, 
+\[f_d(a_1,\dots,a_{n-1}) x_n^d + \cdots + f_0(a_1,\dots,a_{n-1}) \]
+is a polynomial in one variable that is identically zero, so is the zero polynomial, so each $f_i(a_1,\dots,a_{n-1})$ is identically zero. By the induction hypothesis, these are the zero polynomial, so $f(x_1,\dots,x_n)$ is the zero polynomial, as required.
+
+(1) is clear.
+
+For (2), note that $f,g\in \cI(X)$ and $r\in R$ implies $X\subseteq \cZ(f,g)$ implies $X \subseteq \cZ(rf+g)$ implies $rf+g \in \cI(X)$, so $\cI(X)$ is an ideal. If $f^t\in \cI(X)$, then $f(a_1,\dots,a_n)^t=0$ for all $(a_1,\dots,a_n)\in X$, so $f(a_1,\dots,a_n)=0$ for all $(a_1,\dots,a_n)\in X$, and $f\in \cI(X)$.
+
+(3) is straightforward.
+\end{proof}
+
+Determining $\cI(X)$ can be very difficult; there was already some work involved in settling $\cI(\A^n_K)$! We will explore the relationship between the associations $\cZ$ and $\cI$ more soon. Here are a few cautionary examples:
+
+\begin{ex}
+\begin{enumerate}
+\item $\cZ(\cI( \mathrm{graph \ of} \ \sin(x))) = \A^2_{\R}$.
+\item $\cI(\cZ( x^2+y^2)) = (x,y)$ over $\R$, but $\cI(\cZ(x^2+y^2)) = (x^2+y^2)$ over $\C$. We also have $\cI(\cZ(x^2+y^2)) = (x+y)$ over $\F_2$!
+\end{enumerate}
+\end{ex}
+
+
+
+\ssec{Morphisms of varieties}
+
+
+
+\ssec{The Zariski topology and irreducible varieties}
+
+
+
+\ssec{Prime and maximal ideals}
+
+\begin{prop} Let $K$ be a field, and $X\subseteq \A^n_K$ be an affine variety. Then $X$ is irreducible if and only if $\cI(X)$ is a prime ideal.
+\end{prop}
+\begin{proof} First we show that if $\cI(X)$ is not prime, then $X$ is reducible. Suppose that $f,g\notin \cI(X)$ and $fg\in \cI(X)$. Since $f\notin \cI(X)$, $f$ does not vanish at some point of $X$, so $X\not\subseteq \cZ(f)$. Thus,
+\[ \cZ(\cI(X) + (f)) = \cZ(\cI(X)) \cap \cZ(f) = X \cap \cZ(f) \subsetneqq X,\]
+and likewise $\cZ(\cI(X) + (g) \subsetneqq X$. But
+\[ X \supseteq \cZ(\cI(X) + (f)) \cup \cZ(\cI(X) + (g)) = \cZ( (\cI(X) +(f)) (\cI(X) +(g)) ) = \cZ( \cI(X)^2 +(f,g)\cI(X) +(fg)) \supseteq \cZ(\cI(X)) = X, \]
+so $\cZ(\cI(X) + (f)) \cup \cZ(\cI(X) + (g)) = X$. This shows that $X$ is reducible.
+
+Now, we show that if $X$ is reducible, then $\cI(X)$ is not prime. Write $X= Y\cup Z$ with $Y,Z$ closed and $Y,Z\subsetneqq X$. We must that $\cI(X) \subsetneqq \cI(Y),\cI(Z)$, and $\cI(Y)\neq \cI(Z)$, since $Y\neq Z$. Take $f\in \cI(Y) \smallsetminus \cI(Z)$ and $g\in \cI(Z) \smallsetminus \cI(Y)$. Then $fg\in \cI(Y) \cap \cI(Z)$, so \[\cZ(fg) \supseteq \cZ(\cI(Y) \cap \cI(Z)) = Y\cup Z = X.\]
+Thus, $fg\in \cI(X)$. This shows that $\cI(X)$ is not prime.
+\end{proof}
+
+\begin{ex} If $K$ is an infinite field, then $\cI(\A^n_K) = 0$ (considering $\A^n_K$ as a closed subvariety of itself). Since $K[x_1,\dots,x_n]$ is a domain, the zero ideal is prime, so affine space itself is irreducible.
+\end{ex}
+
+\begin{prop} Let $K$ be a field, and and $X\subseteq \A^n_K$ be an affine variety. Then $X$ is a single point if and only if $\cI(X)$ is a maximal ideal. Moreover, the functions $\cZ$ and $\cI$ induce a bijection
+\begin{center}
+\begin{minipage}{0.12\textwidth}
+	\begin{center}
+		\vspace{1em}
+		
+		$\mathbb{A}^d_k$
+		
+	\vspace{2em}
+	
+	$(a_1, \ldots, a_d)$
+	\end{center}
+\end{minipage}
+\begin{minipage}{0.15\textwidth}
+\vspace{1em}
+	$\xymatrix@C=20mm{\ar[r] &}$
+	
+\vspace{2em}
+
+$\xymatrix@C=20mm{\ar@{|->}[r] &}$
+\end{minipage}
+ \begin{minipage}{0.3\textwidth}
+
+\begin{center}
+	$\left\{ \begin{array}{c} \textrm{maximal ideals }\fm \textrm{ of } R \\\textrm{ with } R/\fm\cong k \end{array}\right\}$
+ 
+ \vspace{1em}
+ 
+$(x_1-a_1, \ldots, x_d-a_d)$
+\end{center}
+\end{minipage}
+\end{center}
+\end{prop}
+
+\sec{The Nullstellensatz and the prime spectrum}
+
+\ssec{Review of transcendence bases}
+
+\begin{definition} Let $K\subseteq L$ be an extension of fields. A \emph{transcendence basis}\index{transcendence basis} for $L$ over $K$ is a maximal algebraically independent subset of $L$.
+	\end{definition}
+
+\begin{rem}
+\label{rem:trbasis}
+\begin{enumerate}
+\item Every field extension has a transcendence basis. This is given by Zorn's Lemma once we see that a union of an increasing chain of algebraically independent sets is algebraically independent. Indeed  if there were a nontrivial relation on some elements in the union, there would be a nontrivial relation on finitely many, and so a relation in one of the members in the chain.
+\item Every set of field generators for $L/K$ contains a transcendence basis. This is also given by Zorn's lemma considering algebraically independent subsets of the given generating set.
+\item Observe that $\{x_\lambda\}_{\lambda\in \Lambda}$ is a transcendence basis for $L$ over $K$, if an only if there is a factorization
+\[ K \subseteq K(\{x_\lambda\}_{\lambda\in \Lambda}) \subseteq L\]
+where the first inclusion is \emph{purely transcendental}\index{purely transcendantal}, or isomorphic to a field of rational functions, and the second inclusion is algebraic (integral). If the latter were not algebraic, there would be an element of $L$ transcendental over $K(\{x_\lambda\}_{\lambda\in \Lambda})$, and we could use that element to get a larger algebraically independent subset, contradicting the definition of transcendence basis. Conversely, if $K \subseteq K(\{x_\lambda\}_{\lambda\in \Lambda}) \subseteq L$ with the first inclusion purely transcendental and the second algebraic, $\{x_\lambda\}_{\lambda\in \Lambda}$ is a transcendence basis.
+\end{enumerate}
+\end{rem}
+
+
+\begin{lem} Let $\{x_1,\dots,x_m\}$ and $\{y_1,\dots,y_n\}$ be two transcendence bases for $L$ over $K$. Then, there is some $i$ such that $\{x_i,y_2,\dots,y_n\}$ is a transcendence basis.
+\end{lem}
+\begin{proof} Since $L$ is algebraic over $K(y_1,\dots,y_n)$, for each $i$ there is some $p_i(t)\in K(y_1,\dots,y_n)[t]$ such that $p_i(x_i)=0$. We can clear denominators to assume without loss of generality that $p_i(x_i)\in K[y_1,\dots,y_n][t]$. 
+
+We claim that there is some $i$ such that $p_i(t) \notin K[y_2,\dots,y_n][t]$. If not, so $p_i(t) \in K[y_2,\dots,y_n][t]$ for all $i$, note that each $x_i$ is algebraic over $K(y_2,\dots,y_n)$.  Thus, $K(x_1,\dots,x_m)$ is algebraic over $K(y_2,\dots,y_n)$, and since $L$ is algebraic over $K(x_1,\dots,x_m)$, $y$ is algebraic over $K(y_2,\dots,y_n)$, which contradicts that $\{y_1,\dots,y_n\}$ is a transcendence basis. This shows the claim.
+
+Now, we claim that for such $i$, $\{x_i,y_2,\dots,y_n\}$ is a transcendence basis. Thinking of the equation $p_i(x_i)=0$ as a polynomial expression in $K[x_i,y_2,\dots,y_n][y_1]$, $y_1$ is algebraic over $K(x_i,y_2,\dots,y_n)$, hence $K(y_1,\dots,y_n)$ is algebraic over $K(x_i,y_2,\dots,y_n)$, and $L$ as well.
+
+If $\{x_i,y_2,\dots,y_n\}$ were algebraically dependent, take a polynomial equation $p(x_i,y_2,\dots,y_n)=0$. Note that this equation must involve $x_i$, since $y_2,\dots,y_n$ are algebraically independent. We would then have $K(x_i,y_2,\dots,y_n)$ is algebraic over $K(y_2,\dots,y_n)$. But since  $y_1$ is algebraic over $K(x_i,y_2,\dots,y_n)$, we would have that $K(y_1,\dots,y_n)$ is algebraic over $K(y_2,\dots,y_n)$, which would contradict that $y_1,\dots,y_n$ is a transcendence basis.
+\end{proof}
+
+\begin{prop} If $\{x_1,\dots,x_m\}$ and $\{y_1,\dots,y_n\}$ are two transcendence bases for $L$ over $K$, then $m=n$.
+\end{prop} 
+\begin{proof} Say that $m\leq n$.  If the intersection has $s<m$ elements, then without loss of generality $y_1\notin \{x_1,\dots,x_m\}$. Then, for some $i$,  $\{x_i, y_2\dots,y_n\}$ is a transcendence basis, and $\{x_1,\dots,x_m\} \cap \{x_i, y_2\dots,y_n\}$ has $s+1$ elements. Replacing $\{y_1,\dots,y_n\}$ with  $\{x_i, y_2\dots,y_n\}$ and repeating this process, we obtain a transcendence basis with $n$ elements such that $\{x_1,\dots,x_m\} \subseteq \{y_1,\dots,y_n\}$. But we must then have that these two transcendence bases are equal, so $m=n$.
+\end{proof}
+
+\ssec{Nullstellensatz}
+
+\begin{thm}[Hilbert's Nullstellensatz (Weak Form)]
+Let $K$ be an algebraically closed field, and suppose $J$ is an ideal of $K[x_1, \dots x_n]$. We have 
+\[Z(J) =\emptyset \text{ if and only if } J = K[x_1, \dots, x_n].\]
+\end{thm}
+
+\begin{rem} One direction is easy. The non-trivial direction, in it's most basic form, says the following: Suppose we are given a system of polynomial equations
+$$
+\begin{aligned}
+f_1(x_1, \dots, x_n) & = 0 \\
+f_2(x_1, \dots, x_n) & = 0 \\
+\vdots &  = \vdots \\
+f_m(x_1, \dots, x_n) & = 0 \\
+\end{aligned}
+$$
+in $n$ variables with coefficients in some algebraically closed field $k$.  If the system has no solutions over $K$, then for some polynomials $g_1,\dots, g_m$ we have $\sum_i g_i f_i = 1$.  (The converse is clear.)
+
+For example, when $n = 1$, it says that if $f_1(x), \dots, f_m(x)$ do not share a common root in $K$, then their collective gcd is $1$.   This case is easy to prove, and is essentially equivalent to the definition of ``algebraically closed''.  It's much harder and much less obvious for $n > 1$. 
+\end{rem}
+
+
+\begin{proof} If $J = K[x_1, \dots, x_n]$, then $Z(J) = \emptyset$ since $1 = 0$ has no solutions.
+
+
+We show that if $J \subset K[x_1, \dots, x_n]$ is a proper ideal, then $Z(J) \ne \emptyset$. Since $I$ is proper, it is contained in some maximal ideal $\fm$. Since $K$ is algebraically closed, by Theorem \ref{thm:ptsmax} we know $\fm = (x_1 - a_1, \dots,  x_n - a_n)$ for some $a_i \in K$. 
+Since $J \subseteq (x_1 - a_1, \dots, x_n - a_n)$, we have
+$$
+Z(J) \supseteq Z((x_1 - a_1, \dots, x_n - a_n)) = \{(a_1, \dots, a_n)\}.
+$$
+\end{proof}
+
+
+
+ To attack the Strong Form of the Nullstellensatz, we will need an observation on inequations. 
+ 
+ \begin{remark}[Rabinowitz's trick]
+ \label{rk:Rabinowitz}
+ We write $\vx=(x_1,\dots,x_n)$ and $\va=(a_1,\dots,a_n)$. Observe that, if $f(\vx)$ is a polynomial, $f(\va)\neq 0$ if and only if there is a solution $y=b\in K$ to $yf(\va)-1=0$. In particular, a system of polynomial equations and inequations
+\begin{equation*}
+f_1(\vx)=0, \dots, f_m(\vx)=0, g_1(\vx)\neq0,\dots, g_n(\vx)\neq 0
+\end{equation*}
+has a solution $\vx=\va$ if and only if the system
+\begin{equation*}
+ f_1(\vx)=0, \dots, f_m(\vx)=0, y_1 g_1(\vx)-1=0,\dots, y_n g_n(\vx)-1 = 0
+\end{equation*}
+has a solution $(\vx,\vy)=(\va,\underline{b})$. In fact, this is equivalent to a system in one extra variable:
+\begin{equation*}
+f_1(\vx)=0, \dots, f_m(\vx)=0, y g_1(\vx)\cdots g_n(\vx)-1 = 0.
+\end{equation*}
+\end{remark}
+
+\begin{thm}[Hilbert's Nullstellensatz (Strong Form)] Let $K$ be field with algebraic closure $\overline{K}$ and 
+let $J$ be an ideal in the polynomial ring $R=K[x_1, \dots, x_n]$. Then, for $f\in R$, 
+$f$ vanishes at every point of $\cZ_{\overline{K}}(J)$ if and only if there is some $n\in \N$ such that $f^n\in I$.
+
+In particular, if $K=\overline{K}$, then $\cI(\cZ(J)) = \sqrt{J}$.
+\end{thm}
+
+%\begin{rem} The Strong Form implies the Weak Form: If $Z(J)$ is empty, then $1 \in I(Z(J))$ and hence $1^n \in J$ by the Strong Form, which gives that $J = (1)$.  
+%\end{rem}
+
+\begin{proof}
+Check it
+
+By Proposition \ref{prop24} the equations in $\sqrt{J}$ vanish on $Z(J)$, so $\sqrt{J}\subseteq I(Z(J))$.
+	
+	For the converse, suppose that $f(\vx)$ vanishes on $Z(J)$. Considering the system 
+\[
+g_1(\vx)=0, \dots, g_m(\vx)=0, f(\vx)\neq 0
+\]
+we see that it has no solution since $f(\vx)=0$ is a consequence of the first $m$ equations. By the remark above, 
+this implies that $Z(JS+(yf-1))=\varnothing$, where $JS+(yf-1)$ is an ideal in the polynomial ring $S=K[x_1,\ldots,x_n,y]$. By the Weak Nullstellensatz, we see that $1\in J S+(yf-1)$. Write $J=(g_1(\vx),\dots,g_m(\vx))$, and
+	\[1 = r_0(\vx,y) (1-yf(\vx))+r_1(\vx,y) g_1(\vx) + \cdots + r_m(\vx,y) g_m(\vx).  \]
+	We can apply an evaluation map $S\to \mathrm{Frac}(S)$ sending $y \mapsto 1/f$ to get
+	\[1 = r_1(\vx,1/f) g_1(\vx) + \cdots + r_m(\vx,1/f) g_m(\vx).  \]
+	 Since each $r_i$ is polynomial, there is a largest negative power of $f$ occurring; say that $f^n$ serves as a common denominator. We can clear denominators multiplying by $f^n$ to obtain (on the LHS) $f^n$ as a polynomial combination of the $g$'s (on the RHS).
+\end{proof}
+
+
+Here is a nice consequence of the Nullstellensatz.
+
+\begin{prop} Let $K$ be a field, $R$ be a finitely generated $K$-algebra, and $I$ be an ideal of $R$. Then
+\[ \sqrt{I} = \bigcap_{\substack{\fm \ \mathrm{maximal}  \\ \fm \supseteq I}} \fm.\]
+\end{prop}
+\begin{proof} By the correspondence between ideals in a ring and a quotient ring, we can reduce to the case where $R$ is a polynomial ring over $K$. The inclusion ``$\subseteq$'' holds in general, since maximal ideals are radical, and the radical of $I$ is the smallest ideal that contains $I$.
+
+For the other inclusion, let $f$ be an element of the right hand side, and let $(a_1,\dots,a_n)\in \cZ_{\overline{K}}(I)$ be arbitrary. The evaluation map
+\[\xymatrix@R=1em{ K[x_1,\dots,x_n] \ar[r]^-{\psi} & \displaystyle\frac{\overline{K}[x_1,\dots,x_n]}{\cI(\{ (a_1,\dots,a_n) \} )} \\ f \ar@{|->}[r] & f(a_1,\dots,a_n) }\]
+is a ring homomorphism, so the image, $S$, is a subring of $\displaystyle\frac{\overline{K}[x_1,\dots,x_n]} {\cI(\{ (a_1,\dots,a_n) \} )} \cong \overline{K}$. Then we have $K \subseteq S \subseteq \overline{K}$, so $S$ is a domain, and is integral over $K$, hence is a field. Moreover, $S$ is generated as a $K$-algebra by the images of the variables, so it is algebra-finite over $K$. By Zariski's Lemma, $S$ is a field. Thus, $\ker(\psi)$ is a maximal ideal that contains $I$, so by definition $f\in \ker(\psi) = 0$. Thus, $f(a_1,\dots,a_n)=0$. We conclude that $f$ vanishes at every point of $\cZ_{\overline{K}}(I)$. By the Strong Nullstellensatz, $f\in \sqrt{I}$.
+\end{proof}
+
+\begin{exer} Let $f: R\to S$ be a homomorphism of finitely generated algebras over a field $K$. Let $\fm$ be a maximal ideal of $S$. Show that $\fm \cap R$ is a maximal ideal of $R$.
+\end{exer}
+
+\end{comment}
+
+\printindex
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+  
+ 
+
+
