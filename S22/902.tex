@@ -142,11 +142,11 @@
 \newcommand{\id}{\mathrm{id}}
 
 
-\newcommand{\Jan}[1]{\textcolor{violet}{Lecture of January #1, 2021}}
-\newcommand{\Feb}[1]{\textcolor{violet}{Lecture of February #1, 2021}}
-\newcommand{\Mar}[1]{\textcolor{violet}{Lecture of March #1, 2021}}
-\newcommand{\Apr}[1]{\textcolor{violet}{Lecture of April #1, 2021}}
-\newcommand{\May}[1]{\textcolor{violet}{Lecture of May #1, 2021}}
+\newcommand{\Jan}[1]{\textcolor{violet}{Lecture of January #1, 2022}}
+\newcommand{\Feb}[1]{\textcolor{violet}{Lecture of February #1, 2022}}
+\newcommand{\Mar}[1]{\textcolor{violet}{Lecture of March #1, 2022}}
+\newcommand{\Apr}[1]{\textcolor{violet}{Lecture of April #1, 2022}}
+\newcommand{\May}[1]{\textcolor{violet}{Lecture of May #1, 2022}}
 
 \def\Ext{\operatorname{Ext}}
  \def\ext{\operatorname{ext}}
@@ -385,6 +385,8 @@
 
 \tableofcontents
 
+\Jan{19}
+
 In this class, all rings are assumed to be commutative, with associative multiplication and containing 1.
 
 \sec{Finiteness conditions}
@@ -470,6 +472,8 @@ The term \DEF{finite-type} is also used to mean this.% A better name might be \e
 \end{rem}
 
 \begin{comment}
+
+
 
 \begin{ex} Let $K$ be a field, and $B=K[x,xy,xy^2,xy^3,\dots] \subseteq C=K[x,y]$, where $x$ and $y$ are indeterminates. Let $A$ be a finitely generated subalgebra of $B$, and write $A=K[f_1,\dots,f_d]$.  Since each $f_i$ is a (finite) polynomial expression in the monomials $\{x y^i \ | \ i\in \N\}$, it involves only finitely many of these monomials. Thus, there is an $m$ such that $\{f_1,\dots,f_d\} \subset K[x,xy,\dots,xy^m]$, and hence $A \subseteq K[x,xy,\dots,xy^m]$. But, every element of $K[x,xy,\dots,xy^m]$ is a $K$-linear combination of monomials with the property that the $y$ exponent is no more than $m$ times the $x$ exponent, so this ring does not contain $xy^{m+1}$. Thus, $B$ is not a finitely generated $K$-algebra.
 \end{ex}
@@ -1156,10 +1160,10 @@ Our next goal is to study solution sets of polynomial equations. Such solutions 
 
 Observe that any $f\in K[x_1,\dots,x_n]$ can be considered as a function on $\A^n_K$, where $f(a_1,\dots,a_n)$ is result of specializing $x_i$ to $a_i$ for each $i$.
 
-\begin{defn} For any subset $S\subseteq K[x_1,\dots,x_n]$, we set \[\cZ(S):= \{(a_1,\dots,a_n) \in \A^n_K \ | \ f(a_1,\dots,a_n)=0 \ \text{for all} \ f\in S\}.\]\index{$\cZ(I)$} We may write $\cZ_K$ when we want to emphasize the field.
-We call $\cZ(S)$ the \DEF{zero set} of $S$. A \DEF{subvariety} of $\A^n_K$ is a set of the form $\cZ(S)$. An \DEF{affine variety}, or just a \DEF{variety}, is a subvariety of $\A^n_K$ for some $n$.
+\begin{defn} For any subset $S\subseteq K[x_1,\dots,x_n]$, we set \[\cZ(S):= \{(a_1,\dots,a_n) \in \A^n_K \ | \ f(a_1,\dots,a_n)=0 \ \text{for all} \ f\in S\}.\]\index{$\cZ(I)$} We call $\cZ(S)$ the \DEF{zero set} of $S$. A \DEF{subvariety} of $\A^n_K$ is a set of the form $\cZ(S)$. An \DEF{affine variety}, or just a \DEF{variety}, is a subvariety of $\A^n_K$ for some $n$.
 \end{defn}
 
+\begin{rem} Note that if $L \supseteq K$ is a larger field, any polynomial $f\in K[x_1,\dots,x_n]$ is also an element of $L[x_1,\dots,x_n]$, and we can evaluate it at any point in $\A^n_L$. Thus, we may write \Def{$\cZ_K(S)$} or $\cZ_L(S)$ the distinguish between the zero sets over different fields.
 \begin{ex}
 \begin{enumerate}
 %\item
@@ -1316,6 +1320,56 @@ Determining $\cI(X)$ can be very difficult; there was already some work involved
 
 \ssec{The Zariski topology and irreducible varieties}
 
+\begin{defn} Let $K$ be a field. The collection of subvarieties $X\subseteq \A^n_K$ is the collection of closed subsets in a topology on $\A^n_K$:
+\begin{itemize}
+\item $\varnothing = \cZ(1)$ and $\A^n_K = \cZ(0)$ are subvarieties,
+\item unions of two subvarieties are subvarieties (products of the equations), and
+\item arbitrary intersections of subvarities are subvarities (union of the equation sets).
+\end{itemize}
+This is called the \DEF{Zariski topology} on $\A^n_K$. Any subvariety of $X$ obtains a \emph{Zariski topology} as the subspace topology from $\A^n_K$.
+\end{defn}
+
+This topology is not very similar to the Euclidean topology on a manifold; it is much coarser.
+
+\begin{ex} Let $K$ be an infinite field. The closed subsets in the Zariski topology on $\A^1_K$ are just the finite subsets, along with the whole space. Note that this topology is not Hausdorff; quite on the contrary, any two open sets have infinite intersection!
+\end{ex}
+
+Here is a nice use of the topological structure.
+
+\begin{prop} Let $X\subseteq \A^n_K$ be a subset. Then $\cZ(\cI(X)) = \overline{X}$, the closure of $X$ in the Zariski topology.
+\end{prop}
+\begin{proof} Clearly $X \subseteq \cZ(\cI(X))$ and $\cZ(\cI(X))$ is closed, so $\overline{X} \subseteq \cZ(\cI(X)$. Let $Y$ be an arbitrary closed set containing $X$. 
+
+On the other hand, $\displaystyle \overline{X} = \bigcap_{\substack{W \supseteq X \\ W \ \mathrm{closed} }} W$.  For $W\supseteq X$ closed, write $W=\cZ(J)$; then $J\subseteq \cI(W)$ and $W \supseteq X$ implies $\cI(W) \subseteq \cI(X)$, so $J\subseteq \cI(X)$, hence $\cZ(\cI(X)) \subseteq \cI(J) = W$. It follows that $\cZ(\cI(X)) \subseteq \overline{X}$ as well.
+\end{proof}
+
+
+\begin{rem} Note as a consequence that the function
+\[ \{ \text{subvarieties of} \ \A^n_K\} \xra{\cI} \{ \text{ideals of} \ K[x_1,\dots,x_n] \} \]
+is injective, since $\cZ$ serves as a left inverse.
+\end{rem}
+
+
+Recall that a topological space is connected if it cannot be written as the disjoint union of two closed subsets. Here is a much stronger  notion of a similar flavor.
+
+\begin{defn} A topological space is \emph{irreducible}\index{irreducible space} if it cannot be written as a union of two proper closed subsets.
+\end{defn}
+
+The point is that there is no disjointness condition. In $\R^n$ with its Euclidean topology, the only irreducible subspaces are points. However, over an infinite field, $\A^1_K$ is irreducible!
+
+
+\begin{defn} Let $X$ be a topological space. We say that $X$ is a \DEF{Noetherian} topological space if the poset of open sets under containment has ACC, or equivalently that the poset of closed subsets has DCC.
+\end{defn}
+
+\begin{lem} Any affine variety $X$ is a Noetherian topological space with the Zariski topology.
+\end{lem}
+\begin{proof} It suffices to deal with $\A^n_K$, since subspaces of Noetherian spaces are Noetherian. If there was an infinite descending chain of closed subvarieties of $\A^n_K$, applying $\cI$, we would obtain an infinite ascending chain of ideals in $K[x_1,\dots,x_n]$, which contradicts Hilbert's Basis Theorem.
+\end{proof}
+
+\begin{prop}  Let $X$ be a Noetherian topological space. Then any closed subset of $X$ is the finite union of its maximal irreducible closed subspaces. \end{prop}
+\begin{proof}
+If not, consider the collection of closed subsets $Y$ that are not the finite union of its maximal irreducible closed subspaces. Since the closed subsets satisfy DCC, there is a minimal such $Y$. If $Y$ is irreducible, we have reached a contradiction and we are done. Otherwise\dots
+\end{proof}
 
 
 \ssec{Prime and maximal ideals}
@@ -1407,11 +1461,14 @@ If $\{x_i,y_2,\dots,y_n\}$ were algebraically dependent, take a polynomial equat
 \ssec{Nullstellensatz}
 
 \begin{thm}[Hilbert's Nullstellensatz (Weak Form)]
-Let $K$ be an algebraically closed field, and suppose $J$ is an ideal of $K[x_1, \dots x_n]$. We have 
-\[Z(J) =\emptyset \text{ if and only if } J = K[x_1, \dots, x_n].\]
+Let $K$ be a field, $\overline{K}$ be an algebraic closure of $K$, and  $J$ be an ideal of $K[x_1, \dots x_n]$. We have 
+\[\cZ_{\overline{K}}(J) =\emptyset \text{ if and only if } J = K[x_1, \dots, x_n].\]
+
+In particular, if $K$ is algebraically closed, then
+\[ \cZ_K(J) = \varnothing \text{ if and only if } J = K[x_1, \dots, x_n].\]
 \end{thm}
 
-\begin{rem} One direction is easy. The non-trivial direction, in it's most basic form, says the following: Suppose we are given a system of polynomial equations
+\begin{rem} One direction is easy. The nontrivial direction, in its most basic form, says the following: Suppose we are given a system of polynomial equations
 $$
 \begin{aligned}
 f_1(x_1, \dots, x_n) & = 0 \\
@@ -1426,14 +1483,12 @@ For example, when $n = 1$, it says that if $f_1(x), \dots, f_m(x)$ do not share 
 \end{rem}
 
 
-\begin{proof} If $J = K[x_1, \dots, x_n]$, then $Z(J) = \emptyset$ since $1 = 0$ has no solutions.
+
+\begin{proof} If $J = K[x_1, \dots, x_n]$, then $Z_{\overline{K}}(J) = \emptyset$ since $1 = 0$ has no solutions.
 
 
-We show that if $J \subset K[x_1, \dots, x_n]$ is a proper ideal, then $Z(J) \ne \emptyset$. Since $I$ is proper, it is contained in some maximal ideal $\fm$. Since $K$ is algebraically closed, by Theorem \ref{thm:ptsmax} we know $\fm = (x_1 - a_1, \dots,  x_n - a_n)$ for some $a_i \in K$. 
-Since $J \subseteq (x_1 - a_1, \dots, x_n - a_n)$, we have
-$$
-Z(J) \supseteq Z((x_1 - a_1, \dots, x_n - a_n)) = \{(a_1, \dots, a_n)\}.
-$$
+We show that if $J \subset K[x_1, \dots, x_n]$ is a proper ideal, then $Z(J) \ne \emptyset$. Since $I$ is proper, it is contained in some maximal ideal $\fm$. By Zariski's Lemma, $K[x_1, \dots, x_n]/\fm$ is algebraic over $K$, so there is a $K$-algebra homomorphism from $K[x_1, \dots, x_n]/\fm \to \overline{K}$. Composing with the projection map, we get a $K$-algebra map $\psi: K[x_1,\dots,x_n] \to \overline{K}$ that contains $J$ in the kernel. But, setting $\psi(x_j) = a_j$, $\psi$ is just the evaluation map at the point
+ $(a_1,\dots,a_n)$. Thus $(a_1,\dots,a_n) \in \cZ_{\overline{K}}(J)$.
 \end{proof}
 
 
