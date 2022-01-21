@@ -674,13 +674,15 @@ Collecting the previous results, we now have a useful characterization of module
 	\[ \{\text{integral elements}\} \subseteq A[\{\text{integral elements}\}] \subseteq \{\text{integral elements}\}, \] so equality holds throughout, and $\{\text{integral elements}\}$ is a ring.
 \end{proof}
 
+\begin{definition}
+	If $A\subseteq R$, the \emph{integral closure of $A$ in $R$}\index{integral closure} is the set of elements of $R$ that are integral over~$A$. If $R$ is a domain, the \emph{integral closure} of $R$ is its integral closure in its fraction field.
+\end{definition}
+
 \begin{exer} Let $A \xra{\phi} B \xra{\psi} C$ be ring homomorphisms. Then $A \xra{\phi} B$ and $B \xra{\psi} C$ are integral if and only if $A \xra{\psi\phi} C$ is integral.
 \end{exer}
 
 
-\begin{definition}
-	If $A\subseteq R$, the \emph{integral closure of $A$ in $R$}\index{integral closure} is the set of elements of $R$ that are integral over~$A$.
-\end{definition}
+
 
 \begin{ex}
 $\Z$ is integrally closed in $\Q$: this follows from essentially the same argument we used to show that $\frac{1}{2}$ is not integral over $\Q$.
@@ -1355,7 +1357,32 @@ Recall that a topological space is connected if it cannot be written as the disj
 \begin{defn} A topological space is \emph{irreducible}\index{irreducible space} if it cannot be written as a union of two proper closed subsets.
 \end{defn}
 
-The point is that there is no disjointness condition. In $\R^n$ with its Euclidean topology, the only irreducible subspaces are points. However, over an infinite field, $\A^1_K$ is irreducible!
+The point is that there is no disjointness condition.
+
+\begin{exer} If $X$ is an irreducible topological space, and $f:X\to Y$ is continuous, then $f(X)$ is irreducible.
+\end{exer}
+
+ In $\R^n$ with its Euclidean topology, the only irreducible subspaces are points. However, over an infinite field, $\A^1_K$ is irreducible as easily seen. Moreover, we have:
+
+\begin{prop} Let $K$ be an infinite field. Affine space $\A^n_K$ is irreducible. 
+\end{prop}
+\begin{proof} Say that $\A^n_K = \cZ(I) \cup \cZ(J)$ for some ideals $I,J$. We need to show either $\cZ(I) =\A^n_K$ or $\cZ(J) = \A^n_K$. Note that $\A^n_K = \cZ(IJ)$. We must have $IJ=0$, since $\cI(\A^n_K) = 0$. If $I$ and $J$ are both nonzero, take $f\in I\smallsetminus 0$, and $g\in J \smallsetminus 0$; we get $fg\in IJ \smallsetminus 0$, which is a contradiction. Thus, without loss of generality, $I=0$, so $\cZ(I) = \A^n_K$.
+\end{proof}.
+
+\begin{ex} Affine space over a finite field is reducible.
+\end{ex}
+
+\begin{ex} Union of a line and a plane.
+\end{ex}
+
+\begin{ex} Let $K$ be an infinite field. Think of $\A^6_K$ as the set of pairs of $2\times 2$ matrices $A$ (with coordinates $x_{ij}$) and $2\times 1$ vectors $v$ (with coordinates $y_1,y_2$), and let $X=\cZ(x_{11} y_1 + x_{12} y_2, x_{21} y_1 + y_{22} y_2)$ be the variety of pairs such that $Av=0$. If $Av=0$ then either $v=0$, or else $v$ is a nonzero vector in the kernel of $A$, so $\det(A)=0$. Thus, $ X= X_1 \cup X_2$, where \[ X_1 = \cZ(x_{11} y_1 + x_{12} y_2, x_{21} y_1 + y_{22} y_2,  y_1, y_2) = \cZ(y_1, y_2)\]
+\[ X_2= \cZ(x_{11} y_1 + x_{12} y_2, x_{21} y_1 + y_{22} y_2, x_{11} x_{22} - x_{12} x_{21}) ,\]
+so $X$ is reducible.
+\end{ex}
+
+\begin{ex} Let $K$ be an infinite field. Think of $\A^6_K$ as the set of $2\times 3$ matrices (with coordinates $x_{ij}$), and let $X$ be the variety of matrices of rank at most $1$. Any matrix $A\in X$ of rank at most one can be written as $A= B C$ for some $2\times 1$ matrix $B$ and some $1\times 3$ matrix $C$, and conversely any such product has rank at most $1$. It follows that $X$ is the image of the morphism \[ \xymatrix@R=1em{ \A^5 \ar[r] & \A^6 \\ (y_1,y_2,z_1,z_2,z_3) \ar@{|->}[r] & {\begin{pmatrix} y_1 z_1 & y_1 z_2 & y_1 z_3 \\ y_2 z_1 & y_2 z_2 & y_2 z_3\end{pmatrix}} } \]
+and hence is irreducible.
+\end{ex}
 
 
 \begin{defn} Let $X$ be a topological space. We say that $X$ is a \DEF{Noetherian} topological space if the poset of open sets under containment has ACC, or equivalently that the poset of closed subsets has DCC.
@@ -1372,6 +1399,8 @@ If not, consider the collection of closed subsets $Y$ that are not the finite un
 \end{proof}
 
 
+
+
 \ssec{Prime and maximal ideals}
 
 \begin{prop} Let $K$ be a field, and $X\subseteq \A^n_K$ be an affine variety. Then $X$ is irreducible if and only if $\cI(X)$ is a prime ideal.
@@ -1386,8 +1415,8 @@ Now, we show that if $X$ is reducible, then $\cI(X)$ is not prime. Write $X= Y\c
 Thus, $fg\in \cI(X)$. This shows that $\cI(X)$ is not prime.
 \end{proof}
 
-\begin{ex} If $K$ is an infinite field, then $\cI(\A^n_K) = 0$ (considering $\A^n_K$ as a closed subvariety of itself). Since $K[x_1,\dots,x_n]$ is a domain, the zero ideal is prime, so affine space itself is irreducible.
-\end{ex}
+
+
 
 \begin{prop} Let $K$ be a field, and and $X\subseteq \A^n_K$ be an affine variety. Then $X$ is a single point if and only if $\cI(X)$ is a maximal ideal. Moreover, the functions $\cZ$ and $\cI$ induce a bijection
 \begin{center}
@@ -1538,6 +1567,9 @@ this implies that $Z(JS+(yf-1))=\varnothing$, where $JS+(yf-1)$ is an ideal in t
 	 Since each $r_i$ is polynomial, there is a largest negative power of $f$ occurring; say that $f^n$ serves as a common denominator. We can clear denominators multiplying by $f^n$ to obtain (on the LHS) $f^n$ as a polynomial combination of the $g$'s (on the RHS).
 \end{proof}
 
+\begin{ex}
+
+
 
 Here is a nice consequence of the Nullstellensatz.
 
@@ -1553,6 +1585,38 @@ is a ring homomorphism, so the image, $S$, is a subring of $\displaystyle\frac{\
 
 \begin{exer} Let $f: R\to S$ be a homomorphism of finitely generated algebras over a field $K$. Let $\fm$ be a maximal ideal of $S$. Show that $\fm \cap R$ is a maximal ideal of $R$.
 \end{exer}
+
+
+\begin{ex} Recall that
+\[ X:= \{ (t^3,t^4,t^5) \ | \ t\in \C \} = \cZ(y^3-x^4,z^3-x^5,z^4-y^5)\}.\]
+Let $I=(y^3-x^4,z^3-x^5,z^4-y^5)$ and $J=(x^3-yz,y^2-xz,z^2-x^2y)$.
+We claim that $\cI(X) = J$. By the Nullstellensatz, $\cI(X) = \sqrt{I}$, so it suffices to show that $\sqrt{I}=J$. We will show that $I \subseteq J$, $J \subseteq \sqrt{I}$, and that $J$ is prime; it will follow that 
+\[ I \subseteq J (=\sqrt{J}) \subseteq \sqrt{I} \subseteq \sqrt{J} (=J),\]
+and thus the conclusion.
+
+To see that $I \subseteq J$, we check that every generator of $I$ is congruent to $0$ modulo $J$:
+\[ y^3-x^4 = y (y^2) - x (x^3) \equiv y(xz) - x(yz) =0, \quad \mod J\]
+and similarly with the other two.
+
+To see that $J \subseteq \sqrt{I}$, we check that every generator of $J$ has a power that is congruent to $0$ modulo $I$:
+note that 
+\[ x^9 yz \equiv (x^4)(x^5)yz \equiv y^4 z^4 \equiv y^9 \equiv x^12 \equiv x^3 y^3 z^3 \quad \mod I\]
+and
+\[ x^6 y^2 z^2 \equiv x^2 y^5 z^2 \equiv x^2 z^6 \equiv x^{12}  \quad \mod I\]
+so
+\[ (x^3-yz)^4 = x^{12} - 4 x^9 yz + 6 x^6 y^2 z^2 - 4 x^3 y^3 z^3 + y^4 z^4 \equiv x^{12} ( 1 - 4 + 6 - 4 +1) \equiv 0  \quad \mod I,\]
+and similarly with the other two.
+
+Now, we argue that $J$ is prime. We will show that the ring homomorphism
+\[ \xymatrix@R=1em{ \frac{\C[x,y,z]}{J} \ar[r] & \C[t^3,t^4,t^5] \\ (x,y,z) \ar@{|->}[r] & (t^3,t^4,t^5)}\] is an isomorphism; it clearly is surjective. Note that if we set $|x|=3,|y|=4,|z|=5, |t|=1$, this is a graded homomorphism of graded rings. Since $[ \C[t^3,t^4,t^5] ]_n$ is a $1$-dimensional vector space generated by $t^n$ for all $n\geq 3$ (and zero in degrees 1 and 2), it suffices to show that $\dim( [\frac{\C[x,y,z]}{J}]_n ) \leq 1$ for all $n\leq 3$ (and zero in degrees 1 and 2).
+
+Given any monomial in $\frac{\C[x,y,z]}{J}$ we can use the relations $y^2-xz$, $z^2-x^2y$, and $yz-x^3$ to obtain an equivalent monomial where the sum of the $y$ and $z$ exponents is smaller until we get a monomial of the form $x^a$, $x^a y$, or $x^a z$. If $n=1,2$, there is no such monomial; if $n\geq 3$, there is exactly one, namely, 
+\[ \begin{cases} x^{n/3} & \text{if} \ n\equiv 0 \mod 3 \\
+ x^{(n-4)/3} y & \text{if} \ n\equiv 1 \mod 3 \\
+ x^{(n-5)/3} y & \text{if} \ n\equiv 2 \mod 3 \end{cases}\]
+ This shows the claim, and concludes the proof.
+ \end{ex}
+
 
 \end{comment}
 
