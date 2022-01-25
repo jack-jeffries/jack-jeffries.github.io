@@ -668,25 +668,21 @@ Collecting the previous results, we now have a useful characterization of module
 		\item Let $x,y,z$ be indeterminates. Set $R=\C[x,y]$ to be a polynomial ring, and $S=\C[x,y,z]/(x^2+y^2+z^2)$ to be a quotient of a polynomial ring. We claim that we can realize $R$ as a subring of $S$; i.e., the $\C$-algebra homomorphism from $R$ to $S$ that sends $x$ to $x$ and $y$ to $y$ is injective. Indeed, the kernel is the set of polynomials in $x,y$ that are multiples of $z^2+x^2+y^2$, but, thinking of $\C[x,y,z]$ as $R[z]$, any nonzero multiple of $z^2+x^2+y^2$ must have $z$-degree at least $2$, so none only involve $x,y$. Thus, we have an inclusion $R\subseteq S$.	
 				
 		The ring $S$ is module-finite over $R$: indeed, $S$ is generated over $R$ as an algebra by one element $z$ that is integral over $R$.
-		\begin{comment}
-		\item Let $R=\C[u,v] \subseteq S=\C[u,v,w]/(u^2+vw)$; this is injective by a similar argument to the previous example. Note that this $S$ is isomorphic to the previous $S$ by the map $u\mapsto x, v\mapsto y+iz, w\mapsto y-iz$.
-		
-		 We claim that $S$ is \emph{not} integral and hence \emph{not} module-finite over $R$. Indeed, the minimal polynomial of $w$ over the fraction field of $R$ is $f(t)=vt+u^2$. Any equation that $w$ satisfies is a $\C(u,v)[t]$-multiple of this: write $g(t)=f(t)h(t)$ with $g(t)\in\C(u,v)[t]$ monic. By Gauss' lemma, there is some $a\in \C(u,v)$ such that $a^{-1} f(t), a h(t)\in \C[u,v][t]$. Since the leading coefficient of $h$ is $v^{-1}$, the numerator of $a$ must be a multiple of $v$ when written in lowest terms. But this contradicts that $a^{-1} f(t)\in \C[u,v][t]$.
+
+%		\item Let $R=\C[u,v] \subseteq S=\C[u,v,w]/(u^2+vw)$; this is injective by a similar argument to the previous example. Note that this $S$ is isomorphic to the previous $S$ by the map $u\mapsto x, v\mapsto y+iz, w\mapsto y-iz$.
+%		
+%		 We claim that $S$ is \emph{not} integral and hence \emph{not} module-finite over $R$. Indeed, the minimal polynomial of $w$ over the fraction field of $R$ is $f(t)=vt+u^2$. Any equation that $w$ satisfies is a $\C(u,v)[t]$-multiple of this: write $g(t)=f(t)h(t)$ with $g(t)\in\C(u,v)[t]$ monic. By Gauss' lemma, there is some $a\in \C(u,v)$ such that $a^{-1} f(t), a h(t)\in \C[u,v][t]$. Since the leading coefficient of $h$ is $v^{-1}$, the numerator of $a$ must be a multiple of $v$ when written in lowest terms. But this contradicts that $a^{-1} f(t)\in \C[u,v][t]$.
 	\end{enumerate}
 \end{ex}
 
-\end{exer}
 
+\begin{comment}
+\Jan{26}
 
 
 \begin{definition}
 	If $A\subseteq R$, the \emph{integral closure of $A$ in $R$}\index{integral closure} is the set of elements of $R$ that are integral over~$A$. If $R$ is a domain, the \emph{integral closure} of $R$ is its integral closure in its fraction field.
 \end{definition}
-
-\begin{exer} Let $A \xra{\phi} B \xra{\psi} C$ be ring homomorphisms. Then $A \xra{\phi} B$ and $B \xra{\psi} C$ are integral if and only if $A \xra{\psi\phi} C$ is integral.
-\end{exer}
-
-
 
 
 \begin{ex}
@@ -702,6 +698,9 @@ $
 \end{cases}
 $
 
+\end{exer}
+
+\begin{exer} Let $A \xra{\phi} B \xra{\psi} C$ be ring homomorphisms. Then $A \xra{\phi} B$ and $B \xra{\psi} C$ are integral if and only if $A \xra{\psi\phi} C$ is integral.
 \end{exer}
 
 Here is a useful fact about integral extensions that we will use multiple times; it also gives a flavor for the power of the integrality condition on a map.
@@ -765,9 +764,7 @@ When $R$ is Noetherian, a module is finitely generated if and only if it is Noet
 If $R$ is a commutative ring and $x$ is an indeterminate the set 
 \[R\llbracket x \rrbracket=\left\{\sum_{i\geq 0} r_i x^i \mid r_i\in R\right\}\]
 with the obvious addition and multiplication
-is called the {\em power series ring} in the variable $x$ with coefficients in $R$.
-
-If $x_1,\ldots, x_d$ are distinct indeterminates the \DEF{power series ring} in all of these variables is defined inductively as 
+is called the {\em power series ring} in the variable $x$ with coefficients in $R$. If $x_1,\ldots, x_d$ are distinct indeterminates the \DEF{power series ring} in all of these variables is defined inductively as 
 \[R\llbracket x_1,\ldots,x_n \rrbracket=\left(R\llbracket x_1,\ldots,x_{d-1}\rrbracket \right)\llbracket x_d\rrbracket.\]
 \end{defn}
 
@@ -1007,7 +1004,7 @@ We now observe the following:
 
 \begin{proof}
 	The ideal $I$ decomposes as the direct sum of its graded components, so we can write
-	$$R/I = \frac{\oplus R_a}{\oplus I_a} \cong \oplus \frac{R_a}{I_a}.\qedhere$$
+	$$R/I = \frac{\oplus R_a}{\oplus I_a} \cong \oplus \frac{R_a}{I_a}. \qedhere$$
 \end{proof}
 
 
@@ -1034,7 +1031,7 @@ Let $R$ be a $T$-graded ring, and $M$ an $R$-module. The module $R$ is {\bf $T$-
 Let $R$ and $S$ be $T$-graded rings with the same grading monoid $T$. A ring homomorphism $\varphi:R\to S$ is {\em graded} or {\em degree-preserving}\index{graded ring homomorphism} \index{degree preserving homomorphism} if $\varphi(R_a) \subseteq S_{a}$ for all $a \in T$.
 \end{definition}
 
-Note that our definition of ring homomorphism requires $1_R \mapsto 1_S$, and thus it does not make sense to talk about graded ring homomorphisms of degree $d \neq 0$. But we can have graded module homomorphisms of any degree.
+Note that our definition of ring homomorphism requires $1_R \mapsto 1_S$, and thus it does not make sense to talk about graded ring homomorphisms that shift degrees. But we can have graded module homomorphisms of any degree.
 
 \begin{definition}	
 Let $M$ and $N$ be $\ZZ$-graded modules over the $\NN$-graded ring $R$. A homomorphism of $R$-modules $\varphi:R\to S$ is {\em graded} \index{graded homomorphism} if $\varphi(M_a) \subseteq N_{a+d}$ for all $a \in \ZZ$ and some fixed $d \in \mathbb{Z}$, called the {\em degree}\index{degree of a graded module homomorphism} of $\varphi$. A graded homomorphism of degree $0$ is also called {\em degree-preserving}\index{degree-preserving homomorphism}.
