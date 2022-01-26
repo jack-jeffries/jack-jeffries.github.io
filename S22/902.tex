@@ -616,17 +616,17 @@ Let $R$ be a ring, $B \in M_{n\times n}(R)$, $v\in R^{\oplus n}$, and $r\in R$.
 		\item When $R$ is a field, this is a basic linear algebra fact. We deduce the case of a general ring from the field case.
 		
 		The ring $R$ is a $\ZZ$-algebra, so we can write $R$ as a quotient of some polynomial ring $\ZZ[X]$. Let $\xymatrix@C=6mm{\psi:\ZZ[X] \ar@{->>}[r] & R}$ be a surjection, $a_{ij}\in \ZZ[X]$ be such that $\psi(a_{ij})=b_{ij}$, and let $A=[a_{ij}]$. Note that
-		$$\psi(\mathrm{adj}(A)_{ij})=\mathrm{adj}(B)_{ij} \quad \textrm{ and } \quad \psi((\mathrm{adj}(A) A)_{ij}) = (\mathrm{adj}(B) B)_{ij},$$ 
+		\[\psi(\mathrm{adj}(A)_{ij})=\mathrm{adj}(B)_{ij} \quad \textrm{ and } \quad \psi((\mathrm{adj}(A) A)_{ij}) = (\mathrm{adj}(B) B)_{ij},\] 
 		since $\psi$ is a homomorphism, and the entries are the same polynomial functions of the entries of the matrices $A$ and $B$, respectively. Thus, it suffices to establish 
-		$$\mathrm{adj}(B) B = \det(B) I_{n\times n}$$
+		\[\mathrm{adj}(B) B = \det(B) I_{n\times n}\]
 		in the case when $R=\ZZ[X]$, and we can do this entry by entry. Now, $R=\ZZ[X]$ is an integral domain, hence a subring of a field (its fraction field). Since both sides of the equation 
-		$$\left( \mathrm{adj}(B) B \right)_{ij} = \left( \det(B) I_{n\times n}\right)_{ij}$$
+		\[\left( \mathrm{adj}(B) B \right)_{ij} = \left( \det(B) I_{n\times n}\right)_{ij}\]
 		live in $R$ and are equal in the fraction field (by linear algebra) they are equal in $R$. This holds for all $i, j$, and thus 1) holds.
 		
 		\item We have $(r I_{n\times n} - B) v=0$, so by part 1)
-		$$\det(r I_{n\times n} - B) v=\mathrm{adj}(r I_{n\times n} - B) (r I_{n\times n} - B) v = 0.\hfill\qedhere$$
+	\[
+\det(r I_{n\times n} - B) v=\mathrm{adj}(r I_{n\times n} - B) (r I_{n\times n} - B) v = 0.\qedhere\]
 	\end{enumerate}
-	
 \end{proof}
 
 
@@ -676,7 +676,7 @@ Collecting the previous results, we now have a useful characterization of module
 \end{ex}
 
 
-\begin{comment}
+
 \Jan{26}
 
 
@@ -745,13 +745,13 @@ When $R$ is Noetherian, a module is finitely generated if and only if it is Noet
 		\[\C\{z\} := \{ f(z) \in \C\llbracket z \rrbracket  \ | \ f \text{ is analytic on a neighborhood of $z=0$}\}.\]
 		 This ring is a PID: every ideal is of the form $(z^n)$, since any $f\in \C\{z\}$ can be written as $z^n g(z)$ for some $g(z)\neq 0$, and any such $g(z)$ is a unit in $\C\{z\}$.
 		\item A ring that is \emph{not} Noetherian is a polynomial ring in infinitely many variables over a field $k$, $R = k[x_1, x_2, \ldots]$: the ascending chain of ideals 
-		$$(x_1)\subseteq (x_1,x_2) \subseteq (x_1,x_2,x_3) \subseteq \cdots$$
+		\[(x_1)\subseteq (x_1,x_2) \subseteq (x_1,x_2,x_3) \subseteq \cdots\]
 		does \emph{not} stabilize.
 		\item The ring $R=K[x,x^{1/2},x^{1/3},x^{1/4},x^{1/5},\dots]$ is also \emph{not} Noetherian. A nice ascending chain of ideals is
 		\[ (x) \subsetneqq (x^{1/2}) \subsetneqq (x^{1/3})\subsetneqq (x^{1/4}) \subsetneqq \cdots.\]
 %		\item A variation on the last example: the ring of \emph{nonnegatively valued Puiseux series}\index{Puiseux series}: $R=\bigcup_{n\in \NN} \CC\llbracket z^{1/n} \rrbracket \subseteq \overline{\CC((z))}$.\footnote{In fact, the algebraic closure of the field of Laurent series $\CC((z))$ is $\bigcup_{n\in \NN} \CC(( z^{1/n} )) = R[1/t]$.}
 		\item The ring of continuous real-valued functions $\mathcal{C}(\R,\R)$\index{$\mathcal{C}(\R,\R)$} is \emph{not} Noetherian: the chain of ideals 
-		$$I_{n}=\{ f(x) \ | \ f|_{[-1/n,1/n]}\equiv 0 \}$$
+		\[I_{n}=\{ f(x) \ | \ f|_{[-1/n,1/n]}\equiv 0 \}\]
 		is increasing and proper. The same construction shows that the ring of infinitely differentiable real functions $\mathcal{C}^{\infty}(\R,\R)$\index{$\mathcal{C}^{\infty}(\R,\R)$} is not Noetherian: properness of the chain follows from, e.g., Urysohn's lemma (though it's not too hard to find functions distinguishing the ideals in the chain). Note that if we asked for analytic functions instead of infinitely-differentiable functions, every element of the chain would be the zero ideal!
 	\end{enumerate}
 \end{ex}
@@ -798,6 +798,10 @@ We will now give a huge family of Noetherian rings.
 
 Note that the converse to this is false, e.g., a power series ring over a field is Noetherian, but is not a finitely generated algebra.
 
+
+\begin{comment}
+
+\Jan{28}
 We now give a subtle connection between the finiteness conditions discussed. 
 
 
@@ -813,13 +817,15 @@ We now give a subtle connection between the finiteness conditions discussed.
 
 \begin{proof}
 	Let $C=A[f_1,\dots,f_r]$ and $C=B g_1 + \cdots + B g_s$. Then, 
-	$$f_i = \sum_j b_{ij} g_j \quad \text{and} \quad g_i g_j = \sum_k b_{ijk} g_k$$
+	\[f_i = \sum_j b_{ij} g_j \quad \text{and} \quad g_i g_j = \sum_k b_{ijk} g_k\]
 	for some $b_{ij}, b_{ijk}\in B$. Let $B_0 = A[\{b_{ij}, b_{ijk}\}] \subseteq B$. Since $A$ is Noetherian, so is $B_0$.
 	
 	We claim that $C=B_0 \, g_1 + \cdots + B_0 g_s$. Given an element $c\in C$, write $c$ as a polynomial expression in $f_1, \ldots, f_r$, and since the $f_i$ are linear combinations of the $g_i$, we can rewrite $c\in A[\{b_{ij}\}][g_1,\dots,g_s]$. Then using the equations for $g_i g_j$ we can write $c$ in the form required.
 	
 	Now, since $B_0$ is Noetherian, $C$ is a finitely generated $B_0$-module, and $B\subseteq C$, then $B$ is a finitely generated $B_0$-module, too. In particular, $B_0 \subseteq B$ is algebra-finite. We conclude that $A  \subseteq B$ is algebra-finite, as required.
 \end{proof}
+
+
 
 \ssec{Application: Finite generation of rings of invariants}
 
@@ -881,7 +887,7 @@ Let $k$ be a field, $R$ be a finitely-generated $k$-algebra, and $G$ a finite gr
 Since integral implies module-finite, we will show that $R$ is algebra-finite and integral over $R^G$.
 
 First, since $R$ is generated by a finite set as a $k$-algebra, and $k\subseteq R^G$, it is generated by the same finite set as an $R^G$-algebra as well. Extend the action of $G$ on $R$ to $R[t]$ with $G$ fixing $t$. Now, for $r\in R$, consider the polynomial $F_r(t)=\prod_{g\in G} (t-g(r)) \in R[t]$. Then $G$ fixes $F_r(t)$, since for each $h \in G$,
-$$h(F_r(t)) = h \prod_{g\in G} (t-g(r)) = \prod_{g\in G} (h \cdot t-hg(r)) = F_r(t)$$
+\[h(F_r(t)) = h \prod_{g\in G} (t-g(r)) = \prod_{g\in G} (h \cdot t-hg(r)) = F_r(t)\]
 Thus, $F_r(t)\in (R[t])^{G}$. Notice that $(R[t])^G = R^G[t]$, since 
 
 $g (a_nt^n + \cdots + a_0) = a_nt^n + \cdots + a_0 \implies (g \cdot a_n)t^n + \cdots + (g \cdot a_0) = a_nt^n + \cdots + a_0.$
@@ -907,13 +913,13 @@ When we think of a polynomial ring $R$, we often think of $R$ with its graded st
 
 \begin{definition}
 	A ring $R$ is {\em $\mathbb{N}$-graded}\index{$\N$-graded} \index{graded ring} if we can write a direct sum decomposition of $R$ as an abelian group indexed by $\mathbb{N}$ (Our convention is that $0\in \N$):
-		$$R=\bigoplus_{a \geqslant 0} R_a,$$
+		\[R=\bigoplus_{a \geqslant 0} R_a,\]
 	where $R_a R_b \subseteq R_{a+b}$ for every $a,b \in \mathbb{N}$, meaning that for any $r\in R_a$ and $s\in R_b$, we have $rs\in R_{a+b}$. 
 	
 	We say $R$ is a \DEF{positively graded $A$-algebra} if $R$ is $\N$-graded with $R_0=A$.
 	
 	More generally, given a semigroup $T$, the ring $R$ is {\em $T$-graded}\index{$T$-graded} if there exists a direct sum decomposition of $R$ as an abelian group indexed by $T$:
-	$$R=\bigoplus_{a\in T} R_a$$
+	\[R=\bigoplus_{a\in T} R_a\]
 	satisfying $R_a R_b \subseteq R_{a+b}$.
 
 	An element that lies in one of the summands $R_a$ is said to be {\em homogeneous}\index{homogeneous element} of {\em degree}\index{degree of a homogeneous element} $a$; we write $|r|$\index{$\mid r \mid$} or $\deg(r)$\index{$\deg(r)$} to denote the degree of a homogeneous element $r$.
@@ -942,18 +948,18 @@ Note that whenever $R$ is a graded ring, the multiplicative identity $1$ must be
 		\item A polynomial ring $R = K[x_1, \ldots, x_n]$ also admits a natural $\NN^n$-grading, with $R_{(d_1,\dots,d_n)}= {K \cdot x_1^{d_1}\cdots x_n^{d_n}}$. This is called the \emph{fine grading}\index{fine grading}.
 			
 			\item Let $\Gamma \subseteq \mathbb{N}^n$ be a subsemigroup of $\mathbb{N}^n$. Then 
-			$$\bigoplus_{\gamma \in \Gamma} K \cdot \vx ^ {\gamma} \subseteq K[\vx] = K[x_1, \ldots, x_n]$$
+			\[\bigoplus_{\gamma \in \Gamma} K \cdot \vx ^ {\gamma} \subseteq K[\vx] = K[x_1, \ldots, x_n]\]
 			is an $\mathbb{N}^n$-graded subring of $K[x_1,\dots,x_n]$. Conversely, every $\NN^n$-graded subring of $K[x_1,\dots,x_n]$ is of this form.
 					\end{enumerate}	
 \end{example}
 
 \begin{remark}
 	You may have seen the term \emph{homogeneous polynomial} used to refer to a polynomial $f(x_1, \ldots, x_n) \in K[x_1, \ldots, x_n]$ that satisfies 
-	$$f(\lambda x_1, \ldots, \lambda x_n) = \lambda^d f(x_1, \ldots, x_n)$$
+	\[f(\lambda x_1, \ldots, \lambda x_n) = \lambda^d f(x_1, \ldots, x_n)\]
 	for some $d$. This is equivalent to saying that all the terms in $f$ have the same total degree, or that $f$ is homogeneous with respect to the standard grading.
 	
 	Similarly, a polynomial is \emph{quasi-homogeneous}, \index{quasi-homogeneous polynomial} or \emph{weighted homogeneous}, if there exist integers $w_1, \ldots, w_n$ such that the sum $w = a_1 w_1 + \cdots + a_n w_n$ is the same for all monomials $x_1^{a_1} \cdots x_n^{a_n}$ appearing in $f$. So $f$ satisfies
-	$$f(\lambda^{w_1} x_1, \ldots, \lambda^{w_n} x_n) = \lambda^{w} f(x_1, \ldots, x_n),$$
+	\[f(\lambda^{w_1} x_1, \ldots, \lambda^{w_n} x_n) = \lambda^{w} f(x_1, \ldots, x_n),\]
 	and $f(x_1^{w_1}, \ldots, x_n^{w_n})$ is homogeneous (in the previous sense, so with respect to the standard grading). 
 	This condition is equivalent to asking that $f$ be homogeneous with respect to some weighted grading on $K[x_1, \ldots, x_n]$.
 \end{remark}
@@ -976,7 +982,7 @@ The following are equivalent:
 	\end{lem}
 	\begin{proof}
 	(1) $\Rightarrow$ (2):  If $I$ is homogeneous and $f\in I$, write $f$ as a combination of the (homogeneous) generators of $I$, say $f_1, \ldots, f_n$:
-$$f = r_1 f_1 + \cdots + r_n f_n.$$
+\[f = r_1 f_1 + \cdots + r_n f_n.\]
 Write each $r_i$ as a sum of its components, say $r_i = [r_i]_{d_{i,1}} + \cdots + [r_i]_{d_{i,m_i}} $. Then, after substituting and collecting, 
 \[ f= \sum_{d} ( [r_1]_{d-|f_1|} f_1 + \cdots +   [r_n]_{d-|f_n|} f_n)\]
 expresses $f$ as a sum of homogeneous elements of different degrees, so 
@@ -1004,7 +1010,7 @@ We now observe the following:
 
 \begin{proof}
 	The ideal $I$ decomposes as the direct sum of its graded components, so we can write
-	$$R/I = \frac{\oplus R_a}{\oplus I_a} \cong \oplus \frac{R_a}{I_a}. \qedhere$$
+	\[R/I = \frac{\oplus R_a}{\oplus I_a} \cong \oplus \frac{R_a}{I_a}. \qedhere\]
 \end{proof}
 
 
@@ -1020,7 +1026,7 @@ We now observe the following:
 
 \begin{definition}
 Let $R$ be a $T$-graded ring, and $M$ an $R$-module. The module $R$ is {\bf $T$-graded}\index{$T$-graded module}\index{graded module} if there exists a direct sum decomposition of $M$ as an abelian group indexed by $T$:
-	$$M=\bigoplus_{a\in T} M_a \textrm{ such that } R_a M_b \subseteq M_{a+b}$$ for all $a,b\in T$.
+	\[M=\bigoplus_{a\in T} M_a \textrm{ such that } R_a M_b \subseteq M_{a+b}\] for all $a,b\in T$.
 	\end{definition}
 	
 	The notions of homogeneous element of a module and degree of a homogeneous element of a module take the obvious meanings. A notable abuse of notation: we will often talk about $\ZZ$-graded modules over $\NN$-graded rings, and likewise.
@@ -1041,14 +1047,14 @@ Let $M$ and $N$ be $\ZZ$-graded modules over the $\NN$-graded ring $R$. A homomo
 \begin{example}\label{example shift}
 \begin{enumerate}
 \item Consider the ring map $K[x,y,z]\to K[s,t]$ given by $x\mapsto s^2, y\mapsto st, z\mapsto t^2$. If $K[s,t]$ has the fine grading, meaning $|s|=(1,0)$ and $|t|=(0,1)$, then the given map is degree preserving if and only if $k[x,y,z]$ is graded by 
-$$|x|=(2,0), |y|=(1,1), |z|=(0,2).$$
+\[|x|=(2,0), |y|=(1,1), |z|=(0,2).\]
 
 \item Let $K$ be a field, and let $R=K[x_1,\dots,x_n]$ be a polynomial ring with the standard grading. Given $c\in K=R_0$, the homomorphism of $R$-modules $R\to R$ given by $f\mapsto cf$ is degree preserving. However, if instead we take $g\in K=R_d$ for some $d>0$, then the map 
-$$\xymatrix@R=1mm{R \ar[r] & R \\
-f \ar@{|->}[r] & gf}$$
+\[\xymatrix@R=1mm{R \ar[r] & R \\
+f \ar@{|->}[r] & gf}\]
 is not degree preserving, although it is a graded map of degree $d$. We can make this a degree-preserving map if we shift the grading on $R$ by defining $R(-d)$ \index{$R(d)$}to be the $R$-module $R$ but with the $\ZZ$-grading given by $R(-d)_t=R_{t-d}$. With this grading, the component of degree $d$ of $R(-d)$ is $R(-d)_d=R_0=K$. Now the map 
-$$\xymatrix@R=1mm{R(-d) \ar[r] & R \\
-f \ar@{|->}[r] & gf}$$
+\[\xymatrix@R=1mm{R(-d) \ar[r] & R \\
+f \ar@{|->}[r] & gf}\]
 is degree preserving.
 \end{enumerate}
 \end{example}
@@ -1109,7 +1115,7 @@ Let $R$ be a direct summand of $S$. Then, for any ideal $I \subseteq R$, we have
 
 \begin{proof}
 	Let $\pi$ be the corresponding splitting. Clearly, $I \subseteq IS \cap R$. Conversely, if $r \in IS \cap R$, we can write $r = s_1 f_1 + \cdots + s_t f_t$ for some $f_i \in I$, $s_i \in S$. Applying $\pi$, we have
-	$$r = \pi(r) = \pi \left( \sum_{i=1}^t s_i f_i \right) = \sum_{i=1}^t \pi\left( s_i f_i \right) = \sum_{i=1}^t \pi \left( s_i \right) f_i \in I. \null \hfill \null\null \hfill \null\qedhere$$
+	\[r = \pi(r) = \pi \left( \sum_{i=1}^t s_i f_i \right) = \sum_{i=1}^t \pi\left( s_i f_i \right) = \sum_{i=1}^t \pi \left( s_i \right) f_i \in I.\qedhere\]
 \end{proof}
 
 \begin{proposition}\label{direct summand noetherian}
@@ -1118,9 +1124,9 @@ Let $R$ be a direct summand of $S$. Then, for any ideal $I \subseteq R$, we have
 
 \begin{proof}
 	Let 
-	$$I_1\subseteq I_2 \subseteq I_3 \subseteq \cdots$$ 
+	\[I_1\subseteq I_2 \subseteq I_3 \subseteq \cdots\] 
 	be a chain of ideals in $R$. The chain of ideals in $S$
-	$$I_1 S \subseteq I_2 S \subseteq I_3 S \subseteq \cdots$$ 
+	\[I_1 S \subseteq I_2 S \subseteq I_3 S \subseteq \cdots\] 
 	stabilizes, so there exist $J$, $N$ such that $I_n R = J$ for $n \geqslant N$. Contracting to $R$, we get that $I_n = I_n S \cap R = J \cap R$ for $n\geqslant N$, so the original chain also stabilizes.
 \end{proof}
 
@@ -1131,12 +1137,12 @@ Let $K$ be a field, and $R$ be a polynomial ring over $K$. Let $G$ be a finite g
 
 \begin{proof}
 	We consider the map $\rho: R \to R^G$ given by 
-	$$\rho(r)=\frac{1}{|G|} \sum_{g\in G} g\cdot r.$$ 
+	\[\rho(r)=\frac{1}{|G|} \sum_{g\in G} g\cdot r.\] 
 	First, note that the image of this map lies in $R^G$, since acting by $g$ just permutes the elements in the sum, so the sum itself remains the same. We claim that this map $\rho$ is a splitting for the inclusion $R^G \subseteq R$. To see that, let $s\in R^G$ and $r\in R$. We have 
-	$$
-	\rho(sr)=\frac{1}{|G|} \sum_{g\in G} g\cdot (sr) =\frac{1}{|G|} \sum_{g\in G} (g\cdot s)(g\cdot r) =\frac{1}{|G|} \sum_{g\in G} s(g\cdot r) = s \frac{1}{|G|} \sum_{g\in G} (g\cdot r) = s \rho(r),$$
+	\[
+	\rho(sr)=\frac{1}{|G|} \sum_{g\in G} g\cdot (sr) =\frac{1}{|G|} \sum_{g\in G} (g\cdot s)(g\cdot r) =\frac{1}{|G|} \sum_{g\in G} s(g\cdot r) = s \frac{1}{|G|} \sum_{g\in G} (g\cdot r) = s \rho(r),\]
 	so $\rho$ is $R^G$-linear, and for $s\in R^G$, 
-	$$\rho(s)=\frac{1}{|G|} \sum_{g\in G} g\cdot s=s.$$
+	\[\rho(s)=\frac{1}{|G|} \sum_{g\in G} g\cdot s=s.\]
 \end{proof}
 
 
@@ -1212,7 +1218,7 @@ For $K = \mathbb{R}$ and $n = 3$, $\mathcal{Z}(z - x^2 - y^2)$ is a paraboloid i
 \[ X= \{ (t^3,t^4,t^5) \ | \ t\in \R\} \] is an algebraic variety, though again it needs justification. Consider $Y=\cZ(y^3-x^4,z^3-x^5)$; clearly $X\subseteq Y$. Over $\R$, for $(a,b,c)\in Y$, take $t=\sqrt[3]{a}$; then $a=t^3$, $b^3=a^4$ means $b=\sqrt[3]{a}^4$, so $b=t^4$, and similarly $c=t^5$, so $X=Y$. We were using uniqueness of cube roots in this argument though, so we need to reconsider over $\C$. Indeed, if $\omega$ is a cube root of unity, then $(\omega,1,1)\in Y\smallsetminus X$, so we need to do better. Let's try $Z=\cZ(y^3-x^4,z^3-x^5,z^4-y^5)$. Again, $X\subseteq Z$. Say that $(a,b,c)\in \A^3_{\C}$ are in $Z$, and let $s$ be a cube root of $a$. Then $b^3=a^4 = (s^4)^3$ implies that $b=\omega s^4$ for some cube root of unity $\omega'$ (maybe $1$, maybe not). Similarly $c^3=a^4= (s^5)^3$ implies that $c=\omega'' s^5$ for some cube root of unity $\omega''$ (maybe $1$, maybe $\omega'$, maybe not). So at least $(a,b,c)=(s^3,\omega' s^4, \omega'' s^5)$. Let $t=\omega' s$. Then $(s^3,\omega' s^4, \omega'' s^5) = (t^3,t^4, \omega s^5)$, where $\omega= (\omega')^2 \omega''$ is again some cube root of unity. The equation $b^5=c^4$ shows that $t^20 = \omega^5 t^20$. If $t\neq 0$, this shows $\omega=1$, so $(a,b,c)=(t^3,t^4,t^5)$; if $t=0$, then $(a,b,c) = (0,0,0) = (0^3,0^4,0^5)$. Thus, $X=Z$.
 
 \item For any field $K$ and elements $a_1, \dots, a_d \in k$, we have
-$$\mathcal{Z}(x_1 - a_1, \dots, x_d -a_d) = \{(a_1, \dots, a_d)\}.$$
+\[\mathcal{Z}(x_1 - a_1, \dots, x_d -a_d) = \{(a_1, \dots, a_d)\}.\]
 So, all one element subsets of $\A^d_K$ are algebraic subsets. 
 
 \item Here is an example from linear algebra. Fix a field $K$ and consider the set of pairs $(A,v)$ of $2\times 2$ matrices and $2\times 1$ vectors over $K$. We can again identify this with $\A^6_K$; let's call our variables $x_{11}, x_{12}, x_{21}, x_{22}, y_1, y_2$, where we are thinking of $A= \begin{bmatrix} x_{11} & x_{12} \\ x_{21}& x_{22}\end{bmatrix}$ and $v= \begin{bmatrix} y_1 \\ y_2\end{bmatrix}$. The set $X$ of pairs $(A,v)$ such that $Av=0$ is a subvariety of $\A^6_K$:
@@ -1270,7 +1276,7 @@ One evident relation between the two notions: for a subset $X\subseteq \A^n_K$ a
 
 \begin{definition}
 	The {\bf radical}\index{radical of an ideal}\index{$\sqrt{I}$} of an ideal $I$ in a ring $R$ is the ideal
-	$$\sqrt{I} := \{f\in R \ | \ f^n\in I \textrm{ for some } n\}.$$ 
+	\[\sqrt{I} := \{f\in R \ | \ f^n\in I \textrm{ for some } n\}.\] 
 	An ideal is a {\bf radical ideal}\index{radical ideal} if $I=\sqrt{I}$.
 \end{definition}
  
@@ -1501,14 +1507,14 @@ In particular, if $K$ is algebraically closed, then
 \end{thm}
 
 \begin{rem} One direction is easy. The nontrivial direction, in its most basic form, says the following: Suppose we are given a system of polynomial equations
-$$
+\[
 \begin{aligned}
 f_1(x_1, \dots, x_n) & = 0 \\
 f_2(x_1, \dots, x_n) & = 0 \\
 \vdots &  = \vdots \\
 f_m(x_1, \dots, x_n) & = 0 \\
 \end{aligned}
-$$
+\]
 in $n$ variables with coefficients in some algebraically closed field $k$.  If the system has no solutions over $K$, then for some polynomials $g_1,\dots, g_m$ we have $\sum_i g_i f_i = 1$.  (The converse is clear.)
 
 For example, when $n = 1$, it says that if $f_1(x), \dots, f_m(x)$ do not share a common root in $K$, then their collective gcd is $1$.   This case is easy to prove, and is essentially equivalent to the definition of ``algebraically closed''.  It's much harder and much less obvious for $n > 1$. 
