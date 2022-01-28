@@ -798,7 +798,7 @@ We will now give a huge family of Noetherian rings.
 
 Note that the converse to this is false, e.g., a power series ring over a field is Noetherian, but is not a finitely generated algebra.
 
-\begin{comment}
+
 
 
 \Jan{28}
@@ -920,6 +920,7 @@ Let $K$ be a field, $R$ be a polynomial ring over $K$, and $G$ be a finite group
 Observe that $K \subseteq R^G \subseteq R$, that $K$ is Noetherian, $K\subseteq R$ is algebra-finite, and $R^G\subseteq R$ is module-finite. Thus, by the Artin-Tate Lemma, we are done!
 \end{proof}
 
+\begin{comment}
 
 \section{Graded rings} 
 
@@ -1199,19 +1200,10 @@ Observe that any $f\in K[x_1,\dots,x_n]$ can be considered as a function on $\A^
 
 
 \item For $K = \mathbb{R}$ and $n = 2$, $\mathcal{Z}(y^2 + x^2(x-1))$ is a ``nodal curve'' in $\A^2_\mathbb{R}$, the real plane. Note that we've written $x$ for $x_1$ and $y$ for $x_2$ here.
-\begin{center}
-% \includegraphics[width = 2in, height = 2in]{v1.png} 
- \end{center}
 \item
 For $K = \mathbb{R}$ and $n = 3$, $\mathcal{Z}(z - x^2 - y^2)$ is a paraboloid in $\A^3_\mathbb{R}$, real three space. 
-% Note that $x = x_1$, $ y = x_2$ and $z = x_3$.
-\begin{center}
-% \includegraphics[width = 2in, height = 2in]{v2.png} 
- \end{center}
 \item For $K = \mathbb{R}$ and $n = 3$, $\mathcal{Z}(z - x^2 - y^2, 3x - 2y + 7z - 7)$ is circle in $\A^3_\mathbb{R}$.
-\begin{center}
-% \includegraphics[width = 2in, height = 2in]{v3.png} 
- \end{center}
+\item For $K = \mathbb{R}$ and $n=3$, $\cZ(xy,xz)$ is a line and a plane that cross transversely.
  
  \item Over an arbitrary field $K$, a linear subspace of $\A^n_K = K^n$ is a subvariety: such a subset is defined by some linear equations.
  
@@ -1292,9 +1284,9 @@ One evident relation between the two notions: for a subset $X\subseteq \A^n_K$ a
 \[ X \subseteq \cZ(S) \Longleftrightarrow \text{each $s\in S$ vanishes at each $x\in X$} \Longleftrightarrow S \subseteq \cI(X).\]
 
 \begin{definition}
-	The {\bf radical}\index{radical of an ideal}\index{$\sqrt{I}$} of an ideal $I$ in a ring $R$ is the ideal
+	The {\it radical}\index{radical of an ideal}\index{$\sqrt{I}$} of an ideal $I$ in a ring $R$ is the ideal
 	\[\sqrt{I} := \{f\in R \ | \ f^n\in I \textrm{ for some } n\}.\] 
-	An ideal is a {\bf radical ideal}\index{radical ideal} if $I=\sqrt{I}$.
+	An ideal is a {\it radical ideal}\index{radical ideal} if $I=\sqrt{I}$.
 \end{definition}
  
  To see that $\sqrt{I}$ is an ideal, note that if $f^m, g^n \in I$, then 
@@ -1341,10 +1333,106 @@ Determining $\cI(X)$ can be very difficult; there was already some work involved
 
 
 
-\ssec{Morphisms of varieties}
+\ssec{Morphisms of varieties and coordinate rings}
 
-Let $K$ be infinite. Given $\phi: X \to Y$, and $\phi^*: K[Y] \to K[X]$, $\ker(\phi^*) = \cI(\im \phi)$.
+The natural condition for a reasonable map between two varieties is that it should also be made from polynomials.
 
+\begin{defn} \label{def26}
+Suppose $X$ is a subvariety of $\A^m_K$ and $Y$ is a subvariety of $\A^n_K$. A {\em morphism of varieties}\index{morphism of varieites} or  {\em algebraic map}\index{algebraic map} or {\em regular map}\index{regular map} from $X$ to $Y$ is a set-theoretic function $G: X \to Y$ defined coordinatewise by polynomials $g_1, \cdots, g_n\in K[x_1, \dots, x_m]$, that is 
+$$
+G(a_1, \dots, a_m) = (g_1(a_1, \dots, a_m), \dots, g_n(a_1, \dots, a_m)) \text{ for all }\va\in X.
+$$
+Not every choice of $g_1, \dots, g_n$ will give such a morphism, because the tuple $ (g_1(\va), \dots, g_n(\va))$ has to satisfy the equations of $Y$. Furthermore, different choices of $g_1, \dots, g_n$ may yield the same morphism.
+
+
+Two algebraic subsets $X$ and $Y$ are isomorphic if there are algebraic maps $G: X \to Y$ and $H: Y \to
+X$ such that $G \circ H = \id_Y$ and $H \circ G = \id_X$, in which
+case each of $G$ an $H$ is referred to as an {\em isomorphism} of
+algebraic sets.  
+\end{defn}
+
+
+
+\begin{ex}
+ \begin{enumerate} 
+ \item Let $X = \cZ(xy -1) \subseteq \A^2_K$ (i.e., $X$ is a hyperbola) 
+and define $G: X \to \A^1_K$ by $G(a,b) = a$. Then $G$ is an algebraic map (indeed, it's given by a linear polynomial) and its image is $\A^1_K\setminus \{0\}$, which is {\em not} an algebraic subset of $\A^1_K$. So,  the set-theoretic  image of a morphism of varieties  need
+  not be a variety.
+ \item \label{ex:cuspidal} Take an infinite field, and 
+let $Y$ be the classical cuspidal curve\index{cuspidal curve}:
+$$
+Y = \cZ(y^2 - x^3) \subseteq \A^2_K.
+$$
+\begin{center}
+% \includegraphics[width = 2in, height = 2in]{cusp} 
+ \end{center}
+Define
+$$
+G: \A^1_K \to Y \quad G(t) = (t^2, t^3).
+$$
+$G$ is an algebraic map from $\A^1_K$ to $Y$
+since the component functions are polynomial functions of $t$ and $(t^3)^2 - (t^2)^3 = 0$ for all $t$.
+
+Note that $G$ is a bijection of sets. However, it is not an isomorphism. Indeed, if it were, we would have some map $H$ such that $H\circ G = \mathrm{id}_{\A^1_K}$. This $H$ would be given by a polynomial $h$ in two variables such that $h(t^2,t^3) = t$. It is easy to see that no such $h$ exists.
+
+\item Consider $\A^6_K$ as the space of $2 \times 3$ matrices over $K$ with coordinates $x_{11},\dots,x_{23}$, and consider $\A^5_K$ as the space of pairs of $2 \times 1$ and $1\times 3$ matrices over $K$ with coordinates $y_1,y_2, z_1,z_2,z_3$. The map of matrix multiplication from $\A^5_K$ to $\A^6_K$ is a regular map:
+\[ (y_1,y_2,z_1,z_2,z_3)  \mapsto \begin{bmatrix} y_1 z_1 & y_1 z_2 & y_1 z_3 \\ y_2 z_1 & y_2 z_2 & y_2 z_3 \end{bmatrix}.\]
+\end{enumerate}
+\end{ex}
+
+\begin{defn}For an algebraic subset $X$ of $\A^n_K$, the {\em coordinate (function) ring}\index{coordinate ring} or the {\em ring of regular functions} of $X$ is the $K$-algebra
+$$
+K[X] := K[x_1, \dots, x_n]/\cI(X).
+$$
+Recall that $\cI(X)$ is a radical ideal, and so $K[X]$ is necessarily a reduced, finitely generated $K$-algebra. 
+An algebra $A$ is {\em reduced}\index{reduced} if $a^n=0$ implies $a=0$ in $A$.
+
+We call an {\em affine $K$-algebra}\index{affine algebra}  any ring of the form 
+\[
+K[x_1,\ldots, x_n]/I \text{ for some ideal } I\subseteq K[x_1,\ldots, x_n].
+\]
+\end{defn}
+
+\begin{rem} Let $Y = \A^1_K$ and let $X$ be any algebraic subset of $\A^n_K$ for some $n$.
+Then an algebraic map $G:X\to \A^1_K$ is simply a polynomial $G=f\in K[x_1,\ldots, x_n]$. Two such polynomials $f, g$ give the same map $G$ if they agree on $X$, that is if $f-g\in \cI(X)$.
+ So, we have a bijection of sets
+$$
+K[X] \cong \{ \text{algebraic morphisms from $X$ to $\A^1_K$} \}.
+$$
+In this way, $K[X]$ is
+analogous to the ring
+\[
+\cC_\R(T) := \{\text{the collection of continuous real valued functions on $T$}\}.\]
+\end{rem}
+
+\begin{defn} Let $K$ be a field. Let $X\subseteq \A^m_K$ and $Y\subseteq \A^n_K$ be affine varieties. Let $\phi:X\to Y$ be a morphism given by $(g_1(x),\dots,g_n(x))$, with $g_i\in K[x_1,\dots,x_m]$. We define
+\[ \xymatrix@R=.5em{ K[Y] \ar[r]^{\phi^*} & K[X] \\ f(y_1,\dots,y_n) \ar@{|->}[r] & f(g_1(x),\dots,g_n(x))}\]
+Alternatively, thinking of $f\in K[Y]$ as a regular map from $Y \to A^1_K$, we have 
+\[\xymatrix@R=.5em{ K[Y] \ar[r]^{\phi^*} & K[X] \\ Y \xra{f} \A^1_K \ar@{|~>}[r] & X \xra{f \phi} \A^1_K \ar@{=}[d]\\  & X\xra{\phi} Y \xra{f} \A^1_K}\]
+We may call this the \DEF{homomorphism induced by} $\phi$ or the \DEF{pullback} of $\phi$.
+\end{defn}
+
+\begin{exer} Show that the rule $\phi^*$ is a well-defined ring homomorphism, and that the map $\phi \mapsto \phi^*$ is well-defined.
+\end{exer}
+
+\begin{exer} For any field $K$, there is a contravariant functor from affine varieties over $K$ to affine $K$-algebras that
+\begin{itemize}
+\item on objects, maps a variety $X$ to its coordinate ring $K[X]$,
+\item on morphisms, maps a morphism of varieties $X\xra{\phi} Y$ to its pullback $K[Y] \xra{\phi^*} K[X]$.
+\end{itemize}
+\end{exer}
+
+
+
+\begin{prop}
+Let $K$ be infinite. Given $\phi: X \to Y$, $\ker(\phi^*) = \cI(\im \phi) K[Y]$.
+\end{prop}
+\begin{proof}
+$(\subseteq):$ Let $f(y_1,\dots,y_n) \in K[Y]$ be an element of $\ker(\phi^*)$ and $(b_1,\dots,b_n) = \phi(a_1,\dots,a_m) \in \im \phi$. Then $\phi^*(f) =0$ implies $(f\circ \phi)$ is the zero function on $X$, so $f(b_1,\dots,b_n) = f\circ \phi (a_1,\dots,a_m) =  0$. 
+
+
+$(\supseteq):$ Let $f\in K[Y]$ be such that $f\in \cI(\im \phi) K[Y]$. Then $f(b_1,\dots,b_n) = 0$ for all $(b_1,\dots,b_n)\in \im \phi$. This means that $f \circ \phi (a_1,\dots,a_n)=0$ for all $(a_1,\dots,a_m)\in X$. Thus, $f\circ \phi $ is zero in $K[X]$, which means that $f\in \ker(\phi^*)$.
+\end{proof}
 
 \ssec{The Zariski topology and irreducible varieties}
 
@@ -1383,22 +1471,28 @@ Recall that a topological space is connected if it cannot be written as the disj
 \begin{defn} A topological space is \emph{irreducible}\index{irreducible space} if it cannot be written as a union of two proper closed subsets.
 \end{defn}
 
-The point is that there is no disjointness condition.
+This is much stronger than connected, since there is no disjointness condition on the sets.
 
-\begin{exer} If $X$ is an irreducible topological space, and $f:X\to Y$ is continuous, then $f(X)$ is irreducible.
+\begin{exer}
+\begin{enumerate}
+\item If $Y\subseteq X$ is irreducible, then so is $\overline{Y} \subseteq X$.
+\item If $X$ is an irreducible topological space, and $f:X\to Y$ is continuous, then $f(X)$ is irreducible.
+\item Any nested union $\bigcup_{\lambda\in \Lambda} X_\lambda$ (for a totally ordered set $\Lambda$ and $X_\mu \subseteq X_\nu$ for $\mu\leq \nu$) of irreducible spaces is irreducible.
+\end{enumerate}
 \end{exer}
+
 
  In $\R^n$ with its Euclidean topology, the only irreducible subspaces are points. However, over an infinite field, $\A^1_K$ is irreducible as easily seen. Moreover, we have:
 
 \begin{prop} Let $K$ be an infinite field. Affine space $\A^n_K$ is irreducible. 
 \end{prop}
 \begin{proof} Say that $\A^n_K = \cZ(I) \cup \cZ(J)$ for some ideals $I,J$. We need to show either $\cZ(I) =\A^n_K$ or $\cZ(J) = \A^n_K$. Note that $\A^n_K = \cZ(IJ)$. We must have $IJ=0$, since $\cI(\A^n_K) = 0$. If $I$ and $J$ are both nonzero, take $f\in I\smallsetminus 0$, and $g\in J \smallsetminus 0$; we get $fg\in IJ \smallsetminus 0$, which is a contradiction. Thus, without loss of generality, $I=0$, so $\cZ(I) = \A^n_K$.
-\end{proof}.
+\end{proof}
 
-\begin{ex} Affine space over a finite field is reducible.
+\begin{ex} Affine space over a finite field is reducible: points are subvarieties, so finite unions of points are, and hence \[\A^n_K = \{(0,\dots,0)\} \cup \A^n_K \smallsetminus \{(0,\dots,0)\}\] is a decomposition into proper subvarieties.
 \end{ex}
 
-\begin{ex} Union of a line and a plane.
+\begin{ex} The variety $\cZ_\R(xy,xz)$ is reducible: it is $\cZ_{\R}(x) \cup \cZ_{\R}(y,z)$, the union of a line and a plane, which are varieties.
 \end{ex}
 
 \begin{ex} Let $K$ be an infinite field. Think of $\A^6_K$ as the set of pairs of $2\times 2$ matrices $A$ (with coordinates $x_{ij}$) and $2\times 1$ vectors $v$ (with coordinates $y_1,y_2$), and let $X=\cZ(x_{11} y_1 + x_{12} y_2, x_{21} y_1 + y_{22} y_2)$ be the variety of pairs such that $Av=0$. If $Av=0$ then either $v=0$, or else $v$ is a nonzero vector in the kernel of $A$, so $\det(A)=0$. Thus, $ X= X_1 \cup X_2$, where \[ X_1 = \cZ(x_{11} y_1 + x_{12} y_2, x_{21} y_1 + y_{22} y_2,  y_1, y_2) = \cZ(y_1, y_2)\]
@@ -1411,6 +1505,8 @@ and hence is irreducible.
 \end{ex}
 
 
+
+
 \begin{defn} Let $X$ be a topological space. We say that $X$ is a \DEF{Noetherian} topological space if the poset of open sets under containment has ACC, or equivalently that the poset of closed subsets has DCC.
 \end{defn}
 
@@ -1419,9 +1515,29 @@ and hence is irreducible.
 \begin{proof} It suffices to deal with $\A^n_K$, since subspaces of Noetherian spaces are Noetherian. If there was an infinite descending chain of closed subvarieties of $\A^n_K$, applying $\cI$, we would obtain an infinite ascending chain of ideals in $K[x_1,\dots,x_n]$, which contradicts Hilbert's Basis Theorem.
 \end{proof}
 
-\begin{prop}  Let $X$ be a Noetherian topological space. Then any closed subset of $X$ is the finite union of its maximal irreducible closed subspaces. \end{prop}
+
+\begin{defn} Let $X$ be a topological space. A maximal irreducible subspace of $X$ is called an \DEF{irreducible component} of $X$.
+\end{defn}
+
+\begin{rem} An irreducible component of a space is closed, since the closure of an irreducible subset is closed.
+\end{rem}
+
+\begin{prop}  Let $X$ be a topological space.
+\begin{enumerate}
+\item $X$ is the union of its irreducible components. 
+\item If $X=X_1\cup \cdots X_n$ with each $X_i$ irreducible, and suppose that $X_i \not\subseteq \bigcup_{j\neq i} X_j$; i.e., the union $X=X_1\cup \cdots X_n$ is \DEF{irredundant}. Then $\{X_1,\dots,X_n\}$ is the collection of irreducible components of $X$.
+\item If $X$ is Noetherian, then $X$ has finitely many irreducible components. Hence, if $X$ is Noetherian, it can be written as an irredundant finite union of irreducible components in a unique way.
+\end{enumerate}
+\end{prop}
 \begin{proof}
-If not, consider the collection of closed subsets $Y$ that are not the finite union of its maximal irreducible closed subspaces. Since the closed subsets satisfy DCC, there is a minimal such $Y$. If $Y$ is irreducible, we have reached a contradiction and we are done. Otherwise\dots
+\begin{enumerate}
+\item It suffices to show that any point is in an irreducible component. Let $x\in X$, and consider the collection of irreducible subsets of $X$ that contain $x$. This is nonempty, since $\{x\}$ is in the collection.  Consider the poset of irreducible subsets of $X$ containing $x$ under inclusion. By the exercise above, the union of any chain in this poset is again in the poset, so Zorn's lemma applies. Such a subset must be a maximal irreducible subset, since any larger subset also contains $x$.
+\item Let $Y$ be an irreducible component of $X$. Then $Y= (X_1 \cap Y) \cup \cdots \cup  (X_n \cap Y)$ implies that $X_i \cap Y = Y$, so $Y\subseteq X_i$ for some $i$. By maximality, we must have $Y=X_i$. This shows that every irreducible component is on the list.
+
+Conversely, for some $X_i$, take $Y\supseteq X_i$ to be an irreducible component: we can do this by the same Zorn's Lemma argument as in the previous part. By what we just showed, $Y=X_j$ for some $j$. By irredundancy, we must have $i=j$, so $X_i$ is an irreducible component.
+
+\item Consider the collection of closed subsets of $X$ that are not finite unions of irreducibles. If this collection is nonempty (in particular, if $X$ is not a finite union of irreducibles), it has a minimal element by DCC; call it $Z$. In particular, $Z$ is reducible, so write $Z=Z'\cup Z''$ with $Z', Z''$ closed proper subsets of $Z$. Since they are smaller than $Z$, they are finite unions of irreducibles. Putting them together expresses $Z$ as a finite union of irreducibles.
+\end{enumerate}
 \end{proof}
 
 
@@ -1433,7 +1549,7 @@ If not, consider the collection of closed subsets $Y$ that are not the finite un
 \end{prop}
 \begin{proof} First we show that if $\cI(X)$ is not prime, then $X$ is reducible. Suppose that $f,g\notin \cI(X)$ and $fg\in \cI(X)$. Since $f\notin \cI(X)$, $f$ does not vanish at some point of $X$, so $X\not\subseteq \cZ(f)$. Thus,
 \[ \cZ(\cI(X) + (f)) = \cZ(\cI(X)) \cap \cZ(f) = X \cap \cZ(f) \subsetneqq X,\]
-and likewise $\cZ(\cI(X) + (g) \subsetneqq X$. But
+and likewise $\cZ(\cI(X) + (g)) \subsetneqq X$. But
 \[ X \supseteq \cZ(\cI(X) + (f)) \cup \cZ(\cI(X) + (g)) = \cZ( (\cI(X) +(f)) (\cI(X) +(g)) ) = \cZ( \cI(X)^2 +(f,g)\cI(X) +(fg)) \supseteq \cZ(\cI(X)) = X, \]
 so $\cZ(\cI(X) + (f)) \cup \cZ(\cI(X) + (g)) = X$. This shows that $X$ is reducible.
 
