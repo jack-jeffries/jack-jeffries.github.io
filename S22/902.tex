@@ -921,7 +921,7 @@ Let $K$ be a field, $R$ be a polynomial ring over $K$, and $G$ be a finite group
 Observe that $K \subseteq R^G \subseteq R$, that $K$ is Noetherian, $K\subseteq R$ is algebra-finite, and $R^G\subseteq R$ is module-finite. Thus, by the Artin-Tate Lemma, we are done!
 \end{proof}
 
-\begin{comment}
+\Jan{31}
 
 \section{Graded rings} 
 
@@ -931,15 +931,15 @@ When we think of a polynomial ring $R$, we often think of $R$ with its graded st
 
 
 \begin{definition}
-	A ring $R$ is {\em $\mathbb{N}$-graded}\index{$\N$-graded} \index{graded ring} if we can write a direct sum decomposition of $R$ as an abelian group indexed by $\mathbb{N}$ (Our convention is that $0\in \N$):
+An \emph{$\N$-graded ring}\index{graded ring} is a ring $R$ equipped with a direct sum decomposition as additive groups
 		\[R=\bigoplus_{a \geqslant 0} R_a,\]
-	where $R_a R_b \subseteq R_{a+b}$ for every $a,b \in \mathbb{N}$, meaning that for any $r\in R_a$ and $s\in R_b$, we have $rs\in R_{a+b}$. 
+	such that $R_a R_b \subseteq R_{a+b}$ for every $a,b \in \mathbb{N}$, meaning that for any $r\in R_a$ and $s\in R_b$, we have $rs\in R_{a+b}$. 
 	
 	We say $R$ is a \DEF{positively graded $A$-algebra} if $R$ is $\N$-graded with $R_0=A$.
 	
-	More generally, given a semigroup $T$, the ring $R$ is {\em $T$-graded}\index{$T$-graded} if there exists a direct sum decomposition of $R$ as an abelian group indexed by $T$:
+	More generally, for a semigroup $T$, a {\em $T$-graded}\index{$T$-graded} ring is a ring $R$ with a direct sum decomposition of $R$ as an additive group indexed by $T$:
 	\[R=\bigoplus_{a\in T} R_a\]
-	satisfying $R_a R_b \subseteq R_{a+b}$.
+	satisfying $R_a R_b \subseteq R_{a+b}$. We will assume for convenience that any grading semigroup is cancellative.
 
 	An element that lies in one of the summands $R_a$ is said to be {\em homogeneous}\index{homogeneous element} of {\em degree}\index{degree of a homogeneous element} $a$; we write $|r|$\index{$\mid r \mid$} or $\deg(r)$\index{$\deg(r)$} to denote the degree of a homogeneous element $r$.
 \end{definition}
@@ -947,41 +947,59 @@ When we think of a polynomial ring $R$, we often think of $R$ with its graded st
 
 By definition, an element in a graded ring is uniquely a sum of homogeneous elements, which we call its {\em homogeneous components}\index{homogeneous components} \index{graded components} or {\em graded components}; we may write \Def{$[f]_d$} for the $d$th homogeneous component of $f$.  One nice thing about graded rings is that many properties can usually be sufficiently checked on homogeneous elements, and these are often easier to deal with.
 
+\begin{lem} Let $R$ be a $T$-graded ring. 
+\begin{enumerate}
+\item $1$ is homogeneous of degree $0\in T$ (the identity of $T$).
+\item $R_0$ is a subring of $R$.
+\item Each $R_a$ is a $R_0$-module.
+\end{enumerate}
+\end{lem}
+\begin{proof}
+\begin{enumerate}
+\item Write $1=\sum_a r_a$ with $r_a$ homogeneous of degree $a$. Then $r_0 = r_0 (\sum_a r_a) = \sum_a r_0 r_a$ implies $r_0 r_a = 0$ for $a\neq 0$. Similarly, taking the $R_a$ component of $r_a = r_a (\sum_b r_b)$ yields $r_a = r_a r_0$ (here is where we use the cancellative assumption). Thus $r_a =0$ for $a\neq 0$, so $1\in R_0$.
+\item It is clear that 
+
 
 \begin{remark}
 Note that whenever $R$ is a graded ring, the multiplicative identity $1$ must be a homogeneous element whose degree is the identity in $T$. In particular, if $R$ is $\NN$ or $\ZZ$-graded, then $1 \in R_0$ and $R_0$ is a subring of $R$.
 \end{remark}
 
 
-\begin{example}
+\begin{example} Let $K$ be a field, and  $R=K[x_1,\dots,x_n]$ be a polynomial ring.
 	\begin{enumerate}
 	
-		\item Any ring $R$ is trivially an $\NN$-graded ring, by setting $R_0 = R$ and $R_n = 0$ for $n \neq 0$.
+	%	\item Any ring $R$ is trivially an $\NN$-graded ring, by setting $R_0 = R$ and $R_n = 0$ for $n \neq 0$.
 		
-		\item If $K$ is a field and $R=k[x_1,\dots,x_n]$ is a polynomial ring, there is an $\NN$-grading on $R$ called the \emph{standard grading}\index{standard grading} where $R_d$ is the $K$-vector space with basis given by the monomials of total degree $d$, meaning those of the form $x_1^{\alpha_1}\cdots x_n^{\alpha_n}$ with $\sum_i \alpha_i =d$. Of course, this is the notion of degree familiar from middle school. So $x_1^2+x_2x_3$ is homogeneous in the standard grading, while $x_1^2+x_2$ is not.
+		\item There is an $\NN$-grading on $R$ called the \DEF{standard grading} where 
+		\[ R_d = K \cdot \{ x_1^{\alpha_1}\cdots x_n^{\alpha_n} \ | \ \sum_i \alpha_i =d\}.\]
+		 Of course, this is the notion of degree familiar from grade school. So $x_1^2+x_2x_3$ is homogeneous in the standard grading, while $x_1^2+x_2$ is not.
 		
-		\item If $K$ is a field, and $R=K[x_1,\dots,x_n]$ is a polynomial ring, we can give different $\NN$-gradings on $R$ by fixing some tuple $(\beta_1,\dots,\beta_n)\in \NN^n$ and letting $x_i$ be a homogeneous element of degree $\beta_i$; we call this a grading with \emph{weights}\index{weights} $(\beta_1,\dots,\beta_n)$.
+		\item We can give different $\NN$-gradings on $R$ by fixing some tuple $(\beta_1,\dots,\beta_n)\in \NN^n$ and letting $x_i$ be a homogeneous element of degree $\beta_i$; we call this a grading with \emph{weights}\index{weights} $(\beta_1,\dots,\beta_n)$. Concretely,
+		\[ R_d = K \cdot \{ x_1^{\alpha_1}\cdots x_n^{\alpha_n} \ | \ \sum_i \beta_i \alpha_i =d\}.\]
+
 		
 		For example, in $K[x_1,x_2]$, $x_1^2+x_2^3$ is not homogeneous in the standard grading, but it is homogeneous of degree $6$ under the $\mathbb{N}$-grading with weights $(3,2)$.
 	
-		\item A polynomial ring $R = K[x_1, \ldots, x_n]$ also admits a natural $\NN^n$-grading, with $R_{(d_1,\dots,d_n)}= {K \cdot x_1^{d_1}\cdots x_n^{d_n}}$. This is called the \emph{fine grading}\index{fine grading}.
+		\item A polynomial ring $R = K[x_1, \ldots, x_n]$ also admits a natural $\NN^n$-grading, with 
+		\[ R_{(d_1,\dots,d_n)}= {K \cdot x_1^{d_1}\cdots x_n^{d_n}}.\]
+		 This is called the \emph{fine grading}\index{fine grading}.
 			
-			\item Let $\Gamma \subseteq \mathbb{N}^n$ be a subsemigroup of $\mathbb{N}^n$. Then 
-			\[\bigoplus_{\gamma \in \Gamma} K \cdot \vx ^ {\gamma} \subseteq K[\vx] = K[x_1, \ldots, x_n]\]
-			is an $\mathbb{N}^n$-graded subring of $K[x_1,\dots,x_n]$. Conversely, every $\NN^n$-graded subring of $K[x_1,\dots,x_n]$ is of this form.
-					\end{enumerate}	
+	%		\item Let $\Gamma \subseteq \mathbb{N}^n$ be a subsemigroup of $\mathbb{N}^n$. Then 
+	%		\[\bigoplus_{\gamma \in \Gamma} K \cdot \vx ^ {\gamma} \subseteq K[\vx] = K[x_1, \ldots, x_n]\]
+	%		is an $\mathbb{N}^n$-graded subring of $K[x_1,\dots,x_n]$. Conversely, every $\NN^n$-graded subring of $K[x_1,\dots,x_n]$ is of this form.
+				\end{enumerate}	
 \end{example}
 
-\begin{remark}
-	You may have seen the term \emph{homogeneous polynomial} used to refer to a polynomial $f(x_1, \ldots, x_n) \in K[x_1, \ldots, x_n]$ that satisfies 
-	\[f(\lambda x_1, \ldots, \lambda x_n) = \lambda^d f(x_1, \ldots, x_n)\]
-	for some $d$. This is equivalent to saying that all the terms in $f$ have the same total degree, or that $f$ is homogeneous with respect to the standard grading.
-	
-	Similarly, a polynomial is \emph{quasi-homogeneous}, \index{quasi-homogeneous polynomial} or \emph{weighted homogeneous}, if there exist integers $w_1, \ldots, w_n$ such that the sum $w = a_1 w_1 + \cdots + a_n w_n$ is the same for all monomials $x_1^{a_1} \cdots x_n^{a_n}$ appearing in $f$. So $f$ satisfies
-	\[f(\lambda^{w_1} x_1, \ldots, \lambda^{w_n} x_n) = \lambda^{w} f(x_1, \ldots, x_n),\]
-	and $f(x_1^{w_1}, \ldots, x_n^{w_n})$ is homogeneous (in the previous sense, so with respect to the standard grading). 
-	This condition is equivalent to asking that $f$ be homogeneous with respect to some weighted grading on $K[x_1, \ldots, x_n]$.
-\end{remark}
+%\begin{remark}
+%	You may have seen the term \emph{homogeneous polynomial} used to refer to a polynomial $f(x_1, \ldots, x_n) \in K[x_1, \ldots, x_n]$ that satisfies 
+%	\[f(\lambda x_1, \ldots, \lambda x_n) = \lambda^d f(x_1, \ldots, x_n)\]
+%	for some $d$. This is equivalent to saying that all the terms in $f$ have the same total degree, or that $f$ is homogeneous with respect to the standard grading.
+%	
+%	Similarly, a polynomial is \emph{quasi-homogeneous}, \index{quasi-homogeneous polynomial} or \emph{weighted homogeneous}, if there exist integers $w_1, \ldots, w_n$ such that the sum $w = a_1 w_1 + \cdots + a_n w_n$ is the same for all monomials $x_1^{a_1} \cdots x_n^{a_n}$ appearing in $f$. So $f$ satisfies
+%	\[f(\lambda^{w_1} x_1, \ldots, \lambda^{w_n} x_n) = \lambda^{w} f(x_1, \ldots, x_n),\]
+%	and $f(x_1^{w_1}, \ldots, x_n^{w_n})$ is homogeneous (in the previous sense, so with respect to the standard grading). 
+%	This condition is equivalent to asking that $f$ be homogeneous with respect to some weighted grading on $K[x_1, \ldots, x_n]$.
+%\end{remark}
 
 
 
@@ -1044,7 +1062,7 @@ We now observe the following:
 \end{example}
 
 \begin{definition}
-Let $R$ be a $T$-graded ring, and $M$ an $R$-module. The module $R$ is {\bf $T$-graded}\index{$T$-graded module}\index{graded module} if there exists a direct sum decomposition of $M$ as an abelian group indexed by $T$:
+Let $R$ be a $T$-graded ring. A graded $R$-module\index{graded module} is an $R$-module with a direct sum decomposition as additive groups indexed by $T$:
 	\[M=\bigoplus_{a\in T} M_a \textrm{ such that } R_a M_b \subseteq M_{a+b}\] for all $a,b\in T$.
 	\end{definition}
 	
@@ -1053,7 +1071,7 @@ Let $R$ be a $T$-graded ring, and $M$ an $R$-module. The module $R$ is {\bf $T$-
 	We can also talk about graded homomorphisms.
 	
 \begin{definition}
-Let $R$ and $S$ be $T$-graded rings with the same grading monoid $T$. A ring homomorphism $\varphi:R\to S$ is {\em graded} or {\em degree-preserving}\index{graded ring homomorphism} \index{degree preserving homomorphism} if $\varphi(R_a) \subseteq S_{a}$ for all $a \in T$.
+Let $R$ and $S$ be $T$-graded rings with the same grading monoid $T$. A ring homomorphism $\phi:R\to S$ is {\em graded} or {\em degree-preserving}\index{graded ring homomorphism} \index{degree preserving homomorphism} if $\phi(R_a) \subseteq S_{a}$ for all $a \in T$.
 \end{definition}
 
 Note that our definition of ring homomorphism requires $1_R \mapsto 1_S$, and thus it does not make sense to talk about graded ring homomorphisms that shift degrees. But we can have graded module homomorphisms of any degree.
@@ -1064,25 +1082,28 @@ Let $M$ and $N$ be $\ZZ$-graded modules over the $\NN$-graded ring $R$. A homomo
 
 
 \begin{example}\label{example shift}
-\begin{enumerate}
-\item Consider the ring map $K[x,y,z]\to K[s,t]$ given by $x\mapsto s^2, y\mapsto st, z\mapsto t^2$. If $K[s,t]$ has the fine grading, meaning $|s|=(1,0)$ and $|t|=(0,1)$, then the given map is degree preserving if and only if $k[x,y,z]$ is graded by 
-\[|x|=(2,0), |y|=(1,1), |z|=(0,2).\]
+%\begin{enumerate}
+%\item Consider the ring map $K[x,y,z]\to K[s,t]$ given by $x\mapsto s^2, y\mapsto st, z\mapsto t^2$. If $K[s,t]$ has the fine grading, meaning $|s|=(1,0)$ and $|t|=(0,1)$, then the given map is degree preserving if and only if $k[x,y,z]$ is graded by 
+%\[|x|=(2,0), |y|=(1,1), |z|=(0,2).\]
 
-\item Let $K$ be a field, and let $R=K[x_1,\dots,x_n]$ be a polynomial ring with the standard grading. Given $c\in K=R_0$, the homomorphism of $R$-modules $R\to R$ given by $f\mapsto cf$ is degree preserving. However, if instead we take $g\in K=R_d$ for some $d>0$, then the map 
+%\item 
+
+Let $K$ be a field, and let $R=K[x_1,\dots,x_n]$ be a polynomial ring with the standard grading. Given $c\in K=R_0$, the homomorphism of $R$-modules $R\to R$ given by $f\mapsto cf$ is degree preserving. However, if instead we take $g\in K=R_d$ for some $d>0$, then the map 
 \[\xymatrix@R=1mm{R \ar[r] & R \\
 f \ar@{|->}[r] & gf}\]
 is not degree preserving, although it is a graded map of degree $d$. We can make this a degree-preserving map if we shift the grading on $R$ by defining $R(-d)$ \index{$R(d)$}to be the $R$-module $R$ but with the $\ZZ$-grading given by $R(-d)_t=R_{t-d}$. With this grading, the component of degree $d$ of $R(-d)$ is $R(-d)_d=R_0=K$. Now the map 
 \[\xymatrix@R=1mm{R(-d) \ar[r] & R \\
 f \ar@{|->}[r] & gf}\]
 is degree preserving.
-\end{enumerate}
+%\end{enumerate}
 \end{example}
 
+\begin{comment}
 
 
 We observed earlier an important relationship between algebra-finiteness and Noetherianity that followed from the Hilbert basis theorem: if $R$ is Noetherian, then any algebra-finite extension of $R$ is also Noetherian. There isn't a converse to this in general: there are lots of algebras over fields $K$ that are Noetherian but not algebra-finite over $K$. However, for graded rings, this converse relation holds.
 
-%\lec{January 25}
+
 
 \begin{proposition}
 	Let $R$ be an $\NN$-graded ring, and consider homogeneous elements $f_1,\dots,f_n \in R$ of positive degree. Then $f_1,\dots,f_n$ generate the ideal $R_+ := \bigoplus_{d>0} R_d$ if and only if $f_1,\dots,f_n$ generate $R$ as an $R_0$-algebra.
@@ -1122,7 +1143,7 @@ Being a direct summand is really nice, since many good properties of $S$ pass on
 
 \begin{defn} Let $\phi:R\to S$ be a ring homomorphism.
 \begin{itemize}
-\item Given an ideal $J$ in $S$, the preimage of $J$ under $\phi$ is the \DEF{contraction} of $J$, denoted \Def{$\phi^{-1}(J)$} or \Def{$J \cap R$}, even if $\phi$ is not an inclusion map.
+\item Given an ideal $J$ in $S$, the preimage of $J$ under $\phi$ is the \DEF{contraction} of $J$, denoted \Def{$\phi^{-1}(J)$} or \Def{$J \cap R$}~, even if $\phi$ is not an inclusion map.
 \item Given an ideal $I$ in $R$, the \DEF{expansion} of $I$ in $S$ is the ideal of $S$ generated by $\phi(I)$; we naturally denote this by \Def{$IS$}.
 \end{itemize}
 \end{defn}
