@@ -957,8 +957,10 @@ By definition, an element in a graded ring is uniquely a sum of homogeneous elem
 \begin{proof}
 \begin{enumerate}
 \item Write $1=\sum_a r_a$ with $r_a$ homogeneous of degree $a$. Then $r_0 = r_0 (\sum_a r_a) = \sum_a r_0 r_a$ implies $r_0 r_a = 0$ for $a\neq 0$. Similarly, taking the $R_a$ component of $r_a = r_a (\sum_b r_b)$ yields $r_a = r_a r_0$ (here is where we use the cancellative assumption). Thus $r_a =0$ for $a\neq 0$, so $1\in R_0$.
-\item It is clear that 
-
+\item $R_0$ is a subgroup under addition, and $r,s\in R_0$ implies $rs\in R_0$. We also just showed $1\in R_0$.
+\item $R_a$ is a subgroup under addition, and $r\in R_0$, $s\in R_a$ implies $rs\in R_a$.
+\end{enumerate}
+\end{proof}
 
 \begin{remark}
 Note that whenever $R$ is a graded ring, the multiplicative identity $1$ must be a homogeneous element whose degree is the identity in $T$. In particular, if $R$ is $\NN$ or $\ZZ$-graded, then $1 \in R_0$ and $R_0$ is a subring of $R$.
@@ -1198,7 +1200,7 @@ Let $K$ be a field, and $R$ be a polynomial ring over $K$. Let $G$ be a group ac
  One important thing about this proof is that it applies to many infinite groups. In particular, for any \emph{linearly reductive group}\index{linearly reductive group}, including $\mathrm{GL}_n(\CC)$, $\mathrm{SL}_n(\CC)$, and $(\CC^{\times})^n$, we can construct a splitting map $\rho$.
 \end{rem}
 
-\begin{comment}
+\Feb{4}
 
 \sec{Affine varieties}
 
@@ -1223,7 +1225,6 @@ Observe that any $f\in K[x_1,\dots,x_n]$ can be considered as a function on $\A^
 %\item
 %For any field, we have
 %$\cZ(0) = \A^n_k$ and  $\cZ(1) = \emptyset$. 
-
 
 \item For $K = \mathbb{R}$ and $n = 2$, $\mathcal{Z}(y^2 - x^2(x+1))$ is a ``nodal curve'' in $\A^2_\mathbb{R}$, the real plane. Note that we've written $x$ for $x_1$ and $y$ for $x_2$ here.
 \item
@@ -1250,7 +1251,7 @@ For $K = \mathbb{R}$ and $n = 3$, $\mathcal{Z}(z - x^2 - y^2)$ is a paraboloid i
 \[ X= \{ (t,t^2,t^3) \ | \ t\in K\} \] is an algebraic variety, though it isn't clear from this description. In fact, $X=\mathcal{Z}(y-x^2, z-x^3)$. To see the containment ``$\subseteq$'', for $(t,t^2,t^3)\in X$, we have $t^2- t^2=0$ and $t^3 - t ^3=0$. For the containment ``$\supseteq$'', let $(a,b,c)\in  \mathcal{Z}(y-x^2,  z-x^3)$, so $b=a^2$ and $c=a^3$. Setting $t=a$, we get that $(a,b,c)=(t,t^2,t^3)\in X$. The same argument works over $\C$. 
 
 \item For $K = \mathbb{R}$ or $\C$, the set
-\[ X= \{ (t^3,t^4,t^5) \ | \ t\in \R\} \] is an algebraic variety, though again it needs justification. Consider $Y=\cZ(y^3-x^4,z^3-x^5)$; clearly $X\subseteq Y$. Over $\R$, for $(a,b,c)\in Y$, take $t=\sqrt[3]{a}$; then $a=t^3$, $b^3=a^4$ means $b=\sqrt[3]{a}^4$, so $b=t^4$, and similarly $c=t^5$, so $X=Y$. We were using uniqueness of cube roots in this argument though, so we need to reconsider over $\C$. Indeed, if $\omega$ is a cube root of unity, then $(\omega,1,1)\in Y\smallsetminus X$, so we need to do better. Let's try $Z=\cZ(y^3-x^4,z^3-x^5,z^4-y^5)$. Again, $X\subseteq Z$. Say that $(a,b,c)\in \A^3_{\C}$ are in $Z$, and let $s$ be a cube root of $a$. Then $b^3=a^4 = (s^4)^3$ implies that $b=\omega s^4$ for some cube root of unity $\omega'$ (maybe $1$, maybe not). Similarly $c^3=a^4= (s^5)^3$ implies that $c=\omega'' s^5$ for some cube root of unity $\omega''$ (maybe $1$, maybe $\omega'$, maybe not). So at least $(a,b,c)=(s^3,\omega' s^4, \omega'' s^5)$. Let $t=\omega' s$. Then $(s^3,\omega' s^4, \omega'' s^5) = (t^3,t^4, \omega s^5)$, where $\omega= (\omega')^2 \omega''$ is again some cube root of unity. The equation $b^5=c^4$ shows that $t^20 = \omega^5 t^20$. If $t\neq 0$, this shows $\omega=1$, so $(a,b,c)=(t^3,t^4,t^5)$; if $t=0$, then $(a,b,c) = (0,0,0) = (0^3,0^4,0^5)$. Thus, $X=Z$.
+\[ X= \{ (t^3,t^4,t^5) \ | \ t\in \R\} \] is an algebraic variety, though again it needs justification. Consider $Y=\cZ(y^3-x^4,z^3-x^5)$; clearly $X\subseteq Y$. Over $\R$, for $(a,b,c)\in Y$, take $t=\sqrt[3]{a}$; then $a=t^3$, $b^3=a^4$ means $b=\sqrt[3]{a}^4$, so $b=t^4$, and similarly $c=t^5$, so $X=Y$. We were using uniqueness of cube roots in this argument though, so we need to reconsider over $\C$. Indeed, if $\omega$ is a cube root of unity, then $(1,1,\omega)\in Y\smallsetminus X$, so we need to do better. Let's try $Z=\cZ(y^3-x^4,z^3-x^5,z^4-y^5)$. Again, $X\subseteq Z$. Say that $(a,b,c)\in \A^3_{\C}$ are in $Z$, and let $s$ be a cube root of $a$. Then $b^3=a^4 = (s^4)^3$ implies that $b=\omega s^4$ for some cube root of unity $\omega'$ (maybe $1$, maybe not). Similarly $c^3=a^4= (s^5)^3$ implies that $c=\omega'' s^5$ for some cube root of unity $\omega''$ (maybe $1$, maybe $\omega'$, maybe not). So at least $(a,b,c)=(s^3,\omega' s^4, \omega'' s^5)$. Let $t=\omega' s$. Then $(s^3,\omega' s^4, \omega'' s^5) = (t^3,t^4, \omega s^5)$, where $\omega= (\omega')^2 \omega''$ is again some cube root of unity. The equation $b^5=c^4$ shows that $t^20 = \omega^5 t^20$. If $t\neq 0$, this shows $\omega=1$, so $(a,b,c)=(t^3,t^4,t^5)$; if $t=0$, then $(a,b,c) = (0,0,0) = (0^3,0^4,0^5)$. Thus, $X=Z$.
 
 \item For any field $K$ and elements $a_1, \dots, a_d \in K$, we have
 \[\mathcal{Z}(x_1 - a_1, \dots, x_d -a_d) = \{(a_1, \dots, a_d)\}.\]
@@ -1272,7 +1273,7 @@ So, all one element subsets of $\A^d_K$ are algebraic subsets.
   \begin{enumerate}
   \item[(0)] $\cZ(1) = \varnothing$ and $\cZ(0) = \A^n_K$.
   \item If $S\subseteq T$, then $\cZ(S) \supseteq \cZ(T)$.
-  \item If $I= (S)$ is the ideal generated by $S$, then $\cZ(S) = \cZ(I)= \cZ(\sqrt{I})$.
+  \item If $I= (S)$ is the ideal generated by $S$, then $\cZ(S) = \cZ(I)$.
   \item $\displaystyle \cZ(\bigcup_{\lambda \in \Lambda} S_\lambda)=\bigcap_{\lambda \in \Lambda} \cZ(S_\lambda)$.
   \item[(3')] $\displaystyle \cZ(\sum_{\lambda \in \Lambda} I_\lambda)=\bigcap_{\lambda \in \Lambda} \cZ(I_\lambda)$.
   \item $\displaystyle \cZ(\{fg \ | \ f\in S,  g\in T\}) = \cZ(S) \cup \cZ(T)$.
@@ -1283,7 +1284,7 @@ So, all one element subsets of $\A^d_K$ are algebraic subsets.
 \begin{proof}
 (0) is clear, since $1$ is never equal to zero and $0$ is always zero. (1) is also clear, since imposing more equations cannot enlarge the solution set.
 
-For (2), we have $\cZ(I) \subseteq \cZ(S)$ by (1). On the other hand, if $f_1,\dots,f_m\in S$ and $r_1,\dots,r_n\in R$, and $(a_1,\dots,a_n)\in \cZ(S)$, then $f_i(a_1,\dots,a_n)=0$ for all $i$, so \[(\sum_i r_i f_i)(a_1,\dots,a_n) = \sum_i r_i(a_1,\dots,a_n) f_i(a_1,\dots,a_n) = 0,\] so $(a_1,\dots,a_n)\in \cZ(\sum_i r_i f_i)$. Thus, $(a_1,\dots,a_n)\in \cZ(I)$. That is, $\cZ(S) \subseteq \cZ(I)$. Similarly\dots
+For (2), we have $\cZ(I) \subseteq \cZ(S)$ by (1). On the other hand, if $f_1,\dots,f_m\in S$ and $r_1,\dots,r_m\in R$, and $(a_1,\dots,a_n)\in \cZ(S)$, then $f_i(a_1,\dots,a_n)=0$ for all $i$, so \[(\sum_i r_i f_i)(a_1,\dots,a_n) = \sum_i r_i(a_1,\dots,a_n) f_i(a_1,\dots,a_n) = 0,\] so $(a_1,\dots,a_n)\in \cZ(\sum_i r_i f_i)$. Thus, $(a_1,\dots,a_n)\in \cZ(I)$. That is, $\cZ(S) \subseteq \cZ(I)$. Similarly\dots
 
 (3) is clear: for a point to satisfy be a solution to all of the equations in each set $S_\lambda$, it is equivalent to be a solution of each set of equations $S_\lambda$. For (3'), using (2) and (3), since $\sum_{\lambda \in \Lambda} I_\lambda$ is the ideal generated by $\bigcup_{\lambda\in\Lambda} I_\lambda$, we have
 \[ \cZ(\sum_{\lambda \in \Lambda} I_\lambda) =  \cZ(\bigcup_{\lambda \in \Lambda} I_\lambda) = \bigcap_{\lambda \in \Lambda} \cZ(I_\lambda).\]
@@ -1296,9 +1297,10 @@ For (4'), since $IJ \subseteq I \cap J \subseteq I$ and $I \cap J \subseteq J$),
 so the equalities hold throughout.
 \end{proof}
 
+\begin{comment}
 
 \begin{rem}
-A basic corollary of (3) above and the Hilbert basis theorem says that every system of polynomial equations is equivalent to a finite one! Indeed, for any set $S$, $\cZ(S) = \cZ(I)$ for $I=(S)$, and since $K[x_1,\dots,x_n]$ is Noetherian, $S=(f_1,\dots,f_m)$ for some $m$, so $\cZ(S) = \cZ(f_1,\dots,f_m)$.
+A basic corollary of (2) above and the Hilbert basis theorem says that every system of polynomial equations is equivalent to a finite one! Indeed, for any set $S$, $\cZ(S) = \cZ(I)$ for $I=(S)$, and since $K[x_1,\dots,x_n]$ is Noetherian, $S=(f_1,\dots,f_m)$ for some $m$, so $\cZ(S) = \cZ(f_1,\dots,f_m)$.
 \end{rem}
 
 
@@ -1328,7 +1330,7 @@ One evident relation between the two notions: for a subset $X\subseteq \A^n_K$ a
 \item[(0)] $\cI(\varnothing) = R$ and, if $K$ is infinite, $\cI(\A^n_K) =  0$.
 \item If $X \subseteq Y$, then $\cI(X) \supseteq \cI(Y)$.
 \item $\cI(X)$ is a radical ideal.
-\item $\cI( \bigcup_{\lambda\in \Lambda} X_\lambda) = \bigcap_{\lambda\in \Lambda} \cI(X_\lambda)$.
+%\item $\cI( \bigcup_{\lambda\in \Lambda} X_\lambda) = \bigcap_{\lambda\in \Lambda} \cI(X_\lambda)$.
 %\item $\cI( X \cap Y) = \cI(X) + \cI(Y)$.
 %\item $\displaystyle \cI( \bigcap_{\lambda\in \Lambda} X_\lambda) = \sum_{\lambda\in \Lambda} \cI(X_\lambda)$.
 %\item $\cI(X \cup Y) = \cI(X) \cap \cI(Y)$.
@@ -1345,7 +1347,7 @@ is a polynomial in one variable that is identically zero, so is the zero polynom
 
 For (2), note that $f,g\in \cI(X)$ and $r\in R$ implies $X\subseteq \cZ(f,g)$ implies $X \subseteq \cZ(rf+g)$ implies $rf+g \in \cI(X)$, so $\cI(X)$ is an ideal. If $f^t\in \cI(X)$, then $f(a_1,\dots,a_n)^t=0$ for all $(a_1,\dots,a_n)\in X$, so $f(a_1,\dots,a_n)=0$ for all $(a_1,\dots,a_n)\in X$, and $f\in \cI(X)$.
 
-(3) is straightforward.
+%(3) is straightforward.
 \end{proof}
 
 Determining $\cI(X)$ can be very difficult; there was already some work involved in settling $\cI(\A^n_K)$! We will explore the relationship between the associations $\cZ$ and $\cI$ more soon. Here are a few cautionary examples:
