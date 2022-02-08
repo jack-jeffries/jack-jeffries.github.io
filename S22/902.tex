@@ -4,7 +4,7 @@
 \usepackage{amscd,mathabx}
 \usepackage{amssymb,setspace}
 \usepackage{tikz-cd}
-\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath,amscd,stmaryrd,mathrsfs,xcolor}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath,amscd,stmaryrd,mathrsfs,xcolor,mathtools}
 \usepackage[all, knot]{xy}
 \usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
 \xyoption{all}
@@ -1220,6 +1220,8 @@ Observe that any $f\in K[x_1,\dots,x_n]$ can be considered as a function on $\A^
 \end{defn}
 
 \begin{rem} Note that if $L \supseteq K$ is a larger field, any polynomial $f\in K[x_1,\dots,x_n]$ is also an element of $L[x_1,\dots,x_n]$, and we can evaluate it at any point in $\A^n_L$. Thus, we may write \Def{$\cZ_K(S)$} or $\cZ_L(S)$ the distinguish between the zero sets over different fields.
+\end{rem}
+
 \begin{ex}
 \begin{enumerate}
 %\item
@@ -1297,7 +1299,7 @@ For (4'), since $IJ \subseteq I \cap J \subseteq I$ and $I \cap J \subseteq J$),
 so the equalities hold throughout.
 \end{proof}
 
-\begin{comment}
+\Feb{7}
 
 \begin{rem}
 A basic corollary of (2) above and the Hilbert basis theorem says that every system of polynomial equations is equivalent to a finite one! Indeed, for any set $S$, $\cZ(S) = \cZ(I)$ for $I=(S)$, and since $K[x_1,\dots,x_n]$ is Noetherian, $S=(f_1,\dots,f_m)$ for some $m$, so $\cZ(S) = \cZ(f_1,\dots,f_m)$.
@@ -1323,6 +1325,8 @@ One evident relation between the two notions: for a subset $X\subseteq \A^n_K$ a
  &+ g^n \left(\binom{m+n-1}{n} f^{m-1} + \binom{m+n-1}{n+1} f^{m-2} g + \cdots + g^{m-1} \right) \in I,
   \end{aligned}\]
  and $(rf)^m=r^m f^m \in I$.
+ 
+Note that $I\subset R$ is radical if and only if $R/I$ has a nonzero nilpotent elements; i.e., $R/I$ is \DEF{reduced}.
 
 
 \begin{prop} Let $K$ be a field, and $X,X_\lambda,Y$ be subsets of $\A^n_K$.
@@ -1331,9 +1335,6 @@ One evident relation between the two notions: for a subset $X\subseteq \A^n_K$ a
 \item If $X \subseteq Y$, then $\cI(X) \supseteq \cI(Y)$.
 \item $\cI(X)$ is a radical ideal.
 %\item $\cI( \bigcup_{\lambda\in \Lambda} X_\lambda) = \bigcap_{\lambda\in \Lambda} \cI(X_\lambda)$.
-%\item $\cI( X \cap Y) = \cI(X) + \cI(Y)$.
-%\item $\displaystyle \cI( \bigcap_{\lambda\in \Lambda} X_\lambda) = \sum_{\lambda\in \Lambda} \cI(X_\lambda)$.
-%\item $\cI(X \cup Y) = \cI(X) \cap \cI(Y)$.
 \end{enumerate}
 \end{prop}
 \begin{proof}
@@ -1345,19 +1346,20 @@ is a polynomial in one variable that is identically zero, so is the zero polynom
 
 (1) is clear.
 
-For (2), note that $f,g\in \cI(X)$ and $r\in R$ implies $X\subseteq \cZ(f,g)$ implies $X \subseteq \cZ(rf+g)$ implies $rf+g \in \cI(X)$, so $\cI(X)$ is an ideal. If $f^t\in \cI(X)$, then $f(a_1,\dots,a_n)^t=0$ for all $(a_1,\dots,a_n)\in X$, so $f(a_1,\dots,a_n)=0$ for all $(a_1,\dots,a_n)\in X$, and $f\in \cI(X)$.
+For (2), note that $f,g\in \cI(X)$ and $r\in R$ implies $X\subseteq \cZ(f,g)$ implies $X \subseteq \cZ(rf+g)$ implies $rf+g \in \cI(X)$, so $\cI(X)$ is an ideal. If $f^t\in \cI(X)$, then $f(a_1,\dots,a_n)^t=0$ for all $(a_1,\dots,a_n)\in X$, so $f(a_1,\dots,a_n)=0$ for all $(a_1,\dots,a_n)\in X$, and $f\in \cI(X)$. \qedhere
 
 %(3) is straightforward.
 \end{proof}
 
-Determining $\cI(X)$ can be very difficult; there was already some work involved in settling $\cI(\A^n_K)$! We will explore the relationship between the associations $\cZ$ and $\cI$ more soon. Here are a few cautionary examples:
+Determining $\cI(X)$ can be very difficult; there was already some work involved in settling $\cI(\A^n_K)$! We will explore the relationship between the associations $\cZ$ and $\cI$ more soon. 
 
-\begin{ex}
-\begin{enumerate}
-\item $\cZ(\cI( \mathrm{graph \ of} \ \sin(x))) = \A^2_{\R}$.
-\item $\cI(\cZ( x^2+y^2)) = (x,y)$ over $\R$, but $\cI(\cZ(x^2+y^2)) = (x^2+y^2)$ over $\C$. We also have $\cI(\cZ(x^2+y^2)) = (x+y)$ over $\F_2$!
-\end{enumerate}
-\end{ex}
+%Here are a few cautionary examples:
+
+%\begin{enumerate}
+%\item $\cZ(\cI( \mathrm{graph \ of} \ \sin(x))) = \A^2_{\R}$.
+%\item $\cI(\cZ( x^2+y^2)) = (x,y)$ over $\R$, but $\cI(\cZ(x^2+y^2)) = (x^2+y^2)$ over $\C$. We also have $\cI(\cZ(x^2+y^2)) = (x+y)$ over $\F_2$!
+%\end{enumerate}
+%\end{ex}
 
 
 
@@ -1366,25 +1368,22 @@ Determining $\cI(X)$ can be very difficult; there was already some work involved
 The natural condition for a reasonable map between two varieties is that it should also be made from polynomials.
 
 \begin{defn} \label{def26}
-Suppose $X$ is a subvariety of $\A^m_K$ and $Y$ is a subvariety of $\A^n_K$. A {\em morphism of varieties}\index{morphism of varieites} or  {\em algebraic map}\index{algebraic map} or {\em regular map}\index{regular map} from $X$ to $Y$ is a set-theoretic function $G: X \to Y$ defined coordinatewise by polynomials $g_1, \cdots, g_n\in K[x_1, \dots, x_m]$, that is 
+Suppose $X$ is a subvariety of $\A^m_K$ and $Y$ is a subvariety of $\A^n_K$. A {\em morphism of varieties}\index{morphism of varieties} or  {\em algebraic map}\index{algebraic map} or {\em regular map}\index{regular map} from $X$ to $Y$ is a function $\phi: X \to Y$ defined coordinatewise by polynomials $g_1, \dots, g_n\in K[x_1, \dots, x_m]$, that is 
 $$
-G(a_1, \dots, a_m) = (g_1(a_1, \dots, a_m), \dots, g_n(a_1, \dots, a_m)) \text{ for all }\va\in X.
+\phi(a_1, \dots, a_m) = (g_1(a_1, \dots, a_m), \dots, g_n(a_1, \dots, a_m)) \text{ for all }\va\in X.
 $$
 Not every choice of $g_1, \dots, g_n$ will give such a morphism, because the tuple $ (g_1(\va), \dots, g_n(\va))$ has to satisfy the equations of $Y$. Furthermore, different choices of $g_1, \dots, g_n$ may yield the same morphism.
 
-
-Two algebraic subsets $X$ and $Y$ are isomorphic if there are algebraic maps $G: X \to Y$ and $H: Y \to
-X$ such that $G \circ H = \id_Y$ and $H \circ G = \id_X$, in which
-case each of $G$ an $H$ is referred to as an {\em isomorphism} of
-algebraic sets.  
+A morphism of varieties $\phi: X \to Y$ is an \emph{isomorphism}\index{isomorphism of varieties} if there is some $\phi: Y \to X$ such that $\phi\circ \psi = \id_Y$ and $\psi \circ \phi = \id_X$.  
 \end{defn}
+
 
 
 
 \begin{ex}
  \begin{enumerate} 
  \item Let $X = \cZ(xy -1) \subseteq \A^2_K$ (i.e., $X$ is a hyperbola) 
-and define $G: X \to \A^1_K$ by $G(a,b) = a$. Then $G$ is an algebraic map (indeed, it's given by a linear polynomial) and its image is $\A^1_K\setminus \{0\}$, which is {\em not} an algebraic subset of $\A^1_K$. So,  the set-theoretic  image of a morphism of varieties  need
+and define $\phi: X \to \A^1_K$ by $\phi(a,b) = a$. Then $G$ is an algebraic map (indeed, it's given by a linear polynomial) and its image is $\A^1_K\setminus \{0\}$, which is {\em not} an algebraic subset of $\A^1_K$. So,  the set-theoretic  image of a morphism of varieties  need
   not be a variety.
  \item \label{ex:cuspidal} Take an infinite field, and 
 let $Y$ be the classical cuspidal curve\index{cuspidal curve}:
@@ -1396,12 +1395,13 @@ $$
  \end{center}
 Define
 $$
-G: \A^1_K \to Y \quad G(t) = (t^2, t^3).
+\phi: \A^1_K \to Y \quad \phi(t) = (t^2, t^3).
 $$
-$G$ is an algebraic map from $\A^1_K$ to $Y$
+
+$\phi$ is an algebraic map from $\A^1_K$ to $Y$
 since the component functions are polynomial functions of $t$ and $(t^3)^2 - (t^2)^3 = 0$ for all $t$.
 
-Note that $G$ is a bijection of sets. However, it is not an isomorphism. Indeed, if it were, we would have some map $H$ such that $H\circ G = \mathrm{id}_{\A^1_K}$. This $H$ would be given by a polynomial $h$ in two variables such that $h(t^2,t^3) = t$. It is easy to see that no such $h$ exists.
+Note that $G$ is a bijection of sets. However, it is not an isomorphism. Indeed, if it were, we would have some map $\psi$ such that $\psi\circ \phi = \mathrm{id}_{\A^1_K}$. This $\psi$ would be given by a polynomial $h$ in two variables such that $h(t^2,t^3) = t$. It is easy to see that no such $h$ exists.
 
 \item Consider $\A^6_K$ as the space of $2 \times 3$ matrices over $K$ with coordinates $x_{11},\dots,x_{23}$, and consider $\A^5_K$ as the space of pairs of $2 \times 1$ and $1\times 3$ matrices over $K$ with coordinates $y_1,y_2, z_1,z_2,z_3$. The map of matrix multiplication from $\A^5_K$ to $\A^6_K$ is a regular map:
 \[ (y_1,y_2,z_1,z_2,z_3)  \mapsto \begin{bmatrix} y_1 z_1 & y_1 z_2 & y_1 z_3 \\ y_2 z_1 & y_2 z_2 & y_2 z_3 \end{bmatrix}.\]
@@ -1422,7 +1422,7 @@ K[x_1,\ldots, x_n]/I \text{ for some ideal } I\subseteq K[x_1,\ldots, x_n].
 \end{defn}
 
 \begin{rem} Let $Y = \A^1_K$ and let $X$ be any algebraic subset of $\A^n_K$ for some $n$.
-Then an algebraic map $G:X\to \A^1_K$ is simply a polynomial $G=f\in K[x_1,\ldots, x_n]$. Two such polynomials $f, g$ give the same map $G$ if they agree on $X$, that is if $f-g\in \cI(X)$.
+Then an algebraic map $\phi:X\to \A^1_K$ is determined by a polynomial $f\in K[x_1,\ldots, x_n]$. Two such polynomials $f, g$ give the same map $G$ if they agree on $X$, that is if $f-g\in \cI(X)$.
  So, we have a bijection of sets
 $$
 K[X] \cong \{ \text{algebraic morphisms from $X$ to $\A^1_K$} \}.
@@ -1453,14 +1453,19 @@ We may call this the \DEF{homomorphism induced by} $\phi$ or the \DEF{pullback} 
 
 
 \begin{prop}
-Let $K$ be infinite. Given $\phi: X \to Y$, $\ker(\phi^*) = \cI(\im \phi) K[Y]$.
+Let $X\subseteq \A^m_K$ and $Y\subseteq \A^n_K$ be affine varieties, and $\phi: X \to Y$ be a morphism. Then $\ker(\phi^*) = \cI(\im \phi) K[Y]$.
 \end{prop}
-\begin{proof}
-$(\subseteq):$ Let $f(y_1,\dots,y_n) \in K[Y]$ be an element of $\ker(\phi^*)$ and $(b_1,\dots,b_n) = \phi(a_1,\dots,a_m) \in \im \phi$. Then $\phi^*(f) =0$ implies $(f\circ \phi)$ is the zero function on $X$, so $f(b_1,\dots,b_n) = f\circ \phi (a_1,\dots,a_m) =  0$. 
 
+%\begin{proof} First, we focus on the case $Y=\A^n_K$. A polynomial $f\in K[y_1,\dots,y_n]$ is in $\ker(\phi^*)$ if and only if $\phi^*(f)$ is the zero element in $K[X]$, which happens if and only if $f\circ \phi(a_1,\dots,a_m)$ is zero for each element $(a_1\dots,a_m)\in X$, but this just means $f$ vanishes on $\im (\phi)$.
 
-$(\supseteq):$ Let $f\in K[Y]$ be such that $f\in \cI(\im \phi) K[Y]$. Then $f(b_1,\dots,b_n) = 0$ for all $(b_1,\dots,b_n)\in \im \phi$. This means that $f \circ \phi (a_1,\dots,a_n)=0$ for all $(a_1,\dots,a_m)\in X$. Thus, $f\circ \phi $ is zero in $K[X]$, which means that $f\in \ker(\phi^*)$.
-\end{proof}
+%In general, write 
+%\[ X \xra{\phi} Y  \stackrel{i}{\subseteq} \A^n_K \qquad  K[X] \xleftarrow{\phi^*} K[Y] \stackrel{i^*}{\twoheadleftarrow} K[y_1,\dots,y_n] \]
+%and note
+%\[ \ker(\phi^*) = \ker( (i\phi)^* ) K[Y] = \cI( \im(i\phi) ) K[Y] = \cI(\im(\phi) ) K[Y].\qedhere\]
+%\end{proof}
+The proof is left as an exercise.
+
+\begin{comment}
 
 \ssec{The Zariski topology and irreducible varieties}
 
@@ -1482,9 +1487,8 @@ Here is a nice use of the topological structure.
 
 \begin{prop} Let $X\subseteq \A^n_K$ be a subset. Then $\cZ(\cI(X)) = \overline{X}$, the closure of $X$ in the Zariski topology.
 \end{prop}
-\begin{proof} Clearly $X \subseteq \cZ(\cI(X))$ and $\cZ(\cI(X))$ is closed, so $\overline{X} \subseteq \cZ(\cI(X)$. Let $Y$ be an arbitrary closed set containing $X$. 
-
-On the other hand, $\displaystyle \overline{X} = \bigcap_{\substack{W \supseteq X \\ W \ \mathrm{closed} }} W$.  For $W\supseteq X$ closed, write $W=\cZ(J)$; then $J\subseteq \cI(W)$ and $W \supseteq X$ implies $\cI(W) \subseteq \cI(X)$, so $J\subseteq \cI(X)$, hence $\cZ(\cI(X)) \subseteq \cI(J) = W$. It follows that $\cZ(\cI(X)) \subseteq \overline{X}$ as well.
+\begin{proof} Clearly $X \subseteq \cZ(\cI(X))$ and $\cZ(\cI(X))$ is closed, so $\overline{X} \subseteq \cZ(\cI(X))$. 
+On the other hand, $\displaystyle \overline{X} = \bigcap_{\substack{W \supseteq X \\ W \ \mathrm{closed} }} W$.  For $W\supseteq X$ closed, write $W=\cZ(J)$; then $J\subseteq \cI(W)$ and $W \supseteq X$ implies $\cI(W) \subseteq \cI(X)$, so $J\subseteq \cI(X)$, hence $\cZ(\cI(X)) \subseteq \cZ(J) = W$. It follows that $\cZ(\cI(X)) \subseteq \overline{X}$ as well.
 \end{proof}
 
 
@@ -1553,18 +1557,18 @@ and hence is irreducible.
 \begin{prop}  Let $X$ be a topological space.
 \begin{enumerate}
 \item $X$ is the union of its irreducible components. 
-\item If $X=X_1\cup \cdots X_n$ with each $X_i$ irreducible, and suppose that $X_i \not\subseteq \bigcup_{j\neq i} X_j$; i.e., the union $X=X_1\cup \cdots X_n$ is \DEF{irredundant}. Then $\{X_1,\dots,X_n\}$ is the collection of irreducible components of $X$.
+\item If $X=X_1\cup \cdots X_n$ with each $X_i$ irreducible, and suppose that $X_i \not\subseteq \bigcup_{j\neq i} X_j$; i.e., the union $X=X_1\cup \cdots X_n$ is \DEF{irredundant}. Then $\{X_1,\dots,X_n\}$ is the collection of irreducible components of~$X$.
 \item If $X$ is Noetherian, then $X$ has finitely many irreducible components. Hence, if $X$ is Noetherian, it can be written as an irredundant finite union of irreducible components in a unique way.
 \end{enumerate}
 \end{prop}
 \begin{proof}
 \begin{enumerate}
 \item It suffices to show that any point is in an irreducible component. Let $x\in X$, and consider the collection of irreducible subsets of $X$ that contain $x$. This is nonempty, since $\{x\}$ is in the collection.  Consider the poset of irreducible subsets of $X$ containing $x$ under inclusion. By the exercise above, the union of any chain in this poset is again in the poset, so Zorn's lemma applies. Such a subset must be a maximal irreducible subset, since any larger subset also contains $x$.
-\item Let $Y$ be an irreducible component of $X$. Then $Y= (X_1 \cap Y) \cup \cdots \cup  (X_n \cap Y)$ implies that $X_i \cap Y = Y$, so $Y\subseteq X_i$ for some $i$. By maximality, we must have $Y=X_i$. This shows that every irreducible component is on the list.
+\item Let $Y$ be an irreducible component of $X$. Then $Y= (X_1 \cap Y) \cup \cdots \cup  (X_n \cap Y)$ implies that $X_i \cap Y = Y$, so $Y\subseteq X_i$ for some~$i$. By maximality, we must have $Y=X_i$. This shows that every irreducible component is on the list.
 
-Conversely, for some $X_i$, take $Y\supseteq X_i$ to be an irreducible component: we can do this by the same Zorn's Lemma argument as in the previous part. By what we just showed, $Y=X_j$ for some $j$. By irredundancy, we must have $i=j$, so $X_i$ is an irreducible component.
+Conversely, for some $X_i$, take $Y\supseteq X_i$ to be an irreducible component: we can do this by the same Zorn's Lemma argument as in the previous part. By what we just showed, $Y=X_j$ for some~$j$. By irredundancy, we must have $i=j$, so $X_i$ is an irreducible component.
 
-\item Consider the collection of closed subsets of $X$ that are not finite unions of irreducibles. If this collection is nonempty (in particular, if $X$ is not a finite union of irreducibles), it has a minimal element by DCC; call it $Z$. In particular, $Z$ is reducible, so write $Z=Z'\cup Z''$ with $Z', Z''$ closed proper subsets of $Z$. Since they are smaller than $Z$, they are finite unions of irreducibles. Putting them together expresses $Z$ as a finite union of irreducibles.
+\item Consider the collection of closed subsets of $X$ that are not finite unions of irreducibles. If this collection is nonempty (in particular, if $X$ is not a finite union of irreducibles), it has a minimal element by DCC; call it $Z$. In particular, $Z$ is reducible, so write $Z=Z'\cup Z''$ with $Z', Z''$ closed proper subsets of $Z$. Since they are smaller than $Z$, they are finite unions of irreducibles. Putting them together expresses $Z$ as a finite union of irreducibles. \qedhere
 \end{enumerate}
 \end{proof}
 
