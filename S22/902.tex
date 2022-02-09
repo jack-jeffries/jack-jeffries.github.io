@@ -1465,7 +1465,7 @@ Let $X\subseteq \A^m_K$ and $Y\subseteq \A^n_K$ be affine varieties, and $\phi: 
 %\end{proof}
 The proof is left as an exercise.
 
-\begin{comment}
+\Feb{9}
 
 \ssec{The Zariski topology and irreducible varieties}
 
@@ -1473,14 +1473,14 @@ The proof is left as an exercise.
 \begin{itemize}
 \item $\varnothing = \cZ(1)$ and $\A^n_K = \cZ(0)$ are subvarieties,
 \item unions of two subvarieties are subvarieties (products of the equations), and
-\item arbitrary intersections of subvarities are subvarities (union of the equation sets).
+\item arbitrary intersections of subvarieties are subvarieties (union of the equation sets).
 \end{itemize}
-This is called the \DEF{Zariski topology} on $\A^n_K$. Any subvariety of $X$ obtains a \emph{Zariski topology} as the subspace topology from $\A^n_K$.
+This is called the \DEF{Zariski topology} on $\A^n_K$. Any subvariety of $\A^n_K$ obtains a \emph{Zariski topology} as the subspace topology from $\A^n_K$.
 \end{defn}
 
 This topology is not very similar to the Euclidean topology on a manifold; it is much coarser.
 
-\begin{ex} Let $K$ be an infinite field. The closed subsets in the Zariski topology on $\A^1_K$ are just the finite subsets, along with the whole space. Note that this topology is not Hausdorff; quite on the contrary, any two open sets have infinite intersection!
+\begin{ex} Let $K$ be an infinite field. The closed subsets in the Zariski topology on $\A^1_K$ are just the finite subsets, along with the whole space. Note that this topology is not Hausdorff; quite on the contrary, any two nonempty open sets have infinite intersection!
 \end{ex}
 
 Here is a nice use of the topological structure.
@@ -1513,8 +1513,11 @@ This is much stronger than connected, since there is no disjointness condition o
 \end{enumerate}
 \end{exer}
 
+\begin{exer}
+A topological space is Hausdorff if and only if every irreducible subset is a point.
+\end{exer}
 
- In $\R^n$ with its Euclidean topology, the only irreducible subspaces are points. However, over an infinite field, $\A^1_K$ is irreducible as easily seen. Moreover, we have:
+
 
 \begin{prop} Let $K$ be an infinite field. Affine space $\A^n_K$ is irreducible. 
 \end{prop}
@@ -1531,6 +1534,8 @@ This is much stronger than connected, since there is no disjointness condition o
 \[ X_2= \cZ(x_{11} y_1 + x_{12} y_2, x_{21} y_1 + y_{22} y_2, x_{11} x_{22} - x_{12} x_{21}) ,\]
 so $X$ is reducible.
 \end{ex}
+
+\begin{comment}
 
 \begin{ex} Let $K$ be an infinite field. Think of $\A^6_K$ as the set of $2\times 3$ matrices (with coordinates $x_{ij}$), and let $X$ be the variety of matrices of rank at most $1$. Any matrix $A\in X$ of rank at most one can be written as $A= B C$ for some $2\times 1$ matrix $B$ and some $1\times 3$ matrix $C$, and conversely any such product has rank at most $1$. It follows that $X$ is the image of the morphism \[ \xymatrix@R=1em{ \A^5 \ar[r] & \A^6 \\ (y_1,y_2,z_1,z_2,z_3) \ar@{|->}[r] & {\begin{pmatrix} y_1 z_1 & y_1 z_2 & y_1 z_3 \\ y_2 z_1 & y_2 z_2 & y_2 z_3\end{pmatrix}} } \]
 and hence is irreducible.
@@ -1557,13 +1562,13 @@ and hence is irreducible.
 \begin{prop}  Let $X$ be a topological space.
 \begin{enumerate}
 \item $X$ is the union of its irreducible components. 
-\item If $X=X_1\cup \cdots X_n$ with each $X_i$ irreducible, and suppose that $X_i \not\subseteq \bigcup_{j\neq i} X_j$; i.e., the union $X=X_1\cup \cdots X_n$ is \DEF{irredundant}. Then $\{X_1,\dots,X_n\}$ is the collection of irreducible components of~$X$.
+\item If $X=X_1\cup \cdots \cup X_n$ with each $X_i$ irreducible, and suppose that $X_i \not\subseteq \bigcup_{j\neq i} X_j$; i.e., the union $X=X_1\cup \cdots \cup  X_n$ is \DEF{irredundant}. Then $\{X_1,\dots,X_n\}$ is the collection of irreducible components of~$X$.
 \item If $X$ is Noetherian, then $X$ has finitely many irreducible components. Hence, if $X$ is Noetherian, it can be written as an irredundant finite union of irreducible components in a unique way.
 \end{enumerate}
 \end{prop}
 \begin{proof}
 \begin{enumerate}
-\item It suffices to show that any point is in an irreducible component. Let $x\in X$, and consider the collection of irreducible subsets of $X$ that contain $x$. This is nonempty, since $\{x\}$ is in the collection.  Consider the poset of irreducible subsets of $X$ containing $x$ under inclusion. By the exercise above, the union of any chain in this poset is again in the poset, so Zorn's lemma applies. Such a subset must be a maximal irreducible subset, since any larger subset also contains $x$.
+\item It suffices to show that any point is in an irreducible component. Let $x\in X$, and consider the collection of irreducible subsets of $X$ that contain $x$. This is nonempty, since $\{x\}$ is in the collection.  By the exercise above, the union of any chain under inclusion is again irreducible, so Zorn's lemma applies. Such a subset must be a maximal irreducible subset, since any larger subset also contains~$x$.
 \item Let $Y$ be an irreducible component of $X$. Then $Y= (X_1 \cap Y) \cup \cdots \cup  (X_n \cap Y)$ implies that $X_i \cap Y = Y$, so $Y\subseteq X_i$ for some~$i$. By maximality, we must have $Y=X_i$. This shows that every irreducible component is on the list.
 
 Conversely, for some $X_i$, take $Y\supseteq X_i$ to be an irreducible component: we can do this by the same Zorn's Lemma argument as in the previous part. By what we just showed, $Y=X_j$ for some~$j$. By irredundancy, we must have $i=j$, so $X_i$ is an irreducible component.
@@ -1577,9 +1582,15 @@ Conversely, for some $X_i$, take $Y\supseteq X_i$ to be an irreducible component
 
 \ssec{Prime and maximal ideals}
 
-\begin{prop} Let $K$ be a field, and $X\subseteq \A^n_K$ be an affine variety. Then $X$ is irreducible if and only if $\cI(X)$ is a prime ideal.
-\end{prop}
-\begin{proof} First we show that if $\cI(X)$ is not prime, then $X$ is reducible. Suppose that $f,g\notin \cI(X)$ and $fg\in \cI(X)$. Since $f\notin \cI(X)$, $f$ does not vanish at some point of $X$, so $X\not\subseteq \cZ(f)$. Thus,
+\begin{thm} Let $K$ be a field, and $X\subseteq \A^n_K$ be an affine variety.
+\begin{enumerate}
+\item $X$ is irreducible if and only if $\cI(X)$ is a prime ideal.
+\item $X$ is a point if and only if $\cI(X)$ is a maximal ideal.
+\end{enumerate}
+
+\begin{proof} 
+\begin{enumerate}
+\item First we show that if $\cI(X)$ is not prime, then $X$ is reducible. Suppose that $f,g\notin \cI(X)$ and $fg\in \cI(X)$. Since $f\notin \cI(X)$, $f$ does not vanish at some point of $X$, so $X\not\subseteq \cZ(f)$. Thus,
 \[ \cZ(\cI(X) + (f)) = \cZ(\cI(X)) \cap \cZ(f) = X \cap \cZ(f) \subsetneqq X,\]
 and likewise $\cZ(\cI(X) + (g)) \subsetneqq X$. But
 \[ X \supseteq \cZ(\cI(X) + (f)) \cup \cZ(\cI(X) + (g)) = \cZ( (\cI(X) +(f)) (\cI(X) +(g)) ) = \cZ( \cI(X)^2 +(f,g)\cI(X) +(fg)) \supseteq \cZ(\cI(X)) = X, \]
@@ -1587,44 +1598,13 @@ so $\cZ(\cI(X) + (f)) \cup \cZ(\cI(X) + (g)) = X$. This shows that $X$ is reduci
 
 Now, we show that if $X$ is reducible, then $\cI(X)$ is not prime. Write $X= Y\cup Z$ with $Y,Z$ closed and $Y,Z\subsetneqq X$. We must that $\cI(X) \subsetneqq \cI(Y),\cI(Z)$, and $\cI(Y)\neq \cI(Z)$, since $Y\neq Z$. Take $f\in \cI(Y) \smallsetminus \cI(Z)$ and $g\in \cI(Z) \smallsetminus \cI(Y)$. Then $fg\in \cI(Y) \cap \cI(Z)$, so \[\cZ(fg) \supseteq \cZ(\cI(Y) \cap \cI(Z)) = Y\cup Z = X.\]
 Thus, $fg\in \cI(X)$. This shows that $\cI(X)$ is not prime.
+
+\item First, take $X=\{(a_1\dots,a_n)\}$. We have $x_i-a_i \in \cI(X)$ for all $i$, so $\fm:=(x_1-a_1,\dots,x_n-a_n) \subseteq \cI(X)$. The ideal $\fm$ is maximal, since the quotient $K[x_1,\dots,x_n]/\fm \cong K$ is a field. Since the only larger ideal is the full ring itself, and $1\notin \cI(X)$, we must have $\cI(X)=\fm$ is maximal.
+
+On the other hand, if $X \supsetneqq \{(a_1\dots,a_n)\}$, then $\cI(X) \subsetneqq \cI(\{(a_1\dots,a_n)\})$, so $\cI(X)$ is not maximal. 
+\end{enumerate}
+\qedhere
 \end{proof}
-
-
-
-
-\begin{prop} Let $K$ be a field, and and $X\subseteq \A^n_K$ be an affine variety. Then $X$ is a single point if and only if $\cI(X)$ is a maximal ideal. Moreover, the functions $\cZ$ and $\cI$ induce a bijection
-\begin{center}
-\begin{minipage}{0.12\textwidth}
-	\begin{center}
-		\vspace{1em}
-		
-		$\mathbb{A}^d_k$
-		
-	\vspace{2em}
-	
-	$(a_1, \ldots, a_d)$
-	\end{center}
-\end{minipage}
-\begin{minipage}{0.15\textwidth}
-\vspace{1em}
-	$\xymatrix@C=20mm{\ar[r] &}$
-	
-\vspace{2em}
-
-$\xymatrix@C=20mm{\ar@{|->}[r] &}$
-\end{minipage}
- \begin{minipage}{0.3\textwidth}
-
-\begin{center}
-	$\left\{ \begin{array}{c} \textrm{maximal ideals }\fm \textrm{ of } R \\\textrm{ with } R/\fm\cong k \end{array}\right\}$
- 
- \vspace{1em}
- 
-$(x_1-a_1, \ldots, x_d-a_d)$
-\end{center}
-\end{minipage}
-\end{center}
-\end{prop}
 
 \sec{The Nullstellensatz and the prime spectrum}
 
