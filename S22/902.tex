@@ -1535,7 +1535,8 @@ A topological space is Hausdorff if and only if every irreducible subset is a po
 so $X$ is reducible.
 \end{ex}
 
-\begin{comment}
+
+\Feb{11}
 
 \begin{ex} Let $K$ be an infinite field. Think of $\A^6_K$ as the set of $2\times 3$ matrices (with coordinates $x_{ij}$), and let $X$ be the variety of matrices of rank at most $1$. Any matrix $A\in X$ of rank at most one can be written as $A= B C$ for some $2\times 1$ matrix $B$ and some $1\times 3$ matrix $C$, and conversely any such product has rank at most $1$. It follows that $X$ is the image of the morphism \[ \xymatrix@R=1em{ \A^5 \ar[r] & \A^6 \\ (y_1,y_2,z_1,z_2,z_3) \ar@{|->}[r] & {\begin{pmatrix} y_1 z_1 & y_1 z_2 & y_1 z_3 \\ y_2 z_1 & y_2 z_2 & y_2 z_3\end{pmatrix}} } \]
 and hence is irreducible.
@@ -1606,6 +1607,21 @@ On the other hand, if $X \supsetneqq \{(a_1\dots,a_n)\}$, then $\cI(X) \subsetne
 \qedhere
 \end{proof}
 
+\begin{cor} Let $K$ be a field.
+\begin{enumerate}
+\item The maps $\cZ$ and $\cI$ induce a bijection \[ \{ \text{maximal ideals $\fm$ of $R=K[x_1,\dots,x_n]$ such that $R/\fm\cong K$} \} \leftrightarrow \A^n_K\]
+\item For any affine variety $X$, there is a bijection
+\[ \{ \text{maximal ideals $\fm$ of $K[X]$ such that $K[X]/\fm\cong K$} \} \leftrightarrow X\]
+\end{enumerate}
+\end{cor}
+\begin{comment}
+\begin{proof}
+For (1), let $\fm$ be an element of the LHS, and consider $\pi: R \to R/\fm \cong K$. We then have that $\pi(x_i) = a_i$ for some $a_i\in K$, so $(x_1-a_1,\dots,x_n-a_n) \subseteq \ker(\pi)=\fm$, and this ideal is maximal, so equality holds. Then $\cZ (\fm) = \{ (a_1,\dots,a_n)\}$, so $\cZ$ gives a well-defined map from left to right. From the last theorem, we see that for any point, $\cI$ yields an ideal of this form so $\cI$ restricts to a well-defined map here. It is easy to see these are mutually inverse.
+
+For (2), we note that there is a bijection between maximal ideals of $K[X]$ and maximal ideals of $K[x_1,\dots,x_n]$ that contain $\cI(X)$; moreover $\cI(X) \subseteq \fm$ if and only if $\cZ(\fm) \in \cZ(\cI(X))=X$. The statement follows.
+\end{proof}
+
+
 \sec{The Nullstellensatz and the prime spectrum}
 
 \ssec{Review of transcendence bases}
@@ -1642,6 +1658,21 @@ If $\{x_i,y_2,\dots,y_n\}$ were algebraically dependent, take a polynomial equat
 \end{proof}
 
 \ssec{Nullstellensatz}
+
+\begin{lemma}[Zariski's Lemma]
+\label{lem:Zariski}
+ Let $K\subseteq L$ be fields. If $L$ is a finitely generated $K$-algebra, then $L$ is a finite dimensional $K$-vector space. In particular, if $K$ is algebraically closed then $L=K$.
+\end{lemma}
+\begin{proof}
+	Let $L=K[h_1,\dots,h_d]$. Since in particular $h_1,\dots,h_d$ generate $L$ as a field over $K$, we can choose a transcendence basis for $L/K$ from among the $h$'s, and after reordering, we may assume that $h_1,\dots,h_c=x_1,\dots,x_c$ form a transcendence basis, and $h_{c+1},\dots,h_d$ are algebraic over $K'=K(x_1,\dots,x_c)=K[x_1,\dots,x_c]$. Then $L$ is integral and algebra-finite over $K'$, hence module-finite. Thus, if $c=0$, we are done. Suppose that $c\neq 0$; we will obtain a contradiction to complete the proof.
+
+ We can apply the Artin-Tate Lemma to $K\subseteq K' \subseteq L$ to see that $K'$ is algebra-finite over $K$. In particular, there are $f_i, g_i$ in the polynomial ring $K[x_1,\dots,x_c]$ such that $K'=K[\frac{f_1}{g_1},\dots,\frac{f_c}{g_c}]$. This implies that any element of $K'$ can be written as a fraction with denominator $(g_1\cdots g_c)^n$ for some $n$.  The element $\frac{1}{g_1\cdots g_c +1}\in K'$ cannot be written this way; if so, we would have 
+	\[  \frac{v}{(g_1\cdots g_c)^n} = \frac{1}{g_1\cdots g_c +1},\]
+	for some $v$ with $g_1\cdots g_c \nmid v$ (since the polynomial ring is a UFD). But, the equation $g_1\cdots g_c v + v = (g_1\cdots g_c)^n$ contradicts this.
+	
+Now if $K$ is algebraically closed and $\ell \in L$, since $L/K$ is finite then $\ell$ is algebraic over $K$,  thus $\ell\in K$.
+\end{proof}
+
 
 \begin{thm}[Hilbert's Nullstellensatz (Weak Form)]
 Let $K$ be a field, $\overline{K}$ be an algebraic closure of $K$, and  $J$ be an ideal of $K[x_1, \dots x_n]$. We have 
