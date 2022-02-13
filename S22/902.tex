@@ -228,8 +228,10 @@
 
 \newcommand{\fc}{{\mathfrak c}}
 \newcommand{\fp}{{\mathfrak p}}
+\newcommand{\p}{{\mathfrak p}}
 \newcommand{\fm}{{\mathfrak m}}
 \newcommand{\fn}{{\mathfrak n}}
+\newcommand{\q}{{\mathfrak q}}
 \newcommand{\fq}{{\mathfrak q}}
 
 \newcommand{\op}{\mathrm{op}}
@@ -367,6 +369,8 @@
 \newcommand{\Cont}{\mathrm{Cont}}
 \newcommand{\MaT}[1]{\mathbf{Mat}_{#1}}
 \newcommand{\Rep}[2]{\mathbf{Rep}_{#1}(#2)}
+\newcommand{\Max}{\mathrm{Max}}
+\newcommand{\Spec}{\mathrm{Spec}}
 
 %%%-------------------------------------------------------------------
 %%%-------------------------------------------------------------------
@@ -1588,6 +1592,7 @@ Conversely, for some $X_i$, take $Y\supseteq X_i$ to be an irreducible component
 \item $X$ is irreducible if and only if $\cI(X)$ is a prime ideal.
 \item $X$ is a point if and only if $\cI(X)$ is a maximal ideal.
 \end{enumerate}
+\end{thm}
 
 \begin{proof} 
 \begin{enumerate}
@@ -1607,6 +1612,8 @@ On the other hand, if $X \supsetneqq \{(a_1\dots,a_n)\}$, then $\cI(X) \subsetne
 \qedhere
 \end{proof}
 
+
+
 \begin{cor} Let $K$ be a field.
 \begin{enumerate}
 \item The maps $\cZ$ and $\cI$ induce a bijection \[ \{ \text{maximal ideals $\fm$ of $R=K[x_1,\dots,x_n]$ such that $R/\fm\cong K$} \} \leftrightarrow \A^n_K\]
@@ -1614,15 +1621,22 @@ On the other hand, if $X \supsetneqq \{(a_1\dots,a_n)\}$, then $\cI(X) \subsetne
 \[ \{ \text{maximal ideals $\fm$ of $K[X]$ such that $K[X]/\fm\cong K$} \} \leftrightarrow X\]
 \end{enumerate}
 \end{cor}
-\begin{comment}
-\begin{proof}
-For (1), let $\fm$ be an element of the LHS, and consider $\pi: R \to R/\fm \cong K$. We then have that $\pi(x_i) = a_i$ for some $a_i\in K$, so $(x_1-a_1,\dots,x_n-a_n) \subseteq \ker(\pi)=\fm$, and this ideal is maximal, so equality holds. Then $\cZ (\fm) = \{ (a_1,\dots,a_n)\}$, so $\cZ$ gives a well-defined map from left to right. From the last theorem, we see that for any point, $\cI$ yields an ideal of this form so $\cI$ restricts to a well-defined map here. It is easy to see these are mutually inverse.
 
-For (2), we note that there is a bijection between maximal ideals of $K[X]$ and maximal ideals of $K[x_1,\dots,x_n]$ that contain $\cI(X)$; moreover $\cI(X) \subseteq \fm$ if and only if $\cZ(\fm) \in \cZ(\cI(X))=X$. The statement follows.
+\begin{comment}
+ \Feb{14}
+ 
+ 
+ 
+\begin{proof}
+For (1), we need to see that $\xra{\cZ}$ and $\xleftarrow{\cI}$ restrict to maps to/from the prescribed source and target. For $\cZ$, let $\fm$ be a maximal ideal with residue field $K$, and consider $\pi: R \to R/\fm \cong K$. We then have that $\pi(x_i) = a_i$ for some $a_i\in K$, so $(x_1-a_1,\dots,x_n-a_n) \subseteq \ker(\pi)=\fm$, and this ideal is maximal, so equality holds. Then $\cZ (\fm) = \{ (a_1,\dots,a_n)\}$, so $\cZ$ gives a well-defined map from left to right. On the other hand, from the last theorem, we see that for any point, $\cI$ yields an ideal of this form so $\cI$ restricts to a well-defined map here. We know that $\cZ(\cI(x))=x$ for a point $x$ since a point is closed, and for an ideal $\fm$ as above, $\cI(\cZ(\fm))$ is a maximal ideal containing $\fm$, so must equal $\fm$. 
+
+
+For (2), we note that there is a bijection between maximal ideals of $K[X]$ and maximal ideals of $K[x_1,\dots,x_n]$ that contain $\cI(X)$; moreover $\cI(X) \subseteq \fm$ if and only if $\cZ(\fm) \in \cZ(\cI(X))=X$. Thus, the bijection from (1) induces a bijection between maximal ideals of $K[X]$ and points of $X$.
 \end{proof}
 
 
 \sec{The Nullstellensatz and the prime spectrum}
+
 
 \ssec{Review of transcendence bases}
 
@@ -1657,6 +1671,7 @@ If $\{x_i,y_2,\dots,y_n\}$ were algebraically dependent, take a polynomial equat
 \begin{proof} Say that $m\leq n$.  If the intersection has $s<m$ elements, then without loss of generality $y_1\notin \{x_1,\dots,x_m\}$. Then, for some $i$,  $\{x_i, y_2\dots,y_n\}$ is a transcendence basis, and $\{x_1,\dots,x_m\} \cap \{x_i, y_2\dots,y_n\}$ has $s+1$ elements. Replacing $\{y_1,\dots,y_n\}$ with  $\{x_i, y_2\dots,y_n\}$ and repeating this process, we obtain a transcendence basis with $n$ elements such that $\{x_1,\dots,x_m\} \subseteq \{y_1,\dots,y_n\}$. But we must then have that these two transcendence bases are equal, so $m=n$.
 \end{proof}
 
+
 \ssec{Nullstellensatz}
 
 \begin{lemma}[Zariski's Lemma]
@@ -1674,26 +1689,22 @@ Now if $K$ is algebraically closed and $\ell \in L$, since $L/K$ is finite then 
 \end{proof}
 
 
-\begin{thm}[Hilbert's Nullstellensatz (Weak Form)]
-Let $K$ be a field, $\overline{K}$ be an algebraic closure of $K$, and  $J$ be an ideal of $K[x_1, \dots x_n]$. We have 
-\[\cZ_{\overline{K}}(J) =\emptyset \text{ if and only if } J = K[x_1, \dots, x_n].\]
 
-In particular, if $K$ is algebraically closed, then
-\[ \cZ_K(J) = \varnothing \text{ if and only if } J = K[x_1, \dots, x_n].\]
+\begin{thm}[Hilbert's Nullstellensatz (Weak Form)]
+Let $K$ be an algebraically closed field and  $J$ be an ideal of $K[x_1, \dots x_n]$. We have 
+\[\cZ(J) =\emptyset \text{ if and only if } J = K[x_1, \dots, x_n].\]
 \end{thm}
 
-\begin{rem} One direction is easy. The nontrivial direction, in its most basic form, says the following: Suppose we are given a system of polynomial equations
+\begin{rem} One direction is clear. The nontrivial direction, in its most basic form, says the following: Suppose we are given a system of polynomial equations
 \[
 \begin{aligned}
 f_1(x_1, \dots, x_n) & = 0 \\
 f_2(x_1, \dots, x_n) & = 0 \\
-\vdots &  = \vdots \\
+\vdots \qquad &  = \, \vdots \\
 f_m(x_1, \dots, x_n) & = 0 \\
 \end{aligned}
 \]
-in $n$ variables with coefficients in some algebraically closed field $k$.  If the system has no solutions over $K$, then for some polynomials $g_1,\dots, g_m$ we have $\sum_i g_i f_i = 1$.  (The converse is clear.)
-
-For example, when $n = 1$, it says that if $f_1(x), \dots, f_m(x)$ do not share a common root in $K$, then their collective gcd is $1$.   This case is easy to prove, and is essentially equivalent to the definition of ``algebraically closed''.  It's much harder and much less obvious for $n > 1$. 
+in $n$ variables with coefficients in some algebraically closed field $K$.  If the system has no solutions over $K$, then for some polynomials $g_1,\dots, g_m$ we have $\sum_i g_i f_i = 1$. One can think of $g_1,\dots,g_m$ as forming a ``certificate'' that there is no solution.
 \end{rem}
 
 
@@ -1701,8 +1712,7 @@ For example, when $n = 1$, it says that if $f_1(x), \dots, f_m(x)$ do not share 
 \begin{proof} If $J = K[x_1, \dots, x_n]$, then $Z_{\overline{K}}(J) = \emptyset$ since $1 = 0$ has no solutions.
 
 
-We show that if $J \subset K[x_1, \dots, x_n]$ is a proper ideal, then $Z(J) \ne \emptyset$. Since $I$ is proper, it is contained in some maximal ideal $\fm$. By Zariski's Lemma, $K[x_1, \dots, x_n]/\fm$ is algebraic over $K$, so there is a $K$-algebra homomorphism from $K[x_1, \dots, x_n]/\fm \to \overline{K}$. Composing with the projection map, we get a $K$-algebra map $\psi: K[x_1,\dots,x_n] \to \overline{K}$ that contains $J$ in the kernel. But, setting $\psi(x_j) = a_j$, $\psi$ is just the evaluation map at the point
- $(a_1,\dots,a_n)$. Thus $(a_1,\dots,a_n) \in \cZ_{\overline{K}}(J)$.
+We show that if $J \subset K[x_1, \dots, x_n]$ is a proper ideal, then $Z(J) \ne \emptyset$. Since $I$ is proper, it is contained in some maximal ideal $\fm$. By Zariski's Lemma, $K[x_1,\dots,x_n]/\fm\cong K$,  so we have $\cZ(\fm) \neq \varnothing$.
 \end{proof}
 
 
@@ -1727,80 +1737,411 @@ f_1(\vx)=0, \dots, f_m(\vx)=0, y g_1(\vx)\cdots g_n(\vx)-1 = 0.
 
 \begin{thm}[Hilbert's Nullstellensatz (Strong Form)] Let $K$ be field with algebraic closure $\overline{K}$ and 
 let $J$ be an ideal in the polynomial ring $R=K[x_1, \dots, x_n]$. Then, for $f\in R$, 
-$f$ vanishes at every point of $\cZ_{\overline{K}}(J)$ if and only if there is some $n\in \N$ such that $f^n\in I$.
+$f$ vanishes at every point of $\cZ(J)$ if and only if there is some $n\in \N$ such that $f^n\in I$.
 
-In particular, if $K=\overline{K}$, then $\cI(\cZ(J)) = \sqrt{J}$.
+In particular, $\cI(\cZ(J)) = \sqrt{J}$.
 \end{thm}
 
 %\begin{rem} The Strong Form implies the Weak Form: If $Z(J)$ is empty, then $1 \in I(Z(J))$ and hence $1^n \in J$ by the Strong Form, which gives that $J = (1)$.  
 %\end{rem}
 
 \begin{proof}
-Check it
-
-By Proposition \ref{prop24} the equations in $\sqrt{J}$ vanish on $Z(J)$, so $\sqrt{J}\subseteq I(Z(J))$.
+The equations in $\sqrt{J}$ vanish on $\cZ(J)$, so $\sqrt{J}\subseteq \cI(\cZ(J))$.
 	
-	For the converse, suppose that $f(\vx)$ vanishes on $Z(J)$. Considering the system 
+	For the converse, suppose that $f(\vx)$ vanishes on $\cZ(J)$. Considering the system 
 \[
 g_1(\vx)=0, \dots, g_m(\vx)=0, f(\vx)\neq 0
 \]
 we see that it has no solution since $f(\vx)=0$ is a consequence of the first $m$ equations. By the remark above, 
-this implies that $Z(JS+(yf-1))=\varnothing$, where $JS+(yf-1)$ is an ideal in the polynomial ring $S=K[x_1,\ldots,x_n,y]$. By the Weak Nullstellensatz, we see that $1\in J S+(yf-1)$. Write $J=(g_1(\vx),\dots,g_m(\vx))$, and
+this implies that $\cZ(JS+(yf-1))=\varnothing$, where $JS+(yf-1)$ is an ideal in the polynomial ring $S=K[x_1,\ldots,x_n,y]$. By the Weak Nullstellensatz, we see that $1\in J S+(yf-1)$. Write $J=(g_1(\vx),\dots,g_m(\vx))$, and
 	\[1 = r_0(\vx,y) (1-yf(\vx))+r_1(\vx,y) g_1(\vx) + \cdots + r_m(\vx,y) g_m(\vx).  \]
 	We can apply an evaluation map $S\to \mathrm{Frac}(S)$ sending $y \mapsto 1/f$ to get
 	\[1 = r_1(\vx,1/f) g_1(\vx) + \cdots + r_m(\vx,1/f) g_m(\vx).  \]
 	 Since each $r_i$ is polynomial, there is a largest negative power of $f$ occurring; say that $f^n$ serves as a common denominator. We can clear denominators multiplying by $f^n$ to obtain (on the LHS) $f^n$ as a polynomial combination of the $g$'s (on the RHS).
 \end{proof}
 
-\begin{ex}
 
 
+%\begin{ex} Recall that
+%\[ X:= \{ (t^3,t^4,t^5) \ | \ t\in \C \} = \cZ(y^3-x^4,z^3-x^5,z^4-y^5)\}.\]
+%Let $I=(y^3-x^4,z^3-x^5,z^4-y^5)$ and $J=(x^3-yz,y^2-xz,z^2-x^2y)$.
+%We claim that $\cI(X) = J$. By the Nullstellensatz, $\cI(X) = \sqrt{I}$, so it suffices to show that $\sqrt{I}=J$. We will show that $I \subseteq J$, $J \subseteq \sqrt{I}$, and that $J$ is prime; it will follow that 
+%\[ I \subseteq J (=\sqrt{J}) \subseteq \sqrt{I} \subseteq \sqrt{J} (=J),\]
+%and thus the conclusion.
+%
+%To see that $I \subseteq J$, we check that every generator of $I$ is congruent to $0$ modulo $J$:
+%\[ y^3-x^4 = y (y^2) - x (x^3) \equiv y(xz) - x(yz) =0, \quad \mod J\]
+%and similarly with the other two.
+%
+%To see that $J \subseteq \sqrt{I}$, we check that every generator of $J$ has a power that is congruent to $0$ modulo $I$:
+%note that 
+%\[ x^9 yz \equiv (x^4)(x^5)yz \equiv y^4 z^4 \equiv y^9 \equiv x^12 \equiv x^3 y^3 z^3 \quad \mod I\]
+%and
+%\[ x^6 y^2 z^2 \equiv x^2 y^5 z^2 \equiv x^2 z^6 \equiv x^{12}  \quad \mod I\]
+%so
+%\[ (x^3-yz)^4 = x^{12} - 4 x^9 yz + 6 x^6 y^2 z^2 - 4 x^3 y^3 z^3 + y^4 z^4 \equiv x^{12} ( 1 - 4 + 6 - 4 +1) \equiv 0  \quad \mod I,\]
+%and similarly with the other two.
+%
+%Now, we argue that $J$ is prime. We will show that the ring homomorphism
+%\[ \xymatrix@R=1em{ \frac{\C[x,y,z]}{J} \ar[r] & \C[t^3,t^4,t^5] \\ (x,y,z) \ar@{|->}[r] & (t^3,t^4,t^5)}\] is an isomorphism; it clearly is surjective. Note that if we set $|x|=3,|y|=4,|z|=5, |t|=1$, this is a graded homomorphism of graded rings. Since $[ \C[t^3,t^4,t^5] ]_n$ is a $1$-dimensional vector space generated by $t^n$ for all $n\geq 3$ (and zero in degrees 1 and 2), it suffices to show that $\dim( [\frac{\C[x,y,z]}{J}]_n ) \leq 1$ for all $n\leq 3$ (and zero in degrees 1 and 2).
+%
+%Given any monomial in $\frac{\C[x,y,z]}{J}$ we can use the relations $y^2-xz$, $z^2-x^2y$, and $yz-x^3$ to obtain an equivalent monomial where the sum of the $y$ and $z$ exponents is smaller until we get a monomial of the form $x^a$, $x^a y$, or $x^a z$. If $n=1,2$, there is no such monomial; if $n\geq 3$, there is exactly one, namely, 
+%\[ \begin{cases} x^{n/3} & \text{if} \ n\equiv 0 \mod 3 \\
+% x^{(n-4)/3} y & \text{if} \ n\equiv 1 \mod 3 \\
+% x^{(n-5)/3} y & \text{if} \ n\equiv 2 \mod 3 \end{cases}\]
+% This shows the claim, and concludes the proof.
+% \end{ex}
 
-Here is a nice consequence of the Nullstellensatz.
 
-\begin{prop} Let $K$ be a field, $R$ be a finitely generated $K$-algebra, and $I$ be an ideal of $R$. Then
-\[ \sqrt{I} = \bigcap_{\substack{\fm \ \mathrm{maximal}  \\ \fm \supseteq I}} \fm.\]
-\end{prop}
-\begin{proof} By the correspondence between ideals in a ring and a quotient ring, we can reduce to the case where $R$ is a polynomial ring over $K$. The inclusion ``$\subseteq$'' holds in general, since maximal ideals are radical, and the radical of $I$ is the smallest ideal that contains $I$.
+\begin{corollary}\label{ord-pres-bij}
+	Let $K$ be an algebraically closed field and $R=K[x_1,\dots,x_d]$ a polynomial ring. The associations $\cZ$ and $\cI$ induce order-reversing bijections
+\[ \xymatrix@R=1em{ \{ \text{subvarieties of $\A^n_K$}\} \ar@{<->}[r] & \{ \text{radical ideals of $K[x_1,\dots, x_n]$} \} \\  \{ \text{irreducible subvarieties of $\A^n_K$}\} \ar@{<->}[r] & \{ \text{prime ideals of $K[x_1,\dots, x_n]$} \} \\
+ \{ \text{points of $\A^n_K$}\} \ar@{<->}[r] & \{ \text{maximal ideals of $K[x_1,\dots, x_n]$} \}} \]
+	 In particular, given ideals $I$ and $J$, we have $\mathcal{Z}(I) = \mathcal{Z}(J)$ if and only if $\sqrt{I}=\sqrt{J}$.
+	 
+	 Likewise, we obtain analogous bijections for any affine variety $X$ in place of $\A^n_K$ and $K[X]$ in place of $K[x_1,\dots,x_n]$.
+\end{corollary}
 
-For the other inclusion, let $f$ be an element of the right hand side, and let $(a_1,\dots,a_n)\in \cZ_{\overline{K}}(I)$ be arbitrary. The evaluation map
-\[\xymatrix@R=1em{ K[x_1,\dots,x_n] \ar[r]^-{\psi} & \displaystyle\frac{\overline{K}[x_1,\dots,x_n]}{\cI(\{ (a_1,\dots,a_n) \} )} \\ f \ar@{|->}[r] & f(a_1,\dots,a_n) }\]
-is a ring homomorphism, so the image, $S$, is a subring of $\displaystyle\frac{\overline{K}[x_1,\dots,x_n]} {\cI(\{ (a_1,\dots,a_n) \} )} \cong \overline{K}$. Then we have $K \subseteq S \subseteq \overline{K}$, so $S$ is a domain, and is integral over $K$, hence is a field. Moreover, $S$ is generated as a $K$-algebra by the images of the variables, so it is algebra-finite over $K$. By Zariski's Lemma, $S$ is a field. Thus, $\ker(\psi)$ is a maximal ideal that contains $I$, so by definition $f\in \ker(\psi) = 0$. Thus, $f(a_1,\dots,a_n)=0$. We conclude that $f$ vanishes at every point of $\cZ_{\overline{K}}(I)$. By the Strong Nullstellensatz, $f\in \sqrt{I}$.
-\end{proof}
-
-\begin{exer} Let $f: R\to S$ be a homomorphism of finitely generated algebras over a field $K$. Let $\fm$ be a maximal ideal of $S$. Show that $\fm \cap R$ is a maximal ideal of $R$.
-\end{exer}
 
 
 \begin{ex} Recall that
-\[ X:= \{ (t^3,t^4,t^5) \ | \ t\in \C \} = \cZ(y^3-x^4,z^3-x^5,z^4-y^5)\}.\]
-Let $I=(y^3-x^4,z^3-x^5,z^4-y^5)$ and $J=(x^3-yz,y^2-xz,z^2-x^2y)$.
-We claim that $\cI(X) = J$. By the Nullstellensatz, $\cI(X) = \sqrt{I}$, so it suffices to show that $\sqrt{I}=J$. We will show that $I \subseteq J$, $J \subseteq \sqrt{I}$, and that $J$ is prime; it will follow that 
-\[ I \subseteq J (=\sqrt{J}) \subseteq \sqrt{I} \subseteq \sqrt{J} (=J),\]
-and thus the conclusion.
-
-To see that $I \subseteq J$, we check that every generator of $I$ is congruent to $0$ modulo $J$:
-\[ y^3-x^4 = y (y^2) - x (x^3) \equiv y(xz) - x(yz) =0, \quad \mod J\]
-and similarly with the other two.
-
-To see that $J \subseteq \sqrt{I}$, we check that every generator of $J$ has a power that is congruent to $0$ modulo $I$:
+\[ X:= \{ (t^3,t^4,t^5) \ | \ t\in \C \} = \cZ(I), \ \text{where} \ I=(y^3-x^4,z^3-x^5,z^4-y^5).\]
+By the Nullstellensatz, $\cI(X) = \sqrt(I)$. The ideal is not radical: 
 note that 
-\[ x^9 yz \equiv (x^4)(x^5)yz \equiv y^4 z^4 \equiv y^9 \equiv x^12 \equiv x^3 y^3 z^3 \quad \mod I\]
+\[ x^9 yz \equiv (x^4)(x^5)yz \equiv y^4 z^4 \equiv y^9 \equiv x^{12} \equiv x^3 y^3 z^3 \quad \mod I\]
 and
 \[ x^6 y^2 z^2 \equiv x^2 y^5 z^2 \equiv x^2 z^6 \equiv x^{12}  \quad \mod I\]
 so
-\[ (x^3-yz)^4 = x^{12} - 4 x^9 yz + 6 x^6 y^2 z^2 - 4 x^3 y^3 z^3 + y^4 z^4 \equiv x^{12} ( 1 - 4 + 6 - 4 +1) \equiv 0  \quad \mod I,\]
-and similarly with the other two.
+\[ (x^3-yz)^4 = x^{12} - 4 x^9 yz + 6 x^6 y^2 z^2 - 4 x^3 y^3 z^3 + y^4 z^4 \equiv x^{12} ( 1 - 4 + 6 - 4 +1) \equiv 0  \quad \mod I.\]
+One can show that $\sqrt{I}=(x^3-yz,y^2-xz,z^2-x^2y)$.
+\end{ex}
 
-Now, we argue that $J$ is prime. We will show that the ring homomorphism
-\[ \xymatrix@R=1em{ \frac{\C[x,y,z]}{J} \ar[r] & \C[t^3,t^4,t^5] \\ (x,y,z) \ar@{|->}[r] & (t^3,t^4,t^5)}\] is an isomorphism; it clearly is surjective. Note that if we set $|x|=3,|y|=4,|z|=5, |t|=1$, this is a graded homomorphism of graded rings. Since $[ \C[t^3,t^4,t^5] ]_n$ is a $1$-dimensional vector space generated by $t^n$ for all $n\geq 3$ (and zero in degrees 1 and 2), it suffices to show that $\dim( [\frac{\C[x,y,z]}{J}]_n ) \leq 1$ for all $n\leq 3$ (and zero in degrees 1 and 2).
 
-Given any monomial in $\frac{\C[x,y,z]}{J}$ we can use the relations $y^2-xz$, $z^2-x^2y$, and $yz-x^3$ to obtain an equivalent monomial where the sum of the $y$ and $z$ exponents is smaller until we get a monomial of the form $x^a$, $x^a y$, or $x^a z$. If $n=1,2$, there is no such monomial; if $n\geq 3$, there is exactly one, namely, 
-\[ \begin{cases} x^{n/3} & \text{if} \ n\equiv 0 \mod 3 \\
- x^{(n-4)/3} y & \text{if} \ n\equiv 1 \mod 3 \\
- x^{(n-5)/3} y & \text{if} \ n\equiv 2 \mod 3 \end{cases}\]
- This shows the claim, and concludes the proof.
- \end{ex}
+\ssec{Spectrum of a ring}
+
+As a consequence of the Nullstellensatz, for an algebraically closed field $K$ and an algebra of the form $R=K[x_1,\dots,x_n]/I$ that is reduced, we know that $I=\cI(X)$ for some variety $X\subseteq \A^n_K$, and $R=K[X]$. We can recover $X$ (as a set) from the ring $R$ by taking the maximal ideals of $R$. Moreover, we can recover the Zariski topology on $X$: a subvariety of $X$ corresponds to a (radical) ideal of $R$, so the closed subsets correspond to the sets of maximal ideals that contain a particular (radical) ideal of $R$. Moreover, we can reconstruct morphisms of varieties from the maps on their coordinate rings:
+
+\begin{exer} Let $X,Y$ be affine varieties over an algebraically closed field with $R=K[X]$ and $S=K[Y]$. Let $\phi:X\to Y$ be an algebraic morphism, and $\phi^*: S\to R$ be the induced map on coordinate rings. Then the following diagram commutes:
+\[ \xymatrix@R=2mm{ \Max(S) \ar[rrrrr]\ar[ddd] &&& & & \Max(R) \ar[ddd]\\
+& \fm  \ar@{|->}[rrr] &&& (\phi^*)^{-1}(\fm) & \\
+\\
+X \ar[rrrrr] &&&&& Y}\]
+where the vertical maps send a maximal ideal of the form $(x_1-a_1,\dots,x_n-a_n)$ to the point $(a_1,\dots,a_n)$; this is essentially the map $\cZ$ on maximal ideals.
+\end{exer}
+
+\begin{rem}
+Loosely speaking, this exercise says that $\Max(-)$ can be thought of as a contravariant functor that, on the category of reduced finitely generated algebras over algebraically closed fields, is an inverse to the coordinate ring functor up to natural isomorphism. The precise statement is that functor yields an equivalence of categories.
+\end{rem}
+
+
+We now use a similar idea to construct a geometric object for every ring. However, we want this to be functorial, and in general the preimage of a maximal ideal is not maximal, e.g., for the inclusion $\Z\subseteq \Q$, $(0)$ is maximal in $\Q$, but its contraction is $(0)$ in $\Z$, which is not maximal. However, the preimage of a prime ideal is prime.
+
+\begin{lem} Let $R\to S$ be a ring homomorphism and $\fp\subset S$ be prime. Then $\fp \cap R$ is also prime.
+\end{lem}
+
+\begin{defn} Let $R$ be a ring. The \DEF{prime spectrum} of $R$ is the set of prime ideals of $R$.
+\end{defn}
+
+\begin{defn} For a ring $R$ and an ideal $I$, we set
+\[ V(I) := \{ \fp \in \Spec(R) \ | \ \fp \supseteq I\}.\]
+\end{defn}
+
+
+\begin{proposition}
+	Let $R$ be a ring, and $I_{\lambda},J$ be ideals (possibly improper).
+	\begin{enumerate}
+		\item[(0)] $V(R) = \varnothing$ and $V(0) = \Spec(R)$.
+		\item If $I \subseteq J$, then $V(J)\subseteq V(I)$.
+		\item $V(I) \cup V(J) = V(I \cap J)=V(IJ)$.
+		\item $\bigcap_{\lambda} V(I_{\lambda}) =V(\sum_{\lambda} I_{\lambda})$.
+	%	\item $\Spec(R)$ has a basis given by open sets of the form $D(f):=\Spec(R)\smallsetminus V(f)$.
+	%	\item $\Spec(R)$ is quasicompact.
+	\end{enumerate}
+\end{proposition} 
+\begin{proof}
+We only deal with (2), as the others are straightforward.
+ To see $V(I)\cup V(J)\subseteq V(I \cap J)$, just observe that if $\p \supseteq I$ or $\p \supseteq J$, then $\p \supseteq I \cap J$.
+		Since $IJ\subseteq I\cap J$, we have $V(I\cap J) \subseteq V(IJ)$. To show $V(IJ)\subseteq V(I)\cup V(J)$, if $\p \not\supseteq I, J$, let $f\in I\smallsetminus \p$, and $g \in J\smallsetminus \p$. Then $fg \in IJ \smallsetminus \p$ since $\p$ is prime.
+		\end{proof}
+
+
+\begin{defn} It follows that $\Spec(R)$ obtains a topology by setting the closed sets to be all sets of the form $V(I)$; this is the \DEF{Zariski topology} on $\Spec(R)$.
+\end{defn}
+
+\begin{exer} Note that $\Spec(R)$ is also a poset under inclusion. Show that the poset structure of $\Spec(R)$ can be recovered from the topology as follows: 
+\[ \p\subseteq \q \quad \Leftrightarrow \quad \q \in \overline{\{ \p \}}.\]
+\end{exer}
+
+
+\begin{definition}[Induced map on $\Spec$]
+	Given a homomorphism of rings $\varphi:R\to S$, we obtain a map on spectra $\varphi^*:\Spec(S)\to\Spec(R)$\index{map on $\Spec$} given by $\varphi^*(\p)=\varphi^{-1}(\p)$.
+\end{definition}
+
+
+
+
+The key point is that the preimage of a prime ideal is also prime. 
+We will often write $\p \cap R$ for $\varphi^{-1}(\p)$, even if the map is not necessarily an inclusion.
+
+We observe that this is not only an order-preserving map, but also is continuous: if $U\subseteq \Spec(R)$ is open, we have $U=\Spec(R) \smallsetminus V(I)$ for some ideal $I$; then for a prime $\q$ of $S$,
+\[\q\in (\varphi^*)^{-1}(U) \quad \Leftrightarrow \quad \q \cap R \not\supseteq I  \quad \Leftrightarrow \quad \q \not\supseteq IS  \quad \Leftrightarrow \quad \q \in \Spec(S) \smallsetminus V(IS).\]
+
+\begin{lemma} Let $R$ be a ring, $I$ an ideal, and $W$ a multiplicatively closed subset. If $W\cap I=\varnothing$, then there is a prime ideal $\p$ with $\p \supseteq I$ and $\p \cap W=\varnothing$.
+\end{lemma}
+\begin{proof}
+	Consider the family of ideals $\{ J \ | \ J \supseteq I, J \cap W=\varnothing\}$. This is nonempty, since it contains $I$, and has some maximal element $\A$ by a basic application of Zorn's Lemma. We claim $\A$ is prime. Suppose $f,g\notin \A$. By maximality, $\A+(f)$ and $\A+(g)$ both have nonempty intersection with $W$, so there exist $r_1f+a_1$, $r_2 g+a_2 \in W$, with $a_1,a_2\in \A$. If $fg\in \A$, then $(r_1f+a_1)(r_2g+a_2)=r_1 r_2 fg + r_1 f a_2 + r_2 g a_1 + a_1 a_2 \in W \cap \A$, a contradiction.
+\end{proof}
+
+
+\begin{proposition}[Spectrum analogue of strong Nullstellensatz]
+	Let $R$ be a ring, and $I$ be an ideal. For $f\in R$,
+	\[  V(I) \subseteq V(f) \Longleftrightarrow f\in \sqrt{I}.\] 
+	Equivalently, $\bigcap_{\p \in V(I)} \p = \sqrt{I}$.
+\end{proposition}
+\begin{proof}
+First to justify the equivalence of the two statements we observe: 
+\[V(I) \subseteq V(f) \Leftrightarrow f\in \p \ \text{for all} \ \p\in V(I)  \Leftrightarrow f \in \bigcap_{\p \in V(I)} \p.\]
+We prove the latter formulation.
+
+$(\supseteq)$: It suffices to show that $\p \supseteq I$ implies that $\p \supseteq \sqrt{I}$. But, $f^n\in \p$ implies $f\in \p$, so this is clear.
+
+$(\subseteq)$: If $f\notin \sqrt{I}$, consider the multiplicatively closed set $W=\{1,f,f^2,f^3,\dots\}$. We have $W\cap I=\varnothing$ by hypothesis. By the previous lemma, there is a prime $\p$ in $V(I)$ that does not intersect $W$, and hence does not contain $f$.
+\end{proof}
+
+
+The following corollary follows in exactly the same way as the analogous statement for subvarieties of $K^n$, Corollary~\ref{ord-pres-bij}.
+
+\begin{corollary}
+	Let $R$ a ring.
+	There is an order-reversing bijection
+	\[\{ \text{closed subsets of $\Spec(R)$} \}  \quad \leftrightarrow \quad \{\text{radical ideals $I\subseteq R$}\}.\]
+	In particular, for two ideals $I,J$, $V(I)=V(J)$ if and only if $\sqrt{I}=\sqrt{J}$.
+\end{corollary}
+
+\begin{example} The spectrum of $\mathbb{Z}$ is, as a poset:
+\[ \xymatrix@C-1pc{ &&&& & (2) &  & (3) &  & (5) & & (7) & & (11) & & \cdots &&&&& \\ 
+&&&& &  & &  & &  & (0)\ar@{-}[lllllu] \ar@{-}[lllu] \ar@{-}[lu] \ar@{-}[ru] \ar@{-}[rrru] \ar@{=}[rrrrru] &&&&& &&&&& }\]
+The closed sets are of the form $V((n))$, which are the whole space when $n=0$, the empty set with $n=1$, and any finite union of things in the top row.
+\end{example}
+
+\begin{example} Here are a few elements in $\mathbb{C}[x,y]$: 
+\[ \xymatrix@C-1pc{\cdots & (x,y) & (x-1,y) & (x-1,y-1) & (x-7\pi,y) & (x-i\sqrt{2},y-1) & \cdots \\
+\cdots & (x)\ar@{-}[u] & (x-1)\ar@{-}[u]\ar@{-}[ru] & (x^2-y^3) \ar@{-}[u]\ar@{-}[llu]& (x^2+y^2+1)\ar@{-}[ru] & (y)\ar@{-}[lu]\ar@{-}[lllu]\ar@{-}[llllu] & \cdots \\
+&&&(0)\ar@{-}[llu]\ar@{-}[lu]\ar@{-}[u]\ar@{-}[ru]\ar@{-}[rru] &&&
+}\]
+\end{example}
+
+
+\sec{Support of modules and associated primes}
+
+\ssec{Localization}
+
+Recall the notion of multiplicative set.
+
+Our three most important classes of  examples are the first three below.
+\begin{example} Let $R$ be a ring.
+	\begin{enumerate}
+		\item For any $f\in R$, the set $W=\{1, f, f^2, f^3, \dots\}$ is a multiplicative set.
+		\item If $\p\subseteq R$ is a prime ideal, the set $W=R\smallsetminus \p$ is multiplicative: this is an immediate translation of the definition.
+		\item The set of \emph{nonzerodivisors}\index{nonzerodivisor} in $R$---elements that are not zerodivisors---forms a multiplicatively closed subset.
+		\item An arbitrary intersection of multiplicatively closed subsets is multiplicatively closed. In particular, for any family of primes $\{\p _{\lambda} \}$, the set $R \smallsetminus \bigcup_{\lambda} \p _{\lambda}$ is multiplicatively closed.
+	\end{enumerate}
+\end{example}
+
+\begin{definition}[Localization of a ring]
+	Let $R$ be a ring, and $W$ be a multiplicative set with $0\notin W$. The \emph{localization}\index{localization of a ring} of $R$ at $W$ is the ring 
+	\[ W^{-1} R := \left\{ \frac{r} {w} \ \Big| \ r\in R, w\in W \right\} / \sim \]
+	where $\sim$ is the equivalence relation $\displaystyle \frac{r}{w}\sim \frac{r'}{w'}$ if $\exists u\in W : u(rw'-r'w)=0$. The operations are given by 
+	\[ \frac{r}{v}+\frac{s}{w}=\frac{rw+sv}{vw} \qquad \text{and} \qquad  \frac{r}{v}\frac{s}{w}=\frac{rs}{vw}.\]
+	There is a canonical ring homomorphism $R\to W^{-1}R$ that sends $r \mapsto \frac{r}{1}$.
+\end{definition}
+
+Note that we write elements in $W^{-1}R$ in the form $r/w$ even though they are equivalence classes of such expressions.
+
+Observe that if $R$ is a domain, the equivalence relation simplifies to $rw'=r'w$, so $R \subseteq W^{-1}R \subseteq \mathrm{Frac}(R)$, and in particular $ W^{-1}R$ is a domain too.
+
+In the localization of $R$ at $W$, every element of $W$ becomes a unit. The following universal property says roughly that $W^{-1}R$ is the smallest $R$-algebra in which every element of $R$ is a unit.
+
+\begin{proposition}
+	Let $R$ be a ring, and $W$ a multiplicative set with $0\notin W$. Let $S$ be an $R$-algebra in which every element of $W$ is a unit. Then there is a unique homomorphism $\alpha$ such that the following diagram commutes:
+	\[\xymatrix{ R \ar[r]\ar[d] & W^{-1}R \ar[dl]^{\alpha} \\  S& } \]
+	where the vertical map is the structure homomorphism and the horizontal map is the canonical homomorphism.
+\end{proposition}
+
+\begin{example}[Most important localizations] Let $R$ be a ring.
+	\begin{enumerate}
+		\item For $f\in R$ and $W=\{1, f, f^2, f^3, \dots\}$, we usually write $R_f$\index{$R_f$} for $W^{-1}R$.
+		\item For $\p\subset R$ prime, we generally write $R_{\p}$\index{$R_{\p}$} for $(R\smallsetminus \p)^{-1} R$.
+		\item When $W$ is the set of nonzerodivisors on $R$, we call $W^{-1}R$ the \emph{total ring of fractions}\index{total ring of fractions} of $R$. When $R$ is a domain, this is just the fraction field of $R$.
+	\end{enumerate}
+\end{example}
+
+We state an analogous definition for modules, and for module homomorphisms.
+
+\begin{definition}
+	Let $R$ be a ring, $W$ be a multiplicative set, and $M$ an $R$-module. The \emph{localization}\index{localization of a module}\index{$W^{-1}M$} of $M$ at $W$ is the $W^{-1}R$-module
+	\[ W^{-1} M := \left\{ \frac{m} {w} \ \Big| \ m\in M, w\in W \right\} / \sim \]
+	where $\sim$ is the equivalence relation $\displaystyle \frac{m}{w}\sim \frac{m'}{w'}$ if $\exists u\in W : u(mw'-m'w)=0$. The operations are given by \[\frac{m}{v}+\frac{n}{w}=\frac{mw+nv}{vw} \qquad \text{and} \qquad \frac{r}{v} \frac{m}{w}=\frac{rm}{vw}.\]
+	
+	If $M\xrightarrow{\alpha} N$ is an $R$-module homomorphism, then there is a $W^{-1}R$-module homomorphism $W^{-1}M \xrightarrow{W^{-1}\alpha} W^{-1}N$\index{$W^{-1}\alpha$} given by the rule $W^{-1}\alpha (m/w) = \alpha(m)/w$.
+\end{definition}
+
+We will use the notations $M_f$\index{$M_f$} and $M_{\p}$\index{$M_{\p}$} analogously to $R_f$ and $R_{\p}$.
+
+To understand localizations of rings and modules, we will want to understand better how they are built from $R$.
+
+
+
+\begin{lemma}
+	Let $M$ be an $R$-module, and $W$ a multiplicative set. The class 
+	\[ \frac{m}{w}\in W^{-1}M \ \text{ is zero} \ \iff \  \exists v\in W \ : \ vm=0   \ \iff \ \ann_R(m) \cap W \neq \varnothing.\]
+	Note in particular this holds for $w=1$.
+\end{lemma}
+\begin{proof}
+	For the first equivalence, we compute: $\frac{m}{w}=\frac{0}{1}$ in $W^{-1}M$ if and only if $\exists v\in W$ such that $0=v(1m-0w)=vm$. The second equivalence just comes from the definition of the annihilator.
+\end{proof}
+
+\begin{remark}
+	It follows from this lemma that if $\alpha:N\to M$ is injective, then $W^{-1}\alpha: W^{-1}N\to W^{-1}M$ is as well. Indeed, if $\alpha$ is injective, then
+	\[ 0=W^{-1}\alpha(n/w)=\alpha(n)/w \ \Rightarrow \ \exists u\in W : 0=u\alpha(n)=\alpha(un) \Rightarrow \ un=0 \Rightarrow n/w=0.\]
+\end{remark}
+
+
+
+
+
+We want to collect one more lemma for later.
+
+\begin{lemma} Let $M$ be a module, and $N_1,\dots,N_t$ be a finite collection of submodules. Let $W$ be a multiplicative set. Then,
+	\[ W^{-1} (N_1 \cap \cdots \cap N_t) = W^{-1} N_1 \cap \cdots \cap W^{-1} N_t \subseteq W^{-1}M.\]
+\end{lemma}
+\begin{proof}
+	The containment ``$\subseteq$'' is clear. An element of the RHS is of the form $\frac{n_1}{w_1}= \cdots = \frac{n_t}{w_t}$; we can find a common denominator to realize this in the LHS.
+\end{proof}
+
+Last semester in the homework we showed the following.
+
+
+\begin{theorem}[Flatness of localization]
+	Let $R$ be a ring, and $W$ a multiplicative system. Then
+	\begin{enumerate}
+		\item $W^{-1} R \otimes_R M \cong W^{-1}M$ as $W^{-1}R$-modules, and $W^{-1} R \otimes \alpha$ corresponds to $W^{-1}\alpha$ under these isomorphisms.
+		\item $W^{-1}R$ is flat over $R$.
+		\item $W^{-1}(-)$ is an exact functor; i.e., it sends exact sequences to exact sequences.
+	\end{enumerate}
+\end{theorem}
+%\begin{proof}
+%	\begin{enumerate}
+%		\item The bilinear map $W^{-1}R \times M \to W^{-1}M$ given by $(r/w , m) \mapsto rm/w$ induces a map $\psi$ from the tensor product that is clearly surjective. For an inverse map, set $\phi(m/w) =1/w \otimes m$. To see this is well-defined, suppose $m/w=m'/w'$, so $\exists v\in W$ such that $v(mw'-m'w)=0$. Then, 
+%		\[\phi(m/w) - \phi(m'/w')= 1/w \otimes m - 1/w' \otimes m'.\] We can multiply through by $vww' / vww'$ to get \[\frac{vw'}{vww'} \otimes m - \frac{vw}{vww'} \otimes m' = \frac{1}{vww'} \otimes v(mw'-m'w) = 0.\]
+%		
+%		 To see this is a homomorphism, we note that
+%		\begin{align}\phi(\frac{m}{w}+\frac{m'}{w'})&=\phi(\frac{mw'+m'w}{ww'}) = \frac{1}{ww'} \otimes (mw'+m'w) = \frac{1}{ww'} \otimes mw' + \frac{1}{ww'} \otimes m'w \\
+%		 &= \frac{w'}{ww'} \otimes m + \frac{w}{ww'} \otimes m' = \frac{1}{w} \otimes m + \frac{1}{w'} \otimes m' = \phi(\frac{m}{w}) + \phi(\frac{m'}{w'}), \end{align}
+%		 and
+%		 \[\phi(r \frac{m}{w}) = \frac{1}{w} \otimes rm = r(\frac{1}{w} \otimes m)=r\phi(\frac{m}{w}).\] The composition $\phi\circ \psi$ sends $r/w \otimes m \mapsto rm/w \mapsto 1/w \otimes rm = r/w \otimes m$; since it is the identity on simple tensors and additive, it is the identity.
+%	
+%For the claim about maps, we need to see that, for $M \xrightarrow{\alpha} N$, we have to check ${\psi_N \circ   (W^{-1}R \otimes \alpha)}= {W^{-1}\alpha \circ \psi_M}$. Indeed,
+%
+%\begin{align*} (\psi_N \circ (W^{-1}R \otimes \alpha)) (\frac{r}{w} \otimes m) &=\psi_N  (\frac{r}{w} \otimes \alpha(m)) = \frac{r \alpha(m)}{w} \\
+%&=\frac{\alpha(rm)}{w}=W^{-1}\alpha (\frac{rm}{w}) =  (W^{-1}\alpha \circ \psi_M)(\frac{r}{w} \otimes m).\end{align*}
+%
+%	
+%		\item This follows from the earlier observation that $W^{-1}(-)$ preserves injective maps.
+%		
+%		\item This is immediate from part (2).\qedhere
+%	\end{enumerate}
+%\end{proof}
+
+\begin{proposition}[Hom and flat base change]
+	Let $S$ be a flat $R$ algebra, and $M,N$ be two $R$-modules. Suppose that $M$ is finitely presented. Then 
+	\[\xymatrix{ S\otimes_R \Hom_R(M,N) \ar[r]^{\cong} & \Hom_{S} (S\otimes_R M, S\otimes_R N) \\
+	s\otimes \varphi \ar@{|->}[r] & s(S\otimes \varphi)}\]
+is an isomorphism.
+\end{proposition}
+\begin{proof}
+	When $M$ is $R$ or a finitely generated free module $R^{\oplus a}$, this is clear: both sides are isomorphic to $(S\otimes_R N)^{\oplus a}$, and it is easy to see that the map above realizes this.
+	
+	Now, take a presentation 
+	\[R^{\oplus b} \to R^{\oplus a} \to M \to 0.\]
+	 If we apply $S\otimes_R -$, we obtain another right exact sequence; if we then apply $\Hom_S(-,S\otimes_R N)$ to this presentation, we obtain a left-exact sequence 
+	 \[0 \to \Hom_{S} (S\otimes_R M, S\otimes_R N) \to \Hom_{S} (S\otimes_R  R^{\oplus a}, S\otimes_R N) \to \Hom_{S} (S\otimes_R R^{\oplus b}, S\otimes_R N).  \]
+	 
+	Likewise, if we apply $\Hom_R(-,N)$, we obtain a left exact sequence; if we then apply $S\otimes_R -$, we obtain by flatness another left exact sequence
+	\[ 0\to S\otimes_R \Hom_R(M,N) \to S\otimes_R \Hom_R(R^{\oplus a},N) \to \Hom_R(R^{\oplus b},N). \]
+	
+	We then have a diagram
+	\[\xymatrix{ 0 \ar[r] & \Hom_{S} (S\otimes_R M, S\otimes_R N) \ar[r] & \Hom_{S} (S\otimes_R  R^{\oplus a}, S\otimes_R N) \ar[r] & \Hom_S(S\otimes_R R^{\oplus b}, S\otimes_R N) \\
+		0 \ar[r] &  S\otimes_R \Hom_R(M,N) \ar[r]\ar[u] & S\otimes_R \Hom_R(R^{\oplus a},N) \ar[r]\ar[u]^-{\cong} & S \otimes_R \Hom_R(R^{\oplus b},N) \ar[u]^-{\cong},} \]
+	where the vertical maps are given by the formula of the statement. We claim that the squares commute. Indeed, given $X\xrightarrow{\alpha} Y$,  
+	\[\xymatrix{  \Hom_{S} (S\otimes_R Y, S\otimes_R N) \ar[rrr]^{\Hom(S\otimes \alpha, S \otimes N)} & & & \Hom_{S} (S\otimes_R  X, S\otimes_R N)  \\
+		 S\otimes_R \Hom_R(Y,N) \ar[rrr]^{S \otimes \Hom(\alpha,N)} \ar[u] & & & S\otimes_R \Hom_R(X,N) \ar[u]}, \]
+		 an element $s\otimes \varphi$ in the bottom left goes $\uparrow$ to $s \cdot (S\otimes \varphi)$ and then $\rightarrow$ to $s \cdot (S \otimes (\varphi \circ \alpha))$, whereas $s\otimes \varphi$ goes $\rightarrow$ to $s \otimes (\varphi\circ \alpha)$ and then $\uparrow$ to $s \cdot (S\otimes (\varphi \circ \alpha))$.
+		 It then follows that there is an isomorphism in the first vertical map in the previous diagram.
+\end{proof}
+
+
+\begin{corollary}[Hom and localization]
+	Let $R$ be a Noetherian ring, $W$ be a multiplicative set, $M$ be a finitely generated $R$-module, and $N$ an arbitrary $R$-module. Then,
+	\[ \Hom_{W^{-1}R}(W^{-1}M , W^{-1}N) \cong W^{-1} \Hom_R(M,N). \]
+	In particular, if $\p$ is prime,
+	\[ \Hom_{R_{\p}}(M_{\p} , N_{\p}) \cong \Hom_R(M,N)_{\p}. \]
+\end{corollary}
+
+\begin{proposition}
+	Let $M$ be an $R$-module, and $W$ a multiplicative set. Set $M_W=\{ m\in M \ | \ \exists w\in W : wm=0\}$ and $\overline{M}=M/M_W$. Then,
+	\[ W^{-1} M = \bigcup_{w\in W} \frac{1}{w} \overline{M}, \]
+	where each $\frac{1}{w} \overline{M}$ is an isomorphic copy of $\overline{M}$ as an $R$-module.
+\end{proposition}
+\begin{proof}
+	First, $M_W$ is a submodule of $M$ and consists of the elements that go to zero in the localization. We have $W^{-1}{\overline{M}} \cong W^{-1}(M/M_W) \cong \frac{W^{-1}M}{W^{-1} M_W}\cong W^{-1}M$, so we can replace $M$ by the $W$-torsionfree module $\overline{M}$. It is clear that every element of $W^{-1}M$ has the form on the RHS. The map $\overline{M} \to \frac{1}{w} \overline{M}$ sending $m \mapsto \frac{m}{w}$ is clearly $R$-linear, and is injective by the $W$-torsion free assumption.
+\end{proof}
+
+\begin{proposition}
+	Let $W$ be multiplicatively closed in $R$.
+	\begin{enumerate}
+		\item If $I$ is an ideal, then $W^{-1} I \cap R = \{ r \in R \ | \ \exists w\in W : wr\in I\}$.
+		\item If $\p$ is prime and $W \cap \p=\varnothing$, then $W^{-1}\p =\p (W^{-1}R)$ is prime.
+		\item The map $\Spec(W^{-1} R) \to \Spec(R)$ is injective, with image $\{\p \in \Spec(R) \ | \ \p \cap W = \varnothing\}$.
+	\end{enumerate}
+
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item Since $W^{-1}(R/I) \cong W^{-1} R / W^{-1} I$, we have $\ker (R \to W^{-1}(R/I)) = R \cap W^{-1} I$. The equality is then clear.
+		\item First, since $W\cap \p =\varnothing$, and $\p$ is prime, we know that no element of $W$ kills $\bar{1}=1 + \p$ in $R/\p$, so $\bar{1}/1$ is nonzero in $W^{-1}(R/\p)$. Thus, $W^{-1}R / W^{-1}\p \cong W^{-1}(R/\p)$ nonzero, and a localization of a domain, hence is a domain. Thus, $W^{-1}\p$ is prime.
+		\item First, by part (2), the map $\p \mapsto W^{-1}\p$, for $S=\{\p \in \Spec(R) \ | \ \p \cap W = \varnothing\}$ sends primes to primes. We claim that 
+	\[\xymatrix@R=1em{  \Spec(W^{-1} R) \ar@{<->}[r] & S \\
+	\q  \ar@{|->}[r] &  \q \cap R \\
+	W^{-1}\p=\p (W^{-1}R) \ar@{<-|}[r] & \p}\]
+		is a pair of mutually inverse maps.
+		
+	To see this, first note that if $J$ is an ideal of $W^{-1}R$, then $J=(J\cap R) W^{-1}R$. Indeed, if $J=(a_1/w_1,\dots,a_t/w_t)$, then  $J=(a_1/1,\dots,a_t/1)$, since each generator was replaced by a unit multiple. Second, if $W\cap \p=\varnothing$, then using part (1) and the definition of prime, we have that $\p = W^{-1}\p \cap R$.\qedhere
+	\end{enumerate}
+\end{proof}
+
+\begin{corollary}
+Let $R$ be a ring and $\p$ be a prime ideal. The map $R\to R_{\p}$ induces a map on spectra corresponding to the inclusion
+\[ \{ \q \in \Spec(R) \ | \ \q \subseteq \p \} \hookrightarrow \Spec(R).\]
+\end{corollary}
+
+%\begin{definition}
+%	Let $\phi:R\to S$ be a ring homomorphism, and $\p\in \Spec(R)$. We call the ring
+%	\[ \kappa_{\phi}(\p):= (R\smallsetminus \p)^{-1} (S/\p S) \]
+%	the \emph{fiber ring}\index{fiber ring}\index{$\kappa_{\phi}(\p)$} of $\phi$ over $\p$.
+%\end{definition}
+%
+%The point of this definition is the following.
+%
+%\begin{lemma} Let $\phi:R\to S$ be a ring homomorphism, and $\p\in \Spec(R)$.
+%	$\Spec(\kappa_{\phi}(\p)) \cong (\phi^*)^{-1}(\p)$, the set of primes that contract to $\p$.
+%\end{lemma}
+%\begin{proof}
+%	Consider the maps $S \to S/\p S \to (R\smallsetminus \p)^{-1} (S/\p S)$. For the first map, the map on spectra can be identified with the inclusion of $V(\p S)$ into $\Spec(S)$. For the second, it can be identified with the inclusion of the set of primes that do not intersect $R \smallsetminus \p$, i.e., those whose contraction is contained in $\p$. Put together, this is the set of primes that contract to $\p$. 
+%\end{proof}
+
+\ssec{Minimal primes and support}
+
 
 
 \end{comment}
