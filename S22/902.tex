@@ -1525,7 +1525,7 @@ A topological space is Hausdorff if and only if every irreducible subset is a po
 
 \begin{prop} Let $K$ be an infinite field. Affine space $\A^n_K$ is irreducible. 
 \end{prop}
-\begin{proof} Say that $\A^n_K = \cZ(I) \cup \cZ(J)$ for some ideals $I,J$. We need to show either $\cZ(I) =\A^n_K$ or $\cZ(J) = \A^n_K$. Note that $\A^n_K = \cZ(IJ)$. We must have $IJ=0$, since $\cI(\A^n_K) = 0$. If $I$ and $J$ are both nonzero, take $f\in I\smallsetminus 0$, and $g\in J \smallsetminus 0$; we get $fg\in IJ \smallsetminus 0$, which is a contradiction. Thus, without loss of generality, $I=0$, so $\cZ(I) = \A^n_K$.
+\begin{proof} Say that $\A^n_K = \cZ(I) \cup \cZ(J)$ for some ideals $I,J$. We need to show either $\cZ(I) =\A^n_K$ or $\cZ(J) = \A^n_K$. Note that $\A^n_K = \cZ(IJ)$. We must have $IJ=0$: if $f\in IJ\smallsetminus 0$, then $\cZ(IJ)\subseteq \cZ(f) \subsetneqq \A^n_K$ since $\cI(\A^n_K) = 0$. If $I$ and $J$ are both nonzero, take $f\in I\smallsetminus 0$, and $g\in J \smallsetminus 0$; we get $fg\in IJ \smallsetminus 0$, which is a contradiction. Thus, without loss of generality, $I=0$, so $\cZ(I) = \A^n_K$.
 \end{proof}
 
 \begin{ex} Affine space over a finite field is reducible: points are subvarieties, so finite unions of points are, and hence \[\A^n_K = \{(0,\dots,0)\} \cup \A^n_K \smallsetminus \{(0,\dots,0)\}\] is a decomposition into proper subvarieties.
@@ -1614,6 +1614,7 @@ On the other hand, if $X \supsetneqq \{(a_1\dots,a_n)\}$, then $\cI(X) \subsetne
 
 
 
+
 \begin{cor} Let $K$ be a field.
 \begin{enumerate}
 \item The maps $\cZ$ and $\cI$ induce a bijection \[ \{ \text{maximal ideals $\fm$ of $R=K[x_1,\dots,x_n]$ such that $R/\fm\cong K$} \} \leftrightarrow \A^n_K\]
@@ -1622,9 +1623,12 @@ On the other hand, if $X \supsetneqq \{(a_1\dots,a_n)\}$, then $\cI(X) \subsetne
 \end{enumerate}
 \end{cor}
 
-\begin{comment}
+
+
+
  \Feb{14}
- 
+
+
  
  
 \begin{proof}
@@ -1633,6 +1637,26 @@ For (1), we need to see that $\xra{\cZ}$ and $\xleftarrow{\cI}$ restrict to maps
 
 For (2), we note that there is a bijection between maximal ideals of $K[X]$ and maximal ideals of $K[x_1,\dots,x_n]$ that contain $\cI(X)$; moreover $\cI(X) \subseteq \fm$ if and only if $\cZ(\fm) \in \cZ(\cI(X))=X$. Thus, the bijection from (1) induces a bijection between maximal ideals of $K[X]$ and points of $X$.
 \end{proof}
+
+
+To recap, over an any field $K$, the maps $\xleftarrow{\cZ}$ and $\xrightarrow{\cI}$ yield order-reversing maps between the collections below and satisfy $\cZ \circ \cI = \mathrm{id}$ in each case, so they induce bijections between the RHS and a subset of the LHS (the image of $\cI$):
+\[ \xymatrix@R=.7em@C=4em{ \text{\underline{in $K[x_1,\dots,x_n]$}} &  \text{\underline{in $\A^n_K$}}  \\
+\{\text{radical ideals}\} \ar@<-.5ex>[r]_-{\cI} & \ar@<-.5ex>[l]_-{\cZ} \{\text{varieties} \} \\
+\{\text{prime ideals}\} \ar@<-.5ex>[r]_-{\cI} & \ar@<-.5ex>[l]_-{\cZ}  \{\text{irred vars} \} \\
+\{\text{maximal ideals}\} \ar@<-.5ex>[r]_-{\cI} & \ar@<-.5ex>[l]_-{\cZ}  \{\text{points} \}. }\]
+ Likewise, for any variety $X$, we have order-reversing maps that induce bijections between the RHS and a subset of the LHS:
+\[ \xymatrix@R=.7em@C=4em{ \text{\underline{in $K[X]$}} &  \text{\underline{in $X$}}  \\
+\{\text{radical ideals}\} \ar@<-.5ex>[r] & \ar@<-.5ex>[l] \{\text{subvarieties} \} \\
+\{\text{prime ideals}\} \ar@<-.5ex>[r] & \ar@<-.5ex>[l]  \{\text{irred subvars} \} \\
+\{\text{maximal ideals}\} \ar@<-.5ex>[r] & \ar@<-.5ex>[l]  \{\text{points} \}. }\]
+In both cases, we identified the image of the last $\leftarrow$ as maximal ideals whose residue field was no bigger than the ground field.
+
+ 
+ \begin{ex} \begin{enumerate} \item The radical ideal $(0) \subseteq \F_p[x]$ is not in the image of $\cI$ (i.e., is left of the the bijection above) over $K=\F_p$. Indeed, $\cI(\cZ(0)) = \cI(\A^1_{\F_p}) = (x^p-x)$.
+ \item The prime ideal $(x^2+y^2+z^2) \subseteq \R[x,y,z]$ is not in the image of $\cI$ over $K=\R$: $\cI(\cZ(x^2+y^2+z^2))= \cI(\{(0,0,0\}) = (x,y,z)$.
+ \item The maximal ideal $(x^2+1) \subseteq \R[x]$ is not in the image of $\cI$ over $K=\R$: $\cI(\cZ(x^2+1))=\cI(\varnothing) = (1)$.
+ \end{enumerate}\end{ex}
+ 
 
 
 \sec{The Nullstellensatz and the prime spectrum}
@@ -1674,20 +1698,21 @@ If $\{x_i,y_2,\dots,y_n\}$ were algebraically dependent, take a polynomial equat
 
 \ssec{Nullstellensatz}
 
-\begin{lemma}[Zariski's Lemma]
+\begin{thm}[Zariski's Lemma]
 \label{lem:Zariski}
  Let $K\subseteq L$ be fields. If $L$ is a finitely generated $K$-algebra, then $L$ is a finite dimensional $K$-vector space. In particular, if $K$ is algebraically closed then $L=K$.
-\end{lemma}
+\end{thm}
 \begin{proof}
-	Let $L=K[h_1,\dots,h_d]$. Since in particular $h_1,\dots,h_d$ generate $L$ as a field over $K$, we can choose a transcendence basis for $L/K$ from among the $h$'s, and after reordering, we may assume that $h_1,\dots,h_c=x_1,\dots,x_c$ form a transcendence basis, and $h_{c+1},\dots,h_d$ are algebraic over $K'=K(x_1,\dots,x_c)=K[x_1,\dots,x_c]$. Then $L$ is integral and algebra-finite over $K'$, hence module-finite. Thus, if $c=0$, we are done. Suppose that $c\neq 0$; we will obtain a contradiction to complete the proof.
+	Let $L=K[h_1,\dots,h_d]$. Since in particular $h_1,\dots,h_d$ generate $L$ as a field over $K$, we can choose a transcendence basis for $L/K$ from among the $h$'s, and after reordering, we may assume that $h_1,\dots,h_c=x_1,\dots,x_c$ form a transcendence basis, and $h_{c+1},\dots,h_d$ are algebraic over $K'=K(x_1,\dots,x_c)$. Then $L$ is integral and algebra-finite over $K'$, hence module-finite. Thus, if $c=0$, we are done. Suppose that $c\neq 0$; we will obtain a contradiction to complete the proof.
 
- We can apply the Artin-Tate Lemma to $K\subseteq K' \subseteq L$ to see that $K'$ is algebra-finite over $K$. In particular, there are $f_i, g_i$ in the polynomial ring $K[x_1,\dots,x_c]$ such that $K'=K[\frac{f_1}{g_1},\dots,\frac{f_c}{g_c}]$. This implies that any element of $K'$ can be written as a fraction with denominator $(g_1\cdots g_c)^n$ for some $n$.  The element $\frac{1}{g_1\cdots g_c +1}\in K'$ cannot be written this way; if so, we would have 
-	\[  \frac{v}{(g_1\cdots g_c)^n} = \frac{1}{g_1\cdots g_c +1},\]
-	for some $v$ with $g_1\cdots g_c \nmid v$ (since the polynomial ring is a UFD). But, the equation $g_1\cdots g_c v + v = (g_1\cdots g_c)^n$ contradicts this.
+ We can apply the Artin-Tate Lemma to $K\subseteq K' \subseteq L$ to see that $K'$ is algebra-finite over $K$. In particular, there are $f_i, g_i$ in the polynomial ring $K[x_1,\dots,x_c]$ such that $K'=K[\frac{f_1}{g_1},\dots,\frac{f_m}{g_m}]$. This implies that any element of $K'$ can be written as a fraction with denominator $(g_1\cdots g_m)^n$ for some $n$.  The element $\frac{1}{g_1\cdots g_m +1}\in K'$ cannot be written this way; if so, we would have 
+	\[  \frac{v}{(g_1\cdots g_m)^n} = \frac{1}{g_1\cdots g_c +1},\]
+	for some $v$ with $g_1\cdots g_m \nmid v$ (since the polynomial ring is a UFD). But, the equation $g_1\cdots g_m v + v = (g_1\cdots g_m)^n$ contradicts this.
 	
 Now if $K$ is algebraically closed and $\ell \in L$, since $L/K$ is finite then $\ell$ is algebraic over $K$,  thus $\ell\in K$.
 \end{proof}
 
+\begin{comment}
 
 
 \begin{thm}[Hilbert's Nullstellensatz (Weak Form)]
@@ -1709,10 +1734,10 @@ in $n$ variables with coefficients in some algebraically closed field $K$.  If t
 
 
 
-\begin{proof} If $J = K[x_1, \dots, x_n]$, then $Z_{\overline{K}}(J) = \emptyset$ since $1 = 0$ has no solutions.
+\begin{proof} If $J = K[x_1, \dots, x_n]$, then $Z(J) = \emptyset$ since $1 = 0$ has no solutions.
 
 
-We show that if $J \subset K[x_1, \dots, x_n]$ is a proper ideal, then $Z(J) \ne \emptyset$. Since $I$ is proper, it is contained in some maximal ideal $\fm$. By Zariski's Lemma, $K[x_1,\dots,x_n]/\fm\cong K$,  so we have $\cZ(\fm) \neq \varnothing$.
+We show that if $J \subset K[x_1, \dots, x_n]$ is a proper ideal, then $Z(J) \ne \emptyset$. Since $J$ is proper, it is contained in some maximal ideal $\fm$. By Zariski's Lemma, $K[x_1,\dots,x_n]/\fm\cong K$,  so we have $\cZ(\fm) \neq \varnothing$.
 \end{proof}
 
 
@@ -1735,9 +1760,9 @@ f_1(\vx)=0, \dots, f_m(\vx)=0, y g_1(\vx)\cdots g_n(\vx)-1 = 0.
 \end{equation*}
 \end{remark}
 
-\begin{thm}[Hilbert's Nullstellensatz (Strong Form)] Let $K$ be field with algebraic closure $\overline{K}$ and 
+\begin{thm}[Hilbert's Nullstellensatz (Strong Form)] Let $K$ be an algebraically closed field and 
 let $J$ be an ideal in the polynomial ring $R=K[x_1, \dots, x_n]$. Then, for $f\in R$, 
-$f$ vanishes at every point of $\cZ(J)$ if and only if there is some $n\in \N$ such that $f^n\in I$.
+$\cZ(f) \supseteq \cZ(J)$ if and only if $f\in \sqrt{J}$.
 
 In particular, $\cI(\cZ(J)) = \sqrt{J}$.
 \end{thm}
@@ -1748,7 +1773,7 @@ In particular, $\cI(\cZ(J)) = \sqrt{J}$.
 \begin{proof}
 The equations in $\sqrt{J}$ vanish on $\cZ(J)$, so $\sqrt{J}\subseteq \cI(\cZ(J))$.
 	
-	For the converse, suppose that $f(\vx)$ vanishes on $\cZ(J)$. Considering the system 
+	For the converse, suppose that $f(\vx)$ vanishes on $\cZ(J)$. Write $J=(g_1,\dots,g_m)$. Considering the system 
 \[
 g_1(\vx)=0, \dots, g_m(\vx)=0, f(\vx)\neq 0
 \]
@@ -1794,19 +1819,25 @@ this implies that $\cZ(JS+(yf-1))=\varnothing$, where $JS+(yf-1)$ is an ideal in
 
 
 \begin{corollary}\label{ord-pres-bij}
-	Let $K$ be an algebraically closed field and $R=K[x_1,\dots,x_d]$ a polynomial ring. The associations $\cZ$ and $\cI$ induce order-reversing bijections
-\[ \xymatrix@R=1em{ \{ \text{subvarieties of $\A^n_K$}\} \ar@{<->}[r] & \{ \text{radical ideals of $K[x_1,\dots, x_n]$} \} \\  \{ \text{irreducible subvarieties of $\A^n_K$}\} \ar@{<->}[r] & \{ \text{prime ideals of $K[x_1,\dots, x_n]$} \} \\
- \{ \text{points of $\A^n_K$}\} \ar@{<->}[r] & \{ \text{maximal ideals of $K[x_1,\dots, x_n]$} \}} \]
-	 In particular, given ideals $I$ and $J$, we have $\mathcal{Z}(I) = \mathcal{Z}(J)$ if and only if $\sqrt{I}=\sqrt{J}$.
-	 
-	 Likewise, we obtain analogous bijections for any affine variety $X$ in place of $\A^n_K$ and $K[X]$ in place of $K[x_1,\dots,x_n]$.
-\end{corollary}
+	Let $K$ be an algebraically closed field. The associations $\cZ$ and $\cI$ induce order-reversing bijections
+	\[ \xymatrix@R=.7em@C=4em{ \text{\underline{in $K[x_1,\dots,x_n]$}} &  \text{\underline{in $\A^n_K$}}  \\
+\{\text{radical ideals}\} \ar@<-.5ex>[r]_-{\cI} & \ar@<-.5ex>[l]_-{\cZ} \{\text{varieties} \} \\
+\{\text{prime ideals}\} \ar@<-.5ex>[r]_-{\cI} & \ar@<-.5ex>[l]_-{\cZ} \{\text{irred vars} \} \\
+\{\text{maximal ideals}\} \ar@<-.5ex>[r]_-{\cI} & \ar@<-.5ex>[l]_-{\cZ}  \{\text{points} \}. }\]
+ In particular, given ideals $I$ and $J$, we have $\mathcal{Z}(I) = \mathcal{Z}(J)$ if and only if $\sqrt{I}=\sqrt{J}$.
+
+ Likewise, for any variety $X$ over an algebraically closed  field, we have order-reversing bijections
+\[ \xymatrix@R=.7em@C=4em{ \text{\underline{in $K[X]$}} &  \text{\underline{in $X$}}  \\
+\{\text{radical ideals}\} \ar@<-.5ex>[r] & \ar@<-.5ex>[l] \{\text{subvarieties} \} \\
+\{\text{prime ideals}\} \ar@<-.5ex>[r] & \ar@<-.5ex>[l]  \{\text{irred subs} \} \\
+\{\text{maximal ideals}\} \ar@<-.5ex>[r] & \ar@<-.5ex>[l]  \{\text{points} \}. }\]
+	\end{corollary}
 
 
 
 \begin{ex} Recall that
 \[ X:= \{ (t^3,t^4,t^5) \ | \ t\in \C \} = \cZ(I), \ \text{where} \ I=(y^3-x^4,z^3-x^5,z^4-y^5).\]
-By the Nullstellensatz, $\cI(X) = \sqrt(I)$. The ideal is not radical: 
+By the Nullstellensatz, $\cI(X) = \sqrt{I}$. The ideal $I$ is not radical: 
 note that 
 \[ x^9 yz \equiv (x^4)(x^5)yz \equiv y^4 z^4 \equiv y^9 \equiv x^{12} \equiv x^3 y^3 z^3 \quad \mod I\]
 and
@@ -1822,8 +1853,9 @@ One can show that $\sqrt{I}=(x^3-yz,y^2-xz,z^2-x^2y)$.
 As a consequence of the Nullstellensatz, for an algebraically closed field $K$ and an algebra of the form $R=K[x_1,\dots,x_n]/I$ that is reduced, we know that $I=\cI(X)$ for some variety $X\subseteq \A^n_K$, and $R=K[X]$. We can recover $X$ (as a set) from the ring $R$ by taking the maximal ideals of $R$. Moreover, we can recover the Zariski topology on $X$: a subvariety of $X$ corresponds to a (radical) ideal of $R$, so the closed subsets correspond to the sets of maximal ideals that contain a particular (radical) ideal of $R$. Moreover, we can reconstruct morphisms of varieties from the maps on their coordinate rings:
 
 \begin{exer} Let $X,Y$ be affine varieties over an algebraically closed field with $R=K[X]$ and $S=K[Y]$. Let $\phi:X\to Y$ be an algebraic morphism, and $\phi^*: S\to R$ be the induced map on coordinate rings. Then the following diagram commutes:
-\[ \xymatrix@R=2mm{ \Max(S) \ar[rrrrr]\ar[ddd] &&& & & \Max(R) \ar[ddd]\\
+\[ \xymatrix@R=2mm{ \Max(S) \ar[rrrrr]\ar[dddd] &&& & & \Max(R) \ar[dddd]\\
 & \fm  \ar@{|->}[rrr] &&& (\phi^*)^{-1}(\fm) & \\
+\\
 \\
 X \ar[rrrrr] &&&&& Y}\]
 where the vertical maps send a maximal ideal of the form $(x_1-a_1,\dots,x_n-a_n)$ to the point $(a_1,\dots,a_n)$; this is essentially the map $\cZ$ on maximal ideals.
