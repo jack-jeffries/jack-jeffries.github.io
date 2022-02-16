@@ -132,6 +132,8 @@
 \def\sM{\mathscr M}
 \def\sN{\mathscr N}
 
+\def\fA{\mathfrak A}
+
 \newcommand{\va}{\underline{a}}
 \newcommand{\vx}{\underline{x}}
 \newcommand{\vy}{\underline{y}}
@@ -1712,7 +1714,7 @@ If $\{x_i,y_2,\dots,y_n\}$ were algebraically dependent, take a polynomial equat
 Now if $K$ is algebraically closed and $\ell \in L$, since $L/K$ is finite then $\ell$ is algebraic over $K$,  thus $\ell\in K$.
 \end{proof}
 
-\begin{comment}
+\Feb{16}
 
 
 \begin{thm}[Hilbert's Nullstellensatz (Weak Form)]
@@ -1778,9 +1780,9 @@ The equations in $\sqrt{J}$ vanish on $\cZ(J)$, so $\sqrt{J}\subseteq \cI(\cZ(J)
 g_1(\vx)=0, \dots, g_m(\vx)=0, f(\vx)\neq 0
 \]
 we see that it has no solution since $f(\vx)=0$ is a consequence of the first $m$ equations. By the remark above, 
-this implies that $\cZ(JS+(yf-1))=\varnothing$, where $JS+(yf-1)$ is an ideal in the polynomial ring $S=K[x_1,\ldots,x_n,y]$. By the Weak Nullstellensatz, we see that $1\in J S+(yf-1)$. Write $J=(g_1(\vx),\dots,g_m(\vx))$, and
+this implies that $\cZ(JS+(yf-1))=\varnothing$, where $JS+(yf-1)$ is an ideal in the polynomial ring ${S=K[x_1,\ldots,x_n,y]}$. By the Weak Nullstellensatz, we see that $1\in J S+(yf-1)$. Write $J=(g_1(\vx),\dots,g_m(\vx))$, and
 	\[1 = r_0(\vx,y) (1-yf(\vx))+r_1(\vx,y) g_1(\vx) + \cdots + r_m(\vx,y) g_m(\vx).  \]
-	We can apply an evaluation map $S\to \mathrm{Frac}(S)$ sending $y \mapsto 1/f$ to get
+	We can apply an evaluation map $S\to \mathrm{Frac}(R)$ sending $y \mapsto 1/f$ to get
 	\[1 = r_1(\vx,1/f) g_1(\vx) + \cdots + r_m(\vx,1/f) g_m(\vx).  \]
 	 Since each $r_i$ is polynomial, there is a largest negative power of $f$ occurring; say that $f^n$ serves as a common denominator. We can clear denominators multiplying by $f^n$ to obtain (on the LHS) $f^n$ as a polynomial combination of the $g$'s (on the RHS).
 \end{proof}
@@ -1850,7 +1852,7 @@ One can show that $\sqrt{I}=(x^3-yz,y^2-xz,z^2-x^2y)$.
 
 \ssec{Spectrum of a ring}
 
-As a consequence of the Nullstellensatz, for an algebraically closed field $K$ and an algebra of the form $R=K[x_1,\dots,x_n]/I$ that is reduced, we know that $I=\cI(X)$ for some variety $X\subseteq \A^n_K$, and $R=K[X]$. We can recover $X$ (as a set) from the ring $R$ by taking the maximal ideals of $R$. Moreover, we can recover the Zariski topology on $X$: a subvariety of $X$ corresponds to a (radical) ideal of $R$, so the closed subsets correspond to the sets of maximal ideals that contain a particular (radical) ideal of $R$. Moreover, we can reconstruct morphisms of varieties from the maps on their coordinate rings:
+As a consequence of the Nullstellensatz, for an algebraically closed field $K$ and an algebra of the form $R=K[x_1,\dots,x_n]/I$ that is reduced, we know that $I=\cI(X)$ for some variety $X\subseteq \A^n_K$, and $R=K[X]$. We can recover $X$ (as a set) from the ring $R$ by taking the maximal ideals of $R$. Moreover, we can recover the Zariski topology on $X$: a subvariety of $X$ corresponds to a (radical) ideal of~$R$, so the closed subsets correspond to the sets of maximal ideals that contain a particular (radical) ideal of~$R$. Moreover, we can reconstruct morphisms of varieties from the maps on their coordinate rings:
 
 \begin{exer} Let $X,Y$ be affine varieties over an algebraically closed field with $R=K[X]$ and $S=K[Y]$. Let $\phi:X\to Y$ be an algebraic morphism, and $\phi^*: S\to R$ be the induced map on coordinate rings. Then the following diagram commutes:
 \[ \xymatrix@R=2mm{ \Max(S) \ar[rrrrr]\ar[dddd] &&& & & \Max(R) \ar[dddd]\\
@@ -1921,7 +1923,7 @@ We observe that this is not only an order-preserving map, but also is continuous
 \begin{lemma} Let $R$ be a ring, $I$ an ideal, and $W$ a multiplicatively closed subset. If $W\cap I=\varnothing$, then there is a prime ideal $\p$ with $\p \supseteq I$ and $\p \cap W=\varnothing$.
 \end{lemma}
 \begin{proof}
-	Consider the family of ideals $\{ J \ | \ J \supseteq I, J \cap W=\varnothing\}$. This is nonempty, since it contains $I$, and has some maximal element $\A$ by a basic application of Zorn's Lemma. We claim $\A$ is prime. Suppose $f,g\notin \A$. By maximality, $\A+(f)$ and $\A+(g)$ both have nonempty intersection with $W$, so there exist $r_1f+a_1$, $r_2 g+a_2 \in W$, with $a_1,a_2\in \A$. If $fg\in \A$, then $(r_1f+a_1)(r_2g+a_2)=r_1 r_2 fg + r_1 f a_2 + r_2 g a_1 + a_1 a_2 \in W \cap \A$, a contradiction.
+	Consider the family of ideals $\{ J \ | \ J \supseteq I, J \cap W=\varnothing\}$. This is nonempty, since it contains $I$, and has some maximal element $\fA$ by a basic application of Zorn's Lemma. We claim $\fA$ is prime. Suppose $f,g\notin \fA$. By maximality, $\fA+(f)$ and $\fA+(g)$ both have nonempty intersection with $W$, so there exist $r_1f+a_1$, $r_2 g+a_2 \in W$, with $a_1,a_2\in \fA$. If $fg\in \fA$, then $(r_1f+a_1)(r_2g+a_2)=r_1 r_2 fg + r_1 f a_2 + r_2 g a_1 + a_1 a_2 \in W \cap \fA$, a contradiction.
 \end{proof}
 
 
@@ -1940,6 +1942,10 @@ $(\supseteq)$: It suffices to show that $\p \supseteq I$ implies that $\p \supse
 $(\subseteq)$: If $f\notin \sqrt{I}$, consider the multiplicatively closed set $W=\{1,f,f^2,f^3,\dots\}$. We have $W\cap I=\varnothing$ by hypothesis. By the previous lemma, there is a prime $\p$ in $V(I)$ that does not intersect $W$, and hence does not contain $f$.
 \end{proof}
 
+We also have the following:
+
+\begin{exer} $V(I)$ is irreducible if and only if $\sqrt{I}$ is prime.
+\end{exer}
 
 The following corollary follows in exactly the same way as the analogous statement for subvarieties of $K^n$, Corollary~\ref{ord-pres-bij}.
 
