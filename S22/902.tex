@@ -1855,11 +1855,11 @@ One can show that $\sqrt{I}=(x^3-yz,y^2-xz,z^2-x^2y)$.
 As a consequence of the Nullstellensatz, for an algebraically closed field $K$ and an algebra of the form $R=K[x_1,\dots,x_n]/I$ that is reduced, we know that $I=\cI(X)$ for some variety $X\subseteq \A^n_K$, and $R=K[X]$. We can recover $X$ (as a set) from the ring $R$ by taking the maximal ideals of $R$. Moreover, we can recover the Zariski topology on $X$: a subvariety of $X$ corresponds to a (radical) ideal of~$R$, so the closed subsets correspond to the sets of maximal ideals that contain a particular (radical) ideal of~$R$. Moreover, we can reconstruct morphisms of varieties from the maps on their coordinate rings:
 
 \begin{exer} Let $X,Y$ be affine varieties over an algebraically closed field with $R=K[X]$ and $S=K[Y]$. Let $\phi:X\to Y$ be an algebraic morphism, and $\phi^*: S\to R$ be the induced map on coordinate rings. Then the following diagram commutes:
-\[ \xymatrix@R=2mm{ \Max(S) \ar[rrrrr]\ar[dddd] &&& & & \Max(R) \ar[dddd]\\
+\[ \xymatrix@R=2mm{ \Max(R) \ar[rrrrr]\ar[dddd] &&& & & \Max(S) \ar[dddd]\\
 & \fm  \ar@{|->}[rrr] &&& (\phi^*)^{-1}(\fm) & \\
 \\
 \\
-X \ar[rrrrr] &&&&& Y}\]
+X \ar[rrrrr]^-{{\large \phi}} &&&&& Y}\]
 where the vertical maps send a maximal ideal of the form $(x_1-a_1,\dots,x_n-a_n)$ to the point $(a_1,\dots,a_n)$; this is essentially the map $\cZ$ on maximal ideals.
 \end{exer}
 
@@ -1867,16 +1867,17 @@ where the vertical maps send a maximal ideal of the form $(x_1-a_1,\dots,x_n-a_n
 Loosely speaking, this exercise says that $\Max(-)$ can be thought of as a contravariant functor that, on the category of reduced finitely generated algebras over algebraically closed fields, is an inverse to the coordinate ring functor up to natural isomorphism. The precise statement is that functor yields an equivalence of categories.
 \end{rem}
 
+\begin{comment}
+
 
 We now use a similar idea to construct a geometric object for every ring. However, we want this to be functorial, and in general the preimage of a maximal ideal is not maximal, e.g., for the inclusion $\Z\subseteq \Q$, $(0)$ is maximal in $\Q$, but its contraction is $(0)$ in $\Z$, which is not maximal. However, the preimage of a prime ideal is prime.
 
 \begin{lem} Let $R\to S$ be a ring homomorphism and $\fp\subset S$ be prime. Then $\fp \cap R$ is also prime.
 \end{lem}
 
-\begin{defn} Let $R$ be a ring. The \DEF{prime spectrum} of $R$ is the set of prime ideals of $R$.
-\end{defn}
+\begin{defn} Let $R$ be a ring. The \DEF{prime spectrum} of $R$, \Def{$\Spec(R)$}, is the set of prime ideals of $R$. \end{defn}
 
-\begin{defn} For a ring $R$ and an ideal $I$, we set
+\begin{defn} For a ring $R$ and an ideal $I$, we set \index{$V(I)$}
 \[ V(I) := \{ \fp \in \Spec(R) \ | \ \fp \supseteq I\}.\]
 \end{defn}
 
