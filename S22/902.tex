@@ -1867,7 +1867,7 @@ where the vertical maps send a maximal ideal of the form $(x_1-a_1,\dots,x_n-a_n
 Loosely speaking, this exercise says that $\Max(-)$ can be thought of as a contravariant functor that, on the category of reduced finitely generated algebras over algebraically closed fields, is an inverse to the coordinate ring functor up to natural isomorphism. The precise statement is that functor yields an equivalence of categories.
 \end{rem}
 
-\begin{comment}
+\Feb{18}
 
 
 We now use a similar idea to construct a geometric object for every ring. However, we want this to be functorial, and in general the preimage of a maximal ideal is not maximal, e.g., for the inclusion $\Z\subseteq \Q$, $(0)$ is maximal in $\Q$, but its contraction is $(0)$ in $\Z$, which is not maximal. However, the preimage of a prime ideal is prime.
@@ -1889,6 +1889,7 @@ We now use a similar idea to construct a geometric object for every ring. Howeve
 		\item If $I \subseteq J$, then $V(J)\subseteq V(I)$.
 		\item $V(I) \cup V(J) = V(I \cap J)=V(IJ)$.
 		\item $\bigcap_{\lambda} V(I_{\lambda}) =V(\sum_{\lambda} I_{\lambda})$.
+		\item $V(I)=V\sqrt{I}$
 	%	\item $\Spec(R)$ has a basis given by open sets of the form $D(f):=\Spec(R)\smallsetminus V(f)$.
 	%	\item $\Spec(R)$ is quasicompact.
 	\end{enumerate}
@@ -1906,6 +1907,16 @@ We only deal with (2), as the others are straightforward.
 \begin{exer} Note that $\Spec(R)$ is also a poset under inclusion. Show that the poset structure of $\Spec(R)$ can be recovered from the topology as follows: 
 \[ \p\subseteq \q \quad \Leftrightarrow \quad \q \in \overline{\{ \p \}}.\]
 \end{exer}
+
+
+\begin{ex} For any affine variety $X$ over an algebraically closed field, the spectrum of $K[X]$ consists of maximal ideals and nonmaximal primes. The maximal ideals are in bijection with the points of $X$; the other primes correspond to irreducible subvarieties of $X$. Thus, we can think of $\Spec(K[X])$ as $X$ with ``fake points'' added in for each irreducible subvariety.
+\end{ex}
+
+\begin{example} The spectrum of $\mathbb{Z}$ is, as a poset:
+\[ \xymatrix@C-1pc{ &&&& & (2) &  & (3) &  & (5) & & (7) & & (11) & & \cdots &&&&& \\ 
+&&&& &  & &  & &  & (0)\ar@{-}[lllllu] \ar@{-}[lllu] \ar@{-}[lu] \ar@{-}[ru] \ar@{-}[rrru] \ar@{=}[rrrrru] &&&&& &&&&& }\]
+The closed sets are of the form $V((n))$, which are the whole space when $n=0$, the empty set with $n=1$, and any finite union of things in the top row.
+\end{example}
 
 
 \begin{definition}[Induced map on $\Spec$]
@@ -1933,6 +1944,8 @@ We observe that this is not only an order-preserving map, but also is continuous
 	\[  V(I) \subseteq V(f) \Longleftrightarrow f\in \sqrt{I}.\] 
 	Equivalently, $\bigcap_{\p \in V(I)} \p = \sqrt{I}$.
 \end{proposition}
+
+\begin{comment}
 \begin{proof}
 First to justify the equivalence of the two statements we observe: 
 \[V(I) \subseteq V(f) \Leftrightarrow f\in \p \ \text{for all} \ \p\in V(I)  \Leftrightarrow f \in \bigcap_{\p \in V(I)} \p.\]
@@ -1957,11 +1970,7 @@ The following corollary follows in exactly the same way as the analogous stateme
 	In particular, for two ideals $I,J$, $V(I)=V(J)$ if and only if $\sqrt{I}=\sqrt{J}$.
 \end{corollary}
 
-\begin{example} The spectrum of $\mathbb{Z}$ is, as a poset:
-\[ \xymatrix@C-1pc{ &&&& & (2) &  & (3) &  & (5) & & (7) & & (11) & & \cdots &&&&& \\ 
-&&&& &  & &  & &  & (0)\ar@{-}[lllllu] \ar@{-}[lllu] \ar@{-}[lu] \ar@{-}[ru] \ar@{-}[rrru] \ar@{=}[rrrrru] &&&&& &&&&& }\]
-The closed sets are of the form $V((n))$, which are the whole space when $n=0$, the empty set with $n=1$, and any finite union of things in the top row.
-\end{example}
+
 
 \begin{example} Here are a few elements in $\mathbb{C}[x,y]$: 
 \[ \xymatrix@C-1pc{\cdots & (x,y) & (x-1,y) & (x-1,y-1) & (x-7\pi,y) & (x-i\sqrt{2},y-1) & \cdots \\
