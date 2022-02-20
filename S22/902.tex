@@ -56,7 +56,7 @@
 \def\Aut{\operatorname{Aut}}
 \def\End{\operatorname{End}}
 \def\Mat{\operatorname{Mat}}
-
+\def\Min{\operatorname{Min}}
 
 \def\a{\alpha}
 
@@ -373,6 +373,7 @@
 \newcommand{\Rep}[2]{\mathbf{Rep}_{#1}(#2)}
 \newcommand{\Max}{\mathrm{Max}}
 \newcommand{\Spec}{\mathrm{Spec}}
+\newcommand{\Supp}{\mathrm{Supp}}
 
 %%%-------------------------------------------------------------------
 %%%-------------------------------------------------------------------
@@ -1946,6 +1947,8 @@ We observe that this is not only an order-preserving map, but also is continuous
 \end{proposition}
 
 \begin{comment}
+\Feb{21}
+
 \begin{proof}
 First to justify the equivalence of the two statements we observe: 
 \[V(I) \subseteq V(f) \Leftrightarrow f\in \p \ \text{for all} \ \p\in V(I)  \Leftrightarrow f \in \bigcap_{\p \in V(I)} \p.\]
@@ -1954,6 +1957,12 @@ We prove the latter formulation.
 $(\supseteq)$: It suffices to show that $\p \supseteq I$ implies that $\p \supseteq \sqrt{I}$. But, $f^n\in \p$ implies $f\in \p$, so this is clear.
 
 $(\subseteq)$: If $f\notin \sqrt{I}$, consider the multiplicatively closed set $W=\{1,f,f^2,f^3,\dots\}$. We have $W\cap I=\varnothing$ by hypothesis. By the previous lemma, there is a prime $\p$ in $V(I)$ that does not intersect $W$, and hence does not contain $f$.
+\end{proof}
+
+\begin{cor} 	For two ideals $I,J$, $V(I)=V(J)$ if and only if $\sqrt{I}=\sqrt{J}$.
+\end{cor}
+\begin{proof} ($\Leftarrow$): Follows from $V(I)=V(\sqrt{I})$.
+($\Rightarrow$): If $V(I)=V(J)$, then $f\in \sqrt{I}$ if and only if $V(f)\supseteq V(I) = V(J)$ if and only if $f\in \sqrt{J}$.
 \end{proof}
 
 We also have the following:
@@ -1965,34 +1974,29 @@ The following corollary follows in exactly the same way as the analogous stateme
 
 \begin{corollary}
 	Let $R$ a ring.
-	There is an order-reversing bijection
-	\[\{ \text{closed subsets of $\Spec(R)$} \}  \quad \leftrightarrow \quad \{\text{radical ideals $I\subseteq R$}\}.\]
-	In particular, for two ideals $I,J$, $V(I)=V(J)$ if and only if $\sqrt{I}=\sqrt{J}$.
+	The map $\xrightarrow{V}$ induces order-reversing bijections
+\[	\xymatrix@R=.7em@C=4em{ \text{\underline{in $R$}} &  \text{\underline{in $\Spec(R)$}}  \\
+\{\text{radical ideals}\} \ar@{<->}[r] & \ \{\text{closed subsets} \} \\
+\{\text{prime ideals}\} \ar@{<->}[r]& \{\text{irred closeds} \} \\
+\{\text{maximal ideals}\} \ar@{<->}[r] &  \{\text{closed points} \}. }\]
 \end{corollary}
 
 
-
-\begin{example} Here are a few elements in $\mathbb{C}[x,y]$: 
-\[ \xymatrix@C-1pc{\cdots & (x,y) & (x-1,y) & (x-1,y-1) & (x-7\pi,y) & (x-i\sqrt{2},y-1) & \cdots \\
-\cdots & (x)\ar@{-}[u] & (x-1)\ar@{-}[u]\ar@{-}[ru] & (x^2-y^3) \ar@{-}[u]\ar@{-}[llu]& (x^2+y^2+1)\ar@{-}[ru] & (y)\ar@{-}[lu]\ar@{-}[lllu]\ar@{-}[llllu] & \cdots \\
-&&&(0)\ar@{-}[llu]\ar@{-}[lu]\ar@{-}[u]\ar@{-}[ru]\ar@{-}[rru] &&&
-}\]
-\end{example}
 
 
 \sec{Support of modules and associated primes}
 
 \ssec{Localization}
 
-Recall the notion of multiplicative set.
 
-Our three most important classes of  examples are the first three below.
+
+Our three most important classes of  examples of multiplicative sets are as follows.
 \begin{example} Let $R$ be a ring.
 	\begin{enumerate}
 		\item For any $f\in R$, the set $W=\{1, f, f^2, f^3, \dots\}$ is a multiplicative set.
 		\item If $\p\subseteq R$ is a prime ideal, the set $W=R\smallsetminus \p$ is multiplicative: this is an immediate translation of the definition.
 		\item The set of \emph{nonzerodivisors}\index{nonzerodivisor} in $R$---elements that are not zerodivisors---forms a multiplicatively closed subset.
-		\item An arbitrary intersection of multiplicatively closed subsets is multiplicatively closed. In particular, for any family of primes $\{\p _{\lambda} \}$, the set $R \smallsetminus \bigcup_{\lambda} \p _{\lambda}$ is multiplicatively closed.
+	%	\item An arbitrary intersection of multiplicatively closed subsets is multiplicatively closed. In particular, for any family of primes $\{\p _{\lambda} \}$, the set $R \smallsetminus \bigcup_{\lambda} \p _{\lambda}$ is multiplicatively closed.
 	\end{enumerate}
 \end{example}
 
@@ -2008,13 +2012,13 @@ Note that we write elements in $W^{-1}R$ in the form $r/w$ even though they are 
 
 Observe that if $R$ is a domain, the equivalence relation simplifies to $rw'=r'w$, so $R \subseteq W^{-1}R \subseteq \mathrm{Frac}(R)$, and in particular $ W^{-1}R$ is a domain too.
 
-In the localization of $R$ at $W$, every element of $W$ becomes a unit. The following universal property says roughly that $W^{-1}R$ is the smallest $R$-algebra in which every element of $R$ is a unit.
+%In the localization of $R$ at $W$, every element of $W$ becomes a unit. The following universal property says roughly that $W^{-1}R$ is the smallest $R$-algebra in which every element of $R$ is a unit.
 
-\begin{proposition}
-	Let $R$ be a ring, and $W$ a multiplicative set with $0\notin W$. Let $S$ be an $R$-algebra in which every element of $W$ is a unit. Then there is a unique homomorphism $\alpha$ such that the following diagram commutes:
-	\[\xymatrix{ R \ar[r]\ar[d] & W^{-1}R \ar[dl]^{\alpha} \\  S& } \]
-	where the vertical map is the structure homomorphism and the horizontal map is the canonical homomorphism.
-\end{proposition}
+%\begin{proposition}
+%	Let $R$ be a ring, and $W$ a multiplicative set with $0\notin W$. Let $S$ be an $R$-algebra in which every element of $W$ is a unit. Then there is a unique homomorphism $\alpha$ such that the following diagram commutes:
+%	\[\xymatrix{ R \ar[r]\ar[d] & W^{-1}R \ar[dl]^{\alpha} \\  S& } \]
+%	where the vertical map is the structure homomorphism and the horizontal map is the canonical homomorphism.
+%\end{proposition}
 
 \begin{example}[Most important localizations] Let $R$ be a ring.
 	\begin{enumerate}
@@ -2101,6 +2105,34 @@ Last semester in the homework we showed the following.
 %	\end{enumerate}
 %\end{proof}
 
+\begin{proposition}
+	Let $W$ be multiplicatively closed in $R$.
+	\begin{enumerate}
+		\item If $I$ is an ideal, then $W^{-1} I \cap R = \{ r \in R \ | \ \exists w\in W : wr\in I\}$.
+		\item If $\p$ is prime and $W \cap \p=\varnothing$, then $W^{-1}\p =\p (W^{-1}R)$ is prime.
+		\item The map $\Spec(W^{-1} R) \to \Spec(R)$ is injective, with image $\{\p \in \Spec(R) \ | \ \p \cap W = \varnothing\}$.
+	\end{enumerate}
+
+\end{proposition}
+\begin{proof}
+	\begin{enumerate}
+		\item Since $W^{-1}(R/I) \cong W^{-1} R / W^{-1} I$, we have $\ker (R \to W^{-1}(R/I)) = R \cap W^{-1} I$. The equality is then clear.
+		\item First, since $W\cap \p =\varnothing$, and $\p$ is prime, we know that no element of $W$ kills $\bar{1}=1 + \p$ in $R/\p$, so $\bar{1}/1$ is nonzero in $W^{-1}(R/\p)$. Thus, $W^{-1}R / W^{-1}\p \cong W^{-1}(R/\p)$ nonzero, and a localization of a domain, hence is a domain. Thus, $W^{-1}\p$ is prime.
+		\item First, by part (2), the map $\p \mapsto W^{-1}\p$, for $S=\{\p \in \Spec(R) \ | \ \p \cap W = \varnothing\}$ sends primes to primes. We claim that 
+	\[\xymatrix@R=1em{  \Spec(W^{-1} R) \ar@{<->}[r] & S \\
+	\q  \ar@{|->}[r] &  \q \cap R \\
+	W^{-1}\p=\p (W^{-1}R) \ar@{<-|}[r] & \p}\]
+		is a pair of mutually inverse maps.
+		
+	To see this, first note that if $J$ is an ideal of $W^{-1}R$, then $J=(J\cap R) W^{-1}R$. Indeed, if $J=(a_1/w_1,\dots,a_t/w_t)$, then  $J=(a_1/1,\dots,a_t/1)$, since each generator was replaced by a unit multiple. Second, if $W\cap \p=\varnothing$, then using part (1) and the definition of prime, we have that $\p = W^{-1}\p \cap R$.\qedhere
+	\end{enumerate}
+\end{proof}
+
+\begin{corollary}
+Let $R$ be a ring and $\p$ be a prime ideal. The map $R\to R_{\p}$ induces a map on spectra that is injective with image
+\[ \{ \q \in \Spec(R) \ | \ \q \subseteq \p \}.\]
+\end{corollary}
+
 \begin{proposition}[Hom and flat base change]
 	Let $S$ be a flat $R$ algebra, and $M,N$ be two $R$-modules. Suppose that $M$ is finitely presented. Then 
 	\[\xymatrix{ S\otimes_R \Hom_R(M,N) \ar[r]^{\cong} & \Hom_{S} (S\otimes_R M, S\otimes_R N) \\
@@ -2136,42 +2168,16 @@ is an isomorphism.
 	\[ \Hom_{R_{\p}}(M_{\p} , N_{\p}) \cong \Hom_R(M,N)_{\p}. \]
 \end{corollary}
 
-\begin{proposition}
-	Let $M$ be an $R$-module, and $W$ a multiplicative set. Set $M_W=\{ m\in M \ | \ \exists w\in W : wm=0\}$ and $\overline{M}=M/M_W$. Then,
-	\[ W^{-1} M = \bigcup_{w\in W} \frac{1}{w} \overline{M}, \]
-	where each $\frac{1}{w} \overline{M}$ is an isomorphic copy of $\overline{M}$ as an $R$-module.
-\end{proposition}
-\begin{proof}
-	First, $M_W$ is a submodule of $M$ and consists of the elements that go to zero in the localization. We have $W^{-1}{\overline{M}} \cong W^{-1}(M/M_W) \cong \frac{W^{-1}M}{W^{-1} M_W}\cong W^{-1}M$, so we can replace $M$ by the $W$-torsionfree module $\overline{M}$. It is clear that every element of $W^{-1}M$ has the form on the RHS. The map $\overline{M} \to \frac{1}{w} \overline{M}$ sending $m \mapsto \frac{m}{w}$ is clearly $R$-linear, and is injective by the $W$-torsion free assumption.
-\end{proof}
+%\begin{proposition}
+%	Let $M$ be an $R$-module, and $W$ a multiplicative set. Set $M_W=\{ m\in M \ | \ \exists w\in W : wm=0\}$ and $\overline{M}=M/M_W$. Then,
+%	\[ W^{-1} M = \bigcup_{w\in W} \frac{1}{w} \overline{M}, \]
+%	where each $\frac{1}{w} \overline{M}$ is an isomorphic copy of $\overline{M}$ as an $R$-module.
+%\end{proposition}
+%\begin{proof}
+%	First, $M_W$ is a submodule of $M$ and consists of the elements that go to zero in the localization. We have $W^{-1}{\overline{M}} \cong W^{-1}(M/M_W) \cong \frac{W^{-1}M}{W^{-1} M_W}\cong W^{-1}M$, so we can replace $M$ by the $W$-torsionfree module $\overline{M}$. It is clear that every element of $W^{-1}M$ has the form on the RHS. The map $\overline{M} \to \frac{1}{w} \overline{M}$ sending $m \mapsto \frac{m}{w}$ is clearly $R$-linear, and is injective by the $W$-torsion free assumption.
+%\end{proof}
 
-\begin{proposition}
-	Let $W$ be multiplicatively closed in $R$.
-	\begin{enumerate}
-		\item If $I$ is an ideal, then $W^{-1} I \cap R = \{ r \in R \ | \ \exists w\in W : wr\in I\}$.
-		\item If $\p$ is prime and $W \cap \p=\varnothing$, then $W^{-1}\p =\p (W^{-1}R)$ is prime.
-		\item The map $\Spec(W^{-1} R) \to \Spec(R)$ is injective, with image $\{\p \in \Spec(R) \ | \ \p \cap W = \varnothing\}$.
-	\end{enumerate}
 
-\end{proposition}
-\begin{proof}
-	\begin{enumerate}
-		\item Since $W^{-1}(R/I) \cong W^{-1} R / W^{-1} I$, we have $\ker (R \to W^{-1}(R/I)) = R \cap W^{-1} I$. The equality is then clear.
-		\item First, since $W\cap \p =\varnothing$, and $\p$ is prime, we know that no element of $W$ kills $\bar{1}=1 + \p$ in $R/\p$, so $\bar{1}/1$ is nonzero in $W^{-1}(R/\p)$. Thus, $W^{-1}R / W^{-1}\p \cong W^{-1}(R/\p)$ nonzero, and a localization of a domain, hence is a domain. Thus, $W^{-1}\p$ is prime.
-		\item First, by part (2), the map $\p \mapsto W^{-1}\p$, for $S=\{\p \in \Spec(R) \ | \ \p \cap W = \varnothing\}$ sends primes to primes. We claim that 
-	\[\xymatrix@R=1em{  \Spec(W^{-1} R) \ar@{<->}[r] & S \\
-	\q  \ar@{|->}[r] &  \q \cap R \\
-	W^{-1}\p=\p (W^{-1}R) \ar@{<-|}[r] & \p}\]
-		is a pair of mutually inverse maps.
-		
-	To see this, first note that if $J$ is an ideal of $W^{-1}R$, then $J=(J\cap R) W^{-1}R$. Indeed, if $J=(a_1/w_1,\dots,a_t/w_t)$, then  $J=(a_1/1,\dots,a_t/1)$, since each generator was replaced by a unit multiple. Second, if $W\cap \p=\varnothing$, then using part (1) and the definition of prime, we have that $\p = W^{-1}\p \cap R$.\qedhere
-	\end{enumerate}
-\end{proof}
-
-\begin{corollary}
-Let $R$ be a ring and $\p$ be a prime ideal. The map $R\to R_{\p}$ induces a map on spectra corresponding to the inclusion
-\[ \{ \q \in \Spec(R) \ | \ \q \subseteq \p \} \hookrightarrow \Spec(R).\]
-\end{corollary}
 
 %\begin{definition}
 %	Let $\phi:R\to S$ be a ring homomorphism, and $\p\in \Spec(R)$. We call the ring
@@ -2189,6 +2195,170 @@ Let $R$ be a ring and $\p$ be a prime ideal. The map $R\to R_{\p}$ induces a map
 %\end{proof}
 
 \ssec{Minimal primes and support}
+
+\section{Minimal primes and support}
+
+
+\begin{definition}
+	The primes that contain $I$ and are minimal with the property of containing $I$ are called the {\bf minimal primes}\index{minimal prime} of $I$. That is, the minimal primes of $I$ are the minimal elements of $V(I)$. We write $\Min(I)$\index{$\Min(I)$} for this set. 
+\end{definition}
+
+\begin{exer}\label{radical minimal primes}
+	Let $R$ be a ring, and $I$ an ideal. Every prime $\p$ that contains $I$ contains a minimal prime of $I$. Consequently,
+	$$\sqrt{I} = \bigcap_{\p\in \Min(I)} \p.$$
+\end{exer}
+
+%\begin{proof}
+%	This follows from Zorn's lemma. We just need to check that the intersection of a descending chain of prime ideals that contain $I$ is prime and contains $I$. These are both trivial.
+%	The first equality in the ``consequently'' we already know; the second is basic set theory.
+%\end{proof}
+
+\begin{remark}\label{min primes of a prime}
+	If $\p$ is prime, then $\Min(\p)=\{\p\}$. Also, since $V(I)=V(\sqrt{I})$, we have $\Min(I)=\Min(\sqrt{I})$.
+\end{remark}
+
+As a special case, the nilpotent elements of a ring $R$ are exactly the elements in every minimal prime of $R$, or equivalently, in every minimal prime of the ideal $(0)$. The radical of $(0)$ is often called the {\bf nilradical} of $R$, denoted $\mathcal{N}(R)$.\index{nilradical}\index{$\mathcal{N}(R)$}
+
+
+\begin{remark} As a consequence of the order-reversing correspondence between irreducible closed subsets and prime ideals, for an ideal $I$ and a prime ideal $\p$, we have that $\p\in \Min(I)$ if and only if $V(\p)$ is an irreducible component of $V(I)$.
+\end{remark}
+
+\begin{prop}
+Let $R$ be a ring and $I$ be an ideal.
+\begin{enumerate}
+%\item $X$ is the union of its irreducible components. 
+\item If $I=\p_1 \cap \cdots \cap \p_n$ with each $\p_i$ prime, and $\p_i \not\supseteq \p_j$ for $i\neq j$, then $\Min(I)=\{\p_1,\dots,\p_n\}$.
+\item If $R$ is Noetherian, then $\Min(I)$ is finite. Hence, if $R$ is Noetherian, $\sqrt{I}$ can be written as a finite irredundant intersection of primes in a unique way.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+We can prove these directly, but we can instead deduce them for our general proposition on irreducible components of topological spaces and the remarks above. 
+
+For (1), we have $V(I) = V(\p_1) \cup \cdots \cup V(\p_n)$; if $V(\p_i)\subseteq \bigcup_{j\neq i} V(\p_j)$, then $\p_i \in V(\p_j)$ for some $j$, so $\p_i \supseteq \p_j$. Thus, our union of closed subsets is irredundant, so $\{V(\p_1),\dots,V(\p_n)\}$ must be the set of irreducible components, and the statement follows.
+
+For (2), since $\Spec(R)$ is Noetherian, any closed set $V(I)$ has finitely many irreducible components, and the statement follows.
+\end{proof}
+
+
+We now can describe the relationship between the poset structure of $\Spec(R)$ and the topology.
+
+\begin{proposition}
+	Let $R$ be a ring, and $X=\Spec(R)$.
+	 If $R$ is Noetherian, the topology on $X$ can by recovered from the poset structure by the rule
+		$$Y \subseteq X \text{is closed} \Longleftrightarrow  Y=\{ \q \in X \ | \ \p_i \subseteq \q \ \text{for some} \ i\} \textrm{ for some } \p_1,\dots,\p_n\in X.$$
+
+\end{proposition}
+
+\begin{proof}
+f $Y$ is closed, we have $Y=V(I)= V(\sqrt{I}) = V(\p_1\cap \cdots \cap \p_n) = V(\p_1) \cup \cdots \cup V(\p_n)$. For the converse, we can work backwards.
+\end{proof}
+
+
+
+We now wish to understand modules in a similar way. 
+
+\begin{definition}
+	If $M$ is an $R$-module, the {\bf support}\index{support} of $M$\index{$\Supp(M)$} is 
+	$$\Supp(M):=\{ \p \in \Spec(R) \ | \ M_{\p}\neq 0\}.$$
+\end{definition}
+
+%\begin{example}
+%	If $M=R/I$, then $\Supp(M)=V(I)$. Indeed, $M_{\p}$ is generated by the image of $1$, so $M_{\p}=0$ iff the image of $1$ is zero in the localization. But this happens if and only if $\exists w\notin \p: w\cdot 1=0 \text{ in } R/I \Leftrightarrow \exists w\notin \p, w\in I \Leftrightarrow \p \not\supseteq I$.
+%\end{example}
+
+
+
+\begin{proposition}\label{supp v ann}
+	Given $M$ a finitely generated $R$-module over a ring $R$, 
+	$$\Supp(M)=V(\ann_R(M)).$$ 
+	In particular, $\Supp(R/I)=V(I)$.
+\end{proposition}
+\begin{proof}
+	Let $M= R m_i + \cdots + R m_n$. We have 
+	$$\ann_R(M)=\bigcap_{i=1}^n \ann_R(m_i),$$ 
+	so 
+	$$V(\ann_R(M))=\bigcup_{i=1}^n V( \ann_R(m_i)).$$ 
+	Notice that we need finiteness here.
+Also, we claim that 
+$$\Supp(M) = \bigcup_{i=1}^n \Supp(R m_i).$$ 
+To show $(\supseteq)$, notice that $(R m_i)_{\p} \subseteq M_{\p}$, so
+$$\p \in \Supp(R m_i) \implies 0 \neq (R m_i)_\p \subseteq M_\p \implies \p \in \Supp(M).$$
+
+On the other hand, the images of $m_1, \ldots, m_n$ in $M_\p$ generate $M_\p$ for each $\p$, so $\p \in \Supp(M)$ if and only if $\p \in \Supp(R m_i)$ for some $m_i$. Thus, we can reduce to the case of a cyclic module $R m$. Now $\frac{m}{1}=0$ in $M_\p$ if and only if $(R\smallsetminus \p) \cap \ann_R (m) \neq \varnothing$, which happens if and only if $ \ann_R (m)  \not\subseteq \p$.
+\end{proof}
+
+The finite generating hypothesis is necessary!
+
+\begin{example}
+	Let $k$ be a field, and $R=k[x]$. Take 
+	$$M=R_x / R = \bigoplus_{i>0} k \cdot x^{-i}.$$ 
+	With this $k$-vector space structure, the action is given by multiplication in the obvious way, then killing any nonnegative degree terms. 
+	
+	On one hand, we claim that $\Supp(M) = \{(x)\}$. Indeed, any element of $M$ is killed by a large power of $x$, so $W^{-1}M=0$ whenever $x \in W$, so $\Supp(M) \subseteq \{ (x)\}$. We will soon see that the support of a nonzero module is nonempty, and thus $\Supp(M) = \{(x)\}$.
+	
+	On the other hand, the annihilator of the class of $x^{-n}$ is $x^n$, so 
+	$$\ann_R(M) \subseteq \bigcap_{n \geqslant 1}(x^n) = 0.$$
+	In particular, $V(\ann_R(M)) = \Spec(R)$.
+\end{example}
+
+\begin{example}
+	Let $R=\CC[x]$, and $M= \displaystyle\bigoplus_{n\in \ZZ} R/(x-n)$.
+	
+	First, note that $M_\p = \displaystyle\bigoplus_{n\in \ZZ} (R/(x-n))_{\p}$, so
+	$$\Supp(M)= \bigcup_{n\in \ZZ} \Supp(R/(x-n))= \bigcup_{n\in \ZZ} V((x-n))=\{(x-n) \ | \ n \in \ZZ\}.$$
+
+	On the other hand, 
+	$$\ann_R(M)=\bigcap_{n\in \ZZ} \ann_R(R/(x-n)) = \bigcap_{n\in \ZZ} (x-n) = 0.$$
+	
+	Note that in this example the support is not even closed. 
+\end{example}
+
+\begin{lemma}\label{nonzero element localizes}
+	Let $R$ be a ring, $M$ an $R$-module, and $m\in M$. The following are equivalent:
+	\begin{enumerate}
+		\item $m=0$ in $M$.
+		\item $\frac{m}{1}=0$ in $M_\p$ for all $\p \in \Spec(R)$.
+		\item $\frac{m}{1}=0$ in $M_\p$ for all $\p \in \Max(R)$.
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	The implications $1) \implies 2) \implies 3)$ are clear. If $m\neq 0$, its annihilator is a proper ideal, which is contained in a maximal ideal, so $V(\ann_R m)=\Supp(Rm)$ contains a maximal ideal, so $\frac{m}{1} \neq 0$ in $M_\p$ for some maximal ideal $\p$.
+\end{proof}
+	
+	
+\begin{lemma}\label{ses support}
+	Let $R$ be a ring, $L,M,N$ be modules. If 
+	$$\xymatrix{0 \ar[r] & L \ar[r] & M \ar[r] & N \ar[r] & 0}$$ 
+	is exact, then $\Supp(L) \cup \Supp(N) = \Supp(M)$. 
+\end{lemma}
+
+\begin{proof}
+	Localization is exact, by ?, so for any $\p$,  
+	$$\xymatrix{0 \ar[r] & L_\p \ar[r] & M_\p \ar[r] & N_\p \ar[r] & 0}$$ 
+	is exact. If $\p\in \Supp(L) \cup \Supp(N)$, then $L_\p$ or $N_\p$ is nonzero, so $M_\p$ must be nonzero as well. On the other hand, if $\p \notin \Supp(L) \cup \Supp(N)$, then $L_\p=N_\p=0$, so $M_\p=0$.
+\end{proof}
+
+\begin{remark}
+	As a corollary, $\Supp(L) \subseteq \Supp (M)$ for any submodule $L$ of $M$.
+
+\end{remark}
+
+\begin{corollary}
+	If $M$ is a finitely generated $R$-module,
+	\begin{enumerate}
+		\item $M=0$.
+		\item $M_\p=0$ in $M_\p$ for all $\p \in \Spec(R)$.
+		\item $M_\p=0$ in $M_\p$ for all $\p \in \Max(R)$.
+	\end{enumerate}
+\end{corollary}
+
+
+\begin{proof}
+\item The implications $\Rightarrow$ are clear. To show the last implies the first, we show the contrapositive. If $m\neq 0$, consider $Rm \subseteq M$. By ?, there is a maximal ideal in $\Supp(Rm)$, and by ? applied to the inclusion $Rm \subseteq M$, this maximal ideal is in $\Supp(M)$ as well. \qedhere
+\end{proof}
+
+So we conclude that $\Supp(M) \neq \varnothing$ for any $R$-module $M \neq 0$.
 
 
 
