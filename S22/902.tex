@@ -1946,7 +1946,6 @@ We observe that this is not only an order-preserving map, but also is continuous
 	Equivalently, $\bigcap_{\p \in V(I)} \p = \sqrt{I}$.
 \end{proposition}
 
-\begin{comment}
 \Feb{21}
 
 \begin{proof}
@@ -1967,10 +1966,18 @@ $(\subseteq)$: If $f\notin \sqrt{I}$, consider the multiplicatively closed set $
 
 We also have the following:
 
-\begin{exer} $V(I)$ is irreducible if and only if $\sqrt{I}$ is prime.
-\end{exer}
+\begin{prop} $V(I)$ is irreducible if and only if $\sqrt{I}$ is prime.
+\end{prop}
+\begin{proof} Observe first that
+\[ V(I+(f)) \cup V(I + (g)) = V(I^2 + (f,g)I + (fg)) = V(I^2+(f,g)I) \cap V(fg) = V(I) \cap V(fg)\]
+since $I^2 \subseteq I^2+(f,g)I \subseteq I$ implies $\sqrt{I} = \sqrt{I^2} \subseteq \sqrt{I^2+(f,g)I} \subseteq \sqrt{I}$ so equality holds throughout.
 
-The following corollary follows in exactly the same way as the analogous statement for subvarieties of $K^n$, Corollary~\ref{ord-pres-bij}.
+Now, if $\sqrt{I}$ is not prime, take $f, g\notin\sqrt{I}$ with $fg\in \sqrt{I}$. Then $V(I+(f)), V(I+(g)) \subsetneqq V(I)$ and $V(I+(f)) \cup V(I + (g)) = V(I) \cap V(fg) = V(I)$ since $V(fg)\supseteq V(I)$. Thus $V(I)$ is reducible.
+
+On the other hand, any closed proper subset of $V(I)$ is contained in a closed set of the form $V(I+(h))$ for some $h\notin \sqrt{I}$, so if $V(I)$ is reducible, then we can write $V(I)= V(I+(f)) \cup V(I + (g))$ for $f,g\notin\sqrt{I}$. By the computation above, we have $V(I)=V(I)\cap V(fg)$ so $V(fg) \supseteq V(I)$ and $fg\in \sqrt{I}$, so $\sqrt{I}$ is not prime.
+\end{proof}
+
+We conclude
 
 \begin{corollary}
 	Let $R$ a ring.
@@ -2108,6 +2115,7 @@ Last semester in the homework we showed the following.
 \begin{proposition}
 	Let $W$ be multiplicatively closed in $R$.
 	\begin{enumerate}
+	\item[(0)] $W^{-1} I = I(W^{-1} R)$.
 		\item If $I$ is an ideal, then $W^{-1} I \cap R = \{ r \in R \ | \ \exists w\in W : wr\in I\}$.
 		\item If $\p$ is prime and $W \cap \p=\varnothing$, then $W^{-1}\p =\p (W^{-1}R)$ is prime.
 		\item The map $\Spec(W^{-1} R) \to \Spec(R)$ is injective, with image $\{\p \in \Spec(R) \ | \ \p \cap W = \varnothing\}$.
@@ -2116,8 +2124,10 @@ Last semester in the homework we showed the following.
 \end{proposition}
 \begin{proof}
 	\begin{enumerate}
+
 		\item Since $W^{-1}(R/I) \cong W^{-1} R / W^{-1} I$, we have $\ker (R \to W^{-1}(R/I)) = R \cap W^{-1} I$. The equality is then clear.
 		\item First, since $W\cap \p =\varnothing$, and $\p$ is prime, we know that no element of $W$ kills $\bar{1}=1 + \p$ in $R/\p$, so $\bar{1}/1$ is nonzero in $W^{-1}(R/\p)$. Thus, $W^{-1}R / W^{-1}\p \cong W^{-1}(R/\p)$ nonzero, and a localization of a domain, hence is a domain. Thus, $W^{-1}\p$ is prime.
+		\begin{comment}
 		\item First, by part (2), the map $\p \mapsto W^{-1}\p$, for $S=\{\p \in \Spec(R) \ | \ \p \cap W = \varnothing\}$ sends primes to primes. We claim that 
 	\[\xymatrix@R=1em{  \Spec(W^{-1} R) \ar@{<->}[r] & S \\
 	\q  \ar@{|->}[r] &  \q \cap R \\
@@ -2196,17 +2206,16 @@ is an isomorphism.
 
 \ssec{Minimal primes and support}
 
-\section{Minimal primes and support}
 
 
 \begin{definition}
-	The primes that contain $I$ and are minimal with the property of containing $I$ are called the {\bf minimal primes}\index{minimal prime} of $I$. That is, the minimal primes of $I$ are the minimal elements of $V(I)$. We write $\Min(I)$\index{$\Min(I)$} for this set. 
+	The primes that contain $I$ and are minimal with the property of containing $I$ are called the {\emph minimal primes}\index{minimal prime} of $I$. That is, the minimal primes of $I$ are the minimal elements of $V(I)$. We write $\Min(I)$\index{$\Min(I)$} for this set. 
 \end{definition}
 
-\begin{exer}\label{radical minimal primes}
-	Let $R$ be a ring, and $I$ an ideal. Every prime $\p$ that contains $I$ contains a minimal prime of $I$. Consequently,
-	$$\sqrt{I} = \bigcap_{\p\in \Min(I)} \p.$$
-\end{exer}
+%\begin{exer}\label{radical minimal primes}
+%	Let $R$ be a ring, and $I$ an ideal. Every prime $\p$ that contains $I$ contains a minimal prime of $I$. Consequently,
+%	$$\sqrt{I} = \bigcap_{\p\in \Min(I)} \p.$$
+%\end{exer}
 
 %\begin{proof}
 %	This follows from Zorn's lemma. We just need to check that the intersection of a descending chain of prime ideals that contain $I$ is prime and contains $I$. These are both trivial.
@@ -2217,27 +2226,31 @@ is an isomorphism.
 	If $\p$ is prime, then $\Min(\p)=\{\p\}$. Also, since $V(I)=V(\sqrt{I})$, we have $\Min(I)=\Min(\sqrt{I})$.
 \end{remark}
 
-As a special case, the nilpotent elements of a ring $R$ are exactly the elements in every minimal prime of $R$, or equivalently, in every minimal prime of the ideal $(0)$. The radical of $(0)$ is often called the {\bf nilradical} of $R$, denoted $\mathcal{N}(R)$.\index{nilradical}\index{$\mathcal{N}(R)$}
 
 
 \begin{remark} As a consequence of the order-reversing correspondence between irreducible closed subsets and prime ideals, for an ideal $I$ and a prime ideal $\p$, we have that $\p\in \Min(I)$ if and only if $V(\p)$ is an irreducible component of $V(I)$.
 \end{remark}
 
-\begin{prop}
+\begin{thm}
 Let $R$ be a ring and $I$ be an ideal.
 \begin{enumerate}
-%\item $X$ is the union of its irreducible components. 
+\item Every prime containing $I$ contains a minimal prime of $I$. Consequently,
+	\[\sqrt{I} = \bigcap_{\p\in \Min(I)} \p.\]
 \item If $I=\p_1 \cap \cdots \cap \p_n$ with each $\p_i$ prime, and $\p_i \not\supseteq \p_j$ for $i\neq j$, then $\Min(I)=\{\p_1,\dots,\p_n\}$.
 \item If $R$ is Noetherian, then $\Min(I)$ is finite. Hence, if $R$ is Noetherian, $\sqrt{I}$ can be written as a finite irredundant intersection of primes in a unique way.
 \end{enumerate}
-\end{prop}
+\end{thm}
 \begin{proof}
 We can prove these directly, but we can instead deduce them for our general proposition on irreducible components of topological spaces and the remarks above. 
 
-For (1), we have $V(I) = V(\p_1) \cup \cdots \cup V(\p_n)$; if $V(\p_i)\subseteq \bigcup_{j\neq i} V(\p_j)$, then $\p_i \in V(\p_j)$ for some $j$, so $\p_i \supseteq \p_j$. Thus, our union of closed subsets is irredundant, so $\{V(\p_1),\dots,V(\p_n)\}$ must be the set of irreducible components, and the statement follows.
+For (1), we recall that a topological space is the union of its irreducible components, so in particular, each point $\q \in V(I)$ is contained in a set of the form $V(\p)$ for some minimal prime $\p\in \Min(I)$, which means $\q$ contains a minimal prime.
 
-For (2), since $\Spec(R)$ is Noetherian, any closed set $V(I)$ has finitely many irreducible components, and the statement follows.
+For (2), we have $V(I) = V(\p_1) \cup \cdots \cup V(\p_n)$; if $V(\p_i)\subseteq \bigcup_{j\neq i} V(\p_j)$, then $\p_i \in V(\p_j)$ for some $j$, so $\p_i \supseteq \p_j$. Thus, our union of closed subsets is irredundant, so $\{V(\p_1),\dots,V(\p_n)\}$ must be the set of irreducible components, and the statement follows.
+
+For (3), since $\Spec(R)$ is Noetherian, any closed set $V(I)$ has finitely many irreducible components, and the statement follows.
 \end{proof}
+
+As a special case of part (1), the nilpotent elements of a ring $R$ are exactly the elements in every minimal prime of $R$, or equivalently, in every minimal prime of the ideal $(0)$. The radical of $(0)$ is often called the {\bf nilradical} of $R$, denoted $\mathcal{N}(R)$.\index{nilradical}\index{$\mathcal{N}(R)$}
 
 
 We now can describe the relationship between the poset structure of $\Spec(R)$ and the topology.
