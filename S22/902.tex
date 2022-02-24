@@ -2251,30 +2251,18 @@ For (2), we have $V(I) = V(\p_1) \cup \cdots \cup V(\p_n)$; if $V(\p_i)\subseteq
 For (3), since $\Spec(R)$ is Noetherian, any closed set $V(I)$ has finitely many irreducible components, and the statement follows.
 \end{proof}
 
-\begin{comment}
+\Feb{25}
 
-As a special case of part (1), the nilpotent elements of a ring $R$ are exactly the elements in every minimal prime of $R$, or equivalently, in every minimal prime of the ideal $(0)$. The radical of $(0)$ is often called the {\bf nilradical} of $R$, denoted $\mathcal{N}(R)$.\index{nilradical}\index{$\mathcal{N}(R)$}
+As a special case of part (1), the nilpotent elements of a ring $R$ are exactly the elements in every minimal prime of $R$, or equivalently, in every minimal prime of the ideal $(0)$. The ideal $\sqrt{(0)}$ is called the \DEF{nilradical} of $R$. That is,
 
-
-We now can describe the relationship between the poset structure of $\Spec(R)$ and the topology.
-
-\begin{proposition}
-	Let $R$ be a ring, and $X=\Spec(R)$.
-	 If $R$ is Noetherian, the topology on $X$ can by recovered from the poset structure by the rule
-		$$Y \subseteq X \text{is closed} \Longleftrightarrow  Y=\{ \q \in X \ | \ \p_i \subseteq \q \ \text{for some} \ i\} \textrm{ for some } \p_1,\dots,\p_n\in X.$$
-
-\end{proposition}
-
-\begin{proof}
-f $Y$ is closed, we have $Y=V(I)= V(\sqrt{I}) = V(\p_1\cap \cdots \cap \p_n) = V(\p_1) \cup \cdots \cup V(\p_n)$. For the converse, we can work backwards.
-\end{proof}
-
+\begin{rem} If $R$ is Noetherian, then any closed set $V(I)$ is the union of finitely many sets of the form $V(\p)$ for primes $\p$.
+\end{rem}
 
 
 We now wish to understand modules in a similar way. 
 
 \begin{definition}
-	If $M$ is an $R$-module, the {\bf support}\index{support} of $M$\index{$\Supp(M)$} is 
+	If $M$ is an $R$-module, the {\em support}\index{support} of $M$\index{$\Supp(M)$} is 
 	$$\Supp(M):=\{ \p \in \Spec(R) \ | \ M_{\p}\neq 0\}.$$
 \end{definition}
 
@@ -2306,12 +2294,12 @@ On the other hand, the images of $m_1, \ldots, m_n$ in $M_\p$ generate $M_\p$ fo
 The finite generating hypothesis is necessary!
 
 \begin{example}
-	Let $k$ be a field, and $R=k[x]$. Take 
-	$$M=R_x / R = \bigoplus_{i>0} k \cdot x^{-i}.$$ 
-	With this $k$-vector space structure, the action is given by multiplication in the obvious way, then killing any nonnegative degree terms. 
+	Let $K$ be a field, and $R=K[x]$. Take 
+	$$M=R_x / R = \bigoplus_{i>0} K \cdot x^{-i}.$$ 
+	With this $K$-vector space structure, the action is given by multiplication in the obvious way, then killing any nonnegative degree terms. 
 	
-	On one hand, we claim that $\Supp(M) = \{(x)\}$. Indeed, any element of $M$ is killed by a large power of $x$, so $W^{-1}M=0$ whenever $x \in W$, so $\Supp(M) \subseteq \{ (x)\}$. We will soon see that the support of a nonzero module is nonempty, and thus $\Supp(M) = \{(x)\}$.
-	
+	On one hand, we claim that $\Supp(M) = \{(x)\}$. Indeed, any element of $M$ is killed by a large power of $x$, so $W^{-1}M=0$ whenever $x \in W$, so $\Supp(M) \subseteq \{ (x)\}$. Since $\ann_R(x^{-1}) = (x)$, the image of $x^{-1}$ is nonzero in $M_{(x)}$, so $\Supp(M) = \{(x)\}$.
+		
 	On the other hand, the annihilator of the class of $x^{-n}$ is $x^n$, so 
 	$$\ann_R(M) \subseteq \bigcap_{n \geqslant 1}(x^n) = 0.$$
 	In particular, $V(\ann_R(M)) = \Spec(R)$.
@@ -2329,6 +2317,8 @@ The finite generating hypothesis is necessary!
 	Note that in this example the support is not even closed. 
 \end{example}
 
+
+
 \begin{lemma}\label{nonzero element localizes}
 	Let $R$ be a ring, $M$ an $R$-module, and $m\in M$. The following are equivalent:
 	\begin{enumerate}
@@ -2342,41 +2332,136 @@ The finite generating hypothesis is necessary!
 	The implications $1) \implies 2) \implies 3)$ are clear. If $m\neq 0$, its annihilator is a proper ideal, which is contained in a maximal ideal, so $V(\ann_R m)=\Supp(Rm)$ contains a maximal ideal, so $\frac{m}{1} \neq 0$ in $M_\p$ for some maximal ideal $\p$.
 \end{proof}
 	
-	
-\begin{lemma}\label{ses support}
-	Let $R$ be a ring, $L,M,N$ be modules. If 
+	\begin{exer} If 
 	$$\xymatrix{0 \ar[r] & L \ar[r] & M \ar[r] & N \ar[r] & 0}$$ 
 	is exact, then $\Supp(L) \cup \Supp(N) = \Supp(M)$. 
-\end{lemma}
+\end{exer}
 
-\begin{proof}
-	Localization is exact, by ?, so for any $\p$,  
-	$$\xymatrix{0 \ar[r] & L_\p \ar[r] & M_\p \ar[r] & N_\p \ar[r] & 0}$$ 
-	is exact. If $\p\in \Supp(L) \cup \Supp(N)$, then $L_\p$ or $N_\p$ is nonzero, so $M_\p$ must be nonzero as well. On the other hand, if $\p \notin \Supp(L) \cup \Supp(N)$, then $L_\p=N_\p=0$, so $M_\p=0$.
-\end{proof}
-
-\begin{remark}
-	As a corollary, $\Supp(L) \subseteq \Supp (M)$ for any submodule $L$ of $M$.
-
-\end{remark}
-
-\begin{corollary}
+\begin{exer}
 	If $M$ is a finitely generated $R$-module,
 	\begin{enumerate}
 		\item $M=0$.
 		\item $M_\p=0$ in $M_\p$ for all $\p \in \Spec(R)$.
 		\item $M_\p=0$ in $M_\p$ for all $\p \in \Max(R)$.
 	\end{enumerate}
-\end{corollary}
+\end{exer}
 
+
+\ssec{Associated primes}
+
+\begin{definition}
+	Let $R$ be a ring, and $M$ a module. We say that $\p\in \Spec(R)$ is an {\em associated prime}\index{associated prime} of $M$ if $\p = \ann_R(m)$ for some $m\in M$. Equivalently, $\p$ is associated to $M$ if there is an injective homomorphism $R/\p \longrightarrow M$. We write $\Ass_R(M)$\index{$\Ass_R(M)$} for the set of associated primes of $M$.
+	
+	If $I$ is an ideal, by the {\em associated primes}\index{associated primes of an ideal} of $I$ we (almost always) mean the associated primes of $R/I$. To avoid confusion, we will try to write $\Ass_R(R/I)$.
+\end{definition}
+
+\begin{lemma}
+	If $\p$ is prime, $\Ass_R(R/\p)=\{ \p \}$.
+\end{lemma}
 
 \begin{proof}
-\item The implications $\Rightarrow$ are clear. To show the last implies the first, we show the contrapositive. If $m\neq 0$, consider $Rm \subseteq M$. By ?, there is a maximal ideal in $\Supp(Rm)$, and by ? applied to the inclusion $Rm \subseteq M$, this maximal ideal is in $\Supp(M)$ as well. \qedhere
+	For any nonzero $\bar{r}\in R/\p$, we have $\ann_R(\bar{r}) = \{ s\in R \ | \ rs\in \p\} = \p$ by definition of prime ideal.
 \end{proof}
 
-So we conclude that $\Supp(M) \neq \varnothing$ for any $R$-module $M \neq 0$.
+\
+
+Let's recall the definition of zerodivisors on $M$.
+
+\begin{definition}
+	Let $M$ be an $R$-module. An element $r \in R$ is a {\bf zerodivisor}\index{zerodivisors} on $M$ if $rm = 0$ for some $m \in M$. We sometimes write the set of zerodivisors of $M$ as $\mathcal{Z}(M)$.\index{$\mathcal{Z}(M)$}
+	%So the set of zerodivisors on $M$ is
+	%$$\{r \in R \ | \ rm=0 \text{ for some } 0 \neq m\in M \}.$$
+\end{definition}
+
+\begin{lemma}\label{associated primes nonzero}\label{zerodivisors associated primes}
+	If $R$ is Noetherian, and $M$ is an arbitrary $R$-module, then 
+	\begin{enumerate}
+		\item For any nonzero $m \in M$, $\ann_R(m)$ is contained in an associated prime of $M$.
+		\item $\Ass(M)= \varnothing \Longleftrightarrow M=0$, and
+		\item $\bigcup\limits_{\p \in \Ass(M)} \p = \mathcal{Z}(M)$.
+	\end{enumerate}
+%Additionally, if $R$ and $M$ are $\ZZ$-graded and $M\neq 0$, $M$ has an associated prime that is homogeneous.
+\end{lemma}
+\begin{proof}
+\begin{enumerate}
+\item  The set of ideals $S := \{ \ann_R(m) \ | \ m\in M, m \neq 0\}$ is nonempty, and any element in $S$ is contained in a maximal element of $S$, by Noetherianity. Let $I=\ann(m)$ be any maximal element, and let $rs\in I$, $s\notin I$. We always have $\ann(sm)\supseteq \ann(m)$, and equality holds by the maximality of $\ann(m)$ in $S$. Then $r(sm)=(rs)m=0$, so $r\in \ann(sm)=\ann(m)=I$. We conclude that $I$ is prime, and therefore it is an associated prime of $M$.
+
+\item	Even if $R$ is not Noetherian, $M = 0$ implies $\Ass(M) = \varnothing$ by definition. So we focus on the case when $M \neq 0$.
+	 If $M \neq 0$, then $M$ contains a nonzero element $m$, and $\ann(m)$ is contained in an associated prime of $M$. In particular, $\Ass(M) \neq 0$, and holds. 
+	 
+\item Now if $r \in \mathcal{Z}(M)$, then by definition we have $r \in \ann(m)$ for some nonzero $m \in M$. Since $\ann(m)$ is contained in some associated prime of $M$, so is $r$. On the other hand, if $\p$ is an associated prime of $M$, then by definition all elements in $\p$ are zerodivisors on $M$.\qedhere
+\end{enumerate}
+\end{proof}
 
 
+Associated primes also localize.
+
+\begin{theorem}[Associated primes localize in Noetherian rings]
+	Let $R$ be a Noetherian ring, $W$ a multiplicative set, and $M$ a module. Then $\Ass_{W^{-1}R}(W^{-1}M)=\{W^{-1}\p  \ | \ \p \in \Ass_R(M), \p \cap W = \varnothing\}$.
+\end{theorem}
+\begin{proof}
+	($\supseteq$): Given $\p \in \Ass_R(M), \p \cap W= \varnothing$, we have that $W^{-1}\p$ is a prime (proper ideal) in $W^{-1}R$. Then $W^{-1}R /W^{-1}\p \cong W^{-1}(R/\p) \hookrightarrow W^{-1}M$ by exactness, so it is associated. 
+	
+	($\subseteq$): If $W^{-1}\p$ is associated to $W^{-1}M$, there is an embedding 
+	\[ W^{-1}(R/\p) (\cong W^{-1}R /W^{-1}\p) \stackrel{i}{\hookrightarrow} W^{-1}M.\]
+	 By the Noetherian hypothesis, since $R/\p$ is finitely generated, Hom localizes: $W^{-1} \Hom_R(R/\p,M) \cong \Hom_{W^{-1}R} (W^{-1}R /W^{-1}\p, W^{-1}M)$, so there is some $R/\p \xrightarrow{i'} M$ and $w\in W$ such that $i=w^{-1} \cdot W^{-1}i'$. Let $K=\ker(i')$. Since $W^{-1} K=\ker(W^{-1}i)=0$ by exactness, every element of $K$ is killed by something in $W$. But, $K\subseteq R/\p$, so elements of $W$ act as nonzerodivisors on $K$. Hence, $K=0$. Thus, $R/\p$ injects into $M$, so $\p\in \Ass_R(M)$.
+\end{proof}
+
+\begin{exer} If $R$ is Noetherian, and $M$ is an arbitrary $R$-module, $\Supp(M) = \bigcup_{\p\in \Ass_R(M)} V(\p)$.\end{exer}
+
+\begin{lemma}
+	If $0\to L \to M \to N \to 0$ is exact, then $\Ass(L) \subseteq \Ass(M) \subseteq \Ass(L) \cup \Ass(N)$.
+\end{lemma}
+\begin{proof}
+	If $R/\p \hookrightarrow L$, then composition with the inclusion $L\hookrightarrow M$ gives $R/\p \hookrightarrow M$. Let $\p\in \Ass(M)\smallsetminus \Ass(L)$, and let $\p=\ann(m)$. Now, every submodule of $Rm$ consists of $0$ and elements with annihilator $\p$, so $Rm\cap L=0$. Thus, $Rm \subseteq M$ bijects onto its image in $N$ in the map $M \to N$, so $R/\p \hookrightarrow N$.
+\end{proof}
+
+\begin{theorem}
+	If $R$ is a Noetherian ring, and $M$ is a finitely generated module, then there exists a \emph{filtration}\index{filtration} of $M$
+	\[ M=M_t \supsetneqq M_{t-1} \supsetneqq M_{t-2} \supsetneqq \cdots \supsetneqq  M_1 \supsetneqq M_0 = 0 \]
+	such that $M_i / M_{i-1} \cong R/\p_i$ for primes $\p_i\in \Spec(R)$. Such a filtration is called a \emph{prime filtration}\index{prime filtration} of $M$.	
+%	If additionally $R$ and $M$ are $\ZZ$-graded, there is a filtration as above with $M_i / M_{i-1} \cong (R/\p_i)(t_i)$ as graded modules for homogeneous primes $\p_i\in \Spec(R)$ and integers $t_i$.
+\end{theorem}
+\begin{proof}
+	If $M\neq 0$, then $M$ has an associated prime, so there is an injection $M_1\cong R/\p_1 \hookrightarrow M$. If $M/M_1\neq 0$, it has an associated prime, so there is an $M_2 \subseteq M$ such that  $M_2/M_1 \cong R/\p_2 \hookrightarrow R/M_1$. Continuing this process, we get a strictly ascending chain of submodules of $M$ where the successive quotients are of the form $R/\p_i$. If we do not have $M_t=M$ for some $t$, then we get an infinite strictly ascending chain of submodules of $M$, which contradicts that $M$ is a Noetherian module.
+\end{proof}
+
+\begin{corollary}
+	If $R$ is a Noetherian ring, and $M$ is a finitely generated module, and \[M=M_t \supsetneqq M_{t-1} \supsetneqq M_{t-2} \supsetneqq \cdots \supsetneqq  M_1 \supsetneqq M_0 = 0\] is a prime filtration of $M$ with $M_i/M_{i-1}\cong R/\p_i$ then \[\Ass_R(M)\subseteq \{ \p_1, \dots, \p_t \}.\]
+	Consequently,
+	\begin{itemize}
+		\item $\Ass_R(M)$ is finite.
+		\item If $M$ is graded, $\Ass_R(M)$ is a finite set of homogeneous primes.
+	\end{itemize} 
+\end{corollary}
+\begin{proof}
+For each $i$, we have $\Ass(M_i) \subseteq \Ass(M_{{i-1}})\cup \Ass(M_i/M_{i-1}) = \Ass(M_{{i-1}}) \cup \{\p_i\}$ so that, inductively, $\Ass(M_i)\subseteq\{\p_1,\dots,\p_i\}$. The consequences follow from the previous theorem.
+\end{proof}
+
+\begin{example}
+	If $R$ is not Noetherian, then there may be modules (or ideals even) with no associated primes. Let $R=\bigcup_{n\in \NN} \CC\llbracket x^{1/n} \rrbracket$ be the ring of nonnegatively-valued Puiseux series. We claim that $R/(x)$ is a cyclic module with no associated primes (i.e., the ideal $(x)$ has no associated primes). First, observe that any element of $R$ can be written as a unit times $x^{m/n}$ for some $m,n$, so any associated prime must be an annihilator of $x^{m/n}+(x)$ for some $m\leq n$. We have $\ann(x^{m/n}+(x))=(x^{1-m/n})$, which is not prime, since $(x^{1/2-m/2n})^2 \in (x^{1-m/n})$, but $x^{1/2-m/2n}$.
+\end{example}
+
+\begin{lemma}[Prime avoidance]\index{prime avoidance} Let $R$ be a ring, $I_1,\dots,I_n,J$ be ideals, and suppose that $I_i$ is prime for $i>2$ (at most two are not prime). 
+	
+	If $J\not\subseteq I_i$ for all $i$, then $J\not\subseteq \bigcup_i I_i$; equivalently, if $J\subseteq \bigcup_i I_i$, then $J\subseteq I_i$ for some $i$.
+	
+	Moreover, if $R$ is $\NN$-graded, and all of the ideals are homogeneous, all $I_i$ are prime, and $J\not\subseteq I_i$ for all $i$, then there is a homogeneous element in $J \smallsetminus \bigcup_i I_i$.
+\end{lemma}
+\begin{proof} 
+	We proceed by induction on $n$. If $n=1$, there is nothing to show.
+	
+	By induction hypothesis, we can find elements $a_i \in J \smallsetminus \bigcup_{j\neq i} I_j$ for each $i$. If some $a_i\notin I_i$, we are done, so suppose that $a_i\in I_i$ for each $i$. Consider $a= a_n + a_1 \cdots a_{n-1}$. This belongs to $J$. If $a\in I_i$ for $i<n$, then, since $a_1\cdots a_{n-1}=a_i(a_1\cdots \widehat{a_i} \cdots a_{n-1})\in I_i$, we also have $a_n\in I_i$, a contradiction. If $a\in I_n$, then, since $a_n\in I_n$, we also have $a_1\cdots a_{n-1}\in I_n$. If $n=2$, this says $a_1\in I_2$, a contradiction. If $n>2$, then $I_n$ is prime, so one of $a_1,\dots,a_{n-1}\in I_n$, a contradiction.
+	
+	If all $I_i$ are homogeneous and prime, we proceed as above, replacing $a_n$ and $a_1,\dots,a_{n-1}$ with suitable powers (e.g., $|a_1| + \cdots + |a_{n-1}|$ and $|a_n|$ each, respectively) so that $a_n + a_1 \cdots a_{n-1}$ is homogeneous. The primeness assumption guarantees that noncontainments in ideals is preserved.
+\end{proof}
+
+\begin{corollary}
+	Let $I$ be an ideal and $M$ a finitely generated module over a Noetherian ring $R$. If $I$ consists of zerodivisors on $M$, then $Im=0$ for some $m\in M$.
+\end{corollary}
+\begin{proof}
+	We have that $I\subseteq \bigcup_{\p \in \Ass(M)}(\p)$. By the assumptions, this is a finite set of primes. By prime avoidance, $I \subseteq \p$ for some $\p \in \Ass(M)$. That is $I\subseteq \ann_R(m)$ for some $m\in M$.
+\end{proof}
 
 \end{comment}
 
