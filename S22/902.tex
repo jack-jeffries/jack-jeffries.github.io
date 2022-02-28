@@ -2412,7 +2412,21 @@ For Noetherian rings, associated primes also localize.
 	 By the Noetherian hypothesis, since $R/\p$ is finitely generated, Hom localizes: $W^{-1} \Hom_R(R/\p,M) \cong \Hom_{W^{-1}R} (W^{-1}R /W^{-1}\p, W^{-1}M)$, so there is some $R/\p \xrightarrow{i'} M$ and $w\in W$ such that $i=w^{-1} \cdot W^{-1}i'$. Let $K=\ker(i')$. Since $W^{-1} K=\ker(W^{-1}i)=0$ by exactness, every element of $K$ is killed by something in $W$. But, $K\subseteq R/\p$, so elements of $W$ act as nonzerodivisors on $K$. Hence, $K=0$. Thus, $R/\p$ injects into $M$, so $\p\in \Ass_R(M)$.
 \end{proof}
 
-\begin{exer} If $R$ is Noetherian, and $M$ is an arbitrary $R$-module, $\Supp(M) = \bigcup_{\p\in \Ass_R(M)} V(\p)$.\end{exer}
+\begin{prop} Let $R$ be a Noetherian ring and $M$ be an $R$-module.
+\begin{enumerate} 
+\item $\Supp_R(M) = \bigcup_{\p \in \Ass_R(M)} V(\p)$
+\item $\min(\Supp_R(M)) = \min(\Ass_R(M))$
+\end{enumerate}
+In particular, $\Min(I) = \min(\Ass_R(R/I))$.
+\end{prop}
+\begin{proof}
+\begin{enumerate}
+\item We have $\p\in \Supp_R(M)$ iff $M_{\p} \neq 0$ iff $\Ass_{R_\p}(M_\p) \neq \varnothing$ iff $\Ass_R(M) \cap \{ \q\in \Spec(R) \ | \ \q \subseteq \p\} = \varnothing$ iff $M$ contains an associated prime of $M$.
+\item Let $\p\in \min(\Supp_R(M))$. Then there is some $\q\in \Ass_R(M)$ with $\q\subseteq \p$. If $\q\subsetneqq \p$, then $\q\in \Supp_R(M)$ contradicts minimality of $\p$, so $\p = \q\in \Ass_R(M)$. If $\p$ is not minimal in $\Ass_R(M)$, it is not minimal in the support, so we must have $\p\in \min(\Ass_R(M))$. On the other hand, for $\p\in \min(\Ass_R(M))$, $\p$ is in the support of $M$. If there is some $\q\in \Supp_R(M)$ with $\q\subsetneqq \p$, then there is some $\mathfrak{r}\in \Ass_R(M)$ with $\mathfrak{r}\subseteq \q$, contradicting minimality of $\p$. Thus, $\p \in \min(\Supp_R(M))$. \qedhere
+\end{enumerate}\end{proof}
+
+\begin{defn} For an ideal $I$, we say a prime $\p$ is an \DEF{embedded prime} of $I$ if $\p\in \Ass_R(R/I)\smallsetminus \Min(I)$.
+\end{defn}
 
 \begin{lemma}
 	If $0\to L \to M \to N \to 0$ is exact, then $\Ass(L) \subseteq \Ass(M) \subseteq \Ass(L) \cup \Ass(N)$.
@@ -2420,6 +2434,9 @@ For Noetherian rings, associated primes also localize.
 \begin{proof}
 	If $R/\p \hookrightarrow L$, then composition with the inclusion $L\hookrightarrow M$ gives $R/\p \hookrightarrow M$. Let $\p\in \Ass(M)\smallsetminus \Ass(L)$, and let $\p=\ann(m)$. Now, every submodule of $Rm$ consists of $0$ and elements with annihilator $\p$, so $Rm\cap L=0$. Thus, $Rm \subseteq M$ bijects onto its image in $N$ in the map $M \to N$, so $R/\p \hookrightarrow N$.
 \end{proof}
+
+\begin{comment}
+
 
 \begin{theorem}
 	If $R$ is a Noetherian ring, and $M$ is a finitely generated module, then there exists a \emph{filtration}\index{filtration} of $M$
@@ -2712,6 +2729,7 @@ In particular, note that $\p^n = \p^{(n)}$ if and only if $\p^n$ is primary.
 \end{example}
 
 
+\end{comment}
 \printindex
 
 
