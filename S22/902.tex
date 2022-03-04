@@ -2479,15 +2479,15 @@ For each $i$, we have $\Ass(M_i) \subseteq \Ass(M_{{i-1}})\cup \Ass(M_i/M_{i-1})
 	We have that $I\subseteq \bigcup_{\p \in \Ass(M)}(\p)$. By the assumptions, this is a finite set of primes. By prime avoidance, $I \subseteq \p$ for some $\p \in \Ass(M)$. That is $I\subseteq \ann_R(m)$ for some $m\in M$.
 \end{proof}
 
-\begin{comment}
+\Mar{4}
 
 \ssec{Primary decomposition}
 
 We refine our decomposition theory once again, and introduce primary decompositions of ideals. 
 \begin{definition}
-	We say that an ideal is {\bf primary}\index{primary ideal} if 
+	We say that an ideal is {\em primary}\index{primary ideal} if 
 	$$xy\in I \implies x\in I \text{ or } y\in \sqrt{I}.$$
-	We say that an ideal is {\bf $\p$-primary}\index{$\p$-primary ideal}, where $\p$ is prime, if $I$ is primary and $\sqrt{I}=\p$.
+	We say that an ideal is {\em $\p$-primary}\index{$\p$-primary ideal}, where $\p$ is prime, if $I$ is primary and $\sqrt{I}=\p$.
 \end{definition}
 
 \begin{remark}
@@ -2514,29 +2514,35 @@ In $R=k[x,y,z]$, the ideal $\q=(x^2,xy)$ is not primary, even though $\sqrt{\q}=
 The definition of primary can be reinterpreted in many forms.
 
 \begin{proposition}\label{characterization of primary}
-If $R$ is Noetherian, the following are equivalent :
+The following are equivalent:
 	\begin{enumerate}
 		\item $\q$ is primary.
 		\item Every zerodivisor in $R/\q$ is nilpotent on $R/\q$.
-		\item $\Ass(R/\q)$ is a singleton.
-		\item $\q$ has exactly one minimal prime, and no embedded primes.
+	
 		\item $\sqrt{\q} = \p$ is prime and for all $r, w \in R$ with $w\notin \p$, $rw\in \q$ implies $r\in \q$.
 		\item $\sqrt{\q}= \p$ is prime, and $\q R_{\p} \cap R = \q$.
 	\end{enumerate}
+	If $R$ is Noetherian, then these are also equivalent to:
+	\begin{enumerate}
+	\setcounter{enumi}{4}
+		\item $\Ass(R/\q)$ is a singleton.
+		\item $\q$ has exactly one minimal prime, and no embedded primes.
+		\end{enumerate}
 \end{proposition}
 \begin{proof}
 	$(1) \iff (2)$: $y$ is a zerodivisor mod $\q$ if there is some $x\notin \q$ with $xy\in \q$; the primary assumption translates to a power of $y$ is in $\q$.
 	
-	$(2) \iff (3)$: On the one hand, (2) says that the set of zerodivisors on $R/\q $ and coincide with the elements in the nilradical of $R/\q$. By \ref{zerodivisors associated primes} and \ref{radical minimal primes}, respectively, these agree with the union of all the associated primes and the intersection of all the minimal primes.
+	
+	$(1) \iff (3)$: Given the observation that the radical of a primary ideal is prime, this is just a rewording of the definition.
+	
+	$(3) \iff (4)$: We already know this from the discussion on behavior of ideals in localizations, which says that
+	$$\q R_\p \cap R = \lbrace r \in R \mid rs \in \q \textrm{ for some } s \notin \p \rbrace.$$
+	
+		$(2) \iff (5)$: On the one hand, (2) says that the set of zerodivisors on $R/\q $ and coincide with the elements in the nilradical of $R/\q$. These agree with the union of all the associated primes and the intersection of all the minimal primes respectively.
 	$$\bigcup_{\p \in \Ass(R/\q)} \p \, = \, \{\textrm{zerodivisors on}\  (R/\q)\} \, =  \{ r \in R \mid r + \q \in \textrm{nilradical of} \ (R/\q) \} \, = \bigcap_{\p \in \Min(\q)} \p = \bigcap_{\p \in \Ass(R/\q)} \p.$$
 	This holds if and only if there is only one associated prime.
 	
-	$(3) \iff (4)$ is clear, since each statement is just a restatement of the other one.
-	
-	$(1) \iff (5)$: Given the observation that the radical of a primary ideal is prime, this is just a rewording of the definition.
-	
-	$(5) \iff (6)$: We already know this from the discussion on behavior of ideals in localizations, which says that
-	$$\q R_\p \cap R = \lbrace r \in R \mid rs \in \q \textrm{ for some } s \notin \p \rbrace.$$
+	$(5) \iff (6)$ follows from the definitions.
 \end{proof}
 
 
@@ -2546,7 +2552,7 @@ If the radical of an ideal is maximal, that \emph{does} imply the ideal is prima
 Let $I$ be an ideal with $\sqrt{I}=\fm$ a maximal ideal. If $R$ is Noetherian, then $\Ass_R(R/I)$ is nonempty and contained in $\Supp(R/I)=V(I)=\{\fm\}$, so $\Ass_R(R/I) =\fm$, and hence $I$ is primary.
 \end{remark}
 
-Note that the assumption that $\fm$ is maximal was necessary here. Indeed, having a prime radical does not guarantee an ideal is primary, as we saw in \ref{example radical prime but not primary}. Moreover, even the powers of a prime ideal may fail to be primary.
+Note that the assumption that $\fm$ is maximal was necessary here. Indeed, having a prime radical does not guarantee an ideal is primary, as we saw above Moreover, even the powers of a prime ideal may fail to be primary.
 
 \begin{example}\label{powers of prime not primary}
 	Let $R = k[x,y,z]/(xy-z^n)$, where $k$ is a field and $n \geqslant 2$ is an integer. Consider the prime ideal $P = (x,z)$ in $R$, and note that $y \notin P$. On the one hand, $xy = z^n \in P^n$, while $x \notin P^n$ and $y \notin \sqrt{P^n} = P$. Therefore, $P^n$ is not a primary ideal, even though its radical is the prime $P$.
@@ -2565,21 +2571,21 @@ The contraction of primary ideals is always primary.
 	In particular, a finite intersection of $\p$-primary ideals is $\p$-primary.
 \end{lemma}
 \begin{proof}
-	There is an inclusion $R/(I_1 \cap I_2) \subseteq R/I_1 \oplus R/I_2$. Hence, by \ref{ass ses}, $\Ass(R/(I_1\cap I_2)) \subseteq \Ass(R/I_1) \cup \Ass(R/I_2)$; the statement for larger $t$ is an easy induction.
+	There is an inclusion $R/(I_1 \cap I_2) \subseteq R/I_1 \oplus R/I_2$. Hence, $\Ass(R/(I_1\cap I_2)) \subseteq \Ass(R/I_1) \cup \Ass(R/I_2)$; the statement for larger $t$ is an easy induction.
 	
 	If the $I_j$ are all $\p$-primary, then
 	$$\Ass(R/(\bigcap_{j=1}^t I_j)) \subseteq \bigcup_{j=i}^t \Ass(R/I_j) = \{ \p \}.$$
-	On the other hand, $\bigcap_{j=1}^t I_j \subseteq I_1 \neq R$, so $R/(\bigcap_{j=1}^t I_j) \neq 0$. Thus $\Ass(R/(\bigcap_{j=1}^t I_j))$ is non-empty, and therefore the singleton $\{ \p \}$. Then $\bigcap_{j=1}^t I_j$ is $\p$-primary by the characterization of primary in \ref{characterization of primary} (3) above.
+	On the other hand, $\bigcap_{j=1}^t I_j \subseteq I_1 \neq R$, so $R/(\bigcap_{j=1}^t I_j) \neq 0$. Thus $\Ass(R/(\bigcap_{j=1}^t I_j))$ is nonempty, and therefore the singleton $\{ \p \}$. Then $\bigcap_{j=1}^t I_j$ is $\p$-primary by the characterization of primary in \ref{characterization of primary} (3) above.
 \end{proof}
 
 \begin{definition}[Primary decomposition]	
-A {\bf primary decomposition}\index{primary decomposition} of an ideal $I$ is an expression of the form 
-	\[I = \q_1 \cap \cdots \cap \q_t,\] with each $\q_i$ primary. A {\bf minimal primary decomposition} of an ideal $I$ is a primary decomposition as above in which $\sqrt{\q_i}\neq \sqrt{\q_j}$ for $i\neq j$, and $\q_i \not\supseteq \displaystyle\bigcap_{j\neq i} \q_j$ for all $i$.\footnote{Some authors use the term \emph{irredundant} instead of minimal.\index{irredundant primary decomposition}}
-\end{definition}
+A {\em primary decomposition}\index{primary decomposition} of an ideal $I$ is an expression of the form 
+	\[I = \q_1 \cap \cdots \cap \q_t,\] with each $\q_i$ primary. A {\em minimal primary decomposition} of an ideal $I$ is a primary decomposition as above in which $\sqrt{\q_i}\neq \sqrt{\q_j}$ for $i\neq j$, and $\q_i \not\supseteq \displaystyle\bigcap_{j\neq i} \q_j$ for all $i$.\end{definition}
 
 \begin{remark} 
 By the previous lemma, we can turn any primary decomposition into a minimal one by combining the terms with the same radical, then removing redundant terms.
 \end{remark}
+\begin{comment}
 
 \begin{example}[Primary decomposition in $\mathbb{Z}$]
 	Given a decomposition of $n \in \mathbb{Z}$ as a product of distinct primes, say $n = p_1^{a_1} \cdots p_k^{a_k}$, then the primary decomposition of the ideal $(n)$ is $(n) = (p_1^{a_1}) \cap \cdots \cap (p_k^{a_k})$. However, this example can be deceiving, in that it suggests that primary ideals are just powers of primes; as we saw in \ref{powers of prime not primary} they are not!
@@ -2588,7 +2594,11 @@ By the previous lemma, we can turn any primary decomposition into a minimal one 
 
 
 
-The existence of primary decompositions was first shown by Emanuel Lasker (yes, the chess champion!) for polynomial rings and power series rings in 1905 \cite{Lasker1905}, and then extended to Noetherian rings (which weren't called that yet at the time) by Emmy Noether in 1921 \cite{Noether1921}. 
+The existence of primary decompositions was first shown by Emanuel Lasker for polynomial rings and power series rings in 1905, and then extended to what we now call Noetherian rings by Emmy Noether in 1921.  It will be useful to consider the following notion in the proof.
+
+\begin{defn} An ideal $I$ is \emph{irreducible}\index{irreducible ideal} if there do not exist ideals $J_1,J_2\supsetneqq I$ such that $J_1 \cap J_2 = I$.
+\end{defn}
+
 
 \begin{theorem}[Existence of primary decompositions]
 	If $R$ is Noetherian, then every ideal of $R$ admits a primary decomposition.
