@@ -2586,13 +2586,15 @@ A {\em primary decomposition}\index{primary decomposition} of an ideal $I$ is an
 By the previous lemma, we can turn any primary decomposition into a minimal one by combining the terms with the same radical, then removing redundant terms.
 \end{remark}
 \begin{comment}
+\Mar{7}
 
 \begin{example}[Primary decomposition in $\mathbb{Z}$]
-	Given a decomposition of $n \in \mathbb{Z}$ as a product of distinct primes, say $n = p_1^{a_1} \cdots p_k^{a_k}$, then the primary decomposition of the ideal $(n)$ is $(n) = (p_1^{a_1}) \cap \cdots \cap (p_k^{a_k})$. However, this example can be deceiving, in that it suggests that primary ideals are just powers of primes; as we saw in \ref{powers of prime not primary} they are not!
+	Given a decomposition of $n \in \mathbb{Z}$ as a product of distinct primes, say $n = p_1^{a_1} \cdots p_k^{a_k}$, then the primary decomposition of the ideal $(n)$ is $(n) = (p_1^{a_1}) \cap \cdots \cap (p_k^{a_k})$. Note that primary is not the same is prime power in general.
 \end{example}
 
 
-
+\begin{ex} If $R$ is Noetherian and $I$ is a radical ideal, then $I=\p_1 \cap \cdots \cap \p_n$ for the minimal primes $\p_i$ of $I$. This is a minimal primary decomposition of $I$.
+\end{ex}
 
 The existence of primary decompositions was first shown by Emanuel Lasker for polynomial rings and power series rings in 1905, and then extended to what we now call Noetherian rings by Emmy Noether in 1921.  It will be useful to consider the following notion in the proof.
 
@@ -2600,13 +2602,18 @@ The existence of primary decompositions was first shown by Emanuel Lasker for po
 \end{defn}
 
 
+
 \begin{theorem}[Existence of primary decompositions]
-	If $R$ is Noetherian, then every ideal of $R$ admits a primary decomposition.
+Let $R$ be a Noetherian ring.
+\begin{enumerate}
+\item Every irreducible ideal is primary.
+\item Every ideal can be written as a finite intersection of irreducible ideals.
+\end{enumerate}
+Thus, every ideal of $R$ admits a primary decomposition.
 \end{theorem}
 \begin{proof}
-	We will say that an ideal is irreducible \index{irreducible ideal} if it cannot be written as a proper intersection of larger ideals. If $R$ is Noetherian, we claim that any ideal of $R$ can be expressed as a finite intersection of irreducible ideals. If the set of ideals that are not a finite intersection of irreducibles were non-empty, then by Noetherianity there would be an ideal maximal with the property of not being an intersection of irreducible ideals. Such a maximal element must be an intersection of two larger ideals, each of which are finite intersections of irreducibles, giving a contradiction.
-	
-	Next, we claim that every irreducible ideal is primary. To prove the contrapositive, suppose that $\q$ is not primary, and take $xy\in \q$ with $x\notin \q$, $y\notin \sqrt{\q}$. The ascending chain of ideals 
+\begin{enumerate}
+\item To prove the contrapositive, suppose that $\q$ is not primary, and take $xy\in \q$ with $x\notin \q$, $y\notin \sqrt{\q}$. The ascending chain of ideals 
 	$$(\q : y) \subseteq (\q : y^2) \subseteq (\q : y^3) \subseteq \cdots$$
 	stabilizes for some $n$, since $R$ is Noetherian. This means that $y^{n+1} f\in \q \implies y^n f\in \q$. We will show that 
 	$${(\q+(y^n))\cap( \q+(x)) = \q},$$ 
@@ -2620,13 +2627,21 @@ The existence of primary decompositions was first shown by Emanuel Lasker for po
 	$$b y^{n+1} = ay - aq \in \q \implies b \in (\q : y^{n+1}) = (\q : y^n).$$
 	
 	By definition, this means that $by^n \in \q$, and thus $a = q+by^n \in \q$. This shows that $\q$ is not irreducible, concluding the proof. 
+	
+	\item  If the set of ideals that are not a finite intersection of irreducibles were nonempty, then by Noetherianity there would be an ideal maximal with the property of not being an intersection of irreducible ideals. Such a maximal element must be an intersection of two larger ideals, each of which are finite intersections of irreducibles, giving a contradiction. \qedhere
+\end{enumerate}
 \end{proof}
+
+\begin{ex}
+There are primary ideals that are not irreducible. For example, $(x^2,y) \cap (x,y^2) = (x^2,xy,y^2)$.
+\end{ex}
+
 
 Primary decompositions, even minimal ones, are not unique.
 
 
 \begin{example}
-	Let $R=k[x,y]$, where $k$ is a field, and $I=(x^2,xy)$. We can write
+	Let $R=K[x,y]$, where $K$ is a field, and $I=(x^2,xy)$. We can write
 	\[ I = (x) \cap (x^2,xy,y^2) = (x) \cap (x^2,y). \]
 	These are two different minimal primary decompositions of $I$. To check this, we just need to see that each of the ideals $(x^2,xy,y^2)$ and $(x^2,y)$ are primary. Observe that each has radical $\fm=(x,y)$, which is maximal, so by an earlier remark, these ideals are both primary. In fact, our ideal $I$ has infinitely many minimal primary decompositions: given any $n \geqslant 1$, 
 	$$I = (x) \cap (x^2, xy, y^n)$$ 
@@ -2649,11 +2664,11 @@ In the previous example, the fact that all our minimal primary decompositions ha
 \begin{proof}
 	For any primary decomposition, minimal or not, we have 
 	$$\Ass(R/I) \subseteq \bigcup_i \Ass(R/\q_i) = \{ \sqrt{\q_1},\dots,\sqrt{\q_t}\}$$ 
-	from the lemma on intersections we proved, \ref{lemma intersections primary}. We just need to show that in a minimal decomposition as above, every $\p_j  := \sqrt{\q_j}$ is an associated prime.
+	from the lemma on intersections we proved. We just need to show that in a minimal decomposition as above, every $\p_j  := \sqrt{\q_j}$ is an associated prime.
 	
 	So fix $j$, and let 
 	$$I_j = \displaystyle\bigcap_{i\neq j} \q_i \supseteq I.$$
-	Since the decomposition is minimal, the module $I_j/I$ is nonzero, hence it has an associated prime $\mathfrak{a}$. Let $\mathfrak{a}$ be such an associated prime, and fix $x_j\in R$ such that $\mathfrak{a}$ is the annihilator of $\overline{x_j}$ in $I_j/I$. Since 
+	Since the decomposition is minimal, the module $I_j/I$ is nonzero, hence it has an associated prime, say $\mathfrak{a}$. Since $I_j / I \subseteq R/I$, we have $\mathfrak{a} \in \Ass_R(R/I)$ as well. Fix $x_j\in R$ such that $\mathfrak{a}$ is the annihilator of $\overline{x_j}$ in $I_j/I$. Since 
 	$$\q_j x_j \subseteq \q_j \cdot \displaystyle\bigcap_{i\neq j} \q_i \subseteq \q_1 \cap \cdots \cap \q_n = I,$$ 
 	we conclude that $\q_j$ is contained in the annihilator of $\overline{x_j}$, meaning $\q_j \subseteq \mathfrak{a}$. Since $\p_j$ is the unique minimal prime of $\q_j$ and $\mathfrak{a}$ is a prime containing $\q_j$, we must have $\p_j \subseteq \mathfrak{a}$. On the other hand, if $r\in \mathfrak{a}$, we have $rx_j\in I \subseteq \q_j$, and since $x_j\notin \q_j$, we must have $r\in \p_j = \sqrt{\q_j}$ by the definition of primary ideal. Thus $\mathfrak{a} \subseteq \p_j$, so $\mathfrak{a} = \p_j$. This shows that $\p_j$ is an associated prime of $R/I$.
 \end{proof}
@@ -2669,11 +2684,12 @@ There is also a partial uniqueness result for the actual primary ideals that occ
 \end{theorem}
 
 \begin{proof}
-	We observe that a localization $\q_{\A}$ of a $\p$-primary ideal $\q$ at a prime $\A$ is either the unit ideal (if $\p \not\subseteq \A$), or a $\p_{\A}$-primary ideal; this follows from the fact that the associated primes of $R/\q$ localize.
+	We observe that for a  $\p$-primary ideal $\q$ and a prime $\mathfrak{a}$ 
+	\[ \Ass_{R_\mathfrak{a}} (R_\mathfrak{a} / \q_\mathfrak{a}) = \begin{cases} \p_\mathfrak{a} & \text{if} \ \p \subseteq \mathfrak{a} \\ \varnothing & \text{if} \ \p \not\subseteq \mathfrak{a}\end{cases}. \]
 	
-	Now, since finite intersections commute with localization, then for any prime $\A$,
-	\[ I_{\A} = (\q_1)_{\A} \cap \cdots \cap (\q_t)_{\A}\]
-	is a primary decomposition, although not necessarily minimal. In a minimal decomposition, choose a minimal prime $\A=\p_i$. Then when we localize at $\A$, all the other components become the unit ideal since their radicals are not contained in $\p_i$, and thus $I_{\p_i} = (\q_i)_{\p_i}$t. We can then contract to $R$ to get $I_{\p_i} \cap R = (\q_i)_{\p_i} \cap R = \q_i$, since $\q_i$ is $\p_i$-primary.
+	Now, since finite intersections commute with localization, then for any prime $\mathfrak{a}$,
+	\[ I_{\mathfrak{a}} = (\q_1)_{\mathfrak{a}} \cap \cdots \cap (\q_t)_{\mathfrak{a}}\]
+	is a primary decomposition, although not necessarily minimal. In a minimal decomposition, choose a minimal prime $\mathfrak{a}=\p_i$. Then when we localize at $\mathfrak{a}$, all the other components become the unit ideal since their radicals are not contained in $\p_i$, and thus $I_{\p_i} = (\q_i)_{\p_i}$. We can then contract to $R$ to get $I_{\p_i} \cap R = (\q_i)_{\p_i} \cap R = \q_i$, since $\q_i$ is $\p_i$-primary.
 \end{proof}
 
 
@@ -2682,9 +2698,8 @@ It is relatively easy to give a primary decomposition for a radical ideal:
 
 
 \begin{example}
-	If $R$ is Noetherian, and $I$ is a radical ideal, then we have seen that $I$ coincides with the intersection of its minimal primes $\p_i$, meaning $I=\p_1 \cap \cdots \cap \p_t$. This is the \emph{only} primary decomposition of a radical ideal.
-	
-	For a more concrete example, take the ideal $I = \left( xy, xz, yz \right)$ in $k[x,y,z]$. This ideal is radical, so we just need to find its minimal primes. And indeed, one can check that $\left( xy, xz, yz \right) = \left( x, y \right) \cap \left( x, z \right) \cap \left( y, z \right)$. More generally, the radical monomial ideals are precisely those that are squarefree, and the primary components of a monomial ideal are also monomial.
+	If $R$ is Noetherian, and $I$ is a radical ideal, then we have seen that $I$ coincides with the intersection of its minimal primes $\p_i$, meaning $I=\p_1 \cap \cdots \cap \p_t$. This is the \emph{only} primary decomposition of a radical ideal.	
+%	For a more concrete example, take the ideal $I = \left( xy, xz, yz \right)$ in $k[x,y,z]$. This ideal is radical, so we just need to find its minimal primes. And indeed, one can check that $\left( xy, xz, yz \right) = \left( x, y \right) \cap \left( x, z \right) \cap \left( y, z \right)$. More generally, the radical monomial ideals are precisely those that are squarefree, and the primary components of a monomial ideal are also monomial.
 \end{example}
 
 
@@ -2693,7 +2708,6 @@ It is relatively easy to give a primary decomposition for a radical ideal:
 	$$6 = 2 \cdot 3 = (1 + \sqrt{-5}) (1 - \sqrt{-5}).$$
 	So $(6) = (2) \cap (3)$, but while $(2)$ is primary, $(3)$ is not. In fact, $(3)$ has two distinct minimal primes, and the following is a minimal primary decomposition for $(6)$:
 	$$(6) = (2) \cap (3, 1+\sqrt{-5}) \cap (3, 1 - \sqrt{-5}).$$
-	In fact, all of these come components are minimal, and so this primary decomposition is unique. Primary decomposition saves the day!
 \end{example}
 
 
