@@ -35,6 +35,7 @@
 \def\Ass{\operatorname{Ass}}
 \def\ann{\operatorname{ann}}
 \def\sign{\operatorname{sign}}
+\def\htt{\mathrm{height}}
 
 \newcommand{\Tor}{\mathrm{Tor}}
 \newcommand{\can}{\mathrm{can}}
@@ -232,6 +233,7 @@
 \newcommand{\fp}{{\mathfrak p}}
 \newcommand{\p}{{\mathfrak p}}
 \newcommand{\fm}{{\mathfrak m}}
+\newcommand{\m}{{\mathfrak m}}
 \newcommand{\fn}{{\mathfrak n}}
 \newcommand{\q}{{\mathfrak q}}
 \newcommand{\fq}{{\mathfrak q}}
@@ -2585,7 +2587,7 @@ A {\em primary decomposition}\index{primary decomposition} of an ideal $I$ is an
 \begin{remark} 
 By the previous lemma, we can turn any primary decomposition into a minimal one by combining the terms with the same radical, then removing redundant terms.
 \end{remark}
-\begin{comment}
+
 \Mar{7}
 
 \begin{example}[Primary decomposition in $\mathbb{Z}$]
@@ -2683,6 +2685,8 @@ There is also a partial uniqueness result for the actual primary ideals that occ
 	If $I$ is an ideal in a Noetherian ring $R$, then for any minimal primary decomposition of $I$, say $I = \q_1 \cap \cdots \cap \q_t$, the set of \emph{minimal components} $\{ \q_i \ | \ \sqrt{\q_i} \in \Min(R/I)\}$ is the same. Namely, $\q_i = I R_{\sqrt{\q_i}} \cap R$.
 \end{theorem}
 
+\begin{comment}
+
 \begin{proof}
 	We observe that for a  $\p$-primary ideal $\q$ and a prime $\mathfrak{a}$ 
 	\[ \Ass_{R_\mathfrak{a}} (R_\mathfrak{a} / \q_\mathfrak{a}) = \begin{cases} \p_\mathfrak{a} & \text{if} \ \p \subseteq \mathfrak{a} \\ \varnothing & \text{if} \ \p \not\subseteq \mathfrak{a}\end{cases}. \]
@@ -2694,21 +2698,23 @@ There is also a partial uniqueness result for the actual primary ideals that occ
 
 
 
-It is relatively easy to give a primary decomposition for a radical ideal:
-
-
-\begin{example}
-	If $R$ is Noetherian, and $I$ is a radical ideal, then we have seen that $I$ coincides with the intersection of its minimal primes $\p_i$, meaning $I=\p_1 \cap \cdots \cap \p_t$. This is the \emph{only} primary decomposition of a radical ideal.	
-%	For a more concrete example, take the ideal $I = \left( xy, xz, yz \right)$ in $k[x,y,z]$. This ideal is radical, so we just need to find its minimal primes. And indeed, one can check that $\left( xy, xz, yz \right) = \left( x, y \right) \cap \left( x, z \right) \cap \left( y, z \right)$. More generally, the radical monomial ideals are precisely those that are squarefree, and the primary components of a monomial ideal are also monomial.
-\end{example}
+\begin{cor} If $I$ has no embedded primes, then the primary decomposition of $I$ is unique.
+\end{cor}
 
 
 	\begin{example}
-	Let's get back to our motivating example in $\mathbb{Z}[\sqrt{-5}]$, where some elements can be written as products of irreducible elements in more than one way. For example, we saw that
+	Let  $R=\mathbb{Z}[\sqrt{-5}]$, where some elements can be written as products of irreducible elements in more than one way. For example,
 	$$6 = 2 \cdot 3 = (1 + \sqrt{-5}) (1 - \sqrt{-5}).$$
-	So $(6) = (2) \cap (3)$, but while $(2)$ is primary, $(3)$ is not. In fact, $(3)$ has two distinct minimal primes, and the following is a minimal primary decomposition for $(6)$:
-	$$(6) = (2) \cap (3, 1+\sqrt{-5}) \cap (3, 1 - \sqrt{-5}).$$
-\end{example}
+	We can write $(6) = (2) \cap (3)$, since $2$ and $3$ are comaximal. Note that 
+	\[	R/(2) \cong \frac{\Z[x]}{(x^2 + 5,2)} \cong \frac{\F_2[x]}{(x^2 + 1)} \cong \frac{\F_2[x]}{(x+ 1)^2}.\]
+	Thus, this ideal has one minimal prime, given by $(x+1)$ on the right, which is $(2,1+\sqrt{-5})$ in $R$. This ideal is maximal, since the quotient is isomorphic to $\F_2$, so $(2)$ is $(2,1+\sqrt{-5})$-primary.
+Now note that 
+\[	R/(3) \cong \frac{\Z[x]}{(x^2 + 5,3)} \cong \frac{\F_3[x]}{(x^2 - 1)} \cong \frac{\F_3[x]}{(x+ 1)(x-1)}.\]
+The ideals $(x-1)$, $(x+1)$ are the minimal primes of the ring on the right, so $(3,1+\sqrt{-5})$ and $(3, 1-\sqrt{-5})$ are the minimal primes of $(3)$, and intersect to $(3)$.
+
+We conclude that \[ (6) = (2) \cap (3,1+\sqrt{-5}) \cap (3, 1-\sqrt{-5}) \]
+is the unique minimal primary decomposition of $(6)$.
+	\end{example}
 
 
 
@@ -2753,6 +2759,233 @@ In particular, note that $\p^n = \p^{(n)}$ if and only if $\p^n$ is primary.
 		Note that in the second row, we subtracted the Laplace expansion of the determinant of the matrix with row 3 replaced by another copy of row 1. That is, we subtracted zero.
 	\end{enumerate}
 \end{example}
+
+
+\sec{Dimension theory, globally}
+
+\ssec{Definition of dimension}
+
+We will now spend a while discussing the notion of dimension of a ring and dimension of a variety. To motivate the definition, let's first think in terms of varieties. One way to characterize the dimension of a vector space $V$ is the the largest number $d$ such that there is a proper chain of subspaces
+\[ \{0\} = V_0 \subsetneqq V_1 \subsetneqq V_2 \subsetneqq \cdots \subsetneqq V_d = V.\]
+We can try something similar for varieties, but for a reducible variety, this isn't a very good notion. For example, for a union of $m$ points, we can cook up a chain of $m$ proper subvarieties by adding one more point each time, but a point should be zero-dimensional by any reasonable measure. So, if we want this approach to work, we should stick to chains of irreducible subvarieties.
+
+\begin{defn} The \emph{dimension}\index{dimension of a variety} of an affine variety $X$ is defined as
+\[ \sup \{ d \ | \ \exists \ \text{a strictly decreasing chain of irreducible subvarieties of $X$:} \ \ X_d \supsetneqq X_{d-1} \supsetneqq \cdots \supsetneqq X_0\}.\]
+\end{defn}
+
+Over an algebraically closed field $K$, this information of chains of subvarieties can be translated into information about primes in the coordinate ring: namely, a strictly increasing chain of irreducible subvarieties
+\[X_d \supsetneqq X_{d-1} \supsetneqq \cdots \supsetneqq X_0\]
+corresponds to strictly increasing chain of prime ideals
+\[\p_0 \subsetneqq \p_{1} \subsetneqq \cdots \subsetneqq \p_d\]
+in the coordinate ring $K[X]$.
+
+\begin{defn} The {\em Krull dimension}\index{Krull dimension}\index{dimension} (often just called dimension) of a commutative ring $R$, written $\dim(R)$,  is defined to be
+$$
+\dim(R)=\sup \{d \mid \exists \text{ a strictly increasing chain of prime ideals } \fp_0 \subsetneqq \cdots \subsetneqq \fp_d\}.
+$$
+We will agree that the dimension of the zero ring is $-1$, by convention.
+
+\noindent A chain of primes as above is \emph{saturated}\index{saturated chain of primes} if for each $i$, there is no $\q\in \Spec(R)$ with ${\p_i \subsetneqq \q \subsetneqq \p_{i+1}}$. One can equivalently define $\dim(R)$ as the supremum of the lengths of saturated chains of primes of $R$.
+
+\end{defn}
+
+
+
+
+\begin{example}
+	\begin{enumerate}
+		\item The dimension of a field is zero.
+	\item A ring is zero-dimensional if and only if every minimal prime of $(0)$ is maximal.
+	\item The ring of integers $\ZZ$ has dimension one, since there is one minimal prime $(0)$ and every other prime is maximal. Likewise, any PID that is not a field has dimension one.
+%	\item If $R$ is a UFD, $I$ is a prime of height one if and only if $I=(f)$ for a prime element $f$. 
+%	
+%	To see this, note that if $I=(f)$ with $f$ irreducible, and $0\subsetneqq \p \subseteq I$, then $\p$ contains some nonzero multiple of $f$, say $af^n$ with $a$ and $f$ coprime. Since $a\notin I$, $a\notin \p$, so we must have $f\in \p$, so $\p=(f)$. Thus, $I$ has height one. On the other hand, if $I$ is a prime of height one, we claim $I$ contains an irreducible element. Indeed, $I$ is nonzero, so contains some $f\neq 0$, and primeness implies one of the prime factors of $f$ is contained in $I$. Thus, any nonzero prime contains a prime ideal of the form $(f)$, so a height one prime must be of this form.
+%	
+	\item It follows from the definition that if $K$ is a field, then 
+	\[\dim(K[x_1,\dots,x_d])\geq d,\] since there is a saturated chain of primes 
+	\[(0) \subsetneqq (x_1)  \subsetneqq (x_1,x_2)  \subsetneqq \cdots  \subsetneqq (x_1,\dots,x_d).\]
+	\end{enumerate}
+	
+The definition for the dimension of $K[x_1,\dots,x_d]$ can be equivalently stated as the supremum of the lengths of strictly increasing chains of irreducible algebraic subsets of the form 
+$$
+X_0 \subsetneqq \cdots \subsetneqq X_d \subseteq \A^n_k.
+$$
+Clearly, we may assume take $X_0$ to be a single point and $X_d = \A^n_k$ in finding this supremum.
+\end{example}
+
+\begin{rem}
+We will show eventually that $\dim(K[x_1,\dots,x_d])=d$. One can easily deduce the case $d=1$, i.e. $\dim(K[x])=1$  form above, since we know that this ring is a PID.
+\end{rem}
+
+\begin{rem} The definition of dimension is most meaningful for Noetherian rings, although 
+\begin{itemize}
+\item
+there are non-Noetherian rings of finite Krull dimension. I leave it as an exercise to find an example. 
+\item
+{\bf there are Noetherian rings of infinite dimension}.  This was shown in a famous example due to Nagata presented below. 
+\end{itemize}
+\end{rem}
+
+
+\begin{example}[Nagata]
+\label{ex:Nagata}
+	Let $R=K[x_1,x_2,\dots]$. $R$ is clearly infinite-dimensional and not Noetherian. Let
+	\[ W=R\smallsetminus ((x_1) \cup (x_2,x_3) \cup (x_4,x_5,x_6) \cdots )\]
+	and $S=W^{-1}R$. This ring has primes of arbitrarily large height, given by the images of those primes we cut out from $W$. Thus, it has infinite dimension by Proposition \ref{rk:dimprop} part 4. The work is to show that this ring is Noetherian. We omit this argument here.
+\end{example}
+
+
+To aid in computing dimension we make the following related definition
+
+\begin{defn}
+\label{def:ht}
+The \emph{height}\index{height} of a prime ideal  $\p$ of a ring $R$  is the supremum of the lengths of (saturated) chains of primes in $R$ that end in $\p$, in symbols
+$$
+\htt(p)=\sup \{h \mid \exists \text{ a strictly increasing chain of prime ideals } \fp_0 \subsetneqq \cdots \subsetneqq \fp_h=\p\}.
+$$
+%Equivalently, $\htt(\p)$ is the supremum of the lengths of saturated chains of primes in $R$ that end in $\p$.
+
+The \emph{height} of an ideal $I$ is the infimum of the heights of the primes containing $I$
+\[
+\htt(I)=\inf\{\htt(\p)\mid \p\in V(I)\}=\inf\{\htt(\p)\mid \p\in \Min(I)\}.
+\]
+\end{defn}
+
+To get a feel for these definitions, we make a sequence of easy observations. We use the phrase {\em minimal primes of $R$} and the notation $\Min(R)$  to mean $\Min(0)$.
+
+\begin{prop}[Properties of dimension and height]
+\label{rk:dimprop}
+\begin{enumerate}
+\item Dimension and height are isomorphism invariants.
+\item A prime has height zero if and only if it is a minimal prime of the 0 ideal.
+\item $\dim(R)=\sup\{ \dim(R/\p) \ | \ \p\in \Spec(R) \}=\sup\{ \dim(R/\p) \ | \ \p\in \Min(R) \}$.
+\item $\dim(R)=\sup\{ \mathrm{height}(\p) \ | \ \p\in \Spec(R) \}=
+\sup\{ \mathrm{height}(\fm) \ | \ \fm\in \Max(R) \}$.
+%	\item If $\p$ is prime, then $\dim(R/\p)$ is the supremum of the lengths of (saturated) chains of primes of $R$, $\p_0 \subsetneq \p_1  \subsetneq \cdots \subsetneq \p_n $, with each $\p_i \in V(\p)$.
+	\item If $I$ is an ideal, then $\dim(R/I)$ is the supremum of the lengths of (saturated) chains of primes of $R$, $\p_0 \subsetneqq \p_1  \subsetneqq \cdots \subsetneqq \p_n$, with each $\p_i \in V(I)$.
+	%\item\label{ineq1} If $\p$ is prime, $\dim(R/\p) + \mathrm{height}(\p) \leq \dim(R)$.
+	\item\label{ineq2} If $I$ is an ideal, $\dim(R/I) + \mathrm{height}(I) \leq \dim(R)$.
+			\item If $W$ is a multiplicative set, then $\dim(W^{-1}R) \leq \dim(R)$.
+\item If $\p$ is prime, then $\mathrm{height}(\p)=\dim(R_{\p})$.
+\item If $\p\subseteq \q$ are primes, then $\dim(R_{\q}/ \p R_{\q})$ is the supremum of the lengths of (saturated) chains of primes in $R$ of the form 
+	$\p=\p_0 \subsetneqq \p_1  \subsetneqq \cdots \subsetneqq \p_n=\q$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+Exercise.
+\end{proof}
+
+
+Let's analyze our example of a copy of $\A_K^2$ union a copy of $\A_K^1$ algebraically.
+
+
+\begin{ex}
+The  ring $R=\frac{k[x,y,z]}{(xz,yz)}$ has dimension 2. 
+
+
+We will show this using the machinery developed above.
+First notice that in $k[x,y,z]$ we have the primary decomposition
+$(xz,yz)=(x,y)\cap(z)$. This leads in $R$ to the primary decomposition
+$(\bar 0)=(\bar x,\bar y)\cap(\bar z)$.
+Thus $\Min(0)=\{(x,y),(z)\}$. According to Proposition \ref{rk:dimprop} (3), we have 
+\begin{eqnarray*}
+\dim(R) &=& \max\left\{\dim \frac{R}{(\bar x,\bar y)}, \dim \frac{R}{(\bar z)}\right \}\\
+&=& \max\left\{\dim K[z], \dim K[x,y] \right \}\\
+&=&\max\{1,2\}=2.
+\end{eqnarray*}
+
+We can write down an explicit chain of primes of $R$ of length 2: 
+\[(\bar z)\subsetneq (\bar z, \bar x)\subsetneq (\bar z, \bar x, \bar y).\] 
+\end{ex}
+
+
+\bigskip
+{\bf March 2, 2020}
+
+\begin{rem}
+The previous example illustrates the principle that the dimension of an algebraic set is the maximum of the dimensions of its irreducible component. Indeed, Proposition \ref{rk:dimprop} (3) applied to an affine ring $R=K[x_1,\ldots, x_n]/I$ gives that 
+\[\dim(R)=\max\{\dim (R/\p_i) \mid \p_i\in \Min(I)\}.\]
+\end{rem}
+
+\begin{definition}
+ A ring is {\em catenary}\index{catenary} if for every pair of primes $\q \supseteq \p$ in $R$, every saturated chain of primes $\p=\p_0 \subsetneq \p_1  \subsetneq \cdots \subsetneqq \p_n=\q $
+	 has the same length.
+	\item A ring is {\em equidimensional}\index{equidimensional} if every maximal ideal has the same finite height, and every minimal prime has the same dimension.
+\end{definition}
+
+The poset of ideals of an catenary ring is a {\em ranked poset} in the sense one would encounter in combinatorics, where the rank function is the height of an ideal.
+
+It is difficult to come up with examples of rings that are not catenary, but they do exist. Nagata (1956) gave the first example of a Noetherian non-catenary ring in the paper {\em On the chain problem on prime ideals}.
+
+\begin{defn}
+A  ring $R$ is said to be equidimensional if it satisfies both the following conditions:
+\begin{itemize}
+\item All its maximal ideals have the same height
+\item All its minimal prime ideals have the same dimension i.e. if  $P_1, P_2 \in\Min(R)$ then $\dim(R/P_1)=\dim(R/P_2)$
+\end{itemize}
+\end{defn}
+
+
+
+%\begin{lem}
+%For a catenary domain $R$ which has a unique maximal ideal $\m$ and for any ideal $I$ 
+%\[\htt(I)+\dim R/I = \dim R.\] 
+%\end{lem}
+%\begin{proof}
+%Because $R$ is a local domain the set $\Spec(R)$ has a unique minimal element $(0)$ and a unique maximal element $\m$. Because $R$ is catenary, $\dim(R)$ is the length of {\em any} chain of primes connecting $(0)$ to $\m$ that cannot be refined.
+%
+%I will prove the claim first for primes, i.e. we'll prove that $\htt(\p)+\dim (R/\p) = \dim R$ for $\p\in \Spec(R)$.
+%Note that $\htt(\p)$ is the length of any chain of primes connecting $(0)$ to $\p$ that cannot be refined (this uses the fact that $(0)$ is the unique minimal element of $\Spec(R)$). Furthermore, $\dim (R/\p)$  is the length of any chain of primes connecting $\p$ to $\m$ that cannot be refined (this uses the fact that $\p$ is the unique minimal element of $V(\p)$ and $\m$ is the unique maximal element of $V(\p)$). Finally, concatenating any two such chains we obtain a chain that connects $(0)$ to $\m$ and cannot be refined. The length of any such chain is $\dim R$.
+%
+%The claim for arbitrary $I$ can be deduced from the statement about primes (exercise).
+%\end{proof}
+
+ 
+ \begin{ex}
+ Here is an example which shows that {\bf the inequality $\dim(R/I) + \mathrm{height}(I) \leq \dim(R)$ in part 6 of Proposition \ref{rk:dimprop} can fail to be an equality}.
+ 
+ Let $R=\Z_{(2)}[x]$ and consider $\p=(2x-1)$. Now $\p$ is a prime of height 1 and $R/\p\cong \Q$, so $\dim(R/\p)=0$, and therefore $\dim(R/\p)+\htt(\p)=1$ whereas $\dim R\geq 2$ as attested by the chain $(0)\subsetneq (2) \subsetneq (2,x)$.  In fact, $\dim R=2$, but I won't justify this. 
+ 
+ The ring $R$ in this example is a catenary domain.  Notice that there are maximal ideals of distinct heights in this ring, for example the ideal $\p$ given above is a prime of height 1 whereas and another maximal ideal $\m=(2,x)$ has height 2. Thus this ring is not equidimensional.
+ 
+  \end{ex}
+
+
+
+%\begin{remark}
+%	\begin{enumerate}
+%
+%	\item If $\dim(R)<\infty$, $R$ is a domain, and $f\neq 0$, then $\dim(R/(f)) < \dim(R)$.
+%	\item If $R$ is equidimensional, then  $\dim(R/(f)) < \dim(R)$ if and only if $f\notin \bigcup\limits_{\p \in \Min(R)} \p$.
+%	\item In general, $\dim(R/(f)) < \dim(R)$ if and only if  $f\notin \bigcup\limits_{\substack{\p \in \Min(R) \\ \dim(R/\p) = \dim(R)}} \p$.
+%	\item $f\notin \bigcup_{\p \in \Min(R)} \p$ if and only if $\dim(R/(\p + (f))) < \dim(R/\p)$ for all $\p\in \Min(R)$.
+%	
+%\end{enumerate}
+%\end{remark}
+%
+%
+
+
+We give a related definition of dimension for modules, but first we remark on the geometric intuition behind this. In the same way as we visualize the ring $R$ by means of the topological space $\Spec(R)$ (or more concretely we visualize affine rings $R=K[x_1,\ldots,x_n]/I$ as the coordinate ring of the algebraic zet $Z(I)$), we visualize modules $M$ by means of their support, which is a subset of $\Spec(R)$.
+
+\begin{defn}[Support]
+The {\em support}\index{support} of an $R$-module $M$ is the set
+\[\Supp_R(M)=\{\p\in \Spec(R) \mid M_\p\neq  0\}. \]
+\end{defn}
+
+\begin{ex}[Alternate definition for support]
+Show that for a finitely generated  $R$-module $M$, $\Supp_R(M)=V(\ann_R(M))$. In particular, $\Supp_R(R/I)=V(I)$ for any ideal $I$ of $R$.
+\end{ex}
+
+\begin{definition} The \emph{dimension}\index{dimension of a module} of an $R$-module $M$ is defined as 
+\[\dim(M)=\dim(R/\ann_R(M)).\]
+\end{definition}
+
+\begin{ex}
+Show that if $M$ is finitely generated, then $\dim(M)$ is the same as the largest length of a chain of primes in $\Supp_R(M)$.
+\end{ex}
+
+
 
 
 \end{comment}
