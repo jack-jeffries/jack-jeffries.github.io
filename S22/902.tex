@@ -2760,7 +2760,156 @@ In particular, note that $\p^n = \p^{(n)}$ if and only if $\p^n$ is primary.
 	\end{enumerate}
 \end{example}
 
-\begin{comment}
+\newpage
+
+\sec{Local rings and NAK}
+
+
+\begin{definition}
+	A ring $R$ is called a \emph{local ring}\index{local ring} if it has exactly one maximal ideal. We often use the notation $(R,\m)$\index{$(R,\m)$} to denote $R$ and its maximal ideal, or $(R,\m,k)$\index{$(R,\m,k)$} to also specify the residue field $k=R/\m$. Some people reserve the term \emph{local ring} for a Noetherian local ring, and call what we have defined a \emph{quasilocal ring}\index{quasilocal ring}; we will not follow this convention here.\end{definition}
+
+An easy equivalent characterization is that $R$ is local if and only if the set of nonunits of $R$ forms an ideal: this must then be the unique maximal ideal.
+
+The following remark is an easy source of local rings.
+\begin{remark}
+	If $R$ is a ring and $\p$ is a prime ideal, then $(R_\p,\p R_\p)$ is a local ring. Indeed, the primes of $R_\p$ are just the expansions of primes of $R$ that are contained in $\p$. In $R$, $\p$ is uniquely maximal among primes contained in $\p$.
+\end{remark}
+
+
+\begin{example}
+	\begin{enumerate}
+		\item The ring $\ZZ/(p^n)$ is local with maximal ideal $(p)$.
+		\item The ring $\Z_{(p)} = \{ \frac{a}{b} \in \Q \ | \ p\nmid b \text{ when in lowest terms}\}$ is a local ring with maximal ideal $(p)$.
+		\item The ring of power series $K\llbracket \vx \rrbracket$ over a field $K$ is local. Indeed, a power series has an inverse if and only if its constant term is nonzero. The complement of this set of units is an ideal (the ideal $(\vx)$).
+		\item The ring of complex power series holomorphic at the origin, $\CC\{ \vx \}$ is local. In the above setting, one proves that the series inverse of a holomorphic function at the origin is convergent on a neighborhood of $0$.
+		\item A polynomial ring over a field is certainly not local; you know so many maximal ideals! A local ring we will often encounter is $K[x_1,\dots,x_d]_{(x_1,\dots,x_d)}$. We can consider this as the ring of rational functions that in lowest terms have a denominator with nonzero constant term. (We can talk about lowest terms since the polynomial ring is a UFD.)
+		\item Extending the following example, we have local rings like $(K[x_1,\dots,x_d]/I)_{(x_1,\dots,x_d)}$. If $K$ is algebraically closed and $I$ is a radical ideal, then $K[x_1,\dots,x_d]/I= K[X]$ is the coordinate ring of some affine variety, and $(x_1,\dots,x_d)=\m_{\underline{0}}$ is the ideal defining the origin (as a point in $X \subseteq K^d$). Then we call $(K[x_1,\dots,x_d]/I)_{(x_1,\dots,x_d)}=K[X]_{\m_{\underline{0}}}$ the \emph{local ring of the point}\index{local ring of a point} $\underline{0} \in X$; some people write $\mathcal{O}_{X,\underline{0}}$. The radical ideals of this ring consist of radical ideals of $K[X]$ that are contained in $\m_{\underline{0}}$, which by the Nullstellensatz correspond to subvarieties of $X$ that contain $\underline{0}$.
+	\end{enumerate}
+\end{example}
+
+%We want to make a quick observation about local rings: let $(R,\m,k)$ be local. Since $k$ is a quotient of $R$, the characteristic of $R$ must be a multiple of the characteristic of $k$; the kernel of the map from $\ZZ$ can only get bigger in the composition. Of course, with example 2 in mind, we must think of $0$ as a multiple of any integer for this to make sense. Now $k$ is a field, so its characteristic is $0$ or $p$ for a prime $p$. If $\Char(k)=0$, then necessarily $\Char(R)=0$. If $\Char(k)=p$, we claim that $\Char(R)$ must be either $0$ or a power of $p$. Indeed, if we write $\Char(R)=p^n \cdot m$ with $m$ coprime to $p$, note that $p\in \m$, so if $m\in \m$, we have $1\in (p,m)\subseteq \m$, which is contradiction. Since $R$ is local, this means that $m$ is a unit. But then, $p^n m=0$ implies $p^n=0$, so the characteristic must be $p^n$. We summarize and add one more observation.
+
+%\begin{proposition}
+%	Let $(R,\m,k)$ be a local ring. Then one of the following holds:\begin{enumerate}
+%		\item $\Char(R)=\Char(k)=0$. We say that $R$ has \emph{equal characteristic zero}\index{equal characteristic zero}.
+%		\item $\Char(R)=0$, $\Char(k)=p$ for a prime $p$. We say that $R$ has \emph{mixed characteristic $(0,p)$}\index{mixed characteristic $(0,p)$}.
+%		\item $\Char(R)=\Char(k)=p$ for a prime $p$. We say that $R$ has \emph{equal characteristic $p$}\index{equal characteristic $p$}.
+%		\item $\Char(R)=p^n$, $\Char(k)=p$ for a prime $p$ and an integer $n>1$.
+%	\end{enumerate}
+%	If $R$ is reduced, then one of the first three cases holds.
+%\end{proposition}
+
+
+
+There are a range of statements the go under the banner of Nakayama's Lemma a.k.a. NAK. 
+
+\begin{proposition}
+	Let $R$ be a ring, $I$ an ideal, and $M$ a finitely generated $R$-module. 
+	If $IM = M$, then 
+	\begin{itemize}
+		\item there is an element $r\in 1 + I$ such that $rM=0$, and
+		\item there is an element $a\in I$ such that $am=m$ for all $m\in M$.
+	\end{itemize}
+\end{proposition}
+\begin{proof}
+	Let $m_1,\dots,m_s$ be a generating set for $M$. By assumption, we have equations
+	\[ m_1 = a_{11} m_1 + \cdots + a_{1s} m_s \ , \ \dots \ , \ m_s = a_{s1} m_1 + \cdots + a_{ss} m_s,\]
+	with $a_{ij}\in I$. Setting $A=[a_{ij}]$ and $v=[x_i]$ we have a matrix equations $Av=v$, and hence $(\mathrm{id} - A)v=0$. By the adjoint trick, we have $\det(\mathrm{id} - A)$ kills each $m_i$, and hence $M$. Since $\det(\mathrm{id}-A)\equiv \det(\mathrm{id})  \equiv 1 \,\mathrm{mod}\, I$, this determinant is the element $r$ we seek for the first statement.
+	
+	For the latter statement, set $a=1-r$; this is in $I$ and satisfies $am=m-rm=m$ for all $m\in M$.
+\end{proof}
+
+%\begin{example}
+%	We will use this to give a quick proof of the fact that, if $M$ is a finitely generated $R$-module, and $\varphi:M \to M$ is a surjective $R$-linear endomorphism, then $\varphi$ is an isomorphism. In this setting, $M$ is an $R[x]$-module by the rule $x m = \varphi(m)$, $x^2 m = \varphi^2(m)$, etc. The hypothesis that $\varphi$ is surjective says that $x M = M$. Then, some element of $(x)$ acts as the identity on $M$: $f(x) x$ is the identity, so $ f(\varphi)\circ \varphi $ is the identity. Thus, $\varphi$ is an isomorphism.
+%\end{example}
+
+\begin{proposition}
+	Let $(R,\m,k)$ be a local ring, and $M$ be a finitely generated module. If $M=\m M$, then $M=0$.
+\end{proposition}
+\begin{proof}
+	By the previous lemma, there exists an element $r\in 1+\m$ that annihilates $M$. Such an $r$ must be a unit, so $1$ annihilates $M$; i.e., $M=0$.
+\end{proof}
+
+\begin{proposition}
+	Let $(R,\m,k)$ be a local ring, and $M$ be a finitely generated module. For $m_1,\dots,m_s\in M$,
+	\[ m_1,\dots, m_s \text{ generate } M \Longleftrightarrow \overline{m_1},\dots,\overline{m_s} \text{ generate } M/\m M.\] Thus, any generating set for $M$ consists of at least $\dim_k (M/\m M)$ elements.
+\end{proposition}
+\begin{proof} The implication $\Rightarrow$ is clear.
+	Let $N=\langle m_1,\dots, m_s \rangle \subseteq M$. We have that $M/N=0$ iff $M/N= \m(M/N)$ iff $M= \m M + N$ iff $M/\m M$ is generated by the image of $N$.
+\end{proof}
+
+\begin{definition}
+	Let $(R,\m)$ be a local ring, and $M$ a finitely generated module. A set of elements $\{m_1,\dots,m_t\}$ is a \emph{minimal generating set}\index{minimal generators} of $M$ if the images of $m_1,\dots,m_t$ form a basis for the $R/\m$ vector space $M/\m M$.
+\end{definition}
+
+Observe that any generating set for $M$ contains a minimal generating set, and that every minimal generating set has the same cardinality.
+
+%We now want to give graded analogues for the results above.
+
+%\begin{proposition} Let $R$ be an $\NN$-graded ring, and $M$ a $\ZZ$-graded module such that $[M]_{<a}=0$ for some $a$. If $M= (R_+) M$, then $M=0$.
+
+%In particular, if $M$ is a finitely generated $\ZZ$-graded module and $M= (R_+) M$, then $M=0$.
+%\end{proposition}
+%\begin{proof}
+%	If $M$ is finitely-generated, then it can be generated by finitely generated homogeneous elements (the homogeneous pieces of some finite generating set); thus the first statement implies the second. 
+	
+%	  $M$ lives in degrees at least $a$, but $(R_+)M$ lives in degrees strictly bigger than $a$. If $M$ has a nonzero element, it has a nonzero homogeneous element, and we obtain a contradiction.
+%\end{proof}
+
+
+
+%Just as above, we obtain the following:
+
+%\begin{proposition}
+%	Let $R$ be an $\NN$-graded ring, with $R_0$ a field, and $M$ a $\ZZ$-graded module such that $[M]_{<a}=0$ for some $a$. A set of elements of $M$ generates $M$ if and only if their images in $M/(R_+)M$ spans as a vector space. Since $M$ and $(R_+)M$ are graded, $M/(R_+)M$ admits a basis of homogeneous elements.
+%\end{proposition}
+
+%In particular, if $K$ is a field, $R$ is a positively graded $K$-algebra, and $I$ is a homogeneous ideal, then $I$ has a minimal generating set by homogeneous elements, and this set is unique up to $K$-linear combinations. 
+
+%Note that we can use NAK to prove that certain modules are finitely generated in the graded case; in the local case, we cannot.
+
+%We want to prove one more important fact about Noetherian local rings. We prepare with a lemma.
+
+
+
+\begin{lemma}[Radical lemma for finitely generated ideals]
+	If $I \subseteq J$ are ideals, $J\subseteq \sqrt{I}$ and $J$ is finitely generated, then there is some $n$ with $J^n \subseteq I$.
+	
+	Thus, if $R$ is Noetherian, for every ideal $I$, there is some $n$ with $\sqrt{I}^n \subseteq I$.
+\end{lemma}
+\begin{proof}
+	Write $J=(f_1,\dots,f_m)$. By definition, there are $a_1,\dots,a_m$ with $f_i^{a_i}\in I$. Let \\ ${n=a_1 + \cdots + a_m +1}$; by the pigeonhole principle, any product of at most $n$ $f_i$'s must lie in $I$.
+	
+	For the second statement, just use the fact that $\sqrt{I}$ is finitely generated.
+\end{proof}
+
+
+\begin{theorem}[Krull intersection theorem]
+	Let $(R,\m,k)$ be a Noetherian local ring. Then $\bigcap_{n \in \NN} \m^n = 0$.
+\end{theorem}
+\begin{proof} Let $J=\bigcap_{n \in \NN} \m^n$. We will show that $J \subseteq \m J$, hence $J=\m J$, and thus $J=0$ by NAK.
+	
+	Let $\m J=\q_1 \cap  \cdots \cap \q_t$ be a primary decomposition. We claim that $J \subseteq \q_i$ for each $i$. If $\sqrt{\q_i}\neq \m$, pick $x\in \m \smallsetminus \sqrt{\q_i}$. We have $xJ \subseteq \m J \subseteq \q_i$, with $x\notin \sqrt{\q_i}$, so $J \subseteq \q_i$ by definition of primary. If instead $\sqrt{\q_i}=\m$, there is some $N$ with $\m^N\subseteq \q_i$ by the radical lemma for finitely generated ideals. We then have $J \subseteq \m^N\subseteq \q_i$, and we are done.
+\end{proof}
+
+
+
+This result extends to modules as well.
+
+\begin{thm} Let $(R,\m,k)$ be a Noetherian local ring, and $M$ be a finitely generated $R$-module. Then $\bigcap_{n \in \NN} \m^n M = 0$.
+\end{thm}
+\begin{proof} Consider the Nagata idealization $R \rtimes M$, which is $R \oplus M$ additively, with multiplication $(r,m)(s,n) =(rs, rn+sm)$. This is a local ring with maximal ideal $\m \oplus M$: any element outside of this ideal can be written as $(\lambda, m )$ with $\lambda$ a unit in $R$, and \[(\lambda, m )(\lambda^{-1}, -\lambda^{-2} m) = (\lambda \lambda^{-1},  \lambda (-\lambda^{-2}) m + \lambda^{-1} m )= (1,0).\] It is a finitely generated $R$-module, so it is again Noetherian. We also have
+\[ (\m \oplus M)^n = \m^n \oplus \m^{n-1} M.\]
+If $m\in \bigcap_{n\in\N} \m^n M$, then $(0,m)\in\bigcap_{n\in\N} (\m \oplus M)^n =0$, so $m=0$.
+\end{proof}
+
+\begin{thm} Let R be a Noetherian ring, M a finitely generated R-module, and I an ideal
+of R. Then $m \in \bigcap_{n\in \N} I^n M$ if and only if there is some $a\in I$ with $am=m$.
+\end{thm}
+\begin{proof}
+The ``if'' part is trivial.
+For the other direction, suppose that $I + \ann_R m$ is a proper ideal of $R$, let $\m$ be a maximal ideal of $R$ containing it. Then $u/1$ is nonzero in $M_\m$, and $I R_\m \subseteq \m R_\m$, the maximal ideal of $R_\m$. But then $m \in I^n M$ for all $n$ implies that $m/1 \in (I R_\m)^n M_\m \subseteq (\m R_\m)^n M_\m$  for all $n$, and this is a contradiction. Thus, we can choose $a\in I$ and $z \in \ann_R(m)$ such that $a+z = 1$. But then $am=am+zm=(a+z)m=1m=m$.
+\end{proof}
 
 
 \sec{Dimension theory, globally}
