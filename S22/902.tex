@@ -2910,7 +2910,7 @@ If $m\in \bigcap_{n\in\N} \m^n M$, then $(0,m)\in\bigcap_{n\in\N} (\m \oplus M)^
 %The ``if'' part is trivial.
 %For the other direction, suppose that $I + \ann_R m$ is a proper ideal of $R$, let $\m$ be a maximal ideal of $R$ containing it. Then $u/1$ is nonzero in $M_\m$, and $I R_\m \subseteq \m R_\m$, the maximal ideal of $R_\m$. But then $m \in I^n M$ for all $n$ implies that $m/1 \in (I R_\m)^n M_\m \subseteq (\m R_\m)^n M_\m$  for all $n$, and this is a contradiction. Thus, we can choose $a\in I$ and $z \in \ann_R(m)$ such that $a+z = 1$. But then $am=am+zm=(a+z)m=1m=m$.
 %\end{proof}
-\begin{comment}
+
 
 \sec{Dimension theory, globally}
 
@@ -3169,11 +3169,224 @@ We give a related definition of dimension for modules, but first we remark on th
 \[\dim(M)=\dim(R/\ann_R(M)).\]
 \end{definition}
 
-\begin{ex}
+\begin{exer}
 Show that if $M$ is finitely generated, then $\dim(M)$ is the same as the largest length of a chain of primes in $\Supp_R(M)$.
-\end{ex}
+\end{exer}
 
 
+
+\subsection{Over, up, down theorems}
+
+In this section, we will collect theorems about the spectrum of a ring: theorems that assert that the map on Spec is surjective, and theorems about lifting chains of primes.
+
+\begin{defn}
+Let $\phi:R\to S$ be a ring homomorphism and $\p\in \Spec(R)$ be a prime ideal. We define the \emph{fiber ring}\index{fiber ring}\index{\kappa_{\phi}(\p)} of $\phi$ over $\p$ as
+\[ \kappa_{\varphi}(\p) = (R\smallsetminus \p)^{-1}(S/\p S),\]
+where, by abuse of notation, we write $R\smallsetminus \p$ for the image of $R\smallsetminus \p$ in $S/\p S$ via $\phi$ and the quotient map $S\to S/\p S$  (and $\p S$ for $\phi(\p) S$ as usual).
+
+As a special case, for the identity map, we simply write $\kappa(\p)$. That is, $\kappa(\p) = R_{\p} / \p R_\p$.
+\end{defn}
+
+The point of this definition is the following.
+
+\begin{lemma} Let $\phi:R\to S$ be a ring homomorphism and $\p\in \Spec(R)$ be a prime ideal. The natural map $S \to \kappa_{\phi}(\p)$ induces a homeomorphism (in particular, an order-preserving bijection)
+\[ \Spec( \kappa_{\phi}(\p) ) \cong \{ \q \in \Spec(S) \ | \ \phi^*(\q) = \p \},\]
+where the right-hand side obtains the subspace topology from $\Spec(S)$.
+\end{lemma}
+\begin{proof}
+First, we note that for any localization map or any quotient map, the induced map on Spec is a homeomorphism onto its image (exercise!). Write $S\xra{\alpha} S/\p S \xra{\beta} (R\smallsetminus \p)^{-1}(S/\p S)$. We have \[ \im(\beta^*)=\{ \overline{\q} \in \Spec(S/\p S) \ | \ \overline{\q} \cap \overline{\phi(R \smallsetminus \p)} = \varnothing\} .\]
+Write $\overline{\phi}$ for the induced map from $R/\p \to S/\p S$. We have 
+\[\overline{\q} \cap \overline{\phi(R \smallsetminus \p)}= \varnothing \ \Leftrightarrow \
+\overline{\q} \cap \overline{\phi}(R/\p \smallsetminus 0_{R/\p})= \varnothing \ \Leftrightarrow \
+ \overline{\phi}^{-1}(\overline{\q})\subseteq 0_{R/\p} \  \Leftrightarrow \
+ \overline{\phi}^{-1}(\overline{\q})= 0_{R/\p}. \]
+Under the map $\alpha$, such a prime $\overline{q}$ corresponds to a prime $\q$ in $S$ that contains $\p S$, so $\p \subseteq \phi^{-1}(\q)$; the condition above translates to $\phi^{-1}(\q) = \p$.
+\end{proof}
+
+
+\begin{lemma}[Image criterion] Let $\varphi:R \to S$ be a ring homomorphism, and $\p\in \Spec(R)$. Then $\p\in \im(\varphi^*)$ if and only if $\p S \cap R = \p$.
+\end{lemma}
+\begin{proof}
+If $\p S \cap R = \p$, then 
+\[ \frac{R}{\p} = \frac{R}{\p S \cap R} \hookrightarrow \frac{S}{\p S},\]
+so, localizing at $(R\smallsetminus \p)$, we get an injection $\kappa(\p) \hookrightarrow \kappa_{\varphi}(\p)$. The latter ring is nonzero, so its spectrum is nonempty. Thus, there is a prime mapping to $\p$.
+
+If $\p S \cap R \neq \p$, then $\p S \cap R \supsetneqq \p$ (the other containment always holds). Then, if $\q \cap R = \p$, we have $\q \supseteq \p S$, so $\q \cap R \supsetneqq \p$.
+\end{proof}
+
+Note that $\p S$ may not be prime, in general.
+
+\begin{example}
+Let $R=\CC[x^n] \subseteq S=\CC[x]$. The ideal $(x^n-1) R$ is prime, while $(x^n-1) S = (\prod_{i=0}^{n-1} x - \zeta^i) S$, where $\zeta$ is a primitive $n$th root of unity, is not. However, each of its minimal primes $(x-\zeta^i)S$ contracts to $(x^n-1)R$. Similarly, the ideal $x^n R$ is prime, while $x^n S$ is not radical.
+\end{example}
+
+\begin{corollary} If $R\subseteq S$ is a direct summand, then $\Spec(S) \to \Spec(R)$ is surjective.
+\end{corollary}
+\begin{proof} From the homework, we know that $I S \cap R = I$ for all ideals in this case.
+\end{proof}
+
+We want to extend the idea of the last corollary to work for all integral extensions. The key idea is encapsulated in a definition.
+
+\begin{definition} Let $R$ be a ring, $S$ an $R$-algebra, and $I$ an ideal. 
+	\begin{itemize}
+		\item An element $r$ of $R$ is \emph{integral} over $I$ \index{integral over an ideal} if it satisfies an equation of the form
+		\[ r^n + a_1 r^{n-1} + \cdots + a_{n-1} r + a_n = 0 \qquad \text{with} \ a_i \in I^i \ \text{for all} \  i.\]
+		\item An element of $S$ is integral over $I$ if the same condition holds.
+		\item The \emph{integral closure}\index{integral closure of an ideal} of $I$ in $R$ is $\overline{I}$\index{$\overline{I}$}, the set of elements of $R$ that are integral over $I$.
+		\item Similarly, we write $\overline{I}^S$\index{$\overline{I}^S$} for the integral closure of $I$ in $S$.
+	\end{itemize}
+\end{definition}
+
+We leave a little exercise for you.
+
+\begin{exer} Let $R\subseteq S$, $I$ be an ideal of $S$, and $t$ be an indeterminate. Consider the rings $R[It]\subseteq R[t] \subseteq S[t]$.
+\begin{enumerate}
+	\item $\overline{I}^S =\{ s \in S \ | \ st\in S[t] \ \text{is integral over the ring} \ R[It]\}$.
+	\item $\overline{I}^S$ is an ideal.
+\end{enumerate}
+\end{exer}
+
+We note that in older texts and papers (e.g., Atiyah-Macdonald and Kunz) a different definition is given for integral closure of an ideal. The one we use here is more-or-less universally accepted as the correct notion.
+
+\begin{lemma}[Extension-contraction lemma for integral extensions] Let $R \subseteq S$ be integral, and $I$ be an ideal of $R$. Then, $IS \subseteq\overline{I}^S$. Hence, $I S \cap R \subseteq \overline{I}$.
+\end{lemma}
+\begin{proof}
+Let $x\in IS$. We can write $x = \sum_{i=1}^t a_i s_i$ with $a_i\in I$. Taking $S'=R[s_1,\dots,s_t]$, we also have $x\in IS' $. Thus, it suffices to show the statements in the case $S$ is module-finite over $R$.
+
+Let $S=\sum R b_i$. We have $x b_i = (\sum_k a_k s_k) b_i = \sum_j a_{ij} b_j$ with $a_{ij}\in I$. We can write this as a matrix-acts-like-a-scalar equation $x v = Av$, where $v=(b_1,\dots,b_u)$, and $A=[a_{ij}]$. By the adjoint trick, we have $\det(xI-A)v=0$. Since we can assume $b_1=1$, we have $\det(xI-A)=0$. The fact that this is the type of equation we want follows from the monomial expansion of the determinant: any monomial is a product of $n$ terms where some of the are copies of $x$, and the rest are elements of $I$.
+
+The last statement follows from the fact that $\overline{I}^S \cap R = \overline{I}$, which is immediate from the definition.
+\end{proof}
+
+%Define local ring, local homom.
+
+%\begin{lemma}
+% Let $(R,\m) \to (S,\n)$ be a flat and local homomorphism.
+%\begin{enumerate}
+%\item If an $R$-module $M\neq 0$, then $M \otimes_R S\neq 0$.
+%\item $R\to S$ is injective.
+%\end{enumerate}
+%\end{lemma}
+%\begin{proof}
+%\begin{enumerate}
+%\item
+%Let $m\in M$ be nonzero, so we have an injection $R/\ann_R(m) \cong Rm \subseteq M$, and $\ann_R(m) \subseteq \m$. By flatness, we have $S/\ann_R(m)S \cong S(1\otimes m) \subseteq S\otimes_R M$, and since $\ann_R(m)S \subseteq \m S \subseteq \n$, this is nonzero.
+%\item Let $I=\ker(R \to S)$. for any ideal $I$ of $R$, we have $I\otimes_R S\cong IS$ by flatness (exercise!). But, if $I\neq 0$, then $0\neq I\otimes_R S = IS = 0$, a contradiction.\qedhere
+%\end{enumerate}
+%\end{proof}
+
+\begin{theorem}[Lying over] If $R\subseteq S$ is an integral inclusion then $\Spec(S) \to \Spec(R)$ is surjective.
+\end{theorem}
+\begin{proof}
+ We observe that $\overline{I} \subseteq \sqrt{I}$. Thus, for $\p$ prime, by the previous lemma, $\p S \cap R = \p$, and the result follows from the image criterion.
+\end{proof}
+
+\begin{remark} Both ``integral'' and ``inclusion'' are important: the map $R\to R_f$ is a nonintegral inclusion if $f$ is a nonzerodivisor, and the image is the complement of $V(f)$; the map $R\to R/(f)$ is an integral noninclusion, and the the image is $V(f)$.
+\end{remark}
+
+\begin{theorem}[Incomparability]
+If $\varphi: R \to S$ is integral, and $\q \subseteq \q'$ are such that $\varphi^*(\q)=\varphi^*(\q')$, then $\q=\q'$.
+\end{theorem}
+\begin{proof}
+Since the map $R\to R/\ker(R)$ is injective on spectra, we can replace $R$ by the quotient and assume $\varphi$ is an integral inclusion.
+
+Now, if $R\hookrightarrow S$ is integral, then $R/\p \hookrightarrow S/\p S$ (which is injective by the lemma above) is integral; take an integral equation for a representative. Furthermore, localizing at $(R\smallsetminus \p)$ preserves integrality: if $x\in S$ and $w\in R\smallsetminus \p$, then we have equations of the form
+\[ x^n + r_1 x^{n-1} + \cdots + r_n = 0 \Longrightarrow (\frac{x}{w})^n + \frac{r_1}{w} (\frac{x}{w})^{n-1} + \cdots + \frac{r_n}{w^n}  =0.   \] 
+We then have that $\kappa(\p)\hookrightarrow \kappa_{\varphi}(\p)$ is integral. If $\q$ is a prime of $\kappa_{\varphi}(\p)$, then $\kappa(\p)\subseteq \kappa_{\varphi}(\p) / \q$ is an integral inclusion from a field to a domain, and by a lemma from a while ago, we must have that $\kappa_{\varphi}(\p) / \q$ is a field. Therefore, $\kappa_{\varphi}(\p)$ is zero-dimensional. Since there are no inclusions between primes in $\kappa_{\varphi}(\p)$, there are no inclusions between primes that contract to $\p$.
+\end{proof}
+
+\
+
+
+\begin{corollary}
+If $R \to S$ is integral, and $S$ is Noetherian, then for any $\p\in \Spec(R)$, only finitely many primes contract to $\p$. If, moverover, $S=\sum_{i=1}^t R s_i$ is generated as a module by $t$ elements, then for any prime of $R$, at most $t$ primes of $S$ map to $\p$.
+\end{corollary}
+\begin{proof}
+	For the first statement, this case the fiber ring $\kappa_{\varphi}(\p)$ of any prime is also Noetherian, hence has finitely many minimal primes. Every prime of the fiber is minimal, though.
+
+for the second statement, we have $\kappa_{\phi}(\p) = \sum_{i=1}^t \kappa(\p) \bar{s_i}/1 $, and hence $\kappa_{\phi}(\p)$ is a zero-dimensional ring that is a $\kappa(\p)$-vector space of dimension at most $t$.  We have a minimal primary decomposition $(0)_{\kappa_{\phi}(\p)}=\q_1 \cap \cdots \cap \q_s$ where $\sqrt{\q_i}$ are distinct maximal ideals; these maximal ideals are in bijection with the primes mapping to $\p$ in $S$. Thus, for $i\neq j$, $V(\q_i + \q_j) = V(\q_i) \cap V(\q_j)=\varnothing$, so $\q_i + \q_j = \kappa_{\phi}(\p)$, and by the Chinese Remainder Theorem, $\kappa_{\phi}(\p)\cong \kappa_{\phi}(\p)/\q_1 \times \cdots \times  \kappa_{\phi}(\p)/\q_s$. The map $\kappa(\p) \to \kappa_{\phi}(\p)/\q_i$ is nonzero for each $i$ (since it is integral), so each factor is a $\kappa(\p)$-vector space. Considering vector space dimension, find that the number of factors $s$ is at most $t$.
+\end{proof}
+
+
+\begin{corollary} If $R\to S$ is integral, then $\mathrm{height}(\q) \leq \mathrm{height}(\q \cap R)$ for any $\q\in \Spec(S)$. In particular, $\dim(S) \leq \dim(R)$.
+\end{corollary}
+\begin{proof}
+	Given a chain of primes $\a_0 \subsetneqq \cdots \subsetneqq \a_n = \q$ in $\Spec(S)$, we can contract to $R$, and we get a chain of distinct primes in $\Spec(R)$, so the height of the latter is at least as big.
+\end{proof}
+
+
+\begin{theorem}[Going up]
+	If $R\to S$ is integral, then for every $\p \subsetneqq \p'$ in $\Spec(R)$ and $\q$ in $\Spec(S)$ with $\q \cap R=\p$, there is some $\q'\in \Spec(S)$ with $\q \subsetneqq \q'$ and $\q' \cap R = \p'$.
+\end{theorem}
+\begin{proof} Consider the map $R/\p \to S/\q$. This is integral, as we observed above. It is also injective, so lying over applies. Thus, there is a prime $\a$ of $S/\q$ that contracts to the prime $\p'/\p$ in $\Spec(R/\p)$. We can write $\a=\q'/\q$ for some $\q'\in \Spec(S)$, and we must have that $\q'$ contracts to $\p'$.
+\end{proof}
+
+\begin{corollary}
+	If $R\subseteq S$ is integral, then $\dim(R)=\dim(S)$.
+\end{corollary}
+\begin{proof}
+	We just need to show that $\dim(R)\leq \dim(S)$. Given a chain of primes $\p_0 \subsetneqq \cdots \subsetneqq \p_n$ in $\Spec(R)$, by lying over, there is a prime $\q_0 \in \Spec(S)$ contracting to $\p_0$. Then by going up, we have $\q_0 \subsetneqq \q_1$ with $\q_1 \cap R = \p_1$. Continuing, we can build a chain of distinct primes in $S$ of length $n$.
+\end{proof}
+
+\begin{definition}
+	A domain is \emph{normal}\index{normal domain} if it is integrally closed in its field of fractions.
+\end{definition}
+
+\begin{lemma}
+	A unique factorization domain is normal: in particular, a polynomial ring over a field is normal.
+\end{lemma}
+\begin{proof}
+	Let $R$ be a UFD, and $r/s\in \mathrm{frac}(R)$ be integral over $R$. We can assume that $r$ and $s$ have no common factor. Then we have for some $a_i$'s in $R$
+	\[ \frac{r^n}{s^n} + a_1  \frac{r^{n-1}}{s^{n-1}} + \cdots  + a_n = 0 \quad \Rightarrow \quad r^n = -( a_1 r^{n-1} s + \cdots + a_n s^n ).\]
+	Any irreducible factor of $s$ must then divide $r^n$, and hence divide $r$; if $s$ is not a unit then this contradicts that there is no common factor. Thus, $r/s\in R$.
+\end{proof}
+
+\begin{lemma} Let $R$ be a normal domain, $x$ be an element integral over $R$ in some larger domain. Let $K$ be the fraction field of $R$, and $f(t)\in K[t]$ be the minimal polynomial of $x$ over $K$.
+	\begin{enumerate}
+		\item If $x$ is integral over $R$, then $f(t)\in R[t]\subseteq K[t]$.
+		\item If $x$ is integral over a prime $\p$, then $f(t)$ has all of its nonleading coefficients in $\p$.
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	Let $x$ be integral over $R$. Fix an algebraic closure of $K$ containing $x$, and let $x_1=x,x_2,\dots,x_u$ be the roots of $f$. Since $f(t)$ divides a monic equation for $x$, each $x_i$ is integral over $R$.
+	
+	Let $S=R[x_1,\dots,x_u] \subseteq \overline{K}$. This is a module-finite extension of $R$, so all of its elements are integral over $R$. The coefficients of $f(t)$ are elementary symmetric polynomials in the $x$'s, hence they lie in $S$. But, $S\cap K = R$ since $R$ is normal. Thus, the first statement holds.
+	
+	Now, let $x$ be integral over $\p$. All of the $x$'s are integral over $\p$ by the same argument as above. Since each $x_j\in \overline{\p}^S$, any elementary symmetric polynomial in the $x$'s lies in $\overline{\p}^S$. Thus, the nonleading coefficients lie in $\overline{\p}^S \cap R = \p$.
+\end{proof}
+
+
+
+\begin{theorem}[Going down]
+Suppose that $R$ is a normal domain, $S$ is a domain, and $R\subseteq S$ is integral. Then, for every $\p' \subsetneqq \p$ in $\Spec(R)$ and $\q$ in $\Spec(S)$ with $\q \cap R=\p$, there is some $\q'\in \Spec(S)$ with $\q' \subsetneqq \q$ and $\q' \cap R = \p'$. In a picture:
+\[ \xymatrix{ \exists \q' \ar[d] &\subseteq& \q \ar[d]\\
+\p' & \subseteq & \p  }\]
+\end{theorem}
+\begin{proof}
+ Let $W=(S\smallsetminus \q)(R\smallsetminus\p')$ be the multiplicative set consisting of products of elements in $S\smallsetminus\q$ and $R\smallsetminus \p'$. Note that each of these sets contains $1$, so each set is in the product. We want to show that $W \cap \p'S$ is empty. It will follow that $W^{-1} (S/\p' S)=(S\smallsetminus \q)^{-1} \kappa_S(\p')$ has a prime ideal, and hence there is a prime of $S$ contained in $\q$ contracting to~$\p'$.
+
+To that end, suppose $x\in \p' S \cap W$. Since $x \in\p' S$, it is integral over $\p'$, so write $x=rs$ with $r\in R\smallsetminus \p', s\in S \smallsetminus \q$, and consider the minimal polynomial of $x$ over $\mathrm{frac}(R)$:
+\[ h(x) = x^n + a_1 x^{n-1} + \cdots + a_n = 0. \]
+By the lemma above, each $a_i\in \p' \subseteq R$. Then, since $r\in K$, substituting $x=rs$ yields and dividing by $r^n$ yields a polynomial that, viewed as a polynomial in $s$, is irreducible. That is, the minimal polynomial of $s$ is 
+\[ g(s) = s^n + \frac{a_1}{r} s^{n-1} + \cdots + \frac{a_n}{r^n} = 0.\]
+Since $s\in S$, hence is integral over $R$, the lemma above says that each $\frac{a_i}{r^i}=: v_i\in R$. Since $r\notin \p'$, and $r^i v_i =a_i \in\p'$, we have $v_i\in \p'$, and the equation $g(s)=0$ then shows that $s\in \sqrt{\p' S}$. Since $\q \in \Spec(S)$ contains $\p S$ and hence $\p'S$, we have $s\in \sqrt{\p' S}\subseteq \q$. This is the desired contradiction.
+\end{proof}
+
+\begin{remark} We have used the fact that our rings are domains to put the theory of minimal polynomials to use. The one hypothesis we can weaken is that the target is a domain: it suffices to assume that it is torisonfree as a module over the source. Here's why we can't get rind of more hypotheses.
+
+Let $R=K[x]\subseteq S=K[x,y]/(xy,y^2-y)$. $R$ is a normal domain, and the inclusion is integral: $y^2-y=0$ is an integral dependence relation for $y$ over $R$, so $S$ is generated by one integral element. Now, $(1-y)$ is a minimal prime of $S$: $y\in S\smallsetminus (1-y)$, so $x$ goes to zero in the localization (since $xy=0$) and $1-y$ goes to zero in the localization (since $y(1-y)=0$), so the localization is a copy of $K$, which has only one prime, $(0)$. We have $x=x-xy=x(1-y)\in (1-y)$, so the contraction contains $(x)$, so must be $(x)$. But, by minimality, we can't ``go down'' from $(1-y)$ to a prime lying over $(0)$.
+
+The normality hypothesis is important too. Take $R=K[x(1-x),x^2(1-x),y,xy]\subseteq S=K[x,y]$. The element $x$ is integral over $R$: $x(1-x)\in R$ is a recipe: $x$ is a root of $z^2-z-x(1-x)$. Note that $x$ is in the fraction field of $R$, so this element shows both that $S$ is integral over $R$, and that $R$ is not normal. Now, $\q=(1-x,y)\subseteq S$ is a maximal ideal lying over the maximal ideal $\p$ generated by the specified generating set in $R$. We have $xS \cap R = (x(1-x),x^2(1-x),xy)R=\p'$, but we claim that no prime contained in $\q$ lies over $\p'$. Such a prime must contain $x(1-x)$ and $xy$, but not $x$ (this would make it the unit ideal), so must contain $y$ and $1-x$, and the contraction is then $\p$, which is too big!
+\end{remark}
+
+\begin{corollary}
+If $R$ is a normal domain, $S$ is a domain, and $R\subseteq S$ is integral, then $\mathrm{height}(\q)=\mathrm{height}(\q \cap R)$ for any $\q\in \Spec(S)$.
+\end{corollary}
+\begin{proof}
+We already know that $\htt(\q) \leq \htt(\q \cap R)$. Now, take a maximal chain up to $\q\cap R$, and apply going down to get a chain just as long that goes up to $\q$.
+\end{proof}
+
+\
 
 
 \end{comment}
