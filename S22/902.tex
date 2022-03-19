@@ -2916,7 +2916,11 @@ If $m\in \bigcap_{n\in\N} \m^n M$, then $(0,m)\in\bigcap_{n\in\N} (\m \oplus M)^
 
 \ssec{Definition of dimension}
 
-We will now spend a while discussing the notion of dimension of a ring and dimension of a variety. To motivate the definition, let's first think in terms of varieties. One way to characterize the dimension of a vector space $V$ is the the largest number $d$ such that there is a proper chain of subspaces
+We will now spend a while discussing the notion of dimension of a ring and dimension of a variety. To motivate the definition, let's first think in terms of varieties. 
+
+We take our inspriation from the fundamental setting of dimension theory: vector spaces. The notion of basis doesn't make sense for varieties (What does it mean to span? Where is zero?), but one relevant thing we do have for both vector spaces and for varieties is subobjects.
+
+One way to characterize the dimension of a vector space $V$ is the the largest number $d$ such that there is a proper chain of subspaces
 \[ \{0\} = V_0 \subsetneqq V_1 \subsetneqq V_2 \subsetneqq \cdots \subsetneqq V_d = V.\]
 We can try something similar for varieties, but for a reducible variety, this isn't a very good notion. For example, for a union of $m$ points, we can cook up a chain of $m$ proper subvarieties by adding one more point each time, but a point should be zero-dimensional by any reasonable measure. So, if we want this approach to work, we should stick to chains of irreducible subvarieties.
 
@@ -2934,19 +2938,21 @@ in the coordinate ring $K[X]$.
 $$
 \dim(R)=\sup \{d \mid \exists \text{ a strictly increasing chain of prime ideals } \fp_0 \subsetneqq \cdots \subsetneqq \fp_d\}.
 $$
-We will agree that the dimension of the zero ring is $-1$, by convention.
+We will agree that the dimension of the zero ring is $-1$, by convention. 
 
-\noindent A chain of primes as above is \emph{saturated}\index{saturated chain of primes} if for each $i$, there is no $\q\in \Spec(R)$ with ${\p_i \subsetneqq \q \subsetneqq \p_{i+1}}$. One can equivalently define $\dim(R)$ as the supremum of the lengths of saturated chains of primes of $R$.
-
+For a (proper) chain of primes
+\[\fp_0 \subsetneqq \cdots \subsetneqq \fp_d\]
+its \emph{length}\index{length of a chain of primes} is $d$, the number of (proper) containments in the chain; such a chain is \emph{saturated}\index{saturated chain of primes} if for each $i$, there is no $\q\in \Spec(R)$ with ${\p_i \subsetneqq \q \subsetneqq \p_{i+1}}$. One can equivalently define $\dim(R)$ as the supremum of the lengths of saturated chains of primes of $R$.
 \end{defn}
 
+Note in the definition that the set we are taking the sup over is a subset of $\N$, so this sup is either $\infty$ if unbounded or the maximum if bounded.
 
 
 
 \begin{example}
 	\begin{enumerate}
 		\item The dimension of a field is zero.
-	\item A ring is zero-dimensional if and only if every minimal prime of $(0)$ is maximal.
+	\item A ring is zero-dimensional if and only if every minimal prime of $R$ is maximal.
 	\item The ring of integers $\ZZ$ has dimension one, since there is one minimal prime $(0)$ and every other prime is maximal. Likewise, any PID that is not a field has dimension one.
 %	\item If $R$ is a UFD, $I$ is a prime of height one if and only if $I=(f)$ for a prime element $f$. 
 %	
@@ -2965,28 +2971,35 @@ Clearly, we may assume take $X_0$ to be a single point and $X_d = \A^n_k$ in fin
 \end{example}
 
 \begin{rem}
-We will show eventually that $\dim(K[x_1,\dots,x_d])=d$. One can easily deduce the case $d=1$, i.e. $\dim(K[x])=1$  form above, since we know that this ring is a PID.
+We will show eventually that $\dim(K[x_1,\dots,x_d])=d$. The case $d=1$ follows from above, i.e. $\dim(K[x])=1$, since this ring is a PID.
 \end{rem}
 
 \begin{rem} The definition of dimension is most meaningful for Noetherian rings, although 
 \begin{itemize}
 \item
-there are non-Noetherian rings of finite Krull dimension. I leave it as an exercise to find an example. 
+There are nonNoetherian rings of finite Krull dimension:  for a field $K$, the ring $K[x_1,x_2,\dots]/(x_1^2,x_2^2,\dots)$ is not Noetherian, as
+\[ (x_1) \subsetneqq (x_1,x_2) \subsetneqq (x_1,x_2,x_3) \subsetneqq \cdots\]
+is an infinite ascending chain, but its dimension is zero, since $\sqrt{(0)} = (x_1,x_2,\dots)$ is a maximal ideal, and hence $(x_1,x_2,\dots)$ is the unique minimal prime of $R$, which is also maximal.
 \item
-{\bf there are Noetherian rings of infinite dimension}.  This was shown in a famous example due to Nagata presented below. 
+There are Noetherian rings of infinite dimension.  This was shown in a famous example due to Nagata presented below. 
 \end{itemize}
 \end{rem}
 
 
 \begin{example}[Nagata]
 \label{ex:Nagata}
-	Let $R=K[x_1,x_2,\dots]$. $R$ is clearly infinite-dimensional and not Noetherian. Let
-	\[ W=R\smallsetminus ((x_1) \cup (x_2,x_3) \cup (x_4,x_5,x_6) \cdots )\]
-	and $S=W^{-1}R$. This ring has primes of arbitrarily large height, given by the images of those primes we cut out from $W$. Thus, it has infinite dimension by Proposition \ref{rk:dimprop} part 4. The work is to show that this ring is Noetherian. We omit this argument here.
+	Let $R=K[x_{11},x_{21},x_{22}, x_{31}, x_{32}, x_{33},\dots]$ be a polynomial ring in infinitely many variables, which we are thinking of as arranged in an infinite triangle. $R$ is clearly infinite-dimensional and not Noetherian. Let
+	\[ W=R\smallsetminus \big((x_{11}) \cup (x_{21},x_{22}) \cup (x_{31},x_{32},x_{33})  \cup \cdots \big) = \bigcap_{n\in \NN} \big(R \smallsetminus (x_{n1},\dots,x_{nn})\big)\]
+	and $S=W^{-1}R$. Note that $W$ is an intersection of multiplicatively closed subsets, so this is a valid localization of $R$.
+	
+	For any $n$, we have a chain of primes \[(x_{n1}) \subsetneqq (x_{n1},x_{n2}) \subsetneqq \cdots \subsetneqq (x_{n1},\dots,x_{nn})\]
+	in $R$. As these are all contained in the last one, none of these intersects $W$, so the expansions yield a proper chain of primes in $S$.  It follows that $\dim(S) \geq n$ for all $n\in \NN$, so $S$ is infinite-dimensional.
+	
+	It turns out that $S$ is Noetherian, which is not at all obvious. We skip the proof of this.
 \end{example}
 
 
-To aid in computing dimension we make the following related definition
+To aid in computing dimension we make the following related definition.
 
 \begin{defn}
 \label{def:ht}
@@ -3006,57 +3019,90 @@ To get a feel for these definitions, we make a sequence of easy observations. We
 
 \begin{prop}[Properties of dimension and height]
 \label{rk:dimprop}
+\
+
 \begin{enumerate}
-\item Dimension and height are isomorphism invariants.
-\item A prime has height zero if and only if it is a minimal prime of the 0 ideal.
+%\item Dimension and height are isomorphism invariants.
+\item A prime has height zero if and only if it is a minimal prime of $R$.
+\item An ideal has height zero if and only if it is contained in a minimal prime of $R$. In particular, in a domain, every nonzero ideal has positive height.
 \item $\dim(R)=\sup\{ \dim(R/\p) \ | \ \p\in \Spec(R) \}=\sup\{ \dim(R/\p) \ | \ \p\in \Min(R) \}$.
 \item $\dim(R)=\sup\{ \mathrm{height}(\p) \ | \ \p\in \Spec(R) \}=
 \sup\{ \mathrm{height}(\fm) \ | \ \fm\in \Max(R) \}$.
 %	\item If $\p$ is prime, then $\dim(R/\p)$ is the supremum of the lengths of (saturated) chains of primes of $R$, $\p_0 \subsetneq \p_1  \subsetneq \cdots \subsetneq \p_n $, with each $\p_i \in V(\p)$.
 	\item If $I$ is an ideal, then $\dim(R/I)$ is the supremum of the lengths of (saturated) chains of primes of $R$, $\p_0 \subsetneqq \p_1  \subsetneqq \cdots \subsetneqq \p_n$, with each $\p_i \in V(I)$.
-	%\item\label{ineq1} If $\p$ is prime, $\dim(R/\p) + \mathrm{height}(\p) \leq \dim(R)$.
+	\item\label{ineq1} If $\p$ is prime, $\dim(R/\p) + \mathrm{height}(\p) \leq \dim(R)$.
 	\item\label{ineq2} If $I$ is an ideal, $\dim(R/I) + \mathrm{height}(I) \leq \dim(R)$.
 			\item If $W$ is a multiplicative set, then $\dim(W^{-1}R) \leq \dim(R)$.
 \item If $\p$ is prime, then $\mathrm{height}(\p)=\dim(R_{\p})$.
 \item If $\p\subseteq \q$ are primes, then $\dim(R_{\q}/ \p R_{\q})$ is the supremum of the lengths of (saturated) chains of primes in $R$ of the form 
 	$\p=\p_0 \subsetneqq \p_1  \subsetneqq \cdots \subsetneqq \p_n=\q$.
+
 \end{enumerate}
 \end{prop}
 \begin{proof}
-Exercise.
+We only discuss a few here.
+
+For (2), if $I$ is contained in a minimal prime $\q$ of $R$, then there is some $\p\in \Min(I)$ with $\p\subseteq \q$, so $\p=\q$, and $\mathrm{height}(\p)=0$ by (1), so $\mathrm{height}(I)=0$ by definition. Conversely, if $\mathrm{height}(I)=0$, by definition, there is a minimal prime of $I$ of height $0$, so some minimal prime of $I$ is a minimal prime of $R$, so $I$ is contained in a minimal prime of $R$.
+
+For (6), it suffices to show that if $\dim(R/\p)\geq a$ and $\mathrm{height}(\p) \geq b$ then $\dim(R) \geq a+b$. By definition, $\mathrm{height}(\p) \geq b$ means that there is a chain of primes 
+\[ \q_0 \subsetneqq \q_1 \subsetneqq \cdots \subsetneqq \q_b = \p.\] By (5), $\dim(R/\p)\geq a$ means that there is a chain of primes 
+\[ \mathfrak{a}_0 \subsetneqq \mathfrak{a}_1 \subsetneqq \cdots \subsetneqq \mathfrak{a}_a\]
+with $\mathfrak{a}_0 \supseteq \p$. We can assume without loss of generality that $\mathfrak{a}_0=\p$, since if not, we can add it to the bottom of the chain. Putting these chains together, we get a chain of length $a+b$ in $\Spec(R)$, so $\dim(R) \geq a+b$.
+
+For (7), let $\dim(R/I)\geq a$ and $\mathrm{height}(I) \geq b$. The inequality $\mathrm{height}(I) \geq b$ means that for every minimal prime $\p$ of $I$, $\mathrm{height}(\p) \geq b$. The inequality $\dim(R/I) \geq a$ implies that there exists a minimal prime of $\p$ of $I$ such that $\dim(R/\p) \geq a$. For such a minimal prime as in the latter statement, using (5), we get the desired conclusion.
+
+(8)--(10) are left for you.
 \end{proof}
 
 
-Let's analyze our example of a copy of $\A_K^2$ union a copy of $\A_K^1$ algebraically.
+\begin{rem} We know that in Noetherian rings, there can be arbitrarily long chains of primes: the dimension can be infinite as in Nagata's example. On the other hand, any ascending proper chain of primes is finite, as a consequence of the definition. Does this imply that every prime has finite height? It does not follow: 
 
+A priori, there could be an infinite descending chain of primes, which would then give any of the primes in the chain infinite height. (This seems strange in conjunction with the fact that in any ring, any prime contains a minimal prime, but does not contradict this.) 
 
-\begin{ex}
-The  ring $R=\frac{k[x,y,z]}{(xz,yz)}$ has dimension 2. 
+Another possible problem is there being two primes $\p \subset \q$ with for each $n\in \N$, a chain of primes of length $n$ from $\p$ to $\q$.
 
+However, we will show later that the height of any ideal in a Noetherian ring is finite, though only a while from now.
+\end{rem}
 
-We will show this using the machinery developed above.
-First notice that in $k[x,y,z]$ we have the primary decomposition
-$(xz,yz)=(x,y)\cap(z)$. This leads in $R$ to the primary decomposition
-$(\bar 0)=(\bar x,\bar y)\cap(\bar z)$.
-Thus $\Min(0)=\{(x,y),(z)\}$. According to Proposition \ref{rk:dimprop} (3), we have 
+\begin{lem} Let $R$ be a UFD and $f\in R$ be nonzero. Then $\htt((f))=1$.
+\end{lem}
+\begin{proof}
+We know that $\htt((f))>0$. If $f= u p_1^{a_1} \cdots p_n^{a_n}$ for some unit $u$ and irreducibles $p_i$, then $\Min((f)) = \{ (p_1) ,\dots, (p_n)\}$: each such ideal is prime and contains $f$, and any prime ideal containing $f$ must contain some $p_i$ by the definition of prime. Thus, it suffices to show that if $f$ is irreducible, then the prime ideal $(f)$ has height $1$. If $0 \subsetneqq \q \subseteq (p)$, take some $x\in \q \smallsetminus 0$ and write $x=p^a v$ for some $v$ that does not have $p$ as a factor. Then, since $\q \subseteq (p)$, we have $v\notin \q$ , so by definition of prime, $p\in \q$; thus $\q=(p)$. This concludes the proof.
+\end{proof}
+
+\begin{ex} Let $K$ be a field, and $R=K[x,y,z]/(xy,xz)$. In $K[x,y,z]$, we have $\Min((xy,xz))=\{(x),(y,z)\}$, so $\Min(R)=\{ (\bar{x}), (\bar{y},\bar{z})\}$. We then have 
 \begin{eqnarray*}
-\dim(R) &=& \max\left\{\dim \frac{R}{(\bar x,\bar y)}, \dim \frac{R}{(\bar z)}\right \}\\
-&=& \max\left\{\dim K[z], \dim K[x,y] \right \}\\
-&=&\max\{1,2\}=2.
+\dim(R) &=& \max\left\{\dim \frac{R}{(\bar y,\bar z)}, \dim \frac{R}{(\bar x)}\right \}\\
+&=& \max\left\{\dim K[x], \dim K[y,z] \right \}\\
+&=&\max\{ 1 ,\geq 2\}\\
+&\geq&2.
 \end{eqnarray*}
+In fact, once we believe that $\dim(K[y,z])=2$, we will believe $\dim(R)=2$.
 
 We can write down an explicit chain of primes of $R$ of length 2: 
-\[(\bar z)\subsetneq (\bar z, \bar x)\subsetneq (\bar z, \bar x, \bar y).\] 
+\[(\bar x)\subsetneq (\bar x, \bar y)\subsetneq (\bar x, \bar y, \bar z).\] 
+
+In $K[x,y,z]$, we have $\htt((xy,xz)) = \min\{ \htt(x), \htt(y,z) \} = \min\{ 1, \geq 2\} = 1$.
+
+Geometrically this corresponds to a union of a line and a plane. The dimension of this variety is the max of the dimensions of the irreducible components, which (should be) 2.
 \end{ex}
 
+We want to compute a nontrivial example of dimension. We will generalize the rough outline of this example later to prove our main theorems about dimension of finitely generated algebras over fields. We note a simple fact on integral extensions to prepare.
 
-\bigskip
-{\bf March 2, 2020}
+\begin{exer} Let $R\subseteq S$ be an integral inclusion of rings. Then for every nonzero $s\in S$, there is some $s'\in S$ such that $ss'\in R\smallsetminus 0$.
+\end{exer}
 
-\begin{rem}
-The previous example illustrates the principle that the dimension of an algebraic set is the maximum of the dimensions of its irreducible component. Indeed, Proposition \ref{rk:dimprop} (3) applied to an affine ring $R=K[x_1,\ldots, x_n]/I$ gives that 
-\[\dim(R)=\max\{\dim (R/\p_i) \mid \p_i\in \Min(I)\}.\]
-\end{rem}
+\begin{ex}
+Let $K$ be an infinite field. Let $R=K[t^3,t^4,t^5]$. We have shown that $R\cong \frac{K[x,y,z]}{(x^3-yz,y^2-xz,z^2-x^2y)}$, and that $R$ is the coordinate ring of the curve $X=\{ (t^3,t^4,t^5) \ | t\in K\}$ over an infinite field $K$. As $X$ is a curve / is parameterized by a single parameter we expect the dimension of the ring $R$ (equivalently of the variety $X$) to be $1$. Let's prove this.
+
+$R$ is a domain, so $(0)$ is the unique minimal prime. We need to show that any nonzero prime ideal is maximal.
+
+Set $S=K[t^3]\subseteq R$. We note that $t^3$ does not satisfy any algebraic relation over $K$, so $S$ is isomorphic to a polynomial ring in one variable (corresponding to $t^3$). Furthermore, this inclusion is integral, since $(t^4)^3- (t^3)^4=0$ and $(t^5)^3 - (t^3)^5=0$.
+
+Let $\p\in \Spec(R)$ be nonzero. Note first that $\p \cap S \neq 0$, since if $f\in \p$, then there is some nonzero multiple of $f$ in $S$ by the exercise. Since $\dim(S)=1$, $\p \cap S$ is maximal. The inclusion
+\[ \frac{S}{\p \cap S} \hookrightarrow \frac{R}{\p}\] is integral: an dependence relation for any representative yields a dependence relation. Since $\frac{S}{\p \cap S}$ is a domain, $\frac{R}{\p}$ is a field, and the inclusion is integral, we conclude that $\frac{S}{\p \cap S}$ is a field, so $\p \cap S$ is maximal.
+\end{ex}
+
 
 \begin{definition}
  A ring is {\em catenary}\index{catenary} if for every pair of primes $\q \supseteq \p$ in $R$, every saturated chain of primes $\p=\p_0 \subsetneq \p_1  \subsetneq \cdots \subsetneqq \p_n=\q $
@@ -3118,15 +3164,6 @@ A  ring $R$ is said to be equidimensional if it satisfies both the following con
 
 
 We give a related definition of dimension for modules, but first we remark on the geometric intuition behind this. In the same way as we visualize the ring $R$ by means of the topological space $\Spec(R)$ (or more concretely we visualize affine rings $R=K[x_1,\ldots,x_n]/I$ as the coordinate ring of the algebraic zet $Z(I)$), we visualize modules $M$ by means of their support, which is a subset of $\Spec(R)$.
-
-\begin{defn}[Support]
-The {\em support}\index{support} of an $R$-module $M$ is the set
-\[\Supp_R(M)=\{\p\in \Spec(R) \mid M_\p\neq  0\}. \]
-\end{defn}
-
-\begin{ex}[Alternate definition for support]
-Show that for a finitely generated  $R$-module $M$, $\Supp_R(M)=V(\ann_R(M))$. In particular, $\Supp_R(R/I)=V(I)$ for any ideal $I$ of $R$.
-\end{ex}
 
 \begin{definition} The \emph{dimension}\index{dimension of a module} of an $R$-module $M$ is defined as 
 \[\dim(M)=\dim(R/\ann_R(M)).\]
