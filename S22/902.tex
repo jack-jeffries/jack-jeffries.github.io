@@ -2914,11 +2914,14 @@ If $m\in \bigcap_{n\in\N} \m^n M$, then $(0,m)\in\bigcap_{n\in\N} (\m \oplus M)^
 
 \sec{Dimension theory, globally}
 
+
+\Mar{21}
+
 \ssec{Definition of dimension}
 
 We will now spend a while discussing the notion of dimension of a ring and dimension of a variety. To motivate the definition, let's first think in terms of varieties. 
 
-We take our inspriation from the fundamental setting of dimension theory: vector spaces. The notion of basis doesn't make sense for varieties (What does it mean to span? Where is zero?), but one relevant thing we do have for both vector spaces and for varieties is subobjects.
+We take our inspiration from the fundamental setting of dimension theory: vector spaces. The notion of basis doesn't make sense for varieties (What does it mean to span? Where is zero?), but one relevant thing we do have for both vector spaces and for varieties is subobjects.
 
 One way to characterize the dimension of a vector space $V$ is the the largest number $d$ such that there is a proper chain of subspaces
 \[ \{0\} = V_0 \subsetneqq V_1 \subsetneqq V_2 \subsetneqq \cdots \subsetneqq V_d = V.\]
@@ -3064,11 +3067,15 @@ Another possible problem is there being two primes $\p \subset \q$ with for each
 However, we will show later that the height of any ideal in a Noetherian ring is finite, though only a while from now.
 \end{rem}
 
-\begin{lem} Let $R$ be a UFD and $f\in R$ be nonzero. Then $\htt((f))=1$.
-\end{lem}
-\begin{proof}
-We know that $\htt((f))>0$. If $f= u p_1^{a_1} \cdots p_n^{a_n}$ for some unit $u$ and irreducibles $p_i$, then $\Min((f)) = \{ (p_1) ,\dots, (p_n)\}$: each such ideal is prime and contains $f$, and any prime ideal containing $f$ must contain some $p_i$ by the definition of prime. Thus, it suffices to show that if $f$ is irreducible, then the prime ideal $(f)$ has height $1$. If $0 \subsetneqq \q \subseteq (p)$, take some $x\in \q \smallsetminus 0$ and write $x=p^a v$ for some $v$ that does not have $p$ as a factor. Then, since $\q \subseteq (p)$, we have $v\notin \q$ , so by definition of prime, $p\in \q$; thus $\q=(p)$. This concludes the proof.
-\end{proof}
+\begin{comment}
+
+\Mar{23}
+
+%\begin{lem} Let $R$ be a UFD and $f\in R$ be nonzero. Then $\htt((f))=1$.
+%\end{lem}
+%\begin{proof}
+%We know that $\htt((f))>0$. If $f= u p_1^{a_1} \cdots p_n^{a_n}$ for some unit $u$ and irreducibles $p_i$, then $\Min((f)) = \{ (p_1) ,\dots, (p_n)\}$: each such ideal is prime and contains $f$, and any prime ideal containing $f$ must contain some $p_i$ by the definition of prime. Thus, it suffices to show that if $f$ is irreducible, then the prime ideal $(f)$ has height $1$. If $0 \subsetneqq \q \subseteq (p)$, take some $x\in \q \smallsetminus 0$ and write $x=p^a v$ for some $v$ that does not have $p$ as a factor. Then, since $\q \subseteq (p)$, we have $v\notin \q$ , so by definition of prime, $p\in \q$; thus $\q=(p)$. This concludes the proof.
+%\end{proof}
 
 \begin{ex} Let $K$ be a field, and $R=K[x,y,z]/(xy,xz)$. In $K[x,y,z]$, we have $\Min((xy,xz))=\{(x),(y,z)\}$, so $\Min(R)=\{ (\bar{x}), (\bar{y},\bar{z})\}$. We then have 
 \begin{eqnarray*}
@@ -3112,15 +3119,7 @@ Let $\p\in \Spec(R)$ be nonzero. Note first that $\p \cap S \neq 0$, since if $f
 
 The poset of ideals of an catenary ring is a {\em ranked poset} in the sense one would encounter in combinatorics, where the rank function is the height of an ideal.
 
-It is difficult to come up with examples of rings that are not catenary, but they do exist. Nagata (1956) gave the first example of a Noetherian non-catenary ring in the paper {\em On the chain problem on prime ideals}.
-
-\begin{defn}
-A  ring $R$ is said to be equidimensional if it satisfies both the following conditions:
-\begin{itemize}
-\item All its maximal ideals have the same height
-\item All its minimal prime ideals have the same dimension i.e. if  $P_1, P_2 \in\Min(R)$ then $\dim(R/P_1)=\dim(R/P_2)$
-\end{itemize}
-\end{defn}
+It is difficult to come up with examples of rings that are not catenary, but they do exist. Nagata  gave the first example of a Noetherian noncatenary ring in the paper.
 
 
 
@@ -3139,7 +3138,7 @@ A  ring $R$ is said to be equidimensional if it satisfies both the following con
 
  
  \begin{ex}
- Here is an example which shows that {\bf the inequality $\dim(R/I) + \mathrm{height}(I) \leq \dim(R)$ in part 6 of Proposition \ref{rk:dimprop} can fail to be an equality}.
+ Here is an example which shows that  the inequality $\dim(R/I) + \mathrm{height}(I) \leq \dim(R)$ in part 6 of Proposition \ref{rk:dimprop} can fail to be an equality.
  
  Let $R=\Z_{(2)}[x]$ and consider $\p=(2x-1)$. Now $\p$ is a prime of height 1 and $R/\p\cong \Q$, so $\dim(R/\p)=0$, and therefore $\dim(R/\p)+\htt(\p)=1$ whereas $\dim R\geq 2$ as attested by the chain $(0)\subsetneq (2) \subsetneq (2,x)$.  In fact, $\dim R=2$, but I won't justify this. 
  
