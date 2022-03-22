@@ -3067,7 +3067,7 @@ Another possible problem is there being two primes $\p \subset \q$ with for each
 However, we will show later that the height of any ideal in a Noetherian ring is finite, though only a while from now.
 \end{rem}
 
-\begin{comment}
+
 
 \Mar{23}
 
@@ -3112,8 +3112,8 @@ Let $\p\in \Spec(R)$ be nonzero. Note first that $\p \cap S \neq 0$, since if $f
 
 
 \begin{definition}
- A ring is {\em catenary}\index{catenary} if for every pair of primes $\q \supseteq \p$ in $R$, every saturated chain of primes $\p=\p_0 \subsetneq \p_1  \subsetneq \cdots \subsetneqq \p_n=\q $
-	 has the same length.
+ A ring is {\em catenary}\index{catenary} if for every pair of primes $\q \supseteq \p$ in $R$, every saturated chain of primes $\p=\p_0 \subsetneqq \p_1  \subsetneqq \cdots \subsetneqq \p_n=\q $
+	 has the same (finite) length.
 	\item A ring is {\em equidimensional}\index{equidimensional} if every maximal ideal has the same finite height, and every minimal prime has the same dimension.
 \end{definition}
 
@@ -3138,11 +3138,11 @@ It is difficult to come up with examples of rings that are not catenary, but the
 
  
  \begin{ex}
- Here is an example which shows that  the inequality $\dim(R/I) + \mathrm{height}(I) \leq \dim(R)$ in part 6 of Proposition \ref{rk:dimprop} can fail to be an equality.
+ Here is an example which shows that  the inequality $\dim(R/I) + \mathrm{height}(I) \leq \dim(R)$  can fail to be an equality.
  
  Let $R=\Z_{(2)}[x]$ and consider $\p=(2x-1)$. Now $\p$ is a prime of height 1 and $R/\p\cong \Q$, so $\dim(R/\p)=0$, and therefore $\dim(R/\p)+\htt(\p)=1$ whereas $\dim R\geq 2$ as attested by the chain $(0)\subsetneq (2) \subsetneq (2,x)$.  In fact, $\dim R=2$, but I won't justify this. 
  
- The ring $R$ in this example is a catenary domain.  Notice that there are maximal ideals of distinct heights in this ring, for example the ideal $\p$ given above is a prime of height 1 whereas and another maximal ideal $\m=(2,x)$ has height 2. Thus this ring is not equidimensional.
+ The ring $R$ in this example is in fact a catenary domain.  Notice that there are maximal ideals of distinct heights in this ring, for example the ideal $\p$ given above is a prime of height 1 whereas and another maximal ideal $\m=(2,x)$ has height 2. Thus this ring is not equidimensional.
  
   \end{ex}
 
@@ -3176,14 +3176,27 @@ Show that if $M$ is finitely generated, then $\dim(M)$ is the same as the larges
 
 \subsection{Over, up, down theorems}
 
-In this section, we will collect theorems about the spectrum of a ring: theorems that assert that the map on Spec is surjective, and theorems about lifting chains of primes.
+In this section, we will collect theorems about the spectrum of a ring: theorems that assert that the map on Spec is surjective, and theorems about lifting chains of primes. 
+
+It will be convenient to think in terms fo fibers. For a map of topological spaces $f: X\to Y$ (or in various other categories) and $y\in Y$, the \emph{fiber}\index{fiber of a map} over $y$ is the subspace $f^{-1}(y)= \{x\in X \ | \ f(x)=y\} \subseteq X$; if $f$ is continuous and $y\in Y$ is closed, then $f^{-1}(y) \subseteq X$ is closed. 
+
+
+\begin{exer} Let $\phi:X\to Y$ be a morphism of affine varieties, with $X=Z(I) \subseteq \A^n$ (with coordinates $x_1,\dots,x_n$), $Y =Z(J) \subseteq \A^m$ (with coordinates $y_1,\dots,y_m$), and $y=(a_1,\dots,a_m)\in Y$. Then 
+\[ \phi^{-1}(y) = Z(I, \phi^*(y_1-a_1),\dots,\phi^*(y_m-a_m)),\]
+and hence 
+\[K[\phi^{-1}(y)] \cong \frac{K[X]}{\cI(y) K[X]},\]
+where $\cI(y) K[X]$ denotes the expansion of the ideal $\cI(y)\in K[Y]$ to $K[X]$ via the map $\phi^*$.
+\end{exer}
 
 \begin{defn}
 Let $\phi:R\to S$ be a ring homomorphism and $\p\in \Spec(R)$ be a prime ideal. We define the \emph{fiber ring}\index{fiber ring}\index{\kappa_{\phi}(\p)} of $\phi$ over $\p$ as
 \[ \kappa_{\varphi}(\p) = (R\smallsetminus \p)^{-1}(S/\p S),\]
 where, by abuse of notation, we write $R\smallsetminus \p$ for the image of $R\smallsetminus \p$ in $S/\p S$ via $\phi$ and the quotient map $S\to S/\p S$  (and $\p S$ for $\phi(\p) S$ as usual).
 
-As a special case, for the identity map, we simply write $\kappa(\p)$. That is, $\kappa(\p) = R_{\p} / \p R_\p$.
+In the special case $\fm \subseteq R$ is maximal, $S/\fm S$ is an $R/\fm$-module, which is a vector space, so every element of $R\smallsetminus \fm$ acts as a unit on $S/\fm S$, so the localization is redundant, and 
+\[ \kappa_\phi(\fm) = S/\fm S.\]
+
+As another special case, for the identity map, we simply write $\kappa(\p)$\index{$\kappa(\p)$}. That is, \[\kappa(\p) = R_{\p} / \p R_\p.\]
 \end{defn}
 
 The point of this definition is the following.
@@ -3221,7 +3234,7 @@ Let $R=\CC[x^n] \subseteq S=\CC[x]$. The ideal $(x^n-1) R$ is prime, while $(x^n
 
 \begin{corollary} If $R\subseteq S$ is a direct summand, then $\Spec(S) \to \Spec(R)$ is surjective.
 \end{corollary}
-\begin{proof} From the homework, we know that $I S \cap R = I$ for all ideals in this case.
+\begin{proof} We know that $I S \cap R = I$ for all ideals in this case.
 \end{proof}
 
 We want to extend the idea of the last corollary to work for all integral extensions. The key idea is encapsulated in a definition.
