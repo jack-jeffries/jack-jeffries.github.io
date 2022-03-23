@@ -1088,7 +1088,7 @@ Let $R$ and $S$ be $T$-graded rings with the same grading monoid $T$. A ring hom
 Note that our definition of ring homomorphism requires $1_R \mapsto 1_S$, and thus it does not make sense to talk about graded ring homomorphisms that shift degrees. But we can have graded module homomorphisms of any degree.
 
 \begin{definition}	
-Let $M$ and $N$ be $\ZZ$-graded modules over the $\NN$-graded ring $R$. A homomorphism of $R$-modules $\varphi:R\to S$ is {\em graded} \index{graded homomorphism} if $\varphi(M_a) \subseteq N_{a+d}$ for all $a \in \ZZ$ and some fixed $d \in \mathbb{Z}$, called the {\em degree}\index{degree of a graded module homomorphism} of $\varphi$. A graded homomorphism of degree $0$ is also called {\em degree-preserving}\index{degree-preserving homomorphism}.
+Let $M$ and $N$ be $\ZZ$-graded modules over the $\NN$-graded ring $R$. A homomorphism of $R$-modules $\varphi:R\to S$ is {\em graded} \index{graded homomorphism} if $\varphi(M_a) \subseteq N_{a+d}$ for all $a \in \ZZ$ and some fixed $d \in \mathbb{Z}$, called the {\em degree}\index{degree of a graded module homomorphism} of $\varphi$. A graded homomorphism of degree $0$ is also called {\em degree-preserving}\index{degree preserving homomorphism}.
 \end{definition}
 
 
@@ -3071,6 +3071,9 @@ However, we will show later that the height of any ideal in a Noetherian ring is
 
 \Mar{23}
 
+\begin{exer} Let $R$ be a UFD. Then a nonzero ideal has height $1$ if and only if it is principal.
+\end{exer}
+
 %\begin{lem} Let $R$ be a UFD and $f\in R$ be nonzero. Then $\htt((f))=1$.
 %\end{lem}
 %\begin{proof}
@@ -3087,7 +3090,7 @@ However, we will show later that the height of any ideal in a Noetherian ring is
 In fact, once we believe that $\dim(K[y,z])=2$, we will believe $\dim(R)=2$.
 
 We can write down an explicit chain of primes of $R$ of length 2: 
-\[(\bar x)\subsetneq (\bar x, \bar y)\subsetneq (\bar x, \bar y, \bar z).\] 
+\[(\bar x)\subsetneqq (\bar x, \bar y)\subsetneqq (\bar x, \bar y, \bar z).\] 
 
 In $K[x,y,z]$, we have $\htt((xy,xz)) = \min\{ \htt(x), \htt(y,z) \} = \min\{ 1, \geq 2\} = 1$.
 
@@ -3100,7 +3103,7 @@ We want to compute a nontrivial example of dimension. We will generalize the rou
 \end{exer}
 
 \begin{ex}
-Let $K$ be an infinite field. Let $R=K[t^3,t^4,t^5]$. We have shown that $R\cong \frac{K[x,y,z]}{(x^3-yz,y^2-xz,z^2-x^2y)}$, and that $R$ is the coordinate ring of the curve $X=\{ (t^3,t^4,t^5) \ | t\in K\}$ over an infinite field $K$. As $X$ is a curve / is parameterized by a single parameter we expect the dimension of the ring $R$ (equivalently of the variety $X$) to be $1$. Let's prove this.
+Let $K$ be an infinite field. Let $R=K[t^3,t^4,t^5]$. We have shown that $\displaystyle R\cong \frac{K[x,y,z]}{(x^3-yz,y^2-xz,z^2-x^2y)}$, and that $R$ is the coordinate ring of the curve $X=\{ (t^3,t^4,t^5) \ | t\in K\}$ over an infinite field $K$. As $X$ is a curve / is parameterized by a single parameter we expect the dimension of the ring $R$ (equivalently of the variety $X$) to be $1$. Let's prove this.
 
 $R$ is a domain, so $(0)$ is the unique minimal prime. We need to show that any nonzero prime ideal is maximal.
 
@@ -3113,7 +3116,7 @@ Let $\p\in \Spec(R)$ be nonzero. Note first that $\p \cap S \neq 0$, since if $f
 
 \begin{definition}
  A ring is {\em catenary}\index{catenary} if for every pair of primes $\q \supseteq \p$ in $R$, every saturated chain of primes $\p=\p_0 \subsetneqq \p_1  \subsetneqq \cdots \subsetneqq \p_n=\q $
-	 has the same (finite) length.
+	 has the same length.
 	\item A ring is {\em equidimensional}\index{equidimensional} if every maximal ideal has the same finite height, and every minimal prime has the same dimension.
 \end{definition}
 
@@ -3160,9 +3163,11 @@ It is difficult to come up with examples of rings that are not catenary, but the
 %\end{remark}
 %
 %
+\begin{comment}
 
+\Mar{25}
 
-We give a related definition of dimension for modules, but first we remark on the geometric intuition behind this. In the same way as we visualize the ring $R$ by means of the topological space $\Spec(R)$ (or more concretely we visualize affine rings $R=K[x_1,\ldots,x_n]/I$ as the coordinate ring of the algebraic zet $Z(I)$), we visualize modules $M$ by means of their support, which is a subset of $\Spec(R)$.
+We give a related definition of dimension for modules.
 
 \begin{definition} The \emph{dimension}\index{dimension of a module} of an $R$-module $M$ is defined as 
 \[\dim(M)=\dim(R/\ann_R(M)).\]
@@ -3189,30 +3194,25 @@ where $\cI(y) K[X]$ denotes the expansion of the ideal $\cI(y)\in K[Y]$ to $K[X]
 \end{exer}
 
 \begin{defn}
-Let $\phi:R\to S$ be a ring homomorphism and $\p\in \Spec(R)$ be a prime ideal. We define the \emph{fiber ring}\index{fiber ring}\index{\kappa_{\phi}(\p)} of $\phi$ over $\p$ as
-\[ \kappa_{\varphi}(\p) = (R\smallsetminus \p)^{-1}(S/\p S),\]
-where, by abuse of notation, we write $R\smallsetminus \p$ for the image of $R\smallsetminus \p$ in $S/\p S$ via $\phi$ and the quotient map $S\to S/\p S$  (and $\p S$ for $\phi(\p) S$ as usual).
+Let $\psi:R\to S$ be a ring homomorphism and $\p\in \Spec(R)$ be a prime ideal. We define the \emph{fiber ring}\index{fiber ring}\index{\kappa_{\psi}(\p)} of $\psi$ over $\p$ as
+\[ \kappa_{\psi}(\p) = (R\smallsetminus \p)^{-1}(S/\p S),\]
+where, by abuse of notation, we write $R\smallsetminus \p$ for the image of $R\smallsetminus \p$ in $S$ (and $\p S$ for $\psi(\p) S$ as usual).
 
 In the special case $\fm \subseteq R$ is maximal, $S/\fm S$ is an $R/\fm$-module, which is a vector space, so every element of $R\smallsetminus \fm$ acts as a unit on $S/\fm S$, so the localization is redundant, and 
-\[ \kappa_\phi(\fm) = S/\fm S.\]
+\[ \kappa_\psi(\fm) = S/\fm S.\]
 
 As another special case, for the identity map, we simply write $\kappa(\p)$\index{$\kappa(\p)$}. That is, \[\kappa(\p) = R_{\p} / \p R_\p.\]
 \end{defn}
 
 The point of this definition is the following.
 
-\begin{lemma} Let $\phi:R\to S$ be a ring homomorphism and $\p\in \Spec(R)$ be a prime ideal. The natural map $S \to \kappa_{\phi}(\p)$ induces a homeomorphism (in particular, an order-preserving bijection)
-\[ \Spec( \kappa_{\phi}(\p) ) \cong \{ \q \in \Spec(S) \ | \ \phi^*(\q) = \p \},\]
+\begin{lemma} Let $\psi:R\to S$ be a ring homomorphism and $\p\in \Spec(R)$ be a prime ideal. The natural map $S \to \kappa_{\psi}(\p)$ induces a homeomorphism (in particular, an order-preserving bijection)
+\[ \Spec( \kappa_{\psi}(\p) ) \cong \{ \q \in \Spec(S) \ | \ \psi^*(\q) = \p \},\]
 where the right-hand side obtains the subspace topology from $\Spec(S)$.
 \end{lemma}
 \begin{proof}
-First, we note that for any localization map or any quotient map, the induced map on Spec is a homeomorphism onto its image (exercise!). Write $S\xra{\alpha} S/\p S \xra{\beta} (R\smallsetminus \p)^{-1}(S/\p S)$. We have \[ \im(\beta^*)=\{ \overline{\q} \in \Spec(S/\p S) \ | \ \overline{\q} \cap \overline{\phi(R \smallsetminus \p)} = \varnothing\} .\]
-Write $\overline{\phi}$ for the induced map from $R/\p \to S/\p S$. We have 
-\[\overline{\q} \cap \overline{\phi(R \smallsetminus \p)}= \varnothing \ \Leftrightarrow \
-\overline{\q} \cap \overline{\phi}(R/\p \smallsetminus 0_{R/\p})= \varnothing \ \Leftrightarrow \
- \overline{\phi}^{-1}(\overline{\q})\subseteq 0_{R/\p} \  \Leftrightarrow \
- \overline{\phi}^{-1}(\overline{\q})= 0_{R/\p}. \]
-Under the map $\alpha$, such a prime $\overline{q}$ corresponds to a prime $\q$ in $S$ that contains $\p S$, so $\p \subseteq \phi^{-1}(\q)$; the condition above translates to $\phi^{-1}(\q) = \p$.
+First, we recall that for any localization map or any quotient map, the induced map on Spec is a homeomorphism onto its image. 
+Write our natural map as $S\to S/\psi(\p) S \to \psi(R\smallsetminus \p)^{-1}(S/\psi(\p) S)$. Then $\q$ is in the image of the induced map on Spec if and only if $\q \supseteq \psi(\p) S \ \text{and} \ \q \cap \psi(R\smallsetminus \p) = \varnothing$. The first condition is equivalent to $\q \supseteq \psi(\p)$, which in turn means $\psi^{-1}(\q) \supseteq \p$; the latter condition is equivaalent to $\psi^{-1}(\q) \subseteq \p$. Together, $\q$ is in the image if and only if $\psi^{-1}(\q) = \p$.
 \end{proof}
 
 
