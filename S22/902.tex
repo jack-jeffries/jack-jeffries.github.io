@@ -3163,7 +3163,7 @@ It is difficult to come up with examples of rings that are not catenary, but the
 %\end{remark}
 %
 %
-\begin{comment}
+
 
 \Mar{25}
 
@@ -3232,6 +3232,11 @@ Note that $\p S$ may not be prime, in general.
 Let $R=\CC[x^n] \subseteq S=\CC[x]$. The ideal $(x^n-1) R$ is prime, while $(x^n-1) S = (\prod_{i=0}^{n-1} x - \zeta^i) S$, where $\zeta$ is a primitive $n$th root of unity, is not. However, each of its minimal primes $(x-\zeta^i)S$ contracts to $(x^n-1)R$. Similarly, the ideal $x^n R$ is prime, while $x^n S$ is not radical.
 \end{example}
 
+If $\p$ is in the image of the induced map on spec, it must be the contraction of some minimal prime of $\p S$, but not necessarily every minimal prime of $\p S$.
+
+\begin{ex} Let $R=K[u,v] \xra{\alpha} S=K[x,y]$ via $\alpha(u)=x$, $\alpha(v)=xy$. Then $vS$ has two minimal primes $(x), (y)$. Note that $(x) \cap R = (u,v)$, but $(y) \cap R = (v)$.
+\end{ex}
+
 \begin{corollary} If $R\subseteq S$ is a direct summand, then $\Spec(S) \to \Spec(R)$ is surjective.
 \end{corollary}
 \begin{proof} We know that $I S \cap R = I$ for all ideals in this case.
@@ -3270,22 +3275,7 @@ Let $S=\sum R b_i$. We have $x b_i = (\sum_k a_k s_k) b_i = \sum_j a_{ij} b_j$ w
 The last statement follows from the fact that $\overline{I}^S \cap R = \overline{I}$, which is immediate from the definition.
 \end{proof}
 
-%Define local ring, local homom.
-
-%\begin{lemma}
-% Let $(R,\m) \to (S,\n)$ be a flat and local homomorphism.
-%\begin{enumerate}
-%\item If an $R$-module $M\neq 0$, then $M \otimes_R S\neq 0$.
-%\item $R\to S$ is injective.
-%\end{enumerate}
-%\end{lemma}
-%\begin{proof}
-%\begin{enumerate}
-%\item
-%Let $m\in M$ be nonzero, so we have an injection $R/\ann_R(m) \cong Rm \subseteq M$, and $\ann_R(m) \subseteq \m$. By flatness, we have $S/\ann_R(m)S \cong S(1\otimes m) \subseteq S\otimes_R M$, and since $\ann_R(m)S \subseteq \m S \subseteq \n$, this is nonzero.
-%\item Let $I=\ker(R \to S)$. for any ideal $I$ of $R$, we have $I\otimes_R S\cong IS$ by flatness (exercise!). But, if $I\neq 0$, then $0\neq I\otimes_R S = IS = 0$, a contradiction.\qedhere
-%\end{enumerate}
-%\end{proof}
+\Mar{28}
 
 \begin{theorem}[Lying over] If $R\subseteq S$ is an integral inclusion then $\Spec(S) \to \Spec(R)$ is surjective.
 \end{theorem}
@@ -3295,6 +3285,7 @@ The last statement follows from the fact that $\overline{I}^S \cap R = \overline
 
 \begin{remark} Both ``integral'' and ``inclusion'' are important: the map $R\to R_f$ is a nonintegral inclusion if $f$ is a nonzerodivisor, and the image is the complement of $V(f)$; the map $R\to R/(f)$ is an integral noninclusion, and the the image is $V(f)$.
 \end{remark}
+
 
 \begin{theorem}[Incomparability]
 If $\varphi: R \to S$ is integral, and $\q \subseteq \q'$ are such that $\varphi^*(\q)=\varphi^*(\q')$, then $\q=\q'$.
@@ -3307,30 +3298,32 @@ Now, if $R\hookrightarrow S$ is integral, then $R/\p \hookrightarrow S/\p S$ (wh
 We then have that $\kappa(\p)\hookrightarrow \kappa_{\varphi}(\p)$ is integral. If $\q$ is a prime of $\kappa_{\varphi}(\p)$, then $\kappa(\p)\subseteq \kappa_{\varphi}(\p) / \q$ is an integral inclusion from a field to a domain, and by a lemma from a while ago, we must have that $\kappa_{\varphi}(\p) / \q$ is a field. Therefore, $\kappa_{\varphi}(\p)$ is zero-dimensional. Since there are no inclusions between primes in $\kappa_{\varphi}(\p)$, there are no inclusions between primes that contract to $\p$.
 \end{proof}
 
-\
 
 
 \begin{corollary}
-If $R \to S$ is integral, and $S$ is Noetherian, then for any $\p\in \Spec(R)$, only finitely many primes contract to $\p$. If, moverover, $S=\sum_{i=1}^t R s_i$ is generated as a module by $t$ elements, then for any prime of $R$, at most $t$ primes of $S$ map to $\p$.
+If $R \to S$ is integral, and $S$ is Noetherian, then for any $\p\in \Spec(R)$, only finitely many primes contract to $\p$.
 \end{corollary}
+
 \begin{proof}
 	For the first statement, this case the fiber ring $\kappa_{\varphi}(\p)$ of any prime is also Noetherian, hence has finitely many minimal primes. Every prime of the fiber is minimal, though.
-
-for the second statement, we have $\kappa_{\phi}(\p) = \sum_{i=1}^t \kappa(\p) \bar{s_i}/1 $, and hence $\kappa_{\phi}(\p)$ is a zero-dimensional ring that is a $\kappa(\p)$-vector space of dimension at most $t$.  We have a minimal primary decomposition $(0)_{\kappa_{\phi}(\p)}=\q_1 \cap \cdots \cap \q_s$ where $\sqrt{\q_i}$ are distinct maximal ideals; these maximal ideals are in bijection with the primes mapping to $\p$ in $S$. Thus, for $i\neq j$, $V(\q_i + \q_j) = V(\q_i) \cap V(\q_j)=\varnothing$, so $\q_i + \q_j = \kappa_{\phi}(\p)$, and by the Chinese Remainder Theorem, $\kappa_{\phi}(\p)\cong \kappa_{\phi}(\p)/\q_1 \times \cdots \times  \kappa_{\phi}(\p)/\q_s$. The map $\kappa(\p) \to \kappa_{\phi}(\p)/\q_i$ is nonzero for each $i$ (since it is integral), so each factor is a $\kappa(\p)$-vector space. Considering vector space dimension, find that the number of factors $s$ is at most $t$.
 \end{proof}
+
+\begin{exer}  If $S=\sum_{i=1}^t R s_i$ is generated as an  $R$-module by $t$ elements, then for any prime of $R$, at most $t$ primes of $S$ map to $\p$.
+\end{exer}
+%We have $\kappa_{\phi}(\p) = \sum_{i=1}^t \kappa(\p) \bar{s_i}/1 $, and hence $\kappa_{\phi}(\p)$ is a zero-dimensional ring that is a $\kappa(\p)$-vector space of dimension at most $t$.  We have a minimal primary decomposition $(0)_{\kappa_{\phi}(\p)}=\q_1 \cap \cdots \cap \q_s$ where $\sqrt{\q_i}$ are distinct maximal ideals; these maximal ideals are in bijection with the primes mapping to $\p$ in $S$. Thus, for $i\neq j$, $V(\q_i + \q_j) = V(\q_i) \cap V(\q_j)=\varnothing$, so $\q_i + \q_j = \kappa_{\phi}(\p)$, and by the Chinese Remainder Theorem, $\kappa_{\phi}(\p)\cong \kappa_{\phi}(\p)/\q_1 \times \cdots \times  \kappa_{\phi}(\p)/\q_s$. The map $\kappa(\p) \to \kappa_{\phi}(\p)/\q_i$ is nonzero for each $i$ (since it is integral), so each factor is a $\kappa(\p)$-vector space. Considering vector space dimension, find that the number of factors $s$ is at most $t$.
 
 
 \begin{corollary} If $R\to S$ is integral, then $\mathrm{height}(\q) \leq \mathrm{height}(\q \cap R)$ for any $\q\in \Spec(S)$. In particular, $\dim(S) \leq \dim(R)$.
 \end{corollary}
 \begin{proof}
-	Given a chain of primes $\a_0 \subsetneqq \cdots \subsetneqq \a_n = \q$ in $\Spec(S)$, we can contract to $R$, and we get a chain of distinct primes in $\Spec(R)$, so the height of the latter is at least as big.
+	Given a chain of primes $\mathfrak{a}_0 \subsetneqq \cdots \subsetneqq \mathfrak{a}_n = \q$ in $\Spec(S)$, we can contract to $R$, and we get a chain of distinct primes in $\Spec(R)$, so the height of the latter is at least as big.
 \end{proof}
 
 
 \begin{theorem}[Going up]
 	If $R\to S$ is integral, then for every $\p \subsetneqq \p'$ in $\Spec(R)$ and $\q$ in $\Spec(S)$ with $\q \cap R=\p$, there is some $\q'\in \Spec(S)$ with $\q \subsetneqq \q'$ and $\q' \cap R = \p'$.
 \end{theorem}
-\begin{proof} Consider the map $R/\p \to S/\q$. This is integral, as we observed above. It is also injective, so lying over applies. Thus, there is a prime $\a$ of $S/\q$ that contracts to the prime $\p'/\p$ in $\Spec(R/\p)$. We can write $\a=\q'/\q$ for some $\q'\in \Spec(S)$, and we must have that $\q'$ contracts to $\p'$.
+\begin{proof} Consider the map $R/\p \to S/\q$. This is integral, as we observed above. It is also injective, so lying over applies. Thus, there is a prime $\mathfrak{a}$ of $S/\q$ that contracts to the prime $\p'/\p$ in $\Spec(R/\p)$. We can write $\mathfrak{a}=\q'/\q$ for some $\q'\in \Spec(S)$, and we must have that $\q'$ contracts to $\p'$.
 \end{proof}
 
 \begin{corollary}
