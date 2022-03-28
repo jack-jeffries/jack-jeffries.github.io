@@ -3232,10 +3232,7 @@ Note that $\p S$ may not be prime, in general.
 Let $R=\CC[x^n] \subseteq S=\CC[x]$. The ideal $(x^n-1) R$ is prime, while $(x^n-1) S = (\prod_{i=0}^{n-1} x - \zeta^i) S$, where $\zeta$ is a primitive $n$th root of unity, is not. However, each of its minimal primes $(x-\zeta^i)S$ contracts to $(x^n-1)R$. Similarly, the ideal $x^n R$ is prime, while $x^n S$ is not radical.
 \end{example}
 
-If $\p$ is in the image of the induced map on spec, it must be the contraction of some minimal prime of $\p S$, but not necessarily every minimal prime of $\p S$.
 
-\begin{ex} Let $R=K[u,v] \xra{\alpha} S=K[x,y]$ via $\alpha(u)=x$, $\alpha(v)=xy$. Then $vS$ has two minimal primes $(x), (y)$. Note that $(x) \cap R = (u,v)$, but $(y) \cap R = (v)$.
-\end{ex}
 
 \begin{corollary} If $R\subseteq S$ is a direct summand, then $\Spec(S) \to \Spec(R)$ is surjective.
 \end{corollary}
@@ -3276,6 +3273,11 @@ The last statement follows from the fact that $\overline{I}^S \cap R = \overline
 \end{proof}
 
 \Mar{28}
+
+If $\p$ is in the image of the induced map on spec, it must be the contraction of some minimal prime of $\p S$, but not necessarily every minimal prime of $\p S$.
+
+\begin{ex} Let $R=K[u,v] \xra{\alpha} S=K[x,y]$ via $\alpha(u)=x$, $\alpha(v)=xy$. Then $vS$ has two minimal primes $(x), (y)$. Note that $(x) \cap R = (u,v)$, but $(y) \cap R = (v)$.
+\end{ex}
 
 \begin{theorem}[Lying over] If $R\subseteq S$ is an integral inclusion then $\Spec(S) \to \Spec(R)$ is surjective.
 \end{theorem}
@@ -3332,6 +3334,7 @@ If $R \to S$ is integral, and $S$ is Noetherian, then for any $\p\in \Spec(R)$, 
 \begin{proof}
 	We just need to show that $\dim(R)\leq \dim(S)$. Given a chain of primes $\p_0 \subsetneqq \cdots \subsetneqq \p_n$ in $\Spec(R)$, by lying over, there is a prime $\q_0 \in \Spec(S)$ contracting to $\p_0$. Then by going up, we have $\q_0 \subsetneqq \q_1$ with $\q_1 \cap R = \p_1$. Continuing, we can build a chain of distinct primes in $S$ of length $n$.
 \end{proof}
+\begin{comment}
 
 \begin{definition}
 	A domain is \emph{normal}\index{normal domain} if it is integrally closed in its field of fractions.
