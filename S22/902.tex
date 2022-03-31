@@ -3400,11 +3400,13 @@ We already know that $\htt(\q) \leq \htt(\q \cap R)$. Now, take a maximal chain 
 \end{proof}
 
 
-\begin{comment}
+\
 
 
-\begin{exer} Show that if $R$ is a normal domain, $S$ is a Noetherian domain, and $R \subseteq S$ is integral, then $\htt(I) = \htt(I \cap R)$ for all ideals $I$ of $S$. You may want to start by showing $\sqrt{I \cap R} = \sqrt{I} \cap R$.
-\end{exer}
+%\begin{exer} Show that if $R$ is a normal domain, $S$ is a Noetherian domain, and $R \subseteq S$ is integral, then $\htt(I) = \htt(I \cap R)$ for all ideals $I$ of $S$. You may want to start by showing $\sqrt{I \cap R} = \sqrt{I} \cap R$.
+%\end{exer}
+
+\Apr{1}
 
 \subsection{Noether normalization and dimension of affine rings}
 
@@ -3507,7 +3509,10 @@ Recall that the \DEF{transcendence degree} of a field extension is the size of a
 	\[\mathrm{trdeg}_K(\mathrm{frac}(R))= \mathrm{trdeg}_K(\mathrm{frac}(A)) = \mathrm{trdeg}_K(K(z_1,\dots,z_d)) = d = \dim(A) = \dim(R).\qedhere\]
 \end{proof}
 
+\begin{ex} Let us compute the dimension of the ring $R=\frac{K[a,b,c,d]}{(b^2-ac,c^2-bd,bc-ad)}$. We claim that $K[a,d]\subseteq R$ is a Noether normalization. The inclusion is integral, since $b^2=ac$ implies $b^4=a^2 c^2 = abd$, so $b$ satisfies $t^4 - ad t =0$; similarly with $c$. Alternatively, one can use the relations to take any polynomial expression in $a,b,c,d$ and reduce the $b,c$-degree to at most $1$; any two distinct expressions with $b,c$-degree at most 1 are not equivalent, so $R= K[a,d] \oplus b K[a,d] \olpus c K[a,d]$. In particular, $a,d$ are algebraically independent in $R$. We conclude that the dimension is two.
 
+Also, there is an isomorphism $R\cong K[x^3,x^2 y, xy^2, y^3]$ (which can be verified with the help of the computation above). The latter expression makes clear that $R$ is a domain, and its fraction field is $K(x^3,x^2 y, xy^2, y^3) = K(x^3,y/x)$, which has transcendence degree two over $K$. We again see that the dimension is two.
+\end{ex}
 
 \end{comment}
 \printindex
