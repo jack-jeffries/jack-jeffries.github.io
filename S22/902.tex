@@ -3194,7 +3194,7 @@ where $\cI(y) K[X]$ denotes the expansion of the ideal $\cI(y)\in K[Y]$ to $K[X]
 \end{exer}
 
 \begin{defn}
-Let $\psi:R\to S$ be a ring homomorphism and $\p\in \Spec(R)$ be a prime ideal. We define the \emph{fiber ring}\index{fiber ring}\index{\kappa_{\psi}(\p)} of $\psi$ over $\p$ as
+Let $\psi:R\to S$ be a ring homomorphism and $\p\in \Spec(R)$ be a prime ideal. We define the \emph{fiber ring}\index{fiber ring}\index{$\kappa_{\psi}(\p)$} of $\psi$ over $\p$ as
 \[ \kappa_{\psi}(\p) = (R\smallsetminus \p)^{-1}(S/\p S),\]
 where, by abuse of notation, we write $R\smallsetminus \p$ for the image of $R\smallsetminus \p$ in $S$ (and $\p S$ for $\psi(\p) S$ as usual).
 
@@ -3529,7 +3529,7 @@ First assume that $K=\overline{K}$ is algebraically closed. Observe that the map
 is surjective: given $a,d\in K$, write $a=\alpha^3, d=\delta^3$, and note that $(\alpha^3, \alpha^2 \delta, \alpha \delta^2, \delta^3)$ is an element of $X=\cZ(I)$ that maps to $(a,d)$. Thus, the kernel of the induced map on coordinate rings $K[\mathbb{A}^2] \to K[X]$ is $\cI(\mathbb{A}^2) = 0$; i.e, the map is injective. by the Nullstellensatz, $\mathcal{I}(\cZ(I))= \sqrt{I}$, and our induced map on coordinate rings is the map
 \[\xymatrix@R=1mm{ K[u,v] \ar[r] & K[a,b,c,d] / \sqrt{I} \qquad \phi^*(u)=a, \ \phi^*(v)=d. }\]
 Since this map is injective, and this factors as
-\[\xymatrix@R=1mm{ K[u,v] \ar[r]^-psi & K[a,b,c,d] / I \ar@{->>}[r] &  K[a,b,c,d] / \sqrt{I} }\]
+\[\xymatrix@R=1mm{ K[u,v] \ar[r]^-\psi & K[a,b,c,d] / I \ar@{->>}[r] &  K[a,b,c,d] / \sqrt{I} }\]
 the first map is injective. This covers the case $K$ is algebraically closed.
 
 For a general field $K$, let $J$ be the kernel so that 
@@ -3538,20 +3538,25 @@ is exact. Then, since $\overline{K}$ is a flat $K$-module, tensoring yields an e
 \[\xymatrix@R=1mm{ 0  \ar[r] & J \otimes_K \overline{K}   \ar[r] & \overline{K}[u,v] \ar[r] & \overline{K}[a,b,c,d] / I ,}\]
 so we must have $J \otimes_K \overline{K}=0$, which implies $J=0$, since the tensor product of two nonzero vector spaces is nonzero.
 \end{ex}
-\begin{comment}
+
+
+\Apr{6}
 
 
 \section{Dimension theory, locally}
 
-\subsection{Artinian rings}
+\subsection{Dimension zero}
 
 To prepare for our next big theorems in dimension theory, we need to understand the structure of zero-dimensional Noetherian rings. To get started on that, we will take a theorem on primary decomposition for certain ideals in not necessarily Noetherian rings.
 
 \begin{theorem} Let $R$ be a ring, not necessarily Noetherian. Let $I$ be an ideal such that $V(I)$ is a finite set of maximal ideals $\m_1,\dots,\m_t$. Then, there is a primary decomposition $I=\q_1 \cap \cdots \cap \q_t$ and we also have $I=\q_1 \cdots \q_t$, and $R/I \cong R/\q_1 \times \cdots \times R/\q_t$.
 \end{theorem}
 \begin{proof}
-	First, we claim that $I R_{\m_i}$ is $\m_i R_{\m_i}$-primary. Indeed, note that $(R/I)_{\m_i} = R_{\m_i} / I R_{\m_i}$ has a unique maximal ideal $\m_i R_{\m_i}$. Thus, if $x,y\in R_{\m_i}$ are such that $xy\in I R_{\m_i}$, and $x\notin \m_i R_{\m_i}$, then $x$ is a unit modulo $I_{\m_i}$, so $y\in I R_{\m_i}$. Then, the contraction of a primary ideal is primary (prove it!) so $\q_i = I R_{\m_i} \cap R$ is $\m_i$-primary, and $I \subseteq \q_1 \cap \cdots \cap \q_t$. On the other hand, equality of these modules is a local property; if $\p \notin V(I)$, then both sides are the unit ideal in $R_{\p}$, otherwise, in $R_{\m_i}$ they are proper but equal. Thus, the primary decomposition.
-	
+	First, we claim that $I R_{\m_i}$ is $\m_i R_{\m_i}$-primary, since $\Min(I R_{\m_i}) = \{ \m_i R_{\m_i} \}$, so $\sqrt{I R_{\m_i}} = \m_i R_{\m_i}$, which is maximal, so $I R_{\m_i}$ is primary.
+	Then, the contraction of a primary ideal is primary so $\q_i = I R_{\m_i} \cap R$ is $\m_i$-primary, and $I \subseteq \q_1 \cap \cdots \cap \q_t$. On the other hand, equality of these modules is a local property; if $\p \notin V(I)$, then 
+	\[ (\q_1 \cap \cdots \cap \q_t) R_{\p} = \q_1 R_{\p} \cap \cdots \cap  \q_t R_{\p} = R_\p \cap \cdots \cap R_\p = R_\p = I R_\p,\]
+	and if $\m_i \in V(I)$
+		\[ (\q_1 \cap \cdots \cap \q_t) R_{\m_i} = \q_1 R_{\m_i} \cap \cdots \cap  \q_t R_{\m_i} = R_{\m_1} \cap \cdots \cap \q_i R_{\m_i} \cap \cdots \cap R_{\m_i} = \q_i R_{\m_i} = (I R_{\m_i} \cap R) R_{\m_i} = I R_{\m_i}.\]
 	The fact that this intersection is a product and the quotient ring is a direct product follows from the Chinese remainder theorem: $V(\q_i + \q_j) = V(\q_i) \cap V(\q_j) = \varnothing$, so each pair of ideals is comaximal.
 \end{proof}
 
@@ -3585,12 +3590,14 @@ To prepare for our next big theorems in dimension theory, we need to understand 
 	and since the Artinian property descends to submodules and quotients, each factor has finite length. Thus, $R$ has finite length, so ideals in $R$ satisfy ACC, as required.
 \end{proof}
 
+\begin{comment}
+
+
 \subsection{Height and number of generators}
 
 \begin{theorem}[Krull's principal ideal theorem]
 	Let $R$ be a Noetherian ring, and $f\in R$. Then, every minimal prime of $(f)$ has height at most one.
 \end{theorem}
-We note that this is stronger than the statement that the height of $(f)$ is at most one: we recall that that means that some minimal prime of $(f)$ has height at most one.
 \begin{proof}
 	If the theorem is false, so that there is some $R$, $\p$, $f$ with $\p$ minimal over $(f)$ and $\htt(\p)>1$, localize at $\p$ and mod out by a minimal prime to obtain a Noetherian local domain $(R,\m)$ of dimension at least two in which $\m$ is the unique minimal prime of $(f)$. In particular, $\overline{R}=R/(f)$ is zero-dimensional. Let $\q$ be a prime in between $(0)$ and $\m$.
 	
@@ -3600,6 +3607,13 @@ We note that this is stronger than the statement that the height of $(f)$ is at 
 	
 	Now, if $a\in \q$ is nonzero, we have $a^n\in \q^n \subseteq \q^{(n)} =\q^{(m)}$ for all $m$, so $\bigcap_{m\in \NN} \q^{(m)}\neq 0$. On the other hand, $\q^{(m)} \subseteq \q^m R_{\q}$, and $\bigcap_{m\in \NN} \q^{(m)} \subseteq \bigcap_{m\in \NN} \q^m R_{\q} =0$ by Krull intersection. This is the contradiction we seek.
 \end{proof}
+
+\begin{rem} We note that this is stronger than the statement that the height of $(f)$ is at most one: we recall that that only means that some minimal prime of $(f)$ has height at most one.
+\end{rem}
+
+\begin{ex} Noetherian is necessary. Let $R=K[x,xy,xy^2,\dots] \subseteq K[x,y]$. Note that $(x)$ is not prime: for $a>0$, $xy^a \notin (x)$, since $y^a\notin R$, but $(xy^a)^2 = x \cdot x y^{2a}\in (x)$. Thus, $\m=(x,xy,xy^2,\dots) \subseteq \sqrt{(x)}$, and since $\m$ is a maximal ideal, we have equality, so $\Min{(x)}=\{\m\}$. However, the ideal $\p=(xy,xy^2, xy^3,\dots) = (y) K[x,y] \cap R$ is prime, and the chain $(0) \subsetneq \p \subsetneq \m$ shows that $\htt(\m)>1$.
+
+
 
 We want to generalize this, but it is not so straightforward to run an induction. We will need a lemma that allows us to control the chains of primes we get.
 
@@ -3616,7 +3630,7 @@ Let $R$ be a Noetherian ring, and $I=(f_1,\dots,f_n)$ be an ideal generated by $
 \begin{proof}
 We proceed by induction on $n$. The case $n=1$ is the principal ideal theorem.
 
-Let $I=(f_1,\dots,f_n)$ be an ideal, $\p$ be a minimal prime of $I$, and $\p_0 \subsetneq \p_1 \subsetneqq \cdots \subsetneqq \p_{h}=\p$ be a saturated chain of length $h$ ending at $\p$. If $f_1\in \p_1$, then we can apply the induction hypothesis to the ring $\overline{R}=R/(f_1)$ and the ideal $(f_2,\dots,f_n)\overline{R}$: the chain $\p_1 \overline{R} \subsetneqq \cdots \subsetneqq \p_{h} \overline{R}$ has length at most $h-1=n-1$, and we will be done. We use the previous lemma to replace our given chain with a chain of the same length that satisfies this hypothesis.
+Let $I=(f_1,\dots,f_n)$ be an ideal, $\p$ be a minimal prime of $I$, and $\p_0 \subsetneq \p_1 \subsetneqq \cdots \subsetneqq \p_{h}=\p$ be a saturated chain of length $h$ ending at $\p$. If $f_1\in \p_1$, then we can apply the induction hypothesis to the ring $\overline{R}=R/(f_1)$ and the ideal $(f_2,\dots,f_n)\overline{R}$: the chain $\p_1 \overline{R} \subsetneqq \cdots \subsetneqq \p_{h} \overline{R}$ has length $h-1$ at most $n-1$, so $h\leq n$. We use the previous lemma to replace our given chain with a chain of the same length that satisfies this hypothesis.
 
 In the given chain, let $f_1 \in \p_{i+1} \smallsetminus \p_i$. If whenever $i>0$ we can decrease $i$, we can eventually get to the chain we want. To do this, we just need to apply the previous lemma with $\mathfrak{r}=\p_{i+1}$, $\q=\p_i$, and $\p=\p_{i-1}$.
 \end{proof}
@@ -3625,10 +3639,15 @@ In the given chain, let $f_1 \in \p_{i+1} \smallsetminus \p_i$. If whenever $i>0
 	\begin{enumerate}
 		\item The bound is certainly sharp: an ideal generated by $n$ variables $(x_1,x_2,\dots,x_n)$ in a polynomial ring has height~$n$. There are many other such ideals, like $(u^3-xyz,x^2+2xz-6y^5,vx+7vy)\in K[u,v,w,x,y,z]$. An ideal of height $n$ generated by $n$ elements is called a \emph{complete intersection}\index{complete intersection}.
 		\item The ideal $(xy,xz)$ in $K[x,y,z]$ has minimal primes of heights 1 and 2.
-		\item It is possible to have associated primes of height greater than the number of generators. For a cheap example, in $R=K[x,y]/(x^2,xy)$, the ideal generated by zero elements (the zero ideal) has an associated prime of height two, namely $(x,y)$.
-		\item For the same phenomenon, but in a nice polynomial ring, $I=(x^3, y^3, x^2 u + xy v + y^2 w) \subset R= K[u,v,w,x,y]$. Note that $(u,v,w,x,y) = (I : x^2 y^2)$, so $I$ has an associated prime of height 5.
-		\item Noetherian is necessary. Let $R=K[x,xy,xy^2,\dots] \subseteq K[x,y]$. Note that $(x)$ is not prime: for $a>0$, $xy^a \notin (x)$, since $y^a\notin R$, but $(xy^a)^2 = x \cdot x y^{2a}\in (x)$. Thus, $\m=(x,xy,xy^2,\dots) \subseteq \sqrt{(x)}$, and since $\m$ is a maximal ideal, we have equality, so $\Min{(x)}=\{\m\}$. However, the ideal $\p=(xy,xy^2, xy^3,\dots) = (y) K[x,y] \cap R$ is prime, and the chain $(0) \subsetneq \p \subsetneq \m$ shows that $\htt(\m)>1$.
-	\end{enumerate}
+		\item It is possible to have associated primes of height greater than the number of generators. For a cheap example, in $R=K[x,y]/(x^2,xy)$, the ideal generated by zero elements (the zero ideal) has an associated prime of height one, namely $(x,y)$.
+		\item For the same phenomenon, but in a nice polynomial ring, $I=(x^3, y^3, x^2 u + xy v + y^2 w) \subset R= K[u,v,w,x,y]$. Note that $x^2 y^2 \notin (x^3,y^3, u,v,w) \supseteq I$, so $x^2 y^2\notin I$. On the other hand, we have
+	\[	\begin{aligned}
+		x(x^2 y^2) &= y^2 x^3\in I \\	y(x^2 y^2)&= x^2 y^3 \in I  \\
+		u(x^2 y^2) &= y^2 ux^2 = -y^2(xyv + y^2w) \in I \\
+		v(x^2 y^2) &= xy vxy = -xy (x^2 u + y^2 w) \in I \\
+		w(x^2 y^2) &= x^2 w y^2 = -x^2( x^2 u + xy v) \in I,\end{aligned}\]
+		so the maximal ideal of height five $(u,v,w,x,y)$ is associated to $I$.
+		\end{enumerate}
 \end{example}
 
 
