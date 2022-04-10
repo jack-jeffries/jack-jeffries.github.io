@@ -351,7 +351,7 @@
 \def\ua{\underline{a}}
 \def\ub{\underline{b}}
 
-
+\newcommand{\gr}{\mathrm{gr}}
 \newcommand{\Ob}{\mathrm{Ob}}
 \newcommand{\Set}{\mathbf{Set}}
 \newcommand{\Grp}{\mathbf{Grp}}
@@ -3640,7 +3640,7 @@ Let $I=(f_1,\dots,f_n)$ be an ideal, $\p$ be a minimal prime of $I$, and $\p_0 \
 In the given chain, let $f_1 \in \p_{i+1} \smallsetminus \p_i$. If whenever $i>0$ we can decrease $i$, we can eventually get to the chain we want. To do this, we just need to apply the previous lemma with $\mathfrak{r}=\p_{i+1}$, $\q=\p_i$, and $\p=\p_{i-1}$.
 \end{proof}
 
-\begin{comment}
+\Apr{11}
 
 \begin{example}
 	\begin{enumerate}
@@ -3731,13 +3731,28 @@ Observe that an absolutely minimal prime is minimal, since $\dim(R) \geq \dim(R/
 		
 		 \item This follows from the previous statement and the observation that $\dim(S/(f)) \lneqq \dim(S)$ if and only if $f$ is not in any absolutely minimal prime of $S$.\qedhere
 	\end{enumerate}
-
 \end{proof}
 
-\begin{ex} Note that the first inequality can fail in general. Let $\displaystyle R=\frac{K[x,y,z]}{(xy,xz,x^2-x)}$. This ring has dimension two: $A=K[y,z]$ is a Noether normalization, as $x^2-x=0$ makes $x$ integral over $A$, and no nonzero polynomial in $y,z$ withing $K[x,y,z]$ can belong to the ideal $(x) \supseteq (xy,xz,x^2-x)$. However, $\displaystyle R/(x-1) \cong \frac{K[x,y,z]}{(y,z,x-1)}\cong K$ has dimension zero.
+\begin{ex} Note that the first inequality can fail in general. 
+\begin{enumerate}
+\item Let $\displaystyle R=\frac{K[x,y,z]}{(xy,xz,x^2-x)}$. This ring has dimension two: $A=K[y,z]$ is a Noether normalization, as $x^2-x=0$ makes $x$ integral over $A$, and no nonzero polynomial in $y,z$ withing $K[x,y,z]$ can belong to the ideal $(x) \supseteq (xy,xz,x^2-x)$. However, $\displaystyle R/(x-1) \cong \frac{K[x,y,z]}{(y,z,x-1)}\cong K$ has dimension zero.
+\item Let $R=\ZZ_{(2)}[x]$. This ring has dimension at least two, but $R/(2x-1)\cong \Q$ has dimension zero.
+\end{enumerate}
 \end{ex}
 
 It is worth comparing the characterization in part three with our existence proof: we constructed a system of parameters by inductively avoiding all the minimal primes; a system a parameters is a sequence where we inductively avoid all of the absolutely minimal primes.
+
+\begin{rem} Let us discuss the geometric meaning of the results above. Let $K$ be an algebraically closed field, and $X$ an affine variety over $K$. Let $x\in X$ and $\m$ be the corresponding maximal ideal in $K[X]$. Let $X=Y_1\cup\cdots\cup Y_t$ be the irreducible decomposition of $X$, and $\p_1,\dots,\p_t$ be the corresponding minimal primes in $K[X]$. Then 
+\[\begin{aligned} \dim(X) &= \dim(K[X]) \\&= \max\{ \dim(K[X]/\p_i) \ | \ \p_i \ \text{minimal in} \ K[X] \} \\&= \max\{ \dim(Y_i) \ | \ Y_i \ \text{irreducible component of} \ K[X] \},\end{aligned}\]
+whereas, using the fact that every maximal ideal has the same height in a finitely generated domain over a a field,
+\[ \begin{aligned}\dim(K[X]_{\m}) &= \max\{ \dim(K[X]_{\m}/\p_i) \ | \ \p_i \ \text{minimal in} \ K[X]_{\m} \} \\&= \max\{ \dim(K[X]_{\m}/\p_i) \ | \ \p_i \subseteq \m, \ \p_i \ \text{minimal in} \ K[X] \} \\&= \max\{ \dim(K[X]/\p_i) \ | \ \p_i \subseteq \m, \ \p_i \ \text{minimal in} \ K[X] \} \\&= \max\{ \dim(Y_i) \ | \ Y_i \ni x, \ Y_i \ \text{irreducible component of} \ K[X] \}.\end{aligned}\]
+One defines the \DEF{dimension of $X$ at $x$} to be\index{ $\dim_x (X)$}
+\[\dim_x (X) : = \dim(K[X]_{\m}) = \max\{ \dim(Y_i) \ | \ Y_i \ni x, \ Y_i \ \text{irreducible component of} \ K[X] \}.\]
+Then, the theorem says that adding one equation can only decrease the dimension at a point by at most one.
+Globally, this says imposing one additional equation $f$ on the variety $X$ affects each component by either not changing its dimension, decreasing the dimension by one, or eliminating the component entirely. For example, $X=\cZ(xy,xz,x^2-x) = \cZ(x) \cup \cZ(y,z,x-1)$ is a disjoint union of a plane and a point, and the equation $\cZ(x-1)$ only intersects the second component.
+
+Back in the local setting, for an element in the local ring of a variety at a point to be a parameter, it must cut down on the dimension of each component of maximal dimension; i.e., must not vanish along each maximal dimensional component. For example, in $\displaystyle R=\frac{K[x,y,z]_{(x,y,z)}}{(xy,xz)}$, we have components cut out by $(x)$ and $(y,z)$, so a parameter must not vanish everywhere on the plane cut out by $(x)$.  Thus $y$ and $x-y$ are parameters, whereas $x$ is not. Two systems of parameters are $y,x-z$ and $x-y,z$. 
+\end{rem}
 
 We can use this characterization of dimension to prove an inequality on dimensions of fibers.
 
@@ -3748,6 +3763,227 @@ We can use this characterization of dimension to prove an inequality on dimensio
 By Krull height,
 \[ \dim(S) = \htt(\mathfrak{n}) = \htt(\mathfrak{n}^{ab}) \leq d+e = \dim(R) + \dim(S/\m S).\qedhere\]
 \end{proof}
+
+
+
+\section{Hilbert functions}
+
+
+
+\subsection{Hilbert functions of graded rings}
+
+
+\begin{definition} If $K$ is a field, the \emph{Hilbert function}\index{Hilbert function}\index{$H_R(t)$} of an $\NN$-graded $K$-algebra $R$ is the function $H_R:\ZZ \mapsto \NN \cup \infty$ with values $H_R(t):=\dim_K(R_t)$. Similarly, if $M$ is a $\ZZ$-graded $R$-module, we define the Hilbert function of $M$ in the same way.
+
+We also define the \DEF{cumulative Hilbert function} of $R$ as $\widetilde{H}_R(t):=\dim_K(R_{\leq t}) = \sum_{i=0}^t H_R(t)$.
+\end{definition}
+
+\begin{example}
+	Let $K$ be a field, and $R=K[x,y]/(x^2,y^2)$. This ring has a $K$-vector space basis by monomials that are not multiples of $x^2$ and $y^2$, namely $\{1,x,y,xy\}$. We then find $H_R(0)=1$, $H_R(1)=2$, $H_R(2)=1$, and $H_R(t)=0$ for $t>2$.
+\end{example}
+
+The key example of a Hilbert function is that of a polynomial ring.
+
+
+
+\begin{example}
+	Let $K$ be a field, and $R=K[x_1,\dots,x_n]$ be a polynomial ring with the standard grading: $|x_i|=1$ for each $i$. To compute the Hilbert function, we need to compute the size of a $K$-basis for $H_R(t)$ for each $t$. We have
+	\[ R_t = \bigoplus_{a_1+\dots+a_n=t} K x_1^{a_1} \cdots x_n^{a_n}.\] We can find a bijection between these monomials and the set of strings that contain $t$ stars and $n-1$ bars, where the monomial $x_1^{a_1} \cdots x_n^{a_n}$ corresponds to the string with $a_1$ stars, then a bar, then $a_2$ stars, a bar, etc. Thus, the number of monomials is the number of ways to choose $n-1$ bars from $t+n-1$ spots, i.e.,
+	\[ H_R(t)=\binom{t+n-1}{n-1} \quad\text{for $t\geq 0$.}\]
+	
+
+	We observe the binomial function here can be expressed as a polynomial in $t$ for $t\geq 0$; let 
+	\[ P_n(t)= \frac{(t+n-1)(t+n-2) \cdots (t+1)}{(n-1)!} \in \Q[t].\]
+	Observe that $P_n(t)$ has $-1,\dots,-(n-1)$ as roots. Then we have 
+	\[ H_R(t) = \begin{cases} P_n(t) & \text{if} \ t > -n \\ 0 & \text{if} \ t < 0. \end{cases} \]
+	Note that the two cases overlap for $t= -(n-1), \dots, -1$.
+\end{example}
+
+
+
+	
+
+While the Hilbert function was a polynomial for $n\in\NN$ in this example, this is not always the case. First, we need a graded analogue of Noether normalization.
+
+\begin{lem}  Let $K$ be an infinite field, and $f\in R=K[x_1,\dots,x_n]$, with $|x_i|=1$ be a homogeneous polynomial of degree $N$. There is a degree-preserving $K$-algebra automorphism of $R$ given by $\phi(x_i) = x_i + a_i x_n$ for $i<n$ and $\phi(x_n)=x_n$ that maps $f$ to a polynomial that viewed as a polynomial in $x_n$ with coefficients in $K[x_1,\dots,x_{n-1}]$, has leading term $k x_n^N$ for some (nonzero) $k\in K$.
+\end{lem}
+\begin{proof}
+We just need to show that the $x^N$ coefficient is nonzero for some choice of $a$'s. You can check that the coefficient of the $x^N$ term is $f(-a_1,\dots,-a_{n-1},1)$. But if this, thought of as a polynomial in the $a$'s, is identically zero, then $f$ must be the zero polynomial.
+\end{proof}
+
+
+\begin{exer} Let $K$ be a field, and $R$ be a finitely standard graded $K$-algebra; recall that this means that $R$ is generated by elements of degree one. Then there are $d=\dim(R)$ algebraically independent elements $z_1,\dots, z_r$ of degree one in $R$ such that $K[z_1,\dots,z_r] \subseteq R$ is module-finite.
+\end{exer}
+
+We call such a subring a \DEF{homogeneous Noether normalization}.
+
+
+\begin{example}
+Let $K$ be a field, and $R=K[x_0,\dots,x_n]$ be a polynomial ring with the standard grading. Let $f$ be an element of degree $d$. We will compute the Hilbert function of $R/fR$. Note first that we can apply $- \otimes_K L$ for a larger field $L$ to obtain a ring with the same Hilbert function with an infinite ground field. Then, after applying a degree-preserving coordinate change, we can assume that $f$ is monic in the variable $x_0$. Then $R/fR$ has $R'=K[x_1,\dots,x_{n}]$ as a homogeneous Noether normalization, and $R/fR= R'\cdot 1 + R'\cdot x_0 +  \cdots + R' \cdot x_0^{d-1}$ as $R'$-modules. In fact, this set is a free $R'$-module basis;
+any $R'$-relation on these elements would yield an algebraic relation on $\{x_0,\dots,x_n\}$ of $x_0$-degree less than $d$, which cannot be a multiple of $(f)$. Thus, we have
+\[ (R'/fR)_t = R'_t \oplus R'_{t-1} \cdot x_0 \oplus \cdots \oplus R'_{t-d+1} \cdot x_0^{d-1}\] as $K$-vector spaces for each $t$. We then have
+\[ H_{R/fR}(t)= H_{R'}(t) + H_{R'}(t-1) + \cdots + H_{R'}(t-d+1).\]
+
+
+
+If $d\leq n$, then for all $i=0,\dots,d-1$ and all $t\geq 0$ we have $t-i >-n$, so by the polynomial ring example, we have $H_{R'}(t-i)=P_n(t-i)$ for each such $i$ and all $t\geq 0$, so the Hilbert function agrees with a polynomial for all $t\geq 0$.
+
+Now, we suppose that $d>n$, so  $d-n-1\geq 0$. Using that $P_n(t)=H_{R'}(t)$ for $t\geq -n$ and $P_n(-n)\neq 0 = H_{R'}(-n)$,
+\[\begin{aligned} H_{R/fR}(d-n-1)&= H_{R'}(d-n-1) + H_{R'}(d-n-2) + \cdots + H_{R'}(-n+1)  + H_{R'}(-n) \\
+&= P_n(d-n-1) + P_n(d-n-2) + \cdots + P_n(-n+1) +0 \\
+&\neq  P_n(d-n-1) + P_n(d-n-2) + \cdots + P_n(-n+1) +P_n(-n). \end{aligned}\]
+However, for all $t>d-n-1$, we have that
+\[ H_{R/fR}(t) = P_n(t) + P_n(t-1) + \cdots + P_n(t-d+1).\]
+Thus, if $H_{R/fR}(t)$ agrees with an element of $\Q[t]$ for all $t\in \NN$, it must be the polynomial \[P_n(t) + P_n(t-1) + \cdots + P_n(t-d+1),\] but since these are not equal for $t=d-n-1$, $H_{R/fR}(t)$ does not agree with any element of $\Q[t]$ for all $t\in \NN$.
+\end{example}
+
+
+
+We summarize this example.
+
+\begin{proposition}
+	Let $R=K[x_0,\dots,x_n]/(f)$ where $f$ is homogeneous of degree $d$ in the standard grading; note that $n=\dim(R)$. Then,
+	\begin{enumerate}
+		\item $R$ is a free module of rank $d$ over a (standard graded) homogeneous Noether normalization.
+		\item If $d\leq n$, then $H_R(t)$ is a polynomial for all $t\in \NN$.
+		\item If $d > n$, then $H_R(t)$ is not a polynomial for all $t \in \NN$, but is a polynomial for $t\geq d-n$.
+	\end{enumerate}
+\end{proposition}
+
+
+
+
+
+Out next big goal is to prove that the Hilbert function of a graded module is always eventually equal to a polynomial. We need more graded analogues of tools from earlier.
+
+\begin{exer} If $R$ is a Noetherian $\NN$-graded ring and $M$ is a nonzero $\ZZ$-graded module, then $M$ has a homogeneous associated prime.
+\end{exer}
+You may want to consider $\{ \ann_R(m) \ | \ m\in M \smallsetminus 0 \ \text{homogeneous}\}$. 
+
+\begin{defn} Let $R$ be a Noetherian $\NN$-graded ring and $M$ be a finitely $\ZZ$-graded module. A \DEF{homogeneous prime filtration} for $M$ is a prime filtration
+\[ M=M_t \supsetneqq M_{t-1} \supsetneqq M_{t-2} \supsetneqq \cdots \supsetneqq  M_1 \supsetneqq M_0 = 0 \]
+ with $M_i / M_{i-1} \cong (R/\p_i)(t_i)$ as graded modules for homogeneous primes $\p_i\in \Spec(R)$ and integers $t_i$, where $N(a)$ is the module with $N(a)_b = N_{a+b}$.
+ \end{defn}
+ 
+
+
+We will see that the Hilbert function is always eventually equal to a polynomial, as in the last example. We prepare with a lemma.
+
+\begin{lemma} Let $R$ be a graded ring, and
+	\[ 0 \to L \to M \to N \to 0\]
+	be a (degree-preserving) short exact sequence of graded $R$-modules. Then $H_M=H_L+H_N$.
+\end{lemma}
+\begin{proof}
+	In every degree $t$ we get short exact sequences of vector spaces $0 \to L_t \to M_t \to N_t \to 0$, and the claim follows.
+\end{proof}
+
+Recall that the dimension of a module $M$ is the dimension of $R/\ann_R(M)$.
+
+\begin{theorem}
+	Let $K$ be a field, and $R$ be a finitely graded $K$-algebra such that $R_0=K$ and $R$ is generated by elements of degree one. Let $M$ be a finitely generated graded $R$-module. Then there is a polynomial $P_M(t)\in \Q[t]$ and some $n\in \NN$ such that $H_M(t)=P_M(t)$ for $t\geq n$. Moreover, $\mathrm{deg}(P_M)=\dim(M)-1$ and $(\dim(M)-1)!$ times the leading coefficient is a positive integer; if $\dim(M)=0$, then $P_M=0$.
+\end{theorem}
+\begin{proof}
+	We show by induction on the dimension of $M$ that this holds for all rings $R$ satisfying the hypotheses. If the dimension of $M$ is zero, we claim that $\Ass_R(M)=(R_+)$. Indeed, under these hypotheses, every homogeneous ideal is contained in $R_+$, since it is the ideal generated by all homogeneous elements. Since every associated prime is homogeneous, it must be contained in $R_+$. If some other homogeneous prime $\p$ is associated to $M$, we have $\dim(R/\p)\geq 1$, and $R/\p \hookrightarrow M$ contradicts the hypothesis on dimension. Since $M$ is finitely generated and its only associated prime is maximal, $M$ has finite length. Thus, it must be finite dimensional as a vector space, so only finitely many graded pieces can be nonzero.
+	
+	Now, suppose $M$ has dimension $n$. Take a homogeneous prime filtration of $M$:
+	\[M=M_m \supsetneqq M_{m-1} \supsetneqq M_{m-2} \supsetneqq \cdots \supsetneqq  M_1 \supsetneqq M_0 = 0\]
+	with $M_i/M_{i-1}\cong R/\p_i(d_i)$ for some homogeneous primes $\p_i$ and integers $d_i$. Using the lemma inductively on $i$, we get that $H_M(t)=H_{R/\p_1(d_1)}(t) + \cdots + H_{R/\p_m(d_{m})}(t)$. Observe that $H_{R/\p_i(d_i)}(t) =H_{R/\p_i}(t+d_i)$ for each $i$. Since the associated primes of $M$ are contained in $V(\ann_R(M))$, we have $\dim(R/\p_i)\leq \dim(M)$, and there must be some $\p_i$ for which equality occurs, since every associated prime of $M$ occurs, and the minimal primes of $\ann_R(M)$ are associated to $M$. If we can show that each module of the form $R/\p_i$ verifies the conclusion of the theorem, then we are done: all of the claims of polynomiality, degree, and positivity of leading term pass to $H_M(t)$ by the equality above, as the shifting does not change degree or the leading term, $\dim(M)=\max\{\dim(R/\p_i)\}$, and the leading term satisfies the hypotheses again.
+	
+	If $M=R/\p_i$, then take a homogeneous Noether normalization $A$ for this $K$-algebra $M$, and consider a homogeneous prime filtration for $M$ as an $A$-module. Every factor is either a shift of $A$, or else has dimension less than $a:=\dim(A)=\dim(M)$, since $A$ is a domain. Applying the induction hypothesis and the formula $H_M(t)=H_{R/\p_1(d_1)}(t) + \cdots + H_{R/\p_m(d_{m})}(t)$ from above to this context, we find that $H_M(t)$ is a sum of shifts of the polynomial $P_a(t)$ from the example above, plus polynomials of lower degree. Thus, the claim holds for $M$, and hence in general as our induction is complete.
+\end{proof}
+
+
+\begin{definition}
+	The \emph{Hilbert polynomial}\index{Hilbert polynomial} of a graded module is the polynomial $P_M(t)$ that agrees with $H_M(t)$ for $t\gg 0$. The \emph{multiplicity} of a nonzero $M$ is $(\dim(M)-1)!$ times the leading coefficient of $P_M(t)$, denoted $e(M)$, which is a positive integer.
+\end{definition}
+
+
+\begin{rem} Relationship of degree of hilb poly with cumulative hilb poly.
+\end{rem}
+
+\begin{proposition}
+	Let $K$ be a field, and $R$ be a standard graded finitely generated $K$-algebra. Let $0\to L \to M \to N \to 0$ be a short exact sequence of graded $R$-modules. Then $P_M(t)=P_L(t)+P_N(t)$. If $\dim(L)=\dim(M)=\dim(N)$, then $e(M)=e(L)+e(N)$.
+\end{proposition}
+\begin{proof}
+	Both claims follow from the fact that Hilbert functions are additive on short exact sequences.
+\end{proof}
+
+\begin{example}
+	If $R$ is a polynomial ring, then $e(R)=1$. If $R=S/fS$ for a polynomial ring $S$ and a homogeneous element $f$ of degree $d$, then $e(R)=d$; we can compute this using the previous lemma plus the Noether normalization.
+\end{example}
+
+%Example magic squares?
+
+%Example $2\times 3$ minors.
+
+It will be useful to generalize these notions and results to the case of a standard graded algebra over an Artinian local ring.
+
+\begin{defn} Let $A$ be an Artinian local ring, and $R$ be a standard graded finitely generated $A$-algebra. We define the \DEF{Hilbert function} of $R$ to be $H_R(t) := \ell_A(R_t)$ and the \DEF{cumulative Hilbert function} of $R$ to be $\widetilde{H}_R(t) :=\ell_A(R_{\leq t}) = \sum_{i=0}^t H_R(i)$.
+\end{defn}
+
+Note that if $A=K$ is a field, $\ell_A(R_t)= \dim_K(R_t)$, so this generalizes the notion of Hilbert function.
+
+\begin{ex} For a standard graded polynomial ring over $A$ in $n$ variables, $R_t$ is a free $A$-module with basis given by the monomials of degree $t$. Thus,
+\[ H_R(t)=\binom{t+n-1}{n-1} \ell_A(A) \quad\text{for $t\geq 0$.}\]
+Since any finitely generated standard $A$-algebra $S$ is a quotient of such a ring, we have $H_S(t)<\infty$ for all $t$.
+\end{ex}
+
+\begin{prop} Let $(A,\mathfrak{n},K)$ be an Artinian local ring, and $R$ be a standard graded finitely generated $A$-algebra. Then ${H}_R(t)$ is bounded above by a polynomial of degree $\dim(R)-1$.
+\end{prop}
+\begin{proof}  Since $,\mathfrak{n}$ consists of nilpotents in $A$, $,\mathfrak{n} R$ consists of nilpotents in $R$, so $\dim(R) = \dim(R/\mathfrak{n} R)$. Then $R/,\mathfrak{n} R$ is a standard graded finitely generated $K$-algebra of dimension $\dim(R)$, so $\dim_K(R_t / \mathfrak{n} R_t)$ eventually agrees with a polynomial of degree $\dim(R)$. We claim that $\ell_A(R_t)\leq \dim_K(R_t/ \mathfrak{n}R_t) \ell_A(A)$ for all $t$. Indeed, by NAK, $R_t$ is generated as an $A$-module by $\dim_K(R_t/ \mathfrak{n}R_t) $ elements, so there is a surjection from a free $A$-module of $\dim_K(R_t/ \mathfrak{n}R_t)$ onto $R_t$, and the source module has length $\dim_K(R_t/ \mathfrak{n}R_t) \ell_A(A)$. The result then follows.
+\end{proof}
+
+
+\subsection{Filtrations and Artin-Rees}
+
+consistent filtration
+
+stable filtration
+
+Rees ring
+
+assoc graded ring
+
+\begin{lemma} Let $M$ be a finitely generated $R$-module. Let $N_i$ be an $I$-consistent filtration of submodules of $M$. Consider the conditions
+\begin{enumerate}
+\item $(N_i)$ is $I$-stable;
+\item $\bigoplus N_i t^i$ is a finitely generated $R[It]$-module;
+\item $\gr(N_i)$ is a finitely generated $\gr_I(R)$-module.
+\end{enumerate}
+Then we have the implications (1)$\Leftrightarrow$(2)$\Rightarrow$(3).
+\end{lemma}
+
+Artin-Rees Lemma
+
+\subsection{Hilbert functions for local rings}
+
+We now make a definition for local rings.
+
+\begin{defn} Let $(R,\m)$ be a Noetherian local ring. The \DEF{Hilbert function} of $R$ is the function.
+
+Define for any module and any filtration.
+\end{defn}
+
+\begin{lemma} leading term for any $\m$-stable filtration  on f.g. module is same
+\end{lemma}
+
+\begin{thm} Let $(R,\m,K)$ be a Noetherian local ring. Then $H_R(t)$ eventually agrees with a polynomial of degree $\dim(R)-1$.
+\end{thm}
+\begin{proof} First, to see that $H_R(t)$ eventually agrees with a polynomial, we note that $H_R(t) = H_{\gr_{R,\m}}(t)$, and that $\gr_{R,\m}$ is a finitely generated standard graded $K$-algebra. Note that it is not clear that $\dim(\gr_{R,\m})=\dim(R)$. We need to show that $\deg(\tilde{H}_R(t)) = \dim(R)$.
+
+For the inequality $(\leq)$, let $\q=(x_1,\dots,x_d)$ be an ideal generated by system of parameters for $R$, so $\m \supseteq \q \supseteq \m^a$ for some $a$. Thus, \[ \tilde{H}_{R,\m}(t)  \leq \tilde{H}_{R,\q}(t) \leq \tilde{H}_{R,\m}(at) \quad \text{for all $t$}.\]
+Then,
+\[\deg(\tilde{H}_{R,\m}(t)) = \deg(\tilde{H}_{R,\q}(t)) \leq \dim(\gr_{R,\q}(t)) \leq d,\]
+where the first equality follows from the discussion above, the middle inequality follows from the bound on Hilbert functions of graded rings over Artinian rings, and the final is because $\gr_{R,\q}(t)$ is a quotient of $A[x_1,\dots,x_d]$, which has dimension $d$.
+
+For the inequality $(\geq)$, let $e=\deg(\tilde{H}_{R,\m}(t))$. We proceed by induction on $e$. For $e=0$, $R$ has finite length, so $R$ has dimension zero. For the inductive step, take $\p$ absolutely minimal in $R$ and $\bar{R}=R/\p$. We have $\ell_R(R/\m^t) \geq \ell_R(R/(\p+\m^t))=\ell_{\bar{R}}(\bar{R}/\m^t \bar{R})$, so $\deg(\tilde{H}_{R,\m}(t)) \geq \deg(\tilde{H}_{\bar{R},\m}(t))$. Since $\dim(R)=\dim(R/\p)$, we can replace $R$ with $\bar{R}$ and assume $R$ is a domain.
+
+Now take $x\neq 0$ in $R$ and $R'=R/xR$. We have short exact sequences
+\[ 0 \to \frac{xR}{xR \cap \m^t} \to \frac{R}{\m^t } \to \frac{R'}{\m^t R'} \to  0\]
+for each $t$. By Artin Rees, $xR \cap \m^n$ is an $\m$-stable filtration on $xR$. Since $xR\cong R$ the length of $\frac{xR}{xR \cap \m^t}$ eventually agrees with a polynomial whose leading term is exactly the same as that of the cumulative Hilbert polynomial of $R$. Thus, from the short exact sequence above, we see that the degree of the cumulative Hilbert polynomial of $S$ is strictly less than that of $R$. Thus, invoking the induction hypothesis,
+\[  \deg(\tilde{H}_{R,\m}(t)) \geq \deg(\tilde{H}_{S,\m}(t)) +1 = \dim(S) +1 = \dim(R).\qedhere\]
+\end{proof}
+ 
 
 \printindex
 
