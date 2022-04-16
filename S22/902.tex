@@ -3857,22 +3857,31 @@ We summarize this example.
 	\end{enumerate}
 \end{proposition}
 
-
 \begin{comment}
+
+\Apr{18}
 
 
 Out next big goal is to prove that the Hilbert function of a graded module is always eventually equal to a polynomial. We need more graded analogues of tools from earlier.
 
-\begin{exer} If $R$ is a Noetherian $\NN$-graded ring and $M$ is a nonzero $\ZZ$-graded module, then $M$ has a homogeneous associated prime.
-\end{exer}
-You may want to consider $\{ \ann_R(m) \ | \ m\in M \smallsetminus 0 \ \text{homogeneous}\}$. 
+\begin{lem} If $R$ is a Noetherian $\NN$-graded ring and $M$ is a nonzero $\ZZ$-graded module, then $M$ has a homogeneous associated prime.
+\end{lem}
+\begin{proof} Consider the set of ideals $\{ \ann_R(m) \ | \ m\in M\smallsetminus 0 \ \text{homogeneous}\}$. If $M$ is nonzero, this set is nonempty, so it has a maximal element, say $I$. Note that $I$ (or any other element of the set above) is homogeneous: if $fm=0$, writing $f=f_{a_1}+\dots+f_{a_b}$ as a sum of homogeneous pieces, then $0=fm=f_{a_1}m+\dots+f_{a_b}m$ is a sum of elements of different degrees, so $f_{a_i}m=0$ for each $i$. Then exactly as in the nonhomogeneous case, one can show that $I$ is prime.
+\end{proof}
+
 
 \begin{defn} Let $R$ be a Noetherian $\NN$-graded ring and $M$ be a finitely $\ZZ$-graded module. A \DEF{homogeneous prime filtration} for $M$ is a prime filtration
 \[ M=M_t \supsetneqq M_{t-1} \supsetneqq M_{t-2} \supsetneqq \cdots \supsetneqq  M_1 \supsetneqq M_0 = 0 \]
  with $M_i / M_{i-1} \cong (R/\p_i)(t_i)$ as graded modules for homogeneous primes $\p_i\in \Spec(R)$ and integers $t_i$, where $N(a)$ is the module with $N(a)_b = N_{a+b}$.
  \end{defn}
  
-
+ \begin{exer}  
+ Let $R$ be a Noetherian $\NN$-graded ring and $M$ be a finitely $\ZZ$-graded module. 
+ \begin{enumerate}
+ \item $M$ has a homogeneous prime filtration.
+ \item Every associated prime of $M$ is homogeneous.
+ \end{enumerate}
+\end{exer}
 
 We will see that the Hilbert function is always eventually equal to a polynomial, as in the last example. To be precise:
 
@@ -3901,7 +3910,7 @@ We prepare with a lemma.
 And one more fact to prepare.
 \begin{lem} Let $R$ be a Noetherian ring and $M$ be a finitely generated $R$-module. For any prime filtration
 \[ M=M_m \supsetneqq M_{m-1} \supsetneqq M_{m-2} \supsetneqq \cdots \supsetneqq  M_1 \supsetneqq M_0 = 0 \] 
-of $M$ with $M_i/M_{i-1} \cong R/\p_i$, we have $\dim(M) = \max\{\dim(R/\p_i) \ | \ i=1,\dots,m\}.$
+of $M$ with $M_i/M_{i-1} \cong R/\p_i$ (as $R$-modules, without any respect to grading in the graded case), we have $\dim(M) = \max\{\dim(R/\p_i) \ | \ i=1,\dots,m\}.$
 \end{lem}
 \begin{proof}
 We have \[\begin{aligned}  \dim(M) &= \dim(R/\ann_R(M)) = \max\{ \dim(R/\p) \ | \ \p\in V(\ann_R(M))\}\\&=\max\{ \dim(R/\p) \ | \ \p\in \Supp_R(M)\} = \max\{ \dim(R/\p) \ | \ \p\in \Ass_R(M)\}.\end{aligned}\]
@@ -3937,7 +3946,7 @@ Recall that the dimension of a module $M$ is the dimension of $R/\ann_R(M)$.
 
 
 \begin{proposition}
-	Let $K$ be a field, and $R$ be a standard graded finitely generated $K$-algebra. Let $0\to L \to M \to N \to 0$ be a short exact sequence of graded $R$-modules. Then $P_M(t)=P_L(t)+P_N(t)$. If $\dim(L)=\dim(M)=\dim(N)$, then $e(M)=e(L)+e(N)$.
+	Let $K$ be a field, and $R$ be a standard graded finitely generated $K$-algebra. Let \[0\to L \to M \to N \to 0\] be a degree-preserving short exact sequence of graded $R$-modules. Then $P_M(t)=P_L(t)+P_N(t)$. If $\dim(L)=\dim(M)=\dim(N)$, then $e(M)=e(L)+e(N)$.
 \end{proposition}
 \begin{proof}
 	Both claims follow from the fact that Hilbert functions are additive on short exact sequences.
@@ -4020,16 +4029,31 @@ The conditions $I_i I_j \subseteq I_{i+j}$ and $I_i M_j \subseteq M_{j+{i}}$ jus
 \begin{definition} 
 Let $I_{\bullet}$ be an ideal filtration on a ring $R$, and $M$ an $R$-module with a compatible filtration $M_{\bullet}$. Then there is an \emph{associated graded ring}\index{associated graded ring of a filtration}\index{$\gr(I_{\bullet})$}
 	\[ \gr(I_{\bullet}) := \bigoplus_{i\geq 0} I_i/I_{i+1} t^i \]
-	and an \emph{associate graded module}\index{associate graded module}\index{$\gr(M_{\bullet})$}
+	and an \emph{associated graded module}\index{associated graded module}\index{$\gr(M_{\bullet})$}
 	 	\[ \gr(M_{\bullet}) := \bigoplus_{i\geq 0} M_i/M_{i+1} t^i.\]
 \end{definition}
 
 \begin{example} For a ring $R$ and ideal $I$, the key example of the above is the usual associated graded ring $\gr_I(R)$ \index{$\gr_I(R)$} coming from the filtration given by powers of $I$.
 \end{example}
 
+\begin{remark} The ring $\gr_I(R)$ is $\NN$-graded with zeroth degree piece $R/I$ and is generated as an $R/I$ algebra by the elements in degree one; namely if $I=(f_1,f_2,\dots)$, then $\gr_I(R) = R/I [ \overline{f_1 t} ,\overline{f_2 t}, \dots]$. In particular, if $R$ is Noetherian, then $\gr_I(R)$ is a finitely generated standard graded $R/I$-algebra.
+\end{remark}
+
 \begin{definition}
-	Let $I$ be an ideal in a ring $R$ and $M$ an $R$-module. A filtration on $M$ is \emph{$I$-stable}\index{$I$-stable} if it is consistent with the standard $I$-adic filtration on $R$ and there is some $n$ such that $I M_m=M_{m+1}$ for all $m\geq n$. 
+	Let $I$ be an ideal in a ring $R$ and $M$ an $R$-module. A filtration on $M$ is \emph{$I$-stable}\index{$I$-stable} if it is consistent with the standard $I$-adic filtration on $R$ and there is some $N$ such that $I M_n=M_{n+1}$ for all $n\geq N$. 
 \end{definition}
+
+\begin{ex} The filtration $M_n = I^n M$ is $I$-stable; this is called the \DEF{standard $I$-filtration} \emph{on $M$}.
+\end{ex}
+
+It turns out that all $I$-stable filtrations are close to each other.
+
+\begin{lemma} Let $M$ be a $R$-module and $I$ be an ideal. Let $M_\bullet$ and $M'_\bullet$ be two $I$-stable filtrations of $M$. Then there exist $a,b,N\in \N$ such that
+\[ M_{n+a+b} \subseteq M'_{n+b} \subseteq M_{n} \] 
+for all $n>N$.
+\end{lemma}
+\begin{proof} It suffices to deal with the case $M'_n = I^n M$. Since $I M_n \subseteq M_{n+1}$ it follows by induction on $n$ that $I^n M \subseteq M_n$ for all $n\in \N$. On the other hand, let $c\in \N$ be such that $I M_n = M_{n+1}$ for all $n> c$, and by induction it follows that $M_{n+c} = I^n M_c \subseteq I^n M$ for all $n\in \N$.
+\end{proof}
 
 
 \begin{lemma} Let $M$ be a finitely generated $R$-module. Let $M_{\bullet} = \{M_i\}$ be an $I$-consistent filtration of submodules of $M$. Consider the conditions
@@ -4041,63 +4065,76 @@ Let $I_{\bullet}$ be an ideal filtration on a ring $R$, and $M$ an $R$-module wi
 Then we have the implications (1)$\Leftrightarrow$(2)$\Rightarrow$(3).
 \end{lemma}
 \begin{proof}
+First we show (1) and (2) are equivalent. Given $M_\bullet$, define for each $n$ the $\mathcal{R}(I)$-module
+\[ N_n := M_0 \oplus M_1 t \oplus \cdots \oplus M_n t^n \oplus  I M_{n+1} t^{n+1} \oplus  I^2 M_{n+2} t^{n+2} \oplus \cdots.\]
+Note that $N_n$ is generated as an $\mathcal{R}(I)$-module by $M_0 \oplus M_1 t \oplus \cdots \oplus M_n t^n$, and since each $M_i$ is a submodule of $M$, each is a finitely generated $R$-module, so $N_n$ is a finitely generated $\mathcal{R}(I)$-module.
 
+Thus there is an ascending chain of $\mathcal{R}(I)$-submodules
+\[ N_0 \subseteq N_1 \subseteq N_2 \subseteq \cdots \]
+of $\mathcal{R}(M_{\bullet})$ whose union is $\mathcal{R}(M_{\bullet})$. Note from the definition that $M_\bullet$ is $I$-stable if and only if $\mathcal{R}(M_{\bullet}) = N_n$ for some $n$, which is equivalent to the chain stabilizing. If $\mathcal{R}(M_{\bullet})$ is a finitely generated $\mathcal{R}(I)$-module, then it is a Noetherian module, so the chain stabilizes; conversely, if the chain stabilizes, then $\mathcal{R}(M_{\bullet}) = N_n$ is finitely generated. This concludes the equivalence of (1) and (2).
+
+The proof of (1) implies (3) is similar to (1) implies (2).
 \end{proof}
 
-\begin{remark}
-	Let $M_{\bullet}$ be a module with a filtration that is consistent with the standard $I$-adic filtration. Then $\mathcal{R}(M_{\bullet})$ is generated by elements of degree $\leq n$ for some $n$ if and only if $M_{\bullet}$ is $I$-stable.
-\end{remark}
 
 
 \begin{theorem}[Artin-Rees Lemma]
-	Let $R$ be a Noetherian ring, $N\subseteq M$ finitely generated modules, and $I$ an ideal. If $\{M_i\}$ is an $I$-stable filtration of $M$, then $\{M_i \cap N\}$ is an $I$-stable filtration of $N$.
+	Let $R$ be a Noetherian ring, $N\subseteq M$ finitely generated modules, and $I$ an ideal. If $\{M_i\}$ is an $I$-stable filtration of $M$, then $\{M_n \cap N\}$ is an $I$-stable filtration of $N$.
 \end{theorem}
 \begin{proof}
-	Since $R$ is Noetherian, $I$ is a finitely generated ideal, and the Rees ring $\mathcal{R}(I_{\bullet})$ is Noetherian since it is generated as an $R$-algebra by generators of $I$ times $t$. Now, $\mathcal{R}(M_{\bullet})$ is a finitely generated $\mathcal{R}(I_{\bullet})$-module by the previous remark, since it is generated in bounded degrees, and in each degree, it is finitely generated. Now, $I(N \cap M_i)  \subseteq IN \cap I M_i \subseteq N \cap IM_{i+1}$, so $\widetilde{N}=\bigoplus (N \cap M_i) t^i \subseteq N[t]$ is an $\mathcal{R}(I_{\bullet})$-module. But, $\widetilde{N}$ is a submodule of $\mathcal{R}(M_{\bullet})$. By Noetherianity, it is finitely generated, so we are done.
-\end{proof}
+First we note that $\{N_n :=M_n \cap N\}$ is $I$-consistent, since 
+\[I (M_n \cap N) \subseteq I M_n \cap I N \subseteq M_{n+1} \cap IN \subseteq M_{n+1} \cap N,\]
+ so we can consider the Rees module $\mathcal{R}(N_{\bullet}) \subseteq \mathcal{R}(M_{\bullet})$. By the previous lemma, $\mathcal{R}(M_{\bullet})$ is finitely genreated and since $\mathcal{R}(I)$ is Noetherian, so is $\mathcal{R}(N_{\bullet})$, and hence by the lemma, $N_{\bullet}$ is $I$-stable.
+	\end{proof}
 
 \begin{corollary} Let $R$ be a Noetherian ring, and $N\subseteq M$ finitely generated modules. Then there is some $c$ such that $I^{n+c} M \cap N \subseteq I^n N$ for all $n$.
 \end{corollary}
 \begin{proof} We have some $c$ such that $I^n(I^c M \cap N) = I^{n+c} M \cap N$, so that $I^n N \supseteq I^n (I^c M \cap N) = I^{n+c} M \cap N$ for all $n$.
 \end{proof}
 
-\begin{lem} Two stable filtrations are shift-equivalent.
-\end{lem}
-
-
-
-consistent filtration
-
-stable filtration
-
-Rees ring
-
-assoc graded ring
-
-
-
-Artin-Rees Lemma
 
 \subsection{Hilbert functions for local rings}
 
 We now make a definition for local rings.
 
-\begin{defn} Let $(R,\m)$ be a Noetherian local ring. The \DEF{Hilbert function} of $R$ is the function.
-
-Define for any module and any filtration.
+\begin{defn} Let $(R,\m,k)$ be a Noetherian local ring. The \DEF{Hilbert function} of $R$ is the function $H_R: \N \to \N$ given by $H_R(t) = \dim_k(\m^t/\m^{t+1})$. The \DEF{cumulative Hilbert function} of $R$ is the function $\widetilde{H}_R: \N \to \N$ given by $\widetilde{H}_R(t)= \ell_R(R/\m^{t+1})$.
 \end{defn}
 
-\begin{lemma} leading term for any $\m$-stable filtration  on f.g. module is same
+Note that we have  \[\widetilde{H}_R(t) = \ell_R(R/\m^{t+1}) = \sum_{i=0}^t \ell_R(\m^t / \m^{t+1}) = \sum_{i=0}^t \dim_k(\m^t/\m^{t+1}) = \sum_{i=0}^t H_R(i).\]
+
+Note also that $H_R = H_{\gr_{\m}(R)}$ and $\widetilde{H}_R = \widetilde{H}_{\gr_{\m}(R)}$.
+
+We generalize this definition to filtrations.
+\begin{defn} Let $(R,\m,k)$ be a Noetherian local ring, and $M$ be an $R$-module. Let $M_\bullet$ be a descending filtration of $M$ such that $\ell_R(M/M_n)<\infty$ for all $n$. Then we define 
+\[ \widetilde{H}_{M_\bullet}(t) := \ell_R(M/M_{t+1}) \qquad \text{and} \qquad  H_{M_\bullet}(t) := \ell_R(M_t/M_{t+1}).\]
+\end{defn}
+
+\begin{lemma} Let $(R,\m,k)$ be Noetherian and $M$ be a finitely generated $R$-module and $M_\bullet, M'_\bullet$ be $\m$-stable filtrations on $M$. Then
+\begin{enumerate}
+\item $H_{M_\bullet}(t)$ eventually agrees with a polynomial, and
+\item The polynomials that $H_{M_\bullet}(t)$ and $H_{M'_\bullet}(t)$ agree with have the same leading term.
+\end{enumerate}
 \end{lemma}
+\begin{proof}
+\begin{enumerate}
+\item Observe that $M_t/M_{t+1} = \gr(M_\bullet)_{t}$, so $H_{M_\bullet}(t) = H_{\gr(M_\bullet)}(t)$. Then since $M_\bullet$ is $\m$-stable, $\gr(M_\bullet)$ is a finitely generated graded $\gr_{\m}(R)$-module. Since $\gr_{\m}(R)$ is a finitely generated standard graded $k$-algebra, the statement then follows from the theorem on Hilbert functions of graded modules.
+\item We have that there are constants $a,b$ such that $M_{a+b+n} \subseteq M'_{b+n} \subseteq M_n$ for all $n$. Thus \[\widetilde{H}_{M_\bullet}(t+a+b) \geq \widetilde{H}_{M'_\bullet}(t+b) \geq \widetilde{H}_{M_\bullet}(t).\] Since degree and leading coefficient are not affected by shifts, from basic analysis, the degrees and the leading  terms of the polynomials agree.\qedhere
+\end{enumerate}
+\end{proof}
+
 
 \begin{thm} Let $(R,\m,K)$ be a Noetherian local ring. Then $H_R(t)$ eventually agrees with a polynomial of degree $\dim(R)-1$.
 \end{thm}
-\begin{proof} First, to see that $H_R(t)$ eventually agrees with a polynomial, we note that $H_R(t) = H_{\gr_{R,\m}}(t)$, and that $\gr_{R,\m}$ is a finitely generated standard graded $K$-algebra. Note that it is not clear that $\dim(\gr_{R,\m})=\dim(R)$. We need to show that $\deg(\tilde{H}_R(t)) = \dim(R)$.
+\begin{proof} Note that it is not clear that $\dim(\gr_{R,\m})=\dim(R)$. We need to show that $\deg(\tilde{H}_R(t)) = \dim(R)$.
 
-For the inequality $(\leq)$, let $\q=(x_1,\dots,x_d)$ be an ideal generated by system of parameters for $R$, so $\m \supseteq \q \supseteq \m^a$ for some $a$. Thus, \[ \tilde{H}_{R,\m}(t)  \leq \tilde{H}_{R,\q}(t) \leq \tilde{H}_{R,\m}(at) \quad \text{for all $t$}.\]
-Then,
-\[\deg(\tilde{H}_{R,\m}(t)) = \deg(\tilde{H}_{R,\q}(t)) \leq \dim(\gr_{R,\q}(t)) \leq d,\]
-where the first equality follows from the discussion above, the middle inequality follows from the bound on Hilbert functions of graded rings over Artinian rings, and the final is because $\gr_{R,\q}(t)$ is a quotient of $A[x_1,\dots,x_d]$, which has dimension $d$.
+For the inequality $(\leq)$, let $\q=(x_1,\dots,x_d)$ be an ideal generated by system of parameters for $R$, so $\m \supseteq \q \supseteq \m^a$ for some $a$. Thus, $\m^t \supseteq \q^t \supseteq \m^{at}$ 
+for all $t$, and hence \[ \tilde{H}_{R}(t)  \leq \tilde{H}_{Q_\bullet}(t) \leq \tilde{H}_{R}(at) \quad \text{for all $t$},\]
+where $Q_\bullet$ is the standard $\q$-filtration on $R$  so $\deg(\tilde{H}_{R}(t)) = \deg(\tilde{H}_{Q_\bullet}(t)).$ Note that 
+\[ \tilde{H}_{Q_\bullet}(t) = \sum_{i=0}^t H_{Q_\bullet}(i) = \sum_{i=0}^t H_{\gr_{\q}(R)}(i).\]
+Since $\gr_{\q}(R)$ is a graded $A=R/\q$-algebra generated by the images of $x_1t,\dots,x_dt$ in degree one, it is a quotient of a polynomial ring in $d$ variables over $A$. Then
+\[ H_{\gr_{\q}(R)}(i) \leq H_{A[x_1,\dots,x_d]}(i) = \ell_A(A) \binom{i+d-1}{d-1},\]
+since $A[x_1,\dots x_d]_i$ is a free $A$-module with basis given by monomials of degree $i$. Thus, $\sum_{i=0}^t H_{\gr_{\q}(R)}(i)$ is bounded above by a polynomial of degree $d$, and hence $\tilde{H}_{R}(t) $ is bounded above by a polynomial of degree $d$. 
+
 
 For the inequality $(\geq)$, let $e=\deg(\tilde{H}_{R,\m}(t))$. We proceed by induction on $e$. For $e=0$, $R$ has finite length, so $R$ has dimension zero. For the inductive step, take $\p$ absolutely minimal in $R$ and $\bar{R}=R/\p$. We have $\ell_R(R/\m^t) \geq \ell_R(R/(\p+\m^t))=\ell_{\bar{R}}(\bar{R}/\m^t \bar{R})$, so $\deg(\tilde{H}_{R,\m}(t)) \geq \deg(\tilde{H}_{\bar{R},\m}(t))$. Since $\dim(R)=\dim(R/\p)$, we can replace $R$ with $\bar{R}$ and assume $R$ is a domain.
 
