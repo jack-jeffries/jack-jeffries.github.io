@@ -3857,7 +3857,7 @@ We summarize this example.
 	\end{enumerate}
 \end{proposition}
 
-\begin{comment}
+
 
 \Apr{18}
 
@@ -3960,15 +3960,18 @@ We want to state analogous results for the cumulative Hilbert function. The poin
 \begin{lemma} Let $f:\N \to \Q$ be a function, and $F:\N \to \Q$ be the function given by $F(t) = \sum_{i=0}^t f(i)$. 
 \begin{enumerate}
 \item $f(t)$ is eventually equal to a polynomial if and only if $F(t)$ is eventually equal to a polynomial.
-\item If $f(t)$ is eventually equal to $p(t)$ and $F(t)$ is eventually equal to $P(t)$, then $\deg(P) = \deg(p)+1$, and the leading coefficient of $P$ over $\deg(P)!$  equals the leading coefficient of $p$ over $\deg(p)!$.
+\item If $f(t)$ is eventually equal to $p(t)$ and $F(t)$ is eventually equal to $P(t)$, then $\deg(P) = \deg(p)+1$, and the leading coefficient of $P$ times $\deg(P)!$  equals the leading coefficient of $p$ times $\deg(p)!$.
 \end{enumerate}
 \end{lemma}
 \begin{proof}
- First, we note that if we set $c_n(t)=\binom{t}{n-1}$, which is a polynomial of degree $n$, the functions $\{c_0,\dots,c_j\}$ form a basis for the set of polynomials of degree at most $j$. Two basic binomial identities read as
- \[ c_n(t) - c_{n}(t-1) = c_{n-1}(t) \]
- \[ c_n(0) + c_n(1) + \cdots + c_n(t) = c_{n+1}(t).\]
-
-
+ First, we note that if we set $c_n(t)= \displaystyle  \frac{t (t-1) \cdots (t-n+1)}{n!}$ and $c_0(t) =1$, then $c_n(t)$ is a polynomial of degree $n$, and $c_n(t) = \displaystyle \binom{t}{n}$ for all ``reasonable values" $t\geq n$; considering the roots of the polynomials, the equality holds for all $t\geq 0$, in fact.  We recall binomial identities
+ \[ \binom{t}{n} = \binom{t-1}{n} + \binom{t-1}{n-1}\qquad \text{and} \qquad  \sum_{i=0}^t \binom{i}{n} = \binom{t+1}{n+1}.\]
+ The first arises from fixing an element $x$ in a set $X$ of $t$ elements; the subsets $Y$ of size $n$ either contain $X$ or do not; the collection of subsets $Y$ containing $x$ are in bijection with sets $Y\smallsetminus x$ of $X\smallsetminus x$ of size $t-1$, of which there are $\binom{t-1}{n-1}$; those that do not contain $x$ are in bijection with subsets $Y$ of $X\smallsetminus x$ of size $t$, of which there are $\binom{t}{n-1}$. The second arises by identifying a subset $Y$ of $\{1,\dots, t+1\}$ of size $n+1$ with the pair $\{ \min(Y) , Y\smallsetminus \min(Y)\}$; fixing $\min(Y)$, there are $\displaystyle \binom{t-\min(Y)}{n}$ choices for $Y\smallsetminus \min(Y)$.
+ 
+Thus, the polynomials
+\[ c_n(t) - c_n(t-1) - c_{n-1}(t-1) \qquad \text{and} \qquad c_{n+1}(t+1) -  \sum_{i=0}^t c_n(i)\]
+have infinitely many zeroes in $\Q$, and hence are each the zero polynomial; thus we have the corresponding identities to above for the polynomials $c_n(t)$. The functions $\{c_0,\dots,c_j\}$ form a basis for the set of polynomials of degree at most $j$.
+ 
 If for $t\geq N$, $f(t)$ is equal to a polynomial $p(t)$ of degree $n$ and leading coefficient $a$, then write \[p(t) = n! a c_n(t) + b_{n-1} c_{n-1}(t) + \cdots + b_0 c_0(t).\]
  Then for $t\geq N$,
  \[ \begin{aligned} F(t) &= \sum_{i=0}^t f(i) = \sum_{i=0}^{N-1} f(i) + \sum_{i=N}^{t} p(i) \\ &= \sum_{i=0}^{N-1} (f(i) -p(i))+ \sum_{i=0}^{t} p(i) \\&=  n! a c_{n+1}(t) + b_{n-1} c_{n}(t) + \cdots + b_0 c_1(t) + \left( \sum_{i=0}^{N-1} (f(i) -p(i)) \right),\end{aligned}\]
@@ -3977,10 +3980,14 @@ If for $t\geq N$, $f(t)$ is equal to a polynomial $p(t)$ of degree $n$ and leadi
  Conversely, if for $t\geq N$, $F(t)$ is eventually equal to a polynomial $P(t)$ of degree $n+1$ and leading coefficient $a$, then write \[P(t) = (n+1)! a c_{n+1}(t) + b_{n} c_{n}(t) + \cdots + b_0 c_0(t).\]
  Then for $t\geq N+1$,
  \[ \begin{aligned} f(t) &= F(t) - F(t-1) \\&= \left((n+1)! a c_{n+1}(t) + b_{n} c_{n}(t) + \cdots + b_0 c_0(t)\right) -  \left((n+1)! a c_{n+1}(t-1) + b_{n} c_{n}(t-1) + \cdots + b_0 c_0(t-1)\right) \\&=
-  (n+1)! a c_n(t) +b_{n} c_{n-1 }(t) + \cdots + b_1 c_0(t)
+  (n+1)! a c_n(t-1) +b_{n} c_{n-1 }(t-1) + \cdots + b_1 c_0(t-1)
  \end{aligned}\]
  which is a polynomial of degree $n$ and leading coefficient $\displaystyle \frac{(n+1)! a}{n!}$.
 \end{proof}
+
+
+
+\Apr{22}
 
 \begin{corollary}
 Let $K$ be a field, $R$ be a standard graded finitely generated $K$-algebra, and $M$ be a nonzero finitely generated $\ZZ$-graded $R$-module. Then the cumulative Hilbert function $\widetilde{H}_M(t)$ eventually agrees with a polynomial of degree $\dim(M)$, and $\dim(M)!$ times the leading coefficient of the polynomial is a positive integer, namely, the multiplicity of $M$.
