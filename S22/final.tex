@@ -1,0 +1,442 @@
+\documentclass{amsart}[12pt]
+\usepackage{graphicx}
+\usepackage{comment}
+\usepackage{amscd,mathabx}
+\usepackage{amssymb,setspace}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath,amscd,stmaryrd,mathrsfs}
+\usepackage[all, knot]{xy}
+\usepackage[top=1in, bottom=1in, left=1in, right=1in]{geometry}
+\xyoption{all}
+\xyoption{arc}
+%\usepackage{hyperref}
+
+
+%\usepackage[notcite,notref]{showkeys}
+ 
+%\CompileMatricesx
+\newcommand{\edit}[1]{\marginpar{\footnotesize{#1}}}
+%\newcommand{\edit}[1]{}
+\newcommand{\rperf}[2]{\operatorname{RPerf}(#1 \into #2)}
+
+
+
+\newcommand{\vectwo}[2]{\begin{bmatrix} #1 \\ #2 \end{bmatrix}}
+
+\newcommand{\vecfour}[4]{\begin{bmatrix} #1 \\ #2 \\ #3 \\ #4 \end{bmatrix}}
+
+\newcommand{\Cat}[1]{\left<\left< \text{#1} \right>\right>}
+
+
+\def\htpy{\simeq_{\mathrm{htpc}}}
+\def\tor{\text{ or }}
+\def\fg{finitely generated~}
+
+\def\Ass{\operatorname{Ass}}
+\def\ann{\operatorname{ann}}
+\def\sign{\operatorname{sign}}
+
+\def\ob{{\mathfrak{ob}} }
+\def\BiAdd{\operatorname{BiAdd}}
+\def\BiLin{\operatorname{BiLin}}
+
+\def\Syl{\operatorname{Syl}}
+\def\span{\operatorname{span}}
+
+\def\sdp{\rtimes}
+\def\cL{\mathcal L}
+\def\cR{\mathcal R}
+
+
+
+\def\ay{??}
+\def\Aut{\operatorname{Aut}}
+\def\End{\operatorname{End}}
+\def\Mat{\operatorname{Mat}}
+
+
+\def\a{\alpha}
+
+
+
+\def\etale{\'etale~}
+\def\tW{\tilde{W}}
+\def\tH{\tilde{H}}
+\def\tC{\tilde{C}}
+\def\tS{\tilde{S}}
+\def\tX{\tilde{X}}
+\def\tZ{\tilde{Z}}
+\def\HBM{H^{\text{BM}}}
+\def\tHBM{\tilde{H}^{\text{BM}}}
+\def\Hc{H_{\text{c}}}
+\def\Hs{H_{\text{sing}}}
+\def\cHs{{\mathcal H}_{\text{sing}}}
+\def\sing{{\text{sing}}}
+\def\Hms{H^{\text{sing}}}
+\def\Hm{\Hms}
+\def\tHms{\tilde{H}^{\text{sing}}}
+\def\Grass{\operatorname{Grass}}
+\def\image{\operatorname{im}}
+\def\im{\image}
+\def\ker{\operatorname{ker}}
+\def\cone{\operatorname{cone}}
+\newcommand{\Hom}{\mathrm{Hom}}
+
+
+\def\ku{ku}
+\def\bbu{\bf bu}
+\def\KR{K{\mathbb R}}
+
+\def\CW{\underline{CW}}
+\def\cP{\mathcal P}
+\def\cE{\mathcal E}
+\def\cL{\mathcal L}
+\def\cJ{\mathcal J}
+\def\cJmor{\cJ^\mor}
+\def\ctJ{\tilde{\mathcal J}}
+\def\tPhi{\tilde{\Phi}}
+\def\cA{\mathcal A}
+\def\cB{\mathcal B}
+\def\cC{\mathcal C}
+\def\cZ{\mathcal Z}
+\def\cD{\mathcal D}
+\def\cF{\mathcal F}
+\def\cG{\mathcal G}
+\def\cO{\mathcal O}
+\def\cI{\mathcal I}
+\def\cS{\mathcal S}
+\def\cT{\mathcal T}
+\def\cM{\mathcal M}
+\def\cN{\mathcal N}
+\def\cMpc{{\mathcal M}_{pc}}
+\def\cMpctf{{\mathcal M}_{pctf}}
+\def\L{\Lambda}
+
+\def\sA{\mathscr A}
+\def\sB{\mathscr B}
+\def\sC{\mathscr C}
+\def\sZ{\mathscr  Z}
+\def\sD{\mathscr  D}
+\def\sF{\mathscr  F}
+\def\sG{\mathscr G}
+\def\sO{\mathscr  O}
+\def\sI{\mathscr I}
+\def\sS{\mathscr S}
+\def\sT{\mathscr  T}
+\def\sM{\mathscr M}
+\def\sN{\mathscr N}
+
+
+
+\def\Ext{\operatorname{Ext}}
+ \def\ext{\operatorname{ext}}
+
+
+
+\def\ov#1{{\overline{#1}}}
+
+\def\vecthree#1#2#3{\begin{bmatrix} #1 \\ #2 \\ #3 \end{bmatrix}}
+
+\def\tOmega{\tilde{\Omega}}
+\def\tDelta{\tilde{\Delta}}
+\def\tSigma{\tilde{\Sigma}}
+\def\tsigma{\tilde{\sigma}}
+
+
+\def\d{\delta}
+\def\td{\tilde{\delta}}
+
+\def\e{\epsilon}
+\def\nsg{\unlhd}
+\def\pnsg{\lhd}
+
+\newcommand{\tensor}{\otimes}
+\newcommand{\homotopic}{\simeq}
+\newcommand{\homeq}{\cong}
+\newcommand{\iso}{\approx}
+
+\DeclareMathOperator{\ho}{Ho}
+\DeclareMathOperator*{\colim}{colim}
+
+
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\H}{\mathbb{H}}
+
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bM}{\mathbb{M}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\bH}{{\mathbb{H}}}
+\newcommand{\G}{\mathbb{G}}
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\bL}{{\mathbb{L}}}
+\newcommand{\R}{{\mathbb{R}}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\bK}{\mathbb{K}}
+
+
+\newcommand{\bD}{\mathbb{D}}
+\newcommand{\bS}{\mathbb{S}}
+
+\newcommand{\bN}{\mathbb{N}}
+
+
+\newcommand{\bG}{\mathbb{G}}
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\W}{\mathcal{W}}
+
+
+
+\newcommand{\itilde}{\tilde{\imath}}
+\newcommand{\jtilde}{\tilde{\jmath}}
+\newcommand{\ihat}{\hat{\imath}}
+\newcommand{\jhat}{\hat{\jmath}}
+
+\newcommand{\fc}{{\mathfrak c}}
+\newcommand{\fp}{{\mathfrak p}}
+\newcommand{\fm}{{\mathfrak m}}
+\newcommand{\fn}{{\mathfrak n}}
+\newcommand{\fq}{{\mathfrak q}}
+
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\dual}{\vee}
+
+\newcommand{\DEF}[1]{\emph{#1}\index{#1}}
+\newcommand{\Def}[1]{#1 \index{#1}}
+
+
+% The following causes equations to be numbered within sections
+\numberwithin{equation}{section}
+
+
+\theoremstyle{plain} %% This is the default, anyway
+\newtheorem{thm}[equation]{Theorem}
+\newtheorem{thmdef}[equation]{TheoremDefinition}
+\newtheorem{introthm}{Theorem}
+\newtheorem{introcor}[introthm]{Corollary}
+\newtheorem*{introthm*}{Theorem}
+\newtheorem{question}{Question}
+\newtheorem{cor}[equation]{Corollary}
+\newtheorem{por}[equation]{Porism}
+\newtheorem{lem}[equation]{Lemma}
+\newtheorem{lemminition}[equation]{Lemminition}
+\newtheorem{prop}[equation]{Proposition}
+\newtheorem{porism}[equation]{Porism}
+
+\newtheorem{conj}[equation]{Conjecture}
+\newtheorem{quest}[equation]{Question}
+
+\theoremstyle{definition}
+\newtheorem{defn}[equation]{Definition}
+\newtheorem{chunk}[equation]{}
+\newtheorem{ex}[equation]{Example}
+
+\newtheorem{exer}[equation]{Optional Exercise}
+
+\theoremstyle{remark}
+\newtheorem{rem}[equation]{Remark}
+
+\newtheorem{notation}[equation]{Notation}
+\newtheorem{terminology}[equation]{Terminology}
+
+
+
+\renewcommand{\sec}[1]{\section{#1}}
+\newcommand{\ssec}[1]{\subsection{#1}}
+\newcommand{\sssec}[1]{\subsubsection{#1}}
+
+\newcommand{\br}[1]{\lbrace \, #1 \, \rbrace}
+\newcommand{\li}{ < \infty}
+\newcommand{\quis}{\simeq}
+\newcommand{\xra}[1]{\xrightarrow{#1}}
+\newcommand{\xla}[1]{\xleftarrow{#1}}
+\newcommand{\xlra}[1]{\overset{#1}{\longleftrightarrow}}
+
+\newcommand{\xroa}[1]{\overset{#1}{\twoheadrightarrow}}
+\newcommand{\xria}[1]{\overset{#1}{\hookrightarrow}}
+\newcommand{\ps}[1]{\mathbb{P}_{#1}^{\text{c}-1}}
+
+
+
+
+\def\and{{ \text{ and } }}
+\def\oor{{ \text{ or } }}
+
+\def\Perm{\operatorname{Perm}}
+\newcommand{\Ss}{\mathbb{S}}
+
+\def\Op{\operatorname{Op}}
+\def\res{\operatorname{res}}
+\def\ind{\operatorname{ind}}
+
+\def\sign{{\mathrm{sign}}}
+\def\naive{{\mathrm{naive}}}
+\def\l{\lambda}
+
+
+\def\ov#1{\overline{#1}}
+\def\cV{{\mathcal V}}
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+
+\newcommand{\chara}{\operatorname{char}}
+\newcommand{\Kos}{\operatorname{Kos}}
+\newcommand{\opp}{\operatorname{opp}}
+\newcommand{\perf}{\operatorname{perf}}
+
+\newcommand{\Fun}{\operatorname{Fun}}
+\newcommand{\GL}{\operatorname{GL}}
+\newcommand{\SL}{\operatorname{SL}}
+\def\o{\omega}
+\def\oo{\overline{\omega}}
+
+\def\cont{\operatorname{cont}}
+\def\te{\tilde{e}}
+\def\gcd{\operatorname{gcd}}
+
+\def\stab{\operatorname{stab}}
+
+\def\va{\underline{a}}
+
+\def\ua{\underline{a}}
+\def\ub{\underline{b}}
+
+
+\newcommand{\Ob}{\mathrm{Ob}}
+\newcommand{\Set}{\mathbf{Set}}
+\newcommand{\Grp}{\mathbf{Grp}}
+\newcommand{\Ab}{\mathbf{Ab}}
+\newcommand{\Sgrp}{\mathbf{Sgrp}}
+\newcommand{\Ring}{\mathbf{Ring}}
+\newcommand{\Fld}{\mathbf{Fld}}
+\newcommand{\cRing}{\mathbf{cRing}}
+\newcommand{\Mod}[1]{#1-\mathbf{Mod}}
+\newcommand{\vs}[1]{#1-\mathbf{vect}}
+\newcommand{\Vs}[1]{#1-\mathbf{Vect}}
+\newcommand{\vsp}[1]{#1-\mathbf{vect}^+}
+\newcommand{\Top}{\mathbf{Top}}
+\newcommand{\Setp}{\mathbf{Set}_*}
+\newcommand{\Alg}[1]{#1-\mathbf{Alg}}
+\newcommand{\cAlg}[1]{#1-\mathbf{cAlg}}
+\newcommand{\PO}{\mathbf{PO}}
+\newcommand{\Cont}{\mathrm{Cont}}
+\newcommand{\MaT}[1]{\mathbf{Mat}_{#1}}
+
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+
+\makeindex
+\title{Final Exam}
+
+
+\begin{document}
+\onehalfspacing
+
+\maketitle
+
+\noindent Please turn in \emph{four} of the following problems. If you intend to take a written algebra comprehensive exam, I recommend attempting the problems in a timed setting with no notes at first, and then continuing with the problems later.
+
+\
+
+
+\begin{enumerate}
+
+
+
+
+\item Let $K$ be a field and $S=K[x_1,\dots,x_n]$ be a polynomial ring over $K$. Let $R$ be any subring of $S$ that contains every polynomial $f\in S$ with the property that 
+\[ f(x_1,x_2,\dots, x_{n-1}, x_n) = f(x_2, x_3,\dots,x_n, x_1).\]
+Show that $R$ is a finitely generated $K$-algebra.
+
+\
+
+\item Let $K \subseteq L$ be fields, and $R$ be a finitely generated $K$-algebra. Determine if each of the following is true or false, and justify with a proof or counterexample.
+\begin{enumerate}
+\item If $R$ is a domain, then $L\otimes_K R$ is a domain.
+\item If $L\otimes_K R$ is a domain, then $R$ is a domain.
+\item If $R$ and $L\otimes_K R$ are domains, then $\dim(R) = \dim(L\otimes_K R)$.
+\end{enumerate}
+
+\
+
+\item\label{Zar} Let $R$ be a Noetherian ring. Let $M$ be a nonzero $R$-module (not necessarily finitely generated!), and suppose that $\Ass_R(M)$ has finitely many minimal elements. Show that the support of $M$ is a Zariski closed subset of $\mathrm{Spec}(R)$.
+
+
+\
+
+\item Let $R$ be a domain and $F$ be its fraction field. For an $R$-module $M$, the \emph{rank} of $M$ is the dimension of the $F$-vector space $M_{(0)}\cong F\otimes_R M$. Assume that $M$ is finitely generated.
+\begin{enumerate}
+\item Show that the rank of $M$ is finite.
+\item Show that there is a short exact sequence of the form
+\[ 0 \to R^{\oplus r} \to M \to T \to 0\]
+with $r=\mathrm{rank}(M)$ and $T$ a torsion module.
+\end{enumerate}
+
+\
+
+\item Let $R$ be a Noetherian ring, and 
+\[ I=\mathfrak{q}_1 \cap \mathfrak{q}_2 \cap \mathfrak{q}_3 = \mathfrak{r}_1 \cap \mathfrak{r}_2 \cap \mathfrak{r}_3\]
+be two minimal primary decompositions of an ideal $I$.
+Show that\footnote{Hint: Take $\mathfrak{q}_3, \mathfrak{r}_3$ whose radicals are equal and are not contained  in any other element of $\mathrm{Ass}(R/I)$ (and explain why you can). Then use the multiplicative set $W=R\smallsetminus (\sqrt{\mathfrak{q}_1} \cup \sqrt{\mathfrak{q}_2})$.} after possibly reordering the ideals above, there is a minimal primary decomposition of $I$ of the form
+\[ I = \mathfrak{q}_1 \cap \mathfrak{q}_2 \cap \mathfrak{r}_3.\]
+
+\
+
+%\item Let $(R,\mathfrak{m},k)$ be a complete local ring, and $M$ be an $R$-module such that $\bigcap_{n\in \mathbb{N}} \mathfrak{m}^n M= 0$. Let $m_1,\dots,m_t \in M$. Show that $M = R m_1 + \cdots + R m_t$ if and only if the images of $m_1,\dots, m_t$ generate $M/\mathfrak{m} M$ as a $k$-vector space.
+
+
+%\ 
+
+\item Let $K$ be a field, and 
+\[R=K\begin{bmatrix} x_{11} & x_{12} & x_{13} \\ x_{21} & x_{22} & x_{23}\end{bmatrix}.\] Let $I$ be the ideal generated by the $2\times 3$ minors of  the matrix of variables.
+Let \[S=K\begin{bmatrix} u_1 v_1 & u_1 v_2 & u_1 v_3 \\ u_2 v_1 & u_2 v_2 & u_2 v_3\end{bmatrix}\subseteq K[u_1,u_2,v_1,v_2,v_3].\] 
+Consider $R$ as a graded ring with $\deg(x_{ij}) = 1$ and $S$ as a graded ring with $\deg(u_i v_j) =1$.
+\begin{enumerate}
+\item Show that there is a surjective graded $K$-algebra homomorphism $\phi:R/I \to S$ given by sending $\phi(x_{ij}) = u_i v_j$ for all $i,j$.
+\item Compute the Hilbert function $H_S(t)$ and show\footnote{Hint: Show that any monomial in $R$ is equivalent modulo $I$ to either 
+\begin{itemize} 
+\item a monomial in $K[x_{11},x_{12},x_{13},x_{23}]$
+\item a monomial in $K[x_{11},x_{12},x_{22},x_{23}]$, or
+\item a monomial in $K[x_{11},x_{21},x_{22},x_{23}]$.
+\end{itemize}}
+that $H_{R/I}(t)\leq H_S(t)$ for all $t$.
+\item Conclude that $I$ is prime.
+\end{enumerate}
+
+\
+
+\item Let $(R,\mathfrak{m},k)$ be a Noetherian local ring. Recall that a local ring is regular if $\dim(R) = \dim_k(\mathfrak{m}/\mathfrak{m}^2)$.
+\begin{enumerate}
+\item Show that if $R$ is regular then $\mathrm{gr}_{\mathfrak{m}}(R)$ is a polynomial ring.
+\item Show that if $R$ is regular then $\widehat{R}$ is regular.
+\end{enumerate}
+
+\
+
+
+\item[(Bonus)] Show that the conclusion of (\ref{Zar}) is false if $R$ is not Noetherian.
+
+
+\end{enumerate}
+
+\end{document}
+
+
+
+
+
+
+
+  
+ 
+
+
