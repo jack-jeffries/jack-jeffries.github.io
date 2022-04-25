@@ -4077,7 +4077,7 @@ for all $n>N$.
 \end{lemma}
 \begin{proof} It suffices to deal with the case $M'_n = I^n M$. Since $I M_n \subseteq M_{n+1}$ it follows by induction on $n$ that $I^n M \subseteq M_n$ for all $n\in \N$. On the other hand, let $c\in \N$ be such that $I M_n = M_{n+1}$ for all $n> c$, and by induction it follows that $M_{n+c} = I^n M_c \subseteq I^n M$ for all $n\in \N$.
 \end{proof}
-\begin{comment}
+
 \Apr{25}
 
 
@@ -4116,6 +4116,10 @@ First we note that $\{N_n :=M_n \cap N\}$ is $I$-consistent, since
 \end{corollary}
 \begin{proof} We have some $c$ such that $I^n(I^c M \cap N) = I^{n+c} M \cap N$, so that $I^n N \supseteq I^n (I^c M \cap N) = I^{n+c} M \cap N$ for all $n$.
 \end{proof}
+
+\begin{rem} We can use Artin-Rees to give a quick proof of Krull intersection theorem: if $M$ is finitely generated over $(R,\m)$, and $N= \bigcap \m^n M$, then for some $c$ and all $n$ we have $N = \m^n+c M \cap M \subseteq \m^n N$, so $N=\m N$ and $N=0$.
+\end{rem}
+\begin{comment}
 
 
 \subsection{Hilbert functions for local rings}
