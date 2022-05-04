@@ -4269,7 +4269,7 @@ Note that such a map extends to the fraction field of $V$ by the rule $\mathrm{o
 	\end{enumerate}
 \end{example}
 
-\begin{comment}
+\May{2}
 
 The oddity in the last example does not occur in the local case, where regular sequences are much better behaved in general.
 
@@ -4289,7 +4289,7 @@ The oddity in the last example does not occur in the local case, where regular s
 \begin{remark}
 	If $R$ is Noetherian, then every regular sequence on a finitely generated module $M$ extends to a \emph{maximal}\index{maximal regular sequence} one: one that does not extend to a longer one. This is just because a counterexample would lead to an infinite ascending chain of submodules, using the remark above.
 	
-	Also, if $(R,\m)$ is local, a regular sequence on $R$ must consist of parameters, since a nonzerodivisor is not in any minimal prime, and thus quotienting out by one decreases dimension by one. This implies that any regular sequence has length at most the dimension of $R$ in this case.
+	%Also, if $(R,\m)$ is local, a regular sequence on $R$ must consist of parameters, since a nonzerodivisor is not in any minimal prime, and thus quotienting out by one decreases dimension by one. This implies that any regular sequence has length at most the dimension of $R$ in this case.
 \end{remark}
 
 %\begin{comment}
@@ -4313,12 +4313,16 @@ as part of the sequence, so $\Ext^t_R(k,M)\neq 0$.
 
 
 
+
 \begin{definition}
 	Let $(R,\m)$ be a local ring. The \emph{depth}\index{depth of a module} of a module $M$ is the maximal length of a regular sequence on $M$, denoted $\mathrm{depth}(M)$\index{$\mathrm{depth}(M)$}. The \emph{depth}\index{depth of a ring} of $R$ is $\mathrm{depth}(R)$.
 \end{definition}
 
-\begin{remark} The depth of a local ring is bounded above by its dimension, as observed above.
-\end{remark}
+\begin{cor} Let $(R,\m,k)$ be a local ring and $M$ be a finitely generated $R$-module. If $f_1,\dots,f_a$ is a regular sequence on $M$, then $\depth(M/(f_1,\dots,f_a)M) = \depth(M) -a$.
+\end{cor}
+
+%\begin{remark} The depth of a local ring is bounded above by its dimension, as observed above.
+%\end{remark}
 
 
 
@@ -4326,7 +4330,7 @@ as part of the sequence, so $\Ext^t_R(k,M)\neq 0$.
 	\begin{enumerate}
 		\item The depth of $K[x,y]_{(x,y)}/(x^2,xy)$ is zero, since every nonunit kills $x$, so there are no nonzerodivisors.
 		\item The depth of the two dimensional ring $K[x,y,z]_{(x,y,z)}/(xy,xz)$ is one. Indeed, there is a nonzerodivisor $x-z$. We can see that this is a nonzerodivisor by noting that $(xy,xz)=(x)\cap(y,z)$, so the associated primes of $(xy,xz)$ in $K[x,y,z]_{(x,y,z)}$ are $(x)$ and $(y,z)$. Thus, the associated primes of the ring are $(x)$ and $(y,z)$, and the element we found is not in the union of these, hence is a nonzerodivisor. Now, we want to see that $x-z$ is a maximal regular sequence. The quotient is isomorphic to $K[x,y]_{(x,y)}/(x^2,xy)$!
-		\item The depth of $K[x,y,z]_{(x,y,z)}/(x^2-yz)$ is two. $y,z$ is a regular sequence, and there can be no longer, for dimension reasons.
+		\item The depth of $K[x,y,z]_{(x,y,z)}/(x^2-yz)$ is two: $y,z$ is a regular sequence, and the quotient is $K[x]/(x^2)$ which has no nonzerodivisors.
 	\end{enumerate} 
 \end{example}
 
@@ -4339,7 +4343,7 @@ as part of the sequence, so $\Ext^t_R(k,M)\neq 0$.
 	
 	Take $z$ such that $Rz\subseteq M$ is a maximal element in the set $\{ Ra \subseteq M \ | \ \p a =0\}$. We claim that $z \notin x M$. If not, $z=xz'$ for some $z'\in M$. Note that, for $p\in \p$, $pz=pxz'=0$, and $x$ a nonzerodivisor implies $pz'=0$, so $\p z'=0$, and $Rz \subsetneqq Rz'$, a contradiction. Setting $\overline{z}= z+xM \in M/xM$, $\p+(x) \subseteq \ann(\overline{z})$. 
 	
-	Since $\p+(x)$ annihilates a nonzero element of $M/xM$, there is an associated prime $\q$ of $M/xM$ containing this ideal. In particular $\q \supsetneq \p$.	Now, using the inductive hypothesis, $\depth(M)-1 = \depth(M/xM) \leq \dim(R/\q) \leq \dim(R/\p) -1$, and the theorem follows.
+	Since $\p+(x)$ annihilates a nonzero element of $M/xM$, there is an associated prime $\q$ of $M/xM$ containing this ideal. In particular $\q \supsetneqq \p$.	Now, using the inductive hypothesis, \[\depth(M)-1 = \depth(M/xM) \leq \dim(R/\q) \leq \dim(R/\p) -1,\] and the theorem follows.
 \end{proof}
 
 \begin{example}
@@ -4347,16 +4351,33 @@ as part of the sequence, so $\Ext^t_R(k,M)\neq 0$.
 \end{example}
 
 
+\May{4}
+
+
+\begin{defn}
+Let $R$ be a positively graded $K$-algebra, and $M$ a finitely generated graded $R$-module. The \emph{depth} of $M$ is the maximal length of a homogeneous regular sequence on $M$.
+\end{defn}
+
+Note that any homogeneous regular sequence must consist of elements of positive degree, since by our assumptions, elements of degree zero are units (or zero).
+
+\begin{exer} Let $R$ be a Noetherian positively graded $K$-algebra, and $M$ a finitely generated graded $R$-module. Then the length of any maximal regular sequence is equal to \[ \max\{ n \ | \ \Ext^n_R(K,M)\neq 0\},\]
+where $K$ is an $R$-module via $K\cong R/R_+$; this value is the depth of $M$. Consequently, $\depth_R(M) = \depth_{R_{\m}}(M_{\m})$.
+\end{exer}
+
+
+
 
 \subsection{Cohen-Macaulay rings}
 
-\begin{definition} A Noetherian local ring is \emph{Cohen-Macaulay}\index{Cohen-Macaulay} if $\depth(R)=\dim(R)$.
-	A finitely generated module over a Noetherian local ring is a \emph{Cohen-Macaulay module} if $\depth(M)=\dim(M)$. It is a \emph{maximal Cohen-Macaulay module} if $\depth(M)=\dim(M)=\dim(R)$.
+\begin{definition} A Noetherian local or positively graded ring is \emph{Cohen-Macaulay}\index{Cohen-Macaulay} if $\depth(R)=\dim(R)$.
+	A finitely generated module over a Noetherian local ring (or graded module over positively graded ring) is a \emph{Cohen-Macaulay module} if $\depth(M)=\dim(M)$. It is a \emph{maximal Cohen-Macaulay module} if $\depth(M)=\dim(M)=\dim(R)$.
 \end{definition}
+
+In the sequel, we will often just deal with the proofs for the local case and give the statements for the graded case.
 
 One nice consequence of the Cohen-Macaulay property is unmixedness.
 
-\begin{proposition} If $M$ is a Cohen-Macaulay $R$-module, then $\depth(M)=\dim(R/\p)$ for every $\p\in \Ass(M)$. In particular, if $R$ is a Cohen-Macaulay ring, then $R$ has no embedded primes, and $\dim(R/\p)=\dim(R)$ for each $\p\in \Min(R)$.
+\begin{proposition} If $M$ is a Cohen-Macaulay module over a Noetherian local ring $R$, then ${\depth(M)=\dim(R/\p)}$ for every ${\p\in \Ass(M)}$. In particular, if $R$ is a Cohen-Macaulay local ring, then $R$ has no embedded primes, and $\dim(R/\p)=\dim(R)$ for each $\p\in \Min(R)$. Likewise in the graded case.
 \end{proposition}
 \begin{proof}
 	This follows from the inequality on depth and dimension of associated primes: \[\dim(M)=\max\{\dim(R/\p) \ | \ \p\in \Ass(M) \} \geq \min\{\dim(R/\p) \ | \ \p\in \Ass(M) \} \geq \depth(M),\] so equality holds throughout, and for each $\dim(R/\p)$ with $\p\in \Ass(M)$.
@@ -4366,6 +4387,14 @@ One nice consequence of the Cohen-Macaulay property is unmixedness.
 	Indeed, each $x_i$ is nonzerodivisor modulo the previous $x$'s, so $\dim(R/(x_1,\dots,x_a))=\dim(R)-a$, and each $x_i$ decreases the depth by 1.
 \end{remark}
 
+We now compare systems of parameters to regular sequences. We make a definition first in the graded case.
+
+\begin{defn} Let $R$ be a Noetherian positively graded $K$-algebra. A \index{homogeneous system of parameters} for $R$ is a set of homogeneous elements $f_1,\dots,f_d \in R_+$ such that $\dim(R)=d$ and $\sqrt{(f_1,\dots,f_d)}=R_+$.
+\end{defn}
+
+\begin{exer} In the setting above, if $K$ is infinite, then homogeneous systems of parameters exist.
+\end{exer}
+
 
 \begin{proposition} Let $f_1,\dots,f_t$ be a sequence of elements in a Noetherian local ring $(R,\m)$. For the conditions
 	\begin{enumerate}
@@ -4374,7 +4403,7 @@ One nice consequence of the Cohen-Macaulay property is unmixedness.
 		\item $\height((f_1,\dots,f_t)) = t$;
 		\item $f_1,\dots,f_t$ is part of a system of parameters for $R$,
 	\end{enumerate}
-	we have (1)$\Rightarrow$(2)$\Rightarrow$(3)$\Rightarrow$(4) in general, and if $R$ is Cohen-Macaulay, (4)$\Rightarrow$(1), so all of the above are equivalent.
+	we have (1)$\Rightarrow$(2)$\Rightarrow$(3)$\Rightarrow$(4) in general, and if $R$ is Cohen-Macaulay, (4)$\Rightarrow$(1), so all of the above are equivalent. Likewise for homogeneous elements in a Noetherian positively graded $K$-algebra.
 \end{proposition}
 \begin{proof}
 	\textbf{(1)}$\Rightarrow$\textbf{(2):} By Krull height, $\height((f_1,\dots,f_i)) \leq i$ for all $i$ always. The condition that $f_i$ is a nonzerodivisor in $R/(f_1,\dots,f_{i-1})$ implies that $f_i$ is not in any associated prime, hence any minimal prime, of $(f_1,\dots,f_{i-1})$ so its height is larger. Inductively, we get the equality.
@@ -4383,7 +4412,7 @@ One nice consequence of the Cohen-Macaulay property is unmixedness.
 	
 	\textbf{(3)}$\Rightarrow$\textbf{(4):} $\height((f_1,\dots,f_t)) + \dim(R/(f_1,\dots,f_t)) \leq \dim(R)$, so $\dim(R)-\dim(R/(f_1,\dots,f_t))\geq t$, which makes these elements parameters.
 	
-	\textbf{(4)}$\Rightarrow$\textbf{(1) if }$R$\textbf{ is CM:} It suffices to show the statement when $t=\dim(R)$, so that $f_1,\dots,f_d$ is a system of parameters. Since $f_1$ is a parameter, it is not in any absolutely minimal prime, and by the unmixedness statement, not in any associated prime. Thus $f_1$ is a nonzerodivisor. Now, $R/(f_1)$ is Cohen-Macaulay, so by induction on dimension, we are done.
+	\textbf{(4)}$\Rightarrow$\textbf{(1) if $R$ is CM:} It suffices to show the statement when $t=\dim(R)$, so that $f_1,\dots,f_d$ is a system of parameters. Since $f_1$ is a parameter, it is not in any absolutely minimal prime, and by the unmixedness statement, not in any associated prime. Thus $f_1$ is a nonzerodivisor. Now, $R/(f_1)$ is Cohen-Macaulay, so by induction on dimension, we are done.
 \end{proof}
 
 
@@ -4395,6 +4424,7 @@ One nice consequence of the Cohen-Macaulay property is unmixedness.
 		\item Some system of parameters of $R$ is a regular sequence;
 		\item Every system of parameters of $R$ is a regular sequence.
 	\end{itemize}
+	Likewise for homogeneous elements in a Noetherian positively graded $K$-algebra.
 \end{corollary}
 \begin{proof} The equivalence of the first two is basically the definition. The equivalence of the second two comes from the last theorem.
 \end{proof}
@@ -4408,13 +4438,23 @@ One nice consequence of the Cohen-Macaulay property is unmixedness.
 		\item The ring $R=\displaystyle\frac{K[x,y,z]_{(x,y,z)}}{(x^2+y^3+z^7)}$ is Cohen-Macaulay by the last example and the remark above. For the same reason, if $R$ is a regular local ring, then $R/(f)$ is Cohen-Macaulay.
 		\item Every zero-dimensional local ring is Cohen-Macaulay: depth zero and dimension zero.
 		\item Every one-dimensional local domain is Cohen-Macaulay: the depth is one since a domain has a nonzerodivisor.
-		\item The ring $\displaystyle\frac{K[x,y]_{(x,y)}}{(x^2,xy)}$ is \emph{not} Cohen-Macaulay, since it has an associated prime of dimension zero, although the ring is dimension one. 
-		\item The ring $\displaystyle\frac{K[x,y]_{(x,y,z)}}{(xy,xz)}$ is \emph{not} Cohen-Macaulay since it has minimal (a fortiori, associated) primes of different dimensions.
-		\item $\displaystyle\frac{K[x,y]_{(x,y)}}{(xy)}$ is Cohen-Macaulay by example \#2 above. We can check by showing an SOP is a regular sequence. The element $x-y$ is a SOP, since the quotient is $K[x]/(x^2)$, which is zero-dimensional. This element is also a nonzerodivisor on the ring: any element in the ring can be represented by $f(x,y)= a + xb(x) + yc(y)$. $(x-y)f(x,y)= ax - ay + x^2 b(x) - y^2 c(y) = 0$ in $R$ implies $f(x,y)=0$. Thus, $R$ is CM.
-		\item $\displaystyle{K[x^4,x^3y,xy^3,y^4]_{(x^4,x^3y,xy^3,y^4)}}$ is not CM. An SOP is $x^4,y^4$, but $y^4$ is a zerodivisor mod $(x^4)$, since $y^4 \cdot (x^3y)^2 = x^4 \cdot (xy^3)^2 \in (x^4)$, but $(x^3y)^2 \notin (x^4)$, since $x^2y^2\notin R$.
-		\item $\displaystyle \frac{K[X_{2\times 3}]_{X}}{I_2(X)}$ is Cohen-Macaulay. A SOP is $x_{11}, x_{21}-x_{12},x_{31}-x_{22},x_{23}$; check that it is a regular sequence!
-	\end{enumerate}
+		\item The ring $\displaystyle\frac{K[x,y]}{(x^2,xy)}$ is \emph{not} Cohen-Macaulay, since it has an associated prime of dimension zero, although the ring is dimension one. 
+		\item The ring $\displaystyle\frac{K[x,y,z,w]}{(xz,xw,yz,yw)}$ is \emph{not} Cohen-Macaulay, even though it is equidimensional.
+		%\item $\displaystyle{K[x^4,x^3y,xy^3,y^4]}$ is not CM. An SOP is $x^4,y^4$, but $y^4$ is a zerodivisor mod $(x^4)$, since $y^4 \cdot (x^3y)^2 = x^4 \cdot (xy^3)^2 \in (x^4)$, but $(x^3y)^2 \notin (x^4)$, since $x^2y^2\notin R$.
+			\end{enumerate}
+	
 \end{example}
+\begin{example} $R=\displaystyle \frac{K[X_{2\times 3}]}{I_2(X)}$ is Cohen-Macaulay. Write the variables as $\begin{bmatrix} u & v & w \\ x& y& z\end{bmatrix}$. We have seen in the HW that $u,z,v-x,w-y$ are algebraically independent and that $R/(u,z,v-x,w-y)$ is a finite-dimensional vector space, so these elements form a homogeneous SOP. We have also shown in the final that $R$ is a domain. Thus, $u$ is a regular element on $R$. 
+
+Then $\displaystyle R/(u) \cong \frac{ K[v,w,x,y,z]}{(vx,wx,vz-wy)}$. We claim that $(vx,wx,vz-wy) = (v,w) \cap (x,vz-wy)$. Indeed $\subseteq$ is clear; for the other, let \[ f= av+bw = cx + d(vz-wy).\]
+Then \[ cx = av+bw - d(vz-wy) \in (v,w).\]
+Since $(v,w)$ is prime, $c\in (v,w)$, so we can write $c=a'v+b'w$ and $f= a'\, vx + b' \, wx + d(vz-wy)$, showing the claim. These two ideals in the intersection are prime: note that $vz-wy$ is irreducible, e.g., by Eisenstein, and does not involve the other variable $x$. Thus, these are the associated primes, and neither contains $z$ so $z$ is a nzd module $u$. That is, $u,z$ is a regular sequence on $R$.
+
+Now, $\displaystyle R/(u,z)\cong \frac{ K[v,w,x,y]}{(vx,wx,wy)}$. We claim that $(vx,wx,wy) = (v,w) \cap (w,y) \cap (x,y)$; you can check this. We then see that these three primes are the associated primes, and $v-x$ is not in any of these, so is a regular element on this quotient. Thus, $u,z,v-x$ is a regular sequence on $R$.
+
+Finally, $\displaystyle R/(u,z,v-x)\cong \frac{ K[w,x,y]}{(x^2,wx,wy)}$. We claim that $(x^2,wx,wy) = (x^2,w) \cap (x,y)$; again, you can check this. Then the associated primes are $(x,w)$ and $(x,y)$, so $w-y$ avoids both of them, and hence is a nonzerodivisor. We conclude that $u,z,v-x,w-y$ is a regular sequnce.
+\end{example}
+
 
 \begin{lemma} Let $R$ be a Cohen-Macaulay local ring, and $I$ be an ideal. Then there exists a regular sequence of length $h=\height(I)$ in $I$.
 \end{lemma}
@@ -4429,10 +4469,14 @@ One nice consequence of the Cohen-Macaulay property is unmixedness.
 	\end{proof}
 
 
-\begin{definition} A Noetherian local ring that may or may not be local is \emph{Cohen-Macaulay} if $R_{\m}$ is Cohen-Macaulay for all $\m\in \Max(R)$. Equivalently, $R$ is Cohen-Macaulay if $R_{\p}$ is Cohen-Macaulay for all $\p\in \Spec(R)$.
+\begin{comment}
+
+\May{6}
+
+\begin{definition} A Noetherian ring that may or may not be local is \emph{Cohen-Macaulay} if $R_{\m}$ is Cohen-Macaulay for all $\m\in \Max(R)$. Equivalently, $R$ is Cohen-Macaulay if $R_{\p}$ is Cohen-Macaulay for all $\p\in \Spec(R)$.
 \end{definition}
 
-\begin{remark} Any regular ring is Cohen-Macaulay. 
+\begin{remark} Any regular ring is Cohen-Macaulay. In particular, any polynomial ring over a field is Cohen-Macaulay.
 \end{remark}
 
 \begin{theorem}[Macaulay's unmixedness theorem]
@@ -4446,10 +4490,24 @@ One nice consequence of the Cohen-Macaulay property is unmixedness.
 \begin{theorem}[Dimension formula] Let $R$ be a Cohen-Macaulay ring, and $\p\subseteq \q$ be primes. Then, $\mathrm{height}(\q) - \mathrm{height}(\p) = \dim(R_{\q} / \p R_{\q})$. In particular, if $(R,\m)$ is Cohen-Macaulay and local, then $\dim(R) - \mathrm{height}(\p) = \dim(R/\p)$.
 \end{theorem}
 \begin{proof}
-	$R_{\q}$ is CM local of dimension $\mathrm{height}(\q)$. Pick $h=\height(\p)$ elements $r_1,\dots,r_h$ in $\p$. These form a regular sequence, so $R_{\q}/(r_1,\dots,r_h) R_{\q}$ is CM, and $\dim(R_{\q}/(r_1,\dots,r_h) R_{\q})=\dim(R_{\q} / \p R_{\q})$, since $\p R_{\q}\in \Ass(R_{\q}/(r_1,\dots,r_h) R_{\q})$. On the other hand, $\dim(R_{\q}/(r_1,\dots,r_h) R_{\q}) = \dim(R_{\q})-h$. The equality follows.
+	$R_{\q}$ is CM local of dimension $\mathrm{height}(\q)$. Pick $h=\height(\p)$ elements $r_1,\dots,r_h$ in $\p$. These form a regular sequence, so $R_{\q}/(r_1,\dots,r_h) R_{\q}$ is CM, and $\dim(R_{\q}/(r_1,\dots,r_h) R_{\q})=\dim(R_{\q} / \p R_{\q})$, since $\htt(\p R_{\q}) = \htt((r_1,\dots,r_h)R_{\q})$ implies $\p R_\q \in \Ass(R_{\q}/(r_1,\dots,r_h) R_{\q})$, and then by unmixedness. On the other hand, $\dim(R_{\q}/(r_1,\dots,r_h) R_{\q}) = \dim(R_{\q})-h$. The equality follows.
 \end{proof}
 
-\begin{theorem} Let $(R,\m)\subseteq (S,\mathfrak{n})$ be a module-finite local inclusion of Noetherian local rings, with $R$ regular. Then $S$ is Cohen-Macaulay if and only if $S$ is a free $R$-module.
+\subsection{Primary and secondary invariants}
+
+
+
+\begin{prop} Let $R$ be a Noetherian positively graded $K$-algebra and $f_1,\dots,f_t$ be homogeneous. Then $K[f_1,\dots,f_t]$ is a Noether normalization if and only if $f_1,\dots,f_t$ is a homogeneous system of parameters.
+\end{prop}
+\begin{proof} Note that we must have $t=d$ for either to be true. If $A=K[f_1,\dots,f_t]$ is a Noether normalization, then $R$ is a module-finite extension of $A$, so $R/(f_1,\dots,f_t) R\cong R\otimes_A A/(f_1,\dots,f_t)A$ is a finite dimensional $K$-algebra, and hence zero-dimensional, so $f_1,\dots,f_t$ is a SOP. Conversely, if $f_1,\dots,f_t$ is a SOP, then $R/(f_1,\dots,f_t) R$ is zero-dimensional, hence a finite dimensional vector space, and by homogeneous NAK, $R$ is module-finite over $A$. It follows that $\dim(R)=\dim(A)$ and since $A$ is generated by $\dim(A)$ elements as a $K$-algebra, they are algebraically independent.
+\end{proof}
+
+\begin{theorem} Let either
+ \begin{enumerate}
+ \item $(R,\m) \subseteq (S,\mathfrak{n})$ be a module-finite inclusion of Noetherian local rings, with $R$ regular, or
+ \item $R\subseteq S$ be a graded module-finite inclusion of Noetherian positively graded $K$-algebras, with $R$ a polynomial ring.
+ \end{enumerate}
+Then $S$ is Cohen-Macaulay if and only if $S$ is a free $R$-module.
 \end{theorem}
 \begin{proof}
 	Let $x_1,\dots,x_d$ be a regular system of parameters for $R$. We have that $S$ is Cohen-Macaulay if and only if $x_1,\dots,x_d$ is a regular sequence on $S$.
@@ -4463,10 +4521,19 @@ One nice consequence of the Cohen-Macaulay property is unmixedness.
 	On the other hand, the images of $s_1,\dots,s_t$ in $S/x_d S$ form a minimal generating set for $S/x_d S$ as a $R/x_d R$-module. Since $R/x_d R$ is regular, and the images of $x_1,\dots,x_{d-1}$ form a regular sequence on $S/x_d S$, the induction hypothesis yields that our relation is trivial in $R/ x_d R$. That is, all of the $r_i$'s must lie in $(x_d)$. Thus, any such relation must be trivial. We conclude that $S$ is free over $R$.
 \end{proof}
 
-%\begin{remark} By the Cohen structure theorem, every complete local ring $S$ is module-finite over a regular local ring.
-%\end{remark}
+\begin{cor} If $S$ is a Noetherian positively graded $K$-algebra, then $S$ is Cohen-Macaulay if and only if it is a free module over some, equivalently every, homogeneous Noether normalization.
+\end{cor}
 
- 
+\begin{theorem} Let either
+ \begin{enumerate}
+ \item $(R,\m) \subseteq (S,\mathfrak{n})$ be a module-finite inclusion of Noetherian local rings, or
+ \item $R\subseteq S$ be a graded module-finite inclusion of Noetherian positively graded $K$-algebras,
+ \end{enumerate}
+ with $S$ Cohen-Macaulay. If $R$ is a direct summand of $S$,  then $R$ is Cohen-Macaulay.
+\end{theorem}
+\begin{proof}
+Take a system of parameters $f_1,\dots,f_d$ of $R$. Then is a system of parameters for $S$, and hence a regular sequence there. If $r_{i+1} f_{i+1} \in (f_1,\dots,f_i)$, then we have $r_{i+1} f_{i+1} \in (f_1,\dots,f_i)S$ implies $r_{i+1}\in (f_1,\dots,f_i)S$, since it is a reg seq in $S$. But since $R$ is a direct summand, $r_{i+1}\in (f_1,\dots,f_i)S \cap R = (f_1,\dots,f_i)$, so it is a regular sequence in $R$.
+\end{proof}
  
  
  
