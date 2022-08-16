@@ -416,33 +416,11 @@ http:\linebreak[3]//www.\linebreak[3]math.\linebreak[3]uiuc.
 \def\ta{\tilde{a}}
 
 
-\def\z{\zeta}
-\def\lf{\operatorname{lf}}
-\def\mf{\operatorname{mf}}
-\def\lffl{\operatorname{lf}^{\mathrm{fin. len.}}}
-\def\mffl{\operatorname{mf}^{\mathrm{fin. len.}}}
-\def\len{\operatorname{length}}
-\def\Hlf{\operatorname{H}}
-
 \def\codim{\operatorname{codim}}
 
-\def\cPsi{\psi_{\mathrm{cyc}}}
-\def\Fold{\operatorname{Fold}}
-\def\ssupp{\operatorname{s.supp}}
-
-\def\mult{\operatorname{mult}}
-\def\stable{\mathrm{stable}}
-\def\and{{ \text{ and } }}
-\def\orr{{ \text{ or } }}
-\def\oor{\orr}
-
-\def\Perm{\operatorname{Perm}}
-
-\def\Soule{Soul\'e}
-
-\def\Op{\operatorname{Op}}
 \def\res{\operatorname{res}}
 \def\ind{\operatorname{ind}}
+\def\rsa{\rightsquigarrow}
 
 \def\sign{{\mathrm{sign}}}
 \def\naive{{\mathrm{naive}}}
@@ -484,21 +462,168 @@ http:\linebreak[3]//www.\linebreak[3]math.\linebreak[3]uiuc.
 \begin{document}
 
 
-
+\setcounter{tocdepth}{1}
 \tableofcontents
 
 
 \Aug{23}
 
+This class is, as its name makes clear, is all about differential equations. Let's start with an example that is probably similar to something you've seen in Calculus.
 
-\end{document}
+\begin{ex}
+The equation
+\[ \frac{dy}{dx} = 7 y\]
+is a differential equation. The unknown in this equation, $y$, stands for a function. What makes this equation a differential equation is that the equation relates the mystery function and its derivative.
+
+Let's see if we can guess a solution. This equation might remind us of a curious calculus coincidence. If the $7$ wasn't there, we would be looking for a function whose derivative is equal to itself; $e^x$ would work. 
+
+Let's try $y=7e^x$ for our original equation. To test it, we plug it in:
+\[ y = 7 e^x \rsa y' = (7e^x)' = 7e^x \neq 7y = 49e^x.\]
+How about putting the $7$ somewhere else:
+\[  y = e^{7x} \rsa y' = (e^{7x})' = e^{7x} (7x)' = 7 e^{7x} = 7y.\]
+So $e^{7x}$ is a solution!
+
+Could there be any others?
+\[  y = 5e^{7x} \rsa y' = (5e^{7x})' = 5e^{7x} (7x)' = 7 (5e^{7x}) = 7y.\]
+
+In general, $y(x) = C e^{7x}$ is a solution for any constant $C$.
+\end{ex}
+
+Of course, at the end of the day, nothing was special about $7$. If we replaced $7$ by any real number $a$, for the same reason, we would find that for the differential equation
+\[ y' = ay\]
+the \emph{general solution} is
+\[ y(x) = C e^{ax}.\]
+
+\subsection*{Types of differential equations}
+There are many different ways of throwing together functions and derivatives in an equation, so we'll need some terminology to orient ourselves.
+
+\begin{defn} An \emph{ordinary differential equation (ODE)} is a differential equation involving only one independent variable; i.e., derivatives with respect to just one variable.
+\end{defn}
+ For example,
+ \[ \frac{d^2 y}{dt^2} + t \frac{dy}{dt} = -y + \cos(ty)\]
+ is an ordinary differential equation.
+ 
+In general an ODE is an equation of the form \[F(t,y,y',y'',\dots,y^{(n)})=0\] for some function $F$ where $y=y(t)$: an equation relating the function $y$ with its derivative(s).
+
+\begin{defn} The \emph{order} of a differential equation is the highest order derivative that occurs in the equation.
+\end{defn}
+
+For example,
+\[ y y'' +  y''' + \frac{1}{y} = 5x\]
+is a third order ODE, due to the $y'''$ term and
+ \[ \frac{d^2 y}{dt^2} + t \frac{dy}{dt} = -y + \cos(ty)\]
+ is a second order ODE.
+ 
+ \begin{defn} A \emph{linear} ODE is any ODE of the form
+ \[ a_n(t) y^{(n)} + a_{n-1}(t) y^{(n-1)} + \cdots + a_2(t) y'' + a_1(t) y' + a_0(t) y = f(t).\]
+ \end{defn}
+ For example,
+ \[ 5t y'' + \ln(t) y' + y = \cos(t)\]
+ is a second order linear ODE, but 
+ \[ y y' + 5y = 7\]
+ and 
+ \[ (y')^3 - t y^2 = 3 e^t\]
+are first order nonlinear ODEs.
+
+We will be especially interested in linear ODEs in this course!
+
+\begin{defn} A \emph{partial differential equation (PDE)} is a differential equation involving multiple independent variable; i.e., derivatives with respect to different variables.
+\end{defn}
+For example, 
+\[ \frac{\partial u}{\partial t} - 5 \frac{\partial u}{\partial x} = 0\]
+is a PDE. A solution of this PDE would be a function $u(x,t)$ that depends two independent variables $x$ and $t$.
+ 
+ 
+\subsection*{Discussion Questions}
+\begin{enumerate}
+\item Is the differential equation $y' = y^{2/3}$ ordinary? linear? What is its order?
+\item Which of the following is a solution to the differential equation $y' =y^{2/3}$:
+\begin{enumerate}
+\item $y=4 t^2$
+\item $y= e^{{2t/3}}$
+\item $y=\frac{1}{27} t^3$
+\item $y=0$ (constant function 0)
+\end{enumerate}
+\item There is a solution to $y'' - y' = 2y$ of the form $y=a e^{2x} + b e^{-x}$ for some real numbers $a,b$. Find it!
+\item[(4*)] If $f,g$ are solutions to $y^{(3)} + 2e^x y^{(2)} -y = \cos(x)$, show that $\frac{f+g}{2}$ is too.
+\end{enumerate}
+
+\subsection*{Initial value problems; existence and uniqueness}
+
+In our first example, we saw that there are many solutions to the differential equation $y'=7y$. To pin one down, we might specify a value for our function at a point. The system
+\[\begin{cases} y' = 7y \\ 
+y(2)=4 \end{cases}\]
+is a example of an \emph{initial value problem}. Geometrically, $y(2)=4$ corresponds to the condition that the graph of our solution passes through $(2,4)$.
+
+We can solve this using our solution of $y'=7y$ from earlier. We have
+\[ y= Ce^{7x} \ y(2)=4\]
+so \[ 4 = C e^{7 \cdot 2}\]
+and \[ C= 4e^{-14}.\]
+That is,
+\[ y= 4e^{-14}e^{7x} = 4 e^{7x-14}.\]
+
+Not only did we find a solution to our IVP, but along the way we saw that our solution was the only one; i.e, is unique (as long as we believe we started off with all of the solutions to $y'=7y$).
+
+On the other hand, if we consider the two solutions $y=0$ and $y=\frac{1}{27} t^3$, we see that they are also both soltuions to the IVP
+\[\begin{cases} y' = y^{2/3} \\ 
+y(0)=0 \end{cases},\]
+so here we have an IVP for which the solution is not unique.
+
+What if we are so unlucky as to try to solve an IVP and there's no solution at all?
+
+\begin{thm}[Picard-Lindel\"of] For the IVP
+\[\begin{cases} \frac{dy}{dx} = f(x,y) \\ 
+y(x_0) = y_0 \end{cases}\]
+and some rectangle $R$ in the $(x,y)$-plane containing $(x_0,y_0)$ in its interior,
+there exists a unique solution on some possibly smaller interval $(x_0 - h, x_0+h)$, so long as $f$ and $\frac{\partial f}{\partial y}$ are continuous on $R$.
+\end{thm}  
+
+\begin{ex} Consider the differential equation
+\[ \frac{dy}{dx} = 5 xy.\]
+We want to use the Picard-Lindel\"of Theorem to show that for any initial condition $f(x_0)=y_0$, there is a unique solution near $x_0$. The $f(x,y)$ of the Theorem is $5xy$; this is continuous on all of $\mathbb{R}^2$. We also need to look at $\frac{\partial f}{\partial y} = 5x$. This is also continuous on all of $\mathbb{R}^2$.
+We conclude that 
+\[\begin{cases} \frac{dy}{dx} = 5xy \\ 
+y(x_0) = y_0 \end{cases}\]
+has a unique solution, no matter what $x_0$ and $y_0$ are.
+\end{ex}
+
+\begin{ex} Let's consider
+\[\begin{cases} y' = y^{2/3} \\ 
+y(x_0) = y_0 \end{cases}.\]
+Here $f(x,y) = y^{2/3}$ and $\frac{\partial f}{\partial y}(x,y) = 2/3 y^{-1/3}$. $f$ is continuous everywhere, but $f'$ is only continuous where $y\neq 0$.
+Thus, if $y_0\neq 0$, then there is a unique solution.
+
+However, if $y_0=0$, the theorem say nothing. We looked at this example earlier and saw that the solutions were not unique for $(x_0,y_0) = (0,0)$.
+\end{ex}
+
+\subsection*{Discussion Questions}
 
 
+The government of a country wants to remove counterfeit money from circulation. Say there are 20 million total bills in circulation. Every day, 3 million of its bills pass though federal banks, and every counterfeit bill collected is replaced by a legal one. Say that half of the total bills in circulation today are counterfeit. Let's assume that the total number of bills in circulation stays constant and that no more counterfeit bills are being introduced. Our goal is to find an initial value problem modeling the percentage of counterfeit bills in circulation as time passes. 
 
+\begin{enumerate}
+\item Introduce variables to keep track of the quantities we are interested in. What is the independent variable and what is the dependent variable? What are the units for each?
+\item To set up a differential equation, we want to relate the dependent variable with its rate of change. How much does the percentage of counterfeit bills change in a given day, on average? To figure this out, you might want to ask yourself first how many counterfeit bills are collected in a given day, on average.
+\item We also need an initial condition. Write it down.
+\item This is a type of differential equation we've solved already. Find an explicit solution.
+\item Based on your model, when will the total number of counterfeit bills pass below 3 million?
+\end{enumerate}
 
+Let's do an experiment to test our model. Each coin you've been given represents a million bills. Each face up coin is legal and each face down coin is counterfeit. Every day, take two random coins; replace the counterfeits with legal ones, and leave the legal ones alone.
 
+\begin{enumerate}
+\item Discuss whether your model for the previous situation is relevant to this experiment. What aspects fit the story well, and what ones don't?
+\item Run the experiment, keeping track of the number of counterfeit bills each day, and how long it takes to get down to 2 counterfeits.
+\end{enumerate}
 
+Now let's change our original story. As before, every day, 2 million of its bills pass though federal banks, and every counterfeit bill collected is replaced by a legal one. Say that half of the 20 million total bills in circulation today are counterfeit. But now, let's assume that 1 million new legal bills and 1 million new counterfeit bills are put into circulation each day.
 
+\begin{enumerate}
+\item Create a new differential equation and initial value problem to model this situation. You might find it helpful to write a closed formula for the number of total bills in circulation at a given time first.
+\item This is not a differential equation that we have solved yet. We will learn how to find explicit solutions of equations like this soon! But even without knowing what exactly the solution is, explain why there is one and only one solution to this initial value problem.
+\item Run an experiment similar to the one above adapted to this situation.
+\item Based on the experiment, what do we expect to happen to the currency as time passes?
+\end{enumerate}
 
 \end{document}
 
