@@ -476,10 +476,10 @@
 
 \tableofcontents
 
-
+\begin{comment}
 
 \Aug{23}
-\begin{comment}
+
 
 What is a number? Certainly the things used to count sheep, money, etc. are numbers:  $1, 2, 3, \dots$.
 We will call these the {\em natural numbers} and 
@@ -574,15 +574,13 @@ A version of the previous proof was known even to the ancient Greeks.
 
 
 
-\Aug{25}
-
 Our first major mathematical goal in the class is to make a formal definition of the real numbers. 
 Before we do this, let's record some basic properties of the rational numbers. I'll state this as a Proposition (which is something like a minor version of a Theorem), but we won't prove them; instead, we'll take it for granted to be true based on our own past experience with numbers.
 
 For the rational numbers, we can do arithmetic ($+,-,\times,\div$) and we also have a notion of size $(<,>)$. The first seven observations below describe the arithmetic, and the last three describe the notion of size.
 
 
-\begin{prop} \label{prop1}
+\begin{prop}[Arithmetic and order properties of $\Q$]\label{prop1}
   The set of rational numbers form an ``ordered field''. This means that the following ten properties hold:
 \begin{enumerate}
 \item There are operations $+$ and $\cdot$ defined on $\Q$, so that if $p, q$ are in $\Q$, then so are $p + q$ and $p \cdot q$.
@@ -657,9 +655,9 @@ property, called the {\em completeness axiom}, which I cannot state yet.
 
 There are many other familiar properties that are consequences of this list of axioms. As an example we can deduce the following property:
 \begin{quote}
-  ``Cancellation of Addition'': If $x + y = z + y$ then $x = z$.
+  ``Cancellation of Addition'': For real numbers, $x,y,z\in \R$,  if $x + y = z + y$ then $x = z$.
 \end{quote}
-Let's prove this carefully, using just the list of axioms: If $x + y = z + y$ then we can add $-y$ (which exists by Axiom 6) to both sides to get
+Let's prove this carefully, using just the list of axioms: Assume that $x + y = z + y$. Then we can add $-y$ (which exists by Axiom 6) to both sides to get
 $(x + y) + (-y) = (z + y) + (-y)$. This can be rewritten as $x + (y + (-y)) = z + (y + (-y))$ (Axiom 3) and hence as $x + 0 = z + 0$ (Axiom 6), which gives $x = z$ (Axiom 4 and Axiom 2).
 
 
@@ -681,6 +679,10 @@ facts such as $r \cdot 0 = 0$ hold.
 
 I owe you a description of the very important Completeness Axiom, and 
 it will take a bit of time to do so. Before we get to this, it will be helpful to review set notation, and some basics of proof-writing.
+
+
+
+\Aug{25}
 
 Often, sets are described as subsets of other larger sets, by specifying properties. For example, when I write
 $$
