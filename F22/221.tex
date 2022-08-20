@@ -576,7 +576,7 @@ What if we are so unlucky as to try to solve an IVP and there's no solution at a
 y(x_0) = y_0 \end{cases}\]
 and some rectangle $R$ in the $(x,y)$-plane containing $(x_0,y_0)$ in its interior,
 there exists a unique solution on some possibly smaller interval $(x_0 - h, x_0+h)$, so long as $f$ and $\frac{\partial f}{\partial y}$ are continuous on $R$.
-\end{thm}  
+\end{thm} 
 
 \begin{ex} Consider the differential equation
 \[ \frac{dy}{dx} = 5 xy.\]
@@ -590,11 +590,63 @@ has a unique solution, no matter what $x_0$ and $y_0$ are.
 \begin{ex} Let's consider
 \[\begin{cases} y' = y^{2/3} \\ 
 y(x_0) = y_0 \end{cases}.\]
-Here $f(x,y) = y^{2/3}$ and $\frac{\partial f}{\partial y}(x,y) = 2/3 y^{-1/3}$. $f$ is continuous everywhere, but $f'$ is only continuous where $y\neq 0$.
+Here $f(x,y) = y^{2/3}$ and $\frac{\partial f}{\partial y}(x,y) = \frac23 y^{-1/3}$. $f$ is continuous everywhere, but $f'$ is only continuous where $y\neq 0$.
 Thus, if $y_0\neq 0$, then there is a unique solution.
 
-However, if $y_0=0$, the theorem say nothing. We looked at this example earlier and saw that the solutions were not unique for $(x_0,y_0) = (0,0)$.
+However, if $y_0=0$, the theorem does not apply. We looked at this example earlier and saw that the solutions were not unique for $(x_0,y_0) = (0,0)$.
 \end{ex}
+
+
+\begin{ex} Let's consider
+\[ \begin{cases} y' = \frac{y^2}{t^2-4} \\
+y(-1) = 3 \end{cases}.\]
+What is the largest interval on which the Picard-Lindel\"of Theorem guarantees the existence of a unique solution?
+We have, in the notation of the Theorem,
+\[ f = \frac{y^2}{t^2-4} \qquad \frac{\partial f}{\partial y}=\frac{2y}{t^2-4}.\]
+These are continuous except when $t=\pm 2$. Thus, any rectangle whose base is contained in $(-2,2)$ will satisfy the hypotheses of the theorem, so $(-2,2)$ is the interval we seek.
+\end{ex}
+
+
+\Aug{25}
+
+\subsection*{Modeling with differential equations}
+
+Differential equations is one of the most useful areas of math for applications, since so many real life things are described effectively by differential equations. A \emph{mathematical model} is a description of some system or phenomenon by an equation or a formula. A model is rarely perfect, since we can't even know all of the factors that might affect something, but we can often use them to understand things better.
+
+Let's start with a basic example.
+
+\begin{ex} A classical model of human population growth is based on the assumption that the rate at which the population of a country grows is proportional to the population of that country. To express this as a differential equation, let $P$ the population of a country. We are interested in how it changes, so let $t$ be a variable for time and view $P$ as a function of $t$.  To say that two things are proportional means that the exists a constant $k$ (called the \emph{constant of proportionality}) such that $k$ times the first quantity is the second quantity. The rate of change of the population is $\frac{dP}{dt}$. Thus, our equation is
+\[ \frac{dP}{dt} = kP \]
+for some constant $k$. We do not know what $k$ is without further information.
+
+This is the only differential equation we've solved! We must have 
+\[ P(t) = C e^{kt}.\]
+Given two data points for any specific population, we can determine $C$ and $k$.
+\end{ex}
+
+
+
+Let us try to set up a more complicated model.
+
+\begin{ex} Say that we have a tank of water. At first, it holds $500$ liters of pure water (no salt). After  switch is flipped, salt water that has 7 grams of salt per liter starts flowing in at a rate of 2 liters per minute, and water from the bottom of the tank starts flowing out at a rate of 2 liters per minute. 
+%We assume that the water stays well mixed so that the water flowing out is as salty as the average water in the tank. 
+Let's model the amount of salt in the tank at a given time after the switch is flipped.
+
+Let $A$ be the amount of salt in the tank, in grams, and $t$ be the amount of time since the switch is flipped in minutes.
+We need to understand the rate of change of $A$. Salt enters at a rate of $7 \cdot 2 = 14$ grams per minute. To find the rate at which salt exits, the amount of salt in an average liter of water is $A/500$ grams per liter, so the amount of salt exiting is $2 \cdot A/500 = A/250$.
+
+We obtain the differential equation
+\[ \frac{dA}{dt} = 14 - \frac{A}{250}.\]
+We also have the initial condition $A(0)=0$.
+
+We will learn how to solve systems like this soon.
+\end{ex}
+
+
+
+
+
+
 
 \subsection*{Discussion Questions}
 
@@ -603,13 +655,14 @@ The government of a country wants to remove counterfeit money from circulation. 
 
 \begin{enumerate}
 \item Introduce variables to keep track of the quantities we are interested in. What is the independent variable and what is the dependent variable? What are the units for each?
-\item To set up a differential equation, we want to relate the dependent variable with its rate of change. How much does the percentage of counterfeit bills change in a given day, on average? To figure this out, you might want to ask yourself first how many counterfeit bills are collected in a given day, on average.
+\item To set up a differential equation, we want to relate the dependent variable with its rate of change. How much does the percentage of counterfeit bills change in a given day, on average? 
+%To figure this out, you might want to ask yourself first how many counterfeit bills are collected in a given day, on average.
 \item We also need an initial condition. Write it down.
 \item This is a type of differential equation we've solved already. Find an explicit solution.
 \item Based on your model, when will the total number of counterfeit bills pass below 3 million?
 \end{enumerate}
 
-Let's do an experiment to test our model. Each coin you've been given represents a million bills. Each face up coin is legal and each face down coin is counterfeit. Every day, take two random coins; replace the counterfeits with legal ones, and leave the legal ones alone.
+Let's do an experiment to test our model. Each coin you've been given represents a million bills. Some represent valid coins and some represent counterfeits. Every day, take two random coins; replace the counterfeits with legal ones, and leave the legal ones alone.
 
 \begin{enumerate}
 \item Discuss whether your model for the previous situation is relevant to this experiment. What aspects fit the story well, and what ones don't?
@@ -619,7 +672,8 @@ Let's do an experiment to test our model. Each coin you've been given represents
 Now let's change our original story. As before, every day, 2 million of its bills pass though federal banks, and every counterfeit bill collected is replaced by a legal one. Say that half of the 20 million total bills in circulation today are counterfeit. But now, let's assume that 1 million new legal bills and 1 million new counterfeit bills are put into circulation each day.
 
 \begin{enumerate}
-\item Create a new differential equation and initial value problem to model this situation. You might find it helpful to write a closed formula for the number of total bills in circulation at a given time first.
+\item Create a new differential equation and initial value problem to model this situation. 
+%You might find it helpful to write a closed formula for the number of total bills in circulation at a given time first.
 \item This is not a differential equation that we have solved yet. We will learn how to find explicit solutions of equations like this soon! But even without knowing what exactly the solution is, explain why there is one and only one solution to this initial value problem.
 \item Run an experiment similar to the one above adapted to this situation.
 \item Based on the experiment, what do we expect to happen to the currency as time passes?
