@@ -1,0 +1,108 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+
+\DeclareMathOperator{\res}{res}
+
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+	
+	\thispagestyle{empty}
+	
+	\
+
+\section*{If then statements}
+
+If $P$ and $Q$ are \emph{statements} (sentences that are either true or false) then ``If $P$ then $Q$'' is another statement. 
+``If $P$ then $Q$'' is true when $P$ is false or $Q$ is true; it is false when $P$ is true and $Q$ is false. We might write $P \Rightarrow Q$ as shorthand for ``If $P$ then $Q$'', but avoid this shorthand in proofs and theorem statements. There are many different ways to word an if then statement! Basically anything with a hypothesis and a conclusion is an if then statement; the hypothesis is the ``if'' part (in the role of $P$ above) and the conclusion is the ``then'' part (in the role of $Q$ above).
+
+\subsection*{Proving an if then statement directly} The general outline of a (direct) proof of ``If $P$ then $Q$'' goes
+\begin{enumerate}
+\item Assume $P$.
+\item Do some stuff.
+\item Conclude $Q$.
+\end{enumerate}
+
+\noindent Warning: in proving ``If $P$ then $Q$'' we should never assume $Q$ or just assert $Q$; we need to earn it, given~$P$.
+
+\subsection*{Applying an if then statement} If we know or can assume that ``If $P$ then $Q$'' is true, and we also know that $P$ is true, then we know that $Q$ is true. 
+
+\section*{Converses} The \emph{converse} of the statement  ``If $P$ then $Q$'' is the statement  ``If $Q$ then $P$''. In symbols, the converse of $P\Rightarrow Q$ is $Q\Rightarrow P$. An if then statement can be true and its converse be false! These are different, independent statements!
+
+\section*{Contrapositives} The \emph{contrapositive} of the statement  ``If $P$ then $Q$'' is the statement  ``If not $Q$ then not $P$''. In short, the contrapositive of $P \Rightarrow Q$ is $(\mathrm{not}\, Q) \Rightarrow  (\mathrm{not}\, P)$. The contrapositive of a statement is logically equivalent\footnote{Proof:  ``If not $Q$ then not $P$'' is false exactly when ``not $Q$'' is false and $P$ is true, which is equivalent to $P$ is true and $Q$ is false, which happens exactly when ``If $P$ then $Q$'' is false.} to the original statement!
+
+\subsection*{Proving an if then statement by contraposition} Another way to prove an if then statement is by proving its contrapositive. The general outline of a proof of ``If $P$ then $Q$'' \emph{by contraposition} goes
+\begin{enumerate}\setcounter{enumi}{-1}
+\item ``We prove the contrapositive'' or ``We proceed by contraposition'' (to orient the reader)
+\item Assume not $Q$.
+\item Do some stuff.
+\item Conclude not $P$.
+\end{enumerate}
+
+\section*{If-and-only-if statements}
+If $P$ and $Q$ are statements, then ``$P$ if and only if $Q$'' means ``If $P$ then $Q$'' and ``If $Q$ then $P$''. The proof of such a statement generally has two parts: a proof of ``If $P$ then $Q$'' (either directly or by contraposition) and a proof of ``If $Q$ then $P$'' (either directly or by contraposition).
+
+\newpage
+
+\emph{Quantifiers} refers either \emph{for all} or \emph{there exists} quantifiers.
+
+\section*{For all statements} A \emph{for all statement} is a statement of the form ``For all $x\in S$, $P$'' where $S$ is a set and $P$ is a statement (that might depend on $x$). It is true if every element of the set $S$ makes the statement $P$ true. In the statement ``For all $x\in S$, $P$'', the $x$ is a \emph{dummy variable}, which means it's just a temporary name given to help explain the statement; we need to use a letter $x$ that doesn't mean anything yet, and after we've finished this sentence, the letter $x$ no longer means anything! The symbol $\forall$ is shorthand for ``for all''.
+
+We sometimes also write statements like ``For all $x\in S$ such that $Q$, $P$'' where $S$ is a set and $P$ and $Q$ are statements (that might depend on $x$). It is true if every element of the set $S$ that makes the statement $Q$ true also makes the statement $P$ true. The ``such that'' clause is restricting which elements of $S$ we are ``alling'' over.
+
+
+\subsection*{Proving a for all statement directly} The general outline of a proof of ``For all $x\in S$, $P$'' goes
+\begin{enumerate}
+\item Let $x\in S$ be arbitrary.
+\item Do some stuff.
+\item Conclude that $P$ holds for $x$.
+\end{enumerate}
+
+
+
+
+\subsection*{Applying a for all statement} If we know or can assume that ``For all $x\in S$, $P$'' is true, and we have some element $y\in S$, then we can conclude that $P$ holds for $y$.
+
+\section*{There exists statements} A \emph{there exists statement} is a statement of the form ``There exists $x\in S$ such that $P$'' where $S$ is a set and $P$ is a statement (that might depend on $P$). Again, the $x$ in this statement is a dummy variable. The symbol $\exists$ is shorthand for ``there exists''.
+
+\subsection*{Proving a there exists statement directly} To prove a there exists statement, you just need to give an example!
+
+\subsection*{Applying a there exists statement}  If we know or can assume that ``There exists $x\in S$ such that $P$'' is true, then you can take and use an element of $S$ for which $P$ is true. I.e., you can say ``Let $x\in S$ be such that $P$.''
+
+\section*{Negations of quantifier statements} To negate a statement with a quantifier: \emph{Switch the quantifier, and negate the condition.}
+
+\subsection*{Negation of a for all statement} The negation of ``For all $x\in S$, $P$'' is ``There exists $x\in S$ such that $\mathrm{not} \, P$''.  Switch the quantifier, and negate the condition. Thus, to \emph{dis}prove a for all statement, we give a counterexample.
+
+\subsection*{Negation of a there exists statement} The negation of ``There exists $x\in S$ such that $P$'' is ``For all $x\in S$, $\mathrm{not} \, P$''. Switch the quantifier, and negate the condition. Thus, to \emph{dis}prove a for all statement, we give a prove a for all statement.
+
+
+
+
+
+\end{document}
+
+
+
+
