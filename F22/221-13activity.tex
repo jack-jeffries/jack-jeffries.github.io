@@ -1,0 +1,514 @@
+\documentclass[12pt]{amsart}
+\usepackage{graphicx, framed}
+\usepackage{comment}
+\usepackage{amscd}
+\usepackage{amssymb,xcolor}
+\usepackage[all, knot]{xy}
+\usepackage[top=1.2in, bottom=1.2in, left=1.2in, right=1.2in]{geometry}
+\xyoption{all}
+\xyoption{arc}
+\usepackage{hyperref}
+
+
+%%\usepackage[notcite,notref]{showkeys}
+
+%\CompileMatricesx
+\newcommand{\edit}[1]{\marginpar{\footnotesize{#1}}}
+%\newcommand{\edit}[1]{}
+\newcommand{\rperf}[2]{\operatorname{RPerf}(#1 \into #2)}
+
+\renewcommand\labelitemii{$\diamondsuit$}
+
+\def\floor#1{\lfloor #1 \rfloor}
+\def\tt{\tilde{\theta}}
+
+\def\ay{??}
+\def\Aut{\operatorname{Aut}}
+\def\t{\theta}
+\def\can{{\mathrm can}}
+\def\Coder{\operatorname{Coder}}
+\def\tY{\tilde{Y}}
+\def\s{\sigma}
+\def\tnabla{\tilde{\nabla}}
+\def\uMF{\underline{MF}}
+\def\uLF{\underline{LF}}
+
+\def\comp{\text{comp}}
+\def\del{\partial}
+
+\def\hcC{\hat{\cC}}
+\def\HH{\operatorname{HH_\cdot}}
+
+\def\rrperf{\operatorname{RPerf}}
+
+
+\def\tF{\widetilde{F}}
+\def\Symm{\operatorname{S^\cdot}}
+\def\naive{{\text{naive}}}
+\def\exact{{\text{exact}}}
+
+\def\square#1#2#3#4{
+#1 \ar[r] \ar[d]  & #2 \ar[d] \\
+#3 \ar[r] & #4 \\
+}
+
+\def\cube#1#2#3#4#5#6#7#8{
+& #5 \ar[rr] \ar[dl] \ar@{-}[d] && #6 \ar[dd] \ar[dl] \\
+#1 \ar[rr] \ar[dd]  & \ar[d] & #2 \ar[dd] \\
+& #7 \ar@{-}[r] \ar[dl] & \ar[r] & #8 \ar[dl] \\
+#3 \ar[rr] && #4 \\
+}
+
+\def\nicexy{\entrymodifiers={+!!<0pt,\fontdimen22\textfont2>}
+        \def\objectstyle{\displaystyle}} 
+
+\def\TP{\operatorname{TPC}}
+
+\def\HomMF{\operatorname{\uHom_{MF}}}
+
+\def\Hom{\operatorname{Hom}}
+\def\EndMF{\operatorname{\uEnd_{MF}}}
+\def\HomHMF{\operatorname{\Hom_{[MF]}}}
+\def\uMCM{\operatorname{\underline{MCM}}}
+
+
+\def\rH{\operatorname{H}}
+\def\rHom{\operatorname{Hom}}
+\def\rExt{\operatorname{Ext}}
+\def\uExt{\underline{\operatorname{Ext}}}
+
+
+\def\coh{\operatorname{coh}}
+
+\def\vf{\mathbf f}
+\def\vg{\mathbf g}
+\def\twomaps{\rightrightarrows} 
+\def\oDelta{\overline{\Delta}}
+\def\BHM{B\"okstedt-Hsiang-Madsen }
+\def\cU{\mathcal U}
+\def\Kweb#1{
+http:\linebreak[3]//www.\linebreak[3]math.\linebreak[3]uiuc.
+\linebreak[3]edu/\linebreak[3]{K-theory/#1/}}
+
+\def\ip#1{\left< #1 \right>}
+\def\ad#1{{\scriptstyle \left[ \frac{1}{#1} \right]}}
+\def\hocolim{\operatorname{hocolim}}
+\def\holim{\operatorname{holim}}
+
+\def\a{\alpha}
+\def\b{\beta}
+\def\Top{\operatorname{Top}}
+\def\Tot{\operatorname{Tot}}
+\def\Ncy{N^{cy}}
+\def\tNcy{\tilde{N}^{cy}}
+\def\smsh{\wedge}
+\def\MHS{{\text{MHS}}}
+\def\IMHS{{\text{IMHS}}}
+
+\def\nil{\operatorname{nil}}
+
+\def\uMaps{\operatorname{\underline{Maps}}}
+
+\def\chr{\operatorname{char}}
+\def\orb{\operatorname{orb}}
+\def\tSigma{\tilde{\Sigma}}
+
+\def\ae{{\text{alg equiv}}}
+\def\aez{{\text{alg} \sim 0}}
+\def\hez{{\text{hom} \sim 0}}
+\def\tor{{\text{tor}}}
+\def\sm{{\text{sm}}}
+
+\def\mor{{\text{mor}}}
+\def\H{{\mathbb H}}
+
+\def\etale{\'etale~}
+\def\tW{\tilde{W}}
+\def\tH{\tilde{H}}
+\def\tC{\tilde{C}}
+\def\tS{\tilde{S}}
+\def\tX{\tilde{X}}
+\def\tZ{\tilde{Z}}
+\def\HBM{H^{\text{BM}}}
+\def\tHBM{\tilde{H}^{\text{BM}}}
+\def\Hc{H_{\text{c}}}
+\def\Hs{H_{\text{sing}}}
+\def\cHs{{\mathcal H}_{\text{sing}}}
+\def\sing{{\text{sing}}}
+\def\Hms{H^{\text{sing}}}
+\def\Hm{\Hms}
+\def\tHms{\tilde{H}^{\text{sing}}}
+\def\Grass{\operatorname{Grass}}
+\def\image{\operatorname{im}}
+\def\im{\image}
+\def\ker{\operatorname{ker}}
+\def\cone{\operatorname{cone}}
+
+\def\ku{ku}
+\def\bbu{\bf bu}
+\def\KR{K{\mathbb R}}
+
+\def\CW{\underline{CW}}
+\def\cP{\mathcal P}
+\def\cE{\mathcal E}
+\def\cL{\mathcal L}
+\def\cJ{\mathcal J}
+\def\cJmor{\cJ^\mor}
+\def\ctJ{\tilde{\mathcal J}}
+\def\tPhi{\tilde{\Phi}}
+\def\cA{\mathcal A}
+\def\cB{\mathcal B}
+\def\cC{\mathcal C}
+\def\cZ{\mathcal Z}
+\def\cD{\mathcal D}
+\def\cF{\mathcal F}
+\def\cG{\mathcal G}
+\def\cO{\mathcal O}
+\def\cI{\mathcal I}
+\def\cS{\mathcal S}
+\def\cT{\mathcal T}
+\def\cM{\mathcal M}
+\def\cN{\mathcal N}
+\def\cMpc{{\mathcal M}_{pc}}
+\def\cMpctf{{\mathcal M}_{pctf}}
+\def\L{\mathbf{L}}
+
+\def\cMM{{{\mathcal M}{\mathcal M}}}
+\def\sst{{sst}}
+\def\top{{top}}
+\def\cK{\mathcal K}
+\def\cKH{\mathcal KH}
+\def\cKsst{\cK^{sst}}
+\def\Ksst{K^{sst}}
+\def\cGsst{\cG^{sst}}
+\def\Gsst{G^{sst}}
+\def\Ktop{K_{top}}
+\def\HM{H_{\cM}}
+\def\cHM{{\cH}_{\cM}}
+\def\HMnaive{\cH_{\cM,naive}}
+\def\Het{H_{et}}
+\def\Deldot{\Delta^{\bullet}}
+\def\Deltop{\Delta_{top}}
+\def\Deldottop{\Delta^{\bullet}_{top}}
+\def\diag{\operatorname{diag}}
+\def\coker{\operatorname{coker}}
+\def\hfib{\operatorname{hfib}}
+\def\dm{\operatorname{dim}}
+\def\rank{\operatorname{rank}}
+\def\trace{\operatorname{trace}}
+\def\Sing{\operatorname{Sing}}
+\def\Proj{\operatorname{Proj}}
+\def\uHom{\operatorname{\underline{Hom}}}
+\def\uSpec{\operatorname{\underline{Spec}}}
+\def\RHom{\operatorname{{\mathbb R} Hom}}
+ \def\Ext{\operatorname{Ext}}
+% \def\cExt{\operatorname{{\mathcal{E}\mathit{xt}}}}
+\def\sExt{\operatorname{\widehat{Ext}}}
+\def\ssm{\smallsetminus}
+
+\def\Tor{\operatorname{Tor}}
+\def\sTor{\operatorname{\widehat{Tor}}}
+\def\Pic{\operatorname{Pic}}
+\def\Alb{\operatorname{Alb}}
+\def\Griff{\operatorname{Griff}}
+\def\Mat{\operatorname{Mat}}
+\def\End{\operatorname{End}}
+\def\uEnd{\operatorname{\underline{End}}}
+\def\Maps{\operatorname{Maps}}
+\def\Spec{\operatorname{Spec}}
+\def\MSpec{\operatorname{MSpec}}
+\def\Exinf{\operatorname{Ex^\infty}}
+\def\bu{\bullet}
+\def\an{{an}}
+\def\map#1{{\buildrel #1 \over \lra}} 
+\def\lmap#1{{\buildrel #1 \over \longleftarrow}} 
+\def\lra{\longrightarrow}
+\def\into{\hookrightarrow}
+\def\onto{\twoheadrightarrow}
+\def\cH{\mathcal{H}}
+\def\Hmult{\cH_{mult}}
+
+\def\ov#1{{\overline{#1}}}
+
+\def\vecthree#1#2#3{\begin{bmatrix} #1 \\ #2 \\ #3 \end{bmatrix}}
+
+\def\tOmega{\tilde{\Omega}}
+\def\tDelta{\tilde{\Delta}}
+\def\tSigma{\tilde{\Sigma}}
+\def\tsigma{\tilde{\sigma}}
+
+
+\def\d{\delta}
+\def\td{\tilde{\delta}}
+
+\def\e{\varepsilon}
+\def\nsg{\unlhd}
+
+
+\newcommand{\tensor}{\otimes}
+\newcommand{\homotopic}{\simeq}
+\newcommand{\homeq}{\cong}
+\newcommand{\iso}{\approx}
+
+\DeclareMathOperator{\ho}{Ho}
+\DeclareMathOperator*{\colim}{colim}
+
+
+\newcommand{\Q}{\mathbb{Q}}
+
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bM}{\mathbb{M}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\bH}{{\mathbb{H}}}
+\newcommand{\G}{\mathbb{G}}
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\bL}{{\mathbb{L}}}
+\newcommand{\R}{{\mathbb{R}}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\bK}{\mathbb{K}}
+
+
+\newcommand{\bD}{\mathbb{D}}
+\newcommand{\bS}{\mathbb{S}}
+
+\newcommand{\bN}{\mathbb{N}}
+
+
+\newcommand{\bG}{\mathbb{G}}
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\W}{\mathcal{W}}
+
+
+
+\newcommand{\itilde}{\tilde{\imath}}
+\newcommand{\jtilde}{\tilde{\jmath}}
+\newcommand{\ihat}{\hat{\imath}}
+\newcommand{\jhat}{\hat{\jmath}}
+
+\newcommand{\fc}{{\mathfrak c}}
+\newcommand{\fp}{{\mathfrak p}}
+\newcommand{\fm}{{\mathfrak m}}
+\newcommand{\fq}{{\mathfrak q}}
+\newcommand{\dual}{\vee}
+
+
+% The following causes equations to be numbered within sections
+\numberwithin{equation}{section}
+
+
+\theoremstyle{plain} %% This is the default, anyway
+\newtheorem{thm}[equation]{Theorem}
+\newtheorem{preproof}{Preproof Discussion}
+\newtheorem{obs}{Observation}
+\newtheorem{thmdef}[equation]{TheoremDefinition}
+\newtheorem{introthm}{Theorem}
+\newtheorem{introcor}[introthm]{Corollary}
+\newtheorem*{introthm*}{Theorem}
+%\newtheorem{question}{Question}
+\newtheorem*{question}{Question}
+\newtheorem{cor}[equation]{Corollary}
+\newtheorem{lem}[equation]{Lemma}
+\newtheorem{prop}[equation]{Proposition}
+\newtheorem{porism}[equation]{Porism}
+\newtheorem{algorithm}[equation]{Algorithm}
+\newtheorem{axiom}[equation]{Axiom}
+\newtheorem*{axioms*}{Axioms}
+\newtheorem*{axiom*}{Axiom}
+\newtheorem{conj}[equation]{Conjecture}
+\newtheorem{quest}[equation]{Question}
+
+\newcommand{\Aug}[1]{\section{August #1, 2022}}
+\newcommand{\Sept}[1]{\section{September #1, 2022}}
+\newcommand{\Oct}[1]{\section{October #1, 2022}}
+\newcommand{\Nov}[1]{\section{November #1, 2022}}
+\newcommand{\Dec}[1]{\section{December #1, 2022}}
+
+
+
+\theoremstyle{definition}
+\newtheorem{defn}[equation]{Definition}
+\newtheorem{chunk}[equation]{}
+\newtheorem{ex}[equation]{Example}
+
+\newtheorem{exer}[equation]{Exercise}
+
+\theoremstyle{remark}
+\newtheorem{rem}[equation]{Remark}
+
+\newtheorem{notation}[equation]{Notation}
+\newtheorem{terminology}[equation]{Terminology}
+
+%%%%%%%%%%%%%
+% local definitions
+%%%%%%%%%%%%%
+\def\TP{\operatorname{TPC}}
+
+\def\HomMF{\operatorname{\uHom_{MF}}}
+\def\HomHMF{\operatorname{\Hom_{[MF]}}}
+
+\def\rDsg{D^{\text{rel}}_{\text{sing}}}
+\def\Dsg{D_{\text{sing}}}
+\def\Dsing{\Dsg}
+\def\Db{D^b}
+
+
+\def\Perf{\operatorname{Perf}}
+\def\coh{\operatorname{coh}}
+
+\def\CCh{\check{\cC}}
+
+\newcommand{\Cech}{C}
+
+\newcommand\bs{\boldsymbol}
+\renewcommand{\uMCM}[1]{[\operatorname{MCM}(#1)]}
+
+
+%\newcommand{\sExt}[4]{\widehat{\operatorname{Ext}}_{#2}^{#1}(#3,#4)}
+\newcommand{\cExt}[4]{\uExt_{#2}^{#1}(#3,#4)}
+
+\newcommand\depth{\operatorname{depth}}
+\newcommand{\supp}{\operatorname{supp}}
+
+\newcommand{\br}[1]{\lbrace \, #1 \, \rbrace}
+\newcommand{\brc}[2]{\lbrace \, #1 \, | \, #2 \rbrace}
+\newcommand{\li}{ < \infty}
+\newcommand{\quis}{\simeq}
+\newcommand{\xra}[1]{\xrightarrow{#1}}
+\newcommand{\xla}[1]{\xleftarrow{#1}}
+\newcommand{\xroa}[1]{\overset{#1}{\twoheadrightarrow}}
+\newcommand{\ps}[1]{\mathbb{P}_{#1}^{\text{c}-1}}
+
+% this is the pull-back of E along l: Z \to X
+\newcommand{\pb}[1]{\RQ^*{#1}}
+\newcommand{\pbe}{\pb{\cE}}
+\newcommand{\YQ}{\gamma}
+\newcommand{\RY}{\beta}
+\newcommand{\RQ}{\delta}
+
+\newcommand{\mft}[1]{T^{[MF]}_{#1}}
+\newcommand{\dst}[1]{T^{\Dsing(R)}_{#1}}
+
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\pd}{\operatorname{pd}}
+\newcommand{\even}{\operatorname{even}}
+\newcommand{\odd}{\operatorname{odd}}
+
+\newcommand{\bl}[1]{{{\color{blue}#1}}}
+
+\def\tmu{\tilde{\mu}}
+\def\g{\gamma}
+\def\tg{\tilde{\gamma}}
+\def\tCliff{\operatorname{\tilde{Cliff}}}
+\def\unital{\mathrm{unital}}
+\def\D{\Delta}
+\def\Tco{\operatorname{T^{\text{co}}}}
+\def\Tcob{\operatorname{\ov{T}^{\text{co}}}}
+
+\def\bg{\mathbf g}
+\def\ta{\tilde{a}}
+
+
+\def\codim{\operatorname{codim}}
+
+\def\res{\operatorname{res}}
+\def\ind{\operatorname{ind}}
+\def\rsa{\rightsquigarrow}
+
+\def\sign{{\mathrm{sign}}}
+\def\naive{{\mathrm{naive}}}
+\def\l{\lambda}
+
+
+\def\ov#1{\overline{#1}}
+
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+% NEW DEFINITIONS BEYOND MARK'S USUAL ONES 
+% (OR MODIFIED) 
+\newcommand{\chara}{\operatorname{char}}
+\newcommand{\Kos}{\operatorname{Kos}}
+\newcommand{\opp}{\operatorname{opp}}
+\newcommand{\perf}{\operatorname{perf}}
+
+\newcommand{\Fun}{\operatorname{Fun}}
+\newcommand{\GL}{\operatorname{GL}}
+\def\o{\omega}
+\def\oo{\overline{\omega}}
+
+\def\cont{\operatorname{cont}}
+\def\te{\tilde{e}}
+\def\gcd{\operatorname{gcd}}
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+
+
+\def\charpoly{\operatorname{char poly}}
+\def\Gal{\operatorname{Gal}}
+
+
+
+
+\begin{document}
+
+
+
+
+\thispagestyle{empty}
+
+\section*{Discussion Questions}
+
+
+The government of a country wants to remove counterfeit money from circulation. Say there are 20 million total bills in circulation. Every day, 3 million of its bills pass though federal banks, and every counterfeit bill collected is replaced by a legal one. Say that half of the total bills in circulation today are counterfeit. Let's assume that the total number of bills in circulation stays constant and that no more counterfeit bills are being introduced. Our goal is to find an initial value problem modeling the percentage of counterfeit bills in circulation as time passes. 
+
+\begin{enumerate}
+\item Introduce variables to keep track of the quantities we are interested in. What is the independent variable and what is the dependent variable? What are the units for each?
+\item To set up a differential equation, we want to relate the dependent variable with its rate of change. How much does the percentage of counterfeit bills change in a given day, on average? 
+%To figure this out, you might want to ask yourself first how many counterfeit bills are collected in a given day, on average.
+\item We also need an initial condition. Write it down.
+\item This is a type of differential equation we've solved already. Find an explicit solution.
+\item Based on your model, when will the total number of counterfeit bills pass below 3 million?
+\end{enumerate}
+
+Let's do an experiment to test our model. Each coin you've been given represents a million bills. Some represent valid coins and some represent counterfeits. Every day, take two random coins; replace the counterfeits with legal ones, and leave the legal ones alone.
+
+\begin{enumerate}
+\item Discuss whether your model for the previous situation is relevant to this experiment. What aspects fit the story well, and what ones don't?
+\item Run the experiment, keeping track of the number of counterfeit bills each day, and how long it takes to get down to 2 counterfeits.
+\end{enumerate}
+
+Now let's change our original story. As before, every day, 2 million of its bills pass though federal banks, and every counterfeit bill collected is replaced by a legal one. Say that half of the 20 million total bills in circulation today are counterfeit. But now, let's assume that 1 million new legal bills and 1 million new counterfeit bills are put into circulation each day.
+
+\begin{enumerate}
+\item Create a new differential equation and initial value problem to model this situation. 
+%You might find it helpful to write a closed formula for the number of total bills in circulation at a given time first.
+\item This is not a differential equation that we have solved yet. We will learn how to find explicit solutions of equations like this soon! But even without knowing what exactly the solution is, explain why there is one and only one solution to this initial value problem.
+\item Run an experiment similar to the one above adapted to this situation.
+\item Based on the experiment, what do we expect to happen to the currency as time passes?
+\end{enumerate}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
