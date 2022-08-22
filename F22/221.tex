@@ -494,6 +494,8 @@ Of course, at the end of the day, nothing was special about $7$. If we replaced 
 the \emph{general solution} is
 \[ y(x) = C e^{ax}.\]
 
+Guessing, while successful here, is not going to be our preferred method in the class. Let's savor this victory, and be prepared to collect many methods for solving differential equations as we progress through the course.
+
 \subsection*{Types of differential equations}
 There are many different ways of throwing together functions and derivatives in an equation, so we'll need some terminology to orient ourselves.
 
@@ -504,6 +506,19 @@ There are many different ways of throwing together functions and derivatives in 
  is an ordinary differential equation.
  
 In general an ODE is an equation of the form \[F(t,y,y',y'',\dots,y^{(n)})=0\] for some function $F$ where $y=y(t)$: an equation relating the function $y$ with its derivative(s).
+
+\begin{defn} A \emph{partial differential equation (PDE)} is a differential equation involving multiple independent variable; i.e., derivatives with respect to different variables.
+\end{defn}
+For example, 
+\[ \frac{\partial u}{\partial t} - 5 \frac{\partial u}{\partial x} = 0\]
+and 
+\[ \frac{\partial^2 z}{\partial x \partial y} -z^2 = xy\]
+are PDEs. A solution of the first PDE would be a function $u(x,t)$ that depends two independent variables $x$ and $t$.
+ 
+The ``ordinary'' vs ``partial'' refers to what type of derivatives see. 
+
+This is a class about ODEs. Almost all of the rest of the differential equations we see this semester will be ordinary!
+
 
 \begin{defn} The \emph{order} of a differential equation is the highest order derivative that occurs in the equation.
 \end{defn}
@@ -527,24 +542,32 @@ are first order nonlinear ODEs.
 
 We will be especially interested in linear ODEs in this course!
 
-\begin{defn} A \emph{partial differential equation (PDE)} is a differential equation involving multiple independent variable; i.e., derivatives with respect to different variables.
-\end{defn}
-For example, 
-\[ \frac{\partial u}{\partial t} - 5 \frac{\partial u}{\partial x} = 0\]
-is a PDE. A solution of this PDE would be a function $u(x,t)$ that depends two independent variables $x$ and $t$.
- 
  
 \subsection*{Discussion Questions}
 \begin{enumerate}
 \item Is the differential equation $y' = y^{2/3}$ ordinary? linear? What is its order?
+\begin{framed}
+Ordinary yes, linear no, order 1.
+\end{framed}
 \item Which of the following is a solution to the differential equation $y' =y^{2/3}$:
 \begin{enumerate}
-\item $y=4 t^2$
+\item $y=8 t^2$
 \item $y= e^{{2t/3}}$
 \item $y=\frac{1}{27} t^3$
 \item $y=0$ (constant function 0)
 \end{enumerate}
-\item There is a solution to $y'' - y' = 2y$ of the form $y=a e^{2x} + b e^{-x}$ for some real numbers $a,b$. Find it!
+\begin{framed}
+\begin{enumerate}
+\item No: $y' = 16t \neq y^{2/3} = 4t^{4/3}$.
+\item No: $y' = 2/3 e^{2t/3} \neq y^{2/3} = (e^{2t/3})^{2/3} = e^{4t/9}$.
+\item Yes: $y' = \frac{1}{9} t^2 = y^{2/3}$.
+\item Yes: $y'=0=y^{2/3}$.
+\end{enumerate}
+\end{framed}
+\item There is a solution to $x y'' = (4x -4) y$ of the form $y=xe^{ax}$ for some real number $a$. Find $a$.
+\begin{framed}
+By the product rule, $y'=(ax+1) e^{ax}$ and $y''=(a^2 x + 2a) e^{ax}$, so $ xy'' - (4x-4)y = (a^2 x^2 +2ax) e^{ax} - (4x-4)x e^{ax}$. We must have $a^2 x^2 + 2ax = 4x^2 - 4x$, so $a=-2$.
+\end{framed}
 \item[(4*)] If $f,g$ are solutions to $y^{(3)} + 2e^x y^{(2)} -y = \cos(x)$, show that $\frac{f+g}{2}$ is too.
 \end{enumerate}
 
