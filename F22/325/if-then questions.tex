@@ -1,0 +1,160 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+
+\DeclareMathOperator{\res}{res}
+
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+	
+	\thispagestyle{empty}
+	
+	\section*{Warming up with proof techniques and real numbers}
+	
+	
+	
+	\
+\subsection*{Making sense of if then statements and quantifier statements}
+
+\
+
+\begin{framed}
+\begin{itemize}
+\item The \emph{converse} of the statement  ``If $P$ then $Q$'' is the statement  ``If $Q$ then $P$''.
+\item The \emph{contrapositive} of the statement  ``If $P$ then $Q$'' is the statement  ``If not $Q$ then not $P$''.
+\item Any if then statement is equivalent to its contrapositive, but not necessarily to its converse!
+\end{itemize}
+\end{framed}
+
+\
+
+\begin{enumerate}
+\item For each of the following statements, write its contrapositive and its converse. Is the original/contrapositive/converse true or false for real numbers $a,b$? Explain why (but don't prove). 
+\begin{enumerate}
+\item If $a$ is irrational, then $1/a$ is irrational.
+\item If $a$ and $b$ are irrational, then $ab$ is irrational.
+\item If $a>3$, then $a^2>9$.
+\end{enumerate}
+\end{enumerate}
+
+\
+
+\begin{framed}
+\begin{itemize}
+\item The symbol for ``for all'' is $\forall$ and the symbol for there exists is $\exists$.
+\item The negation of ``For all $x\in S$, $P$'' is ``There exists $x\in S$ such that $\mathrm{not} \, P$''.
+\item The negation of ``There exists $x\in S$ such that $P$'' is ``For all $x\in S$, $\mathrm{not} \, P$''.
+\end{itemize}
+\end{framed}
+
+\
+
+
+\begin{enumerate}\setcounter{enumi}{1}
+\item Rewrite each statement with symbols in place of quantifiers, and write its negation. Is the original statement true or false? Explain why (but don't prove them).
+\begin{enumerate}
+\item There exists $x\in \Q$ such that $x^2 = 2$.
+\item For all $x\in \R$,  $x^2 >0$.
+\item For all $x\in \R$ such that\footnote{In a statement of the form ``For all $x\in S$ such that $Q$, $P$'', the ``such that $Q$'' part is part of the hypothesis: it is restricting the set $S$ that we are ``alling''' over.} $x\neq 0$,  $x^2 >0$.
+\item For all $x\in \R$, there exists $y\in \R$ such that $x<y$.
+\item There exists $x\in \R$ such that for all $y\in \R$, $x<y$.
+%\item There exists $x\in (0,\infty)$ such that\footnote{$(0,\infty)=\{z\in \R \ | \ 0 < z\}$, just like in calculus.} for all $y\in (0,\infty)$, $xy=1$.
+%\item For all $x\in (0,\infty)$, there exists $y\in (0,\infty)$ such that $xy=1$.
+\end{enumerate}
+\end{enumerate}
+
+\newpage
+
+\subsection*{Proving if then statements and quantifier statements}
+
+
+\
+
+\begin{framed}
+\begin{itemize}
+\item The general outline of a direct proof of ``If $P$ then $Q$'' goes
+\begin{enumerate}
+\item Assume $P$.
+\item Do some stuff.
+\item Conclude $Q$.
+\end{enumerate}
+\item Often it is easier to prove the contrapositive of an if then statement than the original, especially when the negation of the hypothesis or conclusion is something negative.
+\item The general outline of a proof of ``For all $x\in S$, $P$'' goes
+\begin{enumerate}
+\item Let $x\in S$ be arbitrary.
+\item Do some stuff.
+\item Conclude that $P$ holds for $x$.
+\end{enumerate}
+\item To prove a there exists statement, you just need to give an example. To prove ``There exists $x\in S$ such that $P$'' directly:
+\begin{enumerate}
+\item Consider $x=$[some specific element of $S$].
+\item Do some stuff.
+\item Conclude that $P$ holds for $x$.
+\end{enumerate}
+
+
+\end{itemize}
+
+\end{framed}
+
+\
+
+
+\begin{enumerate}\setcounter{enumi}{2}
+\item Let $x$ and $y$ be real numbers. Use the axioms of $\R$ to prove\footnote{Hint: You may want to add something to both sides.} that $x \geq y$ if and only if $-y\geq -x$.
+
+\
+
+\item Let $x$ be a real number. Show that if $x^2$ is irrational, then $x$ is irrational.
+
+\
+
+\item\label{xy=1} Let $x$ be a real number. Use the axioms of $\R$ and facts we have proven in class to show that if there exists a real number $y$ such that $xy=1$, then $x\neq 0$.
+
+\
+
+\item Prove that\footnote{Hint: Use (\ref{xy=1}).} for all $x\in \R$ such that $x\neq 0$, we have $x^2\neq 0$.
+
+\
+
+\item Prove that there exists some $x\in \R$ such that for every $y\in \R$, $xy=x$.
+
+\
+
+\item Prove\footnote{You can ``work out of order here'' and \emph{use} (\ref{1>0}) now.} that (2d) is true and (2e) is false. 
+
+\
+
+\item Let $S\subseteq \R$ be a set of real numbers. Apply your results above to prove that if for every $x\in S$, $x^2$ is irrational, then for every $y\in S$, $y$ is irrational.
+
+\
+
+\item\label{1>0} Prove that $1>0$.
+
+
+\end{enumerate}
+
+
+\end{document}
