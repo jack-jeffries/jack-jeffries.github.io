@@ -572,7 +572,7 @@ By the product rule, $y'=(ax+1) e^{ax}$ and $y''=(a^2 x + 2a) e^{ax}$, so $ xy''
 \item[(5*)] Using only calculus, justify the claim we made earlier that $y=Ce^{ax}$ is the general solution to $y'=ay$ for any $a\in \R$. That is, explain why there aren't any other solutions (exponential or otherwise).
 \end{enumerate}
 
-\subsection*{Initial value problems; existence and uniqueness}
+\subsection*{Initial value problems}
 
 In our first example, we saw that there are many solutions to the differential equation $y'=7y$. To pin one down, we might specify a value for our function at a point. The system
 \[\begin{cases} y' = 7y \\ 
@@ -581,12 +581,94 @@ is a example of an \emph{initial value problem}. Geometrically, $y(2)=4$ corresp
 
 \begin{comment}
 
+
+\Aug{25}
+
+\subsection*{Modeling with differential equations}
+
+Differential equations is one of the most useful areas of math for applications, since so many real life things are described effectively by differential equations. A \emph{mathematical model} is a description of some system or phenomenon by an equation or a formula. A model is rarely perfect, since we can't even know all of the factors that might affect something, but we can often use them to understand things better.
+
+Let's start with a basic example.
+
+\begin{ex} A classical model of human population growth is based on the assumption that the rate at which the population of a country grows is proportional to the population of that country. To express this as a differential equation, let $P$ the population of a country. We are interested in how it changes, so let $t$ be a variable for time and view $P$ as a function of $t$.  To say that two things are proportional means that the exists a constant $k$ (called the \emph{constant of proportionality}) such that $k$ times the first quantity is the second quantity. The rate of change of the population is $\frac{dP}{dt}$. Thus, our equation is
+\[ \frac{dP}{dt} = kP \]
+for some constant $k$. We do not know what $k$ is without further information.
+
+This is the only differential equation we've solved! We must have 
+\[ P(t) = C e^{kt}.\]
+Given two data points for any specific population, we can determine $C$ and $k$.
+\end{ex}
+
+
+
+Let us try to set up a more complicated model.
+
+\begin{ex} Say that we have a tank of water. At first, it holds $500$ liters of pure water (no salt). After  switch is flipped, salt water that has 7 grams of salt per liter starts flowing in at a rate of 2 liters per minute, and water from the bottom of the tank starts flowing out at a rate of 2 liters per minute. 
+%We assume that the water stays well mixed so that the water flowing out is as salty as the average water in the tank. 
+Let's model the amount of salt in the tank at a given time after the switch is flipped.
+
+Let $A$ be the amount of salt in the tank, in grams, and $t$ be the amount of time since the switch is flipped in minutes.
+We need to understand the rate of change of $A$. Salt enters at a rate of $7 \cdot 2 = 14$ grams per minute. To find the rate at which salt exits, the amount of salt in an average liter of water is $A/500$ grams per liter, so the amount of salt exiting is $2 \cdot A/500 = A/250$.
+
+We obtain the differential equation
+\[ \frac{dA}{dt} = 14 - \frac{A}{250}.\]
+We also have the initial condition $A(0)=0$.
+
+We will learn how to solve systems like this soon.
+\end{ex}
+
+
+
+
+
+
+
+\subsection*{Discussion Questions}
+
+
+The government of a country wants to remove counterfeit money from circulation. Say there are 20 million total bills in circulation. Every day, 4 million of its bills pass though federal banks, and every counterfeit bill collected is replaced by a legal one. Say that half of the total bills in circulation today are counterfeit. Let's assume that the total number of bills in circulation stays constant and that no more counterfeit bills are being introduced. Our goal is to find an initial value problem modeling the percentage of counterfeit bills in circulation as time passes. 
+
+\begin{enumerate}
+\item Introduce variables to keep track of the quantities we are interested in. What is the independent variable and what is the dependent variable? What are the units for each?
+\item To set up a differential equation, we want to relate the dependent variable with its rate of change. On average, what is the change in the number of counterfeit bills each day\footnote{Hint: First figure out how many counterfeit bills pass through federal banks each day, on average.}?
+\item Express the previous part as a differential equation.
+\item We also need an initial condition. Write it down.
+\item This is a type of differential equation we've solved already. Find an explicit solution.
+\item Based on your model, when will the total number of counterfeit bills pass below 3 million?
+\end{enumerate}
+
+Let's do an experiment to test our model. Each coin you've been given represents a million bills. Some represent valid coins and some represent counterfeits. Every day, take four random coins; replace the counterfeits with legal ones, and leave the legal ones alone.
+
+\begin{enumerate}
+\item Discuss whether your model for the previous situation is relevant to this experiment. What aspects fit the story well, and what ones don't?
+\item Run the experiment, keeping track of the number of counterfeit bills each day, and how long it takes to get down to 3 counterfeits. Even better, run the experiment a few times.
+\end{enumerate}
+
+Now let's change our original story. As before, every day, 4 million of its bills pass though federal banks, and every counterfeit bill collected is replaced by a legal one. Say that half of the 20 million total bills in circulation today are counterfeit. But now, let's assume that 1 million new legal bills and 1 million new counterfeit bills are put into circulation each day.
+
+\begin{enumerate}
+\item Create a new differential equation and initial value problem to model this situation\footnote{Hint: You might find it helpful to write a closed formula for the number of total bills in circulation at a given time first.}. 
+%You might find it helpful to write a closed formula for the number of total bills in circulation at a given time first.
+%\item This is not a differential equation that we have solved yet. We will learn how to find explicit solutions of equations like this soon! But even without knowing what exactly the solution is, explain why there is one and only one solution to this initial value problem.
+\item Run an experiment similar to the one above adapted to this situation.
+\item Based on the experiment, what do we expect to happen to the currency as time passes?
+\end{enumerate}
+
+\subsection*{Existence and uniqueness for initial value problems}
+
+\begin{ex}
+\[\begin{cases} y' = 7y \\ 
+y(2)=4 \end{cases}\]
+is a example of an \emph{initial value problem}. Geometrically, $y(2)=4$ corresponds to the condition that the graph of our solution passes through $(2,4)$.
+
+
 We can solve this using our solution of $y'=7y$ from earlier. We have
 \[ y= Ce^{7x} \qquad y(2)=4\]
 so \[ 4 = C e^{7 \cdot 2}\]
 and \[ C= 4e^{-14}.\]
 That is,
 \[ y= 4e^{-14}e^{7x} = 4 e^{7x-14}.\]
+\end{ex}
 
 Not only did we find a solution to our IVP, but along the way we saw that our solution was the only one; i.e, is unique (as long as we believe we started off with all of the solutions to $y'=7y$).
 
@@ -634,79 +716,6 @@ We have, in the notation of the Theorem,
 \[ f = \frac{y^2}{t^2-4} \qquad \frac{\partial f}{\partial y}=\frac{2y}{t^2-4}.\]
 These are continuous except when $t=\pm 2$. Thus, any rectangle whose base is contained in $(-2,2)$ will satisfy the hypotheses of the theorem, so $(-2,2)$ is the interval we seek.
 \end{ex}
-
-
-\Aug{25}
-
-\subsection*{Modeling with differential equations}
-
-Differential equations is one of the most useful areas of math for applications, since so many real life things are described effectively by differential equations. A \emph{mathematical model} is a description of some system or phenomenon by an equation or a formula. A model is rarely perfect, since we can't even know all of the factors that might affect something, but we can often use them to understand things better.
-
-Let's start with a basic example.
-
-\begin{ex} A classical model of human population growth is based on the assumption that the rate at which the population of a country grows is proportional to the population of that country. To express this as a differential equation, let $P$ the population of a country. We are interested in how it changes, so let $t$ be a variable for time and view $P$ as a function of $t$.  To say that two things are proportional means that the exists a constant $k$ (called the \emph{constant of proportionality}) such that $k$ times the first quantity is the second quantity. The rate of change of the population is $\frac{dP}{dt}$. Thus, our equation is
-\[ \frac{dP}{dt} = kP \]
-for some constant $k$. We do not know what $k$ is without further information.
-
-This is the only differential equation we've solved! We must have 
-\[ P(t) = C e^{kt}.\]
-Given two data points for any specific population, we can determine $C$ and $k$.
-\end{ex}
-
-
-
-Let us try to set up a more complicated model.
-
-\begin{ex} Say that we have a tank of water. At first, it holds $500$ liters of pure water (no salt). After  switch is flipped, salt water that has 7 grams of salt per liter starts flowing in at a rate of 2 liters per minute, and water from the bottom of the tank starts flowing out at a rate of 2 liters per minute. 
-%We assume that the water stays well mixed so that the water flowing out is as salty as the average water in the tank. 
-Let's model the amount of salt in the tank at a given time after the switch is flipped.
-
-Let $A$ be the amount of salt in the tank, in grams, and $t$ be the amount of time since the switch is flipped in minutes.
-We need to understand the rate of change of $A$. Salt enters at a rate of $7 \cdot 2 = 14$ grams per minute. To find the rate at which salt exits, the amount of salt in an average liter of water is $A/500$ grams per liter, so the amount of salt exiting is $2 \cdot A/500 = A/250$.
-
-We obtain the differential equation
-\[ \frac{dA}{dt} = 14 - \frac{A}{250}.\]
-We also have the initial condition $A(0)=0$.
-
-We will learn how to solve systems like this soon.
-\end{ex}
-
-
-
-
-
-
-
-\subsection*{Discussion Questions}
-
-
-The government of a country wants to remove counterfeit money from circulation. Say there are 20 million total bills in circulation. Every day, 3 million of its bills pass though federal banks, and every counterfeit bill collected is replaced by a legal one. Say that half of the total bills in circulation today are counterfeit. Let's assume that the total number of bills in circulation stays constant and that no more counterfeit bills are being introduced. Our goal is to find an initial value problem modeling the percentage of counterfeit bills in circulation as time passes. 
-
-\begin{enumerate}
-\item Introduce variables to keep track of the quantities we are interested in. What is the independent variable and what is the dependent variable? What are the units for each?
-\item To set up a differential equation, we want to relate the dependent variable with its rate of change. How much does the percentage of counterfeit bills change in a given day, on average? 
-%To figure this out, you might want to ask yourself first how many counterfeit bills are collected in a given day, on average.
-\item We also need an initial condition. Write it down.
-\item This is a type of differential equation we've solved already. Find an explicit solution.
-\item Based on your model, when will the total number of counterfeit bills pass below 3 million?
-\end{enumerate}
-
-Let's do an experiment to test our model. Each coin you've been given represents a million bills. Some represent valid coins and some represent counterfeits. Every day, take two random coins; replace the counterfeits with legal ones, and leave the legal ones alone.
-
-\begin{enumerate}
-\item Discuss whether your model for the previous situation is relevant to this experiment. What aspects fit the story well, and what ones don't?
-\item Run the experiment, keeping track of the number of counterfeit bills each day, and how long it takes to get down to 2 counterfeits.
-\end{enumerate}
-
-Now let's change our original story. As before, every day, 2 million of its bills pass though federal banks, and every counterfeit bill collected is replaced by a legal one. Say that half of the 20 million total bills in circulation today are counterfeit. But now, let's assume that 1 million new legal bills and 1 million new counterfeit bills are put into circulation each day.
-
-\begin{enumerate}
-\item Create a new differential equation and initial value problem to model this situation. 
-%You might find it helpful to write a closed formula for the number of total bills in circulation at a given time first.
-\item This is not a differential equation that we have solved yet. We will learn how to find explicit solutions of equations like this soon! But even without knowing what exactly the solution is, explain why there is one and only one solution to this initial value problem.
-\item Run an experiment similar to the one above adapted to this situation.
-\item Based on the experiment, what do we expect to happen to the currency as time passes?
-\end{enumerate}
 
 
 \begin{comment}
