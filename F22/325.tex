@@ -817,12 +817,18 @@ it will take a bit of time to do so. Before we get to this, it will be helpful t
 \item[(8)] (2d):  Let $x\in \R$. Consider $y=x+1$. Since $1>0$ we have $y=x+1 > x+0 = x$. Thus, for each $x\in \R$, we have some $y$ such that $x<y$.
 (2e): We claim this is false. Suppose, for the sake of contradiction that this was true, and let $x$ be as in the statement. Then for any $y\in \R$, we have $x<y$. But, for $y=x$, the inequality $x<y$ is false. This is a contradiction, so the statement must be false.
 
-\item
+\item[(10)] First we establish two lemmas.
+\\ \textbf{Lemma:} For real numbers $x\in\R$ we have $-(-x)=x$.
+\\ \textit{Proof:} We have \[(-x) + (-(-x))=0\] so \begin{align*}  -(-x) &= 0 + -(-x) = (x+ (-x) )+ (-(-x)) \\&= x+ ((-x) + (-(-x)))=x.\qed\end{align*}
+
+\noindent \textbf{Lemma:} For real numbers $x,y\in\R$ we have $(-x)y= -(xy)$.
+\\ \textit{Proof:} We have that \begin{align*} 0 = 0 y= (x+ (-x)) y = xy + (-x)y.\end{align*} Adding $-(xy)$ to both sides we get  \begin{align*} -(xy) &= -(xy) + ( xy + (-x)y ) \\&= (-(xy) + (-x) y) + (-x)y \\&= 0 + (-x)y = (-x)y.\qed\end{align*}
+  We proceed with the proof. We either have $1\geq 0$ or $1\leq 0$. Suppose that $1\leq 0$. Then $-1 \geq 0$, so \[(-1)(-1) \geq (-1) 0 = 0.\] But \[(-1)(-1) = - (1 (-1)) = - (-1) = 1,\] so $1 \geq 0$, contradicting the hypothesis.
 \end{enumerate}
 \end{framed}
 
 
-\begin{comment}
+
 
  There is one other important property of $\N$, which we accept to be true without proof. Such a property is called an axiom.
 
