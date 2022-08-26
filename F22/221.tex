@@ -496,7 +496,7 @@ the \emph{general solution} is
 
 Guessing, while successful here, is not going to be our preferred method in the class. Let's savor this victory, and be prepared to collect many methods for solving differential equations as we progress through the course.
 
-\subsection*{Types of differential equations}
+\subsection*{Types of differential equations (\S1.1)}
 There are many different ways of throwing together functions and derivatives in an equation, so we'll need some terminology to orient ourselves.
 
 \begin{defn} An \emph{ordinary differential equation (ODE)} is a differential equation involving only one independent variable; i.e., derivatives with respect to just one variable.
@@ -579,12 +579,26 @@ In our first example, we saw that there are many solutions to the differential e
 y(2)=4 \end{cases}\]
 is a example of an \emph{initial value problem}. Geometrically, $y(2)=4$ corresponds to the condition that the graph of our solution passes through $(2,4)$.
 
-\begin{comment}
+
 
 
 \Aug{25}
 
-\subsection*{Modeling with differential equations}
+\begin{ex}
+\[\begin{cases} y' = 7y \\ 
+y(2)=4 \end{cases}\]
+is a example of an \emph{initial value problem}. Geometrically, $y(2)=4$ corresponds to the condition that the graph of our solution passes through $(2,4)$.
+
+
+We can solve this using our solution of $y'=7y$ from earlier. We have
+\[ y= Ce^{7x} \qquad y(2)=4\]
+so \[ 4 = C e^{7 \cdot 2}\]
+and \[ C= 4e^{-14}.\]
+That is,
+\[ y= 4e^{-14}e^{7x} = 4 e^{7x-14}.\]
+\end{ex}
+
+\subsection*{Modeling with differential equations (\S1.3)}
 
 Differential equations is one of the most useful areas of math for applications, since so many real life things are described effectively by differential equations. A \emph{mathematical model} is a description of some system or phenomenon by an equation or a formula. A model is rarely perfect, since we can't even know all of the factors that might affect something, but we can often use them to understand things better.
 
@@ -636,6 +650,16 @@ The government of a country wants to remove counterfeit money from circulation. 
 \item This is a type of differential equation we've solved already. Find an explicit solution.
 \item Based on your model, when will the total number of counterfeit bills pass below 3 million?
 \end{enumerate}
+\begin{framed}
+\begin{enumerate}
+\item Take $t$ for time (number of days after today), and $C$ to be the number of millions of counterfeit bills in circulation. $C$ is dependent on $t$.
+\item First the number of bills that pass through banks on an average day is $4C/20 = C/5$: the proportion of counterfeit bills times the total number of millions of bills passing through the banks. Thus, $C$ decreases by $C/5$ on average each day.
+\item $C'=-C/5$.
+\item $C(0)=10$.
+\item $C(t)=ke^{-t/5}$ is the general solution. We plug in $C(0)=10$ to get $k=10$, so $C(t)=10 e^{-t/5}$.
+\item $C(t)=3$ gives us $10e^{-t/5}=3$. Then $t=-5 \ln(3/10) \approx 6$. It should take about $6$ days.
+\end{enumerate}
+\end{framed}
 
 Let's do an experiment to test our model. Each coin you've been given represents a million bills. Some represent valid coins and some represent counterfeits. Every day, take four random coins; replace the counterfeits with legal ones, and leave the legal ones alone.
 
@@ -653,22 +677,17 @@ Now let's change our original story. As before, every day, 4 million of its bill
 \item Run an experiment similar to the one above adapted to this situation.
 \item Based on the experiment, what do we expect to happen to the currency as time passes?
 \end{enumerate}
+\begin{framed}
+\begin{enumerate}
+\item Let's use $t$ and $C$ as names again. The total number of bills at time $t$ is now $20+2t$. Now $C'(t) = 1 - \frac{4 C}{20+2t} = 1-\frac{2C}{10+t}$, and $C(0)=10$ again.
+\end{enumerate}
+\end{framed}
+
+\begin{comment}
 
 \subsection*{Existence and uniqueness for initial value problems}
 
-\begin{ex}
-\[\begin{cases} y' = 7y \\ 
-y(2)=4 \end{cases}\]
-is a example of an \emph{initial value problem}. Geometrically, $y(2)=4$ corresponds to the condition that the graph of our solution passes through $(2,4)$.
 
-
-We can solve this using our solution of $y'=7y$ from earlier. We have
-\[ y= Ce^{7x} \qquad y(2)=4\]
-so \[ 4 = C e^{7 \cdot 2}\]
-and \[ C= 4e^{-14}.\]
-That is,
-\[ y= 4e^{-14}e^{7x} = 4 e^{7x-14}.\]
-\end{ex}
 
 Not only did we find a solution to our IVP, but along the way we saw that our solution was the only one; i.e, is unique (as long as we believe we started off with all of the solutions to $y'=7y$).
 
