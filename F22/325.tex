@@ -9,7 +9,6 @@
 \xyoption{arc}
 \usepackage{hyperref}
 
-
 %%\usepackage[notcite,notref]{showkeys}
 
 %\CompileMatricesx
@@ -466,7 +465,7 @@
 \def\charpoly{\operatorname{char poly}}
 \def\Gal{\operatorname{Gal}}
 
-
+\makeindex
 
 
 \begin{document}
@@ -482,19 +481,19 @@
 
 
 What is a number? Certainly the things used to count sheep, money, etc. are numbers:  $1, 2, 3, \dots$.
-We will call these the {\em natural numbers} and 
+We will call these the {\em natural numbers}\index{natural number}\index{$\N$} and 
 write $\N$ for the set of all natural numbers
 $$
 \N = \{1, 2, 3, 4, \dots \}.
 $$
-Since we like to keep track of debts too, we'll allow negatives and $0$, which gives us the {\em integers}:
+Since we like to keep track of debts too, we'll allow negatives and $0$, which gives us the {\em integers}\index{integers}\index{$\Z$}:
 $$
 \Z = \{ \dots, -3, -2, -1, 0, 1, 2, 3, 4, \dots\}.
 $$
 (The symbol $\Z$ is used since the German word for number is {\em zahlen}.)
 
 
-Fractions should count as numbers also, so that we can talk about eating one and two-thirds of a pizza last night. We define a {\em rational number} to be a number expressible
+Fractions should count as numbers also, so that we can talk about eating one and two-thirds of a pizza last night. We define a {\em rational number}\index{rational number} to be a number expressible
 as a quotient of two integers: $\frac{m}{n}$ for $m,n \in \Z$ with $n \ne 0$. For example
 $$
 \frac{5}{3}, \frac27, \frac{2019}{2020}
@@ -503,7 +502,7 @@ are rational numbers. Of course, we often talk about numbers such as
 ``two and a fourth'', but that the same as $\frac94$. Every integer
 is a rational number just by taking $1$ for the denominator; for
 example, $7 = \frac{7}{1}$. 
-The set of all rational numbers is written as $\Q$ (for ``quotient''). 
+The set of all rational numbers is written as $\Q$ (for ``quotient'').\index{$\Q$} 
 
 You might not have
 thought about it before, but an expression of the form $\frac{m}{n}$ is really an ``equivalence class'': 
@@ -551,9 +550,7 @@ then the statement $P$ must in fact be  false.
 In the case at hand, letting  $P$ be the statement ``there is a rational number whose square is $2$'', the Theorem is asserting that $P$ is false. We will prove
 this by assuming $P$ is true and deriving an impossibility.
 
-This is known as a proof by contradiction. (Some mathematicians would actually not consider this to be a proof by contradiction. For some, a proof by
-contradiction refers to when the truth of a statement $P$ is established by assuming the statement ``not $P$'' and deducing from that a falsity.) 
-\end{preproof}
+This is known as a proof by contradiction.\index{proof by contradiction}\end{preproof}
 
 \begin{proof} By way of contradiction, assume there were a rational number $q$ such that $q^2 = 2$. By definition of ``rational number'',  
 we know that $q$ can be written as  $\frac{m}{n}$ for
@@ -581,7 +578,7 @@ For the rational numbers, we can do arithmetic ($+,-,\times,\div$) and we also h
 
 
 \begin{prop}[Arithmetic and order properties of $\Q$]\label{prop1}
-  The set of rational numbers form an ``ordered field''. This means that the following ten properties hold:
+  The set of rational numbers form an ``ordered field''.\label{ordered field} This means that the following ten properties hold:
 \begin{enumerate}
 \item There are operations $+$ and $\cdot$ defined on $\Q$, so that if $p, q$ are in $\Q$, then so are $p + q$ and $p \cdot q$.
 \item Each of $+$ and $\cdot$ is a commutative operation (i.e., $p + q = q + p$ and $p \cdot q = q \cdot p$ hold for all rational numbers $p$ and $q$). 
@@ -612,12 +609,12 @@ The commutativity, associativity, distributive law, multiplicative identity, and
 
 
 We expect everything from Proposition~\ref{prop1} to be true for the real numbers. We will build them into our definition.
-To define the real numbers $\R$, we take the ten properties listed in the Proposition to be axioms. 
+To define the real numbers $\R$, we take the ten properties listed in the Proposition to be axioms.\index{axiom} 
 It turns out the set of real numbers satisfies one key additional
 property, called the {\em completeness axiom}, which I cannot state yet. 
 
 
-\begin{axioms*} The set of all real numbers, written $\R$, satisfies the following eleven properties:
+\begin{axioms*} The set of all real numbers, written $\R$, satisfies the following eleven properties:\index{real numbers}\index{$\R$}
 \begin{enumerate}
 \item[(Axiom 1)] There are operations $+$ and $\cdot$ defined on $\R$, so that if $x, y \in \R$, then so are $x + y$ and $x \cdot y$.
 \item[(Axiom 2)]  Each of $+$ and $\cdot$ is a commutative operation. 
@@ -665,14 +662,12 @@ facts such as $r \cdot 0 = 0$ hold.
 
 
 
-I owe you a description of the very important Completeness Axiom, and 
-it will take a bit of time to do so. Before we get to this, it will be helpful to review set notation, and some basics of proof-writing.
 
 
 
 \Aug{25}
 
-\begin{defn} A real number is \emph{irrational} if it is not rational.
+\begin{defn} A real number is \emph{irrational}\index{irrational} if it is not rational.
 \end{defn}
 
 	
@@ -681,8 +676,8 @@ it will take a bit of time to do so. Before we get to this, it will be helpful t
 \subsection*{Making sense of if then statements and quantifier statements}
 
 \begin{itemize}
-\item The \emph{converse} of the statement  ``If $P$ then $Q$'' is the statement  ``If $Q$ then $P$''.
-\item The \emph{contrapositive} of the statement  ``If $P$ then $Q$'' is the statement  ``If not $Q$ then not $P$''.
+\item The \emph{converse}\index{converse} of the statement  ``If $P$ then $Q$'' is the statement  ``If $Q$ then $P$''.
+\item The \emph{contrapositive}\index{contrapositive} of the statement  ``If $P$ then $Q$'' is the statement  ``If not $Q$ then not $P$''.
 \item Any if then statement is equivalent to its contrapositive, but not necessarily to its converse!
 \end{itemize}
 
@@ -705,7 +700,7 @@ it will take a bit of time to do so. Before we get to this, it will be helpful t
 
 
 \begin{itemize}
-\item The symbol for ``for all'' is $\forall$ and the symbol for there exists is $\exists$.
+\item The symbol for ``for all'' is $\forall$\index{$\forall$} and the symbol for there exists is $\exists$.\index{$\exists$}
 \item The negation of ``For all $x\in S$, $P$'' is ``There exists $x\in S$ such that $\mathrm{not} \, P$''.
 \item The negation of ``There exists $x\in S$ such that $P$'' is ``For all $x\in S$, $\mathrm{not} \, P$''.
 \end{itemize}
@@ -827,336 +822,66 @@ it will take a bit of time to do so. Before we get to this, it will be helpful t
 \end{enumerate}
 \end{framed}
 
+
 \begin{comment}
 
+\Aug{30}
 
- There is one other important property of $\N$, which we accept to be true without proof. Such a property is called an axiom.
+I owe you a statement of the very important Completeness Axiom. Before we get there, I want to recall an axiom of $\N$ that we haven't discussed yet. It pertains to minimum elements in sets. Let's be precise and define minimum element.
 
-\begin{axiom}[Well-ordering axiom]
-	Every nonempty subset of $\N$ has a smallest element (which we call its minimum).
+\begin{defn} Let $S$ be a set of real numbers. A \emph{minimum}\index{minimum} element of $S$ is a real number $x$ such that
+\begin{enumerate}\item $x\in S$, and
+\item for all $y\in S$, $x\leq y$.
+\end{enumerate}
+In this case, we write $x=\min(S)$.
+\end{defn}
+The definition of \emph{maximum}\index{maximum} is the same except with the opposite inequality.
+
+\begin{axiom}[Well-ordering axiom]\label{Well-ordering axiom}
+	Every nonempty subset of $\N$ has a minimum element.
 \end{axiom}
 
-As we will discuss later, the well-ordering axiom is closely related to the principle of induction.
+\begin{ex} If $S$ is the set of even multiples of $7$, then $S$ has $14$ as its minimum.
+\end{ex}
+
+We generally like to say \emph{the} minimum, rather than \emph{a} minimum. To justfity this, let's prove the following.
+
+\begin{prop}\label{prop:min-unique} Let $S$ be a set of real numbers. If $S$ has a minimum, then the minimum is unique.
+\end{prop}
+
+
+\begin{preproof} The proposition has the general form  ``If a thing with property P exists, then it is unique''. 
+	
+  How do we prove a statement such as
+  ``If a thing with property P exists, then it is unique''?
+  We argue that if two things $x$ and $y$ both have property $P$, then $x$ and $y$ must be the same thing.
+\end{preproof}
+
+\begin{proof}[Proof of Proposition~\ref{prop:min-unique}] Let $S$ be a set of real numbers, and let $x$ and $y$ be two minima of $S$. Applying part (1) of the definition of minimum to $y$, we have $y\in S$. Applying part (2) of the definition of minimum to $x$ and the fact that $y\in S$, we get that $x\leq y$. Switching roles, we get that $y\leq x$. Thus $x=y$.
+
+We conclude that if a minimum exists, it is necessarily unique.
+\end{proof}
+
+
+The previous proposition plus the Well-Ordering Axiom together imply that every nonempty subset of $\N$ has exactly one minimum element. A similar proof shows that if a maximum exists, it is necessarily unique. Could a set fail to have a maximum or a minimum? Yes!
 
 \begin{ex}
-	For the set of all even multiples of $7$, $S={\{7 \cdot (2n) \ | \ n\in \N\}}$, we have $\min(S)=14$.
-	\end{ex}
-
-
-
-\Aug{25}
-
-Often, sets are described as subsets of other larger sets, by specifying properties. For example, when I write
-$$
-S = \{ m \in \Z \mid m = a^2 \text{ for some $a \in \Z$} \}
-$$
-I am specifying a subset of the set of all integers $\Z$. 
-In words, $S$ is:``the set of those integers that are equal to the square of some integer". We could also write this set out by listing its elements: \[S = \{0,1,4,9,16,25,36, \dots \}.\]
- It's safer in general to use the former description, since you don't have to worry about the reader getting the pattern.
-
-
-The previous is an example of a subset of $\Z$, but we will mostly be concerned with subsets of $\R$. For example, we might consider the set
-$$
-\{x \in \R \mid x^2 < 2\}. 
-$$
-
-We will also deal with ``intervals'' a lot. 
-When I write $(0,1)$ I mean the set $\{x \in \R \mid 0 < x < 1\}$.  That is, it is all real numbers strictly between $0$ and $1$.
-
-More generally, if $a, b$ are real numbers and $a < b$, then 
-$$
-(a,b) = \{x \in \R \mid a < x < b \}
-$$
-(What if $b \leq a$?) The set $(a,b)$ is called an {\em open interval}.
-
-We also have $[a,b]$, known as a {\em closed interval} and defined to be
-$$
-[a,b] = \{x \in \R \mid a \leq x \leq b\}.
-$$
-We also have $[a,b)$, $(a,b]$, $(a, \infty)$, $[a, \infty)$, $(-\infty, b)$, and $(-\infty, b]$, all of which you probably have seen before.  
-
-
-
-We will also have need to consider sets defined in more complicated ways such as
-$$
-S = \{1 - \frac{1}{n} \mid n \in \N\}.
-$$
-The latter is a bit different than the previous examples. The previous ones had form $\{ \text{ element of a set } \mid \text{ property holds } \}$, but this one has
-the form $\{ \text{ expression involving symbols } \mid \text{ allowable values of these symbols }\}$. Explicitly, this example is the set
-$\{0, \frac12, \frac23, \frac34, \frac45, \dots \}$.
-
-Recall also a few ways of making sets from others: 
-\begin{itemize}
-	\item union : $S\cup T=\{ x \ | \ x\in S \ \text{or} \ x\in T\}$
-	\item intersection : $S\cup T=\{ x \ | \ x\in S \ \text{and} \ x\in T\}$
-	\item set difference : $S\ssm T = \{ x \ | \ x\in S \ \text{and} \ x\notin T\}$.
-\end{itemize}
-
-
-
-Let's now talk a bit more about rules of logic, methods of proof, quantification, etc. Our book has a very nice treatment of these topics in Sections 1.4 and 1.5. Part of the next problem set will involve your reading these sections on your own
-and doing some of the exercises. Here, I'll just give some highlights.
-
-Let me start with some rules of logic, and how that affects proofs. First, a {\em statement} is a sentence (or sometimes sequence of sentences) that is either
-true or false. Things like ``Jack's shirt is ugly'' is not a statement, nor is ``Go Huskers!''. But ``All odd numbers are prime'' is a statement --- it happens
-to be false.  The sentence 
-\begin{quote}
-	``The digit 9 occurs infinitely often in the decimal expansion of $\pi$.''
-\end{quote}
-is a statement, as it is surely either true or false. But, no one knows which!
-
-
-An odder example is ``This sentence is false''. Is it a statement? (Is it true? Is it false?) No!
-
-%\section{Friday, August 28}
-
-If $P$ and $Q$ are any two statements, then we can form compound statements from them such as
-\begin{itemize}
-	\item $P$ and $Q$.
-	\item $P$ or $Q$.
-	\item Not $P$.
-	\item If $P$ then $Q$.
-\end{itemize}
-
-The ``truth values'' for the first three are pretty clear, but be careful about the last.
-
-\begin{itemize}
-	\item ``$P$ and $Q$'' is a true statement when both $P$ and $Q$ are true statements.
-	\item ``$P$ or $Q$'' is a true statement when either $P$ or $Q$ is a true statement.
-	\item ``Not $P$'' is true when $P$ is a false statement.
-	\item ``If $P$ then $Q$'' is true when $P$ is false or $Q$ is true.  In other words
-	``If $P$ then $Q$" is logically equivalent to ``not $P$ or $Q$''. 
-\end{itemize}
-
- 
-
-Which of the following are true?
-
 \begin{enumerate}
-	
-	\item If $1 + 1 = 1$, then I am the pope.
-	
-	\item If $8$ is prime then every real number is an integer.
-	
-	\item If my name is Jack then I am the pope.
-	
-	\item If it had been raining this morning then I would have brought an umbrella with me to class.
-	
+\item The empty set $\varnothing$ has no minimum and no maximum element.
+\item The set of natural numbers $\N$ has $1$ as a minimum, but has no maximum. 
+\item The open interval $(0,1)=\{ x\in \R \ | \ 0 < x < 1\}$ has no minimum and no maximum.
 \end{enumerate}
-
-All but the third are true.
-
-
-Most of the statements that we consider are, or can be framed as if-then statements: anything with hypotheses and a conclusion is an if-then statement. How do we prove such a statement? To give a ``direct proof'' of ``if $P$ then $Q$'' we:
-\begin{enumerate}
-	\item Assume $P$,
-	\item Do some stuff, then
-	\item Conclude $Q$.
-\end{enumerate}
-
-For example, the Goldbach Conjecture posits that if $n$ is an even integer greater than 2, then $n$ is a sum of two primes. (A conjecture is a statement that people believe to be true based on some evidence, but is not proven.) I can't prove this conjecture, but I can tell you the first and last sentence of a proof: ``Assume that $n$ is an even integer. \dots Thus, $n$ is a sum of two primes.''
-
-
-
-\Aug{27}
-
-
-As I said earlier, ``If $P$ then $Q$'' is the same as ``not $P$ or $Q$''. It follows that ``If not $Q$ then not $P$'' is the same as ``not not $Q$ or not $P$'' and
-hence is  the same as ``not $P$ or $Q$''. That is: 
-\begin{quote}
-	``If $P$ then $Q$'' is logically equivalent to ``If not $Q$ then not $P$''.
-\end{quote}
-
-``If not $Q$ then not $P$'' is known as the {\em contrapositive} of 
-``If $P$ then $Q$''. So, an if-then statement and its contrapositive are logically equivalent.
-
-
-Often when proving an if-then statement, it works a bit better to give a ``direct'' proof of the contrapositive. That is, in a proof of ``If $P$ then $Q$'' \textit{by contraposition} we:
-\begin{enumerate}
-	\item Assume not $Q$,
-	\item Do some stuff, then
-	\item Conclude not $P$.
-\end{enumerate}
-
-
-\begin{ex} An \textit{irrational number} is a real number that is not rational. Consider the following assertion: 
-	\begin{quote}
-		Let $r$ be any rational number and let $x$ be any real number. If $x$ is irrational then $x + r$ is irrational. 
-	\end{quote}
-	
-	This  is logically equivalent to:
-	\begin{quote} 
-		Let $r$ be any rational number and let $x$ be any real number. If $x+r$ is rational then $x$ is rational. 
-	\end{quote}
-	
-	Let us prove the latter statement ``directly'': Let $r$ be any
-	rational number and let $x$ be any real number. Suppose $x + r$ is rational. Then since $r$ is rational, $-r$ is also rational (by Proposition \ref{prop1}, part (6)).
-	It follows that $(x + r) + (-r)$ is also rational (by Proposition \ref{prop1}, part (1)) and hence $(x+r) + (-r) = x + (r +(-r)) = x + 0 = x$ is rational.
 \end{ex}
 
 
 
-Never, ever, ever, ever confuse the contrapositive of an if-then statement with its {\em converse}. The converse of ``If $P$ then $Q$'' is ``If $Q$ then~$P$''. 
-
-\begin{ex} Give examples of statements that are true whose converses are false.\end{ex}
-
-
-Recall that when we say ``$P$ if and only if $Q$'' we mean ``If $P$ then $Q$, and if $Q$ then $P$''. In other words, an ``if and only if'' statement includes both
-an if-then statement and its converse. The statement 
-``$P$ if and only if $Q$'' is true when either $P$ and $Q$ are both true or $P$ and $Q$ are both false, and it is false in the other two cases, when one is true and the other is
-false. A proof of such a statement generally has two parts, one where we prove $P$ implies $Q$ (either directly or by contraposition) and one where we prove $Q$ implies $P$ (again either directly or by contraposition).
-
-
-
-Let me also say a bit about quantification: This refers to usage of ``for every'' or ``there exists''. For example, ``For every real number $x$, $x^2$ is
-strictly positive'' and ``There exists an even integer that is prime''. 
-
-``For every'' statements are sometimes better cast as if-then statements. For example, the first
-one above is equivalent to ``If $x$ is a real number, then $x^2$ is strictly positive''.  So, be aware that sometimes, as in this example, there is an implicit
-``For every'' clause lurking about even if you don't see those words written. 
-
-The negation of a ``for every'' clause usually involves ``there exists''.
-For example the negation of ``For every real number $x$, $x^2$ is strictly positive.''  is ``There is a real number $x$ such that $x^2$ is
-not strictly positive''.
-
-The negation of a ``there exists'' statement usually involves ``for every''. For example, 
-the negation of ``There is an even integer that is prime'' is ``For every even integer $n$, $n$ is not prime'' or better ``If $n$ is an even integer, then $n$ is
-not prime''.
-
- In general,  
- \begin{itemize}
- 		\item the negation of ``For every $x \in S$, $P$''  is ``There exists  $x \in S$ such that not $P$'';
- 	\item the negation of ``There exists $x \in S$ such that $P$'' for some statement $P$ is ``For every  $x \in S$, not $P$''.
- \end{itemize}
-
-How do we prove statements with quantifiers? To prove ``For every $x \in S$, $P$'' , we
-\begin{enumerate}
-	\item Take an arbitrary $x\in S$,
-	\item Do some stuff, then
-	\item Conclude that $P$ holds for $x$.
-\end{enumerate}
-In the first step we specify one element of $S$, but we \textit{don't get to decide which one}. In particular, its name should be a variable, rather than the name of any specific element in $S$.
-
- To \textit{disprove} ``For every $x \in S$, $P$'' we can give a counterexample. That means that we get to choose an element of $S$, and show that $P$ fails for our choice.
-
-To prove ``There exists $x \in S$ such that $P$'' , we just need to give an example: we can choose any element of $S$ and show that $P$ holds for that element.
-
-
-Things get harder when we combine ``for every'' and ``there exist'' clauses in one statement. 
-One very important point here is that order matters a lot. For example,
-\begin{quote}
-	``For every $n \in \N$ there is an $m \in \N$ such that $n < m$''
-\end{quote}
-and
-\begin{quote}
-	``There is an $m \in \N$ such that for every $n \in \N$,  $n <  m$''
-\end{quote}
-have very different meanings. In fact, the first is clearly true (since given an $n$ one could, for example, take $m = n +1$) and the second is false. 
-\begin{quote}
-	{\Large \em Never interchange the positions of ``for every'' and ``there exist'' unless you intend to change the meaning!}
-\end{quote}
-
-
-
-When we combine ``for every'' and ``there exist'' clauses with a negation things can also get confusing. 
-For example: the negation of 
-``For every integer $m$ there is an integer $n$
-such that $n > m$'' is ``There exists an integer $m$ such that for every integer $n$, $n \leq m$.'' 
-
-Using symbols sometimes helps focus attention on the underlying logic. We write  $\forall$ and $\exists$ in place of ``for every'' and ``there exists'', sometimes. For example 
-the negation of ``$\forall x \in \R,  \exists n \in \N$ such that $n > x$'' is ``$\exists x \in \R$ such that $\forall n \in \N, n \leq x$''. 
-
-Here are a couple more statements with multiple quantifiers related to where we're going. Consider the following two properties for a set of natural numbers
-\begin{align*} 
-&P: \ &\text{for every $N\in\N$, there exists $n\in \N$ with $n>N$ such that $n\in S$}\\
-&Q: \ &\text{there exists $n\in \N$  such that for every $N\in\N$ with $n>N$, $n\in S$}\\
-\end{align*}
-For the set of all numbers bigger than 3, both $P$ and $Q$ are true, where for the set of even numbers, $P$ is true and $Q$ is false. 
-
-In more natural terms, $P$ holds for $S$ means that ``there are arbitrarily large numbers in $S$'' while $Q$ holds for $S$ means ``all sufficiently large numbers are in $S$''.
-
-
-
-
-
-
-\Aug{30}
-
-	
-	\begin{itemize}
-		\item Write the contrapositive, and the converse of each statement. Is the statement true or false? Is the converse true or false? Explain why (but don't write a full proof). For each statement below, $a,b$ are real numbers.
-		\begin{itemize}
-			\item If $a$ is irrational, then $1/a$ is irrational.
-			\begin{framed}
-			Contrapositive: ``If $1/a$ is rational, then $a$ is rational. [True]\\
-			Converse: ``If $1/a$ is irrational, then $a$ is irrational. [True]\end{framed}
-
-			\item If $x>3$ then $x^2>9$.\begin{framed}
-			Contrapositive: ``If $x^2 \leq 9$, then  $x\leq 3$. [True]\\
-			Converse: ``If $x^2 > 9$, then $x> 3$. [False]\end{framed}
-						\item If $a$ and $b$ are both irrational, then $ab$ is irrational.\begin{framed}
-			Contrapositive: ``If $ab$ is rational, then either $a$ or $b$ is rational. [False]\\
-			Converse: ``If $ab$ is irrational, then $a$ and $b$ are both irrational. [False]\end{framed}
-		\end{itemize}
-	\item Write the negation of each statement. Is the statement true or false? Explain why (but don't write a full proof).
-	\begin{itemize}
-		\item $\exists x\in \Q$: $x^2=2$.\begin{framed}
-		Negation: $\forall x\in \Q$, $x^2 \neq 2$. [The original is false.]
-		\end{framed}
-		\item $\forall x\in \Q$, $x^2>0$.
-		\begin{framed}
-		Negation: $\exists x\in \Q$, $x^2 \leq 0$. [The original is false.]\end{framed}
-		\item $\forall x\in \R$, $\exists y\in \R$: $xy=1$.
-		\begin{framed}
-		Negation: $\exists x\in \R: \forall y\in \R, xy\neq 1$.
-		[The original is false.]\end{framed}
-			\item $\exists x\in \R$: $\forall y\in \R$, $e^y<x$.\begin{framed}
-			Negation: $\forall x\in \R,\exists y\in \R: e^y\geq x$. [The original is false.]\end{framed}
-			
-		\item $\exists x\in \R$: $\forall y\in \R$, $\sin(y)<x$.\begin{framed}
-			Negation: $\forall x\in \R,\exists y\in \R: \sin(y)\geq x$. [The original is true.]\end{framed}
-	\end{itemize}
-
-\item Prove the following statements using the axioms of $\R$ and facts we have proven in class.
-\begin{itemize}
-\item Let $x$ be a real number. If there is a real number $y$ such that $xy=1$, then $x$ is nonzero.\footnote{Hint: Consider the contrapositive of this statement.}
-\begin{framed}
-	We argue the contrapositive. Let $x$ be zero. Then, for any $y\in\R$, we have $xy=0$, by a fact we proved in class. In particular, we have $xy\neq 0$, as required.\end{framed}
-
-
-\item If $x$ and $y$ is a nonzero real numbers, then $xy$ is also nonzero.\footnote{Hint: Use $x^{-1}$ and the previous statement.}
-
-\begin{framed}
-	Let $x$ and $y$ be nonzero real numbers. By Axiom 7, there are element $x^{-1},y^{-1}\in \R$ such that $x x^{-1}=1$ and $y y^{-1}=1$. Then $xy \cdot (x^{-1}y^{-1}) = (x x^{-1}) (y y^{-1}) =1$, using Axioms 2 and 3 in the first equality and Axiom 5 in the second. By the previous fact (applies to $xy$) we conclude that $xy\neq 0$.\end{framed}
-	
-	\item For any real numbers $x$ and $y$, $x\geq y$ if and only if $-{x \leq -y}$.\footnote{Hint: Add something to both sides.}
-	\begin{framed}
-		Let $x\geq y$. Adding $(-x) + (-y)$ to both sides (which exists by Axiom~6), we obtain $-y=x+((-x)+ (-y)) \geq y+((-x)+(-y)) = -x$ (by Axiom 9 and Axiom~5).
-		Conversely, let $-x \leq -y$. Adding $x+y$ to both sides, we obtain $y=(x+y)+(-x) \leq (x+y)+(-y) = x$ (by Axiom~9 and Axiom~5).\end{framed} 
-
-	\item For any real numbers $x$ and $y$, $(-x) \cdot y  = -xy$.
-	\begin{framed}
-		Observe that \[(-x) \cdot y + x\cdot y = (-x + x) \cdot y = 0 \cdot y = 0.\]
-	Thus,
-	\[ -x\cdot y = -x \cdot y + xy + -xy = 0 + -xy = -xy.\]
-			\end{framed}
-	\item The product of two negative real numbers is nonnegative.
-	\begin{framed}
-	Assume that $x<0$ and $y<0$. Then, we also have $0<-x$. It follows that $-xy = (-x) \cdot y \leq 0 \cdot y = 0$, Thus, $xy\geq 0$. Moreover, since $x\neq 0$ and $y\neq 0$, we have that $xy\neq 0$, so we must have $xy>0$.
-	\end{framed}
-\end{itemize}
-	\end{itemize}
-
-
-
-\Sept{1}
 
 \begin{defn} Let $S$ be any subset of $\R$. A real number $b$ is called an  {\em upper bound} of $S$ provided that for every $s \in S$,
 we have $s \leq b$. 
 \end{defn}
 
 
-For example, the number $1$ is an upper bound for the set $(0,1)$. The number $182$ is also an upper bound of this set and so is $\pi$. It is pretty clear
+For example, the number $1$ is an upper bound for the interval $(0,1)$. The number $182$ is also an upper bound of this set and so is $\pi$. It is pretty clear
 that $1$ is the ``best'' (i.e., smallest) upper bound for this set, in the sense that every other upper bound of $(0,1)$ must be at least as
 big as $1$. Let's make this official:
 
@@ -1200,7 +925,7 @@ This claim proves the (intuitively obvious) fact that $1$ is ``least upper bound
 will be an extremely important one in this class.
 
 
-\begin{defn} A subset $S$ of $\R$ is called {\em bounded above} if there exists at least one upper bound for $S$. That is, $S$ is bounded above provided there
+\begin{defn} A subset $S$ of $\R$ is called {\em bounded above}\index{bounded above} if there exists at least one upper bound for $S$. That is, $S$ is bounded above provided there
   is a real number $b$ such that $s \leq b$ for all $s \in S$.
 \end{defn}
 
@@ -1230,7 +955,7 @@ to exactly $2$), but there's a catch: how do we know that such real number exist
 \end{ex}
 
 
-\begin{defn} Suppose $S$ is subset of $\R$ that is bounded above. A {\em supremum} (also known as a {\em least upper bound}) of $S$ is a number $\ell$ such that
+\begin{defn} Suppose $S$ is subset of $\R$ that is bounded above. A {\em supremum}\index{supremum} (also known as a {\em least upper bound}) of $S$ is a number $\ell$ such that
 \begin{enumerate}
 \item $\ell$ is an upper bound of $S$ (i.e., $s \leq \ell$ for all $s \in S$) and
 \item if $b$ is any upper bound of $S$, then $\ell \leq b$. 
@@ -1245,8 +970,8 @@ in the ``Claim'' above, we proved that if $b$ is any upper bound of $(0,1)$ then
 belong to $S$.
 \end{ex}
 
-\begin{ex} I claim $1$ is  a supremum of $(0,1] = \{x \in \R \mid 0 <
-  x \leq 1\}$. It is by definition an upper bound. If $b$ is any upper bound of $(0, 1]$ then, since $1 \in (0, 
+\begin{ex} I claim $1$ is  a supremum of \[(0,1] = \{x \in \R \mid 0 <
+  x \leq 1\}.\] It is by definition an upper bound. If $b$ is any upper bound of $(0, 1]$ then, since $1 \in (0, 
   1]$, by definition
   we have $1 \leq b$. So $1$ is the supremum of $(0,1]$. 
 \end{ex}
@@ -6674,6 +6399,8 @@ goes by the name of ``measure''. And the argument given here proves that $C$ has
 
 
 \end{comment}
+
+\printindex
 \end{document}
 
 
