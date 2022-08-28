@@ -8,296 +8,11 @@
 \xyoption{all}
 \xyoption{arc}
 \usepackage{hyperref}
+\usepackage{makeidx}
 
 
-%%\usepackage[notcite,notref]{showkeys}
-
-%\CompileMatricesx
-\newcommand{\edit}[1]{\marginpar{\footnotesize{#1}}}
-%\newcommand{\edit}[1]{}
-\newcommand{\rperf}[2]{\operatorname{RPerf}(#1 \into #2)}
 
 \renewcommand\labelitemii{$\diamondsuit$}
-
-\def\floor#1{\lfloor #1 \rfloor}
-\def\tt{\tilde{\theta}}
-
-\def\ay{??}
-\def\Aut{\operatorname{Aut}}
-\def\t{\theta}
-\def\can{{\mathrm can}}
-\def\Coder{\operatorname{Coder}}
-\def\tY{\tilde{Y}}
-\def\s{\sigma}
-\def\tnabla{\tilde{\nabla}}
-\def\uMF{\underline{MF}}
-\def\uLF{\underline{LF}}
-
-\def\comp{\text{comp}}
-\def\del{\partial}
-
-\def\hcC{\hat{\cC}}
-\def\HH{\operatorname{HH_\cdot}}
-
-\def\rrperf{\operatorname{RPerf}}
-
-
-\def\tF{\widetilde{F}}
-\def\Symm{\operatorname{S^\cdot}}
-\def\naive{{\text{naive}}}
-\def\exact{{\text{exact}}}
-
-\def\square#1#2#3#4{
-#1 \ar[r] \ar[d]  & #2 \ar[d] \\
-#3 \ar[r] & #4 \\
-}
-
-\def\cube#1#2#3#4#5#6#7#8{
-& #5 \ar[rr] \ar[dl] \ar@{-}[d] && #6 \ar[dd] \ar[dl] \\
-#1 \ar[rr] \ar[dd]  & \ar[d] & #2 \ar[dd] \\
-& #7 \ar@{-}[r] \ar[dl] & \ar[r] & #8 \ar[dl] \\
-#3 \ar[rr] && #4 \\
-}
-
-\def\nicexy{\entrymodifiers={+!!<0pt,\fontdimen22\textfont2>}
-        \def\objectstyle{\displaystyle}} 
-
-\def\TP{\operatorname{TPC}}
-
-\def\HomMF{\operatorname{\uHom_{MF}}}
-
-\def\Hom{\operatorname{Hom}}
-\def\EndMF{\operatorname{\uEnd_{MF}}}
-\def\HomHMF{\operatorname{\Hom_{[MF]}}}
-\def\uMCM{\operatorname{\underline{MCM}}}
-
-
-\def\rH{\operatorname{H}}
-\def\rHom{\operatorname{Hom}}
-\def\rExt{\operatorname{Ext}}
-\def\uExt{\underline{\operatorname{Ext}}}
-
-
-\def\coh{\operatorname{coh}}
-
-\def\vf{\mathbf f}
-\def\vg{\mathbf g}
-\def\twomaps{\rightrightarrows} 
-\def\oDelta{\overline{\Delta}}
-\def\BHM{B\"okstedt-Hsiang-Madsen }
-\def\cU{\mathcal U}
-\def\Kweb#1{
-http:\linebreak[3]//www.\linebreak[3]math.\linebreak[3]uiuc.
-\linebreak[3]edu/\linebreak[3]{K-theory/#1/}}
-
-\def\ip#1{\left< #1 \right>}
-\def\ad#1{{\scriptstyle \left[ \frac{1}{#1} \right]}}
-\def\hocolim{\operatorname{hocolim}}
-\def\holim{\operatorname{holim}}
-
-\def\a{\alpha}
-\def\b{\beta}
-\def\Top{\operatorname{Top}}
-\def\Tot{\operatorname{Tot}}
-\def\Ncy{N^{cy}}
-\def\tNcy{\tilde{N}^{cy}}
-\def\smsh{\wedge}
-\def\MHS{{\text{MHS}}}
-\def\IMHS{{\text{IMHS}}}
-
-\def\nil{\operatorname{nil}}
-
-\def\uMaps{\operatorname{\underline{Maps}}}
-
-\def\chr{\operatorname{char}}
-\def\orb{\operatorname{orb}}
-\def\tSigma{\tilde{\Sigma}}
-
-\def\ae{{\text{alg equiv}}}
-\def\aez{{\text{alg} \sim 0}}
-\def\hez{{\text{hom} \sim 0}}
-\def\tor{{\text{tor}}}
-\def\sm{{\text{sm}}}
-
-\def\mor{{\text{mor}}}
-\def\H{{\mathbb H}}
-
-\def\etale{\'etale~}
-\def\tW{\tilde{W}}
-\def\tH{\tilde{H}}
-\def\tC{\tilde{C}}
-\def\tS{\tilde{S}}
-\def\tX{\tilde{X}}
-\def\tZ{\tilde{Z}}
-\def\HBM{H^{\text{BM}}}
-\def\tHBM{\tilde{H}^{\text{BM}}}
-\def\Hc{H_{\text{c}}}
-\def\Hs{H_{\text{sing}}}
-\def\cHs{{\mathcal H}_{\text{sing}}}
-\def\sing{{\text{sing}}}
-\def\Hms{H^{\text{sing}}}
-\def\Hm{\Hms}
-\def\tHms{\tilde{H}^{\text{sing}}}
-\def\Grass{\operatorname{Grass}}
-\def\image{\operatorname{im}}
-\def\im{\image}
-\def\ker{\operatorname{ker}}
-\def\cone{\operatorname{cone}}
-
-\def\ku{ku}
-\def\bbu{\bf bu}
-\def\KR{K{\mathbb R}}
-
-\def\CW{\underline{CW}}
-\def\cP{\mathcal P}
-\def\cE{\mathcal E}
-\def\cL{\mathcal L}
-\def\cJ{\mathcal J}
-\def\cJmor{\cJ^\mor}
-\def\ctJ{\tilde{\mathcal J}}
-\def\tPhi{\tilde{\Phi}}
-\def\cA{\mathcal A}
-\def\cB{\mathcal B}
-\def\cC{\mathcal C}
-\def\cZ{\mathcal Z}
-\def\cD{\mathcal D}
-\def\cF{\mathcal F}
-\def\cG{\mathcal G}
-\def\cO{\mathcal O}
-\def\cI{\mathcal I}
-\def\cS{\mathcal S}
-\def\cT{\mathcal T}
-\def\cM{\mathcal M}
-\def\cN{\mathcal N}
-\def\cMpc{{\mathcal M}_{pc}}
-\def\cMpctf{{\mathcal M}_{pctf}}
-\def\L{\mathbf{L}}
-
-\def\cMM{{{\mathcal M}{\mathcal M}}}
-\def\sst{{sst}}
-\def\top{{top}}
-\def\cK{\mathcal K}
-\def\cKH{\mathcal KH}
-\def\cKsst{\cK^{sst}}
-\def\Ksst{K^{sst}}
-\def\cGsst{\cG^{sst}}
-\def\Gsst{G^{sst}}
-\def\Ktop{K_{top}}
-\def\HM{H_{\cM}}
-\def\cHM{{\cH}_{\cM}}
-\def\HMnaive{\cH_{\cM,naive}}
-\def\Het{H_{et}}
-\def\Deldot{\Delta^{\bullet}}
-\def\Deltop{\Delta_{top}}
-\def\Deldottop{\Delta^{\bullet}_{top}}
-\def\diag{\operatorname{diag}}
-\def\coker{\operatorname{coker}}
-\def\hfib{\operatorname{hfib}}
-\def\dm{\operatorname{dim}}
-\def\rank{\operatorname{rank}}
-\def\trace{\operatorname{trace}}
-\def\Sing{\operatorname{Sing}}
-\def\Proj{\operatorname{Proj}}
-\def\uHom{\operatorname{\underline{Hom}}}
-\def\uSpec{\operatorname{\underline{Spec}}}
-\def\RHom{\operatorname{{\mathbb R} Hom}}
- \def\Ext{\operatorname{Ext}}
-% \def\cExt{\operatorname{{\mathcal{E}\mathit{xt}}}}
-\def\sExt{\operatorname{\widehat{Ext}}}
-\def\ssm{\smallsetminus}
-
-\def\Tor{\operatorname{Tor}}
-\def\sTor{\operatorname{\widehat{Tor}}}
-\def\Pic{\operatorname{Pic}}
-\def\Alb{\operatorname{Alb}}
-\def\Griff{\operatorname{Griff}}
-\def\Mat{\operatorname{Mat}}
-\def\End{\operatorname{End}}
-\def\uEnd{\operatorname{\underline{End}}}
-\def\Maps{\operatorname{Maps}}
-\def\Spec{\operatorname{Spec}}
-\def\MSpec{\operatorname{MSpec}}
-\def\Exinf{\operatorname{Ex^\infty}}
-\def\bu{\bullet}
-\def\an{{an}}
-\def\map#1{{\buildrel #1 \over \lra}} 
-\def\lmap#1{{\buildrel #1 \over \longleftarrow}} 
-\def\lra{\longrightarrow}
-\def\into{\hookrightarrow}
-\def\onto{\twoheadrightarrow}
-\def\cH{\mathcal{H}}
-\def\Hmult{\cH_{mult}}
-
-\def\ov#1{{\overline{#1}}}
-
-\def\vecthree#1#2#3{\begin{bmatrix} #1 \\ #2 \\ #3 \end{bmatrix}}
-
-\def\tOmega{\tilde{\Omega}}
-\def\tDelta{\tilde{\Delta}}
-\def\tSigma{\tilde{\Sigma}}
-\def\tsigma{\tilde{\sigma}}
-
-
-\def\d{\delta}
-\def\td{\tilde{\delta}}
-
-\def\e{\varepsilon}
-\def\nsg{\unlhd}
-
-
-\newcommand{\tensor}{\otimes}
-\newcommand{\homotopic}{\simeq}
-\newcommand{\homeq}{\cong}
-\newcommand{\iso}{\approx}
-
-\DeclareMathOperator{\ho}{Ho}
-\DeclareMathOperator*{\colim}{colim}
-
-
-\newcommand{\Q}{\mathbb{Q}}
-
-\newcommand{\bP}{\mathbb{P}}
-\newcommand{\bM}{\mathbb{M}}
-\newcommand{\A}{\mathbb{A}}
-\newcommand{\bH}{{\mathbb{H}}}
-\newcommand{\G}{\mathbb{G}}
-\newcommand{\bR}{{\mathbb{R}}}
-\newcommand{\bL}{{\mathbb{L}}}
-\newcommand{\R}{{\mathbb{R}}}
-\newcommand{\F}{\mathbb{F}}
-\newcommand{\E}{\mathbb{E}}
-\newcommand{\bF}{\mathbb{F}}
-\newcommand{\bE}{\mathbb{E}}
-\newcommand{\bK}{\mathbb{K}}
-
-
-\newcommand{\bD}{\mathbb{D}}
-\newcommand{\bS}{\mathbb{S}}
-
-\newcommand{\bN}{\mathbb{N}}
-
-
-\newcommand{\bG}{\mathbb{G}}
-
-\newcommand{\C}{\mathbb{C}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\N}{\mathbb{N}}
-
-\newcommand{\M}{\mathcal{M}}
-\newcommand{\W}{\mathcal{W}}
-
-
-
-\newcommand{\itilde}{\tilde{\imath}}
-\newcommand{\jtilde}{\tilde{\jmath}}
-\newcommand{\ihat}{\hat{\imath}}
-\newcommand{\jhat}{\hat{\jmath}}
-
-\newcommand{\fc}{{\mathfrak c}}
-\newcommand{\fp}{{\mathfrak p}}
-\newcommand{\fm}{{\mathfrak m}}
-\newcommand{\fq}{{\mathfrak q}}
-\newcommand{\dual}{\vee}
 
 
 % The following causes equations to be numbered within sections
@@ -331,6 +46,7 @@ http:\linebreak[3]//www.\linebreak[3]math.\linebreak[3]uiuc.
 \newcommand{\Nov}[1]{\section{November #1, 2022}}
 \newcommand{\Dec}[1]{\section{December #1, 2022}}
 
+\newcommand{\rsa}{\rightsquigarrow}
 
 
 \theoremstyle{definition}
@@ -349,115 +65,11 @@ http:\linebreak[3]//www.\linebreak[3]math.\linebreak[3]uiuc.
 %%%%%%%%%%%%%
 % local definitions
 %%%%%%%%%%%%%
-\def\TP{\operatorname{TPC}}
-
-\def\HomMF{\operatorname{\uHom_{MF}}}
-\def\HomHMF{\operatorname{\Hom_{[MF]}}}
-
-\def\rDsg{D^{\text{rel}}_{\text{sing}}}
-\def\Dsg{D_{\text{sing}}}
-\def\Dsing{\Dsg}
-\def\Db{D^b}
 
 
-\def\Perf{\operatorname{Perf}}
-\def\coh{\operatorname{coh}}
+\newcommand{\R}{\mathbb{R}}
 
-\def\CCh{\check{\cC}}
-
-\newcommand{\Cech}{C}
-
-\newcommand\bs{\boldsymbol}
-\renewcommand{\uMCM}[1]{[\operatorname{MCM}(#1)]}
-
-
-%\newcommand{\sExt}[4]{\widehat{\operatorname{Ext}}_{#2}^{#1}(#3,#4)}
-\newcommand{\cExt}[4]{\uExt_{#2}^{#1}(#3,#4)}
-
-\newcommand\depth{\operatorname{depth}}
-\newcommand{\supp}{\operatorname{supp}}
-
-\newcommand{\br}[1]{\lbrace \, #1 \, \rbrace}
-\newcommand{\brc}[2]{\lbrace \, #1 \, | \, #2 \rbrace}
-\newcommand{\li}{ < \infty}
-\newcommand{\quis}{\simeq}
-\newcommand{\xra}[1]{\xrightarrow{#1}}
-\newcommand{\xla}[1]{\xleftarrow{#1}}
-\newcommand{\xroa}[1]{\overset{#1}{\twoheadrightarrow}}
-\newcommand{\ps}[1]{\mathbb{P}_{#1}^{\text{c}-1}}
-
-% this is the pull-back of E along l: Z \to X
-\newcommand{\pb}[1]{\RQ^*{#1}}
-\newcommand{\pbe}{\pb{\cE}}
-\newcommand{\YQ}{\gamma}
-\newcommand{\RY}{\beta}
-\newcommand{\RQ}{\delta}
-
-\newcommand{\mft}[1]{T^{[MF]}_{#1}}
-\newcommand{\dst}[1]{T^{\Dsing(R)}_{#1}}
-
-\newcommand{\id}{\operatorname{id}}
-\newcommand{\pd}{\operatorname{pd}}
-\newcommand{\even}{\operatorname{even}}
-\newcommand{\odd}{\operatorname{odd}}
-
-\newcommand{\bl}[1]{{{\color{blue}#1}}}
-
-\def\tmu{\tilde{\mu}}
-\def\g{\gamma}
-\def\tg{\tilde{\gamma}}
-\def\tCliff{\operatorname{\tilde{Cliff}}}
-\def\unital{\mathrm{unital}}
-\def\D{\Delta}
-\def\Tco{\operatorname{T^{\text{co}}}}
-\def\Tcob{\operatorname{\ov{T}^{\text{co}}}}
-
-\def\bg{\mathbf g}
-\def\ta{\tilde{a}}
-
-
-\def\codim{\operatorname{codim}}
-
-\def\res{\operatorname{res}}
-\def\ind{\operatorname{ind}}
-\def\rsa{\rightsquigarrow}
-
-\def\sign{{\mathrm{sign}}}
-\def\naive{{\mathrm{naive}}}
-\def\l{\lambda}
-
-
-\def\ov#1{\overline{#1}}
-
-%%%-------------------------------------------------------------------
-%%%-------------------------------------------------------------------
-% NEW DEFINITIONS BEYOND MARK'S USUAL ONES 
-% (OR MODIFIED) 
-\newcommand{\chara}{\operatorname{char}}
-\newcommand{\Kos}{\operatorname{Kos}}
-\newcommand{\opp}{\operatorname{opp}}
-\newcommand{\perf}{\operatorname{perf}}
-
-\newcommand{\Fun}{\operatorname{Fun}}
-\newcommand{\GL}{\operatorname{GL}}
-\def\o{\omega}
-\def\oo{\overline{\omega}}
-
-\def\cont{\operatorname{cont}}
-\def\te{\tilde{e}}
-\def\gcd{\operatorname{gcd}}
-%%%-------------------------------------------------------------------
-%%%-------------------------------------------------------------------
-%%%-------------------------------------------------------------------
-%%%-------------------------------------------------------------------
-%%%-------------------------------------------------------------------
-
-
-\def\charpoly{\operatorname{char poly}}
-\def\Gal{\operatorname{Gal}}
-
-
-
+\makeindex
 
 \begin{document}
 
@@ -490,8 +102,8 @@ In general, $y(x) = C e^{7x}$ is a solution for any constant $C$.
 \end{ex}
 
 Of course, at the end of the day, nothing was special about $7$. If we replaced $7$ by any real number $a$, for the same reason, we would find that for the differential equation
-\[ y' = ay\]
-the \emph{general solution} is
+\[ y' = ay\]\index{$y'=ay$}
+the \emph{general solution}\index{general solution} is
 \[ y(x) = C e^{ax}.\]
 
 Guessing, while successful here, is not going to be our preferred method in the class. Let's savor this victory, and be prepared to collect many methods for solving differential equations as we progress through the course.
@@ -499,7 +111,7 @@ Guessing, while successful here, is not going to be our preferred method in the 
 \subsection*{Types of differential equations (\S1.1)}
 There are many different ways of throwing together functions and derivatives in an equation, so we'll need some terminology to orient ourselves.
 
-\begin{defn} An \emph{ordinary differential equation (ODE)} is a differential equation involving only one independent variable; i.e., derivatives with respect to just one variable.
+\begin{defn} An \emph{ordinary differential equation (ODE)}\index{ordinary differential equation}\index{ODE} is a differential equation involving only one independent variable; i.e., derivatives with respect to just one variable.
 \end{defn}
  For example,
  \[ \frac{d^2 y}{dt^2} + t \frac{dy}{dt} = -y + \cos(ty)\]
@@ -507,7 +119,7 @@ There are many different ways of throwing together functions and derivatives in 
  
 In general an ODE is an equation of the form \[F(t,y,y',y'',\dots,y^{(n)})=0\] for some function $F$ where $y=y(t)$: an equation relating the function $y$ with its derivative(s).
 
-\begin{defn} A \emph{partial differential equation (PDE)} is a differential equation involving multiple independent variable; i.e., derivatives with respect to different variables.
+\begin{defn} A \emph{partial differential equation (PDE)}\index{partial differential equation}\index{PDE} is a differential equation involving multiple independent variable; i.e., derivatives with respect to different variables.
 \end{defn}
 For example, 
 \[ \frac{\partial u}{\partial t} - 5 \frac{\partial u}{\partial x} = 0\]
@@ -520,7 +132,7 @@ The ``ordinary'' vs ``partial'' refers to what type of derivatives see.
 This is a class about ODEs. Almost all of the rest of the differential equations we see this semester will be ordinary!
 
 
-\begin{defn} The \emph{order} of a differential equation is the highest order derivative that occurs in the equation.
+\begin{defn} The \emph{order}\index{order} of a differential equation is the highest order derivative that occurs in the equation.
 \end{defn}
 
 For example,
@@ -529,7 +141,7 @@ is a third order ODE, due to the $y'''$ term and
  \[ \frac{d^2 y}{dt^2} + t \frac{dy}{dt} = -y + \cos(ty)\]
  is a second order ODE.
  
- \begin{defn} A \emph{linear} ODE is any ODE of the form
+ \begin{defn} A \emph{linear}\index{linear} ODE is any ODE of the form
  \[ a_n(t) y^{(n)} + a_{n-1}(t) y^{(n-1)} + \cdots + a_2(t) y'' + a_1(t) y' + a_0(t) y = f(t).\]
  \end{defn}
  For example,
@@ -577,14 +189,14 @@ By the product rule, \[y'=(ax+1) e^{ax} \quad \text{and} \quad y''=(a^2 x + 2a) 
 In our first example, we saw that there are many solutions to the differential equation $y'=7y$. To pin one down, we might specify a value for our function at a point. The system
 \[\begin{cases} y' = 7y \\ 
 y(2)=4 \end{cases}\]
-is a example of an \emph{initial value problem}. Geometrically, $y(2)=4$ corresponds to the condition that the graph of our solution passes through $(2,4)$.
+is a example of an \emph{initial value problem (IVP)}\index{initial value problem}\index{IVP}. Geometrically, $y(2)=4$ corresponds to the condition that the graph of our solution passes through $(2,4)$.
 
 
 
 
 \Aug{25}
 
-\begin{ex}
+\begin{ex}\label{ex:first IVP}
 \[\begin{cases} y' = 7y \\ 
 y(2)=4 \end{cases}\]
 is a example of an \emph{initial value problem}. Geometrically, $y(2)=4$ corresponds to the condition that the graph of our solution passes through $(2,4)$.
@@ -600,11 +212,11 @@ That is,
 
 \subsection*{Modeling with differential equations (\S1.3)}
 
-Differential equations is one of the most useful areas of math for applications, since so many real life things are described effectively by differential equations. A \emph{mathematical model} is a description of some system or phenomenon by an equation or a formula. A model is rarely perfect, since we can't even know all of the factors that might affect something, but we can often use them to understand things better.
+Differential equations is one of the most useful areas of math for applications, since so many real life things are described effectively by differential equations. A \emph{mathematical model}\index{mathematical model} is a description of some system or phenomenon by an equation or a formula. A model is rarely perfect, since we can't even know all of the factors that might affect something, but we can often use them to understand things better.
 
 Let's start with a basic example.
 
-\begin{ex} A classical model of human population growth is based on the assumption that the rate at which the population of a country grows is proportional to the population of that country. To express this as a differential equation, let $P$ the population of a country. We are interested in how it changes, so let $t$ be a variable for time and view $P$ as a function of $t$.  To say that two things are proportional means that the exists a constant $k$ (called the \emph{constant of proportionality}) such that $k$ times the first quantity is the second quantity. The rate of change of the population is $\frac{dP}{dt}$. Thus, our equation is
+\begin{ex} \index{population model}A classical model of human population growth is based on the assumption that the rate at which the population of a country grows is proportional to the population of that country. To express this as a differential equation, let $P$ the population of a country. We are interested in how it changes, so let $t$ be a variable for time and view $P$ as a function of $t$.  To say that two things are \emph{proportional}\index{proportional} means that the exists a constant $k$ (called the \emph{constant of proportionality}) such that $k$ times the first quantity is the second quantity. The rate of change of the population is $\frac{dP}{dt}$. Thus, our equation is
 \[ \frac{dP}{dt} = kP \]
 for some constant $k$. We do not know what $k$ is without further information.
 
@@ -617,7 +229,7 @@ Given two data points for any specific population, we can determine $C$ and $k$.
 
 Let us try to set up a more complicated model.
 
-\begin{ex} Say that we have a tank of water. At first, it holds $500$ liters of pure water (no salt). After  switch is flipped, salt water that has 7 grams of salt per liter starts flowing in at a rate of 2 liters per minute, and water from the bottom of the tank starts flowing out at a rate of 2 liters per minute. 
+\begin{ex} \index{mixing model}Say that we have a tank of water. At first, it holds $500$ liters of pure water (no salt). After  switch is flipped, salt water that has 7 grams of salt per liter starts flowing in at a rate of 2 liters per minute, and water from the bottom of the tank starts flowing out at a rate of 2 liters per minute. 
 %We assume that the water stays well mixed so that the water flowing out is as salty as the average water in the tank. 
 Let's model the amount of salt in the tank at a given time after the switch is flipped.
 
@@ -639,7 +251,7 @@ We will learn how to solve systems like this soon.
 
 \subsection*{Discussion Questions}
 
-
+\index{counterfeit money}
 The government of a country wants to remove counterfeit money from circulation. Say there are 20 million total bills in circulation. Every day, 4 million of its bills pass though federal banks, and every counterfeit bill collected is replaced by a legal one. Say that half of the total bills in circulation today are counterfeit. Let's assume that the total number of bills in circulation stays constant and that no more counterfeit bills are being introduced. Our goal is to find an initial value problem modeling the percentage of counterfeit bills in circulation as time passes. 
 
 \begin{enumerate}
@@ -685,23 +297,42 @@ Now let's change our original story. As before, every day, 4 million of its bill
 
 \begin{comment}
 
-\subsection*{Existence and uniqueness for initial value problems}
+\Aug{30}
 
+We will now spend a while focusing on first-order ODEs and corresponding initial value problems: all of Section 1.2 and Chapter 2 will be about this setting.
 
+\subsection*{Existence and uniqueness for initial value problems (\S1.2)}
+If our goal in solving an initial value problem
+\[\begin{cases} y' = f(x,y) \\ y(x_0) = y_0\end{cases}\]
+ is to find \emph{the} function that satisfies the two conditions, for this goal to make sense, there should be a function, and only one function that satisfies the two conditions. The \emph{existence}\index{existence} question for an IVP is whether there is any function that satisfies both conditions; the \emph{uniqueness}\index{uniqueness} question for an IVP is whether there is at most function that satisfies both conditions. (Actually \emph{finding} this function is a different question.)
 
-Not only did we find a solution to our IVP, but along the way we saw that our solution was the only one; i.e, is unique (as long as we believe we started off with all of the solutions to $y'=7y$).
+Let's consider these things in some examples we have seen before.
+
+\begin{ex} In Example~\ref{ex:first IVP}, we considered the IVP
+\[\begin{cases} y' = 7y \\ 
+y(2)=4 \end{cases}\]
+and saw that the function $y= 4 e^{7x-14}$ was the one and only solution. Thus, there exists a unique solution in this case.
+\end{ex}
+
 
 On the other hand, we have the following.
 
 \begin{ex} Consider the IVP
 \[\begin{cases} y' = y^{2/3} \\ 
 y(0)=0 \end{cases}.\]
-We saw in the discussions questions that $y=0$ and $y=\frac{1}{27} t^3$ both satisfy the first differential equation and it's easy to see they also satisfy the initial condition, so they are also both solutions to the IVP so here we have an IVP for which the solution is not unique.
+We saw in the Discussion Questions from Aug 25 that $y=0$ and $y=\frac{1}{27} t^3$ both satisfy the first differential equation. Both of these functions also satisfy the initial condition, so they are also both solutions to the IVP. Here we have an IVP for which the solution is not unique.
 \end{ex}
 
-What if we are so unlucky as to try to solve an IVP and there's no solution at all?
+We can even have no solution sometimes.
 
-\begin{thm}[Picard-Lindel\"of] For the IVP
+\begin{ex} Consider the IVP
+\[\begin{cases} y' = \begin{cases} 1 & \text{if } y\geq 0 \\ -1 & \text{if } y  <0\end{cases}\\ y(0) = 0\end{cases}.\]
+This IVP has no solution! (You can convince yourself why not.)
+\end{ex}
+
+Luckily, there is a theorem that guarantees existence and uniqueness of solutions IVP's under certain hypotheses.
+
+\begin{thm}[Picard-Lindel\"of]\index{Picard-Lindel\"of} For the IVP
 \[\begin{cases} \frac{dy}{dx} = f(x,y) \\ 
 y(x_0) = y_0 \end{cases}\]
 and some rectangle $R$ in the $(x,y)$-plane containing $(x_0,y_0)$ in its interior,
@@ -736,9 +367,106 @@ We have, in the notation of the Theorem,
 These are continuous except when $t=\pm 2$. Thus, any rectangle whose base is contained in $(-2,2)$ will satisfy the hypotheses of the theorem, so $(-2,2)$ is the interval we seek.
 \end{ex}
 
+\subsection*{Solution curves from slope fields (\S 2.1)} There is a great way to visualize solutions to differential equations without solving them. The idea is to think of $\frac{dy}{dt}$ geometrically as the slope of the graph of $y$.
+
+\begin{ex}\label{ex:first aut} Consider the differential equation 
+\[ y' = 3-y.\]
+We won't try to write down a solution yet. Instead, on the plane, we draw little lines with slope $3-y$ at various points.\\
+\begin{center}\includegraphics[scale=.5]{sf1}\end{center}
+We can use this to sketch the solution to the IVP
+\[\begin{cases} y' = 3-y \\
+y(2)= 2 \end{cases}\]
+by starting at $(2,2)$ and going along with the flow.
+\begin{center}\includegraphics[scale=.5]{sf2}\end{center}
+
+Or 
+\[\begin{cases} y' = 3-y \\
+y(-4)= 4 \end{cases}:\]
+\begin{center}\includegraphics[scale=.5]{sf3}\end{center}
+\end{ex}
+
+The picture we drew above is called a \emph{slope field}.\index{slope field}
+
+\subsection*{Discussion Questions} Draw a slope field for the differential equation
+\[ y'= x+y\] and use it to sketch the solutions with initial conditions
+\begin{enumerate}
+\item $(0,1)$
+\item $(0,0)$
+\item $(0,-1)$
+\item $(0,-2)$
+\end{enumerate}
+\begin{framed}
+\begin{center}\includegraphics[scale=.5]{sf4}\end{center}
+\end{framed}
+
+\subsection*{Autonomous differential equations}
+Example~\ref{ex:first aut} belongs to a class of equations that is worth singling out.
+\begin{defn} A differential equation of the form \[ y' = f(y)\]
+ is said to be \emph{autonomous}.\index{autonomous}
+ \end{defn}
+ 
+ The behavior of a solution of an autonomous differential equation is determined entirely by the current value of the function (and not the independent variable).
+ 
+For an autonomous differential equation, whether a solution is increasing, decreasing, or constant at a point only depends on the $y$-value at that point. We can determine this either algebraically or using the slope field.
+
+\begin{ex}
+Consider the autonomous differential equation 
+\[ y' = \frac{y^3}{9} -y.\]
+A solution to this equation will be increasing when $y'>0$, which is the same as $\frac{y^3}{9} -y>0$. This happens when $y\in (-3,0)\cup (3, \infty)$.
+A solution to this equation will be decreasing when $y'<0$, which is the same as $\frac{y^3}{9} -y<0$. This happens when $y\in (0,3)\cup (-\infty,-3)$.
+A solution to this equation will be constant when $y'=0$, which is the same as $\frac{y^3}{9} -y=0$. This happens when $y=-3,0,3$.
+We can also use the slope field to determine when it is increasing or decreasing.
+\begin{center}\includegraphics[scale=.5]{sf5}\end{center}
+Let's sketch some solutions:
+\begin{center}\includegraphics[scale=.5]{sf6}\end{center}
+\end{ex}
+
+A constant solution to an autonomous differential equation is also called an \emph{equilibrium solution}\index{equilibrium solution}.
+
+
+\subsection*{Review of integration} Now we will start to collect some techniques for solving differential equations. Of course integration will play a big role. Let's review some basic techniques of integration. We will usually be using \emph{indefinite integration} or \emph{antidifferentiation} in this class. First, let's recall a list of building block functions whose integrals we need to know. 
+
+\begin{itemize}
+\item $\int x^n \, dx = \frac{x^{n+1}}{n+1} + C$ when $n\neq -1$.
+\item $\int \frac{1}{x} \, dx = \ln(x) + C$.
+\item $\int e^x \, dx = e^x + C$.
+\item $\int \sin(x) \, dx = -\cos(x) + C$.
+\item $\int \cos(x) \, dx = \sin(x) + C$.
+\end{itemize}
+
+We also have many rule for how to integrate complicated functions in terms of integrating smaller parts. There are two easy rules to get us started.
+
+\begin{itemize}
+\item $\int f(x) + g(x) \, dx = \int f(x)  \, dx + \int g(x) \, dx$.
+\item $ \int c f(x) \, dx = c \int f(x)  \, dx$ for any constant $c$.
+\end{itemize}
+
+Unlike with derivatives, there is no direct rule for computing the integral of a composition or a product. Instead, we have ``$u$-substitutions''\index{u-substitution} and ``integration by parts''\index{integration by parts}. 
+
+$u$-substitution is a technique that is likely to work when we can see some function and something like its derivative inside the function we are trying to integrate. In this case, we set the function to be $u$, we set $du= u'(x) \, dx$, and we try to rewrite our integrand as some function of $u$  times $du$ (and get rid of our starting variable entirely). $u$-substitutions also work well when instead of some function of $x$, we have a function of $x-a$ or a function of $ax$ for some constant $a$.
+This is the main technique that we will want to use, other than the basic rules.
+
+
+examples
+
+
+Integration by parts is a technique that might work when our integrand is a product of two things, one of which we know how to integrate (i.e., looks like the derivative of something). The general rule is if we can find functions $u(x), v(x)$ such that our integral is $\int u \, dv$ (where $dv = v'(x) \, dx$), the we have
+\[ \int  u \, dv = uv -  \int v \, du;\]
+and if we can integrate $ \int v \, du$, we are done. A rule of thumb for what to choose for $u$ vs what to choose for $dv$ in integration by parts is LIATE (log, inverse trig, algebraic, trig, exponential): stuff on the left is usually better for $u$'s and stuff on the right is usually better for $dv$'s.
+
+examples.
+
+\subsection*{Separable first-order equations (\S2.2)}
+
+
+
+
+
 
 \begin{comment}
 \end{comment}
+
+\printindex
 
 \end{document}
 
