@@ -39,6 +39,7 @@
 \newtheorem{conj}[equation]{Conjecture}
 \newtheorem{quest}[equation]{Question}
 
+
 \newcommand{\Aug}[1]{\section{August #1, 2022}}
 \newcommand{\Sept}[1]{\section{September #1, 2022}}
 \newcommand{\Oct}[1]{\section{October #1, 2022}}
@@ -52,6 +53,7 @@
 \newtheorem{defn}[equation]{Definition}
 \newtheorem{chunk}[equation]{}
 \newtheorem{ex}[equation]{Example}
+\newtheorem{idea}[equation]{Idea}
 
 \newtheorem{exer}[equation]{Exercise}
 
@@ -427,7 +429,7 @@ A constant solution to an autonomous differential equation is also called an \em
 
 \begin{itemize}
 \item $\int x^n \, dx = \frac{x^{n+1}}{n+1} + C$ when $n\neq -1$.
-\item $\int \frac{1}{x} \, dx = \ln(x) + C$.
+\item $\int \frac{1}{x} \, dx = \ln|x| + C$.
 \item $\int e^x \, dx = e^x + C$.
 \item $\int \sin(x) \, dx = -\cos(x) + C$.
 \item $\int \cos(x) \, dx = \sin(x) + C$.
@@ -514,10 +516,98 @@ Since $e^{C}$ is just some other constant $C'$, we could also write
 \[ \frac{dy}{dt} = t + ty^2.\]
 It doesn't look separable yet, but once we factor
 \[ \frac{dy}{dt} = t (1 +y^2),\]
-it becomes clear that it's separable.
-\dots
+it becomes clear that it's separable. Separate variables:
+\[ \frac{dy}{1+y^2} = t \, dt,\]
+integrate:
+\[ \int \frac{dy}{1+y^2} = \int t \, dt,\]
+\[ \arctan(y) = \frac{t^2}{2} + C,\]
+and solve for $y$ by taking tangent of both sides:
+\[ y=\tan(\arctan(y)) = \tan\left(  \frac{t^2}{2} + C\right).\]
+This is our general solution!
 \end{ex}
 
+Sometimes we encounter integrals that are just impossible:
+
+\begin{ex} Take 
+\[ \frac{dy}{dt} = y e^{-t^2} \, dt\]
+\[\rsa\quad \frac{dy}{y} = e^{-t^2} \, dt\]
+\[\rsa\quad \int \frac{dy}{y} = \int e^{-t^2} \, dt.\]
+The function $e^{-t^2}$ has no elementary antiderivative: it simply is not a function for which we have a name (in the way we usually name functions). Let's just leave it as an integral.
+\[\rsa\quad \ln |y| = \int e^{-t^2} \, dt\]
+\[\rsa\quad |y| = e^{\left(\int e^{-t^2} \, dt\right)}\]
+\[\rsa\quad y =  \pm e^{\left(\int e^{-t^2} \, dt\right)}.\]
+Here we have solved for $y$ \emph{up to an integral} in $t$.\index{solved up to an integral}
+\end{ex}
+
+\subsection*{Linear equations (\S2.3)} Now we solve another large class of differential equations: first order linear ODE's. Let's recall that a differential equation is a first order linear ODE if we can write it in the form
+\[ a_1(t) y' + a_0(t) y = f(t)\]
+for some functions $a_1(t),a_0(t),f(t)$ that only involve the independent variable $t$.
+
+We are going to learn a magic trick to solve these: this really is a rabbit-in-the-hat idea. To motivate this wacky idea, I want to consider a couple of small examples to get the idea.
+
+\begin{ex}
+Consider the differential equation
+\[ t y' + y=t^2.\]
+After trying a few things, we realize this isn't separable. However, the left-hand side, as written, is interesting. Notice that, by the product rule, we have
+\[ (ty)' = t y' + t' y= t y' + y.\]
+Thus, we have
+\[ (ty)' = t^2,\]
+\[\rsa \quad ty = \int (ty)' \, dt = \int t^2 \, dt = \frac{t^3}{3} + C,\]
+so \[ y = \frac{t^2}{3} + C.\]
+
+\
+
+That was lucky! What if we had
+\[ y' + \frac{3}{t} y = t\]
+instead? This is still not separable. I will magically multiply by $t^3$ to get
+\[ t^3 y' + 3t y = t^4.\]
+By reverse product rule on the left-hand side, we have
+\[ (t^3 y)' = t^4.\]
+Now we integrate to get
+\[ t^3 y = \int t^4 \, dt = \frac{t^5}{5} +C,\]
+so \[y = \frac{t^2}{5} + C.\]
+
+\
+
+This is the idea we will use: multiply our equation through by something to turn it into an equation where the left-hand side comes from the product rule! But how do we come up with the magic multiplier?
+\end{ex}
+
+\begin{idea}
+Given a linear first order ODE of the form
+\[ y' + p(t) = q(t),\]
+multiply by an \emph{integrating factor}\index{integrating factor} $\mu(t)$ so the lend-hand side collapses via the product rule:
+\[ \mu(t) y' + \mu(t) p(t) y = \mu(t) q(t).\]
+If we want the left-hand side to match up with something of the form $(? y)' = ? y' + ?' y$, the $?$ should be $\mu$. Then $(\mu y)' = \mu y' + \mu' y$, so we need $\mu$ to satisfy the equation
+\[ \mu' = \mu p(t).\]
+This is separable now: we solve
+\[ \frac{\mu'}{\mu} = p(t)\]
+by integrating
+\[ \ln |\mu| = \int p(t) \, dt,\]
+and isolating $\mu$
+\[ \mu = \pm e^{\int p(t) \, dt}.\]
+Let's take the positive one:
+Set $\mu = e^{\int p(t) \, dt}$.
+\end{idea}
+
+\begin{defn} Given a linear first order ODE of the form
+\[ y' + p(t) = q(t),\]
+we call the function
+\[ \mu = e^{\int p(t) \, dt}\]
+the \emph{integrating factor}\index{integrating factor} of the equation. For the integrating factor, we can take just one antiderivative (i.e., ignore the constant of integration), since this is just something we're using to get a solution and not a solution.
+\end{defn}
+
+Then we multiply by the integrating factor, realize the left-hand side as a result of the product rule, and integrate to solve.
+
+\begin{ex} Let's solve the ODE that arose in our model of counterfeit currency from Aug 25. We found the equation
+\[C'(t) = 1-\frac{2C}{10+t}\]
+which we can write as
+\[ C' + \frac{2}{10+t} C = 1.\]
+The integrating factor is $\mu = e^{\int \frac{2}{10+t} \, dt}$.
+We should simplify this. Set $u=10+t$, so $du = dt$, then \[\int \frac{2}{10+t} \, dt = \int \frac{2}{u} \, du = 2 \ln|u| = \ln((10+t)^2) \]
+so 
+\[ \mu = e^ {\ln((10+t)^2)} = (10+t)^2 .\]
+
+\end{ex}
 
 
 
