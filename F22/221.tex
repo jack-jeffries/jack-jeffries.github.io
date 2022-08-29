@@ -326,7 +326,7 @@ We can even have no solution sometimes.
 
 \begin{ex} Consider the IVP
 \[\begin{cases} y' = \begin{cases} 1 & \text{if } y\geq 0 \\ -1 & \text{if } y  <0\end{cases}\\ y(0) = 0\end{cases}.\]
-This IVP has no solution! (You can convince yourself why not.)
+This IVP has no solution, no matter how small of an interval! (Challenge: why not?)
 \end{ex}
 
 Luckily, there is a theorem that guarantees existence and uniqueness of solutions IVP's under certain hypotheses.
@@ -433,6 +433,13 @@ A constant solution to an autonomous differential equation is also called an \em
 \item $\int \cos(x) \, dx = \sin(x) + C$.
 \end{itemize}
 
+Here are a couple more special ones.
+
+\begin{itemize}
+\item $\int \frac{dx}{\sqrt{1-x^2}} = \arcsin(x) + C$.
+\item $\int \frac{dx}{1 + x^2} = \arctan(x) + C$.
+\end{itemize}
+
 We also have many rule for how to integrate complicated functions in terms of integrating smaller parts. There are two easy rules to get us started.
 
 \begin{itemize}
@@ -445,17 +452,72 @@ Unlike with derivatives, there is no direct rule for computing the integral of a
 $u$-substitution is a technique that is likely to work when we can see some function and something like its derivative inside the function we are trying to integrate. In this case, we set the function to be $u$, we set $du= u'(x) \, dx$, and we try to rewrite our integrand as some function of $u$  times $du$ (and get rid of our starting variable entirely). $u$-substitutions also work well when instead of some function of $x$, we have a function of $x-a$ or a function of $ax$ for some constant $a$.
 This is the main technique that we will want to use, other than the basic rules.
 
-
-examples
+\begin{ex}
+To compute $\int x^2 \cos(x^3) \, dx$, take $u=x^3$, so $du=3x^2 \, dx$. Then we have $x^2 \, dx = \frac13 \, du$, so our integral is $\int \frac13 \cos(u)\,  du = \frac13 \sin(u) + C= \frac13 \sin(x^3) +C$.
+\end{ex}
 
 
 Integration by parts is a technique that might work when our integrand is a product of two things, one of which we know how to integrate (i.e., looks like the derivative of something). The general rule is if we can find functions $u(x), v(x)$ such that our integral is $\int u \, dv$ (where $dv = v'(x) \, dx$), the we have
 \[ \int  u \, dv = uv -  \int v \, du;\]
 and if we can integrate $ \int v \, du$, we are done. A rule of thumb for what to choose for $u$ vs what to choose for $dv$ in integration by parts is LIATE (log, inverse trig, algebraic, trig, exponential): stuff on the left is usually better for $u$'s and stuff on the right is usually better for $dv$'s.
 
-examples.
+\begin{ex}
+To compute $\int x e^x \, dx$, take $u=x$ and $dv= e^x \, dx$. Then $du = dx$ and $v=e^x$. Then we have $\int x e^x \, dx = x e^x - \int e^x \, dx = x e^x - e^x +C = (x-1) e^x +C$.
+\end{ex}
 
-\subsection*{Separable first-order equations (\S2.2)}
+Last but not least, we have a big table of integrals in the front cover of our text. 
+
+\subsection*{Separable first-order equations (\S2.2)} Now we are ready to solve some differential equations! First we will address first-order equations of a special form: separable eqautions.
+
+\begin{defn} A first-order ODE is \emph{separable}\index{separable} if it can be written in the form
+\[ y' = f(x) g(y)\]
+for some function $f$ that only involves the independent variable and some function $g$ that only involves the dependent variable.
+\end{defn}
+
+For example,
+\[ y' = x^2/y, \quad y' = \frac{3 \sqrt{y^2+1}}{\cos(x)}, \quad \text{and} \ y' = 3-y \]
+are all separable (with $f(x)=x^2$ and $g(y)=1/y$ in the first one), but
+\[ y' = x+y \quad \text{and} \quad y'=\sin(xy) \]
+are not. Note that a separable equation may or may not be linear, but is always a first order ODE.
+
+Here's how to solve a separable ODE: Write $y'$ as $\frac{dy}{dx}$ and pretend that the $dy$ and $dx$ are separate things. Take
+\[ \frac{dy}{dx} = f(x)g(y)\]
+and multiply by $dx$ and divide by $dy$ on both sides to get
+\[ \frac{dy}{g(y)} = f(x) \, dx.\]
+(This is why we call the equation separable: the independent and dependent variables now occur on separate sides of the equation.) Now integrate both sides:
+\[ \int \frac{dy}{g(y)} = \int f(x) \, dx,\]
+to get an equation for $x$ and $y$ that is no longer differential!
+
+\begin{ex} Let's start with an equation we saw in Example~\ref{ex:first aut}:
+\[ y' = 3-y.\]
+Write this as 
+\[ \frac{dy}{dx} = 3-y\]
+and rearrange to get
+\[ \frac{dy}{3-y} = dx.\]
+Integrate both sides. For the LHS with use the $u$-sub $u=3-y$, so $du = - dy$. The integral becomes
+\[ \int  \frac{dy}{3-y} = \int \frac{-du}{u} = -\ln(u) +C = -\ln(3-y)+C = \ln(\frac{1}{3-y}) +C.\]
+We then get 
+\[ -\ln(3-y)+C = \int  \frac{dy}{3-y} =\int \,dx = x.\]
+Note that we only need the constant of integration on one side.
+Then to solve for $y$, take exponentials:
+\[ e^{\ln(\frac{1}{3-y})+C} = e^x,\]
+\[ e^{\ln(\frac{1}{3-y})} e^C = e^x,\]
+\[ \frac{1}{3-y} = e^{x-C}.\]
+Then 
+\[ 3-y = \frac{1}{e^{x-C}}\]
+\[ y = 3 - \frac{1}{e^{x-C}} = 3 - e^{-x +C}.\]
+Since $e^{C}$ is just some other constant $C'$, we could also write
+\[ y= 3 - C' e^{-x}.\]
+\end{ex}
+
+\begin{ex} Take
+\[ \frac{dy}{dt} = t + ty^2.\]
+It doesn't look separable yet, but once we factor
+\[ \frac{dy}{dt} = t (1 +y^2),\]
+it becomes clear that it's separable.
+\dots
+\end{ex}
+
 
 
 
