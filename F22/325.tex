@@ -823,7 +823,7 @@ facts such as $r \cdot 0 = 0$ hold.
 \end{framed}
 
 
-\begin{comment}
+%\begin{comment}
 
 
 
@@ -835,7 +835,7 @@ I owe you a statement of the very important Completeness Axiom. Before we get th
 \begin{enumerate}\item $x\in S$, and
 \item for all $y\in S$, $x\leq y$.
 \end{enumerate}
-In this case, we write $x=\min(S)$.
+In this case, we write $x=\min(S)$.\index{$\min(S)$}
 \end{defn}
 The definition of \emph{maximum}\index{maximum} is the same except with the opposite inequality.
 
@@ -846,7 +846,7 @@ The definition of \emph{maximum}\index{maximum} is the same except with the oppo
 \begin{ex} If $S$ is the set of even multiples of $7$, then $S$ has $14$ as its minimum.
 \end{ex}
 
-We generally like to say \emph{the} minimum, rather than \emph{a} minimum. To justfity this, let's prove the following.
+We generally like to say \emph{the} minimum, rather than \emph{a} minimum. To justify this, let's prove the following.
 
 \begin{prop}\label{prop:min-unique} Let $S$ be a set of real numbers. If $S$ has a minimum, then the minimum is unique.
 \end{prop}
@@ -869,16 +869,16 @@ The previous proposition plus the Well-Ordering Axiom together imply that every 
 
 \begin{ex}
 \begin{enumerate}
-\item The empty set $\varnothing$ has no minimum and no maximum element.
-\item The set of natural numbers $\N$ has $1$ as a minimum, but has no maximum. 
-\item The open interval $(0,1)=\{ x\in \R \ | \ 0 < x < 1\}$ has no minimum and no maximum.
+\item The empty set $\varnothing$ has no minimum and no maximum element. (There is no $s\in \varnothing$!)
+\item The set of natural numbers $\N$ has $1$ as a minimum, but has no maximum. (Suppose there was: if $n=\max(\N)$ was the maximum, then $n<n+1\in \N$ gives a contradiction.)
+\item The open interval $(0,1)=\{ x\in \R \ | \ 0 < x < 1\}$ has no minimum and no maximum. (Exercise later.)
 \end{enumerate}
 \end{ex}
 
 
 
 
-\begin{defn} Let $S$ be any subset of $\R$. A real number $b$ is called an  {\em upper bound} of $S$ provided that for every $s \in S$,
+\begin{defn} Let $S$ be any subset of $\R$. A real number $b$ is called an  {\em upper bound}\index{upper bound} of $S$ provided that for every $s \in S$,
 we have $s \leq b$. 
 \end{defn}
 
@@ -928,7 +928,7 @@ will be an extremely important one in this class.
 
 
 \begin{defn} A subset $S$ of $\R$ is called {\em bounded above}\index{bounded above} if there exists at least one upper bound for $S$. That is, $S$ is bounded above provided there
-  is a real number $b$ such that $s \leq b$ for all $s \in S$.
+  is a real number $b$ such that for all $s \in S$ we have $s \leq b$.
 \end{defn}
 
 For example, $(0,1)$ is bounded above, by for example $50$.  
@@ -962,6 +962,7 @@ to exactly $2$), but there's a catch: how do we know that such real number exist
 \item $\ell$ is an upper bound of $S$ (i.e., $s \leq \ell$ for all $s \in S$) and
 \item if $b$ is any upper bound of $S$, then $\ell \leq b$. 
 \end{enumerate}
+In this case we write $\sup(S)=\ell$.\index{$\sup$}
 \end{defn}
 
 
@@ -978,7 +979,12 @@ belong to $S$.
   we have $1 \leq b$. So $1$ is the supremum of $(0,1]$. 
 \end{ex}
 
-
+\begin{obs} Let $S$ be a set of real numbers. Suppose that $b\in S$ and that $b$ is an upper bound for $S$. Then
+\begin{enumerate}
+\item $b$ is the maximum of $S$, and 
+\item $b$ is a supremum of $S$.
+\end{enumerate}
+\end{obs}
 
 The subset $\N$ does not have a supremum since, indeed, it does not have any upper bounds at all.
 
@@ -994,13 +1000,15 @@ bounded above. Indeed, every real number is an upper bound for the empty set. So
 Having explained the meaning of the term ``supremum'', I can finally state the all-important completeness axiom:
 
 
-\begin{axiom*}[Completeness Axiom] Every nonempty, bounded-above subset of $\R$ has a supremum.
+\begin{axiom*}[Completeness Axiom]\index{completeness axiom} Every nonempty, bounded-above subset of $\R$ has a supremum.
 \end{axiom*}
 
 
+\begin{comment}
+
 \begin{prop} If a subset of $\R$ has a supremum, then it is unique.
 \end{prop}
-
+(Exercise later.)
 %\begin{preproof} The proposition has the general form  ``If a thing with property P exists, then it is unique''. 
 	
 %  How do we prove a statement such as
@@ -1008,12 +1016,12 @@ Having explained the meaning of the term ``supremum'', I can finally state the a
 %  We argue that if two things $x$ and $y$ both have property $P$, then $x$ and $y$ must be the same thing.
 %\end{preproof}
 
-\begin{proof} Suppose both $x$ and $y$ are both suprema 
-  of the same subset $S$ of $\R$.  Then, since $y$ is an upper bound of $S$ and $x$ is a supremum of $S$, by part (2) of the definition of ``supremum''
-  we have $y \geq x$. Likewise, since $x$ is an upper
-bound of $S$ and $y$ is a supremum of $S$, we have 
-$x \geq y$ by definition.  Since $x \leq y$ and $y \leq x$, we conclude $x = y$.  
-\end{proof}
+%\begin{proof} Suppose both $x$ and $y$ are both suprema 
+%  of the same subset $S$ of $\R$.  Then, since $y$ is an upper bound of $S$ and $x$ is a supremum of $S$, by part (2) of the definition of ``supremum''
+%  we have $y \geq x$. Likewise, since $x$ is an upper
+%bound of $S$ and $y$ is a supremum of $S$, we have 
+%$x \geq y$ by definition.  Since $x \leq y$ and $y \leq x$, we conclude $x = y$.  
+%\end{proof}
 
 
 From now on we will speak of {\em the} supremum of a set (when  it exists).
@@ -1104,8 +1112,7 @@ $\Q$.
   upper bound for $S$, you may always find an even smaller one that is also an upper bound of $S$. 
 \end{ex}
 
-It is precisely the completeness axiom that assures us that everything that ought to be a number (like the length of the hypotenuse in an
-isosceles right triangles of side length $1$) really is a number.  It gives us that there are ``no holes'' in the real number line --- the real numbers are {\em
+It is precisely the completeness axiom that assures us that everything that ought to be a number (like the length of the diagonal of a square with side length $1$) really is a number.  It gives us that there are ``no holes'' in the real number line --- the real numbers are {\em
   complete}. 
 
 
@@ -1142,7 +1149,7 @@ since $m + 1 \in \N$, this contradicts that assumption that $\ell$ is the suprem
 We conclude that, given any real number $x$,  there must exist a natural number  $n$ such that $n > x$.
 \end{proof}
 
-\begin{cor}[Archimedean Principle] If $a \in R$, $a >0$, and $b \in \R$, then for some natural number $n$ we have $na > b$.
+\begin{cor}[Archimedean Principle] If $a \in \R$, $a >0$, and $b \in \R$, then for some natural number $n$ we have $na > b$.
 \end{cor}
 
 
