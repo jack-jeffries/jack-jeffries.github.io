@@ -408,6 +408,9 @@ The picture we drew above is called a \emph{slope field}.\index{slope field}
 
 \begin{comment}
 
+\newpage
+
+
 \subsection*{Autonomous differential equations}
 Example~\ref{ex:first aut} belongs to a class of equations that is worth singling out.
 \begin{defn} A differential equation of the form \[ y' = f(y)\]
@@ -420,10 +423,12 @@ For an autonomous differential equation, whether a solution is increasing, decre
 
 \begin{ex}
 Consider the autonomous differential equation 
-\[ y' = \frac{y^3}{9} -y.\]
-A solution to this equation will be increasing when $y'>0$, which is the same as $\frac{y^3}{9} -y>0$. This happens when $y\in (-3,0)\cup (3, \infty)$.
-A solution to this equation will be decreasing when $y'<0$, which is the same as $\frac{y^3}{9} -y<0$. This happens when $y\in (0,3)\cup (-\infty,-3)$.
-A solution to this equation will be constant when $y'=0$, which is the same as $\frac{y^3}{9} -y=0$. This happens when $y=-3,0,3$.
+\[ y' = y^3 - 2y^2.\]
+To figure out when $y$ is increasing, we figure out when $0<y' =  y^3 - 2y^2$.
+We do a little algebra to figure out. Factoring, we see that the zeroes of the right-hand side are $0$ and $2$, so the sign of $y$ can only change at $0$ and $2$. On $(-\infty, 0)$, $y^3 - 2y^2<0$; at $0$, it is zero; on $(0,2)$ it is negative; at $2$, it is $0$; on $(2,\infty)$, it is positive.
+
+Thus, a solution $y$ is increasing when $2 < y <\infty$, is decreasing on $(-\infty,0) \cup (0,\infty)$, and is constant if $y=0$ or $2$.
+
 We can also use the slope field to determine when it is increasing or decreasing.
 \begin{center}\includegraphics[scale=.5]{sf5}\end{center}
 Let's sketch some solutions:
@@ -463,7 +468,7 @@ $u$-substitution is a technique that is likely to work when we can see some func
 This is the main technique that we will want to use, other than the basic rules.
 
 \begin{ex}
-To compute $\int x^2 \cos(x^3) \, dx$, take $u=x^3$, so $du=3x^2 \, dx$. Then we have $x^2 \, dx = \frac13 \, du$, so our integral is $\int \frac13 \cos(u)\,  du = \frac13 \sin(u) + C= \frac13 \sin(x^3) +C$.
+To compute $\int x^2 \cos(x^3) \, dx$, take $u=x^3$, so ${du=3x^2 \, dx}$. Then we have ${x^2 \, dx = \frac13 \, du}$, so our integral is \[\int \frac13 \cos(u)\,  du = {\frac13 \sin(u) + C}= \frac13 \sin(x^3) +C.\]
 \end{ex}
 
 
@@ -472,7 +477,7 @@ Integration by parts is a technique that might work when our integrand is a prod
 and if we can integrate $ \int v \, du$, we are done. A rule of thumb for what to choose for $u$ vs what to choose for $dv$ in integration by parts is LIATE (log, inverse trig, algebraic, trig, exponential): stuff on the left is usually better for $u$'s and stuff on the right is usually better for $dv$'s.
 
 \begin{ex}
-To compute $\int x e^x \, dx$, take $u=x$ and $dv= e^x \, dx$. Then $du = dx$ and $v=e^x$. Then we have $\int x e^x \, dx = x e^x - \int e^x \, dx = x e^x - e^x +C = (x-1) e^x +C$.
+To compute $\int x e^x \, dx$, take $u=x$ and $dv= e^x \, dx$. Then $du = dx$ and $v=e^x$. Then we have \[\int x e^x \, dx = x e^x - \int e^x \, dx = x e^x - e^x +C = (x-1) e^x +C.\]
 \end{ex}
 
 Last but not least, we have a big table of integrals in the front cover of our text. 
