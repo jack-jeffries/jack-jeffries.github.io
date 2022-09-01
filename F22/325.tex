@@ -824,28 +824,59 @@ Having explained the meaning of the term ``supremum'', I can finally state the a
 \begin{axiom*}[Completeness Axiom]\index{completeness axiom} Every nonempty, bounded-above subset of $\R$ has a supremum.
 \end{axiom*}
 
-
 \begin{comment}
 
-\begin{prop} If a subset of $\R$ has a supremum, then it is unique.
-\end{prop}
-(Exercise later.)
-%\begin{preproof} The proposition has the general form  ``If a thing with property P exists, then it is unique''. 
-	
-%  How do we prove a statement such as
-%  ``If a thing with property P exists, then it is unique''?
-%  We argue that if two things $x$ and $y$ both have property $P$, then $x$ and $y$ must be the same thing.
-%\end{preproof}
+\Sept{1}
 
-%\begin{proof} Suppose both $x$ and $y$ are both suprema 
-%  of the same subset $S$ of $\R$.  Then, since $y$ is an upper bound of $S$ and $x$ is a supremum of $S$, by part (2) of the definition of ``supremum''
-%  we have $y \geq x$. Likewise, since $x$ is an upper
-%bound of $S$ and $y$ is a supremum of $S$, we have 
-%$x \geq y$ by definition.  Since $x \leq y$ and $y \leq x$, we conclude $x = y$.  
-%\end{proof}
+\begin{enumerate}
+\item Write, in simplified form, the negation of the statement ``$b$ is an upper bound for $S$''.
+
+\begin{framed}
+There exists some $x\in S$ such that $x>b$.
+\end{framed}
+
+\item Write, in simplified form, the negation of the statement ``$S$ is bounded above''.
+
+\begin{framed}
+For every $b\in \R$, there exists $x\in S$ such that $x>b$.
+\end{framed}
+
+\item Let $S$ be a set of real numbers and suppose that $\ell=\sup(S)$. 
+\begin{enumerate}
+\item If $x > \ell$, what is the most concrete thing you can say about $x$ and $S$?
+\item If $x < \ell$, what is the most concrete thing you can say about $x$ and $S$?
+\end{enumerate}
 
 
-From now on we will speak of {\em the} supremum of a set (when  it exists).
+\begin{framed}
+\begin{enumerate}
+\item $x\notin S$
+\item There exists some $y\in S$ such that $y > x$.
+\end{enumerate}
+\end{framed}
+
+\item Let $S$ be a set of real numbers, and let $T=\{ 2s \ | \ s\in S\}$. Prove that if $S$ is bounded above, then $T$ is bounded above.
+
+\begin{framed}
+Assume that $S$ is bounded above. Then there is some upper bound $b$ for $S$, so for every $s\in S$, we have $b\geq s$. We claim that $2b$ is an upper bound for $T$. Indeed, if $t\in T$, then we can write $t=2s$ for some $s\in S$, and $s\leq b$ implies $t=2s\leq 2b$. Thus, $T$ is bounded above.
+\end{framed}
+
+\item Let $S$ be a set of real numbers. Show that if $S$ has a supremum, then it is unique.
+\begin{framed}
+Suppose both $x$ and $y$ are both suprema 
+  of the same subset $S$ of $\R$.  Then, since $y$ is an upper bound of $S$ and $x$ is a supremum of $S$, by part (2) of the definition of ``supremum''
+  we have $y \geq x$. Likewise, since $x$ is an upper
+bound of $S$ and $y$ is a supremum of $S$, we have 
+$x \geq y$ by definition.  Since $x \leq y$ and $y \leq x$, we conclude $x = y$.  
+\end{framed}
+
+\item Let $S$ be a set of real numbers, and let $\displaystyle T=\left\{ \frac{s}{2} \ | \ s\in S\right\}$. Directly prove that if $S$ is unbounded above, then $T$ is unbounded above.
+\begin{framed}
+Assume that $S$ is unbounded above. To show that $T$ is unbounded above, let $b$ be a real number. Since $S$ is unbounded above, $2b$ is not an upper bound for $S$, so there is some $s\in S$ with $s>2b$. Then $\frac{s}{2} > b$. By definition of $T$, we have $\frac{s}{2}\in T$, so $b$ is not an upper bound of $T$. We conclude that $T$ is unbounded above.
+\end{framed}
+\end{enumerate}
+
+
 
 
 
