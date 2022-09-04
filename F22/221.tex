@@ -32,6 +32,7 @@
 \newtheorem{lem}[equation]{Lemma}
 \newtheorem{prop}[equation]{Proposition}
 \newtheorem{porism}[equation]{Porism}
+\newtheorem{slogan}[equation]{Slogan}
 \newtheorem{algorithm}[equation]{Algorithm}
 \newtheorem{axiom}[equation]{Axiom}
 \newtheorem*{axioms*}{Axioms}
@@ -496,8 +497,9 @@ To compute $\int x e^x \, dx$, take $u=x$ and $dv= e^x \, dx$. Then $du = dx$ an
 \end{ex}
 
 Last but not least, we have a big table of integrals in the front cover of our text. 
-
 \begin{comment}
+\Sept{6}
+
 \subsection*{Separable first-order equations (\S2.2)} Now we are ready to solve some differential equations! First we will address first-order equations of a special form: separable eqautions.
 
 \begin{defn} A first-order ODE is \emph{separable}\index{separable} if it can be written in the form
@@ -518,6 +520,8 @@ and multiply by $dx$ and divide by $dy$ on both sides to get
 (This is why we call the equation separable: the independent and dependent variables now occur on separate sides of the equation.) Now integrate both sides:
 \[ \int \frac{dy}{g(y)} = \int f(x) \, dx,\]
 to get an equation for $x$ and $y$ that is no longer differential!
+
+\begin{slogan} To solve a separable equation, separate and integrate!\end{slogan}
 
 \begin{ex} Let's start with an equation we saw in Example~\ref{ex:first aut}:
 \[ y' = 3-y.\]
@@ -568,7 +572,23 @@ The function $e^{-t^2}$ has no elementary antiderivative: it simply is not a fun
 Here we have solved for $y$ \emph{up to an integral} in $t$.\index{solved up to an integral}
 \end{ex}
 
-\subsection*{Linear equations (\S2.3)} Now we solve another large class of differential equations: first order linear ODE's. Let's recall that a differential equation is a first order linear ODE if we can write it in the form
+\subsection*{Discussion Questions}
+Find the particular solution to the IVP
+\[ \begin{cases} 
+e^{x} \, y' = \frac{1}{y} \\
+y(0) = 1\end{cases}.\]
+\begin{framed}
+This is separable since we rewrite as $y' = e^{-x} \frac{1}{y}$. Then
+\[ y y' = e^{-x} \rsa y  \ dy = e^{-x} \ dx \rsa \int  y  \ dy = \int e^{-x} \ dx,\]
+\[ \rsa \frac{y^2}{2} = -e^{-x} + C \rsa y = \sqrt{C - 2 e^{-x}},\]
+and using the initial condition,
+\[ 1 = y(0) = \sqrt{C - 2 e^{0}} = \sqrt{C-2} \rsa C=3,\]
+so we have
+\[ y = \sqrt{3 - 2 e^{-x}}.\]
+\end{framed}
+
+
+\subsection*{Linear equations (\S2.3)} Now we solve another large class of differential equations: first order linear ODE's.\index{first order linear ODE} Let's recall that a differential equation is a first order linear ODE if we can write it in the form
 \[ a_1(t) y' + a_0(t) y = f(t)\]
 for some functions $a_1(t),a_0(t),f(t)$ that only involve the independent variable $t$.
 
@@ -603,10 +623,12 @@ This is the idea we will use: multiply our equation through by something to turn
 
 \begin{idea}
 Given a linear first order ODE of the form
-\[ y' + p(t) = q(t),\]
-multiply by an \emph{integrating factor}\index{integrating factor} $\mu(t)$ so the lend-hand side collapses via the product rule:
-\[ \mu(t) y' + \mu(t) p(t) y = \mu(t) q(t).\]
-If we want the left-hand side to match up with something of the form $(? y)' = ? y' + ?' y$, the $?$ should be $\mu$. Then $(\mu y)' = \mu y' + \mu' y$, so we need $\mu$ to satisfy the equation
+\[ y' + p(t) y = q(t),\]
+multiply by an \emph{integrating factor}\index{integrating factor} $\mu(t)$ so the left-hand side collapses via the product rule:
+\[ \begin{array}{rcccl}
+ &\mu(t) y' &+& \mu(t) p(t) y &= \mu(t) q(t)\\
+ ( ?(t) y)' = &?(t) y' &+& ?'(t) y & \end{array}.\]
+The mystery function $?(t)$ has to be the same as our integrating factor $\mu$, and we also have to have
 \[ \mu' = \mu p(t).\]
 This is separable now: we solve
 \[ \frac{\mu'}{\mu} = p(t)\]
@@ -619,11 +641,22 @@ Set $\mu = e^{\int p(t) \, dt}$.
 \end{idea}
 
 \begin{defn} Given a linear first order ODE of the form
-\[ y' + p(t) = q(t),\]
+\[ y' + p(t) y = q(t),\]
 we call the function
 \[ \mu = e^{\int p(t) \, dt}\]
 the \emph{integrating factor}\index{integrating factor} of the equation. For the integrating factor, we can take just one antiderivative (i.e., ignore the constant of integration), since this is just something we're using to get a solution and not a solution.
 \end{defn}
+
+\begin{slogan}
+For the linear first order ODE
+\[ y' + p(t) y = q(t),\]
+multiply by the integrating factor
+\[ \mu = e^{\int p(t) \, dt},\]
+realize the left-hand side as $(\mu y)'$,
+and integrate.
+\end{slogan}
+
+
 
 Then we multiply by the integrating factor, realize the left-hand side as a result of the product rule, and integrate to solve.
 
@@ -636,9 +669,96 @@ We should simplify this. Set $u=10+t$, so $du = dt$, then \[\int \frac{2}{10+t} 
 so 
 \[ \mu = e^ {\ln((10+t)^2)} = (10+t)^2 .\]
 
+Now we multiply by this integrating factor:
+\[ (10+t)^2 C' + (10+t)^2\frac{2}{10+t} C = (10+t)^2\]
+\[ \rsa (10+t)^2 C' + 2 (10+t) C = (10+t)^2.\]
+Now we recognize the left-hand side as coming from the product rule:
+\[ \big((10+t)^2 C \big)' = (10+t)^2 C' + (10+t)^2\frac{2}{10+t} C,\]
+so we have
+\[ \big((10+t)^2 C \big)' =(10+t)^2.\]
+Now we integrate:
+\[ (10+t)^2 C = \int (10+t)^2 \ dt.\]
+Use the sub $u=10+t$, $du=dt$ to get
+\[ \int u^2 \ du = \frac{u^3}{3} + k = \frac{(10+t)^3}{3} + k.\]
+We used $k$ for the constant of integration since the name $C$ is taken!
+Thus,
+\[ (10+t)^2 C = \frac{(10+t)^3}{3} + k\]
+\[\rsa C = \frac{10+t}{3} + \frac{k}{ (10+t)^2}.\]
+
+We also recall our initial condition $C(0)=10$ and plug it in to get
+\[ 10 = C(0) =  \frac{10+0}{3} + \frac{k}{ (10+0)^2} = \frac{10}{3} + \frac{k}{100}\]
+and solve to get $k = \frac{2000}{3}$.
+Thus,
+\[ C(t) =  \frac{10+t}{3} + \frac{2000}{3 (10+t)^2}.\]
+We can now graph this in a calculator:
+\begin{center}\includegraphics[scale=.5]{gr1}\end{center}
+and based on the formula, we know that for $t\gg0$, the second term goes to zero, and the first term gets larger and larger. We conclude that the number of counterfeits will continue to grow in the long run!
+\end{ex}
+
+\begin{ex}
+Let's solve
+\[ x y' = (x+3) y = x^2 e^{-x}.\]
+We need to put it in the correct form first, so divide by $x$:
+\[ y' + (1+\frac{3}{x}) y = x e^{-x}.\]
+In the earlier notation, $p(x) = (1+\frac{3}{x})$. The integrating factor is
+\[ \mu(x)=e^{\int (1+\frac{3}{x}) \, dx} = e^{ x + 3 \ln x} = e^x  e^{\ln x^3} = e^x  x^3 = x^3 e^x.\]
+Multiply by $\mu(x)$:
+\[ x^3 e^x y' + (1+\frac{3}{x}) x^3 e^x = (x^3 e^x) (x e^{-x})\]
+and realize LHS as coming from product rule
+\[ (x^3 e^x y)' = x^4.\]
+Now we integrate:
+\[ x^3 e^x  y = \frac{x^5}{5} + C\]
+\[ y = \frac{x^2}{5} e^{-x} + \frac{C}{x^3} e^{-x}.\]
+\end{ex}
+
+\subsection*{Discussion Questions} ?
+
+\subsection*{Euler's Method (\S2.6)}
+
+We now have great methods to solve certain first order ODEs, namely separable and linear ones. But this doesn't encompass all of them. There is a way so solve any IVP for first order ODE of the form
+\[\begin{cases} \frac{dy}{dt} = f(t,y) \\ y(t_0) = y_0\end{cases},\]
+at least approximately.  The idea is that 
+\[\frac{dy}{dt}\approx \frac{\Delta y}{\Delta t} = \frac{\text{small change in $y$}}{\text{small change in $t$}},\]
+which we can rewrite as \[\Delta y \cong \frac{dy}{dt} \, \Delta t.\]
+So, to approximate our solution, we start at our initial value $y(t_0) = y_0$, keep adding small amounts $\Delta t$ to $t$, and each time we add
+\[ \frac{dy}{dt} \, \Delta t = f(t,y) \, \Delta t \] to our $y$-value. This is the idea behind \emph{Euler's method}.\index{Euler's method}
+
+More concretely, we fix a \emph{step size}\index{step size} $h$, which plays the role of our small change in $t$ that we called $\Delta t$. This should be a small positive number. (Though how small can be difficult to pin down.) 
+
+We start with the values $t_0$ and $y_0$ from the initial condition, and make a list a $t$-values $t_0,t_1,t_2,t_3,\dots$ given by the rule 
+\[ t_n = t_0 + n h.\]
+For the corresponding $y$-values, we go from one to the next by the rule
+\[ y_{n+1}  = y_n + h f(t_n, y_n).\]
+
+\begin{ex}
+Take the IVP 
+\[ \begin{cases} y' = x + y^2 \\
+y(0)=0\end{cases}.\]
+Let's use Euler's method with step size $1$ to approximate a solution.
+We start with $x_0 = 0$ and $y_0 = 0$.
+Then
+\[ x_1 = 1, \quad y_1 = 0 + ( 0 + 0^2) 1 = 0\]
+\[ x_2 = 2, \quad y_2 = 0 + ( 1 + 0^2) 1 = 1\dots\]
+%\[ x_3 = 3, \quad y_3 = 1 + ( 2 + 1^2 ) 1 = 4\]
+%\[ x_4 = 4, \quad y_4 = 4 + ( 3 + 4^2 )1 = 23\dots\]
+Let's also try step size $h=\frac12$.
+\[x_1 = \frac12 , \quad y_1 = 0+ (0+0^2) \frac12 = 0\]
+\[x_2 = 1, \quad y_2 = 0+ \big(\frac12 +0^2\big) \frac12 = \frac12=0.5\]
+\[x_3 = \frac32, \quad y_3 = \frac12+ \big(1 +\big(\frac12\big)^2\big) \frac12 = \frac98 =1.125\]
+\[x_4 = 2, \quad y_4 = \frac98 + \big(\frac32 +\big(\frac98\big)^2\big) \frac12 = \frac{321}{128} \approx 2.5 \]
+
+Note that the different step sizes gave very different answers for $y(2)$. In general, smaller step sizes give better approximations, but take longer to compute.
 \end{ex}
 
 
+\begin{ex} Use Euler's method with step size $h=0.5$ to approximate a solution to 
+\[\begin{cases} y' = -ty^2 \\ y(0)=1\end{cases}.\]
+\[ t_0 = 0, \quad y_0=1.\]
+\[ t_1 = .5, \quad y_1 = 1 + (- 0 \cdot 1^2) .5 = 1.\]
+\[ t_2 = 1, \quad y_2 = 1 + (- .5 \cdot 1^2) .5 = .75\]
+\[ t_3 = 1.5 , \quad y_3 = .75 + (- 1 \cdot .75^2) .5 = .46875\]
+\[ t_4 = 2 , \quad y_4 = .46875 + (- 1.5 \cdot .46875^2) .5 \approx .30395\]
+\end{ex}
 
 
 
