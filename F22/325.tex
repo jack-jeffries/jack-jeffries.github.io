@@ -874,16 +874,14 @@ $x \geq y$ by definition.  Since $x \leq y$ and $y \leq x$, we conclude $x = y$.
 Assume that $S$ is unbounded above. To show that $T$ is unbounded above, let $b$ be a real number. Since $S$ is unbounded above, $2b$ is not an upper bound for $S$, so there is some $s\in S$ with $s>2b$. Then $\frac{s}{2} > b$. By definition of $T$, we have $\frac{s}{2}\in T$, so $b$ is not an upper bound of $T$. We conclude that $T$ is unbounded above.
 \end{framed}
 \end{enumerate}
-
-
-
 \begin{comment}
 
-\Sept{3}
+
+\Sept{6}
 
 
 
-Let us now explore consequences of the completeness axiom. First up, we show that it implies that $\sqrt{2}$ really exists:
+Let us now explore consequences of the completeness axiom. We know that there is no rational number whose square is $2$; now we show that there is indeed a real number whose square is two.
 
 
 \begin{prop} \label{prop116} There is a positive real number whose square is $2$. 
@@ -898,11 +896,13 @@ $S$ is nonempty since, for example, $1 \in S$, and it is bounded above, since, f
 $2$ is an upper bound for $S$, as we showed earlier.  So, by the Completeness Axiom, $S$ has a least upper bound, and we know it is unique from
   the proposition above. Let us call it $\ell$. I will prove $\ell^2 = 2$. 
 
+We start by observing that $1 \leq \ell \leq 2$. The inequality $1 \leq \ell$ holds since $1 \in S$ and $\ell$ is an upper bound of $S$, 
+and the inequality $\ell \leq 2$ holds  since $2$ is an upper bound of $S$ and $\ell$ is the least upper bound of~$S$.
+
+
 We know one of $\ell^2 > 2$, $\ell^2 < 2$ or $\ell^2 = 2$ must hold. We prove $\ell^2 = 2$ by showing that both
 $\ell^2 > 2$ and $\ell^2 < 2$ are impossible.
 
-We start by observing that $1 \leq \ell \leq 2$. The inequality $1 \leq \ell$ holds since $1 \in S$ and $\ell$ is an upper bound of $S$, 
-and the inequality $\ell \leq 2$ holds  since $2$ is an upper bound of $S$ and $\ell$ is the least upper bound of~$S$.
 
 
 Suppose $\ell^2 < 2$. We show this leads to a contradiction by showing that $\ell$ is not an upper bound of $S$ in this case. We will do this by constructing a number
@@ -975,12 +975,7 @@ that $\ell$ satisfies $\ell^8 = 147$.
 The completeness axiom is also at the core of the Intermediate Value Theorem and many of the other major theorems we will
 cover in this class. 
 
-
-
-
-\Sept{8}
-
-We now discuss a few consequence of the completeness axiom. 
+We also need the completeness axiom to understand the relationship between $\N$, $\Q$, and $\R$.
 
 \begin{thm} \label{thm120}
 If $x$ is any real number, then there exists a natural number $n$ such that $n > x$.
