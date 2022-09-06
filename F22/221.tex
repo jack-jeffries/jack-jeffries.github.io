@@ -497,7 +497,8 @@ To compute $\int x e^x \, dx$, take $u=x$ and $dv= e^x \, dx$. Then $du = dx$ an
 \end{ex}
 
 Last but not least, we have a big table of integrals in the front cover of our text. 
-\begin{comment}
+
+
 \Sept{6}
 
 \subsection*{Separable first-order equations (\S2.2)} Now we are ready to solve some differential equations! First we will address first-order equations of a special form: separable eqautions.
@@ -530,19 +531,19 @@ Write this as
 and rearrange to get
 \[ \frac{dy}{3-y} = dx.\]
 Integrate both sides. For the LHS with use the $u$-sub $u=3-y$, so $du = - dy$. The integral becomes
-\[ \int  \frac{dy}{3-y} = \int \frac{-du}{u} = -\ln(u) +C = -\ln(3-y)+C = \ln(\frac{1}{3-y}) +C.\]
+\[ \int  \frac{dy}{3-y} = \int \frac{-du}{u} = -\ln|u| +C = -\ln|3-y|+C = \ln\frac{1}{|3-y|} +C.\]
 We then get 
-\[ -\ln(3-y)+C = \int  \frac{dy}{3-y} =\int \,dx = x.\]
+\[ \ln\frac{1}{|3-y|}  = \int  \frac{dy}{3-y} =\int \,dx = x + C.\]
 Note that we only need the constant of integration on one side.
 Then to solve for $y$, take exponentials:
-\[ e^{\ln(\frac{1}{3-y})+C} = e^x,\]
-\[ e^{\ln(\frac{1}{3-y})} e^C = e^x,\]
-\[ \frac{1}{3-y} = e^{x-C}.\]
+\[ e^{\ln(\frac{1}{|3-y|})} = e^{x+C},\]
+\[ \frac{1}{|3-y|} = e^{x+C}.\]
 Then 
-\[ 3-y = \frac{1}{e^{x-C}}\]
-\[ y = 3 - \frac{1}{e^{x-C}} = 3 - e^{-x +C}.\]
-Since $e^{C}$ is just some other constant $C'$, we could also write
-\[ y= 3 - C' e^{-x}.\]
+\[ |3-y| ={e^{-x-C}}\]
+\[ 3-y =  \pm {e^{-x-C}}\]
+\[ y =  3 \pm {e^{-x-C}}\]
+Since $e^{-x-C}=e^{-x} e^{-C}$ is just some other constant $C'$ times $e^{-x}$, we could also write
+\[ y= 3 + C' e^{-x}.\]
 \end{ex}
 
 \begin{ex} Take
@@ -559,21 +560,19 @@ and solve for $y$ by taking tangent of both sides:
 This is our general solution!
 \end{ex}
 
-Sometimes we encounter integrals that are just impossible:
-
-\begin{ex} Take 
-\[ \frac{dy}{dt} = y e^{-t^2} \, dt\]
-\[\rsa\quad \frac{dy}{y} = e^{-t^2} \, dt\]
-\[\rsa\quad \int \frac{dy}{y} = \int e^{-t^2} \, dt.\]
-The function $e^{-t^2}$ has no elementary antiderivative: it simply is not a function for which we have a name (in the way we usually name functions). Let's just leave it as an integral.
-\[\rsa\quad \ln |y| = \int e^{-t^2} \, dt\]
-\[\rsa\quad |y| = e^{\left(\int e^{-t^2} \, dt\right)}\]
-\[\rsa\quad y =  \pm e^{\left(\int e^{-t^2} \, dt\right)}.\]
-Here we have solved for $y$ \emph{up to an integral} in $t$.\index{solved up to an integral}
-\end{ex}
 
 \subsection*{Discussion Questions}
-Find the particular solution to the IVP
+\begin{enumerate}
+\item Which of the following equations is separable?
+\begin{enumerate}
+\item $y' + 2y = x^3$.
+\item $\cos(x) y' = \sin(y)$.
+\item $y' - xy = 1+x+y$.
+\end{enumerate}
+\begin{framed}
+(b) and (c), but not (a)
+\end{framed}
+\item Find the particular solution to the IVP
 \[ \begin{cases} 
 e^{x} \, y' = \frac{1}{y} \\
 y(0) = 1\end{cases}.\]
@@ -586,7 +585,22 @@ and using the initial condition,
 so we have
 \[ y = \sqrt{3 - 2 e^{-x}}.\]
 \end{framed}
+\end{enumerate}
 
+Sometimes we encounter integrals that are just impossible:
+
+\begin{comment}
+\begin{ex} Take 
+\[ \frac{dy}{dt} = y e^{-t^2} \, dt\]
+\[\rsa\quad \frac{dy}{y} = e^{-t^2} \, dt\]
+\[\rsa\quad \int \frac{dy}{y} = \int e^{-t^2} \, dt.\]
+The function $e^{-t^2}$ has no elementary antiderivative: it simply is not a function for which we have a name (in the way we usually name functions). Let's just leave it as an integral.
+\[\rsa\quad \ln |y| = \int e^{-t^2} \, dt\]
+\[\rsa\quad |y| = e^{\left(\int e^{-t^2} \, dt\right)}\]
+\[\rsa\quad y =  \pm e^{\left(\int e^{-t^2} \, dt\right)}.\]
+Here we have solved for $y$ \emph{up to an integral} in $t$.\index{solved up to an integral}
+\end{ex}
+\end{comment}
 
 \subsection*{Linear equations (\S2.3)} Now we solve another large class of differential equations: first order linear ODE's.\index{first order linear ODE} Let's recall that a differential equation is a first order linear ODE if we can write it in the form
 \[ a_1(t) y' + a_0(t) y = f(t)\]
@@ -602,25 +616,27 @@ After trying a few things, we realize this isn't separable. However, the left-ha
 Thus, we have
 \[ (ty)' = t^2,\]
 \[\rsa \quad ty = \int (ty)' \, dt = \int t^2 \, dt = \frac{t^3}{3} + C,\]
-so \[ y = \frac{t^2}{3} + C.\]
+so \[ y = \frac{t^2}{3} + \frac{C}{t}.\]
 
 \
 
 That was lucky! What if we had
 \[ y' + \frac{3}{t} y = t\]
 instead? This is still not separable. I will magically multiply by $t^3$ to get
-\[ t^3 y' + 3t y = t^4.\]
+\[ t^3 y' + 3t^2 y = t^4.\]
 By reverse product rule on the left-hand side, we have
 \[ (t^3 y)' = t^4.\]
 Now we integrate to get
 \[ t^3 y = \int t^4 \, dt = \frac{t^5}{5} +C,\]
-so \[y = \frac{t^2}{5} + C.\]
+so \[y = \frac{t^2}{5} + \frac{C}{t^3}.\]
 
 \
 
 This is the idea we will use: multiply our equation through by something to turn it into an equation where the left-hand side comes from the product rule! But how do we come up with the magic multiplier?
 \end{ex}
 
+\begin{comment}
+\Sept{7}
 \begin{idea}
 Given a linear first order ODE of the form
 \[ y' + p(t) y = q(t),\]
