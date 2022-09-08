@@ -728,7 +728,35 @@ Now we integrate:
 \[ y = \frac{x^2}{5} e^{-x} + \frac{C}{x^3} e^{-x}.\]
 \end{ex}
 
-\subsection*{Discussion Questions} ?
+\subsection*{Discussion Questions} Find the general solution of the differential equation
+\[ y' = x+ y.\]
+Find particular solutions with the initial conditions
+\begin{enumerate}
+\item $y(0)=0$,
+\item $y(0)=-1$,
+\item $y(0)=-2$,
+\end{enumerate}
+and characterize their behavior as $x\to \infty$.
+
+\begin{framed}
+Rearrange as $y' - y = x$. Then the integrating factor is $e^{\int -1 \, dx} = e^{-x}$. Multiply through and do the product rule backwards to get
+\[ (e^{-x} y)' =e^{-x} y - e^{-x} y' = x e^{-x}.\]
+We now integrate both sides. On the right, we can use integration by parts with $u=x$, $dv= e^{-x} \, dx$, $du= dx$, $v= -e^{-x}$. We get (leaving aside the constant of integration)
+\begin{align*} \int x e^{-x} \, dx& = - x e^{-x} - \int (-e^{-x}) \, dx \\&= -xe^{-x} + \int e^{-x} \, dx \\&= -xe^{-x}  - e^{-x} \\&= -(x+1) e^{-x}\end{align*}
+so \[ e^{-x} y = - (x+1) e^{-x} + C.\]
+Then multiply through to get
+\[ y = -(x+1) + C e^x.\]
+For $y(0)=0$, we get
+\[ 0 = -1  + C \rsa C=1 \rsa y= -(x+1) + e^x,\]
+which goes to $+\infty$ quickly.
+For $y(0)=-1$, we get
+\[ -1 = -1  + C \rsa C=0 \rsa y= -(x+1) ,\]
+which goes to $-\infty$ slowly.
+For $y(0)=-2$, we get
+\[ -2= -1  + C \rsa C=-1 \rsa y= -(x+1) - e^x,\]
+which goes to $-\infty$ quickly.
+\end{framed}
+
 
 \subsection*{Euler's Method (\S2.6)}
 
