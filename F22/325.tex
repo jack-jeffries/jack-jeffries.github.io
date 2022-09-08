@@ -1053,6 +1053,65 @@ rational, this proves the theorem in this case.
 \end{proof}
 
 
+\Sept{8}
+
+\begin{enumerate}
+\item Let $W$ be the set of real numbers $x$ that satisfy the inequality $x^3+x<10$.
+\begin{enumerate}
+\item Write $W$ mathematically in set notation.
+\item Does $W$ have a supremum? Why or why not?
+\item Is $\sup(W)=1$?  Why or why not?
+\item Is $\sup(W)=4$?  Why or why not?
+\end{enumerate}
+
+\begin{framed}
+\begin{enumerate}
+\item $W=\{ x\in \R \ | \ x^3 + x < 10\}$.
+\item Yes. It is nonempty, since $0\in W$, and bounded above, e.g., by $3$: if $x> 3$, then $x^3+ x > 3^3+3 = 30$, so $x\notin W$.
+\item No: $1$ is not an upper bound, because $1.5\in W$.
+\item No: $3$ is an upper bound, and $3<4$.
+\end{enumerate}
+\end{framed}
+
+\item Use the Archimedean Principle to show that for any positive number $\e>0$, there is a natural number $n$ such that $ 0 < \e < \frac{1}{n}$.
+
+\
+
+\item Prove that the supremum of the set $S= \left\{ 1 - \frac1n \ | \ n\in \N\right\}$ is $1$.
+
+\
+
+\item Let $S$ be a set of real numbers, and suppose that $\sup(S)=\ell$. Let $T=\{s+7 \ | \ s\in S\}$. Prove that $\sup(T) = \ell + 7$.
+
+\begin{framed}
+First, we show that $\ell+7$ is an upper bound of $T$. Let $t\in T$. Then there is some $s\in S$ such that $t=s+7$. Since $s\leq \ell$, we have $t=s+7 < \ell+7$, so $\ell+7$ is indeed an upper bound. Next, let $b$ be an upper bound for $T$. We claim that $b-7$ is an upper bound for $S$. Indeed, if $s\in S$, then $s+7\in T$ so $s+7 \leq b$, so $s\leq b-7$. Then, by definition of supremum, we have $b-7\geq \ell$, eso $b\geq \ell+7$.
+\end{framed}
+
+\item Prove the following:
+\begin{cor}[Density of irrational numbers] For any real numbers $x,y$ with $x<y$, there is some irrational number $z$ such that $x<z<y$.
+\end{cor}
+ 
+ \begin{framed}
+Let $x<y$ be real numbers. Then we have $x-\sqrt{2} < y-\sqrt{2}$. By density of rationals, there is some rational number $q$ such that $x-\sqrt{2} < q < y-\sqrt{2}$. Then $x < q + \sqrt{2} < y$. Since $q$ is rational and $\sqrt{2}$ is irrational, $z=q+\sqrt{2}$ is irrational, and hence the number we seek.
+\end{framed}
+
+\item True or false \& justify: There is a rational number $x$ such that $|x^2 - 2| = 0$.
+
+ \begin{framed}
+False: this would imply that $x$ is a rational number whose square is $2$.
+\end{framed}
+
+\item True or false \& justify: There is a rational number $x$ such that $|x^2 - 2| < \frac{1}{1000000}$.
+
+ \begin{framed}
+ True: By density of rational numbers, there is a rational number $q$ such that $\sqrt{2}- \frac{1}{5000000} < q < \sqrt{2}$. Then 
+\begin{align*} |x^2- 2| &= |x-\sqrt{2} | \, |x+\sqrt{2}| \\&< \frac{1}{5000000} \left( \frac{1}{5000000} + 4\right) \\&< \frac{1}{5000000} \cdot 5 \\&= \frac{1}{1000000}.\end{align*}
+\end{framed}
+
+\end{enumerate}
+
+
+
 \begin{comment}
 
 
