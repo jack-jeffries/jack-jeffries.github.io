@@ -635,8 +635,7 @@ so \[y = \frac{t^2}{5} + \frac{C}{t^3}.\]
 This is the idea we will use: multiply our equation through by something to turn it into an equation where the left-hand side comes from the product rule! But how do we come up with the magic multiplier?
 \end{ex}
 
-\begin{comment}
-
+%\begin{comment}
 \Sept{8}
 \begin{idea}
 Given a linear first order ODE of the form
@@ -730,13 +729,7 @@ Now we integrate:
 
 \subsection*{Discussion Questions} Find the general solution of the differential equation
 \[ y' = x+ y.\]
-Find particular solutions with the initial conditions
-\begin{enumerate}
-\item $y(0)=0$,
-\item $y(0)=-1$,
-\item $y(0)=-2$,
-\end{enumerate}
-and characterize their behavior as $x\to \infty$.
+
 
 \begin{framed}
 Rearrange as $y' - y = x$. Then the integrating factor is $e^{\int -1 \, dx} = e^{-x}$. Multiply through and do the product rule backwards to get
@@ -746,16 +739,9 @@ We now integrate both sides. On the right, we can use integration by parts with 
 so \[ e^{-x} y = - (x+1) e^{-x} + C.\]
 Then multiply through to get
 \[ y = -(x+1) + C e^x.\]
-For $y(0)=0$, we get
-\[ 0 = -1  + C \rsa C=1 \rsa y= -(x+1) + e^x,\]
-which goes to $+\infty$ quickly.
-For $y(0)=-1$, we get
-\[ -1 = -1  + C \rsa C=0 \rsa y= -(x+1) ,\]
-which goes to $-\infty$ slowly.
-For $y(0)=-2$, we get
-\[ -2= -1  + C \rsa C=-1 \rsa y= -(x+1) - e^x,\]
-which goes to $-\infty$ quickly.
 \end{framed}
+
+\begin{comment}
 
 
 \subsection*{Euler's Method (\S2.6)}
