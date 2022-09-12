@@ -741,12 +741,34 @@ Then multiply through to get
 \[ y = -(x+1) + C e^x.\]
 \end{framed}
 
+
 \begin{comment}
+\Sept{13}
+
+Let's do one more example of solving a first-order linear equation with integrating factors.
+
+\begin{ex} Let's find the general solution to
+\[ x^2 y' - y = 5.\]
+First, we put it in the form from which we can read off the integrating factor:
+\[ y' - \frac{1}{x^2} y = \frac{5}{x^2}.\]
+Now, the integrating factor is
+\[ \mu(t) = e^{\int -1/x^2 \, dx} = e^{1/x}.\]
+Multiply through to get
+\[ e^{1/x} y' - e^{1/x}{x^2} y = \frac{ 5 e^{1/x}}{x^2}.\]
+We realize the left-hand side as $(e^{1/x} y)'$ (and we double-check it using the product rule and the chain rule):
+\[ (e^{1/x} y)' = \frac{ 5 e^{1/x}}{x^2}.\]
+Thus
+\[ e^{1/x} y = \int \frac{ 5 e^{1/x}}{x^2} \, dx = -5 \int e^{u} \, du = -5 e^{1/x} + C.\]
+using the $u$-substitution $u=e^{1/x}$, $du= -1/x^2 e^{1/x}$.
+Finally, we get
+\[ y = -5 + C e^{-1/x}\]
+as the general solution.
+\end{ex}
 
 
 \subsection*{Euler's Method (\S2.6)}
 
-We now have great methods to solve certain first order ODEs, namely separable and linear ones. But this doesn't encompass all of them. There is a way so solve any IVP for first order ODE of the form
+We now have great methods to solve certain first order ODEs, namely separable and linear ones. But this doesn't encompass all of them. There is a way to solve any IVP for first order ODE of the form
 \[\begin{cases} \frac{dy}{dt} = f(t,y) \\ y(t_0) = y_0\end{cases},\]
 at least approximately.  The idea is that 
 \[\frac{dy}{dt}\approx \frac{\Delta y}{\Delta t} = \frac{\text{small change in $y$}}{\text{small change in $t$}},\]
@@ -791,6 +813,94 @@ Note that the different step sizes gave very different answers for $y(2)$. In ge
 \[ t_4 = 2 , \quad y_4 = .46875 + (- 1.5 \cdot .46875^2) .5 \approx .30395\]
 \end{ex}
 
+\subsection*{Linear models (\S3.1)}
+
+We now want to apply our ability to solve many first-order ODEs arising from real world situations, like the ones we saw in the first couple weeks.
+
+\begin{ex} Newton's law of cooling says that the rate at which an object cools/heats up is proportional to the difference between its temperature and the temperature of its surroundings.  First, let's state Newton's law of cooling as a general model with a differential equation.
+
+Take $T$ to be the temperature of the heating or cooling object. We are thinking of this as changing in time, so let $t$ denote time, and think of $T$ as a function of $t$. Also, the temperature of the surroundings plays a role, so take $T_0$ to the be ambient temperature. Then the rule is
+\[ \frac{dT}{dt} = k (T-T_0)\]
+where $k$ is some constant of proportionality.
+
+Let's now apply it to a specific situation. Say we place a cake in a $400^{\circ}$F oven. At first, the cake is 
+ $70^{\circ}$F and after 10 minutes it is  $100^{\circ}$F. How long will it take for the cake to reach  $150^{\circ}$F?
+ 
+Based on our story, $T_0=400$. We find the general solution of our differential equation
+\[ \frac{dT}{dt} = k (T-400).\]
+This is separable and linear, so we can solve it two different ways. Let's use an integrating factor.
+\[T' - kT = -400 k\]
+\[ \mu = e^{\int -k \, dt} = e^{-kt}\]
+\[ \rsa e^{-kt} T' - k e^{-kt} T = -400k e^{-kt}\]
+\[ \rsa (e^{-kt} T) ' = -400k e^{-kt}\]
+\[ \rsa e^{-kt} T = \int -400k e^{-kt} \, dt = -400k \int e^{-kt} \, dt = \frac{-400k}{-k} e^{-kt} +C =400 e^{-kt} +C\]
+\[ \rsa T = 400 + C e^{kt}.\]
+We now have to find $C$ and $k$ for a particular function of $T$. Plug in $T(0)=70$ to get
+\[ 70 = T(0) = 400 + C e^{0} = 400 + C\]
+\[\rsa C= 70-400 = -330,\]
+so
+\[ T= 400 -330 e^{kt}.\]
+Then, plug in $T(10)=75$ to get
+\[ 100 = 400 - 330 e^{10 k}\]
+\[\rsa -300 = -330 e^{10 k}\]
+\[ \rsa \frac{10}{11} = e^{10k}\]
+\[ \rsa 10k = \ln(\frac{10}{11})\]
+\[ \rsa k = \ln(\frac{10}{11})/10\]
+so
+\[ T = 400 - 330 e^{t (\ln\frac{10}{11}) /10}.\]
+Now we can set $T(t) = 150$ and solve
+\[ 150 = 400 - 330 e^{t (\ln\frac{10}{11}) /10}\]
+\[ \rsa -250 = -330 e^{t (\ln \frac{10}{11}) /10}\]
+\[ \rsa e^{t (\ln \frac{10}{11}) /10} = 25/33\]
+\[ \rsa t (\ln \frac{10}{11}) /10 = 25/33\]
+\[ \rsa t = \frac{250}{33 \ln(\frac{10}{11})}.\]
+\end{ex}
+
+\begin{ex} We can also come up with explicit solutions for the mixing models of the type we considered earlier. Say that we have a tank of water with 300 gallons of fresh water right now. Water starts flowing out at a rate of 3 gallons per minute, and water with 5 grams of salt per gallon flows in at a rate of 6 gallons per minute. Let's find the amount of salt in the tank as a function of time.
+
+Let $S$ be a the amount of salt in the tank in grams and $t$ be time in minutes. First we note that the tank has $300 + 2t$ gallons of water after $t$ minutes. The rate of salt coming in is $5 \times 6 = 30$ grams per minute. The rate of salt going out is $3\times \frac{S}{300 + 2t} = \frac{3}{300 + 3t} S$. The differential equation modeling the situation is
+\[ S' = 30 - \frac{3}{300 + 2t} S.\]
+We also have the initial condition $S(0)=0$.
+
+Our ODE is linear first-order.
+\[ S' +  \frac{3}{300 + 3t} S = 30.\]
+The integrating factor is
+\[ \mu = e^{\int \frac{3}{300+ 3t} \, dt} = e^{\int du / u} = e^{\ln u} = u = 300+3t\]
+with the $u$-sub $u=300+3t$, $du = 3 \, dt$.
+\[ (300+3t) S' + 3 S = 30(300+3t)\]
+\[ \rsa \big( (300+3t) S \big)' = 30(300+3t)\]
+\[\rsa  (300 + 3t) S = \int 30(300+3t) \, dt = 9000 t + 45 t^2 + C\]
+\[\rsa S = \frac{9000 t + 45 t^2 + C}{300 + 3t}.\]
+Now we plug in the initial condition $S(0)=0$:
+\[ 0 = S(0) = \frac{C}{300},\]
+so $C=0$. Thus, we have
+\[  S = \frac{9000 t + 45 t^2}{300 + 3t}.\]
+\end{ex}
+
+\subsection*{Nonlinear models (\S3.2)}
+
+We explore some nonlinear first-order ODEs that commonly show up in mathematical models. As a matter of terminology, we say that a quantity is \emph{jointly proportional}\index{jointly proportional} to two other quantities if it is proportional to their product. The idea is that as either of the other two grows, that quantity grows.
+
+\begin{ex} A simple model for the spread of a disease throughout a population assumes that the rate at which the disease spreads is jointly proportional to tthe number of people infected and the number of people not infected: if $I$ is the number of total infected people and $P$ is the total population (which we assume is constant), we have
+\[ \frac{dI}{dt} = k I (P-I).\]
+Supposing a disease spreads among a population of $4000$ people, find a general formula.
+This equation is separable:
+\[ \frac{dI}{I (4000-I)} = k \, dt.\]
+To integrate the left-hand side, we need to recall another idea from Calc 2: partial fractions. Write
+\[ \frac{1}{I(4000-I)} = \frac{a}{I} + \frac{b}{4000-I}.\]
+Then
+\[ 1 = (4000-I)a + Ib\]
+\[ \rsa 1 = 4000a + I(b-a)\]
+\[ b-a=0 \rsa a=b, \ a=1/4000,\]
+so
+\[  \frac{1}{I(4000-I)} = \frac{1/4000}{I} +  \frac{1/4000}{4000-I}.\]
+Then
+\[ \int \frac{dI}{I (4000-I)} = \int \frac{1}{4000} \frac{dI}{I} +  \int  \frac{1}{4000} \frac{dI}{4000-I}\] \[= \frac{1}{4000} \left(\ln|I| - \ln|4000-I|\right) = \frac{1}{4000} \ln \left| \frac{I}{4000-I} \right|.\]
+We then have
+\[ \frac{1}{4000} \ln \left| \frac{I}{4000-I} \right| = kt +C \]
+\[ \ln \left| \frac{I}{4000-I} \right| = 4000 kt +C\]
+\[ \frac{I}{4000-I}  = \pm e^{ 4000 kt +C}\]
+\end{ex}
 
 
 
