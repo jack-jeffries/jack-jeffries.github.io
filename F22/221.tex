@@ -869,7 +869,7 @@ The integrating factor is
 with the $u$-sub $u=300+3t$, $du = 3 \, dt$.
 \[ (300+3t) S' + 3 S = 30(300+3t)\]
 \[ \rsa \big( (300+3t) S \big)' = 30(300+3t)\]
-\[\rsa  (300 + 3t) S = \int 30(300+3t) \, dt = 9000 t + 45 t^2 + C\]
+\[\rsa  (300 + 3t) S = \int 9000 + 90t \, dt = 9000 t + 45 t^2 + C\]
 \[\rsa S = \frac{9000 t + 45 t^2 + C}{300 + 3t}.\]
 Now we plug in the initial condition $S(0)=0$:
 \[ 0 = S(0) = \frac{C}{300},\]
@@ -877,30 +877,58 @@ so $C=0$. Thus, we have
 \[  S = \frac{9000 t + 45 t^2}{300 + 3t}.\]
 \end{ex}
 
-\subsection*{Nonlinear models (\S3.2)}
+\subsection*{Logistic models (\S3.2)}
 
-We explore some nonlinear first-order ODEs that commonly show up in mathematical models. As a matter of terminology, we say that a quantity is \emph{jointly proportional}\index{jointly proportional} to two other quantities if it is proportional to their product. The idea is that as either of the other two grows, that quantity grows.
+We explore an important type nonlinear first-order ODEs that commonly show up in mathematical models. One place it arises is in population growth.
 
-\begin{ex} A simple model for the spread of a disease throughout a population assumes that the rate at which the disease spreads is jointly proportional to tthe number of people infected and the number of people not infected: if $I$ is the number of total infected people and $P$ is the total population (which we assume is constant), we have
-\[ \frac{dI}{dt} = k I (P-I).\]
-Supposing a disease spreads among a population of $4000$ people, find a general formula.
-This equation is separable:
-\[ \frac{dI}{I (4000-I)} = k \, dt.\]
-To integrate the left-hand side, we need to recall another idea from Calc 2: partial fractions. Write
-\[ \frac{1}{I(4000-I)} = \frac{a}{I} + \frac{b}{4000-I}.\]
-Then
-\[ 1 = (4000-I)a + Ib\]
-\[ \rsa 1 = 4000a + I(b-a)\]
-\[ b-a=0 \rsa a=b, \ a=1/4000,\]
-so
-\[  \frac{1}{I(4000-I)} = \frac{1/4000}{I} +  \frac{1/4000}{4000-I}.\]
-Then
-\[ \int \frac{dI}{I (4000-I)} = \int \frac{1}{4000} \frac{dI}{I} +  \int  \frac{1}{4000} \frac{dI}{4000-I}\] \[= \frac{1}{4000} \left(\ln|I| - \ln|4000-I|\right) = \frac{1}{4000} \ln \left| \frac{I}{4000-I} \right|.\]
-We then have
-\[ \frac{1}{4000} \ln \left| \frac{I}{4000-I} \right| = kt +C \]
-\[ \ln \left| \frac{I}{4000-I} \right| = 4000 kt +C\]
-\[ \frac{I}{4000-I}  = \pm e^{ 4000 kt +C}\]
+\begin{ex} We discussed earlier a module of population growth wherein the rate of growth of a population of proportional to the population itself. This led to the model
+\[ \frac{dP}{dt} = k P\]
+where $P$ is the population considered as a function of time $t$, and $k$ is some constant of proportionality. The general solution to this is of the form
+\[ P(t) = C e^{kt}.\]
+This grows larger and larger and larger! A model such as this will not describe the long-term growth effectively if there is some constraint on the size of the population.
+
+Suppose we consider a population, let's say of squirrels\index{squirrels} in the city of Lincoln. There is only so much food to go around so there should be a maximum capacity for the population; let's say that there's food enough for at most $100000$ squirrels; let's call this the \emph{total capacity}\index{total capacity}. Then $100000-P$ is the amount of room for growth in the squirrel population; let's call this the \emph{remaining capacity}\index{remaining capacity}. A \emph{logistic growth model} for the squirrel population supposes that the rate of growth of the population is \emph{jointly proportional}\index{jointly proportional} to the population $P$ and the remaining capacity $100000-P$, meaning it is proportional to the product $P (100000-P)$. That is, the logistic model says
+\[ \frac{dP}{dt} = k  P (100000-P).\]
+The constant $k$ we take here should be positive.
+
+Let's use our techniques from \S2.1 to analyze this equation without solving it. This is an autonomous equation, so the behavior (increasing vs decreasing vs constant) depends only on the value of $P$ and not on $t$. The right-hand side is positive when $0<P<100000$, negative when $P<0$ or $P>100000$, and constant for $P=0$ or $P=100000$. Thus, the population grows when it is positive and below capacity, decreases when above capacity, and stays constant if zero or at capacity.
 \end{ex}
+
+\begin{defn}
+A \emph{logistic model}\index{logistic model} is a model that supposes that the rate of growth of some quantity $P$ is jointly proportional to $P$ and $P_c - P$ for some constant $P_c$.
+
+A \emph{logistic equation}\index{logistic equation} is a differential equation of the form
+\[ \frac{dP}{dt} = k P (P_{c} - P)\]
+for some constants $k$ and $P_c$.
+\end{defn}
+
+Every logistic model can be expressed as a logistic equation.
+
+Let's see another example.
+
+\begin{ex} A simple model for the spread of the flu throughout a population assumes that the rate at which the disease spreads is jointly proportional to the number of people infected and the number of people not infected: if $I$ is the number of total infected people and $T$ is the total population (which we assume is constant), we have
+\[ \frac{dI}{dt} = k I (T-I),\]
+so this is a logistic model.
+Supposing the flu spreads among a population of $4000$ people\dots
+\end{ex}
+
+The general logistic equation is separable, and we can find a general solution to it. Take
+\[ \frac{dP}{dt} = k P (P_{c} - P)\]
+and separate to get
+\[\frac{dP}{P(P_c - P)} = k \, dt.\]
+To integrate the left-hand side, we recall the trick of \emph{partial fractions}\index{partial fractions}:
+we write
+\[ \frac{1}{P(P_c - P)} = \frac{a}{P} + \frac{b}{P_c - P}\] for constants $a,b$ and solve:
+\[ 1 = (P_c - P)a + P b = P_c a + P (b-a) \]
+\[ \rsa a = 1/P_c, \ b-a = 0 ,\ b=1/P_c, \ \text{so}\]
+\begin{align*} \int \frac{dP}{P(P_c - P)} &= \frac{1}{P_c} \int \frac{dP}{P} + \frac{1}{P_c} \int \frac{dP}{P_c - P} \\&= \frac{1}{P_c} \ln|P| -  \frac{1}{P_c} \ln|P_c - P| +C 
+\\&= \frac{1}{P_c} (\ln|P| - \ln|P_c - P|) +C = \frac{1}{P_c} \ln \left| \frac{P}{P_c - P} \right| +C.\end{align*}
+Then \[\frac{1}{P_c} \ln \left| \frac{P}{P_c - P} \right|  = kt +C\]
+\[ \ln \left| \frac{P}{P_c - P} \right| = k P_c t + C\]
+\[ \left| \frac{P}{P_c - P} \right| = e^{k P_c t + C} =  e^C e^{k P_c t }\]
+\[ \frac{P}{P_c - P}  =   \pm e^C e^{k P_c t } = C e^{k P_c t } \]
+Rearranging and solving gives
+\[ P = \frac{C e^{k P_c t }}{1+ C e^{k P_c t }}.\]
 
 
 
