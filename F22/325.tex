@@ -1196,6 +1196,7 @@ the terms from that point on will be within a distance of $\e$ of the limiting v
 \begin{itemize}
 \item Setting $\e=3$, there is a number $N$ such that for every natural number $n>N$, $|a_n-5|<3$. Namely, we can take $N=0$, since for \emph{every} term $a_n$ of the sequence, $|a_n-5|<3$ holds true.
 \item Setting $\e=\frac13$, there is a number $N$ such that for every natural number $n>N$, $|a_n-5|<\frac13$. We cannot take $N=0$ anymore, since $1>0$ and $|a_1-5|=1>\frac13$. However, we can take $N=3$, since for $n>3$, $|a_n-5|=\frac1n <\frac13$.
+\item Setting $\e=1/1000000$, there is a number $N$ such that for every natural number $n>N$, $|a_n-5|<1/1000000$. We need a bigger $N$; now $N=1000000$ works.
 \end{itemize}
 
 In general, our choice of $N$ may depend on $\e$, which is OK since our definition is of the form $\forall \e>0,\exists N\dots$ rather than $\exists N:\forall \e>0\dots$.
@@ -1237,9 +1238,9 @@ $\{5 + (-1)^n \frac{1}{n}\}_{n=1}^\infty$ converges to $5$.
 \begin{rem} A direct proof that a certain sequence converges to a certain number follows the general outline:
 \begin{itemize}
 	\item Let $\e > 0$ be given. (or, if your prefer, ``Pick $\e > 0$.")
-	\item Let $N =$ [insert appropriate expression in terms of  from scratch work here].
+	\item Let $N =$ [expression in terms of $\e$ from scratch work].
 	\item Let $n \in \N$ be such that $n > N$.
-\item \null [Argument that $|a_n-L|<\e$]
+\item $\text{[Argument that $|a_n-L|<\e$.]}$
 	\item Thus $\{a_n\}_{n=1}^{\infty}$ converges to $L$.
 \end{itemize}
 \end{rem}
@@ -1262,7 +1263,7 @@ $$
 This simplifies to 
 $\left|\frac{-7}{25n + 5}\right| < \e$
 and thus to
-$\frac{7}{25n + 5} < \e$, which we can rewrite as $\frac{7}{25\e} - \frac15 < n$.)
+$\frac{7}{25n + 5} < \e$, which we can rewritten as $\frac{7}{25\e} - \frac15 < n$.)
 
 Let $N = \frac{7}{25\e} - \frac15$. We solve this equation for $\e$: We get
 $\frac{7}{25 \e} = \frac{5N +  1}{5}$ and hence 
@@ -1359,7 +1360,7 @@ Also according to the definition, since the sequence converges to $M$, there is 
 $$
 |a_n - M| < \e.
 $$
-Pick $n$ to be any natural number larger than $\max\{N_1, N_2\}$ (which exists by Theorem \ref{thm120}.   For such an $n$, both
+Pick $n$ to be any natural number larger than $\max\{N_1, N_2\}$ (which exists by Theorem \ref{thm120}).   For such an $n$, both
 $|a_n - L| < \e$ and $ |a_n - M| < \e$ hold. 
 Using the triangle inequality and these two inequalities, we get
 $$
