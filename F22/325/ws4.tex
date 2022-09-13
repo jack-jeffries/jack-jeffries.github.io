@@ -1,0 +1,102 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+
+\DeclareMathOperator{\res}{res}
+
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+	
+	\thispagestyle{empty}
+	
+	\section*{Convergence of sequences}
+	
+	
+
+\begin{framed}
+\noindent \textbf{Definition:} Let $\{a_n\}_{n=1}^\infty$ be an arbitrary sequence and $L$ a real number. We say $\{a_n\}_{n=1}^\infty$ {\em converges} to $L$ provided if for every real number $\e > 0$, there is a real number $N$ such that $|a_n - L| < \e$ for all natural numbers $n$ such that $n > N$.
+\end{framed}
+
+\
+
+\begin{enumerate}
+\item Let $c$ be a real number. Prove that the constant sequence $\{ c\}_{n=1}^\infty$ converges to $c$.
+
+\
+
+\
+
+\item Prove that\footnote{By $\sqrt{n}$, we mean the positive number whose square is $n$. Such a number exists by a proof similar to the one that $\sqrt{2}$~exists.} the sequence $\ds \left\{ \frac{1}{\sqrt{n}} \right\}_{n=1}^\infty$ converges to $0$.
+
+\
+
+\
+
+\item Let $\{a_n\}_{n=1}^\infty$ be a sequence. Suppose we know that $\{a_n\}_{n=1}^\infty$ converges to $1$. Prove that there is a natural number $n\in \N$ such that $a_n>0$.
+
+\
+
+\
+
+\item Prove or disprove: The sequence $\ds \left\{1 + \frac{1}{n} \right\}_{n=1}^\infty$ converges to $0$.
+
+\
+
+\
+
+\item Prove or disprove: The sequence\footnote{That is, the sequence 1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,\\
+0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,\dots; the $1$'s get further and further apart.} $\{a_n\}_{n=1}^\infty$ where
+\[ a_n = \begin{cases} 1 &\text{if } n = 10^m \text{ for some } m\in \N \\
+0 &\text{otherwise}\end{cases}
+\]
+converges to $0$. 
+
+
+\
+
+\
+\end{enumerate}
+\begin{framed}
+\noindent \textbf{Definition:} A sequence $\{a_n\}_{n=1}^\infty$ is \emph{convergent} if there is a real number $L$ such that $\{a_n\}_{n=1}^\infty$ converges to $L$. Otherwise, it is said to be \emph{divergent}.
+\end{framed}
+
+\
+
+\begin{enumerate}\setcounter{enumi}{5}
+\item In this problem, we will prove that the sequence $\{ (-1)^{n} \}_{n=1}^\infty$ is divergent.
+
+\begin{itemize}
+\item Proceed by contradiction and suppose it converges to $L$.
+\item Apply the definition of ``converges to $L$'' with $\e = \frac{1}{2}$, so we get some $N$.
+\item Take an odd integer $n$ bigger than $N$: what does this say about $L$?
+\item  Take an even integer $n$ bigger than $N$: what does this say about $L$?
+\item Conclude the proof.
+\end{itemize}
+\end{enumerate}
+
+
+\end{document}
