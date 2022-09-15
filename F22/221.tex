@@ -819,13 +819,13 @@ up to $t=2$.
 
 We now want to apply our ability to solve many first-order ODEs arising from real world situations, like the ones we saw in the first couple weeks.
 
-\begin{ex} Newton's law of cooling says that the rate at which an object cools/heats up is proportional to the difference between its temperature and the temperature of its surroundings.  First, let's state Newton's law of cooling as a general model with a differential equation.
+\begin{ex} Newton's law of cooling\index{Newton's law of cooling} says that the rate at which an object cools/heats up is proportional to the difference between its temperature and the temperature of its surroundings.  First, let's state Newton's law of cooling as a general model with a differential equation.
 
 Take $T$ to be the temperature of the heating or cooling object. We are thinking of this as changing in time, so let $t$ denote time, and think of $T$ as a function of $t$. Also, the temperature of the surroundings plays a role, so take $T_0$ to the be ambient temperature. Then the rule is
 \[ \frac{dT}{dt} = k (T-T_0)\]
 where $k$ is some constant of proportionality.
-\end{ex}
-\begin{comment}
+
+\Sept{15}
 
 Let's now apply it to a specific situation. Say we place a cake in a $400^{\circ}$F oven. At first, the cake is 
  $70^{\circ}$F and after 10 minutes it is  $100^{\circ}$F. How long will it take for the cake to reach  $150^{\circ}$F?
@@ -856,13 +856,13 @@ Now we can set $T(t) = 150$ and solve
 \[ 150 = 400 - 330 e^{t (\ln\frac{10}{11}) /10}\]
 \[ \rsa -250 = -330 e^{t (\ln \frac{10}{11}) /10}\]
 \[ \rsa e^{t (\ln \frac{10}{11}) /10} = 25/33\]
-\[ \rsa t (\ln \frac{10}{11}) /10 = 25/33\]
-\[ \rsa t = \frac{250}{33 \ln(\frac{10}{11})}.\]
+\[ \rsa t (\ln \frac{10}{11}) /10 = \ln(25/33)\]
+\[ \rsa t = 10 \ln(\frac{25}{33}) / \ln(\frac{10}{11}) \approx 29.\]
 \end{ex}
 
-\begin{ex} We can also come up with explicit solutions for the mixing models of the type we considered earlier. Say that we have a tank of water with 300 gallons of fresh water right now. Water starts flowing out at a rate of 3 gallons per minute, and water with 5 grams of salt per gallon flows in at a rate of 6 gallons per minute. Let's find the amount of salt in the tank as a function of time.
+\begin{ex} We can also come up with explicit solutions for the mixing models\index{mixing model} of the type we considered earlier. Say that we have a tank of water with 300 gallons of fresh water right now. Water starts flowing out at a rate of 3 gallons per minute, and water with 5 grams of salt per gallon flows in at a rate of 6 gallons per minute. Let's find the amount of salt in the tank as a function of time.
 
-Let $S$ be a the amount of salt in the tank in grams and $t$ be time in minutes. First we note that the tank has $300 + 3t$ gallons of water after $t$ minutes. The rate of salt coming in is $5 \times 6 = 30$ grams per minute. The rate of salt going out is $3\times \frac{S}{300 + 3t} = \frac{3}{300 + 3t} S$. The differential equation modeling the situation is
+Let $S$ be the amount of salt in the tank in grams and $t$ be time in minutes. First we note that the tank has $300 + 3t$ gallons of water after $t$ minutes. The rate of salt coming in is $5 \times 6 = 30$ grams per minute. The rate of salt going out is $3\times \frac{S}{300 + 3t} = \frac{3}{300 + 3t} S$. The differential equation modeling the situation is
 \[ S' = 30 - \frac{3}{300 + 3t} S.\]
 We also have the initial condition $S(0)=0$.
 
@@ -895,6 +895,8 @@ Suppose we consider a population, let's say of squirrels\index{squirrels} in the
 \[ \frac{dP}{dt} = k  P (100000-P).\]
 The constant $k$ we take here should be positive.
 
+\begin{comment}
+
 Let's use our techniques from \S2.1 to analyze this equation without solving it. This is an autonomous equation, so the behavior (increasing vs decreasing vs constant) depends only on the value of $P$ and not on $t$. The right-hand side is positive when $0<P<100000$, negative when $P<0$ or $P>100000$, and constant for $P=0$ or $P=100000$. Thus, the population grows when it is positive and below capacity, decreases when above capacity, and stays constant if zero or at capacity.
 \end{ex}
 
@@ -910,11 +912,16 @@ Every logistic model can be expressed as a logistic equation.
 
 Let's see another example.
 
-\begin{ex} A simple model for the spread of the flu throughout a population assumes that the rate at which the disease spreads is jointly proportional to the number of people infected and the number of people not infected: if $I$ is the number of total infected people and $T$ is the total population (which we assume is constant), we have
+\begin{ex} A simple model for the spread of a rumor throughout a population assumes that the rate at which the rumor spreads is jointly proportional to the number of people infected and the number of people not infected: if $I$ is the number of people in the know and $T$ is the total population (which we assume is constant), we have
 \[ \frac{dI}{dt} = k I (T-I),\]
 so this is a logistic model.
-Supposing the flu spreads among a population of $4000$ people\dots
+Supposing the rumor spreads among a population of $4000$ people, we get a model of the form
+\[ \frac{dI}{dt} = k I (4000-I).\]
 \end{ex}
+
+\subsection*{Discussion Questions:}
+Assume that the constant $k$ is positive.  Use our techniques from Section \S2.1 to determine whether $I$ is increasing or constant (depending on the starting value of $I$). Now, try to find a graph of the solution to the IVP for this equation with $I(0)=10$, even though we don't know what $k$ is!
+
 
 The general logistic equation is separable, and we can find a general solution to it. Take
 \[ \frac{dP}{dt} = k P (P_{c} - P)\]
@@ -930,9 +937,19 @@ we write
 Then \[\frac{1}{P_c} \ln \left| \frac{P}{P_c - P} \right|  = kt +C\]
 \[ \ln \left| \frac{P}{P_c - P} \right| = k P_c t + C\]
 \[ \left| \frac{P}{P_c - P} \right| = e^{k P_c t + C} =  e^C e^{k P_c t }\]
-\[ \frac{P}{P_c - P}  =   \pm e^C e^{k P_c t } = C e^{k P_c t } \]
+\[ \frac{P}{P_c - P}  =   \pm e^C e^{k P_c t } \]
+Since $\pm e^C$ is just a constant in any case, let's reuse the name $C$ for that other constant. Then
+\[ \frac{P}{P_c - P}  = C e^{k P_c t } \]
+for some new constant $C'$.
 Rearranging and solving gives
-\[ P = \frac{C e^{k P_c t }}{1+ C e^{k P_c t }}.\]
+\[ P = (P_c - P) C e^{k P_c t } = P_c C e^{k P_c t }  - P  C e^{k P_c t } \]
+\[ \rsa P + P C e^{k P_c t }  = P_c C e^{k P_c t } \]
+\[ \rsa P (1 +C e^{k P_c t } ) = P_c C e^{k P_c t } \]
+\[ \rsa P = P_c \frac{C e^{k P_c t }}{1+ C e^{k P_c t }}.\]
+
+In particular, a \emph{logistic function}\index{logistic function} can be written in the explicit form
+\[ f(t) = a \frac{ b e^{ct}}{1+ b e^{ct}}\]
+for some constants $a,b,c$.
 
 
 
