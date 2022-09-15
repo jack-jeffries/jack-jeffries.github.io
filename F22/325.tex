@@ -1288,6 +1288,99 @@ converges to $\frac25$.
 \end{proof}
 \end{ex}
 
+\Sept{15}
+
+\begin{enumerate}
+\item Let $c$ be a real number. Prove that the constant sequence $\{ c\}_{n=1}^\infty$ converges to $c$.
+
+\begin{framed}
+Let $\e>0$. Take $N=0$ (or $N=588$, or $N=-10000000$, or any other real number). For any natural number $n>N$, we have $|a_n - c| = 0 <\e$. Thus the sequence converges to $c$.
+\end{framed}
+
+
+
+\item Prove that the sequence $ \left\{ \frac{1}{\sqrt{n}} \right\}_{n=1}^\infty$ converges to $0$.
+
+
+
+
+
+\item Let $\{a_n\}_{n=1}^\infty$ be a sequence. Suppose we know that $\{a_n\}_{n=1}^\infty$ converges to $1$. Prove that there is a natural number $n\in \N$ such that $a_n>0$.
+
+\begin{framed}
+Take $\e = 1$. By definition of converges to $1$, there is some $N$ such that for all $n>N$, $|a_n  - 1|< 1$, and in particular $a_n >0$. So, take any natural number greater than $n$, and the conclusion follows.
+\end{framed}
+
+
+
+\item Prove or disprove: The sequence $ \left\{\frac{n+1}{2n} \right\}_{n=1}^\infty$ converges to $0$.
+
+\begin{framed}
+Take $\e = 1/2$. We claim that there is no $N$ such that for all $n>N$ we have $|a_n - 0| < 1/2$. Indeed, given $N$, take any $n$ to be any natural number greater than $N$. Then $a_n = 1/2 + 1/2n > 1/2$, so $|a_n| > 1/2$. Thus, there is no $N$ satisfying the desired property. This means that the sequence does not converge to $1/2$.
+\end{framed}
+
+
+
+\item Prove or disprove: The sequence $\{a_n\}_{n=1}^\infty$ where
+\[ a_n = \begin{cases} 1 &\text{if } n = 10^m \text{ for some } m\in \N \\
+0 &\text{otherwise}\end{cases}
+\]
+converges to $0$. 
+
+\begin{framed}
+Take $\e = 1/2$. We claim that there is no $N$ such that for all $n>N$ we have $|a_n - 0| < 1/2$. Indeed, let $N$ be any real number. Let $m$ be a natural number larger than $N$, and $n=10^m$. Then $n = 10^m > m > N$, and $a_n = 1$, so $|a_n-0| = 1 > 1/2$. This shows the claim, and hence that the sequence does not converge to $0$
+ \end{framed}
+
+
+\end{enumerate}
+
+\begin{defn} A sequence $\{a_n\}_{n=1}^\infty$ is \emph{convergent} if there is a real number $L$ such that $\{a_n\}_{n=1}^\infty$ converges to $L$. Otherwise, it is said to be \emph{divergent}.
+\end{defn}
+
+\
+
+\begin{enumerate}\setcounter{enumi}{5}
+\item In this problem, we will prove that the sequence $\{ (-1)^{n} \}_{n=1}^\infty$ is divergent.
+
+\begin{itemize}
+\item Proceed by contradiction and suppose it converges to $L$.
+\item Apply the definition of ``converges to $L$'' with $\e = \frac{1}{2}$, so we get some $N$.
+\item Take an odd integer $n$ bigger than $N$: what does this say about $L$?
+\item  Take an even integer $n$ bigger than $N$: what does this say about $L$?
+\item Conclude the proof.
+\end{itemize}
+\end{enumerate}
+\begin{framed}
+\begin{proof}
+  We proceed by contradiction: Suppose the sequence did converge to some number $L$. Our strategy will be to derive a contradiction by showing that such
+  an $L$ would have to satisfy mutually exclusive conditions. 
+
+By definition, since the sequence converges to $L$, we have that 
+for every $\e > 0$ there is a number $N$ such that 
+$|(-1)^n - L| < \e$
+for all natural numbers $n$ such that $n > N$.
+In particular, this statement is true for the particular value $\e = \frac12$. That is,  there is a number $N$ such that  
+$|(-1)^n - L| < \frac12$ for all natural numbers $n$ such that  
+$n > N$. Let $n$ be any even natural number that is bigger than
+$N$. (Certainly one exists: we know there is an integer bigger than
+$N$
+by Theorem \ref{thm120}. Pick one. If it is even, take that to be
+$n$. If it is odd, increase it by one to get an even integer $n$.)  Since $(-1)^n = 1$ for an even integer $n$, we get
+$$
+|1 - L| < \frac12
+$$
+and thus $\frac12 < L < \frac32$.
+
+Likewise, let $n$ be an odd natural number bigger than $N$. Since $(-1)^n = -1$ for an odd integer $n$, we get
+$$
+|-1 - L| < \frac12
+$$
+and thus $-\frac32 < L < -\frac12$. But it cannot be that both $L > \frac12$ and $L < -\frac12$.
+
+We conclude that no such $L$ exists; that is, this sequence is divergent.
+\end{proof}
+\end{framed}
+
 
 \begin{comment}
 
