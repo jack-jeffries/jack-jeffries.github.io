@@ -894,9 +894,11 @@ This grows larger and larger and larger! A model such as this will not describe 
 Suppose we consider a population, let's say of squirrels\index{squirrels} in the city of Lincoln. There is only so much food to go around so there should be a maximum capacity for the population; let's say that there's food enough for at most $100000$ squirrels; let's call this the \emph{total capacity}\index{total capacity}. Then $100000-P$ is the amount of room for growth in the squirrel population; let's call this the \emph{remaining capacity}\index{remaining capacity}. A \emph{logistic growth model} for the squirrel population supposes that the rate of growth of the population is \emph{jointly proportional}\index{jointly proportional} to the population $P$ and the remaining capacity $100000-P$, meaning it is proportional to the product $P (100000-P)$. That is, the logistic model says
 \[ \frac{dP}{dt} = k  P (100000-P).\]
 The constant $k$ we take here should be positive.
-
+\end{ex}
 \begin{comment}
+\Sept{20}
 
+% \begin{ex}
 Let's use our techniques from \S2.1 to analyze this equation without solving it. This is an autonomous equation, so the behavior (increasing vs decreasing vs constant) depends only on the value of $P$ and not on $t$. The right-hand side is positive when $0<P<100000$, negative when $P<0$ or $P>100000$, and constant for $P=0$ or $P=100000$. Thus, the population grows when it is positive and below capacity, decreases when above capacity, and stays constant if zero or at capacity.
 \end{ex}
 
@@ -951,6 +953,91 @@ In particular, a \emph{logistic function}\index{logistic function} can be writte
 \[ f(t) = a \frac{ b e^{ct}}{1+ b e^{ct}}\]
 for some constants $a,b,c$.
 
+\subsection*{Higher-order differential equations (\S4.1)}
+
+For higher order differential equations, we will focus especially on linear equations.
+
+\begin{defn} An ODE that can be written in the form
+\[ a_n(x) y^{(n)} + a_{n-1}(x) y^{(n-1)} + \cdots + a_1(x) y' + a_0(x) y = g(x)\]
+where $y^{(r)} = \frac{d^n y}{dx^r}$ is an \emph{n-th order linear equation}. If $g(x)=0$, we say that the equation is \emph{homogeneous}\index{homogeneous}; otherwise, it is \emph{nonhomogeneous}\index{nonhomogeneous}.
+\end{defn}
+
+With a first-order equation, to get a particular solution, we specified an initial condition of one value.
+For a higher-order ODE, we typically need more initial conditions (or boundary conditions).
+
+\begin{ex} Consider the differential equation
+\[ y''' = 5.\]
+To find the general solution, we can just integrate three times:
+\[ y'' = \int 5 \, dt = 5t+ c_1\]
+\[ y' = \int 5t + c_1 \, dt = \frac{5}{2} t^2 + c_1 t + c_2 \]
+\[ y = \int \frac{5}{2} t^2 + c_1 t + c_2 \, dt = \frac{5}{6} t^3 + \frac{c_1}{2}  t^2 + c_2 t + c_3.\]
+To get to a particular solution, we need to know more than one value of the function: we need three pieces of information of some sort to determine the three $c$'s.
+
+One natural possibility is to specify the values at three different points. (This is an example of what we will call a \emph{boundary condition}\index{boundary condition} soon.) Another possibility is to specify the values of $y$, of $y'$, and of $y''$ at the same point. (This is what we will call an \emph{initial condition}\index{initial condition} in this setting.)
+
+For example, given the IVP
+\[ \begin{cases}
+y^{(3)} = 5 \\
+y(0)=1\\
+y'(0)=-2\\
+y''(0)=5\end{cases}\]
+we solve
+\[ 1 = y(0) = \frac{5}{6} \cdot 0^3 + \frac{c_1}{2}  \cdot0^2 + c_2 \cdot 0 + c_3 = c_3\]
+\[ -2 = y'(0) = \frac{5}{2}\cdot  0^2 + c_1 \cdot 0 + c_2 = c_2\]
+\[ 5 = y''(0) = 5 \cdot 0+ c_1 = c_1\]
+so we get a unique solution
+\[ y(t)= \frac{5}{6} t^3 + \frac{5}{2}  t^2 -2  t + 1.\]
+\end{ex}
+
+\begin{ex}
+Suppose that we know that the solution IVP
+\[ \begin{cases}
+y^{(3)} + y' = 0 \\
+y(\pi) = 0 \\
+y'(\pi) = 2 \\
+y''(\pi) = -1
+\end{cases}\]
+
+is of the form
+\[ y(x) = c_1 + c_2 \sin(x) + c_3 \cos(x).\]
+Let's find a particular solution using the initial conditions.
+\[ 0 = y(\pi) = c_1 + c_2 \sin(\pi) + c_3 \cos(\pi) = c_1 - c_3\]
+so $c_1=c_3$.
+\[ 2 = y'(\pi) = c_2 \cos(\pi) - c_3 \sin(\pi) = -c_2\]
+so $c_2=-2$.
+\[ -1 = y''(\pi) = -c_2 \sin(\pi) - c_3 \cos(\pi) = c_3\]
+so $c_3=-1$. So, our solution must be
+\[ y(x) = -1 - 2 \cos(x) - \sin(x).\]
+\end{ex}
+
+A \emph{boundary value problem}\index{boundary value problem} poses conditions at different points to get a particular solution. For example, a system of equations like
+\[\begin{cases} y'' + y = 0 \\ y(a) = c \\ y(b)=d\end{cases}\] is a boundary value problem.
+We will be focusing on initial value conditions rather than boundary value conditions in this course.
+
+The great news is that for a linear ODE, there exist unique solutions In the same sense we discussed for first-order equations with the Picard-Lindel\"of Theorem.
+
+\begin{thm}[Existence and uniqueness theorem for linear ODEs]
+Given linear ODE
+\[ a_n(x) y^{(n)} + a_{n-1}(x) y^{(n-1)} + \cdots + a_1(x) y' + a_0(x) y = g(x)\]
+where $g(x), a_0(x), \dots, a_n(x)$ are continuous and $a_n(x)\neq 0$ for all $x$, then there exists a unique solution
+\[ \begin{cases} 
+a_n(x) y^{(n)} + a_{n-1}(x) y^{(n-1)} + \cdots + a_1(x) y' + a_0(x) y = g(x) \\
+y(t_0) = y_0\\
+y'(t_0) = y_1 \\
+\vdots \quad  \vdots\\
+y^{(n-1)}(t_0 = y_{n-1}
+\end{cases}\]
+on some interval containing $t_0$.
+\end{thm}
+
+\begin{ex} Consider the ODE
+\[ (x-7) y'' + 3y = x^2 \cos(x).\]
+Since $x-7=0$ when $x=7$, the theorem doesn't apply yet, so we should divide through by $x-7$:
+\[ y'' + \frac{3}{x-7} y = \frac{x^2 \cos(x) }{x-7}.\]
+Then given the initial conditions
+\[ \begin{cases} y(t_0) = 3 \\ y'(t_0) = -.7\end{cases}, \]
+the IVP has a unique solution on some interval containing $t_0$, as long as $t_0\neq 7$.
+\end{ex}
 
 
 \begin{comment}
