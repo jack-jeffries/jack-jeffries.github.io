@@ -1119,7 +1119,7 @@ We now turn our attention to the next major topic of this class: sequences of re
 rigorously. Sequences form the foundation for much of what we will cover for the rest of the semester. 
 
 
-\begin{defn} A {\em sequence} is an infinite list of real numbers indexed by $\N$:
+\begin{defn} A {\em sequence}\index{sequence} is an infinite list of real numbers indexed by $\N$:
 $$
 a_1, a_2, a_3, \dots.
 $$
@@ -1161,7 +1161,7 @@ $$
 converges to $5$.
 Let's give the rigorous definition.
 
-\begin{defn} Let $\{a_n\}_{n=1}^\infty$ be an arbitrary sequence and $L$ a real number. We say $\{a_n\}_{n=1}^\infty$ {\em converges} to $L$ provided the
+\begin{defn} Let $\{a_n\}_{n=1}^\infty$ be an arbitrary sequence and $L$ a real number. We say $\{a_n\}_{n=1}^\infty$ {\em converges}\index{converges} to $L$ provided the
   following condition is met:
 \begin{quote}
 For every real number $\e > 0$, there is a real number $N$ such that $|a_n - L| < \e$ for all natural numbers $n$ such that $n > N$.
@@ -1334,7 +1334,7 @@ Take $\e = 1/2$. We claim that there is no $N$ such that for all $n>N$ we have $
 
 \end{enumerate}
 
-\begin{defn} A sequence $\{a_n\}_{n=1}^\infty$ is \emph{convergent} if there is a real number $L$ such that $\{a_n\}_{n=1}^\infty$ converges to $L$. Otherwise, it is said to be \emph{divergent}.
+\begin{defn} A sequence $\{a_n\}_{n=1}^\infty$ is \emph{convergent}\index{convergent} if there is a real number $L$ such that $\{a_n\}_{n=1}^\infty$ converges to $L$. Otherwise, it is said to be \emph{divergent}\index{divergent}.
 \end{defn}
 
 \
@@ -1383,13 +1383,9 @@ We conclude that no such $L$ exists; that is, this sequence is divergent.
 
 
 \begin{comment}
+\Sept{20}
 
-\begin{defn} We say a sequence $\{a_n\}_{n=1}^\infty$ {\em converges} or {\em is convergent} 
-if there is (at least one) number $L$ such that it converges to $L$. Otherwise, of no such $L$ exists, we say the sequence {\em diverges} or 
-  {\em is divergent}.
-\end{defn}
 
-(We'll show soon that if a sequence converges to a number $L$, then $L$ is the {\em only} number to which in converges.)
 
 
 \begin{ex} Let's prove the sequence $\{(-1)^n\}_{n=1}^\infty$ is divergent. This means that there is no $L$ to which it converges. 
@@ -1424,7 +1420,7 @@ We conclude that no such $L$ exists; that is, this sequence is divergent.
 \end{proof}
 \end{ex}
 
-\Sept{17}
+%\Sept{17}
 
 
 \begin{prop} If a sequence converges, then there is a unique number to which it converges.
@@ -1461,7 +1457,7 @@ We conclude that $L = M$.
 
 
 From now on, given a sequence $\{a_n\}_{n=1}^\infty$ and a real number $L$, 
-will we use the short-hand notation
+will we use the short-hand notation\index{$\lim_{n\to\infty} a_n$}
 $$
 \lim_{n \to \infty} a_n = L
 $$
@@ -1554,16 +1550,6 @@ monotone? Is it bounded? Convergent?
 The converse of the previous proposition is false; the sequence $\{(-1)^n\}_{n=1}^\infty$ is a counterexample.
 \end{rem}
 
-
-
-\Sept{20}
-
-\begin{prop}\begin{enumerate}
-\item If $c$ is any real number, then the constant sequence $\{ c\}_{n=1}^{\infty}$ converges to $c$.
-\item The sequence $\{1/n\}_{n=1}^\infty$ converges to $0$.
-\end{enumerate}
-\end{prop}
-
 \begin{thm}[Limits and algebra]\label{thm99}
 Let $\{a_n\}_{n=1}^\infty$ be a sequence that converges to $L$, and $\{b_n\}_{n=1}^\infty$ be a sequence that converges to $M$.
 \begin{enumerate}
@@ -1574,6 +1560,17 @@ Let $\{a_n\}_{n=1}^\infty$ be a sequence that converges to $L$, and $\{b_n\}_{n=
 \item If $M\neq 0$ and $b_n\neq 0$ for all $n\in \N$, then $\displaystyle\left\{\frac{a_n}{b_n}\right\}_{n=1}^\infty$\!\!\! converges to~$\displaystyle \frac{L}{M}$.
 \end{enumerate}
 \end{thm}
+
+
+\begin{comment}
+\Sept{20}
+
+\begin{prop}\begin{enumerate}
+\item If $c$ is any real number, then the constant sequence $\{ c\}_{n=1}^{\infty}$ converges to $c$.
+\item The sequence $\{1/n\}_{n=1}^\infty$ converges to $0$.
+\end{enumerate}
+\end{prop}
+
 
 
 
@@ -1604,7 +1601,7 @@ First, if $c=0$, then $\{c a_n\}_{n=1}^\infty$ is the constant sequence $\{0\}_{
 
 Now, let $\e>0$. Applying the definition of $\{a_n\}_{n=1}^\infty$ converges to $L$ with the positive number $\e/|c|$, there is some $N\in \R$ such that for all natural numbers $n>N$, we have $|a_n-L|<\e/|c|$. Then $|ca_n - cL| = |c| |a_n-L| < |c| \e/|c| = \e$. This shows that $\{ca_n\}_{n=1}^\infty$ converges to $cL$.
 \end{framed}
-
+%\end{comment}
 \item Prove\footnote{Hint: Given $\varepsilon>0$, can you find $N$ such that $|a_n-L|<\varepsilon/2$ and $|b_n-M|<\varepsilon/2$ for all natural numbers $n>N$?} part (2) of Theorem~12.2.
 
 \begin{framed}
