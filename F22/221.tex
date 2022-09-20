@@ -895,7 +895,7 @@ Suppose we consider a population, let's say of squirrels\index{squirrels} in the
 \[ \frac{dP}{dt} = k  P (100000-P).\]
 The constant $k$ we take here should be positive.
 \end{ex}
-\begin{comment}
+%\begin{comment}
 %\newpage
 
 \Sept{20}
@@ -909,22 +909,29 @@ A \emph{logistic model}\index{logistic model} is a model that supposes that the 
 
 A \emph{logistic equation}\index{logistic equation} is a differential equation of the form
 \[ \frac{dP}{dt} = k P (P_{c} - P)\]
-for some constants $k$ and $P_c$.
+for some constants $k$ and $P_c$. The constant $P_c$ is called the \emph{total capacity}\index{total capacity} or \emph{carrying capacity}\index{carrying capacity}.
 \end{defn}
 
 Every logistic model can be expressed as a logistic equation.
 
 Let's see another example.
 
-\begin{ex} A simple model for the spread of a rumor throughout a population assumes that the rate at which the rumor spreads is jointly proportional to the number of people infected and the number of people not infected: if $I$ is the number of people in the know and $T$ is the total population (which we assume is constant), we have
-\[ \frac{dI}{dt} = k I (T-I),\]
-so this is a logistic model.
-Supposing the rumor spreads among a population of $4000$ people, we get a model of the form
-\[ \frac{dI}{dt} = k I (4000-I).\]
+\begin{ex} A simple model for the spread of a rumor throughout a population assumes that the rate at which the rumor spreads is jointly proportional to the number of people informed and the number of people not informed. Suppose the rumor spreads among a population of $4000$ people.
 \end{ex}
 
 \subsection*{Discussion Questions:}
-Assume that the constant $k$ is positive.  Use our techniques from Section \S2.1 to determine whether $I$ is increasing or constant (depending on the starting value of $I$). Now, try to find a graph of the solution to the IVP for this equation with $I(0)=10$, even though we don't know what $k$ is!
+\begin{enumerate}
+\item Find an ODE modeling the number of people informed $I$ based the information above. (You may have an unknown constant of proportionality $k$.)
+\item Based on the story, should your constant $k$ be positive or negative?
+\item Based on your model (and not just the story), determine whether $I$ is increasing, decreasing, or constant, based on the number of people who know at the start.
+\item Suppose that 10 people know at the start. Without solving the equation, try to sketch a graph of the solution to the IVP (even without knowing $k$!).
+\end{enumerate}
+\begin{framed}
+We should have the equation \[ \frac{dI}{dt} = k I (4000-I).\]
+Since this is presumably increasing for values of $I$ between $0$ and $4000$, then $k$ should be positive.
+Now, the function $k I (4000-I)$ is zero when $I=0$ or $I=4000$, and is positive when $0<I<4000$, so we have equilibrium solutions for $I=0,4000$ and increasing solutions for $0<I<4000$.
+\begin{center}\includegraphics[scale=.5]{sf9}\end{center}
+\end{framed}
 
 
 The general logistic equation is separable, and we can find a general solution to it. Take
@@ -954,6 +961,8 @@ Rearranging and solving gives
 In particular, a \emph{logistic function}\index{logistic function} can be written in the explicit form
 \[ f(t) = a \frac{ b e^{ct}}{1+ b e^{ct}}\]
 for some constants $a,b,c$.
+
+In this class, you don't need to know how to solve a logistic equation or this general formula for a logistic function, just how to set one up and analyze it at we did in Sections 2.1 and 2.6.
 
 \subsection*{Higher-order differential equations (\S4.1)}
 
@@ -1012,6 +1021,10 @@ so $c_3=-1$. So, our solution must be
 \[ y(x) = -1 - 2 \cos(x) - \sin(x).\]
 \end{ex}
 
+\begin{comment}
+
+\Sept{22}
+
 A \emph{boundary value problem}\index{boundary value problem} poses conditions at different points to get a particular solution. For example, a system of equations like
 \[\begin{cases} y'' + y = 0 \\ y(a) = c \\ y(b)=d\end{cases}\] is a boundary value problem.
 We will be focusing on initial value conditions rather than boundary value conditions in this course.
@@ -1026,8 +1039,8 @@ where $g(x), a_0(x), \dots, a_n(x)$ are continuous and $a_n(x)\neq 0$ for all $x
 a_n(x) y^{(n)} + a_{n-1}(x) y^{(n-1)} + \cdots + a_1(x) y' + a_0(x) y = g(x) \\
 y(t_0) = y_0\\
 y'(t_0) = y_1 \\
-\vdots \quad  \vdots\\
-y^{(n-1)}(t_0 = y_{n-1}
+ \quad  \vdots\\
+y^{(n-1)}(t_0) = y_{n-1}
 \end{cases}\]
 on some interval containing $t_0$.
 \end{thm}
@@ -1051,26 +1064,27 @@ Suppose we have two solutions $y_1(t), y_2(t)$. Then for any constants $c_1,c_2$
 \[ y(t) = c_1 y_1(t) + c_2 y_2(t)\] is also a solution.
 Let's check it:
 \begin{align*} 3 y'' + 2t y' + t^7 y &= 3 (c_1 y_1 + c_2 y_2)'' + 2t (c_1 y_1 + c_2 y_2)' + t^7 (c_1 y_1 + c_2 y_2) \\ &=3 (c_1 y_1'' + c_2 y_2'') + 2t (c_1 y_1' + c_2 y_2') + t^7 (c_1 y_1 + c_2 y_2)\\
-&= c_1 (3y''_1 + 2ty'_1 + t^7 y_1) + c_2 (3y''_2 + 2ty'_2 + t^7 y_2) = 0,
+&= c_1 (3y''_1 + 2ty'_1 + t^7 y_1) + c_2 (3y''_2 + 2ty'_2 + t^7 y_2) \\
+&= c_1 (  \qquad \quad \  0 \qquad \quad \  )  \,+ \,c_2 (  \qquad \quad \  0 \qquad \quad \  ) = 0,
 \end{align*}
 where the last equality is because $y_1$ and $y_2$ are solutions; this means that $y$ is a solution!
 \end{ex}
 
-For about the same reason, this works for any linear homogeneous ODE. Namely, we have:
+For about the same reason, this works for any linear homogeneous ODE: the key points were that we could ``pull out the sum and constants'' form the differential equation, which is a consequence of having a linear equation, and that a sum of constants times zero is zero, which is why we needed a homogeneous equation.  Namely, we have:
 
 \index{Principle of superposition and linear dependence}\index{Principle of superposition}
-\begin{thm}[Principle of superposition] For any linear homogeneous ODE, given any solutions $y_1,y_2,\dots,y_n$, and any constants $c_1,c_2, \dots,c_n$, the function $y=c_1 y_1 + \cdots c_n y_n$ is also a solution to the same equation.
+\begin{thm}[Principle of superposition] For any linear homogeneous ODE, given any solutions $y_1,y_2,\dots,y_n$, and any constants $c_1,c_2, \dots,c_n$, the function $y=c_1 y_1 + \cdots + c_n y_n$ is also a solution to the same equation.
 \end{thm}
 
 This is only true for linear homogeneous equations, so be sure to only apply it in that setting. We give the recipe that appears above a name.
 
-\begin{defn} If $y_1,y_2,\dots,y_n$ are functions, we say that a function of the form $y=c_1 y_1 + \cdots c_n y_n$ for some constants $c_1,c_2, \dots,c_n$ is a \emph{linear combination}\index{linear combination} or \emph{superposition}\index{superposition} of the functions $y_1,y_2,\dots,y_n$.\end{defn}
+\begin{defn} If $y_1,y_2,\dots,y_n$ are functions, we say that a function of the form $y=c_1 y_1 + \cdots + c_n y_n$ for some constants $c_1,c_2, \dots,c_n$ is a \emph{linear combination}\index{linear combination} or \emph{superposition}\index{superposition} of the functions $y_1,y_2,\dots,y_n$.\end{defn}
 
 Let's consider an example.
 \begin{ex} Consider the ODE
 \[ y'' - y=0\]
 (equivalently, $y'' = y$).
-Certainly $y_1= e^x$ is a solution, since it's derivative is itself.
+Certainly $y_1= e^x$ is a solution, since its derivative is itself.
 Can we guess another? $y_2= e^{-x}$ has its negative for its derivative, and then the sign flips again with the second derivative, so this is also a solution.
 
 By the principle of superposition, $7 e^x$ and $-15 e^x + \pi e^{-x}$ are also a solutions. Note that something like $x e^x$ is not a solution: the principle only applies to constant multipliers.
@@ -1093,9 +1107,9 @@ In the last example, the equation
 can be rewritten as
 \[ \frac12 y_1 + \frac12 y_2 + 0 y_3 + (-1) y_4   = 0.\]
 
-\begin{defn} We say that a set of functions $\{y_1,\dots y_n\}$ is \emph{linearly independent}\index{linearly independent} (i.e., no redundancy) if whenever some linear combination takes us the zero function
+\begin{defn} We say that a set of functions $\{y_1,\dots, y_n\}$ is \emph{linearly independent}\index{linearly independent} (i.e., no redundancy) if whenever some linear combination takes us the zero function
 \[ c_1 y_1 + \cdots + c_n y_n = 0\]
-the coefficients $c_1,\dots,c_n$ must be $0$. Otherwise $\{y_1,\dots y_n\}$ is \emph{linearly dependent}\index{linearly dependent}.
+the coefficients $c_1,\dots,c_n$ must be $0$. Otherwise $\{y_1,\dots, y_n\}$ is \emph{linearly dependent}\index{linearly dependent}.
 \end{defn}
 
 For example, 
