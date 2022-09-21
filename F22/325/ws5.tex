@@ -1,0 +1,118 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=0.4in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+
+\DeclareMathOperator{\res}{res}
+
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+	
+	\thispagestyle{empty}
+	
+	\section*{More convergence of sequences}
+	
+
+\begin{enumerate}
+
+\item For each of the following sequences which of the following adjectives apply: bounded above, bounded below, bounded, (strictly) increasing, (strictly) decreasing, (strictly) monotone?
+\begin{enumerate}
+\item $\{ \frac{1}{n} \}_{n=1}^\infty$
+\item The Fibonacci sequence $\{ f_n \}_{n=1}^\infty$ where $f_1=f_2=1$ and $f_n= f_{n-1} + f_{n-2}$ for $n\geq 3$.
+\item $\{(-1)^n \}_{n=1}^\infty$
+\item $\{ 5 + (-1)^n \frac{1}{n}  \}_{n=1}^\infty$.
+\end{enumerate}
+
+\
+
+\item Prove or disprove the converse\footnote{\textbf{Proposition~9.5:} Any convergent sequence is bounded.} to Proposition~9.5.
+
+
+
+\end{enumerate}
+
+\begin{framed}
+\noindent \textbf{Example 10.1:}
+\begin{enumerate}
+\item A constant sequence $\{c\}_{n=1}^\infty$ converges to $c$.
+\item The sequence $\{\frac{1}{n}\}_{n=1}^\infty$ converges to $0$.
+\end{enumerate}
+
+\
+
+\noindent \textbf{Theorem~10.2 (Limits and algebra):}
+Let $\{a_n\}_{n=1}^\infty$ be a sequence that converges to $L$, and $\{b_n\}_{n=1}^\infty$ be a sequence that converges to $M$.
+\begin{enumerate}
+\item If $c$ is any real number, then $\{ c a_n\}_{n=1}^\infty$ converges to $cL$.
+\item The sequence $\{a_n + b_n\}_{n=1}^\infty$ converges to $L+M$.
+\item The sequence $\{a_n b_n\}_{n=1}^\infty$ converges to $LM$.
+\item If $L\neq 0$ and $a_n\neq 0$ for all $n\in \N$, then $\displaystyle\left\{\frac{1}{a_n}\right\}_{n=1}^\infty$\!\!\! converges to~$\displaystyle \frac{1}{L}$.
+\item If $M\neq 0$ and $b_n\neq 0$ for all $n\in \N$, then $\displaystyle\left\{\frac{a_n}{b_n}\right\}_{n=1}^\infty$\!\!\! converges to~$\displaystyle \frac{L}{M}$.
+\end{enumerate}
+\end{framed}
+
+\begin{enumerate}\setcounter{enumi}{2}
+
+\item Use Theorem~10.2 and Example~10.1 to show that the sequence $\{2 + 5/n - 7/n^2\}_{n=1}^\infty$ converges to $2$.
+
+\
+
+\item Use Theorem~10.2 and Example~10.1 to show\footnote{Hint: Divide the top and bottom by the same thing to get a sequence where part (5) above applies.} that the sequence $\ds\frac{2n+3}{3n-4}$ converges to $\ds\frac23$.
+
+\
+
+\item Use Theorem~10.1 to show that if $\{a_n\}_{n=1}^\infty$ converges to $L$, and $\{b_n\}_{n=1}^\infty$ converges to $M$, then $\{a_n - b_n\}_{n=1}^\infty$ converges to $L-M$.
+
+\
+
+\item Prove or disprove the following converse to part (2): If $\{ a_n + b_n \}_{n=1}^\infty$ converges to $L+M$ then $\{a_n \}_{n=1}^\infty$ converges to $L$ and $\{ b_n \}_{n=1}^\infty$ converges to $M$.
+
+\
+
+\item Prove part (1) of Theorem~10.2  in the special case $c=2$ by following the following steps:
+\begin{itemize}
+\item Assume that $\{a_n \}_{n=1}^\infty$ converges to $L$.
+\item We now want to show that $\{ 2 a_n \}_{n=1}^\infty$ converges to something. We know what we have to write next!
+\item Now we do some scratchwork: we want an $N$ such that for $n>N$ we have $|2 a_n - 2 L| < \e$. Factor this to get some inequality with $a_n$. How can we use our assumption to get an $N$ that ``works''?
+\item Complete the proof.
+\end{itemize}
+
+
+\
+
+
+\item Prove\footnote{Hint: You might deal with the cases $c=0$ and $c\neq 0$ separately.} part (1) of Theorem~10.1.
+
+\
+
+\item Prove\footnote{Hint: The Triangle Inequality might be helpful in the form $|(a_n + b_n) - (L+M)|  \leq  |a_n - L| + |b_n - M|$.} part~(2) of Theorem~10.1.
+
+\
+
+\item Prove\footnote{Hint: You may need to use Proposition~9.5.} part~(3) of Theorem~10.1.
+\end{enumerate}
+
+\end{document}
