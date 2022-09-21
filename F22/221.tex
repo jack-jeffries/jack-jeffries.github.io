@@ -3,7 +3,9 @@
 \usepackage{comment}
 \usepackage{amscd}
 \usepackage{amssymb,xcolor}
+\usepackage{multicol}
 \usepackage[all, knot]{xy}
+\usepackage{enumitem}
 %\usepackage[top=1.2in, bottom=1.2in, left=1.2in, right=1.2in]{geometry}
 \xyoption{all}
 \xyoption{arc}
@@ -1027,12 +1029,14 @@ so $c_3=-1$. So, our solution must be
 
 A \emph{boundary value problem}\index{boundary value problem} poses conditions at different points to get a particular solution. For example, a system of equations like
 \[\begin{cases} y'' + y = 0 \\ y(a) = c \\ y(b)=d\end{cases}\] is a boundary value problem.
-We will be focusing on initial value conditions rather than boundary value conditions in this course.
+We will be focusing on initial value conditions, like
+\[\begin{cases} y'' + y = 0 \\ y(a) = c \\ y'(a)=d\end{cases}\] 
+rather than boundary value conditions in this course.
 
-The great news is that for a linear ODE, there exist unique solutions In the same sense we discussed for first-order equations with the Picard-Lindel\"of Theorem.
+The great news is that for a linear ODE, there exist unique solutions to IVPs in the same sense we discussed for first-order equations with the Picard-Lindel\"of Theorem.
 
 \begin{thm}[Existence and uniqueness theorem for linear ODEs]
-Given linear ODE
+Given a linear ODE
 \[ a_n(x) y^{(n)} + a_{n-1}(x) y^{(n-1)} + \cdots + a_1(x) y' + a_0(x) y = g(x)\]
 where $g(x), a_0(x), \dots, a_n(x)$ are continuous and $a_n(x)\neq 0$ for all $x$, then there exists a unique solution
 \[ \begin{cases} 
@@ -1052,7 +1056,7 @@ Since $x-7=0$ when $x=7$, the theorem doesn't apply yet, so we should divide thr
 The Theorem then says that when $\frac{3}{x-7}$ and $\frac{x^2 \cos(x) }{x-7}$ are continuous, there is a unique solution near that $x$-value: this is OK as long as $x\neq 7$.
 For example, with the initial condition
 \[ \begin{cases} y(-1) = 3 \\ y'(-1) = -.7\end{cases} \]
-starting from $x=-1$ we can go to the left forever and to the right up until $x=7$ without getting into trouble, so this IVP has a unique solution on $(-\infty , 7)$.
+starting from $x=-1$, we know that there exists a unique solution near $x=-1$. Moreover, we can go to the left forever and to the right up until $x=7$ without getting into trouble, so this IVP has a unique solution on $(-\infty , 7)$.
 \end{ex}
 
 \subsection*{Principle of superposition}
@@ -1073,13 +1077,81 @@ where the last equality is because $y_1$ and $y_2$ are solutions; this means tha
 
 For about the same reason, this works for any linear homogeneous ODE: the key points were that we could ``pull out the sum and constants'' form the differential equation, which is a consequence of having a linear equation, and that a sum of constants times zero is zero, which is why we needed a homogeneous equation.  Namely, we have:
 
-\index{Principle of superposition and linear dependence}\index{Principle of superposition}
-\begin{thm}[Principle of superposition for homogeneous ODEs] For any linear homogeneous ODE, given any solutions $y_1,y_2,\dots,y_n$, and any constants $c_1,c_2, \dots,c_n$, the function $y=c_1 y_1 + \cdots + c_n y_n$ is also a solution to the same equation.
+\index{Principle of superposition}
+\begin{thm}[Principle of superposition for homogeneous ODEs] For any linear homogeneous ODE
+\[ a_n(x) y^{(n)} +  \cdots + a_1(x) y' +  a_0(x) y = 0,\]
+ given any solutions $y_1,y_2,\dots,y_t$, and any constants $c_1,c_2, \dots,c_t$, the function $y=c_1 y_1 + \cdots + c_t y_t$ is also a solution to the same equation.
 \end{thm}
 
 This is only true for linear homogeneous equations, so be sure to only apply it in that setting. We give the recipe that appears above a name.
 
-\begin{defn} If $y_1,y_2,\dots,y_n$ are functions, we say that a function of the form $y=c_1 y_1 + \cdots + c_n y_n$ for some constants $c_1,c_2, \dots,c_n$ is a \emph{linear combination}\index{linear combination} or \emph{superposition}\index{superposition} of the functions $y_1,y_2,\dots,y_n$.\end{defn}
+\begin{defn} If $y_1,y_2,\dots,y_n$ are functions, we say that a function of the form $y=c_1 y_1 + \cdots + c_t y_t$ for some constants $c_1,c_2, \dots,c_t$ is a \emph{linear combination}\index{linear combination} or \emph{superposition}\index{superposition} of the functions $y_1,y_2,\dots,y_t$.\end{defn}
+
+Let's return to our example and see what happens if the equation is nonhomogeneous instead.
+\begin{ex} Consider the linear nonhomogeneous ODEs
+\[ 3y'' + 2ty' + t^7 y = \sin(x).\]
+and
+\[ 3y'' + 2ty' + t^7 y = \cos(x).\]
+They are linear and have the same left-hand side ($y$ and its derivatives part), but different right-hand sides (doesn't depend on $y$ part).
+Suppose we have a solution $y_1(t)$ to the first (sine) ODE, and a solution $y_2(t)$ to the second (cosine) ODE. Let's consider a superposition \[ y(t) = c_1 y_1(t) + c_2 y_2(t)\] 
+of our two functions and plug it in to the left-hand side:
+\begin{align*} 3 y'' + 2t y' + t^7 y &= 3 (c_1 y_1 + c_2 y_2)'' + 2t (c_1 y_1 + c_2 y_2)' + t^7 (c_1 y_1 + c_2 y_2) \\ &=3 (c_1 y_1'' + c_2 y_2'') + 2t (c_1 y_1' + c_2 y_2') + t^7 (c_1 y_1 + c_2 y_2)\\
+&= c_1 (3y''_1 + 2ty'_1 + t^7 y_1) + c_2 (3y''_2 + 2ty'_2 + t^7 y_2) \\
+&= c_1 (  \qquad \ \sin(x) \ \qquad   )  \,+ \,c_2 (  \qquad \   \cos(x) \ \qquad   ) \\
+&= c_1 \sin(x) + c_2 \cos(x).
+\end{align*}
+\end{ex}
+This means that the superposition $y$ is a solution to a different ODE with the same left-hand side but a new right-hand side:
+\[ 3y'' + 2ty' + t^7 y = c_1 \sin(x) + c_2 \cos(x).\]
+
+Again, for about the same reason, this works for any linear ODE.  Namely, we have:
+
+\index{Principle of superposition}
+\begin{thm}[Principle of superposition for nonhomogeneous ODEs] 
+Given linear ODEs with the same ``left-hand sides'':
+\[ a_n(x) y^{(n)} +  \cdots + a_1(x) y' +  a_0(x) y = g_i(x),\]
+for $i=1,\dots,t$, solutions $y_1, \dots,y_t$ of the respective equations ($y_i$ satisfies the equation with $g_i$ on the right-hand side), and any constants $c_1,c_2, \dots,c_t$, the function $y=c_1 y_1 + \cdots + c_t y_t$ is also a solution to the equation
+\[ a_n(x) y^{(n)} +  \cdots + a_1(x) y' +  a_0(x) y = g(x),\]
+for $g = c_1 g_1 + \cdots + c_t g_t$.
+\end{thm}
+
+%For example, say that\dots
+
+\subsection*{Discussion Questions}
+The functions $y_1=e^x$ and $y_2=e^{2x}$ are solutions to
+\[ y'' - 3y' + 2y = 0,\]
+ $y_3 = xe^{x}$ is a solution to
+\[ y'' - 3y' + 2y = -e^{x},\]
+ $y_4 = x e^{2x}$ is a solution to
+\[ y'' - 3y' + 2y = e^{2x}.\]
+Consider the following functions:
+\begin{multicols}{2}
+\begin{enumerate}[label=(\alph*)]
+\item $y= 12 e^x$
+\item $y= e^x - e^{2x}$
+\item $y= 12e^x - 15e^{2x}$
+\item $y= - xe^{x}$
+\item $y= 12e^x - xe^{x}$
+\item $y= 12 x e^x + 15 e^{2x}$
+\item $y= -12 x e^x + 15 e^{2x}$
+\item $y= 15 e^{2x} -12 x e^x + 15 e^{2x}$
+\end{enumerate}
+\end{multicols}
+\begin{enumerate}
+\item Which of the functions are solutions to
+\[ y'' - 3y' + 2y = 0\ ?\]
+\item Which of the functions are solutions to
+\[ y'' - 3y' + 2y = e^x\ ?\]
+\item Which of the functions are solutions to
+\[ y'' - 3y' + 2y = 12 e^x + 15 e^{2x}\ ?\]
+\end{enumerate}
+
+
+
+\subsection*{Linear dependence and Wronskians}
+
+
+
 
 Let's consider an example.
 \begin{ex} Consider the ODE
@@ -1108,7 +1180,7 @@ In the last example, the equation
 can be rewritten as
 \[ \frac12 y_1 + \frac12 y_2 + 0 y_3 + (-1) y_4   = 0.\]
 
-\begin{defn} We say that a set of functions $\{y_1,\dots, y_n\}$ is \emph{linearly independent}\index{linearly independent} (i.e., no redundancy) if whenever some linear combination takes us the zero function
+\begin{defn} We say that a set of functions $\{y_1,\dots, y_n\}$ is \emph{linearly independent}\index{linearly independent} (i.e., no redundancy) if whenever some linear combination yields the zero function
 \[ c_1 y_1 + \cdots + c_n y_n = 0\]
 the coefficients $c_1,\dots,c_n$ must be $0$. Otherwise $\{y_1,\dots, y_n\}$ is \emph{linearly dependent}\index{linearly dependent}.
 \end{defn}
@@ -1116,6 +1188,7 @@ the coefficients $c_1,\dots,c_n$ must be $0$. Otherwise $\{y_1,\dots, y_n\}$ is 
 For example, 
 \[ \frac12 e^x + \frac12 e^{-x} + (-1) \cosh(x) = 0\]
 means that $\{e^x,e^{-x}, \cosh(x)\}$ is linearly dependent.
+
 
 \begin{comment}
 \end{comment}
