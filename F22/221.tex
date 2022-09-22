@@ -1023,8 +1023,8 @@ so $c_3=-1$. So, our solution must be
 \[ y(x) = -1 - 2 \cos(x) - \sin(x).\]
 \end{ex}
 
-\begin{comment}
 
+\newpage
 
 \Sept{22}
 
@@ -1036,7 +1036,7 @@ rather than boundary value conditions in this course.
 
 The great news is that for a linear ODE, there exist unique solutions to IVPs in the same sense we discussed for first-order equations with the Picard-Lindel\"of Theorem.
 
-\begin{thm}[Existence and uniqueness theorem for linear ODEs, Version 1]
+\begin{thm}[Existence and uniqueness theorem for linear IVPs]
 Given a linear ODE
 \[ a_n(x) y^{(n)} + a_{n-1}(x) y^{(n-1)} + \cdots + a_1(x) y' + a_0(x) y = g(x)\]
 where $g(x), a_0(x), \dots, a_n(x)$ are continuous and $a_n(x)\neq 0$ for all $x$, then there exists a unique solution
@@ -1089,7 +1089,7 @@ This is only true for linear homogeneous equations, so be sure to only apply it 
 
 Let's return to our example and see what happens if the equation is nonhomogeneous instead.
 \begin{ex} Consider the linear nonhomogeneous ODE
-\[ 3y'' + 2ty' + t^7 y = \sin(x).\]
+\[ 3y'' + 2ty' + t^7 y = \sin(t).\]
 %and
 %\[ 3y'' + 2ty' + t^7 y = \cos(x).\]
 %They are linear and have the same left-hand side ($y$ and its derivatives part), but different right-hand sides (doesn't depend on $y$ part).
@@ -1144,6 +1144,8 @@ The other functions \ref{10c} and \ref{10f} are not solutions to either!
 \end{enumerate}
 \end{framed}
 
+\begin{comment}
+
 We are going to express general solutions of linear ODEs in this way. Namely, for a homogeneous linear ODE, we will express the general solution as
 \[ y = C_1 y_1 + \cdots + C_t y_t\]
 for functions $y_1,\dots,y_t$ (that we have to go find in each case).
@@ -1193,8 +1195,42 @@ For example,
 means that $\{e^x,e^{-x}, \cosh(x)\}$ is linearly dependent.
 
 
-We now want a tool to detect linear (in)dependence of functions. Here is a clever idea: if $c_1 f + c_2 g=0$ (as functions) then, taking derivatives,
- \[ c_1 f' + c_2 g' = 0\] also. Then\dots
+We now want a tool to detect linear (in)dependence of functions. Here is Wronski's clever idea: if $c_1 f + c_2 g=0$ (as functions) then, taking derivatives,
+ \[ c_1 f' + c_2 g' = 0\] also. Then \[f g' - f' g = f (\frac{-c_1}{c_2} g') - f' (\frac{-c_1}{c_2} g) =0.\]
+ 
+ \begin{defn} The \emph{determinant}\index{determinant} of a $2\times 2$ matrix
+ \[ \begin{bmatrix} a & b \\ c& d\end{bmatrix}\]
+ is
+  \[ \det \begin{bmatrix} a & b \\ c& d\end{bmatrix} = ad-bc.\]
+  The \emph{determinant}\index{determinant} of a $3\times 3$ matrix
+ \[ \begin{bmatrix} a & b & c\\ d & e & f \\ g & h & i \end{bmatrix}\]
+ is
+\[\det \begin{bmatrix} a & b& c\\ d & e & f \\ g & h & i \end{bmatrix} = \raisebox{-6.7mm}{\includegraphics[scale=.55]{det1}} = aei+bfg+cdh - ceg - afh-bdi.\]
+\end{defn}
+
+Larger square matrices have determinants too, but we won't discuss them in this class.
+
+\begin{defn} The \emph{Wronskian}\index{Wronskian} of two functions $f,g$ is the determinant
+\[ W(f,g) = \det \begin{bmatrix} f & g \\ f'  & g' \end{bmatrix} = f g' - f' g.\] This is a function (of the same variable that $f$ and $g$ are functions of).
+The  \emph{Wronskian} of three functions $f,g,h$ is the determinant
+\[ W(f,g,h) = \det \begin{bmatrix} f & g & h  \\ f' & g' & h' \\ f'' & g'' & h''\end{bmatrix}.\]
+In general, the Wronskian of $n$ functions is the determinant of an $n\times n$ matrix involving the first $n-1$ derivatives of the functions.
+\end{defn}
+
+For example, \[W(x^2,x^3) = \det \begin{bmatrix} x^2 & x^3 \\ 2x & 3x^2 \end{bmatrix} = x^2 \cdot 3x^2 - 2x \cdot x^3 = x^4.\]
+
+Here's what it's good for.
+
+\begin{thm}[Wronskian theorem]
+If $f_1,\dots,f_n$ are $n$ solutions of the $n$th order homogenous linear equation
+\[ a_n(x) y^{(n)} + a_{n-1}(x) y^{(n-1)} + \cdots + a_1(x) y' + a_0(x) y = 0\]
+on some interval, then 
+\begin{enumerate}
+\item $f_1,\dots,f_n$ are linearly dependent on the interval $\Leftrightarrow$ if the Wronskian function $W(f_1,\dots,f_n)$ is \emph{always} equal to zero on the interval.
+\item $f_1,\dots,f_n$ are linearly independent on the interval $\Leftrightarrow$ the Wronskian function $W(f_1,\dots,f_n)$ is \emph{never} equal to zero on the interval.
+\end{enumerate}
+\end{thm}
+
  
 
 \begin{comment}
