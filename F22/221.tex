@@ -1025,6 +1025,7 @@ so $c_3=-1$. So, our solution must be
 
 \begin{comment}
 
+
 \Sept{22}
 
 A \emph{boundary value problem}\index{boundary value problem} poses conditions at different points to get a particular solution. For example, a system of equations like
@@ -1035,7 +1036,7 @@ rather than boundary value conditions in this course.
 
 The great news is that for a linear ODE, there exist unique solutions to IVPs in the same sense we discussed for first-order equations with the Picard-Lindel\"of Theorem.
 
-\begin{thm}[Existence and uniqueness theorem for linear ODEs]
+\begin{thm}[Existence and uniqueness theorem for linear ODEs, Version 1]
 Given a linear ODE
 \[ a_n(x) y^{(n)} + a_{n-1}(x) y^{(n-1)} + \cdots + a_1(x) y' + a_0(x) y = g(x)\]
 where $g(x), a_0(x), \dots, a_n(x)$ are continuous and $a_n(x)\neq 0$ for all $x$, then there exists a unique solution
@@ -1061,12 +1062,10 @@ starting from $x=-1$, we know that there exists a unique solution near $x=-1$. M
 
 \subsection*{Principle of superposition}
 
-I want to introduce the Principle of Superposition in an example.
-
-\begin{ex} Consider the linear homogeneous ODE
+\begin{ex}\label{ex:homog1} Consider the linear homogeneous ODE
 \[ 3y'' + 2ty' + t^7 y = 0.\]
 Suppose we have two solutions $y_1(t), y_2(t)$. Then for any constants $c_1,c_2$, the function
-\[ y(t) = c_1 y_1(t) + c_2 y_2(t)\] is also a solution.
+\[ y(t) = c_1 y_1(t) + c_2 y_2(t)\] is also a solution. (For example, things like $-y_1, 47 y_2, 3 y_1 - 5 y_2$ are solutions.)
 Let's check it:
 \begin{align*} 3 y'' + 2t y' + t^7 y &= 3 (c_1 y_1 + c_2 y_2)'' + 2t (c_1 y_1 + c_2 y_2)' + t^7 (c_1 y_1 + c_2 y_2) \\ &=3 (c_1 y_1'' + c_2 y_2'') + 2t (c_1 y_1' + c_2 y_2') + t^7 (c_1 y_1 + c_2 y_2)\\
 &= c_1 (3y''_1 + 2ty'_1 + t^7 y_1) + c_2 (3y''_2 + 2ty'_2 + t^7 y_2) \\
@@ -1074,6 +1073,7 @@ Let's check it:
 \end{align*}
 where the last equality is because $y_1$ and $y_2$ are solutions; this means that $y$ is a solution!
 \end{ex}
+
 
 For about the same reason, this works for any linear homogeneous ODE: the key points were that we could ``pull out the sum and constants'' form the differential equation, which is a consequence of having a linear equation, and that a sum of constants times zero is zero, which is why we needed a homogeneous equation.  Namely, we have:
 
@@ -1088,83 +1088,86 @@ This is only true for linear homogeneous equations, so be sure to only apply it 
 \begin{defn} If $y_1,y_2,\dots,y_n$ are functions, we say that a function of the form $y=c_1 y_1 + \cdots + c_t y_t$ for some constants $c_1,c_2, \dots,c_t$ is a \emph{linear combination}\index{linear combination} or \emph{superposition}\index{superposition} of the functions $y_1,y_2,\dots,y_t$.\end{defn}
 
 Let's return to our example and see what happens if the equation is nonhomogeneous instead.
-\begin{ex} Consider the linear nonhomogeneous ODEs
+\begin{ex} Consider the linear nonhomogeneous ODE
 \[ 3y'' + 2ty' + t^7 y = \sin(x).\]
-and
-\[ 3y'' + 2ty' + t^7 y = \cos(x).\]
-They are linear and have the same left-hand side ($y$ and its derivatives part), but different right-hand sides (doesn't depend on $y$ part).
-Suppose we have a solution $y_1(t)$ to the first (sine) ODE, and a solution $y_2(t)$ to the second (cosine) ODE. Let's consider a superposition \[ y(t) = c_1 y_1(t) + c_2 y_2(t)\] 
-of our two functions and plug it in to the left-hand side:
-\begin{align*} 3 y'' + 2t y' + t^7 y &= 3 (c_1 y_1 + c_2 y_2)'' + 2t (c_1 y_1 + c_2 y_2)' + t^7 (c_1 y_1 + c_2 y_2) \\ &=3 (c_1 y_1'' + c_2 y_2'') + 2t (c_1 y_1' + c_2 y_2') + t^7 (c_1 y_1 + c_2 y_2)\\
-&= c_1 (3y''_1 + 2ty'_1 + t^7 y_1) + c_2 (3y''_2 + 2ty'_2 + t^7 y_2) \\
-&= c_1 (  \qquad \ \sin(x) \ \qquad   )  \,+ \,c_2 (  \qquad \   \cos(x) \ \qquad   ) \\
-&= c_1 \sin(x) + c_2 \cos(x).
-\end{align*}
+%and
+%\[ 3y'' + 2ty' + t^7 y = \cos(x).\]
+%They are linear and have the same left-hand side ($y$ and its derivatives part), but different right-hand sides (doesn't depend on $y$ part).
+Suppose we have a solution $y_1(t)$ to this equation and we want to get another one. Based on the homogeneous case, we might the try something like $y=c_1 y_1 + c_2 y_2$ for some constants $c_1,c_2$ and some other function $y_2$. What changes? In the last line of computation of Example~\ref{ex:homog1}, the first and last zeroes should now be $\sin(x)$. The $c_1$ is going to mess things up, so we better hold off of it; the rest is OK as long as we still the second $0$. This means we are OK to take $y= y_1 + c_2 y_2$ for a solution $y_2$ of the homogeneous equation with the same ``left-hand side''!
 \end{ex}
-This means that the superposition $y$ is a solution to a different ODE with the same left-hand side but a new right-hand side:
-\[ 3y'' + 2ty' + t^7 y = c_1 \sin(x) + c_2 \cos(x).\]
 
 Again, for about the same reason, this works for any linear ODE.  Namely, we have:
 
 \index{Principle of superposition}
 \begin{thm}[Principle of superposition for nonhomogeneous ODEs] 
-Given linear ODEs with the same ``left-hand sides'':
-\[ a_n(x) y^{(n)} +  \cdots + a_1(x) y' +  a_0(x) y = g_i(x),\]
-for $i=1,\dots,t$, solutions $y_1, \dots,y_t$ of the respective equations ($y_i$ satisfies the equation with $g_i$ on the right-hand side), and any constants $c_1,c_2, \dots,c_t$, the function $y=c_1 y_1 + \cdots + c_t y_t$ is also a solution to the equation
+For any linear nonhomogeneous ODE
 \[ a_n(x) y^{(n)} +  \cdots + a_1(x) y' +  a_0(x) y = g(x),\]
-for $g = c_1 g_1 + \cdots + c_t g_t$.
+given one particular solution $y_p$, and some solutions $y_1, \dots,y_t$ of the corresponding homogeneous equation
+\[ a_n(x) y^{(n)} +  \cdots + a_1(x) y' +  a_0(x) y = 0,\]
+and any constants $c_1,c_2, \dots,c_t$, the function
+$y = y_p + c_1 y_1 + \cdots + c_t y_t$ is also a solution to the first equation.
 \end{thm}
 
-%For example, say that\dots
+
 
 \subsection*{Discussion Questions}
-The functions $y_1=e^x$ and $y_2=e^{2x}$ are solutions to
+The functions $e^x$ and $e^{2x}$ are solutions to
 \[ y'' - 3y' + 2y = 0,\]
- $y_3 = xe^{x}$ is a solution to
-\[ y'' - 3y' + 2y = -e^{x},\]
- $y_4 = x e^{2x}$ is a solution to
-\[ y'' - 3y' + 2y = e^{2x}.\]
+and  $-xe^{x}$ is a solution to
+\[ y'' - 3y' + 2y = e^{x}.\]
 Consider the following functions:
 \begin{multicols}{2}
 \begin{enumerate}[label=(\alph*)]
-\item $y= 12 e^x$
-\item $y= e^x - e^{2x}$
-\item $y= 12e^x - 15e^{2x}$
-\item $y= - xe^{x}$
-\item $y= 12e^x - xe^{x}$
-\item $y= 12 x e^x + 15 e^{2x}$
-\item $y= -12 x e^x + 15 e^{2x}$
-\item $y= 15 e^{2x} -12 x e^x + 15 e^{2x}$
+\item\label{10a} $y= 5 e^x$
+\item\label{10b} $y= e^x - e^{2x}$
+\item\label{10c} $y= 7 xe^{x}$
+\item\label{10d} $y= 12e^x -  3 e^{2x}$
+\item\label{10e} $y=  -2 e^x - xe^{x}$
+\item\label{10f} $y= -2 x e^x + 3 e^{2x}$
+\item\label{10g} $y= - x e^x + 9 e^{2x}$
+\item\label{10h} $y= 4 e^{2x} - x e^x + 15 e^{2x}$
 \end{enumerate}
 \end{multicols}
+According to the superposition principle determine:
 \begin{enumerate}
 \item Which of the functions are solutions to
 \[ y'' - 3y' + 2y = 0\ ?\]
 \item Which of the functions are solutions to
 \[ y'' - 3y' + 2y = e^x\ ?\]
-\item Which of the functions are solutions to
-\[ y'' - 3y' + 2y = 12 e^x + 15 e^{2x}\ ?\]
 \end{enumerate}
+\begin{framed}
+\begin{enumerate}
+\item Since this is a linear homogeneous equation, we know that any superpositions of our given solutions $e^x$ and $e^{2x}$ are also solutions of the equation. This means \ref{10a}, \ref{10b}, and \ref{10d} are solutions too.
+\item Since this is a linear nonhomogeneous equation, we know that our particular solution plus any supoerposition of our homogeneous solutions is also a solution. This means \ref{10e}, \ref{10g}, and \ref{10h} are solutions too.
 
+The other functions \ref{10c} and \ref{10f} are not solutions to either!
+\end{enumerate}
+\end{framed}
 
+We are going to express general solutions of linear ODEs in this way. Namely, for a homogeneous linear ODE, we will express the general solution as
+\[ y = C_1 y_1 + \cdots + C_t y_t\]
+for functions $y_1,\dots,y_t$ (that we have to go find in each case).
+For a nonhomogeneous linear ODE, we will express the general solution as
+\[ y = y_p + y_c\]
+where $y_p$ is any \emph{particular solution}\index{particular solution} and $y_c$ is the general solution to the associated homogeneous ODE (which in turn we will express like the last formula), called the \emph{complementary solution}\index{complementary solution}.
+
+For example, the general solution of $y'' - 3y' + 2y = 0$
+is \[y= C_1 e^{x} + C_2 e^{2x}\]
+and the general solution of  $y'' - 3y' + 2y = e^{x}$
+is \[y= -x e^x + C_1 e^{x} + C_2 e^{2x}:\] here $-x e^x$ is a particular solution and $C_1 e^{x} + C_2 e^{2x}$ is the complementary solution.
 
 \subsection*{Linear dependence and Wronskians}
 
-
-
-
-Let's consider an example.
 \begin{ex} Consider the ODE
 \[ y'' - y=0\]
 (equivalently, $y'' = y$).
 Certainly $y_1= e^x$ is a solution, since its derivative is itself.
 Can we guess another? $y_2= e^{-x}$ has its negative for its derivative, and then the sign flips again with the second derivative, so this is also a solution.
 
-By the principle of superposition, $7 e^x$ and $-15 e^x + \pi e^{-x}$ are also a solutions. Note that something like $x e^x$ is not a solution: the principle only applies to constant multipliers.
+By the principle of superposition, $7 e^x$ and $-15 e^x + \pi e^{-x}$ are also solutions. Note that something like $x e^x$ is not a solution: the principle only applies to constant multipliers.
 
-Let's recall a couple more functions:
+Let's recall a couple more functions:\index{$\sinh(x)$}\index{$\cosh(x)$}
 \[ \sinh(x) = \frac{e^x - e^{-x}}{2} \quad \cosh(x) = \frac{e^x + e^{-x}}{2}\]
-\index{$\sinh(x)$}\index{$\cosh(x)$}
 are functions that satisfy $\sinh'(x) = \cosh(x)$ and $\cosh'(x) = \sinh(x)$,
 so $y_3=\sinh(x)$ and $y_4=\cosh(x)$ are also solutions.
 
@@ -1189,6 +1192,10 @@ For example,
 \[ \frac12 e^x + \frac12 e^{-x} + (-1) \cosh(x) = 0\]
 means that $\{e^x,e^{-x}, \cosh(x)\}$ is linearly dependent.
 
+
+We now want a tool to detect linear (in)dependence of functions. Here is a clever idea: if $c_1 f + c_2 g=0$ (as functions) then, taking derivatives,
+ \[ c_1 f' + c_2 g' = 0\] also. Then\dots
+ 
 
 \begin{comment}
 \end{comment}
