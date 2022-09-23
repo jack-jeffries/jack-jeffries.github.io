@@ -1548,24 +1548,31 @@ Do you see the difference?
 \item $\{ 5 + (-1)^n \frac{1}{n}  \}_{n=1}^\infty$.
 \end{enumerate}
 
-\
+\begin{framed}
+\begin{enumerate}
+\item bounded, strictly decreasing, strictly monotone
+\item bounded below, increasing, monotone
+\item bounded
+\item bounded
+\end{enumerate}
+\end{framed}
 
-\item Prove or disprove the converse\footnote{\textbf{Proposition~9.5:} Any convergent sequence is bounded.} to Proposition~9.5.
-
-
-
+\item Prove or disprove the converse to Proposition~9.5.
+\begin{framed}
+The sequence $\{(-1)^n\}_{n=1}^\infty$ is bounded but divergent, so the converse is false.
+\end{framed}
 \end{enumerate}
 
-\begin{framed}
-\noindent \textbf{Example 10.1:}
+
+\begin{ex}
 \begin{enumerate}
 \item A constant sequence $\{c\}_{n=1}^\infty$ converges to $c$.
 \item The sequence $\{\frac{1}{n}\}_{n=1}^\infty$ converges to $0$.
 \end{enumerate}
+\end{ex}
 
-\
 
-\noindent \textbf{Theorem~10.2 (Limits and algebra):}
+\begin{thm}[Limits and algebra]
 Let $\{a_n\}_{n=1}^\infty$ be a sequence that converges to $L$, and $\{b_n\}_{n=1}^\infty$ be a sequence that converges to $M$.
 \begin{enumerate}
 \item If $c$ is any real number, then $\{ c a_n\}_{n=1}^\infty$ converges to $cL$.
@@ -1574,25 +1581,33 @@ Let $\{a_n\}_{n=1}^\infty$ be a sequence that converges to $L$, and $\{b_n\}_{n=
 \item If $L\neq 0$ and $a_n\neq 0$ for all $n\in \N$, then $\displaystyle\left\{\frac{1}{a_n}\right\}_{n=1}^\infty$\!\!\! converges to~$\displaystyle \frac{1}{L}$.
 \item If $M\neq 0$ and $b_n\neq 0$ for all $n\in \N$, then $\displaystyle\left\{\frac{a_n}{b_n}\right\}_{n=1}^\infty$\!\!\! converges to~$\displaystyle \frac{L}{M}$.
 \end{enumerate}
-\end{framed}
+\end{thm}
+(end of theorem, back to problems)
 
 \begin{enumerate}\setcounter{enumi}{2}
 
 \item Use Theorem~10.2 and Example~10.1 to show that the sequence $\{2 + 5/n - 7/n^2\}_{n=1}^\infty$ converges to $2$.
 
-\
+\begin{framed}
+The constant sequence $\{2\}_{n=1}^\infty$ converges to $2$ by Ex 10.1 part 1. The sequence $\{5/n\}_{n=1}^\infty = \{5 \cdot 1/n\}_{n=1}^\infty$ converges to $5\cdot 0 = 0$ by Ex 10.1 part 2 and Thm 10.2 part 1. The sequence $\{ -7/n^2\}_{n=1}^\infty = \{ -7 \cdot 1/n \cdot 1/n\}_{n=1}^\infty$ converges to $-7 \cdot 0 \cdot 0 = 0$ by Ex 10.1 part 2, Thm 10.2 part 1, and Thm 10.2 part 3. Thus, by Thm 10.2 part 2, the sequence $\{ 2 + 5/n - 7/n^2\}_{n=1}^\infty$ converges to $2+0+0 = 2$ by Thm 10.2 part 2.
+\end{framed}
 
-\item Use Theorem~10.2 and Example~10.1 to show\footnote{Hint: Divide the top and bottom by the same thing to get a sequence where part (5) above applies.} that the sequence $\frac{2n+3}{3n-4}$ converges to $\frac23$.
+\item Use Theorem~10.2 and Example~10.1 to show that the sequence $\frac{2n+3}{3n-4}$ converges to $\frac23$.
 
 \
 
 \item Use Theorem~10.2 to show that if $\{a_n\}_{n=1}^\infty$ converges to $L$, and $\{b_n\}_{n=1}^\infty$ converges to $M$, then $\{a_n - b_n\}_{n=1}^\infty$ converges to $L-M$.
 
-\
+\begin{framed}
+By Thm 10.2 part 1, $\{-b_n\}_{n=1}^\infty$ converges to $-M$. Then by Thm 10.2 part 2, $\{a_n - b_n\}_{n=1}^\infty = \{a_n + (- b_n)\}_{n=1}^\infty$ converges $L+(-M) = L-M$.
+\end{framed}
 
 \item Prove or disprove the following converse to part (2): If $\{ a_n + b_n \}_{n=1}^\infty$ converges to $L+M$ then $\{a_n \}_{n=1}^\infty$ converges to $L$ and $\{ b_n \}_{n=1}^\infty$ converges to $M$.
 
-\
+\begin{framed}
+Take $\{ a_n\}_{n=1}^\infty = \{ (-1)^n\}_{n=1}^\infty$ and $\{ b_n \}_{n=1}^\infty = \{ (-1)^{n+1} \}_{n=1}^\infty$. Then $\{ a_n + b_n\}_{n=1}^\infty = \{ 0 \}_{n=1}^\infty$ converges to $0$, but neither $\{a_n\}_{n=1}^\infty$ nor $\{b_n\}_{n=1}^\infty$ converges.
+\end{framed}
+
 
 \item Prove part (1) of Theorem~10.2  in the special case $c=2$ by following the following steps:
 \begin{itemize}
@@ -1603,18 +1618,17 @@ Let $\{a_n\}_{n=1}^\infty$ be a sequence that converges to $L$, and $\{b_n\}_{n=
 \end{itemize}
 
 
-\
 
 
-\item Prove\footnote{Hint: You might deal with the cases $c=0$ and $c\neq 0$ separately.} part (1) of Theorem~10.2.
+\item Prove part (1) of Theorem~10.2.
 
-\
 
-\item Prove\footnote{Hint: The Triangle Inequality might be helpful in the form $|(a_n + b_n) - (L+M)|  \leq  |a_n - L| + |b_n - M|$.} part~(2) of Theorem~10.2.
 
-\
+\item Prove part~(2) of Theorem~10.2.
 
-\item Prove\footnote{Hint: You may need to use Proposition~9.5.} part~(3) of Theorem 10.2.
+
+
+\item Prove part~(3) of Theorem 10.2.
 \end{enumerate}
 \begin{comment}
 
