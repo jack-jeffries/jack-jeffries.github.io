@@ -1572,7 +1572,7 @@ The sequence $\{(-1)^n\}_{n=1}^\infty$ is bounded but divergent, so the converse
 \end{ex}
 
 
-\begin{thm}[Limits and algebra]
+\begin{thm}[Limits and algebra]\label{thm99}
 Let $\{a_n\}_{n=1}^\infty$ be a sequence that converges to $L$, and $\{b_n\}_{n=1}^\infty$ be a sequence that converges to $M$.
 \begin{enumerate}
 \item If $c$ is any real number, then $\{ c a_n\}_{n=1}^\infty$ converges to $cL$.
@@ -1630,25 +1630,14 @@ Take $\{ a_n\}_{n=1}^\infty = \{ (-1)^n\}_{n=1}^\infty$ and $\{ b_n \}_{n=1}^\in
 
 \item Prove part~(3) of Theorem 10.2.
 \end{enumerate}
+
 \begin{comment}
 
+\Sept{27}
 
-\begin{ex} The sequence $\{\frac{1}{n}\}_{n=1}^\infty$ is strictly increasing and bounded (above by, e.g., $1$ and below by, e.g., $0$).
+Last time we looked at:
 
-The Fibonacci sequence $\{f_n\}_{n=1}^{\infty} = 1,1,2,3,5,8,\dots$ is strictly increasing and bounded below, but not bounded above.
-
-The sequence $\{5 + (-1)^n \frac{1}{n}\}_{n=1}^\infty$ is not monotone, but it is bounded (above by, e.g., $6$ and below by, e.g., $4$).
-
-Is the sequence of quotients of Fibonacci numbers $\{\frac{f_{n+1}}{f_n}\}_{n=1}^{\infty} = \frac{1}{1}, \frac{2}{1}, \frac{3}{2}, \frac{5}{3},\frac{8}{5},\dots$
-monotone? Is it bounded? Convergent?
-\end{ex}
-
-
-\begin{rem}
-The converse of the previous proposition is false; the sequence $\{(-1)^n\}_{n=1}^\infty$ is a counterexample.
-\end{rem}
-
-\begin{thm}[Limits and algebra]\label{thm99}
+\noindent \textbf{Theorem 10.2. (Limits and algebra):}
 Let $\{a_n\}_{n=1}^\infty$ be a sequence that converges to $L$, and $\{b_n\}_{n=1}^\infty$ be a sequence that converges to $M$.
 \begin{enumerate}
 \item If $c$ is any real number, then $\{ c a_n\}_{n=1}^\infty$ converges to $cL$.
@@ -1657,168 +1646,7 @@ Let $\{a_n\}_{n=1}^\infty$ be a sequence that converges to $L$, and $\{b_n\}_{n=
 \item If $L\neq 0$ and $a_n\neq 0$ for all $n\in \N$, then $\displaystyle\left\{\frac{1}{a_n}\right\}_{n=1}^\infty$\!\!\! converges to~$\displaystyle \frac{1}{L}$.
 \item If $M\neq 0$ and $b_n\neq 0$ for all $n\in \N$, then $\displaystyle\left\{\frac{a_n}{b_n}\right\}_{n=1}^\infty$\!\!\! converges to~$\displaystyle \frac{L}{M}$.
 \end{enumerate}
-\end{thm}
 
-
-\begin{comment}
-\Sept{20}
-
-\begin{prop}\begin{enumerate}
-\item If $c$ is any real number, then the constant sequence $\{ c\}_{n=1}^{\infty}$ converges to $c$.
-\item The sequence $\{1/n\}_{n=1}^\infty$ converges to $0$.
-\end{enumerate}
-\end{prop}
-
-
-
-
-
-\begin{enumerate}
-\item Use the two results above to give a short proof\footnote{Hint: Rewrite $\displaystyle\frac{2n-1}{5n+1} = \frac{(2n-1)/n}{(5n+1)/n} = \frac{2-1/n}{5+1/n}$.} that $\displaystyle \left\{ \frac{2n-1}{5n+1} \right\}_{n=1}^\infty$\!\!\! converges~to~$\displaystyle  \frac{2}{5}$.
-
-\begin{framed}
-We can rewrite $\displaystyle\frac{2n-1}{5n+1} = \frac{(2n-1)/n}{(5n+1)/n} = \frac{2-1/n}{5+1/n}$. Since $\{1/n\}_{n=1}^\infty$ converges to $0$, $\{-1/n\}_{n=1}^\infty$ converges to $-1\cdot 0 = 0$ by Theorem 12.2(1). Since $\{2\}_{n=1}^\infty$ converges to $2$ and $\{-1/n\}_{n=1}^\infty$ converges to $0$, $\{2-1/n\}_{n=1}^\infty$ converges to $2$ by Theorem 12.2(2). Since $\{5\}_{n=1}^\infty$ converges to $5$ and $\{1/n\}_{n=1}^\infty$ converges to $0$, $\{5+1/n\}_{n=1}^\infty$ converges to $5$ by Theorem 12.2(2). Then, by Theorem 12.2(5), which applies since $5\neq 0$ and every term of $\{5+1/n\}_{n=1}^\infty$ is nonzero, the sequence converges to $2/5$.
-\end{framed}
-
-\item Prove part (1) of Proposition~12.1.
-
-\begin{framed}
-Let $\varepsilon>0$. Take $N=0$. For any natural number $n>N$, we have $|c-c|=0<\varepsilon$. This shows that the sequence converges to $c$.
-\end{framed}
-
-\item Prove part (1) of Theorem~12.2:
-\begin{itemize}
-\item First, assume that $c=0$. Explain why the result is true in this case.
-\item Now, assume that $c\neq 0$. We need to prove that $\{ c a_n\}_{n=1}^\infty$ converges to $cL$. Write the first sentence of the proof of this.
-\item We have assumed that $\{a_n\}_{n=1}^\infty$ converges to $L$. Explain what this means when applied to the positive number $\displaystyle \frac{\varepsilon}{|c|}$ (in the place of what we usually call $\varepsilon$).
-\item Complete the proof.
-\end{itemize}
-
-\begin{framed}
-First, if $c=0$, then $\{c a_n\}_{n=1}^\infty$ is the constant sequence $\{0\}_{n=1}^\infty$, which converges to $0 = 0\cdot L$, so the result holds in this case.
-
-Now, let $\e>0$. Applying the definition of $\{a_n\}_{n=1}^\infty$ converges to $L$ with the positive number $\e/|c|$, there is some $N\in \R$ such that for all natural numbers $n>N$, we have $|a_n-L|<\e/|c|$. Then $|ca_n - cL| = |c| |a_n-L| < |c| \e/|c| = \e$. This shows that $\{ca_n\}_{n=1}^\infty$ converges to $cL$.
-\end{framed}
-%\end{comment}
-\item Prove\footnote{Hint: Given $\varepsilon>0$, can you find $N$ such that $|a_n-L|<\varepsilon/2$ and $|b_n-M|<\varepsilon/2$ for all natural numbers $n>N$?} part (2) of Theorem~12.2.
-
-\begin{framed}
-Pick $\e > 0$. 	
-	Since $\{a_n\}_{n=1}^\infty$ converges to $L$ and $\frac{\e}{2}$ is positive, 
-	there is a number $N_1$ such that for all $n \in \N$ with $n > N_1$ we have
-	$$
-	|a_n - L| < \frac{\e}{2}.
-	$$
-	Likewise, 
-	since $\{b_n\}_{n=1}^\infty$ converges to $M$,
-	there is a number $N_2$ such that for all $n \in \N$ with $n > N_2$ we have
-	$$
-	|b_n - M| < \frac{\e}{2}.
-	$$
-	Let $N = \max\{N_1, N_2\}$. If $n \in \N$ and $n > N$, then $n > N_1$ and $n > N_2$ and hence we have
-	$$
-	|a_n - L| < \frac{\e}{2}
-	\and
-	|b_n - M| < \frac{\e}{2}.
-	$$
-	Using these inequalities and the triangle inequality we get
-	$$\begin{aligned}
-	|(a_n+b_n) - (M+L)| &= |(a_n-M) + (b_n -L)| \\&\leq |(a_n-M)| + |(b_n -L)| < \frac{\e}{2} + \frac{\e}{2}  = \e.\end{aligned}
-	$$
-	This proves that $\{a_n  + b_n\}_{n=1}^\infty$ converges to $L + M$.
-\end{framed}
-
-\item Prove\footnote{Hint: Write $|a_n b_n - L M| = |a_n(b_n -M) + M(a_n - L)|$ and apply the triangle inequality. Since $\{a_n\}_{n=1}^\infty$ converges, it is bounded.}  part (3) of Theorem~12.2.
-
-\begin{framed}
-Pick $\e > 0$.
-	
-	(``Scratch work'': The goal is to make 
-	$|a_nb_n - LM|$ small and the trick is to use that
-	$$
-	\begin{aligned}
-	|a_nb_n - LM| & = |a_n(b_n - M) + (a_n - L)M|  \\
-	& \leq |a_n(b_n - M)| + |(a_n - L)M| \\
-	& = |a_n| |b_n - M| + |a_n - L| |M|.
-	\end{aligned}
-	$$
-	Our goal will be to take $n$ to be large enough so that each of $|a_n| |b_n - M|$ and $|a_n - L| |M|$ is smaller than $\e/2$.
-	We can make $|a_n -L|$ as small as we like and $|M|$ is just a fixed number. So, we can ``take care'' of the second term by choosing $n$ big enough so
-	that $|a_n - L| < \frac{\e}{2|M|}$. A irritating technicality here is
-	that $|M|$ could be $0$, and so we will use $\frac{\e}{2|M|+1}$ instead. 
-	The other term   $|a_n| |b_n - M|$ is harder to deal with since each factor varies with $n$. 
-	Here we use that convergent sequences are bounded so that we can find a real number $X$ so that $|a_n| \leq X$ for all $n$. Then we choose $n$ large enough
-	so that $|b_n - M| < \frac{\e}{2 X}$. Back to the proof.)
-	
-	Since $\{a_n\}$ converges, it is bounded by Proposition \ref{prop21}, which gives that  there is a strictly positive real number $X$ so that $|a_n| \leq X$ for all $n \in \N$.
-	Since $\{b_n\}$
-	converges to $M$ and $\frac{\e}{2 X} > 0$, there is a number $N_1$ so that if $n > N_1$ then $|b_n - M| < \frac{\e}{2 X}$. Since $\{a_n\}$ converges to $L$
-	and $\frac{\e}{2|M| + 1} > 0$, there is a number
-	$N_2$ so that if $n \in \N$ and $n > N_2$, then $|a_n - L| < \frac{\e}{2|M| + 1}$. Let $N = \max\{N_1, N_2\}$. For any $n \in \N$ such that $n > N$, we have
-	$$
-	\begin{aligned}
-	|a_nb_n - LM| & = |a_n(b_n - M) + (a_n - L)M| \\
-	& \leq |a_n(b_n - M)| + |(a_n - L)M| \\
-	& = |a_n| |b_n - M| + |a_n - L| |M| \\
-	& < X \frac{\e}{2 X} + \frac{\e}{2|M| + 1} |M| \\
-	& < \e.
-	\end{aligned}
-	$$
-	This proves $\{a_n  \cdot b_n\}_{n=1}^\infty$ converges to $L \cdot M$.
-	\end{framed}
-\end{enumerate}
-
-Here is the proof of parts (4) and (5) of the theorem:
-\begin{proof}
-We start with (4).
-
-To prove this claim,  pick $\e > 0$. 
-	
-	(Scratch work: We want to show $\left|\frac{1}{a_n} -
-	\frac{1}{L}\right| < \e$ holds for $n$ sufficiently large.  
-	We have
-	$$
-	\left|\frac{1}{a_n} - \frac{1}{L}\right| = \frac{|L - a_n|}{|a_n||L|}.
-	$$ 
-	We can make the top of this fraction as small as we like, but the problem is that the
-	bottom might be very small too since $a_n$ might get very close to $0$. But since $a_n$ converges to $L$ and $L \ne 0$ if we go far enough out, it will be
-	close to $L$. In particular, if $a_n$ is within a distance of
-	$\frac{|L|}{2}$ of $M$ then $|a_n|$ will be at least
-	$\frac{|L|}{2}$. So for $n$ sufficiently large we have
-	$\frac{|a_n-L|}{|a_n||L|} < 2 \frac{|a_n-L|}{|L|^2}$. And then for $n$
-	sufficiently large we also get $|a_n - L| < \frac{|L|^2}{2 \e}$.  Back to the formal proof\dots)
-	
-	
-	
-	Since $\{a_n\}$ converges to $L$ and $\frac{|L|}{2} > 0$, there is an $N_1$ such that for $n > N_1$ we have $|a_n - L| < \frac{|L|}{2}$  and hence
-	$|a_n| > \frac{|L|}{2}$. Again using that $\{a_n\}$ converges to $M$
-	and that $\frac{ \e |L|^2}{2} > 0$, there is an $N_2$ so that for $n > N_2$ we have
-	$|a_n - L| < \frac{ \e |L|^2}{2}$. Let $N = \max\{N_1, N_2\}$. If $n > N$, then we have
-	$$
-	\begin{aligned}
-	\left|\frac{1}{a_n} - \frac{1}{L}\right| & = \frac{|a_n - L|}{|a_n||L|} \\
-	& < \frac{2}{|L|}  \frac{|a_n - L|}{|L|} \\
-	& = 2 \frac{|a_n - L|}{|L|^2} \\
-	\end{aligned}
-	$$
-	since $|a_n| > |L|/2$ and hence $\frac{1}{|a_n|} < \frac{2}{|L|}$.
-	But then
-	$$
-	2 \frac{|a_n - L|}{|L|^2}  < 2 \frac{\frac{\e |L|^2}{2}}{|L|^2} = \e
-	$$
-	since $|a_n - L| < \frac{ \e |L|^2}{2}$. Putting these together gives
-	$$
-	\left|\frac{1}{a_n} - \frac{1}{L}\right| < \e
-	$$
-	for all $n > N$. 
-	This proves $\{\frac{1}{a_n}\}_{n=1}^\infty$ converges to $\frac{1}{L}$.
-
-Finally, part (5) follows from parts (3) and (4).
-\end{proof}
-
-
-%\begin{comment}
-\Sept{22}
 
 
 The following is another useful technique:
@@ -1826,26 +1654,16 @@ The following is another useful technique:
 \begin{thm}[The ``squeeze'' principle] \label{thm33}
 Suppose 
 $\{a_n\}_{n=1}^\infty$, $\{b_n\}_{n=1}^\infty$, and $\{c_n\}_{n=1}^\infty$ are three sequences such that 
-\begin{itemize}
-\item $\{a_n\}_{n=1}^\infty$ converges to $L$, 
-\item $\{c_n\}_{n=1}^\infty$ also converges to $L$ (same value), and
-\item there is a real number $M$ such that $a_n \leq b_n \leq c_n$ for all $n \in \N$ such that $n > M$. 
-\end{itemize}
+$\{a_n\}_{n=1}^\infty$ and $\{c_n\}_{n=1}^\infty$ both converge to $L$, 
+ and $a_n \leq b_n \leq c_n$ for all $n$.
 Then $\{b_n\}_{n=1}^\infty$ also converges to $L$.
 \end{thm}
 
-The heuristic version of this theorem is:
-\begin{quote}
-If $\lim_{n \to \infty} a_n = L = \lim_{n \to \infty} c_n$ and $b_n$ is ``eventually'' between $a_n$ and $c_n$, then
-$\lim_{n \to \infty} b_n = L$ too.
-\end{quote}
  
-
-
 
 \begin{proof}
 Assume $\{a_n\}_{n=1}^\infty$ and  $\{c_n\}_{n=1}^\infty$ both
-converge to $L$ and that there is a real number $M$ such that $a_n \leq b_n \leq c_n$ for all $n \in \N$ such that $n > M$. 
+converge to $L$ and that  $a_n \leq b_n \leq c_n$ for all $n \in \N$. 
 We need to prove $\{b_n\}_{n=1}^\infty$ converges to $L$.
 
 Pick $\e> 0$.  Since  $\{a_n\}_{n=1}^\infty$ converges to $L$ there is a number $N_1$ such that if $n \in \N$ and $n > N_1$ then
@@ -1853,11 +1671,11 @@ $|a_n - L| < \e$ and hence $L- \e < a_n < L + \e$. Likewise,
 since $\{c_n\}_{n=1}^\infty$ converges to $L$ there is a number $N_2$ such that if $n \in \N$ and $n > N_2$ then
  $L- \e < c_n < L + \e$. Let 
 $$
-N = \max\{N_1, N_2, M\}
+N = \max\{N_1, N_2\}.
 $$
-where $M$ is defined as in the statement of the Theorem. If $n \in \N$ and $n > N$, then
-$n > N_1$ and hence $L - \e < a_n$, and $n > N_2$ and hence $c_n < L + \e$, and $n > M$ and hence
-$a_n < b_n < c_n$. Combining these facts gives that for $n \in \N$ such that $n > N$,
+ If $n \in \N$ and $n > N$, then
+$n > N_1$ and hence $L - \e < a_n$, and $n > N_2$ and hence $c_n < L + \e$, and also
+$a_n \leq  b_n \leq  c_n$. Combining these facts gives that for $n \in \N$ such that $n > N$,
 we have
 $$
 L - \e < b_n < L + \e
@@ -1866,12 +1684,22 @@ and hence $|b_n - L| < \e$.
 This proves $\{b_n\}_{n=1}^\infty$ converges to $L$. 
 \end{proof}
 
-%\begin{comment}
-
-\Sept{24}
 
 \begin{ex} We can use the Squeeze Theorem to give a short proof that $\{ 5 + (-1)^n \frac{1}{n} \}_{n=1}^\infty$ converges to $5$. Note that Theorem \ref{thm99} alone cannot be used in this
   example. However, from Theorem~\ref{thm99}, it follows that $\{5-\frac{1}{n}\}_{n=1}^\infty$ and  $\{5+\frac{1}{n}\}_{n=1}^\infty$ both converge to $5$. Then, since \[5-\frac{1}{n} \leq  5 + (-1)^n \frac{1}{n} \leq 5+\frac{1}{n}\] for all $n$, our sequence also converges to $5$.\end{ex}
+
+
+On last week's worksheet and on the homework, you proved part (1) of Theorem~\ref{thm99}. Let us discuss part (2).
+
+\begin{proof}[Proof of Part~(2) of Theorem~\ref{thm99}]
+Suppose that $\{a_n\}_{n=1}^\infty$ converges to $L$ and $\{b_n\}_{n=1}^\infty$ convergest to $M$.
+Let $\e>0$. [Scratch: We need an $N$ such that whenever $n>N$ we have $|(a_n + b_n) - (L+M)|<\e$. Note that $|(a_n + b_n) - (L+M)|\leq |a_n  - L| + |b_n - M|$ by the triangle inequality, so if we can make $|a_n  - L| + |b_n - M|< \e$ we are set. By definition of convergence, we can make $|a_n  - L| $ and $|b_n  - M| $ as small as we like past some point. If we make them both smaller than $\e/2$, we are golden.]
+By definition of converges to $L$ with the positive number $\e/2$, there is some $N_1\in \R$ such that $|a_n-L|<\e/2$ whenever $n$ is a natural number  with $n>N_1$. Likewise there is some $N_2\in \R$ such that $|b_n-M|<\e/2$ whenever $n$ is a natural number  with $n>N_2$. Set $N=\max\{N_1,N_2\}$. Let $n>N$. Then $n>N_1$ and $n>N_2$. Hence, we have
+\[ |(a_n + b_n) - (L+M)|\leq |a_n  - L| + |b_n - M| < \e/2 + \e/2 = \e,\]
+as required.
+\end{proof}
+
+
 
 
 
@@ -1930,7 +1758,7 @@ This proves $\{b_n\}_{n=1}^\infty$ converges to $L$.
 When I introduced the Completeness Axiom, I mentioned that, heuristically, it is what tells us that the real number line doesn't have any
 holes. The next result makes this a bit more precise:
 
-\begin{thm}\label{thm216}
+\begin{thm}\label{thm226}
 Every increasing, bounded above sequence converges.
 \end{thm}
 
