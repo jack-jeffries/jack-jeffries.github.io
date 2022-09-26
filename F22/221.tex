@@ -1145,8 +1145,9 @@ The other functions \ref{10c} and \ref{10f} are not solutions to either!
 \end{framed}
 
 \begin{comment}
+\Oct{4}
 
-We are going to express general solutions of linear ODEs in this way. Namely, for a homogeneous linear ODE, we will express the general solution as
+We are going to put the principle of superposition to use to write general solutions of linear ODEs in terms of a few solutions. Namely, for a homogeneous linear ODE, we will express the general solution as
 \[ y = C_1 y_1 + \cdots + C_t y_t\]
 for functions $y_1,\dots,y_t$ (that we have to go find in each case).
 For a nonhomogeneous linear ODE, we will express the general solution as
@@ -1208,7 +1209,7 @@ We now want a tool to detect linear (in)dependence of functions. Here is Wronski
 \[\det \begin{bmatrix} a & b& c\\ d & e & f \\ g & h & i \end{bmatrix} = \raisebox{-6.7mm}{\includegraphics[scale=.55]{det1}} = aei+bfg+cdh - ceg - afh-bdi.\]
 \end{defn}
 
-Larger square matrices have determinants too, but we won't discuss them in this class.
+Larger square matrices have determinants too, but we won't discuss them in this class. Do not attempt to generalize the formula for $3\times 3$ to $n\times n$ matrices; consult a linear algebra text instead.
 
 \begin{defn} The \emph{Wronskian}\index{Wronskian} of two functions $f,g$ is the determinant
 \[ W(f,g) = \det \begin{bmatrix} f & g \\ f'  & g' \end{bmatrix} = f g' - f' g.\] This is a function (of the same variable that $f$ and $g$ are functions of).
@@ -1219,7 +1220,18 @@ In general, the Wronskian of $n$ functions is the determinant of an $n\times n$ 
 
 For example, \[W(x^2,x^3) = \det \begin{bmatrix} x^2 & x^3 \\ 2x & 3x^2 \end{bmatrix} = x^2 \cdot 3x^2 - 2x \cdot x^3 = x^4.\]
 
-Here's what it's good for.
+The point of Wronskians is that a set of (sufficiently differentiable) functions is linearly dependent on an interval if and only if their Wronskian is the zero function on that interval.
+
+\begin{ex}
+Let's use Wronskians to show that the functions $\{ x, e^x\}$ are linearly independent on $(-\infty,\infty)$. We have
+\[ W( x, e^x) = \det \begin{bmatrix} x & e^x \\ 1 & e^x\end{bmatrix} = xe^x - e^x = (x-1) e^x\] which is not the zero function, so the are linearly independent.
+
+Let's try $\{1,  x^2, 4-x^2\}$ instead on $(-\infty,\infty)$. We have
+\[\begin{aligned} W(1,  x^2, 4-x^2) &= \det \begin{bmatrix} 1 & x^2 & 4-x^2 \\ 0 & 2x & -2x \\ 0 & 2 & -2 \end{bmatrix} \\& = 1 \cdot 2x \cdot (-2) + x^2 \cdot (-2x) \cdot 0 + (4-x^2) \cdot 0 \cdot 2 \\&\quad - (4-x^2) \cdot 2x \cdot 0 - 1 \cdot (-2x) \cdot 2  - x^2 \cdot 0 \cdot -2 = 0,\end{aligned}\]
+so these are linearly dependent.
+\end{ex}
+
+In fact, when we have a set of solutions to a homogeneous linear ODE, something even better happens.
 
 \begin{thm}[Wronskian theorem]
 If $f_1,\dots,f_n$ are $n$ solutions of the $n$th order homogenous linear equation
@@ -1231,8 +1243,45 @@ on some interval, then
 \end{enumerate}
 \end{thm}
 
- 
+This means that we can check the Wronskian function at any single point (of your choice!), and whether it's zero or not determines whether the solutions are independent or not.
 
+
+Now we come to our key definition.
+
+\begin{defn} For an $n$th order homogeneous linear ODE, a \emph{fundamental set}\index{fundamental set} of solutions is a collection of $n$ (same number!) linearly independent solutions.
+\end{defn}
+
+\begin{thm}[General solutions for linear ODEs]
+\begin{enumerate} 
+\item
+Given an $n$th order homogeneous linear ODE,
+\[ a_n(x) y^{(n)} + a_{n-1}(x) y^{(n-1)} + \cdots + a_1(x) y' + a_0(x) y = 0\]
+there is a fundamental set of solutions $y_1,\dots,y_n$. Given such a fundamental set, the general solution of the ODE is
+\[y = C_1 y_1 + \cdots + C_n y_n.\]
+\item Given an $n$th order nonhomogeneous linear ODE,
+ \[ a_n(x) y^{(n)} + a_{n-1}(x) y^{(n-1)} + \cdots + a_1(x) y' + a_0(x) y = g(x),\]
+ and any particular solution $y_p$, the general solution is 
+\[y = y_p + C_1 y_1 + \cdots + C_n y_n,\]
+where $\{y_1,\dots,y_n\}$ is a fundamental set of solutions to the associated homogeneous equation.
+\end{enumerate}
+\end{thm}
+
+\begin{slogan} Given $n$ solutions to an $n$-th order homogeneous linear ODE, if their Wronskian is nonzero, then they form a fundamental set, and the general solution is given by superposition. \end{slogan}
+
+\begin{ex}
+Consider the ODE
+\[ y'' - 3y' + 2y = 0.\]
+We saw that $y=e^x$ and $y=e^{2x}$ are two solutions to this equation. We want to use these to express the general solution. If we have two linearly independent solutions, the general solution is given by superposition. We check the Wronskian:
+\[ W(e^x,e^{2x}) = \det \begin{bmatrix} e^x & e^{2x} \\ e^x & 2 e^{2x} \end{bmatrix} = e^x (2e^{2x}) - e^x e^{2x} = e^{3x} \neq 0,\]
+so they are linearly independent. Thus the general solution is
+\[ y = C_1 e^x + C_2 e^{2x}.\]
+
+Now we consider 
+\[y'' - 3y' + 2y = e^{x}.\]
+We saw earlier that $y=-xe^x$ is a solution. Using what we just proved baout the homogeneous solution, we conclude that
+\[ y=-xe^x + C_1 e^x + C_2 e^{2x}\]
+is the general solution to this nonhomogeneous equation.
+\end{ex}
 \begin{comment}
 \end{comment}
 
