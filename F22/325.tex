@@ -1478,18 +1478,18 @@ Here is some terminology we will need:
 \begin{enumerate}
 
 \item 
-We say $\{a_n\}_{n=1}^\infty$ is {\em bounded above} if there  exists at least one real number $M$ such that $a_n \leq M$ for all $n   \in
+We say $\{a_n\}_{n=1}^\infty$ is {\em bounded above}\index{bounded above} if there  exists at least one real number $M$ such that $a_n \leq M$ for all $n   \in
 \N$; 
-we say $\{a_n\}_{n=1}^\infty$ is {\em bounded below} if there  exists at least one real number $m$ such that $a_n \geq m$ for all $n   \in
+we say $\{a_n\}_{n=1}^\infty$ is {\em bounded below}\index{bounded below} if there  exists at least one real number $m$ such that $a_n \geq m$ for all $n   \in
 \N$; and we say 
-$\{a_n\}_{n=1}^\infty$ is {\em bounded} if it is both bounded above and bounded below.
+$\{a_n\}_{n=1}^\infty$ is {\em bounded}\index{bounded} if it is both bounded above and bounded below.
 
-\item We say $\{a_n\}_{n=1}^\infty$ is {\em increasing} if for all $n \in \N$, $a_n \leq a_{n+1}$;
-we say $\{a_n\}_{n=1}^\infty$ is {\em decreasing} if for all $n \in \N$, $a_n \geq a_{n+1}$; and we say
-$\{a_n\}_{n=1}^\infty$ is {\em monotone} if it is either decreasing or increasing.
+\item We say $\{a_n\}_{n=1}^\infty$ is {\em increasing}\index{increasing} if for all $n \in \N$, $a_n \leq a_{n+1}$;
+we say $\{a_n\}_{n=1}^\infty$ is {\em decreasing}\index{decreasing} if for all $n \in \N$, $a_n \geq a_{n+1}$; and we say
+$\{a_n\}_{n=1}^\infty$ is {\em monotone}\index{monotone} if it is either decreasing or increasing.
 
-\item We say $\{a_n\}_{n=1}^\infty$ is {\em strictly increasing} if for all $n \in \N$, $a_n < a_{n+1}$. I leave the definition of
-{\em strictly decreasing} and {\em strictly monotone} to your imaginations.
+\item We say $\{a_n\}_{n=1}^\infty$ is {\em strictly increasing}\index{strictly increasing} if for all $n \in \N$, $a_n < a_{n+1}$. I leave the definition of
+{\em strictly decreasing}\index{strictly decreasing} and {\em strictly monotone}\index{strictly monotone} to your imaginations.
 \end{enumerate}
 \end{defn}
 
@@ -1631,8 +1631,7 @@ Take $\{ a_n\}_{n=1}^\infty = \{ (-1)^n\}_{n=1}^\infty$ and $\{ b_n \}_{n=1}^\in
 \item Prove part~(3) of Theorem 10.2.
 \end{enumerate}
 
-\begin{comment}
-\newpage
+
 
 \Sept{27}
 
@@ -1692,16 +1691,6 @@ This proves $\{b_n\}_{n=1}^\infty$ converges to $L$.
 \begin{ex} We can use the Squeeze Theorem to give a short proof that $\{ 5 + (-1)^n \frac{1}{n} \}_{n=1}^\infty$ converges to $5$. Note that Theorem \ref{thm99} alone cannot be used in this
   example. However, from Theorem~\ref{thm99}, it follows that $\{5-\frac{1}{n}\}_{n=1}^\infty$ and  $\{5+\frac{1}{n}\}_{n=1}^\infty$ both converge to $5$. Then, since \[5-\frac{1}{n} \leq  5 + (-1)^n \frac{1}{n} \leq 5+\frac{1}{n}\] for all $n$, our sequence also converges to $5$.\end{ex}
 
-
-On last week's worksheet and on the homework, you proved part (1) of Theorem~\ref{thm99}. Let us discuss part (2).
-
-\begin{proof}[Proof of Part~(2) of Theorem~\ref{thm99}]
-Suppose that $\{a_n\}_{n=1}^\infty$ converges to $L$ and $\{b_n\}_{n=1}^\infty$ convergest to $M$.
-Let $\e>0$. [Scratch: We need an $N$ such that whenever $n>N$ we have $|(a_n + b_n) - (L+M)|<\e$. Note that $|(a_n + b_n) - (L+M)|\leq |a_n  - L| + |b_n - M|$ by the triangle inequality, so if we can make $|a_n  - L| + |b_n - M|< \e$ we are set. By definition of convergence, we can make $|a_n  - L| $ and $|b_n  - M| $ as small as we like past some point. If we make them both smaller than $\e/2$, we are golden.]
-By definition of converges to $L$ with the positive number $\e/2$, there is some $N_1\in \R$ such that $|a_n-L|<\e/2$ whenever $n$ is a natural number  with $n>N_1$. Likewise there is some $N_2\in \R$ such that $|b_n-M|<\e/2$ whenever $n$ is a natural number  with $n>N_2$. Set $N=\max\{N_1,N_2\}$. Let $n>N$. Then $n>N_1$ and $n>N_2$. Hence, we have
-\[ |(a_n + b_n) - (L+M)|\leq |a_n  - L| + |b_n - M| < \e/2 + \e/2 = \e,\]
-as required.
-\end{proof}
 
 
 
@@ -1795,26 +1784,15 @@ $$
 It follows that  $|a_n - L| < \e$. We have proven the sequence converges to~$L$.
 \end{proof}
 
-\begin{rem} Note that any increasing sequence is bounded below, for example, by its first term. Thus, an increasing sequence is bounded if and only if it is bounded below. Likewise, and decreasing sequence is bounded if and only if it is bounded above.
-\end{rem}
+%\begin{rem} Note that any increasing sequence is bounded below, for example, by its first term. Thus, an increasing sequence is bounded if and only if it is bounded below. Likewise, and decreasing sequence is bounded if and only if it is bounded above.
+%\end{rem}
 
-\begin{thm}[Monotone Converge Theorem]\label{thm:MCT} Every bounded monotone sequence converges.
+\begin{thm}[Monotone Converge Theorem]\label{thm:MCT}\index{monotone convergence theorem} Every bounded monotone sequence converges.
 \end{thm}
 \begin{proof}
 If $\{a_n\}_{n=1}^\infty$ is increasing, then this is the content of Theorem~\ref{thm226}. If $\{a_n\}_{n=1}^\infty$ is decreasing and bounded, consider the sequence $\{-a_n\}_{n=1}^\infty$. If $a_n\leq M$ for all $n$, then $-a_n\geq -M$ for all $n$, so $\{-a_n\}_{n=1}^\infty$ is bounded below. Also, since $a_n \geq a_{n+1}$ for all $n$, we have $-a_n \leq -a_{n+1}$ for all $n$, so $\{-a_n\}_{n=1}^\infty$ is increasing. Thus, by Theorem~\ref{thm226}, $\{-a_n\}_{n=1}^\infty$ converges, say to $L$. Then by Theorem~\ref{thm99}(1), $\{a_n\}_{n=1}^\infty=\{-(-a_n)\}_{n=1}^\infty$ converges to $-L$.
 \end{proof}
 
-	\begin{rem} We know the following implications:
-\[ \text{monotone} \ + \text{bounded} \ \Longrightarrow \ \text{convergent} \]
-\[ \text{convergent} \ \Longrightarrow \ \text{bounded}\]
-There are no other interesting implications between the three. For example, we have seen that 
-\[ \text{bounded} \ \not\Longrightarrow \ \text{convergent}.\]
-Also, 
-\[ \text{monotone} \ \not\Longrightarrow \ \text{convergent},\]
-as shown by $\{ n \}_{n=1}^\infty$, and
-\[ \text{convergent} \ \not\Longrightarrow \ \text{monotone},\]
-as shown by $\{ (-1)^n \}_{n=1}^\infty$.
-\end{rem}
 	
 
 \begin{ex}
@@ -1839,7 +1817,7 @@ a_n &= 1 + \frac{1}{2^2} + \frac{1}{3^2} + \cdots + \frac{1}{n^2} \\
 	
 
 	
-	
+	\begin{comment}
 
 \begin{ex}
 Take the sequence $\{a_n\}_{n=1}^{\infty}$ given by\[ a_n = 1 + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{n}.\] This is known as the ``harmonic series''. We will show that this sequence diverges by showing it is not bounded above (so not convergent, since any convergent sequence is bounded).
