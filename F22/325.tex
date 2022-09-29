@@ -1,5 +1,5 @@
 \documentclass[12pt]{amsart}
-\usepackage{graphicx, framed}
+\usepackage{graphicx, framed,multicol,enumitem}
 \usepackage{comment}
 \usepackage{amscd}
 \usepackage{amssymb,xcolor}
@@ -1814,7 +1814,109 @@ a_n &= 1 + \frac{1}{2^2} + \frac{1}{3^2} + \cdots + \frac{1}{n^2} \\
 		
 		Hence, by the Monotone Convergence Theorem, $\{a_n\}_{n=1}^\infty$ converges. Leonhard Euler was particularly interested in this sequence, and was able to prove that it converges to $\frac{\pi^2}{6}$. This requires some other ideas, so we won't do that here.
 	\end{ex}
+	\begin{comment}
+\Sept{29}
+
+\noindent Which of the following implications about sequences hold in general? Either mention a relevant theorem or give a counterexample.
 	
+\begin{multicols}{2}
+\begin{enumerate}[label=(\alph*)]
+\item monotone \ $\Longrightarrow$ \ convergent
+\item convergent \ $\Longrightarrow$ \ bounded
+\item bounded \ + \ decreasing  \ $\Longrightarrow$ \ convergent
+\item increasing \ + \ convergent  \ $\Longrightarrow$ \ bounded
+\item convergent  \ $\Longrightarrow$ \ monotone
+\item bounded \ $\Longrightarrow$ \ convergent
+\end{enumerate}
+\end{multicols}
+
+\begin{framed}
+\begin{enumerate}[label=(\alph*)]
+\item False: $\{ n\}_{n=1}^\infty$
+\item True: (Every convergent sequence is bounded.)
+\item True: Monotone Convergence Theorem
+\item True: (Every convergent sequence is bounded.)
+\item False: $\{ \frac{(-1)^n}{n}\}_{n=1}^\infty$
+\item False: $\{ {(-1)^n}\}_{n=1}^\infty$
+\end{enumerate}
+\end{framed}
+
+
+	
+\noindent It is sometimes useful to distinguish between sequences like $\{(-1)^n\}_{n=1}^\infty$
+that diverge because they ``oscillate'', and sequences like $
+\{n\}_{n=1}^\infty$
+that diverge because they ``head toward infinity''.
+
+
+
+
+\begin{enumerate}[label=(\Roman*)]
+
+\item In intuitive language, a sequence converges to $L$ if no matter how close we want or sequence to be to $L$, all values past some point are at least that close. Intuitively, a sequence \emph{diverges to $+\infty$} if no matter how large we want our sequence to be, all values past some point are at least that large. Write a precise definition for a sequence to diverge to $+\infty$.
+
+
+
+\item Write a precise definition for a sequence to diverge to $-\infty$.
+\end{enumerate} 
+
+\begin{framed}
+\begin{enumerate}[label=(\Roman*)]
+\item A sequence $\{a_n\}_{n=1}^\infty$ \emph{diverges to $+\infty$} if for every $M\in \R$, there is some $N\in \R$ such that for every natural number $n>N$, we have $a_n >M$.
+\item A sequence $\{a_n\}_{n=1}^\infty$ \emph{diverges to $-\infty$} if for every $m\in \R$, there is some $N\in \R$ such that for every natural number $n>N$, we have $a_n < m$.
+\end{enumerate} 
+\end{framed}
+
+
+
+\begin{enumerate}
+
+\item Carefully write the logical negation of ``$\{ a_n\}_{n=1}^\infty$ diverges to $+\infty$'' in simplified form.
+
+\begin{framed}
+There exists $M\in \R$ such that for every $N\in \R$, there exists a natural number $n>N$ with $a_n <M$.
+\end{framed}
+
+\item Use the definition to prove that the sequence $\{ \sqrt{n} \}_{n=1}^\infty$ diverges to $+\infty$.
+
+\begin{framed}
+Let $M\in \R$. [Scratchwork: We need some $N$ such that if $n>N$ then $\sqrt{n} > M$. This inequality is equivalent to $n > M^2$, so take $N=M^2$.]
+Take $N=M^2$. Let $n>N$ be a natural number. Then $\sqrt{n} > \sqrt{N} = \sqrt{M^2} = |M| \geq M$. This shows that $\{ \sqrt{n} \}_{n=1}^\infty$ diverges to $+\infty$.
+\end{framed}
+
+%\item Use the definition to prove that the sequence $\{ (-1)^n\}_{n=1}^\infty$ does not diverge to $+ \infty$.
+
+%\
+
+\item\label{nba} Prove that if a sequence $\{ a_n\}_{n=1}^\infty$ diverges to $+\infty$ then it is not bounded above. 
+
+
+\begin{framed} We prove the contrapositive. Suppose that $\{ a_n\}_{n=1}^\infty$ is bounded above, say by $M$. Suppose, to obtain a contradiction that $\{ a_n\}_{n=1}^\infty$ diverges to $+\infty$. Then applying the definition with the number $M$, we have that there is some $N$ such that for all $n>N$, $a_n>M$. But htere is no $n$ for which $a_n>M$, so this is a contradiction, so $\{ a_n\}_{n=1}^\infty$ does not diverge to $+\infty$.
+\end{framed}
+
+\item Use (\ref{nba}) to show that if a sequence diverges to $+\infty$ then it diverges.
+
+\begin{framed}  Since every converges sequence is bounded, the conclusion follows.
+\end{framed}
+
+
+\item Prove or disprove: If a sequence is not bounded above, then it diverges to $+\infty$.
+
+\begin{framed}  A counterexample is given by the sequence $\{ (-1)^n n \}_{n=1}^\infty$. It is not bounded above, since for any $M$, we can take an even natural number $n$ larger than $M$, and for this number, $(-1)^n  n = n >M$. It does not diverge to $+\infty$: take $M=0$; for any $N\in \R$, there is an odd natural number $n$ larger than $N$, and for this $n$, we have $(-1)^n n = - n < 0 = M$.
+\end{framed}
+
+\item Prove or disprove:  If a sequence diverges to $+\infty$ then it is increasing.
+
+\begin{framed}  A counterexample is given by the sequence given by $a_1 = 3$, $a_n=n$ for $n>1$. It is not increasing since $a_1=3 > 2 = a_2$. However, it diverges to $+\infty$ since, given $M$, we can take $N=M$, and for any $n>N$, we have $a_n=n>N=M$.
+\end{framed}
+
+\item Prove or disprove: If a sequence is increasing and not bounded above, it diverges to~$\infty$.
+
+\begin{framed} 
+To prove it, let $\{ a_n\}_{n=1}^\infty$ be  increasing and not bounded above. Take $M\in \R$. Since it is not bounded above, there is some $N\in \N$ such that $a_N >M$. Then, for this $N$, for any $n>N$ we have $a_n \geq a_N$ since the sequence is increasing, so $a_n > M$. This shows the sequence diverges to $+\infty$.
+\end{framed}
+
+\end{enumerate}
 
 	
 	\begin{comment}
