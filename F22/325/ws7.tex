@@ -1,0 +1,106 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,enumitem}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+
+\DeclareMathOperator{\res}{res}
+
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+	
+	\thispagestyle{empty}
+	
+	\section*{Decimal expansions}
+	
+	In this worksheet, we are going to define decimal expansions and prove the basic properties about them. To simplify things, we are going to only deal with numbers between $0$ and $1$ (since we get all the the rest by adding integers and taking negatives). Along the way we will use induction and convergence of sequences in an important way. Before we define infinite decimal expansions, let's review finite decimal expansions. 
+
+\begin{enumerate}
+
+\item If $d \in \{ 0,1,\dots,9\}$ (i.e., $d$ is an integer between $0$ and $9$), what does the decimal number $0.d$ mean? Express it as a rational number.
+
+\item  If $d_1,d_2,\dots,d_n \in \{ 0,1,\dots,9\}$ (i.e., $d_1,\dots,d_n$ are a bunch of integers between $0$ and $9$, which may or may not have repeats), convince yourself that  the decimal number $0.d_1 d_2 \cdots d_n$ in the way that we commonly use it is shorthand for
+\[ 0.d_1 d_2 \cdots d_n = \frac{d_1}{10^1} + \frac{d_2}{10^2} + \cdots + \frac{d_n}{10^n}.\]
+
+\end{enumerate}
+
+
+\begin{framed}
+\noindent Let's say that a sequence of the form $\{d_n\}_{n=1}^\infty$ is a \emph{digit sequence} if $d_n\in \{0,1,\dots, 9\}$ for all~$n$. (That is a digit sequence is just a sequence of integers between $0$ and $9$.) Given a digit sequence $\{d_n\}_{n=1}^\infty$, define another sequence $\{D_n\}_{n=1}^\infty$ by the rule
+\[ \begin{aligned} D_1 &= \frac{d_1}{10^1}\\
+D_2 &= \frac{d_1}{10^1} + \frac{d_2}{10^2}\\
+& \ \ \vdots\\
+D_n& = \frac{d_1}{10^1} + \frac{d_2}{10^2} + \cdots + \frac{d_n}{10^n}\\
+& \ \ \vdots \\
+\end{aligned}\]
+For example, for the digit sequence $2,2,2,\dots$, the corresponding $\{D_n\}_{n=1}^\infty$ sequence is
+\[ \frac{2}{10} \ , \ \frac{2}{10} + \frac{2}{100}  \ ,  \  \frac{2}{10} + \frac{2}{100} + \frac{2}{1000} \ , \ \dots\]
+We say that a digit sequence $\{d_n\}_{n=1}^\infty$ \emph{represents a real number $r$} if the sequence $\{ D_n\}_{n=1}^\infty$ converges to $r$, and in this case we write
+\[ 0.d_1 d_2 d_3 d_4 \dots = r.\]
+\end{framed}
+
+\noindent In order to prepare for proving things about decimal expansions, we need a fact about geometric series.
+
+\begin{enumerate}
+\item Let $x$ and $a$ be real numbers.
+\begin{enumerate}
+\item Prove that for every $n\in \N$,
+\[ (1-x) (1+x +x^2 + x^3 +\cdots + x^n ) = 1 - x^{n+1}.\]
+\item If $x\neq 1$, use (a) to show that for every $n\in \N$,
+\[ a + ax + ax^2 + \cdots + a x^n = a \frac{1-x^{n+1}}{1-x}.\]
+\end{enumerate}
+
+\item Use the definition (and perhaps the previous problem), but not our previous expectations about decimal expansions, to answer the following.
+\begin{enumerate}
+\item What number does the digit sequence $2,3,0,0,0,0,0,\dots$ represent?
+\item What number does the digit sequence $5,0,0,0,0,0,0,\dots$ represent?
+\item What number does the digit sequence $9,9,9,9,9,9,9,\dots$ represent?
+\item What number does the digit sequence $4,9,9,9,9,9,9,\dots$ represent?
+\end{enumerate}
+
+\item Let $\{d_n\}_{n=1}^\infty$ be any digit sequence. Prove\footnote{Hint: Use the monotone convergence theorem. You might want to use that $d_i \leq 9$ for all $i$ and the previous problem!} that this sequence represents some real number: i.e., that the corresponding sequence $\{ D_n\}_{n=1}^\infty$  is convergent. 
+
+ [Thus, every decimal expansion $0.d_1 d_2 d_3 \cdots$ always gives us a real number.]
+
+\item In this problem, we will show that every real number $r\in [0,1]$ is represented by some digit sequence.
+\begin{enumerate}
+\item Show that we can recursively define a digit sequence $\{d_n\}_{n=1}^\infty$ such that for every $n\in \N$, in the corresponding sequence $\{ D_n\}_{n=1}^\infty$, we have $0 \leq 10^n (r- D_n) \leq 1$.
+\item Given a sequence as in part (a), show that $\{ D_n\}_{n=1}^\infty$ converges to $r$.
+\end{enumerate}
+
+[Thus, every number can be written as a decimal expansion $0.d_1 d_2 d_3 \cdots$ .]
+
+
+\item Now we analyze uniqueness of decimal expansions. We will find it useful to use the following corollary of the proof of the Monotone Convergence Theorem: If $\{a_n\}_{n=1}^\infty$ is a bounded increasing sequence, $\{a_n\}_{n=1}^\infty$ converges to $\sup (\{a_n \ | \ n\in \N\})$.
+
+\begin{enumerate}
+\item Let $\{d_n\}_{n=1}^\infty$ be any digit sequence and  $\{ D_n\}_{n=1}^\infty$ be the corresponding sequence. Suppose that 
+\end{enumerate}
+\end{enumerate}
+
+
+
+
+\end{document}
