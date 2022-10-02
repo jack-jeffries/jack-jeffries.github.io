@@ -1862,8 +1862,8 @@ that diverge because they ``head toward infinity''.
 
 \begin{framed}
 \begin{enumerate}[label=(\Roman*)]
-\item A sequence $\{a_n\}_{n=1}^\infty$ \emph{diverges to $+\infty$} if for every $M\in \R$, there is some $N\in \R$ such that for every natural number $n>N$, we have $a_n >M$.
-\item A sequence $\{a_n\}_{n=1}^\infty$ \emph{diverges to $-\infty$} if for every $m\in \R$, there is some $N\in \R$ such that for every natural number $n>N$, we have $a_n < m$.
+\item A sequence $\{a_n\}_{n=1}^\infty$ \emph{diverges to $+\infty$}\index{diverges to $+\infty$} if for every $M\in \R$, there is some $N\in \R$ such that for every natural number $n>N$, we have $a_n >M$.
+\item A sequence $\{a_n\}_{n=1}^\infty$ \emph{diverges to $-\infty$}\index{diverges to $-\infty$} if for every $m\in \R$, there is some $N\in \R$ such that for every natural number $n>N$, we have $a_n < m$.
 \end{enumerate} 
 \end{framed}
 
@@ -1917,273 +1917,9 @@ To prove it, let $\{ a_n\}_{n=1}^\infty$ be  increasing and not bounded above. T
 \end{framed}
 
 \end{enumerate}
-
+\begin{comment}
+\Oct{4}
 	
-	\begin{comment}
-
-\begin{ex}
-Take the sequence $\{a_n\}_{n=1}^{\infty}$ given by\[ a_n = 1 + \frac{1}{2} + \frac{1}{3} + \cdots + \frac{1}{n}.\] This is known as the ``harmonic series''. We will show that this sequence diverges by showing it is not bounded above (so not convergent, since any convergent sequence is bounded).
-
-Observe that
-\begin{align*} a_n &= 1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \frac{1}{5} + \frac{1}{6} + \frac{1}{7} + \frac{1}{8} + \cdots + \frac{1}{n} \\
-&\geq 1 + \frac{1}{2} + \left(\frac{1}{4} + \frac{1}{4}\right) + \left(\frac{1}{8} + \frac{1}{8} + \frac{1}{8} + \frac{1}{8}\right) + \cdots + \frac{1}{n}\\
-&=1 + \frac{1}{2} + 2 \cdot \frac{1}{4} + 4 \cdot \frac{1}{8} + \cdots + \frac{1}{n}.\end{align*}
-
-So, let $M\in \R$ and let $m\in \N$ be a natural number greater than $2M$. Set $n=2^m$.
-
-\begin{align*} a_n &= 1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \frac{1}{5} + \frac{1}{6} + \frac{1}{7} + \frac{1}{8} + \cdots + \frac{1}{2^m} \\
-&\geq 1 + \frac{1}{2} + \left(\frac{1}{2^2} + \frac{1}{2^2}\right) + \underbrace{\left(\frac{1}{2^3} + \cdots + \frac{1}{2^3}\right)}_{\text{from $2^2+1$ to $2^3$}} + \cdots + \underbrace{\left(\frac{1}{2^m} + \cdots + \frac{1}{2^m}\right)}_{\text{from $2^{m-1}+1$ to $2^{m}$}} \\
-&=1 + \frac{1}{2} + 2^1 \cdot \frac{1}{2^2} + 2^2 \cdot \frac{1}{2^3} + \cdots + 2^{m-1} \cdot \frac{1}{2^m} = \frac{m+1}{2} >M.\end{align*}
-This shows that the sequence is not bounded above, and hence divergent.
-\end{ex}
- 
-
-
-
-%As we have seen, proving sequences converge using just the definition can be tedious and hard, and finding limits can be tricky. The next very long Theorem will make the task easier in some cases.
-%
-%
-%\begin{thm} \label{thm99}
-%The following six things hold. 
-%\begin{enumerate}
-%\item
-% For any real number $c$, the constant sequence $\{a_n\}_{n=1}^\infty$ defined by $a_n = c$
-%  converges to $c$. 
-%
-%\item
-%The sequence $\{1/n\}_{n=1}^\infty$ converges to $0$.
-%\end{enumerate}
-%
-%
-%For the remaining parts, assume
-%$\{a_n\}_{n=1}^\infty$ and $\{b_n\}_{n=1}^\infty$ are any two sequences that both converge. 
-%\begin{enumerate}
-%\item[(3)] 
-%The sequence $\{a_n  + b_n\}_{n=1}^\infty$ also converges and
-%$$
-%\lim_{n \to \infty} (a_n + b_n) = 
-%\lim_{n \to \infty} (a_n) + \lim_{n \to \infty} (b_n).
-%$$
-%
-%\item[(4)] For any real number $c$, the sequence $\{c \cdot a_n\}_{n=1}^\infty$ also converges and
-%$$
-%\lim_{n \to \infty} (c \cdot a_n) =
-%c \cdot \lim_{n \to \infty} (a_n).
-%$$
-%
-%\item[(5)] 
-%The sequence $\{a_n  \cdot b_n\}_{n=1}^\infty$ also converges and
-%$$
-%\lim_{n \to \infty} (a_n \cdot b_n) = 
-%\lim_{n \to \infty} (a_n) \cdot \lim_{n \to \infty} (b_n).
-%$$
-%
-%\item[(6)] If $b_n \ne 0$ for all $n$ and $\lim_{n \to \infty} (b_n) \ne 0$, then
-%the sequence $\{a_n/b_n\}_{n=1}^\infty$ also converges and
-%$$
-%\lim_{n \to \infty} \left(\frac{a_n}{b_n}\right) = 
-%\frac{\lim_{n \to \infty} (a_n)}{\lim_{n \to \infty} (b_n)}.
-%$$
-%
-%\end{enumerate}
-%\end{thm}
-%
-%
-%
-%Note that in the last item of the Theorem, we have to assume $b_n \ne 0$ for all $n$ (in order that the sequence 
-%$\{a_n/b_n\}_{n=1}^\infty$ be well defined), and we also have to assume $\lim_{n \to \infty} (b_n) \ne 0$ (so that the right-hand side makes sense). The latter assumption does not
-%follow from the former: for example, if $b_n =
-%\frac{1}{n}$ then $b_n \ne 0$ for all $n$ but $\lim_{n \to \infty} b_n = 0$.
-%
-%
-%
-%\begin{ex} Before proving (parts of) the theorem, let us illustrate it by redoing our justification that the sequence 
-%$\left\{ \frac{2n - 1}{5n + 1} \right\}_{n=1}^\infty$ converges to $\frac{2}{5}$. At first blush, this looks to be impossible since
-%$\{2n - 1\}_{n=1}^\infty$ does not converge and so the hypotheses are not met. The trick is to first rewrite the $n$-th term as
-%$$
-% \frac{2n - 1}{5n + 1} = \frac{2 - 1/n}{5 + 1/n}.
-%$$
-%
-%By the Theorem, Part (2) the sequence $\{1/n\}_{n=1}^\infty$ converges to $0$ and by Part (1) the constant sequence $5$ converges to $5$. So, by applying Part (3) of the theorem 
-%we deduce that $\{5 + 1/n\}$ converges to $5$. Similarly, Parts (2) and (3) give that $\{-1/n\}_{n=1}^\infty$ converges to $0$ and so by Parts (1) and (3), $\{2 -
-%1/n\}_{n=1}^\infty$
-%converges to $2$. Finally, by applying Part (6) of Theorem we conclude that 
-%$\left\{ \frac{2n - 1}{5n + 1} \right\}_{n=1}^\infty$ converges to $\frac25$.
-%\end{ex}
-%
-%\section*{Discussion Questions, February 24}
-%
-%\begin{itemize}
-%	\item Let $c$ be a real number, and $\{c\}_{n=1}^\infty$ be the sequence where every term is equal to $c$. Prove that this sequence converges to $c$.
-%	
-%	\
-%	
-%	\item Prove that the sequence $\{ 1/n\}_{n=1}^\infty$ converges to $0$.
-%	
-%	\
-%	
-%	\item Let $\{a_n\}_{n=1}^\infty$ be a sequence that converges to $L$, and $\{b_n\}_{n=1}^\infty$ be a sequence that converges to $M$. Prove that $\{a_n + b_n\}_{n=1}^\infty$ converges to $L+M$.
-%	
-%	[Hint: Given $\e >0$, apply the definitions of ``$\{a_n\}_{n=1}^\infty$ converges to $L$'' and ``$\{b_n\}_{n=1}^\infty$ converges to $M$'' with the value $\frac{\e}{2}$.]
-%	
-%	\
-%	
-%	\item Let $\{a_n\}_{n=1}^\infty$ be a sequence that converges to $L$, and $c$ be a real number. Prove that $\{c a_n\}_{n=1}^\infty$ converges to $cL$.
-%	
-%	\
-%	
-%	\item Let $\{a_n\}_{n=1}^\infty$ be a sequence that converges to $L$. Assume that $a_n\neq 0$ for all $n\in \N$ and that $L\neq 0$. Prove that $\{{1}/{a_n}\}_{n=1}^\infty$ converges to ${1}/{L}$.
-%\end{itemize}
-%
-%
-%All of these are parts of~Theorem~\ref{thm99}. Here is a proof of all of the parts of Theorem~\ref{thm99}, with scratch work; the numbering is that of Theorem~\ref{thm99} rather than the discussion questions.
-%
-%\begin{proof}  To prove (1), pick $\e > 0$. Let $N = 0$
-%	(or, really, any number you want). If
-%	$n \in \N$ and $n > N$, then $|a_n - c| = |c - c| = 0 < \e$ and hence the
-%	constant sequence $\{c\}_{n=1}^\infty$ converges to $c$.
-%	
-%	To prove (2), we pick $\e > 0$. Let $N = \frac{1}{\e}$. If $n \in \N$
-%	and $n > N$, then
-%	$$
-%	|\frac{1}{n} - 0| = \frac{1}{n} > \frac{1}{N} = \e
-%	$$
-%	and thus $\{1/n\}_{n=1}^\infty$ converges to $0$.
-%	
-%	
-%	For the rest of this proof, assume $\{a_n\}_{n=1}^\infty$ converges to $L$ and $\{b_n\}_{n=1}^\infty$ converges to $M$. 
-%	
-%	For Part (3),
-%	we need to prove $\{a_n  + b_n\}_{n=1}^\infty$ converges to $L + M$.
-%	Pick $\e > 0$. 
-%	
-%	(``Scratch work'':
-%	We need to figure out how big $n$ needs to be in order that
-%	$|(a_n+b_n) - (M+L)| < \e$. Note that
-%	$|(a_n+b_n) - (M+L)| =  |(a_n-M) + (b_n -L)| \leq |(a_n-M)| + |(b_n -L)|$ by the triangle inequality. 
-%	Intuitively, we can make each of $|(a_n-M)|$ and $|(b_n -L)|$ as small as we like by taking $n$ large enough. We need their sum to be smaller than $\e$
-%	and so  if we can make each of them be smaller that $\e/2$, we're golden. Back to the proof...)
-%	
-%	
-%	Since $\{a_n\}_{n=1}^\infty$ converges to $L$ and $\frac{\e}{2}$ is positive, 
-%	there is a number $N_1$ such that for all $n \in \N$ with $n > N_1$ we have
-%	$$
-%	|a_n - L| < \frac{\e}{2}.
-%	$$
-%	Likewise, 
-%	since $\{b_n\}_{n=1}^\infty$ converges to $M$,
-%	there is a number $N_2$ such that for all $n \in \N$ with $n > N_2$ we have
-%	$$
-%	|b_n - M| < \frac{\e}{2}.
-%	$$
-%	Let $N = \max\{N_1, N_2\}$. If $n \in \N$ and $n > N$, then $n > N_1$ and $n > N_2$ and hence we have
-%	$$
-%	|a_n - L| < \frac{\e}{2}
-%	\and
-%	|b_n - M| < \frac{\e}{2}.
-%	$$
-%	Using these inequalities and the triangle inequality we get
-%	$$
-%	|(a_n+b_n) - (M+L)| = |(a_n-M) + (b_n -L)| \leq |(a_n-M)| + |(b_n -L)| < \frac{\e}{2} + \frac{\e}{2}  = \e.
-%	$$
-%	This proves that $\{a_n  + b_n\}_{n=1}^\infty$ converges to $L + M$.
-%	
-%	Part (4) will follow from parts (1) and (5) put together, but we can also prove it on its own. We note first that if $c=0$, then $c a_n= 0$ for all $n$, and hence by part (1), we have $\{c a_n\}_{n=1}^\infty$ converges to $0$ in this case. Now, assume that $c\neq 0$, and let $\e>0$ be given.
-%	
-%	(``Scratch work'': We need $n$ to be large enough so that $|c a_n - c L|<\e$. We can write $|c a_n - c L| = |c| |a_n - L|$, so if $|a_n - L| < \frac{\e}{|c|}$, we'll be set.)
-%	
-%	By definition of convergence, there is some $N\in \R$ such that $|a_n - L| < \frac{\e}{|c|}$ for all natural numbers $n>N$. (Note here that it is important that $c\neq 0$; this is why we singled out the case $c=0$ first.) Then, for all natural numbers $n>N$, we have $|ca_n  - cL| = |c| |a_n - L| < |c| \e / |c| = \e$, as required.
-%	
-%	For (5),  we need to prove $\{a_n  \cdot b_n\}_{n=1}^\infty$ converges to $L \cdot M$.
-%	Pick $\e > 0$.
-%	
-%	(``Scratch work'': The goal is to make 
-%	$|a_nb_n - LM|$ small and the trick is to use that
-%	$$
-%	\begin{aligned}
-%	|a_nb_n - LM| & = |a_n(b_n - M) + (a_n - L)M|  \\
-%	& \leq |a_n(b_n - M)| + |(a_n - L)M| \\
-%	& = |a_n| |b_n - M| + |a_n - L| |M|
-%	\end{aligned}
-%	$$
-%	Our goal will be to take $n$ to be large enough so that each of $|a_n| |b_n - M|$ and $|a_n - L| |M|$ is smaller than $\e/2$.
-%	We can make $|a_n -L|$ as small as we like and $|M|$ is just a fixed number. So, we can ``take care'' of the second term by chooseing $n$ big enough so
-%	that $|a_n - L| < \frac{\e}{2|M|}$. A irritating technicality here is
-%	that $|M|$ could be $0$, and so we will use $\frac{\e}{2|M|+1}$ instead. 
-%	The other term   $|a_n| |b_n - M|$ is harder to deal with since each factor varies with $n$. 
-%	Here we use that convergent sequence are bounded so that we can find a real number $X$ so that $|a_n| \leq X$ for all $n$. Then we choose $n$ large enough
-%	so that $|b_n - M| < \frac{\e}{2 X}$. back to the proof.)
-%	
-%	Since $\{a_n\}$ converges, it is bounded by Proposition \ref{prop21}, which gives that  there is a strictly positive real number $X$ so that $|a_n| \leq X$ for all $n \in \N$.
-%	Since $\{b_n\}$
-%	converges to $M$ and $\frac{\e}{2 X} > 0$, there is a number $N_1$ so that if $n > N_1$ then $|b_n - M| < \frac{\e}{2 X}$. Since $\{a_n\}$ converges to $L$
-%	and $\frac{\e}{2|M| + 1} > 0$, there is a number
-%	$N_2$ so that if $n \in \N$ and $n > N_2$, then $|a_n - L| < \frac{\e}{2|M| + 1}$. Let $N = \max\{N_1, N_2\}$. For any $n \in \N$ such that $n > N$, we have
-%	$$
-%	\begin{aligned}
-%	|a_nb_n - LM| & = |a_n(b_n - M) + (a_n - L)M| \\
-%	& \leq |a_n(b_n - M)| + |(a_n - L)M| \\
-%	& = |a_n| |b_n - M| + |a_n - L| |M| \\
-%	& < X \frac{\e}{2 X} + \frac{\e}{2|M| + 1} |M| \\
-%	& < \e.
-%	\end{aligned}
-%	$$
-%	This proves $\{a_n  \cdot b_n\}_{n=1}^\infty$ converges to $L \cdot M$.
-%	
-%	
-%	To prove Part (6), we first prove a slightly weaker statement:
-%	
-%	{\bf Claim}: If the sequence $\{b_n\}_{n=1}^\infty$ converges to $M$, $b_n \ne 0$ for all $n$ and $M \ne 0$,  then
-%	the sequence $\{\frac{1}{b_n}\}_{n=1}^\infty$ converges to $\frac{1}{M}$.
-%	
-%	To prove this claim,  pick $\e > 0$. 
-%	
-%	(Scratch work: We want to show $\left|\frac{1}{b_n} -
-%	\frac{1}{M}\right| < \e$ holds for $n$ sufficiently large.  
-%	We have
-%	$$
-%	\left|\frac{1}{b_n} - \frac{1}{M}\right| = \frac{|M - b_n|}{|b_n||M|}.
-%	$$ 
-%	We can make the top of this fraction as small as we like, but the problem is that the
-%	bottom might be very small too since $b_n$ might get very close to $0$. But since $b_n$ converges to $M$ and $M \ne 0$ if we go far enough out, it will be
-%	close to $M$. In particular, if $b_n$ is within a distance of
-%	$\frac{|M|}{2}$ of $M$ then $|b_n|$ will be at least
-%	$\frac{|M|}{2}$. So for $n$ sufficiently large we have
-%	$\frac{|b_n-M|}{|b_n||M|} < 2 \frac{|b_n-M|}{|M|^2}$. And then for $n$
-%	sufficiently large we also get $|b_n - M| < \frac{|M|^2}{2 \e}$.  Back to the formal proof....)
-%	
-%	
-%	
-%	Since $\{b_n\}$ converges to $M$ and $\frac{|M|}{2} > 0$, there is an $N_1$ such that for $n > N_1$ we have $|b_n - M| < \frac{|M|}{2}$  and hence
-%	$|b_n| > \frac{|M|}{2}$. Again using that $\{b_n\}$ converges to $M$
-%	and that $\frac{ \e |M|^2}{2} > 0$, there is an $N_2$ so that for $n > N_2$ we have
-%	$|b_n - M| < \frac{ \e |M|^2}{2}$. Let $N = \max\{N_1, N_2\}$. If $n > N$, then we have
-%	$$
-%	\begin{aligned}
-%	\left|\frac{1}{b_n} - \frac{1}{M}\right| & = \frac{|b_n - M|}{|b_n||M|} \\
-%	& < \frac{2}{|M|}  \frac{|b_n - M|}{|M|} \\
-%	& = 2 \frac{|b_n - M|}{|M|^2} \\
-%	\end{aligned}
-%	$$
-%	since $|b_n| > |M|/2$ and hence $\frac{1}{|b_n|} < \frac{2}{|M|}$.
-%	But then
-%	$$
-%	2 \frac{|b_n - M|}{|M|^2}  < 2 \frac{\frac{\e |M|^2}{2}}{|M|^2} = \e
-%	$$
-%	since $|b_n - M| < \frac{ \e |M|^2}{2}$. Putting these together gives
-%	$$
-%	\left|\frac{1}{b_n} - \frac{1}{M}\right| < \e
-%	$$
-%	for all $n > N$. 
-%	This proves $\{\frac{1}{b_n}\}_{n=1}^\infty$ converges to $\frac{1}{M}$.
-%	
-%	We have proven the claim.
-%	To finish the proof of (6), we use the claim and apply (5) to the convergent sequences $\{a_n\}$ and $\{1/b_n\}$. 
-%\end{proof}
-
-
-
-
 We will now embark on a bit of detour. I've postponed talking about proofs by induction, but we will need to use that technique on occasion. So let's talk
 about that idea now. 
 
@@ -2191,24 +1927,24 @@ The technique of proof by induction is used to prove that an infinite sequence o
 $$
 P_1, P_2, P_3, \dots
 $$
-are all true. For example, for any real number $x$, the equation
+are all true. For example the equation
 $$
-(1-x)(1+ x + \cdots + x^n) = 1 - x^{n+1}
+1 + 2 + \cdots + n = \frac{n(n+1)}{2}
 $$
-holds for all $n \in \N$. Fixing $x$, we get one statement for each natural number:
+holds for all $n \in \N$. We get one statement for each natural number:
 
-\begin{align*}
-	&P_1: &(1-x)(1+x)=1-x^2\\
-		&P_2: &(1-x)(1+x+x^2)=1-x^3\\
-		&P_3: &(1-x)(1+x+x^2+x^3)=1-x^4\\
-		&\vdots &\vdots
-	\end{align*}
+\[\begin{array}{ccrrl}
+	&P_1: &&1 &= \displaystyle\frac{1 \cdot 2}{2}\\[10pt]
+		&P_2: &&1 + 2 &=\displaystyle\frac{2 \cdot 3}{2}\\[10pt]
+		&P_3: &&1 +2 + 3 &=\displaystyle\frac{3 \cdot 4}{2}\\[10pt]
+		&\vdots &&\vdots&
+	\end{array}\]
 
 Such a fact (for all $n$) is well-suited to be proven by induction.
 
 Here is the general principle:
 
-\begin{thm}[Principle of Mathematical Induction] Suppose we are given, for each $n \in \N$, a statment $P_n$.  
+\begin{thm}[Principle of Mathematical Induction]\index{induction} Suppose we are given, for each $n \in \N$, a statment $P_n$.  
 Assume that $P_1$ is true and that for each $k
   \in \N$, if $P_k$ is true, then $P_{k+1}$ is true. Then $P_n$ is true for all $n \in \N$.
 \end{thm}
@@ -2242,126 +1978,190 @@ conclude that $S$ must be the empty set.
 
 The above proof shows that the Principle of Mathematical Induction is a consequence of the Well-Ordering Principle. The converse is also true.
 
+\begin{ex}
+Let's prove that the formula
+\[ 1 + 2 + 3 + \cdots + n = \frac{n(n+1)}{2}\]
+for every natural number $n$.
+Here, $P_k$ is
+\[ 1 + 2 + 3 + \cdots + k = \frac{k(k+1)}{2}.\]
+For $P_1$ we have $1 = \frac{1 \cdot 2}{2}$ is true. Now we show $P_k$ implies $P_{k+1}$. Let $k$ be a natural number and assume that 
+\[ 1 + 2 + 3 + \cdots + k = \frac{k(k+1)}{2}.\] Then 
+\begin{align*} 1 + 2 + 3 + \cdots + k + (k+1) &= (1 + 2 + 3 + \cdots + k )+ (k+1) \\&= \frac{k(k+1)}{2} + (k+1) \\&=  \frac{k(k+1)}{2} + \frac{2(k+1)}{2} \\& = \frac{(k+1)(k+2)}{2} = \frac{(k+1)((k+1)+1)}{2},\end{align*}
+which is $P_{k+1}$. Thus we have proven the equality for all natural numbers $n$ by induction.\qed
+\end{ex}
+
+\begin{ex} Let us show that for every real number $x\geq -1$, and every natural number $n\in \N$, the inequality $(1+x)^n \geq 1+nx$.
+
+Fix a real number $x\geq -1$. We show that $(1+x)^n \geq 1+nx$ for all natural numbers $n$ by induction. For $n=1$, we have 
+\[ (1+x)^1 = 1+x = 1+ 1\cdot x,\]
+so the statement is true for $n=1$. Let $k$ be a natural number and assume that
+\[ (1+x)^k \geq 1+kx.\]
+Then,
+\[ (1+x)^{k+1} = (1+x)\cdot (1+x)^k \geq (1+x) (1+kx) = 1 + (k+1) x + kx^2 \geq 1 + (k+1) x,\]
+where we used that $1+x\geq 0$ in the first $\geq$ (since $x\geq -1$) and that $x^2\geq 0$ in the second $\geq$.
+Thus, by induction, the inequality is true for all $n\in \N$.\qed
+\end{ex}
+
+We can also ``start'' our induction at any other integer $m$ and prove a statement for all integers greater than or equal to that number $m$. (To justify it from the statement of PMI we have, let $P'_k = P_{k-m-1}$ and prove $P'_k$ by induction.)
 
 
+\begin{ex} Let's show that $2^n < n!$ for all natural numbers $n>3$. To show it is true for all $n\geq 4$, first we check the statement for $n=4$:
+\[ 2^4 = 16 < 24 = 4!.\]
+We also check the inductive step: let $k$ be a natural number greater than $3$ and assume that $2^k < k !$. 
 
+Then \[ 2^{k+1} = 2 \cdot 2^k < 2 \cdot k! < (k+1) \cdot k! = (k+1)!.\]
+Thus, by induction, the statement is true for any natural number ${n>3}$.\qed
+\end{ex}
 
-
-
-
-
-
-
-
-
-We will discuss a bit the notion of ``diverging to infinity'', a concept that you might have seen before in Calculus. 
-
-It is sometimes useful to distinguish between sequences like 
-$$
-\{(-1)^n\}_{n=1}^\infty
-$$
-that diverge because they ``oscillate'', and sequences like
-$$
-\{n\}_{n=1}^\infty
-$$
-that diverge because they ``head toward infinity''.
-
-
-\begin{defn} A sequence $\{a_n\}_{n=1}^\infty$ {\em diverges to $\infty$} if for every real number $M$, there is a real number $N$ such that if $n \in \N$ and  $n > N$,
-	then  we have $a_n > M$.
-	
-	
-	A sequence $\{a_n\}_{n=1}^\infty$ {\em diverges to $-\infty$} if for every real number $L$, there is a real number $N$ such that if $n \in \N$ and $n > N$,
-	then $a_n < L$. 
-\end{defn}
-
-Intuitively, a sequence diverges to $\infty$ provided that, no matter how big $M$ is, if you go far enough along the sequence, eventually all of the terms are
-bigger than $M$. Similarly for diverges to $-\infty$.
-
-
-\begin{ex} \begin{enumerate}
-\item $\{ n^2+3\}_{n=1}^\infty$ diverges to $\infty$.
-\item $\{ -\sqrt{n} \}_{n=1}^\infty$ diverges to $-\infty$.
-\item $\{ (-1)^n\}_{n=1}^\infty$ diverges, but not to $\infty$ nor to $-\infty$.
-\item $\{(-1)^n n\}_{n=1}^\infty$ diverges, but not to $\infty$ nor to $-\infty$.
-\end{enumerate}
+\begin{ex} Let's show that every finite set has a minimum element. It's not obvious that induction makes any sense here, but we can rephrase the statement as saying that for every $n\in \N$, a set of real numbers with $n$ elements has a minimum. So, let us prove by induction on $n$ that for every set of $n$ real numbers, the set has a minimum.
+ When $n=1$, any set with one element clearly has its only element as a minimum, so the statement is true in this case.
+Assume that for some natural number $n=k$, every set of $k$ elements has a minimum element; we need to show that every set of $k+1$ elements has a minimum. Let $S$ be a set of $k+1$ elements, and fix some $x\in S$. Then $T=S\smallsetminus\{x\}$ has $k$ elements, so it has a minimum, which we will call $y$. Either $x<y$ or $x\geq y$. If $x<y$, and $z\in S$, either $z \in T$ so $z\geq y > x$, or else $z=x$ so $z\geq x$; thus, $x=\min (S)$ in this case. If $x\geq y$, and $z\in S$, if $z\in T$ then $z\geq y$, and otherwise $z=x\geq y$; thus $y=\min (S)$ in this case. We have shown that $S$ has a minimum element. This completes the inductive step, and hence completes the proof.\qed
 \end{ex}
 
 
+Induction is also closely related to the notion of a sequence defined by recursion. Recall that we define a sequence $\{a_n\}_{n=1}^\infty$ recursively by specifying a value $a_1$ for the first value, and a formula for $a_n$ in terms of $a_{n-1}$ (or multiple earlier values in the sequence). The principle of induction justifies that such a rule gives a well-defined value for every $n$: if we take $P_k$ to be the statement that the formulas define value for all of the first $k$ terms $a_1,\dots,a_k$, then $P_1$ is true and $P_k \Rightarrow P_{k+1}$, so $P_n$ is true for every $n\in \N$. 
 
-\Sept{27}
+Let us use a recursive sequence to prove a proposition that we will use later.
 
-
-\begin{ex} The sequence $\{\sqrt{n}\}_{n=1}^\infty$ diverges to $\infty$. Let us prove this using the definition: Pick $M \in \R$. 
-	(Scratch work: I need $\sqrt{n} > M$ which will occur if $n > M^2$. )
-	Let $N = M^2$. 
-	If $n \in \N$ and $n > N$, then $\sqrt{n} > \sqrt{N} = \sqrt{M^2} = |M| \geq M$. (Note that $M$ could conceivably be negative.)
-	This proves $\{\sqrt{n}\}_{n=1}^\infty$ diverges to $\infty$.
-\end{ex}
-
-\begin{prop} If a sequence $\{a_n\}_{n=1}^\infty$ diverges to $\infty$ or diverges to $-\infty$, then it diverges.
+\begin{prop}
+For any real number $r$, there exists a strictly increasing sequence of rational numbers that converges to $r$.
 \end{prop}
 \begin{proof}
-We prove the contrapositive. (What is the contrapositive? If a sequence converges, then it does not diverge to $\infty$ and it des not diverge to $-\infty$.) Suppose 
-$\{a_n\}_{n=1}^\infty$ converges to some number $L$. Then since it converges,  it is  bounded, so that there are real numbers $b$ and $c$ such that $b \leq a_n \leq c$ for all $n$.
-
-In particular, this means that there is no $N\in \R$ such that $a_n > c$ for all natural numbers $n>N$. Thus, taking ``$M=c$'' in the definition of diverges to $\infty$, we see that $\{a_n\}_{n=1}^\infty$ does not diverge to $\infty$.
-
-Similarly, that there is no $N\in \R$ such that $a_n <b$ for all natural numbers $n>N$. Thus, taking ``$M=b$'' in the definition of diverges to $-\infty$, we see that $\{a_n\}_{n=1}^\infty$ does not diverge to $-\infty$.
+We will construct a sequence of rational numbers $\{q_n\}_{n=1}^\infty$ such that $r-\frac{1}{n} < q_n < r$ for every $n$ that is strictly increasing, and then show that this sequence converges to $r$. By Density of Rational Numbers, there exists a rational number $q_1$ such that $r-1 < q < r$. Given $q_1,\dots,q_n$, take $q_{n+1}$ to be a rational number such that $\max\{r-\frac{1}{n+1}, q_n\} < q_{n+1} < r$ again using Density of Rational Numbers. Since $q_n \leq \max\{r-\frac{1}{n+1}, q_n\} < q_{n+1}$ for every $n$, the sequence we obtain is strictly increasing. Since $r-\frac{1}{n+1}  \leq \max\{r-\frac{1}{n+1}, q_n\} < q_{n+1}$ for every~$n$ (equivalently, $r-\frac{1}{n} < q_n < r$ for all $n$), and $\{ r - \frac{1}{n}\}_{n=1}^\infty$ converges to $r$, by the Squeeze Theorem, the sequence $\{q_n\}_{n=1}^\infty$ converges to $r$.
 \end{proof}
 
-As a matter of shorthand, we write  $\lim_{n \to \infty} a_n = \infty$ to indicate that $\{a_n\}_{n=1}^\infty$ diverges to $\infty$.
-But note unlike when we wrote things such as $\lim_{n \to \infty} a_n = 17$, when we write
-$\lim_{n \to \infty} a_n = \infty$ we are asserting that $\{a_n\}_{n=1}^\infty$ {\em diverges} (in a specific way). 
-Similarly, we write $\lim_{n \to \infty} a_n = -\infty$ to indicate that $\{a_n\}_{n=1}^\infty$ diverges to $-\infty$.
+
+Induction and recursion go together well. Let us apply induction to understand a recursively defined sequence.
+
+\begin{ex} Define a sequence recursively by the rules $a_1 = 2$ and $a_{n} = \frac{a_{n-1}}{2} + \frac{1}{a_{n-1}}$ for $n>1$. So we have $a_1 = 2$, $a_2 = \frac{1}{2} + \frac{1}{1} = \frac{3}{2}$, etc. 
+
+Let's show that $a_n>0$ for all $n$. We proceed by induction on $n$. First we note that $a_1 = 2 >0$. Then, assuming $a_k>0$, we have $a_{k+1} = \frac{a_k}{2} + \frac{1}{a_k} >0$ since both terms are positive. Thus, $a_n>0$ for all $n$ by induction.\qed
+\end{ex}
+
+
+\Oct{6}
+
+
+	
+	\subsection*{Decimal expansions}
+	
+	In this worksheet, we are going to define decimal expansions and prove the basic properties about them. To simplify things, we are going to only deal with numbers between $0$ and $1$ (since we get all the the rest by adding integers and taking negatives). Along the way we will use induction and convergence of sequences in an important way. Before we define infinite decimal expansions, let's review finite decimal expansions. 
+
+\begin{enumerate}
+
+\item If $d \in \{ 0,1,\dots,9\}$ (i.e., $d$ is an integer between $0$ and $9$), what does the decimal number $0.d$ mean? Express it as a rational number.
+
+\begin{framed}
+\[\frac{d}{10}\]
+\end{framed}
+
+\item  If $d_1,d_2,\dots,d_n \in \{ 0,1,\dots,9\}$ (i.e., $d_1,\dots,d_n$ are a bunch of integers between $0$ and $9$, which may or may not have repeats), convince yourself that  the decimal number $0.d_1 d_2 \cdots d_n$ in the way that we commonly use it is shorthand for
+\[ 0.d_1 d_2 \cdots d_n = \frac{d_1}{10^1} + \frac{d_2}{10^2} + \cdots + \frac{d_n}{10^n}.\]
+
+\end{enumerate}
+
+
+ Let's say that a sequence of the form $\{d_n\}_{n=1}^\infty$ is a \emph{digit sequence} if $d_n\in \{0,1,\dots, 9\}$ for all~$n$. (That is a digit sequence is just a sequence of integers between $0$ and $9$.) Given a digit sequence $\{d_n\}_{n=1}^\infty$, define another sequence $\{D_n\}_{n=1}^\infty$ by the rule
+\[ \begin{aligned} D_1 &= \frac{d_1}{10^1}\\
+D_2 &= \frac{d_1}{10^1} + \frac{d_2}{10^2}\\
+& \ \ \vdots\\
+D_n& = \frac{d_1}{10^1} + \frac{d_2}{10^2} + \cdots + \frac{d_n}{10^n}\\
+& \ \ \vdots \\
+\end{aligned}\]
+For example, for the digit sequence $2,2,2,\dots$, the corresponding $\{D_n\}_{n=1}^\infty$ sequence is
+\[ \frac{2}{10} \ , \ \frac{2}{10} + \frac{2}{100}  \ ,  \  \frac{2}{10} + \frac{2}{100} + \frac{2}{1000} \ , \ \dots\]
+We say that a digit sequence $\{d_n\}_{n=1}^\infty$ \emph{represents a real number $r$} if the sequence $\{ D_n\}_{n=1}^\infty$ converges to $r$, and in this case we write
+\[ 0.d_1 d_2 d_3 d_4 \dots = r.\]
+
+
+ In order to prepare for proving things about decimal expansions, we need a fact about geometric series.
+
+\begin{enumerate}
+\item Let $x$ and $a$ be real numbers.
+\begin{enumerate}
+\item Prove that for every $n\in \N$,
+\[ (1-x) (1+x +x^2 + x^3 +\cdots + x^n ) = 1 - x^{n+1}.\]
+\begin{framed}
+We proceed by induction on $n$. First we check for $n=1$:
+\[ (1-x)(1+x) = 1+ x - x -x^2 = 1-x^{1+1},\]
+so the statement is true for $n=1$.
+Suppose the equality holds for $k$:
+\[(1-x) (1+x +x^2 + x^3 +\cdots + x^k ) = 1 - x^{k+1}.\]
+Then
+\begin{align*}
+(1-x)& (1+x +x^2 + x^3 +\cdots + x^{k+1} ) \\
+&=(1-x)((1+x +x^2 + x^3 +\cdots + x^{k} )  + (x^{k+1}))
+\\&=(1-x)(1+x +x^2 + x^3 +\cdots + x^{k} )  + (1-x) (x^{k+1})
+\\&= 1 - x^{k+1} + x^{k+1} - x^{k+2} = 1-x^{k+2},
+\end{align*}
+and it holds for $k+1$. Thus, the statement is true for all $n$ by induction.
+\end{framed}
+\item If $x\neq 1$, use (a) to show that for every $n\in \N$,
+\[ a + ax + ax^2 + \cdots + a x^n = a \frac{1-x^{n+1}}{1-x}.\]
+\begin{framed}
+We have \[ a + ax + ax^2 + \cdots + a x^n = a (1+x +x^2 + x^3 +\cdots + x^n) = a  \frac{1-x^{n+1}}{1-x}.\]
+\end{framed}
+\end{enumerate}
+
+\item Use the definition (and perhaps the previous problem), but not our previous expectations about decimal expansions, to answer the following.
+\begin{enumerate}
+\item What number does the digit sequence $2,3,0,0,0,0,0,\dots$ represent?
+\item What number does the digit sequence $5,0,0,0,0,0,0,\dots$ represent?
+\item What number does the digit sequence $9,9,9,9,9,9,9,\dots$ represent?
+\item What number does the digit sequence $4,9,9,9,9,9,9,\dots$ represent?
+\end{enumerate}
+\begin{framed}
+\begin{enumerate}
+\item $\frac{23}{100}$
+\item $\frac{5}{10} = \frac{1}{2}$
+\item $D_n = \frac{9}{10} \frac{1- (1/10)^{n+1}}{1-(1/10)} =  1- (\frac{1}{10} )^{n+1}$ converges to $1$, so this represents $1$.
+\item $\frac{1}{2}$.
+\end{enumerate}
+\end{framed}
+
+\item Let $\{d_n\}_{n=1}^\infty$ be any digit sequence. Prove\footnote{Hint: Use the monotone convergence theorem. You might want to use that $d_i \leq 9$ for all $i$ and the previous problem!} that this sequence represents some real number: i.e., that the corresponding sequence $\{ D_n\}_{n=1}^\infty$  is convergent. 
+
+ [Thus, every decimal expansion $0.d_1 d_2 d_3 \cdots$ always gives us a real number.]
+ 
+ \begin{framed}
+ Note that the sequence $D_n$ is increasing, and hence monotone.
+ Since $d_n\leq 9$, $D_n \leq \frac{9}{10} \frac{1- (1/10)^{n+1}}{1-(1/10)} = 1- (\frac{1}{10} )^{n+1} \leq 1$, so it is bounded above. Thus $D_n$ is always convergent.
+ \end{framed}
+
+\item In this problem, we will show that every real number $r\in [0,1]$ is represented by some digit sequence.
+\begin{enumerate}
+\item Show that we can recursively define a digit sequence $\{d_n\}_{n=1}^\infty$ such that for every $n\in \N$, in the corresponding sequence $\{ D_n\}_{n=1}^\infty$, we have $0 \leq 10^n (r- D_n) \leq 1$.
+\item Given a sequence as in part (a), show that $\{ D_n\}_{n=1}^\infty$ converges to $r$.
+\end{enumerate}
+
+[Thus, every number can be written as a decimal expansion $0.d_1 d_2 d_3 \cdots$ .]
+
+
+\begin{framed}
+Since $0\leq 10 r \leq 10$, we can take an integer between $0$ and $9$ to be $d_1$ with $d_1 \leq r \leq d_1 + 1$, so $0\leq r-d_1 \leq 1$. If we have chosen $d_1,\dots,d_n$ with $0 \leq 10^n (r- D_n) \leq 1$, then $0 \leq 10^{n+1} (r- D_n) \leq 10$ so we can choose $d_{n+1}$ with $d_{n+1} \leq 10^{n+1} (r- D_n) \leq d_{n+1}+1$, and hence $0 \leq  10^{n+1} (r- D_n) - d_{n+1} \leq 1$. We then just need to note that $10^{n+1} (r- D_n) - d_{n+1} = 10^{n+1} D_{n+1}$.
+\end{framed}
+
+\item Now we analyze uniqueness of decimal expansions. We will find it useful to use the following corollary of the proof of the Monotone Convergence Theorem: If $\{a_n\}_{n=1}^\infty$ is a bounded increasing sequence, $\{a_n\}_{n=1}^\infty$ converges to $\sup (\{a_n \ | \ n\in \N\})$.
+
+\begin{enumerate}
+\item Let $\{d_n\}_{n=1}^\infty$ be any digit sequence,  $\{ D_n\}_{n=1}^\infty$ be the corresponding sequence, and $r$ the number that it represents. Let $n$ be a natural number.
+\begin{enumerate}
+\item  Show that $D_n \leq r$ and that $D_n = r$ if and only if $d_{i}=0$ for all $i>n$.
+\item Show that $r \leq D_n + \frac{1}{10^n}$ and that $r = D_n + \frac{1}{10^n}$ if and only if $d_{i}=9$ for all $i>n$.
+\end{enumerate}
+\item Let $\{d_n\}_{n=1}^\infty$ and $\{e_n\}_{n=1}^\infty$ be two digit sequences with $d_k\neq e_k$ for some $k\in \N$. Suppose that both digit sequences represent the same number $r$. Show that $r = \frac{m}{10^k}$ for some natural number $m$.
+\item Deduce that if $r\in [0,1]$ and $r$ cannot be written as a rational number with denominator a power of ten, then there is a unique digit sequence that represents $r$.
+
+[Thus, if $r$ cannot be written as a rational number with denominator a power of ten, then $r$ has a unique decimal expansion.]
+
+\item Show that if $r\in (0,1)$ and $r$ can be written as a rational number with denominator a power of ten, then there are exactly two digit sequences that represent $r$: one with $d_i=0$ for all $i$ greater than some $k$, and one with $d_i=9$ for all $i$ greater than some $k$.
+
+[Thus, if $r$ has at most two decimal expansions, and always has exactly one nonterminating decimal expansion.]
+\end{enumerate}
+\end{enumerate}
 
 
 
-
-
-
-
-  %%%%%%%%%%%%%%%%%
-
-  % \begin{cor} 
-% \begin{enumerate}
-% \item
-% If  the sequence 
-% $\{a_n\}_{n=1}^\infty$ converges to $0$, then the sequence
-% $\{|a_n|\}_{n=1}^\infty$ also converges to $0$.
-% \item
-% More generally, if  the sequence 
-% $\{a_n\}_{n=1}^\infty$ converges to some number $L$, then the sequence
-% $\{|a_n|\}_{n=1}^\infty$ converges to $|L|$.
-% \end{enumerate}
-% \end{cor}
-
-% \begin{rem} Clearly part (1) is the special case of part (2) given by letting $L = 0$, 
-% and so why have we stated these as separate parts? It is because it turns out to be easier to prove
-%   (1) first, and then to use that result to then prove (2).
-% \end{rem}
-
-
-% \begin{proof} To prove (1), assume $\{a_n\}_{n=1}^\infty$ converges to $0$.  We need to prove $\{|a_n|\}_{n=1}^\infty$ converges to $0$. 
-
-
-% Pick $\e > 0$. Since 
-% $\{a_n\}_{n=1}^\infty$ converges to $0$, there is a number $N$ such that if $n \in \N$ and $n > N$, then $|a_n - 0| < \e$. For this same $N$, if $n > N$ then
-% $$
-% ||a_n| - 0| = ||a_n|| = |a_n| < \e.
-% $$
-% This proves $\{|a_n|\}_{n=1}^\infty$ converges to $0$. 
-
-
-% To prove (2), assume $\{a_n\}_{n=1}^\infty$ converges to $L$. By Theorem \ref{thm99}, $\{a_n - L\}_{n=1}^\infty$ converges to $0$ and hence, by part
-% (1) of this result, $\{|a_n - L|\}_{n=1}^\infty$ converges to $0$ too. Now observe that
-% $$
-% -|a_n - L| \leq |a_n| - |L| \leq |a_n - L|
-% $$
-% holds by the Reverse Triangle Inequality. By the Squeeze Theorem we get that
-% $\{|a_n| - |L|\}_{n=1}^\infty$ converges to $0$. But then by Theorem \ref{thm99} again
-% $\{|a_n| - |L| + |L|\}_{n=1}^\infty$ converges to $|L|$.
-% \end{proof}
 
 
 
@@ -2562,57 +2362,6 @@ conclude that $S$ must be the empty set.
 
 The above proof shows that the Principle of Mathematical Induction is a consequence of the Well-Ordering Principle. The converse is also true.
 
-\Sept{29}
-
-(1) Show that if $\{a_n\}_{n=1}^\infty$ is increasing and not bounded above, then $\{a_n\}_{n=1}^\infty$ diverges to $\infty$.
-\begin{framed}
-Suppose that $\{a_n\}_{n=1}^\infty$ is increasing and not bounded above.
-Let $M\in \R$ be arbitrary. Since $\{a_n\}_{n=1}^\infty$ is not bounded above, $M$ is not an upper bound, so there exists some $N\in \N$ such that $a_N > M$. We claim that for all natural numbers $n>N$, we have $a_n>M$ Indeed, if $n>N$, since the sequence is increasing, we have $a_n \geq a_N >M$, as desired. Thus, for every $M\in \R$, there is some $N\in \R$ such that for all natural numbers $n>N$, we have $a_n>M$. This means that $\{a_n\}_{n=1}^\infty$ diverges to $\infty$.
-
-\hrulefill
-
-
-Alternative argument:
-
-
-\hrulefill
-
-
-Suppose that $\{a_n\}_{n=1}^\infty$ is increasing and not bounded above. By way of contradiction, suppose that $\{a_n\}_{n=1}^\infty$ does not diverge to $\infty$. This means that there exists some $M\in \R$ such that for all $N\in \R$, there exists a natural number $n>N$ with $a_n \leq M$. We claim that $M$ is an upper bound for $\{a_n\}_{n=1}^\infty$, which will be the desired contradiction. Let $k\in \N$; we need to show that $a_k \leq M$. Taking $k=N$ in the statement above, there is some natural number $n>k$ with $a_n \leq M$. But since $\{a_n\}_{n=1}^\infty$ is increasing, we have $a_k \leq a_n \leq M$, as desired, so $M$ is an upper bound. We have obtained a contradiction, so we must have that $\{a_n\}_{n=1}^\infty$ does indeed diverge to $\infty$.
-\end{framed}
-
-
-(2) Let $S$ be a nonempty bounded above set and $\ell=\sup(S)$.
-
-$\bullet$ Show that, for every $n\in \N$, there is some $x\in S$ such that $\ell-\frac{1}{n} < x \leq \ell$.
-
-\begin{framed}
-Since $\ell-\frac1n < \ell = \sup(S)$, $\ell-\frac1n$ is not an upper bound for $S$, so there exists some $x\in S$ with $\ell-\frac1n < x$. Since $\ell$ is an upper bound of $S$, we also have $x\leq \ell$.
-\end{framed}
-
-$\bullet$ Show that there is a sequence $\{a_n\}_{n=1}^\infty$ with $a_n\in S$ for all $n\in \N$ that converges to $\ell$.
-
-\begin{framed}
-For each $n$, pick some $a_n\in S$ such that $\ell-\frac1n < a_n \leq \ell$. We claim that this sequence converges to $\ell$. Note that the sequence  $\{\ell \}_{n=1}^\infty$ converges to $\ell$ since it is constant, and $\{ \ell-\frac1n \}_{n=1}^\infty$ converges to $\ell$ also by Theorem 12.2. Thus, by the Squeeze Theorem, $\{\ell \}_{n=1}^\infty$ converges to $\ell$ too.
-
-
-\hrulefill
-
-
-Alternative argument:
-
-
-\hrulefill
-
-For each $n$, pick some $a_n\in S$ such that $\ell-\frac1n < a_n \leq \ell$. We claim that this sequence converges to $\ell$. Let $\e>0$. Take $N=1/\e$. Then for a natural number $n>N$, using the inequalities above, we have that $|a_n-\ell|<\frac1n <\frac1N =\e$.
-
-\end{framed}
-
-
-
-\Oct{1}
-
-
 
 
 
@@ -2627,10 +2376,6 @@ so the equality holds in this case. Assume that the equality holds for some natu
 so the equality holds for $n=k+1$. Thus, by induction, the equality holds for all $n\in \N$.\qed
 \end{ex} 
 
-\begin{ex} Let's show that every finite set has a minimum element. It's not obvious that induction makes any sense here, but we can rephrase the statement as saying that for every $n\in \N$, a set of real numbers with $n$ elements has a minimum. So, let us prove by induction on $n$ that for every set of $n$ real numbers, the set has a minimum.
- When $n=1$, any set with one element clearly has its only element as a minimum, so the statement is true in this case.
-Assume that for some natural number $n=k$, every set of $k$ elements has a minimum element; we need to show that every set of $k+1$ elements has a minimum. Let $S$ be a set of $k+1$ elements, and fix some $x\in S$. Then $T=S\smallsetminus\{x\}$ has $k$ elements, so it has a minimum, which we will call $y$. Either $x<y$ or $x\geq y$. If $x<y$, and $z\in S$, either $z \in T$ so $z\geq y > x$, or else $z=x$ so $z\geq x$; thus, $x=\min (S)$ in this case. If $x\geq y$, and $z\in S$, if $z\in T$ then $z\geq y$, and otherwise $z=x\geq y$; thus $y=\min (S)$ in this case. We have shown that $S$ has a minimum element. This completes the inductive step, and hence completes the proof.\qed
-\end{ex}
 
 Now, I want to apply what we've done so far to decimal expansions. Let us say that $d_1,d_2,d_3,\dots$ is a ``digit sequence'' if $d_i\in\{0,1,\dots,9\}$ for each $i\in\N$. We will say that an integer $k$ and a digit sequence $d_1,d_2,d_3,\dots$ is a ``decimal expansion'' and write $k. d_1 d_2 d_3 \dots$ to denote a decimal expansion. We say that the decimal expansion $k. d_1 d_2 d_3 \dots$  ``corresponds to a real number $r$'' if the sequence
 \begin{align*}

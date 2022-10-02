@@ -96,7 +96,19 @@ We say that a digit sequence $\{d_n\}_{n=1}^\infty$ \emph{represents a real numb
 \item Now we analyze uniqueness of decimal expansions. We will find it useful to use the following corollary of the proof of the Monotone Convergence Theorem: If $\{a_n\}_{n=1}^\infty$ is a bounded increasing sequence, $\{a_n\}_{n=1}^\infty$ converges to $\sup (\{a_n \ | \ n\in \N\})$.
 
 \begin{enumerate}
-\item Let $\{d_n\}_{n=1}^\infty$ be any digit sequence and  $\{ D_n\}_{n=1}^\infty$ be the corresponding sequence. Suppose that 
+\item Let $\{d_n\}_{n=1}^\infty$ be any digit sequence,  $\{ D_n\}_{n=1}^\infty$ be the corresponding sequence, and $r$ the number that it represents. Let $n$ be a natural number.
+\begin{enumerate}
+\item  Show that $D_n \leq r$ and that $D_n = r$ if and only if $d_{i}=0$ for all $i>n$.
+\item Show that $r \leq D_n + \frac{1}{10^n}$ and that $r = D_n + \frac{1}{10^n}$ if and only if $d_{i}=9$ for all $i>n$.
+\end{enumerate}
+\item Let $\{d_n\}_{n=1}^\infty$ and $\{e_n\}_{n=1}^\infty$ be two digit sequences with $d_k\neq e_k$ for some $k\in \N$. Suppose that both digit sequences represent the same number $r$. Show that $r = \frac{m}{10^k}$ for some natural number $m$.
+\item Deduce that if $r\in [0,1]$ and $r$ cannot be written as a rational number with denominator a power of ten, then there is a unique digit sequence that represents $r$.
+
+[Thus, if $r$ cannot be written as a rational number with denominator a power of ten, then $r$ has a unique decimal expansion.]
+
+\item Show that if $r\in (0,1)$ and $r$ can be written as a rational number with denominator a power of ten, then there are exactly two digit sequences that represent $r$: one with $d_i=0$ for all $i$ greater than some $k$, and one with $d_i=9$ for all $i$ greater than some $k$.
+
+[Thus, if $r$ has at most two decimal expansions, and always has exactly one nonterminating decimal expansion.]
 \end{enumerate}
 \end{enumerate}
 
