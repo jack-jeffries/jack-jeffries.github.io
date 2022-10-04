@@ -1275,6 +1275,7 @@ We now want a tool to detect linear (in)dependence of functions. Here is Wronski
 Larger square matrices have determinants too, but we won't discuss them in this class. Do not attempt to generalize the formula for $3\times 3$ to $n\times n$ matrices; consult a linear algebra text instead.
 
 \begin{comment}
+\Oct{6}
 
 \begin{defn} The \emph{Wronskian}\index{Wronskian} of two functions $f,g$ is the determinant
 \[ W(f,g) = \det \begin{bmatrix} f & g \\ f'  & g' \end{bmatrix} = f g' - f' g.\] This is a function (of the same variable that $f$ and $g$ are functions of).
@@ -1333,6 +1334,8 @@ where $\{y_1,\dots,y_n\}$ is a fundamental set of solutions to the associated ho
 
 \begin{slogan} Given $n$ solutions to an $n$-th order homogeneous linear ODE, if their Wronskian is nonzero, then they form a fundamental set, and the general solution is given by superposition. \end{slogan}
 
+
+
 \begin{ex}
 Consider the ODE
 \[ y'' - 3y' + 2y = 0.\]
@@ -1343,10 +1346,40 @@ so they are linearly independent. Thus the general solution is
 
 Now we consider 
 \[y'' - 3y' + 2y = e^{x}.\]
-We saw earlier that $y=-xe^x$ is a solution. Using what we just proved baout the homogeneous solution, we conclude that
+We saw earlier that $y=-xe^x$ is a solution. Using what we just proved about the homogeneous solution, we conclude that
 \[ y=-xe^x + C_1 e^x + C_2 e^{2x}\]
 is the general solution to this nonhomogeneous equation.
 \end{ex}
+
+\subsection*{Reduction of order (\S4.2)}
+
+We know that for a homogeneous linear ODE of order two, we are looking for two linearly independent solutions to form a fundamental set. Before we start to discuss methods to find solutions, we are going to discuss a method to get a second solution if we already know one. Here is the idea: Given \[ a_2(x) y'' + a_2(x) y' + a_0(x) = 0\] and one solution $y_1(x)$, we are going to look for a function that is a nonconstant multiple of $y_1(x)$:  $y_2(x) = u(x) y_1(x)$. When we plug it in, we can turn it into a first order ODE, which we already know how to solve.
+
+\begin{ex} Consider the ODE 
+\[ x^2 y'' + 2x y' -6y = 0\] and say that we already know that $y_1= x^2$ is a solution. Let's plug in $y_2 = u x^2$ and see if we can get an equation for $u$.
+\[ x^2 (u x^2)'' + 2x (u x^2)' - 6 u x^2 = 0\]
+We have \[ (ux^2)' = u' x^2 + 2ux\]
+and
+\[ (ux^2)'' =  (u' x^2 + 2ux )' = u'' x^2  + 2u'x + 2u' x + 2u  = u'' x^2 + 4 u'x + 2u,\]
+so
+\[ x^2 (u'' x^2 + 4 u' x + 2u) + 2x (u' x^2 + 2ux) - 12 u x = 0.\]
+We want to think of this as an equation in $u$, so group by the derivatives of $u$.
+\[ (x^4) u'' + (2x^2 \cdot 2x + 2x\cdot x^3) u' + (2x^2   + 2x \cdot 2x - 6 x^2) u = 0\]
+\[x^4 u'' + 6x^3 u' =0.\]
+This looks like a second order equation, but take $v= u'$. We now have
+\[x^4 v' + 6x^3 v =0.\]
+\[ v' + \frac{6}{x} v = 0.\]
+Take a multiplying factor of $e^{\int \frac{6}{x} } = e^{6 \ln x} = e^{\ln (x^6)} = x^6$ to get
+\[ x^6 v' + 6 x^5 v = 0.\]
+\[ (x^6 v)' = 0.\]
+\[ x^6 v = C.\]
+\[ v = C x^{-6}.\]
+Findally go back to $u$:
+\[ u = \int C x^{-6} \, dx = -5 C x^{-5} + C'.\]
+We are just looking for one $u$, so take $u=x^{-5}$ and $y_2 = x^2 x^{-5} = x^{-3}$.
+\end{ex}
+
+
 \begin{comment}
 \end{comment}
 

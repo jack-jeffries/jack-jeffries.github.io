@@ -49,6 +49,8 @@
 \def\cMpc{{\mathcal M}_{pc}}
 \def\cMpctf{{\mathcal M}_{pctf}}
 \def\L{\mathbf{L}}
+\def \a{\alpha}
+\def\b{\beta}
 
 
 
@@ -1917,7 +1919,7 @@ To prove it, let $\{ a_n\}_{n=1}^\infty$ be  increasing and not bounded above. T
 \end{framed}
 
 \end{enumerate}
-\begin{comment}
+
 \Oct{4}
 	
 We will now embark on a bit of detour. I've postponed talking about proofs by induction, but we will need to use that technique on occasion. So let's talk
@@ -2002,42 +2004,18 @@ where we used that $1+x\geq 0$ in the first $\geq$ (since $x\geq -1$) and that $
 Thus, by induction, the inequality is true for all $n\in \N$.\qed
 \end{ex}
 
-We can also ``start'' our induction at any other integer $m$ and prove a statement for all integers greater than or equal to that number $m$. (To justify it from the statement of PMI we have, let $P'_k = P_{k-m-1}$ and prove $P'_k$ by induction.)
 
-
-\begin{ex} Let's show that $2^n < n!$ for all natural numbers $n>3$. To show it is true for all $n\geq 4$, first we check the statement for $n=4$:
-\[ 2^4 = 16 < 24 = 4!.\]
-We also check the inductive step: let $k$ be a natural number greater than $3$ and assume that $2^k < k !$. 
-
-Then \[ 2^{k+1} = 2 \cdot 2^k < 2 \cdot k! < (k+1) \cdot k! = (k+1)!.\]
-Thus, by induction, the statement is true for any natural number ${n>3}$.\qed
-\end{ex}
-
-\begin{ex} Let's show that every finite set has a minimum element. It's not obvious that induction makes any sense here, but we can rephrase the statement as saying that for every $n\in \N$, a set of real numbers with $n$ elements has a minimum. So, let us prove by induction on $n$ that for every set of $n$ real numbers, the set has a minimum.
- When $n=1$, any set with one element clearly has its only element as a minimum, so the statement is true in this case.
-Assume that for some natural number $n=k$, every set of $k$ elements has a minimum element; we need to show that every set of $k+1$ elements has a minimum. Let $S$ be a set of $k+1$ elements, and fix some $x\in S$. Then $T=S\smallsetminus\{x\}$ has $k$ elements, so it has a minimum, which we will call $y$. Either $x<y$ or $x\geq y$. If $x<y$, and $z\in S$, either $z \in T$ so $z\geq y > x$, or else $z=x$ so $z\geq x$; thus, $x=\min (S)$ in this case. If $x\geq y$, and $z\in S$, if $z\in T$ then $z\geq y$, and otherwise $z=x\geq y$; thus $y=\min (S)$ in this case. We have shown that $S$ has a minimum element. This completes the inductive step, and hence completes the proof.\qed
-\end{ex}
-
-
-Induction is also closely related to the notion of a sequence defined by recursion. Recall that we define a sequence $\{a_n\}_{n=1}^\infty$ recursively by specifying a value $a_1$ for the first value, and a formula for $a_n$ in terms of $a_{n-1}$ (or multiple earlier values in the sequence). The principle of induction justifies that such a rule gives a well-defined value for every $n$: if we take $P_k$ to be the statement that the formulas define value for all of the first $k$ terms $a_1,\dots,a_k$, then $P_1$ is true and $P_k \Rightarrow P_{k+1}$, so $P_n$ is true for every $n\in \N$. 
-
-Let us use a recursive sequence to prove a proposition that we will use later.
+Induction is also closely related to the notion of a sequence defined by recursion. Recall that we define a sequence $\{a_n\}_{n=1}^\infty$ recursively by specifying a value $a_1$ for the first value, and a formula for $a_n$ in terms of $a_{n-1}$ (or multiple earlier values in the sequence). The principle of induction justifies that such a rule gives a well-defined value for every $n$: if we take $P_k$ to be the statement that the formulas define value for all of the first $k$ terms $a_1,\dots,a_k$, then $P_1$ is true and $P_k \Rightarrow P_{k+1}$, so $P_n$ is true for every $n\in \N$.
 
 \begin{prop}
 For any real number $r$, there exists a strictly increasing sequence of rational numbers that converges to $r$.
 \end{prop}
 \begin{proof}
-We will construct a sequence of rational numbers $\{q_n\}_{n=1}^\infty$ such that $r-\frac{1}{n} < q_n < r$ for every $n$ that is strictly increasing, and then show that this sequence converges to $r$. By Density of Rational Numbers, there exists a rational number $q_1$ such that $r-1 < q < r$. Given $q_1,\dots,q_n$, take $q_{n+1}$ to be a rational number such that $\max\{r-\frac{1}{n+1}, q_n\} < q_{n+1} < r$ again using Density of Rational Numbers. Since $q_n \leq \max\{r-\frac{1}{n+1}, q_n\} < q_{n+1}$ for every $n$, the sequence we obtain is strictly increasing. Since $r-\frac{1}{n+1}  \leq \max\{r-\frac{1}{n+1}, q_n\} < q_{n+1}$ for every~$n$ (equivalently, $r-\frac{1}{n} < q_n < r$ for all $n$), and $\{ r - \frac{1}{n}\}_{n=1}^\infty$ converges to $r$, by the Squeeze Theorem, the sequence $\{q_n\}_{n=1}^\infty$ converges to $r$.
+We will construct a sequence of rational numbers $\{q_n\}_{n=1}^\infty$ such that $r-\frac{1}{n} < q_n < r$ for every $n$ that is strictly increasing, and then show that this sequence converges to $r$. By Density of Rational Numbers, there exists a rational number $q_1$ such that $r-1 < q < r$. Given $q_1,\dots,q_n$, we define $q_{n+1}$ recursively to be a rational number such that $\max\{r-\frac{1}{n+1}, q_n\} < q_{n+1} < r$ again using Density of Rational Numbers. To see that this rule makes sense, we observe that if we have constructed $q_1,\dots ,q_n$ by this rule, then  $q_n<r$, so $\max\{r-\frac{1}{n+1}, q_n\} < r$, and hence Density of Rational number applies, so we can construct $q_{n+1}$ (and hence we can construct $q_n$ for any $n$ by this rule). Since \[ q_n \leq \max\{r-\frac{1}{n+1}, q_n\} < q_{n+1}\] for every $n$, the sequence we obtain is strictly increasing. Since \[ r-\frac{1}{n}< q_{n} < r\] for every~$n$ and $\{ r - \frac{1}{n}\}_{n=1}^\infty$ converges to $r$, by the Squeeze Theorem, the sequence $\{q_n\}_{n=1}^\infty$ converges to $r$.
 \end{proof}
 
 
-Induction and recursion go together well. Let us apply induction to understand a recursively defined sequence.
-
-\begin{ex} Define a sequence recursively by the rules $a_1 = 2$ and $a_{n} = \frac{a_{n-1}}{2} + \frac{1}{a_{n-1}}$ for $n>1$. So we have $a_1 = 2$, $a_2 = \frac{1}{2} + \frac{1}{1} = \frac{3}{2}$, etc. 
-
-Let's show that $a_n>0$ for all $n$. We proceed by induction on $n$. First we note that $a_1 = 2 >0$. Then, assuming $a_k>0$, we have $a_{k+1} = \frac{a_k}{2} + \frac{1}{a_k} >0$ since both terms are positive. Thus, $a_n>0$ for all $n$ by induction.\qed
-\end{ex}
-
+\begin{comment}
 
 \Oct{6}
 
@@ -2119,7 +2097,7 @@ We have \[ a + ax + ax^2 + \cdots + a x^n = a (1+x +x^2 + x^3 +\cdots + x^n) = a
 \end{enumerate}
 \end{framed}
 
-\item Let $\{d_n\}_{n=1}^\infty$ be any digit sequence. Prove\footnote{Hint: Use the monotone convergence theorem. You might want to use that $d_i \leq 9$ for all $i$ and the previous problem!} that this sequence represents some real number: i.e., that the corresponding sequence $\{ D_n\}_{n=1}^\infty$  is convergent. 
+\item Let $\{d_n\}_{n=1}^\infty$ be any digit sequence. Prove that this sequence represents some real number: i.e., that the corresponding sequence $\{ D_n\}_{n=1}^\infty$  is convergent. 
 
  [Thus, every decimal expansion $0.d_1 d_2 d_3 \cdots$ always gives us a real number.]
  
@@ -2169,7 +2147,7 @@ Since $0\leq 10 r \leq 10$, we can take an integer between $0$ and $9$ to be $d_
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%
-\begin{comment}
+%\begin{comment}
 \section*{Discussion Questions, March 3}
 
 {\large TRUE or FALSE. Justify.}
