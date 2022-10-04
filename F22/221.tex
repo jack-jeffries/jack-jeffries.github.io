@@ -1275,6 +1275,7 @@ We now want a tool to detect linear (in)dependence of functions. Here is Wronski
 Larger square matrices have determinants too, but we won't discuss them in this class. Do not attempt to generalize the formula for $3\times 3$ to $n\times n$ matrices; consult a linear algebra text instead.
 
 \begin{comment}
+
 \Oct{6}
 
 \begin{defn} The \emph{Wronskian}\index{Wronskian} of two functions $f,g$ is the determinant
@@ -1286,7 +1287,9 @@ In general, the Wronskian of $n$ functions is the determinant of an $n\times n$ 
 
 For example, \[W(x^2,x^3) = \det \begin{bmatrix} x^2 & x^3 \\ 2x & 3x^2 \end{bmatrix} = x^2 \cdot 3x^2 - 2x \cdot x^3 = x^4.\]
 
-The point of Wronskians is that a set of (sufficiently differentiable) functions is linearly dependent on an interval if and only if their Wronskian is the zero function on that interval.
+The point of Wronskians is the following:
+\begin{thm} A set of function $\{f_1,\dots,f_n\}$ (with at least $n-1$ derivatives) is linearly dependent on an interval if and only if the Wronskian $W(f_1,\dots,f_n)$ is the  zero function on that interval.
+\end{thm}
 
 \begin{ex}
 Let's use Wronskians to show that the functions $\{ x, e^x\}$ are linearly independent on $(-\infty,\infty)$. We have
@@ -1300,9 +1303,7 @@ so these are linearly dependent.
 In fact, when we have a set of solutions to a homogeneous linear ODE, something even better happens.
 
 \begin{thm}[Wronskian theorem]
-If $f_1,\dots,f_n$ are $n$ solutions of the $n$th order homogenous linear equation
-\[ a_n(x) y^{(n)} + a_{n-1}(x) y^{(n-1)} + \cdots + a_1(x) y' + a_0(x) y = 0\]
-on some interval, then 
+If $f_1,\dots,f_n$ are $n$ solutions of an $n$th order homogenous linear equation on some interval, then 
 \begin{enumerate}
 \item $f_1,\dots,f_n$ are linearly dependent on the interval $\Leftrightarrow$ if the Wronskian function $W(f_1,\dots,f_n)$ is \emph{always} equal to zero on the interval.
 \item $f_1,\dots,f_n$ are linearly independent on the interval $\Leftrightarrow$ the Wronskian function $W(f_1,\dots,f_n)$ is \emph{never} equal to zero on the interval.
@@ -1355,29 +1356,35 @@ is the general solution to this nonhomogeneous equation.
 
 We know that for a homogeneous linear ODE of order two, we are looking for two linearly independent solutions to form a fundamental set. Before we start to discuss methods to find solutions, we are going to discuss a method to get a second solution if we already know one. Here is the idea: Given \[ a_2(x) y'' + a_2(x) y' + a_0(x) = 0\] and one solution $y_1(x)$, we are going to look for a function that is a nonconstant multiple of $y_1(x)$:  $y_2(x) = u(x) y_1(x)$. When we plug it in, we can turn it into a first order ODE, which we already know how to solve.
 
-\begin{ex} Consider the ODE 
-\[ x^2 y'' + 2x y' -6y = 0\] and say that we already know that $y_1= x^2$ is a solution. Let's plug in $y_2 = u x^2$ and see if we can get an equation for $u$.
-\[ x^2 (u x^2)'' + 2x (u x^2)' - 6 u x^2 = 0\]
-We have \[ (ux^2)' = u' x^2 + 2ux\]
-and
-\[ (ux^2)'' =  (u' x^2 + 2ux )' = u'' x^2  + 2u'x + 2u' x + 2u  = u'' x^2 + 4 u'x + 2u,\]
-so
-\[ x^2 (u'' x^2 + 4 u' x + 2u) + 2x (u' x^2 + 2ux) - 12 u x = 0.\]
+\begin{ex} Consider the ODE
+\[ y'' + y' - 2y = 0.\]
+I found $y_1 = e^x$ is a solution:
+\[ (e^x)'' + (e^x)' - 2 e^x = e^x + e^x - 2 e^x = 0.\]
+Let us use reduction of order to find another one. We take $y_2= u e^x$ and plug it in:
+\[ (u e^x)'' + (u e^x)' - 2 (u e^x) = 0\]
+\[ (u' e^x + u e^x) ' + (u' e^x + u e^x)- 2 (u e^x) = 0\]
+\[ (u'' e^x + u' e^x + u' e^x + u e^x) + (u' e^x + u e^x)- 2 (u e^x) = 0\]
 We want to think of this as an equation in $u$, so group by the derivatives of $u$.
-\[ (x^4) u'' + (2x^2 \cdot 2x + 2x\cdot x^3) u' + (2x^2   + 2x \cdot 2x - 6 x^2) u = 0\]
-\[x^4 u'' + 6x^3 u' =0.\]
+\[ u'' e^x + u' (3 e^x) + u (2 e^x - 2 e^x) = 0\]
+\[ u'' e^x + 3 u' e^x= 0\]
 This looks like a second order equation, but take $v= u'$. We now have
-\[x^4 v' + 6x^3 v =0.\]
-\[ v' + \frac{6}{x} v = 0.\]
-Take a multiplying factor of $e^{\int \frac{6}{x} } = e^{6 \ln x} = e^{\ln (x^6)} = x^6$ to get
-\[ x^6 v' + 6 x^5 v = 0.\]
-\[ (x^6 v)' = 0.\]
-\[ x^6 v = C.\]
-\[ v = C x^{-6}.\]
-Findally go back to $u$:
-\[ u = \int C x^{-6} \, dx = -5 C x^{-5} + C'.\]
-We are just looking for one $u$, so take $u=x^{-5}$ and $y_2 = x^2 x^{-5} = x^{-3}$.
-\end{ex}
+\[ v' e^x + 3 v e^x = 0.\]
+\[ v'  + 3 v  = 0.\]
+\[ v'  = -3 v.\]
+We know a solution of this is $v=Ce^{-3x}$. Then $u= \frac{-1}{3} C e^{-3x} + C'$. We only want one solution $u$, so $e^{-3x}$ works. Now take $y_2 = e^x e^{-3x} = e^{-2x}$.
+ We can check:
+ \[ (e^{-2x})'' + (e^{-2x})' - 2 e^{-2x} = 4 (e^{-2x})  - 2 (e^{-2x}) - 2 e^{-2x} = 0.\]
+ Finally, let's hcek that our two solutions are linearly independent with the Wronskian:
+ \[ W(e^{x},e^{-2x}) = \det \begin{bmatrix} e^x & e^{-2x} \\ e^{x} & -2 e^{-2x} \end{bmatrix} = -2 e^x e^{-2x} - e^x e^{-2x} = -3 e^{-x} \neq 0.\]
+ We conclude that the general solution is 
+ \[ C_1 e^x + C_2 e^{-2x}.\]
+ \end{ex}
+
+\begin{slogan}
+Given a solution $y_1$ of a second-order homogeneous linear ODE, plug in $y_2= u y_1$, and get a first-order homogeneous linear ODE in terms of $v=u'$.
+\end{slogan}
+
+
 
 
 \begin{comment}
