@@ -1138,7 +1138,7 @@ According to the superposition principle determine:
 \begin{framed}
 \begin{enumerate}
 \item Since this is a linear homogeneous equation, we know that any superpositions of our given solutions $e^x$ and $e^{2x}$ are also solutions of the equation. This means \ref{10a}, \ref{10b}, and \ref{10d} are solutions too.
-\item Since this is a linear nonhomogeneous equation, we know that our particular solution plus any supoerposition of our homogeneous solutions is also a solution. This means \ref{10e}, \ref{10g}, and \ref{10h} are solutions too.
+\item Since this is a linear nonhomogeneous equation, we know that our particular solution plus any superposition of our homogeneous solutions is also a solution. This means \ref{10e}, \ref{10g}, and \ref{10h} are solutions too.
 
 The other functions \ref{10c} and \ref{10f} are not solutions to either!
 \end{enumerate}
@@ -1151,13 +1151,15 @@ We are going to put the principle of superposition to use to write general solut
 \[ y = C_1 y_1 + \cdots + C_t y_t\]
 for functions $y_1,\dots,y_t$ (that we have to go find in each case).
 For a nonhomogeneous linear ODE, we will express the general solution as
-\[ y = y_p + y_c\]
-where $y_p$ is any \emph{particular solution}\index{particular solution} and $y_c$ is the general solution to the associated homogeneous ODE (which in turn we will express like the last formula), called the \emph{complementary solution}\index{complementary solution}.
+\[ y = y_p + C_1 y_1 + \cdots + C_t y_t\]
+where $y_p$ is any \emph{particular solution}\index{particular solution} and $C_1 y_1 + \cdots + C_t y_t$ is the general solution to the associated homogeneous ODE.
 
-For example, the general solution of $y'' - 3y' + 2y = 0$
-is \[y= C_1 e^{x} + C_2 e^{2x}\]
-and the general solution of  $y'' - 3y' + 2y = e^{x}$
-is \[y= -x e^x + C_1 e^{x} + C_2 e^{2x}:\] here $-x e^x$ is a particular solution and $C_1 e^{x} + C_2 e^{2x}$ is the complementary solution.
+We would like a way to figure out when we have found enough solutions $y_i$ to make all of them by superposition. Before we can do it, we need a way to say that an extra solution is new.
+
+%For example, the general solution of $y'' - 3y' + 2y = 0$
+%is \[y= C_1 e^{x} + C_2 e^{2x}\]
+%and the general solution of  $y'' - 3y' + 2y = e^{x}$
+%is \[y= -x e^x + C_1 e^{x} + C_2 e^{2x}:\] here $-x e^x$ is a particular solution and $C_1 e^{x} + C_2 e^{2x}$ is the complementary solution.
 
 \subsection*{Linear dependence and Wronskians}
 
