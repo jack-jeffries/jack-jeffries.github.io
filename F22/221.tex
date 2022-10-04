@@ -1144,8 +1144,69 @@ The other functions \ref{10c} and \ref{10f} are not solutions to either!
 \end{enumerate}
 \end{framed}
 
-\begin{comment}
+
 \Oct{4}
+
+
+	\subsection*{Discussion Questions}
+	
+	
+	Consider the differential equations
+	\begin{equation}\tag{$\clubsuit$} y'' + \sin(t) y' + e^{t^2} y = 0 \end{equation}
+		\begin{equation}\tag{$\diamondsuit$} y'' + \sin(t) y' + e^{x^2} y = \tan(t) \end{equation}
+	
+	\
+	
+\begin{enumerate}
+\item What is the order of these equations? Are they linear? Are the homogeneous?
+
+\begin{framed}
+Second order, linear, first is homogeneous, second is not.
+\end{framed}
+
+\item Say that we have solutions $f(t)$ and $g(t)$  to equation $(\clubsuit)$, and a solution $h(y)$  to equation $(\diamondsuit)$. 
+Which of the following definitely are solutions to $(\clubsuit)$? Which definitely are solutions to $(\diamondsuit)$? 
+\begin{multicols}{3}
+\begin{enumerate}
+\item\label{11a} $y= 2f$
+\item\label{11b} $y= 2h$
+\item\label{11c} $y=3f-g$
+\item\label{11d} $y=f^2$
+\item\label{11e} $y=0$
+\item\label{11f} $y=g+h$
+\item\label{11g} $y=tg$
+\item\label{11h} $y=h-4f$
+\end{enumerate}
+\end{multicols}
+\begin{framed}
+\noindent \ref{11a}, \ref{11c}, \ref{11e} are solutions to $(\clubsuit)$ and \ref{11f}, \ref{11h} are solutions to~$(\diamondsuit)$.
+\end{framed}
+
+
+\item What can you say about existence and uniqueness of the following initial value problems? Are they true on some interval? If so, what's the biggest such interval?
+\begin{enumerate}
+\item \[ \begin{cases} y'' + \sin(t) y' + e^{t^2} y = 0 \\ 
+y(0.2) = 4 \\
+y'(0.2) = \pi
+\end{cases}\]
+\begin{framed}
+Exists and unique on $(-\infty,\infty)$.
+\end{framed}
+\item \[ \begin{cases} y'' + \sin(t) y' + e^{t^2} y = \tan(t) \\ 
+y(0.2) = 4 \\
+y'(-0.1) = \pi
+\end{cases}\]
+\begin{framed}
+Exists and unique on $(-\pi/2,\pi/2)$.
+\end{framed}
+\item \[ \begin{cases} y'' + \sin(t) y' + e^{t^2} y = 0 \\ 
+y(0.3) = 7 \\
+\end{cases}\]
+\begin{framed}
+Exists but not unique on  $(-\infty,\infty)$.
+\end{framed}
+\end{enumerate}
+\end{enumerate}
 
 We are going to put the principle of superposition to use to write general solutions of linear ODEs in terms of a few solutions. Namely, for a homogeneous linear ODE, we will express the general solution as
 \[ y = C_1 y_1 + \cdots + C_t y_t\]
@@ -1212,6 +1273,8 @@ We now want a tool to detect linear (in)dependence of functions. Here is Wronski
 \end{defn}
 
 Larger square matrices have determinants too, but we won't discuss them in this class. Do not attempt to generalize the formula for $3\times 3$ to $n\times n$ matrices; consult a linear algebra text instead.
+
+\begin{comment}
 
 \begin{defn} The \emph{Wronskian}\index{Wronskian} of two functions $f,g$ is the determinant
 \[ W(f,g) = \det \begin{bmatrix} f & g \\ f'  & g' \end{bmatrix} = f g' - f' g.\] This is a function (of the same variable that $f$ and $g$ are functions of).

@@ -1,0 +1,194 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+
+\DeclareMathOperator{\res}{res}
+
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+	
+	\thispagestyle{empty}
+	
+
+	
+	\section*{Discussion Questions}
+	
+	
+	Consider the differential equations
+	\begin{equation}\tag{$\clubsuit$} y'' + \sin(t) y' + e^{x^2} y = 0 \end{equation}
+		\begin{equation}\tag{$\diamondsuit$} y'' + \sin(t) y' + e^{x^2} y = \tan(t) \end{equation}
+	
+	\
+	
+\begin{enumerate}
+\item What is the order of these equations? Are they linear? Are the homogeneous?
+
+\
+
+\item Say that we have solutions $f(t)$ and $g(t)$  to equation $(\clubsuit)$, and a solution $h(y)$  to equation $(\diamondsuit)$. 
+Which of the following definitely are solutions to $(\clubsuit)$? Which definitely are solutions to $(\diamondsuit)$? 
+\begin{multicols}{4}
+\begin{enumerate}
+\item $y= 2f$
+\item $y= 2h$
+\item $y=3f-g$
+\item $y=f^2$
+\item $y=0$
+\item $y=g+h$
+\item $y=tg$
+\item $y=h-4f$
+\end{enumerate}
+\end{multicols}
+
+\item What can you say about existence and uniqueness of the following initial value problems? Are they true on some interval? If so, what's the biggest such interval?
+\begin{multicols}{3}
+\begin{enumerate}
+\item \[ \begin{cases} y'' + \sin(t) y' + e^{x^2} y = 0 \\ 
+y(0.2) = 4 \\
+y'(-0.1) = \pi
+\end{cases}\]
+\item \[ \begin{cases} y'' + \sin(t) y' + e^{x^2} y = \tan(t) \\ 
+y(0.2) = 4 \\
+y'(-0.1) = \pi
+\end{cases}\]
+\item \[ \begin{cases} y'' + \sin(t) y' + e^{x^2} y = 0 \\ 
+y(0.3) = 7 \\
+\end{cases}\]
+
+\end{enumerate}
+\end{multicols}
+\end{enumerate}
+
+\vfill 
+
+
+	\section*{Discussion Questions}
+	
+	
+	Consider the differential equations
+	\begin{equation}\tag{$\clubsuit$} y'' + \sin(t) y' + e^{t^2} y = 0 \end{equation}
+		\begin{equation}\tag{$\diamondsuit$} y'' + \sin(t) y' + e^{x^2} y = \tan(t) \end{equation}
+	
+	\
+	
+\begin{enumerate}
+\item What is the order of these equations? Are they linear? Are the homogeneous?
+
+\
+
+\item Say that we have solutions $f(t)$ and $g(t)$  to equation $(\clubsuit)$, and a solution $h(y)$  to equation $(\diamondsuit)$. 
+Which of the following definitely are solutions to $(\clubsuit)$? Which definitely are solutions to $(\diamondsuit)$? 
+\begin{multicols}{4}
+\begin{enumerate}
+\item $y= 2f$
+\item $y= 2h$
+\item $y=3f-g$
+\item $y=f^2$
+\item $y=0$
+\item $y=g+h$
+\item $y=tg$
+\item $y=h-4f$
+\end{enumerate}
+\end{multicols}
+
+\item What can you say about existence and uniqueness of the following initial value problems? Are they true on some interval? If so, what's the biggest such interval?
+\begin{multicols}{3}
+\begin{enumerate}
+\item \[ \begin{cases} y'' + \sin(t) y' + e^{t^2} y = 0 \\ 
+y(0.2) = 4 \\
+y'(0.2) = \pi
+\end{cases}\]
+\item \[ \begin{cases} y'' + \sin(t) y' + e^{t^2} y = \tan(t) \\ 
+y(0.2) = 4 \\
+y'(-0.1) = \pi
+\end{cases}\]
+\item \[ \begin{cases} y'' + \sin(t) y' + e^{t^2} y = 0 \\ 
+y(0.3) = 7 \\
+\end{cases}\]
+
+\end{enumerate}
+\end{multicols}
+\end{enumerate}
+
+
+
+\newpage
+
+\noindent \textbf{Existence and uniqueness theorem for linear IVPs:}
+Given a linear ODE
+\[ a_n(x) y^{(n)} + a_{n-1}(x) y^{(n-1)} + \cdots + a_1(x) y' + a_0(x) y = g(x)\]
+where $g(x), a_0(x), \dots, a_n(x)$ are continuous and $a_n(x)\neq 0$ for all $x$, then there exists a unique solution
+\[ \begin{cases} 
+a_n(x) y^{(n)} + a_{n-1}(x) y^{(n-1)} + \cdots + a_1(x) y' + a_0(x) y = g(x) \\
+y(t_0) = y_0\\
+y'(t_0) = y_1 \\
+ \quad  \vdots\\
+y^{(n-1)}(t_0) = y_{n-1}
+\end{cases}\]
+on some interval containing $t_0$.
+
+\
+
+\noindent \textbf{Superposition principle for linear ODEs:}
+\begin{enumerate}
+\item Given solutions $y_1,\dots,y_t$ to a \emph{homogeneous} linear ODE, any superposition
+\[c_1 y_1 + \cdots + c_t y_t \] (for constants $c_1,\dots,c_t$) is also a solution.
+\item Give a solution $y_p$ to a \emph{nonhomogeneous} linear ODE and solutions $y_1,\dots,y_t$ to the corresponding \emph{homogeneous} equation, $y_p$ plus any superposition of $y_1,\dots,y_t$, i.e., a function like \[ y_p + c_1 y_1 + \cdots + c_t y_t\]  (for constants $c_1,\dots,c_t$) is also a solution.
+\end{enumerate}
+
+
+\vfill
+
+
+\noindent \textbf{Existence and uniqueness theorem for linear IVPs:}
+Given a linear ODE
+\[ a_n(x) y^{(n)} + a_{n-1}(x) y^{(n-1)} + \cdots + a_1(x) y' + a_0(x) y = g(x)\]
+where $g(x), a_0(x), \dots, a_n(x)$ are continuous and $a_n(x)\neq 0$ for all $x$, then there exists a unique solution
+\[ \begin{cases} 
+a_n(x) y^{(n)} + a_{n-1}(x) y^{(n-1)} + \cdots + a_1(x) y' + a_0(x) y = g(x) \\
+y(t_0) = y_0\\
+y'(t_0) = y_1 \\
+ \quad  \vdots\\
+y^{(n-1)}(t_0) = y_{n-1}
+\end{cases}\]
+on some interval containing $t_0$.
+
+\
+
+\noindent \textbf{Superposition principle for linear ODEs:}
+\begin{enumerate}
+\item Given solutions $y_1,\dots,y_t$ to a \emph{homogeneous} linear ODE, any superposition
+\[c_1 y_1 + \cdots + c_t y_t \] (for constants $c_1,\dots,c_t$) is also a solution.
+\item Give a solution $y_p$ to a \emph{nonhomogeneous} linear ODE and solutions $y_1,\dots,y_t$ to the corresponding \emph{homogeneous} equation, $y_p$ plus any superposition of $y_1,\dots,y_t$, i.e., a function like \[ y_p + c_1 y_1 + \cdots + c_t y_t\]  (for constants $c_1,\dots,c_t$) is also a solution.
+\end{enumerate}
+
+
+
+
+
+
+
+
+\end{document}
