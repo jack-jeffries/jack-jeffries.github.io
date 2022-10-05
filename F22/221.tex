@@ -1275,7 +1275,7 @@ We now want a tool to detect linear (in)dependence of functions. Here is Wronski
 Larger square matrices have determinants too, but we won't discuss them in this class. Do not attempt to generalize the formula for $3\times 3$ to $n\times n$ matrices; consult a linear algebra text instead.
 
 \begin{comment}
-
+\newpage
 \Oct{6}
 
 \begin{defn} The \emph{Wronskian}\index{Wronskian} of two functions $f,g$ is the determinant
@@ -1352,36 +1352,95 @@ We saw earlier that $y=-xe^x$ is a solution. Using what we just proved about the
 is the general solution to this nonhomogeneous equation.
 \end{ex}
 
-\subsection*{Reduction of order (\S4.2)}
+\subsection*{Discussion Questions}
+\begin{enumerate}
+\item
+We saw that $e^x$ and $e^{-x}$ are solutions of $y'' = y$.
+Is $\{e^x,e^{-x}\}$ a fundamental set? 
+\item Check that $e^{x-1}$ is also a solution to $y'' = y$.
+Is $\{e^x,e^{x-1}\}$ a fundamental set? 
+\item What is the general solution to $y'' = y$?
+\end{enumerate}
+\begin{framed}
+\begin{enumerate}
+\item
+Yes: $W(e^x,e^{-x}) = -2 \neq 0$.
+\item No: $W(e^x,e^{x-1}) = 0$.
+\item $y = C_1 e^x + C_2 e^{-x}$.
+\end{enumerate}
+\end{framed}
 
-We know that for a homogeneous linear ODE of order two, we are looking for two linearly independent solutions to form a fundamental set. Before we start to discuss methods to find solutions, we are going to discuss a method to get a second solution if we already know one. Here is the idea: Given \[ a_2(x) y'' + a_2(x) y' + a_0(x) = 0\] and one solution $y_1(x)$, we are going to look for a function that is a nonconstant multiple of $y_1(x)$:  $y_2(x) = u(x) y_1(x)$. When we plug it in, we can turn it into a first order ODE, which we already know how to solve.
 
-\begin{ex} Consider the ODE
-\[ y'' + y' - 2y = 0.\]
-I found $y_1 = e^x$ is a solution:
-\[ (e^x)'' + (e^x)' - 2 e^x = e^x + e^x - 2 e^x = 0.\]
-Let us use reduction of order to find another one. We take $y_2= u e^x$ and plug it in:
-\[ (u e^x)'' + (u e^x)' - 2 (u e^x) = 0\]
-\[ (u' e^x + u e^x) ' + (u' e^x + u e^x)- 2 (u e^x) = 0\]
-\[ (u'' e^x + u' e^x + u' e^x + u e^x) + (u' e^x + u e^x)- 2 (u e^x) = 0\]
-We want to think of this as an equation in $u$, so group by the derivatives of $u$.
-\[ u'' e^x + u' (3 e^x) + u (2 e^x - 2 e^x) = 0\]
-\[ u'' e^x + 3 u' e^x= 0\]
-This looks like a second order equation, but take $v= u'$. We now have
-\[ v' e^x + 3 v e^x = 0.\]
-\[ v'  + 3 v  = 0.\]
-\[ v'  = -3 v.\]
-We know a solution of this is $v=Ce^{-3x}$. Then $u= \frac{-1}{3} C e^{-3x} + C'$. We only want one solution $u$, so $e^{-3x}$ works. Now take $y_2 = e^x e^{-3x} = e^{-2x}$.
- We can check:
- \[ (e^{-2x})'' + (e^{-2x})' - 2 e^{-2x} = 4 (e^{-2x})  - 2 (e^{-2x}) - 2 e^{-2x} = 0.\]
- Finally, let's hcek that our two solutions are linearly independent with the Wronskian:
- \[ W(e^{x},e^{-2x}) = \det \begin{bmatrix} e^x & e^{-2x} \\ e^{x} & -2 e^{-2x} \end{bmatrix} = -2 e^x e^{-2x} - e^x e^{-2x} = -3 e^{-x} \neq 0.\]
- We conclude that the general solution is 
- \[ C_1 e^x + C_2 e^{-2x}.\]
- \end{ex}
+\subsection*{Reduction of order (\S4.2)}\index{reduction of order}
+
+We know that for a homogeneous linear ODE of order two, we are looking for two linearly independent solutions to form a fundamental set. Before we start to discuss methods to find solutions, we are going to discuss a method to get a second solution if we already know one. 
+
+Here is the idea:  Given \[ a_2(x) y'' + a_1(x) y' + a_0(x) = 0\] and one solution $y_1(x)$, we are going to look for a function that is a nonconstant multiple of $y_1(x)$:  $y_2(x) = u(x) y_1(x)$. When we plug it in, we can turn it into a first order ODE, which we already know how to solve.
+
+%\begin{ex} Consider the ODE
+%\[ y'' + y' - 2y = 0.\]
+%I found $y_1 = e^x$ is a solution:
+%\[ (e^x)'' + (e^x)' - 2 e^x = e^x + e^x - 2 e^x = 0.\]
+%Let us use reduction of order to find another one. We take $y_2= u e^x$ and plug it in:
+%\[ (u e^x)'' + (u e^x)' - 2 (u e^x) = 0\]
+%\[ (u' e^x + u e^x) ' + (u' e^x + u e^x)- 2 (u e^x) = 0\]
+%\[ (u'' e^x + u' e^x + u' e^x + u e^x) + (u' e^x + u e^x)- 2 (u e^x) = 0\]
+%We want to think of this as an equation in $u$, so group by the derivatives of $u$.
+%\[ u'' e^x + u' (3 e^x) + u (2 e^x - 2 e^x) = 0\]
+%\[ u'' e^x + 3 u' e^x= 0\]
+%This looks like a second order equation, but take $v= u'$. We now have
+%\[ v' e^x + 3 v e^x = 0.\]
+%\[ v'  + 3 v  = 0.\]
+%\[ v'  = -3 v.\]
+%We know a solution of this is $v=Ce^{-3x}$. Then $u= \frac{-1}{3} C e^{-3x} + C'$. We only want one solution $u$, so $e^{-3x}$ works. Now take $y_2 = e^x e^{-3x} = e^{-2x}$.
+% We can check:
+% \[ (e^{-2x})'' + (e^{-2x})' - 2 e^{-2x} = 4 (e^{-2x})  - 2 (e^{-2x}) - 2 e^{-2x} = 0.\]
+% Finally, let's hcek that our two solutions are linearly independent with the Wronskian:
+% \[ W(e^{x},e^{-2x}) = \det \begin{bmatrix} e^x & e^{-2x} \\ e^{x} & -2 e^{-2x} \end{bmatrix} = -2 e^x e^{-2x} - e^x e^{-2x} = -3 e^{-x} \neq 0.\]
+% We conclude that the general solution is 
+% \[ C_1 e^x + C_2 e^{-2x}.\]
+% \end{ex}
+
+\begin{ex} Consider the second-order ODE
+\[ y'' - \frac{1}{t} y' + \frac{1}{t^2} y = 0.\]
+Out of nowhere, consider $y_1= t$.
+We have $y_1 ' = 1$, and $y'' = 0$, so
+\[ 0 - \frac{1}{t} 1 + \frac{1}{t^2} t = 0\]
+and this is a solution.
+Let's use ``reduction of order'' to find another solution. We know that we just need one more linearly independent solution! We plug in $y_2= u y_1 = u t$, where $u$ is an unknown function of $t$ to be determined, as a guess.
+Plug in this $y_2$ to the equation:
+\[ (u t)'' -  \frac{1}{t} (ut)' + \frac{1}{t^2} (ut) = 0.\]
+\[ (ut)' = u' t + u \qquad (ut)'' = (u' t + u )' = u'' t + u' + u' = u'' t + 2 u'.\]
+\[ \rsa (u'' t + 2 u') -  \frac{1}{t} (u' t + u) + \frac{1}{t^2} (ut) = 0.\]
+We are thinking of $u$ as our variable, so we want to bring together the different derivatives of $u$:
+\[ \rsa t u''  + u' =0 .\]
+This is second order in $u$ (darn!) but is first order in $u'$! To see it, set $v=u'$ (so $v'=u''$):
+\[ t v' + v = 0.\]
+\[ v' + \frac{1}{t} v = 0.\]
+We know how to solve this!
+Take the integrating factor $\mu = e^{\int \frac{1}{t} \, dt} = e^{\ln t} = t$, so
+\[ (tv)' = tv' + v = 0\]
+\[\rsa tv = C \quad \rsa v= C/t. \]
+Then remember $v=u'$, so
+\[ u' = C/t \quad \rsa u= C \ln t + C'.\]
+And finally
+\[ y_2 =  (C \ln(t) + C')t = C t \ln t + C' t\]
+but since we are only looking for one solution, let's just go with the interesting part ($C=1, C'=0$):
+\[ y_2 = t \ln(t).\]
+
+Let's check that $y_1$ and $y_2$ are linearly independent:
+\begin{align*} W( t, t \ln(t) ) &=  \det \begin{bmatrix} t & t \ln(t) \\ (t)' &(t \ln(t))' \end{bmatrix} \\&= \det \begin{bmatrix} t & t \ln(t) \\ 1 & \ln(t) + 1 \end{bmatrix} = t(\ln(t) +1) - t(\ln(t)) = t\neq 0,\end{align*}
+so they are!
+
+We conclude that $t$ and $t \ln(t)$ form a fundamental set of solutions; i.e., the general solution of the equation is
+\[ y =C_1 t + C_2 t \ln(t).\]
+\end{ex}
+ 
+
+ 
 
 \begin{slogan}
-Given a solution $y_1$ of a second-order homogeneous linear ODE, plug in $y_2= u y_1$, and get a first-order homogeneous linear ODE in terms of $v=u'$.
+Given a solution $y_1$ of a second-order homogeneous linear ODE, plug in $y_2= u y_1$, and get a first-order homogeneous linear ODE in terms of $v=u'$. Solve for $v$, then $u$, then plug in to get $y_2$.
 \end{slogan}
 
 
