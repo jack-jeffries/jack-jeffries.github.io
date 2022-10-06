@@ -57,6 +57,7 @@
 \newtheorem{chunk}[equation]{}
 \newtheorem{ex}[equation]{Example}
 \newtheorem{idea}[equation]{Idea}
+\newtheorem{fact}[equation]{Fact}
 
 \newtheorem{exer}[equation]{Exercise}
 
@@ -1036,7 +1037,7 @@ rather than boundary value conditions in this course.
 
 The great news is that for a linear ODE, there exist unique solutions to IVPs in the same sense we discussed for first-order equations with the Picard-Lindel\"of Theorem.
 
-\begin{thm}[Existence and uniqueness theorem for linear IVPs]
+\begin{thm}[Existence and uniqueness theorem for linear IVPs]\index{existence}\index{uniqueness}
 Given a linear ODE
 \[ a_n(x) y^{(n)} + a_{n-1}(x) y^{(n-1)} + \cdots + a_1(x) y' + a_0(x) y = g(x)\]
 where $g(x), a_0(x), \dots, a_n(x)$ are continuous and $a_n(x)\neq 0$ for all $x$, then there exists a unique solution
@@ -1274,8 +1275,7 @@ We now want a tool to detect linear (in)dependence of functions. Here is Wronski
 
 Larger square matrices have determinants too, but we won't discuss them in this class. Do not attempt to generalize the formula for $3\times 3$ to $n\times n$ matrices; consult a linear algebra text instead.
 
-\begin{comment}
-\newpage
+
 \Oct{6}
 
 \begin{defn} The \emph{Wronskian}\index{Wronskian} of two functions $f,g$ is the determinant
@@ -1302,13 +1302,13 @@ so these are linearly dependent.
 
 In fact, when we have a set of solutions to a homogeneous linear ODE, something even better happens.
 
-\begin{thm}[Wronskian theorem]
+\begin{fact}
 If $f_1,\dots,f_n$ are $n$ solutions of an $n$th order homogenous linear equation on some interval, then 
 \begin{enumerate}
-\item $f_1,\dots,f_n$ are linearly dependent on the interval $\Leftrightarrow$ if the Wronskian function $W(f_1,\dots,f_n)$ is \emph{always} equal to zero on the interval.
-\item $f_1,\dots,f_n$ are linearly independent on the interval $\Leftrightarrow$ the Wronskian function $W(f_1,\dots,f_n)$ is \emph{never} equal to zero on the interval.
+\item $f_1,\dots,f_n$ are linearly dependent on the interval $\Longleftrightarrow$ if the Wronskian function $W(f_1,\dots,f_n)$ is \emph{always} equal to zero on the interval.
+\item $f_1,\dots,f_n$ are linearly independent on the interval $\Longleftrightarrow$ the Wronskian function $W(f_1,\dots,f_n)$ is \emph{never} equal to zero on the interval.
 \end{enumerate}
-\end{thm}
+\end{fact}
 
 This means that we can check the Wronskian function at any single point (of your choice!), and whether it's zero or not determines whether the solutions are independent or not.
 
@@ -1318,7 +1318,7 @@ Now we come to our key definition.
 \begin{defn} For an $n$th order homogeneous linear ODE, a \emph{fundamental set}\index{fundamental set} of solutions is a collection of $n$ (same number!) linearly independent solutions.
 \end{defn}
 
-\begin{thm}[General solutions for linear ODEs]
+\begin{thm}[General solutions for linear ODEs] \quad
 \begin{enumerate} 
 \item
 Given an $n$th order homogeneous linear ODE,
@@ -1360,6 +1360,8 @@ Is $\{e^x,e^{-x}\}$ a fundamental set?
 \item Check that $e^{x-1}$ is also a solution to $y'' = y$.
 Is $\{e^x,e^{x-1}\}$ a fundamental set? 
 \item What is the general solution to $y'' = y$?
+\item We also saw that $\sinh(x),\cosh(x)$ are solutions.
+Is $\{\sinh(x),\cosh(x)\}$ a fundamental set? 
 \end{enumerate}
 \begin{framed}
 \begin{enumerate}
@@ -1367,7 +1369,14 @@ Is $\{e^x,e^{x-1}\}$ a fundamental set?
 Yes: $W(e^x,e^{-x}) = -2 \neq 0$.
 \item No: $W(e^x,e^{x-1}) = 0$.
 \item $y = C_1 e^x + C_2 e^{-x}$.
+\item Yes: We can use the fact and check the Wronskian just at $x=0$: Using my calculator,
+$\sinh^2(0) - \cosh^2(0) = -1$.
 \end{enumerate}
+Note that we can write the general solution either as 
+\[ C_1 e^x + C_2 e^{-x}\]
+or as 
+\[ C_1 \sinh(x) + C_2 \cosh(x)\]
+and both are right: the collection of functions we can make by either recipe is the same!
 \end{framed}
 
 
