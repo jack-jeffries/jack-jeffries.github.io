@@ -1452,9 +1452,83 @@ We conclude that $t$ and $t \ln(t)$ form a fundamental set of solutions; i.e., t
 Given a solution $y_1$ of a second-order homogeneous linear ODE, plug in $y_2= u y_1$, and get a first-order homogeneous linear ODE in terms of $v=u'$. Solve for $v$, then $u$, then plug in to get $y_2$.
 \end{slogan}
 
+\begin{comment}
+
+\Oct{11}
+
+\subsection*{Homogeneous linear ODEs with constant coefficients (\S4.3)}
+
+Now we are finally going to solve some higher order ODEs. We will focus on a very special class: homogenous linear equations with constant coefficients. These look like
+\[ a_n y^{(n)} + \cdots  + a_1 y' + a_0 y = 0,\]
+with $a_i$ all constant. 
+
+Let's stick with order two to get started:
+\[ a_2 y'' + a_1 y' + a_0 y = 0.\]
+If we write it like
+\[ a_2 y'' + a_1 y' = -a_0 y,\]
+this equation says that combining the second derivative and first derivative give some constant multiple of $y$. This suggests a class of functions to guess: for the exponential functions $y=e^{mx}$, the derivative is a constant multiple of the original, and hence the second (and all the higher ones) too. Let's try to find a solution of the form $y=e^{mx}$; if we plug in we get
+\[ y' = m e^{mx}, \quad y'' = m^2 e^{mx}\]
+\[\rsa 0 = a_2 m^2 e^{mx}  +a_1 m e^{mx} + a_0 e^{mx} = (a_2 m^2 + a_1 m + a_0) e^{mx}.\]
+
+Since $e^{mx}\neq 0$, we have a solution if and only if $m$ is a solution (in $m$) of 
+\[a_2 m^2 + a_1 m + a_0 =0.\] This is called the \emph{auxiliary equation}\index{auxiliary equation} of our ODE.
+
+\begin{ex} For the equation
+\[ y'' - 7y' + 10y = 0,\]
+we consider the auxiliary equation
+\[ m^2 - 7m + 10=0\]
+and find (by factoring, or quadratic equation) two roots
+\[ m_1 = 2, \ m_2 = 5.\]
+Then we get two solutions 
+\[ y_1 = e^{2x} , \ y_2= e^{5x}.\]
+We check that they are linearly independent:
+\[ W(e^{2x},e^{5x}) = \det \begin{bmatrix} e^{2x} & e^{5x} \\ 2 e^{2x} & 5 e^{5x} \end{bmatrix} = 3 e^{7x}\neq 0\]
+so indeed they are. We conclude that the general solution is
+\[ y= C_1 e^{2x} + C_2 e^{5x}.\]
+\end{ex}
+
+More generally,
+\begin{fact} If $m_1\neq m_2$, then $e^{m_1 x}$ and $e^{m_2 x}$ are linearly independent. Even better, if $m_1, m_2,\dots, m_t$ are distinct real numbers, then the functions $\{ e^{m_1 x}, e^{m_2 x},\dots,e^{m_t x}\}$ are linearly independent.
+\end{fact}
 
 
 
+\begin{ex}
+
+\end{ex}
+
+
+Not every quadratic polynomial distinct real roots. Two things can go wrong: repeated roots (like $m^2 - 4m + 4 = 0$ with double root $m=2$) and complex roots (like $m^2+ 1= 0$ with roots $m=\pm i$).
+
+Let us consider an example with repeated roots.
+
+\begin{ex} Consider the ODE
+\[ y'' - 4y' + 4y = 0.\]
+The auxiliary equation
+\[ m^2 - 4m + 4=0\]
+has $m=2$ as a double root. We at least get $y_1=e^{2x}$ as a solution. How can we get another? Reduction of order!
+
+Set $y_2 = u e^{2x}$ and plug in:
+\[ y_2'= u' e^{2x} + u 2e^{2x} = (u' + 2u)e^{2x}\]
+\[ y_2''= (u'+2u)' e^{2x} + (u'+2u)2e^{2x} = (u'' + 4u' + 4u) e^{2x}\]
+so plugging in we get
+\[ 0= (u'' + 4u' + 4u) e^{2x} - 4 (u' + 2u)e^{2x} + 4u e^{2x} = u'' e^{2x}.\]
+(In a general reduction of order example, we would now set ${v=u'}, {v' = u''}$, but this equation is pretty simple.)
+Since $e^{2x}\neq 0$, we must have $u'' = 0$, so $u' = C$ and $u=Cx+C'$, so $y_2 = (Cx+C') e^{2x}$.
+We only want one new solution, so let's take $C=1$ and $C'=0$, so $y_2 = xe^{2x}$. 
+
+Let's check they are linearly independent:
+\[ W(e^{2x}, xe^{2x}) = \det \begin{bmatrix} e^{2x} & xe^{2x} \\ 2e^{2x} & (2x+1) e^{2x} \end{bmatrix} = e^{2x} \neq 0.\]
+\end{ex}
+
+\begin{fact} If $m_1$ is a double root of the auxiliary equation, then $e^{m_1 x}$ and $x e^{m_1 x}$ are two linearly independent solutions.
+\end{fact}
+
+\begin{ex}
+
+\end{ex}
+
+Now, if our auxiliary equation has an imaginary root like $m=bi$ (or a complex root $m=a+bi$), we might want to say $e^{ bix}$ is a solution, but we are only interested in real functions.
 \begin{comment}
 \end{comment}
 
