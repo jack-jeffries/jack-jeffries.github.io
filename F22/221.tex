@@ -1471,11 +1471,11 @@ this equation says that combining the second derivative and first derivative giv
 \[ y' = m e^{rx}, \quad y'' = r^2 e^{rx}\]
 \[\rsa 0 = a_2 r^2 e^{rx}  +a_1 r e^{rx} + a_0 e^{rx} = (a_2 r^2 + a_1 r + a_0) e^{rx}.\]
 
-Since $e^{rx}\neq 0$, we have a solution if and only if $r$ is a solution (in $m$) of 
+Since $e^{rx}\neq 0$, we have a solution if and only if $r$ is a solution (in~$r$)~of 
 \[a_2 r^2 + a_1 r + a_0 =0.\] This is called the \emph{auxiliary equation} of our ODE.
 
 \begin{defn}
-The \emph{auxiliary equation}\index{auxiliary equation} of the ODE
+The \emph{auxiliary equation}\index{auxiliary equation} of the ODE with constant coefficients
  \[ a_n y^{(n)} + \cdots  + a_1 y' + a_0 y = 0\]
  is the polynomial equation
   \[ a_n r^n + \cdots  + a_1 r + a_0 r = 0.\]
@@ -1501,7 +1501,7 @@ More generally,
 \begin{fact} If $r_1\neq r_2$, then $e^{r_1 x}$ and $e^{r_2 x}$ are linearly independent. Even better, if $r_1, r_2,\dots, r_t$ are distinct real numbers, then the functions $\{ e^{r_1 x}, e^{r_2 x},\dots,e^{r_t x}\}$ are linearly independent.
 \end{fact}
 
-If we can find $n$ distinct real solutions to auxiliary polynomial equation, then we know that we can get a fundamental set of solutions.
+If we can find $n$ (=order many) distinct real solutions to auxiliary polynomial equation, then we know that we can get a fundamental set of solutions.
 
 \begin{ex}
 For the equation
@@ -1522,6 +1522,9 @@ and the general solution is
 
 Not every polynomial has distinct real roots. Two things can go wrong: repeated roots (like $m^2 - 4m + 4 = 0$ with double root $m=2$) and complex roots (like $m^2+ 1= 0$ with roots $m=\pm i$).
 
+
+\subsection*{Constant coefficients, repeated roots}
+
 Let us consider an example with repeated roots.
 
 \begin{ex} Consider the ODE
@@ -1537,7 +1540,7 @@ Set $y_2 = u e^{2x}$ and plug in:
 \[ y_2''= (u'+2u)' e^{2x} + (u'+2u)2e^{2x} = (u'' + 4u' + 4u) e^{2x}\]
 so plugging in we get
 \[ 0= (u'' + 4u' + 4u) e^{2x} - 4 (u' + 2u)e^{2x} + 4u e^{2x} = u'' e^{2x}.\]
-(In a general reduction of order example, we would now set ${v=u'}, {v' = u''}$, but this equation is pretty simple.)
+(In a general reduction of order example, we would now set ${v=u'}, {v' = u''}$, and get a first-order equation in $v$, but this equation is pretty simple.)
 Since $e^{2x}\neq 0$, we must have $u'' = 0$, so $u' = C$ and $u=Cx+C'$, so $y_2 = (Cx+C') e^{2x}$.
 We only want one new solution, so let's take $C=1$ and $C'=0$, so $y_2 = xe^{2x}$. 
 
@@ -1565,7 +1568,9 @@ and the general solution is
 \[ y = C_1 e^{-6x} +C_2 e^{3x}.\]
 \end{ex}
 
-Real polynomial equations like $r^2+4=0$ have no real roots at all. Instead we find roots within the \emph{complex numbers}\index{complex numbers}, which are numbers of the form $a+bi$ with $a,b\in \R$, and $i$\index{$i$} the imaginary number with $i^2=-1$. For example, the quadratic polynomial equation $r^2 + 2r + 2 = 0$ has two complex roots $r=-1-i$ and $r=-1+i$, which can be found using the quadratic formula. Any real polynomial with a complex root $a+bi$ also has its \emph{complex conjugate}\index{complex conjugate} $a-bi$ as another root.
+\subsection*{Constant coefficients, complex roots}
+
+Some real polynomial equations like $r^2+4=0$ have no real roots at all. Instead we find roots within the \emph{complex numbers}\index{complex numbers}, which are numbers of the form $a+bi$ with $a,b\in \R$, and $i$\index{$i$} the imaginary number with $i^2=-1$. For example, the quadratic polynomial equation $r^2 + 2r + 2 = 0$ has two complex roots $r=-1-i$ and $r=-1+i$, which can be found using the quadratic formula. Any real polynomial with a complex root $a+bi$ also has its \emph{complex conjugate}\index{complex conjugate} $a-bi$ as another root.
 
 We are tempted to try $e^{(-1-i)x}$ as a solution, but we are only interested in real functions. However, the idea can be redeemed. Let's experiment with $e^{ix}$ to see if we can get something real out of it. First, notice that the powers of $i$ repeat themselves:
 \[  i^1=i,\ i^2 = -1,\ i^3=-i,\ i^4=1,\ i^5=i,\ i^6=-1,\ i^7=-i,\ i^8 = 1, \dots\]
@@ -1585,16 +1590,82 @@ This is called \emph{Euler's formula}\index{Euler's formula}:
 \[ e^{ix} = \cos(x) + i \sin(x),\]
 so $e^{ix}$ is a \emph{complex} superposition of $\cos(x)$ and $\sin(x)$!
 
-Writing 
-\[e^{(a+bi)x} = e^{ax} e^{i \cdot bx} = e^{ax} (\cos(bx) + i \sin(bx))\]
-motivates the following:
+If $r=a+bi$ is a root, write
+\[e^{(a+bi)x} = e^{ax} e^{i \cdot bx} = e^{ax} (\cos(bx) + i \sin(bx))= e^{ax} \cos(bx) + i  e^{ax} \sin(bx)\]
+and remember that $a-bi$ is also a root:
+\[e^{(a-bi)x} = e^{ax} e^{i \cdot -bx} = e^{ax} (\cos(-bx) + i \sin(-bx))=  e^{ax} \cos(bx) - i  e^{ax} \sin(bx)\]
+so, taking complex superpositions ($1/2$ times sum, $1/2i$ times difference) we can make the very real functions $e^{ax} \cos(bx), e^{ax} \sin(bx)$.
+
+
+This motivates the following:
 
 \begin{fact}
 If $r_1, r_2 = a \pm bi$ are complex roots of the auxiliary equation, then $y_1 = e^{ax} \cos(bx)$, $y_2= e^{ax} \sin(bx)$ are two linearly independent solutions.
 \end{fact}
 
 \begin{ex}
+For the equation
+\[ y'' + 2y' +2y = 0,\]
+we consider the auxiliary equation
+\[ r^2 + 2r +2=0.\]
+Using the quadratic equation,
+\[ r = \frac{-2 \pm \sqrt{(-2)^2 - 4 \cdot 1 \cdot 2}}{2} = \frac{-2 \pm \sqrt{-4}}{2} = -1 \pm i\]
+are complex roots. Thus, we have solutions 
+\[ y_1 = e^{-x} \cos(x) , \quad y_2 = e^{-x} \sin(x),\]
+which form a fundamental set, so
+\[ y = C_1 e^{-x} \cos(x) + C_2 e^{-x} \sin(x)\]
+is the general solution.
+\end{ex}
 
+\begin{slogan}
+For a constant coefficient homogeneous linear ODE, find the roots of the auxiliary equation. Real roots $r$ give solutions $e^{rx}$, complex pairs $a\pm bi$ give solutions $e^{ax} \cos(bx) , e^{ax} \sin(bx)$, and every repeat root gets a multiple by $x$.
+\end{slogan}
+
+
+\subsection*{Discussion Questions}
+\begin{enumerate}
+\item If $a$ is a number, what is the general solution to
+\[ y'' - a^2 y = 0\quad ?\]
+\item If $a$ is a number, what is the general solution to
+\[ y'' + a^2 y = 0\quad ?\]
+\item Solve the IVP
+\[\begin{cases}
+y'' - 8y' + 16 y = 0\\
+y(0)=0\\
+y'(0)=0
+\end{cases}.\]
+\item If $a$ is a number, what is the general solution to
+\[ y''' - a^3 y = 0 \quad ?\]
+\end{enumerate}
+
+\subsection*{Method of undetermined coefficients (\S4.4)}
+Now we consider a technique to solve nonhomogeneous linear ODEs with constant coefficients. For example,
+\[ y'' - 5y' + 6y = e^{5x}\]
+is a nonhomogeneous linear ODEs with constant coefficients. We know that the general solution of a nonhomogeneous equation is given by taking the homogeneous solution and adding in one particular solution of the nonhomogeneous equation, so after we solve the homogeneous equation (which we know how to do) we are just looking for one particular  solution!
+The technique we will use will be limited to right-hand sides with
+\begin{itemize}
+\item constant and polynomial functions,
+\item exponential functions,
+\item sine and cosine functions,
+\end{itemize}
+or simple combinations of them. Our idea is to guess a general form for a possible ``trial solution''\index{trial solution} with ``undetermined coefficients'' and then plug it in to find the coefficients.
+
+\begin{ex} Consider the ODE
+\[ y'' +3y' - 10 y = x^2 - 3x + 5.\]
+First we find the general soltuion of the associated homogeneous equation by looking at the auxiliary polynomial
+\[ r^2 + 3r - 10 =0\]
+\[ (r + 5)(r-2) = 0\]
+so $r=2$ or $r=-5$, so $y= C_1 e^{2x} + C_2 e^{-5x}$ is the homogeneous solution.
+To get one particular solution, we need something to plug into the LHS to get a polynomial on the RHS. Something whose derivatives are polynomials would be a good guess. Let's guess a polynomial of degree two,
+\[ y_p = A x^2 + B x +  C\]
+as a trial solution. We have
+\[ y_p' = 2A x + B, \quad y''_p = 2A\]
+and plugging in we get
+\[ (A x^2 + B x +  C) + 3 (2A x + B) - 10 (2A) = x^2 - 3x + 5\]
+\[\rsa A x^2 + (6A+B) x + (-20 A +3B +C) = x^2 -3x +5\]
+\[ \rsa A=1, \rsa B=-9, \rsa C= 52,\]
+so we have $y_p = x^2 - 9 x + 52$. Thus, the general solution is
+\[ y=  x^2 - 9 x + 52 + C_1 e^{2x} + C_2 e^{-5x}.\]
 \end{ex}
 
 
