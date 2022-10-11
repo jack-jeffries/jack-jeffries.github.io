@@ -1452,8 +1452,8 @@ We conclude that $t$ and $t \ln(t)$ form a fundamental set of solutions; i.e., t
 Given a solution $y_1$ of a second-order homogeneous linear ODE, plug in $y_2= u y_1$, and get a first-order homogeneous linear ODE in terms of $v=u'$. Solve for $v$, then $u$, then plug in to get $y_2$.
 \end{slogan}
 
-\begin{comment}
 
+\begin{comment}
 \Oct{11}
 
 \subsection*{Homogeneous linear ODEs with constant coefficients (\S4.3)}
@@ -1466,12 +1466,21 @@ Let's stick with order two to get started:
 \[ a_2 y'' + a_1 y' + a_0 y = 0.\]
 If we write it like
 \[ a_2 y'' + a_1 y' = -a_0 y,\]
-this equation says that combining the second derivative and first derivative give some constant multiple of $y$. This suggests a class of functions to guess: for the exponential functions $y=e^{mx}$, the derivative is a constant multiple of the original, and hence the second (and all the higher ones) too. Let's try to find a solution of the form $y=e^{mx}$; if we plug in we get
-\[ y' = m e^{mx}, \quad y'' = m^2 e^{mx}\]
-\[\rsa 0 = a_2 m^2 e^{mx}  +a_1 m e^{mx} + a_0 e^{mx} = (a_2 m^2 + a_1 m + a_0) e^{mx}.\]
+this equation says that combining the second derivative and first derivative give some constant multiple of $y$. This suggests a class of functions to guess: for the exponential functions $y=e^{mx}$, the derivative is a constant multiple of the original, and hence the second (and all the higher ones) too. Let's try to find a solution of the form $y=e^{rx}$; if we plug in we get
+\[ y' = m e^{rx}, \quad y'' = r^2 e^{rx}\]
+\[\rsa 0 = a_2 r^2 e^{rx}  +a_1 r e^{rx} + a_0 e^{rx} = (a_2 r^2 + a_1 r + a_0) e^{rx}.\]
 
-Since $e^{mx}\neq 0$, we have a solution if and only if $m$ is a solution (in $m$) of 
-\[a_2 m^2 + a_1 m + a_0 =0.\] This is called the \emph{auxiliary equation}\index{auxiliary equation} of our ODE.
+Since $e^{rx}\neq 0$, we have a solution if and only if $r$ is a solution (in $m$) of 
+\[a_2 r^2 + a_1 r + a_0 =0.\] This is called the \emph{auxiliary equation} of our ODE.
+
+\begin{defn}
+The \emph{auxiliary equation}\index{auxiliary equation} of the ODE
+ \[ a_n y^{(n)} + \cdots  + a_1 y' + a_0 y = 0\]
+ is the polynomial equation
+  \[ a_n r^n + \cdots  + a_1 r + a_0 r = 0.\]
+\end{defn}
+
+The point is that $y=e^{rx}$ is a solution of the ODE above if and only if $r$ is a solution of the auxiliary equation.
 
 \begin{ex} For the equation
 \[ y'' - 7y' + 10y = 0,\]
@@ -1488,17 +1497,29 @@ so indeed they are. We conclude that the general solution is
 \end{ex}
 
 More generally,
-\begin{fact} If $m_1\neq m_2$, then $e^{m_1 x}$ and $e^{m_2 x}$ are linearly independent. Even better, if $m_1, m_2,\dots, m_t$ are distinct real numbers, then the functions $\{ e^{m_1 x}, e^{m_2 x},\dots,e^{m_t x}\}$ are linearly independent.
+\begin{fact} If $r_1\neq r_2$, then $e^{r_1 x}$ and $e^{r_2 x}$ are linearly independent. Even better, if $r_1, r_2,\dots, r_t$ are distinct real numbers, then the functions $\{ e^{r_1 x}, e^{r_2 x},\dots,e^{r_t x}\}$ are linearly independent.
 \end{fact}
 
-
+If we can find $n$ distinct real solutions to auxiliary polynomial equation, then we know that we can get a fundamental set of solutions.
 
 \begin{ex}
-
+For the equation
+\[ y'' + 3y' -18y = 0,\]
+we consider the auxiliary equation
+\[ r^2 + 3r -18=0\]
+and factor
+\[ (r+6)(r-3)=0\]
+so
+\[ r=-6 \quad \text{or} \quad r=3.\]
+Then we get 
+\[ y_1= e^{-6x}, \quad y_2= e^{3x}.\]
+These are two linearly independent solutions of an order two equation, so they form a fundamental set,
+and the general solution is
+\[ y = C_1 e^{-6x} +C_2 e^{3x}.\]
 \end{ex}
 
 
-Not every quadratic polynomial distinct real roots. Two things can go wrong: repeated roots (like $m^2 - 4m + 4 = 0$ with double root $m=2$) and complex roots (like $m^2+ 1= 0$ with roots $m=\pm i$).
+Not every polynomial has distinct real roots. Two things can go wrong: repeated roots (like $m^2 - 4m + 4 = 0$ with double root $m=2$) and complex roots (like $m^2+ 1= 0$ with roots $m=\pm i$).
 
 Let us consider an example with repeated roots.
 
@@ -1506,7 +1527,9 @@ Let us consider an example with repeated roots.
 \[ y'' - 4y' + 4y = 0.\]
 The auxiliary equation
 \[ m^2 - 4m + 4=0\]
-has $m=2$ as a double root. We at least get $y_1=e^{2x}$ as a solution. How can we get another? Reduction of order!
+factors as
+\[ (m-2)^2 = 0,\]
+which means $m=2$ is a double root. We at least get $y_1=e^{2x}$ as a solution. How can we get another? Reduction of order!
 
 Set $y_2 = u e^{2x}$ and plug in:
 \[ y_2'= u' e^{2x} + u 2e^{2x} = (u' + 2u)e^{2x}\]
@@ -1521,14 +1544,59 @@ Let's check they are linearly independent:
 \[ W(e^{2x}, xe^{2x}) = \det \begin{bmatrix} e^{2x} & xe^{2x} \\ 2e^{2x} & (2x+1) e^{2x} \end{bmatrix} = e^{2x} \neq 0.\]
 \end{ex}
 
-\begin{fact} If $m_1$ is a double root of the auxiliary equation, then $e^{m_1 x}$ and $x e^{m_1 x}$ are two linearly independent solutions.
+
+
+\begin{fact} If $r_1$ is a double root of the auxiliary equation (meaning that $(r-r_1)^2$ is a factor), then $e^{r_1 x}$ and $x e^{r_1 x}$ are two linearly independent solutions. Similarly, if $r_1$ is a triple root, then $e^{r_1 x},x e^{r_1 x}, x^2 e^{r_1 x}$ are three linearly independent solutions, and so on\dots
+\end{fact}
+
+\begin{ex}
+For the equation
+\[ y'' + 6y' +9y = 0,\]
+we consider the auxiliary equation
+\[ r^2 + 6r +9=0\]
+and factor
+\[ (r+3)^2=0\]
+so $r=-3$ is a double root.
+Then we get 
+\[ y_1= e^{-3x}, \quad y_2= xe^{-3x}.\]
+These are two linearly independent solutions of an order two equation, so they form a fundamental set,
+and the general solution is
+\[ y = C_1 e^{-6x} +C_2 e^{3x}.\]
+\end{ex}
+
+Real polynomial equations like $r^2+4=0$ have no real roots at all. Instead we find roots within the \emph{complex numbers}\index{complex numbers}, which are numbers of the form $a+bi$ with $a,b\in \R$, and $i$\index{$i$} the imaginary number with $i^2=-1$. For example, the quadratic polynomial equation $r^2 + 2r + 2 = 0$ has two complex roots $r=-1-i$ and $r=-1+i$, which can be found using the quadratic formula. Any real polynomial with a complex root $a+bi$ also has its \emph{complex conjugate}\index{complex conjugate} $a-bi$ as another root.
+
+We are tempted to try $e^{(-1-i)x}$ as a solution, but we are only interested in real functions. However, the idea can be redeemed. Let's experiment with $e^{ix}$ to see if we can get something real out of it. First, notice that the powers of $i$ repeat themselves:
+\[  i^1=i,\ i^2 = -1,\ i^3=-i,\ i^4=1,\ i^5=i,\ i^6=-1,\ i^7=-i,\ i^8 = 1, \dots\]
+Now think of $e^{x}$ as a power series:
+\[ e^x = 1 + \frac{x^1}{1!} + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} + \frac{x^5}{5!} + \frac{x^6}{6!} +\frac{x^7}{7!} + \frac{x^8}{8!} + \cdots\]
+and plug in $ix$ in place of $x$:
+\[ \begin{aligned}
+e^{ix} &= 1 + \frac{i^1 x^1}{1!} + \frac{i^2 x^2}{2!} + \frac{i^3 x^3}{3!} + \frac{i^4 x^4}{4!} + \frac{i^5 x^5}{5!} + \frac{i^6 x^6}{6!} +\frac{i^7 x^7}{7!} + \frac{i^8 x^8}{8!} + \cdots\\
+&= 1 + \frac{i x^1}{1!} - \frac{x^2}{2!} - \frac{i x^3}{3!} + \frac{x^4}{4!} + \frac{i x^5}{5!} - \frac{x^6}{6!} -\frac{i x^7}{7!} + \frac{x^8}{8!} + \cdots
+\end{aligned}\]
+and collect the terms without $i$ and the ones with $i$:
+\[ \begin{aligned}
+e^{ix} &= \left(1  - \frac{x^2}{2!} + \frac{x^4}{4!}  - \frac{x^6}{6!} + \frac{x^8}{8!} + \cdots\right) + i \left( \frac{x^1}{1!} - \frac{x^3}{3!} + \frac{x^5}{5!}-\frac{x^7}{7!} + \cdots\right)\\
+&= \qquad \qquad\qquad\cos(x) \qquad\qquad\quad \,\, \,\, + \qquad\qquad\qquad i \sin(x).
+\end{aligned}\]
+This is called \emph{Euler's formula}\index{Euler's formula}:
+\[ e^{ix} = \cos(x) + i \sin(x),\]
+so $e^{ix}$ is a \emph{complex} superposition of $\cos(x)$ and $\sin(x)$!
+
+Writing 
+\[e^{(a+bi)x} = e^{ax} e^{i \cdot bx} = e^{ax} (\cos(bx) + i \sin(bx))\]
+motivates the following:
+
+\begin{fact}
+If $r_1, r_2 = a \pm bi$ are complex roots of the auxiliary equation, then $y_1 = e^{ax} \cos(bx)$, $y_2= e^{ax} \sin(bx)$ are two linearly independent solutions.
 \end{fact}
 
 \begin{ex}
 
 \end{ex}
 
-Now, if our auxiliary equation has an imaginary root like $m=bi$ (or a complex root $m=a+bi$), we might want to say $e^{ bix}$ is a solution, but we are only interested in real functions.
+
 \begin{comment}
 \end{comment}
 
