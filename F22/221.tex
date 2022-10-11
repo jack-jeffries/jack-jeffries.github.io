@@ -1453,7 +1453,7 @@ Given a solution $y_1$ of a second-order homogeneous linear ODE, plug in $y_2= u
 \end{slogan}
 
 
-\begin{comment}
+
 
 \Oct{11}
 
@@ -1467,8 +1467,8 @@ Let's stick with order two to get started:
 \[ a_2 y'' + a_1 y' + a_0 y = 0.\]
 If we write it like
 \[ a_2 y'' + a_1 y' = -a_0 y,\]
-this equation says that combining the second derivative and first derivative give some constant multiple of $y$. This suggests a class of functions to guess: for the exponential functions $y=e^{mx}$, the derivative is a constant multiple of the original, and hence the second (and all the higher ones) too. Let's try to find a solution of the form $y=e^{rx}$; if we plug in we get
-\[ y' = m e^{rx}, \quad y'' = r^2 e^{rx}\]
+this equation says that combining the second derivative and first derivative give some constant multiple of $y$. This suggests a class of functions to guess: for the exponential functions $y=e^{rx}$, the derivative is a constant multiple of the original, and hence the second (and all the higher ones) too. Let's try to find a solution of the form $y=e^{rx}$; if we plug in we get
+\[ y' = r e^{rx}, \quad y'' = r^2 e^{rx}\]
 \[\rsa 0 = a_2 r^2 e^{rx}  +a_1 r e^{rx} + a_0 e^{rx} = (a_2 r^2 + a_1 r + a_0) e^{rx}.\]
 
 Since $e^{rx}\neq 0$, we have a solution if and only if $r$ is a solution (in~$r$)~of 
@@ -1486,9 +1486,9 @@ The point is that $y=e^{rx}$ is a solution of the ODE above if and only if $r$ i
 \begin{ex} For the equation
 \[ y'' - 7y' + 10y = 0,\]
 we consider the auxiliary equation
-\[ m^2 - 7m + 10=0\]
+\[ r^2 - 7r + 10=0\]
 and find (by factoring, or quadratic equation) two roots
-\[ m_1 = 2, \ m_2 = 5.\]
+\[ r_1 = 2, \ r_2 = 5.\]
 Then we get two solutions 
 \[ y_1 = e^{2x} , \ y_2= e^{5x}.\]
 We check that they are linearly independent:
@@ -1565,7 +1565,7 @@ Then we get
 \[ y_1= e^{-3x}, \quad y_2= xe^{-3x}.\]
 These are two linearly independent solutions of an order two equation, so they form a fundamental set,
 and the general solution is
-\[ y = C_1 e^{-6x} +C_2 e^{3x}.\]
+\[ y = C_1 e^{-3x} +C_2 xe^{-3x}.\]
 \end{ex}
 
 \subsection*{Constant coefficients, complex roots}
@@ -1628,15 +1628,14 @@ For a constant coefficient homogeneous linear ODE, find the roots of the auxilia
 \[ y'' - a^2 y = 0\quad ?\]
 \item If $a$ is a number, what is the general solution to
 \[ y'' + a^2 y = 0\quad ?\]
-\item Solve the IVP
-\[\begin{cases}
-y'' - 8y' + 16 y = 0\\
-y(0)=0\\
-y'(0)=0
-\end{cases}.\]
-\item If $a$ is a number, what is the general solution to
-\[ y''' - a^3 y = 0 \quad ?\]
 \end{enumerate}
+\begin{framed}
+\begin{enumerate}
+\item $y= C_1 e^{ax} + C_2 e^{-ax}$
+\item $y= C_1 \cos(ax) + C_2 \sin(ax)$
+\end{enumerate}
+\end{framed}
+\begin{comment}
 
 \subsection*{Method of undetermined coefficients (\S4.4)}
 Now we consider a technique to solve nonhomogeneous linear ODEs with constant coefficients. For example,
