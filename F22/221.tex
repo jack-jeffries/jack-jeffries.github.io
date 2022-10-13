@@ -1635,23 +1635,49 @@ For a constant coefficient homogeneous linear ODE, find the roots of the auxilia
 \item $y= C_1 \cos(ax) + C_2 \sin(ax)$
 \end{enumerate}
 \end{framed}
-\begin{comment}
+%\begin{comment}
+
+\Oct{13}
+
+\begin{ex} The techniques we discussed last time work just as well for equations of order greater than two. 
+Take
+\[ y^{(4)} + 6y'' + 9y = 0.\]
+The auxiliary equation is 
+\[ r^4 + 6 r^2 +9 = 0,\]
+\[\rsa  (r^2)^2 + 6 (r^2) +9 = 0,\]
+\[\rsa  (r^2 +3)^2 = 0,\]
+\[\rsa  (r-\sqrt{3}i)^2(r+\sqrt{3}i)^2 = 0.\]
+So $r=\sqrt{3} i $ and $r=-\sqrt{3}i$ are both double roots. Thus, we have
+solutions $y_1= \cos(\sqrt{3} x)$, $y_2= \sin(\sqrt{3} x)$, and multiply by $x$ for repeats: $y_3= x \cos(\sqrt{3} x)$, $y_4= x \sin(\sqrt{3} x)$ as a fundamental set of solutions.
+
+Or, take
+\[ y''' + 3y'' + 3y' + y = 0.\]
+The auxiliary equation is
+\[ r^3 + 3r^2 + 3r + 1 = 0,\]
+\[\rsa (r+1)^3 = 0,\]
+so $r=-1$ is a triple root. Then a fundamental set is $\{ e^{-x}, x e^{-x}, x^2 e^{-x}\}$.
+\end{ex}
+
+
 
 \subsection*{Method of undetermined coefficients (\S4.4)}
 Now we consider a technique to solve nonhomogeneous linear ODEs with constant coefficients. For example,
 \[ y'' - 5y' + 6y = e^{5x}\]
-is a nonhomogeneous linear ODEs with constant coefficients. We know that the general solution of a nonhomogeneous equation is given by taking the homogeneous solution and adding in one particular solution of the nonhomogeneous equation, so after we solve the homogeneous equation (which we know how to do) we are just looking for one particular  solution!
+is a nonhomogeneous linear ODEs with constant coefficients. We know that the general solution of a nonhomogeneous equation is given by taking the homogeneous solution and adding in one particular solution of the nonhomogeneous equation, so after we solve the homogeneous equation (which we know how to do) we are just looking for one particular solution! (As a bit of terminology, when solving a nonhomogenous equation, the general solution to the homogeneous solution is sometimes called the \emph{complementary solution}\index{complementary solution}, and one sometimes writes the general solution for the nonhomogeneous case as $y=y_p + y_c$, where $y_c$ stands for the complementary solution and $y_p$ is any particular solution.)
+
 The technique we will use will be limited to right-hand sides with
 \begin{itemize}
 \item constant and polynomial functions,
 \item exponential functions,
 \item sine and cosine functions,
 \end{itemize}
-or simple combinations of them. Our idea is to guess a general form for a possible ``trial solution''\index{trial solution} with ``undetermined coefficients'' and then plug it in to find the coefficients.
+or simple combinations of them. Our idea is to guess a general form for a possible ``trial solution''\index{trial solution} with ``undetermined coefficients'' and then plug it in to find the coefficients. How to guess the form of a trial solution? If we're going to get from
+\[ a_0 y + a_1 y' + a_2 y''\] to the target function $g$, then a simple first guess, just ignoring the derivatives, is to try some constant times $g$. Then we have derivatives of $g$ left over, so why not add in a constant times the derivative, and so on. Our general trial solutions will be look like superpositions of functions like $g$ and their derivatives.
+
 
 \begin{ex} Consider the ODE
 \[ y'' +3y' - 10 y = x^2 - 3x + 5.\]
-First we find the general soltuion of the associated homogeneous equation by looking at the auxiliary polynomial
+First we find the general solution of the associated homogeneous equation by looking at the auxiliary polynomial
 \[ r^2 + 3r - 10 =0\]
 \[ (r + 5)(r-2) = 0\]
 so $r=2$ or $r=-5$, so $y= C_1 e^{2x} + C_2 e^{-5x}$ is the homogeneous solution.
@@ -1660,12 +1686,102 @@ To get one particular solution, we need something to plug into the LHS to get a 
 as a trial solution. We have
 \[ y_p' = 2A x + B, \quad y''_p = 2A\]
 and plugging in we get
-\[ (A x^2 + B x +  C) + 3 (2A x + B) - 10 (2A) = x^2 - 3x + 5\]
-\[\rsa A x^2 + (6A+B) x + (-20 A +3B +C) = x^2 -3x +5\]
-\[ \rsa A=1, \rsa B=-9, \rsa C= 52,\]
+\[ 2A + 3 (2Ax+B) -10 (Ax^2 + Bx+C)  = x^2 -3x +5\]
+\[ \rsa -10A x^2 + (6A-10B) x + (2A + 3B -10C)  = x^2 -3x +5\]
+\[ \rsa A=\frac{-1}{10}, \rsa B=\frac{-6}{25}, \rsa C= \frac{48}{5},\]
 so we have $y_p = x^2 - 9 x + 52$. Thus, the general solution is
-\[ y=  x^2 - 9 x + 52 + C_1 e^{2x} + C_2 e^{-5x}.\]
+\[ y=  \frac{-1}{10}x^2  -\frac{6}{25} x + \frac{48}{5} + C_1 e^{2x} + C_2 e^{-5x}.\]
 \end{ex}
+
+\begin{comment}
+
+\begin{ex} Consider the ODE
+\[ y'' - 2y' + 5y = e^{5x}.\]
+The homogeneous solution is
+\[ C_1 e^{x}\cos(2x) + C_2 e^{x}\sin(2x).\]
+What could we use as a ``trial solution'' to spit out $e^{5x}$ from the left hand side? A multiple of $e^{5x}$ seems worthy of a try.
+We take a trial solution 
+\[y_p = A e^{5x}\]
+so
+\[ y'_p = 5A e^{5x}, \quad y''_p = 25 Ae^{5x}\]
+\[ e^{5x} = 25A e^{5x} - 2(5A e^{5x}) + 5(A e^{5x}) = 20A e^{5x},\]
+so $A=\frac{1}{20}$, and the general solution is
+\[ y= \frac{1}{20} e^{5x} + C_1 e^{x}\cos(2x) + C_2 e^{x}\sin(2x).\]
+\end{ex}
+
+\begin{ex} Consider the ODE
+\[ y'' + 3y' + 2y= \sin(4x).\]
+First we find the homogeneous solution
+\[ C_1 e^{-x} + C_2 e^{-2x}.\]
+To get a trial solution particular solution, we may want to try $A \cos(4x)$, but since a mutliple of $\sin(4x)$ appears when we take derivatives of $\cos(4x)$, it will be important to include it to. That is, the ``trial solution'' we try is
+\[ y_p = A \sin(4x) + B \cos(4x).\]
+Then we get 
+\[ y'_p = 4A\cos(4x) - 4B \sin(4x), \quad y''_p = - 16A \sin(4x) - 16B\cos(4x),\]
+so
+\begin{align*} \sin(4x) = (- &16A \sin(4x) - 16B\cos(4x)) + 3 (4A\cos(4x) - 4B \sin(4x)) \\&+ 2(A \sin(4x) + B \cos(4x)) \\&= (-14A-12B) \sin(4x) + (12A-14B) \cos(4x)\end{align*}
+so \[ \begin{cases} -14A-12B =1 \\
+12A-14B=0\end{cases}\]
+which we solve to get $A=\frac{-7}{170}$, $B=\frac{-3}{85}$, so 
+\[ y_p = \frac{-7}{170} \sin(4x) + \frac{-3}{85} \cos(4x)\]
+is a particular solution, and hence
+\[y=\frac{-7}{170} \sin(4x) + \frac{-3}{85} \cos(4x) +C_1 e^{-x} + C_2 e^{-2x}\]
+is the general solution.
+\end{ex}
+
+Let us recap our basic trial solutions:
+\begin{itemize}
+\item For target function a polynomial of degree $k$: a polynomial of degree $k$ with mystery coefficients.
+\item For target function $e^{rx}$: $Ae^{rx}$.
+\item For target function $\sin(kx)$ or $\cos(kx)$: $A \sin(kx) + B \cos(kx)$.
+\end{itemize}
+The basic pieces are the functions we can get by repeated differentiation of our target function.
+
+
+
+We can also get to more complicated target functions made out of these basic pieces. The rule is:
+the trial solution for a product of two of these things comes from multiplying the pieces of their trial solutions.
+
+\begin{ex} Consider the ODE
+\[ y'' - 2y' + 5y = (x - 7) e^{5x}.\]
+The homogeneous solution is
+\[ C_1 e^{x}\cos(2x) + C_2 e^{x}\sin(2x).\]
+The trial solution for $e^{5x}$ is $Ae^{5x}$; the trial solution for $x-7$ is $A x + B$. For the product, we multiply the basic pieces:
+\[ y_p = A x e^{5x} + B e^{5x} .\]
+Plugging in we get
+\[ (x-7) e^{5x} = 20 A x e^{5x} + (8A+20B)e^{5x}\]
+so $20A=1$ and $8A+20B=-7$, and hence $A=\frac{1}{20}$ and $B=\frac{-37}{100}$,
+so we get
+\[ y_p= \frac{1}{20} x e^{5x} + \frac{-37}{100} e^{5x}\]
+as a particular solution, and
+\[ y=  \frac{1}{20} x e^{5x} + \frac{-37}{100} e^{5x} + C_1 e^{x}\cos(2x) + C_2 e^{x}\sin(2x)\]
+as the general solution.
+\end{ex}
+
+There is one other weird thing that can happen: if part of our trial solution is part of our homogeneous solution, then we might not be able to get to our target function.
+
+\begin{ex} Consider the ODE
+\[ y'' - 7y' + 10y = e^{5x}.\]
+The homogeneous solution is 
+\[ C_1 e^{2x} + C_2 e^{5x}\]
+and our trial solution would be 
+\[ y_p = A e^{5x}.\]
+But, this is part of the homogeneous solution, so when we plug it in, we get zero; we can never choose an $A$ that makes the LHS equal to~$e^{5x}$. So our usual method of trial solutions failed!
+
+We now take inspiration from the homogeneous case, when there were ``not enough solutions'': multiply by $x$.
+
+Our improved ``trial solution'' is 
+\[ y_p = A x e^{5x}.\]
+Let us try:
+\[ y'_p = A e^{5x} + 5A x e^{5x} = A (5x+1) e^{5x}\]
+\[y''_p = A 5e^{5x} + A (5x+1)5e^{5x} = A(25x+10)e^{5x}\]
+so 
+\[e^{5x} = A(25x+10)e^{5x} - 7 A (5x+1) e^{5x} + 10 A x e^{5x} = 3A e^{5x}\]
+and $A=\frac{1}{3}$, so
+\[ y_p = \frac{1}{3} x e^{5x},\]
+and so the general solution is
+\[ y= \frac{1}{3} x e^{5x} + C_1 e^{2x} + C_2 e^{5x}.\]
+\end{ex}
+
 
 
 \begin{comment}
