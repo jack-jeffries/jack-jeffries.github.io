@@ -1,0 +1,154 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,enumitem}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\usepackage[all, knot]{xy}
+\usepackage{color,xcolor}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+	
+	\thispagestyle{empty}
+	
+	\section*{Subsequences}
+	
+\begin{enumerate} 
+
+ \item \textbf{True or false; justify.}
+\begin{enumerate} 
+\item The sequence $\displaystyle \left\{ \frac{1}{2n} \right\}_{n=1}^\infty$ is a subsequence of the sequence $\displaystyle \left\{ \frac{1}{n} \right\}_{n=1}^\infty$.
+
+\
+
+\item The sequence $\displaystyle \left\{ \frac{1}{3n+7} \right\}_{n=1}^\infty$ is a subsequence of the sequence $\displaystyle \left\{ \frac{1}{n} \right\}_{n=1}^\infty$.
+
+\
+
+\item The constant sequence $\displaystyle \left\{ \frac{1}{2} \right\}_{n=1}^\infty$ is a subsequence of the sequence $\displaystyle \left\{ \frac{1}{n} \right\}_{n=1}^\infty$.
+
+\
+
+\item The constant sequences $\{ -1 \}_{n=1}^\infty$ and  $\{ 1 \}_{n=1}^\infty$ are both subsequences of the sequence $\{ (-1)^n \}_{n=1}^\infty$.
+
+\
+
+\item The constant sequences $\{ -1 \}_{n=1}^\infty$ and  $\{ 1 \}_{n=1}^\infty$ are the only two subsequences of the sequence $\{ (-1)^n \}_{n=1}^\infty$.
+
+\end{enumerate}
+
+\
+
+\item Explain how the following Corollary follows from Theorem~15.5.
+\begin{framed}
+\noindent \textbf{Corollary 15.7:} Let $\{a_n\}_{n=1}^\infty$ be any sequence.
+\begin{enumerate}
+\item If there is a subsequence of this sequence that diverges, then the sequence itself diverges.
+\item If there are two subsequences of this sequence that converge to different values, then the sequence itself diverges.
+\end{enumerate}
+\end{framed}
+
+
+\
+
+\item Use Corollary 15.7 to give a quick proof that the sequence $\{ (-1)^n \}_{n=1}^\infty$ diverges.
+
+\
+
+\item \textbf{Prove or disprove:}
+\begin{enumerate}
+
+\item Every subsequence of an increasing sequence is increasing. 
+
+\
+
+\item Every subsequence of a bounded sequence is bounded.
+
+\
+
+\item Every subsequence of a divergent sequence is divergent.
+
+\
+
+\item Every subsequence of a sequence that diverges to $-\infty$ also diverges to $-\infty$.
+\end{enumerate}
+\end{enumerate}
+
+\newpage
+
+\section*{A wild sequence}
+
+Consider the points in the plane whose $x$-coordinates are integers and $y$-coordinates are natural numbers. Starting at $(0,1)$, zigzag like so:
+	
+
+\begin{center}
+\[{\xymatrix@C=.7em@R=.7em{ 
+\ddots & \vdots & \vdots &  \vdots & \vdots & \vdots \ar@{.}@[blue][dr]& \vdots \ar@{.}@[blue][dr]& \vdots \ar@{.}@[blue][dr]& \vdots \ar@{.}@[blue][dr]&  \vdots & \reflectbox{$\ddots$} \\
+\cdots & (-4,5) \ar@{.}@[blue][ur]& (-3,5) \ar@{.}@[blue][ur]& (-2,5) \ar@{.}@[blue][ur]& (-1,5) \ar@{.}@[blue][ur]& (0,5) \ar@{->}@[blue][dr]
+& (1,5) \ar@{->}@[blue][dr]& (2,5) \ar@{->}@[blue][dr]& (3,5) \ar@{->}@[blue][dr]& (4,5)\ar@{.}@[blue][dr] & \cdots \\
+\cdots \ar@{.}@[blue][ur]& (-4,4) \ar@{->}@[blue][ur]& (-3,4) \ar@{->}@[blue][ur]& (-2,4) \ar@{->}@[blue][ur]& (-1,4) \ar@{->}@[blue][ur]& (0,4) \ar@{->}@[blue][dr]
+& (1,4) \ar@{->}@[blue][dr]& (2,4) \ar@{->}@[blue][dr]& (3,4) \ar@{->}@[blue][dr]& (4,4) \ar@{.}@[blue][dr]& \cdots \\
+\cdots \ar@{.}@[blue][ur]& (-4,3) \ar@{->}@[blue][ur]& (-3,3) \ar@{->}@[blue][ur]& (-2,3) \ar@{->}@[blue][ur]& (-1,3) \ar@{->}@[blue][ur]& (0,3) \ar@{->}@[blue][dr]
+& (1,3) \ar@{->}@[blue][dr]& (2,3) \ar@{->}@[blue][dr]& (3,3) \ar@{->}@[blue][dr]& (4,3) \ar@{.}@[blue][dr]& \cdots \\
+\cdots \ar@{.}@[blue][ur]& (-4,2) \ar@{->}@[blue][ur]& (-3,2) \ar@{->}@[blue][ur]& (-2,2) \ar@{->}@[blue][ur]& (-1,2) \ar@{->}@[blue][ur] & (0,2) \ar@{->}@[blue][dr]
+& (1,2) \ar@{->}@[blue][dr] & (2,2) \ar@{->}@[blue][dr]& (3,2) \ar@{->}@[blue][dr]& (4,2) \ar@{.}@[blue][dr]& \cdots \\
+\cdots \ar@{.}@[blue][ur] & (-4,1) \ar@{->}@[blue][ur]& (-3,1) \ar@{->}@[blue][ur] & (-2,1) \ar@{->}@[blue][ur]& (-1,1) \ar@{->}@[blue][ur]& (0,1) \ar@{->}@[blue][l]
+& (1,1) \ar@/^1.5pc/@[blue][lll]& (2,1) \ar@/^2.5pc/@[blue][lllll] & (3,1) \ar@/^3.5pc/@[blue][lllllll] & (4,1)  \ar@{.}@/^4.5pc/@[blue][lllllllll]& \cdots \\
+ }}\]
+ \end{center}
+ 
+ \
+ 
+ \
+ 
+ \
+ 
+	
+\noindent	This gives the list of points
+	$$
+	(0,1),  (-1,1), (0,2), (1,1), (-2,1), (-1,2), (0,3), (1,2), (2,1), (-3,1), \dots
+	$$
+	Now convert these to a list of rational numbers by changing $(m,n)$ to $\frac{m}{n}$ to get the sequence
+	$$
+	\frac01, \frac{-1}1, \frac02, \frac11, \frac{-2}1, \frac{-1}2, \frac03, \frac12, \frac21, \frac{-3}1, \dots
+	$$
+	of rational numbers.  Call this sequence $\{ w_n\}_{n=1}^\infty$.
+
+\
+
+\begin{enumerate}\setcounter{enumi}{5}
+\item Explain why every rational number $q\in \Q$ occurs in $\{ w_n\}_{n=1}^\infty$ infinitely many times.\footnote{Hint: $\frac{1}{2} = \frac{2}{4} = \frac{3}{6} = \cdots$.}
+
+\
+
+\item Let $\{q_n\}_{n=1}^\infty$ be a sequence of rational numbers. Explain why $\{ q_n\}_{n=1}^\infty$ is a subsequence of $\{ w_n\}_{n=1}^\infty$. [This is saying that \emph{every} sequence of rational numbers is a subsequence of this single sequence!]
+
+\
+
+\item Let $r$ be any real number. Show that there is a subsequence of $\{ w_n\}_{n=1}^\infty$ converges to $r$. [This is saying that \emph{every} real number occurs as a limit of a subsequence of this single sequence!]
+
+\end{enumerate}
+
+
+\end{document}

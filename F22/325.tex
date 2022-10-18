@@ -2138,442 +2138,13 @@ Since $0\leq 10 r \leq 10$, we can take an integer between $0$ and $9$ to be $d_
 \end{enumerate}
 \end{enumerate}
 
+%\begin{comment}
+
+
+
 \begin{comment}
 
-
-
-
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%
-%\begin{comment}
-\section*{Discussion Questions, March 3}
-
-{\large TRUE or FALSE. Justify.}
-
-\
-
-
-\begin{enumerate}
-	\item Let $x,y\in \R$. The negation of the statement ``If $x$ and $y$ are rational, then $xy$ is rational'' is ``If $x$ and $y$ are rational, then $xy$ is irrational''. (F)
-	
-	\
-	
-	\item Let $x,y\in \R$. The contrapositive of the statement ``If $x$ and $y$ are rational, then $xy$ is rational'' is ``If $xy$ is irrational, then $x$ and $y$ are irrational''. (F)
-	
-	
-	\
-	
-	\item The associative property/axiom of addition says that $(x+y)+z=x+(y+z)$. (T)
-	
-	\
-	
-	\item Every set of real numbers that is bounded above has a supremum. (F)
-	
-	\
-	
-	\item There is a set $S$ of real numbers such that $\sup(S)$ exists, but $\sup(S)\notin S$. (T)
-	
-	\
-	
-	\item If $a<b$ are real numbers, there is a natural number $n\in \N$ such that $a<n<b$. (F)
-	
-	\
-	
-	\item Every nonempty set of real numbers has a smallest element (i.e., a minimum element). (F)
-	
-	\
-	
-	\item Every nonempty set of integers that is bounded below has a smallest element (i.e., a minimum element). (T)
-	
-	\
-	
-	\item If $S\subseteq \R$ is bounded above, there there is a natural number $b$ such that $b$ is an upper bound for~$S$. (T)
-	
-	\
-	
-	\item It is possible to prove that there is a real number $x$ such that $x^2=2$ using just the first 10 axioms (i.e., without using the Completeness Axiom). (F)
-	
-	\
-	
-	\item Every set of real numbers satisfies the property that ``for all $x\in S$, there exists a real number $y$ such that $x<y^2$\,''. (T)
-	
-	\
-	
-	\item Every set of real numbers satisfies the property that ``for all $x\in S$, there exists a real number $y$ such that $y^2 < x$''. (F)
-	
-	\
-	
-	\item The supremum of the set $\{ 1/n \ | \ n\in\N\}$ is $1$. (T)
-	
-	\
-	
-	\item The supremum of the set $\{ -1/n \ | \ n\in\N\}$ is $-1$. (F)
-	
-	\
-	
-	\item The negation of the statement ``for all $x\in S$, there exists a real number $y$ such that $x<y^2$\,'' is ``for all $x\in S$, there exists a real number $y$ such that $x\geq y^2$\,''. (F)
-	
-	\
-	
-	\item If a sequence $\{a_n\}_{n=1}^\infty$ converges to $L$, then there is some $N\in \R$ such that for all natural numbers $n>N$, $a_n=L$. (F)
-	
-	\
-	
-	\item For every real number $L$ there is a sequence that converges to~$L$. (T)
-	
-	\
-	
-	\item	For every real number $L$ there is a sequence $\{a_n\}_{n=1}^\infty$ such that $a_n\neq L$ for all $n\in \N$ and converges to~$L$. (T)
-	
-	\
-	
-	\item A sequence of positive numbers can converge to a negative number. (F)
-	
-	\
-	
-	\item A sequence of positive numbers can converge to zero. (T)
-	
-	\
-	
-	\item Every increasing sequence is bounded below. (T)
-	
-	
-	\
-	
-	\item Every increasing sequence is convergent. (F)
-	
-	\
-	
-	\item Every convergent sequence is either increasing or decreasing. (F)
-	
-	\
-	
-	\item If $\{a_n\}_{n=1}^\infty$ and $\{b_n\}_{n=1}^\infty$ are sequences, $\{a_n\}_{n=1}^\infty$ converges to $L$, and there is some $N\in \R$ such that $a_n=b_n$ for $n>N$, then $\{b_n\}_{n=1}^\infty$ converges to $L$. (T)
-	
-	\
-	
-	\item If $\{a_n\}_{n=1}^\infty$ and $\{b_n\}_{n=1}^\infty$ are convergent sequences, then $\{a_n + b_n\}_{n=1}^\infty$ is a convergent sequence. (T)
-	
-	\
-	
-	\item If $\{a_n\}_{n=1}^\infty$ and $\{b_n\}_{n=1}^\infty$ are convergent sequences, and $b_n\neq 0$ for all $n\in \N$, then $\{a_n / b_n\}_{n=1}^\infty$ is a convergent sequence. (F)
-	
-	\
-	
-	\item The sequence $\displaystyle \left\{ \frac{3 n^2- 4n + 7}{6n^2 +1} \right\}_{n=1}^{\infty}$ converges to $1/2$. (T)
-	
-	\
-	
-	\item The negation of ``$\{a_n\}_{n=1}^\infty$ is a monotone sequence'' is ``there exists $n\in \N$ such that $a_n> a_{n+1}$ and $a_n < a_{n+1}$''. (F)
-	
-	\
-	
-	\item Every convergent sequence of rational numbers converges to a rational number. (F)
-	
-	\
-	
-	\item Every convergent sequence of natural numbers converges to a natural number. (T)
-	
-	\
-	
-\end{enumerate}
-
-
-
-We will now embark on a bit of detour. I've postponed talking about proofs by induction, but we will need to use that technique on occasion. So let's talk
-about that idea now. 
-
-The technique of proof by induction is used to prove that an infinite sequence of statements indexed by $\N$
-$$
-P_1, P_2, P_3, \dots
-$$
-are all true. For example, for any real number $x$, the equation
-$$
-(1-x)(1+ x + \cdots + x^n) = 1 - x^{n+1}
-$$
-holds for all $n \in \N$. Fixing $x$, we get one statement for each natural number:
-
-\begin{align*}
-	&P_1: &(1-x)(1+x)=1-x^2\\
-		&P_2: &(1-x)(1+x+x^2)=1-x^3\\
-		&P_3: &(1-x)(1+x+x^2+x^3)=1-x^4\\
-		&\vdots &\vdots
-	\end{align*}
-
-Such a fact (for all $n$) is well-suited to be proven by induction.
-
-Here is the general principle:
-
-\begin{thm}[Principle of Mathematical Induction] Suppose we are given, for each $n \in \N$, a statment $P_n$.  
-Assume that $P_1$ is true and that for each $k
-  \in \N$, if $P_k$ is true, then $P_{k+1}$ is true. Then $P_n$ is true for all $n \in \N$.
-\end{thm}
-
-``The domino analogy'': Think of the statements $P_1, P_2, \dots$ as dominoes lined up in a row. The fact that $P_k \implies P_{k+1}$ is interpreted as meaning
-that the dominoes
-are arranged well enough so that if one falls, then so does the next one in the line. The fact that $P_1$ is true is interpreted as meaning the first one has been knocked
-over. Given these assumptions, for every $n$, the $n$-th domino will (eventually) fall down. 
-
-
-
-The Principle of Mathematical Induction (PMI) is indeed a theorem, which we will now prove:
-
-\begin{proof} 
-Assume that $P_1$ is true and that for each $k
-  \in \N$, if $P_k$ is true, then $P_{k+1}$ is true.
-Consider the subset
-$$
-S = \{n \in \N \mid \text{ $P_n$ is false} \}
-$$
-of $\N$. Our goal is to show $S$ is the empty set. 
-
-By way of contradiction, suppose $S$ is not empty. Then
-by the Well-Ordering Principle, $S$ has a smallest element, call it $\ell$. (In other words, $P_\ell$ is the first statement in the list $P_1, P_2, \dots, $
-that is false.) Since $P_1$ is true, we must have $\ell > 1$. But then
-$\ell-1 < \ell$ and so $\ell-1$ is not in $S$. Since $\ell > 1$, we have $\ell-1 \in
-\N$ and thus we can say that $P_{\ell-1}$ must be true. 
-Since $P_k \Rightarrow P_{k+1}$ for any $k$,  letting $k = \ell-1$, we see that, since $P_{\ell-1}$ is true, $P_{\ell}$ must also by true. This contradicts the fact that $\ell \in S$. We
-conclude that $S$ must be the empty set.
-\end{proof}
-
-The above proof shows that the Principle of Mathematical Induction is a consequence of the Well-Ordering Principle. The converse is also true.
-
-
-
-
-\begin{ex} Let's show that for every $x\in \R$, the equality
-\[ (1-x)(1+ x + \cdots + x^n) = 1-x^{n+1}\]
-holds for all $n\in \N$.
-Fix a real number $x\in \R$. We will show by induction on $n$ that the equality \[ (1-x)(1+ x + \cdots + x^n) = 1-x^{n+1}\]
-holds this real number $x$ and for all $n\in \N$. For $n=1$, we have \[(1-x)(1+x) = 1-x^2,\]
-so the equality holds in this case. Assume that the equality holds for some natural number $n=k$. Then 
-\begin{align*}
-(1-x)(1+ x + \cdots + x^{k+1}) &= (1-x)((1+x+\cdots + x^k)+x^{k+1})\\&=(1-x)(1+ x + \cdots + x^k) + x^{k+1} - x^{k+2} \\&= 1-x^{k+1} + x^{k+1} - x^{k+2} \\&= 1-x^{k+2}\end{align*}
-so the equality holds for $n=k+1$. Thus, by induction, the equality holds for all $n\in \N$.\qed
-\end{ex} 
-
-
-Now, I want to apply what we've done so far to decimal expansions. Let us say that $d_1,d_2,d_3,\dots$ is a ``digit sequence'' if $d_i\in\{0,1,\dots,9\}$ for each $i\in\N$. We will say that an integer $k$ and a digit sequence $d_1,d_2,d_3,\dots$ is a ``decimal expansion'' and write $k. d_1 d_2 d_3 \dots$ to denote a decimal expansion. We say that the decimal expansion $k. d_1 d_2 d_3 \dots$  ``corresponds to a real number $r$'' if the sequence
-\begin{align*}
-a_1 &= k + \frac{d_1}{10^1} \\
-a_2 &= k + \frac{d_1}{10^1} + \frac{d_2}{10^2} \\
-a_3 &= k + \frac{d_1}{10^1} + \frac{d_2}{10^2} + \frac{d_3}{10^3}\\
-&\vdots
-\end{align*}
-converges to $r$.
-
-\begin{thm}
-Every decimal expansion corresponds to a real number.
-\end{thm}
-\begin{proof}
-Let $k$ be an integer, and $d_1,d_2,d_3,\dots$ be a sequence such that $d_i\in \{0,1,\dots,9\}$ for each $i\in \N$. We need to show that the sequence 
-\begin{align*}
-a_1 &= k + \frac{d_1}{10^1} \\
-a_2 &= k + \frac{d_1}{10^1} + \frac{d_2}{10^2} \\
-a_3 &= k + \frac{d_1}{10^1} + \frac{d_2}{10^2} + \frac{d_3}{10^3}\\
-&\vdots
-\end{align*}
-converges. Observe that $\{a_n\}_{n=1}^\infty$ is increasing. Note now that for any $n\in \N$, we have
-\begin{align*}
-a_n &=k + \frac{d_1}{10^1} + \frac{d_2}{10^2} + \cdots + \frac{d_n}{10^n}\\
-&=k + \frac{9}{10^1} + \frac{9}{10^2} + \cdots + \frac{9}{10^n}\\
-&=k + \frac{9}{10} \left( 1 + \frac{1}{10^1} + \cdots + \frac{1}{10^{n-1}} \right) \\
-&= k+ \frac{9}{10} \frac{ 1 - \frac{1}{10^n} }{1- \frac{1}{10}}\\
-&= k+ \frac{9}{10} \frac{ 1 - \frac{1}{10^n} }{\frac{9}{10}}\\
-&= k+ 1-\frac{1}{10} \leq k+1.\end{align*}
-Since this holds for all $n$, $\{a_n\}_{n=1}^\infty$ is bounded above by $k+1$. By the Monotone Convergence Theorem, $\{a_n\}_{n=1}^\infty$ converges.
-\end{proof}
-
-\begin{ex} The decimal expansion $0.25$ corresponds to $\frac{1}{4}$. The decimal expansion $0.99999\dots$ corresponds to $1$.\end{ex}
-
-
-
-
-
-
-
-
-
-
-
-% \begin{ex} Let us prove that the sum of the first $n$ natural numbers is $\frac{n(n+1)}{2}$; that is, $1 + \cdots + n = \frac{n(n+1)}{2}$. Let $P_n$ be the statement
-% \begin{quote}
-% The equation $1 + \cdots + n = \frac{n(n+1)}{2}$ holds.
-% \end{quote}
-% Then $P_1$ is true since $1 = \frac{1 \cdot 2}{2}$. Assume $P_k$ is true for some $k \in \N$, so that
-% $1 + \cdots + k = \frac{k(k+1)}{2}$. Add $k+1$ to both sides to get
-% $$
-% \begin{aligned}
-%  1 + \cdots + k + k+1 & = \frac{k(k+1)}{2} + k+1 \\
-% & =  \frac{k(k+1)}{2} + k+1 \\
-% & = \frac{k(k+1) + 2(k+1)}{2} \\
-% & =  \frac{(k+1)(k+2)}{2} \\
-% \end{aligned}
-% $$
-% and thus $P_{k+1}$ is true. By PMI, $P_n$ is true for all $n$.
-% \end{ex}
-
-
-
-
-\Oct{8}
-
-The next example of a proof by induction will establish a fact that is perhaps
-intuitively obvious.  Since it will play an important role in later proofs, we state it as a Lemma here:
-
-\begin{lem} \label{lem211}
-	Let $b_1, b_2, \dots$ be any strictly increasing sequence of natural numbers; that is, assume $b_k \in \N$ for all $k \in \N$ and that $b_k < b_{k+1}$ for 
-	all $k \in \N$. Then $b_k \geq k$ for all $k$.
-\end{lem}
-
-\begin{proof} Suppose $b_1, b_2, \dots$ is a strictly increasing
-	sequence of natural numbers. We prove $b_n \geq n$ for all $n$ by
-	induction on $n$. 
-	That is, for each $n  \in \N$, let $P_n$ be
-	the statement that $b_n \geq n$. 
-	
-	$P_1$ is true since $b_1 \in \N$ and so $b_1 \geq 1$. Given $k \in \N$, assume $P_k$ is true; that is, assume $b_k \geq k$. Since $b_{k+1} >
-	b_k$ and both are natural numbers, we have $b_{k+1} \geq b_k + 1 \geq k+1$; that is, $P_{k+1}$ is true too. By induction, $P_n$ is true for all $n \in \N$. 
-\end{proof}
-
-
-% Let's prove the Binomial Theorem by induction. Recall that $n! = n(n-1) \cdots 2 \cdot 1$ (and $0! = 1$) and that
-% $$
-% {n \choose i} := \frac{n!}{(n-i)! i!}.
-% $$
-%
-%
-%
-% \begin{prop} For all real numbers $x$ and $y$ and all natural numbers $n$, 
-% $$
-% (x+y)^n = \sum_{i=0}^n {n \choose i} x^{n-i} y^i.
-% $$
-% \end{prop}
-%
-% \begin{proof} Let $x$ and $y$ be arbitrary real number. We prove 
-%$ (x+y)^n = \sum_{i=0}^n {n \choose i} x^{n-i} y^i$
-%holds for each $n \in \N$ by induction on $n$. 
-%
-%The case $n = 1$ is immediate since $\sum_{i=0}^1 {1 \choose i} x^{1-i} y^i = x + y = (x+y)^n$.
-%
-% Assume the equation 
-% $$
-% (x+y)^n = \sum_{i=0}^n {n \choose i} x^{n-i} y^i
-% $$
-% holds. Multiplying both sides by $x+y$ gives
-% $$
-% (x+y)^{n+1} = x \sum_{i=0}^n {n \choose i} x^{n-i} y^i
-%+ y \sum_{i=0}^n {n \choose i} x^{n-i} y^i
-%= \sum_{i=0}^n {n \choose i} x^{n-i+1} y^i + \sum_{i=0}^n {n \choose i} x^{n-i} y^{i+1}
-% $$
-% We have
-% $$
-% \sum_{i=0}^n {n \choose i} x^{n-i+1} y^i = x^{n+1} + \sum_{i=1}^n {n \choose i} x^{n-i+1} y^i
-% $$
-% and
-% $$
-% \begin{aligned}
-% \sum_{i=0}^n {n \choose i} x^{n-i} y^{i+1} & = 
-% \left(\sum_{i=0}^{n-1} {n \choose i} x^{n-i} y^{i+1}  \right) + y^{n+1} \\
-% & = \left(\sum_{j=1}^{n} {n \choose i-1} x^{n-j+1} y^{j}  \right) + y^{n+1} \\
-%& = \left(\sum_{i=1}^{n} {n \choose i-1} x^{n-i+1} y^{i}  \right) + y^{n+1} 
-% \end{aligned}
-% $$
-% It follows that
-% $$
-% (x+y)^{n+1} = x^{n+1} + \left(\sum_{i=1}^{n} ({n \choose i} + {n \choose i-1}) x^{n-i+1} y^{i}  \right) + y^{n+1}. 
-% $$
-% Now observe that
-% $$
-% \begin{aligned}
-% {n \choose i} + {n \choose i-1} & = \frac{n!}{(n-i)! i!} + \frac{n!}{(n-i+1)! (i-1)!} \\
-% & = \frac{n!(n-i+1)}{(n-i+1)! i!} + \frac{n!i}{(n-i+1)! i!} \\
-% & = \frac{n!(n-i+1) + n!i}{(n-i+1)! i!} \\
-% & = \frac{(n+1)!}{(n-i+1)! i!} \\
-% & = {n+1 \choose i}.
-% \end{aligned}
-% $$
-% We get
-% $$
-% (x+y)^{n+1} = x^{n+1} + \left(\sum_{i=1}^{n} {n +1 \choose i}  x^{n-i+1} y^{i}  \right) + y^{n+1}
-% = \sum_{i=0}^{n+1} {n +1 \choose i}  x^{n-i+1} y^{i}.
-% $$
-%
-% By the principle of mathematical induction, the equation holds for all $n$.
-% \end{proof}
-
-
-%  \begin{ex} Suppose in a certain country, for every pair of cities there is a unique one-way road joining them (going in one direction or the other, but not both). 
-%  Let us prove that it is possible to visit every city in the country by flying into some city, visiting each city exactly once by car, and then flying away from a different
-%     city. 
-
-%   Here is a more mathematical version. Imagine a graph with $n$ vertices such that for any pair of vertices there is a unique directed edge joining them. 
-%  I claim there is a path that visits each vertex exactly once
-%  (starting and stopping at different vertices). 
-
-%   We proceed by induction on $n$. The statement $P_n$ is ``Given any graph with $n$ vertices such that between any two vertices there is a unique directed edge,
-%   there is a path that visits every vertex exactly once.''
-
-%  The case $n = 1$ is true, since if the country has just one city, then you can fly into it, do no driving, and then fly away. Or in terms of graph theory,
-% the path of length $0$ counts. (But if this makes you nervous
-% you can have $n = 2$ be the base case: if a country has two cities with a one-way street joining them, fly into the city for which the road is leaving that city,
-% drive to the other city along that road, and then fly home.)
-
-
-% Suppose $P_n$ is true for some $n \in \N$, 
-%  and now consider such a graph with $n+1$ vertices. Let $w$ be any one of the vertices of this graph.  
-%  If we remove $w$ from consideration, we are left with a graph with $n$ vertices that satisfies the same condition. Since we assume $P_n$ is true, 
-%  there is at least one path among these other $n$ vertices that visits each of
-%  them exactly once. Let us label these vertices in the order in which this path visits them, as $v_1, \dots, v_n$, so that the path looks like
-%  $$
-%  v_1 \to v_2 \to v_3 \to \cdots \to v_n.
-%  $$
-% We will extend this to a suitable path involving $w$ too.
-
-% {\bf Case I}: Assume the edge  joining $v_i$ and $w$ goes from $v_i$ to $w$, for all $1 \leq i \leq n$. 
-% In this case, in particular we have that the edge between $v_n$ and $w$ goes from $v_n$ to $w$. Thus we may form the path 
-%  $$
-%  v_1 \to v_2 \to v_3 \to \cdots \to v_n \to w.
-%  $$
-
-% {\bf Case II}: 
-% Assume there is at least one value of $i$ such that edge joining $w$ and $b_i$ goes from $w$ to  $v_i$. 
-% In this case, let $j$ be the least integer such that the edge joining $w$ and $v_j$ goes from $w$ to $v_j$. 
-% If $j = 1$, then we mauy form the path
-%  $$
-%  w \to v_1 \to v_2 \to v_3 \to \cdots \to v_n.
-%  $$
-% Otherwise if $j > 1$, then the edge between $w$ and $v_{j-1}$ goes from $v_{j-1}$ to $w$ and thus we may form the path
-% $$
-%  v_1 \to v_2 \to  \cdots \to v_{j-1} \to w \to v_j \to v_{j+1} \to \cdots \to v_n.
-% $$
-
-%  In all cases, we've shown there is a path of the desired type. That is, we've shown $P_n \Rightarrow P_{n+1}$. By PMI, $P_n$ is true for all $n$.
-%  \end{ex}
-
-
-
-
-%In the next homework assignment, I will ask you to prove:
-%
-%\begin{exer} Let $\{a_n\}_{n=1}^\infty$ be a sequence such that $a_n > 0$ for all $n$. Prove $\{a_n\}_{n=1}^\infty$ diverges to $\infty$ if and only if the sequence
-%  $\left\{\frac{1}{a_n}\right\}_{n=1}^\infty$ converges to $0$.
-%\end{exer}
-
-%\begin{proof} Suppose $\{a_n\}_{n=1}^\infty$ diverges to $\infty$.  Pick $\epsilon > 0$. Letting $M = \frac{1}{\epsilon}$ by
- % definition of ``diverges to $\infty$'' we have that there is an $N$ such that for all $n \in \N$ with $n > N$, $a_n > \frac{1}{\epsilon}$. Since $a_n > 0$ and $\epsilon > 0$,
-  %this implies $|\frac{1}{a_n} - 0| = \frac{1}{a_n} < \epsilon$. This proves   $\left\{\frac{1}{a_n}\right\}_{n=1}^\infty$ converges to $0$.
-
-%  Suppose   $\left\{\frac{1}{a_n}\right\}_{n=1}^\infty$ converges to $0$. Pick any real number $M$ and let $\epsilon = \frac{1}{\max\{M, 1\}}$. Note that this implies $1/\e \geq M$. 
- % By definition of ``converges to $0$'', there is an $N$ such that if $n \in \N$ and $n > N$, then $1/a_n = |1/a_n - 0| < \epsilon$. (Recall $a_n > 0$ for all $n$.) It follows that
- % $a_n > 1/\e \geq M$ for all $n > N$.
- % This proves that $\{a_n\}_{n=1}^\infty$ diverges to $\infty$.
- % \end{proof}
-  
+\Oct{20}
 
 
 
@@ -2584,7 +2155,7 @@ terms of the original sequence. In other words, it is a sequence formed by takin
 sequence, but still infinitely many of them,   
 without repetition. 
 
-We'll cover the formal definition soon, but let's give a few examples first, based on this informal definiton. 
+We'll cover the formal definition soon, but let's give a few examples first, based on this informal definition. 
 
 \begin{ex}
 Consider the sequence
@@ -2631,7 +2202,7 @@ $$
 $$
 \end{ex}
 
-Here is the formal definiton:
+Here is the formal definition:
 
 \begin{defn} A {\em subsequence} of a given sequence
   $\{a_n\}_{n=1}^\infty$ is any sequence of the form
@@ -2649,6 +2220,8 @@ $$
 n_1 < n_2 < n_3 < \cdots.
 $$
 \end{defn}
+
+Note that $k$ is the index of the subsequence; i.e., the first term in the subsequence is when $k=1$, the second is when $k=2$ and so on. The integer sequence $\{n_k\}_{k=1}^\infty$ is the sequence of indices of the original sequence we choose to make the subsequence.
 
 \begin{ex} Let $\{a_n\}_{n=1}^\infty$ be any sequence.
 
@@ -2669,25 +2242,42 @@ $$
 Of course, there is nothing special about $100$ in this example.
 \end{ex}
 
-
 The following result is important:
 
 
 
-\begin{thm} If a sequence $\{a_n\}_{n=1}^\infty$ converges to $L$, then every subsequence of this sequence also converges to $L$.
+\begin{thm}\label{thm:ssq} If a sequence $\{a_n\}_{n=1}^\infty$ converges to $L$, then every subsequence of this sequence also converges to $L$.
 \end{thm}
 
+We prepare with a lemma.
 
-\begin{proof} Assume $\{a_n\}_{n=1}^\infty$ converges to $L$
-and let $n_1 < n_2 < \cdots$ be any strictly increasing sequence of natural numbers. We need to prove $\{a_{n_k}\}_{k=1}^\infty$ converges to $L$. 
 
-Pick $\e > 0$. Since $\{a_n\}_{n=1}^\infty$ converges to $L$, there is an $N$ such that if $n \in \N$ and $n > N$, then $|a_n - L| < \e$. (We will show that the
-same $N$ also ``works'' for the subsequence.) 
+\begin{lem} \label{lem211}
+	Let $b_1, b_2, \dots$ be any strictly increasing sequence of natural numbers; that is, assume $b_k \in \N$ for all $k \in \N$ and that $b_k < b_{k+1}$ for 
+	all $k \in \N$. Then $b_k \geq k$ for all $k$.
+\end{lem}
 
-If $k \in \N$ and $k > N$, then $n_k \geq k$ by Lemma \ref{lem211},
-and hence $n_k > N$. It follows that $|a_{n_k} - L| < \e$. This proves 
-$\{a_{n_k}\}_{k=1}^\infty$ converges to $L$. 
+\begin{proof} Suppose $b_1, b_2, \dots$ is a strictly increasing
+	sequence of natural numbers. We prove $b_n \geq n$ for all $n$ by
+	induction on $n$. 
+	That is, for each $n  \in \N$, let $P_n$ be
+	the statement that $b_n \geq n$. 
+	
+	$P_1$ is true since $b_1 \in \N$ and so $b_1 \geq 1$. Given $k \in \N$, assume $P_k$ is true; that is, assume $b_k \geq k$. Since $b_{k+1} >
+	b_k$ and both are natural numbers, we have $b_{k+1} \geq b_k + 1 \geq k+1$; that is, $P_{k+1}$ is true too. By induction, $P_n$ is true for all $n \in \N$. 
 \end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:ssq}] Let the sequence $\{a_n\}_{n=1}^\infty$ converge to $L$, and take a subsequence $\{a_{n_k}\}_{k=1}^\infty$ for some strictly increasing sequence $n_1 < n_2 < n_3 < \cdots$ of natural numbers. 
+
+Let $\e>0$. Since $\{a_n\}_{n=1}^\infty$ converges to $L$, there is some $N\in \R$ such that for all natural numbers $n>N$ we have $|a_n - L|<\e$. We claim that the same $N$ works to verify the definition of $\{a_{n_k}\}_{k=1}^\infty$ converges to $L$ for this $\e$. Indeed, if $k>N$, then $n_k > N$, so $|a_{n_k} - L| < \e$. Thus, $\{a_{n_k}\}_{k=1}^\infty$ converges to $L$.
+\end{proof}
+
+
+
+  
+
+
+
 
 
 \begin{cor}  Let $\{a_n\}_{n=1}^\infty$ be any sequence.
@@ -2915,11 +2505,8 @@ The proof for the case of sequences that are not bounded below is similar.
 
 \begin{lem} \label{lem214b}
 Let $\{a_n\}_{n=1}^\infty$ be a sequence.
- Assume $\{a_n\}_{n=1}^\infty$ is bounded above and let $\b$ be the supremum of the numbers appearing in the sequence. 
-If $\b$ does not occur in the sequence, then the sequence contains  an increasing subsequence.
+ Assume $\{a_n\}_{n=1}^\infty$ is bounded above and that the set of values $\{a_n \ | \ n\in \N\}$ does not have a maximum value. Then the sequence has an increasing subsequence.
 \end{lem}
-
-\Oct{13}
 
 
 
@@ -2928,21 +2515,21 @@ If $\b$ does not occur in the sequence, then the sequence contains  an increasin
 
 
 \begin{proof}
-Assume $\{a_n\}_{n=1}^\infty$ is bounded above, $\b$ is  the supremum of the numbers appearing in the sequence, and $\beta$ does not occur in the sequence.
-Notice that these conditions mean: (1) $a_n < \b$ for all $n$ and (2) if $y$ is any real number such that $y < \b$, then there exists a natural number $n$ such that $a_n > y$.
-Moreover, from (1) it follows that for all $n$, we have $\max\{a_1, a_2, \dots, a_n\} < \beta$. 
+Assume $\{a_n\}_{n=1}^\infty$ is bounded above and that the set of values $\{a_n \ | \ n\in \N\}$ does not have a maximum value.
 
 We again define our subsequence recursively.
 We start by setting $n_1 = 1$.
 
-If we have chosen $n_k$, then let $b=\max\{a_1,\dots,a_{n_k}\}$. By (1) above, $b<\beta$, and by (2) above, there is some $m\in \N$ for which $b < a_m$.  We must have $m> n_k$, since otherwise $a_m$ is on the list $a_1,\dots,a_{n_k}$ so that $a_m \leq b$. Thus, we can take $n_{k+1} = m$, and we have $n_{k+1} > n_k$ and $a_{n_{k+1}}>a_{n_k}$. Thus, we have defined the desired subsequence recursively.
+If we have chosen $n_k$, then let $b=\max\{a_1,\dots,a_{n_k}\}$. 
+
+We claim that there is some $m> n_k$ such that $a_m> b$. To obtain a contradiction, suppose otherwise. Then for any $n\in \N$, either $n>{n_k}$ and $a_n \leq b$ by assumption, or $n\leq n_k$ and $a_n \leq b$, since $a_n$ is on the list of things of which $b$ was the maximum. Then $b$ is the maximum of $\{a_n \ | \ n\in \N\}$, which yields a contradiction. Thus, there is some $m> n_k$ such that $a_m> b$, and we can choose $m=n_{k+1}$. Thus, we can define such a sequence recursively.
 \end{proof}
 
 
 \begin{rem} We will actually use the contrapositive of the  Lemma in the proof of the Theorem:
 \begin{quote}
 If  $\{a_n\}_{n=1}^\infty$ is a bounded above sequence that does not contain any increasing subsequences, 
-then the supremum of the terms of the sequence must occur somewhere in the sequence.
+then the set of values of the sequence has a maximum.
 \end{quote}
 \end{rem}
 
@@ -2965,18 +2552,18 @@ So, let us assume it has no increasing subsequences.
 
 
 We will prove it has at least one
-decreasing subsequence by constructing the indices $n_1<n_2< \cdots$ of such a subsequence one at a time. 
+decreasing subsequence by constructing the indices $n_1<n_2< \cdots$ of such a subsequence recursively. 
 
-Let $\beta_1$ be the supremum of all the terms of the sequence. By Lemma~\ref{lem214b} (see the remark following it), since $\{a_n\}_{n=1}^\infty$ is bounded
+ By Lemma~\ref{lem214b} (see the remark following it), since $\{a_n\}_{n=1}^\infty$ is bounded
 above and does not contain any increasing subsequences, we know that  
-$\beta_1$ must be {\em in the sequence}. That is,
-there exists a natural number $n_1$ such that $\beta_1 = a_{n_1}$. Note that it follows that $a_{n_1}
+$\{ a_n \ | \ n\in \N\}$ has a maximum value. That is,
+there exists a natural number $n_1$ such that $a_{n_1}
 \geq a_m$ for all $m \geq 1$. 
 
 
-For any $k$, given $n_k$, the subsequence $a_{n_k +1} , a_{n_k+2},a_{n_k+3},\ldots$ is also bounded above and has no increasing subsequence. Thus, it must contain its supremum $\beta_{k+1}$ by Lemma~\ref{lem214b}. So, $\beta_{k+1} = a_{m}$ for some $m>n_k$. Choose $n_{k+1} =m$ for such a value $m$. This gives a recursive definition for $n_k$.
+For any $k$, given $n_k$, the subsequence $a_{n_k +1} , a_{n_k+2},a_{n_k+3},\ldots$ is also bounded above and has no increasing subsequence. Thus, it must have a maximum value by Lemma~\ref{lem214b}; choose $n_{k+1}$ such that $a_{n_{k+1}} = \max\{ a_{n_k +1} , a_{n_k+2},a_{n_k+3}, \dots\}$. This gives a recursive definition for $n_k$.
 
-By construction, we have $n_{k+1} > n_k$ for all $k$. Note that $a_{n_{k}} = \beta_{k}$ is the supremum of a set that contains $a_{n_{k+1}}=\beta_{k+1}$. It follows that $a_{n_k} \geq a_{n_{k+1}}$. That is, we have constructed a decreasing subsequence of the original sequence.
+By construction, we have $n_{k+1} > n_k$ for all $k$. Note that $a_{n_{k}}$ is the maximum of a set that contains $a_{n_{k+1}}$ (since it is later in the sequence). It follows that $a_{n_k} \geq a_{n_{k+1}}$. That is, we have constructed a decreasing subsequence of the original sequence.
 \end{proof}
 
 \Oct{15}
