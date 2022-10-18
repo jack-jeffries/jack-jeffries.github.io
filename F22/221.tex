@@ -1695,11 +1695,13 @@ so we have $y_p = x^2 - 9 x + 52$. Thus, the general solution is
 
 \begin{comment}
 
+\Oct{20}
+
 \begin{ex} Consider the ODE
 \[ y'' - 2y' + 5y = e^{5x}.\]
 The homogeneous solution is
 \[ C_1 e^{x}\cos(2x) + C_2 e^{x}\sin(2x).\]
-What could we use as a ``trial solution'' to spit out $e^{5x}$ from the left hand side? A multiple of $e^{5x}$ seems worthy of a try.
+What could we use as a ``trial solution'' to spit out $e^{5x}$ from the left hand side? Our philosophy last time was to consider functions that look like the target function and its derivatives. Since the derivatives of $e^{5x}$ are just constant multiples of $e^{5x}$, a multiple of $e^{5x}$ seems worthy of a try.
 We take a trial solution 
 \[y_p = A e^{5x}\]
 so
@@ -1757,7 +1759,7 @@ as a particular solution, and
 as the general solution.
 \end{ex}
 
-There is one other weird thing that can happen: if part of our trial solution is part of our homogeneous solution, then we might not be able to get to our target function.
+There is one other weird thing that can happen: if part of our basic trial solution is part of our homogeneous solution, then we might not be able to get to our target function.
 
 \begin{ex} Consider the ODE
 \[ y'' - 7y' + 10y = e^{5x}.\]
@@ -1782,6 +1784,99 @@ and so the general solution is
 \[ y= \frac{1}{3} x e^{5x} + C_1 e^{2x} + C_2 e^{5x}.\]
 \end{ex}
 
+
+\begin{ex} For the differential equation
+\[ y'' + 9y = 4 \cos(3x),\]
+the complementary solution is 
+\[ y_c= C_1 \cos(3x) + C_2 \cos(3x).\]
+The basic trial solution for our target function would be
+\[ A \cos(3x) + B\sin(3x),\]
+but these are part of the homogeneous solution. Instead we take
+\[ y_p = A x \cos(3x) + B x \sin(3x).\]
+Plugging in, we get $A=\frac{2}{3}$ and $B=0$, so the general solution is
+\[ y= \frac{2}{3} x \cos(3x) + C_1 \cos(3x) + C_2 \cos(3x).\]
+\end{ex}
+
+\begin{slogan}
+\begin{itemize}
+\item Basic trial solutions for simple targets are mystery combinations of functions of the same type of the target and its derivatives.
+%\begin{itemize}
+%\item polynomials of degree $\leq n$ $\rsa$ polynomials of degree $\leq n$
+%\item sines or cosines $\rsa$ combination of sines and cosines
+%\item exponential $\rsa$ exponential
+%\end{itemize}
+\item Basic trial solutions for products of simple targets are mystery combinations of the corresponding pieces for the simple pieces.
+\item When part of the basic trial solution is repeated in the complementary solution, multiply by the independent variable until it isn't.
+\end{itemize}
+\end{slogan}
+
+\subsection{Spring and mass systems (\S5.1)}
+
+Given an object on a spring, its motion is determined by Hooke's law, which says that the force from the spring is proportional to the displacement of the spring from its resting length, but in the opposite direction. Combined with Newton's second law (force $=$ mass $\times$ acceleration), we get an equation of the form
+\[ m x'' = - k x, \qquad k>0 \]
+ or
+\[ m x'' + k x = 0,  \qquad k>0. \]
+The general solution to this is
+\[ y = C_1 \cos(\gamma x) + C_2 \sin(\gamma x),\]
+for $\gamma= \sqrt{ \frac{k}{m} }$, so these solutions are all periodic functions of fixed frequency $\frac{2 \pi}{\gamma}$.
+
+However, there is generally some sort of friction or resistance to the system. We add a friction force in the opposite direction to the spring force:
+\[ m x'' = - \beta x' - k x, \qquad \beta,k>0\]
+or
+\[ m x'' + \beta x' + k x = 0, \qquad \beta,k>0.\]
+The $\beta x'$ term gives a damping effect to the system.
+
+The behavior of the system is determined by the roots of the auxiliary polynomial:
+\[ m r^2 + \beta r + k r = 0\]
+\[\rsa r_1,r_2= \frac{ - \beta \pm \sqrt{\beta^2- 4 m k }}{2 m}\]
+The behavior breaks into three cases:
+
+\begin{enumerate}
+\item If $\beta^2- 4 m k>0$, then the roots $r_1,r_2$ are real. Since $m,k>0$, $\sqrt{\beta^2- 4 m k } < \sqrt{\beta^2}=\beta$, both roots are negative. The general solution is of the form $x = C_1 e^{r_1t} + C_2 e^{r_2 t}$. Then there are no oscillations, and the spring heads to its resting position. A system like this is called \index{overdamped}\emph{overdamped}.
+
+\begin{center}\includegraphics[scale=.5]{spring1}\end{center}
+
+\item If $\beta^2- 4 m k<0$, then the roots $r_1,r_2$ are complex. The real part is $\frac{-\beta}{m}$, which is negative, and the imaginary part is $\sqrt{\beta^2- 4 m k } = \sqrt{-1 (4 m k - \beta^2) } = i \gamma$ for $\gamma=\sqrt{4 m k - \beta^2}$. The general solution is of the form \[x= C_1 e^{-\beta t / m } \cos(\gamma t) +e^{-\beta t / m } \sin(\gamma t).\] These solutions oscillate with frequency $\frac{2\pi}{\gamma}$, and with decreasing amplitude $e^{-\beta t / m }$. A system like this is called \index{underdamped}\emph{underdamped}.
+
+\begin{center}\includegraphics[scale=.5]{spring2}\end{center}
+
+
+\item If $\beta^2- 4 m k=0$, then there is a repeated real root $r$, which again is negative. The general solution is of the form $x = C_1 e^{r t} + C_2 t e^{r t}$. A system like this is called A system like this is called \index{critically damped}\emph{critically damped}, since a small change will make it overdamped or underdamped.
+
+\begin{center}\includegraphics[scale=.5]{spring3}\end{center}
+\end{enumerate}
+
+
+Finally, let's one example of what can happen if we apply an additional force to our spring system.
+\begin{ex}
+Consider the initial value problem
+\[\begin{cases} x'' + 2 x = \cos(\alpha t)\\
+x(0)=0\\
+x'(0)=0
+\end{cases}\]
+for some constant $\alpha$. This corresponds to a mass-spring system with no damping, plus an additional force with frequency $\frac{2\pi}{\alpha}$. 
+\[ r^2 + 2 = 0 \rsa r = \pm i \sqrt{2},\]
+so the homogeneous general solution is
+\[ y= C_1 \cos(\sqrt{2} t) +  C_2 \sin(\sqrt{2} t).\]
+If $\alpha\neq \sqrt{2}$, then the ``trial solution'' is
+\[ y_p = A \cos(\alpha t) + B \sin(\alpha t),\] and after subbing and solving, we get the solution to the IVP
+\[ x(t) = \frac{1}{2-\alpha^2} \left( \cos(\alpha t) - \cos( \sqrt{2} t) \right).\]
+For $\alpha=1,\ 2, \ 1.3$, we have
+\begin{center}\includegraphics[scale=.5]{spring4}\end{center}
+In particular, all of these solutions are bounded, and somewhat repeating.
+
+What about $\alpha=\sqrt{2}$? Then our ``trial solution'' needs to be updated:
+\[ y_p = A t \cos(\sqrt{2} t) + B t \sin(\sqrt{2} t),\]
+and after subbing and solving, we get the general solution
+\[ y= \frac{1}{2\sqrt{2}} t \sin(\sqrt{2} t) + C_1 \cos(\sqrt{2} t) +  C_2 \sin(\sqrt{2} t),\]
+and IVP solution
+\[ y= \frac{1}{2\sqrt{2}} t \sin(\sqrt{2} t).\]
+
+\begin{center}\includegraphics[scale=.5]{spring5}\end{center}
+
+The solution gets larger and larger and larger!
+This is an example of \index{resonance}\emph{resonance}.
+\end{ex}
 
 
 \begin{comment}
