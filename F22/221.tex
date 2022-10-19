@@ -85,7 +85,7 @@
 
 \Aug{23}
 
-This class is, as its name makes clear, is all about differential equations. Let's start with an example that is probably similar to something you've seen in Calculus.
+This class is, as its name makes clear, all about differential equations. Let's start with an example that is probably similar to something you've seen in Calculus.
 
 \begin{ex}
 The equation
@@ -1694,7 +1694,6 @@ so we have $y_p = x^2 - 9 x + 52$. Thus, the general solution is
 \end{ex}
 
 \begin{comment}
-
 \Oct{20}
 
 \begin{ex} Consider the ODE
@@ -1747,7 +1746,7 @@ the trial solution for a product of two of these things comes from multiplying t
 \[ y'' - 2y' + 5y = (x - 7) e^{5x}.\]
 The homogeneous solution is
 \[ C_1 e^{x}\cos(2x) + C_2 e^{x}\sin(2x).\]
-The trial solution for $e^{5x}$ is $Ae^{5x}$; the trial solution for $x-7$ is $A x + B$. For the product, we multiply the basic pieces:
+The trial solution for $e^{5x}$ is $Ae^{5x}$; the trial solution for $x-7$ is $A x + B$. For the product, we multiply the basic pieces, i.e., take the products of functions in $\{e^{5x}\}$ with functions in $\{x,1\}$:
 \[ y_p = A x e^{5x} + B e^{5x} .\]
 Plugging in we get
 \[ (x-7) e^{5x} = 20 A x e^{5x} + (8A+20B)e^{5x}\]
@@ -1810,9 +1809,9 @@ Plugging in, we get $A=\frac{2}{3}$ and $B=0$, so the general solution is
 \end{itemize}
 \end{slogan}
 
-\subsection{Spring and mass systems (\S5.1)}
+\subsection{Spring and mass systems (\S5.1)}\index{springs}
 
-Given an object on a spring, its motion is determined by Hooke's law, which says that the force from the spring is proportional to the displacement of the spring from its resting length, but in the opposite direction. Combined with Newton's second law (force $=$ mass $\times$ acceleration), we get an equation of the form
+Given an object on a spring, its motion is determined by Hooke's law\index{Hooke's law}, which says that the force from the spring is proportional to the displacement of the spring from its resting length, but in the opposite direction. Combined with Newton's second law (force $=$ mass $\times$ acceleration), we get an equation of the form
 \[ m x'' = - k x, \qquad k>0 \]
  or
 \[ m x'' + k x = 0,  \qquad k>0. \]
@@ -1841,7 +1840,7 @@ The behavior breaks into three cases:
 \begin{center}\includegraphics[scale=.5]{spring2}\end{center}
 
 
-\item If $\beta^2- 4 m k=0$, then there is a repeated real root $r$, which again is negative. The general solution is of the form $x = C_1 e^{r t} + C_2 t e^{r t}$. A system like this is called A system like this is called \index{critically damped}\emph{critically damped}, since a small change will make it overdamped or underdamped.
+\item If $\beta^2- 4 m k=0$, then there is a repeated real root $r$, which again is negative. The general solution is of the form $x = C_1 e^{r t} + C_2 t e^{r t}$. A system like this is called \index{critically damped}\emph{critically damped}, since a small change will make it overdamped or underdamped.
 
 \begin{center}\includegraphics[scale=.5]{spring3}\end{center}
 \end{enumerate}
@@ -1857,20 +1856,20 @@ x'(0)=0
 for some constant $\alpha$. This corresponds to a mass-spring system with no damping, plus an additional force with frequency $\frac{2\pi}{\alpha}$. 
 \[ r^2 + 2 = 0 \rsa r = \pm i \sqrt{2},\]
 so the homogeneous general solution is
-\[ y= C_1 \cos(\sqrt{2} t) +  C_2 \sin(\sqrt{2} t).\]
+\[ x= C_1 \cos(\sqrt{2} t) +  C_2 \sin(\sqrt{2} t).\]
 If $\alpha\neq \sqrt{2}$, then the ``trial solution'' is
-\[ y_p = A \cos(\alpha t) + B \sin(\alpha t),\] and after subbing and solving, we get the solution to the IVP
+\[ x_p = A \cos(\alpha t) + B \sin(\alpha t),\] and after subbing and solving, we get the solution to the IVP
 \[ x(t) = \frac{1}{2-\alpha^2} \left( \cos(\alpha t) - \cos( \sqrt{2} t) \right).\]
 For $\alpha=1,\ 2, \ 1.3$, we have
 \begin{center}\includegraphics[scale=.5]{spring4}\end{center}
 In particular, all of these solutions are bounded, and somewhat repeating.
 
 What about $\alpha=\sqrt{2}$? Then our ``trial solution'' needs to be updated:
-\[ y_p = A t \cos(\sqrt{2} t) + B t \sin(\sqrt{2} t),\]
+\[ x_p = A t \cos(\sqrt{2} t) + B t \sin(\sqrt{2} t),\]
 and after subbing and solving, we get the general solution
-\[ y= \frac{1}{2\sqrt{2}} t \sin(\sqrt{2} t) + C_1 \cos(\sqrt{2} t) +  C_2 \sin(\sqrt{2} t),\]
+\[ x= \frac{1}{2\sqrt{2}} t \sin(\sqrt{2} t) + C_1 \cos(\sqrt{2} t) +  C_2 \sin(\sqrt{2} t),\]
 and IVP solution
-\[ y= \frac{1}{2\sqrt{2}} t \sin(\sqrt{2} t).\]
+\[ x= \frac{1}{2\sqrt{2}} t \sin(\sqrt{2} t).\]
 
 \begin{center}\includegraphics[scale=.5]{spring5}\end{center}
 
