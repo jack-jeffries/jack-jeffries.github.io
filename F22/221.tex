@@ -1693,13 +1693,13 @@ so we have $y_p = x^2 - 9 x + 52$. Thus, the general solution is
 \[ y=  \frac{-1}{10}x^2  -\frac{6}{25} x + \frac{48}{5} + C_1 e^{2x} + C_2 e^{-5x}.\]
 \end{ex}
 
-\begin{comment}
+
 \Oct{20}
 
 \begin{ex} Consider the ODE
 \[ y'' - 2y' + 5y = e^{5x}.\]
 The homogeneous solution is
-\[ C_1 e^{x}\cos(2x) + C_2 e^{x}\sin(2x).\]
+\[ y_c =C_1 e^{x}\cos(2x) + C_2 e^{x}\sin(2x).\]
 What could we use as a ``trial solution'' to spit out $e^{5x}$ from the left hand side? Our philosophy last time was to consider functions that look like the target function and its derivatives. Since the derivatives of $e^{5x}$ are just constant multiples of $e^{5x}$, a multiple of $e^{5x}$ seems worthy of a try.
 We take a trial solution 
 \[y_p = A e^{5x}\]
@@ -1713,7 +1713,7 @@ so $A=\frac{1}{20}$, and the general solution is
 \begin{ex} Consider the ODE
 \[ y'' + 3y' + 2y= \sin(4x).\]
 First we find the homogeneous solution
-\[ C_1 e^{-x} + C_2 e^{-2x}.\]
+\[ y_c = C_1 e^{-x} + C_2 e^{-2x}.\]
 To get a trial solution particular solution, we may want to try $A \cos(4x)$, but since a mutliple of $\sin(4x)$ appears when we take derivatives of $\cos(4x)$, it will be important to include it to. That is, the ``trial solution'' we try is
 \[ y_p = A \sin(4x) + B \cos(4x).\]
 Then we get 
@@ -1743,22 +1743,22 @@ We can also get to more complicated target functions made out of these basic pie
 the trial solution for a product of two of these things comes from multiplying the pieces of their trial solutions.
 
 \begin{ex} Consider the ODE
-\[ y'' - 2y' + 5y = (x - 7) e^{5x}.\]
+\[ y'' - 2y' + 5y = 3x e^{5x}.\]
 The homogeneous solution is
-\[ C_1 e^{x}\cos(2x) + C_2 e^{x}\sin(2x).\]
-The trial solution for $e^{5x}$ is $Ae^{5x}$; the trial solution for $x-7$ is $A x + B$. For the product, we multiply the basic pieces, i.e., take the products of functions in $\{e^{5x}\}$ with functions in $\{x,1\}$:
+\[ y_c =C_1 e^{x}\cos(2x) + C_2 e^{x}\sin(2x).\]
+The trial solution for $e^{5x}$ is $Ae^{5x}$; the trial solution for $3x$ is $A x + B$. For the product, we multiply the basic pieces, i.e., take the products of functions in $\{e^{5x}\}$ with functions in $\{x,1\}$:
 \[ y_p = A x e^{5x} + B e^{5x} .\]
-Plugging in we get
-\[ (x-7) e^{5x} = 20 A x e^{5x} + (8A+20B)e^{5x}\]
-so $20A=1$ and $8A+20B=-7$, and hence $A=\frac{1}{20}$ and $B=\frac{-37}{100}$,
-so we get
-\[ y_p= \frac{1}{20} x e^{5x} + \frac{-37}{100} e^{5x}\]
-as a particular solution, and
-\[ y=  \frac{1}{20} x e^{5x} + \frac{-37}{100} e^{5x} + C_1 e^{x}\cos(2x) + C_2 e^{x}\sin(2x)\]
-as the general solution.
 \end{ex}
 
-There is one other weird thing that can happen: if part of our basic trial solution is part of our homogeneous solution, then we might not be able to get to our target function.
+\begin{ex} Consider the ODE
+\[ y'' - 2y' + 5y = 3x \cos(3x).\]
+The homogeneous solution is
+\[ y_c= C_1 e^{x}\cos(2x) + C_2 e^{x}\sin(2x).\]
+The trial solution for $3x$ is $A x + B$; the trial solution for $\cos(3x)$ is $A \cos(3x) + B \sin(3x)$. For the product, we multiply the basic pieces, i.e., take the products of functions in $\{x,1\}$ with functions in $\{\cos(3x),\sin(3x)\}$:
+\[ y_p = A x \cos(3x) + B \cos(3x) + C x \sin(3x) + D \sin(3x) .\]
+\end{ex}
+
+There is one very important special case when we have to update our trial solution: if part of our basic trial solution is part of our homogeneous solution, then we might not be able to get to our target function.
 
 \begin{ex} Consider the ODE
 \[ y'' - 7y' + 10y = e^{5x}.\]
@@ -1768,7 +1768,7 @@ and our trial solution would be
 \[ y_p = A e^{5x}.\]
 But, this is part of the homogeneous solution, so when we plug it in, we get zero; we can never choose an $A$ that makes the LHS equal to~$e^{5x}$. So our usual method of trial solutions failed!
 
-We now take inspiration from the homogeneous case, when there were ``not enough solutions'': multiply by $x$.
+We now take inspiration from the homogeneous case, when there were ``not enough solutions'': multiply by $x$!
 
 Our improved ``trial solution'' is 
 \[ y_p = A x e^{5x}.\]
@@ -1808,6 +1808,8 @@ Plugging in, we get $A=\frac{2}{3}$ and $B=0$, so the general solution is
 \item When part of the basic trial solution is repeated in the complementary solution, multiply by the independent variable until it isn't.
 \end{itemize}
 \end{slogan}
+
+\begin{comment}
 
 \subsection{Spring and mass systems (\S5.1)}\index{springs}
 
