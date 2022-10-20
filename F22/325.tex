@@ -2138,7 +2138,7 @@ Since $0\leq 10 r \leq 10$, we can take an integer between $0$ and $9$ to be $d_
 \end{enumerate}
 \end{enumerate}
 
-\begin{comment}
+
 
 \Oct{20}
 
@@ -2269,6 +2269,147 @@ Let $\e>0$. Since $\{a_n\}_{n=1}^\infty$ converges to $L$, there is some $N\in \
 \end{proof}
 
 
+
+	
+\begin{enumerate} 
+
+ \item \textbf{True or false; justify.}
+\begin{enumerate} 
+\item The sequence $\displaystyle \left\{ \frac{1}{2n} \right\}_{n=1}^\infty$ is a subsequence of the sequence $\displaystyle \left\{ \frac{1}{n} \right\}_{n=1}^\infty$.
+
+
+
+\item The sequence $\displaystyle \left\{ \frac{1}{3n+7} \right\}_{n=1}^\infty$ is a subsequence of the sequence $\displaystyle \left\{ \frac{1}{n} \right\}_{n=1}^\infty$.
+
+
+
+\item The constant sequence $\displaystyle \left\{ \frac{1}{2} \right\}_{n=1}^\infty$ is a subsequence of the sequence $\displaystyle \left\{ \frac{1}{n} \right\}_{n=1}^\infty$.
+
+
+
+\item The constant sequences $\{ -1 \}_{n=1}^\infty$ and  $\{ 1 \}_{n=1}^\infty$ are both subsequences of the sequence $\{ (-1)^n \}_{n=1}^\infty$.
+
+
+
+\item The constant sequences $\{ -1 \}_{n=1}^\infty$ and  $\{ 1 \}_{n=1}^\infty$ are the only two subsequences of the sequence $\{ (-1)^n \}_{n=1}^\infty$.
+
+\end{enumerate}
+
+\begin{framed}
+\begin{enumerate} 
+\item True: take $n_k=2k$.
+\item True: Take $n_k = 3k+7$.
+\item False: The term $1/2$ occurs only for $n=2$, so we can't choose an increasing sequence of indices that yield this value.
+\item True: take take $n_k=2k+1$ and take $n_k=2k$, respectively.
+\item False: The sequence itself is a subsequence ($n_k = k$).
+
+\end{enumerate}
+\end{framed}
+
+\item Explain how the following Corollary follows from Theorem~15.5.
+
+\noindent \textbf{Corollary 15.7:} Let $\{a_n\}_{n=1}^\infty$ be any sequence.
+\begin{enumerate}
+\item If there is a subsequence of this sequence that diverges, then the sequence itself diverges.
+\item If there are two subsequences of this sequence that converge to different values, then the sequence itself diverges.
+\end{enumerate}
+
+\begin{framed} These are special cases of the contrapositive.
+\end{framed}
+
+
+
+
+\item Use Corollary 15.7 to give a quick proof that the sequence $\{ (-1)^n \}_{n=1}^\infty$ diverges.
+
+\begin{framed} It has subsequences that converge to different values.
+\end{framed}
+
+\item \textbf{Prove or disprove:}
+\begin{enumerate}
+
+
+\item Every subsequence of a bounded sequence is bounded.
+
+
+
+\item Every subsequence of a divergent sequence is divergent.
+
+
+
+\item Every subsequence of a sequence that diverges to $-\infty$ also diverges to $-\infty$.
+\end{enumerate}
+
+\begin{framed}\begin{enumerate}
+
+
+\item True: if $m < a_n < M$ for all $n$ and $n_1<n_2 < n_3<\cdots$ is a strictly increasing sequence of natural numbers, then $m < a_{n_k} < M$ for all $k$.
+
+
+\item False: The divergent sequence $\{(-1)^n\}_{n=1}^\infty$ has a convergent subsequence $\{1\}_{n=1}^\infty$.
+
+
+
+\item True: Let $n_1<n_2<n_3 < \cdots$ be a strictly increasing sequence of natural numbers, and $\{a_{n_k}\}_{k=1}^\infty$ is a subseqence. Let $m\in \R$. There is some $N$ such that $a_n < m$ for all $n>N$. We claim that this $N$ works (for this $m$) to show that $\{a_{n_k}\}_{k=1}^\infty$  diverges to $-\infty$. Indeed, if $k>N$, then $n_k \geq k >N$, so $a_{n_k} <m$. Thus $\{a_{n_k}\}_{k=1}^\infty$  diverges to $-\infty$.
+\end{enumerate}\end{framed}
+\end{enumerate}
+
+
+
+\section*{A wild sequence}
+
+Consider the points in the plane whose $x$-coordinates are integers and $y$-coordinates are natural numbers. Starting at $(0,1)$, zigzag like so:
+	
+{\tiny
+\begin{center}
+\[{\xymatrix@C=.5em@R=.5em{ 
+\ddots & \vdots & \vdots &  \vdots & \vdots & \vdots \ar@{.}@[blue][dr]& \vdots \ar@{.}@[blue][dr]& \vdots \ar@{.}@[blue][dr]& \vdots \ar@{.}@[blue][dr]&  \vdots & \reflectbox{$\ddots$} \\
+\cdots & (-4,5) \ar@{.}@[blue][ur]& (-3,5) \ar@{.}@[blue][ur]& (-2,5) \ar@{.}@[blue][ur]& (-1,5) \ar@{.}@[blue][ur]& (0,5) \ar@{->}@[blue][dr]
+& (1,5) \ar@{->}@[blue][dr]& (2,5) \ar@{->}@[blue][dr]& (3,5) \ar@{->}@[blue][dr]& (4,5)\ar@{.}@[blue][dr] & \cdots \\
+\cdots \ar@{.}@[blue][ur]& (-4,4) \ar@{->}@[blue][ur]& (-3,4) \ar@{->}@[blue][ur]& (-2,4) \ar@{->}@[blue][ur]& (-1,4) \ar@{->}@[blue][ur]& (0,4) \ar@{->}@[blue][dr]
+& (1,4) \ar@{->}@[blue][dr]& (2,4) \ar@{->}@[blue][dr]& (3,4) \ar@{->}@[blue][dr]& (4,4) \ar@{.}@[blue][dr]& \cdots \\
+\cdots \ar@{.}@[blue][ur]& (-4,3) \ar@{->}@[blue][ur]& (-3,3) \ar@{->}@[blue][ur]& (-2,3) \ar@{->}@[blue][ur]& (-1,3) \ar@{->}@[blue][ur]& (0,3) \ar@{->}@[blue][dr]
+& (1,3) \ar@{->}@[blue][dr]& (2,3) \ar@{->}@[blue][dr]& (3,3) \ar@{->}@[blue][dr]& (4,3) \ar@{.}@[blue][dr]& \cdots \\
+\cdots \ar@{.}@[blue][ur]& (-4,2) \ar@{->}@[blue][ur]& (-3,2) \ar@{->}@[blue][ur]& (-2,2) \ar@{->}@[blue][ur]& (-1,2) \ar@{->}@[blue][ur] & (0,2) \ar@{->}@[blue][dr]
+& (1,2) \ar@{->}@[blue][dr] & (2,2) \ar@{->}@[blue][dr]& (3,2) \ar@{->}@[blue][dr]& (4,2) \ar@{.}@[blue][dr]& \cdots \\
+\cdots \ar@{.}@[blue][ur] & (-4,1) \ar@{->}@[blue][ur]& (-3,1) \ar@{->}@[blue][ur] & (-2,1) \ar@{->}@[blue][ur]& (-1,1) \ar@{->}@[blue][ur]& (0,1) \ar@{->}@[blue][l]
+& (1,1) \ar@/^1pc/@[blue][lll]& (2,1) \ar@/^2pc/@[blue][lllll] & (3,1) \ar@/^3pc/@[blue][lllllll] & (4,1)  \ar@{.}@/^4pc/@[blue][lllllllll]& \cdots \\
+ }}\]
+ \end{center}
+ }
+ \
+ 
+ \
+ 
+ \
+ 
+	
+\noindent	This gives the list of points
+	$$
+	(0,1),  (-1,1), (0,2), (1,1), (-2,1), (-1,2), (0,3), (1,2), (2,1), (-3,1), \dots
+	$$
+	Now convert these to a list of rational numbers by changing $(m,n)$ to $\frac{m}{n}$ to get the sequence
+	$$
+	\frac01, \frac{-1}1, \frac02, \frac11, \frac{-2}1, \frac{-1}2, \frac03, \frac12, \frac21, \frac{-3}1, \dots
+	$$
+	of rational numbers.  Call this
+	sequence $\{ w_n\}_{n=1}^\infty$.
+	( Even though you didn't want to know, we can give $w_n$ by a formula as
+	\[ w_n = \displaystyle \begin{cases} \displaystyle \frac{n-t^2 + t -1}{n-t^2 + 2t - 1} \ \ \text{if} \ n\leq t^2 - t \\ \\  \displaystyle \frac{-n+t^2 - t +1}{-n+t^2 + 1}\ \ \text{if} \ n> t^2 - t\end{cases},\] where $t=\min\{ m\in \N \ | \ m^2 \geq n\}.$)
+
+
+
+\begin{enumerate}\setcounter{enumi}{4}
+\item Explain why every rational number $q\in \Q$ occurs in $\{ w_n\}_{n=1}^\infty$ infinitely many times.
+
+
+\item Let $\{q_n\}_{n=1}^\infty$ be a sequence of rational numbers. Explain why $\{ q_n\}_{n=1}^\infty$ is a subsequence of $\{ w_n\}_{n=1}^\infty$. [This is saying that \emph{every} sequence of rational numbers is a subsequence of this single sequence!]
+
+
+
+\item Let $r$ be any real number. Show that there is a subsequence of $\{ w_n\}_{n=1}^\infty$ converges to $r$. [This is saying that \emph{every} real number occurs as a limit of a subsequence of this single sequence!]
+
+\end{enumerate}
 
   \begin{comment}
 
