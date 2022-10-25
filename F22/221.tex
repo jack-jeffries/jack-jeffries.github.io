@@ -1811,33 +1811,40 @@ Plugging in, we get $A=\frac{2}{3}$ and $B=0$, so the general solution is
 
 \begin{comment}
 
+\Oct{25}
+
 \subsection{Spring and mass systems (\S5.1)}\index{springs}
 
-Given an object on a spring, its motion is determined by Hooke's law\index{Hooke's law}, which says that the force from the spring is proportional to the displacement of the spring from its resting length, but in the opposite direction. Combined with Newton's second law (force $=$ mass $\times$ acceleration), we get an equation of the form
-\[ m x'' = - k x, \qquad k>0 \]
+Given an object on a spring, its motion is determined by Hooke's law\index{Hooke's law}, which says that the force from the spring is proportional to the displacement of the spring from its resting length, but in the opposite direction. Combined with Newton's second law (force $=$ mass $\times$ acceleration), we can get an equation that governs the total force applied by the spring. First we name variables:
+$x$ is the displacement of the mass on the spring from resting position, $t$ is time, $m$ is the mass. We also need some constant of propotionality $k$. We can then write an equation:
+\[ m x'' = - k x, \qquad (m,k>0) \]
  or
-\[ m x'' + k x = 0,  \qquad k>0. \]
-The general solution to this is
-\[ y = C_1 \cos(\gamma x) + C_2 \sin(\gamma x),\]
-for $\gamma= \sqrt{ \frac{k}{m} }$, so these solutions are all periodic functions of fixed frequency $\frac{2 \pi}{\gamma}$.
+\[ m x'' + k x = 0,  \qquad (m,k>0). \]
+This a homogeneous linear ODE with constant coefficients, so we find the roots of the auxiliary polynomial
+\[ m r^2 + k = 0, \rsa r = \pm i \sqrt{\frac{k}{m}}.\]
+The general solution is then
+\[ x = C_1 \cos(\gamma x) + C_2 \sin(\gamma x),\]
+for $\gamma= \sqrt{ \frac{k}{m} }$, so these solutions are all periodic functions of fixed wavelength $\frac{2 \pi}{\gamma}$.
 
 However, there is generally some sort of friction or resistance to the system. We add a friction force in the opposite direction to the spring force:
-\[ m x'' = - \beta x' - k x, \qquad \beta,k>0\]
+\[ m x'' = - \beta x' - k x, \qquad (m,\beta,k>0)\]
 or
-\[ m x'' + \beta x' + k x = 0, \qquad \beta,k>0.\]
+\[ m x'' + \beta x' + k x = 0, \qquad (m,\beta,k>0).\]
 The $\beta x'$ term gives a damping effect to the system.
 
 The behavior of the system is determined by the roots of the auxiliary polynomial:
-\[ m r^2 + \beta r + k r = 0\]
+\[ m r^2 + \beta r + k  = 0\]
 \[\rsa r_1,r_2= \frac{ - \beta \pm \sqrt{\beta^2- 4 m k }}{2 m}\]
 The behavior breaks into three cases:
 
 \begin{enumerate}
-\item If $\beta^2- 4 m k>0$, then the roots $r_1,r_2$ are real. Since $m,k>0$, $\sqrt{\beta^2- 4 m k } < \sqrt{\beta^2}=\beta$, both roots are negative. The general solution is of the form $x = C_1 e^{r_1t} + C_2 e^{r_2 t}$. Then there are no oscillations, and the spring heads to its resting position. A system like this is called \index{overdamped}\emph{overdamped}.
+\item If $\beta^2- 4 m k>0$, then the roots $r_1,r_2$ are real. Since $m,\beta,k>0$, \[\sqrt{\beta^2- 4 m k } < \sqrt{\beta^2}=\beta,\]
+\[ -\beta + \sqrt{\beta^2- 4 m k }<0 \ (\text{and also} \  -\beta + \sqrt{\beta^2- 4 m k }<0),\]
+so both roots are negative. The general solution is of the form $x = C_1 e^{r_1t} + C_2 e^{r_2 t}$. Then there are no oscillations, and the spring heads to its resting position. A system like this is called \index{overdamped}\emph{overdamped}.
 
 \begin{center}\includegraphics[scale=.5]{spring1}\end{center}
 
-\item If $\beta^2- 4 m k<0$, then the roots $r_1,r_2$ are complex. The real part is $\frac{-\beta}{m}$, which is negative, and the imaginary part is $\sqrt{\beta^2- 4 m k } = \sqrt{-1 (4 m k - \beta^2) } = i \gamma$ for $\gamma=\sqrt{4 m k - \beta^2}$. The general solution is of the form \[x= C_1 e^{-\beta t / m } \cos(\gamma t) +e^{-\beta t / m } \sin(\gamma t).\] These solutions oscillate with frequency $\frac{2\pi}{\gamma}$, and with decreasing amplitude $e^{-\beta t / m }$. A system like this is called \index{underdamped}\emph{underdamped}.
+\item If $\beta^2- 4 m k<0$, then the roots $r_1,r_2$ are complex. The real part is $\frac{-\beta}{m}$, which is negative, and the imaginary part is $\sqrt{\beta^2- 4 m k } = \sqrt{-1 (4 m k - \beta^2) } = i \gamma$ for $\gamma=\sqrt{4 m k - \beta^2}$. The general solution is of the form \[x= C_1 e^{-\beta t / m } \cos(\gamma t) + C_2 e^{-\beta t / m } \sin(\gamma t).\] These solutions oscillate with wavelength $\frac{2\pi}{\gamma}$, and with decreasing amplitude $e^{-\beta t / m }$. A system like this is called \index{underdamped}\emph{underdamped}.
 
 \begin{center}\includegraphics[scale=.5]{spring2}\end{center}
 
@@ -1848,17 +1855,17 @@ The behavior breaks into three cases:
 \end{enumerate}
 
 
-Finally, let's one example of what can happen if we apply an additional force to our spring system.
+Finally, let's take one example of what can happen if we apply an additional force to our spring system.
 \begin{ex}
 Consider the initial value problem
 \[\begin{cases} x'' + 2 x = \cos(\alpha t)\\
 x(0)=0\\
 x'(0)=0
 \end{cases}\]
-for some constant $\alpha$. This corresponds to a mass-spring system with no damping, plus an additional force with frequency $\frac{2\pi}{\alpha}$. 
+for some constant $\alpha$. This corresponds to a mass-spring system with no damping, plus an additional oscillating force with wavelength $\frac{2\pi}{\alpha}$. 
 \[ r^2 + 2 = 0 \rsa r = \pm i \sqrt{2},\]
 so the homogeneous general solution is
-\[ x= C_1 \cos(\sqrt{2} t) +  C_2 \sin(\sqrt{2} t).\]
+\[ x_c = C_1 \cos(\sqrt{2} t) +  C_2 \sin(\sqrt{2} t).\]
 If $\alpha\neq \sqrt{2}$, then the ``trial solution'' is
 \[ x_p = A \cos(\alpha t) + B \sin(\alpha t),\] and after subbing and solving, we get the solution to the IVP
 \[ x(t) = \frac{1}{2-\alpha^2} \left( \cos(\alpha t) - \cos( \sqrt{2} t) \right).\]
@@ -1866,7 +1873,9 @@ For $\alpha=1,\ 2, \ 1.3$, we have
 \begin{center}\includegraphics[scale=.5]{spring4}\end{center}
 In particular, all of these solutions are bounded, and somewhat repeating.
 
-What about $\alpha=\sqrt{2}$? Then our ``trial solution'' needs to be updated:
+What about $\alpha=\sqrt{2}$? Then our first guess for the ``trial solution'' is again
+\[ x_p = A \cos(\alpha t) + B \sin(\alpha t),\]
+but this is part of the complementary solution! We multiply by $t$ to correct it:
 \[ x_p = A t \cos(\sqrt{2} t) + B t \sin(\sqrt{2} t),\]
 and after subbing and solving, we get the general solution
 \[ x= \frac{1}{2\sqrt{2}} t \sin(\sqrt{2} t) + C_1 \cos(\sqrt{2} t) +  C_2 \sin(\sqrt{2} t),\]
