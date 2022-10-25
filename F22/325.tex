@@ -2354,9 +2354,8 @@ Let $\e>0$. Since $\{a_n\}_{n=1}^\infty$ converges to $L$, there is some $N\in \
 \end{enumerate}\end{framed}
 \end{enumerate}
 
-
-
-\section*{A wild sequence}
+\begin{comment}
+\Oct{25}
 
 Consider the points in the plane whose $x$-coordinates are integers and $y$-coordinates are natural numbers. Starting at $(0,1)$, zigzag like so:
 	
@@ -2398,184 +2397,23 @@ Consider the points in the plane whose $x$-coordinates are integers and $y$-coor
 	\[ w_n = \displaystyle \begin{cases} \displaystyle \frac{n-t^2 + t -1}{n-t^2 + 2t - 1} \ \ \text{if} \ n\leq t^2 - t \\ \\  \displaystyle \frac{-n+t^2 - t +1}{-n+t^2 + 1}\ \ \text{if} \ n> t^2 - t\end{cases},\] where $t=\min\{ m\in \N \ | \ m^2 \geq n\}.$)
 
 
-
-\begin{enumerate}\setcounter{enumi}{4}
-\item Explain why every rational number $q\in \Q$ occurs in $\{ w_n\}_{n=1}^\infty$ infinitely many times.
-
-
-\item Let $\{q_n\}_{n=1}^\infty$ be a sequence of rational numbers. Explain why $\{ q_n\}_{n=1}^\infty$ is a subsequence of $\{ w_n\}_{n=1}^\infty$. [This is saying that \emph{every} sequence of rational numbers is a subsequence of this single sequence!]
-
-
-
-\item Let $r$ be any real number. Show that there is a subsequence of $\{ w_n\}_{n=1}^\infty$ converges to $r$. [This is saying that \emph{every} real number occurs as a limit of a subsequence of this single sequence!]
-
-\end{enumerate}
-
-  \begin{comment}
-
-
-
-
-
-\begin{cor}  Let $\{a_n\}_{n=1}^\infty$ be any sequence.
-
+\begin{prop} There is a sequence $\{w_n\}_{n=1}^\infty$ of rational numbers such that
 \begin{enumerate}
-
-\item If there is a subsequence of this sequence that diverges, then the sequence itself diverges.
-
-\item If there are two subsequences of this sequence that converge to different values, then  the sequence itself diverges.
-
+\item every rational number occurs in $\{w_n\}_{n=1}^\infty$ infinitely many times;
+\item every sequence of rational numbers is a subsequence of t$\{w_n\}_{n=1}^\infty$; and
+\item every real number occurs as the limit of some subsequence of $\{w_n\}_{n=1}^\infty$.
 \end{enumerate}
-
-\end{cor}
-
-
-\begin{proof} These are both immediate consequences of the theorem.
-\end{proof}
+\end{prop}
+\begin{proof}
 
 
-\begin{ex}
-Consider the sequence
-$$
-a_n = 
-\begin{cases}
-7 &  \text{if $n$ is divisible by $3$ and} \\
-\frac{1}{n} &  \text{if $n$ is not divisible by $3$}. \\
-\end{cases}
-$$
-
-Let $n_k = 3k$. 
-Then the subsequence $\{a_{n_k}\}_{k=1}^\infty$ is 
-$$
-a_3, a_6, a_9, \dots
-$$
-which is the constant sequence
-$$
-7,7,7, \dots.
-$$
-It converges to $7$.
-
-Now let $n_k = 3k-2$. 
-Then the subsequence $\{a_{n_k}\}_{k=1}^\infty$ is 
-$$
-a_1, a_4, a_7, \dots
-$$
-which is the sequence $\{\frac{1}{3k-2}\}_{k=1}^\infty$. It converges to $0$. 
-
-Since the original sequence admits two  subsequences that converge to different values, by the Corollary, the original sequence diverges.
-\end{ex}
-
-
-
-I want to give a {\em crazy} example of a sequence:  
-
-
-
-\begin{lem} \label{lem222}
-	There exists a sequence of strictly positive rational numbers
-	$\{a_n\}_{n=1}^\infty$ such that every strictly positive rational
-	number occurs in it  infinitely many times.
-\end{lem}
-
-\begin{proof} Consider the points in the first quadrant whose Cartesian coordinates are positive integers: $(m,n)$ for some $m,n \in \N$. Starting at $(1,1)$
-	travel back and forth along diagonal lines of slope $-1$ as shown:
-	
-\[{\xymatrix@C=1em@R=1em{ 
-\vdots & \vdots & \vdots & \vdots & \reflectbox{$\ddots$} \\
-(1,4) \ar@{.}@[blue][u] & (2,4) \ar@{->}@[blue][dr] \ar@{.}@[blue][ul]& (3,4)  \ar@{.}@[blue][ul] & (4,4) \ar@{.}@[blue][ul] \ar@{.}@[blue][dr] & \cdots \\
-(1,3) \ar@{->}@[blue][dr] & (2,3) \ar@{->}@[blue][ul] & (3,3) \ar@{->}@[blue][dr] & (4,3) \ar@{->}@[blue][ul] \ar@{.}@[blue][dr]& \cdots \\
-(1,2) \ar@{->}@[blue][u] & (2,2)\ar@{->}@[blue][dr]  & (3,2)\ar@{->}@[blue][ul]  & (4,2) \ar@{.}@[blue][dr] & \cdots \\
-(1,1)\ar@{->}@[blue][r]  & (2,1)\ar@{->}@[blue][ul]   & (3,1)\ar@{->}@[blue][r]   & (4,1)\ar@{->}@[blue][ul]  & \cdots }}\]
-
-\
-	
-	This gives the list of points
-	$$
-	(1,1),  (2,1), (1,2),(1,3), (2,2), (3,1), (4,1), (3,2), (2,3), (1,4), \dots
-	$$
-	Now convert these to a list of rational numbers by changing $(m,n)$ to $\frac{m}{n}$ to get the sequence
-	$$
-	\frac11, \frac21, \frac12, \frac13, \frac22, \frac31, \frac41, \frac32, \frac23, \frac14, \dots
-	$$
-	of positive rational numbers.  
-	
-	I claim every strictly positive rational number occurs infinitely many times in this sequence: 
-	Let $q$ be any strictly positive rational number. Then $q =\frac{m}{n}$ for some $m,n \in \N$. Moreover, $q = \frac{jm}{jn}$ for all $j \in \N$, and since  
-	$\frac{jm}{jn}$ occurs in the sequence  for all $j \in \N$, the number $q$ appears infinitely many times.
-\end{proof}
-
-
-
-We can improve this a bit:
-
-\begin{cor} \label{cor222}
-	There exists a sequence $\{q_n\}_{n=1}^\infty$ of rational numbers such that every rational number occurs infinitely many times.
-\end{cor}
-
-
-\begin{proof} Starting with a sequence  $\{a_n\}_{n=1}^\infty$ as in
-	Lemma \ref{lem222}, 
-	such that every strictly positive rational number occurs infinitely many times, define a new sequence by
-	$$
-	a_1, -a_1, 0, a_2, -a_2, 0, a_3, -a_3, 0, a_3, -a_3, 0, \dots
-	$$
-	More formally, let 
-	$$
-	q_n = \begin{cases}
-	a_{(n-1)/3}, & \text{ if $n$ is congruent to $1$ modulo $3$,} \\
-	-a_{(n-2)/3}, & \text{ if $n$ is congruent to $2$ modulo $3$, and} \\
-	0, & \text{ if $n$ is congruent to $0$ modulo $3$.} \\
-	\end{cases}
-	$$
-	It is clear that every rational number occurs infinitely many times in
-	this new sequence. 
-\end{proof}
-
-
-In particular, the sequence $\{q_n\}_{n=1}^\infty$ in this Corollary has the following property: For each rational number $q$, there is a subsequence of it that converges to
-$q$. Namely, for any $q \in \Q$,  form the constant subsequence $q,q,q, \dots$ of the sequence, which is possible since $q$ occurs an infinite number of times. 
-
-\Oct{11}
-
-In fact, we can do even better: I claim that every {\em real} number occurs as a limit of the sequence of the Corollary!
-
-First a Lemma.
-
-\begin{lem} \label{lem221}
-	For any $x \in \R$ there is a sequence of rational numbers that converges to $x$.
-\end{lem}
-
-\begin{proof} For each $n \in \N$ we have  $x < x+  \frac{1}{n}$, and hence by the Density of the Rationals,
-	there is a rational number $a_n \in \Q$ so that $x < \a_n < x +\frac{1}{n}$. Since both the constant sequence $\{x\}_{n=1}^\infty$ and the sequence
-	$\{x + \frac{1}{n}\}_{n=1}^\infty$ converge to $x$. 
-	By the Squeeze Theorem, $\{a_n\}_{n=1}^\infty$ also converges to~$x$.
-\end{proof}
-
-
-
-
-
-\begin{thm} There exists a sequence of rational numbers having the property that every real number is the limit of some subsequence of~it.
-\end{thm}
-
-\begin{proof} 
-	Let $\{q_n\}_{n=1}^\infty$ be a sequence of rational nubmers as in
-	Corollary \ref{cor222}, so that that every rational number occurs infinitely many times.
-	Let $x$ be any real number. I will construct a subsequence that converges to $x$.
-	
-	By Lemma~\ref{lem221} there is a sequence of rational numbers $\{a_n\}_{n=1}^\infty$ that converges to $x$. 
-	Since $a_1 \in \Q$, $a_1$ occurs (infinitely many times) in $\{q_n\}_{n=1}^\infty$ and hence there is $n_1 \in \N$ such that $a_1 = q_{n_1}$.
-	
-	Given $n_1<\cdots<n_k$ such that $q_{n_k}=a_k$, we claim that we can find some $n_{k+1}\in \N$ such that $n_{k+1} > n_k$ and $q_{n_{k+1}}=a_{k+1}$. Indeed, there are infinitely many natural numbers $m$ such that $q_m=a_{k+1}$, and only finitely many of them can be less than or equal to $n_k$, so there must be such a number that is greater than $n_k$. 
-	
-	Thus, we can recursively define an increasing sequence of natural numbers $n_1 < n_2 < n_3 < \cdots$ such that $q_{n_k}=a_k$ for all $k$, and hence $\{a_k\}_{k=1}^\infty$ is a subsequence of $\{q_n\}_{n=1}^\infty$.
 \end{proof}
 
 On the other hand, there is no sequence that actually contains every real number. To prove this, we will use decimal expansions, as discussed on the homework.
 
-Recall that if $d_1,d_2,d_3,\dots$ is a sequence of ``digits'', where $d_i\in\{0,1,2,3,4,5,6,7,8,9\}$ for every $i$, then the sequence $\{q_n\}_{n=1}^\infty$, where 
-\[ q_n = \frac{d_1}{10^1} + \frac{d_2}{10^2} + \cdots + \frac{d_n}{10^n}\]
-converges, and we say that $.d_1d_2d_3\cdots$ is a \textit{decimal expansion} for the real number $r=\lim_{n\to \infty} q_n$.
+Recall that if $d_1,d_2,d_3,\dots$ is a sequence of ``digits'', where $d_i\in\{0,1,2,3,4,5,6,7,8,9\}$ for every $i$, then the sequence $\{D_n\}_{n=1}^\infty$, where 
+\[ D_n = \frac{d_1}{10^1} + \frac{d_2}{10^2} + \cdots + \frac{d_n}{10^n}\]
+converges, and we say that $.d_1d_2d_3\cdots$ is a \textit{decimal expansion} for the real number $r=\lim_{n\to \infty} D_n$.
 
 
 
@@ -2607,7 +2445,6 @@ converges, and we say that $.d_1d_2d_3\cdots$ is a \textit{decimal expansion} fo
 	Thus $x$ is not a member of this sequence, contrary to what we assumed. 
 \end{proof}
 
-It is worth noting that the proof given above needs a little more justification because two different decimal expansions can converge to the same number. I'll leave it as a challenge to you to prove that 
 
 
 Our next big theorem has a very short statement, but is surprisingly hard to prove.
@@ -2619,91 +2456,54 @@ Every sequence has a monotone subsequence.
 
 
 
-The proof of this theorem requires two preliminary lemmas.
+The proof of this theorem requires a preliminary lemma.
 
 
 
-\begin{lem} \label{lem214a}
-	If a sequence is not bounded above, then it has a subsequence that is
-	increasing. 
-	If a sequence is not bounded below, then it has a subsequence that is
-	decreasing.
+\begin{lem} \label{lem214a} Let $\{a_n\}_{n=1}^\infty$ be a sequence.
+\begin{enumerate}
+\item If the set of values of the sequence  $\{a_n \ | \ n\in \N\}$ does not have a maximum value, then $\{a_n\}_{n=1}^\infty$ has a subsequence that is increasing. 
+ \item If the set of values of the sequence  $\{a_n \ | \ n\in \N\}$ does not have a minimum value, then $\{a_n\}_{n=1}^\infty$ has a subsequence that is decreasing. 
+\end{enumerate}
 \end{lem}
-
-\begin{proof} Suppose $\{a_n\}_{n=1}^\infty$ is not bounded above. This means that for each real number $M$, there is a natural number such that $a_n > M$. 
-Using this assumption, we will build a strictly  increasing sequence of natural numbers $n_1 < n_2 < \cdots$ so that the subsequence $\{a_{n_k}\}_{k=1}^\infty$ is increasing. We will define this sequence recursively.
-
-We start by just letting $n_1 = 1$. 
-
-If we have chosen $n_k$, then let $b=\max\{a_1,\dots,a_{n_k}\}$. Since $b$ is not an upper bound of the sequence $\{a_n\}_{n=1}^\infty$, there exists some $m\in \N$ such that $a_m>b$. We must have $m> n_k$, since otherwise $a_m$ is on the list $a_1,\dots,a_{n_k}$ so that $a_m \leq b$. Thus, we can take $n_{k+1} = m$, and we have $n_{k+1} > n_k$ and $a_{n_{k+1}}>a_{n_k}$. Thus, we have defined the desired subsequence recursively.
-
-The proof for the case of sequences that are not bounded below is similar.
-\end{proof}
-
-\begin{lem} \label{lem214b}
-Let $\{a_n\}_{n=1}^\infty$ be a sequence.
- Assume $\{a_n\}_{n=1}^\infty$ is bounded above and that the set of values $\{a_n \ | \ n\in \N\}$ does not have a maximum value. Then the sequence has an increasing subsequence.
-\end{lem}
-
-
-
-
-
-
 
 \begin{proof}
-Assume $\{a_n\}_{n=1}^\infty$ is bounded above and that the set of values $\{a_n \ | \ n\in \N\}$ does not have a maximum value.
+\begin{enumerate}
+\item Assume that the set of values $\{a_n \ | \ n\in \N\}$ does not have a maximum value.
 
-We again define our subsequence recursively.
+We define a subsequence recursively. We will recursively choose natural numbers $n_1, n_2, n_3,\dots$ so that $n_k < n_{k+1}$ for all $k$ and $a_{n_k} \leq a_{n_{k+1}}$.
+
 We start by setting $n_1 = 1$.
 
 If we have chosen $n_k$, then let $b=\max\{a_1,\dots,a_{n_k}\}$. 
 
 We claim that there is some $m> n_k$ such that $a_m> b$. To obtain a contradiction, suppose otherwise. Then for any $n\in \N$, either $n>{n_k}$ and $a_n \leq b$ by assumption, or $n\leq n_k$ and $a_n \leq b$, since $a_n$ is on the list of things of which $b$ was the maximum. Then $b$ is the maximum of $\{a_n \ | \ n\in \N\}$, which yields a contradiction. Thus, there is some $m> n_k$ such that $a_m> b$, and we can choose $m=n_{k+1}$. Thus, we can define such a sequence recursively.
+\item Similar to (1), or apply (1) to $\{-a_n\}_{n=1}^\infty$.\qedhere
+\end{enumerate}
 \end{proof}
 
-
-\begin{rem} We will actually use the contrapositive of the  Lemma in the proof of the Theorem:
-\begin{quote}
-If  $\{a_n\}_{n=1}^\infty$ is a bounded above sequence that does not contain any increasing subsequences, 
-then the set of values of the sequence has a maximum.
-\end{quote}
-\end{rem}
 
 
 
 
 \begin{proof}[Proof of Bolzano-Weierstrass Theorem \ref{thm214}]
-Let $\{a_n\}_{n=1}^\infty$ be any sequence. Recall that our goal is to prove it either has an increasing subsequence or it has a decreasing subsequence. We
-consider two cases.
-
-{\bf Case I}: The sequence is not bounded.
-
-Then it is not bounded above or it is not bounded below, and in either situation, Lemma \ref{lem214a} gives the result. 
-
-{\bf Case II}: The sequence  is bounded. 
-
-We need to prove that it either has an increasing subsequence or a decreasing subsequence. This is equivalent to showing that if it has no increasing
-subsequences, then it does have at least one  decreasing subsequence.
+Let $\{a_n\}_{n=1}^\infty$ be any sequence. Recall that our goal is to prove it either has an increasing subsequence or it has a decreasing subsequence. This is equivalent to showing that if it has no increasing
+subsequences, then it does have at least one decreasing subsequence.
 So, let us assume it has no increasing subsequences. 
 
 
 We will prove it has at least one
 decreasing subsequence by constructing the indices $n_1<n_2< \cdots$ of such a subsequence recursively. 
-
- By Lemma~\ref{lem214b} (see the remark following it), since $\{a_n\}_{n=1}^\infty$ is bounded
-above and does not contain any increasing subsequences, we know that  
+By the contrapositive of part (1) Lemma~\ref{lem214b} , since $\{a_n\}_{n=1}^\infty$ does not contain any increasing subsequences, we know that  
 $\{ a_n \ | \ n\in \N\}$ has a maximum value. That is,
 there exists a natural number $n_1$ such that $a_{n_1}
 \geq a_m$ for all $m \geq 1$. 
 
+For any $k$, given $n_k$, the subsequence $a_{n_k +1} , a_{n_k+2},a_{n_k+3},\ldots$ also has no increasing subsequence, since a subsequence of such a sequence is a subsequence of the original sequence too. Thus, it must have a maximum value again by part (1) Lemma~\ref{lem214b}; choose $n_{k+1}$ such that $a_{n_{k+1}} = \max\{ a_{n_k +1} , a_{n_k+2},a_{n_k+3}, \dots\}$. By construction, we have $n_{k+1} > n_k$. Thus, this gives a recursive definition for $n_k$.
 
-For any $k$, given $n_k$, the subsequence $a_{n_k +1} , a_{n_k+2},a_{n_k+3},\ldots$ is also bounded above and has no increasing subsequence. Thus, it must have a maximum value by Lemma~\ref{lem214b}; choose $n_{k+1}$ such that $a_{n_{k+1}} = \max\{ a_{n_k +1} , a_{n_k+2},a_{n_k+3}, \dots\}$. This gives a recursive definition for $n_k$.
-
-By construction, we have $n_{k+1} > n_k$ for all $k$. Note that $a_{n_{k}}$ is the maximum of a set that contains $a_{n_{k+1}}$ (since it is later in the sequence). It follows that $a_{n_k} \geq a_{n_{k+1}}$. That is, we have constructed a decreasing subsequence of the original sequence.
+For any $k$, note that $a_{n_{k}}$ is the maximum of a set that contains $a_{n_{k+1}}$ (since it is later in the sequence). It follows that $a_{n_k} \geq a_{n_{k+1}}$. That is, we have constructed a decreasing subsequence of the original sequence.
 \end{proof}
 
-\Oct{15}
 
 
 
@@ -2716,106 +2516,6 @@ $\{a_{n_k}\}_{k=1}^\infty$, and it too is bounded (since
 any subsequence of a bounded sequence is also bounded.) 
 The result follows since every monotone bounded sequence converges by the Monotone Convergence Theorem \ref{thm:MCT}.
 \end{proof}
-
-
-
-\begin{defn} A sequence $\{a_n\}_{n=1}^\infty$ is called a Cauchy sequence if for every $\e>0$, there is some $N\in \R$ such that for all $m,n\in \N$ such that $m>n>N$, we have $|a_m - a_n|<\e$.
-\end{defn}
-
- Loosely speaking sequence is Cauchy if eventually all the terms are very close together. The most important fact about Cauchy sequences is the following:
-
-
-
-\begin{thm} A sequence is a Cauchy sequence if and only if it converges.
-\end{thm}
-
-\begin{enumerate}
-	\item Prove that the sequence $\{ \frac{1}{n} \}_{n=1}^\infty$ is a Cauchy sequence using the definition.%\footnote{Hint: Take $N=\frac{1}{\e}$.}
-	\begin{framed}
-	 Pick $\e > 0$. (Scratch work: we need to figure out
-			how big $m$ and $n$ need to be in order that $|\frac{1}{m} - \frac{1}{n}| < \e$.
-			Note that if both $\frac{1}{n}$ and $\frac{1}{m}$ are between $0$ and $\e$, then the distance between them will be at most $\e$,
-			and this occurs so long as $n,m > \frac{1}{\e}$. So we will set $N = \frac{1}{\e}$. Back to the proof.) 
-			Let $N = \frac{1}{\e}$. Let  $m,n \in \N$ be such that $m > n > N$. Then $0 < \frac{1}{n} < \frac{1}{N} = \e$
-			and     $0 < \frac{1}{m} < \frac{1}{N} = \e$. It follows that 
-			$$
-			|a_m - a_n| = |\frac{1}{m} -  \frac{1}{n}| < \e
-			$$
-			and this proves the sequence is Cauchy.
-		
-	\end{framed}
-	
-	
-%	\item Write, in simplified form, precisely what it means for a sequence to \textit{not} be a Cauchy sequence.
-	
-%\begin{framed}
-%	There exists some $\e>0$ such that for all $N\in \R$, there are natural numbers $m,n$ with $m>n>N$ such %that ${|a_m - a_n|\geq \e}$.
-%	\end{framed}
-	
-	\item Prove that every convergent sequence is a Cauchy sequence.%\footnote{Hint: Given $\e>0$, apply the definition of ``converges to $L$'' with the positive number $\frac{\e}{2}$ (where we usually write $\e$).}
-	
-	\begin{framed}
-		Assume $\{a_n\}_{n=1}^\infty$ converges to $L$.  Pick $\e > 0$. We
-		apply the definition of ``converges'' to the sequence $\{a_n\}_{n=1}^\infty$, which converges to $L$, using the positive number  $\frac{\e}{2}$.
-		We get that there is a real number  $N$ such that if $n \in \N$ and $n > N$, then $|a_n - L| < \frac{\e}{2}$. I claim
-		that this same number $N$ ``works'' to prove the sequence is Cauchy:
-		Assume $m$ and $n$ are natural numbers such that  $m > N$ and  $n > N$. By the triangle inequality
-		$$
-		|a_m - a_n| \leq |a_m - L| + |L - a_n| < \frac{\e}{2} + \frac{\e}{2} = \e.
-		$$
-		This proves $\{a_n\}_{n=1}^\infty$ is a Cauchy sequence.
-		\end{framed}
-	
-	\item Prove that every Cauchy sequence is bounded.%\footnote{Hint: Take $\e=1$ (or any other positive number. Consider $a_n$ for some $n>N$ where $N$ is the number we get from the definition. Focus first on bounding all of the values $a_m$ with $m>n$.}
-	
-	
-	\begin{framed}
-		 Using $\e = 1$ in the definition of ``Cauchy'', 
-		we get that there is an $N$ such that if $m,n \in \N$ are such that  $m > N$ and $n > N$, then we have $|a_m - a_n| < 1$. 
-		Let $k$ be the smallest natural number that is bigger than $N$, and let
-		$M$ be the  maximum of the numbers
-		$$
-		a_1, \dots, a_{k-1}, a_k + 1.
-		$$
-		I claim $M$ is an upper bound of this sequence. 
-		Given $n \in \N$, if $n < k$, then $a_n \leq M$ since in this case $a_n$ occurs in the above list. 
-		If $n \geq k$ then we have $|a_n - a_k| < 1$ and thus  $a_n < a_k + 1 \leq M$. So, $M$ is indeed an upper bound of the sequence. 
-		
-		A similar argument shows that the sequence is bounded below by the minimum number in the list $a_1, \dots, a_{k-1}, a_k - 1$.
-		\end{framed}
-	
-	\item Prove that every Cauchy sequence has a convergent subsequence.
-	
-	\begin{framed} Since a Cauchy sequence is bounded, it has a convergent subsequence by the Main Corollary to Bolzano-Weierstrass.
-		\end{framed}
-	
-	\item Prove that every Cauchy sequence converges.%\footnote{Hint: By the previous part, we can take a subsequence $\{a_{n_k}\}_{k=1}^\infty$ that converges to some real number $L$. Taking $\frac{\e}{2}$ in the definition of $\{a_n\}_{n=1}^\infty$ is Cauchy gives us a ``magic number'' $N_1$, and taking $\frac{\e}{2}$ in the definition of $\{a_{n_k}\}_{k=1}^\infty$ converges to  $L$ gives us a ``magic number'' $N_2$. Use the triangle inequality with $|a_{n_k} - L|$ and $|a_n - a_{n_k}|$ for some $k>\max\{N_1,N_2\}$.}
-	
-	\begin{framed}
-		Given a Cauchy sequence, it
-		has a convergent subsequence $\{a_{n_k}\}_{k=1}^\infty$; let's say that this subsequence converges to $L$. We will prove
-		$\{a_n\}_{n=1}^\infty$ itself converges to $L$, using that it is Cauchy.   
-		
-		Pick $\e > 0$. Since the sequence is Cauchy and $\frac\e2 > 0$, by definition
-		there is a number $N$ such that if $m > n > N$ then $|a_m - a_n| <
-		\frac\e2$. We will prove that this $N$ ``works'' to show $\{a_n\}_{n=1}^\infty$ converges to $L$; that is, I claim that if $n > N$, then $|a_n -L| < \e$. 
-		
-		So, let $n>N$. Since the subsequence $\{a_{n_k}\}_{k=1}^\infty$ converges to  $L$ and
-		$\frac\e2$ is positive, there is a real number $K$ such that if $k > K$ then $|a_{n_k} - L| < \e/2$. 
-		Let $k$ be any natural number such that $k > \max\{K,n\}$. We have $n_k > n >N$ and, since $n_k \geq k$, $n_k > K$.
-		
-Thus,  by the bounds above and the triangle inequality,
-		$$
-		|a_n - L| \leq |a_n - a_{n_k}| + |a_{n_k} - L| < \frac\e2 + \frac\e2 = \e.
-		$$
-		This shows that $\{a_n\}_{n=1}^\infty$ converges to $L$.
-				\end{framed}
-	
-\end{enumerate}
-
-
-
-\Oct{20}
 
 
 
