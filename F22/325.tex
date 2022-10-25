@@ -2354,11 +2354,13 @@ Let $\e>0$. Since $\{a_n\}_{n=1}^\infty$ converges to $L$, there is some $N\in \
 \end{enumerate}\end{framed}
 \end{enumerate}
 
-\begin{comment}
+\newpage
 \Oct{25}
 
 Consider the points in the plane whose $x$-coordinates are integers and $y$-coordinates are natural numbers. Starting at $(0,1)$, zigzag like so:
-	
+
+
+	\vspace{-1.5em}
 {\tiny
 \begin{center}
 \[{\xymatrix@C=.5em@R=.5em{ 
@@ -2382,12 +2384,14 @@ Consider the points in the plane whose $x$-coordinates are integers and $y$-coor
  
  \
  
+ \
+ 
 	
 \noindent	This gives the list of points
 	$$
 	(0,1),  (-1,1), (0,2), (1,1), (-2,1), (-1,2), (0,3), (1,2), (2,1), (-3,1), \dots
 	$$
-	Now convert these to a list of rational numbers by changing $(m,n)$ to $\frac{m}{n}$ to get the sequence
+	Now convert these to a list of rational numbers by changing $(m,n)$ to~$\frac{m}{n}$ to get the sequence
 	$$
 	\frac01, \frac{-1}1, \frac02, \frac11, \frac{-2}1, \frac{-1}2, \frac03, \frac12, \frac21, \frac{-3}1, \dots
 	$$
@@ -2400,16 +2404,19 @@ Consider the points in the plane whose $x$-coordinates are integers and $y$-coor
 \begin{prop} There is a sequence $\{w_n\}_{n=1}^\infty$ of rational numbers such that
 \begin{enumerate}
 \item every rational number occurs in $\{w_n\}_{n=1}^\infty$ infinitely many times;
-\item every sequence of rational numbers is a subsequence of t$\{w_n\}_{n=1}^\infty$; and
+\item every sequence of rational numbers is a subsequence of $\{w_n\}_{n=1}^\infty$; and
 \item every real number occurs as the limit of some subsequence of $\{w_n\}_{n=1}^\infty$.
 \end{enumerate}
 \end{prop}
 \begin{proof}
-
-
+\begin{enumerate}
+\item The idea is that every point $(m,n)$ with $m\in \Z$ and $n\in \N$ gets passed through by the zigzag at least once. Then, given any rational number $q=a/b$, we can choose $b>0$ by replacing $a$ and $b$ by their negatives if necessary. Then $q= \frac{a}{b} = \frac{2a}{2b} = \frac{3a}{3b} = \cdots$, so it comes from infinitely many pairs, and hence occurs infinitely many times.
+\item Let $\{q_n\}_{n=1}^\infty$ be a sequence of rational numbers. We will realize it as a subsequence of $\{w_n\}_{n=1}^\infty$ by constructing an increasing sequence of natural numbers $n_1<n_2<n_3<\cdots$ such that $w_{n_k} = q_k$. Since $q_1 \in \Q$, there is some $n_1\in \N$ such that $w_{n_1} = q_1$ by part (a). Suppose that we have defined $n_1<\cdots< n_t$ such that $w_{n_k} = q_k$ for $k=1,\dots,t$. We claim that there is some $n_{k+1}$ such that $n_{k+1} > n_k$ and $w_{n_{k+1}} = q_{k+1}$. Indeed, there are infinitely many $m\in\N$ such that $w_m = q_{k+1}$ by part (a), so at least one of these values of $m$ is greater than $n_k$ (since there are only fintiely many natural numbers less than or equal to $n_k$). Taking $n_{k+1}$ to be $m$, we can continue the sequence, and we thus obtain such a sequence by recursion.
+\item Given $r\in \R$, we know that there exists a sequence of rational numbers that converges to $r$ (moreover, there exists a strictly increasing one). This sequence can be obtained as a subsequence of $\{w_n\}_{n=1}^\infty$ by part (b), so we are done.\qedhere
+\end{enumerate}
 \end{proof}
 
-On the other hand, there is no sequence that actually contains every real number. To prove this, we will use decimal expansions, as discussed on the homework.
+On the other hand, there is no sequence that actually contains every real number. To prove this, we will use decimal expansions, as discussed earlier.
 
 Recall that if $d_1,d_2,d_3,\dots$ is a sequence of ``digits'', where $d_i\in\{0,1,2,3,4,5,6,7,8,9\}$ for every $i$, then the sequence $\{D_n\}_{n=1}^\infty$, where 
 \[ D_n = \frac{d_1}{10^1} + \frac{d_2}{10^2} + \cdots + \frac{d_n}{10^n}\]
@@ -2426,28 +2433,24 @@ converges, and we say that $.d_1d_2d_3\cdots$ is a \textit{decimal expansion} fo
 	its decimal form, so that
 	$$
 	\begin{aligned}
-	a_1 & = (\text{whole part}). d_{1,1} d_{1,2} d_{1,3} \cdots \\
-	a_2 & = (\text{whole part}). d_{2,1} d_{2,2} d_{2,3} \cdots \\
-	a_3 & = (\text{whole part}). d_{3,1} d_{3,2} d_{3,3} \cdots \\
+	a_1 & = (\text{integer part}). d_{1,1} d_{1,2} d_{1,3} \cdots \\
+	a_2 & = (\text{integer part}). d_{2,1} d_{2,2} d_{2,3} \cdots \\
+	a_3 & = (\text{integer part}). d_{3,1} d_{3,2} d_{3,3} \cdots \\
 	\vdots & \\
 	\end{aligned}
 	$$
 	where each $d_{i,j}\in \{0,1,2,3,4,5,6,7,8,9\}$ is a digit. Now form a real number $x$ as $0.e_1 e_2 e_3 \cdots$ where the $e_i$'s are digits chosen as follows: 
 	Let 
-	\[e_i=\begin{cases} 9 & \text{if} \ d_{i,i}\leq 5\\
-	0 & \text{if}\ d_{i,i}> 5.\end{cases}\]
-	 In particular, $e_i\neq d_{i,i}$ for every $i$.
-	 Then 
-	$x \ne a_1$ since these two numbers have different  first digits, 
-	$x \ne a_2$ since these two numbers have different  second digits, etc.; in general, for any $n$, $x \ne a_n$ since these two numbers have different digits in
-	the $n$-th position.
-	
+	\[e_i=\begin{cases} 7 & \text{if} \ d_{i,i}\leq 5\\
+	3 & \text{if}\ d_{i,i}> 5.\end{cases}\]
+	 In particular, $e_i\neq d_{i,i}$ for every $i$. This means that the digit sequence $e_1,e_2,e_3,\dots$ is not equal to any of the other digit sequences $d_{i,1}, d_{i,2},d_{i,3},\dots$ for any $i$, because the $i$-th values are different. Moreover, the number $x$ has a unique decimal expansion (since the only time two decimal expansions give the same number is one is eventually all $0$'s and the other is eventually all $9$'s), so $a_i \neq x$ for all $i\in \N$.
+		
 	Thus $x$ is not a member of this sequence, contrary to what we assumed. 
 \end{proof}
 
 
 
-Our next big theorem has a very short statement, but is surprisingly hard to prove.
+Our next big theorem has a very short statement, but is surprisingly tricky to prove.
 
 
 \begin{thm}[Bolzano-Weierstrass Theorem]\label{thm214}
@@ -2494,12 +2497,12 @@ So, let us assume it has no increasing subsequences.
 
 We will prove it has at least one
 decreasing subsequence by constructing the indices $n_1<n_2< \cdots$ of such a subsequence recursively. 
-By the contrapositive of part (1) Lemma~\ref{lem214b} , since $\{a_n\}_{n=1}^\infty$ does not contain any increasing subsequences, we know that  
+By the contrapositive of part (1) Lemma~\ref{lem214a} , since $\{a_n\}_{n=1}^\infty$ does not contain any increasing subsequences, we know that  
 $\{ a_n \ | \ n\in \N\}$ has a maximum value. That is,
 there exists a natural number $n_1$ such that $a_{n_1}
 \geq a_m$ for all $m \geq 1$. 
 
-For any $k$, given $n_k$, the subsequence $a_{n_k +1} , a_{n_k+2},a_{n_k+3},\ldots$ also has no increasing subsequence, since a subsequence of such a sequence is a subsequence of the original sequence too. Thus, it must have a maximum value again by part (1) Lemma~\ref{lem214b}; choose $n_{k+1}$ such that $a_{n_{k+1}} = \max\{ a_{n_k +1} , a_{n_k+2},a_{n_k+3}, \dots\}$. By construction, we have $n_{k+1} > n_k$. Thus, this gives a recursive definition for $n_k$.
+For any $k$, given $n_k$, the subsequence $a_{n_k +1} , a_{n_k+2},a_{n_k+3},\ldots$ also has no increasing subsequence, since a subsequence of such a sequence is a subsequence of the original sequence too. Thus, it must have a maximum value again by part (1) Lemma~\ref{lem214a}; choose $n_{k+1}$ such that $a_{n_{k+1}} = \max\{ a_{n_k +1} , a_{n_k+2},a_{n_k+3}, \dots\}$. By construction, we have $n_{k+1} > n_k$. Thus, this gives a recursive definition for $n_k$.
 
 For any $k$, note that $a_{n_{k}}$ is the maximum of a set that contains $a_{n_{k+1}}$ (since it is later in the sequence). It follows that $a_{n_k} \geq a_{n_{k+1}}$. That is, we have constructed a decreasing subsequence of the original sequence.
 \end{proof}
@@ -2518,7 +2521,7 @@ The result follows since every monotone bounded sequence converges by the Monoto
 \end{proof}
 
 
-
+\begin{comment}
 
 We are now going to start talking about functions, limits of functions, continuity of functions, etc.
 
