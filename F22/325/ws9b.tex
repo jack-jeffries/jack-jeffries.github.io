@@ -1,0 +1,102 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=.8in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,enumitem}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\de}{\delta}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\usepackage[all, knot]{xy}
+\usepackage{color,xcolor}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+	
+	\thispagestyle{empty}
+	
+	\section*{Reminder on functions}
+	
+Given any two sets $S$ and $T$, a \emph{function} from $S$ to $T$, written $f: S\to T$, is a ``rule''\footnote{Here's a real definition: a \emph{function} from $S$ to $T$ is a subset $G\subset S\times T$ of ordered pairs of elements of $S$ and $T$ with the property that for all $s\in S$ there is a unique $t \in T$ such that $(s,t)\in G$; we write $f(s)$ for this element $t$.} 
+that assigns to each element $s\in S$ a unique element $t\in T$. The set $S$ is called the \emph{domain} of $f$. We will generally consider functions from some set of real numbers to $\R$.
+We often specify functions by formulas; when we do this the take the domain to be the set of all real numbers for which the formula evaluates to a unique real number. In particular,
+\[ f(x) = x+1 \quad \text{and} \quad g(x) = \frac{x^2-1}{x-1}\]
+are \emph{not} the same function, since their domains are different.
+	
+\section*{Limits of functions}
+
+\noindent \textbf{Definition 17.1:}
+Let $S$ be a subset of $\R$. Let $f: S \to \R$ be a function, and $a$ and $L$ be real numbers. We say that \emph{the limit of $f$ as $x$ approaches $a$ is $L$} provided:
+\begin{quote} for any $\e>0$ there exists $\de>0$ such that if $0< | x-a | < \de$, then $x$ is in the domain of~$f$ and $|f(x) - L| <\e$.
+\end{quote}
+If this happens, we write $\ds \lim_{x\to a} f(x) = L$ to denote this.
+
+
+\
+
+\begin{enumerate}
+\item \textsc{Unpackaging parts of the definition.}
+\begin{enumerate}
+\item Describe $\{ x\in \R \ | \ 0< |x-2| < 1\}$ as a union of two open intervals.
+\item For a general $a\in \R$ and $\delta>0$, describe $\{ x\in \R \ | \ 0< |x-a| <  \de\}$ as a union of two open intervals.
+\item Focusing on the ``domain'' part of the definition, if the limit of $f$ as $x$ approaches $a$ is $L$, then $f$ must at least be defined \underline{\phantom{on some open intervals to the left and right of $a$}} (where?).
+\end{enumerate}
+
+\
+
+\item \textsc{The $\e-\de$ game.}
+\begin{enumerate}
+\item Player 0 starts by graphing a function $f$ (like a familiar one from calculus) and specifies an $x$-value $a$ and a $y$-value $L$ that (based on previous calculus knowledge) they think makes $\lim_{x\to a} f(x) = L$ \textbf{true}. [The graph should be large.]
+\item Player 1 choses an $\e$. This is how close we would like our function to be to $L$. Thus, $\e$ goes up and down from $L$ (corresponding to $|f(x)-L|<\e$). Draw horizontal dotted lines with $y$-values $L-\e$ and $L+\e$. [The $\e$ should be large enough for people to see and have room to work in the picture.]
+\item Player 2 must find a $\de$ such that every $x \in (a-\de,a) \cup (a,a+\de)$ is 
+\begin{itemize}
+\item in the domain of $f$, and
+\item has an output $f(x)$ within $(L-\e,L+\e)$.
+\end{itemize}
+Draw vertical dotted lines for the $x$-values $a-\de$ and $a+\de$. 
+[Everyone in the team can assist player 2!]
+\item Repeat with the same graph, players 1\& 2 switching roles (and a new $\e$).
+\end{enumerate}
+
+\
+
+\item Draw the graph of $\ds g(x)=\frac{x^2-1}{x-1}$. Play the $\e-\de$ game with this function, $a=1$ and $L=-3$. What happens?
+
+\newpage
+
+
+
+
+\item Consider the function $\ds g(x)=\frac{x^2-1}{x-1}$. It is true that $\lim_{x\to 1}  g(x) = 2$.
+\begin{enumerate}
+\item I claim that for $\e=3$, the choice $\delta=3$ ``works'' to make the rest of the definition true. Verify this.
+\item Find a $\delta$ that ``works'' for $\e=1$.
+\item Find a $\delta$ that ``works'' for $\e=1/2$.
+\item Find a $\delta$ that ``works'' for $\e>0$.
+\end{enumerate}
+
+
+\
+
+\item Consider the function $\ds g(x)=\frac{x^2-1}{x-1}$. It is not true that $\lim_{x\to 1}  g(x) = -3$. I claim that for $\e=1$, there is no choice of $\delta>0$ that ``works'' to make the rest of the definition true. Verify this.
+
+\end{enumerate}
+\end{document}
