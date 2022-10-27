@@ -67,6 +67,9 @@
 \newtheorem{notation}[equation]{Notation}
 \newtheorem{terminology}[equation]{Terminology}
 
+\newcommand{\LA}[1]{\mathcal{L}\{ #1 \}}
+\newcommand{\La}{\mathcal{L}}
+
 %%%%%%%%%%%%%
 % local definitions
 %%%%%%%%%%%%%
@@ -1923,6 +1926,7 @@ If $\alpha$ is very close to $2$, the fraction $\frac{1}{4-\alpha^2}$ is large, 
 \end{enumerate}
 
 \begin{comment}
+\Oct{27}
 
 \subsection{Spring and mass systems (\S5.1)}\index{springs}
 
@@ -1999,6 +2003,35 @@ The solution gets larger and larger and larger!
 This is an example of \index{resonance}\emph{resonance}.
 \end{ex}
 
+\subsection*{Laplace Transforms (\S7.1)}
+
+Our next big topic is a general method to translate differential equations to simpler algebraic equations (which are then easier to solve). Here is the basic idea. To a function $f(t)$, we will associate another function $\LA{f(t)}$ called its \emph{Laplace transform}\index{Laplace transform}, which is a function of another variable $s$. We will think of the Laplace transform of $f$ as another function that is its evil twin\index{evil twin}. We might write something like $F(s) = \LA{f(t)}(s)$ to say that the function $F$ with input variable $s$ is the Laplace transform of the function $f$ whose input variable is $t$; the $\La$ is telling us the function $F$ we are specifying is the Laplace transform of $f$. The upshot is that derivatives in regular world will correspond to multiplication by $s$ in Laplace transform (evil twin) world.
+
+\begin{defn} Let $f(t)$ be a function defined for all $t\geq 0$. The \emph{Laplace transform}\index{Laplace transform} is the function $\LA{f(t)}$ is the function of $s$ given by the rule
+\[ \LA{f(t)}(s) = \int_0^\infty e^{-st} f(t) \, dt,\]
+provided this interval converges.
+\end{defn}
+
+This is a function of $s$, because for every different value of $s$ we choose, we get a different integral from $0$ to $\infty$, which is a number (as long as it converges).
+
+\begin{ex} Let's compute $\LA{1}$ from the definition:
+\[ \LA{1}(s) = \int_0^\infty e^{-st} \cdot 1 \, dt = \left[ \frac{-1}{s} e^{-st} \right]_{0}^{\infty} = \frac{1}{s}.\]
+\end{ex}
+
+\begin{ex} Let's compute $\LA{e^{5t}}$ from the definition, for some real number $r\neq 0$:
+\[ \LA{1}(s) = \int_0^\infty e^{-st} \cdot e^{5t} \, dt = \int_0^\infty e^{(5-s)t} \, dt = \left[ \frac{1}{r-s} e^{(5-s)t} \right]_{0}^{\infty} = \frac{-1}{5-s} = \frac{1}{s-5}.\]
+
+By basically the same computation, $\LA{e^{rt}} = \frac{1}{s-r}$ for any real number $r\neq 0$.
+\end{ex}
+
+With slightly more annoying integration, we can obtain the following table:
+
+\begin{center}\includegraphics[scale=.45]{lap}\end{center}
+
+We will take this as the building blocks. The other important rule for obtaining more Laplace transforms is the following fact.
+
+\begin{fact} The Laplace transform of a superposition is the superposition of the Laplace transform.
+\end{fact}
 
 \begin{comment}
 \end{comment}
