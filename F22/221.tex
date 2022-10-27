@@ -1925,7 +1925,7 @@ If $\alpha$ is very close to $2$, the fraction $\frac{1}{4-\alpha^2}$ is large, 
 \end{framed}
 \end{enumerate}
 
-\begin{comment}
+\newpage
 \Oct{27}
 
 \subsection{Spring and mass systems (\S5.1)}\index{springs}
@@ -1959,7 +1959,7 @@ so both roots are negative. The general solution is of the form $x = C_1 e^{r_1t
 
 \begin{center}\includegraphics[scale=.5]{spring1}\end{center}
 
-\item If $\beta^2- 4 m k<0$, then the roots $r_1,r_2$ are complex. The real part is $\frac{-\beta}{m}$, which is negative, and the imaginary part is $\sqrt{\beta^2- 4 m k } = \sqrt{-1 (4 m k - \beta^2) } = i \gamma$ for $\gamma=\sqrt{4 m k - \beta^2}$. The general solution is of the form \[x= C_1 e^{-\beta t / m } \cos(\gamma t) + C_2 e^{-\beta t / m } \sin(\gamma t).\] These solutions oscillate with wavelength $\frac{2\pi}{\gamma}$, and with decreasing amplitude $e^{-\beta t / m }$. A system like this is called \index{underdamped}\emph{underdamped}.
+\item If $\beta^2- 4 m k<0$, then the roots $r_1,r_2$ are complex. The real part is $\frac{-\beta}{2m}$, which is negative, and the imaginary part is $\frac{1}{2m}\sqrt{\beta^2- 4 m k } = \frac{1}{2m}\sqrt{-1 (4 m k - \beta^2) } = i \gamma$ for $\gamma=\frac{1}{m}\sqrt{4 m k - \beta^2}$. The general solution is of the form \[x= C_1 e^{-\beta t / 2m } \cos(\gamma t) + C_2 e^{-\beta t / 2m } \sin(\gamma t).\] These solutions oscillate with wavelength $\frac{2\pi}{\gamma}$, and with decreasing amplitude $e^{-\beta t / 2m }$. A system like this is called \index{underdamped}\emph{underdamped}.
 
 \begin{center}\includegraphics[scale=.5]{spring2}\end{center}
 
@@ -2007,6 +2007,8 @@ This is an example of \index{resonance}\emph{resonance}.
 
 Our next big topic is a general method to translate differential equations to simpler algebraic equations (which are then easier to solve). Here is the basic idea. To a function $f(t)$, we will associate another function $\LA{f(t)}$ called its \emph{Laplace transform}\index{Laplace transform}, which is a function of another variable $s$. We will think of the Laplace transform of $f$ as another function that is its evil twin\index{evil twin}. We might write something like $F(s) = \LA{f(t)}(s)$ to say that the function $F$ with input variable $s$ is the Laplace transform of the function $f$ whose input variable is $t$; the $\La$ is telling us the function $F$ we are specifying is the Laplace transform of $f$. The upshot is that derivatives in regular world will correspond to multiplication by $s$ in Laplace transform (evil twin) world.
 
+\begin{comment}
+
 \begin{defn} Let $f(t)$ be a function defined for all $t\geq 0$. The \emph{Laplace transform}\index{Laplace transform} is the function $\LA{f(t)}$ is the function of $s$ given by the rule
 \[ \LA{f(t)}(s) = \int_0^\infty e^{-st} f(t) \, dt,\]
 provided this interval converges.
@@ -2015,23 +2017,59 @@ provided this interval converges.
 This is a function of $s$, because for every different value of $s$ we choose, we get a different integral from $0$ to $\infty$, which is a number (as long as it converges).
 
 \begin{ex} Let's compute $\LA{1}$ from the definition:
-\[ \LA{1}(s) = \int_0^\infty e^{-st} \cdot 1 \, dt = \left[ \frac{-1}{s} e^{-st} \right]_{0}^{\infty} = \frac{1}{s}.\]
+\[ \LA{1}(s) = \int_0^\infty e^{-st} \cdot 1 \, dt = \left[ \frac{-1}{s} e^{-st} \right]_{0}^{\infty} = \lim_{t\to\infty}\frac{-1}{s} e^{-st} - \left(\frac{-1}{s}\right) =  \frac{1}{s},\]
+for $s>0$.
 \end{ex}
 
 \begin{ex} Let's compute $\LA{e^{5t}}$ from the definition, for some real number $r\neq 0$:
-\[ \LA{1}(s) = \int_0^\infty e^{-st} \cdot e^{5t} \, dt = \int_0^\infty e^{(5-s)t} \, dt = \left[ \frac{1}{r-s} e^{(5-s)t} \right]_{0}^{\infty} = \frac{-1}{5-s} = \frac{1}{s-5}.\]
+\begin{align*} \LA{e^{5t}}(s) = \int_0^\infty e^{-st} &\cdot e^{5t} \, dt = \int_0^\infty e^{(5-s)t} \, dt = \left[ \frac{1}{5-s} e^{(5-s)t} \right]_{0}^{\infty} \\&= \lim_{t\to\infty}\frac{1}{5-s} e^{(5-s)t} - \left(\frac{1}{5-s}\right) = \frac{-1}{5-s} = \frac{1}{s-5},\end{align*}
+for $s>5$.
 
-By basically the same computation, $\LA{e^{rt}} = \frac{1}{s-r}$ for any real number $r\neq 0$.
+By basically the same computation, $\LA{e^{at}} = \frac{1}{s-a}$ for any real number $a\neq 0$ on the domain $s>a$.
 \end{ex}
 
-With slightly more annoying integration, we can obtain the following table:
+It is not clear that these indefinite integrals should always converge. They don't always!
+\begin{ex}
+The function $f(t)= e^{t^2}$ does not have a Laplace transform:
+\[ \LA{e^{t^2}}(s) =  \int_0^\infty e^{-st} \cdot e^{t^2} \, dt = \int_0^s e^{t^2-st}  \, dt + \int_s^\infty e^{t^2-st}  \, dt,\]
+which diverges since for $t\geq s$ , $t^2-st\geq 0$ and hence $e^{t^2-st}\geq 1$.
+\end{ex}
 
-\begin{center}\includegraphics[scale=.45]{lap}\end{center}
-
-We will take this as the building blocks. The other important rule for obtaining more Laplace transforms is the following fact.
-
-\begin{fact} The Laplace transform of a superposition is the superposition of the Laplace transform.
+ However:
+\begin{fact}
+Given a function $f(t)$, if there is some exponential function $e^{at}$ such that $f(t)\leq e^{at}$ for all sufficiently large values of $t$, then $f$ has a Laplace transform, meaning that the integrals involved in computing the Laplace transforms converge.
 \end{fact}
+
+
+\renewcommand{\arraystretch}{2.5}
+
+With slightly more annoying integration, we can obtain the following table:
+\begin{center}
+\begin{tabular}{|c|c|}
+ \hline
+function $f(t)$ & Laplace $\LA{f(t)}(s)$\\
+  \hline
+$1$ &$ \displaystyle\frac{1}{s} \quad \ (s>0)$
+ \\  \hline
+ $t^n$ & $ \displaystyle\frac{n!}{t^n} \quad \ (s>0)$
+ \\  \hline
+  $e^{at}$ & $ \displaystyle\frac{1}{s-a} \quad (s>a)$
+ \\  \hline
+  $\sin(kt)$ & $ \displaystyle\frac{k}{s^2 + k^2} \quad (s>0)$
+ \\  \hline
+   $\cos(kt)$ & $ \displaystyle\frac{s}{s^2 + k^2} \quad (s>0)$
+ \\  \hline
+\end{tabular}
+\end{center}
+
+\
+
+We will take these as the building blocks. We can also take Laplace transforms of superpositions of functions whose Laplace transforms we already know: 
+If $f_1(t)$ and $f_2(t)$ are functions whose Laplace transforms we know, and $c_1, c_2$ are constants, then
+\begin{align*} \LA{c_1 f_1(t) &+ c_2 f_2(t)}(s) = \int_0^\infty e^{-st} (c_1 f_1(t) + c_2 f_2(t))\, dt \\&= \int_0^\infty c_1 e^{-st}  f_1(t) + c_2 e^{-st}f_2(t))\, dt \\&= 
+c_1 \int_0^\infty  e^{-st}  f_1(t) \, dt + c_2  \int_0^\infty  e^{-st}f_2(t))\, dt \\&= c_1 \LA{f_1(t)}(s) + c_2 \LA{f_2(t)} (s)\end{align*}
+
+
 
 \begin{comment}
 \end{comment}
