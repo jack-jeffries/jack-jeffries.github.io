@@ -38,8 +38,8 @@
 Given any two sets $S$ and $T$, a \emph{function} from $S$ to $T$, written $f: S\to T$, is a ``rule''\footnote{Here's a real definition: a \emph{function} from $S$ to $T$ is a subset $G\subset S\times T$ of ordered pairs of elements of $S$ and $T$ with the property that for all $s\in S$ there is a unique $t \in T$ such that $(s,t)\in G$; we write $f(s)$ for this element $t$.} 
 that assigns to each element $s\in S$ a unique element $t\in T$. The set $S$ is called the \emph{domain} of $f$. We will generally consider functions from some set of real numbers to $\R$.
 We often specify functions by formulas; when we do this the take the domain to be the set of all real numbers for which the formula evaluates to a unique real number. In particular,
-\[ f(x) = x+1 \quad \text{and} \quad g(x) = \frac{x^2-1}{x-1}\]
-are \emph{not} the same function, since their domains are different.
+\[ f(x) = 2x+2 \quad \text{and} \quad g(x) = \frac{2x^2-2}{x-1}\]
+are \emph{not} the same function, even though their values agree for all $x\neq 1$, since their domains are different.
 	
 \section*{Limits of functions}
 
@@ -78,14 +78,14 @@ Draw vertical dotted lines for the $x$-values $a-\de$ and $a+\de$.
 
 \
 
-\item Draw the graph of $\ds g(x)=\frac{x^2-1}{x-1}$. Play the $\e-\de$ game with this function, $a=1$ and $L=-3$. What happens?
+\item Draw the graph of $\ds g(x)=\frac{2x^2-2}{x-1}$. Play the $\e-\de$ game with this function, $a=1$ and $L=-3$. What happens?
 
 \newpage
 
 
 
 
-\item Consider the function $\ds g(x)=\frac{x^2-1}{x-1}$. It is true that $\lim_{x\to 1}  g(x) = 2$.
+\item Consider the function $\ds g(x)=\frac{2x^2-2}{x-1}$. It is true that $\lim_{x\to 1}  g(x) = 4$.
 \begin{enumerate}
 \item I claim that for $\e=3$, the choice $\delta=3$ ``works'' to make the rest of the definition true. Verify this.
 \item Find a $\delta$ that ``works'' for $\e=1$.
@@ -96,7 +96,17 @@ Draw vertical dotted lines for the $x$-values $a-\de$ and $a+\de$.
 
 \
 
-\item Consider the function $\ds g(x)=\frac{x^2-1}{x-1}$. It is not true that $\lim_{x\to 1}  g(x) = -3$. I claim that for $\e=1$, there is no choice of $\delta>0$ that ``works'' to make the rest of the definition true. Verify this.
+\item Consider the function $\ds g(x)=\frac{2x^2-2}{x-1}$. It is not true that $\lim_{x\to 1}  g(x) = -3$. I claim that for $\e=1$, there is no choice of $\delta>0$ that ``works'' to make the rest of the definition true. Verify this.
+
+\
+
+\item Repackage your work from (4) to \emph{prove} that $\lim_{x\to 1}  g(x) = 4$.
+
+\
+
+\item Repackage your work from (5) to \emph{disprove} that $\lim_{x\to 1}  g(x) = -3$.\\ 
+(Warning: Until we prove something else, the conclusion of (6) is irrelevant to this problem\dots prove what?)
+
 
 \end{enumerate}
 \end{document}
