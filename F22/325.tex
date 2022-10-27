@@ -51,8 +51,8 @@
 \def\L{\mathbf{L}}
 \def \a{\alpha}
 \def\b{\beta}
-
-
+\def\de{\delta}
+\def\ds{\displaystyle}
 
 
 
@@ -2519,6 +2519,126 @@ $\{a_{n_k}\}_{k=1}^\infty$, and it too is bounded (since
 any subsequence of a bounded sequence is also bounded.) 
 The result follows since every monotone bounded sequence converges by the Monotone Convergence Theorem \ref{thm:MCT}.
 \end{proof}
+
+\Oct{27}
+
+You can use any basic trig facts below to answer the following questions. 
+
+\
+
+\begin{enumerate}
+\item \textbf{Explain but don't prove:} Is $\{ \cos( \pi n) \}_{n=1}^\infty$ a subsequence of $\{ \cos(n) \}_{n=1}^\infty$?
+
+\
+
+\item \textbf{Prove or disprove:} The sequence $\{ \cos(n) \}_{n=1}^\infty$ has a convergent subsequence.
+
+\
+
+\item \textbf{Prove or disprove:} The sequence $\{ \cos(n) \}_{n=1}^\infty$ has a constant subsequence.
+
+\
+
+\item \textbf{Prove or disprove:} The sequence $\{ \cos(n) \}_{n=1}^\infty$ has a subsequence that converges to some $x>1$.
+
+\begin{framed}
+\begin{enumerate}
+\item No; to get a subsequence we would need have natural numbers inside the cosine, not multiples of $\pi$.
+\item True: $\cos(n)$ is bounded, so there is a convergent subsequence by Main Corollary of Bolzano-Weierstrass.
+\item False: in fact, $\cos(n)$ never takes the same value twice. If it did, we would have $\cos(n)=\cos(m)$ for natural numbers $m\neq n$, so $m-n= 2\pi k$ or $m+n= 2\pi k$, for some integer $k$, which would make $\pi = \frac{m-n}{2k}$ or $\pi = \frac{m+n}{2k}$, contradicting that $\pi$ is irrational.
+\item False: if there is a subsequence converging to $x>1$, let $\e= x-1 >0$. Then for some $K$, for all $k>K$, $|\cos(n_k) -1|<\e$, which implies $\cos(n_k) >1$, which is a contradiction.
+\end{enumerate}
+\end{framed}
+\end{enumerate}
+
+	
+Given any two sets $S$ and $T$, a \emph{function}\index{function} from $S$ to $T$, written $f: S\to T$, is a ``rule''\footnote{Here's a real definition: a \emph{function} from $S$ to $T$ is a subset $G\subset S\times T$ of ordered pairs of elements of $S$ and $T$ with the property that for all $s\in S$ there is a unique $t \in T$ such that $(s,t)\in G$; we write $f(s)$ for this element $t$.} 
+that assigns to each element $s\in S$ a unique element $t\in T$. The set $S$ is called the \emph{domain}\index{domain} of $f$. We will generally consider functions from some set of real numbers to $\R$.
+We often specify functions by formulas; when we do this the take the domain to be the set of all real numbers for which the formula evaluates to a unique real number. In particular,
+\[ f(x) = 2x+2 \quad \text{and} \quad g(x) = \frac{2x^2-2}{x-1}\]
+are \emph{not} the same function, even though their values agree for all $x\neq 1$, since their domains are different.
+	
+
+
+\begin{defn}
+Let $S$ be a subset of $\R$. Let $f: S \to \R$ be a function, and $a$ and $L$ be real numbers. We say that \emph{the limit of $f$ as $x$ approaches $a$ is $L$}\index{limit} provided:
+\begin{quote} for any $\e>0$ there exists $\de>0$ such that if $0< | x-a | < \de$, then $x$ is in the domain of~$f$ and $|f(x) - L| <\e$.
+\end{quote}
+If this happens, we write $\ds \lim_{x\to a} f(x) = L$ to denote this.\index{$\lim_{x\to a} f(x) = L$}
+\end{defn}
+
+
+\begin{enumerate}
+\item \textsc{Unpackaging parts of the definition.}
+\begin{enumerate}
+\item Describe $\{ x\in \R \ | \ 0< |x-2| < 1\}$ as a union of two open intervals.
+\item For a general $a\in \R$ and $\delta>0$, describe $\{ x\in \R \ | \ 0< |x-a| <  \de\}$ as a union of two open intervals.
+\item Focusing on the ``domain'' part of the definition, if the limit of $f$ as $x$ approaches $a$ is $L$, then $f$ must at least be defined \underline{\phantom{on some open intervals to the left and right of $a$}} (where?).
+\end{enumerate}
+
+\begin{framed}
+\begin{enumerate}
+\item $(1,2)\cup(2,3)$
+\item $(a-\d,a)\cup(a,a+\d)$.
+\item on some open intervals to the left and to the right of $a$.
+\end{enumerate}
+\end{framed}
+
+\item \textsc{The $\e-\de$ game.}
+\begin{enumerate}
+\item Player 0 starts by graphing a function $f$ (like a familiar one from calculus) and specifies an $x$-value $a$ and a $y$-value $L$ that (based on previous calculus knowledge) they think makes $\lim_{x\to a} f(x) = L$ \textbf{true}. [The graph should be large.]
+\item Player 1 choses an $\e$. This is how close we would like our function to be to $L$. Thus, $\e$ goes up and down from $L$ (corresponding to $|f(x)-L|<\e$). Draw horizontal dotted lines with $y$-values $L-\e$ and $L+\e$. [The $\e$ should be large enough for people to see and have room to work in the picture.]
+\item Player 2 must find a $\de$ such that every $x \in (a-\de,a) \cup (a,a+\de)$ is 
+\begin{itemize}
+\item in the domain of $f$, and
+\item has an output $f(x)$ within $(L-\e,L+\e)$.
+\end{itemize}
+Draw vertical dotted lines for the $x$-values $a-\de$ and $a+\de$. 
+[Everyone in the team can assist player 2!]
+\item Repeat with the same graph, players 1\& 2 switching roles (and a new $\e$).
+\end{enumerate}
+
+
+\item Draw the graph of $\ds g(x)=\frac{2x^2-2}{x-1}$. Play the $\e-\de$ game with this function, $a=1$ and $L=-3$. What happens?
+
+\begin{framed}
+So long as $\e<7$, it is impossible for Player 2.
+\end{framed}
+
+
+
+
+\item Consider the function $\ds g(x)=\frac{2x^2-2}{x-1}$. It is true that $\lim_{x\to 1}  g(x) = 4$.
+\begin{enumerate}
+\item I claim that for $\e=3$, the choice $\delta=1.5$ ``works'' to make the rest of the definition true. Verify this.
+\item Find a $\delta$ that ``works'' for $\e=1$.
+\item Find a $\delta$ that ``works'' for $\e=1/2$.
+\item Find a $\delta$ that ``works'' for $\e>0$.
+\end{enumerate}
+
+\begin{framed}
+\begin{enumerate}
+\item Let $0<|x-1|<1.5$, so $-.5<x<2.5$ and $x\neq 1$. Then $f(x)$ is defined, since $x\neq 1$. Also, $|f(x)-4| = |2x+2 - 4| = |2x-2| < 2 \cdot 1.5 = 3 = \e$ since $|x-1|<1.5$.
+\item Take $\d=.5$. Let $0<|x-1|<.5$, so $.5<x<1.5$ and $x\neq 1$. Then $f(x)$ is defined, since $x\neq 1$. Also, $|f(x)-4| = |2x+2 - 4| = |2x-2| < 2 \cdot .5 = 1 = \e$ since $|x-1|<.5$.
+\item Take $\d=.25$. Let $0<|x-1|<.25$, so $.75<x<1.25$ and $x\neq 1$. Then $f(x)$ is defined, since $x\neq 1$. Also, $|f(x)-4| = |2x+2 - 4| = |2x-2| < 2 \cdot .25 = .5 = \e$ since $|x-1|<.25$.
+\item Take $\d=\e/2$. Let $0<|x-1|<\e/2$. Then $f(x)$ is defined, since $x\neq 1$. Also, $|f(x)-4| = |2x+2 - 4| = |2x-2| < 2 \cdot \e/2 = \e$ since $|x-1|<\e/2$.
+\end{enumerate}
+\end{framed}
+
+\item Consider the function $\ds g(x)=\frac{2x^2-2}{x-1}$. It is not true that $\lim_{x\to 1}  g(x) = -3$. I claim that for $\e=1$, there is no choice of $\delta>0$ that ``works'' to make the rest of the definition true. Verify this.
+
+\begin{framed}
+Let $\d>0$. Take $x=1+\d/2$. Then $|x-1|=\d/2$ is between $0$ and $\delta$, and $f(x) = 2x+2 = 4+\d > 4$, so $|f(x) - (-3)| = |f(x)+3| > 7> 1 = \e$.
+\end{framed}
+\end{enumerate}
+\begin{comment}
+
+\item Repackage your work from (4) to \emph{prove} that $\lim_{x\to 1}  g(x) = 4$.
+
+\
+
+\item Repackage your work from (5) to \emph{disprove} that $\lim_{x\to 1}  g(x) = -3$.\\ 
+
 
 
 \begin{comment}
