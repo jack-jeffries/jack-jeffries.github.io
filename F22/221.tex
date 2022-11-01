@@ -2009,6 +2009,7 @@ This is an example of \index{resonance}\emph{resonance}.
 Our next big topic is a general method to translate differential equations to simpler algebraic equations (which are then easier to solve). Here is the basic idea. To a function $f(t)$, we will associate another function $\LA{f(t)}$ called its \emph{Laplace transform}\index{Laplace transform}, which is a function of another variable $s$. We will think of the Laplace transform of $f$ as another function that is its evil twin\index{evil twin}. We might write something like $F(s) = \LA{f(t)}(s)$ to say that the function $F$ with input variable $s$ is the Laplace transform of the function $f$ whose input variable is $t$; the $\La$ is telling us the function $F$ we are specifying is the Laplace transform of $f$. The upshot is that derivatives in regular world will correspond to multiplication by $s$ in Laplace transform (evil twin) world.
 
 \begin{comment}
+
 \Nov{1}
 
 \begin{defn} Let $f(t)$ be a function defined for all $t\geq 0$. The \emph{Laplace transform}\index{Laplace transform} is the function $\LA{f(t)}$ is the function of $s$ given by the rule
@@ -2016,7 +2017,8 @@ Our next big topic is a general method to translate differential equations to si
 provided this interval converges.
 \end{defn}
 
-This is a function of $s$, because for every different value of $s$ we choose, we get a different integral from $0$ to $\infty$, which is a number (as long as it converges).
+This is a function of $s$, because for every different value of $s$ we choose, we get a different integral from $0$ to $\infty$, which is a number (as long as it converges). Sometimes we'll write $F(s)$ as shorthand for $ \LA{f(t)}(s)$ just to make it easier to work with.
+
 
 \begin{ex} Let's compute $\LA{1}$ from the definition:
 \[ \LA{1}(s) = \int_0^\infty e^{-st} \cdot 1 \, dt = \left[ \frac{-1}{s} e^{-st} \right]_{0}^{\infty} = \lim_{t\to\infty}\frac{-1}{s} e^{-st} - \left(\frac{-1}{s}\right) =  \frac{1}{s},\]
@@ -2148,6 +2150,26 @@ For convenience we will use $Y$($=Y(s)$) for $\LA{y}$.
 Then we translate back to actual functions with the inverse Laplace transform:
 \[ \rsa y = \LAi{\frac{5}{s-2}} = 5 \LAi{\frac{1}{s-2}} = 5 e^{2t}.\]
 \end{ex}
+
+\begin{ex}
+Consider the IVP
+\[ \begin{cases} y' - 2y = 4 \\ y(0) = 5\end{cases}.\]
+Let's apply Laplace transforms to both sides:
+\[ \LA{ y' - 2y} = \LA{4}\]
+\[\rsa \LA{y'} - 2 \LA{y} = \frac{4}{s}\]
+For convenience we will again use $Y$($=Y(s)$) for $\LA{y}$.
+\[ \rsa (sY - y(0)) - 2 Y =\frac{4}{s}\]
+\[ \rsa (sY - 5) - 2 Y =\frac{4}{s}\]
+\[ \rsa (s-2)Y = 5+\frac{4}{s} = \frac{5s+4}{s}\]
+\[ \rsa Y = \frac{5s+4}{s(s-2)}.\]
+To prepare for computing the inverse Laplace transform, we use partial fractions. We write the right hand side as
+\[ \frac{5s+4}{s(s-2)} = \frac{A}{s} + \frac{B}{s-2} = \frac{(s-2)A + sB}{s(s-2)}\]
+so $-2A=4$, and $A=-2$, and $A+B=5$, so $B=7$. That is
+\[ \frac{5s+4}{s(s-2)} = \frac{-2}{s} + \frac{7}{s-2}.\]
+Then we translate back to actual functions with the inverse Laplace transform:
+\[ \rsa y = \LAi{\frac{-2}{s} + \frac{7}{s-2}} = -2 \LAi{\frac{1}{s}} + 7 \LAi{\frac{1}{s-2}} = -2 + 7e^{2t}.\]
+\end{ex}
+
 \begin{comment}
 \end{comment}
 

@@ -2631,88 +2631,10 @@ So long as $\e<7$, it is impossible for Player 2.
 Let $\d>0$. Take $x=1+\d/2$. Then $|x-1|=\d/2$ is between $0$ and $\delta$, and $f(x) = 2x+2 = 4+\d > 4$, so $|f(x) - (-3)| = |f(x)+3| > 7> 1 = \e$.
 \end{framed}
 \end{enumerate}
-\begin{comment}
-
-\item Repackage your work from (4) to \emph{prove} that $\lim_{x\to 1}  g(x) = 4$.
-
-\
-
-\item Repackage your work from (5) to \emph{disprove} that $\lim_{x\to 1}  g(x) = -3$.\\ 
-
 
 
 \begin{comment}
-
-We are now going to start talking about functions, limits of functions, continuity of functions, etc.
-
-In general, if $S$ and $T$ are any two sets, a {\em function} from $S$ to $T$, written
-$$
-f: S \to T
-$$
-is any ``rule'' that assigns to each element $s \in S$ and unique element $t \in T$. The element of $T$ that is assigned to $s$ by this rule is written $f(s)$.
-
-This is not really a very good definition since ``rule'' itself is not defined. A more careful definiton is: Given sets $S$ and $T$, let $S \times T$ denote the
-set consisting of all ordered pairs $(s,t)$ where $s \in S$ and $t \in T$. Then a {\em function} $f$ from $S$ to $T$ is a subset $G$ of $S \times T$ having
-the following property: For each $s \in S$ there is a unique $t \in T$ such that $(s,t) \in G$. In other words, a function is by definition given by its graph.
-
-
-
-
-In this class, we will almost always consider functions of the form
-$$
-f: S \to \R
-$$
-where $S$ is a subset of $\R$. Indeed, henceforth, let us agree that if I say ``function'' I mean a function of the form $f: S \to \R$ for some subset $S$ of $\R$. Recall that the {\em
-  domain} of a function refers to the subset $S$ of $\R$ on which it is defined. 
-
-
-Often, but certainly not always, $f$ will indeed by given by a formula, such as $f(x) = \frac{x^2-1}{x-1}$. In such cases, 
-we will usually be a bit sloppy in specifying its domain $S$. For example, if I say
-``consider the  function $f(x) = \frac{x^2-1}{x-1}$'', it is understood that its domain is every real number on which this formula is well-defined. In this
-example, that would be $S = \R \setminus \{1\} = \{ x \in \R \mid x
-\ne 1 \}$. Following this convention, $f(x) = \frac{x^2-1}{x-1}$ and $g(x)=x+1$ are two different functions, since their domains are different.
-
-It is also worth noting that while most of the functions we consider will be given by formulas, there are many functions that cannot be expressed in terms of formulas. Imagine for every real number $x$ flipping a coin and setting $f(x)=1$ if coin $x$ turns up heads and $f(x)=0$ if coin $x$ turns up tails. The result will certainly be a function, albeit an unimaginably wild one.
-
-Many times, the domain of the functions we talk about will be intervals:
-$$
-(a,b), (a,b], [a,b), [a,b], (a,\infty), (-\infty,b), [a,\infty), (-\infty,b], (-\infty, \infty) 
-$$
-
-
-% The following formal definition will be convenient:
-
-% \begin{defn} Let $f: S \to \R$ be a function (where $S$ is a subset of
-%   $\R$). For any real number $a$ (not necessarily in $S$), we say that
-%   $f$ is {\em defined near, but not    necessarily at,  $a$} (I'll write ``$f$ is dnbnna $a$'' for short)
-%    if there exists a positive real number $\d > 0$ such that the domain of $f$ contains  $(a-\delta, a+\delta) \setminus \{a\}$; that is,
-% $f$ is defined for all $x$ such that either  $a - \delta < x < a$ or
-% $a < x < a + \delta$.
-% \end{defn}
-
-% \begin{ex}  Let $f(x) = \frac{5x^2-5}{x-1}$ and note that, by our convention, since this formula is defined for all $x \ne 1$, the domain of $f$ is $S = \R \setminus \{1\}$.
-%   For any $a \ne 1$, $f$ is defined near, but not necessarily at,  $a$: To see this, take $\d = |a-1|$ and note that for this choice of $\d$, $f$ is defined at every point of
-%   $(a-\delta, a+ \delta) \setminus \{a\}$ since $1$ is not in this set. (If $a > 1$,   $(a-\delta, a+ \delta) \setminus \{a\} = (1,a) \cup (a,2a-1)$, and if $a < 1$ then
-%   $(a-\delta, a+ \delta) \setminus \{a\} = (2a-1,a) \cup (a,1)$.) Note that for $a \ne 1$, $f$ is of course defined at $a$ too.
-
-  
-%   When $a = 1$, $f$ is also defined near, but not necessarily at, $1$. To see this we may take $\d = 1$ (or any positive number), since $f$ is defined at $(0,2) \setminus \{1\}$.
-%   end{ex}
-
-%   \begin{ex} Let $f(x) = \sqrt{x}$, and note that the domain of $f$ is $[0, \infty)$. For any $a > 0$, $f$ is defined near, but not necessarily at,  $a$. To see this, take $\delta
-%     = a$, so that $(a- \delta, a + \delta) \setminus \{a\} = (0,2a) \setminus (a) = (0,a) \cup (a,2a)$. (Letting $\delta$ be any strictly positive number less than $a$ would also work.)
-% But note that $f$ is {\em not} dnbnna $0$, since there is $\d > 0$, such that $f$ is defined on $(-\delta, 0)$. 
-% \end{ex}
-
-%% With these notions in place, we can finally define what a limit of a function is:
-
-\begin{defn} Let $f: S \to \R$ be a function (where $S$ is a subset of $\R$) and let $a \in \R$ be any real number. 
-  For a real number $L$, we say {\em the limit of $f(x)$ as $x$ approaches $a$ is $L$} provided the following condition is met:
-\begin{quote}
-  For every $\e > 0$, there is $\d > 0$ such that if $x$ is any real number such that $0 < |x-a| < \d$, then $f$ is defined at $x$ and $|f(x) - L| < \e$. 
-\end{quote}
-
-\end{defn}
+\Nov{1}
 
 
 
@@ -2720,14 +2642,13 @@ $$
 $$
  f(x) = \frac{5x^2-5}{x-1}.
 $$
-Recall our convention that we interpret the domain of $f$ to be all real numbers where this rule is defined. So, $f: S \to \R$ where $S = \R \setminus \{1\}$.
+Recall our convention that we interpret the domain of $f$ to be all real numbers where this rule is defined. So, $f: S \to \R$ where $S = \R \setminus \{1\}$. I claim that the limit of $f(x)$  as $x$ approaches $1$ is $10$. To prove it:
 
-I claim that the limit of $f(x)$  as $x$ approaches $1$ is $10$.
 Pick $\e > 0$.
 
-%(Scratch work: Since $f$ is defined at all points other that $1$, the condition about $f$ being defined for all $x$ such that $0 < |x-a| < \d$ will be  met for any choice of $\delta$. 
-%We need $|f(x) - 10| < \e$ to
-%hold. Manipulating this a bit, we see that it is equivalent to $|x-1|  < \frac{\e}{5}$. Thus setting $\d = \frac{\e}{5}$ is the way to go. Back to the proof....)
+(Scratch work: Since $f$ is defined at all points other that $1$, the condition about $f$ being defined for all $x$ such that $0 < |x-a| < \d$ will be  met for any choice of $\delta$. 
+We need $|f(x) - 10| < \e$ to
+hold. Manipulating this a bit, we see that it is equivalent to $|x-1|  < \frac{\e}{5}$. Thus setting $\d = \frac{\e}{5}$ is the way to go. Back to the proof....)
 
 Let $\d = \frac{\e}{5}$. Pick $x$ such that $0 < |x-1| < \d$. Then $x \ne 1$ and hence $f$ is defined at $x$. We have
 $$
@@ -2740,15 +2661,6 @@ We have shown that for any $\e>0$ there is a $\d>0$ such that
 if $0 < |x-1|< \d$, then $f$ is defined at $x$ and $|f(x) - 10| < \e$. This proves $\lim_{x \to 1} f(x) = 10$.  
 \end{ex}
 
-\Oct{23}
-
-Here is an equivalent formulation of the definition of limit: 
-\begin{quote}
-  For every $\e > 0$, there is $\d > 0$ such that if $x$ is any real number such that either $a-\d < x < a$ or $a < x < a + \d$, then $f$ is defined at $x$ and $|f(x) - L| < \e$. 
-\end{quote}
-
-As a matter of shorthand, we write $\lim_{x \to a} f(x) = L$ to mean
-the limit of $f(x)$ as $x$ approaches $a$ is $L$.
 
 Note that in order for the limit of $f$ at $a$ to exist,
 we need in particular that there is a $\d > 0$ such that $f$ is defined at every point on $(a-\d, a)$ and $(a, a+ \d)$. Loosely, $f$ needs to be defined
@@ -2787,128 +2699,36 @@ Let's give an example of a function that does {\em not} have a limiting value as
 
 \begin{ex} Let  $f(x)   = \frac{1}{x-3}$ with domain $\R \smallsetminus \{3\}$. I claim that the limit of $f(x)$ as $x$ approaches $3$ does not exist. To prove this, by way of
 contradiction, suppose the limit of $f(x)$ as $x$ approaches $3$ does exist and is equal to $L$. Taking $\e = 1$ in the definition, there is a $\d > 0$ so that if
-$0 < |x-3| < \d$, then $\left|\frac{1}{x-3} - L\right| < 1$. We can find a real number  $x$ so that both $3 < x < 3.05$ and $0 < |x-3| < \d$ hold. For such
+$0 < |x-3| < \d$, then $\left|\frac{1}{x-3} - L\right| < 1$. We can find a real number  $x$ so that both $3 < x < 4$ and $0 < |x-3| < \d$ hold. For such
 an  $x$ we have 
 $\left|\frac{1}{x-3} - L\right| < 1$ and so 
 $$
 \frac{1}{x-3} - 1 <  L < \frac{1}{x-3} + 1,
 $$
 and we also have 
-$0 < x-3 < .05$ and so 
-$\frac{1}{x-3} > 20$. It follows that
+$0 < x-3 < 1$ and so 
+$\frac{1}{x-3} > 1$. It follows that
 $$
-L > 19.
+L > 0.
 $$
-Now pick $x$ such that $2.95 < x < 3$ and $0 < |x-3| < \d$.  We get
+Now pick $x$ such that $2 < x < 3$ and $0 < |x-3| < \d$.  We get
 $$
 \frac{1}{x-3} - 1 <  L < \frac{1}{x-3} + 1,
 $$
-and $\frac{1}{x-3} < -20$ and hence
+and $\frac{1}{x-3} < -1$ and hence
 $$
-L < -19.
+L < 0.
 $$
 This is not possible; so the limit of $f(x)$ as $x$ approaches $3$ does not exist. 
 \end{ex}
 
-
-\Oct{25}
-
-\begin{enumerate}
-	\item Explain why $f(x)=\sqrt{x}$ does not have a limit as $x$ approaches~$0$.
-		
-	\begin{framed}
-	The domain of $f(x)$ consists of all nonnegative numbers. For any $\delta>0$, there is some negative number $x$ such that $0<|x|<\delta$, so there is no $\delta>0$ such that $f(x)$ is defined for all numbers satisfying that inequality.
-	\end{framed}
+%\begin{comment}
+ %Explain why $f(x)=\sqrt{x}$ does not have a limit as $x$ approaches~$0$.
+%\end{comment}
 	
-	\item  Let $f(x)$ be any linear function: $f(x) = mx +b$ where $m$ and $b$ are fixed real numbers. Let $a$ be any real number.
-	\begin{itemize}
-	\item Prove that $\lim_{x\to a} f(x) = f(a)$ in the case $m=0$.
-	\begin{framed}
-	Suppose $m = 0$. Then set $\d = 10^{100}$ (or any positive number you like).  If $0 < |x - a| < \d$, then $f$ is defined at $x$ and $|f(x) - f(a)| = |b - b| = 0 < \e$. This proves
-$\lim_{x \to a} f(x) = f(a)$.
-\end{framed}
-	\item Prove that $\lim_{x\to a} f(x) = f(a)$ in the case $m\neq 0$.
-	\begin{framed}
-	Suppose $m \ne 0$. Set $\d = \frac{\e}{|m|}$. If \\
-$0 < |x - a| < \d$, then $f$ is defined at $x$ and 
-$\begin{aligned}
-|f(x) - f(a)| &= |mx + b - (ma +b)|
-\\& = |m(x-a)| = |m| |x-a| < |m| \d = \e.
-\end{aligned}$
-This proves $\lim_{x \to a} f(x) = f(a)$.
-\end{framed}
-	\end{itemize}
-	
-	
-	
-	\item Let $f$ be a function. Prove that the limit as of $f$ as $x$ approaches $a$, if it exists, is unique.
-	
-	\begin{framed} Suppose that the limit of $f$ as approaches $a$ is both $L$ and $M$. By way of contradiction, suppose that $L\neq M$. Take $\e=\frac{|L-M|}{2}$. By definition, there exist $\delta_1,\delta_2>0$ such that if $0<|x-a|<\delta_1$ then $|f(x)-L|<\e$, and if $0<|x-a|<\delta_2$ then $|f(x)-M|<\e$. Let $x$ be some real number such that $0<|x-a|<\min\{\delta_1,\delta_2\}$. Then
-	\[ |L-M| \leq |f(x) -L| + |f(x) - M| < \e + \e = |L-M|.\]
-	This is a contradiction, so we must in fact have $L=M$.
-	\end{framed}
-	
-	\item Using any basic facts from trig, compute \,$\lim_{x\to 0} \sin(\frac{1}{x})$.
-	\begin{framed}
-	We will show that there is no limit of $\sin(\frac{1}{x})$ as $x$ approaches $0$. By way of contradiction, suppose that there is such a limit $L$. Take $\e = 1$. By definition, there is some $\delta>0$ such that $|\sin(\frac{1}{x}) - L| <\e$ for all $x$ such that $0<|x|<\delta$. 
-	
-	We consider two cases.
- First, assume that $L\geq 0$. There is some natural number $N$ greater than $1/\delta$. Then \[2\pi N + \frac{3\pi}{2} > \frac{1}{\delta}\] as well, so \[x=\frac{1}{2\pi N + \frac{3\pi}{2}}< \delta,\] and \[\sin(1/x)=\sin(2\pi N + \frac{3\pi}{2}) = -1\] so $|\sin(1/x) - L| \geq 1=\e$. Thus $L\geq 0$ is impossible.
- 
- Now, assume that $L< 0$. There is some natural number $N$ greater than $1/\delta$. Then \[2\pi N + \frac{\pi}{2} > \frac{1}{\delta}\] as well, so \[x=\frac{1}{2\pi N + \frac{\pi}{2}}< \delta,\] and \[\sin(1/x)=\sin(2\pi N + \frac{\pi}{2}) = 1,\] so $|\sin(1/x) - L| \geq 1=\e$. Thus $L< 0$ is impossible too.
-
-We conclude that no such $L$ exists.
-	\end{framed}	
-	\item Come up with a definition of $\lim_{x\to \infty} f(x) = L$ and prove, using your definition, that
-	\[ \lim_{x\to \infty} \frac{2x-1}{x+3} = 2.\]
-	
-	
-\end{enumerate}
 
 
-
-%\begin{ex} Let $f(x)$ be any linear function: $f(x) = mx +b$ where $m$ and $b$ are fixed real numbers. (The domain of $f$ is all of $\R$. )
-%Let $a$ be any real number. I claim 
-%$$
-%\lim_{x \to a} f(x) = f(a).
-%$$
-%(As we will see, this is equivalent to the property that $f$ is ``continuous'' at $x= a$.)
-%Pick $\e > 0$.
-%
-%(Scratch work: We need $|f(x) - f(a)| < \e$ and this is equivalent to $|m(x-a)| < \e$ which in turn (provided $m \ne 0$) is equivalent to $|x-a|
-%< \frac{\e}{|m|}$.  If $m = 0$, then $|f(x) - f(a)| < \e$ is automatic.)
-%
-%We proceed in cases.
-%
-%{\bf Case I}: Suppose $m = 0$. Then set $\d = 10^{100}$ (or any
-%positive number you like).  If $0 < |x - a| < \d$, then $f$ is defined at $x$ and $|f(x) - f(a)| = |b - b| = 0 < \e$. This proves
-%$\lim_{x \to a} f(x) = f(a)$.
-%
-%{\bf Case II}: Suppose $m \ne 0$. Set $\d = \frac{\e}{|m|}$. If 
-%$0 < |x - a| < \d$, then $f$ is defined at $x$ and 
-%$$
-%|f(x) - f(a)| = |mx + b - (ma +b)| = |m(x-a)| = |m| |x-a| < |m| \d = \e.
-%$$
-%This proves $\lim_{x \to a} f(x) = f(a)$.
-%\end{ex}
-
-
-
-
-
-
-%\begin{ex} Let $f(x) = \sqrt{x}$. Does $\lim_{x \to 0} f(x) = 0$? No. Since the domain of $f$ is $[0, \infty)$, there is no $\d > 0$ such that $f$ is defined
-%  at all $x$ satisfying $0 < |x-0| < \d$ (e.g., for any $\d > 0$, $f$ is not defined at $-\d/2$).
-  
-%But, later, we will talk about one-sided limits, and we will see that  it is true that $\lim_{x \to 0^+} \sqrt{x} = 0$.
-%\end{ex}
-
-
-\Oct{27}
-
-
-
-The following result gives an important connection between limits of functions and limits of sequences. This Lemma will allow us to translate
+The following result gives an important connection between limits of functions and limits of sequences. This result will allow us to translate
 statements we have proven about limits of sequences to limits of functions.
 
 
@@ -2991,7 +2811,7 @@ the sequence $\{x_n\}_{n=1}^\infty$ converges to $a$. (b) This holds by construc
 \end{proof}
 
 
-\Oct{29}
+%\Oct{29}
 
 \begin{cor}\label{cor:261} Let $f$ be a function and $a$ and $L$ be real numbers. Suppose that the domain of $f$ is all of $\R$ or $\R \smallsetminus \{ a\}$. Then $\lim_{x \to a} f(x) = L$ if and only if for every sequence 
 	$\{x_n\}_{n=1}^\infty$ that converges to $a$ such that $x_n\neq a$ for all $n$, we have that the sequence $\{f(x_n)\}_{n=1}^\infty$ converges to $L$. 
