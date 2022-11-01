@@ -2008,7 +2008,7 @@ This is an example of \index{resonance}\emph{resonance}.
 
 Our next big topic is a general method to translate differential equations to simpler algebraic equations (which are then easier to solve). Here is the basic idea. To a function $f(t)$, we will associate another function $\LA{f(t)}$ called its \emph{Laplace transform}\index{Laplace transform}, which is a function of another variable $s$. We will think of the Laplace transform of $f$ as another function that is its evil twin\index{evil twin}. We might write something like $F(s) = \LA{f(t)}(s)$ to say that the function $F$ with input variable $s$ is the Laplace transform of the function $f$ whose input variable is $t$; the $\La$ is telling us the function $F$ we are specifying is the Laplace transform of $f$. The upshot is that derivatives in regular world will correspond to multiplication by $s$ in Laplace transform (evil twin) world.
 
-\begin{comment}
+
 
 \Nov{1}
 
@@ -2021,8 +2021,10 @@ This is a function of $s$, because for every different value of $s$ we choose, w
 
 
 \begin{ex} Let's compute $\LA{1}$ from the definition:
-\[ \LA{1}(s) = \int_0^\infty e^{-st} \cdot 1 \, dt = \left[ \frac{-1}{s} e^{-st} \right]_{0}^{\infty} = \lim_{t\to\infty}\frac{-1}{s} e^{-st} - \left(\frac{-1}{s}\right) =  \frac{1}{s},\]
-for $s>0$.
+\[ \LA{1}(s) = \int_0^\infty e^{-st} \cdot 1 \, dt = \left[ \frac{-1}{s} e^{-st} \right]_{0}^{\infty} = \lim_{t\to\infty}\frac{-1}{s} e^{-st} - \left(\frac{-1}{s}\right)\]
+For $s>0$, the limit $\lim_{t\to\infty}\frac{-1}{s} e^{-st}$ is zero, while for $s \leq 0$, the limit $\lim_{t\to\infty}\frac{-1}{s} e^{-st}$ does not exist. We conclude that
+\[ \LA{1}(s) = \frac{1}{s}\]
+on the domain $s>0$.
 \end{ex}
 
 \begin{ex} Let's compute $\LA{e^{5t}}$ from the definition, for some real number $r\neq 0$:
@@ -2031,19 +2033,6 @@ for $s>5$.
 
 By basically the same computation, $\LA{e^{at}} = \frac{1}{s-a}$ for any real number $a\neq 0$ on the domain $s>a$.
 \end{ex}
-
-It is not clear that these indefinite integrals should always converge. They don't always!
-\begin{ex}
-The function $f(t)= e^{t^2}$ does not have a Laplace transform:
-\[ \LA{e^{t^2}}(s) =  \int_0^\infty e^{-st} \cdot e^{t^2} \, dt = \int_0^s e^{t^2-st}  \, dt + \int_s^\infty e^{t^2-st}  \, dt,\]
-which diverges since for $t\geq s$ , $t^2-st\geq 0$ and hence $e^{t^2-st}\geq 1$.
-\end{ex}
-
- However:
-\begin{fact}
-Given a function $f(t)$, if there is some exponential function $e^{at}$ such that $f(t)\leq e^{at}$ for all sufficiently large values of $t$, then $f$ has a Laplace transform, meaning that the integrals involved in computing the Laplace transforms converge.
-\end{fact}
-
 
 \renewcommand{\arraystretch}{2.5}
 
@@ -2063,11 +2052,10 @@ $1$ &$ \displaystyle\frac{1}{s} \quad \ (s>0)$
  \\  \hline
    $\cos(kt)$ & $ \displaystyle\frac{s}{s^2 + k^2} \quad (s>0)$
  \\  \hline
-   $\sinh(kt)$ & $ \displaystyle\frac{k}{s^2 - k^2} \quad (s>k)$
- \\  \hline
-   $\cosh(kt)$ & $ \displaystyle\frac{s}{s^2 - k^2} \quad (s>k)$
- \\  \hline
-
+%   $\sinh(kt)$ & $ \displaystyle\frac{k}{s^2 - k^2} \quad (s>k)$
+% \\  \hline
+%   $\cosh(kt)$ & $ \displaystyle\frac{s}{s^2 - k^2} \quad (s>k)$
+% \\  \hline
 \end{tabular}
 \end{center}
 
@@ -2077,6 +2065,10 @@ We will take these as the building blocks. We can also take Laplace transforms o
 If $f_1(t)$ and $f_2(t)$ are functions whose Laplace transforms we know, and $c_1, c_2$ are constants, then
 \begin{align*} \LA{c_1 f_1(t) &+ c_2 f_2(t)}(s) = \int_0^\infty e^{-st} (c_1 f_1(t) + c_2 f_2(t))\, dt \\&= \int_0^\infty c_1 e^{-st}  f_1(t) + c_2 e^{-st}f_2(t))\, dt \\&= 
 c_1 \int_0^\infty  e^{-st}  f_1(t) \, dt + c_2  \int_0^\infty  e^{-st}f_2(t))\, dt \\&= c_1 \LA{f_1(t)}(s) + c_2 \LA{f_2(t)} (s)\end{align*}
+
+That is, Laplace transforms satisfy the same ``sum rule'' and ``constant rule'' that integrals satisfy.
+
+
 
 \subsection*{Discussion Questions}
 
@@ -2118,6 +2110,26 @@ The \emph{inverse Laplace transform}\index{inverse Laplace transform} of a funct
 Thus, $f(t) = \LAi{F(s)}$ $\Leftrightarrow$ $F(s) = \LA{f(t)}$.
 
 To compute inverse Laplace transforms, we can read our table of Laplace transforms from right to left and use the fact that the inverse Laplace transform behaves well with superpositions.
+
+\begin{comment}
+\begin{ex}
+\[\begin{aligned} \LAi{\frac{2s+7}{s^2+16}} &= 2 \LAi{\frac{s}{s^2+16}} + 7 \LAi{\frac{1}{s^2+16}} \\&= 2 \LAi{\frac{s}{s^2+16}} + \frac{7}{4} \LAi{\frac{4}{s^2+16}} = 2 \cos(4t) + \frac{7}{4}\sin(4t).\end{aligned}\]
+\end{ex}
+
+
+It is not clear that these indefinite integrals should always converge. They don't always!
+\begin{ex}
+The function $f(t)= e^{t^2}$ does not have a Laplace transform:
+\[ \LA{e^{t^2}}(s) =  \int_0^\infty e^{-st} \cdot e^{t^2} \, dt = \int_0^s e^{t^2-st}  \, dt + \int_s^\infty e^{t^2-st}  \, dt,\]
+which diverges since for $t\geq s$ , $t^2-st\geq 0$ and hence $e^{t^2-st}\geq 1$.
+\end{ex}
+
+ However:
+\begin{fact}
+Given a piecewise continuous function $f(t)$, if there is some exponential function $e^{at}$ such that $f(t)\leq e^{at}$ for all sufficiently large values of $t$, then $f$ has a Laplace transform, meaning that the integrals involved in computing the Laplace transforms converge for all sufficiently large $s$.
+\end{fact}
+
+
 
 Now we discuss the main point behind Laplace transforms. Let's take a function $f(t)$ and its derivative $f'(t)$ and compute the Laplace transform of the derivative. By the definition:
 
