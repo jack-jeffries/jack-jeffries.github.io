@@ -2608,7 +2608,7 @@ So long as $\e<7$, it is impossible for Player 2.
 
 
 
-\item Consider the function $\ds g(x)=\frac{2x^2-2}{x-1}$. It is true that $\lim_{x\to 1}  g(x) = 4$.
+\item Consider the function $\ds g(x)=\frac{2x^2-2}{x-1}$. It is true that ${\lim_{x\to 1}  g(x) = 4}$.
 \begin{enumerate}
 \item I claim that for $\e=3$, the choice $\delta=1.5$ ``works'' to make the rest of the definition true. Verify this.
 \item Find a $\delta$ that ``works'' for $\e=1$.
@@ -2633,7 +2633,7 @@ Let $\d>0$. Take $x=1+\d/2$. Then $|x-1|=\d/2$ is between $0$ and $\delta$, and 
 \end{enumerate}
 
 
-\begin{comment}
+
 \Nov{1}
 
 
@@ -2654,7 +2654,7 @@ Let $\d = \frac{\e}{5}$. Pick $x$ such that $0 < |x-1| < \d$. Then $x \ne 1$ and
 $$
 \begin{aligned}
 |f(x) &- 10|  =  \left|\frac{5x^2-5}{x-1} - 10\right|=  \left|\frac{5x^2-5-10x+10}{x-1}\right|  =  \left|\frac{5x^2-10x + 5}{x-1}\right| \\ 
-& =  \left|\frac{5(x^2-2x +1)}{x-1}\right| =  \left|\frac{5(x-1)^2 }{x-1}\right|  =  |5x-5|  =  5|x-1| < 5 \d  = \e \\
+& =  \left|\frac{5(x^2-2x +1)}{x-1}\right| =  \left|\frac{5(x-1)^2 }{x-1}\right|  =  |5x-5|  =  5|x-1| < 5 \d  = \e. \\
 \end{aligned}
 $$
 We have shown that for any $\e>0$ there is a $\d>0$ such that 
@@ -2662,13 +2662,12 @@ if $0 < |x-1|< \d$, then $f$ is defined at $x$ and $|f(x) - 10| < \e$. This prov
 \end{ex}
 
 
-Note that in order for the limit of $f$ at $a$ to exist,
-we need in particular that there is a $\d > 0$ such that $f$ is defined at every point on $(a-\d, a)$ and $(a, a+ \d)$. Loosely, $f$ needs to be defined
-at all points near, but not necessarily equal to, $a$. If the domain of $f$ is $\R$ or  $\R \setminus \{a\}$, this condition is automatic.
-
-The more important condition is that if $0 < |x-a| < \d$, then $|f(x) - L| < \e$. Intuitively, this is saying that no matter how small of a positive number $\e$ you pick,
-if you only look at  inputs very close to (but not equal to) $a$,
-the function values at these inputs are within a distance of $\e$ of the limiting value $L$. 
+%Note that in order for the limit of $f$ at $a$ to exist,
+%we need in particular that there is a $\d > 0$ such that $f$ is defined at every point on $(a-\d, a)$ and $(a, a+ \d)$. Loosely, $f$ needs to be defined
+%at all points near, but not necessarily equal to, $a$. If the domain of $f$ is $\R$ or  $\R \setminus \{a\}$, this condition is automatic.
+%The more important condition is that if $0 < |x-a| < \d$, then $|f(x) - L| < \e$. Intuitively, this is saying that no matter how small of a positive number $\e$ you pick,
+%if you only look at  inputs very close to (but not equal to) $a$,
+%the function values at these inputs are within a distance of $\e$ of the limiting value $L$. 
 
 
 \begin{ex} Let's do a more complicated example: Let $f(x) = x^2$ with  domain all of $\R$. I claim that $\lim_{x \to 2} x^2 = 4$. This is intuitively
@@ -2682,7 +2681,7 @@ the function values at these inputs are within a distance of $\e$ of the limitin
 is equivalent to $|x-2||x+2| < \e$. We can make $|x-2|$ arbitrarily small by making $\d$
 aribitrarily small, but how can we handle $|x+2|$? The trick is to bound it appropriately. This can be done in many ways. Certainly we can choose $\d$ to
 be at most $1$, so that if $|x-2| < \d$ then $|x-2| < 1$ and hence $1 < x < 3$, so that $|x+2| < 5$. So, we will be allowed to assume $|x+2| < 5$. Then
-$|x-2||x+2| < 5 |x-2|$ and $5 |x-2| < \e$ provided $|x-2| < \frac{\e}{5}$. Back to the formal proof...)
+$|x-2||x+2| < 5 |x-2|$ and $5 |x-2| < \e$ provided $|x-2| < \frac{\e}{5}$. Back to the formal proof\dots)
 
 Let $\d = \min\{\frac{\e}{5}, 1\}$. Let $x$ be any real number such that  ${0 < |x-2| < \d}$. Then certainly $f$ is defined at $x$. 
 Since $\d \leq 1$ we get $|x-2| < 1$ and hence $|x+2| \leq
@@ -2824,10 +2823,10 @@ the sequence $\{x_n\}_{n=1}^\infty$ converges to $a$. (b) This holds by construc
 
 We can use this Corollary to compute limits.
 
-\begin{ex} Let $f(x) = \sin(1/x)$. We claim that $\lim_{x\to 0} f(x)$ does not exist. (We proved this using the definition on a worksheet earlier, but we give a second proof here.) Since the domain of $f$ is $\R \smallsetminus \{0\}$, Corollary~\ref{cor:261} applies. Consider the sequence given by $\displaystyle x_n = \frac{1}{\pi n + \frac{\pi}{2}}$. We have $x_n\neq 0$ for all $x$, and $\{x_n\}_{n=1}^\infty$ converges to $0$. Thus, by Corollary~\ref{cor:261}, if $\lim_{x\to 0} f(x) = L$, then $\{f(x_n)\}_{n=1}^\infty$ converges to $L$, and in particular, is convergent. But \[ f(x_n) = \begin{cases}  -1 & \textrm{if} \ n \ \textrm{is odd}\\
-1 & \textrm{if} \ n \ \textrm{is even},\end{cases}\]
-so $\{f(x_n)\}_{n=1}^\infty$  is divergent. It follows that $\lim_{x\to 0} f(x) = L$ does not exist.
-\end{ex} 
+%\begin{ex} Let $f(x) = \sin(1/x)$. We claim that $\lim_{x\to 0} f(x)$ does not exist. (We proved this using the definition on a worksheet earlier, but we give a second proof here.) Since the domain of $f$ is $\R \smallsetminus \{0\}$, Corollary~\ref{cor:261} applies. Consider the sequence given by $\displaystyle x_n = \frac{1}{\pi n + \frac{\pi}{2}}$. We have $x_n\neq 0$ for all $x$, and $\{x_n\}_{n=1}^\infty$ converges to $0$. Thus, by Corollary~\ref{cor:261}, if $\lim_{x\to 0} f(x) = L$, then $\{f(x_n)\}_{n=1}^\infty$ converges to $L$, and in particular, is convergent. But \[ f(x_n) = \begin{cases}  -1 & \textrm{if} \ n \ \textrm{is odd}\\
+%1 & \textrm{if} \ n \ \textrm{is even},\end{cases}\]
+%so $\{f(x_n)\}_{n=1}^\infty$  is divergent. It follows that $\lim_{x\to 0} f(x) = L$ does not exist.
+%\end{ex} 
 
 \begin{ex} 
 Consider the function $f:\R\to\R$ given by the rule
@@ -2845,46 +2844,46 @@ Consider the function $f:\R\to\R$ given by the rule
 		$L = \lim_{n \to \infty} f(y_n)$. But $f(y_n) = 1$ for all $n$ by definition, and hence $L = 0$. This is impossible.
 		\end{ex}
 
-We can also use Theorem~\ref{lem228} to deduce some results about limits that are analogous to earlier results about sequences.
-
-\begin{thm} \label{thm33b}
-	Suppose $f$ and $g$ are two functions and that $a$ is a real number, and
-	assume  that 
-	$$
-	\lim_{x \to a} f(x) = L \and \lim_{x \to a} g(x) = M
-	$$
-	for some real numbers $L$ and $M$. Then
-	\begin{enumerate}
-		\item $\lim_{x \to a} (f(x) + g(x)) = L  + M$.
-		\item For any real number $c$, $\lim_{x \to a} (c \cdot f(x)) = c \cdot L$.
-		\item $\lim_{x \to a} (f(x) \cdot g(x)) = L \cdot M$.
-		\item If, in addition, we have that $M \ne 0$,
-		then $\lim_{x \to a} (f(x)/g(x)) = L/M$.
-	\end{enumerate}
-\end{thm}
-
-
-\begin{proof} Each part follows  from  Theorem \ref{lem228} and the corresponding theorem about sums, products, and quotients of sequences (Theorem~\ref{thm99}). We give the details just for one of them, part (3):
-	
-	First, as a technical matter, we note that since we assume
-	${\lim_{x \to a} f(x) = L}$ there is a positive real number $r_1$ such that $f(x)$ is defined for all $x$ satisfying $0 < |x-a| < r_1$,
-	and likewise since
-	$\lim_{x \to a} g(x) = L$ there is a positive real number $r_2$ such that $g(x)$ is defined for all $x$ satisfying $0 < |x-a| < r_1$. Letting $r = \min\{r_1, r_2\}$,
-	we have that $r > 0$ and $f(x)$ and $g(x)$ and hence $f(x) \cdot g(x)$ are defined for all $x$ satisfying $0 < |x-a| < r$.  (We needed to prove this in order to apply Theorem~\ref{lem228}.)
-	
-	
-	Let $\{x_n\}_{n=1}^\infty$ be any sequence converging to $a$ such that  ${0 < |x_n -a| < r}$ for all $n$. 
-	By  Theorem~\ref{lem228} in the ``forward direction'', we have that  $\lim_{n \to \infty} f(x_n) = L$ and $\lim_{n \to \infty} g(x_n) = M$. By Theorem \ref{thm99}, \\
-	${\lim_{n \to \infty} f(x_n) g(x_n) = L \cdot M}$. 
-	So, by  Theorem~\ref{lem228} again (this time applying it to $f(x) g(x)$ and using the ``backward
-	implication''), it follows that
-	$\lim_{x \to a} (f(x) \cdot g(x)) = L \cdot M$.
-\end{proof}
-
-\begin{ex} We can use this theorem to compute $\displaystyle \lim_{x\to 2} \frac{3x^2-x+2}{x+3}$. Indeed, since $\lim_{x\to 2} x = 2$, and  $\lim_{x\to 2} 1 = 1$, we have
-$\lim_{x\to 2} 3 x^2 = 3\lim_{x\to 2} x^2 = 3 (\lim_{x\to 2} x)(\lim_{x\to 2} x ) = 12$, and from earlier computations, $\lim_{x\to 2} (-x+2) = (-2) + 2 = 0$ and $\lim_{x\to 2} x+3 = 2+3 = 5$, so  
-$\lim_{x\to 2} 3 x^2 -x+2 = 12$, and $\displaystyle \lim_{x\to 2} \frac{3x^2-x+2}{x+3} = \frac{12}{5}$.
-\end{ex}
+%We can also use Theorem~\ref{lem228} to deduce some results about limits that are analogous to earlier results about sequences.
+%
+%\begin{thm} \label{thm33b}
+%	Suppose $f$ and $g$ are two functions and that $a$ is a real number, and
+%	assume  that 
+%	$$
+%	\lim_{x \to a} f(x) = L \and \lim_{x \to a} g(x) = M
+%	$$
+%	for some real numbers $L$ and $M$. Then
+%	\begin{enumerate}
+%		\item $\lim_{x \to a} (f(x) + g(x)) = L  + M$.
+%		\item For any real number $c$, $\lim_{x \to a} (c \cdot f(x)) = c \cdot L$.
+%		\item $\lim_{x \to a} (f(x) \cdot g(x)) = L \cdot M$.
+%		\item If, in addition, we have that $M \ne 0$,
+%		then $\lim_{x \to a} (f(x)/g(x)) = L/M$.
+%	\end{enumerate}
+%\end{thm}
+%
+%
+%\begin{proof} Each part follows  from  Theorem \ref{lem228} and the corresponding theorem about sums, products, and quotients of sequences (Theorem~\ref{thm99}). We give the details just for one of them, part (3):
+%	
+%	First, as a technical matter, we note that since we assume
+%	${\lim_{x \to a} f(x) = L}$ there is a positive real number $r_1$ such that $f(x)$ is defined for all $x$ satisfying $0 < |x-a| < r_1$,
+%	and likewise since
+%	$\lim_{x \to a} g(x) = L$ there is a positive real number $r_2$ such that $g(x)$ is defined for all $x$ satisfying $0 < |x-a| < r_1$. Letting $r = \min\{r_1, r_2\}$,
+%	we have that $r > 0$ and $f(x)$ and $g(x)$ and hence $f(x) \cdot g(x)$ are defined for all $x$ satisfying $0 < |x-a| < r$.  (We needed to prove this in order to apply Theorem~\ref{lem228}.)
+%	
+%	
+%	Let $\{x_n\}_{n=1}^\infty$ be any sequence converging to $a$ such that  ${0 < |x_n -a| < r}$ for all $n$. 
+%	By  Theorem~\ref{lem228} in the ``forward direction'', we have that  $\lim_{n \to \infty} f(x_n) = L$ and $\lim_{n \to \infty} g(x_n) = M$. By Theorem \ref{thm99}, \\
+%	${\lim_{n \to \infty} f(x_n) g(x_n) = L \cdot M}$. 
+%	So, by  Theorem~\ref{lem228} again (this time applying it to $f(x) g(x)$ and using the ``backward
+%	implication''), it follows that
+%	$\lim_{x \to a} (f(x) \cdot g(x)) = L \cdot M$.
+%\end{proof}
+%
+%\begin{ex} We can use this theorem to compute $\displaystyle \lim_{x\to 2} \frac{3x^2-x+2}{x+3}$. Indeed, since $\lim_{x\to 2} x = 2$, and  $\lim_{x\to 2} 1 = 1$, we have
+%\[\lim_{x\to 2} 3 x^2 = 3\lim_{x\to 2} x^2 = 3 (\lim_{x\to 2} x)(\lim_{x\to 2} x ) = 12,\] and from earlier computations, $\lim_{x\to 2} (-x+2) = (-2) + 2 = 0$ and $\lim_{x\to 2} x+3 = 2+3 = 5$, so  
+%$\lim_{x\to 2} 3 x^2 -x+2 = 12$, and \[\displaystyle \lim_{x\to 2} \frac{3x^2-x+2}{x+3} = \frac{12}{5}.\]
+%\end{ex}
 
 Here is another example of the same idea.
 
@@ -2892,7 +2891,7 @@ Here is another example of the same idea.
 	such that \begin{enumerate}
 		\item each of $f,g,h$ is defined on $\{x \in \R \mid 0 < |x-a| < r\}$,
 		\item $f(x) \leq g(x) \leq h(x)$ for all
-		$x$ such that $0 < |x-a| < r$,
+		$x$ such that $0 < |x-a| < r$, nad
 		\item	$\lim_{x \to a} f(x) = L = \lim_{x \to    a} h(x)$ for some number $L$.
 	\end{enumerate}  
 	Then $\lim_{x \to a} g(x) = L$.
@@ -2903,11 +2902,11 @@ Here is another example of the same idea.
 		
 
 
-%\begin{ex} We claim that $\lim_{x\to 0} x\sin(1/x) = 0$. Indeed, for all $x\neq 0$, since $|\sin(1/x)| \leq 1$ we have \[ |x \sin(1/x)| = |x| |\sin(1/x) | \leq |x|, \ \text{so}\]
-%\[ -|x| \leq x\sin(1/x) \leq |x|.\]
-%By the quiz, we have $\lim_{x\to 0} |x| = 0$, and using Theorem~\ref{thm33b}, we have 
-%$\lim_{x\to 0} - |x| = -0 = 0$. Thus, by the Squeeze Theorem, the result holds.
-%\end{ex}
+\begin{ex} We claim that $\lim_{x\to 0} x\sin(1/x) = 0$. Indeed, for all $x\neq 0$, since $|\sin(1/x)| \leq 1$ we have \[ |x \sin(1/x)| = |x| |\sin(1/x) | \leq |x|, \ \text{so}\]
+\[ -|x| \leq x\sin(1/x) \leq |x|.\]
+By the quiz, we have $\lim_{x\to 0} |x| = 0$, and using Theorem~\ref{thm33b}, we have 
+$\lim_{x\to 0} - |x| = -0 = 0$. Thus, by the Squeeze Theorem, the result holds.
+\end{ex}
 
 \Nov{1}
 
@@ -2946,7 +2945,7 @@ f(x) = \begin{cases}
 -x  & \text{ if $x < 3$} \\
 \end{cases}
 $$
-is not continuous at $3$. Since the domain of $f$ is all of $\R$, the negation of the defintion of ``continuous at $3$'' is:
+is not continuous at $3$. Since the domain of $f$ is all of $\R$, the negation of the definition of ``continuous at $3$'' is:
 \begin{quote}
 there is an $\e > 0$ such that for every $\d > 0$ there is a real number $x$ such that $|x-3| < \d$ and $|f(x) - f(3)| \geq \e$. 
 \end{quote}

@@ -2112,6 +2112,9 @@ Thus, $f(t) = \LAi{F(s)}$ $\Leftrightarrow$ $F(s) = \LA{f(t)}$.
 To compute inverse Laplace transforms, we can read our table of Laplace transforms from right to left and use the fact that the inverse Laplace transform behaves well with superpositions.
 
 \begin{comment}
+
+\Nov{3}
+
 \begin{ex}
 \[\begin{aligned} \LAi{\frac{2s+7}{s^2+16}} &= 2 \LAi{\frac{s}{s^2+16}} + 7 \LAi{\frac{1}{s^2+16}} \\&= 2 \LAi{\frac{s}{s^2+16}} + \frac{7}{4} \LAi{\frac{4}{s^2+16}} = 2 \cos(4t) + \frac{7}{4}\sin(4t).\end{aligned}\]
 \end{ex}
@@ -2162,6 +2165,31 @@ For convenience we will use $Y$($=Y(s)$) for $\LA{y}$.
 Then we translate back to actual functions with the inverse Laplace transform:
 \[ \rsa y = \LAi{\frac{5}{s-2}} = 5 \LAi{\frac{1}{s-2}} = 5 e^{2t}.\]
 \end{ex}
+
+We will often get fraction equations when applying this method, so we might need to apply partial fractions.
+
+\subsection*{Quick review of partial fractions}
+Given a rational function $\frac{p(x)}{q(x)}$ with $\deg(p)<\deg(q)$, we can often use partial fractions to write this as a sum of fractions with simpler denominators.
+
+\begin{itemize}
+\item When $q(x) = L_1 L_2$ has two linear factors, we write
+\[ \frac{p(x)}{q(x)} = \frac{A}{L_1} + \frac{B}{L_2}.\]
+Then clear denominators and solve for $A$ and $B$:
+\[ p(x) = A L_2 + B L_1.\]
+We can either just make a constant coefficient equation and an $x$-coefficient equation and solve that system for $A$ and $B$, or we cna be more clever and plug in $x=$ root of $L_1$ and $x=$ root of $L_2$ to get simple equations.
+
+For example,
+\[ \frac{5x+4}{x(x-2)} = \frac{A}{x} + \frac{B}{x-2}\]
+\[\rsa 5x+4 = A(x-2) + Bx.\]
+Let's be clever: plug in $x=0$
+\[ \rsa 4 = 5\cdot 0 + 4 = A (0-2) + B \cdot 0 = -2A \rsa A=-2\]
+and $x=2$
+\[ \rsa 14 = 5 \cdot 2  + 4 = A (2-2) + B \cdot 2 = 2B \rsa B=7\]
+so
+\[ \frac{5x+4}{x(x-2)} = \frac{-2}{x} + \frac{7}{x-2}.\]
+
+\item 
+\end{itemize}
 
 \begin{ex}
 Consider the IVP
