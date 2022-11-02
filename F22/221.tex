@@ -2110,8 +2110,8 @@ The \emph{inverse Laplace transform}\index{inverse Laplace transform} of a funct
 Thus, $f(t) = \LAi{F(s)}$ $\Leftrightarrow$ $F(s) = \LA{f(t)}$.
 
 To compute inverse Laplace transforms, we can read our table of Laplace transforms from right to left and use the fact that the inverse Laplace transform behaves well with superpositions.
-
 \begin{comment}
+
 
 \Nov{3}
 
@@ -2169,14 +2169,14 @@ Then we translate back to actual functions with the inverse Laplace transform:
 We will often get fraction equations when applying this method, so we might need to apply partial fractions.
 
 \subsection*{Quick review of partial fractions}
-Given a rational function $\frac{p(x)}{q(x)}$ with $\deg(p)<\deg(q)$, we can often use partial fractions to write this as a sum of fractions with simpler denominators.
+Given a rational function $\frac{p(x)}{q(x)}$ with $\deg(p)<\deg(q)$, we can often use partial fractions\index{partial fractions} to write this as a sum of fractions with simpler denominators.
 
 \begin{itemize}
-\item When $q(x) = L_1 L_2$ has two linear factors, we write
+\item When $q(x) = L_1 L_2$ has two distinct linear factors, we write
 \[ \frac{p(x)}{q(x)} = \frac{A}{L_1} + \frac{B}{L_2}.\]
 Then clear denominators and solve for $A$ and $B$:
 \[ p(x) = A L_2 + B L_1.\]
-We can either just make a constant coefficient equation and an $x$-coefficient equation and solve that system for $A$ and $B$, or we cna be more clever and plug in $x=$ root of $L_1$ and $x=$ root of $L_2$ to get simple equations.
+We can either just make a constant coefficient equation and an $x$-coefficient equation and solve that system for $A$ and $B$, or we can be more clever and plug in $x=$ root of $L_1$ and $x=$ root of $L_2$ to get simple equations.
 
 For example,
 \[ \frac{5x+4}{x(x-2)} = \frac{A}{x} + \frac{B}{x-2}\]
@@ -2188,8 +2188,30 @@ and $x=2$
 so
 \[ \frac{5x+4}{x(x-2)} = \frac{-2}{x} + \frac{7}{x-2}.\]
 
-\item 
+\item When $q(x) = L_1 Q_1$ has a linear and an irreducible quadratic factor, we write
+\[ \frac{p(x)}{q(x)} = \frac{A}{L_1} + \frac{Bx+C}{Q_1}.\]
+Then clear denominators and solve for $A,B,$ and $C$:
+\[ p(x) = A Q_1 + (Bx+C) L_1.\]
+We can either just make a system of equations for the $1,x,x^2$-coefficients, or we can be more clever and plug in $x=$ root of $L_1$ to get started.
+
+For example,
+\[ \frac{1}{(x-1)(x^2+9)}= \frac{A}{x-1} + \frac{Bx+C}{x^2+9}\]
+\[ \rsa 1= A(x^2+9) + (Bx+C)(x-1).\]
+To be clever, plug in $x=1$ to get
+\[ 1 = A(1^2+9) + (B \cdots 1 + C) (1-1) = 10 A \rsa A=\frac{1}{10}.\]
+Then 
+\[1= \frac{1}{10}(x^2+9) + (Bx+C)(x-1) = (\frac{1}{10} + B) x^2 + (C-B) x + (\frac{9}{10} - C)\]
+so $C-B=0$ so $B=C$, and $B+\frac{1}{10} = 0$, so $B=C=-\frac{1}{10}$. Thus,
+\[\frac{1}{(x-1)(x^2+9)}= \frac{\frac{1}{10}}{x-1} - \frac{\frac{1}{10}x+\frac{1}{10}}{x^2+9}.\]
+
+\item When $q(x)=L_1^2$ has a double linear factor,  we write
+\[ \frac{p(x)}{q(x)} = \frac{A}{L_1} + \frac{B}{L_1^2}.\]
+Again clear denominators to get
+\[ p(x) = A L_1 + B\]
+and solve for $A,B$. You can plug in the root of $L_1$ for $x$ to get  $B$ if you want to be clever.
 \end{itemize}
+
+\subsection*{Solving IVPs with Laplace transforms}
 
 \begin{ex}
 Consider the IVP
@@ -2202,12 +2224,29 @@ For convenience we will again use $Y$($=Y(s)$) for $\LA{y}$.
 \[ \rsa (sY - 5) - 2 Y =\frac{4}{s}\]
 \[ \rsa (s-2)Y = 5+\frac{4}{s} = \frac{5s+4}{s}\]
 \[ \rsa Y = \frac{5s+4}{s(s-2)}.\]
-To prepare for computing the inverse Laplace transform, we use partial fractions. We write the right hand side as
-\[ \frac{5s+4}{s(s-2)} = \frac{A}{s} + \frac{B}{s-2} = \frac{(s-2)A + sB}{s(s-2)}\]
-so $-2A=4$, and $A=-2$, and $A+B=5$, so $B=7$. That is
+
+To prepare for computing the inverse Laplace transform, we use partial fractions. We did this example above!
 \[ \frac{5s+4}{s(s-2)} = \frac{-2}{s} + \frac{7}{s-2}.\]
 Then we translate back to actual functions with the inverse Laplace transform:
 \[ \rsa y = \LAi{\frac{-2}{s} + \frac{7}{s-2}} = -2 \LAi{\frac{1}{s}} + 7 \LAi{\frac{1}{s-2}} = -2 + 7e^{2t}.\]
+\end{ex}
+
+\begin{ex}
+Consider the IVP
+\[ \begin{cases} y'' +9y = e^t \\ y(0) = 0 \\ y'(0)=0\end{cases}.\]
+Let's apply Laplace transforms to both sides:
+\[ \LA{  y'' +9y = e^t} = \LA{e^t}\]
+\[\rsa \LA{y''} + 9 \LA{y} = \frac{1}{s-1}\]
+For convenience we will again use $Y$($=Y(s)$) for $\LA{y}$.
+\[ \rsa (s^2Y - sy(0)-y'(0)) +9 Y =\frac{1}{s-1}\]
+\[ \rsa (s^2+9)Y=\frac{1}{s-1}\]
+\[ \rsa Y =\frac{1}{(s-1)(s^2+9)}\]
+
+To prepare for computing the inverse Laplace transform, we use partial fractions. We did this example above!
+\[ \frac{1}{(s-1)(s^2+9)} = \frac{\frac{1}{10}}{s-1} - \frac{\frac{1}{10}x+\frac{1}{10}}{s^2+9}. \]
+Then we translate back to actual functions with the inverse Laplace transform:
+\begin{align*} y &= \LAi{\frac{\frac{1}{10}}{s-1} - \frac{\frac{1}{10}s+\frac{1}{10}}{s^2+9}} \\&=\frac{1}{10} \LAi{\frac{1}{s-1}} - \frac{1}{10} \LAi{\frac{s}{s^2+9}}  - \frac{1}{30} \LAi{\frac{3}{s^2+9}} \\&= \frac{1}{10} e^t- \frac{1}{10} \cos(3t)-\frac{1}{30} \sin(3t).
+\end{align*}
 \end{ex}
 
 \begin{comment}
