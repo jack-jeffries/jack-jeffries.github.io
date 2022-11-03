@@ -2110,14 +2110,14 @@ The \emph{inverse Laplace transform}\index{inverse Laplace transform} of a funct
 Thus, $f(t) = \LAi{F(s)}$ $\Leftrightarrow$ $F(s) = \LA{f(t)}$.
 
 To compute inverse Laplace transforms, we can read our table of Laplace transforms from right to left and use the fact that the inverse Laplace transform behaves well with superpositions.
-\begin{comment}
+
 
 
 \Nov{3}
 
-\begin{ex}
-\[\begin{aligned} \LAi{\frac{2s+7}{s^2+16}} &= 2 \LAi{\frac{s}{s^2+16}} + 7 \LAi{\frac{1}{s^2+16}} \\&= 2 \LAi{\frac{s}{s^2+16}} + \frac{7}{4} \LAi{\frac{4}{s^2+16}} = 2 \cos(4t) + \frac{7}{4}\sin(4t).\end{aligned}\]
-\end{ex}
+%\begin{ex}
+%\[\begin{aligned} \LAi{\frac{2s+7}{s^2+16}} &= 2 \LAi{\frac{s}{s^2+16}} + 7 \LAi{\frac{1}{s^2+16}} \\&= 2 \LAi{\frac{s}{s^2+16}} + \frac{7}{4} \LAi{\frac{4}{s^2+16}} = 2 \cos(4t) + \frac{7}{4}\sin(4t).\end{aligned}\]
+%\end{ex}
 
 
 It is not clear that these indefinite integrals should always converge. They don't always!
@@ -2146,7 +2146,10 @@ In shorthand if we put $F(s)$ for $\LA{f(t)}(s)$, this reads
 What's the point of this calculation? Derivatives in the regular world translate into multiplication by $s$ in Laplace transformation world!
 
 If we repeat this calculation, we get
-\[ \LA{f''(t)}(s) = s^2 \LA{f(t)}(s) - s f(0) - f'(0)\]
+\begin{align*}
+\LA{f''(t)}(s) &= s \LA{f'(t)}(s) - f'(0)\\&= s( \LA{f(t)}(s) - f(0) ) - f'(0)\\
+&= s^2 \LA{f(t)}(s) - s f(0) - f'(0)
+\end{align*}
 and in general
 \[ \LA{f^{(n)}(t)}(s) = s^n \LA{f(t)}(s) - s^{n-1} f(0) - s^{n-2} f'(0) - \cdots - f^{(n-1)}(0).\]
 
