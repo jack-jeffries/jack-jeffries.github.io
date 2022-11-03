@@ -2,7 +2,7 @@
 
 
 \usepackage{times}
-\usepackage[margin=.8in]{geometry}
+\usepackage[margin=.9in]{geometry}
 \usepackage{amsmath,amssymb,multicol,graphicx,framed,enumitem}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\N}{\mathbb{N}}
@@ -33,13 +33,9 @@
 	\thispagestyle{empty}
 	
 	\section*{Limits}
-
-\begin{enumerate}
-\item Use the definition to show that $\lim_{x\to 2}  | 2x-4 | = 0$.
-\end{enumerate}
-
-\begin{framed}
-\noindent From last time:
+	
+	\begin{framed}
+\noindent \textsc{From last time:}
 
 \
 
@@ -57,31 +53,13 @@ $\{x_n\}_{n=1}^\infty$ that converges to $a$ and satisfies $0 < |x_n - a| < r$ f
 \noindent \textbf{Corollary 18.5:}   Let $f$ be a function and $a$ and $L$ be real numbers. Suppose that the domain of $f$ is all of $\R$ or $\R \smallsetminus \{ a\}$. Then $\lim_{x \to a} f(x) = L$ if and only if for every sequence 
 	$\{x_n\}_{n=1}^\infty$ that converges to $a$ such that $x_n\neq a$ for all $n$, we have that the sequence $\{f(x_n)\}_{n=1}^\infty$ converges to~$L$. 
 	
+\noindent\hrulefill
+	
+	\noindent	\textsc{New stuff:}
+	
 	\
 	
-\noindent	From the homework:
-
-\
-	
-	\noindent \textbf{Example (HW):} If $m,b,a\in \R$, then $\lim_{x\to a} \, mx+b = ma+b$. In particular, $\lim_{x\to a} \, b = b$ and $\lim_{x\to a} \, x = a$.
-\end{framed}
-
-\begin{enumerate} \setcounter{enumi}{1}
-
-\item Use Corollary 18.5 to show that $\ds \lim_{x\to 0} \cos\left(\frac{1}{x}\right)$ does not exist.\\
-Suggestion: Let $f(x)= \cos(\frac{1}{x})$ and suppose $\lim_{x\to 0} f(x) = L$. Find sequences $\{x_n\}_{n=1}$  and $\{y_n\}_{n=1}$ such that
-\begin{itemize}
-\item  $\{x_n\}_{n=1}$ and $\{y_n\}_{n=1}$ both converge to $0$,
-\item $f(x_n)=1$ for all $n$, and
-\item $f(y_n)=-1$ for all $n$.
-\end{itemize}
-What does this say about $L$?
-
-\end{enumerate}
-
-
-\begin{framed}
-\noindent \textbf{Theorem 19.1:} Suppose $f$ and $g$ are two functions and that $a$ is a real number, and
+	\noindent \textbf{Theorem 19.1. (Algebra and limits of functions):} Suppose $f$ and $g$ are two functions and that $a$ is a real number, and
 	assume  that 
 	$$
 	\lim_{x \to a} f(x) = L  \ \text{and} \  \lim_{x \to a} g(x) = M
@@ -94,16 +72,86 @@ What does this say about $L$?
 		\item If, in addition, we have that $M \ne 0$,
 		then $\lim_{x \to a} (f(x)/g(x)) = L/M$.
 	\end{enumerate}
+	
+	\
+	
+	\noindent \textbf{Theorem 19.2. (Squeeze Theorem for limits):}  Suppose $f$, $g$, and $h$ are three functions and $a$ is a real number. Suppose there is a positive real number $r > 0$
+	such that 
+	\begin{itemize}
+		\item each of $f,g,h$ is defined on $\{x \in \R \mid 0 < |x-a| < r\}$,
+		\item $f(x) \leq g(x) \leq h(x)$ for all
+		$x$ such that $0 < |x-a| < r$, and
+		\item	$\lim_{x \to a} f(x) = L = \lim_{x \to    a} h(x)$ for some number $L$.
+	\end{itemize}  
+	Then $\lim_{x \to a} g(x) = L$.
 \end{framed}
+
+
+
+\begin{enumerate}
+
+\item Use the $\e-\delta$ definition to show that $\lim_{x\to 0} \ |x| = 0$.
+
+\
+
+\item Let \[f(x)= \begin{cases} 1 \ &\text{if} \ x\in \Q \\ 0 \ &\text{if} \ x\in \Q \end{cases}\]
+Use the $\e-\delta$ definition to show that $\lim_{x\to a} f(x)$ does not exist for any real number $a\in \R$. 
+
+\
+
+ \noindent Suggestion: Fix $a\in \R$ and suppose that $\lim_{x\to a} f(x) = L$. Take $\e=\frac{1}{2}$. You may find Density of Rational/Irrational numbers helpful here.
+\end{enumerate}
 
 \begin{enumerate} \setcounter{enumi}{2}
 
-\item Use Theorem~19.1 plus Example~HW to compute $\ds \lim_{x\to 2} \frac{3x^2 - x +2}{x+3}$.
+\item Use Corollary 18.5 to show that $\ds \lim_{x\to 0} \sin\left(\frac{1}{x}\right)$ does not exist.\\
+Suggestion: Let $f(x)= \sin(\frac{1}{x})$ and suppose $\lim_{x\to 0} f(x) = L$. Find sequences $\{x_n\}_{n=1}$  and $\{y_n\}_{n=1}$ such that
+\begin{itemize}
+\item  $\{x_n\}_{n=1}$ and $\{y_n\}_{n=1}$ both converge to $0$,
+\item $f(x_n)=1$ for all $n$, and
+\item $f(y_n)=-1$ for all $n$.
+\end{itemize}
+You can use any trig facts on the bottom of the page.
+
+\
+
+\item Use Theorem~19.1 plus a homework problem\footnote{$\lim_{x\to a} \ mx+b = ma+b$. In particular, $\lim_{x\to a} \ x = a$ and $\lim_{x \to b} \ b = b$.}  to compute $\ds \lim_{x\to 2} \frac{3x^2 - x +2}{x+3}$.
+
+\
+
+\item Use Theorem~19.2 to show that $\displaystyle \lim_{x\to 0} x \sin\left(\frac{1}{x}\right)=0$. You can use any trig facts on the bottom of the page.
+
+\
+
+
+\item Use Theorem 18.4 to deduce Theorem~19.2 from our Squeeze Theorem for sequences.
 
 \
 
 \item Use Theorem 18.4 to deduce Theorem~19.1 part (1) from our Theorem~10.2 on algebra and sequences.
 
+\
+
+\item Use Theorem 18.4 to deduce Theorem~19.1 part (4) from our Theorem~10.2 on algebra and sequences.
+
+
+
+
+\vfill 
+
+{ \hrulefill
+\begin{multicols}{2}
+\footnotesize
+\begin{itemize}
+\item $-1 \leq \sin(x) \leq 1$ for all $x\in \R$
+\item $\sin(x) = 1$ $\Longleftrightarrow$ $x\in  \frac{\pi}{2} + 2\pi \Z$ 
+\item $\sin(x) = 0$ $\Longleftrightarrow$ $x\in \pi \Z$ 
+\item $\sin(x) = -1$ $\Longleftrightarrow$ $x\in  \frac{-\pi}{2} + 2\pi \Z$
+\item $\pi \notin \Q$
+\item $\sin(x) = \sin(y)$ $\Longleftrightarrow$ $x-y\in 2\pi \Z$ or $x+y\in \pi + 2\pi \Z$
+\end{itemize}
+\end{multicols}
+}
 \end{enumerate}
 
 \end{document}

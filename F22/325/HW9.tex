@@ -1,0 +1,131 @@
+
+\documentclass{amsart}
+\usepackage{amstext,amsfonts,amssymb,amscd,amsbsy,amsmath,framed}
+\usepackage{geometry}[margin=1in]
+\pagestyle{empty}
+%\parindent = 0in
+
+
+\def\sol#1{{\bf Solution: } #1}
+%\def\sol#1{}
+\def\bl{\vskip .1in}
+\def\star{${}^*$}
+\def\cS{\mathcal S}
+\def\cT{\mathcal T}
+\def\cB{\mathcal B}
+\def\e{\varepsilon}
+\def\R{\mathbb R}
+\def\N{\mathbb N}
+\def\Q{\mathbb Q}
+\def\Z{\mathbb Z}
+\def\ds{\displaystyle}
+
+\def\cC{\mathcal C}
+
+\def\e{\epsilon}
+\def\d{\delta}
+
+\begin{document}
+
+
+
+\begin{center}
+{\large\bfseries
+Math 325-002 --- Problem Set \#9 \\
+Due: Thursday, November 10 by 7 pm, on Canvas}
+\end{center}
+
+
+
+
+
+{\bf Instructions:} You are encouraged to work together on these
+problems, but each student should hand in their own final draft,
+written in a way that indicates their individual understanding of
+the solutions. Never submit something for grading
+that you do not completely understand. 
+
+If you do work with others, I ask that you write something along the
+top like ``I collaborated with Steven Smale on problems 1 and 3''.
+If you use a reference, indicate so clearly in your solutions. 
+In short, be intellectually
+honest at all times.
+
+Please write neatly, using complete sentences and correct
+punctuation. Label the problems clearly. 
+
+\begin{enumerate}
+
+\item Using any theorems and previously computed examples about limits, compute
+\[ \lim_{x\to 0} \  \left(\  \frac{ |x| }{x^2+5} + x \, \cos\left( \frac{ \sin(x)}{x^9} \right)\ \right).\]
+
+\
+
+\item Using just the $\e-\delta$ definition of limit, show that\footnote{Hint: You may want to use that $\displaystyle |\sqrt{x} - \sqrt{a} | = \frac{ |x-a| }{|\sqrt{x} + \sqrt{a} | }\leq\frac{ |x-a| }{|\sqrt{a} |}.$} for any $a>0$, $\lim_{x\to a} \sqrt{x} = \sqrt{a}$.
+
+\
+
+	\item Let $f(x)$ be the function with domain $\R$ given by the rule
+	\[ f(x) = \begin{cases} 1 &\textrm{if} \ x\in \Z, \, \textrm{and} \\ 
+		-1 &\text{if} \ x\notin \Z.\end{cases}\]
+		Prove that for any $a\in \R$, we have $\lim_{x \to a} f(x)=-1$.
+		
+		\
+		
+%			\item Let $f(x)$ be the function with domain $\R$ given by the rule
+%	\[ f(x) = \begin{cases} 1 &\textrm{if} \ x=\frac{1}{n} \ \textrm{for some} \ n\in \N, \, \textrm{and} \\ 
+%		-1 &\textrm{otherwise}.\end{cases}\]
+%		Prove that $\lim_{x \to 0} f(x)$ does not exist.
+		
+%				\
+		
+			\item Let $f(x)$ be the function with domain $\R$ given by the rule
+	\[ f(x) = \begin{cases} x &\text{if} \ x\in \Q, \, \textrm{and} \\ 
+		0 &\text{if} \ x\notin \Q.\end{cases}\]
+		\begin{enumerate}
+		\item Prove that $\lim_{x \to 0} f(x)=0$.
+		\item Prove that if $a\neq 0$, then $\lim_{x\to a} f(x)$ does not exist.
+	\end{enumerate}			
+\end{enumerate}
+
+\
+
+\noindent \textsc{Definition:} Let $f$ be a function and $a\in \R$. We say that \emph{the limit of $f(x)$ as $x$ approaches $a$ from the right is $L$} provided:
+\begin{quote} For every $\e>0$, there is some $\d>0$ such that for all $x$ satisfying $a<x<a+\d$, we have that $f$ is defined at $x$ and also that $|f(x) - L| < \e$.
+\end{quote}
+In this case, we write $\displaystyle \lim_{x\to a^+} f(x) = L$.
+
+\
+
+\begin{enumerate} \setcounter{enumi}{4}
+\item Use the definition to prove that $\lim_{x\to 0^+} \sqrt{x} = 0$.
+\end{enumerate}
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

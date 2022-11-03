@@ -2823,10 +2823,137 @@ the sequence $\{x_n\}_{n=1}^\infty$ converges to $a$. (b) This holds by construc
 
 \begin{comment}
 
-%\begin{ex} Let $f(x) = \sin(1/x)$. We claim that $\lim_{x\to 0} f(x)$ does not exist. (We proved this using the definition on a worksheet earlier, but we give a second proof here.) Since the domain of $f$ is $\R \smallsetminus \{0\}$, Corollary~\ref{cor:261} applies. Consider the sequence given by $\displaystyle x_n = \frac{1}{\pi n + \frac{\pi}{2}}$. We have $x_n\neq 0$ for all $x$, and $\{x_n\}_{n=1}^\infty$ converges to $0$. Thus, by Corollary~\ref{cor:261}, if $\lim_{x\to 0} f(x) = L$, then $\{f(x_n)\}_{n=1}^\infty$ converges to $L$, and in particular, is convergent. But \[ f(x_n) = \begin{cases}  -1 & \textrm{if} \ n \ \textrm{is odd}\\
-%1 & \textrm{if} \ n \ \textrm{is even},\end{cases}\]
-%so $\{f(x_n)\}_{n=1}^\infty$  is divergent. It follows that $\lim_{x\to 0} f(x) = L$ does not exist.
-%\end{ex} 
+\Nov{3}
+
+	\begin{thm}[Algebra and limits of functions] Suppose $f$ and $g$ are two functions and that $a$ is a real number, and
+	assume  that 
+	$$
+	\lim_{x \to a} f(x) = L  \ \text{and} \  \lim_{x \to a} g(x) = M
+	$$
+	for some real numbers $L$ and $M$. Then
+	\begin{enumerate}
+		\item $\lim_{x \to a} (f(x) + g(x)) = L  + M$.
+		\item For any real number $c$, $\lim_{x \to a} (c \cdot f(x)) = c \cdot L$.
+		\item $\lim_{x \to a} (f(x) \cdot g(x)) = L \cdot M$.
+		\item If, in addition, we have that $M \ne 0$,
+		then $\lim_{x \to a} (f(x)/g(x)) = L/M$.
+		\end{enumerate}
+\end{thm}
+	
+	\begin{thm}[Squeeze Theorem for limits]  Suppose $f$, $g$, and $h$ are three functions and $a$ is a real number. Suppose there is a positive real number $r > 0$
+	such that 
+	\begin{itemize}
+		\item each of $f,g,h$ is defined on $\{x \in \R \mid 0 < |x-a| < r\}$,
+		\item $f(x) \leq g(x) \leq h(x)$ for all
+		$x$ such that $0 < |x-a| < r$, and
+		\item	$\lim_{x \to a} f(x) = L = \lim_{x \to    a} h(x)$ for some number $L$.
+	\end{itemize}  
+	Then $\lim_{x \to a} g(x) = L$.
+\end{thm}
+
+
+
+\begin{enumerate}
+
+\item Use the $\e-\delta$ definition to show that $\lim_{x\to 0} \ |x| = 0$.
+
+\begin{framed}
+Let $\e>0$. Take $\d=\e$. Pick $x$ such that ${0<|x|<\d} $. Then $|x|$ is defined, and $|\, |x| - 0 \, | = |x| < \e$. Thus, $\lim_{x\to 0} \ |x| = 0$.
+\end{framed}
+
+\item Let \[f(x)= \begin{cases} 1 \ &\text{if} \ x\in \Q \\ 0 \ &\text{if} \ x\in \Q \end{cases}\]
+Use the $\e-\delta$ definition to show that $\lim_{x\to a} f(x)$ does not exist for any real number $a\in \R$. 
+
+\begin{framed}
+Fix $a\in \R$ and suppose $\lim_{x\to a} f(x) = L$ for some $L$. Take $\e=\frac{1}{2}$. Then there is some $\d$ such that if {${0<|x-a|<\d}$} then $|f(x)-L|<\frac{1}{2}$. By density of rationals, there is a rational number $q$ with ${a<q<a+\d}$, so $f(q)=1$ and hence ${|1-L|}<\frac{1}{2}$. By density of irrationals, there is a rational number $z$ with ${a<z<a+\d}$, so $f(z)=0$ and hence ${|0-L|}<\frac{1}{2}$. But then $1=|1-0| \leq |0-L|+|1-L| < \frac12+\frac12 = 1$, a contradiction. Thus no such $L$ exists.
+\end{framed}
+
+\end{enumerate}
+
+\begin{enumerate} \setcounter{enumi}{2}
+
+\item Use Corollary 18.5 to show that $\ds \lim_{x\to 0} \sin\left(\frac{1}{x}\right)$ does not exist.\\
+Suggestion: Let $f(x)= \sin(\frac{1}{x})$ and suppose $\lim_{x\to 0} f(x) = L$. Find sequences $\{x_n\}_{n=1}$  and $\{y_n\}_{n=1}$ such that
+\begin{itemize}
+\item  $\{x_n\}_{n=1}$ and $\{y_n\}_{n=1}$ both converge to $0$,
+\item $f(x_n)=1$ for all $n$, and
+\item $f(y_n)=-1$ for all $n$.
+\end{itemize}
+
+
+\begin{framed}
+Suppose $\lim_{x\to 0} f(x) = L$. Let $\{x_n\}_{n=1}^\infty = \{ \frac{1}{\frac{\pi}{2} + 2\pi n}\}_{n=1}^\infty$. This sequence converges to $0$ and $f(x_n)=1$ for all $n$, so $\{f(x_n)\}_{n=1}^\infty$ converges to $1$. Thus, $L=1$. Now let $\{y_n\}_{n=1}^\infty = \{ \frac{1}{\frac{-\pi}{2} + 2\pi n}\}_{n=1}^\infty$. This sequence converges to $0$ and $f(y_n)=-1$ for all $n$, so $\{f(y_n)\}_{n=1}^\infty$ converges to $-1$. Thus, $L=-1$. This is a contradiction, so no such $L$ exists.
+\end{framed}
+
+\item Use Theorem~19.1 plus a homework problem  to compute $\ds \lim_{x\to 2} \frac{3x^2 - x +2}{x+3}$.
+
+\begin{framed}
+We have $\lim_{x\to 2} x= 2$ and the limit of a constant is the value of that constant. Thus $\lim_{x\to 2} x+3 = 2+3 = 5$, and $\lim_{x\to 2} x^2 = (\lim_{x\to 2} x)^2 = 4$, so $\lim_{x\to 2} 3x^2 - x +2 = 3 \cdot 4 - 2 + 2 = 12$, and hence $\ds \lim_{x\to 2} \frac{3x^2 - x +2}{x+3}=5$.
+\end{framed}
+
+\item Use Theorem~19.2 to show that $\displaystyle \lim_{x\to 0} x \sin\left(\frac{1}{x}\right)=0$. You can use any trig facts on the bottom of the page.
+
+\begin{framed}
+We have $-1\leq  \sin\left(\frac{1}{x}\right) \leq 1$, so $-|x| \leq x \sin\left(\frac{1}{x}\right) \leq |x|$. We know that $\lim_{x\to 0} \, |x| = 0$ and hence $\lim_{x\to 0} \, -|x| = 0$ by the Theorem on algebra of limits of functions. Then by the Squeeze theorem for functions, $\displaystyle \lim_{x\to 0} x \sin\left(\frac{1}{x}\right)=0$.
+\end{framed}
+
+
+\item Use Theorem 18.4 to deduce Theorem~19.2 from our Squeeze Theorem for sequences.
+
+\begin{framed}
+	\begin{proof}
+		Let $f,g,h,a,r,L$ be as in the statement. Let $\{x_n\}_{n=1}^\infty$ be a sequence that converges to $a$ and such that $0<|x_n-a|<r$ for all $n$. By Theorem~\ref{lem228}, it suffices to show that $\lim_{n \to \infty} g(x_n) = L$. By Theorem~\ref{lem228}, we know that $\lim_{n \to \infty} f(x_n) = L=\lim_{n \to \infty} h(x_n)$. Since $f(x_n)\leq g(x_n) \leq h(x_n)$ for all $n$, we have $\lim_{n \to \infty} g(x_n) = L$ by the Squeeze Theorem (for sequences).
+		\end{proof}
+\end{framed}
+
+\item Use Theorem 18.4 to deduce Theorem~19.1 part (1) from our Theorem~10.2 on algebra and sequences.
+
+
+\begin{framed}
+\begin{proof}
+First, as a technical matter, we note that since we assume
+	${\lim_{x \to a} f(x) = L}$ there is a positive real number $r_1$ such that $f(x)$ is defined for all $x$ satisfying $0 < |x-a| < r_1$,
+	and likewise since
+	$\lim_{x \to a} g(x) = M$ there is a positive real number $r_2$ such that $g(x)$ is defined for all $x$ satisfying $0 < |x-a| < r_2$. Letting $r = \min\{r_1, r_2\}$,
+	we have that $r > 0$ and $f(x)$ and $g(x)$ and hence $f(x) + g(x)$ are defined for all $x$ satisfying $0 < |x-a| < r$.  (We needed to prove this in order to apply Theorem~\ref{lem228}.)
+	
+	
+	Let $\{x_n\}_{n=1}^\infty$ be any sequence converging to $a$ such that  ${0 < |x_n -a| < r}$ for all $n$. 
+	By  Theorem~\ref{lem228} in the ``forward direction'', we have that  $\lim_{n \to \infty} f(x_n) = L$ and $\lim_{n \to \infty} g(x_n) = M$. By Theorem \ref{thm99}, \\
+	${\lim_{n \to \infty} f(x_n) +g(x_n) = L + M}$. 
+	So, by  Theorem~\ref{lem228} again (this time applying it to $f(x) + g(x)$ and using the ``backward
+	implication''), it follows that
+	$\lim_{x \to a} (f(x) + g(x)) = L + M$.
+\end{proof}
+\end{framed}
+
+\item Use Theorem 18.4 to deduce Theorem~19.1 part (4) from our Theorem~10.2 on algebra and sequences.
+
+\begin{framed}
+\begin{proof}
+Since we assume
+	${\lim_{x \to a} f(x) = L}$ there is a positive real number $r_1$ such that $f(x)$ is defined for all $x$ satisfying $0 < |x-a| < r_1$.
+Since
+	$\lim_{x \to a} g(x) = M$ there is a positive real number $r_2$ such that $g(x)$ is defined for all $x$ satisfying $0 < |x-a| < r_2$. Since $M\neq 0$, $|M|>0$, and applying definition of limit, there is some $\delta>0$ such that if $0<|x-a| < \delta$, then $|g(x)-M|<|M|$, and hence by the reverse triangle inequality, $|g(x)| \geq | |M| - |g(x)-M| | >0$, so $g(x)\neq 0$. 
+	
+	Letting $r = \min\{r_1, r_2,\delta\}$,
+	we have that $r > 0$ and $f(x)$, $g(x)$, $1/g(x)$, and hence $f(x)/g(x)$ are defined for all $x$ satisfying $0 < |x-a| < r$. 	
+	
+	Let $\{x_n\}_{n=1}^\infty$ be any sequence converging to $a$ such that  ${0 < |x_n -a| < r}$ for all $n$. 
+	By  Theorem~\ref{lem228} in the ``forward direction'', we have that  $\lim_{n \to \infty} f(x_n) = L$ and $\lim_{n \to \infty} g(x_n) = M$. Since $M\neq 0$ and $g(x_n)\neq 0$ for all $n\in \N$, by Theorem \ref{thm99}, \\
+	${\lim_{n \to \infty} f(x_n) /g(x_n) = L / M}$. 
+	So, by  Theorem~\ref{lem228} again, it follows that
+	$\lim_{x \to a} (f(x) / g(x)) = L / M$.
+\end{proof}
+\end{framed}
+
+
+\end{enumerate}
+
+
+
+\begin{comment}
+
 
 \begin{ex} 
 Consider the function $f:\R\to\R$ given by the rule
@@ -2885,28 +3012,6 @@ Consider the function $f:\R\to\R$ given by the rule
 %$\lim_{x\to 2} 3 x^2 -x+2 = 12$, and \[\displaystyle \lim_{x\to 2} \frac{3x^2-x+2}{x+3} = \frac{12}{5}.\]
 %\end{ex}
 
-Here is another example of the same idea.
-
-\begin{thm} Suppose $f$, $g$, and $h$ are three functions and $a$ is a real number. Suppose there is a positive real number $r > 0$
-	such that \begin{enumerate}
-		\item each of $f,g,h$ is defined on $\{x \in \R \mid 0 < |x-a| < r\}$,
-		\item $f(x) \leq g(x) \leq h(x)$ for all
-		$x$ such that $0 < |x-a| < r$, nad
-		\item	$\lim_{x \to a} f(x) = L = \lim_{x \to    a} h(x)$ for some number $L$.
-	\end{enumerate}  
-	Then $\lim_{x \to a} g(x) = L$.
-	\end{thm}
-	\begin{proof}
-		Let $f,g,h,a,r,L$ be as in the statement. Let $\{x_n\}_{n=1}^\infty$ be a sequence that converges to $a$ and such that $0<|x_n-a|<r$ for all $n$. By Theorem~\ref{lem228}, it suffices to show that $\lim_{n \to \infty} g(x_n) = L$. By Theorem~\ref{lem228}, we know that $\lim_{n \to \infty} f(x_n) = L=\lim_{n \to \infty} h(x_n)$. Since $f(x_n)\leq g(x_n) \leq h(x_n)$ for all $n$, we have $\lim_{n \to \infty} g(x_n) = L$ by the Squeeze Theorem (for sequences).
-		\end{proof}
-		
-
-
-\begin{ex} We claim that $\lim_{x\to 0} x\sin(1/x) = 0$. Indeed, for all $x\neq 0$, since $|\sin(1/x)| \leq 1$ we have \[ |x \sin(1/x)| = |x| |\sin(1/x) | \leq |x|, \ \text{so}\]
-\[ -|x| \leq x\sin(1/x) \leq |x|.\]
-By the quiz, we have $\lim_{x\to 0} |x| = 0$, and using Theorem~\ref{thm33b}, we have 
-$\lim_{x\to 0} - |x| = -0 = 0$. Thus, by the Squeeze Theorem, the result holds.
-\end{ex}
 
 \Nov{1}
 
@@ -2923,9 +3028,8 @@ number such that $|x - a| < \d$ then $f$ is defined at $x$ and $|f(x) - f(a)| < 
 \end{quote}
 \end{defn}
 
-\begin{rem} If $f$ is continuous at $a$, then by applying the definition using any postive number $\e > 0$ you like (e.g., $\e = 1$) we get that  
-there exists a $\d> 0$ such that $f$ is defined for all $x$ such that $a-\d < x < a+
-\d$. That is, in order for $f$ to be continuous at $a$ it is necessary (but not sufficient) that $f$ is defined at all points near $a$ {\em including at $a$ itself}.
+\begin{rem} If $f$ is continuous at $a$, then by applying the definition using any positive number $\e > 0$ you like (e.g., $\e = 1$) we get that  
+there exists a $\d> 0$ such that $f$ is defined for all $x$ such that $a-\d < x < a+\d$. That is, in order for $f$ to be continuous at $a$ it is necessary (but not sufficient) that $f$ is defined at all points near $a$ {\em including at $a$ itself}.
 In particular, unlike in the
   definition of ``limit'', $f$ must be defined at $a$ in order for it to possibly be continuous at $a$.
 \end{rem}
