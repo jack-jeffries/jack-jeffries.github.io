@@ -2950,71 +2950,9 @@ Since
 
 \end{enumerate}
 
-
-
 \begin{comment}
 
-
-\begin{ex} 
-Consider the function $f:\R\to\R$ given by the rule
-	\[f(x) = \begin{cases} 1 &\text{if } x\in \Q \\ 0 &\text{if } x\notin \Q.\end{cases}.\]
-	 We will show that, for every real number $a$, $\displaystyle \lim_{x\to a} f(x)$ does not exist.
-	
-			Fix $a$ and, by way of contradiction, suppose $\lim_{x \to a} f(x)$ exists and is equal to $L$. 
-		Let $\{q_n\}_{n=1}^\infty$ be any sequence of rational numbers that converges to $a$ such that $q_n \ne a$ for all $n$. 
-		(Such a sequence exists by Lemma \ref{lem221} above; technically this Lemma does not include the statement that $q_n \ne a$ for all $n$,
-		but the proof makes it clear that there is a sequence that also has this property.) Then by  Corollary~\ref{cor:261}, $L = \lim_{n \to \infty} f(q_n)$. But $f(q_n) = 1$ for all $n$ by definition, and hence $L = 1$.
-		
-		On the other hand, as you proved on the homework, there also exists a sequence $\{y_n\}_{n=1}^\infty$ that converges to $a$ such that $y_n$ is {\em irrational} for each $n$ and $y_n \ne a$
-		for all $n$. (Likewise, the homework problem did not include the fact that $y_n \ne a$ for all $n$, but your proof should give that too.)
-		By Corollary~\ref{cor:261}, 
-		$L = \lim_{n \to \infty} f(y_n)$. But $f(y_n) = 1$ for all $n$ by definition, and hence $L = 0$. This is impossible.
-		\end{ex}
-
-%We can also use Theorem~\ref{lem228} to deduce some results about limits that are analogous to earlier results about sequences.
-%
-%\begin{thm} \label{thm33b}
-%	Suppose $f$ and $g$ are two functions and that $a$ is a real number, and
-%	assume  that 
-%	$$
-%	\lim_{x \to a} f(x) = L \and \lim_{x \to a} g(x) = M
-%	$$
-%	for some real numbers $L$ and $M$. Then
-%	\begin{enumerate}
-%		\item $\lim_{x \to a} (f(x) + g(x)) = L  + M$.
-%		\item For any real number $c$, $\lim_{x \to a} (c \cdot f(x)) = c \cdot L$.
-%		\item $\lim_{x \to a} (f(x) \cdot g(x)) = L \cdot M$.
-%		\item If, in addition, we have that $M \ne 0$,
-%		then $\lim_{x \to a} (f(x)/g(x)) = L/M$.
-%	\end{enumerate}
-%\end{thm}
-%
-%
-%\begin{proof} Each part follows  from  Theorem \ref{lem228} and the corresponding theorem about sums, products, and quotients of sequences (Theorem~\ref{thm99}). We give the details just for one of them, part (3):
-%	
-%	First, as a technical matter, we note that since we assume
-%	${\lim_{x \to a} f(x) = L}$ there is a positive real number $r_1$ such that $f(x)$ is defined for all $x$ satisfying $0 < |x-a| < r_1$,
-%	and likewise since
-%	$\lim_{x \to a} g(x) = L$ there is a positive real number $r_2$ such that $g(x)$ is defined for all $x$ satisfying $0 < |x-a| < r_1$. Letting $r = \min\{r_1, r_2\}$,
-%	we have that $r > 0$ and $f(x)$ and $g(x)$ and hence $f(x) \cdot g(x)$ are defined for all $x$ satisfying $0 < |x-a| < r$.  (We needed to prove this in order to apply Theorem~\ref{lem228}.)
-%	
-%	
-%	Let $\{x_n\}_{n=1}^\infty$ be any sequence converging to $a$ such that  ${0 < |x_n -a| < r}$ for all $n$. 
-%	By  Theorem~\ref{lem228} in the ``forward direction'', we have that  $\lim_{n \to \infty} f(x_n) = L$ and $\lim_{n \to \infty} g(x_n) = M$. By Theorem \ref{thm99}, \\
-%	${\lim_{n \to \infty} f(x_n) g(x_n) = L \cdot M}$. 
-%	So, by  Theorem~\ref{lem228} again (this time applying it to $f(x) g(x)$ and using the ``backward
-%	implication''), it follows that
-%	$\lim_{x \to a} (f(x) \cdot g(x)) = L \cdot M$.
-%\end{proof}
-%
-%\begin{ex} We can use this theorem to compute $\displaystyle \lim_{x\to 2} \frac{3x^2-x+2}{x+3}$. Indeed, since $\lim_{x\to 2} x = 2$, and  $\lim_{x\to 2} 1 = 1$, we have
-%\[\lim_{x\to 2} 3 x^2 = 3\lim_{x\to 2} x^2 = 3 (\lim_{x\to 2} x)(\lim_{x\to 2} x ) = 12,\] and from earlier computations, $\lim_{x\to 2} (-x+2) = (-2) + 2 = 0$ and $\lim_{x\to 2} x+3 = 2+3 = 5$, so  
-%$\lim_{x\to 2} 3 x^2 -x+2 = 12$, and \[\displaystyle \lim_{x\to 2} \frac{3x^2-x+2}{x+3} = \frac{12}{5}.\]
-%\end{ex}
-
-
-\Nov{1}
-
+\Nov{8}
 
 We come to the formal definition of continuity. We first define what it means for a function to be continuous {\em at a single point}, but ultimately we will be
 interested in functions that are continuous on entire intervals.
@@ -3098,7 +3036,7 @@ f(x) =
 0 & \text{if $x \notin \Q$.} \\
 \end{cases}
 $$
-As I proved, $\lim_{x \to a} f(x)$ does not exist for any $a$. So, this function is continuous nowhere.
+As we proved, $\lim_{x \to a} f(x)$ does not exist for any $a$. So, this function is continuous nowhere.
 \end{ex}
 
   
@@ -3124,7 +3062,7 @@ points. So, somewhat counterintuitively, it is possible for a function defined o
 \end{ex}
 
 
-\Nov{3}
+
 
 
 
