@@ -2825,7 +2825,7 @@ the sequence $\{x_n\}_{n=1}^\infty$ converges to $a$. (b) This holds by construc
 
 \Nov{3}
 
-	\begin{thm}[Algebra and limits of functions] Suppose $f$ and $g$ are two functions and that $a$ is a real number, and
+	\begin{thm}[Algebra and limits of functions]\label{thm:alglim} Suppose $f$ and $g$ are two functions and that $a$ is a real number, and
 	assume  that 
 	$$
 	\lim_{x \to a} f(x) = L  \ \text{and} \  \lim_{x \to a} g(x) = M
@@ -2946,11 +2946,8 @@ Since
 	$\lim_{x \to a} (f(x) / g(x)) = L / M$.
 \end{proof}
 \end{framed}
-
-
 \end{enumerate}
 
-\begin{comment}
 
 \Nov{8}
 
@@ -2959,7 +2956,7 @@ interested in functions that are continuous on entire intervals.
 
 \begin{defn} Suppose $f$ is a function and $a$ is a real number.
   We say {\em $f$ is
-    continuous at $a$} provided the following condition is met:
+    continuous at $a$}\index{continuous at $a$} provided the following condition is met:
 \begin{quote}
 For every $\e > 0$ there is a $\d > 0$ such that if $x$ is a real
 number such that $|x - a| < \d$ then $f$ is defined at $x$ and $|f(x) - f(a)| < \e$.
@@ -3040,20 +3037,20 @@ As we proved, $\lim_{x \to a} f(x)$ does not exist for any $a$. So, this functio
 \end{ex}
 
   
-\begin{ex} 
-Recall the function $f$ whose domain is all of $\R$ defined by
-$$
-f(x) = 
-\begin{cases}
-x & \text{if $x \in \Q$ and } \\
-0 & \text{if $x \notin \Q$.} \\
-\end{cases}
-$$
-As you showed, $\lim_{x \to 0} f(x) = 0$ and $\lim_{x \to a} f(x)$
-does not exist for all $a \ne 0$. Since $f(0) = 0$ this shows that
-$f(x)$ is continuous at $x = 0$, but not continuous at all other
-points. So, somewhat counterintuitively, it is possible for a function defined on all of $\R$ to be continuous at one and only one spot! 
-\end{ex}
+%\begin{ex} 
+%Recall the function $f$ whose domain is all of $\R$ defined by
+%$$
+%f(x) = 
+%\begin{cases}
+%x & \text{if $x \in \Q$ and } \\
+%0 & \text{if $x \notin \Q$.} \\
+%\end{cases}
+%$$
+%As you showed, $\lim_{x \to 0} f(x) = 0$ and $\lim_{x \to a} f(x)$
+%does not exist for all $a \ne 0$. Since $f(0) = 0$ this shows that
+%$f(x)$ is continuous at $x = 0$, but not continuous at all other
+%points. So, somewhat counterintuitively, it is possible for a function defined on all of $\R$ to be continuous at one and only one spot! 
+%\end{ex}
 
 \begin{ex}  The function $f(x)=\sqrt{x}$ is  continuous at $a$ for every $a>0$. This holds since for any $a > 0$, as you proved on the homework we have
   $$
@@ -3076,7 +3073,7 @@ points. So, somewhat counterintuitively, it is possible for a function defined o
 \end{enumerate}
 \end{thm}
 \begin{proof}
-Follows from Theorems~\ref{thm36} and \ref{thm33b}.\end{proof}
+Follows from Theorems~\ref{thm36} and \ref{thm:alglim}.\end{proof}
 
 \begin{ex} Polynomials are continuous everywhere. The function $x$ is continuous everywhere (since $\lim_{x\to a} \, x = a$). By part (3) above and a simple induction, $x^n$ is continuous everywhere for every $n$. Then by parts (1) and (2), it follows that every polynomial is continuous everywhere.
 \end{ex}
@@ -3105,6 +3102,8 @@ I am calling this number $\gamma$, and not $\d$, since it is
   Taking $y = g(x)$ above, this gives that $f$ is defined at $g(x)$ and $|f(g(x)) -
 f(g(a))| < \e$. This proves $f \circ g$ is continuous at~$a$.
 \end{proof}
+
+\begin{comment}
 
 \begin{ex} 
  The function $\sqrt{x^2 + 5}$ is continuous at every real number: let $g(x) = x^2 + 5$ and $f(x) = \sqrt{x}$. Then $g$ is continuous at $a$ for every $a\in \R$
