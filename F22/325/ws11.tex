@@ -1,0 +1,179 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=.9in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,enumitem}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\e}{\varepsilon}
+\def\d{\delta}
+\newcommand{\cts}{continuous\,}
+
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\usepackage[all, knot]{xy}
+\usepackage{color,xcolor}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+	
+	\thispagestyle{empty}
+	
+	\section*{Continuous functions}
+	
+	\begin{framed}
+\noindent \textsc{From last time:}
+
+\
+
+\noindent \textbf{Definition:}  A function $f$ is \emph{continuous at $a$} provided: For any $\e>0$, there exists $\d>0$ such that if $|x-a|<\d$ then $f(x)$ is defined and $|f(x)-f(a)|<\e$.
+
+\
+
+\noindent \textbf{Theorem:} If $f$ is defined at $a$ then $f$ is \cts at $a$ if and only if $\ds\lim_{x\to a} f(x) = f(a)$.
+
+\
+
+\noindent \textbf{Theorem:} If $f$ and $g$ are both continuous at $a$, and $c$ is any constant, then
+\begin{enumerate}
+\item $f+g$ is \cts at $a$.
+\item $cf$ is \cts at $a$.
+\item $fg$ is \cts at $a$.
+\item $f/g$ is \cts at $a$, provided $g(a)\neq 0$.
+\end{enumerate}
+
+\
+
+\noindent \textbf{Theorem:} If $g$ is \cts at $a$ and $f$ is \cts at $g(a)$, then $f\circ g$ is \cts at $a$.
+
+
+\end{framed}
+
+\
+
+\begin{enumerate}
+\item Let \[f(x) = \begin{cases} 2x &\text{if} \ x\geq 1 \\ x+1 &\text{if} \ x<1 \end{cases}.\]
+ Use the $\e-\delta$ definition to show that $f(x)$ is continuous at $1$.
+ 
+ \
+ 
+\item Let \[g(x) = \begin{cases} x &\text{if} \ x\in \Q \\ 0 &\text{if} \ x\notin \Q \end{cases}.\]
+ Show that $g(x)$ is continuous at $0$ and is \emph{not} continuous at any other real number. You can use any theorems you like and anything relevant from the homework.
+
+\
+
+\item Let $h(x) = \sqrt{ x^2 +5}$. Show that $h$ is continuous at $a$ for every $a\in \R$.
+ \end{enumerate}
+ 
+ \
+ 
+ \begin{framed}
+\noindent It is tiresome to say ``continuous at $a$ for every $a\in \R$''. The following definition is then convenient.
+
+\
+
+\noindent \textbf{Definition 21.1:}  Let $S$ be an open interval of $\R$ of the form $S=(a,b)$, $S=(a,\infty)$, $S=(-\infty,a)$, or $S=(-\infty,\infty)=\R$. We say $f$ is {\em continuous on $S$} if $f$ is continuous at $a$ for all $a\in S$. 
+
+ 
+ \end{framed}
+ 
+ \
+ 
+ \begin{enumerate}
+ \setcounter{enumi}{3}
+ \item Which of the following functions are continuous on $\R$?
+\begin{multicols}{2} 
+\begin{itemize}
+ \item $f(x)=\sqrt{ x^2 +5}$.
+ \item Every polynomial function.
+  \item $f(x) = \sqrt{x}$.
+  \item $f(x)=\frac{1}{x}$.
+ \end{itemize}
+ \end{multicols}
+ 
+ \
+ 
+ \
+ 
+ \item Which of the following functions are continuous on $(0,\infty)$?
+ \begin{multicols}{2} 
+ \begin{itemize}
+ \item $f(x)=\sqrt{ x^2 +5}$.
+ \item Every polynomial function.
+  \item $f(x) = \sqrt{x}$.
+  \item $f(x)=\frac{1}{x}$.
+ \end{itemize}
+ \end{multicols}
+ 
+ \
+ 
+ \item Prove that $j(x) = x \sin(1/x)$ is continuous on $\R$. (You can use wiithout proof that $\sin(x)$ is continuous on $\R$).
+ 
+ \
+ 
+ \item Prove or disprove: If $f$ and $g$ are two functions, $a\in \R$, and  $f(a)=g(a)$ , then $f$ is continuous at $a$ if and only if $g$ is continuous at $a$.
+ 
+ \
+
+ 
+ \item Prove or disprove: If $f$ and $g$ are two functions, $a<b$, and  $f(x)=g(x)$ for all $x\in (a,b)$, then $f$ is continuous on $(a,b)$ if and only if $g$ is continuous on $(a,b)$.
+   \end{enumerate}
+ 
+ \
+ 
+ \begin{framed} 
+ \noindent The definition of continuous on a closed interval $[a,b]$ is actually a bit different: we shouldn't necessarily ask that $f$ be continuous at $a$, since to know that would have to use something about $f$ on input values outside of our interval!
+ 
+ \
+ 
+\noindent\textbf{Definition~21.2:}  Given a function $f(x)$ and real numbers $a < b$,
+we say $f$ is {\em continuous on the closed interval $[a,b]$} provided 
+\begin{enumerate}
+\item for every $r \in (a,b)$, $f$ is  continuous at $r$ in the sense defined already,
+\item for every $\e > 0$ there is a $\d > 0$ such that if $a \leq x < a+\d$, then ${|f(x)
+  - f(a)| < \e}$.
+\item for every $\e > 0$ there is a $\d > 0$ such that if $b -\d < x \leq b$, then ${|f(x)
+  - f(b)| < \e}$.
+\end{enumerate}
+\end{framed}
+
+\
+
+ \begin{enumerate}
+ \setcounter{enumi}{8}
+ \item Explain why if $f$ is continuous at $x$ for every $x\in[a,b]$, then $f$ is continuous on the closed interval $[a,b]$. Conclude that every polynomial is continuous on every closed interval.
+
+
+\
+
+\item Show that the function $f(x) = \sqrt{1-x^2}$ is continuous on the closed interval $[-1,1]$:
+\begin{itemize}
+\item For showing condition (1), I recommend using a Theorem from last class. 
+\item For condition (2), it may help to write $\sqrt{1-x^2}=\sqrt{1-x}\sqrt{1+x}$. %\footnote{You can ask me for a $\delta$ if you get stuck.}
+\item Condition (3) is similar to condition (2) so you can just say ``Similar to (2)'' for that.
+\end{itemize}
+   \end{enumerate}
+
+
+
+
+
+
+
+
+\end{document}
