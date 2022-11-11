@@ -3114,22 +3114,31 @@ f(g(a))| < \e$. This proves $f \circ g$ is continuous at~$a$.
 \item Let \[f(x) = \begin{cases} 2x &\text{if} \ x\geq 1 \\ x+1 &\text{if} \ x<1 \end{cases}.\]
  Use the $\e-\delta$ definition to show that $f(x)$ is continuous at $1$.
  
- \
+\begin{framed}
+Let $\e>0$. Take $\d=\e/2$. Then if $|x-1|<\delta = \e/2$, we either have $f(x) = 2x$, so $|f(x)-f(1)| = |2x-2| = 2 |x-1| < 2\e/2=\e$, or $f(x)=x+1$, so $|f(x)-f(1)| = |x+1-2| =  |x-1| < \e/2<\e$.
+\end{framed}
  
 \item Let \[g(x) = \begin{cases} x &\text{if} \ x\in \Q \\ 0 &\text{if} \ x\notin \Q \end{cases}.\]
  Show that $g(x)$ is continuous at $0$ and is \emph{not} continuous at any other real number. You can use any theorems you like and anything relevant from the homework.
 
-\
+\begin{framed}
+From the homework, $\lim_{x\to 0} f(x) = 0$ , and since $f(0)=0$, $f$ is continuous at $0$. Also from the homework, $\lim_{x\to a} f(x)$ does not exist for $a\neq 0$, so $f$ is not continuous at $a$ if $a\neq 0$.
+\end{framed}
+ 
 
 \item Let $h(x) = \sqrt{ x^2 +5}$. Show that $h$ is continuous at $a$ for every $a\in \R$.
+
+\begin{framed}
+We can write $h=f\circ g$ with $f(x)=\sqrt{x}$ and $g(x)=x^2+5$. For any $a\in \R$, $g$ is continuous at $a$, and $g(a) >0$. Then since $g(a)>0$, $f$ is continuous at $g(a)$. Thus, $f\circ g$ is continuous at $a$.
+\end{framed}
  \end{enumerate}
  
- \
+ 
  
 
 \noindent It is tiresome to say ``continuous at $a$ for every $a\in \R$''. The following definition is then convenient.
 
-\
+
 
 \begin{defn}  Let $S$ be an open interval of $\R$ of the form $S=(a,b)$, $S=(a,\infty)$, $S=(-\infty,a)$, or $S=(-\infty,\infty)=\R$. We say $f$ is {\em continuous on $S$} if $f$ is continuous at $a$ for all $a\in S$. 
 \end{defn}
@@ -3137,7 +3146,7 @@ f(g(a))| < \e$. This proves $f \circ g$ is continuous at~$a$.
  
 
  
- \
+ 
  
  \begin{enumerate}
  \setcounter{enumi}{3}
@@ -3151,9 +3160,11 @@ f(g(a))| < \e$. This proves $f \circ g$ is continuous at~$a$.
  \end{itemize}
  \end{multicols}
  
- \
+\begin{framed}
+Just $f(x)=\sqrt{ x^2 +5}$ and Every polynomial function.
+\end{framed}
  
- \
+ 
  
  \item Which of the following functions are continuous on $(0,\infty)$?
  \begin{multicols}{2} 
@@ -3165,54 +3176,34 @@ f(g(a))| < \e$. This proves $f \circ g$ is continuous at~$a$.
  \end{itemize}
  \end{multicols}
  
- \
+\begin{framed}
+All of them.
+\end{framed}
  
- \item Prove that $j(x) = x \sin(1/x)$ is continuous on $\R$. (You can use without proof that $\sin(x)$ is continuous on $\R$).
+ \item Prove that $j(x) =\begin{cases} x \sin(1/x) \text{if} \, x\neq 0 \\ 0 \text{if} \, x=0\end{cases}$ is continuous on $\R$. (You can use without proof that $\sin(x)$ is continuous on $\R$).
  
- \
+ 
+ \begin{framed}
+We saw earlier that $\lim_{x\to 0} j(x) = 0 = j(0)$, so $j$ is continuous at $0$. For $a\neq 0$, the function $1/x$ is continuous at $a$, and $\sin(x)$ is continuous at $1/a$, so $\sin(1/x)$ is continuous at $a$. The function $x$ is also \cts at $a$, so $x\sin(1/x)$ is continuous at $a$.
+\end{framed}
+ 
  
  \item Prove or disprove: If $f$ and $g$ are two functions, $a\in \R$, and  $f(a)=g(a)$ , then $f$ is continuous at $a$ if and only if $g$ is continuous at $a$.
  
- \
+  \begin{framed}
+To disprove it, consider $f(x) = 0$ and $g(x)= \begin{cases} 0 \text{if} \ x=0 \\1 \text{if} \ x\neq0 \end{cases}$.
+\end{framed}
 
  
  \item Prove or disprove: If $f$ and $g$ are two functions, $a<b$, and  $f(x)=g(x)$ for all $x\in (a,b)$, then $f$ is continuous on $(a,b)$ if and only if $g$ is continuous on $(a,b)$.
+ 
+   \begin{framed}
+To prove it, let $f$ be continuous on $(a,b)$, $c\in (a,b)$, and $\e>0$. By definition of continuous at $c$, there is some $\d_1>0$ such that if $|x-c|<\d$ then $|f(x)-f(c)|<\e$. Let $\d = \min\{ \d_1, c-a, b-c\}$. Since $\d$ is the minimum of three positive numbers, $\d>0$. Then, if $|x-c|<\d$, since $|x-c|<c-a$, we must have $c>a$; since $|x-c|<b-c$, we must have $c<b$. Thus $x\in (a,b)$, so $g(x)=f(x)$. Since $|x-c|<\d_1$, $|f(x)-f(c)|<\e$. Then $|g(x) - g(c)| = |f(x) - f(c)| < \e$. This shows that $g$ is continuous at $c$. Since $c\in(a,b)$ was arbitrary, $g$ is continuous on $(a,b)$.
+
+The other implication follows by switching the roles of $f$ and $g$.
+\end{framed}
    \end{enumerate}
  
- \
- 
-
- The definition of continuous on a closed interval $[a,b]$ is actually a bit different: we shouldn't necessarily ask that $f$ be continuous at $a$, since to know that would have to use something about $f$ on input values outside of our interval!
- 
- \
- 
-\begin{defn}  Given a function $f(x)$ and real numbers $a < b$,
-we say $f$ is {\em continuous on the closed interval $[a,b]$} provided 
-\begin{enumerate}
-\item for every $r \in (a,b)$, $f$ is  continuous at $r$ in the sense defined already,
-\item for every $\e > 0$ there is a $\d > 0$ such that if $a \leq x < a+\d$, then ${|f(x)
-  - f(a)| < \e}$.
-\item for every $\e > 0$ there is a $\d > 0$ such that if $b -\d < x \leq b$, then ${|f(x)
-  - f(b)| < \e}$.
-\end{enumerate}
-\end{defn}
-
-\
-
- \begin{enumerate}
- \setcounter{enumi}{8}
- \item Explain why if $f$ is continuous at $x$ for every $x\in[a,b]$, then $f$ is continuous on the closed interval $[a,b]$. Conclude that every polynomial is continuous on every closed interval.
-
-
-\
-
-\item Show that the function $f(x) = \sqrt{1-x^2}$ is continuous on the closed interval $[-1,1]$:
-\begin{itemize}
-\item For showing condition (1), I recommend using a Theorem from last class. 
-\item For condition (2), it may help to write $\sqrt{1-x^2}=\sqrt{1-x}\sqrt{1+x}$. %\footnote{You can ask me for a $\delta$ if you get stuck.}
-\item Condition (3) is similar to condition (2) so you can just say ``Similar to (2)'' for that.
-\end{itemize}
-   \end{enumerate}
 
 
 \begin{comment}
