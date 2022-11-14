@@ -71,6 +71,7 @@
 \newcommand{\La}{\mathcal{L}}
 \newcommand{\LAi}[1]{\mathcal{L}^{-1}\{ #1 \}}
 \newcommand{\Lai}{\mathcal{L}^{-1}}
+\newcommand{\U}{\mathcal{U}}
 
 %%%%%%%%%%%%%
 % local definitions
@@ -2250,6 +2251,189 @@ To prepare for computing the inverse Laplace transform, we use partial fractions
 Then we translate back to actual functions with the inverse Laplace transform:
 \begin{align*} y &= \LAi{\frac{\frac{1}{10}}{s-1} - \frac{\frac{1}{10}s+\frac{1}{10}}{s^2+9}} \\&=\frac{1}{10} \LAi{\frac{1}{s-1}} - \frac{1}{10} \LAi{\frac{s}{s^2+9}}  - \frac{1}{30} \LAi{\frac{3}{s^2+9}} \\&= \frac{1}{10} e^t- \frac{1}{10} \cos(3t)-\frac{1}{30} \sin(3t).
 \end{align*}
+\end{ex}
+
+\begin{comment}
+
+\Nov{15}
+
+
+
+\subsection*{Translation theorems for Laplace transforms (\S7.3)}
+
+Recall that if $g(x)$ is a function, then $g(x-a)$ is the function you get by shifting the graph to the right by $a$ (if $a$ is positive; to the left by $|a|$ if $a$ is negative); we sometimes call this function a \emph{translation}\index{translation} of $g$. Following the webwork, we might use notation like $g|_{x-a}$\index{$g|_{x-a}$} for this sometimes.
+
+Translating a Laplace transform has a nice formula:
+
+\begin{thm} If $\LA{f(t)} = F(s)$ then
+\[ \LA{e^{at} f(t)} = F(s-a).\]
+\end{thm}
+
+We can also write this as $\LA{e^{at} f(t)} = F|_{s-a}$.
+This is easy to check:
+\[ \LA{e^{at} f(t)}(s) = \int_{0}^\infty e^{-st} e^{at} f(t) \ dt = \int_{0}^\infty e^{-(s-a)t} f(t) \ dt = F(s-a).\]
+
+For a simple example, the theorem says that 
+\[\LA{ e^{5t} \sin(6x)} = \LA{\sin(6x)}|_{s-5} = \frac{6}{(s-5)^2 + 36}.\]
+
+The theorem is especially useful in computing inverse Laplace transforms. We can rewrite the formula above as:
+\[ \LAi{F|_{s-a}} = e^{at} \LAi{F}.\]
+
+\begin{ex} To compute the inverse Laplace transform of $F(s) = \frac{5}{(s+3)^2}$, first we realize this function as $\frac{5}{s^3}|_{s+2}$. Then 
+\[\LAi{F(s)} = \LAi{\frac{5}{s^3}|_{s+2}}  = e^{-2t} \LAi{\frac{5}{s^3}} = \frac{5}{2} e^{-2t} \LAi{\frac{2}{s^3}} =\frac{5}{2} t^2.\]
+\end{ex}
+
+We can also compute inverse Laplace transforms of irreducible quadratics use this theorem and completing the square. Recall that \emph{completing the square}\index{completing the square} is an algebraic technique to rewrite quadratic polynomials: to rewrite $x^2 + bx + c$, we split $b$ in half and write
+\[ x^2 + bx + c = (x+\frac{b}{2})^2 + d\]
+and solve for $d$.
+For example,
+\[ x^2 + 4x + 7 = (x+2)^2 + d = (x^2 + 4x + 4) + d \rsa d=3\]
+\[ \rsa x^2 + 4x + 7 = (x+2)^2 + 3.\]
+
+\begin{ex}
+Let's compute the inverse Laplace transform of
+\[ F(s) = \frac{sx - 7} {s^2 + 6s + 13}.\]
+First we apply completing the square to the bottom:
+\[ s^2 + 6s + 13 = (s+3)^2 + d = s^2 + 6s + 9 + d \rsa d=4\]
+\[ \rsa s^2 + 6s + 10 = (s+3)^2 + 4,\]
+so 
+\[ F(s) = \frac{2s - 7} {(s+3)^2 + 4}.\]
+Now, we would like to think of $(s+3)^2 + 4$ as a function of $s+3$. We rewrite the numerator accordingly:
+\[ 2s-7 = 2(s-3 + 3) - 7 = 2(s-3) + 6 - 7 = 2(s-3)-1,\]
+so
+\[ F(s) =  \frac{2(s-3)-1} {(s+3)^2 + 1} = \frac{2s-1}{s^2+4} |_{s+3}.\]
+Thus, by the theorem,
+\[ \LAi{F(s)} = e^{-3t} \LAi{\frac{2s-1}{s^2+4}} =e^{-3t}\left( 2\LAi{\frac{s}{s^2+4}} - 1\LAi{\frac{1}{s^2+4}}\right) \] 
+\[ = e^{-3t}\left( 2\LAi{\frac{s}{s^2+4}} - \frac{1}{2}\LAi{\frac{2}{s^2+4}}\right) =e^{-3t} (2 \cos(2t) - \frac{1}{2} \sin(2t))\]
+\[ = 2 e^{-3t} \cos(2t) - \frac{1}{2}e^{-3t} \sin(2t).\]
+\end{ex}
+
+\subsection*{Heaviside functions and second translation theorem}
+
+We will get a very useful rule that allows us to work easily with piecewise defined functions. We start with a building block.
+
+\begin{defn} The \emph{Heaviside function}\index{Heaviside function} or \emph{unit step function}\index{unit step function} is the function
+\[ \U(t) = \begin{cases} 1 &\text{if} \ x\geq 0 \\ 0 &\text{if} \ x < 0 \end{cases}.\]
+\end{defn}
+
+This is like an on/off switch that turns on at $t=0$. We can translate it to make on/off switches at different times:
+
+The function $\U(t-a)$ is given by the rule
+\[ \U(t) = \begin{cases} 1 &\text{if} \ x\geq a \\ 0 &\text{if} \ x < a \end{cases}.\]
+
+If we want to ``switch on'' at $t=a$ and ``switch off'' later at $t=b$, we want the function
+\[ \begin{cases} 0 &\text{if} \ x < a \\ 
+1 &\text{if} \ a \leq x < b \\
+0 &\text{if} \ x>b \end{cases},\]
+which is given by
+\[ \U(t-a) - \U(t-b).\]
+
+Let's use Heaviside functions to write the function
+\[ f(t) = \begin{cases} 2 \cos(4t) &\text{if} \ x \geq 6\pi \\
+0 &\text{if} \ x < 6\pi \end{cases}.\]
+We want a $2 \cos(4t)$ to be ``on'' starting from $6\pi$, so we take
+\[ f(t) = 2 \cos(4t)\, \U(t-6\pi).\]
+What about 
+\[ g(t) = \begin{cases} 2 \cos(4t) &\text{if} \ 6 \pi \leq x < 8\pi \\
+0 &\text{otherwise} \end{cases}?\]
+We want a $2 \cos(4t)$ times an on/off switch that's on from $6 \pi$ to  $8\pi$:
+\[ g(t) = 2 \cos(4t) ( \U(t-6 \pi) - \U(t-8 \pi) ).\]
+
+Here's how we deal with the Laplace transforms of these:
+
+\begin{thm} If $\LA{f(t)} = F(s)$ then
+\[ \LA{f(t-a)\, \U(t-a)} = e^{-as} F(s).\]
+\end{thm}
+
+We can write this backwards as 
+\[ \LAi{e^{-as} F(s)} = f(t-a)\, \U(t-a) =\LAi{F(s)}|_{t-a}\, \U(t-a).\]
+
+\begin{ex} Let's compute $\LA{ 2 e^{3t} \U(t-5)}$.
+We need to rewrite in terms of $t-5$ to use the formula:
+\[ \LA{ 2 e^{3t}\, \U(t-5)} = \LA{ 2 e^{3(t-5 + 5)}\, \U(t-5)= \LA{ 2 e^{15} e^{3(t-5)}\, \U(t-5)}} \]
+\[= 2 e^{15} e^{-5s} \LA{e^{3t}} = 2 e^{15} \frac{e^{-5s}}{s-5}\]
+\end{ex}
+
+\begin{ex} Let's compute $\displaystyle\LAi{ \frac{s}{s^2+9} e^{-\pi s}}$.
+We have
+\[ \LAi{ \frac{s}{s^2+9} e^{-\pi s}} = \cos(3t)|_{t-\pi}\, \U(t-\pi) \] \[= \cos(3(t-\pi)) \U(t-\pi) = \cos(3t-3\pi) \U(t-\pi).\]
+\end{ex}
+
+\subsection*{Discussion Questions}
+
+\begin{enumerate}
+\item Find Laplace transforms of the following functions:
+\begin{itemize}
+\item $f(t)= e^{-2t} \sin(3t)$
+\item $g(t) = \begin{cases} 0 &\text{if} \ t< \pi\\
+\sin(2t) & \text{if} \ t\geq \pi\end{cases}.$
+\item $h(t) = \begin{cases} \sin(2t) & \text{if} \ \pi \leq t < 2\pi \\ 0 & \text{otherwise}\end{cases}$.
+\end{itemize}
+\begin{framed}
+\begin{itemize}
+\item $\displaystyle F(s) = \frac{3}{(s+2)^2 +9}$
+\item $\displaystyle G(s) = e^{-\pi s} \frac{2}{s^2+4}$.
+\item $\displaystyle H(s)= (e^{-\pi s} - e^{-2\pi s}) \frac{2}{s^2+4}$.
+\end{itemize}
+\end{framed}
+
+\item Find inverse Laplace transforms of the following functions:
+\begin{itemize}
+\item $\displaystyle F(s) = \frac{6}{s^2 + 8s + 25}$.
+\item  $\displaystyle G(s)= \frac{e^{-2s}}{s-4}$.
+\end{itemize}
+
+\begin{framed}
+\begin{itemize}
+\item $\displaystyle f(t)=2 e^{-4t} \sin(3t)$
+\item$\displaystyle g(t)= \begin{cases} e^{4t-8} &\text{if} \ t\geq 2 \\ 0 &\text{if} \ t<2\end{cases}$.
+\end{itemize}
+\end{framed}
+
+
+\item Use Laplace transforms to solve the following initial value problems:
+\begin{itemize}
+\item $\begin{cases} y'' + 2y' + 10y = 5\\ y(0)= 0\\ y'(0)=0\end{cases}$.
+\item $\begin{cases} y' + y = \begin{cases}  0 &\text{if} \ t< \pi\\
+\sin(2t) & \text{if} \ t\geq \pi \end{cases} \\ y(0)= 0\end{cases}$.
+\end{itemize}
+\end{enumerate}
+
+\begin{framed}
+\begin{itemize}
+\item $y= \frac{1}{2} + \frac{-1}{2}e^{-t} \cos(3t) - \frac{1}{6} e^{-t} \sin(3t)$.
+\item
+\end{itemize}
+\end{framed}
+
+\subsection*{Dirac delta function (\S7.5)}
+
+Suppose we consider the same amount of total force applied over smaller and smaller time intervals. One way to model this is by a sequence of functions
+
+\[ \delta_a(t) = \begin{cases} \frac{1}{2a} &\text{if} \ -a \leq t \leq a \\ 0 &\text{otherwise}\end{cases}.\]
+
+If we wanted to model a total force of $1$ instantaneously, this would correspond to taking the limit as $a\to 0$. The result is not a function, but it is similar enough to one that we work with it like one anyway. We set
+\[ \delta(t) ``= \lim_{a\to 0} \delta_a(t)"\]
+and call it the \emph{Dirac delta function}\index{Dirac delta function}. We treat this like a ``function'' that is zero except at $t=0$, and its integral over any interval containing zero is $1$. It is an instantaneous spike that has some area (=1) under the curve.
+
+We can likewise shift and get
+\[ \delta(t-a)\]
+a delta function centered at $t=a$.
+
+\begin{theorem} 
+For $a>0$,
+\[ \LA{\delta(t-a)} = e^{-sa}.\]
+\end{theorem}
+
+\begin{ex} Consider the initial value problem
+\[ \begin{cases} y'' + y = 2\delta(t-2\pi)\\
+y(0)=0\\
+y'(0)=0\end{cases}.\]
+The $y'' + y$ part of the equation is the sort of thing arising from a mass-spring system with no friction. The $2 \delta(t-\2pi)$ on the right hand side corresponds to an instantaneous force at time $2\pi$. Let's solve the IVP with Laplace transforms.
+Transforming both sides gives
+\[ (s^2+1) Y = 2 e^{-2\pi s},\]
+so $Y= \frac{2}{s^2+1}e^{-2\pi s}$.
+Then transforming back gives\dots.
 \end{ex}
 
 \begin{comment}
