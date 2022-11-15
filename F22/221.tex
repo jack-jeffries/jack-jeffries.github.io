@@ -2277,13 +2277,18 @@ For a simple example, the theorem says that
 \[\LA{ e^{5t} \sin(6x)} = \LA{\sin(6x)}|_{s-5} = \frac{6}{(s-5)^2 + 36}.\]
 
 The theorem is especially useful in computing inverse Laplace transforms. We can rewrite the formula above as:
+\[ \LAi{F(s-a)} = e^{at} \LAi{F(s)}\]
+or
 \[ \LAi{F|_{s-a}} = e^{at} \LAi{F}.\]
+Thus, if our function looks like, or can be made to look like, a function of $s-a$ for some constant $a$, then the formula helps us compute the inverse transform.
 
-\begin{ex} To compute the inverse Laplace transform of $F(s) = \frac{5}{(s+3)^2}$, first we realize this function as $\frac{5}{s^3}|_{s+2}$. Then 
+\begin{slogan} Laplace transform turns multiplying by an exponential into a shift; inverse Laplace transform turns a shift into multiplying by an exponential.\end{slogan}
+
+\begin{ex} To compute the inverse Laplace transform of $\displaystyle F(s) = \frac{5}{(s+3)^2}$, first we realize this function as $\displaystyle \frac{5}{s^3}|_{s+2}$. Then 
 \[\LAi{F(s)} = \LAi{\frac{5}{s^3}|_{s+2}}  = e^{-2t} \LAi{\frac{5}{s^3}} = \frac{5}{2} e^{-2t} \LAi{\frac{2}{s^3}} =\frac{5}{2} t^2.\]
 \end{ex}
 
-We can also compute inverse Laplace transforms of irreducible quadratics use this theorem and completing the square. Recall that \emph{completing the square}\index{completing the square} is an algebraic technique to rewrite quadratic polynomials: to rewrite $x^2 + bx + c$, we split $b$ in half and write
+We can also compute inverse Laplace transforms of irreducible quadratics using this theorem and completing the square. Recall that \emph{completing the square}\index{completing the square} is an algebraic technique to rewrite quadratic polynomials: to rewrite $x^2 + bx + c$, we split $b$ in half and write
 \[ x^2 + bx + c = (x+\frac{b}{2})^2 + d\]
 and solve for $d$.
 For example,
@@ -2298,14 +2303,16 @@ First we apply completing the square to the bottom:
 \[ \rsa s^2 + 6s + 10 = (s+3)^2 + 4,\]
 so 
 \[ F(s) = \frac{2s - 7} {(s+3)^2 + 4}.\]
-Now, we would like to think of $(s+3)^2 + 4$ as a function of $s+3$. We rewrite the numerator accordingly:
-\[ 2s-7 = 2(s-3 + 3) - 7 = 2(s-3) + 6 - 7 = 2(s-3)-1,\]
+Now, the denominator suggests that we would like to think of this as a function of $s+3$. To make the numerator look like a function of $s+3$, we can rewrite $s= (s+3) -3$.
+\[ 2s-7 = 2(s+3 - 3) - 7 = 2(s+3) - 6 - 7 = 2(s-3)-13,\]
 so
-\[ F(s) =  \frac{2(s-3)-1} {(s+3)^2 + 1} = \frac{2s-1}{s^2+4} |_{s+3}.\]
+\[ F(s) =  \frac{2(s+3)-13} {(s+3)^2 + 4} = \frac{2s-13}{s^2+4} |_{s+3}.\]
 Thus, by the theorem,
-\[ \LAi{F(s)} = e^{-3t} \LAi{\frac{2s-1}{s^2+4}} =e^{-3t}\left( 2\LAi{\frac{s}{s^2+4}} - 1\LAi{\frac{1}{s^2+4}}\right) \] 
-\[ = e^{-3t}\left( 2\LAi{\frac{s}{s^2+4}} - \frac{1}{2}\LAi{\frac{2}{s^2+4}}\right) =e^{-3t} (2 \cos(2t) - \frac{1}{2} \sin(2t))\]
-\[ = 2 e^{-3t} \cos(2t) - \frac{1}{2}e^{-3t} \sin(2t).\]
+\[ \begin{aligned}
+\LAi{F(s)} &= \LAi{\frac{2s-13}{s^2+4} |_{s+3}} =  e^{-3t} \LAi{\frac{2s-13}{s^2+4}} \\&=
+e^{-3t}\left( 2\LAi{\frac{s}{s^2+4}} - 1\LAi{\frac{1}{s^2+4}}\right) 
+\\ &= e^{-3t}\left( 2\LAi{\frac{s}{s^2+4}} - \frac{1}{2}\LAi{\frac{2}{s^2+4}}\right) \\&=e^{-3t} (2 \cos(2t) - \frac{1}{2} \sin(2t))
+ = 2 e^{-3t} \cos(2t) - \frac{1}{2}e^{-3t} \sin(2t).\end{aligned}\]
 \end{ex}
 
 \subsection*{Heaviside functions and second translation theorem}
@@ -2348,6 +2355,10 @@ Here's how we deal with the Laplace transforms of these:
 We can write this backwards as 
 \[ \LAi{e^{-as} F(s)} = f(t-a)\, \U(t-a) =\LAi{F(s)}|_{t-a}\, \U(t-a).\]
 
+\begin{slogan}
+Laplace transforms turn shifting \& on/off into multiplication by an exponential; inverse Laplace transforms turn multiplication by an exponential into turn shifting \& on/off.
+\end{slogan}
+
 \begin{ex} Let's compute $\LA{ 2 e^{3t} \U(t-5)}$.
 We need to rewrite in terms of $t-5$ to use the formula:
 \[ \LA{ 2 e^{3t}\, \U(t-5)} = \LA{ 2 e^{3(t-5 + 5)}\, \U(t-5)= \LA{ 2 e^{15} e^{3(t-5)}\, \U(t-5)}} \]
@@ -2356,7 +2367,7 @@ We need to rewrite in terms of $t-5$ to use the formula:
 
 \begin{ex} Let's compute $\displaystyle\LAi{ \frac{s}{s^2+9} e^{-\pi s}}$.
 We have
-\[ \LAi{ \frac{s}{s^2+9} e^{-\pi s}} = \cos(3t)|_{t-\pi}\, \U(t-\pi) \] \[= \cos(3(t-\pi)) \U(t-\pi) = \cos(3t-3\pi) \U(t-\pi).\]
+\[ \LAi{ \frac{s}{s^2+9} e^{-\pi s}} = \cos(3t)|_{t-\pi}\, \U(t-\pi) \] \[= \cos(3(t-\pi))\, \U(t-\pi) = \cos(3t-3\pi)\, \U(t-\pi).\]
 \end{ex}
 
 \subsection*{Discussion Questions}
@@ -2420,20 +2431,23 @@ We can likewise shift and get
 \[ \delta(t-a)\]
 a delta function centered at $t=a$.
 
-\begin{theorem} 
+\begin{thm} 
 For $a>0$,
 \[ \LA{\delta(t-a)} = e^{-sa}.\]
-\end{theorem}
+\end{thm}
 
 \begin{ex} Consider the initial value problem
 \[ \begin{cases} y'' + y = 2\delta(t-2\pi)\\
 y(0)=0\\
 y'(0)=0\end{cases}.\]
-The $y'' + y$ part of the equation is the sort of thing arising from a mass-spring system with no friction. The $2 \delta(t-\2pi)$ on the right hand side corresponds to an instantaneous force at time $2\pi$. Let's solve the IVP with Laplace transforms.
+The $y'' + y$ part of the equation is the sort of thing arising from a mass-spring system with no friction. The $2 \delta(t-2\pi)$ on the right hand side corresponds to an instantaneous force at time $2\pi$. Let's solve the IVP with Laplace transforms.
 Transforming both sides gives
 \[ (s^2+1) Y = 2 e^{-2\pi s},\]
-so $Y= \frac{2}{s^2+1}e^{-2\pi s}$.
-Then transforming back gives\dots.
+so \[Y= \frac{2}{s^2+1}e^{-2\pi s}.\]
+Then transforming back gives
+\[\begin{aligned} y &= \LAi{e^{-2\pi s}\frac{2}{s^2+1}} = \LAi{\frac{2}{s^2+1}}|_{t-2\pi} \, \U(t-2 \pi) \\&= 2 \sin(t-2\pi)\,\U(t-2 \pi) = 2 \sin(t)\,\U(t-2 \pi)\\
+&= \begin{cases} 0 &\text{if} \ t< 2\pi \\
+2\sin(t) &\text{if} \ t\geq 2\pi\end{cases}.\end{aligned}\]
 \end{ex}
 
 \begin{comment}
