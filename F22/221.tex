@@ -2274,7 +2274,7 @@ This is easy to check:
 \[ \LA{e^{at} f(t)}(s) = \int_{0}^\infty e^{-st} e^{at} f(t) \ dt = \int_{0}^\infty e^{-(s-a)t} f(t) \ dt = F(s-a).\]
 
 For a simple example, the theorem says that 
-\[\LA{ e^{5t} \sin(6x)} = \LA{\sin(6x)}|_{s-5} = \frac{6}{(s-5)^2 + 36}.\]
+\[\LA{ e^{5t} \sin(6t)} = \LA{\sin(6t)}|_{s-5} = \frac{6}{(s-5)^2 + 36}.\]
 
 The theorem is especially useful in computing inverse Laplace transforms. We can rewrite the formula above as:
 \[ \LAi{F(s-a)} = e^{at} \LAi{F(s)}\]
@@ -2297,7 +2297,7 @@ For example,
 
 \begin{ex}
 Let's compute the inverse Laplace transform of
-\[ F(s) = \frac{sx - 7} {s^2 + 6s + 13}.\]
+\[ F(s) = \frac{s - 7} {s^2 + 6s + 13}.\]
 First we apply completing the square to the bottom:
 \[ s^2 + 6s + 13 = (s+3)^2 + d = s^2 + 6s + 9 + d \rsa d=4\]
 \[ \rsa s^2 + 6s + 10 = (s+3)^2 + 4,\]
@@ -2310,9 +2310,9 @@ so
 Thus, by the theorem,
 \[ \begin{aligned}
 \LAi{F(s)} &= \LAi{\frac{2s-13}{s^2+4} |_{s+3}} =  e^{-3t} \LAi{\frac{2s-13}{s^2+4}} \\&=
-e^{-3t}\left( 2\LAi{\frac{s}{s^2+4}} - 1\LAi{\frac{1}{s^2+4}}\right) 
-\\ &= e^{-3t}\left( 2\LAi{\frac{s}{s^2+4}} - \frac{1}{2}\LAi{\frac{2}{s^2+4}}\right) \\&=e^{-3t} (2 \cos(2t) - \frac{1}{2} \sin(2t))
- = 2 e^{-3t} \cos(2t) - \frac{1}{2}e^{-3t} \sin(2t).\end{aligned}\]
+e^{-3t}\left( 2\LAi{\frac{s}{s^2+4}} - 13\LAi{\frac{1}{s^2+4}}\right) 
+\\ &= e^{-3t}\left( 2\LAi{\frac{s}{s^2+4}} - \frac{13}{2}\LAi{\frac{2}{s^2+4}}\right) \\&=e^{-3t} (2 \cos(2t) - \frac{1}{2} \sin(2t))
+ = 2 e^{-3t} \cos(2t) - \frac{13}{2}e^{-3t} \sin(2t).\end{aligned}\]
 \end{ex}
 
 \subsection*{Heaviside functions and second translation theorem}
@@ -2356,11 +2356,11 @@ We can write this backwards as
 \[ \LAi{e^{-as} F(s)} = f(t-a)\, \U(t-a) =\LAi{F(s)}|_{t-a}\, \U(t-a).\]
 
 \begin{slogan}
-Laplace transforms turn shifting \& on/off into multiplication by an exponential; inverse Laplace transforms turn multiplication by an exponential into turn shifting \& on/off.
+Laplace transforms turn shifting \& on/off into multiplication by an exponential; inverse Laplace transforms turn multiplication by an exponential into shifting \& on/off.
 \end{slogan}
 
 \begin{ex} Let's compute $\LA{ 2 e^{3t} \U(t-5)}$.
-We need to rewrite in terms of $t-5$ to use the formula:
+To use the formula, we need to rewrite our function $2 e^{3t}$ as a function of $t-5$. To see a $t-5$, let's rewrite $t=(t-5)+5$.
 \[ \LA{ 2 e^{3t}\, \U(t-5)} = \LA{ 2 e^{3(t-5 + 5)}\, \U(t-5)= \LA{ 2 e^{15} e^{3(t-5)}\, \U(t-5)}} \]
 \[= 2 e^{15} e^{-5s} \LA{e^{3t}} = 2 e^{15} \frac{e^{-5s}}{s-5}\]
 \end{ex}
@@ -2378,15 +2378,22 @@ We have
 \item $f(t)= e^{-2t} \sin(3t)$
 \item $g(t) = \begin{cases} 0 &\text{if} \ t< \pi\\
 \sin(2t) & \text{if} \ t\geq \pi\end{cases}.$
-\item $h(t) = \begin{cases} \sin(2t) & \text{if} \ \pi \leq t < 2\pi \\ 0 & \text{otherwise}\end{cases}$.
+%\item $h(t) = \begin{cases} \sin(2t) & \text{if} \ \pi \leq t < 2\pi \\ 0 & \text{otherwise}\end{cases}$.
 \end{itemize}
+
+
 \begin{framed}
-\begin{itemize}
-\item $\displaystyle F(s) = \frac{3}{(s+2)^2 +9}$
-\item $\displaystyle G(s) = e^{-\pi s} \frac{2}{s^2+4}$.
-\item $\displaystyle H(s)= (e^{-\pi s} - e^{-2\pi s}) \frac{2}{s^2+4}$.
-\end{itemize}
+
+ \[\begin{aligned} F(s)&= \LA{e^{-2t} \sin(3t)} = \LA{\sin(3t)}|_{s-(-2)} \\&= \frac{3}{s^2+9}|_{s+2} =\frac{3}{(s+2)^2 +9}.\end{aligned}\]
+ 
+ \
+ 
+ \[\begin{aligned} g(t) &= \U(t-\pi) \sin(2t) =  \U(t-\pi) \sin(2(t-\pi+\pi)) \\&=  \U(t-\pi) \sin(2(t-\pi)+2\pi) =\U(t-\pi) \sin(2(t-\pi))\\
+ G(s) &= e^{-\pi s} \LA{\sin(2t)} = e^{-\pi s} \frac{2}{s^2 +4}\end{aligned}\]
+%\item $\displaystyle H(s)= (e^{-\pi s} - e^{-2\pi s}) \frac{2}{s^2+4}$.
+
 \end{framed}
+
 
 \item Find inverse Laplace transforms of the following functions:
 \begin{itemize}
@@ -2402,20 +2409,23 @@ We have
 \end{framed}
 
 
-\item Use Laplace transforms to solve the following initial value problems:
-\begin{itemize}
-\item $\begin{cases} y'' + 2y' + 10y = 5\\ y(0)= 0\\ y'(0)=0\end{cases}$.
-\item $\begin{cases} y' + y = \begin{cases}  0 &\text{if} \ t< \pi\\
-\sin(2t) & \text{if} \ t\geq \pi \end{cases} \\ y(0)= 0\end{cases}$.
-\end{itemize}
-\end{enumerate}
 
 \begin{framed}
-\begin{itemize}
-\item $y= \frac{1}{2} + \frac{-1}{2}e^{-t} \cos(3t) - \frac{1}{6} e^{-t} \sin(3t)$.
-\item
-\end{itemize}
+\[ sY -1 + Y = e^{-\pi s} \frac{1}{s^2+1}\]
+\[ Y= e^{-\pi s} \left(\frac{1/2}{s+1}+ \frac{-1/2 s + 1/2}{s^2 +1}\right) + \frac{1}{s-1}\]
+\[ \LAi{\frac{1/2}{s+1}+ \frac{-1/2 s + 1/2}{s^2 +1}} = \frac{1}{2} e^{-t} - \frac{1}{2} \cos(t) + \frac{1}{4} \sin(t)\]
+\[ y= \U(t-\pi) \left(\frac{1}{2} e^{-(t-\pi)} - \frac{1}{2} \cos(t-\pi) + \frac{1}{4} \sin(t-\pi)\right) + e^{-t}\]
+\[ y = \begin{cases} e^{-t} &\text{if} \ t< \pi \\
+e^{-t} + \frac{1}{2} e^{-(t-\pi)} +  \frac{1}{2} \cos(t) -\frac{1}{4} \sin(t)&\text{if} \ t\geq \pi\end{cases}.\]
 \end{framed}
+
+\begin{comment}
+
+\item Use Laplace transforms to solve the following initial value problem:
+ $\begin{cases} y' + y = \begin{cases}  0 &\text{if} \ t< \pi\\
+\sin(2t) & \text{if} \ t\geq \pi \end{cases} \\ y(0)= 1\end{cases}$.
+\end{enumerate}
+
 
 \subsection*{Dirac delta function (\S7.5)}
 
@@ -2450,20 +2460,48 @@ Then transforming back gives
 2\sin(t) &\text{if} \ t\geq 2\pi\end{cases}.\end{aligned}\]
 \end{ex}
 
+
+\subsection*{Matrices, vectors, and linear systems of ODEs (\S8.1)}
+
+\renewcommand{\arraystretch}{1.25}
+
+A \emph{vector}\index{vector} is just a stack:
+\[ \mathbf{x}= \begin{bmatrix} 4 \\ -1\end{bmatrix} \quad \text{or} \quad \mathbf{x}=\begin{bmatrix} 2 \\ \pi \\ -1/7\end{bmatrix}.\]
+While vectors of numbers are familiar, we will equally well consider vectors of functions of a variable $t$ too:
+\[ \mathbf{x}= \begin{bmatrix} \cos(t) \\ \sin(t) \end{bmatrix} \quad \text{or} \quad \mathbf{x}=\begin{bmatrix} e^{-t} \\ \pi \\ t^2-1 \end{bmatrix}.\]
+A vector of numbers $\mathbf{x}= \begin{bmatrix} 4 \\ -1\end{bmatrix}$ can be graphed as the point $(4,-1)$ in the $(x,y)$-plane; a vector of functions $\mathbf{x}= \begin{bmatrix} \cos(t) \\ \sin(t) \end{bmatrix}$ corresponds to a parametrized curve. For vectors of three entries, we can graph them in $(x,y,z)$-space. The \emph{derivative}\index{derivative of a vector} is given by differentiating each entry:
+\[ \mathbf{x}= \begin{bmatrix} \cos(t) \\ \sin(t) \end{bmatrix} \rsa  \mathbf{x'}= \begin{bmatrix} -\sin(t) \\ \cos(t) \end{bmatrix}.\]
+
+
+A \emph{matrix}\index{matrix} is just a block (of numbers or functions of functions of a variable $t$):
+\[ A= \begin{bmatrix} 2 & \pi \\ -7/4 & 3\end{bmatrix} \quad \text{or} \quad A=\begin{bmatrix} 2 \cos(t) & \pi t^2 \\ -7/4 & 3/t \end{bmatrix}.\]
+
+
+
+Given a $2 \times 2$ matrix $A= \begin{bmatrix} a & b\\ c & d\end{bmatrix}$ and a vector with $2$ entries $\mathbf{x} = \begin{bmatrix} x \\ y\end{bmatrix}$, we can multiply them to get another $2$ entry vector by the rule
+\[ A \mathbf{x} = \begin{bmatrix} a & b\\ c & d\end{bmatrix} \begin{bmatrix} x \\ y\end{bmatrix} = \begin{bmatrix} a x + b y \\ c x + d y\end{bmatrix}.\]
+Put another way, given some superpositions of $x$ and $y$ like
+\[ \begin{bmatrix} a x + b y \\ c x + d y\end{bmatrix},\]
+we can use matrix times vector arithmetic to encode it: we take the vector of variables being combined, and the matrix of coefficients combining them.
+The same idea works for $3\times 3$ matrices and vectors of $3$ entries, and even nonsquare $m\times n$ matrices and $n$-vectors.
+
+A \emph{linear system}\index{linear system} in two variables is a system of ODEs of the form
+\[ \begin{cases} x'(t) = a(t) x(t) + b(t) y(t) + f(t) \\
+y'(t) = c(t) x(t) + d(t) y(t) + g(t)
+\end{cases}.\]
+We can write this using matrices and vectors. Take $\mathbf{x} = \begin{bmatrix} x(t) \\ y(t) \end{bmatrix}$, so $\mathbf{x'} = \begin{bmatrix} x'(t) \\ y'(t) \end{bmatrix}$. This takes care of the left-hand side. In the middle we have a something like matrix times vector, so set $A(t) = \begin{bmatrix} a(t) & b(t) \\ c(t) & d(t)\end{bmatrix}$. Then there is a leftover $\textbf{f} = \begin{bmatrix} f(t) \\ g(t)\end{bmatrix}$. So, we get
+\[ \mathbf{x'}(t) = A(t) \mathbf{x}(t) + \mathbf{f}(t).\]
+
+
+
+
+
 \begin{comment}
 \end{comment}
 
 \printindex
 
 \end{document}
-
-
-
-
-
-
-
-
 
 
 
