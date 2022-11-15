@@ -2261,7 +2261,7 @@ Then we translate back to actual functions with the inverse Laplace transform:
 
 \subsection*{Translation theorems for Laplace transforms (\S7.3)}
 
-Recall that if $g(x)$ is a function, then $g(x-a)$ is the function you get by shifting the graph to the right by $a$ (if $a$ is positive; to the left by $|a|$ if $a$ is negative); we sometimes call this function a \emph{translation}\index{translation} of $g$. Following the webwork, we might use notation like $g|_{x-a}$\index{$g|_{x-a}$} for this sometimes.
+Recall that if $g(x)$ is a function, then $g(x-a)$ is the function you get by shifting the graph to the right by $a$ (if $a$ is positive; to the left by $|a|$ if $a$ is negative); we sometimes call this function a \emph{translation}\index{translation} of $g$. Following the webwork, we might use notation like $g|_{x-a}$ for this sometimes.
 
 Translating a Laplace transform has a nice formula:
 
@@ -2413,19 +2413,22 @@ We have
 \end{enumerate}
 
 \begin{comment}
-
- Use Laplace transforms to solve the following initial value problem:
+\Nov{17}
+    
+\begin{ex}  Let's use Laplace transforms to solve the following initial value problem:
  $\begin{cases} y' + y = \begin{cases}  0 &\text{if} \ t< \pi\\
 \sin(2t) & \text{if} \ t\geq \pi \end{cases} \\ y(0)= 1\end{cases}$.
 
-\begin{framed}
-\[ sY -1 + Y = e^{-\pi s} \frac{1}{s^2+1}\]
-\[ Y= e^{-\pi s} \left(\frac{1/2}{s+1}+ \frac{-1/2 s + 1/2}{s^2 +1}\right) + \frac{1}{s-1}\]
-\[ \LAi{\frac{1/2}{s+1}+ \frac{-1/2 s + 1/2}{s^2 +1}} = \frac{1}{2} e^{-t} - \frac{1}{2} \cos(t) + \frac{1}{4} \sin(t)\]
-\[ y= \U(t-\pi) \left(\frac{1}{2} e^{-(t-\pi)} - \frac{1}{2} \cos(t-\pi) + \frac{1}{4} \sin(t-\pi)\right) + e^{-t}\]
+First we transform both sides:
+\[ sY -1 + Y = e^{-\pi s} \frac{1}{s^2+1}.\]
+Then we solve for $Y$ (with some partial fractions):
+\[ Y= e^{-\pi s} \left(\frac{1/2}{s+1}+ \frac{-1/2 s + 1/2}{s^2 +1}\right) + \frac{1}{s-1}.\]
+We now want to get to the inverse transform:
+\[ \LAi{\frac{1/2}{s+1}+ \frac{-1/2 s + 1/2}{s^2 +1}} = \frac{1}{2} e^{-t} - \frac{1}{2} \cos(t) + \frac{1}{4} \sin(t),\]
+\[ y= \U(t-\pi) \left(\frac{1}{2} e^{-(t-\pi)} - \frac{1}{2} \cos(t-\pi) + \frac{1}{4} \sin(t-\pi)\right) + e^{-t},\]
 \[ y = \begin{cases} e^{-t} &\text{if} \ t< \pi \\
 e^{-t} + \frac{1}{2} e^{-(t-\pi)} +  \frac{1}{2} \cos(t) -\frac{1}{4} \sin(t)&\text{if} \ t\geq \pi\end{cases}.\]
-\end{framed}
+\end{ex}
 
 
 
@@ -2465,7 +2468,7 @@ Then transforming back gives
 
 \subsection*{Matrices, vectors, and linear systems of ODEs (\S8.1)}
 
-\renewcommand{\arraystretch}{1.25}
+\renewcommand{\arraystretch}{1}
 
 A \emph{vector}\index{vector} is just a stack:
 \[ \mathbf{x}= \begin{bmatrix} 4 \\ -1\end{bmatrix} \quad \text{or} \quad \mathbf{x}=\begin{bmatrix} 2 \\ \pi \\ -1/7\end{bmatrix}.\]
@@ -2493,6 +2496,20 @@ y'(t) = c(t) x(t) + d(t) y(t) + g(t)
 \end{cases}.\]
 We can write this using matrices and vectors. Take $\mathbf{x} = \begin{bmatrix} x(t) \\ y(t) \end{bmatrix}$, so $\mathbf{x'} = \begin{bmatrix} x'(t) \\ y'(t) \end{bmatrix}$. This takes care of the left-hand side. In the middle we have a something like matrix times vector, so set $A(t) = \begin{bmatrix} a(t) & b(t) \\ c(t) & d(t)\end{bmatrix}$. Then there is a leftover $\textbf{f} = \begin{bmatrix} f(t) \\ g(t)\end{bmatrix}$. So, we get
 \[ \mathbf{x'}(t) = A(t) \mathbf{x}(t) + \mathbf{f}(t).\]
+
+Similarly, a linear system in three variables looks like 
+\[ \mathbf{x'}(t) = A(t) \mathbf{x}(t) + \mathbf{f}(t)\]
+\[ \mathbf{x}(t) = \begin{bmatrix} x(t) \\ y(t) \\ z(t) \end{bmatrix}\]
+$A(t)$ a $3\times 3$ matrix of functions, and $f(t)$ some vector of $3$ functions.
+
+\begin{ex}
+The linear system
+\[ \begin{aligned} x'(t) &= 2 x + 3y -7 \\
+y'(t) &= x + 5\end{aligned}\]
+can be written as
+\[  \mathbf{x'} = A \mathbf{x} + \mathbf{f}\]
+with $A=\begin{bmatrix} 2 & 3 \\ 1 & 0\end{bmatrix}$ and $\mathbf{f} = \begin{bmatrix} -7 \\ 5\end{bmatrix}$.
+\end{ex}
 
 
 
