@@ -1,0 +1,140 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=.9in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,enumitem}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\e}{\varepsilon}
+\def\d{\delta}
+\newcommand{\cts}{continuous\,}
+
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\usepackage[all, knot]{xy}
+\usepackage{color,xcolor}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+	
+	\thispagestyle{empty}
+	
+	\section*{Intermediate Value Theorem}
+	
+\begin{framed} 
+ \noindent The definition of continuous on a closed interval $[a,b]$ is actually a bit different: we shouldn't necessarily ask that $f$ be continuous at $a$, since to know that would have to use something about $f$ on input values outside of our interval!
+ 
+ \
+ 
+\noindent\textbf{Definition~22.1:}  Given a function $f(x)$ and real numbers $a < b$,
+we say $f$ is {\em continuous on the closed interval $[a,b]$} provided 
+\begin{enumerate}
+\item for every $r \in (a,b)$, $f$ is  continuous at $r$ in the sense defined already,
+\item for every $\e > 0$ there is a $\d > 0$ such that if $a \leq x < a+\d$, then $f(x)$ is defined and ${|f(x)
+  - f(a)| < \e}$.
+\item for every $\e > 0$ there is a $\d > 0$ such that if $b -\d < x \leq b$, then ${|f(x)
+  - f(b)| < \e}$.
+\end{enumerate}
+\end{framed}
+
+\
+
+\begin{enumerate}
+ \item Explain why if $f$ is continuous at $x$ for every $x\in[a,b]$, then $f$ is continuous on the closed interval $[a,b]$. In particular, if $f$ is continuous on any open interval containing $[a,b]$, then $f$ is continuous on $[a,b]$. Conclude that every polynomial is continuous on every closed interval.
+
+
+\
+
+\item Show that the function $f(x) = \sqrt{1-x^2}$ is continuous on the closed interval $[-1,1]$:
+\begin{itemize}
+\item For showing condition (1), I recommend using a Theorem about compositions of functions.
+\item For conditions (2) and (3), show that $\delta = \min\{\e^2 /\sqrt{2} , 2\}$ works\footnote{Hint: Write $\sqrt{1-x^2} = \sqrt{1-x} \sqrt{1+x}$.}.
+\end{itemize}
+Is this function continuous on any open interval containing $[-1,1]$?
+\end{enumerate}
+
+\
+
+\begin{framed} 
+\noindent\textbf{Theorem~22.2. (Intermediate Value Theorem):}  Let $a<b$ and $f(x)$ be a function that is continuous on the closed interval $[a,b]$. If $y$ is any real number between $f(a)$ and $f(b)$, then there is some $c\in [a,b]$ such that $f(c)=y$. More precisely, if $f(a) \leq y \leq f(b)$ or $f(b) \leq y \leq f(a)$, then there is some $c\in [a,b]$ such that $f(c)=y$.
+\end{framed}
+
+\
+
+
+\begin{enumerate}\setcounter{enumi}{2}
+\item Draw a picture of this theorem as follows: 
+\begin{itemize}
+\item Mark some $a$ and $b$ on the $x$-axis. 
+\item Graph a function $f$ that is continuous on $[a,b]$.
+\item Mark $f(a)$ and $f(b)$ on the $y$-axis.
+\item Pick some $y$ in between  $f(a)$ and $f(b)$, and make a horizontal line for this $y$-value.
+\item Does it intersect the graph of $f$?
+\end{itemize}
+Repeat with at least one graph that is increasing, at least one graph that is decreasing, and at least one graph that is neither increasing nor decreasing.
+
+\
+
+\item  Give a counterexample to the statement of the Intermediate Value Theorem without the hypothesis that $f$ is continuous on $[a,b]$.
+
+\
+
+\item Prove or disprove: There is a real number $x\in [0,2]$ such that $x^3 - 3x = 1$.
+
+\
+
+\item Prove or disprove: There\footnote{Draw a graph of this function before you declare victory on this problem.} are at least two real numbers $x\in [0,2]$ such that $x^3 - 3x = -1$.
+
+\
+
+\item True or false: If $f(x)$ is continuous on $[a,b]$, and $y$ is \emph{not} in between $f(a)$ and $f(b)$, then there is no $c\in[a,b]$ such that $f(c) = y$.
+
+\
+
+\item \textbf{Proof of the Intermediate Value Theorem:}
+\begin{enumerate}
+\item Let's assume that $f(a) \leq f(b)$ to get started. Explain why the cases $y=f(a)$ and $y=f(b)$ are easy. Hence, we assume that $f(a)< y < f(b)$.
+\item Let $S=\{ x\in [a,b] \ | \ f(r) < y \ \text{for all} \ a\leq r \leq x \}$. In short, $S$ is the set of $x$-values in the interval where the graph of $f$ hasn't crossed $y$ yet. Explain why $S$ has a supremum, and let $c= \sup(S)$.
+\item Show that $c >a$. [ Hint: Apply part (2) of definition of continuous on $[a,b]$ with $\e = y-f(a)$, and show that $a$ is not an upper bound for $S$.]
+\item The argument that $c<b$ is similar (so come back to it later if you want). Thus, $c\in (a,b)$, so we know that $f$ is continuous at $c$.
+\item Suppose that $f(c)<y$, and obtain a contradiction. [ Hint: Apply continuous at $c$ with $\e= y-f(c)$, and show that $c$ is not an upper bound for $S$.]
+\item Suppose that $f(c)>y$, and obtain a contradiction. [ Hint: Apply continuous at $c$ with $\e= f(c)-y$, and find a smaller upper bound for $S$.]
+\item This concludes the case when $f(a) \leq f(b)$. If $f(a) \geq f(b)$, what can you say about $g(x) = -f(x)$? Can we apply the case we just did?
+\end{enumerate}
+\end{enumerate}
+
+\
+
+\noindent We say that a function is \emph{increasing} on an interval $I$ if for any $x,y\in I$, $x<y$ implies $f(x)<f(y)$. We say that a function is \emph{decreasing} on an interval $I$ if for any $x,y\in I$, $x<y$ implies $f(x)>f(y)$. We say that a function is \emph{monotone} on an interval $I$ if it is either increasing on $I$ or decreasing on $I$. We say that a function is \emph{one-to-one} on an interval $I$ if for any $x,y\in I$, $x\neq y$ implies $f(x)\neq f(y)$.
+
+\
+
+\begin{enumerate}\setcounter{enumi}{8}
+\item Show that if $f$ is continuous and one-to one on an interval $(a,b)$, then $f$ is monotone.
+
+
+   \end{enumerate}
+
+
+
+
+
+
+
+
+\end{document}
