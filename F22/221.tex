@@ -2412,7 +2412,7 @@ We have
 
 \end{enumerate}
 
-\begin{comment}
+%\begin{comment}
 \Nov{17}
     
 \begin{ex}  Let's use Laplace transforms to solve the following initial value problem:
@@ -2422,10 +2422,10 @@ We have
 First we transform both sides. For the left we use the derivative rule. We computed the Laplace transform of the right hand side using the second translation theorem last time.
 \[ sY -1 + Y = e^{-\pi s} \frac{2}{s^2+4}\]
 \[\rsa (s+1) Y = e^{-\pi s} \frac{2}{s^2+4} + 1\]
-\[ \rsa Y=  e^{-\pi s} \frac{2}{(s-1)(s^2+4)} + \frac{1}{s+1}.\]
+\[ \rsa Y=  e^{-\pi s} \frac{2}{(s+1)(s^2+4)} + \frac{1}{s+1}.\]
 We will want to use partial fractions to deal with the first one (which we'll skip since we've done a few of these recently):
 \[ \begin{aligned}
-\frac{2}{(s-1)(s^2+4)} &= \cdots = \frac{2/5}{s+1} + \frac{-2s/5 +2/5}{s^2+4} \\&=\frac{2}{5} \frac{1}{s+1} + \frac{-2}{5} \frac{s}{s^2+4} +\frac{1}{5} \frac{2}{s^2+4}\end{aligned}\]
+\frac{2}{(s+1)(s^2+4)} &= \cdots = \frac{2/5}{s+1} + \frac{-2s/5 +2/5}{s^2+4} \\&=\frac{2}{5} \frac{1}{s+1} + \frac{-2}{5} \frac{s}{s^2+4} +\frac{1}{5} \frac{2}{s^2+4}\end{aligned}\]
 so
 \[ Y= e^{-\pi s} \left(\frac{2}{5} \frac{1}{s+1} + \frac{-2}{5} \frac{s}{s^2+4} +\frac{1}{5} \frac{2}{s^2+4}\right) + \frac{1}{s+1}.\]
 We now want to get to the inverse transform:
@@ -2541,6 +2541,19 @@ We have $\mathbf{x'} =  \begin{bmatrix} -5 e^{-5t} \\ -10 e^{-5t} \end{bmatrix}$
 \[ \begin{bmatrix} 3 & -4 \\ 4 & -7 \end{bmatrix} \mathbf{x} = \begin{bmatrix} 3 & -4 \\ 4 & -7 \end{bmatrix}  \begin{bmatrix} e^{-5t} \\ 2 e^{-5t} \end{bmatrix} = \begin{bmatrix} 3 (e^{-5t}) - 4 (2 e^{-5t}) \\ 4 (e^{-5t}) - 7 (2 e^{-5t}) \end{bmatrix} ,\]
 and since equality holds, this is a solution.
 \end{ex}
+\begin{comment}
+
+\subsection*{Discussion Questions}
+\begin{enumerate}
+\item Write the system 
+\[\begin{cases} 7 = t^2 x + \cos(t) y - x' \\
+y' -  \sin(t) x=  t^5
+\end{cases}\]
+in the matrix form $\mathbf{x'} = A\mathbf{x} + \mathbf{f}$. Is it homogeneous?
+\item Verify that $\mathbf{x'} = \begin{bmatrix} \cos(t) \\ \sin(t) \end{bmatrix}$ is a solution to the system  $\mathbf{x'} = \begin{bmatrix} 0 & -1 \\ 1 & 0\end{bmatrix} \mathbf{x}$.
+\item Can you solve the system $\mathbf{x'} = \begin{bmatrix} a & 0 \\ 0 & b\end{bmatrix} \mathbf{x}$ for constants $a,b$?
+\item Can you guess any solutions of the system $\mathbf{x'} = \begin{bmatrix} 0 & 1 \\ 1 & 0\end{bmatrix} \mathbf{x}$?
+\end{enumerate}
 
 
 \subsection*{Superpositions, linear independence, and general solutions again}
