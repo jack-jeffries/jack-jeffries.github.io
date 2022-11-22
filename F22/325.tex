@@ -3191,7 +3191,7 @@ We saw earlier that $\lim_{x\to 0} j(x) = 0 = j(0)$, so $j$ is continuous at $0$
  \item Prove or disprove: If $f$ and $g$ are two functions, $a\in \R$, and  $f(a)=g(a)$ , then $f$ is continuous at $a$ if and only if $g$ is continuous at $a$.
  
   \begin{framed}
-To disprove it, consider $f(x) = 0$ and $g(x)= \begin{cases} 0 \text{if} \ x=0 \\1 \text{if} \ x\neq0 \end{cases}$.
+To disprove it, consider $f(x) = 0$ and $g(x)= \begin{cases} 0 \ \text{if} \ x=0 \\1\ \text{if} \ x\neq0 \end{cases}$.
 \end{framed}
 
  
@@ -3204,149 +3204,169 @@ The other implication follows by switching the roles of $f$ and $g$.
 \end{framed}
    \end{enumerate}
  
-
-
-\begin{comment}
-
-\begin{ex} 
- The function $\sqrt{x^2 + 5}$ is continuous at every real number: let $g(x) = x^2 + 5$ and $f(x) = \sqrt{x}$. Then $g$ is continuous at $a$ for every $a\in \R$
-  since it is a polynomial. For each $x \in \R$, $g(x) > 0$ and hence $f$ is continuous at $g(x)$. So $\sqrt{x^2 + 5}$ is continuous at every $a\in\R$ by the Theorem.
-
-\end{ex}
-
-\begin{ex} You can apply the Theorem to the compositions of more than two functions too. For example $\sqrt{|x^3| + 1}$ is continuous at $a$ for and $a\in\R$.
-\end{ex}
+\Nov{22}
 
 
 
-We are probably getting a bit tired of saying ``continuous at $a$ for every $a\in \R$''. The following definition will then be convenient.
-
-
-
-\begin{defn} Let $S$ be an open interval of $\R$ of the form $S=(a,b)$, $S=(a,\infty)$, $S=(-\infty,a)$, or $S=(-\infty,\infty)=\R$. We say $f$ is {\em continuous on $S$} if $f$ is continuous
-  at $a$ for all $a\in S$. 
-\end{defn}
-
-
-
-\begin{ex} 
-\begin{itemize}
-\item Every polynomial is continuous on $\R$.
-\item Every polynomial is continuous on $(-13,5)$.
-\item The function $\sqrt{x}$ is continuous on $(0,\infty)$.
-\item The function $1/x$ is continuous on $(0,\infty)$. It is also continuous on $(-\infty,0)$.
-\end{itemize}
-\end{ex}
-
-
-Since the function $\sqrt{x}$ does not jump at $x=0$, we would like to say the function is continuous on all of $[0,\infty)$. However, the definition for $f$ to be continuous at a point $a$ requires that $f$ is defined on $(a-\d,a+\d)$ for some $\d>0$, so we have to change our definition a bit.
-
-\Nov{5}
 
 \begin{defn} 
  Given a function $f(x)$ and real numbers $a < b$,
 we say $f$ is {\em continuous on the closed interval $[a,b]$} provided 
 \begin{enumerate}
 \item for every $r \in (a,b)$, $f$ is  continuous at $r$ in the sense defined already,
-\item for every $\e > 0$ there is a $\d > 0$ such that if $x \in [a,b]$ and $a \leq x < a+\d$, then ${|f(x)
+\item for every $\e > 0$ there is a $\d > 0$ such that $a \leq x < a+\d$, then $f(x)$ is defined and ${|f(x)
   - f(a)| < \e}$.
-\item for every $\e > 0$ there is a $\d > 0$ such that if $x \in [a,b]$ and $b -\d < x \leq b$, then ${|f(x)
+\item for every $\e > 0$ there is a $\d > 0$ such that if  $b -\d < x \leq b$, then $f(x)$ is defined and ${|f(x)
   - f(b)| < \e}$.
 \end{enumerate}
 \end{defn}
 
-\
+\begin{enumerate}
+\item Explain why if $f$ is continuous at $x$ for every $x\in[a,b]$, then $f$ is continuous on the closed interval $[a,b]$. In particular, if $f$ is continuous on any open interval containing $[a,b]$, then $f$ is continuous on $[a,b]$. Conclude that every polynomial is continuous on every closed interval.
 
-In short, condition (1) says that $f$ is continuous on the open interval $(a,b)$, condition (2) says that $f$ is ``continuous from the right'' at $a$, and condition (3) says $f$ is ``continuous from the left'' at $b$.
+\begin{framed}
+Condition (1) is automatic. If $f$ is continuous at $a$ then there is a $\d$ such that if $a-\d < x < a+\d$ then $f(x)$ is defined and ${|f(x)
+  - f(a)| < \e}$; in particular, for the same $\d$, if $a \leq x < a+\d$, then  $a-\d < x < a+\d$ and hence $f(x)$ is defined and ${|f(x)
+  - f(a)| < \e}$. Similarly for continuity at $b$ and condition (3).
+\end{framed}
+
+\item Show that the function $f(x) = \sqrt{1-x^2}$ is continuous on the closed interval $[-1,1]$:
+\begin{itemize}
+\item For showing condition (1), I recommend using a Theorem about compositions of functions.
+\item For conditions (2) and (3), show that $\delta = \min\{\e^2 /\sqrt{4} , 2\}$ works.
+\end{itemize}
+Is this function continuous on any open interval containing $[-1,1]$?
+
+\begin{framed}
+If $x\in (-1,1)$, then write $f(x) = (g\circ h)(x)$ with $h(x)=1-x^2$ and $g(x)=\sqrt{x}$; for $x$ in this range, $h(x) >0$, so $g$ is continuous at $x$, and hence $f$ is continuous at $x$. This covers condition (1). For condition (2), let $\e>0$ and take $\delta = \min\{\e^2 /4 , 2\}$. If $-1\leq x < -1 + \d$, then since $\d\leq 2$, $x< -1+2 = 1$, so $x$ is in the domain of $f$. Also, since $\d \leq \e^2 /4$, we have $x-(-1) < \d \leq \e^2 /4$ and since $x\geq -1$, $1-x \leq 2$, so \[ |\sqrt{1-x^2} - \sqrt{1-(-1)^2}| = \sqrt{1-x^2} =   \sqrt{1-x} \sqrt{1+x} < 2 \sqrt{ \e^2 /4} = \e.\] Similarly for condition (3).
+\end{framed}
+\end{enumerate}
 
 
-\
 
 \begin{thm}[Intermediate Value Theorem] Suppose $f$ is a function, that $a < b$ are real numbers, and that $f$ is continuous on the closed interval
   $[a,b]$. If $y$ is any number between $f(a)$ and $f(b)$ (i.e., $f(a) \leq y \leq f(b)$ or
 $f(a) \geq y \geq f(b)$), then there is a $c \in [a,b]$ such that $f(c) = y$.\end{thm}
 
-\begin{enumerate}
-
-\item Explain why if $f$ is continuous at $x$ for every $x\in[a,b]$, then $f$ is continuous on the closed interval $[a,b]$. Conclude that every polynomial is continuous on every closed interval.
-
-\begin{framed}
-Suppose that $f$ is continuous at $r$ for all $r\in [a,b]$. Then, in particular $f$ is continuous at $r$ for all $r\in (a,b)$ so (1) holds. Since $f$ is continuous at $a$, then condition (2) holds (with the same $\d$ for any given $\e$); since $f$ is continuous at $b$, then condition (3) holds (with the same $\d$ for any given~$\e$).
-\end{framed}
 
 
-
-\item Show that the function $f(x) = \sqrt{1-x^2}$ is continuous on the closed interval $[-1,1]$:
+\begin{enumerate}\setcounter{enumi}{2}
+\item Draw a picture of this theorem as follows: 
 \begin{itemize}
-\item For showing condition (1), I recommend using a Theorem from last class. 
-\item For condition (2), it may help to write $\sqrt{1-x^2}=\sqrt{1-x}\sqrt{1+x}$. \footnote{You can ask me for a $\delta$ if you get stuck.}
-\item Condition (3) is similar to condition (2) so you can just say ``Similar to (2)'' for that.
+\item Mark some $a$ and $b$ on the $x$-axis. 
+\item Graph a function $f$ that is continuous on $[a,b]$.
+\item Mark $f(a)$ and $f(b)$ on the $y$-axis.
+\item Pick some $y$ in between  $f(a)$ and $f(b)$, and make a horizontal line for this $y$-value.
+\item Does it intersect the graph of $f$?
 \end{itemize}
-\begin{framed}
-  It is continuous at $a$ for all $a$ such that $-1 < a < 1$ since $1 - x^2$ is continuous on all of $\R$,
-  $\sqrt{y}$ is continuous on $(0, \infty)$, and $1 - x^2 > 0$ for all $-1 < x < 1$. 
+Repeat with at least one graph that is increasing, at least one graph that is decreasing, and at least one graph that is neither increasing nor decreasing.
 
-To prove the condition at the endpoint $-1$, pick $\e > 0$. (Scratch work:
-$\sqrt{1-x^2} < \e$ if and only if $|1-x||1+x| < \e^2$. So long as $-1
-\leq x \leq 1$ we have $|1-x| \leq 2$.) Let $\d =\e^2/2$.
-Assume $x$ is any real number such that 
-$-1 \leq x < -1 + \d$ and $x\in [-1,1]$. We have that $|1+x| \leq 2$
-and hence $\sqrt{|1+x|} \leq \sqrt{2}$. 
-We have $\sqrt{|1-x|} \leq \sqrt{\e^2/2} = \e/\sqrt2$.
-Thus we obtain
+\
+
+\item  Give a counterexample to the statement of the Intermediate Value Theorem without the hypothesis that $f$ is continuous on $[a,b]$.
+
+\begin{framed}
+Take \[f(x) = \begin{cases} x \ \text{if} \ x<0 \\ x+2 \ \text{if} \ x\geq 0 \end{cases}.\]
+Then $f(-1) < 1 < f(1)$, but there is no $x\in [-1,1]$ with $f(x) = 1$.
+\end{framed}
+
+\item Prove or disprove: There is a real number $x\in [0,2]$ such that $x^3 - 3x = 1$.
+
+\begin{framed}
+Take $f(x) = x^3 - 3x$. It is a polynomial and hence continuous on $[0,2]$.
+Then $f(0) = 0 < 1 < 2= f(2)$, so there is some $c\in [-1,1]$ with $f(c) = 1$.
+\end{framed}
+
+\item Prove or disprove: There are at least two real numbers $x\in [0,2]$ such that $x^3 - 3x = -1$.
+
+\begin{framed}
+Take the same $f(x) = x^3 - 3x$.
+Then $f(0) = 0 > -1 > -2 = f(1)$, so there is some $c_1\in [0,1]$ with $f(c_1) = 1$. Also,
+Then $f(1) = -2 < -1 < 2 = f(2)$, so there is some $c_2\in [1,2]$ with $f(c_2) = 1$. We know that $c_1\neq 1$ and $c_2 \neq 1$ since $f(1)\neq 1$, so $c_1\neq c_2$. Thus there are two values that output $-1$.
+\end{framed}
+
+\item True or false: If $f(x)$ is continuous on $[a,b]$, and $y$ is \emph{not} in between $f(a)$ and $f(b)$, then there is no $c\in[a,b]$ such that $f(c) = y$.
+
+\begin{framed}
+From the previous problem $f(x)=x^3-3x$ on $[0,2]$ with $y=-1$ is a counterexample.
+\end{framed}
+
+\item \textbf{Proof of the Intermediate Value Theorem:}
+\begin{enumerate}
+\item Let's assume that $f(a) \leq f(b)$ to get started. Explain why the cases $y=f(a)$ and $y=f(b)$ are easy. Hence, we assume that $f(a)< y < f(b)$.
+\item Let $S=\{ x\in [a,b] \ | \ f(r) < y \ \text{for all} \ a\leq r \leq x \}$. In short, $S$ is the set of $x$-values in the interval where the graph of $f$ hasn't crossed $y$ yet. Explain why $S$ has a supremum, and let $c= \sup(S)$.
+\item Show that $c >a$. [ Hint: Apply part (2) of definition of continuous on $[a,b]$ with $\e = y-f(a)$, and show that $a$ is not an upper bound for $S$.]
+\item The argument that $c<b$ is similar (so come back to it later if you want). Thus, $c\in (a,b)$, so we know that $f$ is continuous at $c$.
+\item Suppose that $f(c)<y$, and obtain a contradiction. [ Hint: Apply continuous at $c$ with $\e= y-f(c)$, and show that $c$ is not an upper bound for $S$.]
+\item Suppose that $f(c)>y$, and obtain a contradiction. [ Hint: Apply continuous at $c$ with $\e= f(c)-y$, and find a smaller upper bound for $S$.]
+\item This concludes the case when $f(a) \leq f(b)$. If $f(a) \geq f(b)$, what can you say about $g(x) = -f(x)$? Can we apply the case we just did?
+\end{enumerate}
+
+\begin{framed}
+
+\begin{proof}[Proof of Intermediate Value Theorem] Assume $f$ is continuous on $[a,b]$ and $y$ is a real
+  number such that  $f(a) \leq y \leq f(b)$ or $f(b) \leq y \leq f(a)$. We need to prove there is a $c \in [a,b]$ such that $f(c) = y$.
+
+  Let us assume $f(a) \leq y \leq f(b)$ --- the other case may be proved in a very similar manner, or by appealing to this case using the function $-f(x)$ instead.
+  
+ If $f(a) = y$ then we may take $c = a$ and if $f(b) = y$ then we may take $c = b$. So, we may assume $f(a) < y < f(b)$.
+
+Consider the set 
 $$
-\sqrt{1-x^2} = \sqrt{|1-x|}\sqrt{|1+x|} < \sqrt{2} \e/\sqrt{2} = \e.
+S = \{z \in \R \mid a \leq z \leq b \text{ and $f(x) < y$ for all $x \in [a, z]$}\}
 $$
+This set is nonempty, since $a \in S$, and it is bounded above, by $b$. It therefore has a supremum,
+which we will call $c$. I claim $f(c) = y$.
 
 
-The other endpoint $1$ is dealt with in a similar way.
+
+
+
+Let us first show that $c > a$. By way of contradiction, suppose $c \leq a$. Since $c \geq a$, we must have $c = a$. 
+Since $f$ is continuous on $[a,b]$, taking $\e = y
+- f(a) > 0$ in the definition, we get that there is a $\d>0$ such that if $a \leq x < a +
+\d$, then $f(a) - \e < f(x) < f(a) + \e$. In particular, if $a \leq x \leq a + \d/2$, then $f(x) < f(a) + \e = y$.
+This proves that $a+ \d/2 \in S$. But $a + \d/2 > a = c$, contrary to the fact that $c$ is the supremum of $S$. We conclude that $c > a$. 
+
+
+Similarly, one may show that $c < b$ --- I leave this to you as an exercise.
+
+We now know that $a < c < b$, and 
+we next prove that $f(c) = y$ by showing that $f(c) > y$ and $f(c) < y$ are each impossible.
+
+Suppose $f(c) > y$. 
+Setting $\e = f(c) - y$ and applying the definition of continuous at $c$, there is a $\d >0$ such that if $x$ is any number such that $c
+- \d < x < c + \d$ then $f(c) - \e < f(x) < f(c) + \e$. In particular, for any $z$ such that $c - \d < z \leq c$, 
+we have
+$$
+f(z) > f(c) - \e = y.
+$$
+In particular, $z$ is not in the set $S$. It follows that $c - \d$ is an upper bound of $S$, contrary to the fact that $c$ is the least upper bound of $S$. 
+
+
+
+Suppose $f(c) < y$. 
+Setting $\e = y - f(c)$ and applying the definition of continuous at $c$, there is a $\d >0$ such that if $c - \d < x < c + \d$, 
+then $f(c) - \e < f(x) < f(c) + \e$. In particular, 
+if $x$ is any real number such that $c \leq x \leq c + \d/2$, then $f(x) < f(c) + \e = y$. Moreover, if $x < c$, then $x$ is not an upper bound of $S$, and hence there is a $z \in
+S$ such that $x < z$. If follows that $f(x) \leq y$.
+So, we have shown that if $x \leq c + \d/2$, then $f(x) < y$. This shows that
+ $c + \d/2 \in S$, contrary to $c$ being an upper bound of $S$. 
+ \end{proof}
 \end{framed}
+\end{enumerate}
 
-\item Explain why if $f$ is continuous on the closed interval $[a,b]$, then it does not follow in general that $f$ is continuous at $x$ for every $x\in[a,b]$.
 
-\begin{framed} The function $f(x)=\sqrt{1-x^2}$ is continuous on the closed interval $[-1,1]$, but not continuous at $-1$.
-\end{framed}
 
-\item Use the Intermediate Value Theorem to give a quick proof that there is a positive real number $x$ such that $x^2=2$.
-
-\begin{framed} Let $f(x)=x^2$. This is continuous on $[1,2]$. We have $f(1) = 1 < 2 < 4=f(2)$, so there is some $x$ (between 1 and 2) such that $f(x)=2$.
-\end{framed}
-
-\item Use the Intermediate Value Theorem to give a quick proof that every real number has a cube root.
-
-\begin{framed}
- Let  $f(x) = x^3$. 
-
-  I claim that there are numbers $a$ and $b$ such that $f(a) \leq r \leq f(b)$: 
-If $r \geq 1$, then $a = 0$ and $b = r$ work; 
-if $r \leq -1$, then $a = r$ and $b  = 0$ work; and
-if $-1 \leq r < 1$, then $a = -1$ and $b = 1$ work.
-
-Since $f$ is a polynomial, it is continuous on all of $\R$ and hence on the closed interval $[a,b]$.
-Thus, since $f(a) \leq r \leq f(b)$  by the Intermediate Value Theorem, there is a real number  $s$
-such that $a \leq s \leq b$ and $f(s) = r$; that is, $s^3 =r$. 
-\end{framed}
-
-\item Explain why the statement of the Intermediate Value Theorem would be false if we did not assume that $f$ is continuous on $[a,b]$.
-
-\begin{framed}
-Suppose $f(x) = x$ for $x  < 0$ and $f(x) = x+1$ for $x \geq 0$.
-  Then $f$ is defined on $[-1,1]$, $f(-1) = -1$ and $f(1) = 2$. So $f(-1) < 1/2 < f(1)$, there there is clearly no $x$ such that $f(x) = 1/2$. \end{framed}
-
-\item True or False: The polynomial $f(x) = x^3 - 4x +1$ has two roots in the interval $[0,2]$.
-
-\begin{framed}
-Note that $f(0)=1$ and $f(1)=-2$. Since $f$ is continuous on $[0,1]$, there is some $c_1\in [0,1]$ such that $f(c_1)=0$. Now note that $f(2)=1$. Since $f$ is continuous on $[1,2]$, there is some $c_2\in [1,2]$ such that $f(c_2) = 0$. We must have $c_1<1$ since $f(c_1)\neq 0$, so $c_1\neq c_2$; these are two distinct roots in $[0,2]$.
-\end{framed}
-
-%\item True or False: If $f$ is a function, $a<b$ are real numbers, and for every number $y$ between $f(a)$ and $f(b)$, there is some $c\in [a,b]$ such that $f(y)=c$, then $f$ is continuous on $[a,b]$.
+%\noindent We say that a function is \emph{increasing} on an interval $I$ if for any $x,y\in I$, $x<y$ implies $f(x)<f(y)$. We say that a function is \emph{decreasing} on an interval $I$ if for any $x,y\in I$, $x<y$ implies $f(x)>f(y)$. We say that a function is \emph{monotone} on an interval $I$ if it is either increasing on $I$ or decreasing on $I$. We say that a function is \emph{one-to-one} on an interval $I$ if for any $x,y\in I$, $x\neq y$ implies $f(x)\neq f(y)$.
 
 %\
 
-%\item True or False: If $f$ is a function with domain $\R$, and for every pair $a<b$ of real numbers and for every number $y$ between $f(a)$ and $f(b)$, there is some $c\in [a,b]$ such that $f(y)=c$, then $f$ is continuous on $\R$.
+%\begin{enumerate}\setcounter{enumi}{8}
+%\item Show that if $f$ is continuous and one-to one on an interval $(a,b)$, then $f$ is monotone.
 
 
-\end{enumerate}
+ % \end{enumerate}
 
 \begin{comment}
 
