@@ -2,7 +2,7 @@
 
 
 \usepackage{times}
-\usepackage[margin=.8in]{geometry}
+\usepackage[margin=.7in]{geometry}
 \usepackage{amsmath,amssymb,multicol,graphicx,framed,enumitem}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\N}{\mathbb{N}}
@@ -60,16 +60,18 @@ there exists a number $s \in [a,b]$ such that $f(x) \geq f(s)$ for all $x \in [a
 
 \item In this problem we explore the necessity of the hypotheses in these theorems.
 \begin{enumerate}
-\item Draw a graph of a function on a closed interval $[a,b]$ that is \emph{not continuous}, but is not bounded on $[a,b]$.
-\item Draw a graph of a function that is continuous on an \emph{open} interval $(a,b)$, but is not bounded on $(a,b)$.
+\item Draw a graph of a function on a closed interval $[a,b]$ that is \emph{not continuous}, but is not bounded on~$[a,b]$.
+\item Draw a graph of a function that is continuous on an \emph{open} interval $(a,b)$, but is not bounded on~$(a,b)$.
+\item Draw a graph of a function that is continuous on an \emph{open} interval $(a,b)$, and \emph{is bounded} on $(a,b)$, but for which the conclusion of the Extreme Value Theorem \emph{fails}.
 \end{enumerate}
+Can you find formulas of functions that match each story?
 
 
    \end{enumerate}
 
 \
 
-\noindent \textbf{Lemma from homework:} Let $a<b$ be real numbers and $[a,b]$ be a closed interval. Let $\{x_n\}_{n=1}$ be a sequence with $x_n\in[a,b]$ for all $n$, and assume that $\{x_n\}_{n=1}$ converges to $r$. Then,
+\noindent \textbf{Lemma from homework:} Let $a<b$ be real numbers and $[a,b]$ be a closed interval. Let $\{x_n\}_{n=1}^\infty$ be a sequence with $x_n\in[a,b]$ for all $n$, and assume that $\{x_n\}_{n=1}$ converges to $r$. Then,
 \begin{itemize}
 \item $r\in [a,b]$, and
 \item If $f$ is continuous on the closed interval $[a,b]$, then the sequence $\{f(x_n)\}_{n=1}^\infty$ converges to $f(r)$.
@@ -80,6 +82,7 @@ there exists a number $s \in [a,b]$ such that $f(x) \geq f(s)$ for all $x \in [a
 \begin{enumerate}\setcounter{enumi}{2}
 \item Proof of Boundedness Theorem:
 \begin{enumerate}
+\item[\null] We will argue that $f$ is bounded above on $[a,b]$: i.e., there exists an $M$ such that $f(x)\leq M$ for all $x\in[a,b]$; showing that $f$ is bounded below is similar (or follows from this part applied to $-f$).
 \item We argue by contradiction. What does it mean to suppose that the theorem is false? Assume it.
 \item Explain why there must be a sequence $\{x_n\}_{n=1}^\infty$ with $x_n\in[a,b]$ and $f(x_n)>n$ for all $n\in \N$.
 \item Apply Bolzano-Weierstrass to the sequence $\{x_n\}_{n=1}^\infty$. What do you get?
@@ -90,7 +93,7 @@ there exists a number $s \in [a,b]$ such that $f(x) \geq f(s)$ for all $x \in [a
 
 \item Proof of Extreme Value Theorem:
 \begin{enumerate}
-\item We will find a maximum value; finding a minimum value is similar (or follows from this part applied to $-f$).
+\item[\null] We will find a maximum value; finding a minimum value is similar (or follows from this part applied to $-f$).
 \item Let $R = \{ f(x) \ |\  x\in [a,b]\}$. Explain why $R$ has a supremum; call it $\ell$.
 \item Explain why there must be a sequence $\{x_n\}_{n=1}^\infty$ with $x_n\in[a,b]$ and $\ell- \frac{1}{n} <f(x_n)\leq \ell$ for all $n\in \N$.
 \item Apply Bolzano-Weierstrass to the sequence $\{x_n\}_{n=1}^\infty$. What do you get?

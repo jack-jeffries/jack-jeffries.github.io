@@ -1,0 +1,154 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=.7in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,enumitem}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\e}{\varepsilon}
+\def\d{\delta}
+\newcommand{\cts}{continuous\,}
+
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\usepackage[all, knot]{xy}
+\usepackage{color,xcolor}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+	
+	\thispagestyle{empty}
+	
+	\section*{Basics of Derivatives}
+	
+\begin{framed} 
+\noindent \textbf{Definition:} Let $f$ be a function and $r$ be a real number. We say that $f$ is \emph{differentiable at $r$} if $f$ is defined at $r$ and the limit
+\[ \lim_{x\to r} \frac{ f(x) - f(r) }{x-r}\]
+exists. In this case, we call the limit \emph{the derivative of $f$ at $r$} and write $f'(r)$ for this limit. 
+ \end{framed}
+ 
+ 
+ \begin{enumerate}
+ \item Use the definition to show that the derivative of a constant function is zero.
+ 
+ \
+ 
+ \item Use the definition to show that the function $f(x) = 2x-5$ is differentiable at $x=3$ and compute its derivative. 
+ 
+ \
+ 
+ \item Use the definition to show that the function $f(x)=|x|$ is \emph{not} differentiable at $x=0$.
+ 
+ \
+ 
+ \item Prove\footnote{Hint: Write down the function in the definition of derivative, and multiply both sides by $(x-r)$ and consider the limit.} that if $f$ is differentiable at $x=r$, then $f$ is continuous at $x=r$. 
+ 
+ \
+ 
+ \item Prove or disprove the converse of the previous statement.
+ \end{enumerate}
+ 
+ \
+ 
+ 
+ \begin{framed} 
+ \noindent \textbf{Theorem (Derivatives and algebra:} Let $f,g$ be functions that are differentiable at $x=r$, and $c$ be a real number. Then,
+ \begin{enumerate}
+ \item $f+g$ is differentiable at $x=r$ and $(f+g)'(r) = f'(r) + g'(r)$;
+ \item $cf$ is differentiable at $x=r$ and $(cf)'(r) = c f'(r)$;
+ \item $fg$ is differentiable at $x=r$ and $(fg)'(r) = f'(r) g(r) + f(r) g'(r)$.
+   \end{enumerate}
+ \end{framed}
+ 
+ \
+ 
+ \begin{enumerate}\setcounter{enumi}{5}
+ \item Prove\footnote{You many want to use part (3) of the Theorem above.} that if $f(x)=x^n$, then $f$ is differentiable at any value of $x$ and $f'(x) = n x^{n-1}$ for every $n\in \N$.
+ 
+ \
+ 
+ \item Use the Theorem plus the previous problem to compute the derivative of $f(x) = 5x^7 - \sqrt{19} x^4$.
+ 
+ \
+ 
+ \item Prove the Theorem.
+ 
+ \
+ 
+ \end{enumerate}
+ 
+ \newpage
+ 
+	\section*{Derivatives and optimization}
+
+
+ 
+ \begin{framed} 
+ \noindent \textbf{Theorem:} Let $f$ be a function that is differentiable at $x=r$.
+ \begin{enumerate}
+ \item 
+ If $f'(r) > 0$, then there is some $\delta>0$ such that 
+ \begin{itemize}
+ \item if $x\in (r,r+\delta)$ then $f(r) < f(x)$;
+  \item if $x\in (r-\delta,r)$ then $f(x) < f(r)$.
+  \end{itemize}
+  
+  \item  If $f'(r) < 0$, then there is some $\delta>0$ such that 
+  \begin{itemize}
+ \item if $x\in (r,r+\delta)$ then $f(r) > f(x)$;
+ \item if $x\in (r-\delta,r)$ then $f(x) > f(r)$.
+  \end{itemize}
+  \end{enumerate}
+  
+  \
+  
+  \noindent \textbf{Corollary (Derivatives and optimization):}
+  Let $f$ be a function that is continuous on a closed interval $[a,b]$. If $f$ attains a maximum or minimum value on $[a,b]$ at $r\in (a,b)$, and $f$ is differentiable at $r$, then $f'(r)=0$.
+  
+ \end{framed}
+ 
+ \begin{enumerate}
+ 
+ \item Find the values of $x$ on $[0,2]$ at which $f$ achieves its minimum and maximum values.
+ 
+ \ 
+ 
+ \item Explain why the Corollary follows from the Theorem.
+ 
+ \
+ 
+ 
+ \item Prove\footnote{Hint: Apply the definition of limit within the definition of derivative with a useful choice of $\e$.} part (1) of the Theorem.
+
+
+\
+
+ \item Prove part (2) of the Theorem.
+ 
+\end{enumerate}
+
+\
+ 
+ \noindent A function $f$ is \emph{increasing} on an interval $(a,b)$ if for any $r,s\in (a,b)$ with $r<s$, we have $f(r)<f(s)$.
+ 
+ \
+  \begin{enumerate}\setcounter{enumi}{4}
+ \item Prove or disprove: If $f'(r)>0$, then there is some $\delta>0$ such that $f$ is increasing on $(r-\delta,r+\delta)$.
+\end{enumerate}
+
+\end{document}

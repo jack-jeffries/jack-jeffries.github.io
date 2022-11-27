@@ -2625,6 +2625,8 @@ a fundmental set of solution vectors $\mathbf{x_1}(t),\dots,\mathbf{x_n}(t)$ to 
 
 \begin{comment}
 
+\Nov{29}
+
 \subsection*{Higher order equations (and systems) as linear systems}
 
 At this point, it might be reasonable to ask: why are we restricting to systems with equations of order one? It turns out that we can rewrite higher order linear ODEs as linear systems. Let's see it in an example:
@@ -2643,11 +2645,11 @@ or
 
 \begin{ex}
 Consider the initial value problem 
-\[ \begin{cases} x^(3) - \cos(t) x = e^{t^2}\\
+\[ \begin{cases} x^{(3)} - \cos(t) x = e^{t^2}\\
 x(1) = 0 \\
 x'(1) = 0 \\
 x''(1) = 2\end{cases}.\]
-To rewrite this as a linear system, we'll start by setting $x_1=x$, $x_2=x'$, and then $x_3=x_2' = x_1''$.
+To rewrite this as a linear system, we'll start by setting $x_1=x$, $x_2=x'$, and then $x_3=x_2' = x''$.
 Then $x^{(3)} = x_3'$, so our given equation is
 \[ x_3' = \cos(t) x_1 + e^{t^2}.\]
 We then get the system
@@ -2676,6 +2678,21 @@ z'' = z' + 2z - y
 \end{cases}\]
 as a linear system in four variables.
 \end{enumerate}
+
+
+\subsection*{Homogeneous linear systems with constant coefficients (\S8.2)}
+
+We now turn our attention to homogeneous linear systems with constant coefficients: these are systems of the form
+\[ \mathbf{x}' = A \mathbf{x}\]
+where $A$ is a matrix of constants, and $\mathbf{x}$ is still a vector of unknown functions.
+We will mostly focus on $2\times 2$ systems (two equations and two variables). To prepare for the method of solving these, let's return to a special case where these were easy to solve.
+
+When $A=\begin{bmatrix} a & 0 \\ 0 & b\end{bmatrix}$ for constants $a,b$, we were able to solve this. Let's remember and slightly rephrase why we were able to:
+As a system of equations, we have
+\[ \begin{cases} x' = ax \\ y' = by\end{cases}\]
+ and these two equations were in separate dependent variables, so we could solve them separately.
+ 
+
 
 
 

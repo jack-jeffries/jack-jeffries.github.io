@@ -3211,7 +3211,7 @@ The other implication follows by switching the roles of $f$ and $g$.
 
 \begin{defn} 
  Given a function $f(x)$ and real numbers $a < b$,
-we say $f$ is {\em continuous on the closed interval $[a,b]$} provided 
+we say $f$ is {\em continuous on the closed interval $[a,b]$}\index{continuous on the closed interval $[a,b]$}  provided 
 \begin{enumerate}
 \item for every $r \in (a,b)$, $f$ is  continuous at $r$ in the sense defined already,
 \item for every $\e > 0$ there is a $\d > 0$ such that $a \leq x < a+\d$, then $f(x)$ is defined and ${|f(x)
@@ -3243,7 +3243,7 @@ If $x\in (-1,1)$, then write $f(x) = (g\circ h)(x)$ with $h(x)=1-x^2$ and $g(x)=
 \end{enumerate}
 
 
-
+\index{Intermediate Value Theorem}
 \begin{thm}[Intermediate Value Theorem] Suppose $f$ is a function, that $a < b$ are real numbers, and that $f$ is continuous on the closed interval
   $[a,b]$. If $y$ is any number between $f(a)$ and $f(b)$ (i.e., $f(a) \leq y \leq f(b)$ or
 $f(a) \geq y \geq f(b)$), then there is a $c \in [a,b]$ such that $f(c) = y$.\end{thm}
@@ -3355,6 +3355,98 @@ So, we have shown that if $x \leq c + \d/2$, then $f(x) < y$. This shows that
  \end{proof}
 \end{framed}
 \end{enumerate}
+
+\Nov{29}
+
+	
+\begin{thm}[Boundedness Theorem]\index{Boundedness Theorem} Suppose $f$ is continuous on the closed interval $[a,b]$ for some real numbers $a,b$ with $a < b$. Then $f$ is bounded on $[a,b]$ --- that is,
+  there are real numbers $m$ and $M$ so that $m \leq f(x) \leq M$ for all $x \in [a,b]$.
+  \end{thm}
+  
+  
+  
+\begin{thm}[Extreme Value Theorem]\index{Extreme Value Theorem} Assume $f$ is continuous on the closed interval $[a,b]$ for some real numbers $a$ and $b$ with $a < b$.
+  Then $f$ attains a minimum and a maximum value on $[a,b]$ ---
+that is, there exists a number $r \in [a,b]$ such that $f(x) \leq f(r)$ for all $x \in [a,b]$ and
+there exists a number $s \in [a,b]$ such that $f(x) \geq f(s)$ for all $x \in [a,b]$.
+\end{thm}
+
+
+
+
+\
+
+\begin{enumerate}
+\item Explain why the Extreme Value Theorem actually implies the Boundedness Theorem. (The reason we state both is that we have to prove the Boundedness Theorem on the way to the Extreme Value Theorem.)
+
+\begin{framed}
+Take $M=f(r)$ and $m=f(s)$.
+\end{framed}
+
+\item In this problem we explore the necessity of the hypotheses in these theorems.
+\begin{enumerate}
+\item Draw a graph of a function on a closed interval $[a,b]$ that is \emph{not continuous}, but is not bounded on $[a,b]$.
+\item Draw a graph of a function that is continuous on an \emph{open} interval $(a,b)$, but is not bounded on $(a,b)$.
+\item Draw a graph of a function that is continuous on an \emph{open} interval $(a,b)$, and is bounded on $(a,b)$, but for which the conclusion of the Extreme Value Theorem fails.
+\end{enumerate}
+Can you find formulas of functions that match each story?
+
+\begin{framed}
+\begin{enumerate}
+\item For example, take $f(x)=\begin{cases} 1/x \ \text{if} \ x\neq 0 \\ 0  \ \text{if} \ x= 0\end{cases}$ on $[-1,1]$.
+\item For example, take $f(x)=1/x$ on $(0,1)$.
+\item For example, take $f(x)=x$ on $(0,1)$.
+\end{enumerate}
+\end{framed}
+   \end{enumerate}
+
+
+
+\noindent \textbf{Lemma from homework:} Let $a<b$ be real numbers and $[a,b]$ be a closed interval. Let $\{x_n\}_{n=1}$ be a sequence with $x_n\in[a,b]$ for all $n$, and assume that $\{x_n\}_{n=1}$ converges to $r$. Then,
+\begin{itemize}
+\item $r\in [a,b]$, and
+\item If $f$ is continuous on the closed interval $[a,b]$, then the sequence $\{f(x_n)\}_{n=1}^\infty$ converges to $f(r)$.
+\end{itemize}
+
+
+
+\begin{enumerate}\setcounter{enumi}{2}
+\item Proof of Boundedness Theorem:
+\begin{enumerate}
+\item We argue by contradiction. What does it mean to suppose that the theorem is false? Your answer should involve an ``or''. Assume one of the two cases.
+\item Explain why there must be a sequence $\{x_n\}_{n=1}^\infty$ with $x_n\in[a,b]$ and $f(x_n)>n$ for all $n\in \N$ (unless you chose the other case\dots).
+\item Apply Bolzano-Weierstrass to the sequence $\{x_n\}_{n=1}^\infty$. What do you get?
+\item Now apply the Lemma from the homework. What do you get?
+\end{enumerate}
+\begin{framed}
+\begin{enumerate}
+\item If the Theorem is false, there is a function $f$ that is continuous on the closed interval $[a,b]$ but the set of values of $f$ on $[a,b]$ is either unbounded above or unbounded below. Assume we have such a function that is unbounded above.
+\item By assumption, for every $n\in \N$, $n$ is not an upper bound for the values of $f$ on $[a,b]$. Thus, for every $n\in \N$, there is some $x_n$ with $f(x_n)>n$. This gives us a sequence $\{x_n\}_{n=1}^\infty$ with $x_n\in[a,b]$ and $f(x_n)>n$ for all $n\in \N$
+\item The sequence $\{x_n\}_{n=1}^\infty$ has a convergent subsequence $\{x_{n_k}\}_{k=1}^\infty$.
+\item Since $x_{n_k}\in[a,b]$ for all $k$, by the lemma we have first that $\{x_{n_k}\}_{k=1}^\infty$ converges to $r\in [a,b]$, and second, that $\{f(x_{n_k})\}_{k=1}^\infty$ converges to $f(r)$. But since $f(x_{n_k})> n_k \geq k$, the sequence $\{f(x_{n_k})\}_{k=1}^\infty$ diverges (to $+\infty$ in fact). This is a contradiction, so we conclude that the set of values of $f$ is bounded above. A similar argument (or the same case applied to $-f$) shows that the set of values of $f$ is also bounded below.
+\end{enumerate}
+\end{framed}
+
+\item Proof of Extreme Value Theorem:
+\begin{enumerate}
+\item[\null] We will find a maximum value; finding a minimum value is similar (or follows from this part applied to $-f$).
+\item Let $R = \{ f(x) \ |\  x\in [a,b]\}$. Explain why $R$ has a supremum; call it $\ell$.
+\item Explain why there must be a sequence $\{x_n\}_{n=1}^\infty$ with $x_n\in[a,b]$ and $\ell- \frac{1}{n} <f(x_n)\leq \ell$ for all $n\in \N$.
+\item Apply Bolzano-Weierstrass to the sequence $\{x_n\}_{n=1}^\infty$. What do you get?
+\item Now apply the Lemma from the homework. What do you get?
+\end{enumerate}
+
+\begin{framed}
+\begin{enumerate}
+\item[\null] We will find a maximum value; finding a minimum value is similar (or follows from this part applied to $-f$).
+\item Let $R = \{ f(x) \ |\  x\in [a,b]\}$. $R$ is nonempty since $f(a)\in R$, and it is bounded above by the Boundedness Theorem. Thus $R$ has a supremum, which we will call $\ell$.
+\item For any $n$, $\ell-\frac{1}{n} < \sup(R)$, so it is not an upper bound for $R$. This means that there is some $y_n\in R$ with $\ell-\frac{1}{n} < y_n$; since $\ell$ is an upper bound for $R$ we also have $\ell-\frac{1}{n} < y_n\leq \ell$. By definition of $R$, there is some $x_n\in [a,b]$ with $f(x_n) = y_n$. Thus, we have a sequence $\{x_n\}_{n=1}^\infty$ with $x_n\in[a,b]$ and $\ell- \frac{1}{n} <f(x_n)\leq \ell$ for all $n\in \N$.
+\item The sequence $\{x_n\}_{n=1}^\infty$ has a convergent subsequence $\{x_{n_k}\}_{k=1}^\infty$.
+\item Since $x_{n_k}\in[a,b]$ for all $k$, by the lemma we have first that $\{x_{n_k}\}_{k=1}^\infty$ converges to $r\in [a,b]$, and second, that $\{f(x_{n_k})\}_{k=1}^\infty$ converges to $f(r)$. Since $ \ell - \frac{1}{n_k} < f(x_{n_k})\leq \ell $, the sequence $\{f(x_{n_k})\}_{k=1}^\infty$ converges to $\ell$ by the Squeeze Theorem. Thus, $f(r) = \ell$. Then, by definition of supremum, we have that $f(x)\leq f(r)$ for all $x\in[a,b]$.
+\end{enumerate}
+\end{framed}
+\end{enumerate}
+
 
 
 
