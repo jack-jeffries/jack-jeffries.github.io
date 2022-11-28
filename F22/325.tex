@@ -3449,6 +3449,171 @@ Can you find formulas of functions that match each story?
 \end{enumerate}
 
 
+\Dec{1}
+	
+
+\noindent \textbf{Definition:} Let $f$ be a function and $r$ be a real number. We say that $f$ is \emph{differentiable at $r$} if $f$ is defined at $r$ and the limit
+\[ \lim_{x\to r} \frac{ f(x) - f(r) }{x-r}\]
+exists. In this case, we call the limit \emph{the derivative of $f$ at $r$} and write $f'(r)$ for this limit. 
+
+ 
+ 
+ \begin{enumerate}
+ \item Use the definition to show that the derivative of a constant function is zero.
+ 
+ \begin{framed}
+Let $f(x)=c$ and consider
+\[\lim_{x\to r} \frac{ f(x) - f(r) }{x - r} = \lim_{x\to r} \frac{c - c} {x - r} = \lim_{x \to r} 0 = 0.\]
+ \end{framed}
+ 
+ \item Use the definition to show that the function $f(x) = 2x-5$ is differentiable at $x=3$ and compute its derivative. 
+ 
+  \begin{framed}
+Consider
+\[\lim_{x\to r} \frac{ f(x) - f(r) }{x - r} = \lim_{x\to r} \frac{2x-5 - (2r-5) }{x - r} =  \lim_{x\to r} \frac{2(x-r)}{x - r} = \lim_{x\to r} 2 = 2.\]
+ \end{framed}
+ 
+ \item Use the definition to show that the function $f(x)=|x|$ is \emph{not} differentiable at $x=0$.
+ 
+  \begin{framed}
+Consider
+\[\lim_{x\to 0} \frac{ f(x) - f(0) }{x - 0} = \lim_{x\to 0} \frac{|x|}{x} =  \lim_{x\to 0} \begin{cases} 1 & \ \text{if} \ x>0 \\ -1 & \ \text{if} \ x<0\end{cases}.\]
+Letting $x_n= 1/n$, we have that the sequence $x_n\to 0$ and $f(x_n) \to 1$; letting $y_n= -1/n$, we have that the sequence $y_n\to 0$ and $f(y_n) \to -1$, so the limit does not exist.
+ \end{framed}
+ 
+ \item Prove that if $f$ is differentiable at $x=r$, then $f$ is continuous at $x=r$. 
+ 
+   \begin{framed}
+   Suppose that $f$ is differentiable at $r$ so
+   \[ f'(r) = \lim_{x\to r} \frac{ f(x) - f(r) }{x - r}.\]
+   Then 
+   \[  \lim_{x\to r} (x-r) \frac{ f(x) - f(r) }{x - r} =  (\lim_{x\to r} (x-r)) f'(r) = 0,\]
+ so
+   \[ \lim_{x\to r} f(x) - f(r) = \lim_{x\to r} (x-r) \frac{ f(x) - f(r) }{x - r} = 0,\]
+   and hence
+   \[ \lim_{x \to r} f(x) = f(r).\]
+   Thus $f$ is continuous at $r$.
+   \end{framed}
+ 
+ \item Prove or disprove the converse of the previous statement.
+ 
+ \begin{framed}
+We have already seen that $f(x) = |x|$ at $r=0$ is a counterexample.
+\end{framed}
+ \end{enumerate}
+ 
+ \
+ 
+ 
+
+ \noindent \textbf{Theorem (Derivatives and algebra:} Let $f,g$ be functions that are differentiable at $x=r$, and $c$ be a real number. Then,
+ \begin{enumerate}
+ \item $f+g$ is differentiable at $x=r$ and $(f+g)'(r) = f'(r) + g'(r)$;
+ \item $cf$ is differentiable at $x=r$ and $(cf)'(r) = c f'(r)$;
+ \item $fg$ is differentiable at $x=r$ and $(fg)'(r) = f'(r) g(r) + f(r) g'(r)$.
+   \end{enumerate}
+
+ 
+ \
+ 
+ \begin{enumerate}\setcounter{enumi}{5}
+ \item Prove that if $f(x)=x^n$, then $f$ is differentiable at any value of $x$ and $f'(x) = n x^{n-1}$ for every $n\in \N$.
+ 
+  \begin{framed}
+  We proceed by induction on $n$.
+For the base case, we use the definition to show that the derivative of $x$ is $1$ (skipped here). 
+Suppose that $(x^k)' = k x^{k-1}$. Then $(x^{k+1})' = x (x^k)' + x' (x^k) = x kx^{k-1} + x^k = (k+1) x^k$. This shows the claim for all $n\in \N$ by induction.
+\end{framed}
+  
+ \item Use the Theorem plus the previous problem to compute the derivative of $f(x) = 5x^7 - \sqrt{19} x^4$.
+ 
+  \begin{framed}
+  $35 x^6 - 4 \sqrt{19} x^3$.
+  \end{framed}
+ 
+ \item Prove the Theorem.
+ 
+ \begin{framed}
+ For part (1), we note that \[ \frac{(f+g)(x) - (f+g)(r)}{x-r} = \frac{f(x) + g(x) - f(r) - g(r)}{x-r} = \frac{f(x)-f(r)}{x-r} + \frac{g(x) - g(r)}{x-r}.\] When we take the limit as $x$ approaches $r$, this is $f'(r) + g'(r)$, using the definition of $f'(r)$ and $g'(r)$ and the fact that the limit of a sum of two functions is the sum of the limits (when they both exist).
+
+For (2),   we note that \[ \frac{(cf)(x) - (cf)(r)}{x-r} = c \frac{f(x) - f(r)}{x-r},\] and it follows from our limit theorems that the limit as $x$ approaches $r$ is $cf'(r)$.
+
+
+  For (3), using what we know about limits we get 
+$$
+\begin{aligned}
+& \lim_{x \to r} \frac{f(x)g(x) - f(r)g(r)}{x-r} 
+=  \lim_{x \to r} \left(\frac{f(x)g(x) - f(r)g(x)}{x-r}  + \frac{f(r)g(x) -     f(r)g(r)}{x-r} \right) \\
+& =  \lim_{x \to r} g(x) \cdot \lim_{x \to r}\left(\frac{f(x) - f(r)}{x-r}\right)  
++ f(r) \cdot \lim_{x \to r} \left(\frac{g(x) -     g(r)}{x-r} \right)  \\
+&= g(r) f'(r) + f(r) g'(r),
+\end{aligned}
+$$
+where for the last step we use that $\lim_{x \to r} g(x) = g(r)$ since $g$ is continuous at $r$ (since differentiable implies continuous).
+
+ \end{framed}
+ 
+ \end{enumerate}
+ 
+ 
+	\section*{Derivatives and optimization}
+
+
+ 
+ \begin{framed} 
+ \noindent \textbf{Theorem:} Let $f$ be a function that is differentiable at $x=r$.
+ \begin{enumerate}
+ \item 
+ If $f'(r) > 0$, then there is some $\delta>0$ such that 
+ \begin{itemize}
+ \item if $x\in (r,r+\delta)$ then $f(r) < f(x)$;
+  \item if $x\in (r-\delta,r)$ then $f(x) < f(r)$.
+  \end{itemize}
+  
+  \item  If $f'(r) < 0$, then there is some $\delta>0$ such that 
+  \begin{itemize}
+ \item if $x\in (r,r+\delta)$ then $f(r) > f(x)$;
+ \item if $x\in (r-\delta,r)$ then $f(x) > f(r)$.
+  \end{itemize}
+  \end{enumerate}
+  
+  \
+  
+  \noindent \textbf{Corollary (Derivatives and optimization):}
+  Let $f$ be a function that is continuous on a closed interval $[a,b]$. If $f$ attains a maximum or minimum value on $[a,b]$ at $r\in (a,b)$, and $f$ is differentiable at $r$, then $f'(r)=0$.
+  
+ \end{framed}
+ 
+ \begin{enumerate}
+ 
+ \item Find the values of $x$ on $[0,2]$ at which $f$ achieves its minimum and maximum values.
+ 
+ \ 
+ 
+ \item Explain why the Corollary follows from the Theorem.
+ 
+ \
+ 
+ 
+ \item Prove\footnote{Hint: Apply the definition of limit within the definition of derivative with a useful choice of $\e$.} part (1) of the Theorem.
+
+
+\
+
+ \item Prove part (2) of the Theorem.
+ 
+\end{enumerate}
+
+\
+ 
+ \noindent A function $f$ is \emph{increasing} on an interval $(a,b)$ if for any $r,s\in (a,b)$ with $r<s$, we have $f(r)<f(s)$.
+ 
+ \
+  \begin{enumerate}\setcounter{enumi}{4}
+ \item Prove or disprove: If $f'(r)>0$, then there is some $\delta>0$ such that $f$ is increasing on $(r-\delta,r+\delta)$.
+\end{enumerate}
+
+
 
 
 %\noindent We say that a function is \emph{increasing} on an interval $I$ if for any $x,y\in I$, $x<y$ implies $f(x)<f(y)$. We say that a function is \emph{decreasing} on an interval $I$ if for any $x,y\in I$, $x<y$ implies $f(x)>f(y)$. We say that a function is \emph{monotone} on an interval $I$ if it is either increasing on $I$ or decreasing on $I$. We say that a function is \emph{one-to-one} on an interval $I$ if for any $x,y\in I$, $x\neq y$ implies $f(x)\neq f(y)$.
