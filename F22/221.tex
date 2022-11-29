@@ -2565,7 +2565,7 @@ It is not homogeneous.
 \item Even though we don't know any techniques, we can rewrite this as 
 \[  \begin{cases} x' = ax \\ y' = by\end{cases},\]
 and we see that the two variables don't interact with each other, so we can solve these separately. Thus, $x= C_1 e^{ax}$, and $y= C_2 e^{bx}$, so
-\[ \mathbf{x} =  \begin{bmatrix}  C_1 e^{ax} \\  C_2 e^{bx}  \end{bmatrix}.\]
+\[ \mathbf{x} =  \begin{bmatrix}  C_1 e^{ax} \\  C_2 e^{bx}  \end{bmatrix} = C_1 e^{at} \begin{bmatrix} 1 \\ 0 \end{bmatrix} + C_2 e^{bt}  \begin{bmatrix} 0 \\ 1 \end{bmatrix} .\]
 \end{enumerate}
 \end{framed}
 
@@ -2623,8 +2623,7 @@ a fundmental set of solution vectors $\mathbf{x_1}(t),\dots,\mathbf{x_n}(t)$ to 
 \[ \mathbf{x_p}(t) + C_1 \mathbf{x_1}(t) +\cdots + C_n \mathbf{x_n}(t).\]
 \end{thm}
 
-\begin{comment}
-\newpage
+
 
 \Nov{29}
 
@@ -2691,7 +2690,9 @@ We will mostly focus on $2\times 2$ systems (two equations and two variables). T
 When $A=\begin{bmatrix} a & 0 \\ 0 & b\end{bmatrix}$ for constants $a,b$, we were able to solve this. Let's remember why we were able to:
 As a system of equations, we have
 \[ \begin{cases} x' = ax \\ y' = by\end{cases}\]
- and the dependent variables don't interact so we can solve them separately.
+ and the dependent variables don't interact so we can solve them separately. As a reminder, we found the general solution to be
+ \[ \begin{cases} x = C_1 e^{at} \\ y=C_2 e^{bt} \end{cases} \quad \text{or} \quad \mathbf{x} = C_1 e^{at} \begin{bmatrix} 1 \\ 0 \end{bmatrix} + C_2 e^{bt}  \begin{bmatrix} 0 \\ 1 \end{bmatrix} .\]
+
  
 To rephrase this slightly, let's write
 \[ \mathbf{x} = \begin{bmatrix} x \\ y \end{bmatrix}  = x \begin{bmatrix} 1 \\ 0 \end{bmatrix} + y \begin{bmatrix} 0 \\ 1 \end{bmatrix},\]
@@ -2749,25 +2750,31 @@ Once we know the eigenvalues, for each on, we can plug them into the eigenvector
 
 \begin{ex}
 For the same matrix
-\[ A = \begin{bmatrix} 3 & 1  \\ 2 & 2\end{bmatrix}\] we have eigenvalues $1$ and $4$. To find eigenvectors for $\lambda=1$, set
+\[ A = \begin{bmatrix} 3 & 1  \\ 2 & 2\end{bmatrix}\] we have eigenvalues $\lambda_1=1$ and $\lambda_2=4$. To find an eigenvector for $1$, set
 \[ A \mathbf{x} = 1 \mathbf{x} \rsa \begin{cases} 3x + y = x \\ 2x + 2y = y \end{cases} \rsa \begin{cases} 2x+ y = 0\\ 2x+ y = 0\end{cases} \rsa y=-2x \]
 so to get an eigenvector we can take $x=1$ and get the eigenvector $\mathbf{k_1} = \begin{bmatrix} 1 \\ -2\end{bmatrix}$.
 Note that any multiple of this vector is also an eigenvector with this eigenvalue; our goal for now is to just find one.
-and for $\lambda=4$,
+and for $\lambda_2=4$,
 \[ A \mathbf{x} = 4 \mathbf{x} \rsa \begin{cases} 3x + y = 4x \\ 2x + 2y = 4y \end{cases} \rsa \begin{cases} -x+ y = 0\\ 2x-2y = 0\end{cases}\rsa y=x\]
 Taking $x=1$ we get an eigenvector
 \[  \mathbf{k_2} = \begin{bmatrix} 1 \\ 1\end{bmatrix}.\]
 \end{ex}
 
+\begin{comment}
+\newpage
+
 \begin{slogan} To find eigenvectors and eigenvalues, first find eigenvalues $\lambda$ with $\det(A-\lambda I)=0$, then plug the eigenvalues back in to find eigenvectors.\end{slogan}
 
 \begin{ex}
-Let's find the eigenvectors and eigenvalues for the matrix $A= \begin{bmatrix} -1 & -1 \\ 1 & -3\end{bmatrix}$.
+Let's find the eigenvectors and eigenvalues for the matrix $A= \begin{bmatrix} 2 & 0 \\ -3 & -4\end{bmatrix}$.
 First we take 
-\[ \det(A-\lambda I) = \det\begin{bmatrix} -1-\lambda & -1 \\ 1 & -3-\lambda\end{bmatrix} = (-1-\lambda)(-3-\lambda) - (-1)\cdot  1 = 4 +4\lambda + \lambda^2\]
-so there is just one eigenvalue $\lambda = -2$. We plug in back in to the system of equations:
-\[ A \mathbf{x} = -2 \mathbf{x} \rsa \begin{cases} -x -y = -2x \\ x-3y = -2y\end{cases} \rsa  \begin{cases} x -y = 0 \\ x-y = 0\end{cases} \]
-\[ \rsa y=x \rsa \begin{bmatrix} 1 \\ 1\end{bmatrix}.\]
+\[ \det(A-\lambda I) = \det\begin{bmatrix} 2-\lambda & 0 \\ -3 & -4-\lambda\end{bmatrix} = (-2-\lambda)(-4-\lambda)\]
+so $\lambda_1 = 2 , \lambda_2=-4$ are the eigenvalues. We plug in back in to the system of equations starting with $\lambda=2$
+\[ A \mathbf{x} = 2 \mathbf{x} \rsa \begin{cases} 2x = 2x \\ -3x-4y = 2y\end{cases} \rsa  -3x-6y=0 \rsa x=-2y \]
+so we can take $\mathbf{k_1} = \begin{bmatrix} -2 \\ 1\end{bmatrix}$ as an eigenvector.
+
+For $-4$, \[ A \mathbf{x} = -4 \mathbf{x} \rsa \begin{cases} 2x = -4x \\ -3x-4y = -4y\end{cases} \rsa  \begin{cases}6x=0 \\ -3x=0\end{cases} \rsa x=0 \]
+so we can take $\mathbf{k_2} = \begin{bmatrix} 0 \\ 1\end{bmatrix}$ as an eigenvector.
 \end{ex}
 
 \subsection*{Solving linear systems using eigenvectors and eigenvalues} 
