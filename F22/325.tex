@@ -3460,19 +3460,15 @@ exists. In this case, we call the limit \emph{the derivative of $f$ at $r$} and 
  
  
  \begin{enumerate}
- \item Use the definition to show that the derivative of a constant function is zero.
+ \item Use the definition to show that the derivative of $f(x) = x$ is $1$ for any $r$.
+ 
+ 
  
  \begin{framed}
-Let $f(x)=c$ and consider
-\[\lim_{x\to r} \frac{ f(x) - f(r) }{x - r} = \lim_{x\to r} \frac{c - c} {x - r} = \lim_{x \to r} 0 = 0.\]
+Let $f(x)=x$ and consider
+\[\lim_{x\to r} \frac{ f(x) - f(r) }{x - r} = \lim_{x\to r} \frac{x - r} {x - r} = \lim_{x \to r} 1 = 1.\]
  \end{framed}
  
- \item Use the definition to show that the function $f(x) = 2x-5$ is differentiable at $x=3$ and compute its derivative. 
- 
-  \begin{framed}
-Consider
-\[\lim_{x\to r} \frac{ f(x) - f(r) }{x - r} = \lim_{x\to r} \frac{2x-5 - (2r-5) }{x - r} =  \lim_{x\to r} \frac{2(x-r)}{x - r} = \lim_{x\to r} 2 = 2.\]
- \end{framed}
  
  \item Use the definition to show that the function $f(x)=|x|$ is \emph{not} differentiable at $x=0$.
  
@@ -3587,31 +3583,31 @@ where for the last step we use that $\lim_{x \to r} g(x) = g(r)$ since $g$ is co
  
  \begin{enumerate}
  
- \item Find the values of $x$ on $[0,2]$ at which $f$ achieves its minimum and maximum values.
+ \item Find the values of $x$ on $[0,2]$ at which $f(x) = x^3-2x$ achieves its minimum and maximum values.
  
- \ 
+\begin{framed}
+Since $f$ is differentiable on $(0,2)$, they must be where the derivative is zero or at the endpoints. $f'(x)=0$ means $3x^2=6$ so $x=\pm \sqrt{2}$. The minimum is at $x=\sqrt{2}$ and the max is at $x=2$.
+\end{framed}
+
  
  \item Explain why the Corollary follows from the Theorem.
  
- \
+ \begin{framed}
+Suppose $f$ attains a max on $[a,b]$ at $r\in(a,b)$ and $f$ is differentiable at $r$, but $f'(r)\neq 0$. If $f'(r)>0$, then the first bullet of part (1) gives an $x$ that yields a contradiction; if $f'(r)<0$, then the second bullet bullet of part (2) gives an $x$ that yields a contradiction. If $f$ attains a min, similarly with the other bullet points.
+\end{framed}
  
- 
- \item Prove\footnote{Hint: Apply the definition of limit within the definition of derivative with a useful choice of $\e$.} part (1) of the Theorem.
+ \item Prove part (1) of the Theorem.
 
-
-\
+\begin{framed}
+Take $h(x) = \frac{ f(x) - f(r) }{x - r}$.  Let $\e=f'(r) = \lim_{x\to r} h(x)$. Then there is some $\d>0$ such that $|h(x) - f'(r)| > \e$ when $x\in (r-\d,r+\d)$. But $|h(x) - f'(r)| < f'(r)$ implies $h(x)>0$. If $h(x)>0$ and $x>r$ then $x-r>0$ so $f(x)-f(r) = h(x) (x-r)>0$. Thus, if $x\in (r,r+\d)$, then $f(x)>f(r)$. If $x<r$, then $x-r<0$ so $f(x)-f(r) = h(x) (x-r)<0$. Thus, if $x\in (r-\d,r)$, then $f(x)<f(r)$.
+\end{framed}
 
  \item Prove part (2) of the Theorem.
  
-\end{enumerate}
-
-\
+ \begin{framed}
+ Similar.
+ \end{framed}
  
- \noindent A function $f$ is \emph{increasing} on an interval $(a,b)$ if for any $r,s\in (a,b)$ with $r<s$, we have $f(r)<f(s)$.
- 
- \
-  \begin{enumerate}\setcounter{enumi}{4}
- \item Prove or disprove: If $f'(r)>0$, then there is some $\delta>0$ such that $f$ is increasing on $(r-\delta,r+\delta)$.
 \end{enumerate}
 
 

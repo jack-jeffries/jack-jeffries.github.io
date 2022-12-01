@@ -2760,8 +2760,10 @@ Taking $x=1$ we get an eigenvector
 \[  \mathbf{k_2} = \begin{bmatrix} 1 \\ 1\end{bmatrix}.\]
 \end{ex}
 
-\begin{comment}
-\newpage
+%\begin{comment}
+%\newpage
+
+\Dec{1}
 
 \begin{slogan} To find eigenvectors and eigenvalues, first find eigenvalues $\lambda$ with $\det(A-\lambda I)=0$, then plug the eigenvalues back in to find eigenvectors.\end{slogan}
 
@@ -2797,7 +2799,7 @@ is a solution.
 \begin{ex}
 Consider the linear system
 \[ \mathbf{x}' = \begin{bmatrix} 3 & 1  \\ 2 & 2\end{bmatrix} \mathbf{x}.\]
-We ahve already computed that  $\mathbf{k_1} = \begin{bmatrix} 1 \\ -2\end{bmatrix}$ is an eigvenvector with eigenvalue $\lambda_1=1$ and
+We have already computed that  $\mathbf{k_1} = \begin{bmatrix} 1 \\ -2\end{bmatrix}$ is an eigvenvector with eigenvalue $\lambda_1=1$ and
 $\mathbf{k_2} = \begin{bmatrix} 1 \\ 1 \end{bmatrix}$ is an eigvenvector with eigenvalue $\lambda_2=4$. Thus we have solutions
 \[ \mathbf{x_1}  = e^t  \begin{bmatrix} 1 \\ -2\end{bmatrix} =  \begin{bmatrix} e^t \\ -2e^{t} \end{bmatrix},\]
 \[ \mathbf{x_2}  = e^{4t}  \begin{bmatrix} 1 \\1 \end{bmatrix} =  \begin{bmatrix} e^{4t} \\ e^{4t} \end{bmatrix}.\]
@@ -2817,36 +2819,68 @@ if $A$ has distinct real eigenvalues $\lambda_1\neq \lambda_2$, with correspondi
 \[ \mathbf{x} = C_1 e^{\lambda_1} \mathbf{k_1} + C_2 e^{\lambda_2} \mathbf{k_2}.\]
 \end{thm}
 
-\begin{ex}
-Let's use what we know to solve the initial value problem
-\[ \begin{cases} x' = -y\\
-y'= 3x + 4y \\
-x(0) = 0 , \ y(0) = 2\end{cases}.\]
-First we solve the linear system by finding eigenvalues and eigenvectors of our coefficient matrix $A=\begin{bmatrix} 0 & -1 \\ 3  & 4\end{bmatrix}$. We start with eigenvalues: 
-\[ \begin{aligned}  0&= \det(A-\lambda I) = \det \left( \begin{bmatrix} 0 & -1 \\ 3  & 4\end{bmatrix} - \lambda \begin{bmatrix} 1 & 0 \\ 0  & 1\end{bmatrix} \right) \\&= \det\begin{bmatrix} -\lambda & -1 \\ 3  & 4-\lambda \end{bmatrix} = \lambda^2 -4\lambda +3 \end{aligned}\]
-so
-$\lambda = 1,3$ are the eigenvalues.
-Now we look for eigenvectors: for $\lambda=1$, we consider $A\mathbf{x} = 1 \mathbf{x}$, which is
-\[ \begin{cases} -y = x \\ 3x+4y = y\end{cases} \rsa \begin{cases} -x-y = 0 \\ 3x+3y = 0\end{cases} \rsa -x=y\]
-so $\mathbf{k_1} = \begin{bmatrix} 1 \\ -1\end{bmatrix}$ is an eigenvector.
-For $\lambda=3$, we consider $A\mathbf{x} = 3 \mathbf{x}$, which is
-\[ \begin{cases} -y = 3x \\ 3x+4y = 3y\end{cases} \rsa \begin{cases} -3x-y = 0 \\ 3x+y = 0\end{cases} \rsa -3x=y\]
-so $\mathbf{k_2} = \begin{bmatrix} 1 \\ -3\end{bmatrix}$ is an eigenvector.
+%\begin{ex}
+%Let's use what we know to solve the initial value problem
+%\[ \begin{cases} x' = -y\\
+%y'= 3x + 4y \\
+%x(0) = 0 , \ y(0) = 2\end{cases}.\]
+%First we solve the linear system by finding eigenvalues and eigenvectors of our coefficient matrix $A=\begin{bmatrix} 0 & -1 \\ 3  & 4\end{bmatrix}$. We start with eigenvalues: 
+%\[ \begin{aligned}  0&= \det(A-\lambda I) = \det \left( \begin{bmatrix} 0 & -1 \\ 3  & 4\end{bmatrix} - \lambda \begin{bmatrix} 1 & 0 \\ 0  & 1\end{bmatrix} \right) \\&= \det\begin{bmatrix} -\lambda & -1 \\ 3  & 4-\lambda \end{bmatrix} = \lambda^2 -4\lambda +3 \end{aligned}\]
+%so
+%$\lambda = 1,3$ are the eigenvalues.
+%Now we look for eigenvectors: for $\lambda=1$, we consider $A\mathbf{x} = 1 \mathbf{x}$, which is
+%\[ \begin{cases} -y = x \\ 3x+4y = y\end{cases} \rsa \begin{cases} -x-y = 0 \\ 3x+3y = 0\end{cases} \rsa -x=y\]
+%so $\mathbf{k_1} = \begin{bmatrix} 1 \\ -1\end{bmatrix}$ is an eigenvector.
+%For $\lambda=3$, we consider $A\mathbf{x} = 3 \mathbf{x}$, which is
+%\[ \begin{cases} -y = 3x \\ 3x+4y = 3y\end{cases} \rsa \begin{cases} -3x-y = 0 \\ 3x+y = 0\end{cases} \rsa -3x=y\]
+%so $\mathbf{k_2} = \begin{bmatrix} 1 \\ -3\end{bmatrix}$ is an eigenvector.
+%
+%Thus, the general solution is
+%\[ \mathbf{x} = C_1 e^{t} \begin{bmatrix} 1 \\ -1\end{bmatrix} + C_2 e^{3t} \begin{bmatrix} 1 \\ -3\end{bmatrix}.\]
+%
+%Now we want a particular solution for this initial value problem. We set
+%\[ \begin{aligned} \begin{bmatrix} 0 \\2\end{bmatrix} &= \mathbf{x}(0) = C_1 e^{0} \begin{bmatrix} 1 \\ -1\end{bmatrix} + C_2 e^{3\cdot 0} \begin{bmatrix} 1 \\ -3\end{bmatrix}\\
+%&=  \begin{bmatrix} C_1 + C_2 \\ -C_1 - 3 C_2\end{bmatrix}.\end{aligned}\]
+%This is just a system of numbers now:
+%\[\begin{cases} 0 = C_1 + C_2 \\ 2 =  -C_1 - 3 C_2\end{cases}\]
+%so $C_2=-C_1$ and $2= -C_1 + 3 C_1 = 2 C_1$. Thus $C_1 = 1$ and $C_2=-1$. That is,
+%\[ \mathbf{x} = e^{t} \begin{bmatrix} 1 \\ -1\end{bmatrix} - e^{3t} \begin{bmatrix} 1 \\ -3\end{bmatrix}\]
+%or as functions,
+%\[ \begin{cases} x = e^t - e^{3t} \\ y= -e^t + 3 e^{3t}\end{cases}.\] 
+%\end{ex}
 
-Thus, the general solution is
-\[ \mathbf{x} = C_1 e^{t} \begin{bmatrix} 1 \\ -1\end{bmatrix} + C_2 e^{3t} \begin{bmatrix} 1 \\ -3\end{bmatrix}.\]
+\subsection*{Discussion Questions}
+\begin{enumerate}
+\item
+Solve the system
+\[ \begin{cases} x' = 4 x - y \\ y' = 5x - 2y\end{cases}\]
+\item
+Solve the IVP with initial condition
+\[ x(0)=1, \ y(1)=0.\]
+%\item Can you find an initial condition $x(0)= x_0$, $y(0)=y_0$ with $x_0,y_0>0$ for which the solution has $x\to 0$ and $y\to 0$? What about $x\to \infty$ and $y\to 0$?
+\end{enumerate}
 
-Now we want a particular solution for this initial value problem. We set
-\[ \begin{aligned} \begin{bmatrix} 0 \\2\end{bmatrix} &= \mathbf{x}(0) = C_1 e^{0} \begin{bmatrix} 1 \\ -1\end{bmatrix} + C_2 e^{3\cdot 0} \begin{bmatrix} 1 \\ -3\end{bmatrix}\\
-&=  \begin{bmatrix} C_1 + C_2 \\ -C_1 - 3 C_2\end{bmatrix}.\end{aligned}\]
-This is just a system of numbers now:
-\[\begin{cases} 0 = C_1 + C_2 \\ 2 =  -C_1 - 3 C_2\end{cases}\]
-so $C_2=-C_1$ and $2= -C_1 + 3 C_1 = 2 C_1$. Thus $C_1 = 1$ and $C_2=-1$. That is,
-\[ \mathbf{x} = e^{t} \begin{bmatrix} 1 \\ -1\end{bmatrix} - e^{3t} \begin{bmatrix} 1 \\ -3\end{bmatrix}\]
-or as functions,
-\[ \begin{cases} x = e^t - e^{3t} \\ y= -e^t + 3 e^{3t}\end{cases}.\] 
-\end{ex}
+\begin{framed}
+\begin{enumerate}
+\item
+First take the coefficient matrix $A= \begin{bmatrix} 4 & -1 \\ 5 & -2\end{bmatrix}$ and look for eigenvectors and eigenvalues. We start with eigenvalues:
+\[ 0= \det (A-\lambda I ) = \det\begin{bmatrix} 4-\lambda & -1 \\ 5 & -2-\lambda \end{bmatrix} = \lambda^2-2\lambda-3 = (\lambda+1)(\lambda-3)\]
+so we have $\lambda_1=3$, $\lambda_2 = -1$. Then we plug these in and solve the systems to get (steps skipped)
+\[ \mathbf{k_1} = \begin{bmatrix} 1 \\ 1\end{bmatrix}, \  \mathbf{k_2} = \begin{bmatrix} 1 \\ 5\end{bmatrix}.\]
+We have distinct eigenvalues so we can use the formula
+\[ \mathbf{x} = C_1 e^{3t} \begin{bmatrix} 1 \\ 1\end{bmatrix} + C_2 e^{-t} \begin{bmatrix} 1 \\ 5\end{bmatrix}.\]
+\item We have
+\[ \begin{bmatrix} 1 \\ 0\end{bmatrix} = \mathbf{x}(0) = C_1 e^{3 \cdot 0} \begin{bmatrix} 1 \\ 1\end{bmatrix} + C_2 e^{-0} \begin{bmatrix} 1 \\ 5\end{bmatrix} = \begin{bmatrix} C_1 + C_2 \\ C_1 + 5C_2\end{bmatrix},\]
+so $C_1 = \frac{5}{4}$ and $C_2 = \frac{-1}{4}$. Thus we get
+\[  \mathbf{x} = \frac{5}{4} e^{3t} \begin{bmatrix} 1 \\ 1\end{bmatrix} +  \frac{-1}{4} e^{-t} \begin{bmatrix} 1 \\ 5\end{bmatrix}\]
+or
+\[\begin{cases} x =  \frac{5}{4} e^{3t} -  \frac{1}{4} e^{-t}\\
+y =  \frac{5}{4} e^{3t} -  \frac{5}{4} e^{-t}\end{cases}.\]
+%\item For the first, take $x_0 = 1$, $y_0=5$. The second is impossible!
+\end{enumerate}
+\end{framed}
 
+\begin{comment}
 
 Long-term behavior of solutions.
 
@@ -2891,9 +2925,9 @@ Now let's change our original story. The only thing we will change is that for e
 \item Solve the model and use your answer to answer the questions the government wants to know.
 \end{enumerate}
 \begin{framed}
-\begin{enumerate}
+%\begin{enumerate}
 
-\end{enumerate}
+%\end{enumerate}
 \end{framed}
 
 
