@@ -2892,11 +2892,21 @@ Recall that for a $2\times 2$ homogeneous linear system with constant coefficien
 A \emph{phase portrait}\index{phase portrait} is a depiction of a few particular solution curves in one graph, which can help us visualize the overall behavior of the solutions. We start by plotting the solution curves in the eigenvector solutions (which correspond to $C_1=0$ or $C_2=0$). Note that if $\lambda_1 > 0$, then our solution curves in the $ \mathbf{k_1}$ direction travel away from $0$, while if $\lambda_1 < 0$, then our solution curves in the $ \mathbf{k_1}$ direction travel back towards $0$; likewise with $\mathbf{k_2}$. Then for solutions that start with other initial conditions, we combine the behavior of the two eigenvector solutions.
 
 
+\begin{ex} If we have eigenvector $\mathbf{k_1} = \begin{bmatrix} -1 \\ 1\end{bmatrix}$ with eigenvalue $\lambda_1=2$ and eigenvector $\mathbf{k_2} = \begin{bmatrix} 1 \\ 1\end{bmatrix}$ with eigenvalue $\lambda_2=1$, the solutions head outwards, and faster in the $\mathbf{k_1}$ direction.
+\begin{center}\includegraphics[scale=.5]{pp1}\end{center}\end{ex}
+
+\begin{ex} If we have eigenvector $\mathbf{k_1} = \begin{bmatrix} -1 \\ 1\end{bmatrix}$ with eigenvalue $\lambda_1=2$ and eigenvector $\mathbf{k_2} = \begin{bmatrix} 1 \\ 1\end{bmatrix}$ with eigenvalue $\lambda_2=-1$, the solutions head towards the northwest/southeast directions.
+\begin{center}\includegraphics[scale=.5]{pp2}\end{center}\end{ex}
+
+
+
+In particular, if there are two positive eigenvalues, then all of the solutions get larger / head away from the origin. If both eigenvalues are negative, all solutions get smaller / head towards the origin. If there is one positive and one negative eigenvalue, then the solutions grow in one direction while shrinking in the other.
+
 \subsection*{Discussion Questions}
 
 \index{defective money}
 The coins that are used by a country are made of a low quality metal and become defective on a regular basis. Suppose that right now there are 20 million coins in circulation, of which half are defective. Every week, about one third of the good coins in circulation become bad coins, and one fifth of the bad coins fall apart and disappear from circulation.
-To fight deflation, for every (bad) coin that gets destroyed, it issues a good replacement coin.
+To make sure there are enough coins, for every (bad) coin that gets destroyed, it issues a \emph{two} good replacement coins.
 
 The government wants to know: Does the number of bad coins tend to zero? If not, what happens to the ratio of bad coins?
 
@@ -2907,35 +2917,25 @@ What is the independent variable and what are the dependent variables? What are 
 \item What factors in the story affect the number of good coins in circulation? What factors in the story affect the number of bad coins in circulation? Can you express each in terms of the number of good coins / bad coins at a given time?
 \item Express the previous part as a system of differential equations.
 \item We also need an initial condition. Write it down.
-\item Find the general solution to our linear system, and then solve the initial value problem.
-\item Use your answer to answer the questions the government wants to know.
 \end{enumerate}
-\begin{framed}
-\begin{enumerate}
-\item 
-\end{enumerate}
-\end{framed}
 
-Let's do an experiment to test our model. Each coin you've been given represents a million coins. Some represent good coins and some represent bad. Every day, take a third of the coins, and replace the good ones you collected with bad ones. Then take a fifth of the coins, throw away the bad ones you collected, and add back in an equal number of good coins.
+
+
+Let's do an experiment to test our model. Each coin you've been given represents a million coins. Some represent good coins and some represent bad. Every day, take a third of the coins, and replace the good ones you collected with bad ones. Then take a fifth of the coins, throw away the bad ones you collected, and add back in twice as many of good coins.
 
 \begin{enumerate}
 \item Discuss whether your model for the previous situation is relevant to this experiment. What aspects fit the story well, and what ones don't?
 \item Run the experiment, keeping track of the number of good coins and bad coins each day. How well does your data fit the model? 
 \end{enumerate}
 
-Now let's change our original story. The only thing we will change is that for every (bad) coin that gets destroyed, the govenment issues \emph{two} good replacement coins.
-
+Now let's solve this.
 
 \begin{enumerate}
-\item Create a new linear system to match this new model.
-\item Run an experiment similar to the one above adapted to this situation.
-\item Solve the model and use your answer to answer the questions the government wants to know.
+\item Solve the linear system.
+\item Solve the initial value problem. Use your solution to answer the questions we started with.
+\item Draw a phase portrait for the linear system. Use it to address the questions we started with as initial conditions vary.
 \end{enumerate}
-\begin{framed}
-%\begin{enumerate}
 
-%\end{enumerate}
-\end{framed}
 
 
 
