@@ -1,0 +1,621 @@
+\documentclass[12pt]{amsart}
+\usepackage{graphicx, framed}
+\usepackage{comment}
+\usepackage{amscd}
+\usepackage{amssymb,color}
+\usepackage[all, knot]{xy}
+\usepackage[top=1.2in, bottom=1.2in, left=.6in, right=.6in]{geometry}
+\xyoption{all}
+\xyoption{arc}
+\usepackage{hyperref}
+
+
+%%\usepackage[notcite,notref]{showkeys}
+
+%\CompileMatricesx
+\newcommand{\edit}[1]{\marginpar{\footnotesize{#1}}}
+%\newcommand{\edit}[1]{}
+\newcommand{\rperf}[2]{\operatorname{RPerf}(#1 \into #2)}
+
+\renewcommand\labelitemii{$\diamondsuit$}
+
+\def\floor#1{\lfloor #1 \rfloor}
+\def\tt{\tilde{\theta}}
+
+\def\ay{??}
+\def\Aut{\operatorname{Aut}}
+\def\t{\theta}
+\def\can{{\mathrm can}}
+\def\Coder{\operatorname{Coder}}
+\def\tY{\tilde{Y}}
+\def\s{\sigma}
+\def\tnabla{\tilde{\nabla}}
+\def\uMF{\underline{MF}}
+\def\uLF{\underline{LF}}
+
+\def\comp{\text{comp}}
+\def\del{\partial}
+
+\def\hcC{\hat{\cC}}
+\def\HH{\operatorname{HH_\cdot}}
+
+\def\rrperf{\operatorname{RPerf}}
+
+
+\def\tF{\widetilde{F}}
+\def\Symm{\operatorname{S^\cdot}}
+\def\naive{{\text{naive}}}
+\def\exact{{\text{exact}}}
+
+\def\square#1#2#3#4{
+	#1 \ar[r] \ar[d]  & #2 \ar[d] \\
+	#3 \ar[r] & #4 \\
+}
+
+\def\cube#1#2#3#4#5#6#7#8{
+	& #5 \ar[rr] \ar[dl] \ar@{-}[d] && #6 \ar[dd] \ar[dl] \\
+	#1 \ar[rr] \ar[dd]  & \ar[d] & #2 \ar[dd] \\
+	& #7 \ar@{-}[r] \ar[dl] & \ar[r] & #8 \ar[dl] \\
+	#3 \ar[rr] && #4 \\
+}
+
+\def\nicexy{\entrymodifiers={+!!<0pt,\fontdimen22\textfont2>}
+	\def\objectstyle{\displaystyle}} 
+
+\def\TP{\operatorname{TPC}}
+
+\def\HomMF{\operatorname{\uHom_{MF}}}
+
+\def\Hom{\operatorname{Hom}}
+\def\EndMF{\operatorname{\uEnd_{MF}}}
+\def\HomHMF{\operatorname{\Hom_{[MF]}}}
+\def\uMCM{\operatorname{\underline{MCM}}}
+
+
+\def\rH{\operatorname{H}}
+\def\rHom{\operatorname{Hom}}
+\def\rExt{\operatorname{Ext}}
+\def\uExt{\underline{\operatorname{Ext}}}
+
+
+\def\coh{\operatorname{coh}}
+
+\def\vf{\mathbf f}
+\def\vg{\mathbf g}
+\def\twomaps{\rightrightarrows} 
+\def\oDelta{\overline{\Delta}}
+\def\BHM{B\"okstedt-Hsiang-Madsen }
+\def\cU{\mathcal U}
+\def\Kweb#1{
+	http:\linebreak[3]//www.\linebreak[3]math.\linebreak[3]uiuc.
+	\linebreak[3]edu/\linebreak[3]{K-theory/#1/}}
+
+\def\ip#1{\left< #1 \right>}
+\def\ad#1{{\scriptstyle \left[ \frac{1}{#1} \right]}}
+\def\hocolim{\operatorname{hocolim}}
+\def\holim{\operatorname{holim}}
+
+\def\a{\alpha}
+\def\b{\beta}
+\def\Top{\operatorname{Top}}
+\def\Tot{\operatorname{Tot}}
+\def\Ncy{N^{cy}}
+\def\tNcy{\tilde{N}^{cy}}
+\def\smsh{\wedge}
+\def\MHS{{\text{MHS}}}
+\def\IMHS{{\text{IMHS}}}
+
+\def\nil{\operatorname{nil}}
+
+\def\uMaps{\operatorname{\underline{Maps}}}
+
+\def\chr{\operatorname{char}}
+\def\orb{\operatorname{orb}}
+\def\tSigma{\tilde{\Sigma}}
+
+\def\ae{{\text{alg equiv}}}
+\def\aez{{\text{alg} \sim 0}}
+\def\hez{{\text{hom} \sim 0}}
+\def\tor{{\text{tor}}}
+\def\sm{{\text{sm}}}
+
+\def\mor{{\text{mor}}}
+\def\H{{\mathbb H}}
+
+\def\etale{\'etale~}
+\def\tW{\tilde{W}}
+\def\tH{\tilde{H}}
+\def\tC{\tilde{C}}
+\def\tS{\tilde{S}}
+\def\tX{\tilde{X}}
+\def\tZ{\tilde{Z}}
+\def\HBM{H^{\text{BM}}}
+\def\tHBM{\tilde{H}^{\text{BM}}}
+\def\Hc{H_{\text{c}}}
+\def\Hs{H_{\text{sing}}}
+\def\cHs{{\mathcal H}_{\text{sing}}}
+\def\sing{{\text{sing}}}
+\def\Hms{H^{\text{sing}}}
+\def\Hm{\Hms}
+\def\tHms{\tilde{H}^{\text{sing}}}
+\def\Grass{\operatorname{Grass}}
+\def\image{\operatorname{im}}
+\def\im{\image}
+\def\ker{\operatorname{ker}}
+\def\cone{\operatorname{cone}}
+
+\def\ku{ku}
+\def\bbu{\bf bu}
+\def\KR{K{\mathbb R}}
+
+\def\CW{\underline{CW}}
+\def\cP{\mathcal P}
+\def\cE{\mathcal E}
+\def\cL{\mathcal L}
+\def\cJ{\mathcal J}
+\def\cJmor{\cJ^\mor}
+\def\ctJ{\tilde{\mathcal J}}
+\def\tPhi{\tilde{\Phi}}
+\def\cA{\mathcal A}
+\def\cB{\mathcal B}
+\def\cC{\mathcal C}
+\def\cZ{\mathcal Z}
+\def\cD{\mathcal D}
+\def\cF{\mathcal F}
+\def\cG{\mathcal G}
+\def\cO{\mathcal O}
+\def\cI{\mathcal I}
+\def\cS{\mathcal S}
+\def\cT{\mathcal T}
+\def\cM{\mathcal M}
+\def\cN{\mathcal N}
+\def\cMpc{{\mathcal M}_{pc}}
+\def\cMpctf{{\mathcal M}_{pctf}}
+\def\L{\mathbf{L}}
+
+\def\cMM{{{\mathcal M}{\mathcal M}}}
+\def\sst{{sst}}
+\def\top{{top}}
+\def\cK{\mathcal K}
+\def\cKH{\mathcal KH}
+\def\cKsst{\cK^{sst}}
+\def\Ksst{K^{sst}}
+\def\cGsst{\cG^{sst}}
+\def\Gsst{G^{sst}}
+\def\Ktop{K_{top}}
+\def\HM{H_{\cM}}
+\def\cHM{{\cH}_{\cM}}
+\def\HMnaive{\cH_{\cM,naive}}
+\def\Het{H_{et}}
+\def\Deldot{\Delta^{\bullet}}
+\def\Deltop{\Delta_{top}}
+\def\Deldottop{\Delta^{\bullet}_{top}}
+\def\diag{\operatorname{diag}}
+\def\coker{\operatorname{coker}}
+\def\hfib{\operatorname{hfib}}
+\def\dm{\operatorname{dim}}
+\def\rank{\operatorname{rank}}
+\def\trace{\operatorname{trace}}
+\def\Sing{\operatorname{Sing}}
+\def\Proj{\operatorname{Proj}}
+\def\uHom{\operatorname{\underline{Hom}}}
+\def\uSpec{\operatorname{\underline{Spec}}}
+\def\RHom{\operatorname{{\mathbb R} Hom}}
+\def\Ext{\operatorname{Ext}}
+% \def\cExt{\operatorname{{\mathcal{E}\mathit{xt}}}}
+\def\sExt{\operatorname{\widehat{Ext}}}
+\def\ssm{\smallsetminus}
+
+\def\Tor{\operatorname{Tor}}
+\def\sTor{\operatorname{\widehat{Tor}}}
+\def\Pic{\operatorname{Pic}}
+\def\Alb{\operatorname{Alb}}
+\def\Griff{\operatorname{Griff}}
+\def\Mat{\operatorname{Mat}}
+\def\End{\operatorname{End}}
+\def\uEnd{\operatorname{\underline{End}}}
+\def\Maps{\operatorname{Maps}}
+\def\Spec{\operatorname{Spec}}
+\def\MSpec{\operatorname{MSpec}}
+\def\Exinf{\operatorname{Ex^\infty}}
+\def\bu{\bullet}
+\def\an{{an}}
+\def\map#1{{\buildrel #1 \over \lra}} 
+\def\lmap#1{{\buildrel #1 \over \longleftarrow}} 
+\def\lra{\longrightarrow}
+\def\into{\hookrightarrow}
+\def\onto{\twoheadrightarrow}
+\def\cH{\mathcal{H}}
+\def\Hmult{\cH_{mult}}
+
+\def\ov#1{{\overline{#1}}}
+
+\def\vecthree#1#2#3{\begin{bmatrix} #1 \\ #2 \\ #3 \end{bmatrix}}
+
+\def\tOmega{\tilde{\Omega}}
+\def\tDelta{\tilde{\Delta}}
+\def\tSigma{\tilde{\Sigma}}
+\def\tsigma{\tilde{\sigma}}
+
+
+\def\d{\delta}
+\def\td{\tilde{\delta}}
+
+\def\e{\varepsilon}
+\def\nsg{\unlhd}
+
+
+\newcommand{\tensor}{\otimes}
+\newcommand{\homotopic}{\simeq}
+\newcommand{\homeq}{\cong}
+\newcommand{\iso}{\approx}
+
+\DeclareMathOperator{\ho}{Ho}
+\DeclareMathOperator*{\colim}{colim}
+
+
+\newcommand{\Q}{\mathbb{Q}}
+
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bM}{\mathbb{M}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\bH}{{\mathbb{H}}}
+\newcommand{\G}{\mathbb{G}}
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\bL}{{\mathbb{L}}}
+\newcommand{\R}{{\mathbb{R}}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\bK}{\mathbb{K}}
+
+
+\newcommand{\bD}{\mathbb{D}}
+\newcommand{\bS}{\mathbb{S}}
+
+\newcommand{\bN}{\mathbb{N}}
+
+
+\newcommand{\bG}{\mathbb{G}}
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\W}{\mathcal{W}}
+
+
+
+\newcommand{\itilde}{\tilde{\imath}}
+\newcommand{\jtilde}{\tilde{\jmath}}
+\newcommand{\ihat}{\hat{\imath}}
+\newcommand{\jhat}{\hat{\jmath}}
+
+\newcommand{\fc}{{\mathfrak c}}
+\newcommand{\fp}{{\mathfrak p}}
+\newcommand{\fm}{{\mathfrak m}}
+\newcommand{\fq}{{\mathfrak q}}
+\newcommand{\dual}{\vee}
+
+
+% The following causes equations to be numbered within sections
+\numberwithin{equation}{section}
+
+
+\theoremstyle{plain} %% This is the default, anyway
+\newtheorem{thm}[equation]{Theorem}
+\newtheorem{preproof}{Preproof Discussion}
+\newtheorem{obs}{Observation}
+\newtheorem{thmdef}[equation]{TheoremDefinition}
+\newtheorem{introthm}{Theorem}
+\newtheorem{introcor}[introthm]{Corollary}
+\newtheorem*{introthm*}{Theorem}
+%\newtheorem{question}{Question}
+\newtheorem*{question}{Question}
+\newtheorem{cor}[equation]{Corollary}
+\newtheorem{lem}[equation]{Lemma}
+\newtheorem{prop}[equation]{Proposition}
+\newtheorem{porism}[equation]{Porism}
+\newtheorem{algorithm}[equation]{Algorithm}
+\newtheorem{axiom}[equation]{Axiom}
+\newtheorem*{axioms*}{Axioms}
+\newtheorem*{axiom*}{Axiom}
+\newtheorem{conj}[equation]{Conjecture}
+\newtheorem{quest}[equation]{Question}
+
+
+\theoremstyle{definition}
+\newtheorem{defn}[equation]{Definition}
+\newtheorem{chunk}[equation]{}
+\newtheorem{ex}[equation]{Example}
+
+\newtheorem{exer}[equation]{Exercise}
+
+\theoremstyle{remark}
+\newtheorem{rem}[equation]{Remark}
+
+\newtheorem{notation}[equation]{Notation}
+\newtheorem{terminology}[equation]{Terminology}
+
+%%%%%%%%%%%%%
+% local definitions
+%%%%%%%%%%%%%
+\def\TP{\operatorname{TPC}}
+
+\def\HomMF{\operatorname{\uHom_{MF}}}
+\def\HomHMF{\operatorname{\Hom_{[MF]}}}
+
+\def\rDsg{D^{\text{rel}}_{\text{sing}}}
+\def\Dsg{D_{\text{sing}}}
+\def\Dsing{\Dsg}
+\def\Db{D^b}
+
+
+\def\Perf{\operatorname{Perf}}
+\def\coh{\operatorname{coh}}
+
+\def\CCh{\check{\cC}}
+
+\newcommand{\Cech}{C}
+
+\newcommand\bs{\boldsymbol}
+\renewcommand{\uMCM}[1]{[\operatorname{MCM}(#1)]}
+
+
+%\newcommand{\sExt}[4]{\widehat{\operatorname{Ext}}_{#2}^{#1}(#3,#4)}
+\newcommand{\cExt}[4]{\uExt_{#2}^{#1}(#3,#4)}
+
+\newcommand\depth{\operatorname{depth}}
+\newcommand{\supp}{\operatorname{supp}}
+
+\newcommand{\br}[1]{\lbrace \, #1 \, \rbrace}
+\newcommand{\brc}[2]{\lbrace \, #1 \, | \, #2 \rbrace}
+\newcommand{\li}{ < \infty}
+\newcommand{\quis}{\simeq}
+\newcommand{\xra}[1]{\xrightarrow{#1}}
+\newcommand{\xla}[1]{\xleftarrow{#1}}
+\newcommand{\xroa}[1]{\overset{#1}{\twoheadrightarrow}}
+\newcommand{\ps}[1]{\mathbb{P}_{#1}^{\text{c}-1}}
+
+% this is the pull-back of E along l: Z \to X
+\newcommand{\pb}[1]{\RQ^*{#1}}
+\newcommand{\pbe}{\pb{\cE}}
+\newcommand{\YQ}{\gamma}
+\newcommand{\RY}{\beta}
+\newcommand{\RQ}{\delta}
+
+\newcommand{\mft}[1]{T^{[MF]}_{#1}}
+\newcommand{\dst}[1]{T^{\Dsing(R)}_{#1}}
+
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\pd}{\operatorname{pd}}
+\newcommand{\even}{\operatorname{even}}
+\newcommand{\odd}{\operatorname{odd}}
+
+\newcommand{\bl}[1]{{{\color{blue}#1}}}
+
+\def\tmu{\tilde{\mu}}
+\def\g{\gamma}
+\def\tg{\tilde{\gamma}}
+\def\tCliff{\operatorname{\tilde{Cliff}}}
+\def\unital{\mathrm{unital}}
+\def\D{\Delta}
+\def\Tco{\operatorname{T^{\text{co}}}}
+\def\Tcob{\operatorname{\ov{T}^{\text{co}}}}
+
+\def\bg{\mathbf g}
+\def\ta{\tilde{a}}
+
+
+\def\z{\zeta}
+\def\lf{\operatorname{lf}}
+\def\mf{\operatorname{mf}}
+\def\lffl{\operatorname{lf}^{\mathrm{fin. len.}}}
+\def\mffl{\operatorname{mf}^{\mathrm{fin. len.}}}
+\def\len{\operatorname{length}}
+\def\Hlf{\operatorname{H}}
+
+\def\codim{\operatorname{codim}}
+
+\def\cPsi{\psi_{\mathrm{cyc}}}
+\def\Fold{\operatorname{Fold}}
+\def\ssupp{\operatorname{s.supp}}
+
+\def\mult{\operatorname{mult}}
+\def\stable{\mathrm{stable}}
+\def\and{{ \text{ and } }}
+\def\orr{{ \text{ or } }}
+\def\oor{\orr}
+
+\def\Perm{\operatorname{Perm}}
+
+\def\Soule{Soul\'e}
+
+\def\Op{\operatorname{Op}}
+\def\res{\operatorname{res}}
+\def\ind{\operatorname{ind}}
+
+\def\sign{{\mathrm{sign}}}
+\def\naive{{\mathrm{naive}}}
+\def\l{\lambda}
+
+
+\def\ov#1{\overline{#1}}
+
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+% NEW DEFINITIONS BEYOND MARK'S USUAL ONES 
+% (OR MODIFIED) 
+\newcommand{\chara}{\operatorname{char}}
+\newcommand{\Kos}{\operatorname{Kos}}
+\newcommand{\opp}{\operatorname{opp}}
+\newcommand{\perf}{\operatorname{perf}}
+
+\newcommand{\Fun}{\operatorname{Fun}}
+\newcommand{\GL}{\operatorname{GL}}
+\def\o{\omega}
+\def\oo{\overline{\omega}}
+
+\def\cont{\operatorname{cont}}
+\def\te{\tilde{e}}
+\def\gcd{\operatorname{gcd}}
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+
+
+\def\charpoly{\operatorname{char poly}}
+\def\Gal{\operatorname{Gal}}
+
+
+
+
+\begin{document}
+
+
+
+
+
+
+{\large Side 1: \textbf{True or False. Justify.} }
+
+\thispagestyle{empty}
+\
+
+\begin{enumerate}
+
+\item The function $f(x) = |x^3|$ is differentiable at $x=0$.
+
+\
+
+\item If $f:[a,b]\to \R$ is continuous and $f$ attains its maximum on $[a,b]$ at $x=c$, then $f'(c)=0$.
+
+\
+
+\item Every nonempty set of real numbers that is bounded above has a maximum element.
+
+\
+
+\item The supremum of the set $\{ x\in \Q \ | \ x< \pi\}$ is $\pi$.
+
+\
+
+\item If the domain of $f$ is $\R$, then $f$ is continuous at some value of $x$.
+
+\
+
+\item Every decreasing sequence is convergent.
+
+\
+
+\item The function $f(x) = x^3 - 2x^2 + 5$ is increasing or decreasing on $(0,3)$.
+
+\
+
+\item The sequence $\displaystyle \left\{ \frac{\sin(n^2)}{n} \right\}_{n=1}^\infty$ is convergent.
+
+\
+
+
+
+\item We can prove that every polynomial $p(x)$ has a property $P$ by induction on degree by showing that every constant function has property $P$ and then showing that if $p(x)$ has property $P$ then so does $p'(x)$.
+
+\
+
+\item For every pair of integers $m,n\in \Z$, $m^2 \neq 8 n^2$.
+
+\
+
+\item If $f$ is continuous on $[1,3]$, and $y> f(1) > f(3)$, then there is no $c\in [1,3]$ with $f(c)=y$.
+
+\
+
+\item If $f$ and $g$ are continuous on $(-7,7)$ and $ g(4) = -1$, then $\displaystyle\lim_{x\to 4} (f\circ g)(x) = f(-1)$.
+
+\
+
+\item If $\{a_n\}_{n=1}^\infty$ and $\{b_n\}_{n=1}^\infty$ both diverge, then so does $\{a_n+b_n\}_{n=1}^\infty$.
+
+\
+
+\item If $f(x) > 5$ for all $x\neq -7$ and $\displaystyle \lim_{x\to -7} f(x) = L$, then $L>5$.
+
+
+
+\end{enumerate}
+	 
+	 \newpage
+	 
+	  \thispagestyle{empty}
+	 
+	 {\large Side 2: \textbf{True or False. Justify.}}
+	 
+	 \
+
+\begin{enumerate}
+
+\item The polynomial $p(x) = x^5 + 5x +1$ has exactly one (real) root.
+
+\
+
+\item If $f$ is differentiable and $f'(x)>0$ for all $x\in (a,b)$, then $f$ is strictly increasing on $(a,b)$.
+
+\
+
+\item The maximum of the set $\{ x\in \Q \ | \ x< \pi\}$ is $\pi$.
+
+\
+
+\item If $S$ is a set of real numbers and $\mathrm{sup}(S) \in S$, then $\mathrm{sup}(S)$ is the maximum element of $S$.
+
+\
+
+\item Every  convergent sequence is bounded.
+
+\
+
+\item Every monotone sequence has a convergent subsequence.
+
+\
+
+\item If $f$ is differentiable at $x=2$ and $f(2) = 5$, then the sequence $\displaystyle\left\{ f\left(\frac{2n + 1}{n+4}\right) \right\}_{n=1}^\infty$ converges to~$5$.
+
+
+\
+
+\item The function $f(x) = x^3 - 2x^2 + 5$ attains a minimum value on $(0,3)$.
+
+\
+
+\item The sequence $\displaystyle \left\{ {\sin(n^2)} \right\}_{n=1}^\infty$ has a convergent subsequence.
+
+\
+
+
+\item For any real numbers $a <b$, there is an integer $c$ such that $a<n<b$.
+
+\
+
+\item If $f$ is differentiable on $\R$, $f'(x) \leq 0$ for all $x>0$, and $f(x) \geq -5$ for all $x>0$, then the sequence $\{f(n)\}_{n=1}^\infty$ converges.
+
+\
+
+\item We can prove that every polynomial $p(x)$ has a property $P$ by induction on degree by showing that every constant function has property $P$ and then showing that if $p'(x)$ has property $P$ then so does $p(x)$.
+
+
+\
+
+\item If $\{a_n\}_{n=1}^\infty$ and $\{b_n\}_{n=1}^\infty$ both diverge to $+\infty$, then so does $\{a_n+b_n\}_{n=1}^\infty$.
+
+\
+
+
+\item If $\displaystyle \lim_{x\to -3} f(x) > 5$, then $\exists \delta>0$ such that $f(x) > 5$ for all $x\in (-3- \delta,-3) \cup (-3,-3+\delta)$.
+		
+\end{enumerate}
+
+\end{document}
