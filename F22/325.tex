@@ -3598,8 +3598,6 @@ Suppose $f$ attains a max on $[a,b]$ at $r\in(a,b)$ and $f$ is differentiable at
 
 \end{enumerate}
  
-\begin{comment}
- \newpage
  \Dec{6}
  
  Last time we considered the following theorem about derivatives and nearby values:
@@ -3643,7 +3641,7 @@ Before we get ahead of ourselves, let's consider a strange example.
 \begin{ex}
 Consider the function $f(x)= \begin{cases} x^2  + x & \text{if} \ x\in \Q \\ x &\text{if} \ x\notin \Q \end{cases}$.
 Note that we can write $f(x) = f_1(x) + f_2(x)$ where $f_1(x) = x$ and $f_2(x) =  \begin{cases} x^2  & \text{if} \ x\in \Q \\ 0 &\text{if} \ x\notin \Q \end{cases}$.
-We have shown that $f_1$ is differentiable at any $x\in \R$ and $f_1'(x) = 1$, and $f_2$ is differentiable at $x=0$ with $f_2'(0)=0$. Thus $f$ is differentiable at $0$ and $f'(0)=1$. However, $f$ is not increasing on any interval containing $0$. To see it, let $\d>0$, and (using density of rational numbers) pick a rational number $a$ with $0<a<\d$. Then $a^2>0$ so $a^2+a>a$. By density of irrational numbers, there is some irrational number $b$ with $a<b<\min\{a^2+a,\d\}$. Then $a<b$ (and both are in $(-\d,\d)$) but $f(a)=a^2+a>b=f(b)$, so $f$ is not increasing on $(-\d,\d)$.
+We have shown that $f_1$ is differentiable at any $x\in \R$ and $f_1'(x) = 1$, and $f_2$ is differentiable at $x=0$ with $f_2'(0)=0$. Thus $f$ is differentiable at $0$ and $f'(0)=1$. However, $f$ is not increasing on any interval containing $0$. To see it, let $a<0<b$ so $0\in (a,b)$. Using density of rational numbers pick a rational number $q$ with $0<q<\d$. Then $q^2>0$ so $q^2+q>q$. By density of irrational numbers, there is some irrational number $z$ with $q<z<\min\{q^2+q,b\}$. Then $q<z$ (and both are in $(a,b)$) but $f(q)=q^2+q>z=f(z)$, so $f$ is not increasing on $(a,b)$.
 \end{ex}
 
 However, not all is hopeless. The important ingredient we need is the following.
@@ -3703,6 +3701,20 @@ For (3), we can argue similarly or observe that $f$ is constant if and only if i
 \item Prove or disprove: Let $f$ be differentiable on $\R$. If $f'(x)>0$ for all $x\in \R$, then $f$ is strictly increasing on $\R$.
 
 \end{enumerate}
+
+\begin{framed}
+\begin{enumerate}
+\item We have $f'(x) = 3x^2 \geq 0$ for all $x\in \R$, so by the Corollary above, $f$ is increasing on $\R$.
+
+\item Let $a<b$. Then $f(b) - f(a) = b^3 -a^3 = (b-a)(a^2+ab+b^2)$. Then $a^2+b^2 > 0$ unless $a=b=0$ which is impossible, and $ab\geq 0$ unless $a<0$ and $b>0$, in which case the claim is clear, and if $a^2+b^2 >0$ and $ab\geq 0$, then $a^2+ab+b^2>0$ and $b-a>0$ implies $f(b)-f(a)>0$, as required.
+
+\item False: Take $f(x) = x^3$ on $[-1,1]$.
+
+\item False: Take $f(x)=x^3$ and $x=0$.
+
+\item True: Let $f'(x)>0$ for all $x\in \R$. Last $a<b$ be real numbers. Then $f$ is differentiable on $(a,b)$ and continuous on $[a,b]$ so the Mean Value Theorem applies. There is some $c\in (a,b)$ with $f'(c) = \frac{f(b)- f(a)}{b-a}$. Since $f'(c)>0$ and $b-a>0$, we must have $f(b)-f(a)>0$ so $f(a)<f(b)$.
+\end{enumerate}
+\end{framed}
 
 \begin{comment}
 
