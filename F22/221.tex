@@ -2880,33 +2880,15 @@ y =  \frac{5}{4} e^{3t} -  \frac{5}{4} e^{-t}\end{cases}.\]
 \end{enumerate}
 \end{framed}
 
-\begin{comment}
+
 
 \Dec{6}
-
-\subsection*{Phase portraits and long term behavior of solutions}
-
-Recall that for a $2\times 2$ homogeneous linear system with constant coefficients $\mathbf{x'}=A\mathbf{x}$, if we have distinct real eigenvalues $\lambda_1\neq \lambda_2$ and corresponding eigenvectors $\mathbf{k_1}$ and $\mathbf{k_2}$, then we can write the general solution for the system as
-\[ \mathbf{x} = C_1 e^{\lambda_1} \mathbf{k_1} + C_2 e^{\lambda_2} \mathbf{k_2} .\]
-
-A \emph{phase portrait}\index{phase portrait} is a depiction of a few particular solution curves in one graph, which can help us visualize the overall behavior of the solutions. We start by plotting the solution curves in the eigenvector solutions (which correspond to $C_1=0$ or $C_2=0$). Note that if $\lambda_1 > 0$, then our solution curves in the $ \mathbf{k_1}$ direction travel away from $0$, while if $\lambda_1 < 0$, then our solution curves in the $ \mathbf{k_1}$ direction travel back towards $0$; likewise with $\mathbf{k_2}$. Then for solutions that start with other initial conditions, we combine the behavior of the two eigenvector solutions.
-
-
-\begin{ex} If we have eigenvector $\mathbf{k_1} = \begin{bmatrix} -1 \\ 1\end{bmatrix}$ with eigenvalue $\lambda_1=2$ and eigenvector $\mathbf{k_2} = \begin{bmatrix} 1 \\ 1\end{bmatrix}$ with eigenvalue $\lambda_2=1$, the solutions head outwards, and faster in the $\mathbf{k_1}$ direction.
-\begin{center}\includegraphics[scale=.5]{pp1}\end{center}\end{ex}
-
-\begin{ex} If we have eigenvector $\mathbf{k_1} = \begin{bmatrix} -1 \\ 1\end{bmatrix}$ with eigenvalue $\lambda_1=2$ and eigenvector $\mathbf{k_2} = \begin{bmatrix} 1 \\ 1\end{bmatrix}$ with eigenvalue $\lambda_2=-1$, the solutions head towards the northwest/southeast directions.
-\begin{center}\includegraphics[scale=.5]{pp2}\end{center}\end{ex}
-
-
-
-In particular, if there are two positive eigenvalues, then all of the solutions get larger / head away from the origin. If both eigenvalues are negative, all solutions get smaller / head towards the origin. If there is one positive and one negative eigenvalue, then the solutions grow in one direction while shrinking in the other.
 
 \subsection*{Discussion Questions}
 
 \index{defective money}
-The coins that are used by a country are made of a low quality metal and become defective on a regular basis. Suppose that right now there are 20 million coins in circulation, of which half are defective. Every week, about one third of the good coins in circulation become bad coins, and one fifth of the bad coins fall apart and disappear from circulation.
-To make sure there are enough coins, for every (bad) coin that gets destroyed, it issues a \emph{two} good replacement coins.
+The coins that are used by a country are made of a low quality metal and become defective on a regular basis. Suppose that right now there are 20 million coins in circulation, of which 7 million are defective. Every week, about one third of the good coins in circulation become bad coins, and one third of the bad coins fall apart and disappear from circulation.
+To make sure there are enough coins, for every (bad) coin that gets destroyed, it issues \emph{two} good replacement coins.
 
 The government wants to know: Does the number of bad coins tend to zero? If not, what happens to the ratio of bad coins?
 
@@ -2915,28 +2897,55 @@ The government wants to know: Does the number of bad coins tend to zero? If not,
 \item We want to set up a linear system to model the number of good coins and the number of defective coins as time progresses. Introduce variables to keep track of the quantities we are interested in. 
 What is the independent variable and what are the dependent variables? What are the units for each?
 \item What factors in the story affect the number of good coins in circulation? What factors in the story affect the number of bad coins in circulation? Can you express each in terms of the number of good coins / bad coins at a given time?
-\item Express the previous part as a system of differential equations.
+\item Model the previous part with a system of differential equations.
 \item We also need an initial condition. Write it down.
 \end{enumerate}
 
-
-
-Let's do an experiment to test our model. Each coin you've been given represents a million coins. Some represent good coins and some represent bad. Every day, take a third of the coins, and replace the good ones you collected with bad ones. Then take a fifth of the coins, throw away the bad ones you collected, and add back in twice as many of good coins.
-
+\begin{framed}
 \begin{enumerate}
-\item Discuss whether your model for the previous situation is relevant to this experiment. What aspects fit the story well, and what ones don't?
-\item Run the experiment, keeping track of the number of good coins and bad coins each day. How well does your data fit the model? 
+\item Take $x$ to be good coins, $y$ to be bad coins both in millions of coins, and $t$ to be time in weeks.
+\item The good coins going bad subtracts $1/3 x$ worth of coins from $x$ and adds $1/3 x$ worth of coins to $y$ every week on average. The bad coins falling apart and getting replaced subtracts $1/3 y$ worth of coins from $y$ and adds $2/3 y$ worth of coins to $x$ every week on average.
+\item \[ \begin{cases} x' = -\frac{1}{3}x + \frac{2}{3}y \\ y' = \frac{1}{3} x - \frac{1}{3} y\end{cases}.\]
+\item $x(0)=13, y(0)=7$.
 \end{enumerate}
+\end{framed}
 
+Let's do an experiment to test our model. Each coin you've been given represents a million coins. Some represent good coins and some represent bad. Every day, take a third of the coins, replace the good ones you collected with bad ones, throw away the bad ones you collected, and add back in twice as many good coins.
 Now let's solve this.
 
 \begin{enumerate}
 \item Solve the linear system.
-\item Solve the initial value problem. Use your solution to answer the questions we started with.
-\item Draw a phase portrait for the linear system. Use it to address the questions we started with as initial conditions vary.
+\item Solve the initial value problem. Use this to answer the questions we started with.
+%\item Draw a phase portrait for the linear system. Use it to address the questions we started with as initial conditions vary.
 \end{enumerate}
 
+\begin{framed}
+\begin{enumerate}
+\item First we find eigenvalues of $A= \begin{bmatrix} -\frac{1}{3} & \frac{2}{3} \\ \frac{1}{3}  & - \frac{1}{3}\end{bmatrix}$. We have \[ 0 = \det(A-\lambda I) = (-\frac{1}{3} - \lambda)^2 -\frac{1}{3} \cdot \frac{2}{3} = \lambda^2 + \frac{2}{3} \lambda - \frac{1}{9}.\]
+By the quadratic formula, we get $\lambda = \frac{-1 \pm \sqrt{2}}{3}$.
+Plug in $\lambda_1 = \frac{-1 + \sqrt{2}}{3}$ to get the system
+\[ \begin{cases} \frac{-1 + \sqrt{2}}{3}x = -\frac{1}{3}x + \frac{2}{3}y \\ \frac{-1 + \sqrt{2}}{3}y = \frac{1}{3} x - \frac{1}{3} y\end{cases},\]
+which simplifies to one equation $x - \sqrt{2} y = 0$, and $\mathbf{k_1} = \begin{bmatrix} \sqrt{2} \\ 1\end{bmatrix}$ is an corresponding eigenvector. We follow the same process with $\lambda_2 = \frac{-1 - \sqrt{2}}{3}$ and get an eigenvector $\mathbf{k_2} = \begin{bmatrix} -\sqrt{2} \\ 1\end{bmatrix}$. Thus the general solution is
+\[ \mathbf{x} = C_1 e^{ \frac{-1 + \sqrt{2}}{3} \, t} \begin{bmatrix} \sqrt{2} \\ 1\end{bmatrix} + C_2 e^{ \frac{-1 - \sqrt{2}}{3} \, t} \begin{bmatrix} -\sqrt{2} \\ 1\end{bmatrix}.\]
+\item  We plug in the initial conditions to find $C_1$ and $C_2$:
+\[ \begin{cases} 13 = C_1 \sqrt{2} - C_2 \sqrt{2} \\ 7 = C_1 + C_2 \end{cases},\]
+which we solve to get $C_1 = \frac{13}{2\sqrt{2}} + \frac{7}{2}$ and $C_2 = -\frac{13}{2\sqrt{2}} + \frac{7}{2}$.
 
+\end{enumerate}
+\end{framed}
+
+Now consider the linear system
+\[ \begin{cases} x' = -\frac{1}{3} x + \frac{2}{3} y \\ y' = -\frac{1}{3} x + \frac{1}{3} y\end{cases}.\]
+
+
+First devise an experiment with coins to  test what happens with the linear system starting with $x=13$ and $y=7$.
+
+
+Now try to solve the system using our techniques. What do you observe?
+
+\begin{framed}
+The coefficient matrix has imaginary eigenvalues $\pm i\frac{1}{3}$. One can observe that we get periodic solutions with sines and cosines instead of growing or shrinking solutions.
+\end{framed}
 
 
 

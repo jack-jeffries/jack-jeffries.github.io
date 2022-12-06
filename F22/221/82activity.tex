@@ -467,8 +467,8 @@ http:\linebreak[3]//www.\linebreak[3]math.\linebreak[3]uiuc.
 \section*{Discussion Questions}
 
 
-The coins that are used by a country are made of a low quality metal and become defective on a regular basis. Suppose that right now there are 20 million coins in circulation, of which half are defective. Every week, about one third of the good coins in circulation become bad coins, and one fifth of the bad coins fall apart and disappear from circulation.
-To make sure there are enough coins, for every (bad) coin that gets destroyed, it issues a \emph{two} good replacement coins.
+The coins that are used by a country are made of a low quality metal and become defective on a regular basis. Suppose that right now there are 20 million coins in circulation, of which 7 million are defective. Every week, about one third of the good coins in circulation become bad coins, and one third of the bad coins fall apart and disappear from circulation.
+To make sure there are enough coins, for every (bad) coin that gets destroyed, it issues \emph{two} good replacement coins.
 
 The government wants to know: Does the number of bad coins tend to zero? If not, what happens to the ratio of bad coins?
 
@@ -479,7 +479,7 @@ The government wants to know: Does the number of bad coins tend to zero? If not,
 \item We want to set up a linear system to model the number of good coins and the number of defective coins as time progresses. Introduce variables to keep track of the quantities we are interested in. 
 What is the independent variable and what are the dependent variables? What are the units for each?
 \item What factors in the story affect the number of good coins in circulation? What factors in the story affect the number of bad coins in circulation? Can you express each in terms of the number of good coins / bad coins at a given time?
-\item Express the previous part as a system of differential equations.
+\item Model the previous part with a system of differential equations.
 \item We also need an initial condition. Write it down.
 \end{enumerate}
 
@@ -487,7 +487,9 @@ What is the independent variable and what are the dependent variables? What are 
 
 \
 
-Let's do an experiment to test our model. Each coin you've been given represents a million coins. Some represent good coins and some represent bad. Every day, take a third of the coins, and replace the good ones you collected with bad ones. Then take a fifth of the coins, throw away the bad ones you collected, and add back in twice as many of good coins.
+Let's do an experiment to test our model. Each coin you've been given represents a million coins. Some represent good coins and some represent bad. Every day, take a third of the coins, replace the good ones you collected with bad ones, throw away the bad ones you collected, and add back in twice as many good coins.
+
+\
 
 \begin{enumerate}
 \item Discuss whether your model for the previous situation is relevant to this experiment. What aspects fit the story well, and what ones don't?
@@ -500,7 +502,7 @@ Now let's solve this.
 
 \begin{enumerate}
 \item Solve the linear system.
-\item Solve the initial value problem. Use your solution to answer the questions we started with.
+\item Solve the initial value problem. Use this to answer the questions we started with.
 %\item Draw a phase portrait for the linear system. Use it to address the questions we started with as initial conditions vary.
 \end{enumerate}
 
@@ -511,12 +513,12 @@ Now let's solve this.
 \
 
 Now consider the linear system
-\[ \begin{cases} x' = \frac{1}{4} x - \frac{1}{4} y \\ y' = \frac{1}{2} x - \frac{1}{4} y\end{cases}.\]
+\[ \begin{cases} x' = -\frac{1}{3} x + \frac{2}{3} y \\ y' = -\frac{1}{3} x + \frac{1}{3} y\end{cases}.\]
 
 
 \
 
-First use the coins to do an experiment to test what happens with the linear system starting with $x=10$ and $y=10$.
+First devise an experiment with coins to  test what happens with the linear system starting with $x=13$ and $y=7$.
 
 \
 
