@@ -12,6 +12,7 @@
 \usepackage{hyperref}
 
 
+\newcommand{\qbox}{\tag*{$\blacksquare$}}
 %\usepackage[notcite,notref]{showkeys}
  
 %\CompileMatricesx
@@ -430,7 +431,7 @@ $\frac{d}{dx}:R\to R$ by the rule
 The functions $\frac{d}{dx}: A[x] \to A[x]$ and $\frac{d}{dx}: A\llbracket x\rrbracket \to  A\llbracket x\rrbracket$ are $A$-linear derivations.
 \end{lem}
 \begin{proof}
-In either case, we have a well-defined function returning an object of the same type. The formulas are the same in both cases, just allowing infinite formal sums for power series, so we'll deal with both simultaneously. We'll 
+In either case, we have a well-defined function returning an object of the same type. The formulas are the same in both cases, just allowing infinite formal sums for power series, so we'll deal with both simultaneously. 
 
 Take $r= \sum_{j=0} a_j x^j$, $s= \sum_{j=0} b_j x^j$, and $c$ with $a_j,b_j,c\in A$. Then
 \[ \frac{d}{dx} (r+s) = \frac{d}{dx}  (\sum_{j=0} (a_j+b_j) x^j ) = \sum_{j=1} j (a_j+b_j) x^{j-1} = \frac{d}{dx}(r) + \frac{d}{dx}(s),\]
@@ -440,7 +441,8 @@ and
  r\frac{d}{dx}(s) + s \frac{d}{dx}(r) &= (\sum_{i=0} a_i x^i )( \sum_{j=1} j b_j x^{j-1}) + (\sum_{j=0} b_j x^j )( \sum_{i=1} i a_i x^{i-1}) 
  \\ &= \sum_{k=1} \sum_{i+j=k} (a_i j b_j) x^{i+j-1} + \sum_{k=1} \sum_{i+j=k} (i a_i b_j) x^{i+j-1} 
  \\&= \sum_{k=1} \sum_{i+j=k} k a_i b_j x^{i+j-1} 
- \\&= \frac{d}{dx}  (\sum_{k=0} \sum_{i+j=k} (a_ib_j) x^k ) = \frac{d}{dx} (rs).\end{aligned}\]
+ \\&= \frac{d}{dx}  (\sum_{k=0} \sum_{i+j=k} (a_ib_j) x^k ) = \frac{d}{dx} (rs). \qedhere
+\end{aligned}\]
  \end{proof}
  
  Note that we could have written the formula above as $\frac{d}{dx} ( \sum_{j=0}^d a_j x^j) = \sum_{j=1}^d j a_j x^{j-1}$ as well: it looks like we have something illegal when $j=0$, but the coefficient of zero tells us to ignore it.
@@ -479,7 +481,7 @@ Back to our derivative. Take $f,g\in \cC^{\infty}(\R)$ and $c\in \R$. Note that 
 \[  \frac{d}{dx}|_{x=x_0}\ (f+g) = \frac{d}{dx}|_{x=x_0}\ f + \frac{d}{dx}|_{x=x_0} \ g\]
 \[ \frac{d}{dx}|_{x=x_0}\ cf = c \frac{d}{dx}|_{x=x_0}\ f \]
 and by the product rule
-\[ \frac{d}{dx}|_{x=x_0}\ (fg) =  f(0) (\frac{d}{dx}|_{x=x_0} \ g) +  g(0) (\frac{d}{dx}|_{x=x_0} \ f) = f \cdot  (\frac{d}{dx}|_{x=x_0}\ g) + g \cdot (\frac{d}{dx}|_{x=x_0}\ f).\]
+\[ \frac{d}{dx}|_{x=x_0}\ (fg) =  f(x_0) (\frac{d}{dx}|_{x=x_0} \ g) +  g(x_0) (\frac{d}{dx}|_{x=x_0} \ f) = f \cdot  (\frac{d}{dx}|_{x=x_0}\ g) + g \cdot (\frac{d}{dx}|_{x=x_0}\ f).\]
 \end{ex}
 
 \begin{ex}
@@ -587,7 +589,7 @@ $\partial(1)=\partial(1\cdot 1) = 1 \partial(1) + 1 \partial(1) = \partial(1) +\
 \end{enumerate}
 \end{proof}
 
-\begin{rem} It follows that every derivation of $R$ into $M$ is $\Z$-linear since every derivation is linear over its kernel, and its kernel is a subring).
+\begin{rem} It follows that every derivation of $R$ into $M$ is $\Z$-linear since every derivation is linear over its kernel, and its kernel is a subring.
 \end{rem}
 
 There are lots of ways to make derivations out of other derivations.
@@ -629,7 +631,7 @@ is an $A$-linear derivation.
 
 \begin{ex}
 Let's jack this example up.
-Let $A$ be a ring, $R=A[\{X_\lambda \ | \ \lambda\in\Lambda\}]$ a polynomial ring over $A$, and $\{f_\lambda \ | \ \lambda\in \Lambda\}$ a sequence of elements in bijection with the variables
+Let $A$ be a ring, $R=A[X_\lambda \ | \ \lambda\in\Lambda]$ a polynomial ring over $A$, and $\{f_\lambda \ | \ \lambda\in \Lambda\}$ a sequence of elements in bijection with the variables
 then the formal sum
 \[ \sum_{\lambda\in \Lambda} f_\lambda \frac{d}{dX_\lambda} : R\to R\]
 given by $r \mapsto \sum_{\lambda\in\Lambda} f_\lambda \frac{dr}{dX_\lambda}$
@@ -680,7 +682,7 @@ However:
 &= \alpha(r \beta(s)) +\alpha( s\beta(r)) - \beta(r \alpha(s)) -\beta( s \alpha(r)) \\
 &= \alpha(r) \beta(s) + r \alpha \beta(s) + s \alpha\beta(r)  + \alpha(s)\beta(r) - \beta(r) \alpha(s) - r \beta\alpha(s) - \alpha(r)\beta(s) - s \beta\alpha(r)\\
 &=  r \alpha \beta(s) + s \alpha\beta(r)   - r \beta\alpha(s) - s \beta\alpha(r) \\
-&= r (\alpha\beta - \beta \alpha)(s) + s (\alpha\beta - \beta \alpha)(r)
+&= r (\alpha\beta - \beta \alpha)(s) + s (\alpha\beta - \beta \alpha)(r)  \hspace{3.2in}  \qedhere
 \end{aligned}\]
 \end{proof}
 
@@ -690,7 +692,7 @@ We write $[\alpha,\beta]:= \alpha\circ \beta - \beta\circ \alpha$ and call this 
 \begin{itemize}
 \item $[l+m,n] = [l,n]+[m,n]$,
 \item $[rm,n] = r[m,n]$,
-\item $[m,n] = - [n,m]$,
+\item $[m,m] =0$,
 \item $[l,[m,n]] + [m,[n,l]] + [n,[l,m]] =0$.
 \end{itemize}
 \end{defn}
@@ -698,10 +700,17 @@ We write $[\alpha,\beta]:= \alpha\circ \beta - \beta\circ \alpha$ and call this 
 \begin{prop} Let $R$ be an $A$-algebra. The commutator operation endows $\Der_{R|A}(R)$ with the structure of a Lie algebra.
 \end{prop}
 \begin{proof}
-
+The first two conditions are straightforward and easy to believe; the third even more so. The fourth is called the Jacobi identity, which follows from associativity of composition: To avoid foiling all these out, note that each term is a triple involving $l,m,n$. The expression above is stable under the permutation $l\mapsto m\mapsto n\mapsto l$, so it suffices to check that the triples $lmn$ and $lnm$ appear a cancelling number of times. Indeed, $lmn$ appears with $+1$ from the first and $-1$ from the second and $lnm$ appears with $-1$ from the first and $+1$ from the second.
 \end{proof}
 
 \ssec{Derivations and ideals}
+
+\begin{prop} Let $R$ be a ring, and $I$ an ideal. Let $\partial:R\to M$ be a derivation. Then $\partial(I^n) \subseteq I^{n-1}M$ for all $n\in \N$.
+\end{prop}
+\begin{proof}
+We proceed by induction on $n$, with $n=1$ trivial. Given $r\in I^n$, write $r=\sum_i a_i b_i$ with $a_i\in I^{n-1}$ and $b_i\in I$. Then \[\partial(r) = \sum_i \partial(a_i b_i) = \sum_i a_i \partial(b_i) + \sum_i b_i \partial(a_i).\]
+Clearly $a_i \partial(b_i)\in I^{n-1} M$, and by the induction hypothesis $\partial(a_i)\in I^{n-2}M$, so $b_i \partial(a_i)\in I^{n-1}M$.
+\end{proof}
 
 \ssec{Left-exact sequences}
 
