@@ -485,7 +485,7 @@ and by the product rule
 \[ \frac{d}{dx}|_{x=x_0}\ (fg) =  f(x_0) (\frac{d}{dx}|_{x=x_0} \ g) +  g(x_0) (\frac{d}{dx}|_{x=x_0} \ f) = f \cdot  (\frac{d}{dx}|_{x=x_0}\ g) + g \cdot (\frac{d}{dx}|_{x=x_0}\ f).\]
 \end{ex}
 
-\begin{comment}
+%\begin{comment}
 
 \begin{ex}
 Other natural uses of derivatives actually take values in modules rather than the ring itself.
@@ -597,18 +597,21 @@ $\partial(1)=\partial(1\cdot 1) = 1 \partial(1) + 1 \partial(1) = \partial(1) +\
 
 There are lots of ways to make derivations out of other derivations.
 
-\begin{prop} Let $\alpha,\beta:R\to M$ be derivations over $A$, $t\in R$, and $\gamma:M\to N$ be an $R$-module homomorphism.
+\begin{prop} Let $\alpha,\beta:R\to M$ be derivations over $A$, $t\in R$, and $\gamma:M\to N$ be an $R$-module homomorphism, and $\phi:S\to R$ an $A$-algebra homomorphism.
 \begin{enumerate}
 \item $\alpha+\beta:R\to M$ is a derivation over $A$,
 \item $t\alpha:R\to M$ is a derivation over $A$,
 \item $\gamma\circ \alpha:R\to N$ is a derivation over $A$.
+\item $\alpha\circ \phi:S\to M$ is a derivation over $A$.
 \end{enumerate}
 \end{prop}
 \begin{proof} In each case, the map under consideration is definitely $A$-linear, so we just need to check the product rule.
 \begin{enumerate}
 \item $(\alpha+\beta)(rs) =\alpha(rs) + \beta(rs) = r\alpha(s) + s\alpha(r) + r\beta(s)+s\beta(r) =r(\alpha+\beta)(s) + s(\alpha+\beta)(r)$;
 \item $t\alpha(rs) = t(r\alpha(s) + s\alpha(r)) = r(t\alpha(s)) + s(t\alpha(r))$;
-\item $(\gamma\circ \alpha)(rs)= \gamma((r\alpha(s) + s\alpha(r))= r\gamma\circ\alpha(s) + s\gamma\circ\alpha(r)$.\qedhere
+\item $(\gamma\circ \alpha)(rs)= \gamma((r\alpha(s) + s\alpha(r))= r\gamma\circ\alpha(s) + s\gamma\circ\alpha(r)$.
+\item $(\alpha\circ \phi)(rs) = \alpha( \phi(r) \phi(s) ) = \phi(s) \alpha(\phi(r)) + \phi(r) \alpha(\phi(s)) = s (\alpha\circ \phi)(r) + r (\alpha\circ \phi)(s)$, where the last equality is just recalling that $M$ is a module by restriction of scalars.
+\qedhere
 \end{enumerate}
 \end{proof}
 
