@@ -410,6 +410,8 @@ If $R$ is an $A$-algebra, then $\partial$ is a \emph{derivation over $A$}\index{
 \end{itemize}
 \end{defn}
 
+
+
 \begin{rem} Recall that $R$ is an $A$-algebra means that $R$ is equipped with a ring homomorphism $\phi:A\to R$. In this case, every $R$-module is also an $A$-module by restriction of scalars: $a  m := \phi(a) m$; i.e., for $A$ to act on $M$, just view elements of $A$ as elements of $R$ via $\phi$ and do the same action. This is what's going on in the right-hand side above. We'll circle back to restriction of scalars soon.
 \end{rem}
 
@@ -427,6 +429,7 @@ Similarly, for a power series ring, $R= A\llbracket x\rrbracket$, we define
 $\frac{d}{dx}:R\to R$ by the rule
 \[ \frac{d}{dx} ( \sum_{j=0}^\infty a_j x^j) = \sum_{j=1}^\infty j a_j x^{j-1}.\]
 \end{defn}
+
 
 \begin{lem}
 The functions $\frac{d}{dx}: A[x] \to A[x]$ and $\frac{d}{dx}: A\llbracket x\rrbracket \to  A\llbracket x\rrbracket$ are $A$-linear derivations.
@@ -446,6 +449,9 @@ and
 \end{aligned}\]
  \end{proof}
  
+
+
+ 
  Note that we could have written the formula above as $\frac{d}{dx} ( \sum_{j=0}^d a_j x^j) = \sum_{j=1}^d j a_j x^{j-1}$ as well: it looks like we have something illegal when $j=0$, but the coefficient of zero tells us to ignore it.
 
 \begin{prop}
@@ -456,6 +462,8 @@ are $A$-linear derivations. Similarly for the power series ring $R=A\llbracket X
 \begin{proof}
 Consider $R$ as $R'[X_\lambda]$, with $R'=A[X_\mu \ | \ \mu\in \Lambda\smallsetminus \{\lambda\}]$. Then $\frac{d}{d X_\lambda}$ is just the ``usual derivative'' in this polynomial ring over $R'$, so it is an $R'$-linear derivation of $R$. But since $A\subseteq R'$, this is an $A$-linear derivation as well.
 \end{proof}
+
+
 
 So we can differentiate over any polynomial ring now, e.g., over $R=\F_2[x]$. Let's not neglect our original derivatives.
 
@@ -485,12 +493,12 @@ and by the product rule
 \[ \frac{d}{dx}|_{x=x_0}\ (fg) =  f(x_0) (\frac{d}{dx}|_{x=x_0} \ g) +  g(x_0) (\frac{d}{dx}|_{x=x_0} \ f) = f \cdot  (\frac{d}{dx}|_{x=x_0}\ g) + g \cdot (\frac{d}{dx}|_{x=x_0}\ f).\]
 \end{ex}
 
-%\begin{comment}
+
 
 \begin{ex}
 Other natural uses of derivatives actually take values in modules rather than the ring itself.
 Let's consider $R=\cC^\infty(\R^3)$, the ring of infinitely differentiable real valued functions from $\R^3$ to $\R$, with pointwise operations. One has a notion of gradient $\nabla$ of a function:
-\[ f(x,y,z) \mapsto \begin{bmatrix} \frac{\partial f}{\partial x} \\ \frac{\partial f}{\partial y} \\ \frac{\partial f}{\partial z} \end{bmatrix}.\]
+\[ f(x,y,z) \mapsto \begin{bmatrix} \frac{\partial f}{\partial x} & \frac{\partial f}{\partial y} & \frac{\partial f}{\partial z} \end{bmatrix}.\]
 The output is a vector of three functions in $R$, so this is a function $\nabla:R\to R^3$.
 It follows from calculus that this is an $\R$-linear derivation.
 
@@ -499,7 +507,12 @@ Similarly, one sometimes talks about the \emph{total derivative}\index{total der
 This rule $f\mapsto df$ is a derivation from $R$ to a free $R$-module with basis $dx,dy,dz$.
 \end{ex}
 
-\begin{ex} Let's try out a slightly more interesting ring. Let's consider $R=\C[x,y]/(x^2-y^3)$ and try out $\frac{d}{dx}$ on this ring. Of course, this is a quotient ring, so if this means anything, it means apply this rule to an equivalence class and take the class of the result. But this is a problem, since $0 = x^2+y^3$ and $\frac{d}{dx}(0) = 0 \neq 2x = \frac{d}{dx}(x^2+y^3)$. So this derivation doesn't even make sense, and in hindsight, perhaps it looks a little bit silly to try. But we can actually get by with something surprisingly similar. Let's write $\frac{d}{dx}|_{(0,0)}$ for the rule
+
+
+\begin{ex} Let's try out a slightly more interesting ring. Let's consider $R=\C[x,y]/(x^2-y^3)$ and try out $\frac{d}{dx}$ on this ring. Of course, this is a quotient ring, so if this means anything, 
+it means apply this rule to an equivalence class and take the class of the result. But this is a problem, since $0 = x^2+y^3$ and $\frac{d}{dx}(0) = 0 \neq 2x = \frac{d}{dx}(x^2+y^3)$. So this 
+derivation doesn't even make sense, and in hindsight, perhaps it looks a little bit silly to try. 
+But we can actually get by with something surprisingly similar. Let's write $\frac{d}{dx}|_{(0,0)}$ for the rule
 \[ \frac{d}{dx}|_{(0,0)} (f) = \frac{d}{dx}(f) (0,0);\]
 i.e., partial derivative with respect to $x$ at the origin. It is in fact well-defined:
 we have 
@@ -509,8 +522,11 @@ we have
 and, along the same lines as previous examples, is a $\C$-linear derivation to $\C$, viewed as a module via the rule $f\cdot c= f(0,0) c$.
 \end{ex}
 
+
 \begin{ex} Let's end with a boring example. For any $A$-algebra $R$ and any $R$-module $M$, the zero map is an $A$-linear derivation from $R$ to $M$.
 \end{ex}
+
+
 
 \ssec{Quick review of affine varieties}
 
@@ -543,6 +559,7 @@ Note the corner at $(0,0)$; we will see later that this has something to do with
 \end{ex}
 
 
+
 \begin{ex} This business about maps of varieties going the wrong way is a bit disorienting. Let's try a couple of examples of this.
 \begin{itemize}
 \item Given a (radical) ideal $I \subset S=\C[x_1,\dots,x_n]$, the quotient map $S\to S/I$ is given by sending $x_i\mapsto x_i$, so the corresponding map of varieties $V(I)\to \C^n$ is just the inclusion map.
@@ -550,10 +567,12 @@ Note the corner at $(0,0)$; we will see later that this has something to do with
 \end{itemize}
 \end{ex}
 
-
 One important thing that is \emph{not} included in this correspondence is the usual \emph{Euclidean}\index{Euclidean} topology on $\C^n$ or a subset $X\subseteq \C^n$ with an open basis given by $B_\varepsilon(a) = \{ x \ | \ |x-a|<\varepsilon\}$ with the usual norm $|\cdot |$. We have the \emph{Zariski} topology\index{Zariski} in which the closed sets are subvarieties, but this has no knowledge of what things are close in the Euclidean sense. 
 
 The magic making this all work out so nicely is the Nullstellensatz, which guarantees that maximal ideals of $\C[X]$ all correspond to points of $X$. In general, we just take the (instead of maximal) prime ideals to be our points and work from there.
+
+
+
 
 \begin{center}
 \begin{tabular}{c|c}
@@ -568,6 +587,7 @@ $\phi$ & $\fq \mapsto \phi^{-1}(\fq)$
 \end{center}
 
 Whereas the correspondence between varieties and reduced f.g. $\C$-algebras was bijective above, the correspondence between rings and their spectra as topological spaces is far from: in particular, every field $K$ has $\Spec(K)$ a singleton. 
+
 
 
 \ssec{Properties of derivations}
@@ -659,7 +679,7 @@ and likewise for $\beta$. By the starting assumption, $\alpha(f_{\lambda_1}) = \
 \end{proof}
 
 \begin{thm}
-Let $A$ be a ring and $R=A[\{X_\lambda \ | \ \lambda\in\Lambda\}]$ be a polynomial ring over $A$. For any $R$-module $M$, the map
+Let $A$ be a ring and $R=A[X_\lambda \ | \ \lambda\in\Lambda]$ be a polynomial ring over $A$. For any $R$-module $M$, the map
 \[\xymatrix@R=0pc{ \prod_{\Lambda} M \ar[r]^-{\mu} & \Der_{R|A}(M) \\ 
 (m_\lambda)_\lambda \ar@{|->}[r] &  \sum m_\lambda \frac{d}{dX_\lambda}
 }\]
@@ -723,25 +743,96 @@ It follows that every $A$-linear derivation $\partial: R\to M$ gives rise, by re
 Viewing $\Hom_{A}(I/I^2,M/IM)$ as an $R$-module by postmultiplication, this is $R$-linear.
 
 
-\begin{ex} Let's examine this in the case of finitely generated $\C$-algebra $R$ and a maximal ideal $\fm$. 
-Let's compute $\Der_{R|K}(R/\fm)$. Note that $R/\fm\cong \C$ as a $\C$-vector space; we'll just call it $\C$ now.
 
-We $R=K[x_1,\dots,x_n]/I$, and $\fm=(x_1-a_1,\dots,x_n-a_n)$ for some $a_i\in K$; set $\widetilde{x_i} = x_i-a_i$. These generate $R$ as a $K$-algebra (since we can get the $x$'s back from them). Thus, the map
-\[  \Der_{R|A}(\C) \xra{\res} \Hom_{A}(\fm/\fm^2,\C) \]
-is injective: the values on the elements on $\fm/\fm^2$ uniquely determine the derivation.
 
-In fact, this map is surjective as well. To see it, take a $\C$-basis $v_1,\dots,v_m$ for $\fm/\fm^2$; then $1,v_1,\dots,v_m$ is a basis for $R/\fm^2$, and $v_i v_j=0$ for all $i,j$. Define the map 
-\[\partial_i( \lambda_0 + \sum_j \lambda_j v_j) = \lambda_i;\]
+\begin{ex} Consider $R=\C[x_1,\dots,x_n]$ and $\fm$ maximal. We have the restriction map
+\[ \Der_{R|\C}(R/\fm) \xra{\res} \Hom_{\C}(\fm/\fm^2,R/\fm) =(\fm/\fm^2)^*, \]
+where $(-)^*$ denotes $\C$-linear dual. The map is an isomorphism! To see it, note that $\fm=(x_1-a_1,\dots,x_n-a_n)$ for some vector $a$. Write $\widetilde{x_i}=x_i-a_i$. After a change of coordinates, we can consider $R$ as a polynomial ring in the $\widetilde{x_i}$'s. Then $\fm/\fm^2$ is a vector space with basis given by the classes of the $\widetilde{x_i}$'s.  By our proposition on derivations on polynomial rings, for any $n$-tuple of elements in $R/\fm\cong \C$, there is a unique derivation sending the corresponding variables there. That's what it means for the restriction to be an isomorphism! Concretely, the map
+\[ \sum_i \lambda_i \widetilde{x_i}^* \mapsto \sum_i \lambda_i \frac{d}{dx_i}|_{x=a} \]
+is an inverse.
+\end{ex}
+
+The last example generalizes quite nicely, and to varying degrees.
+
+\begin{ex} Let $R$ be any finitely generated $\C$-algebra, and  $\fm$ be a maximal ideal.
+Let's compute $\Der_{R|K}(R/\fm)$. 
+
+We $R=K[x_1,\dots,x_n]/I$, and $\fm=(x_1-a_1,\dots,x_n-a_n)$ for some $a_i\in \C$; set $\widetilde{x_i} = x_i-a_i$; these generate $R$ as a $\C$-algebra (since we can get the $x$'s back from them). Thus, the map
+\[  \Der_{R|A}(\C) \xra{\res} \Hom_{\C}(\fm/\fm^2,R/\fm)=(\fm/\fm^2)^* \]
+is injective: the values on the elements on $\widetilde{x_i}$ uniquely determine the derivation.
+
+In fact, this map is surjective as well. To see it, take a $\C$-basis for $\fm/\fm^2$; without loss of generality we can take $\widetilde{x_1},\dots,\widetilde{x_m}$. then $1,\widetilde{x_1},\dots,\widetilde{x_m}$ is a basis for $R/\fm^2$, and $\widetilde{x_i} \widetilde{x_j}=0$ for all $i,j$. For any element of $R$ we can uniquely write 
+\[f= \lambda_0 + \sum_{i=1}^m \lambda_i \widetilde{x_i} + \xi \]
+with $\xi\in \fm^2$.
+Define the map 
+\[\partial_i( \lambda_0 + \sum_j \lambda_j v_j + \xi ) = \lambda_i;\]
 this is definitely $\C$-linear, and
-\[\begin{aligned} \partial_i( (\lambda_0 + \sum_j \lambda_j v_j) (\mu_0 + \sum_j \mu_j v_j)) &= \partial_i ( \lambda_0 \mu + \sum_j ( \lambda_0 \mu_j + \mu_0 \lambda_j) v_j ) \\& = \lambda_0 \mu_i + \mu_0 \lambda_i\\&= (\lambda_0 + \sum_j \lambda_j v_j) \cdot \partial_i( (\mu_0 + \sum_j \mu_j v_j) + (\mu_0 + \sum_j \mu_j v_j) \cdot \partial_i( (\lambda_0 + \sum_j \lambda_j v_j).\end{aligned}\]
+\[\begin{aligned} \partial_i( (\lambda_0 &+ \sum_j \lambda_j v_j + \xi ) (\mu_0 + \sum_j \mu_j v_j + \xi' )) = \partial_i ( \lambda_0 \mu + \sum_j ( \lambda_0 \mu_j + \mu_0 \lambda_j) v_j + \xi'') \\& = \lambda_0 \mu_i + \mu_0 \lambda_i\\&= (\lambda_0 + \sum_j \lambda_j v_j+\xi) \cdot \partial_i( (\mu_0 + \sum_j \mu_j v_j+ \xi' ))+ (\mu_0 + \sum_j \mu_j v_j+\xi') \cdot \partial_i( (\lambda_0 + \sum_j \lambda_j v_j+\xi).\end{aligned}\]
 But $\res(\partial_1),\dots,\res(\partial_m)$ form the dual basis for $v_1,\dots,v_m$, so this is surjective.
 \end{ex}
 
 
-\sssec{Tangent spaces of affine varieties}
+\sssec{Tangent spaces of varieties}
+
+Let's get to the bottom of this corner business while we're at it. Let's define the \emph{tangent space} of an affine variety $X$ at a point $a$, $T_{a}(X)$. For starters, the tangent space of affine space $\C^n$ at a point $a$ will be the vector space $\C^n$, thought of as centered at $a$. 
+
+\begin{center}
+\includegraphics[scale=.4]{tang1}
+\end{center}
+
+We can recenter our coordinates there as $\widetilde{x_j}:=x_j-a_j$. Now, given a variety $X=V(f_1,\dots,f_m)$, for each $f_i$ we look at its \emph{linear part}\index{linear part} near $a$: we can take its Taylor expansion at $a$
+\[ f_i = f_i(a) + \sum_j \frac{d}{dx_j}|_{x=a}(f_i) (x_j-a_j) + \mathrm{higher \ order \ terms} \ . \]
+Since $a\in X$, $f_i(a)=0$, and we have
+\[ f_i = \sum_j \frac{d}{dx_j}|_{x=a}(f_i) \widetilde{x_j} + \mathrm{higher\  order\  terms} \ ,\]
+so the linear part of $f$ is given by the linear equation $\nabla(f_i)|_{x=a} \cdot \widetilde{x}=0$. Then we take $T_{a}(X)$ to be the linear subspace of $T_a(\C^n)$ cut out by the linear equations $\nabla(f_1)|_{x=a},\dots,\nabla(f_m)|_{x=a}$. In particular, $T_a(\C^n)$ is the kernel of the \emph{Jacobian matrix}\index{Jacobian matrix}
+\[ J(f_1,\dots,f_m)|_{x=a} = \begin{bmatrix} \frac{d}{dx_1}|_{x=a} (f_1)& \cdots & \frac{d}{dx_n}|_{x=a} (f_1) \\ 
+\vdots & \ddots & \vdots \\
+\frac{d}{dx_1}|_{x=a} (f_m)& \cdots & \frac{d}{dx_n}|_{x=a} (f_m) \end{bmatrix},\]
+whose rows are the gradient vectors.
 
 
+\begin{ex}
+Take the parabola $X=V(y - (x-1)^2 -2)$. To compute the tangent space at $a=(1,2)$, take the gradient at $(1,2)$, which is $\begin{bmatrix} -2(x-1) \\ 0\end{bmatrix} |_{(1,2)} =\begin{bmatrix} 0 \\ 1 \end{bmatrix}$, so the defining equation is $\widetilde{y}=0$.
+\end{ex}
 
+\begin{center}
+\includegraphics[scale=.4]{tang2}
+\end{center}
+
+\begin{ex}
+Take the curve $X=V(y^2 - x^3)$. To compute the tangent space at $a=(0,0)$, take the gradient at $(0,0)$, which is $\begin{bmatrix} -3x^2 \\ 2y \end{bmatrix} |_{(0,0)} =\begin{bmatrix} 0 \\ 0  \end{bmatrix}$, so the defining equation is the zero equation. Thus, the tangent space is all of $T_{a}(\C^2)$.
+\end{ex}
+
+\begin{center}
+\includegraphics[scale=.4]{tang3}
+\end{center}
+
+We want to understand this tangent space in terms of the algebra of the coordinate ring. Here's how.
+
+\begin{prop}
+Let $X = V(I)$ be a complex affine variety (with $I$ reduced) and $a\in X$. Let $R=\C[x_1,\dots,x_n]/I$ be the coordinate ring of $X$ and $\fm$ the corresponding maximal ideal. Then there is a $\C$-vector space isomorphism $(\fm/\fm^2)^*\cong T_a(X)$, where $(-)^*$ denotes $\C$-vector space dual.
+\end{prop}
+\begin{proof} Let $S=\C[x_1,\dots,x_n]$ and $\fn$ be the preimage of $\fm$. Set $\widetilde{x_j} = x_j-a_j$; these are the generators of $\fn$. 
+Then  the images of the $\widetilde{x_j}$ form a vector space for $\fn/\fn^2$; we have essentially defined $T_a(\C^n)$ as the $\C$-vector space with coordinates $\widetilde{x_j}$; i.e., the dual space to $\fn/\fn^2$. So $T_a(\C^n)\cong (\fn/\fn^2)^*$.
+
+By some standard isomorphism theorems, we can identify $\fm/\fm^2 \cong \fn / (\fn^2+I)$: namely,
+\[ \frac{\fm}{\fm^2} \cong \frac{\fn/I}{(\fn^2 + I)/I} \cong \frac{\fn}{\fn^2+I}.\]
+So 
+\[ \dim_{\C}(\fm/\fm^2) = n - \dim_{\C}(  \frac{\fn}{\fn^2+I} ) = n- \dim_{\C}( \mathrm{im}\ I \to \frac{\fn}{\fn^2}).\]
+Given an element $f\in I$, as above we write
+\[f = \sum_j \frac{d}{dx_j}|_{x=a}(f_i) \widetilde{x_j} + \mathrm{higher\  order\  terms} \]
+so the image of $f$ is in $\fn/\fn^2$ is $\nabla_{x=a}(f_i)  \underline{\widetilde{x}}$. Thus, the dimension of the image of $I$ is the rank of the transpose of the Jacobian matrix. By rank nullity, the dimension of $\fm/\fm^2$ is the same as the dimension of the kernel of the Jacobian matrix, which is just the dimension of $T_a(X)$.
+\end{proof}
+
+We say that a variety $X$ is \emph{nonsingular} at $a$ if $\dim_\C T_a(X) = \dim_a X$, and \emph{singular}\index{singular}\index{nonsingular} otherwise (in which case ``$>$'' happens).
+
+\begin{cor} Let $R=\C[X]$ be the coordinate ring of an affine variety and $a\in X$ with associated maximal ideal $\fm$. Then there is an isomorphism $\Der_{R|\C}(R/\fm) \cong T_a(X)$.
+\end{cor}
+
+This description of the tangent space of a variety like so is useful; in fact, in many situations, one defines the tangent space to an object by using derivations! Clearly this has some advantages as it naturally arises from $X$ rather than thinking about $X$ inside of $\C^n$ cut out by some equations.
+
+
+Motivated by the geometric case, for a local ring $(R,\fm,k)$ we define $\fm/\fm^2$ to be the \emph{cotangent space}\index{cotangent space} and $\Hom_k(\fm/\fm^2,k)$ to be the \emph{tangent space}\index{tangent space} of $R$. We say that $R$ is a \emph{regular local ring}\index{regular ring} $\dim(R) = \dim_k(\fm/\fm^2)$.
 
 
 \ssec{Left-exact sequences}
