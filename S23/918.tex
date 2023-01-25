@@ -712,6 +712,32 @@ We proceed by induction on $n$, with $n=1$ trivial. Given $r\in I^n$, write $r=\
 Clearly $a_i \partial(b_i)\in I^{n-1} M$, and by the induction hypothesis $\partial(a_i)\in I^{n-2}M$, so $b_i \partial(a_i)\in I^{n-1}M$.
 \end{proof}
 
+It follows that every $A$-linear derivation $\partial: R\to M$ gives rise, by restriction/quotient, to a well-defined $A$-linear map $\overline{\partial}: I^n/I^{n+1} \to I^{n-1}M / I^{n}M$, and in particular $\overline{\partial}: I/I^2 \to M / IM$. That is, we get a map
+\[ \Der_{R|A}(M) \xra{\res} \Hom_{A}(I/I^2,M/IM). \]
+Viewing $\Hom_{A}(I/I^2,M/IM)$ as an $R$-module by postmultiplication, this is $R$-linear.
+
+
+\begin{ex} Let's examine this in the case of finitely generated $\C$-algebra $R$ and a maximal ideal $\fm$. 
+Let's compute $\Der_{R|K}(R/\fm)$. Note that $R/\fm\cong \C$ as a $\C$-vector space; we'll just call it $\C$ now.
+
+We $R=K[x_1,\dots,x_n]/I$, and $\fm=(x_1-a_1,\dots,x_n-a_n)$ for some $a_i\in K$; set $\widetilde{x_i} = x_i-a_i$. These generate $R$ as a $K$-algebra (since we can get the $x$'s back from them). Thus, the map
+\[  \Der_{R|A}(\C) \xra{\res} \Hom_{A}(\fm/\fm^2,\C) \]
+is injective: the values on the elements on $\fm/\fm^2$ uniquely determine the derivation.
+
+In fact, this map is surjective as well. To see it, take a $\C$-basis $v_1,\dots,v_m$ for $\fm/\fm^2$; then $1,v_1,\dots,v_m$ is a basis for $R/\fm^2$, and $v_i v_j=0$ for all $i,j$. Define the map 
+\[\partial_i( \lambda_0 + \sum_j \lambda_j v_j) = \lambda_i;\]
+this is definitely $\C$-linear, and
+\[\begin{aligned} \partial_i( (\lambda_0 + \sum_j \lambda_j v_j) (\mu_0 + \sum_j \mu_j v_j)) &= \partial_i ( \lambda_0 \mu + \sum_j ( \lambda_0 \mu_j + \mu_0 \lambda_j) v_j ) \\& = \lambda_0 \mu_i + \mu_0 \lambda_i\\&= (\lambda_0 + \sum_j \lambda_j v_j) \cdot \partial_i( (\mu_0 + \sum_j \mu_j v_j) + (\mu_0 + \sum_j \mu_j v_j) \cdot \partial_i( (\lambda_0 + \sum_j \lambda_j v_j).\end{aligned}\]
+But $\res(\partial_1),\dots,\res(\partial_m)$ form the dual basis for $v_1,\dots,v_m$, so this is surjective.
+\end{ex}
+
+
+\sssec{Tangent spaces of affine varieties}
+
+
+
+
+
 \ssec{Left-exact sequences}
 
 \ssec{Restriction and extension of scalars}
