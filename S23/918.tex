@@ -374,6 +374,8 @@
 
 \sec{Derivations}
 
+\ssec{Definition and first examples}
+
 Our goal will be to consider derivatives algebraically.
 
 The usual notion of derivative of a function is a rule that turns certain real-valued or complex-valued functions into other real-valued or complex-valued functions as follows: at a given point $x$, we take
@@ -630,8 +632,104 @@ Consider the map $\nu:\Der_{R|A}(M) \to \prod_{\Lambda} M$ given by $\alpha\maps
 Thus, $\mu$ is injective. Then $\mu$ must be an isomorphism. Indeed, $\nu = (\nu  \mu) \nu = \nu (\mu \nu)$ and $\nu$ injective implies $\mu \nu$ is the identity as well.
 \end{proof}
 
-\begin{comment}
+\Jan{31}
 
+\sssec{Lie algebra structure on $\Der_{R|A}(R)$}
+
+Even more than a module, there is extra structure on $\Der_{R|A}(R)$. Any two elements of $\Der_{R|A}(R)$ have the same source and target, so we can compose them. The result is essentially never a derivation though.
+
+\begin{ex} In $\C[x]$, 
+\[ \frac{d^2}{dx^2}(x\cdot x) = 2 \neq 0 = x \frac{d^2}{dx^2}(x) + x \frac{d^2}{dx^2}(x).\]
+\end{ex}
+
+However:
+
+\begin{prop} Let $R$ be an $A$-algebra, and $\alpha,\beta\in \Der_{R|A}(R)$. Then the map $\alpha\circ \beta - \beta\circ \alpha:R\to R$ is an $A$-linear derivation.
+\end{prop}
+\begin{proof} $A$-linearity follows since we have linear combinations or compositions of $A$-linear maps. Given $r,s\in R$,
+\[\begin{aligned} (\alpha\beta - \beta \alpha)(rs) &= \alpha(r \beta(s) + s\beta(r)) - \beta(r \alpha(s) + s \alpha(r))\\
+&= \alpha(r \beta(s)) +\alpha( s\beta(r)) - \beta(r \alpha(s)) -\beta( s \alpha(r)) \\
+&= \alpha(r) \beta(s) + r \alpha \beta(s) + s \alpha\beta(r)  + \alpha(s)\beta(r) - \beta(r) \alpha(s) - r \beta\alpha(s) - \alpha(r)\beta(s) - s \beta\alpha(r)\\
+&=  r \alpha \beta(s) + s \alpha\beta(r)   - r \beta\alpha(s) - s \beta\alpha(r) \\
+&= r (\alpha\beta - \beta \alpha)(s) + s (\alpha\beta - \beta \alpha)(r)  \hspace{3.2in}  \qedhere
+\end{aligned}\]
+\end{proof}
+
+We write $[\alpha,\beta]:= \alpha\circ \beta - \beta\circ \alpha$ and call this the \emph{commutator} of $\alpha$ and $\beta$.\index{commutator}\index{$[\alpha,\beta]$} This operation isn't a product operation for a ring (we will see soon that it's not associative), but it gives the structure of a \emph{Lie algebra}.
+
+\begin{defn} A \emph{Lie algebra}\index{Lie algebra} over a ring $R$ is an $R$-module $M$ equipped with an operation $[ - , - ]: M\times M \to M$ such that, for all $l,m,n\in M$ and $r\in R$:
+\begin{itemize}
+\item $[l+m,n] = [l,n]+[m,n]$,
+\item $[rm,n] = r[m,n]$,
+\item $[m,m] =0$,
+\item $[l,[m,n]] + [m,[n,l]] + [n,[l,m]] =0$.
+\end{itemize}
+\end{defn}
+
+\begin{prop} Let $R$ be an $A$-algebra. The commutator operation endows $\Der_{R|A}(R)$ with the structure of a Lie algebra.
+\end{prop}
+\begin{proof}
+The first two conditions are straightforward and easy to believe; the third even more so. The fourth is called the Jacobi identity, which follows from associativity of composition: To avoid foiling all these out, note that each term is a triple involving $l,m,n$. The expression above is stable under the permutation $l\mapsto m\mapsto n\mapsto l$, so it suffices to check that the triples $lmn$ and $lnm$ appear a cancelling number of times. Indeed, $lmn$ appears with $+1$ from the first and $-1$ from the second and $lnm$ appears with $-1$ from the first and $+1$ from the second.
+\end{proof}
+
+\ssec{Derivations and ideals}
+
+\begin{prop} Let $R$ be a ring, and $I$ an ideal. Let $\partial:R\to M$ be a derivation. Then $\partial(I^n) \subseteq I^{n-1}M$ for all $n\in \N$.
+\end{prop}
+\begin{proof}
+We proceed by induction on $n$, with $n=1$ trivial. Given $r\in I^n$, write $r=\sum_i a_i b_i$ with $a_i\in I^{n-1}$ and $b_i\in I$. Then \[\partial(r) = \sum_i \partial(a_i b_i) = \sum_i a_i \partial(b_i) + \sum_i b_i \partial(a_i).\]
+Clearly $a_i \partial(b_i)\in I^{n-1} M$, and by the induction hypothesis $\partial(a_i)\in I^{n-2}M$, so $b_i \partial(a_i)\in I^{n-1}M$.
+\end{proof}
+
+It follows that every $A$-linear derivation $\partial: R\to M$ gives rise, by restriction/quotient, to a well-defined $A$-linear map $\overline{\partial}: I^n/I^{n+1} \to I^{n-1}M / I^{n}M$, and in particular $\overline{\partial}: I/I^2 \to M / IM$. 
+
+\begin{prop}
+Let $R$ be an $A$-algebra, $I$ an ideal, and $M$ an $R$-module. If $IM=0$, then
+there is an isomorphism
+\[ \Der_{R|A}(M) \to \Der_{R/I^2|A}(M)\]
+and a well-defined map
+\[ \Der_{R|A}(M) \to \Hom_A(I/I^2,M)\]
+induced by restriction.
+\end{prop}
+
+\begin{ex} Consider $R=\C[x_1,\dots,x_n]$ and $\fm$ maximal. We have the restriction map
+\[ \Der_{R|\C}(R/\fm) \xra{\res} \Hom_{\C}(\fm/\fm^2,R/\fm) =(\fm/\fm^2)^*, \]
+where $(-)^*$ denotes $\C$-linear dual. The map is an isomorphism! To see it, note that $\fm=(x_1-a_1,\dots,x_n-a_n)$ for some vector $a$. Write $\widetilde{x_i}=x_i-a_i$. After a change of coordinates, we can consider $R$ as a polynomial ring in the $\widetilde{x_i}$'s. Then $\fm/\fm^2$ is a vector space with basis given by the classes of the $\widetilde{x_i}$'s.  By our proposition on derivations on polynomial rings, for any $n$-tuple of elements in $R/\fm\cong \C$, there is a unique derivation sending the corresponding variables there. That's what it means for the restriction to be an isomorphism! Concretely, the map
+\[ \sum_i \lambda_i \widetilde{x_i}^* \mapsto \sum_i \lambda_i \frac{d}{dx_i}|_{x=a} \]
+is an inverse.
+\end{ex}
+
+We actually don't need the extremely strong hypothesis of polynomial ring in the last example. Let's party hard and figure out when, for a module with $IM=0$, the map
+\[ \Der_{R/I^2|A}(M) \to \Hom_A(I/I^2,M)\]
+is surjective (i.e., every homomorphism from bonus parts extends to a derivation).
+A reasonable starting point is to take $M$ to be $I/I^2$, which is the part of the ring $R/I^2$ itself that is definitely killed by $I$.
+
+\begin{thm} Let $R$ be an $A$-algebra and $I$ an ideal. Then an $A$-linear map $\alpha: R/I^2 \to I/I^2$ is an $A$-linear derivation if and only if the map 
+\[ \xymatrix@R=0pc{ R/I^2 \ar[r]^-{1+\alpha} &  R/I^2 \\ r \ar@{|->}[r]& r + \alpha(r) }\]
+is an $A$-algebra homomorphism.
+\end{thm}
+\begin{proof}
+We observe that the map $1+\alpha$ is a sum of $A$-module homomorphisms, and hence $A$-linear. We just need to check that the product rule for $\alpha$ lines up with $1+\alpha$ respecting multiplication. If $\alpha$ is a derivation, then
+\[\begin{aligned} (1+\alpha)(rs) &= rs + \alpha(rs) =  rs + r \alpha(s) + s \alpha(r) = rs + r \alpha(s) + s \alpha(r) +\alpha(r)\alpha(s) \\&= (r+\alpha(r))(s+\alpha(s)) = (1+\alpha)(r) (1+\alpha)(s)\end{aligned}\]
+where we used that $\alpha(r),\alpha(s)\in I/I^2$ so their product is zero. Conversely, following the equalities above, we must have $\alpha(rs)= r \alpha(s) + s \alpha(r)$ for the products to agree.
+\end{proof}
+
+This theorem gives an interesting and useful new way to think of derivations: they are ``perturbations''  of the identity map.
+
+It also allows us to unlock many derivations.
+
+\begin{prop} Let $R$ be an $A$-algebra and $I$ an ideal. Suppose that the quotient map $\pi :R/I^2 \to R/I$ has an $A$-algebra  right inverse, i.e., there is some $A$-algebra map $\tau:R/I \to R/I^2$ such that $\pi \circ \tau$ is the identity on $R/I$. Then for every $R$-module $M$ with $IM=0$, the map
+\[ \Der_{R|A}(M) \xra{\res} \Hom_A(I/I^2,M)\]
+is surjective.
+\end{prop}
+\begin{proof}
+Consider the ring homomorphism $\tau \circ \pi : R/I^2 \to R/I^2$. Set $\alpha: R/I^2 \to R/I^2$ by $1-\tau \circ \pi$; for $r\in R/I^2$ we have $\pi \alpha(r) = \pi(r) - \pi \tau \pi(r) = \pi(r)=0$, so in fact $\alpha: R/I^2 \to I/I^2$ has image in $I/I^2$. But $\alpha+1$ is a ring homomorphism, so $\alpha$ is a derivation. Additionally, if $a\in I/I^2$, then $\pi(a)=0$, so $\alpha(a) = (1-\tau \circ \pi)(a) = a$. Thus, given $\phi:I/I^2 \to M$ $R$-linear, $\phi\circ \alpha:R/I^2 \to M$ is an $A$-linear derivation on $R/I^2$ with restriction to $I/I^2$ being just $\phi$.
+\end{proof}
+
+\begin{ex} Let $R$ be a finitely generated $\C$-algebra, and $\fm$ a maximal ideal. Then $\C\subseteq R/\fm^2$ and $R/\fm\cong \C$, so there is a right inverse of the quotient map $R/I^2 \to R/I$. Moreover, $R/\fm^2$ is generated by $\fm/\fm^2$ as a $\C$-algebra, since $R/\fm^2 \cong \C \oplus \fm/\fm^2$ (or many other reasons). It follows that the map
+\[ \Der_{R|\C}(R/\fm) \xra{\res} (\fm/\fm^2)^*\]
+is an isomorphism.
+\end{ex}
 
 
 \ssec{Quick review of affine varieties}
@@ -693,106 +791,6 @@ $\phi$ & $\fq \mapsto \phi^{-1}(\fq)$
 \end{center}
 
 Whereas the correspondence between varieties and reduced f.g. $\C$-algebras was bijective above, the correspondence between rings and their spectra as topological spaces is far from: in particular, every field $K$ has $\Spec(K)$ a singleton. 
-
-
-
-\ssec{Lie algebra structure on $\Der_{R|A}(R)$}
-
-Even more than a module, there is extra structure on $\Der_{R|A}(R)$. Any two elements of $\Der_{R|A}(R)$ have the same source and target, so we can compose them. The result is essentially never a derivation though.
-
-\begin{ex} In $\C[x]$, 
-\[ \frac{d^2}{dx^2}(x\cdot x) = 2 \neq 0 = x \frac{d^2}{dx^2}(x) + x \frac{d^2}{dx^2}(x).\]
-\end{ex}
-
-However:
-
-\begin{prop} Let $R$ be an $A$-algebra, and $\alpha,\beta\in \Der_{R|A}(R)$. Then the map $\alpha\circ \beta - \beta\circ \alpha:R\to R$ is an $A$-linear derivation.
-\end{prop}
-\begin{proof} $A$-linearity follows since we have linear combinations or compositions of $A$-linear maps. Given $r,s\in R$,
-\[\begin{aligned} (\alpha\beta - \beta \alpha)(rs) &= \alpha(r \beta(s) + s\beta(r)) - \beta(r \alpha(s) + s \alpha(r))\\
-&= \alpha(r \beta(s)) +\alpha( s\beta(r)) - \beta(r \alpha(s)) -\beta( s \alpha(r)) \\
-&= \alpha(r) \beta(s) + r \alpha \beta(s) + s \alpha\beta(r)  + \alpha(s)\beta(r) - \beta(r) \alpha(s) - r \beta\alpha(s) - \alpha(r)\beta(s) - s \beta\alpha(r)\\
-&=  r \alpha \beta(s) + s \alpha\beta(r)   - r \beta\alpha(s) - s \beta\alpha(r) \\
-&= r (\alpha\beta - \beta \alpha)(s) + s (\alpha\beta - \beta \alpha)(r)  \hspace{3.2in}  \qedhere
-\end{aligned}\]
-\end{proof}
-
-We write $[\alpha,\beta]:= \alpha\circ \beta - \beta\circ \alpha$ and call this the \emph{commutator} of $\alpha$ and $\beta$.\index{commutator}\index{$[\alpha,\beta]$} This operation isn't a product operation for a ring (we will see soon that it's not associative), but it gives the structure of a \emph{Lie algebra}.
-
-\begin{defn} A \emph{Lie algebra}\index{Lie algebra} over a ring $R$ is an $R$-module $M$ equipped with an operation $[ - , - ]: M\times M \to M$ such that, for all $l,m,n\in M$ and $r\in R$:
-\begin{itemize}
-\item $[l+m,n] = [l,n]+[m,n]$,
-\item $[rm,n] = r[m,n]$,
-\item $[m,m] =0$,
-\item $[l,[m,n]] + [m,[n,l]] + [n,[l,m]] =0$.
-\end{itemize}
-\end{defn}
-
-\begin{prop} Let $R$ be an $A$-algebra. The commutator operation endows $\Der_{R|A}(R)$ with the structure of a Lie algebra.
-\end{prop}
-\begin{proof}
-The first two conditions are straightforward and easy to believe; the third even more so. The fourth is called the Jacobi identity, which follows from associativity of composition: To avoid foiling all these out, note that each term is a triple involving $l,m,n$. The expression above is stable under the permutation $l\mapsto m\mapsto n\mapsto l$, so it suffices to check that the triples $lmn$ and $lnm$ appear a cancelling number of times. Indeed, $lmn$ appears with $+1$ from the first and $-1$ from the second and $lnm$ appears with $-1$ from the first and $+1$ from the second.
-\end{proof}
-
-\ssec{Derivations and ideals}
-
-\begin{prop} Let $R$ be a ring, and $I$ an ideal. Let $\partial:R\to M$ be a derivation. Then $\partial(I^n) \subseteq I^{n-1}M$ for all $n\in \N$.
-\end{prop}
-\begin{proof}
-We proceed by induction on $n$, with $n=1$ trivial. Given $r\in I^n$, write $r=\sum_i a_i b_i$ with $a_i\in I^{n-1}$ and $b_i\in I$. Then \[\partial(r) = \sum_i \partial(a_i b_i) = \sum_i a_i \partial(b_i) + \sum_i b_i \partial(a_i).\]
-Clearly $a_i \partial(b_i)\in I^{n-1} M$, and by the induction hypothesis $\partial(a_i)\in I^{n-2}M$, so $b_i \partial(a_i)\in I^{n-1}M$.
-\end{proof}
-
-It follows that every $A$-linear derivation $\partial: R\to M$ gives rise, by restriction/quotient, to a well-defined $A$-linear map $\overline{\partial}: I^n/I^{n+1} \to I^{n-1}M / I^{n}M$, and in particular $\overline{\partial}: I/I^2 \to M / IM$. 
-
-\begin{prop}
-Let $R$ be an $A$-algebra, $I$ an ideal, and $M$ an $R$-module. If $IM=0$, then
-there is an isomorphism
-\[ \Der_{R|A}(M) \to \Der_{R/I^2|A}(M)\]
-and a well-defined map
-\[ \Der_{R|A}(M) \to \Hom_A(I/I^2,M)\]
-induced by restriction.
-\end{prop}
-
-Viewing $\Hom_A(I/I^2,M)$ as an $R$-module via the action on $M$, this is $R$-linear.
-
-
-
-
-
-\begin{ex} Consider $R=\C[x_1,\dots,x_n]$ and $\fm$ maximal. We have the restriction map
-\[ \Der_{R|\C}(R/\fm) \xra{\res} \Hom_{\C}(\fm/\fm^2,R/\fm) =(\fm/\fm^2)^*, \]
-where $(-)^*$ denotes $\C$-linear dual. The map is an isomorphism! To see it, note that $\fm=(x_1-a_1,\dots,x_n-a_n)$ for some vector $a$. Write $\widetilde{x_i}=x_i-a_i$. After a change of coordinates, we can consider $R$ as a polynomial ring in the $\widetilde{x_i}$'s. Then $\fm/\fm^2$ is a vector space with basis given by the classes of the $\widetilde{x_i}$'s.  By our proposition on derivations on polynomial rings, for any $n$-tuple of elements in $R/\fm\cong \C$, there is a unique derivation sending the corresponding variables there. That's what it means for the restriction to be an isomorphism! Concretely, the map
-\[ \sum_i \lambda_i \widetilde{x_i}^* \mapsto \sum_i \lambda_i \frac{d}{dx_i}|_{x=a} \]
-is an inverse.
-\end{ex}
-
-We actually don't need the very very strong hypothesis of polynomial ring in the last example. 
-
-%\begin{prop}
-%Let $\phi:R\to S$ and $\pi:S\to R$ be ring homomorphisms such that $\pi \circ \phi = 1_R$. Let $J=\ker(\pi)$ and asuume that $J^2=0$. Then
-%\[ \Der_{S|R}(R)\cong \Hom_{R}(J,R).\]
-%\end{prop}
-%\begin{proof}
-
-\begin{ex} Let $R$ be any finitely generated $\C$-algebra, and  $\fm$ be a maximal ideal.
-Let's compute $\Der_{R|K}(R/\fm)$. 
-
-We $R=K[x_1,\dots,x_n]/I$, and $\fm=(x_1-a_1,\dots,x_n-a_n)$ for some $a_i\in \C$; set $\widetilde{x_i} = x_i-a_i$; these generate $R$ as a $\C$-algebra (since we can get the $x$'s back from them). Thus, the map
-\[  \Der_{R|A}(\C) \xra{\res} \Hom_{\C}(\fm/\fm^2,R/\fm)=(\fm/\fm^2)^* \]
-is injective: the values on the elements on $\widetilde{x_i}$ uniquely determine the derivation.
-
-In fact, this map is surjective as well. To see it, take a $\C$-basis for $\fm/\fm^2$; without loss of generality we can take $\widetilde{x_1},\dots,\widetilde{x_m}$. then $1,\widetilde{x_1},\dots,\widetilde{x_m}$ is a basis for $R/\fm^2$, and $\widetilde{x_i} \widetilde{x_j}=0$ for all $i,j$. For any element of $R$ we can uniquely write 
-\[f= \lambda_0 + \sum_{i=1}^m \lambda_i \widetilde{x_i} + \xi \]
-with $\xi\in \fm^2$.
-Define the map 
-\[\partial_i( \lambda_0 + \sum_j \lambda_j v_j + \xi ) = \lambda_i;\]
-this is definitely $\C$-linear, and
-\[\begin{aligned} \partial_i( (\lambda_0 &+ \sum_j \lambda_j v_j + \xi ) (\mu_0 + \sum_j \mu_j v_j + \xi' )) = \partial_i ( \lambda_0 \mu + \sum_j ( \lambda_0 \mu_j + \mu_0 \lambda_j) v_j + \xi'') \\& = \lambda_0 \mu_i + \mu_0 \lambda_i\\&= (\lambda_0 + \sum_j \lambda_j v_j+\xi) \cdot \partial_i( (\mu_0 + \sum_j \mu_j v_j+ \xi' ))+ (\mu_0 + \sum_j \mu_j v_j+\xi') \cdot \partial_i( (\lambda_0 + \sum_j \lambda_j v_j+\xi).\end{aligned}\]
-But $\res(\partial_1),\dots,\res(\partial_m)$ form the dual basis for $v_1,\dots,v_m$, so this is surjective.
-\end{ex}
-
-
 
 
 \sssec{Tangent spaces of varieties}
