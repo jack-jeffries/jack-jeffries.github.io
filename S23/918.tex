@@ -493,7 +493,7 @@ and by the product rule
 \[ \frac{d}{dx}|_{x=x_0}\ (fg) =  f(x_0) (\frac{d}{dx}|_{x=x_0} \ g) +  g(x_0) (\frac{d}{dx}|_{x=x_0} \ f) = f \cdot  (\frac{d}{dx}|_{x=x_0}\ g) + g \cdot (\frac{d}{dx}|_{x=x_0}\ f).\]
 \end{ex}
 
-
+\Jan{26}
 
 \begin{ex}
 Other natural uses of derivatives actually take values in modules rather than the ring itself.
@@ -526,67 +526,6 @@ and, along the same lines as previous examples, is a $\C$-linear derivation to $
 \begin{ex} Let's end with a boring example. For any $A$-algebra $R$ and any $R$-module $M$, the zero map is an $A$-linear derivation from $R$ to $M$.
 \end{ex}
 
-
-
-\ssec{Quick review of affine varieties}
-
-Many of the constructions and questions we will consider will be motivated geometrically, and we will want to compare and contrast many of our main theorems with things we encounter in multivariable calculus, manifold theory, analysis, and other disciplines. We'll want to remember how to think of rings and ring homomorphisms geometrically. Over $\C$ (or an algebraically closed field) we have the following correspondence:
-
-\begin{center}
-\begin{tabular}{c|c}
-algebra & geometry \\ \hline \hline
-$\C[x_1,\dots,x_n]$ & $\C^n$ \\ \hline
- reduced finitely-generated $\C$-algebra & variety \\ \hline
- $R=\displaystyle\frac{ \C[x_1,\dots,x_n]}{(f_1,\dots,f_m)}=:\C[X]$ & $X$ := solution set of $f_1=\dots=f_m=0$ \\ \hline
-
-maximal ideal & point \\
-$\fm_a = (x_1-a_1,\dots,x_n-a_n)$ & $a=(a_1,\dots,a_n)$ \\ \hline
-$r\in \C[X]$ & polynomial function on $X$ \\ \hline
-going modulo $\fm_a$ & evaluation at $a$ \\ \hline
-$\C$-algebra homomorphism $\C[X]\to \C[Y]$  & morphism of varieties $Y\to X$ \\
-$x_i \mapsto f_i(\underline(y))$ & $b\mapsto (f_1(b), \dots,f_n(b))$
-\end{tabular}
-\end{center}
-
-\begin{ex} Take $R=\C[x,y]/(x^2-y^3)$. 
-Geometrically, this corresponds to the solution set of $x^2=y^3$ in $2$-space. We can only draw the ``real'' picture, and we'll have to live with that. 
-
-\begin{center}
-\includegraphics[scale=.5]{curve1}
-\end{center}
-
-Note the corner at $(0,0)$; we will see later that this has something to do with our unexpected derivation in the example above.
-\end{ex}
-
-
-
-\begin{ex} This business about maps of varieties going the wrong way is a bit disorienting. Let's try a couple of examples of this.
-\begin{itemize}
-\item Given a (radical) ideal $I \subset S=\C[x_1,\dots,x_n]$, the quotient map $S\to S/I$ is given by sending $x_i\mapsto x_i$, so the corresponding map of varieties $V(I)\to \C^n$ is just the inclusion map.
-\item Consider $\C[x,y]/(x^2-y^3) \cong \C[t^2,t^3]$ (via $x\mapsto t^3, y\mapsto t^2$) and take the inclusion of rings $\C[t^2,t^3] \subseteq \C[t]$. Under the composition $x\mapsto t^3, y\mapsto t^2$ in $\C[t]$, and corresponding map of varieties goes from $\C\mapsto V(x^2-y^3)$ and sends $b\mapsto(b^3,b^2)$.
-\end{itemize}
-\end{ex}
-
-One important thing that is \emph{not} included in this correspondence is the usual \emph{Euclidean}\index{Euclidean} topology on $\C^n$ or a subset $X\subseteq \C^n$ with an open basis given by $B_\varepsilon(a) = \{ x \ | \ |x-a|<\varepsilon\}$ with the usual norm $|\cdot |$. We have the \emph{Zariski} topology\index{Zariski} in which the closed sets are subvarieties, but this has no knowledge of what things are close in the Euclidean sense. 
-
-The magic making this all work out so nicely is the Nullstellensatz, which guarantees that maximal ideals of $\C[X]$ all correspond to points of $X$. In general, we just take the (instead of maximal) prime ideals to be our points and work from there.
-
-
-
-
-\begin{center}
-\begin{tabular}{c|c}
-algebra & ``geometry'' \\ \hline \hline
-ring & prime spectrum \\ \hline
- $R$ & $\Spec(R)=\{\fp \ | \ \fp\subset R \ \text{prime ideal}\}$ \\ \hline
-prime ideal & point \\ \hline
-maximal ideal & closed point \\ \hline
-ring homomorphism $R\to S$  & continuous map $Y\to X$ \\
-$\phi$ & $\fq \mapsto \phi^{-1}(\fq)$
-\end{tabular}
-\end{center}
-
-Whereas the correspondence between varieties and reduced f.g. $\C$-algebras was bijective above, the correspondence between rings and their spectra as topological spaces is far from: in particular, every field $K$ has $\Spec(K)$ a singleton. 
 
 
 
@@ -673,7 +612,7 @@ We would like to compute modules of derivations in some examples. The following 
 \begin{lem} Let $R$ be an $A$-algebra and $\{f_\lambda \ | \ \lambda\in \Lambda\}$ be a generating set of $R$ as an $A$-algebra. Let $M$ be an $R$-module.
 Then any $A$-linear derivation on $R$ is determined by the images of $f_\lambda$. That is, $\alpha,\beta:R\to M$ are $A$-linear derivations with $\alpha(f_\lambda) = \beta(f_\lambda)$ for all $\lambda$, then $\alpha=\beta$.
 \end{lem}
-\begin{proof} We need to show that $\alpha(r)=\beta(r)$ for any $r\in R$. Any element of $R$ can be written as a sum of monomial expressions in the $f's$; i.e., a sum of terms of the form $r=a f_{\lambda_1}^{\mu_1}\cdots {\lambda_n}^{\mu_n}$ with $a\in A$ so it suffices to show that $\alpha$ and $\beta$ take e same value on such a monomial $r$. We proceed by induction on $k=\mu_1+\cdots \mu_n$. When $k=0$, $r\in A$ so $\alpha(r)=0=\beta(r)$. For the inductive step, take $k>0$, so WLOG $\mu_1\neq 0$; then $r= r' f_{\lambda_1}$, and
+\begin{proof} We need to show that $\alpha(r)=\beta(r)$ for any $r\in R$. Any element of $R$ can be written as a sum of monomial expressions in the $f's$; i.e., a sum of terms of the form $r=a f_{\lambda_1}^{\mu_1}\cdots f_{\lambda_n}^{\mu_n}$ with $a\in A$ so it suffices to show that $\alpha$ and $\beta$ take e same value on such a monomial $r$. We proceed by induction on $k=\mu_1+\cdots + \mu_n$. When $k=0$, $r\in A$ so $\alpha(r)=0=\beta(r)$. For the inductive step, take $k>0$, so WLOG $\mu_1\neq 0$; then $r= r' f_{\lambda_1}$, and
 \[ \alpha(r' f_{\lambda_1}) = r' \alpha(f_{\lambda_1}) + f_{\lambda_1} \alpha(r')\]
 and likewise for $\beta$. By the starting assumption, $\alpha(f_{\lambda_1}) = \beta(f_{\lambda_1})$ and by the induction hypothesis $\alpha(r')=\beta(r')$. The equality follows.
 \end{proof}
@@ -690,6 +629,72 @@ Consider the map $\nu:\Der_{R|A}(M) \to \prod_{\Lambda} M$ given by $\alpha\maps
 \[ (\nu \circ \mu)(m_\lambda)_\lambda = ( (\sum_\lambda m_\lambda \frac{d}{dX_\lambda})(X_\lambda) )_\lambda = (m_\lambda)_\lambda.\]
 Thus, $\mu$ is injective. Then $\mu$ must be an isomorphism. Indeed, $\nu = (\nu  \mu) \nu = \nu (\mu \nu)$ and $\nu$ injective implies $\mu \nu$ is the identity as well.
 \end{proof}
+
+\begin{comment}
+
+
+
+\ssec{Quick review of affine varieties}
+
+Many of the constructions and questions we will consider will be motivated geometrically, and we will want to compare and contrast many of our main theorems with things we encounter in multivariable calculus, manifold theory, analysis, and other disciplines. We'll want to remember how to think of rings and ring homomorphisms geometrically. Over $\C$ (or an algebraically closed field) we have the following correspondence:
+
+\begin{center}
+\begin{tabular}{c|c}
+algebra & geometry \\ \hline \hline
+$\C[x_1,\dots,x_n]$ & $\C^n$ \\ \hline
+ reduced finitely-generated $\C$-algebra & variety \\ \hline
+ $R=\displaystyle\frac{ \C[x_1,\dots,x_n]}{(f_1,\dots,f_m)}=:\C[X]$ & $X$ := solution set of $f_1=\dots=f_m=0$ \\ \hline
+
+maximal ideal & point \\
+$\fm_a = (x_1-a_1,\dots,x_n-a_n)$ & $a=(a_1,\dots,a_n)$ \\ \hline
+$r\in \C[X]$ & polynomial function on $X$ \\ \hline
+going modulo $\fm_a$ & evaluation at $a$ \\ \hline
+$\C$-algebra homomorphism $\C[X]\to \C[Y]$  & morphism of varieties $Y\to X$ \\
+$x_i \mapsto f_i(\underline(y))$ & $b\mapsto (f_1(b), \dots,f_n(b))$
+\end{tabular}
+\end{center}
+
+\begin{ex} Take $R=\C[x,y]/(x^2-y^3)$. 
+Geometrically, this corresponds to the solution set of $x^2=y^3$ in $2$-space. We can only draw the ``real'' picture, and we'll have to live with that. 
+
+\begin{center}
+\includegraphics[scale=.5]{curve1}
+\end{center}
+
+Note the corner at $(0,0)$; we will see later that this has something to do with our unexpected derivation in the example above.
+\end{ex}
+
+
+
+\begin{ex} This business about maps of varieties going the wrong way is a bit disorienting. Let's try a couple of examples of this.
+\begin{itemize}
+\item Given a (radical) ideal $I \subset S=\C[x_1,\dots,x_n]$, the quotient map $S\to S/I$ is given by sending $x_i\mapsto x_i$, so the corresponding map of varieties $V(I)\to \C^n$ is just the inclusion map.
+\item Consider $\C[x,y]/(x^2-y^3) \cong \C[t^2,t^3]$ (via $x\mapsto t^3, y\mapsto t^2$) and take the inclusion of rings $\C[t^2,t^3] \subseteq \C[t]$. Under the composition $x\mapsto t^3, y\mapsto t^2$ in $\C[t]$, and corresponding map of varieties goes from $\C\mapsto V(x^2-y^3)$ and sends $b\mapsto(b^3,b^2)$.
+\end{itemize}
+\end{ex}
+
+One important thing that is \emph{not} included in this correspondence is the usual \emph{Euclidean}\index{Euclidean} topology on $\C^n$ or a subset $X\subseteq \C^n$ with an open basis given by $B_\varepsilon(a) = \{ x \ | \ |x-a|<\varepsilon\}$ with the usual norm $|\cdot |$. We have the \emph{Zariski} topology\index{Zariski} in which the closed sets are subvarieties, but this has no knowledge of what things are close in the Euclidean sense. 
+
+The magic making this all work out so nicely is the Nullstellensatz, which guarantees that maximal ideals of $\C[X]$ all correspond to points of $X$. In general, we just take the (instead of maximal) prime ideals to be our points and work from there.
+
+
+
+
+\begin{center}
+\begin{tabular}{c|c}
+algebra & ``geometry'' \\ \hline \hline
+ring & prime spectrum \\ \hline
+ $R$ & $\Spec(R)=\{\fp \ | \ \fp\subset R \ \text{prime ideal}\}$ \\ \hline
+prime ideal & point \\ \hline
+maximal ideal & closed point \\ \hline
+ring homomorphism $R\to S$  & continuous map $Y\to X$ \\
+$\phi$ & $\fq \mapsto \phi^{-1}(\fq)$
+\end{tabular}
+\end{center}
+
+Whereas the correspondence between varieties and reduced f.g. $\C$-algebras was bijective above, the correspondence between rings and their spectra as topological spaces is far from: in particular, every field $K$ has $\Spec(K)$ a singleton. 
+
+
 
 \ssec{Lie algebra structure on $\Der_{R|A}(R)$}
 
@@ -738,9 +743,19 @@ We proceed by induction on $n$, with $n=1$ trivial. Given $r\in I^n$, write $r=\
 Clearly $a_i \partial(b_i)\in I^{n-1} M$, and by the induction hypothesis $\partial(a_i)\in I^{n-2}M$, so $b_i \partial(a_i)\in I^{n-1}M$.
 \end{proof}
 
-It follows that every $A$-linear derivation $\partial: R\to M$ gives rise, by restriction/quotient, to a well-defined $A$-linear map $\overline{\partial}: I^n/I^{n+1} \to I^{n-1}M / I^{n}M$, and in particular $\overline{\partial}: I/I^2 \to M / IM$. That is, we get a map
-\[ \Der_{R|A}(M) \xra{\res} \Hom_{A}(I/I^2,M/IM). \]
-Viewing $\Hom_{A}(I/I^2,M/IM)$ as an $R$-module by postmultiplication, this is $R$-linear.
+It follows that every $A$-linear derivation $\partial: R\to M$ gives rise, by restriction/quotient, to a well-defined $A$-linear map $\overline{\partial}: I^n/I^{n+1} \to I^{n-1}M / I^{n}M$, and in particular $\overline{\partial}: I/I^2 \to M / IM$. 
+
+\begin{prop}
+Let $R$ be an $A$-algebra, $I$ an ideal, and $M$ an $R$-module. If $IM=0$, then
+there is an isomorphism
+\[ \Der_{R|A}(M) \to \Der_{R/I^2|A}(M)\]
+and a well-defined map
+\[ \Der_{R|A}(M) \to \Hom_A(I/I^2,M)\]
+induced by restriction.
+\end{prop}
+
+Viewing $\Hom_A(I/I^2,M)$ as an $R$-module via the action on $M$, this is $R$-linear.
+
 
 
 
@@ -752,7 +767,13 @@ where $(-)^*$ denotes $\C$-linear dual. The map is an isomorphism! To see it, no
 is an inverse.
 \end{ex}
 
-The last example generalizes quite nicely, and to varying degrees.
+We actually don't need the very very strong hypothesis of polynomial ring in the last example. 
+
+%\begin{prop}
+%Let $\phi:R\to S$ and $\pi:S\to R$ be ring homomorphisms such that $\pi \circ \phi = 1_R$. Let $J=\ker(\pi)$ and asuume that $J^2=0$. Then
+%\[ \Der_{S|R}(R)\cong \Hom_{R}(J,R).\]
+%\end{prop}
+%\begin{proof}
 
 \begin{ex} Let $R$ be any finitely generated $\C$-algebra, and  $\fm$ be a maximal ideal.
 Let's compute $\Der_{R|K}(R/\fm)$. 
@@ -770,6 +791,8 @@ this is definitely $\C$-linear, and
 \[\begin{aligned} \partial_i( (\lambda_0 &+ \sum_j \lambda_j v_j + \xi ) (\mu_0 + \sum_j \mu_j v_j + \xi' )) = \partial_i ( \lambda_0 \mu + \sum_j ( \lambda_0 \mu_j + \mu_0 \lambda_j) v_j + \xi'') \\& = \lambda_0 \mu_i + \mu_0 \lambda_i\\&= (\lambda_0 + \sum_j \lambda_j v_j+\xi) \cdot \partial_i( (\mu_0 + \sum_j \mu_j v_j+ \xi' ))+ (\mu_0 + \sum_j \mu_j v_j+\xi') \cdot \partial_i( (\lambda_0 + \sum_j \lambda_j v_j+\xi).\end{aligned}\]
 But $\res(\partial_1),\dots,\res(\partial_m)$ form the dual basis for $v_1,\dots,v_m$, so this is surjective.
 \end{ex}
+
+
 
 
 \sssec{Tangent spaces of varieties}
