@@ -636,11 +636,25 @@ Thus, $\mu$ is injective. Then $\mu$ must be an isomorphism. Indeed, $\nu = (\nu
 
 We can give a description the derivations on any ring now.
 
-\begin{prop} Let $R$ be an $A$-algebra. Write $R=S/I$ with $S=A[X_\lambda \ | \ \lambda\in \Lambda]$ and $I=(f_\gamma \ | \gamma\in\Gamma)$. Let $M$ be an $R$-module. Then every $A$-linear derivation from $R$ to $M$ can be written in the form
-\[ \partial = \sum_{\lambda\in \Lambda} m_\lambda \frac{d}{dx_{\lambda}}\]
-for some unique $(m_{\lambda})_\lambda \im \prod_{\Lambda} M$.
-An element corresponds to a derivation $R\to M$ if and only if $\partial$\dots
+\begin{prop} Let $R$ be an $A$-algebra. Write $R=S/I$ with $S=A[X_\lambda \ | \ \lambda\in \Lambda]$ and $I=(f_\gamma \ | \ \gamma\in\Gamma)$. Let $M$ be an $R$-module. Then every $A$-linear derivation $\partial$ from  $R$ to $M$ can be written in the form
+\[ \xymatrix@R=0pc{ \sum_{\lambda\in \Lambda} m_\lambda \overline{\frac{d}{dx_{\lambda}}} \\
+r = [ s] \mapsto  \sum_\lambda \frac{d}{dx_{\lambda}}(s) m_\lambda}\]
+for some unique $(m_{\lambda})_\lambda \in \prod_{\Lambda} M$.
+A tuple of elements $(m_\lambda)_\lambda$ induces a well-defined derivation from $R$ to $M$ if and only if the corresponding derivation $\widetilde{\partial}:S\to M$ has $\widetilde{\partial}(f_\gamma)=0$ for all $\gamma$.
 \end{prop}
+\begin{proof}
+Let $\pi:S\to R$ be the quotient map. Given an $A$-linear derivation $\partial:R\to M$, there is an $A$-linear derivation $\pi\circ \partial:S\to M$ that can be written in the form above by the previous theorem, so any derivation has this form. Since derivations are addition, such a derivation is well-defined so long as $\widetilde{\partial}(I)=0$. This certainly implies that $\widetilde{\partial}(f_\gamma)=0$ for all $\gamma$; conversely, any element of $I$ can be written as $\sum_i s_i f_i$ and $\widetilde{\partial} (\sum_i s_i f_i) =\sum_i s_i \widetilde{\partial}(f_i) + \sum_i f_i \widetilde{\partial}(s_i)$, and the first sum is zero by hypothesis and the second since $M$ is an $R$-module which is necessarily killed by $I$.
+\end{proof}
+
+\begin{ex} Let's find some $\C$-linear derivations on $R=\frac{\C[x,y]}{x^2+y^3}$ to itself. Any such derivation must be a map of the form $\partial = r_1 \overline{\frac{d}{dx}} + r_2 \overline{\frac{d}{dy}}$ where $\widetilde{\partial} = r_1 \frac{d}{dx} + r_2 \frac{d}{dy}: \C[x,y]\to R$ has $\widetilde{\partial}(x^2+y^3) =0$, or just as well $\partial' = r'_1 \frac{d}{dx} + r'_2 \frac{d}{dy}: \C[x,y]\to \C[x,y]$ has ${\partial}'(x^2+y^3) \in (x^2+y^3)$.
+Since $\partial'(x^2+y^3) = 2x\partial'(x) + 3y^2 \partial'(y)$, we must have $2x r'_1 + 3y^2 r'_2\in (x^2+y^3)$. Here are a couple:
+\[ 3x \overline{\frac{d}{dx}} + 2y \overline{\frac{d}{dy}} \qquad\text{and}\qquad 3y^2 \overline{\frac{d}{dx}} + 2x \overline{\frac{d}{dy}}.\]
+\end{ex}
+
+\begin{ex} Let's look at something simpler: $\Der_{\C|\R}(\C)$. We can write $\C=\R[x]/(x^2+1)$, so such a derivation is of the form $r \overline{\frac{d}{dx}}$ where $r {\frac{d}{dx}} (x^2+1)\in (x^2+1)$. Since $2x= \frac{d}{dx} (x^2+1)$ and $x^2+1$ are coprime in $\R[x]$, $r$ must be a multiple of $x^2+1$, so the corresponding derivation must be the zero map. Thus, there are no $\R$-linear derivations on $\C$.
+\end{ex}
+
+
 
 \sssec{Lie algebra structure on $\Der_{R|A}(R)$}
 
@@ -665,7 +679,7 @@ However:
 
 We write $[\alpha,\beta]:= \alpha\circ \beta - \beta\circ \alpha$ and call this the \emph{commutator} of $\alpha$ and $\beta$.\index{commutator}\index{$[\alpha,\beta]$} This operation isn't a product operation for a ring (we will see soon that it's not associative), but it gives the structure of a \emph{Lie algebra}.
 
-\begin{defn} A \emph{Lie algebra}\index{Lie algebra} over a ring $R$ is an $R$-module $M$ equipped with an operation $[ - , - ]: M\times M \to M$ such that, for all $l,m,n\in M$ and $r\in R$:
+\begin{defn} A \emph{Lie algebra}\index{Lie algebra} over a ring $A$ is an $R$-module $M$ equipped with an operation $[ - , - ]: M\times M \to M$ such that, for all $l,m,n\in M$ and $a\in A$:
 \begin{itemize}
 \item $[l+m,n] = [l,n]+[m,n]$,
 \item $[rm,n] = r[m,n]$,
@@ -674,10 +688,15 @@ We write $[\alpha,\beta]:= \alpha\circ \beta - \beta\circ \alpha$ and call this 
 \end{itemize}
 \end{defn}
 
-\begin{prop} Let $R$ be an $A$-algebra. The commutator operation endows $\Der_{R|A}(R)$ with the structure of a Lie algebra.
+\begin{ex} If $N$ is an $A$-module, then $E=\End_A(N)$ with bracket $[\alpha,\beta]:= \alpha\circ \beta - \beta\circ \alpha$ is a Lie algebra over $A$. 
+The first three conditions are straightforward. The third follows from associativity of composition: To avoid foiling all these out, note that each term after expanding is a triple involving $l,m,n$. The expression above is stable under the permutation $l\mapsto m\mapsto n\mapsto l$, so it suffices to check that the triples $lmn$ and $lnm$ appear a cancelling number of times. Indeed, $lmn$ appears with $+1$ from the first and $-1$ from the second and $lnm$ appears with $-1$ from the first and $+1$ from the second.
+\end{ex}
+
+
+\begin{prop} Let $R$ be an $A$-algebra. The commutator operation endows $\Der_{R|A}(R)$ with the structure of a Lie algebra over $A$.
 \end{prop}
 \begin{proof}
-The first two conditions are straightforward and easy to believe; the third even more so. The fourth is called the Jacobi identity, which follows from associativity of composition: To avoid foiling all these out, note that each term is a triple involving $l,m,n$. The expression above is stable under the permutation $l\mapsto m\mapsto n\mapsto l$, so it suffices to check that the triples $lmn$ and $lnm$ appear a cancelling number of times. Indeed, $lmn$ appears with $+1$ from the first and $-1$ from the second and $lnm$ appears with $-1$ from the first and $+1$ from the second.
+$\Der_{R|A}(R)$ is a submodule of $\End_A(R)$ and the bracket operation is consistent with that on the Lie algebra $\End_A(R)$, so it suffices to note that it is closed under the bracket operation.
 \end{proof}
 
 \ssec{Derivations and ideals}
