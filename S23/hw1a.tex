@@ -352,7 +352,7 @@
 
 \item* Basic rules with derivations:
 \begin{enumerate}
-\item Prove the generalized product rule for derivations: if $\partial:R\to M$ is a derivation, then $\partial( a_1\cdots a_n) = \sum_{i=1}^n (\prod_{j\neq i} a_i)  \partial(a_j)$.
+\item Prove the generalized product rule for derivations: if $\partial:R\to M$ is a derivation, then $\partial( a_1\cdots a_n) = \sum_{j=1}^n (\prod_{j\neq i} a_i)  \partial(a_j)$.
 \item Prove the power rule for derivations: if $\partial:R\to M$ is a derivation, then $\partial(r^n) = n r^{n-1} \partial(r)$.
 \item Show that if $R$ is a ring of characteristic $p$, then the subring $R^p:=\{ r^p \ | \ r\in R\}$ is in the kernel of every derivation.
 \end{enumerate}
@@ -385,7 +385,8 @@
 
 \item Let $R=\mathcal{C}^\infty(\R^n)$ be the ring of smooth functions on $\R^n$, and $\fm$ be the maximal ideal consisting of functions that vanish at some point $x_0\in \R^n$.
 \begin{enumerate}
-\item * Show that $\fm^t$ consists of the functions $f\in \R$ such that $\frac{d^{a_1}}{dx_1^{a_1}} \cdots \frac{d^{a_n}}{dx_n^{a_n}}(f)|_{x=x_0} = 0$ for all $a_1,\dots,a_n$ with $a_1+\cdots+a_n<t$.
+\item * Show that $\fm^t$ consists of the functions $f\in R$ such that $\frac{d^{a_1}}{dx_1^{a_1}} \cdots \frac{d^{a_n}}{dx_n^{a_n}}(f)|_{x=x_0} = 0$ for all $a_1,\dots,a_n$ with $0
+\leq a_1+\cdots+a_n<t$.
 \item Show that $\Der_{R|\R}(R/\fm) \cong (\fm/\fm^2)^* \cong \R^n$ as vector spaces.
 \end{enumerate}
 As a moral, we conclude that $\Der_{R|\R}(R/\fm)$ serves as a model for the tangent space of $\R^n$ at $x_0$ constructed from the ring of smooth functions.
