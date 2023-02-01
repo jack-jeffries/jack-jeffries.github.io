@@ -35,7 +35,7 @@
 
 \def\Ass{\operatorname{Ass}}
 \def\ann{\operatorname{ann}}
-\def\sign{\operatorname{sign}}
+\def\inc{\operatorname{inc}}
 \def\Der{\operatorname{Der}}
 
 \newcommand{\Tor}{\mathrm{Tor}}
@@ -760,6 +760,10 @@ Consider the ring homomorphism $\tau \circ \pi : R/I^2 \to R/I^2$. Set $\alpha: 
 is an isomorphism.
 \end{ex}
 
+\ssec{Localization}
+
+
+
 
 \ssec{Quick review of affine varieties}
 
@@ -863,20 +867,15 @@ We want to understand this tangent space in terms of the algebra of the coordina
 Let $X = V(I)$ be a complex affine variety (with $I$ reduced) and $a\in X$. Let $R=\C[x_1,\dots,x_n]/I$ be the coordinate ring of $X$ and $\fm$ the corresponding maximal ideal. Then there is a $\C$-vector space isomorphism $(\fm/\fm^2)^*\cong T_a(X)$, where $(-)^*$ denotes $\C$-vector space dual.
 \end{prop}
 \begin{proof} Let $S=\C[x_1,\dots,x_n]$ and $\fn$ be the preimage of $\fm$. Set $\widetilde{x_j} = x_j-a_j$; these are the generators of $\fn$. 
-Then  the images of the $\widetilde{x_j}$ form a vector space for $\fn/\fn^2$; we have essentially defined $T_a(\C^n)$ as the $\C$-vector space with coordinates $\widetilde{x_j}$; i.e., the dual space to $\fn/\fn^2$. So $T_a(\C^n)\cong (\fn/\fn^2)^*$.
+Then  the images of the $\widetilde{x_j}$ form a vector space for $\fn/\fn^2$; we have essentially defined $T_a(\C^n)$ as the $\C$-vector space with coordinates $\widetilde{x_j}$; i.e., the dual space to $\fn/\fn^2$. So $T_a(\C^n)*\cong \fn/\fn^2$. We will think of $T_a(\C^n)*= \fn/\fn^2$ each as $1\times n$ row vectors corresponding to the basis $\widetilde{x_j}$ and $T_a(\C^n)$ as $n \times 1$ column vectors.
 
-By some standard isomorphism theorems, we can identify $\fm/\fm^2 \cong \fn / (\fn^2+I)$: namely,
+For an element $f\in \fn$, we can write $f=\nabla(f)|_{x=a}  \widetilde{x}$ in $\fn / \fn^2$, so $\nabla(f)|_{x=a}$ is its row vector.
+
+Then $T_a(X)^*$ corresponds to quotient of the linear functionals on $T_a(\C^n)\to \C$ modulo the ones that vanish on $T_a(X)$. But since $T_a(X)$ is just the set of vectors $v$ such that $\nabla(f_i)|_{x=a} v=0$ for all $i$, a linear functional in $T_a(\C^n)^*$ vanishes on $T_a(X)$ if and only if it is in the (row) span of $\nabla(f_i)|_{x=a}$. Thus, we have \[T_a(X)^* \cong \frac{\fn/\fn^2}{((f_1,\dots,f_m)+\fn^2)/\fn^2} \cong \frac{\fn}{\fn^2+I}.\] Finally, by some basic isomorphism theorems, we can identify $\fm/\fm^2 \cong \fn / (\fn^2+I)$: namely,
 \[ \frac{\fm}{\fm^2} \cong \frac{\fn/I}{(\fn^2 + I)/I} \cong \frac{\fn}{\fn^2+I}.\]
-
-Given $f\in \fn$, we can write $f=\nabla(f)|_{x=a} \cdot \widetilde{x}$ in $\fn / \fn^2$.
-
-
-So 
-\[ \dim_{\C}(\fm/\fm^2) = n - \dim_{\C}(  \frac{\fn}{\fn^2+I} ) = n- \dim_{\C}( \mathrm{im}\ I \to \frac{\fn}{\fn^2}).\]
-Given an element $f\in I$, as above we write
-\[f = \sum_j \frac{d}{dx_j}|_{x=a}(f_i) \widetilde{x_j} + \mathrm{higher\  order\  terms} \]
-so the image of $f$ is in $\fn/\fn^2$ is $\nabla_{x=a}(f_i)  \underline{\widetilde{x}}$. Thus, the dimension of the image of $I$ is the rank of the transpose of the Jacobian matrix. By rank nullity, the dimension of $\fm/\fm^2$ is the same as the dimension of the kernel of the Jacobian matrix, which is just the dimension of $T_a(X)$.
 \end{proof}
+
+
 
 We say that a variety $X$ is \emph{nonsingular} at $a$ if $\dim_\C T_a(X) = \dim_a X$, and \emph{singular}\index{singular}\index{nonsingular} otherwise (in which case ``$>$'' happens).
 
@@ -889,7 +888,60 @@ This description of the tangent space of a variety like so is useful; in fact, i
 Motivated by the geometric case, for a local ring $(R,\fm,k)$ we define $\fm/\fm^2$ to be the \emph{cotangent space}\index{cotangent space} and $\Hom_k(\fm/\fm^2,k)$ to be the \emph{tangent space}\index{tangent space} of $R$. We say that $R$ is a \emph{regular local ring}\index{regular ring} $\dim(R) = \dim_k(\fm/\fm^2)$.
 
 
+\ssec{Localization}
+ We include one more property of derivations.
+ 
+ \begin{prop} Let $R$ be an $A$-algebra. Let $W \subseteq R$ be a multiplicative set and $V=W\cap A$. For any $W^{-1}R$ module $M$, any $A$-linear derivation $\partial:R\to M$ extends uniquely to an $A$-linear derivation $W^{-1}R \to M$ given by the rule
+ \[\widetilde{\partial}\left(\frac{r}{w}\right) = \frac{w \partial(r) - r\partial(w)}{w^2},\]
+ and this extension is $V^{-1}A$-linear. Conversely, any $A$-linear derivation from $W^{-1}R \to M$ is of this form.
+ 
+ That is, there are isomorphisms
+ \[ \Der_{R|A}(M) \to  \Der_{W^{-1}R|A}(M) \to  \Der_{W^{-1}R|V^{-1}A}(M).\]
+ \end{prop}
+ \begin{proof}
+ We omit the verification that the rule for the map $W^{-1}R \to M$ is well-defined, that this is $V^{-1}A$-linear, and satisfies the product rule. 
+ 
+ If $\alpha:W^{-1}R \to M$ is an $A$-linear derivation, by restriction through the localization map, we get a derivation $\partial:R\to M$ with $\widetilde{\partial} \circ i = \partial$. We claim that $\alpha=\widetilde{\partial}$. Indeed, \[ \partial(r) = \alpha(r) = \alpha(\frac{r}{w} w) = w \alpha(\frac{r}{w}) + \frac{r}{w} \alpha(w) =  w \alpha(\frac{r}{w}) + \frac{r}{w} \partial(w), \]
+ so \[\alpha (\frac{r}{w}) = \frac{ \partial(r)-\frac{r}{w} \partial(w) }{w} = \widetilde{\partial}(\frac{r}{w}).\]
+ \end{proof}
+
+
 \ssec{Left-exact sequences}
+
+We now encode many of the key properties of derivations in some left-exact sequences. Recall that a sequence of maps of $R$-modules is  a \emph{left exact sequence}\index{left exact sequence} if it is of the form
+\[ 0\to L \xra{\alpha} M \xra{\beta} N\]
+with $\alpha$ injective and $\ker(\beta)=\im(\alpha)$.
+
+\begin{prop} Let $R$ be an $A$-algebra and
+\[ 0\to L \xra{\alpha} M \xra{\beta} N\]
+be a left exact sequence of $R$-modules. Then
+\[ 0\to \Der_{R|A}(L) \xra{\alpha_*} \Der_{R|A}(M) \xra{\beta_*} \Der_{R|A}(N)\]
+is a left exact sequence, where $\alpha_*(\partial) = \alpha\circ \partial$ and likewise with $\beta_*$.
+\end{prop}
+\begin{proof} First we observe that $\alpha_*$ is $R$-linear, since $\alpha_*(\partial+\partial') = \alpha_*\partial + \alpha_*\partial'$ and $\alpha_*(r\partial) = r\alpha_*\partial$. 
+
+Since $\alpha$ is injective, if $\partial\neq 0$, then $\alpha_*\partial\neq 0$. If $\beta_*(\partial)=0$, then $\beta \partial (r)=0$ for all $r\in R$, so $\partial(r)\in \ker(\beta)=\im(\alpha)$ for all $r\in R$, and since $\alpha$ is injective, there is an $R$-linear map $\alpha^{-1}:\im(\alpha) \to L$; then $\partial = \alpha_*(\alpha^{-1} \circ \partial) \in \im(\alpha_*)$.
+\end{proof}
+
+\begin{prop} Let $A\to R \xra{\phi} S$ be ring homomorphisms, and $M$ be an $S$-module. Then there is a left exact sequence
+\[ 0 \to \Der_{S|R}(M) \xra{\inc} \Der_{S|A}(M) \xra{\phi^*} \Der_{R|A}(M)\]
+where $\inc$ is the inclusion map and $\phi^*$ is precomposition with $\phi$.
+\end{prop}
+\begin{proof}
+We start by noting that $\Der_{S|R}(M)$ naturally includes in $\Der_{S|A}(M)$, since any $R$-linear map is automatically linear over the image of $A$. 
+
+If $\partial = \inc(\theta)$, then $\phi^*(\partial) = \partial \circ\phi$ is an $R$-linear derivation on $R$, which must be zero. Conversely, if $\phi^*(\partial) =  \partial \circ\phi$ is zero, then $\phi(R)$ is in the kernel of $\partial$, so $\partial$ is $R$-linear, and hence i the image of $\inc$.
+\end{proof}
+
+\begin{prop} Let $A\to R  \xra{\pi} R/I$ be ring homomorphisms, and $M$ be an $R/I$-module. Then there is a left exact sequence
+\[ 0 \to \Der_{R/I|A}(M) \xra{\pi^*} \Der_{R|A}(M) \xra{\res} \Hom_A(I/I^2,M). \]
+\end{prop}
+\begin{proof}
+First, we have $\pi^*$ is injective, since if $\partial([r])=0$, then $\pi^*(\partial)(r) = \partial \pi(r) = \partial([r])\neq 0$. 
+
+If $\partial=\pi^*(\theta)$, then $\res( \partial) ([a]) =\theta \circ \pi([a]) = \theta (0)$ for $[a]\in I/I^2$, so $\res\circ\pi^*=0$. Conversely, if $\res(\partial)=0$, then $\partial(a)=0$ for all $a\in I$, so $\partial$ yields a well-defined derivation from $R/I\to M$; i.e., is in the image of $\pi^*$.
+\end{proof}
+
 
 \ssec{Restriction and extension of scalars}
 
