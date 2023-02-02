@@ -760,10 +760,6 @@ Consider the ring homomorphism $\tau \circ \pi : R/I^2 \to R/I^2$. Set $\alpha: 
 is an isomorphism.
 \end{ex}
 
-\ssec{Localization}
-
-
-
 
 \ssec{Quick review of affine varieties}
 
@@ -838,12 +834,13 @@ We can recenter our coordinates there as $\widetilde{x_j}:=x_j-a_j$. Now, given 
 \[ f_i = f_i(a) + \sum_j \frac{d}{dx_j}|_{x=a}(f_i) (x_j-a_j) + \mathrm{higher \ order \ terms} \ . \]
 Since $a\in X$, $f_i(a)=0$, and we have
 \[ f_i = \sum_j \frac{d}{dx_j}|_{x=a}(f_i) \widetilde{x_j} + \mathrm{higher\  order\  terms} \ ,\]
-so the linear part of $f$ is given by the linear equation $\nabla(f_i)|_{x=a} \cdot \widetilde{x}=0$. Then we take $T_{a}(X)$ to be the linear subspace of $T_a(\C^n)$ cut out by the linear equations $\nabla(f_1)|_{x=a},\dots,\nabla(f_m)|_{x=a}$. In particular, $T_a(\C^n)$ is the kernel of the \emph{Jacobian matrix}\index{Jacobian matrix}
+so the linear part of $f$ is given by the linear functional $\nabla(f_i)|_{x=a}\cdot \widetilde{x}$. Then we take $T_{a}(X)$ to be the linear subspace of $T_a(\C^n)$ cut out by the linear equations $\nabla(f_1)|_{x=a} v=\nabla(f_m)|_{x=a} v = 0$. In particular, $T_a(\C^n)$ is the kernel of the \emph{Jacobian matrix}\index{Jacobian matrix}
 \[ J(f_1,\dots,f_m)|_{x=a} = \begin{bmatrix} \frac{d}{dx_1}|_{x=a} (f_1)& \cdots & \frac{d}{dx_n}|_{x=a} (f_1) \\ 
 \vdots & \ddots & \vdots \\
 \frac{d}{dx_1}|_{x=a} (f_m)& \cdots & \frac{d}{dx_n}|_{x=a} (f_m) \end{bmatrix},\]
 whose rows are the gradient vectors.
 
+\begin{comment}
 
 \begin{ex}
 Take the parabola $X=V(y - (x-1)^2 -2)$. To compute the tangent space at $a=(1,2)$, take the gradient at $(1,2)$, which is $\begin{bmatrix} -2(x-1) \\ 0\end{bmatrix} |_{(1,2)} =\begin{bmatrix} 0 \\ 1 \end{bmatrix}$, so the defining equation is $\widetilde{y}=0$.
