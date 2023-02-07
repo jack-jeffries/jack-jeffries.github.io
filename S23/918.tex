@@ -822,6 +822,8 @@ $\phi$ & $\fq \mapsto \phi^{-1}(\fq)$
 Whereas the correspondence between varieties and reduced f.g. $\C$-algebras was bijective above, the correspondence between rings and their spectra as topological spaces is far from: in particular, every field $K$ has $\Spec(K)$ a singleton. 
 
 
+\newpage
+
 \sssec{Tangent spaces of varieties}
 
 Let's get to the bottom of this corner business while we're at it. Let's define the \emph{tangent space} of an affine variety $X$ at a point $a$, $T_{a}(X)$. For starters, the tangent space of affine space $\C^n$ at a point $a$ will be the vector space $\C^n$, thought of as centered at $a$. 
@@ -834,14 +836,13 @@ We can recenter our coordinates there as $\widetilde{x_j}:=x_j-a_j$. Now, given 
 \[ f_i = f_i(a) + \sum_j \frac{d}{dx_j}|_{x=a}(f_i) (x_j-a_j) + \mathrm{higher \ order \ terms} \ . \]
 Since $a\in X$, $f_i(a)=0$, and we have
 \[ f_i = \sum_j \frac{d}{dx_j}|_{x=a}(f_i) \widetilde{x_j} + \mathrm{higher\  order\  terms} \ ,\]
-so the linear part of $f$ is given by the linear functional $\nabla(f_i)|_{x=a}\cdot \widetilde{x}$. Then we take $T_{a}(X)$ to be the linear subspace of $T_a(\C^n)$ cut out by the linear equations $\nabla(f_1)|_{x=a} v=\nabla(f_m)|_{x=a} v = 0$. In particular, $T_a(\C^n)$ is the kernel of the \emph{Jacobian matrix}\index{Jacobian matrix}
+so the linear part of $f$ is given by the linear functional $\nabla(f_i)|_{x=a}\cdot \widetilde{x}$. Then we take $T_{a}(X)$ to be the linear subspace of $T_a(\C^n)$ cut out by the linear equations $\nabla(f_1)|_{x=a} v= \cdots = \nabla(f_m)|_{x=a} v = 0$. In particular, $T_a(\C^n)$ is the kernel of the \emph{Jacobian matrix}\index{Jacobian matrix}
 \[ J(f_1,\dots,f_m)|_{x=a} = \begin{bmatrix} \frac{d}{dx_1}|_{x=a} (f_1)& \cdots & \frac{d}{dx_n}|_{x=a} (f_1) \\ 
 \vdots & \ddots & \vdots \\
 \frac{d}{dx_1}|_{x=a} (f_m)& \cdots & \frac{d}{dx_n}|_{x=a} (f_m) \end{bmatrix},\]
 whose rows are the gradient vectors.
 
-\begin{comment}
-
+\Feb{6}
 \begin{ex}
 Take the parabola $X=V(y - (x-1)^2 -2)$. To compute the tangent space at $a=(1,2)$, take the gradient at $(1,2)$, which is $\begin{bmatrix} -2(x-1) \\ 0\end{bmatrix} |_{(1,2)} =\begin{bmatrix} 0 \\ 1 \end{bmatrix}$, so the defining equation is $\widetilde{y}=0$.
 \end{ex}
@@ -864,17 +865,14 @@ We want to understand this tangent space in terms of the algebra of the coordina
 Let $X = V(I)$ be a complex affine variety (with $I$ reduced) and $a\in X$. Let $R=\C[x_1,\dots,x_n]/I$ be the coordinate ring of $X$ and $\fm$ the corresponding maximal ideal. Then there is a $\C$-vector space isomorphism $(\fm/\fm^2)^*\cong T_a(X)$, where $(-)^*$ denotes $\C$-vector space dual.
 \end{prop}
 \begin{proof} Let $S=\C[x_1,\dots,x_n]$ and $\fn$ be the preimage of $\fm$. Set $\widetilde{x_j} = x_j-a_j$; these are the generators of $\fn$. 
-Then  the images of the $\widetilde{x_j}$ form a vector space for $\fn/\fn^2$; we have essentially defined $T_a(\C^n)$ as the $\C$-vector space with coordinates $\widetilde{x_j}$; i.e., the dual space to $\fn/\fn^2$. So $T_a(\C^n)*\cong \fn/\fn^2$. We will think of $T_a(\C^n)*= \fn/\fn^2$ each as $1\times n$ row vectors corresponding to the basis $\widetilde{x_j}$ and $T_a(\C^n)$ as $n \times 1$ column vectors.
+Then  the images of the $\widetilde{x_j}$ form a vector space for $\fn/\fn^2$; we have essentially defined $T_a(\C^n)$ as the $\C$-vector space with coordinates $\widetilde{x_j}$; i.e., the dual space to $\fn/\fn^2$. So $T_a(\C^n)^*\cong \fn/\fn^2$. We will think of $T_a(\C^n)^*= \fn/\fn^2$ each as $1\times n$ row vectors corresponding to the basis $\widetilde{x_j}$ and $T_a(\C^n)$ as $n \times 1$ column vectors.
 
 For an element $f\in \fn$, we can write $f=\nabla(f)|_{x=a}  \widetilde{x}$ in $\fn / \fn^2$, so $\nabla(f)|_{x=a}$ is its row vector.
 
 Then $T_a(X)^*$ corresponds to quotient of the linear functionals on $T_a(\C^n)\to \C$ modulo the ones that vanish on $T_a(X)$. But since $T_a(X)$ is just the set of vectors $v$ such that $\nabla(f_i)|_{x=a} v=0$ for all $i$, a linear functional in $T_a(\C^n)^*$ vanishes on $T_a(X)$ if and only if it is in the (row) span of $\nabla(f_i)|_{x=a}$. Thus, we have \[T_a(X)^* \cong \frac{\fn/\fn^2}{((f_1,\dots,f_m)+\fn^2)/\fn^2} \cong \frac{\fn}{\fn^2+I}.\] Finally, by some basic isomorphism theorems, we can identify $\fm/\fm^2 \cong \fn / (\fn^2+I)$: namely,
-\[ \frac{\fm}{\fm^2} \cong \frac{\fn/I}{(\fn^2 + I)/I} \cong \frac{\fn}{\fn^2+I}.\]
+\[ \frac{\fm}{\fm^2} \cong \frac{\fn/I}{(\fn^2 + I)/I} \cong \frac{\fn}{\fn^2+I}.\qedhere\]
 \end{proof}
 
-
-
-We say that a variety $X$ is \emph{nonsingular} at $a$ if $\dim_\C T_a(X) = \dim_a X$, and \emph{singular}\index{singular}\index{nonsingular} otherwise (in which case ``$>$'' happens).
 
 \begin{cor} Let $R=\C[X]$ be the coordinate ring of an affine variety and $a\in X$ with associated maximal ideal $\fm$. Then there is an isomorphism $\Der_{R|\C}(R/\fm) \cong T_a(X)$.
 \end{cor}
@@ -882,7 +880,57 @@ We say that a variety $X$ is \emph{nonsingular} at $a$ if $\dim_\C T_a(X) = \dim
 This description of the tangent space of a variety like so is useful; in fact, in many situations, one defines the tangent space to an object by using derivations! Clearly this has some advantages as it naturally arises from $X$ rather than thinking about $X$ inside of $\C^n$ cut out by some equations.
 
 
+
+We say that an irreducible affine variety $X$ is \emph{nonsingular} at $a$ if $\dim_\C T_a(X) = \dim X$, and \emph{singular}\index{singular}\index{nonsingular} otherwise (in which case ``$>$'' happens).
+
+\begin{comment}
+
+From the geometric definition of tangent space, we have the following.
+
+\begin{thm}[Jacobian criterion for varieties] Let $X\subseteq \C^n$ be an irreducible affine variety of dimension $d=n-h$. Then
+\[ \{a\in X \ | \ X \ \text{is singular at} \ a\} \]
+is equal to the vanishing locus of the $h\times h$-minors of $J(f_1,\dots,f_m)$ in $X$.
+\end{thm}
+\begin{proof}
+We have that $T_a(X)=\ker(J(f_1,\dots,f_m)|_{x=a})$, so $\dim(T_a(X)) = n - \mathrm{rank}(J(f_1,\dots,f_m)|_{x=a})$, and so $X$ is singular at $a$ if and only if the rank of $J(f_1,\dots,f_m)|_{x=a}$ is less than $h$. This is equivalent to the all of the $h\times h$ minors of the matrix $J(f_1,\dots,f_m)|_{x=a}$ vanishing. This happens at a point $a$ if and only if each $h\times h$ minor of $J(f_1,\dots,f_m)$ evaluated at $a$ is zero; i.e., $a\in X$ is in the vanishing locus of each $h\times h$ minor.
+\end{proof}
+
+\begin{ex} Consider $X=V(x^3-y^2,z-xy)$. The Jacobian matrix is
+\[ \begin{bmatrix} 3x^2 & -2y & 0 \\ -y & -x & 1 \end{bmatrix}.\]
+Since $X$ has dimension $1$ in $3$ space, we consider the $2\times 2$-minors
+\[ -3x^3 - 2y^2, 3x^2, -2y\]
+so $x=0, y=0$, and using $z=xy$, $z=0$, and this is the unique singular point on the curve.
+\end{ex}
+
+
 Motivated by the geometric case, for a local ring $(R,\fm,k)$ we define $\fm/\fm^2$ to be the \emph{cotangent space}\index{cotangent space} and $\Hom_k(\fm/\fm^2,k)$ to be the \emph{tangent space}\index{tangent space} of $R$. We say that $R$ is a \emph{regular local ring}\index{regular ring} $\dim(R) = \dim_k(\fm/\fm^2)$.
+
+
+By the Jacobian criterion for varieties, the locus of nonsingular points in a variety is closed (i.e., is a subvariety cut out by polynomial equations). One might ask whether for a ring $R$, the \emph{singular locus}\index{singular locus}
+\[ \mathrm{Sing}(R) = \{ \fp \in \Spec(R) \ | \ R_{\fp} \ \text{is regular} \}\]
+is closed (i.e., there is some ideal $I\subseteq R$ such that $R_\fp$ is regular if and only if $\fp \supseteq I$). This is false, even for Noetherian rings!
+
+\begin{ex} Let $T=\C[x_1,x_2,\dots]$ be a polynomial ring in countably many variables. Let $S\subseteq T$ be the subring
+\[ S = \C[x_1^2,x_1^3,x_2^2,x_2^3,\dots].\]
+Set $\fp_i=(x_i^2,x_i^3)$ for each $i$, and let $W= S \smallsetminus \bigcup_{i\in \N} \fp_i$.
+Note that $W = \bigcap_{i\in \N} (S\smallsetminus \fp_i)$ is an intersection of multiplicatively closed sets, so $W$ is multiplicatively closed. We will show that $R=W^{-1}S$ is a Noetherian domain for which $\mathrm{Sing}(R)$ is not closed.
+
+The hard part is showing this ring is Noetherian. We'll use a couple of lemmas.
+
+\begin{lem} Let $R$ be a ring. Suppose that $R_\fm$ is Noetherian for every maximal ideal $\fm$ and every nonzero element of $R$ is contained in at most finitely many maximal ideals. Then $R$ is Noetherian.
+\end{lem}
+
+The next lemma says that the conculsion of prime avoidance holds for the collection of $\fp_i$ (which is infinite, so the usual hypothesis does not).
+\begin{lem} Let $S$, $\fp_i$ be as above. Then for any ideal $I$ of $S$, if $I\subseteq \bigcup_{i\in \N} \fp_i$, then $I\subseteq \fp_i$ for some $i$.
+\end{lem}
+\begin{proof} If $I=0$ this is clear, so suppose $I\neq 0$, that $I\subseteq \bigcup_{i\in \N} \fp_i$, and take $f\in I$. Since $f$ involves at most finitely many variables, $D_f:=\{i \ | \ f\in \fp_i\}= \{ i \ | x_i \ \text{divides} \ f \ \text{in} \ T\}$ is finite. We consider two cases. 
+
+Case 1: For every $g\in I$, $D_f \cap D_g$ is nonempty. Then $I \subseteq \bigcup_{i\in D_f} \fp_i$. By the usual version of prime avoidance, $I \subseteq \fp_i$ for some $i$.
+
+Case 2: There is some $g\in I$ such that $D_f \cap D_g$ is empty. Let $k$ be larger than the index of any variable in $f$ or $g$, and $t$ be an integer greater than the degree of $f$. Then $f$ and $x_k^t g$ have no monomials in common (since the degrees are distinct) so none can cancel from each other. In particular, if $x_\ell$ divides $f+x_k^t g$ in $T$, then $x_\ell$  divides both $f$ and $x_k^t g$ in $T$. But this is impossible by the hypothesis. Thus $f+x_k^t g\notin \fp_\ell$ for all $\ell$, contradicting the hypothesis.
+
+
+
 
 
 \ssec{Localization}
