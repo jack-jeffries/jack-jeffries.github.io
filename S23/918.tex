@@ -938,13 +938,14 @@ Let $R=\Z[\sqrt{5}]_{(2,1+\sqrt{5})}$. Note that $2,1+\sqrt{5}$ generates a maxi
  \end{proof}
 
 
-\begin{comment}
+%\begin{comment}
 
 \ssec{Left-exact sequences}
 
-We now encode many of the key properties of derivations in some left-exact sequences. Recall that a sequence of maps of $R$-modules is  a \emph{left exact sequence}\index{left exact sequence} if it is of the form
-\[ 0\to L \xra{\alpha} M \xra{\beta} N\]
-with $\alpha$ injective and $\ker(\beta)=\im(\alpha)$.
+We now encode many of the key properties of derivations in some left-exact sequences. Recall that a sequence of maps of $R$-modules is  a \emph{left exact sequence}\index{left exact sequence} is an exact sequence of $R$-module maps of the form
+\[ 0\to L \xra{\alpha} M \xra{\beta} N.\]
+That is, $\alpha$ and $\beta$ are $R$-module homomorphisms such that
+with $\alpha$  is injective and $\ker(\beta)=\im(\alpha)$.
 
 \begin{prop} Let $R$ be an $A$-algebra and
 \[ 0\to L \xra{\alpha} M \xra{\beta} N\]
@@ -985,6 +986,7 @@ Follows from the previous, plus proposition on surjectivity of res.
 \end{proof}
 
 
+\sec{Kahler differentials}
 
 \ssec{Restriction and extension of scalars}
 
@@ -1007,9 +1009,9 @@ Follows from the previous, plus proposition on surjectivity of res.
 	\end{itemize}
 \end{defn}
 
-Thus, given a fixed $R$-module $L$, $F(-):=\Hom_R(L,-)$ is a rule that assigns to any $R$-module $M$ another $R$-module $F(M)$, and to any homomorphism $M \xrightarrow{\phi} N$ a homomorphism $F(M) \xrightarrow{F(\phi)} F(N)$. This (plus the fact that $F$ takes the identity map to the identity map and compositions to compositions) makes $F$ a \emph{covariant functor}\index{covariant functor} from $R$-modules to $R$-modules.
+Thus, given a fixed $R$-module $L$, $F(-):=\Hom_R(L,-)$ is a rule that assigns to any $R$-module $M$ another $R$-module $F(M)$, and to any homomorphism $M \xrightarrow{\phi} N$ a homomorphism $F(M) \xrightarrow{F(\phi)} F(N)$. This plus the fact that $F$ takes the identity map to the identity map and compositions to compositions makes $F$ a \emph{covariant functor}\index{covariant functor} from $R$-modules to $R$-modules.
 
-Similarly, given a fixed $R$-module $L$, $G(-):= \Hom_R(-,L)$ is rule that assigns to any $R$-module $M$ another $R$-module $G(M)$, and to any homomorphism $G(M) \xrightarrow{\phi} G(N)$ a homomorphism $G(N) \xrightarrow{G(\phi)} G(M)$. This (with the same caveats as above) makes $G$ a \emph{contravariant functor}\index{contravariant functor} from $R$-modules to $R$-modules. The covariant vs.~contravariant bit refers to whether the directions of maps have changed.
+Similarly, given a fixed $R$-module $L$, $G(-):= \Hom_R(-,L)$ is rule that assigns to any $R$-module $M$ another $R$-module $G(M)$, and to any homomorphism $G(M) \xrightarrow{\phi} G(N)$ a homomorphism $G(N) \xrightarrow{G(\phi)} G(M)$. This plus the fact that $F$ takes the identity map to the identity map and compositions to compositions makes $G$ a \emph{contravariant functor}\index{contravariant functor} from $R$-modules to $R$-modules. The covariant vs.~contravariant bit refers to whether the directions of maps have changed.
 
 Given maps $L \xrightarrow{\alpha} L'$ and $M \xrightarrow{\beta} M'$, we likewise get a map $\Hom_R(L',M) \xrightarrow{\Hom_R(\alpha,\beta)} \Hom_R(L,M')$, by combining the constructions above.
 
@@ -1019,20 +1021,33 @@ $\Hom_R(R,M)\cong M$ by $\phi\mapsto \phi(1)$, and under this isomorphism, $M \x
 If $I$ is an ideal, $\Hom_R(R/I,M)\cong \ann_M(I)$ by the same map: the image of $1$ in $R/I$ must map to something killed by $I$, and there is a unique $R$-linear map that does this. The same recipe for maps as above holds. Thus, we can identify $\Hom_R(R/I,-)$ with the functor that sends modules $M$ to $\ann_M(I)$, and sends maps to their restrictions to these submodules.
 \end{ex}
 
+We recall that a sequence of maps of $R$-modules is \emph{split-exact} if it is of the form
+\[ 0 \to L \xra{\alpha} M \xra{\beta} N \to 0\]
+with $\alpha$ injective, $\beta$ surjective, $\ker(\beta)=\im(\alpha)$ and $\alpha$ has a left inverse (i.e., there is a map $\rho$ such that $\rho \alpha$ is the identity on $L$). It is equivalent if we replace the last condition with $\beta$ has a right inverse (i.e., there is a map $\iota$ such that $\beta \iota$ is the identity on $N$.
+
 \begin{thm}
 	\begin{enumerate}
 		 \item	A sequence of maps \[ 0 \to L \xrightarrow{\alpha} M \xrightarrow{\beta} N\]
-		is left-exact if and only if, for all $R$-modules $X$, the sequence
+		is exact if and only if, for all $R$-modules $X$, the sequence
 		\[ 0 \to \Hom_R(X,L) \xrightarrow{\alpha_*} \Hom_R(X,M) \xrightarrow{\beta_*} \Hom_R(X,N)  \]
-		is left-exact.
+		is exact.
+		\item A sequence of maps \[ 0 \to L \xra{\alpha} M \xra{\beta} N \to 0\] is split-exact if and only if, for all $R$-modules $X$, the sequence
+		\[ 0 \to \Hom_R(X,L) \xrightarrow{\alpha_*} \Hom_R(X,M) \xrightarrow{\beta_*} \Hom_R(X,N) \to 0 \]
+		is exact.
+
 \item	A sequence of maps \[ L \xrightarrow{\alpha} M \xrightarrow{\beta} N \to 0 \]
 is right-exact if and only if, for all $R$-modules $X$, the sequence
 \[ 0 \to \Hom_R(N,X) \xrightarrow{\beta^*} \Hom_R(M,X) \xrightarrow{\alpha^*} \Hom_R(L,X)  \]
 is left-exact.
+\item A sequence of maps \[ 0 \to L \xra{\alpha} M \xra{\beta} N \to 0\] is split-exact if and only if, for all $R$-modules $X$, the sequence
+\[ 0 \to \Hom_R(N,X) \xrightarrow{\beta^*} \Hom_R(M,X) \xrightarrow{\alpha^*} \Hom_R(L,X) \to 0 \]
+is exact.
 \end{enumerate}
 \end{thm}
 \begin{proof}
- Let $0 \to L \xrightarrow{\alpha} M \xrightarrow{\beta} N$ be left-exact, and $X$ be an $R$-module. 
+\begin{enumerate}
+\item
+ Let $0 \to L \xrightarrow{\alpha} M \xrightarrow{\beta} N$ be exact, and $X$ be an $R$-module. 
  \begin{itemize}
  \item $\alpha_*$ is injective: if $X \xrightarrow{\phi} L$ is nonzero, $X \xrightarrow{\phi} L \xrightarrow{\alpha} M$ is as well, since a nonzero element in the image of $\phi$ goes to something nonzero in the composition.
 \item $\ker(\beta_*)=\im(\alpha_*)$: $X \xrightarrow{\phi} M \xrightarrow{\beta} N$ is zero if and only if $\im(\phi) \subseteq \ker(\beta) = \im(\alpha)$, which happens if and only if $\phi$ factors through $L$; i.e., $\phi\in \im(\alpha_*)$.
@@ -1040,8 +1055,13 @@ is left-exact.
 
   The other direction of the first part follows from the example above; we can use $X=R$.
 
+\item Let $0 \to L \xrightarrow{\alpha} M \xrightarrow{\beta} N \to 0$ be split-exact, and $X$ be an $R$-module. In particular, $0 \to L \xrightarrow{\alpha} M \xrightarrow{\beta} N$ is a left exact sequence, so 
+\[ 0 \to \Hom_R(X,L) \xrightarrow{\alpha_*} \Hom_R(X,M) \xrightarrow{\beta_*} \Hom_R(X,N)  \]
+		is exact. We just need to see that $\Hom_R(X,M) \xrightarrow{\beta_*} \Hom_R(X,N) $ is surjective. Let $\iota$ be such that $\beta\iota$ is the identity on $N$. Then $\beta_*\iota_*$ is the identity on $\Hom_R(X,M)$, so $\beta_*$ must be surjective.
+		
+		For the converse, take $X=N$. Then the identity map in $\Hom_R(N,N)$ is in the image of $\beta_*$, so there is a map $\rho\in \Hom_R(M,N)$ such that $\beta \rho =\beta_*(\rho)$ is the identity on $N$, as required.
  
-  Let $L \xrightarrow{\alpha} M \xrightarrow{\beta} N \to 0$ be a right-exact sequence, and $X$ be an $R$-module.
+\item  Let $L \xrightarrow{\alpha} M \xrightarrow{\beta} N \to 0$ be a right-exact sequence, and $X$ be an $R$-module.
   \begin{itemize}
 \item   $\beta^*$ is injective: if $N \xrightarrow{\phi} X$ is nonzero, pick $n\in N$ not in the kernel, and $m\in M$ that maps to $n$. Then, the image of $m$ under $ M \xrightarrow{\beta} N \xrightarrow{\phi} X$ is nonzero.
  \item $\ker(\alpha^*)=\im(\beta_*)$: $ L \xrightarrow{\alpha} M \xrightarrow{\phi} X$ is zero if and only if $\im(\alpha)\subseteq \ker(\phi)$, which happens if and only if $\phi$ descends to a map of the form $N \cong M/\im(\alpha) \to X$; i.e., $\phi \in \im(\alpha^*)$.
@@ -1050,8 +1070,13 @@ is left-exact.
   
    \begin{itemize}\item $\beta$ is surjective: if not, let $X=N/\im(\beta)$. There is a nonzero projection map $N \xrightarrow{\phi} X$, but $M \xrightarrow{\beta} N \xrightarrow{\phi} X$ is zero, contradicting injectivity of $\beta^*$.
 \item  $\ker(\beta)\supseteq \im(\alpha)$: Take $X=N$, and $N\xrightarrow{\mathrm{id}} X$. Since $\ker(\alpha^*)\supseteq \im(\beta^*)$, $L \xrightarrow{\alpha} M \xrightarrow{\beta} N\xrightarrow{\mathrm{id}} X = L \xrightarrow{\alpha} M \xrightarrow{\beta} N$ is zero.
- \item $\ker(\beta)\subseteq \im(\alpha)$: Take $X=M/\im(\alpha)$, and $M \xrightarrow{\phi} X$ the projection map. Since $L \xrightarrow{\alpha} M \xrightarrow{\phi} X$ is zero, $\phi$ is in the image of $\beta^*$, so it factors through $\beta$. This is equivalent to the stated containment.\qedhere
+ \item $\ker(\beta)\subseteq \im(\alpha)$: Take $X=M/\im(\alpha)$, and $M \xrightarrow{\phi} X$ the projection map. Since $L \xrightarrow{\alpha} M \xrightarrow{\phi} X$ is zero, $\phi$ is in the image of $\beta^*$, so it factors through $\beta$. This is equivalent to the stated containment.
  \end{itemize}
+ 
+ \item Similar to (2). \qedhere
+ 
+ \end{enumerate}
+ 
 \end{proof}
 
 In short, $\Hom_R(X,-)$ is kernel-preserving, and $\Hom_R(-,X)$ turns cokernels into kernels.
