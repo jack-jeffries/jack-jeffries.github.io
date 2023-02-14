@@ -938,7 +938,7 @@ Let $R=\Z[\sqrt{5}]_{(2,1+\sqrt{5})}$. Note that $2,1+\sqrt{5}$ generates a maxi
  \end{proof}
 
 
-%\begin{comment}
+\Feb{14}
 
 \ssec{Left-exact sequences}
 
@@ -1111,26 +1111,8 @@ Conversely, any such right exact sequence is a recipe for a set of generators an
 \[ R^m \xrightarrow{A} R^n \to M \to 0\]
 and $A$ will be an actual $n\times m$ matrix, standing for the map of  multiplication (on the left) by $A$. We will call this (either in the finite or infinite case) a \emph{presentation matrix}\index{presentation matrix} for $M$. 
 
-Given a presentation matrix, we can recover $M$ up to isomorphism as $M\cong R^n/\im(A)$ (i.e., the \emph{cokernel}\index{cokernel} of the map $A$)coming from the first isomorphism theorem, since the map from $R^n\to M$ is surjective with kernel $\im(A)$. The rows of the presentation matrix correspond to generators, and the columns correspond to relations.
+Given a presentation matrix, we can recover $M$ up to isomorphism as $M\cong R^n/\im(A)$ (i.e., the \emph{cokernel}\index{cokernel} of the map $A$) coming from the first isomorphism theorem, since the map from $R^n\to M$ is surjective with kernel $\im(A)$. The rows of the presentation matrix correspond to generators, and the columns correspond to relations.
 
-
-\sssec{Presentations of algebras}
-We can play a similar game with algebras. Let $S$ be an $R$-algebra, so there is some $\phi:R\to S$. Given a generating set for $S$ as an algebra, we get a surjection from a polynomial ring:
-\[\xymatrix@R=0pc{  \{s_\lambda\}_{\lambda\in \Lambda}  & \rightsquigarrow & R[\{X_\lambda\}_{\lambda\in\Lambda}] \to S  \to 0 \\  \text{algebra generating set} & & \ \ \ \ \ \ X_\lambda \mapsto s_\lambda }\]
-The kernel is an ideal $I$, for which we can pick generators $(\{f_\gamma\}_{\gamma\in \Gamma})$ and we get
-\[\xymatrix@R=0pc@C=.5pc{  \{s_\lambda\}_{\lambda\in \Lambda}  & + & \{f_\gamma\}_{\gamma\in \Gamma} &  \rightsquigarrow & R[\{X_\lambda\}_{\lambda\in\Lambda}]^{\oplus \Gamma}  \longrightarrow R[\{X_\lambda\}_{\lambda\in\Lambda}] \longrightarrow S \to 0 \\  \text{algebra generating set} & & \text{defining relations} &  & \quad \qquad e'_\gamma \mapsto f_\gamma \qquad \qquad e_\lambda \mapsto s_\lambda }\]
-Note that we have \emph{polynomial} relations rather than linear relations now, so we can't use a matrix to describe them anymore. 
-
-
-Given an $R$-algebra $S$ with an algebra presentation $S\cong R[X_1,\dots,X_n]/(f_1,\dots,f_m)$, we can also ask what $S$ looks like as an $R$-module. As a generating set, we can take the monomials $\{X_1^{a_1}\cdots X_n^{a_n} \ | \ a_i\in \N\}$. The relations are generated as an $R[X_1,\dots,X_n]$-module by $f_1,\dots, f_m$; to find an $R$-module generating set of the relations, we can take $\{ X_1^{a_1}\cdots X_n^{a_n} f_j \ | \ a_i\in \N, j=1,\dots,m\}$ and rewrite these as $R$-linear combinations of the monomials, and this gives a presentation.
-
-For example, consider $R=\Z[x]/(2x^2-5)$. Let's find a $\Z$-module presentation of this ring. As a generating set, we have $1,x,x^2,x^3,\dots$; the relations are given by $2x^2-5, 2x^3 -5x, 2x^4-5x^2, \dots$; the presentation matrix is
-\[ \begin{bmatrix} 
--5 & 0 & \cdots & & \\
-0 & -5 & 0 & \cdots & \\
-2 & 0 & -5 & 0 & \cdots \\
-0 & 2 & 0 & -5 & \ddots \\
-& \ddots & \ddots & \ddots & \ddots \end{bmatrix}\]
 
 
 
@@ -1141,6 +1123,8 @@ We're now ready to describe \emph{extension of scalars}\index{extension of scala
 \[ R^m \xra{A} R^n \to M \to 0;\]
 then $\phi^*(M)$ is the $S$-module with the same presentation
 \[ S^m \xra{\phi(A)} S^n \to \phi^*(M) \to 0.\]
+
+\begin{comment}
 
 It's not clear that what we did does not depend on the choice of presentation. However, we will show that the $\phi^*(M)$ satisfies an important universal property and use that to show it is well-defined.
 
@@ -1189,6 +1173,26 @@ lift $\alpha$ to a matrix from the free modules over $M$ and $N$; then use the s
 
 
 \end{ex}
+
+\sssec{Presentations of algebras}
+We can play a similar game with algebras. Let $S$ be an $R$-algebra, so there is some $\phi:R\to S$. Given a generating set for $S$ as an algebra, we get a surjection from a polynomial ring:
+\[\xymatrix@R=0pc{  \{s_\lambda\}_{\lambda\in \Lambda}  & \rightsquigarrow & R[\{X_\lambda\}_{\lambda\in\Lambda}] \to S  \to 0 \\  \text{algebra generating set} & & \ \ \ \ \ \ X_\lambda \mapsto s_\lambda }\]
+The kernel is an ideal $I$, for which we can pick generators $(\{f_\gamma\}_{\gamma\in \Gamma})$ and we get
+\[\xymatrix@R=0pc@C=.5pc{  \{s_\lambda\}_{\lambda\in \Lambda}  & + & \{f_\gamma\}_{\gamma\in \Gamma} &  \rightsquigarrow & R[\{X_\lambda\}_{\lambda\in\Lambda}]^{\oplus \Gamma}  \longrightarrow R[\{X_\lambda\}_{\lambda\in\Lambda}] \longrightarrow S \to 0 \\  \text{algebra generating set} & & \text{defining relations} &  & \quad \qquad e'_\gamma \mapsto f_\gamma \qquad \qquad e_\lambda \mapsto s_\lambda }\]
+Note that we have \emph{polynomial} relations rather than linear relations now, so we can't use a matrix to describe them anymore. 
+
+
+Given an $R$-algebra $S$ with an algebra presentation $S\cong R[X_1,\dots,X_n]/(f_1,\dots,f_m)$, we can also ask what $S$ looks like as an $R$-module. As a generating set, we can take the monomials $\{X_1^{a_1}\cdots X_n^{a_n} \ | \ a_i\in \N\}$. The relations are generated as an $R[X_1,\dots,X_n]$-module by $f_1,\dots, f_m$; to find an $R$-module generating set of the relations, we can take $\{ X_1^{a_1}\cdots X_n^{a_n} f_j \ | \ a_i\in \N, j=1,\dots,m\}$ and rewrite these as $R$-linear combinations of the monomials, and this gives a presentation.
+
+For example, consider $R=\Z[x]/(2x^2-5)$. Let's find a $\Z$-module presentation of this ring. As a generating set, we have $1,x,x^2,x^3,\dots$; the relations are given by $2x^2-5, 2x^3 -5x, 2x^4-5x^2, \dots$; the presentation matrix is
+\[ \begin{bmatrix} 
+-5 & 0 & \cdots & & \\
+0 & -5 & 0 & \cdots & \\
+2 & 0 & -5 & 0 & \cdots \\
+0 & 2 & 0 & -5 & \ddots \\
+& \ddots & \ddots & \ddots & \ddots \end{bmatrix}\]
+
+
 
 \begin{prop} Let $R$ be a ring and $W$ be a multiplicative set. Let $\phi:R\to W^{-1}R$ be the localization map. Then $\phi^*(M)\cong W^{-1}M$ for any $R$-module $M$.
 \end{prop}
