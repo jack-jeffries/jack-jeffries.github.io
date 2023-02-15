@@ -719,8 +719,21 @@ and a well-defined map
 induced by restriction.
 \end{prop}
 
+In fact, this restriction map is better than one might expect!
+
+\begin{prop}
+Let $R$ be an $A$-algebra, $I$ an ideal, and $M$ an $R$-module with $IM=0$. Then
+the induced map $\overline{\partial}: I/I^2 \to M$ is $R$-linear. Thus, one obtains an $R$-module homomorphism
+\[ \Der_{R|A}(M) = \Der_{(R/I^2)|A}(M) \to \Hom_R(I/I^2,M)\]
+induced by restriction.
+\end{prop}
+\begin{proof}
+Given $r\in R$ and $a\in I/I^2$, we have $\overline{\partial}(ra) = r \overline{\partial}(a) + a \overline{\partial}(r)= r \overline{\partial}(a).$
+\end{proof}
+
 \begin{ex} Consider $R=\C[x_1,\dots,x_n]$ and $\fm$ maximal. We have the restriction map
-\[ \Der_{R|\C}(R/\fm) \xra{\res} \Hom_{\C}(\fm/\fm^2,R/\fm) =(\fm/\fm^2)^*, \]
+\[ \Der_{R|\C}(R/\fm) \xra{\res} \Hom_{R}(\fm/\fm^2,R/\fm).\]
+Since $\fm/\fm^2$ and $R/\fm$ are killed by $\fm$, these are $R/\fm=\C$-modules, so the target is just $(\fm/\fm^2)^*$,
 where $(-)^*$ denotes $\C$-linear dual. The map is an isomorphism! To see it, note that $\fm=(x_1-a_1,\dots,x_n-a_n)$ for some vector $a$. Write $\widetilde{x_i}=x_i-a_i$. After a change of coordinates, we can consider $R$ as a polynomial ring in the $\widetilde{x_i}$'s. Then $\fm/\fm^2$ is a vector space with basis given by the classes of the $\widetilde{x_i}$'s.  By our proposition on derivations on polynomial rings, for any $n$-tuple of elements in $R/\fm\cong \C$, there is a unique derivation sending the corresponding variables there. That's what it means for the restriction to be an isomorphism! Concretely, the map
 \[ \sum_i \lambda_i \widetilde{x_i}^* \mapsto \sum_i \lambda_i \frac{d}{dx_i}|_{x=a} \]
 is an inverse.
@@ -729,7 +742,7 @@ is an inverse.
 \Feb{2}
 
 We actually don't need the extremely strong hypothesis of polynomial ring in the last example. Let's party hard and figure out when, for a module with $IM=0$, the map
-\[ \Der_{(R/I^2)|A}(M) \to \Hom_A(I/I^2,M)\]
+\[ \Der_{(R/I^2)|A}(M) \to \Hom_R(I/I^2,M)\]
 is surjective (i.e., every homomorphism from the ``$I$-top'' extends to a derivation).
 A reasonable starting point is to take $M$ to be $I/I^2$, which is the part of the ring $R/I^2$ itself that is definitely killed by $I$.
 
@@ -748,7 +761,7 @@ This theorem gives an interesting and useful new way to think of derivations: th
 It also allows us to unlock many derivations.
 
 \begin{prop} Let $R$ be an $A$-algebra and $I$ an ideal. Suppose that the quotient map $\pi :R/I^2 \to R/I$ has an $A$-algebra  right inverse, i.e., there is some $A$-algebra map $\tau:R/I \to R/I^2$ such that $\pi \circ \tau$ is the identity on $R/I$. Then for every $R$-module $M$ with $IM=0$, the map
-\[ \Der_{R|A}(M) \xra{\res} \Hom_A(I/I^2,M)\]
+\[ \Der_{R|A}(M) \xra{\res} \Hom_R(I/I^2,M)\]
 is surjective.
 \end{prop}
 \begin{proof}
@@ -969,7 +982,7 @@ If $\partial = \inc(\theta)$, then $\phi^*(\partial) = \partial \circ\phi$ is an
 \end{proof}
 
 \begin{prop} Let $A\to R  \xra{\pi} R/I$ be ring homomorphisms, and $M$ be an $R/I$-module. Then there is a left exact sequence
-\[ 0 \to \Der_{R/I|A}(M) \xra{\pi^*} \Der_{R|A}(M) \xra{\res} \Hom_A(I/I^2,M). \]
+\[ 0 \to \Der_{R/I|A}(M) \xra{\pi^*} \Der_{R|A}(M) \xra{\res} \Hom_R(I/I^2,M). \]
 \end{prop}
 \begin{proof}
 First, we have $\pi^*$ is injective, since if $\partial([r])=0$, then $\pi^*(\partial)(r) = \partial \pi(r) = \partial([r])\neq 0$. 
@@ -978,7 +991,7 @@ If $\partial=\pi^*(\theta)$, then $\res( \partial) ([a]) =\theta \circ \pi([a]) 
 \end{proof}
 
 \begin{prop} Let $A\to R  \xra{\pi} R/I$ be ring homomorphisms, and suppose that there is an $A$-algebra homomorphism $\tau:R/I \to R/I^2$ such that $\tau\pi: R\to R/I^2$ is just the quotient map. Then the sequence
-\[ 0 \to \Der_{R/I|A}(M) \xra{\pi^*} \Der_{R|A}(M) \xra{\res} \Hom_A(I/I^2,M) \to 0 \]
+\[ 0 \to \Der_{R/I|A}(M) \xra{\pi^*} \Der_{R|A}(M) \xra{\res} \Hom_R(I/I^2,M) \to 0 \]
 is exact.
 \end{prop}
 \begin{proof}
@@ -1119,28 +1132,30 @@ Given a presentation matrix, we can recover $M$ up to isomorphism as $M\cong R^n
 
 
 \sssec{Extension of scalars for modules}
-We're now ready to describe \emph{extension of scalars}\index{extension of scalars}, or \emph{promotion}\index{promotion} of a module along a ring homomorphism. Let $\phi:R\to S$ be a ring homomorphism and $M$ be an $R$-module. We define the extension of scalars of $M$, denoted $\phi^*(M)$ as follows. Take a presentation of $M$:
+We're now ready to describe \emph{extension of scalars}\index{extension of scalars}, or \emph{promotion}\index{promotion} of a module along a ring homomorphism. Let $\phi:R\to S$ be a ring homomorphism and $M$ be an $R$-module. We define the extension of scalars of $M$, denoted $\phi^*(M)$ or $S\otimes_R M$\index{$\phi^*(M)$}\index{$S\otimes_R M$} as follows. Take a presentation of $M$:
 \[ R^m \xra{A} R^n \to M \to 0;\]
 then $\phi^*(M)$ is the $S$-module with the same presentation
 \[ S^m \xra{\phi(A)} S^n \to \phi^*(M) \to 0.\]
 
-\begin{comment}
+\Feb{16}
 
 It's not clear that what we did does not depend on the choice of presentation. However, we will show that the $\phi^*(M)$ satisfies an important universal property and use that to show it is well-defined.
 
-First we note that there is an $R$-module homomorphism from $\eta^M: M \to \phi^*(M)$ (or more properly, to $\phi_*\phi^*(M)$): given $r\in R$ write $m= \sum_i r_i [e_i]$ and map $m$ to $\sum_i \phi(r_i) [e_i]$; if $m$ also equals $\sum_i r'_i [e_i]$, then $\sum_i (r_i-r'_i)[e_i] = 0$ so the vector $\underline{r_i - r'_i} = Av$ for some $v$, and hence $\underline{\phi(r_i)} -\underline{\phi(r'_i)}=\underline{\phi(r_i) - \phi(r'_i)}=\phi(A)\phi(v)$, and hence $\sum_i \phi(r_i) [e_i] = \sum_i \phi(r'_i) [e_i]$ in $\phi^*(M)$. It is then clear\dots to see that this is $R$-linear. 
+First we note that there is an $R$-module homomorphism from $\eta_M: M \to \phi^*(M)$ (or more properly, to $\phi_*\phi^*(M)$). Given $r\in R$ write $m= \sum_i r_i [e_i]$, where the $e_i$'s are the standard basis in $R^n$. For convenience, set $\mathbf{e}$ to be the row vector with entries $e_1,\dots,e_n$ and $\mathbf{r}$ be the column vector of $r_1,\dots, r_n$ so $m= \mathbf{e}\mathbf{r}$. We map $m$ to $\mathbf{e} \phi(\mathbf{r}) = \sum_i \phi(r_i) [e_i]$. If $m$ also equals $\sum_i r'_i [e_i] = \mathbf{e}\mathbf{r'}$, then $\mathbf{e}(\mathbf{r}-\mathbf{r'})= 0$ so $\mathbf{r}-\mathbf{r'} = A\mathbf{v}$ for some $\mathbf{v}$, and hence \[ \mathbf{e} \phi(\mathbf{r}) - \mathbf{e} \phi(\mathbf{r'}) = \mathbf{e} \phi(\mathbf{r}-\mathbf{r'}) = \mathbf{e} \phi(A\mathbf{v}) = \mathbf{e} \phi(A) \mathbf{v},\]
+so this is zero in $\phi^*(M)$. It is then clear to see that this is $R$-linear. 
 
 \begin{prop}
-Let $\phi:R\to S$ be a ring homomorphism. Let $M$ be an $R$-module, $N$ be an $S$-module, and $\alpha:M \to \phi_*(N)$ be an $R$-module homomorphism. Then there exists a unique $S$-module homomorphism $\beta: \phi^*(M) \to N$ that makes the diagram commute:
-\[ \xymatrix{  M \ar[r]^-{\eta^M} \ar[dr]_-{\alpha} & \phi^*(M) \ar@{-->}[d]^-{\beta} \\ & N}.\]
+Let $\phi:R\to S$ be a ring homomorphism. Let $M$ be an $R$-module, $N$ be an $S$-module, and $\alpha:M \to \phi_*(N)$ be an $R$-module homomorphism. Then there exists a unique $S$-module homomorphism $\beta: \phi_*(M) \to N$ that makes the diagram commute:
+\[ \xymatrix{  M \ar[r]^-{\eta_M} \ar[dr]_-{\alpha} & \phi^*(M) \ar@{-->}[d]^-{\beta} \\ & N}.\]
 \end{prop}
 \begin{proof} We will abuse notation and drop the $\phi$ to identify elements in $R$ with their images in $S$.
 
-Let $\alpha([e_i]) = n_i$ and write $\bs{n}$ for the row vector $[n_1,\dots,n_t]$. We define $\beta( \sum_i s_i [e'_i] ) = \sum_i s_i n_i$. To see that this is well-defined, suppose that $\sum_i s_i [e'_i] = \sum_i s'_i [e'_i]$, and write $\bs{s}$ and $\bs{s'}$ for the column vectors of $s_i$ and $s'_i$. We need to show that $\bs{n}\bs{s}=\bs{n}\bs{s'}$. By construction of $\phi^*(M)$, we have that $\bs{s}-\bs{s'} = A \bs{v}$ for some vector $\bs{v}$ with entries in $S$. Since $\alpha$ is well-defined, we must have that for any columns of $A$, the corresponding combination of basis vectors maps to zero, so the corresponding combination of the $n$'s is zero; i.e., $\bs{n} A=0$. But then $\bs{n} A \bs{v} = \bs{n} (\bs{s}-\bs{s'})$, and this shows the claim. Checking $S$-linearity is straightforward from the construction.
- For uniqueness, $\phi^*(M)$ is generated by $[e_i]$, and $n_i = \alpha([e_i])= \beta \eta^M([e_i])=\beta([e'_i])$, so the generators must go to the same place, and hence there can only be one map.
+Let $\alpha([e_i]) = n_i$ and write $\bs{n}$ for the row vector $[n_1,\dots,n_t]$. We define $\beta( \sum_i s_i [e'_i] ) = \sum_i s_i n_i$, or $\beta(\mathbf{e}\mathbf{s}) = \mathbf{n}\mathbf{s}$ for short. To see that this is well-defined, suppose that $\sum_i s_i [e'_i] = \sum_i s'_i [e'_i]$, and write $\bs{s}$ and $\bs{s'}$ for the column vectors of $s_i$ and $s'_i$. We need to show that $\bs{n}\bs{s}=\bs{n}\bs{s'}$. By construction of $\phi^*(M)$, we have that $\bs{s}-\bs{s'} = A \bs{v}$ for some vector $\bs{v}$ with entries in $S$. Since $\alpha$ is well-defined, we must have that for any columns of $A$, the corresponding combination of basis vectors maps to zero, so the corresponding combination of the $n$'s is zero; i.e., $\bs{n} A=0$. But then $\bs{n} A \bs{v} = \bs{n} (\bs{s}-\bs{s'})$, and this shows the claim. Checking $S$-linearity is straightforward from the construction.
+ For uniqueness, $\phi^*(M)$ is generated by $[e_i]$, and $n_i = \alpha([e_i])= \beta \eta_M([e_i])=\beta([e'_i])$, so the generators must go to the same place, and hence there can only be one map.
 \end{proof}
 
-In other words, the proposition says that for any $R$-module $M$ and $S$-module $N$, there is an isomorphism $\Hom_{R}(M,\phi_*N) \cong \Hom_S(\phi^*M,N)$.
+In other words, the proposition says that for any $R$-module $M$ and $S$-module $N$, there is an isomorphism 
+\[  \Hom_S(\phi^*M,N) \xra{\eta_M^*} \Hom_R(M,\phi_* N).\]
 
 \begin{cor}
  $\phi:R\to S$ be a ring homomorphism, and $M$ be an $R$-module. Fix two presentations for $M$, and let $(\phi_1^*(M),\eta^M_1)$ and $(\phi^*_2(M), \eta^M_2)$ be the two modules and morphisms constructed above for each presentation. Then $\phi^*_1(M)\cong \phi^*_2(M)$ as $S$-modules. Moreover, there is a unique $S$-module isomorphism $\theta$ for which $\eta^M_2 = \theta \circ \eta^M_1$.
@@ -1155,24 +1170,57 @@ The universal property yields unique $S$-module dotted maps making the triangles
 \end{proof}
 
 \begin{cor}
-Let $\phi:R\to S$ be a ring homomorphism. For any $R$-module homomorphism $\alpha:M\to N$, there is a unique $S$-module homomomorphism $\phi^*\alpha:\phi^*M \to \phi^*N$ such that $\phi^*\alpha \circ \eta^M = \eta^N \circ \alpha$.
+Let $\phi:R\to S$ be a ring homomorphism. For any $R$-module homomorphism $\alpha:M\to N$, there is a unique $S$-module homomomorphism $\phi^*\alpha:\phi^*M \to \phi^*N$ such that $\phi^*\alpha \circ \eta_M = \eta_N \circ \alpha$.
 \end{cor}
 \begin{proof} 
-Apply the universal property of $(\phi^*M, \eta^M)$ to $\eta^N \circ \alpha$.
+Apply the universal property of $(\phi^*M, \eta_M)$ to $\eta_N \circ \alpha$.
 \end{proof}
 
 Tracing the proof of the universal property, we see that $\phi^*\alpha$ can be computed as follows: take presentations for $M$ and $N$, and
 lift $\alpha$ to a matrix from the free modules over $M$ and $N$; then use the same matrix for $\phi^*\alpha$.
 
+\begin{lem} Under the isomorphisms $\Hom_S(\phi^*M,N) \xra{\eta_M^*} \Hom_R(M,\phi_* N)$, the map $\Hom_S(\phi^*\alpha,N)$ corresponds to $\Hom_R(\alpha,N)$.
+That is, for an $R$-module homomorphism $\alpha:L\to M$ and $S$-module $N$, there is a commutative diagram:
+\[\xymatrix@C=5em{
+ \Hom_S(\phi^* M, N) \ar[r]^{\Hom_S(\phi^*\alpha,N)} \ar[d]^{\eta_M^*}_{\cong} &  \Hom_S(\phi^* L, N) \ar[d]^{\eta_L^*}_{\cong} \\
+ \Hom_R(M,N) \ar[r]^{\Hom_R(\alpha,N)} & \Hom_R(L,N)
+}\]
+\end{lem}
+\begin{proof}
+First, by construction of $\phi^*\alpha$, we have a commutative diagram:
+\[ \xymatrix{
+\phi^*M & \ar[l]_{\phi^* \alpha} \phi^* L \\
+M \ar[u]_{\eta_M} & L \ar[l]_{\alpha} \ar[u]_{\eta_L}}\]
+Then using this commutativity, given an $S$-linear map $\theta:\phi^*M \to N$, we have that
+\[(\eta_L^* \circ \Hom(\phi^*\alpha,N)) (\theta) = \theta \circ \phi^*\alpha \circ \eta_L = \theta \circ \alpha \circ \eta_M = (\Hom(\alpha,N) \circ \eta_M^*)(\theta).\qedhere\]
+\end{proof}
 
-\begin{exer} Show that the map $\Hom_S(\phi^*\alpha,N)$ corresponds to $\Hom_R(\alpha,N)$.
-\end{exer}
+\begin{prop} Let $\phi:R\to S$ be a ring homomorphism, and 
+\[ L \xra{\alpha} M \xra{\beta} N \to 0\]
+be a right exact sequence of $R$-modules. Then the sequence of $S$-modules
+\[ \phi^*L \xra{\phi^*\alpha} \phi^*M \xra{\phi^*\beta} \phi^*N \to 0\]
+is exact.
+\end{prop}
+\begin{proof}
+Let $X$ be an arbitrary $S$-module. Applying Hom into $X$ to the sequence above, we have a sequence:
+\[ 0 \to \Hom_S(\phi^*N,X)  \xra{\Hom(\phi^*\beta,X)} \Hom_S(\phi^*M,X) \xra{\Hom(\phi^*\alpha,X)} \Hom_S(\phi^*L,X).\]
+We have isomorphisms
+\[ \xymatrix@C=5em{ 
+0 \ar[r] \ar@{=}[d]  & \Hom_S(\phi^*N,X)  \ar[r]^{\Hom(\phi^*\beta,X)} \ar@{=}[d] & \Hom_S(\phi^*M,X) \ar[r]^{\Hom(\phi^*\alpha,X)} \ar@{=}[d] & \Hom_S(\phi^*L,X) \ar@{=}[d] \\
+0 \ar[r] & \Hom_R(N,X) \ar[r]^{\Hom(\beta,X)} & \Hom_R(M,X) \ar[r]^{\Hom(\alpha,X)} & \Hom_R(L,X) }\]
+The last row is exact, by left exactness of Hom (part (3) in the forward implication). But then by left exactness of Hom again, since this is true for all $X$, the sequence we consider is exact.
+\end{proof}
 
-\begin{ex}
+In general, exact sequences (or left exact sequences) no longer remain exact. We say that a ring homomorphism $\phi:R\to S$ is \emph{flat}\index{flat} if it has the special property that extension of scalars preserves exact sequences.
+
+\begin{prop} Let $R$ be a ring and $W$ be a multiplicative set. Let $\phi:R\to W^{-1}R$ be the localization map. Then $\phi^*(M)\cong W^{-1}M$ for any $R$-module $M$.
+\end{prop}
+\begin{proof} Let $\eta:M \to W^{-1}M$ be the localization map. We will show that $(W^{-1}M,\eta)$ satisfies the universal property of $\phi^*M$. If $N$ is any $W^{-1}R$-module, and $\alpha:M\to N$ is a homomorphism, define $\beta:W^{-1}M \to N$ by sending $\beta(\frac{m}{w}) = \frac{\alpha(m)}{w}$. The check that this $\beta$ is well-defined and $W^{-1}R$-linear is straightforward; that it is the unique map making the diagram commute follows from the fact that the image of $M$ generates $W^{-1}M$ as a $W^{-1}R$-module.
+\end{proof}
 
 
 
-\end{ex}
+
 
 \sssec{Presentations of algebras}
 We can play a similar game with algebras. Let $S$ be an $R$-algebra, so there is some $\phi:R\to S$. Given a generating set for $S$ as an algebra, we get a surjection from a polynomial ring:
@@ -1182,7 +1230,7 @@ The kernel is an ideal $I$, for which we can pick generators $(\{f_\gamma\}_{\ga
 Note that we have \emph{polynomial} relations rather than linear relations now, so we can't use a matrix to describe them anymore. 
 
 
-Given an $R$-algebra $S$ with an algebra presentation $S\cong R[X_1,\dots,X_n]/(f_1,\dots,f_m)$, we can also ask what $S$ looks like as an $R$-module. As a generating set, we can take the monomials $\{X_1^{a_1}\cdots X_n^{a_n} \ | \ a_i\in \N\}$. The relations are generated as an $R[X_1,\dots,X_n]$-module by $f_1,\dots, f_m$; to find an $R$-module generating set of the relations, we can take $\{ X_1^{a_1}\cdots X_n^{a_n} f_j \ | \ a_i\in \N, j=1,\dots,m\}$ and rewrite these as $R$-linear combinations of the monomials, and this gives a presentation.
+Given an $R$-algebra $S$ with an algebra presentation $S\cong R[X_1,\dots,X_n]/(f_1,\dots,f_m)$, we can also ask what $S$ looks like as an $R$-module. As a generating set, we can take the monomials $\{X_1^{a_1}\cdots X_n^{a_n} \ | \ a_i\in \N\}$. The relations are generated as an $R[X_1,\dots,X_n]$-module by $f_1,\dots, f_m$; to find an $R$-module generating set of the relations, we can take $\{ X_1^{a_1}\cdots X_n^{a_n} f_j \ | \ a_i\in \N, j=1,\dots,m\}$ and collect the coefficients of the monomials, and this gives a presentation.
 
 For example, consider $R=\Z[x]/(2x^2-5)$. Let's find a $\Z$-module presentation of this ring. As a generating set, we have $1,x,x^2,x^3,\dots$; the relations are given by $2x^2-5, 2x^3 -5x, 2x^4-5x^2, \dots$; the presentation matrix is
 \[ \begin{bmatrix} 
@@ -1194,23 +1242,6 @@ For example, consider $R=\Z[x]/(2x^2-5)$. Let's find a $\Z$-module presentation 
 
 
 
-\begin{prop} Let $R$ be a ring and $W$ be a multiplicative set. Let $\phi:R\to W^{-1}R$ be the localization map. Then $\phi^*(M)\cong W^{-1}M$ for any $R$-module $M$.
-\end{prop}
-\begin{proof} Let $\eta:M \to W^{-1}M$ be the localization map. We will show that $(W^{-1}M,\eta)$ satisfies the universal property of $\phi^*M$. If $N$ is any $W^{-1}R$-module, and $\alpha:M\to N$ is a homomorphism, define $\beta:W^{-1}M \to N$ by sending $\beta(\frac{m}{w}) = \frac{\alpha(m)}{w}$. The check that this $\beta$ is well-defined and $W^{-1}R$-linear is straightforward; that it is the unique map making the diagram commute follows from the fact that the image of $M$ generates $W^{-1}M$ as a $W^{-1}R$-module.
-\end{proof}
-
-\begin{lem} Let \[ L \xra{\alpha} M \xra{\beta} N \to 0\] be a right exact sequence. Then 
-\[ \phi^*L \xra{\phi^*\alpha} \phi^*M \xra{\phi^*\beta} \phi^*N \to 0\] is right exact as well.
-\end{lem}
-\begin{proof}
-For any $S$-module $X$, we have \dots.
-
-\end{proof}
-
-
-\begin{defn}Flat
-\end{defn}
-
 \sssec{Base change for algebras}
 
 
@@ -1218,6 +1249,26 @@ Let's promote some algebras too. We'll follow the same recipe: take a presentati
 \[ R[X_1,\dots,X_n]^{m} \xra{[f_1,\dots,f_m]} R[X_1,\dots,X_n] \to T \to 0;\]
 then $\phi^*(T)$ is the $S$-algebra with presentation
 \[ S[X_1,\dots,X_n]^{m} \xra{[\phi(f_1),\dots,\phi(f_m)]} S[X_1,\dots,X_n] \to \phi^*(T) \to 0.\]
+
+Note that we are using the same notation as module extension of scalars, though it is not immediately clear these should be related. For starters, in analogy with the module extension of scalars, one has:
+
+\begin{prop} For a ring homomorphism $\phi:R\to S$ and an $R$-algebra $T$, the base change $\phi^*T$ 
+admits an $R$-algebra homomorphism $\eta_T: T\to \phi^*T$ that satisfies the universal property that for any $S$-algebra $V$ and $R$-algebra homomorphism $\alpha:R\to V$, there is a unique $S$-algebra homomorphism $\beta: \phi^*T\to V$ that makes the diagram commute:
+\[  \xymatrix{  T \ar[r]^-{\eta_T} \ar[dr]_-{\alpha} & \phi^*T \ar@{-->}[d]^-{\beta} \\ & V}.\]
+Consequently, $\phi^*T$ is well-defined (independent of the choice of presentation) up to isomorphism.
+\end{prop}
+\begin{proof} Omitted; similar to what we did with modules.
+\end{proof}
+
+Another key point is that this base change operation for algebras agrees with that for modules. Namely:
+
+\begin{prop} Let $\phi:R\to S$ be a ring homomorphism and $T$ an $R$-algebra. Then the $S$-algebra $\phi^* T$ obtained by extension of scalars of $R$-algebras along $\phi$, considered as an $S$-module, is isomorphic to the extension of scalars of $T$ considered as an $S$-module.
+\end{prop}
+\begin{proof}
+Take a presentation of $T$ as an $R$-algebra, and take the presentation as an $R$-module obtained from it as discussed above (namely, generators given by monomials, and relations given by taking coefficients of the multiples of the relations by different monomials). Applying algebra extension of scalars to $T$, and taking the corresponding module presentation gives the same presentation module presentation.
+\end{proof}
+
+
 
 
 
