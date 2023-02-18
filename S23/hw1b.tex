@@ -1,0 +1,470 @@
+\documentclass{amsart}[12pt]
+\usepackage{graphicx}
+\usepackage{comment}
+\usepackage{amscd,mathabx}
+\usepackage{amssymb,setspace,color,xcolor}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath,amscd,stmaryrd,mathrsfs}
+\usepackage[all, knot]{xy}
+\usepackage[top=.8in, bottom=.8in, left=1in, right=1in]{geometry}
+\xyoption{all}
+\xyoption{arc}
+
+
+%\usepackage{hyperref}
+
+
+%\usepackage[notcite,notref]{showkeys}
+ 
+%\CompileMatricesx
+\newcommand{\edit}[1]{\marginpar{\footnotesize{#1}}}
+%\newcommand{\edit}[1]{}
+\newcommand{\rperf}[2]{\operatorname{RPerf}(#1 \into #2)}
+
+
+
+\newcommand{\vectwo}[2]{\begin{bmatrix} #1 \\ #2 \end{bmatrix}}
+
+\newcommand{\vecfour}[4]{\begin{bmatrix} #1 \\ #2 \\ #3 \\ #4 \end{bmatrix}}
+
+\newcommand{\Cat}[1]{\left<\left< \text{#1} \right>\right>}
+
+
+\def\htpy{\simeq_{\mathrm{htpc}}}
+\def\tor{\text{ or }}
+\def\fg{finitely generated~}
+
+\def\Ass{\operatorname{Ass}}
+\def\ann{\operatorname{ann}}
+\def\sign{\operatorname{sign}}
+
+\def\ob{{\mathfrak{ob}} }
+\def\BiAdd{\operatorname{BiAdd}}
+\def\BiLin{\operatorname{BiLin}}
+
+\def\Syl{\operatorname{Syl}}
+\def\span{\operatorname{span}}
+
+\def\sdp{\rtimes}
+\def\cL{\mathcal L}
+\def\cR{\mathcal R}
+
+
+
+\def\ay{??}
+\def\Aut{\operatorname{Aut}}
+\def\End{\operatorname{End}}
+\def\Mat{\operatorname{Mat}}
+
+
+\def\a{\alpha}
+
+
+
+\def\etale{\'etale~}
+\def\tW{\tilde{W}}
+\def\tH{\tilde{H}}
+\def\tC{\tilde{C}}
+\def\tS{\tilde{S}}
+\def\tX{\tilde{X}}
+\def\tZ{\tilde{Z}}
+\def\HBM{H^{\text{BM}}}
+\def\tHBM{\tilde{H}^{\text{BM}}}
+\def\Hc{H_{\text{c}}}
+\def\Hs{H_{\text{sing}}}
+\def\cHs{{\mathcal H}_{\text{sing}}}
+\def\sing{{\text{sing}}}
+\def\Hms{H^{\text{sing}}}
+\def\Hm{\Hms}
+\def\tHms{\tilde{H}^{\text{sing}}}
+\def\Grass{\operatorname{Grass}}
+\def\image{\operatorname{im}}
+\def\im{\image}
+\def\ker{\operatorname{ker}}
+\def\cone{\operatorname{cone}}
+\newcommand{\Hom}{\mathrm{Hom}}
+
+
+\def\ku{ku}
+\def\bbu{\bf bu}
+\def\KR{K{\mathbb R}}
+
+\def\CW{\underline{CW}}
+\def\cP{\mathcal P}
+\def\cE{\mathcal E}
+\def\cL{\mathcal L}
+\def\cJ{\mathcal J}
+\def\cJmor{\cJ^\mor}
+\def\ctJ{\tilde{\mathcal J}}
+\def\tPhi{\tilde{\Phi}}
+\def\cA{\mathcal A}
+\def\cB{\mathcal B}
+\def\cC{\mathcal C}
+\def\cZ{\mathcal Z}
+\def\cD{\mathcal D}
+\def\cF{\mathcal F}
+\def\cG{\mathcal G}
+\def\cO{\mathcal O}
+\def\cI{\mathcal I}
+\def\cS{\mathcal S}
+\def\cT{\mathcal T}
+\def\cM{\mathcal M}
+\def\cN{\mathcal N}
+\def\cMpc{{\mathcal M}_{pc}}
+\def\cMpctf{{\mathcal M}_{pctf}}
+\def\L{\Lambda}
+
+\def\sA{\mathscr A}
+\def\sB{\mathscr B}
+\def\sC{\mathscr C}
+\def\sZ{\mathscr  Z}
+\def\sD{\mathscr  D}
+\def\sF{\mathscr  F}
+\def\sG{\mathscr G}
+\def\sO{\mathscr  O}
+\def\sI{\mathscr I}
+\def\sS{\mathscr S}
+\def\sT{\mathscr  T}
+\def\sM{\mathscr M}
+\def\sN{\mathscr N}
+
+
+
+\def\Ext{\operatorname{Ext}}
+ \def\ext{\operatorname{ext}}
+
+
+
+\def\ov#1{{\overline{#1}}}
+
+\def\vecthree#1#2#3{\begin{bmatrix} #1 \\ #2 \\ #3 \end{bmatrix}}
+
+\def\tOmega{\tilde{\Omega}}
+\def\tDelta{\tilde{\Delta}}
+\def\tSigma{\tilde{\Sigma}}
+\def\tsigma{\tilde{\sigma}}
+
+
+\def\d{\delta}
+\def\td{\tilde{\delta}}
+
+\def\e{\epsilon}
+\def\nsg{\unlhd}
+\def\pnsg{\lhd}
+
+\newcommand{\tensor}{\otimes}
+\newcommand{\homotopic}{\simeq}
+\newcommand{\homeq}{\cong}
+\newcommand{\iso}{\approx}
+
+\DeclareMathOperator{\ho}{Ho}
+\DeclareMathOperator*{\colim}{colim}
+
+
+\newcommand{\Q}{\mathbb{Q}}
+\renewcommand{\H}{\mathbb{H}}
+
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bM}{\mathbb{M}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\bH}{{\mathbb{H}}}
+\newcommand{\G}{\mathbb{G}}
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\bL}{{\mathbb{L}}}
+\newcommand{\R}{{\mathbb{R}}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\bK}{\mathbb{K}}
+
+
+\newcommand{\bD}{\mathbb{D}}
+\newcommand{\bS}{\mathbb{S}}
+
+\newcommand{\bN}{\mathbb{N}}
+
+
+\newcommand{\bG}{\mathbb{G}}
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\W}{\mathcal{W}}
+
+
+
+\newcommand{\itilde}{\tilde{\imath}}
+\newcommand{\jtilde}{\tilde{\jmath}}
+\newcommand{\ihat}{\hat{\imath}}
+\newcommand{\jhat}{\hat{\jmath}}
+
+\newcommand{\fc}{{\mathfrak c}}
+\newcommand{\fp}{{\mathfrak p}}
+\newcommand{\fm}{{\mathfrak m}}
+\newcommand{\fn}{{\mathfrak n}}
+\newcommand{\fq}{{\mathfrak q}}
+
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\dual}{\vee}
+
+\newcommand{\DEF}[1]{\emph{#1}\index{#1}}
+\newcommand{\Def}[1]{#1 \index{#1}}
+
+
+% The following causes equations to be numbered within sections
+\numberwithin{equation}{section}
+
+
+\theoremstyle{plain} %% This is the default, anyway
+\newtheorem{thm}[equation]{Theorem}
+\newtheorem{thmdef}[equation]{TheoremDefinition}
+\newtheorem{introthm}{Theorem}
+\newtheorem{introcor}[introthm]{Corollary}
+\newtheorem*{introthm*}{Theorem}
+\newtheorem{question}{Question}
+\newtheorem{cor}[equation]{Corollary}
+\newtheorem{por}[equation]{Porism}
+\newtheorem{lem}[equation]{Lemma}
+\newtheorem{lemminition}[equation]{Lemminition}
+\newtheorem{prop}[equation]{Proposition}
+\newtheorem{porism}[equation]{Porism}
+
+\newtheorem{conj}[equation]{Conjecture}
+\newtheorem{quest}[equation]{Question}
+
+\theoremstyle{definition}
+\newtheorem{defn}[equation]{Definition}
+\newtheorem{chunk}[equation]{}
+\newtheorem{ex}[equation]{Example}
+
+\newtheorem{exer}[equation]{Optional Exercise}
+
+\theoremstyle{remark}
+\newtheorem{rem}[equation]{Remark}
+
+\newtheorem{notation}[equation]{Notation}
+\newtheorem{terminology}[equation]{Terminology}
+
+
+
+\renewcommand{\sec}[1]{\section{#1}}
+\newcommand{\ssec}[1]{\subsection{#1}}
+\newcommand{\sssec}[1]{\subsubsection{#1}}
+
+\newcommand{\br}[1]{\lbrace \, #1 \, \rbrace}
+\newcommand{\li}{ < \infty}
+\newcommand{\quis}{\simeq}
+\newcommand{\xra}[1]{\xrightarrow{#1}}
+\newcommand{\xla}[1]{\xleftarrow{#1}}
+\newcommand{\xlra}[1]{\overset{#1}{\longleftrightarrow}}
+
+\newcommand{\xroa}[1]{\overset{#1}{\twoheadrightarrow}}
+\newcommand{\xria}[1]{\overset{#1}{\hookrightarrow}}
+\newcommand{\ps}[1]{\mathbb{P}_{#1}^{\text{c}-1}}
+
+
+
+
+\def\and{{ \text{ and } }}
+\def\oor{{ \text{ or } }}
+
+\def\Perm{\operatorname{Perm}}
+\newcommand{\Ss}{\mathbb{S}}
+
+\def\Op{\operatorname{Op}}
+\def\res{\operatorname{res}}
+\def\ind{\operatorname{ind}}
+
+\def\sign{{\mathrm{sign}}}
+\def\naive{{\mathrm{naive}}}
+\def\l{\lambda}
+
+
+\def\ov#1{\overline{#1}}
+\def\cV{{\mathcal V}}
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+
+\newcommand{\chara}{\operatorname{char}}
+\newcommand{\Kos}{\operatorname{Kos}}
+\newcommand{\opp}{\operatorname{opp}}
+\newcommand{\perf}{\operatorname{perf}}
+
+\newcommand{\Fun}{\operatorname{Fun}}
+\newcommand{\GL}{\operatorname{GL}}
+\newcommand{\SL}{\operatorname{SL}}
+\def\o{\omega}
+\def\oo{\overline{\omega}}
+
+\def\cont{\operatorname{cont}}
+\def\te{\tilde{e}}
+\def\gcd{\operatorname{gcd}}
+
+\def\stab{\operatorname{stab}}
+
+\def\va{\underline{a}}
+
+\def\ua{\underline{a}}
+\def\ub{\underline{b}}
+
+
+\newcommand{\Ob}{\mathrm{Ob}}
+\newcommand{\Set}{\mathbf{Set}}
+\newcommand{\Grp}{\mathbf{Grp}}
+\newcommand{\Ab}{\mathbf{Ab}}
+\newcommand{\Sgrp}{\mathbf{Sgrp}}
+\newcommand{\Ring}{\mathbf{Ring}}
+\newcommand{\Fld}{\mathbf{Fld}}
+\newcommand{\cRing}{\mathbf{cRing}}
+\newcommand{\Mod}[1]{#1-\mathbf{Mod}}
+\newcommand{\vs}[1]{#1-\mathbf{vect}}
+\newcommand{\Vs}[1]{#1-\mathbf{Vect}}
+\newcommand{\vsp}[1]{#1-\mathbf{vect}^+}
+\newcommand{\Top}{\mathbf{Top}}
+\newcommand{\Setp}{\mathbf{Set}_*}
+\newcommand{\Alg}[1]{#1-\mathbf{Alg}}
+\newcommand{\cAlg}[1]{#1-\mathbf{cAlg}}
+\newcommand{\PO}{\mathbf{PO}}
+\newcommand{\Cont}{\mathrm{Cont}}
+\newcommand{\MaT}[1]{\mathbf{Mat}_{#1}}
+\newcommand{\Der}{\mathrm{Der}}
+
+
+\newcommand{\red}[1]{{\color{red}#1}}
+
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+
+\makeindex
+\title{Problem set \#1}
+
+
+\begin{document}
+\onehalfspacing
+
+\maketitle
+
+
+\vspace{-1mm}
+
+\begin{enumerate}
+
+
+\item* Basic rules with derivations:
+\begin{enumerate}
+\item Prove the generalized product rule for derivations: if $\partial:R\to M$ is a derivation, then $\partial( a_1\cdots a_n) = \sum_{j=1}^n (\prod_{j\neq i} a_i)  \partial(a_j)$.
+\item Prove the power rule for derivations: if $\partial:R\to M$ is a derivation, then $\partial(r^n) = n r^{n-1} \partial(r)$.
+\item Show that if $R$ is a ring of characteristic $p$, then the subring $R^p:=\{ r^p \ | \ r\in R\}$ is in the kernel of every derivation.
+\end{enumerate}
+
+\
+ 
+
+
+
+\item* Let $A$ be a ring and $S=A[x_1,\dots,x_n]$ be a polynomial ring.
+\begin{enumerate}
+\item Let $R$ be an $\N$-graded $A$-algebra such that $A$ lives in degree zero. Show that there is a derivation on $R$ such that for every homogeneous element $f$ of degree $d$, $\partial(f) = d\cdot  f$. This derivation is called the \emph{Euler operator} associated to the grading. 
+\begin{proof} The rule above describes a well-defined function on $R$. We need to check that it is $A$-linear and satisfies the product rule.
+Let $r=\sum_i r_i$ and $s=\sum_i s_i$ be elements of $R$ expressed as (finite) sums of homogeneous pieces with degree $r_i=i$ and $a\in A$. Then\begin{itemize}
+\item $\partial(r+s) = \partial(\sum_i r_i + \sum_i s_i) =  \partial(\sum_i (r_i + s_i) ) = \sum_i i(r_i + s_i) = \sum_i i r_i + \sum_i i s_i = \partial(r) + \partial(s)$.
+\item $\partial(ar) = \partial( a \sum_i r_i) = \partial(\sum_i ar_i ) = \sum_i i ar_i = a \sum_i i r_i = a\partial(r)$.
+\item $\partial(rs) = \partial(\sum_k \sum_{i+j=k} r_i s_j) = \sum_k k (\sum_{i+j=k} r_i s_j) = \sum_{i,j} i r_i s_j + r_i j s_j = s\partial(r) + r\partial(s)$.
+\end{itemize}
+\end{proof}
+\item Let $S$ \red{be, as above,}\footnote{For infinitely many variables, we will get the same formula with a formal sum, but this is not an $S$-linear combination of partial derivatives. Oops!} a polynomial ring over $A$ endowed with the $\N$-grading by the rule $\deg(x_i) = n_i$. Express the Euler operator of the grading as an $S$-linear combination of the partial derivatives.
+\begin{proof}
+Take $\partial = \sum_i n_i x_i \frac{d}{dx_i}$. To check that this agrees with the Euler operator, by  $A$-linearity it suffices to check on any monomial $x_1^{a_1}\cdots x_n^{a_n}$: we get
+\[ \partial(x_1^{a_1}\cdots x_n^{a_n}) = \sum_i n_i a_i x_1^{a_1}\cdots x_n^{a_n}\]
+and $\sum_i n_i a_i$ is just the degree of $x_1^{a_1}\cdots x_n^{a_n}$.\qedhere
+\end{proof}
+\end{enumerate}
+
+\
+
+\item Let $A$ be a ring and $R=A[x_1,\dots,x_n]$ be a polynomial ring.
+\begin{enumerate}
+\item Give an explicit formula for the Lie algebra bracket on $\Der_{R|A}(R)$.
+\item Does $\Der_{R|A}(R)$ have any nontrivial proper Lie ideals (i.e., $A$-submodules $B$ such that $[d,b]\in B$ for all $b\in B$ and $d\in \Der_{R|A}(R)$)?
+\begin{proof}
+It is possible in general. For a fun example, over $A=\mathbb{F}_2$, we can take $\mathbb{F}_2[x^2] \frac{d}{dx}$ as a Lie ideal of $\Der_{\mathbb{F}_2[x]|\mathbb{F}_2}(\mathbb{F}_2[x])$. Indeed, note that for any $f\in \mathbb{F}_2[x]$, $\frac{d}{dx}(f) \in \mathbb{F}_2[x^2]$, since any even power of $x$ picks up a coefficient of two in the derivative. Then given $f\in \mathbb{F}_2[x^2]$ and $g\in \mathbb{F}_2[x^2]$ we have \[ [f\frac{d}{dx}, g \frac{d}{dx}] = (f \frac{d}{dx}(g) - g \frac{d}{dx}(f)) \frac{d}{dx} =g \frac{d}{dx}(f) \frac{d}{dx} \in \mathbb{F}_2[x^2] \frac{d}{dx}.\]
+However, over a field of characteristic zero, this is false.
+\end{proof}
+\end{enumerate}
+
+
+\
+
+
+\item Let $R$ be a ring of characteristic $p>0$ and $\partial:R\to R$ be a derivation. Show that $\partial^p$, i.e., the $p$-fold self composition of $\partial$, is a derivation on $R$.
+
+\
+
+\item Let $R=\mathcal{C}^\infty(\R^n)$ be the ring of smooth functions on $\R^n$, and $\fm$ be the maximal ideal consisting of functions that vanish at some point $x_0\in \R^n$.
+\begin{enumerate}
+\item * Show that $\fm^t$ consists of the functions $f\in R$ such that $\frac{d^{a_1}}{dx_1^{a_1}} \cdots \frac{d^{a_n}}{dx_n^{a_n}}(f)|_{x=x_0} = 0$ for all $a_1,\dots,a_n$ with $0
+\leq a_1+\cdots+a_n<t$.
+\begin{proof}
+Let $J_n= \{ f\in R \ | \ \frac{d^{a_1}}{dx_1^{a_1}} \cdots \frac{d^{a_n}}{dx_n^{a_n}}(f)|_{x=x_0} = 0\ \forall a_1,\dots,a_n:0
+\leq a_1+\cdots+a_n<t\}$. We'll write $d^a$ for an $n$-tuple $a$ as shorthand for the iterated derivative above. 
+
+First we show that $\fm^t\subseteq J_n$. We proceed by induction on $t$ with $t=1$ immediate from the definitions. Supposing the inclusion for a given $t$, take $f\in \fm^{t+1}$ and write $f=\sum g_i h_i$ with $g_i\in \fm^t$ and $h_i\in \fm$. Then each $g_i\in J_t$ by the induction hypothesis. Since $f\in \fm^t \in J_t$, we have $d^a(f)|_{x_0} = 0$ for all $|a|<t$. Given some $a$ with $|a|=t+1$, we can write $d^a = d^b \frac{d}{d_{x_j}}$ for some $j$ and some $b$ with $|b|=t$. Then 
+\[ d^a(f) = \sum_i d^a(g_i h_i) = \sum_i d^b \frac{d}{d_{x_j}}(g_i h_i) = \sum_i d^b \big(h_i \frac{d}{d_{x_j}}(g_i)\big) + 
+\sum_i d^b\big( g_i \frac{d}{d_{x_j}}(h_i) \big).\]
+We have $g_i \frac{d}{d_{x_j}}(h_i) \in \fm^t \subseteq J_t$ so the second sum evaluates to zero at $x_0$.
+Since $\frac{d}{d_{x_j}}(\fm^t) \subseteq \fm^{t-1}$, we have
+$h_i \frac{d}{d_{x_j}}(g_i) \in \fm^t$, so the first sum evaluates to $0$ at $x_0$ as well. Thus, $f\in J_{t+1}$, as required.
+
+For the other containment, we will apply Taylor's Theorem for multivariate functions\footnote{cf., Folland's \emph{Advanced Calculus}, Theorem 2.68}. Recall that this this says that $f$ agrees with a polynomial (in $x_i - (x_0)_i$) whose coefficients are determined by the iterated partial derivatives of $f$ at $x_0$, plus some error term. Beware that in general a smooth function is not equal to its Taylor series, so we will need to consider the polynomial plus remainder version. Applying this, if $f\in J_t$, we can write
+\[ f =  \sum_{|a| = t} \frac{t}{a_1!\cdots a_n!} \widetilde{x_1}^{a_1}\cdots \widetilde{x_n}^{a_n} \int_0^1 (1-s)^t d^a(f)|_{x_0+ s(x-x_0)} \mathrm{ds},\]
+where $\widetilde{x_i}:=x_i - (x_0)_i$.
+What is important to observe about this expression is that each \[ j_a(x):= \frac{t}{a_1!\cdots a_n!} \int_0^1 (1-s)^t d^a(f)|_{x_0+ s(x-x_0)} \mathrm{ds}\]
+is a $\mathcal{C}^\infty$ function on $\R^n$: we omit the details, but the point is essentially that smoothness lets us differentiate under the integral sign. Thus, we have
+\[ f = \sum_{|a| = t} j_a \widetilde{x_1}^{a_1}\cdots \widetilde{x_n}^{a_n} \] with $j_a\in R$ and $\widetilde{x_i}\in \fm$ for each $i$, so $f\in \fm^t$.
+\end{proof}
+\item Show that $\Der_{R|\R}(R/\fm) \cong (\fm/\fm^2)^* \cong \R^n$ as vector spaces.
+\end{enumerate}
+As a moral, we conclude that $\Der_{R|\R}(R/\fm)$ serves as a model for the tangent space of $\R^n$ at $x_0$ constructed from the ring of smooth functions.
+
+
+\
+
+\item* Let $R$ be an $A$-algebra and $I$ an ideal. Show that if the identity map on $I/I^2$ is in the image of $\Der_{R|A}(I/I^2) \xra{\mathrm{res}} \Hom_{\red{R}}(I/I^2,I/I^2)$, then there is an $A$-algebra right inverse to the quotient map $\pi:R/I^2 \to R/I$. Conclude that the following are equivalent:
+\begin{itemize}
+\item $\Der_{R|A}(M) \xra{\mathrm{res}} \Hom_{\red{R}}(I/I^2,M)$ is surjective for all $R/I$-modules $M$;
+\item $\Der_{R|A}(I/I^2) \xra{\mathrm{res}} \Hom_{\red{R}}(I/I^2,I/I^2)$ is surjective;
+\item The quotient map $R/I^2 \to R/I$ has an $A$-algebra right inverse.
+\end{itemize}
+\begin{proof}
+Suppose that $\partial:R\to I/I^2$ is a derivation whose restriction to $I/I^2$ (after factoring through $R/I^2$ as usual) is the identity map. Viewing $\partial$ as a derivation on $R/I^2$ by abuse of notation, note that $K:=\ker(\partial)$ is a subring of $R/I^2$ containing $A$. Let $i:K\to R/I^2$ be the inclusion map. We claim that $K\cong R/I$ as $A$-algebras. 
+
+Since $-\partial$ is a derivation, the map $1-\partial:R/I^2\to R/I^2$ is a ring homomorphism, and $(1-\partial)\circ i$ is the identity on $K$ (because $K$ is the kernel of $\partial$). In particular, $1-\partial$ is surjective. We just need to see that the kernel of $1-\partial$ is $I/I^2$. We have $I//I^2$ is contained in the kernel, since for $a\in I/I^2$, $(1-\partial)(a) =a-\partial(a) = 0$; on the other hand if $r\in \ker(1-\partial)$, then $r\in \im(\partial)$, so $r\in I/I^2$. This completes the proof.
+
+For the equivalences, the first implies the second since $I/I^2$ is an $R/I$-module, the second implies the third by what we just showed, and the third implies the first by a theorem from class.
+\end{proof}
+
+
+\
+
+\item Let $R$ be a ring and $M$ an $R$-module. Recall that $R\rtimes M$ denotes the Nagata idealization of $M$: the ring with additive structure $R\oplus M$ and multiplication $(r,m)(s,n) = (rs,rn+sm)$. Show that $\alpha:R\to M$ is a derivation if and only if $(1,\alpha):R\to R\rtimes M$ ($r\mapsto (r,\alpha(r))$) is a ring homomorphism.
+
+\end{enumerate}
+
+
+\end{document}
+
+
+
+
+
+
+
+  
+ 
+
+
