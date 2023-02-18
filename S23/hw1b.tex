@@ -374,14 +374,14 @@
 Let $r=\sum_i r_i$ and $s=\sum_i s_i$ be elements of $R$ expressed as (finite) sums of homogeneous pieces with degree $r_i=i$ and $a\in A$. Then\begin{itemize}
 \item $\partial(r+s) = \partial(\sum_i r_i + \sum_i s_i) =  \partial(\sum_i (r_i + s_i) ) = \sum_i i(r_i + s_i) = \sum_i i r_i + \sum_i i s_i = \partial(r) + \partial(s)$.
 \item $\partial(ar) = \partial( a \sum_i r_i) = \partial(\sum_i ar_i ) = \sum_i i ar_i = a \sum_i i r_i = a\partial(r)$.
-\item $\partial(rs) = \partial(\sum_k \sum_{i+j=k} r_i s_j) = \sum_k k (\sum_{i+j=k} r_i s_j) = \sum_{i,j} i r_i s_j + r_i j s_j = s\partial(r) + r\partial(s)$.
+\item $\partial(rs) = \partial(\sum_k \sum_{i+j=k} r_i s_j) = \sum_k k (\sum_{i+j=k} r_i s_j) = \sum_{i,j} i r_i s_j + r_i j s_j = s\partial(r) + r\partial(s)$.\qedhere
 \end{itemize}
 \end{proof}
 \item Let $S$ \red{be, as above,}\footnote{For infinitely many variables, we will get the same formula with a formal sum, but this is not an $S$-linear combination of partial derivatives. Oops!} a polynomial ring over $A$ endowed with the $\N$-grading by the rule $\deg(x_i) = n_i$. Express the Euler operator of the grading as an $S$-linear combination of the partial derivatives.
 \begin{proof}
 Take $\partial = \sum_i n_i x_i \frac{d}{dx_i}$. To check that this agrees with the Euler operator, by  $A$-linearity it suffices to check on any monomial $x_1^{a_1}\cdots x_n^{a_n}$: we get
 \[ \partial(x_1^{a_1}\cdots x_n^{a_n}) = \sum_i n_i a_i x_1^{a_1}\cdots x_n^{a_n}\]
-and $\sum_i n_i a_i$ is just the degree of $x_1^{a_1}\cdots x_n^{a_n}$.\qedhere
+and $\sum_i n_i a_i$ is just the degree of $x_1^{a_1}\cdots x_n^{a_n}$.
 \end{proof}
 \end{enumerate}
 
