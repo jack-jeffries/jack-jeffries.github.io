@@ -1272,7 +1272,6 @@ Another key point is that this base change operation for algebras agrees with th
 Take a presentation of $T$ as an $R$-algebra, and take the presentation as an $R$-module obtained from it as discussed above, i.e., with relations $\{\sum_a c_{a,j} x^{a+b} \ | \ b\in \N^n, j=1,\dots,m\}$ for an algebra generating set $f_j=\sum_a c_{a,j} x^a$. If we take algebra extension of scalars of $T$, then we get the same presentation as an $S$-module by this formula.
 \end{proof}
 
-\newpage
 
 \Feb{23}
 
@@ -1325,7 +1324,7 @@ To compute modules of differentials in general, we will bootstrap off of this ca
 
 \begin{prop}
 \begin{enumerate}
-\item Let $A \xra{\psi} B$ be a ring homomorphism and $R$ be an $A$-algebra. There there is a unique $R$-module homomorphism $d_{R|\psi}$ such that the diagram commutes:
+\item Let $A \xra{\psi} B$ be a ring homomorphism and $R$ be a $B$-algebra. There there is a unique $R$-module homomorphism $d_{R|\psi}$ such that the diagram commutes:
 \[ \xymatrix{ \Omega_{R|A} \ar[rr]^{d_{R|\psi}} & & \Omega_{R|B} \\
  &R\ar[lu]^{d_{R|A}} \ar[ur]_{d_{R|B}} & } \]
 
@@ -1343,7 +1342,7 @@ R\ar[u]^{d_{R|A}} \ar[r]^{\phi} & S \ar[uu]_{d_{S|A}} } \]
 \begin{enumerate}
 \item The map $d_{R|B}$, since it is $B$-linear, is an $A$-linear derivation when viewed via restriction of scalars along $\psi$. Apply the universal property of $\Omega_{R|A}$ and $d_{R|A}$ to this derivation.
 \item The map $d_{S|A} \circ \phi$ is an $A$-linear derivation from $R$ to $\Omega_{S|A}$. Apply the universal property of $\Omega_{R|A}$ and $d_{R|A}$ to this derivation.
-\item Apply the universal property of extension of scalars to the map $d_{\phi|R}$.\qedhere
+\item Apply the universal property of extension of scalars to the map $d_{\phi|A}$.\qedhere
 \end{enumerate}
 \end{proof}
 
@@ -1364,6 +1363,8 @@ and for $\Omega_{S|A} \xra{\theta} M$, we have
 \[ d_{R|A}^* \circ \eta^* \circ (S\,\otimes \,d_{\phi|R})^* \theta = \theta \circ (S\,\otimes \,d_{\phi|R}) \circ \eta \circ d_{R|A} = \theta \circ d_{S|A} \circ\phi = \phi^* d_{S|A}^* \theta.\qedhere\]
 \end{proof}
 
+
+\begin{comment}
 
 \begin{thm}[Second fundamental sequence]
 Let $A\to R \xra{\pi} R/I$ be ring homomorphisms. Then there is a right exact sequence of $R/I$-modules
