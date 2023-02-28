@@ -1364,7 +1364,7 @@ and for $\Omega_{S|A} \xra{\theta} M$, we have
 \[ d_{R|A}^* \circ \eta^* \circ (S\,\otimes \,d_{\phi|R})^* \theta = \theta \circ (S\,\otimes \,d_{\phi|R}) \circ \eta \circ d_{R|A} = \theta \circ d_{S|A} \circ\phi = \phi^* d_{S|A}^* \theta.\qedhere\]
 \end{proof}
 
-\begin{comment}
+
 
 \Feb{28}
 
@@ -1466,6 +1466,8 @@ Thus, there is an exact sequence
 \[ 0 \to \Gamma_{R|A} \to I/I^2 \xra{\overline{d_{S|I}}} R^{\oplus \Lambda} \to \Omega_{R|A} \to 0.\]
 We need to see that $\Gamma_{R|A}$ is well-defined. Note that at worst $\Gamma$ depends on the choice of a surjection from a polynomial ring onto $R$, but not on generators for the kernel.
 
+Note that if $A\to R$ is surjective with kernel $I$, then $\Gamma_{R|A} = I/I^2$, since the target of the map $d$ above is zero.
+
 \begin{lem} Different presentations of $R$ as an $A$-algebra yield isomorphic $R$-modules $\Gamma_{R|A}$.
 \end{lem}
 \begin{proof}
@@ -1507,10 +1509,21 @@ with exact rows and the snake lemma gives the desired sequence. In the case $R\t
 Both of the fundamental sequences are special cases of this! 
 \end{rem}
 
-\begin{exer} Show that $W^{-1}\Gamma_{R|A}\cong \Gamma_{W^{-1}R|A}$.
+\begin{exer} Show that $W^{-1}\Gamma_{R|A}\cong \Gamma_{W^{-1}R|A}$. Hint: First show that if $S=A[X]$ is a polynomial ring, then $W^{-1}S$ is flat over $A$ and $\Gamma_{W^{-1}S|A}=0$.
 \end{exer}
 
 \subsection{Unramified, smooth, and \'etale maps}
+
+Recall that a module $P$ is \emph{projective}\index{projective} if the equivalent conditions hold:
+\begin{itemize}
+\item For any surjection of $R$-modules $M\xra{p} N \to 0$ and homomorphism $P\xra{\beta} N$, there is a map $P\xra{\alpha} M$ such that $\beta = p \alpha$;
+\item There is a module $Q$ such that $P\oplus Q$ is free.
+\end{itemize}
+If $P$ is finitely generated and $R$ is Noetherian, these are equivalent to
+\begin{itemize}
+\item $P$ is locally free: for every maximal ideal $\fm$ (equivalently, every prime ideal $\fp$), $P_\fm$ is a free $R_\fm$-module (resp., $P_{\fp}$ is a free $R_{\fp}$-module).
+\end{itemize}
+
 
 The Jacobi-Zariski sequence can be used to deduce conditions on lifting derivations. In particular, given a map of $A$-algebra $R\xra{\phi} S$, we can ask whether for every $S$-module $M$ the map
 \[ \Der_{S|A}(M) \xra{\phi^*} \Der_{R|A}(M) \]
@@ -1520,7 +1533,8 @@ By exactness of Hom, $\Der_{S|A}(M) \xra{\phi^*} \Der_{R|A}(M)$ is injective for
 
 By exactness of Hom, $\Der_{S|A}(M) \xra{\phi^*} \Der_{R|A}(M)$ is bijective for all $M$ if and only if $S\otimes_R \Omega_{R|A} \xra{S\otimes d_{\phi|A}} \Omega_{S|A}$ is an isomorphism, which happens at least if $\Omega_{S|R} =0$ and $\Gamma_{S|R}=0$.
 
-By exactness of Hom, $\Der_{S|A}(M) \xra{\phi^*} \Der_{R|A}(M)$ is bijective for all $M$ if and only if $S\otimes_R \Omega_{R|A} \xra{S\otimes d_{\phi|A}} \Omega_{S|A}$ is a split injection, which happens at least if $\Gamma_{S|R}=0$ and $\Omega_{S|R}$ is projective.
+By exactness of Hom, $\Der_{S|A}(M) \xra{\phi^*} \Der_{R|A}(M)$ is surjective for all $M$ if and only if $S\otimes_R \Omega_{R|A} \xra{S\otimes d_{\phi|A}} \Omega_{S|A}$ is a split injection, which happens at least if $\Gamma_{S|R}=0$ and $\Omega_{S|R}$ is projective.
+
 
 \begin{defn}
 Let $R\xra{\phi} S$ be a ring homomorphism. We say that $\phi$ is
@@ -1536,13 +1550,89 @@ Note that formally \'etale is formally unramified plus formally smooth.
 
 From the discussion above, we have
 
-\begin{prop} Let $R\to S$ be a homomrophism of $A$-algebras and $M$ be an $S$-module.
+\begin{prop} Let $R\to S$ be a homomorphism of $A$-algebras and $M$ be an $S$-module.
 \begin{enumerate}
-\item If $\phi$ is formally unramified, then every derivation from $R$ to $M$ extends (via $\phi^*$) to at most one derivation from $S$ to $M$.
-\item If $\phi$ is formally \'etale, then every derivation from $R$ to $M$ extends (via $\phi^*$) to exactly one derivation from $S$ to $M$.
-\item If $\phi$ is formally smooth, then every derivation from $R$ to $M$ extends (via $\phi^*$) to at least one derivation from $S$ to $M$.
+\item If $\phi$ is formally unramified, then every derivation from $R$ to $M$ extends to at most one derivation from $S$ to $M$.
+\item If $\phi$ is formally \'etale, then every derivation from $R$ to $M$ extends to exactly one derivation from $S$ to $M$.
+\item If $\phi$ is formally smooth, then every derivation from $R$ to $M$ extends to at least one derivation from $S$ to $M$.
 \end{enumerate}
 \end{prop}
+
+We also note
+
+\begin{prop} Let $R\xra{\phi} S$ be a ring homomorphism. Write $S=R[X]/I$ for some polynomial ring $R[X]$ and ideal $I$.
+\begin{enumerate}
+\item $\phi$ is formally unramified if and only if the map $I/I^2 \xra{d} \bigoplus S dx_\lambda$ is surjective.
+\item $\phi$ is formally \'etale if and only if the map $I/I^2 \xra{d} \bigoplus S dx_\lambda$ is bijective.
+\item If $\phi$ is formally smooth if and only if the map $I/I^2 \xra{d} \bigoplus S dx_\lambda$ is a split injection.
+\end{enumerate}
+\end{prop}
+
+\begin{ex}
+\begin{enumerate}
+\item Let $K$ be a field and $R=K[x,y,z]$. Then $\Omega_{R|K}$ is free of rank 3 and $\Gamma_{R|K}=0$, so $R$ is smooth over $K$. $R$ is not unramified or \'etale.
+\item Let $K$ be a field and $R=K[x,y,z]/(x^n+y^n+z^n)$, where the characteristic of $K$ does not divide $n$. Then $\Omega_{R|K}$ localized at $(x,y,z)$ is not free, so $\Omega_{R|K}$ is not projective, and hence $R$ is not smooth over $K$. Note that, trivially, every $K$-linear derivation on $K$ extends to $R$. $R$ is not unramified or \'etale.
+\item Let $K$ be a field of characteristic zero and $R=K[x,y,z]/(x^n+y^n+z^n-1)$. We have seen that $\Omega_{R|K}$ is locally free, and hence projective. By definition, 
+\[ \Gamma_{R|K} = \ker \left( (f)/(f^2)\xra{d} R dx \oplus R dy \oplus R dz \right),\] where $f=x^n+y^n+z^n-1$.
+First, we note that $f$ is an irreducible element (check it!) in the UFD $S=K[x,y,z]$, so $rf \in (f^2)$ implies $f|r$ in $S$, and hence $(f)/(f^2) \cong R$ (with generator $[f]$) as $R$-modules. Given $s\in S$ and $[sf]\in (f)/(f^2)$, we have $d([sf])=0$ implies $s (n x^{n-1} dx + n y^{n-1} dy + n z^{n-1} dz) =0$ in $R dx \oplus R dy \oplus R dz$, which implies $s x^{n-1}, sy^{n-1}, sz^{n-1}\in (f) S$, so $f|s$. Thus, the map $d$ is injective, and $\Gamma_{R|K}=0$. We conclude that $R$ is smooth over $K$. $R$ is not unramified or \'etale.
+\item If $R$ is a ring and $W$ is a multiplicative set, then $W^{-1}R$ is formally \'etale over $R$. Indeed, we have $\Gamma_{W^{-1}R|R} \cong W^{-1}\Gamma_{R|R} = 0$ and likewise with $\Omega$.
+\item If $R\to R/I$ is surjective, then is formally unramified, and if $R$ is Noetherian, plain old unramified. In this case, $\Gamma_{R/I|R} = I/I^2$. A surjection is almost never formally smooth/formally \'etale: this would require $I=I^2$, which (at least if $I$ is finitely generated) $I$ to be generated by an idempotent. That is, a smooth surjection must be killing a factor in a direct product.
+\end{enumerate}
+\end{ex}
+
+While we cannot relate these properties perfectly to lifting derivations, we can relate them to lifting certain ring maps.
+
+\begin{thm}
+Let $A \xra{\phi} R$ be a map of rings. Consider a diagram of solid maps of the form
+\[ \xymatrix{ R \ar[r]^{\psi} \ar@{-->}[dr] & T/J \\ A \ar[r] \ar[u]^{\phi} & T\ar[u]}\]
+of maps of $A$-algebras with $J\subseteq T$ is an ideal with $J^2=0$. Then the map $A\to R$ is
+\begin{enumerate}
+\item formally unramified if and only if, for any such diagram, there is at most one dotted map making the diagram commute;
+\item formally \'etale if and only if, for any such diagram, there is exactly one dotted map making the diagram commute;
+\item formally smooth if and only if, for any such diagram, there is at least one dotted map making the diagram commute.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+Let $R=A[X]/I$ for some polynomial ring $A[X]$. 
+Given a diagram as above, we have a diagram of the form
+\[ \xymatrix@R=1em{ & R \ar[r]^{\psi} \ar@{-->}[ddr] & T/J \\ A[X]\ar[ur]^{q} & & \\
+& A\ar[ul] \ar[r] \ar[uu]^{\phi} & T\ar[uu] }\]
+
+We have an $A$-algebra homomorphism $\psi\circ q:A[X] \to T/J$. Let $t_\lambda \in T$ be an arbitrary set of preimages in $T$ of $(\phi \circ q)(x_\lambda)$. Define $\tilde{\psi}_0:A[X] \to T$ by $\tilde{\psi}_0(x_\lambda) = t_\lambda$. 
+Observe that $\pi \tilde{\psi}_0(I) = 0$ so $\tilde{\psi}_0(I)\subseteq J$, and $\tilde{\psi}_0(I^2)\subseteq J^2=0$, hence $\tilde{\psi}_0$ induces a well-defined $R$-linear map $I/I^2 \to J$. Note that $J$ is an $R$-module since $J^2=0$. 
+
+We would like $\tilde{\psi}_0$ to factor through $R$ (i.e., to map $I$ to $0$), but there's no reason it should. However, we have that a map $\tilde{\psi}:A[X]\to T$ has $\pi \circ \tilde{\psi} = \pi \circ \tilde{\psi}_0 = \psi \circ q$ if and only if $\tilde{\psi}(x_\lambda) - t_\lambda \in J$. So, we have
+\[ \xymatrix@R=0em{\{ \text{tuples of elements $(j_\lambda)$ in $J$}\} \ar@{<->}[r] & \{\text{$A$-alg maps $\tilde{\psi}:A[X]\to T$ agreeing with $\tilde{\psi}_0$ mod $J$}\} \\
+(j_\lambda) \ar@{|->}[r]& ( x_\lambda \mapsto t_\lambda + j_\lambda )}.\]
+Now, we also have 
+\[ \xymatrix@R=0em{\{ \text{tuples of elements $(j_\lambda)$ in $J$}\} \ar@{<->}[r] & \{\text{$A$-mod maps $\delta:\bigoplus R dx_\lambda \to J$}\} \\
+(j_\lambda) \ar@{|->}[r] & ( dx_\lambda \mapsto  j_\lambda )}.\]
+The condition for $\tilde{\phi}:A[X]\to T$ to factor through $R$ is $\tilde{\phi}(I)\subseteq 0$, which is $f(t_\lambda+j_\lambda) =0$ for all $f\in I$. We can write this as $0=f(t_\lambda+j_\lambda)= f(t_\lambda) + \sum_\lambda \frac{df}{dx_\lambda}(t) j_\lambda$. This condition for all $f\in I$ is equivalent to the diagram commuting:
+\begin{equation}\label{eq:square}\xymatrix{ I/I^2 \ar[rr]^-{d} \ar[dr]_{\tilde{\psi}_0}  && \bigoplus_\lambda R dx_\lambda \ar[dl]^{-\delta} \\ & J &}\end{equation}
+
+Now we observe that
+\begin{itemize}
+\item if $A\to R$ is formally unramified,  $I/I^2 \xra{d} \bigoplus R dx_\lambda$ is surjective, so there is at most one map $\delta$ making the diagram commute;
+\item if $A\to R$ is formally \'etale,  $I/I^2 \xra{d} \bigoplus R dx_\lambda$ is bijective, so there is exactly one map $\delta$ making the diagram commute;
+\item if $A\to R$ is formally smooth,  $I/I^2 \xra{d} \bigoplus R dx_\lambda$ is a split injection, so there is at least one map $\delta$ making the diagram commute
+\end{itemize}
+This shows the forward implication in each part.
+ 
+For the converse, first we choose $T=A[X]/I^2$, $J=I/I^2$, and $\psi:R\to T/J$ the identity map. We can take $\tilde{\psi}_0: A[X] \to A[X]/I^2$ to be the quotient map, so $\tilde{\psi}_0:I/I^2 \to J$ in \eqref{eq:square} is the identity map. Thus, if a map $\delta$ exists making the diagram commute, we have that $d$ is a split injection, so $\phi$ is formally smooth.
+
+Next, we show that if uniqueness of the lift holds for all modules, then $d$ is surjective, by way of contrapositive.
+If $d$ is not surjective, let $M=\coker(d)$, and take $T=R\rtimes M$, $J=0\oplus M$, and $\psi:R\to T/J$ the identity map. We have that $R$ is a subring of $R\rtimes M$, and we can take $\tilde{\psi}_0:A[X]\to R\subseteq R\rtimes M$ to be the quotient map. Then $\tilde{\psi}_0:I/I^2 \to J$ is the zero map. But we can take either $\delta:\bigoplus_\lambda Rdx_\lambda \to M$ as the zero map or as the quotient map, so the lifting is not unique.
+
+The formally \'etale case follows from the other two.
+\end{proof}
+
+
+\begin{rem}
+In the Theorem above, we can replace $I^2=0$ with $I$ is nilpotent (there exists $n$ such that $I^n=0$). To see it, write $T\to T/I^{n-1} \to T/I^{n-2} \to \cdots \to T/I^2 \to T/I$ and note that in each step one kills a square zero ideal in the source.
+\end{rem}
+
+
+\begin{comment}
 
 Examples.
 
