@@ -1432,12 +1432,21 @@ In particular, if $K$ has characteristic zero we get a free module of rank three
 
 If $K$ has characteristic $p$ and $n=p$, then the relation is trivial, so $\Omega_{R|K}$ is free of rank three.
 
-\item For $R=K[x,y,z]/(x^n+y^n+z^n-1)$, we have $\Omega_{R|K} = \displaystyle \frac{R dx \oplus R dy \oplus R dz}{(n x^{n-1} dx + n y^{n-1} dy + n z^{n-1} dz)}$. We claim that, if the characteristic of $K$ is zero, $\Omega_{R|K}$ is a locally free module of rank two. Since $(x,y,z)$ generate the unit ideal of $R$, there is no maximal ideal containing all of them, so any maximal ideal fails to contain at least one. Let $\fm$ be a maximal ideal; WLOG say $x\notin \fm$. Then by an argument similar to above, we get that $(\Omega_{R|K})_\fm$ is free of rank two. Depending on $K$ and $n$, this module is not necessarily (globally) free. For example, if $K=\R$ and $n=2$, this is impossible. Prove it! 
-
-
+\item For $R=K[x,y,z]/(x^n+y^n+z^n-1)$, we have $\Omega_{R|K} = \displaystyle \frac{R dx \oplus R dy \oplus R dz}{(n x^{n-1} dx + n y^{n-1} dy + n z^{n-1} dz)}$. We claim that, if the characteristic of $K$ is zero, $\Omega_{R|K}$ is a locally free/projective module of rank two. Since $(x,y,z)$ generate the unit ideal of $R$, there is no maximal ideal containing all of them, so any maximal ideal fails to contain at least one. Let $\fm$ be a maximal ideal; WLOG say $x\notin \fm$. Then by an argument similar to above, we get that $(\Omega_{R|K})_\fm$ is free of rank two. Depending on $K$ and $n$, this module is not necessarily (globally) free. For example, if $K=\R$ and $n=2$, this is impossible. Prove it! 
 %\item Let $R=\Z[i]$. We write $R=\Z[x]/(x^2+1)$ so $\Omega_{\Z[i] | \Z} = \frac{\Z[i] dx}{(2x dx)} =  \frac{\Z[i] di}{(2 di)}$.
 \end{enumerate}
 \end{ex}
+\noindent Recall that a module $P$ is \emph{projective}\index{projective} if the equivalent conditions hold:
+\begin{itemize}
+\item For any surjection of $R$-modules $M\xra{p} N \to 0$ and homomorphism $P\xra{\beta} N$, there is a map $P\xra{\alpha} M$ such that $\beta = p \alpha$;
+\item Every short exact sequence of the form $0 \to A \to B \to P \to 0$ is split exact;
+\item There is a module $Q$ such that $P\oplus Q$ is free.
+\end{itemize}
+If $P$ is finitely generated and $R$ is Noetherian, these are equivalent to
+\begin{itemize}
+\item $P$ is \emph{locally free}\index{locally free}: for every maximal ideal $\fm$ (equivalently, every prime ideal $\fp$), $P_\fm$ is a free $R_\fm$-module (resp., $P_{\fp}$ is a free $R_{\fp}$-module).
+\end{itemize}
+
 
 %\begin{comment}
 We can also show that modules of differentials localize.
@@ -1459,7 +1468,12 @@ R \ar[r]^{d_{R|A}} \ar[uu] \ar[rru]^{\partial|_R} & \Omega_{R|A} \ar[uu] \ar@{--
 Then $\beta \tilde{d} i = \beta\eta d = \alpha d = \partial|_R$ and since two derivations on $W^{-1}R$ with the same restriction to $R$ must be the same by the lemma on derivations and localization we must have $\beta \tilde{d} = \partial$. Moreover, since the image of $d$ generates $\Omega_{R|A}$, the image of $\tilde{d}$ generates $W^{-1}\Omega_{R|A}$, and since $\beta$ is unique determined by its values on a generating set, the map $\beta$ must be unique. This verifies the universal property.
 \end{proof}
 
-\begin{defn} We say that a ring homomorphism $R\xra{\phi} S$ is \emph{essentially algebra-finite} or \index{essentially of finite type} if $\phi$ factors as an algebra-finite map followed by a localization. Concretely, $S=W^{-1} (R[x_1,\dots,x_n]/I)$ for some ideal $I$ and multiplicatively closed set $W$.
+\begin{defn} We say that a ring homomorphism $R\xra{\phi} S$ is
+\begin{itemize}
+\item \emph{essentially algebra-finite}\index{essentially algebra-finite} if $\phi$ factors as an algebra-finite map followed by a localization. Concretely, $S=W^{-1} (R[x_1,\dots,x_n]/I)$ for some ideal $I$ and multiplicatively closed set $W$.
+\item \emph{finitely presented}\index{finitely presented} if it is algebra-finite and the kernel is a finitely generated ideal. Concretely, $S=R[x_1,\dots,x_n]/(f_1,\dots,f_m)$. Note that if $R$ is Noetherian, then algebra-finite and finitely presented are equivalent by Hilbert Basis Theorem.
+\item \emph{essentially finitely presented}\index{essentially finitely presented} if $\phi$ factors as an finitely presented map followed by a localization. Concretely, $S=W^{-1} (R[x_1,\dots,x_n]/(f_1,\dots,f_m))$ multiplicatively closed set $W$.
+\end{itemize}
 \end{defn}
 
 \begin{cor} Let $S=W^{-1}R[x_1,\dots,x_n]/I$ and $I=(f_1,\dots,f_m)$. Then $\Omega_{S|R}$ is the $S$ module with generators $dx_1,\dots,dx_n$ and relations $df_j = \sum_i \frac{d f_j}{dx_i} dx_i$. In particular, $\Omega_{S|R}$ is finitely generated.
@@ -1536,15 +1550,6 @@ Both of the fundamental sequences are special cases of this!
 
 \subsection{Unramified, smooth, and \'etale maps}
 
-Recall that a module $P$ is \emph{projective}\index{projective} if the equivalent conditions hold:
-\begin{itemize}
-\item For any surjection of $R$-modules $M\xra{p} N \to 0$ and homomorphism $P\xra{\beta} N$, there is a map $P\xra{\alpha} M$ such that $\beta = p \alpha$;
-\item There is a module $Q$ such that $P\oplus Q$ is free.
-\end{itemize}
-If $P$ is finitely generated and $R$ is Noetherian, these are equivalent to
-\begin{itemize}
-\item $P$ is locally free: for every maximal ideal $\fm$ (equivalently, every prime ideal $\fp$), $P_\fm$ is a free $R_\fm$-module (resp., $P_{\fp}$ is a free $R_{\fp}$-module).
-\end{itemize}
 
 
 The Jacobi-Zariski sequence can be used to deduce conditions on lifting derivations. In particular, given a map of $A$-algebra $R\xra{\phi} S$, we can ask whether for every $S$-module $M$ the map
