@@ -1434,9 +1434,13 @@ If $K$ has characteristic $p$ and $n=p$, then the relation is trivial, so $\Omeg
 
 \item For $R=K[x,y,z]/(x^n+y^n+z^n-1)$, we have $\Omega_{R|K} = \displaystyle \frac{R dx \oplus R dy \oplus R dz}{(n x^{n-1} dx + n y^{n-1} dy + n z^{n-1} dz)}$. We claim that, if the characteristic of $K$ is zero, $\Omega_{R|K}$ is a locally free/projective module of rank two. Since $(x,y,z)$ generate the unit ideal of $R$, there is no maximal ideal containing all of them, so any maximal ideal fails to contain at least one. Let $\fm$ be a maximal ideal; WLOG say $x\notin \fm$. Then by an argument similar to above, we get that $(\Omega_{R|K})_\fm$ is free of rank two. Depending on $K$ and $n$, this module is not necessarily (globally) free. For example, if $K=\R$ and $n=2$, this is impossible. Prove it! 
 %\item Let $R=\Z[i]$. We write $R=\Z[x]/(x^2+1)$ so $\Omega_{\Z[i] | \Z} = \frac{\Z[i] dx}{(2x dx)} =  \frac{\Z[i] di}{(2 di)}$.
+
 \end{enumerate}
 \end{ex}
-\noindent Recall that a module $P$ is \emph{projective}\index{projective} if the equivalent conditions hold:
+
+\Mar{2}
+
+Recall that a module $P$ is \emph{projective}\index{projective} if the equivalent conditions hold:
 \begin{itemize}
 \item For any surjection of $R$-modules $M\xra{p} N \to 0$ and homomorphism $P\xra{\beta} N$, there is a map $P\xra{\alpha} M$ such that $\beta = p \alpha$;
 \item Every short exact sequence of the form $0 \to A \to B \to P \to 0$ is split exact;
@@ -1482,18 +1486,38 @@ Then $\beta \tilde{d} i = \beta\eta d = \alpha d = \partial|_R$ and since two de
 \subsection{Jacobi-Zariski sequence}
 
 \begin{defn}
-Let $R$ be an $A$-algebra. Fix a presentation $R=S/I$ with $S=A[x_\lambda\ | \ \lambda\in \Lambda]$ and  $I=(f_\xi \ | \ \xi\in \Xi)$. We define
+Let $R$ be an $A$-algebra. Write $R=S/I$ with $S=A[X]$. We define
  $\Gamma_{R|A}$\index{$\Gamma_{R\mid A}$} to be the kernel of the map $I/I^2 \xra{\overline{d_{S|I}}} R\otimes_S \Omega_{S|A}$.
 \end{defn}
 
 Thus, there is an exact sequence
-\[ 0 \to \Gamma_{R|A} \to I/I^2 \xra{\overline{d_{S|I}}} R^{\oplus \Lambda} \to \Omega_{R|A} \to 0.\]
-We need to see that $\Gamma_{R|A}$ is well-defined. Note that at worst $\Gamma$ depends on the choice of a surjection from a polynomial ring onto $R$, but not on generators for the kernel.
+\[ 0 \to \Gamma_{R|A} \to I/I^2 \xra{\overline{d_{S|I}}} \bigoplus R dx \to \Omega_{R|A} \to 0.\]
+We need to see that $\Gamma_{R|A}$ is well-defined.
 
-Note that if $A\to R$ is surjective with kernel $I$, then $\Gamma_{R|A} = I/I^2$, since the target of the map $d$ above is zero.
+\begin{prop} Different presentations of $R$ as an $A$-algebra yield isomorphic $R$-modules $\Gamma_{R|A}$.
+\end{prop}
 
-\begin{lem} Different presentations of $R$ as an $A$-algebra yield isomorphic $R$-modules $\Gamma_{R|A}$.
-\end{lem}
+(To prove next time).
+
+\begin{thm}[Jacobi-Zariski sequence]
+Let $A\to R \to S$ be ring homomorphisms. Then there is an exact sequence
+\[ \Gamma_{S|A} \to \Gamma_{S|R} \to S\otimes_R \Omega_{R|A} \to \Omega_{S|A} \to \Omega_{S|R} \to 0.\]
+\end{thm}
+
+(To prove next time).
+
+
+\begin{rem}
+Both of the fundamental sequences are special cases of this! The tail is just the first fundamental sequence. If we have $R\to S=R/I$, then we don't need any variables at all to present $R/I$; i.e., we can take $R[X]$ in the presentation $R[X]\to R/I$ to be just $R$ itself. Thus, the sequence defining $\Gamma_{R/I | R}$ reads
+\[ 0 \to \Gamma_{R/I | R} \to  I/I^2 \to 0 \to \Omega_{R/I | R} \to 0,\]
+so $\Gamma_{R/I | R}\cong I/I^2$ and $\Omega_{R/I | R}=0$. Thus, we obtain the second fundamental sequence as
+the tail of the Jacobi-Zariski sequence in this case.
+\end{rem}
+
+\begin{comment}
+
+\begin{prop} Different presentations of $R$ as an $A$-algebra yield isomorphic $R$-modules $\Gamma_{R|A}$.
+\end{prop}
 \begin{proof}
 Unfortunately, we do not have a snappy universal property to help us here, so we proceed directly. Suppose we are given polynomial rings $S=A[X]$ and $S'=A[Y]$ with surjections $\pi:S\to R$ and $\pi':S'\to R$. Then there is a surjection $\pi'':A[X,Y]\to R$ given by sending $\pi''(x_i)=\pi(x_i)$ and $\pi''(y_i)=\pi'(y_i)$. If we show that $\pi$ and $\pi''$ yield isomorphic $\Gamma$ modules, then by symmetry, $\pi$ and $\pi'$ do as well.
 
