@@ -1489,30 +1489,6 @@ Both of the fundamental sequences are special cases of this!
 \end{document}
 
 
-By the Jacobian criterion for varieties, the locus of nonsingular points in a variety is closed (i.e., is a subvariety cut out by polynomial equations). One might ask whether for a ring $R$, the \emph{singular locus}\index{singular locus}
-\[ \mathrm{Sing}(R) = \{ \fp \in \Spec(R) \ | \ R_{\fp} \ \text{is regular} \}\]
-is closed (i.e., there is some ideal $I\subseteq R$ such that $R_\fp$ is regular if and only if $\fp \supseteq I$). This is false, even for Noetherian rings!
-
-\begin{ex} Let $T=\C[x_1,x_2,\dots]$ be a polynomial ring in countably many variables. Let $S\subseteq T$ be the subring
-\[ S = \C[x_1^2,x_1^3,x_2^2,x_2^3,\dots].\]
-Set $\fp_i=(x_i^2,x_i^3)$ for each $i$, and let $W= S \smallsetminus \bigcup_{i\in \N} \fp_i$.
-Note that $W = \bigcap_{i\in \N} (S\smallsetminus \fp_i)$ is an intersection of multiplicatively closed sets, so $W$ is multiplicatively closed. We will show that $R=W^{-1}S$ is a Noetherian domain for which $\mathrm{Sing}(R)$ is not closed.
-
-The hard part is showing this ring is Noetherian. We'll use a couple of lemmas.
-
-\begin{lem} Let $R$ be a ring. Suppose that $R_\fm$ is Noetherian for every maximal ideal $\fm$ and every nonzero element of $R$ is contained in at most finitely many maximal ideals. Then $R$ is Noetherian.
-\end{lem}
-
-The next lemma says that the conculsion of prime avoidance holds for the collection of $\fp_i$ (which is infinite, so the usual hypothesis does not).
-\begin{lem} Let $S$, $\fp_i$ be as above. Then for any ideal $I$ of $S$, if $I\subseteq \bigcup_{i\in \N} \fp_i$, then $I\subseteq \fp_i$ for some $i$.
-\end{lem}
-\begin{proof} If $I=0$ this is clear, so suppose $I\neq 0$, that $I\subseteq \bigcup_{i\in \N} \fp_i$, and take $f\in I$. Since $f$ involves at most finitely many variables, $D_f:=\{i \ | \ f\in \fp_i\}= \{ i \ | x_i \ \text{divides} \ f \ \text{in} \ T\}$ is finite. We consider two cases. 
-
-Case 1: For every $g\in I$, $D_f \cap D_g$ is nonempty. Then $I \subseteq \bigcup_{i\in D_f} \fp_i$. By the usual version of prime avoidance, $I \subseteq \fp_i$ for some $i$.
-
-Case 2: There is some $g\in I$ such that $D_f \cap D_g$ is empty. Let $k$ be larger than the index of any variable in $f$ or $g$, and $t$ be an integer greater than the degree of $f$. Then $f$ and $x_k^t g$ have no monomials in common (since the degrees are distinct) so none can cancel from each other. In particular, if $x_\ell$ divides $f+x_k^t g$ in $T$, then $x_\ell$  divides both $f$ and $x_k^t g$ in $T$. But this is impossible by the hypothesis. Thus $f+x_k^t g\notin \fp_\ell$ for all $\ell$, contradicting the hypothesis.
-
-
 
 
 
