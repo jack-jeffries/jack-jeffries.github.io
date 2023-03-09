@@ -1617,27 +1617,27 @@ If $R\to S$ is formally unramified, $\Omega_{S|R} =0$, so $S\otimes_R \Omega_{R|
 
 If $R\to S$ is formally \'etale, $\Omega_{S|R}=0$ and $\Gamma_{S|R}=0$, so $S\otimes_R \Omega_{R|A} \xra{S\otimes d_{\phi|A}} \Omega_{S|A}$ is an isomorphism, and $\Hom_{S}(\Omega_{S|A},M)\cong \Der_{S|A}(M) \xra{\phi^*} \Der_{R|A}(M)\cong \Hom_S(S\otimes_R \Omega_{R|A},M)$ is an isomorphism for all $M$.
 
-If $R\to S$ is {formally smooth}, $\Omega_{S|R}$ is projective and $\Gamma_{S|R}=0$, so $S\otimes_R \Omega_{R|A} \xra{S\otimes d_{\phi|A}} \Omega_{S|A}$ is a split injection, and $\Hom_{S}(\Omega_{S|A},M)\cong \Der_{S|A}(M) \xra{\phi^*} \Der_{R|A}(M)\cong \Hom_S(S\otimes_R \Omega_{R|A},M)$ is a surjective for all $M$.
+If $R\to S$ is {formally smooth}, $\Omega_{S|R}$ is projective and $\Gamma_{S|R}=0$, so $S\otimes_R \Omega_{R|A} \xra{S\otimes d_{\phi|A}} \Omega_{S|A}$ is a split injection, and $\Hom_{S}(\Omega_{S|A},M)\cong \Der_{S|A}(M) \xra{\phi^*} \Der_{R|A}(M)\cong \Hom_S(S\otimes_R \Omega_{R|A},M)$ is a surjection for all~$M$.
 
+In particular, if $\psi:X\to Y$ is a map of complex affine varieties, and $\psi^*:\C[Y] \to \C[X]$ is the map on coordinate rings, then
+\begin{itemize}
+\item If $\psi^*$ is unramified, then the induced map on tangent spaces is injective at every point;
+\item If $\psi^*$ is \'etale, then the induced map on tangent spaces is bijective at every point;
+\item If $\psi^*$ is smooth, then the induced map on tangent spaces is surjective at every point.
+\end{itemize}
 
-%From the discussion above, we have
-
-%\begin{prop} Let $R\to S$ be a homomorphism of $A$-algebras and $M$ be an $S$-module.
-%\begin{enumerate}
-%\item If $\phi$ is formally unramified, then every derivation from $R$ to $M$ extends to at most one derivation from $S$ to $M$.
-%\item If $\phi$ is formally \'etale, then every derivation from $R$ to $M$ extends to exactly one derivation from $S$ to $M$.
-%\item If $\phi$ is formally smooth, then every derivation from $R$ to $M$ extends to at least one derivation from $S$ to $M$.
-%\end{enumerate}
-%\end{prop}
 
 We note:
 \begin{prop} Let $R\xra{\phi} S$ be a ring homomorphism. Write $S=R[X]/I$ for some polynomial ring $R[X]$ and ideal $I$.
 \begin{enumerate}
 \item $\phi$ is formally unramified if and only if the conormal map $I/I^2 \xra{d} \bigoplus S dx_\lambda$ is surjective.
 \item $\phi$ is formally \'etale if and only if the conormal map $I/I^2 \xra{d} \bigoplus S dx_\lambda$ is bijective.
-\item If $\phi$ is formally smooth if and only if the conormal map $I/I^2 \xra{d} \bigoplus S dx_\lambda$ is a split injection.
+\item $\phi$ is formally smooth if and only if the conormal map $I/I^2 \xra{d} \bigoplus S dx_\lambda$ is a split injection.
 \end{enumerate}
 \end{prop}
+
+
+
 
 \begin{ex}
 \begin{enumerate}
@@ -1647,9 +1647,12 @@ We note:
 \item Let $K=\R$ and $R=K[x,y,z]/(x^2+y^2+z^2)$. Then $\Omega_{R|K}$ localized at $(x,y,z)$ is not free, so $\Omega_{R|K}$ is not projective, and hence $R$ is not smooth over $K$. 
 Note that, trivially, every $K$-linear derivation on $K$ extends to $R$. 
 $R$ is not unramified or \'etale.
+
+We remark that if $T$ is a ring and $f$ is a nonzerodivisor, then $(f)/(f^2)$ is a free $T/(f)$-module with basis element $[f]$: if $tf=sf^2$ then $t=sf\in (f)$, so the annihilator as a $T$-module is just $f$.
+
 \item Let $K=\R$ be a field of characteristic zero and $R=K[x,y,z]/(x^2+y^2+z^2-1)$. We have seen that $\Omega_{R|K}$ is locally free, and hence projective. By definition, 
 \[ \Gamma_{R|K} = \ker \left( (f)/(f^2)\xra{d} R dx \oplus R dy \oplus R dz \right),\] where $f=x^2+y^2+z^2-1$.
-First, we note that $f$ is an irreducible element (check it!) in the UFD $S=K[x,y,z]$, so $rf \in (f^2)$ implies $f|r$ in $S$, and hence $(f)/(f^2) \cong R$ (with generator $[f]$) as $R$-modules. Given $s\in S$ and $[sf]\in (f)/(f^2)$, we have $d([sf])=0$ implies $s (2 x dx + 2 y dy + 2 z dz) =0$ in $R dx \oplus R dy \oplus R dz$, which implies $s x, sy, sz\in (f) S$, so $f|s$. Thus, the map $d$ is injective, and $\Gamma_{R|K}=0$. We conclude that $R$ is smooth over $K$. $R$ is not unramified or \'etale.
+ Given $s\in S$ and $[sf]\in (f)/(f^2)$, we have $d([sf])=0$ implies $s (2 x dx + 2 y dy + 2 z dz) =0$ in $R dx \oplus R dy \oplus R dz$, which implies $s x \in (f) S$, so $f|s$. Thus, the map $d$ is injective, and $\Gamma_{R|K}=0$. We conclude that $R$ is smooth over $K$. $R$ is not unramified or \'etale.
 \item Let $K=\F_p$ and $R=K[x]/(x^p)$. Then $\Omega_{R|K}=R dx$ is free of rank $1$, but the map $I/I^2 \xra{d} R dx$ maps the generator $x^p$ to zero, so $\Gamma_{R|K}=(x^p)/(x^p)^2 \cong R$ is nonzero. Thus $R$ is not smooth over $K$, even though $\Omega_{R|K}$ is free.
 \item Let $K=\F_p(t)$ and $R=K(t^{1/p})\cong K[x]/(x^p-t)$. Then $\Omega_{R|K}= R dx$ is free of rank $1$ and the $I/I^2 \xra{d} R dx$ maps the generator to zero as above. We again have that $R$ is not smooth over $K$, even though $R$ is a field (and hence regular).
 \item For a nontrivial \'etale map, let $R=\Z_2$ and $S=\Z[i]_2$. Then $S=R[x]/(x^2+1)$ so the conormal map is $ (x^2+1)/(x^2+1)^2 \xra{d} R dx$
@@ -1657,6 +1660,7 @@ with the generator mapping to $2i$ in $R dx$. Since $2i$ is a unit, this map is 
 \end{enumerate}
 \end{ex}
 
+\begin{comment}
 
 \subsection{Regular rings revisited}
 
