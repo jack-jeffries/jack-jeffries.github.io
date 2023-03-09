@@ -1592,16 +1592,8 @@ with exact rows. We note that the first column comes from the map giving $\Omega
 
 
 \subsection{Unramified, smooth, and \'etale maps}
-%The Jacobi-Zariski sequence can be used to deduce conditions on lifting derivations. In particular, given a map of $A$-algebra $R\xra{\phi} S$, we can ask whether for every $S$-module $M$ the map
-%\[ \Der_{S|A}(M) \xra{\phi^*} \Der_{R|A}(M) \]
-%is injective, surjective, or bijective.
-%
-%By exactness of Hom, $\Der_{S|A}(M) \xra{\phi^*} \Der_{R|A}(M)$ is injective for all $M$ if and only if $S\otimes_R \Omega_{R|A} \xra{S\otimes d_{\phi|A}} \Omega_{S|A}$ is surjective, which is equivalent to $\Omega_{S|R} =0$.
-%
-%By exactness of Hom, $\Der_{S|A}(M) \xra{\phi^*} \Der_{R|A}(M)$ is bijective for all $M$ if and only if $S\otimes_R \Omega_{R|A} \xra{S\otimes d_{\phi|A}} \Omega_{S|A}$ is an isomorphism, which happens at least if $\Omega_{S|R} =0$ and $\Gamma_{S|R}=0$.
-%
-%By exactness of Hom, $\Der_{S|A}(M) \xra{\phi^*} \Der_{R|A}(M)$ is surjective for all $M$ if and only if $S\otimes_R \Omega_{R|A} \xra{S\otimes d_{\phi|A}} \Omega_{S|A}$ is a split injection, which happens at least if $\Gamma_{S|R}=0$ and $\Omega_{S|R}$ is projective.
-%
+
+
 \begin{defn}
 Let $R\xra{\phi} S$ be a ring homomorphism. We say that $\phi$ is
 \begin{itemize}
@@ -1612,9 +1604,21 @@ Let $R\xra{\phi} S$ be a ring homomorphism. We say that $\phi$ is
 If $S$ is a finitely presented $R$-algebra, we drop the ``formally'' and say \emph{unramified}/\emph{\'etale}/\emph{smooth}\index{unramified}\index{\'etale}\index{smooth} if the corresponding condition holds. If $S$ is essentially finitely-presented over $R$, and the corresponding condition holds, we say \emph{essentially unramified}/\emph{essentially \'etale}/\emph{essentially smooth}\index{essentially unramified}\index{essentially \'etale}\index{essentially smooth}.
 \end{defn}
 
+\Mar{9}
 
-\begin{comment}
+
 Note that formally \'etale is formally unramified plus formally smooth.
+
+To get a sense of where these conditions come from, let's throw them into the Jacobi-Zariski sequence: given a map of $A$-algebra $R\xra{\phi} S$, we can ask whether for every $S$-module $M$ the map
+\[ \Der_{S|A}(M) \xra{\phi^*} \Der_{R|A}(M) \]
+is injective, surjective, or bijective.
+
+If $R\to S$ is formally unramified, $\Omega_{S|R} =0$, so $S\otimes_R \Omega_{R|A} \xra{S\otimes d_{\phi|A}} \Omega_{S|A}$ is surjective, and by exactness of Hom, $\Hom_{S}(\Omega_{S|A},M)\cong \Der_{S|A}(M) \xra{\phi^*} \Der_{R|A}(M)\cong \Hom_S(S\otimes_R \Omega_{R|A},M)$ is injective for all $M$.
+
+If $R\to S$ is formally \'etale, $\Omega_{S|R}=0$ and $\Gamma_{S|R}=0$, so $S\otimes_R \Omega_{R|A} \xra{S\otimes d_{\phi|A}} \Omega_{S|A}$ is an isomorphism, and $\Hom_{S}(\Omega_{S|A},M)\cong \Der_{S|A}(M) \xra{\phi^*} \Der_{R|A}(M)\cong \Hom_S(S\otimes_R \Omega_{R|A},M)$ is an isomorphism for all $M$.
+
+If $R\to S$ is {formally smooth}, $\Omega_{S|R}$ is projective and $\Gamma_{S|R}=0$, so $S\otimes_R \Omega_{R|A} \xra{S\otimes d_{\phi|A}} \Omega_{S|A}$ is a split injection, and $\Hom_{S}(\Omega_{S|A},M)\cong \Der_{S|A}(M) \xra{\phi^*} \Der_{R|A}(M)\cong \Hom_S(S\otimes_R \Omega_{R|A},M)$ is a surjective for all $M$.
+
 
 %From the discussion above, we have
 
@@ -1641,7 +1645,7 @@ We note:
 \item If $R$ is a ring and $W$ is a multiplicative set, then $W^{-1}R$ is formally \'etale over $R$. Indeed, we have $\Gamma_{W^{-1}R|R} \cong W^{-1}\Gamma_{R|R} = 0$ and likewise with $\Omega$.
 \item Let $K$ be a field and $R=K[x,y,z]$. Then $\Omega_{R|K}$ is free of rank 3 and $\Gamma_{R|K}=0$, so $R$ is smooth over $K$. $R$ is not unramified or \'etale.
 \item Let $K=\R$ and $R=K[x,y,z]/(x^2+y^2+z^2)$. Then $\Omega_{R|K}$ localized at $(x,y,z)$ is not free, so $\Omega_{R|K}$ is not projective, and hence $R$ is not smooth over $K$. 
-%Note that, trivially, every $K$-linear derivation on $K$ extends to $R$. 
+Note that, trivially, every $K$-linear derivation on $K$ extends to $R$. 
 $R$ is not unramified or \'etale.
 \item Let $K=\R$ be a field of characteristic zero and $R=K[x,y,z]/(x^2+y^2+z^2-1)$. We have seen that $\Omega_{R|K}$ is locally free, and hence projective. By definition, 
 \[ \Gamma_{R|K} = \ker \left( (f)/(f^2)\xra{d} R dx \oplus R dy \oplus R dz \right),\] where $f=x^2+y^2+z^2-1$.
@@ -1665,6 +1669,10 @@ with the generator mapping to $2i$ in $R dx$. Since $2i$ is a unit, this map is 
 \end{proof}
 
 
+Recall that for a ring  $R$ and a prime $\fp$, the \emph{residue field}\index{residue field} of $R$ at $\fp$ is $\kappa(\fp):=R_{\fp}/\fp R_{\fp}$\index{$\kappa(\fp)$}. For a ring homomorphism $R\xra{\phi} S$ and a prime $\fp\in \Spec(R)$, the \emph{fiber ring}\index{fiber ring} of $\phi$ over $\fp$ is $\kappa(\phi,\fp):=(R\smallsetminus \fp)^{-1}(S/\fp S)$\index{$\kappa(\phi,\fp)$}. Since localization and quotienting are special cases of extension of scalars, we can also write this as $\kappa(\phi,\fp) = \kappa(\fp) \otimes_R S$. The point of this construction is that the induced map on Spec from $S \to \kappa(\phi,\fp)$ induces a bijection
+\[  \Spec(\kappa(\phi,\fp)) \xra{\sim} \{ \fq \in \Spec(S) \ | \ \phi^*(\fq) = \fp \} .\]
+
+
 
 \begin{lem} Let $R$ be a Noetherian ring. Let $\fq$ be a prime ideal of $R[x]$ and set $\fp=\fq \cap R$. Then either
 \begin{enumerate}
@@ -1673,14 +1681,12 @@ with the generator mapping to $2i$ in $R dx$. Since $2i$ is a unit, this map is 
 \end{enumerate}
 \end{lem}
 \begin{proof}
-First, we note that $\fp R[x]$ is prime, since $R[x]/\fp R[x] \cong (R/\fp)[x]$.
+First, we show every other prime is of the form above. We compute $\kappa(\phi,\fp) = \kappa(\fp) \otimes_R R[x] \cong  \kappa(\fp)[x]$. Every prime in this ring is zero or principal. The preimage of $0$ in $R[x]$ is $\fp R[x]$. The preimage of some $(\overline{f}(x))$ for $\overline{f}(x)\in \kappa(\fp)[x]$ is the set of $g(x)\in R[x]$ that end up in $\fp R[x]+(f(x))$ after localizing at $R\smallsetminus \fp$, which is the formula above.
 
-Now, we show every other prime is of the form above. Every prime $\fq$ with $\fq \cap R=\fp$ contains $\fp R[x]$, and corresponds to a prime in $(R/\fp)[x]$ that contracts to $0$ in $R/\fp$. Moreover, by the correspondence of primes in localizations, such a prime is the contraction of a prime in $(R/\fp)_{\fp}[x]$. Since $(R/\fp)_{\fp}$ is a field, such a prime is principal $(f(x))$, and the contraction to $(R/\fp)[x]$ is the elements with a nonzero $R/\fp$-multiple in $(f(x))$. The, taking preimages in $R[x]$ gives the description above.
-
-The height of $\fp[x]$ is at least that of $\fp$, since a chain
- \[ \fr_0 \subsetneqq \fr_1 \subsetneqq \fr_2 \subsetneqq \cdots \fr_h= \fp\]
+The height of $\fp[x]$ is at least that of $\fp$ (say $h$), since a chain
+ \[ \fr_0 \subsetneqq \fr_1 \subsetneqq \fr_2 \subsetneqq \cdots \subsetneqq \fr_h= \fp\]
  yields a chain
-  \[ \fr_0[x] \subsetneqq \fr_1[x] \subsetneqq \fr_2[x] \subsetneqq \cdots \fr_h[x]= \fp[x].\]
+  \[ \fr_0[x] \subsetneqq \fr_1[x] \subsetneqq \fr_2[x] \subsetneqq \cdots \subsetneqq \fr_h[x]= \fp[x].\]
   Consequently, a prime of the second type has height at least $\htt(\fp)+1$.
 
 Finally, we compute the heights. We have $\htt(\fq)=\htt( \fq R_{\fp}[x])$ since any prime contained in $\fq$ does not meet $\fp$. Now, $R_{\fp}$ has a system of parameters $(z_1,\dots,z_h)$ with $\fp R_\fp$ nilpotent modulo $(z_1,\dots,z_h)$. But then $\fp R_\fp[x]$ is nilpotent modulo $(z_1,\dots,z_h)R_\fp[x]$ as well (since a polynomial with nilpotent coefficients is nilpotent). Thus, $\fp R_\fp[x]$ is a minimal prime of $(z_1,\dots,z_h)R_\fp[x]$, so $\htt(\fp R_\fp[x]) \leq h = \htt(\fp R_{\fp}) = \htt(\fp)$, so equality holds in case (1). For a prime of case (2), we note that 
@@ -1698,7 +1704,7 @@ If $\fq = \fp R[x]$, take $q = \sum_i p_i s_i(x) \in \fp R[x]$; then as above we
  If $\fq = \{ g(x) \ | \ \exists a\in R\smallsetminus \fp \ \text{with} \ a g(x) \in \fp R[x]+(f(x))\}$ with $f(x)\in \fq$, take $q = \sum_i p_i s_i(x) + f(x) s_0(x) \in \fp R[x]$. Proceeding the same way as above, we get that $\fq R[x]_{\fq} / \fq^2 R[x]_{\fq}$ is generated by $e_1,\dots, e_h, f(x)$, so $R[x]_{\fq}$ is regular. 
 \end{proof}
 
-\begin{cor} If $K$ is a field, $R=K[x_1,\dots,x_n]$ is a polynomial ring, and $\fp\subset R$ is prime, then $R_\fp$ is regular.
+\begin{cor} If $K$ is a field, $R=K[x_1,\dots,x_n]$ is a polynomial ring, and $\fp\subset R$ is prime, then $R_\fp$ is regular. Likewise, if $R=\Z[x_1,\dots,x_n]$ is a polynomial ring, and $\fp\subset R$ is prime, then $R_\fp$ is regular.
 \end{cor}
 
 
@@ -1713,13 +1719,18 @@ Now, if $f_1,\dots,f_t$ be a minimal generating set for $I$ and their images are
 
 \subsection{Smoothness vs regularity}
 
+\begin{lem}[Cauchy-Binet formula] Let $R$ be a ring. Let $A$ be an $n\times m$ matrix and $B$ be an $m\times n$ matrix with $m\geq n$. For a subset $I\subseteq [m]$ of size $n$, write $A_{\bullet,I}$ to be the submatrix with columns indexed by $I$ and $B_{I,\bullet}$ to be the submatrix with rows indexed by $I$. Then $\det(AB) = \sum_{I\subseteq [m], |I|=n} \det(A_{\bullet,I}) \det(B_{I,\bullet})$.
+\end{lem}
+\begin{proof}
+Let $a_1,\dots,a_n$ be the rows of $A$ and $b_1,\dots,b_n$ be the columns of $B$. We can think of $\det(AB)$ as a function $D(a_1,\dots,a_n,b_1,\dots,b_n)$ that is $R$-linear in each argument. Likewise, the function $\sum_{I\subseteq [m], |I|=n} \det(A_{\bullet,I}) \det(B_{I,\bullet})$ is $D'(a_1,\dots,a_n,b_1,\dots,b_n)$ linear in each argument. Thus, if the formula holds whenever each $a_i$ and each $b_i$ is a standard basis vector in $R^m$, the formula holds in general by linearity. Moreover, if any standard vector repeats in the $a$'s or the $b$'s, then both sides are zero. Thus, we reduce to the case where each row of $A$ has exactly one $1$ and all other entries $0$, and each column of $B$ has exactly one $1$ and all other entries $0$. Both expressions also stay the same if we permute the columns of $A$ and rows of $B$ simultaneously, so we can assume that $A$ is an identity block followed by zeroes. Then the product of $AB$ is the first $n$ rows of $B$, which corresponds to the only nonzero term in the second sum.
+\end{proof}
+
 \begin{lem} Let $(R,\fm,k)$ be a local ring. Let $A$ be an $n \times m$ matrix with entries in $R$. Then the map $R^m \xra{A} R^n$ is a split injection if and only if $m\leq n$ and some $m \times m$ minor of $A$ is a unit.
 \end{lem}
 \begin{proof}
 $(\Leftarrow):$ Suppose that some $m \times m$ minor of $A$ is a unit; without loss of generality, say the minor involving the first $a$ rows. Let $A'$ be this submatrix. Then $B' = \det(A')^{-1} \mathrm{adj}(A')$ satisfies $B' A' = I$. Then set $B=[B' | 0]$ and we have $BA=I$.
 
-
-$(\Rightarrow):$ We apply the Cauchy-Binet formula: for an $m\times n$ matrix $C$ and an $n\times m$ matrix $D$ and a subset $I\subseteq [n]$ of size $m$, write $C_{\bullet,I}$ to be the submatrix with columns indexed by $I$ and $D_{I,\bullet}$ to be the submatrix with rows indexed by $I$. Then $\det(CD) = \sum_{I\subseteq [n], |I|=m} \det(C_{\bullet,I}) \det(D_{I,\bullet})$. In particular, $\det(CD)$ is a linear combination of the $m\times m$ minors of $D$. So, if all the minors are in $\fm$, then there can be no left inverse.
+$(\Rightarrow):$ We apply the Cauchy-Binet formula: $\det(BA)$ is a linear combination of the $m\times m$ minors of $A$. So, if all the minors are in $\fm$, then there can be no left inverse.
 \end{proof}
 
 \begin{exer} Prove the Cauchy-Binet formula.
