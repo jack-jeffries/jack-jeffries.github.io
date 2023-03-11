@@ -1660,7 +1660,7 @@ with the generator mapping to $2i$ in $R dx$. Since $2i$ is a unit, this map is 
 \end{enumerate}
 \end{ex}
 
-\begin{comment}
+\Mar{21}
 
 \subsection{Regular rings revisited}
 
@@ -1766,6 +1766,68 @@ where $R_{\fp}^{\oplus t}$ is a free module with basis in bijection with the min
 If $K\to S_{\fq}$ is smooth, then $d$ is a split injection, so $I S_{\fq} / I^2 S_{\fq}$ is free, and hence the map $q$ is an isomorphism. Then $J(f)^T$ is a split injection, so the column Jacobian must be injective modulo $\fq S_{\fq}$, yielding the last condition.
 
 Conversly, if the map $J(f)^T$ is injective modulo $\fq S_{\fq}$, it is split injective, forcing $q$ to be an isomorphism, and then forcing $d$ to be a split injection, and hence forcing $R_\fq$ to be essentially smooth other $K$.\end{proof}
+
+\section{Coefficient fields and complete local rings}
+
+\subsection{Transcendence bases and $p$-bases}
+
+Let $K\subseteq L$ be fields. Recall that $l\in L$ is \emph{algebraic}\index{algebraic} over $K$ if it satisfies a nonzero polynomial equation over $K$ and \emph{transcendental}\index{transcendental} otherwise. An algebraic element is \emph{separable}\index{separable} if it is a simple root if its minimal polynomial, and \emph{inseparable}\index{inseparable} otherwise. Inseparable elements can only occur in positive characteristic.
+
+Let $K\subseteq L$. A subset $\{l_\lambda\}$ of elements of $L$ is \emph{algebraically independent}\index{algebraically independent} if the $K$-algebra map $K[\{x_\lambda\}] \to L$ given by $x_{\lambda}\mapsto l_\lambda$ is injective; i.e., there are no nontrivial relations on the elements over $K$. In this case, there is an injective map from the field of rational function $K(\{x_\lambda\}) \to L$ with image $K(\{l_\lambda\})\subseteq L$. If $L=K(\{l_\lambda\})$ for an algebraically independent subset $\{l_\lambda\}$, we that $L$ is a \emph{purely transcendental}\index{purely transcendental} extension of $K$.
+
+\begin{defn} Let $K\subseteq L$ be fields. We say that a subset $\{l_\lambda\}$ is a \emph{transcendence basis}\index{transcendence basis} for $L$ over $K$ if it is algebrically independent and every element of $L$ is algebraic over $K(\{l_\lambda\})$
+\end{defn}
+
+\begin{lem} Let $K\subseteq L$ be fields.
+\begin{enumerate}
+\item A subset of $L$ is a transcendence basis over $K$ if and only if it is a maximal algebraically independent subset of $L$.
+\item Every algebraically independent subset of $L$ is contained in a transcendence basis.
+\end{enumerate}
+\end{lem}
+\begin{proof}
+\begin{enumerate}
+\item If  $\{l_\lambda\}$ and $l\in L$, then $l$ is algebraic over $K(\{l_\lambda\})$, so there is a nonzero polynomial relation $l^n + {r_1} l^{n-1} + \cdots + r_n = 0$ with $r_i\in K(\{l_\lambda\}$. Writing $r_i=\frac{p_i}{q_i}$ and multiplying by the product of the $q_i$'s gives a nonzero polynomial relation on the $l_\lambda$'s and $l$. Thus, $\{l_\lambda\}$ is a maximal algebraic subset. The converse is similar.
+\item Given a nested union of algebraically independent subsets, the union is as well, since a relation on one of these sets involves finitely many elements, all of which must occur in one of the sets in the chain. The claim then follows from Zorn's Lemma.\qedhere
+\end{enumerate}
+\end{proof}
+
+ Let $K\subseteq L$ be fields of characteristic $p>0$. Recall that $L^p=\{ l^p \ | \ l\in L\}$ is a subfield of $L$. For a subset $T=\{l_\lambda\}$ of elements of $L$, we write 
+\[T^{[<q]} = \{ t_{\lambda_1}^{a_1} \cdots t_{\lambda_m}^{a_m} \ | \ 0 \leq a_i <q\}.\]
+
+\begin{defn} Let $K\subseteq L$ be fields of characteristic $p>0$. A subset $T=\{l_\lambda\}$ is
+\begin{itemize}
+\item \emph{$p$-independent}\index{$p$-independent} over $K$ if $T^{[<p]}$ is linearly independent over $K(L^p)$.
+\item \emph{$p$-spanning}\index{$p$-spanning} over $K$ if $T^{[<p]}$ spans over $K(L^p)$.
+\item a \emph{$p$-basis}\index{$p$-basis}  over $K$ if $T^{[<p]}$ is a basis for $K(L^p)$.
+\end{itemize}
+\end{defn}
+
+
+
+\begin{lem} Let $K\subseteq L$ be fields of characteristic $p>0$.
+\begin{enumerate}
+%\item A subset of $L$ is $p$-independent if and only if for any finite subset $l_1,\dots,l_n$, we have $[K(L^p)(l_1,\dots,l_n): K(L^p)] = p^n$.
+\item A subset of $L$ is a $p$-basis over $K$ if and only if it is a maximal $p$-independent subset of $L$.
+\item Every $p$-indepdendent subset of $L$ is contained in a $p$-basis.
+\end{enumerate}
+\end{lem}
+\begin{proof}
+\begin{enumerate}
+%\item Consider the tower 
+%\[ K(L^p) \subseteq K(L^p)(l_1)  \subseteq K(L^p)(l_1,l_2)  \subseteq \cdots  \subseteq K(L^p)(l_1,\dots,l_n).\]
+%Since each new element has a $p$th power in the previous, each field is generated as a vector space over the previous by the powers of $l_i^ less than $p$. In particular, $K(L^p)(l_1,\dots,l_n)$ is generated as a $K(L^p)$-vector space by $\{l_1,\dots,l_n\}^{[<p]}$.
+% If part of a $p$-indepedent set $T$, $\{l_1,\dots,l_n\}^{[<p]}$ are linearly indepedent over $K(L^p)$ so the degree is at least $p^n$, and hence equal. Conversely, if $T$ is not $p$-independent, take a linear relation, which necessarily involves finitely many $l$'s; the degree of the field extension is then below expected.
+
+\item It is clear that a $p$-basis is a maximal $p$-independent set. For the other direction, note that if $T\subset L \smallsetminus K(L^p)$, then $K(L^p)(T)=K(L^p)\cdot T^{[<p]}$. Clearly $\supseteq$ holds. Since every element of $T$ is integral over $K(L^p)$ (because its $p$-th power is there), $K(L^p)[T]$ is a field, and hence equal to $K(L^p)(T)$. But then every polynomial in $T$ can be written as a combination of elements of $K(L^p)\cdot T^{[<p]}$. So, it suffices to show that if $T$ is a maximal $p$-independent set, then $K(L^p)(T)=L$. By maximality, if $l\in L$, there is a relation $l^{p-1} f_{p-1} + \cdots + l f_1 + f_0 = 0$ with $f_i\in K(L^p)\cdot T^{[<p]} = K(L^p)(T)$. This implies that $[K(L^p)(T)(l) : K(L^p)(T)] <p$, and hence must be $1$, since $l$ satisfies $T^p - l^p =0$ over $K(L^p)(T)$ and the minimal polynomial must have degree $1$ or $p$. Thus, $L=K(L^p)(T)$ in this case.
+
+\item Straightforward application of Zorn's Lemma.\qedhere
+
+\end{enumerate}
+\end{proof}
+
+Examples
+
+
 
 \begin{comment}
 
