@@ -1671,16 +1671,16 @@ In particular, a zero-dimensional local ring is regular if and only if it is a f
 \begin{prop} Let $(R,\fm,k)$ be a regular local ring.
 \begin{enumerate}
 \item If $f\in \fm/\fm^2$, then $R/(f)$ is a regular local ring.
-\item If $I$ is an ideal, then $R/I$ is regular if and only if the minimal generators of $I$ are linearly independent in $\fm/\fm^2$ (i.e., the map $I/\fm I\to \fm/\fm^2$ induced by inclusion is injective).
 \item $(R,\fm,k)$ is a domain.
+\item If $I$ is an ideal, then $R/I$ is regular if and only if the minimal generators of $I$ are linearly independent in $\fm/\fm^2$ (i.e., the map $I/\fm I\to \fm/\fm^2$ induced by inclusion is injective).
 \end{enumerate}
 \end{prop}
 \begin{proof}
 \begin{enumerate}
-\item Set $d=\dim(R) = \dim_k(\fm/\fm^2)$. We have $\dim_k(\frac{\fm R/(f)}{\fm^2 R/(f)}) =\dim_k( \frac{\fm}{(f,\fm^2)}) =d-1$, so $d-1 \leq \dim(R/(f)) \leq \dim_k(\frac{\fm R/(f)}{\fm^2 R/(f)}) \leq d-1$, so equality holds and $R/(f)$ is regular.
-\item From the first part, if $f_1,\dots,f_t$ be a minimal generating set for $I$ and their images are linearly independent in $\fn/\fn^2$, by induction on $t$ we get that $S/I$ is regular. Conversely, if the images of the $f$'s are not linearly independent in $\fn/\fn^2$ suppose that the images of $f_1,\dots,f_a$ form a basis for the image; subtracting off copies of these, we may suppose the rest are in $\fn^2$. Then $S/(f_1,\dots,f_a)$ is a regular local ring, and $S/I \cong S'/J$ for $S'=S/(f_1,\dots,f_a)$ some ideal $J$ in the maximal ideal $\fn S'$. But then $\dim(S'/J)<\dim(S')$ and $\dim(\fn (S/I)/ \fn^2 (S/I)) = \dim (\fn S' / \fn^2 S') = \dim(S')$, so $S/I\cong S'/J$ is not regular.
+\item Set $d=\dim(R) = \dim_k(\fm/\fm^2)$. We have \[\dim_k(\frac{\fm R/(f)}{\fm^2 R/(f)}) =\dim_k( \frac{\fm}{(f,\fm^2)}) =d-1,\] so \[d-1 \leq \dim(R/(f)) \leq \dim_k(\frac{\fm R/(f)}{\fm^2 R/(f)}) \leq d-1,\] so equality holds and $R/(f)$ is regular.
 \item By induction on $d = \dim R$, where $R$ is a regular local ring. If $d=0$, then $R$ must be a field, and thus a domain.
-If $d>0$, consider $f \in \fm \setminus \left( \fm^2 \cup \bigcup_{\mathfrak{p} \in \mathrm{Min}(R)} \mathfrak{p} \right)$. (Here we are using the strong version of prime avoidance where we can avoid one or two arbitrary ideals and a finite number of prime ideals.) By the first part, $R/(f)$ is regular. By the induction hypothesis, this is a domain, so $(f)$ is prime. By choice of $f$, this is not a minimal prime. Given a prime ideal $0 \subseteq \mathfrak{p} \subsetneqq (f)$, if $y \in \mathfrak{p}$, we can write $y =rf$ for some $r \in R$, and since $f\notin \fp$,  $r \in \mathfrak{p}$. Thus $\mathfrak{p} = f \fp \subseteq \fm \fp$, which by NAK implies that $\mathfrak{p} = 0$. Thus  $0$ is prime, so $R$ is a domain.\qedhere
+If $d>0$, consider $f \in \fm \setminus \left( \fm^2 \cup \bigcup_{\mathfrak{p} \in \mathrm{Min}(R)} \mathfrak{p} \right)$. (Here we are using the strong version of prime avoidance where we can avoid one or two arbitrary ideals and a finite number of prime ideals.) By the first part, $R/(f)$ is regular. By the induction hypothesis, this is a domain, so $(f)$ is prime. By choice of $f$, this is not a minimal prime. Given a prime ideal $0 \subseteq \mathfrak{p} \subsetneqq (f)$, if $y \in \mathfrak{p}$, we can write $y =rf$ for some $r \in R$, and since $f\notin \fp$,  $r \in \mathfrak{p}$. Thus $\mathfrak{p} = f \fp \subseteq \fm \fp$, which by NAK implies that $\mathfrak{p} = 0$. Thus  $0$ is prime, so $R$ is a domain.
+\item From the first part, if $f_1,\dots,f_t$ be a minimal generating set for $I$ and their images are linearly independent in $\fm/\fm^2$, by induction on $t$ we get that $R/I$ is regular. Conversely, if the images of the $f$'s are not linearly independent in $\fm/\fm^2$ suppose that the images of $f_1,\dots,f_a$ form a basis for the image; subtracting off copies of these, we may suppose the rest are in $\fm^2$. Then $R/(f_1,\dots,f_a)$ is a regular local ring, and $R/I \cong R'/J$ for $R'=R/(f_1,\dots,f_a)$ some ideal $J$ in the maximal ideal $\fm R'$. Since $R'$ is a domain and $J\neq 0$, $\dim(R'/J)<\dim(R')$, and \[\dim(\fm (R/I)/ \fm^2 (R/I)) = \dim (\fm R' / \fm^2 R') = \dim(R'),\] so $R/I\cong R'/J$ is not regular.\qedhere
 \end{enumerate}
 \end{proof}
 
@@ -1706,8 +1706,10 @@ The height of $\fp[x]$ is at least that of $\fp$ (say $h$), since a chain
   \[ \fr_0[x] \subsetneqq \fr_1[x] \subsetneqq \fr_2[x] \subsetneqq \cdots \subsetneqq \fr_h[x]= \fp[x].\]
   Consequently, a prime of the second type has height at least $\htt(\fp)+1$.
 
-Finally, we compute the heights. We have $\htt(\fq)=\htt( \fq R_{\fp}[x])$ since any prime contained in $\fq$ does not meet $\fp$. Now, $R_{\fp}$ has a system of parameters $(z_1,\dots,z_h)$ with $\fp R_\fp$ nilpotent modulo $(z_1,\dots,z_h)$. But then $\fp R_\fp[x]$ is nilpotent modulo $(z_1,\dots,z_h)R_\fp[x]$ as well (since a polynomial with nilpotent coefficients is nilpotent). Thus, $\fp R_\fp[x]$ is a minimal prime of $(z_1,\dots,z_h)R_\fp[x]$, so $\htt(\fp R_\fp[x]) \leq h = \htt(\fp R_{\fp}) = \htt(\fp)$, so equality holds in case (1). For a prime of case (2), we note that 
-$\frac{R_\fp}{(z_1,\dots,z_h)}[x]$ has dimension one, since killing the ideal of nilpotents $\fp R_\fp$ yields a polynomial ring over a field, which has dimension one. Then, since $\frac{R[x]_{\fq}}{(z_1,\dots,z_h)}$ is a localization of $\frac{R_\fp}{(z_1,\dots,z_h)}[x]$, we have
+Finally, we compute the heights. Note that  $\htt(\fp [x])=\htt( \fp R_{\fp}[x]$ since any prime contained in $\fp [x]$ does not meet $R\smallsetminus \fp$. Take a system of parameters $(z_1,\dots,z_h)$ for $R_{\fp}$. Then $\fp R_\fp$ is nilpotent modulo $(z_1,\dots,z_h)$. But then $\fp R_\fp[x]$ is nilpotent modulo $(z_1,\dots,z_h)R_\fp[x]$ as well, since a polynomial with nilpotent coefficients is nilpotent. Thus, $\sqrt{\fp R_\fp[x]} \subseteq \sqrt{(z_1,\dots,z_h)R_\fp[x]} \subseteq \sqrt{\fp R_\fp[x]}$, so equality holds, and $\htt(\fp R_\fp[x]) \leq h = \htt(\fp R_{\fp}) = \htt(\fp)$, and this gives the formula in case (1). 
+
+For a prime of case (2), we note that 
+$\frac{R_\fp}{(z_1,\dots,z_h)}[x]$ has dimension one, since killing the ideal of nilpotents $\fp R_\fp[x]$ yields a polynomial ring over a field, which has dimension one. Then, since $\frac{R[x]_{\fq}}{(z_1,\dots,z_h)}$ is a localization of $\frac{R_\fp}{(z_1,\dots,z_h)}[x]$, we have
 \[ \htt(\fq) = \dim(R[x]_{\fq}) \leq h+ \dim\left(\frac{R[x]_{\fq}}{(z_1,\dots,z_h)}\right) + h \leq \dim \left(\frac{R_\fp}{(z_1,\dots,z_h)}[x]\right) + h = h+1\]
 and we are done. \end{proof}  
 
@@ -1731,19 +1733,20 @@ If $\fq = \fp R[x]$, take $q = \sum_i p_i s_i(x) \in \fp R[x]$; then as above we
 \begin{lem}[Cauchy-Binet formula] Let $R$ be a ring. Let $A$ be an $n\times m$ matrix and $B$ be an $m\times n$ matrix with $m\geq n$. For a subset $I\subseteq [m]$ of size $n$, write $A_{\bullet,I}$ to be the submatrix with columns indexed by $I$ and $B_{I,\bullet}$ to be the submatrix with rows indexed by $I$. Then $\det(AB) = \sum_{I\subseteq [m], |I|=n} \det(A_{\bullet,I}) \det(B_{I,\bullet})$.
 \end{lem}
 \begin{proof}
-Let $a_1,\dots,a_n$ be the rows of $A$ and $b_1,\dots,b_n$ be the columns of $B$. We can think of $\det(AB)$ as a function $D(a_1,\dots,a_n,b_1,\dots,b_n)$ that is $R$-linear in each argument. Likewise, the function $\sum_{I\subseteq [m], |I|=n} \det(A_{\bullet,I}) \det(B_{I,\bullet})$ is $D'(a_1,\dots,a_n,b_1,\dots,b_n)$ linear in each argument. Thus, if the formula holds whenever each $a_i$ and each $b_i$ is a standard basis vector in $R^m$, the formula holds in general by linearity. Moreover, if any standard vector repeats in the $a$'s or the $b$'s, then both sides are zero. Thus, we reduce to the case where each row of $A$ has exactly one $1$ and all other entries $0$, and each column of $B$ has exactly one $1$ and all other entries $0$. Both expressions also stay the same if we permute the columns of $A$ and rows of $B$ simultaneously, so we can assume that $A$ is an identity block followed by zeroes. Then the product of $AB$ is the first $n$ rows of $B$, which corresponds to the only nonzero term in the second sum.
+Let $a_1,\dots,a_n$ be the rows of $A$ and $b_1,\dots,b_n$ be the columns of $B$. We can think of $\det(AB)$ as a function $D(a_1,\dots,a_n,b_1,\dots,b_n)$ that is $R$-linear in each argument: indeed
+\[ \begin{aligned} \text{row 1 of }& \begin{bmatrix} ca_1+a'_1 \\ a_2 \\ \vdots \\ a_n \end{bmatrix} B = (ca_1 + a'_1)  B = c a_1 B + a'_1 B =  c \cdot \text{row 1 of } \begin{bmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{bmatrix} B  +  \text{row 1 of } \begin{bmatrix} a'_1 \\ a_2 \\ \vdots \\ a_n \end{bmatrix} B,  \end{aligned}\]
+and likewise for the other $a_i$'s and the $b_i$'s, so this follows by linearity of determinant in rows and columns.
+ 
+ Likewise, the function $\sum_{I\subseteq [m], |I|=n} \det(A_{\bullet,I}) \det(B_{I,\bullet})=D'(a_1,\dots,a_n,b_1,\dots,b_n)$ linear in each argument: this holds for each $I$. Thus, if the formula holds whenever each $a_i$ and each $b_i$ is a standard basis vector in $R^m$, the formula holds in general by linearity. Moreover, if any standard vector repeats in the $a$'s or the $b$'s, then both sides are zero (for the RHS, note that for each $I$, $A_{\bullet,I}$ or $B_{I,\bullet}$ has a repeat row or column). Thus, we reduce to the case where each row of $A$ has exactly one $1$ and all other entries $0$, and each column of $B$ has exactly one $1$ and all other entries $0$. Both expressions also stay the same if we permute the columns of $A$ and rows of $B$ simultaneously, so we can assume that $A$ is an identity block followed by zeroes. Then the product of $AB$ is the first $n$ rows of $B$, which corresponds to the only nonzero term in the second sum.
 \end{proof}
 
-\begin{lem} Let $(R,\fm,k)$ be a local ring. Let $A$ be an $n \times m$ matrix with entries in $R$. Then the map $R^m \xra{A} R^n$ is a split injection if and only if $m\leq n$ and some $m \times m$ minor of $A$ is a unit.
+\begin{lem} Let $(R,\fm,k)$ be a local ring. Let $B$ be an $m \times n$ matrix with entries in $R$. Then the map $R^n \xra{B} R^m$ is a split injection if and only if $m\geq n$ and some $n \times n$ minor of $B$ is a unit.
 \end{lem}
 \begin{proof}
-$(\Leftarrow):$ Suppose that some $m \times m$ minor of $A$ is a unit; without loss of generality, say the minor involving the first $a$ rows. Let $A'$ be this submatrix. Then $B' = \det(A')^{-1} \mathrm{adj}(A')$ satisfies $B' A' = I$. Then set $B=[B' | 0]$ and we have $BA=I$.
+$(\Leftarrow):$ Suppose that some $n \times n$ minor of $B$ is a unit; without loss of generality, say the minor involving the first $n$ rows. Let $B'$ be this submatrix. Then $A' = \det(B')^{-1} \mathrm{adj}(B')$ satisfies $A' B' = I$. Then set $A=[A' | 0]$ and we have $AB=I$.
 
-$(\Rightarrow):$ We apply the Cauchy-Binet formula: $\det(BA)$ is a linear combination of the $m\times m$ minors of $A$. So, if all the minors are in $\fm$, then there can be no left inverse.
+$(\Rightarrow):$ We apply the Cauchy-Binet formula: $\det(AB)$ is a linear combination of the $n\times n$ minors of $B$. So, if all the minors are in $\fm$, then there can be no left inverse.
 \end{proof}
-
-\begin{exer} Prove the Cauchy-Binet formula.
-\end{exer}
 
 
 \begin{thm}
