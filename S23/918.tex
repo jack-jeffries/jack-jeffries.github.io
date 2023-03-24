@@ -1899,6 +1899,83 @@ On other hand, if $\{dt\}$ is a basis for  $\Omega_{L|K}$, we claim that $T$ is 
 \end{enumerate}
 \end{proof}
 
+
+\subsection{Completion}
+
+Let $R$ be a ring, $I$ an ideal, and $M$ an $R$-module. 
+
+Consider the collection of subsets $\{m + I^a M \ | \ m\in M, a\in \N\}$. We claim that this forms the basis of open sets for a topological space, i.e., that the intersection of two of these is contained in another. Indeed, if $(m+I^aM) \cap (n+ I^b M)$ is nonempty, suppose that $a\leq b$ and $t$ is in the intersection. Then $t-m \in I^a M$ and $t-n \in I^b M \subseteq I^a M$, so $n-m = (t-m)-(t-n)\in I^a M$, so $n\in m+ I^aM$, and hence $n+I^b M \subseteq n+I^a M = m+I^a M$, and thus $(m+I^aM) \cap (n+ I^b M)= m+I^aM$.
+
+\begin{defn} Let $R$ be a ring, $I$ an ideal, and $M$ an $R$-module. The \emph{$I$-adic topology}\index{$I$-adic topology} on $M$ is the topology with open basis $\{m + I^a M \ | \ m\in M, a\in \N\}$; that is, the topology whose open sets are arbitrary unions of sets of the form $m + I^a M$.
+\end{defn}
+
+The central case is when $M=R$, so the basic open sets are of the form $r+I^n$. The point of the $I$-adic topology is that two elements are close if they are congruent modulo a large power of $I$.
+
+Let us translate some basic topological notions into this topology.
+
+\begin{prop} Let $R$ be ring, $I$ an ideal, and $M$ an $R$-module. Let $\{a_n\}$ be a sequence of elements in $M$ and $a\in M$.
+\begin{itemize}
+\item $\lim m_n = m$ in the $I$-adic topology if and only if for any $e\in \N$, there is some $d\in \N$ such that for all $n\geq d$,  $m_n \equiv m \mod I^e M$.
+\item In particular, $\lim m_n = 0$ in the $I$-adic topology if and only if for any $e\in \N$, there is some $d\in \N$ such that for all $n\geq d$,  $m_n \in I^e M$.
+\item $\{a_n\}$ is Cauchy if and only if for any $e\in \N$, there is some $d\in \N$ such that for all $n,n'\geq N$,  $m_n \equiv m_n' \mod I^e M$.
+\item If $S$ is another ring, $J$ ideal of $S$, and $N$ an $S$-module, a function $f:M\to N$ is continuous with respect to the two topologies if for any $e\in \N$, there is some $d\in \N$ such that $m \equiv m' \mod I^e M$ implies $f(m) \equiv f(m') \mod I^d N$; that is, $f(m+I^e M) \subseteq f(m) + I^dN$. If $f$ is additive, the last condition is equivalent to $f(I^e M ) \subseteq I^dN$.
+\end{itemize}
+\end{prop}
+
+\begin{defn} We say that a module $M$ is \emph{$I$-adically separated}\index{$I$-adically separated} if $\bigcap_{n\in \N} I^n M= 0$.
+
+If $(R,\fm)$ is local, we simply say $M$ is \emph{separated}\index{separated} to mean $\fm$-adically separated.
+\end{defn}
+
+This is equivalent to saying that limits are unique in the $I$-adic topology. Indeed, $m\in \bigcap_{n\in \N} I^n M$, then the limit of the constant sequence $\{m\}$ is both $0$ and $m$, so unique limits implies separated, and conversely, if $\lim m_n = m$ and $\lim m_n = m'$ then $m-m' \in \in \bigcap_{n\in \N} I^n M$ so separated implies unique limits. By the Krull Intersection Theorem, any finitely generated module over a local ring ($R,\fm)$ is $\fm$-adically separated.
+
+\begin{defn} We say that a module $M$ is \emph{$I$-adically complete}\index{$I$-adically complete} if every Cauchy sequence in $M$ has a unique limit.
+
+If $(R,\fm)$ is local, we simply say $M$ is \emph{complete}\index{complete} to mean $\fm$-adically complete. In particular, a complete local ring is a local ring that is complete with respect to its maximal ideal.
+\end{defn}
+
+\begin{ex}
+\begin{enumerate}
+\item Let $(R,\fm)$ be an Artinian local ring, so $\fm^t=0$ for some $t$. Then any Cauchy sequence is eventually constant: taking $e=t$, there is a $d$ such that for $n,n'\geq d$, $r_n \equiv r_{n'} \mod \fm^e$ so $r_n = r_{n'}$. Thus an Artinian local ring is complete.
+\item Let $A$ be a ring and $R=A\llbracket x_1,\dots,x_t\rrbracket$. We claim that $A$ is $(x_1,\dots,x_t)$-adically complete. Indeed the condition for a sequence $\{f_n(x)\}$ to be Cauchy is that for any $e$, there is some $d$ such that for $n,n'\geq d$, the coefficients up to degree $e$ in $f_n(x)$ and $f_{n'}(x)$ agree. That is, the $x_1^{a_1} \cdots x_t^{a_t}$-coefficient of $f_n(x)$ for $n$ sufficiently large (greater than the $d$ coming from $e=a_1+\cdots+a_t$) is well-defined. The unique power series with these coefficients is the unique limit of $\{f_n(x)\}$.
+In particular, a power series ring over a field is a complete local ring.
+\item If $R$ is $I$-adically complete, and $J$ is an ideal of $R$, then $R/J$ is $I (R/J)$-adically complete. In particular, a quotient of a power series ring over a field is a complete local ring.
+\end{enumerate}
+\end{ex}
+
+Given a ring $R$, and ideal $I$, the set of Cauchy sequences with pointwise addition and multiplication forms a ring: it is straightforward to see that the sum and product of Cauchy sequences is Cauchy. There is a homomorphism from $R$ to this ring that sends an element to the associated constant sequence. The set of sequences that converge to zero forms an ideal in this ring.
+
+\begin{defn} Let $R$ be a ring and $I$ an ideal. The $I$-adic completion of $R$ is the ring $\hat{R}^I$ given by the quotient of the ring of Cauchy sequences by the ideal of sequences that converge to zero. This is an $R$-algebra given by the map sending an element to the class of a constant sequence.
+\end{defn}
+
+Note that the map from $R$ to $\hat{R}^I$ is continuous (with respect to the $I$ and $I\hat{R}^I$ topologies), that $R$ is dense in $\hat{R}^I$ in the $I\hat{R}^I$-topology, and that $\hat{R}^I$ is $I\hat{R}^I$-adically complete.
+
+If $M$ is an $R$-module, the set of Cauchy sequences in $M$ is a module over the ring of Cauchy sequences in $R$, and the set of sequences converging to zero is a submodule. One can check that this induces a well-defined module action of $\hat{R}^I$ on the set of equivalence classes of Cauchy sequences on $M$ modulo sequences converging to zero.
+
+\begin{defn} Let $R$ be a ring, $I$ an ideal, and $M$ a module. The $I$-adic completion of $M$ is the  $\hat{R}^I$-module $\hat{M}^I$ given by the quotient of the ring of Cauchy sequences by sequences converging to zero in $M$.
+\end{defn}
+
+ \begin{prop} Let $R$ and $S$ be rings, with respective ideals $I$ and $J$, and $\phi:R\to S$ a homomorphism with $\phi(I)\subseteq J$.
+ 
+  If $S$ is $J$-adically complete, then there is a unique continuous  ring homomorphism $\phi':\hat{R}^I \to S$ extending $\phi$.
+ 
+ If $R$ is $I$-adiaclly complete and $S$ is $J$-adically complete, then there is a unique continuous  ring homomorphism $\hat{\phi}:\hat{R}^I \to \hat{S}^J$ extending $\phi$.
+ \end{prop}
+ 
+ Ex: power series is completion of poly ring
+ 
+ Completion of Noeth local ring is quotient of power series, so Noeth.
+ 
+ \subsection{Three main technical things about completion}
+ 
+ \subsubsection{Flatness}
+ 
+ 
+ \subsubsection{Super NAK}
+
+
+ \subsubsection{Hensel's Lemma}
+
 \begin{comment}
 
 Examples.
