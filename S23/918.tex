@@ -1878,18 +1878,22 @@ We say $T=\{l_\lambda\}$ is a \emph{$p$-basis}\index{$p$-basis} for $L$ (without
 %Since each new element has a $p$th power in the previous, each field is generated as a vector space over the previous by the powers of $l_i^ less than $p$. In particular, $K(L^p)(l_1,\dots,l_n)$ is generated as a $K(L^p)$-vector space by $\{l_1,\dots,l_n\}^{[<p]}$.
 % If part of a $p$-indepedent set $T$, $\{l_1,\dots,l_n\}^{[<p]}$ are linearly indepedent over $K(L^p)$ so the degree is at least $p^n$, and hence equal. Conversely, if $T$ is not $p$-independent, take a linear relation, which necessarily involves finitely many $l$'s; the degree of the field extension is then below expected.
 
-\item It is clear that a $p$-basis is a maximal $p$-independent set. For the other direction, note that if $T\subset L \smallsetminus K(L^p)$, then $K(L^p)(T)=K(L^p)\cdot T^{[<p]}$. Clearly $\supseteq$ holds. Since every element of $T$ is integral over $K(L^p)$ (because its $p$-th power is there), $K(L^p)[T]$ is a field, and hence equal to $K(L^p)(T)$. But then every polynomial in $T$ can be written as a combination of elements of $K(L^p)\cdot T^{[<p]}$. So, it suffices to show that if $T$ is a maximal $p$-independent set, then $K(L^p)(T)=L$. By maximality, if $l\in L$, there is a relation $l^{p-1} f_{p-1} + \cdots + l f_1 + f_0 = 0$ with $f_i\in K(L^p)\cdot T^{[<p]} = K(L^p)(T)$. This implies that $[K(L^p)(T)(l) : K(L^p)(T)] <p$, and hence must be $1$, since $l$ satisfies $T^p - l^p =0$ over $K(L^p)(T)$ and the minimal polynomial must have degree $1$ or $p$. Thus, $L=K(L^p)(T)$ in this case.
+\item It is clear that a $p$-basis is a maximal $p$-independent set. For the other direction, by maximality, if $l\in L$, there is a relation $l^{p-1} f_{p-1} + \cdots + l f_1 + f_0 = 0$ with $f_i\in K(L^p)\cdot T^{[<p]} \subseteq K(L^p)(T)$. This implies that $[K(L^p)(T)(l) : K(L^p)(T)] <p$. Since the minimal polynomial divides $x^p-l^p$, and this factors as $(x-l)^p$ over $L$, it must be a power of $x-l$, but if $1<a<p$, $(x-l)^a\in K^p[x]$, its derivative is nonzero and $a$ is a root, contradicting that it is the minimal polynomial, so $l\in K(L^p)(T)$. But using the relations $l^p \in L^p$, we have $K(L^p)(T)=K(L^p) T^{[<p]}$, so $T$ is a $p$-basis.
 
 \item Straightforward application of Zorn's Lemma.\qedhere
 
 \end{enumerate}
 \end{proof}
 
+
+
 \begin{defn} $K\subseteq L$ is an extension of fields of positive characteristic, the \emph{$p$-degree}\index{$p$-degree} of the extension, written $p$-$\deg_K(L)$  is the cardinality of a $p$-basis for the extension. 
 \end{defn}
 
 
 Note that if $T$ is a finite $p$-basis, then $[L:K(L^p)] = p^{|T|}$, and if $T$ is an infinite $p$-basis, $[L:K(L^p)] = |T| =p^{|T|}$. Thus, the $p$-degree is well-defined, and $p^{p\text{-}\deg_K(L)} = [L:K(L^p)]$.
+
+\begin{comment}
 
 \begin{ex}
 \begin{enumerate}
