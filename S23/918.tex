@@ -1893,7 +1893,7 @@ We say $T=\{l_\lambda\}$ is a \emph{$p$-basis}\index{$p$-basis} for $L$ (without
 
 Note that if $T$ is a finite $p$-basis, then $[L:K(L^p)] = p^{|T|}$, and if $T$ is an infinite $p$-basis, $[L:K(L^p)] = |T| =p^{|T|}$. Thus, the $p$-degree is well-defined, and $p^{p\text{-}\deg_K(L)} = [L:K(L^p)]$.
 
-\begin{comment}
+\Mar{30}
 
 \begin{ex}
 \begin{enumerate}
@@ -2167,6 +2167,69 @@ Let $(R,\fm,k)$ be a complete local ring, and $f\in R[x]$. If $\overline{f}\in k
 	If $\overline{f}$ has a simple root in $k$, then it factors in $k$ as $(x-\alpha) g$, with $g$ coprime to $x-\alpha$. We can lift this factorization by Hensel's lemma, to get the same type of factorization in $R$, yielding a simple root.
 \end{proof}
 
+
+\subsection{Coefficient fields and Cohen Structure Theorem}
+
+\begin{defn} Let $(R,\fm,k)$ be a local ring. A \emph{coefficient field}\index{coefficient field} for $R$ is a field $K\subseteq R$ such that the map $K\subseteq R \to k$ is an isomorphism.
+\end{defn}
+
+
+\begin{ex}
+\begin{enumerate}
+\item Let $R=\R[x]_{(x^2+1)}$. Then $R/\fm\cong \C$, but there is no coefficient field for $R$, since any element in $R$ is a rational function over $\R$, which squares to an element that is a nonnegative function, so there is no solution to $z^2+1=0$ in $R$.
+\item Let $R=\C[x,y]_{(x)}$. Then $\C(y)$ and $\C(x+y)$ are two different coefficient fields for $R$.
+\item Let $R=\frac{\F_p(t)[x]}{(x^p-t)^2}$. This is an artinian local ring, hence a complete local ring, with residue field $\F_p(t)[x]/(x^p-t)\cong \F_p(t^{1/p})$.
+
+We claim that no coefficient field contains $t$. Suppose otherwise that $K$ is a coefficient field containing $t$, and hence $\F_p(t)$. Then there is an element $r\in K\subseteq R$ with $r^p=t$. Going modulo $(x^p-t)$, there is a unique $p$th root of $t$ in the residue field, so we must have $r \equiv x \mod(x^p-t)$, so $r = x + (x^p-t)g$. But then $r^p=x^p+ (x^p-t)^p g^p = x^p$, but $x^p\neq t$ in $R$.
+
+However, we claim that $\F_p(t^p)[x]\subseteq R$ is a coefficient field. First, we note that it is a field, since $x$ satisfies the polynomial $T^{p^2} - t^p$ in $R$ (since $(x^p-t)^p=x^{p^2} - t^p$ is zero in $R$), and this is an irreducible polynomial over $\F_p(t^p)[x]$ by Eisenstein's lemma plus Gauss' lemma; thus $\F_p(t^p)[x]$ is a quotient of a polynomial ring over $\F_p(t^p)$ by an ideal that contains an irreducible element, which must be a maximal ideal. The image of $x$ under the quotient map is $t^{1/p}$, so this surjects onto the residue field.
+\end{enumerate}
+\end{ex}
+
+
+Note that a local ring can have a coefficient field only if it has equal characteristic, and that the map from any subfield to the residue field is always injective.
+
+\begin{lem} Let $(R,\fm,k)$ be a local ring of equal characteristic. Then any subfield of $R$ is contained in a maximal subfield, and if $K$ is a maximal subfield, the extension $K\subseteq k$ is algebraic.
+\end{lem}
+\begin{proof} The first part is a straightforward application of Zorn's lemma. For the second, let $K\subseteq R$ be a maximal subfield. Suppose that $\theta\in k$ is transcendental over $K$, and let $r\in R$ be a lift of $\theta$. For any nonzero polynomial $f(x)\in K[x]$, we must have that $f(\theta)\neq 0$ in $k$, so $f(r)$ is not in $\fm$; i.e., is a unit. Thus the map $K[x]\to R$ is mapping $x$ to $r$ is injective and extends to a map $K(x) \cong K(r) \subseteq R$. This contradicts the maximality of $K$.
+\end{proof}
+
+\begin{thm} Let $(R,\fm,k)$ be a local ring of equal characteristic zero. Then every maximal subfield of $R$ is  a coefficient field. In particular, every subfield of $R$ is contained in a coefficient field.
+\end{thm}
+\begin{proof}
+Let $K$ be a maximal subfield. By the lemma, $K\subseteq k$ is algebraic, and by the hypothesis of characteristic zero, is separable algebraic. Suppose that there is some $\theta \in k\smallsetminus K$. Then $\alpha \in k$ is a simple root of some irreducible monic polynomial $f\in K[x]$. We have $f\in K[x]\subseteq R[x] \to k[x]$, so we can apply Hensel's lemma. Thus, $f$ has a simple root $\theta$ in $R$ that has image $\alpha$ in $k$. Then $K[x]/(f(x)) \cong K[\theta] \subseteq R$ is a larger subfield of $R$, contradicting minimality.
+\end{proof} 
+
+\begin{lem} If $\Theta$ is a $p$-basis for $k$, then $\Theta^{[<p^e]}$ is a basis for $k$ over $k^{p^e}$.
+\end{lem}
+
+\begin{thm} Let $(R,\fm,k)$ be a local ring of equal characteristic $p>0$. Let $\Theta$ be a $p$-basis for $k$. Then for any lift $T$ of $\Theta$ to $R$, there is a coefficient field of $R$ containing $T$, namely $K= \bigcap_{e\in \N} R^{p^e}[T]$.
+\end{thm}
+\begin{proof} First we observe that any coefficient field must contain some lifting of $\Theta$. Also, note that $K$ is a subring of $R$ that contains $T$. 
+
+Note that $R^{p^e}[T] = R^{p^e} \cdot T^{[<p^e]}$. Now observe that $R^{p^e}[T] \cap \fm \subseteq \fm^{p^e}$. Indeed, write $u\in \fm$ as an $R^{p^e}$-linear combination of $T^{[<p^e]}$. Taking images of this linear combination module $\fm$ gives a $k^{p^e}$-linear combination of  $\Theta^{[<p^e]}$ that is zero, so by the lemma, each coefficient is zero in $k^{p^e}$, and hence in the original combination, each coefficient is in $\fm \cap R^{p^e} \subseteq \fm^{p^e}$. Thus \[ K \cap \fm = \bigcap_e (R^{p^e}[T] \cap \fm) \subseteq \bigcap_e \fm^{p^e} = 0.\] Thus, $K$ injects into $k$.
+
+Now we show that the map $K\to k$ is surjective. We define a set theoretic function $\ell: k \to R$ such that $\pi \circ \ell$ is the identity on $k$ as follows:
+Fix $\lambda\in k$. Since $k=k^{p^e}[\Theta]$, for any $e$ we can pick some $r_e\in R^{p^e}[T]$ that maps to $\lambda$. Then $r_{e+1} - r_e \in \fm$ since their images coincide in $k$, and $r_{e+1}- r_e\in R^{p^e}[T] \cap \fm \subseteq \fm^{p^e}$, so $(r_e)$ is a Cauchy sequence in $R$. Let $\ell(\lambda)=\lim_e r_e$. To see that $\ell$ is well-defined, given $(r'_e)$ with $r'_e$ mapping to $\lambda$, $r_e-r'_e \in R^{p^e}[T]\cap \fm \subseteq \fm^{p^e}$, so the difference converges to $0$. The image of $\ell(\lambda)$ in $k$ is $\lambda$, since this is true for each $r_e$. 
+
+Now we show that for any $\lambda$ and any $n$,  $\ell(\lambda) \in R^{p^n}[T]$; this will show that $\ell(\lambda)\in K$ so the map $K\to k$ is surjective.
+
+Given $e$, write $\lambda$ as an element of $k^{p^n} \Theta^{[<p^n]}$:
+\[ \lambda = \sum_\mu c^{p^n}_\mu \theta^{\mu},\]
+where $\mu$ runs over all exponent tuples with each exponent bounded by $p^n$.
+For every $\mu$ and $e$, pick some $c_{\mu,e}\in R^{p^e}[T]$ such that $c_{\mu,e}$ maps to $c_\mu$ in $k$, so $(c_{\mu,e})$ is a Cauchy sequence with limit $\ell(c_\mu)$. Let 
+\[ w_e = \sum_\mu c^{p^n}_{\mu,e} t^{\mu}.\]
+Then $w_e\in R^{p^e}[T]$ and the $w_e \equiv \lambda \mod \fm$. Again by well-definedness of $\ell$, we have
+\[ \lim_e w_e = \ell(\lambda).\]
+On the other hand,
+\[ \lim_e w_e = \sum_\mu \lim_e (c^{p^n}_{\mu,e}) t^{\mu} = \sum_\mu \lim_e (c_{\mu,e})^{p^n} t^{\mu} =\sum_\mu \ell(c_\mu)^{p^n} t^{\mu} \in R^{p^n}[T]. \qedhere \]
+\end{proof}
+
+\begin{thm}[Cohen Structure Theorem] Let $(R,\fm,k)$ be a local ring containing a field. Then $R\cong k\llbracket x_1,\dots,x_n\rrbracket / I$ for some ideal $I$.
+\end{thm}
+\begin{proof}
+Let $\fm=(a_1,\dots,a_n)$. Consider the homomorphism $k\llbracket x_1,\dots,x_n\rrbracket \to R$ induced by map $k[x_1,\dots,x_n] \to R$ mapping $x_i$ to $a_i$. We claim that this is surjective. The image if $(x)$ in $R$ is contained in $\fm$, so $R$ is $(x)$-adically separated. Then since the image $1$ generates $R/(x)R$ as a $k\llbracket x_1,\dots,x_n\rrbracket/(x)$ vector space, $1$ generates $R$ as a $k\llbracket x_1,\dots,x_n\rrbracket$-module. This means that the map is surjective.
+\end{proof}
 
 \begin{comment}
 
