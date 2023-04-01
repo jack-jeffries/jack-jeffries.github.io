@@ -1905,7 +1905,11 @@ Note that if $T$ is a finite $p$-basis, then $[L:K(L^p)] = p^{|T|}$, and if $T$ 
 
 \begin{rem} Let $T$ be a $p$-basis for $L$ over $K$. Then any element of $L$ can be written uniquely as a monomial in $T^{[<p]}$ with coefficients in $K(L^p)$. For $t_0\in T$, define $\frac{d}{dt_0}$ to be the $K(L^p)$-linear map that maps the monomial $t_0^{a_0} t_1^{a_1} \cdots t_j^{a_j}$ to $a_0 t_0^{a_0-1}  t_1^{a_1} \cdots t_j^{a_j}$. Note that this depends not just on $t$ but the choice of an entire $p$-basis. We claim that this is a $K$-linear derivation. By construction, it is well-defined, additive, and kills $K$, so we just need to check the product rule, and by additivity, again just on monomials in $T^{[<p]}$, which is then clear.
 
-Moreover, one can take formal combinations of the elements $\frac{d}{dt_0}$.
+Moreover, one can take formal combinations of these derivations (as we did with polynomial rings) since every element is expressed in terms of finitely many elements of the $p$-basis. So there are derivations of the form 
+\[ \sum_{t\in T} l_t \frac{d}{dt},\]
+which map $t$ to $l_t$.
+
+On the other hand, any $K$-linear derivation on $L$ is zero on $L^p$, so $K(L^p)$ is in the kernel, and hence is $K(L^p)$-linear. $L$ is generated as a $K(L^p)$-algebra by $T$, so derivations are uniquely determined by their values on $T$. Thus, every derivation is of this form.
 \end{rem}
 
 \begin{thm} Let $K\subseteq L$ be an extension of fields. Let $T\subseteq L$.
@@ -1919,13 +1923,13 @@ Moreover, one can take formal combinations of the elements $\frac{d}{dt_0}$.
 \begin{enumerate}
 \item If $T$ is a transcendence basis, we have $K\subseteq K(T) \subseteq L$ with $K(T)$ a field of rational functions in the $t$'s and $K(T)\subseteq L$ separable algebraic. We have $\Omega_{K[T]|K}$ is free over $K[T]$ in the basis $dt$, since it is a polynomial ring, and by localization $\Omega_{K(T)|K}$ is a vectorspace on the same basis. Furthermore, $\Gamma_{K(T)|K} = 0$ by the same steps. From the Jacobi-Zariski sequence
 \[  \Gamma_{L|K(T)} \to L \otimes _{K(T)} \Omega_{K(T)|K} \to \Omega_{L|K} \to \Omega_{L|K(T)} \to 0\]
-plus the fact that $L$ is \'etale over $K(T)$ we get that $\Gamma_{L|K}=0$ and $L \otimes _{K(T)} \Omega_{K(T)|K} \cong \Omega_{L|K}$, so $\Omega_{L|K}$ is free on $dt$. 
+plus the fact that $L$ is \'etale over $K(T)$ we get that $\Gamma_{L|K(T)}=\Omega_{L|K(T)}=0$ and $L \otimes _{K(T)} \Omega_{K(T)|K} \cong \Omega_{L|K}$, so $\Omega_{L|K}$ is free on $dt$. 
 
-For the other direction, suppose that $\{dt\}$ is a basis for $\Omega_{L|K}$. If $F(x_1,\dots,x_m)$ is a polynomial such that $F(t_1,\dots,t_m)=0$ is a relation of smallest degree, then for some $i$, $\frac{d F}{d x_i}\neq 0$ and has lower degree than $F$, so $\frac{\partial F}{\partial x_i}(t)\neq 0$ for some $i$ . Then $0=dF= \sum_i \frac{\partial F}{\partial x_i}(t) dt_i$ is a nonzero relation on the $t_i$'s. Thus, $T$ is algebraically independent. If not a transcendence basis, we can properly include $T$ in a transecendence basis, and by the first direction, we get that $dt$ is a proper subset of a basis, so it does not span $\Omega_{L|K}$. Thus, since it spans, $T$ is a transcendence basis.
+For the other direction, suppose that $\{dt\}$ is a basis for $\Omega_{L|K}$. If $F(x_1,\dots,x_m)$ is a polynomial such that $F(t_1,\dots,t_m)=0$ is a relation of smallest degree, then for some $i$, $\frac{d F}{d x_i}\neq 0$ and has lower degree than $F$, so $\frac{\partial F}{\partial x_i}(t)\neq 0$ for some $i$ . Then $0=dF= \sum_i \frac{d F}{d x_i}(t) dt_i$ is a nonzero relation on the $t_i$'s. Thus, $T$ is algebraically independent. If not a transcendence basis, we can properly include $T$ in a transcendence basis, and by the first direction, we get that $dt$ is a proper subset of a basis, so it does not span $\Omega_{L|K}$. Thus, since it spans, $T$ is a transcendence basis.
 
 \item Suppose that $T$ is a $p$-basis. To show that $\{dt \ | \ t\in T\}$ is a basis for the vectorspace $\Omega_{L|K}$, it suffices to show that for any function $f:T\to L$, there is a unique $L$-linear map $\phi:\Omega_{L|K} \to L$ such that $\phi|_T=f$. This follows from the discussion above.
 
-On other hand, if $\{dt\}$ is a basis for  $\Omega_{L|K}$, we claim that $T$ is $p$-independent. Indeed, if not, we can take $t_1,\dots,t_n \in T$ such that $t_1\in K(L^p,t_2,\dots,t_n)$, so $t_1=G(t_2,\dots,t_n)$ for some polynomial $G(x_2,\dots,x_n)\in K(L^p)[x_2,\dots,x_n]$. We then have $dt_1 = \sum_{i>1} \frac{d G}{d x_i}(t) dt_i$, contradicting $p$-independence. If not a $p$-basis, then we can properly include $T$ in a $p$-basis, obtaining a contradiction as in the previous case.\qedhere
+On other hand, if $\{dt\}$ is a basis for  $\Omega_{L|K}$, we claim that $T$ is $p$-independent. Indeed, if not, we can take $t_1,\dots,t_n \in T$ such that $\{t_1,\dots,t_n\}^{[<p]}$ are linearly independent over $K(L^p)$ and so, without loss of generality (saying some monomial with $t_1$ occurs), the degree of $t_1$ over  $K(L^p,t_2,\dots,t_n)$ is less than $p$, so $t_1\in K(L^p,t_2,\dots,t_n)=K(L^p)\cdot \{t_2,\dots,t^n\}^{[<p]}$. So, $t_1=G(t_2,\dots,t_n)$ for some polynomial $G(x_2,\dots,x_n)\in K(L^p)[x_2,\dots,x_n]$. We then have $dt_1 = \sum_{i>1} \frac{d G}{d x_i}(t) dt_i$, contradicting linear independence. If not a $p$-basis, then we can properly include $T$ in a $p$-basis, obtaining a contradiction as in the previous case.\qedhere
 \end{enumerate}
 \end{proof}
 
@@ -1934,9 +1938,14 @@ On other hand, if $\{dt\}$ is a basis for  $\Omega_{L|K}$, we claim that $T$ is 
 
 Let $R$ be a ring, $I$ an ideal, and $M$ an $R$-module. 
 
-Consider the collection of subsets $\{m + I^a M \ | \ m\in M, a\in \N\}$. We claim that this forms the basis of open sets for a topological space, i.e., that the intersection of two of these is contained in another. Indeed, if $(m+I^aM) \cap (n+ I^b M)$ is nonempty, suppose that $a\leq b$ and $t$ is in the intersection. Then $t-m \in I^a M$ and $t-n \in I^b M \subseteq I^a M$, so $n-m = (t-m)-(t-n)\in I^a M$, so $n\in m+ I^aM$, and hence $n+I^b M \subseteq n+I^a M = m+I^a M$, and thus $(m+I^aM) \cap (n+ I^b M)= m+I^aM$.
+Define \[d_I(m,m') = \frac{1}{\inf\{ e>0 \ | \ m\not\equiv m' \mod I^e M \}},\] with the convention $1/\infty = 0$. This is a measure of how close $m$ and $m'$ are in terms of powers of $I$, scaled so that close in the sense of high powers makes this distance smaller. This function satisfies most of the axioms of a metric: clearly $d_I(m,m')\geq 0$ with equality if $m=m'$, and if $d_I(m,m''), d_I(m',m'')< 1/e$ so $m-m'',m'-m''\in I^e M$, then $m-m'\in I^e M$ and $d_I(m,m')<1/e$, so
+\[ d_I(m,m') \leq \max\{ d_I(m,m''), d_I(m',m'') \} ( \leq d_I(m,m'') + d_I(m',m'') ).\]
+However, $m\neq m'$ does not always guarantee $d_I(m,m')>0$: for example, in a ring $R\times S$ considered as a module over itself, with the ideal $I=0\times S$, we have $I=I^e$ for all $e$, so $d_I((r,s),(r,s'))=0$.
 
-\begin{defn} Let $R$ be a ring, $I$ an ideal, and $M$ an $R$-module. The \emph{$I$-adic topology}\index{$I$-adic topology} on $M$ is the topology with open basis $\{m + I^a M \ | \ m\in M, a\in \N\}$; that is, the topology whose open sets are arbitrary unions of sets of the form $m + I^a M$.
+
+
+
+\begin{defn} Let $R$ be a ring, $I$ an ideal, and $M$ an $R$-module. The \emph{$I$-adic topology}\index{$I$-adic topology} on $M$ is the topology with open basis $\{m + I^a M \ | \ m\in M, a\in \N\}$; that is, the topology whose open sets are arbitrary unions of sets of the form $m + I^a M$; this is the topology arising from the pseudometricspace structure from the function $d_I$.
 \end{defn}
 
 The central case is when $M=R$, so the basic open sets are of the form $r+I^n$. The point of the $I$-adic topology is that two elements are close if they are congruent modulo a large power of $I$.
@@ -1948,6 +1957,7 @@ Let us translate some basic topological notions into this topology.
 \item $\lim m_n = m$ in the $I$-adic topology if and only if for any $e\in \N$, there is some $d\in \N$ such that for all $n\geq d$,  $m_n \equiv m \mod I^e M$.
 \item In particular, $\lim m_n = 0$ in the $I$-adic topology if and only if for any $e\in \N$, there is some $d\in \N$ such that for all $n\geq d$,  $m_n \in I^e M$.
 \item $\{a_n\}$ is Cauchy if and only if for any $e\in \N$, there is some $d\in \N$ such that for all $n,n'\geq N$,  $m_n \equiv m_n' \mod I^e M$.
+\begin{comment}
 \item If $S$ is another ring, $J$ ideal of $S$, and $N$ an $S$-module, a function $f:M\to N$ is continuous with respect to the two topologies if for any $e\in \N$, there is some $d\in \N$ such that $m \equiv m' \mod I^e M$ implies $f(m) \equiv f(m') \mod I^d N$; that is, $f(m+I^e M) \subseteq f(m) + I^dN$. If $f$ is additive, the last condition is equivalent to $f(I^e M ) \subseteq I^dN$.
 \end{itemize}
 \end{prop}
@@ -2016,7 +2026,7 @@ The following alternative description of completion is also useful. Consider the
 
 We claim that there is an isomorphism from $\hat{R}^I$ to this ring. To define it, note that for a sequence $(r_n)$ and any $e$, the Cauchy condition implies that the value of $r_n$ modulo $I^e$ stabilizes at some point; set $\bar{r}_e$ to be that value. Then $(\bar{r}_e)$ satisfies the compatibility condition above. Given Cauchy sequences  $(r_n)$, $(s_n)$, it is straightforward to see that the associated sequences respect sum and product. Furthermore, a sequence $(r_n)$ converges to zero if and only if the stable value of $r_n$ modulo $I^e$ is zero for all $e$, so this map is well-defined from the completion, and injective. Given any sequence in the target, taking arbitrary lifts for the elements to $R$ yields a Cauchy sequence, so this map is surjective.
 
-The same construction works just as well for modules. One advantage of these constructions is that we have well-defined representatives for objects.
+The same construction works just as well for modules. One advantage of these constructions  is that we have well-defined representatives for objects.
 \end{rem}
 
 
