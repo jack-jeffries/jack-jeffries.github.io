@@ -1957,7 +1957,6 @@ Let us translate some basic topological notions into this topology.
 \item $\lim m_n = m$ in the $I$-adic topology if and only if for any $e\in \N$, there is some $d\in \N$ such that for all $n\geq d$,  $m_n \equiv m \mod I^e M$.
 \item In particular, $\lim m_n = 0$ in the $I$-adic topology if and only if for any $e\in \N$, there is some $d\in \N$ such that for all $n\geq d$,  $m_n \in I^e M$.
 \item $\{a_n\}$ is Cauchy if and only if for any $e\in \N$, there is some $d\in \N$ such that for all $n,n'\geq N$,  $m_n \equiv m_n' \mod I^e M$.
-\begin{comment}
 \item If $S$ is another ring, $J$ ideal of $S$, and $N$ an $S$-module, a function $f:M\to N$ is continuous with respect to the two topologies if for any $e\in \N$, there is some $d\in \N$ such that $m \equiv m' \mod I^e M$ implies $f(m) \equiv f(m') \mod I^d N$; that is, $f(m+I^e M) \subseteq f(m) + I^dN$. If $f$ is additive, the last condition is equivalent to $f(I^e M ) \subseteq I^dN$.
 \end{itemize}
 \end{prop}
@@ -2036,23 +2035,27 @@ We summarize:
 \[ \hat{M}^I \cong \{ (\bar{m}_1, \bar{m}_2, \bar{m}_3, \dots) \in M/IM \times M/I^2M \times M/I^3M \times \cdots \ | \ \bar{m}_{n+1} \equiv \bar{m}_n \mod I^nM \}.\]
 \end{prop}
 
-
- \begin{prop} Let $R$ and $S$ be rings, with respective ideals $I$ and $J$, and $\phi:R\to S$ a homomorphism with $\phi(I)\subseteq J$. There is a unique continuous ring homomorphism $\hat{\phi}:\hat{R}^I \to \hat{S}^J$ extending $\phi$. Likewise, if $\alpha: M\to N$ is $R$-linear, there is a unique continuous $\hat{R}^I$-linear map $\hat{\alpha}:\hat{M}^I \to \hat{N}^I$ extending $\alpha$.
- \end{prop}
- \begin{proof}
- Since $\phi$ is continuous, a continuous homomorphism maps a Cauchy sequence to a Cauchy sequence, and a sequence converging to zero to one converging to zero, so induces a well-defined continuous map on the completions $\hat{\phi}$ which sends $\hat{\phi}(\lim r_n) = \lim \phi(r_n)$. For uniqueness, if $\hat{\phi}$ is continuous and extends $\phi$, the latter formula must hold. Likewise for modules.
- \end{proof}
- 
  \begin{lem} Let $R$ be a ring, $I$ be a finitely generated ideal, and $M$ be an $R$-module. Then $I^e \hat{M}^I$ is the submodule consisting of sequences represented by sequences with entries in $I^e M$.
  \end{lem}
  \begin{proof} Clearly any sequence in $I^e \hat{M}^I$ is represented by a sequence with entries in $I^e M$, so the other containment needs to be shown. Take a series representation for $x\in I^e \hat{M}^I$: write $(x=\sum_{n=0}^\infty$ with $a_n\in I^n M$. We must have $a_i=0$ for $i\leq e$. Let $I^e=(f_1,\dots,f_t)$. We can write $a_{n} = \sum f_j b_{n,j}$ with $b_{n,j}\in I^{n-e} M$ for all $n\geq e$. Then each sequence $s_n^{(j)} = \sum_{k=e}^{n} b_{k,j}$ is a Cauchy sequence in $M$, and $x=\sum_j f_j s_n^{(j)}$.
  \end{proof}
  
- \begin{cor} The completion of a module with respect to a finitely generated ideal is complete.
+  \begin{cor} The completion of a module with respect to a finitely generated ideal is complete.
  \end{cor}
  \begin{proof}
  Given a Cauchy sequence in $\hat{R}^I$, for any $e$, there is a stable value for modulo $I^e \hat{R}^I$, so the first $e$ coordinates stabilize. Take the sequence of stable values; this satisfies the consistency condition, so this is an element of the completion. It is then clear this is the limit.
 \end{proof}
+
+ \begin{prop} Let $R$ and $S$ be rings, with respective ideals $I$ and $J$, and $\phi:R\to S$ a homomorphism with $\phi(I)\subseteq J$. There is a unique continuous ring homomorphism $\hat{\phi}:\hat{R}^I \to \hat{S}^J$ extending $\phi$. Likewise, if $\alpha: M\to N$ is $R$-linear, there is a unique continuous $\hat{R}^I$-linear map $\hat{\alpha}:\hat{M}^I \to \hat{N}^I$ extending $\alpha$.
+ \end{prop}
+ \begin{proof}
+ Since $\phi$ is continuous, a continuous homomorphism maps a Cauchy sequence to a Cauchy sequence, and a sequence converging to zero to one converging to zero. Thus, the map $\hat{\phi}( (r_n)  ) = (\phi(r_n))$\dots
+ 
+ , so induces a well-defined continuous map on the completions $\hat{\phi}$ which sends $\hat{\phi}(\lim r_n) = \lim \phi(r_n)$. For uniqueness, if $\hat{\phi}$ is continuous and extends $\phi$, the latter formula must hold. Likewise for modules.
+ \end{proof}
+ 
+ 
+
  
 
  
