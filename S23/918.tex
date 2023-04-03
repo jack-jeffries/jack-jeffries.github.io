@@ -1957,7 +1957,9 @@ Let us translate some basic topological notions into this topology.
 \item $\lim m_n = m$ in the $I$-adic topology if and only if for any $e\in \N$, there is some $d\in \N$ such that for all $n\geq d$,  $m_n \equiv m \mod I^e M$.
 \item In particular, $\lim m_n = 0$ in the $I$-adic topology if and only if for any $e\in \N$, there is some $d\in \N$ such that for all $n\geq d$,  $m_n \in I^e M$.
 \item $\{a_n\}$ is Cauchy if and only if for any $e\in \N$, there is some $d\in \N$ such that for all $n,n'\geq N$,  $m_n \equiv m_n' \mod I^e M$.
-\item If $S$ is another ring, $J$ ideal of $S$, and $N$ an $S$-module, a function $f:M\to N$ is continuous with respect to the two topologies if for any $e\in \N$, there is some $d\in \N$ such that $m \equiv m' \mod I^e M$ implies $f(m) \equiv f(m') \mod I^d N$; that is, $f(m+I^e M) \subseteq f(m) + I^dN$. If $f$ is additive, the last condition is equivalent to $f(I^e M ) \subseteq I^dN$.
+\item If $S$ is another ring, $J$ ideal of $S$, and $N$ an $S$-module, a function $f:M\to N$ is continuous with respect to the two topologies if for any $e\in \N$, there is some $d\in \N$ such that $m \equiv m' \mod I^d M$ implies $f(m) \equiv f(m') \mod J^e N$; that is, $f(m+I^d M) \subseteq f(m) + J^eN$. 
+
+In particular, if $\phi:R\to S$ is a ring homomorphism and $\phi(I)\subseteq J$, then $\phi$ is continuous (w.r.t.~$I$ and $J$ topologies), any $R$-module homomorphism $\alpha:M\to N$ is continuous  (w.r.t.~$I$ topologies), and any derivation $\theta: R\to M$ is continuous (w.r.t.~$I$ topologies).
 \end{itemize}
 \end{prop}
 
@@ -1976,7 +1978,8 @@ If $(R,\fm)$ is local, we simply say $M$ is \emph{complete}\index{complete} to m
 \begin{ex}
 \begin{enumerate}
 \item Let $(R,\fm)$ be an Artinian local ring, so $\fm^t=0$ for some $t$. Then any Cauchy sequence is eventually constant: taking $e=t$, there is a $d$ such that for $n,n'\geq d$, $r_n \equiv r_{n'} \mod \fm^e$ so $r_n = r_{n'}$. Thus an Artinian local ring is complete.
-\item Let $A$ be a ring and $R=A\llbracket x_1,\dots,x_t\rrbracket$. We claim that $A$ is $(x_1,\dots,x_t)$-adically complete. Indeed the condition for a sequence $\{f_n(x)\}$ to be Cauchy is that for any $e$, there is some $d$ such that for $n,n'\geq d$, the coefficients up to degree $e$ in $f_n(x)$ and $f_{n'}(x)$ agree. That is, the $x_1^{a_1} \cdots x_t^{a_t}$-coefficient of $f_n(x)$ for $n$ sufficiently large (greater than the $d$ coming from $e=a_1+\cdots+a_t$) is well-defined. The unique power series with these coefficients is the unique limit of $\{f_n(x)\}$.
+\item Let $A$ be a ring and $R=A[ x_1,\dots,x_t]$. Then $R$ is not $(x_1,\dots,x_t)$-adically complete, since the sequence $(\sum_{i=0}^n x^i)$ is Cauchy but has no limit: the limit would have arbitrarily large degree.
+\item Let $A$ be a ring and $R=A\llbracket x_1,\dots,x_t\rrbracket$. We claim that $R$ is $(x_1,\dots,x_t)$-adically complete. Indeed the condition for a sequence $\{f_n(x)\}$ to be Cauchy is that for any $e$, there is some $d$ such that for $n,n'\geq d$, the coefficients up to degree $e$ in $f_n(x)$ and $f_{n'}(x)$ agree. That is, the $x_1^{a_1} \cdots x_t^{a_t}$-coefficient of $f_n(x)$ for $n$ sufficiently large (greater than the $d$ coming from $e=a_1+\cdots+a_t$) is well-defined. The unique power series with these coefficients is the unique limit of $\{f_n(x)\}$.
 In particular, a power series ring over a field is a complete local ring.
 \item If $R$ is $I$-adically complete, and $J$ is an ideal of $R$, then $R/J$ is $I (R/J)$-adically complete. In particular, a quotient of a power series ring over a field is a complete local ring.
 \end{enumerate}
@@ -2035,6 +2038,8 @@ We summarize:
 \[ \hat{M}^I \cong \{ (\bar{m}_1, \bar{m}_2, \bar{m}_3, \dots) \in M/IM \times M/I^2M \times M/I^3M \times \cdots \ | \ \bar{m}_{n+1} \equiv \bar{m}_n \mod I^nM \}.\]
 \end{prop}
 
+Given a ring homomorphism $\alpha: R\to S$ with $\phi(I)\subseteq J$, there is an induced map $\hat{\alpha}: \hat{R}^I \to \hat{S}^J$. Indeed, a continuous map sends a Cauchy sequence to a Cauchy sequence, and a sequence converging to zero to another converging to zero. It is easy to see this is a ring homomorphism. Likewise, a module homomorphism $\alpha: M\to N$ induces a module homomorphism $\hat{\alpha}: \hat{M}^I \to \hat{N}^I$.
+
  \begin{lem} Let $R$ be a ring, $I$ be a finitely generated ideal, and $M$ be an $R$-module. Then $I^e \hat{M}^I$ is the submodule consisting of sequences represented by sequences with entries in $I^e M$.
  \end{lem}
  \begin{proof} Clearly any sequence in $I^e \hat{M}^I$ is represented by a sequence with entries in $I^e M$, so the other containment needs to be shown. Take a series representation for $x\in I^e \hat{M}^I$: write $(x=\sum_{n=0}^\infty$ with $a_n\in I^n M$. We must have $a_i=0$ for $i\leq e$. Let $I^e=(f_1,\dots,f_t)$. We can write $a_{n} = \sum f_j b_{n,j}$ with $b_{n,j}\in I^{n-e} M$ for all $n\geq e$. Then each sequence $s_n^{(j)} = \sum_{k=e}^{n} b_{k,j}$ is a Cauchy sequence in $M$, and $x=\sum_j f_j s_n^{(j)}$.
@@ -2046,17 +2051,14 @@ We summarize:
  Given a Cauchy sequence in $\hat{R}^I$, for any $e$, there is a stable value for modulo $I^e \hat{R}^I$, so the first $e$ coordinates stabilize. Take the sequence of stable values; this satisfies the consistency condition, so this is an element of the completion. It is then clear this is the limit.
 \end{proof}
 
- \begin{prop} Let $R$ and $S$ be rings, with respective ideals $I$ and $J$, and $\phi:R\to S$ a homomorphism with $\phi(I)\subseteq J$. There is a unique continuous ring homomorphism $\hat{\phi}:\hat{R}^I \to \hat{S}^J$ extending $\phi$. Likewise, if $\alpha: M\to N$ is $R$-linear, there is a unique continuous $\hat{R}^I$-linear map $\hat{\alpha}:\hat{M}^I \to \hat{N}^I$ extending $\alpha$.
+ \begin{prop} Let $R$ and $S$ be rings, with respective finitely generated ideals $I$ and $J$, and $\phi:R\to S$ a homomorphism with $\phi(I)\subseteq J$. 
+Then $\hat{\phi}:\hat{R}^I \to \hat{S}^J$ is the unique homomorphism that is continuous in the $I\hat{R}^I$ and $J\hat{S}^J$ topologies that extends $\phi$.
+Likewise, if $\alpha: M\to N$ is $R$-linear, there is a unique continuous $\hat{R}^I$-linear map $\hat{\alpha}:\hat{M}^I \to \hat{N}^I$ is the unique $I\hat{R}^I$-continuous homomorphism extending $\alpha$.
  \end{prop}
- \begin{proof}
- Since $\phi$ is continuous, a continuous homomorphism maps a Cauchy sequence to a Cauchy sequence, and a sequence converging to zero to one converging to zero. Thus, the map $\hat{\phi}( (r_n)  ) = (\phi(r_n))$\dots
  
- , so induces a well-defined continuous map on the completions $\hat{\phi}$ which sends $\hat{\phi}(\lim r_n) = \lim \phi(r_n)$. For uniqueness, if $\hat{\phi}$ is continuous and extends $\phi$, the latter formula must hold. Likewise for modules.
- \end{proof}
  
  
 
- 
 
  
 \begin{ex} 
@@ -2186,6 +2188,7 @@ Let $(R,\fm,k)$ be a complete local ring, and $f\in R[x]$. If $\overline{f}\in k
 \begin{defn} Let $(R,\fm,k)$ be a local ring. A \emph{coefficient field}\index{coefficient field} for $R$ is a field $K\subseteq R$ such that the map $K\subseteq R \to k$ is an isomorphism.
 \end{defn}
 
+Note that a local ring can have a coefficient field only if it contains a field, which is equivalent to having equal characteristic. In this case, the map from any subfield to the residue field is always injective.
 
 \begin{ex}
 \begin{enumerate}
@@ -2200,7 +2203,7 @@ However, we claim that $\F_p(t^p)[x]\subseteq R$ is a coefficient field. First, 
 \end{ex}
 
 
-Note that a local ring can have a coefficient field only if it has equal characteristic, and that the map from any subfield to the residue field is always injective.
+
 
 \begin{lem} Let $(R,\fm,k)$ be a local ring of equal characteristic. Then any subfield of $R$ is contained in a maximal subfield, and if $K$ is a maximal subfield, the extension $K\subseteq k$ is algebraic.
 \end{lem}
