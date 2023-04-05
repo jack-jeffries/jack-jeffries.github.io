@@ -2212,11 +2212,11 @@ Note that a local ring can have a coefficient field only if it contains a field,
 \begin{enumerate}
 \item Let $R=\R[x]_{(x^2+1)}$. Then $R/\fm\cong \C$, but there is no coefficient field for $R$, since any element in $R$ is a rational function over $\R$, which squares to an element that is a nonnegative function, so there is no solution to $z^2+1=0$ in $R$.
 \item Let $R=\C[x,y]_{(x)}$. Then $\C(y)$ and $\C(x+y)$ are two different coefficient fields for $R$.
-\item Let $R=\frac{\F_p(t)[x]}{(x^p-t)^2}$. This is an artinian local ring, hence a complete local ring, with residue field $\F_p(t)[x]/(x^p-t)\cong \F_p(t^{1/p})$.
+\item Let $R=\widehat{{\F_p(t)[x]}_{(x^p-t)}}$. This is a complete local ring, with residue field $\F_p(t)[x]/(x^p-t)\cong \F_p(t^{1/p})$.
 
-We claim that no coefficient field contains $t$. Suppose otherwise that $K$ is a coefficient field containing $t$, and hence $\F_p(t)$. Then there is an element $r\in K\subseteq R$ with $r^p=t$. Going modulo $(x^p-t)$, there is a unique $p$th root of $t$ in the residue field, so we must have $r \equiv x \mod(x^p-t)$, so $r = x + (x^p-t)g$. But then $r^p=x^p+ (x^p-t)^p g^p = x^p$, but $x^p\neq t$ in $R$.
+We claim that no coefficient field contains $t$. Suppose otherwise that $K$ is a coefficient field containing $t$, and hence $\F_p(t)$. Then there is an element $r\in K\subseteq R$ with $r^p=t$. Going modulo $(x^p-t)$, there is a unique $p$th root of $t$ in the residue field, so we must have $r \equiv x \mod(x^p-t)$, so $r = x + (x^p-t)g$. But then $r^p=x^p+ (x^p-t)^p g^p \equiv x^p \mod (x^p-t)^2$, but $x^p\not\equiv t \mod (x^p-t)^2$, a contradiction.
 
-However, we claim that $\F_p(t^p)[x]\subseteq R$ is a coefficient field. First, we note that it is a field, since $x$ satisfies the polynomial $T^{p^2} - t^p$ in $R$ (since $(x^p-t)^p=x^{p^2} - t^p$ is zero in $R$), and this is an irreducible polynomial over $\F_p(t^p)[x]$ by Eisenstein's lemma plus Gauss' lemma; thus $\F_p(t^p)[x]$ is a quotient of a polynomial ring over $\F_p(t^p)$ by an ideal that contains an irreducible element, which must be a maximal ideal. The image of $x$ under the quotient map is $t^{1/p}$, so this surjects onto the residue field.
+However, we claim that $\F_p(x) \subseteq R$ is a coefficient field. First, we note that the field of rational functions of $x$ is contained in ${\F_p(t)[x]}_{(x^p-t)}= {\F_p[t,x]}_{(x^p-t)}$, since $\F_p[x] \cap (x^p-t)\F_p[t,x]=0$, so every element of $\F_p[x]$ maps to a unit in $\F_p(t)[x]_{(x^p-t)}$, and a local ring injects into its completion. But $x\in R$ maps to $t^{1/p}$ in the residue field, so this is a surjective map of fields, and hence an isomorphism.
 \end{enumerate}
 \end{ex}
 
