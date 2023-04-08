@@ -2043,9 +2043,10 @@ If $M$ is an $R$-module, the set of Cauchy sequences in $M$ is a module over the
 \begin{rem}
 The following alternative description of completion is also useful. Consider the set of sequences $(\bar{r}_n)$ with $\bar{r}_n\in R/I^n$ such that the image of $\bar{r}_{n+1}$ under the quotient map $R/I^{n+1} \to R/I^n$ is $\bar{r}_{n}$ for all $n$. The sum or product of two such sequences is again of the same form, so this is a ring, and there is an obvious map from $R$ to this ring.
 
+\Apr{6}
 
-\begin{comment}
-We claim that there is an isomorphism from $\hat{R}^I$ to this ring. To define it, note that for a sequence $(r_n)$ and any $e$, the Cauchy condition implies that the value of $r_n$ modulo $I^e$ stabilizes at some point; set $\bar{r}_e$ to be that value. Then $(\bar{r}_e)$ satisfies the compatibility condition above. Given Cauchy sequences  $(r_n)$, $(s_n)$, it is straightforward to see that the associated sequences respect sum and product. Furthermore, a sequence $(r_n)$ converges to zero if and only if the stable value of $r_n$ modulo $I^e$ is zero for all $e$, so this map is well-defined from the completion, and injective. Given any sequence in the target, taking arbitrary lifts for the elements to $R$ yields a Cauchy sequence, so this map is surjective.
+Let's say that a sequence in $R/I \times R/I^2 \times R/I^3 \times \cdots$ is \emph{consistent}\index{consistent sequence} if for any $n$, the image of the $n$th component under the quotient map $R/I^n \to R/I^{n-1}$ equals the $n-1$st component.
+We claim that there is an isomorphism from $\hat{R}^I$ to the ring of consistent sequences. To define it, note that for a sequence $(r_n)$ and any $e$, the Cauchy condition implies that the value of $r_n$ modulo $I^e$ stabilizes at some point; set $\bar{r}_e$ to be that value. Then $(\bar{r}_e)$ satisfies the compatibility condition above. Given Cauchy sequences  $(r_n)$, $(s_n)$, it is straightforward to see that the associated sequences respect sum and product. Furthermore, a sequence $(r_n)$ converges to zero if and only if the stable value of $r_n$ modulo $I^e$ is zero for all $e$, so this map is well-defined from the completion, and injective. Given any sequence in the target, taking arbitrary lifts for the elements to $R$ yields a Cauchy sequence, so this map is surjective.
 
 The same construction works just as well for modules. One advantage of these constructions  is that we have well-defined representatives for objects.
 \end{rem}
@@ -2057,29 +2058,6 @@ We summarize:
 \[ \hat{M}^I \cong \{ (\bar{m}_1, \bar{m}_2, \bar{m}_3, \dots) \in M/IM \times M/I^2M \times M/I^3M \times \cdots \ | \ \bar{m}_{n+1} \equiv \bar{m}_n \mod I^nM \}.\]
 \end{prop}
 
-Given a ring homomorphism $\alpha: R\to S$ with $\phi(I)\subseteq J$, there is an induced map $\hat{\alpha}: \hat{R}^I \to \hat{S}^J$. Indeed, a continuous map sends a Cauchy sequence to a Cauchy sequence, and a sequence converging to zero to another converging to zero. It is easy to see this is a ring homomorphism. Likewise, a module homomorphism $\alpha: M\to N$ induces a module homomorphism $\hat{\alpha}: \hat{M}^I \to \hat{N}^I$.
-
- \begin{lem} Let $R$ be a ring, $I$ be a finitely generated ideal, and $M$ be an $R$-module. Then $I^e \hat{M}^I$ is the submodule consisting of sequences represented by sequences with entries in $I^e M$.
- \end{lem}
- \begin{proof} Clearly any sequence in $I^e \hat{M}^I$ is represented by a sequence with entries in $I^e M$, so the other containment needs to be shown. Take a series representation for $x\in I^e \hat{M}^I$: write $(x=\sum_{n=0}^\infty$ with $a_n\in I^n M$. We must have $a_i=0$ for $i\leq e$. Let $I^e=(f_1,\dots,f_t)$. We can write $a_{n} = \sum f_j b_{n,j}$ with $b_{n,j}\in I^{n-e} M$ for all $n\geq e$. Then each sequence $s_n^{(j)} = \sum_{k=e}^{n} b_{k,j}$ is a Cauchy sequence in $M$, and $x=\sum_j f_j s_n^{(j)}$.
- \end{proof}
- 
-  \begin{cor} The completion of a module with respect to a finitely generated ideal is complete.
- \end{cor}
- \begin{proof}
- Given a Cauchy sequence in $\hat{R}^I$, for any $e$, there is a stable value for modulo $I^e \hat{R}^I$, so the first $e$ coordinates stabilize. Take the sequence of stable values; this satisfies the consistency condition, so this is an element of the completion. It is then clear this is the limit.
-\end{proof}
-
- \begin{prop} Let $R$ and $S$ be rings, with respective finitely generated ideals $I$ and $J$, and $\phi:R\to S$ a homomorphism with $\phi(I)\subseteq J$. 
-Then $\hat{\phi}:\hat{R}^I \to \hat{S}^J$ is the unique homomorphism that is continuous in the $I\hat{R}^I$ and $J\hat{S}^J$ topologies that extends $\phi$.
-Likewise, if $\alpha: M\to N$ is $R$-linear, there is a unique continuous $\hat{R}^I$-linear map $\hat{\alpha}:\hat{M}^I \to \hat{N}^I$ is the unique $I\hat{R}^I$-continuous homomorphism extending $\alpha$.
- \end{prop}
- 
- 
- 
-
-
- 
 \begin{ex} 
 \begin{enumerate}
 \item If $R=A[x_1,\dots,x_n]$, then $\hat{R}^{(x)} \cong A\llbracket x_1,\dots, x_n\rrbracket$.
@@ -2089,6 +2067,44 @@ Likewise, if $\alpha: M\to N$ is $R$-linear, there is a unique continuous $\hat{
 \end{enumerate}
 \end{ex} 
 
+
+Given a ring homomorphism $\alpha: R\to S$ with $\phi(I)\subseteq J$, there is an induced map $\hat{\alpha}: \hat{R}^I \to \hat{S}^J$. Indeed, a continuous map sends a Cauchy sequence to a Cauchy sequence, and a sequence converging to zero to another converging to zero. It is easy to see this is a ring homomorphism. Likewise, a module homomorphism $\alpha: M\to N$ induces a module homomorphism $\hat{\alpha}: \hat{M}^I \to \hat{N}^I$.
+
+ \begin{lem} Let $R$ be a ring, $I$ be a finitely generated ideal, and $M$ be an $R$-module. Then there are equalities
+ \[\begin{aligned} 
+  I^e \hat{M}^I &= \{ \text{ equivalence classes of Cauchy sequences with entries in }I^e M\} \\
+  &= \{ \text{ consistent sequences with first $e$ components equal to zero }\}.\end{aligned}\]
+  \end{lem}
+ \begin{proof} We start with the first equality. Clearly any sequence in $I^e \hat{M}^I$ is represented by a sequence with entries in $I^e M$, so the other containment needs to be shown. Let $x\in \in \hat{M}^I$ be represented by a Cauchy sequence with entries in $I^e M$. Take a series representation: $x= \sum_{n=0}^\infty a_n$ with $a_n\in I^n M$. We must have $a_i=0$ for $i\leq e$, since $x \equiv \sum_{n=0}^i a_i \mod I^i$. Let $I^e=(f_1,\dots,f_t)$. We can write $a_{n} = \sum f_j b_{n,j}$ with $b_{n,j}\in I^{n-e} M$ for all $n\geq e$. Then each sequence $s_n^{(j)} = \sum_{k=e}^{n} b_{k,j}$ is a Cauchy sequence in $M$, and $x=\sum_j f_j s_n^{(j)}$.
+ 
+ The second equality is straightforward: if each entry is in $I^e$, then the stable value modulo $I^m$ for $m\leq d$ is zero, and conversely if the stable value modulo $I^e$ is zero, by passing to a subsequence, we can assume that all elements are in $I^e$.
+ \end{proof}
+ 
+  \begin{prop} Let $R$ be a ring, $I$ be a finitely generated ideal, and $M$ be an $R$-module. The completion $\hat{M}^I$ is $I\hat{R}^I$-adically complete.
+ \end{prop}
+ \begin{proof}
+ Given a Cauchy sequence in $\hat{R}^I$, for any $e$, there is a stable value for modulo $I^e \hat{R}^I$, so the first $e$ coordinates stabilize. Take the sequence of stable values; this satisfies the consistency condition, so this is an element of the completion. It is then clear this is the limit.
+\end{proof}
+
+\begin{prop}
+Let $(R,\fm)$ be a Noetherian local ring. Then $\hat{R}$ (the $\fm$-adic completion of $R$) is a complete local ring with maximal ideal $\fm\hat{R}$, and for any $R$-module $M$, $\hat{M}$ is complete.
+\end{prop}
+\begin{proof}
+Since $\fm$ is finitely generated, we know that $\fm\hat{R}$ is the set of Cauchy sequences whose stable value mod $\fm$ is nonzero; by passing to a subsequence, we can assume any such sequence $(a_n)$ has elements that are all units. Now, if $a_n - a_{n'} \in \fm^e$, then $a_n^{-1} - a_{n'}^{-1} = \frac{a_{n'} - a_n}{a_n a_{n'}} \in \fm^e$, so $(a_n^{-1})$ is a Cauchy sequence, and its class is an inverse for $(a_n)$. This shows that $\hat{R}$ is local with maximal ideal $\fm\hat{R}$. 
+From the previous proposition, $\hat{R}$ and $\hat{M}$ are then complete.
+\end{proof}
+
+% \begin{prop} Let $R$ and $S$ be rings, with respective finitely generated ideals $I$ and $J$, and $\phi:R\to S$ a homomorphism with $\phi(I)\subseteq J$. 
+%Then $\hat{\phi}:\hat{R}^I \to \hat{S}^J$ is the unique homomorphism that is continuous in the $I\hat{R}^I$ and $J\hat{S}^J$ topologies that extends $\phi$.
+%Likewise, if $\alpha: M\to N$ is $R$-linear, there is a unique continuous $\hat{R}^I$-linear map $\hat{\alpha}:\hat{M}^I \to \hat{N}^I$ is the unique $I\hat{R}^I$-continuous homomorphism extending $\alpha$.
+% \end{prop}
+ 
+ 
+ 
+
+
+ 
+
 \begin{prop} 
 \begin{enumerate}
 \item If $R \to S$ is surjective, and $J=IS$, then the induced map $\hat{R}^I\to \hat{S}^J$ on completions is surjective.
@@ -2096,7 +2112,7 @@ Likewise, if $\alpha: M\to N$ is $R$-linear, there is a unique continuous $\hat{
 \item The completion of a Noetherian ring with respect to any ideal is Noetherian.
 \end{enumerate}
 \end{prop}
-\begin{proof} Given an element of $s\in\hat{S}^J$, we can write $s = \lim s_n$ with $s_{n+1} - s_n\in J^n$. We can then choose a preimage of $s_{n+1} - s_n$ that is in $I^n$, and inductively, we get a sequence of preimages that is Cauchy. Thus the induced map on completions is surjective.
+\begin{proof} Given an element of $s\in\hat{S}^J$, we can write $s = \sum_{n=0}^\infty s_n$ with $s_n\in J^n$. We can then choose a preimage of $s_n$ that is in $I^n$, and inductively, we get a sequence of preimages that is Cauchy. Thus the induced map on completions is surjective.
 
 The second statement is similar.
 
@@ -2104,7 +2120,7 @@ For the last, let $I=(f_1,\dots,f_n)$ and take the induced map on completions fr
 \end{proof}
 
 
-
+\begin{comment}
 
  \subsection{Three main technical things about completion}
  
@@ -2150,14 +2166,14 @@ We skip the check that this is consistent with maps.
 	\begin{ex} 
 \begin{enumerate}
 \item Let $R=K[x]$, $M=K[x,x^{-1}]/K[x]$, and
-\[ 0 \to K \to M \xra{x} M \to 0.\]
+\[ 0 \to K\cdot \frac{1}{x} \to M \xra{x} M \to 0.\]
 Then the completion is just
 \[ 0 \to K \to 0 \to 0 \to 0,\]
 which is no longer exact.
 \item	Let $R=K[x]$, and consider the sequence
 	\[ 0 \to \bigoplus_n R \xra{\mu}  \bigoplus_n R \xra{\pi}  \bigoplus_n R/x^n \to 0,\]
 	where $\mu(e_i) = x^i e_i$ and $\pi$ is the projection map. 
-	Then the element $(x,x^2,x^3,\dots)$ is a valid element of $\widehat{ \bigoplus_n R}$ and is in the kernel of $\hat{\pi}$, but is not in the image of $\hat{\mu}$, since $(x,x,x,\cdots)$ is not a valid element of $\widehat{ \bigoplus_n R}$.
+	Then the element $(x,x^2,x^3,\dots)$ is a valid element of $\widehat{ \bigoplus_n R}$ and is in the kernel of $\hat{\pi}$, but is not in the image of $\hat{\mu}$, since $(x,x,x,\dots)$ is not a valid element of $\widehat{ \bigoplus_n R}$.
 	\end{enumerate}
 	\end{ex}
 
@@ -2213,11 +2229,11 @@ Note that a local ring can have a coefficient field only if it contains a field,
 \begin{enumerate}
 \item Let $R=\R[x]_{(x^2+1)}$. Then $R/\fm\cong \C$, but there is no coefficient field for $R$, since any element in $R$ is a rational function over $\R$, which squares to an element that is a nonnegative function, so there is no solution to $z^2+1=0$ in $R$.
 \item Let $R=\C[x,y]_{(x)}$. Then $\C(y)$ and $\C(x+y)$ are two different coefficient fields for $R$.
-\item Let $R=\frac{\F_p(t)[x]}{(x^p-t)^2}$. This is an artinian local ring, hence a complete local ring, with residue field $\F_p(t)[x]/(x^p-t)\cong \F_p(t^{1/p})$.
+\item Let $R=\widehat{{\F_p(t)[x]}_{(x^p-t)}}$. This is a complete local ring, with residue field $\F_p(t)[x]/(x^p-t)\cong \F_p(t^{1/p})$.
 
-We claim that no coefficient field contains $t$. Suppose otherwise that $K$ is a coefficient field containing $t$, and hence $\F_p(t)$. Then there is an element $r\in K\subseteq R$ with $r^p=t$. Going modulo $(x^p-t)$, there is a unique $p$th root of $t$ in the residue field, so we must have $r \equiv x \mod(x^p-t)$, so $r = x + (x^p-t)g$. But then $r^p=x^p+ (x^p-t)^p g^p = x^p$, but $x^p\neq t$ in $R$.
+We claim that no coefficient field contains $t$. Suppose otherwise that $K$ is a coefficient field containing $t$, and hence $\F_p(t)$. Then there is an element $r\in K\subseteq R$ with $r^p=t$. Going modulo $(x^p-t)$, there is a unique $p$th root of $t$ in the residue field, so we must have $r \equiv x \mod(x^p-t)$, so $r = x + (x^p-t)g$. But then $r^p=x^p+ (x^p-t)^p g^p \equiv x^p \mod (x^p-t)^2$, but $x^p\not\equiv t \mod (x^p-t)^2$, a contradiction.
 
-However, we claim that $\F_p(t^p)[x]\subseteq R$ is a coefficient field. First, we note that it is a field, since $x$ satisfies the polynomial $T^{p^2} - t^p$ in $R$ (since $(x^p-t)^p=x^{p^2} - t^p$ is zero in $R$), and this is an irreducible polynomial over $\F_p(t^p)[x]$ by Eisenstein's lemma plus Gauss' lemma; thus $\F_p(t^p)[x]$ is a quotient of a polynomial ring over $\F_p(t^p)$ by an ideal that contains an irreducible element, which must be a maximal ideal. The image of $x$ under the quotient map is $t^{1/p}$, so this surjects onto the residue field.
+However, we claim that $\F_p(x) \subseteq R$ is a coefficient field. First, we note that the field of rational functions of $x$ is contained in ${\F_p(t)[x]}_{(x^p-t)}= {\F_p[t,x]}_{(x^p-t)}$, since $\F_p[x] \cap (x^p-t)\F_p[t,x]=0$, so every element of $\F_p[x]$ maps to a unit in $\F_p(t)[x]_{(x^p-t)}$, and a local ring injects into its completion. But $x\in R$ maps to $t^{1/p}$ in the residue field, so this is a surjective map of fields, and hence an isomorphism.
 \end{enumerate}
 \end{ex}
 
