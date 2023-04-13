@@ -2228,6 +2228,7 @@ For the other implication, we have that $M=\sum_i R m_i + \fm M$. Consequently, 
 	Let $(R,\fm,k)$ be a complete local ring. Let $F\in R[x]$ be monic. Suppose that the image of $f$ of $F$ in  $k[x]$ factors as $f =g h$ with $g,h\in k[x]$ monic and $(g,h)=1$. Then there exist $G,H\in R[x]$ monic with images $g(x),h(x) \in k[x]$ respectively and $F= GH$.
 \end{thm}
 
+\Apr{13}
 
 \begin{proof}
 	The idea is to inductively solve modulo $\fm^n$, where the base case is the given hypothesis. Suppose we have $G_n,H_n\in R[x]$ such that $\overline{G_n}=g,\overline{H_n}=h$ and $F-G_n H_n\in \fm^n[x]$. Note that the leading coefficients cancel, so this difference has degree less than that of $F$. Thus, we can write 
@@ -2235,7 +2236,7 @@ For the other implication, we have that $M=\sum_i R m_i + \fm M$. Consequently, 
 	Since $(g,h)=1$, we can write $a_i g + b_i h = \overline{V_i}$ with $a_i,b_i\in k[x]$; after replacing $a_i$ with the remainder modulo $h$ and changing $b_i$ appropriately, we can assume that $\mathrm{deg}(a_i)<\mathrm{deg}(h)$.
 	 Then,
 	\[ \mathrm{deg}(h b_i) = \mathrm{deg}(\overline{V_i}-a_i g) < \mathrm{deg}(f) = \deg(g) + \deg(h), \quad \text{so} \ \deg(b_i) < \deg(g). \]
-	Now, pick $A_i,B_i\in R[x]$ with $\overline{A_i}=a_i, \deg(A_i)=\deg(a_i)$ (likewise with $B$'s), and set $G_{n+1}=G_n + \sum_i U_i B_i$, $H_{n+1}=H_n + \sum_i U_i A_i$. These polynomials then satisfy the same hypotheses (modulo $\fm^{n+1}$). Indeed:
+	Now, pick $A_i,B_i\in R[x]$ with $\overline{A_i}=a_i, \deg(A_i)=\deg(a_i)$ (likewise with $B$'s), and set $G_{n+1}=G_n + \sum_i U_i B_i$, $H_{n+1}=H_n + \sum_i U_i A_i$. These polynomials then satisfy the same hypotheses (modulo $\fm^{n+1}$). Indeed the degree business guarantees these are still monic and:
 	
 	\[\begin{aligned} F- G_{n+1} H_{n+1} &= F - (G_n + \sum U_i B_i )(H_n + \sum U_i A_i) \\&= 
 	F - G_n H_n - \sum U_i B_i H_n  - \sum U_i A_i G_n - (\sum U_i B_i )(\sum U_i A_i) \\&=
@@ -2264,10 +2265,10 @@ Let $(R,\fm,k)$ be a complete local ring, and $F\in R[x]$. If $f=\overline{F}\in
 \end{ex}
 
 
-\begin{ex} Let $K$ be a field with an infinite $p$-basis $\alpha_1,\alpha_2,\dots$. Set $R=K^p\llbracket x \rrbracket [K] \subseteq K\llbracket x \rrbracket$, which is the set of series whose coefficients whose coefficients generate a finite extension of $K^p$. Note that any element of $R$ with nonzero constant term is a unit (since it has an inverse in some $K'\llbracket x \rrbracket$ with $K'$ finite over $K$) and any element with no constant term is a multiple of $x$, so $R$ has unique maximal ideal $(x)$; thus $R$ is a Noetherian local domain of dimension one. 
+%\begin{ex} Let $K$ be a field with an infinite $p$-basis $\alpha_1,\alpha_2,\dots$. Set $R=K^p\llbracket x \rrbracket [K] \subseteq K\llbracket x \rrbracket$, which is the set of series whose coefficients whose coefficients generate a finite extension of $K^p$. Note that any element of $R$ with nonzero constant term is a unit (since it has an inverse in some $K'\llbracket x \rrbracket$ with $K'$ finite over $K$) and any element with no constant term is a multiple of $x$, so $R$ has unique maximal ideal $(x)$; thus $R$ is a Noetherian local domain of dimension one. 
 
-Let $f$ be an element of $K\llbracket x \rrbracket\smallsetminus R$, and set $S=R[f]$. Note that $f^p\in R$, so this is integral and hence module finite over $R$. Thus $S$ is also a Noetherian local domain of dimension one. We have $S\cong R[x]/(x^p-g)$, with $g=f^p\in R$. Thus, $\hat{S}\cong \hat{R}[x]/(x^p-g)$. However, we claim that $f\in \hat{R}$, so $g$ is a $p$th power in $\hat{R}$. It follows that $\hat{S}$ is not reduced.
-\end{ex}
+%Let $f$ be an element of $K\llbracket x \rrbracket\smallsetminus R$, and set $S=R[f]$. Note that $f^p\in R$, so this is integral and hence module finite over $R$. Thus $S$ is also a Noetherian local domain of dimension one. We have $S\cong R[x]/(x^p-g)$, with $g=f^p\in R$. Thus, $\hat{S}\cong \hat{R}[x]/(x^p-g)$. However, we claim that $f\in \hat{R}$, so $g$ is a $p$th power in $\hat{R}$. It follows that $\hat{S}$ is not reduced.
+%\end{ex}
 
 
 
@@ -2291,7 +2292,7 @@ However, we claim that $\F_p(x) \subseteq R$ is a coefficient field. First, we n
 \end{ex}
 
 
-
+\begin{comment}
 
 \begin{lem} Let $(R,\fm,k)$ be a local ring of equal characteristic. Then any subfield of $R$ is contained in a maximal subfield, and if $K$ is a maximal subfield, the extension $K\subseteq k$ is algebraic.
 \end{lem}
