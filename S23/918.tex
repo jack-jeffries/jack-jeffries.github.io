@@ -2264,6 +2264,13 @@ Let $(R,\fm,k)$ be a complete local ring, and $F\in R[x]$. If $f=\overline{F}\in
 \end{ex}
 
 
+\begin{ex} Let $K$ be a field with an infinite $p$-basis $\alpha_1,\alpha_2,\dots$. Set $R=K^p\llbracket x \rrbracket [K] \subseteq K\llbracket x \rrbracket$, which is the set of series whose coefficients whose coefficients generate a finite extension of $K^p$. Note that any element of $R$ with nonzero constant term is a unit (since it has an inverse in some $K'\llbracket x \rrbracket$ with $K'$ finite over $K$) and any element with no constant term is a multiple of $x$, so $R$ has unique maximal ideal $(x)$; thus $R$ is a Noetherian local domain of dimension one. 
+
+Let $f$ be an element of $K\llbracket x \rrbracket\smallsetminus R$, and set $S=R[f]$. Note that $f^p\in R$, so this is integral and hence module finite over $R$. Thus $S$ is also a Noetherian local domain of dimension one. We have $S\cong R[x]/(x^p-g)$, with $g=f^p\in R$. Thus, $\hat{S}\cong \hat{R}[x]/(x^p-g)$. However, we claim that $f\in \hat{R}$, so $g$ is a $p$th power in $\hat{R}$. It follows that $\hat{S}$ is not reduced.
+\end{ex}
+
+
+
 \subsection{Coefficient fields and Cohen Structure Theorem}
 
 \begin{defn} Let $(R,\fm,k)$ be a local ring. A \emph{coefficient field}\index{coefficient field} for $R$ is a field $K\subseteq R$ such that the map $K\subseteq R \to k$ is an isomorphism.
@@ -2366,7 +2373,7 @@ is injective.
 \end{enumerate}
 \end{lem}
 \begin{proof}
-We have seen the equivalence of the first two earlier. If $S/I$ is regular, then the rank of $\eta$ equals the minimal number of generators of $I$, and each minimal generator decreases the dimension by one, so the height equals the minimal number of generators, thus rank of $\eta$ equals height of $I$.  Conversely, if the rank of $\eta$ equals the height of $I$, take a set of minimal generators whose images form a basis of the image of $\eta$ and let $J$ be the ideal they generate. Then $\dim(S/J)$ is regular, hence a domain, and $\dim(S/J)=\dim(S) - \height(I) = \dim(S/I)$, so $I/J=0$, and hence $S/I$ is regular.
+We have seen the equivalence of the first two earlier. If $S/I$ is regular, then the rank of $\eta$ equals the minimal number of generators of $I$, and each minimal generator decreases the dimension by one, so the height equals the minimal number of generators, thus rank of $\eta$ equals height of $I$.  Conversely, if the rank of $\eta$ equals the height of $I$, take a set of minimal generators whose images form a basis of the image of $\eta$ and let $J$ be the ideal they generate. Then $\dim(S/J)$ is regular, hence a domain, and $\dim(S/J)=\dim(S) - \htt(I) = \dim(S/I)$, so $I/J=0$, and hence $S/I$ is regular.
 \end{proof}
 
 \begin{lem}
