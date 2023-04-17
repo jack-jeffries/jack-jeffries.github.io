@@ -2408,8 +2408,13 @@ We have seen the equivalence of the first two earlier. If $S/I$ is regular, then
 \end{proof}
 
 \begin{lem}
-Let $(R,\fm)$ be a local ring. Given an $m\times n$ matrix $A$ of rank at most $t$, the cokernel of $A$ is free of rank $m-t$ if and only if some $t\times t$ minor of $A$ is a unit.
+Let $(R,\fm)$ be a local ring. Given an $m\times n$ matrix $A$, the cokernel of $A$ is free of rank $r$ if and only if $I_{(m-r)}(A)=R$ and $I_{(m-r)+1}(A)=0$.
 \end{lem}
+\begin{proof}Multiplying on the left and right by invertible matrices (and in particular, row and column operations) does not affect the ideals of minors or the cokernel up to isomorphism. If $A$ has a unit as an entry, without loss of generality it is the top left entry, and all other entries in the same row and column are zero. Repeating this process,
+we reduce to the case $A= \begin{bmatrix} I & 0 \\ 0 & B\end{bmatrix}$ with $I$ the $k\times k$ identity matrix and $B$ a matrix in $\fm$. 
+Then the cokernel of $A$ is isomorphic to that of $B$, while \[ I_{j\times j}(A)=\begin{cases} R & \text{if } j\leq k \\ I_{j-k}(B) & \text{if } j > k\end{cases}.\]
+If $M$ is free of rank $r$, then $B=0$ since otherwise, it isn't (say something?) and then $k=m-r$. In that case, $I_{j\times j}(A) = R$ for $j\leq k$ and $=0$ for $j>k$ and the conclusion holds. On the other hand, if the conditions on minors hold for some value of $r$, then the first index where the ideal of minors is proper must agree with $k+1$, so $k=m-r$, and the first proper such ideal is zero, so $I_1(B)=0$ and $B=0$. We then get a free cokernel of rank $r$.
+\end{proof}
 
 \begin{prop} Let $K$ be a perfect field and $R=K[x_1,\dots,x_n]/I$. Then for $\fp\in \Spec(R)$ with preimage $\fq\subseteq S$, the following are equivalent:
 \begin{itemize}
