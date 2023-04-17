@@ -222,6 +222,7 @@
 \newcommand{\fc}{{\mathfrak c}}
 \newcommand{\fp}{{\mathfrak p}}
 \newcommand{\fm}{{\mathfrak m}}
+\newcommand{\fa}{{\mathfrak a}}
 \newcommand{\fn}{{\mathfrak n}}
 \newcommand{\fq}{{\mathfrak q}}
 \newcommand{\fr}{{\mathfrak r}}
@@ -2292,7 +2293,7 @@ However, we claim that $\F_p(x) \subseteq R$ is a coefficient field. First, we n
 \end{ex}
 
 
-\begin{comment}
+\Apr{18}
 
 \begin{lem} Let $(R,\fm,k)$ be a local ring of equal characteristic. Then any subfield of $R$ is contained in a maximal subfield, and if $K$ is a maximal subfield, the extension $K\subseteq k$ is algebraic.
 \end{lem}
@@ -2302,13 +2303,13 @@ However, we claim that $\F_p(x) \subseteq R$ is a coefficient field. First, we n
 \begin{thm} Let $(R,\fm,k)$ be a local ring of equal characteristic zero. Then every maximal subfield of $R$ is  a coefficient field. In particular, every subfield of $R$ is contained in a coefficient field.
 \end{thm}
 \begin{proof}
-Let $K$ be a maximal subfield. By the lemma, $K\subseteq k$ is algebraic, and by the hypothesis of characteristic zero, is separable algebraic. Suppose that there is some $\theta \in k\smallsetminus K$. Then $\alpha \in k$ is a simple root of some irreducible monic polynomial $f\in K[x]$. We have $f\in K[x]\subseteq R[x] \to k[x]$, so we can apply Hensel's lemma. Thus, $f$ has a simple root $\theta$ in $R$ that has image $\alpha$ in $k$. Then $K[x]/(f(x)) \cong K[\theta] \subseteq R$ is a larger subfield of $R$, contradicting minimality.
+Let $K$ be a maximal subfield. By the lemma, $K\subseteq k$ is algebraic, and by the hypothesis of characteristic zero, is separable algebraic. Suppose that there is some $\theta \in k\smallsetminus K$. Then $\alpha \in k$ is a simple root of some irreducible monic polynomial $f\in K[x]$. We have $f\in K[x]\subseteq R[x] \to k[x]$, so we can apply Hensel's lemma. Thus, $f$ has a simple root $r$ in $R$ that has image $\theta$ in $k$. Then $K[x]/(f(x)) \cong K[r] \subseteq R$ is a larger subfield of $R$, contradicting minimality.
 \end{proof} 
 
 \begin{lem} If $\Theta$ is a $p$-basis for $k$, then $\Theta^{[<p^e]}$ is a basis for $k$ over $k^{p^e}$.
 \end{lem}
 
-\begin{rem} We will need to consider subrings of $p^e$th powers below. For a ring $R$ of positive characteristic, the set of its $p^e$th powers is a subring $R^{p^e}$ as a consequence of vanishing of binomial coefficients mod $p$. If $(R,\fm,k)$ is local, the set of $p^e$th powers of elements of $\fm$ is the unique maximal ideal of $R^{p^e}$, and the residue field is $k^{p^e}$. We will need to consider both the set of $p^e$th powers of elements of $\fm$ and the ordinary $p^e$th power of $\fm$ in $R$, and each would naturally be written the same way. Note that the first is contained in the second. We will add some verbal clue afterwards when it is unclear which we mean.
+\begin{rem} We will need to consider subrings of $p^e$th powers below. For a ring $R$ of positive characteristic, the set of its $p^e$th powers is a subring $R^{p^e}$ as a consequence of vanishing of binomial coefficients mod $p$. If $(R,\fm,k)$ is local, the set of $p^e$th powers of elements of $\fm$ is the unique maximal ideal of $R^{p^e}$, and the residue field is $k^{p^e}$. We will need to consider both the set of $p^e$th powers of elements of $\fm$ and the ordinary $p^e$th power of $\fm$ in $R$, and each would naturally be written the same way. Note that the first is contained in the second. We will write $\fm_{R^{p^e}}$ for the set of $p^e$th powers of elements of $\fm$, and $\fm^{p^e}$ for the usual $p^e$th power of the ideal $\fm\subseteq R$.
 \end{rem}
 
 \begin{thm} Let $(R,\fm,k)$ be a local ring of equal characteristic $p>0$. Let $\Theta$ be a $p$-basis for $k$. Then for any lift $T$ of $\Theta$ to $R$, there is a coefficient field of $R$ containing $T$, namely $K= \bigcap_{e\in \N} R^{p^e}[T]$.
@@ -2316,7 +2317,7 @@ Let $K$ be a maximal subfield. By the lemma, $K\subseteq k$ is algebraic, and by
 \begin{proof} Note that $K$ is at least a subring of $R$ that contains $T$. 
 
 Note that $R^{p^e}[T] = R^{p^e} \cdot T^{[<p^e]}$, since each element $t\in T$ has $t^{p^e}\in R^{p^e}$. We will use the following observation multiple times:
-\begin{equation}\tag{$\clubsuit$} R^{p^e}[T] \cap \fm \subseteq \fm^{p^e} \text{ (power of $\fm$ in $R$)} .\end{equation} To verify it, write $u\in \fm$ as an $R^{p^e}$-linear combination of $T^{[<p^e]}$. Taking images of this linear combination modulo $\fm$ gives a $k^{p^e}$-linear combination of  $\Theta^{[<p^e]}$ that is zero, so by the lemma, each coefficient is zero in $k^{p^e}$, and hence in the original combination, each coefficient is in $\fm \cap R^{p^e} \subseteq \fm^{p^e}$ (maximal ideal of  $R^{p^e}$). Thus \[ K \cap \fm = \bigcap_e (R^{p^e}[T] \cap \fm) \subseteq \bigcap_e \fm^{p^e} \text{ (powers of $\fm$ in $R$) }= 0.\] Thus, $K$ injects into $k$.
+\begin{equation}\tag{$\clubsuit$} R^{p^e}[T] \cap \fm \subseteq \fm^{p^e}.\end{equation} To verify it, write $u\in \fm$ as an $R^{p^e}$-linear combination of $T^{[<p^e]}$. Taking images of this linear combination modulo $\fm$ gives a $k^{p^e}$-linear combination of  $\Theta^{[<p^e]}$ that is zero, so by the lemma, each coefficient is zero in $k^{p^e}$, and hence in the original combination, each coefficient is in $\fm \cap R^{p^e} \subseteq \fm_{R^{p^e}} \subseteq \fm^{p^e}$. Thus \[ K \cap \fm = \bigcap_e (R^{p^e}[T] \cap \fm) \subseteq \bigcap_e \fm^{p^e}= 0.\] Thus, $K$ injects into $k$.
 
 Now we show that the map $K\to k$ is surjective. We define a set theoretic function $\ell: k \to R$ such that $\pi \circ \ell$ is the identity on $k$ as follows:
 Fix $\lambda\in k$. Since $k=k^{p^e}[\Theta]$, for any $e$ we can pick some $r_e\in R^{p^e}[T]$ that maps to $\lambda$. Then $r_{e+1} - r_e \in \fm$ since their images coincide in $k$, and $r_{e+1}- r_e\in R^{p^e}[T] \cap \fm \subseteq \fm^{p^e}$, so $(r_e)$ is a Cauchy sequence in $R$. Let $\ell(\lambda)=\lim_e r_e$. To see that $\ell$ is well-defined, given $(r'_e)$ with $r'_e$ mapping to $\lambda$, $r_e-r'_e \in R^{p^e}[T]\cap \fm \subseteq \fm^{p^e}$, so the difference converges to $0$. The image of $\ell(\lambda)$ in $k$ is $\lambda$, since this is true for each $r_e$. 
@@ -2339,13 +2340,40 @@ On the other hand,
 \begin{proof} In characteristic zero, since $K$ is a subfield, there is a maximal subfield containing $K$ which is necessarily a coefficient field. In positive characteristic, $K = \bigcap K^{p^e} \subseteq \bigcap R^{p^e} \subseteq R^{p^e}[T]$ for a $p$-basis $T$, so $K$ is contained in a coefficient field.
 \end{proof}
 
-\begin{thm}[Cohen Structure Theorem]\index{Cohen structure theorem} Let $(R,\fm,k)$ be a local ring containing a field. Then $R\cong k\llbracket x_1,\dots,x_n\rrbracket / I$ for some ideal $I$.
+\begin{thm}[Cohen Structure Theorem: Main part]\index{Cohen structure theorem} Let $(R,\fm,k)$ be a complete local Noetherian ring containing a field. Then $R\cong k\llbracket x_1,\dots,x_n\rrbracket / I$ for some ideal $I$. In particular, every complete local Noetherian ring is a quotient of a regular local ring.
 \end{thm}
 \begin{proof}
-Let $\fm=(a_1,\dots,a_n)$. Consider the homomorphism $k\llbracket x_1,\dots,x_n\rrbracket \to R$ induced by map $k[x_1,\dots,x_n] \to R$ mapping $x_i$ to $a_i$. We claim that this is surjective. The image if $(x)$ in $R$ is contained in $\fm$, so $R$ is $(x)$-adically separated. Then since the image $1$ generates $R/(x)R$ as a $k\llbracket x_1,\dots,x_n\rrbracket/(x)$ vector space, $1$ generates $R$ as a $k\llbracket x_1,\dots,x_n\rrbracket$-module. This means that the map is surjective.
+Let $\fm=(a_1,\dots,a_n)$. Consider the homomorphism $k\llbracket x_1,\dots,x_n\rrbracket \to R$ induced by map $k[x_1,\dots,x_n] \to R$ mapping $x_i$ to $a_i$. We claim that this is surjective. The image of $(x)$ in $R$ is contained in $\fm$, so $R$ is $(x)$-adically separated. Then since the image $1$ generates $R/(x)R$ as a $k\llbracket x_1,\dots,x_n\rrbracket/(x)$ vector space, $1$ generates $R$ as a $k\llbracket x_1,\dots,x_n\rrbracket$-module. This means that the map is surjective.
 \end{proof}
 
+
+\begin{thm}[Cohen Structure Theorem: Regular rings] Let $(R,\fm,k)$ be a complete regular local ring containing a field. Then $R\cong k\llbracket x_1,\dots,x_n\rrbracket$.
+\end{thm}
+\begin{proof} By the main part of CST, write $R\cong S/I$ for some $I$ and some power series ring $S$. By the regular hypothesis, a minimal generating set $f_1,\dots,f_t$ for $I$ has linearly independent images in $\fn/\fn^2$, where $\fn$ is the ideal of the $x$s in $S$. Applying a suitable linear change of coordinates, we can rewrite $f_i=x_i + g_i$ with $g_i\in \fn^2$. We claim that the map $A=k\llbracket x_{t+1},\dots,x_m\rrbracket \to R$ is an isomorphism. Set $\fa$ to be the maximal ideal of $\fa$. Then $R$ is $\fa$-adically separated, since $\fa$ maps into $\fm$. Also $R/\fa R\cong \frac{k\llbracket x_1,\dots,x_t\rrbracket}{(x_1+g_1,\dots,x_t+g_t)}$. But the images of $(x_1+g_1,\dots,x_t+g_t)$ are linearly independent in the maximal ideal of $k\llbracket x_1,\dots,x_t\rrbracket$ modulo its square, so the quotient is a regular ring of dimension zero, hence a field, so $R/\fa R$ is generated by the class of $1$. By Super NAK, $R$ is generated by the image of $1$, so this map is a surjection. But the dimension of $A$ equals that of $R$, and these are domains, so it is an isomorphism too.
+\end{proof}
+
+\begin{exer} Let $R$ be a Noetherian local ring. Then $\dim(R) = \dim(\hat{R})$.
+\end{exer}
+Hint: Show that $R/\fm_R^n \cong \hat{R}/ \fm_{\hat{R}}^n$ and use Hilbert functions.
+
+\begin{thm}[Cohen Structure Theorem: Noether Normalization] Let $(R,\fm,k)$ be a complete regular local ring containing a field. Then there exists a power series ring $A=k\llbracket x_1,\dots,x_n\rrbracket$ such that $A\subseteq R$ is a module-finite inclusion.
+\end{thm}
+\begin{proof}
+Let $f_1,\dots,f_n$ be a system of parameters for $R$. Consider the map $k[x_1,\dots,x_n]\to R$ by sending $x_i$ to $f_i$ and the induced map on completions $A\xra{\alpha} R$. We claim that $R$ is module-finite over the image of this map. Indeed, first we note that the completion of $R$ with respect to its maximal ideal agrees with the completion of $R$ as an $A$-module by restriction of scalars. Indeed, if $\fn$ is the maximal ideal of $A$, we have $\fm^n \subseteq \fn R \subseteq \fm$ by definition of system of parameters, so large powers of $\fm$ agree with large powers of $\fn$ in $R$ (i.e., the topologies agree). In particular, $R$ is $\fn$-separated. We also have $R/\fn R$ is a finite length, so finitely generated over $A$ and hence over $k$. By Super NAK, $R$ is a finitely generated $A$-module. But then $\dim(R) = \dim(A/\ker(\alpha))$. On the other hand, $\dim(R) = n = \dim(A)$, and since $A$ is a domain, we must have $\ker(\alpha)=0$; i.e., $\alpha$ is injective.
+\end{proof}
+
+\begin{rem} Recall that a local ring $(R,\fm,k)$ that does not contain a field has mixed characteristic: the characteristic of $R$ is zero or a (proper) power of $p$, and the characteristic of $k$ is $p$. In this case, instead of a coefficient field, $R$ contains a \emph{Cohen ring}\index{Cohen ring}: a complete local domain $V$ with principal maximal ideal $p$ and residue field $k$, or a quotient $V/pV$ for a Cohen ring. Every Cohen ring with the same residue field is isomorphic. The remaining aspects of the structure theorems hold with only one minor change:
+\begin{enumerate}
+\item Every complete local Noetherian ring of mixed characteristic is isomorphic to a quotient of a power series ring over a Cohen ring with the same residue field as $R$.
+\item Every complete local Noetherian ring of mixed characteristic is a module-finite extension of a power series ring over a Cohen ring with the same residue field as $R$.
+\item Every complete regular local Noetherian ring of mixed characteristic is isomorphic to a power series ring over a Cohen ring or a quotient of a power series ring over a Cohen ring by a principal ideal generated by an element of the form $p-f$ for some $f$ in the square of the maximal ideal.
+\end{enumerate}
+\end{rem}
+
+
 \section{Return to Jacobian criterion}
+
+
 
 \begin{prop} Let $(R,\fm,k)$ be a local ring of equal characteristic. Suppose that $K \subseteq R$ is
 \begin{itemize}
@@ -2357,12 +2385,14 @@ Then the map
 \[ \frac{\fm}{\fm^2} \xra{\overline{d_{R|K}}} k \otimes_R \Omega_{R|K} \]
 is injective.
 \end{prop}
+\begin{proof} We have seen that this happens whenever there is a $K$-algebra right inverse to the quotient map $R/\fm^2 \to R/\fm$. If $K\subseteq R$, then $K\subseteq R/\fm^2$, and since $R/\fm^2$ is artinian, it is complete. Thus, there is a coefficient field $L$ for $R/\fm^2$ containing $K$. Thus, the map from $R\fm \to L$ is a $K$-algebra right inverse to the quotient map, and the conclusion follows.
+\end{proof}
 
 \begin{thm} Let $K$ be a perfect field and $R=K[x_1,\dots,x_n]/I$. Then for $\fp\in \Spec(R)$ with preimage $\fq\subseteq S$, the following are equivalent:
 \begin{itemize}
 \item $R_\fp$ is regular
 \item $K\to R_\fp$ is essentially smooth
-\item Column jacobian is injective in $\kappa(\fp)$.
+\item Column jacobian on a minimal generating set is injective in $\kappa(\fp)$.
 \end{itemize}
 \end{thm}
 
