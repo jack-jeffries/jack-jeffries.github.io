@@ -2407,9 +2407,26 @@ is injective.
 We have seen the equivalence of the first two earlier. If $S/I$ is regular, then the rank of $\eta$ equals the minimal number of generators of $I$, and each minimal generator decreases the dimension by one, so the height equals the minimal number of generators, thus rank of $\eta$ equals height of $I$.  Conversely, if the rank of $\eta$ equals the height of $I$, take a set of minimal generators whose images form a basis of the image of $\eta$ and let $J$ be the ideal they generate. Then $\dim(S/J)$ is regular, hence a domain, and $\dim(S/J)=\dim(S) - \htt(I) = \dim(S/I)$, so $I/J=0$, and hence $S/I$ is regular.
 \end{proof}
 
-\begin{lem}
-Let $(R,\fm)$ be a local ring. Given an $m\times n$ matrix $A$, the cokernel of $A$ is free of rank $r$ if and only if $I_{(m-r)}(A)=R$ and $I_{(m-r)+1}(A)=0$.
+\begin{lem}[Cauchy-Binet formula] Let $R$ be a ring. Let $A$ be an $n\times m$ matrix and $B$ be an $m\times n$ matrix with $m\geq n$. For a subset $I\subseteq [m]$ of size $n$, write $A_{\bullet,I}$ to be the submatrix with columns indexed by $I$ and $B_{I,\bullet}$ to be the submatrix with rows indexed by $I$. Then $\det(AB) = \sum_{I\subseteq [m], |I|=n} \det(A_{\bullet,I}) \det(B_{I,\bullet})$.
 \end{lem}
+\begin{proof}
+Let $a_1,\dots,a_n$ be the rows of $A$. We can think of $\det(AB)$ as a function $D_B(a_1,\dots,a_n)$ that is $R$-linear in each argument: indeed
+\[ \begin{aligned} \text{row 1 of }&\left( \begin{bmatrix} ca_1+a'_1 \\ a_2 \\ \vdots \\ a_n \end{bmatrix} B \right) = (ca_1 + a'_1)  B = c a_1 B + a'_1 B =  c \cdot \text{row 1 of } \left(\begin{bmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{bmatrix} B\right)  +  \text{row 1 of } \left( \begin{bmatrix} a'_1 \\ a_2 \\ \vdots \\ a_n \end{bmatrix} B \right),  \end{aligned}\]
+and likewise for the other $a_i$'s, so this follows by linearity of determinant in rows.
+ 
+ Likewise, the function $\sum_{I\subseteq [m], |I|=n} \det(A_{\bullet,I}) \det(B_{I,\bullet})=D'_B(a_1,\dots,a_n)$ linear in each argument: in particular, this holds for each $I$ for the same reason as above. Thus, if the formula holds whenever each $a_i$ is a standard basis vector in $R^m$, the formula holds in general by linearity. Moreover, if any standard vector repeats in the $a$'s, then $AB$ has a repeating row, and both sides are zero. Thus, we reduce to the case where each row of $A$ has exactly one $1$ and all other entries $0$. Both expressions also stay the same if we permute the columns of $A$ and rows of $B$ simultaneously, so we can assume that $A$ is an identity block followed by zeroes. Then the product of $AB$ is the matrix $B'$ consisting of the first $n$ rows of $B$, so $\det(AB)=\det(B')$, and the only nonzero term in $\sum_{I\subseteq [m], |I|=n} \det(A_{\bullet,I}) \det(B_{I,\bullet})$ is where $I=[n]$, and the value is $\det(B')$.
+\end{proof}
+
+\begin{lem} Let $R$ be a ring.
+\begin{enumerate}
+\item If $A$, $B$ are matrices, then $I_t(AB) \subseteq I_t(A) \cap I_t(B)$.
+\item If $A$ is a matrix and If $U$ and $V$ are invertible matrices, then $I_t(UA) = I_t(A) = I_t(AV)$.
+\end{enumerate}
+\end{lem}
+
+\begin{prop}
+Let $(R,\fm)$ be a local ring. Given an $m\times n$ matrix $A$, the cokernel of $A$ is free of rank $r$ if and only if $I_{(m-r)}(A)=R$ and $I_{(m-r)+1}(A)=0$.
+\end{prop}
 \begin{proof}Multiplying on the left and right by invertible matrices (and in particular, row and column operations) does not affect the ideals of minors or the cokernel up to isomorphism. If $A$ has a unit as an entry, without loss of generality it is the top left entry, and all other entries in the same row and column are zero. Repeating this process,
 we reduce to the case $A= \begin{bmatrix} I & 0 \\ 0 & B\end{bmatrix}$ with $I$ the $k\times k$ identity matrix and $B$ a matrix in $\fm$. 
 Then the cokernel of $A$ is isomorphic to that of $B$, while \[ I_{j\times j}(A)=\begin{cases} R & \text{if } j\leq k \\ I_{j-k}(B) & \text{if } j > k\end{cases}.\]
