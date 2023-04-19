@@ -288,6 +288,7 @@
 \newcommand{\ps}[1]{\mathbb{P}_{#1}^{\text{c}-1}}
 
 
+\newcommand{\rk}{\mathrm{rank}}
 
 
 \def\and{{ \text{ and } }}
@@ -2300,7 +2301,7 @@ However, we claim that $\F_p(x) \subseteq R$ is a coefficient field. First, we n
 \begin{proof} The first part is a straightforward application of Zorn's lemma. For the second, let $K\subseteq R$ be a maximal subfield. Suppose that $\theta\in k$ is transcendental over $K$, and let $r\in R$ be a lift of $\theta$. For any nonzero polynomial $f(x)\in K[x]$, we must have that $f(\theta)\neq 0$ in $k$, so $f(r)$ is not in $\fm$; i.e., is a unit. Thus the map $K[x]\to R$ is mapping $x$ to $r$ is injective and extends to a map $K(x) \cong K(r) \subseteq R$. This contradicts the maximality of $K$.
 \end{proof}
 
-\begin{thm} Let $(R,\fm,k)$ be a local ring of equal characteristic zero. Then every maximal subfield of $R$ is  a coefficient field. In particular, every subfield of $R$ is contained in a coefficient field.
+\begin{thm} Let $(R,\fm,k)$ be a complete local ring of equal characteristic zero. Then every maximal subfield of $R$ is  a coefficient field. In particular, every subfield of $R$ is contained in a coefficient field.
 \end{thm}
 \begin{proof}
 Let $K$ be a maximal subfield. By the lemma, $K\subseteq k$ is algebraic, and by the hypothesis of characteristic zero, is separable algebraic. Suppose that there is some $\theta \in k\smallsetminus K$. Then $\alpha \in k$ is a simple root of some irreducible monic polynomial $f\in K[x]$. We have $f\in K[x]\subseteq R[x] \to k[x]$, so we can apply Hensel's lemma. Thus, $f$ has a simple root $r$ in $R$ that has image $\theta$ in $k$. Then $K[x]/(f(x)) \cong K[r] \subseteq R$ is a larger subfield of $R$, contradicting minimality.
@@ -2315,7 +2316,7 @@ For example, if $R=\F_p\llbracket x,y\rrbracket$, then \[ \fm^{R^{p}} = (x^{p},y
 and \[\fm^p = (x^p, x^{p-1} y, \dots, x y^{p-1}, y^p) \F_p\llbracket x,y\rrbracket = \{ \sum_{i+j \geq p }^\infty c_{i,j} x^{i} y^{j} \}.\] In general we have  $\fm_{R^{p^e}} \subseteq \fm^{p^e}$.
 \end{rem}
 
-\begin{thm} Let $(R,\fm,k)$ be a local ring of equal characteristic $p>0$. Let $\Theta$ be a $p$-basis for $k$. Then for any lift $T$ of $\Theta$ to $R$, there is a coefficient field of $R$ containing $T$, namely $K= \bigcap_{e\in \N} R^{p^e}[T]$.
+\begin{thm} Let $(R,\fm,k)$ be a complete local ring of equal characteristic $p>0$. Let $\Theta$ be a $p$-basis for $k$. Then for any lift $T$ of $\Theta$ to $R$, there is a coefficient field of $R$ containing $T$, namely $K= \bigcap_{e\in \N} R^{p^e}[T]$.
 \end{thm}
 \begin{proof} Note that $K$ is at least a subring of $R$ that contains $T$. 
 
@@ -2343,6 +2344,7 @@ On the other hand,
 \begin{proof} In characteristic zero, since $K$ is a subfield, there is a maximal subfield containing $K$ which is necessarily a coefficient field. In positive characteristic, $K = \bigcap K^{p^e} \subseteq \bigcap R^{p^e} \subseteq R^{p^e}[T]$ for a $p$-basis $T$, so $K$ is contained in a coefficient field.
 \end{proof}
 \begin{comment}
+\Apr{20}
 
 \begin{thm}[Cohen Structure Theorem: Main part]\index{Cohen structure theorem} Let $(R,\fm,k)$ be a complete local Noetherian ring containing a field. Then $R\cong k\llbracket x_1,\dots,x_n\rrbracket / I$ for some ideal $I$. In particular, every complete local Noetherian ring is a quotient of a regular local ring.
 \end{thm}
@@ -2427,23 +2429,45 @@ and likewise for the other $a_i$'s, so this follows by linearity of determinant 
 \item If $A$ is a matrix and If $U$ and $V$ are invertible matrices, then $I_t(UA) = I_t(A) = I_t(AV)$.
 \end{enumerate}
 \end{lem}
+\begin{proof}
+For the first statement, given a $t\times t$ minor of $AB$, we can replace $A$ by the rows occurring in the given minor and $B$ by the columns occurring in that minor. The statement then follows from Cauchy-Binet.  The second is straightforward.
+\end{proof}
 
 \begin{prop}
 Let $(R,\fm)$ be a local ring. Given an $m\times n$ matrix $A$, the cokernel of $A$ is free of rank $r$ if and only if $I_{(m-r)}(A)=R$ and $I_{(m-r)+1}(A)=0$.
 \end{prop}
-\begin{proof}Multiplying on the left and right by invertible matrices (and in particular, row and column operations) does not affect the ideals of minors or the cokernel up to isomorphism. If $A$ has a unit as an entry, without loss of generality it is the top left entry, and all other entries in the same row and column are zero. Repeating this process,
+\begin{proof} By the lemma, multiplying on the left and right by invertible matrices (and in particular, row and column operations) does not affect the ideals of minors; it also does not affect the cokernel up to isomorphism. If $A$ has a unit as an entry, without loss of generality it is the top left entry, and all other entries in the same row and column are zero. Repeating this process,
 we reduce to the case $A= \begin{bmatrix} I & 0 \\ 0 & B\end{bmatrix}$ with $I$ the $k\times k$ identity matrix and $B$ a matrix in $\fm$. 
 Then the cokernel of $A$ is isomorphic to that of $B$, while \[ I_{j\times j}(A)=\begin{cases} R & \text{if } j\leq k \\ I_{j-k}(B) & \text{if } j > k\end{cases}.\]
 If $M$ is free of rank $r$, then $B=0$ since otherwise, it isn't (say something?) and then $k=m-r$. In that case, $I_{j\times j}(A) = R$ for $j\leq k$ and $=0$ for $j>k$ and the conclusion holds. On the other hand, if the conditions on minors hold for some value of $r$, then the first index where the ideal of minors is proper must agree with $k+1$, so $k=m-r$, and the first proper such ideal is zero, so $I_1(B)=0$ and $B=0$. We then get a free cokernel of rank $r$.
 \end{proof}
 
+\begin{lem}
+If $I \subseteq \fa$, then one has $J^T(I) = M J^T(\fa)$ for some matrix $M$.
+\end{lem}
+
+\begin{lem} Let $K$ be a perfect field and $S=K[x_1,\dots,x_n]$ be a polynomial ring. Let $I=(f_1,\dots,f_t) \subseteq S$ be an ideal and $\fq \supseteq I$ a prime ideal. If $\htt(I_\fq) = h$, then $I_{h+1}(J^T(f_1,\dots,f_t)) = 0$ in $S_\fq$.
+\end{lem}
+\begin{proof} Let $I \subseteq \fa\subseteq \fq$ with $\fa$ of height $h$. Then $S_\fa$ is regular, so there exist $g_1,\dots,g_h\in S$ with $\fa S_\fa = (g_1,\dots,g_h) S_\fa$. Now,  since $I S_{\fa} \subseteq \fa S_{\fa}$ by the lemma there is some matrix $M$ such that $J^T(f_1,\dots,f_t) S_{\fa} = M  J^T(g_1,\dots,g_h) S_\fa$. But then $I_{h+1}(J^T(f_1,\dots,f_t)) S_{\fa} =0$. Since $S_{\fq}$ is a domain, we must have $I_{h+1}(J^T(f_1,\dots,f_t)) S_{\fq} =0$ as well.
+\end{proof}
+
+
 \begin{prop} Let $K$ be a perfect field and $R=K[x_1,\dots,x_n]/I$. Then for $\fp\in \Spec(R)$ with preimage $\fq\subseteq S$, the following are equivalent:
 \begin{itemize}
 \item $R_\fp$ is regular
-\item Rank of jacobian matrix in $\kappa(\fp)$ is $ht I_\fq$.
-\item $\Omega_{R_\fp|K}$ is free of rank $n-ht I_\fq$.
+%\item The rank of the Jacobian matrix for $I$ in $\kappa(\fp)$ is equal to the minimal number of generators of $I_\fq$ in $S_{\fq}$.
+\item The rank of the Jacobian matrix for $I$ in $\kappa(\fp)$ is $\htt I_\fq$.
+\item $\Omega_{R_\fp|K}$ is free of rank $n-\htt I_\fq$.
 \end{itemize}
 \end{prop}
+\begin{proof} Set $h=\htt I_\fq$. 
+
+We have maps
+\[ \frac{I_\fq}{\fq I_\fq} \xra{\eta} \frac{\fq S_{\fq}}{\fq^2 S_{\fq}} \xra{d} \kappa(\fq) \otimes_K \Omega_{S|K}\]
+with the second injective. Observe that the cokernel of  $\frac{I S_\fq}{\fq I S_\fq} \xra{\eta} \frac{\fq S_{\fq}}{\fq^2 S_{\fq}}$ is $\frac{\fp R_\fp}{\fp^2 R_{\fp}}$, so $\dim(\frac{\fp R_\fp}{\fp^2 R_{\fp}}) = \dim(\frac{\fq S_{\fq}}{\fq^2 S_{\fq}}) - \rk(\eta) = \dim(S_\fq) - \rk(\eta)$, and $\dim(R_\fp) = \dim(S_\fq) - \htt(I_\fq)$, so $R_\fp$ is regular if and only if $\rk(\eta) = \htt(I_\fq)$. But since $d$ is injective, the rank of $\eta$ equals that of $d \circ \eta$, which is the rank of the Jacobian matrix taken in $\kappa(\fp)$.
+
+On the other hand, recall that $\Omega_{R_\fp|K}$ is the cokernel of the Jacobian considered as a map of $R_\fp$ modules. By the lemma, the $I_{h+1}$ of the presenting matrix is zero in $S_\fq$, hence in $R_\fp$. We then have $I_h$ of this matrix is the unit ideal if and only it is not contained in the maximal ideal; i.e., if and only if it is nonzero considered in the residue field. But this is equivalent to free of rank $n-h$.
+\end{proof}
 
 
 \begin{thm} Let $K$ be a perfect field and $R=K[x_1,\dots,x_n]/I$. Suppose that $R$ has characteristic zero or is reduced. Then for $\fp\in \Spec(R)$, $R_{\fp}$ is regular if and only if $\Omega_{R_{\fp}|K}$ is free.
