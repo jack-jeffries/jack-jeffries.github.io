@@ -1,4 +1,4 @@
-\documentclass{amsart}[12pt]
+ \documentclass{amsart}[12pt]
 \usepackage{graphicx}
 \usepackage{comment}
 \usepackage{amscd,mathabx}
@@ -2394,7 +2394,9 @@ is injective.
 \begin{proof} We have seen that this happens whenever there is a $K$-algebra right inverse to the quotient map $R/\fm^2 \to R/\fm$. If $K\subseteq R$, then $K\subseteq R/\fm^2$, and since $R/\fm^2$ is artinian, it is complete. Thus, there is a coefficient field $L$ for $R/\fm^2$ containing $K$. Thus, the map from $R\fm \to L$ is a $K$-algebra right inverse to the quotient map, and the conclusion follows.
 \end{proof}
 
-\begin{comment}
+\Apr{25}
+
+Based on our earlier work, we have the following:
 
 \begin{thm} Let $K$ be a perfect field and $R=K[x_1,\dots,x_n]/I$. Then for $\fp\in \Spec(R)$ with preimage $\fq\subseteq S$, the following are equivalent:
 \begin{itemize}
@@ -2404,16 +2406,24 @@ is injective.
 \end{itemize}
 \end{thm}
 
-\begin{lem} Let $(S,\fn)$ be a regular local ring, and $I\subseteq S$. The following are equivalent:
-\begin{enumerate}
-\item $S/I$ is regular
-\item The map $\frac{I}{\fn I} \xra{\eta} \frac{\fn}{\fn^2}$ is injective.
-\item The map $\eta$ has rank equal to the height of $I$.
-\end{enumerate}
-\end{lem}
-\begin{proof}
-We have seen the equivalence of the first two earlier. If $S/I$ is regular, then the rank of $\eta$ equals the minimal number of generators of $I$, and each minimal generator decreases the dimension by one, so the height equals the minimal number of generators, thus rank of $\eta$ equals height of $I$.  Conversely, if the rank of $\eta$ equals the height of $I$, take a set of minimal generators whose images form a basis of the image of $\eta$ and let $J$ be the ideal they generate. Then $\dim(S/J)$ is regular, hence a domain, and $\dim(S/J)=\dim(S) - \htt(I) = \dim(S/I)$, so $I/J=0$, and hence $S/I$ is regular.
-\end{proof}
+We would like to refine and extend this result in multiple ways. First, we would like to like to give a criterion for regularity that is somewhat less dependent on $\fp$ so we can compute the singular locus. Second, recalling that smoothness is related to projectivity of the Kahler differentials, we want to understand this criterion more specifically focused on the differentials. Third, we want to state a version of this that holds even when $K$ is not perfect. 
+
+\subsection{Ideals of minors and free modules}
+
+Let $R$ be a ring and $A$ a an $n\times m$ matrix, so there is a map of free modules
+\[ R^m \xra{A} R^n.\]
+For $0<t\leq \min\{m,n\}$, we define
+\[ I_t(A) = ( \text{ $t\times t$ minors of $A$ } ).\]
+By convention, we also set $I_t(A)=0$ for $t> \min\{m,n\}$.
+
+Note that, by Laplace expansion, $I_1(A) \supseteq I_2(A) \supseteq I_3(A) \supseteq \cdots$.
+If $R=K$ is a field, then
+\[ I_t(A) = \begin{cases} K & \text{if $t\leq \mathrm{rank}(A)$}\\ 0 & \text{if $t> \mathrm{rank}(A)$}\end{cases}.\]
+Of course, over a general ring, any ideal can be the ideal of minor of a matrix.
+
+For any prime $\fp\in \Spec(R)$, we can think of $A$ as a matrix over $\kappa(\fp)$ via the natural map $R\to \kappa(\fp)$. Then the rank of $A$ over $\kappa(\fp)$ is at least $t$ if and only if $I_t(A)\kappa(\fp) \neq 0$, which happens if and only if $I_t(A) \not\subseteq \fp$. In particular, 
+\[ \{ \fp \in \Spec(R) \ | \ \mathrm{rank}_{\kappa(\fp)}(A) < t\} = V(I_t(A))\]
+is closed; if $\fp\subseteq \fq$, then the rank can only go down.
 
 \begin{lem}[Cauchy-Binet formula] Let $R$ be a ring. Let $A$ be an $n\times m$ matrix and $B$ be an $m\times n$ matrix with $m\geq n$. For a subset $I\subseteq [m]$ of size $n$, write $A_{\bullet,I}$ to be the submatrix with columns indexed by $I$ and $B_{I,\bullet}$ to be the submatrix with rows indexed by $I$. Then $\det(AB) = \sum_{I\subseteq [m], |I|=n} \det(A_{\bullet,I}) \det(B_{I,\bullet})$.
 \end{lem}
@@ -2427,53 +2437,101 @@ and likewise for the other $a_i$'s, so this follows by linearity of determinant 
 
 \begin{lem} Let $R$ be a ring.
 \begin{enumerate}
-\item If $A$, $B$ are matrices, then $I_t(AB) \subseteq I_t(A) \cap I_t(B)$.
-\item If $A$ is a matrix and If $U$ and $V$ are invertible matrices, then $I_t(UA) = I_t(A) = I_t(AV)$.
+\item If $A$, $B$ are matrices, then $I_t(AB) \subseteq I_t(A) I_t(B) (\subseteq I_t(A) \cap I_t(B))$.
+\item If $A$ is a matrix and $U$ and $V$ are invertible matrices, then $I_t(UA) = I_t(A) = I_t(AV)$.
 \end{enumerate}
 \end{lem}
 \begin{proof}
-For the first statement, given a $t\times t$ minor of $AB$, we can replace $A$ by the rows occurring in the given minor and $B$ by the columns occurring in that minor. The statement then follows from Cauchy-Binet.  The second is straightforward.
+For the first statement, given a $t\times t$ minor of $AB$, we can replace $A$ by the rows occurring in the given minor and $B$ by the columns occurring in that minor. The statement then follows from Cauchy-Binet.  For the second, by the first part we have 
+\[ I_t(UA) \subseteq I_t(A) = I_t(U^{-1}UA) \subseteq I_t(UA) \]
+and similarly for $V$.
 \end{proof}
 
 \begin{prop}
-Let $(R,\fm)$ be a local ring. Given an $m\times n$ matrix $A$, the cokernel of $A$ is free of rank $r$ if and only if $I_{(m-r)}(A)=R$ and $I_{(m-r)+1}(A)=0$.
+Let $(R,\fm)$ be a local ring. Given an $n\times m$ matrix $A$, the cokernel of $A$ is free of rank $r$ if and only if $I_{(n-r)}(A)=R$ and $I_{(n-r)+1}(A)=0$.
 \end{prop}
-\begin{proof} By the lemma, multiplying on the left and right by invertible matrices (and in particular, row and column operations) does not affect the ideals of minors; it also does not affect the cokernel up to isomorphism. If $A$ has a unit as an entry, without loss of generality it is the top left entry, and all other entries in the same row and column are zero. Repeating this process,
+\begin{proof} By the lemma, multiplying on the left and right by invertible matrices (and in particular, row and column operations) does not affect the ideals of minors; it also does not affect the cokernel up to isomorphism. If $A$ has a unit as an entry, applying row and column operations, without loss of generality it is the top left entry, and all other entries in the same row and column are zero. Repeating this process,
 we reduce to the case $A= \begin{bmatrix} I & 0 \\ 0 & B\end{bmatrix}$ with $I$ the $k\times k$ identity matrix and $B$ a matrix in $\fm$. 
-Then the cokernel of $A$ is isomorphic to that of $B$, while \[ I_{j\times j}(A)=\begin{cases} R & \text{if } j\leq k \\ I_{j-k}(B) & \text{if } j > k\end{cases}.\]
-If $M$ is free of rank $r$, then $B=0$ since otherwise, it isn't (say something?) and then $k=m-r$. In that case, $I_{j\times j}(A) = R$ for $j\leq k$ and $=0$ for $j>k$ and the conclusion holds. On the other hand, if the conditions on minors hold for some value of $r$, then the first index where the ideal of minors is proper must agree with $k+1$, so $k=m-r$, and the first proper such ideal is zero, so $I_1(B)=0$ and $B=0$. We then get a free cokernel of rank $r$.
+Then the cokernel of $A$ is isomorphic to that of $B$, while \[ I_{j}(A)=\begin{cases} R & \text{if } j\leq k \\ I_{j-k}(B) & \text{if } j > k\end{cases}.\]
+If $M$ is free, then $B=0$: writing
+\[ R^{m-k} \xra{B} R^{n-k} \to M \to 0\]
+since the entries of $B$ are in $\fm$, the generators of $R^{n-k}$ are linearly independent modulo $\fm$, hence a minimal generating set for $M$, but then they must be a free basis, so $B=0$.
+Then, lining up the numbers, $k=n-r$. In that case, $I_{j}(A) = R$ for $j\leq k$ and $=0$ for $j>k$ and the conclusion holds. 
+
+On the other hand, if the conditions on minors hold for some value of $r$, then the first index where the ideal of minors is proper must agree with $k+1$, so $k=n-r$, and the first proper such ideal is zero, so $I_1(B)=0$ and hence $B=0$. We then get a free cokernel of rank $r$.
 \end{proof}
 
-\begin{lem}
-If $I \subseteq \fa$, then one has $J^T(I) = M J^T(\fa)$ for some matrix $M$.
-\end{lem}
+\subsection{Jacobian criterion for singular locus over perfect fields}
 
-\begin{lem} Let $K$ be a perfect field and $S=K[x_1,\dots,x_n]$ be a polynomial ring. Let $I=(f_1,\dots,f_t) \subseteq S$ be an ideal and $\fq \supseteq I$ a prime ideal. If $\htt(I_\fq) = h$, then $I_{h+1}(J^T(f_1,\dots,f_t)) = 0$ in $S_\fq$.
+
+\begin{lem} Let $K$ be a perfect field and $S=K[x_1,\dots,x_n]$ be a polynomial ring. Let $I=(f_1,\dots,f_t) \subseteq S$ be an ideal and $\fa \supseteq I$ a prime ideal. If $\htt(\fa) = h$, then $I_{h+1}(J^T(f_1,\dots,f_t)) = 0$ in $S_{\fa}/\fa S_{\fa}$.
 \end{lem}
-\begin{proof} Let $I \subseteq \fa\subseteq \fq$ with $\fa$ of height $h$. Then $S_\fa$ is regular, so there exist $g_1,\dots,g_h\in S$ with $\fa S_\fa = (g_1,\dots,g_h) S_\fa$. Now,  since $I S_{\fa} \subseteq \fa S_{\fa}$ by the lemma there is some matrix $M$ such that $J^T(f_1,\dots,f_t) S_{\fa} = M  J^T(g_1,\dots,g_h) S_\fa$. But then $I_{h+1}(J^T(f_1,\dots,f_t)) S_{\fa} =0$. Since $S_{\fq}$ is a domain, we must have $I_{h+1}(J^T(f_1,\dots,f_t)) S_{\fq} =0$ as well.
+\begin{proof} Let $I \subseteq \fa\subseteq \fq$ with $\fa$ of height $h$. Then $S_\fa$ is regular, so there exist $g_1,\dots,g_h\in S$ with $\fa S_\fa = (g_1,\dots,g_h) S_\fa$. Now,  since $I S_{\fa} \subseteq \fa S_{\fa}$, so we can write $f_i = \sum_j r_{i,j} g_j$.
+
+Recall that the universal derivation $d_{S_{\fa}|K}: S_{\fa} \to \Omega_{S_{\fa}|K}$ can be identified with the map 
+\[ s \mapsto \sum_{k} \frac{ds}{dx_k} dx_k,\]
+and that the coordinates are the entries of the column Jacobian.
+We have 
+\[ d_{S_{\fa}|K}(f_i) = d_{S_{\fa}|K}(\sum_j r_{i,j} g_j) = \sum_j  r_{i,j} d_{S_{\fa}|K}( g_j) + \sum_j  g_j d_{S_{\fa}|K}(r_{i,j} ).\]
+The entries of the second sum are in $\fa S_{\fa}$, so in $S_{\fa}/\fa S_{\fa}$ we can write $J^T(f_1,\dots,f_t) = [r_{i,j}] J^T(g_1,\dots,g_h)$. But then the vanishing of the $h+1$ minors is clear.
+\end{proof}
+
+\begin{lem} Let $(S,\fn)$ be a regular local ring, and $I\subseteq S$. The following are equivalent:
+\begin{enumerate}
+\item $S/I$ is regular
+\item The map $\frac{I}{\fn I} \xra{\eta} \frac{\fn}{\fn^2}$ is injective.
+\item The map $\eta$ has rank (taken in $\kappa(\fn)$) equal to the height of $I$.
+\end{enumerate}
+\end{lem}
+\begin{proof}
+We have seen the equivalence of the first two earlier. If $S/I$ is regular, then the rank of $\eta$ equals the minimal number of generators of $I$, and each minimal generator decreases the dimension by one, so the height equals the minimal number of generators, thus rank of $\eta$ equals height of $I$.  Conversely, if the rank of $\eta$ equals the height of $I$, take a set of minimal generators whose images form a basis of the image of $\eta$ and let $J$ be the ideal they generate. Then $\dim(S/J)$ is regular, hence a domain, and $\dim(S/J)=\dim(S) - \htt(I) = \dim(S/I)$, so $I/J=0$, and hence $S/I$ is regular.
 \end{proof}
 
 
-\begin{prop} Let $K$ be a perfect field and $R=K[x_1,\dots,x_n]/I$. Then for $\fp\in \Spec(R)$ with preimage $\fq\subseteq S$, the following are equivalent:
+
+\begin{thm} Let $K$ be a perfect field and $R=K[x_1,\dots,x_n]/I$. Then for $\fp\in \Spec(R)$ with preimage $\fq\subseteq S$, the following are equivalent:
 \begin{itemize}
 \item $R_\fp$ is regular
 %\item The rank of the Jacobian matrix for $I$ in $\kappa(\fp)$ is equal to the minimal number of generators of $I_\fq$ in $S_{\fq}$.
 \item The rank of the Jacobian matrix for $I$ in $\kappa(\fp)$ is $\htt I_\fq$.
 \item $\Omega_{R_\fp|K}$ is free of rank $n-\htt I_\fq$.
 \end{itemize}
-\end{prop}
+\end{thm}
 \begin{proof} Set $h=\htt I_\fq$. 
 
 We have maps
 \[ \frac{I_\fq}{\fq I_\fq} \xra{\eta} \frac{\fq S_{\fq}}{\fq^2 S_{\fq}} \xra{d} \kappa(\fq) \otimes_K \Omega_{S|K}\]
-with the second injective. Observe that the cokernel of  $\frac{I S_\fq}{\fq I S_\fq} \xra{\eta} \frac{\fq S_{\fq}}{\fq^2 S_{\fq}}$ is $\frac{\fp R_\fp}{\fp^2 R_{\fp}}$, so $\dim(\frac{\fp R_\fp}{\fp^2 R_{\fp}}) = \dim(\frac{\fq S_{\fq}}{\fq^2 S_{\fq}}) - \rk(\eta) = \dim(S_\fq) - \rk(\eta)$, and $\dim(R_\fp) = \dim(S_\fq) - \htt(I_\fq)$, so $R_\fp$ is regular if and only if $\rk(\eta) = \htt(I_\fq)$. But since $d$ is injective, the rank of $\eta$ equals that of $d \circ \eta$, which is the rank of the Jacobian matrix taken in $\kappa(\fp)$.
+with the second injective, so the rank of $\eta$ equals that of $d\circ \eta$. Applying the lemma to $S_\fq$, $R_\fp$ is regular if and only if the rank in $\kappa(\fp)$ of $d \circ \eta$ is the height of $\htt I_\fq$. This map is given in matrix form by the column Jacobian on the $f$'s, showing the equivalence of the first two.
 
-On the other hand, recall that $\Omega_{R_\fp|K}$ is the cokernel of the Jacobian considered as a map of $R_\fp$ modules. By the lemma, the $I_{h+1}$ of the presenting matrix is zero in $S_\fq$, hence in $R_\fp$. We then have $I_h$ of this matrix is the unit ideal if and only it is not contained in the maximal ideal; i.e., if and only if it is nonzero considered in the residue field. But this is equivalent to free of rank $n-h$.
+ 
+For the last equivalence, recall that $\Omega_{R_\fp|K}$ is the cokernel of the Jacobian considered as a map of $R_\fp$ modules. If $R_{\fp}$ is regular, then $I S_\fq$ is prime of height $h$, and by the lemma, $I_{h+1}(J^T(f))=0$ in $S_\fq / I S_\fq = R_{\fp}$, while $I_h(J^T(f)) \not\subseteq \kappa(\fp)$ by the second bullet, so $\Omega_{R_{\fp}|K}$ is free of rank $n-h$. On the other hand, if $\Omega_{R_{\fp}|K}$ is free of rank $n-h$, then $I_h(J^T(f)) = R_{\fp}$ and $I_{h+1}(J^T(f))=0$ by the linear algebra lemma, so the rank of the Jacobian in $\kappa(\fp)$ must be exactly $h$.
 \end{proof}
 
+Recall that the height of $I$ equals $\min\{ \htt \fp \ | \ \fp \supseteq I \ \text{minimal prime}\}$. If $I\subseteq \fq$, then the height of $I_\fq$ equals $\min\{ \htt \fp \ | \ \fp \supseteq I \ \text{minimal prime with } \fp \subseteq \fq\}$.
+
+\begin{cor} Let $K$ be a perfect field and $R=K[x_1,\dots,x_n]/I$. Suppose that the height of each minimal prime of $I$ is $h$.Then, the singular locus of $R$ is the ideal of $h\times h$ minors of the column Jacobian matrix of $f$.
+\end{cor}
+\begin{proof}
+By hypothesis, the height of $I_\fq$ equals $h$ for any $\fq \supseteq I$ in $S$.
+By the earlier lemma, the rank of the Jacobian matrix for $I$ in $\kappa(\fp)$ is at most $h$ (since this is the case modulo a smaller prime. Thus, the rank of the Jacobian matrix for $I$ in $\kappa(\fp)$ equals $h$ if and only if the localization is regular. 
+\end{proof}
+
+\begin{ex}
+\begin{enumerate}
+\item Let $K=\C$ and $R=K[x,y,z]/(x^2-x,xyz)$. Then the height of the ideal $I$ is $1$, since $x$ is a minimal prime, but $I_1$ of the Jacobian contains $2x-1$, which generates the unit ideal in the quotient. But, localizing at $(x,y,z)$ we get $K[x,y,z]_{(x,y,z)}/(xyz)$, which is not regular.
+\item Let $K=\F(t)$ and $R=K[x]/(x^p-t)$. Then $R$ is regular, but the Jacobian criterion would say the singular locus is all of $\Spec(R)$.
+\item Let $K=\F_p$ and $R=K[x]/(x^p)$. Then $\Omega_{R|K}$ is free of rank $1$, which is not $1-1=0$, and $R$ is not regular.
+\end{enumerate}
+\end{ex}
+
+It turns out that free of any rank implies free of the correct rank and hence regular under additional hypotheses.
 
 \begin{thm} Let $K$ be a perfect field and $R=K[x_1,\dots,x_n]/I$. Suppose that $R$ has characteristic zero or is reduced. Then for $\fp\in \Spec(R)$, $R_{\fp}$ is regular if and only if $\Omega_{R_{\fp}|K}$ is free.
 \end{thm}
+\begin{proof}
+
+\end{proof}
+
 
 \begin{thm} Let $K$ be a field and $R=K[x_1,\dots,x_n]/I$. Let $L\subseteq K$ be a perfect field. Then, for $\fp\in \Spec(R)$, the following are equivalent:
 \begin{itemize}
