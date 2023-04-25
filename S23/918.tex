@@ -2493,11 +2493,11 @@ We have seen the equivalence of the first two earlier. If $S/I$ is regular, then
 \begin{itemize}
 \item $R_\fp$ is regular
 %\item The rank of the Jacobian matrix for $I$ in $\kappa(\fp)$ is equal to the minimal number of generators of $I_\fq$ in $S_{\fq}$.
-\item The rank of the Jacobian matrix for $I$ in $\kappa(\fp)$ is $\htt I_\fq$.
-\item $\Omega_{R_\fp|K}$ is free of rank $n-\htt I_\fq$.
+\item The rank of the Jacobian matrix for $I$ in $\kappa(\fp)$ is $\htt I S_\fq$.
+\item $\Omega_{R_\fp|K}$ is free of rank $n-\htt I S_\fq$.
 \end{itemize}
 \end{thm}
-\begin{proof} Set $h=\htt I_\fq$. 
+\begin{proof} Set $h=\htt I S_\fq$. 
 
 We have maps
 \[ \frac{I_\fq}{\fq I_\fq} \xra{\eta} \frac{\fq S_{\fq}}{\fq^2 S_{\fq}} \xra{d} \kappa(\fq) \otimes_K \Omega_{S|K}\]
@@ -2507,9 +2507,13 @@ with the second injective, so the rank of $\eta$ equals that of $d\circ \eta$. A
 For the last equivalence, recall that $\Omega_{R_\fp|K}$ is the cokernel of the Jacobian considered as a map of $R_\fp$ modules. If $R_{\fp}$ is regular, then $I S_\fq$ is prime of height $h$, and by the lemma, $I_{h+1}(J^T(f))=0$ in $S_\fq / I S_\fq = R_{\fp}$, while $I_h(J^T(f)) \not\subseteq \kappa(\fp)$ by the second bullet, so $\Omega_{R_{\fp}|K}$ is free of rank $n-h$. On the other hand, if $\Omega_{R_{\fp}|K}$ is free of rank $n-h$, then $I_h(J^T(f)) = R_{\fp}$ and $I_{h+1}(J^T(f))=0$ by the linear algebra lemma, so the rank of the Jacobian in $\kappa(\fp)$ must be exactly $h$.
 \end{proof}
 
-Recall that the height of $I$ equals $\min\{ \htt \fp \ | \ \fp \supseteq I \ \text{minimal prime}\}$. If $I\subseteq \fq$, then the height of $I_\fq$ equals $\min\{ \htt \fp \ | \ \fp \supseteq I \ \text{minimal prime with } \fp \subseteq \fq\}$.
+\begin{rem}
+Recall that the height of $I$ equals $\min\{ \htt \ \fp \ | \ \fp \supseteq I \ \text{minimal prime}\}$. If $I\subseteq \fq$, then the height of $I S_\fq$ equals $\min\{ \htt \ \fp \ | \ \fp \supseteq I \ \text{minimal prime with } \fp \subseteq \fq\}$.
 
-\begin{cor} Let $K$ be a perfect field and $R=K[x_1,\dots,x_n]/I$. Suppose that the height of each minimal prime of $I$ is $h$.Then, the singular locus of $R$ is the ideal of $h\times h$ minors of the column Jacobian matrix of $f$.
+Given a primary decomposition $I= Q_1 \cap \cdots Q_t$ with $Q_1, \dots, Q_s \subseteq \fq$ and $Q_{s+1} ,\dots ,Q_t \not \subseteq \fq$, we have $I S_\fq \cap S = Q_1 \cap \cdots \cap Q_s$. Set $\widetilde{R}^{\fp} = S/ (I S_\fq \cap S)$; then $\widetilde{R}^{\fp}$ is a finitely generated $K$-algebra with the same localization at $\fp$ and consisting only of the components contained in $\fp$. In particular, the minimal primes of $R_\fp$ are in bijection with those of $\widetilde{R}^{\fp}$. Then the number $n-\htt I S_\fq$ equals the dimension of $\widetilde{R}^{\fp}$. Thus, $R_\fp$ is regular if and only if $\Omega_{R_\fp|K}$ is free of rank $\dim(\widetilde{R}^{\fp})$.
+\end{rem}
+
+\begin{cor} Let $K$ be a perfect field and $R=K[x_1,\dots,x_n]/I$. Suppose that the height of each minimal prime of $I$ is $h$. Then, the singular locus of $R$ is the ideal of $h\times h$ minors of the column Jacobian matrix of~$f$.
 \end{cor}
 \begin{proof}
 By hypothesis, the height of $I_\fq$ equals $h$ for any $\fq \supseteq I$ in $S$.
@@ -2526,12 +2530,30 @@ By the earlier lemma, the rank of the Jacobian matrix for $I$ in $\kappa(\fp)$ i
 
 It turns out that free of any rank implies free of the correct rank and hence regular under additional hypotheses.
 
-\begin{thm} Let $K$ be a perfect field and $R=K[x_1,\dots,x_n]/I$. Suppose that $R$ has characteristic zero or is reduced. Then for $\fp\in \Spec(R)$, $R_{\fp}$ is regular if and only if $\Omega_{R_{\fp}|K}$ is free.
-\end{thm}
-\begin{proof}
-
+\begin{lem} Let $K$ be a perfect field of characteristic $p$, and $L$ be a finitely generated field extension of $K$. Then $p\deg(L) = p\deg_K(L) = \mathrm{trdeg}_K(L)$.
+\end{lem}
+\begin{proof} To see the first equality, note that $L^p = K^p(L^p) = K(L^p)$. For the second, take a transcendence basis $x_1,\dots,x_t$ for $L$ over $K$. Then $L$ is finitely generated and algebraic over $K(x_1,\dots,x_t)$, so finite. Then, using the homework, we have $p\deg(K(x_1,\dots,x_t)) = p\deg(K) + t = t$ and $p\deg(L) = p\deg(K(x_1,\dots,x_t))$.
 \end{proof}
 
+
+\begin{thm} Let $K$ be a perfect field and $R=K[x_1,\dots,x_n]/I$. Suppose that either $R$ has characteristic zero or is reduced. Then for $\fp\in \Spec(R)$, $R_{\fp}$ is regular if and only if $\Omega_{R_{\fp}|K}$ is free.
+\end{thm}
+\begin{proof} By the previous theorem, $R_{\fp}$ is regular if and only if $\Omega_{R_{\fp}|K}$ is free of rank $n-\htt I S_\fq$, where $\fq$ is the preimage of $\fp$ in the polynomial ring. Removing the minimal components of $R$ that are not contained in $\fp$ (i.e., replacing $R$ by  $\dim(\widetilde{R}^\fp)$), we can assume that $\dim(R)=n-\htt I S_\fq$. Thus, we just need to show that if $\Omega_{R_{\fp}|K}$ is free, then its rank is $\dim(R)$.
+Let $\fa$ be a minimal prime of $R$ with $\dim(R) = \dim(R/\fa)$. From the second fundamental sequence, we have
+\[ \frac{\fa R_{\fa}}{\fa^2 R_{\fa}} \xra{d} \kappa(\fa) \otimes_{R_\fp} \Omega_{R_\fp|K} \to \Omega_{\kappa(\fa)|K} \to 0.\]
+Since $\kappa(\fa)$ is the fraction field of $R/\fa$, which is a finitely generated domain over the field $K$, we have $\dim(R/\fa) = \mathrm{trdeg}_K(\kappa(\fa))$; by the lemma, $p\deg_K(\kappa(\fa))=\dim(R/\fa)=\dim(R)$ if $K$ has positive characteristic. Either way, $\Omega_{\kappa(\fa)}$ has rank $\dim(R)$. Thus, it suffices to show that the map $d$ in the sequence above is the zero map.
+
+If $R$ is reduced, then $\fa R_\fa =0$ since this the unique minimal prime of $R_\fa$, hence its nilradical, so the map $d$ is zero.
+
+If the characteristic of $K$ is zero, then every element of $\fa R_\fa$ is niltpotent in $R_\fa$. Let $f^t=0$ but $f^{t-1}\neq 0$. Applying 
+\[ R_{\fa} \xra{d} \Omega_{R_{\fa} | K}\]
+we get $t f^{t-1} df =0$ in $\Omega_{R_{\fp}|K}$, so $f^{t-1} df =0$. Since $\Omega_{R_\fa|K} \cong (\Omega_{R_\fp|K})_{\fa}$ is free, and $df$ is annihilated by some nonzero element, $df \in \fa \Omega_{R_{\fa} | K}$, so $df=0$ in $\kappa(\fa) \otimes_{R_{\fp}} \Omega_{R_{\fp}|K}$. Thus, the desired map is zero.
+\end{proof}
+
+
+\subsection{Jacobian criteria over arbitrary fields}
+
+Let $K$ be a field and $R=K[x_1,\dots,x_n]$. Universal differential.
 
 \begin{thm} Let $K$ be a field and $R=K[x_1,\dots,x_n]/I$. Let $L\subseteq K$ be a perfect field. Then, for $\fp\in \Spec(R)$, the following are equivalent:
 \begin{itemize}
