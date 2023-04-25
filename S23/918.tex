@@ -2464,7 +2464,7 @@ On the other hand, if the conditions on minors hold for some value of $r$, then 
 \subsection{Jacobian criterion for singular locus over perfect fields}
 
 
-\begin{lem} Let $K$ be a perfect field and $S=K[x_1,\dots,x_n]$ be a polynomial ring. Let $I=(f_1,\dots,f_t) \subseteq S$ be an ideal and $\fa \supseteq I$ a prime ideal. If $\htt(\fa) = h$, then $I_{h+1}(J^T(f_1,\dots,f_t)) = 0$ in $S_{\fa}/\fa S_{\fa}$.
+\begin{lem} Let $K$ be a field and $S=K[x_1,\dots,x_n]$ be a polynomial ring. Let $I=(f_1,\dots,f_t) \subseteq S$ be an ideal and $\fa \supseteq I$ a prime ideal. If $\htt(\fa) = h$, then $I_{h+1}(J^T(f_1,\dots,f_t)) = 0$ in $S_{\fa}/\fa S_{\fa}$.
 \end{lem}
 \begin{proof} Let $I \subseteq \fa\subseteq \fq$ with $\fa$ of height $h$. Then $S_\fa$ is regular, so there exist $g_1,\dots,g_h\in S$ with $\fa S_\fa = (g_1,\dots,g_h) S_\fa$. Now,  since $I S_{\fa} \subseteq \fa S_{\fa}$, so we can write $f_i = \sum_j r_{i,j} g_j$.
 
@@ -2476,6 +2476,8 @@ We have
 The entries of the second sum are in $\fa S_{\fa}$, so in $S_{\fa}/\fa S_{\fa}$ we can write $J^T(f_1,\dots,f_t) = [r_{i,j}] J^T(g_1,\dots,g_h)$. But then the vanishing of the $h+1$ minors is clear.
 \end{proof}
 
+
+\begin{comment}
 \begin{lem} Let $(S,\fn)$ be a regular local ring, and $I\subseteq S$. The following are equivalent:
 \begin{enumerate}
 \item $S/I$ is regular
@@ -2523,10 +2525,15 @@ By the earlier lemma, the rank of the Jacobian matrix for $I$ in $\kappa(\fp)$ i
 \begin{ex}
 \begin{enumerate}
 \item Let $K=\C$ and $R=K[x,y,z]/(x^2-x,xyz)$. Then the height of the ideal $I$ is $1$, since $x$ is a minimal prime, but $I_1$ of the Jacobian contains $2x-1$, which generates the unit ideal in the quotient. But, localizing at $(x,y,z)$ we get $K[x,y,z]_{(x,y,z)}/(xyz)$, which is not regular.
-\item Let $K=\F(t)$ and $R=K[x]/(x^p-t)$. Then $R$ is regular, but the Jacobian criterion would say the singular locus is all of $\Spec(R)$.
 \item Let $K=\F_p$ and $R=K[x]/(x^p)$. Then $\Omega_{R|K}$ is free of rank $1$, which is not $1-1=0$, and $R$ is not regular.
 \end{enumerate}
 \end{ex}
+
+\begin{cor} Let $K$ be a perfect field and $R=K[x_1,\dots,x_n]/I$. Let $\fp_1,\dots,\fp_t$ be the minimal primes of $R$, with heights $h_1,\dots,h_t$. Then 
+\[ \mathrm{Sing}(R) = \bigcup_{i<j} V( \fp_i + \fp_j) \cup \bigcup_{k} V(I_{h_k}(J^T(\text{gens of} \ \fp_k)))= V( \prod_{i<j} ( \fp_i + \fp_j) \cdot \prod_{k}I_{h_k}(J^T(\text{gens of} \ \fp_k)) ). \]
+In particular, the singular locus is closed.
+\end{cor}
+
 
 It turns out that free of any rank implies free of the correct rank and hence regular under additional hypotheses.
 
@@ -2553,7 +2560,15 @@ we get $t f^{t-1} df =0$ in $\Omega_{R_{\fp}|K}$, so $f^{t-1} df =0$. Since $\Om
 
 \subsection{Jacobian criteria over arbitrary fields}
 
+\begin{ex}
+ Let $K=\F(t)$,$R_1=K[x]/(x^p-t)$, and $R_2=K[x]/(x^p)$. For both rings, the Jacobian ideal would say the singular locus is $V(0)$. The first is regular but the second is not.
+However, if we can differentiate by $t$, then the $1\times 1$ minors of the Jacobian matrix give the expected result.
+\end{ex}
+
+
 Let $K$ be a field and $R=K[x_1,\dots,x_n]$. Universal differential.
+
+
 
 \begin{thm} Let $K$ be a field and $R=K[x_1,\dots,x_n]/I$. Let $L\subseteq K$ be a perfect field. Then, for $\fp\in \Spec(R)$, the following are equivalent:
 \begin{itemize}
