@@ -2477,8 +2477,10 @@ The entries of the second sum are in $\fa S_{\fa}$, so in $S_{\fa}/\fa S_{\fa}$ 
 \end{proof}
 
 
-\begin{comment}
-\begin{lem} Let $(S,\fn)$ be a regular local ring, and $I\subseteq S$. The following are equivalent:
+\Apr{27}
+
+\begin{lem} Let $(S,\fn)$ be a regular local ring, and $I\subseteq S$.
+The following are equivalent:
 \begin{enumerate}
 \item $S/I$ is regular
 \item The map $\frac{I}{\fn I} \xra{\eta} \frac{\fn}{\fn^2}$ is injective.
@@ -2513,21 +2515,28 @@ For the last equivalence, recall that $\Omega_{R_\fp|K}$ is the cokernel of the 
 Recall that the height of $I$ equals $\min\{ \htt \ \fp \ | \ \fp \supseteq I \ \text{minimal prime}\}$. If $I\subseteq \fq$, then the height of $I S_\fq$ equals $\min\{ \htt \ \fp \ | \ \fp \supseteq I \ \text{minimal prime with } \fp \subseteq \fq\}$.
 
 Given a primary decomposition $I= Q_1 \cap \cdots Q_t$ with $Q_1, \dots, Q_s \subseteq \fq$ and $Q_{s+1} ,\dots ,Q_t \not \subseteq \fq$, we have $I S_\fq \cap S = Q_1 \cap \cdots \cap Q_s$. Set $\widetilde{R}^{\fp} = S/ (I S_\fq \cap S)$; then $\widetilde{R}^{\fp}$ is a finitely generated $K$-algebra with the same localization at $\fp$ and consisting only of the components contained in $\fp$. In particular, the minimal primes of $R_\fp$ are in bijection with those of $\widetilde{R}^{\fp}$. Then the number $n-\htt I S_\fq$ equals the dimension of $\widetilde{R}^{\fp}$. Thus, $R_\fp$ is regular if and only if $\Omega_{R_\fp|K}$ is free of rank $\dim(\widetilde{R}^{\fp})$.
+
+For example, take $S=K[x,y,z]$, $I=(xy,xz)$, and $R=S/I$. We have $V(I) = V(x) \cup V(y,z)$ is the union of a plane and a line. Then $\htt(I)=1$ due to the minimal prime $(x)$. However, for $\fm=(x-1,y,z)$, we have $\htt(I S_\fm) = 2$, since $(x)$ blows up and $(y,z)$ is the unique minimal prime over $I$ in the localization. This maximal ideal $\fm$ corresponds to a point in the line that is not on the plane. We can realize $R_\fm \cong (S/(y,z))_\fm$; in our notation, $\widetilde{R}^{\fm} = S/(y,z)$.
 \end{rem}
 
-\begin{cor} Let $K$ be a perfect field and $R=K[x_1,\dots,x_n]/I$. Suppose that the height of each minimal prime of $I$ is $h$. Then, the singular locus of $R$ is the ideal of $h\times h$ minors of the column Jacobian matrix of~$f$.
+For a ring $R$, we define the \emph{singular locus}\index{singular locus} of $R$ to be
+\[ \mathrm{Sing}(R) = \{ \fp\in \Spec(R) \ | \ R_{\fp} \ \text{is not regular}\} .\]
+
+\begin{cor} Let $K$ be a perfect field and $R=K[x_1,\dots,x_n]/I$. Suppose that the height of each minimal prime of $I$ is $h$. Let $I=(f_1,\dots,f_t)$. Then, 
+\[ \mathrm{Sing}(R) = V( I_h( J^T(f_1,\dots,f_t))).\]
 \end{cor}
 \begin{proof}
 By hypothesis, the height of $I_\fq$ equals $h$ for any $\fq \supseteq I$ in $S$.
 By the earlier lemma, the rank of the Jacobian matrix for $I$ in $\kappa(\fp)$ is at most $h$ (since this is the case modulo a smaller prime. Thus, the rank of the Jacobian matrix for $I$ in $\kappa(\fp)$ equals $h$ if and only if the localization is regular. 
 \end{proof}
 
-\begin{ex}
-\begin{enumerate}
-\item Let $K=\C$ and $R=K[x,y,z]/(x^2-x,xyz)$. Then the height of the ideal $I$ is $1$, since $x$ is a minimal prime, but $I_1$ of the Jacobian contains $2x-1$, which generates the unit ideal in the quotient. But, localizing at $(x,y,z)$ we get $K[x,y,z]_{(x,y,z)}/(xyz)$, which is not regular.
-\item Let $K=\F_p$ and $R=K[x]/(x^p)$. Then $\Omega_{R|K}$ is free of rank $1$, which is not $1-1=0$, and $R$ is not regular.
-\end{enumerate}
+\begin{ex} 
+The hypothesis on equal heights is necessary, though we need a slightly more interesting example than the one we considered above. Let $K=\C$ and $R=K[x,y,z]/(x^2-x,xyz)$. Then the height of the ideal $I=(x^2-x,xyz)$ is $1$, since $x$ is a minimal prime, but $I_1$ of the Jacobian contains $2x-1$, which generates the unit ideal in the quotient. But, localizing at $(x-1,y,z)$ we get $K[x,y,z]_{(x-1,y,z)}/(x-1,yz)$, which is not regular. 
+
+Geometrically, $R$ is the coordinate ring of the disjoint union of the plane $x=0$ and the crossing pair of lines $x=1, y=0$ and $x=1,z=0$. The plane tells us to take $1\times 1$ minors, but the singularity is taking place in a component of codimension 2.
 \end{ex}
+
+\begin{comment}
 
 \begin{cor} Let $K$ be a perfect field and $R=K[x_1,\dots,x_n]/I$. Let $\fp_1,\dots,\fp_t$ be the minimal primes of $R$, with heights $h_1,\dots,h_t$. Then 
 \[ \mathrm{Sing}(R) = \bigcup_{i<j} V( \fp_i + \fp_j) \cup \bigcup_{k} V(I_{h_k}(J^T(\text{gens of} \ \fp_k)))= V( \prod_{i<j} ( \fp_i + \fp_j) \cdot \prod_{k}I_{h_k}(J^T(\text{gens of} \ \fp_k)) ). \]
@@ -2566,23 +2575,53 @@ However, if we can differentiate by $t$, then the $1\times 1$ minors of the Jaco
 \end{ex}
 
 
-Let $K$ be a field and $R=K[x_1,\dots,x_n]$. Universal differential.
+Let $K$ be a field and $R=K[x_1,\dots,x_n]$. Let $K_0\subseteq K$ be a subfield, so we have inclusions $K_0 \xra{i} K \xra{j} R$. Recall that $R$ is smooth over $K$, so from the Jacobi-Zariski sequence,
+\[ 0 \to R \otimes_{K} \Omega_{K|K_0} \xra{R\otimes d_{j|K_0}} \Omega_{R|K_0} \xra{d_{R|i}} \Omega_{R|K} \to 0\]
+is exact, and split-exact by projectivity of the right. We can use this to compute the universal derivation of $R$ over $K_0$.
+ Let $T= \{k_i\}$ be a transcendence basis for $K/K_0$ if characteristic 0 or a $p$-basis for $K/K_0$ if characteristic $p$. Then we can take $\Omega_{R|K_0}$ to be free on the basis $dx_1,\dots,dx_n, \{d k_j\}$.
+ 
+  
+ For $k\in K$, we can compute the universal derivation of $k$ by: in characteristic zero, taking derivatives with respect to the transcendence basis on the purely transcendental extension $K_0\{k_j\}$ and extending uniquely by separability or in characteristic $p$, taking the derivatives with respect to a $p$-basis as discussed earlier. These are the dual basis elements to $dk_j$. Let's write $\frac{d}{dk_j}$ for these derivations on $K$. Then each $\frac{d}{dk_j}$ extends to a $K_0$-linear derivation on $R$ by acting on each coefficient of $f$ considered as a polynomial. 
+ 
+ \begin{prop} Let $R=K[x_1,\dots,x_n]$ and $K_0\subseteq K$ be a field. Let $\{ k_j\}$ be a transcendence basis or $p$-basis of $K/K_0$, and $\{\frac{d}{dk_j}\}$ be the extensions of a dual basis to $R$ by acting on coefficients. Then
+ \[ \xymatrix@R=1em{ R \ar[r] & \bigoplus_i R dx_i \oplus \bigoplus_j R dk_j\\
+  d(r) \ar@{|->}[r] & \sum_i \frac{dr}{dx_i} dx_i + \sum_j \frac{dr}{dk_j} dk_j}\]
+ is a universal derivation.
+ \end{prop}
+ \begin{proof} Let's just show the universal property. Given a $K_0$-linear derivation from $\partial: R\to M$,  since $\Omega$ is free, setting $\alpha(dx_i) = \partial(x_i)$ and $\alpha(dk_j) = \partial(k_j)$ gives a map making the diagram commute. For uniqueness, it suffices to show  any $K_0$-linear derivation is uniquely determined by its values on $x_i$ and $k_j$; i.e., that a $K_0$-linear derivation that vanishes on $x_i$ and $k_j$ is the zero derivation. suppose $\partial(x_i)=\partial(k_j)=0$ for all $i,j$. Consider $\partial|_{K}$. Since $\partial(k_j)=0$ for all $j$ and $\Omega_{K|K_0}$ is generated by $dk_j$, we must have $\partial|_K=0$, so $\partial$ is $K$-linear. But then the $x_i$'s generate $R$ as a $K$-algebra, so $\partial=0$, as desired.
+ \end{proof}
+ 
+Given $R=K[x_1,\dots,x_n]$, $K_0\subseteq K$ a field, and $\{k_j\}$ elements forming a tr or p basis, and a sequence of elements $f_1,\dots,f_t\in R$, we define the \emph{extended (column) Jacobian}\index{extended Jacobian} to be the matrix
+\[ \begin{bmatrix} \frac{df_1}{x_1} & \cdots &  \frac{df_t}{x_1} \\ \vdots & \vdots &  \vdots \\ \frac{df_1}{x_n} & \cdots &  \frac{df_t}{x_n} \\ \frac{df_1}{dk_1} & \cdots &  \frac{df_t}{dk_1} \\ \vdots & \vdots &  \vdots\end{bmatrix}.\]
+We allow the possibility of an infinitely tall matrix in the case of an infinite transcendence/p-basis.
+
+We record the discussion above as a lemma.
+
+\begin{lem} Given $R=K[x_1,\dots,x_n]$, $K_0\subseteq K$ a field, and $\{k_j\}$ elements forming a tr or p basis, and a sequence of elements $f_1,\dots,f_t\in R$, $i$th column of the extended Jacobian matrix is the vector of coordinates of $df_i$ in $\Omega_{R|K_0}$ in the basis $dx_1,\dots,dx_n, \{dk_i\}$.
+\end{lem}
 
 
-
-\begin{thm} Let $K$ be a field and $R=K[x_1,\dots,x_n]/I$. Let $L\subseteq K$ be a perfect field. Then, for $\fp\in \Spec(R)$, the following are equivalent:
+\begin{thm} Let $K$ be a field and $R=K[x_1,\dots,x_n]/I$. Let $K_0\subseteq K$ be a perfect field. Then, for $\fp\in \Spec(R)$, the following are equivalent:
 \begin{itemize}
 \item $R_\fp$ is regular
-\item Extended column jacobian is injective in $\kappa(\fp)$.
-\item Rank of extended column jacobian is injective is height of $I S_{\fq}$.
+\item The rank of extended column Jacobian for $I$ over $\kappa(\fp)$ is the height of $I S_{\fq}$.
 \end{itemize}
 \end{thm}
+\begin{proof}
+This is entirely analogous to that in the perfect case, noting that the map $d$ is injective.
+\end{proof}
 
-\begin{thm} Let $K$ be a field and $R=K[x_1,\dots,x_n]/I$. Suppose that the height of each minimal prime of $I$ is $h$. Let $L\subseteq K$ be a perfect field. Then, the singular locus of $R$ is the ideal of $h\times h$ minors of the extended column jacobian matrix of $f$.
+return to example
+
+\begin{thm} Let $K$ be a field and $R=K[x_1,\dots,x_n]/I$. Suppose that the height of each minimal prime of $I$ is $h$. Let $K_0\subseteq K$ be a perfect field. Then, the singular locus of $R$ is the ideal of $h\times h$ minors of an extended column Jacobian matrix on a generating set for $I$.
 \end{thm}
 
-\begin{thm} Let $R$ be essentially of finite type over a field $K$. Then the singular locus of $R$ is closed.
-\end{thm}
+\begin{cor} Let $R$ be essentially of finite type over a field $K$. Then the singular locus of $R$ is closed.
+ Let $K$ be a perfect field and $R=K[x_1,\dots,x_n]/I$. Let $\fp_1,\dots,\fp_t$ be the minimal primes of $R$, with heights $h_1,\dots,h_t$. Then 
+\[ \mathrm{Sing}(R) = \bigcup_{i<j} V( \fp_i + \fp_j) \cup \bigcup_{k} V(I_{h_k}(\widetilde{J}^T(\text{gens of} \ \fp_k)))= V( \prod_{i<j} ( \fp_i + \fp_j) \cdot \prod_{k}I_{h_k}(\widetilde{J}^T(\text{gens of} \ \fp_k)) ), \]
+where $\widetilde{J}^T$ denotes an extended Jacobian matrix.
+In particular, the singular locus is closed.
+\end{cor}
 
 
 \begin{ex} Let $T=\C[x_1,x_2,\dots]$ be a polynomial ring in countably many variables. Let $S\subseteq T$ be the subring
