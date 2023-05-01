@@ -2536,12 +2536,16 @@ The hypothesis on equal heights is necessary, though we need a slightly more int
 Geometrically, $R$ is the coordinate ring of the disjoint union of the plane $x=0$ and the crossing pair of lines $x=1, y=0$ and $x=1,z=0$. The plane tells us to take $1\times 1$ minors, but the singularity is taking place in a component of codimension 2.
 \end{ex}
 
-%\begin{comment}
+\May{1}
 
-\begin{cor} Let $K$ be a perfect field and $R=K[x_1,\dots,x_n]/I$. Let $\fp_1,\dots,\fp_t$ be the minimal primes of $R$, with heights $h_1,\dots,h_t$. Then 
-\[ \mathrm{Sing}(R) = \bigcup_{i<j} V( \fp_i + \fp_j) \cup \bigcup_{k} V(I_{h_k}(J^T(\text{gens of} \ \fp_k)))= V( \prod_{i<j} ( \fp_i + \fp_j) \cdot \prod_{k}I_{h_k}(J^T(\text{gens of} \ \fp_k)) ). \]
+\begin{cor} Let $K$ be a perfect field and $R=K[x_1,\dots,x_n]/I$. Let $I=\fp_1,\dots,\fp_t$ be the minimal primes of $R$, with heights $h_1,\dots,h_t$ and preimages $\fq_1,\dots,\fq_t$. Let $I= Q_1 \cap \cdots \cap Q_t \cap Q_{t+1} \cap \cdots \cap Q_s$ be a minimal primary decomposition, with $Q_i$ corresponding to the preimage of $\fp_i$ for $i=1,\dots,t$ and the rest embedded. Then 
+\[ \mathrm{Sing}(R) = \bigcup_{i<j} V( \fp_i + \fp_j) \cup \bigcup_{k=1}^t V(\fp_k + I_{h_k}(J^T(\text{gens of} \ Q_k)))= V( \prod_{i<j} ( \fp_i + \fp_j) \cdot \prod_{k=1}^t (\fp_k + I_{h_k}(J^T(\text{gens of} \ Q_k))) ). \]
 In particular, the singular locus is closed.
 \end{cor}
+\begin{proof} Let $\fp\in \Spec(R)$ with preimage $\fq\in \Spec(S)$.
+
+Suppose that $R_{\fp}$ is regular. Then $R_\fp \cong (S/I)_{\fq}$ is $S_{\fq}$ mod the primary components contained in $\fq$; since this is a domain, this intersection must be just a single prime, so $\fp$ contains only one of the $\fp_i$'s and $R_\fp \cong (S/Q_i)_{\fq}$ for some $i$. Then $\fp$ must not contain the $h_i$ minors of the Jacobian of a generating set of $Q_i$, by the case where all components have the same height. This shows the containment ($\supseteq$). Conversely, if $\fp$ is not in the right hand side, then $\fp$ must contain only one minimal prime $\fp_i$, and it cannot contain the $h_i$ minors of the corresponding Jacobian, so, using the same isomorphism, $R_{\fp}$ is regular.
+\end{proof}
 
 
 It turns out that free of any rank implies free of the correct rank and hence regular under additional hypotheses.
@@ -2554,10 +2558,12 @@ It turns out that free of any rank implies free of the correct rank and hence re
 
 \begin{thm} Let $K$ be a perfect field and $R=K[x_1,\dots,x_n]/I$. Suppose that either $R$ has characteristic zero or is reduced. Then for $\fp\in \Spec(R)$, $R_{\fp}$ is regular if and only if $\Omega_{R_{\fp}|K}$ is free.
 \end{thm}
-\begin{proof} By the previous theorem, $R_{\fp}$ is regular if and only if $\Omega_{R_{\fp}|K}$ is free of rank $n-\htt I S_\fq$, where $\fq$ is the preimage of $\fp$ in the polynomial ring. Removing the minimal components of $R$ that are not contained in $\fp$ (i.e., replacing $R$ by  $\dim(\widetilde{R}^\fp)$), we can assume that $\dim(R)=n-\htt I S_\fq$. Thus, we just need to show that if $\Omega_{R_{\fp}|K}$ is free, then its rank is $\dim(R)$.
-Let $\fa$ be a minimal prime of $R$ with $\dim(R) = \dim(R/\fa)$. From the second fundamental sequence, we have
+\begin{proof} By the previous theorem, $R_{\fp}$ is regular if and only if $\Omega_{R_{\fp}|K}$ is free of rank $n-\htt I S_\fq$, where $\fq$ is the preimage of $\fp$ in the polynomial ring. Removing the minimal components of $R$ that are not contained in $\fp$ (i.e., replacing $R$ by  $\dim(\widetilde{R}^\fp)$), we can assume that $\dim(R)=n-\htt I S_\fq$ and that every minimal prime of $R$ is contained in $\fp$. Thus, we just need to show that if $\Omega_{R_{\fp}|K}$ is free, then its rank is $\dim(R)$.
+Let $\fa$ be a minimal prime of $R$ with $\dim(R) = \dim(R/\fa)$; by the reduction above, this is contained in $\fp$. From the second fundamental sequence, we have
 \[ \frac{\fa R_{\fa}}{\fa^2 R_{\fa}} \xra{d} \kappa(\fa) \otimes_{R_\fp} \Omega_{R_\fp|K} \to \Omega_{\kappa(\fa)|K} \to 0.\]
-Since $\kappa(\fa)$ is the fraction field of $R/\fa$, which is a finitely generated domain over the field $K$, we have $\dim(R/\fa) = \mathrm{trdeg}_K(\kappa(\fa))$; by the lemma, $p\deg_K(\kappa(\fa))=\dim(R/\fa)=\dim(R)$ if $K$ has positive characteristic. Either way, $\Omega_{\kappa(\fa)}$ has rank $\dim(R)$. Thus, it suffices to show that the map $d$ in the sequence above is the zero map.
+
+We claim that $\Omega_{\kappa(\fa)|K}$ is a vector space of rank $\dim(R)$.
+In characteristic zero, this dimension is the size of a transcendence basis for $\kappa(\fa)$ over $K$, which is $\dim(R/\fa)=\dim(R)$ by Noether normalization. In positive characteristic, by the lemma, the rank is given by $p\deg_K(\kappa(\fa))=\mathrm{trdeg}_K(\kappa(\fa))$. Thus, it suffices to show that the map $d$ in the sequence above is the zero map.
 
 If $R$ is reduced, then $\fa R_\fa =0$ since this the unique minimal prime of $R_\fa$, hence its nilradical, so the map $d$ is zero.
 
@@ -2570,18 +2576,15 @@ we get $t f^{t-1} df =0$ in $\Omega_{R_{\fp}|K}$, so $f^{t-1} df =0$. Since $\Om
 \subsection{Jacobian criteria over arbitrary fields}
 
 \begin{ex}
- Let $K=\F(t)$,$R_1=K[x]/(x^p-t)$, and $R_2=K[x]/(x^p)$. For both rings, the Jacobian ideal would say the singular locus is $V(0)$. The first is regular but the second is not.
+ Let $K=\F(t)$, $R_1=K[x]/(x^p-t)$, and $R_2=K[x]/(x^p)$. For both rings, the Jacobian ideal would say the singular locus is $V(0)$. The first is regular but the second is not.
 However, if we can differentiate by $t$, then the $1\times 1$ minors of the Jacobian matrix give the expected result.
 \end{ex}
 
 
-Let $K$ be a field and $R=K[x_1,\dots,x_n]$. Let $K_0\subseteq K$ be a subfield, so we have inclusions $K_0 \xra{i} K \xra{j} R$. Recall that $R$ is smooth over $K$, so from the Jacobi-Zariski sequence,
-\[ 0 \to R \otimes_{K} \Omega_{K|K_0} \xra{R\otimes d_{j|K_0}} \Omega_{R|K_0} \xra{d_{R|i}} \Omega_{R|K} \to 0\]
-is exact, and split-exact by projectivity of the right. We can use this to compute the universal derivation of $R$ over $K_0$.
- Let $T= \{k_i\}$ be a transcendence basis for $K/K_0$ if characteristic 0 or a $p$-basis for $K/K_0$ if characteristic $p$. Then we can take $\Omega_{R|K_0}$ to be free on the basis $dx_1,\dots,dx_n, \{d k_j\}$.
+Let $K$ be a field and $R=K[x_1,\dots,x_n]$. Let $K_0\subseteq K$ be a subfield. Let $T= \{k_i\}$ be a transcendence basis for $K/K_0$ if characteristic 0 or a $p$-basis for $K/K_0$ if characteristic $p$. Then we can take $\Omega_{R|K_0}$ to be free on the basis $dx_1,\dots,dx_n, \{d k_j\}$.
  
-  
- For $k\in K$, we can compute the universal derivation of $k$ by: in characteristic zero, taking derivatives with respect to the transcendence basis on the purely transcendental extension $K_0\{k_j\}$ and extending uniquely by separability or in characteristic $p$, taking the derivatives with respect to a $p$-basis as discussed earlier. These are the dual basis elements to $dk_j$. Let's write $\frac{d}{dk_j}$ for these derivations on $K$. Then each $\frac{d}{dk_j}$ extends to a $K_0$-linear derivation on $R$ by acting on each coefficient of $f$ considered as a polynomial. 
+Recall the following derivations of $K$ over $K_0$.
+In characteristic zero, we obtain derivations by taking derivatives with respect to the transcendence basis on the purely transcendental extension $K_0\{k_j\}$ and extending uniquely by separability. In characteristic $p$, we have derivations given by taking the derivatives with respect to a $p$-basis as discussed earlier. In either case, these are the dual basis elements to $dk_j$. Let's write $\frac{d}{dk_j}$ for these derivations on $K$. Then each $\frac{d}{dk_j}$ extends to a $K_0$-linear derivation on $R$ by acting on each coefficient of $f$ considered as a polynomial; by abuse of notation, we will use the same name for these extensions. 
  
  \begin{prop} Let $R=K[x_1,\dots,x_n]$ and $K_0\subseteq K$ be a field. Let $\{ k_j\}$ be a transcendence basis or $p$-basis of $K/K_0$, and $\{\frac{d}{dk_j}\}$ be the extensions of a dual basis to $R$ by acting on coefficients. Then
  \[ \xymatrix@R=1em{ R \ar[r] & \bigoplus_i R dx_i \oplus \bigoplus_j R dk_j\\
@@ -2611,17 +2614,21 @@ We record the discussion above as a lemma.
 This is entirely analogous to that in the perfect case, noting that the map $d$ is injective.
 \end{proof}
 
-return to example
+\begin{ex} Let $K=\F_p(t)$, $S=K[x]$, and $R=S/(x^p-t)$. $K$ contains the perfect field $K_0$, and there is a derivation of $K$ over $K_0$ given by $\frac{d}{dt}$. Then the extended Jacobian matrix for $R$ is
+\[ \begin{bmatrix} 0 \\ -1\end{bmatrix}\]
+aligning with the conclusion that $R$ is regular.
+\end{ex}
 
 \begin{thm} Let $K$ be a field and $R=K[x_1,\dots,x_n]/I$. Suppose that the height of each minimal prime of $I$ is $h$. Let $K_0\subseteq K$ be a perfect field. Then, the singular locus of $R$ is the ideal of $h\times h$ minors of an extended column Jacobian matrix on a generating set for $I$.
 \end{thm}
+\begin{proof} The proof follows the same lines as in the case $K_0=K$: since $K_0$ is perfect, the universal differential over $K_0$ is injective, so $R_{\fp}$ is regular if and only if the rank of the extended Jacobian at $\fp$ equals the height of $IS_{\fq}$.
+\end{proof}
 
 \begin{cor} Let $R$ be essentially of finite type over a field $K$. Then the singular locus of $R$ is closed.
- Let $K$ be a perfect field and $R=K[x_1,\dots,x_n]/I$. Let $\fp_1,\dots,\fp_t$ be the minimal primes of $R$, with heights $h_1,\dots,h_t$. Then 
-\[ \mathrm{Sing}(R) = \bigcup_{i<j} V( \fp_i + \fp_j) \cup \bigcup_{k} V(I_{h_k}(\widetilde{J}^T(\text{gens of} \ \fp_k)))= V( \prod_{i<j} ( \fp_i + \fp_j) \cdot \prod_{k}I_{h_k}(\widetilde{J}^T(\text{gens of} \ \fp_k)) ), \]
-where $\widetilde{J}^T$ denotes an extended Jacobian matrix.
-In particular, the singular locus is closed.
 \end{cor}
+\begin{proof}
+Follows as in the perfect case.
+\end{proof}
 
 \subsection{A Noetherian ring with nonclosed singular locus}
 
@@ -2648,7 +2655,7 @@ The next lemma says that the conclusion of prime avoidance holds for the collect
 
 We claim for every $g\in I$, $v(f) \cap v(g)$ is nonempty. Suppose otherwise. Let $k$ be larger than the index of any variable in $f$ or $g$, and $t$ be an integer greater than the degree of $f$. Then $f$ and $x_k^t g$ have no monomials in common (since the degrees of all the monomials in $x_k^t g$ are at least $t$ and the degree of the monomials in $f$ are all less than $t$) so none can cancel from each other. In particular, if $x_\ell$ divides $f+x_k^t g$ in $T$, then $x_\ell$  divides both $f$ and $x_k^t g$ in $T$. But this is impossible by the hypothesis. Thus $f+x_k^t g\notin \fp_\ell$ for all $\ell$, contradicting the hypothesis.
 
-So, for every $g\in I$, $v(f) \cap v(g)$ is nonempty. That means that every $g\in I$ is in some $\fp_i$ for $iin v(f)$, so $I \subseteq \bigcup_{i\in v(f)} \fp_i$. By the usual version of prime avoidance, $I \subseteq \fp_i$ for some $i$.
+So, for every $g\in I$, $v(f) \cap v(g)$ is nonempty. That means that every $g\in I$ is in some $\fp_i$ for $i  \in v(f)$, so $I \subseteq \bigcup_{i\in v(f)} \fp_i$, which is a finite union of primes. By the usual version of prime avoidance, $I \subseteq \fp_i$ for some~$i$.
 \end{proof}
 
 It follows that the maximal ideals of $R$ are $\fp_i R$. Indeed, the prime ideals of $R$ correspond to ideals $\fq$ of $S$ that do not intersect $W$, so are contained in $\bigcup_i \fp_i$, and thus by the lemma, are contained in some $\fp_i$.
@@ -2661,53 +2668,12 @@ We need to show that there are no primes in between $(0)$ and $\fp_i$ in $S$. To
 Now, $R_{\fp_i R}$ has maximal ideal minimally generated by $x_i^2, x_i^3$, but is one-dimensional, so is not regular. But $R_{(0)}$ is a field, so is regular. Thus, the singular locus consists of the set of the maximal ideals. This set has finitely minimal elements, so it is not a closed set of $\Spec(R)$ (which would have finitely many minimal elements by Noetherianity). Thus, the singular locus is not closed.
 
 
-\begin{comment}
+\section{Characterization of unramified, \'etale, and smooth morphisms}
 
-Examples.
-
-
-Grothendieck characterization.
-
-Stable under base change.
-
-
-
-
-
-Transcendence and $p$-bases.
-
-Complete local rings and coeff fields.
-
-Regular rings and Jacobian criteria.
-
-Geometric regularity and smooth over fields.
-
-Essentially vs near?
-
-Characterization of smooth maps: factors through completion for flatness, base change in general.
-
-Characterization of unramified maps.
-
-Characterizations via completions.
-
-Vasconcelos theorem on $I/I^2$
-
-Reduced complete intersection and $\Gamma$
-
-Ideals stable under derivations.
-
-\end{comment}
-
-
-\printindex
-
-
-\end{document}
-
-While we cannot relate these properties perfectly to lifting derivations, we can relate them to lifting certain ring maps.
+\subsection{Grothendieck's definition}
 
 \begin{thm}
-Let $A \xra{\phi} R$ be a map of rings. Consider a diagram of solid maps of the form
+Let $A \xra{\phi} R$ be a map of rings. Consider a diagrams of solid maps of the form
 \[ \xymatrix{ R \ar[r]^{\psi} \ar@{-->}[dr] & T/J \\ A \ar[r] \ar[u]^{\phi} & T\ar[u]}\]
 of maps of $A$-algebras with $J\subseteq T$ is an ideal with $J^2=0$. Then the map $A\to R$ is
 \begin{enumerate}
@@ -2756,11 +2722,54 @@ In the Theorem above, we can replace $I^2=0$ with $I$ is nilpotent (there exists
 \end{rem}
 
 
+\begin{cor} A composition of two formally smooth maps is smooth. Likewise for the other properties.
+\end{cor}
 
 
-By the Jacobian criterion for varieties, the locus of nonsingular points in a variety is closed (i.e., is a subvariety cut out by polynomial equations). One might ask whether for a ring $R$, the \emph{singular locus}\index{singular locus}
-\[ \mathrm{Sing}(R) = \{ \fp \in \Spec(R) \ | \ R_{\fp} \ \text{is regular} \}\]
-is closed (i.e., there is some ideal $I\subseteq R$ such that $R_\fp$ is regular if and only if $\fp \supseteq I$). This is false, even for Noetherian rings!
+\begin{comment}
+
+Examples.
+
+
+Grothendieck characterization.
+
+Stable under base change.
+
+
+
+
+
+Transcendence and $p$-bases.
+
+Complete local rings and coeff fields.
+
+Regular rings and Jacobian criteria.
+
+Geometric regularity and smooth over fields.
+
+Essentially vs near?
+
+Characterization of smooth maps: factors through completion for flatness, base change in general.
+
+Characterization of unramified maps.
+
+Characterizations via completions.
+
+Vasconcelos theorem on $I/I^2$
+
+Reduced complete intersection and $\Gamma$
+
+Ideals stable under derivations.
+
+\end{comment}
+
+
+\printindex
+
+
+\end{document}
+
+While we cannot relate these properties perfectly to lifting derivations, we can relate them to lifting certain ring maps.
 
 
 
