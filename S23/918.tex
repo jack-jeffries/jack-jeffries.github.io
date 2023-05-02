@@ -2535,16 +2535,23 @@ The hypothesis on equal heights is necessary, though we need a slightly more int
 
 Geometrically, $R$ is the coordinate ring of the disjoint union of the plane $x=0$ and the crossing pair of lines $x=1, y=0$ and $x=1,z=0$. The plane tells us to take $1\times 1$ minors, but the singularity is taking place in a component of codimension 2.
 \end{ex}
+\begin{comment}
+\newpage
 
 \May{1}
 
-\begin{cor} Let $K$ be a perfect field and $R=K[x_1,\dots,x_n]/I$. Let $I=\fp_1,\dots,\fp_t$ be the minimal primes of $R$, with heights $h_1,\dots,h_t$ and preimages $\fq_1,\dots,\fq_t$. Let $I= Q_1 \cap \cdots \cap Q_t \cap Q_{t+1} \cap \cdots \cap Q_s$ be a minimal primary decomposition, with $Q_i$ corresponding to the preimage of $\fp_i$ for $i=1,\dots,t$ and the rest embedded. Then 
-\[ \mathrm{Sing}(R) = \bigcup_{i<j} V( \fp_i + \fp_j) \cup \bigcup_{k=1}^t V(\fp_k + I_{h_k}(J^T(\text{gens of} \ Q_k)))= V( \prod_{i<j} ( \fp_i + \fp_j) \cdot \prod_{k=1}^t (\fp_k + I_{h_k}(J^T(\text{gens of} \ Q_k))) ). \]
-In particular, the singular locus is closed.
+\begin{cor} Let $K$ be a perfect field and $R$ be essentially algebra finite over $K$. Then the singular locus of $R$ is a closed subset of $\Spec(R)$.
 \end{cor}
-\begin{proof} Let $\fp\in \Spec(R)$ with preimage $\fq\in \Spec(S)$.
+\begin{proof} First, we reduce to the case $R$ is algebra-finite over $K$, since $\Spec(W^{-1}R)$ can be identified with a subspace of $\Spec(R)$, and the prime localizations of $W^{-1}R$ are isomorphic to the corresponding prime localizations of $R$.
 
-Suppose that $R_{\fp}$ is regular. Then $R_\fp \cong (S/I)_{\fq}$ is $S_{\fq}$ mod the primary components contained in $\fq$; since this is a domain, this intersection must be just a single prime, so $\fp$ contains only one of the $\fp_i$'s and $R_\fp \cong (S/Q_i)_{\fq}$ for some $i$. Then $\fp$ must not contain the $h_i$ minors of the Jacobian of a generating set of $Q_i$, by the case where all components have the same height. This shows the containment ($\supseteq$). Conversely, if $\fp$ is not in the right hand side, then $\fp$ must contain only one minimal prime $\fp_i$, and it cannot contain the $h_i$ minors of the corresponding Jacobian, so, using the same isomorphism, $R_{\fp}$ is regular.
+Write $R=K[x_1,\dots,x_n]/I$. Take a minimal primary decomposition $I = Q_1 \cap \cdots \cap Q_t \cap Q'_{1} \cap \cdots \cap Q'_s$ with $Q_i$ minimal components and the other embedded. We claim that 
+
+\[ \begin{aligned} \mathrm{Sing}(R) &= \bigcup_{i<j} V( Q_i R + Q_j R) \cup \bigcup_{k=1}^t V(Q_k R + I_{\htt(Q_k)}(J^T(\text{gens of} \ Q_k)R))\\&= V( \prod_{i<j} (Q_i R +Q_jR) \cdot \prod_{k=1}^t (Q_kR + I_{\htt(Q_k)}(J^T(\text{gens of} \ Q_k))R)) ). \end{aligned}\]
+
+For the containment ($\supseteq$), we show that $R_\fp$ regular implies that $\fp$ is not in the right hand side. 
+Suppose that $R_{\fp}$ is regular. Then $R_\fp \cong (S/I)_{\fq}$ is $S_{\fq}$ mod the primary components contained in $\fq$; since this is a domain, this intersection must be just a single prime; in particular, $\fp$ does not contain the image of $Q_i+Q_j$ for and $i<j$. Then, $R_\fp \cong (S/Q_i)_{\fq}$ for some $i$, and this is regular, so $\fp$ must not contain the $h_i$ minors of the Jacobian of a generating set of $Q_i$, by the case where all components have the same height. 
+
+ Conversely, if $\fp$ is not in the right hand side, then $\fp$ must contain only one minimal component $Q_i$, and it cannot contain the $h_i$ minors of the corresponding Jacobian, so, using the same isomorphism, $R_{\fp}$ is regular.
 \end{proof}
 
 
@@ -2563,7 +2570,7 @@ Let $\fa$ be a minimal prime of $R$ with $\dim(R) = \dim(R/\fa)$; by the reducti
 \[ \frac{\fa R_{\fa}}{\fa^2 R_{\fa}} \xra{d} \kappa(\fa) \otimes_{R_\fp} \Omega_{R_\fp|K} \to \Omega_{\kappa(\fa)|K} \to 0.\]
 
 We claim that $\Omega_{\kappa(\fa)|K}$ is a vector space of rank $\dim(R)$.
-In characteristic zero, this dimension is the size of a transcendence basis for $\kappa(\fa)$ over $K$, which is $\dim(R/\fa)=\dim(R)$ by Noether normalization. In positive characteristic, by the lemma, the rank is given by $p\deg_K(\kappa(\fa))=\mathrm{trdeg}_K(\kappa(\fa))$. Thus, it suffices to show that the map $d$ in the sequence above is the zero map.
+In characteristic zero, this dimension is the size of a transcendence basis for $\kappa(\fa)$ over $K$, which is $\dim(R/\fa)=\dim(R)$ by Noether normalization. In positive characteristic, by the lemma, the rank is given by $p\deg_K(\kappa(\fa))=\mathrm{trdeg}_K(\kappa(\fa))$ by the lemma, which is $\dim(R)$ for the same reasons as the characteristic zero case. Thus, it suffices to show that the map $d$ in the sequence above is the zero map.
 
 If $R$ is reduced, then $\fa R_\fa =0$ since this the unique minimal prime of $R_\fa$, hence its nilradical, so the map $d$ is zero.
 
@@ -2577,13 +2584,13 @@ we get $t f^{t-1} df =0$ in $\Omega_{R_{\fp}|K}$, so $f^{t-1} df =0$. Since $\Om
 
 \begin{ex}
  Let $K=\F(t)$, $R_1=K[x]/(x^p-t)$, and $R_2=K[x]/(x^p)$. For both rings, the Jacobian ideal would say the singular locus is $V(0)$. The first is regular but the second is not.
-However, if we can differentiate by $t$, then the $1\times 1$ minors of the Jacobian matrix give the expected result.
+However, if we could differentiate by $t$, then the $1\times 1$ minors of the Jacobian matrix give the expected result.
 \end{ex}
 
 
 Let $K$ be a field and $R=K[x_1,\dots,x_n]$. Let $K_0\subseteq K$ be a subfield. Let $T= \{k_i\}$ be a transcendence basis for $K/K_0$ if characteristic 0 or a $p$-basis for $K/K_0$ if characteristic $p$. Then we can take $\Omega_{R|K_0}$ to be free on the basis $dx_1,\dots,dx_n, \{d k_j\}$.
  
-Recall the following derivations of $K$ over $K_0$.
+Let's recall our earlier construction of derivations of $K$ over $K_0$.
 In characteristic zero, we obtain derivations by taking derivatives with respect to the transcendence basis on the purely transcendental extension $K_0\{k_j\}$ and extending uniquely by separability. In characteristic $p$, we have derivations given by taking the derivatives with respect to a $p$-basis as discussed earlier. In either case, these are the dual basis elements to $dk_j$. Let's write $\frac{d}{dk_j}$ for these derivations on $K$. Then each $\frac{d}{dk_j}$ extends to a $K_0$-linear derivation on $R$ by acting on each coefficient of $f$ considered as a polynomial; by abuse of notation, we will use the same name for these extensions. 
  
  \begin{prop} Let $R=K[x_1,\dots,x_n]$ and $K_0\subseteq K$ be a field. Let $\{ k_j\}$ be a transcendence basis or $p$-basis of $K/K_0$, and $\{\frac{d}{dk_j}\}$ be the extensions of a dual basis to $R$ by acting on coefficients. Then
@@ -2591,7 +2598,7 @@ In characteristic zero, we obtain derivations by taking derivatives with respect
   d(r) \ar@{|->}[r] & \sum_i \frac{dr}{dx_i} dx_i + \sum_j \frac{dr}{dk_j} dk_j}\]
  is a universal derivation.
  \end{prop}
- \begin{proof} Let's just show the universal property. Given a $K_0$-linear derivation from $\partial: R\to M$,  since $\Omega$ is free, setting $\alpha(dx_i) = \partial(x_i)$ and $\alpha(dk_j) = \partial(k_j)$ gives a map making the diagram commute. For uniqueness, it suffices to show  any $K_0$-linear derivation is uniquely determined by its values on $x_i$ and $k_j$; i.e., that a $K_0$-linear derivation that vanishes on $x_i$ and $k_j$ is the zero derivation. suppose $\partial(x_i)=\partial(k_j)=0$ for all $i,j$. Consider $\partial|_{K}$. Since $\partial(k_j)=0$ for all $j$ and $\Omega_{K|K_0}$ is generated by $dk_j$, we must have $\partial|_K=0$, so $\partial$ is $K$-linear. But then the $x_i$'s generate $R$ as a $K$-algebra, so $\partial=0$, as desired.
+ \begin{proof} Let's just show the universal property. Given a $K_0$-linear derivation from $\partial: R\to M$,  since $\Omega$ is free, setting $\alpha(dx_i) = \partial(x_i)$ and $\alpha(dk_j) = \partial(k_j)$ gives a map making the diagram commute. For uniqueness, it suffices to show  any $K_0$-linear derivation is uniquely determined by its values on $x_i$ and $k_j$; i.e., that a $K_0$-linear derivation that vanishes on $x_i$ and $k_j$ is the zero derivation. Suppose $\partial(x_i)=\partial(k_j)=0$ for all $i,j$. Consider $\partial|_{K}$. Since $\partial(k_j)=0$ for all $j$ and $\Omega_{K|K_0}$ is generated by $dk_j$, we must have $\partial|_K=0$, so $\partial$ is $K$-linear. But then the $x_i$'s generate $R$ as a $K$-algebra, so $\partial=0$, as desired.
  \end{proof}
  
 Given $R=K[x_1,\dots,x_n]$, $K_0\subseteq K$ a field, and $\{k_j\}$ elements forming a tr or p basis, and a sequence of elements $f_1,\dots,f_t\in R$, we define the \emph{extended (column) Jacobian}\index{extended Jacobian} to be the matrix
@@ -2632,6 +2639,9 @@ Follows as in the perfect case.
 
 \subsection{A Noetherian ring with nonclosed singular locus}
 
+\begin{thm} There is a Noetherian domain of dimension one whose singular locus is not closed.
+\end{thm}
+
  Let $T=\C[x_1,x_2,\dots]$ be a polynomial ring in countably many variables. Let $S\subseteq T$ be the subring
 \[ S = \C[x_1^2,x_1^3,x_2^2,x_2^3,\dots].\]
 Set $\fp_i=(x_i^2,x_i^3)$ for each $i$, and let $W= S \smallsetminus \bigcup_{i\in \N} \fp_i$.
@@ -2665,7 +2675,7 @@ From the first lemma, and the observation in the proof of the second lemma, we c
 We also claim that $R$ is one-dimensional.
 We need to show that there are no primes in between $(0)$ and $\fp_i$ in $S$. To see it, let $T'=K[x_1^2,x_2^2,\dots]$. Then $T'$ is a normal domain (even a UFD), $S$ is a domain, and $T'\to S$ is integral, so by going down, the height of $\fp_i$ equals the height of $\fp_i\cap T' = (x_1^2)$, which is $1$ (prime element in a UFD).
 
-Now, $R_{\fp_i R}$ has maximal ideal minimally generated by $x_i^2, x_i^3$, but is one-dimensional, so is not regular. But $R_{(0)}$ is a field, so is regular. Thus, the singular locus consists of the set of the maximal ideals. This set has finitely minimal elements, so it is not a closed set of $\Spec(R)$ (which would have finitely many minimal elements by Noetherianity). Thus, the singular locus is not closed.
+Now, $R_{\fp_i R}$ has maximal ideal minimally generated by $x_i^2, x_i^3$, but is one-dimensional, so is not regular. But $R_{(0)}$ is a field, so is regular. Thus, the singular locus consists of the set of the maximal ideals. This set has infinitely minimal elements, so it is not a closed set of $\Spec(R)$ (which would have finitely many minimal elements by Noetherianity). Thus, the singular locus is not closed.
 
 
 \section{Characterization of unramified, \'etale, and smooth morphisms}
