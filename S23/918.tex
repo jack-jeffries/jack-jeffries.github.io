@@ -2586,7 +2586,7 @@ we get $t f^{t-1} df =0$ in $\Omega_{R_{\fp}|K}$, so $f^{t-1} df =0$. Since $\Om
 However, if we could differentiate by $t$, then the $1\times 1$ minors of the Jacobian matrix give the expected result.
 \end{ex}
 
-\begin{comment}
+\May{4}
 
 Let $K$ be a field and $R=K[x_1,\dots,x_n]$. Let $K_0\subseteq K$ be a subfield. Let $T= \{k_i\}$ be a transcendence basis for $K/K_0$ if characteristic 0 or a $p$-basis for $K/K_0$ if characteristic $p$. 
 
@@ -2627,8 +2627,8 @@ This is entirely analogous to that in the perfect case, noting that the map $d$ 
 aligning with the conclusion that $R$ is regular.
 \end{ex}
 
-\begin{thm} Let $K$ be a field and $R=K[x_1,\dots,x_n]/I$. Suppose that the height of each minimal prime of $I$ is $h$. Let $K_0\subseteq K$ be a perfect field. Then, the singular locus of $R$ is the ideal of $h\times h$ minors of an extended column Jacobian matrix on a generating set for $I$.
-\end{thm}
+\begin{cor} Let $K$ be a field and $R=K[x_1,\dots,x_n]/I$. Suppose that the height of each minimal prime of $I$ is $h$. Let $K_0\subseteq K$ be a perfect field. Then, the singular locus of $R$ is the ideal of $h\times h$ minors of an extended column Jacobian matrix on a generating set for $I$.
+\end{cor}
 \begin{proof} The proof follows the same lines as in the case $K_0=K$: since $K_0$ is perfect, the universal differential over $K_0$ is injective, so $R_{\fp}$ is regular if and only if the rank of the extended Jacobian at $\fp$ equals the height of $IS_{\fq}$.
 \end{proof}
 
@@ -2729,15 +2729,92 @@ The formally \'etale case follows from the other two.
 
 
 \begin{rem}
-In the Theorem above, we can replace $I^2=0$ with $I$ is nilpotent (there exists $n$ such that $I^n=0$). To see it, write $T\to T/I^{n-1} \to T/I^{n-2} \to \cdots \to T/I^2 \to T/I$ and note that in each step one kills a square zero ideal in the source.
+In the Theorem above, we can replace $I^2=0$ with $I$ is nilpotent (there exists $n$ such that $I^n=0$). To see it, write $T\to T/I^{n-1} \to T/I^{n-2} \to \cdots \to T/I^2 \to T/I$ and note that in each step one kills a square zero ideal in the source. Then consider the following diagram:
+\[ \xymatrix{ R \ar[rrr]^{\psi} \ar@{-->}[ddddrrr]_{\psi_{n}}  \ar@{-->}[ddrrr]_{\psi_{3}}   \ar@{-->}[drrr]^{\psi_2}&&& T/I \\ 
+&&& T/I^{2}\ar[u]_{\pi_2} \\
+&&&\ \ T/I^{3} \ar[u]_{\pi_{3}} \\
+&&& \vdots \ar[u] \\
+A \ar[rrr] \ar[uuuu]^{\phi} &&& T\ar[u]_{\pi_n}}\]
+If $\phi$ is formally unramified, by the definition, there is at most one $\psi_2$ making the $A$, $R$, $T/I^2$, $T/I$ square commute. Given $\psi_3$, $\psi'_3$ making the $A$, $R$, $T/I^3$, $T/I$ square commute, the maps $\pi_3 \psi_3$ and $\pi_3 \psi'_3$ make the $A$, $R$, $T/I^2$, $T/I$ square commute, so both equal $\psi_2$. That is, $\psi_3$ and $\psi'_3$ make the $A$, $R$, $T/I^3$, $T/I^2$ square commute, so they are equal by the definition. Continuing like so, we see that at most one $\psi_n$ makes the diagram commute. 
+
+The argument for formal smoothness is similar, and the formally \'etale case follows from these.
 \end{rem}
 
+\begin{prop} Let $A\xra{\phi} R \xra{\psi} S$ be ring homomorphisms.
+\begin{enumerate}
+\item If $\phi$ and $\psi$ are formally unramified, then so is $\psi \phi$.
+\item  If $\phi$ and $\psi$ are formally smooth, then so is $\psi \phi$.
+\item  If $\phi$ and $\psi$ are formally \'etale, then so is $\psi \phi$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+Consider the diagram
+\[ \xymatrix{ S \ar[r]^{\zeta}  \ar@{-->}[ddr]^{\xi} & T/J \\ 
+R \ar[u]^{\psi} \ar@{-->}[dr]_{\nu}& \\
+A \ar[r] \ar[u]^{\phi} & T\ar[uu] }\]
+with $J$ nilpotent.
+For (1), by Grothendieck's definition applied to the square $A$, $R$, $T$, $T/J$, there is at most one map $\nu$ that makes the square commute. Now, given maps $\mu,\mu'$ making the square $A$, $S$, $T$, $T/J$ commute, $\mu\psi$ and $\mu'\psi$ make the square $A$, $R$, $T$, $T/J$ commute, so must equal $\nu$. Then $\mu$ and $\mu'$ make the square  $R$, $S$, $T$, $T/J$ with base $\nu$ commute, so applying Grothendieck's definition, we get that $\mu=\mu'$. 
+For (2),  by Grothendieck's definition applied to the square $A$, $R$, $T$, $T/J$, there exists a map $\nu$ that makes the square commute. Then applying Grothendieck's definition to the square the square  $R$, $S$, $T$, $T/J$ with base $\nu$, there is a $\mu$ making the diagram commute.
+(3) follows from the other two.
+\end{proof}
 
-\begin{cor} A composition of two formally smooth maps is smooth. Likewise for the other properties.
-\end{cor}
+\begin{prop} Let $A\xra{\phi} R$ be a ring homomorphism, and $S$ be an $A$-algebra. Consider the map $A$-algebra map $S \xra{S\otimes \phi} S\otimes_A R$ given by extension of scalars.
+\begin{enumerate}
+\item If $\phi$ is formally unramified, then so is $S\otimes_A \phi$.
+\item If $\phi$ is formally smooth, then so is $S\otimes_A \phi$.
+\item If $\phi$ is formally \'etale, then so is $S\otimes_A \phi$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+Consider a diagram
+\[ \xymatrix{ R \ar[r]^-{\eta} \ar@{-->}[drr]^-{\nu} & S\otimes_A R \ar[r] \ar@{-->}[dr]^{\zeta} & T/J \\
+A \ar[u]^{\phi}\ar[r] & S \ar[u]^{S\otimes \phi} \ar[r] & T \ar[u]
+}\]
+with $J$ nilpotent. 
+For (1), by Grothendieck's definition applied to the square $A$, $R$, $T$, $T/J$, there is at most one map $\nu$ making the diagram commute. Recall the universal property of base change: for every $A$-algebra map $\nu$ from $R$ to an $S$-algebra $T$, there is a unique $S$-algebra homomorphism $\zeta$ from $S\otimes_A R$ to $T$ such that $\nu = \zeta \eta$. Thus, given a $\zeta$ making the square $S$, $S\otimes_R$, $T$, $T/J$ commute, $\zeta$ is an $S$-algebra homomorphism (by the bottom triangle commuting) and $\zeta \eta$ makes the big square commute, so must be $\nu$. Since $\nu$ was unique, by the universal property, $\zeta$ is unique, as required.
+(2) and (3) are similar. 
+\end{proof}
+
+\subsection{Unramified morphisms}
+
+\begin{prop} Let $K$ be a field, and $(R,\fm,k)$ be a local ring essentially algebra finite over $K$. The following are equivalent:
+\begin{enumerate}
+\item $R = k$ is a finite separable field extension of $K$.
+\item $R$ is essentially \'etale over $K$.
+\item $R$ is essentially unramified over $K$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+We have already seen that (1) $\Rightarrow$ (2), and (2) $\Rightarrow$ (3) is immediate from the definition, so we only need to show (3) $\Rightarrow$ (1). Consider the Jacobi-Zariski sequence from the triple $K \to R \to k$:
+\[ \cdots \to \Gamma_{k|K} \to \Gamma_{k|R} \to k \otimes_R \Omega_{R|K} \to \Omega_{k|K} \to \Omega_{k|R} \to 0 .\]
+Since $K\to R$ is essentially unramified, we have $\Omega_{R|K}=0$. Also, since $R\to k$ is surjective with kernel $\fm$, we have $\Omega_{k|R} = 0$ and $\Gamma_{k|R}=\fm/\fm^2$. We also know that the composition $K\to R \to k$ is essentially unramified, and is finitely generated as a field extension, so $K\to k$ is finite separable, and thus essentially \'etale, so $\Gamma_{k|K}=0$. But then $\fm/\fm^2=0$, so $\fm=0$ and $R=k$ is a field (that is still finite separable over $K$).
+\end{proof}
+
+\begin{thm} Let $(R,\fm,k) \to (S,\fn,\ell)$ be an essentially algebra-finite homomorphism of local rings. Then $S$ is essentially unramified over $R$ if and only if $\fn = \fm S$ and $\ell$ is a finite separable extension of $k$.
+\end{thm}
+\begin{proof} If $R \to S$ is formally unramified, then so is $k \to R/\fm  \otimes_R S \cong S/\fm S$. By the field case, we know that $S/\fm S = \ell$, so $\fn = \fm S$, and that $\ell$ is a finite separable extension of $k$. Conversely, if $\fn = \fm S$, we consider the second fundamental sequence associated to $R \to S \to S/\fm S$:
+\[ \frac{\fm S}{\fm^2 S} \to {S/\fm S}\otimes_S \Omega_{S|R} \to \Omega_{S/\fm S | R} \to 0.\]
+We have $\Omega_{S/\fm S | R}\cong \Omega_{S/\fm S | R/\fm} = \Omega_{\ell|k}=0$, and since $\fm S$ is generated by elements of $R$, which are in the kernel of $d$, the first map is zero, so $ \Omega_{S|R}/ \fn \Omega_{S|R} = {S/\fm S}\otimes_S \Omega_{S|R}=0$. Since $\Omega_{S|R}$ is finitely generated over $S$, by NAK we conclude that it is zero, so $R\to S$ is essentially unramified.
+\end{proof}
+
+\begin{ex} Let $A$ be a module-finite extension of $\Z$, and $\fq$ be a prime ideal of $A$, and let $(p) = \fq \cap \Z$. Note that $\Z_{(p)}$ has residue field $\F_p$ which is perfect, so $\Z_{(p)}/ p \Z_{(p)} \to A_{\fq} / \fq A_{\fq}$ is separable (and finite). Then $A_{\fq}$ is essentially unramified over $\Z_{(p)}$ if and only if $p\notin \fq^2$. This is the classical definition of ramification in number theory: a prime integer ramifies in a ring of integers if and only if it ends up an a power of a maximal ideal.
+
+For example, for $A=\Z[i]$, $2$ ramifies in the prime $(1+i) A$, since $2 = -i (1+i)^2$, so $\Z_{(2)} \to \Z[i]_{(1+i)}$ is essentially ramified.
+\end{ex}
 
 
+\subsection{Smooth morphisms}
 
+\begin{defn} Let $K$ be a field. We say that a $K$-algebra $R$ is \emph{geometrically regular}
+\index{geometrically regular} if for any finite field extension $L$, we have $L\otimes_K R$ is regular.
+\end{defn}
+
+\begin{lem} If $K$ is perfect and $R$ is a regular ring essentially algebra finite over $K$, then $R$ is geometrically regular over $K$.
+\end{lem}
+\begin{proof} Let $L$ be a finite extension of $K$. By hypothesis, $L$ is finite separable over $K$, so we can write $L=K[\theta] / (f(\theta))$ with $f$ separable; then $L\otimes_K R = R[\theta]/(f(\theta))$. 
+
+\begin{comment}
 
 Examples.
 
@@ -2771,6 +2848,7 @@ Vasconcelos theorem on $I/I^2$
 Reduced complete intersection and $\Gamma$
 
 Ideals stable under derivations.
+
 
 \end{comment}
 
