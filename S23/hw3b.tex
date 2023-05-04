@@ -351,7 +351,13 @@
 
 \item  Is $\Z[\sqrt[3]{37}]$ a regular ring? What about $\Z[\sqrt[3]{43}]$?
 
-\
+\begin{proof} Write $R= \Z[\sqrt[3]{37} \cong \Z[x]/(x^3-37)$. First, we show that $R_\fp$ is regular for many primes $\fp$. The prime ideals of $R$ correspond to prime ideals of $\Z[x]$ containing $(x^3-37)$. Note that $x^3-37$ is irreducible by Eisenstein's criterion, so it is prime. Then the prime ideals of $\Z[x]$ properly containing $(x^3-37)$ must be of the form $(p,g(x))$, where $g$ is a polynomial that divides $x^3-37$ modulo $p$. For $R_\fp$ to not be regular, we must have $x^3-37 \in (p,g)^2 \subseteq (p,g^2)$. Then for degree reasons, $g$ must be linear, so of the form $x-a$, and $a$ must be a double root of $x^3-37$ in $\F_p$. But then $x-a$ divides $\frac{dg}{dx} = 3x^2$, so $a\equiv 0$ mod $p$ unless $p=3$, but if $0$ is a root of $x^3-37$ in $\F_p$, then $p=37$, but $x^3-37 \notin (37,x)^2$, so we must have $p=3$, and then $a\equiv 1$ mod $p$. 
+
+Thus, we reduce to checking whether $x^3-37\in (3,x-1)^2$. We have $(3,x-1)^2= (9, 3(x-1), (x-1)^2)$. By long division, write $x^3-37 = (x+2)(x-1)^2 + 3x-39$. Then $3x-39 = 3(x-1) - 36 = 3(x-1) - 4\cdot 9$, so $x^3-37\in (3,x-1)^2$, and $\Z[\sqrt[3]{37}]_{(3,1+\sqrt[3]{37})}$ and hence $Z[\sqrt[3]{37}]$ are not regular.
+
+For $S=\Z[\sqrt[3]{43}]$, everything is the same up to checking whether $x^3-43\in (3,x-1)^2$. By long division, write 
+$x^3-43 = (x+2)(x-1)^2 + 3x-45$. Then $3x-45 = 3(x-1) - 42 = 3(x-1) - 5\cdot 9 + 3$, so $x^3-43\equiv 3 \mod (3,x-1)^2$. But $3\notin (3,x-1)^2$, so $x^3-43\notin (3,x-1)^2$, and hence $\Z[\sqrt[3]{43}]$ is regular.
+\end{proof}
 
 \item Let $R$ be an $A$-algebra, $f(x_1,\dots,x_n) \in A[x_1,\dots,x_n]$ a polynomial with coefficients in $A$, and $r_1,\dots,r_n, s_1,\dots,s_n\in R$.
 \begin{enumerate}
@@ -370,7 +376,7 @@ Let $T$ be a $p$-basis for $L$. Show that for any $e$, the set $T^{[<p^e]}$ is a
 \end{enumerate}
 
 
-\begin{proof} 
+\begin{proof}[Proof ideas] 
 \begin{enumerate}
 \item By induction on $e$, with $e=1$ as the definition. If the claim is true for $e$, so $T^{[<p^e]}$ is a basis for $L/L^{p^e}$, taking $p$th powers we have that $(T^p)^{[<p^e]}$ is a basis for $L^p / L^{p^{e+1}}$. But $T^{[<p^{e+1}]} = (T^p)^{[<p^e]} T^{[<p]}$ (i.e., the first set is the set of products of the two sets on the right-hand side), so from field theory, the left hand side is a basis for $L/ L^{p^{e+1}}$.
 \item Consider the diagram
