@@ -2806,13 +2806,33 @@ For example, for $A=\Z[i]$, $2$ ramifies in the prime $(1+i) A$, since $2 = -i (
 
 \subsection{Smooth morphisms}
 
-\begin{defn} Let $K$ be a field. We say that a $K$-algebra $R$ is \emph{geometrically regular}
-\index{geometrically regular} if for any finite field extension $L$, we have $L\otimes_K R$ is regular.
-\end{defn}
 
-\begin{lem} If $K$ is perfect and $R$ is a regular ring essentially algebra finite over $K$, then $R$ is geometrically regular over $K$.
+
+\begin{lem} Let $R$ be a $K$-algebra.
+\begin{enumerate}
+\item\label{it-desc} If $L/K$ is an extension field and $R\otimes_K L$ is regular, then $R$ is regular.
+\item\label{it-sep} If $L/K$ is a finite separable extension field and $R$ is regular, then $R\otimes_K L$ is regular.
+\end{enumerate}
 \end{lem}
-\begin{proof} Let $L$ be a finite extension of $K$. By hypothesis, $L$ is finite separable over $K$, so we can write $L=K[\theta] / (f(\theta))$ with $f$ separable; then $L\otimes_K R = R[\theta]/(f(\theta))$. 
+
+\begin{lem}\label{un} Let $R_1 \subseteq R_2 \subseteq R_3  \subseteq \cdots$ be an increasing union of regular rings. If the union is Noetherian, then it is regular.
+\end{lem}
+
+\begin{prop} Let $R$ be an essentially algebra finite $K$-algebra. The following are equivalent:
+\begin{enumerate}
+\item $R\otimes_K L$ is regular for any field extension $L$.
+\item $R\otimes_K L$ is regular for any finite field extension $L$.
+ \item $R\otimes_K L$ is regular for any field inseparable extension $L$.
+\item $R\otimes_K L$ is regular for any perfect extension $L$.
+%\item $R\otimes_K L$ is regular for some perfect field extension $L$.
+\end{enumerate}
+\end{prop}
+\begin{proof} Note that the hypotheses imply that $R\otimes_K L$ is Noetherian.
+Clearly (1) $\Rightarrow$ (2) $\Rightarrow$ (3) and (1) $\Rightarrow$ (4) 
+%$\Rightarrow$ (5)
+. We also have (3) $\Rightarrow$ (2) by \ref{it-sep}, and (3) $\Rightarrow$ (4) and (2) $\Rightarrow$ (1) follow from \ref{un}. Also, (4) $\Rightarrow$ (3) by \ref{it-desc}, since any inseparable extension is contained in a perfect extension. 
+%Finally, given two field extensions $L,L'$ of $K$, there is a field $L''$ that contains $L$ and $L'$; e.g., take any residue field of $L\otimes_K L'$ at a maximal ideal. Then if $L$ is a perfect extension field of $K$ such that $R\otimes_K L$ is regular and $L'$ is any other extension of $K$, then 
+\end{proof}
 
 \begin{comment}
 
