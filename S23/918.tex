@@ -2671,18 +2671,21 @@ The next lemma says that the conclusion of prime avoidance holds for the collect
 
 \begin{lem} Let $S$, $\fp_i$ be as above. Then for any ideal $I$ of $S$, if $I\subseteq \bigcup_{i\in \N} \fp_i$, then $I\subseteq \fp_i$ for some $i$.
 \end{lem}
-\begin{proof} If $I=0$ this is clear, so suppose $I\neq 0$, that $I\subseteq \bigcup_{i\in \N} \fp_i$, and take $f\in I$. Since $f$ involves at most finitely many variables, $v(f):=\{i \ | \ f\in \fp_i\}= \{ i \ | \ x_i \ \text{divides} \ f \ \text{in} \ T\}$ is finite; by assumption, it is nonempty. 
+\begin{proof} If $I=0$ this is clear, so suppose $I\neq 0$, that $I\subseteq \bigcup_{i\in \N} \fp_i$.
+For $s\in S$, set 
+\[ v(s):=\{i \ | \ f\in \fp_i\}= \{ i \ | \ x_i \ \text{divides} \ f \ \text{in} \ T\}.\]
+Since $s$ involves finitely many variables, $v(s)$ is finite for each nonzero $s\in S$. Our hypothesis translates to saying $v(f)$ is nonempty for each $f\in I$.
 
-We claim for every $g\in I$, $v(f) \cap v(g)$ is nonempty. Suppose otherwise. Let $k$ be larger than the index of any variable in $f$ or $g$, and $t$ be an integer greater than the degree of $f$. Then $f$ and $x_k^t g$ have no monomials in common (since the degrees of all the monomials in $x_k^t g$ are at least $t$ and the degree of the monomials in $f$ are all less than $t$) so none can cancel from each other. In particular, if $x_\ell$ divides $f+x_k^t g$ in $T$, then $x_\ell$  divides both $f$ and $x_k^t g$ in $T$. But this is impossible by the hypothesis. Thus $f+x_k^t g\notin \fp_\ell$ for all $\ell$, contradicting the hypothesis.
+We claim that for any $f,g\in I$, there is some $h\in I$ with $v(h) \subseteq v(f) \cap v(g)$. Namely, let $k$ be larger than the index of any variable in $f$ or $g$, and $t$ be an integer greater than the degree of $f$ and set $h=f+x_k^t g$. Then $f$ and $x_k^t g$ have no monomials in common (since the degrees of all the monomials in $x_k^t g$ are at least $t$ and the degree of the monomials in $f$ are all less than $t$) so none can cancel from each other. In particular, if $x_\ell$ divides $h$ in $T$, then $x_\ell$  divides both $f$ and $x_k^t g$ in $T$; i.e., $v(h) \subseteq v(f) \cap v(g)$ as claimed.
 
-So, for every $g\in I$, $v(f) \cap v(g)$ is nonempty. That means that every $g\in I$ is in some $\fp_i$ for $i  \in v(f)$, so $I \subseteq \bigcup_{i\in v(f)} \fp_i$, which is a finite union of primes. By the usual version of prime avoidance, $I \subseteq \fp_i$ for some~$i$.
+Thus, fixing some nonzero $f\in I$, for every $g\in I$, $v(f) \cap v(g)$ is nonempty. That means that every $g\in I$ is in some $\fp_i$ for $i  \in v(f)$, so $I \subseteq \bigcup_{i\in v(f)} \fp_i$, which is a finite union of primes. By the usual version of prime avoidance, $I \subseteq \fp_i$ for some~$i$.
 \end{proof}
 
 It follows that the maximal ideals of $R$ are $\fp_i R$. Indeed, the prime ideals of $R$ correspond to ideals $\fq$ of $S$ that do not intersect $W$, so are contained in $\bigcup_i \fp_i$, and thus by the lemma, are contained in some $\fp_i$.
 
 Now \[R_{\fp_i R} = S_{\fp_i} = \{ \frac{f}{g} \in \mathrm{frac}(S) \ | \ f\in S, g\in S \ \text{with some nonzero term not involving $x_i$}\}.\]
 We have $L_i:=K(\{ x_j \ | \ j \neq i\}) = \mathrm{frac}( K[x_j^2,x_j^3 \ | \ j\neq i])$.
-We claim that $L_i[x_i^2,x_i^3]_{(x_i^2,x_i^3)}\cong S_{\fp_i}$. Indeed, from above we can identify $L_i[x_i^2,x_i^3]$ and hence $L_i[x_i^2,x_i^3]_{(x_i^2,x_i^3)}$ with subsets of $\mathrm{frac}(S)$. Unpackaging the definitions, one sees that $L_i[x_i^2,x_i^3]_{(x_i^2,x_i^3)}$ coincides with the subset of $\mathrm{frac}(S)$ identified above, so $R_{\fp_i R}\cong L_i[x_i^2,x_i^3]_{(x_i^2,x_i^3)}$.
+We claim that $L_i[x_i^2,x_i^3]_{(x_i^2,x_i^3)}\cong S_{\fp_i}$. Indeed, from above we can identify $L_i[x_i^2,x_i^3]$ and hence $L_i[x_i^2,x_i^3]_{(x_i^2,x_i^3)}$ with subsets of $\mathrm{frac}(S)$. Any element of $L_i[x_i^2,x_i^3]$ can be written as a fraction with denominator not involving $x_i$; any element of $L_i[x_i^2,x_i^3]\smallsetminus (x_i^2,x_i^3)L_i[x_i^2,x_i^3]$ can be written as a fraction with denominator not involving $x_i$ and numerator with some nonzero term not involving $x_i$. Putting together, an element of the localization can be written in in $S_{\fp_i}$.
 
 
 For each $i$, this is a Noetherian ring of dimension one that is not regular.  From the first lemma, and the observation in the proof of the second lemma, we see that $R$ is Noetherian. thus $R$ is a one-dimensional Noetherian domain. The localization at $(0)$ is a field, hence regular, and every other prime is maximal, so the singular locus of $R$ is the (infinite) set of its maximal ideals. But this set has infinitely many minimal elements, so it is not closed.
