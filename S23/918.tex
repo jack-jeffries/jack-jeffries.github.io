@@ -2683,12 +2683,14 @@ Thus, fixing some nonzero $f\in I$, for every $g\in I$, $v(f) \cap v(g)$ is none
 
 It follows that the maximal ideals of $R$ are $\fp_i R$. Indeed, the prime ideals of $R$ correspond to ideals $\fq$ of $S$ that do not intersect $W$, so are contained in $\bigcup_i \fp_i$, and thus by the lemma, are contained in some $\fp_i$.
 
-Now \[R_{\fp_i R} = S_{\fp_i} = \{ \frac{f}{g} \in \mathrm{frac}(S) \ | \ f\in S, g\in S \ \text{with some nonzero term not involving $x_i$}\}.\]
-We have $L_i:=K(\{ x_j \ | \ j \neq i\}) = \mathrm{frac}( K[x_j^2,x_j^3 \ | \ j\neq i])$.
-We claim that $L_i[x_i^2,x_i^3]_{(x_i^2,x_i^3)}\cong S_{\fp_i}$. Indeed, from above we can identify $L_i[x_i^2,x_i^3]$ and hence $L_i[x_i^2,x_i^3]_{(x_i^2,x_i^3)}$ with subsets of $\mathrm{frac}(S)$. Any element of $L_i[x_i^2,x_i^3]$ can be written as a fraction with denominator not involving $x_i$; any element of $L_i[x_i^2,x_i^3]\smallsetminus (x_i^2,x_i^3)L_i[x_i^2,x_i^3]$ can be written as a fraction with denominator not involving $x_i$ and numerator with some nonzero term not involving $x_i$. Putting together, an element of the localization can be written in in $S_{\fp_i}$.
+Now $R_{\fp_i R} = S_{\fp_i}$.
+Set $L_i:=K(\{ x_j \ | \ j \neq i\}) = \mathrm{frac}( K[x_j^2, x_j^3 \ | \ j\neq i])$. We have 
+\[ S_{\fp_i} = (S\smallsetminus \fp_i)^{-1} S = (S\smallsetminus \fp)^{-1} ( K[x_j^2,x_j^3 \ | \ j\neq i] \smallsetminus \{0\})^{-1} S \cong (S\smallsetminus \fp_i)^{-1} L_i[x_i^2, x_i^3].\] We claim that $L_i[x_i^2,x_i^3]_{\fp_i L_i}\cong S_{\fp_i}$. Indeed, $(S\smallsetminus \fp_i)^{-1} \subseteq L_i[x_i^2,x_i^3]\smallsetminus {(\fp_i L_i)}$, so 
+\[(S\smallsetminus \fp_i)^{-1} L_i[x_i^2, x_i^3] \subseteq L_i[x_i^2,x_i^3]_{\fp_i L_i}.\] 
+On the other hand, any element of $L_i[x_i^2,x_i^3]\smallsetminus {\fp_i L_i}$ can be written as a fraction with numerator in $S\smallsetminus \fp_i$, so the equality holds.
 
 
-For each $i$, this is a Noetherian ring of dimension one that is not regular.  From the first lemma, and the observation in the proof of the second lemma, we see that $R$ is Noetherian. thus $R$ is a one-dimensional Noetherian domain. The localization at $(0)$ is a field, hence regular, and every other prime is maximal, so the singular locus of $R$ is the (infinite) set of its maximal ideals. But this set has infinitely many minimal elements, so it is not closed.
+For each $i$, this is a Noetherian ring of dimension one that is not regular.  From the first lemma, and the observation in the proof of the second lemma that every element of $S$ is in at most finitely many $\fp_i$, we see that $R$ is Noetherian. thus $R$ is a one-dimensional Noetherian domain. The localization at $(0)$ is a field, hence regular, and every other prime is maximal, so the singular locus of $R$ is the (infinite) set of its maximal ideals. But this set has infinitely many minimal elements, so it is not closed.\qed
 
 \section{P-derivations and Jacobian criteria in mixed characterstic}
 
@@ -2786,7 +2788,7 @@ we get a $p$-derivation on $R$ extending $\delta$.
  
  \subsection{Perivations}
  
- The target of a $p$-derivation is an algebra and not a module, so we can't make sense of a universal target module akin to the module of differentials. However, the only nonlinear part in the rules for a $p$-derivation are in the multiplication rule, in a term that is a multiple of $p$. That means that if $p=0$ in the target, then the target only needs a module structure. 
+ The target of a $p$-derivation is an algebra and not a module, so we can't make sense of a universal target module akin to the module of differentials. However, if $p=0$ in the target, then the product rule simplifies in a useful way. 
  
  \begin{defn} Let $R$ be a ring and $p$ be a prime integer. Let $M$ be an $R$-module with $pM=0$. A map $\alpha:R\to M$ is a \emph{perivation} if
  \begin{enumerate}
