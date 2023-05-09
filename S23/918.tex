@@ -2782,6 +2782,8 @@ let $A$ be a ring with a $p$-derivation $\delta$, and $R=A[x_{\lambda} \ | \lamb
 \[ \Delta(f) = \frac{\Phi(f) - f^p}{p}\]
 we get a $p$-derivation on $R$ extending $\delta$.
 \end{ex}
+ \begin{comment}
+\May{11}
  
  \begin{defn} A $\delta$-ring is a pair $(R,\delta)$ where $\delta$ is a $p$-derivation on $R$.
  \end{defn}
@@ -2809,6 +2811,10 @@ A perivation with $\alpha(p)=0$ looks similar to a derivation; there are just $p
 To make this line up, let $M$ be an $R/pR$ module, and let $F$ be the Frobenius map on $R/pR \to R/pR$. Let $F_*(M)$ be the $R/pR$-module obtained by restriction of scalars through $F$: this is identical to $M$ as a set, but an element of $r$ sends $m$ to $r^p m$ instead. Then a perivation with $\alpha(p)=0$ is the same thing as a derivation $\alpha: R\to F_*(M)$. We call such a map a \emph{derivation of Frobenius on $M$}\index{derivation of Frobenius}.
 \end{rem}
 
+\begin{ex} Let $A$ be a ring in which $p$ is not a unit (so $A/pA\neq 0$) and $R=A[x]$. Then the map $\partial:R\to R/pR$,  $\partial(r) = (\frac{dr}{dx})^p$ is a derivation of Frobenius: we have
+ \[ \partial(rs) = \big(\frac{d (rs)}{dx} \big)^p = \big( r \frac{ds}{dx} + s \frac{dr}{dx} \big)^p = r^p \partial(s) + s^p \partial(r).\]
+ \end{ex}
+
 \begin{rem} Let $R$ be a ring of characteristic $p$ and $M$ be an $R$-module (which necessarily satisfies $pM=0$). If $\alpha$ is a perivation from $R$ to $M$, then $\alpha(p)=\alpha(0)=0$, so every perivation is a derivation of Frobenius.
 \end{rem}
 
@@ -2835,6 +2841,11 @@ We call the target module of a universal perivation a universal perivation modul
 perivations over $(A,\delta)$, we denote a universal perivation over $(A,\delta)$ by $\tilde{d}_{R|(A,\delta)}$ and the universal perivation module over $(A,\delta)$ by $\widetilde{\Omega}_{R|(A,\delta)}$.
 \end{defn}
 
+\begin{rem} If $p$ is a unit in $R$, then $\widetilde{\Omega}_{R} = 0$ (and likewise over and $(A,\delta)$), since any $R$-module with $pM=0$ is the zero module.
+\end{rem}
+
+
+
 \begin{thm} For any ring $R$, there exists a universal perivation $\tilde{d}_R:R \to \widetilde{\Omega}_{R}$, and given any other universal perivation $\tilde{d}'_R:R \to \widetilde{\Omega}'_{R}$, there is a unique isomorphism $\theta$ making the diagram commute:
 \[  \xymatrix{  R \ar[r]^-{{\tilde{d}}_{R}} \ar[dr]_-{{\tilde{d}'}_{R}} & {\widetilde{\Omega}}_{R} \ar@{-->}[d]^-{\theta} \\ & \widetilde{\Omega}'_{R} }.\]
 Likewise for perivations over $(A,\delta)$.
@@ -2847,7 +2858,60 @@ where $\Delta$ is some extension of $\delta$ to $R$ (which exists as discussed a
 In particular, for $R=\Z_{(p)}[x_1,\dots,x_n]$, the universal perivation module is free on $\tilde{d}p, \tilde{d}x_1,\dots,\tilde{d}x_n$ and the universal perivation is 
 \[ f\mapsto \frac{f(x^p) - f(x)^p}{p} \tilde{d}p + \sum_i (\frac{df}{dx_i})^p \tilde{d}x_i.\]
 \end{thm}
+\begin{proof} This is a sum of perivations, hence a perivation. Given $\alpha$, we must have $\theta(\tilde{d}x_i) = \alpha(x_i)$ and $\theta(\tilde{d}p) = \alpha(p)$, and since $\tilde{d}p, \tilde{d}x_1,\dots,\tilde{d}x_n$ are a free basis, there is a unique map $\beta$ satisfying this, so if $\theta$ exists, we must have $\theta=\beta$.  For this map, we have $\alpha$ and $\beta \circ \tilde{d}$ are two perivations that agree on $p$ and the $x_i$'s. But it follows from the sum and product rule that a perivation is determined by its values on this set, so $\alpha=\beta \circ \tilde{d}$; i.e., $\theta=\beta$ makes the diagram commute, showing the universal property.
 
+The unique iso statement follows exactly as in the case of differentials.
+\end{proof}
+
+
+
+\begin{defn} Let $(A,\delta)$ be a $\delta$-ring and $S=A[x_1,\dots,x_n]$. Let $\Delta$ be a $p$-derivation on $S$ extending $\delta$. For a sequence of elements $f_1,\dots,f_t\in S$, we define the \emph{mixed (column) Jacobian matrix}\index{mixed Jacobian matrix} to be
+\[ \widetilde{J}^T(f_1,\dots,f_t) = \begin{bmatrix} \Delta(f_1) & \cdots & \Delta(f_t) \\ (\frac{df_1}{dx_1})^p & \cdots & (\frac{df_t}{dx_1})^p \\ \vdots & \ddots & \vdots \\ (\frac{df_1}{dx_n})^p & \cdots & (\frac{df_t}{dx_n})^p \end{bmatrix}.\]
+\end{defn}
+
+\begin{thm}
+ Let $(A,\delta)$ be a $\delta$-ring and $S=A[x_1,\dots,x_n]$. Let $\Delta$ be a $p$-derivation on $S$ extending $\delta$. Let $I=(f_1,\dots,f_t)$ and $R=S/I$. Let  $\fq$  be a prime containing $I$, and let $\fp=\fq R$. Then $\widetilde{\Omega}_{R_{\fp}|(A,\delta)}$ is the $R_\fp/ p R_{\fp}$-module with presentation matrix $\widetilde{J}^T(f_1,\dots,f_t)$.
+ \end{thm}
+ \begin{proof}[Sketch:] There is an analogue of the second fundamental sequence + universal perivation modules localize.
+ \end{proof}
+ 
+ \begin{thm}
+ Let $S=\Z_{(p)}[x_1,\dots,x_n]$. Let $R=S/I$, with $I=(f_1,\dots,f_t)$, let $\fp$ be a prime ideal of $R$ containing $p$, and $\fq$ the preimage of $\fp$ in $S$. The following are equivalent:
+ \begin{enumerate}
+ \item $R_\fp$ is regular
+ \item $\widetilde{\Omega}_{R_{\fp}}$ is free of rank $h:= n-\htt(I S_\fq)$
+ \item $\fp \supseteq I_h(\widetilde{J}^T(f_1,\dots,f_t))$.
+ \end{enumerate}
+ \end{thm}
+
+ \begin{ex} Let $R=\Z[\sqrt[3]{n}]$ with $n$ squarefree (and not equal to $0,1$). Let us determine which of these are regular using the theorem.
+ We have $R=\Z[x]/(x^3-n)$, using that $n^3\notin \Z$. Then for $\fa$ prime in $\Z[x]$ containing $p$, $\Z \smallsetminus (p) \subseteq \Z[x]\smallsetminus \fa$, so $R_{\fp} \cong \Z_{(p)}[x]_{\fq}/(x^3-n)$ where $\fq$ is the expansion of $\fa$.
+ 
+ Now, the set of singular primes containing $p$ is $V_R(p, \delta(x^3-n), 3x^2)$ (from the $1\times 1$ minors of the mixed Jacobian), where $\delta$ is a $p$-derivation on $\Z_{(p)}[x]$. Let's simplify this ideal up to radical.
+ 
+ We compute
+ \[ \delta(x^3 - n) = \frac{x^{3p} - n - (x^3 - n)^p }{p} = \delta(-n) - C_p(x^3,-n)\]
+ Since $x^3\equiv n$ in $R$, we have
+ \[  \delta(x^3 - n) = \delta(-n) - C_p(n,-n). \]
+ If $p\neq 2$, then $\delta(-n) = -\delta(n)$ and $C_p(n,-n) = 0$, so $\delta(x^3 - n) = -\delta(n)$; if $p=2$, then $\delta(-n) = -\delta(n) + n^2$ and $C_p(n,-n) = -n^2$, so $\delta(-n) = -\delta(n)+2n^2 \equiv -\delta(n)$ mod $p=2$.
+ So the set of singular primes containing $p$ is $V_R(p, \delta(n), 3x^2)$.
+ 
+ If $p\neq 3$, then this is $V_R(p, \delta(n), x^2) = V_R(p, \delta(n), x) = V_R(p, \delta(n), n, x)$, using the defining equation. If $p\nmid n$, then $(p,n)=1$ and this is empty. If $p\mid n$, by squarefree hypothesis, $p^2 \nmid n$, but by last time's computation, $p\nmid \delta(n)$, so $(p,\delta(n))=1$, and this is empty again.
+ 
+ If $p=3$, then this is $V_R(3, \delta(n))$. If $3\mid \delta(n)$, then this is just $V_R(3) = \{ (3,1+ \sqrt[3]{n})\}$; if $3\nmid \delta(n)$, then $(3,\delta(n)) = 1$ and this is empty.
+ 
+ Observe that $\delta(9k) = 9^3 \delta(k) + k^3\delta(9) + 3 \delta(k)\delta(9)$ is a multiple of $3$, since $\delta(9)$ is, and then $\delta(a+9k) = \delta(a) + \delta(9k) + C_3(a,9k)$ is congruent to $\delta(a)$ modulo $3$. We then compute for $i=0,\dots,8$,
+ 
+ \[ \begin{tabular}{c|cccccccccc} $n$ & $-4$&$ -3$ & $-2$ &$-1$ & 0 & 1 & 2 & 3 & 4 \\ \hline
+ $\delta(n)$ &
+    20  & 8  & 2& 0    &   0 & 0 & $-2$ & $-8$ & $-20$\end{tabular}\]
+ 
+Thus, $\delta(n)$ is only a multiple of $3$ if $n\equiv \pm 1$ (or $0$) modulo $9$.
+ 
+ In particular, $\Z[\sqrt[3]{35}]$ and $\Z[\sqrt[3]{37}]$ are not regular, whereas $\Z[\sqrt[3]{39}]$, $\Z[\sqrt[3]{41}]$, and $\Z[\sqrt[3]{43}]$ are.
+ \end{ex}
+ 
+ 
 \begin{comment}
 \section{Characterization of unramified, \'etale, and smooth morphisms}
 
