@@ -2782,7 +2782,7 @@ let $A$ be a ring with a $p$-derivation $\delta$, and $R=A[x_{\lambda} \ | \lamb
 \[ \Delta(f) = \frac{\Phi(f) - f^p}{p}\]
 we get a $p$-derivation on $R$ extending $\delta$.
 \end{ex}
- \begin{comment}
+
 \May{11}
  
  \begin{defn} A $\delta$-ring is a pair $(R,\delta)$ where $\delta$ is a $p$-derivation on $R$.
@@ -2802,13 +2802,27 @@ we get a $p$-derivation on $R$ extending $\delta$.
  If $(A,\delta)$ is a $\delta$-ring and $R$ is an $A$-algebra, we say that $\alpha$ is a perivation over $(A,\delta)$ if also $\alpha(a) = \alpha(p)\delta(a)$ for all $a\in A$.
  \end{defn}
  
+
+ 
  \begin{rem} If $M$ is an $R$-algebra with $pM=0$, then a $p$-derivation from $R$ to $M$ is the same thing as a perivation with $\alpha(p)=1$.
  \end{rem}
  
  \begin{rem}
 A perivation with $\alpha(p)=0$ looks similar to a derivation; there are just $p$th powers on the product rule. 
 
-To make this line up, let $M$ be an $R/pR$ module, and let $F$ be the Frobenius map on $R/pR \to R/pR$. Let $F_*(M)$ be the $R/pR$-module obtained by restriction of scalars through $F$: this is identical to $M$ as a set, but an element of $r$ sends $m$ to $r^p m$ instead. Then a perivation with $\alpha(p)=0$ is the same thing as a derivation $\alpha: R\to F_*(M)$. We call such a map a \emph{derivation of Frobenius on $M$}\index{derivation of Frobenius}.
+To make this line up, let $M$ be an $R/pR$ module, and let ${F_{R/pR}}$ be the Frobenius map on $R/pR \to R/pR$. Let ${F_{R/pR}}_*(M)$ be the $R/pR$-module obtained by restriction of scalars through $F$: this is identical to $M$ as a set, but an element of $r$ sends $m$ to $r^p m$ instead. The function $\alpha:R/pR \to M$  satisfies 
+\begin{itemize}
+ \item $\alpha(x+y) = \alpha(x) + \alpha(y)$
+ \item $\alpha(xy) = x^p \alpha(y) + y^p\alpha(x)$
+ \end{itemize}
+ if and only if the same function  $\alpha:R/pR \to {F_{R/pR}}_*(M)$ is a derivation: the first condition is additivity, and writing $\star$ for the ${F_{R/pR}}_*(M)$ action, the second translates to
+ \[ \alpha(xy) = x^p \alpha(y) + y^p\alpha(x) = x \star \alpha(y) + y \star \alpha(x).\]
+ 
+ 
+Furthermore, if $\alpha:R\to M$ with $pM=0$ satisfies the perivation axioms with $\alpha(p)=0$, then $\alpha$ is additive and hence $\alpha(pR)\subseteq pM=0$, so $\alpha$ factors through $R/pR$, and the map $R \to R/pR \to {F_{R/pR}}_*(M)$ is a derivation; conversely if $R \to {F_{R/pR}}_*(M)$ is a derivation, it is additive so it factors through $pR$ and we again get a perivation with $\alpha(p)=0$.
+Thus, a perivation with $\alpha(p)=0$ is the same thing as a derivation $\alpha: R\to {F_{R/pR}}_*(M)$. We call such a map a \emph{derivation of Frobenius}\index{derivation of Frobenius}.
+
+The ``over $(A,\delta)$'' condition for a derivation of Frobenius considered as a perivation is equivalent to $\alpha(a) = 0$ for all $a\in A$, which is equivalent to $A$-linear.
 \end{rem}
 
 \begin{ex} Let $A$ be a ring in which $p$ is not a unit (so $A/pA\neq 0$) and $R=A[x]$. Then the map $\partial:R\to R/pR$,  $\partial(r) = (\frac{dr}{dx})^p$ is a derivation of Frobenius: we have
@@ -2819,7 +2833,7 @@ To make this line up, let $M$ be an $R/pR$ module, and let $F$ be the Frobenius 
 \end{rem}
 
 
-\begin{lem} Let $R$ be a ring and $p$ be a prime integer. Let $M$ be an $R$-modules with $pM=0$. 
+ \begin{lem} Let $R$ be a ring and $p$ be a prime integer. Let $M$ be an $R$-modules with $pM=0$. 
 \begin{enumerate}
 \item If $\alpha,\beta:R\to M$ are perivations, then so is $\alpha+\beta$.
 \item  If $\alpha:R\to M$ is a perivation, and $r\in R$, then $r\alpha$ is a perivation.
@@ -2841,15 +2855,35 @@ We call the target module of a universal perivation a universal perivation modul
 perivations over $(A,\delta)$, we denote a universal perivation over $(A,\delta)$ by $\tilde{d}_{R|(A,\delta)}$ and the universal perivation module over $(A,\delta)$ by $\widetilde{\Omega}_{R|(A,\delta)}$.
 \end{defn}
 
-\begin{rem} If $p$ is a unit in $R$, then $\widetilde{\Omega}_{R} = 0$ (and likewise over and $(A,\delta)$), since any $R$-module with $pM=0$ is the zero module.
-\end{rem}
-
 
 
 \begin{thm} For any ring $R$, there exists a universal perivation $\tilde{d}_R:R \to \widetilde{\Omega}_{R}$, and given any other universal perivation $\tilde{d}'_R:R \to \widetilde{\Omega}'_{R}$, there is a unique isomorphism $\theta$ making the diagram commute:
 \[  \xymatrix{  R \ar[r]^-{{\tilde{d}}_{R}} \ar[dr]_-{{\tilde{d}'}_{R}} & {\widetilde{\Omega}}_{R} \ar@{-->}[d]^-{\theta} \\ & \widetilde{\Omega}'_{R} }.\]
 Likewise for perivations over $(A,\delta)$.
 \end{thm}
+
+\begin{rem} If $p$ is a unit in $R$, then $\widetilde{\Omega}_{R} = 0$ (and likewise over and $(A,\delta)$), since any $R$-module with $pM=0$ is the zero module.
+\end{rem}
+
+This construction almost coincides with the Kahler differential construction in positive characteristic.
+
+\begin{rem} Let $R\xra{\phi} S$ be a homomorphism of rings. We recall for any $R$-module $M$ and $S$-module $N$ that there is an isomorphism
+\[\xymatrix@R=0pc{  \Hom_{S}(\phi^*(M) , N) \ar[r]^{\eta^*}_{\cong} & \Hom_{R}(M, \phi_*(N)) \\ \theta \ar@{|->}[r] & \theta \circ \eta}\]
+where $\eta$ is the map $M \to \phi^*(M)$.
+
+Now, if $R$ has characteristic $p>0$, consider the map $R \xra{F_R} R$. For any $R$-modules $M$ and $N$ we get an isomorphism
+\[\xymatrix@R=0pc{  \Hom_{R}(F_R^*(M) , N) \ar[r]^{\eta^*}_{\cong} & \Hom_{R}(M, {F_R}_*(N)) \\ \theta \ar@{|->}[r] & \theta \circ \eta}\]
+where $\eta$ is the map $M \to {F_R}^*(M)$.
+\end{rem}
+
+
+\begin{prop} Let $(A,\delta)$ be a $\delta$-ring. Let $R$ be an $A$-algebra with $pR=0$. Then $\widetilde{\Omega}_{R|(A,\delta)}=F_R^*( \Omega_{R|A})$ with universal perivation $\tilde{d} = \eta \circ d$.
+\end{prop}
+\begin{proof} We know that any perivation is an $A$-linear derivation of Frobenius.
+Consider the diagram
+\[ \xymatrix{ & \Omega_{R|A} \ar[r]^-{\eta} \ar@{-->}[dd]^{\beta} & F^*_R(\Omega_{R|A}) \ar@{-->}[dd]^{\theta} \\ R \ar[ur]^{d_{R|A}} \ar[dr]_{\alpha} \ar[drr]^{\alpha} && \\ & {F_R}_*(M) \ar@{=}[r] & M  }\]
+Since $\alpha$ with target ${F_R}_*(M)$ is a derivation, there is a unique $R$-linear $\beta$ making the diagram commute. Then by extension of scalars, there is a unique  $R$-linear $\theta$ making the diagram commute. Thus $\eta d_{R|A}$ satisfies the universal property.
+\end{proof}
 
 \begin{thm} Let $(A,\delta)$ be a $\delta$-ring and $R= A[x_{\lambda} \ | \ \lambda\in \Lambda]$. Then the universal perivation module over $A$, $\Omega_{R|(A,\delta)}$, is a free $R/pR$ module with basis $\{ \tilde{d}x_{\lambda} \ | \ \lambda\in \Lambda\} \cup \{ \tilde{d}p\}$, and the universal perivation is given by
 \[ \tilde{d}_{R|(A,\delta)} (r) = \Delta(r) \tilde{d}p + \sum_{\lambda\in \Lambda} (\frac{dr}{dx_\lambda})^p \tilde{d}x_{\lambda},\]
@@ -2865,6 +2899,14 @@ The unique iso statement follows exactly as in the case of differentials.
 
 
 
+
+\begin{thm}[Second fundamental sequence]
+Let $(A,\delta)$ be a $\delta$-ring, and $R\xra{\phi} S=R/I$ be a map of $A$-algebras. Then there is an exact sequence
+\[ F_{S/pS}(I/(I^2,pI)) \xra{\tilde{d}} S\otimes_R \widetilde{\Omega}_{R|(A,\delta)} \to \widetilde{\Omega}_{S|(A,\delta)} \to 0.\]
+Furthermore, if $A/pA$ is a perfect field and $I$ is a maximal ideal containing $p$, the first map is injective.
+\end{thm}
+
+
 \begin{defn} Let $(A,\delta)$ be a $\delta$-ring and $S=A[x_1,\dots,x_n]$. Let $\Delta$ be a $p$-derivation on $S$ extending $\delta$. For a sequence of elements $f_1,\dots,f_t\in S$, we define the \emph{mixed (column) Jacobian matrix}\index{mixed Jacobian matrix} to be
 \[ \widetilde{J}^T(f_1,\dots,f_t) = \begin{bmatrix} \Delta(f_1) & \cdots & \Delta(f_t) \\ (\frac{df_1}{dx_1})^p & \cdots & (\frac{df_t}{dx_1})^p \\ \vdots & \ddots & \vdots \\ (\frac{df_1}{dx_n})^p & \cdots & (\frac{df_t}{dx_n})^p \end{bmatrix}.\]
 \end{defn}
@@ -2872,7 +2914,7 @@ The unique iso statement follows exactly as in the case of differentials.
 \begin{thm}
  Let $(A,\delta)$ be a $\delta$-ring and $S=A[x_1,\dots,x_n]$. Let $\Delta$ be a $p$-derivation on $S$ extending $\delta$. Let $I=(f_1,\dots,f_t)$ and $R=S/I$. Let  $\fq$  be a prime containing $I$, and let $\fp=\fq R$. Then $\widetilde{\Omega}_{R_{\fp}|(A,\delta)}$ is the $R_\fp/ p R_{\fp}$-module with presentation matrix $\widetilde{J}^T(f_1,\dots,f_t)$.
  \end{thm}
- \begin{proof}[Sketch:] There is an analogue of the second fundamental sequence + universal perivation modules localize.
+ \begin{proof}[Sketch:] Follows from the second fundamental sequence + universal perivation modules localize.
  \end{proof}
  
  \begin{thm}
