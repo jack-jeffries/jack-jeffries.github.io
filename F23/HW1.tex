@@ -1,0 +1,165 @@
+\documentclass{amsart}
+\usepackage{amstext,amsfonts,amssymb,amscd,amsbsy,amsmath}
+\usepackage{geometry}[margin=1in]
+\pagestyle{empty}
+%\parindent = 0in
+
+
+\def\sol#1{{\bf Solution: } #1}
+%\def\sol#1{}
+\def\bl{\vskip .1in}
+\def\star{${}^*$}
+\def\cS{\mathcal S}
+\def\cT{\mathcal T}
+\def\cB{\mathcal B}
+
+\def\R{\mathbb R}
+\def\N{\mathbb N}
+\def\Q{\mathbb Q}
+\def\Z{\mathbb Z}
+
+\def\cC{\mathcal C}
+
+\def\e{\epsilon}
+\def\d{\delta}
+
+\begin{document}
+
+
+
+\begin{center}
+{\large\bfseries
+Math 445 --- Problem Set \#1 \\
+Due: Friday, September 1 by 7 pm, on Canvas}
+\end{center}
+
+
+
+
+
+{\bf Instructions:} You are encouraged to work together on these
+problems, but each student should hand in their own final draft,
+written in a way that indicates their individual understanding of
+the solutions. Never submit something for grading
+that you do not completely understand. 
+
+If you do work with others, I ask that you write something along the
+top like ``I collaborated with Steven Smale on problems 1 and 3''.
+If you use a reference, indicate so clearly in your solutions. 
+In short, be intellectually
+honest at all times.
+
+Please write neatly, using complete sentences and correct
+punctuation. Label the problems clearly. 
+
+
+
+
+
+
+\begin{enumerate}
+
+\item Which of the following are true?
+\begin{enumerate}
+\item $10 \equiv 45 \pmod 5$
+\item $19 \equiv 2 \pmod{12}$
+\item $150974 \equiv 6 \pmod 8$.
+\end{enumerate}
+
+
+\
+
+
+\item Let $m,m',n,n',K$ be integers with $K>0$. Prove that if
+\[ m \equiv m' \pmod K \ \ \text{and}\  \ n \equiv n' \pmod K\]
+then
+\[ m+n \equiv m'+n' \pmod K \ \ \text{and} \ \ mn \equiv m'n'\pmod K.\]
+
+\
+
+%\item Find an integer $N$ such that
+%\[ 1! + 2! + 3! +4! + 5! + 6! + 7! + \cdots + 100! \equiv N \pmod 5.\]
+%Explain.
+
+%\
+
+
+
+\item Divisibility tests and congruences:
+\begin{enumerate}
+\item Show that any natural number is congruent modulo $4$ to the two digit number (in base ten) that corresponds to its last two digits. Use this to show that a number is divisible by $4$ if and only if its last ``two digit part'' is divisible by $4$.
+\item Show that any natural number is congruent modulo $8$ to the three digit number (in base ten) that corresponds to its last three digits. Use\footnote{The step from the first sentence to the second sentence is similar to that in part (a); once you are convinced of this, you can just say this instead of repeating the argument.} this to show that a number is divisible by $8$ if and only if its ``last three digit part'' is divisible by $8$.
+\item Show\footnote{Hint: Start by showing that $10^k \equiv 1 \pmod 3$ for any $k$.} that any natural number is congruent modulo $3$ to the sum of its digits. Use this to show that a number is divisible by $3$ if and only the sum of its digits is divisible by $3$.
+\item Show that any natural number is congruent modulo $9$ to the sum of its digits. Use this to show that a number is divisible by $9$ if and only the sum of its digits is divisible by~$9$.
+\item Show that any natural number is congruent modulo $11$ to the alternating sum of its digits, i.e.
+\[ \text{1s digit} - \text{10s digit} + \text{100s digit} \pm \cdots.\]
+Use this to show that a number is divisible by $11$ if and only the alternating sum of its digits is divisible by $11$.
+\end{enumerate}
+
+\newpage
+
+
+\item The number $150974$ is a sum of three squares:
+\[ 362^2 + 141^2 +7^2 =150974.\]
+In this problem we will show that $150975$ is \emph{not} a sum of three squares; i.e., there are no integers $a,b,c$ such that
+\[ a^2 + b^2 + c^2 = 150975.\]
+\begin{enumerate}
+\item Show that if $a$ is odd, then $a^2\equiv 1 \pmod 8$.
+\item Show\footnote{Hint: Every even number is congreunt to $0$ mod $4$ or to $2$ mod $4$.} that if $a$ is even, then either $a^2 \equiv 0 \pmod 8$ or $a^2 \equiv 4 \pmod 8$.
+\item Show that if $n=a^2+b^2+c^2$, then $n \equiv 7 \pmod 8$ is impossible.
+\item Conclude that $150975$ is {not} a sum of three squares.
+\end{enumerate}
+
+\
+
+\item  Let $a,b,c$ be integers. Use prime factorization to show that if $a$ and $b$ have no common prime factor and $a$ divides $bc$, then $a$ divides $c$.
+
+\end{enumerate}
+
+\noindent  \hrulefill
+
+\noindent The remaining problems are only required for Math 845 students, though all are encouraged to think about them.
+
+\
+
+\begin{enumerate}\setcounter{enumi}{5}
+
+
+
+\item Recall that the Fibonacci sequence is given by the formula
+\[ f_{n+2} = f_{n+1} + f_n, \ f_0=f_1=1.\]
+For which $n$ is $f_n$ a multiple of $2$? A multiple of $4$? A multiple of $5$?
+
+\
+
+\item Find a formula for all of the rational points $(x,y)$ on the hyperbola $x^2-2y^2=1$. 
+
+\end{enumerate}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
