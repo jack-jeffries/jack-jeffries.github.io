@@ -1,0 +1,173 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,enumerate,colonequals}
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\blue}{\color {blue}}
+\newcommand{\red}{\color {red}}
+\newcommand{\olive}{\color {olive}}
+\newcommand{\violet}{\color {violet}}
+\newcommand{\orange}{\color{orange}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+\newcommand{\ceq}{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+
+\numberwithin{equation}{section}
+
+
+\theoremstyle{plain} %% This is the default, anyway
+\newtheorem{thm}	[section]	{Theorem}
+\newtheorem{cor}	[section]	{Corollary}
+\newtheorem{lem}	[section]	{Lemma}
+\newtheorem{prop}	[section]	{Proposition}
+\newtheorem{defn}	[section]	{Definition}
+\newtheorem{axiom}	[section]	{Axiom}
+\newtheorem{conj}	[section]	{Conjecture}
+\newtheorem{quest}	[section]	{Question}
+
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{Worksheet \#1}
+	
+	\begin{defn} A triple $(a,b,c)$ of natural numbers is a \textbf{Pythagoran triple} if they form the side lengths of a right triangle, where $c$ is the length of the hypotenuse.
+\end{defn}
+
+\begin{thm}[Fundamental Theorem of Arithmetic] Every natural number $n\geq 1$ can be written as a product of prime numbers:
+\[ n = p_1^{e_1} p_2^{e_2} \cdots p_k^{e_k}.\]
+This expression is unique up to reordering. \qed
+\end{thm}
+
+\begin{defn} We call the number $e_i$ the \textbf{multiplicity} of the prime $p_i$ in the prime factorization of \[n=p_1^{e_1} p_2^{e_2} \cdots p_k^{e_k}.\]\end{defn}
+
+	\begin{defn}  Let $m,n$ be integers and $K\geq 1$ be a natural number. We say that \textbf{$m$ is congruent to $n$ modulo $K$}, written as $m \equiv n \pmod K$, if $m-n$ is a multiple of $K$.\end{defn}
+
+
+\begin{thm} Let $n$ be an integer and $K\geq 1$ a natural number. Then $n$ is congruent to exactly one nonnnegative integer between $0$ and $K-1$: this number is the ``remainder'' when you divide $n$ by~$K$. \qed
+\end{thm}
+
+\begin{prop} Let $m,m',n,n'$ and $K$ be natural numbers. Suppose that 
+\[ m \equiv m' \pmod K \quad \text{and} \quad n\equiv n' \pmod K.\]
+Then
+\[ \pushQED{\qed} m+n \equiv m'+n' \pmod K \quad \text{ and} \quad mn \equiv m'n' \pmod K .\qedhere\popQED\]\end{prop}
+	
+\begin{defn}  A triple $(a,b,c)$ of natural numbers is a \textbf{primitive Pythagoran triple (PPT)} if ${a^2+b^2=c^2}$, and there is no common factor of $a,b,c$ greater than $1$; equivalently, $a,b,c$ have no common prime factor.
+\end{defn}
+
+\begin{thm} The set of primitive Pythagorean triples $(a,b,c)$ with $a$ odd is given by the formula
+\[ a=st, \quad b=\frac{s^2-t^2}{2} , \quad c=\frac{s^2+t^2}{2},\]
+where $s>t\geq 1$ are odd integers with no common factors.\end{thm}
+
+\begin{thm} The set of points on the unit circle $x^2+y^2=1$ with positive rational coordinates is given by the formula
+\[ (x,y) = \left( \frac{ 2v}{v^2+1}, \frac{v^2-1}{v^2+1} \right)\]
+where $v$ ranges through rational numbers greater than one. \end{thm}
+
+
+
+\section*{Worksheet \#2}
+
+
+\begin{defn} The \textbf{greatest common divisor} of two integers $a$ and $b$, denoted $\gcd(a,b)$, is the largest integer that divides $a$ and $b$.\end{defn}
+
+
+\begin{defn} Two integers $a$ and $b$ are \textbf{coprime} if $\gcd(a,b)=1$.\end{defn}
+
+
+\begin{thm}
+The Euclidean algorithm terminates and outputs the correct value of $\gcd(a,b)$.
+\end{thm}
+
+
+\begin{defn}  An expression of the form $ra+sb$ with $r,s\in \Z$ is a \textbf{linear combination} of $a$ and $b$.\end{defn}
+
+\begin{cor} If $a,b$ are integers, then $\gcd(a,b)$ can be realized as a linear combination of $a$ and $b$. Concretely, we can use the Euclidean algorithm to do this.
+\end{cor}
+
+\begin{thm} Let $a,b,c$ be integers. The equation 
+\[ ax+by=c\]
+has an integer solution if and only if $c$ is divisible by $d\ceq \gcd(a,b)$. If this is the case, there are infinitely many solutions. If $(x_0,y_0)$ is a one particular solution, then the general solution is of the form
+\[ x = x_0 - (b/d)n ,\quad y= y_0+(a/d) n\]
+as $n$ ranges through all integers.
+\end{thm}
+
+\section*{Problem Set \#1}
+
+\begin{lem} Lat $a,b,c$ be integers. If $a$ and $b$ are coprime, and $a$ divides $bc$, then $a$ divides $c$.
+\end{lem}
+
+\section*{Worksheet \#3}
+
+\begin{defn} A \textbf{congruence class} modulo $K$ is a set of the form
+\[ [a] \ceq \{ n\in \Z \ | \ n\equiv a \pmod{K}\}\]
+for some $a\in \Z$.
+\end{defn} 
+
+\begin{defn} A \textbf{representative} for a congruence class is an element of the congruence class.
+\end{defn}
+
+\begin{prop} Given $K>0$, the set of integers $\Z$ is the disjoint union of $K$ congruence classes:
+\[  \Z = [0] \sqcup [1] \sqcup \cdots \sqcup [K-1]. \]
+\end{prop}
+
+\begin{defn} The ring $\Z_K$ is the set of congruence classes modulo $K$:
+\[\{ [0] , [1], \ldots, [K-1]\}\] equipped with the operations
+\[ [a] + [b] = [a+b] \quad\text{and}\quad [a][b] = [ab].\]
+\end{defn}
+
+
+\begin{defn} We say that a number $a$ is a \textbf{unit modulo $K$}  if there is an integer solution $x$ to $ax\equiv 1 \pmod{K}$, and we say that such a number $x$ is an \textbf{inverse modulo $K$} to $a$.
+\end{defn}
+
+\begin{defn} We say that a congruence class $[a]$ is a \textbf{unit in $\Z_K$} if there is a congruence class $x \in \Z_K$ such that $[a] x = [1]$, and we say that such a class $x$ is an \textbf{inverse} to $[a]$ in $\Z_K$.
+\end{defn}
+
+\begin{thm}
+ Let $a$ and $n$ be integers, with $n$ positive. Then $a$ is a unit modulo $n$ if and only if $a$ and $n$ are coprime.
+ \end{thm}
+ 
+ \begin{thm}[Chinese Remainder Theorem]
+ Given $m_1,\dots,m_k >0$ integers such that $m_i$ and $m_j$ are coprime for each $i\neq j$, and $a_1,\dots,a_k\in \Z$, the system of congruences
+\[ \begin{cases} \begin{aligned} 
+x &\equiv a_1 \pmod{m_1}  \\
+x &\equiv a_2 \pmod{m_2}  \\
+&\ \ \vdots \qquad \qquad \vdots\\
+x &\equiv a_k \pmod{m_k}
+\end{aligned}\end{cases}\]
+has a solution $x\in \Z$. Moreover, the set of solutions forms a unique congruence class modulo $m_1 m_2 \cdots m_k$.
+\end{thm}
+
+
+
+
+\end{document}
