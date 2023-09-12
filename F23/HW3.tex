@@ -1,0 +1,158 @@
+\documentclass{amsart}
+\usepackage{amstext,amsfonts,amssymb,amscd}
+\usepackage[margin=1.2in]{geometry}
+%\usepackage[showframe=false,headheight=1cm,margin=1in,bottom=1in]{geometry}
+%\pagestyle{empty}
+%\parindent = 0in
+
+
+\def\sol#1{{\bf Solution: } #1}
+%\def\sol#1{}
+\def\bl{\vskip .1in}
+\def\star{${}^*$}
+\def\cS{\mathcal S}
+\def\cT{\mathcal T}
+\def\cB{\mathcal B}
+
+\def\R{\mathbb R}
+\def\N{\mathbb N}
+\def\Q{\mathbb Q}
+\def\Z{\mathbb Z}
+
+\def\cC{\mathcal C}
+
+\def\e{\epsilon}
+\def\d{\delta}
+
+\begin{document}
+
+
+\begin{center}
+{\large\bfseries
+Math 445 --- Problem Set \#3 \\
+Due: Tuesday, September 19 by 7 pm, on Canvas}
+\end{center}
+
+
+
+
+
+{\bf Instructions:} You are encouraged to work together on these
+problems, but each student should hand in their own final draft,
+written in a way that indicates their individual understanding of
+the solutions. Never submit something for grading
+that you do not completely understand. If you do work with others, I ask that you write something along the
+top like ``I collaborated with Steven Smale on problems 1 and 3''.
+If you use a reference, indicate so clearly in your solutions. 
+In short, be intellectually
+honest at all times. Please write neatly, using complete sentences and correct
+punctuation. Label the problems clearly. 
+
+
+
+
+
+
+\begin{enumerate}
+
+
+
+%\item For a positive integer $n$, we define (just for this homework set) its \emph{divisibility quotient} to be the ratio
+%\[ \mathrm{dq}(n) := \frac{ \# \{\text{positive divisors of} \ n\}}{n}.\]
+%Find the maximum value of $\mathrm{dq}(n)$ amongst all positive integers, and characterize the numbers $n$ that achieve this value.
+
+%\
+
+\item Using methods from this class, find all integers $x$ that satisfy the congruences:
+\[ \begin{cases} 
+x \equiv 1 \pmod{3}\\
+x \equiv 2 \pmod{5}\\
+x \equiv 3 \pmod{8}.
+\end{cases}\]
+
+\
+
+
+
+\item Compute\footnote{Note that the standard convention for double exponents is that $a^{b^c}$ means $a^{(b^c)}$ and not $(a^b)^c=a^{bc}$. Also, Nebraska beat Iowa State 26--14 on Nov 17, 1923.} the last three base ten digits\ of $11^{17^{1923}}$.
+
+\
+
+\item Computing (some) roots in $\Z_n$:
+\begin{enumerate}
+\item Suppose we are given a congruence equation of the form $a^m \equiv b \pmod{n}$, with $a$ and $n$ coprime. Given integers $c,d$ such that $cm+d\varphi(n) = 1$, show that
+$b^c \equiv a \pmod{n}$.
+\item Use this to find a cube root of $[7]$ in $\Z_{101}$, and a seventh root of $[3]$ in $\Z_{200}$.
+\item Explain why this method will never help us find square roots in $\Z_p$ for $p$ an odd prime.
+\end{enumerate}
+
+\
+
+\item Let $G$ be a finite group and $g\in G$. Suppose that $g^n=1$ for some positive integer $n$, where $1\in G$ is this identity element. Show that the order of $g$ divides $n$.
+
+\
+
+\item Prove that if $p$ and $q$ are distinct odd primes, there is no primitive root in $\Z_{pq}$.
+
+\end{enumerate}
+
+\noindent  \hrulefill
+
+\noindent The remaining problems are only required for Math 845 students, though all are encouraged to think about them.
+
+\
+
+\begin{enumerate}\setcounter{enumi}{5}
+
+
+\item Fermat and Euler without the fine print:
+\begin{enumerate}
+\item Fermat's little theorem is often stated as: Let $p$ be a prime, and $a$ any integer. Then $a^p \equiv a \pmod{p}$. Deduce this, perhaps with the help of our version.
+\item Show that if $n$ is a product of distinct primes, then for any integer $a$, ${a^{\varphi(n)+1} \equiv a \pmod{n}}$.
+\item Find a counterexample to the statement: if $n>1$ is an integer, then for any integer $a$, $a^{\varphi(n)+1} \equiv a \pmod{n}$.
+\end{enumerate}
+
+
+\
+
+\item Prove\footnote{One possibility is to follow these steps (but please write your proof in a self-contained form):
+\begin{enumerate}
+\item We already know this is true when $n=1$. For $n=2$, first show that if $[r]_p$ is a primitive root in $\Z_p$, then the order of $[r]_{p^2}$ in $\Z_{p^2}^\times$ is either $p-1$ or $p(p-1)$.
+\item Show that if  $[r]_p$ is a primitive root in $\Z_p$, then either $[r]_{p^2}$ or $[r+p]_{p^2}$ is a primitive root in $\Z_{p^2}$.
+\item Show that if $r\in \Z$ is such that  $[r]_{p}$ is a primitive root in $\Z_{p}$ and $[r]_{p^2}$ is a primitive root in $\Z_{p^2}$, then $r^{p^{k-2}(p-1)} \not\equiv 1 \pmod{p^k}$ for any $k\geq 2$.
+\item Conclude the proof.
+\end{enumerate}}
+ that if $p$ is an odd prime and $n>0$, then there is a primitive root in $\Z_{p^n}$.
+
+
+
+
+\end{enumerate}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
