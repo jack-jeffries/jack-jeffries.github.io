@@ -123,7 +123,7 @@ as $n$ ranges through all integers.
 
 \section*{Problem Set \#1}
 
-\begin{lem} Lat $a,b,c$ be integers. If $a$ and $b$ are coprime, and $a$ divides $bc$, then $a$ divides $c$.
+\begin{lem} Lat $a,b,c$ be integers. If $a$ and $b$ are coprime, and $a$ divides $bc$, then $a$ divides $bc$.
 \end{lem}
 
 \section*{Worksheet \#3}
@@ -167,6 +167,92 @@ x &\equiv a_k \pmod{m_k}
 has a solution $x\in \Z$. Moreover, the set of solutions forms a unique congruence class modulo $m_1 m_2 \cdots m_k$.
 \end{thm}
 
+\section*{Problem Set \#2}
+
+\begin{lem} Lat $a,b,c$ be integers. If $a$ and $b$ are coprime, $a$ divides $c$, and $b$ divides $c$, then $a$ divides $bc$.
+\end{lem}
+
+\begin{defn}  Given integers $a_1,\dots,a_m$, the \textbf{greatest common divisor} of $a_1,\dots,a_m$ is the largest integer that divides all of them. 
+\end{defn}
+
+\begin{thm} Let $a,b,n$ be integers, with $n>0$. Then $[a] x = [b]$ has a solution $x$ in $\Z_n$ if and only if $\gcd(a,n)$ divides $b$. In this case, the number of distinct solutions is exactly $\gcd(a,n)$.
+\end{thm}
+
+\section*{Worksheet \#4}
+
+\begin{defn} A \textbf{group} is a set $G$ equipped with a product operation \[ G\times G \to G \qquad (g,h)\mapsto gh \] and an \textbf{identity} element $1\in G$ such that
+\begin{itemize}
+\item the product is associative: $(gh)k = g(hk)$ for all $g,h,k\in G$,
+\item $g1 = 1g = g$ for all $g\in G$, and
+\item for every $g\in G$, there is an inverse element $g^{-1}\in G$ such that $gg^{-1} = g^{-1} g = 1$.
+\end{itemize}
+\end{defn}
+
+
+\begin{defn} A group is \textbf{abelian} if the product is commutative: $gh=hg$ for all $g,h\in G$.
+\end{defn}
+
+\begin{defn} A \textbf{finite group} is a group $G$ that is a finite set.
+\end{defn}
+
+
+\begin{defn}  Let $G$ be a group and $g\in G$. The \textbf{order} of $g$ is the smallest positive integer $n$ such that $g^n =e$, if some such $n$ exists, and $\infty$ if no such integer exists.
+\end{defn}
+
+\begin{thm}[Lagrange's Theorem]  Let $G$ be a finite group and $g\in G$. Then the order of $g$ is finite and divides the cardinality of the group $G$.
+\end{thm}
+
+
+\begin{thm}[Fermat's Little Theorem] Let $p$ be a prime number and $a$ an integer. If $p$ does not divide $a$, then \[ a^{p-1} \equiv 1 \pmod p.\] 
+\end{thm}
+
+\begin{defn} Let $n$ be a positive integer. We define $\varphi(n)$ to be the number of elements of $\Z_n^\times$. We call this \textbf{Euler's phi function}.
+\end{defn}
+
+\begin{prop} Euler's phi function satisfies the following properties.
+\begin{enumerate}
+\item If $p$ is a prime and $n$ is a positive integer, then $\varphi(p^n) = p^{n-1}(p-1)$.
+\item If $m,n$ are coprime positive integers, then $\varphi(mn)=\varphi(m)\varphi(n)$.
+\end{enumerate}
+\end{prop}
+
+\begin{thm}[Euler's Theorem] Let $a,n$ be coprime integers, with $n$ positive. Then
+\[ a^{\varphi(n)} \equiv 1 \pmod n.\]
+\end{thm}
+
+
+\section*{Worksheet \#5}
+
+
+\begin{prop} Let $p$ be a prime. Let $p(x)$ be a polynomial of degree $d$ with coefficients in $\Z_p$. Then $p(x)$ has at most $d$ roots in $\Z_p$.\qed
+\end{prop}
+
+\begin{lem} If $G$ is a group, $g\in G$, and $n$ a positive integer such that $g^n=1$, then the order of $g$ divides $n$.
+\end{lem}
+
+
+\begin{defn} Let $n$ be a positive integer. An element $x \in \Z_n^\times$ is a \textbf{primitive root} if the order of $x$ in $\Z_n^\times$ equals $\phi(n)$ (the cardinality of $\Z_n^\times$).
+\end{defn}
+
+\begin{thm} Let $p$ be a prime number. Then there exists a primitive root in $\Z_p^\times$.
+\end{thm}
+
+\begin{defn} If $[a]$ is a primitive root in $\Z_p$, the function
+\[ \Z_p^\times \to \Z_{p-1} \qquad [b]\mapsto [m] \ \text{such that} \ [b]=[a]^m\]
+is called the \textbf{discrete logarithm} or \textbf{index} of $\Z_p^\times$ with base $[a]$.
+\end{defn}
+
+\begin{lem} Let $p$ be a prime and $[a]$ a primitive root in $\Z_p$. The corresponding discrete logarithm function $I: \Z_p^\times \to \Z_{p-1}$ satisfies the property
+\[ I( xy) = I(x) + I(y) \quad \text{and} \quad I(x^n) = [n] I(x)\]
+for $x,y\in \Z_p^\times$ and $n\in \N$.
+\end{lem}
+
+
+\begin{prop} Let $n$ be a positive integer. Then $\displaystyle \sum_{d \, |\, n} \varphi(d) = n.$
+\end{prop}
+
+\begin{thm} Let $p$ be a prime. Suppose that there are $n$ distinct solutions to $x^n=1$ in $\Z_p$. Then $\Z_p^\times$ has exactly $\varphi(n)$ elements of order $n$.
+\end{thm}
 
 
 
