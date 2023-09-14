@@ -254,6 +254,39 @@ for $x,y\in \Z_p^\times$ and $n\in \N$.
 \begin{thm} Let $p$ be a prime. Suppose that there are $n$ distinct solutions to $x^n=1$ in $\Z_p$. Then $\Z_p^\times$ has exactly $\varphi(n)$ elements of order $n$.
 \end{thm}
 
+\section*{Worksheet \#6}
+
+\begin{defn}
+We say that an element $x\in \Z_n$ is a \textbf{square} or a \textbf{quadratic residue} if there is some $y\in \Z_n$ such that $y^2=x$, and in this case, we call $y$ a \textbf{square root} of $x$. 
+\end{defn}
+
+\begin{defn} Let $p$ be an odd prime. For $r\in \Z$ not a multiple of $p$ we define the \textbf{Legendre symbol}  of $r$ with respect to $p$ as 
+\[ \left( \frac{r}{p} \right) = \begin{cases} 1 & \text{if} \ [r] \ \text{is a square in} \ \Z_p, \\ -1 & \text{if} \ [r] \ \text{is a not square in} \ \Z_p. \end{cases}\]
+\end{defn}
+
+
+\begin{thm}[Euler's Criterion] 
+ For $p$ an odd prime and $r\in \Z$ not a multiple of $p$, we have
+\[\displaystyle \left( \frac{r}{p} \right) \equiv r^{(p-1)/2} \pmod p.\]
+\end{thm}
+
+
+
+\begin{thm}[Quadratic Reciprocity part $-1$] If $p$ is odd, then
+\[ \left( \frac{-1}{p} \right) = \begin{cases} 1 &\text{if} \ p\equiv 1 \pmod 4\\ -1 &\text{if} \ p\equiv 3 \pmod 4\end{cases}.\]
+\end{thm}
+
+
+\begin{prop} Let $p$ be an odd prime and $a,b$ integers not divisible by $p$. Then
+\begin{enumerate}
+\item $\displaystyle a\equiv b \pmod{p}$ implies that $\displaystyle \left(\frac{a}{p}\right) = \left(\frac{b}{p}\right)$.
+\item $\displaystyle\left(\frac{ab}{p}\right) = \left(\frac{a}{p}\right) \left(\frac{b}{p}\right)$.
+\item $\displaystyle\left(\frac{a^2}{p}\right) = 1$.
+\end{enumerate}
+\end{prop}
+
+
+
 
 
 \end{document}
