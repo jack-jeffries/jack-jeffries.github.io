@@ -1,0 +1,245 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,enumerate,colonequals}
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\blue}{\color {blue}}
+\newcommand{\red}{\color {red}}
+\newcommand{\olive}{\color {olive}}
+\newcommand{\violet}{\color {violet}}
+\newcommand{\orange}{\color{orange}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+\newcommand{\ceq}{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{Quadratic reciprocity}
+	
+	
+\begin{framed} \noindent From last time:
+
+\
+
+\noindent\textsc{Definition:} Let $p$ be an odd prime. For $r\in \Z$ not a multiple of $p$ we define the \textbf{Legendre symbol}  of $r$ with respect to $p$ as 
+\[ \left( \frac{r}{p} \right) = \begin{cases} 1 & \text{if} \ [r] \ \text{is a square in} \ \Z_p, \\ -1 & \text{if} \ [r] \ \text{is a not square in} \ \Z_p. \end{cases}\]
+
+\
+
+\noindent \textsc{Proposition:} Let $p$ be an odd prime and $a,b$ integers not divisible by $p$. Then
+%\begin{multicols}{2}
+\begin{enumerate}
+\item $\displaystyle a\equiv b \pmod{p}$ implies that $\displaystyle \left(\frac{a}{p}\right) = \left(\frac{b}{p}\right)$.
+
+\vspace{2mm}
+
+\item $\displaystyle\left(\frac{ab}{p}\right) = \left(\frac{a}{p}\right) \left(\frac{b}{p}\right)$.
+
+\vspace{2mm}
+
+\item $\displaystyle\left(\frac{a^2}{p}\right) = 1$. \hfill \qed
+\end{enumerate}
+
+
+\noindent \hrulefill
+
+\noindent \textsc{Theorem (Quadratic Reciprocity):} Let $p$ and $q$ be distinct odd primes. Then
+\[\begin{aligned} &\left( \frac{p}{q} \right) = \left( \frac{q}{p} \right) \quad &\text{if either} \ p\equiv 1\hspace{-3mm}\pmod 4 \ \text{or} \ q \equiv 1\hspace{-3mm}\pmod 4, \\
+&\left( \frac{p}{q} \right) =- \left( \frac{q}{p} \right) \quad &\text{if both} \ p\equiv 3\hspace{-3mm}\pmod 4 \ \text{and} \ q\equiv 3\hspace{-3mm}\pmod 4. \end{aligned} \]
+
+
+\
+
+\noindent \textsc{Theorem (Quadratic Reciprocity part 2):} Let $p$ be an odd prime. Then
+\[\begin{aligned} &\left( \frac{2}{p} \right) = 1 \quad &\text{if} \ p\equiv \pm 1\hspace{-3mm}\pmod 8,  \\
+&\left( \frac{2}{p} \right) = -1 \quad &\text{if} \ p\equiv \pm 3\hspace{-3mm}\pmod 8.  \\ \end{aligned} \]
+
+\end{framed}
+
+\
+
+\begin{enumerate}
+\item Computing quadratic residues with QR \& QR part 2:
+\begin{enumerate}
+\item Compute $\left( \frac{2}{7}\right)$, $\left( \frac{2}{11}\right)$, and $\left( \frac{2}{101}\right)$.
+\item What does QR say about $\left( \frac{3}{7}\right)$? Simplify the new Legendre symbol and evaluate.
+\item Apply the same strategy as the previous part to compute $\left(\frac{13}{107}\right)$. 
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\item $\left( \frac{2}{7}\right)=1$, $\left( \frac{2}{11}\right)=-1$, and $\left( \frac{2}{101}\right)=-1$.
+\item  $\left( \frac{3}{7}\right)=-\left( \frac{7}{3}\right)=-\left( \frac{1}{3}\right)=-1$.
+\item $\left(\frac{13}{107}\right)=\left( \frac{107}{13}\right)= \left( \frac{3}{13}\right) =\left( \frac{13}{3}\right)=\left( \frac{1}{3}\right)=1$. 
+\end{enumerate}
+}
+
+
+\item Computing quadratic residues QR, QR part 2, and the proposition:
+\begin{enumerate}
+\item Compute $\left( \frac{10}{13}\right)$ by starting with Proposition part (2), then continuing as in the previous problem.
+\item Compute $\left( \frac{38}{127}\right)$.
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\item $\left( \frac{10}{13}\right)=\left( \frac{2}{13}\right) \left( \frac{5}{13}\right) = -1 \cdot \left( \frac{13}{5}\right) = -1 \cdot \left( \frac{3}{5}\right) = -1 \cdot \left( \frac{5}{3}\right)  = -1 \cdot \left( \frac{2}{3}\right) = -1 \cdot -1 =1$.
+\item$\left( \frac{38}{127}\right) = \left( \frac{2}{127}\right) \left( \frac{19}{127}\right) = 1 \cdot -1 \cdot \left( \frac{127}{19}\right) = 1 \cdot -1 \cdot \left( \frac{127}{19}\right) = 1 \cdot -1 \cdot \left( \frac{13}{19}\right) = 1 \cdot -1 \cdot \left( \frac{19}{13}\right) = 1 \cdot -1 \cdot \left( \frac{5}{13}\right) = 1 \cdot -1 \cdot \left( \frac{13}{5}\right) = 1 \cdot -1 \cdot \left( \frac{3}{5}\right) = 1 \cdot -1 \cdot -1 = 1$.
+\end{enumerate}
+}
+
+\item How many solutions does the equation $[4]x^2 - [13] x + [5] = 0$ have in $\Z_{103}$?
+
+\solution{ We compute $[b^2 - 4ac] = [169 - 2 \cdot 4  \cdot 5] = [129] = [26]$. We compute $\left( \frac{26}{103} \right) = \left( \frac{2}{103} \right) \left( \frac{13}{103} \right) = 1\cdot  \left( \frac{103}{13} \right) = 1\cdot  \left( \frac{12}{13} \right) = 1 \cdot  \left( \frac{4}{13} \right) \cdot  \left( \frac{3}{13} \right) = 1 \cdot 1 \cdot  \left( \frac{13}{3} \right)  = 1 \cdot 1 \cdot  \left( \frac{1}{3} \right)  = 1.$
+ So, $[26]\in \Z_{103}$ is a nonzero square, and there are two solutions.}
+
+
+\end{enumerate}
+
+
+
+
+\begin{framed}
+\noindent \textsc{Gauss' Lemma:} Let $p$ be an odd prime and set $p' = \frac{p-1}{2}$. Note that every integer coprime to $p$ is congruent modulo $p$ to a unique integer  in the set $S= \{\pm1, \pm 2,\cdots, \pm p'\}$.
+
+ Let $a$ be an integer coprime to $p$. Consider the sequence
+\[ a, 2a, 3a, \dots, p'a \] and replace each element in the sequence with element of $S$ that is congruent with modulo $p$ to get a list $L$ of $p'$-many elements of $S$.
+
+Then $\displaystyle \left( \frac{a}{p} \right) = (-1)^\nu$, where $\nu$ is the number of negative integers in $L$.
+
+\
+
+\noindent \textsc{Lemma:} Let $p$ and $q$ be two coprime odd positive integers. Then 
+\[ \sum_{k=1}^{\frac{p-1}{2}} \left \lfloor \frac{kq}{p} \right\rfloor + \sum_{\ell=1}^{\frac{q-1}{2}} \left \lfloor \frac{\ell p}{q} \right\rfloor = \frac{p-1}{2} \cdot \frac{q-1}{2}.\]
+\end{framed}
+
+
+\begin{enumerate}\setcounter{enumi}{3}
+\item (Partial) proof of QR part 2 using Gauss' Lemma: Let's just deal with $p\equiv 3 \pmod{8}$. Write $p=8\ell+3$, so $p'=4\ell+1$. Compute $L$ explicitly and deduce the result.
+
+\solution{We apply Gauss' Lemma with $a=2$: we look at the sequence
+\[ 2,4,6,\dots 4\ell, 4\ell+2, \dots, 8\ell+2\]
+and compute  the list $L$
+\[ L= \{2,4,6,\dots 4\ell, -(4\ell +1), \dots, -1\}.\]
+Thus, the number of positive elements is $2\ell$ and the number of negative elements is $p' - 2\ell = 2\ell+1$, so by Gauss' Lemma,
+\[ \left(\frac{2}{p} \right) = (-1)^{2\ell + 1} = -1.\]}
+
+
+\item Proof of Gauss' Lemma:
+\begin{enumerate}
+\item Show that none of the elements of $L$ equal each other, nor are $\pm$ each other. Conclude that $L$ is, in some order, $\pm 1, \pm 2, \dots, \pm p'$, with each of $1,2, \dots, p'$ occurring once with a definite sign.
+\item Compute the product of $L$ modulo $p$ two different ways and simplify.
+\item Apply Euler's criterion, and conclude the proof.
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\item None are equal, since $ia \equiv ja \pmod{p}$ implies $i \equiv j \pmod{p}$, and none are negative of each other, since $ia \equiv -ja \pmod{p}$ implies $i+j \equiv 0 \pmod{p}$, which can't happen for $0\leq i< j \leq p'$.
+\item The product of $L$ modulo $p$ is
+\[ a \cdot 2a \cdot 3a \cdots p'a \equiv (\pm 1) \cdot (\pm 2) \cdot (\pm 3) \cdots (\pm p') \pmod{p},\]
+so, if $v$ is the number of negatives, we have
+\[ a^{p'} (p')! \equiv (-1)^v (p')! \pmod{p}.\]
+Since $(p')!$ is a unit mod $p$, we must have
+\[ a^{p'} \equiv (-1)^v \pmod{p}.\]
+\item By Euler's criterion, 
+\[ \left(\frac{a}{p} \right) \equiv a^{p'} \equiv (-1)^v \pmod{p}.\]
+\end{enumerate}
+}
+
+\item Proof of QR using Gauss' Lemma and other lemma:
+Take $p,q$ distinct odd primes. For each $k\in\{ 1,2,\dots, p'\}$, write $kq = \lfloor kq/p \rfloor p + r_k$ with $1\leq r_k \leq p-1$. Write
+\[ \{[q], [2q], \dots, [p' q]\} = \{ [r_1] , [r_2], \dots, [r_{p'}]\} = \{ [a_1] ,\dots, [a_u] \} \cup \{ [-b_1] , \dots,[-b_v]\}\]
+with $0< a_i < p'$ and $0 < b_i < p'$, as in the statement of Gauss' Lemma.
+
+
+\begin{enumerate}
+\item Explain why $\sum_{k=1}^{p'} k = \frac{p^2 -1}{8}$.
+\item Explain why $\sum_{k=1}^{p'} r_k = \sum_{i=1}^t a_i -  \sum_{i=1}^v b_i + v p$.
+\item Explain why $\sum_{i=1}^t a_i  +  \sum_{i=1}^v b_i = \frac{p^2 -1}{8}$.
+\item Explain why $\frac{p^2 -1}{8} \, q = p \, \sum_{k=1}^{p'} \lfloor kq / p\rfloor + \sum_{i=1}^t a_i -  \sum_{i=1}^v b_i + v p$.
+\item Explain why $\frac{p^2 -1}{8} \, (q-1) = p\,  \sum_{k=1}^{p'} \lfloor kq / p\rfloor + v p - 2\left(\sum_{i=1}^v b_i\right)$.
+\item Explain why $v\equiv \sum_{k=1}^{p'} \lfloor kq / p\rfloor \pmod{2}$, and apply Gauss' Lemma to deduce 
+\[ \left( \frac{q}{p} \right) = (-1)^{\sum_{k=1}^{p'} \lfloor kq / p\rfloor}.\]
+\item Switch the roles of $p$ and $q$, and plug the result into the other Lemma to show that
+\[ \left(\frac{p}{q}\right) \left(\frac{q}{p}\right) = (-1)^{\frac{p-1}{2} \cdot \frac{q-1}{2}}.\]
+Deduce the theorem.
+\end{enumerate}
+
+
+\solution{
+\begin{enumerate}
+\item This sum equals $\frac{p' (p'+1)}{2} = \frac{(p-1)(p+1)}{8} = \frac{p^2-1}{8}$.
+\item Every $r_k$ is either some $a_i$ or $p-b_i$, and each $a_i$ and $b_i$ occurs exactly once.
+\item As in the proof of Gauss' Lemma, each number between $1$ and $p'$ occurs exactly once as an $a_i$ or as a $b_i$. Then use part (a).
+
+\item \[ \begin{aligned} \frac{p^2 -1}{8} \, (q-1) &= \sum_{k=1}^{p'} kq = p \, \sum_{k=1}^{p'}  \lfloor kq / p\rfloor + \sum_{k=1}^{p'} r_k \\&= p \, \sum_{k=1}^{p'} \lfloor kq / p\rfloor + \sum_{i=1}^t a_i -  \sum_{i=1}^v b_i + v p.\end{aligned}\]
+\item Take (d) minus (c).
+\item Taking (e) modulo 2, since $q-1$ is even and $p$ is odd, we get this congruence. 
+By Gauss' Lemma, $\left( \frac{q}{p} \right)\equiv (-1)^v$, and swapping in for $v$, we get the statement.
+\item Switching roles, 
+\[ \left( \frac{p}{q} \right) = (-1)^{\sum_{\ell=1}^{q'} \lfloor \ell p / q\rfloor},\]
+where $q' = \frac{q-1}{2}$.
+Plugging  into the other Lemma yields
+\[ \left(\frac{p}{q}\right) \left(\frac{q}{p}\right) = (-1)^{\frac{p-1}{2} \cdot \frac{q-1}{2}}.\]
+Since $\frac{p-1}{2}$ is even if and only if $p\equiv 1 \pmod{4}$ and likewise with $q$, the exponent above is odd if and only if $p\equiv q \equiv 3 \pmod 4$. The statement of QR follows.
+\end{enumerate}
+}
+
+
+
+\item Proof of other lemma: Consider the rectangle below.
+\begin{center}
+\includegraphics{rect}
+\end{center}
+\begin{enumerate}
+\item Show that the number of integer points inside the rectangle (excluding the edges) is $\frac{p-1}{2} \cdot \frac{q-1}{2}$.
+\item Show that there are no integer points on the diagonal.
+\item Show that the number of integer points below the diagonal is $\sum_{k=1}^{\frac{p-1}{2}} \left \lfloor \frac{kq}{p} \right\rfloor$.
+\item Show that the number of integer points above the diagonal is $ \sum_{\ell=1}^{\frac{q-1}{2}} \left \lfloor \frac{\ell p}{q} \right\rfloor$. Conclude the proof.
+\end{enumerate}
+\solution{
+\begin{enumerate}
+\item The integer points inside are exactly the pairs $(k,\ell)$ with $1\leq k \leq \frac{p-1}{2}$ and $1\leq \ell \leq \frac{q-1}{2}$.
+\item A point $(a,b)$ on the diagonal would have $qa=pb$, which would imply $a$ is a multiple of $p$ (since $p,q$ coprime), which is impossible.
+\item The possible $x$ values are $1\leq k \leq \frac{p-1}{2}$ and for any given $k$, the possible $y$ values are bounded below by $1$ and above by $kq/p$; since these are integers, they range from $1$ to $\lfloor \frac{kq}{p} \rfloor$. This yields the sum in the statement.
+\item The first part follows from (c) by switching roles. Since every point in the square is either above or below the diagonal, the equality follows from (a), (c), and (d).
+\end{enumerate}
+}
+
+
+\end{enumerate}
+
+\end{document}
