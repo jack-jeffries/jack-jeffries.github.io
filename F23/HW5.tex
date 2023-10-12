@@ -1,0 +1,137 @@
+\documentclass{amsart}
+\usepackage{amstext,amsfonts,amssymb,amscd}
+\usepackage[margin=1.2in]{geometry}
+%\usepackage[showframe=false,headheight=1cm,margin=1in,bottom=1in]{geometry}
+%\pagestyle{empty}
+%\parindent = 0in
+
+
+\def\sol#1{{\bf Solution: } #1}
+%\def\sol#1{}
+\def\bl{\vskip .1in}
+\def\star{${}^*$}
+\def\cS{\mathcal S}
+\def\cT{\mathcal T}
+\def\cB{\mathcal B}
+
+\def\R{\mathbb R}
+\def\N{\mathbb N}
+\def\Q{\mathbb Q}
+\def\Z{\mathbb Z}
+
+\def\cC{\mathcal C}
+
+\def\e{\epsilon}
+\def\d{\delta}
+
+\begin{document}
+
+
+\begin{center}
+{\large\bfseries
+Math 445 --- Problem Set \#5 \\
+Due: Friday, October 20 by 7 pm, on Canvas}
+\end{center}
+
+
+
+
+
+{\bf Instructions:} You are encouraged to work together on these
+problems, but each student should hand in their own final draft,
+written in a way that indicates their individual understanding of
+the solutions. Never submit something for grading
+that you do not completely understand. If you do work with others, I ask that you write something along the
+top like ``I collaborated with Steven Smale on problems 1 and 3''.
+If you use a reference, indicate so clearly in your solutions. 
+In short, be intellectually
+honest at all times. Please write neatly, using complete sentences and correct
+punctuation. Label the problems clearly. 
+
+
+
+
+
+
+\begin{enumerate}
+
+\item The continued fraction expansion of Euler's constant $e$ is given by
+\[ e = [2;1,2,1,1,4,1,1,6,1,1,8, \dots].\]
+Use this and results from class to find a rational approximation of $e$ that is accurate to four digits (beyond the decimal place) without using any other knowledge about the number $e$.
+
+\
+
+
+\item Find the real number with continued fraction expansion 
+\[[1; 2,3,2,3,2,3,\dots]\quad \text{ (and repeats forever like so).}\]
+
+\
+
+\item Let $d\geq  2$ be a positive integer. \begin{enumerate}
+\item Show that the continued fraction expansion of $\sqrt{d^2+1}$ is 
+\[\sqrt{d^2+1}=  [d; 2d, 2d, 2d, 2d, 2d, 2d \dots]\quad \text{ (and repeats forever like so).}\]
+
+\item Show that the continued fraction expansion of $\sqrt{d^2-1}$ is 
+\[\sqrt{d^2-1} = [d-1; 1,  2d-2, 1, 2d-2, 1, 2d-2, \dots] \quad \text{ (and repeats forever like so).}\]
+\item Apply the previous parts to give continued fraction expansions for $\sqrt{101}$ and $\sqrt{63}$.
+\end{enumerate}
+
+
+\
+
+
+\item In this problem, we will prove the following theorem, which basically says that the convergents are the \emph{best} approximations of a rational number. 
+
+\noindent \textsc{Theorem:} Let $r$ be a real number, $C_k= \frac{p_k}{q_k}$ be the $k$-th convergent of $r$, and $\frac{p}{q}\neq r$ be a rational number, with $q>0$. If $q \leq q_k$, then  $\displaystyle \left| r-\frac{p}{q} \right| \geq \left| r-\frac{p_k}{q_k} \right| $.
+
+\begin{enumerate} 
+\item Set $u=(-1)^k (q_k p -  p_k q)$ and $v=(-1)^k( p_{k+1} q - q_{k+1} p)$. Show that $p_k u + p_{k+1} v = p$ and $q_k u + q_{k+1} v = q$.
+\item Show\footnote{Use the Proposition from class to show that $p_{k+1}, q_{k+1}$ are coprime, and that $u=0$ implies $q_{k+1} | q$.} that $u,v\neq 0$, and that\footnote{Use the second equation from part (a).} $u$ and $v$ have opposite signs.
+\item Show that $q_k r - p_k$ and $q_{k+1} r - p_{k+1}$ have opposite signs.
+\item Show that $|q r - p| = |u (q_k r - p_k) + v(q_{k+1} r - p_{k+1})| \geq |q_k r - p_k|$ and conclude the proof.
+\end{enumerate}
+
+\end{enumerate}
+
+%\noindent  \hrulefill
+
+%\noindent The remaining problem is only required for Math 845 students, though all are encouraged to think about them.
+
+%\
+
+%\begin{enumerate}\setcounter{enumi}{5}
+
+
+
+
+
+
+%\end{enumerate}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
