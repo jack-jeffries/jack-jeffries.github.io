@@ -80,15 +80,15 @@ Use this and results from class to find a rational approximation of $e$ that is 
 \
 
 
-\item In this problem, we will prove the following theorem, which basically says that the convergents are the \emph{best} approximations of a rational number. 
+\item In this problem, we will prove the following theorem, which basically says that the convergents are the \emph{best} approximations of a real number by a rational number. 
 
-\noindent \textsc{Theorem:} Let $r$ be a real number, $C_k= \frac{p_k}{q_k}$ be the $k$-th convergent of $r$, and $\frac{p}{q}\neq r$ be a rational number, with $q>0$. If $q \leq q_k$, then  $\displaystyle \left| r-\frac{p}{q} \right| \geq \left| r-\frac{p_k}{q_k} \right| $.
+\noindent \textsc{Theorem:} Let $r$ be a real number, $C_k= \frac{p_k}{q_k}$ be the $k$-th convergent of $r$, and $\frac{p}{q}\neq r$ be a rational number, with $q>0$. If $q < q_k$, then  $\displaystyle \left| r-\frac{p}{q} \right| > \left| r-\frac{p_k}{q_k} \right|$.
 
 \begin{enumerate} 
-\item Set $u=(-1)^k (q_k p -  p_k q)$ and $v=(-1)^k( p_{k+1} q - q_{k+1} p)$. Show that $p_k u + p_{k+1} v = p$ and $q_k u + q_{k+1} v = q$.
-\item Show\footnote{Use the Proposition from class to show that $p_{k+1}, q_{k+1}$ are coprime, and that $u=0$ implies $q_{k+1} | q$.} that $u,v\neq 0$, and that\footnote{Use the second equation from part (a).} $u$ and $v$ have opposite signs.
+\item Set $u=(-1)^k (q_k p -  p_k q)$ and $v=(-1)^k( p_{k+1} q - q_{k+1} p)$. Show that $p_{k+1} u + p_{k} v = p$ and $q_{k+1} u + q_{k} v = q$.
+\item Show\footnote{Hint: Use the Proposition from class to show that $p_{k}, q_{k}$ are coprime, and use this to show that $u=0$ implies $q_{k} | q$.} that $u,v\neq 0$, and that\footnote{Hint: Use the second equation from part (a).} $u$ and $v$ have opposite signs.
 \item Show that $q_k r - p_k$ and $q_{k+1} r - p_{k+1}$ have opposite signs.
-\item Show that $|q r - p| = |u (q_k r - p_k) + v(q_{k+1} r - p_{k+1})| \geq |q_k r - p_k|$ and conclude the proof.
+\item Show that $|q r - p| = |u (q_{k+1} r - p_{k+1}) + v(q_{k} r - p_{k})| \geq |q_k r - p_k|$ and conclude the proof.
 \end{enumerate}
 
 \end{enumerate}
