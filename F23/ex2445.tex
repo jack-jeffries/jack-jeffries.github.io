@@ -1,0 +1,260 @@
+
+%\documentclass{amsart}
+\documentclass[12pt]{amsart}
+
+%\usepackage[margin=.8in]{geometry}
+
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,enumerate,colonequals}
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+
+\usepackage{times, framed}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{xcolor}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\blue}{\color {blue}}                   
+\newcommand{\red}{\color {red}}                   
+\newcommand{\olive}{\color {olive}} 
+\newcommand{\violet}{\color {violet}} 
+\newcommand{\orange}{\color{orange}} 
+
+
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+
+\DeclareMathOperator{\res}{res}
+
+\usepackage[top=.8in, bottom=.8in, left=.5in, right=.5in]{geometry}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{1}
+
+
+	\thispagestyle{empty}
+	
+	\begin{center}
+		\Large{Math 445/845. Exam \#2 }\\
+
+	\end{center}
+	
+	
+	
+	\bigskip
+	
+\large
+
+
+	\begin{enumerate}
+		\item Definitions/Theorem statements
+		\begin{enumerate}
+			\item  Define the \textbf{norm function} on $\Z[\sqrt{D}]$ for some positive integer $D$ that is not~a~square.
+		\solution{The norm function on $\Z[\sqrt{D}]$ is the function $N: \Z[\sqrt{D}] \to \Z$ given by $N(a+b\sqrt{D}) = a^2 - b^2 D$.}		
+		
+		\vfill
+		
+		\item Define a \textbf{triangular number}.
+		
+		\solution{A triangular number is a natural number that counts the number of dots in a triangular array with base $k$ for some $k$.
+		}
+		
+		
+		\vfill
+		
+		\item State \textbf{Lagrange's theorem} (about elements of groups).
+		
+		\solution{If $G$ is a finite group, the order of an element of $G$ divides the cardinality of $G$.
+		}
+		
+		\vfill
+		
+		\item State the \textbf{Dirichlet approximation theorem}.
+				
+			\solution{For any irrational number $\alpha$, there are infinitely many rational numbers $\frac{p_k}{q_k}$ such that $\displaystyle\left| \alpha - \frac{p_k}{q_k}\right| <\frac{1}{q_k^2}$.
+		}
+		
+		
+		\vfill
+
+\end{enumerate}
+
+\newpage
+\item Computations.
+
+\begin{enumerate}
+
+ \item The picture below is part of the graph of an elliptic curve. Mark all points of order \emph{at most} four in the depicted portion of the graph, and explain each.
+\begin{center}
+\includegraphics[scale=.8]{ecurve} 
+\end{center}
+\solution{The point $A$ has order $2$ since it has a vertical tangent line. The points $B$ and $C$ have order $3$ because they are inflection points. The points $D$ and $E$ have order $4$ since their tangent lines hit a point on the $x$-axis.
+\begin{center}
+\includegraphics[scale=.6]{ecurve2} 
+\end{center}
+}
+
+
+
+\vfill
+
+
+\newpage
+
+\item \begin{enumerate}
+\item Compute the first two partial quotients (\emph{after} the integer part) in the continued fraction of $\sqrt{11}$.
+\solution{We compute
+\[ \begin{aligned}
+\sqrt{11} &= 3 + (\sqrt{11} - 3) = 3 + \frac{1}{(\sqrt{11} - 3)^{-1}} = 3 + \frac{1}{\left(\frac{\sqrt{11} + 3}{2}\right)} =  3 + \frac{1}{ 3+ \frac{\sqrt{11} - 3}{2}} \\
+&= 3 + \frac{1}{ 3+ \frac{1} {\left( \frac{2}{\sqrt{11} - 3}\right)}} = 3 + \frac{1}{ 3+ \frac{1} {\left( \frac{2(\sqrt{11} +3)}{2}\right)}} = 3 + \frac{1}{ 3+ \frac{1} {6 + \ddots}} 
+\end{aligned}\]
+}
+\vfill
+\vfill
+
+\item Use your calculation from part (a) to give a rational approximation of $\sqrt{11}$. Using results from this class (and not using the decimal expansion from a calculator), what can you say about the accuracy of your approximation?
+
+\solution{We get the convergent $3 + \frac{1}{3+ \frac{1}{6}} = \frac{63}{19}$. We know that $|\sqrt{11} - \frac{63}{19}|< \frac{1}{19^2}$.
+}
+\vfill
+\end{enumerate}
+
+
+\newpage
+
+\item Give an expression for the general\footnote{To find \textit{one} solution, you can either use the general technique or trial and error.} integer solution of $x^2 - 11y^2 = 1$.
+
+\solution{By trial and error (or using the convergents of $\sqrt{11}$), we can find the first solution $(10,3)$. Then we know that every solution is given as $(\pm x_k, \pm y_k)$ for $k\geq 0$, where $x_k + y_k\sqrt{11} = (10+3\sqrt{11})^k$.
+}
+
+
+\vfill
+
+
+\newpage
+
+\item The equation $y^2 = x^3 +44x + 25$ defines an elliptic curve. Two rational solutions to the equation are $(0, 5)$ and $(2, 11)$. Their reflections over the $x$-axis are also solutions. Find another rational solution besides these four.
+
+\solution{The line between $(0,5)$ and $(2,11)$ is given by the equation $y=3x+5$. Substituting, we get 
+\[\begin{aligned} (3x+5)^2&= x^3 + 44x + 25\\
+x^3 - 9x^2 +14x &= 0\\
+x(x-2)(x-7)&=0
+\end{aligned}\]
+The roots $x=0, x=2$ are accounted for, so $x=7$ yields the third point on the curve. We then get $(7,26)$ as another point on the curve.
+}
+
+
+\vfill
+
+
+\newpage
+
+
+
+\end{enumerate}
+
+\newpage
+
+
+
+
+
+\item Proofs.
+
+\bigskip
+
+\begin{enumerate}
+\item Consider the equation
+\begin{equation}\tag{$\dagger$} x^2 - D y^2 = 2 \end{equation}
+where $D$ is some positive integer that is not a perfect square.
+
+\
+\begin{enumerate}
+\item Show that if  the equation ($\dagger$) has an integer solution $(x,y)=(a_0,b_0)$, then the~equation ($\dagger$)~has infinitely many integer solutions $(x,y)=(a_k,b_k)$.
+
+\solution{Observe that $N(a+ b\sqrt{k}) = 2$ if and only if $(a,b)$ is a solution to~$(\dagger)$. We have show that there are infinitely many solutions $(c_k,d_k)$ to Pell's equation $x^2 + Dy^2 =1$. Note that a solution $(c_k,d_k)$ to Pell's equation has ${N(c_k+d_k\sqrt{D})=1}$. Then if we define $(a_k,b_k)$ by the rule ${a_k +b_k \sqrt{D} = (a_0 + b_0\sqrt{D})(c_k+d_k\sqrt{D})}$, we have ${N(a_k +b_k \sqrt{D} )} = {N(a_0 + b_0\sqrt{D})N(c_k+d_k\sqrt{D})}=2\cdot 1 = 2$, so $(a_k,b_k)$ is a solution. 
+
+These are distinct since $(a_k,b_k)\neq (a_j,b_j)$ implies $a_k+b_k\sqrt{D} = a_j+b_j\sqrt{D}$ implies $c_k +d_k \sqrt{D} = c_j +d_j \sqrt{D}$, which implies $(c_k,d_k) = (c_j,d_j)$.
+}
+
+\vfill
+
+\item Show that for $D=83$, the equation ($\dagger$) has no solution.
+
+\solution{Suppose that $(a,b)$ is a solution. Then $a^2 = 83b^2 + 2$. Going modulo $83$, we have $a^2 \equiv 2 \pmod{83}$. But $\left(\frac{2}{83}\right) = -1$ by quadratic reciprocity, so no such $a$ exists. This contradicts the existence of a solution.
+}
+
+\vfill
+
+\end{enumerate}
+\newpage
+
+
+\item Let $\overline{E}_p$ be an elliptic curve over $\Z_p$ given by the equation $y^2 = x^3 + [a] x + [b]$, where $p\geq 5$ is a prime. Suppose that  $[c]\in \Z_p$ is a root of the polynomial $x^3 + [a] x + [b] = 0$.
+
+\
+\begin{enumerate}
+\item Find\footnote{You can use any characterization of points of order $2$ that we have encountered in this class.} a point of order $2$ in $\overline{E}_p$.
+
+\solution{Consider the point $P=([c],[0])$. This is on the curve, by construction. To compute the tangent line at $P$, we take $2y \frac{dy}{dx} = 3x^2 + [a]$; since $y=[0]$, this is a line of vertical slope, so $2P=\infty$. This is then our point of order $2$.}
+
+\vfill
+
+\item Use part (i) and the group structure to show that the equation ${y^2 = x^3 + [a] x + [b]}$
+has an odd number of solutions in $\Z_p\times \Z_p$.
+
+\solution{Since there is a point of order $2$, we know that $\overline{E}_5$ has an even number of element by Lagrange's Theorem. Since $\overline{E}_5 = {E}_5\cup\{\infty\}$, where $E_5$ is the solution set tot he equation, ${E}_5$ has an odd number of elements.
+}
+
+\vfill
+\vfill
+\vfill
+ \end{enumerate}
+ \end{enumerate}
+\end{enumerate}
+\newpage
+
+
+
+
+
+
+
+\noindent \textbf{Bonus:} Show that for $\displaystyle\varphi=\frac{1+\sqrt{5}}{2}$, there do \emph{not} exist infinitely many rational numbers $\displaystyle\frac{p}{q}$ such that $\displaystyle \left| \varphi - \frac{p}{q} \right| < \frac{1}{q^3}$.
+
+\solution{Note first that for $q>2$, we have $q^3 > 2q^2$, so $\left| \varphi - \frac{p}{q} \right| < \frac{1}{q^3}$ implies $\left| \varphi - \frac{p}{q} \right| < \frac{1}{2q^2}$, and we know that this implies that $\frac{p}{q} = \frac{p_k}{q_k}$ for some convergent $C_k=\frac{p_k}{q_k}$ (by a Theorem saying that good approximations are convergents). For $q\leq 2$, we can see that $\frac{1}{1}$ and $\frac{2}{1}$ are the only numbers that work, so it suffices to show that at most finitely many convergents satisfies the hypotheses.
+
+From the continued fraction expansion $\varphi=[1;1,1,1,1,1,\dots]$ that we computed in class, we see that $C_k = \frac{f_{k+1}}{f_k}$ for the Fibonacci numbers $f_k$. We know that $C_{2n} < C_{2n+2} < \varphi < C_{2n+1} < C_{2n-1}$ for all $n$, so it suffices to show that $|C_{k+2} - C_k| > \frac{1}{f_k^3}$ for large enough $k$. After simplifying, the left hand side is $\frac{|f_{k+2} f_k - f_{k+1}^2|}{f_k f_{k+2}}$.
+
+We claim that $f_{k+2} f_k - f_{k+1}^2=(-1)^k$ for all $k$. We show the claim by induction on $k$. For $k=0$, we get $1\cdot 2-1^1 = 1$. For the induction step, assuming the equality holds for $k$, we have
+\[ \begin{aligned} f_{k+3} f_{k+1} - f_{k+2}^2 &= (f_{k+2} + f_{k+1})f_{k+1} - (f_1+f_0)^2 = f_{k+2} f_{k+1} - 2 f_{k+1}f_k - f_k^2 \\
+& = f_{k+1}^2 + f_k f_{k+1} - 2 f_{k+1}f_k - f_k^2 = f_{k+1}^2  -  f_{k+1}f_k - f_k^2 \\
+&= f_{k+1}^2 - f_k f_{k+2} = - (-1)^k = (-1)^{k+1},
+\end{aligned}\]
+completing the proof of the claim. Thus, $|C_{k+2} - C_k| = \frac{1}{f_k f_{k+2}}$.
+
+Now 
+\[ f_{k+2} = f_{k+1} + f_k = 2 f_k + f_{k-1} \leq 3f_k,\]
+ so $\frac{1}{f_k^3} < \frac{1}{3 f_k^2} \leq \frac{1}{f_k f_{k+2}} = |C_{k+2} - C_k|$ for $f_k>3$. This completes the proof.
+}
+
+
+
+
+
+
+	
+	\end{document}
