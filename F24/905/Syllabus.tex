@@ -1,0 +1,193 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=0.65in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals,hyperref}
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+\newcommand\itemA{\stepcounter{enumi}\item[{\bf{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\bf{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\bf{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+%\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{{\large Math 905 Fall 2024: Commutative Algebra I}\\ MWF 11:30am--12:20pm, Burnett 203}
+	
+	
+
+	\subsection*{Instructor}  Jack Jeffries
+
+	\subsection*{Office}  325 Avery Hall
+
+	\subsection*{Email}   jack.jeffries@unl.edu
+
+	\subsection*{Office Hours}  Wednesday 1:30pm--3pm, Thursdays 1pm--2pm, and by appointment.
+
+	
+	\subsection*{What is Commutative Algebra?} In short, Commutative Algebra is the study of commutative rings. Wherever there are numbers or functions, rings are generally lurking in the background. Commutative Algebra largely developed to explain the strange similarities between integers and polynomials, and has deep connections to Algebraic Geometry, Number Theory, Complex Analysis, and Representation Theory.
+	
+	Three major themes in this course will be:
+	\begin{enumerate}
+	\item Every ring is a geometric object! We will come to think of rings in this way, in addition to their more obvious nature as bags of knickknacks that can be added, subtracted, and multiplied.
+	\item The hypothesis studied by and named in honor of Emmy Noether has incredible finiteness properties. Investigating these will be a recurring feature.
+	\item While there will be many definitions and theorems, we will stay grounded and become quite familiar with many actual rings.
+	\end{enumerate}	
+	\subsection*{Prerequisites} We will lean upon some basics of rings, ideals, and modules, as covered in the Math 817--818 sequence. In particular, you should be familiar with the definitions of ring, ideal, and module; quotient rings and quotient modules; the First, Second, and Third Isomorphism Theorems for rings and modules; polynomial rings; PIDs and UFDs; free modules; the structure theory of finitely generated modules over PIDs; and Gauss' and Eisenstein's criteria. If you are unfamiliar with these things, I recommend reaching out to me to discuss.
+	
+	We will also use some of the basic notions from point set topology (abstract topological space, continuous function, and connectedness) and elementary real analysis ($\varepsilon$/$\delta$ definition of continuity). If you are unfamiliar with any of these things, I recommend meeting me so I can point you to some background reading before the~course.
+	
+
+	
+	\subsection*{Relationship to other courses} This course is a prerequisite for Math 953: Algebraic Geometry, which will be offered in Spring 2025, Math 918: Topics in Commutative Algebra, offered Spring 2025 \& 2026, and Math~906: Commutative Algebra II, offered in Spring 2026. Math 905 runs on a two-year cycle, and will not run again until Fall 2026.
+	
+	\subsection*{Style of class} \emph{This will be an active learning course.} Class time will be dedicated to working in groups instead of lecture. Each class day, we will have a worksheet exploring new definitions, examples, and theorems. Math is learned by working through proofs and examples. I could tell you about all of the interesting commutative algebra I know, and I could mix it in with funny anecdotes and obscure puns, but my algebra will never be your own until you do it. This style of class may stretch our comfort zone more than a conventional lecture, but it is a better approximation of doing research and writing a thesis than the latter.
+			
+	\subsection*{Requirements} Attendance is required.
+	We will cover a lot of material in this course. To facilitate effective group work, you will be expected to read a 1--2 page summary of the day's new definitions and theorems before class, and to review the new material after class. We will also have fortnightly homework assignments, which may include some problems from the worksheets, and will involve some basic computations with the computer algebra system Macaulay2.
+
+	\subsection*{Textbooks and other resources} There is no required text for the course. The worksheets we go through will be largely self-contained, but the worksheet previews will give pointers to related sections of Elo\'isa Grifo's Math 905 lecture notes from Fall 2022  and the seminal \emph{Introduction to commutative algebra} by Atiyah and MacDonald. Other sources that cover similar material include \emph{A term of commutative algebra} by Altman and Kleiman,  \emph{Math 614 Lecture notes} by Hochster, and \emph{Commutative Algebra with a view towards Algebraic Geometry} by Eisenbud. 
+		
+	
+\subsection*{Grading} Grades will be assigned based on assignments (80\%) and participation (20\%).
+
+
+\subsection*{UNL Course Policies and Resources}
+Students are responsible for knowing the university policies and resources found on this page (\url{https://go.unl.edu/coursepolicies}):
+ \begin{multicols}{2}
+ \begin{itemize}
+\item University-wide Attendance Policy
+\item Academic Honesty Policy
+\item Services for Students with Disabilities
+\item Mental Health and Well-Being Resources
+\item Final Exam Schedule 
+\item Fifteenth Week Policy 
+\item Emergency Procedures 
+\item Diversity \& Inclusiveness 
+\item Title IX Policy 
+\item Other Relevant University-Wide Policies
+\end{itemize} 
+\end{multicols}
+
+	
+	\subsection*{Tentative daily list of topics} 	$\phantom{\null}$
+	
+	\begin{multicols}{2}
+\begin{enumerate}
+\item Rings, Ideals, and Modules
+\begin{enumerate}[label=\theenumi.\arabic*.]
+\item Rings
+\item Ideals
+\item Modules
+\item Algebras
+\item Determinants
+\end{enumerate}
+\item Finiteness conditions
+\begin{enumerate}[resume, label=\theenumi.\arabic*.]
+\item Algebra-finite and module-finite maps
+\item Integral extensions
+\item Noetherian rings
+\item Noetherian modules
+\item UFDs and integral closure
+\end{enumerate}
+\item Graded rings
+\begin{enumerate}[resume, label=\theenumi.\arabic*.]
+\item Graded rings
+\item Graded modules
+\item Finiteness theorem for invariant rings
+\end{enumerate}
+\item Nullstellensatz and spectrum
+\begin{enumerate}[resume, label=\theenumi.\arabic*.]
+\item Noether normalization
+\item Nullstellensatz
+\item Varieties and radical ideals
+\item Spectrum of a ring
+\item Spectrum and radical ideals
+\end{enumerate}
+\item Localization
+\begin{enumerate}[resume, label=\theenumi.\arabic*.]
+\item Local rings and NAK
+\item Localization of rings
+\item Localization and spectrum
+\item Localization of modules
+\item Local properties
+\end{enumerate}
+\columnbreak
+\item Decompositions of ideals and modules
+\begin{enumerate}[resume, label=\theenumi.\arabic*.]
+\item Minimal primes
+\item Associated primes
+\item More associated primes
+\item Primary decomposition: existence
+\item Primary decomposition: uniqueness
+\end{enumerate}
+\item Dimension and affine algebras
+\begin{enumerate}[resume, label=\theenumi.\arabic*.]
+\item Dimension
+\item Krull-Seidenberg theorems
+\item More Krull-Seidenberg theorems
+\item Dimension of affine algebras
+\item Transcendence degree and dimension
+\end{enumerate}
+\item Local dimension theory
+\begin{enumerate}[resume, label=\theenumi.\arabic*.]
+\item Length and simple modules
+\item Dimension zero
+\item Krull height theorem
+\item Systems of parameters
+\item Regular local rings
+\end{enumerate}
+\item Graded dimension theory
+\begin{enumerate}[resume, label=\theenumi.\arabic*.]
+\item Hilbert functions for graded rings
+%\item The Hilbert function theorem
+\item Artin-Rees
+\item Hilbert function theorem for local rings
+\end{enumerate}
+\item Normal rings
+\begin{enumerate}[resume, label=\theenumi.\arabic*.]
+\item Dedekind domains
+\item Finiteness Theorem for integral closures
+\end{enumerate}
+\end{enumerate}
+\end{multicols}
+\end{document}
