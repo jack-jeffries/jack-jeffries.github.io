@@ -1,0 +1,138 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+
+\DeclareMathOperator{\res}{res}
+
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+	
+	\thispagestyle{empty}
+	
+	\section*{Warming up with if-then statements and real numbers}
+	
+\subsection*{Making sense of if-then statements}
+
+\
+
+\begin{framed}
+\begin{itemize}
+\item The \emph{converse} of the statement  ``If $P$ then $Q$'' is the statement  ``If $Q$ then $P$''.
+\item The \emph{contrapositive} of the statement  ``If $P$ then $Q$'' is the statement  ``If not $Q$ then not $P$''.
+\item Any if then statement is equivalent to its contrapositive, but not necessarily to its converse!
+\end{itemize}
+\end{framed}
+
+
+
+
+\begin{enumerate}
+\item For each of the following statements, write its contrapositive and its converse. Is the original/contrapositive/converse true or false for real numbers $a,b$? Explain why (but don't prove). 
+\begin{enumerate}
+\item If $a$ is irrational, then $1/a$ is irrational.
+\item If $a$ and $b$ are irrational, then $ab$ is irrational.
+\item If $a>3$, then $a^2>9$.
+\end{enumerate}
+\end{enumerate}
+
+
+
+
+
+\subsection*{Proving if-then statements}
+
+\
+
+\begin{framed}
+\begin{itemize}
+\item The general outline of a direct proof of ``If $P$ then $Q$'' goes
+\begin{enumerate}
+\item Assume $P$.
+\item Do some stuff.
+\item Conclude $Q$.
+\end{enumerate}
+\item Often it is easier to prove the contrapositive of an if-then statement than the original, especially when the conclusion is something negative. We sometimes call this an \emph{indirect proof} or a \emph{proof by contraposition}.
+\end{itemize}
+
+\end{framed}
+
+\begin{enumerate}\setcounter{enumi}{1}
+\item Consider the following proof of the claim ``For real numbers $x,y,z$, if $x+y=z+y$, then $x=z$'' from the list of axioms of $\R$. Match the parts of this proof with the general outline above. Which sentences are \emph{assumptions} and which sentences are \emph{assertions} (i.e., say something is true)? Is it clear \emph{just from reading each sentence on its own} whether it is an assumption or an assertion?
+\begin{quote}
+\emph{Proof.} Suppose that $x+y=z+y$. Then we can add $-y$ (which exists by Axiom 6) to get 
+\[(x+y)+ (-y) = (z+y) + (-y).\]
+This can be rewritten (by Axiom 3) as
+\[x+ (y+ (-y) )= z+ (y + (-y)),\]
+and hence (by Axiom 6) as
+\[ x+ 0 = z+0,\]
+which gives $x=z$ (by Axioms 4 and 2).\qed
+\end{quote}
+
+
+
+\item Consider the following purported proof of the true fact ``If $2x + 5 \geq 7$ then $x\geq 1$.'' Is this a good proof? Is it a correct proof?
+\begin{quote}
+\emph{Proof.}
+\[ x \geq 1.\]
+Multiply both sides by two.
+\[ 2x \geq 2.\]
+Add five to both sides.
+\[2x+5 \geq 7. \qed\]
+\end{quote}
+\end{enumerate}
+
+
+\subsection*{Proving if-then statements about real numbers}
+
+\begin{enumerate}\setcounter{enumi}{3}
+
+
+\item Let $x$ be a real number. Show that if $x^2$ is irrational, then $x$ is irrational.
+
+\
+
+\item Let $x$ and $y$ be real numbers. Use the axioms of $\R$ to prove\footnote{Hint: You may want to add something to both sides.} that if $x \geq y$ then $-x \leq -y$.
+
+
+\
+
+\item Let $x$ and $y$ be real numbers. Use the axioms of $\R$ to prove\footnote{Hint: You may want to add something to both sides.} that $x \geq y$ if and only if $-x \leq -y$.
+
+
+\
+
+\item Let $x,y$ be real numbers. Use the axioms of $\R$ and facts we have already proven\footnote{Be careful: are you using any facts that we have not already proven?} to prove that if $x\leq 0$ and $y\leq 0$, then $xy\geq 0$. 
+
+\
+
+
+
+\item Use\footnote{Hint: Try a proof by contradiction.} the axioms of $\R$ and facts we have already proven to prove that $1>0$.
+
+
+\end{enumerate}
+
+
+\end{document}
