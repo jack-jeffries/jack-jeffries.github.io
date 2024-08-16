@@ -2,8 +2,8 @@
 
 
 \usepackage{times}
-\usepackage[margin=0.7in]{geometry}
-\usepackage{amsmath,amssymb,multicol,graphicx,framed}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,comment}
 \usepackage[shortlabels]{enumitem}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\N}{\mathbb{N}}
@@ -32,47 +32,46 @@
 	
 	\thispagestyle{empty}
 	
-	\section*{Warming up with quantifiers and real numbers}
+	\section*{Warming up with quantifiers and real numbers: \S1.4 and \S1.5}
 	
-\subsection*{Making sense of quantifier statements}
+\subsection*{Making sense of quantifier statements} 
 
+\
 
 \begin{framed}
 \begin{itemize}
-\item The symbol for ``for all'' is $\forall$ and the symbol for ``there exists'' is $\exists$.
+\item The symbol for ``\textbf{for all}'' is $\forall$ and the symbol for ``\textbf{there exists}'' is $\exists$.
 \item The negation of ``For all $x\in S$, $P$'' is ``There exists $x\in S$ such that $\mathrm{not} \, P$''.
 \item The negation of ``There exists $x\in S$ such that $P$'' is ``For all $x\in S$, $\mathrm{not} \, P$''.
 \end{itemize}
 \end{framed}
 
-\
-
-\begin{enumerate}\setcounter{enumi}{0}
-\item Rewrite the following symbolic statements in sentences:
-
-
+\noindent \textit{A prankster has spraypainted the real number line red and blue, so every real number is red or blue (but not both)!}
 
 \
 
-\item A prankster has spraypainted the real number line red and blue, so every real number is red or blue (but not both).
 \begin{enumerate}
-\item Match each\footnote{Note: some precise statements correspond to multiple informal stories.} informal description (i)--(vi) below with the precise quantifier statement (A)--(D).
-Informal stories:
+\item Match each informal story (i)--(iv) below with a precise quantifier statement (A)--(D). 
+\end{enumerate}
+
+\begin{minipage}[c]{0.4\linewidth}
+\qquad \emph{Informal stories:}
 \begin{enumerate}[(i)]
 \item Every number past some point is red.
 
-\item Not every positive number is blue.
+%\item Not every positive number is blue.
 
-\item There are arbitrarily large red numbers.
+\item There are arbitrarily big red numbers.
 
-\item Every positive number is red.
+\item All positive numbers are red.
 
-\item You never get to a point where past that point every number is blue.
+%\item You never get to a point where past that point every number is blue.
 
 \item There are positive red number(s).
 \end{enumerate}
-
-Precise statements:
+\end{minipage} % no space if you would like to put them side by side
+\begin{minipage}[c]{0.6\linewidth}
+\qquad \emph{Precise statements:}
 \begin{enumerate}[(A)]
 \item For every $y>0$, $y$ is red.
 
@@ -80,18 +79,39 @@ Precise statements:
 
 \item For every $x\in \R$, there is some $y>x$ such that $y$ is red.
 
-\item There exists $x\in \R$ such that for every $y>x$, $y$ is red.
+\item There exists $x\in \R$ such that for every $y>x$, $y$~is red.
 \end{enumerate}
+\end{minipage}
 
-\item Does (A) imply (B)? Does (B) imply (A)?
+
+\
+
+\
+
+
+\begin{enumerate}\setcounter{enumi}{1}
+
 \item Draw a picture where (A) is false and (B) is true.
-\item Does (C) imply (D)? Does (D) imply (C)?
+
+\
+
 \item Draw a picture where (C) is true and (D) is false. 
+
+\
+
+\item Suppose that (C) is true. Which of the following statements must also be true? Why?
+
+\begin{enumerate}
+\item There is some $y>1000000000$ such that $y$ is red.
+\item For every $\mu \in \R$, there is some $\theta>\mu$ such that $\theta$ is red.
+\item For every $x\in \R$, there is some $y>2x$ such that $y$ is red.
 \end{enumerate}
 
 \
 
-\item\label{w2prob3} Rewrite each statement with symbols in place of quantifiers, and write its negation. Is the original statement true or false? Discuss why (but don't prove them).
+The next problem is no longer about a spraypainting of the real number line.
+
+\item\label{w2prob3} Rewrite each statement with symbols in place of quantifiers, and write its negation. Do you think the original statement is true or false (but don't prove them yet)?.
 \begin{enumerate}
 \item There exists $x\in \Q$ such that $x^2 = 2$.
 \item For all $x\in \R$,  $x^2 >0$.
@@ -129,7 +149,7 @@ Note: explaining \emph{how} you found your example``$x$'' is \emph{not} a logica
 \
 
 
-\begin{enumerate}\setcounter{enumi}{3}
+\begin{enumerate}\setcounter{enumi}{5}
 
 
 
@@ -145,9 +165,15 @@ Note: explaining \emph{how} you found your example``$x$'' is \emph{not} a logica
 
 \
 
-\item Prove or disprove each of the statements in \ref{w2prob3} using the axioms of $\R$ and facts we have already proven.
+\item Prove or disprove each of the statements in (\ref{w2prob3}) using the axioms of $\R$ and facts we have already proven.
 
 \
+
+\end{enumerate}
+
+\subsection*{More practice with quantifier statements}
+
+\begin{enumerate}\setcounter{enumi}{7}
 
 \item Prove that there exists some $x\in \R$ such that $2x+5=3$.
 
@@ -171,7 +197,10 @@ Note: explaining \emph{how} you found your example``$x$'' is \emph{not} a logica
 \item Let $S\subseteq \R$ be a set of real numbers. Apply your results above to prove that if for every $x\in S$, $x^2$ is irrational, then for every $y\in S$, $y$ is irrational.
 
 
+
+
 \end{enumerate}
+
 
 
 \end{document}

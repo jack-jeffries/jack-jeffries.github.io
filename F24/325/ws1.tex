@@ -31,7 +31,7 @@
 	
 	\thispagestyle{empty}
 	
-	\section*{Warming up with if-then statements and real numbers}
+	\section*{Warming up with if-then statements and real numbers: \S1.4 and \S1.5} 
 	
 \subsection*{Making sense of if-then statements}
 
@@ -39,9 +39,10 @@
 
 \begin{framed}
 \begin{itemize}
-\item The \emph{converse} of the statement  ``If $P$ then $Q$'' is the statement  ``If $Q$ then $P$''.
-\item The \emph{contrapositive} of the statement  ``If $P$ then $Q$'' is the statement  ``If not $Q$ then not $P$''.
-\item Any if then statement is equivalent to its contrapositive, but not necessarily to its converse!
+\item The statement ``If $P$ then $Q$'' is true whenever $Q$ is true or $P$ is false. Equivalently, the statement ``If $P$ then $Q$'' is false whenever $Q$ is false and $P$ is true.
+\item The \textbf{converse} of the statement  ``If $P$ then $Q$'' is the statement  ``If $Q$ then $P$''.
+\item The \textbf{contrapositive} of the statement  ``If $P$ then $Q$'' is the statement  ``If not $Q$ then not $P$''.
+\item Any if-then statement is equivalent to its \emph{contrapositive}, but not necessarily to its converse!
 \end{itemize}
 \end{framed}
 
@@ -49,11 +50,11 @@
 
 
 \begin{enumerate}
-\item For each of the following statements, write its contrapositive and its converse. Is the original/contrapositive/converse true or false for real numbers $a,b$? Explain why (but don't prove). 
+\item For each of the following statements, write its contrapositive and its converse. Decide if original/contrapositive/converse true or false for real numbers $a,b$, but don't prove them yet.
 \begin{enumerate}
 \item If $a$ is irrational, then $1/a$ is irrational.
 \item If $a$ and $b$ are irrational, then $ab$ is irrational.
-\item If $a>3$, then $a^2>9$.
+\item If $a\geq3$, then $a^2\geq 9$.
 \end{enumerate}
 \end{enumerate}
 
@@ -79,9 +80,9 @@
 \end{framed}
 
 \begin{enumerate}\setcounter{enumi}{1}
-\item Consider the following proof of the claim ``For real numbers $x,y,z$, if $x+y=z+y$, then $x=z$'' from the list of axioms of $\R$. Match the parts of this proof with the general outline above. Which sentences are \emph{assumptions} and which sentences are \emph{assertions} (i.e., say something is true)? Is it clear \emph{just from reading each sentence on its own} whether it is an assumption or an assertion?
+\item Consider the following proof of the claim ``For real numbers $x,y,z$, if $x+y=z+y$, then $x=z$'' from the axioms of $\R$. Match the parts of this proof with the general outline above. Which sentences are \emph{assumptions} and which are \emph{assertions}? Is it clear \emph{just from reading each sentence on its own} whether it is an assumption or an assertion? Is it clear \emph{why} each assertion is true?
 \begin{quote}
-\emph{Proof.} Suppose that $x+y=z+y$. Then we can add $-y$ (which exists by Axiom 6) to get 
+\emph{Proof.} Suppose that $x+y=z+y$. Then adding $-y$ (which exists by Axiom 6) we get 
 \[(x+y)+ (-y) = (z+y) + (-y).\]
 This can be rewritten (by Axiom 3) as
 \[x+ (y+ (-y) )= z+ (y + (-y)),\]
@@ -99,26 +100,37 @@ which gives $x=z$ (by Axioms 4 and 2).\qed
 Multiply both sides by two.
 \[ 2x \geq 2.\]
 Add five to both sides.
-\[2x+5 \geq 7. \qed\]
+\[2x+5 \geq 7. \qedhere\] \qed
 \end{quote}
 \end{enumerate}
 
 
-\subsection*{Proving if-then statements about real numbers}
+\subsection*{Proving if-then statements}
 
 \begin{enumerate}\setcounter{enumi}{3}
 
-
-\item Let $x$ be a real number. Show that if $x^2$ is irrational, then $x$ is irrational.
+\item Prove or disprove each of the statements in (1). You might consider a proof by contraposition for some of these!
 
 \
+
+\item Prove or disprove the \emph{converse} of each of the statements in (1).
+
+\
+\end{enumerate}
+
+\vfill
+
+
+\subsection*{Using the axioms of $\R$ to prove basic arithmetic facts.}
+
+\begin{enumerate}\setcounter{enumi}{5}
 
 \item Let $x$ and $y$ be real numbers. Use the axioms of $\R$ to prove\footnote{Hint: You may want to add something to both sides.} that if $x \geq y$ then $-x \leq -y$.
 
 
 \
 
-\item Let $x$ and $y$ be real numbers. Use the axioms of $\R$ to prove\footnote{Hint: You may want to add something to both sides.} that $x \geq y$ if and only if $-x \leq -y$.
+\item Let $x$ and $y$ be real numbers. Use the axioms of $\R$ to prove that $x \geq y$ if and only if $-x \leq -y$.
 
 
 \
@@ -132,7 +144,9 @@ Add five to both sides.
 \item Use\footnote{Hint: Try a proof by contradiction.} the axioms of $\R$ and facts we have already proven to prove that $1>0$.
 
 
+
+
 \end{enumerate}
 
-
+\vfill
 \end{document}
