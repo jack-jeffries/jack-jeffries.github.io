@@ -1,0 +1,136 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+
+\DeclareMathOperator{\res}{res}
+
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+	
+	\thispagestyle{empty}
+	
+	\section*{Upper bounds and the completeness axiom}
+	
+	
+
+\begin{framed}
+Let $S$ be a set of real numbers. 
+\begin{itemize}
+\item A number $b$ is an \textbf{upper bound} for $S$ provided for all $x\in S$ we have $b\geq x$. 
+\item The set $S$ is \textbf{bounded above} provided there exists at least one upper bound for $S$.
+\item A number $m$ is the \textbf{maximum} of $S$ provided
+\begin{enumerate}
+\item $m\in S$, and
+\item $m$ is an upper bound of $S$.
+\end{enumerate}
+\item A number $\ell$ is a \textbf{supremum} of $S$ provided
+\begin{enumerate}
+\item $\ell$ is an upper bound of $S$, and
+\item for any upper bound $b$ for $S$, we have $\ell \leq b$.
+\end{enumerate}
+\end{itemize}
+\end{framed}
+
+\
+
+\begin{enumerate}
+\item Write, in simplified form, the negation of the statement ``$b$ is an upper bound for $S$''.
+
+\
+
+\item\label{2} Write, in simplified form, the negation of the statement ``$S$ is bounded above''.
+
+\
+
+\item Let $S$ be a set of real numbers and suppose that $\ell=\sup(S)$. 
+\begin{enumerate}
+\item If $x > \ell$, what is the most concrete thing you can say about $x$ and $S$?
+\item If $x < \ell$, what is the most concrete thing\footnote{Hint: Use one of the previous problems.} you can say about $x$ and $S$?
+\end{enumerate}
+
+\
+
+\item Let $S=\{x\in \R \ | \ x^3 + x < 5\}$. Use the definition of supremum to answer the followng:
+\begin{enumerate}
+\item Is $1$ the supremum of $S$? Why or why not?
+\item Is $2$ the supremum of $S$? Why or why not?
+\end{enumerate}
+
+\
+
+\item Consider the open interval $(0,1) = \{ x\in \R \ | \ 0 < x < 1\}$. 
+\begin{enumerate}
+\item Prove\footnote{Hint: Try a proof by contradiction!} that $(0,1)$ has no maximum element.
+\item Prove that $\sup(\, (0,1) \, ) = 1$.
+\end{enumerate}
+
+
+\
+
+\item\label{4} Let $S$ be a set of real numbers, and let\footnote{For example, if $S= \{-1,1,2\}$, then $T=\{-2,2,4\}$.} $T=\{ 2s \ | \ s\in S\}$. Prove\footnote{First, before all else, this is an if then statement: start by assuming the ``if'' part. We now need to show the ``then'' part, which is about the existence of an upper bound. Use your assumption about $S$ to find an upper bound for $T$ (and prove that it is indeed an upper bound for $T$).} that if $S$ is bounded above, then $T$ is bounded above.
+
+\
+
+\item Let $S$ be a set of real numbers. Show that if $S$ has a supremum, then it is unique.
+
+\
+
+\end{enumerate}
+
+\
+
+\newpage
+
+
+\begin{framed}
+
+\noindent \textsc{Well-Ordering Axiom:} Every nonempty subset of $\N$ has a minimum.
+
+\
+
+\noindent \textsc{Completeness Axiom:} Every nonempty bounded above set of real numbers has a supremum.
+\end{framed}
+
+
+\
+
+\begin{enumerate}
+
+
+
+\item Prove the following:\\
+\textsc{Theorem:} For every\footnote{Hint: First deal with the case $r\geq 0$.} real number $r$, there exists a unique integer $n$ such that $n-1\leq r < n$.
+
+
+
+\
+
+
+\item Prove the following: \\
+\textsc{Theorem:} For every real number $r$, there is some natural number $n$ such that $n>r$.
+\end{enumerate}
+
+
+\end{document}

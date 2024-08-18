@@ -519,6 +519,13 @@ Here is the incredible fact: everything that we know about the real numbers foll
 \item If $a$ and $b$ are irrational, then $ab$ is irrational.
 \item If $a\geq3$, then $a^2\geq 9$.
 \end{enumerate}
+
+\begin{framed}
+\begin{enumerate}
+\item Contrapositive: If $1/a$ is rational, then $a$ is rational. Converse: If $1/a$ is irrational, then $a$ is irrational. Original, contrapositive, and converse all TRUE.
+\item Contrapositive: If $ab$ is rational, then $a$ is rational or $b$ is rational. Converse: if $ab$ is irrational, then $a$ and $b$ are irrational. Original, contrapositive, and converse all FALSE.
+\item Contrapositive: If $a^2 < 9$  then $a<3$. Converse: $a^2 \geq 9$ then $a\geq 3$. Original and contrapositive are TRUE but converse is FALSE.\end{enumerate}
+\end{framed}
 \end{enumerate}
 
 
@@ -553,6 +560,9 @@ and hence (by Axiom 6) as
 \[ x+ 0 = z+0,\]
 which gives $x=z$ (by Axioms 4 and 2).\qed
 \end{quote}
+\begin{framed}
+The first sentence is an assumption, while the others are assertions. It is clear that the first is an assumption since it says ``Suppose''; another possibility is ``Assume''.
+\end{framed}
 
 
 
@@ -565,6 +575,10 @@ Multiply both sides by two.
 Add five to both sides.
 \[2x+5 \geq 7. \qedhere\] \qed
 \end{quote}
+
+\begin{framed}
+No. It is not clear what is an assumption and what is an assertion. From the order of the sentences, it looks like they are assuming the conclusion and deducing the hypothesis! This was OK in this example, but they could have done almost the exact same thing to ``prove'' the false statement ``If $2x^2 + 5 \geq 7$ then $x\geq 1$.''
+\end{framed}
 \end{enumerate}
 
 
@@ -574,11 +588,27 @@ Add five to both sides.
 
 \item Prove or disprove each of the statements in (1). You might consider a proof by contraposition for some of these!
 
-\
+\begin{framed}
+\begin{enumerate}
+\item TRUE: We proceed by contraposition. Suppose that $1/a$ is rational, so $1/a=p/q$ for some integers $p/q$. Then $a=q/p$ is rational.
+\item FALSE: Consider $a=\sqrt{2}$ and $b=\sqrt{2}$. Both $a$ and $b$ are irrational, but $ab=2$ is rational.
+\item TRUE: If $a\geq 3$ then $a^2 = a \cdot a \geq a \cdot 3 \geq 3 \cdot 3 = 9$, where we used that $a\geq 3 \geq 0$ in the first inequality, and $3\geq 0$ in the second.
+\end{enumerate}
+\end{framed}
+
+
 
 \item Prove or disprove the \emph{converse} of each of the statements in (1).
 
-\
+\begin{framed}
+\begin{enumerate}
+\item TRUE: We proceed by contraposition. Suppose that $a$ is rational, so $a=p/q$ for some integers $p/q$. Then $1/a=q/p$ is rational.
+\item FALSE: Consider $a=\sqrt{2}$ and $b=1$. Then $ab=\sqrt{2}$ is irrational, but $b$ is rational, so it is not true that $a$ and $b$ are irrational.
+\item FALSE: Consider $a=-3$; for this choice of $a$, $a\not\geq 3$ but $a^2=9\geq 9$.
+\end{enumerate}
+\end{framed}
+
+
 \end{enumerate}
 
 
@@ -590,20 +620,25 @@ Add five to both sides.
 \item Let $x$ and $y$ be real numbers. Use the axioms of $\R$ to prove\footnote{Hint: You may want to add something to both sides.} that if $x \geq y$ then $-x \leq -y$.
 
 
-\
+\begin{framed}
+Let $x\geq y$. Adding $(-x) + (-y)$ to both sides (which exists by Axiom~6), we obtain $-y=x+((-x)+ (-y)) \geq y+((-x)+(-y)) = -x$ (by Axiom 9 and Axiom~5).
+	Conversely, let $-x \leq -y$. Adding $x+y$ to both sides, we obtain $y=(x+y)+(-x) \leq (x+y)+(-y) = x$ (by Axiom~9 and Axiom~5).
+	\end{framed}
 
 \item Let $x$ and $y$ be real numbers. Use the axioms of $\R$ to prove that $x \geq y$ if and only if $-x \leq -y$.
 
 
-\
+\begin{framed}
+We need to prove both directions. The first direction is the previous problem. Conversely, let $-x \leq -y$. Adding $x+y$ to both sides, we obtain $y=(x+y)+(-x) \leq (x+y)+(-y) = x$ (by Axiom~9 and Axiom~5).
+\end{framed}
 
 \item Let $x,y$ be real numbers. Use the axioms of $\R$ and facts we have already proven\footnote{Be careful: are you using any facts that we have not already proven?} to prove that if $x\leq 0$ and $y\leq 0$, then $xy\geq 0$. 
 
-\
+%\
 
 
 
-\item Use\footnote{Hint: Try a proof by contradiction.} the axioms of $\R$ and facts we have already proven to prove that $1>0$.
+%\item Use\footnote{Hint: Try a proof by contradiction.} the axioms of $\R$ and facts we have already proven to prove that $1>0$.
 
 
 \end{enumerate}
@@ -663,20 +698,24 @@ Add five to both sides.
 \end{minipage}
 
 
-\
-
-\
+\begin{framed}
+(i)=(D), (ii)=(C), (iii)=(A), (iv)=(B)
+\end{framed}
 
 
 \begin{enumerate}\setcounter{enumi}{1}
 
 \item Draw a picture where (A) is false and (B) is true.
 
-\
+\begin{framed}
+Answers may vary
+\end{framed}
 
 \item Draw a picture where (C) is true and (D) is false. 
 
-\
+\begin{framed}
+Answers may vary
+\end{framed}
 
 \item Suppose that (C) is true. Which of the following statements must also be true? Why?
 
@@ -686,7 +725,9 @@ Add five to both sides.
 \item For every $x\in \R$, there is some $y>2x$ such that $y$ is red.
 \end{enumerate}
 
-\
+\begin{framed}
+These are ALL TRUE.
+\end{framed}
 
 The next problem is no longer about a spraypainting of the real number line.
 
@@ -698,6 +739,17 @@ The next problem is no longer about a spraypainting of the real number line.
 \item For all $x\in \R$, there exists $y\in \R$ such that $x<y$.
 \item There exists $x\in \R$ such that for all $y\in \R$, $x<y$.
 \end{enumerate}
+
+
+\begin{framed}
+\begin{enumerate}
+\item  $\exists x\in \Q: x^2 = 2$. NEGATION: For all $x\in \Q$, $x^2\neq 2$.
+\item $\forall x\in \R,  x^2 >0$. NEGATION: There exists $x\in \R$ such that $x^2 \leq 0$.
+\item $\forall x\in \R: x\neq 0,  x^2 >0$. NEGATION: There exists $x\in \R$ such that $x\neq 0$ such that $x^2 \leq 0$.
+\item $\forall x\in \R, \exists y\in \R: x<y$. NEGATION: There exists $x\in \R$ such that for all $y\in \R$, $x\geq y$.
+\item $\exists x\in \R: \forall y\in \R, x<y$. NEGATION: For all $x\in \R$ there exists $y\in \R$ such that $x\geq y$.
+\end{enumerate}
+\end{framed}
 \end{enumerate}
 
 
@@ -739,14 +791,46 @@ Note: explaining \emph{how} you found your example``$x$'' is \emph{not} a logica
 \item To \emph{dis}prove a ``for all'' statement, you need to give a\\ \mbox{GENERAL ARGUMENT / SPECIFIC EXAMPLE}.
 \item To prove a ``there exists'' statement, you need to give a\\ \mbox{GENERAL ARGUMENT / SPECIFIC EXAMPLE}.
 \item To \emph{dis}prove a ``there exists'' statement, you need to give a\\ \mbox{GENERAL ARGUMENT / SPECIFIC EXAMPLE}.
+
+\
+
+\item If you want to  \emph{use} a ``for all'' statement that you know is true, \\you CAN CHOOSE A SPECIFIC VALUE / MUST USE A MYSTERY VALUE
+\item If you want to  \emph{use} a ``there exists'' statement that you know is true, \\you CAN CHOOSE A SPECIFIC VALUE / MUST USE A MYSTERY VALUE
+
 \end{itemize}
 }
+
+\begin{framed}
+{\small
+\begin{itemize}
+\item To prove a ``for all'' statement, you need to give a GENERAL ARGUMENT.
+\item To \emph{dis}prove a ``for all'' statement, you need to give a SPECIFIC EXAMPLE.
+\item To prove a ``there exists'' statement, you need to give a SPECIFIC EXAMPLE.
+\item To \emph{dis}prove a ``there exists'' statement, you need to give a GENERAL ARGUMENT.
+
+\
+
+\item If you want to  \emph{use} a ``for all'' statement that you know is true, you CAN CHOOSE A SPECIFIC VALUE
+\item If you want to  \emph{use} a ``there exists'' statement that you know is true, you MUST USE A MYSTERY VALUE
+\end{itemize}}
+\end{framed}
+
 
 \
 
 \item Prove or disprove each of the statements in (\ref{w2prob3}) using the axioms of $\R$ and facts we have already proven.
 
-\
+
+\begin{framed}
+\begin{enumerate}
+\item  FALSE: We showed that there is no rational number whose square is two.
+\item FALSE: Take $x=0$; then $x^2=0$ which is not strictly greater than zero.
+\item TRUE.
+\item TRUE: Let $x\in \R$ be given. Then $y=x+1 > x$.
+\item FALSE: Suppose that $x\in \R$. We claim that there is some $y\in \R$ such that $y\leq x$; just take $x$ itself!
+\end{enumerate}
+\end{framed}
+
 
 \end{enumerate}
 
@@ -966,6 +1050,137 @@ Having explained the meaning of the term ``supremum'', I can finally state the a
 
 \begin{axiom*}[Completeness Axiom]\index{completeness axiom} Every nonempty, bounded-above subset of $\R$ has a supremum.
 \end{axiom*}
+
+
+\Sept{5}{\Fr}{1.8}
+
+	
+
+\begin{framed}
+Let $S$ be a set of real numbers. 
+\begin{itemize}
+\item A number $b$ is an \textbf{upper bound} for $S$ provided for all $x\in S$ we have $b\geq x$. 
+\item The set $S$ is \textbf{bounded above} provided there exists at least one upper bound for $S$.
+\item A number $m$ is the \textbf{maximum} of $S$ provided
+\begin{enumerate}
+\item $m\in S$, and
+\item $m$ is an upper bound of $S$.
+\end{enumerate}
+\item A number $\ell$ is a \textbf{supremum} of $S$ provided
+\begin{enumerate}
+\item $\ell$ is an upper bound of $S$, and
+\item for any upper bound $b$ for $S$, we have $\ell \leq b$.
+\end{enumerate}
+\end{itemize}
+\end{framed}
+
+\
+
+\begin{enumerate}
+\item Write, in simplified form, the negation of the statement ``$b$ is an upper bound for $S$''.
+
+\begin{framed}
+There exists some $x\in S$ such that $x>b$.
+\end{framed}
+
+\item Write, in simplified form, the negation of the statement ``$S$ is bounded above''.
+
+\begin{framed}
+For every $b\in \R$, there exists $x\in S$ such that $x>b$.
+\end{framed}
+
+
+\item Let $S$ be a set of real numbers and suppose that $\ell=\sup(S)$. 
+\begin{enumerate}
+\item If $x > \ell$, what is the most concrete thing you can say about $x$ and $S$?
+\item If $x < \ell$, what is the most concrete thing\footnote{Hint: Use one of the previous problems.} you can say about $x$ and $S$?
+\end{enumerate}
+
+
+\begin{framed}
+\begin{enumerate}
+\item $x\notin S$.
+\item There exists some $y\in S$ such that $y > x$.
+\end{enumerate}
+\end{framed}
+
+\item Let $S=\{x\in \R \ | \ x^3 + x < 5\}$. Use the definition of supremum to answer the following:
+\begin{enumerate}
+\item Is $1$ the supremum of $S$? Why or why not?
+\item Is $2$ the supremum of $S$? Why or why not?
+\end{enumerate}
+
+\begin{framed}
+\begin{enumerate}
+\item No. $1$ is not an upper bound for $S$, because $1.5^3 + 1.5 = 4.875 <5$, so $1.5$ is a larger element of $S$.
+\item No. We claim that $1.75$ is an upper bound for $S$, so $2$ is not the smallest upper bound of $S$. Indeed, if $x\in S$ then $x\leq 1.75$;  if $x>1.75$ then $x^3+x > 1.75^3 + 1.75 = 7.109375 > 5$ so $x\notin S$.
+\end{enumerate}
+\end{framed}
+
+\item Consider the open interval $(0,1) = \{ x\in \R \ | \ 0 < x < 1\}$. 
+\begin{enumerate}
+\item Prove\footnote{Hint: Try a proof by contradiction!} that $(0,1)$ has no maximum element.
+\item Prove that $\sup(\, (0,1) \, ) = 1$.
+\end{enumerate}
+
+\begin{framed}
+\begin{enumerate}
+\item To obtain a contradiction, suppose that $(0,1)$ has a maximum element; call it $z$. Since $z\in (0,1)$ so $0<z<1$. First, we claim that $y=\frac{z+1}{2}\in (0,1)$. Indeed, $z>0$ implies $y> \frac{0+1}{2} = \frac{1}{2} >0$, and $z<1$ implies $y < \frac{1+1}{2} = 1$, so $y\in (0,1)$. Now we claim that $y$ is larger than $z$: $y=\frac{z+1}{2} > \frac{z + z}{2} = z$. But this contradicts that $z$ is an upper bound for $(0,1)$, so $z$ cannot be the maximum. Since assuming the existence of a maximum element leads to a contradiction, we conclude that no maximum exists.
+
+\item We need to show that $1$ is an upper bound for $(0,1)$, and that any other upper bound $b$ for $(0,1)$ satisfies $b\geq 1$. By definition of the interval $(0,1)$, the number $1$ is an upper bound. Now suppose that $b$ is an upper bound for $(0,1)$. We claim that $b\geq 1$. Suppose otherwise that $b<1$ to obtain a contradiction. Consider $y=\frac{b+1}{2}$. Then by the same algebraic argument as the previous part, $y\in (0,1)$ and $y>b$, so $y$ is not an upper bound for $(0,1)$. This contradicts the assumption that $b<1$, so $b\geq 1$. Thus, every upper bound of $(0,1)$ is at least $1$. This shows that $1$ is the supremum of $(0,1))$.
+\end{enumerate}
+\end{framed}
+
+\item Let $S$ be a set of real numbers, and let $T=\{ 2s \ | \ s\in S\}$. Prove that if $S$ is bounded above, then $T$ is bounded above.
+
+
+\begin{framed}
+Assume that $S$ is bounded above. Then there is some upper bound $b$ for $S$, so for every $s\in S$, we have $b\geq s$. We claim that $2b$ is an upper bound for $T$. Indeed, if $t\in T$, then we can write $t=2s$ for some $s\in S$, and $s\leq b$ implies $t=2s\leq 2b$. Thus, $T$ is bounded above.
+\end{framed}
+
+\item Let $S$ be a set of real numbers. Show that if $S$ has a supremum, then it is unique.
+\begin{framed}
+Suppose both $x$ and $y$ are both suprema 
+  of the same subset $S$ of $\R$.  Then, since $y$ is an upper bound of $S$ and $x$ is a supremum of $S$, by part (2) of the definition of ``supremum''
+  we have $y \geq x$. Likewise, since $x$ is an upper
+bound of $S$ and $y$ is a supremum of $S$, we have 
+$x \geq y$ by definition.  Since $x \leq y$ and $y \leq x$, we conclude $x = y$.  
+\end{framed}
+\end{enumerate}
+
+\
+
+\newpage
+
+
+\begin{framed}
+
+\noindent \textsc{Well-Ordering Axiom:} Every nonempty subset of $\N$ has a minimum.
+
+\
+
+\noindent \textsc{Completeness Axiom:} Every nonempty bounded above set of real numbers has a supremum.
+\end{framed}
+
+
+\
+
+\begin{enumerate}
+
+
+
+\item Prove the following:\\
+\textsc{Theorem:} For every\footnote{Hint: First deal with the case $r\geq 0$.} real number $r$, there exists a unique integer $n$ such that $n-1\leq r < n$.
+
+
+
+\
+
+
+\item Prove the following: \\
+\textsc{Theorem:} For every real number $r$, there is some natural number $n$ such that $n>r$.
+\end{enumerate}
+
 
 
 \begin{comment}
