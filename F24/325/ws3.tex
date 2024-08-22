@@ -2,8 +2,9 @@
 
 
 \usepackage{times}
-\usepackage[margin=0.8in]{geometry}
-\usepackage{amsmath,amssymb,multicol,graphicx,framed}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,comment}
+\usepackage[shortlabels]{enumitem}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
@@ -31,106 +32,181 @@
 	
 	\thispagestyle{empty}
 	
-	\section*{Upper bounds and the completeness axiom}
+	\section*{Warming up with quantifiers and real numbers: \S1.4 and \S1.5}
 	
-	
+\subsection*{Making sense of quantifier statements} 
+
+\
 
 \begin{framed}
-Let $S$ be a set of real numbers. 
 \begin{itemize}
-\item A number $b$ is an \textbf{upper bound} for $S$ provided for all $x\in S$ we have $b\geq x$. 
-\item The set $S$ is \textbf{bounded above} provided there exists at least one upper bound for $S$.
-\item A number $m$ is the \textbf{maximum} of $S$ provided
-\begin{enumerate}
-\item $m\in S$, and
-\item $m$ is an upper bound of $S$.
-\end{enumerate}
-\item A number $\ell$ is a \textbf{supremum} of $S$ provided
-\begin{enumerate}
-\item $\ell$ is an upper bound of $S$, and
-\item for any upper bound $b$ for $S$, we have $\ell \leq b$.
-\end{enumerate}
+\item The symbol for ``\textbf{for all}'' is $\forall$ and the symbol for ``\textbf{there exists}'' is $\exists$.
+\item The negation of ``For all $x\in S$, $P$'' is ``There exists $x\in S$ such that $\mathrm{not} \, P$''.
+\item The negation of ``There exists $x\in S$ such that $P$'' is ``For all $x\in S$, $\mathrm{not} \, P$''.
 \end{itemize}
 \end{framed}
 
+\noindent \textit{A prankster has spraypainted the real number line red and blue, so every real number is red or blue (but not both)!}
+
 \
 
 \begin{enumerate}
-\item Write, in simplified form, the negation of the statement ``$b$ is an upper bound for $S$''.
+\item Match each informal story (i)--(iv) below with a precise quantifier statement (A)--(D). 
+\end{enumerate}
+
+\begin{minipage}[c]{0.4\linewidth}
+\qquad \emph{Informal stories:}
+\begin{enumerate}[(i)]
+\item Every number past some point is red.
+
+%\item Not every positive number is blue.
+
+\item There are arbitrarily big red numbers.
+
+\item All positive numbers are red.
+
+%\item You never get to a point where past that point every number is blue.
+
+\item There are positive red number(s).
+\end{enumerate}
+\end{minipage} % no space if you would like to put them side by side
+\begin{minipage}[c]{0.6\linewidth}
+\qquad \emph{Precise statements:}
+\begin{enumerate}[(A)]
+\item For every $y>0$, $y$ is red.
+
+\item There exists $y>0$ such that $y$ is red.
+
+\item For every $x\in \R$, there is some $y>x$ such that $y$ is red.
+
+\item There exists $x\in \R$ such that for every $y>x$, $y$~is red.
+\end{enumerate}
+\end{minipage}
+
 
 \
 
-\item\label{2} Write, in simplified form, the negation of the statement ``$S$ is bounded above''.
+\
+
+
+\begin{enumerate}\setcounter{enumi}{1}
+
+\item Draw a picture where (A) is false and (B) is true.
 
 \
 
-\item Let $S$ be a set of real numbers and suppose that $\ell=\sup(S)$. 
+\item Draw a picture where (C) is true and (D) is false. 
+
+\
+
+\item Suppose that (C) is true. Which of the following statements must also be true? Why?
+
 \begin{enumerate}
-\item If $x > \ell$, what is the most concrete thing you can say about $x$ and $S$?
-\item If $x < \ell$, what is the most concrete thing\footnote{Hint: Use one of the previous problems.} you can say about $x$ and $S$?
+\item There is some $y>1000000000$ such that $y$ is red.
+\item For every $\mu \in \R$, there is some $\theta>\mu$ such that $\theta$ is red.
+\item For every $x\in \R$, there is some $y>2x$ such that $y$ is red.
 \end{enumerate}
 
 \
 
-\item Let $S=\{x\in \R \ | \ x^3 + x < 5\}$. Use the definition of supremum to answer the followng:
+The next problem is no longer about a spraypainting of the real number line.
+
+\item\label{w2prob3} Rewrite each statement with symbols in place of quantifiers, and write its negation. Do you think the original statement is true or false (but don't prove them yet)?.
 \begin{enumerate}
-\item Is $1$ the supremum of $S$? Why or why not?
-\item Is $2$ the supremum of $S$? Why or why not?
+\item There exists $x\in \Q$ such that $x^2 = 2$.
+\item For all $x\in \R$,  $x^2 >0$.
+\item For all $x\in \R$ such that\footnote{In a statement of the form ``For all $x\in S$ such that $Q$, $P$'', the ``such that $Q$'' part is part of the hypothesis: it is restricting the set $S$ that we are ``alling''' over.} $x\neq 0$,  $x^2 >0$.
+\item For all $x\in \R$, there exists $y\in \R$ such that $x<y$.
+\item There exists $x\in \R$ such that for all $y\in \R$, $x<y$.
 \end{enumerate}
-
-\
-
-\item Consider the open interval $(0,1) = \{ x\in \R \ | \ 0 < x < 1\}$. 
-\begin{enumerate}
-\item Prove\footnote{Hint: Try a proof by contradiction!} that $(0,1)$ has no maximum element.
-\item Prove that $\sup(\, (0,1) \, ) = 1$.
 \end{enumerate}
-
-
-\
-
-\item\label{4} Let $S$ be a set of real numbers, and let\footnote{For example, if $S= \{-1,1,2\}$, then $T=\{-2,2,4\}$.} $T=\{ 2s \ | \ s\in S\}$. Prove\footnote{First, before all else, this is an if then statement: start by assuming the ``if'' part. We now need to show the ``then'' part, which is about the existence of an upper bound. Use your assumption about $S$ to find an upper bound for $T$ (and prove that it is indeed an upper bound for $T$).} that if $S$ is bounded above, then $T$ is bounded above.
-
-\
-
-\item Let $S$ be a set of real numbers. Show that if $S$ has a supremum, then it is unique.
-
-\
-
-\end{enumerate}
-
-\
 
 \newpage
 
+\subsection*{Proving quantifier statements and using the axioms of $\R$}
+
+
+\
 
 \begin{framed}
-
-\noindent \textsc{Well-Ordering Axiom:} Every nonempty subset of $\N$ has a minimum.
-
-\
-
-\noindent \textsc{Completeness Axiom:} Every nonempty bounded above set of real numbers has a supremum.
+\begin{itemize}
+\item The general outline of a proof of ``For all $x\in S$, $P$'' goes
+\begin{enumerate}
+\item Let $x\in S$ be arbitrary.
+\item Do some stuff.
+\item Conclude that $P$ holds for $x$.
+\end{enumerate}
+\item To prove a there exists statement, you just need to give an example. To prove ``There exists $x\in S$ such that $P$'' directly:
+\begin{enumerate}
+\item Consider$^{\textrm{2}}$ $x=$[some specific element of $S$].
+\item Do some stuff.
+\item Conclude that $P$ holds for $x$.
+\end{enumerate}
+\end{itemize}
+Note: explaining \emph{how} you found your example``$x$'' is \emph{not} a logically necessary part of the proof. 
 \end{framed}
 
-
-\
-
-\begin{enumerate}
-
-
-
-\item Prove the following:\\
-\textsc{Theorem:} For every\footnote{Hint: First deal with the case $r\geq 0$.} real number $r$, there exists a unique integer $n$ such that $n-1\leq r < n$.
-
-
-
 \
 
 
-\item Prove the following: \\
-\textsc{Theorem:} For every real number $r$, there is some natural number $n$ such that $n>r$.
+\begin{enumerate}\setcounter{enumi}{5}
+
+
+
+\item Circle the correct answer in each of the blanks below:
+{\small
+\begin{itemize}
+\item To prove a ``for all'' statement, you need to give a \mbox{GENERAL ARGUMENT / SPECIFIC EXAMPLE}.
+\item To \emph{dis}prove a ``for all'' statement, you need to give a \mbox{GENERAL ARGUMENT / SPECIFIC EXAMPLE}.
+\item To prove a ``there exists'' statement, you need to give a \mbox{GENERAL ARGUMENT / SPECIFIC EXAMPLE}.
+\item To \emph{dis}prove a ``there exists'' statement, you need to give a \mbox{GENERAL ARGUMENT / SPECIFIC EXAMPLE}.
+
+\
+
+\item If you want to  \emph{use} a ``for all'' statement that you know is true, \\you CAN CHOOSE A SPECIFIC VALUE / MUST USE A MYSTERY VALUE
+\item If you want to  \emph{use} a ``there exists'' statement that you know is true, \\you CAN CHOOSE A SPECIFIC VALUE / MUST USE A MYSTERY VALUE
+
+\end{itemize}
+}
+
+\
+
+\item Prove or disprove each of the statements in (\ref{w2prob3}) (skip (c) for now) using the axioms of $\R$ and facts we have already proven.
+
+\
+
 \end{enumerate}
+
+\subsection*{More practice with quantifier statements}
+
+\begin{enumerate}\setcounter{enumi}{7}
+
+\item Prove that there exists some $x\in \R$ such that $2x+5=3$.
+
+\
+
+
+\item Prove that there exists some $x\in \R$ such that for every $y\in \R$, $xy=x$.
+
+\
+
+\item\label{xy=1} Let $x$ be a real number. Use the axioms of $\R$ and facts we have already proven to show that if there exists a real number $y$ such that $xy=1$, then $x\neq 0$.
+
+\
+
+\item Prove that\footnote{Hint: Use (\ref{xy=1}).} for all $x\in \R$ such that $x\neq 0$, we have $x^2\neq 0$.
+
+\
+
+
+
+\item Let $S\subseteq \R$ be a set of real numbers. Apply your results above to prove that if for every $x\in S$, $x^2$ is irrational, then for every $y\in S$, $y$ is irrational.
+
+
+
+
+\end{enumerate}
+
 
 
 \end{document}

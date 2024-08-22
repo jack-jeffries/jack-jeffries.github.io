@@ -1,0 +1,74 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\e}{\varepsilon}
+\newcommand{\ds}{\displaystyle}
+
+\DeclareMathOperator{\res}{res}
+
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+	
+	\thispagestyle{empty}
+	
+	\section*{Convergence of a sequence \S2.1}
+	
+	
+
+\begin{framed}
+\noindent \textsc{Definition:} A sequence $\{a_n\}_{n=1}^\infty$ {\bf converges} to a real number $L$ provided for every real number $\e > 0$, there is a real number $N$ such that ${|a_n - L| < \e}$ for all natural numbers $n$ such that $n > N$.
+\end{framed}
+\begin{enumerate}
+\item \textsc{The $\e$ vs $N$ game:}
+\begin{enumerate}
+\item Player 0 starts by graphing a sequence $\{a_n\}_{n=1}^\infty$, and specifies $y$-value $L$ for which they believe  $\{a_n\}_{n=1}^\infty$ converge to $L$. [You can't graph all the values, but make a large graph with a generous number of values.]
+\item Player 1 choses an $\e$. This is how close we would like our sequence to be to $L$. Thus, $\e$ goes up and down from $L$ (corresponding to $|a_n-L|<\e$). Draw horizontal dotted lines with $y$-values $L-\e$ and $L+\e$. [The $\e$ should be large enough for people to see and have room to work in the picture.]
+\item Player 2 must find an $N$ such that all of the values of the sequence to the right of $N$ are in $(L-\e,L+\e)$.
+Draw a vertical line for $x=N$.
+[Everyone in the team can assist player 2!]
+\item Repeat with the same graph, players 1\& 2 switching roles (and a new $\e$).
+\item Now do a couple of rounds with a sequence $\{a_n\}_{n=1}^\infty$ and an $L$ for which you believe  $\{a_n\}_{n=1}^\infty$ \emph{does not} converge to $L$.\end{enumerate}
+
+\
+
+\item Prove that the sequence $ \left\{ \frac{1}{\sqrt{n}} \right\}_{n=1}^\infty$ converges to $0$.
+
+
+\
+
+\item Let $\{a_n\}_{n=1}^\infty$ be a sequence. Suppose we know that $\{a_n\}_{n=1}^\infty$ converges to $1$. Prove\footnote{Hint: If you know that a ``for all'' statement is true, you can choose any specific value for that variable and get a more specific true statement.} that there is a natural number $n\in \N$ such that $a_n>0$.
+
+
+
+
+
+\item Prove or disprove: The sequence $ \left\{\frac{n+1}{2n} \right\}_{n=1}^\infty$ converges to $0$.
+
+
+
+\end{enumerate}
+
+
+\end{document}

@@ -3,7 +3,7 @@
 \usepackage[shortlabels]{enumitem}
 \usepackage{comment}
 \usepackage{amscd}
-\usepackage{amssymb,xcolor}
+\usepackage{amssymb,xcolor,graphicx}
 \usepackage[all, knot]{xy}
 \usepackage[top=1.2in, bottom=1.2in, left=1.2in, right=1.2in]{geometry}
 \xyoption{all}
@@ -299,8 +299,8 @@
 \begin{document}
 
 
-\title{Math 325 Lecture Notes and worksheets}
-
+\title{Fall 2024 Math 325 Lecture Notes and worksheets}
+\maketitle
 
 \setcounter{tocdepth}{1}
 \tableofcontents
@@ -493,6 +493,7 @@ $0 = r \cdot 0$.
 
 Here is the incredible fact: everything that we know about the real numbers follows from these axioms! In particular, all of the basic facts about arithmetic of real numbers follow from this, like ``the product of two negative numbers is positive,'' as well as everything you encountered in Calculus, like the Mean Value Theorem.
 
+\newpage
 
 \Aug{27}{\We}{1.4 \& 1.5}
 
@@ -643,6 +644,7 @@ We need to prove both directions. The first direction is the previous problem. C
 
 \end{enumerate}
 
+\newpage
 
 \Aug{29}{\Fr}{1.4 \& 1.5}
 
@@ -868,7 +870,7 @@ Note: explaining \emph{how} you found your example``$x$'' is \emph{not} a logica
 
 
 
-
+\newpage
 
 
 
@@ -1052,6 +1054,8 @@ Having explained the meaning of the term ``supremum'', I can finally state the a
 \end{axiom*}
 
 
+\newpage
+
 \Sept{5}{\Fr}{1.8}
 
 	
@@ -1181,71 +1185,37 @@ $x \geq y$ by definition.  Since $x \leq y$ and $y \leq x$, we conclude $x = y$.
 \textsc{Theorem:} For every real number $r$, there is some natural number $n$ such that $n>r$.
 \end{enumerate}
 
+\newpage
 
+\Sept{9}{\Mo}{1.9}
 
-\begin{comment}
+Recall the Completeness Axiom:
 
-\Sept{1}
+\
 
-\begin{enumerate}
-\item Write, in simplified form, the negation of the statement ``$b$ is an upper bound for $S$''.
+\noindent \textsc{Completeness Axiom:} Every nonempty bounded above set of real numbers has a supremum.
 
-\begin{framed}
-There exists some $x\in S$ such that $x>b$.
-\end{framed}
+\
 
-\item Write, in simplified form, the negation of the statement ``$S$ is bounded above''.
-
-\begin{framed}
-For every $b\in \R$, there exists $x\in S$ such that $x>b$.
-\end{framed}
-
-\item Let $S$ be a set of real numbers and suppose that $\ell=\sup(S)$. 
-\begin{enumerate}
-\item If $x > \ell$, what is the most concrete thing you can say about $x$ and $S$?
-\item If $x < \ell$, what is the most concrete thing you can say about $x$ and $S$?
-\end{enumerate}
-
-
-\begin{framed}
-\begin{enumerate}
-\item $x\notin S$.
-\item There exists some $y\in S$ such that $y > x$.
-\end{enumerate}
-\end{framed}
-
-\item Let $S$ be a set of real numbers, and let $T=\{ 2s \ | \ s\in S\}$. Prove that if $S$ is bounded above, then $T$ is bounded above.
-
-\begin{framed}
-Assume that $S$ is bounded above. Then there is some upper bound $b$ for $S$, so for every $s\in S$, we have $b\geq s$. We claim that $2b$ is an upper bound for $T$. Indeed, if $t\in T$, then we can write $t=2s$ for some $s\in S$, and $s\leq b$ implies $t=2s\leq 2b$. Thus, $T$ is bounded above.
-\end{framed}
-
-\item Let $S$ be a set of real numbers. Show that if $S$ has a supremum, then it is unique.
-\begin{framed}
-Suppose both $x$ and $y$ are both suprema 
-  of the same subset $S$ of $\R$.  Then, since $y$ is an upper bound of $S$ and $x$ is a supremum of $S$, by part (2) of the definition of ``supremum''
-  we have $y \geq x$. Likewise, since $x$ is an upper
-bound of $S$ and $y$ is a supremum of $S$, we have 
-$x \geq y$ by definition.  Since $x \leq y$ and $y \leq x$, we conclude $x = y$.  
-\end{framed}
-
-\item Let $S$ be a set of real numbers, and let $\displaystyle T=\left\{ \frac{s}{2} \ | \ s\in S\right\}$. Directly prove that if $S$ is unbounded above, then $T$ is unbounded above.
-\begin{framed}
-Assume that $S$ is unbounded above. To show that $T$ is unbounded above, let $b$ be a real number. Since $S$ is unbounded above, $2b$ is not an upper bound for $S$, so there is some $s\in S$ with $s>2b$. Then $\frac{s}{2} > b$. By definition of $T$, we have $\frac{s}{2}\in T$, so $b$ is not an upper bound of $T$. We conclude that $T$ is unbounded above.
-\end{framed}
-\end{enumerate}
-
-
-
-\Sept{6}
-
-
-
-Let us now explore consequences of the completeness axiom. We know that there is no rational number whose square is $2$; now we show that there is indeed a real number whose square is two.
+This is an incredibly powerful fact about the real numbers. To give a sense of what it does, recall that we showed that there is no rational number whose square is two; the completeness axiom is what allows us to show that there is a real number whose square is two.
 
 
 \begin{prop} \label{prop116} There is a positive real number whose square is $2$.\index{$\sqrt{2}$}
 \end{prop}
+
+In class, let's just discuss the outline of this proof rather than the algebraic details, so we can see the big picture. You can read the full proof in the lecture notes.
+
+\begin{proof}[Proof outline] \
+\begin{itemize}
+\item[Step 1:] Define $S$ to be the subset $S = \{x \in \R  \ \mid \  x^2 < 2\}$.
+\item[Step 2:] Show that $S$ nonempty and bounded above. Thus, by the Completeness Axiom, there is a real number $\ell = \sup(S)$.
+\item[Step 3:] Show that $\ell^2 < 2$ leads to a contradiction. (Assuming $\ell^2<2$, we can find a number $s$ slightly larger than $\ell$ that is an element of $S$, contradicting that $\ell$ is an upper bound of $S$.)
+\item[Step 4:] Show that $\ell^2 > 2$ leads to a contradiction. (Assuming $\ell^2>2$, we can find a number $b$ slightly smaller than $\ell$ that is an upper bound of $S$, contradicting that $\ell$ is the smallest upper bound of $S$.)
+\item [Step 5:] There's no other possibilty: we must have $\ell^2=2$! \qedhere
+\end{itemize}
+\end{proof}
+
+\begin{framed} Here is the proof in full detail.
 
 \begin{proof} 
 Define $S$ to be the subset 
@@ -1313,8 +1283,7 @@ Putting these inequalities together gives $r^2 > 2$, contrary to the fact that $
 
 Since $\ell^2 < 2$ and $\ell^2 > 2$ are impossible, we must have $\ell^2 = 2$.
 \end{proof}
-
-
+\end{framed}
 
 The collection of rational numbers does not satisfy the completeness axiom and indeed it is precisely the completeness axiom that differentiates $\R$ from
 $\Q$. 
@@ -1412,74 +1381,201 @@ to the number $x + j$ (which is positive), there is a rational number $q$ such t
 rational, this proves the theorem in this case.
 \end{proof}
 
+\newpage
 
-\Sept{8}
+\Sept{11}{\We}{1.9}
 
-\begin{enumerate}
-\item Let $W$ be the set of real numbers $x$ that satisfy the inequality $x^3+x<10$.
-\begin{enumerate}
-\item Write $W$ mathematically in set notation.
-\item Does $W$ have a supremum? Why or why not?
-\item Is $\sup(W)=1$?  Why or why not?
-\item Is $\sup(W)=4$?  Why or why not?
-\end{enumerate}
+	
 
 \begin{framed}
-\begin{enumerate}
-\item $W=\{ x\in \R \ | \ x^3 + x < 10\}$.
-\item Yes. It is nonempty, since $0\in W$, and bounded above, e.g., by $3$: if $x> 3$, then $x^3+ x > 3^3+3 = 30$, so $x\notin W$.
-\item No: $1$ is not an upper bound, because $1.5\in W$.
-\item No: $3$ is an upper bound, and $3<4$.
-\end{enumerate}
-\end{framed}
-
-\item Use the Archimedean Principle to show that for any positive number $\e>0$, there is a natural number $n$ such that $ 0 < \e < \frac{1}{n}$.
+\noindent \textsc{Definition:} Let $S$ be a set of real numbers. A number $\ell$ is the \textbf{supremum} of $S$ provided
+\begin{itemize}
+\item $\ell$ is an upper bound of $S$ and 
+\item if $b$ is any upper bound of $S$, then $\ell \leq b$.
+\end{itemize}
 
 \
 
-\item Prove that the supremum of the set $S= \left\{ 1 - \frac1n \ | \ n\in \N\right\}$ is $1$.
+\noindent \textsc{Theorem 6.3:} For every real number $r$, there is a natural number $n$ such that $n>r$.
 
 \
 
-\item Let $S$ be a set of real numbers, and suppose that $\sup(S)=\ell$. Let $T=\{s+7 \ | \ s\in S\}$. Prove that $\sup(T) = \ell + 7$.
+\noindent \textsc{Corollary 6.4 (Archimedean Principle):} For every positive real number $a$ and every real number~$b$, there is some natural number $n$ such that $na>b$.
 
-\begin{framed}
-First, we show that $\ell+7$ is an upper bound of $T$. Let $t\in T$. Then there is some $s\in S$ such that $t=s+7$. Since $s\leq \ell$, we have $t=s+7 < \ell+7$, so $\ell+7$ is indeed an upper bound. Next, let $b$ be an upper bound for $T$. We claim that $b-7$ is an upper bound for $S$. Indeed, if $s\in S$, then $s+7\in T$ so $s+7 \leq b$, so $s\leq b-7$. Then, by definition of supremum, we have $b-7\geq \ell$, eso $b\geq \ell+7$.
+\
+
+\noindent \textsc{Theorem 6.5 (Density of rational numbers):} For any real numbers $x,y$ with $x<y$, there is some rational number $q$ such that $x<q<y$.
+
+\
+
+%\noindent \textsc{Definition:} For a real number $x$, the \textbf{absolute value} of $x$ is $|x| := \begin{cases} x &\text{if} \ x\geq 0 \\ -x &\text{if} \ x< 0 \end{cases}$.
 \end{framed}
+
+\
+
+\begin{enumerate}
+
+
+\item Use the Archimedean Principle to show that for any positive number $\e>0$, there is a natural number $n$ such that $\ds 0 < \frac{1}{n} < \e$.
+
+
+
+\begin{framed} Let $\e>0$. We apply the Archimedean Principle with $\e>0$ and $1$ to obtain that there is some natural number $n$ such that $n \e >1$. We claim that this is the $n$ we seek. Indeed, after rearranging, we find that $\ds \e > \frac{1}{n}$, and $n>0$ implies $\ds \frac{1}{n}>0$ as well. 
+\end{framed}
+
+\item Prove that the supremum of the set $\ds S= \left\{ 1 - \frac1n \ | \ n\in \N\right\}$ is $1$.
+
+\begin{framed} First, we show that $1$ is an upper bound for $S$. Indeed, and $s\in S$ can be written as $1-\frac{1}{n}$ for some $n\in \N$, and since $\frac{1}{n}>0$, we have $1-\frac{1}{n} < 1$. Thus $1$ is an upper bound.
+
+Now we show that $1$ is the smallest upper bound. Suppose that $b<1$ is an upper bound. Let $\e = 1 - b$, which by hypothesis is positive. Then by the previous problem, there is some $n\in \N$ such that $\frac{1}{n} < \e$, so $1-\frac{1}{n} > 1 - \e = b$. Thus, $b$ is not an upper bound. It follows that $1$ is the smallest upper bound, i.e., the supremum of $S$.
+\end{framed}
+
+
+
 
 \item Prove the following:
-\begin{cor}[Density of irrational numbers] For any real numbers $x,y$ with $x<y$, there is some irrational number $z$ such that $x<z<y$.
-\end{cor}
- 
+\begin{framed}
+\noindent \textsc{Corollary 7.1 (Density of irrational numbers):}\index{Density of Irrational Numbers} For any real numbers $x,y$ with $x<y$, there is some irrational number $z$ such that $x<z<y$.
+\end{framed}
+
  \begin{framed}
 Let $x<y$ be real numbers. Then we have $x-\sqrt{2} < y-\sqrt{2}$. By density of rationals, there is some rational number $q$ such that $x-\sqrt{2} < q < y-\sqrt{2}$. Then $x < q + \sqrt{2} < y$. Since $q$ is rational and $\sqrt{2}$ is irrational, $z=q+\sqrt{2}$ is irrational, and hence the number we seek.
 \end{framed}
 
-\item True or false \& justify: There is a rational number $x$ such that $|x^2 - 2| = 0$.
 
- \begin{framed}
-False: this would imply that $x$ is a rational number whose square is $2$.
+\
+
+\item Let $S$ be a set of real numbers, and suppose that $\sup(S)=\ell$. Let ${T={\{s+7 \ | \ s\in S\}}}$. Prove that ${\sup(T) = \ell + 7}$.
+
+\begin{framed}
+First, we show that $\ell+7$ is an upper bound of $T$. Let $t\in T$. Then there is some $s\in S$ such that $t=s+7$. Since $s\leq \ell$, we have $t=s+7 < \ell+7$, so $\ell+7$ is indeed an upper bound. Next, let $b$ be an upper bound for $T$. We claim that $b-7$ is an upper bound for $S$. Indeed, if $s\in S$, then $s+7\in T$ so $s+7 \leq b$, so $s\leq b-7$. Then, by definition of supremum, we have $b-7\geq \ell$, so $b\geq \ell+7$.
 \end{framed}
 
-\item True or false \& justify: There is a rational number $x$ such that $|x^2 - 2| < \frac{1}{1000000}$.
+\end{enumerate}
 
- \begin{framed}
- True: By density of rational numbers, there is a rational number $q$ such that $\sqrt{2}- \frac{1}{5000000} < q < \sqrt{2}$. Then 
-\begin{align*} |x^2- 2| &= |x-\sqrt{2} | \, |x+\sqrt{2}| \\&< \frac{1}{5000000} \left( \frac{1}{5000000} + 4\right) \\&< \frac{1}{5000000} \cdot 5 \\&= \frac{1}{1000000}.\end{align*}
+\newpage
+
+\Sept{13}{\Fr}{1.7 \& 1.9}
+
+\begin{framed}
+\noindent \textsc{Definition:} For a real number $x$, the \textbf{absolute value} of $x$ is 
+\[|x| := \begin{cases} x &\text{if} \ x\geq 0 \\ -x &\text{if} \ x< 0 \end{cases}.\]
+
+\
+
+\noindent \textsc{Theorem 8.1 (Triangle Inequality):} Let $x,y,z$ be real numbers. Then 
+\[ |x-z| \leq |x-y| + |y-z|.\]
+
+\
+
+\noindent \textsc{Theorem 8.2 (Reverse triangle Inequality):} Let $x,y,z$ be real numbers. Then 
+\[ |x-z| \geq ||x-y| - |y-z||.\] 
+
+\
+
+\noindent We use often use the Triangle Inequality to show precise versions of ``if $x$ is close to $y$ and $y$ is close to $z$, then $x$ is close to $z$.'' We use often use the Reverse triangle Inequality to show precise versions of ``if $x$ is far from $y$ and $y$ is close to $z$, then $x$ is far from $z$.''
 \end{framed}
+
+
+\begin{enumerate}
+
+\item If $x$ and $y$ are real numbers, what is the geometric meaning of $|x-y|$?
+
+\begin{framed} The distance between $x$ and $y$ on the real number line.
+\end{framed}
+
+\item We will often look at conditions like $|x-L|<\varepsilon$, where $L$ and $\varepsilon$ are real numbers and $x$ is a variable. Describe $\{ x \in \R \ :  \ |x-L|<\varepsilon\}$ in interval notation. Now draw a picture of this on the real number line, showing the role of $L$ and $\varepsilon$.
+
+\begin{framed} 
+$(L-\e, L+\e)$.
+
+\includegraphics[scale=.5]{ws8p1.png}
+\end{framed}
+
+\item Describe $\{ x \in \R \ :  \ |3x+7|<4 \}$ explicitly in interval notation.
+
+\begin{framed}
+Since $|3x+7| = |3| |x+ \frac{7}{3}| = 3 |x+\frac{7}{3}|$, we have $|3x+7|<4$ if and only if $|x+\frac{7}{3}|< \frac{4}{3}$, so our interval goes from $\frac{-7}{3} - \frac{4}{3} = \frac{-11}{3}$ to $\frac{-7}{3} + \frac{4}{3} = -1$. That is
+$(\frac{-11}{3}, -1)$.
+\end{framed}
+
+\item Suppose that $|x-2|< \frac{1}{5}$, $|y-2|< \frac{2}{5}$.
+
+\begin{enumerate}
+\item Show that $x > \frac{8}{5}$.
+\item Show that $|x-y| < \frac{3}{5}$.
+\item Use the reverse triangle inequality to show that $|y-3|>\frac{3}{5}$.
+\end{enumerate}
+
+\begin{framed}
+\begin{enumerate}
+\item Since $|x-2|<\frac{1}{5}$, we have $-(x-2) \leq |x-2|<\frac{1}{5}$, so $x-2 > -\frac{1}{5}$, and $x > 2-\frac{1}{5} = \frac{9}{5}> \frac{8}{5}$.
+\item By the triangle inequality, $|x-2|<  \frac{1}{5}$ and $|y-2|<  \frac{2}{5}$ implies $|x-y| <  \frac{1}{5} + \frac{2}{5} = \frac{3}{5}$.
+\item Applying the reverse triangle inequality with $y$, $2$, and $3$, we have $|y-3| \geq ||3-2| - |y-2|| = |1 - |y-2||$. Since $|y-2|<\frac{2}{5}$, $1-|y-2| > 0$, so $|1 - |y-2|| = 1- |y-2| > 1- \frac{2}{5} = \frac{3}{5}$.
+\end{enumerate}
+
+\end{framed}
+
+\item True or false \& justify$^{\text{1}}$: There is a rational number $x$ such that $|x^2 - 2| = 0$.
+
+\begin{framed}
+False! This would imply that $x^2=2$, and there is no such rational number.
+\end{framed}
+
+\item True or false \& justify\footnote{You can use anything we've proven in class, but don't use things we haven't, like decimal expansions.}: There is a rational number $x$ such that $|x^2 - 2| < \frac{1}{1000000}$.
+
+\begin{framed}
+True! There is a rational number $x$ in the interval $(\sqrt{2} - \frac{1}{4000000}, \sqrt{2} + \frac{1}{4000000})$ by density of rational numbers. In particular, $x < \sqrt{2} +  \frac{1}{4000000} < 2$ so $|x+ \sqrt{2}| < 2 + 2 = 4$. (This is a crude bound, but good enough.)
+Then $|x^2-2| = |x-\sqrt{2}| \cdot |x+\sqrt{2}| < \frac{1}{4000000} \cdot 4 = \frac{1}{1000000}$.
+\end{framed}
+
+
 
 \end{enumerate}
 
 
 
-\Sept{13}
+\begin{framed}
+\noindent Here is another important fact in the relationship between $\R$ and $\Z$:
+
+\
+
+\noindent \textsc{Theorem 8.3:} For every real number $r$, there is a unique integer $n\in \Z$ such that $n\leq r < n+1$.
+\end{framed}
+
+\begin{enumerate}\setcounter{enumi}{6}
+\item Proof of Theorem 8.3:
+\begin{enumerate}
+\item First, assume that $r\geq 0$. Complete the following sentence:
+``The number  $n+1$ \ should be the smallest natural number that \underline{\phantom{bananananananana}}.''
+\begin{framed} is larger than $r$.\end{framed}
+\item Take your sentence and turn it into a recipe for $n$ to prove that such an integer $n$ exists in this case.
+\begin{framed} Assume that $r\geq 0$. Consider the set $S=\{ m\in \N \ | \ m> r\}$. By Theorem 7.1, $S$ is nonempty, so by the Well-Ordering Axiom for $\N$, there is a minimum element in $S$. Set $n=\min(S)-1$; note that $r<n+1$ because $n+1\in S$. If $\min(S)>1$, $n\in \N \smallsetminus S$, since $n$ is less than the minimum for $S$, so $n\leq r$.  If $\min(S)=1$, then $n=0$, so by our assumption, $n=0\leq r$.
+Either way, $n\in \N\cup \{0\} \subseteq \Z$ and $n\leq r \leq n+1$, as required.
+\end{framed}
+\item Now, assume that $r<0$. Explain why there is some $j\in \N$ such that $j+r >0$. Deduce that an integer $n$ as in the statement exists in this case too.
+\begin{framed}
+Now assume that $r<0$. By Theorem~7.1, there is some $j\in \N$ such that $j>-r$, so $j+r>0$. By the case we already established, there is some integer $n\in \Z$ such that $n \leq j+r < n+1$. We then have $n-j \leq r < (n-j)+1$, so $n-j\in \Z$ is the integer we seek.
+\end{framed}
+\item Finally, prove that $n$ is unique. You can use without proof that there are no integers in between $0$ and $1$.
+\begin{framed} To see that $n$ is unique, suppose that $n,m\in \Z$ with $n\leq r < n+1$ and $m\leq r < m+1$. We then have $n < m+1$, so $n\leq m$, and, switching roles, $m\leq n$. Thus, $m=n$.
+\end{framed}
+\end{enumerate}
+\end{enumerate}
+
+\newpage
+
+
+\Sept{16}{\Mo}{2.1}
+
+
 
 
 We now turn our attention to the next major topic of this class: sequences of real numbers. We will spend the next few weeks developing their properties carefully and
 rigorously. Sequences form the foundation for much of what we will cover for the rest of the semester. 
 
 
-\begin{defn} A {\em sequence}\index{sequence} is an infinite list of real numbers indexed by $\N$:
+\begin{defn} A {\bf sequence}\index{sequence} is an infinite list of real numbers indexed by $\N$:
 $$
 a_1, a_2, a_3, \dots.
 $$
@@ -1501,7 +1597,7 @@ $$
 $$
 1, 1, 2, 3, 5, 8, 13, 21, 34, \dots
 $$
-This is an example of a recursively defined sequence. It is the famed {\em Fibonacci sequence}. 
+This is an example of a recursively defined sequence. It is the famed {\bf Fibonacci sequence}.\index{Fibonacci sequence} 
 
 \item Let $\{c_n\}_{n=1}^\infty$ be the sequence whose $n$-th term is the $n$-th smallest positive prime integer:
 $$
@@ -1521,10 +1617,10 @@ $$
 converges to $5$.
 Let's give the rigorous definition.
 
-\begin{defn} Let $\{a_n\}_{n=1}^\infty$ be an arbitrary sequence and $L$ a real number. We say $\{a_n\}_{n=1}^\infty$ {\em converges}\index{converges} to $L$ provided the
+\begin{defn} Let $\{a_n\}_{n=1}^\infty$ be an arbitrary sequence and $L$ a real number. We say $\{a_n\}_{n=1}^\infty$ {\bf converges}\index{converges} to $L$ provided the
   following condition is met:
 \begin{quote}
-For every real number $\e > 0$, there is a real number $N$ such that $|a_n - L| < \e$ for all natural numbers $n$ such that $n > N$.
+For every real number $\e > 0$, there is a real number $N$ such that ${|a_n - L| < \e}$ for all natural numbers $n$ such that $n > N$.
 \end{quote}
 \end{defn}
 
@@ -1544,7 +1640,7 @@ It's a complicated definition --- three quantifiers!
 
 
 Here is what the definition is saying somewhat loosely: No matter how small a number $\e$ you pick, so long as it is positive, if you go far enough out in the sequence, all of
-the terms from that point on will be within a distance of $\e$ of the limiting value $L$.
+the terms from that point on will be within a distance of $\e$ of the limiting value~$L$.
 
 \begin{ex} To say that the sequence $\{a_n\}_{n=1}^\infty$ where $a_n =  5 + (-1)^n \frac{1}{n}$ converges to $5$ gives us a different statement for every $\e>0$. For example:
 \begin{itemize}
@@ -1597,6 +1693,8 @@ $\{5 + (-1)^n \frac{1}{n}\}_{n=1}^\infty$ converges to $5$.
 \item $\text{[Argument that $|a_n-L|<\e$.]}$
 	\item Thus $\{a_n\}_{n=1}^{\infty}$ converges to $L$.
 \end{itemize}
+
+In particular, you usually can't just sit down and write a proof in one fell swoop: you will have to preapre for your proof by figuring out what value of $N$ will beat $\e$. The work that you use to find $N$ in terms of $\e$ does \emph{not} belong in the final proof.
 \end{rem}
 
 
@@ -1648,24 +1746,33 @@ converges to $\frac25$.
 \end{proof}
 \end{ex}
 
-\Sept{15}
+\newpage
+\Sept{18}{\We}{2.1}
 
-\begin{enumerate}
-\item Let $c$ be a real number. Prove that the constant sequence $\{ c\}_{n=1}^\infty$ converges to $c$.
 
 \begin{framed}
-Let $\e>0$. Take $N=0$ (or $N=588$, or $N=-10000000$, or any other real number). For any natural number $n>N$, we have $|a_n - c| = 0 <\e$. Thus the sequence converges to $c$.
+\noindent \textsc{Definition:} A sequence $\{a_n\}_{n=1}^\infty$ {\bf converges} to a real number $L$ provided for every real number $\e > 0$, there is a real number $N$ such that ${|a_n - L| < \e}$ for all natural numbers $n$ such that $n > N$.
 \end{framed}
+\begin{enumerate}
+\item \textsc{The $\e$ vs $N$ game:}
+\begin{enumerate}
+\item Player 0 starts by graphing a sequence $\{a_n\}_{n=1}^\infty$, and specifies $y$-value $L$ that  they think makes $\lim_{n\to \infty} a_n = L$ \textit{true}. [You can't graph all the values, but make a large graph with a generous number of values.]
+\item Player 1 choses an $\e$. This is how close we would like our sequence to be to $L$. Thus, $\e$ goes up and down from $L$ (corresponding to $|a_n-L|<\e$). Draw horizontal dotted lines with $y$-values $L-\e$ and $L+\e$. [The $\e$ should be large enough for people to see and have room to work in the picture.]
+\item Player 2 must find an $N$ such that all of the values of the sequence to the right of $N$ are in $(L-\e,L+\e)$.
+Draw a vertical line for $x=N$.
+[Everyone in the team can assist player 2!]
+\item Repeat with the same graph, players 1\& 2 switching roles (and a new $\e$).
+\item Now do a couple of rounds with a sequence $\{a_n\}_{n=1}^\infty$ and an $L$ that you think makes $\lim_{n\to \infty} a_n = L$ \textit{false}.
+\end{enumerate}
+
+\
+
+\item Prove that the sequence $\ds \left\{ \frac{1}{\sqrt{n}} \right\}_{n=1}^\infty$ converges to $0$.
+
+\
 
 
-
-\item Prove that the sequence $ \left\{ \frac{1}{\sqrt{n}} \right\}_{n=1}^\infty$ converges to $0$.
-
-
-
-
-
-\item Let $\{a_n\}_{n=1}^\infty$ be a sequence. Suppose we know that $\{a_n\}_{n=1}^\infty$ converges to $1$. Prove that there is a natural number $n\in \N$ such that $a_n>0$.
+\item Let $\ds \{a_n\}_{n=1}^\infty$ be a sequence. Suppose we know that $\{a_n\}_{n=1}^\infty$ converges to $1$. Prove\footnote{Hint: If you know that a ``for all'' statement is true, you can choose any specific value for that variable and get a more specific true statement.} that there is a natural number $n\in \N$ such that $a_n>0$.
 
 \begin{framed}
 Take $\e = 1$. By definition of converges to $1$, there is some $N$ such that for all $n>N$, $|a_n  - 1|< 1$, and in particular $a_n >0$. So, take any natural number greater than $n$, and the conclusion follows.
@@ -1673,82 +1780,26 @@ Take $\e = 1$. By definition of converges to $1$, there is some $N$ such that fo
 
 
 
-\item Prove or disprove: The sequence $ \left\{\frac{n+1}{2n} \right\}_{n=1}^\infty$ converges to $0$.
+\item Prove or disprove: The sequence $\ds \left\{\frac{n+1}{2n} \right\}_{n=1}^\infty$ converges to $0$.
 
 \begin{framed}
 Take $\e = 1/2$. We claim that there is no $N$ such that for all $n>N$ we have $|a_n - 0| < 1/2$. Indeed, given $N$, take any $n$ to be any natural number greater than $N$. Then $a_n = 1/2 + 1/2n > 1/2$, so $|a_n| > 1/2$. Thus, there is no $N$ satisfying the desired property. This means that the sequence does not converge to $1/2$.
 \end{framed}
 
 
-
-\item Prove or disprove: The sequence $\{a_n\}_{n=1}^\infty$ where
-\[ a_n = \begin{cases} 1 &\text{if } n = 10^m \text{ for some } m\in \N \\
-0 &\text{otherwise}\end{cases}
-\]
-converges to $0$. 
-
-\begin{framed}
-Take $\e = 1/2$. We claim that there is no $N$ such that for all $n>N$ we have $|a_n - 0| < 1/2$. Indeed, let $N$ be any real number. Let $m$ be a natural number larger than $N$, and $n=10^m$. Then $n = 10^m > m > N$, and $a_n = 1$, so $|a_n-0| = 1 > 1/2$. This shows the claim, and hence that the sequence does not converge to $0$
- \end{framed}
-
-
 \end{enumerate}
 
-\begin{defn} A sequence $\{a_n\}_{n=1}^\infty$ is \emph{convergent}\index{convergent} if there is a real number $L$ such that $\{a_n\}_{n=1}^\infty$ converges to $L$. Otherwise, it is said to be \emph{divergent}\index{divergent}.
+\newpage
+
+\begin{comment}
+
+\Sept{23}{Mo}{2.1}
+
+\begin{defn} We say that a sequence $\{ a_n \}_{n=1}^\infty$ is \textbf{convergent} if there is a number $L$  such that $\{ a_n \}_{n=1}^\infty$ converges to $L$, and \textbf{divergent} otherwise.
 \end{defn}
 
-\
 
-\begin{enumerate}\setcounter{enumi}{5}
-\item In this problem, we will prove that the sequence $\{ (-1)^{n} \}_{n=1}^\infty$ is divergent.
-
-\begin{itemize}
-\item Proceed by contradiction and suppose it converges to $L$.
-\item Apply the definition of ``converges to $L$'' with $\e = \frac{1}{2}$, so we get some $N$.
-\item Take an odd integer $n$ bigger than $N$: what does this say about $L$?
-\item  Take an even integer $n$ bigger than $N$: what does this say about $L$?
-\item Conclude the proof.
-\end{itemize}
-\end{enumerate}
-\begin{framed}
-\begin{proof}
-  We proceed by contradiction: Suppose the sequence did converge to some number $L$. Our strategy will be to derive a contradiction by showing that such
-  an $L$ would have to satisfy mutually exclusive conditions. 
-
-By definition, since the sequence converges to $L$, we have that 
-for every $\e > 0$ there is a number $N$ such that 
-$|(-1)^n - L| < \e$
-for all natural numbers $n$ such that $n > N$.
-In particular, this statement is true for the particular value $\e = \frac12$. That is,  there is a number $N$ such that  
-$|(-1)^n - L| < \frac12$ for all natural numbers $n$ such that  
-$n > N$. Let $n$ be any even natural number that is bigger than
-$N$. (Certainly one exists: we know there is an integer bigger than
-$N$
-by Theorem \ref{thm120}. Pick one. If it is even, take that to be
-$n$. If it is odd, increase it by one to get an even integer $n$.)  Since $(-1)^n = 1$ for an even integer $n$, we get
-$$
-|1 - L| < \frac12
-$$
-and thus $\frac12 < L < \frac32$.
-
-Likewise, let $n$ be an odd natural number bigger than $N$. Since $(-1)^n = -1$ for an odd integer $n$, we get
-$$
-|-1 - L| < \frac12
-$$
-and thus $-\frac32 < L < -\frac12$. But it cannot be that both $L > \frac12$ and $L < -\frac12$.
-
-We conclude that no such $L$ exists; that is, this sequence is divergent.
-\end{proof}
-\end{framed}
-
-
-
-\Sept{20}
-
-
-
-
-\begin{ex} Let's prove the sequence $\{(-1)^n\}_{n=1}^\infty$ is divergent. This means that there is no $L$ to which it converges. 
+\begin{ex} Let's prove the sequence $\{(-1)^n\}_{n=1}^\infty$ is divergent.
 
 \begin{proof}
   We proceed by contradiction: Suppose the sequence did converge to some number $L$. Our strategy will be to derive a contradiction by showing that such
@@ -4082,6 +4133,8 @@ For (3), we can argue similarly or observe that $f$ is constant if and only if i
 
 
 \end{comment}
+
+
 
 \printindex
 \end{document}

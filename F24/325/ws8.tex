@@ -1,0 +1,123 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\e}{\varepsilon}
+\newcommand{\ds}{\displaystyle}
+
+\DeclareMathOperator{\res}{res}
+
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+	
+	\thispagestyle{empty}
+	
+	\section*{Absolute Values and Real numbers vs integers \S1.7 and \S1.9}
+	
+	
+
+\begin{framed}
+\noindent \textsc{Definition:} For a real number $x$, the \textbf{absolute value} of $x$ is $|x| := \begin{cases} x &\text{if} \ x\geq 0 \\ -x &\text{if} \ x< 0 \end{cases}$.
+
+\
+
+\noindent \textsc{Theorem 8.1 (Triangle Inequality):} Let $x,y,z$ be real numbers. Then 
+\[ |x-z| \leq |x-y| + |y-z|.\]
+
+We use often use the Triangle Inequality to show precise versions of ``if $x$ is close to $y$ and $y$ is close to $z$, then $x$ is close to $z$.''
+
+\noindent \textsc{Theorem 8.2 (Reverse triangle Inequality):} Let $x,y,z$ be real numbers. Then 
+\[ |x-z| \geq ||x-y| - |y-z||.\] 
+
+We use often use the Reverse triangle Inequality to show precise versions of ``if $x$ is far from $y$ and $y$ is close to $z$, then $x$ is far from $z$.''
+\end{framed}
+
+
+\begin{enumerate}
+
+\item If $x$ and $y$ are real numbers, what is the geometric meaning of $|x-y|$?
+
+\
+
+\item We will often look at conditions like $|x-L|<\varepsilon$, where $L$ and $\varepsilon$ are real numbers and $x$ is a variable. Describe $\{ x \in \R \ :  \ |x-L|<\varepsilon\}$ in interval notation. Now draw a picture of this on the real number line, showing the role of $L$ and $\varepsilon$.
+
+\
+
+\item Describe $\{ x \in \R \ :  \ |3x+7|<4 \}$ explicitly in interval notation.
+
+\
+
+\item Suppose that $|x-2|< \frac{1}{5}$, $|y-2|< \frac{2}{5}$.
+\begin{enumerate}
+\item Show that $x > \frac{8}{5}$.
+\item Show that $|x-y| < \frac{3}{5}$.
+\item Use the reverse triangle inequality to show that $|y-3|>\frac{3}{5}$.
+\end{enumerate}
+
+\
+
+\item True or false \& justify$^{\text{1}}$: There is a rational number $x$ such that $|x^2 - 2| = 0$.
+
+\
+
+\item True or false \& justify\footnote{You can use anything we've proven in class, but don't use things we haven't, like decimal expansions.}: There is a rational number $x$ such that $|x^2 - 2| < \frac{1}{1000000}$.
+
+\
+
+
+
+\end{enumerate}
+
+
+
+\begin{framed}
+\noindent Here is another important fact in the relationship between $\R$ and $\Z$:
+
+\
+
+\noindent \textsc{Theorem 8.3:} For every real number $r$, there is a unique integer $n\in \Z$ such that $n\leq r < n+1$.
+\end{framed}
+
+\begin{enumerate}\setcounter{enumi}{6}
+\item Proof of Theorem 8.3:
+\begin{enumerate}
+\item First, assume that $r\geq 0$. Complete the following sentence:
+``The number  $n+1$ \ should be the smallest natural number that \underline{\phantom{bananananananana}}.''
+%\begin{framed} is larger than $r$.\end{framed}
+\item Take your sentence and turn it into a recipe for $n$ to prove that such an integer $n$ exists in this case.
+%\begin{framed} Assume that $r\geq 0$. Consider the set $S=\{ m\in \N \ | \ m> r\}$. By Theorem 7.1, $S$ is nonempty, so by the Well-Ordering Axiom for $\N$, there is a minimum element in $S$. Set $n=\min(S)-1$; note that $r<n+1$ because $n+1\in S$. If $\min(S)>1$, $n\in \N \smallsetminus S$, since $n$ is less than the minimum for $S$, so $n\leq r$.  If $\min(S)=1$, then $n=0$, so by our assumption, $n=0\leq r$.
+%Either way, $n\in \N\cup \{0\} \subseteq \Z$ and $n\leq r \leq n+1$, as required.
+%\end{framed}
+\item Now, assume that $r<0$. Explain why there is some $j\in \N$ such that $j+r >0$. Deduce that an integer $n$ as in the statement exists in this case too.
+%\begin{framed}
+%Now assume that $r<0$. By Theorem~7.1, there is some $j\in \N$ such that $j>-r$, so $j+r>0$. By the case we already established, there is some integer $n\in \Z$ such that $n \leq j+r < n+1$. We then have $n-j \leq r < (n-j)+1$, so $n-j\in \Z$ is the integer we seek.
+%\end{framed}
+\item Finally, prove that $n$ is unique. You can use without proof that there are no integers in between $0$ and $1$.
+%\begin{framed} To see that $n$ is unique, suppose that $n,m\in \Z$ with $n\leq r < n+1$ and $m\leq r < m+1$. We then have $n < m+1$, so $n\leq m$, and, switching roles, $m\leq n$. Thus, $m=n$.
+%\end{framed}
+\end{enumerate}
+\end{enumerate}
+
+
+\end{document}

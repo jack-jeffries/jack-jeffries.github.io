@@ -1,0 +1,130 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals,hyperref}
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+\newcommand\itemA{\stepcounter{enumi}\item[{\bf{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\bf{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\bf{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+\DeclareMathOperator{\ord}{ord}
+\renewcommand{\ceq}{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{1}
+	
+	\thispagestyle{empty}
+	
+	\section*{Assignment \#2: Due Thursday, September 12 at 7pm}
+	
+	This problem set is to be turned in on Canvas. You may reference any result or problem from our worksheets or lectures, unless it is the fact to be proven! You are encouraged to work with others, but you should understand everything you write. Please consult the class website for acceptable/unacceptable resources for the problem sets.
+	
+	\
+	
+	
+
+
+
+\begin{enumerate}
+\item Let $S$ be a subset of $\R$ and $T$ be a subset of $S$. Prove that if $S$ is bounded above
+then $T$ is also bounded above.
+
+\
+
+\item Prove that if $S$ is a subset of $\R$ that is bounded above, then $S$ has infinitely many upper bounds.
+
+\
+
+\item Given a subset $S$ of $\R$, a \textbf{lower bound} for $S$ is a real number $z$ such that $z \leq s$ for all $s \in S$.
+We say $S$ is \textbf{bounded below} if $S$ has at least one lower bound.
+Given a subset $S$ of $\R$, define a new subset $-S$ by
+\[-S = \{x \in \R \ | \ x = -s \ \text{for some} \ s \in S\}.\]
+For example, $- \{-2,-1, 1, 3\} = \{-3, -1, 1, 2\}.$
+Prove\footnote{Warning: It is easy to get things out of order here. For each ``if then'' direction, unpackage the hypothesis, and use that to establish the conclusion.} that $S$ is bounded below if and only if $-S$ is bounded above.
+
+\
+
+\item Suppose $S$ is a subset of $\R$. A real number $y$ is called the \emph{infimum} (also known as greatest
+lower bound) of $S$ if
+\begin{itemize}
+\item $y$ is a lower bound for $S$, and
+\item if $z$ is any lower bound for $S$ then $z \leq y$.
+\end{itemize}
+Prove\footnote{Hint: The previous problem might be useful.} that every nonempty, bounded below subset $S$ of $\R$ has an infimum.
+
+\
+
+\item Let $S$ be a subset of $\R$.
+\begin{enumerate}
+\item Show that the open interval $(1,2)$ does not have a minimum element.
+\item Show that if $y$ is the minimum of $S$, then $y$ is the infimum of $S$.
+\item Show that if $\ell$ is the infimum of $S$ and $\ell \in S$, then $\ell$ is the minimum of $S$.
+\end{enumerate}
+\end{enumerate}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

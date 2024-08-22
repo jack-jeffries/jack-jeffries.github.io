@@ -2,9 +2,8 @@
 
 
 \usepackage{times}
-\usepackage[margin=0.5in]{geometry}
-\usepackage{amsmath,amssymb,multicol,graphicx,framed,comment}
-\usepackage[shortlabels]{enumitem}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
@@ -32,181 +31,122 @@
 	
 	\thispagestyle{empty}
 	
-	\section*{Warming up with quantifiers and real numbers: \S1.4 and \S1.5}
+	\section*{Warming up with if-then statements and real numbers: \S1.4 and \S1.5} 
 	
-\subsection*{Making sense of quantifier statements} 
+\subsection*{Making sense of if-then statements}
 
 \
 
 \begin{framed}
 \begin{itemize}
-\item The symbol for ``\textbf{for all}'' is $\forall$ and the symbol for ``\textbf{there exists}'' is $\exists$.
-\item The negation of ``For all $x\in S$, $P$'' is ``There exists $x\in S$ such that $\mathrm{not} \, P$''.
-\item The negation of ``There exists $x\in S$ such that $P$'' is ``For all $x\in S$, $\mathrm{not} \, P$''.
+\item The statement ``If $P$ then $Q$'' is true whenever $Q$ is true or $P$ is false. Equivalently, the statement ``If $P$ then $Q$'' is false whenever $Q$ is false and $P$ is true.
+\item The \textbf{converse} of the statement  ``If $P$ then $Q$'' is the statement  ``If $Q$ then $P$''.
+\item The \textbf{contrapositive} of the statement  ``If $P$ then $Q$'' is the statement  ``If not $Q$ then not $P$''.
+\item Any if-then statement is equivalent to its \emph{contrapositive}, but not necessarily to its converse!
 \end{itemize}
 \end{framed}
 
-\noindent \textit{A prankster has spraypainted the real number line red and blue, so every real number is red or blue (but not both)!}
 
-\
+
 
 \begin{enumerate}
-\item Match each informal story (i)--(iv) below with a precise quantifier statement (A)--(D). 
+\item For each of the following statements, write its contrapositive and its converse. Decide if original/contrapositive/converse true or false for real numbers $a,b$, but don't prove them yet.
+\begin{enumerate}
+\item If $a$ is irrational, then $1/a$ is irrational.
+\item If $a$ and $b$ are irrational, then $ab$ is irrational.
+\item If $a\geq3$, then $a^2\geq 9$.
+\end{enumerate}
 \end{enumerate}
 
-\begin{minipage}[c]{0.4\linewidth}
-\qquad \emph{Informal stories:}
-\begin{enumerate}[(i)]
-\item Every number past some point is red.
 
-%\item Not every positive number is blue.
 
-\item There are arbitrarily big red numbers.
 
-\item All positive numbers are red.
 
-%\item You never get to a point where past that point every number is blue.
-
-\item There are positive red number(s).
-\end{enumerate}
-\end{minipage} % no space if you would like to put them side by side
-\begin{minipage}[c]{0.6\linewidth}
-\qquad \emph{Precise statements:}
-\begin{enumerate}[(A)]
-\item For every $y>0$, $y$ is red.
-
-\item There exists $y>0$ such that $y$ is red.
-
-\item For every $x\in \R$, there is some $y>x$ such that $y$ is red.
-
-\item There exists $x\in \R$ such that for every $y>x$, $y$~is red.
-\end{enumerate}
-\end{minipage}
-
+\subsection*{Proving if-then statements}
 
 \
 
-\
+\begin{framed}
+\begin{itemize}
+\item The general outline of a direct proof of ``If $P$ then $Q$'' goes
+\begin{enumerate}
+\item Assume $P$.
+\item Do some stuff.
+\item Conclude $Q$.
+\end{enumerate}
+\item Often it is easier to prove the contrapositive of an if-then statement than the original, especially when the conclusion is something negative. We sometimes call this an \emph{indirect proof} or a \emph{proof by contraposition}.
+\end{itemize}
 
+\end{framed}
 
 \begin{enumerate}\setcounter{enumi}{1}
+\item Consider the following proof of the claim ``For real numbers $x,y,z$, if $x+y=z+y$, then $x=z$'' from the axioms of $\R$. Match the parts of this proof with the general outline above. Which sentences are \emph{assumptions} and which are \emph{assertions}? Is it clear \emph{just from reading each sentence on its own} whether it is an assumption or an assertion? Is it clear \emph{why} each assertion is true?
+\begin{quote}
+\emph{Proof.} Suppose that $x+y=z+y$. Then adding $-y$ (which exists by Axiom 6) we get 
+\[(x+y)+ (-y) = (z+y) + (-y).\]
+This can be rewritten (by Axiom 3) as
+\[x+ (y+ (-y) )= z+ (y + (-y)),\]
+and hence (by Axiom 6) as
+\[ x+ 0 = z+0,\]
+which gives $x=z$ (by Axioms 4 and 2).\qed
+\end{quote}
 
-\item Draw a picture where (A) is false and (B) is true.
+
+
+\item Consider the following purported proof of the true fact ``If $2x + 5 \geq 7$ then $x\geq 1$.'' Is this a good proof? Is it a correct proof?
+\begin{quote}
+\emph{Proof.}
+\[ x \geq 1.\]
+Multiply both sides by two.
+\[ 2x \geq 2.\]
+Add five to both sides.
+\[2x+5 \geq 7. \qedhere\] \qed
+\end{quote}
+\end{enumerate}
+
+
+\subsection*{Proving if-then statements}
+
+\begin{enumerate}\setcounter{enumi}{3}
+
+\item Prove or disprove each of the statements in (1). You might consider a proof by contraposition for some of these!
 
 \
 
-\item Draw a picture where (C) is true and (D) is false. 
+\item Prove or disprove the \emph{converse} of each of the statements in (1).
 
 \
-
-\item Suppose that (C) is true. Which of the following statements must also be true? Why?
-
-\begin{enumerate}
-\item There is some $y>1000000000$ such that $y$ is red.
-\item For every $\mu \in \R$, there is some $\theta>\mu$ such that $\theta$ is red.
-\item For every $x\in \R$, there is some $y>2x$ such that $y$ is red.
 \end{enumerate}
 
-\
-
-The next problem is no longer about a spraypainting of the real number line.
-
-\item\label{w2prob3} Rewrite each statement with symbols in place of quantifiers, and write its negation. Do you think the original statement is true or false (but don't prove them yet)?.
-\begin{enumerate}
-\item There exists $x\in \Q$ such that $x^2 = 2$.
-\item For all $x\in \R$,  $x^2 >0$.
-\item For all $x\in \R$ such that\footnote{In a statement of the form ``For all $x\in S$ such that $Q$, $P$'', the ``such that $Q$'' part is part of the hypothesis: it is restricting the set $S$ that we are ``alling''' over.} $x\neq 0$,  $x^2 >0$.
-\item For all $x\in \R$, there exists $y\in \R$ such that $x<y$.
-\item There exists $x\in \R$ such that for all $y\in \R$, $x<y$.
-\end{enumerate}
-\end{enumerate}
-
-\newpage
-
-\subsection*{Proving quantifier statements and using the axioms of $\R$}
+\vfill
 
 
-\
-
-\begin{framed}
-\begin{itemize}
-\item The general outline of a proof of ``For all $x\in S$, $P$'' goes
-\begin{enumerate}
-\item Let $x\in S$ be arbitrary.
-\item Do some stuff.
-\item Conclude that $P$ holds for $x$.
-\end{enumerate}
-\item To prove a there exists statement, you just need to give an example. To prove ``There exists $x\in S$ such that $P$'' directly:
-\begin{enumerate}
-\item Consider$^{\textrm{2}}$ $x=$[some specific element of $S$].
-\item Do some stuff.
-\item Conclude that $P$ holds for $x$.
-\end{enumerate}
-\end{itemize}
-Note: explaining \emph{how} you found your example``$x$'' is \emph{not} a logically necessary part of the proof. 
-\end{framed}
-
-\
-
+\subsection*{Using the axioms of $\R$ to prove basic arithmetic facts.}
 
 \begin{enumerate}\setcounter{enumi}{5}
 
+\item Let $x$ and $y$ be real numbers. Use the axioms of $\R$ to prove\footnote{Hint: You may want to add something to both sides.} that if $x \geq y$ then $-x \leq -y$.
 
-
-\item Circle the correct answer in each of the blanks below:
-{\small
-\begin{itemize}
-\item To prove a ``for all'' statement, you need to give a \mbox{GENERAL ARGUMENT / SPECIFIC EXAMPLE}.
-\item To \emph{dis}prove a ``for all'' statement, you need to give a \mbox{GENERAL ARGUMENT / SPECIFIC EXAMPLE}.
-\item To prove a ``there exists'' statement, you need to give a \mbox{GENERAL ARGUMENT / SPECIFIC EXAMPLE}.
-\item To \emph{dis}prove a ``there exists'' statement, you need to give a \mbox{GENERAL ARGUMENT / SPECIFIC EXAMPLE}.
 
 \
 
-\item If you want to  \emph{use} a ``for all'' statement that you know is true, \\you CAN CHOOSE A SPECIFIC VALUE / MUST USE A MYSTERY VALUE
-\item If you want to  \emph{use} a ``there exists'' statement that you know is true, \\you CAN CHOOSE A SPECIFIC VALUE / MUST USE A MYSTERY VALUE
+\item Let $x$ and $y$ be real numbers. Use the axioms of $\R$ to prove that $x \geq y$ if and only if $-x \leq -y$.
 
-\end{itemize}
-}
 
 \
 
-\item Prove or disprove each of the statements in (\ref{w2prob3}) (skip (c) for now) using the axioms of $\R$ and facts we have already proven.
-
-\
-
-\end{enumerate}
-
-\subsection*{More practice with quantifier statements}
-
-\begin{enumerate}\setcounter{enumi}{7}
-
-\item Prove that there exists some $x\in \R$ such that $2x+5=3$.
-
-\
-
-
-\item Prove that there exists some $x\in \R$ such that for every $y\in \R$, $xy=x$.
-
-\
-
-\item\label{xy=1} Let $x$ be a real number. Use the axioms of $\R$ and facts we have already proven to show that if there exists a real number $y$ such that $xy=1$, then $x\neq 0$.
-
-\
-
-\item Prove that\footnote{Hint: Use (\ref{xy=1}).} for all $x\in \R$ such that $x\neq 0$, we have $x^2\neq 0$.
+\item Let $x,y$ be real numbers. Use the axioms of $\R$ and facts we have already proven\footnote{Be careful: are you using any facts that we have not already proven?} to prove that if $x\leq 0$ and $y\leq 0$, then $xy\geq 0$. 
 
 \
 
 
 
-\item Let $S\subseteq \R$ be a set of real numbers. Apply your results above to prove that if for every $x\in S$, $x^2$ is irrational, then for every $y\in S$, $y$ is irrational.
+\item Use\footnote{Hint: Try a proof by contradiction.} the axioms of $\R$ and facts we have already proven to prove that $1>0$.
 
 
 
 
 \end{enumerate}
 
-
-
+\vfill
 \end{document}
