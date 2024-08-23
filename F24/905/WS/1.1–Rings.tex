@@ -1,0 +1,324 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals}
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\solutione}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{leaf}This solution is embargoed.}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+
+\newcommand{\rsa}{\rightsquigarrow}
+\newcommand\itemA{\stepcounter{enumi}\item[{\bf{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\bf{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\bf{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+\DeclareMathOperator{\ord}{ord}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{1}
+	
+	\thispagestyle{empty}
+	
+	\section*{Worksheet \#1.1: Rings}
+	
+%We have two goals today:
+%\begin{enumerate}
+%\item Recall and gain familiarity with some examples of rings.
+%\item Single out some important types of elements.
+%\end{enumerate}
+	
+
+\begin{framed}
+\textsc{Example:} The following are rings.
+\begin{enumerate}
+\item Rings of numbers, like $\Z$ and $\Z[i] = \{ a + b i \in \C \ | \ a,b\in \Z\}$. 
+\item Given a starting ring $A$, the polynomial ring in one indeterminate \[A[X] \ceq \{ a_d X^d + \cdots + a_1 X + a_0 \ | \ d\geq 0, a_i\in A\},\]
+ or in a (finite or infinite!\footnotemark) set of indeterminates $A[X_1,\dots,X_n]$, \ $A[ X_\lambda \ | \ \lambda\in \Lambda]$.
+ \item Given a starting ring $A$, the power series ring in one indeterminate \[A\llbracket X\rrbracket \ceq \left\{ \sum_{i\geq 0} a_i X^i \ | \  a_i\in A\right\},\]
+ or in a set of indeterminates $A\llbracket X_1,\dots,X_n\rrbracket $.
+%\item ``Rings of integers'': 
+%\[ \mathbb{Z}, \ \mathbb{Z}[\sqrt{2}]\ceq \{ a + b\sqrt{2} \in \R \ | \  a,b\in \Z\}, \  \mathbb{Z}[\sqrt{-1}]\ceq \{ a + b\sqrt{-1} \in \C \ | \ a,b\in \Z\}.\]
+\item For a set $X$, $\mathrm{Fun}(X,\R) \ceq \{ \text{all functions} \ f:[0,1] \to \R \}$ with pointwise $+$ and $\times$.
+\item $\mathcal{C}([0,1]) \colonequals \{ \text{continuous functions} \ f:[0,1] \to \R \}$ with pointwise $+$ and $\times$.
+\item $\mathcal{C}^\infty([0,1]) \colonequals \{ \text{infinitely differentiable functions} \ f:[0,1] \to \R \}$ with pointwise $+$ and $\times$.
+ \item[($\div$)] Quotient rings: given a starting ring $A$ and an ideal $I$, $R=A/I$.
+  \item[($\times$)] Product rings: given rings $R$ and $S$, $R\times S = \{(r,s) \ | \ r\in R, s\in S\}$.
+\end{enumerate}
+
+
+%  \item Invariant subrings: Given a ring $R$, and a group $G$ of ring automorphisms of $R$,
+% \[ R^G \colonequals \{ r \in R \ | \ g(r) = r \ \text{for all}  \ g\in G\}.\]
+
+
+
+\
+
+
+\textsc{Definition:} An element $x$ in a ring $R$ is called a
+\begin{itemize}
+\item \textbf{unit} if $x$ has an \textbf{inverse} $y\in R$ (i.e., $xy=1$).
+\item \textbf{zerodivisor} if there is some $y\neq 0$ in $R$ such that $xy=0$.
+\item \textbf{nilpotent} if there is some $e\geq 0$ such that $x^e=0$.
+\item \textbf{idempotent} if $x^2 = x$.
+\end{itemize}
+We also use the terms \textbf{nonunit, nonzerodivisor, nonnilpotent, nonidempotent} for the negations of the above.
+We say that a ring is \textbf{reduced} if it has no nonzero nilpotents.
+\end{framed}
+%\footnotetext[1]{In this class, all rings are commutative with $1\neq 0$.}
+\footnotetext{Note: Even if the index set is infinite,  by definition the elements of $A[ X_\lambda \ | \ \lambda\in \Lambda]$ are finite sums of monomials (with coefficients in $A$)  that each involve finitely many variables.}
+
+
+\begin{enumerate}
+\itemA Warmup with units, zerodivisors, nilpotents, and idempotents.
+\begin{enumerate}
+\itema What are the implications between nilpotent, nonunit, and zerodivisor?
+\itema What are the implications between reduced, field, and domain?
+\itema What two elements of a ring are always idempotents? We call an idempotent \textbf{nontrivial} to mean that it is neither of these.
+\itema If $e$ is an idempotent, show that $e':= 1-e$ is an idempotent\footnote{We call $e'$ the \textbf{complementary idempotent} to $e$.} and $ee'=0$. 
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itema nilpotent $\Rightarrow$ zerodivisor $\Rightarrow$ nonunit
+\itema reduced $\Leftarrow$ domain $\Leftarrow$ field
+\itema $0$ and $1$
+\itema $e'^2 = (1-e)(1-e) = 1 - 2e + e^2 = 1-e = e'$ and $ee'=e(1-e)=e-e^2=0$. %nontrivial idempotent $\Rightarrow$ zerodivisor.
+\end{enumerate}
+}
+
+
+%\itemA Basics with units, zerodivisors, nilpotents, and idempotents.
+%\begin{enumerate}
+%\itema What are the nilpotents in $\Z/(8)$? $\Z/(18)$? 
+%\itemb Show\footnote{Hint: Use the series expansion of $\frac{1}{1+X}$ as inspiration.} that if $n$ is nilpotent, then $1+n$ is a unit. Deduce that a unit plus a nilpotent is a unit.
+%\end{enumerate}
+
+%\solution{ \begin{enumerate}
+%\item multiples of $2$; multiples of $6$.
+
+%\itemb Let $n^t=0$ for some $t>0$. Take $u=1-n+n^2-\cdots\pm n^{t-1}$: we have $u(1+n) = 1 \mp n^t = 1$.  If $u$ is a unit and $n$ is nilpotent, let $v$ be the inverse of $u$. Then $v(u+n) = 1+ vn$, where $vn$ is nilpotent (since $n^t=0$ implies $(vn)^t=0$), and then since $1+vn$ has an inverse $y$, we have $yv(u+n)=1$.
+%\end{enumerate}}
+
+
+\itemA Elements in polynomial rings: Let $R=A[X_1,\dots,X_n]$ a polynomial ring over a \emph{domain}~$A$.
+\begin{enumerate}
+\itema If $n=1$, and $f,g\in R=A[X]$, briefly explain why the top degree\footnote{The \textbf{top degree} of $f=\sum a_i X^i$ is $\max\{ k \ | \ a_k\neq 0\}$; we say \textbf{top coefficient} for $a_k$. We use the term top degree instead of degree for reasons that will come up later.} of $fg$ equals the top degree of~$f$ plus the top degree of $g$. What if $A$ is not a domain?
+\itema Again if $n=1$, briefly explain why $R=A[X]$ is a domain, and identify all of the units in~$R$.
+\itema Now for general $n$, show that $R$ is a domain, and identify all of the units in $R$.
+\end{enumerate}
+
+\solution{ 
+\begin{enumerate}
+\itema If $f=a_m X_m + \text{lower terms}$ and $g=b_n X_n + \text{lower terms}$ , then $fg= \sum a_m b_n X^{m+n} + \text{lower terms}$. If $A$ is a domain, then $a_m, b_n\neq 0$ implies $a_m b_n\neq 0$, but if $A$ is not a domain, the top degree may drop.
+\itema By looking at the top degree terms as above, we see that the product of nonzero polynomials is nonzero. The units in $R$ are just the units in $A$ viewed as polynomials with no higher degree terms. Indeed, such elements are definitely units; on the other hand, if $fg=1$ in $R$, then the top degree of $f$ and $g$ are both zero, so $f$ and $g$ are constant, which means $f$ and $g$ are in $A$, so a unit in $R$ is a unit in $A$.
+\item The claim that $R$ is a domain follows by induction on $n$, since $A[X_1,\dots,X_n] = A[X_1,\dots,X_{n-1}][X_n]$. The units in $R$ are again the units in $A$. This also follows by induction on $n$: a unit in $A[X_1,\dots,X_n] = A[X_1,\dots,X_{n-1}][X_n]$ is a unit in $A[X_1,\dots,X_{n-1}]$, which by the induction hypothesis is constant.
+\end{enumerate}
+}
+
+
+
+
+
+
+
+
+\begin{samepage}
+\itemA  Elements in power series rings: Let $A$ be a ring.
+\begin{enumerate}
+\itema Explain why the set of formal sums $\{ \sum_{i\in \Z} a_i  X_i \ | \ a_i\in A\}$ with arbitrary positive and negative exponents is \emph{not} clearly a ring in the same way as $A\llbracket X\rrbracket$.
+\itema Given series $f,g\in A\llbracket X\rrbracket$, how much of $f,g$ do you need to know to compute the $X^3$-coefficient of $f+g$? What about the $X^3$-coefficient of $fg$?
+\itema Find the first three coefficients for the inverse\footnote{It doesn't matter what the $\cdots$ are!} of $f= 1+3X + 7X^2 + \cdots$ in $\R\llbracket X\rrbracket$.
+\itema Does ``top degree'' make sense in  $A\llbracket X\rrbracket$? What about ``bottom degree''? 
+\itema Explain why\footnote{You might want to start with the case $n=1$.} for a domain $A$, the power series ring $A\llbracket X_1,\dots,X_n\rrbracket$ is also a domain.
+\itema Show\footnote{Hint: For $n=1$, given $f=\sum_i a_i X^i$, construct $g=\sum_i b_i X^i$ by defining $b_m$ recursively $b_0=1/a_0$ and that the $X^m$-coefficient of $(\sum_{i=0}^m a_i X^i)(\sum_{i=0}^m b_i X_i)$ is $0$ for $m>0$.} that $f\in A\llbracket X_1,\dots, X_n\rrbracket$ is a unit if and only if the constant term of $f$ is a unit. 
+
+\end{enumerate}
+\end{samepage}
+
+\solution{
+\begin{enumerate}
+\itema To multiply two such formal sums, you would have to take an infinite sum in $A$ to compute the coefficient of any $X^i$.
+\itema To compute the $X^3$-coefficient of $f+g$, you just need to know the $X^3$-coefficients of $f$ and $g$. To compute the $X^3$-coefficient of $fg$, you need to know the $1, X, X^2, X^3$ coefficients of $f$ and $g$.
+\itema $g= 1 - 3X - 2X^2 + \cdots$.
+\itema No; yes.
+\itema For $n=1$, look at the bottom degree terms. The bottom degree term of the product is the product of the bottom degree terms; if $A$ is a domain, this product is nonzero. The statement just follows by induction on $n$.
+\itema If $f$ is a unit, then the constant term is a unit, since the constant term of $fg$ is the constant term of $f$ times that of $g$. 
+
+For the other direction, first, take $n=1$.  Given $f=\sum_i a_i X^i$, construct $g=\sum_i b_i X^i$ by defining $b_m$ recursively $b_0=1/a_0$ and that the $X^m$-coefficient of $(\sum_{i=0}^m a_i X^i)(\sum_{i=0}^m b_i X_i)$ is $0$ for $m>0$: we can do this since, given $b_0,\dots,b_m$ that work in the $m$th step, in the next step we can the formula for the $X^{m+1}$ coefficient is $a_0 b_{m+1} + a_1 b_m + \cdots + a_{m+1} b_0$, since $a_0$ is a unit, we can solve for $b_{m+1}$ to make this equal zero without changing the lower coefficients. Continuing this way, take $g= \sum_i b_i X^i$. Then  for any $k$, the $X^k$-coefficient only depends on the $a_0,\dots,a_k$ and $b_0,\dots,b_k$ coefficients, and by construction, this coefficient is zero for $k\geq 1$. Thus, any such $f$ has an inverse.
+
+The general claim follows by induction on $n$: if $f\in A\llbracket X_1,\dots,X_n \rrbracket$ has a unit constant term considered as a power series in $A\llbracket X_1,\dots,X_n \rrbracket$, then its constant term in  $(A\llbracket X_1,\dots,X_{n-1} \rrbracket) \llbracket X_n \rrbracket$ has a unit constant term, hence is a unit in $A\llbracket X_1,\dots,X_{n-1} \rrbracket$, so $f$ is a unit in $(A\llbracket X_1,\dots,X_{n-1} \rrbracket) \llbracket X_n \rrbracket = A\llbracket X_1,\dots,X_n \rrbracket$.
+\end{enumerate}
+}
+
+
+
+
+\itemB Elements in function rings. 
+\begin{enumerate}
+\item For $R=\mathrm{Fun}([0,1],\R)$,
+\vspace{-4mm}
+\begin{multicols}{2}
+\begin{enumerate}
+\item What are the nilpotents in $R$?
+\item What are the units in $R$?
+\item What are the idempotents in $R$?
+\item What are the zerodivisors in $R$?
+\end{enumerate}
+\end{multicols}
+\vspace{-4mm}
+\item For $R = \mathcal{C}([0,1],\R)$, $R=\mathcal{C}^\infty([0,1],\R)$ same questions as above. When are there any/none?
+\end{enumerate}
+\solution{ 
+\begin{enumerate}
+\item For $R=\mathrm{Fun}([0,1],\R)$,
+\begin{enumerate}
+\item There are no nilpotents, since for any $\alpha\in [0,1]$, $f(\alpha)^n=0$ means that $f(\alpha)=0$.
+\item The units are the functions that are never zero, since the function $g(x)=1/f(x)$ is then defined (and conversely).
+\item $f(x)$ is idempotent if $f(\alpha)\in \{0,1\}$ for all $\alpha\in [0,1]$.
+\item Any function that is zero at some point is a zerodivisor: if $S=\{\alpha\in [0,1] \ | \ f(\alpha)=0\}$ is nonempty,  then let $g$ be a nonzero function that vanishes on $[0,1] \smallsetminus S$, then $fg=0$.
+\end{enumerate}
+\item For $R = \mathcal{C}([0,1])$ or $R=\mathcal{C}^\infty([0,1])$,
+\begin{enumerate}
+\item Same
+\item Same
+\item There are no nontrivial idempotents: the same condition as above applies, but by continuity, $f$ must either be identically $0$ or identically $1$.
+\item The difference is that now there may not be a nonzero function that vanishes on $[0,1] \smallsetminus S$, e.g., if $f$ vanishes at a single point. To be a zerodivisor, the set $[0,1] \smallsetminus S$ as above must be not be dense.
+\end{enumerate}
+\end{enumerate}
+}
+
+
+
+
+
+%\itemA Some of the rings (1)--($\infty$) in Example 1.1 are $\R$-algebras in a natural way, some are $\Z$-algebras in a natural way, and some are $A$-algebras in a natural way. Which?
+%
+%\solution{}
+%
+%\item Prove\footnote{Hint: Use the binomial theorem $(x+y)^n = \sum_{i=0}^n \binom{n}{i} x^i y^{n-i}$, which holds in every commutative ring, and be generous with~$n$.} Proposition~1.5.
+%\solution{First, $0$ is nilpotent, so the nilradical is nonempty. 
+%
+%Now, if $x,y$ are nilpotent, take $a,b$ such that $x^a=y^b=0$. Then \[(x+y)^{a+b-1}=\sum_{i=0}^{a+b-1} \binom{a+b-1}{i} x^i y^{a+b-1-i}.\] For any $i$, either $i\geq a$ or $a+b-1-i\geq b$, or else \[ a+b-1=i+a+b-1-i\leq a-1 + b-1,\] a contradiction. Thus, each term in the sum is zero, so $(x+y)^{a+b-1}=0$.
+%
+%Finally, if $x$ is nilpotent and $r$ is arbitrary, take $a$ such that $x^a=0$. Then $(rx)^a=r^a x^a=0$. This completes the proof.
+%}
+%
+%\solution{}
+
+
+
+
+
+
+
+\itemA Product rings and idempotents.
+\begin{enumerate}
+\itema Let $R$ and $S$ be rings, and $T=R\times S$. Show that $(1,0)$ and $(0,1)$ are nontrivial complementary idempotents in $T$.
+\itema Let $T$ be a ring, and $e\in T$ a nontrivial idempotent, with $e'=1-e$. Explain why ${Te=\{ te \ | \  t\in T\}}$ and $Te'$ are rings with the same addition and multiplication as $T$. Why didn't I say ``subring''?
+\itema Let $T$ be a ring, and $e\in T$ a nontrivial idempotent, with $e'=1-e$. Show that $T \cong Te \times Te'$. Conclude that $R$ has nontrivial idempotents if and only if $R$ decomposes as a product.
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itema $(1,0)^2= (1,0)$, $(0,1)^2=(0,1)$, and $(1,0)+(0,1)=(1,1)$ is the ``$1$'' of $R\times S$.
+\itema $re+se= (r+s)e$ and $(re)(se)=rs e^2= rs e$. Same with $e'$.
+\itema Define $\phi:T \to Te \times Te'$ by $\phi(t) = (te,te')$. The verification that this is a ring homomorphism essentially the content of (b). If $\phi(t)=(0,0)$, then $te=0$ and $0=te'=t(1-e)=t-te$, so $t=0$, hence $\phi$ is injective. Given $(re,se')\in Te \times Te'$, we have $\phi(re+se')= ((re+se')e, (re+se')e') = (re,se')$, hence $\phi$ is surjective, as well.
+\end{enumerate}}
+
+
+
+
+\itemB Elements in quotient rings:
+\begin{enumerate}
+\item Let $K$ be a field, and $R=K[X,Y]/(X^2,XY)$. Find
+\begin{itemize}
+\item a nonzero nilpotent in $R$
+\item a zerodivisor in $R$ that is not a nilpotent
+\item a unit in $R$ that is not equivalent to a constant polynomial
+\end{itemize}
+\item Find $n\in \Z$ such that
+\vspace{-4mm}
+\begin{multicols}{2}
+\begin{itemize}
+\item $[4] \in \Z/(n)$ is a unit
+\item $[4] \in \Z/(n)$ is a nonzero nilpotent
+\item $[4] \in \Z/(n)$ is a nonnilp.~zerodivisor
+\item $[4] \in \Z/(n)$ is a nontrivial idempotent
+\end{itemize}
+\end{multicols}
+\end{enumerate}
+
+\solutione{\begin{enumerate}
+\item 
+\begin{itemize}
+\item $[X]$ is nilpotent, since $[X^2] = [0]$. $[X]\neq 0$ since any element of $(X^2,XY)$ has top degree at least 2.
+\item $[Y]$ is a zerodivisor, since $[X][Y]=[XY]=[0]$, and we already checked that $[X]\neq 0$. $[Y]$ is not nilpotent, since, thinking of $K[X,Y]$ as $K[X][Y]$ and considering $X$-degrees only, any element of $(X^2,XY)$ has degree at least $1$, so $[Y^n]\notin (X^2,XY)$ for any $n$.
+\item $[1+X]$ is a unit since $[1-X][1+X] = [1-X^2] = [1]$. It is not equivalent to a constant since $[1+X]=[\lambda]$ implies $(1-\lambda) + X\in (X^2,XY)$, which is impossible for degree reasons again.
+\end{itemize}
+\item \begin{multicols}{2}
+\begin{itemize}
+\item $n=3$ or any odd number
+\item $n=8$ or any larger power of $2$
+\item $n=6$ or number with $2$ and an odd prime as a factor
+\item $n=12$ or any multiple of $12$
+\end{itemize}
+\end{multicols}
+\end{enumerate}}
+
+
+
+\itemB More about elements.
+\begin{enumerate}
+\item Prove that a nilpotent plus a unit is always a unit.
+\item Let $A$ be an arbitrary ring, and $R=A[X]$. Characterize, in terms of their coefficients, which elements of $R$ are units, and which elements are nilpotents.
+\item Let $A$ be an arbitrary ring, and $R=A\llbracket X\rrbracket$. Characterize, in terms of their coefficients, which elements of $R$ are nilpotents.
+\end{enumerate}
+
+
+
+
+
+\end{enumerate}
+
+
+
+
+
+
+
+\end{document}
