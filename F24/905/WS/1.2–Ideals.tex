@@ -142,7 +142,10 @@ Any ideal that contains $S$ must contain all of the linear combinations of $S$, 
 \bullet & R/I \ \text{is a domain} & \Longleftrightarrow & I \ \text{is \underline{prime}}\\
 \bullet & R/I \ \text{is reduced} & \Longleftrightarrow & I \ \text{is \underline{radical}}\\
 \end{array}\]
-\itema The radical of $I$ is the set of elements that map to a nilpotent in the quotient ring $R/I$. The nilpotents in $R/I$ form an ideal, the nilradical, and the preimage of that ideal is an ideal, so the radical of $I$ is an ideal.
+\itema Let $f,g\in \sqrt{I}$. Then there are $m,n\geq 1$ such that $f^m,g^n\in I$. Then 
+\[ (f+g)^{m+n-1} = \sum_{i+j=m+n-1} \binom{m+n-1}{i,j} f^{i} g^j,\]
+and for each term in the sum either $i\geq m$ or $j\geq n$, so each term is in $I$, hence the whole sum is in $I$.
+Now let $r\in R$. Then $(rf)^m = r^m f^m\in I$.
 \itema Suppose $I$ is prime. If $x\in \sqrt{I}$, then $x^n\in I$ for some $n$. Then, by the definition of prime, $x\in I$. Thus, $\sqrt{I}=I$.
 \itema Since $X^2$ and $Y^2$ are in $(X^2, XYZ, Y^2)$, we have $X,Y\in \sqrt{(X^2, XYZ, Y^2)}$ by definition, so $(X,Y)\subseteq \sqrt{(X^2, XYZ, Y^2)}$. For the other containment, if $F(X,Y,Z)\notin (X,Y)$, consider $F$ as a polynomial in $X,Y$ with coefficients in $K[Z]$; the condition means that the top degree of $F$ is zero, and hence the top degree of $F^n$ is zero for all $n$, so $F\notin \sqrt{(X^2, XYZ, Y^2)}$.
 \end{enumerate}}
