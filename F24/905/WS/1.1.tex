@@ -4,6 +4,11 @@
 \usepackage{times}
 \usepackage[margin=0.8in]{geometry}
 \usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals}
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
 \definecolor{chianti}{rgb}{0.6,0,0}
 \definecolor{meretale}{rgb}{0,0,.6}
 \definecolor{leaf}{rgb}{0,.35,0}
@@ -21,16 +26,20 @@
 \newcommand{\showsol}[1]{\def\displaysol{#1}}
 
 \newcommand{\rsa}{\rightsquigarrow}
-\newcommand\itemA{\stepcounter{enumi}\item[{\bf{(\theenumi)}}]}
+
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
 \newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
 \newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
-\newcommand\itema{\stepcounter{enumii}\item[{\bf{(\theenumii)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
 \newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
 \newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
-\newcommand\itemai{\stepcounter{enumiii}\item[{\bf{(\theenumiii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
 \newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
 \newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
 \newcommand\ceq{\colonequals}
+
+
 \DeclareMathOperator{\ord}{ord}
 
 \DeclareMathOperator{\res}{res}
@@ -50,7 +59,7 @@
 
 
 \begin{document}
-\showsol{1}
+\showsol{0}
 	
 	\thispagestyle{empty}
 	
