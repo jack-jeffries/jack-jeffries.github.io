@@ -1,0 +1,963 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=.7in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals,comment,romanbar,bbm}
+\usepackage[hang,flushmargin]{footmisc}
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\usepackage[colorlinks=true, pagebackref, hyperindex, citecolor=meretale, urlcolor=leaf, linkcolor=chianti, linktoc=all]{hyperref}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\cC}{\mathcal{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\im}{\mathrm{im}}
+
+\newcommand{\0}{$\phantom{.}$}
+\newcommand{\1}{\mathbbm{1}}
+
+
+\newcommand{\Ann}{\mathrm{Ann}}
+
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\bf{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\bf{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\bf{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+\newcommand{\sssec}[1]{\subsubsection*{#1}}
+
+%\counterwithout{subsection}{section}
+
+\DeclareMathOperator{\res}{res}
+%\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+
+\renewcommand*\contentsname{Table of contents}
+%\def\l@subsection{\@tocline{2}{0pt}{2.5pc}{5pc}{}}
+
+
+\begin{document}
+\showsol{0}
+
+
+\title{Worksheet previews for Math 905}\maketitle
+\thispagestyle{empty}
+\pagestyle{plain}
+
+\tableofcontents
+
+\newpage
+
+
+\setcounter{section}{0}
+\section*{Introduction}
+
+\subsubsection*{What am I?\nopunct} The majority of this document consists of the 1--2 page daily quick summaries that you should read before each class. These will include some reminders of things from previous algebra courses that we will use, as well as the statements of definitions and theorems we will encounter in class, so that we aren't just wasting class time reading a definition or theorem for the first time. We will not follow any textbook directly, but most of the material will overlap with the recommended text Atiyah-MacDonald and Grifo's Fall 2022 905 notes, the latter of which is available here:
+
+\
+
+\url{https://eloisagrifo.github.io/Teaching/ca1/CA1notes.pdf}
+
+\
+
+\noindent Each course preview references the relevant sections of the sources in this case. Some previews also have a ``Just for fun'' at the end: this is either an open question or easily stated fact requiring deeper techniques. This part of the reading is optional and can be skipped if you don't like fun.
+
+\subsubsection*{Mathematical ground rules} In this class, all rings are commutative with $1\neq 0$, and all modules are unital, meaning $1m=m$ for all $m\in M$. We are assuming as background knowledge the content covered in the first year algebra sequence Math 817--818.
+
+
+\subsubsection*{Using these worksheets} 
+\begin{itemize}
+\item To complete a problem on a worksheet means to discuss as a group until every member of the group understands the solution. I envision solving a ``Prove'' or ``Show that'' problem as meaning to know how to fill in all of the details of a proof (though you might not find it practical to write out a full proof of everything starting from ZFC), whereas an ``Explain'' or ``Discuss'' might not require as rigorous a solution or might not even be a completely precise question. If you do not understand your solution or are unsure of something, let your group know: they are probably missing something or could understand some detail better. Conversely, if someone in your group doesn't understand the solution, you should thank them for the opportunity to understand the problem better, as you may have missed something, or you might understand better by explaining your thoughts if you think you haven't.
+\item The worksheets have some problems numbered in bold \textbf{(1)}, some in standard font (2), and some in italics \textit{(3)}. Those marked in bold \textbf{(1)} you should think of as mandatory, either in class, or after class if you didn't get to them. Those in standard font (2) are recommended. Those in italics \textit{(3)} are somewhat more for adventure seekers.
+\item As noted above, the assumed background is Math 817--818. If you've taken a Homological Algebra or Commutative Algebra 2 course or a reading on related topics like Gr\"obner bases, you might find that some questions are an easy consequence of some fact about faithfully flat modules, $\mathrm{Ext}$-modules, regular sequences, or regular rings. You should feel free to enjoy your knowledge in such cases, but every problem has a solution only using material the background sequence, and you should find a solution of that type: this is both so that you develop mastery of the notions of basic commutative algebra and to avoid any logical circularities!
+%\item We have a range of backgrounds among students in the class: some have taken 817--818 as their most recent algebra classes, some have taken Commutative Algebra 2 and/or Homological Algebra, and some bring backgrounds from different schools. You might find that some facts
+\end{itemize}
+
+
+\subsubsection*{Why are you doing this to me?\nopunct} Math is learned by working through proofs and examples, not by watching someone else do the work. I could tell you about all of the interesting commutative algebra I know, and I could mix it in with funny anecdotes and obscure puns, but my algebra will never be your own until you do it. So we will just skip the step where I read to you: you know how to read anyway. This style of class may stretch our comfort zone more than a conventional lecture, but it's a much better approximation of doing research and writing a thesis than the latter.
+
+
+
+\newpage
+
+
+
+%\setcounter{page}{1}
+\section{Rings, Ideals, and Modules}
+
+\subsection{Rings} Grifo \S0.1; Atyiah-MacDonald \S1
+
+\begin{framed}
+\begin{itemize}
+\item Key examples of rings: polynomial rings, power series rings, and function rings
+\item Key constructions of rings: quotient rings, product rings, and subrings
+\item Special elements in rings: units, zerodivisors, nilpotents, and idempotents
+\end{itemize}
+\end{framed}
+
+\subsubsection*{Special elements in rings}
+
+\
+
+\
+
+\noindent \textsc{Definition:} An element $x$ in a ring $R$ is called a
+\begin{itemize}
+\item \textbf{unit} if $x$ has an \textbf{inverse} $y\in R$ (i.e., $xy=1$).
+\item \textbf{zerodivisor} if there is some $y\neq 0$ in $R$ such that $xy=0$.
+\item \textbf{nilpotent} if there is some $e\geq 0$ such that $x^e=0$.
+\item \textbf{idempotent} if $x^2 = x$.
+\end{itemize}
+
+\subsubsection*{Polynomial rings} Polynomial rings, and quotients of polynomial rings, will be ubiquitous in this class.
+Recall: Given a ring $A$, the polynomial ring $A[X]$ in one indeterminate $X$ is
+\[A[X] \ceq \{ a_d X^d + \cdots + a_1 X + a_0 \ | \ d\geq 0, a_i\in A\}.\]
+We can also form the polynomial ring in finitely many indeterminates $A[X_1,\dots,X_n]$, which is the same as the polynomial ring in one variable $X_n$ with coefficients in $A[X_1,\dots,X_{n-1}]$. We can even take a polynomial ring in an arbitrary set of indeterminates $A[X_\lambda \ | \ \lambda\in \Lambda]$, whose elements are \emph{finite} sums of terms of the form $a X_{\lambda_1}^{d_1} \cdots X_{\lambda_k}^{d_k}, a\in A$. It is often convenient to break up polynomials by \textbf{degree}: the degree $t$ part of a polynomial is the sum of all of the terms as above with $d_1+\cdots+d_k=t$. In particular, for a polynomial in one variable, the degree $t$ part is the $X^t$ term (with its coefficient). We will say \textbf{top degree} of a polynomial to refer to the highest degree term if terms of different degrees occur.
+
+
+
+\subsubsection*{Power series rings} Power series rings, and quotients of power series rings, will also be a main source of examples for us. Recall: Given a ring $A$, the power series ring $A\llbracket X\rrbracket$ in one indeterminate $X$ is
+\[A\llbracket X\rrbracket \ceq \big\{ \sum_{i\geq 0} a_i X^i \ | \  a_i\in A\big\}.\]
+The ``infinite summation'' is to be thought of formally; infinite addition is not a well-defined operation in this ring as one cannot make sense of things like $X + X + X + \cdots$. If you get disoriented with a power series, it is best to proceed one coefficient at a time, going from \textbf{lowest} up towards infinity. For example, two series $f=\sum_i a_i X^i$ and $g=\sum_i b_i X^i,$ are the same if and only if $a_i=b_i$ for all $i$, and to compute $fg$, compute the zeroth coefficient $a_0 b_0$, then the first coefficient $a_1 b_0 + a_0 b_1$, and so on\footnote{The only problem is that if you want to write everything out concretely, you have to do this forever.}. We'll also consider multivariate power series rings \[A\llbracket X_1,\dots,X_n\rrbracket \ceq \{ \sum_{i_1,\dots,i_n \geq 0} a_{i_1,\dots,i_n} X_1^{i_1} \cdots X_n^{i_n} \ | \ a_{i_1,\dots,i_n}\in A\} = (A\llbracket X_1,\dots,X_{n-1}\rrbracket)\llbracket X_{n}\rrbracket.\]
+
+
+\newpage
+
+\subsubsection*{Function rings} Various natural collections of functions form rings with pointwise operations $+$ and $\times$; i.e., $f+g$ is the function whose value at $x$ is $f(x) + g(x)$. For example:
+\begin{itemize}
+\item $\mathrm{Fun}([0,1],\R)$, the set for all functions from $[0,1]$ to $\R$.
+\item $\cC([0,1],\R)$, the set of continuous functions from $[0,1]$ to $\R$.
+\item $\cC^{\infty}([0,1],\R)$, the set of infinitely differentiable functions from $[0,1]$ to $\R$.
+\item $\cC^{\mathrm{an}}([0,1],\R)$, the set of analytic\footnote{ i.e., functions that agree with a power series on some neighborhood of any point} functions from $[0,1]$ to $\R$.
+ \end{itemize}
+
+
+
+
+
+\subsubsection*{Product rings} Recall that given two rings $R,S$ we can form the product ring $R\times S$. We can recognize product rings in many situations: 
+
+\
+
+\noindent \textsc{Chinese Remainder Theorem:} Let $R$ be a ring, and $I,J$ be two ideals such $I+J=R$. Then $IJ=I\cap J$ and $R/IJ \cong R/I \times R/J$. 
+
+\
+
+\noindent \textsc{Proposition:} A ring $T$ is isomorphic to a product $R\times S$ of two rings if and only if there is an idempotent $e\in T$ with $e\neq 0,1$.
+
+\vfill
+
+\noindent \hrulefill
+
+
+
+\subsubsection*{Just for fun} There are lots of things we don't know even about polynomials in one variable over a field. Here is an open problem:
+
+\
+
+\noindent \textsc{Casas-Alvero Conjecture:} Let $K$ be a field of characteristic zero. Suppose that $f(X)\in K[X]$ is a monic polynomial of top degree $n$ such that for each $i\in\{1,\dots,n-1\}$, $f$ and $\displaystyle \frac{d^if}{dx^i}$ have a common root. Then $f=(X-a)^n$ for some $a\in K$.
+
+\
+
+\noindent For a warmup, can you show that the conclusion holds if all of these derivatives have a common root?
+
+
+
+
+\newpage
+
+
+%%%%%%%%%%%
+%%%%%%%%%%%
+%%%%%%%%%%%
+%%%%%%%%%%%
+%%%%%%%%%%%
+
+\subsection{Ideals} Grifo \S0.1; Atyiah-MacDonald \S1
+
+\begin{framed}
+\begin{itemize}
+\item Generating set of an ideal
+\item Radical of an ideal
+\item Division Algorithm
+\end{itemize}
+\end{framed}
+
+
+
+\subsubsection*{Generating sets} \0
+
+
+\noindent \textsc{Definition}: Let $S$ be a subset of a ring $R$. The \textbf{ideal generated by $S$}, denoted $(S)$ is the smallest ideal containing $S$. Equivalently,
+\[ ( S )  = \left\{ \sum r_i s_i \ | \ r_i\in R, s_i\in S\right\} \quad \text{is the set of $R$-linear combinations\footnote{Linear combinations always means \emph{finite} linear combinations: the axioms of a ring can only make sense of finite sums.} of elements of $S$}.\]
+We say that $S$ \textbf{generates} an ideal $I$ if $(S)=I$.
+
+\sssec{Constructions with ideals} \0
+
+\noindent  \textsc{Definition}: Let $I, J$ be ideals of a ring $R$. The following are ideals:
+\begin{itemize}
+\item $IJ\colonequals ( ab \ | \ a\in I, b\in J)$.
+\item $I^n \colonequals I \cdot I\cdots I \  (\text{$n$ times})= ( a_1 \cdots a_n \ | \ a_i\in I )$ for $n\in \N$.
+\item $I+J \colonequals  \{ a + b \ | \ a\in I, b\in J \} = ( I \cup J)$.
+\item $rI \colonequals (r)I = \{ ra \ | \ a\in I\}$ for $r\in R$.
+\item $I : J \ceq \{ r\in R \ | \ rJ \subseteq I\}$.
+\end{itemize}
+
+Let $\phi:R\to S$ is a ring homomorphism.
+\begin{itemize} \item If $J$ is an ideal of $S$, then $\phi^{-1}(J) \ceq \{ r\in R \ | \phi(r)\in J\}$ is an ideal of $R$, often denoted $J \cap R$.
+\item If $I$ is an ideal of $R$, then $IS \ceq (\phi(I) )$ is an ideal of $S$.
+\end{itemize}
+
+
+
+
+
+\sssec{Radical ideals}\0
+
+
+
+\noindent \textsc{Definition}: Let $I$ be an ideal in a ring $R$. The \textbf{radical} of $I$ is 
+\[ \sqrt{I} \ceq \{ f\in R \ | \ f^n\in I \ \text{for some} \ n\geq1\}.\]
+An ideal $I$ is \textbf{radical} if $I=\sqrt{I}$.
+
+\vspace{3mm}
+
+\noindent \textsc{Proposition:} The radical of an ideal is an ideal.
+
+\vspace{3mm}
+
+\subsubsection*{Division Algorithm}
+You are certainly familiar with the division algorithm in $K[X]$ when $K$ is a field. For an arbitrary ring in place of $K$, we can do the same thing as long as we divide by a \textbf{monic} polynomial:
+
+\vspace{4mm}
+
+\noindent \textsc{Division Algorithm:} Let $A$ be a ring. Let $g\in A[X]$ be a \textbf{monic} polynomial (i.e., the top $X$-power coefficient is a unit). Then for any $f\in A[X]$, there are unique polynomials $q,r$ such that the top degree of $r$ is less than the top degree of $g$, and $f=qg+r$.
+
+\vspace{4mm}
+
+\noindent The division algorithm is often useful for finding generators of an ideal. One can use it in a multivariate polynomial ring $A[X_1,\dots,X_n]$ by thinking of it as a polynomial ring in one variable $X_n$ with coefficients in $A[X_1,\dots,X_{n-1}]$. 
+
+
+
+\vfill
+
+\noindent \hrulefill
+
+
+
+\subsubsection*{Just for fun} It can be very hard to tell whether an ideal is radical. Here is a well-known open question: 
+
+\
+
+\noindent \textsc{Commuting Matrix Problem:} Let $K$ be a field. Let $\Romanbar{X}=[X_{i,j}]_{1\leq i,j \leq n}$ and $\Romanbar{Y}=[Y_{i,j}]_{1\leq i,j \leq n}$ be two $n\times n$ matrices of indeterminates, and $R=K[\Romanbar{X},\Romanbar{Y}]$ be a polynomial ring in $2n^2$ variables. Let $I$ be ideal generated by the entries\footnote{I.e., there are $n^2$ generators of the form $X_{i,1} Y_{1,j} + \cdots +  X_{i,n} Y_{n,j} - Y_{i,1} X_{1,j} + \cdots +  Y_{i,n} X_{n,j}$ for $1\leq i,j\leq n$.} of the commutator matrix $\Romanbar{X}\Romanbar{Y}-\Romanbar{Y}\Romanbar{X}$. Is $I$ reduced?
+
+
+\newpage
+
+
+%%%%%%%%%%%
+%%%%%%%%%%%
+%%%%%%%%%%%
+%%%%%%%%%%%
+%%%%%%%%%%%
+
+
+\subsection{Algebras} Grifo \S1.2; Aityah-MacDonald \S2
+
+
+
+\begin{framed} Key topics:
+\begin{itemize}
+\item Generating sets of algebras
+\item Presentation of an algebra
+%\item Examples of algebras
+\end{itemize}
+\end{framed}
+
+
+
+\sssec{Algebras} \0
+
+\
+
+\noindent \textsc{Definition:} Let $A$ be a ring. An \textbf{$A$-algebra} is a ring $R$ equipped with a ring homomorphism ${\phi:A\to R}$; we call $\phi$ the \textbf{structure morphism} of the algebra. Note: the same ring $R$ with different $\phi$'s are different {$A$-algebras}. Despite this we often say ``Let $R$ be an $A$-algebra'' without naming the structure morphism. If $R$ is an $A$-algebra with structure map $\phi$, then $\phi(A) \subseteq R$. We often consider the special case when $\phi$ is an inclusion map, so $A\subseteq R$.
+
+\
+
+
+
+\noindent \textsc{Definition:} A \textbf{homomorphism} of $A$-algebras is a ring homomorphism that is compatible with the structure morphisms; i.e., if $\phi:A\to R$ and $\psi:A\to S$ are $A$-algebras, then $\alpha:R\to S$ is an $A$-algebra homomorphism if $\alpha\circ \phi = \psi$. When $\phi$ and $\psi$ are inclusion maps $A\subseteq R$ and $A\subseteq S$, this just says\footnote{We use $\1$ for the identity map, and later on, for the identity matrix.} $\alpha|_A = \1_A$.
+
+\
+
+\noindent The mapping property of polynomial rings is best expressed in the language of algebras:
+
+\
+
+\noindent \textsc{Universal property of polynomial rings:} Let\footnote{This is equally valid for polynomial rings in infinitely many variables $T=A[X_{\lambda} \ | \ \lambda\in \Lambda]$ with a tuple of elements of  $\{r_\lambda\}_{\lambda\in \Lambda}$ in $R$ in bijection with the variable set. I just wrote this with finitely many variables to keep the notation for getting too overwhelming.} $A$ be a ring, and $T=A[X_1,\dots,X_n]$ be a polynomial ring. For any $A$-algebra $R$, and any collection of elements $r_1,\dots,r_n\in R$, there is a unique $A$-algebra homomorphism $\alpha: T\to R$ such that $\alpha(X_i) = r_i$.
+
+
+
+\sssec{Algebra generators} \0
+
+\
+
+
+\noindent \textsc{Definition:} Let $A$ be a ring, and $R$ be an $A$-algebra. Let $S$ be a subset of $R$. The \textbf{algebra generated by~$S$}, denoted $A[S]$, is the smallest $A$-subalgebra of $R$ containing $S$. Equivalently,
+\[ A[S] = \{ \ \text{sums of elements of the form} \ \phi(a) r_1^{i_1} \cdots r_t^{i_t} \ | \ a\in A, r_j\in S, i_j\geq 0\},\]
+where $\phi$ is the map from $A$ to $R$.
+
+
+It may be helpful to think of an $A$-algebra $R$ as a ring built from $A$, and a generating set as a collection of building blocks that one can use to build $R$ from $A$ with the ring operations.
+
+\
+
+\noindent \textsc{Warning:} We have used the notation $A[ \text{stuff} ]$ both for polynomial rings in the ``stuff'' variables and the algebra generated by ``stuff'' in some other algebra. It is best practice to make clear which you mean when there is risk of any confusion. We will also generally use capital letters $X_i$, $X,Y,Z$ for indeterminates (i.e., polynomial and power series variables).
+
+\
+
+\noindent \textsc{Proposition:} Let\footnote{This is also equally valid for infinite sets.} $A$ be a ring, and $R$ be an $A$-algebra. Then $A[r_1,\dots,r_n]$ is the image of the $A$-algebra homomorphism $\alpha: A[X_1,\dots,X_n]\to R$ such that $\alpha(X_i) = r_i$.
+
+\
+
+
+%\newpage
+
+\sssec{Algebra presentations} \0
+
+\
+
+\noindent \textsc{Definition:} Let $R$ be an $A$-algebra. Let $r_1,\dots,r_n\in R$. The ideal of \textbf{$A$-algebraic relations} on $r_1,\dots,r_n$ is the set of polynomials $f(X_1,\dots,X_n)\in A[X_1,\dots,X_n]$ such that $f(r_1,\dots,r_n)=0$ in $R$. Equivalently, the ideal of $A$-algebraic relations is the kernel of the homomorphism $\alpha: A[X_1,\dots,X_n]\to R$ given by $\alpha(X_i)=r_i$. We say that a set of elements in an $A$-algebra is \textbf{algebraically independent over $A$} if it has  no nonzero $A$-algebraic relations.
+
+
+\
+
+\noindent \textsc{Definition:} A \textbf{presentation} of an $A$-algebra $R$ consists of a set of generators $r_1,\dots,r_n$ of $R$ as an $A$-algebra and a set of generators $f_1,\dots,f_m\in A[X_1,\dots,X_n]$ for the ideal of $A$-algebraic relations on $r_1,\dots,r_n$. We call $f_1,\dots,f_m$ a set of \textbf{defining relations} for $R$ as an $A$-algebra.
+
+\
+
+\noindent \textsc{Proposition:} If $R$ is an $A$-algebra, and $f_1,\dots,f_m$ is a set of defining relations for $R$ as an $A$-algebra, then $R\cong A[X_1,\dots,X_n]/(f_1,\dots,f_m)$.
+
+\
+
+It may be helpful to think of a presentation as a recipe for building $R$ as a ring starting from $A$. The proposition above says that a presentation (or just a set of defining relations) is sufficient information to determine an algebra up to isomorphism.
+
+
+
+%\sssec{Examples of algebras} \0
+
+
+
+
+
+\vfill
+
+\noindent \hrulefill
+
+\subsubsection*{Just for fun} The most notorious open problem in commutative algebra is easy to state: 
+
+\
+
+\noindent \textsc{Jacobian Conjecture:} Let $K$ be a field of characteristic zero, and $R=K[X_1,\dots,X_n]$ be a polynomial ring over $K$. Let $f_1,\dots,f_n\in R$. Then 
+\vspace{-5mm}
+\[ R=K[f_1,\dots,f_n] \quad \text{ if and only if } \quad \det \begin{bmatrix} \frac{\partial f_1}{\partial X_1} & \cdots & \frac{\partial f_n}{\partial X_1} \\
+\vdots & \ddots & \vdots \\
+ \frac{\partial f_1}{\partial X_n} & \cdots & \frac{\partial f_n}{\partial X_n} \end{bmatrix} \in K^\times.\]
+Can you see which direction is the hard one? This is open even for $n=3$.
+
+\newpage
+
+
+%%%%%%%%%%%
+%%%%%%%%%%%
+%%%%%%%%%%%
+%%%%%%%%%%%
+%%%%%%%%%%%
+
+\subsection*{1.m \, \, Macaulay2 Introduction} Grifo \S A.1
+
+\begin{framed} Key topics:
+\begin{itemize}
+\item Accessing M2
+\item Defining rings, ideals, maps
+\end{itemize}
+\end{framed}
+
+\subsubsection*{Running Macaulay2} Macaulay2 is a computer algebra system with a wide range of functions implemented for commutative algebra and algebraic geometry. You can run it online at
+
+\begin{center} \url{https://www.unimelb-macaulay2.cloud.edu.au/} \end{center}
+
+\noindent You can also install it on your machine, but that isn't necessary at first. You many want to click the ``Editor'' tab, so you can type your commands on the left-side pane. You can execute a line with \texttt{SHIFT+ENTER}.
+
+
+\subsubsection*{Basic commands} Here are enough commands to get started.
+
+\begin{itemize}
+\item Starting rings: Try \texttt{K=QQ}, \texttt{K=ZZ}, \ or \  \texttt{K=ZZ/13}
+\item Polynomial rings: After fixing a starting ring, try \texttt{R=K[X,Y]} \ or \  {\verb|S=K[X_1 .. X_4]|}
+\item Ideals: With $R$ as above, try \verb|I=(X^2,X*Y)| \ or  \ \verb|J=(X^3-2*X^2*Y+7*Y^5)|
+\item Ideal containment: With $I$ as above, try \verb|(2*X^3-X*Y^2)%I| or \verb|(2*Y^3-X*Y^2)%I|
+\item Ideal operations: With $I$ and $J$ as above, try \verb|I+J|, \verb|I*J|, \verb|I:J|, \verb|I^4|, \ or \ \verb|intersect(I,J)|
+\item Radicals: With $I$ and $J$ as above, try \texttt{radical I} \ or \  \texttt{radical J}
+\item Homomorphisms: With $R$ and $S$ as above, try \verb|f=map(R,S,{X^3,X^2*Y,X*Y^2,Y^3})|
+\item Kernels: With $f$ as above, try \verb|ker f|
+\item Quotient rings: With $R$ and $I$ as above, try \verb|R/I|
+\end{itemize}
+
+
+\subsubsection*{Learning more} Go to \url{https://macaulay2.com/} if you want to learn more.
+
+%\begin{comment}
+
+\newpage
+
+
+
+
+
+%%%%%%%%%%%
+%%%%%%%%%%%
+%%%%%%%%%%%
+%%%%%%%%%%%
+%%%%%%%%%%%
+
+
+
+\subsection{Modules} Grifo \S1.1, Atiyah-MacDonald \S2
+
+
+
+\begin{framed} Key topics:
+\begin{itemize}
+\item Generating set of a module
+\item Presentation of a module
+%\item Annihilator of a module
+%\item Short exact sequences
+\end{itemize}
+\end{framed}
+
+\vspace{-3mm}
+
+\sssec{Sources of modules} Here are a few sources of modules:
+\begin{enumerate}
+\item Every ideal $I\subseteq R$ is a submodule of $R$.
+\item Every quotient ring $R/I$ is a quotient module of $R$.
+\item If $S$ is an $R$-algebra, (i.e., there is a ring homomorphism $\alpha: R\to S$), then $S$ is an $R$-module by \textbf{restriction of scalars}:
+$r \cdot s \ceq \alpha(r) s$.
+\item More generally, if $S$ is an $R$-algebra and $M$ is an $S$-module, then $M$ is also an $R$-module by \textbf{restriction of scalars}\footnote{Note that if $R\subseteq S$, then the name ``restriction of scalars''
+is spot-on; we are literally restricting which scalars can be used.}: $r \cdot m \ceq \alpha(r) \cdot m$.
+\item Given an $n\times m$ matrix $A$, its image $\mathrm{im}(A)$, is the module generated by its columns in $R^n$.
+\end{enumerate}
+
+
+
+\sssec{Free modules} Recall that a module is \textbf{free} if it admits a \textbf{free basis}: a generating set (see below for refresher) that is linearly independent. Every free module with a basis of $n$ elements is isomorphic to the module $R^n$ of $n$-tuples of elements of $R$. The module $R^n$ has a \textbf{standard basis} $e_1,\dots,e_n$ where $e_i$ is the tuple with $i$-th entry equal to $1$ and every other entry equal to $0$. More generally, every free module with a basis that is bijective to some index set $\Lambda$ is isomorphic to 
+\[ R^{\oplus \Lambda} = \{ (r_\lambda)_{\lambda\in\Lambda} \ | \ r_\lambda\neq 0 \ \text{for at most finitely many} \ \lambda\in\Lambda\}.\]
+
+\noindent \textsc{Universal property of free modules:} Let $R$ be a ring, and $R^n$ be a free module. For any \mbox{$A$-module} $M$, and any collection\footnote{This is equally valid for free modules in infinitely basis elements $R^{\oplus \Lambda}$ with a tuple of elements $\{m_\lambda\}_{\lambda\in \Lambda}$ in $M$ in bijection with the free basis. I just wrote this with finitely many basis elements to keep the notation for getting too overwhelming.}  of elements $m_1,\dots,m_n\in M$, there is a unique $R$-module homomorphism ${\beta: R^n\to M}$ such that $\beta(e_i)= m_i$.
+
+\sssec{Generating sets} \0
+
+\noindent \textsc{Definition:} Let $M$ be an $R$-module. Let $S$ be a subset of $M$. The \textbf{submodule generated by $S$}, denoted\footnote{If $S=\{m\}$ is a singleton, we just write $Rm$, and if $S=\{m_1,\dots,m_n\}$, we may write $\sum_i R m_i$.} $\sum_{s\in S} Rs$, is the smallest $R$-submodule of $M$ containing $S$. Equivalently, 
+\[ \sum_{s\in S} Rs = \big\{ \sum r_i s_i \ | \ r_i \in R, s_i \in S\big\} \quad \text{is the set of $R$-linear combinations of elements of $S$.}\]
+We say that $S$ \textbf{generates} $M$ if $M=\sum_{s\in S} Rs$.
+
+\vspace{2mm}
+
+\noindent \textsc{Proposition:} Let\footnote{This is also equally valid for infinite sets.} $R$ be a ring, and $M$ be an $R$-module. Then $\sum_{i} R m_i$ is the image of the $R$-module homomorphism $\beta: R^n \to M$ such that $\beta(e_i)= m_i$.
+
+
+\sssec{Module presentations}\0
+
+\noindent \textsc{Definition:} Let $M$ be an $R$-module. Let $m_1,\dots,m_n\in M$. The \textbf{module of $R$-linear relations} on $m_1,\dots,m_n$ is the set of $n$-tuples $[r_1,\dots,r_n]^\tr \in R^n$ such that $\sum_i r_i m_i=0$ in $R$. Equivalently, the submodule of $R$-linear relations is the kernel of the homomorphism $\beta: R^n \to M$ such that $\beta(e_i)= m_i$.
+
+\vspace{2mm}
+
+\noindent \textsc{Definition:} A (finite\footnote{We leave it to you to state the definition of an infinite presentation.}) \textbf{presentation} of an $R$-algebra $M$ consists of a set of generators $m_1,\dots,m_n$ of $M$ as an $R$-module and a set of generators $v_1,\dots, v_m\in R^n$ for the submodule of $R$-linear relations on $m_1,\dots,m_n$. We call the $n \times m$ matrix with columns $v_1,\dots, v_m$ a \textbf{presentation matrix} for $M$. 
+
+\vspace{2mm}
+
+\noindent \textsc{Proposition:} If $M$ is an $R$-module, and $A$ is an $n\times m$ presentation matrix for $M$, then $M\cong R^n / \im(A)$.
+
+
+\newpage
+
+
+%%%%%%%%%%%
+%%%%%%%%%%%
+%%%%%%%%%%%
+%%%%%%%%%%%
+%%%%%%%%%%%
+
+
+\subsection{Determinants} \0
+
+
+
+\begin{framed} Key topics:
+\begin{itemize}
+\item Matrices and linear combinations
+\item The adjoint trick
+\item Ideals of minors
+%\item Fitting ideals
+\end{itemize}
+\end{framed}
+
+\subsubsection*{Matrices and linear combinations} Recall that given matrices $A$ and $B$, the matrix product $AB$ consists of linear combinations, namely:
+% \begin{itemize} [leftmargin=*]
+% \item 
+Each column of $AB$ is a linear combinations of the columns of $A$, with coefficients/weights coming from the corresponding columns of~$B$. That is,
+ \[ \big(\mathrm{col} \ j \ \text{of} \ AB\big) = \sum_{i=1}^t b_{ij} \cdot  \big(\mathrm{col} \ i \ \text{of} \ A);\]
+ note that $b_{1j},\dots,b_{tj}$ is the $j$-th column of $B$.
+%  \item The rows of $AB$ are linear combinations of the rows of $B$, with weights coming from the corresponding columns of~$A$. That is,
+ %\[ \big(\mathrm{row} \ i \ \text{of} \ AB\big) = \sum_{j=1}^t a_{ij} \cdot  \big(\mathrm{row} \ j \ \text{of} \ B);\]
+%note that $a_{i1},\dots,a_{it}$ is the $i$-th row of $A$.
+ %\end{itemize}
+ This makes sense whenever one of our matrices has entries in a ring $R$ and the other has entries in a module~$M$. In particular, given $m_1,\dots,m_n \in M$, we can write $\begin{bmatrix} m_1& \cdots & m_n \end{bmatrix} B$, for some $n\times m$ matrix $B$ with entries in $R$, as a recipe for $b$ linear combinations of our starting elements, with coefficients/weights given by the columns of $B$. Note that there is no difference between $\sum_j m_j b_{i,j}$ and $\sum_j b_{i,j}m_j$: over a commutative ring, acting on the left and acting on the right makes no difference.
+ 
+
+
+
+\subsubsection*{Determinants} Recall that, for a ring $R$, the determinant is a function $\det: \mathrm{Mat}_{n\times n}(R) \to R$ such that:
+  \begin{enumerate}
+  \item $\det$ is a polynomial expression of the entries of $A$ of degree $n$.
+  \item $\det$ is a linear function of each column.
+  \item $\det(A)=0$ if the columns are linearly dependent.
+  \item $\det(AB)=\det(A)\det(B)$.
+  \item $\det$ can be computed by Laplace expansion along a row/column.
+  \item $\det(A) = \det(A^\tr)$.
+  \item If $\phi:R\to S$ is a ring homomorphism, and $\phi(A)$ is the matrix obtained from $A$ by applying $\phi$ to each entry, then $\det(\phi(A)) = \phi(\det(A))$.
+  \item[($\star$)] $\det(A) \mathbbm{1}_n = A^\mathrm{adj} A = A \, A^\mathrm{adj}$, where 
+  \[(A^\mathrm{adj})_{ij}=(-1)^{i+j} \det( \text{matrix obtained from $A$ by removing row $j$ and column $i$}).\]
+  \end{enumerate} 
+ \noindent Property ($\star$) is sometimes called the \textsc{adjoint trick}.
+ 
+ \
+ 
+  \noindent \textsc{Eigenvector trick:} Let $A$ be an $n\times n$ matrix, $v\in R^n$, and $r\in R$. If $Av=rv$, then $\det(r \1_n - A) v = 0$. Likewise, for a row vector $w$, if $w A = rw$, then $\det(r \1_n - A) w = 0$.
+
+\subsubsection*{Ideals of minors} \0
+
+\noindent \textsc{Definition:} Given an $n\times m$ matrix $A$ and $1\leq t \leq \min\{m,n\}$ the ideal of $t\times t$ minors of $A$ is the ideal generated by the determinants of all $t\times t$ submatrices of $A$ given by choosing $t$ rows and $t$ columns. For $t=0$, we set $I_0(A)=R$ and for $t>\min\{m,n\}$ we set $I_t(A)=0$.
+
+\
+
+\noindent  \textsc{Proposition:} Let $A$ be an $n\times m$ matrix and $B$ be an $m\times \ell$ matrix over $R$.
+\begin{enumerate}
+\item $I_{t+1}(A) \subseteq I_{t}(A)$.
+\item $I_t(AB) \subseteq I_t(A) \cap I_t(B)$.
+\end{enumerate}
+
+\
+
+
+%\subsubsection*{Fitting ideals and annihilators} \0 
+
+\noindent \textsc{Proposition:} Let $M$ be a finitely presented module. Suppose that $A$ is an $n\times m$ presentation matrix for~$M$. Then $I_n(A) M = 0$. Conversely, if $f M=0$, then $f\in I_n(A)^n$.
+
+
+\newpage
+
+\begin{comment}
+\section{Finiteness conditions}
+\setcounter{subsection}{5}
+
+\subsection{Algebra-finite and module-finite maps} Grifo \S1.3, \S1.4, Atiyah-MacDonald \S2
+
+\begin{framed} Key topics:
+\begin{itemize}
+\item Algebra-finite and module-finite maps
+\item Module-finite $\Longrightarrow$ algebra-finite
+\item Integral elements
+\end{itemize}
+\end{framed}
+
+\sssec{Algebra-finite and module-finite maps} \0
+
+\
+
+\noindent \textsc{Definition:} Let $\phi:R \to S$ be a ring homomorphism.
+\begin{itemize}[leftmargin=*]
+
+\item We say that $\phi$ is \textbf{algebra-finite}, or that $S$ is \textbf{algebra-finite} over $R$, if $S$ is a finitely generated $R$-algebra.
+\item We say that $\phi$ is  \textbf{module-finite}, or that $S$ is \textbf{module-finite} over $R$, if $S$ is a finitely generated $R$-module.
+\end{itemize}These are \emph{relative} finiteness conditions for a ring $S$.
+
+\
+
+\noindent We have already seen examples of maps that are algebra-finite, and examples that are not algebra-finite; likewise for module-finite. A map $\phi:R\to S$ is algebra-finite (or module-finite) if and only if $\phi(R) \subseteq S$ is algebra-finite (respectively, module-finite), so we will sometimes just focus on inclusion maps.
+
+
+\
+
+\noindent \textsc{Proposition:} Let $R\to S$ and $S\to T$ be ring homomorphisms.
+\begin{itemize}
+\item If $R\to S$ and $S\to T$ are algebra-finite, then the composition $R\to T$ is algebra-finite.
+\item If $R\to S$ and $S\to T$ are module-finite, then the composition $R\to T$ is module-finite.
+\end{itemize}
+
+\
+
+\noindent \textsc{Lemma:} A module-finite map is algebra-finite. The converse is false.
+
+
+
+\vspace{3mm}
+
+
+\sssec{Integral elements} \0
+
+\vspace{3mm}
+
+\noindent \textsc{Definition:} Let $R$ be an $A$-algebra. We say that an element $r\in R$ is \textbf{integral} over $A$ if $r$ satisfies a monic polynomial with coefficients in $A$; that is, there exists $n>0$ and $a_1,\dots,a_n\in A$ such that
+\[ r^n + a_1 r^{n-1} + \cdots + a_n = 0.\]
+
+\
+
+\noindent An integral element is algebraic over $A$ (i.e., $\{r\}$ is not algebraically independent over $A$), but integral is a stronger condition than algebraic. Note that $r$ is integral over $A$ if and only if it is integral over the image of $A$ in $R$.
+
+
+\
+
+\noindent \textsc{Proposition:} Let $R$ be an $A$-algebra. If $r_1,\dots,r_n\in R$ are integral over $A$, then $A[r_1,\dots,r_n]$ is module-finite over $A$.
+ 
+ 
+
+\vfill
+
+\noindent \hrulefill
+
+\subsubsection*{Just for fun} Questions about algebra-finiteness can be incredibly difficult. Among Hilbert's highly influential list of twenty three problems posed at the beginning of the twentieth century is the following:
+
+\
+
+\noindent \textsc{Hilbert's 14th Problem:} Let $K$ be a field and $R=K[X_1,\dots,X_n]$ be a polynomial ring. Let $L$ be a subfield of the rational function field $K(X_1,\dots,X_n)$ (i.e., the fraction field of $R$). Is $R\cap L$ algebra-finite over $K$?
+
+\
+
+\noindent The first counterexample to this well-known problem was given \emph{sixty} years later by Nagata. Is it any easier if $n=1$?
+
+
+
+
+\newpage
+\subsection{Integral extensions} Grifo \S1.4, Atiyah-MacDonald \S5
+
+\begin{framed} Key topics:
+\begin{itemize}
+\item Integral extensions
+\item Module-finite $\Longleftrightarrow$ algebra-finite \& integral
+\item Integral closure of a ring
+\item Integral extension and fields
+\end{itemize}
+\end{framed}
+
+
+\sssec{Integral extensions} \0 
+
+\
+
+\noindent \textsc{Definition:} Let $\phi: A\to R$ be a ring homomorphism. We say that $\phi$ is \textbf{integral} or that $R$ is \textbf{integral over $A$} if every element of $R$ is integral over $A$.
+
+\
+
+\noindent This is another \emph{relative} finiteness condition for a ring $R$.
+
+\
+
+\noindent \textsc{Theorem:} A homomorphism $\phi: A \to R$ is module-finite if and only if it is algebra-finite and integral. In particular, every module-finite extension is integral.
+
+\
+
+\noindent \textsc{Corollary 1:} An algebra generated by integral elements is integral. 
+
+\
+
+\noindent \textsc{Corollary 2:} If $R\subseteq S$ is integral, and $x$ is integral over $S$, then $x$ is integral over $R$.
+
+\
+
+\noindent Integral extensions force rings to be closely related. This is a theme that will be important for us later on. As a first case of this principle, we have:
+
+\
+
+\noindent \textsc{Proposition:} Let $R\subseteq S$ be an integral extension of domains. Then $R$ is a field if and only if $S$ is a field.
+
+\
+
+\sssec{Integral closure} \0 
+
+\
+
+\noindent \textsc{Definition:} Let $A$ be a ring, and $R$ be an $A$-algebra. The \textbf{integral closure} of $A$ in $R$ is the set of elements in $R$ that are integral over $A$.
+
+\
+
+\noindent  It is not obvious from the definition, but the integral closure of $A$ in $R$ is a ring.
+
+
+\vfill
+
+\noindent \hrulefill
+
+\subsubsection*{Just for fun} Here is an innocuous looking fact:
+
+\
+
+\noindent \textsc{Theorem:}  Let $K$ be a field, and $f_1,\dots,f_{n+1}\in K[X_1,\dots,X_n]$ be $n+1$ polynomials in $n$ variables. Then 
+$f_1^n \cdots f_{n+1}^n \in (f_1^{n+1},\dots,f_{n+1}^{n+1})$.
+
+\
+
+\noindent For example, if $f,g,h\in K[X,Y]$, then $f^2 g^2 h^2\in (f^3,g^3,h^3)$.
+
+\
+
+\noindent The only proof of this fact that I know of uses deep facts about integral closure! Is it easy when $n=1$? What about when $n=2$?
+
+
+
+\newpage
+\subsection{UFDs and integral closure} \0
+
+\begin{framed} Key topics:
+\begin{itemize}
+\item Normal rings
+\item UFD $\Longrightarrow$ normal
+\item Polynomial rings are UFDs
+\end{itemize}
+\end{framed}
+
+\noindent \textsc{Definition:} Let $R$ be a domain. The \textbf{normalization} of $R$ is the integral closure of $R$ in $\mathrm{Frac}(R)$. We say that $R$ is \textbf{normal} if it is equal to its normalization, i.e., if $R$ is integrally closed in its fraction field.
+
+\
+
+\noindent \textsc{Definition:} Let $K$ be a module-finite field extension of $\Q$. The \textbf{ring of integers} in $K$, sometimes denoted $\mathcal{O}_K$, is the integral closure of $\Z$ in $K$.
+
+
+\
+
+\noindent \textsc{Proposition:} If $R$ is a UFD, then $R$ is normal.
+
+\
+
+\noindent \textsc{Lemma:} A domain is a UFD if and only if
+\begin{enumerate}
+\item Every nonzero element has a factorization\footnote{That is, for any $r\in R$, there exists a unit $u$ and a finite (possibly empty) list of irreducibles $a_1,\dots,a_n$ such that $r=u a_1 \cdots a_n$} into irreducibles, and
+\item Every irreducible element generates a prime ideal.
+\end{enumerate}
+
+\
+
+\noindent \textsc{Theorem:} If $R$ is a UFD, then the polynomial ring $R[X]$ is a UFD.
+
+\
+
+\noindent The proof of the previous theorem largely follows from the following fact from Math 818:
+
+\
+
+\noindent \textsc{Gauss' Lemma:} Let $R$ be a UFD and $K$ be the fraction field of $R$.
+\begin{enumerate}
+\item $f\in R[X]$ is irreducible if and only if $f$ is irreducible in $K[X]$ and the coefficients of $f$ have no common factor.
+\item Let $r\in R$ be irreducible, and $f,g\in R[X]$. If $r$ divides every coefficient of $fg$, then either $r$ divides every coefficient of $f$, or $r$ divides every coefficient of $g$.
+\end{enumerate}
+
+\vfill
+
+
+\newpage
+\subsection{Noetherian rings} Grifo \S1.6, Atiyah-MacDonald \S6, \S7
+
+\begin{framed} Key topics:
+\begin{itemize}
+\item Noetherian rings: definition and equivalences
+\item Hilbert Basis Theorem
+\end{itemize}
+\end{framed}
+
+\noindent \textsc{Definition:} A ring $R$ is \textbf{Noetherian} if every ascending chain of ideals $I_1 \subseteq I_2 \subseteq I_3 \subseteq \cdots$ eventually stabilizes: i.e., there is some $N$ such that $I_n=I_N$ for all $n\geq N$.
+
+\
+
+\noindent Here are some equivalent conditions for a ring to be Noetherian:
+
+\begin{itemize}
+\item $R$ is Noetherian if and only if every nonempty collection of ideals has a maximal\footnote{Warning: This means that if $\mathcal{S}$ is our collection of ideals, there is some $I\in \mathcal{S}$ such that no $J\in \mathcal{S}$ properly contains $I$. It does not mean that there is a maximal ideal in $\mathcal{S}$.} element.
+\item $R$ is Noetherian if and only if every ideal is finitely generated.
+\end{itemize}
+
+\
+
+
+
+\noindent \textsc{Hilbert Basis Theorem:} If $R$ is a Noetherian ring, then the polynomial ring $R[X]$ and power series ring $R\llbracket X \rrbracket$ are also Noetherian.
+
+\
+
+\noindent We will return to the proof of Hilbert Basis Theorem after discussing Noetherian modules next time.
+
+\
+
+
+\noindent \textsc{Corollary:} Every finitely generated algebra over a field is Noetherian.
+
+\
+
+\noindent \textsc{Principle of Noetherian induction:} Let $\mathcal{P}$ be a property of a ring. Suppose that ``For every nonzero ideal $I$, $\mathcal{P}$ is true for $R/I$  implies that $\mathcal{P}$ is true for $R$''. Then $\mathcal{P}$ is true for every Noetherian ring.
+
+
+
+\newpage
+\subsection{Noetherian modules} Grifo \S1.6, Atiyah-MacDonald \S6, \S7
+
+\begin{framed} Key topics:
+\begin{itemize}
+\item Noetherian modules
+\item Noetherianity vs finite generation
+\item Proof of Hilbert Basis Theorem
+\end{itemize}
+\end{framed}
+
+
+\noindent \textsc{Definition:} A module is \textbf{Noetherian} if every ascending chain of submodules $M_1 \subseteq M_2 \subseteq M_3 \subseteq \cdots$ eventually stabilizes: i.e., there is some $N$ such that $M_n=M_N$ for all $n\geq N$.
+
+\
+
+\noindent Here are some equivalent conditions for a module to be Noetherian:
+
+\begin{itemize}
+\item $M$ is Noetherian if and only if every nonempty collection of submodules has a maximal\footnote{This means that if $\mathcal{S}$ is our collection of submodules, there is some $L\in \mathcal{S}$ such that no $L'\in \mathcal{S}$ properly contains $L$.} element.
+\item $M$ is Noetherian if and only if every submodule is finitely generated.
+\end{itemize}
+
+\
+
+\noindent \textsc{Theorem:} If $R$ is a Noetherian ring, then a module $M$ is Noetherian if and only $M$ is finitely generated.
+
+\
+
+\noindent \textsc{Corollary:} If $R$ is a Noetherian ring, then a submodule of a finitely generated module is finitely generated.
+
+
+\
+
+\noindent \textsc{Lemma:} Let $M$ be a module and $N\subseteq M$ a submodule. Let $L,L'$ be two more submodules of $M$. Then $L=L'$ if and only if $\displaystyle L\cap N= L'\cap N$ and $\ds\frac{L+N}{N} = \frac{L'+N}{N}$.
+
+
+\newpage
+\section{Graded rings} 
+\setcounter{subsection}{10}
+\subsection{Graded rings} Grifo \S2.1
+
+\begin{framed} Key topics:
+\begin{itemize}
+\item Definition of graded ring, homogeneous element, homogeneous ideal
+\item Examples of graded rings
+\end{itemize}
+\end{framed}
+
+\sssec{Graded rings, homogeneous elements and ideals} \0
+
+\
+
+\noindent \textsc{Definition:} 
+\begin{enumerate}
+\item An \textbf{$\N$-grading} on a ring $R$ is 
+\begin{itemize}
+\item a decomposition of $R$ as additive groups $R= \bigoplus_{d\geq 0} R_d$
+\item such that $x\in R_d$ and $y\in R_e$ implies $xy\in R_{d+e}$. 
+\end{itemize}
+\item An \textbf{$\N$-graded ring} is a ring with an $\N$-grading.
+
+\item We say that an element $x\in R$ in an $\N$-graded ring $R$ is \textbf{homogeneous} of \textbf{degree} $n$ if $x\in R_n$.
+
+\item The \textbf{homogeneous decomposition} of an element $r\neq 0$ in an $\N$-graded ring is the sum
+\[ r = r_{d_1} + \cdots + r_{d_k} \quad \text{where $r_{d_i}\neq 0$ homogeneous of degree $d_i$ and $d_1<\cdots < d_k$}.\]
+The element $r_{d_i}$ is the \textbf{homogeneous component $r$ of degree $d_i$}.
+
+\item An ideal $I$ in an $\N$-graded ring is \textbf{homogeneous} if $r\in I$ implies every homogenous component of $r$ is in $I$.
+\item A homomorphism $\phi:R\to S$ between $\N$-graded rings is \textbf{graded} if $\phi(R_d) \subseteq S_d$ for all $d\in \N$.
+\end{enumerate}
+
+\
+
+\noindent \textsc{Definition:} For an abelian semigroup $(G,+)$, one defines \textbf{$G$-grading} as above with $G$ in place of $\N$ and $g\in G$ in place of $d\geq 0$. The other definitions above make sense in this context.
+
+\
+
+\sssec{Examples of graded rings:} \0
+
+\
+
+\noindent The main example of a graded ring is a polynomial ring $R=K[X_1,\dots,X_n]$ with the \textbf{standard grading}, where $R_d$ is the $K$-vector space with basis given by monomials $X_1^{d_1} \cdots X_n^{d_n}$ such that $d_1+\cdots+d_n=d$.
+
+\
+
+\noindent There are also \textbf{weighted gradings} on $R$: given $a_1,\dots,a_n\in \N$, instead take  $R_d$ to be the $K$-vector space with basis given by monomials $X_1^{d_1} \cdots X_n^{d_n}$ such that $a_1d_1+\cdots+a_n d_n=d$.
+
+\
+
+\noindent One also has the \textbf{fine grading} on $R$. This is the $\N^n$-grading where $R_{(d_1,\dots,d_n)} = K \cdot X_1^{d_1} \cdots X_n^{d_n}$.
+
+\
+
+
+\noindent \textsc{Definition:} Let $K$ be a field, and $R=K[X_1,\dots,X_n]$ be a polynomial ring. Let $G$ be a group acting on $R$ so that for every $g\in G$,  $r\mapsto g\cdot r$ is a $K$-algebra homomorphism. The \textbf{ring of invariants} of $G$ is
+\[ R^G \ceq \{ r\in R \ | \ \text{for all} \ g\in G, \ g\cdot r = r \}.\]
+
+
+\newpage
+\subsection{Graded modules} 
+
+\newpage
+\subsection{Finiteness theorem for invariant rings}
+
+
+	
+
+	
+
+
+
+
+
+
+\begin{comment}
+
+
+\end{comment}
+
+
+
+
+
+\end{document}
