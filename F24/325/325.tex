@@ -483,14 +483,6 @@ $(x + y) + (-y) = (z + y) + (-y)$. This can be rewritten as $x + (y + (-y)) = z 
 
 
 
-For another example, we can deduce the following fact from the axioms:
-\begin{quote} For any real number $r$, we have $r \cdot 0 = 0$.
-\end{quote}
-Let's prove this carefully: Let $r$ be any real number. We have $0 +  0 = 0$ (Axiom 4) and hence $r \cdot (0 + 0) = r \cdot 0$. But
-$r \cdot (0 + 0) = r \cdot 0 + r \cdot 0$ (Axiom~5) and so $r \cdot 0 = r \cdot 0 + r \cdot 0$. We can rewrite this as
-$0 + r \cdot 0 = r \cdot 0 + r \cdot 0$ (Axiom 4). Now apply the Cancellation of Addition property (which we previously deduced from the axioms) to obtain
-$0 = r \cdot 0$.
-
 Here is the incredible fact: everything that we know about the real numbers follows from these axioms! In particular, all of the basic facts about arithmetic of real numbers follow from this, like ``the product of two negative numbers is positive,'' as well as everything you encountered in Calculus, like the Mean Value Theorem.
 
 
@@ -735,7 +727,7 @@ Answers may vary
 These are ALL TRUE.
 \end{framed}
 
-The next problem is no longer about a spraypainting of the real number line.
+\noindent \emph{The next problem is no longer about a spraypainting of the real number line.}
 
 \item\label{w2prob3} Rewrite each statement with symbols in place of quantifiers, and write its negation. Do you think the original statement is true or false (but don't prove them yet)?.
 \begin{enumerate}
@@ -840,30 +832,34 @@ Note: explaining \emph{how} you found your example``$x$'' is \emph{not} a logica
 
 \end{enumerate}
 
-\subsection*{More practice with quantifier statements}
+\subsection*{More practice with quantifier statements} Using the axioms of $\R$ and statements that we've already proven (like cancellation of addition, or any problem on the list above the given one), prove the following:
 
 \begin{enumerate}\setcounter{enumi}{7}
 
 \item Prove that there exists some $x\in \R$ such that $2x+5=3$.
 
-\
+\begin{framed}Take $x=-1$. Then $2x+5=2(-1)+5=3$. $\end{framed}
+
+\item Prove\footnote{Hint: You might find it useful to write $0=0+0$ and, in a later step, use cancellation of addition.} that for any real number $r$, we have $r \cdot 0 = 0$.
+
+\begin{framed}Let $r$ be any real number. We have $0 +  0 = 0$ (Axiom 4) and hence $r \cdot (0 + 0) = r \cdot 0$. But
+$r \cdot (0 + 0) = r \cdot 0 + r \cdot 0$ (Axiom~5) and so $r \cdot 0 = r \cdot 0 + r \cdot 0$. We can rewrite this as
+$0 + r \cdot 0 = r \cdot 0 + r \cdot 0$ (Axiom 4). Now apply the Cancellation of Addition property (which we previously deduced from the axioms) to obtain
+$0 = r \cdot 0$.\end{framed}
 
 
-\item Prove that there exists some $x\in \R$ such that for every $y\in \R$, $xy=x$.
-
-\
 
 \item\label{xy=1} Let $x$ be a real number. Use the axioms of $\R$ and facts we have already proven to show that if there exists a real number $y$ such that $xy=1$, then $x\neq 0$.
 
-\
+\begin{framed} 
+Let $x$ be a real number. Suppose that there exists a real number $y$ such that $xy=1$. By way of contradiction, suppose that $x=0$. Then $1=xy=0y=0$, which is a contradiction. Thus, we must have $x\neq 0$. Thus, if there exists a real number $y$ such that $xy=1$, then $x\neq 0$.
+\end{framed}
 
 \item Prove that\footnote{Hint: Use (\ref{xy=1}).} for all $x\in \R$ such that $x\neq 0$, we have $x^2\neq 0$.
 
 \
 
 
-
-\item Let $S\subseteq \R$ be a set of real numbers. Apply your results above to prove that if for every $x\in S$, $x^2$ is irrational, then for every $y\in S$, $y$ is irrational.
 
 
 
