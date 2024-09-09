@@ -1,0 +1,154 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals}
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\ord}{\mathrm{ord}}
+
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\solutione}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{leaf}This solution is embargoed.}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+\usepackage[hang,flushmargin]{footmisc}
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{\S2.8: UFDs and Normal Rings}	
+
+\begin{framed}
+\noindent \textsc{Definition:} Let $R$ be a domain. The \textbf{normalzation} of $R$ is the integral closure of $R$ in $\mathrm{Frac}(R)$. We say that $R$ is \textbf{normal} if it is equal to its normalization, i.e., if $R$ is integrally closed in its fraction field.
+
+
+\
+
+\noindent \textsc{Proposition:} If $R$ is a UFD, then $R$ is normal.
+
+\
+
+\noindent \textsc{Lemma:} A domain is a UFD if and only if
+\begin{enumerate}
+\item Every nonzero element has a factorization\footnotemark\,into irreducibles, and
+\item Every irreducible element generates a prime ideal.
+\end{enumerate}
+
+\
+
+\noindent \textsc{Theorem:} If $R$ is a UFD, then the polynomial ring $R[X]$ is a UFD.
+
+ \end{framed}
+ \footnotetext{i.e., for any $r\in R$, there exists a unit $u$ and a finite (possibly empty) list of irreducibles $a_1,\dots,a_n$ such that $r=u a_1 \cdots a_n$.}
+
+ 
+\begin{enumerate}
+\itemA Use the results above to explain why $K[X_1,\dots,X_n]$ (with $K$ a field) and $\Z[X_1,\dots,X_n]$ are normal.
+
+\solution{Because fields and $\Z$ are UFDs, so $K[X_1,\dots,X_n]$ and $\Z[X_1,\dots,X_n]$ are UFDs, hence normal.}
+
+\itemA Prove the Proposition above.
+
+\solution{Let $k=a/b$ be in the fraction field of $R$ written in lowest terms. Suppose that $k$ is integral over $R$ and take an equation
+$k^n + r_1 k^{n-1} + \cdots + r_n = 0.$ Plugging in and clearing denominators gives
+$a^n + r_1 a^{n-1} b + \cdots + r_n b^n = 0$. Then $a^n$ is a multiple of $b$, so any irreducible factor of $b$ is an irreducible factor of $a$ by unique factorization. The only possibility is that $b$ admits no irreducible factors; i.e., $b$ is a unit, so $k\in R$.
+}
+
+\itemA Let $K$ be a module-finite field extension of $\Q$. The \textbf{ring of integers} in $K$, sometimes denoted $\mathcal{O}_K$, is the integral closure of $\Z$ in $K$.
+\begin{enumerate}
+\itema What is the ring of integers in $\Q(\sqrt{2})$?
+\itema For $L=\Q(\sqrt{-3})$, show that $\frac{1+\sqrt{-3}}{2} \in \mathcal{O}_L$. In particular, $\mathcal{O}_L \supsetneqq \Z[\sqrt{-3}]$.
+\itema Explain why $\mathcal{O}_K$ is normal.
+\itema Explain why, if $\Z\subseteq \mathcal{O}_K$ is algebra-finite, then $\mathcal{O}_K\cong \Z^n$ as abelian groups for some $n\in \N$.
+\itema Do we have a theorem that implies $\Z\subseteq \mathcal{O}_K$ is algebra-finite?
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itema $\Z[\sqrt{2}]$.
+\itema If $\omega= \frac{1+\sqrt{-3}}{2}$, note that $\omega^2= \frac{-1+1\sqrt{-3}}{2} = \omega-1$, so $\omega^2 - \omega+1=0$.
+\itema If $k\in K$ is integral over $\mathcal{O}_K$, then $k$ is integral  over $\mathcal{O}_K$ and hence over $\Z$ (by Corollary 2 from last time). Then by definition, $k\in \mathcal{O}_K$.
+\itema If $\Z\subseteq \mathcal{O}_K$ is algebra-finite, then since it is integral, it is also module-finite. $\mathcal{O}_K$ is definitely torsion free, since it's contained in a field, so by the structure theorem for fg abelian groups, it is isomorphic to a finite number of copies of $\Z$.
+\itema Not yet!
+\end{enumerate}
+}
+
+\itemB Discuss the proof of the Lemma above.
+
+\solution{We show by induction on $n$, that for any element $r\in R$ that can has an irreducible factorization as a unit times a product on $n$ irreducibles (counting repetitions), that any other irreducible factorization agrees with the given one up to associates and reordering. If $r$ is a unit, then any factorization only consists of units, since otherwise $r$ is a divisible by prime element, contradicting that it is a unit. 
+
+Say that $p$ is an irreducible in the first factorization of $r$, so $r=ps$ for some $s$. Then given any irreducible factorization of $r$, $p$ must divide some irreducible factor since $(p)$ is prime, and by definition, $p$ must be associate to that irreducible. Then we can cancel $p$ from both factorizations and apply the induction hypothesis to $s$.}
+
+\itemB Let $K$ be a field, and $R=K[X^2,XY,Y^2] \subseteq K[X,Y]$. Prove\footnote{Hint: Use $K[X,Y]$ to your advantage.} that $R$ is \emph{not} a UFD, but $R$ is normal.
+
+\solutione{The elements $X^2$, $XY$, and $Y^2$ are irreducible, since each has top degree $2$ and any nonunit nonzero element in $R$ has top degree at least $2$. Then $(X^2)(Y^2) = (XY)^2$ is a nonunique factorization of $X^2 Y^2$ in $R$, so $R$ is not a UFD.
+
+On the other hand, suppose that $f/g\in \mathrm{frac}(R)$ is integral over $R$. Then $f/g\in \mathrm{frac}(S)$ as well, and is integral over $S$ too; the same equation of integral dependence works for this. But $S$ is a UFD, hence normal, so $f/g\in S$. It remains to show that $\mathrm{frac}(R) \cap S = R$. But if $\frac{f(X^2,XY,Y^2)}{g(X^2,XY,Y^2)} = h(X,Y)$, then $f(X^2,XY,Y^2)= g(X^2,XY,Y^2)h(X,Y)$, so $h$ cannot have any nonzero odd-degree terms, and $h(X,Y)\in R$.}
+
+\itemB Prove the Theorem above. You might find it useful to recall the following:\\
+\textsc{Gauss' Lemma:} Let $R$ be a UFD and let $K$ be the fraction field of $R$.
+\begin{enumerate}
+\item $f\in R[X]$ is irreducible if and only if $f$ is irreducible in $K[X]$ and the coefficients of $f$ have no common factor.
+\item Let $r\in R$ be irreducible, and $f,g\in R[X]$. If $r$ divides every coefficient of $fg$, then either $r$ divides every coefficient of $f$, or $r$ divides every coefficient of $g$.
+\end{enumerate}
+
+\solution{}
+
+\itemB Let $R$ be a normal domain, and $s$ be an element of some domain $S\supseteq R$. Let $K$
+be the fraction field of $R$. Show that if $s$ is integral over $R$, then the minimal polynomial of $s$ has all of its coefficients in $R$.
+\solution{}
+
+\end{enumerate}
+
+
+
+
+
+\end{document}

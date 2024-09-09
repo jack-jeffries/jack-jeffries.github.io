@@ -1,0 +1,169 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals,bbm}
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\ord}{\mathrm{ord}}
+\newcommand{\1}{\mathbbm{1}}
+
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+\usepackage[hang,flushmargin]{footmisc}
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{\S2.7: Integral extensions}	
+
+\begin{framed}
+
+\noindent \textsc{Definition:} Let $\phi: A\to R$ be a ring homomorphism. We say that $\phi$ is \textbf{integral} or that $R$ is \textbf{integral over $A$} if every element of $R$ is integral over $A$.
+
+\
+
+\noindent \textsc{Theorem:} A homomorphism $\phi: A \to R$ is module-finite if and only if it is algebra-finite and integral. In particular, every module-finite extension is integral.
+
+\
+
+\noindent \textsc{Corollary 1:} An algebra generated (as an algebra) by integral elements is integral. 
+
+\
+
+\noindent \textsc{Corollary 2:} If $R\subseteq S$ is integral, and $x$ is integral over $S$, then $x$ is integral over $R$.
+
+\
+
+
+
+\noindent \textsc{Proposition:} Let $R\subseteq S$ be an integral extension of domains. Then $R$ is a field if and only if $S$ is a field.
+
+\
+
+\noindent \textsc{Definition:} Let $A$ be a ring, and $R$ be an $A$-algebra. The \textbf{integral closure} of $A$ in $R$ is the set of elements in $R$ that are integral over $A$. 
+ \end{framed}
+ 
+
+ 
+\begin{enumerate}
+\itemA Proof of Theorem:
+\begin{enumerate}
+\itema Very briefly explain why, to prove that module-finite implies integral in general, it suffices to show the claim for an inclusion $A\subseteq R$.
+\itema Take a module generating set $\{1,r_2,\dots,r_n\}$ for $R$ as an $A$-module, and write it as a row vector $v=\begin{bmatrix} 1 & r_2 & \cdots & r_n\end{bmatrix}$. Let $x\in R$. Explain why there is a matrix $M\in \mathrm{Mat}_{n\times n}(A)$ such that $vM=xv$.
+\itema Apply a \textsc{Trick} to obtain a monic polynomial over $A$ that $x$ satisfies.
+\itema Combine the previous parts with results from last time to complete the proof of the Theorem.
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itema You can replace $A$ by $\phi(A)$ for both.
+\itema $xr_i\in R$ for each $i$, so each $xr_i$ is an $A$-linear combination of $1,r_2,\dots,r_n$. We can write these linear combinations using matrix multiplication.
+\itema The eigenvector trick implies that $\det(M - x \1_n)$ kills $v$; since $1$ is an entry of $v$, ${\det(M - x \1_n)=0}$, so $x$ is a root of the polynomial ${\det(M - X \1_n)=0}$, which is monic.
+\itema The previous part shows that module-finite implies integral. We already saw that module-finite implies algebra-finite. Also, if $R=A[r_1,\dots,r_m]$ and $R$ is integral over $A$, then each $r_i$ is integral over $R$. We saw last time that $R$ as above is module-finite over $A$.
+\end{enumerate}
+}
+
+\itemA Let $R=\C[X,X^{1/2},X^{1/3},\dots] \subseteq \overline{\C(X)}$, where $X^{1/n}$ is an $n$th root of $X$. Is $\C[X] \subseteq R$ integral\footnote{You might find the Corollary helpful.}? Is it module-finite? Is it algebra-finite?
+
+\solution{
+Each algebra generator $X^{1/n}$ satisfies a polynomial $T^n-X=0$, so is integral over $\C[X]$. By the Corollary, $R$ is integral over $\C[X]$. It is not algebra-finite or module-finite. The argument is similar to examples we have done before: if it was, it would be generated by a finite subset of $\{X^{1/n}\}$, but there would then be a largest denominator on the powers of $X$.
+}
+
+\itemA Proof of Corollary 1: Let $R$ be an $A$-algebra.
+\begin{enumerate}
+\itema If $x,y\in R$ are integral over $A$, explain why $A[x,y] \subseteq R$ is integral over $A$. Now explain why $x\pm y$ and $xy$ are integral over $A$.
+\itema Deduce that the integral closure of $A$ in $R$ is a ring, and moreover an $A$-subalgebra of $R$.
+\itema Now let $S$ be a set of integral elements. Apply (b) to the ring $R=A[S]$ in place of $R$. Complete the proof of the Corollary.
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itema $A[x,y]$ is module-finite over $A$, and $x\pm y$ and $xy\in A[x,y]$.
+\itema This follows from (a) plus the fact that every element of $A$ is obviously integral over $A$.
+\itema The integral closure of $A$ in $A[S]$ is a subalgebra of $A$ that contains $S$, so by definition of generators must be all of $A[S]$. Thus $A[S]$ is integral over $A$.
+\end{enumerate}
+}
+
+\itemB Proof of Proposition:
+\begin{enumerate}
+\itemb First, assume that $S$ is a field, and let $r\in R$ be nonzero. Explain why $r$ has an inverse in $S$.
+\itemb Take an integral equation for $r^{-1}\in S$ over $R$, and solve for $r^{-1}$ in terms of things in $R$. Deduce that $R$ must also be a field.
+\itemb Now, assume that $R$ is a field, and that $S$ is a domain, and let $s\in S$ be nonzero. Explain why $R[s]$ is a finite-dimensional vector space.
+\itemb Explain why the multiplication by $s$ map from $R[s]$ to itself is surjective. Deduce that $S$ must also be a field.
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itemb Because $S$ is a field.
+\itemb Take $(r^{-1})^n + r_1 (r^{-1})^{n-1} + \cdots + r_n = 0$. Multiplying through, $r^{-1} = -r_1 -r_2 r - \cdots - r_n r^{n-1} \in R$.
+\itemb $R[s]$ is module-finite over $R$; for a field, this means finite-dimensional.
+\itemb Since $s$ is nonzero, and $S$ is a domain, multiplication by $s$ is injective. But this is an $R$-linear map from $R[s]$ to itself, and since $R[s]$ is a finite-dimensional vector space, this is also surjective. That means that $1=s s'$ for some $s'$, so $s$ is a unit. Thus, $S$ is also a field.
+\end{enumerate}
+}
+
+\itemB Prove Corollary 2.
+
+\solution{Let $R\subseteq S$ be integral and $x$ be integral over $S$. Let $x^n + s_1 x^{n-1} + \cdots + s_n = 0$ with $s_i\in S$. Then $x$ is integral over $R[s_1,\dots,s_n]$, so $R[s_1,\dots,s_n,x]$ is module-finite over $R[s_1,\dots,s_n]$. But $R[s_1,\dots,s_n]$ is module-finite over $R$, so $R[s_1,\dots,s_n,x]$ is module-finite over $R$, and hence integral over $R$. In particular, $x$ is integral over $R$.}
+
+\itemB Let $A=\C[X,Y]$ be a polynomial ring, and $R=\ds \frac{\C[X,Y,U,V]}{(U^2-UX+3X^3, V^2-7Y)}$. Find an equation of integral dependence for $U+V$ over $A$.
+
+
+\end{enumerate}
+
+
+\vfill
+
+
+
+
+
+\end{document}

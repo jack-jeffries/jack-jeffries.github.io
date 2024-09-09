@@ -1,0 +1,212 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals}
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\ord}{\mathrm{ord}}
+
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+\usepackage[hang,flushmargin]{footmisc}
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{\S2.6: Algebra-finite and module-finite extensions}	
+
+\begin{framed}
+
+\noindent \textsc{Definition:} Let $\phi:R \to S$ be a ring homomorphism.
+\begin{itemize}[leftmargin=*]
+
+\item We say that $\phi$ is \textbf{algebra-finite}, or $S$ is \textbf{algebra-finite} over $R$, if $S$ is a finitely generated $R$-algebra.
+\item We say that $\phi$ is  \textbf{module-finite}, or $S$ is \textbf{module-finite} over $R$, if $S$ is a finitely generated $R$-module.
+\end{itemize}
+One also often encounters the less self-explanatory terms \textbf{finite type} for algebra-finite, and \textbf{finite} for module-finite, but we will avoid these.
+
+\
+
+
+\noindent \textsc{Lemma:} A module-finite map is algebra-finite. The converse is false.
+
+\
+
+\noindent \textsc{Definition:} Let $R$ be an $A$-algebra. We say that an element $r\in R$ is \textbf{integral} over $A$ if $r$ satisfies a monic polynomial with coefficients in $A$.
+
+\
+
+\noindent \textsc{Proposition:} Let $R$ be an $A$-algebra. If $r_1,\dots,r_n\in R$ are integral over $A$, then $A[r_1,\dots,r_n]$ is module-finite over $A$.
+ 
+
+
+ 
+ \end{framed}
+ 
+
+ 
+\begin{enumerate}
+\itemA Algebra-finite vs module-finite: Let $\phi:A \to R$ be a ring homomorphism and $r_1,\dots,r_n\in R$.
+\begin{enumerate}
+\itema Agree or disagree: an $A$-linear combination of $r_1,\dots,r_n$ is a special type of polynomial expression of $r_1,\dots,r_n$ with coefficients in $A$.
+\itema Explain why $R=\sum_{i=1}^n A r_i$ implies $R=A[r_1,\dots,r_n]$. Explain why module-finite implies algebra-finite.
+\itema Let $R=A[X]$ be a polynomial ring in one variable over $A$. Is the inclusion map $A \subseteq A[X]$ algebra-finite? Module-finite?
+\itema Give an example of a map that is module-finite (and hence also algebra-finite).
+\itema Give an example of a map that is not algebra-finite (and hence also not module-finite).
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itema Agree.
+\itema The first part follows from what you just agreed to.
+\itema Algebra-finite but not module-finite.
+\itema Possibilities include $\Z\subseteq \Z[\sqrt{2}]$, $\R\subseteq \C$
+\itema Possibilities include  $\Z\subseteq \Q$, $K\subseteq K[X_1,X_2,\dots]$.
+\end{enumerate}
+}
+
+
+\itemA Integral elements: Use the definition of integral to determine whether each is integral or not.
+\begin{enumerate}
+\itema An indeterminate $X$ in a polynomial ring $A[X]$, over $A$.
+\itema $\sqrt[3]{2}$,  over $\Z$.
+\itema $\frac{1}{2}$, over $\Z$.
+\end{enumerate}
+\solution{
+\begin{enumerate}
+\itema No: $X$ satisfies no polynomial over $A$.
+\itema Yes: $\sqrt[3]{2}$ is a root of $T^3 - 2$.
+\itema No: given $T^n + a_1 T^{n-1} + \cdots + a_n = 0$ with $a_i\in \Z$, plugging in $T=1/2$ and clearing denominators gives
+$1 + 2 a_1 + \cdots + 2^n a_n = 0$, which is impossible.
+\end{enumerate}
+}
+
+\itemA Proof of Proposition: Let $A$ be a ring.
+\begin{enumerate}
+\itema Let $f\in A[X]$ be monic, and let $T=A[X]/(f)$. Explain why $T$ is module-finite over $A$. What is a generating set?
+\itema Let $R=A[r]$ be an algebra generated by one element $r\in R$. Suppose that $r$ satisfies a monic polynomial $f\in A[X]$. How is $R$ related to the ring $T$ as in part (a)? Must they be equal?
+\itema Show that $R$ as in (b) is module-finite over $A$. What is a generating set?
+\itema Let $S=A[r_1,\dots,r_t]$ with $r_1,\dots,r_t\in S$ integral over $A$. Use (c) and (4b) below to show that $A\to S$ is module-finite.
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itema We showed earlier that $T$ is a free $A$-module with basis given by powers of $[X]$ of degree less than the top degree of $f$.
+\itema $R$ is a quotient of $T$, but could be smaller (a proper quotient). For example, take $R=\Z[X] / (X^2,2X)$.
+\itema It is generates by the powers of $[X]$ of degree  than the top degree of $f$.
+\itema This follows from (c), 2(b), and induction.
+\end{enumerate}
+}
+
+\itemB Finiteness conditions and compositions: Let $R\subseteq S \subseteq T$ be rings.
+\begin{enumerate}
+\itemb If $R \subseteq S$ and $S\subseteq T$ are algebra-finite, show\footnote{Hint: If $S=R[s_1,\dots,s_m]$ and $T=S[t_1,\dots,t_n]$, apply the definition of ``algebra generated by'' to ${R[s_1,\dots,s_m,t_1,\dots,t_n] \subseteq T}$. Why must the LHS contain $S$? After that, why must it contain $T$?} that the composition $R\subseteq T$ is algebra-finite. 
+\itemb If $R\subseteq S$ and $S\subseteq T$ are module-finite, show\footnote{Hint: If $S=\sum_i R s_i$ and $T=\sum_j S t_j$, use the ``linear combinations'' characterization of module generators to show ${T=\sum_{i,j} R s_i t_j}$.} that  the composition $R\subseteq T$ is module-finite.
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itemb If $S=R[s_1,\dots,s_m]$ and $T=S[t_1,\dots,t_n]$. We claim that $T=R[s_1,\dots,s_m,t_1,\dots,t_n]$. Suppose that $T'\subseteq T$ is an $R$-subalgebra containing $s_1,\dots,s_m,t_1,\dots,t_n$. Since $s_1,\dots,s_m\in T'$, we have $S\subseteq T'$ so $T'$ is a $S$-subalgebra of $T$. But since $t_1,\dots,t_n\in T'$ we then must have $T'=T$.
+\itemb If $S= \sum_i R a_i$ and $T=\sum_j S b_j$, we claim that $T= \sum_{i,j} R a_i b_j$. Indeed, given $t\in T$, we can write $t=\sum_j s_j b_j$, and for each $s_j$ we can write $s_j=\sum_i r_{i,j} a_i$, so $t = \sum_j ( \sum_i r_{i,j} a_i) b_j$ is an $R$-linear combination of $a_i b_j$.
+\end{enumerate}
+}
+
+
+
+
+\begin{samepage}
+\itemB Power series rings:
+\begin{enumerate}
+\itemb Let $A\to R$ be algebra-finite. Show that $R$ is a countably-generated $A$-module.
+
+\itemb Let $A$ be a ring and $R=A\llbracket X\rrbracket$ be a power series ring over $A$. Show\footnote{Hint: Write $[g]_{\leq j}$ for the sum of terms in $g$ of degree at most $j$. Suppose $R = \sum_{i=1}^\infty A f_i$, and construct $g\in R$ such that $[g]_{\leq n^2} \notin \sum_{i=1}^n A [f_i]_{\leq n^2}$.} that $R$ is not a countably generated $A$-module. Deduce that $R$ is not algebra-finite over $A$.
+
+\end{enumerate}
+\end{samepage}
+
+\solution{
+\begin{enumerate}
+\itemb If $R = A[X_1,\dots,X_n]$, then $R$ is a free $A$-module on basis given by monomials. This is a countable set, so $R$ is a countably-generated $A$-module. In the general case of $A\to R$ be algebra-finite, $R$ is a quotient of a polynomial ring in finitely many variable, so $R$ is a countably-generated $A$-module.
+
+\itemb Suppose $R = \sum_{i=1}^\infty A f_i$ is countably generated. Write $[g]_{\leq j}$ for the sum of terms in $g$ of degree at most $j$ and similar things. 
+
+We claim that there is some $g\in R$ such that $[g]_{\leq n^2} \notin \sum_{i=1}^n A [f_i]_{\leq n^2}$. We construct such $g$ recursively. Suppose we have such a $g$ that satisfies the condition some $n$. We need to show that there are coefficients $a_{{n^2+1}}, \dots, a_{(n+1)^2}$ such that $[g]_{\leq (n+1)^2} \notin \sum_{i=1}^{n+1} A [f_i]_{\leq (n+1)^2}$; we will choose these coefficients with the stronger property that $[g]_{>n \& \leq (n+1)^2} \notin \sum_{i=1}^{n+1} A [f_i]_{>n \& \leq (n+1)^2}$. To do this, just note that $\sum_{i=1}^{n+1} A [f_i]_{>n \& \leq (n+1)^2}$ is a submodule of $A^{2n+1}$ with $n+1$ generators, so is a proper submodule; choose any element of the complement. Thus there exists a $g$ as claimed.
+
+But then $g\notin \sum_{i=1}^\infty A f_i$, since if it were, $g$ would be an $A$-linear combination of finitely many such $f_i$, so $g\in \sum_{i=1}^N A f_i$ for some $N$, and hence $[g]_{\leq N^2} \in \sum_{i=1}^N A [f_i]_{\leq N^2}$, a contradiction.
+
+It follows from (1) that $R$ is not a finitely-generated $A$-algebra.
+\end{enumerate}}
+
+
+\itemB Let $R\subseteq S \subseteq T$ be rings.
+\begin{enumerate}
+\itemb If $R\subseteq T$ is algebra-finite, must $S\subseteq T$ be? What about $R\subseteq S$?
+\itemb If $R\subseteq T$ is module-finite, must $S\subseteq T$ be? What\footnote{Hint: Use a problem below.} about $R\subseteq S$?
+\end{enumerate}
+\solution{
+\begin{enumerate}
+\itemb $S\subseteq T$ must be, as following immediately from the definition. $R\subseteq S$ need not, e.g., for $K[X] \subseteq K[X,XY,XY^2,\cdots] \subseteq K[X,Y]$.
+\itemb $S\subseteq T$ must be, as following immediately from the definition. $R\subseteq S$ need not, e.g., for $K[X_1,X_2,\dots] \subseteq K[X_1,X_2,\dots] \ltimes (X_1,X_2,\dots) \subseteq  K[X_1,X_2,\dots] \ltimes K[X_1,X_2,\dots]$.
+\end{enumerate}}
+
+\itemB Let $R$ be a ring, and $M$ be an $R$-module. The \textbf{Nagata idealization} of $M$ in $R$, denoted $R\ltimes M$, is the ring that
+\begin{itemize}
+\item as a set and an additive group is just $R\times M = \{ (r,m) \ | \ r\in R, m\in M\}$, and
+\item has multiplication $(r,m)(s,n) = (rs, rn+sm)$.
+\end{itemize}
+Convince yourself that $R\ltimes M$ is an $R$-algebra. Show that $R\subseteq R\ltimes M$ is module-finite if and only if $M$ is a finitely generated $R$-module.
+
+
+
+
+\end{enumerate}
+
+\end{document}
