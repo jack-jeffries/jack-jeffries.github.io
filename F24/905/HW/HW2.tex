@@ -1,0 +1,131 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=0.65in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals,hyperref}
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+\newcommand\itemA{\stepcounter{enumi}\item[{\bf{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\bf{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\bf{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+\DeclareMathOperator{\ord}{ord}
+\renewcommand{\ceq}{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{1}
+	
+	\thispagestyle{empty}
+	
+	\section*{Assignment \#2: Due Friday, September 27 at 7pm}
+	
+	This problem set is to be turned in on Canvas. You may reference any result or problem from our worksheets, unless it is the fact to be proven! You are encouraged to work with others, but you should understand everything you write. Please consult the class website for acceptable/unacceptable resources for the problem sets. You should use the techniques from this class and precursor classes to solve these problems, but not Commutative Algebra II or Homological Algebra. 
+	
+	\
+	
+	
+	
+	
+\begin{enumerate}
+
+\item Let $K$ be a field and $R=K[X_1,\dots,X_n]$ be a polynomial ring. Let $G$ be a group. Suppose that $G$ acts on $R$ by $K$-algebra automorphisms; i.e., for each $g\in G$, the map $r\mapsto g\cdot r$ is a $K$-algebra automorphism. The \textbf{ring of invariants} of the action of $g$ on $R$ is 
+\[ R^G := \{ r\in R \ | \ \text{for all} \ g\in G, \ g\cdot r=r\}.\]
+\begin{enumerate}
+\item Verify that $R^G$ is a $K$-subalgebra of $R$.
+\item Suppose that $K=\C$, and $G=\Z/2\Z$ with nonzero element $g$ acts on $R=\C[X,Y]$ by $\C$-algebra automorphisms such that $g \cdot X= -Y$ and $g \cdot Y= -X$. Find a $\C$-basis for the collection of elements of $R^G$ whose top total degree\footnote{i.e., the elements of $R^G$ of the form $a+bX+cY+dX^2+eXY+fY^2$ with $a,\dots,f\in \C$} is at most $2$.
+\end{enumerate}
+
+\
+
+
+\item Let $K$ be a field and $S=K[X,Y]$ be a polynomial ring. Consider the subalgebras\\ ${A=K[X^3,Y^3]}$, $B=K[X^2Y, XY^2]$, $C=K[X^3,X^2Y,XY^2,Y^3]$ of $S$.
+\begin{enumerate}
+\item Over which of $A,B,C$ is $S$ a module-finite extension? When it is, find a finite generating~set.
+\item Find an equation of integral dependence for the element $X-Y^2\in S$ over $C$.
+\end{enumerate}
+
+\
+
+
+\item Let $K$ be a field, and $X,Y$ be indeterminates. Let $R=K[X^2,XY,Y^2] \subseteq K[X,Y]$. Prove that $R$ is a normal domain that is not a UFD.
+
+\
+
+
+\item Let $A$ be a ring and $X$ be an indeterminate.  
+\begin{enumerate}
+\item Show that\footnote{Hint: If $f\in R\smallsetminus 0$, consider $K[f] \subseteq R \subseteq K[X]$.}, if $A=K$ is a field, any ring $R$ such that $K\subseteq R \subseteq K[X]$ is algebra-finite over~$K$.
+\item If $A$ is an arbitrary ring, must any ring $R$ such that $A\subseteq R \subseteq A[X]$ be algebra-finite over $A$?
+\end{enumerate}
+
+\
+
+
+
+
+
+\item Prove\footnote{Hint 1: Show that if $R$ is not Noetherian, then the collection of ideals that are not finitely generated has a maximal element (but not necessarily a maximal ideal). Hint 2: You might find it useful to show that for a ring $R$, ideal $I$, and $r\in R$, if $I:r= (g_1,\dots,g_b)$ and $I+(r) = (f_1,\dots, f_a)$ with $f_i = h_i + k_i$ with $h_i\in I$ and $k_i\in (r)$, then $I=(h_1,\dots,h_a, rg_1,\dots,rg_b)$.} the following Theorem of Cohen: If every \emph{prime} ideal of $R$ is finitely generated, then $R$ is Noetherian.
+
+
+\
+
+\end{enumerate}
+
+
+\
+
+
+The remaining problems are to be solved with Macaulay2. Copy or screenshot the inputs and outputs (e.g., from the right-hand pane on the web interface) you used to solved these problems.
+
+\
+
+\begin{enumerate}\setcounter{enumi}{5}
+
+
+\item  Read the discussion of modules in Macaulay2 from \S1.1 of Grifo's Lecture Notes. Then let \\ $\displaystyle{R=\frac{\Q[U,V, W , X , Y , Z]}{(UY-VX,UZ-WX,VZ-WY)}}$ and find presentation matrices of the following:
+\begin{itemize}
+\item the ideal $(U,V,W)$,
+\item the submodule of $R^2$ generated by $\begin{bmatrix} U \\ X \end{bmatrix}$, $\begin{bmatrix} V \\ Y \end{bmatrix}$, and $\begin{bmatrix} W \\ Z \end{bmatrix}$.
+\item the submodule of $R^2$ generated by $\begin{bmatrix} U +V \\ W+X \end{bmatrix}$, $\begin{bmatrix} V+W \\ X+Y \end{bmatrix}$, and $\begin{bmatrix} W+X \\ Y+Z \end{bmatrix}$.
+\end{itemize}
+\end{enumerate}
+
+
+\end{document}
