@@ -1,0 +1,198 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals,bbm}
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\ord}{\mathrm{ord}}
+\newcommand{\1}{\mathbbm{1}}
+
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+\usepackage[hang,flushmargin]{footmisc}
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{\S2.9: Noetherian Rings}	
+
+\begin{framed}
+
+\noindent \textsc{Definition:} A ring $R$ is \textbf{Noetherian} if every ascending chain of ideals $I_1 \subseteq I_2 \subseteq I_3 \subseteq \cdots$ eventually stabilizes: i.e., there is some $N$ such that $I_n=I_N$ for all $n\geq N$.
+
+\
+
+\noindent \textsc{Hilbert Basis Theorem:} If $R$ is a Noetherian ring, then the polynomial ring $R[X]$ and power series ring $R\llbracket X \rrbracket$ are also Noetherian.
+
+\
+
+\noindent We will return to the proof of Hilbert Basis Theorem after discussing Noetherian modules next time.
+
+
+\
+
+\noindent \textsc{Corollary:} Every finitely generated algebra over a field is Noetherian.
+
+
+ \end{framed}
+ 
+
+ 
+\begin{enumerate}
+\itemA Equivalences for Noetherianity.
+\begin{enumerate}
+\itema Show\footnote{For the backward direction, consider $\bigcup_{n\in \N} I_n$} that $R$ is Noetherian if and only if every ideal is finitely generated.
+\itema Show\footnote{Hint: For the forward direction, show the contrapositive.} that $R$ is Noetherian if and only if every nonempty collection of ideals has a maximal\footnote{This means that if $\mathcal{S}$ is our collection of ideals, there is some $I\in \mathcal{S}$ such that no $J\in \mathcal{S}$ properly contains $I$. It does not mean that there is a maximal ideal in $\mathcal{S}$.} element.
+\end{enumerate}
+
+
+\solution{
+\begin{enumerate}
+\itema $(\Leftarrow)$ Suppose that every nonempty collection of ideals has a maximal element. Then a chain of ideals $I_1 \subseteq I_2 \subseteq I_3 \subseteq \cdots$ is, in particular, a nonempty collection of ideals, hence has a maximal element, say $I_n$. Then for $n\geq n$, $I_N \subseteq I_n$ and maximality of $I_N$ imply $I_N = I_n$.
+
+$(\Rightarrow)$ Suppose that there is a nonempty collection of ideals without a maximal element, say $\mathcal{S}$. Let $I_1$ be any element of $\mathcal{S}$. Then, by definition, there is some $I_2$ that properly contains $I_1$, and so on, yielding a chain that does not stabilize.
+
+\itema $(\Leftarrow)$ Suppose that every ideal is finitely generated, and take a chain $I_1 \subseteq I_2 \subseteq \cdots$. Consider $I= \bigcup_n I_n$. This is an ideal (it was important that we had a chain, not an arbitrary collection of ideals for this step), and by hypothesis we have $I=(f_1,\dots,f_m)$. For each $i$, there is some $n_i$ such that $f_i \in I_{n_i}$. Let $N=\max\{n_i\}$. Then $I = (f_1,\dots, f_m) \subseteq I_N \subseteq I$, so equality holds, and the chain stabilizes at $N$.
+
+
+$(\Rightarrow)$ Suppose that there is an ideal $I$ that is not finitely generated. Then we construct an infinite chain as follows: let $f_1\in I \smallsetminus 0$ ($0$ is finitely generated so $I\neq 0$), and set $I_1 = (f_1)$, and for each $n$ take $f_{n+1} \in I \  \smallsetminus I_n= (f_1,\dots, f_n)$, ($I_n$ is finitely generated so $I\neq I_n$).
+\end{enumerate}
+
+}
+
+\itemA Some Noetherian rings:
+\begin{enumerate}
+\itema Show that fields and PIDs are Noetherian.
+\itema Show that if $R$ is Noetherian and $I\subseteq R$, then $R/I$ is Noetherian.
+\itema Is\footnote{Hint: Every domain has a fraction field, even the domain from (4a).} every subring of a Noetherian ring Noetherian?
+
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itema Every element of a field is generated by no elements; every element of a PID is generated by one element.
+\itema The ideals of $R/I$ are in containment-preserving bijection with ideals of $R$ containing $I$. A chain of ideals in $R$ containing $I$ must stabilize, so the corresponding chain in $R/I$ must stabilize as well.
+\itema No: $K[X_1,X_2,\dots]$ is not Noetherian, but it is a subring of its fraction field $K(X_1,X_2,\dots)$, which is a field, hence Noetherian.
+\end{enumerate}
+}
+
+\itemA Use the Hilbert Basis Theorem to deduce the Corollary.
+
+
+\solution{
+From the Hilbert Basis Theorem and induction, if $R$ is Noetherian, then $R[X_1,\dots,X_n]$ is as well. In particular, if $K$ is a field, then $K[X_1,\dots,X_n]$ is too. Since a finitely generated $K$-algebra is a quotient of some $K[X_1,\dots,X_n]$, then any such ring is Noetherian as well.
+}
+
+\itemA Some nonNoetherian rings:
+\begin{enumerate}
+\itema Let $K$ be a field. Show that $K[X_1,X_2,\dots]$ is not Noetherian.
+\itemb Let $K$ be a field. Show that $K[X,XY,XY^2,\dots]$ is not Noetherian.
+\itemb Show that $\mathcal{C}([0,1],\R)$ is not Noetherian.
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itema The ideal $(X_1,X_2,\dots)$ is not finitely generated.
+\itemb The ideal $(X,XY,\dots)$ is not finitely generated.
+\itemb The ideal $\sqrt{(x)}=\m_0$ is not finitely generated.
+\end{enumerate}
+
+}
+
+
+\itemB Let $R$ be a Noetherian ring. Show that for every ideal $I$, there is some $n$ such that $\sqrt{I}^n \subseteq I$. In particular, there is some $n$ such that for every nilpotent element $z$, $z^n=0$.
+
+\solution{
+Let $\sqrt{I}=(f_1,\dots,f_m)$. For each $i$, there is some $n_i$ such that $f_i^{n_i} \in I$. Then for $n\geq n_1+ \cdots + n_m - m +1$, any generator $f_1^{a_1}\cdots f_m^{a_m}$ with $\sum a_i = n$ must have $a_j \geq n_j$ for some $j$, and hence $f_1^{a_1}\cdots f_m^{a_m}\in I$.
+
+For the particular case, we consider $\sqrt{0}$.
+}
+
+
+\itemB Let $R$ be Noetherian. Show that every element of $R$ admits a decomposition into irreducibles.
+
+\solution{ We argue the contrapositive.
+Suppose that $r\in R$ does not admit a decomposition into irreducibles. Then in particular, $r$ is reducible, so $r=r_1 r'_1$, with $r'_1$ not a unit, so $(r) \subsetneqq (r_1)$. Likewise, $r_1$ is reducible, so $r_1=r_2 r'_2$, with $r'_2$ not a unit, so  $(r_1) \subsetneqq (r_2)$. We can continue like this forever to obtain an infinite ascending chain of \emph{principal} ideals even.
+}
+
+
+\itemB Prove the principle of \textbf{Noetherian induction}: Let $\mathcal{P}$ be a property of a ring. Suppose that ``For every nonzero ideal $I$, $\mathcal{P}$ is true for $R/I$  implies that $\mathcal{P}$ is true for $R$''. Then $\mathcal{P}$ is true for every Noetherian ring.
+
+\solution{
+
+}
+
+\itemB 
+\begin{enumerate}
+\itemb Suppose that every maximal ideal of $R$ is finitely generated. Must $R$ be Noetherian?
+\itemb Suppose that every ascending chain of prime ideals stabilizes. Must $R$ be Noetherian?
+\itemb Suppose that every prime ideal of $R$ is finitely generated. Must $R$ be Noetherian?
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itemb No.
+\itemb No.
+\itemb Yes.
+\end{enumerate}
+}
+
+\end{enumerate}
+
+
+\vfill
+
+
+
+
+
+\end{document}

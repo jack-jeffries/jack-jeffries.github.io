@@ -1,0 +1,185 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=0.575in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals,bbm}
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\ord}{\mathrm{ord}}
+\newcommand{\1}{\mathbbm{1}}
+
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+\usepackage[hang,flushmargin]{footmisc}
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{\S2.10: Noetherian Modules}	
+
+\begin{framed}
+
+\noindent \textsc{Definition:} A module is \textbf{Noetherian} if every ascending chain of submodules $M_1 \subseteq M_2 \subseteq M_3 \subseteq \cdots$ eventually stabilizes: i.e., there is some $N$ such that $M_n=M_N$ for all $n\geq N$.
+
+\
+
+\noindent \textsc{Theorem:} If $R$ is a Noetherian ring, then an $R$-module $M$ is Noetherian if and only $M$ is finitely generated.
+
+\
+
+\noindent \textsc{Corollary:} If $R$ is a Noetherian ring, then a submodule of a finitely generated $R$-module is finitely generated.
+
+
+\
+
+\noindent \textsc{Lemma:} Let $M$ be an $R$-module and $N\subseteq M$ a submodule. Let $L,L'$ be two more submodules of $M$. Then $L=L'$ if and only if $L\cap N= L'\cap N$ and $\frac{L+N}{N}=\frac{L'+N}{N}$.
+
+ \end{framed}
+ 
+
+ 
+\begin{enumerate}
+\itemA Equivalences for Noetherianity.
+\begin{enumerate}
+\itema Explain why $M$ is Noetherian if and only if every submodule of $M$ is finitely generated.
+
+\itema Explain why $M$ is Noetherian if and only if every nonempty collection of submodules has a maximal element.
+\end{enumerate}
+
+
+\solution{
+\begin{enumerate}
+\itema Analogous to what we did with ideals.
+\itema Analogous to what we did with ideals.
+\end{enumerate}
+}
+
+\itemA Submodules and quotient modules: Let $N \subseteq M$.
+\begin{enumerate}
+\itema Show that if $M$ is a Noetherian $R$-module, then $N$ is a Noetherian $R$-module.
+\itema Show that if $M$ is a Noetherian $R$-module, then $M/N$ is a Noetherian $R$-module.
+\itema Use the Lemma above to show that if $N$ and $M/N$ are Noetherian $R$-modules, then $M$ is a Noetherian $R$-module.
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itema A chain of submodules of $N$ is a chain of submodules of $M$, so by hypothesis must stabilize.
+\itema The submodules of $M/N$ are in containment-preserving bijection with the submodules of $M$ that contain $N$, so a chain of submodules of $M/N$ must stabilize.
+\itema Suppose we have a chain of submodules $M_i$ of $M$. By intersecting with $N$, we get a chain of submodules of $M_i \cap N$ of $N$, which by hypothesis, must stabilize at some $n=a$. By taking images in $M/N$, we get a chain of submodules  $\frac{M_i+N}{N}$ of $M/N$ that must stabilize at some $n=b$. Then for $n\geq \max\{a,b\}$ by the Lemma, we must have that the chain $M_i$ stabilizes.
+\end{enumerate}
+}
+
+
+\itemA Proof of Theorem: Let $R$ be a Noetherian ring.
+\begin{enumerate}
+\itema Explain why $R$ is a Noetherian $R$-module.
+\itema Show that $R^n$ is a Noetherian $R$-module for every $n$.
+
+\itema Deduce the Theorem above.
+\itema Deduce the Corollary above.
+
+\end{enumerate}
+
+
+\solution{
+\begin{enumerate}
+\itema The submodules of $R$ are just the ideals of $R$.
+\itema There is a copy of $R^{n-1}$ in $R^n$ (where the last coordinate is zero) with quotient $R^1$, so it follows by induction on $n$.
+\itema If $M$ is Noetherian, then every submodule of $M$ including $M$ itself is finitely generated. Conversely, if $M$ is finitely generated, then $M$ is a quotient of $R^n$ for some $n$, so it follows from (3b) and (2b). 
+\itema Follows from (3c) and (2a).
+\end{enumerate}
+
+}
+
+\itemA Proof of Hilbert Basis Theorem for $R[X]$: Let $R$ be a Noetherian ring.
+\begin{enumerate}
+\itema Let $I$ be an ideal of $R[X]$. Given a nonzero element $f\in R[X]$, set $\mathrm{LT}(f)$ to be the leading coefficient\footnote{That is, if $f=\sum_i a_i X^i$ and $k=\max\{ i \ | \ a_i\neq 0\}$, then $\mathrm{LT}(f)=a_k$.} of $f$ and $\mathrm{LT}(0)=0$, and let $\mathrm{LT}(I)= \{ \mathrm{LT}(f) \ | \ f\in I \}$. Is $\mathrm{LT}(I)$ an ideal of $R$?
+\itema Let $f_1,\dots,f_n\in R[X]$ be such that $\mathrm{LT}(f_1), \dots, \mathrm{LT}(f_n)$ generate $\mathrm{LT}(I)$. Let $N$ be the maximum of the top degrees of $f_i$. Show that every element of $I$ can be written as $\sum_i r_i f_i + g$ with $r_i, g\in R[X]$ and the top degree of $g\in I$ is less than $N$.
+\itema Write $R[X]_{<N}$ for the $R$-submodule of $R[X]$ consisting of polynomials with top degree $<N$. Show that $I\cap R[X]_{<N}$ is a finitely generated $R$-module. 
+\itema Complete the proof of the Theorem.
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itema Yes; we just check the definition.
+\itema We proceed by induction on top degree of $f\in I$. For $f$ with top degree less than $N$, we just take $g=f$ and $r_i=0$. For $f$ with top degree $t\geq N$, write $f= a X^t + \text{lower degree terms}$, and $a= \sum_i a_i \mathrm{LT}(f_i)$. Then $\sum_i a_i X^{t-n_i} f_i = a X^t + \text{lower degree terms}$, so $f' = f- \sum_i a_i X^{t-n_i} f_i \in I$ is of lower degree. We can then write $f'$ in the desired form by induction, and then the original $f$ as well.
+\itema $I\cap R[X]_{<N}$ is an $R$-submodule of $R[X]_{<N}$, which is generated by $1,X,\dots,X^{N-1}$, whence finitely generated. Since $R$ is Noetherian, this submodule is also Noetherian.
+\itema Fix an $R$-module generating set $g_1,\dots,g_s$ for $I\cap R[X]_{<N}$. We claim that $I=(f_1,\dots,f_n, g_1,\dots,g_s)$. By construction we have $\supseteq$. Then, given $f\in I$, we can write $f=\sum_i r_i f_i + g$ and $g=\sum_j a_j g_j$ with $a_j\in R$, so $f\in (f_1,\dots,f_n, g_1,\dots,g_s)$. Thus, $I$ is finitely generated.
+\end{enumerate}
+
+}
+
+
+\itemB Proof of Hilbert Basis Theorem for $R\llbracket X\rrbracket$: How can you modify the Proof of Hilbert Basis Theorem for $R[X]$ to work in the power series case? Make it happen!
+
+\solution{We use lowest degree terms instead. Define $\mathrm{LT}(f)$ to be the bottom coefficient of $f$. Proceeding similarly, we can show that if $f_1,\dots,f_n\in R\llbracket X\rrbracket$ are such that $\mathrm{LT}(f_1), \dots, \mathrm{LT}(f_n)$ generate $\mathrm{LT}(I)$, then and $f\in I$ can be written as $\sum_i r_i f_i + g$ with $g$ a \emph{polynomial} in $X$ of top degree less than $N$, and continue as in the polynomial case.
+}
+
+
+
+\itemB Prove the Lemma.
+
+\solution{}
+
+\itemB Noetherianity and module-finite inclusions: Let $R\subseteq S$ be module-finite.
+\begin{enumerate}
+\itemb Without using the Hilbert Basis Theorem, show that is $R$ is Noetherian, then $S$ is Noetherian.
+\itemc \textsc{Eakin-Nagata Theorem:} Show that if $S$ is Noetherian, then $R$ is Noetherian.
+\end{enumerate}
+\end{enumerate}
+
+
+\vfill
+
+
+
+
+
+\end{document}
