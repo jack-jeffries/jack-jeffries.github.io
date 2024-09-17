@@ -1785,17 +1785,31 @@ converges to $\frac25$.
 \begin{framed}
 \noindent \textsc{Definition:} A sequence $\{a_n\}_{n=1}^\infty$ {\bf converges} to a real number $L$ provided for every real number $\e > 0$, there is a real number $N$ such that ${|a_n - L| < \e}$ for all natural numbers $n$ such that $n > N$.
 \end{framed}
+
+
 \begin{enumerate}
-\item \textsc{The $\e$ vs $N$ game:}
+\item Consider the sequence $\{a_n\}_{n=1}^\infty = \{2- \frac{50}{n}\}_{n=1}^{\infty}$.
 \begin{enumerate}
-\item Player 0 starts by graphing a sequence $\{a_n\}_{n=1}^\infty$, and specifies $y$-value $L$ that  they think makes $\lim_{n\to \infty} a_n = L$ \textit{true}. [You can't graph all the values, but make a large graph with a generous number of values.]
-\item Player 1 choses an $\e$. This is how close we would like our sequence to be to $L$. Thus, $\e$ goes up and down from $L$ (corresponding to $|a_n-L|<\e$). Draw horizontal dotted lines with $y$-values $L-\e$ and $L+\e$. [The $\e$ should be large enough for people to see and have room to work in the picture.]
-\item Player 2 must find an $N$ such that all of the values of the sequence to the right of $N$ are in $(L-\e,L+\e)$.
-Draw a vertical line for $x=N$.
-[Everyone in the team can assist player 2!]
-\item Repeat with the same graph, players 1\& 2 switching roles (and a new $\e$).
-\item Now do a couple of rounds with a sequence $\{a_n\}_{n=1}^\infty$ and an $L$ that you think makes $\lim_{n\to \infty} a_n = L$ \textit{false}.
+\item Write out the first seven terms of this sequence: use a calculator to write the decimal expansions for the numbers.
+\item Can you find a point $N$ such that every term in the sequence after $N$ (that is, every $a_n$ for $n>N$) is within $20$ of $2$ (that is, $|a_n-2|<20$)?
+\item Can you find a point $N$ such that every term in the sequence after $N$ (that is, every $a_n$ for $n>N$) is within $10$ of $2$ (that is, $|a_n-2|<10$)?
+\item Can you find a point $N$ such that every term in the sequence after $N$  (that is, every $a_n$ for $n>N$) is within $1$ of $2$ (that is, $|a_n-2|<1$)?
+\item If $\varepsilon$ is a positive number, can you find a point $N$ such that every term in the sequence after $N$  (that is, every $a_n$ for $n>N$) is within $\varepsilon$ of $2$ (that is, $|a_n-2|<\varepsilon$)?
+\item Write a proof that the sequence  $\{a_n\}_{n=1}^\infty = \{2- \frac{50}{n}\}_{n=1}^{\infty}$ converges to $2$.
 \end{enumerate}
+
+\begin{framed}
+\begin{enumerate}
+\item $-48,-23,-14.666,-10.5, -8, -6.333, -5.142$
+\item after the second term, this is true, so $N=2$ works
+\item after the fourth term, this is true, so $N=4$ works
+\item Now we have to do a computation: $|a_n-2| = \frac{50}{n} < 1$ is true when $n>50$. So $N=50$ works.
+\item $|a_n-2| =  \frac{50}{n} < \varepsilon$ is true when $n> \frac{50}{\varepsilon}$ so $N=\frac{50}{\varepsilon}$ works.
+\item Let $\varepsilon>0$. Take $N=\frac{50}{\varepsilon}$. Let $n>N$ be a natural number. Then $n>N$ implies 
+\[ |a_n - 2| = \frac{50}{n} < \frac{50}{N} = \varepsilon.\]
+This proves that $\{a_n\}_{n=1}^\infty$ converges to $1$.
+\end{enumerate}
+\end{framed}
 
 \
 
@@ -1821,11 +1835,12 @@ Take $\e = 1/2$. We claim that there is no $N$ such that for all $n>N$ we have $
 
 \end{enumerate}
 
+
 \newpage
 
 \begin{comment}
 
-\Sept{23}{Mo}{2.1}
+\Sept{23}{\Mo}{2.1}
 
 \begin{defn} We say that a sequence $\{ a_n \}_{n=1}^\infty$ is \textbf{convergent} if there is a number $L$  such that $\{ a_n \}_{n=1}^\infty$ converges to $L$, and \textbf{divergent} otherwise.
 \end{defn}
@@ -1862,8 +1877,6 @@ and thus $-\frac32 < L < -\frac12$. But it cannot be that both $L > \frac12$ and
 We conclude that no such $L$ exists; that is, this sequence is divergent.
 \end{proof}
 \end{ex}
-
-%\Sept{17}
 
 
 \begin{prop} If a sequence converges, then there is a unique number to which it converges.
@@ -1921,18 +1934,18 @@ Here is some terminology we will need:
 \begin{enumerate}
 
 \item 
-We say $\{a_n\}_{n=1}^\infty$ is {\em bounded above}\index{bounded above} if there  exists at least one real number $M$ such that $a_n \leq M$ for all $n   \in
+We say $\{a_n\}_{n=1}^\infty$ is \textbf{bounded above}\index{bounded above} if there  exists at least one real number $M$ such that $a_n \leq M$ for all $n   \in
 \N$; 
-we say $\{a_n\}_{n=1}^\infty$ is {\em bounded below}\index{bounded below} if there  exists at least one real number $m$ such that $a_n \geq m$ for all $n   \in
+we say $\{a_n\}_{n=1}^\infty$ is \textbf{bounded below}\index{bounded below} if there  exists at least one real number $m$ such that $a_n \geq m$ for all $n   \in
 \N$; and we say 
-$\{a_n\}_{n=1}^\infty$ is {\em bounded}\index{bounded} if it is both bounded above and bounded below.
+$\{a_n\}_{n=1}^\infty$ is  \textbf{bounded}\index{bounded} if it is both bounded above and bounded below.
 
-\item We say $\{a_n\}_{n=1}^\infty$ is {\em increasing}\index{increasing} if for all $n \in \N$, $a_n \leq a_{n+1}$;
-we say $\{a_n\}_{n=1}^\infty$ is {\em decreasing}\index{decreasing} if for all $n \in \N$, $a_n \geq a_{n+1}$; and we say
-$\{a_n\}_{n=1}^\infty$ is {\em monotone}\index{monotone} if it is either decreasing or increasing.
+\item We say $\{a_n\}_{n=1}^\infty$ is  \textbf{increasing}\index{increasing} if for all $n \in \N$, $a_n \leq a_{n+1}$;
+we say $\{a_n\}_{n=1}^\infty$ is  \textbf{decreasing}\index{decreasing} if for all $n \in \N$, $a_n \geq a_{n+1}$; and we say
+$\{a_n\}_{n=1}^\infty$ is  \textbf{monotone}\index{monotone} if it is either decreasing or increasing.
 
-\item We say $\{a_n\}_{n=1}^\infty$ is {\em strictly increasing}\index{strictly increasing} if for all $n \in \N$, $a_n < a_{n+1}$. I leave the definition of
-{\em strictly decreasing}\index{strictly decreasing} and {\em strictly monotone}\index{strictly monotone} to your imaginations.
+\item We say $\{a_n\}_{n=1}^\infty$ is  \textbf{strictly increasing}\index{strictly increasing} if for all $n \in \N$, $a_n < a_{n+1}$. I leave the definition of
+ \textbf{strictly decreasing}\index{strictly decreasing} and \textbf{strictly monotone}\index{strictly monotone} to your imaginations.
 \end{enumerate}
 \end{defn}
 
@@ -1979,7 +1992,9 @@ Do you see the difference?
 	A similar argument shows that $a_n \geq p$ for all $n \in \N$.
 \end{proof}
 
-\Sept{22}
+
+
+\Sept{25}{\We}{2.1}
 
 \begin{enumerate}
 
@@ -2074,7 +2089,7 @@ Take $\{ a_n\}_{n=1}^\infty = \{ (-1)^n\}_{n=1}^\infty$ and $\{ b_n \}_{n=1}^\in
 \item Prove part~(3) of Theorem 10.2.
 \end{enumerate}
 
-
+\begin{comment}
 
 \Sept{27}
 
