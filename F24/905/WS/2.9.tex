@@ -97,16 +97,15 @@
 
 \solution{
 \begin{enumerate}
-\itema $(\Leftarrow)$ Suppose that every nonempty collection of ideals has a maximal element. Then a chain of ideals $I_1 \subseteq I_2 \subseteq I_3 \subseteq \cdots$ is, in particular, a nonempty collection of ideals, hence has a maximal element, say $I_n$. Then for $n\geq n$, $I_N \subseteq I_n$ and maximality of $I_N$ imply $I_N = I_n$.
-
-$(\Rightarrow)$ Suppose that there is a nonempty collection of ideals without a maximal element, say $\mathcal{S}$. Let $I_1$ be any element of $\mathcal{S}$. Then, by definition, there is some $I_2$ that properly contains $I_1$, and so on, yielding a chain that does not stabilize.
-
 \itema $(\Leftarrow)$ Suppose that every ideal is finitely generated, and take a chain $I_1 \subseteq I_2 \subseteq \cdots$. Consider $I= \bigcup_n I_n$. This is an ideal (it was important that we had a chain, not an arbitrary collection of ideals for this step), and by hypothesis we have $I=(f_1,\dots,f_m)$. For each $i$, there is some $n_i$ such that $f_i \in I_{n_i}$. Let $N=\max\{n_i\}$. Then $I = (f_1,\dots, f_m) \subseteq I_N \subseteq I$, so equality holds, and the chain stabilizes at $N$.
 
 
 $(\Rightarrow)$ Suppose that there is an ideal $I$ that is not finitely generated. Then we construct an infinite chain as follows: let $f_1\in I \smallsetminus 0$ ($0$ is finitely generated so $I\neq 0$), and set $I_1 = (f_1)$, and for each $n$ take $f_{n+1} \in I \  \smallsetminus I_n= (f_1,\dots, f_n)$, ($I_n$ is finitely generated so $I\neq I_n$).
-\end{enumerate}
 
+\itema $(\Leftarrow)$ Suppose that every nonempty collection of ideals has a maximal element. Then a chain of ideals $I_1 \subseteq I_2 \subseteq I_3 \subseteq \cdots$ is, in particular, a nonempty collection of ideals, hence has a maximal element, say $I_n$. Then for $n\geq n$, $I_N \subseteq I_n$ and maximality of $I_N$ imply $I_N = I_n$.
+
+$(\Rightarrow)$ Suppose that there is a nonempty collection of ideals without a maximal element, say $\mathcal{S}$. Let $I_1$ be any element of $\mathcal{S}$. Then, by definition, there is some $I_2$ that properly contains $I_1$, and so on, yielding a chain that does not stabilize.
+\end{enumerate}
 }
 
 \itemA Some Noetherian rings:
@@ -180,13 +179,17 @@ Suppose that $r\in R$ does not admit a decomposition into irreducibles. Then in 
 
 \solution{
 \begin{enumerate}
-\itemb No. Here is one possibility: let $K$ be a field, and $R$ be the subring of $K(X,Y)$ consisting of elements that can be written as $f/g$ with $f=aX^n+bY$ and $g=uX^n+cY$ for some $n\geq 0$, $a,b,c\in K[X,Y]$, and $u\in K[X,Y]$ with nonzero constant term. I leave it to you to show that
+\itemb No. One counterexample is $\mathcal{C}^\infty([0,1],\R)$. Prove it!
+
+Here is another more algebraic example: Let $K$ be a field, and $R$ be the subring of $K(X,Y)$ consisting of elements that can be written as $f/g$ with $f=aX^n+bY$ and $g=uX^n+cY$ for some $n\geq 0$, $a,b,c\in K[X,Y]$, and $u\in K[X,Y]$ with nonzero constant term. I leave it to you to show that
 \begin{itemize}
 \item $R$ is indeed a subring of $K(X,Y)$,
 \item the ideal $(X)$ is a maximal ideal,
 \item any $r\in R\smallsetminus (X)$ is a unit, so $(X)$ is the unique maximal ideal, and
 \item the ideal $(Y,Y/X, Y/X^2, \dots)$ is not finitely generated.
 \end{itemize}
+This example is not totally coming from nowhere; see if you can find the train of thought behind it.
+
 \itemb No.
 \itemb Yes.
 \end{enumerate}
