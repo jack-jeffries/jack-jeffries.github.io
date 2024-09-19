@@ -71,24 +71,39 @@
 
 \
 
-\item Something Nullstellensatz
-
-
-\
-
-\item Something graded
-
-\
-
-
 \item Suppose that $R$ is a finitely-generated $\Z$-algebra, and that $\m$ is a maximal ideal of $R$. Show that $R/\m$ is a finite field.
 
 \
 
+\end{enumerate}
+
+\textsc{Definition:} Let $R$ be an Noetherian $\N$-graded ring, with $R_0=K$ a field. The \textbf{Hilbert function} of $R$ is the function $H_R(t) = \dim_{K}(R_i)$, where $\dim_K$ denotes vector space dimension.
+
+\
+
+\begin{enumerate}
+\setcounter{enumi}{2}
+
+
+\item Let $K=\C$, and $R=K[X,Y,Z]$. In this problem, we will show that the radical of the ideal
+\[ I= (X^5 - Y^4, X^7-Z^4, Y^7-Z^5) \quad \text{is} \quad J=(X^3-YZ, Y^3-X^2Z, Z^2-XY^2).\]
+\begin{enumerate}
+\item Show that $I\subseteq J$.
+\item Show\footnote{Warning: $a^4=b^4 \not\Rightarrow a=b$.} that $Z(I)=\{ (\lambda^4,\lambda^5,\lambda^7) \ | \ \lambda \in \C\}$, and use the Nullstellensatz to show that $J \subseteq \sqrt{I}$.
+\item Let $\phi: \C[X,Y,Z] \to \C[T]$ be the $K$-algebra homomorphism given by $\phi(X) = T^4$, $\phi(Y)=T^5$, and $\phi(Z)=T^7$. Show that $J\subseteq \ker(\phi)$.
+\item Give $\C[X,Y,Z]$ the weighted grading so that $\deg(X)=4, \deg(Y)=5, \deg(Z)=7$, so that $\phi$ is a graded $\C$-algebra homomorphism. 
+Let $R=\C[X,Y,Z]/J$ and $S=\C[T^4,T^5,T^7] = \mathrm{im}(\phi)$. Compute $H_S(t)$, show\footnote{Hint: Show that any element of $R$ is congruent modulo $J$ to some element of the form ${f(X) + g(X)Y + h(X) Z + k(X) Y^2}$. You could do this directly, or with a suitable application of Graded NAK.} that $H_R(t) \leq H_S(t)$ for all $t$, and deduce that $R\cong S$.
+\item Deduce the conclusion.
+\end{enumerate}
+
+\
+
+
+
 
 \item Let $U,\dots,Z$ be indeterminates over $\C$, and $\displaystyle R= \C \begin{bmatrix} U & V & W \\ X & Y & Z \end{bmatrix} \Big/ I$ where $I=I_2\left(\begin{bmatrix} U & V & W \\ X & Y & Z \end{bmatrix}\right)$. In this problem, we will show that $A=\C[u, v-x, w-y, z] \subseteq R$ is a Noether normalization, where $u,\dots,z$ denote the images of $U,\dots,Z$ in $R$.
 \begin{enumerate}
-\item Use Graded NAK\footnote{One could instead show that the generators of $R$ are integral over $A$, but we will try out the power of Graded NAK.} to $R$ as a graded $A$-module to show that $A\subseteq R$ is module-finite.
+\item Apply Graded NAK\footnote{One could instead show that the generators of $R$ are integral over $A$, but we will try out the power of Graded NAK.} to $R$ as a graded $A$-module to show that $A\subseteq R$ is module-finite.
 \item Show that for any $\alpha,\beta,\gamma,\zeta \in \C$, there is a rank one $2\times 3$ matrix $\begin{bmatrix}  a & b & c \\ d & e & f\end{bmatrix}$ with $a,\dots,f\in \C$ such that $a =\alpha$, $b-d = \beta$, $c-e= \gamma$, $f=\zeta$.
 \item Suppose that $F(u,v-x,w-y,z)$ is a $\C$-algebraic relation on $u,v-x,w-y,z$, so \\ ${F(U,V-X,W-Y,Z)\in I}$. Use the previous part to show that $F(\alpha,\beta,\gamma,\zeta)=0$ for all $\alpha,\beta,\gamma,\zeta \in \C$, and deduce\footnote{You can use without proof that any nonzero (multivariate) polynomial over an infinite field is a nonzero function.} that $u,v-x,w-y,z$ are algebraically independent.
 \end{enumerate}
