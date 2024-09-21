@@ -1,0 +1,211 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals,bbm}
+
+
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\ord}{\mathrm{ord}}
+\newcommand{\1}{\mathbbm{1}}
+
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+\usepackage[hang,flushmargin]{footmisc}
+
+
+\begin{document}
+\showsol{1}
+	
+	\thispagestyle{empty}
+	
+	\section*{\S3.11: Graded Rings}	
+
+\begin{framed}
+
+\noindent \textsc{Definition:} 
+\begin{enumerate}
+\item An \textbf{$\N$-grading} on a ring $R$ is 
+\begin{itemize}
+\item a decomposition of $R$ as additive groups $R= \bigoplus_{d\geq 0} R_d$
+\item such that $x\in R_d$ and $y\in R_e$ implies $xy\in R_{d+e}$. 
+\end{itemize}
+\item An \textbf{$\N$-graded ring} is a ring with an $\N$-grading.
+
+\item We say that an element $x\in R$ in an $\N$-graded ring $R$ is \textbf{homogeneous} of \textbf{degree} $d$ if $x\in R_d$.
+
+\item The \textbf{homogeneous decomposition} of an element $r\neq 0$ in an $\N$-graded ring is the sum
+\[ r = r_{d_1} + \cdots + r_{d_k} \quad \text{where $r_{d_i}\neq 0$ homogeneous of degree $d_i$ and $d_1<\cdots < d_k$}.\]
+The element $r_{d_i}$ is the \textbf{homogeneous component $r$ of degree $d_i$}.
+
+\item An ideal $I$ in an $\N$-graded ring is \textbf{homogeneous} if $r\in I$ implies every homogenous component of $r$ is in $I$.
+\item A homomorphism $\phi:R\to S$ between $\N$-graded rings is \textbf{graded} if $\phi(R_d) \subseteq S_d$ for all $d\in \N$.
+\end{enumerate}
+
+\
+
+\noindent \textsc{Definition:} For an abelian semigroup $(G,+)$, one defines \textbf{$G$-grading} as above with $G$ in place of $\N$ and $g\in G$ in place of $d\geq 0$. The other definitions above make sense in this context.
+
+\
+
+
+\noindent \textsc{Definition:} Let $K$ be a field, and $R=K[X_1,\dots,X_n]$ be a polynomial ring. Let $G$ be a group acting on $R$ so that for every $g\in G$,  $r\mapsto g\cdot r$ is a $K$-algebra homomorphism. The \textbf{ring of invariants} of $G$ is
+\[ R^G \ceq \{ r\in R \ | \ \text{for all} \ g\in G, \ g\cdot r = r \}.\]
+ \end{framed}
+
+
+
+ 
+\begin{enumerate}
+\itemA Basics with graded rings: Let $R$ be an $\N$-graded ring. 
+\begin{enumerate}
+\itema If $f\in R$ is homogeneous of degree $a$ and $g\in R$ is homogeneous of degree $b$, what about $f+g$ and $fg$?
+\itema Translate the definition of graded ring to explain why every nonzero element has a unique homogeneous decomposition.
+\itema Does every element in an $\N$-graded ring have a degree? What about ``top degree'' or ``bottom degree''?
+\itema What is the\footnote{Hint: This is a trick question, but specify exactly how.} degree of zero?
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itema $f+g$ is homogeneous if and only if $a=b$, in which case it has degree $a$; $fg$ is homogeneous of degree $a+b$.
+\itema The direct sum decomposition means that every element can be expressed in a unique way as a finite sum of elements from the components.
+\itema No; only homogeneous elements have a degree. Any nonzero element has a top degree and a bottom degree.
+\itema Zero is homogeneous of every degree, since each $R_n$ is an additive group.
+\end{enumerate}}
+
+
+
+
+\itemA The \textbf{standard grading} on a polynomial ring: Let $A$ be  a ring.
+\begin{enumerate}
+\itema Let $R=A[X]$. Discuss: the decomposition $R_d = A \cdot X^d$ gives an $\N$-grading on $R$.
+\itema Let $R=A[X_1,\dots,X_n]$. Discuss: the decomposition \[{R_d = \sum\limits_{d_1+\dots+d_n=d} A \cdot X_1^{d_1} \cdots X_m^{d_m}}\] gives an $\N$-grading on $R$. What is the homogeneous decomposition of ${f=X_1^3 + 2 X_1 X_2 - X_3^2 + 3}$?
+\itema Let $R=A\llbracket X\rrbracket$. Explain why the decomposition $R_n = A \cdot X^n$ \emph{does not} give an $\N$-grading on $R$.
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itema Agree.
+\itema Agree. $f_3 = X_1^3$, $f_2=2x_1 x_2 - x_3^2$, $f_0=3$.
+\itema An element must be a finite sum of homogeneous elements.
+\end{enumerate}}
+
+
+\itemA \textbf{Weighted gradings} on polynomial rings: Let $A$ be a ring, $R=A[X_1,\dots,X_n]$ and $a_1,\dots,a_m\in \N$.
+\begin{enumerate}
+\itema Discuss: ${R_n = \hspace{-4mm} \sum\limits_{d_1 a_1+\dots+d_m a_m=n} \hspace{-4mm} A \cdot X_1^{d_1} \cdots X_m^{d_m}}$ gives an $\N$-grading of $R$ where the degree of $X_i$~is~$a_i$.
+\itema Can you find $a_1, a_2, a_3$ such that $X_1^2 + X_2^3 + X_3^5$ is homogeneous? Of what degree?
+\end{enumerate}
+
+
+\solution{
+\begin{enumerate}
+\itema Yes. It is the truth.
+\itema $a_1=15, a_2=10, a_3=6$ makes the element degree $30$.
+\end{enumerate}}
+
+
+\itemA The \textbf{fine grading} on polynomial rings: Let $A$ be a ring and $R=A[X_1,\dots,X_n]$. Discuss why
+\[ R_d = A \cdot X^d \quad  \text{for}  \ d = (d_1,\dots,d_m) \in \N^n, \ \ \text{where} \  \ X^d\colonequals X_1^{d_1} \cdots X_m^{d_m}\]
+yields an $\N^m$-grading on $R$. What are the homogeneous elements?
+
+\solution{
+Yes, every polynomial is a sum of monomials with coefficients in a unique way, and the exponent vectors add when we multiply. The homogeneous elements are monomials with coefficients.
+}
+
+\itemB More basics with graded rings. Let $R$ be $\N$-graded.
+\begin{enumerate}
+\itemb Show\footnote{Hint: If not, write $e=e_0 + e_d + X$ where $e_0$ has degree zero and $e_d$ is the lowest nonzero positive degree component. Apply uniqueness of homogeneous decomposition to $e^2=e$ and show that $2e_0 e_d = e_0 e_d$\dots} that if $e\in R$ is idempotent, then $e$ is homogeneous of degree zero. In particular, $1$ is homogeneous of degree zero.
+\itemb Show that $R_0$ is a subring of $R$, and each $R_n$ is an $R_0$-module.
+
+\itemb Show that if $I$ is homogeneous, then $R/I$ is also $\N$-graded where $(R/I)_n$ consists of the classes of homogeneous elements of $R$ of degree $n$.
+\itemb Show that $I$ is homogeneous if and only if $I$ is generated by homogeneous elements.
+\itemb Suppose that $\phi: R\to S$ is a homomorphism of $K$-algebras, and that $R$ and $S$ are $\N$-graded with $K$ contained in $R_0$ and $S_0$. Show that $\phi$ is graded if $\phi$ preserves degrees for all of the elements in some homogeneous generating set of $R$.
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itemb Suppose otherwise; then we can write $e=e_0 + e_d + X$ with $e_0$ the degree zero component (a priori possibly zero), $e_d\neq 0$ the lowest positive degree component, and $X$ a sum of higher degree terms. Then $e^2=e$ yields $e_0^2 + 2 e_0 e_d + \text{higher degree terms} = e_0 + e_d + \text{higher degree terms}$, and equating terms of the same degree, $e_0^2 = e_0$ and $2 e_0 e_d = e_d$. Multiplying the latter by $e_0$ and using the first gives $2 e_0 e_d = e_0 e_d$, so $e_0 e_d=0$, so $e_d=0$. This is a contradiction, so we must have $e=e_0$ is homogeneous of degree zero.
+\itemb From the above, $1\in R_0$; we also know that $R_0$ is closed under $\pm$ and $\times$, so it is a subring. For $r\in R_0$ and $s\in R_n$, $rs\in R_n$, and all the other module axioms follows from the ring axioms in $R$.
+\itemb We need to show that $R/I$ has a unique expression as a sum of elements in distinct $(R/I)_n$ pieces. Let $\overline{r}\in R/I$, and write $r= \sum_i r_{d_i}$ as a sum of homogeneous components. Then $\overline{r} = \sum_i \overline{r_{d_i}}$ gives existence. For uniqueness, suppose that $\overline{0} = \sum_i \sum_i \overline{r_{d_i}}$ with $ {r_{d_i}} \in R_{d_i}$ and $d_i$ distinct. This just means that $\sum_i r_{d_i} \in I$, and by definition of homogeneous ideal, we must have $r_{d_i}\in I$, so $\overline{r_{d_i}}$=\overline{0}$. This is the required uniqueness statement.
+\itemb ($\Rightarrow$) Suppose that $I$ is homogeneous, and let $S$ be a generating set for $I$. We claim that the set of homogeneous components $S'$ of elements of $S$ is a generating set for $I$. Indeed, each such component is in $I$, so $(S') \subseteq I$ and since each generator is a linear combination of said components, we have $I = (S) \subseteq (S')$, so $(S') = I$. ($\Leftarrow$) Suppose that $I$ is generated by a set $S$ of homogeneous elements. Then given $f\in I$, we can write $f= \sum_i r_i s_i$ for some $s_i\in S$ of degree $d_i$. Write each $r_i$ as a sum of homogeneous elements $r_i = \sum_j r_{i,j}$ with $\deg(r_{i,j})=j$. Then $f= \sum_i r_i s_i = \sum_i \sum_j r_{i,j} s_i$. Then the homogeneous components of $f$ are $\sum_{i,j: j+d_i = t} r_{i,j} s_i$, which lie in $I$.
+\itemb Any homogeneous element can be written as a polynomial expression in the generators:
+$r= \sum_i k_i f_1^{d_1} \cdots f_t^{d_t}$. Each summand on the right hand side is homogeneous, so taking the homogeneous component of degree equal to that of $r$, we can assume that each term in the right hand side had degree equal to that of $r$.
+Then $\phi(r) = \phi \left( \sum_i  k_i f_1^{d_1} \cdots f_t^{d_t} \right) = \sum_i k_i \phi(f_1)^{d_1} \cdots \phi(f_t)^{d_t}$. But since $\deg(f_i) = \deg(\phi(f_i))$ the right hand side has the same degree as that on the previous formula, so $\deg(\phi(r))=\deg(r)$.
+\end{enumerate}}
+
+\itemB Semigroup rings: Let $S$ be a subsemigroup of $\N^n$ with operation $+$ and identity $(0,\dots,0)$. The \textbf{semigroup ring} of $S$ is
+\[ K[S] \ceq \sum_{\alpha\in S} K X^\alpha \subseteq R, \qquad \text{where} \ X^\alpha \ceq X_1^{\alpha_1} \cdots X_n^{\alpha_n}.\]
+\begin{enumerate}
+\itemb Show that $K[S]$ is a $K$-subalgebra that is a graded subring of $R$ in the fine grading.
+\itemb Let $S=\langle 4, 7, 9 \rangle \subseteq \N$. Draw a picture of $S$. What is $K[S]$?
+\itemb Find a semigroup $S\subseteq \N^2$ such that $K[S]$ is Noetherian, and another such that $K[S]$ is not Noetherian. Draw pictures of these semigroups.
+\itemb Show that every $K$-subalgebra that is a graded subring of $R$ in the fine grading is of the form $K[S]$ for some $S$.
+\end{enumerate}
+
+\solution{}
+
+\itemB Homogeneous elements: Let $R$ be an $\N$-graded ring.
+\begin{enumerate}
+\itemb Show that $R$ is a domain if and only if for all homogeneous elements $x,y$,  $xy=0$ implies $x=0$ or $y=0$.
+\itemb Show that the radical of a homogeneous ideal is homogeneous.
+\end{enumerate}
+
+\solution{}
+
+\itemB In the setting of the definition of ``ring of invariants'' suppose that each $g\in G$ acts as a graded homomorphism. Show that $R^G$ is an $\N$-graded $K$-subalgebra of $R$. 
+
+\end{enumerate}
+\vfill
+
+
+
+
+
+\end{document}
