@@ -1993,10 +1993,19 @@ $\{a_n\}_{n=1}^\infty$ is  \textbf{bounded}\index{bounded} if it is both bounded
 	A similar argument shows that $a_n \geq p$ for all $n \in \N$.
 \end{proof}
 
-\begin{comment}
+
 
 
 \Sept{25}{\We}{2.1}
+
+\begin{framed}
+\noindent \textsc{Definition 12.1:} Let $\{a_n\}_{n=1}^{\infty}$ be a sequence.
+\begin{enumerate}
+\item We say $\{a_n\}_{n=1}^\infty$ is  \textbf{increasing}\index{increasing} if for all $n \in \N$ we have $a_n \leq a_{n+1}$.
+\item We say $\{a_n\}_{n=1}^\infty$ is  \textbf{decreasing}\index{decreasing} if for all $n \in \N$, we have $a_n \geq a_{n+1}$.\item We say $\{a_n\}_{n=1}^\infty$ is  \textbf{monotone}\index{monotone} if it is either decreasing or increasing.
+\item We say $\{a_n\}_{n=1}^\infty$ is  \textbf{strictly increasing}\index{strictly increasing} if for all $n \in \N$, $a_n < a_{n+1}$.
+\end{enumerate}
+\end{framed}
 
 \begin{enumerate}
 
@@ -2017,11 +2026,41 @@ $\{a_n\}_{n=1}^\infty$ is  \textbf{bounded}\index{bounded} if it is both bounded
 \end{enumerate}
 \end{framed}
 
-\item Prove or disprove the converse to Proposition~9.5.
+
+\item Prove or disprove: Every increasing sequence is bounded above.
+
 \begin{framed}
-The sequence $\{(-1)^n\}_{n=1}^\infty$ is bounded but divergent, so the converse is false.
+False: the Fibonacci sequence is a counterexample, since we saw above that it is increasing but not bounded above.
+\end{framed}
+
+\item Prove or disprove: Every increasing sequence is bounded below.
+
+
+\begin{framed}
+True: it follows from the definition that $a_1$ is a lower bound.
+\end{framed}
+
+\item Prove or disprove: Every bounded sequence is convergent.
+\begin{framed}
+The sequence $\{(-1)^n\}_{n=1}^\infty$ is bounded but divergent, so this is false.
+\end{framed}
+
+\
+
+\item Suppose that $\{a_n\}_{n=1}^\infty$ is a sequence that is bounded above by $1000$ and below by $-1000$. Show that the sequence $\displaystyle \left\{\frac{a_n}{n}\right\}_{n=1}^\infty$ converges to $0$.
+
+Suggestion: First start the way we always do when showing a sequence converges. Then see if you can use the hypothesis that $\{a_n\}_{n=1}^\infty$ is bounded in a useful way.
+
+
+\begin{framed}
+Let $\e>0$ be arbitrary. Take $N=\frac{1000}{\e}$. Then, since $-1000<a_n<1000$, we have $|a_n|<1000$ and $\left|\frac{a_n}{n}\right|<\frac{1000}{n}$ for any $n\in \N$, so for any natural number $n>N$, we have
+\[ \left| \frac{a_n}{n} - 0 \right| < \frac{1000}{n} < \frac{1000}{N} = \e.\]
+This shows that $\displaystyle \left\{\frac{a_n}{n}\right\}_{n=1}^\infty$ converges to $0$.
 \end{framed}
 \end{enumerate}
+
+\begin{comment}
+
 
 
 \begin{ex}
