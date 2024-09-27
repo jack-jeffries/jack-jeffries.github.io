@@ -2056,20 +2056,22 @@ This shows that $\displaystyle \left\{\frac{a_n}{n}\right\}_{n=1}^\infty$ conver
 \end{framed}
 \end{enumerate}
 
-\begin{comment}
+\Sept{27}{\Fr}{2.2}
 
 
 
-\begin{ex}
+\begin{framed}
+\noindent  \textsc{Example 13.1:} 
 \begin{enumerate}
 \item A constant sequence $\{c\}_{n=1}^\infty$ converges to $c$.
 \item The sequence $\{\frac{1}{n}\}_{n=1}^\infty$ converges to $0$.
 \end{enumerate}
-\end{ex}
 
 
-\begin{thm}[Limits and algebra]\label{thm99}
-Let $\{a_n\}_{n=1}^\infty$ be a sequence that converges to $L$, and $\{b_n\}_{n=1}^\infty$ be a sequence that converges to $M$.
+\
+
+
+\noindent \textsc{Theorem 13.2 (Limits and Algebra):}\\ Let $\{a_n\}_{n=1}^\infty$ be a sequence that converges to $L$, and $\{b_n\}_{n=1}^\infty$ be a sequence that converges to $M$.
 \begin{enumerate}
 \item If $c$ is any real number, then $\{ c a_n\}_{n=1}^\infty$ converges to $cL$.
 \item The sequence $\{a_n + b_n\}_{n=1}^\infty$ converges to $L+M$.
@@ -2077,26 +2079,31 @@ Let $\{a_n\}_{n=1}^\infty$ be a sequence that converges to $L$, and $\{b_n\}_{n=
 \item If $L\neq 0$ and $a_n\neq 0$ for all $n\in \N$, then $\displaystyle\left\{\frac{1}{a_n}\right\}_{n=1}^\infty$\!\!\! converges to~$\displaystyle \frac{1}{L}$.
 \item If $M\neq 0$ and $b_n\neq 0$ for all $n\in \N$, then $\displaystyle\left\{\frac{a_n}{b_n}\right\}_{n=1}^\infty$\!\!\! converges to~$\displaystyle \frac{L}{M}$.
 \end{enumerate}
-\end{thm}
-(end of theorem, back to problems)
+\end{framed}
 
-\begin{enumerate}\setcounter{enumi}{2}
+\
 
-\item Use Theorem~10.2 and Example~10.1 to show that the sequence $\{2 + 5/n - 7/n^2\}_{n=1}^\infty$ converges to $2$.
+\begin{enumerate}
+\item Use Theorem~13.2 and Example~13.1 to show that the sequence $\{2 + 5/n - 7/n^2\}_{n=1}^\infty$ converges to~$2$. Show every step in your argument.
 
 \begin{framed}
 The constant sequence $\{2\}_{n=1}^\infty$ converges to $2$ by Ex 10.1 part 1. The sequence $\{5/n\}_{n=1}^\infty = \{5 \cdot 1/n\}_{n=1}^\infty$ converges to $5\cdot 0 = 0$ by Ex 10.1 part 2 and Thm 10.2 part 1. The sequence $\{ -7/n^2\}_{n=1}^\infty = \{ -7 \cdot 1/n \cdot 1/n\}_{n=1}^\infty$ converges to $-7 \cdot 0 \cdot 0 = 0$ by Ex 10.1 part 2, Thm 10.2 part 1, and Thm 10.2 part 3. Thus, by Thm 10.2 part 2, the sequence $\{ 2 + 5/n - 7/n^2\}_{n=1}^\infty$ converges to $2+0+0 = 2$ by Thm 10.2 part 2.
 \end{framed}
 
-\item Use Theorem~10.2 and Example~10.1 to show that the sequence $\frac{2n+3}{3n-4}$ converges to $\frac23$.
+
+\item Use Theorem~13.2 and Example~13.1 to show that the sequence $\displaystyle \left\{\frac{2n+3}{3n-4}\right\}_{n=1}^\infty$ converges to $\displaystyle\frac23$.
+
+
+
 
 \
 
-\item Use Theorem~10.2 to show that if $\{a_n\}_{n=1}^\infty$ converges to $L$, and $\{b_n\}_{n=1}^\infty$ converges to $M$, then $\{a_n - b_n\}_{n=1}^\infty$ converges to $L-M$.
+\item Use Theorem~13.2 to show that if $\{a_n\}_{n=1}^\infty$ converges to $L$, and $\{b_n\}_{n=1}^\infty$ converges to $M$, then ${\{a_n - b_n\}_{n=1}^\infty}$ converges to $L-M$.
 
 \begin{framed}
 By Thm 10.2 part 1, $\{-b_n\}_{n=1}^\infty$ converges to $-M$. Then by Thm 10.2 part 2, $\{a_n - b_n\}_{n=1}^\infty = \{a_n + (- b_n)\}_{n=1}^\infty$ converges $L+(-M) = L-M$.
 \end{framed}
+
 
 \item Prove or disprove the following converse to part (2): If $\{ a_n + b_n \}_{n=1}^\infty$ converges to $L+M$ then $\{a_n \}_{n=1}^\infty$ converges to $L$ and $\{ b_n \}_{n=1}^\infty$ converges to $M$.
 
@@ -2104,28 +2111,40 @@ By Thm 10.2 part 1, $\{-b_n\}_{n=1}^\infty$ converges to $-M$. Then by Thm 10.2 
 Take $\{ a_n\}_{n=1}^\infty = \{ (-1)^n\}_{n=1}^\infty$ and $\{ b_n \}_{n=1}^\infty = \{ (-1)^{n+1} \}_{n=1}^\infty$. Then $\{ a_n + b_n\}_{n=1}^\infty = \{ 0 \}_{n=1}^\infty$ converges to $0$, but neither $\{a_n\}_{n=1}^\infty$ nor $\{b_n\}_{n=1}^\infty$ converges.
 \end{framed}
 
+\item Prove or disprove: If $\{a_n\}_{n=1}^\infty$ is a convergent sequence and $\{b_n\}_{n=1}^\infty$ is a divergent sequence, then $\{a_n + b_n\}_{n=1}^{\infty}$ is divergent.
+
+\begin{framed} Let $\{a_n\}_{n=1}^\infty$ be a convergent sequence and $\{b_n\}_{n=1}^\infty$ be a divergent sequence. By way of contradiction, assume that $\{a_n + b_n\}_{n=1}^{\infty}$ converges. Say that $\{a_n\}_{n=1}^\infty$  converges to $L$ and $\{a_n + b_n\}_{n=1}^{\infty}$ converges to $M$. Then since $b_n = (a_n+b_n)-a_n$, from the Theorem 13.2 we conclude that $\{b_n\}_{n=1}^\infty$ converges to $M-L$; in particular it is convergent. This is a contradiction.  We conclude that $\{a_n + b_n\}_{n=1}^{\infty}$ must diverge.
+\end{framed}
 
 \item Prove part (1) of Theorem~10.2  in the special case $c=2$ by following the following steps:
 \begin{itemize}
 \item Assume that $\{a_n \}_{n=1}^\infty$ converges to $L$.
-\item We now want to show that $\{ 2 a_n \}_{n=1}^\infty$ converges to something. We know what we have to write next!
+\item We now want to show that $\{ 2 a_n \}_{n=1}^\infty$ converges to something. You know what goes next!
 \item Now we do some scratchwork: we want an $N$ such that for $n>N$ we have $|2 a_n - 2 L| < \e$. Factor this to get some inequality with $a_n$. How can we use our assumption to get an $N$ that ``works''?
 \item Complete the proof.
 \end{itemize}
 
-
-
+\begin{framed} 
+Assume that $\{a_n \}_{n=1}^\infty$ converges to $L$. Let $\e>0$. Since $\e/2$ is a positive number, by definition of converges, there is some $N$ such that for all $n>N$ we have $|a_n-L|<\e/2$. Then, for this $N$ and any $n>N$, we have $|(2a_n) - 2L| = 2 | a_n - L| < 2 \e/2 = \e$.
+This shows that $\{2 a_n \}_{n=1}^\infty$ converges to $2L$. 
+\end{framed}
 
 \item Prove part (1) of Theorem~10.2.
 
-
+\
 
 \item Prove part~(2) of Theorem~10.2.
 
-
+\
 
 \item Prove part~(3) of Theorem 10.2.
 \end{enumerate}
+
+
+
+\begin{comment}
+
+
 
 \begin{comment}
 
