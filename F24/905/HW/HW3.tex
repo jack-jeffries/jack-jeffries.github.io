@@ -57,13 +57,10 @@
 	
 	\section*{Assignment \#3: Due Friday, October 11 at 7pm}
 	
-	This problem set is to be turned in by Gradescope. You may reference any result or problem from our worksheets, unless it is the fact to be proven! You are encouraged to work with others, but you should understand everything you write. Please consult the class website for acceptable/unacceptable resources for the problem sets. You should use the techniques from this class and precursor classes to solve these problems, but not Commutative Algebra II or Homological Algebra. 
+	This problem set is to be turned in by Canvas. You may reference any result or problem from our worksheets, unless it is the fact to be proven! You are encouraged to work with others, but you should understand everything you write. Please consult the class website for acceptable/unacceptable resources for the problem sets. You should use the techniques from this class and precursor classes to solve these problems, but not Commutative Algebra II or Homological Algebra.
+	
 	
 	\
-	
-\textsc{Definition:} Let $R$ be an Noetherian $\N$-graded ring, with $R_0=K$ a field. The \textbf{Hilbert function} of $R$ is the function $H_R(t) = \dim_{K}(R_i)$, where $\dim_K$ denotes vector space dimension.
-
-\
 	
 \begin{enumerate}
 
@@ -77,19 +74,16 @@
 \[ 
  (\lambda_1,\dots,\lambda_m) \cdot X_i = \lambda_1^{a_{1,i}} \cdots  \lambda_m^{a_{m,i}} X_i \qquad  {i=1,\dots,n} 
  \]
- for some $m \times n$ matrix of integers $A=[a_{i,j}]$.
+ for some $m \times n$ matrix of integers $A=[a_{i,j}]$. For shorthand, we may write $\underline{\lambda} \cdot X_i = \underline{\lambda}^{\underline{a_i}} X_i$ with $\underline{\lambda} = (\lambda_1,\dots,\lambda_m)$ and $\underline{a_i}$ is the $i$th column on $A$.
 \begin{enumerate}
-\item Show\footnote{You can use without proof that any nonzero (multivariate) polynomial over an infinite field is a nonzero function.} $R^G$ has a $K$-vector space basis given by the set of monomials $X_1^{b_1} \cdots X_n^{b_n}$ such that, for $b=(b_1,\dots,b_n)$, $Ab=0$.
-\item Consider the polynomial ring $R$ with a (nonstandard) $\mathbb{Z}^m$-grading given by setting 
-\[\textrm{deg}(X_i) = (a_{1,i},\dots,a_{m,i})\] 
+\item Show\footnote{You can use without proof that any nonzero (multivariate) polynomial over an infinite field is a nonzero function.} $R^G$ has a $K$-vector space basis given by the set of monomials $\underline{X}^{\underline{b} }= X_1^{b_1} \cdots X_n^{b_n}$ such that $A\underline{b}=0$.
+\item Consider the polynomial ring $R$ with a (nonstandard) $\mathbb{Z}^m$-grading given by setting $\textrm{deg}(X_i) = \underline{a_i}$
 for each $i$. Show that $R^G$ is the degree zero piece of $R$ under this grading.
 \item Show that $R^G$ is a direct summand of $R$, and deduce that $R^G$ is a finitely generated $K$-algebra.
 \item Let $R = K[X,Y,Z,W]$ and consider the $K$-algebra action of $G = K^\times$ on $R$ given by
 \[\lambda \cdot X = \lambda X \qquad \lambda \cdot Y = \lambda Y \qquad \lambda \cdot Z = \lambda^{-1} Z \qquad \lambda \cdot W = \lambda^{-1} W.\]
 Find a finite set of generators for $R^G$ as a $K$-algebra.
 \end{enumerate}
-
-\hrulefill
 
 \
 
