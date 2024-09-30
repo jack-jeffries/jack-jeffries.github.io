@@ -2,7 +2,7 @@
 
 
 \usepackage{times}
-\usepackage[margin=0.8in]{geometry}
+\usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals,bbm}
 
 
@@ -61,7 +61,7 @@
 
 
 \begin{document}
-\showsol{1}
+\showsol{0}
 	
 	\thispagestyle{empty}
 	
@@ -121,10 +121,6 @@
 \begin{enumerate}
 \itema Deal with the base case $n=0$.
 \itema For the inductive step, first do the case that $r_1,\dots, r_n$ are algebraically~independent over~$K$.
-\end{enumerate}
-
-\item[{\Bold{(3 ctd.)}}]
-\begin{enumerate}\setcounter{enumii}{2}
 \itema Let $\alpha:K[X_1,\dots,X_n] \to R$ be the $K$-algebra homomorphism such that $\alpha(X_i)=r_i$, and let $\phi$ be a $K$-algebra automorphism of $K[X_1,\dots,X_n]$. Let $r'_i = \alpha(\phi(X_i))$ for each $i$. Explain\footnote{Say $\alpha'$ is the $K$-algebra map given by $\alpha'(X_i)=r'_i$. Observe that $\alpha' = \alpha \circ \phi$. Why is this surjective?} why $R=K[r'_1,\dots,r'_n]$, and for any $K$-algebra relation $F$ on $r_1,\dots,r_n$, the polynomial $\phi^{-1}(F)$ is a $K$-algebra relation on $r'_1,\dots,r'_n$.
 \itema Use the Lemma to find a $K$-subalgebra $R'$ of $R$ with $n-1$ generators such that the inclusion $R' \subseteq R$ is module-finite.
 \itema Conclude the proof.
@@ -142,10 +138,12 @@
 
 }
 
-\itemB Proof of Lemma:
+\itemB Proof of the ``general case'' of the Lemma: 
 \begin{enumerate}
-\itemb in the General case: Consider the automorphism $\phi$ from the general case of the Lemma. Show that for a monomial, we have $\phi(a X_1^{d_1} \cdots X_n^{d_n})$ is a polynomial with unique highest degree term $a X_n^{d_1 D^{n-1} + d_2 D^{n-2} + \cdots + d_n}$. Can two monomials $\mu,\nu$ in $F$, have $\phi(\mu)$ and $\phi(\nu)$ with the same highest degree term? Complete the proof.
-\itemb Prove the Lemma in the infinite field case.
+\item Where do ``base $D$ expansions'' fit in this picture?
+\item Consider the automorphism $\phi$ from the general case of the Lemma. Show that for a monomial, we have $\phi(a X_1^{d_1} \cdots X_n^{d_n})$ is a polynomial with unique highest degree term $a X_n^{d_1 D^{n-1} + d_2 D^{n-2} + \cdots + d_n}$. 
+\item Can two monomials $\mu,\nu$ in $F$, have $\phi(\mu)$ and $\phi(\nu)$ with the same highest degree term? 
+\item Complete the proof.
 \end{enumerate}
 
 \solution{
