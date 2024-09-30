@@ -2142,20 +2142,20 @@ This shows that $\{2 a_n \}_{n=1}^\infty$ converges to $2L$.
 
 
 
-\begin{comment}
+\newpage
 
 
 
 \begin{comment}
 
-\Sept{27}
+\Sept{30}{\Mo}{2.2}
 
 Last time we looked at:
 
 \
 
 
-\noindent \textbf{Theorem 10.2} (Limits and algebra)\textbf{.}
+\noindent \textbf{Theorem 13.2} (Limits and algebra)\textbf{.}
 Let $\{a_n\}_{n=1}^\infty$ be a sequence that converges to $L$, and $\{b_n\}_{n=1}^\infty$ be a sequence that converges to $M$.
 \begin{enumerate}
 \item If $c$ is any real number, then $\{ c a_n\}_{n=1}^\infty$ converges to $cL$.
@@ -2165,17 +2165,113 @@ Let $\{a_n\}_{n=1}^\infty$ be a sequence that converges to $L$, and $\{b_n\}_{n=
 \item If $M\neq 0$ and $b_n\neq 0$ for all $n\in \N$, then $\displaystyle\left\{\frac{a_n}{b_n}\right\}_{n=1}^\infty$\!\!\! converges to~$\displaystyle \frac{L}{M}$.
 \end{enumerate}
 
+You will prove part (1) in the homework. Let's prove part (2), and you can read the rest in the notes.
+
+\begin{proof}[Proof of (2):] 
+Let $\{a_n\}_{n=1}^\infty$ be a sequence that converges to $L$, and $\{b_n\}_{n=1}^\infty$ be a sequence that converges to $M$. Let $\e>0$. Since $\e/2>0$, by definition of converges, there is some $N_1$ such that for all $n>N_1$ we have $|a_n-L|<\e/2$. Likewise, there is some $N_2$ such that for all $n>N_2$ we have $|b_n-M|<\e/2$. Let $N=\max\{N_1,N_2\}$. Then for $n>N$, we have
+\[ |(a_n + b_n) - (L+M) | = |(a_n -L) + (b_n-M) | \leq  |a_n -L| + |b_n-M | < \frac{\e}{2} + \frac{\e}{2} = \e.\]
+This shows that $\{a_n + b_n\}_{n=1}^\infty$ converges to $L+M$.
+\end{proof}
+
+\begin{framed}
+First, we prove (3).
+
+Pick $\e > 0$.
+	
+	(``Scratch work'': The goal is to make 
+	$|a_nb_n - LM|$ small and the trick is to use that
+	$$
+	\begin{aligned}
+	|a_nb_n - LM| & = |a_n(b_n - M) + (a_n - L)M|  \\
+	& \leq |a_n(b_n - M)| + |(a_n - L)M| \\
+	& = |a_n| |b_n - M| + |a_n - L| |M|.
+	\end{aligned}
+	$$
+	Our goal will be to take $n$ to be large enough so that each of $|a_n| |b_n - M|$ and $|a_n - L| |M|$ is smaller than $\e/2$.
+	We can make $|a_n -L|$ as small as we like and $|M|$ is just a fixed number. So, we can ``take care'' of the second term by choosing $n$ big enough so
+	that $|a_n - L| < \frac{\e}{2|M|}$. A irritating technicality here is
+	that $|M|$ could be $0$, and so we will use $\frac{\e}{2|M|+1}$ instead. 
+	The other term   $|a_n| |b_n - M|$ is harder to deal with since each factor varies with $n$. 
+	Here we use that convergent sequences are bounded so that we can find a real number $X$ so that $|a_n| \leq X$ for all $n$. Then we choose $n$ large enough
+	so that $|b_n - M| < \frac{\e}{2 X}$. Back to the proof.)
+	
+	Since $\{a_n\}$ converges, it is bounded by Proposition \ref{prop21}, which gives that  there is a strictly positive real number $X$ so that $|a_n| \leq X$ for all $n \in \N$.
+	Since $\{b_n\}$
+	converges to $M$ and $\frac{\e}{2 X} > 0$, there is a number $N_1$ so that if $n > N_1$ then $|b_n - M| < \frac{\e}{2 X}$. Since $\{a_n\}$ converges to $L$
+	and $\frac{\e}{2|M| + 1} > 0$, there is a number
+	$N_2$ so that if $n \in \N$ and $n > N_2$, then $|a_n - L| < \frac{\e}{2|M| + 1}$. Let $N = \max\{N_1, N_2\}$. For any $n \in \N$ such that $n > N$, we have
+	$$
+	\begin{aligned}
+	|a_nb_n - LM| & = |a_n(b_n - M) + (a_n - L)M| \\
+	& \leq |a_n(b_n - M)| + |(a_n - L)M| \\
+	& = |a_n| |b_n - M| + |a_n - L| |M| \\
+	& < X \frac{\e}{2 X} + \frac{\e}{2|M| + 1} |M| \\
+	& < \e.
+	\end{aligned}
+	$$
+	This proves $\{a_n  \cdot b_n\}_{n=1}^\infty$ converges to $L \cdot M$.
+	
+Now we prove (4).
+
+To prove this claim,  pick $\e > 0$. 
+	
+	(Scratch work: We want to show $\left|\frac{1}{a_n} -
+	\frac{1}{L}\right| < \e$ holds for $n$ sufficiently large.  
+	We have
+	$$
+	\left|\frac{1}{a_n} - \frac{1}{L}\right| = \frac{|L - a_n|}{|a_n||L|}.
+	$$ 
+	We can make the top of this fraction as small as we like, but the problem is that the
+	bottom might be very small too since $a_n$ might get very close to $0$. But since $a_n$ converges to $L$ and $L \ne 0$ if we go far enough out, it will be
+	close to $L$. In particular, if $a_n$ is within a distance of
+	$\frac{|L|}{2}$ of $M$ then $|a_n|$ will be at least
+	$\frac{|L|}{2}$. So for $n$ sufficiently large we have
+	$\frac{|a_n-L|}{|a_n||L|} < 2 \frac{|a_n-L|}{|L|^2}$. And then for $n$
+	sufficiently large we also get $|a_n - L| < \frac{|L|^2}{2 \e}$.  Back to the formal proof\dots)
+	
+	
+	
+	Since $\{a_n\}$ converges to $L$ and $\frac{|L|}{2} > 0$, there is an $N_1$ such that for $n > N_1$ we have $|a_n - L| < \frac{|L|}{2}$  and hence
+	$|a_n| > \frac{|L|}{2}$. Again using that $\{a_n\}$ converges to $M$
+	and that $\frac{ \e |L|^2}{2} > 0$, there is an $N_2$ so that for $n > N_2$ we have
+	$|a_n - L| < \frac{ \e |L|^2}{2}$. Let $N = \max\{N_1, N_2\}$. If $n > N$, then we have
+	$$
+	\begin{aligned}
+	\left|\frac{1}{a_n} - \frac{1}{L}\right| & = \frac{|a_n - L|}{|a_n||L|} \\
+	& < \frac{2}{|L|}  \frac{|a_n - L|}{|L|} \\
+	& = 2 \frac{|a_n - L|}{|L|^2} \\
+	\end{aligned}
+	$$
+	since $|a_n| > |L|/2$ and hence $\frac{1}{|a_n|} < \frac{2}{|L|}$.
+	But then
+	$$
+	2 \frac{|a_n - L|}{|L|^2}  < 2 \frac{\frac{\e |L|^2}{2}}{|L|^2} = \e
+	$$
+	since $|a_n - L| < \frac{ \e |L|^2}{2}$. Putting these together gives
+	$$
+	\left|\frac{1}{a_n} - \frac{1}{L}\right| < \e
+	$$
+	for all $n > N$. 
+	This proves $\{\frac{1}{a_n}\}_{n=1}^\infty$ converges to $\frac{1}{L}$.
+
+Finally, part (5) follows from parts (3) and (4).
+
+	\end{framed}
+
+
 
 
 The following is another useful technique:
 
-\begin{thm}[The ``squeeze'' principle] \label{thm33}
+\begin{thm}[The ``squeeze'' principle]\index{Squeeze Theorem}
 Suppose 
 $\{a_n\}_{n=1}^\infty$, $\{b_n\}_{n=1}^\infty$, and $\{c_n\}_{n=1}^\infty$ are three sequences such that 
 $\{a_n\}_{n=1}^\infty$ and $\{c_n\}_{n=1}^\infty$ both converge to $L$, 
  and $a_n \leq b_n \leq c_n$ for all $n$.
 Then $\{b_n\}_{n=1}^\infty$ also converges to $L$.
 \end{thm}
+
+
 
  
 
@@ -2203,8 +2299,8 @@ This proves $\{b_n\}_{n=1}^\infty$ converges to $L$.
 \end{proof}
 
 
-\begin{ex} We can use the Squeeze Theorem to give a short proof that $\{ 5 + (-1)^n \frac{1}{n} \}_{n=1}^\infty$ converges to $5$. Note that Theorem \ref{thm99} alone cannot be used in this
-  example. However, from Theorem~\ref{thm99}, it follows that $\{5-\frac{1}{n}\}_{n=1}^\infty$ and  $\{5+\frac{1}{n}\}_{n=1}^\infty$ both converge to $5$. Then, since \[5-\frac{1}{n} \leq  5 + (-1)^n \frac{1}{n} \leq 5+\frac{1}{n}\] for all $n$, our sequence also converges to $5$.\end{ex}
+\begin{ex} We can use the Squeeze Theorem to give a short proof that ${\{ 5 + (-1)^n \frac{1}{n} \}_{n=1}^\infty}$ converges to $5$. Note that Theorem 13.2 alone cannot be used in this
+  example. However, from Theorem~13.2, it follows that $\{5-\frac{1}{n}\}_{n=1}^\infty$ and  $\{5+\frac{1}{n}\}_{n=1}^\infty$ both converge to $5$. Then, since \[5-\frac{1}{n} \leq  5 + (-1)^n \frac{1}{n} \leq 5+\frac{1}{n}\] for all $n$, our sequence also converges to $5$.\end{ex}
 
 
 
@@ -2302,10 +2398,10 @@ It follows that  $|a_n - L| < \e$. We have proven the sequence converges to~$L$.
 %\begin{rem} Note that any increasing sequence is bounded below, for example, by its first term. Thus, an increasing sequence is bounded if and only if it is bounded below. Likewise, and decreasing sequence is bounded if and only if it is bounded above.
 %\end{rem}
 
-\begin{thm}[Monotone Converge Theorem]\label{thm:MCT}\index{monotone convergence theorem} Every bounded monotone sequence converges.
+\begin{thm}[Monotone Convergence Theorem]\label{thm:MCT}\index{monotone convergence theorem} Every bounded monotone sequence converges.
 \end{thm}
 \begin{proof}
-If $\{a_n\}_{n=1}^\infty$ is increasing, then this is the content of Theorem~\ref{thm226}. If $\{a_n\}_{n=1}^\infty$ is decreasing and bounded, consider the sequence $\{-a_n\}_{n=1}^\infty$. If $a_n\leq M$ for all $n$, then $-a_n\geq -M$ for all $n$, so $\{-a_n\}_{n=1}^\infty$ is bounded below. Also, since $a_n \geq a_{n+1}$ for all $n$, we have $-a_n \leq -a_{n+1}$ for all $n$, so $\{-a_n\}_{n=1}^\infty$ is increasing. Thus, by Theorem~\ref{thm226}, $\{-a_n\}_{n=1}^\infty$ converges, say to $L$. Then by Theorem~\ref{thm99}(1), $\{a_n\}_{n=1}^\infty=\{-(-a_n)\}_{n=1}^\infty$ converges to $-L$.
+If $\{a_n\}_{n=1}^\infty$ is increasing, then this is the content of Theorem~\ref{thm226}. If $\{a_n\}_{n=1}^\infty$ is decreasing and bounded, consider the sequence $\{-a_n\}_{n=1}^\infty$. If $a_n\leq M$ for all $n$, then $-a_n\geq -M$ for all $n$, so $\{-a_n\}_{n=1}^\infty$ is bounded below. Also, since $a_n \geq a_{n+1}$ for all $n$, we have $-a_n \leq -a_{n+1}$ for all $n$, so $\{-a_n\}_{n=1}^\infty$ is increasing. Thus, by Theorem~\ref{thm226}, $\{-a_n\}_{n=1}^\infty$ converges, say to $L$. Then by Theorem~13.2(1), $\{a_n\}_{n=1}^\infty=\{-(-a_n)\}_{n=1}^\infty$ converges to $-L$.
 \end{proof}
 
 	
@@ -2329,6 +2425,8 @@ a_n &= 1 + \frac{1}{2^2} + \frac{1}{3^2} + \cdots + \frac{1}{n^2} \\
 		
 		Hence, by the Monotone Convergence Theorem, $\{a_n\}_{n=1}^\infty$ converges. Leonhard Euler was particularly interested in this sequence, and was able to prove that it converges to $\frac{\pi^2}{6}$. This requires some other ideas, so we won't do that here.
 	\end{ex}
+
+\begin{comment}
 
 \Sept{29}
 
