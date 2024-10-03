@@ -2,7 +2,7 @@
 
 
 \usepackage{times}
-\usepackage[margin=0.8in]{geometry}
+\usepackage[margin=.9in]{geometry}
 \usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals,bbm}
 
 
@@ -62,7 +62,7 @@
 
 
 \begin{document}
-\showsol{1}
+\showsol{0}
 	
 	\thispagestyle{empty}
 	
@@ -108,9 +108,6 @@ To not be algebraically closed means that there is a nonconstant polynomial in o
 \itema Let $S\subseteq T$ be two sets of polynomials. Show that $\cZ(S) \supseteq \cZ(T)$.
 \itema Let $I=(S)$. Show that $\cZ(I)=\cZ(S)$. Thus, every solution set system of any polynomial equations can be written as $\cZ$ of some ideal.
 \itema Explain the following: every system of equations over a polynomial ring is equivalent to a \emph{finite} system of equations.
-\itema Given a system of polynomial equations and inequations\[ (\star) \qquad F_1=0,\dots, F_m=0 \qquad G_1\neq0,\dots,G_\ell\neq 0\]
-come up with a system\footnote{Hint: $\lambda\in K$ is nonzero if and only if there is some $\mu$ such that $\lambda\mu=1$. You can use more variables if you want!}
- of equations $(\dagger)$ such that $(\star)$ has a solution if and only if $(\dagger)$ has a solution. Thus every equation-and-inequation feasibility problem is equivalent to a question of the form $\cZ(I)\stackrel{?}{=}\varnothing$.
 \end{enumerate}
 
 \solution{
@@ -120,19 +117,19 @@ come up with a system\footnote{Hint: $\lambda\in K$ is nonzero if and only if th
 \itema $\alpha\in \cZ(T)$ implies $F(\alpha)=0$ for all $F\in T$ implies $F(\alpha)=0$ for all $F\in S$ implies $\alpha\in \cZ(S)$.
 \itema Since $S\subseteq I$ we have $\cZ(S) \supseteq \cZ(I)$. On the other hand, if $\alpha\in \cZ(S)$ and $F\in I$, then $F=\sum_i r_i s_i$ with $s_i\in S$, and $F(\alpha) = \sum_i r_i(\alpha) s_i(\alpha) =  \sum_i r_i(\alpha) \cdot 0 = 0$. Thus $\alpha\in \cZ(I)$.
 \itema We can write any system as $\cZ(I)$. By the Hilbert Basis Theorem, $I=(f_1,\dots,f_m)$, and $\cZ(I)=\cZ(f_1,\dots,f_m)$, which is equivalent to the system $f_1=0,\dots,f_m=0$.
-\itema We can take $F_1=0,\dots,F_m=0, G_1 G_2 \dots G_\ell Y-1=0$: a solution of this must consist of a solution of $(\star)$ for the $X$'s and the inverse of the product of the $G_i(X)$ for $Y$.
 \end{enumerate}
 }
 
 %\itemA System of equations and inequations
 
-\itemA Proof of Proposition and Nullstellensatz: Let $K$ be an algebraically closed field, and ${R=K[X_1,\dots,X_n]}$ be a polynomial ring.
+\itemA Proof of Proposition and Nullstellensatz: Let $K$ be an algebraically closed field, and\\ ${R=K[X_1,\dots,X_n]}$ be a polynomial ring.
 \begin{enumerate}
 \itema Use Zariski's Lemma to show that for every maximal ideal $\m\subseteq R$, we have $R/\m\cong K$.
 \itema Reuse some old work to deduce the Proposition.
 \itema Deduce the Nullstellensatz from the Proposition.
 \itema Convince yourself that the ``certificate of infeasibility'' version follows from the other one.
 \end{enumerate}
+
 \solution{\begin{enumerate}
 \itema The ring $R/\m$ is a finitely generated $K$-algebra and a field, so $K\subseteq R/\m$ is module-finite by Zariski's Lemma. Since $K$ is algebraically closed, we must have $K\cong R/\m$. 
 \itema From worksheet \#2, we know that any maximal ideal in a polynomial ring with ${R/\m\cong K}$ is of the form $\m_\alpha$ for some $\alpha$.
@@ -143,7 +140,17 @@ come up with a system\footnote{Hint: $\lambda\in K$ is nonzero if and only if th
 
 \
 
-\itemB Show that any system of multivariate polynomial equations (or equations and inequations) over a field $K$ has a solution in some extension field of $L$ if and only if it has a solution over $\overline{K}$.
+\itemA Given a system of polynomial equations and inequations\[ (\star) \qquad F_1=0,\dots, F_m=0 \qquad G_1\neq0,\dots,G_\ell\neq 0\]
+come up with a system\footnote{Hint: $\lambda\in K$ is nonzero if and only if there is some $\mu$ such that $\lambda\mu=1$.}
+ of equations $(\dagger)$ \emph{in one extra variable} such that $(\star)$ has a solution if and only if $(\dagger)$ has a solution. Thus every equation-and-inequation feasibility problem is equivalent to a question of the form $\cZ(I)\stackrel{?}{=}\varnothing$.
+ 
+ 
+ \solution{We can take $F_1=0,\dots,F_m=0, G_1 G_2 \dots G_\ell Y-1=0$: a solution of this must consist of a solution of $(\star)$ for the $X$'s and the inverse of the product of the $G_i(X)$ for $Y$.}
+
+
+
+
+\itemB Show that any system of multivariate polynomial equations (or equations and inequations) over a field $K$ has a solution in some extension field of $L$ if and only if it has a solution over~$\overline{K}$.
 
 
 \
@@ -151,7 +158,7 @@ come up with a system\footnote{Hint: $\lambda\in K$ is nonzero if and only if th
 \itemB Let $K$ be a field and $R=K[X_1,\dots,X_n]$. Let $L\supseteq K$ and $S=L[X_1,\dots,X_n]$.
 \begin{enumerate}
 \itemb Find some $f$ that is irreducible in $R$ but reducible in $S$ for some choice of $K\subseteq L$.
-\itemb Show that if $K$ is algebraically closed and $f\in R$ is irreducible, then it is irreducible in $S$.
+\itemb Show that if $K$ is algebraically closed and $f\in R$ is irreducible, then it is irreducible in~$S$.
 \itemb Show that  if $K$ is algebraically closed and $I\subseteq R$ is prime, then $IS$ is prime.
 \end{enumerate}
 
