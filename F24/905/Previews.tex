@@ -21,6 +21,7 @@
 \newcommand{\tr}{\mathrm{tr}}
 \newcommand{\im}{\mathrm{im}}
 \newcommand{\cZ}{\mathcal{Z}}
+\newcommand{\Spec}{\mathrm{Spec}}
 
 \newcommand{\0}{$\phantom{.}$}
 \newcommand{\1}{\mathbbm{1}}
@@ -1106,7 +1107,7 @@ For an element $r\in R$, its \textbf{initial form} in $\mathrm{gr}_I(R)$ is
 
 
 \newpage
-\subsection{Nullstellensatz and spectrum: Lecture Notes \S4.3} \0
+\subsection{Nullstellensatz: Lecture Notes \S4.3} \0
 
 \begin{framed} Key topics:
 \begin{itemize}
@@ -1129,6 +1130,123 @@ Put another way, a set $S$ of multivariate polynomials has a common zero unless 
 
 \noindent \textsc{Proposition:} Let $K$ be an algebraically closed field, and $R=K[X_1,\dots,X_n]$ be a polynomial ring. Every maximal ideal of $R$ is of the form $\m_\alpha = (X_1-a_1,\dots,X_n-a_n)$ for some point $\alpha=(a_1\dots,a_n)\in K^n$.
 
+
+\newpage
+\subsection{Strong Nullstellensatz: Lecture Notes \S4.3} \0
+
+\begin{framed} Key topics:
+\begin{itemize}
+\item Strong Nullstellensatz
+\item Correspondence between radical ideals and subvarieties
+\end{itemize}
+\end{framed}
+
+\noindent \textsc{Strong Nullstellensatz:} Let $K$ be an algebraically closed field, and $R=K[X_1,\dots,X_n]$ be a polynomial ring. Let $I\subseteq R$ be an ideal. Then $f$ vanishes at every point of $\cZ(I)$ if and only if $f\in \sqrt{I}$. 
+
+\
+
+
+\noindent \textsc{Definition:} Let $K$ be a field and $R=K[X_1,\dots,X_n]$. A \textbf{subvariety} of $K^n$ is a set of the form $\cZ(S)$ for some set of polynomials $S\subseteq R$; i.e., a solution set of some system of polynomial equations.
+
+\
+
+\noindent \textsc{Corollary:} Let $K$ be an algebraically closed field. There is a bijection
+\[ \{ \text{radical ideals in $K[X_1,\dots,X_n]$}\}  \longleftrightarrow \{ \text{subvarieties of $K^n$}\}.\]
+
+
+
+\newpage
+\subsection{Spectrum of a ring: Lecture Notes \S3.2} \0
+
+\begin{framed} Key topics:
+\begin{itemize}
+\item Spectrum of a ring as a set
+\item Zariski topology on $\Spec(R)$
+\item Properties of $VI(I)$ and $D(I)$
+\item Induced map on $\Spec$
+\end{itemize}
+\end{framed}
+
+
+
+
+
+\noindent \textsc{Definition:} Let $R$ be a ring, and $I\subseteq R$ a subset of $R$.
+\begin{itemize}
+\item The \textbf{spectrum} of a ring $R$, denoted $\mathrm{Spec}(R)$, is the set of prime ideals of $R$. 
+\item We set $V(I) \ceq \{ \p \in \Spec(R) \ | \ I \subseteq \p\}$, the set of primes containing $I$.
+\item We set $D(I) \ceq \{ \p \in \Spec(R) \ | \ I \not\subseteq \p\}$, the set of primes \emph{not} containing $I$.
+\item More generally, for any subset $S\subseteq R$, we define $V(S)$ and $D(S)$ analogously.
+\end{itemize}
+
+
+\
+
+\noindent \textsc{Definition/Proposition:} The collection $\{ V(I) \ | \ I \ \text{an ideal of} \ R \}$ is the collection of closed subsets of a topology on $R$, called the \textbf{Zariski topology}; equivalently, the open sets are $D(I)$ for $I \ \text{an ideal of} \ R$.
+
+\
+
+\noindent \textsc{Definition:} Let $\phi: R\to S$ be a ring homomorphism. Then the \textbf{induced map on Spec} corresponding to $\phi$ is the map $\phi^*: \Spec(S) \to \Spec(R)$ given by $\phi^*(\p) \ceq \phi^{-1}(\p)$.
+
+\
+
+\noindent \textsc{Lemma:} Let $\p$ be a prime ideal. Let $I_\lambda,J$ be ideals.
+\begin{enumerate}
+\item $\sum_{\lambda} I_\lambda \subseteq \p \Longleftrightarrow I_\lambda \subseteq \p$ for all $\lambda$.
+\item $IJ  \subseteq \p \Longleftrightarrow I\subseteq \p \ \text{or} \ J \subseteq \p$
+\item $I \cap J \subseteq \p \Longleftrightarrow I\subseteq \p \ \text{or} \ J \subseteq \p$
+\item $I \subseteq \p \Longleftrightarrow \sqrt{I} \subseteq \p$
+\end{enumerate}
+
+
+
+
+
+\newpage
+\subsection{Spectrum and radical ideals: Lecture Notes \S3.2} \0
+
+\begin{framed} Key topics:
+\begin{itemize}
+\item Correspondence between radical ideals and closed subsets
+\item Multiplicatively closed subsets
+\item Minimal primes
+\end{itemize}
+\end{framed}
+
+
+
+\noindent \textsc{Formal Nullstellensatz:} Let $R$ be a ring,  $I$ an ideal, and $f\in R$. Then $V(f) \supseteq V(I)$ if and only if $f\in \sqrt{I}$.
+
+
+
+\
+
+\noindent \textsc{Corollary 1:} Let $R$ be a ring. There is a bijection
+\[ \{ \text{radical ideals in $R$}\}  \longleftrightarrow \{ \text{closed subsets of $\mathrm{Spec}(R)$}\}.\]
+
+\
+
+\noindent \textsc{Definition:} Let $R$ be a ring and $I$ an ideal. A \textbf{minimal prime} of $I$ is a prime $\p$ that contains $I$, and is minimal among primes containing $I$. We write $\mathrm{Min}(I)$ for the set of minimal primes of $I$.
+
+
+\
+
+\noindent{Lemma:} Every prime that contains $I$ contains a minimal prime of $I$.
+
+\
+
+\noindent \textsc{Corollary 2:} Let $R$ be a ring and $I$ be an ideal. Then
+\[ \sqrt{I} = \bigcap_{\p \in \mathrm{Min}(I)} \ \p.\]
+
+
+\
+
+
+\noindent \textsc{Definition:} A subset $W$ of a ring $R$ is \textbf{multiplicatively closed} if $1\in W$ and $u,v\in W$ implies $uv\in W$.
+
+\
+
+\noindent \textsc{Proposition:} Let $R$ be a ring and $W$ be a multiplicatively closed subset. Then every ideal $I$ such that $I\cap W = \varnothing$ is contained in a prime ideal $\p$ such that $\p \cap W = \varnothing$.
 
 
 
