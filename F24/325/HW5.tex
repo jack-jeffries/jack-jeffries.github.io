@@ -1,0 +1,137 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals,hyperref}
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+\newcommand\itemA{\stepcounter{enumi}\item[{\bf{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\bf{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\bf{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+\DeclareMathOperator{\ord}{ord}
+\renewcommand{\ceq}{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{1}
+	
+	\thispagestyle{empty}
+	
+	\section*{Assignment \#5: Due Thursday, October 17 at midnight}
+	
+	This problem set is to be turned in on Canvas. You may reference any result or problem from our worksheets or lectures, unless it is the fact to be proven! You are encouraged to work with others, but you should understand everything you write. Please consult the class website for acceptable/unacceptable resources for the problem sets.
+	
+	\
+	
+	
+
+\begin{enumerate}
+
+\item Let $\{a_n\}_{n=1}^\infty$ and $\{b_n\}_{n=1}^\infty$ be sequences. Either prove\footnote{You may use our Theorem on Limits and Algebra whenever convenient, but make sure you are using something the Theorem says, and nothing it doesn't!} or give a counterexample to each of the following:
+\begin{enumerate}
+\item If $\{a_n^2\}_{n=1}^\infty$ is divergent, then $\{a_n\}_{n=1}^\infty$ is divergent.
+\item If $\{a_n\}_{n=1}^\infty$ and $\{b_n\}_{n=1}^\infty$ both diverge, then $\{a_n + b_n\}_{n=1}^\infty$ also diverges.
+\item If $\{a_n\}_{n=1}^\infty$ converges and $\{b_n\}_{n=1}^\infty$ diverges, then $\{a_n + b_n\}_{n=1}^\infty$ diverges.
+\item Suppose also that $b_n\neq 0$ for all $n\in \N$. If $\{b_n\}_{n=1}^\infty$ converges to $0$, then $\displaystyle \left\{\frac{a_n}{b_n}\right\}_{n=1}^\infty$ diverges.
+\end{enumerate}
+
+\
+
+\
+
+
+\item Use the definition to prove that the sequence $\{ -\sqrt{n} \}_{n=1}^\infty$ diverges to $-\infty$.
+
+
+\
+
+\
+
+
+\item Let $\{a_n\}_{n=1}^\infty$ be a sequence with $a_n>0$ for all $n\in \N$. Prove that $\{a_n\}_{n=1}^\infty$ converges to $0$ if and only if $\displaystyle \left\{\frac{1}{a_n}\right \}_{n=1}^\infty$ diverges to $+\infty$. 
+
+
+
+\
+
+\
+
+\item Define a sequence $\{a_n\}_{n=1}^\infty$ recursively by $a_1=2$ and $\displaystyle a_{n+1} = \frac{a_{n}}{2} + \frac{1}{a_{n}}$.
+\begin{enumerate}
+\item Prove that $a_n>0$ for all $n\in \N$.
+\item Prove\footnote{Write $a_{n}-2$ in terms of $a_{n-1}$ and factor the expression.} that $a_n^2 \geq 2$ for all $n\in \N$.
+\item Prove\footnote{Consider $a_{n+1}-a_n$ and use (b).} that the sequence is decreasing.
+\item Show that the sequence is convergent.
+\item Determine\footnote{If the sequence converges to $L$, explain why $L = \frac{L}{2} + \frac{1}{L}$, and solve for $L$.} to what value the sequence converges.
+\end{enumerate}
+
+
+
+
+
+\end{enumerate}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

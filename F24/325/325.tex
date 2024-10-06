@@ -2056,6 +2056,7 @@ This shows that $\displaystyle \left\{\frac{a_n}{n}\right\}_{n=1}^\infty$ conver
 \end{framed}
 \end{enumerate}
 
+\newpage 
 \Sept{27}{\Fr}{2.2}
 
 
@@ -2491,86 +2492,80 @@ Hint: Show that there exists a sequence $\{a_n\}_{n=1}^\infty$ of rational numbe
 
 
 
-\begin{comment}
-
-
-	
-\noindent It is sometimes useful to distinguish between sequences like $\{(-1)^n\}_{n=1}^\infty$
-that diverge because they ``oscillate'', and sequences like $
-\{n\}_{n=1}^\infty$
-that diverge because they ``head toward infinity''.
 
 
 
 
-\begin{enumerate}[label=(\Roman*)]
+\newpage
 
-\item In intuitive language, a sequence converges to $L$ if no matter how close we want or sequence to be to $L$, all values past some point are at least that close. Intuitively, a sequence \emph{diverges to $+\infty$} if no matter how large we want our sequence to be, all values past some point are at least that large. Write a precise definition for a sequence to diverge to $+\infty$.
-
-
-
-\item Write a precise definition for a sequence to diverge to $-\infty$.
-\end{enumerate} 
+\Oct{4}{\Fr}{2.2}
 
 \begin{framed}
-\begin{enumerate}[label=(\Roman*)]
-\item A sequence $\{a_n\}_{n=1}^\infty$ \emph{diverges to $+\infty$}\index{diverges to $+\infty$} if for every $M\in \R$, there is some $N\in \R$ such that for every natural number $n>N$, we have $a_n >M$.
-\item A sequence $\{a_n\}_{n=1}^\infty$ \emph{diverges to $-\infty$}\index{diverges to $-\infty$} if for every $m\in \R$, there is some $N\in \R$ such that for every natural number $n>N$, we have $a_n < m$.
-\end{enumerate} 
+\noindent \textsc{Definition 16.1:} A sequence \textbf{diverges to $+\infty$}\index{diverges to $+\infty$} if for every real number $M$, there is some $N\in \R$ such that for every natural number $n>N$ we have $a_n > M$.
+
+\
+
+
+\noindent \textsc{Definition 16.2:} A sequence \textbf{diverges to $-\infty$}\index{diverges to $-\infty$} if for every real number $m$, there is some $N\in \R$ such that for every natural number $n>N$ we have $a_n < m$.
 \end{framed}
+
+
 
 
 
 \begin{enumerate}
 
-\item Carefully write the logical negation of ``$\{ a_n\}_{n=1}^\infty$ diverges to $+\infty$'' in simplified form.
-
-\begin{framed}
-There exists $M\in \R$ such that for every $N\in \R$, there exists a natural number $n>N$ with $a_n <M$.
-\end{framed}
 
 \item Use the definition to prove that the sequence $\{ \sqrt{n} \}_{n=1}^\infty$ diverges to $+\infty$.
 
 \begin{framed}
-Let $M\in \R$. [Scratchwork: We need some $N$ such that if $n>N$ then $\sqrt{n} > M$. This inequality is equivalent to $n > M^2$, so take $N=M^2$.]
-Take $N=M^2$. Let $n>N$ be a natural number. Then $\sqrt{n} > \sqrt{N} = \sqrt{M^2} = |M| \geq M$. This shows that $\{ \sqrt{n} \}_{n=1}^\infty$ diverges to $+\infty$.
+Let $M\in \R$. [Scratchwork: We need some $N$ such that if $n>N$ then $\sqrt{n} > M$. This inequality is equivalent to $n > M^2$, so take $N=M^2$.] Take $N=M^2$. Then for any natural number $n>N$, we have $\sqrt{n} > \sqrt{M^2} \geq M$. This shows that  $\{ \sqrt{n} \}_{n=1}^\infty$ diverges to $+\infty$.
 \end{framed}
 
-%\item Use the definition to prove that the sequence $\{ (-1)^n\}_{n=1}^\infty$ does not diverge to $+ \infty$.
-
-%\
 
 \item\label{nba} Prove that if a sequence $\{ a_n\}_{n=1}^\infty$ diverges to $+\infty$ then it is not bounded above. 
 
-
-\begin{framed} We prove the contrapositive. Suppose that $\{ a_n\}_{n=1}^\infty$ is bounded above, say by $M$. Suppose, to obtain a contradiction that $\{ a_n\}_{n=1}^\infty$ diverges to $+\infty$. Then applying the definition with the number $M$, we have that there is some $N$ such that for all $n>N$, $a_n>M$. But htere is no $n$ for which $a_n>M$, so this is a contradiction, so $\{ a_n\}_{n=1}^\infty$ does not diverge to $+\infty$.
+\begin{framed}
+Suppose that $\{ a_n\}_{n=1}^\infty$ diverges to $+\infty$. By way of contradiction, suppose that $\{ a_n\}_{n=1}^\infty$ is bounded above. This means that there is some $b\in \R$ such that for all $n\in \N$, we have $a_n\leq b$. Apply the definition of diverges to $+\infty$ with the number $M=b$. Then there is some $N$ such that for all $n>N$ we have $a_n>b$. But for such an $n$ we have $a_n\leq b$ and $a_n>b$, a contradiction. We conclude that $\{ a_n\}_{n=1}^\infty$ is not bounded above.
 \end{framed}
+
 
 \item Use (\ref{nba}) to show that if a sequence diverges to $+\infty$ then it diverges.
 
-\begin{framed}  Since every converges sequence is bounded, the conclusion follows.
+\begin{framed}
+Since any convergent sequence is bounded, an unbounded sequence diverges. In particular, if $\{ a_n\}_{n=1}^\infty$ diverges to $+\infty$, then it is not bounded above, and hence divergent.
+\end{framed}
+
+\item Prove or disprove: If a sequence diverges, then it diverges to $+\infty$ or it diverges to $-\infty$.
+
+\begin{framed}
+This is false: the sequence $\{(-1)^n\}_{n=1}^\infty$ is divergent, but does not diverge to $+\infty$ (take $M=1$) nor does it diverge to $-\infty$ (take $m=-1$).
 \end{framed}
 
 
 \item Prove or disprove: If a sequence is not bounded above, then it diverges to $+\infty$.
 
-\begin{framed}  A counterexample is given by the sequence $\{ (-1)^n n \}_{n=1}^\infty$. It is not bounded above, since for any $M$, we can take an even natural number $n$ larger than $M$, and for this number, $(-1)^n  n = n >M$. It does not diverge to $+\infty$: take $M=0$; for any $N\in \R$, there is an odd natural number $n$ larger than $N$, and for this $n$, we have $(-1)^n n = - n < 0 = M$.
+\begin{framed}
+This is false: the sequence $\{(-1)^n \cdot n\}_{n=1}^\infty$ is not bounded above or below, but does not diverge to $-\infty$: take $M=0$; then for any $N$ there is some \emph{odd} natrual number $n>N$, and for this $n$, $a_n = -n < 0$.
 \end{framed}
 
 \item Prove or disprove:  If a sequence diverges to $+\infty$ then it is increasing.
 
-\begin{framed}  A counterexample is given by the sequence given by $a_1 = 3$, $a_n=n$ for $n>1$. It is not increasing since $a_1=3 > 2 = a_2$. However, it diverges to $+\infty$ since, given $M$, we can take $N=M$, and for any $n>N$, we have $a_n=n>N=M$.
-\end{framed}
+\
+
+\
 
 \item Prove or disprove: If a sequence is increasing and not bounded above, it diverges to~$\infty$.
 
-\begin{framed} 
-To prove it, let $\{ a_n\}_{n=1}^\infty$ be  increasing and not bounded above. Take $M\in \R$. Since it is not bounded above, there is some $N\in \N$ such that $a_N >M$. Then, for this $N$, for any $n>N$ we have $a_n \geq a_N$ since the sequence is increasing, so $a_n > M$. This shows the sequence diverges to $+\infty$.
-\end{framed}
 
 \end{enumerate}
 
-\Oct{4}
+\begin{comment}
+
+\newpage
+
+
+\Oct{7}{\Mo}{1.5}
 	
 We will now embark on a bit of detour. I've postponed talking about proofs by induction, but we will need to use that technique on occasion. So let's talk
 about that idea now. 
@@ -2642,29 +2637,64 @@ For $P_1$ we have $1 = \frac{1 \cdot 2}{2}$ is true. Now we show $P_k$ implies $
 which is $P_{k+1}$. Thus we have proven the equality for all natural numbers $n$ by induction.\qed
 \end{ex}
 
-\begin{ex} Let us show that for every real number $x\geq -1$, and every natural number $n\in \N$, the inequality $(1+x)^n \geq 1+nx$.
-
-Fix a real number $x\geq -1$. We show that $(1+x)^n \geq 1+nx$ for all natural numbers $n$ by induction. For $n=1$, we have 
-\[ (1+x)^1 = 1+x = 1+ 1\cdot x,\]
-so the statement is true for $n=1$. Let $k$ be a natural number and assume that
-\[ (1+x)^k \geq 1+kx.\]
-Then,
-\[ (1+x)^{k+1} = (1+x)\cdot (1+x)^k \geq (1+x) (1+kx) = 1 + (k+1) x + kx^2 \geq 1 + (k+1) x,\]
-where we used that $1+x\geq 0$ in the first $\geq$ (since $x\geq -1$) and that $x^2\geq 0$ in the second $\geq$.
-Thus, by induction, the inequality is true for all $n\in \N$.\qed
-\end{ex}
 
 
-Induction is also closely related to the notion of a sequence defined by recursion. Recall that we define a sequence $\{a_n\}_{n=1}^\infty$ recursively by specifying a value $a_1$ for the first value, and a formula for $a_n$ in terms of $a_{n-1}$ (or multiple earlier values in the sequence). The principle of induction justifies that such a rule gives a well-defined value for every $n$: if we take $P_k$ to be the statement that the formulas define value for all of the first $k$ terms $a_1,\dots,a_k$, then $P_1$ is true and $P_k \Rightarrow P_{k+1}$, so $P_n$ is true for every $n\in \N$.
 
-\begin{prop}
-For any real number $r$, there exists a strictly increasing sequence of rational numbers that converges to $r$.
-\end{prop}
+
+Now, I want to apply what we've done so far to decimal expansions. Let us say that $d_1,d_2,d_3,\dots$ is a ``digit sequence'' if $d_i\in\{0,1,\dots,9\}$ for each $i\in\N$. We will say that an integer $k$ and a digit sequence $d_1,d_2,d_3,\dots$ is a ``decimal expansion'' and write $k. d_1 d_2 d_3 \dots$ to denote a decimal expansion. We say that the decimal expansion $k. d_1 d_2 d_3 \dots$  ``corresponds to a real number $r$'' if the sequence
+\begin{align*}
+a_1 &= k + \frac{d_1}{10^1} \\
+a_2 &= k + \frac{d_1}{10^1} + \frac{d_2}{10^2} \\
+a_3 &= k + \frac{d_1}{10^1} + \frac{d_2}{10^2} + \frac{d_3}{10^3}\\
+&\vdots
+\end{align*}
+converges to $r$.
+
+
+
+\begin{thm}
+Every decimal expansion corresponds to a real number.
+\end{thm}
 \begin{proof}
-We will construct a sequence of rational numbers $\{q_n\}_{n=1}^\infty$ such that $r-\frac{1}{n} < q_n < r$ for every $n$ that is strictly increasing, and then show that this sequence converges to $r$. By Density of Rational Numbers, there exists a rational number $q_1$ such that $r-1 < q < r$. Given $q_1,\dots,q_n$, we define $q_{n+1}$ recursively to be a rational number such that $\max\{r-\frac{1}{n+1}, q_n\} < q_{n+1} < r$ again using Density of Rational Numbers. To see that this rule makes sense, we observe that if we have constructed $q_1,\dots ,q_n$ by this rule, then  $q_n<r$, so $\max\{r-\frac{1}{n+1}, q_n\} < r$, and hence Density of Rational number applies, so we can construct $q_{n+1}$ (and hence we can construct $q_n$ for any $n$ by this rule). Since \[ q_n \leq \max\{r-\frac{1}{n+1}, q_n\} < q_{n+1}\] for every $n$, the sequence we obtain is strictly increasing. Since \[ r-\frac{1}{n}< q_{n} < r\] for every~$n$ and $\{ r - \frac{1}{n}\}_{n=1}^\infty$ converges to $r$, by the Squeeze Theorem, the sequence $\{q_n\}_{n=1}^\infty$ converges to $r$.
+Let $k$ be an integer, and $d_1,d_2,d_3,\dots$ be a sequence such that $d_i\in \{0,1,\dots,9\}$ for each $i\in \N$. We need to show that the sequence 
+\begin{align*}
+a_1 &= k + \frac{d_1}{10^1} \\
+a_2 &= k + \frac{d_1}{10^1} + \frac{d_2}{10^2} \\
+a_3 &= k + \frac{d_1}{10^1} + \frac{d_2}{10^2} + \frac{d_3}{10^3}\\
+&\vdots
+\end{align*}
+converges. Observe that $\{a_n\}_{n=1}^\infty$ is increasing. Note now that for any $n\in \N$, we have
+\begin{align*}
+a_n &=k + \frac{d_1}{10^1} + \frac{d_2}{10^2} + \cdots + \frac{d_n}{10^n}\\
+&=k + \frac{9}{10^1} + \frac{9}{10^2} + \cdots + \frac{9}{10^n}\\
+&=k + \frac{9}{10} \left( 1 + \frac{1}{10^1} + \cdots + \frac{1}{10^{n-1}} \right) \\
+&= k+ \frac{9}{10} \frac{ 1 - \frac{1}{10^n} }{1- \frac{1}{10}}\\
+&= k+ \frac{9}{10} \frac{ 1 - \frac{1}{10^n} }{\frac{9}{10}}\\
+&= k+ 1-\frac{1}{10} \leq k+1.\end{align*}
+Since this holds for all $n$, $\{a_n\}_{n=1}^\infty$ is bounded above by $k+1$. By the Monotone Convergence Theorem, $\{a_n\}_{n=1}^\infty$ converges.
+\end{proof}
+
+\begin{ex} The decimal expansion $0.25$ corresponds to $\frac{1}{4}$. The decimal expansion $0.99999\dots$ corresponds to $1$.\end{ex}
+
+
+
+\begin{lem} \label{lem211}
+	Let $b_1, b_2, \dots$ be any strictly increasing sequence of natural numbers; that is, assume $b_k \in \N$ for all $k \in \N$ and that $b_k < b_{k+1}$ for 
+	all $k \in \N$. Then $b_k \geq k$ for all $k$.
+\end{lem}
+
+\begin{proof} Suppose $b_1, b_2, \dots$ is a strictly increasing
+	sequence of natural numbers. We prove $b_n \geq n$ for all $n$ by
+	induction on $n$. 
+	That is, for each $n  \in \N$, let $P_n$ be
+	the statement that $b_n \geq n$. 
+	
+	$P_1$ is true since $b_1 \in \N$ and so $b_1 \geq 1$. Given $k \in \N$, assume $P_k$ is true; that is, assume $b_k \geq k$. Since $b_{k+1} >
+	b_k$ and both are natural numbers, we have $b_{k+1} \geq b_k + 1 \geq k+1$; that is, $P_{k+1}$ is true too. By induction, $P_n$ is true for all $n \in \N$. 
 \end{proof}
 
 
+\begin{comment}
 
 
 \Oct{6}
