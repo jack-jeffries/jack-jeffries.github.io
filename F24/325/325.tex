@@ -2637,7 +2637,25 @@ For $P_1$ we have $1 = \frac{1 \cdot 2}{2}$ is true. Now we show $P_k$ implies $
 which is $P_{k+1}$. Thus we have proven the equality for all natural numbers $n$ by induction.\qed
 \end{ex}
 
-
+\begin{prop} Let $x$ be a real number. For any
+$n\in \N$,
+\[ (1-x) (1+x +x^2 + x^3 +\cdots + x^n ) = 1 - x^{n+1}.\]
+\end{prop}
+\begin{proof}
+We proceed by induction on $n$. First we check for $n=1$:
+\[ (1-x)(1+x) = 1+ x - x -x^2 = 1-x^{1+1},\]
+so the statement is true for $n=1$.
+Suppose the equality holds for $k$:
+\[(1-x) (1+x +x^2 + x^3 +\cdots + x^k ) = 1 - x^{k+1}.\]
+Then
+\begin{align*}
+(1-x)& (1+x +x^2 + x^3 +\cdots + x^{k+1} ) \\
+&=(1-x)((1+x +x^2 + x^3 +\cdots + x^{k} )  + (x^{k+1}))
+\\&=(1-x)(1+x +x^2 + x^3 +\cdots + x^{k} )  + (1-x) (x^{k+1})
+\\&= 1 - x^{k+1} + x^{k+1} - x^{k+2} = 1-x^{k+2},
+\end{align*}
+and it holds for $k+1$. Thus, the statement is true for all $n$ by induction.
+\end{proof}
 
 
 
@@ -2650,7 +2668,8 @@ a_3 &= k + \frac{d_1}{10^1} + \frac{d_2}{10^2} + \frac{d_3}{10^3}\\
 \end{align*}
 converges to $r$.
 
-\newpage
+
+
 
 \begin{thm}
 Every decimal expansion corresponds to a real number.
