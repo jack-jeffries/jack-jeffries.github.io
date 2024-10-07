@@ -1,0 +1,265 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals,bbm}
+\usepackage[all]{xy}  
+
+
+
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\ord}{\mathrm{ord}}
+\newcommand{\Spec}{\mathrm{Spec}}
+\renewcommand{\1}{\mathbbm{1}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+\usepackage[hang,flushmargin]{footmisc}
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{\S4.18: Spectrum of a ring}	
+
+\begin{framed}
+\noindent \textsc{Definition:} Let $R$ be a ring, and $I\subseteq R$ an ideal of $R$.
+\begin{itemize}
+\item The \textbf{spectrum} of a ring $R$, denoted $\mathrm{Spec}(R)$, is the set of prime ideals of $R$. 
+\item We set $V(I) \ceq \{ \p \in \Spec(R) \ | \ I \subseteq \p\}$, the set of primes containing $I$.
+\item We set $D(I) \ceq \{ \p \in \Spec(R) \ | \ I \not\subseteq \p\}$, the set of primes \emph{not} containing $I$.
+\item More generally, for any subset $S\subseteq R$, we define $V(S)$ and $D(S)$ analogously.
+\end{itemize}
+
+
+\
+
+\noindent \textsc{Definition/Proposition:} The collection $\{ V(I) \ | \ I \ \text{an ideal of} \ R \}$ is the collection of closed subsets of a topology on $R$, called the \textbf{Zariski topology}; equivalently, the open sets are $D(I)$ for $I \ \text{an ideal of} \ R$.
+
+\
+
+\noindent \textsc{Definition:} Let $\phi: R\to S$ be a ring homomorphism. Then the \textbf{induced map on Spec} corresponding to $\phi$ is the map $\phi^*: \Spec(S) \to \Spec(R)$ given by $\phi^*(\p) \ceq \phi^{-1}(\p)$.
+
+\
+
+\noindent \textsc{Lemma:} Let $\p$ be a prime ideal. Let $I_\lambda,J$ be ideals.
+\begin{enumerate}
+\item $\sum_{\lambda} I_\lambda \subseteq \p \Longleftrightarrow I_\lambda \subseteq \p$ for all $\lambda$.
+\item $IJ  \subseteq \p \Longleftrightarrow I\subseteq \p \ \text{or} \ J \subseteq \p$
+\item $I \cap J \subseteq \p \Longleftrightarrow I\subseteq \p \ \text{or} \ J \subseteq \p$
+\item $I \subseteq \p \Longleftrightarrow \sqrt{I} \subseteq \p$
+\end{enumerate}
+
+\end{framed}
+ 
+\begin{enumerate}
+\itemA The spectrum of some reasonably small rings.
+\begin{enumerate}
+\itema Let $R=\Z$ be the ring of integers.
+\begin{enumerate}
+\itemai What are the elements of  $\Spec(R)$? Be careful not to forget $(0)$!
+\itemai Draw a picture $\Spec(R)$ (with $\cdots$ since you can't list everything) with a line going up from $\p$ to $\q$ if $\p\subset \q$.
+\itemai Describe the sets $V(I)$ and $D(I)$ for any ideal $I$.
+\end{enumerate}
+\itema Same questions for $R=K$ a field.
+\itema Same questions for the polynomial ring $R=\C[X]$.
+\itema Same questions\footnote{Spoiler: The only primes are $(0)$ and $(X)$. To prove it, show/recall that any nonzero series $f$ can be written as $f=X^n u$ for some unit $u\in K\llbracket X\rrbracket$.} for the power series ring $R=K\llbracket X\rrbracket$ for a field $K$.
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itema The spectrum of $\mathbb{Z}$ is, as a poset:
+\[ \xymatrix@C-1pc{ &&&& & (2) &  & (3) &  & (5) & & (7) & & (11) & & \cdots &&&&& \\ 
+&&&& &  & &  & &  & (0)\ar@{-}[lllllu] \ar@{-}[lllu] \ar@{-}[lu] \ar@{-}[ru] \ar@{-}[rrru] \ar@{=}[rrrrru] &&&&& &&&&& }\]
+The sets $D((n))$ are the whole space when $n=1$, the empty set with $n=0$, and any complement of finite union of things in the top row otherwise.
+The sets $V((n))$ are the whole space when $n=0$, the empty set with $n=1$, and any finite union of things in the top row otherwise.
+\itema The spectrum of a field is just $\{(0)\}$.
+\itema The spectrum of $\mathbb{\C}[X]$ is, as a poset:
+\[ \xymatrix@C-1pc{ &&&& & (X) &  & (X-1) &  & (X-\sqrt{2}) & & (X-i) & & (X-\pi) & & \cdots &&&&& \\ 
+&&&& &  & &  & &  & (0)\ar@{-}[lllllu] \ar@{-}[lllu] \ar@{-}[lu] \ar@{-}[ru] \ar@{-}[rrru] \ar@{=}[rrrrru] &&&&& &&&&& }\]
+For an element $f$, $V((f))$ corresponds to the irreducible factors of $f$.
+The sets $D((f))$ are the whole space when $f=1$, the empty set with $f=0$, and any complement of finite union of things in the top row otherwise.
+The sets $V((f))$ are the whole space when $f=0$, the empty set with $f=1$, and any finite union of things in the top row otherwise.
+\itema \[ \xymatrix@C-1pc{ (X) \\ 
+ (0)\ar@{-}[u] }\]
+ The sets $V$ are $\varnothing$, $\{(X)\}$, and $\{(0),(X)\}$. The sets $D$ are $\varnothing$, $\{(0)\}$, and $\{(0),(X)\}$.
+\end{enumerate}
+}
+
+\itemA More Spectra.
+\begin{enumerate}
+\itema Let $R=\C[X,Y]$ be a polynomial ring in two variables. Find some maximal ideals, the zero ideal, and some primes that are neither. Draw a picture like the ones from the previous problem to illustrate some containments between these.
+\itema Let $R$ be a ring and $I$ be an ideal. Use the Second Isomorphism Theorem to give a natural bijection between $\Spec(R/I)$ and $V(I)$.
+ \itema Let $\displaystyle R=\frac{\C[X,Y]}{(XY)}$. Let $x=[X]$ and $y=[Y]$.
+\begin{enumerate}
+\itemai Use the definition of prime ideal to show that $\Spec(R) = V(x) \cup V(y)$.
+\itemai Use the previous problem to completely describe $V(x)$ and $V(y)$.
+\itemai Give a complete description/picture of $\Spec(R)$.
+\end{enumerate}
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itema 
+\[ \xymatrix@C-1pc{\cdots & (X,Y) & (X-1,Y) & (X-1,Y-1) & (X-7\pi,Y) & (Y-i\sqrt{2},Y-1) & \cdots \\
+\cdots & (x)\ar@{-}[u] & (x-1)\ar@{-}[u]\ar@{-}[ru] & (X^2-Y^3) \ar@{-}[u]\ar@{-}[llu]& (X^2+Y^2+1)\ar@{-}[ru] & (Y)\ar@{-}[lu]\ar@{-}[lllu]\ar@{-}[llllu] & \cdots \\
+&&&(0)\ar@{-}[llu]\ar@{-}[lu]\ar@{-}[u]\ar@{-}[ru]\ar@{-}[rru] &&&
+}\]
+\itema $\p \in V(I)$ maps to $\p/I \in \Spec(R/I)$.
+ \itema
+\begin{enumerate}
+\itemai Since $xy=0$, if $\p$ is prime, we must have $x\in \p$ or $y\in \p$.
+\itemai $V(x) \cong \Spec(R/(x)) \cong \Spec(\C[Y])$ and $V(y) \cong \Spec(R/(y)) \cong \Spec(\C[X])$.
+\itemai \[ \xymatrix@C-1pc{  (x-a,y) : a\in \C\smallsetminus 0 \ar@{-}[d]   & (x,y) \ar@{-}[dl]  \ar@{-}[dr]&  (x,y-b)  : b\in \C\smallsetminus 0  \ar@{-}[d]  \\ 
+(x) & & (y)
+ }\]
+
+\end{enumerate}
+\end{enumerate}
+}
+
+
+\begin{samepage}
+\itemA  Let $R$ be a ring. 
+\begin{enumerate}
+\itema Show that for any subset $S$ of $R$, $V(S) = V(I)$ where $I=(S)$.
+\itema Translate the lemma to fill in the blanks: \\
+\begin{minipage}{0.4\textwidth}
+\[\begin{aligned}
+ &V(I) \  \underline{\phantom{123}} \  V(\sqrt{I})  \\
+&V( \sum_{\lambda} I_\lambda)  \ \underline{\phantom{12345}}\ V(I_\lambda)  \\
+&V( f_1,\dots,f_n) \,  \underline{\phantom{12}} \, V(f_1)  \, \underline{\phantom{12}}  \cdots   \underline{\phantom{12}}\,  V(f_n) \\
+&V( IJ) \underline{\phantom{123}}  V(I)  \underline{\phantom{123}} V(J) \\
+&V( I\cap J)  \underline{\phantom{123}} V(I)\underline{\phantom{123}}  V(J) 
+\end{aligned}\]
+\end{minipage}
+\begin{minipage}{0.1\textwidth}\phantom{ABCDE}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\[\begin{aligned}
+ &D(I) \  \underline{\phantom{123}} \  D(\sqrt{I})  \\
+&D( \sum_{\lambda} I_\lambda)  \ \underline{\phantom{12345}}\ D(I_\lambda)  \\
+&D( f_1,\dots,f_n) \,  \underline{\phantom{12}} \, D(f_1)  \, \underline{\phantom{12}}  \cdots   \underline{\phantom{12}}\,  D(f_n) \\
+&D( IJ) \underline{\phantom{123}}  D(I)  \underline{\phantom{123}} D(J) \\
+&D( I\cap J)  \underline{\phantom{123}} D(I)\underline{\phantom{123}}  D(J) 
+\end{aligned}\]
+\end{minipage}
+\itema Use the above to verify that the Zariski topology indeed satisfies the axioms of a topology.
+\end{enumerate}
+\end{samepage}
+
+\solution{
+\begin{enumerate}
+\itema This follows from definition of generating set of an ideal.
+\itema \begin{minipage}{0.4\textwidth}
+\[\begin{aligned}
+ &V(I)   =  V(\sqrt{I})  \\
+&V( \sum_{\lambda} I_\lambda) = \bigcap_{\lambda} V(I_\lambda)  \\
+&V( f_1,\dots,f_n) = V(f_1) \cap  \cdots   \cap  V(f_n) \\
+&V( IJ) = V(I)  \cup  V(J) \\
+&V( I\cap J) = V(I) \cup  V(J) 
+\end{aligned}\]
+\end{minipage}
+\begin{minipage}{0.05\textwidth}\phantom{ABC}
+\end{minipage}
+\begin{minipage}{0.4\textwidth}
+\[\begin{aligned}
+ &D(I)  =  D(\sqrt{I})  \\
+&D( \sum_{\lambda} I_\lambda) = \bigcup_{\lambda} D(I_\lambda)  \\
+&D( f_1,\dots,f_n) = D(f_1)  \cup \cdots \cup  D(f_n) \\
+&D( IJ)=  D(I) \cap D(J) \\
+&D( I\cap J) = D(I)\cap  D(J) 
+\end{aligned}\]
+\end{minipage}
+\itema The $D$'s are closed under arbitrary unions and finite intersection; we also have $\Spec(R) = D(1)$ and $\varnothing  = D(0)$.
+\end{enumerate}}
+
+\itemB The induced map on $\Spec$: Let $\phi:R\to S$ be a ring homomorphism.
+\begin{enumerate}
+\itemb Show that for any prime ideal $\q \subseteq S$, the ideal $\phi^*(\q) = \phi^{-1}(\q)$ is a prime ideal of $R$.
+\itemb Show that for any ideal $I\in R$, we have 
+\[ \text{$(\phi^*)^{-1}(V(I))= V(IS)$ and $(\phi^*)^{-1}(D(I))= D(IS)$.}\]
+\itemb Show that $\phi^*$ is continuous.
+\itemb If $\phi:R\to R/I$ is quotient map, describe $\phi^*$.
+\end{enumerate}
+
+
+\solution{
+\begin{enumerate}
+\itemb $\phi^{-1}(\q)$ is the kernel of the map $R \xrightarrow{\phi} S \to S/\q$, so by the First Isomorphism Theorem, $R/\phi^{-1}(\q)$ is isomorphic to a subring of $S/\q$. Since $S/\q$ is a domain, so is $R/\phi^{-1}(\q)$, so $\phi^{-1}(\q)$ is a prime ideal.
+\itemb Let $\q\in \Spec(S)$. We claim that $\q\in V(IS)$ if and only if $\p \ceq \phi^*(\q)\in V(I)$, which shows both statements. Indeed, $\q \in V(IS)$ is equivalent to $\q$ contains $IS$. Since $IS$ is generated by $\phi(I)$,  this is equivalent to $\q \supseteq \phi(I)$, which is equivalent to $\phi^{-1}(\q) \supseteq I$. But this is the same as $\phi^{-1}(\q) \in V(I)$.
+\itemb Follows from the previous.
+\itemb This corresponds to the embedding $V(I) \subseteq \Spec(R)$.
+\end{enumerate}
+}
+
+\itemB Properties of $\Spec(R)$.
+\begin{enumerate}
+\itemb Show that for any ring $R$, the space $\Spec(R)$ is compact.
+\itemb Show that if $\Spec(R)$ is Hausdorff, then every prime of $R$ is maximal.
+\itemb Show that $\Spec(R) \cong \Spec(R/\sqrt{0})$.
+\end{enumerate}
+
+\
+
+\itemC Let $K$ be a field, and $R=\displaystyle \frac{K[X_1,X_2,\dots]}{( \{X_i - X_i X_j \ | \ 1 \leq i \leq  j\})}$.
+Show that $\m = (x_1,x_2,\dots)$ is both maximal and minimal in $\Spec(R)$. Is $\{\m\}$ closed? Is $\{\m\}$ open?
+
+\end{enumerate}
+\vfill
+
+
+
+
+
+\end{document}
