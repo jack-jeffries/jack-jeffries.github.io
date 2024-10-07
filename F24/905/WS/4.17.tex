@@ -1,0 +1,172 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals,bbm}
+
+
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\ord}{\mathrm{ord}}
+\newcommand{\1}{\mathbbm{1}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+\usepackage[hang,flushmargin]{footmisc}
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{\S4.17: Strong Nullstellensatz}	
+
+\begin{framed}
+\noindent \textsc{Strong Nullstellensatz:} Let $K$ be an algebraically closed field, and $R=K[X_1,\dots,X_n]$ be a polynomial ring. Let $I\subseteq R$ be an ideal and $f\in R$ a polynomial. Then \[ \text{$f$ vanishes at every point of $\cZ(I)$ if and only if $f\in \sqrt{I}$.}\] 
+
+\
+
+
+\noindent \textsc{Definition:} Let $K$ be a field and $R=K[X_1,\dots,X_n]$. A \textbf{subvariety} of $K^n$ is a set of the form $\cZ(S)$ for some set of polynomials $S\subseteq R$; i.e., a solution set of some system of polynomial equations.
+
+\
+
+\noindent \textsc{Corollary:} Let $K$ be an algebraically closed field. There is a bijection
+\[ \{ \text{radical ideals in $K[X_1,\dots,X_n]$}\}  \longleftrightarrow \{ \text{subvarieties of $K^n$}\}.\]
+\end{framed}
+
+ 
+\begin{enumerate}
+\itemA Proof of Strong Nullstellensatz:
+\begin{enumerate}
+\itema Show that $\cZ(I) = \cZ(\sqrt{I})$, and deduce the ($\Leftarrow$) direction.
+\itema  Let $Y$ be an extra indeterminate. Show that $f$ vanishes on $\cZ(I)$ implies that
+\[\cZ\big( I + (Y f -1) \big) = \varnothing \quad \text{in} \ K^{n+1}.\]
+\itema What does the Nullstellensatz have to say about that?
+\itema Apply the $R$-algebra homomorphism $\phi: R[Y] \to \mathrm{frac}(R)$ given by $\phi(Y) = \frac{1}{f}$ and clear denominators.
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itema Since $I\subseteq \sqrt{I}$, we have $\cZ(\sqrt{I})  \subseteq \cZ(I)$. On the other hand, if $\alpha\in \cZ(I)$ and $f^n \in I$, then $f^n(\alpha)=0$, so $f(\alpha)=0$, so $\alpha\in \cZ(\sqrt{I})$. In particular, the ($\Leftarrow$) direction of the statement holds.
+\itema If there was a solution $(\alpha,a)$, this would mean $\alpha\in \cZ(I)$ and $a f(\alpha) - -1 = 0$, so $f(\alpha)\neq 0$, contradicting that $\alpha\in \cZ(f)$.
+
+\itema We can write $1 = \sum_i r_i(\underline{X},Y) g_i(\underline{X}) + s(\underline{X},Y) (Y f(\underline{X})-1)$ for some $r_i,s\in R[Y]$ and $g_i\in I$.
+\itema We get $1 = \sum_i r_i(\underline{X},1/f) g_i(\underline{X}) + s(\underline{X},1/f) (1/f \cdot f(\underline{X})-1)$. The last term dies so $1 = \sum_i r_i(\underline{X},1/f) g_i(\underline{X})$. We can clear denominators to get $f^n = \sum r'_i(\underline{X}) g_i(\underline{X})$ in $R$, so $f^n \in I$.
+\end{enumerate}
+}
+
+
+
+
+\itemA Strong Nullstellensatz warmup:
+\begin{enumerate}
+\itema Consider the ideal $I= (X^2+Y^2) \in \R[X,Y]$ and $f=X$. Discuss the hypotheses and conclusion of Strong Nullstellensatz in this example.
+\itema Show that\footnote{Hint: You just need to find one point. \emph{One}, \emph{one}, \emph{one}\dots} no power of $F=X^2+Y^2+Z^2$\, is in the ideal \[I=(X^3 - Y^2 Z, Y^7-X Z^3, 3X^5 - XYZ - 2Z^{19}) \quad\text{in the ring} \quad \C[X,Y,Z].\]
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itema $\cZ(I) = \{(0,0)\}$ and $X$ vanishes along $\cZ(I)$, but $(X^2+Y^2)$ is prime and hence radical. The conclusion of Strong Nullstellensatz fails. Of course, $\R$ is not algebraically closed.
+\itema $F(1,1,1)=3\neq 0$ but $(1,1,1)\in \cZ(I)$, since it is in the zero-set of each generator.
+\end{enumerate}
+}
+
+\itemA Prove the Corollary.
+
+\solution{We have a map from radical ideals to subvarieities given by $I \mapsto \cZ(I)$. This is surjective by definition and the first part of the proof of Strong Nullstellensatz. It is injective too: if $I$ and $J$ are distinct radical ideals, without loss of generality there is some $f\in J$ such that $f\notin \sqrt{I}$; then $f(\alpha)\neq 0$ for some $\alpha\in \cZ(I)$, so $\cZ(I) \not\subseteq \cZ(J)$.}
+
+\itemA Let $R=\C[T]$ be a polynomial ring. In this problem, we will show that the ideal of $\C$-algebraic relations on the elements $\{T^2,T^3,T^4\}$ is $I=(X_1^2-X_3,X_2^2-X_1X_3)$.
+\begin{enumerate}
+\itema Let $\phi: \C[X_1,X_2,X_3] \to \C[T]$ be the $\C$-algebra map $X_1\mapsto T^2, X_2\mapsto T^3, X_3\mapsto T^4$. Show that $I \subseteq \ker (\phi)$.
+\itema Show that $\cZ(I) \subseteq \{ (\lambda^2,\lambda^3, \lambda^4) \in \C^3 \ | \ \lambda\in \C)\} \subseteq \cZ(\ker (\phi))$, and deduce that ${\ker(\phi) \subseteq \sqrt{I}}$.
+\itema Show that $I$ is prime\footnote{Show $\C[X_1,X_2,X_3]/I$ is a domain by simplifying the quotient.}, and complete the proof.
+\end{enumerate}
+\solution{
+\begin{enumerate}
+\itema The generators map to $0$ under $\phi$.
+\itema For the first containment, let $(\alpha,\beta,\gamma)\in \cZ(I)$. From the first equation, we can write $\gamma=\alpha^2$. From the second, we have $\beta^2= \alpha^3$. If $\alpha=0$, we must have $(0,0,0)$. Otherwise, $\alpha$ has two square roots. Take $\lambda$ to be one of these. Then $\alpha=\lambda^2$ and $\beta^2 = \lambda^6$. This means $\beta=\pm \lambda^3$. If $\beta=-\lambda^3$, replace $\lambda$ by $-\lambda$; this does not change $\alpha=\lambda^2$ or $\gamma=\lambda^4$. So, we obtain $\lambda$ such that $(\alpha,\beta,\gamma) = (\lambda^2,\lambda^3,\lambda^4)$.
+
+For the second, if $F(X_1,X_2,X_3)\in \ker(\phi)$, then $F(T^2,T^3,T^4)=0$, so ${F(\lambda^2,\lambda^3,\lambda^4)=0}$. 
+\itema Using the first relation and an isomorphism theorem,\\ ${\C[X_1,X_2,X_3]/I \cong \C[X_1,X_2]/(X_2^2-X_1^3)}$. The element $X_2^2-X_1^3$ is irreducible by Eisenstein's criterion, so $I$ is prime.
+\end{enumerate}
+}
+
+
+
+\itemB Let $K$ be an algebraically closed field and $R=K\left[\begin{matrix} X_{11} & X_{12} \\ X_{21} & X_{22} \end{matrix} \right]$ be a polynomial ring. Use the Strong Nullstellensatz to show that any polynomial $F(X_{11}, X_{12}, X_{21}, X_{22})$ that vanishes on every matrix of rank at most one is a multiple of $\det\left[\begin{matrix} X_{11} & X_{12} \\ X_{21} & X_{22} \end{matrix} \right]$.
+
+\
+
+\
+
+\itemB We say that a subvariety of $K^n$ is \textbf{irreducible} if it cannot be written as a union of two proper subvarities. Show that the bijection from the Corollary restricts to a bijection
+\[ \{ \text{prime ideals in $K[X_1,\dots,X_n]$}\}  \longleftrightarrow \{ \text{irreducible subvarieties of $K^n$}\}.\]
+
+\solution{Let $I$ be a radical ideal. We need to show that $\cZ(I)$ is irreducible if and only if $I$ is prime.
+
+Suppose that $I$ is not prime, so one has $f,g\notin I$ with $fg\in I$. Since $I$ is radical, $f,g\notin \sqrt{I}$, so $\cZ(f) , \cZ(g) \not \supseteq \cZ(I)$. This means that $\cZ(I + (f))$ and $\cZ(I+(g))$ are proper subvarieties of $\cZ(I)$. But $\alpha\in \cZ(I)$ and $fg\in I$ implies $f(\alpha)g(\alpha)=0$ so $f(\alpha)=0$ or $g(\alpha)=0$, which means $\cZ(I) = \cZ(I + (f)) \cup \cZ(I + (g))$.
+
+Conversely, suppose that $\cZ(I) = \cZ(J_1) \cup \cZ(J_2)$, with $J_1,J_2$ radical and not equal to $I$. Since $\cZ(I) \supseteq \cZ(J_i)$ we have $J_i \supsetneqq I$. We can take $f\in J_1 \smallsetminus J_2$ and $g\in J_2 \smallsetminus J_1$. Since $f(\alpha)=0$ for all $\alpha\in  \cZ(J_1)$, $g(\alpha)=0$ for all $\alpha\in \cZ(J_2)$, and $\cZ(I) = \cZ(J_1) \cup \cZ(J_2)$, we have $fg(\alpha)=0$ for all $\alpha\in \cZ(I)$, so $fg\in I$, and $I$ is not prime.}
+
+
+\itemB Use the Strong Nullstellensatz to show that, in a finitely generated algebra over an algebrically closed field, every radical ideal can be written as an intersection of maximal ideals.
+
+
+
+
+\end{enumerate}
+\vfill
+
+
+
+
+
+\end{document}
