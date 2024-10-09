@@ -1,0 +1,168 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=.95in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals,bbm}
+
+
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\ord}{\mathrm{ord}}
+\newcommand{\Spec}{\mathrm{Spec}}
+\newcommand{\1}{\mathbbm{1}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+\usepackage[hang,flushmargin]{footmisc}
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{\S4.19: Spectrum of a ring}	
+
+\begin{framed}
+
+
+
+
+\noindent \textsc{Formal Nullstellensatz:} Let $R$ be a ring,  $I$ an ideal, and $f\in R$. Then $V(f) \supseteq V(I)$ if and only if $f\in \sqrt{I}$.
+
+
+
+\
+
+\noindent \textsc{Corollary 1:} Let $R$ be a ring. There is a bijection
+\[ \{ \text{radical ideals in $R$}\}  \longleftrightarrow \{ \text{closed subsets of $\mathrm{Spec}(R)$}\}.\]
+
+\
+
+\noindent \textsc{Definition:} Let $R$ be a ring and $I$ an ideal. A \textbf{minimal prime} of $I$ is a prime $\p$ that contains~$I$, and is minimal among primes containing $I$. We write $\mathrm{Min}(I)$ for the set of minimal primes of~$I$.
+
+
+\
+
+\noindent \textsc{Lemma:} Every prime that contains $I$ contains a minimal prime of $I$.
+
+\
+
+\noindent \textsc{Corollary 2:} Let $R$ be a ring and $I$ be an ideal. Then
+\[ \sqrt{I} = \bigcap_{\p \in \mathrm{Min}(I)} \ \p.\]
+
+
+\
+
+
+\noindent \textsc{Definition:} A subset $W$ of a ring $R$ is \textbf{multiplicatively closed} if $1\in W$ and $u,v\in W$ implies $uv\in W$.
+
+\
+
+\noindent \textsc{Proposition:} Let $R$ be a ring and $W$ be a multiplicatively closed subset. Then every ideal $I$ such that $I\cap W = \varnothing$ is contained in a prime ideal $\p$ such that $\p \cap W = \varnothing$.
+\end{framed}
+
+ 
+\begin{enumerate}
+\itemA Proof of Formal Nullstellensatz and Corollaries.
+\begin{enumerate}
+\itema Show the direction $(\Leftarrow)$ of Formal Nullstellensatz.
+\itema Verify that $W= \{f^n \ | \ n\geq 0\}$  is a multiplicatively closed set. Then apply the Proposition to prove the direction $(\Rightarrow)$ of Formal Nullstellesatz.
+\itema Prove Corollary 1.
+\itema Prove the Lemma.
+\itema Prove Corollary 2.
+\itema What does Corollary 2 say in the special case $I=(0)$?
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itema Suppose that $f\in \sqrt{I}$, so $f^n\in I$. If $\p\in V(I)$, then $I\subseteq \p$, and $f^n\in \p$ implies $f\in \p$, so $\p\in V(f)$.
+\itema Yes, it is a multiplicatively closed set. If $f\notin \sqrt{I}$, then $W\cap I=\varnothing$, so there is some prime $\p$ such that $W \cap \p= \varnothing$. In particular, $f\notin \p$, so $V(f) \not\supseteq V(I)$.
+\itema We map a radical ideal $I$ to the closed set $V(I)$. This is surjective since $V(J)=V(\sqrt{J})$. If $I,J$ are distinct radical ideals, then take some $f\in J \smallsetminus I$. Then $V(f)$ contains $V(I)$ but not $V(J)$, so $V(I)\neq V(J)$.
+\itema Usual Zorn's Lemma argument.
+\itema If $f\in \sqrt{I}$, then $f\in V(\p)$ for all $\p$ containing $I$, so $f$ is in every minimal prime of $I$. On the other hand, if $f$ is in every minimal prime of $I$, then it is in every prime containing $I$, so $V(f) \supseteq V(I)$, which implies $f\in \sqrt{I}$.
+\itema An element is nilpotent if and only if it is in every minimal prime of the ring.
+\end{enumerate}
+}
+
+\itemA  Use the Formal Nullstellensatz to fill in the blanks:
+\[ f \ \text{is nilpotent}\  \Longleftrightarrow \ V(f) = \underline{\phantom{ABC}} \  \Longleftrightarrow \ D(f) = \underline{\phantom{ABC}}.\]
+What property replaces ``nilpotent'' if you swap the blanks for $V$ and $D$ above?
+
+
+\solution{ \[ f \ \text{is nilpotent}\  \Longleftrightarrow \ V(f) = \Spec(R) \  \Longleftrightarrow \ D(f) = \varnothing.\]
+The opposite property is unit.}
+
+
+
+
+
+ \itemA Prove\footnote{Hint: Take an ideal maximal among those that don't intersect $W$.} the Proposition.
+ 
+ \solution{Given an increasing union of ideals that don't intersect $I$, the union is an ideal and does not intersect $I$, so by Zorn's Lemma, there is an ideal maximal among those that don't intersect $I$; call it $J$. Let $ab\in J$ with $a,b\notin J$. Then $(J+(a)) \cap W$ and $(J+(b)) \cap W$ are nonempty. Say $u,v$ are elements in the respective intersections. Then $u=j_1 + ar_1$ and $v=j_2 + b r_2$, and $uv= j_1 j_2 + j_1 b r_2 + j_2 a r_2 + ab r_1 r_2 \in J$.}
+
+
+
+\itemB Let $R$ be a ring. Show\footnote{Start with the $(\Rightarrow)$ direction. For the other direction, use CRT.} that $\Spec(R)$ is connected as a topological space if and only if  $R\not\cong S \times T$ for rings\footnote{Recall that the zero ring is not a ring.} $S,T$.
+
+\solution{First, suppose that $R\cong S\times T$. Then any prime ideal of $R$ is of the form $\p \times T$ for $\p\in \Spec(S)$ or $S\times \q$ for $\q\in\Spec(T)$. So, as sets, there is a bijection $\Spec(R) \leftrightarrow \Spec(S) \coprod \Spec(T)$. Moveover, this is a homeomorphism: the ideals in $S\times T$ are of the form $I\times J$, and $V(I\times J) \subseteq \Spec(S \times T)$ corresponds to $V(I) \coprod V(J) \subseteq \Spec(S) \coprod \Spec(T)$, so this is the disjoint union topology. In particular, $\Spec(S)$ and $\Spec(T)$ are form a disconnection.
+
+From above, we know that $\Spec(S \times T) \cong \Spec(S) \coprod \Spec(T)$ so it suffices to show that $\Spec(R)$ disconnected implies that $R$ has a nontrivial idempotent. Applying the definition of disconnected, there exists some closed sets $V(I), V(J)$ such that $V(I) \cup V(J) = \Spec(R)$ and $V(I) \cap V(J) = \varnothing$. Thus $\sqrt{I+J} = R$, so $I+J=R$ and $\sqrt{I\cap J}=\sqrt{0}$, so $I\cap J$ consists of nilpotents. By CRT, we have $R/(I\cap J) \cong R/I \times R/J$. Set $N=I\cap J$. We have that there is a nontrivial idempotent in $R/N$ but $e, 1-e \notin N$. So there is some $e\in R$ such that $e-e^2 \in N$ so $e^n(1-e)^n = 0$ for some $n$. Set $I' = (e^n)$ and $J'= (1-e)^n$. We claim that $I'+J' = R$ and $I'\cap J'=0$. Indeed, in $R/I'$, $\overline{e}$ is nilpotent, so $\overline{1-e}$ is a unit, as is $(1-e)^n$. Thus, we can write $(1-e)^n u = 1 + e^n f$ for some $u,f\in R$, and hence $1 \in I' + J'$; then $I' \cap J' = I'J' =0$. By CRT we have $R\cong R/I' \times R/J'$. Finally, it remains to note that $I',J'\neq 0$ to see that this is proper: we have $0\neq \overline{e} =  \overline{e^2} = \cdots = \overline{e^n}$ in $R/N$, so we must have $e^n \neq 0$ and likewise $(1-e)^n \neq 0$.
+}
+
+
+\end{enumerate}
+\vfill
+
+
+
+
+
+\end{document}
