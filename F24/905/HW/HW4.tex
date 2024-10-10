@@ -1,0 +1,106 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=0.65in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals}
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\Spec}{\mathrm{Spec}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+\newcommand\itemA{\stepcounter{enumi}\item[{\bf{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\bf{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\bf{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+\DeclareMathOperator{\ord}{ord}
+\renewcommand{\ceq}{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{1}
+	
+	\thispagestyle{empty}
+	
+	\section*{Assignment \#4: Due Friday, October 25 at 7pm}
+	
+	This problem set is to be turned in by Canvas. You may reference any result or problem from our worksheets, unless it is the fact to be proven! You are encouraged to work with others, but you should understand everything you write. Please consult the class website for acceptable/unacceptable resources for the problem sets. You should use the techniques from this class and precursor classes to solve these problems, but not Commutative Algebra II or Homological Algebra.
+	
+	
+	\
+	
+\begin{enumerate}
+
+\item In this problem we will show that the ideal of $\C$-algebraic relations on $\{T^3,T^4,T^5\}$ in $\C[T]$ is
+\[ I = ( X^3 - YZ, Y^2-XZ, Z^2-X^2Y) \subseteq \C[X,Y,Z].\]
+\begin{enumerate}
+\item Let $\phi:$
+\end{enumerate}
+
+\
+
+
+\item Topological properties of $\Spec(R)$:
+\begin{enumerate}
+\item Show that $\Spec(R)$ is a Hausdorff space \emph{only if} every prime ideal of $R$ is maximal.
+\item Show that for any ring $R$, $\Spec(R)$ is a compact topological space.
+\item Show that if $R$ is Noetherian, then every open subset of $\Spec(R)$ is compact.
+\end{enumerate}
+
+\
+
+\item The \textsc{Krull Intersection Theorem} states that for a Noetherian local ring $(R,\m)$ and a finitely generated module $M$, one has $\bigcap_{n\in\N} \m^{n} M = 0$.
+\begin{enumerate}
+\item Prove\footnote{Hint: Use Artin-Rees.} the Krull Intersection Theorem.
+\item Let $R=\C([0,1],\R)$, and $\m$ be the ideal of functions $f\in R$ such that $f(0)=0$. Show that $\bigcap_{n\in \N} \m^n = \m$.
+\end{enumerate}
+
+
+\
+
+\item Let $K$ be an arbitrary field. Let $(\star)$ be a system of polynomial equations $F_1 = \dots = F_t = 0$ be a system of polynomial equations in $n$ variables over $K$. Show that if $(\star)$ has an equation in \emph{any} $K$-algebra $A$, then $(\star)$ has a solution over $\overline{K}$.
+
+
+
+\end{enumerate}
+
+
+
+
+
+
+\end{document}
