@@ -1249,6 +1249,103 @@ Put another way, a set $S$ of multivariate polynomials has a common zero unless 
 \noindent \textsc{Proposition:} Let $R$ be a ring and $W$ be a multiplicatively closed subset. Then every ideal $I$ such that $I\cap W = \varnothing$ is contained in a prime ideal $\p$ such that $\p \cap W = \varnothing$.
 
 
+\newpage
+
+
+\section{Localization}
+\setcounter{subsection}{19}
+\subsection{Local rings and NAK: Lecture Notes \S5.1} \0
+
+\begin{framed} Key topics:
+\begin{itemize}
+\item Definitions of local ring
+\item General NAK
+\item Local NAK
+\item Minimal generating sets
+\end{itemize}
+\end{framed}
+
+
+
+\noindent \textsc{Definition:} A ring is \textbf{local} if it has a unique maximal ideal. We write $(R,\m)$ for a local ring to denote the ring $R$ and the maximal ideal $\m$; we many also write $(R,\m,k)$ to indicate the residue field $k\ceq R/\m$.
+
+
+\
+
+\noindent \textsc{General NAK:} Let $R$ be a ring, $I$ an ideal, and $M$ be a finitely generated module. If $IM=M$, then there is some $a\in R$ such that $a\equiv 1 \ \mathrm{mod} \ I$ and  $aM=0$.
+
+\
+
+\noindent \textsc{Local NAK 1:} Let $(R,\m)$ be a local ring and $M$ be a finitely generated module. If $M=\m M$, then $M=0$.
+
+\
+
+\noindent \textsc{Local NAK 2:} Let $(R,\m)$ be a local ring and $M$ be a finitely generated module. Let $N$ be a submodule of $M$. Then $M = N + \m M$ if and only if $M=N$.
+
+\
+
+\noindent \textsc{Local NAK 3:} Let $(R,\m,k)$ be a local ring and $M$ be a finitely generated module. Then a set of elements $S\subseteq M$ generates $M$ if and only if the image of $S$ in $M/\m M$ generates $M/\m M$ as a $k$-vector space.
+
+
+\
+
+Note: Any of the four NAK statements above would generally be referred to as NAK or Nakayama's Lemma. The ``General'' vs ``local'' and the numbers are just there for our own convenience to reference.
+
+\
+
+\noindent \textsc{Definition:} Let $(R,\m,k)$ be a local ring and $M$ be a finitely generated module. A set of elements $S$ of $M$ is a \textbf{minimal generating set} for $M$ if the image of $S$ in $M/\m M$ is a basis for $M/\m M$ as a $k$-vector space.
+
+
+
+\newpage
+
+\subsection{Localization of rings: Lecture Notes \S5.2} \0
+
+\begin{framed} Key topics:
+\begin{itemize}
+\item Localization of a ring
+\item The key localizations $R_f$, $R_{\p}$, and the total quotient ring.
+\item Correspondence between primes in localizations and primes in  the original ring.
+\end{itemize}
+\end{framed}
+
+\noindent \textsc{Definition:} Let $R$ be a ring and $W$ a multiplicatively closed subset with $0\notin W$. The \textbf{localization} $W^{-1}R$ is the ring with
+\begin{itemize}
+\item  elements  equivalence classes of $(r,w)\in R\times W$, with the class of $(r,w)$ denoted as $\ds \frac{r}{w}$.
+\smallskip
+\item with equivalence relation $\ds \frac{s}{u} = \frac{t}{v}$ if there is some $w\in W$ such that $w(sv-tu)=0$,
+\smallskip
+\item addition given by $\ds\frac{s}{u} + \frac{t}{v} = \frac{sv+tu}{uv}$, and
+\smallskip
+\item multiplication given by $\ds\frac{s}{u}  \frac{t}{v} = \frac{st}{uv}$.
+\end{itemize}
+(If $0\in W$, then $W^{-1}R\ceq 0$, which by our convention is not a ring.)
+
+\
+
+\noindent \textsc{Definition:} Let $R$ be a ring.
+\begin{itemize}
+\item If $f\in R$ is nonnilpotent\footnote{If $f$ is nilpotent, $0\in \{1,f,f^2,\dots\}$ so $R_f=0$.}, then $R_f \ceq \{1,f,f^2,\dots\}^{-1} R$.
+\item If $\p \subseteq R$ is a prime ideal then $R_{\p} \ceq (R\smallsetminus \p)^{-1} R$.
+\item The \textbf{total quotient ring} of $R$ is $\mathrm{Frac}(R)\ceq \{ w\in R \ | \ w \ \text{is a nonzerodivisor}\}^{-1}R$.
+\end{itemize}
+
+
+
+\noindent For a ring $R$, multiplicative set $W\not\ni 0$, and an ideal $I$, we define $W^{-1}I \ceq \left\{\ds \frac{a}{w} \in W^{-1}R \ | \ a\in I\right\}$.
+
+\
+
+\noindent \textsc{Lemma:} Let $R$ be a ring and $W$ be a multiplicatively closed subset.
+\begin{enumerate}
+\item For any ideal $I\subseteq R$, \ $W^{-1}I= I(W^{-1}R)$.
+\item For any ideal $I\subseteq R$, \ $W^{-1}I \cap R = \{ r\in R \ | \ \exists w\in W : wr\in I\}$.
+\item For any ideal $J\subseteq W^{-1}R$, \ $W^{-1}(J\cap R) = J$.
+\item For any prime ideal $\p \subseteq R$ with $\p\cap W=\varnothing$, \ $W^{-1}\p$ is prime.
+\item The map $\Spec(W^{-1}R) \to \Spec(R)$ is injective with image $\{ \p \in \Spec(R) \ | \ \p \cap W = \varnothing\}$.
+\end{enumerate}
+
+
 
 \begin{comment}
 
