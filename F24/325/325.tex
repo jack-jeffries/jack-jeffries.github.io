@@ -2692,6 +2692,92 @@ a_n &=k + \frac{d_1}{10^1} + \frac{d_2}{10^2} + \cdots + \frac{d_n}{10^n}\\
 Since this holds for all $n$, $\{a_n\}_{n=1}^\infty$ is bounded above by $k+1$. By the Monotone Convergence Theorem, $\{a_n\}_{n=1}^\infty$ converges.
 \end{proof}
 
+\setcounter{section}{18}
+
+
+\Oct{11}{\Fr}{2.2, 1.5}
+
+
+
+\begin{enumerate}
+
+
+\item Let $a \geq 2$ be a real number. 
+
+\begin{enumerate}
+\item Prove that for any natural number $n$, the inequality $a^n \geq na$ holds true.
+
+\begin{framed}
+We proceed by induction on $n$. For the base case, we consider $n=1$, where we have
+\[ a^1 = a = 1 \cdot a\]
+and the inequality holds true. By way of induction, assume that for some natural number $k$, the inequality
+\[ a^k \geq k a\] holds. Then 
+\[ a^{k+1} = a^k \cdot a \geq (ka) \cdot a \geq 2ka \geq ka + ka \geq ka + a = (k+1) a\]
+so the claimed inequality holds for $n=k+1$. Thus, by induction, the inequality holds for all $n\in \N$.
+\end{framed}
+
+\item Prove that the sequence  $\left\{ \frac{1}{a^n} \right\}_{n=1}^\infty$ converges to $0$. 
+
+\begin{framed}
+Since $a^n \geq na$ for all $n$, we have
+\[ \frac{1}{an} \geq \frac{1}{a^n} \geq 0\]
+for all $n$. The sequence $\frac{1}{an} = \frac{1}{a} \frac{1}{n}$ converges to $0$, as does the constant sequence $0$, so the given sequence converges to $0$ by the Squeeze Theorem.
+\end{framed}
+\end{enumerate}
+
+
+
+\item Define a sequence $\{ b_n\}_{n=1}^\infty$ recursively by the rule $b_1=0$, and $\displaystyle b_{n} = \frac{1+ b_{n-1}}{2}$ for $n>1$. Prove that $\displaystyle b_n = 1 - \frac{1}{2^{n-1}}$ for all $n\in \N$ and compute $\displaystyle\lim_{n\to \infty} b_n$.
+
+\begin{framed}
+We prove the first equality by induction. For the base case $n=1$, we have $b_1 = 0 = 1-1 = 0$. Suppose that the equality holds for $n=k$, so 
+\[ b_k = 1 - 1 - \frac{1}{2^{k-1}}.\]
+Then, since $k+1>1$, we have 
+\[ b_{k+1} =  \frac{1 + b_k}{2} = \frac{1 + 1 - \frac{1}{2^{k-1}}}{2} = \frac{2}{2} - \frac{1}{2^{k-1} \cdot 2} = 1 - \frac{1}{2^k} = 1 - \frac{1}{2^{(k+1)-1}}.\]
+Thus the claimed equality holds for $k+1$. By induction, the equality holds for all $n\in \N$.
+
+Now, we can use the previous problem plus Algebra and Limits to deduce that the sequence converges to $1$.
+\end{framed}
+
+\item Define a sequence $\{ c_n\}_{n=1}^\infty$ recursively by the rule $c_1=1$, and $\displaystyle c_{n} = \sqrt{2 c_{n-1}}$ for $n>1$. 
+
+\
+
+\begin{enumerate}
+\item Use a calculator to write down the first $5$ terms of this sequence.
+
+
+\item Prove that the sequence $\{c_n\}_{n=1}^\infty$ is bounded above by $2$.
+
+\begin{framed}
+Again, we use induction. $c_1=1<2$. Suppose that $c_k<2$. Then $c_{k+1} = \sqrt{2 c_k} < \sqrt{2 \cdot 2} = 2$. Thus, by induction, $c_n<2$ for all $n$.
+\end{framed}
+
+
+\item Use the previous part to show that $\{c_n\}_{n=1}^\infty$ is an increasing sequence.
+
+\begin{framed}
+Since $c_n<2$, we have $c_{n+1}^2 = 2 c_n > c_n^2$, and since $c_n$ and $c_{n+1}$ are both positive, $c_n < c_{n+1}$.
+\end{framed}
+
+\item Prove that the sequence $\{c_n\}_{n=1}^\infty$ is convergent.
+
+\begin{framed}
+Because the sequence is monotone and bounded above, it is convergent by Monotone Convergence Theorem.
+\end{framed}
+
+\item What value does $\{c_n\}_{n=1}^\infty$ converge to? Can you prove it?
+
+\begin{framed}
+Because the sequence is convergent, we can write the limit as $L$. Since $c_n$ is a positive increasing bounded above sequence, so is $\{ \sqrt{c_n} \}_{n=1}^\infty$. Setting $\lim \sqrt{c_n} = M$, we have $M^2 = \lim \sqrt{c_n} \sqrt{c_n} = \lim  c_n = L$, and since $M>0$, we have $M=\sqrt{L}$. Then 
+\[ L = \lim c_n = \lim c_{n+1} = \lim \sqrt{2 c_n} = \lim \sqrt{2} \sqrt{c_n} = \sqrt{2} \sqrt{L}\]
+so $L= \sqrt{2} \sqrt{L}$, and $L^2 = 2L$; since $L>0$, we must have $L=2$.
+\end{framed}
+\end{enumerate}
+
+\end{enumerate}
+
+
 \begin{comment}
 
 \begin{lem} \label{lem211}
@@ -2708,6 +2794,7 @@ Since this holds for all $n$, $\{a_n\}_{n=1}^\infty$ is bounded above by $k+1$. 
 	$P_1$ is true since $b_1 \in \N$ and so $b_1 \geq 1$. Given $k \in \N$, assume $P_k$ is true; that is, assume $b_k \geq k$. Since $b_{k+1} >
 	b_k$ and both are natural numbers, we have $b_{k+1} \geq b_k + 1 \geq k+1$; that is, $P_{k+1}$ is true too. By induction, $P_n$ is true for all $n \in \N$. 
 \end{proof}
+
 
 
 \begin{comment}
