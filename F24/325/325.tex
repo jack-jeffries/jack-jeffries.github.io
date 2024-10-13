@@ -2778,153 +2778,9 @@ so $L= \sqrt{2} \sqrt{L}$, and $L^2 = 2L$; since $L>0$, we must have $L=2$.
 \end{enumerate}
 
 
-\begin{comment}
-
-\begin{lem} \label{lem211}
-	Let $b_1, b_2, \dots$ be any strictly increasing sequence of natural numbers; that is, assume $b_k \in \N$ for all $k \in \N$ and that $b_k < b_{k+1}$ for 
-	all $k \in \N$. Then $b_k \geq k$ for all $k$.
-\end{lem}
-
-\begin{proof} Suppose $b_1, b_2, \dots$ is a strictly increasing
-	sequence of natural numbers. We prove $b_n \geq n$ for all $n$ by
-	induction on $n$. 
-	That is, for each $n  \in \N$, let $P_n$ be
-	the statement that $b_n \geq n$. 
-	
-	$P_1$ is true since $b_1 \in \N$ and so $b_1 \geq 1$. Given $k \in \N$, assume $P_k$ is true; that is, assume $b_k \geq k$. Since $b_{k+1} >
-	b_k$ and both are natural numbers, we have $b_{k+1} \geq b_k + 1 \geq k+1$; that is, $P_{k+1}$ is true too. By induction, $P_n$ is true for all $n \in \N$. 
-\end{proof}
-
-
+\newpage
 
 \begin{comment}
-
-
-\Oct{6}
-
-
-	
-	\subsection*{Decimal expansions}
-	
-	In this worksheet, we are going to define decimal expansions and prove the basic properties about them. To simplify things, we are going to only deal with numbers between $0$ and $1$ (since we get all the the rest by adding integers and taking negatives). Along the way we will use induction and convergence of sequences in an important way. Before we define infinite decimal expansions, let's review finite decimal expansions. 
-
-\begin{enumerate}
-
-\item If $d \in \{ 0,1,\dots,9\}$ (i.e., $d$ is an integer between $0$ and $9$), what does the decimal number $0.d$ mean? Express it as a rational number.
-
-\begin{framed}
-\[\frac{d}{10}\]
-\end{framed}
-
-\item  If $d_1,d_2,\dots,d_n \in \{ 0,1,\dots,9\}$ (i.e., $d_1,\dots,d_n$ are a bunch of integers between $0$ and $9$, which may or may not have repeats), convince yourself that  the decimal number $0.d_1 d_2 \cdots d_n$ in the way that we commonly use it is shorthand for
-\[ 0.d_1 d_2 \cdots d_n = \frac{d_1}{10^1} + \frac{d_2}{10^2} + \cdots + \frac{d_n}{10^n}.\]
-
-\end{enumerate}
-
-
- Let's say that a sequence of the form $\{d_n\}_{n=1}^\infty$ is a \emph{digit sequence} if $d_n\in \{0,1,\dots, 9\}$ for all~$n$. (That is a digit sequence is just a sequence of integers between $0$ and $9$.) Given a digit sequence $\{d_n\}_{n=1}^\infty$, define another sequence $\{D_n\}_{n=1}^\infty$ by the rule
-\[ \begin{aligned} D_1 &= \frac{d_1}{10^1}\\
-D_2 &= \frac{d_1}{10^1} + \frac{d_2}{10^2}\\
-& \ \ \vdots\\
-D_n& = \frac{d_1}{10^1} + \frac{d_2}{10^2} + \cdots + \frac{d_n}{10^n}\\
-& \ \ \vdots \\
-\end{aligned}\]
-For example, for the digit sequence $2,2,2,\dots$, the corresponding $\{D_n\}_{n=1}^\infty$ sequence is
-\[ \frac{2}{10} \ , \ \frac{2}{10} + \frac{2}{100}  \ ,  \  \frac{2}{10} + \frac{2}{100} + \frac{2}{1000} \ , \ \dots\]
-We say that a digit sequence $\{d_n\}_{n=1}^\infty$ \emph{represents a real number $r$} if the sequence $\{ D_n\}_{n=1}^\infty$ converges to $r$, and in this case we write
-\[ 0.d_1 d_2 d_3 d_4 \dots = r.\]
-
-
- In order to prepare for proving things about decimal expansions, we need a fact about geometric series.
-
-\begin{enumerate}
-\item Let $x$ and $a$ be real numbers.
-\begin{enumerate}
-\item Prove that for every $n\in \N$,
-\[ (1-x) (1+x +x^2 + x^3 +\cdots + x^n ) = 1 - x^{n+1}.\]
-\begin{framed}
-We proceed by induction on $n$. First we check for $n=1$:
-\[ (1-x)(1+x) = 1+ x - x -x^2 = 1-x^{1+1},\]
-so the statement is true for $n=1$.
-Suppose the equality holds for $k$:
-\[(1-x) (1+x +x^2 + x^3 +\cdots + x^k ) = 1 - x^{k+1}.\]
-Then
-\begin{align*}
-(1-x)& (1+x +x^2 + x^3 +\cdots + x^{k+1} ) \\
-&=(1-x)((1+x +x^2 + x^3 +\cdots + x^{k} )  + (x^{k+1}))
-\\&=(1-x)(1+x +x^2 + x^3 +\cdots + x^{k} )  + (1-x) (x^{k+1})
-\\&= 1 - x^{k+1} + x^{k+1} - x^{k+2} = 1-x^{k+2},
-\end{align*}
-and it holds for $k+1$. Thus, the statement is true for all $n$ by induction.
-\end{framed}
-\item If $x\neq 1$, use (a) to show that for every $n\in \N$,
-\[ a + ax + ax^2 + \cdots + a x^n = a \frac{1-x^{n+1}}{1-x}.\]
-\begin{framed}
-We have \[ a + ax + ax^2 + \cdots + a x^n = a (1+x +x^2 + x^3 +\cdots + x^n) = a  \frac{1-x^{n+1}}{1-x}.\]
-\end{framed}
-\end{enumerate}
-
-\item Use the definition (and perhaps the previous problem), but not our previous expectations about decimal expansions, to answer the following.
-\begin{enumerate}
-\item What number does the digit sequence $2,3,0,0,0,0,0,\dots$ represent?
-\item What number does the digit sequence $5,0,0,0,0,0,0,\dots$ represent?
-\item What number does the digit sequence $9,9,9,9,9,9,9,\dots$ represent?
-\item What number does the digit sequence $4,9,9,9,9,9,9,\dots$ represent?
-\end{enumerate}
-\begin{framed}
-\begin{enumerate}
-\item $\frac{23}{100}$
-\item $\frac{5}{10} = \frac{1}{2}$
-\item $D_n = \frac{9}{10} \frac{1- (1/10)^{n+1}}{1-(1/10)} =  1- (\frac{1}{10} )^{n+1}$ converges to $1$, so this represents $1$.
-\item $\frac{1}{2}$.
-\end{enumerate}
-\end{framed}
-
-\item Let $\{d_n\}_{n=1}^\infty$ be any digit sequence. Prove that this sequence represents some real number: i.e., that the corresponding sequence $\{ D_n\}_{n=1}^\infty$  is convergent. 
-
- [Thus, every decimal expansion $0.d_1 d_2 d_3 \cdots$ always gives us a real number.]
- 
- \begin{framed}
- Note that the sequence $D_n$ is increasing, and hence monotone.
- Since $d_n\leq 9$, $D_n \leq \frac{9}{10} \frac{1- (1/10)^{n+1}}{1-(1/10)} = 1- (\frac{1}{10} )^{n+1} \leq 1$, so it is bounded above. Thus $D_n$ is always convergent.
- \end{framed}
-
-\item In this problem, we will show that every real number $r\in [0,1]$ is represented by some digit sequence.
-\begin{enumerate}
-\item Show that we can recursively define a digit sequence $\{d_n\}_{n=1}^\infty$ such that for every $n\in \N$, in the corresponding sequence $\{ D_n\}_{n=1}^\infty$, we have $0 \leq 10^n (r- D_n) \leq 1$.
-\item Given a sequence as in part (a), show that $\{ D_n\}_{n=1}^\infty$ converges to $r$.
-\end{enumerate}
-
-[Thus, every number can be written as a decimal expansion $0.d_1 d_2 d_3 \cdots$ .]
-
-
-\begin{framed}
-Since $0\leq 10 r \leq 10$, we can take an integer between $0$ and $9$ to be $d_1$ with $d_1 \leq r \leq d_1 + 1$, so $0\leq r-d_1 \leq 1$. If we have chosen $d_1,\dots,d_n$ with $0 \leq 10^n (r- D_n) \leq 1$, then $0 \leq 10^{n+1} (r- D_n) \leq 10$ so we can choose $d_{n+1}$ with $d_{n+1} \leq 10^{n+1} (r- D_n) \leq d_{n+1}+1$, and hence $0 \leq  10^{n+1} (r- D_n) - d_{n+1} \leq 1$. We then just need to note that $10^{n+1} (r- D_n) - d_{n+1} = 10^{n+1} D_{n+1}$.
-\end{framed}
-
-\item Now we analyze uniqueness of decimal expansions. We will find it useful to use the following corollary of the proof of the Monotone Convergence Theorem: If $\{a_n\}_{n=1}^\infty$ is a bounded increasing sequence, $\{a_n\}_{n=1}^\infty$ converges to $\sup (\{a_n \ | \ n\in \N\})$.
-
-\begin{enumerate}
-\item Let $\{d_n\}_{n=1}^\infty$ be any digit sequence,  $\{ D_n\}_{n=1}^\infty$ be the corresponding sequence, and $r$ the number that it represents. Let $n$ be a natural number.
-\begin{enumerate}
-\item  Show that $D_n \leq r$ and that $D_n = r$ if and only if $d_{i}=0$ for all $i>n$.
-\item Show that $r \leq D_n + \frac{1}{10^n}$ and that $r = D_n + \frac{1}{10^n}$ if and only if $d_{i}=9$ for all $i>n$.
-\end{enumerate}
-\item Let $\{d_n\}_{n=1}^\infty$ and $\{e_n\}_{n=1}^\infty$ be two digit sequences with $d_k\neq e_k$ for some $k\in \N$. Suppose that both digit sequences represent the same number $r$. Show that $r = \frac{m}{10^k}$ for some natural number $m$.
-\item Deduce that if $r\in [0,1]$ and $r$ cannot be written as a rational number with denominator a power of ten, then there is a unique digit sequence that represents $r$.
-
-[Thus, if $r$ cannot be written as a rational number with denominator a power of ten, then $r$ has a unique decimal expansion.]
-
-\item Show that if $r\in (0,1)$ and $r$ can be written as a rational number with denominator a power of ten, then there are exactly two digit sequences that represent $r$: one with $d_i=0$ for all $i$ greater than some $k$, and one with $d_i=9$ for all $i$ greater than some $k$.
-
-[Thus, if $r$ has at most two decimal expansions, and always has exactly one nonterminating decimal expansion.]
-\end{enumerate}
-\end{enumerate}
-
-
-
-\Oct{20}
-
 
 
 We next discuss the important concept of a ``subsequence''. 
@@ -3051,7 +2907,7 @@ We prepare with a lemma.
 Let $\e>0$. Since $\{a_n\}_{n=1}^\infty$ converges to $L$, there is some $N\in \R$ such that for all natural numbers $n>N$ we have $|a_n - L|<\e$. We claim that the same $N$ works to verify the definition of $\{a_{n_k}\}_{k=1}^\infty$ converges to $L$ for this $\e$. Indeed, if $k>N$, then $n_k > N$, so $|a_{n_k} - L| < \e$. Thus, $\{a_{n_k}\}_{k=1}^\infty$ converges to $L$.
 \end{proof}
 
-
+%\begin{comment}
 
 	
 \begin{enumerate} 
@@ -3137,8 +2993,7 @@ Let $\e>0$. Since $\{a_n\}_{n=1}^\infty$ converges to $L$, there is some $N\in \
 \end{enumerate}\end{framed}
 \end{enumerate}
 
-\newpage
-\Oct{25}
+
 
 Consider the points in the plane whose $x$-coordinates are integers and $y$-coordinates are natural numbers. Starting at $(0,1)$, zigzag like so:
 
@@ -3248,8 +3103,8 @@ The proof of this theorem requires a preliminary lemma.
 
 \begin{lem} \label{lem214a} Let $\{a_n\}_{n=1}^\infty$ be a sequence.
 \begin{enumerate}
-\item If the set of values of the sequence  $\{a_n \ | \ n\in \N\}$ does not have a maximum value, then $\{a_n\}_{n=1}^\infty$ has a subsequence that is increasing. 
- \item If the set of values of the sequence  $\{a_n \ | \ n\in \N\}$ does not have a minimum value, then $\{a_n\}_{n=1}^\infty$ has a subsequence that is decreasing. 
+\item If the set of values of the sequence  $\{a_n \ | \ n\in \N\}$ does not have a maximum value, then $\{a_n\}_{n=1}^\infty$ has a subsequence that is strictly increasing. 
+ \item If the set of values of the sequence  $\{a_n \ | \ n\in \N\}$ does not have a minimum value, then $\{a_n\}_{n=1}^\infty$ has a subsequence that is strictly decreasing. 
 \end{enumerate}
 \end{lem}
 
@@ -3259,11 +3114,9 @@ The proof of this theorem requires a preliminary lemma.
 
 We define a subsequence recursively. We will recursively choose natural numbers $n_1, n_2, n_3,\dots$ so that $n_k < n_{k+1}$ for all $k$ and $a_{n_k} \leq a_{n_{k+1}}$.
 
-We start by setting $n_1 = 1$.
+We start by setting $n_1 = 1$. Once we have chosen $n_k$, we need to find some natural number $n_{k+1}>n_k$ such that $a_{n_{k+1}} \leq a_{n_k}$. Let $b=\max\{a_1,a_2,\dots,a_{n_k}\}$. This is some value of the sequence; since the sequence attains no maximum value, there is some $m$ such that $a_m>b$. We must have $m>n_k$, because if $m\leq n_k$, then $a_m$ is on the list $a_1,a_2,\dots,a_{n_k}$, so cannot be larger than $b$. Thus, we can take $m=n_{k+1}$.
 
-If we have chosen $n_k$, then let $b=\max\{a_1,\dots,a_{n_k}\}$. 
-
-We claim that there is some $m> n_k$ such that $a_m> b$. To obtain a contradiction, suppose otherwise. Then for any $n\in \N$, either $n>{n_k}$ and $a_n \leq b$ by assumption, or $n\leq n_k$ and $a_n \leq b$, since $a_n$ is on the list of things of which $b$ was the maximum. Then $b$ is the maximum of $\{a_n \ | \ n\in \N\}$, which yields a contradiction. Thus, there is some $m> n_k$ such that $a_m> b$, and we can choose $m=n_{k+1}$. Thus, we can define such a sequence recursively.
+This gives a recursive definition for a strictly increasing subsequence.
 \item Similar to (1), or apply (1) to $\{-a_n\}_{n=1}^\infty$.\qedhere
 \end{enumerate}
 \end{proof}
@@ -3283,11 +3136,9 @@ decreasing subsequence by constructing the indices $n_1<n_2< \cdots$ of such a s
 By the contrapositive of part (1) Lemma~\ref{lem214a} , since $\{a_n\}_{n=1}^\infty$ does not contain any increasing subsequences, we know that  
 $\{ a_n \ | \ n\in \N\}$ has a maximum value. That is,
 there exists a natural number $n_1$ such that $a_{n_1}
-\geq a_m$ for all $m \geq 1$. 
+\geq a_m$ for all $m \geq 1$.
 
-For any $k$, given $n_k$, the subsequence $a_{n_k +1} , a_{n_k+2},a_{n_k+3},\ldots$ also has no increasing subsequence, since a subsequence of such a sequence is a subsequence of the original sequence too. Thus, it must have a maximum value again by part (1) Lemma~\ref{lem214a}; choose $n_{k+1}$ such that $a_{n_{k+1}} = \max\{ a_{n_k +1} , a_{n_k+2},a_{n_k+3}, \dots\}$. By construction, we have $n_{k+1} > n_k$. Thus, this gives a recursive definition for $n_k$.
-
-For any $k$, note that $a_{n_{k}}$ is the maximum of a set that contains $a_{n_{k+1}}$ (since it is later in the sequence). It follows that $a_{n_k} \geq a_{n_{k+1}}$. That is, we have constructed a decreasing subsequence of the original sequence.
+Once we have chosen up through $n_k$, note that the subsequence $a_{n_k +1} , a_{n_k+2},a_{n_k+3},\ldots$ also has no increasing subsequence, since a subsequence of such a sequence is a subsequence of the original sequence too. Thus, it must have a maximum value again by part (1) Lemma~\ref{lem214a}; choose $n_{k+1}$ such that $a_{n_{k+1}} = \max\{ a_{n_k +1} , a_{n_k+2},a_{n_k+3}, \dots\}$. By construction, we have $n_{k+1} > n_k$. Furthermore, $a_{n_{k}}$ is the maximum of a set that contains $a_{n_{k+1}}$ (since it is later in the sequence). It follows that $a_{n_k} \geq a_{n_{k+1}}$. Thus, we have constructed recursively a decreasing subsequence of the original sequence.
 \end{proof}
 
 
@@ -3303,7 +3154,7 @@ any subsequence of a bounded sequence is also bounded.)
 The result follows since every monotone bounded sequence converges by the Monotone Convergence Theorem \ref{thm:MCT}.
 \end{proof}
 
-\Oct{27}
+
 
 You can use any basic trig facts below to answer the following questions. 
 
@@ -3333,6 +3184,8 @@ You can use any basic trig facts below to answer the following questions.
 \end{enumerate}
 \end{framed}
 \end{enumerate}
+
+\begin{comment}
 
 	
 Given any two sets $S$ and $T$, a \emph{function}\index{function} from $S$ to $T$, written $f: S\to T$, is a ``rule''\footnote{Here's a real definition: a \emph{function} from $S$ to $T$ is a subset $G\subset S\times T$ of ordered pairs of elements of $S$ and $T$ with the property that for all $s\in S$ there is a unique $t \in T$ such that $(s,t)\in G$; we write $f(s)$ for this element $t$.} 
