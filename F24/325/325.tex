@@ -2783,7 +2783,7 @@ so $L= \sqrt{2} \sqrt{L}$, and $L^2 = 2L$; since $L>0$, we must have $L=2$.
 
 
 
-\begin{comment}
+%\begin{comment}
 \Oct{14}{\Mo}{2.3}
 
 We next discuss the important concept of a ``subsequence''. 
@@ -2914,17 +2914,13 @@ We prepare with a lemma.
 Let $\e>0$. Since $\{a_n\}_{n=1}^\infty$ converges to $L$, there is some $N\in \R$ such that for all natural numbers $n>N$ we have $|a_n - L|<\e$. We claim that the same $N$ works to verify the definition of $\{a_{n_k}\}_{k=1}^\infty$ converges to $L$ for this $\e$. Indeed, if $k>N$, then $n_k > N$, so $|a_{n_k} - L| < \e$. Thus, $\{a_{n_k}\}_{k=1}^\infty$ converges to $L$.
 \end{proof}
 
-%\begin{comment}
 
 	
 \begin{enumerate} 
 
+\begin{samepage}
  \item \textbf{True or false; justify.}
 \begin{enumerate} 
-\item The sequence $\displaystyle \left\{ \frac{1}{2n} \right\}_{n=1}^\infty$ is a subsequence of the sequence $\displaystyle \left\{ \frac{1}{n} \right\}_{n=1}^\infty$.
-
-
-
 \item The sequence $\displaystyle \left\{ \frac{1}{3n+7} \right\}_{n=1}^\infty$ is a subsequence of the sequence $\displaystyle \left\{ \frac{1}{n} \right\}_{n=1}^\infty$.
 
 
@@ -2939,16 +2935,19 @@ Let $\e>0$. Since $\{a_n\}_{n=1}^\infty$ converges to $L$, there is some $N\in \
 
 \item The constant sequences $\{ -1 \}_{n=1}^\infty$ and  $\{ 1 \}_{n=1}^\infty$ are the only two subsequences of the sequence $\{ (-1)^n \}_{n=1}^\infty$.
 
+\item The sequence $\{ \sin(\pi n) \}_{n=1}^\infty$ is a subsequence of $\{ \sin(n) \}_{n=1}^\infty$.
+
+
 \end{enumerate}
+\end{samepage}
 
 \begin{framed}
 \begin{enumerate} 
-\item True: take $n_k=2k$.
 \item True: Take $n_k = 3k+7$.
 \item False: The term $1/2$ occurs only for $n=2$, so we can't choose an increasing sequence of indices that yield this value.
-\item True: take take $n_k=2k+1$ and take $n_k=2k$, respectively.
-\item False: The sequence itself is a subsequence ($n_k = k$).
-
+\item True: take $n_k=2k+1$ and take $n_k=2k$, respectively.
+\item False: The sequence itself is a subsequence ($n_k = k$) for example.
+\item False: $\sin(\pi n)$ is $1,0,-1,0,1,0,-1,0,\dots$, but the values of $\sin(n)$ are never $0$ or $\pm 1$.
 \end{enumerate}
 \end{framed}
 
@@ -2968,7 +2967,7 @@ Let $\e>0$. Since $\{a_n\}_{n=1}^\infty$ converges to $L$, there is some $N\in \
 
 \item Use Corollary 15.7 to give a quick proof that the sequence $\{ (-1)^n \}_{n=1}^\infty$ diverges.
 
-\begin{framed} It has subsequences that converge to different values.
+\begin{framed} It has subsequences that converge to different values, as we saw above.
 \end{framed}
 
 \item \textbf{Prove or disprove:}
@@ -2996,9 +2995,11 @@ Let $\e>0$. Since $\{a_n\}_{n=1}^\infty$ converges to $L$, there is some $N\in \
 
 
 
-\item True: Let $n_1<n_2<n_3 < \cdots$ be a strictly increasing sequence of natural numbers, and $\{a_{n_k}\}_{k=1}^\infty$ is a subseqence. Let $m\in \R$. There is some $N$ such that $a_n < m$ for all $n>N$. We claim that this $N$ works (for this $m$) to show that $\{a_{n_k}\}_{k=1}^\infty$  diverges to $-\infty$. Indeed, if $k>N$, then $n_k \geq k >N$, so $a_{n_k} <m$. Thus $\{a_{n_k}\}_{k=1}^\infty$  diverges to $-\infty$.
+\item True: Let $n_1<n_2<n_3 < \cdots$ be a strictly increasing sequence of natural numbers, and $\{a_{n_k}\}_{k=1}^\infty$ be a subseqence. Let $m\in \R$. There is some $N$ such that $a_n < m$ for all $n>N$. We claim that this $N$ works (for this $m$) to show that $\{a_{n_k}\}_{k=1}^\infty$  diverges to $-\infty$. Indeed, if $k>N$, then $n_k \geq k >N$, so $a_{n_k} <m$. Thus $\{a_{n_k}\}_{k=1}^\infty$  diverges to $-\infty$.
 \end{enumerate}\end{framed}
 \end{enumerate}
+
+\begin{comment}
 
 
 
