@@ -1,0 +1,102 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=0.65in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals}
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\cZ}{\mathcal{Z}}
+\newcommand{\Spec}{\mathrm{Spec}}
+\newcommand{\Min}{\mathrm{Min}}
+\newcommand{\Max}{\mathrm{Max}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+\newcommand\itemA{\stepcounter{enumi}\item[{\bf{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\bf{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\bf{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+\DeclareMathOperator{\ord}{ord}
+\renewcommand{\ceq}{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{1}
+	
+	\thispagestyle{empty}
+	
+	\section*{Assignment \#5: Due Friday, November 8 at 7pm}
+	
+	This problem set is to be turned in by Canvas. You may reference any result or problem from our worksheets, unless it is the fact to be proven! You are encouraged to work with others, but you should understand everything you write. Please consult the class website for acceptable/unacceptable resources for the problem sets. You should use the techniques from this class and precursor classes to solve these problems, but not Commutative Algebra II or Homological Algebra.
+	
+	
+	\
+	
+\begin{enumerate}
+
+\item Topology of minimal primes:
+\begin{enumerate}
+ \item Let $\p$ be a minimal prime of $R$. Show that for any $a\in \p$, there is some $u\notin \p$ and $n\geq 1$ such that $ua^n=0$.
+\item Show that the set of minimal primes $\Min(R)$ with the induced topology from $\Spec(R)$ is Hausdorff.
+
+\end{enumerate}
+
+\
+
+\item Let $\phi:R\to S$ be a ring homomorphism, and let $\phi^*:\Spec(S)\to \Spec(R)$ be the induced map.
+\begin{enumerate}
+\item Show that the image of $\phi^*$ is contained in $V(\ker \phi)$.
+\item Show that\footnote{Hint: Consider the ring  $\Spec\Big( \big(\phi(R\smallsetminus \p)\big)^{-1} S\Big)$. Relate its spectrum to a subset of $\Spec(S)$.} any minimal prime of $\ker(\phi)$ is in the image of $\phi^*$.
+\item Show that the closure of $\mathrm{image}(\phi^*)=V(\ker \phi)$.
+\item Compute $\mathrm{image}(\phi^*)$ for the inclusion $\Z\subseteq\Q$. Show that it does not contain any nonempty open subset of its closure.
+\end{enumerate}
+
+%\
+
+%\item Let $K$ be an arbitrary field. Let $(\star)$ be a system of polynomial equations $F_1 = \dots = F_t = 0$ be a system of polynomial equations in $n$ variables over $K$. Show that if $(\star)$ has an equation in \emph{any} $K$-algebra $A$, then $(\star)$ has a solution over $\overline{K}$.
+
+
+
+\end{enumerate}
+
+
+
+
+
+
+\end{document}
