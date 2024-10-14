@@ -1,0 +1,186 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals,bbm}
+
+
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\ord}{\mathrm{ord}}
+\newcommand{\Spec}{\mathrm{Spec}}
+\newcommand{\1}{\mathbbm{1}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+\usepackage[hang,flushmargin]{footmisc}
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{\S5.20: Local rings and NAK}	
+
+\begin{framed}
+
+
+
+
+\noindent \textsc{Definition:} A ring is \textbf{local} if it has a unique maximal ideal. We write $(R,\m)$ for a local ring to denote the ring $R$ and the maximal ideal $\m$; we many also write $(R,\m,k)$ to indicate the residue field $k\ceq R/\m$.
+
+
+\
+
+\noindent \textsc{General NAK:} Let $R$ be a ring, $I$ an ideal, and $M$ be a finitely generated module. If $IM=M$, then there is some $a\in R$ such that $a\equiv 1 \ \mathrm{mod} \ I$ and  $aM=0$.
+
+\
+
+\noindent \textsc{Local NAK 1:} Let $(R,\m)$ be a local ring and $M$ be a finitely generated module. If $M=\m M$, then $M=0$.
+
+\
+
+\noindent \textsc{Local NAK 2:} Let $(R,\m)$ be a local ring and $M$ be a finitely generated module. Let $N$ be a submodule of $M$. Then $M = N + \m M$ if and only if $M=N$.
+
+\
+
+\noindent \textsc{Local NAK 3:} Let $(R,\m,k)$ be a local ring and $M$ be a finitely generated module. Then a set of elements $S\subseteq M$ generates $M$ if and only if the image of $S$ in $M/\m M$ generates $M/\m M$ as a $k$-vector space.
+
+
+\
+
+\noindent \textsc{Definition:} Let $(R,\m,k)$ be a local ring and $M$ be a finitely generated module. A set of elements $S$ of $M$ is a \textbf{minimal generating set} for $M$ if the image of $S$ in $M/\m M$ is a basis for $M/\m M$ as a $k$-vector space.
+\end{framed}
+
+ 
+\begin{enumerate}
+\itemA Local rings.
+\begin{enumerate}
+\itema Show that for a ring $R$ the following are equivalent:
+\begin{itemize}
+\item $R$ is a local ring.
+\item The set of all nonunits forms an ideal.
+\item The set of all nonunits is closed under addition.
+\end{itemize}
+\itema Show that if $A$ is a domain then $A[X]$ is \emph{not} a local ring.
+\itema Show that if $K$ is a field, the power series ring $R=K\llbracket X_1,\dots,X_n\rrbracket$ is a local ring.
+\itema Let $p\in \Z$ be a prime number, and $\Z_{(p)} \subseteq \Q$ be the set of rational numbers that can be written with denominator \emph{not} a multiple of $p$. Show that $(\Z_{(p)}, p\Z_{(p)})$ is a local ring.
+\itema Show that any quotient of a local ring is also a local ring.
+\end{enumerate}
+\solution{
+\begin{enumerate}
+\itema Since any element times a nonunit is a nonunit, the last two are equivalent. Recall that an element is a unit if and only if it is not in any maximal ideal. So, if $(R,\m)$ is local, the nonunits are the elements of $\m$, which is an ideal; conversely, if the nonunits form an ideal, then this ideal must be the unique maximal ideal.
+
+\itema $X$ and $X+1$ are nonunits, but $1= (X+1)-X$ is a unit.
+\itema The set of nonunits is the elements with zero constant term, which is the ideal $(X_1,\dots,X_n)$.
+\itema First, check that this is a ring. Then note that the units in this ring are the fractions $a/b$ with $p\nmid a,b$, which is the same as the ideal $p\Z_{(p)}$.
+\itema This follows from the Lattice Isomorphism Theorem.
+\end{enumerate}
+}
+
+
+\itemA General NAK implies Local NAKs
+\begin{enumerate}
+\itema Show that General NAK implies Local NAK 1.
+\itema Briefly\footnote{Reuse an old argument in a similar setting.} explain why Local NAK 1 implies Local NAK 2.
+\itema Briefly\footnote{It's d\'{e}j\`{a} vu all over again.} explain why Local NAK 2 implies Local NAK 3.
+\itema Use Local NAK 3 to briefly explain why a minimal generating set is a generating set, and that, in this setting, any generating set contains a minimal generating set.
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itema If $\m M = M$, then by General NAK, there is some $a\in \m$ such that $a\equiv 1 \, \mathrm{mod}\, \m$ and $aM=0$. But $a$ must be a unit, so $M=0$!
+\itema Same as the graded case: apply NAK 1 to $M/N$.
+\itema Same as the graded case: apply NAK 2 to $N=\sum_{s\in S} Rs$.
+\itema Same as the graded case: a $k$-basis for $M/\m M$ is a $k$-spanning set for $M/\m M$, and any $k$-spanning set for $M/\m M$ contains a $k$-basis.
+\end{enumerate}
+
+}
+
+\itemA Proof of General NAK: Let $M=\sum_{i=1}^n  R m_i$. Set $v$ to be the row vector $[m_1, \dots,m_n]$. 
+\begin{enumerate}
+\itema Suppose that $IM=M$. Explain why there is an $n\times n$ matrix $A$ with entries in $I$ such that $vA=v$.
+\itema Apply a \textsc{Trick} and complete the proof.
+\end{enumerate}
+\solution{
+\begin{enumerate}
+\itema Each $m_i$ is an element of $IM$, so we can write $m_i = \sum_j b_j n_j$ with $n_j\in M$ and $b_j\in I$. We can then write $n_j$ as a linear combination of the $m_i$'s. Combining all together, we can write $m_i = \sum_j a_j m_j$ with $a_j\in I$. These linear combinations are the columns of a matrix $A$ as desired.
+\itema By the Eigenvector trick, ${\det(A - \1)}$ kills $v$, so kills $M$. Going mod $I$ we have ${\det(A-\1) \equiv \det(-\1) \equiv \pm 1}$; up to sign, $a= \det(A - \1)$ is the element we seek.
+\end{enumerate}
+}
+
+\itemB Let $(R,\m)$ be a local ring, $f\in R$ not a unit, and $M$ be a nonzero finitely generated module. Show that there is some element of $M$ that is \emph{not} a multiple of $f$.
+
+\solution{Suppose otherwise. Then $M=fM$. We have $f\in \m$, so $M=fM \subseteq \m M \subseteq M$, so $M=\m M$. But by NAK, we then have $M=0$, a contradiction.
+}
+
+\itemB Applications of NAK.
+\begin{enumerate}
+\itemb Let $R$ be a ring and $I$ be a finitely generated ideal. Show that if $I^2=I$ then there is some idempotent $e$ such that $I=(e)$.
+\itemb Find a counterexample to (a) if $I$ is \emph{not} assumed to be finitely generated.
+\itemb Let $(R,\m)$ be a Noetherian local ring and $M$ be a finitely generated module. Show that $\bigcap_{n\geq 1} \m^n M = 0$.
+\itemb Find a counterexample to (c) if $(R,\m)$ is still Noetherian local but $M$ is not finitely generated.
+\itemb Find a counterexample to (c) if $(R,\m)$ with $M=R$, $\m$ is a maximal ideal, but $R$ is not necessarily Noetherian and local.
+\itemb Let $R$ be a Noetherian ring, and $M$ a finitely generated module. Let $\phi:M\to M$ be a surjective $R$-module homomorphism. Show\footnote{Hint: Take a page from the 818 playbook and give $M$ an $R[X]$-module structure.} that $\phi$ must also be injective.
+\itemb Let $(R,\m)$ be a local ring. Suppose that $R_{\mathrm{red}}\ceq R/\sqrt{0}$ is a domain, and that there is some $f\in R$ such that $R/fR$ is reduced (and nonzero). Show that $R$ is reduced (and hence a domain).
+\end{enumerate}
+
+
+
+
+\end{enumerate}
+\vfill
+
+
+
+
+
+\end{document}
