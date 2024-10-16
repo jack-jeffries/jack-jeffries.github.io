@@ -1,0 +1,247 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=.86in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals,bbm}
+\usepackage[all]{xy}
+
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\ord}{\mathrm{ord}}
+\newcommand{\Min}{\mathrm{Min}}
+\newcommand{\Spec}{\mathrm{Spec}}
+\renewcommand{\1}{\mathbbm{1}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+\usepackage[hang,flushmargin]{footmisc}
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{\S5.21: Localization of rings}	
+
+\begin{framed}
+
+%\noindent \textsc{Recall:} A subset $W$ of a ring $R$ is \textbf{multiplicatively closed} if $1\in W$ and $u,v\in W$ implies $uv\in W$.
+
+%\
+
+\noindent \textsc{Definition:} Let $R$ be a ring and $W$ a multiplicatively closed subset with $0\notin W$. The \textbf{localization} $W^{-1}R$ is the ring with
+\begin{itemize}
+\item  elements equivalence classes of $(r,w)\in R\times W$, with the class of $(r,w)$ denoted as $\ds \frac{r}{w}$.
+\smallskip
+\item with equivalence relation $\ds \frac{s}{u} = \frac{t}{v}$ if there is some $w\in W$ such that $w(sv-tu)=0$,
+\smallskip
+\item addition given by $\ds\frac{s}{u} + \frac{t}{v} = \frac{sv+tu}{uv}$, and
+\smallskip
+\item multiplication given by $\ds\frac{s}{u}  \frac{t}{v} = \frac{st}{uv}$.
+\end{itemize}
+(If $0\in W$, then $W^{-1}R\ceq 0$, which by our convention is not a ring.)
+
+\
+
+\noindent \textsc{Definition:} Let $R$ be a ring.
+\begin{itemize}
+\item If $f\in R$ is nonnilpotent\footnotemark, then $R_f \ceq \{1,f,f^2,\dots\}^{-1} R$.
+\item If $\p \subseteq R$ is a prime ideal then $R_{\p} \ceq (R\smallsetminus \p)^{-1} R$.
+\item The \textbf{total quotient ring} of $R$ is $\mathrm{Frac}(R)\ceq \{ w\in R \ | \ w \ \text{is a nonzerodivisor}\}^{-1}R$.
+\end{itemize}
+
+\
+
+%\noindent \textsc{Universal property of localization\footnotemark:} The localization $W^{-1}R$ is an $R$-algebra (with structure map $l$) satisfying the following property: for any ring homomorphism $\phi:R \to S$ such that $\phi(W)$ consists of units in $S$, there is a unique ring homomorphism $\widetilde{\phi}: W^{-1}R \to S$ such that $\phi = \widetilde{\phi} \circ l$.
+
+%This property characterizes the localization up to isomorphism.
+
+\noindent For a ring $R$, multiplicative set $W\not\ni 0$, and an ideal $I$, we define 
+\[W^{-1}I \ceq \left\{\ds \frac{a}{w} \in W^{-1}R \ | \ a\in I\right\}.\]
+
+\
+
+\noindent \textsc{Theorem:} Let $R$ be a ring and $W$ be a multiplicatively closed subset. Then the map induced on $\Spec$ corresponding to the natural map $R\to W^{-1}R$ yields a homeomorphism into its image:
+\[ \Spec(W^{-1} R) \cong \{ \p\in \Spec(R) \ | \ \p \cap W = \varnothing\}.\]
+
+\
+
+\noindent \textsc{Lemma:} Let $R$ be a ring and $W$ be a multiplicatively closed subset.
+\begin{enumerate}
+\item For any ideal $I\subseteq R$, \ $W^{-1}I= I(W^{-1}R)$.
+\item For any ideal $I\subseteq R$, \ $W^{-1}I \cap R = \{ r\in R \ | \ \exists w\in W : wr\in I\}$.
+\item For any ideal $J\subseteq W^{-1}R$, \ $W^{-1}(J\cap R) = J$.
+\item For any prime ideal $\p \subseteq R$ with\footnotemark \ $\p\cap W=\varnothing$, \ $W^{-1}\p$ is prime.
+\end{enumerate}
+\end{framed}
+\footnotetext[1]{If $f$ is nilpotent, $0\in \{1,f,f^2,\dots\}$ so $R_f=0$.}
+\footnotetext[2]{If $W\cap \p\ni a$, then $W^{-1}\p \ni \frac{a}{a}=\frac{1}{1}$, so $W^{-1}\p=W^{-1}R$ is the improper ideal!}
+
+ 
+\begin{enumerate}
+\itemA Computing localizations
+\begin{enumerate}
+\itema What is the natural ring homomorphism $R \to W^{-1}R$?
+\itema Show that the kernel of $R \to W^{-1}R$ is ${}^W\! 0 \ceq\{r\in R \ | \ \exists w\in W : wr=0\}$.
+\itema If every element of $W$ is a nonzerodivisor, explain why the equivalence relation on $W^{-1}R$ simplifies to $\frac{s}{u} = \frac{t}{v}$ if and only if $sv=tu$.
+\itema If $R$ is a domain, explain why $\mathrm{Frac}(R)$ is the usual fraction field of $R$.
+\itema If $R$ is a domain, explain why $W^{-1}R$ is a subring of the fraction field of $R$. Which subring?
+\itema Let $\overline{R}= R/ {}^W \!0$ and $\overline{W}$ be the image of $W$ in $\overline{R}$. Show that $W^{-1}R \cong \overline{W}^{-1} \overline{R}$.
+\end{enumerate}
+
+\solution{\begin{enumerate}
+\itema $r\mapsto \frac{r}{1}$.
+\itema $\frac{r}{1} = \frac{0}{1}$ if and only if $\exists w\in W : rw = w(1r-0)=0$.
+\itema $w(sv-tu)=0$ and $w$ a nonzerdivisor implies $sv-tu=0$; i.e., $sv=tu$.
+\itema In light of the above, it's just the definition.
+\itema The equivalence relation on the fractions is the same as that in the fraction field, so the map is injective; the operations are definitely the same. It is the subring consisting of fractions that can be written with denominator in $W$.
+\itema We define a map from $W^{-1}R \to \overline{W}^{-1} \overline{R}$ by $\frac{r}{w} \mapsto \frac{\overline{r}}{\overline{w}}$. It is clear from the construction that this is a surjective homomorphism. Suppose that $\frac{r}{w}$ is in the kernel, so $ \frac{\overline{r}}{\overline{w}}= \frac{\overline{0}}{\overline{1}}$. This means that there is some $\overline{v}\in \overline{W}$ such that $\overline{v}\overline{r}=\overline{0}$; i.e.,  $vr\in {}^W \!0$ for some $v\in W$. Then there is some $u\in W$ such that $uvr=0$, but $uv\in W$, so $\frac{r}{w}=\frac{0}{1}$ in $W^{-1}R$. 
+\end{enumerate}}
+
+\begin{samepage}
+\itemA Ideals in localizations: Let $R$ be a ring and $W$ a multiplicatively closed set.
+\begin{enumerate}
+\itema Use the Theorem to show that, if $f\in R$ is nonnilpotent, then \[{\Spec(R_f) \cong D(f) \subseteq \Spec(R)}.\]
+\itema Use the Theorem to show that, if $\p \subseteq R$ is prime, then \[{\Spec(R_{\p})\cong \{ \q\in \Spec(R) \ | \ \q \subseteq \p\}} \equalscolon \Lambda(\p).\] Deduce that $R_{\p}$ is always a \emph{local} ring.
+\itema Draw\footnote{Recall that $\Spec(\frac{\C[X,Y]}{(XY)})$ consists of $\{(x),(y), (x,y-\alpha), (x-\beta,y) \ | \ \alpha,\beta\in \C\}$. } a picture of $\Spec(\frac{\C[X,Y]}{(XY)}_{\! \!(x,y)})$.
+\itema Use Part (3) of the Lemma to show that every ideal of $W^{-1}R$ is of the form $W^{-1} I$ for some ideal $I\subseteq R$.
+\itema Use Part (3) of the Lemma to show that any localization of a Noetherian ring is Noetherian.
+\end{enumerate}
+\end{samepage}
+
+
+\solution{
+\begin{enumerate}
+\itema The condition $\p\cap \{1,f,f^2,\dots\}=\varnothing$ is equivalent to $f\notin \p$; i.e., $f\in D(\p)$.
+\itema The condition $\q\cap (R\smallsetminus \p)=\varnothing$ is equivalent to $\q \subseteq \p$; i.e., $\q\in \Lambda(\p)$. There is a unique maximal element in this set, namely $\p$, so $R_{\p}$ is local.
+\itema \[ \xymatrix@C-1pc{ & (x,y) & \\ 
+ (x)\ar@{-}[ur] & &  (y)\ar@{-}[ul]}\]
+\itema Clear.
+\itema Given an ideal of $W^{-1}R$, write it as $I(W^{-1}R)$ for some ideal $I$ of $R$. Then $I=(f_1,\dots,f_t)$ by Noetherianity, whence $I(W^{-1}R)$ is generated by the images $\frac{f_1}{1},\dots,\frac{f_t}{1}$.
+\end{enumerate}}
+
+\itemA Examples of localizations
+\begin{enumerate}
+\itema Describe as concretely as possible the rings $\Z_{2}$ and $\Z_{(2)}$ as defined above. 
+\itema Describe as concretely as possible the rings $K[X]_X$ and $K[X]_{(X)}$.
+\itema Describe as concretely as possible the rings $K[X,Y]_X$ and $K[X,Y]_{(X)}$.
+\itema Describe as concretely as possible the rings $\left(\frac{K[X,Y]}{(XY)}\right)_{\! x}$ and $\left(\frac{K[X,Y]}{(XY)}\right)_{\! (x)}$.
+\itema Describe as concretely as possible  $\left(\frac{K[X,Y]}{(X^2)}\right)_{\! x}$ and $\left(\frac{K[X,Y]}{(X^2)}\right)_{\! (x)}$.
+\end{enumerate}
+
+\solution{\begin{enumerate}
+\itema $\Z_{2}=\{ a/b\in \Q \ | \ b=2^n\}$ and $\Z_{(2)}= \{ a/b \in \Q \ | \ 2\nmid b\}$. 
+\itema $K[X]_X=\{ f/g\in K(X) \ | \ g=X^n\}$ and $K[X]_{(X)}=\{ f/g\in K(X) \ | \ X\nmid g\}$.
+\itema $K[X,Y]_X=\{ f/g\in K(X,Y) \ | \ g=X^n\}$ \\ and ${K[X,Y]_{(X)}=\{ f/g\in K(X,Y) \ | \ X\nmid g\}}$.
+\itema $\left(\frac{K[X,Y]}{(XY)}\right)_{\! x}\cong K[X,X^{-1}]$ and $\left(\frac{K[X,Y]}{(XY)}\right)_{\! (x)}\cong K(Y)$.
+\itema $\left(\frac{K[X,Y]}{(X^2)}\right)_{\! x}\cong K[Y]$ and $\left(\frac{K[X,Y]}{(X^2)}\right)_{\! (x)}\cong K(Y)[X]/(X^2)$.
+\end{enumerate}}
+
+
+
+\itemB Prove the Lemma and the Theorem.
+
+\solution{Lemma:
+\begin{enumerate}
+\item For the containment $\subseteq$, we have $\frac aw = \frac a1 \frac 1w$. For the other, given $\sum_i \frac{a_i}{1} \frac{r_i}{w_i}$, take $w = w_1\cdots w_t$ and $w'_i$ to be the product of all $w$'s except $w_i$; then
+\[ \sum_i \frac{a_i}{1} \frac{r_i}{w_i} = \sum_i \frac{a_i}{1} \frac{w'_i r_i}{w} = \sum_i \frac{a_i w'_i r_i}{w} \in W^{-1}I.\]
+\item We have $r \in W^{-1}I \cap R$ if and only if $\frac{r}{1} \in W^{-1}I$, so $\frac{r}{1} = \frac{a}{w}$ some $a\in I, w\in W$. Then there is some $u\in W$ such that $u(wr-a)=0$, so $(uw)r\in I$, as claimed.
+\item Let $j=\frac{r}{w}\in J$. Then $\frac{r}{1} = w j\in J \cap R$, $\frac{r}{w} = \frac{1}{w} \frac{r}{1} \in W^{-1}(J\cap R)$. Conversely, if $\frac{a}{w} \in W^{-1}(J\cap R)$ so $a\in J\cap R$, then $\frac{a}{1}\in J$, and $\frac{a}{w}=\frac{1}{w}\frac{a}{1}\in J$.
+\item Let $\frac{a}{u}, \frac{b}{v}\in W^{-1}R$, and $\frac{ab}{uv}\in W^{-1}\p$. Then there are some $w\in W$ and $p\in \p$ such that $\frac{ab}{uv} = \frac{p}{w}$, so there is $t\in W$ with $t(wab-uvp)=0$, so $(tw)ab\in \p$. Since $W\cap \p=\varnothing$, $tw\notin \p$ so $a\in \p$ or $b\in \p$, and hence $\frac{a}{u}\in W^{-1}\p$ or $\frac{b}{v}\in W^{-1}\p$.
+\end{enumerate}
+
+Theorem:
+ Suppose that $\q$ is a prime ideal in $W^{-1}R$ and $\q \cap R=\p$. Then $W^{-1}\p = W^{-1}(\q \cap R) = \q$. This shows that the only ideal (in particular, the only prime ideal) that contracts to $\p$ is $W^{-1}\p$, so this map is injective. Since $W^{-1}\p$ is prime for any $\p \cap W=\varnothing$, and is the bogus ideal otherwise, the image is exactly the primes with $\p \cap W=\varnothing$. To see that it induces a homeomorphism onto its image, it suffices to show that the image of a closed set is closed. One checks from the definition that the image of $V(W^{-1} I)$ is $V(I) \cap \{\p\in \Spec(R) \ | \ \p\cap W=\varnothing\}$. 
+}
+
+%\itemB Use the Lemma to give a second proof of the \\
+%\textsc{Proposition:} If $I$ is an ideal and $W$ is a multiplicatively closed subset such that $W\cap I = \varnothing$, then there is a prime ideal $\p \supseteq I$ such that $W\cap \p = \varnothing$.
+
+
+%\solution{}
+
+\itemB Prove the following \textsc{Lemma:} If $V,W$ are multiplicatively closed sets, then $(VW)^{-1} R\cong (\frac{V}{1})^{-1}(W^{-1} R)$, where $(\frac{V}{1})^{-1}$ is the image of $V$ in $W^{-1}R$.
+
+\solution{Check that the map $(r/w)/(v/1) \mapsto r/(wv)$ is an isomorphism: it is clearly a ring homomorphism, and clearly surjective. If $r/(wv)$ is zero, then there is some $u\in VW$ with $ur=0$. We can write $u=st$ with $s\in V$ and $t\in W$, so $str=0$. But this implies that $s(r/w)=0$ in $W^{-1}R$ (because there is some $t\in W$ such that $str=0$), and this means that $(r/w)/(v/1)=0$.}
+
+%\itemB 
+%\begin{enumerate}
+%\itemb Show that $R_f \cong R[X]/(fX-1)$.
+%\itemb Show that $W^{-1}R$ is generated as an $R$-algebra by the elements $\{1/w \ | \ w\in W\}$ with defining relations $\{w X_w - 1 \ | \ w\in W\}$.
+%\end{enumerate}
+%
+%\
+
+\begin{samepage}
+\itemB Minimal primes.
+\begin{enumerate}
+\item Let $\p$ be a minimal prime of $R$. Show that for any $a\in \p$, there is some $u\notin \p$ and $n\geq 1$ such that $ua^n=0$.
+\item Show that the set of minimal\footnote{$\Min(R)$ denotes the set of primes of $R$ that are minimal. This is the same as $\Min(0)$ in our notation of minimal primes of an ideal; this conflict of notation is standard.} primes $\Min(R)$ with the induced topology from $\Spec(R)$ is Hausdorff.
+\item Let $R= K[X_1,X_2,X_3,\dots]/(\{X_i X_j \ | \ i \neq j\})$. Describe $\Min(R)$ as a topological space.
+\end{enumerate}
+\end{samepage}
+
+
+
+
+\
+
+
+
+
+\end{enumerate}
+\vfill
+
+
+
+
+
+\end{document}
