@@ -1,0 +1,159 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=.75in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed}
+\usepackage[all]{xy}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\e}{\varepsilon}
+\newcommand{\ds}{\displaystyle}
+
+\DeclareMathOperator{\res}{res}
+
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+	
+	\thispagestyle{empty}
+	
+	\section*{A curious sequence \S 2.3}
+
+\begin{framed}
+
+
+\noindent Copy the following picture onto the board:
+
+
+	\vspace{-1.5em}
+{\tiny
+\begin{center}
+\[{\xymatrix@C=.5em@R=.5em{ 
+\ddots & \vdots & \vdots &  \vdots & \vdots & \vdots \ar@{.}@[blue][dr]& \vdots \ar@{.}@[blue][dr]& \vdots \ar@{.}@[blue][dr]& \vdots \ar@{.}@[blue][dr]&  \vdots & \reflectbox{$\ddots$} \\
+\cdots & (-4,5) \ar@{.}@[blue][ur]& (-3,5) \ar@{.}@[blue][ur]& (-2,5) \ar@{.}@[blue][ur]& (-1,5) \ar@{.}@[blue][ur]& (0,5) \ar@{->}@[blue][dr]
+& (1,5) \ar@{->}@[blue][dr]& (2,5) \ar@{->}@[blue][dr]& (3,5) \ar@{->}@[blue][dr]& (4,5)\ar@{.}@[blue][dr] & \cdots \\
+\cdots \ar@{.}@[blue][ur]& (-4,4) \ar@{->}@[blue][ur]& (-3,4) \ar@{->}@[blue][ur]& (-2,4) \ar@{->}@[blue][ur]& (-1,4) \ar@{->}@[blue][ur]& (0,4) \ar@{->}@[blue][dr]
+& (1,4) \ar@{->}@[blue][dr]& (2,4) \ar@{->}@[blue][dr]& (3,4) \ar@{->}@[blue][dr]& (4,4) \ar@{.}@[blue][dr]& \cdots \\
+\cdots \ar@{.}@[blue][ur]& (-4,3) \ar@{->}@[blue][ur]& (-3,3) \ar@{->}@[blue][ur]& (-2,3) \ar@{->}@[blue][ur]& (-1,3) \ar@{->}@[blue][ur]& (0,3) \ar@{->}@[blue][dr]
+& (1,3) \ar@{->}@[blue][dr]& (2,3) \ar@{->}@[blue][dr]& (3,3) \ar@{->}@[blue][dr]& (4,3) \ar@{.}@[blue][dr]& \cdots \\
+\cdots \ar@{.}@[blue][ur]& (-4,2) \ar@{->}@[blue][ur]& (-3,2) \ar@{->}@[blue][ur]& (-2,2) \ar@{->}@[blue][ur]& (-1,2) \ar@{->}@[blue][ur] & (0,2) \ar@{->}@[blue][dr]
+& (1,2) \ar@{->}@[blue][dr] & (2,2) \ar@{->}@[blue][dr]& (3,2) \ar@{->}@[blue][dr]& (4,2) \ar@{.}@[blue][dr]& \cdots \\
+\cdots \ar@{.}@[blue][ur] & (-4,1) \ar@{->}@[blue][ur]& (-3,1) \ar@{->}@[blue][ur] & (-2,1) \ar@{->}@[blue][ur]& (-1,1) \ar@{->}@[blue][ur]& (0,1) \ar@{->}@[blue][l]
+& (1,1) \ar@/^1pc/@[blue][lll]& (2,1) \ar@/^2pc/@[blue][lllll] & (3,1) \ar@/^3pc/@[blue][lllllll] & (4,1)  \ar@{.}@/^4pc/@[blue][lllllllll]& \cdots \\
+ }}\]
+ \end{center}
+ }
+ \
+ 
+ \
+ 
+ \
+ 
+ \
+ 
+	
+\noindent	This gives the list of points
+	$$
+	(0,1),  (-1,1), (0,2), (1,1), (-2,1), (-1,2), (0,3), (1,2), (2,1), (-3,1), \dots
+	$$
+	Now convert these to a list of rational numbers by changing $(m,n)$ to~$\frac{m}{n}$ to get the sequence
+	$$
+	\frac01, \frac{-1}1, \frac02, \frac11, \frac{-2}1, \frac{-1}2, \frac03, \frac12, \frac21, \frac{-3}1, \dots
+	$$
+	of rational numbers.  Call this
+	sequence $\{ w_n\}_{n=1}^\infty$.
+
+\end{framed}
+
+\begin{enumerate}
+
+\item True or false: Every rational number occurs in this sequence. That is, for every $q\in \Q$, there is some $n\in \N$ such that $w_n=q$.
+
+\
+
+\item True or false:  Every rational number occurs in this sequence infinitely many times. That is, for every $q\in \Q$, there are \emph{infinitely many} natural numbers $n\in \N$ such that $w_n=q$.
+
+\
+
+\item True or false: For every rational number $q\in \Q$, the constant sequence $\{q\}_{n=1}^{\infty}$ is a subsequence of $\{w_n\}_{n=1}^\infty$.
+
+\
+
+\item True or false: For every real number $r\in \R$, the constant sequence $\{r\}_{n=1}^{\infty}$ is a subsequence of $\{w_n\}_{n=1}^\infty$.
+
+\
+
+\item True or false: Every sequence of rational numbers $\{q_n\}_{n=1}^\infty$ is a subsequence of $\{w_n\}_{n=1}^\infty$.
+
+\
+
+\item True or false: For every real number $r\in \R$, there is a subsequence of $\{ w_n\}_{n=1}^\infty$ that converges to~$r$.
+\end{enumerate}
+
+\
+
+\begin{framed}
+\textsc{Theorem 21.1:} There exists a sequence of rational numbers such that
+
+\
+\begin{itemize}
+\item \phantom{\underline{ABCDEFGHIJKLMNOPQRSTUVWXYZ}}
+
+\
+
+\item \phantom{\underline{ABCDEFGHIJKLMNOPQRSTUVWXYZ}}
+
+\
+
+\item \phantom{\underline{ABCDEFGHIJKLMNOPQRSTUVWXYZ}}
+\end{itemize}
+\end{framed}
+
+
+\newpage
+
+	\section*{A curious impossibility \S 2.3}
+
+\begin{framed}
+
+\noindent \textsc{Theorem 21.2 (Cantor's Theorem):} There is no sequence of real numbers such that every real number $r$ occurs in the sequence.
+\end{framed}
+
+\noindent By contradiction, suppose $\{a_n\}_{n=1}^\infty$ is a sequence such that every real number occurs as some $a_n$ and write out the decimal expansions (where each $d_{i,j}\in \{0,1,\dots,9\}$ is a digit).
+
+\	$$
+	\begin{aligned}
+	a_1 & = (\text{integer part}). d_{1,1} d_{1,2} d_{1,3} d_{1,4} d_{1,5} d_{1,6} \cdots \\
+	a_2 & = (\text{integer part}). d_{2,1} d_{2,2} d_{2,3} d_{2,4} d_{2,5} d_{2,6}\cdots \\
+	a_3 & = (\text{integer part}). d_{3,1} d_{3,2} d_{3,3} d_{3,4} d_{3,5} d_{3,6}\cdots \\
+	a_4 & = (\text{integer part}). d_{4,1} d_{4,2} d_{4,3} d_{4,4} d_{4,5} d_{4,6}\cdots \\
+	a_5 & = (\text{integer part}). d_{5,1} d_{5,2} d_{5,3} d_{5,4} d_{5,5} d_{5,6}\cdots \\
+	a_6 & = (\text{integer part}). d_{6,1} d_{6,2} d_{6,3} d_{6,4} d_{6,5} d_{6,6}\cdots \\
+	a_7 & = (\text{integer part}). d_{7,1} d_{7,2} d_{7,3} d_{7,4} d_{7,5} d_{7,6}\cdots \\
+	\vdots &  \qquad  \qquad \vdots \qquad  \qquad \vdots \qquad  \qquad \vdots\\
+	\end{aligned}
+	$$
+	
+
+
+
+
+
+\end{document}

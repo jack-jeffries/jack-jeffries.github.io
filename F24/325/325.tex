@@ -2951,9 +2951,9 @@ Let $\e>0$. Since $\{a_n\}_{n=1}^\infty$ converges to $L$, there is some $N\in \
 \end{enumerate}
 \end{framed}
 
-\item Explain how the following Corollary follows from Theorem~15.5.
+\item Explain how the following Corollary follows from Theorem~20.4.
 
-\noindent \textbf{Corollary 15.7:} Let $\{a_n\}_{n=1}^\infty$ be any sequence.
+\noindent \textbf{Corollary 20.6:} Let $\{a_n\}_{n=1}^\infty$ be any sequence.
 \begin{enumerate}
 \item If there is a subsequence of this sequence that diverges, then the sequence itself diverges.
 \item If there are two subsequences of this sequence that converge to different values, then the sequence itself diverges.
@@ -2965,7 +2965,7 @@ Let $\e>0$. Since $\{a_n\}_{n=1}^\infty$ converges to $L$, there is some $N\in \
 
 
 
-\item Use Corollary 15.7 to give a quick proof that the sequence $\{ (-1)^n \}_{n=1}^\infty$ diverges.
+\item Use Corollary 20.6 to give a quick proof that the sequence $\{ (-1)^n \}_{n=1}^\infty$ diverges.
 
 \begin{framed} It has subsequences that converge to different values, as we saw above.
 \end{framed}
@@ -2998,6 +2998,136 @@ Let $\e>0$. Since $\{a_n\}_{n=1}^\infty$ converges to $L$, there is some $N\in \
 \item True: Let $n_1<n_2<n_3 < \cdots$ be a strictly increasing sequence of natural numbers, and $\{a_{n_k}\}_{k=1}^\infty$ be a subseqence. Let $m\in \R$. There is some $N$ such that $a_n < m$ for all $n>N$. We claim that this $N$ works (for this $m$) to show that $\{a_{n_k}\}_{k=1}^\infty$  diverges to $-\infty$. Indeed, if $k>N$, then $n_k \geq k >N$, so $a_{n_k} <m$. Thus $\{a_{n_k}\}_{k=1}^\infty$  diverges to $-\infty$.
 \end{enumerate}\end{framed}
 \end{enumerate}
+
+\begin{comment}
+\newpage 
+\Oct{16}{\We}{2.3}
+
+\begin{framed}
+{\small
+\begin{center}
+\[{\xymatrix@C=.5em@R=.5em{ 
+\ddots & \vdots & \vdots &  \vdots & \vdots & \vdots \ar@{.}@[blue][dr]& \vdots \ar@{.}@[blue][dr]& \vdots \ar@{.}@[blue][dr]& \vdots \ar@{.}@[blue][dr]&  \vdots & \reflectbox{$\ddots$} \\
+\cdots & (-4,5) \ar@{.}@[blue][ur]& (-3,5) \ar@{.}@[blue][ur]& (-2,5) \ar@{.}@[blue][ur]& (-1,5) \ar@{.}@[blue][ur]& (0,5) \ar@{->}@[blue][dr]
+& (1,5) \ar@{->}@[blue][dr]& (2,5) \ar@{->}@[blue][dr]& (3,5) \ar@{->}@[blue][dr]& (4,5)\ar@{.}@[blue][dr] & \cdots \\
+\cdots \ar@{.}@[blue][ur]& (-4,4) \ar@{->}@[blue][ur]& (-3,4) \ar@{->}@[blue][ur]& (-2,4) \ar@{->}@[blue][ur]& (-1,4) \ar@{->}@[blue][ur]& (0,4) \ar@{->}@[blue][dr]
+& (1,4) \ar@{->}@[blue][dr]& (2,4) \ar@{->}@[blue][dr]& (3,4) \ar@{->}@[blue][dr]& (4,4) \ar@{.}@[blue][dr]& \cdots \\
+\cdots \ar@{.}@[blue][ur]& (-4,3) \ar@{->}@[blue][ur]& (-3,3) \ar@{->}@[blue][ur]& (-2,3) \ar@{->}@[blue][ur]& (-1,3) \ar@{->}@[blue][ur]& (0,3) \ar@{->}@[blue][dr]
+& (1,3) \ar@{->}@[blue][dr]& (2,3) \ar@{->}@[blue][dr]& (3,3) \ar@{->}@[blue][dr]& (4,3) \ar@{.}@[blue][dr]& \cdots \\
+\cdots \ar@{.}@[blue][ur]& (-4,2) \ar@{->}@[blue][ur]& (-3,2) \ar@{->}@[blue][ur]& (-2,2) \ar@{->}@[blue][ur]& (-1,2) \ar@{->}@[blue][ur] & (0,2) \ar@{->}@[blue][dr]
+& (1,2) \ar@{->}@[blue][dr] & (2,2) \ar@{->}@[blue][dr]& (3,2) \ar@{->}@[blue][dr]& (4,2) \ar@{.}@[blue][dr]& \cdots \\
+\cdots \ar@{.}@[blue][ur] & (-4,1) \ar@{->}@[blue][ur]& (-3,1) \ar@{->}@[blue][ur] & (-2,1) \ar@{->}@[blue][ur]& (-1,1) \ar@{->}@[blue][ur]& (0,1) \ar@{->}@[blue][l]
+& (1,1) \ar@/^1pc/@[blue][lll]& (2,1) \ar@/^2pc/@[blue][lllll] & (3,1) \ar@/^3pc/@[blue][lllllll] & (4,1)  \ar@{.}@/^4pc/@[blue][lllllllll]& \cdots \\
+ }}\]
+ \end{center}
+ }
+
+
+\
+
+\
+
+\
+	
+\noindent	This gives the list of points
+	$$
+	(0,1),  (-1,1), (0,2), (1,1), (-2,1), (-1,2), (0,3), (1,2), (2,1), (-3,1), \dots
+	$$
+	Now convert these to a list of rational numbers by changing $(m,n)$ to~$\frac{m}{n}$ to get the sequence
+	$$
+	\frac01, \frac{-1}1, \frac02, \frac11, \frac{-2}1, \frac{-1}2, \frac03, \frac12, \frac21, \frac{-3}1, \dots
+	$$
+	of rational numbers.  Call this
+	sequence $\{ w_n\}_{n=1}^\infty$.
+\end{framed}
+
+\begin{enumerate}
+
+\item True or false: Every rational number occurs in this sequence. That is, for every $q\in \Q$, there is some $n\in \N$ such that $w_n=q$.
+
+\begin{framed}
+True: The idea is that writing $q=\frac{m}{n}$, the point $(m,n)$ with $m\in \Z$ and $n\in \N$ gets passed through by the zigzag at least once. 
+\end{framed}
+
+\item True or false:  Every rational number occurs in this sequence infinitely many times. That is, for every $q\in \Q$, there are \emph{infinitely many} natural numbers $n\in \N$ such that $w_n=q$.
+
+\begin{framed}
+True: We can write $q=\frac{m}{n} = \frac{2m}{2n} = \frac{3m}{3n} = \cdots$, and each point $(km,kn)$ gets passed through by the zigzag.
+\end{framed}
+
+\item True or false: For every rational number $q\in \Q$, the constant sequence $\{q\}_{n=1}^{\infty}$ is a subsequence of $\{w_n\}_{n=1}^\infty$.
+
+\begin{framed}
+True: Since $q$ occurs infinitely many times, there is a strictly increasing sequence of indices $n_k$ such that $w_{n_k} = q$.
+\end{framed}
+
+\item True or false: For every real number $r\in \R$, the constant sequence $\{r\}_{n=1}^{\infty}$ is a subsequence of $\{w_n\}_{n=1}^\infty$.
+
+\begin{framed}
+False: Every term in the sequence is rational.
+\end{framed}
+
+\item True or false: Every sequence of rational numbers $\{q_n\}_{n=1}^\infty$ is a subsequence of $\{w_n\}_{n=1}^\infty$.
+
+\begin{framed}
+True: there is some $n_1$ such that $w_{n_1} = q_1$. Then since $q_2$ occurs infinitely many times, it must occur with some index larger than $n_1$, so there is some $n_2>n_1$ with $w_{n_2} = q_2$. Continuing like this, we obtain some $\{n_k\}$ strictly increasing such that $q_k = w_{n_k}$.
+\end{framed}
+
+\item True or false: For every real number $r\in \R$, there is a subsequence of $\{ w_n\}_{n=1}^\infty$ that converges to~$r$.
+
+\begin{framed}
+True: For every real number $r$, there is a sequence of rational numbers that converges to $r$, and any such sequence is a subsequence of $\{w_n\}$.
+\end{framed}
+\end{enumerate}
+
+\
+
+\begin{framed}
+\textsc{Theorem 21.1:} There is a sequence of rational numbers $\{w_n\}_{n=1}^\infty$ such that 
+\begin{enumerate}
+\item every rational number occurs in $\{w_n\}_{n=1}^\infty$ infinitely many times;
+\item every sequence of rational numbers is a subsequence of $\{w_n\}_{n=1}^\infty$; and
+\item every real number occurs as the limit of some subsequence of $\{w_n\}_{n=1}^\infty$.
+\end{enumerate}\end{framed}
+
+
+\newpage
+
+	\section*{A curious impossibility \S 2.3}
+
+\begin{framed}
+
+\noindent \textsc{Theorem 21.2 (Cantor's Theorem):}\index{Cantor's theorem} There is no sequence of real numbers such that every real number $r$ occurs in the sequence.
+\end{framed}
+
+\noindent By contradiction, suppose $\{a_n\}_{n=1}^\infty$ is a sequence such that every real number occurs as some $a_n$ and write out the decimal expansions (where each $d_{i,j}\in \{0,1,\dots,9\}$ is a digit).
+
+\	$$
+	\begin{aligned}
+	a_1 & = (\text{integer part}). d_{1,1} d_{1,2} d_{1,3} d_{1,4} d_{1,5} d_{1,6} \cdots \\
+	a_2 & = (\text{integer part}). d_{2,1} d_{2,2} d_{2,3} d_{2,4} d_{2,5} d_{2,6}\cdots \\
+	a_3 & = (\text{integer part}). d_{3,1} d_{3,2} d_{3,3} d_{3,4} d_{3,5} d_{3,6}\cdots \\
+	a_4 & = (\text{integer part}). d_{4,1} d_{4,2} d_{4,3} d_{4,4} d_{4,5} d_{4,6}\cdots \\
+	a_5 & = (\text{integer part}). d_{5,1} d_{5,2} d_{5,3} d_{5,4} d_{5,5} d_{5,6}\cdots \\
+	a_6 & = (\text{integer part}). d_{6,1} d_{6,2} d_{6,3} d_{6,4} d_{6,5} d_{6,6}\cdots \\
+	a_7 & = (\text{integer part}). d_{7,1} d_{7,2} d_{7,3} d_{7,4} d_{7,5} d_{7,6}\cdots \\
+	\vdots &  \qquad  \qquad \vdots \qquad  \qquad \vdots \qquad  \qquad \vdots\\
+	\end{aligned}
+	$$
+	
+\begin{framed}	
+	\begin{proof}
+	Form a real number $x$ as $0.e_1 e_2 e_3 \cdots$ where the $e_i$'s are digits chosen as follows: 
+	Let 
+	\[e_i=\begin{cases} 7 & \text{if} \ d_{i,i}\leq 5\\
+	3 & \text{if}\ d_{i,i}> 5.\end{cases}\]
+	 In particular, $e_i\neq d_{i,i}$ for every $i$. This means that the digit sequence $e_1,e_2,e_3,\dots$ is not equal to any of the other digit sequences $d_{i,1}, d_{i,2},d_{i,3},\dots$ for any $i$, because the $i$-th values are different. Moreover, the number $x$ has a unique decimal expansion (since the only time two decimal expansions give the same number is one is eventually all $0$'s and the other is eventually all $9$'s), so $a_i \neq x$ for all $i\in \N$.
+		
+	Thus $x$ is not a member of this sequence, contrary to what we assumed. 
+\end{proof}
+\end{framed}
+
+
 
 \begin{comment}
 
