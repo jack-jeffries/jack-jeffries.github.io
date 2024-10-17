@@ -1,0 +1,67 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=.9in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed}
+\usepackage[all]{xy}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\e}{\varepsilon}
+\newcommand{\de}{\delta}
+\newcommand{\ds}{\displaystyle}
+
+\DeclareMathOperator{\res}{res}
+
+\pagestyle{empty}
+
+
+
+
+\begin{document}
+	
+	\thispagestyle{empty}
+	
+	\section*{The $\e-\de$ game. \S 3.1}
+	
+
+
+
+\begin{enumerate}
+\item Play the $\e-\de$ game. Rules:
+\begin{itemize}
+\item Player 0 starts by graphing a function $f$ (like a familiar one from calculus) and specifies an $x$-value $a$ and a $y$-value $L$ that (based on previous calculus knowledge) they think makes $\lim_{x\to a} f(x) = L$ \textbf{true}.\\
+The graph should be large.
+\item Player 1 choses an $\e$. This is how close we would like our function to be to $L$. Thus, $\e$ goes up and down from $L$. Draw horizontal dotted lines with $y$-values $L-\e$ and $L+\e$.\\
+ The $\e$ should be large enough for people to see and have room to work in the picture.
+\item Player 2 must find a $\de$ such that every $x \in (a-\de,a) \cup (a,a+\de)$ is 
+\begin{itemize}
+\item in the domain of $f$, and
+\item has an output $f(x)$ within $(L-\e,L+\e)$.
+\end{itemize}
+Draw vertical dotted lines for the $x$-values $a-\de$ and $a+\de$.\\
+Everyone in the team can assist player 2!
+\end{itemize}
+
+\
+
+\item Repeat with another function.
+
+
+\
+
+\item Now play except player 0 graphs an $f$ with an $L$ that makes $\lim_{x\to a} f(x) = L$ \textbf{false}.
+
+\
+
+\item Now play except player 0 ``chooses'' $\ds f(x) = \frac{2x-2}{x-1}$, $a=1$, and $L=2$. Play with actual numbers $\e$ and $\de$.
+
+
+\end{enumerate}
+
+
+\end{document}
