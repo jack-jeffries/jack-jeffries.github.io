@@ -1345,6 +1345,54 @@ Note: Any of the four NAK statements above would generally be referred to as NAK
 \item The map $\Spec(W^{-1}R) \to \Spec(R)$ is injective with image $\{ \p \in \Spec(R) \ | \ \p \cap W = \varnothing\}$.
 \end{enumerate}
 
+\newpage
+
+\subsection{Localization of modules \S5.2} \0
+
+\begin{framed} Key topics:
+\begin{itemize}
+\item Localization of a module
+\item Localization \& subs and quotients
+\end{itemize}
+\end{framed}
+
+\noindent \textsc{Definition:} Let $R$ be a ring, $M$ an $R$-module, and $W$ a multiplicatively closed subset. 
+The \textbf{localization} $W^{-1}M$ is the $W^{-1}R$-module\footnote{If $0\in W$, then $W^{-1}R=0$ is not a ring.} with
+\begin{itemize}
+\item  elements  equivalence classes of $(m,w)\in M\times W$, with the class of $(m,w)$ denoted as $\ds \frac{m}{w}$.
+\smallskip
+\item with equivalence relation $\ds \frac{m}{u} = \frac{n}{v}$ if there is some $w\in W$ such that $w(vm-un)=0$,
+\smallskip
+\item addition given by $\ds\frac{m}{u} + \frac{n}{v} = \frac{vm+un}{uv}$, and
+\smallskip
+\item action given by $\ds\frac{r}{u}  \frac{m}{v} = \frac{rm}{uv}$.
+\end{itemize}
+If $\alpha:M\to N$ is a homomorphism of $R$-modules, then the $W^{-1}R$-module homomorphism \\ ${W^{-1}\alpha: W^{-1}M\to W^{-1}N}$ is defined by $W^{-1}\alpha (\frac{m}{w}) = \frac{\alpha(m)}{w}$.
+
+
+\
+
+\noindent \textsc{Definition:} Let $R$ be a ring and $M$ a module.
+\begin{itemize}
+\item If $f\in R$, then $M_f \ceq \{1,f,f^2,\dots\}^{-1} M$.
+\item If $\p \subseteq R$ is a prime ideal then $M_{\p} \ceq (R\smallsetminus \p)^{-1} M$.
+\end{itemize}
+
+\
+
+\noindent \textsc{Proposition:} Let $R$ be a ring, $W$ a multiplicatively closed set, and $N\subseteq M$ be modules. Then 
+\begin{itemize}
+\item $W^{-1}N$ is a submodule of $W^{-1}M$, and 
+\item $\ds W^{-1}(M/N) \cong \frac{W^{-1}M}{W^{-1}N}$.
+\end{itemize}
+
+\
+
+\noindent \textsc{Lemma:} Let $R$ be a ring, $W$ a multiplicatively closed set. Let $M$ be a finitely presented\footnote{This means that $M$ admits a finite generating set for which the module of relations is also finitely generated.}
+ $R$-module, and $N$ an arbitrary $R$-module. Then for any homomorphism of $W^{-1}R$-modules  ${\beta: W^{-1}M \to W^{-1}N}$, there is some $w\in W$ and some $R$-module homomorphism $\alpha:M\to N$ such that ${\beta = \frac{1}{w}  W^{-1} \alpha}$.
+
+
+
 
 
 \begin{comment}
