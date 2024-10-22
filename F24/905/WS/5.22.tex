@@ -1,0 +1,205 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals,bbm}
+\usepackage[all]{xy}
+
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\ord}{\mathrm{ord}}
+\newcommand{\ann}{\mathrm{ann}}
+\newcommand{\Min}{\mathrm{Min}}
+\newcommand{\Spec}{\mathrm{Spec}}
+\renewcommand{\1}{\mathbbm{1}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+\usepackage[hang,flushmargin]{footmisc}
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{\S5.22: Localization of modules}	
+
+\begin{framed}
+\noindent \textsc{Definition:} Let $R$ be a ring, $M$ an $R$-module, and $W$ a multiplicatively closed subset. 
+The \mbox{\textbf{localization}} $W^{-1}M$ is the $W^{-1}R$-module\footnotemark \ with
+\begin{itemize}
+\item  elements  equivalence classes of $(m,w)\in M\times W$, with the class of $(m,w)$ denoted as $\ds \frac{m}{w}$.
+\smallskip
+\item with equivalence relation $\ds \frac{m}{u} = \frac{n}{v}$ if there is some $w\in W$ such that $w(vm-un)=0$,
+\smallskip
+\item addition given by $\ds\frac{m}{u} + \frac{n}{v} = \frac{vm+un}{uv}$, and
+\smallskip
+\item action given by $\ds\frac{r}{u}  \frac{m}{v} = \frac{rm}{uv}$.
+\end{itemize}
+If $\alpha:M\to N$ is a homomorphism of $R$-modules, then the $W^{-1}R$-module homomorphism ${W^{-1}\alpha: W^{-1}M\to W^{-1}N}$ is defined by $W^{-1}\alpha (\frac{m}{w}) = \frac{\alpha(m)}{w}$.
+
+
+\
+
+\noindent \textsc{Definition:} Let $R$ be a ring and $M$ a module.
+\begin{itemize}
+\item If $f\in R$, then $M_f \ceq \{1,f,f^2,\dots\}^{-1} M$.
+\item If $\p \subseteq R$ is a prime ideal then $M_{\p} \ceq (R\smallsetminus \p)^{-1} M$.
+\end{itemize}
+
+\
+
+\noindent \textsc{Proposition:} Let $R$ be a ring, $W$ a multiplicatively closed set, and $N\subseteq M$ be modules. Then 
+\begin{itemize}
+\item $W^{-1}N$ is a submodule of $W^{-1}M$, and 
+\item $\ds W^{-1}(M/N) \cong \frac{W^{-1}M}{W^{-1}N}$.
+\end{itemize}
+
+\
+
+\noindent \textsc{Corollary:} Let $R$ be a ring, $I$ an ideal, and $W$ a multiplicatively closed subset. Then the map $R\to W^{-1}(R/I)$ induces an order preserving bijection
+\[ \Spec(W^{-1}(R/I)) \stackrel{\sim}{\longrightarrow} \{ \p\in \Spec(R) \ | \ \p \supseteq I \ \text{and} \ \p \cap W=\varnothing\}.\]
+\end{framed}
+\footnotetext[1]{If $0\in W$, then $W^{-1}R=0$ is not a ring.}
+
+ 
+\begin{enumerate}
+\itemA Let $M$ be an $R$-module and $W$ be a multiplicatively closed set.
+\begin{enumerate}
+\itema What is the natural map from $M\to W^{-1}M$?
+\itema If $S$ is a generating set for $M$, explain why $\frac{S}{1}=\{ \frac{s}{1} \ | \ s\in S\}$ is a generating set for $W^{-1}M$.
+\itema Let $m\in M$. Show that $\frac{m}{u}$ is zero in $W^{-1}M$ if and only if there is some $w\in W$ such that $wm=0$ in $M$.
+\itema Let $m_1,\dots,m_t \in M$ be a finite set of elements. Show that $\frac{m_1}{u_1},\dots,\frac{m_t}{u_t}\in W^{-1}M$ are all zero if and only if there is some $w\in W$ that such that $wm_i=0$ in $M$ for all $i$.
+\itema Let $M$ be a finitely generated module. Show that $W^{-1}M=0$ if and only if $M_w=0$ for some $w\in W$.
+\itema Let $m\in M$ and $\p$ be a prime ideal. Show that $\frac{m}{1}\neq 0$ in $M_{\p}$ if and only if $\p \supseteq \ann_R(m)$.
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\item $m\mapsto \frac{m}{1}$
+\item We can write $\frac{m}{w}=\frac{\sum_i r_i m_i}{w} = \sum_i \frac{r_i}{w} \frac{m_i}{1}$.
+\item $\frac{m}{u} = \frac{0}{1}$ iff $\exists w$ such that $0= w(1m-0u)= wm$.
+\item The ``if'' is clear; for the only if, we have $w_1 m_1 = \cdots w_t m_t=0$ so we can take $w=w_1\cdots w_t$.
+\item Take a finite generating set for $M$. Then $W^{-1}M=0$ iff each generator maps to $0$ iff there is a $w$ that kills each $m_i$ iff the corresponding $M_w=0$.
+\item $\frac{m}{1} = 0$ if and only if there is some $w\notin \p$ with $wm=0$, which happens if and only if $\p \not\supseteq \ann_R(m)$.
+\end{enumerate}}
+
+
+
+\itemA Prove the Proposition.
+
+\solution{For the first part, we need to show that a nonzero element in $W^{-1}N$ is nonzero in $W^{-1}M$. If $\frac{n}{u}\neq 0$, in $W^{-1}M$ then there is some $w\in W$ such that $wn=0$, which is the same as the condition to be zero in $W^{-1}N$.
+
+For the second part, consider the map from $W^{-1}M$ to $W^{-1}(M/N)$ given by $\frac{m}{u} \mapsto \overline{m}{u}$. Clearly, $W^{-1}N$ is contained in the kernel. An element is in the kernel if and only if there is some $w\in W$ such that $w \overline{m}=0$ in $M/N$, which means $wm \in N$. Then $\frac{m}{u}=\frac{wm}{wu}\in W^{-1}N$.
+}
+
+\itemA Corollary.
+\begin{enumerate}
+\itema Rewrite the Corollary in the special case $W=R\smallsetminus \p$ for some prime $\p$.
+\itema Use the Proposition\footnote{Hint: You may want to show that, for $W\cap \p = \varnothing$, $I\subseteq \p$ if and only if $W^{-1}I \subseteq W^{-1}\p$. For this, it may help to observe that $W^{-1}\p \cap R = \p$. You can also use that the isomorphism from the Proposition is a ring isomorphism when $R$ is a ring and $I$ is an ideal.} to justify the Corollary.
+%\itema Use the Proposition to show that $\left(\frac{K[X,Y]}{(XY)}\right)_{\!\!(x)} \cong \left(\frac{K[X,Y]}{(X)}\right)_{\!\!(x)} \cong K(Y)$.
+\end{enumerate}
+
+\solution{\begin{enumerate}
+\itema There is a bijection between $\Spec((R/I)_{\p})$ and primes of $R$ containing $I$ but also contained in $\p$.
+\itema We have $W^{-1}(R/I) \cong W^{-1}R/W^{-1}I$. Fromt he Proposition, this is an isomorphism of $R$-modules, but it is easy to see that the map is in fact a ring isomorphism. The primes in $W^{-1}R$ are of the form $W^{-1}\p$ for $\p\in \Spec(R)$ such that $\p\cap W=\varnothing$. By the lattice isomorphism theorem, the primes in $W^{-1}R/W^{-1}I$ correspond to primes $W^{-1}\p$ that contain $W^{-1}I$. But if $\p\supseteq I$ then $W^{-1}\p \supseteq W^{-1}I$, and if $W^{-1}\p \supseteq W^{-1}I$, then since $W^{-1}\p \cap R = \p$ (from definition of prime) $I \subseteq W^{-1}I \cap R \subseteq W^{-1}\p \cap R = \p$. Thus, there is a bijection between primes containing $I$ and not intersecting $W$ with primes of $W^{-1}(R/I)$.
+\end{enumerate}}
+
+\itemB Invariance of base: Let $\phi: R\to S$ be a ring homomorphism, and $V\subseteq R$ and $W\subseteq S$ be multiplicatively closed sets such that $\phi(V)=W$.  Show that for any $S$-module $M$, ${V^{-1}M \cong W^{-1}M}$.
+
+\
+
+\begin{samepage}
+\itemB I'm already local!
+\begin{enumerate}
+\item Suppose that the action of each $w\in W$ on $M$ is invertible: for every $w\in W$ the map $m\mapsto mw$ is bijective. Show that $M\cong W^{-1}M$ via the natural map.
+\item Let $R$ be a ring, $\m$ a maximal ideal (so $R/\m$ is a field), and $M$ a module such that $\m M=0$. Show that $M\cong M_\m$ by the natural map.
+\item More generally, show that\footnote{Hint: Note that $R/\m^n$ is local with maximal ideal (the image of) $\m$.}  if for every $m\in M$ there is some $n$ such that $\m^n m=0$, then $M\cong M_\m$.
+\end{enumerate}
+\solution{
+\begin{enumerate}
+\item The map is injective, since $wm=0$ implies $m=0$, and surjective since $\frac{m}{w} = \frac{m' w}{w} = \frac{m'}{1}$ for some $m'$.
+\item Let $u\in R\smallsetminus \m$. Then since $R/\m$ is a field, there is some $v\in R$ such that $uv \equiv 1 \mod \m$. Then for any $m\in M$, we have $uvm = (1+ a) m = m$ for some $a\in \m$. In particular the action of $v$ is the inverse of $u$.
+\item  Because $R/\m^n$ is local with maximal ideal $\m$, every element not in $\m$ in this ring is a unit. Thus, given $u\in R\smallsetminus \m$, there is some $v\in R$ such that $uv \equiv 1 \mod \m^n$. This shows that the action of $u$ on $M$ is bijective and the first part applies.
+\end{enumerate}}
+\end{samepage}
+
+
+
+\itemB Prove the following: \\
+\textsc{Lemma:}  Let $R$ be a ring, $W$ a multiplicatively closed set. Let $M$ be a finitely presented\footnote{This means that $M$ admits a finite generating set for which the module of relations is also finitely generated.}
+ \ $R$-module, and $N$ an arbitrary $R$-module. Then for any homomorphism of $W^{-1}R$-modules  ${\beta: W^{-1}M \to W^{-1}N}$, there is some $w\in W$ and some $R$-module homomorphism $\alpha:M\to N$ such that ${\beta = \frac{1}{w}  W^{-1} \alpha}$.
+\begin{enumerate}
+\item Given $\beta$, show that there exists some $u\in W$ such that for every $m\in M$, $\frac{u}{1}\beta(\frac{M}{1}) \subseteq \frac{N}{1}$.
+\item Let $m_1,\dots,m_a$ be a (finite) set of generators for $M$, and $A=[r_{ij}]$ be a corresponding (finite) matrix of relations. Let $n_1,\dots,n_a$ be an $a$-tuple of elements of $N$. Justify: There exists an $R$-module homomorphism $\alpha:M\to N$ such that $\alpha(m_i)=n_i$ if and only if $[n_1, \cdots , n_a] A = 0$.
+\item Complete the proof.
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\item Let $m_1,\dots,m_a$ be a (finite) set of generators for $M$. We have $\beta(\frac{m_i}{1}) = \frac{t_i}{w_i}$ for some $t_i\in N$ and $w_i\in W$. Take $u=w_1\cdots w_a$.
+\item For $\alpha$ to be well-defined means that relations map to zero; it suffices to show that any defining relation maps to zero, and the condition above just says this.
+\item In the notation of the above, let $\frac{n'_i}{u} = \beta(m_i)$. Note that 
+\[ [\frac{n'_1}{u}, \cdots , \frac{n'_a}{u}] A = [\beta{m_1}, \cdots ,\beta{m_a}] A = \beta( [m_1,\dots,m_a] A) = 0 \qquad \text{in} \ W^{-1}N. \] But this just means that there is some $v\in W$ such that $v$ kills each entry of $ [\frac{n'_1}{u}, \cdots , \frac{n'_a}{u}] A$. But then
+\[ [vn'_1, \cdots , vn'_a] A = (uv)   [\frac{n'_1}{u}, \cdots , \frac{n'_a}{u}] A = 0.\]
+This means that the map $\alpha$ given by $\alpha(m_i)=vn'_i$ is well defined, and $\beta = \frac{1}{uv}W^{-1}\alpha$ since it is true for each generator $m_i$.
+\end{enumerate}}
+
+
+
+\end{enumerate}
+\vfill
+
+
+
+
+
+\end{document}

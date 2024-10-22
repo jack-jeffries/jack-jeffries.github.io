@@ -1,0 +1,203 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=.68in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals,bbm}
+\usepackage[all]{xy}
+
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\ord}{\mathrm{ord}}
+\newcommand{\ann}{\mathrm{ann}}
+\newcommand{\Min}{\mathrm{Min}}
+\newcommand{\Max}{\mathrm{Max}}
+\newcommand{\Spec}{\mathrm{Spec}}
+\renewcommand{\1}{\mathbbm{1}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+\usepackage[hang,flushmargin]{footmisc}
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{\S5.23: Local Properties and Support}
+	
+	\begin{framed}
+\noindent \textsc{Definition:} Let $\mathcal{P}$ be a property\footnotemark\ of a ring. We say that 
+\begin{itemize}
+\item $\mathcal{P}$ is \textbf{preserved by localization} if 
+\[ \text{$\mathcal{P}$ holds for $R$ $\Longrightarrow$ for every multiplicatively closed set $W$, $\mathcal{P}$ holds for $W^{-1}R$}.\]
+\item $\mathcal{P}$ is a \textbf{local property} if 
+\[ \text{$\mathcal{P}$ holds for $R$ $\Longleftrightarrow$ for every prime ideal $\p\in \Spec(R)$, $\mathcal{P}$ holds for $R_\p$}.\]
+\end{itemize}
+One defines \textbf{preserved by localization} and \textbf{local property} for properties of modules in the same way, or for properties of a ring element (where one considers $\frac{r}{1}\in W^{-1}R$ or $R_{\p}$ in the right-hand side) or module element. 
+
+\
+
+\noindent \textsc{Definition:} The \textbf{support} of a module $M$ is
+\[ \{ \p \in \Spec(R) \ | \ M_{\p} \neq 0\}.\]
+
+\
+
+\noindent \textsc{Proposition:} If $M$ is a finitely generated module, then $\mathrm{Supp}(M) = V(\ann_R(M))$.
+\end{framed}
+\footnotetext{For example, two properties of a ring are ``is reduced'' or ``is a domain''.}
+
+	
+
+\begin{enumerate}
+
+\itemA Let $R$ be a ring, $M$ be a module, and $m\in M$.
+\begin{enumerate}
+\itema Show that\footnote{Hint: Go (i)$\Rightarrow$(ii)$\Rightarrow$(iii)$\Rightarrow$(iv)$\Rightarrow$(i). For the last, If $m\neq 0$, consider a maximal ideal containing $\ann_R(m)$.} the following are equivalent:
+\begin{enumerate}
+\item $m=0$ in $M$;
+\item $\frac m1 = 0$ in $W^{-1}M$ for all multiplicatively closed $W\subseteq R$;
+\item $\frac m1 = 0$ in $M_\p$ for all $\p\in \Spec(R)$;
+\item $\frac m1 = 0$ in $M_\m$ for all $\m\in \Max(R)$.
+\end{enumerate}
+\itema Deduce that ``$=0$'' (as a property of a module element) is preserved by localization, and a local property.
+\itema Show that the ``$=0$'' locus (as a property of a module element) of $m\in M$ is $D(\ann_R(m))$.
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itema The implication (i)$\Rightarrow$(ii) is clear from the definition of localization, and (ii)$\Rightarrow$(iii)$\Rightarrow$(iv) are tautologies. Suppose that $m\neq 0$. Then $\ann_R(m)$ is a proper ideal, so it is contained in some maximal ideal $\m$. We claim that $m/1$ is nonzero in $M_\m$. Indeed, $m/1$ is zero if and only if there is some $w\in R\smallsetminus \m$ such that $wm=0$, but by assumption this is impossible.
+\itema The implication (i)$\Rightarrow$(ii) means preserved by localization, while (i)$\Leftrightarrow$(iii) means local property.
+\itema Reviewing the argument from (a), we have $\frac{m}{1} = 0$ if and only if there is some $w\in W$ with $wm=0$, which happens if and only if $R\smallsetminus \p \cap \ann_R(m)=\varnothing$, which is equivalent to $\ann_R(m) \subseteq \p$.
+\end{enumerate}}
+
+
+\itemA Let $R$ be a ring, $M$ be a module.
+\begin{enumerate}
+\itema Show that the following are equivalent, and deduce that ``$=0$'' (as a property of a module) is preserved by localization, and a local property.
+\begin{enumerate}
+\item $M=0$
+\item $W^{-1}M=0$ for all multiplicatively closed $W\subseteq R$;
+\item $M_\p=0$ for all $\p\in \Spec(R)$;
+\item $M_\m=0$ for all $\m\in \Max(R)$.
+\end{enumerate}
+\itema Prove\footnote{Recall that if $M=\sum_i R m_i$ is finitely generated then $W^{-1}M = \sum_i W^{-1}R \frac{m_i}{1}$ and that an element annihilates a module if and only if it annihilates every generator in a generating set.} the Proposition.
+\end{enumerate}
+
+
+\solution{
+\begin{enumerate}
+\itema Again (i)$\Rightarrow$(ii)$\Rightarrow$(iii)$\Rightarrow$(iv) are clear. If $M\neq 0$, take some nonzero $m\in M$. Then there is some $\m$ such that $m/1$ is nonzero in $M_\m$ so $M_\m\neq 0$.
+\itema Let $M= \sum_i R m_i$. Since $M_\p = \sum_i R_\p \frac{m_i}{1}$, we have $M_\p = 0$ if and only each $\frac{m_i}{1}=0$,  which happens if and only if $\p \in \cap_i D(\ann_R(m_i))$. This equals  $D(\cap_i D\ann_R(m_i)) = D(\ann_R(M))$. Then, we are considering the complement.
+ \end{enumerate}
+ }
+
+
+\itemA More local properties
+\begin{enumerate}
+\itema Let $R$ be a ring and $N\subseteq M$ modules. Show\footnote{Hint: Consider $M/N$.} that the following are equivalent, and deduce that $M=N$ for a submodule $N$ is preserved by localization and a local property:
+\begin{enumerate}
+\item $M=N$.
+\item $W^{-1}M=W^{-1}N$ for all multiplicatively closed $W\subseteq R$;
+\item $M_\p = N_\p$ for all $\p\in \Spec(R)$;
+\item $M_{\m} = N_\m$ for all $\m\in \Max(R)$.
+\end{enumerate}
+\itema Let $R$ be a ring. Show that the following are equivalent:
+\begin{enumerate}
+\item $R$ is reduced
+\item $W^{-1}R$ is reduced for all multiplicatively closed $W\subseteq R$;
+\item $R_\p$ is reduced for all $\p\in \Spec(R)$.
+\item $R_\m$ is reduced for all $\m\in \Max(R)$.
+\end{enumerate}
+\end{enumerate}
+\solution{
+\begin{enumerate}
+\itema Again (i)$\Rightarrow$(ii)$\Rightarrow$(iii)$\Rightarrow$(iv) are clear. If $N\subsetneqq M$, then $M/N\neq 0$, and by the above there is some $\m$ such that $(M/N)_\m\neq 0$. But $(M/N)_\m\cong M_\m / N_\m$ so $N_\m \subsetneqq M_\m$.
+\itema Suppose that $R$ is reduced and let $W\subseteq R$ be multiplicatively closed. Take a nilpotent element $r/w$. Then $(r/w)^n=0$ implies there is some $v\in W$ with $vr^n=0$. Then $(vr)^n=0$ so $vr=0$ and $r/w=0$ in $R_\p$.
+ Again (ii)$\Rightarrow$(iii)$\Rightarrow$(iv) are tautologies. Suppose that $R$ is not reduced and take $r^n=0$ with  $r\neq 0$. By part (a), for every maximal ideal $\m$ in $R_\m$ we have $(r/1)^n=0$, and for some maximal ideal we have $r/1\neq 0$, so $R_\m$ is not reduced.
+ \end{enumerate}
+ }
+ 
+ \itemB Not so local.
+ \begin{enumerate}
+ \itemb Show that the property $R$ is a domain is preserved by localization.
+ \itemb Let $K$ be a field and $R=K\times K$. Show that $R_\p$ is a field for all $\p\in \Spec(R)$. Conclude that the property that $R$ is a domain (or $R$ is a field) is not a local property.
+ \end{enumerate}
+ 
+\solution{
+ \begin{enumerate}
+\itema Suppose that $R$ is a domain and $(a/u)(b/v)=0$ in some $R_\p$. Then there is some $w\notin \p$ such that $wab=0$, so $a=0$ or $b=0$, whence $a/u=0$ or $b/v=0$, so $R_\p$ is a domain.
+\itema The ring $K\times K$ has two prime ideals $0\times K$ and $K\times 0$. 
+The kernel of the localization map $(K\times K)_{0\times K}$ is the set of elements that are killed by some element not in $0\times K$; i.e., the set of $(a,b)$ such that there is some $(c,d)\in K^\times \times K$ with $(ac,bd)=(0,0)$. This forces $a=0$ and conversely, for an element $(0,b)$ we have $(0,b)(1,0)=(0,0)$, so this kernel is exactly $0\times K$. Thus \[ (K\times K)_{0\times K} \cong \left(\frac{K\times K}{0\times K}\right)_{\overline{0\times K}}\cong K_{0} \cong K.\]
+Similarly for the other prime.
+\end{enumerate}}
+
+\itemB More local properties, or not.
+\begin{enumerate}
+\itemb Let $M$ be an $R$-module. Show that the property that $M$ is finitely generated is preserved by localization but is not\footnote{Hint: Consider $\bigoplus_{\alpha\in\C} \C[X]/(X-\alpha)$} a local property. 
+\itemb Let $R\subseteq S$ be an inclusion of rings. Show that the properties that $R\subseteq S$ is algebra-finite/integral/module-finite are preserved by localization on $R$: i.e., if one of these holds, the same holds for $W^{-1}R \subseteq W^{-1}S$ for any $W\subseteq R$ multiplicatively closed.
+\itemb Let $R\subseteq S$ be an inclusion of rings, and $s\in S$. Show that the property that $s\in S$ is integral over $R$ is a local property on $R$: i.e., this holds if and only if it holds for $\frac{s}{1} \in S_{\p}$ over $R_\p$ for each $\p\in \Spec(R)$.
+\itemb Is the property that $r\in R$ is a unit a local property?
+\itemb Is the property that $r\in R$ is a zerodivisor a local property?
+\itemb Is the property that $r\in R$ is nilpotent a local property?
+\itemb Let $R\subseteq S$ be an inclusion of rings. Are the properties $R \subseteq S$ is algebra-finite/module-finite local properties on $R$?
+\end{enumerate}
+
+\
+
+\itemB Let $\mathcal{P}$ be a local property of a ring, and $f_1,\dots,f_t\in R$ such that $(f_1,\dots,f_t)=R$. Show that if $\mathcal{P}$ holds for each $R_{f_i}$, then $\mathcal{P}$ holds for $R$.
+
+\end{enumerate}
+\vfill
+
+
+
+
+\end{document}
