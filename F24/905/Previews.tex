@@ -22,6 +22,9 @@
 \newcommand{\im}{\mathrm{im}}
 \newcommand{\cZ}{\mathcal{Z}}
 \newcommand{\Spec}{\mathrm{Spec}}
+\newcommand{\ann}{\mathrm{ann}}
+
+
 
 \newcommand{\0}{$\phantom{.}$}
 \newcommand{\1}{\mathbbm{1}}
@@ -1347,17 +1350,18 @@ Note: Any of the four NAK statements above would generally be referred to as NAK
 
 \newpage
 
-\subsection{Localization of modules \S5.2} \0
+\subsection{Localization of modules:  Lecture Notes \S5.2} \0
 
 \begin{framed} Key topics:
 \begin{itemize}
 \item Localization of a module
 \item Localization \& subs and quotients
+\item Spectrum of localization \& quotient
 \end{itemize}
 \end{framed}
 
 \noindent \textsc{Definition:} Let $R$ be a ring, $M$ an $R$-module, and $W$ a multiplicatively closed subset. 
-The \textbf{localization} $W^{-1}M$ is the $W^{-1}R$-module\footnote{If $0\in W$, then $W^{-1}R=0$ is not a ring.} with
+The \mbox{\textbf{localization}} $W^{-1}M$ is the $W^{-1}R$-module\footnotemark \ with
 \begin{itemize}
 \item  elements  equivalence classes of $(m,w)\in M\times W$, with the class of $(m,w)$ denoted as $\ds \frac{m}{w}$.
 \smallskip
@@ -1367,7 +1371,7 @@ The \textbf{localization} $W^{-1}M$ is the $W^{-1}R$-module\footnote{If $0\in W$
 \smallskip
 \item action given by $\ds\frac{r}{u}  \frac{m}{v} = \frac{rm}{uv}$.
 \end{itemize}
-If $\alpha:M\to N$ is a homomorphism of $R$-modules, then the $W^{-1}R$-module homomorphism \\ ${W^{-1}\alpha: W^{-1}M\to W^{-1}N}$ is defined by $W^{-1}\alpha (\frac{m}{w}) = \frac{\alpha(m)}{w}$.
+If $\alpha:M\to N$ is a homomorphism of $R$-modules, then the $W^{-1}R$-module homomorphism ${W^{-1}\alpha: W^{-1}M\to W^{-1}N}$ is defined by $W^{-1}\alpha (\frac{m}{w}) = \frac{\alpha(m)}{w}$.
 
 
 \
@@ -1388,10 +1392,39 @@ If $\alpha:M\to N$ is a homomorphism of $R$-modules, then the $W^{-1}R$-module h
 
 \
 
-\noindent \textsc{Lemma:} Let $R$ be a ring, $W$ a multiplicatively closed set. Let $M$ be a finitely presented\footnote{This means that $M$ admits a finite generating set for which the module of relations is also finitely generated.}
- $R$-module, and $N$ an arbitrary $R$-module. Then for any homomorphism of $W^{-1}R$-modules  ${\beta: W^{-1}M \to W^{-1}N}$, there is some $w\in W$ and some $R$-module homomorphism $\alpha:M\to N$ such that ${\beta = \frac{1}{w}  W^{-1} \alpha}$.
+\noindent \textsc{Corollary:} Let $R$ be a ring, $I$ an ideal, and $W$ a multiplicatively closed subset. Then the map $R\mapsto W^{-1}(R/I)$ induces an order preserving bijection
+\[ \Spec(W^{-1}(R/I)) \stackrel{\sim}{\longrightarrow} \{ \p\in \Spec(R) \ | \ \p \supseteq I \ \text{and} \ \p \cap W=\varnothing\}.\]
 
+\newpage
 
+ \subsection{Local Properties: Lecture Notes Section \S5.2, \S6.1}\0
+ 
+ 
+ \begin{framed} Key topics:
+\begin{itemize}
+\item Preserved by localization
+\item Local property
+\item Support of a module
+\end{itemize}
+\end{framed}
+ 
+ \noindent \textsc{Definition:} Let $\mathcal{P}$ be a property\footnote{For example, two properties of a ring are ``is reduced'' or ``is a domain''.} of a ring. We say that 
+\begin{itemize}
+\item $\mathcal{P}$ is \textbf{preserved by localization} if 
+\[ \text{$\mathcal{P}$ holds for $R$ $\Longrightarrow$ for every multiplicatively closed set $W$, $\mathcal{P}$ holds for $W^{-1}R$}.\]
+\item $\mathcal{P}$ is a \textbf{local property} if 
+\[ \text{$\mathcal{P}$ holds for $R$ $\Longleftrightarrow$ for every prime ideal $\p\in \Spec(R)$, $\mathcal{P}$ holds for $R_\p$}.\]
+\end{itemize}
+One defines \textbf{preserved by localization} and \textbf{local property} for properties of modules in the same way, or for properties of a ring element (where one considers $\frac{r}{1}\in W^{-1}R$ or $R_{\p}$ in the right-hand side) or module element. 
+
+\
+
+\noindent \textsc{Definition:} The \textbf{support} of a module $M$ is
+\[ \{ \p \in \Spec(R) \ | \ M_{\p} \neq 0\}.\]
+
+\
+
+\noindent \textsc{Proposition:} If $M$ is a finitely generated module, then $\mathrm{Supp}(M) = V(\ann_R(M))$.
 
 
 
