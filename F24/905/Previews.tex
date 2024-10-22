@@ -1361,7 +1361,7 @@ Note: Any of the four NAK statements above would generally be referred to as NAK
 \end{framed}
 
 \noindent \textsc{Definition:} Let $R$ be a ring, $M$ an $R$-module, and $W$ a multiplicatively closed subset. 
-The \mbox{\textbf{localization}} $W^{-1}M$ is the $W^{-1}R$-module\footnotemark \ with
+The \mbox{\textbf{localization}} $W^{-1}M$ is the $W^{-1}R$-module\footnote{If $0\in W$, then $W^{-1}R$ is zero, which is not a ring; $W^{-1}M$ is also zero.} with
 \begin{itemize}
 \item  elements  equivalence classes of $(m,w)\in M\times W$, with the class of $(m,w)$ denoted as $\ds \frac{m}{w}$.
 \smallskip
@@ -1371,7 +1371,7 @@ The \mbox{\textbf{localization}} $W^{-1}M$ is the $W^{-1}R$-module\footnotemark 
 \smallskip
 \item action given by $\ds\frac{r}{u}  \frac{m}{v} = \frac{rm}{uv}$.
 \end{itemize}
-If $\alpha:M\to N$ is a homomorphism of $R$-modules, then the $W^{-1}R$-module homomorphism ${W^{-1}\alpha: W^{-1}M\to W^{-1}N}$ is defined by $W^{-1}\alpha (\frac{m}{w}) = \frac{\alpha(m)}{w}$.
+If $\alpha:M\to N$ is a homomorphism of $R$-modules, then the $W^{-1}R$-module homomorphism\\ ${W^{-1}\alpha: W^{-1}M\to W^{-1}N}$ is defined by $W^{-1}\alpha (\frac{m}{w}) = \frac{\alpha(m)}{w}$.
 
 
 \
@@ -1392,7 +1392,7 @@ If $\alpha:M\to N$ is a homomorphism of $R$-modules, then the $W^{-1}R$-module h
 
 \
 
-\noindent \textsc{Corollary:} Let $R$ be a ring, $I$ an ideal, and $W$ a multiplicatively closed subset. Then the map $R\mapsto W^{-1}(R/I)$ induces an order preserving bijection
+\noindent \textsc{Corollary:} Let $R$ be a ring, $I$ an ideal, and $W$ a multiplicatively closed subset. Then the map ${R\to W^{-1}(R/I)}$ induces an order preserving bijection
 \[ \Spec(W^{-1}(R/I)) \stackrel{\sim}{\longrightarrow} \{ \p\in \Spec(R) \ | \ \p \supseteq I \ \text{and} \ \p \cap W=\varnothing\}.\]
 
 \newpage
@@ -1419,8 +1419,12 @@ One defines \textbf{preserved by localization} and \textbf{local property} for p
 
 \
 
+\noindent The point is that many properties are local properties, and we can reduce many statements to the case where $R$ is a local ring. In this setting, we have extra tools, like NAK.
+
+\
+
 \noindent \textsc{Definition:} The \textbf{support} of a module $M$ is
-\[ \{ \p \in \Spec(R) \ | \ M_{\p} \neq 0\}.\]
+\[ \mathrm{Supp}_R(M)\ceq \{ \p \in \Spec(R) \ | \ M_{\p} \neq 0\}.\]
 
 \
 
