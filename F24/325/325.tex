@@ -3247,24 +3247,31 @@ You can use any basic trig facts below to answer the following questions.
 \end{framed}
 \end{enumerate}
 \begin{comment}
+
 \newpage
-%\begin{comment}
+
+\Oct{23}{\We}{3.1}
 
 	
-Given any two sets $S$ and $T$, a \emph{function}\index{function} from $S$ to $T$, written $f: S\to T$, is a ``rule''\footnote{Here's a real definition: a \emph{function} from $S$ to $T$ is a subset $G\subset S\times T$ of ordered pairs of elements of $S$ and $T$ with the property that for all $s\in S$ there is a unique $t \in T$ such that $(s,t)\in G$; we write $f(s)$ for this element $t$.} 
-that assigns to each element $s\in S$ a unique element $t\in T$. The set $S$ is called the \emph{domain}\index{domain} of $f$. We will generally consider functions from some set of real numbers to $\R$.
-We often specify functions by formulas; when we do this the take the domain to be the set of all real numbers for which the formula evaluates to a unique real number. In particular,
+\begin{framed}
+\noindent	\textsc{Reminder on functions:} Given any two sets $S$ and $T$, a \textbf{function}\index{function} from $S$ to $T$, written ${f: S\to T}$, is an assignment to each element $s\in S$ a unique element $t\in T$. The set $S$ is called the \textbf{domain}\index{domain} of $f$. We will usually consider functions from some set of real numbers to $\R$.
+We often\footnotemark \
+ specify functions by formulas; when we do this we take the domain to be the set of all real numbers for which the formula evaluates to a unique real number. In particular,
 \[ f(x) = 2x+2 \quad \text{and} \quad g(x) = \frac{2x^2-2}{x-1}\]
-are \emph{not} the same function, even though their values agree for all $x\neq 1$, since their domains are different.
+are \emph{not} the same function, even though their values agree for all $x\neq 1$, since their domains differ.
 	
-
-
-\begin{defn}
-Let $S$ be a subset of $\R$. Let $f: S \to \R$ be a function, and $a$ and $L$ be real numbers. We say that \emph{the limit of $f$ as $x$ approaches $a$ is $L$}\index{limit} provided:
+	\
+	
+	
+\noindent \textsc{Definition 23.1:}
+Let $S$ be a subset of $\R$. Let $f: S \to \R$ be a function, and $a$ and $L$ be real numbers. We say that \textbf{the limit of $f$ as $x$ approaches $a$ is $L$}\index{limit} provided:
 \begin{quote} for any $\e>0$ there exists $\de>0$ such that if $0< | x-a | < \de$, then $x$ is in the domain of~$f$ and $|f(x) - L| <\e$.
 \end{quote}
-If this happens, we write $\ds \lim_{x\to a} f(x) = L$ to denote this.\index{$\lim_{x\to a} f(x) = L$}
-\end{defn}
+If this happens, we write $\ds \lim_{x\to a} f(x) = L$\index{$\ds \lim_{x\to a} f(x)$} to denote this.
+
+
+\end{framed}
+\footnotetext[11]{Beware: not every function has a formula!}
 
 
 \begin{enumerate}
@@ -3272,7 +3279,7 @@ If this happens, we write $\ds \lim_{x\to a} f(x) = L$ to denote this.\index{$\l
 \begin{enumerate}
 \item Describe $\{ x\in \R \ | \ 0< |x-2| < 1\}$ as a union of two open intervals.
 \item For a general $a\in \R$ and $\delta>0$, describe $\{ x\in \R \ | \ 0< |x-a| <  \de\}$ as a union of two open intervals.
-\item Focusing on the ``domain'' part of the definition, if the limit of $f$ as $x$ approaches $a$ is $L$, then $f$ must at least be defined \underline{\phantom{on some open intervals to the left and right of $a$}} (where?).
+\item Focusing on the ``domain'' part of the definition, if the limit of $f$ as $x$ approaches $a$ is $L$, then $f$ must at least be defined \underline{\phantom{on some open}} (where?).
 \end{enumerate}
 
 \begin{framed}
@@ -3332,8 +3339,9 @@ Let $\d>0$. Take $x=1+\d/2$. Then $|x-1|=\d/2$ is between $0$ and $\delta$, and 
 \end{enumerate}
 
 
+\newpage
 
-%\Nov{1}
+\begin{comment}
 
 
 
