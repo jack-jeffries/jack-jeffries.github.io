@@ -2,7 +2,7 @@
 
 
 \usepackage{times}
-\usepackage[margin=0.65in]{geometry}
+\usepackage[margin=0.8in]{geometry}
 \usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals}
 \definecolor{chianti}{rgb}{0.6,0,0}
 \definecolor{meretale}{rgb}{0,0,.6}
@@ -18,6 +18,7 @@
 \newcommand{\m}{\mathfrak{m}}
 \newcommand{\cZ}{\mathcal{Z}}
 \newcommand{\Spec}{\mathrm{Spec}}
+\newcommand{\Supp}{\mathrm{Supp}}
 \newcommand{\Min}{\mathrm{Min}}
 \newcommand{\Max}{\mathrm{Max}}
 \newcommand{\inv}{^{-1}}
@@ -73,7 +74,6 @@
 \begin{enumerate}
  \item Let $\p$ be a minimal prime of $R$. Show that for any $a\in \p$, there is some $u\notin \p$ and $n\geq 1$ such that $ua^n=0$.
 \item Show that the set of minimal primes $\Min(R)$ with the induced topology from $\Spec(R)$ is Hausdorff.
-
 \end{enumerate}
 
 \
@@ -82,11 +82,50 @@
 \begin{enumerate}
 \item Show that the image of $\phi^*$ is contained in $V(\ker \phi)$.
 \item Show that\footnote{Hint: Consider the ring  $\Spec\Big( \big(\phi(R\smallsetminus \p)\big)^{-1} S\Big)$. Relate its spectrum to a subset of $\Spec(S)$.} any minimal prime of $\ker(\phi)$ is in the image of $\phi^*$.
-\item Show that the closure of $\mathrm{image}(\phi^*)=V(\ker \phi)$.
-\item Compute $\mathrm{image}(\phi^*)$ for the inclusion $\Z\subseteq\Q$. Show that it does not contain any nonempty open subset of its closure.
+\item Show that the closure of the image of $\phi^*$ is $V(\ker \phi)$.
+\item Find an example of a ring inclusion $\phi:R\subseteq S$ where the image of $\phi^*$ is not closed.
 \end{enumerate}
 
-%\
+\
+
+\item Support of a module: 
+\begin{enumerate}
+\item Given a finitely presented module $L$ with $n\times m$ presentation matrix $A$, show that the support of $L$ equals $V(I_n(A))$.
+\item Let $M$ be the $\Z$-module $\Z_2/\Z$. Compute the support of $M$ and the annihilator of $M$, and show that they are not equal.
+\item Let $N$ be the $\Z$-module $\bigoplus_{p \ \text{prime}} \Z/(p)$. Show that the support of $N$ has infinitely many minimal elements.
+\end{enumerate}
+
+\
+
+\item Use Macaulay2 to find the minimal primes and associated primes (via \texttt{minimalPrimes(I)} and \texttt{ass(I)}) of each of the following ideals. How many of them can you understand without Macaulay?
+\begin{enumerate}
+%\item In $\Q[X,Y,Z,U,V,W]$, the ideal $(X^2,Y^2,Z^2,X*U+Y*V+Z*W)$.
+
+\item In $\Q[X,Y,U,V]$, the ideal $(X^2-U^2,XY-UV,Y^2-V^2)$.
+
+\
+
+\item In $\Q[X^4,X^3Y,X^2Y^2,XY^3,Y^4]$, the ideal $(X^4)$.
+
+\
+
+\item In $\Q[X^4,X^3Y,XY^3,Y^4]$, the ideal $(X^4)$.
+
+\
+
+\item In $\displaystyle \frac{\Q[U,V,W,X,Y,Z]}{I_2 \left( \left[  \begin{matrix} U & V & W \\ X&Y&Z \end{matrix}\right]\right)}$, the ideal $(U^3+V^3+X^3)$.
+
+\
+
+\medskip
+
+\item In $\Q\left[ \begin{matrix} X_{1,1} & X_{1,2} & Y_{1,1} & Y_{1,2} \\ X_{2,1} & X_{2,2} & Y_{2,1} & Y_{2,2} \end{matrix}\right]$, the ideal given by the entries of the product of the matrices\footnote{You can do the multiplication by hand, or you can teach Macaulay a matrix with \texttt{matrix}. Try \texttt{viewHelp matrix} to find out how.} $\begin{bmatrix} X_{1,1} & X_{1,2}  \\  X_{2,1} & X_{2,2}\end{bmatrix}$ and $\begin{bmatrix} Y_{1,1} & Y_{1,2}  \\  Y_{2,1} & Y_{2,2}\end{bmatrix}$.
+
+\end{enumerate}
+
+
+
+
 
 %\item Let $K$ be an arbitrary field. Let $(\star)$ be a system of polynomial equations $F_1 = \dots = F_t = 0$ be a system of polynomial equations in $n$ variables over $K$. Show that if $(\star)$ has an equation in \emph{any} $K$-algebra $A$, then $(\star)$ has a solution over $\overline{K}$.
 
