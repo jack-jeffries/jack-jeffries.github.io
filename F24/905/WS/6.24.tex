@@ -1,0 +1,186 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals,bbm}
+\usepackage[all]{xy}
+
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\ord}{\mathrm{ord}}
+\newcommand{\ann}{\mathrm{ann}}
+\newcommand{\Min}{\mathrm{Min}}
+\newcommand{\Max}{\mathrm{Max}}
+\newcommand{\Spec}{\mathrm{Spec}}
+\renewcommand{\1}{\mathbbm{1}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+\usepackage[hang,flushmargin]{footmisc}
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{\S6.24: Minimal primes}
+	
+	\begin{framed}
+
+\noindent \textsc{Theorem:} Let $R$ be a Noetherian ring. Every ideal of $R$ has finitely many minimal primes.
+
+\
+
+\noindent \textsc{Lemma:} Let $R$ be a ring, $I$ an ideal, and $\p_1,\dots,\p_t$ a finite set of incomparable prime ideals; i.e., $\p_i \not\subseteq \p_j$ for any $i\neq j$. If $I = \p_1 \cap \cdots \cap \p_t$, then $\Min(I) = \{\p_1,\dots,\p_t \}$.
+
+\
+
+\noindent \textsc{Corollary:} Let $R$ be a Noetherian ring. Every radical ideal of $R$ can be written as a finite intersection of primes in a unique way such that no term can be omitted.
+
+\end{framed}
+
+
+	
+
+\begin{enumerate}
+
+\itemA Minimal primes review:
+\begin{enumerate}
+\itema What is the intersection of all minimal primes of $R$?
+\itema What is the intersection of all minimal primes of $I$?
+\itema Explain why an arbitrary intersection of prime ideals is radical.
+\itema Explain why any radical ideal is an intersection of prime ideals.
+\end{enumerate}
+
+
+\solution{
+\begin{enumerate}
+\itema The nilradical: set of nilpotents.
+\itema The radical of $I$.
+\itema Follows from the definition of prime.
+\itema Formal Nullstellensatz.
+\end{enumerate}
+}
+
+
+\itemA Proof of Theorem: Let $R$ be a Noetherian ring.
+\begin{enumerate}
+\itema Suppose the conclusion is false. Explain why\footnote{Warning: this looks like cause to apply Zorn's Lemma, but that is not why.} the set of ideals that do not have finitely many minimal primes has a maximal element $J$.
+\itema Explain why $J$ is not prime.
+\itema Explain why, if $ab\in J$, $V(J)=V(J+(a)) \cup V(J+(b))$; i.e., every prime that contains $J$  either contains $J+(a)$ or $J+(b)$.
+\itema Conclude the proof.
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itema In a Noetherian ring, any nonempty family of ideals has a maximal element.
+\itema A prime has one minimal prime.
+\itema If $\p\supseteq J \ni ab$, then $a\in \p$ or $b\in \p$. In the first case, $J+(a) \subseteq \p$; similarly in the second.
+\itema By minimality, $J+(a)$ and $J+(b)$ have finitely many minimal primes. But any minimal prime of $J$ is a minimal prime of $J+(a)$ or $J+(b)$, and the union of these sets is finite, so $J$ has finitely many minimal primes.
+\end{enumerate}
+}
+
+
+\itemA In this problem, we will show that the minimal primes of \\ ${R=\Q[X,Y,Z,W]/(X^2-Z^2,XY-ZW,Y^2-W^2)}$ are $(x-z,y-w)$ and $(x+z,y+w)$. Equivalently, we show that the minimal primes of $I=(X^2-Z^2,XY-ZW,Y^2-W^2)$ are $(X+Z,Y-W)$ and $(X+Z,Y+W)$.
+\begin{enumerate}
+\itema Factor the first and last relations to show that any prime containing $I$ contains either $X-Z$ or $X+Z$, and also contains either $Y-W$ or $Y+W$.
+\itema Show\footnote{Hint: Sometimes  if you want to show $f\in J$ it is cleanest to show $f\equiv 0 \mod J$.} that $(X-Z,Y-W) \supseteq I$ and $(X+Z,Y+W) \supseteq I$.
+\itema Show that $XY\in  (X-Z,Y+W) +I$. Deduce that any prime that contains ${(X-Z,Y+W)}$ and $I$ also contains either ${(X-Z,Y-W)}$ or $(X+Z,Y+W)$.
+\itema Deduce the claim.
+\end{enumerate}
+\solution{
+\begin{enumerate}
+\itema If $\p \supseteq I$, then $\p \ni (X-Z)(X+W)$, so $\p \ni X-Z$ or $\p\ni X+Z$. Likewise with $Y\pm W$.
+\itema We have $X^2-Z^2, Y^2-W^2 \in (X-Z,Y-W)$, so we just need to check that $XY-ZW\in (X-Z,Y-W)$. We have $XY-ZW\equiv XY-XY \equiv 0 \mod (X-Z,Y-W)$. Similarly for the other.
+\itema We have $XY-ZW \equiv XY-X(-Y) = 2XY \mod (X-Z,Y+W)$; dividing by $2$, we get $XY\in (X-Z,Y+W) +I$. Then any prime containing $(X-Z,Y+W)$ and $I$ contains $X-Z,Y+W$ and either $X$ or $Y$, but given $X$, the prime contains $(X,Z,Y+W) \supseteq $(X+Z,Y+W)$. Similarly if $\p$ contains $X-Z,Y+W,Y$, then $\p$ contains $(X-Z,Y,W)\supseteq (X-Z,Y-W)$.
+\itema One deduces similarly to above that a prime containing  $I$ and $(X+Z,Y-W)$ contains one of the given primes. Thus any prime containing $I$ contains $(X-Z,Y-W)$ or $(X+Z,Y+W)$, so these are the minimal primes.
+\end{enumerate}
+}
+
+
+\itemB
+\begin{enumerate}
+\itemb Use the Theorem to show that, if $R$ is Noetherian, a subset of $\Spec(R)$ is closed if and only if it is a finite union of ``upward intervals'' $V(\p_i)$.
+\itemb  Use the Theorem to show that, if $R$ is Noetherian, then $\Min(R)$ is discrete.
+\itemb Prove the Lemma.
+\itemb Prove the Corollary.
+
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itema Follows from the fact that every $p\in V(I)$ contains a minimal prime of $I$.
+\itema Every point is closed, and the set is finite, so any subset is closed.
+\itema Suppose that $I=\p_1 \cap \cdots \cap \p_t$ with $\p_i$ incomparable. Note that each $\p_i$ contains $I$. Suppose that $\q \supseteq I$. We claim that $\q$ contains some $\p_i$; if not, take $f_i \in \p_i \smallsetminus \q$; then $f_1\cdots f_t\in I \smallsetminus \q$, a contradiction. It follows that any minimal prime is some $\p_i$, and each is minimal by incomparability.
+\itema Every radical ideal is the intersection of its minimal primes.
+\end{enumerate}
+}
+
+\itemB
+\begin{enumerate}
+\itemb Compute the minimal primes of $R=\Q[X,Y,Z]/(XY,XZ,YZ)$.
+\itemb Compute the minimal primes of $R=\Q[X,Y,Z]/(X^2-X^3,XY^3,XZ^4-Z^4)$.
+\end{enumerate}
+
+\
+
+\itemB Let $K$ be a field. Let $\displaystyle R=\frac{K[X_1,X_2,X_3,\dots,Y_1,Y_2,Y_3,\dots]}{(\{ X_i Y_i \ | \ i\geq1\})}$.
+Compute $\Min(R)$, and show that $(x_1,x_2,x_3,\dots)$ is not open in $\Min(R)$; in particular, $\Min(R)$ is not discrete.
+
+
+\
+
+\itemB Let $K$ be a field. Let $\displaystyle R=\frac{K[X_1,X_2,X_3,\dots]}{(\{ X_i  X_j - X_j\ | \ 1 \leq i \leq j\})}$.
+Compute $\Min(R)$, and show that $(x_1,x_2,x_3,\dots)$ is not open in $\Min(R)$; in particular, $\Min(R)$ is not discrete.
+
+\end{enumerate}
+
+\end{document}
