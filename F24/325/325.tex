@@ -3401,6 +3401,68 @@ This proves $\lim_{x \to 2} x^2 = 4$.
 \end{ex}
 
 
+\newpage
+
+\Oct{29}{\We}{3.1}
+
+
+\begin{enumerate}
+\item Let $b\in \R$ be a real number. Use the $\e-\de$ definition of limit to prove that for any $a\in \R$, 
+\[\displaystyle \lim_{x\to a} b = b.\]
+
+\begin{framed}
+Let $\e>0$. Take $\delta=1$ (or $\delta=\e$, or $\delta$ is literally anything positive). Then if $x$ is a real number such that $0<|x-a|<\delta$, then $f$ is defined at $x$ because the domain is all real numbers, and $|f(x)-b| = |b-b| = 0 <\e$. This shows that $\displaystyle \lim_{x\to a} b = b$.
+\end{framed}
+
+
+\item Let $m,b\in \R$ be real numbers. Use\footnote{Suggestion: You may want to consider the case where $m=0$ separately..} the $\e-\de$ definition of limit to prove that for any $a\in \R$, 
+\[\displaystyle \lim_{x\to a} mx+ b = ma + b.\]
+
+\begin{framed}
+The case where $m=0$ follows from the previous part, so assume $m\neq 0$. Let $\e>0$. Take $\delta=\frac{\e}{|m|}$. Since $\e>0$ and $|m|>0$, this is greater than zero. Then if $x$ is a real number such that $0<|x-a|<\delta$, then $f$ is defined at $x$ because the domain is all real numbers, and 
+\[ |f(x)-(ma+b)| = |(mx+b)-(ma+b)| = |m(x-a)| = |m| \cdot |x-a| < |m| \delta = \e.\] This shows that $\displaystyle \lim_{x\to a} f(x) = ma+b$.
+\end{framed}
+
+\item In this problem we will prove that the function $f(x) = \displaystyle \frac{1}{x-3}$ does not have a limit as $x$ approaches $3$.
+\begin{enumerate}
+\item What proof technique should we use? Write down the start of the proof.
+\item If $\lim_{x\to a} f(x)=L$ then for any positive number $\e$ that we choose, we get a more specific true statement as a consequence of the definition. Write down what statement we get when $\e=1$.
+\item Explain why there exists some real number $x$ such that ${3<x<\min\{4,3+\delta\}}$.
+\item Use the number $x$ from the previous part to show that $L>0$.
+\item Do something else to show that $L<0$ and conclude the proof.
+\end{enumerate}
+
+\begin{framed}
+By way of contradiction, suppose that there is some $L\in \R$ such that $\lim_{x\to 3} f(x) = L$. In particular, taking $\e=1$, by definition of limit there is some $\delta>0$ such that if $0<|x-3|<\de$, then $|\frac{1}{x-3} - L| < 1$. 
+
+Since $\de>0$, both $3+\de$ and $4$ are larger than $3$, so there is some real number $x$ such that $3<x<\min\{3+\de,4\}$. For this $x$, we have
+$0< x-3<1$, so $\frac{1}{x-3}>1$. For this same $x$, we also have $|\frac{1}{x-3} - L| < 1$. Rearranging the latter, we have $\frac{1}{x-3} - 1 < L < \frac{1}{x-3} + 1$, so in particular $L>0$. 
+
+On the other hand, both $3-\de$ and $2$ are less than $3$, so there is some real number $x$ such that $3>x>\max\{3-\de,2\}$. For this $x$, we have
+$-1< x-3<0$, so $\frac{1}{x-3}<-1$. For this same $x$, we also have $|\frac{1}{x-3} - L| < 1$. Rearranging the latter, we have $\frac{1}{x-3} - 1 < L < \frac{1}{x-3} + 1$, so in particular $L<0$.
+
+We have obtained mutually exclusive conditions on $L$, which is a contradiction. It follows that no such $L$ can exist. 
+
+\end{framed}
+
+
+
+\item Prove that the limit of $f$ as $x$ approaches $a$, if it exists, is unique.
+
+\begin{framed}
+By way of contradiction, suppose that there is some function $f$, and real numbers $a$, $L$, $M$, such that $\lim_{x\to a} f(x) = L$ and $\lim_{x\to a} f(x) = M$, with $L\neq M$. Set $\e = \frac{ |L-M|}{3}$, which is positive. Then there is some $\delta_1>0$ such that if $0<|x-a|<\e$, then $f$ is defined and $|f(x)-L|<\e$. There is also some $\delta_2>0$ such that if $0<|x-a|<\e$, then $f$ is defined and $|f(x)-M|<\e$. Take $x$ such that $0<|x-a|<\min\{\delta_1,\delta_2\}$. Then for this $x$, both $|f(x)-L|<\frac{ |L-M|}{3}$ and $|f(x)-M|<\frac{ |L-M|}{3}$ are true. But them by the triangle inequality, 
+$ |L-M| \leq |f(x)-L| + |f(x)-M| < 2 \frac{ |L-M|}{3}$, a contradiction. Thus the limit of $f$ as $x$ approaches $a$, if it exists, must be unique.
+\end{framed}
+
+\item Let
+\[ f(x) = \begin{cases} 1 & \text{if} \ x\in \Q \\ 
+0 & \text{if} \ x\notin \Q.\end{cases}\]
+Use the definition to show that $\lim_{x\to a} f(x)$ does not exist for any real number~$a$.
+
+
+\end{enumerate}
+
+
 \begin{comment}
 
 Let's give an example of a function that does {\em not} have a limiting value as $x$ approaches some number $a$. 
