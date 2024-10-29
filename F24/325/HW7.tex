@@ -1,0 +1,133 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals,hyperref}
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+\newcommand\itemA{\stepcounter{enumi}\item[{\bf{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\bf{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\bf{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+\DeclareMathOperator{\ord}{ord}
+\renewcommand{\ceq}{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{1}
+	
+	\thispagestyle{empty}
+	
+	\section*{Assignment \#7: Due Tuesday, November 5 at midnight}
+	
+	This problem set is to be turned in on Canvas. You may reference any result or problem from our worksheets or lectures, unless it is the fact to be proven! You are encouraged to work with others, but you should understand everything you write. Please consult the class website for acceptable/unacceptable resources for the problem sets.
+	
+	\
+	
+	
+
+\begin{enumerate}
+\item Using any theorems about limits and/or examples of limits from class and standard facts about the cosine function, compute 
+\[ \lim_{x\to 0} \left( \frac{2x+3}{x^2+5} + x \cos\left(\frac{1}{x^5}\right)\right). \]
+
+\
+
+	\item Let $f(x)$ be the function with domain $\R$ given by the rule
+	\[ f(x) = \begin{cases} 1 &\textrm{if} \ x\in \Z, \, \textrm{and} \\ 
+		-1 &\text{if} \ x\notin \Z.\end{cases}\]
+		Prove that for any $a\in \R$, we have $\ds\lim_{x \to a} f(x)=-1$.
+
+\
+
+			\item Let $f(x)$ be the function with domain $\R$ given by the rule
+	\[ f(x) = \begin{cases} x &\text{if} \ x\in \Q, \, \textrm{and} \\ 
+		0 &\text{if} \ x\notin \Q.\end{cases}\]
+		\begin{enumerate}
+		\item Prove that $\ds\lim_{x \to 0} f(x)=0$.
+		\item Prove\footnote{You can use the fact from an old worksheet that for any real number $x$, there is a sequence $\{r_n\}_{n=1}^\infty$ of rational numbers that converges to $x$, and there is another sequence $\{z_n\}_{n=1}^\infty$ of rirational numbers that converges to $x$.} that if $a\neq 0$, then $\ds\lim_{x\to a} f(x)$ does not exist.
+	\end{enumerate}		
+
+
+\end{enumerate}
+
+\
+
+\noindent \textsc{Definition:} Let $f$ be a function and $a\in \R$. We say that \textbf{the limit of $f(x)$ as $x$ approaches $a$ from the right is $L$} provided:
+\begin{quote} For every $\e>0$, there is some $\delta>0$ such that for all $x$ satisfying $a<x<a+\delta$, we have that $f$ is defined at $x$ and also that $|f(x) - L| < \e$.
+\end{quote}
+In this case, we write $\displaystyle \lim_{x\to a^+} f(x) = L$.
+We define $\displaystyle \lim_{x\to a^-} f(x) = L$ similarly (with $a-\delta<x<a$ in place of $a<x<a+\delta$).
+
+\
+
+\begin{enumerate} \setcounter{enumi}{3}
+\item Use the definitions to show that $\ds\lim_{x\to 0} \sqrt{x}$ does not exist, but $\ds\lim_{x\to 0^+} \sqrt{x} = 0$.
+
+\
+
+\item Let $f$ be a function and $L$ be a real number. Prove that $\ds\lim_{x\to a} f(x) = L$ if and only if $\ds \lim_{x\to a^+} f(x) = L$ and  $\lim_{x\to a^-} f(x)=L$.
+\end{enumerate}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
