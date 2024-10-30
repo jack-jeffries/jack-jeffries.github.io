@@ -1,0 +1,190 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=0.95in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals,bbm}
+\usepackage[all]{xy}
+
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\ord}{\mathrm{ord}}
+\newcommand{\ann}{\mathrm{ann}}
+\newcommand{\Min}{\mathrm{Min}}
+\newcommand{\Max}{\mathrm{Max}}
+\newcommand{\Spec}{\mathrm{Spec}}
+\newcommand{\Ass}{\mathrm{Ass}}
+\renewcommand{\1}{\mathbbm{1}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+\usepackage[hang,flushmargin]{footmisc}
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{\S6.25: Associated primes}
+	
+	\begin{framed}
+
+\noindent \textsc{Definition:} Let $R$ be a ring and $M$ be a module. A prime ideal $\p$ of $R$ is an \textbf{associated prime} of $M$ if $\p = \ann_R(m)$ for some $m\in M$. The element $m$ is called a \textbf{witness} for the associated prime $\p$. We write $\Ass_R(M)$ for the set of associated primes of a module.
+
+\
+
+\noindent \textsc{Lemma:} Let $R$ be a Noetherian ring and $M$ be a module. 
+For any nonzero element $m\in M$, the ideal $\ann_R(m)$ is contained in an associated prime of $M$. In particular, if $M\neq 0$, then $M$ has an associated prime.
+
+\
+
+\noindent \textsc{Definition:} Let $R$ be a ring and $M$ be an $R$-module. We say that an element $r\in R$ is a \textbf{zerodivisor} on $M$ if there is some $m \in M\smallsetminus 0$ such that $rm = 0$.
+
+\
+
+\noindent \textsc{Proposition:} Let $R$ be a Noetherian ring and $M$ an $R$-module. The set of zerodivisors on $M$ is the union of the associated primes of $M$.
+
+\
+
+\noindent \textsc{Theorem:} Let $R$ be a Noetherian ring, $W$ be a multiplicatively closed set, and $M$ be a module. Then
+\[ \Ass_{W^{-1}R}(W^{-1}M) = \{ W^{-1}\p \ | \ \p\in \Ass_R(M), \p\cap W=\varnothing\}.\]
+
+\
+
+\noindent \textsc{Corollary:} Let $R$ be a Noetherian ring and  $I$ be an ideal. Then $\Min(I) \subseteq \Ass_R(R/I)$.
+\end{framed}
+
+
+	
+
+\begin{enumerate}
+
+\itemA Proof of Lemma and Proposition: Let $R$ be a Noetherian ring and $M$ be a nonzero module.
+\begin{enumerate}
+\itema Let $\mathcal{S}=\{ \ann_R(m) \ | \ m\in M \smallsetminus 0\}$. Explain why $\mathcal{S}$ has a maximal element $J$.
+\itema Let $J=\ann_R(m)$ and suppose that $rs\in J$ but $s\notin J$. Explain why ${J=\ann_R(sm)}$.
+\itema Conclude the proof of the Lemma.
+\itema Deduce the Proposition from the Lemma.
+\itema What does the Proposition say in the special case when $M=R$?
+\end{enumerate} 
+
+\solution{\begin{enumerate}
+\itema Because this is a nonempty collection of ideals in a Noetherian ring.
+\itema First, $\ann_R(sm) \supseteq \ann_R(m)$ since $rm=0$ implies $rsm=0$. Since $s\notin J$, $\ann_R(sm)\neq R$, so by maximality we have equality.
+\itema Suppose $s\notin J$ and $rs\in J$. Then $rsm=0$ implies that $r\in \ann_R(sm) = J$. Thus $J$ is prime. Since any element of $\mathcal{S}$ is contained in a maximal element, the claim follows.
+\itema If $r$ is a zerodivisor on $M$, then $r$ is contained in some ideal of $\mathcal{S}$, and then it is contained in an associated prime. Conversely, any element in an associated prime is a zerodivisor on $M$ by definition.
+\itema The zerodivisors in $R$ are the elements in some associated prime.
+\end{enumerate} }
+
+\itemA Working with associated primes.
+\begin{enumerate}
+\itema Let $R$ be a domain and $M$ be a torsionfree module. Show that $\Ass_R(M)=\{(0)\}$.
+\itema Let $R$ be a ring and $\p$ be a prime ideal. Show that for any nonzero element $\overline{r} \in R/\p$ that $\ann_R(\overline{r}) = \p$ and use the definition to deduce that $\Ass_R(R/\p) = \{\p\}$.
+\itema Let $K$ be a field and $R=K[X,Y]/(X^2Y,XY^2)$. Use\footnote{Hint: Consider $xy$ and $y^2$.} the definition to show that $(x,y)$, $(x)$, and $(y)$ are associated primes of $R$. 
+\itema Let $M$ be a module. Explain why $\p\in \Ass_R(M)$ if and only if there is an injective $R$-module homomorphism $R/\p \hookrightarrow M$.
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itema By definition, any nonzero element has annihilator zero.
+\itema Clearly $\p\subseteq \ann_R(\overline{r})$. Let $r$ be a representative of $\overline{r}$; we have $r\notin \p$. The annihilator of $\overline{r}\in R/\p$ is the set of $s\in R$ such that $sr\in \p$. By definition of prime, $s\in \p$, so $\ann_R(\overline{r}) \subseteq \p$ and equality holds.
+\itema Since $x \cdot xy = x^2y = 0$ and $y \cdot xy = xy^2$, the annihilator of $xy$ contains $(x,y)$; any element not in $(x,y)$ has some/every representative with a nonzero constant term, and hence does not kill $xy$. Thus $\ann_R(xy)=(x,y)$.
+
+We claim that $\ann_R(y^2) = (x)$. Indeed, $x \cdot y^2 = 0$, and if $f\notin (x)$, then some/every representative $f$ has a nonzero term that only involves $Y$, and $f \cdot Y^2$ has a noznero term only involving $Y$, and hence nonzero modulo $(X^2Y,XY^2)$. The claim follows. Along similar lines, $\ann_R(x^2)= (y)$.
+\itema If $\ann_R(m)=\p$, then the map $R\to M$ sending $1\mapsto m$ has kernel $\p$, so one has an injection $R/\p \to M$. Conversely, if $R/\p \hookrightarrow M$, then the image of $1$ has annihilator $\p$.
+\end{enumerate}
+}
+
+
+\itemA Using the Theorem. Let $R$ be a Noetherian ring.
+\begin{enumerate}
+\itema Restate the Theorem in the special case $W = R\smallsetminus \p$ with our standard notation for this setting.
+\itema Show (either using the Theorem or 2(d) above) that $\Ass_R(M)\subseteq \mathrm{Supp}_R(M)$.
+\itema Use the Theorem (and the previous part or otherwise) to prove the Corollary.
+\itema Show the more general statement: if $M$ is a nonzero module, then the primes that are minimal within the support of $I$ are associated to $M$.
+\end{enumerate}
+
+
+\solution{\begin{enumerate}
+\itema $\Ass_{R_\p}(M_\p) = \{ \q R_\p \ | \ \q \in \Ass_R(M) \ \text{and} \ \q \subseteq \p\}$.
+\itema Suppose that $\p\in \Ass_R(M)$. Then $\p R_\p \in \Ass_{R_\p}(M_\p)$ so $M_\p\neq 0$.
+\itema Let $M=R/I$ and $\p\in \Min(I)$. Then $M_\p\neq 0$ (for various reasons as previously discussed in localizations), so $M_\p\neq 0$. But the support of $M_\p$ is $V(I R_\p) = \{\p R_\p\}$, so $\p R_\p\in \Ass_{R_\p}(M_\p)$ and hence $\p\in \Ass_R(M)$.
+\itema The previous argument shows this.
+\end{enumerate}}
+
+\itemB The ring of Puiseux series is $R=\bigcup_{n\geq 1} \C\llbracket X^{1/n} \rrbracket$: elements consist of power series with fractional exponents that have a common denominator (though different elements can have different common denominators).
+\begin{enumerate}
+\item Show that every nonzero element of $R$ can be written in the form $X^{m/n} \cdot u$ for some unit~$u$.
+\item Show that the $R$-module $R/(X)$ is nonzero but has no associated primes.
+\end{enumerate}
+
+\
+
+
+
+\itemB Proof of Theorem: Let $R$ be a Noetherian ring, $W$ be a multiplicatively closed set, and $M$ be a module.
+\begin{enumerate}
+\itemb Suppose that $\p$ is an associated prime of $M$ with $W\cap \p = \varnothing$, and let $m$ be a witness for $\p$ as an associated prime of $M$. Show that $W^{-1}\p$ is an associated prime of $W^{-1}M$ with witness~$\frac{m}{1}$.
+\itemb Suppose that $W^{-1}\p \in \Spec(W^{-1}R)$ is an associated prime of $W^{-1}M$. Explain why there is a witness of the form $\frac{m}{1}$.
+\itemb Let $\p=(f_1,\dots,f_t)$. Explain why there exist $w_1,\dots,w_t\in W$ such that $w_i f_i m=0$ in $M$ for all $i$.
+\itemb Show that $w_1 \cdots w_t m$ is a witness for $\p$ as an associated prime of $M$.
+\end{enumerate}
+
+\
+
+\itemB Let $R$ be a Noetherian ring and $M$ be a module. Show that $\p\in \Ass_R(M)$ if and only if for every $r\in \p$ and every nonzero $m\in M$, there exists some $u\notin \p$ such that $urm=0$.
+
+\
+
+\itemB Let $R$ be a Noetherian ring. Is every minimal prime of a zerodivisor a minimal prime of $R$?
+
+\end{enumerate}
+
+\end{document}

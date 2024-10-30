@@ -1,0 +1,213 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=.6in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed}
+\usepackage[all]{xy}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\e}{\varepsilon}
+\newcommand{\de}{\delta}
+\newcommand{\ds}{\displaystyle}
+
+\DeclareMathOperator{\res}{res}
+
+\pagestyle{empty}
+
+
+
+
+\begin{document}
+	
+	
+	\thispagestyle{empty}
+	
+	\section*{Theorems about Limits \S 3.1}
+	
+	\begin{framed}
+
+\noindent \textbf{Theorem 26.1:}  Let $f(x)$ be a function and let $a$ be a real number.
+  Let $r > 0$ be a positive real number such that
+  $f$ is defined
+  at every point of $\{x \in \R \mid 0 < |x-a| < r\}$.
+    Let $L$ be any real number. 
+
+Then $\lim_{x \to a} f(x) = L$ if and only if for every sequence 
+$\{x_n\}_{n=1}^\infty$ that converges to $a$ and satisfies $0 < |x_n - a| < r$ for all $n$, we have that the sequence $\{f(x_n)\}_{n=1}^\infty$ converges to $L$. 
+
+\
+	
+	\noindent \textbf{Theorem 26.2. (Algebra and limits of functions):} Suppose $f$ and $g$ are two functions and that $a$ is a real number, and
+	assume  that 
+	$$
+	\lim_{x \to a} f(x) = L  \ \text{and} \  \lim_{x \to a} g(x) = M
+	$$
+	for some real numbers $L$ and $M$. Then
+	\begin{enumerate}
+		\item $\lim_{x \to a} (f(x) + g(x)) = L  + M$.
+		\item For any real number $c$, $\lim_{x \to a} (c \cdot f(x)) = c \cdot L$.
+		\item $\lim_{x \to a} (f(x) \cdot g(x)) = L \cdot M$.
+		\item If, in addition, we have that $M \ne 0$,
+		then $\lim_{x \to a} (f(x)/g(x)) = L/M$.
+	\end{enumerate}
+	
+	\
+	
+	\noindent \textbf{Theorem 26.3. (Squeeze Theorem for limits):}  Suppose $f$, $g$, and $h$ are three functions and $a$ is a real number. Suppose there is a positive real number $r > 0$
+	such that 
+	\begin{itemize}
+		\item each of $f,g,h$ is defined on $\{x \in \R \mid 0 < |x-a| < r\}$,
+		\item $f(x) \leq g(x) \leq h(x)$ for all
+		$x$ such that $0 < |x-a| < r$, and
+		\item	$\lim_{x \to a} f(x) = L = \lim_{x \to    a} h(x)$ for some number $L$.
+	\end{itemize}  
+	Then $\lim_{x \to a} g(x) = L$.
+\end{framed}	
+	
+
+
+
+\begin{enumerate} 
+
+\item Use Theorem 26.1 to show that $\ds \lim_{x\to 0} \sin\left(\frac{1}{x}\right)$ does not exist.\\
+Suggestion: Let $f(x)= \sin(\frac{1}{x})$ and suppose $\lim_{x\to 0} f(x) = L$. Find sequences $\{x_n\}_{n=1}$  and $\{y_n\}_{n=1}$ such that
+\begin{itemize}
+\item  $\{x_n\}_{n=1}$ and $\{y_n\}_{n=1}$ both converge to $0$,
+\item $f(x_n)=1$ for all $n$, and
+\item $f(y_n)=-1$ for all $n$.
+\end{itemize}
+You can use any trig facts on the bottom of the page.
+
+\begin{framed}
+Suppose $\lim_{x\to 0} f(x) = L$. Let $\{x_n\}_{n=1}^\infty = \{ \frac{1}{\frac{\pi}{2} + 2\pi n}\}_{n=1}^\infty$. This sequence converges to $0$ and $f(x_n)=1$ for all $n$, so $\{f(x_n)\}_{n=1}^\infty$ converges to $1$. Thus, $L=1$. Now let $\{y_n\}_{n=1}^\infty = \{ \frac{1}{\frac{-\pi}{2} + 2\pi n}\}_{n=1}^\infty$. This sequence converges to $0$ and $f(y_n)=-1$ for all $n$, so $\{f(y_n)\}_{n=1}^\infty$ converges to $-1$. Thus, $L=-1$. This is a contradiction, so no such $L$ exists.
+\end{framed}
+
+\item Use Theorem~26.2 plus a fact from last time\footnote{$\lim_{x\to a} \ mx+b = ma+b$. In particular, $\lim_{x\to a} \ x = a$ and $\lim_{x \to b} \ b = b$.}  to compute $\ds \lim_{x\to 2} \frac{3x^2 - x +2}{x+3}$.
+
+\begin{framed}
+We have $\lim_{x\to 2} x= 2$ and the limit of a constant is the value of that constant. Thus $\lim_{x\to 2} x+3 = 2+3 = 5$, and $\lim_{x\to 2} x^2 = (\lim_{x\to 2} x)^2 = 4$, so $\lim_{x\to 2} 3x^2 - x +2 = 3 \cdot 4 - 2 + 2 = 12$, and hence $\ds \lim_{x\to 2} \frac{3x^2 - x +2}{x+3}=5$.
+\end{framed}
+
+\item Use Theorem~26.3 to show that $\displaystyle \lim_{x\to 0} x \sin\left(\frac{1}{x}\right)=0$. You can use any trig facts on the bottom of the page.
+
+\begin{framed}
+We have $-1\leq  \sin\left(\frac{1}{x}\right) \leq 1$, so $-|x| \leq x \sin\left(\frac{1}{x}\right) \leq |x|$. We know that $\lim_{x\to 0} \, |x| = 0$ and hence $\lim_{x\to 0} \, -|x| = 0$ by the Theorem on algebra of limits of functions. Then by the Squeeze theorem for functions, $\displaystyle \lim_{x\to 0} x \sin\left(\frac{1}{x}\right)=0$.
+\end{framed}
+
+
+\item Use Theorem 26.1 to deduce Theorem~26.3 from our Squeeze Theorem for sequences.
+
+\begin{framed}
+	\begin{proof}
+		Let $f,g,h,a,r,L$ be as in the statement. Let $\{x_n\}_{n=1}^\infty$ be a sequence that converges to $a$ and such that $0<|x_n-a|<r$ for all $n$. By Theorem~\ref{lem228}, it suffices to show that $\lim_{n \to \infty} g(x_n) = L$. By Theorem~\ref{lem228}, we know that $\lim_{n \to \infty} f(x_n) = L=\lim_{n \to \infty} h(x_n)$. Since $f(x_n)\leq g(x_n) \leq h(x_n)$ for all $n$, we have $\lim_{n \to \infty} g(x_n) = L$ by the Squeeze Theorem (for sequences).
+		\end{proof}
+\end{framed}
+
+\item Use Theorem 26.1 to deduce Theorem~26.2 part (1) from our Theorem on algebra and sequences.
+
+\begin{framed}
+\begin{proof}
+First, as a technical matter, we note that since we assume
+	${\lim_{x \to a} f(x) = L}$ there is a positive real number $r_1$ such that $f(x)$ is defined for all $x$ satisfying $0 < |x-a| < r_1$,
+	and likewise since
+	$\lim_{x \to a} g(x) = M$ there is a positive real number $r_2$ such that $g(x)$ is defined for all $x$ satisfying $0 < |x-a| < r_2$. Letting $r = \min\{r_1, r_2\}$,
+	we have that $r > 0$ and $f(x)$ and $g(x)$ and hence $f(x) + g(x)$ are defined for all $x$ satisfying $0 < |x-a| < r$.  (We needed to prove this in order to apply Theorem~\ref{lem228}.)
+	
+	
+	Let $\{x_n\}_{n=1}^\infty$ be any sequence converging to $a$ such that  ${0 < |x_n -a| < r}$ for all $n$. 
+	By  Theorem~\ref{lem228} in the ``forward direction'', we have that  $\lim_{n \to \infty} f(x_n) = L$ and $\lim_{n \to \infty} g(x_n) = M$. By Theorem \ref{thm99}, \\
+	${\lim_{n \to \infty} f(x_n) +g(x_n) = L + M}$. 
+	So, by  Theorem~\ref{lem228} again (this time applying it to $f(x) + g(x)$ and using the ``backward
+	implication''), it follows that
+	$\lim_{x \to a} (f(x) + g(x)) = L + M$.
+\end{proof}
+\end{framed}
+
+
+\item Use Theorem 26.1 to deduce Theorem~26.2 part (4) from our Theorem on algebra and sequences.
+
+
+\begin{framed}
+\begin{proof}
+Since we assume
+	${\lim_{x \to a} f(x) = L}$ there is a positive real number $r_1$ such that $f(x)$ is defined for all $x$ satisfying $0 < |x-a| < r_1$.
+Since
+	$\lim_{x \to a} g(x) = M$ there is a positive real number $r_2$ such that $g(x)$ is defined for all $x$ satisfying $0 < |x-a| < r_2$. Since $M\neq 0$, $|M|>0$, and applying definition of limit, there is some $\delta>0$ such that if $0<|x-a| < \delta$, then $|g(x)-M|<|M|$, and hence by the reverse triangle inequality, $|g(x)| \geq | |M| - |g(x)-M| | >0$, so $g(x)\neq 0$. 
+	
+	Letting $r = \min\{r_1, r_2,\delta\}$,
+	we have that $r > 0$ and $f(x)$, $g(x)$, $1/g(x)$, and hence $f(x)/g(x)$ are defined for all $x$ satisfying $0 < |x-a| < r$. 	
+	
+	Let $\{x_n\}_{n=1}^\infty$ be any sequence converging to $a$ such that  ${0 < |x_n -a| < r}$ for all $n$. 
+	By  Theorem~\ref{lem228} in the ``forward direction'', we have that  $\lim_{n \to \infty} f(x_n) = L$ and $\lim_{n \to \infty} g(x_n) = M$. Since $M\neq 0$ and $g(x_n)\neq 0$ for all $n\in \N$, by Theorem \ref{thm99}, \\
+	${\lim_{n \to \infty} f(x_n) /g(x_n) = L / M}$. 
+	So, by  Theorem~\ref{lem228} again, it follows that
+	$\lim_{x \to a} (f(x) / g(x)) = L / M$.
+\end{proof}
+\end{framed}
+
+\newpage
+
+\begin{proof}Let $f$ be a function, $a \in \R$, and $r > 0$ a
+  positive real number such that $f$ is    defined on $\{x \in \R \mid 0 < |x-a| < r \}$. 
+
+  ($\Rightarrow$) Assume 
+$\lim_{x \to a} f(x) = L$. Let 
+$\{x_n\}_{n=1}^\infty$ be any sequence that converges to $a$ and is such that $0 < |x_n-a| < r$ for all $n$.
+We need to prove that the sequence $\{f(x_n)\}_{n=1}^\infty$ converges to $L$. 
+
+Pick $\e > 0$. By definition of the limit of a function, there is a $\d > 0$ such that if
+$0 < |x-a| < \d$, then $f$ is defined at $x$ and ${|f(x) - L| < \e}$.
+Since $\d > 0$ and $\{x_n\}_{n=1}^\infty$ converges to $a$, by the definition of convergence, there is an $N$ such that if
+$n \in \N$ and $n > N$ then $|x_n - a| < \d$. 
+I claim that this $N$ ``works'' to prove $\{f(x_n)\}_{n=1}^\infty$ converges to $L$ too:
+If $n \in \N$ and $n > N$, then $|x_n - a| < \d$ and, since $x_n \ne a$ for all $n$, we have  
+$0 < |x_n - a| < \d$. It follows that $|f(x_n) - L| < \e$. This shows that $\{f(x_n)\}_{n=1}^\infty$ converges to $L$. 
+
+
+($\Leftarrow$) We prove the contrapositive. That is, assume 
+$\lim_{x \to a} f(x)$ is not $L$ (including the case where the limit does not exist).  We need to prove that
+there is at least one sequence 
+$\{x_n\}_{n=1}^\infty$ such that (a) it converges to $a$, (b)  $0 < |x_n -a| < r$ for all $n$ and yet
+(c) the sequence $\{f(x_n)\}_{n=1}^\infty$ does not converge to $L$. 
+
+The fact that $\lim_{x \to a} f(x)$ is not $L$ means:
+\begin{quote}
+  There is an $\e > 0$ such that for every $\d > 0$ there exists an $x \in \R$ such that
+$0 < |x- a| < \d$, but   either $f$ is not  defined at $x$  or $|f(x) -L| \geq \e$.
+\end{quote}
+For this $\e$, for any natural number $n$, set $\d_n = \min\{\frac{1}{n}, r\}$. We get that there is a $x_n \in \R$ such
+that $0 < |x_n-a| < \d_n$ and $|f(x_n) - L| \geq \e$. (Note that $f$ is necessarily defined at $x_n$ since $\d_n \leq r$.)
+I claim that the sequence $\{x_n\}_{n=1}^\infty$ satisfies the needed three conditions. 
+(a) Since $\delta_n \leq \frac{1}{n}$, we have $a - \frac{1}{n} < x_n < a + \frac{1}{n}$ for all $n$, and hence by the Squeeze Lemma,
+the sequence $\{x_n\}_{n=1}^\infty$ converges to $a$. (b) This holds by construction, since $\d_n \leq r$. 
+(c) Since, for the positive number $\e$ above, we have $|f(x_n) -L| \geq \e$ for all $n$, the sequence $\{f(x_n)\}_{n=1}^\infty$ does not converge to $L$. 
+\end{proof}
+
+
+\vfill 
+
+{ \hrulefill
+\begin{multicols}{2}
+\footnotesize
+\begin{itemize}
+\item $-1 \leq \sin(x) \leq 1$ for all $x\in \R$
+\item $\sin(x) = 1$ $\Longleftrightarrow$ $x\in  \frac{\pi}{2} + 2\pi \Z$ 
+\item $\sin(x) = 0$ $\Longleftrightarrow$ $x\in \pi \Z$ 
+\item $\sin(x) = -1$ $\Longleftrightarrow$ $x\in  \frac{-\pi}{2} + 2\pi \Z$
+\item $\pi \notin \Q$
+\item $\sin(x) = \sin(y)$ $\Longleftrightarrow$ $x-y\in 2\pi \Z$ or $x+y\in \pi + 2\pi \Z$
+\end{itemize}
+\end{multicols}
+}
+\end{enumerate}
+
+\end{document}
+
+
+
+
