@@ -3542,7 +3542,7 @@ We have $-1\leq  \sin\left(\frac{1}{x}\right) \leq 1$, so $-|x| \leq x \sin\left
 
 \begin{framed}
 	\begin{proof}
-		Let $f,g,h,a,r,L$ be as in the statement. Let $\{x_n\}_{n=1}^\infty$ be a sequence that converges to $a$ and such that $0<|x_n-a|<r$ for all $n$. By Theorem~\ref{lem228}, it suffices to show that $\lim_{n \to \infty} g(x_n) = L$. By Theorem~\ref{lem228}, we know that $\lim_{n \to \infty} f(x_n) = L=\lim_{n \to \infty} h(x_n)$. Since $f(x_n)\leq g(x_n) \leq h(x_n)$ for all $n$, we have $\lim_{n \to \infty} g(x_n) = L$ by the Squeeze Theorem (for sequences).
+		Let $f,g,h,a,r,L$ be as in the statement. Let $\{x_n\}_{n=1}^\infty$ be a sequence that converges to $a$ and such that $0<|x_n-a|<r$ for all $n$. By Theorem~26.1, it suffices to show that $\lim_{n \to \infty} g(x_n) = L$. By Theorem~26.1, we know that $\lim_{n \to \infty} f(x_n) = L=\lim_{n \to \infty} h(x_n)$. Since $f(x_n)\leq g(x_n) \leq h(x_n)$ for all $n$, we have $\lim_{n \to \infty} g(x_n) = L$ by the Squeeze Theorem (for sequences).
 		\end{proof}
 \end{framed}
 
@@ -3554,13 +3554,13 @@ First, as a technical matter, we note that since we assume
 	${\lim_{x \to a} f(x) = L}$ there is a positive real number $r_1$ such that $f(x)$ is defined for all $x$ satisfying $0 < |x-a| < r_1$,
 	and likewise since
 	$\lim_{x \to a} g(x) = M$ there is a positive real number $r_2$ such that $g(x)$ is defined for all $x$ satisfying $0 < |x-a| < r_2$. Letting $r = \min\{r_1, r_2\}$,
-	we have that $r > 0$ and $f(x)$ and $g(x)$ and hence $f(x) + g(x)$ are defined for all $x$ satisfying $0 < |x-a| < r$.  (We needed to prove this in order to apply Theorem~\ref{lem228}.)
+	we have that $r > 0$ and $f(x)$ and $g(x)$ and hence $f(x) + g(x)$ are defined for all $x$ satisfying $0 < |x-a| < r$.  (We needed to prove this in order to apply Theorem~26.1.)
 	
 	
 	Let $\{x_n\}_{n=1}^\infty$ be any sequence converging to $a$ such that  ${0 < |x_n -a| < r}$ for all $n$. 
-	By  Theorem~\ref{lem228} in the ``forward direction'', we have that  $\lim_{n \to \infty} f(x_n) = L$ and $\lim_{n \to \infty} g(x_n) = M$. By Theorem \ref{thm99}, \\
+	By  Theorem~26.1 in the ``forward direction'', we have that  $\lim_{n \to \infty} f(x_n) = L$ and $\lim_{n \to \infty} g(x_n) = M$. By limits and algebra theorem for sequences, \\
 	${\lim_{n \to \infty} f(x_n) +g(x_n) = L + M}$. 
-	So, by  Theorem~\ref{lem228} again (this time applying it to $f(x) + g(x)$ and using the ``backward
+	So, by  Theorem~26.1 again (this time applying it to $f(x) + g(x)$ and using the ``backward
 	implication''), it follows that
 	$\lim_{x \to a} (f(x) + g(x)) = L + M$.
 \end{proof}
@@ -3583,9 +3583,9 @@ Since
 	we have that $r > 0$ and $f(x)$, $g(x)$, $1/g(x)$, and hence $f(x)/g(x)$ are defined for all $x$ satisfying $0 < |x-a| < r$. 	
 	
 	Let $\{x_n\}_{n=1}^\infty$ be any sequence converging to $a$ such that  ${0 < |x_n -a| < r}$ for all $n$. 
-	By  Theorem~\ref{lem228} in the ``forward direction'', we have that  $\lim_{n \to \infty} f(x_n) = L$ and $\lim_{n \to \infty} g(x_n) = M$. Since $M\neq 0$ and $g(x_n)\neq 0$ for all $n\in \N$, by Theorem \ref{thm99}, \\
+	By  Theorem~26.1 in the ``forward direction'', we have that  $\lim_{n \to \infty} f(x_n) = L$ and $\lim_{n \to \infty} g(x_n) = M$. Since $M\neq 0$ and $g(x_n)\neq 0$ for all $n\in \N$, by the limits and algebra theorem for sequences, \\
 	${\lim_{n \to \infty} f(x_n) /g(x_n) = L / M}$. 
-	So, by  Theorem~\ref{lem228} again, it follows that
+	So, by  Theorem~26.1 again, it follows that
 	$\lim_{x \to a} (f(x) / g(x)) = L / M$.
 \end{proof}
 \end{framed}
@@ -3645,274 +3645,44 @@ the sequence $\{x_n\}_{n=1}^\infty$ converges to $a$. (b) This holds by construc
 (c) Since, for the positive number $\e$ above, we have $|f(x_n) -L| \geq \e$ for all $n$, the sequence $\{f(x_n)\}_{n=1}^\infty$ does not converge to $L$. 
 \end{proof}
 
+\newpage
 
 
 
 
+\Nov{1}{\Fr}{3.3}
 
-
-
-
-
-\begin{comment}
-
-Let's give an example of a function that does {\em not} have a limiting value as $x$ approaches some number $a$. 
-
-\begin{ex} Let  $f(x)   = \frac{1}{x-3}$ with domain $\R \smallsetminus \{3\}$. I claim that the limit of $f(x)$ as $x$ approaches $3$ does not exist. To prove this, by way of
-contradiction, suppose the limit of $f(x)$ as $x$ approaches $3$ does exist and is equal to $L$. Taking $\e = 1$ in the definition, there is a $\d > 0$ so that if
-$0 < |x-3| < \d$, then $\left|\frac{1}{x-3} - L\right| < 1$. We can find a real number  $x$ so that both $3 < x < 4$ and $0 < |x-3| < \d$ hold. For such
-an  $x$ we have 
-$\left|\frac{1}{x-3} - L\right| < 1$ and so 
-$$
-\frac{1}{x-3} - 1 <  L < \frac{1}{x-3} + 1,
-$$
-and we also have 
-$0 < x-3 < 1$ and so 
-$\frac{1}{x-3} > 1$. It follows that
-$$
-L > 0.
-$$
-Now pick $x$ such that $2 < x < 3$ and $0 < |x-3| < \d$.  We get
-$$
-\frac{1}{x-3} - 1 <  L < \frac{1}{x-3} + 1,
-$$
-and $\frac{1}{x-3} < -1$ and hence
-$$
-L < 0.
-$$
-This is not possible; so the limit of $f(x)$ as $x$ approaches $3$ does not exist. 
-\end{ex}
-
-%\begin{comment}
- %Explain why $f(x)=\sqrt{x}$ does not have a limit as $x$ approaches~$0$.
-%\end{comment}
+\textbf{Prove or disprove:}
 	
-%\begin{comment}
-
-The following result gives an important connection between limits of functions and limits of sequences. This result will allow us to translate
-statements we have proven about limits of sequences to limits of functions.
-
-
-
-\begin{thm} \label{lem228}
-  Let $f(x)$ be a function and let $a$ be a real number.
-  Let $r > 0$ be a positive real number such that
-  $f$ is defined
-  at every point of $\{x \in \R \mid 0 < |x-a| < r\}$.
-    Let $L$ be any real number. 
-
-$\lim_{x \to a} f(x) = L$ if and only if for every sequence 
-$\{x_n\}_{n=1}^\infty$ that converges to $a$ and satisfies $0 < |x_n - a| < r$ for all $n$, we have that the sequence $\{f(x_n)\}_{n=1}^\infty$ converges to $L$. 
-\end{thm}
-
- Loosely, the condition that there is an $r > 0$ such that 
-$f$ is defined at every point of $\{x \in \R \mid 0 < |x-a| < r\}$ says that ``$f$ is defined near, but not necessarily at, $a$''. 
-
-
-
-
-%Before proving the Theorem, let us illustrate it:
-
-%\begin{ex} Let us prove that 
-%$$
-%\lim_{x \to 2} \frac{3x^2 - x + 2}{x + 3} = \frac{12}{5}.
-%$$ 
-%Using the definition alone would be messy, but thanks to the Lemma and
-%what we already know about sequences, it is easy.
-
-%Note that $f$ is defined at every point of $(1,2) \cup (2,3)$ and so the Theorem applies with $r = 1$. 
-%Pick any sequence $\{x_n\}_{n=1}^\infty$ that converges to $2$ such that $1 < x_n < 3$ and $x_n \ne 2$. By the
-%Theorem concerning  sums, products, and quotients of limits of %sequence we have
-%$$
-%\lim_{n \to \infty} \frac{3x_n^2 - x_n + 2}{x_n + 3} = \frac{2 \cdot 2^2 - 2 + 2}{2 + 5} = \frac{12}{5}.
-%$$
-%So, by the Theorem, 
-%$$
-%\lim_{x \to 2} \frac{3x^2 - x + 2}{x + 3} = \frac{12}{5}.
-%$$ 
-%\end{ex}
-
-
-
-
-\begin{proof}Let $f$ be a function, $a \in \R$, and $r > 0$ a
-  positive real number such that $f$ is    defined on $\{x \in \R \mid 0 < |x-a| < r \}$. 
-
-  ($\Rightarrow$) Assume 
-$\lim_{x \to a} f(x) = L$. Let 
-$\{x_n\}_{n=1}^\infty$ be any sequence that converges to $a$ and is such that $0 < |x_n-a| < r$ for all $n$.
-We need to prove that the sequence $\{f(x_n)\}_{n=1}^\infty$ converges to $L$. 
-
-Pick $\e > 0$. By definition of the limit of a function, there is a $\d > 0$ such that if
-$0 < |x-a| < \d$, then $f$ is defined at $x$ and ${|f(x) - L| < \e}$.
-Since $\d > 0$ and $\{x_n\}_{n=1}^\infty$ converges to $a$, by the definition of convergence, there is an $N$ such that if
-$n \in \N$ and $n > N$ then $|x_n - a| < \d$. 
-I claim that this $N$ ``works'' to prove $\{f(x_n)\}_{n=1}^\infty$ converges to $L$ too:
-If $n \in \N$ and $n > N$, then $|x_n - a| < \d$ and, since $x_n \ne a$ for all $n$, we have  
-$0 < |x_n - a| < \d$. It follows that $|f(x_n) - L| < \e$. This shows that $\{f(x_n)\}_{n=1}^\infty$ converges to $L$. 
-
-
-($\Leftarrow$) We prove the contrapositive. That is, assume 
-$\lim_{x \to a} f(x)$ is not $L$ (including the case where the limit does not exist).  We need to prove that
-there is at least one sequence 
-$\{x_n\}_{n=1}^\infty$ such that (a) it converges to $a$, (b)  $0 < |x_n -a| < r$ for all $n$ and yet
-(c) the sequence $\{f(x_n)\}_{n=1}^\infty$ does not converge to $L$. 
-
-The fact that $\lim_{x \to a} f(x)$ is not $L$ means:
-\begin{quote}
-  There is an $\e > 0$ such that for every $\d > 0$ there exists an $x \in \R$ such that
-$0 < |x- a| < \d$, but   either $f$ is not  defined at $x$  or $|f(x) -L| \geq \e$.
-\end{quote}
-For this $\e$, for any natural number $n$, set $\d_n = \min\{\frac{1}{n}, r\}$. We get that there is a $x_n \in \R$ such
-that $0 < |x_n-a| < \d_n$ and $|f(x_n) - L| \geq \e$. (Note that $f$ is necessarily defined at $x_n$ since $\d_n \leq r$.)
-I claim that the sequence $\{x_n\}_{n=1}^\infty$ satisfies the needed three conditions. 
-(a) Since $\delta_n \leq \frac{1}{n}$, we have $a - \frac{1}{n} < x_n < a + \frac{1}{n}$ for all $n$, and hence by the Squeeze Lemma,
-the sequence $\{x_n\}_{n=1}^\infty$ converges to $a$. (b) This holds by construction, since $\d_n \leq r$. 
-(c) Since, for the positive number $\e$ above, we have $|f(x_n) -L| \geq \e$ for all $n$, the sequence $\{f(x_n)\}_{n=1}^\infty$ does not converge to $L$. 
-\end{proof}
-
-
-%\Oct{29}
-
-\begin{cor}\label{cor:261} Let $f$ be a function and $a$ and $L$ be real numbers. Suppose that the domain of $f$ is all of $\R$ or $\R \smallsetminus \{ a\}$. Then $\lim_{x \to a} f(x) = L$ if and only if for every sequence 
-	$\{x_n\}_{n=1}^\infty$ that converges to $a$ such that $x_n\neq a$ for all $n$, we have that the sequence $\{f(x_n)\}_{n=1}^\infty$ converges to $L$. 
-\end{cor}
-\begin{proof}
-	($\Rightarrow$) Assume $\lim_{x \to a} f(x) = L$, and let $\{x_n\}_{n=1}^\infty$ be a sequence that converges to $a$ such that $x_n\neq a$ for all $n$. Since $\{x_n\}_{n=1}^\infty$ is convergent, it is bounded, so there is some $M>0$ such that $|x_n|<M$ for all $n$. Then $|x_n - a|<M+|a|$ by the Triangle Inequality. Thus, $0<|x_n - a|<M+|a|$ for all $n$, so we can apply Theorem~\ref{lem228} (with ``$r$''$=M+|a|$), so $\{f(x_n)\}_{n=1}^\infty$ converges to $L$.
+	\
 	
-		($\Leftarrow$) The point is that if the ``right hand side'' condition holds in this statement, then for any $r>0$, the ``right hand side'' condition of Theorem~\ref{lem228} holds.  Thus, by Theorem~\ref{lem228}, $\lim_{x \to a} f(x) = L$.
-		\end{proof}
-
-\begin{comment}
-
-\Nov{3}
-
-	\begin{thm}[Algebra and limits of functions]\label{thm:alglim} Suppose $f$ and $g$ are two functions and that $a$ is a real number, and
-	assume  that 
-	$$
-	\lim_{x \to a} f(x) = L  \ \text{and} \  \lim_{x \to a} g(x) = M
-	$$
-	for some real numbers $L$ and $M$. Then
 	\begin{enumerate}
-		\item $\lim_{x \to a} (f(x) + g(x)) = L  + M$.
-		\item For any real number $c$, $\lim_{x \to a} (c \cdot f(x)) = c \cdot L$.
-		\item $\lim_{x \to a} (f(x) \cdot g(x)) = L \cdot M$.
-		\item If, in addition, we have that $M \ne 0$,
-		then $\lim_{x \to a} (f(x)/g(x)) = L/M$.
-		\end{enumerate}
-\end{thm}
+	\item $\displaystyle \lim_{x\to -1} \sqrt{1-x^2} = 0$.
 	
-	\begin{thm}[Squeeze Theorem for limits]  Suppose $f$, $g$, and $h$ are three functions and $a$ is a real number. Suppose there is a positive real number $r > 0$
-	such that 
-	\begin{itemize}
-		\item each of $f,g,h$ is defined on $\{x \in \R \mid 0 < |x-a| < r\}$,
-		\item $f(x) \leq g(x) \leq h(x)$ for all
-		$x$ such that $0 < |x-a| < r$, and
-		\item	$\lim_{x \to a} f(x) = L = \lim_{x \to    a} h(x)$ for some number $L$.
-	\end{itemize}  
-	Then $\lim_{x \to a} g(x) = L$.
-\end{thm}
-
-
-
-\begin{enumerate}
-
-\item Use the $\e-\delta$ definition to show that $\lim_{x\to 0} \ |x| = 0$.
-
-\begin{framed}
-Let $\e>0$. Take $\d=\e$. Pick $x$ such that ${0<|x|<\d} $. Then $|x|$ is defined, and $|\, |x| - 0 \, | = |x| < \e$. Thus, $\lim_{x\to 0} \ |x| = 0$.
-\end{framed}
-
-\item Let \[f(x)= \begin{cases} 1 \ &\text{if} \ x\in \Q \\ 0 \ &\text{if} \ x\in \Q \end{cases}\]
-Use the $\e-\delta$ definition to show that $\lim_{x\to a} f(x)$ does not exist for any real number $a\in \R$. 
-
-\begin{framed}
-Fix $a\in \R$ and suppose $\lim_{x\to a} f(x) = L$ for some $L$. Take $\e=\frac{1}{2}$. Then there is some $\d$ such that if {${0<|x-a|<\d}$} then $|f(x)-L|<\frac{1}{2}$. By density of rationals, there is a rational number $q$ with ${a<q<a+\d}$, so $f(q)=1$ and hence ${|1-L|}<\frac{1}{2}$. By density of irrationals, there is a rational number $z$ with ${a<z<a+\d}$, so $f(z)=0$ and hence ${|0-L|}<\frac{1}{2}$. But then $1=|1-0| \leq |0-L|+|1-L| < \frac12+\frac12 = 1$, a contradiction. Thus no such $L$ exists.
-\end{framed}
+	\begin{framed}
+	This is false. To disprove it, suppose by way of contradiction that $\displaystyle \lim_{x\to -1} \sqrt{1-x^2} = 0$. Take $\e=1$. Then by assumption there is some $\delta>0$ such that for all real numbers $x$ such that $0<|x+1|<\delta$, then $\sqrt{1-x^2}$ is defined and $|\sqrt{1-x^2}|<\e$. But, given $\delta>0$, the real number $x=-1-\delta/2$ satisfies $0<|x+1|<\delta$, but $1-x^2<0$, so  $\sqrt{1-x^2}$ is not defined. This is a contradiction. We conclude that $\displaystyle \lim_{x\to -1} \sqrt{1-x^2} = 0$ is false.
+	\end{framed}
+	
+	\item If $f: \mathbb{R} \smallsetminus \{0\}\to \mathbb{R}$ is a function with $\lim\limits_{x\to 0} f(x) = 5$, then the sequence $\left\{f\!\left(\frac{2}{n}\right)^{2} \right\}_{n=1}^\infty$ converges to $\displaystyle\frac{4}{25}$.
+	
+	\begin{framed}
+	This is false. In fact, $\left\{f\!\left(\frac{2}{n}\right)^{2} \right\}_{n=1}^\infty$ converges to $25$. Indeed, note that $\{ \frac{2}{n}\}_{n=1}^\infty$ converges to $0$, and is not equal to zero for any $n$. Thus, by Theorem 26.1 (applied with $r=2$, for example) we deduce that $\{ f( \frac{2}{n})\}_{n=1}^\infty$ converges to $5$. Then by limits and algebra, $\{ f( \frac{2}{n})^2\}_{n=1}^\infty$ converges to $5^2=25$.
+		\end{framed}
+	
+	\item If $\lim\limits_{x\to 1} f(x)$ does not exist, then $\lim\limits_{x\to 1} \left(x^2 + f(x)\right)$ also does not exist.
+	\begin{framed}
+	This is true. 
+	We prove the contrapositive. Suppose that $\lim\limits_{x\to 1} \left(x^2 + f(x)\right)$ exists, and call it $L$. Note that $\lim\limits_{x\to 1} x^2 = 1$. Then $\lim\limits_{x\to 1} f(x) = L - 1$  by limits of functions and algebra. In particular it exists.
+		\end{framed}
+	
+	\item Let $f,g$ be two functions with domain all real numbers $x$ such that $x\neq 1$. If $\lim\limits_{x\to 1} f(x)$ and $\lim\limits_{x\to 1} g(x)$ both exist, then $\lim\limits_{x\to 1} \displaystyle\frac{f(x)}{g(x)}$ exists.
 
 \end{enumerate}
 
-\begin{enumerate} \setcounter{enumi}{2}
-
-\item Use Corollary 18.5 to show that $\ds \lim_{x\to 0} \sin\left(\frac{1}{x}\right)$ does not exist.\\
-Suggestion: Let $f(x)= \sin(\frac{1}{x})$ and suppose $\lim_{x\to 0} f(x) = L$. Find sequences $\{x_n\}_{n=1}$  and $\{y_n\}_{n=1}$ such that
-\begin{itemize}
-\item  $\{x_n\}_{n=1}$ and $\{y_n\}_{n=1}$ both converge to $0$,
-\item $f(x_n)=1$ for all $n$, and
-\item $f(y_n)=-1$ for all $n$.
-\end{itemize}
+\newpage
 
 
-\begin{framed}
-Suppose $\lim_{x\to 0} f(x) = L$. Let $\{x_n\}_{n=1}^\infty = \{ \frac{1}{\frac{\pi}{2} + 2\pi n}\}_{n=1}^\infty$. This sequence converges to $0$ and $f(x_n)=1$ for all $n$, so $\{f(x_n)\}_{n=1}^\infty$ converges to $1$. Thus, $L=1$. Now let $\{y_n\}_{n=1}^\infty = \{ \frac{1}{\frac{-\pi}{2} + 2\pi n}\}_{n=1}^\infty$. This sequence converges to $0$ and $f(y_n)=-1$ for all $n$, so $\{f(y_n)\}_{n=1}^\infty$ converges to $-1$. Thus, $L=-1$. This is a contradiction, so no such $L$ exists.
-\end{framed}
-
-\item Use Theorem~19.1 plus a homework problem  to compute $\ds \lim_{x\to 2} \frac{3x^2 - x +2}{x+3}$.
-
-\begin{framed}
-We have $\lim_{x\to 2} x= 2$ and the limit of a constant is the value of that constant. Thus $\lim_{x\to 2} x+3 = 2+3 = 5$, and $\lim_{x\to 2} x^2 = (\lim_{x\to 2} x)^2 = 4$, so $\lim_{x\to 2} 3x^2 - x +2 = 3 \cdot 4 - 2 + 2 = 12$, and hence $\ds \lim_{x\to 2} \frac{3x^2 - x +2}{x+3}=5$.
-\end{framed}
-
-\item Use Theorem~19.2 to show that $\displaystyle \lim_{x\to 0} x \sin\left(\frac{1}{x}\right)=0$. You can use any trig facts on the bottom of the page.
-
-\begin{framed}
-We have $-1\leq  \sin\left(\frac{1}{x}\right) \leq 1$, so $-|x| \leq x \sin\left(\frac{1}{x}\right) \leq |x|$. We know that $\lim_{x\to 0} \, |x| = 0$ and hence $\lim_{x\to 0} \, -|x| = 0$ by the Theorem on algebra of limits of functions. Then by the Squeeze theorem for functions, $\displaystyle \lim_{x\to 0} x \sin\left(\frac{1}{x}\right)=0$.
-\end{framed}
-
-
-\item Use Theorem 18.4 to deduce Theorem~19.2 from our Squeeze Theorem for sequences.
-
-\begin{framed}
-	\begin{proof}
-		Let $f,g,h,a,r,L$ be as in the statement. Let $\{x_n\}_{n=1}^\infty$ be a sequence that converges to $a$ and such that $0<|x_n-a|<r$ for all $n$. By Theorem~\ref{lem228}, it suffices to show that $\lim_{n \to \infty} g(x_n) = L$. By Theorem~\ref{lem228}, we know that $\lim_{n \to \infty} f(x_n) = L=\lim_{n \to \infty} h(x_n)$. Since $f(x_n)\leq g(x_n) \leq h(x_n)$ for all $n$, we have $\lim_{n \to \infty} g(x_n) = L$ by the Squeeze Theorem (for sequences).
-		\end{proof}
-\end{framed}
-
-\item Use Theorem 18.4 to deduce Theorem~19.1 part (1) from our Theorem~10.2 on algebra and sequences.
-
-
-\begin{framed}
-\begin{proof}
-First, as a technical matter, we note that since we assume
-	${\lim_{x \to a} f(x) = L}$ there is a positive real number $r_1$ such that $f(x)$ is defined for all $x$ satisfying $0 < |x-a| < r_1$,
-	and likewise since
-	$\lim_{x \to a} g(x) = M$ there is a positive real number $r_2$ such that $g(x)$ is defined for all $x$ satisfying $0 < |x-a| < r_2$. Letting $r = \min\{r_1, r_2\}$,
-	we have that $r > 0$ and $f(x)$ and $g(x)$ and hence $f(x) + g(x)$ are defined for all $x$ satisfying $0 < |x-a| < r$.  (We needed to prove this in order to apply Theorem~\ref{lem228}.)
-	
-	
-	Let $\{x_n\}_{n=1}^\infty$ be any sequence converging to $a$ such that  ${0 < |x_n -a| < r}$ for all $n$. 
-	By  Theorem~\ref{lem228} in the ``forward direction'', we have that  $\lim_{n \to \infty} f(x_n) = L$ and $\lim_{n \to \infty} g(x_n) = M$. By Theorem \ref{thm99}, \\
-	${\lim_{n \to \infty} f(x_n) +g(x_n) = L + M}$. 
-	So, by  Theorem~\ref{lem228} again (this time applying it to $f(x) + g(x)$ and using the ``backward
-	implication''), it follows that
-	$\lim_{x \to a} (f(x) + g(x)) = L + M$.
-\end{proof}
-\end{framed}
-
-\item Use Theorem 18.4 to deduce Theorem~19.1 part (4) from our Theorem~10.2 on algebra and sequences.
-
-\begin{framed}
-\begin{proof}
-Since we assume
-	${\lim_{x \to a} f(x) = L}$ there is a positive real number $r_1$ such that $f(x)$ is defined for all $x$ satisfying $0 < |x-a| < r_1$.
-Since
-	$\lim_{x \to a} g(x) = M$ there is a positive real number $r_2$ such that $g(x)$ is defined for all $x$ satisfying $0 < |x-a| < r_2$. Since $M\neq 0$, $|M|>0$, and applying definition of limit, there is some $\delta>0$ such that if $0<|x-a| < \delta$, then $|g(x)-M|<|M|$, and hence by the reverse triangle inequality, $|g(x)| \geq | |M| - |g(x)-M| | >0$, so $g(x)\neq 0$. 
-	
-	Letting $r = \min\{r_1, r_2,\delta\}$,
-	we have that $r > 0$ and $f(x)$, $g(x)$, $1/g(x)$, and hence $f(x)/g(x)$ are defined for all $x$ satisfying $0 < |x-a| < r$. 	
-	
-	Let $\{x_n\}_{n=1}^\infty$ be any sequence converging to $a$ such that  ${0 < |x_n -a| < r}$ for all $n$. 
-	By  Theorem~\ref{lem228} in the ``forward direction'', we have that  $\lim_{n \to \infty} f(x_n) = L$ and $\lim_{n \to \infty} g(x_n) = M$. Since $M\neq 0$ and $g(x_n)\neq 0$ for all $n\in \N$, by Theorem \ref{thm99}, \\
-	${\lim_{n \to \infty} f(x_n) /g(x_n) = L / M}$. 
-	So, by  Theorem~\ref{lem228} again, it follows that
-	$\lim_{x \to a} (f(x) / g(x)) = L / M$.
-\end{proof}
-\end{framed}
-\end{enumerate}
-
-
-\Nov{8}
-
+\begin{comment}
 We come to the formal definition of continuity. We first define what it means for a function to be continuous {\em at a single point}, but ultimately we will be
 interested in functions that are continuous on entire intervals.
 
@@ -3931,13 +3701,6 @@ In particular, unlike in the
   definition of ``limit'', $f$ must be defined at $a$ in order for it to possibly be continuous at $a$.
 \end{rem}
 
-\begin{ex} I claim $f(x) = 3x$ is continuous at $a$ for every value of $a$. Pick $\e > 0$. Let $\d = \frac{\e}{3}$. If $|x - a| < \d$ then $f$ is defined at $x$ (since the domain
-  of $f$ is all of $\R$) and
-  $$
-  |f(x) - f(a)| =
-  |3x-3a| = 3|x-a| < 3 \d = \e.
-  $$
-\end{ex}
 
 \begin{ex} The function $f(x)$ with domain $\R$ defined by
 $$
@@ -3946,7 +3709,7 @@ f(x) = \begin{cases}
 -x  & \text{ if $x < 3$} \\
 \end{cases}
 $$
-is not continuous at $3$. Since the domain of $f$ is all of $\R$, the negation of the definition of ``continuous at $3$'' is:
+is not continuous at $x=3$. Since the domain of $f$ is all of $\R$, the negation of the definition of ``continuous at $3$'' is:
 \begin{quote}
 there is an $\e > 0$ such that for every $\d > 0$ there is a real number $x$ such that $|x-3| < \d$ and $|f(x) - f(3)| \geq \e$. 
 \end{quote}
@@ -3956,6 +3719,26 @@ $$
 |f(x) - f(3)| = |-x+1| = x-1 > 1.9 > \e.
 $$
 The proves $f$ is not continuous at $3$.
+
+
+However, the function $g(x)$ with domain $\R$ defined by
+\[ f(x) = \begin{cases}
+2x - 7 & \text{ if $x \geq 3$ and } \\
+2 -x  & \text{ if $x < 3$} \\
+\end{cases}\]
+is continuous at $x=3$. Indeed, let $\e>0$. Take $\de=\e/2$. Then if $|x-3|<\de$, $f(x)$ is defined since the domain is all real numbers, and
+\[ | f(x) - f(3) | = \begin{cases} |2x - 7 - (-1)| & \text{ if $x \geq 3$,} \\
+| 2-x - (-1)| & \text{ if $x < 3$}.
+\end{cases}
+= \begin{cases} |2x -6| & \text{ if $x \geq 3$,} \\
+| 3-x| & \text{ if $x < 3$}.
+\end{cases}
+= \begin{cases} 2 |x -3| & \text{ if $x \geq 3$,} \\
+| x-3| & \text{ if $x < 3$} .
+\end{cases}\]
+In either case, this is at most $2|x-3| < 2\de = \e$.
+
+This shows that $f$ is continuous at $x=3$.
 \end{ex}
 
 
@@ -4066,7 +3849,7 @@ f(g(a))| < \e$. This proves $f \circ g$ is continuous at~$a$.
 \end{proof}
 
 
-
+\begin{comment}
 
 \Nov{10}
 
