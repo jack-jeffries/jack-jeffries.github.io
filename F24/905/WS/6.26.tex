@@ -1,0 +1,207 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals,bbm}
+\usepackage[all]{xy}
+
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\ord}{\mathrm{ord}}
+\newcommand{\ann}{\mathrm{ann}}
+\newcommand{\Min}{\mathrm{Min}}
+\newcommand{\Max}{\mathrm{Max}}
+\newcommand{\Spec}{\mathrm{Spec}}
+\newcommand{\Ass}{\mathrm{Ass}}
+\renewcommand{\1}{\mathbbm{1}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+\usepackage[hang,flushmargin]{footmisc}
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{\S6.26: More associated primes}
+	
+	\begin{framed}
+
+\noindent \textsc{Lemma:} Let $R$ be a ring, and $N\subseteq M$ be modules. Then
+\[ \Ass_R(N) \subseteq \Ass_R(M) \subseteq \Ass_R(N) \cup \Ass_R(M/N).\]
+
+\
+
+\noindent \textsc{Existence of Prime filtrations:} Let $R$ be a Noetherian ring and $M$ be a finitely generated module. Then there exists a finite chain of submodules
+\[ M= M_t \supsetneqq M_{t-1} \supsetneqq \cdots \supsetneqq M_{1} \supsetneqq M_0 = 0 \]
+such that for each $i=1,\dots,t$, there is some $\p_i\in \Spec(R)$ such that $M_i / M_{i-1} \cong R/\p_i$.
+Such a chain of submodules is called a \textbf{prime filtration} of $M$.
+
+\
+
+\noindent \textsc{Corollary 1:} Let $R$ be a Noetherian ring and $M$ be a finitely generated module. Then for any prime filtration of $M$, $\Ass_R(M)$ is a subset of the prime factors that occur in the filtration. In particular, $\Ass_R(M)$ is finite.
+
+\
+
+\noindent \textsc{Prime avoidance:} Let $R$ be a ring, $J$ an ideal, and $I_1,I_2,I_3,\dots,I_t$ a finite collection of ideals with $I_i$ prime for $i>2$ (that is, \emph{at most} two $I_i$ are not prime). If $J\not\subseteq I_i$ for all $i$, then $J \not\subseteq \bigcup_i I_i$.
+
+\
+
+\noindent \textsc{Corollary 2:} Let $R$ be a Noetherian ring, $M$ a finitely generated module, and $I$ an ideal. If every element of $I$ is a zerodivisor on $M$, then there is some nonzero $m\in M$ such that $Im=0$.
+
+\end{framed}
+
+
+	
+
+\begin{enumerate}
+
+\itemA Let $R=K[X,Y]$ and $M=R/(X^2Y,XY^2)$. 
+\begin{enumerate}
+\itema Verify that $0 \subseteq R xy \subseteq R x \subseteq M$ is a prime filtration of $M$.
+\itema In an earlier problem, we more or less showed that $\{(x),(y), (x,y) \}\subseteq \Ass_R(M)$. Use  Corollary~1 to deduce that this is an equality.
+\end{enumerate} 
+
+
+\solution{
+\begin{enumerate}
+\itema We have $Rxy\cong (XY)/(X^2Y,XY^2)$. The elements that multiply $XY$ into $(X^2Y,XY^2)$ are the elements in $(X,Y)$, so this is isomorphic to $R/(X,Y)$ and $(X,Y)$ is prime. Then $Rx/Rxy\cong (X)/(XY,X^2Y,XY^2) = (X)/(XY)\cong R/(Y)$ and $Y$ is prime. Finally, the last quotient is isomorphic to $R/(X)$, and $(X)$ is prime.
+\itema Yes, it gives the other containment!
+\end{enumerate} }
+
+\itemA Proving some Corollaries:
+\begin{enumerate}
+\itema Show that Corollary 1 follows from the Lemma (and Existence of Prime Filtrations).
+\itema Write the contrapositive of the conclusion of Prime Avoidance.
+\itema Show that Corollary 2 follows from Prime Avoidance and Corollary 1.
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itema We just need to show the first statement. By the Lemma, we have $\Ass_R(M) = \Ass_R(M_t) \subseteq \Ass_R(M_{t-1}) \cup \Ass_R(M_t/M_{t-1}) = \Ass_R(M_{t-1}) \cup \{\p_t\}$. Then $\Ass_R(M_{t-1}) \subseteq \Ass_R(M_{t-2}) \cup \{p_{t-1}\}$. Continuing like so we obtain the conclusion.
+\itema If $J \subseteq \bigcup_i I_i$ then $J\subseteq I_i$ for some $i$.
+\itema From last time, we know that the set of zerodivisors is $\bigcup_{\p\in \Ass_R(M)} \p$. If $I$ contained in this \emph{finite} union of primes, it is contained in one of them by Prime avoidance. But if $I$ is contained in an associated prime, take a witness $m$, and $Im=0$.
+\end{enumerate}}
+
+
+\itemA Proof of Existence of Prime Filtrations: Let $R$ be a Noetherian ring and $M$ a finitely generated $R$-module.
+\begin{enumerate}
+\itema If $M\neq 0$, explain why you can always choose $M \supseteq M_1$ with $M_1\cong R/\p$ for some prime $\p$.
+\itema If $M\neq M_1$, explain why\footnote{Hint: Consider $M/M_1$ and go back to the previous step.} you can always choose $M \supseteq M_2 \supseteq M_1$ with ${M_2/M_1 \cong R/\p}$ for some prime $\p$.
+\itema If $M\neq M_{i-1}$ and you already have $M_1,\dots,M_{i-1}$, explain why you can always choose\\ ${M \supseteq M_i \supsetneqq M_{i-1}}$ with $M_i/M_{i-1} \cong R/\p$ for some prime $\p$.
+\itema Explain why this process has to stop, and if it stops at $i=t$, we must have $M_t=M$.
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itema $M$ has an associated prime, since $R$ is Noetherian and $M\neq 0$. An associated prime is a recipe for exactly such a submodule.
+\itema Apply the previous to $M/M_1$. By the lattice theorem, we can write this as $M_2/M_1$ for some $M_2$ containing $M_1$.
+\itema Same thing.
+\itema $M$ is a Noetherian module, so an ascending chain of submodules terminates. It must terminate with $M_t=M$ by what we just said in the previous step.
+\end{enumerate}}
+
+\begin{samepage}
+\itemA Lemma 1:
+\begin{enumerate}
+\itema Let $K$ be a field and $R=K[X]$. Explain why
+\begin{itemize}
+\item $\Ass_R(R) = \{(0)\}$
+\item $(X) \cong R$, so $\Ass_R((X)) = \{(0)\}$, 
+\item $\Ass_R(R/(X)) = \{(X)\}.$
+\end{itemize}
+Does this contradict the Lemma?
+\itema Show that $\Ass_R(N) \subseteq \Ass_R(M)$.
+\itema Suppose that $\p\in \Ass_R(M) \smallsetminus \Ass_R(N)$ with witness $m$. Show\footnote{Note that $Rm\cong R/\p$ so every nonzero element has annihilator $\p$.} that $Rm\cap N=0$, so the map $Rm \to M/N$ is injective. Deduce that $\p\in \Ass_R(M/N)$ and complete the proof.
+\end{enumerate}
+\end{samepage}
+
+\solution{
+\begin{enumerate}
+\itema 
+\begin{itemize}
+\item This is an example of $\Ass_R(R/\p)=\{\p\}$.
+\item The map $R\to (X)$ given by $r\mapsto rX$ is $R$-linear and bijective, so an isomorphism of $R$-modules.
+\item This is an example of $\Ass_R(R/\p)=\{\p\}$.
+\end{itemize}
+This does not contradict the lemma.
+\itema A witness of $\p$ in $N$ is a witness for $\p$ in $M$.
+\itema Note that $Rm\cong R/\p$ so every nonzero element has annihilator $\p$. Since $\p\notin \Ass_R(N)$, no element of $N$ has annihilator $\p$, so nonzero element of $Rm$ is also an element of $N$. Thus the induced map $R/\p \cong Rm \hookrightarrow M/N$, so $\p\in \Ass_R(M/N)$.
+\end{enumerate}}
+
+
+\itemB Prove\footnote{By induction, you can find elements $a_i \in J \smallsetminus \bigcup_{j\neq i} I_j$. Now consider $x=a_n + a_1\cdots a_{n-1}$.} the prime avoidance lemma.
+
+\
+
+\itemB Let $K$ be a field and $R=K[X^2,XY,Y^2]\subseteq K[X,Y]$.
+\begin{enumerate}
+\item Mark all\footnote{Well, enough to get the pattern at least\dots} of the points in the plane corresponding to exponent vectors of elements of~$R$.
+\item Is $I=(X^2)$ a prime ideal? Is $J=(X^2,XY)$?
+\item Mark all of the points in the plane corresponding to exponent vectors of elements of $(X^2)\subseteq R$.
+\item Find and illustrate a prime filtration of $R/I$. Compute $\Ass_R(R/I)$.
+\item Find and illustrate a prime filtration of $R/J^2$. Compute $\Ass_R(R/J^2)$.
+\end{enumerate}
+
+\
+
+
+\itemB More facts about associated primes: Let $R$ be a Noetherian ring.
+\begin{enumerate}
+\itemb Let $I\subseteq J$ be ideals. Show that $I=J$ if and only if $IR_\p = JR_\p$ for all $\p\in \Ass_R(R/I)$.
+\itemb Let $I,J$ be ideals. Show that $I \subseteq J$ if and only if $IR_\p \subseteq JR_\p$ for all $\p\in \Ass_R(R/J)$.
+\itemb Let $r$ be a nonzerodivisor. Show that $\Ass_R(R/r^n) = \Ass_R(R/r)$ for all $n \geq 1$.
+\end{enumerate}
+
+
+\end{enumerate}
+
+\end{document}

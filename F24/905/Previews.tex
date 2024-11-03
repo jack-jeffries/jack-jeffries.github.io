@@ -1437,6 +1437,7 @@ One defines \textbf{preserved by localization} and \textbf{local property} for p
 \newpage
 
 \section{Decompositions of ideals and modules}
+\setcounter{subsection}{23}
 
  \subsection{Minimal primes: Lecture Notes \S6.1}\0
  
@@ -1501,7 +1502,7 @@ For any nonzero element $m\in M$, the ideal $\ann_R(m)$ is contained in an assoc
 \noindent \textsc{Corollary:} Let $R$ be a Noetherian ring, and $I$ be an ideal. Then $\Min(I) \subseteq \Ass_R(R/I)$.
 
 
-
+\newpage
 
 \subsection{Associated primes: Lecture Notes \S6.2, \S3.3}\0
  
@@ -1538,6 +1539,135 @@ Such a chain of submodules is called a \textbf{prime filtration} of $M$.
 \
 
 \noindent \textsc{Corollary 2:} Let $R$ be a Noetherian ring, $M$ a finitely generated module, and $I$ an ideal. If every element of $I$ is a zerodivisor on $M$, then there is some nonzero $m\in M$ such that $Im=0$.
+
+
+
+\newpage
+
+\subsection{Primary decomposition: Lecture Notes \S6.2, \S3.3}\0
+ 
+  \begin{framed} Key topics:
+\begin{itemize}
+\item Prime filtrations
+\item Finiteness of associated primes
+\item Prime avoidance
+\end{itemize}
+\end{framed}
+
+
+
+
+
+\noindent \textsc{Lemma:} Let $R$ be a ring, and $N\subseteq M$ be modules. Then
+\[ \Ass_R(N) \subseteq \Ass_R(M) \subseteq \Ass_R(N) \cup \Ass_R(M/N).\]
+
+\
+
+\noindent \textsc{Existence of Prime filtrations:} Let $R$ be a Noetherian ring and $M$ be a finitely generated module. Then there exists a finite chain of submodules
+\[ M= M_t \supsetneqq M_{t-1} \supsetneqq \cdots \supsetneqq M_{1} \supsetneqq M_0 = 0 \]
+such that for each $i=1,\dots,t$, there is some $\p_i\in \Spec(R)$ such that $M_i / M_{i-1} \cong R/\p_i$.
+Such a chain of submodules is called a \textbf{prime filtration} of $M$.
+
+\
+
+\noindent \textsc{Corollary 1:} Let $R$ be a Noetherian ring and $M$ be a finitely generated module. Then for any prime filtration of $M$, $\Ass_R(M)$ is a subset of the prime factors that occur in the filtration. In particular, $\Ass_R(M)$ is finite.
+
+\
+
+\noindent \textsc{Prime avoidance:} Let $R$ be a ring, $J$ an ideal, and $I_1,I_2,I_3,\dots,I_t$ a finite collection of ideals with $I_i$ prime for $i>2$ (that is, \emph{at most} two $I_i$ are not prime). If $J\not\subseteq I_i$ for all $i$, then $J \not\subseteq \bigcup_i I_i$.
+
+\
+
+\noindent \textsc{Corollary 2:} Let $R$ be a Noetherian ring, $M$ a finitely generated module, and $I$ an ideal. If every element of $I$ is a zerodivisor on $M$, then there is some nonzero $m\in M$ such that $Im=0$.
+
+
+
+\newpage
+
+\subsection{Primary decomposition: Lecture Notes \S6.3}\0
+ 
+  \begin{framed} Key topics:
+\begin{itemize}
+\item Primary ideals
+\item Primary ideals vs prime ideals
+\item Irreducible ideals vs prime ideals
+\item Primary decompositions
+\item Existence of primary decompositions
+\end{itemize}
+\end{framed}
+
+\noindent \textsc{Definition:} A proper ideal $I$ is \textbf{primary} if $rs\in I$ implies $r\in \sqrt{I}$ or $s\in I$. We say that $I$ is \textbf{$\p$-primary} if it is primary and $\sqrt{I}=\p$.
+
+\
+
+\noindent \textsc{Lemma:} Let $R$ be a Noetherian ring and $I$ an ideal. The following are equivalent:
+\begin{enumerate}
+\item[(i)] $I$ is primary;
+\item[(ii)] Every zerodivisor on $R/I$ is nilpotent;
+\item[(iii)] $\Ass_R(R/I)$ is a singleton.
+\end{enumerate}
+
+\
+
+
+\noindent \textsc{Definition:} A \textbf{primary decomposition} of an ideal $I$ is an expression of the form
+\[ I = Q_1 \cap \cdots Q_n\]
+where each $Q_i$ is a primary ideal.
+
+\
+
+
+\noindent \textsc{Definition:} A proper ideal $I$ is \textbf{irreducible} if $I=J_1\cap J_2$ for some ideals $J_1,J_2$ implies $I=J_1$ or $I=J_2$.
+
+
+\
+
+
+\noindent \textsc{Theorem (Existence of primary decomposition):} Let $R$ be a Noetherian ring.
+\begin{enumerate}
+\item Every irreducible ideal $I$ is primary.
+\item Every ideal can be written as a finite intersection of irreducible ideals.
+\end{enumerate}
+Hence, every ideal can be written as a finite intersection of primary ideals.
+
+
+\newpage
+
+\subsection{Primary decomposition and uniqueness: Lecture Notes \S6.3}\0
+ 
+  \begin{framed} Key topics:
+\begin{itemize}
+\item Minimal primary decompositions
+\item Uniqueness theorems for primary decomposition
+\item Primary decomposition and associated primes
+\item Minimal components in primary decompositions
+\end{itemize}
+\end{framed}
+
+\noindent \textsc{Definition:} A \textbf{minimal primary decomposition} of an ideal $I$ is a primary decomposition
+\[ I = Q_1 \cap \cdots \cap Q_n\]
+such that $Q_i \not\supseteq \bigcap_{j\neq i} Q_j$, and $\sqrt{Q_i} \neq \sqrt{Q_j}$ for $i\neq j$.
+
+\
+
+\noindent \textsc{Theorem (First uniqueness theorem for primary decomposition):} Let $R$ be a Noetherian ring and $I$ an ideal. Let \[I = Q_1 \cap \cdots \cap Q_n\] be a minimal primary decomposition of $I$. Then \[\{ \sqrt{Q_1},\dots,\sqrt{Q_n} \} = \Ass_R(R/I).\]
+In particular, the set of primes occurring as the radicals of the primary components are uniquely determined.
+
+
+\
+
+\noindent \textsc{Theorem (Second uniqueness theorem for primary decomposition):} Let $R$ be a Noetherian ring and $I$ an ideal. Let \[I = Q_1 \cap \cdots \cap Q_n\] be a minimal primary decomposition of $I$. Suppose that $\p =\sqrt{Q_i}$ is a \emph{minimal} prime of $I$. Then ${Q_i = I R_{\p} \cap R}$.
+In particular, the primary components corresponding to the minimal primes are uniquely determined.
+
+
+\
+
+\noindent \textsc{Lemma:} Let $I_1,\dots,I_t$ be ideals. Then
+\begin{enumerate}
+\item for any multiplicatively closed set $W$, $W^{-1}(I_1 \cap \cdots \cap I_t) = W^{-1} I_1 \cap \cdots \cap W^{-1}I_t$.
+\item $\Ass_R\left(R/\bigcap_{i=1}^t I_i\right) \subseteq \bigcup_{i=1}^t \Ass_R(R/I_i)$.
+\end{enumerate}
+
 
 
 
