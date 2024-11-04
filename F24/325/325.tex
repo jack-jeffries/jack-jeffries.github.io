@@ -3683,6 +3683,8 @@ the sequence $\{x_n\}_{n=1}^\infty$ converges to $a$. (b) This holds by construc
 
 
 \begin{comment}
+
+\Nov{4}{\Mo}{3.3}
 We come to the formal definition of continuity. We first define what it means for a function to be continuous {\em at a single point}, but ultimately we will be
 interested in functions that are continuous on entire intervals.
 
@@ -3702,6 +3704,14 @@ In particular, unlike in the
 \end{rem}
 
 
+\begin{ex} I claim $f(x) = 3x$ is continuous at $a$ for every value of $a$. Pick $\e > 0$. Let $\d = \frac{\e}{3}$. If $|x - a| < \d$ then $f$ is defined at $x$ (since the domain
+  of $f$ is all of $\R$) and
+  $$
+  |f(x) - f(a)| =
+  |3x-3a| = 3|x-a| < 3 \d = \e.
+  $$
+\end{ex}
+
 \begin{ex} The function $f(x)$ with domain $\R$ defined by
 $$
 f(x) = \begin{cases}
@@ -3709,7 +3719,7 @@ f(x) = \begin{cases}
 -x  & \text{ if $x < 3$} \\
 \end{cases}
 $$
-is not continuous at $x=3$. Since the domain of $f$ is all of $\R$, the negation of the definition of ``continuous at $3$'' is:
+is not continuous at $3$. Since the domain of $f$ is all of $\R$, the negation of the definition of ``continuous at $3$'' is:
 \begin{quote}
 there is an $\e > 0$ such that for every $\d > 0$ there is a real number $x$ such that $|x-3| < \d$ and $|f(x) - f(3)| \geq \e$. 
 \end{quote}
@@ -3719,26 +3729,6 @@ $$
 |f(x) - f(3)| = |-x+1| = x-1 > 1.9 > \e.
 $$
 The proves $f$ is not continuous at $3$.
-
-
-However, the function $g(x)$ with domain $\R$ defined by
-\[ f(x) = \begin{cases}
-2x - 7 & \text{ if $x \geq 3$ and } \\
-2 -x  & \text{ if $x < 3$} \\
-\end{cases}\]
-is continuous at $x=3$. Indeed, let $\e>0$. Take $\de=\e/2$. Then if $|x-3|<\de$, $f(x)$ is defined since the domain is all real numbers, and
-\[ | f(x) - f(3) | = \begin{cases} |2x - 7 - (-1)| & \text{ if $x \geq 3$,} \\
-| 2-x - (-1)| & \text{ if $x < 3$}.
-\end{cases}
-= \begin{cases} |2x -6| & \text{ if $x \geq 3$,} \\
-| 3-x| & \text{ if $x < 3$}.
-\end{cases}
-= \begin{cases} 2 |x -3| & \text{ if $x \geq 3$,} \\
-| x-3| & \text{ if $x < 3$} .
-\end{cases}\]
-In either case, this is at most $2|x-3| < 2\de = \e$.
-
-This shows that $f$ is continuous at $x=3$.
 \end{ex}
 
 
@@ -3746,7 +3736,7 @@ This shows that $f$ is continuous at $x=3$.
 The definition of continuous looks a lot like the definition of limit, with $L$ replaced by $f(a)$. This is not just superficial:
 
 \begin{thm} \label{thm36}
-Suppose $f$ is a function and $a$ is a real number and assume that $f$ is defined at $a$.  $f$ is continuous at   $a$ if and only if $\lim_{x \to a} f(x) = f(a)$.
+Suppose that $f$ is a function and $a$ is a real number and assume that $f$ is defined at $a$. Then $f$ is continuous at   $a$ if and only if $\lim_{x \to a} f(x) = f(a)$.
 \end{thm}
 
 
@@ -3770,16 +3760,16 @@ case is the case $x = a$. But if $x = a$, then $f$ is defined at $a$ by assumpti
 
 
 
-\begin{ex} Define a function $f$ whose domain is all of $\R$  by
-$$
-f(x) = 
-\begin{cases}
-1 & \text{if $x \in \Q$ and } \\
-0 & \text{if $x \notin \Q$.} \\
-\end{cases}
-$$
-As we proved, $\lim_{x \to a} f(x)$ does not exist for any $a$. So, this function is continuous nowhere.
-\end{ex}
+%\begin{ex} Define a function $f$ whose domain is all of $\R$  by
+%$$
+%f(x) = 
+%\begin{cases}
+%1 & \text{if $x \in \Q$ and } \\
+%0 & \text{if $x \notin \Q$.} \\
+%\end{cases}
+%$$
+%As we proved, $\lim_{x \to a} f(x)$ does not exist for any $a$. So, this function is continuous nowhere.
+%\end{ex}
 
   
 %\begin{ex} 
@@ -3818,7 +3808,7 @@ As we proved, $\lim_{x \to a} f(x)$ does not exist for any $a$. So, this functio
 \end{enumerate}
 \end{thm}
 \begin{proof}
-Follows from Theorems~\ref{thm36} and \ref{thm:alglim}.\end{proof}
+Follows from Theorems~\ref{thm36} and~26.2.\end{proof}
 
 \begin{ex} Polynomials are continuous everywhere. The function $x$ is continuous everywhere (since $\lim_{x\to a} \, x = a$). By part (3) above and a simple induction, $x^n$ is continuous everywhere for every $n$. Then by parts (1) and (2), it follows that every polynomial is continuous everywhere.
 \end{ex}
@@ -3835,18 +3825,64 @@ $$
 \end{thm}
 \begin{proof}
   Let $a \in \R$ be such that that $g$ is continuous at $a$ and $f$ is continuous at $g(a)$.
-  I prove $f \circ g$ is continuous at $a$ using the definition.
+  We will that prove $f \circ g$ is continuous at $a$ using the definition.
   
  Pick $\e > 0$. Since $f$ is continuous at $g(a)$, there is a $\gamma > 0$ such that if $|y
-  - g(a)| < \gamma$ then $f$ is defined at $y$ and $|f(y) - f(g(a))| < \e$. (I am using $y$ in place of the usual $x$ for clarity below, and 
-I am calling this number $\gamma$, and not $\d$, since it is
-  not the $\d$ I am seeking.) Since $\gamma > 0$ and $g$ is continuous at $a$, there is a $\d > 0$ such
+  - g(a)| < \gamma$ then $f$ is defined at $y$ and $|f(y) - f(g(a))| < \e$. (We are using $y$ in place of the usual $x$ for clarity below, and 
+we are calling this number $\gamma$, and not $\d$, since it is
+  not the $\d$ we are seeking.) Since $\gamma > 0$ and $g$ is continuous at $a$, there is a $\d > 0$ such
   that if $|x - a| < \d$ then $g$ is defined at $x$ and $|g(x) - a| < \gamma$. 
 
   This $\d$ ``works'' to prove $f \circ g$ is continuous at $a$: Let $x$ be any real number such that  $|x-a| < \d$. Then $g$ is defined at $x$ and {${|g(x) - g(a)| < \gamma}$}.
   Taking $y = g(x)$ above, this gives that $f$ is defined at $g(x)$ and $|f(g(x)) -
 f(g(a))| < \e$. This proves $f \circ g$ is continuous at~$a$.
 \end{proof}
+
+\begin{ex} 
+ The function $\sqrt{x^2 + 5}$ is continuous at every real number: let $g(x) = x^2 + 5$ and $f(x) = \sqrt{x}$. Then $g$ is continuous at $a$ for every $a\in \R$
+  since it is a polynomial. For each $x \in \R$, $g(x) > 0$ and hence $f$ is continuous at $g(x)$. So $\sqrt{x^2 + 5}$ is continuous at every $a\in\R$ by the Theorem.
+
+\end{ex}
+
+\begin{ex} You can apply the Theorem to the compositions of more than two functions too. For example $\sqrt{|x^3| + 1}$ is continuous at $a$ for and $a\in\R$.
+\end{ex}
+
+We are probably getting a bit tired of saying ``continuous at $a$ for every $a\in \R$''. The following definition will then be convenient.
+
+
+
+\begin{defn} Let $S$ be an open interval of $\R$ of the form $S=(a,b)$, $S=(a,\infty)$, $S=(-\infty,a)$, or $S=(-\infty,\infty)=\R$. We say $f$ is {\em continuous on $S$} if $f$ is continuous
+  at $a$ for all $a\in S$. 
+\end{defn}
+
+
+
+\begin{ex} 
+\begin{itemize}
+\item Every polynomial is continuous on $\R$.
+\item Every polynomial is continuous on $(-13,5)$.
+\item The function $\sqrt{x}$ is continuous on $(0,\infty)$.
+\item The function $1/x$ is continuous on $(0,\infty)$. It is also continuous on $(-\infty,0)$.
+\end{itemize}
+\end{ex}
+
+
+Since the function $\sqrt{x}$ does not jump at $x=0$, we would like to say the function is continuous on all of $[0,\infty)$. However, the definition for $f$ to be continuous at a point $a$ requires that $f$ is defined on $(a-\d,a+\d)$ for some $\d>0$, so we have to change our definition a bit.
+
+
+
+\begin{defn} 
+ Given a function $f(x)$ and real numbers $a < b$,
+we say $f$ is {\em continous on the closed interval $[a,b]$} provided 
+\begin{enumerate}
+\item for every $r \in (a,b)$, $f$ is  continuous at $r$ in the sense defined already,
+\item for every $\e > 0$ there is a $\d > 0$ such that if $x \in [a,b]$ and $a \leq x < a+\d$, then ${|f(x)
+  - f(a)| < \e}$.
+\item for every $\e > 0$ there is a $\d > 0$ such that if $x \in [a,b]$ and $b -\d < x \leq b$, then ${|f(x)
+  - f(b)| < \e}$.
+\end{enumerate}
+\end{defn}
+
 
 
 \begin{comment}
