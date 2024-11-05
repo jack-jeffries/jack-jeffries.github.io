@@ -1,0 +1,120 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=.75in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed}
+\usepackage[all]{xy}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\e}{\varepsilon}
+\newcommand{\de}{\delta}
+\newcommand{\ds}{\displaystyle}
+
+\DeclareMathOperator{\res}{res}
+
+\pagestyle{empty}
+
+
+
+
+\begin{document}
+	
+	
+	\thispagestyle{empty}
+	
+	\section*{Continuous functions \S 3.3}
+	
+	\begin{framed}
+\noindent \textsc{Definition:}  A function $f$ is \textbf{continuous at $a$} provided: For any $\e>0$, there exists $\de>0$ such that if $|x-a|<\de$ then $f(x)$ is defined and $|f(x)-f(a)|<\e$.
+
+\
+
+\noindent \textsc{Theorem:} If $f$ is defined at $a$ then $f$ is continuous at $a$ if and only if $\ds\lim_{x\to a} f(x) = f(a)$.
+
+\
+
+\noindent \textsc{Theorem:} If $f$ and $g$ are both continuous at $a$, and $c$ is any constant, then
+\begin{enumerate}
+\item $f+g$ is continuous at $a$.
+\item $cf$ is continuous at $a$.
+\item $fg$ is continuous at $a$.
+\item $f/g$ is continuous at $a$, provided $g(a)\neq 0$.
+\end{enumerate}
+
+\
+
+\noindent \textsc{Theorem:} If $g$ is continuous at $a$ and $f$ is continuous at $g(a)$, then $f\circ g$ is continuous at $a$.
+
+\noindent \hrulefill
+
+\noindent It is tiresome to say ``continuous at $a$ for every $a\in \R$''. The following definition is then convenient.
+
+\
+
+\noindent \textsc{Definition 29.1:}  Let $I$ be an open interval of $\R$ of the form $I=(a,b)$, $I=(a,\infty)$, $I=(-\infty,a)$, or $I=(-\infty,\infty)=\R$. We say $f$ is \textbf{continuous on $I$} if $f$ is continuous at $a$ for all $a\in I$. 
+
+
+
+\end{framed}
+
+\
+
+\begin{enumerate}
+\item Let \[f(x) = \begin{cases} 2x &\text{if} \ x\geq 1 \\ x+1 &\text{if} \ x<1. \end{cases}\]
+ Use the $\e-\delta$ definition to show that $f(x)$ is continuous at $1$.
+ 
+\
+
+ \item Which of the following functions are continuous on $\R$?
+\begin{multicols}{2} 
+\begin{itemize}
+ \item $f(x)=\sqrt{ x^2 +5}$.
+ \item Every polynomial function.
+  \item $f(x) = \sqrt{x}$.
+  \item $f(x)=\ds\frac{1}{x}$.
+ \end{itemize}
+ \end{multicols}
+ 
+
+ 
+
+ 
+ \item Which of the following functions are continuous on $(0,\infty)$?
+ \begin{multicols}{2} 
+ \begin{itemize}
+ \item $f(x)=\sqrt{ x^2 +5}$.
+ \item Every polynomial function.
+  \item $f(x) = \sqrt{x}$.
+  \item $f(x)=\ds\frac{1}{x}$.
+ \end{itemize}
+ \end{multicols}
+ 
+ 
+ 
+ \item Prove that $j(x) = x \sin(1/x)$ is continuous\footnote{You can use without proof that $\sin(x)$ is continuous on $\R$.} on $\R$.
+ 
+ \
+ 
+ \item Prove or disprove: If $f$ and $g$ are continuous at $a$, then $f/g$ is continuous at $a$.
+ 
+ \
+ 
+ \item Prove or disprove: If $f$ and $g$ are two functions, $a\in \R$, and  $f(a)=g(a)$, then $f$ is continuous at~$a$ if and only if $g$ is continuous at $a$.
+ 
+ \
+
+ 
+ \item Prove or disprove: If $f$ and $g$ are two functions, $a<b$, and  $f(x)=g(x)$ for all $x\in (a,b)$, then $f$ is continuous on $(a,b)$ if and only if $g$ is continuous on $(a,b)$.
+   \end{enumerate}
+   
+   
+\end{document}
+
+
+
+
