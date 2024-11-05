@@ -1,0 +1,133 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=0.8in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals,hyperref}
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+\newcommand\itemA{\stepcounter{enumi}\item[{\bf{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\bf{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\bf{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+\DeclareMathOperator{\ord}{ord}
+\renewcommand{\ceq}{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{1}
+	
+	\thispagestyle{empty}
+	
+	\section*{Practice Assignment}
+	
+	This problem set is not to be turned in, but consists of practice problems on continuous functions.
+	
+	\
+	
+	
+
+\begin{enumerate}
+\item Using any suitable Theorems about continuous functions, show that the function 
+\[\displaystyle f(x)= \sqrt{ | x^3 - x -5 |}\] is continuous on $\R$.
+
+\
+
+\item Show that the function with domain $\R$ given by the rule
+\[ f(x) = \begin{cases} x & \text{if} \ x\in \Q, \, \text{and}\\
+0 & \text{if} \ x\notin \Q\end{cases}\]
+is continuous at $x=0$, but not at any other value of $x$.
+
+\end{enumerate}
+
+\
+
+\begin{framed}
+\textsc{Definition 30.1:}  Given a function $f(x)$ and real numbers $a < b$,
+we say $f$ is \textbf{continuous on the closed interval $[a,b]$} provided 
+\begin{itemize}
+\item for every $r \in (a,b)$, $f$ is continuous at $r$ in the sense defined already,
+\item for every $\e > 0$ there is a $\delta > 0$ such that if $x \in [a,b]$ and $a \leq x < a+\delta$, then ${|f(x)
+  - f(a)| < \e}$, and
+\item for every $\e > 0$ there is a $\delta > 0$ such that if $x \in [a,b]$ and $b -\delta < x \leq b$, then ${|f(x)
+  - f(b)| < \e}$.
+\end{itemize}
+\end{framed}
+
+\
+
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item Let $f$ be a function defined on the closed interval $[a,b]$. Show that $f$ is continuous on the closed interval $[a,b]$ in the sense of our definition if and only if
+\begin{itemize}
+\item for every $r \in (a,b)$, $f$ is continuous at $r$ in the sense defined already,
+\item $\lim_{x\to a^{+}} f(x) = f(a)$, and
+\item $\lim_{x\to b^{-}} f(x) = f(b)$.
+\end{itemize}
+
+\
+
+\item Let $f$ be a function continuous on $[a,b]$ and $r\in [a,b]$. Let $c\in \R$. Show that if $f(r) < c$, then there is some $\delta>0$ such that for every $x\in [a,b]$ with $|x-r|<\delta$, we have $f(x)<c$.
+\end{enumerate}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
