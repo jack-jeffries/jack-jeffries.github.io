@@ -3838,6 +3838,77 @@ we are calling this number $\gamma$, and not $\d$, since it is
 f(g(a))| < \e$. This proves $f \circ g$ is continuous at~$a$.
 \end{proof}
 
+\newpage
+
+\Nov{6}{\We}{3.3}
+
+\begin{enumerate}
+\item Let \[f(x) = \begin{cases} 2x &\text{if} \ x\geq 1 \\ x+1 &\text{if} \ x<1. \end{cases}\]
+ Use the $\e-\delta$ definition to show that $f(x)$ is continuous at $1$.
+ 
+\begin{framed}
+Let $\e>0$. Take $\de=\e/2$. Let $x$ be a real number such that $|x-1|<\de$. Then $f(x)$ is defined, since the domain of $f$ is all real numbers. To show that $|f(x)-f(1)|<\e$, we proceed by cases. If $x\geq 1$, then $f(x)=2x$, so $|f(x)-f(1)|=|2x-2|=2|x-1|=2\de < \e$. If $x<1$, then $f(x)=x+1$, so $|f(x)-f(1)|=|x+1-2|=|x-1|=\de < \e$. This shows that $f$ is continuous at $x=1$.
+\end{framed}
+
+ \item Which of the following functions are continuous on $\R$?
+\begin{multicols}{2} 
+\begin{itemize}
+ \item $f(x)=\sqrt{ x^2 +5}$.
+ \item Every polynomial function.
+  \item $f(x) = \sqrt{x}$.
+  \item $f(x)=\ds\frac{1}{x}$.
+ \end{itemize}
+ \end{multicols}
+ 
+ \begin{framed}
+\begin{itemize}
+ \item $f(x)=\sqrt{ x^2 +5}$ yes: $h(x)=x^2+5$ is continuous at any real number $\R$, and $h(x)\geq 5$. Then $g(x)=\sqrt{x}$ is continuous at any $x>0$, so for any $x$, $g$ is continuous at $h(x)$, so $f(x)=g(h(x))$ is continuous for any $x$.
+ \item Yes Polynomials are continuous everywhere.
+   \item No $\sqrt{x}$ is not continuous for $x\leq 0$. Not even defined for $x<0$!
+     \item $f(x)=\ds\frac{1}{x}$ is not continuous at $0$.
+ \end{itemize}\end{framed}
+ 
+
+ 
+
+ 
+ \item Which of the following functions are continuous on $(0,\infty)$?
+ \begin{multicols}{2} 
+ \begin{itemize}
+ \item $f(x)=\sqrt{ x^2 +5}$.
+ \item Every polynomial function.
+  \item $f(x) = \sqrt{x}$.
+  \item $f(x)=\ds\frac{1}{x}$.
+ \end{itemize}
+ \end{multicols}
+  \begin{framed}
+All of the above.
+\end{framed}
+ 
+ 
+ 
+ \item Prove that $j(x) =\begin{cases} x \sin(1/x) & \text{if} \ x\neq 0 \\ 0 & \text{if} \ x= 0\end{cases}$\ \ is continuous\footnote{You can use without proof that $\sin(x)$ is continuous on $\R$.} on $\R$.
+  \begin{framed}
+First we show $j$ is continuous at $x=0$. Let $\e>0$ and take $\de=\e$. Then for any $x$ such that $|x|<\de$, $j(x)$ is defined and $|j(x) - j(0)| = |x \sin(1/x)| \leq |x|<\e$.
+
+Then if $x\neq 0$, $\frac{1}{x}$ is continuous at $x$ by continuity and algebra, and then $\sin(1/x)$ is continuous at $x$ as compositions of continuous functions are continuous.
+\end{framed}
+ 
+ \item Prove or disprove: If $f$ and $g$ are continuous at $a$, then $f/g$ is continuous at $a$.
+ 
+  \begin{framed}
+No, if $g(a)=0$, then $f/g(a)$ is not even defined!
+\end{framed}
+ 
+ \item Prove or disprove: If $f$ and $g$ are two functions, $a\in \R$, and  $f(a)=g(a)$, then $f$ is continuous at~$a$ if and only if $g$ is continuous at $a$.
+ 
+ \
+
+ 
+ \item Prove or disprove: If $f$ and $g$ are two functions, $a<b$, and  $f(x)=g(x)$ for all $x\in (a,b)$, then $f$ is continuous on $(a,b)$ if and only if $g$ is continuous on $(a,b)$.
+   \end{enumerate}
+
+
 \begin{comment}
 
 \begin{ex} 
