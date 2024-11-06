@@ -1,0 +1,134 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals}
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\cZ}{\mathcal{Z}}
+\newcommand{\Spec}{\mathrm{Spec}}
+\newcommand{\Supp}{\mathrm{Supp}}
+\newcommand{\Min}{\mathrm{Min}}
+\newcommand{\Max}{\mathrm{Max}}
+\newcommand{\Ass}{\mathrm{Ass}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+\newcommand\itemA{\stepcounter{enumi}\item[{\bf{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\bf{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\bf{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+\DeclareMathOperator{\ord}{ord}
+\renewcommand{\ceq}{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{1}
+	
+	\thispagestyle{empty}
+	
+	\section*{Assignment \#6: Due Friday, November 22 at 7pm}
+	
+	This problem set is to be turned in by Canvas. You may reference any result or problem from our worksheets, unless it is the fact to be proven! You are encouraged to work with others, but you should understand everything you write. Please consult the class website for acceptable/unacceptable resources for the problem sets. You should use the techniques from this class and precursor classes to solve these problems, but not Commutative Algebra II or Homological Algebra.
+	
+	
+	\
+	
+\begin{enumerate}
+
+\item Find\footnote{Hint: $14=2\cdot 7 = (1+\sqrt{-13}) \cdot (1-\sqrt{-13})$. You might also find it useful to think of $\Z[\sqrt{-13}]$ as $\Z[X]/(X^2+13)$.} a minimal primary decomposition of the principal ideal $(14)$ in $\Z[\sqrt{-13}]$ and explain why this minimal primary decomposition is unique.
+
+\
+
+\item Let $R$ be a Noetherian ring. Show that $R$ is reduced if and only if every associated prime is minimal and $R_\p$ is a field for every $\p\in \Min(R)$.
+
+\
+
+\item Let $R$ be a ring, not necessarily Noetherian. Let $I$ be an ideal such that $V(I) = \{ \m_1,\ldots,\m_t \}$ is a finite set of maximal ideals. 
+	\begin{enumerate}
+		\item Show that $Q_i = I R_{\m_i} \cap R$ is primary.
+		\item Show\footnote{As a T-shirt once said, ``Be wise---localize!''} that $I$ has a primary decomposition $I=Q_1 \cap \cdots \cap Q_t$.
+		\item Show that $R/I \cong R/Q_1 \times \cdots \times R/Q_t$.
+	\end{enumerate}
+
+
+\
+
+%\item Module of sections with support: Let $R$ be a ring, $M$ be an $R$-module, and $I$ an ideal. We define the \textbf{submodule of sections supported on $I$} as
+%\[ \Gamma_I(M) \colonequals \{ m\in M \ | \ \text{there exists some} \ n>0 \ \text{such that} \ I^n m =0\}.\]
+%\begin{enumerate}
+%\item Show that $\Gamma_I(M)$ is the largest submodule $N$ of $M$ such that $\mathrm{Supp}(N) \subseteq V(I)$.
+%\item Show that $\Ass_R(\Gamma_I(M))=\Ass_R(M) \cap V(I)$.
+%\item Suppose that $\p$ is a maximal element of $\Ass_R(M)$. Show that $\Ass_R(M/\Gamma_I(M)) = {\Ass_R(M) \smallsetminus \{\p\}}$.
+%\end{enumerate}
+%\
+
+\item Let $R$ be a domain. 
+\begin{enumerate}
+\item Show that $R$ is a UFD if and only if every prime of height one is principal.
+\item Give an example of a height one ideal in a UFD that is not principal.
+\item Give an example of a height one prime in a domain that is not principal.
+\end{enumerate}
+
+
+\
+
+\item Use Macaulay2 to 
+\begin{enumerate}
+
+\item In $\Q[X,Y,U,V]$, the ideal $(X^2-U^2,XY-UV,Y^2-V^2)$.
+
+
+\end{enumerate}
+
+
+
+
+
+%\item Let $K$ be an arbitrary field. Let $(\star)$ be a system of polynomial equations $F_1 = \dots = F_t = 0$ be a system of polynomial equations in $n$ variables over $K$. Show that if $(\star)$ has an equation in \emph{any} $K$-algebra $A$, then $(\star)$ has a solution over $\overline{K}$.
+
+
+
+\end{enumerate}
+
+
+
+
+
+
+\end{document}
