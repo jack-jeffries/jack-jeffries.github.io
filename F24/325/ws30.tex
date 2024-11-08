@@ -1,0 +1,117 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=.7in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed}
+\usepackage[all]{xy}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\e}{\varepsilon}
+\newcommand{\de}{\delta}
+\newcommand{\ds}{\displaystyle}
+
+\DeclareMathOperator{\res}{res}
+
+\pagestyle{empty}
+
+
+
+
+\begin{document}
+	
+	
+	\thispagestyle{empty}
+	
+	
+	\section*{Intermediate Value Theorem \S3.4}
+	
+\begin{framed} 
+ \noindent The definition of continuous on a closed interval $[a,b]$ is actually a bit different: we shouldn't necessarily ask that $f$ be continuous at $a$, since to know that would have to use something about $f$ on input values outside of our interval!
+ 
+ \
+ 
+\noindent\textsc{Definition~30.1:}  Given a function $f(x)$ and real numbers $a < b$,
+we say $f$ is {\textbf continuous on the closed interval $[a,b]$} provided 
+\begin{enumerate}
+\item for every $r \in (a,b)$, $f$ is  continuous at $r$ in the sense defined already,
+\item for every $\e > 0$ there is a $\de > 0$ such that if $a \leq x < a+\de$, then $f(x)$ is defined and ${|f(x)
+  - f(a)| < \e}$.
+\item for every $\e > 0$ there is a $\de > 0$ such that if $b -\de < x \leq b$, then ${|f(x)
+  - f(b)| < \e}$.
+\end{enumerate}
+
+\
+
+\noindent\textsc{Example 30.2:} The function $f(x)=\sqrt{1-x^2}$ is continuous on the closed interval $[-1,1]$, even though $f$ is not continuous at $x=-1$ or $x=1$.
+
+\
+
+\noindent\textsc{Theorem~30.3. (Intermediate Value Theorem):}  Let $a<b$ and $f(x)$ be a function that is continuous on the closed interval $[a,b]$. If $y$ is any real number between $f(a)$ and $f(b)$, then there is some $c\in [a,b]$ such that $f(c)=y$. More precisely, if $f(a) \leq y \leq f(b)$ or $f(b) \leq y \leq f(a)$, then there is some $c\in [a,b]$ such that $f(c)=y$.
+\end{framed}
+
+
+\
+
+\begin{enumerate}
+ \item Explain why if $f$ is continuous at $x$ for every $x\in[a,b]$, then $f$ is continuous on the closed interval~$[a,b]$. In particular, if $f$ is continuous on any open interval containing~$[a,b]$, then $f$ is continuous on $[a,b]$. Conclude that every polynomial is continuous on every closed interval.
+
+\
+
+
+\item Draw a picture the Intermediate Value Theorem as follows: 
+\begin{itemize}
+\item Mark some $a$ and $b$ on the $x$-axis. 
+\item Graph a function $f$ that is continuous on $[a,b]$.
+\item Mark $f(a)$ and $f(b)$ on the $y$-axis.
+\item Pick some $y$ in between  $f(a)$ and $f(b)$, and make a horizontal line for this $y$-value.
+\item Does it intersect the graph of $f$?
+\end{itemize}
+Repeat with at least one graph that is increasing, at least one graph that is decreasing, and at least one graph that is neither increasing nor decreasing.
+
+\
+
+\item Prove or disprove: There is a real number $x\in [0,2]$ such that $x^3 - 3x = 1$.
+
+\
+
+\item Prove or disprove: There are at least two real numbers $x\in [0,2]$ such that $x^3 - 3x = -1$.
+
+\
+
+\item  Give a counterexample to the statement of the Intermediate Value Theorem without the hypothesis that $f$ is continuous on the closed interval $[a,b]$.
+
+\
+
+
+\item True or false: If $f(x)$ is continuous on the closed interval  $[a,b]$, and $y$ is \emph{not} in between $f(a)$ and $f(b)$, then there is no $c\in[a,b]$ such that $f(c) = y$.
+
+\
+
+\item Use the Intermediate Value Theorem to prove that every positive real number has a square root.
+\end{enumerate}
+
+\newpage
+
+
+
+\textbf{Proof of the Intermediate Value Theorem:}
+\begin{enumerate}
+\item Let's assume that $f(a) \leq f(b)$ to get started. Explain why the cases $y=f(a)$ and $y=f(b)$ are easy. Hence, we assume that $f(a)< y < f(b)$.
+\item Let $S=\{ x\in [a,b] \ | \ f(r) < y \ \text{for all} \ a\leq r \leq x \}$. In short, $S$ is the set of $x$-values in the interval where the graph of $f$ hasn't crossed $y$ yet. Explain why $S$ has a supremum, and let $c= \sup(S)$.
+\item Show that $c >a$. [ Hint: Apply part (2) of definition of continuous on $[a,b]$ with $\e = y-f(a)$, and show that $a$ is not an upper bound for $S$.]
+\item The argument that $c<b$ is similar (so come back to it later if you want). Thus, $c\in (a,b)$, so we know that $f$ is continuous at $c$.
+\item Suppose that $f(c)<y$, and obtain a contradiction. [ Hint: Apply continuous at $c$ with $\e= y-f(c)$, and show that $c$ is not an upper bound for $S$.]
+\item Suppose that $f(c)>y$, and obtain a contradiction. [ Hint: Apply continuous at $c$ with $\e= f(c)-y$, and find a smaller upper bound for $S$.]
+\item This concludes the case when $f(a) \leq f(b)$. If $f(a) \geq f(b)$, what can you say about $g(x) = -f(x)$? Can we apply the case we just did?
+\end{enumerate}
+   
+\end{document}
+
+
+
+

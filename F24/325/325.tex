@@ -3907,6 +3907,92 @@ No, if $g(a)=0$, then $f/g(a)$ is not even defined!
  
  \item Prove or disprove: If $f$ and $g$ are two functions, $a<b$, and  $f(x)=g(x)$ for all $x\in (a,b)$, then $f$ is continuous on $(a,b)$ if and only if $g$ is continuous on $(a,b)$.
    \end{enumerate}
+   
+   \newpage
+   
+   \Nov{8}{\Fr}{3.4}
+   
+   \begin{framed} 
+ \noindent The definition of continuous on a closed interval $[a,b]$ is actually a bit different: we shouldn't necessarily ask that $f$ be continuous at $a$, since to know that would have to use something about $f$ on input values outside of our interval!
+ 
+ \
+ 
+\noindent\textsc{Definition~30.1:}  Given a function $f(x)$ and real numbers $a < b$,
+we say $f$ is {\textbf continuous on the closed interval $[a,b]$} provided 
+\begin{enumerate}
+\item for every $r \in (a,b)$, $f$ is  continuous at $r$ in the sense defined already,
+\item for every $\e > 0$ there is a $\de > 0$ such that if $a \leq x < a+\de$, then $f(x)$ is defined and ${|f(x)
+  - f(a)| < \e}$.
+\item for every $\e > 0$ there is a $\de > 0$ such that if $b -\de < x \leq b$, then ${|f(x)
+  - f(b)| < \e}$.
+\end{enumerate}
+
+\
+
+\noindent\textsc{Example 30.2:} The function $f(x)=\sqrt{1-x^2}$ is continuous on the closed interval $[-1,1]$, even though $f$ is not continuous at $x=-1$ or $x=1$.
+
+\
+
+\noindent\textsc{Theorem~30.3. (Intermediate Value Theorem):}  Let $a<b$ and $f(x)$ be a function that is continuous on the closed interval $[a,b]$. If $y$ is any real number between $f(a)$ and $f(b)$, then there is some $c\in [a,b]$ such that $f(c)=y$. More precisely, if $f(a) \leq y \leq f(b)$ or $f(b) \leq y \leq f(a)$, then there is some $c\in [a,b]$ such that $f(c)=y$.
+\end{framed}
+
+
+\
+
+\begin{enumerate}
+ \item Explain why if $f$ is continuous at $x$ for every $x\in[a,b]$, then $f$ is continuous on the closed interval~$[a,b]$. In particular, if $f$ is continuous on any open interval containing~$[a,b]$, then $f$ is continuous on $[a,b]$. Conclude that every polynomial is continuous on every closed interval.
+
+\begin{framed}
+Condition (1) is automatic. If $f$ is continuous at $a$ then there is a $\d$ such that if $a-\d < x < a+\d$ then $f(x)$ is defined and ${|f(x)
+  - f(a)| < \e}$; in particular, for the same $\d$, if $a \leq x < a+\d$, then  $a-\d < x < a+\d$ and hence $f(x)$ is defined and ${|f(x)
+  - f(a)| < \e}$. Similarly for continuity at $b$ and condition (3).
+\end{framed}
+
+
+\item Draw a picture the Intermediate Value Theorem as follows: 
+\begin{itemize}
+\item Mark some $a$ and $b$ on the $x$-axis. 
+\item Graph a function $f$ that is continuous on $[a,b]$.
+\item Mark $f(a)$ and $f(b)$ on the $y$-axis.
+\item Pick some $y$ in between  $f(a)$ and $f(b)$, and make a horizontal line for this $y$-value.
+\item Does it intersect the graph of $f$?
+\end{itemize}
+Repeat with at least one graph that is increasing, at least one graph that is decreasing, and at least one graph that is neither increasing nor decreasing.
+
+\
+
+\item Prove or disprove: There is a real number $x\in [0,2]$ such that $x^3 - 3x = 1$.
+
+\begin{framed}
+Take $f(x) = x^3 - 3x$. It is a polynomial and hence continuous on $[0,2]$.
+Then $f(0) = 0 < 1 < 2= f(2)$, so there is some $c\in [-1,1]$ with $f(c) = 1$.
+\end{framed}
+
+\item Prove or disprove: There are at least two real numbers $x\in [0,2]$ such that $x^3 - 3x = -1$.
+
+\begin{framed}
+Take the same $f(x) = x^3 - 3x$.
+Then $f(0) = 0 > -1 > -2 = f(1)$, so there is some $c_1\in [0,1]$ with $f(c_1) = 1$. Also,
+Then $f(1) = -2 < -1 < 2 = f(2)$, so there is some $c_2\in [1,2]$ with $f(c_2) = 1$. We know that $c_1\neq 1$ and $c_2 \neq 1$ since $f(1)\neq 1$, so $c_1\neq c_2$. Thus there are two values that output $-1$.
+\end{framed}
+
+\item  Give a counterexample to the statement of the Intermediate Value Theorem without the hypothesis that $f$ is continuous on the closed interval $[a,b]$.
+
+\begin{framed}
+Take \[f(x) = \begin{cases} x \ \text{if} \ x<0 \\ x+2 \ \text{if} \ x\geq 0 \end{cases}.\]
+Then $f(-1) < 1 < f(1)$, but there is no $x\in [-1,1]$ with $f(x) = 1$.
+\end{framed}
+
+
+
+\item True or false: If $f(x)$ is continuous on the closed interval  $[a,b]$, and $y$ is \emph{not} in between $f(a)$ and $f(b)$, then there is no $c\in[a,b]$ such that $f(c) = y$.
+
+\begin{framed}
+From the previous problem $f(x)=x^3-3x$ on $[0,2]$ with $y=-1$ is a counterexample.
+\end{framed}
+\item Use the Intermediate Value Theorem to prove that every positive real number has a square root.
+\end{enumerate}
+
 
 
 \begin{comment}
