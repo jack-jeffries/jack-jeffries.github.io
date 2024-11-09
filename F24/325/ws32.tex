@@ -1,0 +1,162 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=1.05in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed}
+\usepackage[all]{xy}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\e}{\varepsilon}
+\newcommand{\de}{\delta}
+\newcommand{\ds}{\displaystyle}
+
+\DeclareMathOperator{\res}{res}
+
+\pagestyle{empty}
+
+
+
+
+\begin{document}
+	
+	
+	\thispagestyle{empty}
+	
+	
+	\section*{Boundedness Theorem and Extreme Value Theorem \S3.4}
+	
+\begin{framed} 
+ \noindent \textsc{Theorem 32.1 (Boundedness Theorem):} Suppose $f$ is continuous on the closed interval $[a,b]$ for some real numbers $a,b$ with $a < b$. Then $f$ is bounded on $[a,b]$ --- that is,
+  there are real numbers $m$ and $M$ so that $m \leq f(x) \leq M$ for all $x \in [a,b]$.
+  
+  \
+  
+  \noindent  \textsc{Theorem 32.2 (Extreme Value Theorem):} Assume $f$ is continuous on the closed interval $[a,b]$ for some real numbers $a$ and $b$ with $a < b$.
+  Then $f$ attains a \textbf{minimum value} and a \textbf{maximum value} on $[a,b]$ ---
+that is, there exists a number $r \in [a,b]$ such that $f(x) \leq f(r)$ for all $x \in [a,b]$ and
+there exists a number $s \in [a,b]$ such that $f(x) \geq f(s)$ for all $x \in [a,b]$.
+\end{framed}
+
+
+
+
+\
+
+\begin{enumerate}
+
+\item Let $f(x)=\sqrt{x^2+3}$.
+\begin{enumerate}
+\item Is $f(x)$ continuous on the closed interval $[-1,2]$?
+\item According to the theorems, does $f$ attain a minimum value and/or a maximum value on $[-1,2]$?
+\item Find the minimum value and maximum value of $f$ on $[-1,2]$.
+\end{enumerate}
+
+
+\
+
+\item In this problem we explore the necessity of the hypotheses in these theorems.
+\begin{enumerate}
+\item Draw a graph of a function on a closed interval $[a,b]$ that is \emph{not continuous}, and is \emph{not bounded} on~$[a,b]$.
+\item Draw a graph of a function that is continuous on an \emph{open} interval $(a,b)$, but is \emph{not bounded} on~$(a,b)$.
+\item Draw a graph of a function that is continuous on an \emph{open} interval $(a,b)$, and \emph{is bounded} on $(a,b)$, but for which the conclusion of the Extreme Value Theorem \emph{fails}.
+\end{enumerate}
+Can you find formulas of functions that match each story?
+
+   
+   
+   \
+   
+   \item Prove or disprove: If $f$ is continuous on a closed interval $[a,b]$, then $f$ attains its minimum at a unique input value: that is, there is a unique $r\in [a,b]$ such that $f(r)\leq f(x)$ for all $x\in [a,b]$.
+   
+   \
+   
+   \item Prove or disprove: If $f$ is continuous on an open interval $(a,b)$, then $f$ either does not attain a minimum or does not attain a maximum on $(a,b)$.
+   
+   \
+   
+   \item True or false: A constant function attains a minimum value and a maximum value on any closed interval $[a,b]$.
+   
+   \
+   
+   
+ \item Explain why the Extreme Value Theorem actually implies the Boundedness Theorem. (The reason we state both is that we will have to first prove the Boundedness Theorem on the way to the Extreme Value Theorem.)
+
+%\
+
+%\item  Let $f: [a,b] \to \R$ be a continuous function on an closed interval. Show that the range\footnote{Recall that the \textbf{range} of a function is $\{f(x) \ | \ x \ \text{is in the domain of $f$}\}$.} of $f$ is either a closed interval or a constant.
+
+   \end{enumerate}
+   
+   \newpage 
+
+\begin{framed}
+\noindent \textsc{Definition:} Let $I$ be an interval (either open or closed) and $f$ a function defined on all of~$I$. 
+\begin{itemize}
+\item We say that $f$ is \textbf{increasing} on $I$ if for any $x,y\in I$ with $x<y$, we have $f(x) \leq f(y)$. 
+\item We say that $f$ is \textbf{decreasing} on $I$ if for any $x,y\in I$ with $x<y$, we have $f(x) \geq f(y)$.
+\item We say that $f$ is \textbf{monotone} on $I$ if $f$ is either increasing on $I$ or decreasing on $I$.
+\item We say that $f$ is \textbf{strictly increasing} on $I$ if for any $x,y\in I$ with $x<y$, we have $f(x)< f(y)$. 
+\item We say that $f$ is \textbf{strictly decreasing} on $I$ if for any $x,y\in I$ with $x<y$, we have $f(x) > f(y)$.
+\item We say that $f$ is \textbf{strictly monotone} on $I$ if $f$ is either increasing on $I$ or decreasing on~$I$.
+\end{itemize}
+
+\end{framed}
+
+\begin{enumerate}
+\setcounter{enumi}{6}
+
+\item Suppose that $f$ is strictly monotone on $(a,b)$. Show that $f$ does not attain either a minimum or a maximum on $(a,b)$.
+
+\
+
+
+\item Let $f$ be continuous on the closed interval $[-7,3]$. Show that if $f$ is one-to-one\footnote{This means that $x\neq y$ implies $f(x) \neq f(y)$ for all $x,y$ in the domain of $f$.}, then $f$ must be strictly monotone.
+
+\
+
+\item Prove or disprove: Let $f$ be continuous on $\R$. Show that if $f$ does \emph{not} attain a minimum on the half-open interval $(0,1]$ then there is some $a\in (0,1)$ such that $f$ is strictly increasing on $(0,1)$.
+
+
+\
+
+
+\end{enumerate}
+
+
+
+
+ 
+   
+\end{document}
+
+
+
+
+
+\begin{enumerate}\setcounter{enumi}{2}
+\item Proof of Boundedness Theorem:
+\begin{enumerate}
+\item[\null] We will argue that $f$ is bounded above on $[a,b]$: i.e., there exists an $M$ such that $f(x)\leq M$ for all $x\in[a,b]$; showing that $f$ is bounded below is similar (or follows from this part applied to $-f$).
+\item We argue by contradiction. What does it mean to suppose that the theorem is false? Assume it.
+\item Explain why there must be a sequence $\{x_n\}_{n=1}^\infty$ with $x_n\in[a,b]$ and $f(x_n)>n$ for all $n\in \N$.
+\item Apply Bolzano-Weierstrass to the sequence $\{x_n\}_{n=1}^\infty$. What do you get?
+\item Now apply the Lemma from the homework. What do you get?
+\end{enumerate}
+
+\
+
+\item Proof of Extreme Value Theorem:
+\begin{enumerate}
+\item[\null] We will find a maximum value; finding a minimum value is similar (or follows from this part applied to $-f$).
+\item Let $R = \{ f(x) \ |\  x\in [a,b]\}$. Explain why $R$ has a supremum; call it $\ell$.
+\item Explain why there must be a sequence $\{x_n\}_{n=1}^\infty$ with $x_n\in[a,b]$ and $\ell- \frac{1}{n} <f(x_n)\leq \ell$ for all $n\in \N$.
+\item Apply Bolzano-Weierstrass to the sequence $\{x_n\}_{n=1}^\infty$. What do you get?
+\item Now apply the Lemma from the homework. What do you get?
+\end{enumerate}
+
+

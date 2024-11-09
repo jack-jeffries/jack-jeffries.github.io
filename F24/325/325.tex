@@ -3995,7 +3995,320 @@ From the previous problem $f(x)=x^3-3x$ on $[0,2]$ with $y=-1$ is a counterexamp
 
 
 
-\begin{comment}
+
+
+%\begin{comment}	
+	\newpage
+	
+\setcounter{section}{31}
+	
+	\Nov{12}{\We}{3.3}
+	
+\begin{framed} 
+ \noindent \textsc{Theorem 32.1 (Boundedness Theorem):}\index{Boundedness Theorem} Suppose $f$ is continuous on the closed interval $[a,b]$ for some real numbers $a,b$ with $a < b$. Then $f$ is bounded on $[a,b]$ --- that is,
+  there are real numbers $m$ and $M$ so that $m \leq f(x) \leq M$ for all $x \in [a,b]$.
+  
+  \
+  
+  \noindent  \textsc{Theorem 32.2 (Extreme Value Theorem):}\index{Extreme Value Theorem} Assume $f$ is continuous on the closed interval $[a,b]$ for some real numbers $a$ and $b$ with $a < b$.
+  Then $f$ attains a \textbf{minimum value}\index{minimum value} and a \textbf{maximum value}\index{maximum value} on $[a,b]$ ---
+that is, there exists a number $r \in [a,b]$ such that $f(x) \leq f(r)$ for all $x \in [a,b]$ and
+there exists a number $s \in [a,b]$ such that $f(x) \geq f(s)$ for all $x \in [a,b]$.
+\end{framed}
+\begin{enumerate}
+
+
+
+\item Let $f(x)=\sqrt{x^2+3}$.
+\begin{enumerate}
+\item Is $f(x)$ continuous on the closed interval $[-1,2]$?
+\item According to the theorems, does $f$ attain a minimum value and/or a maximum value on $[-1,2]$?
+\item Find the minimum value and maximum value of $f$ on $[-1,2]$.
+\end{enumerate}
+
+\begin{framed}
+\begin{enumerate}
+\item Yes; this is a composition of a polynomial with the square root function, the latter of which is continuous for $x>0$.
+\item Yes; the Extreme Value Theorem applies.
+\item The minimum value is $f(0)=\sqrt{3}$ and the maximum is $f(2)=\sqrt{7}$.
+\end{enumerate}
+\end{framed}
+
+\item In this problem we explore the necessity of the hypotheses in these theorems.
+\begin{enumerate}
+\item Draw a graph of a function on a closed interval $[a,b]$ that is \emph{not continuous}, and is \emph{not bounded} on~$[a,b]$.
+\item Draw a graph of a function that is continuous on an \emph{open} interval $(a,b)$, but is \emph{not bounded} on~$(a,b)$.
+\item Draw a graph of a function that is continuous on an \emph{open} interval $(a,b)$, and \emph{is bounded} on $(a,b)$, but for which the conclusion of the Extreme Value Theorem \emph{fails}.
+\end{enumerate}
+Can you find formulas of functions that match each story?
+
+\begin{framed}
+\begin{enumerate}
+\item For example, take $f(x)=\begin{cases} 1/x \ \text{if} \ x\neq 0 \\ 0  \ \text{if} \ x= 0\end{cases}$ on $[-1,1]$.
+\item For example, take $f(x)=1/x$ on $(0,1)$.
+\item For example, take $f(x)=x$ on $(0,1)$.
+\end{enumerate}
+\end{framed}
+   
+   \item Prove or disprove: If $f$ is continuous on a closed interval $[a,b]$, then $f$ attains its minimum at a unique input value: that is, there is a unique $r\in [a,b]$ such that $f(r)\leq f(x)$ for all $x\in [a,b]$.
+   
+   \begin{framed}
+   False: e.g., $f(x)=x^2$ on $[-1,1]$.
+   \end{framed}
+   
+   \item Prove or disprove: If $f$ is continuous on an open interval $(a,b)$, then $f$ either does not attain a minimum or does not attain a maximum on $(a,b)$.
+   
+   \begin{framed}
+   False: e.g., $f(x)=\sin(x)$ on $(0,2\pi)$.
+   \end{framed}
+   
+   \item True or false: A constant function attains a minimum value and a maximum value on any closed interval $[a,b]$.
+   
+   \begin{framed}
+   True: it achieves both its minimum and its maximum at every value of the interval!
+   \end{framed}
+   
+   
+ \item Explain why the Extreme Value Theorem actually implies the Boundedness Theorem. (The reason we state both is that we will have to first prove the Boundedness Theorem on the way to the Extreme Value Theorem.)
+
+\begin{framed}
+Take $M=f(r)$ and $m=f(s)$.
+\end{framed}
+
+%\item  Let $f: [a,b] \to \R$ be a continuous function on a closed interval. Show that the range\footnote{Recall that the \textbf{range} of a function is $\{f(x) \ | \ x \ \text{is in the domain of $f$}\}$.} of $f$ is either a closed interval or a constant.
+
+   \end{enumerate}
+   
+
+
+\begin{framed}
+\noindent \textsc{Definition:} Let $I$ be an interval (either open or closed) and $f$ a function defined on all of $I$. 
+\begin{itemize}
+\item We say that $f$ is \textbf{increasing} on $I$ if for any $x,y\in I$ with $x<y$, we have $f(x) \leq f(y)$. 
+\item We say that $f$ is \textbf{decreasing} on $I$ if for any $x,y\in I$ with $x<y$, we have $f(x) \geq f(y)$.
+\item We say that $f$ is \textbf{monotone} on $I$ if $f$ is either increasing on $I$ or decreasing on $I$.
+\item We say that $f$ is \textbf{strictly increasing} on $I$ if for any $x,y\in I$ with $x<y$, we have $f(x)< f(y)$. 
+\item We say that $f$ is \textbf{strictly decreasing} on $I$ if for any $x,y\in I$ with $x<y$, we have $f(x) > f(y)$.
+\item We say that $f$ is \textbf{strictly monotone} on $I$ if $f$ is either increasing on $I$ or decreasing on~$I$.
+\end{itemize}
+
+\end{framed}
+
+\begin{enumerate}
+\setcounter{enumi}{6}
+
+\item Suppose that $f$ is strictly monotone on $(a,b)$. Show that $f$ does not attain either a minimum or a maximum on $(a,b)$.
+
+\begin{framed}
+For a first case, suppose that $f$ is strictly increasing. For a contradiction, suppose that $f$ attains a minimum at $r\in(a,b)$. There is some $x$ between $a$ and $r$, so $x\in (a,b)$ and $x<r$. Then by definition of strictly increasing, $f(x) < f(r)$, contradicting that $f$ attains a minimum at $r$. The argument that $f$ does not attain a maximum is similar, using instead a number between $r$ and $b$. 
+
+The strictly decreasing case is similar.
+\end{framed}
+
+
+\item Let $f$ be continuous on the closed interval $[-7,3]$. Show that if $f$ is one-to-one\footnote{This means that $x\neq y$ implies $f(x) \neq f(y)$ for all $x,y$ in the domain of $f$.}, then $f$ must be strictly monotone.
+
+\begin{framed}
+For starters, we know that $f(-7)\neq f(3)$. For a first case, suppose that $f(-7)<f(3)$. We will show that $f$ is strictly increasing. Let $x,y\in (a,b)$ with $x<y$. To attain a contradiction, suppose that $f(x) \geq f(y)$. If $f(y)>f(a)$, then we can apply the IVT to $f$ on $[a,x]$ and obtain some $c\in [a,x]$ with $f(c) = f(y)$; if $f(y)<f(a)$, then we can apply IVT to $f$ on $[y,b]$ and obtain some $c\in[y,b]$ such that $f(c) = f(a)$. Either way, we contradict the assumption that $f$ is one-to-one. Thus, we must have $f(x)< f(y)$. This means $f$ is strictly increasing.
+
+The case $f(-7)>f(3)$ is similar.
+\end{framed}
+
+\item Prove or disprove: Let $f$ be continuous on $\R$. If $f$ does \emph{not} attain a minimum on the half-open interval $(0,1]$ then there is some $a\in (0,1)$ such that $f$ is strictly increasing on $(0,1)$.
+
+
+\begin{framed}
+This is false! One counterexample is $f(x) = 2x + x \sin\left(\frac{1}{x}\right)$.
+
+\includegraphics[scale=.3]{sin-inc}
+\end{framed}
+
+\
+
+
+
+\end{enumerate}
+
+
+
+
+ \newpage
+ 
+ \Nov{15}{\Fr}{3.3}
+ 
+ \begin{framed} 
+
+
+ \noindent \textsc{Intermediate Value Theorem:} Suppose $f$ is a function, that $a < b$ are real numbers, and that $f$ is continuous on the closed interval
+  $[a,b]$. If $y$ is any number between $f(a)$ and $f(b)$ (i.e., $f(a) \leq y \leq f(b)$ or
+$f(a) \geq y \geq f(b)$), then there is a $c \in [a,b]$ such that $f(c) = y$
+
+
+\
+
+ \noindent \textsc{Boundedness Theorem:} Suppose $f$ is continuous on the closed interval $[a,b]$ for some real numbers $a,b$ with $a < b$. Then $f$ is bounded on $[a,b]$ --- that is,
+  there are real numbers $m$ and $M$ so that $m \leq f(x) \leq M$ for all $x \in [a,b]$.
+  
+  \
+  
+  \noindent  \textsc{Extreme Value Theorem:} Assume $f$ is continuous on the closed interval $[a,b]$ for some real numbers $a$ and $b$ with $a < b$.
+  Then $f$ attains a {minimum value} and a {maximum value} on $[a,b]$ ---
+that is, there exists a number $r \in [a,b]$ such that $f(x) \leq f(r)$ for all $x \in [a,b]$ and
+there exists a number $s \in [a,b]$ such that $f(x) \geq f(s)$ for all $x \in [a,b]$.
+
+\
+
+\noindent \textsc{Lemma 33.1:} Assume $f$ is continuous on $[a,b]$ and that $\{x_n\}_{n=1}^\infty$ is any sequence such that ${a \leq x_n  \leq b}$ for
+  all $n$. If $\{x_n\}_{n=1}^\infty$ converges to some number $r$, then
+\begin{enumerate}
+\item $r \in [a,b]$ and
+\item The sequence $\{f(x_n)\}_{n=1}^\infty$ converges to $f(r)$.
+\end{enumerate}
+\end{framed}
+
+
+\
+
+\begin{enumerate}
+\item \textsc{Proof of Boundedness Theorem:}
+\begin{enumerate}
+\item[\null] We will argue that $f$ is bounded above on $[a,b]$: i.e., there exists an $M$ such that $f(x)\leq M$ for all $x\in[a,b]$; showing that $f$ is bounded below is similar (or follows from this part applied to $-f$).
+\item We argue by contradiction. What does it mean to suppose that the theorem is false? Assume~it.
+\item Explain why there must be a sequence $\{x_n\}_{n=1}^\infty$ with $x_n\in[a,b]$ and $f(x_n)>n$ for all $n\in \N$.
+\item Apply Bolzano-Weierstrass to the sequence $\{x_n\}_{n=1}^\infty$. What do you get?
+\item Now apply the Lemma. What do you get?
+\end{enumerate}
+
+\begin{framed}
+\begin{enumerate}
+\item If the Theorem is false, there is a function $f$ that is continuous on the closed interval $[a,b]$ but the set of values of $f$ on $[a,b]$ is either unbounded above or unbounded below. Assume we have such a function that is unbounded above.
+\item By assumption, for every $n\in \N$, $n$ is not an upper bound for the values of $f$ on $[a,b]$. Thus, for every $n\in \N$, there is some $x_n$ with $f(x_n)>n$. This gives us a sequence $\{x_n\}_{n=1}^\infty$ with $x_n\in[a,b]$ and $f(x_n)>n$ for all $n\in \N$
+\item The sequence $\{x_n\}_{n=1}^\infty$ has a convergent subsequence $\{x_{n_k}\}_{k=1}^\infty$.
+\item Since $x_{n_k}\in[a,b]$ for all $k$, by the lemma we have first that $\{x_{n_k}\}_{k=1}^\infty$ converges to $r\in [a,b]$, and second, that $\{f(x_{n_k})\}_{k=1}^\infty$ converges to $f(r)$. But since $f(x_{n_k})> n_k \geq k$, the sequence $\{f(x_{n_k})\}_{k=1}^\infty$ diverges (to $+\infty$ in fact). This is a contradiction, so we conclude that the set of values of $f$ is bounded above. A similar argument (or the same case applied to $-f$) shows that the set of values of $f$ is also bounded below.
+\end{enumerate}
+\end{framed}
+
+
+\item \textsc{Proof of Extreme Value Theorem:}
+\begin{enumerate}
+\item[\null] We will find a maximum value; finding a minimum value is similar (or follows from this part applied to $-f$).
+\item Let $R = \{ f(x) \ |\  x\in [a,b]\}$. Explain why $R$ has a supremum; call it $\ell$.
+\item Explain why there must be a sequence $\{x_n\}_{n=1}^\infty$ with $x_n\in[a,b]$ and $\ell- \frac{1}{n} <f(x_n)\leq \ell$ for all $n\in \N$.
+\item Apply Bolzano-Weierstrass to the sequence $\{x_n\}_{n=1}^\infty$. What do you get?
+\item Now apply the Lemma from the homework. What do you get?
+\end{enumerate}
+
+\begin{framed}
+\begin{enumerate}
+\item[\null] We will find a maximum value; finding a minimum value is similar (or follows from this part applied to $-f$).
+\item Let $R = \{ f(x) \ |\  x\in [a,b]\}$. $R$ is nonempty since $f(a)\in R$, and it is bounded above by the Boundedness Theorem. Thus $R$ has a supremum, which we will call $\ell$.
+\item For any $n$, $\ell-\frac{1}{n} < \sup(R)$, so it is not an upper bound for $R$. This means that there is some $y_n\in R$ with $\ell-\frac{1}{n} < y_n$; since $\ell$ is an upper bound for $R$ we also have $\ell-\frac{1}{n} < y_n\leq \ell$. By definition of $R$, there is some $x_n\in [a,b]$ with $f(x_n) = y_n$. Thus, we have a sequence $\{x_n\}_{n=1}^\infty$ with $x_n\in[a,b]$ and $\ell- \frac{1}{n} <f(x_n)\leq \ell$ for all $n\in \N$.
+\item The sequence $\{x_n\}_{n=1}^\infty$ has a convergent subsequence $\{x_{n_k}\}_{k=1}^\infty$.
+\item Since $x_{n_k}\in[a,b]$ for all $k$, by the lemma we have first that $\{x_{n_k}\}_{k=1}^\infty$ converges to $r\in [a,b]$, and second, that $\{f(x_{n_k})\}_{k=1}^\infty$ converges to $f(r)$. Since $ \ell - \frac{1}{n_k} < f(x_{n_k})\leq \ell $, the sequence $\{f(x_{n_k})\}_{k=1}^\infty$ converges to $\ell$ by the Squeeze Theorem. Thus, $f(r) = \ell$. Then, by definition of supremum, we have that $f(x)\leq f(r)$ for all $x\in[a,b]$.
+\end{enumerate}
+\end{framed}
+
+
+
+
+\item Prove Lemma 33.1.
+
+\begin{framed}
+For part (1), to show that $r\leq b$, by way of contradiction suppose that $r>b$. Taking $\e=r-b$ in the definition of ``converges to $r$'' we see that there is some $N\in \R$ such that if $n>N$ and $n\in \N$ then $a_n> r-\e =b$, which contradicts that $a_n\leq b$ for all $n$. The inequality $r\geq a$ is similar.
+
+To prove (2) we proceed in cases:
+
+{\bf Case $1$:} $a < r <  b$.  Let $\e >0$. Since $f$ is continuous at $r$, there is some $\d>0$ such that if $|x-r|<\d$, then $|f(x)-f(r)|<\e$. Using this positive number $\d$ in the definition of the sequence $\{x_n\}$ to converge to $r$, there is some $N\in \R$ such that if $n>N$, then $|x_n-r|<\d$. Consequently, for this $N$, if $n>N$, then $|f(x_n)-f(r)|<\e$. This means that $\{f(x_n)\}$ converges to $f(r)$.
+
+{\bf Case $2$:} $r = a$. Similarly to above, let $\e>0$. By definition, there is some $\d>0$ such that if $a\leq x < a+\delta$ then $|f(x)-f(a)|<\e$. Again using $\d$ in the definition of the sequence $\{x_n\}$ to converge to $r$, there is some $N\in \R$ such that if $n>N$, then $|x_n-a|<\d$. By our hypotheses on $\{x_n\}$ we must have $a\leq x_n < a+\d$ for $n>N$. Consequently, for this $N$, if $n>N$, then $|f(x_n)-f(r)|<\e$. Again, this means that $\{f(x_n)\}$ converges to $f(r)$.
+
+{\bf Case $3$:} $r = b$. Similar to Case 2.
+\end{framed}
+
+
+
+
+
+\item \textsc{Proof of the Intermediate Value Theorem:}
+\begin{enumerate}
+\item Let's assume that $f(a) \leq f(b)$ to get started. Explain why the cases $y=f(a)$ and $y=f(b)$ are easy. Hence, we assume that $f(a)< y < f(b)$.
+\item Let $S=\{ x\in [a,b] \ | \ f(r) < y \ \text{for all} \ a\leq r \leq x \}$. In short, $S$ is the set of $x$-values in the interval where the graph of $f$ hasn't crossed $y$ yet. Explain why $S$ has a supremum, and let $c= \sup(S)$.
+\item Show that $c >a$. [ Hint: Apply part (2) of definition of continuous on $[a,b]$ with $\e = y-f(a)$, and show that $a$ is not an upper bound for $S$.]
+\item The argument that $c<b$ is similar (so come back to it later if you want). Thus, $c\in (a,b)$, so we know that $f$ is continuous at $c$.
+\item Suppose that $f(c)<y$, and obtain a contradiction. [ Hint: Apply continuous at $c$ with $\e= y-f(c)$, and show that $c$ is not an upper bound for $S$.]
+\item Suppose that $f(c)>y$, and obtain a contradiction. [ Hint: Apply continuous at $c$ with $\e= f(c)-y$, and find a smaller upper bound for $S$.]
+\item This concludes the case when $f(a) \leq f(b)$. If $f(a) \geq f(b)$, what can you say about $g(x) = -f(x)$? Can we apply the case we just did?
+\end{enumerate}
+
+\begin{framed}
+\begin{proof}[Proof of Intermediate Value Theorem] Assume $f$ is continuous on $[a,b]$ and $y$ is a real
+  number such that  $f(a) \leq y \leq f(b)$ or $f(b) \leq y \leq f(a)$. We need to prove there is a $c \in [a,b]$ such that $f(c) = y$.
+
+  Let us assume $f(a) \leq y \leq f(b)$ --- the other case may be proved in a very similar manner, or by appealing to this case using the function $-f(x)$ instead.
+  
+ If $f(a) = y$ then we may take $c = a$ and if $f(b) = y$ then we may take $c = b$. So, we may assume $f(a) < y < f(b)$.
+
+Consider the set 
+$$
+S = \{z \in \R \mid a \leq z \leq b \text{ and $f(x) < y$ for all $x \in [a, z]$}\}
+$$
+This set is nonempty, since $a \in S$, and it is bounded above, by $b$. It therefore has a supremum,
+which we will call $c$. I claim $f(c) = y$.
+
+
+
+
+
+Let us first show that $c > a$. By way of contradiction, suppose $c \leq a$. Since $c \geq a$, we must have $c = a$. 
+Since $f$ is continuous on $[a,b]$, taking $\e = y
+- f(a) > 0$ in the definition, we get that there is a $\d>0$ such that if $a \leq x < a +
+\d$, then $f(a) - \e < f(x) < f(a) + \e$. In particular, if $a \leq x \leq a + \d/2$, then $f(x) < f(a) + \e = y$.
+This proves that $a+ \d/2 \in S$. But $a + \d/2 > a = c$, contrary to the fact that $c$ is the supremum of $S$. We conclude that $c > a$. 
+
+
+Similarly, one may show that $c < b$ --- I leave this to you as an exercise.
+
+We now know that $a < c < b$, and 
+we next prove that $f(c) = y$ by showing that $f(c) > y$ and $f(c) < y$ are each impossible.
+
+Suppose $f(c) > y$. 
+Setting $\e = f(c) - y$ and applying the definition of continuous at $c$, there is a $\d >0$ such that if $x$ is any number such that $c
+- \d < x < c + \d$ then $f(c) - \e < f(x) < f(c) + \e$. In particular, for any $z$ such that $c - \d < z \leq c$, 
+we have
+$$
+f(z) > f(c) - \e = y.
+$$
+In particular, $z$ is not in the set $S$. It follows that $c - \d$ is an upper bound of $S$, contrary to the fact that $c$ is the least upper bound of $S$. 
+
+
+
+Suppose $f(c) < y$. 
+Setting $\e = y - f(c)$ and applying the definition of continuous at $c$, there is a $\d >0$ such that if $c - \d < x < c + \d$, 
+then $f(c) - \e < f(x) < f(c) + \e$. In particular, 
+if $x$ is any real number such that $c \leq x \leq c + \d/2$, then $f(x) < f(c) + \e = y$. Moreover, if $x < c$, then $x$ is not an upper bound of $S$, and hence there is a $z \in
+S$ such that $x < z$. If follows that $f(x) \leq y$.
+So, we have shown that if $x \leq c + \d/2$, then $f(x) < y$. This shows that
+ $c + \d/2 \in S$, contrary to $c$ being an upper bound of $S$. 
+ \end{proof}
+\end{framed}
+
+
+\end{enumerate}
+
+   
+
+
+
+
+
+
+
+
+
+
+\begin{comment}	
+
+
 
 \begin{ex} 
  The function $\sqrt{x^2 + 5}$ is continuous at every real number: let $g(x) = x^2 + 5$ and $f(x) = \sqrt{x}$. Then $g$ is continuous at $a$ for every $a\in \R$

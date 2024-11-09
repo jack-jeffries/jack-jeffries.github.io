@@ -1,0 +1,140 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=.75in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed}
+\usepackage[all]{xy}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\e}{\varepsilon}
+\newcommand{\de}{\delta}
+\newcommand{\ds}{\displaystyle}
+
+\DeclareMathOperator{\res}{res}
+
+\pagestyle{empty}
+
+
+
+
+\begin{document}
+	
+	
+	\thispagestyle{empty}
+	
+	
+	\section*{Proving the Value Theorems \S3.4}
+	
+\begin{framed} 
+
+
+ \noindent \textsc{Intermediate Value Theorem:} Suppose $f$ is a function, that $a < b$ are real numbers, and that $f$ is continuous on the closed interval
+  $[a,b]$. If $y$ is any number between $f(a)$ and $f(b)$ (i.e., $f(a) \leq y \leq f(b)$ or
+$f(a) \geq y \geq f(b)$), then there is a $c \in [a,b]$ such that $f(c) = y$
+
+
+\
+
+ \noindent \textsc{Boundedness Theorem:} Suppose $f$ is continuous on the closed interval $[a,b]$ for some real numbers $a,b$ with $a < b$. Then $f$ is bounded on $[a,b]$ --- that is,
+  there are real numbers $m$ and $M$ so that $m \leq f(x) \leq M$ for all $x \in [a,b]$.
+  
+  \
+  
+  \noindent  \textsc{Extreme Value Theorem:} Assume $f$ is continuous on the closed interval $[a,b]$ for some real numbers $a$ and $b$ with $a < b$.
+  Then $f$ attains a {minimum value} and a {maximum value} on $[a,b]$ ---
+that is, there exists a number $r \in [a,b]$ such that $f(x) \leq f(r)$ for all $x \in [a,b]$ and
+there exists a number $s \in [a,b]$ such that $f(x) \geq f(s)$ for all $x \in [a,b]$.
+
+\
+
+\noindent \textsc{Lemma 33.1:} Assume $f$ is continuous on $[a,b]$ and that $\{x_n\}_{n=1}^\infty$ is any sequence such that ${a \leq x_n  \leq b}$ for
+  all $n$. If $\{x_n\}_{n=1}^\infty$ converges to some number $r$, then
+\begin{enumerate}
+\item $r \in [a,b]$ and
+\item The sequence $\{f(x_n)\}_{n=1}^\infty$ converges to $f(r)$.
+\end{enumerate}
+\end{framed}
+
+
+\
+
+\begin{enumerate}
+\item \textsc{Proof of Boundedness Theorem:}
+\begin{enumerate}
+\item[\null] We will argue that $f$ is bounded above on $[a,b]$: i.e., there exists an $M$ such that $f(x)\leq M$ for all $x\in[a,b]$; showing that $f$ is bounded below is similar (or follows from this part applied to $-f$).
+\item We argue by contradiction. What does it mean to suppose that the theorem is false? Assume~it.
+\item Explain why there must be a sequence $\{x_n\}_{n=1}^\infty$ with $x_n\in[a,b]$ and $f(x_n)>n$ for all $n\in \N$.
+\item Apply Bolzano-Weierstrass to the sequence $\{x_n\}_{n=1}^\infty$. What do you get?
+\item Now apply the Lemma. What do you get?
+\end{enumerate}
+
+\
+
+\item \textsc{Proof of Extreme Value Theorem:}
+\begin{enumerate}
+\item[\null] We will find a maximum value; finding a minimum value is similar (or follows from this part applied to $-f$).
+\item Let $R = \{ f(x) \ |\  x\in [a,b]\}$. Explain why $R$ has a supremum; call it $\ell$.
+\item Explain why there must be a sequence $\{x_n\}_{n=1}^\infty$ with $x_n\in[a,b]$ and $\ell- \frac{1}{n} <f(x_n)\leq \ell$ for all $n\in \N$.
+\item Apply Bolzano-Weierstrass to the sequence $\{x_n\}_{n=1}^\infty$. What do you get?
+\item Now apply the Lemma from the homework. What do you get?
+\end{enumerate}
+
+\
+
+\item Prove Lemma 33.1.
+
+\newpage
+
+\item \textsc{Proof of the Intermediate Value Theorem:}
+\begin{enumerate}
+\item Let's assume that $f(a) \leq f(b)$ to get started. Explain why the cases $y=f(a)$ and $y=f(b)$ are easy. Hence, we assume that $f(a)< y < f(b)$.
+\item Let $S=\{ x\in [a,b] \ | \ f(r) < y \ \text{for all} \ a\leq r \leq x \}$. In short, $S$ is the set of $x$-values in the interval where the graph of $f$ hasn't crossed $y$ yet. Explain why $S$ has a supremum, and let $c= \sup(S)$.
+\item Show that $c >a$. [ Hint: Apply part (2) of definition of continuous on $[a,b]$ with $\e = y-f(a)$, and show that $a$ is not an upper bound for $S$.]
+\item The argument that $c<b$ is similar (so come back to it later if you want). Thus, $c\in (a,b)$, so we know that $f$ is continuous at $c$.
+\item Suppose that $f(c)<y$, and obtain a contradiction. [ Hint: Apply continuous at $c$ with $\e= y-f(c)$, and show that $c$ is not an upper bound for $S$.]
+\item Suppose that $f(c)>y$, and obtain a contradiction. [ Hint: Apply continuous at $c$ with $\e= f(c)-y$, and find a smaller upper bound for $S$.]
+\item This concludes the case when $f(a) \leq f(b)$. If $f(a) \geq f(b)$, what can you say about $g(x) = -f(x)$? Can we apply the case we just did?
+\end{enumerate}
+
+
+
+
+\end{enumerate}
+
+
+
+
+ 
+   
+\end{document}
+
+
+
+
+
+\item Proof of Boundedness Theorem:
+\begin{enumerate}
+\item[\null] We will argue that $f$ is bounded above on $[a,b]$: i.e., there exists an $M$ such that $f(x)\leq M$ for all $x\in[a,b]$; showing that $f$ is bounded below is similar (or follows from this part applied to $-f$).
+\item We argue by contradiction. What does it mean to suppose that the theorem is false? Assume it.
+\item Explain why there must be a sequence $\{x_n\}_{n=1}^\infty$ with $x_n\in[a,b]$ and $f(x_n)>n$ for all $n\in \N$.
+\item Apply Bolzano-Weierstrass to the sequence $\{x_n\}_{n=1}^\infty$. What do you get?
+\item N
+\end{enumerate}
+
+\
+
+\item Proof of Extreme Value Theorem:
+\begin{enumerate}
+\item[\null] We will find a maximum value; finding a minimum value is similar (or follows from this part applied to $-f$).
+\item Let $R = \{ f(x) \ |\  x\in [a,b]\}$. Explain why $R$ has a supremum; call it $\ell$.
+\item Explain why there must be a sequence $\{x_n\}_{n=1}^\infty$ with $x_n\in[a,b]$ and $\ell- \frac{1}{n} <f(x_n)\leq \ell$ for all $n\in \N$.
+\item Apply Bolzano-Weierstrass to the sequence $\{x_n\}_{n=1}^\infty$. What do you get?
+\item Now apply the Lemma from the homework. What do you get?
+\end{enumerate}
+
+
