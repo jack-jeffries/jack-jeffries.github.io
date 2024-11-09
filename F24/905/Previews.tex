@@ -18,6 +18,8 @@
 \newcommand{\e}{\varepsilon}
 \newcommand{\m}{\mathfrak{m}}
 \newcommand{\p}{\mathfrak{p}}
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\hgt}{\mathrm{height}}
 \newcommand{\tr}{\mathrm{tr}}
 \newcommand{\im}{\mathrm{im}}
 \newcommand{\cZ}{\mathcal{Z}}
@@ -1629,6 +1631,119 @@ In particular, the primary components corresponding to the minimal primes are un
 \end{enumerate}
 
 
+
+\newpage
+
+\section{Dimension and affine algebras}
+
+\setcounter{subsection}{28}
+\subsection{Dimension: Lecture Notes \S7.1} \0
+
+\begin{framed}
+\begin{itemize}
+\item Definitions of dimension and height
+\end{itemize}
+
+\end{framed}
+
+	\
+
+\noindent \textsc{Definition:} Let $R$ be a ring. 
+\begin{itemize}
+\item A \textbf{chain of primes of length $n$} is
+\[ \p_0 \subsetneqq \p_1 \subsetneqq \cdots \subsetneqq \p_n \qquad \text{with} \ \p_i\in \Spec(R).\]
+We may say this chain is \textbf{from $\p_0$} and/or \textbf{to $\p_n$} to indicate the minimal and/or maximal elements.
+\item A chain of primes as above is \textbf{saturated} if for each $i$, there is no prime $\q$ such that ${\p_i \subsetneqq \q \subsetneqq \p_{i+1}}$.
+\item The \textbf{dimension} of $R$ is 
+\[ \dim(R) \ceq \sup\{ n\geq 0 \ | \ \text{there is a chain of primes of length $n$ in $\Spec(R)$}\}.\]
+\item The \textbf{height} of a prime ideal $\p\in \Spec(R)$ is
+\[ \hgt(\p)\ceq  \sup\{ n\geq 0 \ | \ \text{there is a chain of primes to $\p$ of length $n$ in $\Spec(R)$}\}.\]
+\item The \textbf{height} of an arbitrary proper ideal $I\subseteq R$ is
+\[ \hgt(I)\ceq  \inf\{ \hgt(\p) \ | \ \p\in \Min(I) \}.\]
+\end{itemize}
+
+
+
+\newpage
+
+
+
+\subsection{Cohen-Seidenberg Theorems---Applications to dimension: Lecture Notes \S7.2} \0
+
+\begin{framed}
+\begin{itemize}
+\item Understanding the Cohen-Seidenberg Theorems
+\item Applying the Cohen-Seidenberg Theorems to behavior of dimension and height for integral extnesions
+\end{itemize}
+\end{framed}
+
+\noindent Our main goal today is to understand the theorems below, and to apply them to the corollary.
+
+\
+
+\noindent \textsc{Lying Over:} Let $R\subseteq S$ be an integral inclusion. Then the induced map ${\Spec(S)\to \Spec(R)}$ is surjective. That is, for any prime $\p\in \Spec(R)$, there is a prime $\q\in \Spec(S)$ such that $\q \cap R =\p$; i.e., a prime \emph{lying over} $\p$.
+
+\
+
+\noindent \textsc{Incomparability:} Let $R\to S$ be integral (but not necessarily injective). Then for any ${\q_1,\q_2\in \Spec(S)}$ such\footnote{Reminder: by abuse of notation, even when $\phi:R\to S$ is not injective, we write $\q \cap R$ for $\phi^{-1}(\q) \subseteq R$.} that $\q_1 \cap R = \q_2 \cap R$, we have $\q_1 \not\nsubseteq \q_2$. That is, any two primes lying over the same prime are \emph{incomparable}.
+
+
+\
+
+\noindent \textsc{Going Up:} Let $R\to S$ be integral (but not necessarily injective). Then for any $\p \subsetneqq \mathfrak{P}$ in $\Spec(R)$ and $\q\in \Spec(S)$ such that $\q \cap R = \p$, there is some $\mathfrak{Q}\in \Spec(S)$ such that $\q \subseteq \mathfrak{Q}$ and $\mathfrak{Q} \cap R = \mathfrak{P}$. 
+
+\
+
+\noindent \textsc{Going Down:} Let $R\subseteq S$ be an integral inclusion of domains, and assume that $R$ is normal. Then for any $\p \subsetneqq \mathfrak{P}$  in $\Spec(R)$ and $\mathfrak{Q}\in \Spec(S)$ such that $\mathfrak{Q} \cap R = \mathfrak{P}$, there is some $\q\in \Spec(S)$ such that $\q \subseteq \mathfrak{Q}$ and $\q \cap R = \p$. 
+
+\
+
+\noindent \textsc{Corollary:} Let $R\to S$ be integral.
+\begin{enumerate}
+\item If $S$ is Noetherian, then for any $\p\in \Spec(R)$, the set of primes in $S$ that contract to $\p$ is finite.
+\item If $R\subseteq S$ is an inclusion, and $S$ is Noetherian, then for any $\p\in \Spec(R)$, the set of primes in~$S$ that contract to $\p$ is nonempty and finite.
+\item For any $\q\in \Spec(S)$, we have $\mathrm{height}(\q) \leq \mathrm{height}(\q \cap R)$.
+\item $\dim(S) \leq \dim(R)$.
+\item If $R\subseteq S$ is an inclusion, then $\dim(R)=\dim(S)$.
+\item If $R\subseteq S$ is an inclusion, $R$ is a normal domain, and $S$ is a domain, then for any ${\q\in \Spec(S)}$, we have ${\mathrm{height}(\q) = \mathrm{height}(\q \cap R)}$.
+\end{enumerate}
+
+
+
+
+
+\newpage
+
+\subsection{Cohen-Seidenberg Theorems---Proofs: Lecture Notes \S7.2} \0
+
+\begin{framed}
+\begin{itemize}
+\item Proving the Cohen-Seidenberg Theorems
+\end{itemize}
+\end{framed}
+
+\
+
+
+\noindent \textsc{Lying Over:} Let $R\subseteq S$ be an integral inclusion. Then the induced map ${\Spec(S)\to \Spec(R)}$ is surjective. That is, for any prime $\p\in \Spec(R)$, there is a prime $\q\in \Spec(S)$ such that $\q \cap R =\p$; i.e., a prime \emph{lying over} $\p$.
+
+\
+
+\noindent \textsc{Incomparability:} Let $R\to S$ be integral (but not necessarily injective). Then for any ${\q_1,\q_2\in \Spec(S)}$ such that $\q_1 \cap R = \q_2 \cap R$, we have $\q_1 \not\nsubseteq \q_2$. That is, any two primes lying over the same prime are \emph{incomparable}.
+
+
+\
+
+\noindent \textsc{Going Up:} Let $R\to S$ be integral (but not necessarily injective). Then for any $\p \subsetneqq \mathfrak{P}$ in $\Spec(R)$ and $\q\in \Spec(S)$ such that $\q \cap R = \p$, there is some $\mathfrak{Q}\in \Spec(S)$ such that $\q \subseteq \mathfrak{Q}$ and $\mathfrak{Q} \cap R = \mathfrak{P}$. 
+
+\
+
+\noindent \textsc{Going Down:} Let $R\subseteq S$ be an integral inclusion of domains, and assume that $R$ is normal. Then for any $\p \subsetneqq \mathfrak{P}$  in $\Spec(R)$ and $\mathfrak{Q}\in \Spec(S)$ such that $\mathfrak{Q} \cap R = \mathfrak{P}$, there is some $\q\in \Spec(S)$ such that $\q \subseteq \mathfrak{Q}$ and $\q \cap R = \p$. 
+
+\
+
+\noindent \textsc{Lemma:} Let $R\subseteq S$ be an integral inclusion and $I$ an ideal of $R$. Then any element of $s\in IS$ satisfies a monic equation over $R$ of the form\footnotemark
+\[ s^n + a_1 s^{n-1} + \cdots + a_n = 0 \qquad \text{with} \ a_i\in I \ \text{for all} \ i.\]
 
 
 \begin{comment}
