@@ -1,0 +1,186 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals,bbm}
+\usepackage[all]{xy}
+
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\ord}{\mathrm{ord}}
+\newcommand{\ann}{\mathrm{ann}}
+\newcommand{\Min}{\mathrm{Min}}
+\newcommand{\Max}{\mathrm{Max}}
+\newcommand{\Spec}{\mathrm{Spec}}
+\newcommand{\Ass}{\mathrm{Ass}}
+\renewcommand{\1}{\mathbbm{1}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+\usepackage[hang,flushmargin]{footmisc}
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{\S6.28: Uniqueness of primary decompositions}
+	
+	\begin{framed}
+
+\noindent \textsc{Definition:} A \textbf{minimal primary decomposition} of an ideal $I$ is a primary decomposition
+\[ I = Q_1 \cap \cdots \cap Q_n\]
+such that $Q_i \not\supseteq \bigcap_{j\neq i} Q_j$, and $\sqrt{Q_i} \neq \sqrt{Q_j}$ for $i\neq j$.
+
+\
+
+\noindent \textsc{Theorem (First uniqueness theorem for primary decomposition):} Let $R$ be a Noetherian ring and $I$ an ideal. Let \[I = Q_1 \cap \cdots \cap Q_n\] be a minimal primary decomposition of $I$. Then \[\{ \sqrt{Q_1},\dots,\sqrt{Q_n} \} = \Ass_R(R/I).\]
+In particular, the set of primes occurring as the radicals of the primary components are uniquely determined.
+
+
+\
+
+\noindent \textsc{Theorem (Second uniqueness theorem for primary decomposition):} Let $R$ be a Noetherian ring and $I$ an ideal. Let \[I = Q_1 \cap \cdots \cap Q_n\] be a minimal primary decomposition of $I$. Suppose that $\p =\sqrt{Q_i}$ is a \emph{minimal} prime of $I$. Then $Q_i = I R_{\p} \cap R$.
+In particular, the primary components corresponding to the minimal primes are uniquely determined.
+
+
+\
+
+\noindent \textsc{Lemma:} Let $I_1,\dots,I_t$ be ideals. Then
+\begin{enumerate}
+\item for any multiplicatively closed set $W$, $W^{-1}(I_1 \cap \cdots \cap I_t) = W^{-1} I_1 \cap \cdots \cap W^{-1}I_t$.
+\item $\Ass_R\left(R/\bigcap_{i=1}^t I_i\right) \subseteq \bigcup_{i=1}^t \Ass_R(R/I_i)$.
+\end{enumerate}
+\end{framed}
+
+
+\begin{enumerate}
+
+\itemA Uniqueness theorems:  
+\begin{enumerate}
+\itema Let $K$ be a field, $R=K[X,Y]$ a polynomial ring, and $I=(X^2,XY)$. Verify\footnote{You can take for granted that in each case the intersection is $I$, but explain why the ideals are primary and the minimality hypotheses hold.} that $I = (X) \cap (X^2,Y) = (X) \cap (X^2,XY,Y^2)$ gives two different minimal primary decompositions of $I$.
+\itema In the previous part, which aspects of the decomposition are the same, and which are different. Compare with the uniqueness theorems.
+\itema Use the uniqueness theorems to explain why, for $n\in \Z$ with prime factorization $n=\pm p_1^{e_1} \cdots p_m^{e_m}$, the \emph{only}\footnote{We don't care about the order.} minimal primary decomposition of $(n)$ is
+\[ (n) = (p_1^{e_1}) \cap \cdots \cap (p_m^{e_m}).\]
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itema $(X)$ is prime, hence primary. $(X^2,Y)$ and $ (X^2,XY,Y^2)$ both have radical $(X,Y)$, which is maximal, so they are primary. In each case we have different radicals and neither component contained in the other.
+\itema In both cases the radicals of the primes are the same, and the $(X)$-component are the same.
+\itema For any such decomposition, the prime ideals occurring are the same, since each prime is minimal, the the components are the same.
+\end{enumerate}
+}
+
+\itemA Minimal primary decompositions: Let $R$ be a Noetherian ring.
+\begin{enumerate}
+\itema Use the Lemma to explain why a finite intersection of $\p$-primary ideals is $\p$-primary.
+\itema Explain how to turn a general $I = Q_1 \cap \cdots \cap Q_m$  primary decomposition into a minimal primary decomposition.
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itema Because $\p$-primary is equivalent to $\Ass_R(R/I)=\{\p\}$.
+\itema Intersect all of the $Q_i$'s with the same radical to get a decomposition satisfying the second condition. Then remove any component that is contained in the intersection of the others to satisfy the first condition.
+\end{enumerate}
+
+}
+
+
+\itemA Proof of Second Uniqueness Theorem: 
+\begin{enumerate}
+\itema Use the definition of primary to show that if $Q$ is $\p$-primary, then $Q R_\p \cap R = Q$.
+\itema Show\footnote{One possibility is to consider the support of $R/Q$.} that if $Q$ is $\q$-primary and $\q \not\subseteq \p$, then $Q R_\p = R_\p$.
+\itema Let $R$ be Noetherian and $I=Q_1 \cap \cdots \cap Q_n$ be a minimal primary decomposition, and $\p = \sqrt{Q_i}$ a minimal prime of $I$. Use the Lemma to show that $I R_{\p} = Q_i R_\p$.
+\itema Complete the proof.
+\end{enumerate}
+\solution{
+\begin{enumerate}
+\itema Clearly $Q\subseteq Q R_\p \cap R$. Let $r\in Q R_\p \cap R$, so there is some $q\in Q$ and $w \notin \p$ such that $\frac{q}{w}=\frac{r}{1}\in R_\p$. This means there is some $v\notin \p$ such that $v(q-rw)=0$ in $R$; i.e., $vwr=qv$, so in particular there is some $u\notin \p$ such that $ur\in Q$. By definition of primary, $r\in Q$.
+\itema We have $\Supp(R/Q)=V(Q) = V(\q)$. If $\p \not\subseteq \q$, then $\p\noint V(\q)$, so $(R/Q)_\p=0$ and $R_\p = QR_\p$.
+\itema We have $IR_\p = Q_1 R_\p \cap \cdots \cap Q_n R_\p$. By the previous part, each term on the right is all of $R_\q$ except $Q_i R_\p$.
+\itema Follows from part (1).
+\end{enumerate}
+}
+
+\itemB Proof of First Uniqueness Theorem: Let $R$ be Noetherian and $I=Q_1 \cap \cdots \cap Q_n$ be a minimal primary decomposition.
+\begin{enumerate}
+\itemb Use the Lemma to prove that $\Ass_R(R/I) \subseteq \{\sqrt{Q_1},\dots,\sqrt{Q_n}\}$.
+\itemb Set $J_i = \bigcap_{j\neq i} Q_j$. Explain why it suffices to show that $\Ass_R(J_i/I) =\{ \sqrt{Q_i}\}$ to establish the other containment.
+\itemb Let $\q$ be an associated prime of $J_i/I$ and $r\in R$ such that $\overline{r}\in J_i/I$ is a witness (and in particular, nonzero). Show that $Q_i \subseteq \q$ and deduce that $\sqrt{Q_i} \subseteq \q$.
+\itemb Use the definition of primary to show that $\q \subseteq \sqrt{Q_i}$, and conclude the proof.
+\end{enumerate}
+\solution{
+\begin{enumerate}
+\itemb Yes, it is immediate from the lemma.
+\itemb Because $J_i/I \subseteq R/I$ so $\Ass_R(J_i/I) \subseteq \Ass_R(R/I)$.
+\itemb We have $Q_i r \subseteq Q_i \cap J_i \subseteq I$, so $Q_i \subseteq \ann_R(\overline{r}) = \q$. Since $\sqrt{Q_i}$ is the unique minimal prime of $Q_i$ and $\q$ is a prime containing $Q_i$, we have $\q \supseteq \sqrt{Q_i}$.
+\itemb Let $q\in \q$, so $q r \in I \subseteq Q_i$. Since $\overline{r}\neq 0$, we have $r\notin Q_i$, so by definition of primary, $q\in \sqrt{Q_i}$. Thus $\q\subseteq \sqrt{Q_i}$. This shows that $\sqrt{Q_i}=\q$ is an associated prime of $J_i/I$ and hence of $R/I$.
+\end{enumerate}
+}
+
+\itemB Prove the Lemma.
+
+\
+
+\itemB Let $R$ be a Noetherian ring, and $I$ be an ideal. Consider a collection of minimal primary decompositions of $I$:
+\[ I = \q_{1,\alpha} \cap \cdots \cap \q_{s,\alpha}, \quad \alpha\in \Lambda\]
+where, for each $\alpha$,  $\sqrt{\q_{i,\alpha}} = \p_i$.
+\begin{enumerate}
+	\item Suppose that $\p_j$ is not contained in any other associated prime of $I$, and let ${W=R\smallsetminus \bigcup_{i\neq j} \p_i}$. Find some minimal primary decompositions of $I(W^{-1} R) \cap R$.
+	\item Show (by induction on $s$) that if we take components $\q_{1,\alpha_1} ,\dots, \q_{s,\alpha_s}$ from different primary decompositions of $I$, that we can put them together to get a primary decomposition of $I$; namely $I=\q_{1,\alpha_1} \cap \cdots \cap \q_{s,\alpha_s}$.
+\end{enumerate}
+
+
+
+\end{enumerate}
+
+\end{document}
