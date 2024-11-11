@@ -3842,15 +3842,6 @@ f(g(a))| < \e$. This proves $f \circ g$ is continuous at~$a$.
 
 \Nov{6}{\We}{3.2}
 
-\begin{framed}
-\noindent It is tiresome to say ``continuous at $a$ for every $a\in \R$''. The following definition is then convenient.
-
-\
-
-\noindent \textsc{Definition 29.1:}\index{continuous on open interval}  Let $I$ be an open interval of $\R$ of the form $I=(a,b)$, $I=(a,\infty)$, $I=(-\infty,a)$, or $I=(-\infty,\infty)=\R$. We say $f$ is \textbf{continuous on $I$} if $f$ is continuous at $a$ for all $a\in I$. 
-
-\end{framed}
-
 \begin{enumerate}
 \item Let \[f(x) = \begin{cases} 2x &\text{if} \ x\geq 1 \\ x+1 &\text{if} \ x<1. \end{cases}\]
  Use the $\e-\delta$ definition to show that $f(x)$ is continuous at $1$.
@@ -3919,7 +3910,6 @@ No, if $g(a)=0$, then $f/g(a)$ is not even defined!
    
    \newpage
    
-
    
    \Nov{8}{\Fr}{3.3}
    
@@ -3929,7 +3919,7 @@ No, if $g(a)=0$, then $f/g(a)$ is not even defined!
  \
  
 \noindent\textsc{Definition~30.1:}  Given a function $f(x)$ and real numbers $a < b$,
-we say $f$ is {\textbf continuous on the closed interval $[a,b]$}\index{continuous on closed interval} provided 
+we say $f$ is {\textbf continuous on the closed interval $[a,b]$} provided 
 \begin{enumerate}
 \item for every $r \in (a,b)$, $f$ is  continuous at $r$ in the sense defined already,
 \item for every $\e > 0$ there is a $\de > 0$ such that if $a \leq x < a+\de$, then $f(x)$ is defined and ${|f(x)
@@ -3944,7 +3934,7 @@ we say $f$ is {\textbf continuous on the closed interval $[a,b]$}\index{continuo
 
 \
 
-\noindent\textsc{Theorem~30.3. (Intermediate Value Theorem):}  Let $a<b$ and $f(x)$ be a function that is continuous on the closed interval $[a,b]$. If $y$ is any real number between $f(a)$ and $f(b)$, then there is some $c\in [a,b]$ such that $f(c)=y$. More precisely, if $f(a) \leq y \leq f(b)$ or $f(b) \leq y \leq f(a)$, then there is some $c\in [a,b]$ such that $f(c)=y$.
+\noindent\textsc{Theorem~30.3. (Intermediate Value Theorem):}\index{Intermediate Value Theorem}  Let $a<b$ and $f(x)$ be a function that is continuous on the closed interval $[a,b]$. If $y$ is any real number between $f(a)$ and $f(b)$, then there is some $c\in [a,b]$ such that $f(c)=y$. More precisely, if $f(a) \leq y \leq f(b)$ or $f(b) \leq y \leq f(a)$, then there is some $c\in [a,b]$ such that $f(c)=y$.
 \end{framed}
 
 
@@ -3990,7 +3980,7 @@ Then $f(1) = -2 < -1 < 2 = f(2)$, so there is some $c_2\in [1,2]$ with $f(c_2) =
 \item  Give a counterexample to the statement of the Intermediate Value Theorem without the hypothesis that $f$ is continuous on the closed interval $[a,b]$.
 
 \begin{framed}
-Take \[f(x) = \begin{cases} x \ \text{if} \ x<0 \\ x+2 \ \text{if} \ x\geq 0 \end{cases}.\]
+Take \[f(x) = \begin{cases} x & \text{if} \ x<0 \\ x+2 & \text{if} \ x\geq 0. \end{cases}\]
 Then $f(-1) < 1 < f(1)$, but there is no $x\in [-1,1]$ with $f(x) = 1$.
 \end{framed}
 
