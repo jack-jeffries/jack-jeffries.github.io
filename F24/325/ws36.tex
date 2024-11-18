@@ -1,0 +1,82 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=.75in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed}
+\usepackage[all]{xy}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\e}{\varepsilon}
+\newcommand{\de}{\delta}
+\newcommand{\ds}{\displaystyle}
+
+\DeclareMathOperator{\res}{res}
+
+\pagestyle{empty}
+
+
+
+
+\begin{document}
+	
+	
+	\thispagestyle{empty}
+	
+	
+	\section*{The Chain Rule \S4.1}
+	
+\begin{framed} 
+
+
+ \noindent \textsc{Theorem 36.1 (Chain Rule):}   
+  Suppose $g$ is differentiable at $s$ and $f$ is
+  differentiable  at $g(s)$. Then $f \circ g$ is differentiable at $s$ and
+$$
+(f \circ g)'(s) = f'(g(s)) g'(s).
+$$
+
+
+ \end{framed}
+
+
+\
+
+\begin{enumerate}
+\item Use the chain rule to compute the derivative of $\sqrt{3x^2 + 13}$.
+
+\
+
+\
+
+\item Given that the derivative of $\sin(x)$ at $x=r$ is $\cos(r)$, and reusing any earlier computations, compute the derivative of the function
+\[ j(x) = \begin{cases} x^2 \sin(\frac{1}{x}) & \ \text{if} \ x\neq 0 \\
+0 & \ \text{if} \ x= 0 \end{cases}\]
+at any real number $x=r$.
+
+
+\
+
+\
+
+
+\item Proof of Chain Rule:
+
+\begin{enumerate}
+\item In the setting of the statement, set $r=g(s)$ and define
+\[ d(y) = \begin{cases} \ds \frac{f(y) - f(r)}{y-r} & \text{if} \ y\neq r \\ f'(r) & \text{if} \ y=r.\end{cases}\]
+Show that $d$ is continuous at $y=r$.
+\item Show that if $x\neq s$, then
+\[ \frac{f(g(x)) - f(g(s))}{x-s} = d(g(x)) \cdot \frac{g(x)-g(s)}{x-s}.\]
+Note: You might have to consider separately the cases with $g(x)\neq r$ and $g(x)=r$.
+\item Use the fact that a composition of continuous functions (at the suitable inputs) is continuous to compute $\lim\limits_{x\to s} d(g(x))$.
+\item Compute $\lim\limits_{x\to s}$ on both sides of (b). Use your computation to deduce the Chain Rule.
+\end{enumerate}
+\end{enumerate}
+
+\end{document}
+
