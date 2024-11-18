@@ -1,0 +1,196 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=.8in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals,bbm}
+\usepackage[all]{xy}
+
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\ord}{\mathrm{ord}}
+\newcommand{\ann}{\mathrm{ann}}
+\newcommand{\Min}{\mathrm{Min}}
+\newcommand{\Max}{\mathrm{Max}}
+\newcommand{\Spec}{\mathrm{Spec}}
+\newcommand{\Ass}{\mathrm{Ass}}
+\renewcommand{\1}{\mathbbm{1}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+\usepackage[hang,flushmargin]{footmisc}
+
+
+\begin{document}
+\showsol{1}
+	
+	\thispagestyle{empty}
+	
+	\section*{\S7.31: Cohen-Seidenberg Theorems: Proofs}
+	
+	\begin{framed}
+
+\noindent \textsc{Lying Over:} Let $R\subseteq S$ be an integral inclusion. Then the induced map ${\Spec(S)\to \Spec(R)}$ is surjective. That is, for any prime $\p\in \Spec(R)$, there is a prime $\q\in \Spec(S)$ such that $\q \cap R =\p$; i.e., a prime \emph{lying over} $\p$.
+
+\
+
+\noindent \textsc{Incomparability:} Let $R\to S$ be integral (but not necessarily injective). Then for any ${\q_1,\q_2\in \Spec(S)}$ such that $\q_1 \cap R = \q_2 \cap R$, we have $\q_1 \not\nsubseteq \q_2$. That is, any two primes lying over the same prime are \emph{incomparable}.
+
+
+\
+
+\noindent \textsc{Going Up:} Let $R\to S$ be integral (but not necessarily injective). Then for any $\p \subsetneqq \mathfrak{P}$ in $\Spec(R)$ and $\q\in \Spec(S)$ such that $\q \cap R = \p$, there is some $\mathfrak{Q}\in \Spec(S)$ such that $\q \subseteq \mathfrak{Q}$ and $\mathfrak{Q} \cap R = \mathfrak{P}$. 
+
+\
+
+\noindent \textsc{Going Down:} Let $R\subseteq S$ be an integral inclusion of domains, and assume that $R$ is normal. Then for any $\p \subsetneqq \mathfrak{P}$  in $\Spec(R)$ and $\mathfrak{Q}\in \Spec(S)$ such that $\mathfrak{Q} \cap R = \mathfrak{P}$, there is some $\q\in \Spec(S)$ such that $\q \subseteq \mathfrak{Q}$ and $\q \cap R = \p$. 
+
+\
+
+\noindent \textsc{Lemma:} Let $R\subseteq S$ be an integral inclusion and $I$ an ideal of $R$. Then any element of $s\in IS$ satisfies a monic equation over $R$ of the form\footnotemark
+\[ s^n + a_1 s^{n-1} + \cdots + a_n = 0 \qquad \text{with} \ a_i\in I \ \text{for all} \ i.\]
+\end{framed}
+\footnotetext[1]{In fact, one can take $a_i\in I^i$ for each $i$ by the same proof, which is often useful.}
+
+
+
+\begin{enumerate}
+
+
+
+\itemA Proof of Lying Over from the Lemma: Let $R\subseteq S$ be an integral inclusion.
+\begin{enumerate}
+\itema Use the Lemma to show that if $\p$ is prime, then $\p S \cap R = \p$.
+\itema Show that $(R\smallsetminus \p)^{-1} (S/\p S)$ is not the zero ``ring''.
+\itema Deduce\footnote{The old bijection $\Spec(W^{-1}(T/J)) \longleftrightarrow \{ \q \in \Spec(T) \ | \ \q \cap W = \varnothing \ \text{and} \ J \subseteq \q\}$ may come in handy.} the Theorem.
+\end{enumerate}
+
+
+\solution{
+\begin{enumerate}
+\itema Let $r\in \p S \cap R$. By the Lemma, we have an equation of the form $r^n + a_1 r^{n-1} + \cdots + a_n = 0$ with $a_i\in \p$, so $r^n\in \p$, and hence $r\in \p$.
+\itema Since $\p S \cap R=\p$, we have $\p S \cap (R \smallsetminus \p) = \varnothing$ so this is a legitimate ring.
+\itema We have $\Spec((R\smallsetminus \p)^{-1} (S/\p S)) \leftrightarrow \{ \q \in \Spec(S) \ | \ \q \supseteq \p S \ \text{and} \ \q \cap R \subseteq \p\}$. The condition on the RHS is equivalent to $\q \cap R = \p$. We have that $\Spec((R\smallsetminus \p)^{-1} (S/\p S)) \neq \varnothing$, so some prime contracts to $\p$.
+\end{enumerate}
+}
+
+\itemA Proof of Lemma: Let $R\subseteq S$ be an integral inclusion and $I$ an ideal of $R$.
+\begin{enumerate}
+\itema Show that if $s\in IS$, then there is a module-finite $R$-subalgebra of $S$, say $T$, such that $s\in IT$, so we can assume that $S$ is module-finite.
+\itema Write $S=\sum_i R s_i$ and $v=[s_1,\dots,s_t]$. Show that there is some $t\times t$ matrix $A$ with entries in $I$ such that $rv = vA$.
+\itema Apply a \textsc{Trick} and conclude the proof.
+\end{enumerate}
+\solution{
+\begin{enumerate}
+\itema If $s=\sum a_i b_i$ with $a_i\in I$ and $b_i\in S$, take $T=R[b_1,\dots,b_t]$.
+\itema We can write $r s_i = \sum_j a_{ij} s_j$ with $a_{ij}\in I$. This gives the matrix equation we seek.
+\itema By the eigenvector trick, we have $\det(A - r \1) v=0$. In particular, $\det(A - r \1) S = 0$, so $\det(A - r \1)=0$. Thinking of this as the evaluation of the polynomial expression  $\det(A - X \1)$, this is monic in $X$ and going modulo $I$ this becomes $\pm X^n$, so all the lower terms are in $I$. Thus, it is the polynomial that we seek.
+\end{enumerate}
+}
+
+
+\itemA Proof of Incomparability: Let $R\to S$ be integral.
+\begin{enumerate}
+\itema Explain\footnote{Hint: Recall an old fact about integral extensions of domains\dots} why the Theorem is true when $R$ is a field.
+\itema Let $\p$ in $\Spec(R)$. Use the definition to explain why the map $R/\p \to S/\p S$ is integral, and why the map $(R\smallsetminus \p)^{-1}(R/\p) \to (R\smallsetminus \p)^{-1}(S/\p S)$ is integral.
+\itema Use the previous parts (plus an old bijection) to prove the Theorem.
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itema If $K$ is a field then any prime of $S$ contracts to $0$. But given any prime $\q$ of $S$, $S/\q$ is a domain and $K\subseteq S/\q$ is integral, so $S/\q$ is a field. Thus every prime in $S$ is maximal, and we are done.
+\itema For any element of $S/\p S$, an integral equation over $R$ for a representative is an integral equation over $R/\p$. Given $s/w$, one can take an integral equation for $s$ and divide through by a suitable power of $w$ to get an integral equation.
+\itema The primes that contract to $\p$ are in bijection with primes of $(R\smallsetminus \p)^{-1}(S/\p S)$. But this is integral over the field $(R\smallsetminus \p)^{-1}(R/\p)$, where the primes are incomparable by part (a).
+\end{enumerate}
+}
+
+\itemB Proof of Going Up: Show that $R/\p \to S/\q$ is an integral inclusion, apply Lying Over, and deduce the Theorem.
+
+\solution{This is an inclusion since the kernel of $R\to S/\q$ is $\q \cap R = \p$; it is integral, as an equation for a representative holds for an element of $S/\q$. By Lying over, there is a prime of $S/\q$ that contracts to $\mathfrak{P}/\p$. We can write this prime as $\mathfrak{Q}/\q$ for some $\mathfrak{Q}\supseteq \q$. Then $\mathfrak{Q} \cap R$, which one checks directly is $\mathfrak{P}$.
+}
+
+
+\begin{samepage}
+\itemB Proof of Going Down.
+\begin{enumerate}
+\item Explain why it suffices to show that $(S \smallsetminus \mathfrak{Q})(R\smallsetminus \p) \cap \p S$ is empty.
+\item Let $x$ be an element of the intersection. Show that\footnote{Hint: First show all the coefficients are in $R$. For this, note that every coefficient of the minimal polynomial is a polynomial expression of the roots of $f$ in an algebraic closure of $\mathrm{Frac}(R)$.} the minimal monic polynomial $f(x)$ of $x$ over $\mathrm{Frac}(R)$ has all nonleading coefficients in $\p$.
+\item Write $x=rs$ with $r\in R\smallsetminus \p$ and $s\in S \smallsetminus \mathfrak{Q}$. Show that $g(s)=f(rs)/r^n$ is the minimal polynomial of $s$ over $\mathrm{Frac}(R)$.
+\item Show that $g(s)$ has coefficients in $R$, and obtain a contradiction to the assumption that $x$ was an element of the intersection.
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\item It will follow that there is a prime ideal $\q$ containing $\p S$ that does not intersect $(S \smallsetminus \mathfrak{Q})(R\smallsetminus \p)$; in particular it intersects neither. This means that $\q \cap R \supseteq \p$, and $\q \subseteq \mathfrak{Q}$, and $\q \cap R \subseteq \p$, so $\q \cap R = \p$ and $\q \subseteq \mathfrak{Q}$.
+\item First we check that $f(x)$ has coefficients in $R$. To do this, take an algebraic closure of  $\mathrm{Frac}(R)$ and let $x=x_1,\dots,x_t$ be the distinct roots of $f$. By definition, $f$ divides a monic equation for $x$, so each $x_i$ is integral over $R$. Then $T=R[x_1,\dots,x_t]$ is integral over $R$. The coefficients of $f$ lie in $T\cap \mathrm{Frac}(R)$, but this is $R$, since $R$ is  normal.
+
+Now consider the image of $f(X)\in R[X]$ modulo $\p$. Since $f$ divides an integral equation with coefficients in $\p$, the image of $f$ divides $X^k$ in $R/\p[X]$, so $f$ itself must have all lower coefficients in $\p$.
+\item If not, we would get a lower degree polynomial that $x$ satisfies, contradicting that $f$ is the minimal monic polynomial of $x$.
+\item This follows from the same argument as in part (b). Then each $a_i/r^i$ is an element of $R$. But $r\notin \p$ and $a_i\in \p$ implies that each coefficient of $g$ is in $\p$, so $s\in \sqrt{\p S} \subseteq \mathfrak{Q}$, a contradiction.
+\end{enumerate}
+}
+\end{samepage}
+
+
+
+\itemB 
+\begin{enumerate} 
+\item Show that if $S$ is module-finite over $R$ with $t$ generators, then for every $\p\in \Spec(R)$, at most $t$ distinct primes of $S$ contract to $\p$.
+\item Give an example of an integral inclusion $R\subseteq S$ such that there are primes of $R$ with arbitrarily many primes contracting to it.
+\end{enumerate}
+
+\solution{
+\begin{enumerate} 
+\item As in the proof of Incomparability, this reduces to the case where $R=K$ is a field. We claim that an integral extension of a field $K$ that is a $t$-dimensional vector space has at most $t$ maximal ideals. Let $\m_1,\dots,\m_s$ be the maximal ideals of $S$. Since $\m_i+\m_j=S$ for each $i\neq j$, CRT applies, and $S/(\m_1\cdots \m_s) \cong S/\m_1 \times \cdots \times S/\m_s$. The $K$-vector space dimension of the LHS is at most $t$, whereas the $K$-vectorspace dimension of the RHS is at least $s$, so $s\leq t$, as desired.
+\item One possibility is $R\ceq \C[X_1,X_2^2,X_3^3,X_4^4,\dots] \subseteq S\ceq \C[X_1,X_2,X_3,X_4,\dots]$. This is integrally generated, hence integral. Note that $(X_t^t -1)$ in $R$ is a prime ideal, and for each $j=0\dots,t-1$, the prime $(X_t- e^{2\pi i j /t})$ of $S$ contracts to it.
+\end{enumerate}
+}
+
+\end{enumerate}
+\end{document}

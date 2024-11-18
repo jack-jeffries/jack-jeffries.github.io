@@ -1,0 +1,190 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals,bbm}
+\usepackage[all]{xy}
+
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\ord}{\mathrm{ord}}
+\newcommand{\ann}{\mathrm{ann}}
+\newcommand{\Min}{\mathrm{Min}}
+\newcommand{\Max}{\mathrm{Max}}
+\newcommand{\Spec}{\mathrm{Spec}}
+\newcommand{\Ass}{\mathrm{Ass}}
+\renewcommand{\1}{\mathbbm{1}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+\usepackage[hang,flushmargin]{footmisc}
+
+
+\begin{document}
+\showsol{1}
+	
+	\thispagestyle{empty}
+	
+	\section*{\S7.30: Cohen-Seidenberg Theorems: Applications}
+	
+	\begin{framed}
+
+\noindent \textsc{Lying Over:} Let $R\subseteq S$ be an integral inclusion. Then the induced map ${\Spec(S)\to \Spec(R)}$ is surjective. That is, for any prime $\p\in \Spec(R)$, there is a prime $\q\in \Spec(S)$ such that $\q \cap R =\p$; i.e., a prime \emph{lying over} $\p$.
+
+\
+
+\noindent \textsc{Incomparability:} Let $R\to S$ be integral (but not necessarily injective). Then for any ${\q_1,\q_2\in \Spec(S)}$ such\footnotemark\, that $\q_1 \cap R = \q_2 \cap R$, we have $\q_1 \not\nsubseteq \q_2$. That is, any two primes lying over the same prime are \emph{incomparable}.
+
+
+\
+
+\noindent \textsc{Going Up:} Let $R\to S$ be integral (but not necessarily injective). Then for any $\p \subsetneqq \mathfrak{P}$ in $\Spec(R)$ and $\q\in \Spec(S)$ such that $\q \cap R = \p$, there is some $\mathfrak{Q}\in \Spec(S)$ such that $\q \subseteq \mathfrak{Q}$ and $\mathfrak{Q} \cap R = \mathfrak{P}$. 
+
+\
+
+\noindent \textsc{Going Down:} Let $R\subseteq S$ be an integral inclusion of domains, and assume that $R$ is normal. Then for any $\p \subsetneqq \mathfrak{P}$  in $\Spec(R)$ and $\mathfrak{Q}\in \Spec(S)$ such that $\mathfrak{Q} \cap R = \mathfrak{P}$, there is some $\q\in \Spec(S)$ such that $\q \subseteq \mathfrak{Q}$ and $\q \cap R = \p$. 
+
+\
+
+\hrulefill
+
+\
+
+\textsc{Corollary:} Let $R\to S$ be integral.
+\begin{enumerate}
+\item If $S$ is Noetherian, then for any $\p\in \Spec(R)$, the set of primes in $S$ that contract to $\p$ is finite.
+\item If $R\subseteq S$ is an inclusion, and $S$ is Noetherian, then for any $\p\in \Spec(R)$, the set of primes in~$S$ that contract to $\p$ is nonempty and finite.
+\item For any $\q\in \Spec(S)$, we have $\mathrm{height}(\q) \leq \mathrm{height}(\q \cap R)$.
+\item $\dim(S) \leq \dim(R)$.
+\item If $R\subseteq S$ is an inclusion, then $\dim(R)=\dim(S)$.
+\item If $R\subseteq S$ is an inclusion, $R$ is a normal domain, and $S$ is a domain, then for any ${\q\in \Spec(S)}$, we have ${\mathrm{height}(\q) = \mathrm{height}(\q \cap R)}$.
+\end{enumerate}
+
+
+
+\end{framed}
+\footnotetext[1]{Reminder: by abuse of notation, even when $\phi:R\to S$ is not injective, we write $\q \cap R$ for $\phi^{-1}(\q) \subseteq R$.}
+
+
+\begin{enumerate}
+
+\itemA Hypotheses of Lying Over and Incomparability:
+\begin{enumerate}
+\itema Consider the inclusion map $\Z\subseteq \Q$. Show that the conclusion of Lying Over fails. Which hypotheses are true?
+\itema Consider the quotient map $\C[X]\to \C[X]/(X) \cong \C$. Show that the conclusion of Lying Over fails. Which hypotheses are true?
+\itema Consider the inclusion map $\C \subseteq \C[X]$. Show that the conclusion of Incomparability fails. Which hypotheses are true?
+\itema Consider the inclusion map $R\ceq \C[X^2] \subseteq S\ceq \C[X]$. Describe all of the primes~$\q_i$ that contract to $\p\ceq (X^2-1)R$. Verify the conclusions on Incomparability and Lying Over for $\p$ and the $\q_i$.
+\end{enumerate}
+
+
+
+\solution{
+\begin{enumerate}
+\itema The prime $2\Z$ is not the contraction of any prime; the only prime in the image is $0\Z$. This is an inclusion but not integral.
+\itema The  prime $(0)$ is not in the image, because the contraction of every ideal contains $(X)$. This is integral, but not an inclusion.
+\itema Both $(0)$ and $(X)$ in $\C[X]$ contract to $(0)$ in $\C$, but $(0)\subsetneqq (X)$.
+\itema A prime that contracts to $(X^2-1)$ must contain $X^2-1$, and hence must contain $X-1$ or $X+1$. We find that $\q_1 = (X-1)$ and $\q_2=(X+1)$ both contract to $(X^2-1)$ in $R$. In particular, something contracts to $\p$, so Lying Over holds, and the two primes that do are incomparable, so Incomparability holds.
+\end{enumerate}
+}
+
+
+\itemA Proof of Corollary using the theorems: Let $R\to S$ be integral.
+\begin{enumerate}
+\begin{samepage}
+\itema Use one of the Theorems above to show that for any chain of primes
+\[ \q_0 \subsetneqq \q_1 \subsetneqq \cdots \subsetneqq \q_n = \q \qquad \text{in $\Spec(S)$}\]
+the containments
+\[ (\q_0 \cap R) \subseteq (\q_1 \cap R) \subseteq \cdots \subseteq (\q_n \cap R) = (\q\cap R) \quad \text{in $\Spec(R)$}\]
+are proper. Explain why this implies Part (3).
+\end{samepage}
+\itema Deduce part (4) from part (3).
+\begin{samepage}
+\itema Let $R\subseteq S$ be an inclusion, and take a chain of primes
+\[ \p_0 \subsetneqq \p_1 \subsetneqq \cdots \subsetneqq \p_n \qquad \text{in $\Spec(R)$.}\]
+ Use Lying Over and Going up to find a chain of primes
+\[ \q_0 \subsetneqq \q_1 \subsetneqq \cdots \subsetneqq \q_n \qquad \text{in $\Spec(S)$}\]
+such that $\q_i \cap R = \p_i$ for all $i$. Deduce part (5).
+\end{samepage}
+\itema Prove part (6).
+\itema Let $\q\in \Spec(S)$ and $\p\in \Spec(R)$. Show that if $\q \cap R = \p$, then $\q \supseteq \p S$, and if $\q_0$ is some prime of $S$ such that $\p S \subseteq \q_0 \subseteq \q$, then $\q_0 \cap R = \p$ also.
+\itema Show that every prime that contracts to $\p$ is a minimal prime of $\p S$, and deduce parts (1) and~(2).
+\end{enumerate}
+
+
+\solution{
+\begin{enumerate}
+\itema These containments are proper by incomparability. If the height of $\q$ is at least $n$, then there is a proper chain as above, and then there is a proper chain of primes up to $\q \cap R$ of length $n$, so the height of $\q \cap R$ is at least $n$.
+\itema If the dimension of $S$ is at least $n$, then there is a prime of height at least $n$ in $\Spec(S)$, so there is a prime of height at least $n$ in $\Spec(R)$, and the dimension of $R$ is at least $n$.
+\itema By Lying Over we can take a $\q_0$ that contracts to $\p_0$. Applying Going up, we get a prime $\q_1$ that contains $\q_0$ and contracts to $\p_1$. Continuing like so, we build the chain as required. Thus, if the dimension of $R$ is at least $n$, there is a chain in $\Spec(S)$ of length at least $n$, so $\dim(S)$ is at least $n$. Thus, $\dim(R)\leq \dim(S)$.
+\itema Take $\q\in \Spec(S)$ and $\p\in \Spec(R)$ and a chain of primes in $\Spec(R)$ of length $n$ with $\p_n = \p$. We can apply Going Down to find a $\q_{n-1} \in \Spec(S)$ such that $\q_{n-1} \subsetneqq \q_{n}$  such that $\q_{n-1} \cap R = \p_{n-1}$. Continuing like so, we can form a chain of primes in $\Spec(S)$ of length $n$. This implies that the height of $\q \cap R$ is less than or equal to the height of $\q$.
+\itema By definition, any ideal of $S$ that contains the image of $\p$ contains $\p S$, so $\q \cap R \supseteq \p$ if and only if $\q \supseteq \p S$. In particular, $\q_0 \cap R \supseteq \p S$ implies $\q_0 \cap R \supseteq \p$ and $\q_0 \cap R \subseteq \q \cap R =\p$, so $\q_0 \cap R = \p$.
+\itema If $\q$ contracts to $\p$, then $\q$ contains a minimal prime of $\p S$ that contracts to $\p$ by the previous part. Then by Incomparability, $\q$ is a minimal prime of $\p S$. By Noetherianity, since $\p S$ has finitely many minimal primes, there are at most finitely many primes that contract to $\p$, showing (1). Finally, (2) follows from (1) and Lying Over.
+\end{enumerate}
+}
+
+
+
+
+\itemB Hypotheses of Going Down:
+\begin{enumerate}
+\itemb Consider the inclusion map $\C[X] \subseteq \C[X,Y]/(XY,Y^2-Y)$. Show that\footnote{Consider $(1-y)$, $(X)$, and $(0)$.} the conclusion of Going Down fails. Which hypotheses are true?
+\itemb Consider the inclusion map $\C[X(1-X),X^2(1-X),Y,XY] \subseteq \C[X,Y]$. Show that\footnote{Consider $(1-X,Y)$, $(X(1-X),X^2(1-X),Y,XY)$, and $(1-X,Y)\cap R$.} the conclusion of Going Down fails. Which hypotheses are true?
+\end{enumerate}
+\solution{
+\begin{enumerate}
+\item Let $R=K[X]\subseteq S=K[X,Y]/(XY,Y^2-Y)$. $R$ is a normal domain, and the inclusion is integral: $y^2-y=0$ is an integral dependence relation for $y$ over $R$, so $S$ is generated by one integral element. Now, $(1-y)$ is a minimal prime of $S$: $y\in S\smallsetminus (1-y)$, so $x$ goes to zero in the localization (since $xy=0$) and $1-y$ goes to zero in the localization (since $y(1-y)=0$), so the localization is a copy of $K$, which has only one prime, $(0)$. We have $x=x-xy=x(1-y)\in (1-y)$, so the contraction contains $(X)$, so must be $(X)$. But, by minimality, we can't ``go down'' from $(1-y)$ to a prime lying over $(0)$.
+\item The element $X$ is integral over $R$: $X(1-X)\in R$ is a recipe: $X$ is a root of $T^2-T-X(1-X)$. Note that $X$ is in the fraction field of $R$, so this element shows both that $S$ is integral over $R$, and that $R$ is not normal. Now, $\q=(1-X,Y)\subseteq S$ is a maximal ideal lying over the maximal ideal $\p={(X(1-X),X^2(1-X),Y,XY)}$ in $R$. We have $xS \cap R = {(X(1-X),X^2(1-X),XY)R}=\p'$, but we claim that no prime contained in $\q$ lies over $\p'$. Such a prime must contain $X(1-X)$ and $XY$, but not $X$ (this would make it the unit ideal), so must contain $Y$ and $1-X$, and the contraction is then $\p$, which is too big!
+\end{enumerate}
+
+}
+
+
+\end{enumerate}
+\end{document}

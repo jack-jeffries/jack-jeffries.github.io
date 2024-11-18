@@ -1,0 +1,171 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=.8in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals,bbm}
+\usepackage[all]{xy}
+
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\ord}{\mathrm{ord}}
+\newcommand{\ann}{\mathrm{ann}}
+\newcommand{\hgt}{\mathrm{height}}
+\newcommand{\Min}{\mathrm{Min}}
+\newcommand{\Max}{\mathrm{Max}}
+\newcommand{\Spec}{\mathrm{Spec}}
+\newcommand{\Ass}{\mathrm{Ass}}
+\renewcommand{\1}{\mathbbm{1}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+\usepackage[hang,flushmargin]{footmisc}
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{\S7.32: Noether normalization and dimension}
+	
+	\begin{framed}
+\noindent	\textsc{Theorem:} Let $K$ be a field, and $R$ be a domain that is algebra-finite over $K$. Let $K[f_1,\dots,f_n]$ be a Noether normalization of $R$. Any saturated chain of primes from $0$ to a maximal ideal $\m$ of $R$ has length $n$.
+
+\
+
+\noindent	\textsc{Corollary:} Let $K$ be a field, and $R$ be a finitely generated $K$-algebra. Then
+\begin{enumerate}
+\item For any primes $\p \subseteq \q$ of $R$, every saturated chain of primes from $\p$ to $\q$ has the same length. (That is, $R$ is \textbf{catenary}).
+\item If $R$ is a domain, and $I$ is an arbitrary ideal, then $\dim(R) = \dim(R/I) + \mathrm{height}(I)$.
+\end{enumerate}
+\end{framed}
+
+
+
+
+\begin{enumerate}
+\itemA Consequences of the Theorem: Let $K$ be a field.
+\begin{enumerate}
+\itema Use the Theorem to deduce that $\dim(K[X_1,\dots,X_n])=n$.
+\itema Use the Theorem to deduce that every Noether normalization has the same number of elements.
+\itema Use part (a) above to show that the dimension of a $K$-algebra is at most the number of generators in an $K$-algebra generating set.
+\itema Use the Theorem to prove part (1) of the Corollary.
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itema Note that $K[X_1,\dots,X_n]$ is a Noether normalization of itself. So, any saturated chain of primes from $0$ to a maximal ideal has length $n$.
+\itema Follows because every Noether normalization has cardinality equal to the length of a saturated chain from $0$ to any maximal ideal.
+\itema If $R$ is a $K$ algebra with $n$ generators, it is a quotient of $K[X_1,\dots,X_n]$, which has dimension $n$, so $R$ has dimension at most $n$.
+\itema Take two saturated chains of primes from $\p$ to $\q$. Let $S=R/\p$, which is a domain. We get  two saturated chains of primes from $0$ to $\q/\p$ in $S$. Fix a maximal ideal of $S$ containing $\q/\p$. By concatenation, we get two saturated chains from $0$ to fixed maximal ideals in $S$, which must have the same length. So the chains from $0$ to $\q/\p$ have the same length, and hence the chains from $\p$ to $\q$ have the same length.
+\end{enumerate}
+}
+
+
+\itemA Let $K$ be a field. Use the Theorem and previous computations to compute the dimension of each of the following rings:
+\begin{enumerate}
+\itema $\ds \frac{K[X,Y,Z]}{(X^3+Y^3+Z^3)}$.
+\itema $\ds \frac{K[X,Y]}{(XY)}$.
+\itema $\ds K[X^4,X^3 Y, XY^3, Y^4]$.
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itema A Noether normalization is $K[x,y]$, so the dimension is $2$.
+\itema A Noether normalization is $K[x+y]$, so the dimension is $1$.
+\itema A Noether normalization is $K[X^4,Y^4]$, so the dimension is $2$.
+\end{enumerate}
+}
+
+\begin{samepage}
+\itemA Proof of Theorem: Induce on the number of elements $n$ in a Noether normalization.
+\begin{enumerate}
+\itema Explain the case $n=0$.
+\itema For the general case, let $A=K[z_1,\dots,z_n] \subseteq R$ be a Noether normalization, and take a saturated chain of primes of $R$:
+\[ (0) = \p_0 \subsetneqq \p_1 \subsetneqq \cdots  \subsetneqq \p_s = \m.\]
+Explain why $\p_1$ has height $1$.
+\itema Explain why $\p_1 \cap A$ has height $1$.
+\itema Explain why $\p_1 \cap A$ is principal.
+\itema Explain why, after a change of coordinates, we can assume that $K[z_1,\dots,z_{n-1}]$ is a Noether normalization of $R/\p_1$.
+\itema Finish the proof.
+\end{enumerate}
+\end{samepage}
+
+\solution{
+\begin{enumerate}
+\itema If $n=0$, then $R$ is a domain module-finite over a field, so a field. Then there are no chains of primes.
+\itema This follows from the definition of saturated.
+\itema This is a Corollary of Going Down.
+\itema From the homework, every height one prime in a UFD is principal.
+\itema Let $\p_1 \cap A = (f)$. After a change of coordinates in the $z_i$'s, we can assume that $f$ is monic in $z_n$. We have $K[z_1,\dots,z_{n}]/(f) \hookrightarrow R/\p_1$, and this is integral since $A \to R$ is. Then $K[z_1,\dots,z_{n-1}] \hookrightarrow K[z_1,\dots,z_{n}]/(f)$ is module-finite, and then the composition is a Noether normalization.
+\itema By the induction hypothesis, any saturated chain from $\p_1/\p_1$ to a maximal ideal of $R/\p_1$ has length $n-1$. So $s=n$.
+\end{enumerate}
+
+
+}
+
+
+\itemB Use the Theorem to prove part (2) of the Corollary.
+
+\
+
+\itemB Let $R=K[X_1,\dots,X_n]$ and $f_{m+1},\dots,f_n$ be polynomials such that $f_{m+1}\in K[X_1,\dots,X_{m+1}]$ is monic in $X_{m+1}$, \dots, $f_n\in K[X_1,\dots,X_n]$ is monic in $X_n$.
+ Show that $K[x_1,\dots,x_m]$ is a Noether normalization for $S=R/(f_{m+1},\dots,f_n)$, and deduce that $\dim(S)=m$, and that ${\mathrm{height}(f_{m+1},\dots,f_n)=n-m}$.
+ 
+ \
+ 
+ \itemB Let $K$ be a field, and let $R\subseteq S$ be an inclusion of finitely generated $K$-algebras that are both domains. Show that for any $\q\in \Spec(S)$, $\hgt(\q) = \hgt (\q \cap R)$.
+ 
+ \
+ 
+ \itemB Let $K$ be a field. Show that $K\llbracket X_1,\dots,X_n\rrbracket$ is a domain of dimension $n$.
+
+\end{enumerate}
+\end{document}
