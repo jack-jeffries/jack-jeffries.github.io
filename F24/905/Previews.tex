@@ -1813,6 +1813,62 @@ We may say this chain is \textbf{from $\p_0$} and/or \textbf{to $\p_n$} to indic
 \noindent	\textsc{Theorem:} Let $K$ be a field, and $R$ be a domain that is algebra-finite over $K$. Then, the dimension of $R$ is equal to the transcendence degree of $\mathrm{Frac}(R)$ over $K$.
 
 
+\newpage 
+
+\subsection{Length and simple modules} \0
+
+\begin{framed}
+\begin{itemize}
+\item Definition of length and simple modules
+\item Jordan-Holder Theorem
+\item Relationship between length and support
+\end{itemize}
+\end{framed}
+
+\
+
+
+
+	\noindent	\textsc{Definition:} Let $R$ be a ring and $M$ a $R$-module.
+	\begin{enumerate}
+	\item $M$ is \textbf{simple} if it is nonzero and $M$ has no nontrivial proper submodules.
+	\item A \textbf{composition series} for $M$ of length $n$ is a chain of submodules
+	\[ M = M_n \supsetneqq M_{n-1} \supsetneqq \cdots \supsetneqq M_1 \supsetneqq M_0 = 0\]
+	with $M_{i}/M_{i-1}$ simple for all $i=1,\dots,n$. The
+	\item $M$ has \textbf{finite length} if it admits a composition series. The \textbf{length} of $M$, denoted $\ell_R(M)$ is the minimal length $n$ of a composition series for $M$.
+	\end{enumerate}
+	
+		\
+	
+	\noindent \textsc{Jordan-H\"older Theorem:} Let $R$ be a ring, and $M$ a module \emph{of finite length}.
+Let $N\subseteq M$ be a submodule.
+	\begin{enumerate}
+	\item Any descending chain of submodules of $M$ can be refined\footnote{That is, terms can be inserted in between others in the chain to get a composition series.} to a composition series for $M$.
+	\item Every composition series for $M$ has the same length.
+	\item If $N\subseteq M$ is any submodule, then 
+	\begin{enumerate}
+	\item $N$ and $M/N$ have finite length, and $\ell_R(N), \ell_R(M/N) \leq \ell_R(M)$,
+	\item $\ell_R(N), \ell_R(M/N) <\ell_R(M)$ unless $M=N$ or $N=0$ respectively, and
+	\item $\ell_R(N)+\ell_R(M/N)=\ell_R(M)$.
+	\end{enumerate}
+	\end{enumerate}
+	
+	\
+	
+	
+	\noindent	\textsc{Lemma:} Let $R$ be a ring. A module $M$ is simple if and only if $M\cong R/\m$ for some maximal ideal~$\m$.
+	
+
+	
+	\
+	
+	\noindent \textsc{Proposition:} Let $R$ be a Noetherian ring, and $M$ be a module. The following are equivalent:
+	\begin{enumerate}
+	\item $M$ has finite length,
+	\item $M$ is finitely generated and $\mathrm{Supp}_R(M) \subseteq \Max(R)$,
+	\item $M$ is finitely generated and $\mathrm{Ass}_R(M) \subseteq \Max(R)$.
+	\end{enumerate}
+
 \begin{comment}
 
 
