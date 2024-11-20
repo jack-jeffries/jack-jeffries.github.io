@@ -4130,8 +4130,6 @@ This is false! One counterexample is $f(x) = 2x + x \sin\left(\frac{1}{x}\right)
 
 \end{enumerate}
 
-\begin{comment}	
-
 
  \newpage
  
@@ -4296,16 +4294,82 @@ So, we have shown that if $x \leq c + \d/2$, then $f(x) < y$. This shows that
 
 \end{enumerate}
 
+\newpage
    
+\Nov{18}{\Mo}{4.1}
+
+\begin{framed} 
+
+
+ \noindent \textsc{Definition 34.1:}  Let $f$ be a function and $r$ be a real number. We say that $f$ is \textbf{differentiable at $r$}\index{differentiable} if $f$ is defined at $r$ and the limit
+\[ \lim_{x\to r} \frac{ f(x) - f(r) }{x-r}\]
+exists. In this case, we call the limit \textbf{the derivative of $f$ at $r$}\index{derivative} and write $f'(r)$\index{$f'(r)$} for this limit. 
+ 
+ 
+ 
+ 
+ \end{framed}
 
 
 
 
+\begin{enumerate}
+ \item Use the definition to show that the derivative of $f(x) = x$ is $1$ for any $r$.
+ 
+ 
+ 
+ \begin{framed}
+Let $f(x)=x$ and consider
+\[\lim_{x\to r} \frac{ f(x) - f(r) }{x - r} = \lim_{x\to r} \frac{x - r} {x - r} = \lim_{x \to r} 1 = 1.\]
+ \end{framed}
+ 
+ 
+ \item Use the definition to show that the function $f(x)=|x|$ is \emph{not} differentiable at $x=0$.
+ 
+  \begin{framed}
+Consider
+\[\lim_{x\to 0} \frac{ f(x) - f(0) }{x - 0} = \lim_{x\to 0} \frac{|x|}{x} =  \lim_{x\to 0} \begin{cases} 1 & \ \text{if} \ x>0 \\ -1 & \ \text{if} \ x<0\end{cases}.\]
+Letting $x_n= 1/n$, we have that the sequence $x_n\to 0$ and $f(x_n) \to 1$; letting $y_n= -1/n$, we have that the sequence $y_n\to 0$ and $f(y_n) \to -1$, so the limit does not exist.
+ \end{framed}
+ 
+ \item Prove that if $f$ is differentiable at $x=r$, then $f$ is continuous at $x=r$. 
+ 
+   \begin{framed}
+   Suppose that $f$ is differentiable at $r$ so
+   \[ f'(r) = \lim_{x\to r} \frac{ f(x) - f(r) }{x - r}.\]
+   Then 
+   \[  \lim_{x\to r} (x-r) \frac{ f(x) - f(r) }{x - r} =  (\lim_{x\to r} (x-r)) f'(r) = 0,\]
+ so
+   \[ \lim_{x\to r} f(x) - f(r) = \lim_{x\to r} (x-r) \frac{ f(x) - f(r) }{x - r} = 0,\]
+   and hence
+   \[ \lim_{x \to r} f(x) = f(r).\]
+   Thus $f$ is continuous at $r$.
+   \end{framed}
+ 
+ \item Prove or disprove the converse of the previous statement.
+ 
+ \begin{framed}
+We have already seen that $f(x) = |x|$ at $r=0$ is a counterexample.
+\end{framed}
 
 
 
 
+\item Prove or disprove: The function $g(x) = \begin{cases} x \sin(1/x) &\text{if} \ x \neq 0 \\ 0 & \text{if} \ x=0\end{cases}$ \  is differentiable at $x=0$.
 
+
+\begin{framed}
+We compute $\lim\limits_{x\to 0} \frac{g(x) - g(0)}{x-0}= \lim\limits_{x\to 0} \frac{x \sin(1/x)}{x} = \lim\limits_{x\to 0} \sin(1/x)$ does not exist. This means that $g$ is not differentiable at $x=0$.
+\end{framed}
+
+
+\item Prove or disprove: The function $h(x) = \begin{cases} x^2 \sin(1/x) &\text{if} \ x \neq 0 \\ 0 & \text{if} \ x=0\end{cases}$ \  is differentiable at $x=0$.
+
+\begin{framed}
+We compute $\lim\limits_{x\to 0} \frac{h(x) - h(0)}{x-0}= \lim\limits_{x\to 0} \frac{x^2 \sin(1/x)}{x} = \lim\limits_{x\to 0} x\sin(1/x)=0$. This means that $h$ is differentiable at $0$ and $h'(0)=0$. 
+\end{framed}
+
+ \end{enumerate}
 
 \begin{comment}	
 
