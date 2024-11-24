@@ -4408,493 +4408,85 @@ Suppose that $(x^k)' = k x^{k-1}$. Then $(x^{k+1})' = x (x^k)' + x' (x^k) = x kx
  \[ \left( \frac{f}{g}\right)'(r) = \left( f\cdot\frac{1}{g}\right)'(r) = f'(r) \left( \frac{1}{g}\right)(r) +  f(r) \left( \frac{1}{g}\right)'(r) \]
  \[ = \frac{f'(r)}{g(r)} +  f(r) \frac{-g'(r)}{g^2(r)} = \frac{f'(r) g(r) - f(r)g'(r)}{g^2(r)}.\]
  \end{framed}
+ \end{enumerate}
  
+ \newpage
+ 
+\Nov{22}{\Fr}{4.1}
+ 
+
+
+ \begin{framed}
+  \noindent \textsc{Theorem 35.1 (Derivatives and Algebra):}   Let $f,g$ be functions that are differentiable at $x=r$, and $c$ be a real number. Then,
+ \begin{enumerate}
+ \item $f+g$ is differentiable at $x=r$ and $(f+g)'(r) = f'(r) + g'(r)$;
+ \item $cf$ is differentiable at $x=r$ and $(cf)'(r) = c f'(r)$;
+ \item $fg$ is differentiable at $x=r$ and $(fg)'(r) = f'(r) g(r) + f(r) g'(r)$.
+ \item If in addition $f(r)\neq 0$, then $1/f$ is differentiable at $x=r$ and $\displaystyle \left(\frac{1}{f}\right)'\!\!(r)= \frac{-f'(r)}{f^2(r)}$.
+    \end{enumerate}
+ \end{framed}
+
+
+\begin{enumerate}
+\setcounter{enumi}{3}
+
+
  \item True or False: If $f$ is not differentiable at $x=5$ and $g$ is not differentiable at $x=5$, then $f+g$ is not differentiable at $x=5$.
  
- \
+ \begin{framed}
+ False: One can take $f(x)=|x+5|$ and $g(x)=-|x+5|$.
+ 
+ \end{framed}
  
   \item True or False: If $f$ is differentiable at $x=5$ and $g$ is not differentiable at $x=5$, then $fg$ is not differentiable at $x=5$.
  
- \
+  \begin{framed}
+ False: One can take $f(x)=0$ and $g(x)=|x+5|$.
+ \end{framed}
  
  \item Prove Part (1) of the Theorem.
  
- \
+ \begin{framed} 
+We compute using the definition. By definition $(f+g)'(r)$ is the limit as $x$ approaches $r$ of \[ \frac{(f+g)(x) - (f+g)(r)}{x-r} = \frac{f(x) + g(x) - f(r) - g(r)}{x-r} = \frac{f(x)-f(r)}{x-r} + \frac{g(x) - g(r)}{x-r}.\] When we take the limit as $x$ approaches $r$, this is $f'(r) + g'(r)$, using the definition of $f'(r)$ and $g'(r)$ and the fact that the limit of a sum of two functions is the sum of the limits (when they both exist).
+\end{framed}
  
  \item Prove Part (2) of the Theorem.
  
- \
+\begin{framed}
+We note that \[ \frac{(cf)(x) - (cf)(r)}{x-r} = c \frac{f(x) - f(r)}{x-r},\] and it follows from our limit theorems that the limit as $x$ approaches $r$ is $cf'(r)$.
+\end{framed}
+
+
 
 
  \item Prove Part (3) of the Theorem.
  
- \
-
+ \begin{framed}
+Using what we know about limits we get 
+$$
+\begin{aligned}
+& \lim_{x \to r} \frac{f(x)g(x) - f(r)g(r)}{x-r} 
+=  \lim_{x \to r} \left(\frac{f(x)g(x) - f(r)g(x)}{x-r}  + \frac{f(r)g(x) -     f(r)g(r)}{x-r} \right) \\
+& =  \lim_{x \to r} g(x) \cdot \lim_{x \to r}\left(\frac{f(x) - f(r)}{x-r}\right)  
++ f(r) \cdot \lim_{x \to r} \left(\frac{g(x) -     g(r)}{x-r} \right)  \\
+&= g(r) f'(r) + f(r) g'(r),
+\end{aligned}
+$$
+where for the last step we use that $\lim_{x \to r} g(x) = g(r)$ since $g$ is continuous at $r$ (since differentiable implies continuous).
+\end{framed}
  \item Prove Part (4) of the Theorem.
  
-
+ \begin{framed}
+We have
+\[ \frac{\frac{1}{f(x)} - \frac{1}{f(r)}}{x-r} =  \frac{f(r) - f(x)}{(x-r) f(x) f(r)} = -\left(\frac{f(x) - f(r)}{x-r}
+\right) \left(\frac{1}{f(x)} \right)\left(\frac{1}{f(r)}\right).\]
+Since $f$ is continuous at $r$, we have $\lim_{x\to r} f(x) = f(r)$, and $\lim_{x\to r} \frac{1}{f(x)} = \frac{1}{f(r)}$. By definition, $\lim_{x\to r} \frac{f(x) - f(r)}{x-r} = f'(r)$. Thus, by limits and algebra, the limit of the given expression is $\frac{-f'(r)}{f^2(r)}$.
+\end{framed}
 
 \end{enumerate}
 
 
 \begin{comment}	
-
-
-
-\begin{ex} 
- The function $\sqrt{x^2 + 5}$ is continuous at every real number: let $g(x) = x^2 + 5$ and $f(x) = \sqrt{x}$. Then $g$ is continuous at $a$ for every $a\in \R$
-  since it is a polynomial. For each $x \in \R$, $g(x) > 0$ and hence $f$ is continuous at $g(x)$. So $\sqrt{x^2 + 5}$ is continuous at every $a\in\R$ by the Theorem.
-
-\end{ex}
-
-\begin{ex} You can apply the Theorem to the compositions of more than two functions too. For example $\sqrt{|x^3| + 1}$ is continuous at $a$ for and $a\in\R$.
-\end{ex}
-
-We are probably getting a bit tired of saying ``continuous at $a$ for every $a\in \R$''. The following definition will then be convenient.
-
-
-
-\begin{defn} Let $S$ be an open interval of $\R$ of the form $S=(a,b)$, $S=(a,\infty)$, $S=(-\infty,a)$, or $S=(-\infty,\infty)=\R$. We say $f$ is {\em continuous on $S$} if $f$ is continuous
-  at $a$ for all $a\in S$. 
-\end{defn}
-
-
-
-\begin{ex} 
-\begin{itemize}
-\item Every polynomial is continuous on $\R$.
-\item Every polynomial is continuous on $(-13,5)$.
-\item The function $\sqrt{x}$ is continuous on $(0,\infty)$.
-\item The function $1/x$ is continuous on $(0,\infty)$. It is also continuous on $(-\infty,0)$.
-\end{itemize}
-\end{ex}
-
-
-Since the function $\sqrt{x}$ does not jump at $x=0$, we would like to say the function is continuous on all of $[0,\infty)$. However, the definition for $f$ to be continuous at a point $a$ requires that $f$ is defined on $(a-\d,a+\d)$ for some $\d>0$, so we have to change our definition a bit.
-
-
-
-\begin{defn} 
- Given a function $f(x)$ and real numbers $a < b$,
-we say $f$ is {\em continous on the closed interval $[a,b]$} provided 
-\begin{enumerate}
-\item for every $r \in (a,b)$, $f$ is  continuous at $r$ in the sense defined already,
-\item for every $\e > 0$ there is a $\d > 0$ such that if $x \in [a,b]$ and $a \leq x < a+\d$, then ${|f(x)
-  - f(a)| < \e}$.
-\item for every $\e > 0$ there is a $\d > 0$ such that if $x \in [a,b]$ and $b -\d < x \leq b$, then ${|f(x)
-  - f(b)| < \e}$.
-\end{enumerate}
-\end{defn}
-
-
-
-\begin{comment}
-
-\Nov{10}
-
-
-\begin{enumerate}
-\item Let \[f(x) = \begin{cases} 2x &\text{if} \ x\geq 1 \\ x+1 &\text{if} \ x<1 \end{cases}.\]
- Use the $\e-\delta$ definition to show that $f(x)$ is continuous at $1$.
- 
-\begin{framed}
-Let $\e>0$. Take $\d=\e/2$. Then if $|x-1|<\delta = \e/2$, we either have $f(x) = 2x$, so $|f(x)-f(1)| = |2x-2| = 2 |x-1| < 2\e/2=\e$, or $f(x)=x+1$, so $|f(x)-f(1)| = |x+1-2| =  |x-1| < \e/2<\e$.
-\end{framed}
- 
-\item Let \[g(x) = \begin{cases} x &\text{if} \ x\in \Q \\ 0 &\text{if} \ x\notin \Q \end{cases}.\]
- Show that $g(x)$ is continuous at $0$ and is \emph{not} continuous at any other real number. You can use any theorems you like and anything relevant from the homework.
-
-\begin{framed}
-From the homework, $\lim_{x\to 0} f(x) = 0$ , and since $f(0)=0$, $f$ is continuous at $0$. Also from the homework, $\lim_{x\to a} f(x)$ does not exist for $a\neq 0$, so $f$ is not continuous at $a$ if $a\neq 0$.
-\end{framed}
- 
-
-\item Let $h(x) = \sqrt{ x^2 +5}$. Show that $h$ is continuous at $a$ for every $a\in \R$.
-
-\begin{framed}
-We can write $h=f\circ g$ with $f(x)=\sqrt{x}$ and $g(x)=x^2+5$. For any $a\in \R$, $g$ is continuous at $a$, and $g(a) >0$. Then since $g(a)>0$, $f$ is continuous at $g(a)$. Thus, $f\circ g$ is continuous at $a$.
-\end{framed}
- \end{enumerate}
- 
- 
- 
-
-\noindent It is tiresome to say ``continuous at $a$ for every $a\in \R$''. The following definition is then convenient.
-
-
-
-\begin{defn}  Let $S$ be an open interval of $\R$ of the form $S=(a,b)$, $S=(a,\infty)$, $S=(-\infty,a)$, or $S=(-\infty,\infty)=\R$. We say $f$ is {\em continuous on $S$} if $f$ is continuous at $a$ for all $a\in S$. 
-\end{defn}
-
- 
-
- 
- 
- 
- \begin{enumerate}
- \setcounter{enumi}{3}
- \item Which of the following functions are continuous on $\R$?
-\begin{multicols}{2} 
-\begin{itemize}
- \item $f(x)=\sqrt{ x^2 +5}$.
- \item Every polynomial function.
-  \item $f(x) = \sqrt{x}$.
-  \item $f(x)=\frac{1}{x}$.
- \end{itemize}
- \end{multicols}
- 
-\begin{framed}
-Just $f(x)=\sqrt{ x^2 +5}$ and Every polynomial function.
-\end{framed}
- 
- 
- 
- \item Which of the following functions are continuous on $(0,\infty)$?
- \begin{multicols}{2} 
- \begin{itemize}
- \item $f(x)=\sqrt{ x^2 +5}$.
- \item Every polynomial function.
-  \item $f(x) = \sqrt{x}$.
-  \item $f(x)=\frac{1}{x}$.
- \end{itemize}
- \end{multicols}
- 
-\begin{framed}
-All of them.
-\end{framed}
- 
- \item Prove that $j(x) =\begin{cases} x \sin(1/x) \text{if} \, x\neq 0 \\ 0 \text{if} \, x=0\end{cases}$ is continuous on $\R$. (You can use without proof that $\sin(x)$ is continuous on $\R$).
- 
- 
- \begin{framed}
-We saw earlier that $\lim_{x\to 0} j(x) = 0 = j(0)$, so $j$ is continuous at $0$. For $a\neq 0$, the function $1/x$ is continuous at $a$, and $\sin(x)$ is continuous at $1/a$, so $\sin(1/x)$ is continuous at $a$. The function $x$ is also \cts at $a$, so $x\sin(1/x)$ is continuous at $a$.
-\end{framed}
- 
- 
- \item Prove or disprove: If $f$ and $g$ are two functions, $a\in \R$, and  $f(a)=g(a)$ , then $f$ is continuous at $a$ if and only if $g$ is continuous at $a$.
- 
-  \begin{framed}
-To disprove it, consider $f(x) = 0$ and $g(x)= \begin{cases} 0 \ \text{if} \ x=0 \\1\ \text{if} \ x\neq0 \end{cases}$.
-\end{framed}
-
- 
- \item Prove or disprove: If $f$ and $g$ are two functions, $a<b$, and  $f(x)=g(x)$ for all $x\in (a,b)$, then $f$ is continuous on $(a,b)$ if and only if $g$ is continuous on $(a,b)$.
- 
-   \begin{framed}
-To prove it, let $f$ be continuous on $(a,b)$, $c\in (a,b)$, and $\e>0$. By definition of continuous at $c$, there is some $\d_1>0$ such that if $|x-c|<\d$ then $|f(x)-f(c)|<\e$. Let $\d = \min\{ \d_1, c-a, b-c\}$. Since $\d$ is the minimum of three positive numbers, $\d>0$. Then, if $|x-c|<\d$, since $|x-c|<c-a$, we must have $c>a$; since $|x-c|<b-c$, we must have $c<b$. Thus $x\in (a,b)$, so $g(x)=f(x)$. Since $|x-c|<\d_1$, $|f(x)-f(c)|<\e$. Then $|g(x) - g(c)| = |f(x) - f(c)| < \e$. This shows that $g$ is continuous at $c$. Since $c\in(a,b)$ was arbitrary, $g$ is continuous on $(a,b)$.
-
-The other implication follows by switching the roles of $f$ and $g$.
-\end{framed}
-   \end{enumerate}
- 
-\Nov{22}
-
-
-
-
-\begin{defn} 
- Given a function $f(x)$ and real numbers $a < b$,
-we say $f$ is {\em continuous on the closed interval $[a,b]$}\index{continuous on the closed interval $[a,b]$}  provided 
-\begin{enumerate}
-\item for every $r \in (a,b)$, $f$ is  continuous at $r$ in the sense defined already,
-\item for every $\e > 0$ there is a $\d > 0$ such that $a \leq x < a+\d$, then $f(x)$ is defined and ${|f(x)
-  - f(a)| < \e}$.
-\item for every $\e > 0$ there is a $\d > 0$ such that if  $b -\d < x \leq b$, then $f(x)$ is defined and ${|f(x)
-  - f(b)| < \e}$.
-\end{enumerate}
-\end{defn}
-
-\begin{enumerate}
-\item Explain why if $f$ is continuous at $x$ for every $x\in[a,b]$, then $f$ is continuous on the closed interval $[a,b]$. In particular, if $f$ is continuous on any open interval containing $[a,b]$, then $f$ is continuous on $[a,b]$. Conclude that every polynomial is continuous on every closed interval.
-
-\begin{framed}
-Condition (1) is automatic. If $f$ is continuous at $a$ then there is a $\d$ such that if $a-\d < x < a+\d$ then $f(x)$ is defined and ${|f(x)
-  - f(a)| < \e}$; in particular, for the same $\d$, if $a \leq x < a+\d$, then  $a-\d < x < a+\d$ and hence $f(x)$ is defined and ${|f(x)
-  - f(a)| < \e}$. Similarly for continuity at $b$ and condition (3).
-\end{framed}
-
-\item Show that the function $f(x) = \sqrt{1-x^2}$ is continuous on the closed interval $[-1,1]$:
-\begin{itemize}
-\item For showing condition (1), I recommend using a Theorem about compositions of functions.
-\item For conditions (2) and (3), show that $\delta = \min\{\e^2 /\sqrt{4} , 2\}$ works.
-\end{itemize}
-Is this function continuous on any open interval containing $[-1,1]$?
-
-\begin{framed}
-If $x\in (-1,1)$, then write $f(x) = (g\circ h)(x)$ with $h(x)=1-x^2$ and $g(x)=\sqrt{x}$; for $x$ in this range, $h(x) >0$, so $g$ is continuous at $x$, and hence $f$ is continuous at $x$. This covers condition (1). For condition (2), let $\e>0$ and take $\delta = \min\{\e^2 /4 , 2\}$. If $-1\leq x < -1 + \d$, then since $\d\leq 2$, $x< -1+2 = 1$, so $x$ is in the domain of $f$. Also, since $\d \leq \e^2 /4$, we have $x-(-1) < \d \leq \e^2 /4$ and since $x\geq -1$, $1-x \leq 2$, so \[ |\sqrt{1-x^2} - \sqrt{1-(-1)^2}| = \sqrt{1-x^2} =   \sqrt{1-x} \sqrt{1+x} < 2 \sqrt{ \e^2 /4} = \e.\] Similarly for condition (3).
-\end{framed}
-\end{enumerate}
-
-
-\index{Intermediate Value Theorem}
-\begin{thm}[Intermediate Value Theorem] Suppose $f$ is a function, that $a < b$ are real numbers, and that $f$ is continuous on the closed interval
-  $[a,b]$. If $y$ is any number between $f(a)$ and $f(b)$ (i.e., $f(a) \leq y \leq f(b)$ or
-$f(a) \geq y \geq f(b)$), then there is a $c \in [a,b]$ such that $f(c) = y$.\end{thm}
-
-
-
-\begin{enumerate}\setcounter{enumi}{2}
-\item Draw a picture of this theorem as follows: 
-\begin{itemize}
-\item Mark some $a$ and $b$ on the $x$-axis. 
-\item Graph a function $f$ that is continuous on $[a,b]$.
-\item Mark $f(a)$ and $f(b)$ on the $y$-axis.
-\item Pick some $y$ in between  $f(a)$ and $f(b)$, and make a horizontal line for this $y$-value.
-\item Does it intersect the graph of $f$?
-\end{itemize}
-Repeat with at least one graph that is increasing, at least one graph that is decreasing, and at least one graph that is neither increasing nor decreasing.
-
-\
-
-\item  Give a counterexample to the statement of the Intermediate Value Theorem without the hypothesis that $f$ is continuous on $[a,b]$.
-
-\begin{framed}
-Take \[f(x) = \begin{cases} x \ \text{if} \ x<0 \\ x+2 \ \text{if} \ x\geq 0 \end{cases}.\]
-Then $f(-1) < 1 < f(1)$, but there is no $x\in [-1,1]$ with $f(x) = 1$.
-\end{framed}
-
-\item Prove or disprove: There is a real number $x\in [0,2]$ such that $x^3 - 3x = 1$.
-
-\begin{framed}
-Take $f(x) = x^3 - 3x$. It is a polynomial and hence continuous on $[0,2]$.
-Then $f(0) = 0 < 1 < 2= f(2)$, so there is some $c\in [-1,1]$ with $f(c) = 1$.
-\end{framed}
-
-\item Prove or disprove: There are at least two real numbers $x\in [0,2]$ such that $x^3 - 3x = -1$.
-
-\begin{framed}
-Take the same $f(x) = x^3 - 3x$.
-Then $f(0) = 0 > -1 > -2 = f(1)$, so there is some $c_1\in [0,1]$ with $f(c_1) = 1$. Also,
-Then $f(1) = -2 < -1 < 2 = f(2)$, so there is some $c_2\in [1,2]$ with $f(c_2) = 1$. We know that $c_1\neq 1$ and $c_2 \neq 1$ since $f(1)\neq 1$, so $c_1\neq c_2$. Thus there are two values that output $-1$.
-\end{framed}
-
-\item True or false: If $f(x)$ is continuous on $[a,b]$, and $y$ is \emph{not} in between $f(a)$ and $f(b)$, then there is no $c\in[a,b]$ such that $f(c) = y$.
-
-\begin{framed}
-From the previous problem $f(x)=x^3-3x$ on $[0,2]$ with $y=-1$ is a counterexample.
-\end{framed}
-
-\item \textbf{Proof of the Intermediate Value Theorem:}
-\begin{enumerate}
-\item Let's assume that $f(a) \leq f(b)$ to get started. Explain why the cases $y=f(a)$ and $y=f(b)$ are easy. Hence, we assume that $f(a)< y < f(b)$.
-\item Let $S=\{ x\in [a,b] \ | \ f(r) < y \ \text{for all} \ a\leq r \leq x \}$. In short, $S$ is the set of $x$-values in the interval where the graph of $f$ hasn't crossed $y$ yet. Explain why $S$ has a supremum, and let $c= \sup(S)$.
-\item Show that $c >a$. [ Hint: Apply part (2) of definition of continuous on $[a,b]$ with $\e = y-f(a)$, and show that $a$ is not an upper bound for $S$.]
-\item The argument that $c<b$ is similar (so come back to it later if you want). Thus, $c\in (a,b)$, so we know that $f$ is continuous at $c$.
-\item Suppose that $f(c)<y$, and obtain a contradiction. [ Hint: Apply continuous at $c$ with $\e= y-f(c)$, and show that $c$ is not an upper bound for $S$.]
-\item Suppose that $f(c)>y$, and obtain a contradiction. [ Hint: Apply continuous at $c$ with $\e= f(c)-y$, and find a smaller upper bound for $S$.]
-\item This concludes the case when $f(a) \leq f(b)$. If $f(a) \geq f(b)$, what can you say about $g(x) = -f(x)$? Can we apply the case we just did?
-\end{enumerate}
-
-\begin{framed}
-
-\begin{proof}[Proof of Intermediate Value Theorem] Assume $f$ is continuous on $[a,b]$ and $y$ is a real
-  number such that  $f(a) \leq y \leq f(b)$ or $f(b) \leq y \leq f(a)$. We need to prove there is a $c \in [a,b]$ such that $f(c) = y$.
-
-  Let us assume $f(a) \leq y \leq f(b)$ --- the other case may be proved in a very similar manner, or by appealing to this case using the function $-f(x)$ instead.
-  
- If $f(a) = y$ then we may take $c = a$ and if $f(b) = y$ then we may take $c = b$. So, we may assume $f(a) < y < f(b)$.
-
-Consider the set 
-$$
-S = \{z \in \R \mid a \leq z \leq b \text{ and $f(x) < y$ for all $x \in [a, z]$}\}
-$$
-This set is nonempty, since $a \in S$, and it is bounded above, by $b$. It therefore has a supremum,
-which we will call $c$. I claim $f(c) = y$.
-
-
-
-
-
-Let us first show that $c > a$. By way of contradiction, suppose $c \leq a$. Since $c \geq a$, we must have $c = a$. 
-Since $f$ is continuous on $[a,b]$, taking $\e = y
-- f(a) > 0$ in the definition, we get that there is a $\d>0$ such that if $a \leq x < a +
-\d$, then $f(a) - \e < f(x) < f(a) + \e$. In particular, if $a \leq x \leq a + \d/2$, then $f(x) < f(a) + \e = y$.
-This proves that $a+ \d/2 \in S$. But $a + \d/2 > a = c$, contrary to the fact that $c$ is the supremum of $S$. We conclude that $c > a$. 
-
-
-Similarly, one may show that $c < b$ --- I leave this to you as an exercise.
-
-We now know that $a < c < b$, and 
-we next prove that $f(c) = y$ by showing that $f(c) > y$ and $f(c) < y$ are each impossible.
-
-Suppose $f(c) > y$. 
-Setting $\e = f(c) - y$ and applying the definition of continuous at $c$, there is a $\d >0$ such that if $x$ is any number such that $c
-- \d < x < c + \d$ then $f(c) - \e < f(x) < f(c) + \e$. In particular, for any $z$ such that $c - \d < z \leq c$, 
-we have
-$$
-f(z) > f(c) - \e = y.
-$$
-In particular, $z$ is not in the set $S$. It follows that $c - \d$ is an upper bound of $S$, contrary to the fact that $c$ is the least upper bound of $S$. 
-
-
-
-Suppose $f(c) < y$. 
-Setting $\e = y - f(c)$ and applying the definition of continuous at $c$, there is a $\d >0$ such that if $c - \d < x < c + \d$, 
-then $f(c) - \e < f(x) < f(c) + \e$. In particular, 
-if $x$ is any real number such that $c \leq x \leq c + \d/2$, then $f(x) < f(c) + \e = y$. Moreover, if $x < c$, then $x$ is not an upper bound of $S$, and hence there is a $z \in
-S$ such that $x < z$. If follows that $f(x) \leq y$.
-So, we have shown that if $x \leq c + \d/2$, then $f(x) < y$. This shows that
- $c + \d/2 \in S$, contrary to $c$ being an upper bound of $S$. 
- \end{proof}
-\end{framed}
-\end{enumerate}
-
-
-\Nov{29}
-
-	
-\begin{thm}[Boundedness Theorem]\index{Boundedness Theorem} Suppose $f$ is continuous on the closed interval $[a,b]$ for some real numbers $a,b$ with $a < b$. Then $f$ is bounded on $[a,b]$ --- that is,
-  there are real numbers $m$ and $M$ so that $m \leq f(x) \leq M$ for all $x \in [a,b]$.
-  \end{thm}
-  
-  
-  
-\begin{thm}[Extreme Value Theorem]\index{Extreme Value Theorem} Assume $f$ is continuous on the closed interval $[a,b]$ for some real numbers $a$ and $b$ with $a < b$.
-  Then $f$ attains a minimum and a maximum value on $[a,b]$ ---
-that is, there exists a number $r \in [a,b]$ such that $f(x) \leq f(r)$ for all $x \in [a,b]$ and
-there exists a number $s \in [a,b]$ such that $f(x) \geq f(s)$ for all $x \in [a,b]$.
-\end{thm}
-
-
-
-
-\
-
-\begin{enumerate}
-\item Explain why the Extreme Value Theorem actually implies the Boundedness Theorem. (The reason we state both is that we have to prove the Boundedness Theorem on the way to the Extreme Value Theorem.)
-
-\begin{framed}
-Take $M=f(r)$ and $m=f(s)$.
-\end{framed}
-
-\item In this problem we explore the necessity of the hypotheses in these theorems.
-\begin{enumerate}
-\item Draw a graph of a function on a closed interval $[a,b]$ that is \emph{not continuous}, but is not bounded on $[a,b]$.
-\item Draw a graph of a function that is continuous on an \emph{open} interval $(a,b)$, but is not bounded on $(a,b)$.
-\item Draw a graph of a function that is continuous on an \emph{open} interval $(a,b)$, and is bounded on $(a,b)$, but for which the conclusion of the Extreme Value Theorem fails.
-\end{enumerate}
-Can you find formulas of functions that match each story?
-
-\begin{framed}
-\begin{enumerate}
-\item For example, take $f(x)=\begin{cases} 1/x \ \text{if} \ x\neq 0 \\ 0  \ \text{if} \ x= 0\end{cases}$ on $[-1,1]$.
-\item For example, take $f(x)=1/x$ on $(0,1)$.
-\item For example, take $f(x)=x$ on $(0,1)$.
-\end{enumerate}
-\end{framed}
-   \end{enumerate}
-
-
-
-\noindent \textbf{Lemma from homework:} Let $a<b$ be real numbers and $[a,b]$ be a closed interval. Let $\{x_n\}_{n=1}$ be a sequence with $x_n\in[a,b]$ for all $n$, and assume that $\{x_n\}_{n=1}$ converges to $r$. Then,
-\begin{itemize}
-\item $r\in [a,b]$, and
-\item If $f$ is continuous on the closed interval $[a,b]$, then the sequence $\{f(x_n)\}_{n=1}^\infty$ converges to $f(r)$.
-\end{itemize}
-
-
-
-\begin{enumerate}\setcounter{enumi}{2}
-\item Proof of Boundedness Theorem:
-\begin{enumerate}
-\item We argue by contradiction. What does it mean to suppose that the theorem is false? Your answer should involve an ``or''. Assume one of the two cases.
-\item Explain why there must be a sequence $\{x_n\}_{n=1}^\infty$ with $x_n\in[a,b]$ and $f(x_n)>n$ for all $n\in \N$ (unless you chose the other case\dots).
-\item Apply Bolzano-Weierstrass to the sequence $\{x_n\}_{n=1}^\infty$. What do you get?
-\item Now apply the Lemma from the homework. What do you get?
-\end{enumerate}
-\begin{framed}
-\begin{enumerate}
-\item If the Theorem is false, there is a function $f$ that is continuous on the closed interval $[a,b]$ but the set of values of $f$ on $[a,b]$ is either unbounded above or unbounded below. Assume we have such a function that is unbounded above.
-\item By assumption, for every $n\in \N$, $n$ is not an upper bound for the values of $f$ on $[a,b]$. Thus, for every $n\in \N$, there is some $x_n$ with $f(x_n)>n$. This gives us a sequence $\{x_n\}_{n=1}^\infty$ with $x_n\in[a,b]$ and $f(x_n)>n$ for all $n\in \N$
-\item The sequence $\{x_n\}_{n=1}^\infty$ has a convergent subsequence $\{x_{n_k}\}_{k=1}^\infty$.
-\item Since $x_{n_k}\in[a,b]$ for all $k$, by the lemma we have first that $\{x_{n_k}\}_{k=1}^\infty$ converges to $r\in [a,b]$, and second, that $\{f(x_{n_k})\}_{k=1}^\infty$ converges to $f(r)$. But since $f(x_{n_k})> n_k \geq k$, the sequence $\{f(x_{n_k})\}_{k=1}^\infty$ diverges (to $+\infty$ in fact). This is a contradiction, so we conclude that the set of values of $f$ is bounded above. A similar argument (or the same case applied to $-f$) shows that the set of values of $f$ is also bounded below.
-\end{enumerate}
-\end{framed}
-
-\item Proof of Extreme Value Theorem:
-\begin{enumerate}
-\item[\null] We will find a maximum value; finding a minimum value is similar (or follows from this part applied to $-f$).
-\item Let $R = \{ f(x) \ |\  x\in [a,b]\}$. Explain why $R$ has a supremum; call it $\ell$.
-\item Explain why there must be a sequence $\{x_n\}_{n=1}^\infty$ with $x_n\in[a,b]$ and $\ell- \frac{1}{n} <f(x_n)\leq \ell$ for all $n\in \N$.
-\item Apply Bolzano-Weierstrass to the sequence $\{x_n\}_{n=1}^\infty$. What do you get?
-\item Now apply the Lemma from the homework. What do you get?
-\end{enumerate}
-
-\begin{framed}
-\begin{enumerate}
-\item[\null] We will find a maximum value; finding a minimum value is similar (or follows from this part applied to $-f$).
-\item Let $R = \{ f(x) \ |\  x\in [a,b]\}$. $R$ is nonempty since $f(a)\in R$, and it is bounded above by the Boundedness Theorem. Thus $R$ has a supremum, which we will call $\ell$.
-\item For any $n$, $\ell-\frac{1}{n} < \sup(R)$, so it is not an upper bound for $R$. This means that there is some $y_n\in R$ with $\ell-\frac{1}{n} < y_n$; since $\ell$ is an upper bound for $R$ we also have $\ell-\frac{1}{n} < y_n\leq \ell$. By definition of $R$, there is some $x_n\in [a,b]$ with $f(x_n) = y_n$. Thus, we have a sequence $\{x_n\}_{n=1}^\infty$ with $x_n\in[a,b]$ and $\ell- \frac{1}{n} <f(x_n)\leq \ell$ for all $n\in \N$.
-\item The sequence $\{x_n\}_{n=1}^\infty$ has a convergent subsequence $\{x_{n_k}\}_{k=1}^\infty$.
-\item Since $x_{n_k}\in[a,b]$ for all $k$, by the lemma we have first that $\{x_{n_k}\}_{k=1}^\infty$ converges to $r\in [a,b]$, and second, that $\{f(x_{n_k})\}_{k=1}^\infty$ converges to $f(r)$. Since $ \ell - \frac{1}{n_k} < f(x_{n_k})\leq \ell $, the sequence $\{f(x_{n_k})\}_{k=1}^\infty$ converges to $\ell$ by the Squeeze Theorem. Thus, $f(r) = \ell$. Then, by definition of supremum, we have that $f(x)\leq f(r)$ for all $x\in[a,b]$.
-\end{enumerate}
-\end{framed}
-\end{enumerate}
-
-%\begin{comment}
-
-\Dec{1}
-	
-
-\noindent \textbf{Definition:} Let $f$ be a function and $r$ be a real number. We say that $f$ is \emph{differentiable at $r$} if $f$ is defined at $r$ and the limit
-\[ \lim_{x\to r} \frac{ f(x) - f(r) }{x-r}\]
-exists. In this case, we call the limit \emph{the derivative of $f$ at $r$} and write $f'(r)$ for this limit. 
-
- 
- 
- \begin{enumerate}
- \item Use the definition to show that the derivative of $f(x) = x$ is $1$ for any $r$.
- 
- 
- 
- \begin{framed}
-Let $f(x)=x$ and consider
-\[\lim_{x\to r} \frac{ f(x) - f(r) }{x - r} = \lim_{x\to r} \frac{x - r} {x - r} = \lim_{x \to r} 1 = 1.\]
- \end{framed}
- 
- 
- \item Use the definition to show that the function $f(x)=|x|$ is \emph{not} differentiable at $x=0$.
- 
-  \begin{framed}
-Consider
-\[\lim_{x\to 0} \frac{ f(x) - f(0) }{x - 0} = \lim_{x\to 0} \frac{|x|}{x} =  \lim_{x\to 0} \begin{cases} 1 & \ \text{if} \ x>0 \\ -1 & \ \text{if} \ x<0\end{cases}.\]
-Letting $x_n= 1/n$, we have that the sequence $x_n\to 0$ and $f(x_n) \to 1$; letting $y_n= -1/n$, we have that the sequence $y_n\to 0$ and $f(y_n) \to -1$, so the limit does not exist.
- \end{framed}
- 
- \item Prove that if $f$ is differentiable at $x=r$, then $f$ is continuous at $x=r$. 
- 
-   \begin{framed}
-   Suppose that $f$ is differentiable at $r$ so
-   \[ f'(r) = \lim_{x\to r} \frac{ f(x) - f(r) }{x - r}.\]
-   Then 
-   \[  \lim_{x\to r} (x-r) \frac{ f(x) - f(r) }{x - r} =  (\lim_{x\to r} (x-r)) f'(r) = 0,\]
- so
-   \[ \lim_{x\to r} f(x) - f(r) = \lim_{x\to r} (x-r) \frac{ f(x) - f(r) }{x - r} = 0,\]
-   and hence
-   \[ \lim_{x \to r} f(x) = f(r).\]
-   Thus $f$ is continuous at $r$.
-   \end{framed}
- 
- \item Prove or disprove the converse of the previous statement.
- 
- \begin{framed}
-We have already seen that $f(x) = |x|$ at $r=0$ is a counterexample.
-\end{framed}
- \end{enumerate}
- 
- \
- 
- 
-
- \noindent \textbf{Theorem (Derivatives and algebra:} Let $f,g$ be functions that are differentiable at $x=r$, and $c$ be a real number. Then,
- \begin{enumerate}
- \item $f+g$ is differentiable at $x=r$ and $(f+g)'(r) = f'(r) + g'(r)$;
- \item $cf$ is differentiable at $x=r$ and $(cf)'(r) = c f'(r)$;
- \item $fg$ is differentiable at $x=r$ and $(fg)'(r) = f'(r) g(r) + f(r) g'(r)$.
-   \end{enumerate}
-
- 
- \
  
  \begin{enumerate}\setcounter{enumi}{5}
  \item Prove that if $f(x)=x^n$, then $f$ is differentiable at any value of $x$ and $f'(x) = n x^{n-1}$ for every $n\in \N$.
