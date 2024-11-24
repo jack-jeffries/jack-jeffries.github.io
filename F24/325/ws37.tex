@@ -1,0 +1,119 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=.75in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed}
+\usepackage[all]{xy}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\e}{\varepsilon}
+\newcommand{\de}{\delta}
+\newcommand{\ds}{\displaystyle}
+
+\DeclareMathOperator{\res}{res}
+
+\pagestyle{empty}
+
+
+
+
+\begin{document}
+	
+	
+	\thispagestyle{empty}
+	
+	
+	\section*{Derivatives and Optimization \S4.2}
+	
+
+\begin{framed} 
+ \noindent \textsc{Theorem 37.1:} Let $f$ be a function that is differentiable at $x=r$.
+ \begin{enumerate}
+ \item 
+ If $f'(r) > 0$, then there is some $\delta>0$ such that 
+ \begin{itemize}
+ \item if $x\in (r,r+\delta)$ then $f(r) < f(x)$;
+  \item if $x\in (r-\delta,r)$ then $f(x) < f(r)$.
+  \end{itemize}
+  
+  \item  If $f'(r) < 0$, then there is some $\delta>0$ such that 
+  \begin{itemize}
+ \item if $x\in (r,r+\delta)$ then $f(r) > f(x)$;
+ \item if $x\in (r-\delta,r)$ then $f(x) > f(r)$.
+  \end{itemize}
+  \end{enumerate}
+  
+  \
+  
+  \noindent \textsc{Corollary 37.2 (Derivatives and optimization):}
+  Let $f$ be a function that is continuous on a closed interval $[a,b]$. If $f$ attains a maximum or minimum value on $[a,b]$ at $r\in (a,b)$, and $f$ is differentiable at $r$, then $f'(r)=0$.
+ \end{framed}
+
+
+\
+
+ \begin{enumerate}
+ 
+ \item Find the values of $x$ on $[0,2]$ at which the function $f(x) = x^3-x^2-2x$ achieves its minimum and maximum values. Justify your answer carefully using the results above.
+ 
+ \ 
+ 
+ \item Explain why the Corollary follows from the Theorem.
+ 
+ \
+ 
+ \item Give examples of continuous functions on $[0,2]$ such that
+ \begin{enumerate}
+ \item $f(x)$ attains its maximum at $x=0$;
+ \item $g(x)$ attains its maximum at $x=2$;
+ \item $h(x)$ attains its maximum at $x=1$ and $h$ is differentiable at $x=1$;
+ \item $j(x)$ attains its maximum at $x=1$ and $j$ is not differenitable at $x=1$.
+ \end{enumerate}
+ 
+ \
+ 
+ \item Prove part (1) of the Theorem:
+ \begin{itemize}
+ \item Consider the function $\ds h(x) = \frac{ f(x) - f(r) }{x-r}$. Apply the definition of limit to this function with $\e = f'(r)$. What does the definition give you?
+ \item If $h(x) > 0$ and $x>r$, what can you say about $f(x) - f(r)$?
+  \item If $h(x) > 0$ and $x<r$, what can you say about $f(x) - f(r)$?
+  \end{itemize}
+
+
+\
+
+ \item Prove part (2) of the Theorem.
+ 
+ \
+ 
+ \item True or false: If $f'(7)>0$, then $f(7.0000001)>f(7)$.
+ 
+ \
+ 
+  \item True or false: If $f'(7)>0$, then there exists some $N\in \N$ such that for all natural numbers $n>N$,  $f\left(7+ \frac{1}{10^n}\right)>f(7)$.
+
+ 
+\end{enumerate}
+
+
+
+
+%\begin{framed}
+% 
+%  \noindent \textsc{Definition 37.3:} Let $f$ be a function. We say that a real number $r$ is a \textbf{local minimum} of $f$ if there exists some $\delta>0$ such that $f$ is defined on $(r-\delta,r+\delta)$ and $f$ achieves its minimum on the interval $(r-\delta,r+\delta)$ at the input value $x=r$. We define \textbf{local maximum} analogously.
+%  
+%  
+%  \
+%  
+%  
+%    \noindent \textsc{Corollary 37.4:} If $f$ attains a local maximum or local minimum at $x=r$, then either $f$ is not differentiable at $x=r$ or $f'(r)=0$. 
+%    
+%    \end{framed}
+  
+\end{document}
+
