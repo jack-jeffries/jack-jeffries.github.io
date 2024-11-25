@@ -1,0 +1,227 @@
+ \documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=.8in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals,bbm}
+\usepackage[all]{xy}
+
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\ord}{\mathrm{ord}}
+\newcommand{\ann}{\mathrm{ann}}
+\newcommand{\hgt}{\mathrm{height}}
+\newcommand{\Min}{\mathrm{Min}}
+\newcommand{\Max}{\mathrm{Max}}
+\newcommand{\Spec}{\mathrm{Spec}}
+\newcommand{\Ass}{\mathrm{Ass}}
+\renewcommand{\1}{\mathbbm{1}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+\usepackage[hang,flushmargin]{footmisc}
+
+
+\begin{document}
+\showsol{1}
+	
+	\thispagestyle{empty}
+	
+	\section*{\S8.34: Simple modules and length}
+	
+	\begin{framed}
+	
+	\noindent	\textsc{Definition:} Let $R$ be a ring and $M$ a $R$-module.
+	\begin{enumerate}
+	\item $M$ is \textbf{simple} if it is nonzero and $M$ has no nontrivial proper submodules.
+	\item A \textbf{composition series} for $M$ of length $n$ is a chain of submodules
+	\[ M = M_n \supsetneqq M_{n-1} \supsetneqq \cdots \supsetneqq M_1 \supsetneqq M_0 = 0\]
+	with $M_{i}/M_{i-1}$ simple for all $i=1,\dots,n$. The
+	\item $M$ has \textbf{finite length} if it admits a composition series. The \textbf{length} of $M$, denoted $\ell_R(M)$ is the minimal length $n$ of a composition series for $M$.
+	\end{enumerate}
+	
+		\
+	
+	\noindent \textsc{Jordan-H\"older Theorem:} Let $R$ be a ring, and $M$ a module \emph{of finite length}.
+Let $N\subseteq M$ be a submodule.
+	\begin{enumerate}
+	\item Any descending chain of submodules of $M$ can be refined\footnotemark \,to a composition series for $M$.
+	\item Every composition series for $M$ has the same length.
+	\item If $N\subseteq M$ is any submodule, then 
+	\begin{enumerate}
+	\item $N$ and $M/N$ have finite length, and $\ell_R(N), \ell_R(M/N) \leq \ell_R(M)$,
+	\item $\ell_R(N), \ell_R(M/N) <\ell_R(M)$ unless $M=N$ or $N=0$ respectively, and
+	\item $\ell_R(N)+\ell_R(M/N)=\ell_R(M)$.
+	\end{enumerate}
+	\end{enumerate}
+	
+	\
+	
+		\noindent \textsc{Corollary:} If $M$ has finite length, then $M$ is Noetherian and any descending chain of submodules of $M$ stabilizes.
+
+\
+	
+	
+	\noindent	\textsc{Lemma:} Let $R$ be a ring. A module $M$ is simple if and only if $M\cong R/\m$ for some maximal ideal~$\m$.
+	
+
+	
+	\
+	
+	\noindent \textsc{Proposition:} Let $R$ be a Noetherian ring, and $M$ be a module. The following are equivalent:
+	\begin{enumerate}
+	\item $M$ has finite length,
+	\item $M$ is finitely generated and $\mathrm{Supp}_R(M) \subseteq \Max(R)$,
+	\item $M$ is finitely generated and $\mathrm{Ass}_R(M) \subseteq \Max(R)$.
+	\end{enumerate}
+	\end{framed}
+\footnotetext[1]{That is, terms can be inserted in between others in the chain to get a composition series.}
+
+
+
+\begin{enumerate}
+%\itemA Prove\footnote{Hint: For the ($\Rightarrow$) direction, first show that $M$ is cyclic.} the Lemma.
+
+%\solution{Suppose that $M\cong R/\m$. The submodules of $R/\m$ correspond to ideals of $R$ that contain $\m$ under the lattice isomorphism theorem, but there are no nontrivial such modules.
+
+%Suppose that $M$ is simple. First, note that $M$ is cyclic, since given $m\in M$ nonzero, we must have $M=Rm$. So $M\cong R/I$. Then for any ideal $J\supseteq I$, up to this isomorphism, $J/I$ is a submodule of $M$, so $I$ must be maximal.
+%}
+
+
+\itemA Working with length: Let $R=\R[X,Y]$.
+\begin{enumerate}
+\itema Compute a composition series and find the $R$-module length of $M=R/(X^2+1,Y)$.
+%\itema Compute a composition series and find the $R$-module length of $M=R/(X^2,Y)$.
+\itema Compute a composition series and find the $R$-module length of $M=R/(X^2+X,Y)$.
+\itema Compute a composition series and find the $R$-module length of $M=(X,Y)/(X^2,Y^2)$.
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itema $(X^2+1,Y)$ is a maximal ideal, so $0 \subseteq M$ is a composition series and $M$ has length one (is simple).
+%\itema We can take $0 \subseteq (X,Y)/(X^2,Y) \subseteq M$. The quotients are isomorphic to $R/(X,Y)$, so it is a composition series. The length is two.
+\itema We can take $0 \subseteq (X+1,Y)/ (X^2+X,Y) \subseteq  M$. The quotients are isomorphic to $R/(X,Y)$ and $R/(X+1,Y)$, respectively, so this is a composition series. The length is two.
+\itema We can take $0 \subseteq (X^2,XY,Y^2)/(X^2,Y^2) \subseteq (X,Y^2)/(X^2,Y^2) \subseteq M$. Each quotient is  isomorphic to $R/(X,Y)$. The length is three.
+\end{enumerate}
+}
+
+\itemA Use the Jordan-H\"older Theorem to prove the Corollary.
+
+\solution{
+Given an ascending chain, the lengths of the successive modules increase, so any such chain can have length at most the length of $M$.
+Given such a chain, the length of each successive submodule is smaller, so any such chain can have length at most the length of $M$.
+}
+
+
+\itemA Proof of Proposition: Let $R$ be a Noetherian ring. 
+\begin{enumerate}
+\itema How do the concepts of ``composition series'' and ``prime filtration'' compare?
+\itema Why does having finite length imply that $M$ is finitely generated\footnote{The Corollary is fair game.}? What can one deduce about the associated primes of $M$? Deduce (1)$\Rightarrow$(3).
+\itema Use the definition of support to explain why, if $R/\p$ is a factor in a prime filtration for $M$, then $\p\in \mathrm{Supp}_R(M)$. Deduce (2)$\Rightarrow$(1).
+\itema Show (3)$\Rightarrow$(2) to complete the proof.
+\end{enumerate}
+
+
+\solution{
+\begin{enumerate}
+\itema A composition series is a special prime filtration.
+\itema From above, finite length implies Noetherian, and hence finite generation. By assumption, $M$ has a prime filtration with all maximal factors. Since the associated primes are contained in the factors of a prime filtration, $\Ass_R(M) \subseteq \Max(R)$.
+\itema Given a prime filtration for a module, if we localize at any prime factor $\p$, then we get a chain of submodules of $M_\p$, and since $(R/\p)_\p\neq 0$, some containment is proper in the chain, so $M_\p\neq 0$. Thus, if $\mathrm{Supp}_R(M) \subseteq \Max(R)$ and $M$ is finitely generated, $M$ has a prime filtration, and any prime filtration for $M$ has only maximal factors.
+\itema This follows since every prime in the support contains an associated prime.
+\end{enumerate}
+}
+
+\itemB Show that if $R$ is a finitely generated algebra of an algebraically closed field $K$, then the length of an $R$-module $M$ is equal to the dimension of $M$ as a $K$-vector space.
+
+
+\solution{
+
+}
+
+\itemB Proof of Jordan-H\"older: We will show (3a), (3b) directly, then deduce (1), (2), and (3c).	\begin{enumerate}
+	\itemb Let's start with deducing the other parts from (3a) and (3b). Show that (3a)+(3b)$\Rightarrow$(1) by inducing on length.
+	\itemb Show that (3a)$\Rightarrow$(2) by induction on length: given another composition series
+	\[ M = N_m \supsetneqq N_{m-1} \supsetneqq \cdots \supsetneqq N_1 \supsetneqq N_0 = 0,\]
+	consider the case $N_{m-1}=M_{n-1}$, and in the other case, consider $K=N_{m-1}\cap M_{n-1}$.
+	\itemb Show that (1)+(2)$\Rightarrow$(3c).
+	\itemb Now we start on (3a) and (3b). Use the Second Isomorphism Theorem to show that \[\ds \frac{M_{i} \cap N}{M_{i-1} \cap N}\cong \frac{M_i \cap N + M_{i-1}}{M_{i-1}}.\]
+	\itemb Show that $N$ has a composition series of length at most $n$.
+	\itemb Show that if the composition series you just found for $N$ has length $n$, then $N=M$, so if $N\subsetneqq M$, then $\ell_R(N)<\ell_R(M)$.
+	\itemb Use the Second Isomorphism Theorem to show that \[\ds \frac{(M_i + N) / N}{(M_{i-1} +N) / N} \cong \frac{M_i}{M_i \cap (M_{i-1} \cap N)}.\]
+	\itemb Show that $M/N$ has a composition series of length at most $n$.
+		\itemb Show that if the composition series you just found for $M/N$ has length $n$, then $N=0$, so if $N\neq 0$, then $\ell_R(M/N)<\ell_R(M)$. Deduce (3a) and (3b) to finish the proof.
+\end{enumerate}	
+
+\solution{
+\begin{enumerate}
+\itemb If $M$ has length one, then $M$ is simple, so any chain of submodules is already a composition series. In general, given a proper chain of submodules $0 = L_0 \subsetneqq \cdots \subsetneqq L_t = M$, we have $\ell(L_i/L_{i-1}) < \ell(M)$ by using (3a) and (3b). By induction on length, we can find composition series for $L_i/L_{i-1}$. Then, by the lattice isomorphism theorem, we can pull back to get chains of submodules from $L_{i-1}$ to $L_i$ with simple quotients. This gives the sought refinement.
+\itemb If $M$ has length one, again this is trivial. Given another composition series given another composition series
+	\[ M = N_m \supsetneqq N_{m-1} \supsetneqq \cdots \supsetneqq N_1 \supsetneqq N_0 = 0,\]
+	first consider the case $N_{m-1}=M_{n-1} \equalscolon K$. Then $\ell(K)<\ell(M)$, so by induction on length, we can assume that any two composition series for $K$ have the same length; in particular, chain of $N_i$ up to $N_{m-1}$ and the chain of $M_i$ up to $M_{n-1}$ have the same length, so $m=n$.
+	
+	Now suppose that  $N_{m-1}\neq M_{n-1}$, and set $K\colonequals N_{m-1}\cap M_{n-1}$. By the second isomorphism theorem, we then have
+	\[\frac{M}{M_{n-1}} = \frac{M_{n-1}+N_{m-1}}{M_{n-1}} \cong \frac{N_{m-1}}{K}\]
+	and similarly $M/N_{m-1} \cong M_{n-1} / K$, and both of these modules are simple. Given a composition series for $K$ of length $t$, one obtains a composition series for $M_{n-1}$ of length $t+1$ and a composition series for $N_{m-1}$ of length $t+1$. Since $\ell(M_{n-1}), \ell(N_{m-1})<\ell(M)$, by induction on length we can assume that $n-1=t+1=m-1$ and we conclude that $m=n$.
+	\item Refine the chain $0 \subseteq N \subseteq M$ to a composition series of $M$. The portion from $0$ up to $N$ is a composition series for $N$ and the part from $N$ to $M$ yields, in the quotient, a composition series of $M/N$. Since the lengths of any composition series  of the same module are the same, the result follows.
+	\item $$\frac{M_{i} \cap N}{M_{i-1} \cap N} = \frac{M_{i} \cap N}{(M_{i} \cap N) \cap M_{i-1}} \cong \frac{M_{i} \cap N + M_{i-1}} {M_{i-1}}.$$
+	\item By the previous part, $\frac{M_{i} \cap N}{M_{i-1} \cap N}$ is isomorphic to a submodule of $M_i / M_{i-1}$, so it is either simple or zero. It follows that, after removing redundant terms,
+	\[ 0 = M_0 \cap N \subseteq M_1 \cap N \subseteq \cdots \subseteq M_n \cap N = N\]
+	is a composition series for $N$.
+	\item If no term is redundant in the chain above, then $\frac{M_{i} \cap N}{M_{i-1} \cap N}\cong M_i/M_{i-1}$ for all $i$, and arguing inductively on $i$, one has $M_i = M_i \cap N$ for all $i$, so $M=N$.
+	\item \[ \frac{(M_{i} + N )/ N }{(M_{i-1} + N) / N} \cong \frac{M_{i} + N}{M_{i-1} + N} \cong \frac{M_{i} + (M_{i-1}+N)}{M_{i-1}+N}\cong \frac{M_{i} }{M_{i} \cap( M_{i-1} + N)}.\]
+	\item From the above, each module  $\frac{(M_{i} + N )/ N }{(M_{i-1} + N) / N}$ is isomorphic to a quotient of $M_i/M_{i-1}$, so is either simple of zero. Thus, after removing redundant terms, 
+	\[ 0 = (M_{0} + N )/ N \subseteq (M_{1} + N )/ N \subseteq \cdots \subseteq (M_{n} + N )/ N = M/N\]
+	is a composition series for $M/N$.
+	\item If no term above is redundant, then $M_{i} \cap( M_{i-1} + N)=M_{i-1}$ for all $i$, so by descending induction on $i$,   $N\subseteq M_{i-1}$ for each $i$, and $N=0$.
+	\end{enumerate}
+}
+
+
+\end{enumerate}
+\end{document}
