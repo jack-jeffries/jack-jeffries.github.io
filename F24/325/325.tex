@@ -4372,7 +4372,7 @@ We compute $\lim\limits_{x\to 0} \frac{h(x) - h(0)}{x-0}= \lim\limits_{x\to 0} \
  \end{enumerate}
  
  \newpage
- \Nov{20}{\We}{4.1}
+ \Nov{20}{\We}{4.2}
  \begin{framed}
   \noindent \textsc{Theorem 35.1 (Derivatives and Algebra):}   Let $f,g$ be functions that are differentiable at $x=r$, and $c$ be a real number. Then,
  \begin{enumerate}
@@ -4412,7 +4412,7 @@ Suppose that $(x^k)' = k x^{k-1}$. Then $(x^{k+1})' = x (x^k)' + x' (x^k) = x kx
  
  \newpage
  
-\Nov{22}{\Fr}{4.1}
+\Nov{22}{\Fr}{4.2}
  
 
 
@@ -4461,7 +4461,8 @@ We note that \[ \frac{(cf)(x) - (cf)(r)}{x-r} = c \frac{f(x) - f(r)}{x-r},\] and
 
  \item Prove Part (3) of the Theorem.
  
- \begin{framed}
+ \begin{framed} To compute $(fg)'(r)$ by the definition, we must compute
+ \[ \lim_{x \to r} \frac{f(x)g(x) - f(r)g(r)}{x-r}.\]
 Using what we know about limits we get 
 $$
 \begin{aligned}
@@ -4484,6 +4485,153 @@ Since $f$ is continuous at $r$, we have $\lim_{x\to r} f(x) = f(r)$, and $\lim_{
 \end{framed}
 
 \end{enumerate}
+
+\newpage
+
+\Nov{25}{\Mo}{4.2}
+
+\begin{framed} 
+
+
+ \noindent \textsc{Theorem 36.1 (Chain Rule):}   
+  Suppose $g$ is differentiable at $s$ and $f$ is
+  differentiable  at $g(s)$. Then $f \circ g$ is differentiable at $s$ and
+$$
+(f \circ g)'(s) = f'(g(s)) g'(s).
+$$
+
+
+ \end{framed}
+
+
+\
+
+\begin{enumerate}
+\item Use the chain rule to compute the derivative of $\sqrt{3x^2 + 13}$.
+
+\begin{framed}
+Set $g(x)= 3x^2+13$ and $f(x)=\sqrt{x}$. For any $s\in\R$, $g$ is differentiable at $s$ with $g'(s)=6s$. Also, for any $s\in \R$, we have $r=g(s) >0$, and $f$ is differentiable at any $r>0$, with $f'(r)=\frac{1}{2\sqrt{r}}$. Thus, by the chain rule, the derivative of $(f\circ g)$ at $s$ is $f'(g(s)) g'(s) = \frac{1}{2\sqrt{3x^2 + 13}} \cdot 6s = \frac{3s}{\sqrt{3x^2+13}}$.
+\end{framed}
+
+\item Given that the derivative of $\sin(x)$ at $x=r$ is $\cos(r)$, and reusing any earlier computations, compute the derivative of the function
+\[ j(x) = \begin{cases} x^2 \sin(\frac{1}{x}) & \ \text{if} \ x\neq 0 \\
+0 & \ \text{if} \ x= 0 \end{cases}\]
+at any real number $x=r$.
+
+\begin{framed}
+We have already shown that $j'(0)=0$. For $r\neq 0$, we first apply the chain rule to compute the derivative of $\sin(1/x)$ at $x=r$: for this we get $\cos(1/r) \cdot -1/r^2$. Then we apply the product rule to get \[j'(r)= 2r \sin(1/r) - r^2 \frac{\cos(1/r)}{r^2} = 2r \sin(1/r) - \cos(1/r).\] Altogehter
+\[ j'(r) = \begin{cases} 2r \sin(1/r) - \cos(1/r) & \text{if} \ r\neq 0 \\ 0 & \text{if} \  r=0.\end{cases}\]
+\end{framed}
+
+
+\item Proof of Chain Rule:
+
+\begin{enumerate}
+\item In the setting of the statement, set $r=g(s)$ and define
+\[ d(y) = \begin{cases} \ds \frac{f(y) - f(r)}{y-r} & \text{if} \ y\neq r \\ f'(r) & \text{if} \ y=r.\end{cases}\]
+Show that $d$ is continuous at $y=r$.
+\item Show that if $x\neq s$, then
+\[ \frac{f(g(x)) - f(g(s))}{x-s} = d(g(x)) \cdot \frac{g(x)-g(s)}{x-s}.\]
+Note: You might have to consider separately the cases with $g(x)\neq r$ and $g(x)=r$.
+\item Use the fact that a composition of continuous functions (at the suitable inputs) is continuous to compute $\lim\limits_{x\to s} d(g(x))$.
+\item Compute $\lim\limits_{x\to s}$ on both sides of (b). Use your computation to deduce the Chain Rule.
+\end{enumerate}
+
+\begin{framed}
+\begin{enumerate}
+\item Since $d$ is defined at $y=r$, we just need to check that $\lim\limits_{y\to r}d(y) = d(r)$. But, by definition of derivative, we have $\lim\limits_{y\to r}d(y) = f'(r) = d(r)$.
+\item We consider two cases. If $g(x)\neq r$, then 
+\[ d(g(x)) \cdot \frac{g(x)-g(s)}{x-s} = \frac{f(g(x)) - f(r)}{g(x)-r} \cdot  \frac{g(x)-g(s)}{x-s} = \frac{f(g(x)) - f(g(s))}{x-s}.\]
+If $g(x)=r$, then $g(x) = g(s)$ and $f(g(x))=f(g(s))$, so 
+\[ \frac{f(g(x)) - f(g(s))}{x-s} = 0 = d(g(x)) \cdot \frac{g(x)-g(s)}{x-s}.\]
+\item Since $g$ is continuous at $s$ and $g$ is continuous at $r=g(s)$, $(d\circ g)$ is continuous at $s$, so $\lim\limits_{x\to s} d(g(x)) =d(g(s)) = d(r)= f'(r)$.
+\item By definition, 
+$\lim\limits_{x\to s}  \frac{f(g(x)) - f(g(s))}{x-s} $ is $(f\circ g)'(s)$, if this derivative exists.
+On the other hand, \[\begin{aligned}  \lim\limits_{x\to s} d(g(x)) \cdot \frac{g(x)-g(s)}{x-s} &= \left(\lim\limits_{x\to s} d(g(x))\right) \left(\lim\limits_{x\to s}  \frac{g(x)-g(s)}{x-s} \right) \\
+&= f'(r) g'(s) = f'(g(s))\cdot g'(s).\end{aligned}\]
+\end{enumerate}
+\end{framed}
+
+\end{enumerate}
+\begin{comment}
+\newpage
+
+	\section*{Derivatives and Optimization \S4.3}
+	
+
+\begin{framed} 
+ \noindent \textsc{Theorem 37.1:} Let $f$ be a function that is differentiable at $x=r$.
+ \begin{enumerate}
+ \item 
+ If $f'(r) > 0$, then there is some $\delta>0$ such that 
+ \begin{itemize}
+ \item if $x\in (r,r+\delta)$ then $f(r) < f(x)$;
+  \item if $x\in (r-\delta,r)$ then $f(x) < f(r)$.
+  \end{itemize}
+  
+
+  
+  \item  If $f'(r) < 0$, then there is some $\delta>0$ such that 
+  \begin{itemize}
+ \item if $x\in (r,r+\delta)$ then $f(r) > f(x)$;
+ \item if $x\in (r-\delta,r)$ then $f(x) > f(r)$.
+  \end{itemize}
+  \end{enumerate}
+  
+  \
+  
+  \noindent \textsc{Corollary 37.2 (Derivatives and optimization):}
+  Let $f$ be a function that is continuous on a closed interval $[a,b]$. If $f$ attains a maximum or minimum value on $[a,b]$ at $r\in (a,b)$, and $f$ is differentiable at $r$, then $f'(r)=0$.
+ \end{framed}
+
+
+\
+
+ \begin{enumerate}
+ 
+ \item Find the values of $x$ on $[0,2]$ at which the function $f(x) = x^3-x^2-2x$ achieves its minimum and maximum values. Justify your answer carefully using the results above.
+ 
+  \begin{framed}
+  We know that $f$ attains a minimum and maximum on $[0,2]$ by the EVT, since $f$ is continuous. Either there is a maximum at $0$ or $2$, or it occurs at some $r\in (0,2)$. Since $f$ is differentiable on $(0,2)$, there can only be a maximum at $r$ if $f'(r)=0$. We solve $f'(r)=0$: $f'(x)=3x^2-2x-2$, so $x=
+  \end{framed} 
+ 
+ \item Explain why the Corollary follows from the Theorem.
+ 
+ \
+ 
+ \item Give examples of continuous functions on $[0,2]$ such that
+ \begin{enumerate}
+ \item $f(x)$ attains its maximum at $x=0$;
+ \item $g(x)$ attains its maximum at $x=2$;
+ \item $h(x)$ attains its maximum at $x=1$ and $h$ is differentiable at $x=1$;
+ \item $j(x)$ attains its maximum at $x=1$ and $j$ is not differentiable at $x=1$.
+ \end{enumerate}
+ 
+ \
+ 
+ \item Prove part (1) of the Theorem:
+ \begin{itemize}
+ \item Consider the function $\ds h(x) = \frac{ f(x) - f(r) }{x-r}$. Apply the definition of limit to this function with $\e = f'(r)$. What does the definition give you?
+ \item If $h(x) > 0$ and $x>r$, what can you say about $f(x) - f(r)$?
+  \item If $h(x) > 0$ and $x<r$, what can you say about $f(x) - f(r)$?
+  \end{itemize}
+
+
+\
+
+ \item Prove part (2) of the Theorem.
+ 
+ \
+ 
+ \item True or false: If $f'(7)>0$, then $f(7.0000001)>f(7)$.
+ 
+ \
+ 
+  \item True or false: If $f'(7)>0$, then there exists some $N\in \N$ such that for all natural numbers $n>N$,  $f\left(7+ \frac{1}{10^n}\right)>f(7)$.
+
+ 
+\end{enumerate}
+
 
 
 \begin{comment}	
