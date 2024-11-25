@@ -1,0 +1,115 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=0.65in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals,hyperref}
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+\newcommand\itemA{\stepcounter{enumi}\item[{\bf{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\bf{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\bf{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+\DeclareMathOperator{\ord}{ord}
+\renewcommand{\ceq}{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{1}
+	
+	\thispagestyle{empty}
+	
+	\section*{Assignment \#9: Due Thursday, November 21 at midnight}
+	
+	This problem set is to be turned in on Canvas. You may reference any result or problem from our worksheets or lectures, unless it is the fact to be proven! You are encouraged to work with others, but you should understand everything you write. Please consult the class website for acceptable/unacceptable resources for the problem sets.
+	
+	\
+	
+
+\begin{enumerate}
+
+\item F
+
+\item Let $g:\R\to \R$ be the function given by the rule
+\[ g(x) =  \begin{cases} x- x^2 &\text{if} \ x\in \Q \\ x & \text{if} \ x\notin \Q.\end{cases}\]
+\begin{enumerate}
+\item Show\footnote{Suggestion: Reuse your work from an earlier assignment.} that $g$ is differentiable at $x=0$ and $g'(0)=1$.
+\item Use a Theorem to explain why there is some $\delta>0$ such that for all $x\in (0,\delta)$ we have ${g(x) > g(0)}$.
+\item Find an explicit $\delta$ that works in the previous problem.
+\item Show that there does not exist any $\delta>0$ such that $g$ is increasing on $(0,\delta)$.
+\end{enumerate}
+
+\
+
+
+\item Let $f$ and $g$ be functions defined on $\R$ and $a$ a real number. Assume that $f$ is differentiable at $a$ and $f(a) = f'(a)=0$.
+\begin{enumerate}
+\item Use the product rule to show that if $g$ is differentiable at $a$, then  $(fg)'(a)=0$.
+\item Show that\footnote{Note that the product rule does not apply! You might draw inspiration from the proof of the product rule.} if $g$ is continuous at $a$, then $(fg)'(a)=0$.
+\item Show that if $g$ is \emph{not} continuous at $a$, then $fg$ may not be differentiable at $a$.
+\end{enumerate}
+
+
+\end{enumerate}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
