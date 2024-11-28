@@ -32,7 +32,7 @@
 	
 
 \begin{framed} 
- \noindent \textsc{Theorem 37.1:} Let $f$ be a function that is differentiable at $x=r$.
+ \noindent \textsc{Theorem 38.1:} Let $f$ be a function that is differentiable at $x=r$.
  \begin{enumerate}
  \item 
  If $f'(r) > 0$, then there is some $\delta>0$ such that 
@@ -50,7 +50,7 @@
   
   \
   
-  \noindent \textsc{Corollary 37.2 (Derivatives and optimization):}
+  \noindent \textsc{Corollary 38.2 (Min-Max Theorem):}
   Let $f$ be a function that is continuous on a closed interval $[a,b]$. If $f$ attains a maximum or minimum value on $[a,b]$ at $r\in (a,b)$, and $f$ is differentiable at $r$, then $f'(r)=0$.
  \end{framed}
 
@@ -66,6 +66,16 @@
  \item Explain why the Corollary follows from the Theorem.
  
  \
+ 
+ \item Use the Corollary to deduce: if $f$ is continuous on the closed interval $[a,b]$, then $f$ attains its minimum and maximum values at some value on the list
+\begin{itemize}
+\item $x=a$
+\item $x=b$
+\item some $x=r\in (a,b)$ with $f'(r)=0$
+\item some $x=r\in (a,b)$ with $f'(r)$ undefined.
+\end{itemize}
+
+\
  
  \item Give examples of continuous functions on $[0,2]$ such that
  \begin{enumerate}
@@ -99,6 +109,47 @@
 
  
 \end{enumerate}
+
+\newpage
+
+
+\begin{framed} 
+ \noindent \noindent \textsc{Definition 38.3:} Let $f$ be a function. We say that $f$ attains a \textbf{local minimum} at $r$ if there exists some $\delta>0$ such that $f$ is defined on $(r-\delta,r+\delta)$ and $f$ achieves its minimum value on the interval $(r-\delta,r+\delta)$ at the input value $x=r$. We define \textbf{local maximum} analogously. 
+ 
+ \
+ 
+   \noindent \textsc{Corollary 38.4 (Local Min-Max Theorem):} If $f$ attains a local maximum or local minimum at $x=r$, then either $f$ is not differentiable at $x=r$ or $f'(r)=0$. 
+ \end{framed}
+
+
+
+\begin{enumerate}
+\setcounter{enumi}{8}
+\item Prove Corollary 38.4.
+
+\
+
+\item Draw graphs of functions are continuous on the closed interval $[-3,-1]$ satisfying the following:
+\begin{enumerate}
+\item  $f(x)$, that has a local maximum at $-2$ but does not attain its maximum at $-2$.
+\item  $g(x)$, such that $g'(-2)=0$ but $g$ does not attain a local minimum or local maximum at $-2$.
+\item $h(x)$, such that $h$ is not differentiable at $-2$ but $h$ does not attain a local minimum or local maximum at $-2$.
+\item $j(x)$ that has no local maximum at all on $[-3,-1]$.
+\end{enumerate}
+
+\
+
+\item \textsc{``The Zeroth derivative test''} Suppose that $f$ is continuous on the closed interval $[a,b]$ and that there finitely many points $r_1 < r_2 < \cdots <r_{t-1}$ in $(a,b)$ where either $f'$ is zero or undefined. Set $r_0=a$ and $r_t=b$.
+\begin{enumerate}
+\item Show that the maximum value of $f$ on $[a,b]$ is $\max\{ f(r_0) , \cdots, f(r_t)\}$, and likewise the minimum value of $f$ on $[a,b]$ is $\min\{ f(r_0) , \cdots, f(r_t)\}$.
+\item Show that, for $i=1,\dots,t-1$, $f$ attains a local maximum at $r_i$ if and only if $f(r_{i-1}) < f(r_i) > f(r_{i+1})$; likewise, $f$ attains a local minimum at $r_i$ if and only if $f(r_{i-1}) > f(r_i) < f(r_{i+1})$.
+\end{enumerate}
+
+
+\end{enumerate}
+
+
+
 
 
 

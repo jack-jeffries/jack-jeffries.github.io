@@ -1,0 +1,140 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=.7in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed}
+\usepackage[all]{xy}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\e}{\varepsilon}
+\newcommand{\de}{\delta}
+\newcommand{\ds}{\displaystyle}
+
+\DeclareMathOperator{\res}{res}
+
+\pagestyle{empty}
+
+
+
+
+\begin{document}
+	
+	
+	\thispagestyle{empty}
+	
+	
+	\section*{The Mean Value Theorem \S4.3}
+	
+
+\begin{framed} 
+
+ \noindent \textsc{Theorem 39.1 (Rolle's Theorem):}  Let $f$ be continuous on the closed interval $[a,b]$ and differentiable at every point of $(a,b)$. If $f(a) = f(b)$, then there exists a $c \in
+  (a,b)$ such that $f'(c) = 0$.
+  
+  
+  \
+  
+ \noindent \textsc{Theorem 39.2 (Mean Value Theorem):} Let $f$ be a function that is continuous on the closed interval $[a,b]$ and differentiable on $(a,b)$. Then there exists some $c\in (a,b)$ such that
+ \[ f'(c) = \frac{f(b) - f(a)}{b-a}.\]
+ 
+ \
+ 
+ \noindent \textsc{Definition 39.3:} Let $f$ be a function, and $S\subseteq \R$ be a set of real numbers contained in domain of~$f$. We say that 
+\begin{itemize}
+\item $f$ is \textbf{increasing} on $S$ if for any $a,b\in S$ with $a<b$ we have $f(a) \leq f(b)$;
+\item $f$ is \textbf{decreasing} on $S$ if for any $a,b\in S$ with $a<b$ we have $f(a) \geq f(b)$;
+\item $f$ is \textbf{constant} on $S$ if for any $a,b\in S$ with $a<b$ we have $f(a) = f(b)$;
+\item  $f$ is \textbf{strictly increasing} on $S$ if for any $a,b\in S$ with $a<b$ we have $f(a) < f(b)$;
+\item $f$ is \textbf{strictly decreasing} on $S$ if for any $a,b\in S$ with $a<b$ we have $f(a) > f(b)$.
+\end{itemize}
+
+\
+
+
+ \noindent \textsc{Corollary 39.4:} Suppose $I$ is an open interval (that is, $I = (a,b)$, $(a, \infty)$, $(-\infty, b)$, or $(\infty, \infty)$) and $f$ is differentiable on all of $I$.  
+\begin{enumerate}
+\item $f'(x) \geq 0$ for all $x \in I$ if and only if $f$ is increasing on all of $I$.
+\item $f'(x) \leq 0$ for all $x \in I$ if and only if $f$ is decreasing on all of $I$.
+\item $f'(x) = 0$ for all $x \in I$ if and only if $f$ is a constant function on $I$. 
+\end{enumerate}
+
+ 
+  \end{framed}
+
+
+
+ 
+\begin{enumerate}
+\item In this problem, we prove Rolle's Theorem. \begin{enumerate}
+\item First, assume that $f$ is constant on $[a,b]$, and prove the Theorem in this case.
+\item Explain why $f$ has a minimum value and a maximum value on $[a,b]$.
+\item Explain why, in the case that $f$ is not constant, either the minimum or maximum value for $f$ occurs in $(a,b)$, and conclude the proof.
+\end{enumerate}
+
+%\begin{framed}
+%If $f$ is constant on $[a,b]$, then the derivative of $f$ is zero at every point. By the Extreme Value Theorem, $f$ attains a minimum and a maximum on $[a,b]$; say $m$ and $M$, respectively. We have $m \leq f(a) = f(b) \leq M$. If $m$ and $M$ are both equal to $f(a)$ and $f(b)$, then $f$ is constant on $[a,b]$, and we're done. Otherwise, either the minimum or maximum occurs at some $c$  other than $a$ and $b$, so in $c\in (a,b)$. Then the Min-Max Theorem says that $f'(c)=0$.
+%\end{framed}
+
+\
+
+\item Prove the Mean Value Theorem.
+\begin{itemize}
+\item Suggestion: Let $\ds \ell(x) = \left(\frac{f(b) - f(a)}{b-a}\right) x$, and show that $f(x) - \ell(x)$ satisfies the hypotheses of Rolle's Theorem.
+\end{itemize}
+
+%\begin{framed}
+%Let $\ell(x) = \frac{f(b) - f(a)}{b-a}\, x$. Note that \[\begin{aligned} (f(b) -\ell(b))& - (f(a) - \ell(a)) = (f(b) - f(a)) - (\ell(b) - \ell(a)) \\&= (f(b)-f(a)) - (\frac{f(b)-f(a)}{b-a} \ (b-a)) = 0,\end{aligned}\]
+%and $f(x) - \ell(x)$ is continuous on $[a,b]$ and differentiable on $(a,b)$. Thus, by Rolle's Theorem, there is some $c\in (a,b)$ such that \[0=(f-\ell)'(c)=f'(c) - \frac{f(b)-f(a)}{b-a},\]
+%and the theorem follows.
+%\end{framed}
+
+\
+
+\item In this problem, we prove Corollary~39.4.
+\begin{enumerate}
+\item For the $(\Rightarrow)$ direction of (1), let $a,b\in I$ with $a<b$. Explain why the Mean Value Theorem applies to $f$ on $[a,b]$, and apply it.
+\item For the $(\Leftarrow)$ direction of (1), prove the contrapositive using a result from last time.
+\item Prove the rest of the Corollary.
+\end{enumerate}
+
+%\begin{framed}
+%Assume that $f'(x) \geq 0$ for all $x\in I$. For $a<b$ in $I$, we have that $f$ is continuous on $[a,b]$ and differentiable on $(a,b)$, so the MVT applies: there is some $c\in (a,b)$ such that $f'(c) = \frac{f(b)-f(a)}{b-a}$. Since $f'(c) \geq 0$ and $b-a>0$, we must have $f(b)-f(a)\geq 0$, so $f(a) \leq f(b)$.
+%
+%Now assume that $f'(x) < 0$ for all some $x\in I$. By Proposition~34.1, there is some $\delta>0$ such that $f(y) < f(x)$ for all $y\in (x,x+\d)$, so there is some $y\in I$ with $x<y$ and $f(x) > f(y)$. This implies that $f$ is not increasing on $I$.
+%
+%For (2), we can argue similarly or apply (1) to $-f(x)$.
+%
+%For (3), we can argue similarly or observe that $f$ is constant if and only if it is both increasing and decreasing on $I$, and that $f'(x) = 0$ on $I$ if and only if $f'(x)\geq 0$ and $f'(x)\leq 0$ for all $x\in I$.
+%\end{framed}
+
+\
+
+\item Prove or disprove: If $J= (-\infty,0) \cup (0,\infty)$ and that $f'(x) = 0$ for all $x\in J$, then $f$ is constant on~$J$.
+
+\
+
+\item Prove or disprove: If $f$ is differentiable on $\R$ and $f'(r)>0$, then there is some $\delta>0$ such that $f$ is increasing on $(r-\delta,r+\delta)$.
+
+\
+
+\newpage
+
+\item \textsc{``The First Derivative Test"} Suppose that $f$ is continuous on the closed interval $[a,b]$ and that there finitely many points $r_1 < r_2 < \cdots <r_{t-1}$ in $(a,b)$ where either $f'$ is zero or undefined. Set $r_0=a$ and $r_t=b$. \\
+
+\noindent For $i=1,\dots,t-1$, show that $f$ attains a local maximum at $r_i$ if and only if $f'(x) >0$ for $x\in (r_{i-1},r_i)$ and $f'(x)<0$ for $x\in (r_i,r_{i+1})$. Likewise, $f$ attains a local  minimum at $r_i$ if and only if $f'(x) <0$ for $x\in (r_{i-1},r_i)$ and $f'(x)>0$ for $x\in (r_i,r_{i+1})$.
+
+\
+
+\item  \textsc{``The Second Derivative Test"} Suppose that $f$ is continuous on the closed interval $[a,b]$ and that there finitely many points $r_1 < r_2 < \cdots <r_{t-1}$ in $(a,b)$ where either $f'$ is zero or undefined. \\
+
+\noindent For $i=1,\dots,t-1$, show that $f$ attains a local maximum at $r_i$ if $f''(r_i) <0$. Likewise, $f$ attains a local  minimum at $r_i$ if  $f''(r_i) >0$. Give counterexamples to the converses.
+
+ 
+ \end{enumerate}  
+\end{document}
+
