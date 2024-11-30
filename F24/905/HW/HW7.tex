@@ -20,6 +20,7 @@
 \newcommand{\cZ}{\mathcal{Z}}
 \newcommand{\Spec}{\mathrm{Spec}}
 \newcommand{\Supp}{\mathrm{Supp}}
+\newcommand{\hgt}{\mathrm{height}}
 \newcommand{\Min}{\mathrm{Min}}
 \newcommand{\Max}{\mathrm{Max}}
 \newcommand{\Ass}{\mathrm{Ass}}
@@ -76,16 +77,13 @@
 
 \
 
-\item Let $K$ be a field and $R\subseteq S$ be a module-finite inclusion of domains\footnote{Warning: we aren't assuming that $R$ is normal. You might find it useful to leverage that case though\dots} that are algebra-finite over~$K$. Show that  for any $\q \in \Spec(S)$, the height of $\q$ equals the height of $\q \cap R$.
-
-\
 
 
 \item Let $R$ be a ring, not necessarily Noetherian, and $S=R[X]$ a polynomial ring in one variable over~$R$.
 \begin{enumerate} 
 \item Show that for any prime ideal $\p$ in $R$, any chain of prime ideals of $S$ that all contract to $\p$ has length at most one.
 \item Show that if $\dim(R)=d$, then $d+1 \leq \dim(S) \leq 2d+1$.
-\item Let $R= \Q + T \,\R \llbracket T \rrbracket$, i.e., the subring of $R' = \R \llbracket T \rrbracket$ consisting of all power series whose constant term is rational. Verify that $R$ is a ring, that $R$ has dimension one, and\footnote{Hint: Let $\p$ be the prime ideal $T\C \llbracket T \rrbracket\subseteq R$ and let  $\alpha:R[X]\to R'$ be the $R$-algebra homomorphism given by $\alpha(X)=e$. Show that $\ker(\alpha) \\subsetneqq \p S$.} that the dimension of $R[X]$ is three.
+\item Let $R= \Q + T \,\R \llbracket T \rrbracket$, i.e., the subring of $R' = \R \llbracket T \rrbracket$ consisting of all power series whose constant term is rational. Verify that $R$ is a ring, that $R$ has dimension one, and\footnote{Hint: Let $\p$ be the prime ideal $T\C \llbracket T \rrbracket\subseteq R$ and let  $\alpha:R[X]\to R'$ be the $R$-algebra homomorphism given by $\alpha(X)=e$. Show that $\ker(\alpha) \subsetneqq \p S$.} that the dimension of $R[X]$ is three.
 \end{enumerate}
 
 
@@ -94,18 +92,22 @@
 
 
 
-\item Artinian modules:
-\begin{enumerate}
 \item Show that the $\Z$-module $\Z[1/2]/\Z$ is Artinian but not Noetherian.
-\item Let $R$ be a Noetherian ring and $M$ be an $R$-module. Show that if $M$ is Artinian, then ${\Supp(M)\subseteq \Max(R)}$.
-\item Let $K$ be a field, and $R$ be a $\N$-graded ring with $R_0=K$ and $R$ finitely generated over $K$. Let $M$ be a nonzero $\Z$-graded $R$-module. Show that if $M$ is Artinian, then 
-\begin{itemize}
-\item there is some $k\in \Z$ such that $M_t=0$ for all $t\geq k$, and 
-\item for $n=\max\{ t \ | \ M_t\neq 0\}$, $M_n$ is a finite-dimensional $K$-vectorspace.
-\end{itemize}
-\end{enumerate}
 
 \
+
+
+\item Let $K$ be an algebraically closed field, $R=K[X_1,\dots,X_n]$, and 
+\[S=R[Y_1,\dots,Y_n]=K[X_1,\dots,X_n,Y_1,\dots,Y_n]\] be polynomial rings. For $f\in R$, we will also write $f(X)$ for $f$, and we write $f(Y)$ for the element\footnote{To be pedantic, let $\phi:R\to S$ be the $K$-algebra homomorphism given by $\phi(X_i)=Y_i$; then $f(Y)=\phi(f)$.} of $S$ obtained by replacing $X$-variables with $Y$-variables in $f$. For an ideal $I\subseteq R$, we write $I(Y) = \{ f(Y) \ | \ f\in I\}$.
+
+ Let $\p,\q$ be prime ideals in $R$.
+ \begin{enumerate}
+\item Let $\{F_1,\dots,F_a\}$ be a set elements of $R$ whose images generate a Noether normalization for $R/\p$, and $\{G_1,\dots,G_b\}$ be a set of elements of $R$ whose elements generate a Noether normalization for $R/\q$. Show that the images of $\{F_1(X),\dots,F_a(X),G_1(Y),\dots,G_b(Y)\}$ generate a Noether normalization\footnote{Hint: Given an equation $\sum c_{\alpha,\beta} F^\alpha G^\beta \in \p(X) S + \q(Y) S$, evaluate the $Y$ variables at $\beta\in Z(\q)$ to get an equation in $R$\dots} for $\ds\frac{S}{\p(X) S + \q(Y)S}$. Deduce that 
+\[\dim\left(\frac{S}{\p(X) S + \q(Y)S}\right) = \dim(R/\p) + \dim(R/\q).\]
+\item Show that \[\frac{S}{\p(X) S + \q(Y)S + (X_1-Y_1,\dots,X_n-Y_n)}\cong \frac{R}{\p+\q}.\] Deduce (this is the punchline) that $\hgt(\p+\q) \leq \hgt(\p) + \hgt(\q)$.
+\item Let $\ds T=\frac{\C[X,Y,U,V]}{(XV-YU)}$, $\p=(X,U)$, and $\q=(Y,V)$. Show that $\hgt(\p)=\hgt(\q)=1$ by $\hgt(\p+\q)=3$.
+\end{enumerate}
+
 
 
 
