@@ -13,6 +13,8 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\F}{\mathbb{F}}
+\newcommand{\X}{\mathbf{X}}
+\newcommand{\Y}{\mathbf{Y}}
 \newcommand{\e}{\varepsilon}
 \newcommand{\p}{\mathfrak{p}}
 \newcommand{\q}{\mathfrak{q}}
@@ -98,13 +100,13 @@
 
 
 \item Let $K$ be an algebraically closed field, $R=K[X_1,\dots,X_n]$, and 
-\[S=R[Y_1,\dots,Y_n]=K[X_1,\dots,X_n,Y_1,\dots,Y_n]\] be polynomial rings. For $f\in R$, we will also write $f(X)$ for $f$, and we write $f(Y)$ for the element\footnote{To be pedantic, let $\phi:R\to S$ be the $K$-algebra homomorphism given by $\phi(X_i)=Y_i$; then $f(Y)=\phi(f)$.} of $S$ obtained by replacing $X$-variables with $Y$-variables in $f$. For an ideal $I\subseteq R$, we write $I(Y) = \{ f(Y) \ | \ f\in I\}$.
+\[S=R[Y_1,\dots,Y_n]=K[X_1,\dots,X_n,Y_1,\dots,Y_n]\] be polynomial rings. For $f\in R$, we will also write $f(\X)$ for $f$, and we write $f(\Y)$ for the element\footnote{To be pedantic, let $\phi:R\to S$ be the $K$-algebra homomorphism given by $\phi(X_i)=Y_i$; then $f(Y)=\phi(f)$.} of $S$ obtained by replacing $X$-variables with $Y$-variables in $f$. For an ideal $I\subseteq R$, we write $I(\Y) = \{ f(\Y) \ | \ f\in I\}$.
 
  Let $\p,\q$ be prime ideals in $R$.
  \begin{enumerate}
-\item Let $\{F_1,\dots,F_a\}$ be a set elements of $R$ whose images generate a Noether normalization for $R/\p$, and $\{G_1,\dots,G_b\}$ be a set of elements of $R$ whose elements generate a Noether normalization for $R/\q$. Show that the images of $\{F_1(X),\dots,F_a(X),G_1(Y),\dots,G_b(Y)\}$ generate a Noether normalization\footnote{Hint: Given an equation $\sum c_{\alpha,\beta} F^\alpha G^\beta \in \p(X) S + \q(Y) S$, evaluate the $Y$ variables at $\beta\in Z(\q)$ to get an equation in $R$\dots} for $\ds\frac{S}{\p(X) S + \q(Y)S}$. Deduce that 
-\[\dim\left(\frac{S}{\p(X) S + \q(Y)S}\right) = \dim(R/\p) + \dim(R/\q).\]
-\item Show that \[\frac{S}{\p(X) S + \q(Y)S + (X_1-Y_1,\dots,X_n-Y_n)}\cong \frac{R}{\p+\q}.\] Deduce (this is the punchline) that $\hgt(\p+\q) \leq \hgt(\p) + \hgt(\q)$.
+\item Let $\{F_1,\dots,F_a\}$ be a set elements of $R$ whose images generate a Noether normalization for $R/\p$, and $\{G_1,\dots,G_b\}$ be a set of elements of $R$ whose elements generate a Noether normalization for $R/\q$. Show that the images of $\{F_1(\X),\dots,F_a(\X),G_1(\Y),\dots,G_b(\Y)\}$ generate a Noether normalization\footnote{Hint: Given an equation $\sum c_{\alpha,\beta} F^\alpha G^\beta \in \p(\X) S + \q(\Y) S$, evaluate the $Y$ variables at $\beta\in Z(\q)$ to get an equation in $R$\dots} for $\ds\frac{S}{\p(\X) S + \q(\Y)S}$. Deduce that 
+\[\dim\left(\frac{S}{\p(\X) S + \q(\Y)S}\right) = \dim(R/\p) + \dim(R/\q).\]
+\item Show that \[\frac{S}{\p(\X) S + \q(\Y)S + (X_1-Y_1,\dots,X_n-Y_n)}\cong \frac{R}{\p+\q}.\] Deduce (this is the punchline) that $\hgt(\p+\q) \leq \hgt(\p) + \hgt(\q)$.
 \item Let $\ds T=\frac{\C[X,Y,U,V]}{(XV-YU)}$, $\p=(X,U)$, and $\q=(Y,V)$. Show that $\hgt(\p)=\hgt(\q)=1$ but $\hgt(\p+\q)=3$.
 \end{enumerate}
 
