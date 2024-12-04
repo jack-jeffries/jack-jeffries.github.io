@@ -4553,14 +4553,13 @@ On the other hand, \[\begin{aligned}  \lim\limits_{x\to s} d(g(x)) \cdot \frac{g
 \end{framed}
 
 \end{enumerate}
-\begin{comment}
+
 \newpage
 
-	\section*{Derivatives and Optimization \S4.3}
-	
+	\Dec{2}{\Mo}{4.3}	
 
 \begin{framed} 
- \noindent \textsc{Theorem 37.1:} Let $f$ be a function that is differentiable at $x=r$.
+ \noindent \textsc{Theorem 38.1:} Let $f$ be a function that is differentiable at $x=r$.
  \begin{enumerate}
  \item 
  If $f'(r) > 0$, then there is some $\delta>0$ such that 
@@ -4580,7 +4579,7 @@ On the other hand, \[\begin{aligned}  \lim\limits_{x\to s} d(g(x)) \cdot \frac{g
   
   \
   
-  \noindent \textsc{Corollary 37.2 (Derivatives and optimization):}
+  \noindent \textsc{Corollary 38.2 (Derivatives and optimization):}
   Let $f$ be a function that is continuous on a closed interval $[a,b]$. If $f$ attains a maximum or minimum value on $[a,b]$ at $r\in (a,b)$, and $f$ is differentiable at $r$, then $f'(r)=0$.
  \end{framed}
 
@@ -4592,12 +4591,27 @@ On the other hand, \[\begin{aligned}  \lim\limits_{x\to s} d(g(x)) \cdot \frac{g
  \item Find the values of $x$ on $[0,2]$ at which the function $f(x) = x^3-x^2-2x$ achieves its minimum and maximum values. Justify your answer carefully using the results above.
  
   \begin{framed}
-  We know that $f$ attains a minimum and maximum on $[0,2]$ by the EVT, since $f$ is continuous. Either there is a maximum at $0$ or $2$, or it occurs at some $r\in (0,2)$. Since $f$ is differentiable on $(0,2)$, there can only be a maximum at $r$ if $f'(r)=0$. We solve $f'(r)=0$: $f'(x)=3x^2-2x-2$, so $x=
+  We know that $f$ attains a minimum and maximum on $[0,2]$ by the EVT, since $f$ is continuous. Either there is a maximum at $0$ or $2$, or it occurs at some $r\in (0,2)$. Since $f$ is differentiable on $(0,2)$, there can only be a maximum at $r\in (0,2)$ if $f'(r)=0$. We solve $f'(r)=0$: $f'(x)=3x^2-2x-2$, so $r\approx 1.21525$. Thus, the maximum value of $f$ on $[0,2]$ either occurs at $x=0$,$x=2$ or $x=1.21525$; and likewise for the minimum. Then, plugging in the three values, into the original function, we have $f(0)=0=f(2)$ and $f(1.21525)<0$. The value $f(1.21525)$ cannot be a maximum since there are smaller values, so $f(0$ or $f(2)$ is; since they yield equal outputs, the maximum occurs at both values. Along similar lines, $f(1.21525)$ is the minimum.
   \end{framed} 
  
  \item Explain why the Corollary follows from the Theorem.
  
- \
+  \begin{framed}
+  Let $f$ be a function that is continuous on a closed interval $[a,b]$. Take $r\in (a,b)$, and suppose that $f$ is differentiable at $r$. If $f'(r)>0$, by the Theorem, for all sufficiently close values larger than $r$, $f(x)>f(r)$, so $f$ cannot attain a maximum at $r$. If $f'(r)<0$, by the Theorem, for all sufficiently close values smaller than $r$, $f(x)>f(r)$, so $f$ cannot attain a maximum at $r$. Thus, if $f$ attains a maximum at $x=r$, then $f'(r)=0$.
+  
+The argument for minima is similar.
+    \end{framed} 
+    
+    
+    \end{enumerate}
+    
+    
+\newpage
+
+	\Dec{4}{\We}{4.3}
+	
+	\begin{enumerate}
+	\setcounter{enumi}{2}
  
  \item Give examples of continuous functions on $[0,2]$ such that
  \begin{enumerate}
@@ -4616,20 +4630,27 @@ On the other hand, \[\begin{aligned}  \lim\limits_{x\to s} d(g(x)) \cdot \frac{g
   \item If $h(x) > 0$ and $x<r$, what can you say about $f(x) - f(r)$?
   \end{itemize}
 
-
-\
+\begin{framed}
+Take $h(x) = \frac{ f(x) - f(r) }{x - r}$.  Let \[\e=f'(r) = \lim_{x\to r} h(x).\] Then there is some $\d>0$ such that $|h(x) - f'(r)| > \e$ when $x\in (r-\d,r) \cup (r,r+\d)$. But $|h(x) - f'(r)| < f'(r)$ implies $h(x)>0$. If $h(x)>0$ and $x>r$ then $x-r>0$ so $f(x)-f(r) = h(x) (x-r)>0$. Thus, if $x\in (r,r+\d)$, then $f(x)>f(r)$. If $x<r$, then $x-r<0$ so $f(x)-f(r) = h(x) (x-r)<0$. Thus, if $x\in (r-\d,r)$, then $f(x)<f(r)$.
+\end{framed}
 
  \item Prove part (2) of the Theorem.
  
- \
+\begin{framed}
+Similar to above.
+\end{framed}
  
  \item True or false: If $f'(7)>0$, then $f(7.0000001)>f(7)$.
  
- \
+\begin{framed}
+False: Take $f(x)=(x-7) - 2*10^7(x-7)^2$. Then $f'(7) = 1$, but $f(7+10^{-7}) =10^{-7} - 2 10^7* 10^{-14} = -10^{-7}<0 = f(7)$.
+\end{framed}
  
   \item True or false: If $f'(7)>0$, then there exists some $N\in \N$ such that for all natural numbers $n>N$,  $f\left(7+ \frac{1}{10^n}\right)>f(7)$.
-
- 
+  
+\begin{framed}
+True: there is some $\delta>0$ such that $f(x)>f(7)$ for $7<x<7+\delta$. There exists some $N$ such that $10^{-N} < \delta$. Then if $n>N$, we have $7< 7+ \frac{1}{10^n} < 7 +  \frac{1}{10^N} < 7+ \delta$, so $f(7+ \frac{1}{10^n}) > f(7)$.
+\end{framed}
 \end{enumerate}
 
 
@@ -4674,7 +4695,7 @@ where for the last step we use that $\lim_{x \to r} g(x) = g(r)$ since $g$ is co
  \end{framed}
  
  \end{enumerate}
- 
+ \begin{comment}
  
 	\section*{Derivatives and optimization}
 
