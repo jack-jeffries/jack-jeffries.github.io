@@ -1,0 +1,164 @@
+ \documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=.7in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals,bbm}
+\usepackage[all]{xy}
+
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\ord}{\mathrm{ord}}
+\newcommand{\ann}{\mathrm{ann}}
+\newcommand{\hgt}{\mathrm{height}}
+\newcommand{\Min}{\mathrm{Min}}
+\newcommand{\Max}{\mathrm{Max}}
+\newcommand{\Spec}{\mathrm{Spec}}
+\newcommand{\Ass}{\mathrm{Ass}}
+\renewcommand{\1}{\mathbbm{1}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+\usepackage[hang,flushmargin]{footmisc}
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{\S8.35: Artinian rings and modules}
+	
+	\begin{framed}
+	
+	\noindent	 \textsc{Definition:} A ring $R$ is \textbf{Artinian} if every descending chain of ideals $I_1 \supseteq I_2 \supseteq I_3 \supseteq \cdots$ eventually stabilizes: i.e., there is some $N$ such that $I_n=I_N$ for all $n\geq N$. A module is \textbf{Artinian} if every descending chain of submodules $N_1 \supseteq N_2 \supseteq N_3 \supseteq \cdots$ eventually stabilizes.
+	
+	\
+	
+	\noindent \textsc{Proposition:} Let $R$ be a ring and $M$ be a module.
+	\begin{enumerate}
+	\item $M$ is Artinian if and only if every nonempty family $\mathcal{S}$ of submodules of $M$ has a minimal element.
+	\item If $N$ is a submodule of $M$, then $M$ is Artinian if and only if $N$ and $M/N$ are both Artinian.
+	\end{enumerate}
+	
+\
+	
+		\noindent	\textsc{Theorem:} Let $R$ be a ring. The following are equivalent:
+		\begin{enumerate}
+		\item $R$ is Noetherian of dimension zero,
+		\item $R$ is a finite product of Noetherian local rings of dimension zero,
+		\item $R$ is a finite length $R$-module,
+		\item $R$ is Artinian.
+		\end{enumerate}
+	
+		\end{framed}
+
+
+\begin{enumerate}
+\itemA Jordan-H\"older review: Explain why a finite length module is Artinian.
+
+\solution{Given such a chain, the length of each successive submodule is smaller, so any such chain can have length at most the length of $M$.
+}
+
+
+\itemA Proof of the Theorem, the useful part: Prove\footnote{Hint: In the setting of (i), note that $V(0)$ is a finite set of maximal ideals, and use a homework problem.} that (i)$\Rightarrow$(ii)$\Rightarrow$(iii)$\Rightarrow$(iv).
+
+\solution{For (i)$\Rightarrow$(ii), if $R$ is Noetherian of dimension zero, then $V(0)$ consists of maximal ideals by the dimension assumption, and is finite since every such ideal is minimal, and Noetherian rings have finitely many minimal primes. Then, by a homework problem, since $V(0)$ is a finite set of maximal ideals, $R=R/0 \cong R/Q_1 \times \cdots \times R/Q_t$ where each $Q_t$ is primary to a maximal ideal, so each $R/Q_i$ is local of dimension zero (and Noetherian, since it is a quotient of a Noetherian ring).
+
+For (ii)$\Rightarrow$(iii), we have that $R$ is a fintiely generated $R$-module whose support is a finite set of maximal ideals, so $R$ has finite length.
+
+(iii)$\Rightarrow$(iv) follows from the previous problem.
+}
+
+\itemB Vector spaces:
+\begin{enumerate} 
+\itemb Let $K$ be a field and $V$ be a vector space. Show that $V$ is finite-dimensional if and only if $V$ is Noetherian if and only if $V$ is Artinian.
+\itemb Let $(R,\m,k)$ be a local ring, and $M$ be an $R$-module such that $\m M=0$. Show that 
+$M$ has finite length  if and only if $M$ is Noetherian  if and only if $M$ is Artinian.
+\end{enumerate}
+
+\solution{
+\begin{enumerate} 
+\itema Finite-dimensional is the same as finite length, and finite length implies Noetherian and Artinian in general. Conversely, in an infinite dimensional vector space, one can take a basis and construct infinite ascending or descending chains of subsets of the basis, and the spans form infinite ascending or descending chains of subspaces, so $V$ is neither Artinian nor Noetherian.
+\itema One can identify such a module with a $k$-module and apply part (1).
+\end{enumerate}
+}
+
+\itemB Proof of the Theorem, the fun part: Suppose that $R$ is Artinian.
+\begin{enumerate}
+\itemb First, we show $\dim(R)=0$: By way of contradiction, suppose there is nonmaximal prime~$\p$, so there is some nonzero nonunit $a\in R/\p$. Consider the descending chain of ideals 
+\[ (a) \supseteq (a^2) \supseteq (a^3) \supseteq\cdots.\] 
+to obtain a contradiction.
+\itemb Second, we show that $\Max(R)$ is finite: By way of contradiction, if $\m_1,\m_2,\m_3,\dots$ are distinct maximal ideals, consider the descending chain of ideals
+\[ \m_1  \supseteq \m_1 \cap \m_2  \supseteq \m_1 \cap \m_2 \cap \m_3\supseteq \cdots.\] 
+\itemb Third, we show that $R$ is a finite product of Artinian local rings of dimension zero: Apply a homework problem.
+\itemb Fourth, we show that an Artinian local ring $(R,\m,k)$ has finite length: Consider the chain
+\[ \m \supseteq \m^2 \supseteq \m^3 \supseteq\cdots.\]
+What do we deduce? Why do we \emph{not} immediate deduce that $\m^n=0$ for some $n$ from NAK?
+\itemb Fourth continued: If $\m^n=\m^{n+1}$ and $\m^n\neq 0$, consider $\mathcal{S}=\{ \text{ideals} \ J \ | \ J\m^n \neq 0\}$. Explain why $\mathcal{S}$ has a minimal element $I$, and $I$ is principal. Now deduce that $\m^n=0$.
+\itemb Fourth continueder: Explain why $\m^i / \m^{i+1}$ has finite length for each $i$. Deduce that $R$ has finite length.
+\itemb  Complete the proof.
+\end{enumerate}
+\solution{
+\begin{enumerate} 
+\itema Finite-dimensional is the same as finite length, and finite length implies Noetherian and Artinian in general. Conversely, in an infinite dimensional vector space, one can take a basis and construct infinite ascending or descending chains of subsets of the basis, and the spans form infinite ascending or descending chains of subspaces, so $V$ is neither Artinian nor Noetherian.
+\itema One can identify such a module with a $k$-module and apply part (1).
+\end{enumerate}
+}
+
+\itemB Artinian Modules:
+
+\begin{enumerate}
+\item Let $K$ be a field. Show that the $K[X]$-module $K[X]_X / K[X]$ is Artinian but not finite length.
+\item Show that an $R$-module $M$ has finite length if and only if it is Artinian and Noetherian.
+\item Let $R$ be a Noetherian ring. Show that if $M$ is an Artinian module, then $\Ass_R(M)\subseteq \Max(R)$.
+\item Let $R$ be a Noetherian $\N$-graded ring with $R_0=K$ a field. Show that if $M$ is an Artinian $\Z$-graded module, then there is some $n$ such that $M_{\geq n}=0$.
+\item Let $R$ be a Noetherian ring. If $M$ is an Artinian module, must $\Ass_R(M)$ be finite?\end{enumerate}
+\end{enumerate}
+\end{document}
