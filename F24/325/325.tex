@@ -4653,182 +4653,79 @@ True: there is some $\delta>0$ such that $f(x)>f(7)$ for $7<x<7+\delta$. There e
 \end{framed}
 \end{enumerate}
 
+\Dec{6}{\Fr}{4.4}
 
+\begin{framed} 
 
-\begin{comment}	
- 
- \begin{enumerate}\setcounter{enumi}{5}
- \item Prove that if $f(x)=x^n$, then $f$ is differentiable at any value of $x$ and $f'(x) = n x^{n-1}$ for every $n\in \N$.
- 
-  \begin{framed}
-  We proceed by induction on $n$.
-For the base case, we use the definition to show that the derivative of $x$ is $1$ (skipped here). 
-Suppose that $(x^k)' = k x^{k-1}$. Then $(x^{k+1})' = x (x^k)' + x' (x^k) = x kx^{k-1} + x^k = (k+1) x^k$. This shows the claim for all $n\in \N$ by induction.
-\end{framed}
+ \noindent \textsc{Theorem 39.1 (Rolle's Theorem):}\index{Rolle's Theorem}  Let $f$ be continuous on the closed interval $[a,b]$ and differentiable at every point of $(a,b)$. If $f(a) = f(b)$, then there exists a $c \in
+  (a,b)$ such that $f'(c) = 0$.
   
- \item Use the Theorem plus the previous problem to compute the derivative of $f(x) = 5x^7 - \sqrt{19} x^4$.
- 
-  \begin{framed}
-  $35 x^6 - 4 \sqrt{19} x^3$.
-  \end{framed}
- 
- \item Prove the Theorem.
- 
- \begin{framed}
- For part (1), we note that \[ \frac{(f+g)(x) - (f+g)(r)}{x-r} = \frac{f(x) + g(x) - f(r) - g(r)}{x-r} = \frac{f(x)-f(r)}{x-r} + \frac{g(x) - g(r)}{x-r}.\] When we take the limit as $x$ approaches $r$, this is $f'(r) + g'(r)$, using the definition of $f'(r)$ and $g'(r)$ and the fact that the limit of a sum of two functions is the sum of the limits (when they both exist).
-
-For (2),   we note that \[ \frac{(cf)(x) - (cf)(r)}{x-r} = c \frac{f(x) - f(r)}{x-r},\] and it follows from our limit theorems that the limit as $x$ approaches $r$ is $cf'(r)$.
-
-
-  For (3), using what we know about limits we get 
-$$
-\begin{aligned}
-& \lim_{x \to r} \frac{f(x)g(x) - f(r)g(r)}{x-r} 
-=  \lim_{x \to r} \left(\frac{f(x)g(x) - f(r)g(x)}{x-r}  + \frac{f(r)g(x) -     f(r)g(r)}{x-r} \right) \\
-& =  \lim_{x \to r} g(x) \cdot \lim_{x \to r}\left(\frac{f(x) - f(r)}{x-r}\right)  
-+ f(r) \cdot \lim_{x \to r} \left(\frac{g(x) -     g(r)}{x-r} \right)  \\
-&= g(r) f'(r) + f(r) g'(r),
-\end{aligned}
-$$
-where for the last step we use that $\lim_{x \to r} g(x) = g(r)$ since $g$ is continuous at $r$ (since differentiable implies continuous).
-
- \end{framed}
- 
- \end{enumerate}
- \begin{comment}
- 
-	\section*{Derivatives and optimization}
-
-
- 
- \begin{framed} 
- \noindent \textbf{Theorem:} Let $f$ be a function that is differentiable at $x=r$.
- \begin{enumerate}
- \item 
- If $f'(r) > 0$, then there is some $\delta>0$ such that 
- \begin{itemize}
- \item if $x\in (r,r+\delta)$ then $f(r) < f(x)$;
-  \item if $x\in (r-\delta,r)$ then $f(x) < f(r)$.
-  \end{itemize}
-  
-  \item  If $f'(r) < 0$, then there is some $\delta>0$ such that 
-  \begin{itemize}
- \item if $x\in (r,r+\delta)$ then $f(r) > f(x)$;
- \item if $x\in (r-\delta,r)$ then $f(x) > f(r)$.
-  \end{itemize}
-  \end{enumerate}
   
   \
   
-  \noindent \textbf{Corollary (Derivatives and optimization):}
-  Let $f$ be a function that is continuous on a closed interval $[a,b]$. If $f$ attains a maximum or minimum value on $[a,b]$ at $r\in (a,b)$, and $f$ is differentiable at $r$, then $f'(r)=0$.
-  
- \end{framed}
+ \noindent \textsc{Theorem 39.2 (Mean Value Theorem):}\index{Mean Value Theorem} Let $f$ be a function that is continuous on the closed interval $[a,b]$ and differentiable on $(a,b)$. Then there exists some $c\in (a,b)$ such that
+ \[ f'(c) = \frac{f(b) - f(a)}{b-a}.\]
  
- \begin{enumerate}
+ \
  
- \item Find the values of $x$ on $[0,2]$ at which $f(x) = x^3-2x$ achieves its minimum and maximum values.
- 
-\begin{framed}
-Since $f$ is differentiable on $(0,2)$, they must be where the derivative is zero or at the endpoints. $f'(x)=0$ means $3x^2=6$ so $x=\pm \sqrt{2}$. The minimum is at $x=\sqrt{2}$ and the max is at $x=2$.
-\end{framed}
-
- 
- \item Explain why the Corollary follows from the Theorem.
- 
- \begin{framed}
-Suppose $f$ attains a max on $[a,b]$ at $r\in(a,b)$ and $f$ is differentiable at $r$, but $f'(r)\neq 0$. If $f'(r)>0$, then the first bullet of part (1) gives an $x$ that yields a contradiction; if $f'(r)<0$, then the second bullet bullet of part (2) gives an $x$ that yields a contradiction. If $f$ attains a min, similarly with the other bullet points.
-\end{framed}
-
-\end{enumerate}
- 
- \Dec{6}
- 
- Last time we considered the following theorem about derivatives and nearby values:
- 
-\begin{thm}\label{derivatives and nearby values} Let $f$ be a function that is differentiable at $x=r$.
- \begin{enumerate}
- \item 
- If $f'(r) > 0$, then there is some $\delta>0$ such that 
- \begin{itemize}
- \item if $x\in (r,r+\delta)$ then $f(r) < f(x)$;
-  \item if $x\in (r-\delta,r)$ then $f(x) < f(r)$.
-  \end{itemize}
-  
-  \item  If $f'(r) < 0$, then there is some $\delta>0$ such that 
-  \begin{itemize}
- \item if $x\in (r,r+\delta)$ then $f(r) > f(x)$;
- \item if $x\in (r-\delta,r)$ then $f(x) > f(r)$.
-  \end{itemize}
-  \end{enumerate}
-  \end{thm}
-
-\begin{proof}
-We start with part (1).
-Take $h(x) = \frac{ f(x) - f(r) }{x - r}$.  Let \[\e=f'(r) = \lim_{x\to r} h(x).\] Then there is some $\d>0$ such that $|h(x) - f'(r)| > \e$ when $x\in (r-\d,r) \cup (r,r+\d)$. But $|h(x) - f'(r)| < f'(r)$ implies $h(x)>0$. If $h(x)>0$ and $x>r$ then $x-r>0$ so $f(x)-f(r) = h(x) (x-r)>0$. Thus, if $x\in (r,r+\d)$, then $f(x)>f(r)$. If $x<r$, then $x-r<0$ so $f(x)-f(r) = h(x) (x-r)<0$. Thus, if $x\in (r-\d,r)$, then $f(x)<f(r)$. Part (2) is similar.
-\end{proof}
-
-We now want to use derivatives to study when a function is increasing or decreasing. 
-\begin{defn} Let $f$ be a function, and $I\subseteq \R$ be an interval contained in domain of~$f$. We say that 
+ \noindent \textsc{Definition 39.3:} Let $f$ be a function, and $S\subseteq \R$ be a set of real numbers contained in domain of~$f$. We say that 
 \begin{itemize}
-\item $f$ is \emph{increasing} on $I$ if for any $a,b\in I$ with $a<b$ we have $f(a) \leq f(b)$;
-\item $f$ is \emph{decreasing} on $I$ if for any $a,b\in I$ with $a<b$ we have $f(a) \geq f(b)$;
-\item $f$ is \emph{constant} on $I$ if for any $a,b\in I$ with $a<b$ we have $f(a) = f(b)$;
-\item  $f$ is \emph{strictly increasing} on $I$ if for any $a,b\in I$ with $a<b$ we have $f(a) < f(b)$;
-\item $f$ is \emph{strictly decreasing} on $I$ if for any $a,b\in I$ with $a<b$ we have $f(a) > f(b)$.
+\item $f$ is \textbf{increasing}\index{increasing} on $S$ if for any $a,b\in S$ with $a<b$ we have $f(a) \leq f(b)$;
+\item $f$ is \textbf{decreasing}\index{decreasing} on $S$ if for any $a,b\in S$ with $a<b$ we have $f(a) \geq f(b)$;
+\item $f$ is \textbf{constant}\index{constant} on $S$ if for any $a,b\in S$ with $a<b$ we have $f(a) = f(b)$;
+\item  $f$ is \textbf{strictly increasing}\index{strictly increasing} on $S$ if for any $a,b\in S$ with $a<b$ we have $f(a) < f(b)$;
+\item $f$ is \textbf{strictly decreasing}\index{strictly decreasing} on $S$ if for any $a,b\in S$ with $a<b$ we have $f(a) > f(b)$.
 \end{itemize}
-\end{defn}
 
-We may be tempted by the previous theorem to say that if the derivative of $f$ is positive then $f$ is increasing.
-Before we get ahead of ourselves, let's consider a strange example.
-
-\begin{ex}
-Consider the function $f(x)= \begin{cases} x^2  + x & \text{if} \ x\in \Q \\ x &\text{if} \ x\notin \Q \end{cases}$.
-Note that we can write $f(x) = f_1(x) + f_2(x)$ where $f_1(x) = x$ and $f_2(x) =  \begin{cases} x^2  & \text{if} \ x\in \Q \\ 0 &\text{if} \ x\notin \Q \end{cases}$.
-We have shown that $f_1$ is differentiable at any $x\in \R$ and $f_1'(x) = 1$, and $f_2$ is differentiable at $x=0$ with $f_2'(0)=0$. Thus $f$ is differentiable at $0$ and $f'(0)=1$. However, $f$ is not increasing on any interval containing $0$. To see it, let $a<0<b$ so $0\in (a,b)$. Using density of rational numbers pick a rational number $q$ with $0<q<\d$. Then $q^2>0$ so $q^2+q>q$. By density of irrational numbers, there is some irrational number $z$ with $q<z<\min\{q^2+q,b\}$. Then $q<z$ (and both are in $(a,b)$) but $f(q)=q^2+q>z=f(z)$, so $f$ is not increasing on $(a,b)$.
-\end{ex}
-
-However, not all is hopeless. The important ingredient we need is the following.
+\
 
 
-\begin{thm}[Mean Value Theorem] Assume $f$ is continuous on the closed interval $[a,b]$ and differentiable at every point of $(a,b)$. Then there exists a $c \in
-  (a,b)$ such that 
-$$
-f'(c) = \frac{f(b) - f(a)}{b-a}.
-$$
-\end{thm}
-\begin{proof}
-First we deal with the special case in which $f(a) = f(b)$.
-
-If $f$ is constant on $[a,b]$, then the derivative of $f$ is zero at every point. By the Extreme Value Theorem, $f$ attains a minimum and a maximum on $[a,b]$; say $m$ and $M$, respectively. We have $m \leq f(a) = f(b) \leq M$. If $m$ and $M$ are both equal to $f(a)$ and $f(b)$, then $f$ is constant on $[a,b]$, and we're done. Otherwise, either the minimum or maximum occurs at some $c$  other than $a$ and $b$, so in $c\in (a,b)$. Then the Corollary on Derivatives and Optimization says that $f'(c)=0$.
-
-Now, we no longer assume that $f(a)=f(b)$. Let $\ell(x) = \frac{f(b) - f(a)}{b-a}\, x$. Then for $g(x) = f(x) - \ell(x)$, we have \[ g(b) - g(a) = f(b) - f(a) - (\ell(b) -\ell(a)) = f(b)-f(a) - (\frac{f(b) - f(a)}{b-a})(b-a) = 0.\]
-Since $\ell$ is continuous on $[a,b]$ and differentiable on $(a,b)$, so is $g$, and the previous case implies that there exists a $c\in (a,b)$ with $g'(c)=0$. But \[0=g'(c) = f'(c) - \ell'(c) = f'(c) - \frac{f(b) - f(a)}{b-a},\]
-so $f'(c) = \frac{f(b) - f(a)}{b-a}$ as required.
-\end{proof}
-
-
-
-
-\begin{cor}
-Suppose $I$ is an open interval (that is, $I = (a,b)$, $(a, \infty)$, $(-\infty, b)$, or $(\infty, \infty)$) and $f$ is differentiable on all of $I$.  
+ \noindent \textsc{Corollary 39.4:} Suppose $I$ is an open interval (that is, $I = (a,b)$, $(a, \infty)$, $(-\infty, b)$, or $(\infty, \infty)$) and $f$ is differentiable on all of $I$.  
 \begin{enumerate}
-\item $f'(x) \geq 0$ for all $x \in I$ if and only if $f$ is increasing on $I$.
-\item $f'(x) \leq 0$ for all $x \in I$ if and only if $f$ is decreasing on $I$.
-\item $f'(x) = 0$ for all $x \in I$ if and only if $f$ is a constant on $I$. 
+\item $f'(x) \geq 0$ for all $x \in I$ if and only if $f$ is increasing on all of $I$.
+\item $f'(x) \leq 0$ for all $x \in I$ if and only if $f$ is decreasing on all of $I$.
+\item $f'(x) = 0$ for all $x \in I$ if and only if $f$ is a constant function on $I$. 
 \end{enumerate}
-\end{cor}
-\begin{proof}
-We start with (1). 
 
-For the $(\Rightarrow)$ direction, assume that $f'(x)\geq 0$ for all $x\in I$. To show that $f$ is increasing, let $a,b\in I$ with $a<b$. Then $f$ is differentiable on $(a,b)$ since $(a,b)\subset I$ and $f$ is continuous on $[a.b]$ since $f$ is continuous on $I$ and $[a.b]\subset I$. Thus, by the Mean Value Theorem, there is some $c\in (a,b)$ with $0 \leq f'(c) = \frac{f(b) - f(a)}{b-a}$. Since $a<b$, $b-a>0$ so we must have $f(b)-f(a)\geq 0$, so $f(a)\leq f(b)$, as required.
+ 
+  \end{framed}
+\begin{enumerate}
 
-For the $(\Leftarrow)$ direction, we argue the contrapositive. Assume that $f'(r) < 0$ for all some $r\in I$. By Theorem~?, there is some $\delta>0$ such that $f(x) < f(r)$ for all $x\in (x,x+\d)$, so there is some $x\in I$ with $r<x$ and $f(x) > f(r)$. This implies that $f$ is not increasing on $I$.
 
-For (2), we can argue similarly or apply (1) to $-f(x)$.
+\item Determine on which intervals the function $f(x)=x^3-3x+1$ is increasing or decreasing.
 
-For (3), we can argue similarly or observe that $f$ is constant if and only if it is both increasing and decreasing on $I$, and that $f'(x) = 0$ on $I$ if and only if $f'(x)\geq 0$ and $f'(x)\leq 0$ for all $x\in I$.
-\end{proof}
+\begin{framed}
+We have $f'(x)=3x^2-3$. Since $f'(x)>0$ on $(-\infty,-1)$ and $(1,\infty)$ and $f'(x)<0$ on $(-1,1)$, by the Corollary, $f$ is increasing on the first two intervals and decreasing on the last.
+\end{framed}
+ 
+
+\item In this problem, we prove Rolle's Theorem. \begin{enumerate}
+\item First, assume that $f$ is constant on $[a,b]$, and prove the Theorem in this case.
+\item Explain why $f$ has a minimum value and a maximum value on $[a,b]$.
+\item Explain why, in the case that $f$ is not constant, either the minimum or maximum value for $f$ occurs in $(a,b)$, and conclude the proof.
+\end{enumerate}
+
+\begin{framed}
+If $f$ is constant on $[a,b]$, then the derivative of $f$ is zero at every point. By the Extreme Value Theorem, $f$ attains a minimum and a maximum on $[a,b]$; say $m$ and $M$, respectively. We have $m \leq f(a) = f(b) \leq M$. If $m$ and $M$ are both equal to $f(a)$ and $f(b)$, then $f$ is constant on $[a,b]$, and we're done. Otherwise, either the minimum or maximum occurs at some $c$  other than $a$ and $b$, so in $c\in (a,b)$. Then the Min-Max Theorem says that $f'(c)=0$.
+\end{framed}
+
+
+
+\item Prove the Mean Value Theorem.
+\begin{itemize}
+\item Suggestion: Let $\ds \ell(x) = \left(\frac{f(b) - f(a)}{b-a}\right) x$, and show that $f(x) - \ell(x)$ satisfies the hypotheses of Rolle's Theorem.
+\end{itemize}
+
+\begin{framed}
+Let $\ell(x) = \frac{f(b) - f(a)}{b-a}\, x$. Note that \[\begin{aligned} (f(b) -\ell(b))& - (f(a) - \ell(a)) = (f(b) - f(a)) - (\ell(b) - \ell(a)) \\&= (f(b)-f(a)) - (\frac{f(b)-f(a)}{b-a} \ (b-a)) = 0,\end{aligned}\]
+and $f(x) - \ell(x)$ is continuous on $[a,b]$ and differentiable on $(a,b)$. Thus, by Rolle's Theorem, there is some $c\in (a,b)$ such that \[0=(f-\ell)'(c)=f'(c) - \frac{f(b)-f(a)}{b-a},\]
+and the theorem follows.
+\end{framed}
+\end{enumerate}
+
+
+
+\begin{comment}	
  
  
  \subsection*{Discussion Questions}
