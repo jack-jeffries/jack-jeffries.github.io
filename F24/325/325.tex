@@ -4722,7 +4722,40 @@ and $f(x) - \ell(x)$ is continuous on $[a,b]$ and differentiable on $(a,b)$. Thu
 and the theorem follows.
 \end{framed}
 \end{enumerate}
+\newpage
 
+\Dec{9}{\Mo}{4.4}
+
+\begin{enumerate}
+\setcounter{enumi}{3}
+\item In this problem, we prove Corollary~39.4.
+\begin{enumerate}
+\item For the $(\Rightarrow)$ direction of (1), let $a,b\in I$ with $a<b$. Explain why the Mean Value Theorem applies to $f$ on $[a,b]$, and apply it.
+\item For the $(\Leftarrow)$ direction of (1), prove the contrapositive using a result from last time.
+\item Prove the rest of the Corollary.
+\end{enumerate}
+
+\begin{framed}
+Assume that $f'(x) \geq 0$ for all $x\in I$. For $a<b$ in $I$, we have that $f$ is continuous on $[a,b]$ and differentiable on $(a,b)$, so the MVT applies: there is some $c\in (a,b)$ such that $f'(c) = \frac{f(b)-f(a)}{b-a}$. Since $f'(c) \geq 0$ and $b-a>0$, we must have $f(b)-f(a)\geq 0$, so $f(a) \leq f(b)$.
+
+Now assume that $f'(x) < 0$ for all some $x\in I$. By Proposition~34.1, there is some $\delta>0$ such that $f(y) < f(x)$ for all $y\in (x,x+\d)$, so there is some $y\in I$ with $x<y$ and $f(x) > f(y)$. This implies that $f$ is not increasing on~$I$.
+
+For (2), we can argue similarly or apply (1) to $-f(x)$.
+
+For (3), we can argue similarly or observe that $f$ is constant if and only if it is both increasing and decreasing on $I$, and that $f'(x) = 0$ on $I$ if and only if $f'(x)\geq 0$ and $f'(x)\leq 0$ for all $x\in I$.
+\end{framed}
+
+
+\item Prove or disprove: If $J= (-\infty,0) \cup (0,\infty)$ and that $f'(x) = 0$ for all $x\in J$, then $f$ is constant on~$J$.
+
+\
+
+\item Prove or disprove: If $f$ is differentiable and strictly increasing on $\R$, then $f'(x)>0$ on $\R$.
+
+\
+
+\item Prove or disprove: If $f'(x)>0$ on $\R$ then $f$ is strictly increasing on $\R$.
+\end{enumerate}
 
 
 \begin{comment}	
