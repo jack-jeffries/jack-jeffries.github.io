@@ -4643,13 +4643,13 @@ Similar to above.
  \item True or false: If $f'(7)>0$, then $f(7.0000001)>f(7)$.
  
 \begin{framed}
-False: Take $f(x)=(x-7) - 2*10^7(x-7)^2$. Then $f'(7) = 1$, but $f(7+10^{-7}) =10^{-7} - 2 10^7* 10^{-14} = -10^{-7}<0 = f(7)$.
+False: Take $f(x)=(x-7) - 2 \cdot 10^7(x-7)^2$. Then $f'(7) = 1$, but $f(7+10^{-7}) =10^{-7} - 2 10^7* 10^{-14} = -10^{-7}<0 = f(7)$.
 \end{framed}
  
   \item True or false: If $f'(7)>0$, then there exists some $N\in \N$ such that for all natural numbers $n>N$,  $f\left(7+ \frac{1}{10^n}\right)>f(7)$.
   
 \begin{framed}
-True: there is some $\delta>0$ such that $f(x)>f(7)$ for $7<x<7+\delta$. There exists some $N$ such that $10^{-N} < \delta$. Then if $n>N$, we have $7< 7+ \frac{1}{10^n} < 7 +  \frac{1}{10^N} < 7+ \delta$, so $f(7+ \frac{1}{10^n}) > f(7)$.
+True: there is some $\delta>0$ such that $f(x)>f(7)$ for $7<x<7+\delta$. There exists some $N$ such that $10^{-N} < \delta$. Then if $n>N$, we have \[7< 7+ \frac{1}{10^n} < 7 +  \frac{1}{10^N} < 7+ \delta,\] so $f(7+ \frac{1}{10^n}) > f(7)$.
 \end{framed}
 \end{enumerate}
 \newpage
@@ -4749,7 +4749,7 @@ For (3), we can argue similarly or observe that $f$ is constant if and only if i
 \item Prove or disprove: If $J= (-\infty,0) \cup (0,\infty)$ and that $f'(x) = 0$ for all $x\in J$, then $f$ is constant on~$J$.
 
 \begin{framed}
-This is false. One can take $f(x)=\begin{cases} 1 & \text{if} \ x>0 \\ -1 & \text{if} \ x<0 \end{cases}$.
+This is false. One can take $f(x)=\begin{cases} 1 & \text{if} \ x>0 \\ -1 & \text{if} \ x<0. \end{cases}$
 \end{framed}
 
 \item Prove or disprove: If $f$ is differentiable and strictly increasing on $\R$, then ${f'(x)>0}$ on $\R$.
