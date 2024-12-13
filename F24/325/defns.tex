@@ -1,0 +1,396 @@
+
+\documentclass[12pt]{amsart}
+\usepackage{graphicx, framed}
+\usepackage{comment}
+\usepackage{amscd}
+\usepackage{amssymb,color}
+\usepackage[all, knot]{xy}
+\usepackage[top=.8in, bottom=1in, left=1in, right=1in]{geometry}
+\xyoption{all}
+\xyoption{arc}
+\usepackage{hyperref}
+
+
+\def\floor#1{\lfloor #1 \rfloor}
+
+
+
+
+
+
+
+
+
+\def\CW{\underline{CW}}
+\def\cP{\mathcal P}
+\def\cE{\mathcal E}
+\def\cL{\mathcal L}
+\def\cJ{\mathcal J}
+\def\cJmor{\cJ^\mor}
+\def\ctJ{\tilde{\mathcal J}}
+\def\tPhi{\tilde{\Phi}}
+\def\cA{\mathcal A}
+\def\cB{\mathcal B}
+\def\cC{\mathcal C}
+\def\cZ{\mathcal Z}
+\def\cD{\mathcal D}
+\def\cF{\mathcal F}
+\def\cG{\mathcal G}
+\def\cO{\mathcal O}
+\def\cI{\mathcal I}
+\def\cS{\mathcal S}
+\def\cT{\mathcal T}
+\def\cM{\mathcal M}
+\def\cN{\mathcal N}
+\def\cMpc{{\mathcal M}_{pc}}
+\def\cMpctf{{\mathcal M}_{pctf}}
+\def\L{\mathbf{L}}
+\def \a{\alpha}
+\def\b{\beta}
+\def\de{\delta}
+\def\ds{\displaystyle}
+\def\cts{continuous\,}
+
+\def\Mo{Monday}
+\def\We{Wednesday}
+\def\Fr{Friday}
+
+
+
+\def\d{\delta}
+\def\td{\tilde{\delta}}
+
+\def\e{\varepsilon}
+\def\nsg{\unlhd}
+
+
+
+
+\newcommand{\Q}{\mathbb{Q}}
+
+\newcommand{\bP}{\mathbb{P}}
+\newcommand{\bM}{\mathbb{M}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\bH}{{\mathbb{H}}}
+\newcommand{\G}{\mathbb{G}}
+\newcommand{\bR}{{\mathbb{R}}}
+\newcommand{\bL}{{\mathbb{L}}}
+\newcommand{\R}{{\mathbb{R}}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\bF}{\mathbb{F}}
+\newcommand{\bE}{\mathbb{E}}
+\newcommand{\bK}{\mathbb{K}}
+
+
+\newcommand{\bD}{\mathbb{D}}
+\newcommand{\bS}{\mathbb{S}}
+
+\newcommand{\bN}{\mathbb{N}}
+
+
+\newcommand{\bG}{\mathbb{G}}
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\W}{\mathcal{W}}
+
+
+
+\newcommand{\itilde}{\tilde{\imath}}
+\newcommand{\jtilde}{\tilde{\jmath}}
+\newcommand{\ihat}{\hat{\imath}}
+\newcommand{\jhat}{\hat{\jmath}}
+
+\newcommand{\fc}{{\mathfrak c}}
+\newcommand{\fp}{{\mathfrak p}}
+\newcommand{\fm}{{\mathfrak m}}
+\newcommand{\fq}{{\mathfrak q}}
+\newcommand{\dual}{\vee}
+
+
+% The following causes equations to be numbered within sections
+\numberwithin{equation}{section}
+
+
+\theoremstyle{plain} %% This is the default, anyway
+\newtheorem{thm}[equation]{Theorem}
+\newtheorem{preproof}{Preproof Discussion}
+\newtheorem{obs}[equation]{Observation}
+\newtheorem{thmdef}[equation]{TheoremDefinition}
+\newtheorem{introthm}{Theorem}
+\newtheorem{introcor}[introthm]{Corollary}
+\newtheorem*{introthm*}{Theorem}
+%\newtheorem{question}{Question}
+\newtheorem*{question}{Question}
+\newtheorem{cor}[equation]{Corollary}
+\newtheorem{lem}[equation]{Lemma}
+\newtheorem{prop}[equation]{Proposition}
+\newtheorem{porism}[equation]{Porism}
+\newtheorem{algorithm}[equation]{Algorithm}
+\newtheorem{axiom}[equation]{Axiom}
+\newtheorem*{axioms*}{Axioms}
+\newtheorem*{axiom*}{Axiom}
+\newtheorem{conj}[equation]{Conjecture}
+\newtheorem{quest}[equation]{Question}
+
+\newcommand{\Aug}[3]{\section{#2, August #1, 2024 \quad \S#3}}
+\newcommand{\Sept}[3]{\section{#2, September #1, 2024 \quad \S#3}}
+\newcommand{\Oct}[3]{\section{#2, October #1, 2024 \quad \S#3}}
+\newcommand{\Nov}[3]{\section{#2, November #1, 2024 \quad \S#3}}
+\newcommand{\Dec}[3]{\section{#2, December #1, 2024 \quad \S#3}}
+
+
+
+\theoremstyle{definition}
+\newtheorem{defn}[equation]{Definition}
+\newtheorem{chunk}[equation]{}
+\newtheorem{ex}[equation]{Example}
+
+\newtheorem{exer}[equation]{Exercise}
+
+\theoremstyle{remark}
+\newtheorem{rem}[equation]{Remark}
+
+\newtheorem{notation}[equation]{Notation}
+\newtheorem{terminology}[equation]{Terminology}
+
+%%%%%%%%%%%%%
+% local definitions
+%%%%%%%%%%%%%
+\def\TP{\operatorname{TPC}}
+
+\def\HomMF{\operatorname{\uHom_{MF}}}
+\def\HomHMF{\operatorname{\Hom_{[MF]}}}
+
+\def\rDsg{D^{\text{rel}}_{\text{sing}}}
+\def\Dsg{D_{\text{sing}}}
+\def\Dsing{\Dsg}
+\def\Db{D^b}
+
+
+\def\Perf{\operatorname{Perf}}
+\def\coh{\operatorname{coh}}
+
+\def\CCh{\check{\cC}}
+
+\newcommand{\Cech}{C}
+
+\newcommand\bs{\boldsymbol}
+
+
+%\newcommand{\sExt}[4]{\widehat{\operatorname{Ext}}_{#2}^{#1}(#3,#4)}
+\newcommand{\cExt}[4]{\uExt_{#2}^{#1}(#3,#4)}
+
+\newcommand\depth{\operatorname{depth}}
+\newcommand{\supp}{\operatorname{supp}}
+
+\newcommand{\br}[1]{\lbrace \, #1 \, \rbrace}
+\newcommand{\brc}[2]{\lbrace \, #1 \, | \, #2 \rbrace}
+\newcommand{\li}{ < \infty}
+\newcommand{\quis}{\simeq}
+\newcommand{\xra}[1]{\xrightarrow{#1}}
+\newcommand{\xla}[1]{\xleftarrow{#1}}
+\newcommand{\xroa}[1]{\overset{#1}{\twoheadrightarrow}}
+\newcommand{\ps}[1]{\mathbb{P}_{#1}^{\text{c}-1}}
+
+% this is the pull-back of E along l: Z \to X
+\newcommand{\pb}[1]{\RQ^*{#1}}
+\newcommand{\pbe}{\pb{\cE}}
+\newcommand{\YQ}{\gamma}
+\newcommand{\RY}{\beta}
+\newcommand{\RQ}{\delta}
+
+\newcommand{\mft}[1]{T^{[MF]}_{#1}}
+\newcommand{\dst}[1]{T^{\Dsing(R)}_{#1}}
+
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\pd}{\operatorname{pd}}
+\newcommand{\even}{\operatorname{even}}
+\newcommand{\odd}{\operatorname{odd}}
+
+\newcommand{\bl}[1]{{{\color{blue}#1}}}
+
+\def\tmu{\tilde{\mu}}
+\def\g{\gamma}
+\def\tg{\tilde{\gamma}}
+\def\tCliff{\operatorname{\tilde{Cliff}}}
+\def\unital{\mathrm{unital}}
+\def\D{\Delta}
+\def\Tco{\operatorname{T^{\text{co}}}}
+\def\Tcob{\operatorname{\ov{T}^{\text{co}}}}
+
+\def\bg{\mathbf g}
+\def\ta{\tilde{a}}
+
+
+\def\z{\zeta}
+\def\lf{\operatorname{lf}}
+\def\mf{\operatorname{mf}}
+\def\lffl{\operatorname{lf}^{\mathrm{fin. len.}}}
+\def\mffl{\operatorname{mf}^{\mathrm{fin. len.}}}
+\def\len{\operatorname{length}}
+\def\Hlf{\operatorname{H}}
+
+\def\codim{\operatorname{codim}}
+
+\def\cPsi{\psi_{\mathrm{cyc}}}
+\def\Fold{\operatorname{Fold}}
+\def\ssupp{\operatorname{s.supp}}
+
+\def\mult{\operatorname{mult}}
+\def\stable{\mathrm{stable}}
+\def\and{{ \text{ and } }}
+\def\orr{{ \text{ or } }}
+\def\oor{\orr}
+
+\def\Perm{\operatorname{Perm}}
+
+
+\def\Op{\operatorname{Op}}
+\def\res{\operatorname{res}}
+\def\ind{\operatorname{ind}}
+
+\def\sign{{\mathrm{sign}}}
+\def\naive{{\mathrm{naive}}}
+\def\l{\lambda}
+
+
+\def\ov#1{\overline{#1}}
+
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+% NEW DEFINITIONS BEYOND MARK'S USUAL ONES 
+% (OR MODIFIED) 
+\newcommand{\chara}{\operatorname{char}}
+\newcommand{\Kos}{\operatorname{Kos}}
+\newcommand{\opp}{\operatorname{opp}}
+\newcommand{\perf}{\operatorname{perf}}
+
+\newcommand{\Fun}{\operatorname{Fun}}
+\newcommand{\GL}{\operatorname{GL}}
+\def\o{\omega}
+\def\oo{\overline{\omega}}
+
+\def\cont{\operatorname{cont}}
+\def\te{\tilde{e}}
+\def\gcd{\operatorname{gcd}}
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+%%%-------------------------------------------------------------------
+
+
+\def\charpoly{\operatorname{char poly}}
+\def\Gal{\operatorname{Gal}}
+
+
+
+
+\begin{document}
+
+
+
+
+
+
+
+
+
+
+\center{\Large{\textsc{What to know for quizzes and exams}}}
+
+\
+
+\section*{Definitions}
+
+\begin{enumerate}
+	\item \textsc{Rational number:} We define a {\textbf rational number}\index{rational number} to be a number expressible
+as a quotient of two integers: $\frac{m}{n}$ for $m,n \in \Z$ with $n \ne 0$.
+	
+	
+	\item \textsc{Contrapositive:} The \textbf{contrapositive}\index{contrapositive} of the statement  ``If $P$ then $Q$'' is the statement  ``If not $Q$ then not $P$''.
+	\item \textsc{Converse:} The \textbf{converse}\index{converse} of the statement  ``If $P$ then $Q$'' is the statement  ``If $Q$ then $P$''.
+
+	\item \textsc{Irrational number:} A real number is \textbf{irrational} if it is not rational.
+	\item \textsc{minimum / maximum:} Let $S$ be a set of real numbers. A \textbf{minimum} element of $S$ is a real number $x$ such that
+\begin{enumerate}\item $x\in S$, and
+\item for all $y\in S$, $x\leq y$.
+\end{enumerate}
+	\item \textsc{Upper bound / lower bound:}  Let $S$ be any subset of $\R$. A real number $b$ is called an  \textbf{upper bound}\index{upper bound} of $S$ provided that for every $s \in S$,
+we have $s \leq b$. 
+
+	\item \textsc{Bounded above / bounded below:}  A subset $S$ of $\R$ is called \textbf{bounded above}\index{bounded above} if there exists at least one upper bound for $S$. That is, $S$ is bounded above provided there
+  is a real number $b$ such that for all $s \in S$ we have $s \leq b$.
+
+	\item \textsc{Supremum:}  Suppose $S$ is subset of $\R$ that is bounded above. A \textbf{supremum}\index{supremum} (also known as a \textbf{least upper bound}) of $S$ is a number $\ell$ such that
+\begin{enumerate}
+\item $\ell$ is an upper bound of $S$ (i.e., $s \leq \ell$ for all $s \in S$) and
+\item if $b$ is any upper bound of $S$, then $\ell \leq b$. 
+\end{enumerate}
+
+			\item \textsc{Absolute value:} For a real number $x$, the \textbf{absolute value} of $x$ is $|x| := \begin{cases} x &\text{if} \ x\geq 0 \\ -x &\text{if} \ x< 0. \end{cases}$
+	\item \textsc{(sequence) converges to $L$:} Let $\{a_n\}_{n=1}^\infty$ be an arbitrary sequence and $L$ a real number. We say $\{a_n\}_{n=1}^\infty$ {\bf converges}\index{converges} to $L$ if for every real number $\e > 0$, there is a real number $N$ such that ${|a_n - L| < \e}$ for all natural numbers $n$ such that $n > N$.
+
+
+
+
+	\item \textsc{(sequence is) convergent:}  We say that a sequence $\{ a_n \}_{n=1}^\infty$ is \textbf{convergent}\index{convergent} if there is a number $L$  such that $\{ a_n \}_{n=1}^\infty$ converges to $L$.
+	
+\item \textsc{(sequence is) divergent:} We say that a sequence $\{ a_n \}_{n=1}^\infty$ is  \textbf{divergent} if there is no number $L$  such that $\{ a_n \}_{n=1}^\infty$ converges to $L$. 
+
+
+	\item \textsc{increasing / decreasing sequence:} We say that a sequence $\{a_n\}_{n=1}^\infty$ is  \textbf{increasing}\index{increasing} if for all $n \in \N$ we have $a_n \leq a_{n+1}$.
+	\item \textsc{strictly increasing / decreasing sequence:} We say that a sequence $\{a_n\}_{n=1}^\infty$ is  \textbf{strictly increasing}\index{strictly increasing} if for all $n \in \N$, $a_n < a_{n+1}$.
+
+	\item \textsc{monotone sequence:} We say that a sequence $\{a_n\}_{n=1}^\infty$ is  \textbf{monotone}\index{monotone} if it is either decreasing or increasing.
+
+	\item \textsc{diverges to $+\infty$:} A sequence \textbf{diverges to $+\infty$}\index{diverges to $+\infty$} if for every real number $M$, there is some $N\in \R$ such that for every natural number $n>N$ we have $a_n > M$.	
+	
+	\item \textsc{diverges to $-\infty$:}	A sequence \textbf{diverges to $-\infty$}\index{diverges to $-\infty$} if for every real number $m$, there is some $N\in \R$ such that for every natural number $n>N$ we have $a_n < m$.
+			
+	\item \textsc{Subsequence:} A \textbf{subsequence}\index{subsequence} of a given sequence
+  $\{a_n\}_{n=1}^\infty$ is any sequence of the form $
+\{a_{n_k}\}_{k=1}^\infty$
+where $\{n_k\}_{k=1}^\infty$
+is any strictly increasing sequence of natural numbers.
+	
+		
+
+	%\item Cauchy sequence
+
+	\item \textsc{Limit of a function:} Let $f$ be a function and $a,L$ be real numbers. We say that \textbf{the limit of $f$ as $x$ approaches $a$ is $L$}\index{limit}\index{$\e$--$\de$ definition of limit} if
+ for any $\e>0$ there exists $\de>0$ such that if $0< | x-a | < \de$, then $x$ is in the domain of~$f$ and $|f(x) - L| <\e$.
+
+
+	\item \textsc{Continuous at a point:} Let $f$ be a function and $a$ be a real number.
+  We say \textbf{$f$ is
+    continuous at $a$}\index{continuous at $a$} if for every $\e > 0$ there is a $\de > 0$ such that if $x$ is a real
+number such that $|x - a| < \de$ then $f$ is defined at $x$ and $|f(x) - f(a)| < \e$.
+
+
+	\item \textsc{Continuous on an open interval:} Let $I$ be an open interval, and $f$ be a function defined on $I$. We say that $f$ is \textbf{continuous on the open interval $I$} if $f$ is continuous at $x$ for all $x\in I$.
+
+	\item \textsc{Continuous on a closed interval:} Given a function $f(x)$ and real numbers $a < b$,
+we say $f$ is {\textbf continuous on the closed interval $[a,b]$} provided 
+\begin{enumerate}
+\item for every $r \in (a,b)$, $f$ is  continuous at $r$ in the sense defined already,
+\item for every $\e > 0$ there is a $\de > 0$ such that if $a \leq x < a+\de$, then $f(x)$ is defined and ${|f(x)
+  - f(a)| < \e}$.
+\item for every $\e > 0$ there is a $\de > 0$ such that if $b -\de < x \leq b$, then ${|f(x)
+  - f(b)| < \e}$.
+\end{enumerate}
+
+			\item \textsc{Differentiable:} Let $f$ be a function and $r$ be a real number. We say $f$ is differetiable at $r$ is $f$ is defined at $r$ and the limit
+$\lim_{x\to r} \frac{ f(x) - f(r) }{x-r}$ exists.
+	\item \textsc{Derivative (at a point):}  Let $f$ be a function and $r$ be a real number. We say that the derivative of $f$ at $r$ is the number
+$\lim_{x\to r} \frac{ f(x) - f(r) }{x-r}$ provided this limit exists.
+		\item \textsc{Increasing/decreasing function:} Let $f$ be a function, and $S\subseteq \R$ be a set of real numbers contained in domain of~$f$. We say that $f$ is \textbf{increasing}\index{increasing} on $S$ if for any $a,b\in S$ with $a<b$ we have $f(a) \leq f(b)$.
+\end{enumerate}
+
+
+\end{document}
