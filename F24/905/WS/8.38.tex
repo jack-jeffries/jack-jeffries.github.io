@@ -1,0 +1,205 @@
+ \documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=.95in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals,bbm}
+\usepackage[all]{xy}
+
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\n}{\mathfrak{n}}
+\renewcommand{\a}{\mathfrak{a}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\ord}{\mathrm{ord}}
+\newcommand{\ann}{\mathrm{ann}}
+\newcommand{\hgt}{\mathrm{height}}
+\newcommand{\Min}{\mathrm{Min}}
+\newcommand{\Max}{\mathrm{Max}}
+\newcommand{\Spec}{\mathrm{Spec}}
+\newcommand{\Ass}{\mathrm{Ass}}
+\renewcommand{\1}{\mathbbm{1}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+\usepackage[hang,flushmargin]{footmisc}
+
+
+\begin{document}
+\showsol{1}
+	
+	\thispagestyle{empty}
+	
+	\section*{\S8.38: Systems of Parameters}
+	
+	\begin{framed}
+	
+	\noindent	\textsc{Definition:} Let $(R,\m)$ be a Noetherian local ring of dimension $d$. 
+	\begin{itemize}
+	\item A \textbf{system of parameters} for $R$ is a set of $d$ elements $f_1,\dots,f_d\in \m$ such that ${\m=\sqrt{(f_1,\dots,f_d)}}$. 
+	\item An element $f\in \m$ is a \textbf{parameter} if it is part of a system of parameters.
+	\item A set of elements is a \textbf{partial system of parameters} if it is a subset of some system of parameters.
+	\end{itemize}
+	
+	\
+	
+	\noindent \textsc{Theorem:} Let $(R,\m)$ be a Noetherian local ring and $f_1,\dots,f_t\in \m$. Then
+	\[ \dim(R/ (f_1,\dots,f_t)) \geq \dim(R) - t,\]
+	and equality holds if and only if $f_1,\dots,f_t$ are a partial system of parameters.
+	
+	
+		\end{framed}
+
+
+\begin{enumerate}
+\itemA Do systems of parameters always exist?
+
+\solution{Yes, we showed it last time.}
+
+\itemA Proof of Theorem:
+\begin{enumerate}
+\itema To prove the inequality, take a system of parameters $\overline{r_1},\dots,\overline{r_s}$ for $R/(f_1,\dots,f_t)$, and take representatives $r_1,\dots,r_s$ in $R$. What do you know about $s$? What can you say about the ideal $(f_1,\dots,f_t,r_1,\dots,r_s)$? Deduce the inequality.
+\itema For the ($\Rightarrow$) part of the equality statement, revisit the argument for the inequality.
+\itema For the ($\Leftarrow$) part of the equality statement, apply the inequality.
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itema Take a system of parameters $\overline{r_1},\dots,\overline{r_s}$ for $R/(f_1,\dots,f_t)$, and take representatives $r_1,\dots,r_s$ in $R$. Note that $s=\dim(R/(f_1,\dots,f_t))$.
+
+Since the only prime containing $(\overline{r_1},\dots,\overline{r_s})$ in $R/(f_1,\dots,f_t)$ is the maximal ideal, the only prime containing $(f_1,\dots,f_t,r_1,\dots,r_s)$ in $R$ is the maximal ideal, so its radical is $\m$. Thus, by Krull Height Theorem, $s+t\geq \dim(R)$; i.e., $\dim(R/(f_1,\dots,f_t)) + t \geq \dim(R)$. Rearranging gives the sought inequality.
+
+\itema Suppose that $\dim(R/ (f_1,\dots,f_t)) = \dim(R) - t$. Then in the notation of the above, $s+t=\dim(R)$, so $f_1,\dots,f_t,r_1,\dots,r_s$ are a sequence of $\dim(R)$ elements that generate an $\m$-primary ideal; i.e., they form a system of parameters. So, $f_1,\dots,f_t$ are a partial system of parameters.
+\itema Suppose that $f_1,\dots,f_t,r_1,\dots,r_s$ is a system of parameters, so $s+t=\dim(R)$. Then 
+\[ 0 = \dim(R/(f_1,\dots,f_t,r_1,\dots,r_s)) \geq \dim(R/(f_1,\dots,f_t)) - s =  \dim(R/(f_1,\dots,f_t))  - (\dim(R) - t),\]
+so $ \dim(R/(f_1,\dots,f_t)) \leq \dim(R) - t$.
+\end{enumerate}
+}
+
+\itemA The dimension inequality globally:
+\begin{enumerate}
+\itema Let $K$ be a field and $R=\frac{K[X,Y,Z]}{(XY,XZ)}$. Compute $\dim(R)$ and $\dim(R/(x-1))$.
+\itema Does localizing the previous example at $(x,y,z)$ give a counterexample to the Theorem?
+\itema Let $R=\Z_{(2)}[X]$. Is $\dim(R/(2X-1))\geq \dim(R)-1$?
+\end{enumerate} 
+
+\solution{\begin{enumerate}
+\itema We have computed $\dim(R)=2$ before. We have $R/(x-1) \cong \frac{K[X,Y,Z]}{(X-1,XY,XZ)} \cong \frac{K[Y,Z]}{(Y,Z)} \cong K$.
+\itema No, since $x-1$ is a unit, so $R/(x-1)$ is zero.
+\itema $\dim(R)\geq 2$ on account of $0\subsetneqq (2) \subsetneqq (2,X)$, but $R/(2X-1)\cong \Z_{(2)}[1/2] \cong \Q$ has dimension $0$, so no.
+\end{enumerate} }
+
+
+\itemB Systems of parameters and ``absolutely-min-avoiding sequences'': We say that a prime~$\p$ in a Noetherian ring $R$ is \textbf{absolutely minimal} if $\dim(R)=\dim(R/\p)$, and write $\mathrm{AMin}(R)$ for the set of absolutely minimal primes. For convenience\footnote{The term ``\textit{absolutely-min-avoiding sequence}'' is not real, and has just been made up here to simplify the discussion. However, \textbf{absolutely minimal} prime is standard.}, let us say that $\mathbf{f}=f_1,\dots,f_t$ is an ``\textit{absolutely-min-avoiding sequence}'' if
+\[ \hspace{10mm} f_1\notin \!\!\!\!\!\bigcup_{\p\in \mathrm{AMin}(R)}\!\!\!\!\! \p, \qquad \overline{f_2}\notin \!\!\!\!\!\!\!\bigcup_{\p\in \mathrm{AMin}(R/(f_1))} \!\!\!\!\!\! \p, \qquad \overline{f_3}\notin \!\!\!\!\!\!\!\!\!\bigcup_{\p\in \mathrm{AMin}(R/(f_1,f_2))} \!\!\!\!\!\!\!\!\! \p, \quad \dots \quad , \ \text{and} \ \ \overline{f_t}\notin\!\!\!\!\!\!\!\!\!\!\!\!\! \bigcup_{\p\in \mathrm{AMin}(R/(f_1,\dots,f_{t-1}))} \!\!\!\!\!\!\!\!\!\!\!\!\! \p.\]
+Prove that $\mathbf{f}$ is a absolutely-min-avoiding sequence if and only if $\mathbf{f}$ is a system of parameters.
+
+\solution{This boils down to the observation that $\dim(R/f)<\dim(R)$ if and only if $f$ is not in any absolutely minimal prime.}
+
+\itemB Systems of parameters vs ``height sequences''
+\begin{enumerate}
+\itemb Show that a height sequence is a system of parameters.
+\itemb Let $R=\frac{K[X,Y,Z]_{(x,y,z)}}{(XY,XZ)}$. Show that $y,x+z$ is a system of parameters, but not a height sequence. Now show that $x+z,y$ is a height sequence.
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itemb This follows because $\hgt((f_1,\dots,f_d))=d$ implies that $\Min((f_1,\dots,f_d))=\{\m\}$, so $\sqrt{(f_1,\dots,f_d)}=\m$.
+\itemb We have seen earlier that $\sqrt{(y,x+z)}=\m$. However, $y$ is the minimal prime $(y,z)$, so $\hgt((y))=0$. On the other hand, $x+z$ is not in any minimal prime, so $\hgt((x+z))=1$, and we have already seen $\hgt((x+z,y))=2$.
+\end{enumerate}
+}
+\end{enumerate}
+
+
+
+
+
+	\begin{framed}
+
+	\noindent	\textsc{Theorem:} Let $R$ be a Noetherian ring of finite dimension. Then $\dim(R[X_1,\dots,X_n]) = \dim(R)+n$.
+	
+	
+		\end{framed}
+
+
+\begin{enumerate}\setcounter{enumi}{5}
+\itemA Proof of polynomial theorem:
+\begin{enumerate}
+\itema Explain why it suffices to deal with the case $n=1$ and $\dim(R)<\infty$.
+\itema Explain why $\dim(R[X])\geq \dim(R)+1$.
+\itema Let $\q\in \Spec(R[X])$ and $\p=\q\cap R$. Explain why the Theorem reduces to the claim that $\hgt(\q) \leq \hgt(\p)+1$.
+\itema Explain why $\q R_{\p}[X]$ is prime and $\hgt(\q) = \hgt(\q R_{\p}[X])$.
+\itema Explain why the Theorem reduces to \\ 
+\textsc{Claim:} If $(S,\m)$ is a Noetherian \emph{local} ring, and $\a\in S[X]$ is a prime that contracts to $\m$, then $\dim(S[X]_{\a}) \leq \dim(S)+1$. \\
+We retain this setup henceforth.
+\itema Let $f_1,\dots,f_d$ be a system of parameters of $S$. Show\footnote{Hint: Use that $\dim(R) = \dim(R/\sqrt{0})$, and that a polynomial is nilpotent if and only if all of its coefficients are nilpotent. Make sure you understand why both of these are true!} that $\dim(\frac{S}{(f_1,\dots,f_d)}[X])= 1$.
+\itema Show that $\dim(S[X]_{\a}/(f_1,\dots,f_d))\leq 1$.
+\itema Complete the proof.
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itema The general $n$ case follows from the $n=1$ case by induction. Note that the expansion of a prime in $R$ to $R[X]$ is prime again, so $\dim(R[X])\geq \dim(R)$, and if $\dim(R)$ is infinite, so is $\dim(R[X])$.
+\itema As mentioned above, the expansion of a prime in $R$ to $R[X]$ is prime again, so one can take a chain of primes in $R$ and obtain a chain of the same length in $R[X]$ by expansion. But, an expanded prime $\p R[X]$ is not maximal since $R[X]/\p R[X] \cong (R/\p)[X]$ is not a field, so $\dim(R[X]) > \dim(R)$.
+\itema If the height of any prime in $R[X]$ is no more than the height of some prime of $R$, then $\dim(R[X])\leq \dim(R)+1$.
+\itema For the first, there is a bijection between primes contained in $\p$ and primes contained in $\p R_\p$. For the second, $\q R_{\p}[X] = (R\smallsetminus \p)^{-1} \q$ is the localization of a prime, which is prime. For the last, since $\q \cap R \subseteq \p$ we have $\q \cap (R\smallsetminus \p)=\varnothing$, and likewise for every prime contained in $\q$. Thus there is a bijection between primes contained in $\q$ and primes contained in $\q R_{\p}[X]$.
+\itema Apply the \textsc{Claim} with $S=R_\p$ and $\a=\q R_{\p}[X]$. We then have
+\[\begin{aligned} \hgt(\p) +1&= \dim(R_\p)  +1= \dim(S) +1 \geq \dim(S[X]_{\a})\\& = \dim(\q R_{\p}[X]) = \hgt(\q R_{\p}[X]) =\hgt(\q).
+\end{aligned}\]
+\itema Since $\sqrt{(f_1,\dots,f_d)}=\m$,  every element of $\m$ is nilpotent in $\overline{S}=\frac{S}{(f_1,\dots,f_d)}$. Now, the nilpotents in $\overline{S}[X]$ are the polynomials all of whose coefficients are nilpotent, so the nilradical of ${\overline{S}[X]}$ is $\m\overline{S}[X]$. But then \[\dim(\overline{S}[X]) = \dim(\overline{S}[X] / \m\overline{S}[X]) = \dim ((S/\m)[X]) = 1.\]
+\itema $S[X]_{\a}/(f_1,\dots,f_d)$ is a localization of $S[X]/(f_1,\dots,f_d) \cong \overline{S}[X]$, so the dimension is no larger than $1$.
+\itema Done!
+\end{enumerate}}
+
+\itemB Let $(R,\m)$ and $(S,\n)$ be Noetherian local rings. Let $\phi:R\to S$ be a homomorphism such that $\phi(\m)\subseteq \n$. Prove that $\dim(S)\leq \dim(R) + \dim(S/\phi(\m)S)$.
+
+
+
+
+\end{enumerate}
+\end{document}

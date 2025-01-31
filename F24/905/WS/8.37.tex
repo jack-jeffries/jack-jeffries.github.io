@@ -1,0 +1,127 @@
+ \documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals,bbm}
+\usepackage[all]{xy}
+
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\q}{\mathfrak{q}}
+\newcommand{\ord}{\mathrm{ord}}
+\newcommand{\ann}{\mathrm{ann}}
+\newcommand{\hgt}{\mathrm{height}}
+\newcommand{\Min}{\mathrm{Min}}
+\newcommand{\Max}{\mathrm{Max}}
+\newcommand{\Spec}{\mathrm{Spec}}
+\newcommand{\Ass}{\mathrm{Ass}}
+\renewcommand{\1}{\mathbbm{1}}
+\newcommand{\cZ}{\mathcal{Z}}
+
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+\usepackage[hang,flushmargin]{footmisc}
+
+
+\begin{document}
+\showsol{1}
+	
+	\thispagestyle{empty}
+	
+	\section*{\S8.37: Local characterization of dimension}
+	
+	\begin{framed}
+		\noindent	 \textsc{Proposition:} Let $R$ be a Noetherian ring, and $\p$ an ideal of height $h$. Then there exist $f_1,\dots,f_h\in R$ such that $\p$ is a minimal prime of $(f_1,\dots,f_h)$.
+	
+	\
+	
+		\noindent	 \textsc{Theorem:}  Let $(R,\m)$ be a Noetherian local ring. Then 
+		\[ \dim(R) = \min\left\{ t\geq 0 \ \big| \ \exists f_1,\dots,f_t\in R \ \text{such that} \ \m = \sqrt{(f_1,\dots,f_t)}\right\}.\]
+
+
+		\end{framed}
+
+
+\begin{enumerate}
+\itemA Deduce the Theorem from the Proposition.
+
+\solution{The dimension of $R$ is the height of $\m$. By the Proposition, $\m$ is a minimal prime of a $d$-generated ideal $I$. But, no other prime $\p$ can be minimal over $I$, since any other prime satisfies $\p\subsetneqq \m$, and $I \subseteq \p$ contradicts that $\m$ is a minimal prime. Then $\Min(I) = \{ \m \}$ implies $\sqrt{I}=\m$.}
+
+\itemA Let $K$ be a field, and $\ds R=\left(\frac{K[X,Y,Z]}{(XY,XZ)}\right)_{\!\!(x,y,z)}$. Verify that $\dim(R)=2$ and ${\sqrt{(y,x+z)}=(x,y,z)}$.
+
+\solution{Since $\Min(R)=\{(x),(y,z)\}$ we have \[\dim(R)=\max\{\dim(R/(x)),\dim(R/(y,z))\} = \max\{ 2,1\} = 2.\] Note that $x^2 = x(x+z)$ and $z^2=z(x+z)$, so $(x,y,z)\subseteq\sqrt{(y,x+z)}$ and equality must hold.}
+
+\itemA Let $R$ be a Noetherian ring, and $\mathbf{f}=f_1,\dots,f_t\in R$ be a sequence of elements in $R$.
+For convenience\footnote{The terms ``\textit{min-avoiding sequence}'' and ``\textit{height sequence}'' are not real, and have just been made up here to simplify the discussion.}, let us say that $\mathbf{f}$ is a ``\textit{min-avoiding sequence}'' if
+\[ f_1\notin \!\!\!\!\!\bigcup_{\p\in \Min((0))}\!\!\!\!\! \p, \qquad f_2\notin \!\!\!\!\!\!\!\bigcup_{\p\in \Min((f_1))} \!\!\!\!\!\! \p, \qquad f_3\notin \!\!\!\!\!\!\!\!\!\bigcup_{\p\in \Min((f_1,f_2))} \!\!\!\!\!\!\!\!\! \p, \quad \dots \quad , \ \text{and} \ \ f_t\notin\!\!\!\!\!\!\!\!\!\!\!\!\! \bigcup_{\p\in \Min((f_1,\dots,f_{t-1}))} \!\!\!\!\!\!\!\!\!\!\!\!\! \p ;\]
+and let us say that $\mathbf{f}$ is a ``\textit{height sequence}'' if
+\[ \qquad \hgt((f_1))=1, \quad \hgt((f_1,f_2))=2, \quad \dots \quad , \ \text{and} \ \ \hgt((f_1,f_2,\dots,f_t))=t.\]
+Prove that $\mathbf{f}$ is a min-avoiding sequence if and only if $\mathbf{f}$ is a height sequence.
+
+\solution{
+Suppose that $\mathbf{f}$ is a ``min-avoiding sequence''. Then $f_1$ is not in any minimal prime of $R$, so every prime containing $f_1$ has height at least one, and by PIT, every minimal prime of $f_1$ at height at most one, so every minimal prime of $f_1$ has height exactly one. Then, proceeding inductively, assume that $(f_1,\dots,f_j)$ has height $j$. By KHT, every minimal prime of $(f_1,\dots,f_j)$ then has height $j$. By assumption $f_{j+1}$ is not in any minimal prime of  $(f_1,\dots,f_j)$. Let $\q$ be a minimal prime of $(f_1,\dots,f_{j+1})$. Then $\q$ contains $(f_1,\dots,f_j)$, hence contains some minimal prime $\p$ of $(f_1,\dots,f_j)$, and since $f_{j+1} \notin \p$, we must have $\q \supsetneqq \p$. Thus $\hgt(\q) > \hgt(\p)=j$. But by KHT, $\hgt(\q)\leq j+1$, so equality most hold. Thus,  $\mathbf{f}$ is a ``height sequence''.
+
+Now suppose that  $\mathbf{f}$ is a ``height sequence''. Then $f_1$ is not in any minimal prime of $R$, by definition of height. Suppose for some $j$ that $f_{j+1}$ is some minimal prime $\p$ of $(f_1,\dots,f_j)$. Since the height of $(f_1,\dots,f_j)$ is $j$, $\p$ has height at least $j$, but also at most $j$ by KHT, so $\hgt(\p)=j$. But $f_{j+1} \in \p$ implies  $(f_1,\dots,f_{j+1}) \subseteq \p$, and thus $\hgt((f_1,\dots,f_{j+1}))\leq \hgt(\p) = j$, contradicting that we have a hight sequence. We conclude that $f_{j+1}$ is not in any minimal prime of $(f_1,\dots,f_j)$; i.e., that  $\mathbf{f}$ is a ``min-avoiding sequence''.
+}
+
+\itemA Let $R$ be a Noetherian ring and $\p$ a prime of height $h$. Prove that there exists a min-avoiding sequence of $h$ elements in $\p$, and deduce the Proposition.
+
+\solution{If $\p$ has height $0$, then the empty sequence vacuously works. Otherwise, to construct such a sequence inductively, for $j<h$, we choose $f_{j+1} \in \p$ but not in any minimal prime of $(f_{1},\dots,f_{j})$. To see that this is possible, note that $f_1,\dots,f_j\in \p$ so $(f_{1},\dots,f_{j}) \subseteq \p$, and the minimal primes of $(f_{1},\dots,f_{j})$ are primes contained in $\p$ of height $j<h$, so are properly contained in $\p$. Since there are finitely many such minimal primes, by prime avoidance, we know that $\p$ is not contained in the union of these primes. Thus, we can pick $f_{j+1}$ is required.
+
+Now, every minimal prime of $(f_1,\dots,f_h)$ has height $h$, and $(f_1,\dots,f_h) \subseteq \p$. Thus, there is a minimal prime of $(f_1,\dots,f_h)$ contained in $\p$ of height $h$, but for height reasons, these must be equal. That is, $\p$ is a minimal prime of $(f_1,\dots,f_h)$.}
+
+
+
+\itemB Let $R$ be a Noetherian ring of dimension $d$ and $I$ an arbitrary ideal.
+\begin{enumerate}
+\item Show that if $R$ is local, then there exist $f_1,\dots,f_d\in R$ such that $\sqrt{(f_1,\dots,f_{d})} = \sqrt{I}$.
+\item Show that, in general, there exist $f_1,\dots,f_{d+1}\in R$ such that $\sqrt{(f_1,\dots,f_{d+1})} = \sqrt{I}$.
+\end{enumerate}
+
+\end{enumerate}
+\end{document}
