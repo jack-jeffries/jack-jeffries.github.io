@@ -1,0 +1,693 @@
+\documentclass[12pt]{amsart}
+\usepackage{mathptmx, bbm, amscd, amssymb, enumerate,mathdots, xcolor,comment,graphicx,xspace,lettrine}
+%\linenumbers
+\usepackage[symbol]{footmisc}
+\usepackage{kpfonts,baskervald}
+\usepackage[margin = 1in]{geometry}
+
+\usepackage{color}
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\usepackage[colorlinks=true, pagebackref, hyperindex, citecolor=meretale, urlcolor=leaf, linkcolor=chianti]{hyperref}
+\usepackage[all]{xy}
+%\usepackage{showkeys}
+\usepackage{paralist}
+%\usepackage{mathrsfs}
+
+
+
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{ntn}[theorem]{Notation}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+\numberwithin{equation}{theorem}
+
+\def\ara{\operatorname{ara}}
+\def\cptdim{\operatorname{cptdim}}
+\def\height{\operatorname{ht}}
+\def\lcd{\operatorname{lcd}}
+\def\rad{\operatorname{rad}}
+
+\def\ker{\operatorname{ker}}
+\def\image{\operatorname{image}}
+\def\pf{\operatorname{pf}}
+\def\Pf{\operatorname{Pf}}
+\def\rank{\operatorname{rank}}
+\def\sgn{\operatorname{sgn}}
+\def\tr{{\operatorname{{T}}}}
+\def\id{\operatorname{id}}
+\def\Gr{\operatorname{Gr}}
+\def\pr{\operatorname{pr}}
+\def\SG{\operatorname{SG}}
+\def\OG{\operatorname{OG}}
+\def\GL{\operatorname{GL}}
+\def\SL{\operatorname{SL}}
+\def\Sp{\operatorname{Sp}}
+\def\Ort{\operatorname{O}} 
+\def\SOrt{\operatorname{SO}}
+\def\Uni{\operatorname{U}}
+
+\def\End{\operatorname{End}}
+\def\Ext{\operatorname{Ext}}
+\def\Hom{\operatorname{Hom}}
+\def\Proj{\operatorname{Proj}}
+\def\Spec{\operatorname{Spec}}
+\def\Supp{\operatorname{Supp}}
+\def\Alt{\operatorname{Alt}}
+\def\pairs{\operatorname{P}}
+\def\Sym{\operatorname{Sym}}
+\def\sym{\sigma}
+\def\US{{\operatorname{US}}}
+\def\Var{\operatorname{Var}}
+
+\def\fraka{\mathfrak{a}}
+\def\frakb{\mathfrak{b}}
+\def\frakm{\mathfrak{m}}
+\def\frakn{\mathfrak{n}}
+\def\frakp{\mathfrak{p}}
+\def\frakq{\mathfrak{q}}
+
+\def\frakA{\mathfrak{A}}
+\def\frakB{\mathfrak{B}}
+\def\frakC{\mathfrak{C}}
+\def\frakP{\mathfrak{P}}
+\def\frakQ{\mathfrak{Q}}
+\def\frakS{\mathfrak{S}}
+
+\def\AA{\mathbb{A}}
+\def\CC{\mathbb{C}}
+\def\FF{\mathbb{F}}
+\def\KK{\mathbb{K}}
+\def\LL{\mathbb{L}}
+\def\NN{\mathbb{N}}
+\def\PP{\mathbb{P}}
+\def\QQ{\mathbb{Q}}
+\def\RR{\mathbb{R}}
+\def\SS{\mathbb{S}}
+\def\VV{\mathbb{V}}
+\def\ZZ{\mathbb{Z}}
+
+\def\calD{\mathcal{D}}
+\def\calF{\mathcal{F}}
+\def\calG{\mathcal{G}}
+\def\calH{{\mathcal{H}}}
+\def\calK{\mathcal{K}}
+\def\calL{\mathcal{L}}
+\def\calM{\mathcal{M}}
+\def\calN{\mathcal{N}}
+\def\calO{\mathcal{O}}
+\def\calP{{\mathcal{P}}}
+\def\scrH{{\mathscr{H}}}
+
+\def\eps{\varepsilon}
+\def\ge{\geqslant}
+\def\le{\leqslant}
+\def\phi{\varphi}
+\def\bar{\overline}
+\def\tilde{\widetilde}
+\def\del{\partial}
+\def\dlim{\varinjlim}
+\def\to{\longrightarrow}
+\def\mapsto{\longmapsto}
+\def\into{\hookrightarrow}
+\def\onto{{\,\,\longrightarrow\hspace{-1.8ex}\rightarrow}\,\,}
+\def\minus{\smallsetminus}
+
+\newcommand{\boldone}{\mathbbm{1}}
+\newcommand{\et}{\textrm{{\rm \'et}}}
+\newcommand{\Sing}{{\textrm{{\rm Sing}}}}
+\def\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+\newcommand{\caseAN}{{\eqref{ntn-cases}{\rm .(AN)}}}
+\newcommand{\caseET}{{\eqref{ntn-cases}{\rm .(ET)}}}
+
+\newcommand{\AN}{{\rm (AN)}\xspace}
+\newcommand{\ET}{{\rm (ET)}\xspace}
+
+\minCDarrowwidth20pt
+
+\makeindex
+
+\begin{document}
+\title[Prime characteristic]{The Frobenius map: the power of prime characteristic}
+
+\author{Jack Jeffries}
+\address{Department of Mathematics, University of Nebraska, 203 Avery Hall, Lincoln, NE-68588, USA}
+\email{jack.jeffries@unl.edu}
+\maketitle
+
+
+These are lecture notes and exercises for a short graduate lecture series on positive characteristic methods for the SLMath/SMS Summer School An Introduction to Recent Trends in Commutative Algebra in June 2025. My goal in this series is to give an appreciation for the power of techniques involving the Frobenius map to prove statements that have nothing to do with Frobenius. It is not my goal to thoroughly develop the tools needed for research in this area. The audience has a varied background, so I am not assuming any background beyond a first year graduate sequence on algebra. There is not enough time in this course to cover background material from commutative algebra and homological algebra in addition to the specific content of these lectures, so instead I will often give statements that are specialized to more concrete situations rather than giving the most general statements, and sometimes also offer a ``more generally version'' for those have have additional background. For time reasons, I will often sketch proofs, occasionally leaving some details to the exercises.
+
+In the first lecture, I will discuss the basic perspectives and terminology of the Frobenius map. The first problem set is intended to solidify these notions, though there are also a few problems that build towards the later lectures. The second lecture will briefly introduce tight closure and an application. The third lecture will introduce a couple of notions of F-singularities and outline a couple more applications. The second problem set will explore the notions from the last two lectures, and fill in some details of the proofs.
+
+Throughout these notes, all rings are commutative with $1\neq 0$, and $p$ will denote a positive prime integer.
+
+
+\section{Basics with the Frobenius map}
+Recall that a ring $R$ has characteristic $p$ if \[p= \underbrace{1+ \cdots + 1}_{p\text{ times}}\] is zero in $R$. This is equivalent to $R$ containing a field of characteristic $p$ as a subring: if $R$ has characteristic $p$, the image of the homomorphism $\ZZ \to R$ is isomorphic to $\FF_p$.
+\subsection*{The Frobenius map}
+Let us start with an observation about binomial coefficients. For any integer $i$ with $0<i<p$, the binomial coefficient 
+\[\binom{p}{i} = \frac{p!}{(p-i)! \cdot i!}\]
+has a factor of $p$ in the numerator, but not the denominator. Since we also know this coefficient is an integer, e.g., for combinatorial reasons, the Fundamental Theorem of Arithmetic says that it is a multiple of $p$.
+Thus, when $R$ has characteristic $p$, for any $r,s\in R$, one has
+\[ \begin{aligned} (r+s)^p &= r^p + \binom{p}{1} r^{p-1} s + \binom{p}{2} r^{p-2} s^2 + \cdots + \binom{p}{p-1} r s^{p-1} + s^p \\&= r^p + s^p, \quad \text{and} \\  (rs)^p &= r^p s^p, \end{aligned}\]
+and $1^p=1$, so the map
+\[ F \colon R \to R, \quad F(r) = r^p\]
+is a ring homomorphism from $R$ to itself, called the \textbf{Frobenius map}\index{$F$}\index{Frobenius map} on $R$. We may denote this as $F_R$\index{$F_R$} to indicate the ring when useful.
+
+One can apply the Frobenius map multiple times:
+\[ F^e \colon R \to R, \quad F^e(r) = r^{p^e}\]
+which we may call the \textbf{e-th Frobenius} or \textbf{e-th Frobenius iterate}.\index{e-th Frobenius}
+Note that no power map is a ring homomorphism in characteristic zero.
+
+\begin{example} 
+For $R=\FF_p$ the Frobenius map is the identity: this is Fermat's Little Theorem.
+\end{example}
+
+\begin{example} 
+For $R=\FF_p[x]$, the Frobenius map is given by
+\[ F( a_n x^n + \cdots + a_1 x + a_0) = a_n x^{pn} + \cdots + a_1 x^p + a_0\]
+and the iterates by
+\[ F^e( a_n x^n + \cdots + a_1 x + a_0) = a_n x^{p^en} + \cdots + a_1 x^{p^e} + a_0.\]
+\end{example}
+
+ Every ring of characteristic $p$ has a Frobenius map, and the Frobenius map is compatible with every ring homomorphism between rings of characteristic~$p$:
+\[ \xymatrix{ R \ar[r]^-{\phi} \ar[d]_-{F_R}  & S \ar[d]^-{F_S} \\ R \ar[r]^-{\phi} & S} \qquad  \xymatrix{ r \ar@{|->}[r]  \ar@{|->}[d] & \phi(r)  \ar@{|->}[d] \\ r^p  \ar@{|->}[r] & \phi(r^p) = \phi(r)^p.} \]
+This universality and naturality is a clear sign of the importance of the Frobenius map.
+
+
+\subsection*{Injectivity and surjectivity}
+Let us start with a simple relationship between the Frobenius map and something that has nothing to do with it.
+
+\begin{lemma} Let $R$ be a ring of characteristic $p$. The Frobenius map on $R$ is injective if and only if $R$ is reduced (meaning that $R$ has no nonzero nilpotents).
+\end{lemma}
+\begin{proof} We will prove the contrapositive of each direction.
+$(\Leftarrow):$ If $F_R$ is not injective, then there is some $r\neq 0$ with $r^p=0$; such an element is a nonzero nilpotent of $R$.
+
+$(\Rightarrow)$: If $R$ is not reduced, then there is some $r\neq 0$ with $r^n=0$ for some $n\geq 2$. Take $n$ maximal such that $r^n\neq 0$; then $np>n$, so $F(r^n) = r^{pn} =0$, and $r^n$ is a nonzero element of the kernel of $F_R$.
+\end{proof}
+
+It is rarer for the Frobenius map to be surjective. The image of the Frobenius map is evidently the $p$-th powers of elements in $R$. A ring of positive characteristic is  \textbf{perfect}\index{perfect} if its Frobenius map is bijective.
+You are likely familiar with this consideration for fields. Perfect fields include all finite fields, like $\FF_p$ and $\FF_{p^7}$, and all algebraically closed fields, like $\overline{\FF_p}$ and $\overline{\FF_p(t)}$. However, a field like $\FF_p(t)$ is not perfect, as $t$ is not a $p$-th power. However $\FF_p[x]$ is evidently not perfect. One can show that when $R$ is Noetherian then $F_R$ is surjective if and only if $R$ is a finite product of perfect fields.
+
+
+\subsection*{Alternative perspectives}
+One of the most confusing aspects of the Frobenius map is the fact that the source and target are the same, though the map is typically not an isomorphism. It is often useful to separate the source and target of the Frobenius to clarify the situation. One can think of this as analogous to the case of linear algebra, where some aspects of an endomorphism of a vector space are easier to understand with separate bases on the source and target.
+
+Our first alternative perspective on Frobenius is based on renaming the target copy of $R$. We will decorate every element in the target of the $e$-th Frobenius $F^e$ with the decoration $F^e_*$. That is, $F^e_*R$ is just an collection of doppelg\"{a}ngers of elements $R$:\index{$F^e_*R$}
+\[\begin{aligned} &F^e_*R = \{ F^e_*r \ | \ r\in R\} \\
+&F^e_*r + F^e_*s = F^e_*(r+s) \quad \text{and} \quad  F^e_*r  F^e_*s = F^e_*(rs), \end{aligned}\]
+so the map 
+\[ R \to F^e_*R \qquad r\mapsto F^e_*r\]
+is an isomorphism.  After rewriting ``target $R$'' as $F^e_*R$ via the isomorphism above, the $e$-th Frobenius map takes the form
+\[ R \to F^e_*R \qquad r\mapsto F^e_*(r^{p^e}).\]
+One should think of this as follows: the $e$-th Frobenius map sends $r\to r^{p^e}$, and the $F^e_*$ symbol simply says which copy of $R$  the element $r^{p^e}$ lives in.
+Put another way, we have the commutative diagram
+\[ \xymatrix{ R \ar[d]_-{=} \ar[r]^-{F^e}  & R \ar[d]^{\cong} \\ R \ar[r]^-{} & F^e_*R} \qquad  \xymatrix{ r \ar@{|->}[r]  \ar@{|->}[d] & r^{p^e}  \ar@{|->}[d] \\ r  \ar@{|->}[r] &F^e_*(r^{p^e})} \]
+where the bottom row is the Frobenius from $R \to F^e_*R$ and the right map is the isomorphism ``adding the decoration $F^e_*$''.
+
+When $R$ is a domain, there is another useful way to think of $F^e_*R$. In this case, $R$ has a field of fractions $K$, which admits an algebraic closure $\overline{K}$. Every element of $R$ has a unique $p^e$-th root $r^{1/p^e}$ in $\overline{K}$, as $\overline{K}$ is a perfect field. Define
+\[ R^{1/p^e} := \{ r^{1/p^e}\in \overline{K} \ | \ r\in R\}.\]\index{$R^{1/p^e}$}
+One can verify that $R^{1/p^e}$ is a subring of $\overline{K}$, and the map
+\[ R \to R^{1/p^e} \qquad r\mapsto r^{1/p^e}\]
+is a ring isomorphism. We can think of the exponent ${}^{1/p^e}$ as a decoration that yields an isomorphic copy of $R$. After rewriting ``target $R$'' as $R^{1/p^e}$ via this isomorphism, the Frobenius map takes the form
+\[ R \to R^{1/p^e} \qquad r\mapsto (r^{p^e})^{1/p^e} = r.\]
+That is, after the identification above, the Frobenius map identifies with the inclusion of ${R\subseteq R^{1/p^e}}$. Put another way, we have the commutative diagram
+\[ \xymatrix{ R \ar[d]_-{=} \ar[r]^-{F^e}  & R \ar[d]^{\cong} \\ R \ar[r]^-{} & R^{1/p^e}} \qquad  \xymatrix{ r \ar@{|->}[r]  \ar@{|->}[d] & r^{p^e}  \ar@{|->}[d] \\ r  \ar@{|->}[r] &r = (r^{p^e})^{1/p^e},} \]
+where the bottom row is the inclusion map and the right map is the isomorphism $R \cong R^{1/p^e}$ of taking $p^e$-th roots. This notion of roots equally well makes sense when $R$ is reduced: in this case, one passes to the total ring of quotients by localization; this is a product of fields, which embeds into a product of algebraically closed fields, where every element again has a unique $p^e$-th root.
+
+A third perspective on the Frobenius on a reduced ring is by identifying the source of Frobenius with $R^{p^e}$, the subring consisting of $p^e$-th powers of elements of $R$. In this case, the Frobenius map corresponds to the inclusion map $R^{p^e} \subseteq R$. 
+
+\subsection*{Typical constructions}
+We now discuss some typical constructions for ring maps applied to special case of the Frobenius. For a general ring homomorphism $\phi:A\to B$, one has the notion of extension of an ideal $I\subseteq A$ given as the ideal of $B$ given by $(\phi(a) \ | \ a\in I)$. This leads to the notion of Frobenius powers. Given an ideal $I\subseteq R$, we define the \textbf{Frobenius powers} of $I$ as
+\[ I^{[p^e]} = ( a^{p^e} \ | \ a\in R) = (F^{e}(a) \ | \ a\in I).\]
+If $I=(a_1,\dots,a_t)$, then $I^{[p^e]} = (a_1^{p^e}, \dots,a_t^{p^e})$, as is the case in general for extension of ideals. Observe that $I^{[p^e]} \subseteq I^{p^e}$, but these are typically different when $I$ is not principal.
+
+Another important construction comes from restriction of scalars. For a general ring homomorphism $\phi:A\to B$, one can view $B$ as an $A$-module by restriction of scalars: $B$ becomes an $A$-module by the rule $a \cdot b = \phi(a)b$. One can view $R$ as an $R$-module by restriction of scalars through $F^e$, so $R$ acts on $R$ by the rule
+\[ r \cdot s = r^{p^e}s.\]
+It is especially helpful to use the alternative notations for the Frobenius map in this setting. Consider the Frobenius map in the form
+\[ R \to F^e_*R \quad r\mapsto F^e_*(r^{p^e}).\]
+The $R$-module action on $F^e_*R$ is then
+\[ r \cdot F^e_*s = F^e_*(r^{p^e}s).\]
+
+For $R$ reduced, we may also consider the Frobenius map in the form
+\[ R\subseteq R^{1/p^e}.\]
+The $R$-module action on $R^{1/p^e}$ is then the straightforward action
+\[ r \cdot s^{1/p^e} =r s^{1/p^e} = (r^{p^e}s)^{1/p^e}.\]
+We will return to discuss this structure in great detail for a polynomial ring soon.
+
+One can also apply the restriction of scalars to an arbitrary $R$-module. For a general ring homomorphism $\phi:A\to B$, and $B$-module $N$, one can view $N$ as an $A$-module by restriction of scalars: $N$ becomes an $A$-module by the rule $a \cdot n = \phi(a)n$. To apply this with the Frobenius map, we let $M$ be an $R$-module. Let us think of the Frobenius map in the form
+\[ R \to F^e_*R \quad r\mapsto F^e_*(r^{p^e}),\]
+and think of $M$ as a module over the target; we will rewrite $M$ as
+\[ F^e_*M =\{ F^e_*m \ | \ m\in M\}\]
+with $F^e_*R$-action
+\[ F^e_* r \cdot F^e_* m = F^e_* (rm).\]
+The action of $R$ on $F^e_*M$ is then
+\[ r \cdot F^e_*m = F^e_*(r^{p^e}) F^e_*m = F^e_*(r^{p^e}m).\]
+
+
+Finally, we discuss extension of scalars.  For a general ring homomorphism ${\phi:A\to B}$, and $A$-module $M$, one can create a new $B$-module by extension of scalars. The construction is most naturally stated in terms of tensor products, but we give a slightly more concrete construction. One can write $M$ in terms of generators and relations: $M$ has generating set $\{m_i\}_i$ with relations $\{ \sum_i a_{ij} m_i\}_j$, meaning $\sum_i a_{ij} m_i = 0$ in $M$ for all $j$, and that these generate the tuples of relations on these generators.  The module $\phi^*M$ is then the $B$-module with generating set $\{m_i\}_i$ with relations $\{ \sum_i \phi(a_{ij}) m_i\}_j$. To apply this with the Frobenius map, we let $M$ be an $R$-module. If $M$ is as above, the Frobenius restriction of scalars module is the $R$-module $F^{e*}(M)$ with generating set $\{m_i\}_i$ with relations $\{ \sum_i a_{ij}^{p^e} m_i\}_j$.
+
+
+
+\subsection*{Polynomial rings and Kunz' Theorem} We will now analyze the $R$-module structure of $F^e_*R$ in detail in an important case. 
+\begin{theorem}\label{thm:perfectgens} Let $K$ be a perfect field of characteristic $p$, and $S=K[x_1,\dots,x_n]$ be a polynomial ring in $n$ variables over $K$. Then $F^e_*S$ is a free $S$-module with basis
+\[ B= \{ F^e_*(x_1^{a_1} \cdots x_n^{a_n}) \ | \ 0\leq a_i < p^e \}.\]
+\end{theorem}
+\begin{proof}
+We need to show that every element of $F^e_* S$ can be written as an $S$-linear combination of the elements above. 
+
+Every element of $F^e_* S$ is a sum of elements of the form $F^e_*( \gamma x_1^{b_1} \cdots x_n^{b_n})$ with $\gamma \in K$ and $b_1,\dots,b_n \geq 0$. Write $b_i = p^e c_i + a_i$ with $0\leq a_i < p^e$. Then 
+\[ \begin{aligned} F^e_*( \gamma x_1^{b_1} \cdots x_n^{b_n}) &= F^e_*( \gamma x_1^{p^e c_1 + a_1} \cdots x_n^{p^e c_n + a_n}) \\
+&= F^e_*( \gamma x_1^{p^e c_1} \cdots x_n^{p^e c_n}) F^e_*(x_1^{a_1} \cdots x_n^{a_n}) \\
+&= \gamma^{1/p^e} x_1^{c_1} \cdots x_n^{c_n} \cdot F^e_*(x_1^{a_1} \cdots x_n^{a_n})\end{aligned}.\]
+Note that we have used that $K$ is perfect in the last step. This shows that the purported basis spans. 
+
+To see this set is linearly independent, suppose that we have some $\beta_1,\dots,\beta_t\in B$ and ${s_1,\dots,s_t\in S}$ such that $\sum_i s_i \beta_i = 0$. Note that in a product
+\[ s_i \beta_i = s_i \cdot F^e_*(x_1^{a_1} \cdots x_n^{a_n}) = F^e_*(s_i^{p^e} x_1^{a_1} \cdots x_n^{a_n}),\]
+every monomial occurring in the polynomial $s_i^{p^e} x_1^{a_1} \cdots x_n^{a_n}$ has exponents $b_1,\dots,b_n$ such that $b_i \equiv a_i \mod p^e$. In particular, writing each $s_i \beta_i$ as $F^e_*$ of some polynomial, the polynomials that occur have mutually distinct monomials, and thus cannot cancel each other. It follows that $s_i \beta_i=0$ for each $i$, which implies $s_i=0$ for each $i$. This shows that $B$ is a free basis.
+\end{proof}
+
+Intuitively, this proof shows that viewing $S$ as the $S$-module $F^e_*S$ breaks apart into pieces of the form $S\cdot  F^e_*(x_1^{a_1} \cdots x_n^{a_n})$ consisting of all polynomials whose exponent vectors are coordinatewise congruent to $(a_1,\dots,a_n)$. Various applications of the Frobenius are based on taking an element of $S$, viewing it as an element $F^e_*S$, and breaking it into its components in this free $S$-basis, or equivalently, applying $S$-linear maps from $F^e_*S$ back to $S$. We will return to this idea soon.
+
+
+This decomposition a special case of the ``Fundamental Theorem of Frobenius''. 
+\begin{theorem}[Kunz]
+Let $R$ be a Noetherian ring of characteristic $p$, and let $e\geq 1$. The module $F^e_* R$ is a flat $R$-module if and only if $R$ is a regular ring.
+\end{theorem}
+
+A flat module is a weakening of free module (free implies flat), and a polynomial ring over a field is a key example of a regular ring.  
+
+%To state it, we recall that a \textbf{local ring} is a ring with a unique maximal ideal. Given any ring $R$ and prime ideal $\frakp$, we can obtain a local ring $R_\frakp$ for adjoining inverses to every element outside of $\frakp$, a process called localization.
+
+We end with a technical definition that is useful for many purposes.
+
+\begin{definition} A ring $R$ of characteristic $p$ is \textbf{F-finite} if $F_*R$ is a finitely generated $R$-module; equivalently, $F^e_*R$ is a finitely generated $R$-module for all $e$.
+\end{definition}
+
+This is a finiteness property, somewhat akin to Noetherianity. In the exercises, you will show that every finitely generated algebra over a perfect field is F-finite. We can get a more concrete version of Kunz' theorem when $R$ is F-finite and local. Recall that a \textbf{local ring} is a ring with a unique maximal ideal. We often write $(R,\frakm)$ for a local ring to denote $R$ and its maximal ideal, or $(R,\frak,k)$ to denote the residue field $k=R/\frakm$ as well. Given any ring $R$ and prime ideal $\frakp$, we can obtain a local ring $R_\frakp$ for adjoining inverses to every element outside of $\frakp$, a process called localization. 
+
+A typical example of a local ring is, for a field $K$ and some variables $x_1,\dots,x_n$, the collection of rational functions for the form 
+\[ \left\{ \frac{f(x)}{g(x)} \ \big| \ g(x) \ \text{has nonzero constant term}\right\}.\]
+This is the local ring $K[x_1,\dots,x_n]_{(x_1,\dots,x_n)}$ obtained from the polynomial ring by localization at the prime (maximal) ideal consisting of polynomials with constant term zero. Another key example of a local ring  is the power series ring $K\llbracket x_1,\dots,x_n \rrbracket$. These are the two typical examples to keep in mind of regular local rings.
+
+\begin{corollary}[Kunz]
+Let $(R,\frakm)$ be an F-finite Noetherian local ring of characteristic $p$. The module $F^e_* R$ is a free $R$-module if and only if $R$ is a regular ring.
+\end{corollary}
+
+\begin{example} If $K$ is a perfect field and $S$ is either
+\[ K[x_1,\dots,x_n]_{(x_1,\dots,x_n)} \qquad \text{or} \qquad  K\llbracket x_1,\dots,x_n \rrbracket,\]
+then $F^e_*S$ is free with basis
+\[ B= \{ F^e_*(x_1^{a_1} \cdots x_n^{a_n}) \ | \ 0\leq a_i < p^e \}\]
+as in the polynomial case.
+\end{example}
+
+\begin{comment}
+
+\newpage 
+
+\section*{Exercise set \#1}
+
+\begin{enumerate}
+\item\footnote[1]{To be used later in the lectures.} Convince yourself, as succinctly as possible that $r\in I$ if and only if $F^e_* r\in F^e_* I$.
+\item\label{prob2} Let $S=\FF_3[x,y]$. Find an element in $(x,y)^3$ that is not in $(x,y)^{[3]}$.
+\item Let $S=\FF_3[x,y]$. Write out the free basis $B$ for $F_*S$ from the proof of Theorem~\ref{thm:perfectgens} and write the element $F_*(2 x^6 y^7 + x^5 y^3 + x^3 y^4 + 2 x y^2)$ as an $S$-linear combination of elements of $B$.
+\item Let $\frakp$ be a prime ideal in $R$. Show that $F^{-1}(\frakp)=\frakp$.
+\item\footnotemark[1] Let $R$ be a ring and $I$ be an ideal. Show that $F^e_*(I^{[p^e]}) = I F^e_*(R)$.
+\item Show that $R^{p^e}= \{ r^{p^e} \ | \ r\in R\}$ is a subring of $R$. Show that if $R$ is reduced, then $R \cong R^{p^e}$. For $R$ reduced, show that after identifying the source of the Frobenius map with $R^{p^e}$ via the isomorphism $R \cong R^{p^e}$, the Frobenius map identifies with the inclusion map $R^{p^e} \subseteq R$.
+\item\footnotemark[1] Let $R=\FF_p[x,y]/(xy)$.
+\begin{enumerate}
+\item Explain why $R$ has $\FF_p$-vector space basis $\{1, x, x^2, x^3, \dots, y, y^2, y^3,\dots\}$  (where, by abuse of notation, we write $x$ for the equivalence class of $x$ in the quotient).
+\item Find an $\FF_p$-vector space basis for $F^e_* R$, and describe the action of $R$ on $F^e_*R$ explicitly in terms of the action of each basis element of $R$ with each basis element of $F^e_* R$.
+\item Show that the ideal $(x)$ of multiples of $x$ in $R$ is isomorphic to $R/(y)$ as an $R$-module.
+\item Show that, as $R$-modules,  
+\[ F^e_* R \cong R \cdot F^e_*1 \oplus \bigoplus_{0<i<p^e} R/(y) \cdot F^e_*(x^i) \oplus \bigoplus_{0<j<p^e} R/(x) \cdot F^e_*(y^j).\] 
+\end{enumerate}
+%\item Let $R=\FF_2[x^2, x^3]$; i.e., $R$ is the subring of the polynomial ring $\FF_2[x]$ with $\FF_2$ vector space basis $\{1,x^2,x^3,x^4,x^5,x^6,x^7,\dots\}$. Describe $F_*R$ as an $R$-module. Is it a free module?
+\item Let $R=\FF_2[x^2, xy,y^2]$; i.e., $R$ is the subring of the polynomial ring $\FF_2[x,y]$ with $\FF_2$ vector space basis consisting of $\{x^i y^j \ | \ i+j \ \text{is even}\}$. Describe $F_*R$ as an $R$-module. Is it a free module?
+\item Let $K = \FF_p(t_1,t_2,t_3,\dots)$, the field of rational functions over $\FF_p$ in countably many variables. Is $K$ an F-finite field?
+\item \begin{enumerate}
+\item Let $R$ be an F-finite ring and $I$ be an ideal. Show that $R/I$ is also F-finite.
+\item Let $R$ be an F-finite ring and $x$ be an indeterminate. Show that $R[x]$ is also F-finite. Deduce that every finitely generated algebra over a perfect field is F-finite.
+\item\footnote[2]{Requires some background from Commutative Algebra.} Let $R$ be an F-finite ring and $W$ be a multiplicatively closed subset. Show that $W^{-1}R$ is also F-finite. Deduce that every ring essentially of finite type over a perfect field is F-finite.
+\end{enumerate}
+\item\label{prob13}\footnote[4]{To be used in Problem set \#2.} Let $K$ be a perfect field and $S=K[x_1,\dots,x_n]$. Consider $\Hom_{S}(F^e_*S,S)$, the set of S-linear maps from $F^e_*S$ to $S$. Let $A=\{ (a_1,\dots,a_n) \in \ZZ^n \ | \ 0\leq a_i < p^e\}$.
+\begin{enumerate}
+\item Show that for each $\alpha \in A$, there is a map $\Phi_{\alpha}\in \Hom_{S}(F^e_*S,S)$ such that \[\Phi_\alpha(F^e_*(x_1^{a_1} \cdots x_n^{a_n})) = \begin{cases} 1 & \text{if} \ (a_1,\dots,a_n) = \alpha\\ 0 & \text{if} \ (a_1,\dots,a_n)\in A \smallsetminus \{\alpha\}.\end{cases}\]
+\item Consider $\Hom_{S}(F^e_*S,S)$ as an $S$-module by the rule $s \cdot \phi(-) = s\phi(-)$. Show that $\Hom_{S}(F^e_*S,S)$ is a free $S$-module with this action, and find a basis.
+\item Consider $\Hom_{S}(F^e_*S,S)$ as an $F^e_*S$-module by the rule $F^e_*s \cdot \phi(-) = \phi(F^e_*s \cdot -)$. Show that $\Hom_{S}(F^e_*S,S)$ is a free $F^e_*S$-module with basis the singleton $\{\Phi:= \Phi_{(p^e-1,\dots,p^e-1)}\}$.
+\end{enumerate}
+\item Let $K = \FF_p(t_1,t_2,t_3,\dots)$, and $R= K\llbracket x\rrbracket$. Show that $F_*R$ is not a free module. Compare with Theorem~\ref{thm:perfectgens}.
+\item Let $R$ be a ring and $I$ be an ideal. Show that $F^{e*}(R/I) \cong R/I^{[p^e]}$.
+\item Let $R$ be a ring and $I$ be an ideal. Is $F^{e*}(I) \cong I^{[p^e]}$ in general?
+\item Let $R$ be a ring containing $\QQ$, let $n$ be a positive integer, and $I$ an ideal of $R$. Show that the ideal $( a^n \ | \ a\in I)$ is equal to $I^n$. Compare to (\ref{prob2}).
+\item\footnotemark[2] Let $R$ be a Noetherian ring of positive characteristic. Show that $F_R$ is surjective if and only if $R$ is a finite product of perfect fields.
+\item\footnotemark[2] Let $R$ be an F-finite Noetherian ring. Show that the singular locus of $R$ is a closed subset of $\mathrm{Spec}(R)$.
+\item\footnotemark[2] Let $R$ be a Noetherian ring of positive characteristic and $M$ be a finitely generated module.
+\begin{enumerate}
+\item Show that $\mathrm{Ass}_R(M) = \mathrm{Ass}_R(F^e_* R)$ for all $e$.
+\item Suppose that $R$ is regular. Show that $\mathrm{Ass}_R(M) = \mathrm{Ass}_R((F^e)^* R)$ for all $e$.
+\item Does the previous statement hold if $R$ is not assumed to be regular?
+\end{enumerate}
+\end{enumerate}
+
+\newpage
+
+\section{Tight closure}
+
+We now discuss a notion based on the Frobenius map that has many powerful applications.
+
+\begin{definition} Let $R$ be a ring of characteristic $p$ and $I\subseteq R$ be an ideal. The \textbf{Frobenius closure} of $I$ is the ideal
+\[ I^F := \{ a\in R \ | \ a^{p^e} \in I^{[p^e]} \ \text{for some $e> 0$}\}.\]
+\end{definition}
+
+\begin{definition}[Hochster-Huneke] Let $R$ be a domain of characteristic $p$ and $I\subseteq R$ be an ideal. The \textbf{tight closure} of $I$ is the ideal
+\[ I^* := \{ a\in R \ | \ \exists c \neq 0 \ : \ c a^{p^e} \in I^{[p^e]} \ \text{for all $e\gg 0$}\}.\]
+When $R$ is not necessarily a domain, we instead insist that $c$ is not in any minimal prime ideal of $R$.
+\end{definition}
+
+It follows from the definitions that $I \subseteq I^F \subseteq I^*$. These are notions that say that an element is in asymptotically in $I$, in various senses. The main fact about tight closure we will observe today is the following:
+
+\begin{theorem}\label{thm:tight}
+Let $S$ be a polynomial ring over a perfect field $K$ (or more generally, a regular ring of characteristic $p$). Then for any ideal $I\subseteq S$, we have $I^*=I$.
+\end{theorem}
+
+The statement may look a bit odd, but the point of the theorem is that it can be much easier to check that an element is in $I^*$ rather than $I$. We need a lemma to prepare for the proof.
+
+\begin{lemma}
+Let $\phi:A\to B$ be a homomorphism of rings such that $B$ is a free (or more generally, flat) $A$-module by restriction of scalars, and let $I$ be an ideal of $A$, and $f\in A$. Then ${(IB :_B f) = (I:_A f)B}$.
+\end{lemma}
+\begin{proof} The containment $\supseteq$ follows from the definitions without assuming anything about $B$. For the other containment, let $g\in (IB :_B f)$, so there exist $a_i\in I$ and $b_i\in B$ such that 
+\[ gf= \sum_i a_i b_i.\]
+Let $\{\beta_j\}$ be a basis for $B$ as an $A$-module, so we can write 
+\[ g = \sum_j g_j \beta_j \quad b_i = \sum_j b_{ij} \beta_j\]
+for some $g_j, b_{ij} \in A$. Then substituting in we get
+\[ \left( \sum_j g_j \beta_j\right) f = \sum_i a_i \left( \sum_j b_{ij} \beta_j \right)\]
+\[ \sum_j f g_j \beta_j = \sum_j \left( \sum_i a_i b_{ij} \right) \beta_j\]
+Now, using the $A$-linear independence of $\beta_j$, we get equations of the form
+\[ f g_j =  \sum_i a_i b_{ij}, \]
+so $g_j\in (I:_A f)B$; then since $g$ is a $B$-linear combination of $g_j$, we have $g\in (I:_A f)B$.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:tight}]
+We always have $I\subseteq I^*$ so there is only one containment left to show. Let $a\in I^*$, so there exists $c\neq 0$ with $c a^{p^e} \in I^{[p^e]}$ for all $e \gg 0$. In particular, for $e\gg 0$ have
+\[ c \in (I^{[p^e]} :_S a^{p^e})\]
+Let us consider the analogue of this same containment in $F^e_*R$:
+\[ F^e_*c \in (F^e_*(I^{[p^e]}) :_{F^e_*S} F^e_*(a^{p^e})) = (I F^e_*S :_{F^e_*S} a), \]
+where we have applied the exercise. By the Lemma, we have
+\[ F^e_*c \in  (I  :_S a) F^e_*S = F^e_*\left( (I  :_S a)^{[p^e]} \right),\]
+again using the exercise. That is,
+\[ c \in (I  :_S a)^{[p^e]}.\]
+If $a \notin I$, then  $(I :_S a) \subsetneqq S$ and
+\[ c\in \bigcap_{e\gg 0} (I :_S a)^{[p^e]} \subseteq  \bigcap_{e\gg 0} (I :_S a)^{p^e} = 0,\]
+a contradiction. Thus, we must have $a\in I$.
+\end{proof}
+
+Let us illustrate a typical application of tight closure. By way of motivation, let $K$ be a field, and $R=K[x]$ be a polynomial ring in one variable. Given any two elements $f,g\in R$, we claim that $fg\in (f^2,g^2)$. To see it, let $d$ be the GCD of $f$ and $g$, and write $f=d f'$ and $g=dg'$. Then $f'$ and $g'$ are coprime and $R$ is a PID so we can find $r,s$ with $rf'+ sg' = 1$. Then
+\[ fg = d^2 f' g' = d^2 f' g' (rf' + sg') = r g' (d^2 f'^2) + s f' (d^2 g'^2) = rg' f^2 + s f' g^2 \in (f^2,g^2).\]
+
+Now take a polynomial ring in two variables $K[x,y]$. The previous argument certainly fails since $R$ is not a PID, and even more convincingly since
+\[ xy \notin (x^2,y^2).\]
+The next best thing to hope for that for any $f,g,h \in K[x,y]$ 
+we have $fgh\in (f^2,g^2,h^2)$. This is also false; we learned the following example from Anurag K. Singh:
+\[ (xy)(x^2-y^2)(x^2+y^2) \notin \left( (xy)^2, (x^2-y^2)^2, (x^2+y^2)^2 \right),\]
+at least if $K$ has characteristic other than two.
+ 
+ However, the next best thing is true: for any $f,g,h \in K[x,y]$ 
+we have $f^2g^2h^2\in (f^3,g^3,h^3)$.
+
+\begin{theorem}\label{thmcontain} Let $K$ be a field, and $S=K[x_1,\dots,x_n]$ be a polynomial ring in $n$ variables over $K$. Then for any $f_1,\dots,f_{n+1}\in S$, the containment 
+\[ f_1^n \cdots f_{n+1}^n \in (f_1^{n+1},\dots,f_{n+1}^{n+1})\] holds.
+\end{theorem}
+We will prove this theorem in the case that $K$ algebraically closed of characteristic $p$, and $n=2$ just to keep notation simpler. One can in fact deduce the theorem for all fields from this case. The Theorem holds more generally when $S$ is a regular local ring of dimension $n$, though it requires different techniques in mixed characteristic.
+
+We again need a Lemma to prepare. To state it, we recall that a \textbf{local ring} is a ring with a unique maximal ideal; its residue field is the quotient of the ring by the maximal ideal. Given any ring $R$ and prime ideal $\frakp$, we can obtain a local ring $R_\frakp$ for adjoining inverses to every element outside of $\frakp$, a process called localization.
+
+\begin{lemma}\label{lem:IC} Let $R$ be a local ring of dimension $n$ with an infinite residue field, $f\in R$, and $I$ be an ideal of $R$. If $f^s\in I^s$ for some $s$, then there exists $c$ not in any minimal prime of $R$ such that $cf^t \in (\ell_1,\dots,\ell_n)^t$ for all $t\gg 0$, where $\ell_1,\dots,\ell_n$ are $n$ general linear combinations of the generators of $I$.
+\end{lemma}
+
+The Lemma follows from some standard facts in integral closure theory; we outline a self-contained proof in the next exercise set.
+
+\begin{proof}[Proof of Theorem~\ref{thmcontain} for $K$ of positive characteristic]
+Standard reductions allow us to replace the polynomial ring with a regular local ring $R$ of dimension $n$ with an infinite residue field. 
+Let's just do the case $n=2$ for simplicity.
+
+Let $f,g,h\in R$ a regular local ring of dimension two with infinite residue field. We need to show that $(fgh)^2\in (f^3,g^3,h^3)$. Observe that $(fgh)^3\in (f^3,g^3,h^3)^3$. We can apply the Lemma to get some $c\neq 0$ such that $c (fgh)^t\in (\ell_1,\ell_2)^t$ for $t\gg 0$. Now take $e\gg 0$ and set $t=2 p^e$:
+\[\begin{aligned} c (fgh)^{2 p^e} &\in (\ell_1, \ell_2)^{2 p^e} \subseteq (\ell_1^{2 p^e} ,\ell_1^{2 p^e-1}\ell_2 ,\dots , \ell_1^{p^e} \ell_2^{p^e} , \dots, \ell_1 \ell_2^{2 p^e -1}, \ell_2^{2p^e}) \\
+&\subseteq (\ell_1^{p^e},\ell_2^{p^e}) = (\ell_1,\ell_2)^{[p^e]} \subseteq (f^3,g^3,h^3)^{[p^e]}.\end{aligned}\]
+We can rewrite this as
+\[ c \left((fgh)^2\right)^{p^e} \in (f^3,g^3,h^3)^{[p^e]}\]
+for $e\gg 0$. This means that $(fgh)^2 \in (f^3,g^3,h^3)^*$. By Theorem~\ref{thm:tight}, we deduce that ${(fgh)^2 \in(f^3,g^3,h^3)}$. The proof for $n>2$ is similar.
+\end{proof}
+
+The last thing we want to illustrate is that statements over fields of characteristic zero can be deduced from statements in characteristic $p$. We will use the following facts from Commutative Algebra:
+
+\begin{lemma}
+Let $A$ be a finitely generated ring; for example a finitely generated subring of a field $K$. Then
+\begin{enumerate}
+\item For any maximal ideal $\frakm$ of $A$, the quotient $A/\frakm$ is a finite field.
+\item For a polynomial ring $S=A[x_1,\dots,x_n]$, and element $f\in S$ and ideal $I\subseteq S$, if $f\in I + \frakm S$ for every maximal ideal $\frakm$ of $A$, then $f\in I$.
+\end{enumerate}
+\end{lemma}
+
+This is all we need to deduce the Theorem in characteristic zero!
+
+\begin{proof}[Proof of Theorem~\ref{thmcontain} for $K$ of characteristic zero]
+We stick with $f,g,h$ for simplicity. Suppose that we have $f,g,h\in K[x,y]$. Let $A$ be the subring of $K$ generated by the coefficients of $f,g,h$ in $K$; this is a finite set, so $A$ is a finitely generated ring, and $f,g,h\in A[x,y]$. Now let $\frakm$ be a maximal ideal of $A$. Writing $\overline{*}$ for images modulo $\frakm$, we have $\overline{f},\overline{g},\overline{h} \in A[x,y]/\frakm A[x,y] \cong (A/\frakm)[x,y]$. Since $A/\frakm$ is a field of characteristic zero, we have \[ (\overline{f}\overline{g}\overline{h})^2  \in (\overline{f}^3,\overline{g}^3,\overline{h}^3) \quad \text{ in } \ (A/\frakm)[x,y].\] This means that
+\[ (fgh)^2  \in (f^3,g^3,h^3) + \frakm A[x,y] \quad \text{ in } \ A[x,y].\]
+Since this is true for all maximal ideals $\frakm$, we deduce that
+\[ (fgh)^2  \in (f^3,g^3,h^3) \quad \text{ in } \ A[x,y].\]
+But since $A\subseteq K$, we obtain
+\[ (fgh)^2  \in (f^3,g^3,h^3) \quad \text{ in } \ K[x,y].\qedhere\]
+\end{proof}
+
+
+
+\newpage
+
+
+
+\section{F-singularities}
+
+So far we have largely focused on advantageous properties of the Frobenius map when $R$ is a polynomial ring, or more generally, a regular ring, in light of Kunz' theorem. Let us on the case of the polynomial ring over a perfect field or the case of an F-finite regular local ring. In either of these cases, $F^e_* R$ is free over $R$. We have applied this in the setting of tight closure to say that there are ``no new relations'' in $F^e_*R$, which then led to triviality of tight closure. We will now consider the following perspective on freeness of $F^e_* R$: this means that $F^e_* R$ has many surjective maps back to $R$, namely the coordinate maps for a free basis. We will consider weakenings of the conclusion of Kunz' theorem by asking for fewer surjective maps back to $R$.
+
+
+\begin{definition} Let $R$ be a ring of characteristic $p$. We say that $R$ is \textbf{F-split} if there is an $R$-module homomorphism $\phi: F_*R \to R$ such that $\phi(F_*1) = 1$.
+\end{definition}
+
+\begin{example}
+Let $K$ be a perfect field and $S=K[x_1,\dots,x_n]$. Recall that $F_*R$ is a free $R$-module with basis $B= \{ F_*(x_1^{a_1} \cdots x_n^{a_n}) \ | \ 0\leq a_i < p\}$. Among this basis is $F_*1$. There is an $S$-linear map $\phi:F_* S \to S$ that sends any element $F_* s \in F_* S$ to the coefficient of $F_*1$ in the unique expresion of $F_*s$ as an $S$-linear combination of the elements of $B$. In particular, $\phi(F_*1) = \phi(1 \cdot F_*1 + 0 \cdot \text{other elements of $B$}) = 1$. Thus $S$ is F-split.
+\end{example}
+
+\begin{example}
+Let $K$ be a perfect field and $R=K[x,y]/(xy)$. We saw in the exercises that
+\[ F_* R \cong R \cdot F_*1 \oplus \bigoplus_{0<i<p} R/(y) \cdot F_*(x^i) \oplus \bigoplus_{0<j<p} R/(x) \cdot F_*(y^j).\] 
+An argument similar to the previous example shows that $R$ is F-split.
+\end{example}
+
+
+\begin{lemma} An F-split ring is reduced.
+\end{lemma}
+\begin{proof} We will show that the Frobenius map $F: R \to F_*R$ is injective. Let $\phi:F_*R \to R$ be an $R$-module homomorphism with $\phi(F_*1)=1$. Then for any $r\in R$,
+\[ \phi F (r) = \phi(F_* r^p) =\phi(r F_*1) = r \phi(F_*1) = r.\]
+Thus, if $F(r) = 0$, then $r=\phi F(r)=0$ as well. This shows that $F$ is injective, so $R$ is reduced.
+\end{proof}
+
+
+
+There are a few useful equivalences for the $F$-split condition.
+
+\begin{lemma}\label{lem:equivs} Let $R$ be a ring of characteristic $p$. The following are equivalent:
+\begin{enumerate}
+\item $R$ is F-split:  there is an $R$-module homomorphism $\phi: F_*R \to R$ such that $\phi(F_*1) = 1$.
+\item For all $e>0$, there is an $R$-module homomorphism $\phi: F^e_*R \to R$ such that $\phi(F^e_*1) = 1$.
+\item For some $e>0$, there is an $R$-module homomorphism $\phi: F^e_*R \to R$ such that $\phi(F^e_*1) = 1$.
+\item For some $e>0$, there is some $c\neq 0$ and an $R$-module homomorphism $\phi: F^e_*R \to R$ such that $\phi(F^e_*c) = 1$.
+\end{enumerate}
+\end{lemma}
+The implications (2)$\Rightarrow$(1)$\Rightarrow$(3)$\Rightarrow$(4) are clear. The rest are outlined in the exercises.
+
+\begin{lemma} Let $R$ be an F-split ring and $I$ an ideal. Then $I^F = I$.
+\end{lemma}
+\begin{proof} Recall that $I^F=\{ a\in R \ | \ a^{p^e}\in I^{[p^e]} \ \text{for some $e$}\}$. Take sone $a\in I^F$, so $a^{p^e}\in I^{[p^e]}$ for some~$e$. We can rewrite this as
+\[ a F^e_* 1  = F^e_* a^{p^e} \in F^e_* I^{[p^e]} = I F^e_* R,\]
+so $a F^e_* 1 = \sum_i a_i F^e_* r_i$ with $a_i\in I$. By the equivalences above, since $R$ is F-split, we have a map $\phi$ such that $\phi(F^e_*1) = 1$. We get
+\[ a = \phi(a F^e_* 1) = \phi\left( \sum_i a_i F^e_* r_i \right) = \sum_i a_i \phi( F^e_* r_i ) \in I. \qedhere\]
+\end{proof}
+
+There is an extremely useful criterion for checking when a ring is F-split.
+
+\begin{theorem}[Fedder's criterion]
+Let $(S,\frakm)$ be an F-finite regular local ring of characteristic $p$, and $I$ an ideal of $S$. Then the ring $S/I$ is F-split if and only if 
+\[ I^{[p]}: I \not\subseteq \frakm^{[p]}.\]
+\end{theorem}
+
+The colon ideal $I^{[p]}: I$ is easy to compute in the special case when $I=(f)$ is a principal ideal; in this case $I^{[p]}: I = (f^{p-1})$.
+More generally, the colon ideal $I^{[p]}: I$ is easy to compute in the case that $I$ generated by a regular sequence $f_1,\dots,f_t$; in this case $I^{[p]}: I = (f_1 \cdots f_t)^{p-1}$.
+
+We will outline the proof of Fedder's criterion in the exercises.
+
+
+
+\begin{example} Let $K$ be a field, and consider a $3\times 3$ matrix
+\[ M = \begin{bmatrix} x_{11} & x_{12} & x_{13} \\  x_{21} & x_{22} & x_{23} \\  x_{31} & x_{32} & x_{33} \end{bmatrix}.\]
+$M$ is \textbf{nilpotent} if $M^n=0$ for some $n$. For any given $n$, we can write out the nine entries $M^n$ as polynomial expressions of the entries $x_{ij}$ (of degree $n$) and we get nine equations to determine if $M^n=0$. Much better,  $M$ is nilpotent if and only if the characteristic polynomial of $M$ is of the form $T^3=0$, so the coefficients of the characteristic polynomial vanish. These are
+\[ f= x_{11} + x_{22} + x_{33}\ , \ g= \left| \begin{matrix} x_{11} & x_{12} \\   x_{21} & x_{22} \end{matrix} \right| + \left| \begin{matrix} x_{11} & x_{13} \\   x_{31} & x_{33} \end{matrix} \right| + \left| \begin{matrix} x_{22} & x_{23} \\   x_{32} & x_{33} \end{matrix} \right| \ , \ h= \ \left|\begin{matrix} x_{11} & x_{12} & x_{13} \\  x_{21} & x_{22} & x_{23} \\  x_{31} & x_{32} & x_{33} \end{matrix} \right|.\]
+One can see (e.g., from the next observation) that $f,g,h$ form a regular sequence.
+Order the variables $x_{11} > x_{12} > x_{13} > x_{21} > \cdots > x_{33}$ and take the reverse lexicographic order on the polynomial ring. Then \[ LT((fgh)^{p-1}) = LT(f)^{p-1} LT(g)^{p-1} LT(h)^{p-1} = (x_{11} x_{12} x_{21} x_{13} x_{22} x_{31})^{p-1} \notin \frakm^{[p]},\] so the quotient ring is F-split. 
+
+In particular, the ideal generated by $f,g,h$ is a radical ideal. While one can see this directly from initial ideal methods in this example, the combination of such methods with Fedder's criterion is a useful technique for showing an ideal is radical.
+\end{example}
+
+
+
+There is a stronger condition that is closely related.
+
+\begin{definition}
+Let $R$ be a ring of characteristic $p$. We say that $R$ is \textbf{strongly F-regular} if for any $c$ not in any minimal prime of $R$, there is some $e$ and an $R$-module homomorphism $\phi: F^e_*R \to R$ such that $\phi(F^e_*c) = 1$.
+When $R$ is a domain, this simplifies to: for any $c\neq 0$, there is some $e$ and an $R$-module homomorphism $\phi: F^e_*R \to R$ such that $\phi(F^e_*c) = 1$.
+\end{definition}
+
+It follows from the definition that any strongly F-regular ring is F-split: one can enforce the definition with $c=1$, and use the equivalences established above.
+If $R$ is strongly F-regular and $c$ not in any minimal prime of $R$, given an $e$ that ``works'', any larger $e$ also ``works.''
+
+\begin{lemma} Let $R$ be a strongly F-regular ring and $I$ an ideal. Then $I^* = I$.
+\end{lemma}
+\begin{proof} Recall that \[I^*=\{ a\in R \ | \ \text{there exists $c$ not in any minimal prime} \ : \ ca^{p^e}\in I^{[p^e]} \ \text{for $e\gg 0$}\}.\]
+ Take some $a\in I^*$, so $ca^{p^e}\in I^{[p^e]}$ for some $c$ not in any minimal prime and $e\gg0$.  We can rewrite this as
+ \[ a F^e_* c  = F^e_* (ca^{p^e}) \in F^e_* I^{[p^e]} = I F^e_* R.\]
+From the definition of strongly F-regular with $c$ and the note above, for all $e\gg0$ there is some $\phi: F^{e}_* R \to R$ such that $\phi(F^{e}_* c) = 1$. Applying $\phi$, we get
+\[ a = a  \phi(F^e_* c) = \phi(a F^e_* c) = \phi\left( \sum_i a_i F^e_* r_i \right) = \sum_i a_i \phi( F^e_* r_i ) \in I. \qedhere\]
+\end{proof}
+
+It is a longstanding open question whether a ring with the property that every ideal is tightly closed is necessarily strongly F-regular.
+
+\begin{proposition} Let $(R,\frakm,k)$ be an F-finite regular local ring. Then $R$ is strongly F-regular.
+\end{proposition}
+\begin{proof}
+The main point is the Corollary to Kunz' theorem: $F^e_*R$ is a free $R$-module for each $e$ in this setting. Let $c\neq 0$. We also need a couple of standard facts from Commutative Algebra. First, the Krull Intersection Theorem says that $\bigcap_{n>0} \frakm^n=0$ in any local ring. Thus $\bigcap_{e>0} \frakm^{[p^e]} \subseteq \bigcap_{e>0} \frakm^{p^e} = 0$, so there is some $e$ such that $c\notin \frakm^{[p^e]}$. Second, a consequence of Nakayama's Lemma says that for $M$ a finitely generated free module over a local ring $(R,\frakm)$, any element not in $\frakm M$ is part of a free basis of $M$. Applying this to $F^e_* R$,  we have $\frakm F^e_* R = F^e_* \frakm^{[p^e]}$. Thus, with $e$ as above, $F^e_* c$ is part of a free basis for $F^e_* R$. Completing $\beta_1= F^e_* c$ to a full basis $\{\eta_i\}$ for $F^e_* R$, there is an $R$-linear map $\phi$ that sends $\sum_i r_i \beta_i$ to $r_1$. In particular, $\phi(F^e_* c) = 1$.
+\end{proof}
+
+There is an analogue of Fedder's criterion, called Glassbrenner's criterion, for strong F-regularity. However, we will focus on another important source of strongly F-regular rings.
+
+\begin{definition} Let $R\subseteq S$ be an inclusion of rings. We say that $R$ is a \textbf{direct summand} of $S$ if there is an $R$-module homomorphism $\psi:S \to R$ such that $\psi(1) = 1$.
+\end{definition}
+
+
+\begin{proposition}
+Let $R\subseteq S$ be an inclusion of rings of characteristic $p$, and suppose that $R$ is a direct summand of $S$.
+\begin{enumerate}
+\item If $S$ is a strongly F-regular domain, then $R$ is strongly F-regular.
+\item  If $S$ is F-split, then $R$ is F-split.
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+We will prove the first statement, as the second is very similar. Let $S$ be strongly F-regular, and $\psi:S\to R$ such that $\psi(1)=1$. Suppose that $c\neq 0$ in $R$. There is some $e$ and $S$-linear map $\phi:F^e_* S \to S$ such that $\phi(F^e_* c) = 1$. Since $R\subseteq S$, $\phi$ is $R$-linear as well. The restriction of the composition $\psi \circ \phi|_{F^e_* R}: F^e_*R \to R$ is an $R$-linear map sending $F^e_*c$ to $1$. This shows that $R$ is strongly F-regular.
+\end{proof}
+
+\begin{example}
+Let $K$ be a perfect field. Let $R=K[x^2,xy,y^2]\subseteq S=K[x,y]$. We claim that $R$ is a direct summand of $S$. Note that $R$ is the $K$-vector space spanned by monomials whose total degree is even. Any element $s\in S$ has a unique expression of the form $s=s_{even} + s_{odd}$ where $s_{even}$ is a linear combination of monomials of even degree, i.e., $s_{even}\in R$, and $s_{odd}$ is a linear combination of monomials of odd degree. Thus, there is a well-defined map $\psi:S\to R$ given by $\psi(s)=s_{even}$. This map is $R$-linear:
+if $r\in R$, then $rs = r s_{even}+ r s_{odd}$, where $ r s_{even}$  is a linear combination of monomials of even degree and $ r s_{odd}$ is a linear combination of monomials of odd degree. This means that $\psi(rs) = r s_{even} = r \psi(s)$, which says that $\psi$ is $R$-linear.
+\end{example}
+
+We now loosely outline an application of strong F-regularity. A \textbf{magic square} of size $t$ with row sum $n$ is a $t\times t$ array of nonnegative integers such that each row and each column sums to~$n$. For example,
+\[ \begin{array}{|c|c|c|c|} 
+\hline 1 & 14 & 14 & 4  \\
+\hline 11 & 7 & 6 & 9 \\
+\hline 8 & 10 & 10 & 5 \\
+\hline 13 & 2 & 3 & 15 \\
+\hline
+\end{array}\]
+is a particularly gaudy magic square of size 4 and row sum 33.
+There is only one magic square of size $1$ and row sum $n$, namely
+\[ \begin{array}{|c|} 
+\hline t \\
+\hline
+\end{array}\]
+and there are $n+1$ magic squares of size $2$ and row sum $n$, namely
+\[ \begin{array}{|c|c|} 
+\hline i  & n-i\\
+\hline n-i & i \\
+\hline
+\end{array} \qquad 0\leq i \leq n.
+\]
+
+
+\begin{theorem}[Stanley] Denote by $M_t(n)$ the number of magic squares with row sum $n$. For any $t>0$, the function $M_t(n)$ is a polynomial for $n\geq 0$.
+\end{theorem}
+\begin{proof}[Outline]
+
+\textit{Step 1:} Let $K$ be a field of positive characteristic and $S=K[x_{11}, \dots, x_{33}]$. We associate to each magic square a monomial in $S$:
+\[\begin{bmatrix} a_{11} & a_{12} & a_{13} \\  a_{21} & a_{22} & a_{23} \\  a_{31} & a_{32} & a_{33} \end{bmatrix} \quad \rightsquigarrow \quad x_{11}^{a_{11}} x_{12}^{a_{12}} \cdots x_{33}^{a_{33}} \]
+and we let $R$ be the $K$-vector space spanned by these monomials. $R$ is a subring of $S$. The number $M_t(n)$ is equal to the number of monomials in $R$ of degree $nt$, or equivalently, the vector space dimension of $R_{nt}$. This part is elementary.
+
+ \textit{Step 2:} The ring $R$ is generated over $K$ by magic squares of row sum $1$; i.e., $R$ is generated in a single degree. This boils down to the fact that any magic square is a sum of permutation matrices, which is a nontrivial fact from combinatorics/convex geometry called the Birkhoff-Von Neumann Theorem. If we divide all of the degrees in $R$ through by $t$, then $R$ is generated in degree one, and $M_t(n)$ is now just the Hilbert function of $R$. It follows from general facts that $M_t(n)$ \textit{eventually} agrees with a polynomial, but we want to show that it agrees with a polynomial for all nonnegative values of $n$.
+ 
+ \textit{Step 3:} The ring $R$ is a direct summand of $S$. This is not too hard to show. It then follows that $R$ is a strongly F-regular graded ring.
+ 
+   \textit{Step 4:} The fact that $R$ is strongly F-regular forces certain graded pieces of local cohomology to vanish, which then forces $R$ to be Cohen-Macaulay and the regularity of $R$ to be less than the dimension of $R$. These conditions then make the Hilbert function of $R$ a polynomial.
+\end{proof}
+
+
+
+\newpage
+\section*{Exercise set \#2}
+
+\begin{enumerate}
+\item Explain as succinctly as possible why the ring $K[x,y]/(x^2)$ is not F-split nor strongly F-regular.
+\item Let $K$ be a perfect field of characteristic $p$ and $S=K[x,y]_{(x,y)}$. Recall that this is an F-finite regular local ring. Apply Fedder's criterion to the rings $S/(x^2)$ and $S/(xy)$. Compare this to our other examples.
+\item\label{ex:Fed} Let $K$ be a perfect field of characteristic $p$ and $S=K[x,y,z]_{(x,y,z)}$. Apply Fedder's criterion to:
+\begin{itemize}
+\item $S/(x^2+y^2+z^2)$. It may be helpful to consider the cases with $p=2$ and $p\neq 2$ separately.
+\item $S/(x^4+y^4+z^4)$.
+\item $S/(x^3+y^3+z^3)$. It may be helpful to consider the cases with $p=3$, $p \equiv 1 \mod 3$, and $p \equiv 2 \mod 3$ separately.
+\end{itemize}
+
+\item Let $K$ be a field of characteristic $\neq 2$ and $S=K[x,y]$. Verify that $fgh\notin (f^2,g^2,h^2)$ for $f=xy$, $g=x^2-y^2$, $h=x^2+y^2$.
+
+
+\item Complete the proof of Lemma~\ref{lem:equivs}. \\Hint: For (3)$\Rightarrow$(1)$\Rightarrow$(2), think of $R \xrightarrow{F^{e+e'}} F^{e+e}_*R$ as the composition ${R \xrightarrow{F^e} F^e_*R \xrightarrow{F^{e'}_*F} F^{e+e'}_* R}$. You may find it useful to show that if there is some $e$ that ``works'' any smaller $e$ ``works'', and if $e$ ``works, then $2e$ ``works''.
+
+\item Let $K$ be a field, and $R\subseteq S=K[x_{11},\dots,x_{33}]$ be the $K$-vector space spanned by monomials $x_{11}^{a_{11}} x_{12}^{a_{12}} \cdots x_{33}^{a_{33}}$ such that $\{a_{ij}\}$ is a magic square. Explain why $R$ is a ring, and show $R$ is a direct summand of $S$ via the $K$-vector space map $\psi:S\to R$ given by
+\[ \psi( x_{11}^{a_{11}} x_{12}^{a_{12}} \cdots x_{33}^{a_{33}}) = \begin{cases} x_{11}^{a_{11}} x_{12}^{a_{12}} \cdots x_{33}^{a_{33}} & \text{if} \ \{a_{ij}\} \ \text{is a magic square} \\ 0 & \text{otherwise}. \end{cases}\]
+
+
+\item Let $K$ be a perfect field of characteristic $p$ and $R=K[x,y,z]/(x^3+y^3+z^3)$.
+\begin{enumerate}
+\item If $p \equiv 2 \mod 3$, show that $(z^2)^p \in (x,y)^{[p]}$. Deduce that $z^2\in (x,y)^F$ and $z^2\in (x,y)^*$. Compare this with (\ref{ex:Fed}) above.
+\item If $p \equiv 1 \mod 3$, show that $z^2\in (x,y)^*$. Deduce that $R$ is not strongly F-regular.
+\end{enumerate}
+
+\item\footnote[2]{Requires some background from Commutative Algebra.} Lemma~\ref{lem:IC} follows from standard properties of integral closure, but we outline a self-contained argument in the case of polynomials $f_1,\dots, f_{t+1}$ homogeneous of the same degree in a polynomial ring $R=K[x_1,\dots,x_n]$ over an infinite field~$K$.
+\begin{enumerate}
+\item Let $T$ be an indeterminate. Explain why $K[f_1,\dots,f_{n+1}] \cong K[f_1T,\dots,f_{n+1}T] \subseteq R[T]$.
+\item Let $f_1,\dots,f_{n+1} \in S$ be homogeneous polynomials of the same degree. Explain why the inclusion $K[\ell_1T,\dots,\ell_nT]\subseteq K[f_1T,\dots,f_{n+1}T]$ is module-finite for generic linear combinations $\ell_1,\dots,\ell_n$ of $f_1,\dots,f_{n+1}$.
+\item Show that the inclusion $R[\ell_1T,\dots,\ell_nT]\subseteq R[f_1T,\dots,f_{n+1}T]$ is module-finite for generic $\ell_1,\dots,\ell_n$.
+\item Take an equation $(f_iT)^k + \cdots = 0$ of integral dependence for $f_i T$ over $R[\ell_1T,\dots,\ell_nT]$ and collect the terms of the form $T^k$. Use this to show that $f_i^{k+t} \in (\ell_1,\dots,\ell_n)^t$.
+\end{enumerate}
+\item \footnotemark[2] Let $R$ be a strongly F-regular Noetherian local or graded ring. Show that $R$ is a domain. \\ Hint: If $R$ has distinct minimal primes, start by finding nonzero $f,g$ such that $fg=0$ and $f+g$ is not in any minimal prime.
+\item In this problem, we prove Fedder's criterion in the case of $R=S/I$ for $S=K[x_1,\dots,x_n]_{(x_1,\dots,x_n)}$ with $K$ perfect. We will use the conclusion of (\ref{prob13}) from Problem Set 1 in this setting.
+\begin{enumerate}
+\item Explain why every $R$-linear map $\phi: F_*R \to R$ is induced from a map $\psi:F_*S \to S$ in the sense that $\phi(\overline{s}) = \overline{\psi(s)}$, thinking of $F_*R = F_*S/ F_*I$.
+\item Let $\Phi$ be as in (\ref{prob13}) from Problem Set 1 and $s\in S$. Show that $(F_*s \cdot \Phi)(S)\subseteq \frakm$ if and only if $s\in \frakm^{[p]}$.
+\item Show that $(F_*s \cdot \Phi)(I) \subseteq I$ if and only if $s\in (I^{[p]} : I)$. Deduce Fedder's criterion.
+\end{enumerate}
+\item\footnotemark[2] Compute the degree of the polynomial $M_t(n)$ for every $t$.
+\end{enumerate}
+
+\null \vfill
+
+%\printindex
+
+\end{comment}
+
+\end{document}
