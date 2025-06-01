@@ -315,7 +315,7 @@ as in the polynomial case.
 
 \newpage 
 
-\section*{Exercise set \#1}
+\section*{Exercise set \#1} Throughout this problem set all rings have characteristic $p$.
 
 \begin{enumerate}
 \item\footnote[1]{To be used later in the lectures.} Convince yourself, as succinctly as possible, that $r\in I$ if and only if $F^e_* r\in F^e_* I$.
@@ -323,7 +323,8 @@ as in the polynomial case.
 \item Let $S=\FF_3[x,y]$. Write out the free basis $B$ for $F_*S$ from the proof of Theorem~\ref{thm:perfectgens} and write the element $F_*(2 x^6 y^7 + x^5 y^3 + x^3 y^4 + 2 x y^2)$ as an $S$-linear combination of $B$.
 \item Let $\frakp$ be a prime ideal in $R$. Show that $F^{-1}(\frakp)=\frakp$.
 \item\footnotemark[1] Let $R$ be a ring and $I$ be an ideal. Show that $F^e_*(I^{[p^e]}) = I F^e_*(R)$.
-\item Show that $R^{p^e}= \{ r^{p^e} \ | \ r\in R\}$ is a subring of $R$. Show that if $R$ is reduced, then $R \cong R^{p^e}$. For $R$ reduced, show that after identifying the source of the Frobenius map with $R^{p^e}$ via the isomorphism $R \cong R^{p^e}$, the Frobenius map identifies with the inclusion map $R^{p^e} \subseteq R$.
+\item Show that $R^{p^e}= \{ r^{p^e} \ | \ r\in R\}$ is a subring of $R$. 
+\item Suppose that $R$ is reduced. Show that $R \cong R^{p^e}$, and that after identifying the source of the $e$-th Frobenius map with $R^{p^e}$ via the isomorphism you found, the Frobenius map identifies with the inclusion map $R^{p^e} \subseteq R$.
 \item\footnotemark[1] Let $R=\FF_p[x,y]/(xy)$.
 \begin{enumerate}
 \item Explain why $R$ has $\FF_p$-vector space basis $\{1, x, x^2, x^3, \dots, y, y^2, y^3,\dots\}$  (where, by abuse of notation, we write $x$ for the equivalence class of $x$ in the quotient).
@@ -333,30 +334,33 @@ as in the polynomial case.
 \[ F^e_* R \cong R \cdot F^e_*1 \oplus \bigoplus_{0<i<p^e} R/(y) \cdot F^e_*(x^i) \oplus \bigoplus_{0<j<p^e} R/(x) \cdot F^e_*(y^j).\] 
 \end{enumerate}
 %\item Let $R=\FF_2[x^2, x^3]$; i.e., $R$ is the subring of the polynomial ring $\FF_2[x]$ with $\FF_2$ vector space basis $\{1,x^2,x^3,x^4,x^5,x^6,x^7,\dots\}$. Describe $F_*R$ as an $R$-module. Is it a free module?
-\item Let $R=\FF_2[x^2, xy,y^2]$; i.e., $R$ is the subring of the polynomial ring $\FF_2[x,y]$ with $\FF_2$ vector space basis consisting of $\{x^i y^j \ | \ i+j \ \text{is even}\}$. Describe $F_*R$ as an $R$-module. Is it a free module?
+\item\label{pr9} Let $R=\FF_2[x^2, xy,y^2]$; i.e., $R$ is the subring of the polynomial ring $\FF_2[x,y]$ with $\FF_2$ vector space basis consisting of $\{x^i y^j \ | \ i+j \ \text{is even}\}$. Find a generating set for $F_*R$ as an $R$-module. Is your generating set a free basis?
 \item Let $K = \FF_p(t_1,t_2,t_3,\dots)$, the field of rational functions over $\FF_p$ in countably many variables. Is $K$ an F-finite field?
 \item \begin{enumerate}
 \item Let $R$ be an F-finite ring and $I$ be an ideal. Show that $R/I$ is also F-finite.
 \item Let $R$ be an F-finite ring and $x$ be an indeterminate. Show that $R[x]$ is also F-finite. Deduce that every finitely generated algebra over a perfect field is F-finite.
 \item\footnote[2]{Requires some background from Commutative Algebra.} Let $R$ be an F-finite ring and $W$ be a multiplicatively closed subset. Show that $W^{-1}R$ is also F-finite. Deduce that every ring essentially of finite type over a perfect field is F-finite.
 \end{enumerate}
+\item Let $R$ be as in (\ref{pr9}). Verify directly that $F_*R$ has no free basis.\\ It may be useful to use the fact that if $M$ is a free $R$-module with basis $B$ and $I$ is an ideal, them $M/IM$ is a free $R/I$-module with basis given by the images of $B$; try different maximal ideals.
+\begin{samepage}
 \item\label{prob13}\footnote[4]{To be used in Problem set \#2.} Let $K$ be a perfect field and $S=K[x_1,\dots,x_n]$. Consider $\Hom_{S}(F^e_*S,S)$, the set of S-linear maps from $F^e_*S$ to $S$. Let $A=\{ (a_1,\dots,a_n) \in \ZZ^n \ | \ 0\leq a_i < p^e\}$.
 \begin{enumerate}
 \item Show that for each $\alpha \in A$, there is a map $\Phi_{\alpha}\in \Hom_{S}(F^e_*S,S)$ such that \[\Phi_\alpha(F^e_*(x_1^{a_1} \cdots x_n^{a_n})) = \begin{cases} 1 & \text{if} \ (a_1,\dots,a_n) = \alpha\\ 0 & \text{if} \ (a_1,\dots,a_n)\in A \smallsetminus \{\alpha\}.\end{cases}\]
 \item Consider $\Hom_{S}(F^e_*S,S)$ as an $S$-module by the rule $s \cdot \phi(-) = s\phi(-)$. Show that $\Hom_{S}(F^e_*S,S)$ is a free $S$-module with this action, and find a basis.
 \item Consider $\Hom_{S}(F^e_*S,S)$ as an $F^e_*S$-module by the rule $F^e_*s \cdot \phi(-) = \phi(F^e_*s \cdot -)$. Show that $\Hom_{S}(F^e_*S,S)$ is a free $F^e_*S$-module with basis the singleton $\{\Phi:= \Phi_{(p^e-1,\dots,p^e-1)}\}$.
 \end{enumerate}
-\item Let $K = \FF_p(t_1,t_2,t_3,\dots)$, and $R= K\llbracket x\rrbracket$. Show that $F_*R$ is not a free module. Compare with Theorem~\ref{thm:perfectgens}.
+\end{samepage}
 \item Let $R$ be a ring and $I$ be an ideal. Show that $F^{e*}(R/I) \cong R/I^{[p^e]}$.
+\item Let $K = \FF_p(t_1,t_2,t_3,\dots)$, and $R= K\llbracket x\rrbracket$. Show that $F_*R$ is not a free module. Compare with Theorem~\ref{thm:perfectgens}.
 \item Let $R$ be a ring and $I$ be an ideal. Is $F^{e*}(I) \cong I^{[p^e]}$ in general?
 \item Let $R$ be a ring containing $\QQ$, let $n$ be a positive integer, and $I$ an ideal of $R$. Show that the ideal $( a^n \ | \ a\in I)$ is equal to $I^n$. Compare to (\ref{prob2}).
 \item\footnotemark[2] Let $R$ be a Noetherian ring of positive characteristic. Show that $F_R$ is surjective if and only if $R$ is a finite product of perfect fields.
 \item\footnotemark[2] Let $R$ be an F-finite Noetherian ring. Show that the singular locus of $R$ is a closed subset of $\mathrm{Spec}(R)$.
-\item\footnotemark[2] Let $R$ be a Noetherian ring of positive characteristic and $M$ be a finitely generated module.
+\item\footnotemark[2] Let $R$ be a regular Noetherian ring and $M$ be a finitely generated module.
 \begin{enumerate}
-\item Show that $\mathrm{Ass}_R(M) = \mathrm{Ass}_R(F^e_* R)$ for all $e$.
-\item Suppose that $R$ is regular. Show that $\mathrm{Ass}_R(M) = \mathrm{Ass}_R((F^e)^* R)$ for all $e$.
-\item Does the previous statement hold if $R$ is not assumed to be regular?
+\item\label{it:a} Show that $\mathrm{Ass}_R(M) = \mathrm{Ass}_R(F^e_* M)$ for all $e$.
+\item\label{it:b} Show that $\mathrm{Ass}_R(M) = \mathrm{Ass}_R(F^{e*} M)$ for all $e$.
+\item Do the statements (\ref{it:a}) and (\ref{it:b}) hold if $R$ is not assumed to be regular?
 \end{enumerate}
 \end{enumerate}
 
