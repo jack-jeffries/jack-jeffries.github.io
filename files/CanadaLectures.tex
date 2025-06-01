@@ -9,7 +9,7 @@
 \definecolor{chianti}{rgb}{0.6,0,0}
 \definecolor{meretale}{rgb}{0,0,.6}
 \definecolor{leaf}{rgb}{0,.35,0}
-\usepackage[colorlinks=true, pagebackref, hyperindex, citecolor=meretale, urlcolor=leaf, linkcolor=chianti]{hyperref}
+\usepackage[colorlinks=true, pagebackref, hyperindex, citecolor=meretale, urlcolor=leaf,linkcolor=chianti,hyperfootnotes=false]{hyperref}
 \usepackage[all]{xy}
 %\usepackage{showkeys}
 \usepackage{paralist}
@@ -274,7 +274,7 @@ Note that we have used that $K$ is perfect in the last step. This shows that the
 
 To see this set is linearly independent, suppose that we have some $\beta_1,\dots,\beta_t\in B$ and ${s_1,\dots,s_t\in S}$ such that $\sum_i s_i \beta_i = 0$. Note that in a product
 \[ s_i \beta_i = s_i \cdot F^e_*(x_1^{a_1} \cdots x_n^{a_n}) = F^e_*(s_i^{p^e} x_1^{a_1} \cdots x_n^{a_n}),\]
-every monomial occurring in the polynomial $s_i^{p^e} x_1^{a_1} \cdots x_n^{a_n}$ has exponents $b_1,\dots,b_n$ such that $b_i \equiv a_i \mod p^e$. In particular, writing each $s_i \beta_i$ as $F^e_*$ of some polynomial, the polynomials that occur have mutually distinct monomials, and thus cannot cancel each other. It follows that $s_i \beta_i=0$ for each $i$, which implies $s_i=0$ for each $i$. This shows that $B$ is a free basis.
+every monomial occurring in the polynomial $s_i^{p^e} x_1^{a_1} \cdots x_n^{a_n}$ has exponents $b_1,\dots,b_n$ such that $b_i \equiv a_i \mod p^e$. In particular, writing each $s_i \beta_i$ as $F^e_*$ of some polynomial as above, the polynomials that occur have mutually distinct monomials, and thus cannot cancel each other. It follows that $s_i \beta_i=0$ for each $i$, which implies $s_i=0$ for each $i$. This shows that $B$ is a free basis.
 \end{proof}
 
 Intuitively, this proof shows that viewing $S$ as the $S$-module $F^e_*S$ breaks apart into pieces of the form $S\cdot  F^e_*(x_1^{a_1} \cdots x_n^{a_n})$ consisting of all polynomials whose exponent vectors are coordinatewise congruent to $(a_1,\dots,a_n)$. Various applications of the Frobenius are based on taking an element of $S$, viewing it as an element $F^e_*S$, and breaking it into its components in this free $S$-basis, or equivalently, applying $S$-linear maps from $F^e_*S$ back to $S$. We will return to this idea soon.
@@ -294,7 +294,7 @@ We end with a technical definition that is useful for many purposes.
 \begin{definition} A ring $R$ of characteristic $p$ is \textbf{F-finite} if $F_*R$ is a finitely generated $R$-module; equivalently, $F^e_*R$ is a finitely generated $R$-module for all $e$.
 \end{definition}
 
-This is a finiteness property, somewhat akin to Noetherianity. In the exercises, you will show that every finitely generated algebra over a perfect field is F-finite. We can get a more concrete version of Kunz' theorem when $R$ is F-finite and local. Recall that a \textbf{local ring} is a ring with a unique maximal ideal. We often write $(R,\frakm)$ for a local ring to denote $R$ and its maximal ideal, or $(R,\frak,k)$ to denote the residue field $k=R/\frakm$ as well. Given any ring $R$ and prime ideal $\frakp$, we can obtain a local ring $R_\frakp$ for adjoining inverses to every element outside of $\frakp$, a process called localization. 
+This is a finiteness property, somewhat akin to Noetherianity. In the exercises, you will show that every finitely generated algebra over a perfect field is F-finite. We can get a more concrete version of Kunz' theorem when $R$ is F-finite and local. Recall that a \textbf{local ring} is a ring with a unique maximal ideal. We often write $(R,\frakm)$ for a local ring to denote $R$ and its maximal ideal, or $(R,\frakm,k)$ to denote the residue field $k=R/\frakm$ as well. Given any ring $R$ and prime ideal $\frakp$, we can obtain a local ring $R_\frakp$ for adjoining inverses to every element outside of $\frakp$, a process called localization. 
 
 A typical example of a local ring is, for a field $K$ and some variables $x_1,\dots,x_n$, the collection of rational functions for the form 
 \[ \left\{ \frac{f(x)}{g(x)} \ \big| \ g(x) \ \text{has nonzero constant term}\right\}.\]
@@ -341,7 +341,7 @@ as in the polynomial case.
 \item Let $R$ be an F-finite ring and $x$ be an indeterminate. Show that $R[x]$ is also F-finite. Deduce that every finitely generated algebra over a perfect field is F-finite.
 \item\footnote[2]{Requires some background from Commutative Algebra.} Let $R$ be an F-finite ring and $W$ be a multiplicatively closed subset. Show that $W^{-1}R$ is also F-finite. Deduce that every ring essentially of finite type over a perfect field is F-finite.
 \end{enumerate}
-\item Let $R$ be as in (\ref{pr9}). Verify directly that $F_*R$ has no free basis.\\ It may be useful to use the fact that if $M$ is a free $R$-module with basis $B$ and $I$ is an ideal, them $M/IM$ is a free $R/I$-module with basis given by the images of $B$; try different maximal ideals.
+\item Let $R$ be as in (\ref{pr9}). Verify directly that $F_*R$ has no free basis.\\ It may be useful to use the fact that if $M$ is a free $R$-module with basis $B$ and $I$ is an ideal, then $M/IM$ is a free $R/I$-module with basis given by the images of $B$; try different maximal ideals.
 \begin{samepage}
 \item\label{prob13}\footnote[4]{To be used in Problem set \#2.} Let $K$ be a perfect field and $S=K[x_1,\dots,x_n]$. Consider $\Hom_{S}(F^e_*S,S)$, the set of S-linear maps from $F^e_*S$ to $S$. Let $A=\{ (a_1,\dots,a_n) \in \ZZ^n \ | \ 0\leq a_i < p^e\}$.
 \begin{enumerate}
@@ -407,7 +407,7 @@ We always have $I\subseteq I^*$ so there is only one containment left to show. L
 \[ c \in (I^{[p^e]} :_S a^{p^e})\]
 Let us consider the analogue of this same containment in $F^e_*R$:
 \[ F^e_*c \in (F^e_*(I^{[p^e]}) :_{F^e_*S} F^e_*(a^{p^e})) = (I F^e_*S :_{F^e_*S} a), \]
-where we have applied the exercise. By the Lemma, we have
+where we have applied the exercise. By the Lemma and Kunz' Theorem, we have
 \[ F^e_*c \in  (I  :_S a) F^e_*S = F^e_*\left( (I  :_S a)^{[p^e]} \right),\]
 again using the exercise. That is,
 \[ c \in (I  :_S a)^{[p^e]}.\]
@@ -434,7 +434,7 @@ we have $f^2g^2h^2\in (f^3,g^3,h^3)$.
 \end{theorem}
 We will prove this theorem in the case that $K$ algebraically closed of characteristic $p$, and $n=2$ just to keep notation simpler. One can in fact deduce the theorem for all fields from this case. The Theorem holds more generally when $S$ is a regular local ring of dimension $n$, though it requires different techniques in mixed characteristic.
 
-We again need a Lemma to prepare. To state it, we recall that a \textbf{local ring} is a ring with a unique maximal ideal; its residue field is the quotient of the ring by the maximal ideal. Given any ring $R$ and prime ideal $\frakp$, we can obtain a local ring $R_\frakp$ for adjoining inverses to every element outside of $\frakp$, a process called localization.
+%We again need a Lemma to prepare. To state it, we recall that a \textbf{local ring} is a ring with a unique maximal ideal; its residue field is the quotient of the ring by the maximal ideal. Given any ring $R$ and prime ideal $\frakp$, we can obtain a local ring $R_\frakp$ for adjoining inverses to every element outside of $\frakp$, a process called localization.
 
 \begin{lemma}\label{lem:IC} Let $R$ be a local ring of dimension $n$ with an infinite residue field, $f\in R$, and $I$ be an ideal of $R$. If $f^s\in I^s$ for some $s$, then there exists $c$ not in any minimal prime of $R$ such that $cf^t \in (\ell_1,\dots,\ell_n)^t$ for all $t\gg 0$, where $\ell_1,\dots,\ell_n$ are $n$ general linear combinations of the generators of $I$.
 \end{lemma}
@@ -456,7 +456,7 @@ for $e\gg 0$. This means that $(fgh)^2 \in (f^3,g^3,h^3)^*$. By Theorem~\ref{thm
 The last thing we want to illustrate is that statements over fields of characteristic zero can be deduced from statements in characteristic $p$. We will use the following facts from Commutative Algebra:
 
 \begin{lemma}
-Let $A$ be a finitely generated ring; for example a finitely generated subring of a field $K$. Then
+Let $A$ be a finitely generated ring over $\ZZ$; for example a finitely generated subring of a field $K$. Then
 \begin{enumerate}
 \item For any maximal ideal $\frakm$ of $A$, the quotient $A/\frakm$ is a finite field.
 \item For a polynomial ring $S=A[x_1,\dots,x_n]$, and element $f\in S$ and ideal $I\subseteq S$, if $f\in I + \frakm S$ for every maximal ideal $\frakm$ of $A$, then $f\in I$.
@@ -482,7 +482,7 @@ But since $A\subseteq K$, we obtain
 
 \section{F-singularities}
 
-So far we have largely focused on advantageous properties of the Frobenius map when $R$ is a polynomial ring, or more generally, a regular ring, in light of Kunz' theorem. Let us on the case of the polynomial ring over a perfect field or the case of an F-finite regular local ring. In either of these cases, $F^e_* R$ is free over $R$. We have applied this in the setting of tight closure to say that there are ``no new relations'' in $F^e_*R$, which then led to triviality of tight closure. We will now consider the following perspective on freeness of $F^e_* R$: this means that $F^e_* R$ has many surjective maps back to $R$, namely the coordinate maps for a free basis. We will consider weakenings of the conclusion of Kunz' theorem by asking for fewer surjective maps back to $R$.
+So far we have largely focused on advantageous properties of the Frobenius map when $R$ is a polynomial ring, or more generally, a regular ring, in light of Kunz' theorem. Let us focus on the case of the polynomial ring over a perfect field or the case of an F-finite regular local ring. In either of these cases, $F^e_* R$ is free over $R$. We have applied this in the setting of tight closure to say that there are ``no new relations'' in $F^e_*R$, which then led to triviality of tight closure. We will now consider the following perspective on freeness of $F^e_* R$: this means that $F^e_* R$ has many surjective maps back to $R$, namely the coordinate maps for a free basis. We will consider weakenings of the conclusion of Kunz' theorem by asking for fewer surjective maps back to $R$.
 
 
 \begin{definition} Let $R$ be a ring of characteristic $p$. We say that $R$ is \textbf{F-split} if there is an $R$-module homomorphism $\phi: F_*R \to R$ such that $\phi(F_*1) = 1$.
@@ -522,7 +522,7 @@ The implications (2)$\Rightarrow$(1)$\Rightarrow$(3)$\Rightarrow$(4) are clear. 
 
 \begin{lemma} Let $R$ be an F-split ring and $I$ an ideal. Then $I^F = I$.
 \end{lemma}
-\begin{proof} Recall that $I^F=\{ a\in R \ | \ a^{p^e}\in I^{[p^e]} \ \text{for some $e$}\}$. Take sone $a\in I^F$, so $a^{p^e}\in I^{[p^e]}$ for some~$e$. We can rewrite this as
+\begin{proof} Recall that $I^F=\{ a\in R \ | \ a^{p^e}\in I^{[p^e]} \ \text{for some $e$}\}$. Take some $a\in I^F$, so $a^{p^e}\in I^{[p^e]}$ for some~$e$. We can rewrite this as
 \[ a F^e_* 1  = F^e_* a^{p^e} \in F^e_* I^{[p^e]} = I F^e_* R,\]
 so $a F^e_* 1 = \sum_i a_i F^e_* r_i$ with $a_i\in I$. By the equivalences above, since $R$ is F-split, we have a map $\phi$ such that $\phi(F^e_*1) = 1$. We get
 \[ a = \phi(a F^e_* 1) = \phi\left( \sum_i a_i F^e_* r_i \right) = \sum_i a_i \phi( F^e_* r_i ) \in I. \qedhere\]
