@@ -300,7 +300,7 @@ A typical example of a local ring is, for a field $K$ and some variables $x_1,\d
 \[ \left\{ \frac{f(x)}{g(x)} \ \big| \ g(x) \ \text{has nonzero constant term}\right\}.\]
 This is the local ring $K[x_1,\dots,x_n]_{(x_1,\dots,x_n)}$ obtained from the polynomial ring by localization at the prime (maximal) ideal consisting of polynomials with constant term zero. Another key example of a local ring  is the power series ring $K\llbracket x_1,\dots,x_n \rrbracket$. These are the two typical examples to keep in mind of regular local rings.
 
-\begin{corollary}[Kunz]
+\begin{corollary}[Kunz]\label{corKunz}
 Let $(R,\frakm)$ be an F-finite Noetherian local ring of characteristic $p$. The module $F^e_* R$ is a free $R$-module if and only if $R$ is a regular ring.
 \end{corollary}
 
@@ -339,7 +339,6 @@ as in the polynomial case.
 \item \begin{enumerate}
 \item Let $R$ be an F-finite ring and $I$ be an ideal. Show that $R/I$ is also F-finite.
 \item Let $R$ be an F-finite ring and $x$ be an indeterminate. Show that $R[x]$ is also F-finite. Deduce that every finitely generated algebra over a perfect field is F-finite.
-\item\footnote[2]{Requires some background from Commutative Algebra.} Let $R$ be an F-finite ring and $W$ be a multiplicatively closed subset. Show that $W^{-1}R$ is also F-finite. Deduce that every ring essentially of finite type over a perfect field is F-finite.
 \end{enumerate}
 \item Let $R$ be as in (\ref{pr9}). Verify directly that $F_*R$ has no free basis.\\ It may be useful to use the fact that if $M$ is a free $R$-module with basis $B$ and $I$ is an ideal, then $M/IM$ is a free $R/I$-module with basis given by the images of $B$; try different maximal ideals.
 \begin{samepage}
@@ -351,9 +350,10 @@ as in the polynomial case.
 \end{enumerate}
 \end{samepage}
 \item Let $R$ be a ring and $I$ be an ideal. Show that $F^{e*}(R/I) \cong R/I^{[p^e]}$.
-\item Let $K = \FF_p(t_1,t_2,t_3,\dots)$, and $R= K\llbracket x\rrbracket$. Show that $F_*R$ is not a free module. Compare with Theorem~\ref{thm:perfectgens}.
+\item \footnote[2]{Requires some background from Commutative Algebra.} Let $W$ be a multiplicatively closed subset of $R$. Show that $F^e_* (W^{-1}R) \cong W^{-1} F^e_*R$. 
+\item Let $K = \FF_p(t_1,t_2,t_3,\dots)$, and $R= K\llbracket x\rrbracket$. Show that $F_*R$ is not a free module. Compare with Corollary~\ref{corKunz}.
 \item Let $R$ be a ring and $I$ be an ideal. Is $F^{e*}(I) \cong I^{[p^e]}$ in general?
-\item Let $R$ be a ring containing $\QQ$, let $n$ be a positive integer, and $I$ an ideal of $R$. Show that the ideal $( a^n \ | \ a\in I)$ is equal to $I^n$. Compare to (\ref{prob2}).
+\item Let $R$ be a ring containing $\QQ$, let $n$ be a positive integer, and $I$ an ideal of $R$. Show that the ideal $( a^n \ | \ a\in I)$ is equal to $I^n$. Compare to problem (\ref{prob2}).
 \item\footnotemark[2] Let $R$ be a Noetherian ring of positive characteristic. Show that $F_R$ is surjective if and only if $R$ is a finite product of perfect fields.
 \item\footnotemark[2] Let $R$ be an F-finite Noetherian ring. Show that the singular locus of $R$ is a closed subset of $\mathrm{Spec}(R)$.
 \item\footnotemark[2] Let $R$ be a regular Noetherian ring and $M$ be a finitely generated module.
