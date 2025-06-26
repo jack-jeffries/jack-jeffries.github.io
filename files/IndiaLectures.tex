@@ -443,7 +443,7 @@ $S^G=\FF_p[x_1, N(x_2)]$.
 \end{enumerate}
 
 
-\begin{comment}
+\newpage
 
 
 \section{Cohen-Macaulay rings and Polynomial rings} We will discuss some properties of graded rings that will help us understand invariant rings more concretely. We will first recall the two main notions that interest us today. By a graded ring, we mean a finitely generated $\NN$-graded $K$-algebra with $R_0=K$, but not necessarily generated in degree one. From last time, every ring of invariants of a finite group is graded in this sense.
@@ -484,7 +484,7 @@ Then $S$ is free over $R$ if and only if $\mathrm{pd}_R(S) = 0$ which happens if
 \begin{theorem}[Hochster-Eagon] Let $G$ be a finite group of order $m$ acting linearly on a polynomial ring $S$ with $m\in K^\times$. Then $R=S^G$ is Cohen-Macaulay.
 \end{theorem}
 \begin{proof}
-Take a homogeneous system of parameters $f_1,\dots,f_d$ of $R$. Then this is a system of parameters for $S$, and hence a regular sequence there. If $r_{i+1} f_{i+1} \in (f_1,\dots,f_i)$, then we have $r_{i+1} f_{i+1} \in (f_1,\dots,f_i)S$ implies $r_{i+1}\in (f_1,\dots,f_i)S$, since it is a regular sequence in $S$. Applying the Reynolds operator $\rho$, we get 
+Take a homogeneous system of parameters $f_1,\dots,f_n$ of $R$. Then this is a system of parameters for $S$, and hence a regular sequence there. If $r_{i+1} f_{i+1} \in (f_1,\dots,f_i)$, then we have $r_{i+1} f_{i+1} \in (f_1,\dots,f_i)S$ implies $r_{i+1}\in (f_1,\dots,f_i)S$, since it is a regular sequence in $S$. Applying the Reynolds operator $\rho$, we get 
 \[ r_{i+1} = \rho(r_{i+1}) \in \rho((f_1,\dots,f_i)S) = (f_1,\dots, f_i)R.\]
 This shows that $f_1,\dots,f_d$ is a regular sequence.
 \end{proof}
@@ -493,7 +493,7 @@ We will see later that the nonmodular hypothesis is strictly necessary.
 
  We can use this to give more concrete descriptions of rings of invariants. When we write a ring in terms of generators and relations, it is not always clear when two expressions are the same. Instead, we can use Noether normalization.
  
- \begin{corollary}  Let $K$ be an infinite field, $R=K[x_1,\dots,x_n]$ be a polynomial ring over $K$, and $G$ be a finite group with $|G|\in K^\times$ acting on by degree-preserving $K$-algebra automorphisms. Then there exist sets of \emph{primary invariants} $f_1,\dots,f_n\in R^G$ and \emph{secondary invariants} $h_1,\dots,h_m\in R^G$ such that $f_1,\dots, f_n$ are algebraically independent and $R^G= \bigoplus_{i=1}^m K[f_1,\dots, f_n] h_i$. Namely, every invariant $f\in R^G$ has a unique expression of the form
+ \begin{corollary}  Let $G$ be a finite group of order $m$ acting linearly on a polynomial ring $S$ with $m\in K^\times$. Then there exist sets of \emph{primary invariants} $f_1,\dots,f_n\in R^G$ and \emph{secondary invariants} $h_1,\dots,h_m\in R^G$ such that $f_1,\dots, f_n$ are algebraically independent and $R^G= \bigoplus_{i=1}^m K[f_1,\dots, f_n] h_i$. Namely, every invariant $f\in R^G$ has a unique expression of the form
  \[ f = a_1(f_1,\dots,f_n) h_1 + \cdots + a_m(f_1,\dots, f_n) h_m,\]
  for some (uniquely determined) tuple $a_1,\dots,a_m \in K[t_1,\dots,t_n]$.
  \end{corollary}
@@ -516,7 +516,7 @@ If $R$ is a graded ring with homogeneous system of parameters $f_1,\dots,f_n$ wi
  \subsection*{Polynomial invariant rings} Our goal now is to characterize polynomial invariant rings in the nonmodular case. In this case, this can be detected easily by the action of $G$.
  
 \begin{definition}
-Let $G$ be a finite group acting linearly on $S=K[x_1,\dots,x_n]$. We say that $g$ is a \emph{pseudoreflection} if $\dim_K( \mathrm{Fix}(g,V) ) \leq 1$.
+Let $G$ be a finite group acting linearly on $S=K[x_1,\dots,x_n]$. We say that $g$ is a \emph{pseudoreflection} if $\mathrm{codim}_K( \mathrm{Fix}(g,V) ) \leq 1$.
 \end{definition}
 
 The identity is, by our convention, a pseudoreflection.
@@ -525,7 +525,7 @@ For $g\in G$, the matrix of $g$ on $V$ can be put into Jordan form after perhaps
 \[ \begin{bmatrix} \zeta & 0  & \cdots & 0 \\ 0 & 1  & \cdots & 0 \\  \vdots & \vdots  & \ddots & \vdots  \\ 0 & 0 & \cdots & 1 \end{bmatrix}.\]
 In the modular case, one may have nondiagonalizable pseudoreflections with Jordan form 
 \[ \begin{bmatrix} 1 & 1  & \cdots & 0 \\ 0 & 1  & \cdots & 0 \\  \vdots & \vdots  & \ddots & \vdots  \\ 0 & 0 & \cdots & 1 \end{bmatrix},\]
-which are called \textbf{transvections}.
+which are called \emph{transvections}.
 
 
 \begin{theorem}[Shephard-Todd] Let $G$ be a finite group acting linearly on $S=K[x_1,\dots,x_n]$.
@@ -550,7 +550,7 @@ The invariant ring is not a polynomial ring.
 
 We now proceed towards the proof of Shepard-Todd. We need a technical lemma.
 
-\begin{lemma} Let $A\subseteq B$ be a module-finite inclusion of graded $K$-algebras with $B$ regular. If the map $\mu: A_+ \otimes_A B \to B$ induced by multiplication is injective, then $A$ is regular.
+\begin{lemma} Let $A\subseteq B$ be a module-finite inclusion of graded $K$-algebras with $B$ polynomial. If the map $\mu: A_+ \otimes_A B \to B$ induced by multiplication is injective, then $A$ is regular.
 \end{lemma}
 \begin{proof}
 Suppose that the map $\mu: A_+ \otimes_A B \to B$ induced by multiplication is injective. Then the short exact sequence
@@ -576,7 +576,7 @@ we have that $R_+ \otimes_R R$ injects into $R_+ \otimes_R S$, and
 so we can identify $(R_+ \otimes_R S)^G = R_+ \otimes_R R$ . But $\mu$ restricted to $R_+ \otimes_R R$ is injective.
 
 Now we will show that a nonzero element of $\ker(\mu)$ of monomial degree is $G$ invariant.
- Let $g$ be a pseudoreflection and $V^g = (\ell)$ be its fixed space with $\ell$ a linear form. For any $f\in S$, the functions $f$ and $g(f)$ agree on $V^g$, so $g(f)-f$ is zero on $V^g$, and hence $\ell \ | \ (g(f) - f)$.
+ Let $g$ be a pseudoreflection and $V^g = V(\ell)$ be its fixed space with $\ell$ a linear form. For any $f\in S$, the functions $f$ and $g(f)$ agree on $V^g$, so $g(f)-f$ is zero on $V^g$, and hence $\ell \ | \ (g(f) - f)$.
 Write $g(f) - f = \ell f'$. In the same way, if $\zeta\in R_+ \otimes_{R} S$ homogeneous, we can write
 \[ (1-g)\zeta = \zeta' (1\otimes \ell)\]
 for some $\zeta'$ of degree one less.
@@ -610,17 +610,27 @@ The proof of Shepard-Todd is not constructive, but the following is useful in ar
 \begin{proposition} Let $G$ be a finite group acting linearly on $S$. Then if $R=S^G$ is a polynomial ring, we have $R=K[f_1,\dots,f_n]$ with $\deg(f_1) \cdots \deg(f_n) = |G|$.
 \end{proposition}
 \begin{proof}
-Note that when $R=S^G$ is a polynomial ring, then $R$ is a Noether normalization for $S$, so $S$ is a free $R$-module (because $R$ is Cohen-Macaulay), and from an earlier Proposition, of rank $|G|$. 
+Note that when $R=S^G$ is a polynomial ring, then $R$ is a Noether normalization for $S$, so $S$ is a free $R$-module (because $R$ is Cohen-Macaulay), and from an earlier Proposition, of rank~$|G|$. 
 
 Let $d_i =\deg(f_i)$. Using the Noether normalization formula we have
 \[ H_S(t) = \frac{1}{(1-t)^n}  = \frac{\sum_j t^{e_j} }{\prod_i (1-t^{d_i})} = \frac{\sum_j t^{e_j} }{\prod_i \big((1-t)(1 + t + \cdots + t^{d_i-1})\big)},\]
-where the sum $\sum_j t^{e_j}$ has $|G|$ summands. Then multiplying by $(1-t)^n$ and taking $\lim_{t \to 1}$, we get
+where the sum $\sum_j t^{e_j}$ has $|G|$ summands. Then multiplying by $(1-t)^n$ and taking $\lim_{t \to 1}$, we~get
 \[ 1 = \frac{|G|}{\prod_i d_i},\]
 and the claim follows.
 \end{proof}
 
 
-We now want to prove a theorem of Kemper about the Cohen-Macaulay property in the modular case. We need to return to the transfer map before we are able to do so. We will need a generalization of the construction.
+We now want to prove a theorem of Kemper about the Cohen-Macaulay property in the modular case.  To state it we need the following.
+
+\begin{definition}
+Let $G$ be a finite group acting linearly on $S=K[x_1,\dots,x_n]$. We say that $g$ is a \emph{bireflection} if $\mathrm{codim}_K( \mathrm{Fix}(g,V) ) \leq 2$.
+\end{definition}
+
+\begin{theorem}[Kemper] Let $G$ be a $p$-group acting linearly on $S$ with $K$ have characteristic $p$. If $S^G$ is Cohen-Macaulay, then $G$ is generated by bireflections.
+\end{theorem}
+
+
+We need to return to the transfer map for part of the proof. We will need a generalization of the construction.
 
 Let $G$ be a finite group acting linearly on $S$, and $H$ be a subgroup. Let $G/H$ denote the left cosets of $H$ in $G$. We define
 \[ \mathrm{Tr}^G_H : S^H \to S^G \quad \mathrm{Tr}^G_H(s) = \sum_{gH \in G/H} g(s).\]
@@ -631,7 +641,7 @@ Let $G$ be a finite group acting linearly on $S$, and $H$ be a subgroup. Let $G/
 \item The function $\mathrm{Tr}^G_H$ is $S^G$-linear.
 \item $\mathrm{Tr}^G_H$ restricted to $S^G$ is multiplication by $[G:H]$.
 \item If $N\leq H \leq G$ then $\mathrm{Tr}^G_N= \mathrm{Tr}^G_H \circ \mathrm{Tr}^H_N$.
-\item If $N\leq H \leq G$ and $N \trianglelefteq G$ then $\mathrm{Tr}^G_N= \mathrm{Tr}^H_N \circ \widetilde{\mathrm{Tr}^G_H}$ where $ \widetilde{\mathrm{Tr}^G_H}$ is a lift of  $\mathrm{Tr}^G_H$ to $S$.
+%\item If $N\leq H \leq G$ and $N \trianglelefteq G$ then $\mathrm{Tr}^G_N= \mathrm{Tr}^H_N \circ \widetilde{\mathrm{Tr}^G_H}$ where $ \widetilde{\mathrm{Tr}^G_H}$ is a lift of  $\mathrm{Tr}^G_H$ to $S$.
 \end{enumerate}
 \end{lemma}
 
@@ -656,12 +666,13 @@ and  $\mathrm{Tr}^H$ restricted to $R^H$ is mutliplication by the unit $|H|$, an
 and $r\notin \frakm$, while $g_i(r)\in \frakm$ for all other $i$, so $\mathrm{Tr}^G_H(r) \notin \frakm$. This completes the argument.
 \end{proof}
 
-\begin{theorem}[Kemper] Let $G$ be a $p$-group and $K$ have characteristic $p$. If $R^G$ is Cohen-Macaulay, then $G$ is generated by bireflections.
-\end{theorem}
-\begin{proof}
+
+\begin{samepage}
+
+\begin{proof}[Proof of Kemper's Theorem]
 Let $H$ be the subgroup generated by bireflections. If $H\neq G$, then there is a maximal proper subgroup $N$ containing $H$, so $[G:N]=p$. By considerations of prime factors, $N$ is normal. By the previous theorem,
 \[ V( \mathrm{Tr}^G_N(S^N) S) = \mathrm{Fix}(g,V)\]
-where $g$ is a generator for $G/N$. Since $g$ is not a bireflection, $\mathrm{Fix}(g,V)$ is a linear space of codimension three, so the height of $\mathrm{Tr}^G_N(S^N) S$ is at least three, and hence likewise with $\mathrm{Tr}^G_N(S^N)$. 
+where $gN$ is a generator for $G/N$. Since $g$ is not a bireflection, $\mathrm{Fix}(g,V)$ is a linear space of codimension at least three, so the height of $\mathrm{Tr}^G_N(S^N) S$ is at least three, and hence likewise with $\mathrm{Tr}^G_N(S^N)$. 
 
 Suppose $S^G$ is Cohen-Macaulay. Then there is a regular sequence $f_1,f_2,f_3 \in \mathrm{Tr}^G_N(S^N)$. Write 
 $f_i = \mathrm{Tr}^G_N(h_i) = h_i+ g(h_i) + \cdots + g^{p-1}(h_i) = (g-1)^{p-1}(h_i)$ for $h_i\in S^N$. Write $f'_i = (g-1)^{p-2}(h_i)$, so $f_i = (g-1)(f'_i)$. One can check that $f'_i\in S^N$.
@@ -678,7 +689,7 @@ and thus, again,
 \[ f'_1 - a_2 \in (f_1) S^G,\]
 so $f'_1\in S^G$. But then $f_1 = (g-1) f'_1 = 0$, a contradiction.
 \end{proof}
-
+\end{samepage}
 
 \newpage
 
@@ -695,7 +706,7 @@ so $f'_1\in S^G$. But then $f_1 = (g-1) f'_1 = 0$, a contradiction.
 \item $G=\langle \begin{bmatrix} \omega & 0 \\ 0 & \omega^2 \end{bmatrix} \rangle$.
 \item $G=\langle \begin{bmatrix} \omega & 0 \\ 0 & -1 \end{bmatrix} \rangle$.
 \end{enumerate}
-Can you characterize for which cyclic group actions the invariant ring is a polynomial ring?
+%Can you characterize for which cyclic group actions the invariant ring is a polynomial ring?
 
 \
 
@@ -704,7 +715,7 @@ Can you characterize for which cyclic group actions the invariant ring is a poly
 \item $S=\CC[x_1,x_2]$, $G=\ZZ/2 = \langle g \rangle$ with $g(x_i) = -x_i$.
 \item $S=\CC[x_1,x_2]$, $G=\ZZ/3 = \langle g \rangle$ with $g(x_i) = \omega x_i$, where $\omega=e^{2\pi i / 3}$.
 \end{enumerate}
-Can you find primary and secondary invariants for all scalar actions?
+%Can you find primary and secondary invariants for all scalar actions?
 
 \
 
@@ -742,6 +753,7 @@ Can you find primary and secondary invariants for all scalar actions?
 \begin{samepage}
 \item Let $K$ be a finite field and
 \[ A= \begin{bmatrix} 1 & 0  & 1 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1\end{bmatrix}, B= \begin{bmatrix} 1 & 0  & 0 & 0 \\ 0 & 1 & 0 & 1 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1\end{bmatrix}, C= \begin{bmatrix} 1 & 0  & 1 & 1 \\ 0 & 1 & 1 & 1 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1\end{bmatrix}.\]
+\end{samepage}
 \begin{enumerate}
 \item Is $G=\langle A,B,C\rangle$ generated by pseudoreflections? Does Shephard-Todd apply?
 \item Show that $S^{\langle A,B\rangle} = K[x_1,x_2, N(x_3), N(x_4)]$. 
@@ -749,7 +761,7 @@ Can you find primary and secondary invariants for all scalar actions?
 \item Show that $S^G$ has no generator of degree $p$ and deduce that $S^G$ is not a polynomial ring.
 \item Show that, moreover, every point stabilizer of $G$ is generated by pseudoreflections.
 \end{enumerate}
-\end{samepage}
+
 
 \
 
@@ -760,6 +772,8 @@ Can you find primary and secondary invariants for all scalar actions?
 \item Let $f_1,\dots,f_n$ be a homogeneous system of parameters for $R=S^G$. Show that \\ ${\deg(f_1) \cdots \deg(f_t) = m |G|}$ for some integer $m\geq 1$, and when $m=1$, this system of parameters generates $R$ as an algebra.
 
 \end{enumerate}
+
+\begin{comment}
 
 \newpage
 
@@ -773,7 +787,7 @@ Let $R$ be a Noetherian ring. The Cech complex on a sequence of elements $f_1,\d
 where the maps are localization maps with a suitable sign convention to make this a complex. The $i$th local cohomology with support in an ideal $I=(f_1,\dots,f_t)$ is
 \[ H^i_I(R) = H^i ( C(f_1,\dots, f_t) )\]
 and more generally, $i$th local cohomology with support in an ideal $I=(f_1,\dots,f_t)$ and coefficients in a module $M$ is
-\[ H^i_I(R) = H^i ( C(f_1,\dots, f_t) \otimes_R M ).\]
+\[ H^i_I(M) = H^i ( C(f_1,\dots, f_t) \otimes_R M ).\]
 This is independent (up to isomorphism) of choice of generating set for $I$. Moreover, this is independent (up to isomorphism) of a choice of generating set up to radical, meaning that if $\sqrt{I}=\sqrt{(f_1,\dots,f_t)}$, then $H^i_I(R) = H^i ( C(f_1,\dots, f_t) )$, and likewise with a module $M$. One can show this directly by reducing to the case of comparing the Cech complex on $f_1,\dots,f_t$ with the Cech complex on $f_1,\dots,f_t,g$ with $g^n\in (f_1,\dots,f_t)$, though the typical approach is by showing both compute the right derived functors of $I$-torsion.
 
 Because each term in the Cech complex is flat, tensoring $C(f_1,\dots, f_t)$ with a short exact sequence of modules gives a short exact sequence of complexes, and hence a long exact sequence of local cohomology modules.
@@ -789,7 +803,7 @@ A useful alternative description of $H^n_{S_+}(S)$ as an $S$-module is as the gr
 
 Observe that the top degree is $-n = \deg(\big[ \frac{1}{x_1 \cdots x_n} \big])$. The \textbf{a-invariant} of a graded ring $R$ of dimension $n$ is the top degree of $H^n_{R_+}(R)$. 
 
-Let us apply Noether normalization to compute local cohomology for a graded Cohen-Macaulay ring $R$. Let $f_1,\dots,f_n$ be a homogeneous system of parameters for $R$, and $g_1,\dots,g_m$ a graded free basis for $R$ over $A=K[f_1,\dots,f_n]$. Then we can compute $H^i_{R_+}(R)$ via the Cech complex on $f_1,\dots,f_n$ on $R$. This splits as a direct sum, so
+Let us apply Noether normalization to compute local cohomology for a graded Cohen-Macaulay ring $R$. Let $f_1,\dots,f_n$ be a homogeneous system of parameters for $R$, and $h_1,\dots,h_m$ a graded free basis for $R$ over $A=K[f_1,\dots,f_n]$. Then we can compute $H^i_{R_+}(R)$ via the Cech complex on $f_1,\dots,f_n$ on $R$. This splits as a direct sum, so
 \[ H^i_{R_+}(R) = \bigoplus_j H^i_{A_+}(A) \cdot g_j.\]
 In particular, using the calculation of $A$ as a polynomial ring, we have $H^i_{R_+}(R)=0$ for $i<n$; in general the first nonvanishing local cohomology of a graded ring is at the depth, so this vanishing is equivalent to the Cohen-Macaulay property. 
 
@@ -833,7 +847,7 @@ We can compute the action of $G$ on $H^n_{S_+}(S)$ explicitly.
 
 \begin{proposition} Let $G$ act linearly on $S=K[x_1,\dots,x_n]$. Consider the dual action of $G$ on $S^{\star}$ given by $g(\phi) = \phi \circ g$. Let $\circ$ denote the induced action of $G$ on $H^n_{S_+}(S)$ translated by the isomorphism $S^{\star} \cong H^n_{S_+}(S)$.
 Then the natural action of $G$ on $H^n_{S_+}(S)$ is given by
-\[ g \cdot \mu = \det(g) (g\circ\mu).\]
+\[ g \cdot \mu = \det(g,V)^{-1} (g\circ\mu).\]
 \red{Check inverses}
 \end{proposition}
 \begin{proof}
@@ -875,7 +889,7 @@ Thus, the inclusion map induces an inclusion $H^i_{R_+}(R) \hookrightarrow H^i_{
 
 Note that this gives a second proof of the Hochster-Eagon Theorem.
 
-A graded ring $A$ of dimension $n$ is Gorenstein if it is Cohen-Macaulay if $H^n_{A_+}(A)\cong A^\star(a)$ for some $a$.
+A graded ring $A$ of dimension $n$ is Gorenstein if it is Cohen-Macaulay and $H^n_{A_+}(A)\cong A^\star(a)$ for some $a$.
 
 
 \begin{theorem}[Watanabe] Let $G$ act linearly on $S=K[x_1,\dots,x_n]$ with $|G|\in K^\times$. Suppose that the image of $G$ in $\mathrm{GL}(V)$ is in $\mathrm{SL}(V)$. Then $R=S^G$ is Gorenstein.
@@ -1039,6 +1053,8 @@ as in Remark~\ref{remark:action}, this is equivalent to the condition that
 is zero for each $g$, i.e., that $\det g=1$ for each $g\in G$.
 \end{proof}
 
+
+\begin{comment}
 \end{comment}
 
 \vfill
