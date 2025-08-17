@@ -1,0 +1,148 @@
+\documentclass[12pt]{amsart}
+
+
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals,hyperref,lettrine}
+\usepackage[symbol]{footmisc}
+\usepackage{kpfonts,baskervald}
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+\newcommand\itemA{\stepcounter{enumi}\item[{\bf{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\bf{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\bf{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+%\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{{\large Math 817 Fall 2025: Introduction to Modern Algebra I}\\ MWF 11:30am--12:20pm, Oldfather 205}
+	
+	\
+	
+	\begin{center}{ \textit{\textbf{Welcome to the course!}}}\end{center}
+	
+	\
+	
+		\subsection*{Course Description}
+
+This is the first of a two part course on groups, rings, and modules. In this first half, we will discuss group theory, including group actions, and introduce rings. A major goal of this course is to prepare graduate students for the PhD qualifying exam in algebra.
+
+	
+
+	\subsection*{Instructor}  Jack Jeffries---please address me as ``Jack''
+	
+
+
+	\subsection*{Office}  325 Avery Hall
+
+	\subsection*{Email}   jack.jeffries@unl.edu
+	
+	\subsection*{Course Website} \href{https://jack-jeffries.github.io/F25/817.html}{https://jack-jeffries.github.io/F25/817.html}
+
+	\subsection*{Office Hours}  Regular office hours to be announced soon. You are also welcome to drop by my office, or to email me to schedule a meeting. 
+
+	\subsection*{Textbook} 
+	
+	I will provide notes for the course on the class website. There is no required textbook for the course, though \textit{Abstract Algebra} by Dummit and Foote is a good resource covering similar material at a similar level. 
+
+	
+\subsection*{Course expectations} 
+This is an {\it in-person} class.  In this course, class time will involve a mix of lecture and groupwork. We will cover a large amount of material, and you will be expected to {\it read before class} in preparation for effective discussion. In order to ensure preparation before class, I reserve the possibility of having reading homework or reading quizzes, which contribute to the problem set portion of the overall grade.
+
+Please {\it do not} attend class if you are feeling ill or have tested positive for covid-19. Otherwise, {\it attendance is expected}. Let me know if you have to miss class, and we can make a plan for you to stay up to date on the material.
+
+
+
+\subsection*{Problem sets}
+There will be weekly problem sets. You are encouraged to work on the problem sets together in groups, or discuss them with me; you should however write up your own solutions. The only other resources you are allowed to use to solve the problem sets are our class notes.
+
+I am fully aware that AI tools can solve a typical homework problem in this course, and that using AI will likely play a role in your eventual profession, academic or otherwise. The purpose of this class is to train you to build a proficiency in the techniques of Abstract Algebra as well as the general thinking and writing skills as a mathematician; using AI to solve the exercises for you will deprive you of this training, and will put you in situations where it is clear that this has happened. Accordingly, using AI tools to generate any content for an assignment is {\it prohibited} in this class, and passing off any AI generated content as your own (e.g., cutting and pasting content into written assignments, or paraphrasing AI content) constitutes a violation of the academic integrity policy---also note the ``Followup Assessment'' paragraph below. If you have any questions about using generative AI in this course please email or talk to me.
+
+\subsection*{Midterm and final exam} There will be one {\it midterm} and a {\it final exam}, both in-person. The midterm will be on Friday, October 17, 5--7 pm.
+%\noindent
+The final exam will be on 
+{\bf Thursday, December~18} from 10 am to noon in our usual classroom.
+
+
+
+\subsection*{Final grade} Your final grade will be calculated as follows:
+
+\begin{itemize}
+
+	\item Midterm: 25\%
+	\item Final Exam: 25\%
+	\item Problem Sets: 50\%
+\end{itemize}
+
+\noindent
+Your final grade will be determined according to the following scale:
+
+\begin{center}
+\hspace{2em}
+\begin{minipage}{0.75\textwidth}
+	\begin{tabular}{|c||c|c|c|c|c|c|c|c|c|c|}
+	\hline
+	Letter grade & A & A- & B+ & B & B- & C+ & C & D \\
+	\hline
+	Cutoff & 93 & 90 & 87 & 80 & 70 & 65 & 60 & 50 \\
+	\hline
+\end{tabular}
+\end{minipage}
+\end{center}
+
+\noindent
+If deemed necessary, minor adjustments to this scale will be made, but only in favor of the students. A grade of A+ may be assigned in the case of truly exceptional work.
+
+\subsection*{Departmental grading appeals policy} 
+The Department of Mathematics does not tolerate discrimination or harassment on the basis of race, gender, religion, or sexual orientation. If you believe you have been subject to such discrimination or harassment, in this or any other math course, please contact the department. If, for this or any other reason, you believe your grade was assigned incorrectly or capriciously, then appeals may be made to (in order) the instructor, the vice chair, the department grading appeals committee, the college grading appeals committee, and the university grading appeals committee.
+
+
+\subsection*{Continuity plans} 
+If in-person classes are canceled, you will be notified of the instructional continuity plan for this class by email.
+
+\subsection*{Followup assessment} If the instructor has any reason to believe that a student may have used used unsanctioned resources on any assignment, they reserve the right to meet with the student in-person and ask that the student clearly explain their work and reasoning on any problem. This includes, but is not limited to, the instructor suspecting that a student used an online answer service resource on a homework assignment or on an exam, or collaborated with or copied off another individual on an exam. Note that students are allowed to freely collaborate on homework problems, but the instructor reserves the right to follow up with any student they suspect did not write up and \emph{understand} their own solutions in their own words.
+
+\subsection*{Other policies and resources}
+
+Please read the University course policies and resources, which can be found \href{https://executivevc.unl.edu/academic-excellence/teaching-resources/course-policies}{here}.
+
+
+\end{document}
