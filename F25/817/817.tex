@@ -1,162 +1,149 @@
 \documentclass[12pt]{amsart}
-\usepackage[margin=1in]{geometry}
-\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,stmaryrd,enumitem,colonequals,lettrine,comment}
+\usepackage{mathptmx, bbm, amscd, amssymb, enumerate,mathdots, xcolor,comment,graphicx,xspace,lettrine}
+%\linenumbers
+\usepackage[symbol]{footmisc}
 \usepackage{kpfonts,baskervald}
+\usepackage[margin = 1in]{geometry}
+
 \usepackage{color}
 \definecolor{chianti}{rgb}{0.6,0,0}
 \definecolor{meretale}{rgb}{0,0,.6}
 \definecolor{leaf}{rgb}{0,.35,0}
 \usepackage[colorlinks=true, pagebackref, hyperindex, citecolor=meretale, urlcolor=leaf,linkcolor=chianti,hyperfootnotes=false]{hyperref}
-
-\usepackage{enumitem}
-\setlist[enumerate,1]{label={(\arabic*)}}
-%\usepackage{stmaryrd}
-%\usepackage{color}
-
-
-\usepackage{mathtools}
-\usepackage{tikz}
-\usetikzlibrary{shapes.geometric}
-\newcommand{\Ngon}[2][]{\vcenter{\hbox{\begin{tikzpicture}
-\node[regular polygon, regular polygon sides=#2, draw,minimum size=2cm,#1](#2-gon){};
-\foreach \X in {1,...,#2}{\fill (#2-gon.corner \X) circle[radius=2pt];}
-\end{tikzpicture}}}}
-
-\definecolor{mycolor}{rgb}{0, 0.5, 0.74}
-
-\usepackage{extarrows}
-\usepackage{imakeidx}
-\usepackage{tikz}
-\usepackage{pdflscape}
-\usepackage{centernot,colonequals,cleveref}
-\usepackage[bottom]{footmisc}
-\usepackage[color,matrix,arrow]{xy}
-%\UseTwocells  
-\xyoption{rotate}
-\xyoption{pdf}
+\usepackage[all]{xy}
+%\usepackage{showkeys}
+\usepackage{paralist}
+%\usepackage{mathrsfs}
 
 
 
-\newtheorem{theorem}{Theorem}[chapter]
-\newtheorem*{theorem*}{Theorem}
+
+
+\newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{conjecture}[theorem]{Conjecture}
-\newtheorem{Example}[theorem]{Example}
-\newtheorem{metatheorem}[theorem]{Metatheorem}
-\numberwithin{equation}{section}
-\numberwithin{theorem}{chapter}
-\newtheorem{problem}[theorem]{Problem}
-
-
-\newtheorem*{thmnonumber}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
 
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
-\newtheorem{fuzzydefn}[theorem]{Informal definition}
-\newtheorem{propdef}[theorem]{Proposition--Definition}
-\newtheorem{discussion}[theorem]{Discussion}
-\newtheorem{question}[theorem]{Question}
+\newtheorem{ntn}[theorem]{Notation}
 \newtheorem{example}[theorem]{Example}
-\newtheorem{exercise}{Exercise}
-\newtheorem*{basic properties}{Basic Properties}
-\newtheorem*{properties}{Properties}
-\newtheorem*{eremarks}{Ending Remarks}
-\newtheorem*{Important Remark}{Important Remark}
 \newtheorem{remark}[theorem]{Remark}
-\newtheorem{construction}[theorem]{Construction}
-\newtheorem{axiom}[theorem]{Axiom}
+\numberwithin{equation}{theorem}
 
-%\theoremstyle{remark}
-\newtheorem*{claim*}{Claim}
-\newtheorem{setup}[theorem]{Set up}
-\newtheorem{algorithm}[theorem]{Algorithm}
-\newtheorem{notation}[theorem]{Notation}
-\newtheorem*{m2}{Macaulay2}
-\newtheorem{observation}[theorem]{Observation}
+\def\ara{\operatorname{ara}}
+\def\cptdim{\operatorname{cptdim}}
+\def\height{\operatorname{ht}}
+\def\lcd{\operatorname{lcd}}
+\def\rad{\operatorname{rad}}
+
+\def\ker{\operatorname{ker}}
+\def\image{\operatorname{image}}
+\def\pf{\operatorname{pf}}
+\def\Pf{\operatorname{Pf}}
+\def\rank{\operatorname{rank}}
+\def\sgn{\operatorname{sgn}}
+\def\tr{{\operatorname{{T}}}}
+\def\id{\operatorname{id}}
+\def\Gr{\operatorname{Gr}}
+\def\pr{\operatorname{pr}}
+\def\SG{\operatorname{SG}}
+\def\OG{\operatorname{OG}}
+\def\GL{\operatorname{GL}}
+\def\SL{\operatorname{SL}}
+\def\Sp{\operatorname{Sp}}
+\def\Ort{\operatorname{O}} 
+\def\SOrt{\operatorname{SO}}
+\def\Uni{\operatorname{U}}
+
+\def\End{\operatorname{End}}
+\def\Ext{\operatorname{Ext}}
+\def\Hom{\operatorname{Hom}}
+\def\Proj{\operatorname{Proj}}
+\def\Spec{\operatorname{Spec}}
+\def\Supp{\operatorname{Supp}}
+\def\Alt{\operatorname{Alt}}
+\def\pairs{\operatorname{P}}
+\def\Sym{\operatorname{Sym}}
+\def\sym{\sigma}
+\def\US{{\operatorname{US}}}
+\def\Var{\operatorname{Var}}
+
+\def\fraka{\mathfrak{a}}
+\def\frakb{\mathfrak{b}}
+\def\frakm{\mathfrak{m}}
+\def\frakn{\mathfrak{n}}
+\def\frakp{\mathfrak{p}}
+\def\frakq{\mathfrak{q}}
+
+\def\frakA{\mathfrak{A}}
+\def\frakB{\mathfrak{B}}
+\def\frakC{\mathfrak{C}}
+\def\frakP{\mathfrak{P}}
+\def\frakQ{\mathfrak{Q}}
+\def\frakS{\mathfrak{S}}
+
+\def\AA{\mathbb{A}}
+\def\CC{\mathbb{C}}
+\def\FF{\mathbb{F}}
+\def\KK{\mathbb{K}}
+\def\LL{\mathbb{L}}
+\def\NN{\mathbb{N}}
+\def\PP{\mathbb{P}}
+\def\QQ{\mathbb{Q}}
+\def\RR{\mathbb{R}}
+\def\SS{\mathbb{S}}
+\def\VV{\mathbb{V}}
+\def\ZZ{\mathbb{Z}}
+
+\def\calD{\mathcal{D}}
+\def\calF{\mathcal{F}}
+\def\calG{\mathcal{G}}
+\def\calH{{\mathcal{H}}}
+\def\calK{\mathcal{K}}
+\def\calL{\mathcal{L}}
+\def\calM{\mathcal{M}}
+\def\calN{\mathcal{N}}
+\def\calO{\mathcal{O}}
+\def\calP{{\mathcal{P}}}
+\def\scrH{{\mathscr{H}}}
+
+\def\eps{\varepsilon}
+\def\ge{\geqslant}
+\def\le{\leqslant}
+\def\phi{\varphi}
+\def\bar{\overline}
+\def\tilde{\widetilde}
+\def\del{\partial}
+\def\dlim{\varinjlim}
+\def\to{\longrightarrow}
+\def\mapsto{\longmapsto}
+\def\into{\hookrightarrow}
+\def\onto{{\,\,\longrightarrow\hspace{-1.8ex}\rightarrow}\,\,}
+\def\minus{\smallsetminus}
+
+\newcommand{\boldone}{\mathbbm{1}}
+\newcommand{\et}{\textrm{{\rm \'et}}}
+\newcommand{\Sing}{{\textrm{{\rm Sing}}}}
+\def\mapsfrom{\mathrel{\reflectbox{\ensuremath{\mapsto}}}}
+\newcommand{\caseAN}{{\eqref{ntn-cases}{\rm .(AN)}}}
+\newcommand{\caseET}{{\eqref{ntn-cases}{\rm .(ET)}}}
+
+\newcommand{\AN}{{\rm (AN)}\xspace}
+\newcommand{\ET}{{\rm (ET)}\xspace}
 
 
-%important: definitions for the index
-\newcommand{\df}[1]{{\bf #1}\index{#1}}
+\minCDarrowwidth20pt
 
-
-\DeclareMathOperator{\rank}{rank}
-\DeclareMathOperator{\Gal}{Gal}
-\DeclareMathOperator{\Fun}{Fun}
-\DeclareMathOperator{\GL}{GL}
-\DeclareMathOperator{\SL}{SL}
-\DeclareMathOperator{\Perm}{Perm}
-\DeclareMathOperator{\sign}{sign}
-
-
-%For sets
-\newcommand{\set}[1]{\left\{ #1 \right\}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\Q}{\mathbb{Q}}
-\newcommand{\F}{\mathbb{F}}
-\newcommand{\C}{\mathbb{C}}
-\newcommand{\cS}{\mathcal{S}}
-\def\sdp{\rtimes}
-
-\renewcommand{\ker}{\operatorname{ker}}
-\newcommand{\coker}{\operatorname{coker}}
-\DeclareMathOperator{\im}{im}
-\DeclareMathOperator{\id}{id}
-\DeclareMathOperator{\Aut}{Aut}
-\DeclareMathOperator{\Orb}{Orb}
-\DeclareMathOperator{\lcm}{lcm}
-\def\norm{\mathrel{\unlhd}}
-\DeclareMathOperator{\Zc}{Z}
-\DeclareMathOperator{\Stab}{Stab}
-\DeclareMathOperator{\Syl}{Syl}
-
-\DeclareMathOperator{\Mat}{Mat}
-\DeclareMathOperator{\End}{End}
-\DeclareMathOperator{\lc}{lc}
-\DeclareMathOperator{\Frac}{Frac}
-\DeclareMathOperator{\Hom}{Hom}
-
-\newcommand{\Tr}{\operatorname{Tr}}
-\DeclareMathOperator{\Span}{span}
-\DeclareMathOperator{\M}{Mat}
-\DeclareMathOperator{\ann}{ann}
-\DeclareMathOperator{\Tor}{Tor}
-\DeclareMathOperator{\ch}{char}
-
-
-\def\nsg{\unlhd}
-
-\newcommand{\cZ}{\mathcal{Z}}
-\newcommand{\cI}{\mathcal{I}}
-\newcommand{\cP}{\mathcal{P}}
-\newcommand{\cT}{\mathcal{T}}
-\newcommand{\m}{\mathfrak{m}}
-
-\newcommand{\s}{\sigma}
-
-
-
+\makeindex
 
 \begin{document}
+\title[Math 817 Fall 2025]{Math 817: Introduction to Modern Algebra I Fall 2025}
 
+\author{Jack Jeffries}
+\maketitle
 
-
-hi
-
-
-
-
-\newpage
-
-
-\pagenumbering{arabic}
-
-
-
-\part{Groups}
+These are the lecture notes and class materials for Math 817 Introduction to Modern Algebra~I in Fall 2025. The lecture notes draw heavily on Elo\'isa Grifo's notes from Fall 2024, which in turn draw from the lecture notes of Mark Walker and Alexandra Seceleanu.
 
 
 
