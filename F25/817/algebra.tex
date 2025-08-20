@@ -1,27 +1,52 @@
-\documentclass[12pt]{amsart}
-\usepackage{colonequals}
-\usepackage{mathptmx, bbm, amscd, amssymb, enumerate,mathdots, xcolor,comment,graphicx,xspace}
-%\linenumbers
-\usepackage[symbol]{footmisc}
-\usepackage{kpfonts,baskervald}
-\usepackage[margin = 1in]{geometry}
+\documentclass[12pt]{report}
+\usepackage{latexsym,amsfonts,amssymb,amsthm,amsmath}
+\usepackage[margin=1in]{geometry}
+\usepackage[colorlinks=true,citecolor=mycolor,linkcolor=mycolor,urlcolor=mycolor]{hyperref}
+\usepackage{amscd}
+\usepackage{mathrsfs}
+\usepackage{enumitem}
+\setlist[enumerate,1]{label={(\arabic*)}}
+%\usepackage{stmaryrd}
+%\usepackage{color}
+\usepackage[dvipsnames]{xcolor}
 
-\usepackage{color}
-\definecolor{chianti}{rgb}{0.6,0,0}
-\definecolor{meretale}{rgb}{0,0,.6}
-\definecolor{leaf}{rgb}{0,.35,0}
-\usepackage[colorlinks=true, pagebackref, hyperindex, citecolor=meretale, urlcolor=meretale,linkcolor=chianti,hyperfootnotes=false]{hyperref}
-\usepackage{cleveref}
-\usepackage[all]{xy}
-%\usepackage{showkeys}
-\usepackage{paralist}
-%\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric}
+\newcommand{\Ngon}[2][]{\vcenter{\hbox{\begin{tikzpicture}
+\node[regular polygon, regular polygon sides=#2, draw,minimum size=2cm,#1](#2-gon){};
+\foreach \X in {1,...,#2}{\fill (#2-gon.corner \X) circle[radius=2pt];}
+\end{tikzpicture}}}}
+
+\definecolor{mycolor}{rgb}{0, 0.5, 0.74}
+
+\usepackage{extarrows}
+\usepackage{imakeidx}
+\usepackage{tikz}
+\usepackage{pdflscape}
+\usepackage{centernot,colonequals,cleveref}
+\usepackage[bottom]{footmisc}
+\usepackage{comment}
+\usepackage[color,matrix,arrow]{xy}
+%\UseTwocells  
+\xyoption{rotate}
+\xyoption{pdf}
 
 
 
+\makeatletter
+\def\verbatim@font{\linespread{0.9}\normalfont\ttfamily}
+\makeatother
+
+\makeindex[intoc]
+
+%	\setlength{\topmargin}{0in}
+%	\setlength{\oddsidemargin}{0.52in}
+%	\setlength{\textwidth}{6in}
+%	\setlength{\textheight}{8.4in}
 
 
-\newtheorem{theorem}{Theorem}[section]
+\newtheorem{theorem}{Theorem}[chapter]
 \newtheorem*{theorem*}{Theorem}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
@@ -30,7 +55,7 @@
 \newtheorem{Example}[theorem]{Example}
 \newtheorem{metatheorem}[theorem]{Metatheorem}
 \numberwithin{equation}{section}
-\numberwithin{theorem}{section}
+\numberwithin{theorem}{chapter}
 \newtheorem{problem}[theorem]{Problem}
 
 
@@ -43,7 +68,7 @@
 \newtheorem{discussion}[theorem]{Discussion}
 \newtheorem{question}[theorem]{Question}
 \newtheorem{example}[theorem]{Example}
-\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{exercise}{Exercise}
 \newtheorem*{basic properties}{Basic Properties}
 \newtheorem*{properties}{Properties}
 \newtheorem*{eremarks}{Ending Remarks}
@@ -121,60 +146,101 @@
 
 \newcommand{\s}{\sigma}
 
+\date{\today}
 
-
-\minCDarrowwidth20pt
-
-\makeindex
 
 \begin{document}
-\title[Math 817 Fall 2025]{Math 817: Introduction to Modern Algebra I Fall 2025}
 
-\author{Jack Jeffries}
-\maketitle
 
-\setcounter{tocdepth}{1}
-\tableofcontents
 
-\section*{Introduction}
 
-These are the lecture notes and class materials for Math 817 Introduction to Modern Algebra~I in Fall 2025. This is the first of a two part course on groups, rings, modules, and fields. In this first half, we will discuss group theory, including group actions, and introduce rings. A major goal of this course is to prepare graduate students for the PhD qualifying exam in algebra.
-The lecture notes draw heavily on Elo\'isa Grifo's notes from Fall 2024:
+\makeatletter
+\begin{titlepage}
+\centering
+\vspace{\stretch{1}}
 
-\
 
 \begin{center}
-\href{https://eloisagrifo.github.io/Teaching/algebra.pdf}{https://eloisagrifo.github.io/Teaching/algebra.pdf}
+
+{\LARGE\bfseries Introduction to Modern Algebra I\\}
+\rule{3in}{0.4pt}
+
+{Math 817}
+
+
+\vspace{5em}
+
+and
+
+\vspace{5em}
+
+
+{\LARGE\bfseries Introduction to Modern Algebra II\\}
+\rule{3in}{0.4pt}
+
+{Math 818}
+
 \end{center}
 
-\
 
-\noindent which in turn draw from earlier lecture notes of Mark Walker and Alexandra Seceleanu. The impatient reader can go there to read ahead. The textbook
+\vspace{\stretch{1}}
 
-\
+%Elo\'isa Grifo\\
+University of Nebraska-Lincoln\\ 
 
-\begin{center}
-\textit{Abstract Algebra} by Dummit and Foote
-\end{center}
+%\vspace{\stretch{1}}
 
-\
+\vspace{2em}
 
-\noindent is a good resource covering similar material at a similar level.
+{\small \@date}
 
+\vspace{3em}
 
-\
+\end{titlepage}
+\makeatother
 
 \newpage
 
-\section{Lecture of Monday, August 25}
+\pagenumbering{roman}
+
+\chapter*{Warning!}
 
 
-This class has four major topics: Groups, Rings, Modules, and Fields. Let us begin with group theory.
-
-A group is a basic algebraic structure that is found in many objects we might otherwise care about, but has enough structure that we can deduce general statements and theorems. 
+Proceed with caution. These notes are under construction and are 100\% guaranteed to contain typos. If you find any typos or errors, I will be most grateful to you for letting me know. 
 
 
-\subsection*{Definitions and first examples}
+\vspace{1em}
+
+
+\section*{Acknowledgements}
+
+These notes are heavily based on notes by Mark Walker and Alexandra Seceleanu. Thanks the following students, to who found typos in previous versions of the notes: Gabriel Adams, Cal Heldt, Louis Burns, Daniel Gonzalez, Reese White, Wynter Sanderlin, Stephen Stern, Nicole Xie, and Isaiah Martinez.
+
+
+
+
+
+
+\tableofcontents \addtocontents{toc}
+{\protect\thispagestyle{myheadings}\markright{}}
+
+
+\newpage
+
+
+\pagenumbering{arabic}
+
+
+
+\part{Groups}
+
+
+
+\chapter{Groups: an introduction}
+
+Many mathematical structures consist of a set with special properties. Groups are elementary algebraic structures that allow us to deal with many objects of interest, such as geometric shapes and polynomials.
+
+\section{Definitions and first examples}
 
 \begin{definition}
 A \df{binary operation} on a set $S$ is a function $S \times S \to S$. If the binary operation is denoted by $\cdot$, we write $x \cdot y$ for the image of $(x,y)$ under the binary operation $\cdot$.
@@ -196,24 +262,14 @@ We say that that a set $S$ is closed under the operation $\cdot$ when we want to
 \begin{definition}\label{def:group} 
 A \df{group} is a set $G$ equipped with a binary operation $\cdot$ on $G$ called the {\bf group multiplication}, satisfying the following properties:
 \begin{itemize}
-\item {\bf Associativity}: For every $x,y,z \in G$, we have $(x \cdot y) \cdot z = x \cdot (y \cdot z)$.
-\item {\bf Identity element}: There exists $e \in G$ such that $e \cdot x = x \cdot e = x$ for all $x \in G$.
- \item {\bf Inverses}: For each $x \in G$, there is an element $y \in G$ such that $xy = e = yx$ .
+\item Associativity: For every $x,y,z \in G$, we have $(x \cdot y) \cdot z = x \cdot (y \cdot z)$.
+\item Identity element: There exists $e \in G$ such that $e \cdot x = x \cdot e = x$ for all $x \in G$.
+ \item Inverses: For each $x \in G$, there is an element $y \in G$ such that $xy = e = yx$ .
 \end{itemize}
-The element $e$ is called the \df{identity element} or simply \df{identity} of the group. For each element $x \in G$, an element $y \in G$ such that $xy = e = yx$ is called an \df{inverse} of $x$. We may write that $(G, \cdot)$ is a group to mean that $G$ is a group with the operation ``$\cdot$''.
+The element $e$ is called the \df{identity element} or simply \df{identity} of the group. For each element $x \in G$, an element $y \in G$ such that $xy = e = yx$ is called an \df{inverse} of $x$. We may write that $(G, \cdot)$ is a group to mean that $G$ is a group with the operation $\cdot$.
 
 The {\bf order} of the group $G$ is the number of elements in the underlying set.\index{order of a group}
 \end{definition}
-
-\begin{example} 
-Fix a positive integer $n$, and let 
-$$\GL_n(\R) \colonequals \{ \text{invertible }  n \times n \text{ matrices with entries in } \R \}.$$
-An invertible matrix is one that has a two-sided (multiplicative) inverse. This is called the \df{general linear group} of size $n$ matrices with entries in $\R$. This is a group: multiplication of matrices is associative, there is an identity element given by the identity matrix, and every element has an inverse by definition.
-\end{example}
-
-Vaguely, the definition of group is motivated by the idea that a collection of functions from set to itself that preserves some extra structure naturally satisfies the three axioms: for example, the general linear group consists of functions from the vector space $\R^n$ to itself that preserve the linearity structure.
-
-
 
 \begin{remark}
 Although a group is the set \emph{and} the operation, we will usually refer to the group by only naming the underlying set, $G$.
@@ -244,13 +300,13 @@ z & = ez &&& \textrm{since $e$ is the identity}\\
 & = (yx)z &&& \textrm{since $y$ is an inverse for $x$}\\
 & = y(xz) &&& \textrm{by associativity}\\
 & = ye &&& \textrm{since $z$ is an inverse for $x$}\\
-& = y &&& \textrm{since $e$ is the identity}. \qedhere
+& = y &&& \textrm{since $e$ is the identity}.\qedhere
 \end{aligned}$$
 \end{proof}
 
 
 \begin{remark}
-	Note that our proof of \Cref{identity and inverses unique} also applies to show that the identity element of a monoid is unique, since we did not use the existence of inverses in the proof of part (1).
+	Note that our proof of \Cref{identity and inverses unique} also applies to show that the identity element of a monoid is unique.
 \end{remark}
 
 
@@ -263,7 +319,7 @@ Given a group $G$, we can refer to \emph{the} identity of $G$. Similarly, given 
 
 
 \begin{remark}\label{note on inverses in monoids}
-	In a monoid $G$ with identity $e$, an element $x$ might have a \df{left inverse}, which is an element $y$ satisfying $yx = e$. Similarly, $x$ might have a \df{right inverse}, which is an element $z$ satisfying $xz = e$. An element in a monoid might have several distinct right inverses, or several distinct left inverses, but if it has both a left and a right inverse, then it has a unique left inverse and a unique right inverse, and those elements coincide. This follows from a careful analysis of the proof of part (2) of \Cref{identity and inverses unique}.
+	In a monoid $G$ with identity $e$, an element $x$ might have a \df{left inverse}, which is an element $y$ satisfying $yx = e$. Similarly, $x$ might have a \df{right inverse}, which is an element $z$ satisfying $xz = e$. An element in a monoid might have several distinct right inverses, or several distinct left inverses, but if it has both a left and a right inverse, then it has a unique left inverse and a unique right inverse, and those elements coincide. 
 \end{remark}
 
 \begin{exercise}
@@ -276,6 +332,7 @@ Given a group $G$, we can refer to \emph{the} identity of $G$. Similarly, given 
 	$$x^n \colonequals \underset{n \textrm{ times}}{\underbrace{x \cdots x}}.$$
 \end{definition}
 
+\newpage
 
 \begin{exercise}[Properties of group elements]\label{exercise properties of group elements}
 Let $G$ be a group and let $x,y,z, a_1,\ldots,a_n \in G$. Show that the following properties hold: 
@@ -283,7 +340,7 @@ Let $G$ be a group and let $x,y,z, a_1,\ldots,a_n \in G$. Show that the followin
 \item If $xy = xz$, then $y=z$. 
 \item If $yx = zx$, then $y = z$. 
 \item $(x^{-1})^{-1} = x$. 
-\item $(a_1 \cdots a_n)^{-1} = a_n^{-1} \cdots a_1^{-1}$. 
+\item $(a_1 \dots a_n)^{-1} = a_n^{-1} \dots a_1^{-1}$. 
 \item $(x^{-1}yx)^n = x^{-1}y^nx$ for any integer $n \geqslant 1$.
 \item $(x^{-1})^n = (x^n)^{-1}$.
 \end{enumerate}
@@ -300,10 +357,10 @@ Note that by \Cref{exercise properties of group elements}, $x^{-n} = (x^{-1})^n$
 \end{exercise}
 
 \begin{definition}\index{abelian group}
-	A group $G$ is {\bf abelian} if the group multiplication $\cdot$ is commutative, meaning that $x \cdot y = y \cdot x$ for all $x,y \in G$.
+	A group $G$ is {\bf abelian} if $\cdot$ is commutative, meaning that $x \cdot y = y \cdot x$ for all $x,y \in G$.
 \end{definition}
 
-Often, but not always, the group operation for an abelian group is written as ``$+$'' instead of ``$\cdot$''. In this case, the identity element is usually written as $0$ and the inverse of an element $x$ is written as $-x$. 
+Often, but not always, the group operation for an abelian group is written as $+$ instead of $\cdot$. In this case, the identity element is usually written as $0$ and the inverse of an element $x$ is written as $-x$. 
 
 \begin{example}$\,$
 \begin{enumerate}
@@ -339,7 +396,6 @@ Even if the group is not abelian, the set of elements that commute with every ot
 \begin{remark}
 	Note that $G$ is abelian if and only if $\Zc(G) = G$.
 \end{remark}
-
 
 
 
@@ -404,7 +460,7 @@ There exist a presentation with finitely many generators and finitely many relat
 
 
 
-\begin{comment}
+
 
 
 
@@ -5379,7 +5435,7 @@ is a nonabelian group. In fact, we can give a presentation for $\rho$.
 \end{example}
 
 
-
+\end{comment}
 
 
 
@@ -12562,7 +12618,7 @@ Since $a_1 - \sigma_k(a_1) \neq 0$, this is a nontrivial solution to original sy
 \end{proof}
 
 
-\end{comment}
+
 
 
 
