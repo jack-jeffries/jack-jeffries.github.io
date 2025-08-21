@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Math 817: Introduction to Modern Algebra I (Fall 2025)</title>
+<!-- MathJax (accessible by default) -->
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+    :root{
+      --accent:#1f2937; /* dark gray (good contrast) */
+      --bg-soft:#f5f5f5; /* soft background for callouts */
+      --border:#374151;  /* darker border for AA contrast */
+      --link:#800000;    /* UNL scarlet */
+      --text:#111827;    /* near-black text */
+      --muted:#4b5563;   /* muted headings */
+      --focus:#ffbf47;   /* high-contrast focus outline */
+    }
+    html:focus-within { scroll-behavior: smooth; }
+    body{
+      margin:0;
+      color:var(--text);
+      background:#fff;
+     font-family: Baskerville, "Times New Roman", Times, serif;
+     line-height:1.6;
+    }
+    a{ color:var(--link); }
+    a:focus, button:focus, [tabindex]:focus{
+      outline:3px solid var(--focus);
+      outline-offset:2px;
+    }
+    .container{
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1rem 1rem 3rem;
+    }
+    /* Skip link */
+    .skip-link{
+      position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden;
+    }
+    .skip-link:focus{
+      position:static; width:auto; height:auto; padding:.5rem .75rem; background:#000; color:#fff;
+      display:inline-block; margin: .5rem 1rem;
+    }
+
+    header[role="banner"]{
+      padding: 2rem 0 1rem;
+      border-bottom: 2px solid var(--border);
+    }
+    header h1{
+      margin:.25rem 0 0;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-weight: 700;
+      line-height:1.25;
+    }
+    header p{
+      margin: .25rem 0 0;
+      color: var(--muted);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+    }
+
+    nav[aria-label="Table of contents"]{
+      padding: 1rem 0 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    nav[aria-label="Table of contents"] ul{
+      margin:.25rem 0 0 1rem;
+    }
+
+    main h2, main h3{
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      line-height:1.3;
+    }
+    main h2{ margin-top: 2rem; }
+    main h3{ margin-top: 1.5rem; }
+
+    /* Callout blocks */
+    .callout{
+      background: var(--bg-soft);
+      border-left: 6px solid var(--border);
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+    .callout h3{
+      margin: 0 0 .5rem;
+    }
+    .callout p{ margin: .5rem 0; }
+
+    blockquote{
+      border-left: 6px solid var(--border);
+      padding: .5rem 1rem;
+      background: #fafafa;
+      margin: 1rem 0;
+      font-style: italic;
+    }
+
+    /* Math blocks helper (optional role hook) */
+    .math-display{ margin: .75rem 0; }
+    .visually-hidden{
+      position:absolute !important;
+      height:1px; width:1px;
+      overflow:hidden; clip:rect(1px,1px,1px,1px);
+      white-space:nowrap; border:0; padding:0; margin:-1px;
+    }
+    /* Link styles inside callouts for better contrast */
+    .callout a{ text-decoration: underline; }
+
+    /* Lists spacing */
+    ul, ol{ padding-left: 1.25rem; }
+  </style>
+
+
+<style>
+    .shapes-container {
+      display: flex;
+      justify-content: center;
+      gap: 2rem; /* space between shapes */
+      margin-top: 2rem;
+    }
+    figure {
+      text-align: center;
+    }
+    svg {
+      display: block;
+      margin: 0 auto;
+    }
+  </style>
+
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="container">
+<header role="banner">
+<h1 id="page-title">Math 817: Introduction to Modern Algebra I (Fall 2025)</h1>
+<p aria-label="Author">Instructor: Jack Jeffries</p>
+</header>
+<!-- Table of contents (manual, descriptive, navigable) -->
+<nav aria-label="Table of contents">
+<h2 id="toc">Contents</h2>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#Groups">Groups</a></li>
+<ol><li><a href="#an introduction to groups">An introduction to groups</a></li>
+<ol><li><a href="#Definitions and first examples">Definitions and first examples</a></li>
+<li><a href="#permutation-groups">Permuation groups</a></li>
+<li><a href="#dih-heading">Dihedral groups</a></li>
+</ol>
+</ol>
+</ul></nav>
+<main aria-labelledby="page-title" id="main-content" role="main">
+<section aria-labelledby="intro-heading" id="introduction">
+<h1 id="intro-heading">Introduction</h1>
+<p>
+          These are the lecture notes and class materials for Math 817 Introduction to Modern Algebra I
+          in Fall 2025. This is the first of a two-part course on groups, rings, modules, and fields.
+          In this first half, we will discuss group theory, including group actions, and introduce rings.
+          A major goal of this course is to prepare graduate students for the PhD qualifying exam in algebra.
+        </p>
+<p>
+          The lecture notes draw heavily on
+          <a aria-label="Eloísa Grifo’s Algebra Notes, PDF in a new tab" href="https://eloisagrifo.github.io/Teaching/algebra.pdf" rel="noopener" target="_blank">
+            Eloísa Grifo’s Algebra Notes (PDF, opens in new tab)
+          </a>,
+          which in turn draw from earlier lecture notes of Mark Walker and Alexandra Seceleanu.
+          The textbook <em>Abstract Algebra</em> by Dummit and Foote is a good resource covering similar material.
+        </p>
+</section>
+<h1 id="Groups">Groups</h1>
+<section aria-labelledby="lecture-heading" id="an introduction to groups">
+<h1 id="lecture-heading">1. An Introduction to Groups</h1>
+<p>This class has four major topics: Groups, Rings, Modules, and Fields. Let us begin with group theory.</p>
+<p>
+          A group is a basic algebraic structure that is found in many objects we might otherwise care about,
+          but has enough structure that we can deduce general statements and theorems.
+        </p>
+<section aria-labelledby="defs-heading" id="definitions-first-examples">
+<h2 id="defs-heading">1.1 Definitions and first examples</h2>
+<section aria-labelledby="def-binary-op" class="callout definition" role="region">
+<h3 id="def-binary-op">Definition 1.1.1 (Binary operation)</h3>
+<p>
+              A <dfn>binary operation</dfn> on a set \(S\) is a function \(S \times S \to S\).
+              If the binary operation is denoted by \(\cdot\), we write \(x \cdot y\) for the image of \((x,y)\).
+            </p>
+</section>
+<section aria-labelledby="rmk-xy" class="callout remark" role="region">
+<h3 id="rmk-xy">Remark 1.1.2</h3>
+<p>We often write \(xy\) instead of \(x \cdot y\) if the operation is clear from context.</p>
+</section>
+<section aria-labelledby="rmk-closure" class="callout remark" role="region">
+<h3 id="rmk-closure">Remark 1.1.3 ("Closed under \(\cdot\)")</h3>
+<p>
+              We say that a set \(S\) is closed under the operation \(\cdot\) when we want to emphasize
+              that for any \(x,y\in S\) the result \(xy\) belongs to \(S\). Closure is part of the definition
+              of a binary operation and is implicitly assumed.
+            </p>
+</section>
+<section aria-labelledby="def-group" class="callout definition" role="region">
+<h3 id="def-group">Definition 1.1.4 (Group)</h3>
+<p>
+              A <dfn>group</dfn> is a set \(G\) with a binary operation \(\cdot\) (group multiplication) such that:
+            </p>
+<ul>
+<li><strong>Associativity:</strong> For all \(x,y,z \in G\), \((x\cdot y)\cdot z = x\cdot(y\cdot z)\).</li>
+<li><strong>Identity element:</strong> There exists \(e\in G\) with \(e\cdot x = x = x\cdot e\) for all \(x\in G\).</li>
+<li><strong>Inverses:</strong> For each \(x\in G\) there is \(y\in G\) with \(xy=e=yx\).</li>
+</ul>
+<p>
+              The element \(e\) is the <strong>identity</strong>. For each \(x\in G\), an element \(y\) with \(xy=e=yx\)
+              is an <strong>inverse</strong> of \(x\). The <strong>order</strong> of \(G\) is the number of elements in \(G\).
+            </p>
+</section>
+<section aria-labelledby="ex-glnr" class="callout example" role="region">
+<h3 id="ex-glnr">Example 1.1.5 (General linear group)</h3>
+<div aria-label="Definition of GL sub n over R" class="math-display" role="math">
+              \[
+                GL_n(\mathbb{R}) := \{\, \text{invertible } n\times n \text{ matrices with entries in } \mathbb{R}\,\}.
+              \]
+            </div>
+<p>
+              This is a group under matrix multiplication: associativity holds, the identity matrix is the identity,
+              and every element has an inverse by definition.
+            </p>
+</section>
+
+Vaguely, the definition of group is motivated by the idea that a collection of functions from set to itself that preserves some extra structure naturally satisfies the three axioms: for example, the general linear group consists of functions from the vector space $\mathbb{R}^n$ to itself that preserve the linearity structure.
+
+
+          <section aria-labelledby="rmk-underlying-set" class="callout remark" role="region">
+<h3 id="rmk-underlying-set">Remark 1.1.6 (Naming groups)</h3>
+<p>Although a group is the set <em>and</em> the operation, we often refer to it by the underlying set \(G\).</p>
+</section>
+<section aria-labelledby="rmk-monoid" class="callout remark" role="region">
+<h3 id="rmk-monoid">Remark 1.1.7 (Semigroups and monoids)</h3>
+<p>
+              A set with an associative binary operation is a <strong>semigroup</strong>; if it has an identity, it is a
+              <strong>monoid</strong>. While we will not study non-group monoids in this course, they’re useful objects.
+            </p>
+</section>
+<section aria-labelledby="lem-unique" class="callout lemma" role="region">
+<h3 id="lem-unique">Lemma 1.1.8 (Identity and inverses are unique)</h3>
+<ol>
+<li>The identity \(e\) is unique.</li>
+<li>For each \(x\in G\), the inverse of \(x\) is unique.</li>
+</ol>
+</section>
+<section aria-labelledby="proof-unique" class="callout proof" role="region">
+<h3 id="proof-unique">Proof of Lemma 1.1.8</h3>
+<p>
+              If \(e\) and \(e'\) are both identities, then \(e = ee' = e'\).
+              If \(y\) and \(z\) are both inverses of \(x\), then
+              \(z = (yx)z = y(xz) = ye = y\).
+            </p>
+<p>
+  Now given \(x \in G\), suppose \(y\) and \(z\) are two inverses for \(x\), meaning that \(yx = xy = e\) and \(zx = xz = e\). Then
+</p>
+<div class="math-display">
+\[
+\begin{aligned}
+z &amp; = ez &amp;&amp;&amp; \textrm{since $e$ is the identity}\\
+&amp; = (yx)z &amp;&amp;&amp; \textrm{since $y$ is an inverse for $x$}\\
+&amp; = y(xz) &amp;&amp;&amp; \textrm{by associativity}\\
+&amp; = ye &amp;&amp;&amp; \textrm{since $z$ is an inverse for $x$}\\
+&amp; = y &amp;&amp;&amp; \textrm{since $e$ is the identity}. \quad \square
+\end{aligned}
+\]
+          </div></section>
+<section aria-labelledby="rmk-monoid-identity" class="callout remark" role="region">
+<h3 id="rmk-monoid-identity">Remark 1.1.9</h3>
+<p>
+              The same argument shows the identity in a monoid is unique (no inverses needed).
+            </p>
+</section>
+<section aria-labelledby="not-inverse" class="callout notation" role="region">
+<h3 id="not-inverse">Notation 1.1.10</h3>
+<p>For \(x\in G\), write \(x^{-1}\) for its unique inverse.</p>
+</section>
+<section aria-labelledby="rmk-left-right-inv" class="callout remark" role="region">
+<h3 id="rmk-left-right-inv">Remark 1.1.11 (Left/right inverses in monoids)</h3>
+<p>
+              In a monoid, an element might have left or right inverses (possibly several). If it has both a left and a right inverse,
+              they are unique and equal (by adapting the uniqueness proof).
+            </p>
+</section>
+<section aria-labelledby="ex-left-not-right" class="callout exercise" role="region">
+<h3 id="ex-left-not-right">Exercise 1.1.12</h3>
+<p>Give an example of a monoid \(M\) and an element with a left inverse but not a right inverse.</p>
+</section>
+</section>
+<section aria-labelledby="def-powers" class="callout definition" role="region">
+<h3 id="def-powers">Definition 1.1.13 (Powers)</h3>
+<p>
+              For \(x\in G\) and integer \(n\ge 1\), define \(x^n\) as the product of \(x\) with itself \(n\) times.
+            </p>
+</section>
+<section aria-labelledby="ex-props-elements" class="callout exercise" role="region">
+<h3 id="ex-props-elements">Exercise 1.1.14 (Properties of group elements)</h3>
+<ol>
+<li>If \(xy=xz\), then \(y=z\).</li>
+<li>If \(yx=zx\), then \(y=z\).</li>
+<li>\((x^{-1})^{-1}=x\).</li>
+<li>\((a_1\cdots a_n)^{-1}=a_n^{-1}\cdots a_1^{-1}\).</li>
+<li>\((x^{-1}yx)^n=x^{-1}y^n x\) for \(n\ge 1\).</li>
+<li>\((x^{-1})^n=(x^n)^{-1}\).</li>
+</ol>
+</section>
+<section aria-labelledby="not-neg-powers" class="callout notation" role="region">
+<h3 id="not-neg-powers">Notation 1.1.15</h3>
+<p>For \(n&gt;0\), we define negative powers by the rule \(x^{-n}:= (x^n)^{-1}\). Note that \(x^{-n}=(x^{-1})^n\).</p>
+</section>
+<section aria-labelledby="ex-powers-sum" class="callout exercise" role="region">
+<h3 id="ex-powers-sum">Exercise 1.1.16 </h3>
+<p>Show that \(x^a x^b = x^{a+b}\) for all integers \(a,b\).</p>
+</section>
+<section aria-labelledby="def-abelian" class="callout definition" role="region">
+<h3 id="def-abelian">Definition 1.1.17 (Abelian group)</h3>
+<p>A group \(G\) is <strong>abelian</strong> if \(xy=yx\) for all \(x,y\in G\).</p>
+<p>For abelian groups, we often write the operation as “\(+\)”, identity as \(0\), and inverse as \(-x\).</p>
+</section>
+<section aria-labelledby="ex-abelian" class="callout example" role="region">
+<h3 id="ex-abelian">Example 1.1.18 </h3>
+The following are examples of abelian groups.
+            <ul>
+<li>The trivial group \(\{e\}\).</li>
+<li>\((\mathbb{Z},+), (\mathbb{Q},+), (\mathbb{R},+), (\mathbb{C},+)\).</li>
+<li>\((\mathbb{Z}/n, +)\) (addition modulo \(n\)).</li>
+<li>Let \(F\) be a field. If you are unfamiliar with fields, it is good enough for now to keep in mind the following examples: the real numbers \(\mathbb{R}\), the complex numbers \(\mathbb{C}\), and modular rings \(\mathbb{Z}/(p)\) for a prime number \(p\). Then \(F^\times = F\setminus\{0\}\) under multiplication.</li>
+</ul>
+</section>
+<section aria-labelledby="ex-glnf" class="callout example" role="region">
+<h3 id="ex-glnf">Example 1.1.19 (\(GL_n(F)\))</h3>
+<p>
+              For a field \(F\),
+              \(\displaystyle GL_n(F) = \{\text{invertible } n\times n \text{ matrices over } F\}\).
+              If an \(n\times n\) matrix has a left inverse, it also has a right inverse (and vice-versa).
+              For \(n\ge 2\), \(GL_n(F)\) is generally nonabelian; \(GL_1(F) = F^\times\).
+            </p>
+</section>
+<section aria-labelledby="def-center" class="callout definition" role="region">
+<h3 id="def-center">Definition 1.1.20 (Center)</h3>
+<div aria-label="Definition of the center of a group" class="math-display" role="math"> The center of a group is the subset
+              \[
+                \mathcal{Z}(G) := \{\, x\in G \mid xy=yx \text{ for all } y\in G \,\}.
+              \]
+            </div>
+</section>
+<section aria-labelledby="rmk-center" class="callout remark" role="region">
+<h3 id="rmk-center">Remark 1.1.21</h3>
+<p>The center always contains the identity. If \(\mathcal{Z}(G)=\{e_G\}\), the center is said to be trivial.</p>
+<p>\(G\) is abelian if and only if \(\mathcal{Z}(G)=G\).</p>
+</section>
+<section aria-labelledby="def-presentation" class="callout definition" role="region">
+<h3 id="def-presentation">Informal Definition 1.1.22 (Presentation)</h3>
+<p>
+              A <strong>presentation</strong> specifies a group via generators and relations:
+            </p>
+<div aria-label="Presentation angle bracket notation" class="math-display" role="math">
+              \[
+                G = \langle \text{generators} \mid \text{relations} \rangle .
+              \]
+            </div>
+<p>
+              A set \(S\) <em>generates</em> \(G\) if every element of \(G\) can be expressed as a finite product of elements
+              of \(S\) and their inverses. A <em>relation</em> is an identity among such words.
+            </p>
+<p class="visually-hidden">Only finite products are allowed; infinite products are not considered.</p>
+
+We will return to presentations later in the class when we can give a proper defintion.
+          </section>
+<section aria-labelledby="rmk-finite-products" class="callout remark" role="region">
+<h3 id="rmk-finite-products">Remark 1.1.23</h3>
+<p>We only take products of finitely many generators and their inverses; infinite products are not defined here.</p>
+</section>
+<section aria-labelledby="ex-Z-presentation" class="callout example" role="region">
+<h3 id="ex-Z-presentation">Example 1.1.24</h3>
+<p>The group \(\mathbb{Z}\) has one generator \(1\) and no relations.</p>
+</section>
+<section aria-labelledby="ex-Zn-presentation" class="callout example" role="region">
+<h3 id="ex-Zn-presentation">Example 1.1.25</h3>
+<div aria-label="Presentation of Z mod n" class="math-display" role="math">
+              The group of integers modulo \( n \) has presentation \[
+                \mathbb{Z}/n \cong \langle x \mid x^n = e \rangle .
+              \]
+            </div>
+</section>
+<section aria-labelledby="def-cyclic" class="callout definition" role="region">
+<h3 id="def-cyclic">Definition 1.1.26 (Cyclic / finitely generated)</h3>
+<p>
+              A group is <strong>cyclic</strong> if generated by one element.
+              It is <strong>finitely generated</strong> if generated by finitely many elements.
+            </p>
+</section>
+<section aria-labelledby="ex-cyclic" class="callout example" role="region">
+<h3 id="ex-cyclic">Example 1.1.27 </h3>
+<p>\(\mathbb{Z}\) and \(\mathbb{Z}/n\) are cyclic.</p>
+</section>
+<section aria-labelledby="ex-cyclic-abelian" class="callout exercise" role="region">
+<h3 id="ex-cyclic-abelian">Exercise 1.1.28</h3>
+<p>Prove that every cyclic group is abelian.</p>
+</section>
+<section aria-labelledby="ex-not-cyclic" class="callout exercise" role="region">
+<h3 id="ex-not-cyclic">Exercise 1.1.29</h3>
+<p>Prove that \((\mathbb{Q}, +)\) and \(\operatorname{GL}_2(\mathbb{Z}_2)\) are not cyclic.</p>
+</section>
+        
+        
+            There is no algorithm that, given any group presentation as an input, can decide whether the group is actually the trivial group with just one element.
+        
+            There exist a presentation with finitely many generators and finitely many relations such that whether or not the group is actually the trivial group with just one element is <em>independent of the standard axioms of mathematics</em>!
+          
+Nonetheless, finding and working with presentations of groups is a crucial technique in group theory.
+        </section>
+<section aria-labelledby="perm-heading" id="permutation-groups">
+<h2 id="perm-heading">1.2 Permutation groups</h2>
+<section aria-labelledby="def-perm-group" class="callout definition" role="region">
+<h3 id="def-perm-group">Definition 1.2.1 (Permutation group)</h3>
+<p>
+      For any set \(X\), the <strong>permutation group</strong> on \(X\) is the set \(\mathrm{Perm}(X)\) of all bijective functions from \(X\) to itself equipped with the binary operation given by composition of functions.
+    </p>
+</section>
+<section aria-labelledby="not-sn" class="callout notation" role="region">
+<h3 id="not-sn">Notation 1.2.2</h3>
+<p>
+      For an integer \(n \geqslant 1\), we write \([n] := \{1,\ldots,n\}\) and \(S_n := \mathrm{Perm}([n])\).
+      An element of \(S_n\) is called a <dfn>permutation on \(n\) symbols</dfn>, sometimes also called a permutation on \(n\) letters or \(n\) elements.
+    </p>
+</section>
+<p>We can write an element \(\sigma\) of \(S_n\) as a table of values:</p>
+<div class="math-display">
+    \[
+    \begin{array}{c||c|c|c|c|c}
+      i &amp; 1 &amp; 2 &amp; 3 &amp; \cdots &amp; n \\
+      \hline
+      \sigma(i) &amp; \sigma(1) &amp; \sigma(2) &amp; \sigma(3) &amp; \cdots &amp; \sigma(n) \\
+    \end{array}
+    \]
+  </div>
+<p>We may also represent this using arrows, as follows:</p>
+<div class="math-display">
+\[
+\begin{array}{rcl}
+1 &amp; \mapsto &amp; \sigma(1) \\
+2 &amp; \mapsto &amp; \sigma(2) \\
+\vdots &amp; &amp; \vdots \\
+n &amp; \mapsto &amp; \sigma(n)
+\end{array}
+\]
+  </div>
+<section aria-labelledby="rmk-sn-size" class="callout remark" role="region">
+<h3 id="rmk-sn-size">Remark 1.2.3</h3>
+<p>To count the elements \(\sigma \in S_n\), note that</p>
+<ul>
+<li>there are \(n\) choices for \(\sigma(1)\);</li>
+<li>once \(\sigma(1)\) has been chosen, we have \(n-1\) choices for \(\sigma(2)\);</li>
+</ul>
+<div style="text-align:center;">\(\vdots\)</div>
+<ul>
+<li>once \(\sigma(1), \ldots, \sigma(n-1)\) have been chosen, there is a unique possible value for \(\sigma(n)\).</li>
+</ul>
+<p>Thus the group \(S_n\) has \(n!\) elements.</p>
+</section>
+<p>It is customary to use cycle notation for permutations.</p>
+<section aria-labelledby="def-cycle" class="callout definition" role="region">
+<h3 id="def-cycle">Definition 1.2.4 (Cycle, \(m\)-cycle)</h3>
+<p>
+      If \(i_1, \dots, i_m\) are distinct integers between \(1\) and \(n\), then
+      \(\sigma=(i_1 \, i_2 \, \cdots i_m)\) denotes the element of \(S_n\) determined by
+    </p>
+<div class="math-display">
+      \[
+      \sigma(i_1)=i_2, \quad \sigma(i_2)=i_3, \quad \ldots, \quad \sigma(i_{m-1})=i_m, \quad \sigma(i_m)=i_1,
+      \]
+    </div>
+<p>and which fixes all elements of \([n] \setminus \{i_1, \dots, i_m\}\).</p>
+<div class="math-display">
+      \[
+      \sigma(j) = j \quad \text{for all } j \in [n] \setminus \{i_1, \dots, i_m\}.
+      \]
+    </div>
+<p>
+      Such a permutation is called a <dfn>cycle</dfn> or an <strong>\(m\)-cycle</strong>.
+      In particular, we say that \(\sigma\) has length \(m\).
+    </p>
+</section>
+<section aria-labelledby="rmk-1-cycle" class="callout remark" role="region">
+<h3 id="rmk-1-cycle">Remark 1.2.5</h3>
+<p>A 1-cycle is the identity permutation.</p>
+</section>
+<section aria-labelledby="not-transposition" class="callout notation" role="region">
+<h3 id="not-transposition">Notation 1.2.6</h3>
+<p>A 2-cycle is often called a <dfn>transposition</dfn>.</p>
+</section>
+<section aria-labelledby="rmk-cycle-equivalence" class="callout remark" role="region">
+<h3 id="rmk-cycle-equivalence">Remark 1.2.7</h3>
+<p>
+      The cycles \((i_1 \cdots i_m)\) and \((j_1 \cdots j_m)\) represent the same cycle
+      if and only if the two lists are cyclical rearrangements.
+      Example: \((1 \, 2 \, 3) = (2 \, 3 \, 1)\) but \((1 \, 2 \, 3) \neq (2 \, 1 \, 3)\).
+    </p>
+</section>
+<section aria-labelledby="rmk-cycle-power" class="callout remark" role="region">
+<h3 id="rmk-cycle-power">Remark 1.2.8</h3>
+<p>
+      For \(\sigma = (i_1 \ldots i_m)\), any integer \(k\) gives
+    </p>
+<div class="math-display">
+      \[
+        \sigma^k(i_j) = i_{\,j+k \pmod{m}}.
+      \]
+    </div>
+<p>
+  Here we interpret \(j+k \!\pmod{m}\) to denote the unique integer \(0 \leqslant s &lt; m\) such that
+</p>
+<div class="math-display">
+\[
+s \equiv j+k \pmod m.
+\]
+</div>
+</section>
+<section aria-labelledby="not-cycle-product" class="callout notation" role="region">
+<h3 id="not-cycle-product">Notation 1.2.9</h3>
+<p>
+      The product of cycles \((i_1 \cdots i_s)\) and \((j_1 \cdots j_t)\) is written
+      \((i_1 \cdots i_s)(j_1 \cdots j_t)\), composed right-to-left.
+    </p>
+</section>
+<section aria-labelledby="ex-nonabelian" class="callout example" role="region">
+<h3 id="ex-nonabelian">Example 1.2.10</h3>
+<p>
+  We claim that the permutation group \(\mathrm{Perm}(X)\) is nonabelian whenever the set \(X\) has \(3\) or more elements. Indeed, given three distinct elements \(x, y, z \in S\), consider the transpositions \((xy)\) and \((yz)\). Now consider the permutations \((yz)(xy)\) and \((xy)(yz)\), where the composition is read from right to left, such as function composition. Then
+</p>
+<div class="math-display">
+\[
+\begin{array}{c|ccc}
+(yz)(xy): &amp; x \mapsto z &amp; y \mapsto x &amp; z \mapsto y \\
+(xy)(yz): &amp; x \mapsto y &amp; y \mapsto z &amp; z \mapsto x
+\end{array}
+\]
+</div>
+<p>
+  Note that \((yz)(xy) \neq (xy)(yz)\), since for example the first one takes \(x\) to \(z\) while the second one takes \(x\) to \(y\).
+</p>
+</section>
+<section aria-labelledby="lem-disjoint" class="callout lemma" role="region">
+<h3 id="lem-disjoint">Lemma 1.2.11 (Disjoint cycles commute)</h3>
+<p>If the cycles involve disjoint sets of elements, they commute.</p>
+</section>
+<section aria-labelledby="proof-disjoint" class="callout proof" role="region"><h3>Proof of Lemma 1.2.11</h3>
+<p>
+  We need to show \(\sigma_1(\sigma_2(l)) = \sigma_2(\sigma_1(l))\) for all \(l \in [n]\). If \(l \notin \{i_1, \ldots, i_m, j_1, \dots, j_k\}\), Then \(\sigma_1(l) = l = \sigma_2(l)\), so 
+</p>
+<div class="math-display">
+\[
+\sigma_1(\sigma_2(l)) = \sigma_1(l) = l \qquad \textrm{and} \qquad \sigma_2(\sigma_1(l)) = \sigma_2(l) = l.
+\]
+</div>
+<p>
+  If \(l \in \{j_1, \dots, j_k\}\), then \(\sigma_2(l) \in \{j_1, \dots, j_k\}\) and hence, since the subsets are disjoint, \(l\) and \(\sigma_2(l)\) are not in the set \(\{i_1 , i_2 , \dots i_m\}\). It follows that \(\sigma_1\) preserves \(l\) and \(\sigma_2(l)\), and thus
+</p>
+<div class="math-display">
+\[
+\sigma_1(\sigma_2(l)) = \sigma_2(l) \quad \textrm{and} \quad \sigma_2(\sigma_1(l)) = \sigma_2(l).
+\]
+</div>
+<p>
+  The case when \(l \in \{i_1, \dots, i_m\}\) is analogous.
+</p>
+</section>
+<section aria-labelledby="thm-disjoint-decomp" class="callout theorem" role="region">
+<h3 id="thm-disjoint-decomp">Theorem 1.2.12 (Products of disjoint cycles)</h3>
+<p>
+      Every \(\sigma\in S_n\) can be written uniquely (up to order) as a product of disjoint cycles.
+    </p>
+</section>
+<section aria-labelledby="rmk-1cycle-convention" class="callout remark" role="region">
+<h3 id="rmk-1cycle-convention">Remark 1.2.13</h3>
+<p>
+    For the uniqueness part of the Theorem, one needs to establish a convention regarding 1-cycles: we need to decide whether the 1-cycles will be recorded. If we decide not to record \(1\)-cycles, this gives the shorter version of our factorization into cycles. If all the 1-cycles are recorded, this gives a longer version of our factorization, but this option has the advantage that it makes it clear what the size \(n\) of our group \(S_n\) is. 
+  </p>
+<p>
+    We will follow the first convention: we will write only \(m\)-cycles with \(m \geqslant 2\). Under this convention, the identity element of \(S_n\) is the empty product of disjoint cycles. We will, however, sometimes denote the identity by \((1)\) for convenience.
+  </p>
+</section>
+<section aria-labelledby="proof-disjoint-decomp" class="callout proof" role="region">
+<h3 id="proof-disjoint-decomp">Proof of Theorem 1.2.12</h3>
+<p>
+  Fix a permutation \(\sigma\).
+  The key idea is to look at the <dfn>orbits</dfn> of \(\sigma\): for each \(x \in [n]\), its orbit by \(\sigma\) is the subset of \([n]\) of the form
+</p>
+<div class="math-display">
+\[
+O_x=\{ \sigma(x), \sigma^2(x), \sigma^3(x), \ldots \} = \{\sigma^i(x) \mid i \geqslant 1 \}.
+\]
+</div>
+<p>
+  Notice that the orbits of two elements \(x\) and \(y\) are either the same orbit, which happens precisely when \(y \in O_x\), or disjoint.
+  Since \([n]\) is a finite set, and \(\sigma\) is a bijection of \(\sigma\), we will eventually have \(\sigma^i(x) = \sigma^j(x)\) for some \(j &gt; i\), but then
+</p>
+<div class="math-display">
+\[
+\sigma^{j-i}(x) = \sigma^{i-i}(x) = \sigma^0(x) = x.
+\]
+</div>
+<p>
+  Thus we can find the smallest positive integer \(n_x\) such that \(\sigma^{n_x}(x)=x\). Now for each \(x \in [n]\), we consider the cycle
+</p>
+<div class="math-display">
+\[
+\tau_x = (\sigma(x) \,\, \sigma^2(x) \,\, \sigma^3(x) \, \cdots \, \sigma^{n_x}(x)).
+\]
+</div>
+<p>
+  Now let \(S\) be a set of indices for the distinct \(\tau_x\), where note that we are not including the \(\tau_x\) that are \(1\)-cycles. We claim that we can factor \(\sigma\) as
+</p>
+<div class="math-display">
+\[
+\sigma=\prod_{i\in S}\tau_i.
+\]
+</div>
+<p>
+  To show this, consider any \(x \in [n]\). It must be of the form \(\sigma^j(i)\) for some \(i \in S\), given that our choice of \(S\) was exhaustive. On the right hand side, only \(\tau_i\) moves \(x\), and indeed by definition of \(\tau_i\) we have
+</p>
+<div class="math-display">
+\[
+\tau_i(x) = \sigma^{j+1}(i) = \sigma(\sigma^j(i)) = \sigma(x).
+\]
+</div>
+<p>
+  This proves that
+</p>
+<div class="math-display">
+\[
+\sigma=\prod_{i\in S}\tau_i.
+\]
+</div>
+<p>
+  As for uniqueness, note that if \(\sigma = \tau_1 \cdots \tau_s\) is a product of disjoint cycles, then each \(x \in [n]\) is moved by at most one of the cycles \(\tau_i\), since the cycles are all disjoint. Fix \(i\) such that \(\tau_i\) moves \(x\). We claim that
+</p>
+<div class="math-display">
+\[
+\tau_x = (\sigma(x) \,\, \sigma^2(x) \,\,\sigma^3(x) \, \cdots \, \sigma^{n_x}(x)).
+\]
+</div>
+<p>
+  This will show that our product of disjoint cycles giving \(\sigma\) is the same (unique) product we constructed above. To do this, note that we do know that there is some integer \(s\) such that \(\tau_x^s(x) = e\), and
+</p>
+<div class="math-display">
+\[
+\tau_x = (\tau_x(x) \,\, \tau_x^2(x) \,\, \tau_x^3(x) \, \cdots \, \tau_x^{s}(x)).
+\]
+</div>
+<p>
+  Thus we need only to prove that
+</p>
+<div class="math-display">
+\[
+\tau_x^k(x) = \sigma^k(x)
+\]
+</div>
+<p>
+  for all integers \(k \geqslant 1\). Now by the Theorem, disjoint cycles commute, and thus for each integer \(k \geqslant 1\) we have
+</p>
+<div class="math-display">
+\[
+\sigma^k = \tau_1^k \cdots \tau_s^k.
+\]
+</div>
+<p>
+  But \(\tau_j\) fixes \(x\) whenever \(j \neq i\), so
+</p>
+<div class="math-display">
+\[
+\sigma^k = \tau_i^k (x).
+\]
+</div>
+<p>
+  We conclude that the integer \(n_x\) we defined before is the length of the cycle \(\tau_i\), and that
+</p>
+<div class="math-display">
+\[
+\tau_i = (x \, \tau_i(x) \, \tau_i^2(x) \cdots \tau_i^{n_x-1}(x)) = (x \, \sigma(x) \, \sigma^2(x) \cdots \sigma^{n_x-1}(x)).
+\]
+</div>
+<p>
+  Thus this decomposition of \(\sigma\) as a product of disjoint cycles is the same decomposition we described above.
+</p>
+</section>
+<section aria-labelledby="ex-decomposition" class="callout example" role="region">
+<h3 id="ex-decomposition">Example 1.2.14</h3>
+<p>
+      For \(\sigma\in S_5\) given by
+      <div class="math-display">
+\[
+\begin{array}{rcl}
+1 &amp; \mapsto &amp; 3 \\
+2 &amp; \mapsto &amp; 4 \\
+3 &amp; \mapsto &amp; 5 \\
+4 &amp; \mapsto &amp; 2 \\
+5 &amp; \mapsto &amp; 1
+\end{array}
+\]
+</div>
+      its decomposition is \((135)(24)\).
+    </p>
+</section>
+<section aria-labelledby="def-cycle-type" class="callout definition" role="region">
+<h3 id="def-cycle-type">Definition 1.2.15 (Cycle type)</h3>
+<p>
+      The <dfn>cycle type</dfn> of \(\sigma\) is the unordered list of lengths of cycles in its disjoint decomposition.
+    </p>
+</section>
+<section aria-labelledby="ex-cycle-type" class="callout example" role="region">
+<h3 id="ex-cycle-type">Example 1.2.16</h3>
+<p>
+      \((3\,4)(1\,5)(2\,6\,7)(9\,8\,11)(15\,16\,17\,105\,114)\) in \(S_{156}\) has cycle type \(2,2,3,3,5\).
+    </p>
+</section>
+<section aria-labelledby="ex-cycle-rewrite" class="callout exercise" role="region">
+<h3 id="ex-cycle-rewrite">Exercise 1.2.17</h3>
+<p>
+      Show \((i_1 \, i_2 \, \cdots \, i_p) = (i_1 \, i_p)\cdots(i_1 \, i_2)\).
+    </p>
+</section>
+<section aria-labelledby="cor-gen-transpositions" class="callout corollary" role="region">
+<h3 id="cor-gen-transpositions">Corollary 1.2.18</h3>
+<p>\(S_n\) is generated by transpositions.</p>
+</section>
+<section aria-labelledby="proof-gen-transpositions" class="callout proof" role="region">
+<h3 id="proof-gen-transpositions">Proof of Corollary 1.2.18</h3>
+<p>
+  Given any permutation, we can decompose it as a product of cycles by the Theorem. Thus it suffices to show that each cycle can be written as a product of permutations. For a cycle \((i_1 \, i_2 \, \cdots \, i_p)\), one can show that
+</p>
+<div class="math-display">
+\[
+(i_1 \, i_2 \, \cdots \, i_p) = (i_1 \, i_2)(i_2 \, i_3)\cdots(i_{p-2} \, i_{p-1})(i_{p-1} \, i_p),
+\]
+</div>
+<p>
+  which we leave as an exercise.
+</p>
+</section>
+<section aria-labelledby="rmk-nonunique-transp" class="callout remark" role="region">
+<h3 id="rmk-nonunique-transp">Remark 1.2.19</h3>
+<p>
+      Note however that when we write a permutation as a product of transpositions, such a product is no longer necessarily unique.
+    </p>
+</section>
+<section aria-labelledby="ex-transposition-inverse" class="callout example" role="region">
+<h3 id="ex-transposition-inverse">Example 1.2.20</h3>
+<p>
+     If \(n \geqslant 2\), the identity in \(S_n\) can be written as \( (1 2) (1 2) \). In fact, any transposition is its own inverse, so we can write the identity as \( (i j)(i j) \) for any \(i \neq j\).
+
+    </p>
+</section>
+<section aria-labelledby="ex-parity" class="callout exercise" role="region">
+<h3 id="ex-parity">Exercise 1.2.21</h3>
+<p>
+      Show \((cd)(ab) = (ab)(cd)\) and \((bc)(ab) = (ac)(bc)\) for distinct \(a,b,c,d\).
+    </p>
+</section>
+<section aria-labelledby="thm-sign-well-defined" class="callout theorem" role="region">
+<h3 id="thm-sign-well-defined">Theorem 1.2.22</h3>
+<p>
+     	Given a permutation \(\sigma \in S_n\), the parity (even vs. odd) of the number of transpositions in any representation of \(\sigma\) as a product of transpositions depends only on \(\sigma\).
+
+    </p>
+</section>
+<section aria-labelledby="proof-sign-well-defined" class="callout proof" role="region">
+<h3 id="proof-sign-well-defined">Proof of Theorem 1.2.22</h3>
+<p>
+  Suppose that \(\sigma\) is a permutation that can be written as a production of transpositions \(\beta_i\) and \(\lambda_j\) in two ways,
+</p>
+<div class="math-display">
+\[
+\sigma = \beta_1 \cdots \beta_s = \lambda_1 \cdots \lambda_t
+\]
+</div>
+<p>
+  where \(s\) is even and \(t\) is odd. As we noted in the Theorem, every transposition is its own inverse, so we conclude that
+</p>
+<div class="math-display">
+\[
+e_{S_n} = \beta_1 \cdots \beta_s \lambda_t \cdots \lambda_1,
+\]
+</div>
+<p>
+  which is a product of \(s+t\) transpositions. This is an odd number, so it suffices to show that it is not possible to write the identity as a product of an odd number of transpositions.
+</p>
+<p>
+  So suppose that the identity can be written as the product \((a_1 b_1) \cdots (a_k b_k)\), where each \(a_i \neq b_i\). First, note that a single transposition <em>cannot</em> be the identity, and thus \(k \neq 1\). So assume, for the sake of an argument by induction, that for a fixed \(k\), we know that every product of fewer than \(k\) transpositions that equals the identity must use an even number of transpositions. We might as well have \(k \geqslant 3\), since we \(2\) is even.
+</p>
+<p>
+  Now note that since \(k &gt; 1\), and our product is the identity, then some transposition \((a_i b_i)\) with \(i &gt; 1\) must move \(a_1\); otherwise, \(b_1\) would be sent to \(a_1\), and our product would not be the identity.
+</p>
+<p>
+  Now notice that the two rules in the Exercise above allow us to rewrite the overall product without changing the number of transpositions in such a way that the transposition \((a_2 b_2)\) moves \(a_1\), meaning \(a_2\) or \(b_2\) is \(a_1\). So let us assume that our product of transpositions has already been put in this form. Note also that \((a_i b_i) = (b_i a_i)\), so we might as well assume without loss of generality that \(a_2 = a_1\). We will consider the cases when \(b_2 = b_1\) and \(b_2 \neq b_1\).
+</p>
+<p>
+<u>Case 1</u>: When \(b_1 = b_2\), our product is
+</p>
+<div class="math-display">
+\[
+(a_1 b_1) (a_1 b_1) (a_3 b_3) \cdots (a_k b_k),
+\]
+</div>
+<p>
+  but \((a_1 b_1) (a_1 b_1)\) is the identity, so we can rewrite our product using only \(k-2\) transpositions. By induction hypothesis, \(k-2\) is even, and thus \(k\) is even.
+</p>
+<p>
+<u>Case 2</u>: When \(b_1 \neq b_2\), we can use the Exercise above to write
+</p>
+<div class="math-display">
+\[
+(a_1 b_1) (a_1 b_2) = (a_1 b_1) (b_2 a_1) = (a_1b_2)(b_1b_2).
+\]
+</div>
+<p>
+  Notice here that it matters that \(a_1\), \(b_1\), and \(b_2\) are all distinct, so that we can apply the exercise. So our product, which equals the identity, is
+</p>
+<div class="math-display">
+\[
+(a_1 b_2)(b_1 b_2)(a_3 b_3) \cdots (a_k b_k).
+\]
+</div>
+<p>
+  The advantage of this shuffling is that while we have only changed the first two transpositions, we have decreased the number of transpositions that move \(a_1\). We must now have some other transposition that moves \(a_1\), and we can repeat the argument to keep decreasing the number of transpositions in our product that move \(a_1\). Each time we do this, we cannot keep landing in case 2 indefinitely, as each time we lower the number of transpositions moving \(a_1\). So eventually we will land in case 1, which allows us to lower the total number of transpositions, and using the induction hypothesis we will show that \(k\) must be even.
+</p>
+</section>
+<section aria-labelledby="def-sign" class="callout definition" role="region">
+<h3 id="def-sign">Definition 1.2.23 (Parity of a permutation)</h3>
+<p>
+  Consider a permutation \(\sigma \in S_n\).
+  If \(\sigma = \tau_1 \cdots \tau_s\) is a product of transpositions, the <b>sign</b> of \(\sigma\) is given by \((-1)^s\). 
+  Permutations with sign \(1\) are called <b>even</b> and those with sign \(-1\) are called <b>odd</b>. 
+  This is also called the parity of the permutation.
+</p>
+</section>
+<section aria-labelledby="ex-parity-basic" class="callout example" role="region">
+<h3 id="ex-parity-basic">Example 1.2.24</h3>
+<p>
+      The identity is even. Every transposition is odd.
+    </p>
+</section>
+<section aria-labelledby="ex-3cycle" class="callout example" role="region">
+<h3 id="ex-3cycle">Example 1.2.25</h3>
+<p>
+  	The 3-cycle \( (123) \) can be rewritten as \( (12)(23) \), a product of 2 transpositions, so the sign of \( (123) \) is \(1\). That is, it is an even permutation.
+    </p>
+</section>
+<section aria-labelledby="ex-adjacent-transpositions" class="callout exercise" role="region">
+<h3 id="ex-adjacent-transpositions">Exercise 1.2.26</h3>
+<p>
+      Show every permutation is a product of adjacent transpositions of the form \((i \,\, i+1)\).
+    </p>
+</section>
+</section>
+
+
+
+
+<section aria-labelledby="dih-heading" id="dihedral-groups">
+<h2 id="dih-heading">1.3 Dihedral groups</h2>
+<p>
+    For any integer \(n \geqslant 3\), let \(P_n\) denote a regular \(n\)-gon. For concreteness sake, let us imagine \(P_n\) is centered at the origin with one of its vertices located along the positive \(y\)-axis. Note that the size of the polygon will not matter. Here are some examples:
+  </p>
+<div aria-labelledby="ex-1-3-ngons" class="callout example" role="region">
+<h3 id="ex-1-3-ngons">Example 1.3.1</h3>
+<p><div class="shapes-container">
+
+    <!-- Triangle -->
+    <figure>
+      <svg xmlns="http://www.w3.org/2000/svg" width="200" height="173.205" viewBox="0 0 200 173.205" role="img" aria-labelledby="triangle-title triangle-desc">
+        <title id="triangle-title">Equilateral triangle</title>
+        <desc id="triangle-desc">An equilateral triangle with equal sides, oriented with a flat base and point upwards.</desc>
+        <polygon points="0,173.205 100,0 200,173.205" fill="none" stroke="black" stroke-width="4" stroke-linejoin="round"/>
+      </svg>
+      <figcaption>\( P_3\)</figcaption>
+    </figure>
+
+    <!-- Square -->
+    <figure>
+      <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" role="img" aria-labelledby="square-title square-desc">
+        <title id="square-title">Square</title>
+        <desc id="square-desc">A square with four equal sides, oriented upright.</desc>
+        <polygon points="0,0 200,0 200,200 0,200" fill="none" stroke="black" stroke-width="4" stroke-linejoin="round"/>
+      </svg>
+      <figcaption>\( P_4\)</figcaption>
+    </figure>
+
+    <!-- Pentagon -->
+    <figure>
+      <svg xmlns="http://www.w3.org/2000/svg" width="200" height="190" viewBox="0 0 200 190" role="img" aria-labelledby="pentagon-title pentagon-desc">
+        <title id="pentagon-title">Regular pentagon</title>
+        <desc id="pentagon-desc">A regular pentagon with five equal sides, centered and upright.</desc>
+        <polygon points="100,0 190,69 154,181 46,181 10,69" fill="none" stroke="black" stroke-width="4" stroke-linejoin="round"/>
+      </svg>
+      <figcaption>\( P_5\)</figcaption>
+    </figure>
+
+  </div>
+ 
+    </p>
+</div>
+<section aria-labelledby="def-1-3-dihedral" class="callout definition" role="region">
+<h3 id="def-1-3-dihedral">Definition 1.3.2</h3>
+<p>
+      The <dfn>dihedral group</dfn> \(D_n\) is the set of symmetries of the regular \(n\)-gon \(P_n\) equipped with the binary operation given by composition.
+    </p>
+</section>
+<section aria-labelledby="rmk-1-3-notation" class="callout remark" role="region">
+<h3 id="rmk-1-3-notation">Remark 1.3.3</h3>
+<p>
+      There are competing notations for the group of symmetries of the \(n\)-gon. Some authors prefer to write it as \(D_{2n}\), since, as we will show, that is the order of the group. Democracy has dictated that we will be denoting it by \(D_n\), which indicates that we are talking about the symmetries of the \(n\)-gon. Some authors like to write \(D_{2 \times n}\), always keeping the \(2\), for example with \(D_{2 \times 3}\), to satisfy both camps.
+    </p>
+</section>
+<p>
+    Let \(d(-,-)\) denote the usual Euclidean distance between two points on the plane \(\mathbb{R}^2\). An <dfn>isometry</dfn> of the plane is a function \(f\!: \mathbb{R}^2 \to \mathbb{R}^2\) that is bijective and preserves the Euclidean distance, meaning that
+  </p>
+<div class="math-display">
+    \[
+      d(f(A),f(B))=d(A,B) \quad \textrm{ for all } A,B \in \mathbb{R}^2.
+    \]
+  </div>
+<p>
+    Though not obvious, it is a fact that if \(f\) preserves the distance between every pair of points in the plane, then it must be a bijection.
+  </p>
+<p>
+    A <dfn>symmetry</dfn> of \(P_n\) is an isometry of the plane that maps \(P_n\) to itself. By this I do not mean that \(f\) fixes each point of \(P_n\), but rather that we have an equality of sets \(f(P_n) = P_n\), meaning every point of \(P_n\) is mapped to a (possibly different) point of \(P_n\) and every point of \(P_n\) is the image of some point in \(P_n\) via \(f\).
+  </p>
+<p>We are now ready to give the formal definition of the dihedral groups:</p>
+<section aria-labelledby="rmk-1-3-groupcheck" class="callout remark" role="region">
+<h3 id="rmk-1-3-groupcheck">Remark 1.3.4</h3>
+<p>
+      Let us informally verify that this really is a group.
+      If \(f\) and \(g\) are in \(D_n\), then \(f \circ g\) is an isometry (since the composition of any two isometries is again an isometry) and
+    </p>
+<div class="math-display">
+      \[
+        (f \circ g)(P_n) = f(g(P_n)) = f(P_n) = P_n,
+      \]
+    </div>
+<p>
+      so that \(f \circ g \in D_n\). This proves composition is a binary operation on \(D_n\).
+      Now note that associativity of composition is a general property of functions.
+      The identity function on \(\mathbb{R}^2\), denoted \(\mathrm{id}_{\mathbb{R}^2}\), belongs to \(D_n\) and it is the identity element of \(D_n\).
+      Finally, the inverse function of an isometry is also an isometry. Using this, we see that every element of \(D_n\) has an inverse.
+    </p>
+</section>
+<section aria-labelledby="lem-1-3-polygon" class="callout lemma" role="region">
+<h3 id="lem-1-3-polygon">Lemma 1.3.5</h3>
+<p>
+      Every point on a regular polygon is completely determined, among all points on the polygon, by its distances to two adjacent vertices of the polygon.
+    </p>
+</section>
+<section aria-labelledby="ex-1-3-polygon" class="callout exercise" role="region">
+<h3 id="ex-1-3-polygon">Exercise 1.3.6</h3>
+<p>Prove Lemma 1.3.5.</p>
+</section>
+<section aria-labelledby="def-1-3-rot" class="callout definition" role="region">
+<h3 id="def-1-3-rot">Definition 1.3.7 (Rotations in \(D_n\))</h3>
+<p>
+
+      Assume that the regular \(n\)-gon \(P_n\) is drawn in the plane with its center at the origin and one vertex on the \(x\) axis. Let \(r\) denote the rotation about the origin by \(\frac{2\pi}{n}\) radians counterclockwise; this is an element of \(D_n\). Its inverse is the clockwise rotation by \(\frac{2 \pi}{n}\). This gives us rotations \(r^i\), where \(r^i\) is the counterclockwise rotation by \(\frac{2 \pi i}{n}\), for each \(i = 1, \ldots, n\). Notice that when \(i=n\) this is simply the identity map.
+    </p>
+</section>
+<section aria-labelledby="ex-1-3-rotD3" class="callout example" role="region">
+<h3 id="ex-1-3-rotD3">Example 1.3.8</h3>
+<p>
+      Here are the rotations of \(D_3\).
+   <div class="shapes-container">
+
+  <!-- Identity -->
+  <figure>
+    <svg xmlns="http://www.w3.org/2000/svg" width="200" height="180" viewBox="0 0 200 180" role="img" aria-labelledby="id-title id-desc">
+      <title id="id-title">Triangle labeled 1-2-3</title>
+      <desc id="id-desc">An upright triangle with vertices labeled 1 at bottom left, 3 at bottom right, and 2 at the top.</desc>
+      <polygon points="20,160 100,20 180,160" fill="none" stroke="black" stroke-width="2"/>
+      <text x="20" y="170" font-size="16" text-anchor="end">1</text>
+      <text x="180" y="170" font-size="16" text-anchor="start">3</text>
+      <text x="100" y="15" font-size="16" text-anchor="middle">2</text>
+    </svg>
+    <figcaption>The identity</figcaption>
+  </figure>
+
+  <!-- Rotation by 2π/3 -->
+  <figure>
+    <svg xmlns="http://www.w3.org/2000/svg" width="200" height="180" viewBox="0 0 200 180" role="img" aria-labelledby="rot120-title rot120-desc">
+      <title id="rot120-title">Triangle rotation by 120 degrees</title>
+      <desc id="rot120-desc">An upright triangle with vertices labeled 2 at bottom left, 1 at bottom right, and 3 at the top.</desc>
+      <polygon points="20,160 100,20 180,160" fill="none" stroke="black" stroke-width="2"/>
+      <text x="20" y="170" font-size="16" text-anchor="end">2</text>
+      <text x="180" y="170" font-size="16" text-anchor="start">1</text>
+      <text x="100" y="15" font-size="16" text-anchor="middle">3</text>
+    </svg>
+    <figcaption>Rotation by 2π/3</figcaption>
+  </figure>
+
+  <!-- Rotation by 4π/3 -->
+  <figure>
+    <svg xmlns="http://www.w3.org/2000/svg" width="200" height="180" viewBox="0 0 200 180" role="img" aria-labelledby="rot240-title rot240-desc">
+      <title id="rot240-title">Triangle rotation by 240 degrees</title>
+      <desc id="rot240-desc">An upright triangle with vertices labeled 3 at bottom left, 2 at bottom right, and 1 at the top.</desc>
+      <polygon points="20,160 100,20 180,160" fill="none" stroke="black" stroke-width="2"/>
+      <text x="20" y="170" font-size="16" text-anchor="end">3</text>
+      <text x="180" y="170" font-size="16" text-anchor="start">2</text>
+      <text x="100" y="15" font-size="16" text-anchor="middle">1</text>
+    </svg>
+    <figcaption>Rotation by 4π/3</figcaption>
+  </figure>
+
+</div>
+
+    </p>
+</section>
+<section aria-labelledby="def-1-3-refl" class="callout definition" role="region">
+<h3 id="def-1-3-refl">Definition 1.3.9 (Reflections in \(D_n\))</h3>
+<p>
+
+      For any line of symmetry of \(P_n\), reflection about that line gives an element of \(D_n\).
+      When \(n\) is odd, the line connecting a vertex to the midpoint of the opposite side of \(P_n\) is a line of symmetry.
+      When \(n\) is even, there are two types of reflections: the ones about the line connecting tow opposite vertices, and the ones across the line connecting midpoints of opposite sides.
+    </p>
+<p>In both cases, these give us a total of \(n\) reflections.</p>
+</section>
+<section aria-labelledby="ex-1-3-reflfigs" class="callout example" role="region">
+<h3 id="ex-1-3-reflfigs">Example 1.3.10</h3>
+<p>
+
+
+ 
+<div class="shapes-container">
+
+  <!-- Reflection lines in D3 -->
+  <figure>
+    <svg viewBox="-0.5 -0.5 5 5" role="img" aria-labelledby="d3-title d3-desc">
+      <title id="d3-title">Reflection lines in D3</title>
+      <desc id="d3-desc">
+        An isosceles triangle with vertices (0,0), (2,3), and (4,0).
+        Dashed reflection lines: a vertical line through x=2 from y=-0.5 to y=3.5,
+        a line from (0,0) to (4,2), and a line from (4,0) to (0,2).
+      </desc>
+      <g transform="scale(1,-1) translate(0,-4.5)">
+        <!-- Triangle -->
+        <polygon points="0,0 2,3 4,0" fill="none" stroke="black" stroke-width="0.12"/>
+        <!-- Dashed reflection lines -->
+        <line x1="2" y1="-0.5" x2="2" y2="3.5"
+              stroke="black" stroke-width="0.12" stroke-dasharray="0.3 0.2"/>
+        <line x1="0" y1="0" x2="4" y2="2"
+              stroke="black" stroke-width="0.12" stroke-dasharray="0.3 0.2"/>
+        <line x1="4" y1="0" x2="0" y2="2"
+              stroke="black" stroke-width="0.12" stroke-dasharray="0.3 0.2"/>
+      </g>
+    </svg>
+    <figcaption>The reflection lines in D<sub>3</sub></figcaption>
+  </figure>
+
+  <!-- Reflection lines in D4 -->
+  <figure>
+    <svg viewBox="-0.5 -0.5 5 5" role="img" aria-labelledby="d4-title d4-desc">
+      <title id="d4-title">Reflection lines in D4</title>
+      <desc id="d4-desc">
+        A square with corners (0,0), (4,0), (4,4), (0,4).
+        Dashed reflection lines: vertical through x=2, horizontal through y=2,
+        and both diagonals extended slightly beyond the square.
+      </desc>
+      <g transform="scale(1,-1) translate(0,-4.5)">
+        <!-- Square -->
+        <polygon points="0,0 4,0 4,4 0,4" fill="none" stroke="black" stroke-width="0.12"/>
+        <!-- Dashed reflection lines -->
+        <line x1="2" y1="-0.5" x2="2" y2="4.5"
+              stroke="black" stroke-width="0.12" stroke-dasharray="0.3 0.2"/>
+        <line x1="-0.5" y1="2" x2="4.5" y2="2"
+              stroke="black" stroke-width="0.12" stroke-dasharray="0.3 0.2"/>
+        <line x1="-0.3" y1="-0.3" x2="4.3" y2="4.3"
+              stroke="black" stroke-width="0.12" stroke-dasharray="0.3 0.2"/>
+        <line x1="-0.3" y1="4.3" x2="4.3" y2="-0.3"
+              stroke="black" stroke-width="0.12" stroke-dasharray="0.3 0.2"/>
+      </g>
+    </svg>
+    <figcaption>The reflection lines in D<sub>4</sub></figcaption>
+  </figure>
+
+</div>
+
+
+
+
+    </p>
+</section>
+<section aria-labelledby="not-1-3-rs" class="callout notation" role="region">
+<h3 id="not-1-3-rs">Notation 1.3.11 (Defining \(r\) and \(s\))</h3>
+<p>
+Fix \(n \geqslant 3\). We will consider two special elements of \(D_n\):
+    </p>
+<ul>
+<li>Let \(r\) denote the symmetry of \(P_n\) given by counterclockwise rotation by \(\frac{2 \pi}{n}\).</li>
+<li>
+        Let \(s\) denote a reflection symmetry of \(P_n\) that fixes at least one of the vertices of \(P_n\), as described in Definition 1.3.9.
+        Let \(V_1\) be a vertex of \(P_n\) that is fixed by \(s\), and label the remaining vertices of \(P_n\) with \(V_2, \ldots, V_{n}\) by going counterclockwise from \(V_1\).
+      </li>
+</ul>
+<p>
+      From now on, whenever we are talking about \(D_n\), the letters \(r\) and \(s\) will refer only to these specific elements. Finally, we will sometimes denote the identity element of \(D_n\) by \(\mathrm{id}\), since it is the identity map.
+    </p>
+</section>
+<section aria-labelledby="thm-1-3-2n" class="callout theorem" role="region">
+<h3 id="thm-1-3-2n">Theorem 1.3.12</h3>
+<p>The dihedral group \(D_n\) has \(2n\) elements.</p>
+</section>
+<section aria-labelledby="prf-1-3-2n" class="callout proof" role="region">
+<h3 id="prf-1-3-2n">Proof of Theorem 1.3.12</h3>
+<p>
+      First, we show that \(D_n\) has order at most \(2n\). Any element \(\sigma \in D_n\) takes the polygon \(P_n\) to itself, and must in particular send vertices to vertices and preserve adjacencies, meaning that any two adjacent vertices remain adjacent after applying \(\sigma\). Fix two adjacent vertices \(A\) and \(B\). By Lemma 1.3.5, the location of every other point \(P\) on the polygon after applying \(\sigma\) is completely determined by the locations of \(\sigma(A)\) and \(\sigma(B)\). There are \(n\) distinct possibilities for \(\sigma(A)\), since it must be one of the \(n\) vertices of the polygon. But once \(\sigma(A)\) is fixed, \(\sigma(B)\) must be a vertex adjacent to \(\sigma(B)\), so there are at most \(2\) possibilities for \(\sigma(B)\). This gives us at most \(2n\) elements in \(D_n\).
+    </p>
+<p>
+      Now we need only to present \(2n\) distinct elements in \(D_n\). We have described \(n\) reflections and \(n\) rotations for \(D_n\); we need only to see that they are all distinct. First, note that the only rotation that fixes any vertices of \(P_n\) is the identity. Moreover, if we label the vertices of \(P_n\) in order with \(1, 2, \ldots, n\), say by starting in a fixed vertex and going counterclockwise through each adjacent vertex, then the rotation by an angle of \(\frac{2 \pi i}{n}\) sends \(V_{1}\) to \(V_{i+1}\) for each \(i<n\), (one="" <="" \(d_n\).="" \(n\)="" a="" adjacent="" all="" already="" and="" any="" are="" brand="" by="" completely="" connecting="" consider.="" considered.="" determined="" disjoint="" distinct="" distinct.="" each="" elements="" even,="" exactly="" finally,="" fixed="" fixed;="" fixes="" from="" give="" have="" is="" kinds="" line="" matches="" midpoint="" new="" no="" none="" now="" odd,="" of="" of)="" one="" ones="" opposite="" other="" p="" pairs="" points,="" reflections="" reflections,="" rotation="" rotations="" rotations.="" showing="" sides,="" since="" so="" switch.="" switches="" that="" the="" these="" they="" through="" thus="" to="" two="" us="" vertex,="" vertices="" vertices,="" we="" when="" which="">
+<p>
+      In both cases, we have a total of \(2n\) distinct elements of \(D_n\) given by the \(n\) rotations and the \(n\) reflections.
+    </p>
+</n\),></p></section>
+<section aria-labelledby="rmk-1-3-orient" class="callout remark" role="region">
+<h3 id="rmk-1-3-orient">Remark 1.3.13</h3>
+<p>
+      Given an element of \(D_n\), we now know that it must be a rotation or a reflection. The rotations are the elements of \(D_n\) that preserve orientation, while the reflections are the elements of \(D_n\) that reverse orientation.
+    </p>
+</section>
+<section aria-labelledby="rmk-1-3-s2" class="callout remark" role="region">
+<h3 id="rmk-1-3-s2">Remark 1.3.14</h3>
+<p>Any reflection is its own inverse. In particular, \(s^2 = \mathrm{id}\).</p>
+</section>
+<section aria-labelledby="rmk-1-3-ordr" class="callout remark" role="region">
+<h3 id="rmk-1-3-ordr">Remark 1.3.15</h3>
+<p>
+      Note that \(r^j(V_1) = V_{1+j \pmod{n}}\) for any \(j\). Thus if \(r^j = r^i\) for some \(1 \leqslant i,j \leqslant n\), then we must have \(i=j\).
+    </p>
+<p>
+      In fact, we have seen that \(r^n = \mathrm{id}\) and that the rotations \(\mathrm{id}, r, r^2, \ldots, r^{n-1}\) are all distinct, so \(|r| = n\). In particular, the inverse of \(r\) is \(r^{n-1}\).
+    </p>
+</section>
+<section aria-labelledby="lem-1-3-srs" class="callout lemma" role="region">
+<h3 id="lem-1-3-srs">Lemma 1.3.16</h3>
+<p>Following Notation 1.3.11, we have \(srs^{-1} = r^{-1}\).</p>
+</section>
+<section aria-labelledby="prf-1-3-srs" class="callout proof" role="region">
+<h3 id="prf-1-3-srs">Proof of Lemma 1.3.16</h3>
+<p>
+      First, we claim that \(rs\) is a reflection. To see this, observe that \(s(V_1) = V_1\), so
+    </p>
+<div class="math-display">
+      \[
+        rs(V_1) = r(V_1) = V_2
+      \]
+    </div>
+<p>and</p>
+<div class="math-display">
+      \[
+        rs(V_{2}) = r(V_{n}) = V_1.
+      \]
+    </div>
+<p>
+      This shows that \(rs\) must be a reflection, since it reverses orientation.
+      Reflections have order \(2\), so \(rsrs = (rs)^2 = \mathrm{id}\) and hence \(srs = r^{-1}.\)
+    </p>
+</section>
+<section aria-labelledby="rmk-1-3-srs-rewrite" class="callout remark" role="region">
+<h3 id="rmk-1-3-srs-rewrite">Remark 1.3.17</h3>
+<p>
+      Given \(|r| = n\) and \(|s| = 2\), as noted in Remarks 1.3.14 and 1.3.15, we can rewrite Lemma 1.3.16 as
+      \[
+        srs = r^{n-1}.
+      \]
+    </p>
+</section>
+<section aria-labelledby="ex-1-3-conj" class="callout exercise" role="region">
+<h3 id="ex-1-3-conj">Exercise 1.3.18</h3>
+<p>Show that \(s r^i s^{-1} = r^{n-i}\) for all \(i\).</p>
+</section>
+<section aria-labelledby="thm-1-3-rjs" class="callout theorem" role="region">
+<h3 id="thm-1-3-rjs">Theorem 1.3.19</h3>
+<p>Every element in \(D_n\) can be written uniquely as \(r^j\) or \(r^j s\) for \(0 \leqslant j \leqslant n-1\).</p>
+</section>
+<section aria-labelledby="prf-1-3-rjs" class="callout proof" role="region">
+<h3 id="prf-1-3-rjs">Proof of Theorem 1.3.19</h3>
+<p>
+      Let \(\alpha\) be an arbitrary symmetry of \(P_n\). Note \(\alpha\) must fix the origin, since it is the center of mass of \(P_n\), and it must send each vertex to a vertex because the vertices are the points on \(P_n\) at largest distance from the origin.
+      Thus \(\alpha(V_1) = V_ j\) for some \(1 \leqslant j \leqslant n\) and therefore the element \(r^{-j}\alpha\) fixes \(V_1\) and the origin. The only elements that fix \(V_1\) are the identity and \(s\). Hence either \(r^{-j}\alpha = \mathrm{id}\) or \(r^{-j}\alpha = s\). We conclude that \(\alpha = r^j\) or \(\alpha = r^js\).
+    </p>
+<p>
+      Notice that we have shown that \(D_n\) has exactly \(2n\) elements, and that there are \(2n\) distinct expressions of the form \(r^j\) or \(r^js\) for \(0 \leqslant j \leqslant n-1\). Thus each element of \(D_n\) can be written in this form in a unique way.
+    </p>
+</section>
+<section aria-labelledby="rmk-1-3-reflections-list" class="callout remark" role="region">
+<h3 id="rmk-1-3-reflections-list">Remark 1.3.20</h3>
+<p>
+      The elements \(s, rs, \dots, r^{n-1}\) are all reflections since they reverse orientation. Alternatively, we can check these are all reflections by checking they have order \(2\). As we noted before, the elements \(\mathrm{id}, r, \dots, r^{n-1}\) are rotations, and preserve orientation.
+    </p>
+</section>
+<section aria-labelledby="ex-1-3-d4" class="callout example" role="region">
+<h3 id="ex-1-3-d4">Example 1.3.21</h3>
+<p>
+
+
+The group \(D_4\) has eight elements:
+
+ The rotations are \(\mathrm{id}, r, r^2, r^3\) and the reflections are \(s, rs, r^2s, r^3s\).
+    </p>
+</section>
+<p>Let us now give a presentation for \(D_n\).</p>
+<section aria-labelledby="thm-1-3-presentation" class="callout theorem" role="region">
+<h3 id="thm-1-3-presentation">Theorem 1.3.22</h3>
+<p>
+      Let \(r:\mathbb{R}^2\to\mathbb{R}^2\) denote counterclockwise rotation around the origin by \(\frac{2\pi}{n}\) radians and let \(s:\mathbb{R}^2\to\mathbb{R}^2\) denote reflection about the \(x\)-axis respectively. Set
+    </p>
+<div class="math-display">
+      \[
+        X_{2n}=\langle r,s \mid r^n = 1, s^2 = 1, srs^{-1} = r^{-1} \rangle.
+      \]
+    </div>
+<p>Then \(D_n=X_{2n}\), that is,</p>
+<div class="math-display">
+      \[
+        D_n = \langle r,s \mid r^n = 1, s^2 = 1, srs^{-1} = r^{-1} \rangle.
+      \]
+    </div>
+</section>
+<section aria-labelledby="prf-1-3-presentation" class="callout proof" role="region">
+<h3 id="prf-1-3-presentation">Proof of Theorem 1.3.22</h3>
+<p>
+      Theorem 1.3.19 shows that \(\{r,s\}\) is a set of generators for \(D_n\). Moreover, we also know that the relations listed above \(r^n = 1, s^2 = 1, srs^{-1} = r^{-1}\) hold; the first two are easy to check, and the last one is Lemma 1.3.16. The only concern we need to deal with is that we may not have discovered all the relations of \(D_n\); or rather, we need to check that we have found enough relations so that any other valid relation follows as a consequence of the ones listed.
+    </p>
+<p>
+      Let
+    </p>
+<div class="math-display">
+      \[
+        X_{2n}=\langle r,s \mid r^n = 1, s^2 = 1, srs^{-1} = r^{-1} \rangle.
+      \]
+    </div>
+<p>
+      Assume that \(D_n\) has more relations than \(X_{2n}\) does. Then \(D_n\) would be a group of cardinality strictly smaller than \(X_{2n}\), meaning that \(|D_n|&lt;|X_{2n}|\). \footnote{This will become more clear once we properly define presentations.}
+      We will show below that in fact \(|X_{2n}|\leqslant 2n=|D_n|\), thus obtaining a contradiction.
+    </p>
+<p>
+      Now we show that \(X_{2n}\) has at most \(2n\) elements using just the information contained in the presentation. By definition, since \(r\) and \(s\) generated \(X_{2n}\) then every element \(x\in X_{2n}\) can be written as
+    </p>
+<div class="math-display">
+      \[
+        x = r^{m_1} s^{n_1} r^{m_2} s^{n_2} \cdots r^{m_j} s^{n_j}
+      \]
+    </div>
+<p>
+      for some \(j\) and (possibly negative) integers \(m_1, \dots, m_j, n_1, \dots, m_j\).\footnote{Note that, \(m_1\) could be \(0\), so that expressions beginning with a power of \(s\) are included in this list.}
+      As a consequence of the last relation, we have
+    </p>
+<div class="math-display">
+      \[
+        sr = r^{-1}s,
+      \]
+    </div>
+<p>and its not hard to see that this implies</p>
+<div class="math-display">
+      \[
+        sr^m = r^{-m} s
+      \]
+    </div>
+<p>for all \(m\).
+      Thus, we can slide an \(s\) past a power of \(r\), at the cost of changing the sign of the power. Doing this repeatedly gives that we can rewrite \(x\) as
+    </p>
+<div class="math-display">
+      \[
+        x = r^M s^N.
+      \]
+    </div>
+<p>
+      By the first relation, \(r^n = 1\), from which it follows that \(r^a = r^b\) if \(a\) and \(b\) are congruent modulo \(n\). Thus we may assume \(0 \leqslant M \leqslant n-1\). Likewise, we may assume \(0 \leqslant N \leqslant 1\). This gives a total of at most \(2n\) elements, and we conclude that \(X_{2n}\) must in fact be \(D_n\).
+    </p>
+</section>
+<p>
+    Note that we have <em>not</em> shown that
+  </p>
+<div class="math-display">
+    \[
+      X_{2n}=\langle r,s \mid r^n, s^2, srs^{-1} = r^{-1} \rangle
+    \]
+  </div>
+<p>
+    has at least \(2n\) elements using just the presentation. But for this particular example, since we know the group presented is the same as \(D_n\), we know from Theorem 1.3.19 that it has exactly \(2n\) elements.
+  </p>
+</section>
+
+</main>
+<footer aria-label="Course footer" role="contentinfo">
+<p>© 2025 Math 817 — Introduction to Modern Algebra I</p>
+</footer>
+</div>
+</body>
+</html>

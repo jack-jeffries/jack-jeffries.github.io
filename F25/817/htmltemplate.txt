@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Math 817: Lecture Notes</title>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async 
+          src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      max-width: 850px;
+      margin: 2rem auto;
+      padding: 1rem;
+      line-height: 1.6;
+      background: #fff;
+      color: #111;
+    }
+    header, footer {
+      text-align: center;
+      margin: 2rem 0;
+    }
+    h1, h2, h3, h4 {
+      font-family: "Helvetica Neue", Arial, sans-serif;
+    }
+    section[role="region"] {
+      border-left: 4px solid #444;
+      padding-left: 10px;
+      margin: 1em 0;
+      background: #f9f9f9;
+    }
+    .exercise {
+      border-left: 4px solid #0066cc;
+    }
+    .example {
+      border-left: 4px solid #008000;
+    }
+    .definition {
+      border-left: 4px solid #990000;
+    }
+    .remark {
+      border-left: 4px solid #cc8800;
+    }
+    .lemma, .theorem, .proof, .notation {
+      border-left: 4px solid #444;
+    }
+    blockquote {
+      border-left: 4px solid #666;
+      margin: 1em 0;
+      padding-left: 1em;
+      color: #333;
+      font-style: italic;
+    }
+    a {
+      color: #0645AD;
+    }
+    a:focus, a:hover {
+      outline: 2px solid #0645AD;
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Math 817: Introduction to Modern Algebra I</h1>
+  <p><strong>Lecture Notes</strong> – accessible version</p>
+</header>
+
+<main role="main">
+  
+  <h2>Lecture Title Here</h2>
+  <p>Introductory text about today’s lecture.</p>
+
+  <section class="definition" role="region" aria-labelledby="def-group">
+    <h3 id="def-group">Definition (Group)</h3>
+    <p>
+      A <dfn>group</dfn> is a set \(G\) with a binary operation \(\cdot\) such that:
+    </p>
+    <ul>
+      <li><strong>Associativity:</strong> \((x \cdot y) \cdot z = x \cdot (y \cdot z)\).</li>
+      <li><strong>Identity:</strong> There exists \(e \in G\) with \(ex = x = xe\).</li>
+      <li><strong>Inverses:</strong> Each \(x \in G\) has \(y \in G\) with \(xy = e = yx\).</li>
+    </ul>
+  </section>
+
+  <section class="example" role="region" aria-labelledby="ex-gl">
+    <h3 id="ex-gl">Example</h3>
+    <p>
+      For a positive integer \(n\),
+      \[
+        GL_n(\mathbb{R}) = \{ \text{invertible } n \times n \text{ matrices over } \mathbb{R} \}
+      \]
+      is a group under matrix multiplication.
+    </p>
+  </section>
+
+  <section class="exercise" role="note" aria-labelledby="ex1">
+    <h3 id="ex1">Exercise</h3>
+    <p>
+      Give an example of a monoid with a left inverse but no right inverse.
+    </p>
+  </section>
+
+  <blockquote>
+    <p>
+      There is no algorithm that, given any group presentation, can decide whether the group is trivial.
+    </p>
+  </blockquote>
+
+</main>
+
+<footer role="contentinfo">
+  <p>© 2025 Jack Jeffries — Lecture notes for Math 817</p>
+</footer>
+
+</body>
+</html>
