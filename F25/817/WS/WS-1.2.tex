@@ -1,0 +1,231 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{paralist,amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals}
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\solutione}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{leaf}This solution is embargoed.}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+
+\newcommand{\rsa}{\rightsquigarrow}
+
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+
+\DeclareMathOperator{\ord}{ord}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{Permutation Groups}
+	
+	
+
+\begin{framed}
+
+\textsc{Definition:} Given a set $X$, the \textbf{permuatation group} on $X$ is the set $\mathrm{Perm}(X)$ of bijective functions on $X$. This is a group with composition of functions as the operation. The \textbf{symmetric group} $S_n$ is the permuation group on the set $[n]:= \{1,\dots,n\}$. % We typically write the composition of two permutations $\sigma, \tau$ simply as $\sigma \tau$ ($=$ first $\tau$ then $\sigma$).
+
+\
+
+ A \textbf{cycle} is a particular type of permutation. By way of example, in $S_7$:
+ \begin{itemize}
+ \item  $\alpha = (2 \ 4 \ 5)$ is a 3-cycle. It is the permutation given by $\alpha(2)=4$, $\alpha(4)=5$, $\alpha(5)=2$, and $\alpha(i)= i$ for $i\neq 2,4,5$.
+ \item $\beta = (1 \ 6 \ 5 \ 4)$ is a 4-cycle. It is the permutation given by $\alpha(1)=6$, $\alpha(6)=5$, $\alpha(5)=4$, $\alpha(4)=1$, and $\alpha(i)= i$ for $i\neq 1,6,5,4$.
+ \end{itemize}
+ We will not consider 1-cycles. A 2-cycle is also called a \textbf{transposition}. 
+\end{framed}
+
+\begin{enumerate}
+\itemA Warming up with cycles: Consider the symmetric group $S_5$.
+\begin{enumerate}
+\itema Write out the cycle $(1\, 4\, 3)$ explicitly as a function by listing the input and output values.
+\itema Write out the product of cycles $(1 \, 3 \, 5) (2 \,5)$ explicitly as a function by listing the input and output values.
+\itema Which of the following expressions yield the same permutation:
+\begin{itemize}
+\item $(1 \, 5 \, 3 \, 4)$
+\item $(1 \, 4 \, 3 \, 5)$
+\item $(3 \, 4 \, 1 \, 5)$
+\end{itemize}
+\itema What is the inverse of $(1 \, 5 \, 3 \, 4)$? How would you find the inverse of a cycle in general?
+\itema What is the \emph{order}\footnote{Recall that the \textbf{order} of an element $g$ in a group $G$ is the smallest integer $n>0$ such that $g^n=e$.} of $(1 \, 5 \, 3 \, 4)$? How would you find the order of a cycle in general?
+
+\end{enumerate}
+
+\
+
+
+\itemB Show the following \textsc{Lemma:} For any distinct $i_1,\dots,i_p\in [n]$,
+\[  (i_1 \ i_2 \ \cdots \ i_p) = (i_1 \ i_2) (i_2 \ i_3) \cdots (i_{p-1} \ i_p).\]
+
+
+\end{enumerate}
+
+
+
+
+
+
+\begin{framed}
+We say that two cycles $\sigma = (i_1 \, i_2 \, \cdots \, i_n)$ and $\tau = (j_1 \, j_2 \, \cdots \, j_m)$ are \textbf{disjoint} if $i_a \neq j_b$ for all $a,b$.
+
+\
+
+
+\textsc{Theorem 1:} Let $n\geq 1$ be an integer, and consider the symmetric group $S_n$.
+\begin{enumerate}
+\item Every permutation $\sigma \in S_n$ is equal to a product of disjoint cycles. 
+\item Disjoint cycles commute: if $\sigma, \tau$ are disjoint cycles, then $\sigma\tau=\tau\sigma$.
+\item The expression of a permutation $\sigma$ as a product of disjoint cycles is unique up to permuting factors.
+\end{enumerate}
+
+
+\
+
+The \textbf{cycle type} of a permutation is the list of the lengths of the cycles in its expression as a product of disjoint cycles. 
+\end{framed}
+
+\begin{enumerate}
+\setcounter{enumi}{2}
+\itemA Theorem 1(1) in action: To write $\sigma\in S_n$ as a product of disjoint cycles,
+\begin{itemize} 
+\item Start with $1\in [n]$,
+\item Look at $\sigma(1), \sigma^2(1), \dots$ until we get back to $1=\sigma^m(1)$. Make a cycle out of these: \\
+\[ (1 \ \sigma(1)\ \sigma^2(1) \ \cdots \ \sigma^{m-1}(1) ).\]
+\item Look at the smallest element of $[n]$ that hasn't appeared, and repeat.
+\item Throw away the 1-cycles at the end.
+\end{itemize}
+
+\begin{enumerate}
+\itema Write the following permutation in $S_7$ as a product of disjoint cycles:
+\[\begin{array}{c||c|c|c|c|c|c|c}
+ i & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ \hline
+ \sigma(i) & 6 & 7 & 2 & 4 & 3 & 6 & 5
+\end{array}
+\]
+
+
+\itema Write the following product of nondisjoint cycles in $S_7$ as a product of disjoint cycles: \[ (1 \ 3 \ 5 \ 7) (2 \ 3 \ 4 \ 5).\]
+
+\itema What is the cycle type of $(1\ 2)( 3\ 4)$? What is the cycle type of $(1\ 2)(2 \ 3)$?
+\end{enumerate}
+
+\
+
+\itemB Proof of Theorem 1: 
+\begin{enumerate}
+\itemb What is the key idea to prove part (1) of Theorem 1?
+\itemb Prove part (2) of  Theorem 1.
+\itemb Complete the proofs of parts (1) and (3) of Theorem 1.
+\end{enumerate}
+
+
+\end{enumerate}
+
+
+\
+
+
+
+\begin{framed}
+\textsc{Theorem 2:} Let $n\geq 1$ be an integer, and consider the symmetric group $S_n$.
+\begin{enumerate}
+\item Every permutation $\sigma \in S_n$ is equal to a product of transpositions; thus, $S_n$ is \textbf{generated}\footnotemark by transpositions.
+\item For a fixed $\sigma\in S_n$, either
+\begin{itemize}
+\item every expression of $\sigma$ as a product of transpositions involves an \textit{even} number of transpositions, or
+\item every expression of $\sigma$ as a product of transpositions involves an \textit{odd} number of transpositions.
+\end{itemize}
+\end{enumerate}
+In the first case, we say that $\sigma$ is an \textbf{even} permutation and define $\mathrm{sign}(\sigma) = 1$;
+in the second case, we say that $\sigma$ is an \textbf{odd} permutation and define $\mathrm{sign}(\sigma) = -1$.
+\end{framed}
+\footnotetext{Recall that a group $G$ is \textbf{generated} by a set $S$ if every element of $G$ can be written as a product of elements of $S$ and their inverses.}
+
+\
+
+
+\begin{enumerate}
+\setcounter{enumi}{4}
+\itemA Signs of permutations:
+\begin{enumerate}
+\itema What is the sign of a transposition? Of a 3-cycle? Of a $p$-cycle? (Hint: Use the Lemma.)
+\itema If the cycle type of $\sigma$ is $m_1,m_2,\dots,m_t$, then what is the sign of $\sigma$?
+\end{enumerate}
+
+\
+
+\itemB Proving Theorem 2:
+\begin{enumerate}
+\itemb Prove the Lemma.
+\itemb Explain how part (1) of Theorem 2 follows from the Lemma and Theorem 1.
+\itemb Explain why part (2) of Theorem 2 reduces to the following claim: if $\tau_1,\dots,\tau_m$ are transpositions and $\tau_1\cdots \tau_m = e$, then $m$ is even.
+
+\itemb Reconsider the claim above in the equivalent form: if  $\tau_1,\dots,\tau_m$ are transpositions and $m$ is odd, then $\tau_1\cdots \tau_m \neq e$. Proceed by induction on $m$ odd. Resolve the base case.
+\itemb Show\footnote{Hint: You might find it useful to show that 
+	$$(cd)(ab) = (ab)(cd) \qquad \textrm{and} \qquad (bc)(ab) = (ac)(bc)$$
+	for all distinct $a, b, c, d$ in $[n]$.}
+ the inductive step, and complete the proof.
+\end{enumerate}
+
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

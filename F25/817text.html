@@ -422,7 +422,7 @@ Nonetheless, finding and working with presentations of groups is a crucial techn
 <h3 id="not-sn">Notation 1.2.2</h3>
 <p>
       For an integer \(n \geqslant 1\), we write \([n] := \{1,\ldots,n\}\) and \(S_n := \mathrm{Perm}([n])\).
-      An element of \(S_n\) is called a <dfn>permutation on \(n\) symbols</dfn>, sometimes also called a permutation on \(n\) letters or \(n\) elements.
+      An element of \(S_n\) is called a <dfn>permutation on \(n\) symbols</dfn>, sometimes also called a permutation on \(n\) letters or \(n\) elements. The group \(S_n\) is also called the <dfn>symmetric group</dfn> on \(n\) symbols.
     </p>
 </section>
 <p>We can write an element \(\sigma\) of \(S_n\) as a table of values:</p>
@@ -718,7 +718,7 @@ O_x=\{ \sigma(x), \sigma^2(x), \sigma^3(x), \ldots \} = \{\sigma^i(x) \mid i \ge
 <section aria-labelledby="ex-cycle-rewrite" class="callout exercise" role="region">
 <h3 id="ex-cycle-rewrite">Exercise 1.2.17</h3>
 <p>
-      Show \((i_1 \, i_2 \, \cdots \, i_p) = (i_1 \, i_p)\cdots(i_1 \, i_2)\).
+      Show \((i_1 \, i_2 \, \cdots \, i_p) =  (i_1 \, i_2) (i_2 \, i_3) \cdots   (i_{p-2} \, i_{p-1}) (i_{p-1} \, i_p)\).
     </p>
 </section>
 <section aria-labelledby="cor-gen-transpositions" class="callout corollary" role="region">
@@ -1113,7 +1113,9 @@ Fix \(n \geqslant 3\). We will consider two special elements of \(D_n\):
       First, we show that \(D_n\) has order at most \(2n\). Any element \(\sigma \in D_n\) takes the polygon \(P_n\) to itself, and must in particular send vertices to vertices and preserve adjacencies, meaning that any two adjacent vertices remain adjacent after applying \(\sigma\). Fix two adjacent vertices \(A\) and \(B\). By Lemma 1.3.5, the location of every other point \(P\) on the polygon after applying \(\sigma\) is completely determined by the locations of \(\sigma(A)\) and \(\sigma(B)\). There are \(n\) distinct possibilities for \(\sigma(A)\), since it must be one of the \(n\) vertices of the polygon. But once \(\sigma(A)\) is fixed, \(\sigma(B)\) must be a vertex adjacent to \(\sigma(B)\), so there are at most \(2\) possibilities for \(\sigma(B)\). This gives us at most \(2n\) elements in \(D_n\).
     </p>
 <p>
-      Now we need only to present \(2n\) distinct elements in \(D_n\). We have described \(n\) reflections and \(n\) rotations for \(D_n\); we need only to see that they are all distinct. First, note that the only rotation that fixes any vertices of \(P_n\) is the identity. Moreover, if we label the vertices of \(P_n\) in order with \(1, 2, \ldots, n\), say by starting in a fixed vertex and going counterclockwise through each adjacent vertex, then the rotation by an angle of \(\frac{2 \pi i}{n}\) sends \(V_{1}\) to \(V_{i+1}\) for each \(i<n\), (one="" <="" \(d_n\).="" \(n\)="" a="" adjacent="" all="" already="" and="" any="" are="" brand="" by="" completely="" connecting="" consider.="" considered.="" determined="" disjoint="" distinct="" distinct.="" each="" elements="" even,="" exactly="" finally,="" fixed="" fixed;="" fixes="" from="" give="" have="" is="" kinds="" line="" matches="" midpoint="" new="" no="" none="" now="" odd,="" of="" of)="" one="" ones="" opposite="" other="" p="" pairs="" points,="" reflections="" reflections,="" rotation="" rotations="" rotations.="" showing="" sides,="" since="" so="" switch.="" switches="" that="" the="" these="" they="" through="" thus="" to="" two="" us="" vertex,="" vertices="" vertices,="" we="" when="" which="">
+      Now we need only to present \(2n\) distinct elements in \(D_n\). We have described \(n\) reflections and \(n\) rotations for \(D_n\); we need only to see that they are all distinct. First, note that the only rotation that fixes any vertices of \(P_n\) is the identity. Moreover, if we label the vertices of \(P_n\) in order with \(1, 2, \ldots, n\), say by starting in a fixed vertex and going counterclockwise through each adjacent vertex, then the rotation by an angle of \(\frac{2 \pi i}{n}\) sends \(V_{1}\) to \(V_{i+1}\) for each \(i \lt n \), 
+showing these \(n\) rotations are distinct. Now when \(n\) is odd, each of the \(n\) reflections fixes exactly one vertex, and so they are all distinct and disjoint from the rotations. Finally, when \(n\) is even, we have two kinds of reflections to consider. The reflections through a line connecting opposite vertices have exactly two fixed vertices, and are completely determined by which two vertices are fixed; since rotations have no fixed points, none of these matches any of the rotations we have already considered. The other reflections, the ones through the midpoint of two opposite sides, are completely determined by (one of) the two pairs of adjacent vertices that they switch. No rotation switches two adjacent vertices, and thus these give us brand new elements of \(D_n\). 
+
 <p>
       In both cases, we have a total of \(2n\) distinct elements of \(D_n\) given by the \(n\) rotations and the \(n\) reflections.
     </p>
@@ -1134,7 +1136,7 @@ Fix \(n \geqslant 3\). We will consider two special elements of \(D_n\):
       Note that \(r^j(V_1) = V_{1+j \pmod{n}}\) for any \(j\). Thus if \(r^j = r^i\) for some \(1 \leqslant i,j \leqslant n\), then we must have \(i=j\).
     </p>
 <p>
-      In fact, we have seen that \(r^n = \mathrm{id}\) and that the rotations \(\mathrm{id}, r, r^2, \ldots, r^{n-1}\) are all distinct, so \(|r| = n\). In particular, the inverse of \(r\) is \(r^{n-1}\).
+      In fact, we have seen that \(r^n = \mathrm{id}\) and that the rotations \(\mathrm{id}, r, r^2, \ldots, r^{n-1}\) are all distinct, so \(|r| = n\). In particular, the inverse of \(r\) is \(r^{n-1}.\)
     </p>
 </section>
 <section aria-labelledby="lem-1-3-srs" class="callout lemma" role="region">
@@ -1167,7 +1169,7 @@ Fix \(n \geqslant 3\). We will consider two special elements of \(D_n\):
 <p>
       Given \(|r| = n\) and \(|s| = 2\), as noted in Remarks 1.3.14 and 1.3.15, we can rewrite Lemma 1.3.16 as
       \[
-        srs = r^{n-1}.
+        srs^{-1} = r^{n-1}.
       \]
     </p>
 </section>
@@ -1237,7 +1239,7 @@ The group \(D_4\) has eight elements:
       \]
     </div>
 <p>
-      Assume that \(D_n\) has more relations than \(X_{2n}\) does. Then \(D_n\) would be a group of cardinality strictly smaller than \(X_{2n}\), meaning that \(|D_n|&lt;|X_{2n}|\). \footnote{This will become more clear once we properly define presentations.}
+      Assume that \(D_n\) has more relations than \(X_{2n}\) does. Then \(D_n\) would be a group of cardinality strictly smaller than \(X_{2n}\), meaning that \(|D_n|&lt;|X_{2n}|\). This will become more clear once we properly define presentations.
       We will show below that in fact \(|X_{2n}|\leqslant 2n=|D_n|\), thus obtaining a contradiction.
     </p>
 <p>
@@ -1249,7 +1251,7 @@ The group \(D_4\) has eight elements:
       \]
     </div>
 <p>
-      for some \(j\) and (possibly negative) integers \(m_1, \dots, m_j, n_1, \dots, m_j\).\footnote{Note that, \(m_1\) could be \(0\), so that expressions beginning with a power of \(s\) are included in this list.}
+      for some \(j\) and (possibly negative) integers \(m_1, \dots, m_j, n_1, \dots, m_j\).Note that, \(m_1\) could be \(0\), so that expressions beginning with a power of \(s\) are included in this list.
       As a consequence of the last relation, we have
     </p>
 <div class="math-display">
@@ -1272,7 +1274,7 @@ The group \(D_4\) has eight elements:
       \]
     </div>
 <p>
-      By the first relation, \(r^n = 1\), from which it follows that \(r^a = r^b\) if \(a\) and \(b\) are congruent modulo \(n\). Thus we may assume \(0 \leqslant M \leqslant n-1\). Likewise, we may assume \(0 \leqslant N \leqslant 1\). This gives a total of at most \(2n\) elements, and we conclude that \(X_{2n}\) must in fact be \(D_n\).
+      By the first relation, \(r^n = 1\), from which it follows that \(r^a = r^b\) if \(a\) and \(b\) are congruent modulo \(n\). Thus we may assume \(0 \leqslant M \leqslant n-1.\) Likewise, we may assume \(0 \leqslant N \leqslant 1\). This gives a total of at most \(2n\) elements, and we conclude that \(X_{2n}\) must in fact be \(D_n.\)
     </p>
 </section>
 <p>
