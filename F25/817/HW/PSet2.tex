@@ -1,0 +1,147 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,enumerate}
+\usepackage[]{graphicx}
+\usepackage{color,subfigure}
+\definecolor{scarlet}{rgb}{0.81,0,0}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage[all]{xypic}
+\usepackage[colorlinks=true,citecolor=scarlet,linkcolor=scarlet]{hyperref}
+\usepackage{colonequals}
+
+\usepackage{fancyhdr, lastpage}
+\pagestyle{fancy}
+\fancyfoot[C]{{\thepage} of \pageref{LastPage}}
+
+
+
+\DeclareMathOperator{\mSpec}{mSpec}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Ass}{Ass}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\height}{height}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\ann}{ann}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\coker}{coker}
+%\DeclareMathOperator{\ker}{ker}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\M}{M}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\ch}{char}
+\DeclareMathOperator{\Aut}{Aut}
+%\DeclareMathOperator{\dim}{dim}
+
+\DeclareMathOperator{\lcm}{lcm}
+
+\def\ra{\rightarrow}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\ov}[1]{\overline{#1}}
+
+\def\ov#1{\overline{#1}}
+
+
+\title{}
+\date{\vspace{-0.5in}}
+
+\makeatletter
+\g@addto@macro\@floatboxreset\centering
+\makeatother
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+
+\begin{document}
+
+\thispagestyle{fancy}
+\pagestyle{fancy}
+\rhead{UNL $\mid$ Fall 2025}
+\lhead{Introduction to Modern Algebra I}
+
+\vspace{3em}
+
+\begin{center}
+	{\LARGE Problem Set 2 \\}
+	Due Wednesday, September 10
+\end{center}
+
+\
+
+\noindent
+{\bf Instructions:}
+You are encouraged to work together on these problems, but each student should hand in their own final draft, written in a way that indicates their individual understanding of the solutions. Never submit something for grading that you do not completely understand. You cannot use any resources besides me, your classmates, and our course notes.
+
+
+I will post the .tex code for these problems for you to use if you wish to type your homework. If you prefer not to type, please  {\em write neatly}. As a matter of good proof writing style, please use complete sentences and correct grammar. You may use any result stated or proven in class or in a homework problem, provided you reference it appropriately by either stating the result or stating its name (e.g. the definition of ring or Lagrange's Theorem). Please do not refer to theorems by their number in the course notes, as that can change.
+
+
+\
+
+%\begin{problem}
+%Prove that every group of order $4$ is abelian. Your proof should only use the definition of a group. 
+%\end{problem}
+
+%Eloisa 2
+\begin{problem}
+Find $\Z(D_{n})$ for $n \geqslant 3$.  
+
+\noindent Hint: your answer will depend on whether $n$ is even or odd.
+\end{problem}
+
+%Mark 2
+\begin{problem}
+List all of the orders of elements of $S_5$ and how many elements have each such order. Justify your answer.
+\end{problem}
+
+
+%Alexandra 2
+\begin{problem} Let $G$ be a group.
+ \begin{enumerate}
+\item Let $g \in G$ be an element of finite order. Show that $g^m$ has finite order for any integer $m \geq 0$, and in fact
+\[
+|g^m| = \frac{\lcm(m,|g|)}{m} = \frac{|g|}{\gcd(m, |g|))}.
+\]
+\item Prove that for all $g, h$ in  $G$, $|gh| = |hg|$ holds.
+\end{enumerate}
+\end{problem}
+
+
+%Eloisa 2
+\begin{problem}
+	Prove or disprove: if $x$ and $y$ have finite order in a group $G$, then $xy$ has finite order.
+\end{problem}
+
+%Eloisa 2
+\begin{itemize}
+\item An automorphism of $G$ is a group isomorphism $f:G\to G$.
+\item The set of all automorphisms of $G$ is denoted $\Aut(G)$.
+\end{itemize}
+
+
+%Alexandra 2
+\begin{problem}
+Prove that,  for any group $G$, the set $\Aut(G)$  is a group under composition of functions.
+\end{problem}
+
+
+
+%Alexandra 2
+\begin{problem} Prove that if groups $G$ and $H$ are isomorphic then:
+\begin{enumerate}
+\item $Z(G)\cong Z(H)$ and
+\item $\Aut(G)\cong \Aut(H)$.
+\end{enumerate}
+\end{problem}
+
+
+
+\end{document}

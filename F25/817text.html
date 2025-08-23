@@ -135,6 +135,10 @@
 <h1 id="page-title">Math 817: Introduction to Modern Algebra I (Fall 2025)</h1>
 <p aria-label="Author">Instructor: Jack Jeffries</p>
 </header>
+
+
+
+
 <!-- Table of contents (manual, descriptive, navigable) -->
 <nav aria-label="Table of contents">
 <h2 id="toc">Contents</h2>
@@ -148,6 +152,14 @@
 <li><a href="#the-quaternions">The quaterions</a></li>
 <li><a href="#homomorphisms-heading">Group homomorphisms</a></li>
 </ol>
+
+<!--
+<li><a href="#group actions section">Group actions: a first look</a></li>
+<ol><li><a href="#groups-actions">What is a group action?</a></li>
+<li><a href="#group-actions-examples">Examples of group actions</a></li>
+</ol>
+-->
+
 </ol>
 </ul></nav>
 <main aria-labelledby="page-title" id="main-content" role="main">
@@ -1351,7 +1363,7 @@ The group \(D_4\) has eight elements:
   </div>
 
   <p>
-    where \(\sqrt{-1}\) denotes the complex number whose square is \(-1\), to avoid confusion with the symbol \(i \in Q_8\).
+    where \(\sqrt{-1}\) denotes a complex number whose square is \(-1\), to avoid confusion with the symbol \(i \in Q_8\).
     Let \(-I, -A, -B, -C\) be the negatives of these matrices.
   </p>
 
@@ -1742,11 +1754,327 @@ This is an excellent motivation to talk about group homomorphisms.
 </section>
 
 
+We come to one of the central concepts in group theory: the action of a group on a set. Some would say this is the main reason one would study groups, so we want to introduce it early both as motivation for studying group theory but also because the language of group actions will be very helpful to us.
+
+
+<!--
+
+<h1 id="group actions section">2. Group actions: a first look</h1>
+
+We come to one of the central concepts in group theory: the action of a group on a set. Some would say this is the main reason one would study groups, so we want to introduce it early both as motivation for studying group theory but also because the language of group actions will be very helpful to us.
 
 
 
 
+<section id="group-actions" aria-labelledby="group-actions-heading">
+  <h2 id="group-actions-heading">2.1 What is a group action?</h2>
 
+  <section class="callout definition" role="region">
+    <h3>Definition 2.1.1</h3>
+    <p>
+      For a group \((G, \cdot)\) and set \(S\), an <dfn>action</dfn> of \(G\) on \(S\) is a function
+    </p>
+    <div class="math-display">\[G \times S \to S,\]</div>
+    <p>
+      typically written as \((g,s) \mapsto g \cdot s\), such that
+    </p>
+    <ol>
+      <li>\(g \cdot (h \cdot s) = (gh) \cdot s\) for all \(g,h \in G\) and \(s\in S\).</li>
+      <li>\(e_G \cdot s = s\) for all \(s \in S\).</li>
+    </ol>
+  </section>
+
+  <section class="callout remark" role="region">
+    <h3>Remark 2.1.2</h3>
+    <p>
+      To make the first axiom clearer, we will write \(\cdot\) for the action of \(G\) on \(S\) and no symbol (concatenation) for the multiplication of two elements in the group \(G\).
+    </p>
+  </section>
+
+  <p>A group action is the same thing as a group homomorphism.</p>
+
+  <section class="callout lemma" role="region">
+    <h3>Lemma 2.1.3 (Permutation representation)</h3>
+    <p>Consider a group \(G\) and a set \(S\).</p>
+    <ol>
+      <li>
+        Suppose \(\cdot\) is an action of \(G\) on \(S\). For each \(g \in G\), let
+        \(\mu_g\!:S\longrightarrow S\) denote the function given by \(\mu_g(s)=g \cdot s\).
+        Then the function
+        <div class="math-display">
+          \[
+          \rho\!: G \to \mathrm{Perm}(S), \quad g \mapsto \mu_g
+          \]
+        </div>
+        is a well-defined homomorphism of groups.
+      </li>
+      <li>
+        Conversely, if \(\rho: G \to \mathrm{Perm}(S)\) is a group homomorphism, then the rule
+        <div class="math-display">
+          \[g \cdot s := (\rho(g))(s)\]
+        </div>
+        defines an action of \(G\) on \(S\).
+      </li>
+    </ol>
+  </section>
+
+  <section class="callout proof" role="region">
+    <h3>Proof of Lemma 2.1.3</h3>
+    <p>
+      (1) Assume we are given an action of \(G\) on \(S\). We first need to check that for all \(g\), \(\mu_g\) really is a permutation of \(S\).
+      We will show this by proving that \(\mu_g\) has a two-sided inverse; in fact, that inverse is \(\mu_{g^{-1}}\).
+    </p>
+    <p>Indeed, we have</p>
+    <div class="math-display">
+      \[
+      \begin{aligned}
+      (\mu_g\circ\mu_{g^{-1}})(s) &=\mu_g(\mu_{g^{-1}}(s)) & \text{ by the definition of composition}\\
+      &=g\cdot (g^{-1} \cdot s) & \text{ by the definition for } \mu_g \text{ and } \mu_{g^{-1}}\\
+      &=(gg^{-1})\cdot s & \text{ by the definition of a group action}\\
+      &=e_G\cdot s & \text{ by the definition of a group}\\
+      &= s &\text{ by the definition of a group action}
+      \end{aligned}
+      \]
+    </div>
+    <p>
+      thus \(\mu_g \circ \mu_{g^{-1}}=\mathrm{id}_S\), and a similar argument shows that \(\mu_{g^{-1}}\circ \mu_{g}=\mathrm{id}_S\) (exercise!).
+      This shows that \(\mu_g\) has an inverse, and thus it is bijective; it must then be a permutation of \(S\).
+    </p>
+    <p>
+      Finally, we wish to show that \(\rho\) is a homomorphism of groups, so we need to check that \(\rho(gh)=\rho(g) \circ \rho(h)\).
+      Equivalently, we need to prove that \(\mu_{gh}=\mu_g\circ\mu_{h}\).
+      Now for all \(s\), we have
+    </p>
+    <div class="math-display">
+      \[
+      \begin{aligned}
+      \mu_{gh}(s) & = (gh) \cdot s & \textrm{ by definition of $\mu$} \\
+      & = g\cdot(h \cdot s) & \textrm{ by definition of a group action} \\
+      & =\mu_g\left(\mu_{h}(s)\right) & \textrm{by definition of } \mu_g \textrm{ and } \mu_h \\
+      & = (\mu_g \circ \mu_{h})(s).
+      \end{aligned}
+      \]
+    </div>
+    <p>This proves that \(\rho\) is a homomorphism.</p>
+    <p>
+      (2) On the other hand, given a homomorphism \(\rho\), the function
+      <div class="math-display">
+        \[
+        (g,s) \mapsto g \cdot s = \rho(g)(s)
+        \]
+      </div>
+      is an action, because
+    </p>
+    <div class="math-display">
+      \[
+      \begin{aligned}
+      h \cdot (g \cdot s) & = \rho(h)(\rho(g)(s)) & \textrm{by definition of $\rho$}\\
+      & = (\rho(h) \circ \rho(g))(s) \\
+      & = \rho(gh)(s) & \textrm{since $\rho$ is a homomorphism} \\
+      & = (gh) \cdot s & \textrm{by definition of } \rho,
+      \end{aligned}
+      \]
+    </div>
+    <p>
+      and
+      \[
+      e_G \cdot s = \rho(e_G)(s) = \mathrm{id}(s) = s.\qedhere
+      \]
+    </p>
+  </section>
+
+  <section class="callout definition" role="region">
+    <h3>Definition 2.1.4</h3>
+    <p>
+      Given a group \(G\) acting on a set \(S\), the group homomorphism \(\rho\) associated to the action as defined in Lemma 2.1.3 is called the <dfn>permutation representation</dfn> of the action.
+    </p>
+  </section>
+
+  <section class="callout definition" role="region">
+    <h3>Definition 2.1.5</h3>
+    <p>
+      Let \(G\) be a group acting on a set \(S\). The equivalence relation on \(S\) induced by the action of \(G\), written \(\sim_G\), is defined by \(s\sim_G t\) if and only if there is a \(g \in G\) such that \(t=g\cdot s\).
+      The equivalence classes of \(\sim_G\) are called <strong>orbits</strong>: the equivalence class
+    </p>
+    <div class="math-display">
+      \[
+      \mathrm{Orb}_G(s) := \{g\cdot s \ | \ g\in G\}
+      \]
+    </div>
+    <p>is the orbit of \(s\). The set of equivalence classes with respect to \(\sim_G\) is written \(S/G\).</p>
+  </section>
+
+  <section class="callout lemma" role="region">
+    <h3>Lemma 2.1.6</h3>
+    <p>Let \(G\) be a group acting on a set \(S\). Then</p>
+    <ol type="a">
+      <li>The relation \(\sim_G\) really is an equivalence relation.</li>
+      <li>For any \(s,t \in S\) either \(\mathrm{Orb}_G(s)=\mathrm{Orb}_G(t)\) or \(\mathrm{Orb}_G(s)\cap \mathrm{Orb}_G(t)=\emptyset\).</li>
+      <li>The orbits of the action of \(G\) form a partition of \(S\): \(S=\bigcup_{s \in S} \mathrm{Orb}_G(s)\).</li>
+    </ol>
+  </section>
+
+  <section class="callout proof" role="region">
+    <h3>Proof of Lemma 2.1.6</h3>
+    <p>Assume \(G\) acts on \(S\).</p>
+    <ol type="a">
+      <li>
+        We really need to prove three things: that \(\sim_G\) is reflexive, symmetric, and transitive.<br><br>
+        (Reflexive):  We have \(x \sim_G x\) for all \(x \in S\) since \(x = e_G \cdot x\).<br><br>
+        (Symmetric): If \(x \sim_G y\), then \(y = g \cdot x\) for some \(g \in G\), and thus
+        \[
+        g^{-1} \cdot y = g^{-1} \cdot (g \cdot x) = (g^{-1}g) \cdot x = e \cdot x = x,
+        \]
+        which shows that \(y \sim_G x\).<br><br>
+        (Transitive): If \(x \sim_G y\) and \(y \sim_G z\), then \(y = g \cdot x\) and \(z = h \cdot y\) for some \(g, h \in G\) and hence
+        \[
+        z = h \cdot (g \cdot x) = (hg) \cdot x,
+        \]
+        which gives \(x \sim_G z\).
+      </li>
+    </ol>
+    <p>Parts (b) and (c) are formal properties of the equivalence classes for any equivalence relation.</p>
+  </section>
+
+  <section class="callout corollary" role="region">
+    <h3>Corollary 2.1.7</h3>
+    <p>
+      Suppose a group \(G\) acts on a finite set \(S\). Let \(s_1, \dots, s_k\) be a complete set of orbit representatives — that is, assume each orbit contains exactly one member of the
+      list \(s_1, \dots, s_k\). Then
+    </p>
+    <div class="math-display">
+      \[|S| = \sum_{i = 1}^k |\mathrm{Orb}_G(s_i)|.\]
+    </div>
+  </section>
+
+  <section class="callout proof" role="region">
+    <h3>Proof of Corollary 2.1.7</h3>
+    <p>This is an immediate corollary of the fact that the orbits form a partition of \(S\).</p>
+  </section>
+
+  <section class="callout remark" role="region">
+    <h3>Remark 2.1.8</h3>
+    <p>
+      Let \(G\) be a group acting on \(S\).
+      The associated group homomorphism \(\rho\) is injective if and only if it has trivial kernel, by Lemma 1.5.12.
+      This is equivalent to the statement \(\mu_g = \mathrm{id}_S \implies g = e_G\).
+      The latter can be written in terms of elements of \(S\): for each \(g \in G\),
+    </p>
+    <div class="math-display">
+      \[g \cdot s = s \quad \textrm{for all } s \in S \implies g = e_G.\]
+    </div>
+  </section>
+
+  <section class="callout definition" role="region">
+    <h3>Definition 2.1.9</h3>
+    <p>
+      Let \(G\) be a group acting on a set \(S\).
+      The action is <strong>faithful</strong> if the associated group homomorphism is injective.
+      Equivalently, the action is faithful if and only if
+    </p>
+    <div class="math-display">
+      \[g \cdot s = s \quad \textrm{for all } s \in S \implies g = e_G.\]
+    </div>
+    <p>
+      The action is <strong>transitive</strong> if for all \(p,q \in S\) there is \(g \in G\) such that \(q=g\cdot p\).
+      Equivalently, the action is transitive if there is only one orbit, meaning that
+    </p>
+    <div class="math-display">
+      \[\mathrm{Orb}_G(p)=S \textrm{ for all } p\in S.\]
+    </div>
+  </section>
+</section>
+
+
+<section id="group-actions-examples" aria-labelledby="group-actions-examples-heading">
+  <h2 id="group-actions-examples-heading">2.2 Examples of group actions</h2>
+
+  <section class="callout example" role="region">
+    <h3>Example 2.2.1 (Trivial action)</h3>
+    <p>
+      For any group \(G\) and any set \(S\), \(g \cdot s := s\) defines an action, the <dfn>trivial action</dfn>. The associated group homomorphism is the map
+    </p>
+    <div class="math-display">
+      \[
+      \rho: G \longrightarrow \mathrm{Perm}(S),\quad g \longmapsto \mathrm{id}_S.
+      \]
+    </div>
+    <p>
+      A trivial action is not faithful unless the group \(G\) is trivial; in fact, the corresponding group homomorphism is trivial.
+    </p>
+  </section>
+
+  <section class="callout example" role="region">
+    <h3>Example 2.2.2</h3>
+    <p>
+      The group \(D_{n}\) acts on the vertices of \(P_n\), which we will label with \(V_1, \dots, V_{n}\) in a counterclockwise fashion, with \(V_1\) on the positive \(x\)-axis, as in \(\text{Cref\{defining r and s\}}\).
+      Note that \(D_{n}\) acts on \(\{V_1, \dots, V_n \}\): for each \(g \in D_{n}\) and each integer \(1 \leqslant j \leqslant n\), we set 
+    </p>
+    <div class="math-display">
+      \[
+      g \cdot V_j = V_i \quad \textrm{ if and only if } \quad g(V_j)=V_i.
+      \]
+    </div>
+    <p>
+      This satisfies the two axioms of a group action (check!).
+    </p>
+    <p>
+      Let \(\rho\!: D_{n} \to \mathrm{Perm}\!\left(\{V_1,\ldots,V_n\}\right)\cong S_n\) be the associated group homomorphism. Note that \(\rho\) is injective, because if an element  of \(D_{n}\) fixes all \(n\) vertices of a polygon, then it must be the identity map. More generally, if an isometry of \(\mathbb{R}^2\) fixes any three noncolinear points, then it is the identity. To see this, note that given three noncolinear points, every point in the plane is uniquely determined by its distance from these three points (exercise!).
+    </p>
+    <p>
+      The action of \(D_{n}\) on the \(n\) vertices of \(P_n\) is faithful; in fact, we saw before that each \(\sigma \in D_n\) is completely determined by what it does to any two adjacent vertices.
+    </p>
+  </section>
+
+  <section class="callout example" role="region">
+    <h3>Example 2.2.3 (group acting on itself by left multiplication)</h3>
+    <p>
+      Let \(G\) be any group and define an action \(\cdot\) of \(G\) on \(G\) (regarded as just a set) by the rule
+    </p>
+    <div class="math-display">
+      \[
+      g \cdot x := g  x.
+      \]
+    </div>
+    <p>
+      This is an action, since multiplication is associative and \(e_G \cdot x = x\) for all \(x\); it is know as the <dfn>left regular action</dfn> of \(G\) on itself.
+    </p>
+    <p>
+      The left regular action of \(G\) on itself is faithful, since if \(g \cdot x = x\) for all \(x\) (or even for just one \(x\)), then \(g = e\). It follows that the associated homomorphism is injective.
+      This action is also transitive: given any \(g \in G\), \(g = g \cdot e\), and thus \(\mathrm{Orb}_G(e) = G\).
+    </p>
+  </section>
+
+  <section class="callout example" role="region">
+    <h3>Example 2.2.4 (conjugation)</h3>
+    <p><em>Index:</em> action by conjugation; conjugation action</p>
+    <p>
+      Let \(G\) be any group and fix an element \(g \in G\). Define the {\df conjugation action} of \(G\) on itself by setting
+    </p>
+    <div class="math-display">
+      \[
+      g\cdot x := gxg^{-1} \textrm{ for any } g,x\in G.
+      \]
+    </div>
+    <p>
+      The action of \(G\) on itself by conjugation is  not necessarily faithful. In fact, we claim that the kernel of the permutation representation \(\rho\!:G\to \mathrm{Perm}(G)\) for the conjugation action is the center \(\mathrm{Z}(G)\). Indeed,
+    </p>
+    <div class="math-display">
+      \[
+      g\in \ker\rho\iff g\cdot x=x \textrm{ for all } x\in G \iff gxg^{-1}=x \textrm{ for all } x\in G
+      \]
+      \[
+      \iff gx=xg \textrm{ for all } x\in G \iff g\in \mathrm{Z}(G).
+      \]
+    </div>
+    <p>
+      %The orbits for this action are quite interesting, and we will study them in more detail later. 
+      If \(G\) is nontrivial, this action is \emph{never} transitive unless \(G\) is trivial: note that \(\mathrm{Orb}_G(e) = \{ e \}\).
+    </p>
+  </section>
+</section>
+
+-->
 
 </main>
 <footer aria-label="Course footer" role="contentinfo">
