@@ -1,0 +1,1096 @@
+
+\section{The quaternions}\label{quaternions}
+
+
+For our last big example we mention the group of quaternions, written $Q_8$. 
+
+\begin{definition}\index{$Q_8$}
+The \df{quaternion group} $Q_8$ is a group with $8$ elements 
+$$Q_8=\{ 1, -1, i, -i, j, -j, k, -k \}  $$
+satisfying  the following relations:  $1$ is the identity element, and 
+$$i^2 = -1, \quad j^2 = -1, \quad k^2 =-1, \quad ij = k, \quad jk = i, \quad ki = j, $$
+$$(-1)i = -i, \quad (-1)j = -j, \quad (-1)k = -k, \quad (-1)(-1) = 1.$$
+\end{definition}
+
+To verify that this really is a group is rather tedious, since the associative property takes forever to check. Here is a better way: in the group $\GL_2(\C)$, define elements
+$$
+I = 
+\begin{bmatrix}
+1 & 0 \\ 0 & 1
+\end{bmatrix},
+\quad
+A =  
+\begin{bmatrix}
+\sqrt{-1} & 0 \\ 0 & -\sqrt{-1} 
+\end{bmatrix},
+\quad 
+B =  \begin{bmatrix}
+0 & 1 \\ -1 & 0 
+\end{bmatrix},
+\quad
+C =  \begin{bmatrix}
+0 & \sqrt{-1} \\ \sqrt{-1} & 0 
+\end{bmatrix}
+$$
+where $\sqrt{-1}$ denotes the complex number whose square is $-1$, to avoid confusion with the symbol $i \in Q_8$.
+Let $-I, -A, -B, -C$ be the negatives of these matrices. 
+
+Then we can define an injective map $f:Q_8\to \GL_2(\C)$ by assigning 
+\begin{eqnarray*}
+1\mapsto  I,  \quad  -1\mapsto  -I\\
+ i\mapsto  A, \quad -i\mapsto -A \\
+ j\mapsto B, \quad  -j\mapsto -B \\
+ k\mapsto C, \quad  -k\mapsto -C.
+\end{eqnarray*}
+It can be checked directly that this map has the nice property (called being a {\em group homomorphism}) that 
+$$f(xy)=f(x)f(y) \text{ for any elements } x,y\in \Q_8.$$
+
+Let us now prove associativity for $Q_8$ using this information:
+\smallskip
+
+\noindent{\em Claim:} For any $x,y,z\in Q_8$, we have $(xy)z=x(yz)$.
+\begin{proof}
+By using the property $f(xy)=f(x)f(y)$ as well as associativity of multiplication in $\GL_2(\C)$ (marked by $*$) we obtain
+$$f((xy)z)=f(xy)f(z)=\left(f(x)f(y)\right)f(z)\stackrel{*}{=}f(x)\left(f(y)f(z)\right)=f(x)f(yz)=f(x(yz)).$$
+Since $f$ is injective and $f((xy)z)=f(x(yz))$, we deduce  $(xy)z=x(yz)$.
+\end{proof}
+
+
+The subset $\{\pm I, \pm A, \pm B, \pm C\}$ of $\GL_2(\C)$ is a {\em subgroup} (a term we
+define carefully later), meaning that it is closed under multiplication and taking inverses. (For example, $AB= C$ and $C^{-1} = -C$.) This proves it really is a group
+and one can check it satisfies an analogous  list of identities as the one satisfied by $Q_8$.  
+
+
+
+\vspace{1em}
+
+
+This is an excellent motivation to talk about group homomorphisms.
+
+
+
+
+\section{Group homomorphisms}
+
+
+
+A group homomorphism is a function between groups that preserves the group structure.
+
+\begin{definition}\index{homomorphism (of groups)}\index{group homomorphism}
+Let $(G, \cdot_G)$ and $(H, \cdot_H)$ be groups.
+A (group) {\bf homomorphism} from $G$ is $H$ is a function $f: G \to H$ such that 
+$$f(x \cdot_G y) = f(x) \cdot_H f(y).$$
+\end{definition}
+
+Note that a group homomorphism does not necessarily need to be injective nor surjective, it can be any function as long as it preserves the product.
+
+\begin{definition}\label{def:gpiso}\index{isomorphism (of groups)}\index{group isomorphism}\index{isomorphic groups}\index{$\Aut(G)$}
+Let $G$ and $H$ be groups A homomorphism $f\!: G \to H$ is an \df{isomorphism} if there exists a homomorphism $g: H \to G$ such that 
+$$f \circ g = \id_H \textrm{ and } g \circ f = \id_G.$$
+If $f:G\to H$ is an isomorphism, $G$ and $H$ are called {\bf isomorphic}, and we denote this by writing $G\cong H$. An isomorphism $G \longrightarrow G$ is called an \df{automorphism} of $G$. We de denote the set of all automorphisms of $G$ by $\Aut(G)$.
+\end{definition}
+ 
+
+
+\begin{remark}
+Two groups $G$ and $H$ are isomorphic if we can obtain $H$ from $G$ by renaming all the elements, without changing the group structure.
+One should think of an isomorphism $f\!: G \xlongrightarrow{\cong} H$ of groups as saying that the multiplication tables of $G$ and $H$ are the same up to renaming the elements. The multiplication rule $\cdot_G$ for $G$ can be visualized as a table with both rows and columns labeled by elements of $G$, and with $x \cdot_G y$ placed in row $x$ and column $y$.
+The isomorphism $f$ sends $x$ to $f(x)$, $y$ to $f(y)$, and the table entry $x \cdot_G y$ to the table entry $f(x) \cdot_H f(y)$. The inverse map $f^{-1}$ does the opposite.
+\end{remark}
+
+
+
+\begin{remark}\label{remark iso def}
+	Suppose that $f\!: G \to H$ is an isomorphism. As a function, $f$ has an inverse, and thus it must necessarily be a bijective function. Our definition, however, requires more: the inverse must in fact also be a group homomorphism. Note that many books define group homomorphism by simply requiring it to be a homomorphism that is bijective: and we will soon show that this is in fact equivalent to the definition we gave. There are however good reasons to define it as we did: in many contexts, such as sets, groups, rings, fields, or topological spaces, the correct meaning of the word ``isomorphism'' in ``a morphism that has a two-sided inverse''. This explains our choice of definition.
+\end{remark}
+
+
+
+\begin{exercise}
+	Let $G$ be a group. Show that $\Aut(G)$ is a group under composition.
+\end{exercise}
+
+
+
+\begin{example}\label{homomorphism examples}$\,$
+\begin{enumerate}[label=(\alph*),leftmargin=20pt]
+\item For any group $G$, the identity map $\id_G\!: G \to G$ is a group isomorphism.
+\item For all groups $G$ and $H$, the constant map $f\!: G \to H$ with $f(g) = e_H$ for all $g \in G$ is a homomorphism, which we sometimes refer to as the \df{trivial homomorphism}.
+\item The exponential map and the logarithm map
+$$\xymatrix@R=0.2mm{\exp\!: (\R, +) \ar[r] & (\R \setminus \{0\}, \cdot) && \ln\!: (\R_{>0}, \cdot) \ar[r] & (\R, +) & \\ x \ar@{|->}[r] & e^x && y \ar@{|->}[r] & \ln y &}$$
+are both isomorphisms, so $(\R, +)\cong (\R_{>0}, \cdot)$. In fact, these maps are inverse to each~other.
+
+\item The function $f\!: \Z \to \Z$ given by $f(x) = 2x$ is a group homomorphism that is injective but not surjective.
+
+\item  For any positive integer $n$ and any field $F$, the determinant map
+$$\xymatrix@R=0.3mm{\det\!: \GL_n(F) \ar[r] & (F \setminus \{0\}, \cdot) \\ A \ar@{|->}[r] & \det(A)}$$
+is a group homomorphism. For $n \geqslant 2$, the determinant map is not injective (you should check this!) and so it cannot be an isomorphism. It is however surjective: for each $c \in F \setminus \{ 0 \}$, the diagonal matrix
+$$\begin{pmatrix}
+	c & & & \\ & 1 && \\ && \ddots & \\ &&& 1
+\end{pmatrix}$$
+has determinant $c$.
+
+\item Fix an integer $n > 1$, and consider the function $f\!: (\Z,+) \to (\C^*,\cdot)$ given by $f(n) = e^{\frac{2 \pi i}{n}}$. This is a group homomorphism, but it is neither surjective nor injective. It is not surjective because the image only contains complex number $x$ with $|x| = 1$, and it is not injective because $f(0)  = f(n)$.
+
+
+\end{enumerate}
+\end{example}
+
+
+Group homomorphisms preserve the group structure. In particular, group homomorphisms preserve the identity and all inverses.
+
+\begin{lemma}[Properties of homomorphisms]\label{homomorphisms send 1 to 1}
+	If $f: G \to H$ is a homomorphism of groups, then 
+	$$f(e_G) = e_H.$$
+	Moreover, for any $x \in G$ we have
+	$$f(x^{-1}) = f(x)^{-1}.$$
+\end{lemma}
+
+
+\begin{proof}
+By definition,
+$$f(e_G)f(e_G) = f(e_Ge_G) = f(e_G).$$ 
+Multiplying both sides by $f(e_G)^{-1}$, we get
+$$f(e_G) = e_H.$$
+Now given any $x \in G$, we have
+$$f(x^{-1}) f(x) = f(x^{-1}x) = f(e) = e,$$ 
+and thus $f(x^{-1}) = f(x)^{-1}$.
+\end{proof}
+
+
+
+\begin{remark}\label{homomorphism determined by generators}
+Let $G$ be a cyclic group generated by the element $g$. Then any homomorphism $f\!: G \to H$ is completely determined by $f(g)$, since any other element $h \in G$ can be written as $h = g^n$ for some integer $n$, and
+$$f(g^n) = f(g)^n.$$
+More generally, given a group $G$ a set $S$ of generators for $G$, any homomorphism $f\!: G \longrightarrow H$ is completely determined by the images of the generators in $S$: the element $g = s_1 \cdots s_m$, where $s_i$ is either in $S$ or the inverse of an element of $S$, has image
+$$f(g) = f(s_1 \cdots s_m) = f(s_1) \cdots f(s_m).$$
+
+Note, however, that not all choices of images for the generators might actually give rise to a homomorphism; we need to check that the map determined by the given images of the generators is well-defined.
+\end{remark}
+
+
+\begin{definition}\index{$\ker(f)$}\index{kernel of a group homomorphism}
+The \df{image} of a group homomorphism $f\!: G \longrightarrow G$ is 
+$$\im(f) \colonequals \{f(g) \mid g \in G \}.$$
+\end{definition}
+
+Notice that $f\!: G \to H$ is surjective if and only if $\im(f) = H$.
+
+
+\begin{definition}\index{$\ker(f)$}\index{kernel of a group homomorphism}
+The \df{kernel} of a group homomorphism $f\!: G \longrightarrow G$ is 
+$$\ker(f) \colonequals \{g \in G \mid f(g) = e_H\}.$$
+\end{definition}
+
+\begin{remark}
+Given any group homomorphism $f\!: G \longrightarrow G$, we must have $e_G \in \ker f$ by \Cref{homomorphisms send 1 to 1}.
+\end{remark}
+
+When the kernel of $f$ is as small as possible, meaning $\ker (f) = \{ e \}$, we say that $f$ the kernel of $f$ is trivial.
+A homomorphism is injective if and only if it has a trivial kernel.
+
+\begin{lemma}\label{injective homomorphism iff ker trivial}
+A group homomorphism $f: G \to H$ is injective if and only if $\ker(f) = \{e_G\}$.
+\end{lemma}
+
+\begin{proof} 
+First, note that $e_G \in \ker f$ by \Cref{homomorphisms send 1 to 1}. If $f$ is injective, then $e_G$ must be the only element that $f$ sends to $e_H$, and thus $\ker(f) = \{ e_G \}$.
+ 
+Now suppose $\ker(f) = \{e_G\}$. If $f(g) = f(h)$ for some $g,h \in G$, then 
+$$f(h^{-1}g) = f(h^{-1})f(g) = f(h)^{-1}f(g) = e_H.$$
+But then $h^{-1}g \in \ker(f)$, so we conclude that $h^{-1}g = e_G$, and thus $g = h$.
+\end{proof}
+
+
+
+\begin{example} 
+First, number the vertices of $P_n$ from $1$ to $n$ in any manner you like. Now define a function $f\!: D_{n} \to S_n$ as follows: given any symmetry $\alpha \in D_n$, set $f(\alpha)$ to be the permutation of $[n]$ that records how $\alpha$ permutes the vertices of $P_n$ according to your labelling. So $f(\alpha) = \sigma$ where $\sigma$ is the permutation that for all $1 \leqslant i \leqslant n$, if $\alpha$ sends the $i$th vertex to the $j$th one in the list, then $\sigma(i) = j$.
+This map $f$ is a group homomorphism. 
+
+Now suppose $f(\alpha) = \id_{S_n}$. Then $\alpha$ must fix all the vertices of $P_n$, and thus $\alpha$ must be the identity element of $D_n$. We have thus shown that the kernel of $f$ is trivial. By \Cref{injective homomorphism iff ker trivial}, this proves $f$ is injective.
+\end{example}
+
+
+We defined isomorphisms to be homomorphisms that have an inverse that is also a homomorphism. We are now ready to show that this can simplified: an isomorphism is a bijective group homomorphism.
+
+
+
+
+\begin{lemma}\label{iso def}
+ Suppose $f\!: G \to H$ is a group homomorphism. Then $f$ an isomorphism if and only if $f$ is bijective.
+\end{lemma}
+
+\begin{proof} 
+$(\Rightarrow)$ A function $f: X \to Y$ between two sets is bijective if and only if it has an inverse, meaning that there is a function $g: Y \to X$ such that $f \circ g = \id_Y$ and $g \circ f = \id_X$. Our definition of group isomorphism implies that this must hold for any isomorphism (and more!), as we noted in \Cref{remark iso def}.
+
+$(\Leftarrow)$ If $f$ is bijective homomorphism, then as a function is has a {\em set-theoretic} two-sided inverse $g$, as remarked in \Cref{remark iso def}. But we need to show that this inverse $g$ is actually a homomorphism. For any $x,y \in H$, we have 
+$$\begin{aligned}
+f(g(xy)) & = xy \quad && \textrm{since } fg=\id_G \\
+& = f(g(x))f(g(y)) \quad && \textrm{since } fg=\id_G\\
+& = f(g(x)g(y)) \quad && \textrm{since $f$ is a group homomorphism} .
+\end{aligned}$$ 
+ Since $f$ is injective, we must have $g(xy) = g(x)g(y)$. Thus $g$ is a homomorphism, and $f$ is an isomorphism.
+\end{proof}
+
+
+\begin{exercise}\label{isos preserve order}
+	Let $f\!: G \to H$ be an isomorphism. Show that for all $x \in G$, we have $|f(x)| = |x|$.
+\end{exercise}
+
+In other words, isomorphisms preserve the order of an element. This is an example of an isomorphism invariant.
+
+
+\begin{definition}\label{def:isoinvariant}
+An \df{isomorphism invariant} (of a group) is a property $P$ (of groups) such that whenever $G$ and $H$ are isomorphic groups and $G$ has the property $P$, then $H$ also has the property $P$.
+ \end{definition}
+
+
+\begin{theorem}\label{isoinvariants}
+The following are isomorphism invariants:
+\begin{enumerate}[leftmargin=20pt,label=(\alph*)]
+\item the order of the group,
+\item the set of all the orders of elements in the group,
+\item the property of being abelian,
+\item the order of the center of the group,
+\item being finitely generated.
+\end{enumerate}
+\end{theorem}
+
+Recall that by definition two sets have the same cardinality if and only if they are in bijection with each other.
+
+
+\begin{proof}
+Let $f\!:G\to H$ be any a group isomorphism.
+
+\begin{enumerate}[leftmargin=20pt,label=(\alph*)]
+\item Since $f$ is a bijection by \Cref{remark iso def}, we conclude that $|G|=|H|$.
+
+\item We wish to show that $\{|x| \ | \ x\in G\}= \{|y| \ | \ y\in H\}$. 
+
+$(\subseteq)$ follows from \Cref{isos preserve order}: given any $x\in G$, we have $|x| = |f(x)|$, which is the order of an element in $H$.
+
+$(\supseteq)$ follows from the previous statement applied to the group isomorphism $f^{-1}$: given any $y\in H$, we have $f^{-1}(y)\in G$ and $|y| = |f^{-1}(y)|$ is the order of an element of $G$.
+
+\item For any $y_1,y_2\in H$ there exist some $x_1, x_2\in G$ such that $f(x_i)=y_i$. Then we have
+$$y_1y_2=f(x_1)f(x_2)=f(x_1x_2)\stackrel{*}{=}f(x_2x_1)=f(x_2)f(x_1)=y_2y_1,$$
+where $*$ indicates the place where we used that $G$ is abelian.
+\item Exercise. The idea is to show $f$ induces an isomorphism $\Zc(G)\cong \Zc(H)$.
+\item Exercise. Show that if $S$ generates $G$ then $f(S)=\{f(s) \ | \ s\in S\}$ generates $H$.\qedhere
+%Assume that $S$ is a set of generators for $G$. Then every $x\in G$ can be written as $x=\prod_{i=1}^ns_i$ with $s_i\in S$ not necessarily distinct. 
+%Let $y\in H$. Then there exists $x\in G$ such that $f(x)=y$  thus
+%$$y=f(x)=f\left(\prod_{i=1}^ns_i\right)=\prod_{i=1}^nf(s_i).$$
+%This shows that the set $f(S)=\{f(s) \ | \ s\in S\}$ is a generating set for $H$. If $G$ is finitely generated, then $S$ can be chosen to be finite and therefore $f(S)$ is also finite.
+\end{enumerate}
+\end{proof}
+
+
+The easiest way to show that two groups are not isomorphic is to find an isomorphism invariant that they do not share.
+
+\begin{remark}
+	Let $G$ and $H$ be two groups. If $P$ is an isomorphism invariant, and $G$ has $P$ while $H$ does not have $P$, then G is not isomorphic to $H$.
+\end{remark}
+
+
+
+\begin{example}$\,$
+\begin{enumerate}
+\item We have $S_n\cong S_m$ if and only if $n=m$, since $|S_n| = n!$ and $|S_m| = m!$ and the order of a group is an isomorphism invariant.
+\item Since $\Z/6$ is abelian and $S_3$ is not abelian, we conclude that $\Z/6\ncong S_3$.
+\item You will show in Problem Set 2 that $|Z(D_{24})|=2$, while $S_n$ has trivial center. We conclude that $D_{24}\ncong S_4$.
+\end{enumerate}
+\end{example}
+
+
+
+
+\chapter{Group actions: a first look}
+
+
+We come to one of the central concepts in group theory: the action of a group on a set. Some would say this is the main reason one would study groups, so we want to introduce it early both as motivation for studying group theory but also because the language of group actions will be very helpful to us.
+
+
+
+
+\section{What is a group action?}
+
+
+\begin{definition}\label{defn:groupaction}\index{action of a group on a set}
+For a group $(G, \cdot)$ and set $S$, an \df{action} of $G$ on $S$ is a function
+$$G \times S \to S,$$
+typically written as $(g,s) \mapsto g \cdot s$, such that
+\begin{enumerate}
+\item $g \cdot (h \cdot s) = (g h) \cdot s$ for all $g,h \in G$ and $s\in S$. 
+\item $e_G \cdot s = s$ for all $s \in S$.
+\end{enumerate}
+\end{definition}
+
+\begin{remark} 
+	To make the first axiom clearer, we will write $\cdot$ for the action of $G$ on $S$ and no symbol (concatenation) for the multiplication of two elements in the group $G$.
+\end{remark}
+
+A group action is the same thing as a group homomorphism.
+
+
+
+\begin{lemma}[Permutation representation]
+\label{permutation representation}
+Consider a group $G$ and a set $S$. 
+\begin{enumerate}
+\item 
+Suppose $\cdot$ is an action of $G$ on $S$. For each $g \in G$, let $\mu_g\!:S\longrightarrow S$ denote the function given by $\mu_g(s)=g \cdot s$.
+Then the function
+$$\xymatrix@R=1mm{\rho\!: G \ar[r] & \Perm(S) \\ g \ar@{|->}[r] & \mu_g}$$
+is a well-defined homomorphism of groups. 
+
+\item Conversely, if $\rho: G \to \Perm(S)$ is a group homomorphism, then the rule 
+$$g \cdot s \colonequals (\rho(g))(s)$$
+defines an action of $G$ on $S$. 
+\end{enumerate}
+\end{lemma}
+
+\begin{proof} 
+(1) Assume we are given an action of $G$ on $S$. We first need to check that for all $g$, $\mu_g$ really is a permutation of $S$. We will show this by proving that $\mu_g$ has a two-sided inverse; in fact, that inverse is $\mu_{g^{-1}}$.
+Indeed, we have
+\begin{align*}
+(\mu_g\circ\mu_{g^{-1}})(s) &=\mu_g(\mu_{g^{-1}}(s)) & \text{ by the definition of composition}\\
+&=g\cdot (g^{-1} \cdot s) & \text{ by the definitinion for } \mu_g \text{ and } \mu_{g^{-1}}\\
+&=(gg^{-1})\cdot s & \text{ by the definition of a group action}\\
+&=e_G\cdot s & \text{ by the definition of a group}\\
+&= s &\text{ by the definition of a group action}
+\end{align*}
+thus $\mu_g \circ \mu_{g^{-1}}=\id_S$, and a similar argument shows that $\mu_{g^{-1}}\circ \mu_{g}=\id_S$ (exercise!). This shows that $\mu_g$ has an inverse, and thus it is bijective; it must then be a permutation of $S$.
+
+Finally, we wish to show that $\rho$ is a homomorphism of groups, so we need to check that $\rho(gh)=\rho(g) \circ \rho(h)$. Equivalently, we need to prove that $\mu_{gh}=\mu_g\circ\mu_{h}$. Now for all $s$, we have
+\begin{align*}
+\mu_{gh}(s) & = (gh) \cdot s & \textrm{ by definition of $\mu$} \\
+& = g\cdot(h \cdot s) & \textrm{ by definition of a group action} \\
+& =\mu_g\left(\mu_{h}(s)\right) & \textrm{by definition of } \mu_g \textrm{ and } \mu_h \\
+& = (\mu_g \circ \mu_{h})(s).
+\end{align*}
+This proves that $\rho$ is a homomorphism.
+
+(2) On the other hand, given a homomorphism $\rho$, the function 
+$$\xymatrix@R=1mm{G \times S \ar[r] & S \\ (g,s) \ar@{|->}[r] & g \cdot s = \rho(g)(s)}$$
+is an action, because 
+\begin{align*}
+h \cdot (g \cdot s) & = \rho(h)(\rho(g)(s)) & \textrm{by definition of $\rho$}\\
+& = (\rho(h) \circ \rho(g))(s) \\
+& = \rho(gh)(s) & \textrm{since $\rho$ is a homomorphism} \\
+& = (gh) \cdot s & \textrm{by definition of } \rho,
+\end{align*} 
+and 
+$$e_G s = \rho(e_G)(s) = \id(s) = s.\qedhere$$ 
+\end{proof}
+
+
+
+
+\begin{definition}
+	Given a group $G$ acting on a set $S$, the group homomorphism $\rho$ associated to the action as defined in \Cref{permutation representation} is called the \df{permutation representation} of the action.
+\end{definition}
+
+
+
+
+
+
+
+
+
+
+\begin{definition}\index{orbit (of an action)}\index{$\Orb_G(s)$}
+ Let $G$ be a group acting on a set $S$. The equivalence relation on $S$ induced by the action of $G$, written $\sim_G$, is defined by $s\sim_G t$ if and only if there is a $g \in G$ such that $t=g\cdot s$.  The equivalence classes of $\sim_G$ are called {\bf orbits}: the equivalence class
+ $$\Orb_G(s) \colonequals \{g\cdot s \ | \ g\in G\}$$ 
+ is the orbit of $s$. The set of equivalence classes with respect to $\sim_G$ is written $S/G$.
+ \end{definition}
+ 
+ 
+
+
+
+ 
+\begin{lemma}
+Let $G$ be a group acting on a set $S$. Then 
+\begin{enumerate}[label=(\alph*)]
+\item The relation $\sim_G$ really is an equivalence relation.
+\item For any $s,t \in S$ either $\Orb_G(s)=\Orb_G(t)$ or $\Orb_G(s)\cap \Orb_G(t)=\emptyset$.
+\item The orbits of the action of $G$ form a partition of $S$: $S=\bigcup_{s \in S} \Orb_G(s)$. 
+ \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+  Assume $G$ acts on $S$. 
+  
+ \begin{enumerate}[label=(\alph*)]
+ \item We really need to prove three things: that $\sim_G$ is reflexive, symmetric, and transitive.
+ 
+(Reflexive):  We have $x \sim_G x$ for all $x \in S$ since $x = e_G \cdot x$. 
+
+
+(Symmetric): If $x \sim_G y$, then $y = g \cdot x$ for some $g \in G$, and thus 
+$$g^{-1} \cdot y = g^{-1} \cdot (g \cdot x) = (g^{-1}g) \cdot x = e \cdot x = x,$$ 
+which shows that $y \sim_G x$. 
+
+(Transitive): If $x \sim_G y$ and $y \sim_G z$, then $y = g \cdot x$ and $z = h \cdot y$ for some $g, h \in G$ and hence $z = h \cdot (g \cdot x) = (hg) \cdot x$, which gives $x \sim_G z$.
+\end{enumerate}
+
+Parts (b) and (c) are formal properties of the equivalence classes for any equivalence relation. 
+\end{proof}
+
+\begin{corollary}
+  Suppose a group $G$ acts on a finite set $S$. Let $s_1, \dots, s_k$ be a complete set of orbit representatives --- that is, assume each orbit contains exactly one member of the
+  list $s_1, \dots, s_k$. Then
+$$|S| = \sum_{i = 1}^k |\Orb_G(s_i)|.$$
+\end{corollary}
+
+
+\begin{proof}
+This is an immediate corollary of the fact that the orbits form a partition of $S$.
+\end{proof}
+
+
+
+
+\begin{remark}
+Let $G$ be a group acting on $S$.
+The associated group homomorphism $\rho$ is injective if and only if it has trivial kernel, by \Cref{injective homomorphism iff ker trivial}. This is equivalent to the statement $\mu_g = \id_S \implies g = e_G$. The later can be written in terms of elements of $S$: for each $g \in G$, 
+ $$g \cdot s = s \quad \textrm{for all } s \in S \implies g = e_G.$$
+\end{remark}
+
+
+
+\begin{definition}\label{defn:faithful}\index{faithful action}\index{transitive action}
+Let $G$ be a group acting on a set $S$. The action is {\bf faithful} if the associated group homomorphism is injective. Equivalently, the action is faithful if and only if 
+$$g \cdot s = s \quad \textrm{for all } s \in S \implies g = e_G.$$
+The action is {\bf transitive} if for all $p,q \in S$ there is $g \in G$ such that $q=g\cdot p$. Equivalently, the action is transitive if there is only one orbit, meaning that
+$$\Orb_G(p)=S \textrm{ for all } p\in S.$$
+\end{definition}
+
+
+
+
+
+\section{Examples of group actions}
+
+\begin{example}[Trivial action] 
+For any group $G$ and any set $S$, $g \cdot s \colonequals s$ defines an action, the \df{trivial action}. The associated group homomorphism is the map
+$$\xymatrix@R=0.1mm{G \ar[r] & \Perm(S) \\ g \ar@{|->}[r] & \id_S.}$$
+A trivial action is not faithful unless the group $G$ is trivial; in fact, the corresponding group homomorphism is trivial.
+\end{example}
+
+
+
+\begin{example} 
+The group $D_{n}$ acts on the vertices of $P_n$, which we will label with $V_1, \dots, V_{n}$ in a counterclockwise fashion, with $V_1$ on the positive $x$-axis, as in \Cref{defining r and s}.
+Note that $D_{n}$ acts on $\{V_1, \dots, V_n \}$: for each $g \in D_{n}$ and each integer $1 \leqslant j \leqslant n$, we set 
+$$g \cdot V_j = V_i \quad \textrm{ if and only if } \quad g(V_j)=V_i.$$
+This satisfies the two axioms of a group action (check!).
+
+Let $\rho\!: D_{n} \to \Perm\left(\{V_1,\ldots,V_n\}\right)\cong S_n$ be the associated group homomorphism. Note that $\rho$ is injective, because if an element  of $D_{n}$ fixes all $n$ vertices of a polygon, then it must be the identity map. More generally, if an isometry of $\R^2$ fixes any three noncolinear points, then it is the identity. To see this, note that given three noncolinear points, every point in the plane is uniquely determined by its distance from these three points (exercise!).
+
+The action of $D_{n}$ on the $n$ vertices of $P_n$ is faithful; in fact, we saw before that each $\sigma \in D_n$ is completely determined by what it does to any two adjacent vertices.
+\end{example}
+
+
+\begin{example}[group acting on itself by left multiplication]
+Let $G$ be any group and define an action $\cdot$ of $G$ on $G$ (regarded as just a set) by the rule
+$$g \cdot x \colonequals g  x.$$
+This is an action, since multiplication is associative and $e_G \cdot x = x$ for all $x$; it is know as the \df{left regular action} of $G$ on itself.
+
+The left regular action of $G$ on itself is faithful, since if $g \cdot x = x$ for all $x$ (or even for just one $x$), then $g = e$. It follows that the associated homomorphism is injective.
+This action is also transitive: given any $g \in G$, $g = g \cdot e$, and thus $\Orb_G(e) = G$.
+\end{example}
+
+
+
+\begin{example}[conjugation]\index{action by conjugation}\index{conjugation action}
+Let $G$ be any group and fix an element $g \in G$. Define the {\df conjugation action} of $G$ on itself by setting
+$$g\cdot x \colonequals gxg^{-1} \textrm{ for any } g,x\in G.$$
+The action of $G$ on itself by conjugation is  not necessarily faithful. In fact, we claim that the kernel of the permutation representation $\rho\!:G\to \Perm(G)$ for the conjugation action is the center $\Zc(G)$. Indeed,
+$$g\in \ker\rho\iff g\cdot x=x \textrm{ for all } x\in G \iff gxg^{-1}=x \textrm{ for all } x\in G$$
+$$ \iff gx=xg \textrm{ for all } x\in G \iff g\in \Zc(G). $$
+%The orbits for this action are quite interesting, and we will study them in more detail later. 
+If $G$ is nontrivial, this action is \emph{never} transitive unless $G$ is trivial: note that $\Orb_G(e) = \{ e \}$.
+\end{example}
+
+
+
+\chapter{Subgroups}
+
+
+Every time we define a new abstract structure consisting of a set $S$ with some extra structure, we then want to consider subsets of $S$ that inherit that special structure. It is now time to discuss subgroups.
+
+\section{Definition and examples}
+
+\begin{definition}\index{$H \leq G$}\index{$H<G$}
+A nonempty subset $H$ of a group $G$ is a \df{subgroup} of $G$ if $H$ is a group under the multiplication law of $G$. If $H$ is a subgroup of $G$, we write $H \leq G$, or $H<G$ if we want to indicate that $H$ is a subgroup of $G$ but $H\neq G$.
+\end{definition}
+
+
+\begin{remark}
+	Note that if $H$ is a subgroup of $G$, then necessarily $H$ must be closed for the product in $G$, meaning that for any $x,y \in H$ we must have $xy \in H$.
+\end{remark}
+
+
+
+\begin{remark}
+	Let $H$ be a subgroup of $G$. Since $H$ itself is a group, it has an identity element $e_H$, and thus
+	$$e_H e_H = e_H$$
+	in $H$. But the product in $H$ is just a restriction of the product of $G$, so this equality also holds in $G$. Multiplying by $e_H^{-1}$, we conclude that $e_H = e_G$.
+	
+	In summary, if $H$ is any subgroup of $G$, then we must have $e_G \in H$.
+\end{remark}
+
+
+
+\begin{example}\index{trivial subgroups}
+	Any group $G$ has two {\bf trivial subgroups}: $G$ itself, and $\{ e_G \}$.
+\end{example}
+
+Any subgroup $H$ of $G$ that is neither $G$ nor $\{ e_G \}$ is a \df{nontrivial subgroup}. A group might not have any nontrivial subroups.
+
+
+\begin{example}
+	The group $\Z/2$ has no nontrivial subgroup.
+\end{example}
+
+
+\begin{example}
+The following are strings of subgroups with the obvious group structure: 
+$$\Z < \Q < \R < \C \quad \textrm{and} \quad \Z^\times < \Q^\times < \R^\times < \C^\times.$$
+\end{example}
+
+
+To prove that a certain subset $H$ of $G$ forms a subgroup, it is very inefficient to prove directly that $H$ forms a group under the same operation as $G$. Instead, we use one of the following two tests:
+
+\begin{lemma}[Subgroup tests]
+Let $H$ be a subset of a group $G$.
+\begin{itemize}[leftmargin=10pt]
+	\item \underline{Two-step test}:
+If $H$ is nonempty and closed under multiplication and taking inverses, then $H$ is a subgroup of $G$. More precisely, if for all $x, y \in H$, we have $xy \in H$ and $x^{-1} \in H$, then $H$ is a subgroup of $G$.
+\item \underline{One-step test}:
+If $H$ is nonempty and $xy^{-1} \in H$ for all $x,y \in H$, then $H$ is a subgroup of~$G$.
+\end{itemize}
+\end{lemma}
+
+\begin{proof} 
+We prove the One-step test first.
+Assume $H$ is nonempty and for all $x,y \in H$ we have $xy^{-1} \in H$. Since $H$ is nonempty, there is some $h \in H$, and hence $e_G = hh^{-1} \in H$. Since $e_Gx=x=xe_G$ for any $x\in G$, and hence for any $x \in H$, then $e_G$ is an identity element for $H$. For any $h \in H$, we that $h^{-1} = eh^{-1} \in H$, and since in $G$ we have $h^{-1}h = e = hh^{-1} \in H$ and this calculation does not change when we restrict to $H$, we can conclude that every element of $H$ has an inverse inside $H$. For every $x,y \in H$ we must have $y^{-1} \in H$ and thus 
+$$xy = x(y^{-1})^{-1} \in H$$ 
+so $H$ is closed under the multiplication operation. This means that the restriction of the group operation of $G$ to $H$ is a well-defined group operation. This operation is associative by the axioms for the group $G$. The axioms of a group have now been established for $(H, \cdot)$.
+
+Now we prove the Two-Step test.
+Assume $H$ is nonempty and closed under multiplication and taking inverses. Then for all $x,y\in H$ we must have $y^{-1}\in H$ and thus $xy^{-1}\in H$. Since the hypothesis of the One-step test is satisfied, we conclude that $H$ is a subgroup of $G$.
+\end{proof}
+
+
+
+
+\begin{lemma}[Examples of subgroups]\label{subgroups examples}
+Let $G$ be a group.
+\vspace{-0.3em}
+\begin{enumerate}[leftmargin=20pt,itemsep=-0.1em,label=(\alph*)]
+\item If $H$ is a subgroup of $G$ and $K$ is a subgroup of $H$, then $K$ is a subgroup of $G$. 
+\item Let $J$ be any (index) set. If $H_\alpha$ is a subgroup of $G$ for all $\alpha \in J$, then $H=\bigcap_{\alpha\in J} H_\alpha$ is a subgroup of $G$.
+ \item If $f: G \to H$ is a homomorphism of groups, then $\im(f)$ is a subgroup of $H$.
+ \item If $f: G \to H$ is a homomorphism of groups, and $K$ is a subgroup of $G$, then 
+ $$f(K) \colonequals \{ f(g) \mid g \in K \}$$
+is a subgroup of $H$.
+ \item If $f: G \to H$ is a homomorphism of groups, then $\ker(f)$ is a subgroup of $G$.
+ \item The center $\Zc(G)$ is a subgroup of $G$.
+\end{enumerate}
+\end{lemma}
+
+
+\begin{proof}$\,$
+
+\vspace{-0.6em}
+\begin{enumerate}[itemsep=-0.1em,label=(\alph*)]
+	\item By definition, $K$ is a group under the multiplication in $H$, and the multiplication in $H$ is the same as that in $G$, so $K$ is a subgroup of $G$.
+	\item First, note that $H$ is nonempty since $e_G \in H_\alpha$ for all $\alpha\in J$. Moreover, given $x,y\in H$, for each $\alpha$ we have $x,y \in H_\alpha$ and hence $xy^{-1} \in H_\alpha$. It follows that $xy^{-1} \in H$. By the Two-Step test, $H$ is a subgroup of $G$. 
+	\item Since $G$ is nonempty, then $\im(f)$ must also be nonemtpy; for example, it contains $f(e_G) = e_H$. If $x,y \in \im(f)$, then $x = f(a)$ and $y = f(b)$ for some $a,b \in G$, and hence 
+	$$xy^{-1} =f(a)f(b)^{-1} = f(ab^{-1}) \in \im(f).$$
+	By the Two-Step Test, $\im(f)$ is a subgroup of $H$. 
+	
+	\item The restriction $g\!: K \to H$ of $f$ to $K$ is still a group homomorphism, and thus $f(K) = \im g$ is a subgroup of $H$. 
+	
+	\item Using the One-step test, note that if $x, y \in \ker(f)$, meaning $f(x)=f(y)=e_G$, then 
+	$$f(xy^{-1})=f(x)f(y)^{-1}=e_G.$$ 
+	This shows that if $x,y\in \ker(f)$ then $xy^{-1}\in \ker(f)$, so $\ker(f)$ is closed for taking inverses. By the Two-Step test, $\ker(f)$ is a subgroup of $G$.
+	\item The center $\Zc(G)$ is the kernel of the permutation representation $G\to \Perm(G)$ for the conjugation action, so $\Zc(G)$ is a subgroup of $G$ since the kernel of a homomorphism is a subgroup.\qedhere 
+\end{enumerate} 
+\end{proof}
+
+
+
+
+\begin{example}
+For any field $F$, the \df{special linear group}
+$$\SL_n(F) \colonequals \{A \mid A = n\times n \text{ matrix with entries in } F, \det(A)=1_F\}$$
+is a subgroup of the general linear group $\GL_n(F)$. To prove this, note that $\SL_n(F)$ is the kernel of the determinant map $\det\!:\GL_n(F)\to F^\times$, which is one of the homomorphisms in \Cref{homomorphism examples}. By \Cref{subgroups examples}, this implies that $\SL_n(F)$ is indeed a subgroup of $\GL_n(F)$.
+\end{example}
+
+
+\begin{definition}\index{preimage of a homomorphism}\index{$f^{-1}$ (for a homomorphism $f$)}
+Let $f\!:G\to H$ be a group homomorphism and $K\leq H$. The {\bf preimage} of $K$ if given by
+$$f^{-1}(K) \colonequals \{g\in G \mid f(g)\in K\}$$
+\end{definition}
+
+
+\begin{exercise}\label{preimage is a subgroup}
+Prove that if $f\!:G\to H$ is a group homomorphism and $K\leq H$, then the preimage of $K$ is a subgroup of $G$.
+\end{exercise}
+
+
+
+
+\begin{exercise}\label{rotations subgroup of D_n}
+	The set of rotational symmetries $\{ r^i \mid i \in \Z \} = \{\id, r, r^2, \dots, r^{n-1}\}$ of $P_n$ is a subgroup of $D_{n}$.
+\end{exercise}
+
+
+In fact, this is the subgroup generated by $r$.
+
+
+\begin{definition}\index{subgroup generated by a set}\index{cyclic subgroup generated by an element}
+Given a group $G$ and a subset $X$ of $G$, the {\bf subgroup of $G$ generated by $X$} is
+$$\langle X \rangle \colonequals \bigcap_{\substack{H \leq G \\ H \supseteq X}} H.$$
+If $X=\{x\}$ is a set with one element, then we write $\langle X \rangle=\langle x \rangle$ and we refer to this as the {\bf cyclic subgroup generated by} $x$. More generally, when $X = \{ x_1, \ldots, x_n \}$ is finite, we may write $\langle x_1, \ldots, x_n \rangle$ instead of $\langle X \rangle$. Finally, given two subsets $X$ and $Y$ of $G$, we may sometimes write $\langle X, Y \rangle$ instead of $\langle X \cup Y \rangle$.
+\end{definition}
+
+
+\begin{remark}
+Note that by \Cref{subgroups examples}, $\langle X \rangle$ really is a subgroup of $G$. By definition, the subgroup generated by $X$ is the smallest (with respect to containment) subgroup of $G$ that contains $X$, meaning that $\langle X \rangle$ is contained in any subgroup that contains $X$.
+\end{remark}
+
+
+\begin{remark}
+	Do not confuse this notation with giving generators and relations for a group; here we are forgoing the relations and focusing only on writing a list of generators. Another key difference is that we have picked elements in a given group $G$, but the subgroup they generate might not be $G$ itself, but rather some other subgroup of $G$.
+\end{remark}
+
+
+\begin{lemma}\label{lem:<X>}
+For a subset $X$ of $G$, the elements of $\langle X \rangle$ can be described as:
+$$\langle X \rangle = \left\{x_1^{j_1} \cdots x_m^{j_m} \mid m \geqslant 0, j_1, \dots, j_m \in \Z \text{ and }x_1, \dots, x_m \in X \right\}.$$
+\end{lemma}
+
+Note that the product of no elements is by definition the identity.
+
+\begin{proof} 
+Let 
+$$S= \left\{x_1^{j_1} \cdots x_m^{j_m} \mid m \geqslant 0, j_1, \dots, j_m \in \Z \text{ and }x_1, \dots, x_m \in X \right\}.$$ 
+Since $\langle X \rangle$ is a subgroup that contains $X$, it is closed under products and inverses, and thus must contain all elements of $S$. Thus $X \supseteq S$.
+
+To show $X \subseteq S$, we will prove that the set $S$ is a subgroup of $G$ using the One-step test:
+\begin{itemize}
+\item $S \neq \emptyset$ since we allow $m = 0$ and
+declare the empty product to be $e_G$. 
+\item Let $a$ and $b$ be elements of $S$, so that they can be written as
+$a = x_1^{j_1} \cdots x_m^{j_m}$ and $b= y_1^{i_1} \cdots y_n^{i_n}$. Then
+$$
+ab^{-1} = x_1^{j_1} \cdots x_m^{j_m}(y_1^{i_1} \cdots y_n^{i_m})^{-1}=
+x_1^{j_1} \cdots x_m^{j_m} y_n^{-i_n} \cdots y_1^{-i_1} \in S.
+$$
+\end{itemize}
+Therefore, $S\leq G$ and $X\subseteq S$ (by taking $m=1$ and $j_1=1$) and by the minimality of $\langle X \rangle$ we conclude that $\langle X \rangle\subseteq S$. 
+\end{proof}
+
+ 
+ \begin{example} 
+\Cref{lem:<X>} implies that for an element $x$ of a group $G$, $\langle x\rangle=\{x^j \mid j\in \Z\}$.
+\end{example}
+
+\begin{example} 
+We showed in \Cref{Dnelements in terms of r and s} that $D_{n}=\langle r,s \rangle$, so $D_{n}$ is the subgroup of $D_{n}$ generated by $\{r,s\}$. But do not mistake this for a presentation with no relations! In fact, these generators satisfy lots of relations, such as $srs=r^{-1}$, which we proved in \Cref{dihedral groups product lemma}.
+\end{example}
+
+\begin{example} 
+For any $n \geqslant 1$, we proved in Problem Set 2 that $S_n$ is generated by the collection of adjacent transpositions $(i \quad i+1)$.	
+\end{example}
+
+
+
+\begin{theorem}[Cayley's Theorem]\index{Cayley's Theorem}
+Every finite group is isomorphic to a subgroup of $S_n$. 
+\end{theorem}
+
+\begin{proof} 
+Suppose $G$ is a finite group of order $n$ and label the group elements of $G$ from $1$ to $n$ in any way you like. The left regular action of $G$ on itself determines a permutation representation $\rho\!:G\to \Perm(G)$, which is injective. Note that since $G$ has $n$ elements, $\Perm(G)$ is the group of permutations on $n$ elements, and thus $\Perm(G) \cong S_n$. By \Cref{subgroups examples}, $\im(\rho)$ is a subgroup of $S_n$. If we restrict $\rho$ to its image, we get an isomorphism $\rho\!: G \to \im(\rho)$. Hence $G\cong \im(\rho)$, which is a subgroup of $S_n$. 
+\end{proof}
+
+\begin{remark}
+From a practical perspective, this is a nearly useless theorem. It is, however, a beautiful fact.	
+\end{remark}
+
+
+
+\section{Subgroups vs isomorphism invariants}
+
+Some properties of a group $G$ pass onto all its subgroups, but not all. In this section, we collect some facts examples illustrating some of the most important properties.
+
+
+
+\begin{theorem}[Lagrange's Theorem]\index{Lagrange's Theorem}\label{Lagrange}
+If $H$ is a subgroup of a finite group $G$, then $|H|$ divides $|G|$.
+\end{theorem}
+
+You will prove Lagrange's Theorem in the next problem set.
+
+
+\begin{exercise}\label{intersection coprime subgroups is e}
+	Let $G$ be a finite group Suppose that $A$ and $B$ are subgroups of $G$ such that $\gcd(|A|, |B|) = 1$. Show that $A \cap B = \{ e \}$.
+\end{exercise}
+
+
+\begin{example}[Infinite group with finite subgroup]\label{infinite group with infinite subgroup}
+	The group $\SL_2(\R)$ is infinite, but the matrix
+	$$A = \begin{pmatrix}
+		0 & 1 \\ 1 & 0
+	\end{pmatrix}$$
+	has order $2$ and it generates the subgroup $\langle A \rangle = \{ A, I \}$ 	with two elements.
+\end{example}
+
+
+\begin{example}[Nonabelian group with abelian subgroup]\label{nonabelian group with abelian subgroup}
+	The dihedral group $D_n$, with $n \geqslant 3$, is nonabelian, while the subgroup of rotations (see \Cref{rotations subgroup of D_n}) is abelian (for example, because it is cyclic; see \Cref{cyclic abelian} below).
+\end{example}
+
+To give an example of a finitely generated group with an infinitely generated group, we have to work a bit harder.
+
+\begin{example}[Finitely generated group with infinitely generated subgroup]\label{fg group with infinitely generated subgroup}
+	Consider the subgroup $G$ of $\GL_2(\Q)$ generated by
+	$$A = \begin{pmatrix}
+		1 & 1 \\ 0 & 1
+	\end{pmatrix} \qquad \textrm{and} \qquad B = \begin{pmatrix}
+		2 & 0 \\ 0 & 1
+	\end{pmatrix}.$$
+	Let $H$ be the subgroup of $\GL_2(\Q)$ given by
+	$$H = \left\lbrace \begin{pmatrix} 1 & \frac{n}{\, 2^m} \\ 0 & 1 \end{pmatrix} \in G \displaystyle\mid n, m \in \Z \right\rbrace.$$
+	We leave it as an exercise to check that this is indeed a subgroup of $\GL_2(\Q)$. Note that for all integers $n$ and $m$ we have
+	$$A^n = \begin{pmatrix} 1 & n \\ 0 & 1 \end{pmatrix} \qquad \textrm{and} \qquad B^m = \begin{pmatrix} 2^m & 0 \\ 0 & 1 \end{pmatrix},$$
+	and
+	$$B^{-m} A^n B^m = \begin{pmatrix} 1 & \frac{n}{\, 2^m} \\ 0 & 1 \end{pmatrix} \in H.$$
+Therefore, $H$ is a subgroup of $G$, and in fact
+$$H = \langle B^{-m} A^n B^m \mid n, m \in \Z \rangle.$$
+While $G = \langle A, B \rangle$ is finitely generated by construction, we claim that $H$ is not. The issue is that
+$$\begin{pmatrix} 1 & \frac{a}{\, 2^b} \\ 0 & 1 \end{pmatrix} 
+\begin{pmatrix} 1 & \frac{c}{\, 2^d} \\ 0 & 1 \end{pmatrix} = 
+\begin{pmatrix} 1 & \frac{a}{\, 2^b} + \frac{c}{\, 2^d} \\ 0 & 1 \end{pmatrix},$$
+so the subgroup generated by any finite set of matrices in $H$, say
+$$\left\langle \begin{pmatrix} 1 & \frac{n_1}{\, 2^{m_1}} \\ 0 & 1 \end{pmatrix}, \ldots, \begin{pmatrix} 1 & \frac{n_t}{\, 2^{m_t}} \\ 0 & 1 \end{pmatrix} \right\rangle$$
+does not contain
+$$\begin{pmatrix} 1 & \frac{1}{\, 2^{N}} \\ 0 & 1 \end{pmatrix} \in H$$
+with $N = \max_i \{|m_i| \} + 1$. Thus $H$ is infinitely generated.
+\end{example}
+
+In the previous example, we constructed a group with two generators that has an infinitely generated subgroup. We will see in the next section that we couldn't have done this with less generators; in fact, the subgroups of a cyclic group are all cyclic.
+
+
+\
+
+
+Below we collect some important facts about the relationship between finite groups and their subgroups, including some explained by the examples above and others which we leave as an exercise.
+
+
+\vspace{0.5em}
+
+\underline{Order of the group:}
+\vspace{-0.3em}
+\begin{itemize}[itemsep=-0.2em]
+\item Every subgroup of a finite group is finite.
+\item There exist infinite groups with finite subgroups; see \Cref{infinite group with infinite subgroup}.
+\item Lagrange's Theorem: If $H$ is a subgroup of a finite group $G$, then $|H|$ divides $|G|$.
+\end{itemize}
+
+\underline{Orders of elements:}
+\vspace{-0.3em}
+\begin{itemize}
+\item  If $H \subseteq G$, then the set of orders of elements of $H$ is a subset of the set of orders of elements of $G$.
+\end{itemize}
+
+\underline{Abelianity:}
+\vspace{-0.3em}
+\begin{itemize}[itemsep=-0.2em]
+\item Every subgroup of an abelian group is abelian. 
+\item There exist nonabelian groups with abelian subgroups; see \Cref{nonabelian group with abelian subgroup}.
+\item Every cyclic (sub)group is abelian.
+\end{itemize}
+
+\underline{Generators:}
+\vspace{-0.3em}
+\begin{itemize}[itemsep=-0.2em]
+\item There exist a finitely generated group $G$ and a subgroup $H$ of $G$ such that $H$ is not finitely generated; see \Cref{fg group with infinitely generated subgroup}.
+\item Every infinitely generated group has finitely generated subgroups.\footnote{This one is a triviality: we are just noting that even if the group is infinitely generated, we can always consider the subgroup generated by our favorite element, which is, by definition, finitely generated.}
+\item Every subgroup of a cyclic group is cyclic; see \Cref{cyclic groups thm}. 
+\end{itemize}
+
+
+
+\section{Cyclic groups}
+
+Recall the definition of a cyclic group.
+
+\begin{definition}
+If $G$ is a group a generated by a single element, meaning that there exists $x \in G$ such that $G = \langle x \rangle$, then $G$ is a \df{cyclic group}.
+\end{definition}
+
+\begin{remark}
+Given a cyclic group $G$, we may be able to pick different generators for $G$. For example, $\Z$ is a cyclic group, and both $1$ or $-1$ are a generator. More generally, for any element $x$ in a group $G$
+$$\langle x \rangle= \langle x^{-1}\rangle.$$
+\end{remark}
+
+
+\begin{example}
+The main examples of cyclic groups, in additive notation, are the following:
+\begin{itemize}
+\item The group $(\Z,+)$ is cyclic with generator 1 or -1. 
+\item The group $(\Z/n,+)$ of congruences modulo $n$ is cyclic, since it is for example generated by $[1]$. Below we will find all the choices of generators for this group.
+\end{itemize}
+In fact, we will later prove that up to isomorphism these are the {\em only} examples of cyclic groups.
+\end{example}
+
+Let us record some facts important facts about cyclic groups which you have proved in problem sets:
+
+
+\begin{lemma}\label{cyclic abelian}
+	Every cyclic group is abelian.
+\end{lemma}
+
+\begin{lemma}\label{order of an element divides any power that is identity}
+Let $G$ be a group and $x \in G$. If $x^m = e$ then $|x|$ divides $m$.
+\end{lemma}
+
+%\begin{proof} 
+%Let $n \colonequals |x|$. By the Division Algorithm, we can write $m = nq + r$ for some $0 \leqslant r < n$. We now have 
+%$$x^r = (x^n)^qx^r = x^m = e$$ 
+%and so, by the definition of order and since $r<n$, it must be that $r = 0$.
+%\end{proof}
+
+Now we can use these to say more about cyclic groups.
+
+
+\begin{theorem}\label{cyclic groups thm}
+ Let $G=\langle x\rangle$, where $x$ has finite order $n$. Then
+\begin{enumerate}[label=(\alph*)]
+\item $|G|=|x|=n$ and $G=\{e,x,\ldots,x^{n-1}\}$.
+\item For any integer $k$, then $|x^k| = \frac{n}{\gcd(k,n)}$. In particular, 
+$$\langle x^k\rangle =G \iff \gcd(n,k)=1.$$
+\item There is a bijection \vspace{-1em}
+$$\xymatrix@R=0.5mm@C=15mm{
+\{\text{divisors of } |G|\} \ar@{<->}[r] & \{ \text{subgroups of } G \} \\ 
+d \ar@{|->}[r]^-{\Psi} & \langle x^{\frac{|G|}{d}} \rangle \\
+|H| & \ar@{|->}[l]^-{\Phi} H}$$ 
+Thus all subgroups of $G$ are cyclic, and there is a unique subgroup of each order.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+\begin{enumerate}[label=(\alph*)]
+\item By \Cref{lem:<X>}, we know $G=\{x^i \mid i \in \Z\}$. Now we claim that the elements 
+$$e = x^0, x^1, \dots, x^{n-1}$$ 
+are all distinct. Indeed, if $x^i=x^j$ for some $0\leqslant i<j<n$, then $x^{j-i}=e$ and $1 \leqslant j-i<n$, contradicting the minimality of the order $n$ of $x$. In particular, this shows that $|G| \geqslant n$.
+
+Now take any $m \in \Z$. By the Division Algorithm, we can write $m = qn+r$ for some integers $q, r$ with $0 < r \leqslant n$. Then 
+$$x^m=x^{nq+r}=(x^n)^qx^r=x^r.$$
+This shows that every element in $G$ can be written in the form $x^r$ with $0 \leqslant r < n$, so
+$$G = \{x^0, x^1, \dots, x^{n-1}\} \qquad \textrm{and} \qquad |G| = n.$$
+
+\item Let $k$ be any integer. Set $y \colonequals x^k$ and $d \colonequals \gcd(n,k)$, and note that $n=da, k=db$ for some $a,b\in \Z$ such that $\gcd(a,b)=1$. 
+We have
+$$y^a=x^{ka}=x^{dba}=(x^n)^b=e,$$ 
+so $|y|$ divides $a$ by \Cref{order of an element divides any power that is identity}. On the other hand, $x^{k|y|}=y^{|y|}=e$, so again by \Cref{order of an element divides any power that is identity} we have $n$ divides $k|y|$. 
+Now
+$$da = n \textrm{ divides } k|y| = db|y|$$
+and thus
+$$a \textrm{ divides } b|y|.$$
+But $\gcd(a,b)=1$, so we conclude that $a$ divides $|y|$.
+Since $|y|$ also divides $a$ and both $a$ and $|y|$ are positive, we conclude that 
+$$|y|=a=\frac{n}{\gcd(k,n)}.$$
+
+
+\item Consider any subgroup $H$ of $G$ with $H \neq \{ e \}$, and set 
+$$k \colonequals \min \{i \in \Z \mid i>0 \textrm{ and } g^i\in H\}.$$ 
+On the one hand, $H \supseteq \langle g^k \rangle$, since $H \ni g^k$ and $H$ is closed for products. Moreover, given any other positive integer $i$, we can again write $i = kq+r$ for some integers $q, r$ with $0 \leqslant r < k$, and
+$$g^r = g^{i-kq} = g^i (g^k)^q \in H,$$
+so by minimality of $r$ we conclude that $r = 0$. Therefore, $k | r$, and thus we conclude that
+$$H = \langle g^k \rangle.$$
+Now to show that $\Psi$ is a bijection, we only need to prove that $\Phi$ is a well-defined function and a two-sided inverse for $\Psi$, and this we leave as an exercise.\qedhere
+%3. Let $\Phi: \{\text{subgroups of } G\} \to  \{\text{divisors of } |G|\} $ be given by $\Phi(H)=|H|$. $\Phi$ is well defined by Lagrange's Theorem. We show that $\Phi$ is a two sided inverse for $\Psi$.
+%We compute $(\Psi\circ\Phi)(d)=\left | \langle g^{\frac{|G|}{d}}  \rangle \right |=\left | g^{\frac{|G|}{d}} \right |\stackrel{2.}{=}\frac{|G|}{|G|/d}=d$ and $(\Phi\circ\Psi)(H)=\left\langle g^{\frac{|G|}{|H|}}\right\rangle$. We wish to show $\left\langle g^{\frac{|G|}{|H|}}\right\rangle=H$. Let $y\in H$ and consider $\langle y \rangle \leq H$. By Lagrange's theorem, $|y|=|\langle y \rangle | \mid |H|$. Since $y\in G$ we have $y=x^k$ for some $k\in \Z$ and we have $|y|=\frac{|G|}{\gcd(|G|,k)}\mid |H|$.
+\end{enumerate}
+\end{proof}
+
+
+\begin{corollary}
+	Let $G$ be any finite group and consider $x \in G$. Then $|x|$ divides $|G|$.
+\end{corollary}
+
+
+\begin{proof}
+	The subgroup $\langle x \rangle$ of $G$ generated by $x$ is a cyclic group, and since $G$ is finite so is $\langle x \rangle$. By \Cref{cyclic groups thm}, $|x| = |\langle x \rangle|$, and by Lagrange's Theorem \ref{Lagrange}, the order of $\langle x \rangle$ divides the order of $G$.
+\end{proof}
+
+
+There is a sort of quasi-converse to \Cref{cyclic groups thm}:
+
+\begin{exercise} 
+Show that if $G$ is a finite group $G$ has a unique subgroup of order $d$ for each positive divisor $d$ of $|G|$, then $G$ must be cyclic.
+\end{exercise}
+
+
+We can say a little more about the bijection in \Cref{cyclic groups thm}. Notice how smaller subgroups (with respect to containment) correspond to smaller divisors of $G$. We can make this observation rigorous by talking about partially ordered sets. 
+
+\begin{definition}
+An \df{order relation} on a set $S$ is a binary relation $\leq$ that satisfies the following properties:
+\begin{itemize}[itemsep=0.1em]
+	\item Reflexive: $s \leq s$ for all $s \in S$.
+	\item Antisymmetric: if $a\leq b$ and $b\leq a$, then $a=b$.
+	\item Transitive: if $a\leq b$ and $b\leq c$, then $a \leq c$.
+\end{itemize}
+A \df{partially ordered set} or \df{poset} consists of a set $S$ endowed with an order relation $\leq$, which we might indicate by saying that the pair $(S,\leq)$ is a partially ordered set. 
+
+Given a poset $(S, \leq)$ and a subset $T \subseteq S$, an \df{upper bound} for $T$ is an element $s \in S$ such that $t \leq s$ for all $t \in T$, while a \df{lower bound} is an element $s \in S$ such that $s \leq t$ for all $t \in T$.
+An upper bound $s$ for $T$ is called a \df{supremum} if $s \leq u$ for all upper bounds $u$ of $T$, while a lower bound $t$ for $T$ is an \df{infimum} if $l \leq t$ for all lower bounds $t$ for $T$.
+A \df{lattice} is a poset in which every two elements have a unique supremum and a unique infimum.
+\end{definition}
+
+
+\begin{remark}
+	Note that the word \emph{unique} can be removed from the definition of lattice. In fact, if a subset $T \subseteq S$ has a supremum, then that supremum is necessarily unique. Indeed, given two suprema $s$ and $t$, then by definition $s \leq t$, since $s$ is a supremum and $t$ is an upper bound for $T$, but also $t \leq s$ since $t$ is a supremum and $s$ is an upper bound for $T$. By antisymmetry, we conclude that $s=t$.
+\end{remark}
+
+
+
+\begin{example}
+The set of all positive integers is a poset with respect to divisibility, setting $a\leq b$ whenever $a|b$. In fact, this is a lattice: the supremum of $a$ and $b$ is $\lcm(a,b)$ and the infimum of $a$ and $b$ is $\gcd(a,b)$.
+\end{example}
+
+
+\begin{example}
+Given a set $S$, the \df{power set} of $S$, meaning the set of all subsets of $S$, is a poset with respect to containment, where the order is defined by $A\leq B$ whenever $A\subseteq B$. In fact, this is a lattice: the supremum of $A$ and $B$ is $A\cup B$ and the infimum of $A$ and $B$ is $A\cap B$.
+\end{example}
+
+
+\begin{exercise}
+	Show that the set of all subgroups of a group $G$ is a poset with respect to containment, setting $A \leq B$ if $A \subseteq B$.
+\end{exercise}
+
+\begin{lemma}
+	The set of all subgroups of a group $G$ is a lattice with respect to containment.
+\end{lemma}
+
+
+\begin{proof}
+	Let $A$ and $B$ be subgroups of $G$. We need to prove that $A$ and $B$ have an infimum and a supremum. We claim that $A \cap B$ is the infimum and $\langle A, B \rangle$ is the supremum. First, these are both subgroups of $G$, by \Cref{subgroups examples} in the case $A \cap B$ and by definition for the other. Moreover, $A \cap B$ is a lower bound for $A$ and $B$ and $\langle A, B \rangle$ is an upper bound by definition. Finally, if $H \leq A$ and $H \leq B$, then every element of $h$ is in both $A$ and $B$, and thus it must be in $A \cap B$, so $H \leq A \cap B$. Similarly, if $A \leq H$ and $B \leq H$, then $\langle A, B \rangle \subseteq H$.
+\end{proof}
+
+
+\begin{remark}
+The isomorphism $\Psi$ in \Cref{cyclic groups thm} satisfies the following property: if $d_1\mid d_2$ then $\Psi(d_1)\subseteq \Psi(d_2)$. In other words, $\Psi$ preserves the poset structure. This means that $\Psi$ is a \df{lattice isomorphism} between the lattice of divisors of $|G|$ and the lattice of subgroups of $G$. Of course the inverse map $\Phi =\Psi^{-1}$ is also a lattice isomorphism.
+\end{remark}
+
+\begin{lemma}[Universal Mapping Property of a Cyclic Group]\label{UMP for cyclic groups}
+Let $G = \langle x \rangle$ be a cyclic group and let $H$ be any other group. 
+
+\begin{enumerate}
+	\item If $|x| = n < \infty$, then for each $y \in H$ such that $y^n = e$, 
+there exists a unique group homomorphism $f\!: G \to H$ such that $f(x) = y$. 
+
+\item If $|x| = \infty$, then for each $y \in H$,  there exists a unique group homomorphism $f\!: G \to H$ such that $f(x) = y$. 
+\end{enumerate}
+In both cases this unique group homomorphism is given by $f(x^i)=y^i$ for any $i \in \Z$.
+\end{lemma}
+
+\begin{remark} 
+We will later discuss a universal mapping property of any presentation.
+This is a particular case of that universal mapping property of a presentation, since a cyclic group is either presented by $\langle x \mid x^n = e \rangle$ or $\langle x \mid \textrm{--} \rangle$.
+\end{remark}
+
+\begin{proof} 
+Recall that either $G = \{e,x,x^2, \dots, x^{n-1}\}$ has exactly $n$ elements if $|x| = n$ or $G = \{ x^i \mid i \in \Z \}$ with no repetitions if $|x| = \infty$. 
+  
+  \vspace{0.4em}
+  
+  \underline{Uniqueness:} We have already noted that any homomorphism is uniquely determined by the images of the generators of the domain in \Cref{homomorphism determined by generators}, and that $f$ must then be given by $f(x^i) =f(x)^i = y^i$. 
+%  , but let's make it more precise now. We show that if $f:G\to H$ is a group homomorphism, then $f(x^i)=y^i$ for all $i\in \Z$.
+%  
+%  \begin{itemize}
+%  \item if $i=0$ then $f(x^0)=f(e_G)=e_H=y^0$
+%  \item if $i>0$ then $f(x^i)=f(\underbrace{x\cdots x}_{i \text{ times}})=\underbrace{f(x)\cdots f(x)}_{i \text{ times}})=y^i$
+%\item  if $i<0$ then $f(x^i)=f\left((x^{-i})^{-1}\right)=f\left((x^{-i})\right)^{-1}=(y^{-i})^{-1}=y^i$, using the formula above for $-i>0$
+%  \end{itemize}
+  
+   \vspace{0.4em}
+   
+   \underline{Existence:} 
+In either case, define $f(x^i) = y^i$.  We must show this function is a well-defined group homomorphism.
+To see that $f$ is well-defined, suppose $x^i=x^j$ for some $i,j\in \Z$. Then, since $x^{i-j}=e_G$, using \Cref{order of an element divides any power that is identity} we have
+$$\begin{cases}
+n\mid i-j & \text{ if } |x|=n\\
+i-j=0 & \text{ if } |x|=\infty\\
+\end{cases}
+\implies
+\begin{cases}
+y^ {i-j}=y^{nk} & \text{ if } |x|=n\\
+y^{i-j}=y^0 & \text{ if } |x|=\infty\\
+\end{cases}
+\implies y^ {i-j}=e_H
+\implies y^ i=y^j.
+$$
+Thus, if $x^i=x^j$ then $f(x^i)=y^i=y^j=f(x^j)$. In particular, if $x^k = e$, then $f(x^k) = e$, and $f$ is well-defined.
+
+\vspace{0.4em}
+
+The fact that $f$ is a homomorphism is immediate: 
+$$f(x^ix^j)=f(x^{i+j})=y^{i+j}=y^iy^j=f(x^i)f(x^j).\qedhere$$
+\end{proof}
+
+
+
+\begin{definition}\index{$C_\infty$}\index{$C_n$}
+The \df{infinite cyclic group} is the group 
+$$C_\infty \colonequals \{a^i | i \in \Z\}$$ 
+with multiplication $a^ia^j = a^{i+j}$. 
+
+For any natural number $n$, the \df{cyclic group of order $n$} is the group 
+$$C_n \colonequals \{a^i | i \in \{0,\dots,n-1\}\}$$ 
+with multiplication $a^ia^j = a^{i+j \pmod n}$. 
+\end{definition}
+
+\begin{remark}
+The presentations for these groups are 
+$$C_\infty = \langle a \mid \textrm{--} \rangle
+\qquad \textrm{ and } \qquad C_n = \langle a \mid a^n=e\rangle.$$
+\end{remark}
+
+
+\begin{theorem}[Classification Theorem for Cyclic Groups]\label{finite cyclic groups all Z/n}
+ Every infinite cyclic group is isomorphic to $C_\infty$. Every cyclic group of order $n$ is isomorphic to $C_n$.
+\end{theorem}
+
+\begin{proof} 
+Suppose $G = \langle x \rangle$ with $|x| = n$ or $|x| = \infty$, and set 
+$$H=\begin{cases}
+ 	C_n & \textrm{if } |x| = n \\
+ 	C_\infty & \textrm{if } |x| = \infty.
+ \end{cases}$$
+By \Cref{UMP for cyclic groups}, there are homomorphisms $f\!: G \to H$ and $g\!: G \to H$ such that $f(x) = a$ and $g(a) =x$. Now $g \circ f$ is an endomorphisms of $G$ mapping $x$ to $x$. But the identity map also has this property, and so the uniqueness clause in \Cref{UMP for cyclic groups} gives us $g \circ f = \id_G$. Similarly, $f \circ g = \id_H$. We conclude that $f$ and $g$ are isomorphisms.
+\end{proof}
+
+
+\begin{example} 
+	
+For a fixed $n \geqslant 1$,  
+$$\mu_n \colonequals \{z \in \C \mid z^n = 1\}$$
+is a subgroup of $(\C \setminus \{0\}, \cdot)$. 
+Since $ \| z^n \| = \|z\|^n =1$ for any $z \in \mu_n$, then we can write $z = e^{ri}$ for some real number $r$. Moreover, the equality $1 = z^n = e^{nri}$ implies that $nr$ is an integer multiple of $2 \pi$. It follows that
+$$\mu_n = \{1, e^{2 \pi i/n}, e^{4 \pi i/n}, \cdots , e^{(n-1) 2 \pi i/n}\}$$
+and that $e^{2 \pi i/n}$ generates $\mu_n$. Thus $\mu_n$ is cyclic of order $n$. This group is therefore isomorphic to $C_n$, via the map 
+$$\xymatrix@R=1mm{C_n \ar[r] & \mu_n \\ a^j \ar@{|->}[r] & ^{2 j \pi i/n}.}$$
+\end{example}
+
+
+\begin{exercise}\label{prime order implies cyclic}
+Let $p>0$ be a prime. Show that every group of order $p$ is cyclic.
+\end{exercise}
+
