@@ -781,64 +781,7 @@ O_x=\{ \sigma(x), \sigma^2(x), \sigma^3(x), \ldots \} = \{\sigma^i(x) \mid i \ge
 </section>
 <section aria-labelledby="proof-sign-well-defined" class="callout proof" role="region">
 <h3 id="proof-sign-well-defined">Proof of Theorem 1.2.22</h3>
-<p>
-  Suppose that \(\sigma\) is a permutation that can be written as a production of transpositions \(\beta_i\) and \(\lambda_j\) in two ways,
-</p>
-<div class="math-display">
-\[
-\sigma = \beta_1 \cdots \beta_s = \lambda_1 \cdots \lambda_t
-\]
-</div>
-<p>
-  where \(s\) is even and \(t\) is odd. As we noted in the Theorem, every transposition is its own inverse, so we conclude that
-</p>
-<div class="math-display">
-\[
-e_{S_n} = \beta_1 \cdots \beta_s \lambda_t \cdots \lambda_1,
-\]
-</div>
-<p>
-  which is a product of \(s+t\) transpositions. This is an odd number, so it suffices to show that it is not possible to write the identity as a product of an odd number of transpositions.
-</p>
-<p>
-  So suppose that the identity can be written as the product \((a_1 b_1) \cdots (a_k b_k)\), where each \(a_i \neq b_i\). First, note that a single transposition <em>cannot</em> be the identity, and thus \(k \neq 1\). So assume, for the sake of an argument by induction, that for a fixed \(k\), we know that every product of fewer than \(k\) transpositions that equals the identity must use an even number of transpositions. We might as well have \(k \geqslant 3\), since we \(2\) is even.
-</p>
-<p>
-  Now note that since \(k &gt; 1\), and our product is the identity, then some transposition \((a_i b_i)\) with \(i &gt; 1\) must move \(a_1\); otherwise, \(b_1\) would be sent to \(a_1\), and our product would not be the identity.
-</p>
-<p>
-  Now notice that the two rules in the Exercise above allow us to rewrite the overall product without changing the number of transpositions in such a way that the transposition \((a_2 b_2)\) moves \(a_1\), meaning \(a_2\) or \(b_2\) is \(a_1\). So let us assume that our product of transpositions has already been put in this form. Note also that \((a_i b_i) = (b_i a_i)\), so we might as well assume without loss of generality that \(a_2 = a_1\). We will consider the cases when \(b_2 = b_1\) and \(b_2 \neq b_1\).
-</p>
-<p>
-<u>Case 1</u>: When \(b_1 = b_2\), our product is
-</p>
-<div class="math-display">
-\[
-(a_1 b_1) (a_1 b_1) (a_3 b_3) \cdots (a_k b_k),
-\]
-</div>
-<p>
-  but \((a_1 b_1) (a_1 b_1)\) is the identity, so we can rewrite our product using only \(k-2\) transpositions. By induction hypothesis, \(k-2\) is even, and thus \(k\) is even.
-</p>
-<p>
-<u>Case 2</u>: When \(b_1 \neq b_2\), we can use the Exercise above to write
-</p>
-<div class="math-display">
-\[
-(a_1 b_1) (a_1 b_2) = (a_1 b_1) (b_2 a_1) = (a_1b_2)(b_1b_2).
-\]
-</div>
-<p>
-  Notice here that it matters that \(a_1\), \(b_1\), and \(b_2\) are all distinct, so that we can apply the exercise. So our product, which equals the identity, is
-</p>
-<div class="math-display">
-\[
-(a_1 b_2)(b_1 b_2)(a_3 b_3) \cdots (a_k b_k).
-\]
-</div>
-<p>
-  The advantage of this shuffling is that while we have only changed the first two transpositions, we have decreased the number of transpositions that move \(a_1\). We must now have some other transposition that moves \(a_1\), and we can repeat the argument to keep decreasing the number of transpositions in our product that move \(a_1\). Each time we do this, we cannot keep landing in case 2 indefinitely, as each time we lower the number of transpositions moving \(a_1\). So eventually we will land in case 1, which allows us to lower the total number of transpositions, and using the induction hypothesis we will show that \(k\) must be even.
-</p>
+<p> Suppose that \(\sigma\) is a permutation that can be written as a production of transpositions \(\beta_i\) and \(\lambda_j\) in two ways, </p> <div class="math-display"> \[ \sigma = \beta_1 \cdots \beta_s = \lambda_1 \cdots \lambda_t \] </div> <p> where \(s\) is even and \(t\) is odd. As we noted in Exercise 1.2.21, every transposition is its own inverse, so we conclude that </p> <div class="math-display"> \[ e_{S_n} = \beta_1 \cdots \beta_s \lambda_t \cdots \lambda_1, \] </div> <p> which is a product of \(s+t\) transpositions. This is an odd number, so it suffices to show that it is not possible to write the identity as a product of an odd number of transpositions. </p> <p> Suppose the identity can be written as the product \((a_1 b_1) \cdots (a_k b_k)\), where each \(a_i \neq b_i\). A single transposition \emph{cannot} be the identity, and thus \(k \neq 1\). So assume, for the sake of an argument by induction, that for a fixed \(k\), we know that every product of fewer than \(k\) transpositions that equals the identity must use an even number of transpositions. Since \(2\) is even, we might as well assume \(k \geqslant 3\). Now note that since \(k > 1\), and our product is the identity, then some transposition \((a_i b_i)\) with \(i > 1\) must move \(a_1\); otherwise, \(b_1\) would be sent to \(a_1\), and our product would not be the identity. </p> <p> Of all the possible ways we can write the identity as a product of \(k\) many transpositions \((a_1 b_1) \cdots (a_k b_k)\) with \(a_1 = a\) and \(b_1 = b\) fixed, choose one where the number \(N\) of times that \(a_1\) appears in one of the transpositions is smallest. The two rules in Exercise 1.2.21 allow us to rewrite the overall product without changing the number of transpositions in such a way that the transposition \((a_2 b_2)\) moves \(a_1\), meaning \(a_2 = a_1\) or \(b_2=a_1\). So let us assume that our product of transpositions has already been put in this form. Note also that \((a_i b_i) = (b_i a_i)\), so we might as well assume without loss of generality that \(a_2 = a_1\). </p> <p> <u>Case 1</u>: When \(b_1 = b_2\), our product is </p> <div class="math-display"> \[ (a_1 b_1) (a_1 b_1) (a_3 b_3) \cdots (a_k b_k), \] </div> <p> but \((a_1 b_1) (a_1 b_1)\) is the identity, so we can rewrite our product using only \(k-2\) transpositions. By induction hypothesis, \(k-2\) is even, and thus \(k\) is even. </p> <p> <u>Case 2</u>: When \(b_1 \neq b_2\), we can use Exercise 1.2.21 to write </p> <div class="math-display"> \[ (a_1 b_1) (a_1 b_2) = (a_1 b_1) (b_2 a_1) = (a_1b_2)(b_1b_2). \] </div> <p> Notice here that it matters that \(a_1\), \(b_1\), and \(b_2\) are all distinct, so that we can apply Exercise 1.2.21. So our product, which equals the identity, is </p> <div class="math-display"> \[ (a_1 b_2)(b_1 b_2)(a_3 b_3) \cdots (a_k b_k). \] </div> <p> The advantage of this shuffling is that while we have only changed the first two transpositions, we have decreased the number \(N\) of transpositions that move \(a_1\). But this contradicts our choice of \(N\) to be smallest possible. </p>
 </section>
 <section aria-labelledby="def-sign" class="callout definition" role="region">
 <h3 id="def-sign">Definition 1.2.23 (Parity of a permutation)</h3>
