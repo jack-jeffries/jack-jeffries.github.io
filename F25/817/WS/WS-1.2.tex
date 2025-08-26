@@ -2,7 +2,7 @@
 
 
 \usepackage{times}
-\usepackage[margin=0.7in]{geometry}
+\usepackage[margin=0.65in]{geometry}
 \usepackage{paralist,amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals}
 \usepackage[outline]{contour}
 \contourlength{.4pt}
@@ -93,14 +93,14 @@
 \item $(3 \, 4 \, 1 \, 5)$
 \end{itemize}
 \itema What is the inverse of $(1 \, 5 \, 3 \, 4)$? How would you find the inverse of a cycle in general?
-\itema What is the \emph{order}\footnote{Recall that the \textbf{order} of an element $g$ in a group $G$ is the smallest integer $n>0$ such that $g^n=e$.} of $(1 \, 5 \, 3 \, 4)$? How would you find the order of a cycle in general?
+\itema What is the \emph{order}\footnote{Recall that the \textbf{order} of an element $g$ in a group $G$ is the least integer $n>0$ such that $g^n=e$ if some such $n$ exists, else~$\infty$.} of $(1 \, 5 \, 3 \, 4)$? How would you find the order of a cycle in general?
 
 \end{enumerate}
 
 \
 
 
-\itemB Show the following \textsc{Lemma:} For any distinct $i_1,\dots,i_p\in [n]$,
+\itemB Show\footnote{Hint: To show that two functions are the same, show they have the same values. Compute what each side does to $i_j$, and what it does to an element of $[n]$ that is not an $i_j$.} the following \textsc{Lemma:} For any distinct $i_1,\dots,i_p\in [n]$,
 \[  (i_1 \ i_2 \ \cdots \ i_p) = (i_1 \ i_2) (i_2 \ i_3) \cdots (i_{p-1} \ i_p).\]
 
 
@@ -137,7 +137,7 @@ The \textbf{cycle type} of a permutation is the list of the lengths of the cycle
 \item Start with $1\in [n]$,
 \item Look at $\sigma(1), \sigma^2(1), \dots$ until we get back to $1=\sigma^m(1)$. Make a cycle out of these: \\
 \[ (1 \ \sigma(1)\ \sigma^2(1) \ \cdots \ \sigma^{m-1}(1) ).\]
-\item Look at the smallest element of $[n]$ that hasn't appeared, and repeat.
+\item Look at the smallest element of $i\in [n]$ that hasn't appeared, and repeat with $i$ in place of $1$.
 \item Throw away the 1-cycles at the end.
 \end{itemize}
 
@@ -160,8 +160,9 @@ The \textbf{cycle type} of a permutation is the list of the lengths of the cycle
 \itemB Proof of Theorem 1: 
 \begin{enumerate}
 \itemb What is the key idea to prove part (1) of Theorem 1?
-\itemb Prove part (2) of  Theorem 1.
-\itemb Complete the proofs of parts (1) and (3) of Theorem 1.
+\itemb Prove part (2) of Theorem 1.
+\itemb Prove part (1) of Theorem 1.
+\itemb Prove\footnote{Hint: Let $\sigma = \tau_1 \cdots\tau_m$ with $\tau_i$ disjoint cycles, and $j\in [n]$. Then $j$ appears in at most one $\tau_i$. Show that, for such $i$,  $\sigma^k(j) = \tau_i^k(j)$ and use this to solve for $\tau_i$.} part (3) of Theorem 1.
 \end{enumerate}
 
 
@@ -205,12 +206,14 @@ in the second case, we say that $\sigma$ is an \textbf{odd} permutation and defi
 \itemb Prove the Lemma.
 \itemb Explain how part (1) of Theorem 2 follows from the Lemma and Theorem 1.
 \itemb Explain why part (2) of Theorem 2 reduces to the following claim: if $\tau_1,\dots,\tau_m$ are transpositions and $\tau_1\cdots \tau_m = e$, then $m$ is even.
-
-\itemb Reconsider the claim above in the equivalent form: if  $\tau_1,\dots,\tau_m$ are transpositions and $m$ is odd, then $\tau_1\cdots \tau_m \neq e$. Proceed by induction on $m$ odd. Resolve the base case.
-\itemb Show\footnote{Hint: You might find it useful to show that 
-	$$(cd)(ab) = (ab)(cd) \qquad \textrm{and} \qquad (bc)(ab) = (ac)(bc)$$
-	for all distinct $a, b, c, d$ in $[n]$.}
- the inductive step, and complete the proof.
+\itemb By way of contradiction, suppose that there exists
+\[ \tag{$\dagger$} (a_1 \ b_1) (a_2 \ b_2) \cdots (a_m \ b_m) = e \qquad \text{with $m$ odd.}\]
+(Here $a_i \neq b_i$ but $a_i = a_j$ or $a_i=b_j$ is allowed.) Explain why, if an example of ($\dagger$) exists, then there is a ($\dagger$) with 
+ \begin{itemize}
+ \item the smallest value of $m$, among all ($\dagger$)'s
+ \item among all ($\dagger$)'s where $m$ is minimal, the number $t$ of times that $a_1$ appears is minimal. 
+ \end{itemize}
+\itemb Show that $t=1$ is impossible,  and that\footnote{Hint: Use the identities $(cd)(ab) = (ab)(cd)$ and $(bc)(ab) = (ac)(bc)$.} if $t\geq 2$, one can find another expression with the same value of $m$ and $t$  and also $a_1=a_2$. Complete the proof.
 \end{enumerate}
 
 
