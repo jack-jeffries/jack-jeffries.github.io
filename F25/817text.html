@@ -158,6 +158,10 @@
 <ol><li><a href="#groups-actions">What is a group action?</a></li>
 <li><a href="#group-actions-examples">Examples of group actions</a></li>
 </ol>
+<li><a href="#subgroups section">Subgroups</a></li>
+<ol><li><a href="#subgroups">Definition and examples</a></li>
+<li><a href="#subgroups-vs-invariants">Subgroups vs isomorphism invariants</a></li>
+<li><a href="#cyclic-groups">Cyclic groups</a></li></ol>
 -->
 
 </ol>
@@ -1098,7 +1102,7 @@ showing these \(n\) rotations are distinct. Now when \(n\) is odd, each of the \
 </section>
 <section aria-labelledby="lem-1-3-srs" class="callout lemma" role="region">
 <h3 id="lem-1-3-srs">Lemma 1.3.16</h3>
-<p>Following Notation 1.3.11, we have \(srs^{-1} = r^{-1}\).</p>
+<p>Following Notation 1.3.11, we have \(srs = r^{-1}\).</p>
 </section>
 <section aria-labelledby="prf-1-3-srs" class="callout proof" role="region">
 <h3 id="prf-1-3-srs">Proof of Lemma 1.3.16</h3>
@@ -1151,7 +1155,7 @@ showing these \(n\) rotations are distinct. Now when \(n\) is odd, each of the \
 <section aria-labelledby="rmk-1-3-reflections-list" class="callout remark" role="region">
 <h3 id="rmk-1-3-reflections-list">Remark 1.3.20</h3>
 <p>
-      The elements \(s, rs, \dots, r^{n-1}\) are all reflections since they reverse orientation. Alternatively, we can check these are all reflections by checking they have order \(2\). As we noted before, the elements \(\mathrm{id}, r, \dots, r^{n-1}\) are rotations, and preserve orientation.
+      The elements \(s, rs, \dots, r^{n-1}s\) are all reflections since they reverse orientation. Alternatively, we can check these are all reflections by checking they have order \(2\). As we noted before, the elements \(\mathrm{id}, r, \dots, r^{n-1}\) are rotations, and preserve orientation.
     </p>
 </section>
 <section aria-labelledby="ex-1-3-d4" class="callout example" role="region">
@@ -1699,8 +1703,8 @@ This is an excellent motivation to talk about group homomorphisms.
 
 We come to one of the central concepts in group theory: the action of a group on a set. Some would say this is the main reason one would study groups, so we want to introduce it early both as motivation for studying group theory but also because the language of group actions will be very helpful to us.
 
-
 <!--
+
 
 <h1 id="group actions section">2. Group actions: a first look</h1>
 
@@ -1821,7 +1825,7 @@ We come to one of the central concepts in group theory: the action of a group on
     <p>
       and
       \[
-      e_G \cdot s = \rho(e_G)(s) = \mathrm{id}(s) = s.\qedhere
+      e_G \cdot s = \rho(e_G)(s) = \mathrm{id}(s) = s.
       \]
     </p>
   </section>
@@ -1950,7 +1954,7 @@ We come to one of the central concepts in group theory: the action of a group on
   <section class="callout example" role="region">
     <h3>Example 2.2.2</h3>
     <p>
-      The group \(D_{n}\) acts on the vertices of \(P_n\), which we will label with \(V_1, \dots, V_{n}\) in a counterclockwise fashion, with \(V_1\) on the positive \(x\)-axis, as in \(\text{Cref\{defining r and s\}}\).
+      The group \(D_{n}\) acts on the vertices of \(P_n\), which we will label with \(V_1, \dots, V_{n}\) in a counterclockwise fashion, with \(V_1\) on the positive \(x\)-axis, as in Notation 1.3.11.
       Note that \(D_{n}\) acts on \(\{V_1, \dots, V_n \}\): for each \(g \in D_{n}\) and each integer \(1 \leqslant j \leqslant n\), we set 
     </p>
     <div class="math-display">
@@ -2017,7 +2021,770 @@ We come to one of the central concepts in group theory: the action of a group on
   </section>
 </section>
 
+
+
+
+<h1 id="subgroups section">3. Subgroups</h1>
+
+Every time we define a new abstract structure consisting of a set \(S\) with some extra structure, we then want to consider subsets of \(S\) that inherit that special structure. It is now time to discuss subgroups.
+
+
+<section id="subgroups" aria-labelledby="subgroups-heading">
+  <h2 id="subgroups-heading">3.1 Definition and examples</h2>
+
+  <section class="callout definition" role="region">
+    <h3>Definition 3.1.1</h3>
+    <p>
+      A nonempty subset \(H\) of a group \(G\) is a <dfn>subgroup</dfn> of \(G\) if \(H\) is a group under the multiplication law of \(G\).
+      If \(H\) is a subgroup of \(G\), we write \(H \leq G\), or \(H \lt G\) if we want to indicate that \(H\) is a subgroup of \(G\) but \(H \neq G\).
+    </p>
+  </section>
+
+  <section class="callout remark" role="region">
+    <h3>Remark 3.1.2</h3>
+    <p>
+      Note that if \(H\) is a subgroup of \(G\), then necessarily \(H\) must be closed for the product in \(G\), meaning that for any \(x,y \in H\) we must have \(xy \in H\).
+    </p>
+  </section>
+
+  <section class="callout remark" role="region">
+    <h3>Remark 3.1.3</h3>
+    <p>
+      Let \(H\) be a subgroup of \(G\). Since \(H\) itself is a group, it has an identity element \(e_H\), and thus
+      \[
+      e_H e_H = e_H
+      \]
+      in \(H\). But the product in \(H\) is just a restriction of the product of \(G\), so this equality also holds in \(G\).
+      Multiplying by \(e_H^{-1}\), we conclude that \(e_H = e_G\).
+    </p>
+    <p>
+      In summary, if \(H\) is any subgroup of \(G\), then we must have \(e_G \in H\).
+    </p>
+  </section>
+
+  <section class="callout example" role="region">
+    <h3>Example 3.1.4</h3>
+    <p>
+      Any group \(G\) has two <strong>trivial subgroups</strong>: \(G\) itself, and \(\{ e_G \}\).
+    </p>
+  </section>
+
+  <p>
+    Any subgroup \(H\) of \(G\) that is neither \(G\) nor \(\{ e_G \}\) is a <dfn>nontrivial subgroup</dfn>.
+    A group might not have any nontrivial subgroups.
+  </p>
+
+  <section class="callout example" role="region">
+    <h3>Example 3.1.5</h3>
+    <p>The group \(\mathbb{Z}/2\) has no nontrivial subgroup.</p>
+  </section>
+
+  <section class="callout example" role="region">
+    <h3>Example 3.1.6</h3>
+    <p>
+      The following are strings of subgroups with the obvious group structure:
+    </p>
+    <div class="math-display">
+      \[
+      \mathbb{Z} < \mathbb{Q} < \mathbb{R} < \mathbb{C} \quad \textrm{and} \quad \mathbb{Z}^\times < \mathbb{Q}^\times < \mathbb{R}^\times < \mathbb{C}^\times.
+      \]
+    </div>
+  </section>
+
+  <section class="callout lemma" role="region">
+    <h3>Lemma 3.1.7 (Subgroup tests)</h3>
+    <p>
+      Let \(H\) be a subset of a group \(G\).
+    </p>
+    <ul>
+      <li>
+        <u>Two-step test</u>: If \(H\) is nonempty and closed under multiplication and taking inverses,
+        then \(H\) is a subgroup of \(G\).
+        More precisely, if for all \(x, y \in H\), we have \(xy \in H\) and \(x^{-1} \in H\),
+        then \(H\) is a subgroup of \(G\).
+      </li>
+      <li>
+        <u>One-step test</u>: If \(H\) is nonempty and \(xy^{-1} \in H\) for all \(x,y \in H\),
+        then \(H\) is a subgroup of \(G\).
+      </li>
+    </ul>
+  </section>
+
+  <section class="callout proof" role="region">
+    <h3>Proof of Lemma 3.1.7</h3>
+    <p>
+      We prove the One-step test first.
+      Assume \(H\) is nonempty and for all \(x,y \in H\) we have \(xy^{-1} \in H\).
+      Since \(H\) is nonempty, there is some \(h \in H\), and hence \(e_G = hh^{-1} \in H\).
+      Since \(e_Gx=x=xe_G\) for any \(x\in G\), and hence for any \(x \in H\),
+      then \(e_G\) is an identity element for \(H\).
+      For any \(h \in H\), we have that \(h^{-1} = eh^{-1} \in H\), and since in \(G\) we have
+      \(h^{-1}h = e = hh^{-1} \in H\) and this calculation does not change when we restrict to \(H\),
+      we can conclude that every element of \(H\) has an inverse inside \(H\).
+      For every \(x,y \in H\) we must have \(y^{-1} \in H\) and thus
+    </p>
+    <div class="math-display">
+      \[
+      xy = x(y^{-1})^{-1} \in H
+      \]
+    </div>
+    <p>
+      so \(H\) is closed under the multiplication operation.
+      This means that the restriction of the group operation of \(G\) to \(H\) is a well-defined group operation.
+      This operation is associative by the axioms for the group \(G\).
+      The axioms of a group have now been established for \((H, \cdot)\).
+    </p>
+    <p>
+      Now we prove the Two-step test.
+      Assume \(H\) is nonempty and closed under multiplication and taking inverses.
+      Then for all \(x,y\in H\) we must have \(y^{-1}\in H\) and thus \(xy^{-1}\in H\).
+      Since the hypothesis of the One-step test is satisfied, we conclude that \(H\) is a subgroup of \(G\).
+    </p>
+  </section>
+
+  <section class="callout lemma" role="region">
+    <h3>Lemma 3.1.8 (Examples of subgroups)</h3>
+    <p>Let \(G\) be a group.</p>
+    <ol type="a">
+      <li>If \(H\) is a subgroup of \(G\) and \(K\) is a subgroup of \(H\), then \(K\) is a subgroup of \(G\).</li>
+      <li>Let \(J\) be any (index) set. If \(H_\alpha\) is a subgroup of \(G\) for all \(\alpha \in J\), then \(H=\bigcap_{\alpha\in J} H_\alpha\) is a subgroup of \(G\).</li>
+      <li>If \(f: G \to H\) is a homomorphism of groups, then \(\mathrm{im}(f)\) is a subgroup of \(H\).</li>
+      <li>If \(f: G \to H\) is a homomorphism of groups, and \(K\) is a subgroup of \(G\), then
+        \[
+        f(K) := \{ f(g) \mid g \in K \}
+        \]
+        is a subgroup of \(H\).
+      </li>
+      <li>If \(f: G \to H\) is a homomorphism of groups, then \(\ker(f)\) is a subgroup of \(G\).</li>
+      <li>The center \(\mathrm{Z}(G)\) is a subgroup of \(G\).</li>
+    </ol>
+  </section>
+
+  <section class="callout proof" role="region">
+    <h3>Proof of Lemma 3.1.8</h3>
+    <ol type="a">
+      <li>By definition, \(K\) is a group under the multiplication in \(H\), and the multiplication in \(H\) is the same as that in \(G\), so \(K\) is a subgroup of \(G\).</li>
+      <li>
+        First, note that \(H\) is nonempty since \(e_G \in H_\alpha\) for all \(\alpha\in J\).
+        Moreover, given \(x,y\in H\), for each \(\alpha\) we have \(x,y \in H_\alpha\) and hence \(xy^{-1} \in H_\alpha\).
+        It follows that \(xy^{-1} \in H\).
+        By the Two-Step test, \(H\) is a subgroup of \(G\).
+      </li>
+      <li>
+        Since \(G\) is nonempty, then \(\mathrm{im}(f)\) must also be nonemtpy; for example, it contains \(f(e_G) = e_H\).
+        If \(x,y \in \mathrm{im}(f)\), then \(x = f(a)\) and \(y = f(b)\) for some \(a,b \in G\), and hence
+        \[
+        xy^{-1} =f(a)f(b)^{-1} = f(ab^{-1}) \in \mathrm{im}(f).
+        \]
+        By the Two-Step Test, \(\mathrm{im}(f)\) is a subgroup of \(H\).
+      </li>
+      <li>
+        The restriction \(g\!: K \to H\) of \(f\) to \(K\) is still a group homomorphism, and thus \(f(K) = \mathrm{im}(g)\) is a subgroup of \(H\).
+      </li>
+      <li>
+        Using the One-step test, note that if \(x, y \in \ker(f)\), meaning \(f(x)=f(y)=e_G\), then
+        \[
+        f(xy^{-1})=f(x)f(y)^{-1}=e_G.
+        \]
+        This shows that if \(x,y\in \ker(f)\) then \(xy^{-1}\in \ker(f)\), so \(\ker(f)\) is closed for taking inverses.
+        By the Two-Step test, \(\ker(f)\) is a subgroup of \(G\).
+      </li>
+      <li>
+        The center \(\mathrm{Z}(G)\) is the kernel of the permutation representation \(G\to \mathrm{Perm}(G)\) for the conjugation action, so \(\mathrm{Z}(G)\) is a subgroup of \(G\) since the kernel of a homomorphism is a subgroup.\qedhere
+      </li>
+    </ol>
+  </section>
+
+  <section class="callout example" role="region">
+    <h3>Example 3.1.9</h3>
+    <p>
+      For any field \(F\), the <dfn>special linear group</dfn>
+    </p>
+    <div class="math-display">
+      \[
+      \mathrm{SL}_n(F) := \{A \mid A = n\times n \text{ matrix with entries in } F, \det(A)=1_F\}
+      \]
+    </div>
+    <p>
+      is a subgroup of the general linear group \(\mathrm{GL}_n(F)\).
+      To prove this, note that \(\mathrm{SL}_n(F)\) is the kernel of the determinant map \(\det\!:\mathrm{GL}_n(F)\to F^\times\),
+      which is one of the homomorphisms in Example 1.5.6.
+      By Lemma 3.1.8, this implies that \(\mathrm{SL}_n(F)\) is indeed a subgroup of \(\mathrm{GL}_n(F)\).
+    </p>
+  </section>
+
+  <section class="callout definition" role="region">
+    <h3>Definition 3.1.10</h3>
+    <p>
+      Let \(f\!:G\to H\) be a group homomorphism and \(K\leq H\).
+      The <strong>preimage</strong> of \(K\) is given by
+    </p>
+    <div class="math-display">
+      \[
+      f^{-1}(K) := \{g\in G \mid f(g)\in K\}
+      \]
+    </div>
+  </section>
+
+  <section class="callout exercise" role="region">
+    <h3>Exercise 3.1.11</h3>
+    <p>
+      Prove that if \(f\!:G\to H\) is a group homomorphism and \(K\leq H\), then the preimage of \(K\) is a subgroup of \(G\).
+    </p>
+  </section>
+
+  <section class="callout exercise" role="region">
+    <h3>Exercise 3.1.12</h3>
+    <p>
+      The set of rotational symmetries \(\{ r^i \mid i \in \mathbb{Z} \} = \{\mathrm{id}, r, r^2, \dots, r^{n-1}\}\) of \(P_n\) is a subgroup of \(D_{n}\).
+    </p>
+  </section>
+
+  <p>In fact, this is the subgroup generated by \(r\).</p>
+
+  <section class="callout definition" role="region">
+    <h3>Definition 3.1.13</h3>
+    <p>
+      Given a group \(G\) and a subset \(X\) of \(G\), the <strong>subgroup of \(G\) generated by \(X\)</strong> is
+    </p>
+    <div class="math-display">
+      \[
+      \langle X \rangle := \bigcap_{\substack{H \leq G \\ H \supseteq X}} H.
+      \]
+    </div>
+    <p>
+      If \(X=\{x\}\) is a set with one element, then we write \(\langle X \rangle=\langle x \rangle\) and we refer to this as the <strong>cyclic subgroup generated by</strong> \(x\).
+      More generally, when \(X = \{ x_1, \ldots, x_n \}\) is finite, we may write \(\langle x_1, \ldots, x_n \rangle\) instead of \(\langle X \rangle\).
+      Finally, given two subsets \(X\) and \(Y\) of \(G\), we may sometimes write \(\langle X, Y \rangle\) instead of \(\langle X \cup Y \rangle\).
+    </p>
+  </section>
+
+  <section class="callout remark" role="region">
+    <h3>Remark 3.1.14</h3>
+    <p>
+      Note that by Lemma 3.1.8, \(\langle X \rangle\) really is a subgroup of \(G\).
+      By definition, the subgroup generated by \(X\) is the smallest (with respect to containment) subgroup of \(G\) that contains \(X\),
+      meaning that \(\langle X \rangle\) is contained in any subgroup that contains \(X\).
+    </p>
+  </section>
+
+  <section class="callout remark" role="region">
+    <h3>Remark 3.1.15</h3>
+    <p>
+      Do not confuse this notation with giving generators and relations for a group;
+      here we are forgoing the relations and focusing only on writing a list of generators.
+      Another key difference is that we have picked elements in a given group \(G\), but the subgroup they generate might not be \(G\) itself, but rather some other subgroup of \(G\).
+    </p>
+  </section>
+
+  <section class="callout lemma" role="region">
+    <h3>Lemma 3.1.16</h3>
+    <p>
+      For a subset \(X\) of \(G\), the elements of \(\langle X \rangle\) can be described as:
+    </p>
+    <div class="math-display">
+      \[
+      \langle X \rangle = \left\{x_1^{j_1} \cdots x_m^{j_m} \mid m \geqslant 0, j_1, \dots, j_m \in \mathbb{Z} \text{ and }x_1, \dots, x_m \in X \right\}.
+      \]
+    </div>
+    <p>Note that the product of no elements is by definition the identity.</p>
+  </section>
+
+  <section class="callout proof" role="region">
+    <h3>Proof of Lemma 3.1.16</h3>
+    <p>
+      Let
+    </p>
+    <div class="math-display">
+      \[
+      S= \left\{x_1^{j_1} \cdots x_m^{j_m} \mid m \geqslant 0, j_1, \dots, j_m \in \mathbb{Z} \text{ and }x_1, \dots, x_m \in X \right\}.
+      \]
+    </div>
+     <p>
+      Since \(\langle X \rangle\) is a subgroup that contains \(X\), it is closed under products and inverses, and thus must contain all elements of \(S\). Thus \(X \supseteq S\).
+    </p>
+    <p>
+      To show \(X \subseteq S\), we will prove that the set \(S\) is a subgroup of \(G\) using the One-step test:
+    </p>
+    <ul>
+      <li>\(S \neq \emptyset\) since we allow \(m = 0\) and
+        declare the empty product to be \(e_G\).
+      </li>
+      <li>
+        Let \(a\) and \(b\) be elements of \(S\), so that they can be written as
+        \(a = x_1^{j_1} \cdots x_m^{j_m}\) and \(b= y_1^{i_1} \cdots y_n^{i_n}\). Then
+        <div class="math-display">
+          \[
+          ab^{-1} = x_1^{j_1} \cdots x_m^{j_m}(y_1^{i_1} \cdots y_n^{i_m})^{-1}=
+          x_1^{j_1} \cdots x_m^{j_m} y_n^{-i_n} \cdots y_1^{-i_1} \in S.
+          \]
+        </div>
+      </li>
+    </ul>
+    <p>
+      Therefore, \(S\leq G\) and \(X\subseteq S\) (by taking \(m=1\) and \(j_1=1\)) and by the minimality of \(\langle X \rangle\) we conclude that \(\langle X \rangle\subseteq S\).
+    </p>
+  </section>
+
+  <section class="callout example" role="region">
+    <h3>Example 3.1.17</h3>
+    <p>The Lemma implies that for an element \(x\) of a group \(G\), \(\langle x\rangle=\{x^j \mid j\in \mathbb{Z}\}\).</p>
+  </section>
+
+  <section class="callout example" role="region">
+    <h3>Example 3.1.18</h3>
+    <p>
+      We showed in Theorem 1.3.19 that \(D_{n}=\langle r,s \rangle\), so \(D_{n}\) is the subgroup of \(D_{n}\) generated by \(\{r,s\}\).
+      But do not mistake this for a presentation with no relations! In fact, these generators satisfy lots of relations, such as \(srs=r^{-1}\), which we proved in Lemma 1.3.16.
+    </p>
+  </section>
+
+  <section class="callout example" role="region">
+    <h3>Example 3.1.19</h3>
+    <p>
+      For any \(n \geqslant 1\), we proved in Problem Set 2 that \(S_n\) is generated by the collection of adjacent transpositions \((i \quad i+1)\).
+    </p>
+  </section>
+
+  <section class="callout theorem" role="region">
+    <h3>Theorem 3.1.20 (Cayley's Theorem)</h3>
+    <p>Every finite group is isomorphic to a subgroup of \(S_n\).</p>
+  </section>
+
+  <section class="callout proof" role="region">
+    <h3>Proof of Theorem 3.1.20</h3>
+    <p>
+      Suppose \(G\) is a finite group of order \(n\) and label the group elements of \(G\) from \(1\) to \(n\) in any way you like.
+      The left regular action of \(G\) on itself determines a permutation representation \(\rho\!:G\to \mathrm{Perm}(G)\), which is injective.
+      Note that since \(G\) has \(n\) elements, \(\mathrm{Perm}(G)\) is the group of permutations on \(n\) elements, and thus \(\mathrm{Perm}(G) \cong S_n\).
+      By Lemma 3.1.8, \(\mathrm{im}(\rho)\) is a subgroup of \(S_n\).
+      If we restrict \(\rho\) to its image, we get an isomorphism \(\rho\!: G \to \mathrm{im}(\rho)\).
+      Hence \(G\cong \mathrm{im}(\rho)\), which is a subgroup of \(S_n\).
+    </p>
+  </section>
+
+  <section class="callout remark" role="region">
+    <h3>Remark 3.1.21</h3>
+    <p>From a practical perspective, this is a nearly useless theorem. It is, however, a beautiful fact.</p>
+  </section>
+</section>
+
+
+
+
+
+<section id="subgroups-vs-invariants" aria-labelledby="subgroups-vs-invariants-heading">
+  <h2 id="subgroups-vs-invariants-heading">3.2 Subgroups vs isomorphism invariants</h2>
+
+  <p>
+    Some properties of a group \(G\) pass onto all its subgroups, but not all.
+    In this section, we collect some examples illustrating some of the most important properties.
+  </p>
+
+  <section class="callout theorem" role="region">
+    <h3>Theorem 3.2.1 (Lagrange's Theorem)</h3>
+    <p>
+      If \(H\) is a subgroup of a finite group \(G\), then \(|H|\) divides \(|G|\).
+    </p>
+  </section>
+
+  <p>You will prove Lagrange's Theorem in the next problem set.</p>
+
+  <section class="callout exercise" role="region">
+    <h3>Exercise 3.2.2</h3>
+    <p>
+      Let \(G\) be a finite group. Suppose that \(A\) and \(B\) are subgroups of \(G\) such that \(\gcd(|A|, |B|) = 1\).
+      Show that \(A \cap B = \{ e \}\).
+    </p>
+  </section>
+
+  <section class="callout example" role="region">
+    <h3>Example 3.2.3 (Infinite group with finite subgroup)</h3>
+    <p>
+      The group \(\mathrm{SL}_2(\mathbb{R})\) is infinite, but the matrix
+    </p>
+    <div class="math-display">
+      \[
+      A = \begin{pmatrix}
+      0 & 1 \\ 1 & 0
+      \end{pmatrix}
+      \]
+    </div>
+    <p>
+      has order \(2\) and it generates the subgroup \(\langle A \rangle = \{ A, I \}\) with two elements.
+    </p>
+  </section>
+
+  <section class="callout example" role="region">
+    <h3>Example 3.2.4 (Nonabelian group with abelian subgroup)</h3>
+    <p>
+      The dihedral group \(D_n\), with \(n \geqslant 3\), is nonabelian,
+      while the subgroup of rotations (see Exercise 3.1.12) is abelian
+      (for example, because it is cyclic; see Theorem 3.3.3 below).
+    </p>
+  </section>
+
+  <p>
+    To give an example of a finitely generated group with an infinitely generated subgroup,
+    we have to work a bit harder.
+  </p>
+
+  <section class="callout example" role="region">
+    <h3>Example 3.2.5 (Finitely generated group with infinitely generated subgroup)</h3>
+    <p>
+      Consider the subgroup \(G\) of \(\mathrm{GL}_2(\mathbb{Q})\) generated by
+    </p>
+    <div class="math-display">
+      \[
+      A = \begin{pmatrix}
+      1 & 1 \\ 0 & 1
+      \end{pmatrix}
+      \qquad \textrm{and} \qquad
+      B = \begin{pmatrix}
+      2 & 0 \\ 0 & 1
+      \end{pmatrix}.
+      \]
+    </div>
+    <p>
+      Let \(H\) be the subgroup of \(\mathrm{GL}_2(\mathbb{Q})\) given by
+    </p>
+    <div class="math-display">
+      \[
+      H = \left\lbrace \begin{pmatrix} 1 & \tfrac{n}{\, 2^m} \\ 0 & 1 \end{pmatrix} \in G \;\middle|\; n, m \in \mathbb{Z} \right\rbrace.
+      \]
+    </div>
+    <p>
+      We leave it as an exercise to check that this is indeed a subgroup of \(\mathrm{GL}_2(\mathbb{Q})\).
+      Note that for all integers \(n\) and \(m\) we have
+    </p>
+    <div class="math-display">
+      \[
+      A^n = \begin{pmatrix} 1 & n \\ 0 & 1 \end{pmatrix}
+      \qquad \textrm{and} \qquad
+      B^m = \begin{pmatrix} 2^m & 0 \\ 0 & 1 \end{pmatrix},
+      \]
+    </div>
+    <p>
+      and
+    </p>
+    <div class="math-display">
+      \[
+      B^{-m} A^n B^m = \begin{pmatrix} 1 & \tfrac{n}{\, 2^m} \\ 0 & 1 \end{pmatrix} \in H.
+      \]
+    </div>
+    <p>
+      Therefore, \(H\) is a subgroup of \(G\), and in fact
+    </p>
+    <div class="math-display">
+      \[
+      H = \langle B^{-m} A^n B^m \mid n, m \in \mathbb{Z} \rangle.
+      \]
+    </div>
+    <p>
+      While \(G = \langle A, B \rangle\) is finitely generated by construction, we claim that \(H\) is not.
+      The issue is that
+    </p>
+    <div class="math-display">
+      \[
+      \begin{pmatrix} 1 & \tfrac{a}{\, 2^b} \\ 0 & 1 \end{pmatrix} 
+      \begin{pmatrix} 1 & \tfrac{c}{\, 2^d} \\ 0 & 1 \end{pmatrix} = 
+      \begin{pmatrix} 1 & \tfrac{a}{\, 2^b} + \tfrac{c}{\, 2^d} \\ 0 & 1 \end{pmatrix},
+      \]
+    </div>
+    <p>
+      so the subgroup generated by any finite set of matrices in \(H\), say
+    </p>
+    <div class="math-display">
+      \[
+      \left\langle \begin{pmatrix} 1 & \tfrac{n_1}{\, 2^{m_1}} \\ 0 & 1 \end{pmatrix}, \ldots,
+      \begin{pmatrix} 1 & \tfrac{n_t}{\, 2^{m_t}} \\ 0 & 1 \end{pmatrix} \right\rangle
+      \]
+    </div>
+    <p>
+      does not contain
+    </p>
+    <div class="math-display">
+      \[
+      \begin{pmatrix} 1 & \tfrac{1}{\, 2^{N}} \\ 0 & 1 \end{pmatrix} \in H
+      \]
+    </div>
+    <p>
+      with \(N = \max_i \{|m_i| \} + 1\).
+      Thus \(H\) is infinitely generated.
+    </p>
+  </section>
+
+  <p>
+    In the previous example, we constructed a group with two generators that has an infinitely generated subgroup.
+    We will see in the next section that we couldn't have done this with less generators; in fact, the subgroups of a cyclic group are all cyclic.
+  </p>
+
+  <hr />
+
+  <p>Below we collect some important facts about the relationship between finite groups and their subgroups, including some explained by the examples above and others which we leave as an exercise.</p>
+
+  <p><u>Order of the group:</u></p>
+  <ul>
+    <li>Every subgroup of a finite group is finite.</li>
+    <li>There exist infinite groups with finite subgroups; see Example 3.2.3.</li>
+    <li>Lagrange's Theorem: If \(H\) is a subgroup of a finite group \(G\), then \(|H|\) divides \(|G|\).</li>
+  </ul>
+
+  <p><u>Orders of elements:</u></p>
+  <ul>
+    <li>If \(H \subseteq G\), then the set of orders of elements of \(H\) is a subset of the set of orders of elements of \(G\).</li>
+  </ul>
+
+  <p><u>Abelianity:</u></p>
+  <ul>
+    <li>Every subgroup of an abelian group is abelian.</li>
+    <li>There exist nonabelian groups with abelian subgroups; see Example 3.2.4.</li>
+    <li>Every cyclic (sub)group is abelian.</li>
+  </ul>
+
+  <p><u>Generators:</u></p>
+  <ul>
+    <li>There exist a finitely generated group \(G\) and a subgroup \(H\) of \(G\) such that \(H\) is not finitely generated; see Example 3.2.5.</li>
+    <li>Every infinitely generated group has finitely generated subgroups.<br />
+      <small>(This one is a triviality: we are just noting that even if the group is infinitely generated, we can always consider the subgroup generated by our favorite element, which is, by definition, finitely generated.)</small>
+    </li>
+    <li>Every subgroup of a cyclic group is cyclic; see Theorem 3.3.3.</li>
+  </ul>
+</section>
+
+
+
+
+
+<section id="cyclic-groups" aria-labelledby="cyclic-groups-heading">
+  <h2 id="cyclic-groups-heading">3.3 Cyclic groups</h2>
+
+  <p>Recall the definition of a cyclic group.</p>
+
+  <section class="callout definition" role="region">
+    <h3>Definition 3.3.1</h3>
+    <p>
+      If \(G\) is a group generated by a single element, meaning that there exists \(x \in G\) such that
+      \(G = \langle x \rangle\), then \(G\) is a <dfn>cyclic group</dfn>.
+    </p>
+  </section>
+
+  <section class="callout remark" role="region">
+    <h3>Remark 3.3.2</h3>
+    <p>
+      Given a cyclic group \(G\), we may be able to pick different generators for \(G\). For example, \(\mathbb{Z}\) is a cyclic group, and both \(1\) or \(-1\) are a generator. More generally, for any element \(x\) in a group \(G\)
+    </p>
+    <div class="math-display">\[\langle x \rangle = \langle x^{-1}\rangle.\]</div>
+  </section>
+
+  <section class="callout example" role="region">
+    <h3>Example 3.3.3</h3>
+    <p>
+      The main examples of cyclic groups, in additive notation, are the following:
+    </p>
+    <ul>
+      <li>The group \((\mathbb{Z},+)\) is cyclic with generator \(1\) or \(-1\).</li>
+      <li>The group \((\mathbb{Z}/n,+)\) of congruences modulo \(n\) is cyclic, since it is for example generated by \([1]\). Below we will find all the choices of generators for this group.</li>
+    </ul>
+    <p>In fact, we will later prove that up to isomorphism these are the <em>only</em> examples of cyclic groups.</p>
+  </section>
+
+  <p>Let us record some important facts about cyclic groups which you have proved in problem sets:</p>
+
+  <section class="callout lemma" role="region">
+    <h3>Lemma 3.3.4</h3>
+    <p>Every cyclic group is abelian.</p>
+  </section>
+
+  <section class="callout lemma" role="region">
+    <h3>Lemma 3.3.5</h3>
+    <p>
+      Let \(G\) be a group and \(x \in G\). If \(x^m = e\) then \(|x|\) divides \(m\).
+    </p>
+  </section>
+
+  <section class="callout theorem" role="region">
+    <h3>Theorem 3.3.6</h3>
+    <p>
+      Let \(G=\langle x\rangle\), where \(x\) has finite order \(n\). Then
+    </p>
+    <ol type="a">
+      <li>\(|G|=|x|=n\) and \(G=\{e,x,\ldots,x^{n-1}\}\).</li>
+      <li>
+        For any integer \(k\), \(|x^k| = \frac{n}{\gcd(k,n)}\). In particular,
+        <div class="math-display">\[\langle x^k\rangle = G \iff \gcd(n,k)=1.\]</div>
+      </li>
+      <li>
+        There is a bijection
+        <div class="math-display">
+  \[
+\begin{array}{rcl}
+\{\text{divisors of } |G|\} & \leftrightarrow & \{\text{subgroups of } G\} \\[4pt]
+d & \mapsto & \left\langle x^{\frac{|G|}{d}} \right\rangle \\[4pt]
+|H| & \leftarrow & H
+\end{array}
+\]
+        </div>
+        Thus all subgroups of \(G\) are cyclic, and there is a unique subgroup of each order.
+      </li>
+    </ol>
+  </section>
+
+  <section class="callout proof" role="region">
+    <h3>Proof of Theorem 3.3.6</h3>
+    <p>(a) By Lemma 3.1.16, we know \(G=\{x^i \mid i \in \mathbb{Z}\}\). Now we claim that the elements</p>
+    <div class="math-display">\[e = x^0, x^1, \dots, x^{n-1}\]</div>
+    <p>
+      are all distinct. Indeed, if \(x^i=x^j\) for some \(0\leqslant i<j<n\), then \(x^{j-i}=e\) and \(1 \leqslant j-i<n\), contradicting the minimality of the order \(n\) of \(x\).
+      In particular, this shows that \(|G| \geqslant n\).
+    </p>
+    <p>
+      Now take any \(m \in \mathbb{Z}\). By the Division Algorithm, we can write \(m = qn+r\) for some integers \(q, r\) with \(0 \leqslant r < n\). Then
+    </p>
+    <div class="math-display">\[x^m=x^{nq+r}=(x^n)^qx^r=x^r.\]</div>
+    <p>
+      This shows that every element in \(G\) can be written in the form \(x^r\) with \(0 \leqslant r < n\), so
+    </p>
+    <div class="math-display">\[G = \{x^0, x^1, \dots, x^{n-1}\} \qquad \textrm{and} \qquad |G| = n.\]</div>
+
+    <p>(b) Let \(k\) be any integer. Set \(y := x^k\) and \(d := \gcd(n,k)\), and note that \(n=da, k=db\) for some \(a,b\in \mathbb{Z}\) such that \(\gcd(a,b)=1\). We have</p>
+    <div class="math-display">\[y^a=x^{ka}=x^{dba}=(x^n)^b=e,\]</div>
+    <p>
+      so \(|y|\) divides \(a\) by Lemma 3.3.5. On the other hand, \(x^{k|y|}=y^{|y|}=e\), so again by Lemma 3.3.5 we have \(n\) divides \(k|y|\).
+    </p>
+    <div class="math-display">
+      \[da = n \textrm{ divides } k|y| = db|y|\]
+    </div>
+    <p>and thus \(a \textrm{ divides } b|y|\). But \(\gcd(a,b)=1\), so we conclude that \(a\) divides \(|y|\). Since \(|y|\) also divides \(a\) and both are positive, we conclude</p>
+    <div class="math-display">\[|y|=a=\tfrac{n}{\gcd(k,n)}.\]</div>
+
+    <p>(c) Consider any subgroup \(H\) of \(G\) with \(H \neq \{ e \}\), and set</p>
+    <div class="math-display">\[k := \min \{i \in \mathbb{Z} \mid i>0 \textrm{ and } g^i\in H\}.\]</div>
+    <p>
+      On the one hand, \(H \supseteq \langle g^k \rangle\). Moreover, given any other positive integer \(i\), we can again write \(i = kq+r\) with \(0 \leqslant r < k\), and
+    </p>
+    <div class="math-display">\[g^r = g^{i-kq} = g^i (g^k)^q \in H.\]</div>
+    <p>
+      By minimality of \(r\), we conclude \(r=0\). Therefore \(H = \langle g^k \rangle\). The fact that \(\Psi,\Phi\) are bijections is left as an exercise.
+    </p>
+  </section>
+
+  <section class="callout corollary" role="region">
+    <h3>Corollary 3.3.7</h3>
+    <p>
+      Let \(G\) be any finite group and consider \(x \in G\). Then \(|x|\) divides \(|G|\).
+    </p>
+  </section>
+
+  <section class="callout proof" role="region">
+    <h3>Proof of Corollary 3.3.7</h3>
+    <p>
+      The subgroup \(\langle x \rangle\) of \(G\) generated by \(x\) is a cyclic group, and since \(G\) is finite so is \(\langle x \rangle\). By Theorem 3.3.6, \(|x| = |\langle x \rangle|\), and by Lagrange's Theorem (Theorem 3.2.1), the order of \(\langle x \rangle\) divides the order of \(G\).
+    </p>
+  </section>
+
+  <section class="callout exercise" role="region">
+    <h3>Exercise 3.3.8</h3>
+    <p>
+      Show that if \(G\) is a finite group with a unique subgroup of order \(d\) for each positive divisor \(d\) of \(|G|\), then \(G\) must be cyclic.
+    </p>
+  </section>
+
+  <section class="callout definition" role="region">
+    <h3>Definition 3.3.9</h3>
+    <p>
+      An <dfn>order relation</dfn> on a set \(S\) is a binary relation \(\leq\) that is reflexive, antisymmetric, and transitive.
+      A <dfn>poset</dfn> is a set with such an order relation. Definitions of supremum, infimum, and lattice follow as in the LaTeX text.
+    </p>
+  </section>
+
+  <section class="callout remark" role="region">
+    <h3>Remark 3.3.10</h3>
+    <p>Note that the word <em>unique</em> can be removed from the definition of lattice, since suprema and infima are automatically unique.</p>
+  </section>
+
+  <section class="callout example" role="region">
+    <h3>Example 3.3.11</h3>
+    <p>
+      The set of all positive integers with divisibility is a poset. It is a lattice: \(\mathrm{lcm}(a,b)\) is the supremum and \(\gcd(a,b)\) is the infimum.
+    </p>
+  </section>
+
+  <section class="callout example" role="region">
+    <h3>Example 3.3.12</h3>
+    <p>
+      The power set of a set \(S\) with containment is a lattice: the supremum of \(A,B\) is \(A\cup B\), and the infimum is \(A\cap B\).
+    </p>
+  </section>
+
+  <section class="callout exercise" role="region">
+    <h3>Exercise 3.3.13</h3>
+    <p>Show that the set of all subgroups of a group \(G\) is a poset with respect to containment.</p>
+  </section>
+
+  <section class="callout lemma" role="region">
+    <h3>Lemma 3.3.14</h3>
+    <p>The set of all subgroups of a group \(G\) is a lattice with respect to containment.</p>
+  </section>
+
+  <section class="callout proof" role="region">
+    <h3>Proof of Lemma 3.3.14</h3>
+    <p>
+      Let \(A,B\) be subgroups of \(G\). Then \(A\cap B\) is the infimum and \(\langle A,B \rangle\) the supremum.
+    </p>
+  </section>
+
+  <section class="callout remark" role="region">
+    <h3>Remark 3.3.15</h3>
+    <p>
+      The isomorphism \(\Psi\) in Theorem 3.3.6 preserves the poset structure, making it a lattice isomorphism between divisors of \(|G|\) and subgroups of \(G\).
+    </p>
+  </section>
+
+  <section class="callout lemma" role="region">
+    <h3>Lemma 3.3.16 (UMP for cyclic groups)</h3>
+    <p>
+      Let \(G=\langle x \rangle\) be cyclic and \(H\) any group. Then for each \(y\in H\), with conditions as in the LaTeX text, there exists a unique homomorphism \(f:G\to H\) with \(f(x)=y\), given by \(f(x^i)=y^i\).
+    </p>
+  </section>
+
+  <section class="callout remark" role="region">
+    <h3>Remark 3.3.17</h3>
+    <p>This is a particular case of the universal mapping property of a presentation.</p>
+  </section>
+
+  <section class="callout definition" role="region">
+    <h3>Definition 3.3.18</h3>
+    <p>Define the infinite cyclic group \(C_\infty\) and finite cyclic groups \(C_n\) as in the LaTeX text.</p>
+  </section>
+
+  <section class="callout theorem" role="region">
+    <h3>Theorem 3.3.19 (Classification Theorem for Cyclic Groups)</h3>
+    <p>Every infinite cyclic group is isomorphic to \(C_\infty\). Every cyclic group of order \(n\) is isomorphic to \(C_n\).</p>
+  </section>
+
+  <section class="callout example" role="region">
+    <h3>Example 3.3.20</h3>
+    <p>
+      \(\mu_n := \{z\in \mathbb{C} \mid z^n=1\}\) is cyclic of order \(n\), generated by \(e^{2\pi i/n}\).
+    </p>
+  </section>
+
+  <section class="callout exercise" role="region">
+    <h3>Exercise 3.3.21</h3>
+    <p>Let \(p>0\) be a prime. Show that every group of order \(p\) is cyclic.</p>
+  </section>
+</section>
+
+
+
+
+
 -->
+
+
+
+
 
 </main>
 <footer aria-label="Course footer" role="contentinfo">
