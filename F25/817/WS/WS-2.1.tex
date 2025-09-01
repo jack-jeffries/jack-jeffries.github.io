@@ -1,0 +1,157 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=.75in]{geometry}
+\usepackage{paralist,amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals}
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\solutione}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{leaf}This solution is embargoed.}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+
+\newcommand{\rsa}{\rightsquigarrow}
+
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+
+\DeclareMathOperator{\ord}{ord}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{Group actions}
+	
+	
+
+\begin{framed}
+
+\textsc{Definition:} Let $G$ be a group and $X$ be a set. A \textbf{group action} of $G$ on $X$ is a function $G\times X \to X$ typically written as $(g,x)\mapsto g \cdot x$ such that
+\begin{enumerate}
+\item $g\cdot (h \cdot x) = (gh) \cdot x$ for all $g,h\in G$ and $x\in X$, and
+\item $e_G \cdot x = x$ for all $x\in X$.
+\end{enumerate}
+
+\
+
+Given a group action of $G$ on $X$ and $x\in X$, the \textbf{orbit} of $x$ is 
+\[ \mathrm{Orb}_G(x) := \{ g\cdot x \ | \ g\in G\}.\]
+
+\
+
+\textsc{Lemma:} Given a group action of $G$ on $X$,
+\begin{itemize}
+\item for $x,y\in X$, either $\mathrm{Orb}_G(x) = \mathrm{Orb}_G(y)$ or  $\mathrm{Orb}_G(x) \cap \mathrm{Orb}_G(y)=\varnothing$.
+\item $X= \bigcup_{x\in X} \mathrm{Orb}_G(x)$.
+\end{itemize}
+
+\
+
+\textsc{Definition:} A group action of $G$ on $X$ is
+\begin{itemize}
+\item  \textbf{transitive} if $\mathrm{Orb}_G(x) = X$ for some $x\in X$.
+\item \textbf{faithful} if $g \cdot x = x$ for all $x\in X$ implies that $g=e$.
+\end{itemize}
+\end{framed}
+
+\begin{enumerate}
+\itemA Let $G$ be a group acting on a set $X$. For $x,y\in X$, write $x\sim y$ if there exists $g\in G$ such that $g\cdot x = y$.
+\begin{enumerate}
+\itema Show that $\sim$ is an equivalence relation\footnote{Recall that a relation on a set is an \textbf{equivalence relation} if it is \emph{reflexive}, \emph{symmetric}, and \emph{transitive}.}.
+\itema Relate the previous part to the Lemma.
+\itema Suppose that $X$ is a finite set, and $X_1,\dots,X_\ell$ are the distinct orbits of $G$ acting on $X$. Explain:
+\[ |X| = \sum_{i=1}^\ell |X_i|.\]
+\end{enumerate}
+
+\
+
+\itemA Dihedral group actions: Let $D_n$ be the group of symmetries of a regular $n$-gon $P_n$ in $\mathbb{R}^2$.
+\begin{enumerate}
+\itema Explain why/how $D_n$ acts naturally on $P_n$. Is this action transitive? Is it faithful?
+\itema Explain why/how $D_n$ acts naturally on the set of vertices of $P_n$. Is this action transitive? Is it faithful?
+\end{enumerate}
+
+\
+
+
+\itemA Group actions on $X$ $\longleftrightarrow$ homomorphisms to $\mathrm{Perm}(X)$:
+\begin{enumerate}
+\itema Let $G$ be a group acting on a set $X$. For $g\in G$, let $\mu_g: X\to X$ be the function $\mu_g(x) = g\cdot x$, which we made out of the group action. Consider the function 
+\[ \begin{aligned} \rho: G &\rightarrow \mathrm{Perm}(X)  \\ g &\mapsto \mu_g \end{aligned}\]
+Show that $\rho$ is a group homomorphism\footnote{Warning: you should also show that $\mu_g$ is actually an element of $\mathrm{Perm}(X)$. One good way to do this is to show that $\mu_{g^{-1}}$ is the inverse function of $\mu_g$.}.
+We call $\rho$ the \textbf{permutation representation} associated to the given group action.
+\itema Label the vertices of a square counterclockwise by $\{1,2,3,4\}$. Write out the induced homomorphism $D_4 \to S_4$ coming from the action of $D_4$ on the vertices as in (2.b) above.
+\itema Let $G$ be a group, $X$ a set, and $\rho:G\to \mathrm{Perm}(X)$ a group homomorphism. Give a natural recipe for a group action of $G$ on $X$, and verify that this is indeed a group action.
+\end{enumerate}
+
+\newpage
+
+\itemB Let $G$ be a group acting on a set $X$. Complete the following sentence, and prove your answer: \\
+The action of $G$ on $X$ is faithful if and only if the associated permutation representation ${\rho: G\to \mathrm{Perm}(X)}$ is $\underline{\phantom{INJECTIVE}}$.
+
+\
+
+\itemB Linear representations on $K^n$ $\longleftrightarrow$ homomorphisms to $\mathrm{GL}_n(K)$:
+\begin{enumerate}
+\item Let $G$ be a group and $K$ be a field (you can assume $K=\mathbb{R}$ if you want.) A \textbf{linear action} of $G$ on $K^n$ is a group action of $G$ on $K^n$ such that for each $g\in G$, the function $\mu_g: K^n \to K^n$ as in (3) is a linear transformation over $K$. Given a linear action of $G$ on $K^n$, show that there is natural group homomorphism $\rho: G\to \mathrm{GL}_n(K)$. 
+\item Conversely, given a group homomorphism $\rho: G \to \mathrm{GL}_n(K)$, give a natural recipe for a linear action of $G$ on $K^n$.
+\end{enumerate}
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
