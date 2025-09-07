@@ -1,0 +1,150 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,enumerate}
+\usepackage[]{graphicx}
+\usepackage{color,subfigure}
+\definecolor{scarlet}{rgb}{0.81,0,0}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage[all]{xypic}
+\usepackage[colorlinks=true,citecolor=scarlet,linkcolor=scarlet]{hyperref}
+\usepackage{colonequals}
+
+\usepackage{fancyhdr, lastpage}
+\pagestyle{fancy}
+\fancyfoot[C]{{\thepage} of \pageref{LastPage}}
+
+
+
+\DeclareMathOperator{\mSpec}{mSpec}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Ass}{Ass}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\height}{height}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\ann}{ann}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\coker}{coker}
+%\DeclareMathOperator{\ker}{ker}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\M}{M}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\ch}{char}
+\DeclareMathOperator{\Aut}{Aut}
+%\DeclareMathOperator{\dim}{dim}
+
+\DeclareMathOperator{\lcm}{lcm}
+
+\def\ra{\rightarrow}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\ov}[1]{\overline{#1}}
+
+\def\ov#1{\overline{#1}}
+
+
+\title{}
+\date{\vspace{-0.5in}}
+
+\makeatletter
+\g@addto@macro\@floatboxreset\centering
+\makeatother
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+
+\begin{document}
+
+\thispagestyle{fancy}
+\pagestyle{fancy}
+\rhead{UNL $\mid$ Fall 2025}
+\lhead{Introduction to Modern Algebra I}
+
+\vspace{3em}
+
+\begin{center}
+	{\LARGE Problem Set 3 \\}
+	Due Wednesday, September 17
+\end{center}
+
+\
+
+\noindent
+{\bf Instructions:}
+You are encouraged to work together on these problems, but each student should hand in their own final draft, written in a way that indicates their individual understanding of the solutions. Never submit something for grading that you do not completely understand. You cannot use any resources besides me, your classmates, and our course notes.
+
+
+I will post the .tex code for these problems for you to use if you wish to type your homework. If you prefer not to type, please  {\em write neatly}. As a matter of good proof writing style, please use complete sentences and correct grammar. You may use any result stated or proven in class or in a homework problem, provided you reference it appropriately by either stating the result or stating its name (e.g. the definition of ring or Lagrange's Theorem). Please do not refer to theorems by their number in the course notes, as that can change.
+
+
+\
+
+
+
+
+\
+
+\begin{problem} For groups $G$ and $H$, the group $G \times H$, known as the {\bf product of $G$ and $H$}, refers to the set 
+$$G \times H \colonequals \{ (g,h) \mid g \in G, h \in H \}$$
+equipped with the multiplication rule 
+$$(g_1, h_1) \cdot (g_2, h_2) \colonequals (g_1 \cdot_G g_2, h_1 \cdot_H h_2).$$ 
+You may take it as a known fact that the product of two groups is also a group.
+\begin{enumerate}
+\item[(1.1)]	Let $G$ and $H$ be groups, and consider elements $g \in G$ and $h \in H$, and the corresponding element $(g,h)\in G\times H$. Show that
+	\[ \mathrm{ord}((g,h)) = \begin{cases} \mathrm{lcm}( \mathrm{ord}(g) , \mathrm{ord}(h) ) & \text{if} \ \mathrm{ord}(g) ,\mathrm{ord}(h) < \infty \\ 
+	\infty & \text{if} \ \mathrm{ord}(g)=\infty \ \text{or} \ \mathrm{ord}(h)=\infty.\end{cases}\]
+\item[(1.2)] For each of the following pairs of groups, show that the two groups are not isomorphic.
+\begin{itemize}
+\item $(\C, +)$ and $(\Q, +)$.
+  
+\item $(\R \setminus \{0\}, \cdot)$ and $(\R, +)$.
+
+\item $\ZZ/2 \times \ZZ/2$ and $\ZZ/4$.
+
+\item $Q_8 \times \ZZ/3$ and $S_4$.
+\end{itemize}
+\end{enumerate}
+\end{problem} 
+
+
+
+
+
+\begin{problem}
+Let 
+$$G=\prod_{i\in \N} \ZZ = \{ (n_i)_{i \geqslant 0} \mid n_i \in \ZZ \}$$ 
+be the group whose elements are sequences of integers, equipped with the operation given by componentwise addition. Let $H=(\ZZ,+)$. Show\footnote{Note: this gives us an example of groups $G,H$ such that there is an isomorphism $G\times H\cong G$ but $H$ is nontrivial. Since $G\times H \cong G$ can be rewritten as $G\times H\cong G\times \{e\}$, this shows that in general one cannot cancel groups in isomorphisms between direct products.} that $G\times H \cong G$.
+\end{problem}
+
+\noindent
+
+
+
+\begin{problem}
+Prove that if $f\!:G\to H$ is a group homomorphism and $K\leq H$ then the {\bf preimage} of $K$, defined as 
+$$f^{-1}(K) \colonequals \{g\in G | f(g)\in K\}$$ 
+is a subgroup of $G$.
+\end{problem}
+
+
+
+\begin{problem} Let $G$ be a group.
+\begin{enumerate}[(4.1)]
+\item Prove that $\mathrm{Aut}(G)$, the set of automorphisms of $G$, is a group under composition.
+\item For $g\in G$, let $\psi_g: G\to G$ be given by $\psi_g(x) = gxg^{-1}$. Prove that $\{ \psi_g \ | \ g\in G\}$ is a subgroup of $\mathrm{Aut}(G)$. 
+\end{enumerate}
+\end{problem}
+
+\begin{problem} Prove\footnote{Hint: Let $H$ act on $G$ by left multiplication: $h \cdot g= hg$. Compute the cardinality of each orbit.} \textsc{Lagrange's Theorem:} If $G$ is a finite group, and $H\leq G$ is a subgroup, then $|H|$ divides $|G|$. 
+\end{problem}
+
+
+\end{document}

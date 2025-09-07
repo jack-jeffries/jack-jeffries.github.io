@@ -1,0 +1,239 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,enumerate}
+\usepackage[]{graphicx}
+\usepackage{color,subfigure}
+\definecolor{scarlet}{rgb}{0.81,0,0}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage[all]{xypic}
+\usepackage[colorlinks=true,citecolor=scarlet,linkcolor=scarlet]{hyperref}
+\usepackage{colonequals}
+
+\usepackage{fancyhdr, lastpage}
+\pagestyle{fancy}
+\fancyfoot[C]{{\thepage} of \pageref{LastPage}}
+
+
+
+\DeclareMathOperator{\mSpec}{mSpec}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Ass}{Ass}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\height}{height}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\ann}{ann}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\coker}{coker}
+%\DeclareMathOperator{\ker}{ker}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\M}{M}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\ch}{char}
+\DeclareMathOperator{\Aut}{Aut}
+%\DeclareMathOperator{\dim}{dim}
+
+\DeclareMathOperator{\lcm}{lcm}
+
+\def\ra{\rightarrow}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\ov}[1]{\overline{#1}}
+
+\def\ov#1{\overline{#1}}
+
+
+\title{}
+\date{\vspace{-0.5in}}
+
+\makeatletter
+\g@addto@macro\@floatboxreset\centering
+\makeatother
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+
+\begin{document}
+
+\thispagestyle{fancy}
+\pagestyle{fancy}
+\rhead{UNL $\mid$ Fall 2025}
+\lhead{Introduction to Modern Algebra I}
+
+\vspace{3em}
+
+\begin{center}
+	{\LARGE Problem Set 3 \\}
+	Due Wednesday, September 17
+\end{center}
+
+\
+
+\noindent
+{\bf Instructions:}
+You are encouraged to work together on these problems, but each student should hand in their own final draft, written in a way that indicates their individual understanding of the solutions. Never submit something for grading that you do not completely understand. You cannot use any resources besides me, your classmates, and our course notes.
+
+
+I will post the .tex code for these problems for you to use if you wish to type your homework. If you prefer not to type, please  {\em write neatly}. As a matter of good proof writing style, please use complete sentences and correct grammar. You may use any result stated or proven in class or in a homework problem, provided you reference it appropriately by either stating the result or stating its name (e.g. the definition of ring or Lagrange's Theorem). Please do not refer to theorems by their number in the course notes, as that can change.
+
+
+\
+
+
+
+
+\
+
+\begin{problem} For groups $G$ and $H$, the group $G \times H$, known as the {\bf product of $G$ and $H$}, refers to the set 
+$$G \times H \colonequals \{ (g,h) \mid g \in G, h \in H \}$$
+equipped with the multiplication rule 
+$$(g_1, h_1) \cdot (g_2, h_2) \colonequals (g_1 \cdot_G g_2, h_1 \cdot_H h_2).$$ 
+You may take it as a known fact that the product of two groups is also a group.
+\begin{enumerate}
+\item[(1.1)]	Let $G$ and $H$ be groups, and consider elements $g \in G$ and $h \in H$, and the corresponding element $(g,h)\in G\times H$. Show that
+	\[ \mathrm{ord}((g,h)) = \begin{cases} \mathrm{lcm}( \mathrm{ord}(g) , \mathrm{ord}(h) ) & \text{if} \ \mathrm{ord}(g) ,\mathrm{ord}(h) < \infty \\ 
+	\infty & \text{if} \ \mathrm{ord}(g)=\infty \ \text{or} \ \mathrm{ord}(h)=\infty.\end{cases}\]
+	
+	\begin{proof}
+	First suppose that $|g|$ and $|h|$ are both finite.
+	Let $|g| = a$ and $|h| = b$, and let $\ell = \lcm(|g|,|h|)$. Since $\ell$ is a multiple of both $a$ and $b$, we can write $\ell = ac$ and $\ell = bd$. Then
+	$$(g,h)^\ell = (g^{ac},h^{bd}) = ((g^a)^c,(h^b)^d) = (e_G,e_H) = e_{G \times H}.$$
+	Thus $|(g,h)| \leqslant \ell$.
+	Moreover, let $n \colonequals |(g,h)|$. Then $(g^n,h^n) = (g,h)^n = e$, so in particular $g^n = e$ and $h^b = e$. By a previous homework problem, we conclude that $|g|$ and $|h|$ both divide $n$, and thus $n$ must be a multiple of $\lcm(|g|,|h|)$. In particular, $n \geqslant \lcm(|g|,|h|)$. We showed that $|(g,h)| \leqslant \lcm(|g|,|h|)$ and $\lcm(|g|,|h|) \geqslant |(g,h)|$, so we must have $\lcm(|g|,|h|) = |(g,h)|$.
+	
+For the other case, we show the contrapositive. Suppose that $(g,h) \in G \times H$ has finite order $n$. Then
+	$$(g^n,h^n) = (g,h)^n = (e_G,e_H),$$
+	so in particular $g^n = e$ and $h^n = e$. We conclude that $g$ and $h$ both have finite order.
+\end{proof}
+	
+\item[(1.2)] For each of the following pairs of groups, show that the two groups are not isomorphic.
+\begin{itemize}
+\item $(\C, +)$ and $(\Q, +)$.
+
+\begin{proof}
+These groups are not isomorphic since $\C$ and $\Q$ have different cardinalities, and any isomorphism is in particular a bijection of sets.
+\end{proof}
+  
+\item $(\R \setminus \{0\}, \cdot)$ and $(\R, +)$.
+
+\begin{proof}
+	They are not isomorphic since $(\R \setminus \{0\}, \cdot)$ has one element of order $2$, namely $-1$, while every element of $(\R, +)$ has infinite order.
+\end{proof}
+
+\item $\ZZ/2 \times \ZZ/2$ and $\ZZ/4$.
+
+\begin{proof}
+They are not isomorphic since $\ZZ/4$ has an element, $[1]$, of order $4$ and $\ZZ/2 \times \ZZ/2$ has no such elements.
+\end{proof}
+
+
+\item $Q_8 \times \ZZ/3$ and $S_4$.
+
+\begin{proof}
+Since $|-1| = 2$ and $|[1]_3| = 3$, the element $(-1, [1])$ in $Q_8 \times \ZZ/3$ has order $\lcm(2,3) = 6$. We claim that $S_4$ has no elements of order $6$. However, $S_4$ has no elements of order $6$, as we showed in the previous homework.
+\end{proof}
+
+
+\end{itemize}
+\end{enumerate}
+\end{problem} 
+
+
+
+
+
+\begin{problem}
+Let 
+$$G=\prod_{i\in \N} \ZZ = \{ (n_i)_{i \geqslant 0} \mid n_i \in \ZZ \}$$ 
+be the group whose elements are sequences of integers, equipped with the operation given by componentwise addition. Let $H=(\ZZ,+)$. Show\footnote{Note: this gives us an example of groups $G,H$ such that there is an isomorphism $G\times H\cong G$ but $H$ is nontrivial. Since $G\times H \cong G$ can be rewritten as $G\times H\cong G\times \{e\}$, this shows that in general one cannot cancel groups in isomorphisms between direct products.} that $G\times H \cong G$.
+\end{problem}
+
+\begin{proof}
+Consider the  map that prepends an integer to a sequence of integers, more formally
+$$f\!: G\times H \longrightarrow G$$
+$$f((z_i)_{i\in\N},h)=(h,z_0, z_1, z_2, \ldots).$$
+We claim that this a group homomorphism. Indeed:
+$$\begin{aligned}
+f((z_i)_{i\in\N},a) + f((w_i)_{i\in\N},b) & = (a,z_0,z_1, \ldots) + (b,w_0,w_1, \ldots) & \textrm{by definition of } f\\
+& = (a+b,z_0+w_0,z_1+w_1, \ldots) & \textrm{by definition of } G \times H\\
+& = f((z_i+w_i)_i, a+b) & \textrm{by definition of } f\\
+& = f(((z_i)_i,a)+((w_i),b)) & \textrm{by definition of } G \times H\\
+\end{aligned}
+$$
+
+Moreover, this map is surjective, since given any $(z_i)_{i\in\N}$, 
+$$f((z_1, z_2, z_3, \ldots), z_0) = (z_i)_i.$$
+The map $f$ is also injective: if we denote the constant sequence equal to $0$ by $\mathbf{0}$, then
+$$f((z_i)_{i},h)= \mathbf{0} \iff (h,z_0, z_1, \ldots) = \mathbf{0} \iff h=0 \textrm{ and } z_i=0 \textrm{ for all } i \geqslant 0 \iff ((z_i)_{i},h) = 0_{G \times H}.$$
+We have established the desired isomorphism.
+\end{proof}
+
+
+
+
+
+\begin{problem}
+Prove that if $f\!:G\to H$ is a group homomorphism and $K\leq H$ then the {\bf preimage} of $K$, defined as 
+$$f^{-1}(K) \colonequals \{g\in G \  | \  f(g)\in K\}$$ 
+is a subgroup of $G$.
+\end{problem}
+
+\begin{proof}
+Since $f$ is a homomorphism, $f(e_G)=e_H\in K$, and thus $e_H\in f^{-1}(K)\neq \varnothing$.
+
+If $x,y \in f^{-1}(K)$, then $f(x)\in K$ and $f(y)\in K$. Since $f$ is a homomorphism and $K$ is closed under multiplication and taking inverses,
+$$f(xy^{-1})=f(x)f( y^{-1} )=f(x)f(y)^{-1}\in K,$$ 
+and thus $xy^{-1}\in f^{-1}(K)$.
+By the One-step subgroup test, we conclude that $f^{-1}(K)$ is a subgroup of $G$.
+\end{proof}
+
+
+
+\begin{problem} Let $G$ be a group.
+\begin{enumerate}[(4.1)]
+\item Prove that $\mathrm{Aut}(G)$, the set of automorphisms of $G$, is a group under composition.
+
+
+
+\item For $g\in G$, let $\psi_g: G\to G$ be given by $\psi_g(x) = gxg^{-1}$. Prove that $\{ \psi_g \ | \ g\in G\}$ is a subgroup of $\mathrm{Aut}(G)$. 
+
+\begin{proof}
+We first prove $\psi_g$ is a homomorphism. Given $a,b\in G$, we have
+$$\psi_g(xy)=g(xy)g^{-1}=(gxg^{-1})(gyg^{-1})=\psi_g(x)\psi_g(y).$$ 
+Now we claim $\psi_g$ is an automorphism. In fact, $\psi_{g^{-1}}$ is the inverse homomorphism, since $\psi_{g^{-1}}\psi_{g}(x) = g^{-1} g x g^{-1} g = x$ and $\psi_{g}\psi_{g^{-1}}(x) = g g^{-1}  x g g^{-1} = x$.
+
+Let $H=\{\psi_g \ \mid \ g\in G\}$. To show $H$ is a subgroup, note first that $H$ is nonempty since $\psi_e \in H$. We now claim that $\psi_g, \psi_h\in H$, $\psi_g\circ \psi_h=\psi_{gh}$; indeed, for $x\in X$, we have
+\[ (\psi_g\circ \psi_h)(x) = g h x h^{-1} g^{-1} = (gh) x (gh)^{-1} = \psi_{gh}(x),\]
+and $\psi{gh}\in H$, so $H$ is closed for the product.  Finally, we also proved already that for all $x\in G$,  $(\psi_x)^{-1}=\psi_{x^{-1}}\in H$, so $H$ is closed under inverses.  Thus, $H$ is a subgroup of $\operatorname{Aut}(G)$ by the Two-step test.
+\end{proof}
+\end{enumerate}
+\end{problem}
+
+\begin{problem} Prove\footnote{Hint: Let $H$ act on $G$ by left multiplication: $h \cdot g= hg$. You can use that this is an action without verifying it. Compute the cardinality of each orbit.} \textsc{Lagrange's Theorem:} If $G$ is a finite group, and $H\leq G$ is a subgroup, then $|H|$ divides $|G|$. 
+\end{problem}
+
+\begin{proof}
+Let $H$ act on $G$ by left multiplication.
+We show that every orbit of this action has size $|H|$. Indeed, consider $g\in G$ and define a function 
+\[ \begin{aligned} H &\to \mathrm{Orb}_H(g)\\
+h &\mapsto hg.\end{aligned}\]
+I claim this function is bijective. First, note that it is surjective by construction. To see it is injective, assume $f(h)=f(h')$. Then $hg=h'g$, and by the cancellation property we conclude that $h=h'$, which shows $f$ is injective. Now since $f$ is bijective we conclude that $|H|=| \mathrm{Orb}_H(g)|$.
+
+The orbits for this action form a partition of $G$. Since $G$ is finite, there are finitely many orbits, so we choose representatives $g_1, \ldots, g_k$ for each distinct orbit, and we have a disjoint union
+$$G=\bigcup_{i=1}^j \mathrm{Orb}_H(g_i).$$ 
+Therefore we have
+$$|G|\,=\sum_{i=1}^k |\mathrm{Orb}_H(g_i)|=\sum_{i=1}^k |H|= k |H|,$$ 
+and thus $|H|$ divides $|G|$. 
+\end{proof}
+
+
+
+\end{document}

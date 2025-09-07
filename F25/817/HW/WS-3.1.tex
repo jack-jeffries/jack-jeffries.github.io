@@ -1,0 +1,148 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=.65in]{geometry}
+\usepackage{paralist,amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals}
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\solutione}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{leaf}This solution is embargoed.}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+
+\newcommand{\rsa}{\rightsquigarrow}
+
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+
+\DeclareMathOperator{\ord}{ord}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{Subgroups}
+	
+	
+
+\begin{framed}
+
+\textsc{Definition:} Let $G$ be a group. A nonempty subset $H$ of $G$ is a \textbf{subgroup} of $G$ if it is a group under the the same operation as $H$  (i.e., $h \cdot_H h' = h \cdot_G h'$ for $h,h'\in H$). We write $H\leq G$ to indicate that $H$ is a subgroup of $G$.
+
+\
+
+Any group $G$ has two \textbf{trivial subgroups} $\{e\}$ and $G$.
+
+\
+
+\textsc{Lemma 1:} Let $H$ be a subset of $G$.
+\begin{itemize}
+\item \textsc{Two step test:} If $H$ is nonempty, $H$ is closed under multiplication\footnotemark\,and $H$ is closed under inverses\footnotemark[1], then $H$ is a subgroup of $G$.
+\item \textsc{One step test:} If $H$ is nonempty, and for all $x,y\in H$, $xy^{-1}\in H$, then $H$ is a subgroup of $G$.
+\end{itemize}
+
+\
+
+\textsc{Lemma 2 (General recipes for subgroups):} Let $G$ be a group.
+\begin{enumerate}
+\item If $H\leq  G$ and $K\leq H$, then $H\leq G$.
+\item If $\{ H_{\alpha} \}_{\alpha\in J}$ is a collection of subgroups of $G$, then $\bigcap_{\alpha\in J} H_\alpha \leq G$.
+\item If $f:G\to H$ is a group homomorphism, then $\mathrm{im}(G) \leq H$.
+\item If $f:G\to H$ is a group homomorphism, and $K\leq G$, then $f(K) = \{ f(k) \ | \ k\in K\} \leq H$.
+\item If $f:G\to H$ is a group homomorphism, and $K\leq G$, then $\ker(f) \leq G$.
+\item The center $Z(G)$ is a subgroup of $G$.
+\end{enumerate}
+
+
+\end{framed}
+\footnotetext[1]{A subset $H\subseteq G$ is \textit{closed under multiplication} if $x,y\in H \Rightarrow xy\in H$ and \textit{closed under inverses} if  $x\in H \Rightarrow x^{-1}\in H$.}
+
+\begin{enumerate}
+\itemA Proving subsets are subgroups:
+\begin{enumerate}
+\itema Choose a couple of parts of Lemma 2 and prove them; you can use Lemma 1.
+%\itema Let $S \leq G$ be a subset and define $C_G(S) := \{ g\in G \ | \ gx=xg\}$ for all $x\in X$. This is called the \textbf{centralizer} of $S$. Use Lemma 1 to show that $C_G(S)$ is a subgroup of $G$.
+\itema Let $n\in \mathbb{Z}_{\geq 1}$, and define $\mathrm{SL}_n(\mathbb{R})$ to be the set of $n\times n$ real matrices with determinant $1$. Show\footnote{Hint: This becomes very quick with a proper use of Lemma 2.} that $\mathrm{SL}_n(\mathbb{R}) \leq \mathrm{GL}_n(\mathbb{R})$.
+\itema Let $n\in \mathbb{Z}_{\geq 1}$. Recall from linear algebra that an $n\times n$ matrix $Q$ is \textbf{orthogonal} if $Q^T Q = I$, where ${}^T$ denotes transpose and $I$ denotes the identity matrix. Define $\mathrm{O}_n(\mathbb{R})$ to be the set of $n\times n$ real orthogonal matrices. Show that $\mathrm{O}_n(\mathbb{R}) \leq \mathrm{GL}_n(\mathbb{R})$.
+\itema Define $\mathrm{SO}_n(\mathbb{R})$ to be the set of $n\times n$ real orthogonal matrices that have determinant $1$. Show that $\mathrm{SO}_n(\mathbb{R}) \leq \mathrm{GL}_n(\mathbb{R})$.
+\end{enumerate}
+
+\
+
+\itemB Prove or disprove: The union of two subgroups of a group is a subgroup.
+
+\
+
+\itemB Prove Lemma 1.
+\end{enumerate}
+
+\
+
+
+\begin{framed}
+
+\textsc{Definition:} Let $G$ be a group, and $S\subseteq G$ be a subset. The \textbf{subgroup of $G$ generated by $S$} is the intersection of all subgroups of $G$ that contain $S$:
+\[ \langle S \rangle :=  \bigcap_{\substack{ H\leq G  \\ S \subseteq H}} H \]
+
+\end{framed}
+
+
+
+
+\begin{framed}
+
+\textsc{Cayley's Theorem:}
+
+\end{framed}
+
+
+
+
+
+
+
+
+
+\end{document}
