@@ -1,0 +1,129 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{paralist,amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals}
+\usepackage{tikz}
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\solutione}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{leaf}This solution is embargoed.}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+
+\newcommand{\rsa}{\rightsquigarrow}
+
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+
+\DeclareMathOperator{\ord}{ord}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{Isomorphism wrapup}
+	
+	
+
+\begin{framed}
+\textsc{Proposition:} Let $f: G\to H$ be a group homomorphism. Then $f$ is an isomorphism if and only if $f$ is bijective\footnotemark.
+
+\
+
+
+\textsc{Lemma:} Let $f:G\to H$ be an isomorphism. Then for any $g\in G$, we have $|g| = |f(g)|$.
+
+\
+
+
+\textsc{Definition:} A property $\mathcal{P}$ of a group is an \textbf{isomorphism invariant} if whenever $G\cong H$ and $\mathcal{P}$ holds for $G$, then $\mathcal{P}$ also holds for $H$.
+
+\
+
+
+\textsc{Theorem:} The following are isomorphism invariants:
+\begin{enumerate}
+\item The order of the group.
+\item The set of orders of elements of the group.
+\item Being abelian.
+\item The order of the center of the group.
+\item Being finitely generated.
+\end{enumerate}
+
+\end{framed}
+\footnotetext{Reminder: by definition a function is \textbf{bijective} if it is injective and surjective (i.e. a one-to-one correspondence). It is a theorem from set theory that a function $f:X\to Y$ is bijective if and only if there exists an inverse function $g:Y\to X$.}
+
+\begin{enumerate}
+
+
+\itemA Use the Theorem to show that none of the following groups are pairwise isomorphic:
+
+\[  {S}_3 \qquad {S}_4\qquad \mathbb{Z}/6 \]
+
+
+\itemA Prove the Proposition.
+
+\
+
+\itemB Prove the Lemma. 
+
+\
+
+\itemB Prove the Thoerem.
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
