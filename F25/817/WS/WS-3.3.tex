@@ -1,0 +1,112 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=.65in]{geometry}
+\usepackage{paralist,amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals}
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\solutione}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{leaf}This solution is embargoed.}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+
+\newcommand{\rsa}{\rightsquigarrow}
+
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+
+\DeclareMathOperator{\ord}{ord}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{Cyclic groups wrapup}
+	
+	
+
+\begin{framed}
+
+\textsc{Universal mapping theorem for cyclic groups:} Let $G = \langle x \rangle$ be a cyclic group and $H$ be an arbitrary group.
+\begin{enumerate}
+\item If $|x|=n<\infty$ and $y\in H$ is such that $y^n=e$, then there is a unique homomorphism $f:G\to H$ such that $f(x)=y$.
+\item If $|x|=\infty$ and $y\in H$ is arbitrary, then there is a unique homomorphism $f:G\to H$ such that $f(x)=y$.
+\end{enumerate}
+
+\
+
+\textsc{Definition:} \begin{itemize}
+\item The \textbf{infinite cyclic group}  is the group $C_\infty = \{ a^j \ | \ j\in \mathbb{Z}\}$ with operation $a^j a^k = a^{j+k}$. Its presentation\footnotemark is $\langle a \ | \ \varnothing \rangle$. 
+\item For any $n\in \mathbb{Z}_{\geq 1}$, the cyclic group of order $n$ is the group $C_n=\{ a^j \ | \ j\in \{0,1,\dots,n-1\} \, \}$ with operation $a^j a^k = a^{j+k \, (\mathrm{mod} \, n)}$. Its presentation is $\langle a \ | \ a^n = e\rangle$.
+\end{itemize}
+
+\
+
+\textsc{Classification of cyclic groups:} Every infinite cyclic group is isomorphic to $C_\infty$. Every cyclic group of order $n$ is isomorphic to $C_n$.
+\end{framed}
+\footnotetext[1]{We write the empty set in the relations spot to indicate that there are no defining relations.}
+
+
+\begin{enumerate}
+\itemA Use the Universal Mapping Theorem for cyclic groups to prove the classification of cyclic groups.
+
+\
+
+\itemA Prove the Universal mapping theorem for cyclic groups.
+
+\
+
+\itemB Classify all subgroups of $C_\infty$ and describe the subgroup lattice.
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+\end{document}
