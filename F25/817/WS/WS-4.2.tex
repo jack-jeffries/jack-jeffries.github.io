@@ -69,22 +69,29 @@
 	
 
 \begin{framed}
-\textsc{Definition:} A subgroup $N$ of a group $G$ is \textbf{normal} if $gNg^{-1} = N$ for all $g\in G$. We write $N\trianglelefteq G$ to indicate that $N$ is a normal subgroup of $G$.
+\textsc{Definition:} A subgroup $N$ of a group $G$ is \textbf{normal} if $gNg^{-1} = N$ for all $g\in G$, where \newline $gNg^{-1} = \{ gng^{-1} \ | \ n\in N\}$. We write $N\trianglelefteq G$ to indicate that $N$ is a normal subgroup of $G$.
+
+\
 
 
 \textsc{Lemma:} Let $N$ be a subgroup of a group $G$. The following are equivalent:
 \begin{enumerate}[(a)]
 \item $N$ is a normal subgroup of $G$.
 \item For all $g\in G$, $gNg^{-1} \subseteq N$.
-\item 
+\item For all $g\in G$, the \emph{left coset} $gN$ is equal to the \emph{right coset} $Ng$.
+\item For all $g\in G$, $gN \subseteq Ng$.
+\item For all $g\in G$, $Ng \subseteq gN$.
 \end{enumerate}
 \end{framed}
 
 
 
 \begin{enumerate}
-\itemA Use the Universal Mapping Theorem for cyclic groups to prove the classification of cyclic groups.
-
+\itemA Examples of normal subgroups: Use the definition and/or the Lemma to show the following:
+\begin{enumerate}
+\itema If $G$ is an abelian group and $H\leq G$, then $H\trianglelefteq G$.
+\itema The center $Z(G)$ of a group $G$ is a normal subgroup\footnote{Recall that we have already shown that $Z(G)\leq G$.} of $G$.
+\itema The\footnote{Hint: Recall from HW 1 that $\tau (i \ j) \tau^{-1}= (\tau(i) \ \tau(j))$.} group $K = \{ e, (12)(34), (13)(24), (14)(23) \} \leq S_4$ is normal.
 
 
 \end{enumerate}
