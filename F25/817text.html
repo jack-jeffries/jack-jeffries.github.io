@@ -165,6 +165,12 @@
 <li><a href="#subgroups-vs-invariants">Subgroups vs isomorphism invariants</a></li>
 <li><a href="#cyclic-groups">Cyclic groups</a></li></ol>
 
+<li><a href="#quotient groups section">Quotient groups</a></li>
+<ol><li><a href="#sec-4-1-heading">Equivalence relations on a group and cosets</a></li>
+<li><a href="#sec-4-2-heading">Normal subgroups</a></li>
+<li><a href="#sec-4-3-heading">Quotient groups</a></li>
+</ol>
+
 </ol>
 </ul></nav>
 <main aria-labelledby="page-title" id="main-content" role="main">
@@ -2801,7 +2807,7 @@ Every time we define a new abstract structure consisting of a set \(S\) with som
 </section>
 
 
-<!--
+
 
 
 <h1 id="quotient groups section">4. Quotient groups</h1>
@@ -2812,222 +2818,7 @@ This idea still works if we replace \(\mathbb{Z}\) by an arbitrary group, but on
 
 
 
-<section id="equiv-relations-cosets" aria-labelledby="sec-4-1-heading">
-  <h2 id="sec-4-1-heading">4.1 Equivalence relations on a group and cosets</h2>
 
-  <p>
-    Let \(G\) be a group and consider an equivalence relation \(\sim\) on \(G\).
-    Let \(G/\sim\) denote the set of equivalence classes for \(\sim\) and write
-    \([g]\) for the equivalence class that the element \(g \in G\) belongs to, that is
-  </p>
-  <div class="math-display">\[[x] := \{g \in G \mid g \sim x\}.\]</div>
-  <p>
-    When does \(G/\sim\) acquire the structure of a group under the operation
-  </p>
-  <div class="math-display">\[[x] \cdot [y] := [xy] \ ?\]</div>
-  <p>
-    Right away, we should be worried about whether this operation is well-defined, meaning that it is independent of our choice of representatives for each class. That is, if \([x] = [x']\) and \([y] = [y']\) then must \([xy] = [x'y']\)? In other words, if \(x \sim x'\) and \(y \sim y'\), must \(xy \sim x'y'\)?
-  </p>
-
-  <section class="callout definition">
-    <h3>Definition 4.1.1</h3>
-    <p>
-      We say an equivalence relation \(\sim\) on a group \(G\) is <strong>compatible with multiplication</strong> if \(x \sim y\) implies \(xz \sim yz\) and \(zx \sim zy\) for all \(x,y,z \in G\).
-    </p>
-  </section>
-
-  <section class="callout lemma">
-    <h3>Lemma 4.1.2</h3>
-    <p>
-      For a group \(G\) and equivalence relation \(\sim\), the rule \([x] \cdot [y] = [xy]\) is well-defined and makes \(G/\sim\) into a group if and only if \(\sim\) is compatible with multiplication.
-    </p>
-  </section>
-
-  <section class="callout proof">
-    <h3>Proof of Lemma 4.1.2</h3>
-    <p>
-      To say that the rule \([x] \cdot [y] = [xy]\) is well-defined is to say that for all \(x, x', y, y' \in G\) we have
-    </p>
-    <div class="math-display">\[[x]=[x'] \textrm{ and } [y]=[y'] \implies [x][y]=[x'][y'].\]</div>
-    <p>
-      So \([xy]=[x'y']\) if and only if whenever \(x\sim x'\) and \(y\sim y'\), then \(xy\sim x'y'\).
-    </p>
-    <p>
-      Assume \(\sim\) is compatible with multiplication. Then \(x\sim x'\) implies \(xy\sim x'y\) and \(y\sim y'\) implies \(x'y\sim x'y'\), hence by transitivity \(xy\sim x'y'\). Thus \([x] \cdot [y] = [xy]\) is well-defined.
-    </p>
-    <p>
-      Conversely, assume the rule \([x] \cdot [y] = [xy]\) is well-defined, so that
-    </p>
-    <div class="math-display">\[[x]=[x'] \textrm{ and } [y]=[y'] \implies [x][y]=[x'][y'].\]</div>
-    <p>
-      Setting \(y=y'\) gives us
-      \[
-      x\sim x' \implies xy\sim x'y.
-      \]
-      Setting \(x=x'\) gives us 
-      \[
-      y\sim y' \implies xy\sim xy'.
-      \]
-      Hence \(\sim\) is compatible with multiplication.
-    </p>
-    <p>
-      So now assume that the multiplication rule is well-defined, which we have now proved is equivalent to saying that \(\sim\) is compatible with the multiplication in \(G\). We need to prove that \(G/\sim\) really is a group. Indeed, since \(G\) itself is a group then given any \(x,y,z \in G\) we have 
-    </p>
-    <div class="math-display">\[[x] \cdot ([y] \cdot [z]) = [x] \cdot [yz] = [x(yz)] = [(xy)z] = [xy][z] = ([x][y])[z].\]</div>
-    <p>
-      Moreover, for all \(x \in G\) we have
-    </p>
-    <div class="math-display">\[[e_G] [x] = [e_G x] = [x] \qquad \textrm{and} \qquad  [x] [e_G] = [x e_G] = [x],\]</div>
-    <p>
-      so that \([e_G]\) is an identity for \(G/\sim\). Finally,
-    </p>
-    <div class="math-display">\[[x][x^{-1}] = [e_G] = e_{G/\sim},\]</div>
-    <p>
-      so that every element in \(G/\sim\) has an inverse; in fact, this shows that \([x]^{-1} = [x^{-1}]\). 
-    </p>
-  </section>
-
-
-
-  <section class="callout definition">
-    <h3>Definition 4.1.3</h3>
-    <p>
-      Let \(G\) be a group and let \(\sim\) be an equivalence relation on \(G\) that is compatible with multiplication. The <strong>quotient group</strong> is the set \(G/\sim\) of equivalence classes, with group multiplication \([x]\cdot [y] = [xy]\). 
-    </p>
-  </section>
-
-  <section class="callout example">
-    <h3>Example 4.1.4</h3>
-    <p>
-      Let \(G=\mathbb{Z}\) and fix an integer \(n \geqslant 1\). Let \(\sim\) be the equivalence relation given by congruence modulo \(n\), so "\(\sim\)" is the same as "\(\equiv \pmod n\)". Then 
-    </p>
-    <div class="math-display">\[(\mathbb{Z},+)/\sim = (\mathbb{Z}/n,+).\]</div>
-  </section>
-
-  <p>But how do we come up with equivalence relations that are compatible with the group law?</p>
-
-  <section class="callout definition">
-    <h3>Definition 4.1.5 (Cosets)</h3>
-    <p>
-      Let \(H\) be a subgroup of a group \(G\). The <strong>left action</strong> of \(H\) on \(G\) is given by
-      \[
-      h\cdot g=hg \quad \textrm{for } h\in H, g\in G.
-      \]
-      The equivalence relation \(\sim_H\) on \(G\) induced by the left action of \(H\) is
-      \[
-      a \sim_H b \textrm{ if and only if } b = ha \text{ for some } h \in H.
-      \]
-      The equivalence class of \(g \in G\), also called the <strong>orbit</strong> of \(g\), and also called the <strong>right coset</strong> of \(H\) in \(G\) containing \(g\), is
-      \[
-      Hg := \{hg \mid h \in H\}.
-      \]
-      There is also a <strong>left coset</strong> of \(H\) in \(G\) containing \(g\), defined by
-      \[
-      gH := \{gh \mid h \in H\}.
-      \]
-    </p>
-  </section>
-
-  <section class="callout example">
-    <h3>Example 4.1.6</h3>
-    <p>
-      Let \(G=\mathbb{Z}\) and \(H=\langle n\rangle=n\mathbb{Z}=\{nk \mid k\in \mathbb{Z}\}\). Then 
-      \[
-      x\sim_{ n\mathbb{Z}} y \iff x=y+nk \textrm{ for some } k\in \mathbb{Z} \iff x\equiv y \!\!\!\!\pmod n.
-      \]
-      Therefore the equivalence relation \(\sim_{ n\mathbb{Z}}\) is the same as congruence modulo \(n\) and the right and left cosets of \(n\mathbb{Z}\) in \(\mathbb{Z}\) are the congruence classes of integers modulo \(n\). 
-    </p>
-  </section>
-
-  <section class="callout lemma">
-    <h3>Lemma 4.1.7</h3>
-    <p>
-      Let \(H \leq G\). The following facts about left cosets are equivalent for \(x,y \in G\):
-    </p>
-    <ol>
-      <li>The elements \(x\) and \(y\) belong to the same left coset of \(H\) in \(G\).</li>
-      <li>\(x = yh\) for some \(h \in H\).</li>
-      <li>\(y = xh\) for some \(h \in H\).</li>
-      <li>\(y^{-1}x \in H\).</li>
-      <li>\(x^{-1}y \in H\).</li>
-      <li>\(xH = yH\).</li>
-    </ol>
-    <p>
-      Analogously, the following facts about right cosets are equivalent for all \(x,y \in G\): (list as in TeX).
-    </p>
-  </section>
-
-  <section class="callout proof">
-    <h3>Proof of Lemma 4.1.7</h3>
-    <p>
-      Full chain of equivalences as in the TeX source: (1)\(\Rightarrow\)(2), (2)\(\Leftrightarrow\)(3), (2)\(\Leftrightarrow\)(4), (4)\(\Leftrightarrow\)(5), (2)\(\Rightarrow\)(6), (6)\(\Rightarrow\)(1).
-    </p>
-  </section>
-
-  <section class="callout remark">
-    <h3>Remark 4.1.8</h3>
-    <p>Note that Lemma 4.1.7 says in particular that \(\sim_H\) is compatible with multiplication.</p>
-  </section>
-
-  <section class="callout lemma">
-    <h3>Lemma 4.1.9</h3>
-    <p>
-      For \(H \leq G\), the collection of left cosets of \(H\) in \(G\) form a partition of \(G\), and similarly for right cosets. Moreover, all cosets have cardinality \(|H|\).
-    </p>
-  </section>
-
-  <section class="callout proof">
-    <h3>Proof of Lemma 4.1.9</h3>
-    <p>
-      Cosets are equivalence classes, hence partition \(G\). Explicit proof for right cosets as in TeX: every \(g\) in \(G\) lies in some coset, two cosets are either equal or disjoint, and \(|Hg|=|H|\) via the bijection \(\rho(h)=hg\).
-    </p>
-  </section>
-
-  <section class="callout definition">
-    <h3>Definition 4.1.10</h3>
-    <p>
-      The number of left cosets of a subgroup \(H\) in a finite group \(G\) is denoted \([G:H]\) and called the <strong>index</strong> of \(H\) in \(G\). Equivalently, it is the number of right cosets.
-    </p>
-  </section>
-
-  <section class="callout corollary">
-    <h3>Corollary 4.1.11</h3>
-    <p>
-      If \(G\) is a finite group and \(H \leq G\), then
-      \[
-      |G| = |H|\cdot [G:H].
-      \]
-    </p>
-  </section>
-
-  <section class="callout example">
-    <h3>Example 4.1.12</h3>
-    <p>
-      For \(G =D_{n}\) and \(H = \langle s \rangle = \{e,s\}\), the cosets are:
-      \[
-      \{e,s\}, \{r,rs\}, \{r^2,r^2s\},\ldots,\{r^{n-1},r^{n-1}s\}.
-      \]
-      Right cosets similarly listed in TeX. When \(K=\langle r\rangle\), left and right cosets agree.
-    </p>
-  </section>
-</section>
-Would you like me to now extend this same treatment to Section 4.2 onward, so that all of Chapter 4 is consistently verbatim HTML?
-
-
-
-
-
-
-
-You said:
-Stop saying "as in the TeX source". Write it out!
-
-
-ChatGPT said:
-Understood — thank you for clarifying. From now on, I will never shorten with placeholders like “as in TeX source.” I’ll write out every equation, step, and list verbatim. Let’s redo Section 4.1 properly, full and explicit:
-
-html
-Copy code
 <section id="equiv-relations-cosets" aria-labelledby="sec-4-1-heading">
   <h2 id="sec-4-1-heading">4.1 Equivalence relations on a group and cosets</h2>
 
@@ -3353,7 +3144,7 @@ Copy code
 V=\{e, (1 2)(3 4), (1 3)(2 4), (1 4)(2 3)\}
 \]</div>
     <p>
-      one can show that \(V \trianglelefteq S_4\) (see \Cref{A_n is normal} below), and since \(V\) is abelian (because you proved before that all groups with 4 elements are abelian!), the subgroup \(H = \{e,(12)(34)\}\) is normal in \(V\). But \(H\) is <em>not</em> normal in \(S_4\), since for example
+      one can show that \(V \trianglelefteq S_4\), and since \(V\) is abelian (because you proved before that all groups with 4 elements are abelian!), the subgroup \(H = \{e,(12)(34)\}\) is normal in \(V\). But \(H\) is <em>not</em> normal in \(S_4\), since for example
     </p>
     <div class="math-display">\[
 (1 3) [(1 2)(3 4)] (1 3)^{-1} = (3 2)(1 4) \notin H.
@@ -3361,7 +3152,7 @@ V=\{e, (1 2)(3 4), (1 3)(2 4), (1 4)(2 3)\}
   </section>
 
   <section class="callout lemma" role="region" aria-labelledby="lem-4-2-4">
-    <h3 id="lem-4-2-4">Lemma 4.2.4 (\(\label{lem925}\label{normal subgroup equivs}\))</h3>
+    <h3 id="lem-4-2-4">Lemma 4.2.4</h3>
     <p>Assume \(N\) is a subgroup of \(G\). The following conditions are equivalent. </p>
     <ol style="list-style-type: lower-alpha; padding-left: 1.25rem;">
       <li>\(N\) is a normal subgroup of \(G\), meaning that \(gNg^{-1} = N\) for all \(g \in G\).</li>
@@ -3376,9 +3167,9 @@ V=\{e, (1 2)(3 4), (1 3)(2 4), (1 4)(2 3)\}
 
 
   <section class="callout proof" role="region" aria-labelledby="prf-4-2-4">
-    <h3 id="prf-4-2-4">Proof (of Lemma 4.2.4)</h3>
+    <h3 id="prf-4-2-4">Proof of Lemma 4.2.4</h3>
     <p>
-      Note that \(gNg^{-1} = N\) if and only if \(gN = Ng\) and hence (1) \(\iff\) (3).
+      Note that \(gNg^{-1} = N\) if and only if \(gN = Ng\) and hence (a) \(\iff\) (c).
     </p>
     <p>
       The implication \((a) \Rightarrow (b)\) is immediate. Conversely, if \(gNg^{-1} \subseteq N\) for all \(g\), then 
@@ -3432,7 +3223,7 @@ bab^{-1} \in A,
   <section class="callout example" role="region" aria-labelledby="ex-4-2-9">
     <h3 id="ex-4-2-9">Example 4.2.9</h3>
     <p>
-      Let us go back to \Cref{example cosets D_n}, where we considered the group \(G =D_{n}\) and the subgroups 
+      Let us go back to Example 4.1.12, where we considered the group \(G =D_{n}\) and the subgroups 
     </p>
     <div class="math-display">\[
 H = \langle s \rangle = \{e,s\} \quad \textrm{and} \quad K = \langle r \rangle.
@@ -3452,19 +3243,19 @@ H = \langle s \rangle = \{e,s\} \quad \textrm{and} \quad K = \langle r \rangle.
   <section class="callout remark" role="region" aria-labelledby="rmk-4-2-11">
     <h3 id="rmk-4-2-11">Remark 4.2.11</h3>
     <p>
-      Recall that we proved in \Cref{sign of a permutation is well-defined} that the sign of a permutation is well-defined. Notice also that the inverse of an even permutation must also be even, and the product of any two even permutations is even, and thus \(A_n\) can also be described as the set of all even permutations.
+      Recall that we proved that the sign of a permutation is well-defined. Notice also that the inverse of an even permutation must also be even, and the product of any two even permutations is even, and thus \(A_n\) can also be described as the set of all even permutations.
     </p>
   </section>
 
   <section class="callout lemma" role="region" aria-labelledby="lem-4-2-12">
-    <h3 id="lem-4-2-12">Lemma 4.2.12 (\(\label{A_n is normal}\))</h3>
+    <h3 id="lem-4-2-12">Lemma 4.2.12</h3>
     <p>For all \(n \geqslant 2\), \(A_n\trianglelefteq S_n\).</p>
   </section>
 
   <section class="callout proof" role="region" aria-labelledby="prf-4-2-12">
-    <h3 id="prf-4-2-12">Proof (of Lemma 4.2.12)</h3>
+    <h3 id="prf-4-2-12">Proof of Lemma 4.2.12</h3>
     <p>
-      Consider the sign map \(\operatorname{sign}\!\!: S_n \to \Z/2\) that takes each permutation to its sign, meaning
+      Consider the sign map \(\operatorname{sign}\!\!: S_n \to \mathbb{Z}/2\) that takes each permutation to its sign, meaning
     </p>
     <div class="math-display">\[
 \operatorname{sign}(\sigma) = \begin{cases}
@@ -3473,15 +3264,15 @@ H = \langle s \rangle = \{e,s\} \quad \textrm{and} \quad K = \langle r \rangle.
 \end{cases}
 \]</div>
     <p>
-      This a group homomorphism (exercise!), and by construction the kernel of \(\operatorname{sign}\) is \(A_n\). By \Cref{kernel is a normal subgroup}, we conclude that \(A_n\) must be a normal subgroup of \(S_n\).
+      This a group homomorphism (exercise!), and by construction the kernel of \(\operatorname{sign}\) is \(A_n\). Since kernels of group homomorphisms are normal subgroups, we conclude that \(A_n\) must be a normal subgroup of \(S_n\).
     </p>
     <p>
-      Alternatively, we can prove \Cref{A_n is normal} by showing that \(A_n\) is a subgroup of \(S_n\) of index \(2\), and using \Cref{index 2 normal}.
+      Alternatively, we can prove the Lemma by showing that \(A_n\) is a subgroup of \(S_n\) of index \(2\).
     </p>
   </section>
 
   <p>
-    The last condition in \Cref{normal subgroup equivs} implies that for all \(g \in G\) and \(n \in N\), we have \(gn = n'g\) for some \(n' \in N\), which is precisely what was needed to make the group law on \(G/\sim_H\) well-defined. Recall that
+    The last condition in out list of equivalent characterizations of normal subgroups implies that for all \(g \in G\) and \(n \in N\), we have \(gn = n'g\) for some \(n' \in N\), which is precisely what was needed to make the group law on \(G/\sim_H\) well-defined. Recall that
   </p>
   <div class="math-display">\[
 a \sim_H b \textrm{ if and only if } b = ha \text{ for some } h \in H.
@@ -3495,7 +3286,7 @@ a \sim_H b \textrm{ if and only if } b = ha \text{ for some } h \in H.
   </section>
 
   <section class="callout proof" role="region" aria-labelledby="prf-4-2-13">
-    <h3 id="prf-4-2-13">Proof (of Lemma 4.2.13)</h3>
+    <h3 id="prf-4-2-13">Proof of Lemma 4.2.13</h3>
     <p><u>(\(\Rightarrow\))</u> Suppose \(\sim\) is compatible with multiplication, and set \(N := \{g \in G \mid g \sim e\}\). Then we claim that \(N\trianglelefteq G\) and \(\sim=\sim_N\).</p>
     <p>
       To see that \(N\trianglelefteq G\), let \(n\in N\) and \(g\in G\). Since \(n\in N\), then \(n \sim e\), and thus since \(\sim\) is compatible with multiplication we conclude that for all \(g \in G\) we have
@@ -3504,7 +3295,7 @@ a \sim_H b \textrm{ if and only if } b = ha \text{ for some } h \in H.
 gng^{-1}\sim geg^{-1} = e \in N.
 \]</div>
     <p>
-      This shows that \(gng^{-1} \subseteq N\) for any \(n \in N\) and any \(g\in G\), and thus \(N\) is a normal subgroup of \(G\) by \Cref{normal subgroup equivs}.
+      This shows that \(gng^{-1} \subseteq N\) for any \(n \in N\) and any \(g\in G\), and thus \(N\) is a normal subgroup of \(G\).
     </p>
     <p>
       It remains to check that \(\sim=\sim_N\). Given any \(a, b \in G\), since \(\sim\) is compatible with multiplication then
@@ -3537,7 +3328,7 @@ zy=znx=zn(z^{-1}z)x=(znz^{-1})zx=n'zx
 
   <section class="callout definition" role="region" aria-labelledby="def-4-3-1">
     <h3 id="def-4-3-1">Definition 4.3.1</h3>
-    <p>Let \(N\) be a normal subgroup of a group \(G\). The \df{quotient group} \(G/N\) is the group \(G/\sim_N\), where \(\sim_N\) is the equivalence relation induced by the left action of \(N\) on \(G\). Thus \(G/N\) is the set of left cosets of \(N\) in \(G\), and the multiplication is given by 
+    <p>Let \(N\) be a normal subgroup of a group \(G\). The <strong>quotient group</strong> \(G/N\) is the group \(G/\sim_N\), where \(\sim_N\) is the equivalence relation induced by the left action of \(N\) on \(G\). Thus \(G/N\) is the set of left cosets of \(N\) in \(G\), and the multiplication is given by 
     \[
       xN\cdot yN := (xy)N.
     \]
@@ -3546,7 +3337,7 @@ zy=znx=zn(z^{-1}z)x=(znz^{-1})zx=n'zx
 
   <section class="callout remark" role="region" aria-labelledby="rmk-4-3-2">
     <h3 id="rmk-4-3-2">Remark 4.3.2</h3>
-    <p>Note that, by  Lemma \ref{coset partition}, \(G/N\) is also the set of right  cosets of \(N\) in \(G\) with multiplication given by 
+    <p>Note that, by  a previous lemma, \(G/N\) is also the set of right cosets of \(N\) in \(G\) with multiplication given by 
     \[
       Nx\cdot Ny := N(xy).
     \]
@@ -3557,7 +3348,7 @@ zy=znx=zn(z^{-1}z)x=(znz^{-1})zx=n'zx
 
   <section class="callout remark" role="region" aria-labelledby="rmk-4-3-3">
     <h3 id="rmk-4-3-3">Remark 4.3.3</h3>
-    <p>Given a group \(G\) and a normal subgroup \(N\), equality in the quotient does not mean that the representatives are equal. By \Cref{cosets}, 
+    <p>Given a group \(G\) and a normal subgroup \(N\), equality in the quotient does not mean that the representatives are equal. By an earlier lemma, 
     \[
       gN = hN \iff gh^{-1} \in N.
     \]
@@ -3566,7 +3357,7 @@ zy=znx=zn(z^{-1}z)x=(znz^{-1})zx=n'zx
 
   <section class="callout remark" role="region" aria-labelledby="rmk-4-3-4">
     <h3 id="rmk-4-3-4">Remark 4.3.4</h3>
-    <p>Note that \(|G/N| = [G :N ]\). By \hyperref[Lagrange]{Lagrange's Theorem}, if \(G\) is finite then
+    <p>Note that \(|G/N| = [G :N ]\). By Lagrange's Theorem, if \(G\) is finite then
     \[
       \left | G/N\right | = \frac{|G|}{|N|}.
     \]
@@ -3575,7 +3366,7 @@ zy=znx=zn(z^{-1}z)x=(znz^{-1})zx=n'zx
 
   <section class="callout example" role="region" aria-labelledby="ex-4-3-5">
     <h3 id="ex-4-3-5">Example 4.3.5</h3>
-    <p>We saw in \Cref{normal subgroups of D_n} that the subgroup \(N = \langle r \rangle\) of \(D_{n}\) is normal. The quotient \(D_{n}/N\) has just two elements, \(N\) and \(sN\), and hence it must be cyclic of order \(2\), since that is the only one group of order \(2\). In fact, note that \(|N| = n\) and \(|D_n| = 2n\), so by \hyperref[Lagrange]{Lagrange's Theorem} 
+    <p>We saw that the subgroup \(N = \langle r \rangle\) of \(D_{n}\) is normal. The quotient \(D_{n}/N\) has just two elements, \(N\) and \(sN\), and hence it must be cyclic of order \(2\), since that is the only one group of order \(2\). In fact, note that \(|N| = n\) and \(|D_n| = 2n\), so by Lagrange's Theorem
     \[
       |D_n/N| = \frac{2n}{n} =2.
     \]
@@ -3584,7 +3375,7 @@ zy=znx=zn(z^{-1}z)x=(znz^{-1})zx=n'zx
 
   <section class="callout example" role="region" aria-labelledby="ex-4-3-6">
     <h3 id="ex-4-3-6">Example 4.3.6</h3>
-    <p>The \df{infinite dihedral group} \(D_\infty\) is the set 
+    <p>The <strong>infinite dihedral group</strong> \(D_\infty\) is the set 
     \[
       D_\infty = \{r^i,r^is \mid i \in \Z\}
     \]
@@ -3601,7 +3392,7 @@ zy=znx=zn(z^{-1}z)x=(znz^{-1})zx=n'zx
 
   <section class="callout remark" role="region" aria-labelledby="rmk-4-3-7">
     <h3 id="rmk-4-3-7">Remark 4.3.7</h3>
-    <p>In \Cref{example D_infty} above, both groups \(D_\infty\) and \(\langle r^n \rangle\) are infinite, but 
+    <p>In the example above, both groups \(D_\infty\) and \(\langle r^n \rangle\) are infinite, but 
     \[
       [D_\infty:\langle r^n \rangle]=\left|D_\infty/\langle r^n \rangle\right|=|D_{n}|=2n.
     \]
@@ -3614,14 +3405,14 @@ zy=znx=zn(z^{-1}z)x=(znz^{-1})zx=n'zx
   <section class="callout lemma" role="region" aria-labelledby="lem-4-3-8">
     <h3 id="lem-4-3-8">Lemma 4.3.8</h3>
     <p>Let \(G\) be a group and consider a normal subgroup \(N\) of \(G\). Then the map 
-    \[
-      \xymatrix@R=1mm{G \ar[r]^-\pi & G/N \\ g \ar@{|->}[r] & \pi(g) = gN}
-    \]
+   \[
+    \pi: G \longrightarrow G/N,\qquad g \longmapsto \pi(g)=gN.
+  \]
     is a surjective group homomorphism with \(\ker(\pi)=N\). </p>
   </section>
 
   <section class="callout proof" role="region" aria-labelledby="prf-4-3-8">
-    <h3 id="prf-4-3-8">Proof (of Lemma 4.3.8)</h3>
+    <h3 id="prf-4-3-8">Proof of Lemma 4.3.8</h3>
     <p>Surjectivity is immediate from the definition. Now we claim that \(\pi\) is a group homomorphism:</p>
     <div class="math-display">\[
 \begin{aligned}
@@ -3630,7 +3421,7 @@ zy=znx=zn(z^{-1}z)x=(znz^{-1})zx=n'zx
 	& = \pi(g)\pi(g') && \hspace{2em} \textrm{by definition of } \pi.
 \end{aligned}
 \]</div>
-    <p>Finally, by \Cref{cosets}, we have 
+    <p>Finally, by our lemma on costs, we have 
     \[
       \ker(\pi)=\{g\in G\mid gN=e_GN\}=N. 
     \]
@@ -3640,10 +3431,16 @@ zy=znx=zn(z^{-1}z)x=(znz^{-1})zx=n'zx
   <section class="callout definition" role="region" aria-labelledby="def-4-3-9">
     <h3 id="def-4-3-9">Definition 4.3.9</h3>
     <p>Let \(G\) be any group and \(N\) be a normal subgroup of \(G\). The group homomorphism
-    \[
-      \xymatrix@R=1mm{G \ar[r]^-\pi & G/N \\ g \ar@{|->}[r] & \pi(g) = gN}
-    \]
-    is called the \df{canonical (quotient) map}, the \df{canonical surjection}, or the \df{canonical projection} of \(G\) onto \(G/N\).</p>
+
+\[
+\begin{array}{ccc}
+G & \stackrel{\pi}{\longrightarrow} & G/N\\
+g & \mapsto & gN
+\end{array}
+\]
+
+
+is called the <strong>canonical (quotient) map</strong>, the <strong>canonical surjection</strong>, or the <strong>canonical projection}</strong> of \(G\) onto \(G/N\).</p>
   </section>
 
   <p>The canonical projection is a surjective homomorphism. We might indicate that in our notation by writing \(\pi\!: G \twoheadrightarrow G/N\). More generally</p>
@@ -3661,18 +3458,18 @@ zy=znx=zn(z^{-1}z)x=(znz^{-1})zx=n'zx
   </section>
 
   <section class="callout proof" role="region" aria-labelledby="prf-4-3-11">
-    <h3 id="prf-4-3-11">Proof (of Corollary 4.3.11)</h3>
-    <p>By \Cref{kernel is a normal subgroup}, the kernel of any group homomorphism is a normal subgroup; we have just shown in \Cref{lemma quotient map} that every normal subgroup can be realized as the kernel of a group homomorphism.</p>
+    <h3 id="prf-4-3-11">Proof of Corollary 4.3.11</h3>
+    <p>The kernel of any group homomorphism is a normal subgroup; we have just shown that every normal subgroup can be realized as the kernel of a group homomorphism.</p>
   </section>
 
   <section class="callout definition" role="region" aria-labelledby="def-4-3-12">
     <h3 id="def-4-3-12">Definition 4.3.12</h3>
-    <p>Let \(G\) be any group. For \(x,y \in G\), the \df{commutator} of \(x\) and \(y\) is the element 
+    <p>Let \(G\) be any group. For \(x,y \in G\), the <strong>commutator</strong> of \(x\) and \(y\) is the element 
     \[
       [x,y] := xyx^{-1}y^{-1}.
     \]
     </p>
-    <p>The \df{commutator subgroup} or \df{derived subgroup} of \(G\), denoted by \(G'\) or \([G,G]\), is the subgroup generated by all commutators of elements in \(G\). More precisely,
+    <p>The <strong>commutator subgroup</strong> or <strong>derived subgroup</strong> of \(G\), denoted by \(G'\) or \([G,G]\), is the subgroup generated by all commutators of elements in \(G\). More precisely,
     \[
       [G,G] := \langle [x,y] \mid x, y \in G \rangle.
     \]
@@ -3710,7 +3507,7 @@ zy=znx=zn(z^{-1}z)x=(znz^{-1})zx=n'zx
     \[
       G^{\textrm{ab}} := G/[G,G]
     \]
-    is called the \df{abelianization} of \(G\).</p>
+    is called the <strong>abelianization</strong> of \(G\).</p>
   </section>
 
   <section class="callout remark" role="region" aria-labelledby="rmk-4-3-17">
@@ -3725,12 +3522,12 @@ zy=znx=zn(z^{-1}z)x=(znz^{-1})zx=n'zx
 
   <section class="callout exercise" role="region" aria-labelledby="ex-4-3-18">
     <h3 id="ex-4-3-18">Exercise 4.3.18</h3>
-    <p>Let \(G\) be any group. The abelianization of \(G\) is the \emph{largest} quotient of \(G\) that is abelian, in the sense that if \(G/N\) is abelian for some normal subgroup \(N\), then \([G,G] \subseteq N\).</p>
+    <p>Let \(G\) be any group. The abelianization of \(G\) is the <i>largest</i> quotient of \(G\) that is abelian, in the sense that if \(G/N\) is abelian for some normal subgroup \(N\), then \([G,G] \subseteq N\).</p>
   </section>
 
 </section>
 
-
+<!--
 
 
 
@@ -3744,10 +3541,43 @@ zy=znx=zn(z^{-1}z)x=(znz^{-1})zx=n'zx
       \overline{f}: G/N \to H
     \] 
     such that the triangle
-    \[
-      \xymatrix{& G \ar@{->>}[ld]_\pi \ar[rd]^f  & \\
-      G/N \ar@{->}[rr]_{\overline{f}}  && H \\}
-    \]
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+  <mtable columnalign="center" columnspacing="2em" rowspacing="1.2em">
+    <mtr>
+      <mtd/>
+      <mtd><mi>G</mi></mtd>
+      <mtd/>
+    </mtr>
+    <mtr>
+      <mtd>
+        <mover>
+          <mo>&#x2199;</mo>
+          <mi>&#x03C0;</mi>
+        </mover>
+      </mtd>
+      <mtd/>
+      <mtd>
+        <mover>
+          <mo>&#x2198;</mo>
+          <mi>f</mi>
+        </mover>
+      </mtd>
+    </mtr>
+    <mtr>
+      <mtd><mfrac><mi>G</mi><mi>N</mi></mfrac></mtd>
+      <mtd>
+        <mover>
+          <mo>&#x2192;</mo>
+          <mover accent="true">
+            <mi>f</mi>
+            <mo>&#x203E;</mo>
+          </mover>
+        </mover>
+      </mtd>
+      <mtd><mi>H</mi></mtd>
+    </mtr>
+  </mtable>
+</math>
     commutes, meaning that \(\overline{f} \circ \pi = f\).</p>
 
     <p>Moreover, \(\im(f) = \im(\overline{f})\). In particular, if \(f\) is surjective, then \(\overline{f}\) is also surjective. Finally,
