@@ -92,11 +92,36 @@
 \begin{enumerate}
 \itemA Use the Universal Mapping Theorem for cyclic groups to prove the classification of cyclic groups.
 
-\
+\solution{Let $G=\langle x \rangle$ be an infinite cyclic group. By the UMP for cyclic groups, there is a homomorphism $f: G\to C_\infty$ mapping $x\mapsto a$. Conversely, by the UMP for cyclic groups, there is a homomorphism $g:C_\infty \to G$ mapping $a\mapsto x$. The composition $fg:C_\infty \to C_\infty$ maps $a\mapsto a$; the identity map is another such homomorphism, so by the uniqueness part of the UMP, $fg$ is the identity on $C_\infty$. For the same reason, $gf: G\to G$ is the identity. It follows that $f$ is an isomorphism.
+
+Let $G=\langle x \rangle$ be a cyclic group of order $n$. Since $a\in C_n$ has order $n$, there is a homomorphism $f:G\to C_n$ mapping $x\mapsto a$. Likewise, there is a homomorphism $g:C_n \to G$ by the UMP. Following the same argument as above, we see that these are mutually inverse, so $f$ is an isomorphism.}
 
 \itemA Prove the Universal mapping theorem for cyclic groups.
 
-\
+\solution{
+We know that homomorphisms are uniquely determined by their images on a generating set, so in each case we just need to show existence.
+
+In either case, define $f(x^i) = y^i$.  We must show this function is a well-defined group homomorphism.
+To see that $f$ is well-defined, suppose $x^i=x^j$ for some $i,j\in \Z$. Then, since $x^{i-j}=e_G$, using earlier work, we have
+$$\begin{cases}
+n\mid i-j & \text{ if } |x|=n\\
+i-j=0 & \text{ if } |x|=\infty\\
+\end{cases}
+\implies
+\begin{cases}
+y^ {i-j}=y^{nk} & \text{ if } |x|=n\\
+y^{i-j}=y^0 & \text{ if } |x|=\infty\\
+\end{cases}
+\implies y^ {i-j}=e_H
+\implies y^ i=y^j.
+$$
+Thus, if $x^i=x^j$ then $f(x^i)=y^i=y^j=f(x^j)$. In particular, if $x^k = e$, then $f(x^k) = e$, and $f$ is well-defined.
+
+The fact that $f$ is a homomorphism is immediate: 
+$$f(x^ix^j)=f(x^{i+j})=y^{i+j}=y^iy^j=f(x^i)f(x^j).$$
+
+
+}
 
 \itemB Classify all subgroups of $C_\infty$ and describe the subgroup lattice.
 \end{enumerate}

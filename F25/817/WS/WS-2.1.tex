@@ -101,9 +101,14 @@ Given a group action of $G$ on $X$ and $x\in X$, the \textbf{orbit} of $x$ is
 \itemA Let $G$ be a group acting on a set $X$. For $x,y\in X$, write $x\sim y$ if there exists $g\in G$ such that $g\cdot x = y$.
 \begin{enumerate}
 \itema Show that $\sim$ is an equivalence relation\footnote{Recall that a relation on a set is an \textbf{equivalence relation} if it is \emph{reflexive}, \emph{symmetric}, and \emph{transitive}.}.
+\solution{Since $e\cdot x = x$, we have $x \sim x$, so $\sim$ is reflexive. If $x\sim y$, then $g\cdot x = y$ for some $g\in G$; then $g^{-1} \cdot y = g^{-1} \cdot (g \cdot x) = (g^{-1} g) \cdot x = e\cdot x = x$, so $y\sim x$; hence $\sim$ is symmetric. 
+
+If $x\sim y$ and $y\sim z$, then we have $g\cdot x=y$ and $h \cdot y = z$ for some $g,h\in G$. Then $(hg) \cdot x = h \cdot (g \cdot x) =h \cdot y = z$, so $x\sim z$. This shows that $\sim$ is transitive.}
 \itema Relate the previous part to the Lemma.
+\solution{If $\sim$ is an equivalence relation on $X$, the equivalence classes form a partition of $X$. The conclusion of the Lemma is saying that the equivalnce classes (orbits) are a partition.}
 \itema Suppose that $X$ is a finite set, and $X_1,\dots,X_\ell$ are the distinct orbits of $G$ acting on $X$. Explain:
 \[ |X| = \sum_{i=1}^\ell |X_i|.\]
+\solution{This follows immediately from the Lemma.}
 \end{enumerate}
 
 \
@@ -111,7 +116,9 @@ Given a group action of $G$ on $X$ and $x\in X$, the \textbf{orbit} of $x$ is
 \itemA Dihedral group actions: Let $D_n$ be the group of symmetries of a regular $n$-gon $P_n$ in $\mathbb{R}^2$.
 \begin{enumerate}
 \itema Explain why/how $D_n$ acts naturally on $P_n$. Is this action transitive? Is it faithful?
+\solution{By definition elements of $D_n$ are functions $f:\R^2 \to \R^2$ such that $f(P_n) \subseteq P_n$, so we may consider $f \cdot x = f(x)$ for $f\in D_n$ and $x\in P_n$. The identity $e$ of $D_n$ is the identity function on $P_n$, so $e\cdot x = x$ for all $x\in P_n$. The operation in $D_n$ is composition of functions, so for $g,h\in D_n$, $(gh) \cdot x = g(h(x)) = g\cdot (h\cdot x)$. This verifies that this is an action. It is not transitive, since the center of $P_n$ cannot be moved to a vertex of $P_n$, for example. It is faithful, since an isometry that fixes every point of $P_n$ must be the identity element of $P_n$.} 
 \itema Explain why/how $D_n$ acts naturally on the set of vertices of $P_n$. Is this action transitive? Is it faithful?
+\solution{The action of $D_n$ on $P_n$ restricts to an action on the set of vertices: this is because we proved that every isometry of $P_n$ sends vertices to vertices. This action is now transitive, as we can send any vertex to any other (e.g., by a rotation). It is still faithful.}
 \end{enumerate}
 
 \
@@ -123,11 +130,17 @@ Given a group action of $G$ on $X$ and $x\in X$, the \textbf{orbit} of $x$ is
 \[ \begin{aligned} \rho: G &\rightarrow \mathrm{Perm}(X)  \\ g &\mapsto \mu_g \end{aligned}\]
 Show that $\rho$ is a group homomorphism\footnote{Warning: you should also show that $\mu_g$ is actually an element of $\mathrm{Perm}(X)$. One good way to do this is to show that $\mu_{g^{-1}}$ is the inverse function of $\mu_g$.}.
 We call $\rho$ the \textbf{permutation representation} associated to the given group action.
+\solution{We claim that $\mu_g \circ \mu_h = \mu_{gh}$. Indeed, for any $x\in X$, we have $\mu_g \mu_h (x) = \mu_g (h\cdot x) = g\cdot (h\cdot x) = (gh)\cdot x = \mu_{gh}(x)$. In particular, $\mu_g \circ \mu_{g^{-1}} = \mu_e = \mu_{g^{-1}} \circ \mu_g$, and $\mu_e$ is the identity function on $X$ (by the corresponding group action axiom). In particular, $\mu_g$ is invertible as a function, and hence is a permutation of $X$.
+
+By the computation above, we have $\rho(g) \circ \rho(h) = \mu_g \circ \mu_h = \mu_{gh} = \rho(gh)$ for all $g,h\in G$, so $\rho$ is a group homomorphism.}
 \itema Label the vertices of a square counterclockwise by $\{1,2,3,4\}$. Write out the induced homomorphism $D_4 \to S_4$ coming from the action of $D_4$ on the vertices as in (2.b) above.
+\solution{It suffices to compute the images of our generators $r,s$, for a reflection $s$, e.g., the one over the line through $1$ and $3$. Since $r$ sends vertices $1,2,3,4$ to $2,3,4,1$ respectively, the corresponding permutation is $(1 \, 2\, 3\, 4)$. Since
+$s$ sends vertices $1,2,3,4$ to $1,4,3,2$ respectively, the corresponding permutation is $(2\, 4)$.}
 \itema Let $G$ be a group, $X$ a set, and $\rho:G\to \mathrm{Perm}(X)$ a group homomorphism. Give a natural recipe for a group action of $G$ on $X$, and verify that this is indeed a group action.
+\solution{We can set $g\cot x = \rho(g)(x)$. Let us verify the axioms. We have $\rho(e)$ is the identity of $\mathrm{Perm}(X)$, so $\rho(e)(x)=x$ for all $x\in X$, and thus $e\cdot x= x$ for all $x\in X$. Given $g,h\in G$, $\rho(gh) = \rho(g)\rho(h)$, so $\rho(gh)(x) = \rho(g) \rho(h) (x) = \rho(g)(\rho(h)(x))$ for all $x\in X$. Thus, $(gh)\cdot x = g \cdot(h\cdot x)$ for all $x\in X$.}
 \end{enumerate}
 
-\newpage
+\
 
 \itemB Let $G$ be a group acting on a set $X$. Complete the following sentence, and prove your answer: \\
 The action of $G$ on $X$ is faithful if and only if the associated permutation representation ${\rho: G\to \mathrm{Perm}(X)}$ is $\underline{\phantom{INJECTIVE}}$.

@@ -17,6 +17,7 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
+\newcommand{\Zc}{Z}
 \newcommand{\e}{\varepsilon}
 \newcommand{\inv}{^{-1}}
 \newcommand{\dabs}[1]{\left| #1 \right|}
@@ -87,7 +88,7 @@ Any group $G$ has two \textbf{trivial subgroups} $\{e\}$ and $G$.
 
 \textsc{Lemma 2 (General recipes for subgroups):} Let $G$ be a group.
 \begin{enumerate}
-\item If $H\leq  G$ and $K\leq H$, then $H\leq G$.
+\item If $H\leq  G$ and $K\leq H$, then $K\leq G$.
 \item If $\{ H_{\alpha} \}_{\alpha\in J}$ is a collection of subgroups of $G$, then $\bigcap_{\alpha\in J} H_\alpha \leq G$.
 \item If $f:G\to H$ is a group homomorphism, then $\mathrm{im}(G) \leq H$.
 \item If $f:G\to H$ is a group homomorphism, and $K\leq G$, then $f(K) = \{ f(k) \ | \ k\in K\} \leq H$.
@@ -103,14 +104,34 @@ Any group $G$ has two \textbf{trivial subgroups} $\{e\}$ and $G$.
 \itemA Proving subsets are subgroups:
 \begin{enumerate}
 \itema Choose a couple of parts of Lemma 2 and prove them; you can use Lemma 1.
+\solution{\begin{enumerate}
+	\item By definition, $K$ is a group under the multiplication in $H$, and the multiplication in $H$ is the same as that in $G$, so $K$ is a subgroup of $G$.
+	\item First, note that $H$ is nonempty since $e_G \in H_\alpha$ for all $\alpha\in J$. Moreover, given $x,y\in H$, for each $\alpha$ we have $x,y \in H_\alpha$ and hence $xy^{-1} \in H_\alpha$. It follows that $xy^{-1} \in H$. By the Two-Step test, $H$ is a subgroup of $G$. 
+	\item Since $G$ is nonempty, then $\mathrm{image}(f)$ must also be nonemtpy; for example, it contains $f(e_G) = e_H$. If $x,y \in \mathrm{image}(f)$, then $x = f(a)$ and $y = f(b)$ for some $a,b \in G$, and hence 
+	$$xy^{-1} =f(a)f(b)^{-1} = f(ab^{-1}) \in \mathrm{image}(f).$$
+	By the Two-Step Test, $\mathrm{image}(f)$ is a subgroup of $H$. 
+	
+	\item The restriction $g\!: K \to H$ of $f$ to $K$ is still a group homomorphism, and thus $f(K) = \mathrm{image} g$ is a subgroup of $H$. 
+	
+	\item Using the One-step test, note that if $x, y \in \ker(f)$, meaning $f(x)=f(y)=e_G$, then 
+	$$f(xy^{-1})=f(x)f(y)^{-1}=e_G.$$ 
+	This shows that if $x,y\in \ker(f)$ then $xy^{-1}\in \ker(f)$, so $\ker(f)$ is closed for taking inverses. By the Two-Step test, $\ker(f)$ is a subgroup of $G$.
+	\item The center $\Zc(G)$ is the kernel of the permutation representation $G\to \mathrm{Perm}(G)$ for the conjugation action, so $\Zc(G)$ is a subgroup of $G$ since the kernel of a homomorphism is a subgroup.
+\end{enumerate} 
+}
 \itema Let $n\geq 3$ and consider the dihedral group $D_n$ of symmetries of the $n$-gon. 
 \begin{enumerate}
 \item Is the set of all reflections in $D_n$ a subgroup?
+\solution{No; the composition of two reflections is not a reflection. Also, the identity is not a reflection.}
 \item Is the set of all rotations in $D_n$ a subgroup?
+\solution{Yes; the composition of two rotations is a rotation, as is the inverse of any rotation.}
 \end{enumerate}
 \itema Let $n\in \mathbb{Z}_{\geq 1}$, and define $\mathrm{SL}_n(\mathbb{R})$ to be the set of $n\times n$ real matrices with determinant $1$. Show\footnote{Hint: This becomes very quick with a proper use of Lemma 2.} that $\mathrm{SL}_n(\mathbb{R}) \leq \mathrm{GL}_n(\mathbb{R})$. ($\mathrm{SL}_n(\mathbb{R})$ is called the \textbf{special linear group}.)
+\solution{Recall that $\det: \mathrm{GL}_n(\mathbb{R}) \to \mathbb{R}^\times$ is a homomorphism, and the identity of $\mathbb{R}^\times$ is $1$. Thus, this follows from part (5) of Lemma 2.}
 \itema Let $n\in \mathbb{Z}_{\geq 1}$. Recall from linear algebra that an $n\times n$ matrix $Q$ is \textit{orthogonal} if $Q^T Q = I$, where~${}^T$ denotes transpose and $I$ denotes the identity matrix. Define $\mathrm{O}_n(\mathbb{R})$ to be the set of $n\times n$ real orthogonal matrices. Show that $\mathrm{O}_n(\mathbb{R}) \leq \mathrm{GL}_n(\mathbb{R})$. ($\mathrm{O}_n(\mathbb{R})$ is called the \textbf{orthogonal group}.)
+\solution{We use the two-step test. Let $A,B\in O_n$, so $A^T A= I$ and $B^T B=I$. Since $A$ is square, note that $A A^T=I$ as well. Then $(AB)^T (AB) = B^T A^T AB = B^T B = I$, so $AB\in O_n$. Also, $(A^{-1})^T = (A^T)^{-1}$, so $(A^{-1})^T A^{-1} = (A^T)^{-1} A^{-1} = (A A^T)^{-1} = I^{-1} = I$, so $A^{-1}\in O_n$. Thus, $O_n$ is a group.}
 \itema Define $\mathrm{SO}_n(\mathbb{R})$ to be the set of $n\times n$ real orthogonal matrices that have determinant $1$. Show that $\mathrm{SO}_n(\mathbb{R}) \leq \mathrm{GL}_n(\mathbb{R})$. ($\mathrm{SO}_n(\mathbb{R})$ is called the \textbf{special orthogonal group}.)
+\solution{By definition, $SO_n = SL_n \cap O_n$, so by part 2 of Lemma 2, this is a subgroup.}
 \end{enumerate}
 
 \
@@ -143,7 +164,7 @@ Any group $G$ has two \textbf{trivial subgroups} $\{e\}$ and $G$.
 \setcounter{enumi}{3}
 \itemA Explain why $\bigcap_{\substack{ H\leq G  \\ S \subseteq H}} H$ is a subgroup of $G$, and why it is the \emph{unique smallest} subgroup of $G$ that contains $S$.
 
-\
+\solution{It follows from the Lemma that this is a subgroup. Call this group $K$. If $H$ is a subgroup of $G$ containing $S$, then  $K$ is the intersection of $H$ with some other set, by definition of $K$, so $K \subseteq H$. This means that $K$ is the unique smallest subgroup containing $S$.}
 
 
 
@@ -168,6 +189,7 @@ Any group $G$ has two \textbf{trivial subgroups} $\{e\}$ and $G$.
 \setcounter{enumi}{5}
 
 \itemA Prove\footnote{Hint: Let $G$ act on $G$ by left multiplication.} Cayley's Theorem.
+\solution{Let $G$ act on $G$ by left multiplication. This action induces a permutation representation $\rho: G\to \mathrm{Perm}(G)$. We claim that $\rho$ is injective. Indeed, if $\rho(g)$ is the identity permutation, then $gh = g \cdot h = h$ for all $h\in H$, whence $g=e$. If $G$ has $n$ elements, we can label them $1$ through $n$, and identify $\mathrm{Perm}(G)$ with $S_n$; so we have an injective homomorphism $\rho$ from $G$ to $S_n$. Let $H$ be the image of $\rho$; we have an injective homomorphism$\rho'$  from $G$ to $H$, and by definition of image, this is also surjective. Thus $\rho'$ is an isomorphism so $G\cong H$. This is the isomorphism we seek.}
 
 \end{enumerate}
 

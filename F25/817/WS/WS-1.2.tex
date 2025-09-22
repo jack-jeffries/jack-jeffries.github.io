@@ -85,15 +85,20 @@
 \itemA Warming up with cycles: Consider the symmetric group $S_5$.
 \begin{enumerate}
 \itema Write out the cycle $(1\, 4\, 3)$ explicitly as a function by listing the input and output values.
+\solution{ $1\mapsto 4$, $2\mapsto 2$, $3\mapsto 1$, $4\mapsto 3$, $5\mapsto 5$.}
 \itema Write out the product of cycles $(1 \, 3 \, 5) (2 \,5)$ explicitly as a function by listing the input and output values.
+\solution{ $1\mapsto 3$, $2\mapsto 1$, $3\mapsto 5$, $4\mapsto 4$, $5\mapsto 2$.}
 \itema Which of the following expressions yield the same permutation:
 \begin{itemize}
 \item $(1 \, 5 \, 3 \, 4)$
 \item $(1 \, 4 \, 3 \, 5)$
 \item $(3 \, 4 \, 1 \, 5)$
 \end{itemize}
+\solution{The first and the last.}
 \itema What is the inverse of $(1 \, 5 \, 3 \, 4)$? How would you find the inverse of a cycle in general?
+\solution{$(1\, 4 \, 3\, 5)$. The inverse of a cycle is the reverse cycle.}
 \itema What is the \emph{order}\footnote{Recall that the \textbf{order} of an element $g$ in a group $G$ is the least integer $n>0$ such that $g^n=e$ if some such $n$ exists, else~$\infty$.} of $(1 \, 5 \, 3 \, 4)$? How would you find the order of a cycle in general?
+\solution{The order of $(1\, 5\, 3\, 4)$ is four. The order of an $n$-cycle is $n$.}
 
 \end{enumerate}
 
@@ -102,6 +107,7 @@
 
 \itemB Show\footnote{Hint: To show that two functions are the same, show they have the same values. Compute what each side does to $i_j$, and what it does to an element of $[n]$ that is not an $i_j$.} the following \textsc{Lemma:} For any distinct $i_1,\dots,i_p\in [n]$,
 \[  (i_1 \ i_2 \ \cdots \ i_p) = (i_1 \ i_2) (i_2 \ i_3) \cdots (i_{p-1} \ i_p).\]
+ 
 
 
 \end{enumerate}
@@ -145,14 +151,17 @@ The \textbf{cycle type} of a permutation is the list of the lengths of the cycle
 \itema Write the following permutation in $S_7$ as a product of disjoint cycles:
 \[\begin{array}{c||c|c|c|c|c|c|c}
  i & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\ \hline
- \sigma(i) & 6 & 7 & 2 & 4 & 3 & 6 & 5
+ \sigma(i) & 6 & 7 & 2 & 4 & 3 & 1 & 5
 \end{array}
 \]
 
+\solution{$(1 \, 6) (2\, 7 \, 5\, 3)$}
 
 \itema Write the following product of nondisjoint cycles in $S_7$ as a product of disjoint cycles: \[ (1 \ 3 \ 5 \ 7) (2 \ 3 \ 4 \ 5).\]
+\solution{$(1\, 3\, 4 \, 7) (2\, 5)$}
 
 \itema What is the cycle type of $(1\ 2)( 3\ 4)$? What is the cycle type of $(1\ 2)(2 \ 3)$?
+\solution{$2,2$ for the first; $3$ for the second.}
 \end{enumerate}
 
 \
@@ -196,8 +205,12 @@ in the second case, we say that $\sigma$ is an \textbf{odd} permutation and defi
 \itemA Signs of permutations:
 \begin{enumerate}
 \itema What is the sign of a transposition? Of a 3-cycle? Of a $p$-cycle? (Hint: Use the Lemma.)
+\solution{A transposition has sign $-1$ by definition. A $3$-cycle can be written as a product of two transpositions, so its sign is $1$. By the Lemma, a $p$-cycle can be written as a product of $p-1$ tranpositions, so its sign is $(-1)^{p-1}$.}
 \itema If the cycle type of $\sigma$ is $m_1,m_2,\dots,m_t$, then what is the sign of $\sigma$?
+\solution{Using the previous part, the sign is $(-1)^{(m_1 -1) + (m_2-1) + \cdots + (m_t-1)}$.} 
 \end{enumerate}
+
+
 
 \
 
