@@ -1,0 +1,145 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,enumerate}
+\usepackage[]{graphicx}
+\usepackage{color,subfigure}
+\definecolor{scarlet}{rgb}{0.81,0,0}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage[all]{xypic}
+\usepackage[colorlinks=true,citecolor=scarlet,linkcolor=scarlet]{hyperref}
+\usepackage{colonequals}
+
+\usepackage{fancyhdr, lastpage}
+\pagestyle{fancy}
+\fancyfoot[C]{{\thepage} of \pageref{LastPage}}
+
+
+
+\DeclareMathOperator{\mSpec}{mSpec}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Ass}{Ass}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\height}{height}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\ann}{ann}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\coker}{coker}
+%\DeclareMathOperator{\ker}{ker}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\M}{M}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\ch}{char}
+\DeclareMathOperator{\Aut}{Aut}
+
+%\DeclareMathOperator{\dim}{dim}
+
+\DeclareMathOperator{\lcm}{lcm}
+
+\def\ra{\rightarrow}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\ov}[1]{\overline{#1}}
+\newcommand{\norm}{\trianglelefteq}
+
+\def\ov#1{\overline{#1}}
+
+
+\title{}
+\date{\vspace{-0.5in}}
+
+\makeatletter
+\g@addto@macro\@floatboxreset\centering
+\makeatother
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+
+\begin{document}
+
+\thispagestyle{fancy}
+\pagestyle{fancy}
+\rhead{UNL $\mid$ Fall 2025}
+\lhead{Introduction to Modern Algebra I}
+
+\vspace{3em}
+
+\begin{center}
+	{\LARGE Problem Set 5 \\}
+	Due Thursday, October 2
+\end{center}
+
+\
+
+\noindent
+{\bf Instructions:}
+You are encouraged to work together on these problems, but each student should hand in their own final draft, written in a way that indicates their individual understanding of the solutions. Never submit something for grading that you do not completely understand. You cannot use any resources besides me, your classmates, and our course notes.
+
+
+I will post the .tex code for these problems for you to use if you wish to type your homework. If you prefer not to type, please  {\em write neatly}. As a matter of good proof writing style, please use complete sentences and correct grammar. You may use any result stated or proven in class or in a homework problem, provided you reference it appropriately by either stating the result or stating its name (e.g. the definition of ring or Lagrange's Theorem). Please do not refer to theorems by their number in the course notes, as that can change.
+
+
+\smallskip
+
+
+
+\begin{problem} 
+Let $G$ be a group and $H$ be a subgroup. For $g\in G$, let $gHg^{-1} = \{ ghg^{-1} \ | \ h\in H\}$.
+\begin{enumerate}[(1.1)]
+\item Show that for each $g\in G$, the set $gHg^{-1}$ is a subgroup of $G$, and that $gHg^{-1} \cong H$.
+\item Show that if $|H|=n$ and $H$ is the only subgroup of $G$ of order $n$, then $H\trianglelefteq G$.
+\end{enumerate}
+\end{problem} 
+
+\smallskip
+
+\begin{problem}
+ Let $G$ be the group of all $2 \times 2$ matrices with entries from $\Z$ having determinant~$1$. Let $p$ be a prime number and take $K$ to be the subset of $G$ consisting
+      of all matrices that are congruent to $I_2$ modulo $p$; that is, $K$ consists of all matrices
+      of the form $\begin{bmatrix} a & b \\ c & d \\ \end{bmatrix}$ with \[a \equiv d \equiv 1 \pmod{p} \qquad b \equiv c \equiv 0 \pmod{p}.\]  Prove that
+      $K$ is a normal subgroup of $G$.
+      \end{problem}
+      
+      
+\smallskip
+
+
+\begin{problem} A subgroup $H$ of a group $G$ is a \textbf{characteristic subgroup} if for every $\sigma\in \mathrm{Aut}(G)$, we have $\sigma(H) \subseteq H$.
+\begin{enumerate}[(3.1)]
+\item Show that a characteristic subgroup is normal.
+\item Show that if $G$ is a group, $H$ is a normal subgroup of $G$, and $K$ is a characteristic subgroup of $H$, then $K$ is a normal subgroup of $G$.
+\end{enumerate}
+\end{problem}
+
+
+\smallskip
+
+\begin{problem} Let $G$ be a group. Show that if $G/Z(G)$ is cyclic, then $G$ is abelian.
+\end{problem} 
+
+
+
+\smallskip
+
+\begin{problem} Let $G$ be a finite group of order $2n$ for some integer $n$.
+\begin{enumerate}[(5.1)]
+\item Show\footnote{You are not allowed to use Cauchy's Theorem for this problem. Instead, you might want to consider ${\{g\in G \ | \ g \neq g^{-1}\}}$.} that $G$ has an element of order $2$.
+\item Let $G$ acts on itself by left multiplication, and let $\rho:G \to \mathrm{Perm}(G)$ be the associated permutation representation. Show that for $g$ of order $2$, $\rho(g)$ is a product of $n$ disjoint transpositions\footnote{While we have discussed cycle notation just for the symmetric groups $S_{2n} = \mathrm{Perm}([2n])$, as in the proof of Cayley's Theorem, we can identify $\mathrm{Perm}(G)$ with $S_{2n}$ by numbering the elements of $G$.}.
+\item Suppose that $n$ is odd. Show that $G$ has a nontrivial normal subgroup.
+\end{enumerate}
+
+\end{problem}
+
+
+
+
+
+\end{document}
