@@ -169,7 +169,16 @@
 <ol><li><a href="#sec-4-1-heading">Equivalence relations on a group and cosets</a></li>
 <li><a href="#sec-4-2-heading">Normal subgroups</a></li>
 <li><a href="#sec-4-3-heading">Quotient groups</a></li>
+<li><a href="#sec-4-4-heading">The Isomorphism Theorems for groups</a></li>
+<li><a href="#sec-4-5-heading">Presentations as quotient groups</a></li>
 </ol>
+
+
+<li><a href="#group actions second section">Group actions in action</a></li>
+<ol><li><a href="#sec-5-1-heading">Orbits and Stabilizers</a></li>
+<li><a href="#sec-5-2-heading">The class equation</a></li>
+</ol>
+
 
 </ol>
 </ul></nav>
@@ -2003,7 +2012,7 @@ We come to one of the central concepts in group theory: the action of a group on
     <h3>Example 2.2.4 (conjugation)</h3>
    
     <p>
-      Let \(G\) be any group and fix an element \(g \in G\). Define the {\df conjugation action} of \(G\) on itself by setting
+      Let \(G\) be any group and fix an element \(g \in G\). Define the <strong>conjugation action</strong> of \(G\) on itself by setting
     </p>
     <div class="math-display">
       \[
@@ -3526,7 +3535,7 @@ is called the <strong>canonical (quotient) map</strong>, the <strong>canonical s
 
 </section>
 
-<!--
+
 
 
 
@@ -3579,7 +3588,7 @@ is called the <strong>canonical (quotient) map</strong>, the <strong>canonical s
 </math>
     commutes, meaning that \(\overline{f} \circ \pi = f\).</p>
 
-    <p>Moreover, \(\im(f) = \im(\overline{f})\). In particular, if \(f\) is surjective, then \(\overline{f}\) is also surjective. Finally,
+    <p>Moreover, \(\mathrm{im}(f) = \mathrm{im}(\overline{f})\). In particular, if \(f\) is surjective, then \(\overline{f}\) is also surjective. Finally,
     \[
       \ker(\overline{f}) = \ker(f)/N := \{ g N \mid f(g) = e_H\}.
     \]
@@ -3607,7 +3616,7 @@ is called the <strong>canonical (quotient) map</strong>, the <strong>canonical s
     \]
     Thus \(\overline{f}\) is a group homomorphism.</p>
 
-    <p>The fact that \(\im f=\im \overline f\) is immediate from the formula for \(\overline f\) given above, and hence \(f\) is surjective if and only if \(\overline f\) is surjective.</p>
+    <p>The fact that \(\mathrm{im} f=\mathrm{im} \overline f\) is immediate from the formula for \(\overline f\) given above, and hence \(f\) is surjective if and only if \(\overline f\) is surjective.</p>
 
     <p>Finally, we have 
     \[
@@ -3625,7 +3634,7 @@ is called the <strong>canonical (quotient) map</strong>, the <strong>canonical s
     <p>Let \(G\) be any group and let \(A\) be an abelian group.
     Any group homomorphism \(f\!: G \to A\) must factor uniquely through the abelianization \(G^{\textrm{ab}}\) of \(G\): there exists a unique homomorphism \(\overline{f}\) such that \(f\) factors as the composition
     \[
-      f\!:G \xlongrightarrow{\pi} G/[G,G] \xlongrightarrow{\overline{f}} A.
+      f\!:G \stackrel{\pi}{\longrightarrow} G/[G,G] \stackrel{\overline{f}}{\longrightarrow} A.
     \]
     </p>
   </section>
@@ -3637,75 +3646,77 @@ is called the <strong>canonical (quotient) map</strong>, the <strong>canonical s
       f([x,y]) = [f(x),f(y)] = e
     \] 
     for all \(x, y \in G\), and thus \([G,G] \subseteq \ker(f)\).
-    By \Cref{UMP quotient group}, the homomorphism \(f\) must uniquely factor as
+    By the Universal Mapping Property for quotient groups, the homomorphism \(f\) must uniquely factor as
     \[
-      f\!:G \xlongrightarrow{\pi} G/[G,G] \xlongrightarrow{\overline{f}} A. 
+      f\!:G \stackrel{\pi}{\longrightarrow} G/[G,G] \stackrel{\overline{f}}{\longrightarrow} A. 
     \]
     </p>
   </section>
 
   <p>The slogan for the previous result is that any homomorphism from a group \(G\) to any abelian group factors uniquely through the abelianization \(G/[G,G]\) of \(G\).</p>
 
-  <p>\</p>
+
 
   <p>We are now ready for the First (and most important) Isomorphism Theorem.</p>
 
   <section class="callout theorem" role="region" aria-labelledby="thm-4-4-3">
     <h3 id="thm-4-4-3">Theorem 4.4.3 (First Isomorphism Theorem)</h3>
-    <p>If \(f\!: G \to H\) is a homomorphism of groups, then \(\ker(f) \trianglelefteq G\) and the map \(\overline{f}\) defined by 
-    \[
-      \xymatrix@R=1mm{G/\ker(f) \ar[r]^-{\overline{f}} & H \\ g \cdot ker(f) \ar@{|->}[r] & f(g)}
-    \]
+    <p>If \(f\!: G \to H\) is a homomorphism of groups, the map \(\overline{f}\) defined by 
+\[
+\begin{aligned}
+   G/\ker(f) &\;\longrightarrow\; H \\
+   g\ker(f)  &\;\longmapsto\; f(g)
+\end{aligned}
+\]
     induces an isomorphism
     \[
-      \overline{f}: G/\ker(f) \xlongrightarrow{\cong} \im(f).
+      \overline{f}: G/\ker(f) \ {\cong} \ \mathrm{im}(f).
     \]
-    In particular, if \(f\) is surjective, then \(f\) induces an isomorphism \(\overline{f}\!: G/\ker(f) \xlongrightarrow{\cong} H\). </p>
+    In particular, if \(f\) is surjective, then \(f\) induces an isomorphism \(\overline{f}\!: G/\ker(f) \cong H\). </p>
   </section>
 
   <section class="callout proof" role="region" aria-labelledby="prf-4-4-3">
     <h3 id="prf-4-4-3">Proof (of Theorem 4.4.3)</h3>
-    <p>The fact that the kernel is a normal subgroup is \Cref{kernel is a normal subgroup}.
-    Let us first restrict the target of \(f\) to \(\im(f)\), so that we can assume without loss of generality that \(f\) is surjective.
-    By \Cref{UMP quotient group}, there exists a (unique) homomorphism \(\overline{f}\) such that \(\overline{f} \circ \pi = f\), where \(\pi\!: G \to G/\ker(f)\) is the canonical projection. Moreover, the kernel \(\ker(f)/\ker(f)\) of \(\overline{f}\) consists of just one element, the coset \(\ker(f)\) of the identity, and so \(\overline{f}\) it injective. Moreover, \Cref{UMP quotient group} also says that the image of \(\overline{f}\) equals the image of \(f\). We conclude that \(\overline{f}\) is an isomorphism.</p>
+    <p> Let us first restrict the target of \(f\) to \(\mathrm{im}(f)\), so that we can assume without loss of generality that \(f\) is surjective.
+    By the Universal Mapping Property for quotient groups, there exists a (unique) homomorphism \(\overline{f}\) such that \(\overline{f} \circ \pi = f\), where \(\pi\!: G \to G/\ker(f)\) is the canonical projection. Moreover, the kernel \(\ker(f)/\ker(f)\) of \(\overline{f}\) consists of just one element, the coset \(\ker(f)\) of the identity, and so \(\overline{f}\) it injective. Moreover, the Universal Mapping Property for quotient groups also says that the image of \(\overline{f}\) equals the image of \(f\). We conclude that \(\overline{f}\) is an isomorphism.</p>
   </section>
 
   <section class="callout example" role="region" aria-labelledby="ex-4-4-4">
     <h3 id="ex-4-4-4">Example 4.4.4</h3>
-    <p>Let \(F\) be a field and consider \(G = \GL_n(F)\) for some integer \(n \geqslant 1\). 
-    We claim that \(H = \SL_n(F)\), the square matrices with determinant \(1\), is a normal subgroup of \(G = \GL_n(F)\). Indeed, given \(A \in \GL_n(F)\) and \(B \in \SL_n(F)\), then
+    <p>Let \(F\) be a field and consider \(G = \mathrm{GL}_n(F)\) for some integer \(n \geqslant 1\). 
+    We claim that \(H = \mathrm{SL}_n(F)\), the square matrices with determinant \(1\), is a normal subgroup of \(G = \mathrm{GL}_n(F)\). Indeed, given \(A \in \mathrm{GL}_n(F)\) and \(B \in \mathrm{SL}_n(F)\), then
     \[
       \det(ABA^{-1}) = \det(A) \underset{1}{\underbrace{\det(B)}} \det(A)^{-1} = \det(A) \det(A)^{-1} = 1,
     \] 
     so \(ABA^{-1} \in H\). 
     The map 
     \[
-      \det\!: \GL_n(F) \to (F^\times, \cdot)
+      \det\!: \mathrm{GL}_n(F) \to (F^\times, \cdot)
     \] 
-    is a surjective group homomorphism whose kernel is by definition of \(\SL_n(F)\). By the First Isomorphism Theorem, 
+    is a surjective group homomorphism whose kernel is by definition of \(\mathrm{SL}_n(F)\). By the First Isomorphism Theorem, 
     \[
-      \GL_n(F)/\SL_n(F) \cong (F^\times, \cdot).
+      \mathrm{GL}_n(F)/\mathrm{SL}_n(F) \cong (F^\times, \cdot).
     \] 
     </p>
   </section>
 
   <section class="callout example" role="region" aria-labelledby="ex-4-4-5">
     <h3 id="ex-4-4-5">Example 4.4.5</h3>
-    <p>Note that \(N = (\{\pm 1 \}, \cdot)\) is a subgroup of \(G = (\R \setminus \{0\}, \cdot)\), and \(N\) is normal in \(G\) since \(G\) is abelian. We claim that \(G/N\) is isomorphic to \((\R_{>0}, \cdot)\). To prove this, define 
+    <p>Note that \(N = (\{\pm 1 \}, \cdot)\) is a subgroup of \(G = (\mathbb{R} \setminus \{0\}, \cdot)\), and \(N\) is normal in \(G\) since \(G\) is abelian. We claim that \(G/N\) is isomorphic to \((\mathbb{R}_{>0}, \cdot)\). To prove this, define 
     \[
-      f\!: \R^\times \to \R_{>0}
+      f\!: \mathbb{R}^\times \to \mathbb{R}_{>0}
     \] 
     to be the absolute value function, so that \(f(r) = |r|\).
     Then \(f\) is a surjective homomorphism and its kernel is \(N\). The First Isomorphism Theorem gives
     \[
-      G/N \cong (\R_{>0}, \cdot).
+      G/N \cong (\mathbb{R}_{>0}, \cdot).
     \]
     </p>
   </section>
 
   <section class="callout example" role="region" aria-labelledby="ex-4-4-6">
     <h3 id="ex-4-4-6">Example 4.4.6</h3>
-    <p>We showed in \Cref{example quotient of D_n by rotations} that \(D_n/&lt;r&gt;\) is isomorphic to the cyclic group of order \(2\). Let us now reprove that fact using the First Isomorphism Theorem.</p>
+    <p>We showed that \(D_n/&lt;r&gt;\) is isomorphic to the cyclic group of order \(2\). Let us now reprove that fact using the First Isomorphism Theorem.</p>
 
     <p>Recall that \((\{\pm 1\}, \cdot)\) is a group with \(\cdot\) the usual multiplication. Define \(f\!: D_{n} \longrightarrow \{\pm 1\}\) by 
     \[
@@ -3726,9 +3737,9 @@ is called the <strong>canonical (quotient) map</strong>, the <strong>canonical s
     </p>
   </section>
 
-  <p>\vspace{1em}</p>
 
-  <p>To set up the Second Isomorphism Theorem, we need some more background first.</p>
+
+  <p>There are three other isomorphism theorems that we will discuss. The numbering of the other isomorphism theorems is not standard, so we prefer to give them somewhat descriptive names. Our second isomorphism theorem will be the Diamond Isomorphism Theorem. To set up the Diamond Isomorphism Theorem, we need some more background first.</p>
 
   <section class="callout definition" role="region" aria-labelledby="def-4-4-7">
     <h3 id="def-4-4-7">Definition 4.4.7</h3>
@@ -3763,22 +3774,22 @@ is called the <strong>canonical (quotient) map</strong>, the <strong>canonical s
 
   <section class="callout example" role="region" aria-labelledby="ex-4-4-10">
     <h3 id="ex-4-4-10">Example 4.4.10</h3>
-    <p>In \(D_{n}\), consider the subgroups \(H=\langle s\rangle\) and \(K=\langle r\rangle\). The work we did in \Cref{example cosets D_n} shows that 
+    <p>In \(D_{n}\), consider the subgroups \(H=\langle s\rangle\) and \(K=\langle r\rangle\). The work we did in computing the cosets of \(D_n\) shows that 
     \[
       HK=KH=D_{2},
     \] 
-    but \(r\) and \(s\) do not commute. The fact that \(HK=KH\) can also be justified by observing that \(K\trianglelefteq D_{n}\) (see \Cref{normal subgroups of D_n}) and using \Cref{exercise HK=KH}.</p>
+    but \(r\) and \(s\) do not commute. The fact that \(HK=KH\) can also be justified by observing that \(K\trianglelefteq D_{n}\) and using the exercise above.</p>
   </section>
 
   <section class="callout theorem" role="region" aria-labelledby="thm-4-4-11">
-    <h3 id="thm-4-4-11">Theorem 4.4.11 (Second Isomorphism Theorem)</h3>
+    <h3 id="thm-4-4-11">Theorem 4.4.11 (Diamond Isomorphism Theorem)</h3>
     <p>Let \(G\) be a group, \(H \leq G\), and \(N \trianglelefteq G\). Then 
     \[
       HN \leq G, \quad N \cap H \trianglelefteq H, \quad N \trianglelefteq HN
     \] 
     and there is an isomorphism
     \[
-      \frac{H}{N \cap H} \xlongrightarrow{\cong} \frac{HN}{N}
+      \frac{H}{N \cap H} \stackrel{\longrightarrow}{\cong} \frac{HN}{N}
     \]
     given by 
     \[
@@ -3790,12 +3801,15 @@ is called the <strong>canonical (quotient) map</strong>, the <strong>canonical s
   <section class="callout proof" role="region" aria-labelledby="prf-4-4-11">
     <h3 id="prf-4-4-11">Proof (of Theorem 4.4.11)</h3>
     <p>We leave the facts that \(HN \leq G\) and \(N \cap H \trianglelefteq H\) as exercises. Since \(N \trianglelefteq G\), then \(N \trianglelefteq HN\). Let \(\pi\!: HN \to \frac{HN}{N}\) be the canonical projection. Define 
-    \[
-      \xymatrix@R=1mm{H \ar[r]^-f & \frac{HN}{N} \\ h \ar[r] & f(h) = hN.}
-    \]
+\[
+\begin{aligned}
+H &\xrightarrow{\ f\ }& HN/N \\
+h &\longmapsto & f(h)=hN
+\end{aligned}
+\]
     This is a homomorphism, since it is the composition of homomorphisms
     \[
-      f\!: H \subseteq HN \xlongrightarrow{\pi} \frac{HN}{N},
+      f\!: H \subseteq HN \stackrel{\pi}{\longrightarrow} \frac{HN}{N},
     \]
     where the first map is just the inclusion.
     Moreover, \(f\) is surjective since 
@@ -3820,11 +3834,11 @@ is called the <strong>canonical (quotient) map</strong>, the <strong>canonical s
 
   <section class="callout proof" role="region" aria-labelledby="prf-4-4-12">
     <h3 id="prf-4-4-12">Proof (of Corollary 4.4.12)</h3>
-    <p>By \Cref{Second Isomorphism Theorem}, 
+    <p>By the Diamond Isomorphism Theorem, 
     \[
       \frac{H}{N \cap H} \cong \frac{HN}{N}.
     \]
-    The result now follows from \Cref{order of quotient}, which is really just an application of Lagrange's Theorem:
+    The result now follows from Lagrange's Theorem:
     \[
       \frac{|H|}{|N \cap H|} = \frac{|HN|}{|N|}. 
     \]
@@ -3835,12 +3849,12 @@ is called the <strong>canonical (quotient) map</strong>, the <strong>canonical s
 
   <section class="callout example" role="region" aria-labelledby="ex-4-4-13">
     <h3 id="ex-4-4-13">Example 4.4.13</h3>
-    <p>Fix a field \(F\) and an integer \(n \geqslant 1\). Let \(G = \GL_n(F)\) and \(N = \SL_n(F)\), and recall that we showed in \Cref{SLn is normal} that \(N\) is a normal subgroup of \(G\). Let \(H\) be the set of diagonal invertible matrices, which one can show is also a subgroup of \(G\). One can show that every invertible matrix \(A\) can be written as a product of a diagonal matrix and a matrix of determinant \(1\), and thus \(H N = G\). 
-    By the \hyperref[Second Isomorphism Theorem]{Second Isomorphism Theorem},
+    <p>Fix a field \(F\) and an integer \(n \geqslant 1\). Let \(G = \mathrm{GL}_n(F)\) and \(N = \mathrm{SL}_n(F)\), and recall that we showed that \(N\) is a normal subgroup of \(G\). Let \(H\) be the set of diagonal invertible matrices, which one can show is also a subgroup of \(G\). One can show that every invertible matrix \(A\) can be written as a product of a diagonal matrix and a matrix of determinant \(1\), and thus \(H N = G\). 
+    By the Diamond Isomorphism Theorem,
     \[
       H/(N \cap H) \cong G/N
     \]
-    and since we showed in \Cref{SLn is normal} that 
+    and since we showed that 
     \[
       G/N \cong (F^\times, \cdot),
     \] 
@@ -3851,19 +3865,22 @@ is called the <strong>canonical (quotient) map</strong>, the <strong>canonical s
     </p>
   </section>
 
-  <p>Before we prove what is known as the Third Isomorphism Theorem, we need to get a better understanding of the subgroups of a quotient group. That is the content of what is known as the Lattice Isomorphism Theorem, sometimes (rarely?) called the Fourth Isomorphism Theorem.</p>
+  <p>BWe need to get a better understanding of the subgroups of a quotient group. That is the content of what is known as the Lattice Isomorphism Theorem.</p>
 
   <section class="callout theorem" role="region" aria-labelledby="thm-4-4-14">
-    <h3 id="thm-4-4-14">Theorem 4.4.14 (The Lattice Isomorhism Theorem)</h3>
+    <h3 id="thm-4-4-14">Theorem 4.4.14 (Lattice Isomorphism Theorem)</h3>
     <p>Let \(G\) be a group and \(N\) a normal subgroup of \(G\), and let \(\pi\!: G \twoheadrightarrow G/N\) be the quotient map. There is an order-preserving bijection of posets (a lattice isomorphism)
-    \[
-      \xymatrix@R=1mm@C=15mm{
-      \{\text{subgroups of $G$ that contain $N$}\} \ar@<0.5ex>[r]^-{\Psi} & \ar@<0.5ex>[l]^-{\Phi} \{\text{subgroups of $G/N$}\} \\
-      H \ar@{|->}[r] & \Psi(H)= H/N \\
-      \Phi(A) = \pi^{-1}(A) = \{x \in G \mid \pi(x) \in A \} & A \ar@{|->}[l]
-      }
-    \]
-    Then this bijection enjoys the following properties:</p>
+\[
+\begin{aligned}
+&\{\text{subgroups of $G$ containing $N$}\} 
+   &\xrightarrow{\;\;\Psi\;\;}
+   &\ \{\text{subgroups of $G/N$}\} \\[0.6em]
+&H &\mapsto \ &\Psi(H) = H/N \\[0.6em]
+&\Phi(A) = \pi^{-1}(A) = \{x \in G \mid \pi(x)\in A\} 
+   &\leftarrow \ &A
+\end{aligned}
+\]
+    This bijection enjoys the following properties:</p>
     <ol>
       <li>Subgroups correspond to subgroups:
       \[
@@ -3880,7 +3897,7 @@ is called the <strong>canonical (quotient) map</strong>, the <strong>canonical s
         [G:H] = [G/N : H/N].
       \]
       </li>
-      <li>Intersections and unions are preserved:
+      <li>Intersections and subgroups generated by pairs are preserved:
       \[
         H/N \cap K/N = (H \cap K)/N \quad \textrm{and} \quad \langle H/N \cup K/N \rangle = \langle H \cup K \rangle/N.
       \]
@@ -3890,10 +3907,10 @@ is called the <strong>canonical (quotient) map</strong>, the <strong>canonical s
 
   <section class="callout proof" role="region" aria-labelledby="prf-4-4-14">
     <h3 id="prf-4-4-14">Proof (of Theorem 4.4.14)</h3>
-    <p>We showed in \Cref{lemma quotient map} that the quotient map \(\pi\!:G\to G/N\) is a surjective group homomorphism. It will be useful to rewrite the maps in the statement of the theorem in terms of \(\pi\).
+    <p>We showed  that the quotient map \(\pi\!:G\to G/N\) is a surjective group homomorphism. It will be useful to rewrite the maps in the statement of the theorem in terms of \(\pi\).
     Notice that \(\Psi(H)=H/N=\{hN \mid h\in H\}=\pi(H)\).
-    Note that \(\Psi\) does indeed land in the correct codomain, since by \Cref{subgroups examples} images of subgroups through group homomorphisms are subgroups, and thus \(\pi(H)\leq G/N\) for each \(H \leq G\). Thus \(\Psi\) is well-defined.
-    We claim \(\Phi\) also lands in the correct codomain. Indeed, by \Cref{preimage is a subgroup} preimages of subgroups through group homomorphisms are subgroups, and thus in particular for each \(A \leq G\) we have \(\pi^{-1}(A)\leq G\). Moreover, for any \(A \leq G\) we have
+    Note that \(\Psi\) does indeed land in the correct codomain, since images of subgroups through group homomorphisms are subgroups, and thus \(\pi(H)\leq G/N\) for each \(H \leq G\). Thus \(\Psi\) is well-defined.
+    We claim \(\Phi\) also lands in the correct codomain. Indeed, preimages of subgroups through group homomorphisms are subgroups, and thus in particular for each \(A \leq G\) we have \(\pi^{-1}(A)\leq G\). Moreover, for any \(A \leq G\) we have
     \(\{e_GN\} \subseteq A\), hence 
     \[
       N = \ker(\pi) = \pi^{-1}(\{e_GN\}) \subseteq \pi^{-1}(A) = \Phi(A).
@@ -3919,11 +3936,11 @@ is called the <strong>canonical (quotient) map</strong>, the <strong>canonical s
     \]
     Thus, \(\Psi\) and \(\Phi\) are well-defined and inverse to each other. Since \(\pi\) and \(\pi^{-1}\) both preserve containments, each of \(\Psi\), \(\Psi^{-1}\) preserves containments as well.</p>
 
-    <p>Again by \Cref{subgroups examples} and \Cref{preimage is a subgroup}, images and preimages of subgroups by group homomorphisms are subgroups, which proves (1). Moreover, if \(N \leq H \leq G\) and \(H \trianglelefteq G\), then \(ghg^{-1} \in H\) for all \(g \in G\) and all \(h \in G\), and thus
+    <p>Again, images and preimages of subgroups by group homomorphisms are subgroups, which proves (1). Moreover, if \(N \leq H \leq G\) and \(H \trianglelefteq G\), then \(ghg^{-1} \in H\) for all \(g \in G\) and all \(h \in G\), and thus
     \[
       (gN)(hN)(gN)^{-1}= (ghg^{-1})N \in H/N.
     \]
-    Therefore, if \(N \leq H \trianglelefteq G\), then \(H/N \trianglelefteq G/N\). Finally, by \Cref{preimage of normal subgroup is normal}, the preimage of a normal subgroup is normal. We have now shown (2).</p>
+    Therefore, if \(N \leq H \trianglelefteq G\), then \(H/N \trianglelefteq G/N\). Finally, the preimage of a normal subgroup is normal. We have now shown (2).</p>
 
     <p>We leave (3) as an exercise, and (4) is a consequence of the more general fact that lattice isomorphisms preserve suprema and infima.</p>
   </section>
@@ -3940,24 +3957,27 @@ is called the <strong>canonical (quotient) map</strong>, the <strong>canonical s
   </section>
 
   <section class="callout theorem" role="region" aria-labelledby="thm-4-4-16">
-    <h3 id="thm-4-4-16">Theorem 4.4.16 (Third Isomorphism Theorem)</h3>
+    <h3 id="thm-4-4-16">Theorem 4.4.16 (Cancelling Isomorphism Theorem)</h3>
     <p>Let \(G\) be a group, \(M \leq N \leq G\), \(M \trianglelefteq G\) and \(N \trianglelefteq G\). Then 
     \[
       M \trianglelefteq N, \qquad N/M \trianglelefteq G/M,
     \] 
     and there is an isomorphism
     \[
-      \xymatrix@R=1mm{\frac{(G/M)}{(N/M)} \ar[r]^{\cong} & G/N \\ gM \ar@{|->}[r] & gN.}
+      \begin{aligned}
+   \frac{(G/M)}{(N/M)} &\;\xrightarrow{\;\cong\;}\; G/N \\
+   gM &\;\mapsto\; gN
+\end{aligned}
     \]
     </p>
   </section>
 
   <section class="callout proof" role="region" aria-labelledby="prf-4-4-16">
     <h3 id="prf-4-4-16">Proof (of Theorem 4.4.16)</h3>
-    <p>By \Cref{normal subgroup is also normal in smaller group}, since \(M\) is a normal subgroup of \(G\), then it is also a normal subgroup of \(N\).
-    Similarly, the fact that \(N\) is normal in \(G\) implies that it is normal in \(G/M\), by \Cref{Lattice Isomorphism Theorem}.</p>
+    <p>Since \(M\) is a normal subgroup of \(G\), then it is also a normal subgroup of \(N\).
+    Similarly, the fact that \(N\) is normal in \(G\) implies that it is normal in \(G/M\) by the Lattice Isomorphism Theorem.</p>
 
-    <p>The kernel of the canonical map \(\pi: G \twoheadrightarrow G/N\) contains \(M\), and so by \Cref{UMP quotient group} we get an induced homomorphism
+    <p>The kernel of the canonical map \(\pi: G \twoheadrightarrow G/N\) contains \(M\), and so by the Universal Mapping Property of quotient groups we get an induced homomorphism
     \[
       \phi\!: G/M \to G/N
     \]
@@ -3968,7 +3988,7 @@ is called the <strong>canonical (quotient) map</strong>, the <strong>canonical s
     Finally, apply the First Isomorphism Theorem to \(\phi\).</p>
   </section>
 
-  <p>We can now prove the statement about indices in the \hyperref[Lattice Isomorphism Theorem]{Lattice Isomorphism Theorem} in the case of normal subgroups. </p>
+  <p>We can now prove the statement about indices in the Lattice Isomorphism Theorem in the case of normal subgroups. </p>
 
   <section class="callout corollary" role="region" aria-labelledby="cor-4-4-17">
     <h3 id="cor-4-4-17">Corollary 4.4.17</h3>
@@ -3981,7 +4001,7 @@ is called the <strong>canonical (quotient) map</strong>, the <strong>canonical s
 
   <section class="callout proof" role="region" aria-labelledby="prf-4-4-17">
     <h3 id="prf-4-4-17">Proof (of Corollary 4.4.17)</h3>
-    <p>By the \hyperref[Third Isomorphism Theorem]{Third Isomorphism Theorem},
+    <p>By the Cancelling Isomorphism Theorem,
     \[
       G/H \cong \frac{(G/N)}{(H/N)}
     \]
@@ -4006,9 +4026,9 @@ is called the <strong>canonical (quotient) map</strong>, the <strong>canonical s
     \[
       A^{-1}=\{a^{-1} \mid a \in A\}.
     \]
-    Consider the set of all finite words written using symbols in \(A \cup A^{-1}\), including the empty word. If a word \(w\) contains consecutive symbols \(a a^{-1}\) or \(a^{-1}a\), we can simplify \(w\) by erasing those two consecutive symbols, and we obtain a word that is equivalent to \(w\). If a word cannot be simplified any further, we say that it is {\bf reduced}. Given any \(a \in A\), \(a^1\) denotes \(a\), to distinguish it from \(a^{-1}\). </p>
+    Consider the set of all finite words written using symbols in \(A \cup A^{-1}\), including the empty word. If a word \(w\) contains consecutive symbols \(a a^{-1}\) or \(a^{-1}a\), we can simplify \(w\) by erasing those two consecutive symbols, and we obtain a word that is equivalent to \(w\). If a word cannot be simplified any further, we say that it is <i>reduced</i>. Given any \(a \in A\), \(a^1\) denotes \(a\), to distinguish it from \(a^{-1}\). </p>
 
-    <p>The \df{free group} on \(A\), denoted \(F(A)\), is the set of all reduced words in \(A \cup A^{-1}\). 
+    <p>The <strong>free group</strong> on \(A\), denoted \(F(A)\), is the set of all reduced words in \(A \cup A^{-1}\). 
     In symbols,
     \[
       F(A):=\{a_1^{i_1}a_2^{i_2}\cdots a_m^{i_m} \mid m \geqslant 0, a_j\in A, i_j\in\{-1,1\}\}.
@@ -4043,7 +4063,7 @@ is called the <strong>canonical (quotient) map</strong>, the <strong>canonical s
 
   <section class="callout definition" role="region" aria-labelledby="def-4-5-4">
     <h3 id="def-4-5-4">Definition 4.5.4</h3>
-    <p>Let \(G\) be a group and let \(R \subseteq G\) be a set. The {\em normal subgroup of \(G\) generated by \(R\)}, denoted \(\langle R \rangle ^N\), is the set of all products of conjugates of elements of \(R\) and inverses of elements of \(R\). In symbols, 
+    <p>Let \(G\) be a group and let \(R \subseteq G\) be a set. The <strong>normal subgroup of \(G\) generated by \(R\)</strong>, denoted \(\langle R \rangle ^N\), is the set of all products of conjugates of elements of \(R\) and inverses of elements of \(R\). In symbols, 
     \[
       \langle R \rangle ^N= \{ g_1r_1^{i_1}g_1^{-1} \dots g_mr_m^{i_m}g_m^{-1} \mid m \geqslant 0, i_j \in \{1,-1\}, r_j \in R, g_j \in G \}.
     \]
@@ -4052,7 +4072,7 @@ is called the <strong>canonical (quotient) map</strong>, the <strong>canonical s
 
   <section class="callout definition" role="region" aria-labelledby="def-4-5-5">
     <h3 id="def-4-5-5">Definition 4.5.5 (presentation (of a group))</h3>
-    <p> Let \(A\) be a set and let \(R\) be a subset of the free group \(F(A)\). The group with {\bf presentation}  
+    <p> Let \(A\) be a set and let \(R\) be a subset of the free group \(F(A)\). The group with <strong>presentation</strong>  
     \[
       \langle A \mid  R \rangle = \langle A \mid \{r = e \mid r \in R\} \rangle
     \] 
@@ -4093,7 +4113,7 @@ is called the <strong>canonical (quotient) map</strong>, the <strong>canonical s
 
   <section class="callout proof" role="region" aria-labelledby="prf-4-5-8">
     <h3 id="prf-4-5-8">Proof (of Theorem 4.5.8)</h3>
-    <p>By \Cref{universal mapping property free groups}, there is a unique group homomorphism \(\tilde f:F(A)\to H\) such that \(f(a)=g(a)\) for all \(a\in A\). Then for 
+    <p>By the universal mapping property free groups, there is a unique group homomorphism \(\tilde f:F(A)\to H\) such that \(f(a)=g(a)\) for all \(a\in A\). Then for 
     \[
       r = a_1^{i_1} \cdots a_m^{i_m} \in R
     \] 
@@ -4101,7 +4121,7 @@ is called the <strong>canonical (quotient) map</strong>, the <strong>canonical s
     \[
       f(r)=(g(a_1))^{i_1} \cdots (g(a_m))^{i_m} = e_H,
     \] 
-    showing that \(R\subseteq \ker(f)\). Since \(\ker(f)\trianglelefteq F(A)\) and \(\langle R\rangle ^N\) is the smallest normal subgroup containing \(R\), it follows that \(\langle R\rangle^N\subseteq \ker(f)\). By \Cref{UMP quotient group}, \(f\) induces a group homomorphism \(\overline{f}: G/\langle R\rangle ^N\to H\). Moreover, for each \(a\in A\) we have 
+    showing that \(R\subseteq \ker(f)\). Since \(\ker(f)\trianglelefteq F(A)\) and \(\langle R\rangle ^N\) is the smallest normal subgroup containing \(R\), it follows that \(\langle R\rangle^N\subseteq \ker(f)\). By the UMP for quotient groups, \(f\) induces a group homomorphism \(\overline{f}: G/\langle R\rangle ^N\to H\). Moreover, for each \(a\in A\) we have 
     \[
       g(a)=f(a)=\overline f(a\langle R\rangle ^N). 
     \]
@@ -4115,7 +4135,7 @@ is called the <strong>canonical (quotient) map</strong>, the <strong>canonical s
 
   <section class="callout example" role="region" aria-labelledby="ex-4-5-10">
     <h3 id="ex-4-5-10">Example 4.5.10</h3>
-    <p>To find a group homomorphism \(D_{n} \to \GL_2(\R)\), it suffices to pick images for \(r\) and \(s\), say \(r\mapsto R, s\mapsto S\), and to verify that 
+    <p>To find a group homomorphism \(D_{n} \to \mathrm{GL}_2(\mathbb{R})\), it suffices to pick images for \(r\) and \(s\), say \(r\mapsto R, s\mapsto S\), and to verify that 
     \[
       S^2=I_2, \quad R^n=I_2, \quad SRSR=I_2.
     \] 
@@ -4123,7 +4143,7 @@ is called the <strong>canonical (quotient) map</strong>, the <strong>canonical s
     \[
       S=\begin{pmatrix} \cos{2\pi}{n} & -\sin{2\pi}{n} \\ \sin{2\pi}{n} & \cos{2\pi}{n}\end{pmatrix} \quad \textrm{and} \quad R=\begin{pmatrix}  0 & 1 \\ 1& 0\end{pmatrix}.
     \]
-    By the UMP of the presentation there is a unique group homomorphism \(D_{n} \to \GL_2(\R)\) that sends \(r\) to \(R\) and \(s\) to \(S\).</p>
+    By the UMP of the presentation there is a unique group homomorphism \(D_{n} \to \mathrm{GL}_2(\mathbb{R})\) that sends \(r\) to \(R\) and \(s\) to \(S\).</p>
   </section>
 
   <p>Presentations of groups are remarkably complex mathematical constructions. What makes them so complicated is that \(\langle R \rangle^N\) is very hard to calculate in general. The following theorem is a negative answer to what is know as the Word Problem, and illustrates how complicated the story can become:</p>
@@ -4135,7 +4155,607 @@ is called the <strong>canonical (quotient) map</strong>, the <strong>canonical s
 </section>
 
 
--->
+<h1 id="group actions second section">5. Group actions in action</h1>
+
+
+
+<section id="orbits-and-stabilizers" aria-labelledby="sec-5-1-heading">
+  <h2 id="sec-5-1-heading">5.1 Orbits and Stabilizers</h2>
+
+  <p>Let \(G\) be a group acting on a set \(S\). Let us recall some notation and facts about group actions. The <strong>orbit</strong> of an element \(s \in S\) is</p>
+  <p>
+    \[
+      \mathrm{Orb}_G(s)=\{g\cdot s \mid g\in G\}.
+    \]
+  </p>
+  <p>A <strong>permutation representation</strong> of a group \(G\) is a group homomorphism \(\rho\!: G \to \mathrm{Perm}(S)\) for some set \(S\). By \(\)permutation representation\(\), to give an action of \(G\) on a set \(S\) is equivalent to giving a permutation representation \(\rho\!: G \to \mathrm{Perm}(S)\), which is induced by the action via</p>
+  <p>
+    \[
+      \rho(g)(s) = g \cdot s.
+    \]
+  </p>
+  <p>An action is <strong>faithful</strong> if the only element \(g\in G\) such that \(g\cdot s=s\) for all \(s\in S\) is \(g=e_G\). Equivalently an action is faithful if \(\ker(\rho) = \{e_G\}\). 
+  An action is <strong>transitive</strong> if for all \(p,q \in S\) there is a \(g \in G\) such that \(q=g\cdot p\). Equivalently, an action is transitive if \(\mathrm{Orb}_G(p)=S\) for any \(p\in S\).</p>
+
+  <section class="callout definition" role="region" aria-labelledby="def-5-1-1">
+    <h3 id="def-5-1-1">Definition 5.1.1</h3>
+    <p>Let \(G\) be a group acting on a set \(S\). 	
+    The <strong>stabilizer</strong> of an element \(s\) in \(S\) is the set of group elements that fix \(s\) under the action:
+    </p>
+    <p>
+      \[
+        \mathrm{Stab}_G(s)=\{g\in G \mid g\cdot s=s\}.
+      \]
+    </p>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-5-1-2">
+    <h3 id="def-5-1-2">Definition 5.1.2</h3>
+    <p>Let \(G\) be a group acting on a set \(S\). An element \(s \in S\) is a <strong>fixed point</strong> of the action if \(g \cdot s = s\) for all \(g \in G\).</p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-5-1-3">
+    <h3 id="rmk-5-1-3">Remark 5.1.3</h3>
+    <p>Let \(G\) be a group acting on a set \(S\). An element \(s \in S\) is a fixed point if and only if \(\mathrm{Orb}_G(s) = \{ s \}\). Moreover, \(s\) is a fixed point if and only if \(\mathrm{Stab}_G(s) = G\).</p>
+  </section>
+
+  <p>The stabilizer of any element is always a subgroup of \(G\).</p>
+
+  <section class="callout lemma" role="region" aria-labelledby="lem-5-1-4">
+    <h3 id="lem-5-1-4">Lemma 5.1.4</h3>
+    <p>Let \(G\) be a group acting on a set \(S\), and let \(s \in S\). The stabilizer \(\mathrm{Stab}_G(s)\) of \(s\) is a subgroup of \(G\).</p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-5-1-4">
+    <h3 id="prf-5-1-4">Proof (of Lemma 5.1.4)</h3>
+    <p>By definition of group action, \(e \cdot s = s\), so \(e \in \mathrm{Stab}_G(e)\).
+    If \(x,y \in \mathrm{Stab}_G(s)\), then \((xy)s = x(ys) = xs = s\) and thus \(xy \in \mathrm{Stab}_G(s)\). If \(x \in \mathrm{Stab}_G(s)\), then 
+    </p>
+    <p>
+      \[
+        xs = s \Rightarrow s = x^{-1}xs = x^{-1}s \Rightarrow x^{-1} \in \mathrm{Stab}_G(s). 
+      \]
+    </p>
+  </section>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-5-1-5">
+    <h3 id="thm-5-1-5">Theorem 5.1.5 (Orbit-Stabilizer Theorem)</h3>
+    <p>Let \(G\) be a group that acts on a set \(S\). For any \(s \in S\) we have</p>
+    <p>
+      \[
+        |\mathrm{Orb}_G(s)| = [G: \mathrm{Stab}_G(s)].
+      \]
+    </p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-5-1-5">
+    <h3 id="prf-5-1-5">Proof (of Theorem 5.1.5)</h3>
+    <p>Let \(\mathcal{L}\) be the collection of left cosets of \(\mathrm{Stab}_G(s)\) in \(G\). Let \(\alpha: \mathcal{L} \to \mathrm{Orb}_G(s)\) be given by</p>
+    <p>
+      \[
+        \alpha(x \mathrm{Stab}_G(s)) = x \cdot s.
+      \]
+    </p>
+    <p>This function is well-defined and injective: </p>
+    <p>
+      \[
+        x \mathrm{Stab}_G(s) = y \mathrm{Stab}_G(s)\iff x^{-1}y \in \mathrm{Stab}_G(s) \iff x^{-1}y \cdot s = s \iff 
+        y \cdot s = x \cdot s.
+      \]
+    </p>
+    <p>The function \(\alpha\) is surjective by definition of \(\mathrm{Orb}_G(s)\), and thus it is a bijection. Finally, we can now conclude that </p>
+    <p>
+      \[
+        [G: \mathrm{Stab}_G(s)] = |\mathcal{L}| = |\mathrm{Orb}_G(s)|. 
+      \]
+    </p>
+  </section>
+
+  <section class="callout corollary" role="region" aria-labelledby="cor-5-1-6">
+    <h3 id="cor-5-1-6">Corollary 5.1.6 (Orbit-Stabilizer Theorem part 2)</h3>
+    <p>Let \(G\) be a finite group acting on a set \(S\). For any \(s \in S\) we have</p>
+    <p>
+      \[
+        |G|=|\mathrm{Orb}_G(s)| \cdot |\mathrm{Stab}_G(s)|.
+      \]
+    </p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-5-1-6">
+    <h3 id="prf-5-1-6">Proof (of Corollary 5.1.6)</h3>
+    <p>This is a direct consequence of the Orbit-Stabilizer Theorem, since by Lagrange's Theorem 
+    </p>
+    <p>
+      \[
+        [G: \mathrm{Stab}_G(s)]=|G|/|\mathrm{Stab}_G(s)|. 
+      \]
+    </p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-5-1-7">
+    <h3 id="rmk-5-1-7">Remark 5.1.7 (Orbit Formula)</h3>
+    <p>Let \(G\) be a group acting on a finite set \(S\). The orbits of the action form a partition of \(S\). The one-element orbits correspond to the fixed points of the action. Pick one element \(s_1, \ldots, s_m\) in each of the other orbits. This gives us the</p>
+    <p><em>The Orbit Formula:</em> \(|S| = (\text{the number of fixed points}) + \sum_{i=1}^m |\mathrm{Orb}_G(s_i)|.\)</p>
+    <p>By the Orbit-Stabilizer Theorem, we can rewrite this as</p>
+    <p><em>The Stabilizer Formula:</em> \(|S| = (\text{the number of fixed points}) + \sum_{i=1}^m [G: \mathrm{Stab}_G(s_i)].\)</p>
+    <p>We will later see that these are very useful formulas.</p>
+  </section>
+
+  <p>We can now use these simple facts to do some explicit calculations with groups.</p>
+
+  <section class="callout example" role="region" aria-labelledby="ex-5-1-8">
+    <h3 id="ex-5-1-8">Example 5.1.8</h3>
+    <p>Let \(G\) be the group of rotational (orientation-preserving) symmetries of the cube.
+    To count the number of elements of \(G\), think about an isometry as picking up a cube lying on a table, moving it, and placing it back in the same location. To do this, one must pick a face to place on the table. This can be chosen in 6 ways. Once that face is chosen, one needs to decide on where each vertex of that face goes and this can be done in 4 ways. Thus \(|G|=24\).</p>
+
+    <p>We can restrict the action of \(G\) to the four lines that join opposite vertices of the cube; the group of permutations of the four lines is \(S_4\), so the corresponding permutation representation associated to this action is a group homomorphism \(\rho\!: G \to S_4\). </p>
+
+    <p>We claim that this homomorphism \(\rho\) is actually an isomorphism from \(G\) to \(S_4\). To see this, first label each vertex of the cube \(1\) through \(8\).
+    Let \(a\), \(b\), \(c\), and \(d\) denote each of the four lines, and let us also label the vertices of the cube \(a\), \(b\), \(c\), or \(d\) according to which of the diagonal lines goes through that vertex.</p>
+
+    <!-- Two xymatrix cube diagrams rendered as SVG side-by-side -->
+    <div style="display:flex; gap:2rem; align-items:flex-start; justify-content:center; margin:0.75rem 0;">
+      <!-- Numeric-labeled cube -->
+      <figure role="group" aria-label="Cube with vertices labeled 1 through 8">
+        <svg width="260" height="210" viewBox="0 0 260 210" xmlns="http://www.w3.org/2000/svg" aria-labelledby="fig-cube-numeric-title fig-cube-numeric-desc">
+          <title id="fig-cube-numeric-title">Cube with vertices labeled 1 through 8</title>
+          <desc id="fig-cube-numeric-desc">A wireframe cube: front square lower-right, back square upper-left. Edges drawn; a dashed back-right vertical edge indicates hidden part. Vertices are labeled 1..8.</desc>
+
+          <!-- Back square -->
+          <polygon points="50,40 150,40 150,110 50,110" fill="none" stroke="black" stroke-width="1.5"/>
+          <!-- Front square -->
+          <polygon points="100,90 200,90 200,160 100,160" fill="none" stroke="black" stroke-width="1.5"/>
+          <!-- Connectors -->
+          <line x1="50" y1="40" x2="100" y2="90" stroke="black" stroke-width="1.5"/>
+          <line x1="150" y1="40" x2="200" y2="90" stroke="black" stroke-width="1.5"/>
+          <line x1="150" y1="110" x2="200" y2="160" stroke="black" stroke-width="1.5"/>
+          <line x1="50" y1="110" x2="100" y2="160" stroke="black" stroke-width="1.5"/>
+
+          <!-- (Optional) one hidden back edge dashed -->
+          <line x1="150" y1="40" x2="150" y2="110" stroke="black" stroke-dasharray="4 4" stroke-width="1.2"/>
+
+          <!-- Vertices (small circles) -->
+          <circle cx="50" cy="40" r="3" fill="black"/>
+          <circle cx="150" cy="40" r="3" fill="black"/>
+          <circle cx="150" cy="110" r="3" fill="black"/>
+          <circle cx="50" cy="110" r="3" fill="black"/>
+
+          <circle cx="100" cy="90" r="3" fill="black"/>
+          <circle cx="200" cy="90" r="3" fill="black"/>
+          <circle cx="200" cy="160" r="3" fill="black"/>
+          <circle cx="100" cy="160" r="3" fill="black"/>
+
+          <!-- Numeric labels near vertices -->
+          <!-- Back square: top-left(7), top-right(6), bottom-right(2), bottom-left(3) to mirror the xymatrix layout -->
+          <text x="40" y="34" font-size="14">7</text>
+          <text x="156" y="34" font-size="14">6</text>
+          <text x="156" y="124" font-size="14">2</text>
+          <text x="40" y="124" font-size="14">3</text>
+
+          <!-- Front square: top-left(8), top-right(5), bottom-right(1), bottom-left(4) -->
+          <text x="88"  y="84"  font-size="14">8</text>
+          <text x="206" y="84"  font-size="14">5</text>
+          <text x="206" y="174" font-size="14">1</text>
+          <text x="88"  y="174" font-size="14">4</text>
+        </svg>
+        <figcaption style="text-align:center; margin-top:0.25rem;">Vertices labeled \(1,\dots,8\).</figcaption>
+      </figure>
+
+      <!-- a,b,c,d-labeled-by-diagonal cube -->
+      <figure role="group" aria-label="Cube with vertices labeled by diagonals a,b,c,d">
+        <svg width="260" height="210" viewBox="0 0 260 210" xmlns="http://www.w3.org/2000/svg" aria-labelledby="fig-cube-diag-title fig-cube-diag-desc">
+          <title id="fig-cube-diag-title">Cube with vertices labeled by the four space diagonals a, b, c, d</title>
+          <desc id="fig-cube-diag-desc">Same cube layout; each vertex is labeled by the letter of the space diagonal (a, b, c, or d) that passes through it. Opposite vertices share the same letter.</desc>
+
+          <!-- Back square -->
+          <polygon points="50,40 150,40 150,110 50,110" fill="none" stroke="black" stroke-width="1.5"/>
+          <!-- Front square -->
+          <polygon points="100,90 200,90 200,160 100,160" fill="none" stroke="black" stroke-width="1.5"/>
+          <!-- Connectors -->
+          <line x1="50" y1="40" x2="100" y2="90" stroke="black" stroke-width="1.5"/>
+          <line x1="150" y1="40" x2="200" y2="90" stroke="black" stroke-width="1.5"/>
+          <line x1="150" y1="110" x2="200" y2="160" stroke="black" stroke-width="1.5"/>
+          <line x1="50" y1="110" x2="100" y2="160" stroke="black" stroke-width="1.5"/>
+
+          <!-- (Optional) show the four space diagonals faintly -->
+          <g stroke="black" stroke-dasharray="5 4" stroke-width="1.1" opacity="0.65">
+            <!-- a-diagonal: back TL (a) to front BR (a) -->
+            <line x1="50" y1="40" x2="200" y2="160"/>
+            <!-- b-diagonal: back BL (b) to front TR (b) -->
+            <line x1="50" y1="110" x2="200" y2="90"/>
+            <!-- c-diagonal: back BR (c) to front TL (c) -->
+            <line x1="150" y1="110" x2="100" y2="90"/>
+            <!-- d-diagonal: back TR (d) to front BL (d) -->
+            <line x1="150" y1="40" x2="100" y2="160"/>
+          </g>
+
+          <!-- Vertices (small circles) -->
+          <circle cx="50" cy="40" r="3" fill="black"/>
+          <circle cx="150" cy="40" r="3" fill="black"/>
+          <circle cx="150" cy="110" r="3" fill="black"/>
+          <circle cx="50" cy="110" r="3" fill="black"/>
+
+          <circle cx="100" cy="90" r="3" fill="black"/>
+          <circle cx="200" cy="90" r="3" fill="black"/>
+          <circle cx="200" cy="160" r="3" fill="black"/>
+          <circle cx="100" cy="160" r="3" fill="black"/>
+
+          <!-- Labels according to the xymatrix pattern:
+               Back:  TL=a, TR=d, BR=c, BL=b
+               Front: TL=c, TR=b, BR=a, BL=d
+          -->
+          <!-- Back square labels -->
+          <text x="40" y="34" font-size="16">a</text>
+          <text x="156" y="34" font-size="16">d</text>
+          <text x="156" y="124" font-size="16">c</text>
+          <text x="40" y="124" font-size="16">b</text>
+
+          <!-- Front square labels -->
+          <text x="88"  y="84"  font-size="16">c</text>
+          <text x="206" y="84"  font-size="16">b</text>
+          <text x="206" y="174" font-size="16">a</text>
+          <text x="88"  y="174" font-size="16">d</text>
+        </svg>
+        <figcaption style="text-align:center; margin-top:0.25rem;">Vertices labeled by diagonals \(a,b,c,d\).</figcaption>
+      </figure>
+    </div>
+
+    <p>Now note that each face corresponds to a unique order on \(a\), \(b\), \(c\), \(d\), read counterclockwise from the outside of the cube:
+    </p>
+    <p>
+      \[
+      \begin{aligned}
+        \text{The face } 1234 && \hspace{1em}\text{corresponds to} \hspace{1em} & adcb\\
+        \text{The face } 1256 && \hspace{1em}\text{corresponds to} \hspace{1em} & abdc \\
+        \text{The face } 1458 && \hspace{1em}\text{corresponds to} \hspace{1em} & adbc \\
+        \text{The face } 5678 && \hspace{1em}\text{corresponds to} \hspace{1em} & abcd \\
+        \text{The face } 2367 && \hspace{1em}\text{corresponds to} \hspace{1em} & adbc \\
+        \text{The face } 3478 && \hspace{1em}\text{corresponds to} \hspace{1em} & acdb.	
+      \end{aligned}
+      \]
+    </p>
+    <p>So suppose that \(g \in G\) fixes all of the four lines \(a\), \(b\), \(c\), \(d\). Then the face at the bottom must be \(abcb\), which corresponds to \(1234\), and thus all the vertices of the cube in the bottom face must be fixed. We conclude that \(g\) must fix the entire cube, and thus \(g\) must be the identity.</p>
+
+    <p>Thus the action is faithful, and hence the permutation representation \(\rho\!: G\to S_4\) is injective. Moreover, we showed above that \(|G|=24=|S_4|\), and thus \(\rho\) is an injective function between two finite sets of the same size. We conclude that \(\rho\) must actually be a bijection, and thus an isomorphism.</p>
+
+    <p>The same group \(G\) also acts on the six faces of the cube. This action is transitive, since we can always pick up the cube and put it back on the table with any face on the top. Thus the one and only orbit for the action of \(G\) on the six faces of the cube has length \(6\). By the Orbit-Stabilizer Theorem, it follows that for any face \(f\) of the cube, its stabilizer has index \(6\) and, since we already know that \(|G|= 24\), the Orbit-Stabilizer Theorem gives us</p>
+    <p>
+      \[
+        |\mathrm{Stab}_G(f)| = \frac{|G|}{|\mathrm{Orb}_G(s)|} = \frac{24}{6} = 4.
+      \]
+    </p>
+    <p>Thus, there are four symmetries that map \(f\) to itself. Indeed, they are the \(4\) rotations by \(0\), \(\frac{\pi}{2}\), \(\pi\) or \(\frac{3\pi}{2}\) about the line of symmetry passing through the midpoint of \(f\) and the midpoint of the opposite face.</p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-5-1-9">
+    <h3 id="ex-5-1-9">Example 5.1.9</h3>
+    <p>Let \(X\) be a regular dodecahedron, with \(12\) faces, centered at the origin in \(\mathbb{R}^3\). </p>
+
+    <p>Let \(G\) be the group of isometries of the dodecahedron that preserve orientation:
+    \[
+      G := \{\alpha : \mathbb{R}^3 \to \mathbb{R}^3 \mid \text{$\alpha$ is an isometry, $\alpha$ preserves orientation, and } \alpha(X) = X\}.
+    \]
+    This is a subgroup of the group of all bijections from \(\mathbb{R}^3\) to \(\mathbb{R}^3\). Though not obvious, every element of \(G\) is given as rotation about a line of symmetry. There are three kinds of such lines: those joining midpoints of opposite face, those joining midpoints of opposite edges, and those joining opposite vertices.  To count the number of elements of \(G\) informally, think about an isometry as picking up a dodecaedron that was lying on a table and replacing it in the same location.  To do this, one must first pick one of the twelve faces to place on the table, and, for each possible face, there are five ways to orient it. Thus 
+    \[
+      |G|=12 \cdot 5 = 60.
+    \]
+    </p>
+
+    <p>Let us use the Orbit-Stabilizer Theorem to do this more formally. Note that \(G\) act on the collection \(S\) of the \(12\) faces of \(X\). This action is transitive since it is possibly to move one face to any other via an appropriate rotation. So, the one and only orbit has length \(12\). Letting \(F\) be any one of the faces, the orientation preserving isometries of \(X\) that map \(F\) to itself are just the orientation-preserving elements of \(D_{5}\), of which there are \(5\). Indeed, these correspond to the five rotations of \(X\) by \(\frac{2 \pi n j}{5}\) radians for \(j =0,1,2,4\) about the axis of symmetry passing through the midpoint of \(F\) and the midpoint of the opposite face.
+    Applying the <a href="#thm-5-1-5">Orbit-Stabilizer Theorem</a> gives
+    \[
+      |G|=|\mathrm{Orb}_G(F)|\cdot |\mathrm{Stab}_G(F)]=12 \cdot 5=60.
+    \]
+    </p>
+  </section>
+</section>
+
+
+
+<section id="class-equation" aria-labelledby="sec-5-2-heading">
+  <h2 id="sec-5-2-heading">5.2 The class equation</h2>
+
+  <p>The main goal of this subsection is to apply the Orbit-Stabilizer Formula to the action of \(G\) on itself by conjugation. 
+  Let \(G\) be a group. As we saw before, \(G\) acts on \(S = G\) by conjugation: the action is defined by \(g \cdot x=gxg^{-1}\).</p>
+
+  <section class="callout definition" role="region" aria-labelledby="def-5-2-1">
+    <h3 id="def-5-2-1">Definition 5.2.1 (conjugate elements)</h3>
+    <p>Let \(G\) be a group. Two elements \(g,g' \in G\) are <strong>conjugate</strong> if there exists \(h \in G\) such that 
+    \[
+      g' = hgh^{-1}.
+    \]
+    Equivalently, \(g\) and \(g'\) are conjugate if they are in the same orbit of the conjugation action. The <strong>conjugacy class</strong> of an element \(g \in G\) is 
+    \[
+      [g]_c := \{hgh^{-1} \mid h \in G\}.
+    \] 
+    Equivalently, the conjugacy class of \(g\) is the orbit of \(g\) under the conjugation action. </p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-5-2-2">
+    <h3 id="rmk-5-2-2">Remark 5.2.2</h3>
+    <p>Let \(G\) be any group. Then \(geg^{-1} = e\) for all \(g \in G\), and thus \([e]_c=e = \{ e \}\).</p>
+  </section>
+
+  <p>Let us study the conjugacy classes of \(S_n\). You proved in a problem set that two cycles in \(S_n\) are conjugate if and only if they have the same length:</p>
+
+  <section class="callout lemma" role="region" aria-labelledby="lem-5-2-3">
+    <h3 id="lem-5-2-3">Lemma 5.2.3</h3>
+    <p>For any \(\sigma \in S_n\) and distinct integers \(i_1, \dots, i_p\), we have
+    \[
+      \sigma (i_1 \, i_2 \, \cdots i_p) \sigma^{-1} = (\sigma(i_1) \, \cdots \, \sigma(i_p)).
+    \]</p>
+  </section>
+
+  <p>Note that the right-hand cycle is a cycle since \(\sigma\) is injective. This generalizes to the following:</p>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-5-2-4">
+    <h3 id="thm-5-2-4">Theorem 5.2.4</h3>
+    <p>Two elements of \(S_n\) are conjugate if and only if they have the same cycle type. </p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-5-2-4">
+    <h3 id="prf-5-2-4">Proof (of Theorem 5.2.4)</h3>
+    <p>Consider two conjugate elements of \(S_n\), say \(\alpha\) and \(\beta = \sigma\alpha \sigma^{-1}\). By \Cref{every permutation is a product of disjoint cycles}, we may write \(\alpha\) as a product of disjoint cycles \(\alpha = \alpha_1 \cdots \alpha_m\). Then 
+    \[
+      \beta = \sigma\alpha \sigma^{-1} = (\sigma\alpha_1 \sigma^{-1})  \cdots (\sigma\alpha_m \sigma^{-1}). 
+    \]
+    Since \(\alpha_1, \ldots, \alpha_m\) are disjoint cycles, then by \Cref{lemma conjugates cycles} the elements \((\sigma\alpha_1 \sigma^{-1}),   \cdots, (\sigma\alpha_m \sigma^{-1})\) are also disjoint cycles, and \(\sigma\alpha_i \sigma^{-1}\) has the same length as \(\alpha_i\).
+    We conclude that \(\alpha\) and \(\beta\) must have the same cycle type.</p>
+
+    <p>Conversely, consider two elements \(\alpha\) and \(\beta\) with the same cycle type. More precisely, assume \(\alpha = \alpha_1 \cdots \alpha_k\) and \(\beta = \beta_1 \cdots \beta_k\) are decompositions into disjoint cycles and that \(\alpha_i, \beta_i\) both have length \(p_i \geqslant 2\) for each \(i\). We need to prove that \(\alpha\) and \(\beta\) are conjugate. Let us start with the case \(k = 1\). Given two cycles of the same length,
+    \[
+      \alpha = (i_1 \, \dots \, i_p) \quad \text{ and } \quad \beta = (j_1 \, \dots \, j_p).
+    \]
+    By \Cref{lemma conjugates cycles}, any permutation \(\sigma\) such that \(\sigma(i_m) = j_m\) for all \(1 \leqslant m \leqslant p\) must satisfy \(\sigma\alpha \sigma^{-1} = \beta\).</p>
+
+    <p>Note that such \(\sigma\) has no restrictions on what it does to the set \(\{1, \dots, n\} \setminus \{i_1 \, \dots \, i_p\}\): it can map \(\{1, \dots, n\} \setminus \{i_1 \, \dots \, i_p\}\) bijectively to \(\{1, \dots, \} \setminus \{j_1 \, \dots \, j_p\}\) in any way possible. From this observation, the general case follows: since the cycles are disjoint, we can find a single permutation \(\sigma\) such that \(\sigma\alpha_i \sigma^{-1} = \beta_i\) for all \(i\).</p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-5-2-5">
+    <h3 id="ex-5-2-5">Example 5.2.5</h3>
+    <p>Given \Cref{conjugates S_n}, we can now write a complete list of the conjugacy classes of \(S_4\):</p>
+    <ol style="margin-top:-0.5em">
+      <li>The conjugacy class of the identity \(\{e\}\). </li>
+      <li>The conjugacy class of \((12)\), which is the set of all two cycles and has \({4 \choose 2} = 6\) elements.</li>
+      <li>The conjugacy class of \((123)\), which is the set of all three cycles and has \(4 \cdot 2 = 8\) elements.</li>
+      <li>The conjugacy class of \((1234)\), which is the set of all four cycles and has \(3! = 6\) elements.</li>
+      <li>The conjugacy class of \((12)(34)\), which is the set of all products of two disjoint \(2\)-cycles and has \(3\) elements.</li>
+    </ol>
+    <p>We can check our work by recalling that the conjugacy classes partition \(S_4\), and indeed we counted \(24\) elements.</p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-5-2-6">
+    <h3 id="ex-5-2-6">Example 5.2.6</h3>
+    <p>Given \Cref{conjugates S_n}, we can now write a complete list of the conjugacy classes of \(S_5\):</p>
+    <ol style="margin-top:-0.5em">
+      <li>The conjugacy class of the identity \(\{e\}\). </li>
+      <li>The conjugacy class of \((12)\), which is the set of all \(2\)-cycles and has \({5 \choose 2} = 10\) elements.</li>
+      <li>The conjugacy class of \((123)\), containing all \(3\)-cycles, of size \(2! \cdot {5 \choose 3} = 20\) elements.</li>
+      <li>The conjugacy class of \((1234)\), containing all \(4\)-cycles, of size \(5 \cdot 3! = 30\) elements.</li>
+      <li>The conjugacy class of \((12345)\), which is the set of all \(5\)-cycles, and has \(4! = 24\) elements.</li>
+      <li>The conjugacy class of \((12)(34)\), which is the set of all products of two disjoint \(2\)-cycles and has \(5 \cdot  3= 15\) elements.</li>
+      <li>The conjugacy class of \((12)(345)\), which is the set of all products of a \(2\)-cycle by a \(3\)-cycle, and has \({5 \choose 2} \cdot 2! = 20\) elements.</li>
+    </ol>
+    <p>We can check our work by noting that indeed
+    \[
+      1 + 10 + 20 + 30 + 24 + 15 + 20 = 120 = 5!.
+    \]</p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-5-2-7">
+    <h3 id="rmk-5-2-7">Remark 5.2.7</h3>
+    <p>For any nontrivial group \(G\), since \([e]_c = \{ e \}\) and the conjugacy classes partition \(G\), then \([g]_c \neq G\) for all \(g \in G\).</p>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-5-2-8">
+    <h3 id="def-5-2-8">Definition 5.2.8 (centralizer)</h3>
+    <p>Let \(G\) be a group and \(a\in G\). The <strong>centralizer</strong> of \(a\) is the set of elements of \(G\) that commute with \(a\): 
+    \[
+      C_G(a) := \{x \in G \mid xa=ax\}.
+    \]
+    More generally, given a subset \(S \subseteq G\), the <strong>centralizer</strong> of \(S\) is the set
+    \[
+      C_G(S) := \{x \in G \mid xs=sx \textrm{ for all } s \in S \}.
+    \]</p>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-5-2-9">
+    <h3 id="def-5-2-9">Definition 5.2.9 (normalizer)</h3>
+    <p>Let \(G\) be a group and consider a subset \(S \subseteq G\). The <strong>normalizer</strong> of \(S\) is the set 
+    \[
+      N_G(S) := \{g \in G \mid gSg^{-1}=S\}.
+    \]</p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-5-2-10">
+    <h3 id="ex-5-2-10">Exercise 5.2.10</h3>
+    <p>Let \(G\) be a group and \(S \subseteq G\). 
+    Prove that the centralizer and the normalizer of \(S\) are subgroups of \(G\).</p>
+  </section>
+
+  <section class="callout lemma" role="region" aria-labelledby="lem-5-2-11">
+    <h3 id="lem-5-2-11">Lemma 5.2.11</h3>
+    <p>Let \(S \subseteq G\) be any subset of a group \(G\). Then \(C_G(S) \subseteq N_G(S)\).</p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-5-2-11">
+    <h3 id="prf-5-2-11">Proof (of Lemma 5.2.11)</h3>
+    <p>Let \(G\) be a group and \(S \subseteq G\). If \(x \in C_G(S)\), then for all \(s \in S\) we have
+    \[
+      xs=sx \implies xsx^{-1} = s \in S \textrm{ and } x^{-1}sx = s.
+    \]
+    Thus \(xSx^{-1} \subseteq S\) and \(x^{-1}Sx \subseteq S\).
+    Now for any \(s \in S\) we have \(x^{-1}sx \in S\) and \(s\) can be written as 
+    \[
+      s = x(x^{-1}sx)x^{-1} \in xSx^{-1}. 
+    \]
+    This shows that \(S \subseteq xSx^{-1}\). Thus \(xSx^{-1} = S\), and therefore \(x \in N_G(S)\).</p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-5-2-12">
+    <h3 id="rmk-5-2-12">Remark 5.2.12</h3>
+    <p>If \(G\) is an abelian group, then for any \(a \in G\) we have \(C_G(a) = G = N_G(a)\).</p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-5-2-13">
+    <h3 id="ex-5-2-13">Exercise 5.2.13</h3>
+    <p>Let \(H\) be a subgroup of a group \(G\), and \(S\) a subset of \(H\). Then 
+    \[
+      C_{H}(S) = C_G(S) \cap H \quad \textrm{and} \quad N_{H}(S) = N_G(S) \cap H.
+    \]</p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-5-2-14">
+    <h3 id="ex-5-2-14">Exercise 5.2.14</h3>
+    <p>Let \(G\) be a group and let \(H\) be a subgroup of \(G\). 
+    Show that \(N_G(H)/C_G(H)\) is isomorphic to a subgroup of the automorphism group \(\mathrm{Aut}(H)\) of \(H\).</p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-5-2-15">
+    <h3 id="ex-5-2-15">Exercise 5.2.15</h3>
+    <p>Let \(G\) be a group and \(H\) a subgroup of \(G\). Prove that if \(H\) is normal in \(G\), then so is \(C_G(H)\), and that \(G/C_G(H)\) is isomorphic to a subgroup of the automorphism group of \(H\).</p>
+  </section>
+
+  <section class="callout lemma" role="region" aria-labelledby="lem-5-2-16">
+    <h3 id="lem-5-2-16">Lemma 5.2.16</h3>
+    <p>Let \(G\) be a group. Consider the action of \(G\) on \(G\) by conjugation, where \(g \cdot h = ghg^{-1}\). For all \(g \in G\), 
+    \[
+      \mathrm{Orb}_G(g) = [g]_c \quad \textrm{and} \quad \mathrm{Stab}_G(g)=C_G(g) \quad \textrm{and} \quad |[g]_c| = [G : C_G(g)].
+    \]</p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-5-2-16">
+    <h3 id="prf-5-2-16">Proof (of Lemma 5.2.16)</h3>
+    <p>The first statement is the definition of the conjugacy class of \(g\): \(\mathrm{Orb}_G(g) = [g]_c\). 	
+    Moreover, by simply following the definitions we see that
+    \[
+      h \in \mathrm{Stab}_G(g) \iff h \cdot g = g \iff hgh^{-1} = g \iff hg = gh \iff h \in C_G(G).
+    \]
+    Thus, \(\mathrm{Stab}_G(g)=C_G(G)\), and by the \hyperref[Orbit-Stabilizer Theorem]{Orbit-Stabilizer Theorem},
+    \[
+      |[g]_c| = |\mathrm{Orb}_G(g)| = [G : C_G(g)].
+    \]</p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-5-2-17">
+    <h3 id="ex-5-2-17">Exercise 5.2.17</h3>
+    <p>Let \(G\) be a group. Consider the action of \(G\) on the power set 
+    \[
+      P(G)=\{S\mid S\subseteq G\}
+    \] 
+    of \(G\) by conjugation, meaning \(g \cdot S = gSg^{-1}\). For all \(S \in P(G)\), 
+    \[
+      \mathrm{Stab}_G(S)=N_G(S) \quad \textrm{and} \quad |\mathrm{Orb}_G(S)| = [G : N_G(S)].
+    \]</p>
+  </section>
+
+  <section class="callout corollary" role="region" aria-labelledby="cor-5-2-18">
+    <h3 id="cor-5-2-18">Corollary 5.2.18</h3>
+    <p>For a finite group \(G\), the size of any conjugacy class divides \(|G|\).	</p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-5-2-18">
+    <h3 id="prf-5-2-18">Proof (of Corollary 5.2.18)</h3>
+    <p>Let \(g \in G\). By \Cref{conjugacy class}, the order of the conjugacy class of \(g\) is the index of the centralizer: 
+    \[
+      |[g]_c| = [G : C_G(g)] 
+    \]
+    By \hyperref[Lagrange]{Lagrange's Theorem}, the index of any subgroup must divide \(|G|\), and thus in particular \(|[g]_c|\) divides \(|G|\).</p>
+  </section>
+
+  <p>We will take the \hyperref[Orbit Equation]{Orbit Equation} and apply it to the special case of the conjugation action. In order to do that, all that remains is to identify the fixed points of the action.</p>
+
+  <section class="callout lemma" role="region" aria-labelledby="lem-5-2-19">
+    <h3 id="lem-5-2-19">Lemma 5.2.19</h3>
+    <p>Let \(G\) be a group acting on itself by conjugation. An element \(g \in G\) is a fixed point of the conjugation action if and only \(g \in \mathrm{Z}(G)\).</p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-5-2-19">
+    <h3 id="prf-5-2-19">Proof (of Lemma 5.2.19)</h3>
+    <p>\((\Leftarrow)\) Suppose that \(g \in \mathrm{Z}(G)\). Then for all \(h \in G\), \(g\) commutes with \(h\), and thus
+    \[
+      hgh^{-1} = (hg)h^{-1} = g(hh^{-1}) = g.
+    \]
+    Thus \(g\) is conjugate to only itself, meaning it is a fixed point for the conjugation action. </p>
+
+    <p>\((\Rightarrow)\) Conversely, suppose that \(g\) is a fixed point for the conjugation action. Then for all \(h \in G\),
+    \[
+      hgh^{-1} = h \cdot g = g \implies hg=gh.
+    \]
+    Thus \(g \in \mathrm{Z}(G)\).</p>
+  </section>
+
+  <p>We can now write the \hyperref[Orbit Equation]{Orbit Equation} for the conjugation action; this turns out to be a very useful formula.</p>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-5-2-20">
+    <h3 id="thm-5-2-20">Theorem 5.2.20 (The Class Equation)</h3>
+    <p>Let \(G\) be a finite group. For each conjugacy class of size greater than \(1\), pick a unique representative, and let \(g_1,\ldots g_r \in G\) be the list of all the chosen representatives. Then 
+    \[
+      |G| = |\mathrm{Z}(G)| + \sum_i^r |G : C_G(g_i)|.
+    \]</p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-5-2-20">
+    <h3 id="prf-5-2-20">Proof (of Theorem 5.2.20)</h3>
+    <p> By \Cref{fixed points conjugation are central}, the elements of \(\mathrm{Z}(G)\) are precisely the fixed points of the conjugation action. In particular, \(|\mathrm{Z}(G)|\) counts the number of orbits that have only one element. Because the orbits of the conjugation action partition \(G\), and the conjugacy classes are the orbits, then as noted in \Cref{Orbit Equation}
+    \[
+      |G| = |\mathrm{Z}(G)| + \sum_i^r [g_i]_c.
+    \]
+    By the Orbit-Stabilizer Theorem, the index of the stabilizer is the order of the conjugacy class. Thus for each \(g_i\) as in the statement we have 
+    \[
+      [g_i]_c = [G: C_G(g_i)]. 
+    \]
+    The class equation follows from substituting this into the equation above:
+    \[
+      |G| = |\mathrm{Z}(G)| + \sum_i^r |G : C_G(g_i)|.
+    \]</p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-5-2-21">
+    <h3 id="rmk-5-2-21">Remark 5.2.21</h3>
+    <p>The \hyperref[Class Equation]{class equation} is not very interesting if \(G\) is abelian, since there is only one term on the right hand side: \(|\mathrm{Z}(G)|\).</p>
+  </section>
+
+  <p>But when \(G\) is nonabelian, the class equation can lead us to discover some very interesting facts, despite its simplicity.</p>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-5-2-22">
+    <h3 id="ex-5-2-22">Exercise 5.2.22</h3>
+    <p>Prove that if \(G\) is a nonabelian group of order \(21\), then there is only one possible class equation for \(G\), meaning that the numbers appearing in the class equation are uniquely determined up to permutation.</p>
+  </section>
+
+  <section class="callout corollary" role="region" aria-labelledby="cor-5-2-23">
+    <h3 id="cor-5-2-23">Corollary 5.2.23</h3>
+    <p>If \(p\) is a prime number and \(G\) is a finite group of order \(p^m\) for some \(m > 0\), then \(\mathrm{Z}(G)\) is not the trivial group.</p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-5-2-23">
+    <h3 id="prf-5-2-23">Proof (of Corollary 5.2.23)</h3>
+    <p>Let \(g_1,\ldots g_r \in G\) be a list of unique representatives of all of the conjugacy classes of \(G\) of size greater than 1, as in the \hyperref[Class Equation]{class equation}. By construction, each \(g_i\) is not a fixed point of the action, and thus \(\mathrm{Stab}_G(g_i) \neq G\). By \Cref{conjugacy class}, \(C_G(g_i) = \mathrm{Stab}_G(g_i)\), so \(C_G(g_i) \neq G\). In particular, \([G:C_G(g_i)]\neq 1\). Since \(1\neq [G:C_G(g_i)]\) and \([G:C_G(g_i)]\) divides \(|G|=p^m\), we conclude that \(p\) divides \([G:C_G(g_i)]\) for each \(i\). From the \hyperref[Class Equation]{class equation}, we can now conclude that \(p\) divides \(|\mathrm{Z}(G)|\), and in particular \(|\mathrm{Z}(G)|\neq 1\).</p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-5-2-24">
+    <h3 id="ex-5-2-24">Exercise 5.2.24</h3>
+    <p>Let \(p\) be prime and let \(G\) be a group of order \(p^m\) for some \(m \geqslant 1\). Show that if \(N\) is a nontrivial normal subgroup of \(G\), then \(N \cap Z(G) \ne \{e\}\). In fact, show that \(|N \cap Z(G)| = p^j\) for some \(j \geqslant 1\). </p>
+  </section>
+
+  <section class="callout lemma" role="region" aria-labelledby="lem-5-2-25">
+    <h3 id="lem-5-2-25">Lemma 5.2.25</h3>
+    <p>Let \(G\) be a group and \(N\trianglelefteq G\). The conjugation action of \(G\) on itself induces an action by conjugation of \(G\) on \(N\). In particular, \(N\) is the disjoint union of some of the conjugacy classes in \(G\).</p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-5-2-25">
+    <h3 id="prf-5-2-25">Proof (of Lemma 5.2.25)</h3>
+    <p>Define the conjugation action of \(G\) on \(N\) by \(g\cdot n=gng^{-1}\) for all \(g\in G\) and \(n\in N\). Since \(N\trianglelefteq G\), this always gives us back an element of \(N\), and thus the action is well-defined. We can think of this action as a restriction of the action of \(G\) on itself by conjugation, and thus the two properties in the definition of an action hold for the action of \(G\) by conjugation on \(N\). Therefore, this is indeed an action. The orbits of elements \(n\in N\) under this action are the conjugacy classes \([n]_c\), and we have just shown that for all \(n \in N\), \([n]_c \subseteq N\). But every element in \(N\) belongs to some conjugacy class, thus the conjugacy classes of the elements of \(N\) partition \(N\).</p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-5-2-26">
+    <h3 id="rmk-5-2-26">Remark 5.2.26</h3>
+    <p>\Cref{conjugation descends to normal subgroups} says that the orbits of the conjugation action of \(G\) on a normal subgroup \(N\) are just the orbits of the conjugation action of \(G\) on itself that contain elements of \(N\) (and must thus be completely contained in \(N\)). In contrast, if \(N\) is a normal subgroup of \(G\), we can also consider the conjugation action of \(N\) on itself. If \(a\) and \(b\) are elements of \(N\) that are conjugate for the \(N\)-conjugation, then they must also be conjugate for the \(G\)-conjugation action, using the same element \(n \in N\) such that \(a =nbn^{-1}\). However, if \(a\) and \(b\) are conjugate for the \(G\)-conjugation, they might not necessarily be conjugate for the \(N\)-action, as all the elements \(g \in G\) such that \(a = gbg^{-1}\) could very well all be in \(G \setminus N\).</p>
+  </section>
+
+  <p>We will see examples of this in the next section, where we will study the special case of the alternating group.</p>
+</section>
+
 
 
 
