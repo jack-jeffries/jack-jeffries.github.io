@@ -1,0 +1,152 @@
+
+\documentclass{amsart}
+\usepackage{amstext,amsfonts,amssymb,amscd,amsbsy,amsmath}
+\pagestyle{empty}
+%\parindent = 0in
+
+\oddsidemargin=-.50in 
+\evensidemargin=-.50in 
+\topmargin=-1in 
+\textwidth=7.5in 
+\textheight=10in 
+
+\def\sol#1{{\bf Solution: } #1}
+%\def\sol#1{}
+\def\bl{\vskip .1in}
+\def\star{${}^*$}
+\def\cS{\mathcal S}
+\def\cT{\mathcal T}
+\def\cB{\mathcal B}
+
+\def\R{\mathbb R}
+\def\C{\mathbb C}
+\def\N{\mathbb N}
+\def\Q{\mathbb Q}
+\def\Z{\mathbb Z}
+
+\def\cC{\mathcal C}
+
+\def\e{\epsilon}
+\def\d{\delta}
+\def\Perm{\operatorname{Perm}}
+
+\def\GL{\operatorname{GL}}
+
+\begin{document}
+
+
+\def\Aut{\operatorname{Aut}}
+\def\Stab{\operatorname{Stab}}
+
+
+\begin{center}
+{\large\bfseries
+List of problems for the first mid-term exam}
+\end{center}
+
+The first mid-term for this class will consist of a subset of the problems in this list, possibly with some choices. 
+\begin{enumerate}
+
+
+
+
+
+\item  Let $G$ be a group (not necessarily finite) and $H$ a nonempty subset of $G$ that is closed under multiplication (i.e., if $x,y \in H$ then $xy \in H$).
+  Suppose that for all $g \in G$ we have $g^2 \in H$. Prove the following:
+  \begin{enumerate}
+  \item $H$ is a subgroup of $G$.
+    \item $H$ is a normal group of $G$.
+    \item $G/H$ is abelian.
+    \end{enumerate}
+    
+
+
+\item   Fix a prime number $p$, and let $A$ denote the abelian group of all complex roots of unity whose orders are powers of $p$; that is,
+$$
+A= \{ z \in  \C \mid z^{p^n} =1 \text{ for some integer $n \geq 1$}\}. 
+$$
+Prove the following statements.
+
+\begin{enumerate}
+
+\item Every non-trivial subgroup of $A$ contains the group of $p$-th roots of unity.
+\item Every proper subgroup of $A$ is cyclic.
+\item  If $B$ and $C$ are subgroups of $A$, then either $B \subseteq C$ or $C \subseteq B$.
+\item For each $n \geq 0$, there exists a unique subgroup of $A$ with $p^n$ elements.
+\end{enumerate}
+
+
+  
+\item Let $K$ be a subgroup of a group $G$.
+  \begin{enumerate}
+    \item Prove that $K$ is a normal subgroup of $G$ if and only if there is a group $H$ and a homomorphism $f : G \to H$ such that $K = \ker(f)$.
+    \item Let $G$ be the group of all $2 \times 2$ matrices with entries from $\Z$ having determinant $1$. Let $p$ be a prime number and take $K$ to be the subset of $G$ consisting
+      of all matrices that are congruent to $I_2$ modulo $p$ --- that is, $K$ consists of all matrices
+      of the form $\begin{bmatrix} a & b \\ c & d \\ \end{bmatrix}$ with $a \equiv 1 \pmod{p}$, $d \equiv 1 \pmod{p}$, $b \equiv 0 \pmod{0}$, and $c \equiv 0 \pmod{p}$.  Prove that
+      $K$ is a normal subgroup of $G$.
+\end{enumerate}
+
+
+\item Let $G$ be a group and $H$ and $K$ subgroups. Recall that $HK$ is the subset of $G$ defined as $HK = \{hk \mid h \in H,k \in K\}$.
+
+\begin{enumerate}
+\item  Prove $HK=KH$ if and only if $HK$ is a subgroup of $G$.
+\item Give an example (with justification) where $HK$ is not a subgroup.
+
+\end{enumerate}
+
+
+
+\item  Let $G$ be a group and $H$ a subgroup of $G$. The centralizer of $H$ in $G$ is the set of elements of $G$ that commute with each element of $H$:
+  $$
+  C_G(H) =: \{g \in G \mid gh = hg \text{ for all $h \in H$ }\}.
+  $$
+  
+Prove that if $H$ is normal in $G$, then $C_G(H)$ is a normal subgroup of $G$ and that $G/C_G(H)$ is isomorphic to a subgroup of the automorphism group of $H$.
+
+\item Let $G$ be a group acting on a set $A$, and let $H$ be a subgroup of $G$ satisfying the condition that the induced action of $H$ on $A$ is transitive
+  (that is, for all $a,b \in A$ there is an $h \in H$ with $ha=b$). Let $t \in A$, and let $\Stab_G(t)$ be the stabilizer of $t$ in $G$. Show that $G = H \Stab_G(t)$.
+
+
+
+\item Let $G$ be a finite group.
+\begin{enumerate}
+\item If $N$ is a normal subgroup of $G$ and $\#N = 2$, prove that $N$ is contained in the center $Z(G)$ of $G$.
+\item Suppose that $\# Z(G)$ is odd and that $G$ contains a non-trivial simple subgroup $H$ with $[G : H] = 2$. (Note: $H$ is simple provided it has no normal subgroups
+  other than $\{e\}$ and $H$ itself.) Prove that $H$ is the only non-trivial proper normal subgroup of $G$. 
+\end{enumerate}
+
+
+
+
+\item Let $G$ be a group. A subgroup $H$ of $G$ is called a {\em characteristic subgroup} of $G$ if $\alpha(H) = H$ for every automorphism $\alpha$ of $G$.
+  Show that if $H$ is a characteristic subgroup of $N$ and $N$ is a normal subgroup of $G$, then $H$ is a normal subgroup of $G$.
+  
+
+
+\item  Let $H$ and $K$ be groups. Recall that for any group $G$, an automorphism of $G$ is an
+  isomorphism from $G$ to $G$, and $\Aut(G)$ denotes the group (under composition) of all automorphisms of $G$.
+  \begin{enumerate}
+    \item Show that the direct product group $\Aut(H) \times \Aut(K)$ is isomorphic to a
+    subgroup of $\Aut(H \times K)$.
+    \item Give an example, with justification, of groups H and K for which
+      $\Aut(H) \times \Aut(K)$ is not isomorphic to $\Aut(H \times K)$.
+      \end{enumerate}
+
+
+\item Let $G$ be a group of order $p^n$, for some prime $p$, acting on a finite set $X$.
+  \begin{enumerate}
+    \item Suppose $p$ does not divide $\# X$. Prove that there exists some element of $X$ that is fixed by all elements of $G$.
+      \item Suppose $G$ acts faithfully on $X$. (Recall this means that if $g \cdot x = x$ for all $x \in X$, then $g = e_G$.)  Prove that $\# X \geq n \cdot p$.
+      \end{enumerate}
+
+
+    \item  Let $G = A_7$ and $S$ be the set of all elements of $G$ of order $7$. Prove that $S$ is not a conjugacy class of $G$.
+
+
+\item Let $p$ be a prime number, $G$ be a finite $p$-group (i.e., $|G| = p^n$ for some $n$), $Z$ be the center of $G$, and $N \ne \{e\}$ a non-trivial, normal subgroup of $G$.
+Prove that $N \cap  Z \ne \{e\}$. {\em Tip}: Use that $G$ acts on $N$ by conjugation.
+
+\end{enumerate}
+
+\end{document}
