@@ -1,0 +1,184 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=1in]{geometry}
+\usepackage{paralist,amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,colonequals}
+\usepackage[shortlabels]{enumitem}
+\usepackage[all]{xy}
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\solutione}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{leaf}This solution is embargoed.}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+
+\newcommand{\rsa}{\rightsquigarrow}
+
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+
+\DeclareMathOperator{\ord}{ord}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{The Isomorphism Theorems}
+	
+	
+
+\begin{framed}
+\textsc{0. Universal Mapping Property for quotient groups:} Let $f:G\to H$ be a group homomorphism. If $N \trianglelefteq G$ and $N\subseteq \ker(f)$, then there is a unique group homomorphism $\overline{f}: G/N \to H$ such that $f= \overline{f} \circ \pi$; i.e., the diagram
+$$\xymatrix{& G \ar@{->>}[ld]_\pi \ar[rd]^f  & \\
+G/N \ar@{-->}[rr]_{\overline{f}}  && H \\}$$
+commutes. Moreover, $\mathrm{im}(\overline{f}) = \mathrm{im}(f)$, and $\ker(\overline{f}) = \{ gN \ | \ g\in \ker(f)\}$.
+
+\ 
+
+ \
+ 
+ \ 
+ 
+ \
+ 
+ \
+
+\textsc{1. First Isomorphism Theorem:} Let $f:G\to H$ be a group homomorphism. Then 
+\[\begin{aligned} &G/N &\xrightarrow{\overline{f}} & \quad \mathrm{im}(f)\\ 
+& gN &\mapsto &\quad f(g)\end{aligned}\] 
+is an isomorphism.
+
+\ 
+
+ \
+ 
+ \ 
+ 
+ \
+ 
+ \
+
+\textsc{2. Diamond Isomorphism Theorem:} Let $G$ be a group, $H \leq G$, and $N \trianglelefteq G$. Then 
+$$HN \leq G, \quad N \cap H \trianglelefteq H, \quad N \trianglelefteq HN$$ 
+and 
+\[\begin{aligned} & \ \frac{H}{N \cap H} &\longrightarrow & \quad \frac{HN}{N}\\ 
+& h(N\cap H) &\mapsto &\quad hN \end{aligned}\] 
+is an isomorphism.
+
+\[
+\xymatrix{
+    &G\ar@{-}[d]^{\le}\ar@{-}[ddl]_{\le}\ar@{-}[ddr]^{\trianglelefteq}&\\
+    &HN\ar@{-}[dl]^{\le}\ar@{-}[dr]_{\trianglelefteq}&\\
+    H\ar@{-}[dr]_{\trianglelefteq}&&N\ar@{-}[dl]^{\le}\\
+    &N \cap H&
+    }\]
+
+
+\end{framed}
+
+\newpage
+
+\begin{framed}
+\textsc{3. Cancelling Isomorphism Theorem}
+Let $G$ be a group, $M \leq N \leq G$, $M \trianglelefteq G$, and $N \trianglelefteq G$. Then 
+$$M \trianglelefteq N, \qquad N/M \trianglelefteq G/M,$$ 
+and the map
+\[\begin{aligned} & \ \frac{(G/M)}{(N/M)}  &\longrightarrow & \quad G/N\\ 
+& gM &\mapsto &\quad gN \end{aligned}\] 
+is an isomorphism.
+
+\
+
+\
+
+\
+
+\
+
+\
+
+\textsc{4. Lattice Isomorphism Theorem}
+
+Let $G$ be a group and $N$ a normal subgroup of $G$, and let $\pi\!: G \twoheadrightarrow G/N$ be the quotient map. There is an order-preserving bijection of posets (a lattice isomorphism)
+%\ar[r]^-{\text{bijective}}
+$$\xymatrix@R=1mm@C=15mm{
+\{\text{subgroups of $G$ that contain $N$}\} \ar@<0.5ex>[r]^-{\Psi} & \ar@<0.5ex>[l]^-{\Phi} \{\text{subgroups of $G/N$}\} \\
+H \ar@{|->}[r] & \pi(H)= H/N \\
+\pi^{-1}(A) = \{x \in G \mid \pi(x) \in A \} & A \ar@{|->}[l]
+}$$
+%given by $\Psi(H)= H/N$ for $N \leq H \leq G$. The inverse is defined for  $\cH \leq G/N$ by $$\Psi^{-1}(\cH)=\pi^{-1}(\cH) = \{x \in G \mid \pi(x) \in \cH\}$$ 
+%where $\pi: G \onto G/N$ is the quotient map. We denote $\Psi(H)=N/N=\ov H$.
+
+Then this bijection enjoys the following properties:
+\begin{enumerate}
+\item Subgroups correspond to subgroups:
+%$$H\leq G \iff H/N \leq G/N \quad \textrm{and} \quad A \leq G/N \iff \Psi^{-1}(A)\leq G.$$
+$$H \leq G \iff H/N \leq G/N.$$
+\item Normal subgroups correspond to normal subgroups: 
+%$$H\trianglelefteq G \iff H/N \trianglelefteq G/N \quad \textrm{and} \quad A \trianglelefteq G/N \iff \Psi^{-1}(A)\trianglelefteq G.$$
+$$H \trianglelefteq G \iff H/N \trianglelefteq G/N.$$
+\item Indices are preserved:
+%$$[G:H] = [G/N : H/N] \quad \textrm{and} \quad [G: \pi^{-1}(A)] = [G/N : A].$$
+$$[G:H] = [G/N : H/N].$$
+\item Intersections and generated subgroups are preserved:
+%Supremums and infimums are preserved:
+%$$N/N \cap K/N = (H \cap H)/N \quad \textrm{and} \quad \langle H/N \cup K/N \rangle = \langle H \cup K \rangle/N.$$
+%$$\Psi^{-1}(A) \cap \Psi^{-1}(B) = \Psi^{-1}(A \cap B) \quad \textrm{and}
+%\quad \langle \Psi^{-1}(A)\cup\Psi^{-1}(B) \rangle = \Psi^{-1}\left(\langle H/N \cup K/N \rangle\right).$$
+%$$\begin{aligned}
+%N/N \cap K/N = (H \cap H)/N && & \langle H/N \cup K/N \rangle = \langle H \cup K \rangle/N \\
+%\Psi^{-1}(A) \cap \Psi^{-1}(B) = \Psi^{-1}(A \cap B) && &\langle \Psi^{-1}(A)\cup\Psi^{-1}(B) \rangle = \Psi^{-1}\left(\langle H/N \cup K/N \rangle\right).
+%\end{aligned}$$
+$$H/N \cap K/N = (H \cap K)/N \quad \textrm{and} \quad \langle H/N \cup K/N \rangle = \langle H \cup K \rangle/N.$$
+\end{enumerate}
+
+
+
+\end{framed}
+
+
+
+
+\end{document}
