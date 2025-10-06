@@ -1,0 +1,133 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{enumerate}
+\usepackage[]{graphicx}
+\usepackage{color,subfigure}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage[all]{xypic}
+\usepackage[colorlinks=true,citecolor=cyan,linkcolor=magenta]{hyperref}
+\usepackage{colonequals}
+
+\usepackage{fancyhdr, lastpage}
+\pagestyle{fancy}
+\fancyfoot[C]{{\thepage} of \pageref{LastPage}}
+
+
+\DeclareMathOperator{\mSpec}{mSpec}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Ass}{Ass}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\height}{height}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\ann}{ann}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\M}{M}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\Aut}{Aut}
+%\DeclareMathOperator{\gcd}{gcd}
+
+\def\ra{\rightarrow}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\ov}{\overline}
+
+\title{}
+\date{\vspace{-0.5in}}
+
+\makeatletter
+\g@addto@macro\@floatboxreset\centering
+\makeatother
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+\newtheorem*{solution}{Solution}
+
+
+\title{Homework 1}
+
+\begin{document}
+
+\thispagestyle{fancy}
+\pagestyle{fancy}
+\rhead{UNL}
+\lhead{Math 817}
+
+\vspace{3em}
+
+\begin{center}
+	{\LARGE  Some old qualifying exam questions}
+\end{center}
+
+
+Here are some old qualifying exam problems you are already ready to solve.
+
+
+\vspace{2em}
+
+
+
+
+\begin{problem}
+Let $H$ be a subgroup of a group $G$. Show that $[G,G] \leq H$ if and only if $H$ is a normal subgroup of $G$ and $G/H$ is abelian.
+\end{problem}
+
+
+\begin{problem}
+Let $G$ be a group and $H$ a subgroup of $G$. The centralizer of $H$ in $G$ is the set of elements of $G$ that commute with each element of $H$:
+  $$
+  C_G(H) =: \{g \in G \mid gh = hg \text{ for all $h \in H$ }\}.
+  $$
+  Prove that if $H$ is normal in $G$, then $C_G(H)$ is a normal subgroup of $G$ and that $G/C_G(H)$ is isomorphic to a subgroup of the automorphism group of $H$.
+\end{problem}
+
+
+
+\begin{problem}
+Let $G$ be a group (not necessarily finite) and $H$ a nonempty subset of $G$ that is closed under multiplication. Suppose that for all $g \in G$ we have $g^2 \in H$.
+\begin{enumerate}[(a)]
+	\item Show that $H$ must be a subgroup of $G$.
+	\item Show that $H$ must be a normal subgroup of $G$.
+	\item Show that $G/H$ must be abelian.
+\end{enumerate}
+\end{problem}
+
+
+\begin{problem}
+Fix a prime number $p$, and let $A$ denote the abelian group of all complex roots of unity whose orders are powers of $p$; that is,
+$$
+A= \{ z \in  \C \mid z^{p^n} =1 \text{ for some integer $n \geq 1$}\}. 
+$$
+Prove the following statements.
+\begin{enumerate}[(a)]
+\item Every non-trivial subgroup of $A$ contains the group of $p$-th roots of unity.
+\item Every proper subgroup of $A$ is cyclic.
+\item  If $B$ and $C$ are subgroups of $A$, then either $B \subseteq C$ or $C \subseteq B$.
+\item For each $n \geq 0$, there exists a unique subgroup of $A$ with $p^n$ elements.
+\end{enumerate}
+\end{problem}
+
+\begin{problem} Let $G$ be a group and $H$ and $K$ subgroups. Recall that $HK$ is the subset of $G$ defined as ${HK = \{hk \mid h \in H,k \in K\}}$.
+\begin{enumerate}[(a)]
+\item  Prove $HK=KH$ if and only if $HK$ is a subgroup of $G$.
+\item Give an example (with justification) where $HK$ is not a subgroup.
+\end{enumerate}
+\end{problem}
+
+
+\begin{problem} Let $G$ be a finite group.
+\begin{enumerate}[(a)]
+\item If $N$ is a normal subgroup of $G$ and $\#N = 2$, prove that $N$ is contained in the center $Z(G)$ of~$G$.
+\item Suppose that $\# Z(G)$ is odd and that $G$ contains a non-trivial simple\footnote{$H$ is \textbf{simple} provided it has no normal subgroups
+  other than $\{e\}$ and $H$ itself.} subgroup $H$ with ${[G : H] = 2}$. Prove that $H$ is the only non-trivial proper normal subgroup of $G$. 
+\end{enumerate}
+\end{problem}
+
+\end{document}

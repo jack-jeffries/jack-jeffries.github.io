@@ -1,0 +1,126 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,enumerate}
+\usepackage[]{graphicx}
+\usepackage{color,subfigure}
+\definecolor{scarlet}{rgb}{0.81,0,0}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage[all]{xypic}
+\usepackage[colorlinks=true,citecolor=scarlet,linkcolor=scarlet]{hyperref}
+\usepackage{colonequals}
+
+\usepackage{fancyhdr, lastpage}
+\pagestyle{fancy}
+\fancyfoot[C]{{\thepage} of \pageref{LastPage}}
+
+
+
+\DeclareMathOperator{\mSpec}{mSpec}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Ass}{Ass}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\height}{height}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\ann}{ann}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\coker}{coker}
+%\DeclareMathOperator{\ker}{ker}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\M}{M}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Aut}{Aut}
+%\DeclareMathOperator{\dim}{dim}
+
+\DeclareMathOperator{\lcm}{lcm}
+
+\def\ra{\rightarrow}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\ov}[1]{\overline{#1}}
+
+\def\ov#1{\overline{#1}}
+
+
+\title{}
+\date{\vspace{-0.5in}}
+
+\makeatletter
+\g@addto@macro\@floatboxreset\centering
+\makeatother
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+
+\begin{document}
+
+\thispagestyle{fancy}
+\pagestyle{fancy}
+\rhead{UNL $\mid$ Fall 2025}
+\lhead{Introduction to Modern Algebra I}
+
+\vspace{3em}
+
+\begin{center}
+	{\LARGE Problem Set 6.5 \\}
+	Not to be turned in for credit
+\end{center}
+
+\
+
+\noindent
+%{\bf Instructions:}
+%You are encouraged to work together on these problems, but each student should hand in their own final draft, written in a way that indicates their individual understanding of the solutions. Never submit something for grading that you do not completely understand. You cannot use any resources besides me, your classmates, and our course notes.
+
+
+%I will post the .tex code for these problems for you to use if you wish to type your homework. If you prefer not to type, please  {\em write neatly}. As a matter of good proof writing style, please use complete sentences and correct grammar. You may use any result stated or proven in class or in a homework problem, provided you reference it appropriately by either stating the result or stating its name (e.g. the definition of ring or Lagrange's Theorem). Please do not refer to theorems by their number in the course notes, as that can change.
+
+
+\
+
+\begin{problem}
+\begin{enumerate}[(a)]
+\item Let $G$ be a group of order 15 acting on a set $S$ with 7 elements. Prove that there exists at least one fixed point, i.e., there exists $s\in S$ such that $g\cdot s=s$ for all $g\in G$.
+\item Give an example of an action of $C_{15}$ on a set with 8 elements with no fixed points. Justify. 
+\end{enumerate}
+\end{problem} 
+
+
+\
+
+
+\begin{problem} Let $G$ be a group acting on a set $A$, and let $H$ be a subgroup of $G$ satisfying the condition that the induced action of $H$ on $A$ is transitive
+  (that is, for all $a,b \in A$ there is an $h \in H$ with $ha=b$). Let $t \in A$, and let $\Stab_G(t)$ be the stabilizer of $t$ in $G$. Show that $G = H \Stab_G(t)$.
+\end{problem}
+
+\
+
+
+\begin{problem}
+	Let $G$ be a finite group and let $H$ be a proper subgroup of $G$ with $[G:H]=h$. 
+\begin{enumerate}
+\item Prove that $H$ has at most $h$ distinct conjugate sets  $gHg^{-1}$ for $g\in G$.
+\item
+Prove that $G\neq \bigcup_{g\in G}  gHg^{-1}$.
+\end{enumerate}
+\end{problem}
+
+\
+
+\begin{problem} Let $G$ be a group of order $p^n$, for some prime $p$, acting on a finite set $X$.
+  \begin{enumerate}[(a)]
+    \item Suppose $p$ does not divide $\# X$. Prove that there exists some element of $X$ that is fixed by all elements of $G$.
+      \item Suppose $G$ acts faithfully on $X$. (Recall this means that if $g \cdot x = x$ for all $x \in X$, then $g = e_G$.)  Prove that $\# X \geq n \cdot p$.
+      \end{enumerate}
+\end{problem}
+
+
+\end{document}
