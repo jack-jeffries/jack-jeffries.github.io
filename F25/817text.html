@@ -4495,25 +4495,25 @@ h &\longmapsto & f(h)=hN
 
   <section class="callout proof" role="region" aria-labelledby="prf-5-2-4">
     <h3 id="prf-5-2-4">Proof (of Theorem 5.2.4)</h3>
-    <p>Consider two conjugate elements of \(S_n\), say \(\alpha\) and \(\beta = \sigma\alpha \sigma^{-1}\). By \Cref{every permutation is a product of disjoint cycles}, we may write \(\alpha\) as a product of disjoint cycles \(\alpha = \alpha_1 \cdots \alpha_m\). Then 
+    <p>Consider two conjugate elements of \(S_n\), say \(\alpha\) and \(\beta = \sigma\alpha \sigma^{-1}\). By earlier work, we may write \(\alpha\) as a product of disjoint cycles \(\alpha = \alpha_1 \cdots \alpha_m\). Then 
     \[
       \beta = \sigma\alpha \sigma^{-1} = (\sigma\alpha_1 \sigma^{-1})  \cdots (\sigma\alpha_m \sigma^{-1}). 
     \]
-    Since \(\alpha_1, \ldots, \alpha_m\) are disjoint cycles, then by \Cref{lemma conjugates cycles} the elements \((\sigma\alpha_1 \sigma^{-1}),   \cdots, (\sigma\alpha_m \sigma^{-1})\) are also disjoint cycles, and \(\sigma\alpha_i \sigma^{-1}\) has the same length as \(\alpha_i\).
+    Since \(\alpha_1, \ldots, \alpha_m\) are disjoint cycles, the elements \((\sigma\alpha_1 \sigma^{-1}),   \cdots, (\sigma\alpha_m \sigma^{-1})\) are also disjoint cycles, and \(\sigma\alpha_i \sigma^{-1}\) has the same length as \(\alpha_i\).
     We conclude that \(\alpha\) and \(\beta\) must have the same cycle type.</p>
 
     <p>Conversely, consider two elements \(\alpha\) and \(\beta\) with the same cycle type. More precisely, assume \(\alpha = \alpha_1 \cdots \alpha_k\) and \(\beta = \beta_1 \cdots \beta_k\) are decompositions into disjoint cycles and that \(\alpha_i, \beta_i\) both have length \(p_i \geqslant 2\) for each \(i\). We need to prove that \(\alpha\) and \(\beta\) are conjugate. Let us start with the case \(k = 1\). Given two cycles of the same length,
     \[
       \alpha = (i_1 \, \dots \, i_p) \quad \text{ and } \quad \beta = (j_1 \, \dots \, j_p).
     \]
-    By \Cref{lemma conjugates cycles}, any permutation \(\sigma\) such that \(\sigma(i_m) = j_m\) for all \(1 \leqslant m \leqslant p\) must satisfy \(\sigma\alpha \sigma^{-1} = \beta\).</p>
+    Any permutation \(\sigma\) such that \(\sigma(i_m) = j_m\) for all \(1 \leqslant m \leqslant p\) must satisfy \(\sigma\alpha \sigma^{-1} = \beta\).</p>
 
     <p>Note that such \(\sigma\) has no restrictions on what it does to the set \(\{1, \dots, n\} \setminus \{i_1 \, \dots \, i_p\}\): it can map \(\{1, \dots, n\} \setminus \{i_1 \, \dots \, i_p\}\) bijectively to \(\{1, \dots, \} \setminus \{j_1 \, \dots \, j_p\}\) in any way possible. From this observation, the general case follows: since the cycles are disjoint, we can find a single permutation \(\sigma\) such that \(\sigma\alpha_i \sigma^{-1} = \beta_i\) for all \(i\).</p>
   </section>
 
   <section class="callout example" role="region" aria-labelledby="ex-5-2-5">
     <h3 id="ex-5-2-5">Example 5.2.5</h3>
-    <p>Given \Cref{conjugates S_n}, we can now write a complete list of the conjugacy classes of \(S_4\):</p>
+    <p>Given our computation on conjugates in the symmetric group, we can now write a complete list of the conjugacy classes of \(S_4\):</p>
     <ol style="margin-top:-0.5em">
       <li>The conjugacy class of the identity \(\{e\}\). </li>
       <li>The conjugacy class of \((12)\), which is the set of all two cycles and has \({4 \choose 2} = 6\) elements.</li>
@@ -4526,7 +4526,7 @@ h &\longmapsto & f(h)=hN
 
   <section class="callout example" role="region" aria-labelledby="ex-5-2-6">
     <h3 id="ex-5-2-6">Example 5.2.6</h3>
-    <p>Given \Cref{conjugates S_n}, we can now write a complete list of the conjugacy classes of \(S_5\):</p>
+    <p>Given our computation on conjugates in the symmetric group,, we can now write a complete list of the conjugacy classes of \(S_5\):</p>
     <ol style="margin-top:-0.5em">
       <li>The conjugacy class of the identity \(\{e\}\). </li>
       <li>The conjugacy class of \((12)\), which is the set of all \(2\)-cycles and has \({5 \choose 2} = 10\) elements.</li>
@@ -4631,7 +4631,7 @@ h &\longmapsto & f(h)=hN
     \[
       h \in \mathrm{Stab}_G(g) \iff h \cdot g = g \iff hgh^{-1} = g \iff hg = gh \iff h \in C_G(G).
     \]
-    Thus, \(\mathrm{Stab}_G(g)=C_G(G)\), and by the \hyperref[Orbit-Stabilizer Theorem]{Orbit-Stabilizer Theorem},
+    Thus, \(\mathrm{Stab}_G(g)=C_G(G)\), and by the Orbit-Stabilizer Theorem,
     \[
       |[g]_c| = |\mathrm{Orb}_G(g)| = [G : C_G(g)].
     \]</p>
@@ -4656,14 +4656,14 @@ h &\longmapsto & f(h)=hN
 
   <section class="callout proof" role="region" aria-labelledby="prf-5-2-18">
     <h3 id="prf-5-2-18">Proof (of Corollary 5.2.18)</h3>
-    <p>Let \(g \in G\). By \Cref{conjugacy class}, the order of the conjugacy class of \(g\) is the index of the centralizer: 
+    <p>Let \(g \in G\). The order of the conjugacy class of \(g\) is the index of the centralizer: 
     \[
       |[g]_c| = [G : C_G(g)] 
     \]
-    By \hyperref[Lagrange]{Lagrange's Theorem}, the index of any subgroup must divide \(|G|\), and thus in particular \(|[g]_c|\) divides \(|G|\).</p>
+    By Lagrange's Theorem, the index of any subgroup must divide \(|G|\), and thus in particular \(|[g]_c|\) divides \(|G|\).</p>
   </section>
 
-  <p>We will take the \hyperref[Orbit Equation]{Orbit Equation} and apply it to the special case of the conjugation action. In order to do that, all that remains is to identify the fixed points of the action.</p>
+  <p>We will take the orbit equation and apply it to the special case of the conjugation action. In order to do that, all that remains is to identify the fixed points of the action.</p>
 
   <section class="callout lemma" role="region" aria-labelledby="lem-5-2-19">
     <h3 id="lem-5-2-19">Lemma 5.2.19</h3>
@@ -4685,7 +4685,7 @@ h &\longmapsto & f(h)=hN
     Thus \(g \in \mathrm{Z}(G)\).</p>
   </section>
 
-  <p>We can now write the \hyperref[Orbit Equation]{Orbit Equation} for the conjugation action; this turns out to be a very useful formula.</p>
+  <p>We can now write the Orbit Equation for the conjugation action; this turns out to be a very useful formula.</p>
 
   <section class="callout theorem" role="region" aria-labelledby="thm-5-2-20">
     <h3 id="thm-5-2-20">Theorem 5.2.20 (The Class Equation)</h3>
@@ -4697,7 +4697,7 @@ h &\longmapsto & f(h)=hN
 
   <section class="callout proof" role="region" aria-labelledby="prf-5-2-20">
     <h3 id="prf-5-2-20">Proof (of Theorem 5.2.20)</h3>
-    <p> By \Cref{fixed points conjugation are central}, the elements of \(\mathrm{Z}(G)\) are precisely the fixed points of the conjugation action. In particular, \(|\mathrm{Z}(G)|\) counts the number of orbits that have only one element. Because the orbits of the conjugation action partition \(G\), and the conjugacy classes are the orbits, then as noted in \Cref{Orbit Equation}
+    <p> The elements of \(\mathrm{Z}(G)\) are precisely the fixed points of the conjugation action. In particular, \(|\mathrm{Z}(G)|\) counts the number of orbits that have only one element. Because the orbits of the conjugation action partition \(G\), and the conjugacy classes are the orbits, then as noted in the orbit equation,
     \[
       |G| = |\mathrm{Z}(G)| + \sum_i^r [g_i]_c.
     \]
@@ -4713,7 +4713,7 @@ h &\longmapsto & f(h)=hN
 
   <section class="callout remark" role="region" aria-labelledby="rmk-5-2-21">
     <h3 id="rmk-5-2-21">Remark 5.2.21</h3>
-    <p>The \hyperref[Class Equation]{class equation} is not very interesting if \(G\) is abelian, since there is only one term on the right hand side: \(|\mathrm{Z}(G)|\).</p>
+    <p>The class equation is not very interesting if \(G\) is abelian, since there is only one term on the right hand side: \(|\mathrm{Z}(G)|\).</p>
   </section>
 
   <p>But when \(G\) is nonabelian, the class equation can lead us to discover some very interesting facts, despite its simplicity.</p>
@@ -4730,7 +4730,7 @@ h &\longmapsto & f(h)=hN
 
   <section class="callout proof" role="region" aria-labelledby="prf-5-2-23">
     <h3 id="prf-5-2-23">Proof (of Corollary 5.2.23)</h3>
-    <p>Let \(g_1,\ldots g_r \in G\) be a list of unique representatives of all of the conjugacy classes of \(G\) of size greater than 1, as in the \hyperref[Class Equation]{class equation}. By construction, each \(g_i\) is not a fixed point of the action, and thus \(\mathrm{Stab}_G(g_i) \neq G\). By \Cref{conjugacy class}, \(C_G(g_i) = \mathrm{Stab}_G(g_i)\), so \(C_G(g_i) \neq G\). In particular, \([G:C_G(g_i)]\neq 1\). Since \(1\neq [G:C_G(g_i)]\) and \([G:C_G(g_i)]\) divides \(|G|=p^m\), we conclude that \(p\) divides \([G:C_G(g_i)]\) for each \(i\). From the \hyperref[Class Equation]{class equation}, we can now conclude that \(p\) divides \(|\mathrm{Z}(G)|\), and in particular \(|\mathrm{Z}(G)|\neq 1\).</p>
+    <p>Let \(g_1,\ldots g_r \in G\) be a list of unique representatives of all of the conjugacy classes of \(G\) of size greater than 1, as in the class equation. By construction, each \(g_i\) is not a fixed point of the action, and thus \(\mathrm{Stab}_G(g_i) \neq G\). We have \(C_G(g_i) = \mathrm{Stab}_G(g_i)\), so \(C_G(g_i) \neq G\). In particular, \([G:C_G(g_i)]\neq 1\). Since \(1\neq [G:C_G(g_i)]\) and \([G:C_G(g_i)]\) divides \(|G|=p^m\), we conclude that \(p\) divides \([G:C_G(g_i)]\) for each \(i\). From the class equation, we can now conclude that \(p\) divides \(|\mathrm{Z}(G)|\), and in particular \(|\mathrm{Z}(G)|\neq 1\).</p>
   </section>
 
   <section class="callout exercise" role="region" aria-labelledby="ex-5-2-24">
@@ -4750,7 +4750,7 @@ h &\longmapsto & f(h)=hN
 
   <section class="callout remark" role="region" aria-labelledby="rmk-5-2-26">
     <h3 id="rmk-5-2-26">Remark 5.2.26</h3>
-    <p>\Cref{conjugation descends to normal subgroups} says that the orbits of the conjugation action of \(G\) on a normal subgroup \(N\) are just the orbits of the conjugation action of \(G\) on itself that contain elements of \(N\) (and must thus be completely contained in \(N\)). In contrast, if \(N\) is a normal subgroup of \(G\), we can also consider the conjugation action of \(N\) on itself. If \(a\) and \(b\) are elements of \(N\) that are conjugate for the \(N\)-conjugation, then they must also be conjugate for the \(G\)-conjugation action, using the same element \(n \in N\) such that \(a =nbn^{-1}\). However, if \(a\) and \(b\) are conjugate for the \(G\)-conjugation, they might not necessarily be conjugate for the \(N\)-action, as all the elements \(g \in G\) such that \(a = gbg^{-1}\) could very well all be in \(G \setminus N\).</p>
+    <p>The previous lemma says that the orbits of the conjugation action of \(G\) on a normal subgroup \(N\) are just the orbits of the conjugation action of \(G\) on itself that contain elements of \(N\) (and must thus be completely contained in \(N\)). In contrast, if \(N\) is a normal subgroup of \(G\), we can also consider the conjugation action of \(N\) on itself. If \(a\) and \(b\) are elements of \(N\) that are conjugate for the \(N\)-conjugation, then they must also be conjugate for the \(G\)-conjugation action, using the same element \(n \in N\) such that \(a =nbn^{-1}\). However, if \(a\) and \(b\) are conjugate for the \(G\)-conjugation, they might not necessarily be conjugate for the \(N\)-action, as all the elements \(g \in G\) such that \(a = gbg^{-1}\) could very well all be in \(G \setminus N\).</p>
   </section>
 
   <p>We will see examples of this in the next section, where we will study the special case of the alternating group.</p>
