@@ -1,0 +1,121 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=1in]{geometry}
+\usepackage{paralist,amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,colonequals}
+\usepackage[shortlabels]{enumitem}
+\usepackage[all]{xy}
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\solutione}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{leaf}This solution is embargoed.}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+
+\newcommand{\rsa}{\rightsquigarrow}
+
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+
+\DeclareMathOperator{\ord}{ord}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{Orbit-Stabilizer Theorem}
+	
+	
+
+\begin{framed}
+\textsc{Definition:} Let $G$ be a group acting on a set $X$, and $x\in X$.
+\begin{itemize}
+\item The \textbf{orbit} of $x$ is $\mathrm{Orb}_G(x) = \{ g\cdot x  \ | \ g\in G\} \subseteq X$.
+\item The \textbf{stabilizer} of $x$ is $\mathrm{Stab}_G(x) = \{ g\in G \ | \ g \cdot x = x\} \leq G$.
+\end{itemize}
+
+\
+
+\textsc{Orbit-Stabilizer Theorem:} Let $G$ be a group acting on a set $X$, and $x\in X$. Then
+\[ | \mathrm{Orb}_G(x) | = [ G : \mathrm{Stab}_G(x) ].\]
+
+\
+
+\textsc{Corollary of Orbit-Stabilizer Theorem:} Let $G$ be a finite group acting on a set $X$, and $x\in X$. Then
+\[  | \mathrm{Orb}_G(x) | \cdot |  \mathrm{Stab}_G(x) | = | G |.\]
+In particular, the size of any orbit divides the order of $G$.
+\end{framed}
+
+\begin{enumerate}
+\itemA Use the Orbit-Stabilizer Theorem and/or its corollary above to quickly explain why the following are \textit{impossible}:
+\begin{itemize}
+\item $S_4 \curvearrowright X$ transitively for a set $X$ with $5$ elements.
+\item $G \curvearrowright X$ with $|G|=16$, $|X|$ odd, and the action has no fixed point.
+\end{itemize}
+
+\
+
+\itemA Proof of Theorem/Corollary.
+\begin{enumerate}
+\itema Prove the Orbit-Stabilizer Theorem by showing that the map
+\[ \begin{aligned} \{ \text{left cosets of $\mathrm{Stab}_G(x)$ in $G$}\} &\longrightarrow \mathrm{Orb}_G(x) \\ g \cdot \mathrm{Stab}_G(x) &\mapsto g \cdot x\end{aligned}\]
+is a well-defined bijective function.
+\itema Deduce the Corollary from the Theorem.
+\end{enumerate}
+
+\
+
+\itemA Let $G$ be the group of rotational symmetries of a cube.
+\begin{enumerate}
+\itema Explain very briefly why $G$ acts on the set $F$ of faces of the cube.
+\itema Explain why $G \curvearrowright F$ is transitive.
+\itema Compute $\mathrm{Stab}_G(f)$ for $f\in F$.
+\itema Compute $|G|$.
+\end{enumerate}
+
+
+
+\end{enumerate}
+\end{document}
