@@ -177,6 +177,15 @@
 <li><a href="#group actions second section">Group actions in action</a></li>
 <ol><li><a href="#sec-5-1-heading">Orbits and Stabilizers</a></li>
 <li><a href="#sec-5-2-heading">The class equation</a></li>
+<li><a href="#sec-5-3-heading">The alternating group</a></li>
+<li><a href="#sec-5-4-heading">Other group actions with applications</a></li>
+</ol>
+
+
+<li><a href="#sylow theory section">Sylow Theory</a></li>
+<ol><li><a href="#sec-6-1-heading">Cauchy’s Theorem</a></li>
+<li><a href="#sec-6-2-heading">The Main Theorem of Sylow Theory</a></li>
+<li><a href="#sec-6-3-heading">Using Sylow Theory</a></li>
 </ol>
 
 
@@ -4757,6 +4766,864 @@ h &\longmapsto & f(h)=hN
 </section>
 
 
+
+<section id="alternating-group" aria-labelledby="sec-5-3-heading">
+  <h2 id="sec-5-3-heading">5.3 The alternating group</h2>
+
+  <p>Since \(A_n \leq S_n\), we know that <i>if</i> two elements of \(A_n\) are conjugate, <i>then</i> they have the same cycle type, as they are also conjugate elements of \(S_n\), and thus we can apply our computation of conjugacy classes on in \(S_n\). But there is no reason for the converse to hold: given \(\alpha, \beta \in A_n\) of the same cycle type, the elements \(\sigma \in S_n\) such that \(\sigma \alpha \sigma^{-1} = \beta\) might all belong to \(S_n \setminus A_n\). Indeed, we will see that this does happen in some cases.</p>
+
+  <section class="callout example" role="region" aria-labelledby="ex-5-3-1">
+    <h3 id="ex-5-3-1">Example 5.3.1</h3>
+    <p>The two permutations \((123)\) and \((132)\) are not conjugates in \(A_3\), despite having the same cycle type and thus being conjugate in \(S_3\) by our computation of conjugacy classes on in \(S_n\). One can check this easily, for example, by conjugating \((123)\) by the \(3\) elements in \(A_3\).</p>
+  </section>
+
+  <section class="callout lemma" role="region" aria-labelledby="lem-5-3-2">
+    <h3 id="lem-5-3-2">Lemma 5.3.2</h3>
+    <p>Let \(\sigma\) be an \(m\)-cycle in \(S_n\). Then
+    \[
+      \sigma \in A_n \iff m \textrm{ is odd}.
+    \]</p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-5-3-2">
+    <h3 id="prf-5-3-2">Proof (of Lemma 5.3.2)</h3>
+    <p>Recall from earlier that,
+    \[
+      (i_1 \, i_2 \, \cdots \, i_m) = (i_1 \, i_m) (i_1 \, i_{m-1}) (i_1 \, i_3) (i_1 \, i_2)
+    \]
+    is a product of \(m-1\) transpositions.
+    Thus \(\sigma\) is even if and only if \(m-1\) is even.</p>
+  </section>
+
+  <section class="callout lemma" role="region" aria-labelledby="lem-5-3-3">
+    <h3 id="lem-5-3-3">Lemma 5.3.3 (Conjugacy classes of \(A_5\))</h3>
+    <p>The conjugacy classes of \(A_5\) are given by the following list:</p>
+    <ol style="margin-top:-0.1em">
+      <li>The singleton \(\{e\}\) is a conjugacy class.</li>
+      <li>The conjugacy class of \((1 \, 2 \, 3 \, 4 \, 5)\) in \(A_5\) has \(12\) elements.</li>
+      <li>The conjugacy class of \((2 \, 1 \, 3 \, 4 \, 5)\) in \(A_5\) has \(12\) elements, and it is disjoint from the conjugacy class of \((1 \, 2 \, 3 \, 4 \, 5)\). </li>
+      <li>The collection of all three cycles, of which there are \(20\), forms a conjugacy class in \(A_5\).</li>
+      <li>The collection of all products of two disjoint transpositions, of which there are \(15\), forms one conjugacy class in \(A_5\).</li>
+    </ol>
+    <p>As a reality check, note that \(12 + 12 + 20 + 15 + 1 = 60 = |A_5|\).</p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-5-3-3">
+    <h3 id="prf-5-3-3">Proof (of Lemma 5.3.3)</h3>
+    <p>By the work above, the cycle types of elements of \(A_5\) are</p>
+    <ul style="margin-top:-0.1em">
+      <li>five cycles, of which there are \(4! = 24\), </li>
+      <li>three cycles, of which there are \({5 \choose 3} 2 =   20\),</li>
+      <li>products of two disjoint transpositions, of which there are \(5 \cdot 3 = 15\), and</li>
+      <li>the unique \(1\)-cycle \(e\), and indeed \([e]_c = \{e\}\).</li>
+    </ul>
+
+    <p>By our computation of conjugacy classes on in \(S_n\), we know that two permutations are conjugate in \(S_5\) if and only if they have the same cycle type. It follows that the conjugacy classes in \(A_5\) form a subset of the cycles types.
+    The statement we are trying to prove asserts that the set of five cycles breaks apart into two conjugacy classes in \(A_5\), whereas in all the other cases, the conjugacy classes remain whole. </p>
+
+    <p><strong>Claim:</strong> Fix a \(5\)-cycle \(\sigma\). The conjugacy class of \(\sigma\) in \(A_5\) has \(12\) elements.</p>
+
+    <p>By Lagrange's Theorem,
+    \[
+      |C_{S_5}(\sigma)| = \frac{|S_5|}{[S_5 : C_{S_5}(\sigma)]}.
+    \]
+    Thus, 
+    \[
+      [S_5 : C_{S_5}(\sigma)] = |[\sigma]_c|.
+    \]
+    By our computation of conjugacy classes on in \(S_n\), this is the number of \(5\)-cycles in \(S_5\), which is \(4!\).
+    Thus
+    \[
+      |C_{S_5}(\sigma)| = \frac{5!}{4!} = 5.
+    \]
+    Since every power of \(\sigma\) commutes with \(\sigma\), and there are \(5\) such elements, we conclude that
+    \[
+      C_{S_5}(\sigma) = \{e, \sigma, \sigma^2, \sigma^3, \sigma^4\}.
+    \]
+    But these are all in \(A_5\), and thus by an earlier lemma we conclude that
+    \[
+      C_{A_5}(\sigma) = C_{S_5}(\sigma) \cap A_5 = \{e, \sigma, \sigma^2, \sigma^3, \sigma^4\}.
+    \]
+    By the Orbit-Stabilizer Theorem and Lagrange's Theorem, 
+    \[
+      \text{ the size of the conjugacy class of \(\sigma\) in \(A_5\)} = [A_5: C_{A_5}(\sigma)] = \frac{|A_5|}{|C_{A_5}(\sigma)|} = \frac{60}{5} = 12.
+    \]
+    This proves the claim.</p>
+
+    <p>We have now shown that the conjugacy class of each \(5\)-cycle has \(12\) elements, and all twenty-four \(5\)-cycles are in \(A_5\). Thus there are two conjugacy classes of \(5\)-cycles in \(A_5\).
+    This shows that \(\sigma\) is only conjugate in \(A_5\) to half of the five cycles. 
+    If we pick two \(5\)-cycles \(\sigma\) and \(\tau\) that are not conjugate in \(A_5\), then \(\tau\) is conjugate to exactly \(12\) elements, which must be exactly the other \(5\)-cycles that \(\sigma\) is not conjugate to. </p>
+
+    <p>One can see that in fact \((1 \, 2 \, 3 \, 4 \, 5)\) and \((2 \, 1 \, 3 \, 4 \, 5)\) are not conjugate.
+    While they <i>are</i> conjugate <i>in \(S_5\)</i>, it is via the element \((1 \,2)\), which is <i>not</i> in \(A_5\).
+    Suppose that \(\alpha \in S_5\) is such that
+    \[
+      \alpha (2 \, 1 \, 3 \, 4 \, 5) \alpha^{-1} = (1 \, 2 \, 3 \, 4 \, 5).
+    \]
+    Note that \(\tau = \alpha (1 \, 2)\) satisfies
+    \[
+    \begin{aligned}
+      \tau (1 \, 2 \, 3 \, 4 \, 5) & =  \alpha (1 \, 2) (1 \, 2 \, 3 \, 4 \, 5) \\
+      & = \alpha (2 \, 1 \, 3 \, 4 \, 5) \\
+      & = (2 \, 1 \, 3 \, 4 \, 5) \alpha \\
+      & = (1 \, 2 \, 3 \, 4 \, 5) (1 \, 2) \alpha \\
+      & = (1 \, 2 \, 3 \, 4 \, 5) \tau.
+    \end{aligned}
+    \]
+    Thus \(\alpha (1 \, 2) \in C_{S_5}(1 \, 2 \, 3 \, 4 \, 5)\), or equivalently, 
+    \[
+      \alpha \in (1 \, 2) \cdot C_{S_5}(2 \, 1 \, 3 \, 4 \, 5).
+    \]
+    But note that we just proved that every element in \(C_{S_5}(2 \, 1 \, 3 \, 4 \, 5)\) is in \(A_5\), and thus even; this shows that every element in the coset 
+    \[
+      (1 \, 2) \cdot C_{S_5}(2 \, 1 \, 3 \, 4 \, 5)
+    \]
+    is odd (as we multiplied by <i>one</i> transposition), and thus there are no such \(\alpha\) in \(A_5\).
+    This proves (1) and (2).</p>
+
+    <p><strong>Claim:</strong> All \(20\) three cycles are conjugate in \(A_5\).</p>
+
+    <p>Given two three cycles \((a \, b \, c)\) and \((d \, e \, f)\) in \(S_5\), we already know that they are both in \(A_5\) and that there is a \(\sigma \in S_5\) such that
+    \[
+      \sigma (a \, b \, c) \sigma^{-1}  = (d \, e \, f).
+    \]
+    If \(\sigma \notin A_5\), let \(\{1, \dots, 5\} \setminus \{a,b,c\} = \{ x, y\}\). Then \(\sigma\) is a product of an odd number of transpositions, so \(\sigma \cdot (x \, y) \in A_5\). Moreover, since \((x \, y)\) and \((a \, b \, c)\) are disjoint cycles, so they must commute, so that
+    \[
+      (x \, y) (a \, b \, c) (x \, y))^{-1} = (a \, b \, c).
+    \]
+    Therefore,
+    \[
+      (\sigma \cdot (x \, y)) (a \, b \, c) (\sigma \cdot (x \, y))^{-1}  = (d \, e \, f),
+    \]
+    so \((a \, b \, c)\) and \((d \, e \, f)\) are still conjugate in \(S_5\).
+    This proves the claim.</p>
+
+    <p><strong>Claim:</strong> All products of two disjoint transpositions are conjugate in \(A_5\).</p>
+
+    <p>Set \(\alpha = (1 \, 2)(3 \, 4)\). The conjugacy class of \(\alpha\) in \(S_5\) consists of all the products of two disjoint two-cycles, and there are \(15\) such elements. By the Orbit-Stabilizer Theorem,
+    \[
+      15 = |\text{ the conjugacy class of \(\alpha\) in \(S_5\) }|
+      = [S_5: C_{S_5}(\alpha)]=\frac{120}{\left|C_{S_5}(\alpha)\right|}.
+    \]
+    Thus
+    \[
+      \left|C_{S_5}(\alpha)\right| = \frac{120}{15} = 8.
+    \]
+    Since \(\alpha\) commutes with \(e\), \(\alpha\), \((1 \, 3)(2 \, 4)\) and \((1 \, 4)(2 \, 3)\) and each of these belongs to \(A_5\), we must have \(|C_{A_5}(\alpha)| \geqslant 4\).
+    Since
+    \[
+      C_{A_5}(\alpha) = C_{S_5}(\alpha) \cap A_5,
+    \]
+    it follows that \(|C_{A_5}(\alpha)|\) must divide both \(8\) and \(60\), and so must be \(1\), \(2\) or \(4\).  
+    We conclude that \(|C_{A_5}(\alpha)| = 4\). Thus \(\alpha\) is conjugate in \(A_5\) to \(60/4 = 15\) elements. Since there are \(15\) products of disjoint two-cycles, they must all be conjugate to \(\alpha\), and thus the conjugacy class of \(\alpha\) in \(A_5\) is still the set of all \(2\)-cycles.</p>
+  </section>
+
+  <p>Now that we have completely calculated all the conjugacy classes of \(A_5\), our hard work will pay off: we can now prove a very important result in group theory.</p>
+
+  <section class="callout definition" role="region" aria-labelledby="def-5-3-4">
+    <h3 id="def-5-3-4">Definition 5.3.4 (simple group)</h3>
+    <p>A nontrivial group \(G\) is <strong>simple</strong> if it has no proper nontrivial normal subgroups.</p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-5-3-5">
+    <h3 id="ex-5-3-5">Exercise 5.3.5</h3>
+    <p>Let \(p\) be prime. Show that \(\mathbb{Z}/p\) is a simple group.</p>
+  </section>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-5-3-6">
+    <h3 id="thm-5-3-6">Theorem 5.3.6</h3>
+    <p>The group \(A_5\) is a simple group.</p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-5-3-6">
+    <h3 id="prf-5-3-6">Proof (of Theorem 5.3.6)</h3>
+    <p>Suppose \(N \trianglelefteq A_5\). By Lagrange's Theorem, \(|N|\) divides 
+    \[
+      |A_5| = \frac{5!}{2} = 60.
+    \]
+    Then \(A_5\) has only four nontrivial conjugacy classes, and they have order \(12\), \(12\), \(15\), and \(20\).  Since \(N\) is normal, it is a union of conjugacy classes of \(A_5\).
+    Thus
+    \[
+      |N| = 1 + \text{ the sum of a sublist of the list } 20, 12, 12, 15.
+    \]
+    By checking the relatively small number of cases we see that \(|N| = 1\) or \(|N| = 60\) are the only possibilities, as the remaining options do not divide \(60\).</p>
+  </section>
+
+  <p>In fact, \(A_n\) is simple for all \(n \geqslant 5\), but we will not prove this. In contrast, \(A_4\) is not simple: we have seen in class that it has a normal subgroup with four elements consisting of the identity and the three products of two disjoint transpositions.</p>
+
+  <section class="callout example" role="region" aria-labelledby="ex-5-3-7">
+    <h3 id="ex-5-3-7">Example 5.3.7</h3>
+    <p>The alternating group \(A_3\) is simple and abelian since it has order \(3\). </p>
+  </section>
+
+  <p>Both \(A_1\) and \(A_2\) are the trivial group. </p>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-5-3-8">
+    <h3 id="thm-5-3-8">Theorem 5.3.8</h3>
+    <p>Let \(n \geqslant 3\). The alternating group \(A_n\) is simple if and only if \(n \neq 4\).</p>
+  </section>
+
+  <p>In fact, one can show that \(A_5\) is the smallest nonabelian simple group, having \(60\) elements. This we will also not prove.</p>
+</section>
+
+
+
+<section id="other-group-actions" aria-labelledby="sec-5-4-heading">
+  <h2 id="sec-5-4-heading">5.4 Other group actions with applications</h2>
+
+  <p>Let's discuss a couple other group actions that often lead to useful information about the group doing the acting.
+  The first one arises from the action of a group on the collection of left cosets of one of its subgroups.
+  More precisely, let \(G\) be a group and \(H\) a subgroup, and let \(\mathcal{L}\) denote the collection of left cosets of \(H\) in \(G\): 
+  \[
+    \mathcal{L} = \{xH \mid x \in G\}.
+  \] 
+  When \(H\) is normal, \(\mathcal{L}\) is the quotient group \(\mathcal{L} = G/H\), but note that we are not assuming that \(H\) is normal. Then \(G\) acts on \(\mathcal{L}\) via the rule
+  \[
+    g \cdot (xH) := (gx)H.
+  \]
+  This action is transitive: for all \(x\), 
+  \[
+    xH = x \cdot (eH).
+  \] 
+  The stabilizer of the element \(H \in \mathcal{L}\) is
+  \[
+    \mathrm{Stab}_G(H) = \{x \in G \mid xH = H\} = H,
+  \]
+  which is consistent with the Orbit-Stabilizer Theorem, as indeed 
+  \[
+    \mathrm{Orb}_G(H) = \mathcal{L}, \quad \textrm{so } |\mathrm{Orb}(H)| = |\mathcal{L}| = [G : H],
+  \]
+  while
+  \[
+    \mathrm{Stab}_G(H) = H, \quad \textrm{so } [G: \mathrm{Stab}_G(H)] = [G : H].
+  \]</p>
+
+  <p>As with any group action, this action induces a homomorphism
+  \(\rho\!: G \to \mathrm{Perm}(\mathcal{L})\)
+  where for any \(g\), it is given by</p>
+  <div class="math-display">
+  \[
+  \begin{aligned}
+    \rho(g):\ &\mathcal{L} \longrightarrow \mathcal{L}\\
+    &xH \longmapsto (gx)H.
+  \end{aligned}
+  \]
+  </div>
+  <p>If \(n = [G :H] = |\mathrm{Perm}(\mathcal{L})|\) is finite, then we have a homomorphism \(\rho\!: G \to S_n\).</p>
+
+  <section class="callout lemma" role="region" aria-labelledby="lem-5-4-1">
+    <h3 id="lem-5-4-1">Lemma 5.4.1</h3>
+    <p>Let \(G\) be a group and \(H\) a subgroup of \(G\).
+    Consider the action of \(G\) on the set \(\mathcal{L}\) of left cosets of \(H\), and the corresponding permutation representation \(\rho\!: G \to \mathrm{Perm}(\mathcal{L})\).
+    Then
+    \[
+      \ker(\rho) = \bigcap_{x \in G} xHx^{-1}.
+    \]
+    In particular, \(\ker(\rho) \subseteq H\).</p>
+  </section>
+
+  <p>Note that \(\displaystyle\bigcap_{x \in G} xHx^{-1}\) is the largest normal subgroup of \(G\) contained in \(H\).</p>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-5-4-1">
+    <h3 id="prf-5-4-1">Proof (of Lemma 5.4.1)</h3>
+    <p>Note that</p>
+    <div class="math-display">
+    \[
+    \begin{aligned}
+      g \in \ker(\rho) & \iff (gx)H = xH \textrm{ for all } x \in G \\
+      & \iff x^{-1}gx \in H \text{ for all } x \in G \\
+      & \iff g  \in xHx^{-1} \text{ for all } x \in G.
+    \end{aligned}
+    \]
+    </div>
+    <p>Thus</p>
+    <div class="math-display">
+    \[
+      \ker(g) = \bigcap_{x \in G} xHx^{-1}.
+    \]
+    </div>
+    <p>Since \(eHe^{-1} = H\), we conclude that \(\ker(g) \subseteq H\).</p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-5-4-2">
+    <h3 id="rmk-5-4-2">Remark 5.4.2</h3>
+    <p>The action of \(G\) on the left cosets of \(H\) might be faithful or not. The Lemma above says that the action is faithful if and only if 
+    \[
+      \bigcap_{x \in G} x H x^{-1} = \{ e \}.
+    \]
+    If \(H\) is a normal subgroup of \(G\), then in fact
+    \[
+      \bigcap_{x \in G} x H x^{-1} = H,
+    \]
+    and thus the action is not faithful unless \(H = \{e\}\).</p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-5-4-3">
+    <h3 id="rmk-5-4-3">Remark 5.4.3</h3>
+    <p>Consider the subgroup \(H = \langle (12) \rangle\) of \(S_3\). The action of \(S_3\) on the left cosets of \(H\) is faithful: for example, taking \(\sigma = (13)\) we have
+    \[
+      \sigma H \sigma^{-1} = \{ e, (12)(13) \} = \{ e, (23) \},
+    \]
+    and thus the permutation representation \(\rho\!: S_3 \to S_3\) associated with the action has
+    \[
+      \ker \rho \subseteq \sigma H \sigma^{-1} \cap H = \{ e \}.
+    \]</p>
+  </section>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-5-4-4">
+    <h3 id="thm-5-4-4">Theorem 5.4.4</h3>
+    <p>Let \(G\) be a finite group and \(H\) a subgroup of index \(p\), where \(p\) is the smallest prime divisor of \(|G|\). Then \(H\) is normal.</p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-5-4-4">
+    <h3 id="prf-5-4-4">Proof (of Theorem 5.4.4)</h3>
+    <p>The action of \(G\) on the set of left cosets of \(H\) in \(G\) by left multiplication induces a homomorphism \(\rho\!: G \to S_p\). By the Lemma above, its kernel \(N := \ker(\rho)\) is contained in \(H\). By the First Isomorphism Theorem,
+    \[
+      [G:N] = |G/N| = |\mathrm{im}(f)|.
+    \]
+    By Lagrange's Theorem, since \(\mathrm{im}(f)\) is a subgroup of \(S_p\) then \([G:N] = |\mathrm{im}(f)|\) divides \(|S_p|=p!\).
+    On the other hand, \([G:N]\) divides \(|G|\) by Lagrange's Theorem. Since \([G:N]\) divides both \(|G|\) and \(p!\), it must divide \(\gcd(|G|,p!)\). Since \(p\) is the smallest prime divisor of \(G\), we must have 
+    \[
+      \gcd(|G|, p!) = p.
+    \] 
+    It follows that \([G:N]\) divides \(p\), and hence \([G:N] =1\) or \([G:N] = p\). 
+    But \(N \subseteq H\), and \(H\) is a proper subgroup of \(G\), so \(N \neq G\), and thus \([G:N] \neq 1\). Therefore, we conclude that \([G:N] = p\). 
+    Since \(N \subseteq H\) and \([G:H] = p = [G : N]\), we conclude that \(H = N\). In particular, \(H\) must be a normal subgroup of \(G\).</p>
+  </section>
+
+  <p>This generalizes an earlier exercise, which says that any subgroup of index \(2\) is normal.</p>
+
+  <p>Another interesting action arises from the following:
+  Let \(G\) be a group and let
+  \[
+    \mathcal{S}(G) = \{H \mid H \leq G \} 
+  \] 
+  be the collection of all subgroups of \(G\). Then \(G\) acts on \(\mathcal{S}\) by 
+  \[
+    g \cdot H = gHg^{-1}.
+  \]</p>
+
+  <section class="callout definition" role="region" aria-labelledby="def-5-4-5">
+    <h3 id="def-5-4-5">Definition 5.4.5 (conjugate subgroups)</h3>
+    <p>Two subgroups \(A\) and \(B\) of a group \(G\) are <strong>conjugate</strong> if there exists \(g \in G\) such that \(A = gBg^{-1}\).</p>
+  </section>
+
+  <p>Equivalently, two subgroups are conjugate if they are in the same orbit by the following group action: the action of \(G\) on the set of its subgroups by conjugation.</p>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-5-4-6">
+    <h3 id="ex-5-4-6">Exercise 5.4.6</h3>
+    <p>Let \(G\) be a group and let
+    \[
+      \mathcal{S}(G) = \{H \mid H \leq G \}. 
+    \] 
+    Check that the rule
+    \[
+      g \cdot H = gHg^{-1}
+    \]
+    defines an action of \(G\) on \(\mathcal{S}(G)\). Moreover, prove that given any subgroup \(H\) of \(G\), the stabilizer of \(H\) is given by \(N_G(H)\).</p>
+  </section>
+
+  <p>The normalizer \(N_G(H)\) is the largest subgroup of \(G\) that contains \(H\) as a normal subgroup, meaning that \(H \trianglelefteq N_G(H)\). </p>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-5-4-7">
+    <h3 id="ex-5-4-7">Exercise 5.4.7</h3>
+    <p>Let \(G\) be a group and \(H\) be a subgroup of \(G\). Show that if \(K\) is any subgroup of \(G\) such that \(H \trianglelefteq K\), then \(K \leq N_G(H)\). In particular, \(H \trianglelefteq G\) if and only if \(N_G(H) = G\).</p>
+  </section>
+
+  <section class="callout lemma" role="region" aria-labelledby="lem-5-4-8">
+    <h3 id="lem-5-4-8">Lemma 5.4.8</h3>
+    <p>Let \(G\) be a group and \(H\) be a subgroup of \(G\). The number of subgroups of \(G\) that are conjugate to \(H\) is equal to \([G: N_G(H)]\).</p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-5-4-8">
+    <h3 id="prf-5-4-8">Proof (of Lemma 5.4.8)</h3>
+    <p>The number of subgroups of \(G\) that are conjugate to \(H\) is just the size of the orbit of \(H\) under the action of \(G\) by conjugation on the set of subgroups of \(G\). 
+    By the Orbit-Stabilizer Theorem, the number of elements in the orbit of \(H\) is the index of the stabilizer. Finally, by above, the stabilizer of \(H\) is \(N_G(H)\).</p>
+  </section>
+
+  <p>Here is an application of this action:</p>
+
+  <section class="callout lemma" role="region" aria-labelledby="lem-5-4-9">
+    <h3 id="lem-5-4-9">Lemma 5.4.9</h3>
+    <p>If \(G\) is finite and \(H\) is a proper subgroup of \(G\), then 
+    \[
+      G \neq \bigcup_x xHx^{-1}.
+    \]</p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-5-4-9">
+    <h3 id="prf-5-4-9">Proof (of Lemma 5.4.9)</h3>
+    <p>First, suppose that \(H\) is a normal. Then \(H = xHx^{-1}\) for all \(x \in G\), so
+    \[
+      \bigcup_x xHx^{-1} = H \neq G.
+    \]
+    Now assume that \(H\) is not normal, so that \(N_G(H) \neq G\) and \([G: N_G(H)] \geqslant 2\). 
+    By Lemma 5.4.8, we have \(|H| = |xHx^{-1}|\) for all \(x\). Since there are \([G: N_G(H)]\) conjugates of \(H\) by Lemma 5.4.8, and since \(e \in xHx^{-1}\) for all \(x\), 
+    we get
+    \[
+      \left| \, \bigcup_x xHx^{-1} \right| \leqslant [G:N_G(H)] \cdot |H|.
+    \]
+    But in fact, this calculation can be improved, as there are at least two distinct conjugates of \(H\) and \(e\) is an element of all of them. This gives us
+    \[
+      \left| \, \bigcup_x xHx^{-1} \right| \leqslant [G:N_G(H)] \cdot |H| - 1.
+    \]
+    But \(H \subseteq N_G(H)\) and so \([G: N_G(H)] \leq [G:H]\). We conclude that
+    \[
+      \left| \, \bigcup_x xHx^{-1} \right| \leqslant [G:H] \cdot |H| - 1  = |G| - 1.
+    \]</p>
+  </section>
+
+  <p>Since \(|H| = |xHx^{-1}|\) for all \(x \in G\), we can fix a natural number \(n\), set
+  \[
+    \mathcal{S}_n(G) := \{H \mid H \leq G  \text{ and } |H| = n\},
+  \] 
+  and consider the action of \(G\) on \(\mathcal{S}_n(G)\) by conjugation.
+  This idea will be exploited in the next section. </p>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-5-4-10">
+    <h3 id="ex-5-4-10">Exercise 5.4.10</h3>
+    <p>Show that if \(G\) is a finite group acting transitively on a set \(S\) with at least two elements, then there exists \(g \in G\) with no fixed points, meaning \(g \cdot s \neq s\) for all \(s \in S\).</p>
+  </section>
+</section>
+
+
+<h1 id="sylow theory section">6. Sylow Theory</h1>
+
+Sylow Theory is a very powerful technique for analyzing finite groups of relatively small order. One aspect of Sylow theory is that it allows us to deduce, in certain special cases, the existence of a unique subgroup of a given order, and thus it allows one to construct a normal subgroup. 
+
+<section id="cauchy-theorem" aria-labelledby="sec-6-1-heading">
+  <h2 id="sec-6-1-heading">6.1 Cauchy’s Theorem</h2>
+
+  <p>We start by proving a very powerful statement: that every finite group whose order is divisible by \(p\) must have an element of order \(p\).</p>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-6-1-1">
+    <h3 id="thm-6-1-1">Theorem 6.1.1 (Cauchy’s Theorem)</h3>
+    <p>If \(G\) is a finite group and \(p\) is a prime number dividing \(|G|\), then \(G\) has an element of order \(p\). In fact, there are at least \(p-1\) elements of order \(p\).</p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-6-1-1">
+    <h3 id="prf-6-1-1">Proof (of Theorem 6.1.1)</h3>
+    <p>Let \(S\) denote the set of ordered \(p\)-tuples of elements of \(G\) whose product is \(e\):</p>
+    <div class="math">
+      \[
+        S = \{(x_1, \dots, x_p) \mid x_i \in G \textrm{ and } x_1 x_2 \cdots x_p = e\}.
+      \]
+    </div>
+    <p>Consider</p>
+    <div class="math">
+      \[
+        G^{\, p-1} := \underbrace{G\times \dots\times G}_{p-1 \text{ factors }}
+      \]
+    </div>
+    <p>and the map</p>
+    <div class="math">
+      \[
+      \begin{aligned}
+        \phi :\; G^{\,p-1} &\longrightarrow S\\
+        (x_1, \dots, x_{p-1}) &\longmapsto
+        \bigl(x_1, \dots, x_{p-1},\, x_{p-1}^{-1} \cdots x_{1}^{-1}\bigr).
+      \end{aligned}
+      \]
+    </div>
+    <p>Given the definition of \(S\), the map \(\phi\) does indeed land in \(S\). Moreover, \(\phi\) is bijective since the map \(\psi\!: S \to G^{p-1}\) given by</p>
+    <div class="math">
+      \[
+        \psi(x_1, \dots, x_{p}) = (x_1, \dots, x_{p-1})
+      \]
+    </div>
+    <p>is a two-sided inverse of the map above. Therefore, \(|S| = |G^{p-1}| = |G|^{p-1}\).</p>
+
+    <p>Let \(C_p\) denote cyclic subgroup of \(S_p\) of order \(p\) generated by the \(p\)-cycle</p>
+    <div class="math">
+      \[
+        \sigma = (1 \, 2 \, \cdots \, p).
+      \]
+    </div>
+    <p>The following rule gives an action of \(C_p\) on \(S\):</p>
+    <div class="math">
+      \[
+        \sigma^i \cdot (x_1, \dots, x_p) :=
+        (x_{\sigma^i(1)}, \dots, x_{\sigma^i(p)}) = (x_{1+i}, x_{2+i}, \dots, x_{p+i}),
+      \]
+    </div>
+    <p>where the indices are taken modulo \(p\).
+    We should check that this is indeed an action. On the one hand, \(\sigma^0\) is the identity map, so</p>
+    <div class="math">
+      \[
+        e \cdot (x_1, \dots, x_p) =\sigma^0 \cdot (x_1, \dots, x_p) = (x_{\sigma^0(1)}, \dots, x_{\sigma^0(p)})=(x_1, \dots, x_p).
+      \]
+    </div>
+    <p>Moreover,</p>
+    <div class="math">
+      \[
+        \sigma^i \cdot\left( \sigma^j \cdot (x_1, \dots, x_p)\right)= \sigma^i \cdot  (x_{1+j}, x_{2+j}, \dots, x_{p+j})= (x_{1+j+i}, x_{2+j+i}, \dots, x_{p+j+i}),
+      \]
+    </div>
+    <p>while</p>
+    <div class="math">
+      \[
+        (\sigma^i  \sigma^j) \cdot (x_1, \dots, x_p)=\sigma^{i+j} \cdot (x_1, \dots, x_p)=(x_{1+i+j}, x_{2+i+j}, \dots, x_{p+i+j}).
+      \]
+    </div>
+    <p>Thus</p>
+    <div class="math">
+      \[
+        \sigma^i \cdot\left( \sigma^j \cdot (x_1, \dots, x_p)\right)=(\sigma^i  \sigma^j) \cdot (x_1, \dots, x_p),
+      \]
+    </div>
+    <p>and we have shown that this is indeed an action.</p>
+
+    <p>Now let us consider the fixed points of this action. If</p>
+    <div class="math">
+      \[
+        \sigma \cdot (x_1, \dots, x_p) = (x_1, \dots, x_p),
+      \]
+    </div>
+    <p>then \(x_{i+1}=x_i\) for \(1 \leqslant i \leqslant p\), so it follows that</p>
+    <div class="math">
+      \[
+        x_1 = x_2 = \cdots = x_p.
+      \]
+    </div>
+    <p>Thus if \(\sigma \cdot (x_1, \dots, x_p) = (x_1, \dots, x_p)\), then \((x_1, \dots, x_p)\) corresponds to an element \(x\) such that \(x^p = x_1 \cdots x_p = e\). On the other hand, if \(\sigma\) fixes \((x_1, \dots, x_p)\), then so does any element of \(C_p\).
+    Therefore, a fixed point for this action corresponds to an element \(x\) such that \(x^p = e\). The element \((e, e, \dots, e)\) is a fixed point. Any other fixed point, meaning an orbit of size one, corresponds to an element of \(G\) order \(p\), thus we wish to show that there is at least one fixed point besides  \((e, \dots, e)\).</p>
+
+    <p>By the Orbit-Stabilizer Theorem, the size of every orbit divides \(|C_p| = p\). Since \(p\) is prime, every orbit for this action has size \(1\) or \(p\). By the Orbit Equation,</p>
+    <div class="math">
+      \[
+        |S| = \# \text{ fixed points } + p \cdot \# \text{ orbits of size } p
+      \]
+    </div>
+    <p>Since \(p\) divides \(|S|\), we conclude that \(p\) divides the number of fixed points.
+    We already know that there is at least one fixed point, \((e, \dots, e)\).
+    Thus there must be at least one other fixed point; in fact, at least \(p-1\) others, since the number of fixed points must then be at least \(p\).</p>
+  </section>
+
+  <p>We now know that if \(p\) divides \(|G|\), then \(G\) has an element of order \(p\).
+  However, this is not true if \(n\) divides \(|G|\) but \(n\) is not prime. In fact, \(G\) may not even have any subgroup of order \(n\).</p>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-6-1-2">
+    <h3 id="ex-6-1-2">Exercise 6.1.2</h3>
+    <p>Prove that the converse to Lagrange’s Theorem is false: find a group \(G\) and an integer \(d&gt;0\) such that \(d\) divides the order of \(G\) but \(G\) does not have any subgroup of order \(d\).</p>
+  </section>
+</section>
+
+
+
+<section id="sylow-main-theorem" aria-labelledby="sec-6-2-heading">
+  <h2 id="sec-6-2-heading">6.2 The Main Theorem of Sylow Theory</h2>
+
+  <section class="callout definition" role="region" aria-labelledby="def-6-2-1">
+    <h3 id="def-6-2-1">Definition 6.2.1</h3>
+    <p>Let \(G\) be a finite group and \(p\) a prime. Write the order of \(G\) as \(|G| = p^e m\) where \(p \nmid m\).
+    A <strong>\(p\)-subgroup</strong> of \(G\) is a subgroup of \(G\) of order \(p^k\) for some \(k\).
+    A <strong>Sylow \(p\)-subgroup</strong> of \(G\) is a subgroup \(H \leq G\) such that \(|H| = p^e\). </p>
+  </section>
+
+  <p>Thus a Sylow \(p\)-subgroup of \(G\) is a subgroup whose order is the highest
+  conceivable power of \(p\) according to Lagrange’s Theorem.</p>
+
+  <section class="callout definition" role="region" aria-labelledby="def-6-2-2">
+    <h3 id="def-6-2-2">Definition 6.2.2</h3>
+    <p>We will denote the collection of all Sylow \(p\)-subgroups of \(G\) by \(\mathrm{Syl}_p(G)\).</p>
+  </section>
+
+  <p>This is, of course, not very interesting unless \(e&gt;0\). Nevertheless, we allow that case.</p>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-6-2-3">
+    <h3 id="rmk-6-2-3">Remark 6.2.3</h3>
+    <p>When \(p\) does not divide \(|G|\), we have \(e = 0\) and \(G\) has a unique Sylow \(p\)-subgroup, namely \(\{e\}\), which indeed has order \(p^0=1\).</p>
+  </section>
+
+  <p>Note that even if \(p\) does divide \(|G|\), it is a priori possible that \(n_p = 0\) for some groups \(G\) and primes \(p\). We will prove this is not possible, and that is actually one of the hardest things to prove to establish Sylow theory.</p>
+
+  <section class="callout example" role="region" aria-labelledby="ex-6-2-4">
+    <h3 id="ex-6-2-4">Example 6.2.4</h3>
+    <p>Let \(p&gt;2\) be a prime and consider the group \(D_p\).
+    The subgroup \(\langle r \rangle\) is a Sylow \(p\)-subgroup, as it has order \(p\) and \(|D_p|=2p\). In fact, this is the only Sylow \(p\)-subgroup of \(D_{p}\), as by Exercise, every group of order \(p\) is cyclic, and the only elements of order \(p\) in \(D_p\) are \(r\) and its powers.</p>
+    <p>In \(D_{n}\) for \(n\) odd, each of the subgroups \(\langle sr^j \rangle\), for \(j = 0, \dots, n-1\) is a Sylow \(2\)-subgroup. Since \(n\) is odd, only the reflections have order \(2\), and we have listed all the subgroups generated by reflections, so we conclude that the number of Sylow \(2\)-subgroups is \(n\).</p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-6-2-5">
+    <h3 id="ex-6-2-5">Example 6.2.5</h3>
+    <p>If \(G\) is cyclic of finite order, there is a unique Sylow \(p\)-subgroup for each \(p\), since by the structure theorem for cyclic groups there is a unique subgroup of each order that divides \(|G|\): if \(G = \langle x \rangle\) and \(|x| = p^e m\) with \(p \nmid m\), then the unique Sylow \(p\)-subgroup of \(G\) is \(\langle x^m \rangle\).</p>
+  </section>
+
+  <p>Let \(G\) be a finite group and \(p\) is a prime that divides \(|G|\). Then \(G\) acts on its Sylow \(p\)-subgroups of \(G\) via conjugation. As of now, for all we know, this might be the action on the empty set. Sylow Theory is all about understanding this action very well. Before we can prove the main theorem, we need a technical lemma.</p>
+
+  <section class="callout lemma" role="region" aria-labelledby="lem-6-2-6">
+    <h3 id="lem-6-2-6">Lemma 6.2.6</h3>
+    <p>Let \(G\) be a finite group, \(p\) a prime, \(P\) a Sylow \(p\)-subgroup of \(G\), and \(Q\) any \(p\)-subgroup of \(G\). Then \(Q \cap N_G(P) = Q \cap P\).</p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-6-2-6">
+    <h3 id="prf-6-2-6">Proof (of Lemma 6.2.6)</h3>
+    <p>\((\subseteq)\) Since \(P \leq N_G(P)\), then \(Q \cap P \leq Q \cap N_G(P)\).</p>
+    <p>\((\supseteq)\) Let \(H :=  Q \cap N_G(P)\). Since \(H \subseteq N_G(P)\), then \(PH=HP\), so  we get that \(PH\) is a subgroup of \(G\).
+    By the Diamond Isomorphism Theorem, we have</p>
+    <div class="math">
+      \[
+        |PH| = \frac{|P| \cdot |H|}{|P \cap H|}
+      \]
+    </div>
+    <p>and since each of \(|P|\), \(|H|\), and \(|P \cap H|\) is a power of \(p\), we conclude that the order of \(PH\) is also a power of \(p\). In particular, \(PH\) is a \(p\)-subgroup of \(G\). On the other hand, \(P \leq PH\) and \(P\) is already a \(p\)-subgroup of the largest possible order, so we must have \(P = PH\). Note that \(H \leq PH\) always holds. We conclude that \(H \leq P\) and thus \(H \leq Q \cap P\).</p>
+  </section>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-6-2-7">
+    <h3 id="thm-6-2-7">Theorem 6.2.7 (Main Theorem of Sylow Theory)</h3>
+    <p>Let \(p\) be prime.
+    Assume \(G\) is a group of order \(p^e m\), where \(p\) is prime, \(e \geqslant 0\), and \(\gcd(p,m) = 1\).</p>
+    <ol>
+      <li>There exists at least one Sylow \(p\)-subgroup of \(G\). In short, \(\mathrm{Syl}_p(G) \neq \emptyset\).</li>
+      <li>If \(P\) is a Sylow \(p\)-subgroup of \(G\) and \(Q \leq G\) is any \(p\)-subgroup of \(G\), then \(Q \leq gPg^{-1}\) for some \(g \in G\). Moreover, any two Sylow \(p\)-subgroups are conjugate and the action of \(G\) on \(\mathrm{Syl}_p(G)\) by conjugation is transitive.</li>
+      <li>We have
+        <div class="math">
+          \[
+            | \mathrm{Syl}_p(G)| \equiv 1 \mod{p}.
+          \]
+        </div>
+      </li>
+      <li>For any \(P \in \mathrm{Syl}_p(G)\),
+        <div class="math">
+          \[
+            |\mathrm{Syl}_p(G)| = [G: N_G(P)],
+          \]
+        </div>
+        <p>and hence</p>
+        <div class="math">
+          \[
+            | \mathrm{Syl}_p(G)| \text{ divides } m.
+          \]
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-6-2-7">
+    <h3 id="prf-6-2-7">Proof (of Theorem 6.2.7)</h3>
+    <p>First we will prove \(G\) contains a subgroup of order \(p^e\) by induction on \(|G| = p^em\).</p>
+    <p>When \(|G| = 1\), \(\{e\}\) is a Sylow \(p\)-subgroup by our convention. In fact, this argument applies for whenever \(e = 0\), so we may thus assume through the rest of the proof that \(p\) does divide \(|G|\).
+    So suppose that \(p\) divides \(|G|\) and every group of order \(n &lt; |G|\) has a Sylow \(p\)-subgroup. We will consider two cases, depending on whether \(p\) divides \(|\mathrm{Z}(G)|\).</p>
+
+    <p>If \(p\) divides \(|\mathrm{Z}(G)|\), then by Cauchy’s Theorem there is an element \(z \in \mathrm{Z}(G)\) of order \(p\). Set \(N := \langle z \rangle\). Since \(z \in \mathrm{Z}(G)\), then for all \(g \in G\) we have</p>
+    <div class="math">
+      \[
+        gz^ig^{-1} = z^i \in N,
+      \]
+    </div>
+    <p>and thus \(N \trianglelefteq G\).
+    Since</p>
+    <div class="math">
+      \[
+        |G/N| = \frac{|G|}{|N|} = \frac{p^em}{p} = p^{e-1}m,
+      \]
+    </div>
+    <p>by induction hypothesis \(G/N\) has a subgroup of order \(p^{e-1}\), which must then have index \(m\). By the Lattice Isomorphism Theorem, this subgroup corresponds to a subgroup of \(G\) of index \(m\), hence of order \(p^e\).</p>
+
+    <p>Now assume \(p\) does not divide \(|\mathrm{Z}(G)|\), and consider the class equation for \(G\): \(g_1, \dots, g_k\) are a complete list of noncentral conjugacy class representatives, without repetition of any class, we have</p>
+    <div class="math">
+      \[
+        |G| = |\mathrm{Z}(G)| + \sum_{i=1}^k [G: C_G(g_i)].
+      \]
+    </div>
+    <p>Suppose that \(p\) divides \([G:C_G(g_i)]\) for all \(i\). Since \(p\) also divides \(|G|\), then this would imply that \(p\) divides \(|\mathrm{Z}(G)|\), but we assumed that \(p\) does not divide \(|\mathrm{Z}(G)|\). We conclude that \(p\) does not divide \([G:C_G(g_i)]\) for some \(i\).</p>
+
+    <p>Note that \([G:C_G(g_i)]\) divides \(|G|\) by Lagrange’s Theorem, and thus it must divide \(m\). Set</p>
+    <div class="math">
+      \[
+        d := \frac{m}{[G:C_G(g_i)]}.
+      \]
+    </div>
+    <p>Then</p>
+    <div class="math">
+      \[
+        |C_G(g_i)|= \frac{|G|}{[G:C_G(g_i)]} = \frac{p^em}{[G:C_G(g_i)]} = p^e d,
+      \]
+    </div>
+    <p>and note that \(p\) does not divide \(d\) since it does not divide \(m\). Since \(g_i\) is not central, then \(e \notin C_G(g_i)\), and in particular \(|C_G(g_i)| &lt; |G|\). By induction hypothesis, \(C_G(g_i)\) contains a subgroup \(S\) of order \(p^e\). But \(S\) is also a subgroup of \(G\), and it has order \(p^e\), as desired.
+    This completes the proof of \((1)\): we have shown that \(G\) contains a subgroup of order \(p^e\).</p>
+
+    <p>To prove \((2)\) and \((3)\), let \(P\) be a Sylow \(p\)-subgroup and let \(Q\) be any \(p\)-subgroup.
+    Let \(\mathcal{S}_P\) denote the collection of all conjugates of \(P\):</p>
+    <div class="math">
+      \[
+        \mathcal{S}_P := \{ gPg^{-1} \mid g \in G\}.
+      \]
+    </div>
+    <p>By definition, \(G\) acts transitively on \(\mathcal{S}_P\) by conjugation. Restricting that action to \(Q\), we get an action of \(Q\) on \(\mathcal{S}_P\), though note that we do now know if that action is transitive.
+    The key to proving parts \((2)\) and \((3)\) of the Sylow Theorem is to analyze the action of \(Q\) on \(\mathcal{S}_P\).</p>
+
+    <p>Let \(\mathcal{O}_1, \dots, \mathcal{O}_s\) be the distinct orbits of the action of \(Q\) on \(\mathcal{S}_P\), and for each \(i\) pick a representative \(P_i \in O_i\). Note that</p>
+    <div class="math">
+      \[
+      \begin{aligned}
+      \mathrm{Stab}_Q(P_i) & = \{q \in Q \mid qP_iq^{-1} = P_i\} && \textrm{by the definition of the action}\\
+      & = N_Q(P_i) && \textrm{by definition of normalizer}\\
+      & = Q \cap N_G(P_i) &&  \\
+      & = Q \cap P_i && \text{by the Sylow normalizer Lemma}.	
+      \end{aligned}
+      \]
+    </div>
+    <p>By the Orbit-Stabilizer Theorem, we have \(|\mathcal{O}_i| = [Q: Q \cap P_i]\), and thus, collecting the orbits,</p>
+    <div class="math" id="eq-E1030">
+      \[
+        |\mathcal{S}_P |= \sum_{i=1}^s [Q: Q \cap P_i]. \label{E1030}
+      \]
+    </div>
+
+    <p>This equation holds for any \(p\)-subgroup \(Q\) of \(G\). In particular, we can take \(Q = P_1\). In this case, the first term in the sum is \([Q: Q \cap P_i] = 1\) and, for all \(i \neq 1\) we have</p>
+    <div class="math">
+      \[
+        Q \cap P_i = P_1 \cap P_i \neq P_1 = Q \implies [Q: Q \cap P_i] &gt; 1.
+      \]
+    </div>
+    <p>But \(|Q|\) is a power of \(p\), so \([Q: Q \cap P_i]\) must be divisible by \(p\) for all \(i\). We conclude that</p>
+    <div class="math" id="eq-E1030b">
+      \[
+        |\mathcal{S}_P| \equiv 1 \pmod{p}.
+      \]
+    </div>
+    <p>Note, however, that this does not yet prove part \((3)\), since we do not yet know that \(\mathcal{S}_P\) consists of \emph{all} the Sylow \(p\)-subgroups.
+    But we do have all the pieces we need to prove part (2). Suppose, by way of contradiction, that \(Q\) is a \(p\)-subgroup of \(G\) that is not contained in any of the subgroups in \(\mathcal{S}_P\). Then \(Q \cap P_i \neq Q\) for all \(i\), and thus every term on the right-hand side of</p>
+    <div class="math">
+      \[
+        |\mathcal{S}_P |= \sum_{i=1}^s [Q: Q \cap P_i]
+      \]
+    </div>
+    <p>is divisible by \(p\), contrary to the equation above. We conclude that \(Q\) must be contained in at least one of the subgroups in \(\mathcal{S}_P\). This proves the first part of \((2)\).</p>
+
+    <p>Moreover, if we take \(Q\) to be a Sylow \(p\)-subgroup of \(G\), then \(Q \leq gPg^{-1}\) for some \(g\), but \(Q\) and \(P\) are both Sylow \(p\)-subgroups of \(G\), so</p>
+    <div class="math">
+      \[
+        |Q| = |P| = |gPg^{-1}|.
+      \]
+    </div>
+    <p>We conclude that \(Q = gPg^{-1}\) is conjugate to \(P\). In particular, the conjugation action of \(G\) on \(\mathrm{Syl}_p(G)\) is transitive, and this finishes the proof of \((2)\).</p>
+
+    <p>This proves, in particular, that \(\mathcal{S}_P\) in fact does consist of all Sylow \(p\)-subgroups, we can now also conclude part \((3)\) from \(\eqref{E1030b}\).</p>
+
+    <p>Finally, for any \(P \in \mathrm{Syl}_p(G)\), the stabilizer of \(P\) for the action of \(G\) on \(\mathrm{Syl}_p(G)\) by conjugation is \(N_G(P)\). Since we now know the action is transitive, the Orbit-Stabilizer Theorem says that</p>
+    <div class="math">
+      \[
+        |\mathrm{Syl}_p(G)| = [G: N_G(P)].
+      \]
+    </div>
+    <p>Moreover, since \(P \leq N_G(P)\) and \(|P| = p^e\), it follows that \(p\) divides \(|N_G(P)|\), so</p>
+    <div class="math">
+      \[
+        |N_G(P)| = p^e d
+      \]
+    </div>
+    <p>for some \(d\) that divides \(m\). We conclude that</p>
+    <div class="math">
+      \[
+        [G: N_G(P)] = \frac{|G|}{|N_G(P)} = \frac{p^em}{p^ed} = \frac{m}{d},
+      \]
+    </div>
+    <p>so \([G: N_G(P)]\) divides \(m\).</p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-6-2-8">
+    <h3 id="rmk-6-2-8">Remark 6.2.8</h3>
+    <p>In general, Cauchy’s Theorem can be deduced from part one of the Sylow Theorem. However, we used Cauchy’s Theorem to prove the Sylow Theorem, so it is important to see that Cauchy’s Theorem can be proven independently of Sylow theory.</p>
+    <p>To see how Cauchy’s Theorem follows from the Sylow Theorem, suppose that the prime \(p\) divides \(|G|\). Then by the Sylow Theorem there exists a Sylow \(p\)-subgroup \(P\) of \(G\). Pick any nontrivial element \(x \in P\). Then \(|x| = p^j\) for some \(j \geqslant 1\), since  by Lagrange’s Theorem \(|x|\) must divide \(|P| = p^e\). Then \(y = x^{p^{j-1}}\) has order \(p\):</p>
+    <div class="math">
+      \[
+        y^p = \left( x^{p^{j-1}} \right)^p  =x^{p \cdot p^{j-1}} = x^{p^{j}} = e,
+      \]
+    </div>
+    <p>Moreover, \(y^i \neq e\) for \(2 \leqslant i &lt; p\), as otherwise</p>
+    <div class="math">
+      \[
+        |x| \leqslant ip^{j-1} &lt; p^j.
+      \]
+    </div>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-6-2-9">
+    <h3 id="rmk-6-2-9">Remark 6.2.9</h3>
+    <p>Let \(G\) be a group. We saw that if \(H\) is the unique subgroup of finite order \(n\), then \(H\) is must be a normal subgroup of \(G\).
+    One consequence of the Main Theorem of Sylow Theory is a sort of converse to this: if \(G\) has multiple Sylow \(p\)-subgroups, then \(G\) has no normal Sylow \(p\)-subgroups, since any two Sylow \(p\)-subgroups must be conjugate to each other.</p>
+  </section>
+</section>
+
+<section id="using-sylow-theory" aria-labelledby="sec-6-3-heading">
+  <h2 id="sec-6-3-heading">6.3 Using Sylow Theory</h2>
+
+  <p>Using the Main Theorem of Sylow Theory, we can often find the exact number of Sylow \(p\)-subgroups, sometimes leading us to find normal subgroups. In particular, these techniques can be used to show that there are no normal subgroups of a particular order, as the next example will illustrate.</p>
+
+  <section class="callout example" role="region" aria-labelledby="ex-6-3-1">
+    <h3 id="ex-6-3-1">Example 6.3.1 (No simple groups of order \(12\))</h3>
+    <p>Let us prove that there are no simple groups of order \(12\). To do that, let \(G\) be any group of order \(12 = 2^2 \cdot 3\). We will prove that \(G\) must have either a normal subgroup of order \(3\) or a normal subgroup of oder \(4\).</p>
+
+    <p>First, consider \(n_2=|\mathrm{Syl}_2(G)|\). By the Main Theorem of Sylow Theory, \(n_2 \equiv 1 \!\pmod 2\) and \(n_2\) divides \(3\). This gives us \(n_2 \in \{ 1, 3 \}\). Similarly, \(n_3 = |\mathrm{Syl}_3(G)|\) satisfies</p>
+    <div class="math">
+      \[
+        n_3 \equiv 1 \!\!\pmod 3 \quad \textrm{and} \quad n_3 \mid 4,
+      \]
+    </div>
+    <p>so \(n_3 \in \{1, 4 \}\).
+    If either of these numbers is \(1\), we have a unique subgroup of order \(4\) or of order \(3\), and such a subgroup must be normal.</p>
+
+    <p>Suppose that \(n_3 \neq 1\), which leaves us with \(n_3 = 4\). Let \(P_1\), \(P_2\), \(P_3\), and \(P_4\) be the Sylow \(3\)-subgroups of \(G\). Consider any \(i \neq j\). Since \(P_i \cap P_j\) is a subgroup of \(P_i\), its order must divide \(3\). On the other hand, \(P_i\) and \(P_j\) are distinct groups of order \(3\), so \(|P_i \cap P_j| &lt; 3\), and we conclude that  \(|P_i \cap P_j| = 1\). Therefore, \(P_i \cap P_j = \{e\}\) for all \(i \neq j\). Thus the <em>set</em></p>
+
+    <div class="math">
+      \[
+        T := \bigcup_{i=1}^4 P_i
+      \]
+    </div>
+
+    <p>has \(9\) elements: the identity \(e\) and \(8\) other distinct elements. Since each \(P_i\) has order \(3\), those \(8\) elements must all have order \(3\). Note, moreover, that any other potential element of order \(3\) would generate its own Sylow \(3\)-subgroup, so this is a complete count of all the elements of order \(3\). We conclude that there are \(8\) elements of order \(3\) in \(G\).</p>
+
+    <p>In particular, there are \(9\) elements in \(G\) that are either the identity or have order \(3\), and thus there are only \(12-9=3\) elements in \(G\) of order not \(3\), say \(a, b, c\).</p>
+
+    <p>Now consider any Sylow \(2\)-subgroup \(Q\), which has \(4\) elements. None of its elements has order \(3\), so we must have \(Q = \{ e, a, b, c \}\). In particular, this shows that there is a unique Sylow \(2\)-subgroup, which must then be normal.</p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-6-3-2">
+    <h3 id="rmk-6-3-2">Remark 6.3.2 (Warning!)</h3>
+    <p>In the previous example, it would not be so easy to count the elements of order \(2\) and \(4\). We do know that every element in</p>
+    <div class="math">
+      \[
+        S := \bigcup_i Q_i
+      \]
+    </div>
+    <p>has order \(1\), \(2\), or \(4\), but the size of this set is harder to calculate. The issue is that \(Q_i \cap Q_j\) might have order \(2\) for distinct \(i\) and \(j\). The best we can say for sure is that \(S\) has at least \(4 + 4 - 2 = 6\) elements.</p>
+  </section>
+
+  <p>More generally, if \(P\) and \(Q\) are both subgroups of \(G\) of prime order \(p\), we can say that \(P \cap Q = \{ e \}\) using the same argument we employed in the previous example. However, if \(P\) and \(Q\) are two subgroups of order \(p^e\) with \(e \geqslant 2\), we can no longer guarantee that \(P \cap Q = \{ e \}\).</p>
+
+  <section class="callout example" role="region" aria-labelledby="ex-6-3-3">
+    <h3 id="ex-6-3-3">Example 6.3.3 (No simple groups of order \(80\))</h3>
+    <p>Let \(G\) be a group of order \(80=5 \cdot 16\), and let \(n_2 = |\mathrm{Syl}_2(G)|\) and \(n_5 = |\mathrm{Syl}_5(G)|\). By the Main Theorem of Sylow Theory,</p>
+    <div class="math">
+      \[
+        n_2 \equiv 1 \!\!\pmod 2 \quad \text{and} \quad n_2 \mid 5 \implies n_2 \in \{1, 5\}
+      \]
+    </div>
+    <p>and</p>
+    <div class="math">
+      \[
+        n_5 \equiv 1 \!\!\pmod 5 \quad \text{and} \quad n_5 \mid 16 \implies n_5 \in \{1, 16\}.
+      \]
+    </div>
+    <p>If either \(n_2 = 1\) or \(n_5=1\), then the unique Sylow \(2\)-subgroup or \(5\)-subgroup would be normal. If \(G\) is a simple group, then we must have</p>
+    <div class="math">
+      \[
+        n_2 = 5 \quad \text{and} \quad n_5 = 16.
+      \]
+    </div>
+    <p>While the counting trick we used in the previous example would work, let us try on a different tactic here.</p>
+
+    <p>Consider the action of \(G\) on \(\mathrm{Syl}_2(G)\) by conjugation, and let</p>
+    <div class="math">
+      \[
+        \rho\!: G \to S_5
+      \]
+    </div>
+    <p>be the associated permutation representation. The action is transitive by the Main Theorem of Sylow Theory, so the map \(\rho\) is nontrivial. By the previous example, \(\mathrm{im}(\rho)\) is a subgroup of \(S_5\), and thus by Lagrange’s Theorem the order of \(\mathrm{im}(\rho)\) divides \(|S_5|\). However, \(|G|=80\) does not divide \(120 = |S_5|\), so the image of \(\rho\) cannot have \(80\) elements, and in particular \(\rho\) cannot be injective. It follows that \(\ker(\rho)\) is a nontrivial, proper normal subgroup of \(G\), a contradiction.</p>
+  </section>
+</section>
 
 
 

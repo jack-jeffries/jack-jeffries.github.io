@@ -3708,7 +3708,7 @@ If $p$ is a prime number and $G$ is a finite group of order $p^m$ for some $m > 
 \end{corollary}
 
 \begin{proof}
-Let $g_1,\ldots g_r \in G$ be a list of unique representatives of all of the conjugacy classes of $G$ of size greater than 1, as in the \hyperref[Class Equation]{class equation}. By construction, each $g_i$ is not a fixed point of the action, and thus $\mathrm{Stab}_G(g_i) \neq G$. By \Cref{conjugacy class}, $C_G(g_i) = \mathrm{Stab}_G(g_i)$, so $C_G(g_i) \neq G$. In particular, $[G:C_G(g_i)]\neq 1$. Since $1\neq [G:C_G(g_i)]$ and $[G:C_G(g_i)]$ divides $|G|=p^m$, we conclude that $p$ divides $[G:C_G(g_i)]$ for each $i$. From the \hyperref[Class Equation]{class equation}, we can now conclude that $p$ divides $|\mathrm{Z}(G)|$, and in particular $|\mathrm{Z}(G)|\neq 1$.
+Let $g_1,\ldots g_r \in G$ be a list of unique representatives of all of the conjugacy classes of $G$ of size greater than 1, as in the {class equation}. By construction, each $g_i$ is not a fixed point of the action, and thus $\mathrm{Stab}_G(g_i) \neq G$. Then, $C_G(g_i) = \mathrm{Stab}_G(g_i)$, so $C_G(g_i) \neq G$. In particular, $[G:C_G(g_i)]\neq 1$. Since $1\neq [G:C_G(g_i)]$ and $[G:C_G(g_i)]$ divides $|G|=p^m$, we conclude that $p$ divides $[G:C_G(g_i)]$ for each $i$. From the {class equation}, we can now conclude that $p$ divides $|\mathrm{Z}(G)|$, and in particular $|\mathrm{Z}(G)|\neq 1$.
 \end{proof}
 
 
@@ -3741,106 +3741,14 @@ We will see examples of this in the next section, where we will study the specia
 \section{The alternating group}
 
 
-%Let us analyze the conjugacy classes of $A_n$. 
-Since $A_n \leq S_n$, we know that {\em if} two elements of $A_n$ are conjugate, {\em then} they have the same cycle type, as they are also conjugate elements of $S_n$, and thus we can apply \Cref{conjugates S_n}. But as noted in \Cref{remark conjugation descending}, there is no reason for the converse to hold: given $\alpha, \beta \in A_n$ of the same cycle type, the elements $\sigma \in S_n$ such that $\sigma \alpha \sigma^{-1} = \beta$ might all belong to $S_n \setminus A_n$. Indeed, we will see that this does happen in some cases.
+
+Since $A_n \leq S_n$, we know that {\em if} two elements of $A_n$ are conjugate, {\em then} they have the same cycle type, as they are also conjugate elements of $S_n$, and thus we can apply our computation of conjugacy classes on in $S_n$. But as noted in \Cref{remark conjugation descending}, there is no reason for the converse to hold: given $\alpha, \beta \in A_n$ of the same cycle type, the elements $\sigma \in S_n$ such that $\sigma \alpha \sigma^{-1} = \beta$ might all belong to $S_n \setminus A_n$. Indeed, we will see that this does happen in some cases.
 
 
 \begin{example}
-The two permutations $(123)$ and $(132)$ are not conjugates in $A_3$, despite having the same cycle type and thus being conjugate in $S_3$ by \Cref{conjugates S_n}. One can check this easily, for example, by conjugating $(123)$ by the $3$ elements in $A_3$.
+The two permutations $(123)$ and $(132)$ are not conjugates in $A_3$, despite having the same cycle type and thus being conjugate in $S_3$ by our computation of conjugacy classes on in $S_n$. One can check this easily, for example, by conjugating $(123)$ by the $3$ elements in $A_3$.
 \end{example}
 
-%
-%\begin{example}[Conjugacy classes of $A_5$] 
-%Let us analyze the conjugacy classes of $A_5$. 
-%
-%Since $A_5 \leq S_5$, we know that {\em if} two elements of $A_5$ are conjugate, {\em then} they have the same cycle type, as they are also conjugate elements of $S_5$, and thus we can apply \Cref{conjugates S_n}. But there is no reason for the converse to hold: given $\alpha, \beta \in A_5$ of the same cycle type, the elements $\sigma \in S_5$ such that $\sigma \alpha \sigma^{-1} = \beta$ might all belong to $S_5 \setminus A_5$. Indeed, this does happen in some cases.
-%
-%
-%
-%
-%The possible cycle types of elements of $A_5$ are
-%\begin{enumerate}
-%\item Five cycles: there are $4! = 24$ such elements.
-%\item Three cycles: there are ${5 \choose 3} 2 =   20$ such elements.
-%\item Products of two disjoint transpositions: there are $5 \cdot 3 = 15$ such elements.
-%\item The identity $\{e\}$.
-%\end{enumerate}
-%
-%Let us start with five cycles. Let $\s = (1 \, 2 \, 3 \, 4 \, 5)$.  
-%We have by Theorem \ref{thm:conjclass} (a) that
-%$$
-%C_{C_5}(\s) = \frac{C_5}{\left|\text{ conjugacy class of }\s \text{ in }S_5\right|}=\frac{5!}{4!}=5.$$
-%This yields  that the centralizer of $\s$ {\em in $S_5$} is
-%$$
-%C_{S_5}(\s) = \{e, \s, \s^2, \s^3, \s^4\},
-%$$
-%since the five listed permutations do commute with $\s$ and there can be no more elements in $C_{S_5}(\s) $ because of cardinality reasons.
-%Moreover, it is obvious from the definitions that
-%$$
-%C_{A_5}(\s) = C_{S_5}(\s) \cap A_5
-%$$
-%and so we conclude that 
-%$$
-%C_{A_5}(\s) = \{e, \s, \s^2, \s^3, \s^4\}
-%$$
-%too. Thus, by LOIS, 
-%$$
-%\text{ the size of the conjugacy class of $\s$ in $A_5$} = [A_5: C_{A_5}(\s)] = 60/5 = 12.
-%$$
-%That is, $\s$ is only conjugate in $A_5$  to half of the five cycles. 
-%
-%If we pick a five cycle $\sigma'$ that is not conjugate in $A_5$ to $\sigma$, the same reasoning shows that $\sigma'$ is conjugate to exactly $12$ elements, which must be exactly
-%the other $12$ five cycles. It is not hard to see that in fact
-%$(1 \, 2 \, 3 \, 4 \, 5)$ and $(2 \, 1 \, 3 \, 4 \, 5)$ are not conjugate. In a bit more detail, they {\em are} conjugate {\em in $S_5$} via the element $(1 \,2)$. From this one sees that the only elements $\a$ in $S_5$ such that
-%$$
-%\a (1 \, 2 \, 3 \, 4 \, 5) \a^{-1} = (2 \, 1 \, 3 \, 4 \, 5)
-%$$ 
-%holds are members of the coset $C_{S_5}(\s) \cdot (1 \, 2)$, which contains no elements of $A_5$.)
-%
-%
-%So far we know the following about the conjugacy classes of $A_5$:
-%\begin{enumerate}
-%\item the conjugacy class of $(1 \, 2 \, 3 \, 4 \, 5)$ has $12$ elements,
-%\item the conjugacy class of $(2 \, 1 \, 3 \, 4 \, 5)$ has $12$ elements, and this class is distinct from the previous one, and
-%\item the collection of all three cycles, of which there are $20$, forms one or more conjugacy classes,
-%\item the collection of all products of two disjoint transpositions, of which there are $15$, forms one or more conjugacy classes.
-%\item $\{e\}$ is a conjugacy class,
-%\end{enumerate}
-%
-%Given two three cycles $(a \, b \, c)$ and $(d \, e \, f)$, there is a $\s \in S_5$ such that
-%$$
-%\s (a \, b \, c) \s^{-1}  = (d \, e \, f).
-%$$
-%If $\s$ is not in $A_5$, then let $x,y$ be the two elements of $\{1, \dots, 5\} \setminus \{a,b,c\}$. Then we have
-%$$
-%(\s \cdot (x \, y)) (a \, b \, c) (\s \cdot (x \, y))^{-1}  = (d \, e \, f).
-%$$
-%and $\s \cdot (x \, y) \in A_5$. 
-%
-%
-%To figure out what's going on the in last case, set $\alpha = (1 \, 2)(3 \, 4)$. Because the cardinality of the conjugacy class of $\alpha$ in $S_5$ is 15 (it consists of all the products of two disjoint two-cycles) we get
-%$$
-%15=|[\alpha]_{c\text{ in } S_5}|=[S_5: C_{S_5}(\alpha)]=\frac{120}{\left|C_{S_5}(\alpha)\right|}\Rightarrow \left|C_{S_5}(\alpha)\right| = 8.
-%$$
-%Since
-%$$
-%C_{A_5}(\alpha) = C_{S_5}(\alpha) \cap A_5,
-%$$
-%it follows that $\# C_{A_5}(\alpha)$ must divide both $8$ and $60$, and so must be one of $1, 2$ or $4$. Since $\alpha$ commutes with
-%$e$, $\alpha$, $(1 \, 3)(2 \, 4)$ and $(1 \, 4)(2 \, 3)$ and  each of these belongs to $A_5$, we must have 
-%$\# C_{A_5}(\a) = 4$. It follows that $\a$ is conjugate to $60/4 = 15$ elements -- i.e., $\a$ must be conjugate in $A_5$ to all elements of its cycle type. 
-%
-%
-%
-%We conclude that  the conjugacy classes of $A_5$ are given by the following list:
-%\begin{enumerate}
-%\item the conjugacy class of $(1 \, 2 \, 3 \, 4 \, 5)$ has $12$ elements,
-%\item the conjugacy class of $(2 \, 1 \, 3 \, 4 \, 5)$ has $12$ elements, and this class is distinct from the previous one, 
-%\item the collection of all three cycles, of which there are $20$, forms a conjugacy class, 
-%\item the collection of all products of two disjoint transpositions, of which there are $15$, forms one conjugacy class, and
-%\item $\{e\}$ is a conjugacy class.
-%\end{enumerate}
-%\end{example}
 
 
 \begin{lemma}\label{cycle types in An}
@@ -3850,7 +3758,7 @@ $$\sigma \in A_n \iff m \textrm{ is odd}.$$
 
 
 \begin{proof}
-Recall that by \Cref{exercise formula for rewriting cycles in terms of 1},
+Recall from earlier that,
 $$(i_1 \, i_2 \, \cdots \, i_m) = (i_1 \, i_m) (i_1 \, i_{m-1}) (i_1 \, i_3) (i_1 \, i_2)$$
 is a product of $m-1$ transpositions.
 Thus $\sigma$ is even if and only if $m-1$ is even.
@@ -3873,7 +3781,7 @@ As a reality check, note that $12 + 12 + 20 + 15 + 1 = 60 = |A_5|$.
 
 
 \begin{proof}
-By \Cref{cycle types in An}, the cycle types of elements of $A_5$ are
+By the work above, the cycle types of elements of $A_5$ are
 \begin{itemize}[itemsep=-0.1em]
 \item five cycles, of which there are $4! = 24$, 
 \item three cycles, of which there are ${5 \choose 3} 2 =   20$,
@@ -3881,7 +3789,7 @@ By \Cref{cycle types in An}, the cycle types of elements of $A_5$ are
 \item the unique $1$-cycle e, and indeed $[e]_c = \{e\}$.
 \end{itemize}
 
-By \Cref{conjugates S_n}, we know that two permutations are conjugate in $S_5$ if and only if they have the same cycle type. It follows that the conjugacy classes in $A_5$ form a subset of the cycles types.
+By our computation of conjugacy classes on in $S_n$, we know that two permutations are conjugate in $S_5$ if and only if they have the same cycle type. It follows that the conjugacy classes in $A_5$ form a subset of the cycles types.
 The statement we are trying to prove asserts that the set of five cycles breaks apart into two conjugacy classes in $A_5$, whereas in all the other cases, the conjugacy classes remain whole. 
 
 
@@ -3889,21 +3797,19 @@ The statement we are trying to prove asserts that the set of five cycles breaks 
 {\bf Claim}: Fix a $5$-cycle $\sigma$. The conjugacy class of $\sigma$ in $A_5$ has $12$ elements.
 
 
-\vspace{0.5em}
 
-\noindent
-By \hyperref[Lagrange]{Lagrange's Theorem},
+By Lagrange's Theorem,
 $$|C_{S_5}(\sigma)| = \frac{|S_5|}{[S_5 : C_{S_5}(\sigma)]}.$$
-By \Cref{conjugacy class}, 
+Thus, 
 $$[S_5 : C_{S_5}(\sigma)] = |[\sigma]_c|.$$
-By \Cref{conjugates S_n}, this is the number of $5$-cycles in $S_5$, which is $4!$.
+By our computation of conjugacy classes on in $S_n$, this is the number of $5$-cycles in $S_5$, which is $4!$.
 Thus
 $$|C_{S_5}(\sigma)| = \frac{5!}{4!} = 5.$$
 Since every power of $\sigma$ commutes with $\sigma$, and there are $5$ such elements, we conclude that
 $$C_{S_5}(\sigma) = \{e, \sigma, \sigma^2, \sigma^3, \sigma^4\}.$$
-But these are all in $A_5$, and thus by \Cref{centralizer and normalizer in subgroup} we conclude that
+But these are all in $A_5$, and thus by an earlier lemma we conclude that
 $$C_{A_5}(\sigma) = C_{S_5}(\sigma) \cap A_5 = \{e, \sigma, \sigma^2, \sigma^3, \s^4\}.$$
-By the Orbit-Stabilizer Theorem, \Cref{conjugacy class}, and \hyperref[Lagrange]{Lagrange's Theorem}, 
+By the Orbit-Stabilizer Theorem and Lagrange's Theorem, 
 $$\text{ the size of the conjugacy class of $\sigma$ in $A_5$} = [A_5: C_{A_5}(\sigma)] = \frac{|A_5|}{|C_{A_5}(\sigma)|} = \frac{60}{5} = 12.$$
 This proves the claim.
 
@@ -3932,24 +3838,21 @@ $$\alpha \in (1 \, 2) \cdot C_{S_5}(2 \, 1 \, 3 \, 4 \, 5).$$
 But note that we just proved that every element in $C_{S_5}(2 \, 1 \, 3 \, 4 \, 5)$ is in $A_5$, and thus even; this shows that every element in the coset 
 $$(1 \, 2) \cdot C_{S_5}(2 \, 1 \, 3 \, 4 \, 5)$$
 is odd (as we multiplied by \emph{one} transposition), and thus there are no such $\alpha$ in $A_5$.
-%In fact, the only elements $\alpha$ in $S_5$ such that
-%$$\alpha (1 \, 2 \, 3 \, 4 \, 5) \alpha^{-1} = (2 \, 1 \, 3 \, 4 \, 5)$$ 
-%holds are members of the coset $C_{S_5}(1 \, 2 \, 3 \, 4 \, 5) \cdot (1 \, 2)$, which contains no elements of $A_5$.
 This proves (1) and (2).
 
 
 
-\vspace{1.5em}
+
 
 {\bf Claim}: All $20$ three cycles are conjugate in $A_5$.
 
-\vspace{0.5em}
+
 
 Given two three cycles $(a \, b \, c)$ and $(d \, e \, f)$ in $S_5$, we already know that they are both in $A_5$ and that there is a $\sigma \in S_5$ such that
 $$
 \sigma (a \, b \, c) \sigma^{-1}  = (d \, e \, f).
 $$
-If $\sigma \notin A_5$, let $\{1, \dots, 5\} \setminus \{a,b,c\} = \{ x, y\}$. Then $\sigma$ is a product of an odd number of transpositions, so $\sigma \cdot (x \, y) \in A_5$. Moreover, since $(x \, y)$ and $(a \, b \, c)$ are disjoint cycles, then by \Cref{disjoint cycles commute} they must commute, so that
+If $\sigma \notin A_5$, let $\{1, \dots, 5\} \setminus \{a,b,c\} = \{ x, y\}$. Then $\sigma$ is a product of an odd number of transpositions, so $\sigma \cdot (x \, y) \in A_5$. Moreover, since $(x \, y)$ and $(a \, b \, c)$ are disjoint cycles, so they must commute, so that
 $$(x \, y) (a \, b \, c) (x \, y))^{-1} = (a \, b \, c).$$
 Therefore,
 $$(\sigma \cdot (x \, y)) (a \, b \, c) (\sigma \cdot (x \, y))^{-1}  = (d \, e \, f),$$
@@ -3963,13 +3866,13 @@ This proves the claim.
 \vspace{0.5em}
 
 
-Set $\alpha = (1 \, 2)(3 \, 4)$. The conjugacy class of $\alpha$ in $S_5$ consists of all the products of two disjoint two-cycles, and there are $15$ such elements. By the Orbit-Stabilizer Theorem and \Cref{conjugacy class},
+Set $\alpha = (1 \, 2)(3 \, 4)$. The conjugacy class of $\alpha$ in $S_5$ consists of all the products of two disjoint two-cycles, and there are $15$ such elements. By the Orbit-Stabilizer Theorem,
 $$15 = |\text{ the conjugacy class of $\alpha$ in $S_5$ }|
 = [S_5: C_{S_5}(\alpha)]=\frac{120}{\left|C_{S_5}(\alpha)\right|}.$$
 Thus
 $$\left|C_{S_5}(\alpha)\right| = \frac{120}{15} = 8.$$
 Since $\alpha$ commutes with $e$, $\alpha$, $(1 \, 3)(2 \, 4)$ and $(1 \, 4)(2 \, 3)$ and each of these belongs to $A_5$, we must have $|C_{A_5}(\alpha)| \geqslant 4$.
-Since, by \Cref{centralizer and normalizer in subgroup},
+Since
 $$C_{A_5}(\alpha) = C_{S_5}(\alpha) \cap A_5,$$
 it follows that $|C_{A_5}(\alpha)|$ must divide both $8$ and $60$, and so must be $1$, $2$ or $4$.  
 We conclude that $|C_{A_5}(\alpha)| = 4$. Thus $\alpha$ is conjugate in $A_5$ to $60/4 = 15$ elements. Since there are $15$ products of disjoint two-cycles, they must all be conjugate to $\alpha$, and thus the conjugacy class of $\alpha$ in $A_5$ is still the set of all $2$-cycles.
@@ -4001,9 +3904,9 @@ The group $A_5$ is a simple group.
 \end{theorem}
 
 \begin{proof} 
-Suppose $N \trianglelefteq A_5$. By \hyperref[Lagrange]{Lagrange's Theorem}, $|N|$ divides 
+Suppose $N \trianglelefteq A_5$. By Lagrange's Theorem, $|N|$ divides 
 $$|A_5| = \frac{5!}{2} = 60.$$ 
-By \Cref{conjugacy classes of A5}, $A_5$ has only four nontrivial conjugacy classes, and they have order $12$, $12$, $15$, and $20$. By \Cref{conjugation descends to normal subgroups}, $|N|$ is a union of conjugacy classes of $A_5$.
+Then $A_5$ has only four nontrivial conjugacy classes, and they have order $12$, $12$, $15$, and $20$.  Since $N$ is normal, it is a union of conjugacy classes of $A_5$.
 Thus
 $$|N| = 1 + \text{ the sum of a sublist of the list $20, 12, 12, 15$}.$$
 By checking the relatively small number of cases we see that $|N| = 1$ or $|N| = 60$ are the only possibilities, as the remaining options do not divide $60$.
@@ -4011,7 +3914,7 @@ By checking the relatively small number of cases we see that $|N| = 1$ or $|N| =
 
 
 
-In fact, $A_n$ is simple for all $n \geqslant 5$, but we will not prove this. In contrast, $A_4$ is not simple:
+In fact, $A_n$ is simple for all $n \geqslant 5$, but we will not prove this. In contrast, $A_4$ is not simple: we have seen in class that it has a normal subgroup with four elements consisting of the identity and the three products of two disjoint transpositions.
 
 
 
@@ -4022,14 +3925,7 @@ In fact, $A_n$ is simple for all $n \geqslant 5$, but we will not prove this. In
 Both $A_1$ and $A_2$ are the trivial group. 
 
 
-\begin{exercise}
-	Consider the subset of $A_4$ given by
-	$$V = \{e,  (1 \, 2)(3 \, 4),  (1 \, 3)(2 \, 4),  (1 \, 4)(2 \, 3)\}.$$
-	Show that $V$ is a normal subgroup of $A_4$.
-\end{exercise}
 
-\begin{example}
-	The alternating group $A_4$ is not simple, since it has $12$ elements and a normal subgroup of order $4$.
 \end{example}
  
  
@@ -4101,7 +3997,7 @@ Since $eHe^{-1} = H$, we conclude that $\ker(g) \subseteq H$.
 
 
 \begin{remark}
-	The action of $G$ on the left cosets of $H$ might be faithful or not. \Cref{kernel action on cosets} says that the action is faithfull if and only if 
+	The action of $G$ on the left cosets of $H$ might be faithful or not. The Lemma above says that the action is faithful if and only if 
 	$$\bigcap_{x \in G} x H x^{-1} = \{ e \}.$$
 	If $H$ is a normal subgroup of $G$, then in fact
 	$$\bigcap_{x \in G} x H x^{-1} = H,$$
@@ -4123,10 +4019,10 @@ Since $eHe^{-1} = H$, we conclude that $\ker(g) \subseteq H$.
 
 
 \begin{proof} 
-The action of $G$ on the set of left cosets of $H$ in $G$ by left multiplication induces a homomorphism $\rho\!: G \to S_p$. By \Cref{kernel action on cosets}, its kernel $N \colonequals \ker(\rho)$ is contained in $H$. By the \hyperref[first iso thm]{First Isomorphism Theorem},
+The action of $G$ on the set of left cosets of $H$ in $G$ by left multiplication induces a homomorphism $\rho\!: G \to S_p$. By the Lemma above, its kernel $N \colonequals \ker(\rho)$ is contained in $H$. By the First Isomorphism Theorem,
 $$[G:N] = |G/N| = |\mathrm{im}(f)|.$$
-By \hyperref[Lagrange]{Lagrange's Theorem}, since $\mathrm{im}(f)$ is a subgroup of $S_p$ then $[G:N] = |\mathrm{im}(f)|$ divides $|S_p|=p!$.
-On the other hand, $[G:N]$ divides $|G|$ by \hyperref[Lagrange]{Lagrange's Theorem}. Since $[G:N]$ divides both $|G|$ and $p!$, it must divide $\gcd(|G|,p!)$. Since $p$ is the smallest prime divisor of $G$, we must have 
+By Lagrange's Theorem, since $\mathrm{im}(f)$ is a subgroup of $S_p$ then $[G:N] = |\mathrm{im}(f)|$ divides $|S_p|=p!$.
+On the other hand, $[G:N]$ divides $|G|$ by Lagrange's Theorem. Since $[G:N]$ divides both $|G|$ and $p!$, it must divide $\gcd(|G|,p!)$. Since $p$ is the smallest prime divisor of $G$, we must have 
 $$\gcd(|G|, p!) = p.$$ 
 It follows that $[G:N]$ divides $p$, and hence $[G:N] =1$ or $[G:N] = p$. 
 But $N \subseteq H$, and $H$ is a proper subgroup of $G$, so $N \neq G$, and thus $[G:N] \neq 1$. Therefore, we conclude that $[G:N] = p$. 
@@ -4134,26 +4030,11 @@ Since $N \subseteq H$ and $[G:H] = p = [G : N]$, we conclude that $H = N$. In pa
 \end{proof}
 
 
-This generalizes \Cref{index 2 normal}, which says that any subgroup of index $2$ is normal.
-
-\newpage
-
-Another interesting action arises from the following.
+This generalizes an earlier exercise, which says that any subgroup of index $2$ is normal.
 
 
-\begin{exercise}\label{conjugation on subgroups is an action and conjugate subgroups have same order}
-Let $H$ be a subgroup of $G$.
-\begin{enumerate}[label=(\alph*),leftmargin=20pt]
-\item Fix $g \in G$. Prove that $gHg^{-1}=\{ghg^{-1} \mid h\in H\}$ is a subgroup of $G$ of the same order as $H$.
 
-\noindent
-Note: we are not assuming that $H$ is finite, so you must show that there is a bijection between $H$ and $gHg^{-1}$.
-
-\item Show that if $H$ is the unique subgroup of $G$ of order $|H|$, then $H \trianglelefteq G$.
-\end{enumerate}
-\end{exercise}
-
-So we can now define an action.
+Another interesting action arises from the following:
 Let $G$ be a group and let
 $$\mathcal{S}(G) = \{H \mid H \leq G \}$$ 
 be the collection of all subgroups of $G$. Then $G$ acts on $\mathcal{S}$ by 
@@ -4175,13 +4056,6 @@ $$\mathcal{S}(G) = \{H \mid H \leq G \}.$$
 	defines an action of $G$ on $\mathcal{S}(G)$. Moreover, prove that given any subgroup $H$ of $G$, the stabilizer of $H$ is given by $N_G(H)$.
 \end{exercise}
 
-%(The axioms of an action are easy: $x \bu (y \bu H) = x(yHy^{-1})x^{-1} = (xy) H (xy)^{-1} = (xy) \bu H$
-%and $e \bu H = eHe^{-1} = H$.)
-%Note that the stabilizer of an $H \in \cS$ for this action is
-%$$
-%N_G(H) := \{g \in G \mid gHg^{-1} = H\}
-%$$
-%and is known as the {\em normalizer} of $H$ in $G$. 
 
 The normalizer $N_G(H)$ is the largest subgroup of $G$ that contains $H$ as a normal subgroup, meaning that $H \trianglelefteq N_G(H)$. 
 
@@ -4190,7 +4064,7 @@ The normalizer $N_G(H)$ is the largest subgroup of $G$ that contains $H$ as a no
 	Let $G$ be a group and $H$ be a subgroup of $G$. Show that if $K$ is any subgroup of $G$ such that $H \trianglelefteq K$, then $K \leq N_G(H)$. In particular, $H \trianglelefteq G$ if and only if $N_G(H) = G$.
 \end{exercise}
 
-%As an immediate consequence of this action and LOIS, 
+
 We can now show that the number of subgroups conjugate to a given subgroup is the index of its normalizer:
 
 \begin{lemma}\label{number of conjugates of H is index of the normalizer}
@@ -4199,7 +4073,7 @@ Let $G$ be a group and $H$ be a subgroup of $G$. The number of subgroups of $G$ 
 
 \begin{proof}
 The number of subgroups of $G$ that are conjugate to $H$ is just the size of the orbit of $H$ under the action of $G$ by conjugation on the set of subgroups of $G$. 
-	By the Orbit-Stabilizer Theorem, the number of elements in the orbit of $H$ is the index of the stabilizer. Finally, by \Cref{stabilizer of H by conjugation is N(G)}, the stabilizer of $H$ is $N_G(H)$.
+	By the Orbit-Stabilizer Theorem, the number of elements in the orbit of $H$ is the index of the stabilizer. Finally, by above, the stabilizer of $H$ is $N_G(H)$.
 \end{proof}
 
 
@@ -4217,7 +4091,7 @@ $$G \neq \bigcup_x xHx^{-1}.$$
 First, suppose that $H$ is a normal. Then $H = xHx^{-1}$ for all $x \in G$, so
 $$\bigcup_x xHx^{-1} = H \neq G.$$
 Now assume that $H$ is not normal, so that $N_G(H) \neq G$ and $[G: N_G(H)] \geqslant 2$. 
-By \Cref{conjugation on subgroups is an action and conjugate subgroups have same order}, we have $|H| = |xHx^{-1}|$ for all $x$. Since there are $[G: N_G(H)]$ conjugates of $H$ by \Cref{number of conjugates of H is index of the normalizer}, and since $e \in xHx^{-1}$ for all $x$, 
+By \Cref{conjugation on subgroups is an action and conjugate subgroups have same order}, we have $|H| = |xHx^{-1}|$ for all $x$. Since there are $[G: N_G(H)]$ conjugates of $H$ (by an earlier Lemma), and since $e \in xHx^{-1}$ for all $x$, 
   we get
   $$\left| \, \bigcup_x xHx^{-1} \right| \leqslant [G:N_G(H)] \cdot |H|.$$
   But in fact, this calculation can be improved, as there are at least two distinct conjugates of $H$ and $e$ is an element of all of them. This gives us
@@ -4226,9 +4100,6 @@ By \Cref{conjugation on subgroups is an action and conjugate subgroups have same
   $$\left| \, \bigcup_x xHx^{-1} \right| \leqslant [G:H] \cdot |H| - 1  = |G| - 1.\qedhere$$
 \end{proof}
 
-
-
-\vspace{2em}
 
 Since $|H| = |xHx^{-1}|$ for all $x \in G$, we can fix a natural number $n$, set
 $$\mathcal{S}_n(G) \colonequals \{H \mid H \leq G  \text{ and } |H| = n\},$$ 
@@ -4300,7 +4171,7 @@ $$x_1 = x_2 = \cdots = x_p.$$
 Thus if $\sigma \cdot (x_1, \dots, x_p) = (x_1, \dots, x_p)$, then $(x_1, \dots, x_p)$ corresponds to an element $x$ such that $x^p = x_1 \cdots x_p = e$. On the other hand, if $\sigma$ fixes $(x_1, \dots, x_p)$, then so does any element of $C_p$.
 Therefore, a fixed point for this action corresponds to an element $x$ such that $x^p = e$. The element $(e, e, \dots, e)$ is a fixed point. Any other fixed point, meaning an orbit of size one, corresponds to an element of $G$ order $p$, thus we wish to show that there is at least one fixed point besides  $(e, \dots, e)$.
 
-By the \hyperref[Orbit-Stabilizer Theorem]{Orbit-Stabilizer Theorem}, the size of every orbit divides $|C_p| = p$. Since $p$ is prime, every orbit for this action has size $1$ or $p$. By the \hyperref[Orbit Equation]{Orbit Equation},
+By the Orbit-Stabilizer Theorem, the size of every orbit divides $|C_p| = p$. Since $p$ is prime, every orbit for this action has size $1$ or $p$. By the Orbit Equation,
 $$|S| = \# \text{ fixed points } + p \cdot \# \text{ orbits of size } p$$
 Since $p$ divides $|S|$, we conclude that $p$ divides the number of fixed points. 
 We already know that there is at least one fixed point, $(e, \dots, e)$.
@@ -4315,7 +4186,7 @@ However, this is not true if $n$ divides $|G|$ but $n$ is not prime. In fact, $G
 
 
 \begin{exercise}
-Prove that the converse to \hyperref[Lagrange]{Lagrange's Theorem} is false: find a group $G$ and an integer $d>0$ such that $d$ divides the order of $G$ but $G$ does not have any subgroup of order~$d$.	
+Prove that the converse to Lagrange's Theorem is false: find a group $G$ and an integer $d>0$ such that $d$ divides the order of $G$ but $G$ does not have any subgroup of order~$d$.	
 \end{exercise}
 
 
@@ -4333,7 +4204,7 @@ A \df{Sylow $p$-subgroup} of $G$ is a subgroup $H \leq G$ such that $|H| = p^e$.
 
 
 Thus a Sylow $p$-subgroup of $G$ is a subgroup whose order is the highest
-conceivable power of $p$ according to \hyperref[Lagrange]{Lagrange's Theorem}. 
+conceivable power of $p$ according to Lagrange's Theorem. 
 
 \begin{definition}\index{$\mathrm{Syl}_p(G)$}\index{$n_p$}
 	We will denote the collection of all Sylow $p$-subgroups of $G$ by $\mathrm{Syl}_p(G)$.	
@@ -4352,7 +4223,7 @@ Note that even if $p$ does divide $|G|$, it is a priori possible that $n_p = 0$ 
 
 \begin{example} 
 Let $p>2$ be a prime and consider the group $D_p$.
-The subgroup $\langle r \rangle$ is a Sylow $p$-subgroup, as it has order $p$ and $|D_p|=2p$. In fact, this is the only Sylow $p$-subgroup of $D_{p}$, as by \Cref{prime order implies cyclic} every group of order $p$ is cyclic, and the only elements of order $p$ in $D_p$ are $r$ and its powers. %Thus in this case $n_p=1$. 
+The subgroup $\langle r \rangle$ is a Sylow $p$-subgroup, as it has order $p$ and $|D_p|=2p$. In fact, this is the only Sylow $p$-subgroup of $D_{p}$, as by Exercise, every group of order $p$ is cyclic, and the only elements of order $p$ in $D_p$ are $r$ and its powers. %Thus in this case $n_p=1$. 
 
 In $D_{n}$ for $n$ odd, each of the subgroups $\langle sr^j \rangle$, for $j = 0, \dots, n-1$ is a Sylow $2$-subgroup. Since $n$ is odd, only the reflections have order $2$, and we have listed all the subgroups generated by reflections, so we conclude that the number of Sylow $2$-subgroups is $n$.	
 \end{example}
@@ -4360,22 +4231,10 @@ In $D_{n}$ for $n$ odd, each of the subgroups $\langle sr^j \rangle$, for $j = 0
 
 
 \begin{example} 
-If $G$ is cyclic of finite order, there is a unique Sylow $p$-subgroup for each $p$, since by \Cref{cyclic groups thm} there is a unique subgroup of each order that divides $|G|$: if $G = \langle x \rangle$ and $|x| = p^e m$ with $p \nmid m$, then the unique Sylow $p$-subgroup of $G$ is $\langle x^m \rangle$.	
+If $G$ is cyclic of finite order, there is a unique Sylow $p$-subgroup for each $p$, since by the structure theorem for cyclic groups there is a unique subgroup of each order that divides $|G|$: if $G = \langle x \rangle$ and $|x| = p^e m$ with $p \nmid m$, then the unique Sylow $p$-subgroup of $G$ is $\langle x^m \rangle$.	
 \end{example}
 
-%
-%
-%\begin{example}
-%Let us consider $S_5$, which has order
-%$$|S_5| = 5! = 5 \cdot 2^3 \cdot 3.$$
-%The Sylow $5$-subgroups have order $5$, so they are the cyclic groups $\langle \sigma \rangle$ for any $5$-cycle $\sigma$. While there are twenty-four $5$ cycles, there are four of these in every Sylow 5-subgroup; moreover.
-%
-%The Sylow $3$-subgroups have order $3$, and they are the cyclic groups $\langle \sigma \rangle$ for any $3$-cycle $\sigma$. There are twenty $3$-cycles, but there are two of these in every Sylow 3-subgroup, so $n_3=10$.
-%
-%A Sylow $2$-subgroup of $S_5$ is any subgroup of order $8$. For example 
-%$$\langle (1 \, 4)(2 \, 3) , (1 \, 2 \, 3 \, 4) \rangle$$ 
-%is a Sylow $2$-subgroup. There are many others, but we will wait until we have more tools before we attempt to count them.
-%\end{example}
+
 
 
 
@@ -4391,8 +4250,8 @@ Let $G$ be a finite group, $p$ a prime, $P$ a Sylow $p$-subgroup of $G$, and $Q$
 \begin{proof}
 $(\subseteq)$ Since $P \leq N_G(P)$, then $Q \cap P \leq Q \cap N_G(P)$. 
 
-$(\supseteq)$ Let $H \colonequals  Q \cap N_G(P)$. Since $H \subseteq N_G(P)$, then $PH=HP$, so by \Cref{exercise HK=KH} we get that $PH$ is a subgroup of $G$. 
-By \Cref{corollary on |HN|}, we have
+$(\supseteq)$ Let $H \colonequals  Q \cap N_G(P)$. Since $H \subseteq N_G(P)$, then $PH=HP$, so  we get that $PH$ is a subgroup of $G$. 
+By the Diamond Isomorphism Theorem, we have
 $$|PH| = \frac{|P| \cdot |H|}{|P \cap H|}$$
 and since each of $|P|$, $|H|$, and $|P \cap H|$ is a power of $p$, we conclude that the order of $PH$ is also a power of $p$. In particular, $PH$ is a $p$-subgroup of $G$. On the other hand, $P \leq PH$ and $P$ is already a $p$-subgroup of the largest possible order, so we must have $P = PH$. Note that $H \leq PH$ always holds. We conclude that $H \leq P$ and thus $H \leq Q \cap P$.
 \end{proof}
@@ -4425,18 +4284,18 @@ $$| \mathrm{Syl}_p(G)| \text{ divides } m.$$
 \begin{proof}
 First we will prove $G$ contains a subgroup of order $p^e$ by induction on $|G| = p^em$. 
 
-When $|G| = 1$, $\{e\}$ is a Sylow $p$-subgroup, as noted in \Cref{remark e Sylow}. In fact, this argument applies for whenever $e = 0$, so we may thus assume through the rest of the proof that $p$ does divide $|G|$. 
+When $|G| = 1$, $\{e\}$ is a Sylow $p$-subgroup by our convention. In fact, this argument applies for whenever $e = 0$, so we may thus assume through the rest of the proof that $p$ does divide $|G|$. 
 So suppose that $p$ divides $|G|$ and every group of order $n < |G|$ has a Sylow $p$-subgroup. We will consider two cases, depending on whether $p$ divides $|\mathrm{Z}(G)|$. 
 %$|G| = 1$ or, more generally, if $p$ does not divide $|G|$,
 
-If $p$ divides $|\mathrm{Z}(G)|$, then by \hyperref[Cauchy's Theorem]{Cauchy's Theorem} there is an element $z \in \mathrm{Z}(G)$ of order $p$. Set $N \colonequals \langle z \rangle$. Since $z \in \mathrm{Z}(G)$, then for all $g \in G$ we have
+If $p$ divides $|\mathrm{Z}(G)|$, then by Cauchy's Theorem there is an element $z \in \mathrm{Z}(G)$ of order $p$. Set $N \colonequals \langle z \rangle$. Since $z \in \mathrm{Z}(G)$, then for all $g \in G$ we have
 $$gz^ig^{-1} = z^i \in N,$$
 and thus $N \trianglelefteq G$. 
 Since 
 $$|G/N| = \frac{|G|}{|N|} = \frac{p^em}{p} = p^{e-1}m,$$ 
-by induction hypothesis $G/N$ has a subgroup of order $p^{e-1}$, which must then have index $m$. By the \hyperref[Lattice Isomorphism Theorem]{Lattice Isomorphism Theorem}, this subgroup corresponds to a subgroup of $G$ of index $m$, hence of order $p^e$.
+by induction hypothesis $G/N$ has a subgroup of order $p^{e-1}$, which must then have index $m$. By the Lattice Isomorphism Theorem, this subgroup corresponds to a subgroup of $G$ of index $m$, hence of order $p^e$.
 
-Now assume $p$ does not divide $|\mathrm{Z}(G)|$, and consider the \hyperref[Class Equation]{class equation} for $G$: $g_1, \dots, g_k$ are a complete list of noncentral conjugacy class representatives, without repetition of any class, we have
+Now assume $p$ does not divide $|\mathrm{Z}(G)|$, and consider the class equation for $G$: $g_1, \dots, g_k$ are a complete list of noncentral conjugacy class representatives, without repetition of any class, we have
 $$|G| = |\mathrm{Z}(G)| + \sum_{i=1}^k [G: C_G(g_i)].$$
 Suppose that $p$ divides $[G:C_G(g_i)]$ for all $i$. Since $p$ also divides $|G|$, then this would imply that $p$ divides $|\mathrm{Z}(G)|$, but we assumed that $p$ does not divide $|\mathrm{Z}(G)|$. We conclude that $p$ does not divide $[G:C_G(g_i)]$ for some $i$. 
 
@@ -4461,10 +4320,10 @@ Let $\mathcal{O}_1, \dots, \mathcal{O}_s$ be the distinct orbits of the action o
 $$\begin{aligned}
 \mathrm{Stab}_Q(P_i) & = \{q \in Q \mid qP_iq^{-1} = P_i\} & \textrm{by the definition of the action}\\
 & = N_Q(P_i) & \textrm{by definition of normalizer}\\
-& = Q \cap N_G(P_i) & \text{by \Cref{centralizer and normalizer in subgroup}} \\
-& = Q \cap P_i & \text{by \Cref{lemma Sylow normalizer}}.	
+& = Q \cap N_G(P_i) &  \\
+& = Q \cap P_i & \text{by the Sylow normalizer Lemma}.	
 \end{aligned}$$ 
-By the Orbit-Stabilizer Theorem, we have $|\mathcal{O}_i| = [Q: Q \cap P_i]$, and thus by the \hyperref[Orbit Equation]{Orbit Equation}
+By the Orbit-Stabilizer Theorem, we have $|\mathcal{O}_i| = [Q: Q \cap P_i]$, and thus, collecting the orbits,
 \begin{equation} \label{E1030}
 |\cS_P |= \sum_{i=1}^s [Q: Q \cap P_i].
 \end{equation}
@@ -4480,15 +4339,14 @@ But we do have all the pieces we need to prove part (2). Suppose, by way of cont
 $$|\cS_P |= \sum_{i=1}^s [Q: Q \cap P_i]$$
 is divisible by $p$, contrary to \eqref{E1030b}. We conclude that $Q$ must be contained in at least one of the subgroups in $\cS_P$. This proves the first part of $(2)$. 
 
-Moreover, if we take $Q$ to be a Sylow $p$-subgroup of $G$, then $Q \leq gPg^{-1}$ for some $g$, but $Q$ and $P$ are both Sylow $p$-subgroups of $G$, so by \Cref{conjugation on subgroups is an action and conjugate subgroups have same order}
+Moreover, if we take $Q$ to be a Sylow $p$-subgroup of $G$, then $Q \leq gPg^{-1}$ for some $g$, but $Q$ and $P$ are both Sylow $p$-subgroups of $G$, so
 $$|Q| = |P| = |gPg^{-1}|.$$
 We conclude that $Q = gPg^{-1}$ is conjugate to $P$. In particular, the conjugation action of $G$ on $\mathrm{Syl}_p(G)$ is transitive, and this finishes the proof of $(2)$.
 
-%The second assertion in (2) follows by taking $Q$ to be a Sylow $p$-subgroup. 
 
 This proves, in particular, that $\cS_P$ in fact does consist of all Sylow $p$-subgroups, we can now also conclude part $(3)$ from \eqref{E1030b}.
 
-Finally, for any $P \in \mathrm{Syl}_p(G)$, the stabilizer of $P$ for the action of $G$ on $\mathrm{Syl}_p(G)$ by conjugation is $N_G(P)$. Since we now know the action is transitive, the \hyperref[Orbit-Stabilizer Theorem]{Orbit-Stabilizer Theorem} says that
+Finally, for any $P \in \mathrm{Syl}_p(G)$, the stabilizer of $P$ for the action of $G$ on $\mathrm{Syl}_p(G)$ by conjugation is $N_G(P)$. Since we now know the action is transitive, the Orbit-Stabilizer Theorem says that
 $$|\mathrm{Syl}_p(G)| = [G: N_G(P)].$$
 Moreover, since $P \leq N_G(P)$ and $|P| = p^e$, it follows that $p$ divides $|N_G(P)|$, so
 $$|N_G(P)| = p^e d$$
@@ -4500,9 +4358,9 @@ so $[G: N_G(P)]$ divides $m$.
 
 
 \begin{remark} 
-In general, \hyperref[Cauchy's Theorem]{Cauchy's Theorem} can be deduced from part one of the Sylow Theorem. However, we used \hyperref[Cauchy's Theorem]{Cauchy's Theorem} to prove the \hyperref[Sylow]{Sylow Theorem}, so it is important to see that \hyperref[Cauchy's Theorem]{Cauchy's Theorem} can be proven independently of Sylow theory.
+In general, Cauchy's Theorem can be deduced from part one of the Sylow Theorem. However, we used Cauchy's Theorem to prove the Sylow Theorem, so it is important to see that Cauchy's Theorem can be proven independently of Sylow theory.
 
-To see how \hyperref[Cauchy's Theorem]{Cauchy's Theorem} follows from the \hyperref[Sylow]{Main Theorem of Sylow Theory}, suppose that the prime $p$ divides $|G|$. Then by \Cref{Sylow}  there exists a Sylow $p$-subgroup $P$ of $G$. Pick any nontrivial element $x \in P$. Then $|x| = p^j$ for some $j \geqslant 1$, since  by \hyperref[Lagrange]{Lagrange's Theorem} $|x|$ must divide $|P| = p^e$. Then $y = x^{p^{j-1}}$ has order $p$:
+To see how Cauchy's Theorem follows from the Sylow Theorem, suppose that the prime $p$ divides $|G|$. Then by the Sylow Theorem there exists a Sylow $p$-subgroup $P$ of $G$. Pick any nontrivial element $x \in P$. Then $|x| = p^j$ for some $j \geqslant 1$, since  by Lagrange's Theorem $|x|$ must divide $|P| = p^e$. Then $y = x^{p^{j-1}}$ has order $p$:
 $$y^p = \left( x^{p^{j-1}} \right)^p  =x^{p \cdot p^{j-1}} = x^{p^{j}} = e,$$
  Moreover, $y^i \neq e$ for $2 \leqslant i < p$, as otherwise 
  $$|x| \leqslant ip^{j-1} < p^j.$$
@@ -4511,8 +4369,8 @@ $$y^p = \left( x^{p^{j-1}} \right)^p  =x^{p \cdot p^{j-1}} = x^{p^{j}} = e,$$
 
 
 \begin{remark}
-Let $G$ be a group. We saw in \Cref{conjugation on subgroups is an action and conjugate subgroups have same order} that if $H$ is the unique subgroup of finite order $n$, then $H$ is must be a normal subgroup of $G$. 
-One consequence of the \hyperref[Sylow]{Main Theorem of Sylow Theory} is a sort of converse to this: if $G$ has multiple Sylow $p$-subgroups, then $G$ has no normal Sylow $p$-subgroups, since any two Sylow $p$-subgroups must be conjugate to each other.
+Let $G$ be a group. We saw that if $H$ is the unique subgroup of finite order $n$, then $H$ is must be a normal subgroup of $G$. 
+One consequence of the Main Theorem of Sylow Theory is a sort of converse to this: if $G$ has multiple Sylow $p$-subgroups, then $G$ has no normal Sylow $p$-subgroups, since any two Sylow $p$-subgroups must be conjugate to each other.
 \end{remark}
 
 
@@ -4520,14 +4378,14 @@ One consequence of the \hyperref[Sylow]{Main Theorem of Sylow Theory} is a sort 
 \section{Using Sylow Theory}
 
 
-Using the \hyperref[Sylow]{Main Theorem of Sylow Theory}, we can often find the exact number of Sylow $p$-subgroups, sometimes leading us to find normal subgroups. In particular, these techniques can be used to show that there are no normal subgroups of a particular order, as the next example will illustrate.
+Using the Main Theorem of Sylow Theory, we can often find the exact number of Sylow $p$-subgroups, sometimes leading us to find normal subgroups. In particular, these techniques can be used to show that there are no normal subgroups of a particular order, as the next example will illustrate.
 
 
 \begin{example}[No simple groups of order $12$]\label{example sylow 12}
 Let us prove that there are no simple groups of order $12$. To do that, let $G$ be any group of order $12 = 2^2 \cdot 3$. We will prove that $G$ must have either a normal subgroup of order $3$ or a normal subgroup of oder $4$.
 
 
-First, consider $n_2=|\mathrm{Syl}_2(G)|$. By the \hyperref[Sylow]{Main Theorem of Sylow Theory}, $n_2 \equiv 1 \!\pmod 2$ and $n_2$ divides $3$. This gives us $n_2 \in \{ 1, 3 \}$. Similarly, $n_3 = |\mathrm{Syl}_3(G)|$ satisfies
+First, consider $n_2=|\mathrm{Syl}_2(G)|$. By the Main Theorem of Sylow Theory, $n_2 \equiv 1 \!\pmod 2$ and $n_2$ divides $3$. This gives us $n_2 \in \{ 1, 3 \}$. Similarly, $n_3 = |\mathrm{Syl}_3(G)|$ satisfies
 $$n_3 \equiv 1 \!\!\pmod 3 \quad \textrm{and} \quad n_3 \mid 4,$$
 so $n_3 \in \{1, 4 \}$.
 If either of these numbers is $1$, we have a unique subgroup of order $4$ or of order $3$, and such a subgroup must be normal. 
@@ -4553,7 +4411,7 @@ More generally, if $P$ and $Q$ are both subgroups of $G$ of prime order $p$, we 
 
 
 \begin{example}[No simple groups of order $80$]
-Let $G$ be a group of order $80=5 \cdot 16$, and let $n_2 = |\mathrm{Syl}_2(G)|$ and $n_5 = |\mathrm{Syl}_5(G)|$. By the \hyperref[Sylow]{Main Theorem of Sylow Theory},
+Let $G$ be a group of order $80=5 \cdot 16$, and let $n_2 = |\mathrm{Syl}_2(G)|$ and $n_5 = |\mathrm{Syl}_5(G)|$. By the Main Theorem of Sylow Theory,
 $$n_2 \equiv 1 \!\!\pmod 2 \quad \text{and} \quad n_2 \mid 5 \implies n_2 \in \{1, 5\}$$
 and
 $$n_5 \equiv 1 \!\!\pmod 5 \quad \text{and} \quad n_5 \mid 16 \implies n_5 \in \{1, 16\}.$$
@@ -4563,7 +4421,7 @@ While the counting trick we used in \Cref{example sylow 12} would work, let us t
 
 Consider the action of $G$ on $\mathrm{Syl}_2(G)$ by conjugation, and let
 $$\rho\!: G \to S_5$$
-be the associated permutation representation. The action is transitive by the \hyperref[Sylow]{Main Theorem of Sylow Theory}, so the map $\rho$ is nontrivial. By \Cref{subgroups examples}, $\mathrm{im}(\rho)$ is a subgroup of $S_5$, and thus by \hyperref[Lagrange]{Lagrange's Theorem} the order of $\mathrm{im}(\rho)$ divides $|S_5|$. However, $|G|=80$ does not divide $120 = |S_5|$, so the image of $\rho$ cannot have $80$ elements, and in particular $\rho$ cannot be injective. It follows that $\ker(\rho)$ is a nontrivial, proper normal subgroup of $G$, a contradiction.
+be the associated permutation representation. The action is transitive by the Main Theorem of Sylow Theory, so the map $\rho$ is nontrivial. By \Cref{subgroups examples}, $\mathrm{im}(\rho)$ is a subgroup of $S_5$, and thus by Lagrange's Theorem the order of $\mathrm{im}(\rho)$ divides $|S_5|$. However, $|G|=80$ does not divide $120 = |S_5|$, so the image of $\rho$ cannot have $80$ elements, and in particular $\rho$ cannot be injective. It follows that $\ker(\rho)$ is a nontrivial, proper normal subgroup of $G$, a contradiction.
 \end{example}
 
 
@@ -4723,7 +4581,7 @@ Let $G = D_{n}$, $H = \langle r \rangle$ and $K = \langle s \rangle$. Then $H \c
 So \Cref{direct product recognition} does not apply to say that $G$ is isomorphic to $H \times K$. In fact, $G$ is \emph{not} isomorphic to $H \times K$, since $H \times K$ is abelian, while $G$ is not. As we shall see, $G$ is the semidirect product of $H$ and $K$. 	
 \end{example}
 
-%\begin{comment}
+
 
 \section{Semidirect products}
 
@@ -4755,13 +4613,7 @@ Note in particular that if $H$ and $K$ are finite, then $|H \sdp_\rho K| = |H| \
  
   
  
-%\begin{remark}\label{semidirect product with e in second component}
-%Since $\rho$ is a homomorphism, $\rho(e) = \mathrm{id}_H$. Therefore, in $H \sdp_\rho K$ we have 
-%$$(h_1, e)(h_2,e) = (h_1\rho(e)(h_2),e) = (h_1h_2,e).$$
-%Moreover, $\rho(k)(e)=e$ for all $k \in K$, so
-%$$(e,k_1)(e,k_2) = (e\rho(k_1)(e),k_1k_2) = (e,k_1k_2).$$
-%These computations show that the subsets $\{(h,e)\mid h\in H\}$ and $\{(e,k)\mid k\in K\}$ of $H \sdp_\rho K$ are closed for products; we will show that they are in fact subgroups of $H \sdp_\rho K$.
-%\end{remark}
+
  	
 The proof that the semidirect product is indeed a group is straightforward but a bit messy, as we need to check all the group axioms.
 
@@ -5249,7 +5101,7 @@ Let $G$ be a group of order $pq$ and let $n_q = |\mathrm{Syl}_q(G)|$. Since $n_q
 
 Now let $K$ be a Sylow subgroup of order $p$.
 Since $H$ is normal, by \Cref{corollary on |HN|} we know that $HK$ is a subgroup of $G$.
-By \hyperref[Lagrange]{Lagrange's Theorem}, $|H\cap K|$ divides $|H|$ and $|H\cap K|$ divides $|K|$. Therefore, $H\cap K=\{e_G\}$. By \Cref{exercise HK=KH}.
+By Lagrange's Theorem, $|H\cap K|$ divides $|H|$ and $|H\cap K|$ divides $|K|$. Therefore, $H\cap K=\{e_G\}$. By \Cref{exercise HK=KH}.
 $$|HK| = \frac{|H||K|}{|H\cap K|} = \frac{q\cdot p}{1} = pq = |G|$$
 and so $HK=G$. The \hyperref[semidirect product recognition]{recognition theorem for semidirect products} thus yields that 
 $$G \cong H \sdp_\rho K $$
