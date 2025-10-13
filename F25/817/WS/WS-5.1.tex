@@ -94,7 +94,9 @@ In particular, the size of any orbit divides the order of $G$.
 \itemA Use the Orbit-Stabilizer Theorem and/or its corollary above to quickly explain why the following are \textit{impossible}:
 \begin{itemize}
 \item $S_4 \curvearrowright X$ transitively for a set $X$ with $5$ elements.
+\solution{This would imply that $X$ is a single orbit with 5 elements, but 5 does not divide the order of $S_4$.}
 \item $G \curvearrowright X$ with $|G|=16$, $|X|$ odd, and the action has no fixed point\footnote{A \textbf{fixed point} of a group action is some $x\in X$ such that $g\cdot x= x$ for all $g\in G$.}.
+\solution{Every orbit has order dividing 16, so is either equal to one (a fixed point) or has an even number of elements. If there are no fixed points, then $|X|$ must be even.}
 \end{itemize}
 
 \
@@ -104,7 +106,9 @@ In particular, the size of any orbit divides the order of $G$.
 \itema Prove the Orbit-Stabilizer Theorem by showing that the map
 \[ \begin{aligned} \{ \text{left cosets of $\mathrm{Stab}_G(x)$ in $G$}\} &\longrightarrow \mathrm{Orb}_G(x) \\ g \cdot \mathrm{Stab}_G(x) &\mapsto g \cdot x\end{aligned}\]
 is a well-defined bijective function.
+\solution{We have $g \mathrm{Stab}_G(x) = h \mathrm{Stab}_G(x) \Leftrightarrow h^{-1} g\in \mathrm{Stab}_G(x) \mathrm{Stab}_G(x) \Leftrightarrow h^{-1}g \cdot x = x \Leftrightarrow h^{-1} \cdot(g \cdot x) = x \Leftrightarrow g \cdot x = h \cdot x$, so this is well-defined and injective. It is surjective by construction and definition of orbit.}
 \itema Deduce the Corollary from the Theorem.
+\solution{Follows from Lagrange.}
 \end{enumerate}
 
 \
@@ -112,9 +116,13 @@ is a well-defined bijective function.
 \itemA Let $G$ be the group of rotational symmetries of a cube.
 \begin{enumerate}
 \itema Explain very briefly why $G$ acts on the set $F$ of faces of the cube.
+\solution{Any symmetry sends faces to other faces.}
 \itema Explain why $G \curvearrowright F$ is transitive.
+\solution{There is a rotation that takes any face to any other face.}
 \itema Compute $\mathrm{Stab}_G(f)$ for $f\in F$.
+\solution{If the top face stays on top, there are only four rotations.}
 \itema Compute $|G|$.
+\solution{By Orbit-Stabilizer, there are $6\cdot 4 = 24$ elements.}
 \end{enumerate}
 
 \
