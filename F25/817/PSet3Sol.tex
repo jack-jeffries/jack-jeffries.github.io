@@ -201,7 +201,14 @@ By the One-step subgroup test, we conclude that $f^{-1}(K)$ is a subgroup of $G$
 \begin{enumerate}[(4.1)]
 \item Prove that $\mathrm{Aut}(G)$, the set of automorphisms of $G$, is a group under composition.
 
+\begin{proof} First, we show that composition is an operation on this set: i.e., that the composition of automorphisms is an automorphism. Let $\alpha, \beta \in \mathrm{Aut}(G)$. Then each is bijective, so the composition $\alpha\circ \beta$ is bijective. To check that $\alpha\circ \beta$ is a homomorphism, take $g,h\in G$ and compute
+\[ \alpha\circ \beta(g\cdot h) = \alpha (\beta(g\cdot h)) = \alpha(\beta(g) \cdot \beta(h)) = \alpha(\beta(g)) \cdot \alpha(\beta(h)) = (\alpha\circ \beta)(g) \cdot (\alpha\circ \beta)(h).\]
+Thus, composition is an operation on $\mathrm{Aut}(G)$.
 
+Now, composition of function is associative, so the operation on $\mathrm{Aut}(G)$ is associative. The identity map $I$ on $G$ is an automorphism, and for any $\alpha \in \mathrm{Aut}(G)$, we have $I\circ \alpha = \alpha\circ I = \alpha$, since $(I\circ \alpha)(g) = (\alpha\circ I)(g) = \alpha(g)$ for all $g\in G$.
+
+Finally, the inverse function of an automorphism is an automorphism, since it is also an isomorphism from $G$ to itself; the inverse function is the inverse under composition, and hence an inverse element under the given operation. This completes the verification that  $\mathrm{Aut}(G)$ is a group.
+\end{proof}
 
 \item For $g\in G$, let $\psi_g: G\to G$ be given by $\psi_g(x) = gxg^{-1}$. Prove that $\{ \psi_g \ | \ g\in G\}$ is a subgroup of $\mathrm{Aut}(G)$. 
 
