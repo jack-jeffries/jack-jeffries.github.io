@@ -1,0 +1,133 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=.6in]{geometry}
+\usepackage{paralist,amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,colonequals}
+\usepackage[shortlabels]{enumitem}
+\usepackage[all]{xy}
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\solutione}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{leaf}This solution is embargoed.}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+
+\newcommand{\rsa}{\rightsquigarrow}
+
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+
+\DeclareMathOperator{\ord}{ord}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{The Main Theorem of Sylow Theory}
+	
+	
+
+\begin{framed}
+\textsc{Recall:} Let $G$ be a finite group and $p$ be a prime number. Write $|G|=p^e m$ with $e\geq 0$ and $p\nmid m$.
+\begin{itemize}
+\item A $p$-subgroup of $G$ is a subgroup of order $p^k$ for some $k\geq 0$.
+\item A Sylow $p$-subgroup of $G$ is a subgroup of order $p^e$.
+\item We write $\mathrm{Syl}_p(G)$ for the set of Sylow $p$-subgroups of $G$. We often write $n_p$ for $\# \mathrm{Syl}_p(G)$.
+\end{itemize}
+
+\
+
+
+\textsc{Main Theorem of Sylow Theory:} Let $G$ be a finite group and $p$ be a prime number. Write $|G|=p^e m$ with $e\geq 0$ and $p\nmid m$.
+\begin{enumerate}
+\item There exists a Sylow $p$-subgroup of $G$.
+\item Every Sylow subgroup is conjugate. Moreover, for any $p$-subgroup $Q$ and any Sylow $p$-subgroup $P$, there is some $g\in G$ such that $Q\leq gPg^{-1}$.
+\item The number of Sylow $p$-subgroups of $G$ is congruent to $1$ modulo $p$.
+\item The number of Sylow $p$-subgroups of $G$ divides $m$.
+\end{enumerate}
+
+\
+
+\textsc{Lemma:} Let $G$ be a finite group and $p$ be a prime number. Let $P$ be a Sylow $p$-subgroup of $G$ and $Q$ be any $p$-subgroup of $G$. Then $Q \cap N_G(P) = Q \cap P$.
+
+\end{framed}
+
+\begin{enumerate}
+
+\itemA Let $p<q$ be distinct primes and $G$ be a group of order $pq$. Use the Sylow Theorem to show that $G$ is not simple.
+
+\
+
+\itemA Consider $G=S_4$.
+\begin{enumerate}
+\itema Show\footnote{Hint: $D_4$ acts on the vertices of a square.} that $G$ has a subgroup isomorphic to $D_4$, the symmetry group of the square.
+\itema Show that $S_4$ has exactly three subgroups isomorphic to $D_4$, that these three are conjugate, and that any subgroup of $S_4$ of order $8$ is isomorphic to $D_4$.
+\itema Describe the subgroups of order $3$ of $S_4$. 
+\end{enumerate}
+
+\
+
+\itemA Proof of part (1) of Sylow's Theorem: Fix $p$. We will argue by induction on $n$ that every group of $n$ has a Sylow $p$-subgroup. 
+\begin{enumerate}
+\itema Write $n=p^e m$. Address the case $e=0$. Henceforth assume $e>0$, so $p|n$.
+\itema Case 1: Assume that $p$ divides $|Z(G)|$. Explain why there is some $N\trianglelefteq G$ with $|N|=p$.
+\itema Apply the induction hypothesis to $G/N$. How can you use this to find a Sylow $p$-subgroup back in $G$?
+\itema Case 2: Assume that $p$ does not divide $|Z(G)|$. Show that there is some $g\in G$ such that $|C_G(g)|$ is \emph{not} a multiple of $p$ and \emph{not} one. What does this say about $|C_G(g)|$? What do you get from the induction hypothesis?
+\end{enumerate}
+
+\
+
+\itemB Proof of parts (2) and (3) of Sylow's Theorem: Fix a Sylow $p$-subgroup $P$. Let $\mathcal{S}_P$ be the set of conjugates of $P$, namely  $\{ g P g^{-1} \ | \ g\in G\}$.
+\begin{enumerate}
+\itemb Let $Q$ be any $p$-subgroup of $G$, and let $Q$ act on $\mathcal{S}_P$ by conjugation. Use the Lemma to show that for any $P_i\in \mathcal{S}_P$, $\mathrm{Stab}_Q(P_i) = Q \cap P_i$.
+\itemb Show that $|\mathcal{S}_P| = \sum_{i=1}^s [Q : Q \cap P_i]$ where $P_i$ ranges through a set of representatives of distinct orbits for the action of $Q$ on $\mathcal{S}_P$. 
+\itemb Take $Q=P$ and WLOG $P_1=P$. Deduce that $| \mathcal{S}_P | \equiv 1 \ \mathrm{mod} \ p$.
+\itemb To show (2) by contradiction, suppose that $Q$ is not contained in any conjugate of $P$. Observe that $Q\cap P_i \subsetneqq Q$ for all $i$. Revisit the equation in part (b) and the conclusion of part (c) to obtain a contradiction.
+\itemb Deduce part (3) from part (c) and part (2).
+\end{enumerate}
+
+\end{enumerate}
+
+\end{document}
