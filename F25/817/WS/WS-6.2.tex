@@ -111,15 +111,15 @@
 
 \itemA Proof of part (1) of Sylow's Theorem: Fix $p$. We will argue by induction on $n$ that every group of $n$ has a Sylow $p$-subgroup. 
 \begin{enumerate}
-\itema Write $n=p^e m$. Address the case $e=0$. Henceforth assume $e>0$, so $p|n$.
+\itema Write $n=p^e m$. Address the case $e=0$. Henceforth assume $e>0$, so $p\, |\, n$.
 \itema Case 1: Assume that $p$ divides $|Z(G)|$. Explain why there is some $N\trianglelefteq G$ with $|N|=p$.
-\itema Apply the induction hypothesis to $G/N$. How can you use this to find a Sylow $p$-subgroup back in $G$?
-\itema Case 2: Assume that $p$ does not divide $|Z(G)|$. Show that there is some $g\in G$ such that $|C_G(g)|$ is \emph{not} a multiple of $p$ and \emph{not} one. What does this say about $|C_G(g)|$? What do you get from the induction hypothesis?
+\itema Apply the induction hypothesis to $G/N$. How can you use this to find a Sylow $p$-subgroup in $G$?
+\itema Case 2: Assume that $p$ does not divide $|Z(G)|$. Show that there is some $g\in G$ such that ${[G: C_G(g)]}$ is \emph{not} a multiple of $p$ and \emph{not} one. What does this say about $|C_G(g)|$? What do you get from the induction hypothesis?
 \end{enumerate}
 
 \
 
-\itemB Proof of parts (2) and (3) of Sylow's Theorem: Fix a Sylow $p$-subgroup $P$. Let $\mathcal{S}_P$ be the set of conjugates of $P$, namely  $\{ g P g^{-1} \ | \ g\in G\}$.
+\itemB Proof of parts (2) and (3) of Sylow's Theorem: Fix a Sylow $p$-subgroup $P$. Let $\mathcal{S}_P$ be the set of conjugates of $P$, namely  $\{ g P g^{-1} \ | \ g\in G\}\subseteq \mathrm{Syl}_p(G)$. We need to show that (2) $\mathrm{Syl}_p(G) = \mathcal{S}_P$ and that (3) $\# \mathrm{Syl}_p(G) \equiv 1 \ \mathrm{mod} \ p$.
 \begin{enumerate}
 \itemb Let $Q$ be any $p$-subgroup of $G$, and let $Q$ act on $\mathcal{S}_P$ by conjugation. Use the Lemma to show that for any $P_i\in \mathcal{S}_P$, $\mathrm{Stab}_Q(P_i) = Q \cap P_i$.
 \itemb Show that $|\mathcal{S}_P| = \sum_{i=1}^s [Q : Q \cap P_i]$ where $P_i$ ranges through a set of representatives of distinct orbits for the action of $Q$ on $\mathcal{S}_P$. 
