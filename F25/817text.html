@@ -189,6 +189,13 @@
 </ol>
 
 
+<li><a href="#products section">Products and finitely generated abelian groups</a></li>
+<ol><li><a href="#sec-7-1-heading">Direct products of groups</a></li>
+<li><a href="#sec-7-2-heading">Semidirect products</a></li>
+<li><a href="#sec-7-3-heading">Finitely generated abelian groups</a></li>
+<li><a href="#sec-7-4-heading">Classifying groups of a fixed order</a></li>
+</ol>
+
 </ol>
 </ul></nav>
 <main aria-labelledby="page-title" id="main-content" role="main">
@@ -5626,6 +5633,852 @@ Sylow Theory is a very powerful technique for analyzing finite groups of relativ
 </section>
 
 
+
+<h1 id="products section">7. Products and finitely generated abelian groups</h1>
+
+In this chapter we discuss some important ways to build new groups out of smaller pieces, and conversely, how to break some groups down into smaller pieces. 
+
+<section id="direct-products-of-groups" aria-labelledby="sec-7-1-heading">
+  <h2 id="sec-7-1-heading">7.1 Direct products of groups</h2>
+
+  <section class="callout definition" role="region" aria-labelledby="def-7-1-1">
+    <h3 id="def-7-1-1">Definition 7.1.1</h3>
+    <p>Let \(I\) be a set and consider a group \(G_i\) for each \(i \in I\).
+    The <strong>direct product</strong> of the groups \(\{ G_i \}_{i \in I}\), denoted by
+    \[
+      \prod_{i \in I} G_i,
+    \]
+    is the group with underlying set the Cartesian product 
+    \[
+      \prod_{i \in I} G_i
+    \]
+    equipped with the operation defined by
+    \[
+      (g_i)_{i \in  I} (h_i)_{i \in I} = (g_i h_i)_{i \in I}.
+    \]
+    </p>
+
+    <p>The <strong>direct sum</strong> of the groups \(G_i\) is the subgroup of the direct product of  \(\{ G_i \}_{i \in I}\) given by
+    \[
+      \bigoplus_{i \in i} G_i := \{(g_i)_{i \in I} \in \prod_{i \in I} G_i \mid  g_i = e_{G_i} \text{ for all but finitely many } i \in I \}.
+    \]
+    In particular, the direct sum of \(\{ G_i \}_{i \in I}\) has the same operation as the direct product. </p>
+
+    <p>When \(I\) is finite, say \(I = \{ 1, \ldots, n \}\), we write
+    \[
+      G_1 \times \cdots \times G_n := \prod_{i = 1}^n G_i.
+    \]
+    </p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-7-1-2">
+    <h3 id="rmk-7-1-2">Remark 7.1.2</h3>
+    <p>When \(I\) is finite, the direct sum and the direct product of \(\{ G_i \}_{i \in I}\) coincide. This is the case we will be most interested in.</p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-7-1-3">
+    <h3 id="ex-7-1-3">Exercise 7.1.3</h3>
+    <p>The direct product of a collection of groups is a group, and the direct sum is a subgroup of the direct product.</p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-7-1-4">
+    <h3 id="rmk-7-1-4">Remark 7.1.4</h3>
+    <p>If \(G_1, \ldots, G_n\) are all finite groups, then
+    \[
+      |G_1 \times \cdots \times G_n| = |G_1| \cdots |G_n|.
+    \]
+    </p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-7-1-5">
+    <h3 id="ex-7-1-5">Exercise 7.1.5</h3>
+    <p>Let \(\{ G_i \}_{i \in I}\) be a collection of abelian groups. Show that
+    \[
+      \prod_{i \in I} G_i
+    \]
+    is an abelian group.</p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-7-1-6">
+    <h3 id="ex-7-1-6">Exercise 7.1.6</h3>
+    <p>Let \(G\) and \(H\) be groups, and \(g \in G\) and \(h \in H\).</p>
+    <ol type="a">
+      <li>Show that if \(|g|\) and \(|h|\) are both finite, then \(|(g,h)| = \operatorname{lcm}(|g|,|h|)\).</li>
+      <li>Show that if at least one of \(g\) or \(h\) has infinite order, then \((g,h)\) also has infinite order.</li>
+    </ol>
+  </section>
+
+  <section class="callout lemma" role="region" aria-labelledby="lem-7-1-7">
+    <h3 id="lem-7-1-7">Lemma 7.1.7 (CRT)</h3>
+    <p>If \(\gcd(m,n)=1\), then \(\mathbb{Z}/m \times \mathbb{Z}/n\cong \mathbb{Z}/mn\).</p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-7-1-7">
+    <h3 id="prf-7-1-7">Proof (of Lemma 7.1.7)</h3>
+    <p>By the exercise above,
+    \[
+      |(1,1)|=\operatorname{lcm}(m,n)=mn.
+    \]
+    But \(\mathbb{Z}/m\times \mathbb{Z}/n\cong \mathbb{Z}/mn\) has order \(mn\), so \((1,1)\) is a generator for the group, which must then be cyclic. By the structure theory of finite cyclic groups, all cyclic groups of order \(mn\) are isomorphic to \(\mathbb{Z}/mn\), so
+    \[
+      \mathbb{Z}/m\times \mathbb{Z}/n\cong \mathbb{Z}/mn.
+    \]
+    </p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-7-1-8">
+    <h3 id="ex-7-1-8">Exercise 7.1.8</h3>
+    <p>Show that the converse holds: for all integers \(m, n &gt; 1\), if
+    \[
+      \mathbb{Z}/m\times \mathbb{Z}/n\cong \mathbb{Z}/mn,
+    \]
+    then \(\gcd(m,n) = 1\).</p>
+  </section>
+
+  <p>Sometimes it is convenient to write the CRT in terms of prime factorization, as follows:</p>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-7-1-9">
+    <h3 id="thm-7-1-9">Theorem 7.1.9 (CRT)</h3>
+    <p>Suppose \(m = p_1^{e_1} \cdots p_l^{e_l}\) for distinct primes \(p_1, \dots, p_l\). Then there is an isomorphism
+    \[
+      \mathbb{Z}/m \cong \mathbb{Z}/(p_1^{e_1}) \times \cdots \times \mathbb{Z}/(p_l^{e_l}).
+    \]
+    </p>
+  </section>
+
+  <p>Recall that we showed that given a group \(G\) and subgroups \(H\) and \(K\), if \(H\) is normal then \(HK\) is a subgroup of \(G\). In fact, we can saw more:</p>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-7-1-10">
+    <h3 id="thm-7-1-10">Theorem 7.1.10 (Recognition theorem for direct products)</h3>
+    <p>Suppose \(G\) is a group with normal subgroups \(H \trianglelefteq G\) and \(K \trianglelefteq G\) such that \(H\cap K=\{e\}\). Then \(HK\cong H\times K\) via the isomorphism \(\theta\!: H \times K \to HK\) given by
+    \[
+      \theta(h,k) = hk.
+    \]
+    Moreover,
+    \[
+      H \cong \{(h,e)\mid h\in H\}\leq H\times K
+    \]
+    and
+    \[
+      K\cong \{(e,k)\mid k\in K\}\leq H\times K.
+    \]
+    </p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-7-1-10">
+    <h3 id="prf-7-1-10">Proof (of Theorem 7.1.10)</h3>
+    <p>The hypothesis implies \(HK \leq G\). Moreover, consider any \(h \in H\) and any \(k \in K\). Since \(H\) is a normal subgroup,
+    \[
+      khk^{-1} \in H, \textrm{ say }
+    \]
+    so also 
+    \[
+      [k,h]=khk^{-1}h^{-1}\in H.
+    \]
+    But \(K\) is also a normal subgroup, so similarly we obtain
+    \[
+      [k,h]\in K.
+    \]
+    Therefore,
+    \[
+      [k,h] \in H \cap K = \{ e \},
+    \]
+    so \([k,h]= e\). We conclude that 
+    \[
+      hk = kh \quad \textrm{ for all } h\in H, k\in K.
+    \]</p>
+
+    <p>The function \(\theta\) defined above must then satisfy
+    \[
+    \begin{aligned}
+      \theta((h_1, k_1) (h_2, k_2))  & = 
+      \theta(h_1h_2, k_1k_2) \\
+      & = (h_1h_2)(k_1k_2) \\
+      & = h_1(h_2k_1)k_2\\
+      & = (h_1k_1)(h_2k_2) \\
+      & = \theta(h_1, k_1) \theta(h_2, k_2)
+    \end{aligned}
+    \]
+    and thus \(\theta\) is a homomorphism. Its kernel is 
+    \[
+      \ker(\theta) = \{(k,h) \mid k = h^{-1} \} = \{ (e,e) \}
+    \]
+    since \(H \cap K = \{e\}\). Moreover, \(\theta\) is surjective, as any element in \(HK\) is of the form \(hk \in HK\), and
+    \[
+      \theta(h,k) = hk.
+    \]
+    This proves \(\theta\) is an isomorphism. Finally, restricting the codomain to any subgroup \(L\) of \(G\) and the domain to \(\theta^{-1}(L)\) gives an isomorphism between \(L\) and \(\theta^{-1}(L)\), so in particular
+    \[
+      H \cong \theta^{-1}(H)=\{(h,e)\mid h\in H\}\leq H\times K
+    \]
+    and 
+    \[
+      K\cong \theta^{-1}(K)=\{(e,k)\mid k\in K\}\leq H\times K.
+    \]
+    </p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-7-1-11">
+    <h3 id="rmk-7-1-11">Remark 7.1.11</h3>
+    <p>If \(H\trianglelefteq G\) and \(K\trianglelefteq G\) are such that \(H\cap K=\{e\}\), then each elements of \(HK\) is <em>uniquely</em> of the form \(hk\). This is a consequence of the fact that the map \(\theta\) is a bijection.</p>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-7-1-12">
+    <h3 id="def-7-1-12">Definition 7.1.12</h3>
+    <p>Let \(G\) be a group. If \(H \trianglelefteq G\) and \(K \trianglelefteq G\) are such that \(H \cap K=\{e\}\), then the subgroup \(HK\) of \(G\) is called the <strong>internal direct product</strong> of \(H\) and \(K\), while the group \(H\times K\) is called the <strong>external direct product</strong> of \(H\) and \(K\).</p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-7-1-13">
+    <h3 id="ex-7-1-13">Example 7.1.13</h3>
+    <p>Let \(G = D_{n}\), \(H = \langle r \rangle\) and \(K = \langle s \rangle\). Then \(H \cap K = \{e \}\), \(HK = G\), and \(H \trianglelefteq G\), but \(K\) is not normal in \(G\).
+    So the Theorem does not apply to say that \(G\) is isomorphic to \(H \times K\). In fact, \(G\) is \emph{not} isomorphic to \(H \times K\), since \(H \times K\) is abelian, while \(G\) is not. As we shall see, \(G\) is the semidirect product of \(H\) and \(K\).</p>
+  </section>
+</section>
+
+<section id="semidirect-products" aria-labelledby="sec-7-2-heading">
+  <h2 id="sec-7-2-heading">7.2 Semidirect products</h2>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-7-2-1">
+    <h3 id="rmk-7-2-1">Remark 7.2.1</h3>
+    <p>Let \(G\) be a group. Suppose we are given subgroups \(H\trianglelefteq G\) and \(K\leq G\) such that \(H\cap K=\{e\}\) but \(K\) is not normal. Then we still have \(HK \leq G\), but it is not necessarily true that the map \(\theta: H \times K \to HK\) defined by \(\theta(h,k) = hk\) is a group homomorphism. The issue is that given \(h \in H\) and \(k \in K\), while
+    \[
+      khk^{-1} \in H \implies kh = h'k \textrm{ for some } h' \in H,
+    \]
+    we can no longer guarantee that \(kh=hk\). 
+    So given \(h_1, h_2 \in H\) and \(k_1, k_2 \in K\), suppose that \(k_1h_1 = h'_2k_1\).
+    For \(\theta\) to be a homomorphism, we would need the following:
+    \[
+      \theta(h_1, k_1) \theta(h_2, k_2) = (h_1k_1)(h_2k_2) = h_1h'_2k_1k_2=\theta(h_1h_2',k_1k_2).
+    \]
+    This we would need  
+    \[
+      (h_1, k_1)(h_2, k_2)=(h_1h_2',k_1k_2).
+    \]
+    </p>
+  </section>
+
+  <p>This motivates the following definition:</p>
+
+  <section class="callout definition" role="region" aria-labelledby="def-7-2-2">
+    <h3 id="def-7-2-2">Definition 7.2.2</h3>
+    <p> Let \(H\) and \(K\) be groups and let \(\rho\!: K \to \mathrm{Aut}(H)\) be a homomorphism. The (external) <strong>semidirect product</strong> induced by \(\rho\) is the set \(H \times K\) equipped with the binary operation defined by 
+    \[
+      (h_1,k_1)(h_2,k_2) := (h_1\rho(k_1)(h_2),k_1k_2).
+    \]
+    This group is denoted by \(H \rtimes_\rho K\).
+    </p>
+  </section>
+
+  <p>The underlying set of \(H \rtimes_\rho K\) is the same as the direct product, but it is the operation that differs.</p>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-7-2-3">
+    <h3 id="rmk-7-2-3">Remark 7.2.3</h3>
+    <p>Note in particular that if \(H\) and \(K\) are finite, then \(|H \rtimes_\rho K| = |H| \cdot |K|\).</p>
+  </section>
+
+  <p>The proof that the semidirect product is indeed a group is straightforward but a bit messy, as we need to check all the group axioms.</p>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-7-2-4">
+    <h3 id="thm-7-2-4">Theorem 7.2.4</h3>
+    <p>If \(H\) and \(K\) are groups and \(\rho\!: K \to \mathrm{Aut}(H)\) is a homomorphism, then \(H \rtimes_\rho K\) is a group.</p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-7-2-4">
+    <h3 id="prf-7-2-4">Proof (of Theorem 7.2.4)</h3>
+    <p>First, we show that the operation is associative. Indeed,
+    \[
+    \begin{aligned}
+    (y_1,x_1) \left( (y_2, x_2) (y_3, x_3) \right)
+    & = (y_1,x_1) (y_2\rho(x_2)(y_3), x_2x_3) \\
+    & = (y_1\rho(x_1)\left(y_2\rho(x_2)(y_3)\right), x_1x_2x_3)\\
+    & = (y_1\rho(x_1)(y_2)(\rho(x_1)\circ \rho(x_2))(y_3), x_1x_2x_3)\\
+    & = (y_1\rho(x_1)(y_2)\rho(x_1x_2)(y_3), x_1x_2x_3)\\
+    & = (y_1 \rho(x_1)(y_2), x_1 x_2)  (y_3, x_3) \\
+    & = \left( (y_1,x_1) (y_2, x_2) \right) (y_3, x_3).
+    \end{aligned}
+    \]
+    To show that \((e,e)\) is a two-sided identity, consider any \(h \in H\) and \(k \in K\). Since \(\rho(k)\) is a homomorphism, then \(\rho(k)(e) = e\), and thus
+    \[
+      (h,k)(e,e) = (h\rho(k)(e),ke) = (he,ke) = (h,k).
+    \]
+    Moreover, since \(\rho\) is a homomorphism, \(\rho(e) = \mathrm{id}_H\), and thus \(\rho(e)(y) = \mathrm{id}_H(y)=y\) for any \(y \in K\), so that
+    \[
+      (e,e)(h,k) = (e\rho(e)(h),ek) = (eh,ek)=(h,k).
+    \]
+    Finally, for any \(x \in H\) and \(y \in K\) we have
+    \[
+    \begin{aligned}
+    (x,y) (\rho(y^{-1})(x^{-1}), y^{-1}) &= (x \, \rho(y)\left(\rho(y^{-1})(x^{-1}) \right), yy^{-1})\\
+    & = (x (\rho(y) \circ \rho(y^{-1}))(x^{-1}), e) \\
+    &= (x \rho(e)(x^{-1}), e) & \textrm{since \(\rho\) is a homomorphism} \\
+    & = (xx^{-1},e) & \text{since } \rho(e) = \mathrm{id}_H\\ 
+    & =(e,e),
+    \end{aligned}
+    \]
+    and similarly,
+    \[
+    \begin{aligned}
+    (\rho(y^{-1})(x^{-1}), y^{-1}) (x,y) &= (\rho(y^{-1})(x^{-1}) \rho(y^{-1})(x),y^{-1}y) \\
+    & = (\rho(y^{-1})(x^{-1}x), e) & \textrm{since } \rho(y^{-1}) \text{ is a homomorphism} \\
+    & = (\rho(y^{-1})(e), e) \\
+    & = (e, e) & \textrm{since } \rho(y^{-1}) \text{ is a homomorphism.} 
+    \end{aligned}
+    \]
+    Thus \((x,y)\) has an inverse, given by
+    \[
+      (x,y)^{-1} = (\rho(x^{-1})(y^{-1}) ,x^{-1}).
+    \]
+    This completes the proof that the semidirect product is a group.</p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-7-2-5">
+    <h3 id="ex-7-2-5">Example 7.2.5</h3>
+    <p>Given any two groups \(H\) and \(K\), we can always take \(\rho\) to be the trivial homomorphism. In that case, \(H \rtimes_\rho K\) is just the usual direct product: for all \(h \in H\) and all \(k \in K\), \(\rho(k) = \mathrm{id}_H\), so
+    \[
+      (h,k)(h',k') = (h\rho(k)(h'),kk') = (hh',kk').
+    \]
+    </p>
+  </section>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-7-2-6">
+    <h3 id="thm-7-2-6">Theorem 7.2.6</h3>
+    <p>Given groups \(H\) and \(K\) are groups and a homomorphism \(\rho\!: K \to \mathrm{Aut}(H)\), \(H\) and \(K\) are isomorphic to subgroups of \(H \rtimes_\rho K\), as follows:
+    \[
+      H \cong \{(h,e)\mid h\in H\} \trianglelefteq H \rtimes_\rho K \text{ and } K \cong \{(e,k)\mid k\in K\} \leq H \rtimes_\rho K.
+    \]
+    Moreover,
+    \[
+      \frac{(H \rtimes_\rho K )}{\{(h,e)\mid h\in H\}} \cong K.
+    \]
+    </p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-7-2-6">
+    <h3 id="prf-7-2-6">Proof (of Theorem 7.2.6)</h3>
+    <p>Consider the function \(i\!: H \to H \rtimes_\rho K\) given by 
+    \[
+      i(y) = (y, e).
+    \]
+    Then \(i\) is a homomorphism:
+    \[
+      i(y_1) i(y_2) = (y_1,e)(y_2,e) = (y_1\rho(e)(y_2) , ee) = (y_1 y_2, e) = i(y_1y_2).
+    \]
+    Moreover, \(i\) is injective by construction, and hence its image is isomorphic to \(H\) by the First Isomorphism Theorem. We can describe \(\mathrm{im}(i)\) as the set of all elements whose second component is \(e\).
+    The image \(\mathrm{im}(i)\) is normal since the second component of
+    \[
+      (h,k) (a, e) (h,k)^{-1} = (h,k) (a, e) (\rho(k^{-1})(h^{-1}), h^{-1})
+    \]
+    is
+    \[
+      kek^{-1} = e,
+    \]
+    which shows that any for any \((a,e) \in \mathrm{im}(H)\) and any \((h,k) \in H \rtimes_\rho K\),
+    \[
+      (h,k) (a, e) (h,k)^{-1} \in \mathrm{im}(i).
+    \]
+    Let us write the image of \(i\), which we now know is a normal subgroup of \(H \rtimes_\rho K\), as
+    \[
+      H' := \mathrm{im}(i) = \{(y,e) \mid y \in H\} \trianglelefteq  H \rtimes_\rho K.
+    \]
+    Similarly, the function
+    \[
+      j\!: K \to H \rtimes_\rho K \quad \text{given by } j(x) = (e,x)
+    \]
+    is also an injective homomorphism (exercise!), and thus its image 
+    \[
+      K' := \{(e,x) \mid x \in H \} \leq H \rtimes_\rho K
+    \]
+    is isomorphic to \(K\). 
+    Finally, given any \((h,k) \in H \rtimes_{\rho} K\), we can write
+    \[
+      (h,k) = (h\rho(e)(e),k) = (h,e)(e,k) \in H'K',
+    \]
+    so \(H'K'= H \rtimes_\rho K\).</p>
+
+    <p>Consider the projection onto the second factor 
+    \[
+      \pi_2\!:H \rtimes_\rho K \to  K,
+    \]
+    which is the map given by 
+    \[
+      \pi_2(x,y)=y.
+    \]
+    This is a group homomorphism, since the second component of \((x_1,y_1)(x_2,y_2)\) is \(y_1y_2\), and thus
+    \[
+      \begin{aligned}
+      \pi_2(	(x_1,y_1)(x_2,y_2) ) = y_1y_2 = \pi_2(y_1) \pi_2(y_2).
+      \end{aligned}
+    \]
+    Moreover, \(\pi_2\) is surjective by definition. Finally, 
+    \[
+      \ker(\pi_2)=\{(y,e_K)\mid y\in H\}=H'\cong H.
+    \]
+    By the First Isomorphism Theorem, we conclude that 
+    \[
+      (H \rtimes_\rho K )/ H' \cong K.
+    \]
+    </p>
+  </section>
+
+  <p>In the Theorem, we showed that \(\{(h,e)\mid h \in H\}\) is a normal subgroup of \(H \rtimes_\rho K\).
+  However, \(\{(e,k)\mid k\in K\}\) is typically {\em not} a normal subgroup of \(H \rtimes_\rho K\). We will see a concrete example of this below.</p>
+
+  <p>Studying semidirect products is a great motivation to studying automorphism groups.</p>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-7-2-8">
+    <h3 id="ex-7-2-8">Exercise 7.2.8</h3>
+    <p>Let \(C_n\) denote the cyclic group of order \(n \geqslant 2\), and consider the group
+    \[
+      (\mathbb{Z}/n)^\times = \{ [j]_n \mid \gcd(j,n)=1\}
+    \]
+    with the binary operation given by the usual multiplication. Prove that 
+    \[
+      \mathrm{Aut}(C_n) \cong (\mathbb{Z}/n)^\times.
+    \]
+    </p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-7-2-9">
+    <h3 id="rmk-7-2-9">Remark 7.2.9</h3>
+    <p>We can now count the number of elements in \(\mathrm{Aut}(C_n)\), since it is the number of integers \(1 \leqslant i &lt;n\) that are coprime with \(n\). This number is given by what is know as the <strong>Euler \(\varphi\) function</strong>, 
+    \[
+      \varphi(n) = n \prod_{p \mid n} \left( 1 - \frac{1}{p} \right).
+    \]
+    Equivalently, if \(n = p_1^{a_1} \cdots p_k^{a_k}\), where \(p_1, \ldots, p_k\) are distinct primes and each \(a_i \geqslant 1\), then
+    \[
+      \varphi(n) = \prod_{i=1}^k \left( p_i^{a_i-1} (p_i - 1) \right).
+    \]
+    In particular, if \(p\) is prime then \(| \mathrm{Aut}(\mathbb{Z}/p) | = p-1\).</p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-7-2-10">
+    <h3 id="ex-7-2-10">Exercise 7.2.10</h3>
+    <p>If \(p\) is prime, then \(\mathrm{Aut}(C_p) \cong \mathbb{Z}/p^\times\) is cyclic of order \(p-1\). </p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-7-2-11">
+    <h3 id="ex-7-2-11">Exercise 7.2.11</h3>
+    <p>Let \(p\) be a prime integer. Show that
+    \[
+      \mathrm{Aut}(\underbrace{\mathbb{Z}/p\times \cdots\times\mathbb{Z}/p}_{n \text{ factors}})\cong \mathrm{GL}_n(\mathbb{Z}/p)
+    \]
+    and that these groups have order \((p^n-1)(p^n-p)(p^n-p^2)\cdots(p^n-p^{n-1})\).</p>
+  </section>
+
+  <p>To better understand semidirect products, we should also better understand what it means to have a homomorphism \(K \to \mathrm{Aut}(H)\).</p>
+
+  <section class="callout definition" role="region" aria-labelledby="def-7-2-12">
+    <h3 id="def-7-2-12">Definition 7.2.12</h3>
+    <p>Let \(G\) and \(H\) be groups. A (left) <strong>action of \(G\) on \(H\) via automorphisms</strong> is a pairing \(G \times H \to H\), written as \((g,h) \mapsto g \cdot h\), such that</p>
+    <ul>
+      <li>For all \(g_1, g_2 \in G\) and \(h \in H\), \(g_1 \cdot (g_2 \cdot h) = (g_1 \cdot _G g_2) \cdot h\) .</li>
+      <li>For all \(h \in H\), \(e_G \cdot h = h\).</li>
+      <li>For all \(g \in G\) and all \(h_1, h_2 \in H\),  \(g \cdot (h_1 \cdot_H h_2) = (g \cdot h_1) \cdot_H (g \cdot h_2)\).</li>
+    </ul> 	
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-7-2-13">
+    <h3 id="rmk-7-2-13">Remark 7.2.13</h3>
+    <p>Note that the first two axioms are just the axioms for a group action. So given a group action of \(G\) on \(H\), let \(\rho\!: G \to \Perm(H)\) be the corresponding permutation representation. If the action satisfies the third axiom, then that means that for each \(g \in G\), \(\rho(g)\) satisfies
+    \[
+      \rho(g) (h_1 \cdot_H h_2) = \rho(g)(h_1) \, \rho(g)(h_2).
+    \]
+    This condition simply says that \(\rho(g)\) must be a homomorphism. Since \(\rho(g)\) is already a bijection, we conclude that \(\rho(g)\) must be an automorphism of \(H\). 
+    Conversely, given any homomorphism \(\rho\!: K \to \mathrm{Aut}(H)\), we can define a group action of \(K\) on \(H\) via automorphisms by setting
+    \[
+      k \cdot h := \rho(k)(h).
+    \]
+    Since \(\mathrm{Aut}(H) \subseteq \Perm(H)\), we can extend \(\rho\) to a homomorphism \(K \to \Perm(H)\), which we saw is equivalent to the action of \(K\) on \(H\) we just defined. That action satisfies
+    \[
+    \begin{aligned}
+      k \cdot (h_1 \cdot_H h_2) & = \rho(k)(h_1 \cdot_H h_2) \\
+      & = \rho(k)(h_1) \cdot_H \rho(k)(h_2) & \text{since \(\rho\) is a homomorphism} \\
+      & = (k \cdot h_1) \cdot_H (k \cdot h_2)
+    \end{aligned}
+    \]
+    In conclusion, we can now say that to give an action of \(G\) on \(H\) via automorphisms is to give a group homomorphism 
+    \[
+      \rho\!: G \to \mathrm{Aut}(H).
+    \]
+    Moreover, given a group \(K\) acting on a group \(H\) by automorphisms, we get an induced semidirect product \(H \rtimes_\rho K\), where \(\rho\!: K \to \mathrm{Aut}(H)\) is the corresponding homomorphism. 
+    </p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-7-2-14">
+    <h3 id="ex-7-2-14">Exercise 7.2.14 (Conjugation action by automorphisms)</h3>
+    <p>Fix a group \(G\), a normal subgroup \(H \trianglelefteq G\) and a subgroup \(K \leq G\). Show that the rule
+    \[
+      k \cdot h = khk^{-1}
+    \] 
+    for \(k \in K\) and \(h \in H\) determines an action of \(K\) on \(H\) via automorphisms, and the associated homomorphism \(\rho\!: K \to \mathrm{Aut}(H)\) is given by 
+    \[
+      \rho(k)(h) = khk^{-1}.
+    \] 	
+    </p>
+  </section>
+
+  <p>So now that we have a bit more context, let us now look at some examples of semidirect products.</p>
+
+  <section class="callout example" role="region" aria-labelledby="ex-7-2-15">
+    <h3 id="ex-7-2-15">Example 7.2.15</h3>
+    <p>Let \(K = \langle x \rangle\) be the cyclic of order \(2\) and \(H = \langle y \rangle\) be the cyclic of order \(n\) for some \(n \geqslant 2\). By the UMP for cyclic groups, to give a homomorphism out of \(K\) is to pick the image \(i\) of the generator \(x\), which must satisfy \(i^2 = e\). In particular, \(i\) must be either the identity or an element of order \(2\).</p>
+    <p>Since \(H\) is abelian, the inverse map \(f\!: H \longrightarrow H\) given by \(f(a)=a^{-1}\) is an automorphism of \(H\); we showed this in Problem Set 2.<sup>1</sup> (In fact, we can say more:
+    \(\mathrm{Aut}(H) \cong (\mathbb{Z}/n)^\times\). In particular, \(-1\) is an element of \((\mathbb{Z}/n)^\times\), and the associated automorphism sends \(y\) to \(y^{-1}\).)
+    This automorphism \(f\) is not the identity but it is its own inverse, so it has order \(2\). Therefore, by the UMP for cyclic groups, there is a homomorphism
+    \[
+      \rho\!: K \to \mathrm{Aut}(H) \quad \text{with} \quad \rho(x)(y) = y^{-1}.
+    \]
+    Consider the semidirect product \(H \rtimes_\rho K\).
+    The elements of \(H \rtimes_\rho K\) are the tuples \((y^i, x^j)\) for \(0 \leqslant i \leqslant n-1\) and \(0 \leqslant j \leqslant 1\). In particular, \(|H \rtimes_\rho K|=2n\). Set
+    \[
+      \tilde y = (y,e_K) \in G \quad \text{ and } \quad \tilde x = (e_H,x) \in G.
+    \]
+    Then \(\tilde y^n = (y,e_K)^n = (y^n,e_K) = (e_H, e_K)= e_G \) and \(\tilde x^2 = (e_H,x)^2 = (e_H, x^2) = (e_H, e_K)=~e_G\).
+    Moreover,
+    \[
+      \tilde x \tilde y \tilde x \tilde y = (e_H,x)(y,e_K)(e_H, x)(y,e_K) = (\rho(x)(y),x)(\rho(x)(y),x) = (y^{-1},x)(y^{-1},x) = (y^{-1}y, e) = e_G.
+    \]
+    Looks familiar?
+    Indeed, using our presentation for \(D_{n}\) from earlier and the UMP for presentations, we have a homomorphism
+    \[
+      \theta\!: D_{n} \longrightarrow G \quad \text{given by } \quad \theta(r) = (y,e_K) \text{ and } \theta(s) = (x,e_H).
+    \]
+    Moreover, \(\theta\) is surjective since 
+    \[
+      \theta(r^is^j)=(y^i, x^j) \text{ for all } 0 \leqslant i \leqslant n-1, 0 \leqslant j \leqslant 1.
+    \]
+    Since \(|D_{n}|=|G|=2n\), this surjection must also be a bijection, and we conclude that \(\theta\) is an isomorphism. So the dihedral group is a semidirect product of the cyclic of order \(n\) and the cyclic group of order \(2\) respectively:
+    \[
+      D_{n} \cong \langle y \rangle \rtimes_\rho \langle x \rangle
+    \]
+    where \(\rho\) is the inverse map as described above. 
+    </p>
+  </section>
+
+  <p>So given any group, how can we recognize it is in fact a semidirect product?</p>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-7-2-16">
+    <h3 id="thm-7-2-16">Theorem 7.2.16 (Recognition theorem for internal semidirect products)</h3>
+    <p>Let \(G\) be a group. Suppose we are given subgroups \(H\) and \(K\) of \(G\) such that
+    \[
+      H \trianglelefteq G \qquad HK = G \qquad \text{and} \qquad H \cap K = \{e\}.
+    \]
+    Let \(\rho\!: K \to \mathrm{Aut}(H)\) be the permutation representation of the action of \(K\) on \(H\) via automorphisms given by conjugation in \(G\), meaning that
+    \[
+      \rho(k)(h) = khk^{-1}.
+    \]
+    Then 
+    \[
+      G \cong H \rtimes_\rho K
+    \]
+    via the isomorphism \(\theta\!: H \rtimes_\rho K \to G\) given by \(\theta(x,y) = xy\). Moreover, 
+    \[
+      H \cong \{(h,e) \in H \rtimes_\rho K \mid h\in H\} \quad \text{ and } \quad K \cong \{(e,k) \in H \rtimes_\rho K \mid k\in K\}.
+    \]
+    </p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-7-2-16">
+    <h3 id="prf-7-2-16">Proof (of Theorem 7.2.16)</h3>
+    <p>First, we show that \(\theta\) is a group homomorphism. Indeed,
+    \[
+    \begin{aligned}
+    \theta((y_1, x_1) (y_2, x_2)) & = 
+    \theta(y_1 \rho(x_1)(y_2), x_1 x_2) \\
+    & = y_1(x_1y_2x_1^{-1}) x_1 x_2 \\
+    & = y_1x_1y_2x_2 \\
+    & = \theta(y_1, x_1) \theta(y_2, x_2).
+    \end{aligned}
+    \]
+    Since \(H \cap K = \{e\}\), the kernel of \(\theta\) is 
+    \[
+      \ker(\theta) = \{(y,x) \in H \rtimes_{\rho} K \mid y = x^{-1} \} = \{ e \}.
+    \]
+    By construction, the image of \(\theta\) is \(KH = G\). Therefore, \(\theta\) is an isomorphism. Finally, 
+    \[
+      \theta^{-1}(H) = \{(h,e)\mid h\in H\} \quad \text{ and } \quad \theta^{-1}(K) = \{(e,k)\mid k\in K\}.
+    \]
+    </p>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-7-2-17">
+    <h3 id="def-7-2-17">Definition 7.2.17</h3>
+    <p>Given subgroups \(H\) and \(K\) of \(G\) such that \(H \trianglelefteq G\), \(HK = G\), and \(H \cap K = \{e\}\), we say that \(G\) is the <strong>internal semidirect product</strong> of \(H\) and \(K\).</p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-7-2-18">
+    <h3 id="ex-7-2-18">Example 7.2.18</h3>
+    <p>Consider \(G = D_{n}\) and its subgroups \(H = \langle r \rangle\) and \(K = \langle s \rangle\). Then \(H \trianglelefteq G\), \(K \leq G\), \(HK = G\) and \(H \cap K = \{e\}\). By the recognition theorem, \(G \cong H \rtimes_{\rho} K\), where \(\rho\!: K \to \mathrm{Aut}(H)\)
+    \[
+      \rho(s)(r^i) = sr^is^{-1} = r^{n-i}.
+    \]
+    The last equality is from an earlier computation.
+    Note in particular that \(K\) is \emph{not} a normal subgroup of \(G\).
+    We had already seen in that \(G\) is not the internal direct product of \(H\) and \(K\), but now know it is their internal semidirect product. We also already knew that \(D_n\) is a semidirect product.</p>
+  </section>
+
+  <p>For a fixed pair of groups \(H\) and \(K\), different actions of \(K\) on \(H\) via automorphisms can result in isomorphic semidirect products. Indeed, determining when \(K \rtimes_{\rho} H \cong K \rtimes_{\rho'} H\) is in general a tricky business. Here is an example of this:</p>
+
+  <section class="callout example" role="region" aria-labelledby="ex-7-2-19">
+    <h3 id="ex-7-2-19">Example 7.2.19</h3>
+    <p>Let \(n \geqslant 3\) and consider \(G = S_n\), \(H = A_n\), and \(K = \langle (1 \, 2) \rangle\). Then \(H \trianglelefteq G\), \(K \leq G\), \(HK = G\) and \(K \cap H  = \{e\}\). Note that \(H \cong C_2\) is the cyclic group with \(2\) elements. 
+    By the recognition theorem,
+    \[
+      S_n \cong A_n \rtimes_\rho C_2
+    \]
+    where \(\rho\!: C_2 \longrightarrow \mathrm{Aut}(A_n)\) sends \(x\) to conjugation by \((1 \, 2)\). 
+    Similarly, we can also consider the subgroup \(H' = \langle (1 \, 3) \rangle = (1 \,2 \, 3) \langle (1 \, 2) \rangle (1 \,2 \, 3)^{-1}\) of \(S_n\), and we also have
+    \[
+      S_n \cong A_n \rtimes_{\rho'} C_2
+    \]
+    where \(\rho': C_2 \to \mathrm{Aut}(A_n)\) sends \(x\) to conjugation by \((1 \,3)\).</p>
+    <p>However, the actions determined by \(\rho\) and \(\rho'\) are not identical. For example, 
+    \[
+      \rho(x)(1 \, 2 \, 3) = (1 \, 2 \, 3) \quad \text{ and } \quad \rho'(x)(1 \, 2 \, 3 ) = (2 \, 1 \, 3).
+    \]
+    Yet 
+    \[
+      A_n \rtimes_{\rho} H \cong S_n \cong A_n \rtimes_{\rho'} H'.
+    \]
+    </p>
+  </section>
+
+  <p>One good reason why this happened in this case is that \(H\) and \(H'\) are conjugate in \(S_n\).</p>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-7-2-20">
+    <h3 id="ex-7-2-20">Exercise 7.2.20</h3>
+    <p>Let \(K\) be a finite cyclic group and let \(H\) be an arbitrary group. Suppose \(\phi\!: K \to \mathrm{Aut}(H)\) and \(\theta\!: K \to \mathrm{Aut}(H)\) are homomorphisms whose images are conjugate subgroups of \(\mathrm{Aut}(H)\); that is, suppose there is \(\sigma \in \mathrm{Aut}(H)\) such that \(\sigma \phi(K) \sigma^{-1} = \theta(K)\). Then \(H \rtimes_\phi K \cong H \rtimes_\theta K\). </p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-7-2-21">
+    <h3 id="ex-7-2-21">Example 7.2.21</h3>
+    <p>Let \(K\) be a cyclic group of prime order \(p\) and \(H\) be a group such that \(\mathrm{Aut}(H)\) has a unique subgroup of order \(p\). Suppose \(\phi\!: K \to \mathrm{Aut}(H)\) and \(\theta\!: K \to \mathrm{Aut}(H)\) are any two {\em nontrivial} maps. Then \(\phi\) and \(\theta\) are injective, since \(K\) is simple and the kernel would be a proper normal subgroup. Hence, the images of \(\phi\) and \(\theta\) are both the unique subgroup of \(\mathrm{Aut}(H)\) of order \(p\), and in particular they must be equal. Thus the Exercise applies to give \(H \rtimes_\phi K \cong H \rtimes_\theta K\).</p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-7-2-22">
+    <h3 id="rmk-7-2-22">Remark 7.2.22</h3>
+    <p>If \(\rho\!: K \longrightarrow \mathrm{Aut}(H)\) is a nontrivial homomorphism, then the semidirect product \(H \rtimes_\rho K\) is \emph{never} abelian. Indeed, all we need is to consider any \(k \in K\) such that \(\rho(k) \neq \mathrm{id}_H\), so that \(\rho(k)(h) \neq h\) for some \(h \in H\), and note that
+    \[
+      (e,k)(h,e) = (\rho(k)(h),k) \quad \text{while} \quad (h,e)(e,k) = (h\rho(e)(e),k) = (h,k).
+    \]
+    </p>
+  </section>
+
+  <p>Thus we can use semidirect products to construct nonabelian groups. 
+  Given an integer \(n \geqslant 2\), to construct a nonabelian group we might set out to find groups \(K\) and \(H\) such that
+  \[
+    |K| |H| = n
+  \]
+  and such that there exists a nontrivial homomorphism
+  \[
+    \rho\!: K \to \mathrm{Aut}(H).
+  \]
+  </p>
+</section>
+
+
+<section id="finitely-generated-abelian-groups" aria-labelledby="sec-7-3-heading">
+  <h2 id="sec-7-3-heading">7.3 Finitely generated abelian groups</h2>
+
+  <p>Recall that a group \(G\) is finitely generated if it \(G=\langle A \rangle\), where \(A\) is a finite set. </p>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-7-3-1">
+    <h3 id="rmk-7-3-1">Remark 7.3.1</h3>
+    <p>Any finite group \(G\) is finitely generated, since we can take \(A=G\). However, a finitely generated group need not be finite: for example \(\mathbb{Z}\) is even cyclic but infinite.</p>
+  </section>
+
+  <p>The main theorem of this section is a special case of a much more general theorem we will prove in the Spring: the classification of finitely generated modules over PIDs. Thus we leave the proof for next semester.</p>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-7-3-2">
+    <h3 id="thm-7-3-2">Theorem 7.3.2 (Fundamental Theorem of Finitely Generated Abelian Groups: Invariant Factor Form)</h3>
+    <p>Let \(G\) be a finitely generated abelian group. There exist integers \(r \geqslant 0\), \(t \geqslant 0\), and \(n_i \geqslant 2\) for \(1 \leqslant i \leqslant t\), satisfying \(n_1 \mid n_2 \mid \cdots \mid n_t\) such that 
+    \[
+      G \cong \mathbb{Z}^r \times \mathbb{Z}/n_1 \times \dots \times \mathbb{Z}/n_t.
+    \]
+    Moreover, the list \(r,s,n_1,\ldots , n_t\) is uniquely determined by \(G\).</p>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-7-3-3">
+    <h3 id="def-7-3-3">Definition 7.3.3</h3>
+    <p>In the Fundamental Theorem of Finitely Generated Abelian Groups: Invariant Factor Form, the number \(r\) is the <strong>rank</strong> of \(G\), the numbers \(n_1,\ldots,n_t\) are the <strong>invariant factors</strong> of \(G\), and the decomposition of \(G\) in this form is the <strong>invariant factor decomposition</strong> of \(G\).</p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-7-3-4">
+    <h3 id="rmk-7-3-4">Remark 7.3.4</h3>
+    <p>A finitely generated abelian group is finite if and only if its rank is \(0\). A special case of the classification theorem is that if \(G\) is a finite abelian group then
+    \[
+      G \cong \mathbb{Z}/n_1 \times \dots \times \mathbb{Z}/n_t
+    \]
+    for a unique list of integers \(n_i \geqslant 2\) such that \(n_1 | n_2 | \cdots | n_t\).</p>
+  </section>
+
+  <p>Here is another version of the classification theorem:</p>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-7-3-5">
+    <h3 id="thm-7-3-5">Theorem 7.3.5 (Fundamental Theorem of Finitely Generated Abelian Groups: Elementary Divisor Form)</h3>
+    <p>Let \(G\) be a finitely generated abelian group. Then there exist integers \(r \geqslant 0\) and \(s \geqslant 0\), not necessarily distinct positive prime integers \(p_1, \cdots, p_s\), and integers \(a_i \geqslant 1\) for \(1 \leqslant i \leqslant s\) such that
+    \[
+      G \cong \mathbb{Z}^r\times \mathbb{Z}/p_1^{a_1} \times \cdots \times \mathbb{Z}/p_s^{a_s}.
+    \]
+    Moreover, \(r\) and \(s\) are uniquely determined by \(G\), and the list of prime powers \(p_1^{a_1}, \dots, p_s^{a_s}\) is unique up to the ordering. </p>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-7-3-6">
+    <h3 id="def-7-3-6">Definition 7.3.6</h3>
+    <p>In the Fundamental Theorem of Finitely Generated Abelian Groups: Elementary Divisor Form, the number \(r\) is the <strong>rank</strong> of \(G\), the \(p_i^{a_i}\) are the <strong>elementary divisors</strong> of \(G\), and the decomposition of \(G\) is called the <strong>elementary divisor decomposition</strong> of \(G\).</p>
+  </section>
+
+  <p>The two forms of the classification theorem are equivalent, which we can prove using the CRT. Rather than a careful proof that the two versions of the classification theorem are equivalent, we will now see in examples how the CRT allows us to go between invariant factors and elementary divisors.</p>
+
+  <section class="callout example" role="region" aria-labelledby="ex-7-3-7">
+    <h3 id="ex-7-3-7">Example 7.3.7 (Converting elementary divisors to invariant factors)</h3>
+    <p>Suppose \(G\) is a finitely generated abelian group of rank \(3\) with elementary divisors \(4, 8, 9, 27, 25\). This means that
+    \[
+      G \cong \mathbb{Z}^{3} \times \mathbb{Z}/4 \times \mathbb{Z}/8 \times \mathbb{Z}/9 \times \mathbb{Z}/27 \times \mathbb{Z}/25.
+    \]
+    By the CRT, 
+    \[
+      \mathbb{Z}/8 \times \mathbb{Z}/27 \times \mathbb{Z}/25 \cong \mathbb{Z}/(8 \cdot 27 \cdot 25)
+      \quad \text{and} \quad
+      \mathbb{Z}/4\times \mathbb{Z}/9  \cong \mathbb{Z}/(4 \cdot 9),
+    \]
+    so that
+    \[
+      G \cong \mathbb{Z}^{3} \times \mathbb{Z}/(8 \cdot 27 \cdot 25) \times \mathbb{Z}/(4 \cdot 9) = \mathbb{Z}^{3} \times \mathbb{Z}/5400 \times \mathbb{Z}/36.
+    \]
+    Since \(36 \mid 5400\), we conclude that \(G\) has rank \(3\) and invariant factors \(5400\) and \(36\). </p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-7-3-8">
+    <h3 id="ex-7-3-8">Example 7.3.8 (Converting invariant factors to elementary divisors)</h3>
+    <p>Let
+    \[
+      G \cong \mathbb{Z}^{4} \times \mathbb{Z}/6 \times \mathbb{Z}/36 \times \mathbb{Z}/180.
+    \]
+    Then by the CRT,
+    \[
+      G \cong \mathbb{Z}^{4} \times \mathbb{Z}/2 \times \mathbb{Z}/3 \times \mathbb{Z}/4 \times \mathbb{Z}/9  \times \mathbb{Z}/4 \times \mathbb{Z}/5 \times \mathbb{Z}/9,
+    \]
+    is the elementary divisor form for \(G\).</p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-7-3-9">
+    <h3 id="ex-7-3-9">Example 7.3.9</h3>
+    <p>Let \(G = \mathbb{Z}/60 \times \mathbb{Z}/50\). This group is finite and abelian, and thus \(r=0\), but not in either invariant factor nor elementary divisor factorization.</p>
+    <p>Applying the CRT to \(60 = 12 \cdot 5 = 2^2 \cdot 3 \cdot 5\) and \(50 = 2 \cdot 5^2\), we have
+    \[
+      \mathbb{Z} / 60 \cong \mathbb{Z} / 4 \times \mathbb{Z} / 3 \times \mathbb{Z} / 5 \quad \text{and} \quad \mathbb{Z}/50 \cong \mathbb{Z}/2 \times \mathbb{Z}/25
+    \]
+    so
+    \[
+      G \cong \mathbb{Z}/2 \times \mathbb{Z}/4 \times \mathbb{Z}/3 \times \mathbb{Z}/5 \times \mathbb{Z}/25.
+    \]
+    This gives the elementary divisor decomposition: \(G\) has rank \(0\) and elementary divisors \(2\), \(4\), \(3\), \(5\), and \(25\). Applying the CRT again, in a different way, gives
+    \[
+      G \cong \mathbb{Z}/(4 \cdot 3 \cdot 25) \times \mathbb{Z}/(2 \cdot 5) = \mathbb{Z}/300 \times \mathbb{Z}/10.
+    \]
+    This is the invariant factor decomposition: \(G\) has rank \(0\) and invariant factors \(10\) and \(300\).</p>
+  </section>
+
+  <p>This classification makes the classification of finite abelian groups a very quick matter.</p>
+
+  <section class="callout example" role="region" aria-labelledby="ex-7-3-10">
+    <h3 id="ex-7-3-10">Example 7.3.10</h3>
+    <p>Let us classify the abelian groups of order \(75\). First, note that \(75 = 5^2 \cdot 3\). The two possible elementary divisor decompositions are 
+    \[
+      \mathbb{Z}/25 \times \mathbb{Z}/3 \quad \text{ and } \quad \mathbb{Z}/5 \times \mathbb{Z}/5 \times \mathbb{Z}/3.
+    \]
+    Note that the two groups above are not isomorphic. This is part of the theorem, but to see this directly, note that there is an element of order \(25\) in \(\mathbb{Z}/25 \times \mathbb{Z}/3\), namely \(([1]_{25},[0]_3)\) whereas every element \((a,b,c)\in \mathbb{Z}/5 \times \mathbb{Z}/5 \times \mathbb{Z}/3\) has order 
+    \[
+      |(a,b,c)| =\mathrm{lcm}(|a|, |b|, |c|)\leqslant 3 \cdot 5 = 15,
+    \]
+    since \(|a|, |b| \in \{1,5\}\) and \(|c| \in \{1,3\}\).</p>
+    <p>Alternatively, the two possible invariant factor decompositions are
+    \[
+      \mathbb{Z}/75 \quad \text{ or } \quad \mathbb{Z}/15 \times \mathbb{Z}/5.
+    \]
+    They are also not isomorphic, as the second option has no elements of order \(75\).</p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-7-3-11">
+    <h3 id="rmk-7-3-11">Remark 7.3.11</h3>
+    <p>Let \(n = p_1^{e_1} \cdots p_k^{e_k}\) for <em>distinct</em> positive prime integers \(p_1, \dots, p_k\) and integers \(e_i \geqslant 1\). The classification of finitely generated abelian groups implies that there are \(p(e_1) \cdots p(e_k)\) isomorphism classes of abelian groups of order \(n\), where \(p(m)\) is the number of partitions of \(m\). For example, for \(n = 2^4 \cdot 3^5 \cdot 5^2\) there are 
+    \[
+      p(4) p(6) p(2) = 5 \cdot 7 \cdot 2 = 70
+    \] 
+    abelian groups of order \(n\) up to isomorphism.	</p>
+  </section>
+</section>
+
+<section id="classifying-finite-groups-of-a-given-order" aria-labelledby="sec-7-4-heading">
+  <h2 id="sec-7-4-heading">7.4 Classifying finite groups of a given order</h2>
+
+  <p>We can now combine the ideas from Sylow theory, (semi)direct products and the classification theorem for finitely generated abelian groups to classify the isomorphism classes of groups of a given order.
+  You have already done some examples of this kind, such as the following problem set question:</p>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-7-4-1">
+    <h3 id="ex-7-4-1">Exercise 7.4.1</h3>
+    <p>Show that any group of order \(6\) is isomorphic either to \(\mathbb{Z}/6\) or to \(D_3\).</p>
+  </section>
+
+  <p>Here is an example of the type of classification theorem we can prove.</p>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-7-4-2">
+    <h3 id="thm-7-4-2">Theorem 7.4.2</h3>
+    <p>Let \(p&lt;q\) be primes.</p>
+    <ol style="margin-left:20px">
+      <li>If \(p\) does not divide \(q-1\), there is a unique group of order \(pq\) up to isomorphism, the cyclic group \(C_{pq}\).</li>
+      <li>If \(p\) divides \(q-1\), there are exactly two groups of order \(pq\) up to isomorphism, the cyclic group \(C_{pq}\) and a nonabelian group.</li>
+    </ol>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-7-4-2">
+    <h3 id="prf-7-4-2">Proof (of Theorem 7.4.2)</h3>
+    <p>Let \(G\) be a group of order \(pq\) and let \(n_q = |\mathrm{Syl}_q(G)|\). Since \(n_q \equiv 1 \pmod{q}\), \(n_q \mid p\), \(p\) is prime, and \(q &gt; p\), we must have \(n_q = 1\). Thus, the unique Sylow \(q\)-subgroup \(H\) is a normal subgroup.<sup>1</sup></p>
+
+    <p>Now let \(K\) be a Sylow subgroup of order \(p\).
+    Since \(H\) is normal, we know that \(HK\) is a subgroup of \(G\).
+    By Lagrange's Theorem, \(|H\cap K|\) divides \(|H|\) and \(|H\cap K|\) divides \(|K|\). Therefore, \(H\cap K=\{e_G\}\). By an earlier exercise,
+    \[
+      |HK| = \frac{|H||K|}{|H\cap K|} = \frac{q\cdot p}{1} = pq = |G|
+    \]
+    and so \(HK=G\). The recognition theorem for semidirect products thus yields that 
+    \[
+      G \cong H \rtimes_\rho K 
+    \]
+    for some homomorphism \(\rho\!: K \longrightarrow \mathrm{Aut}(H)\). Note that \(H\) and \(K\) are cyclic, since they have prime order. Let us identify \(H\) with \(C_q = \langle x \mid x^q \rangle\) and \(K\) with \(C_p = \langle y \mid y^p \rangle\).
+    Then
+    \[
+      G \cong C_q \rtimes_\rho C_p \qquad \text{ for some homomorphism \(\rho: C_p \to \mathrm{Aut}(C_q)\).}
+    \]
+    We just need to classify all such semidirect products up to isomorphism.
+    By the UMP of cyclic groups, the homomorphism \(\rho\!: C_p \longrightarrow \mathrm{Aut}(C_q)\) is uniquely determined by the image of the generator \(x\), which must be an element \(\alpha \in \mathrm{Aut}(C_q)\) with \(\alpha^p = \mathrm{id}\). Given such an \(\alpha\), we have  \(\rho(y) = \alpha\) and more generally \(\rho(y^i) = \alpha^{i}\).</p>
+
+    <p>\(\mathrm{Aut}(C_q)\) is cyclic of order \(q-1\). On the other hand, \(\mathrm{im}(\rho)\) is a subgroup of both \(C_p\) and \(\mathrm{Aut}(C_q)\), so its order must divide both \(p\) and \(q-1\). In particular, there is a nontrivial automorphism \(\rho\) if and only if \(p \mid q-1\).</p>
+
+    <p>If \(p\) does not divide \(q-1\), then \(\rho\) is trivial, and by an earlier Lemma and the CRT we have 
+    \[
+      G \cong C_q \times C_q \cong C_{pq}.
+    \]</p>
+
+    <p>If \(p\) does divide \(q-1\), there is at least one nontrivial \(\rho\).
+    We still have \(G \cong C_{pq}\) if \(\rho\) is trivial. When \(\rho\) is nontrivial, \(G\) is not abelian, giving us at least two isomorphism classes. 
+    It remains to show that if \(\rho_1\) and \(\rho_2\) are any two nontrivial homomorphisms from \(C_p\) to \(\mathrm{Aut}(C_q)\), then the resulting semidirect products are isomorphic.</p>
+
+    <p>Since \(\mathrm{Aut}(C_q)\) is a cyclic group and \(p\) divides its order, it has a unique subgroup of order \(p\).
+    Thus, we conclude that \(\mathrm{im}(\rho_1) = \mathrm{im}(\rho_2)\), so we have
+    \[
+      C_q \rtimes_{\rho_1} C_p \cong C_q \rtimes_{\rho_2} C_p.
+    \]</p>
+
+    <p><small><sup>1</sup> Alternatively, \(H\) is normal since \([G:H]=p\) is the smallest prime that divides \(|G|\).</small></p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-7-4-3">
+    <h3 id="ex-7-4-3">Example 7.4.3</h3>
+    <p>If \(p =2\) and \(q\) is any odd prime, then there are two groups of order \(2q\) up to isomorphism: \(C_{2q}\) and \(D_{q}\).</p>
+  </section>
+</section>
 
 
 </main>

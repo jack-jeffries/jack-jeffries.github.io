@@ -4633,27 +4633,13 @@ $$\begin{aligned}
 & = (y_1 \rho(x_1)(y_2), x_1 x_2)  (y_3, x_3) \\
 & = \left( (y_1,x_1) (y_2, x_2) \right) (y_3, x_3).
 \end{aligned}$$
-%On the other hand,
-%$$\begin{aligned}
-%\left( (y_1,x_1) (y_2, x_2) \right) (y_3, x_3) 
-%& = (y_1 \rho(x_1)(y_2), x_1 x_2)  (y_3, x_3) 
-%= (y_1 \rho(x_1)(y_2)\rho(x_1x_2)(y_3), x_1 x_2 x_3).
-%\end{aligned}$$
-%This gives associativity.
 
 To show that $(e,e)$ is a two-sided identity, consider any $h \in H$ and $k \in K$. Since $\rho(k)$ is a homomorphism, then $\rho(k)(e) = e$, and thus
 $$(h,k)(e,e) = (h\rho(k)(e),ke) = (he,ke) = (h,k).$$
 Moreover, since $\rho$ is a homomorphism, $\rho(e) = \mathrm{id}_H$, and thus $\rho(e)(y) = \mathrm{id}_H(y)=y$ for any $y \in K$, so that
 $$(e,e)(h,k) = (e\rho(e)(h),ek) = (eh,ek)=(h,k).$$
 Finally, for any $x \in H$ and $y \in K$ we have
-%$$\begin{aligned}
-%(y,x) (\rho(x^{-1})(y^{-1}) ,x^{-1}) &= (y \rho(x)\left(\rho(x^{-1})(y^{-1}) \right), e)\\
-%& = (y (\rho(x)\circ\rho(x^{-1}))(y^{-1}), e) \\
-%&= (y \rho(e)(y^{-1}), e) & \textrm{since $\rho$ is a homomorphism} \\
-%& = (yy^{-1},e) & \text{since } \rho(e) = \mathrm{id}_H\\ 
-%& =(e,e),
-%\end{aligned}$$
-%
+
 $$\begin{aligned}
 (x,y) (\rho(y^{-1})(x^{-1}), y^{-1}) &= (x \, \rho(y)\left(\rho(y^{-1})(x^{-1}) \right), yy^{-1})\\
 & = (x (\rho(y) \circ \rho(y^{-1}))(x^{-1}), e) \\
@@ -4713,17 +4699,6 @@ is isomorphic to $K$.
 Finally, given any $(h,k) \in H \sdp_{\rho} K$, we can write
 $$ (h,k) = (h\rho(e)(e),k) = (h,e)(e,k) \in H'K',$$
 so $H'K'= H \sdp_\rho K$.
-%
-%Finally, it is easy to see that
-%$H'K'= H \sdp_\rho K$ and $H' \cap K' = \{e\}$. Putting this all together we have shown that
-%\begin{multicols}{2}
-%\begin{itemize}[itemsep=-0.1em]
-%\item $H' \trianglelefteq  H \sdp_\rho K$, 
-%\item $K' \leq H \sdp_\rho K$,
-%\item $H' K' = H \sdp_\rho K$, and 
-%\item $H'\cap K' = \{e\}$. 
-%\end{itemize}
-%\end{multicols}
 
 Consider the projection onto the second factor 
 $$\pi_2\!:H \sdp_\rho K \to  K,$$
@@ -4951,15 +4926,12 @@ $$(e,k)(h,e) = (\rho(k)(h),k) \quad \text{while} \quad (h,e)(e,k) = (h\rho(e)(e)
 
 
 
-%\begin{remark}
-%We have seen in \Cref{semidirect product nonabliean} that if $\rho\!: K \to \mathrm{Aut}(H)$ is a nontrivial homomorphism, then the semidirect product $H \sdp_{\rho} K$ is a nonabelian group. We can now use this idea to construct nonabelian groups. 
-
 Thus we can use semidirect products to construct nonabelian groups. 
 Given an integer $n \geqslant 2$, to construct a nonabelian group we might set out to find groups $K$ and $H$ such that
 $$|K| |H| = n$$
 and such that there exists a nontrivial homomorphism
 $$\rho\!: K \to \mathrm{Aut}(H).$$
-%\end{remark}
+
 
 
 \section{Finitely generated groups}
@@ -5131,38 +5103,6 @@ $$C_q \sdp_{\rho_1} C_p \cong C_q \sdp_{\rho_2} C_p.\qedhere$$
 \begin{example} 
 	If $p =2$ and $q$ is any odd prime, then there are two groups of order $2q$ up to isomorphism: $C_{2q}$ and $D_{q}$.
 \end{example}
-
-
-
-
-
-
-
-
-\begin{comment}
-We can now use semidirect products to construct nonabelian groups. First, here is one more useful fact about automorphism groups.
-
-
-
-\begin{example}
-	Let us construct an explicit nonabelian group of order $63 = 3^2 \cdot 7$.   
-Consider $H = \mathbb{Z}/7$ and $K = \mathbb{Z}/9$. If we can find a nontrivial homomorphism $\rho\!: \mathbb{Z}/9 \to \mathrm{Aut}(\mathbb{Z}/7)$, then by $\Cref{semidirect product nonabliean}$ the semidirect product $H \sdp_{\rho} K$ is not abelian.
-
-By \Cref{aut Cp cyclic of order p-1},
-$$\mathrm{Aut}(\mathbb{Z}/7) \cong \mathbb{Z}/6.$$
-Since $\mathbb{Z}/9$ is a cyclic group, the \hyperref[UMP for cyclic groups]{UMP for cyclic groups} says that to any homomorphism $\rho\!: \mathbb{Z}/9 \to \mathbb{Z}/6$ is completely determined by $\alpha = \rho([1]_9)$, and that any $\alpha \in \mathbb{Z}/6$ such that $9\alpha = 0$ gives rise to such a homomorphism. Thus setting $\alpha = [2]_6$ gives us the homomorphism $\rho\!: \mathbb{Z}/9 \to \mathbb{Z}/6$ with
-$$\rho([i]_9) = [2i].$$
-Moreover, $\rho$ is nontrivial, since 
-$$\rho([1]_9) = [2]_6 \neq [0]_6.$$
-We conclude that
-$$\mathbb{Z}/7 \sdp_{\rho} \mathbb{Z}/9$$
-is a nonabelian group. In fact, we can give a presentation for $\rho$. 
-\end{example}
-
-
-\end{comment}
-
-
 
 
 
