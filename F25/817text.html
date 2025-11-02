@@ -5926,7 +5926,7 @@ In this chapter we discuss some important ways to build new groups out of smalle
     \]
     Thus \((x,y)\) has an inverse, given by
     \[
-      (x,y)^{-1} = (\rho(x^{-1})(y^{-1}) ,x^{-1}).
+      (x,y)^{-1} = (\rho(y^{-1})(x^{-1}) ,y^{-1}).
     \]
     This completes the proof that the semidirect product is a group.</p>
   </section>
@@ -5966,7 +5966,7 @@ In this chapter we discuss some important ways to build new groups out of smalle
     Moreover, \(i\) is injective by construction, and hence its image is isomorphic to \(H\) by the First Isomorphism Theorem. We can describe \(\mathrm{im}(i)\) as the set of all elements whose second component is \(e\).
     The image \(\mathrm{im}(i)\) is normal since the second component of
     \[
-      (h,k) (a, e) (h,k)^{-1} = (h,k) (a, e) (\rho(k^{-1})(h^{-1}), h^{-1})
+      (h,k) (a, e) (h,k)^{-1} = (h,k) (a, e) (\rho(k^{-1})(h^{-1}), k^{-1})
     \]
     is
     \[
@@ -6052,8 +6052,8 @@ In this chapter we discuss some important ways to build new groups out of smalle
   </section>
 
   <section class="callout exercise" role="region" aria-labelledby="ex-7-2-10">
-    <h3 id="ex-7-2-10">Exercise 7.2.10</h3>
-    <p>If \(p\) is prime, then \(\mathrm{Aut}(C_p) \cong \mathbb{Z}/p^\times\) is cyclic of order \(p-1\). </p>
+    <h3 id="ex-7-2-10">Remark 7.2.10</h3>
+    <p> We will show next semester that if \(p\) is prime, then \(\mathrm{Aut}(C_p) \cong (\mathbb{Z}/p)^\times\) is <i>cyclic</i> of order \(p-1\). We will use this important fact now though.</p>
   </section>
 
   <section class="callout exercise" role="region" aria-labelledby="ex-7-2-11">
@@ -6122,7 +6122,7 @@ In this chapter we discuss some important ways to build new groups out of smalle
   <section class="callout example" role="region" aria-labelledby="ex-7-2-15">
     <h3 id="ex-7-2-15">Example 7.2.15</h3>
     <p>Let \(K = \langle x \rangle\) be the cyclic of order \(2\) and \(H = \langle y \rangle\) be the cyclic of order \(n\) for some \(n \geqslant 2\). By the UMP for cyclic groups, to give a homomorphism out of \(K\) is to pick the image \(i\) of the generator \(x\), which must satisfy \(i^2 = e\). In particular, \(i\) must be either the identity or an element of order \(2\).</p>
-    <p>Since \(H\) is abelian, the inverse map \(f\!: H \longrightarrow H\) given by \(f(a)=a^{-1}\) is an automorphism of \(H\); we showed this in Problem Set 2.<sup>1</sup> (In fact, we can say more:
+    <p>Since \(H\) is abelian, the inverse map \(f\!: H \longrightarrow H\) given by \(f(a)=a^{-1}\) is an automorphism of \(H\) (Exercise!). (In fact, we can say more:
     \(\mathrm{Aut}(H) \cong (\mathbb{Z}/n)^\times\). In particular, \(-1\) is an element of \((\mathbb{Z}/n)^\times\), and the associated automorphism sends \(y\) to \(y^{-1}\).)
     This automorphism \(f\) is not the identity but it is its own inverse, so it has order \(2\). Therefore, by the UMP for cyclic groups, there is a homomorphism
     \[
