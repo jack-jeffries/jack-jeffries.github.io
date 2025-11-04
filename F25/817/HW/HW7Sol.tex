@@ -1,0 +1,205 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,enumerate}
+\usepackage[]{graphicx}
+\usepackage{color,subfigure}
+\definecolor{scarlet}{rgb}{0.81,0,0}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage[all]{xypic}
+\usepackage[colorlinks=true,citecolor=scarlet,linkcolor=scarlet]{hyperref}
+\usepackage{colonequals}
+
+\usepackage{fancyhdr, lastpage}
+\pagestyle{fancy}
+\fancyfoot[C]{{\thepage} of \pageref{LastPage}}
+
+
+
+\DeclareMathOperator{\mSpec}{mSpec}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Ass}{Ass}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\height}{height}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\ann}{ann}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\coker}{coker}
+%\DeclareMathOperator{\ker}{ker}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\M}{M}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\ch}{char}
+\DeclareMathOperator{\Aut}{Aut}
+
+%\DeclareMathOperator{\dim}{dim}
+
+\DeclareMathOperator{\lcm}{lcm}
+
+\def\ra{\rightarrow}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Zc}{\mathrm{Z}}
+\newcommand{\ov}[1]{\overline{#1}}
+\newcommand{\norm}{\trianglelefteq}
+\renewcommand{\iff}{\Longleftrightarrow}
+\newcommand{\Orb}{\mathrm{Orb}}
+\newcommand{\Stab}{\mathrm{Stab}}
+
+\def\ov#1{\overline{#1}}
+
+
+\title{}
+\date{\vspace{-0.5in}}
+
+\makeatletter
+\g@addto@macro\@floatboxreset\centering
+\makeatother
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+
+\begin{document}
+
+\thispagestyle{fancy}
+\pagestyle{fancy}
+\rhead{UNL $\mid$ Fall 2025}
+\lhead{Introduction to Modern Algebra I}
+
+\vspace{3em}
+
+\begin{center}
+	{\LARGE Problem Set 7 \\}
+	Due Friday, October 24
+\end{center}
+
+\
+
+\noindent
+{\bf Instructions:}
+You are encouraged to work together on these problems, but each student should hand in their own final draft, written in a way that indicates their individual understanding of the solutions. Never submit something for grading that you do not completely understand. You cannot use any resources besides me, your classmates, and our course notes.
+
+
+I will post the .tex code for these problems for you to use if you wish to type your homework. If you prefer not to type, please  {\em write neatly}. As a matter of good proof writing style, please use complete sentences and correct grammar. You may use any result stated or proven in class or in a homework problem, provided you reference it appropriately by either stating the result or stating its name (e.g. the definition of ring or Lagrange's Theorem). Please do not refer to theorems by their number in the course notes, as that can change.
+
+
+\smallskip
+
+\begin{problem}
+Let $p$ be a prime number and $|G|=p^e$ for some $e\geq 1$. 
+\begin{enumerate}
+\item[(a)] Show that for any nontrivial normal subgroup $N\trianglelefteq G$, we have $N \cap Z(G) \neq \{e\}$.
+
+\begin{proof}
+Since $N$ is normal, the rule $g \cdot n \colonequals gng^{-1}$ defines an action of $G$ on $N$. 
+Given $n \in N$, if $n$ is a fixed point for the action, then for all $g \in G$
+$$g \cdot n = n \iff gng^{-1} = n \iff gn = ng \iff n \in \Zc(G).$$
+Thus the number of fixed points for this action is $|N \cap \Zc(G)|$.
+
+Now consider the Orbit Equation for this action. To do that, fix elements $n_1, \ldots, n_r$ in each one of the orbits with more than one element. Then 
+$$|N| = |N \cap \Zc(G)| + \sum_i^r |\Orb_G(n_i)|.$$
+By the Orbit-Stabilizer Theorem, for each $n_i$ we have
+$$|\Orb_G(n_i)| = [G : \Stab_G(n_i)],$$
+so 
+$$|N| = |N \cap \Zc(G)| + \sum_i^r [G : \Stab_G(n_i)].$$
+Since $n_i$ is not a fixed point, $\Stab_G(n_i) \neq G$, so $[G : \Stab_G(n_i)] > 1$. Note that by Lagrange's Theorem $[G : \Stab_G(n_i)]$ must divide $|G|= p^m$, so in particular $p$ divides $[G : \Stab_G(n_i)]$.
+Since $N$ is a nontrivial subgroup of $G$, its order must be also divisible by $p$. Thus
+$$|N \cap \Zc(G)| = |N| - \sum_i^r [G : \Stab_G(n_i)]$$
+is a multiple of $p$. In particular, $|N \cap \Zc(G)| > 1$.
+
+Since $\Z(G) \cap  N$ is a subgroup of $G$, its order must divide $p^m$, and we conclude that $|\Z(G) \cap N| = p^j$ for some $j \geqslant 1$.
+\end{proof}
+
+\item[(b)] Show that for every $m\leq e$, there is a subgroup of $G$ of order $p^m$.
+
+\begin{proof} We will show the claim by induction on $e$. 
+
+If $e=1$, then $|G|=p$, and the only possible values of $m$ are $0$ and $1$; the subgroup $\{e\}$ has order $1=p^0$ and the subgroup $G$ has order $p=p^1$. This covers the base case of the induction.
+
+Let $e\geq 1$ and assume that for every group $G'$ of order $p^e$ and every $\ell \leq e$, there is a subgroup $H'\leq G'$ of order $p^\ell$, and consider a group $G$ of order $p^{e+1}$. Again we have the subgroup $\{e\}$ of order $1=p^0$. Now, the center $Z(G)$ is nontrivial by a Theorem from class (or from part (a)), so $p$ divides the order of $Z(G)$. By Cauchy's Theorem, there exists an element $g\in Z(G)$ of order $p$. Let $K=\langle g \rangle \leq G$; this is a subgroup of order $p$. Since $g\in Z(G)$, we have $hg^i h^{-1} = g^i$ for all $i$, so $K$ is normal. Then $G/K$ is a group of order $p^e$. By the induction hypothesis, for any $0\leq \ell \leq e$, there is a subgroup of $G/K$ of order $p^\ell$. Now, fix some $m$ such that $1\leq m \leq e$. There is a subgroup $H' \leq G/K$ of order $p^{m-1}$, which has index $p^{e-m+1}$. By the Lattice Isomorphism Theorem, there is a subgroup of $H\leq G$ that has index $p^{e-m+1}$. By Lagrange, $|H|=p^m$. This completes the induction.
+\end{proof}
+\end{enumerate}
+\end{problem}
+
+
+
+
+\begin{problem}
+Show that if $G$ is a nonabelian group of order $21$, then there is only on possible class equation for $G$, meaning that the numbers appearing are uniquely determined up to order.
+\end{problem}
+
+
+
+
+\begin{proof} 
+    We first show that if $G$ is nonabelian, then $|Z(G)| = 1$. Indeed, assuming that $|Z(G)| \neq 1$, we deduce that $|Z(G)|\in \{3,7\}$ ($|Z(G)|=21$ is excluded because it would
+    imply that $G$ is abelian). Thus $\left|\frac{G}{Z(G)}\right|\in\{3,7\}$ and since groups of prime order are cyclic this means that $\frac{G}{Z(G)}$ is cyclic. As given in the
+    statement, if $\frac{G}{Z(G)}$ is cyclic then $G$ is abelian, which would result in a contradiction. We are left with $|Z(G)| = 1$ as the only possibility.
+
+
+The class equation has the form $21=|Z(G)| + n_1 + \cdots + n_j$ where $n_i \geq 2$ are the sizes of non-central conjugacy classes. We have $n_i \mid 21$ by Orbit-Stabilizer, and hence $n_i = 3$ or $7$, for all $i$ (since $1$ and $21$ are  impossible). 
+ There is only one way to get $21$ by adding up $1$ and any number of terms equal to  $3$
+or $7$ and thus
+$$
+21 = 1 + 3 + 3 + 7 + 7
+$$
+is the only other class equation that is possible.
+\end{proof}
+
+
+
+\begin{problem}
+Let $G$ be a a finite group acting transitively on a set $X$.
+\begin{enumerate}
+\item[(a)] Show that for any $x,y\in X$, the stabilizer subgroups $\mathrm{Stab}_G(x)$ and $\mathrm{Stab}_G(y)$ are conjugate subgroups.
+
+\begin{proof}
+Since $s$ and $t$ are in the same orbit, there exists $g \in G$ such that
+$$t = g \cdot s, \quad \textrm{ or equivalently, } \quad s = g^{-1}t.$$
+Then given any $h \in \Stab_G(t)$, since $\Stab_G(t)$ is a subgroup of $G$, then
+$$\begin{aligned}
+(g^{-1}hg) \cdot s & = (g^{-1}h) \cdot (g \cdot s) \\
+& = (g^{-1}h) \cdot t\\
+& = g^{-1} \cdot (ht) \\
+& = g^{-1} \cdot t & \textrm{ since } h \in \Stab_G(t) \\
+& = s.
+\end{aligned}$$
+Thus $g^{-1}hg \in \Stab_G(s)$. This shows that 
+$$g^{-1} \Stab_G(t) g \subseteq \Stab_G(s).$$
+Moreover, the same argument but switching the roles of $s$ and $t$ shows that 
+$$g \Stab_G(s) g^{-1} \subseteq \Stab_G(t),$$
+and multiplying by $g^{-1}$ on the left and $g$ on the right gives
+$$\Stab_G(s) \subseteq g^{-1} \Stab_G(t) g.$$
+We conclude that
+$$\Stab_G(s) = g^{-1} \Stab_G(t) g.\qedhere$$
+\end{proof}
+
+\item[(b)] Show\footnote{Hint: Use a Theorem from class/notes.} that if $|X|>1$, then there exists some $g\in G$ such that $g\cdot z\neq z$ for all $z\in X$.
+
+\begin{proof}
+Fix any $s \in S$. Since $S$ has at least two elements and the action is transitive, there is some element of $G$ that does not fix $s$, so $\Stab_G(s) \neq G$. By a theorem from class,
+$$\bigcup_{g \in g} g \Stab_G(s) g^{-1} \neq G.$$
+In the previous part we showed that this is just the union of all the stabilizers of elements of $S$, meaning
+$$\bigcup_{t \in S} \Stab_G(t) \neq G.$$
+In particular, there exists some element $g \in G$ that is not in the stabilizer of any element in $S$, and thus $g$ has no fixed points.
+\end{proof}
+
+\end{enumerate} 
+\end{problem}
+
+
+
+
+
+
+
+
+\end{document}
