@@ -1,0 +1,212 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,enumerate}
+\usepackage[]{graphicx}
+\usepackage{color,subfigure}
+\definecolor{scarlet}{rgb}{0.81,0,0}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage[all]{xypic}
+\usepackage[colorlinks=true,citecolor=scarlet,linkcolor=scarlet]{hyperref}
+\usepackage{colonequals}
+
+\usepackage{fancyhdr, lastpage}
+\pagestyle{fancy}
+\fancyfoot[C]{{\thepage} of \pageref{LastPage}}
+
+
+
+\DeclareMathOperator{\mSpec}{mSpec}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Ass}{Ass}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\height}{height}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\ann}{ann}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\coker}{coker}
+%\DeclareMathOperator{\ker}{ker}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\M}{M}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\ch}{char}
+\DeclareMathOperator{\Aut}{Aut}
+
+%\DeclareMathOperator{\dim}{dim}
+
+\DeclareMathOperator{\lcm}{lcm}
+
+\def\ra{\rightarrow}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\ov}[1]{\overline{#1}}
+\newcommand{\norm}{\trianglelefteq}
+
+\def\ov#1{\overline{#1}}
+
+
+\title{}
+\date{\vspace{-0.5in}}
+
+\makeatletter
+\g@addto@macro\@floatboxreset\centering
+\makeatother
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+
+\begin{document}
+
+\thispagestyle{fancy}
+\pagestyle{fancy}
+\rhead{UNL $\mid$ Fall 2025}
+\lhead{Introduction to Modern Algebra I}
+
+\vspace{3em}
+
+\begin{center}
+	{\LARGE Problem Set 9 \\}
+	Due Thursday, November 6
+\end{center}
+
+\
+
+\noindent
+{\bf Instructions:}
+You are encouraged to work together on these problems, but each student should hand in their own final draft, written in a way that indicates their individual understanding of the solutions. Never submit something for grading that you do not completely understand. You cannot use any resources besides me, your classmates, and our course notes.
+
+
+I will post the .tex code for these problems for you to use if you wish to type your homework. If you prefer not to type, please  {\em write neatly}. As a matter of good proof writing style, please use complete sentences and correct grammar. You may use any result stated or proven in class or in a homework problem, provided you reference it appropriately by either stating the result or stating its name (e.g. the definition of ring or Lagrange's Theorem). Please do not refer to theorems by their number in the course notes, as that can change.
+
+\
+
+
+\begin{problem}
+Prove that there is no simple group of order $48$.
+\end{problem}
+
+
+\begin{proof} Let $G$ be a group of order $48$. By Sylow's Theorem, the number of Sylow $2$-subgroups divides $3$, so is either equal to $1$ or $3$. If there is only one Sylow $2$-subgroup, it is normal, so $G$ is not simple. Suppose that $G$ has $3$ Sylow $2$-subgroups. Then $G$ acts on the set $X$ of Sylow $2$-subgroups by conjugation, and this action is transitive by Sylow's Theorem; in particular, the action is nontrivial. This induces a permutation representation $\rho: G \to S_3$. Since $|G|=48 >  6 = |S_3|$, this map cannot be injective, so the kernel of $\rho$ is a nontrivial normal subgroup of $G$; it is proper since $\rho$ is nontrivial. Thus, in either case $G$ is not simple.
+\end{proof}
+
+
+\begin{problem}
+Let $C_n$ denote the cyclic group of order $n \geqslant 2$, and consider the group
+$$(\ZZ/n)^\times = \{ [j]_n \mid \gcd(j,n)=1\}$$
+with the binary operation given by the usual multiplication. Prove that 
+$$\Aut(C_n) \cong (\ZZ/n)^\times.$$
+\end{problem}
+
+
+\begin{proof} 
+Let $C_n = \langle x\mid x^n=e\rangle$. By the Universal Mapping Property for cyclic groups, each group homomorphism $C_n \to C_n$ is uniquely determined by the image of $x$. The possible images for $x$ are the $n$ elements in $C_n$, which are $x^i \in C_n$ for $0 \leqslant i<n$. Let $\rho_i\!: C_n \to C_n$ be the unique homomorphism determined by $\rho_i(x)=x^i$. We have for now shown that
+$$\Aut(C_n) = \{ \rho_i \mid 0 \leqslant i < n \}.$$
+Note that $\im(\rho_i)=\langle x^i \rangle$, and we proved in class that $\langle x^i \rangle=C_n$ if and only if $\gcd(i,n)=1$.
+Note moreover that if $\rho_i$ is surjective, then it must also be injective, given that it is a function between two finite sets of the same order. Thus 
+$$\rho_i \in \Aut\left(C_n\right) \quad \text{if and only if} \quad [i]_n\in (\ZZ/n)^{\times}.$$ 
+Now consider $\varphi\!:\Aut\left(C_n \right)\to (\Z/n)^\times$ given by 
+$$\varphi(\rho_i)= [i]_n.$$
+%If $i \equiv i' \pmod{n}$ and
+%$j \equiv j' \pmod {n}$, then $ij \equiv i'j'\pmod{n}$, which proves both that $\rho_i$ is well-defined and the assignment $[i] \mapsto \rho_i$ is well-defined.
+%$\rho_i$ is a homomorphism since $i(j + j') = ij + ij'$.
+Note that
+$$(\rho_i \circ \rho_j)(x) =x^{ij} = \rho_{ij \pmod{m}}(x).$$ 
+The uniqueness part of the UMP for cyclic groups implies that 
+$$\rho_i \circ \rho_j = \rho_{ij \pmod m}.$$
+Hence,
+$$\varphi(\rho_i \circ \rho_j) = \varphi \left( \rho_{ij \pmod m} \right) = [ij]_n = [i]_n [j]_n = \varphi(\rho_i) \varphi(\rho_j).$$
+Thus $\varphi$ is a group homomorphism. 
+
+Given $[j]_n\in (\Z/n)^\times$, by the UMP for cyclic groups there exists a unique homomorphism
+$$\psi([j]_n)\!:C_n\to C_n$$
+that takes $x \mapsto x^j$. 
+This gives us a map $\psi\!: (\Z/n)^\times\to \Aut(C_n)$. We need to show that $\psi$ is well-defined both in terms of independence of representative in $(\Z/n)^\times$ but also in terms of the the image landing in the automorphism group of $C_n$.\footnote{Note that in principle $\psi([j]_n)$ could simply be a homomorphism $C_n \to C_n$, rather than an isomorphism.} Indeed, 
+$$i \equiv i' \!\!\pmod{n} \implies x^i=x^{i'} \in C_n \implies \psi([i]_n) = \psi([i']_n).$$ 
+Thus the definition of $\psi$ does not depend on the choice of representative $i$ for the class $[i]_n$.
+Moreover, the image of $\psi([i]_n)$ is the subgroup $\langle x^i\rangle$ of $C_n$, and since $\gcd(i,n) = 1$, we know that $\langle x^i\rangle = C_n$.
+This shows that $\psi([i]_n)$ is surjective, and hence bijective because its domain and codomain have the same number of elements. This shows that $\psi$ is a well-defined function whose codomain is indeed $\Aut(C_n)$.
+
+Finally, 
+$$\psi (\varphi(\rho_i)) = \psi([i]_n) = \psi_i \quad \varphi(\psi([i]_n) = \varphi(\rho_i) = [i]_n.$$
+Therefore, $\varphi$ is a group isomorphism, as desired.
+\end{proof}
+
+
+
+\begin{problem}
+Prove that\footnote{Hint: You can use without proof that every subgroup of $Q_8$ is normal.} the quaternion group $Q_8$ is not isomorphic to a semidirect product of nontrivial groups $H,K$.
+\end{problem}
+
+\begin{proof}
+It follows from results proven in class that  $Q_8$ is isomorphic to $H \rtimes_\rho K$ if and only if there exist $H'$ and $K'$ such that $H' \trianglelefteq Q_8$, $K' \leq Q_8$,
+  $H'K' = Q_8$, $H' \cap K' = \{e\}$, $H' \cong H$ and $K' \cong K$. However, any nontrivial subgroup contains the element $-1$, since the square of any element besides $\pm 1$ is $-1$. Thus, no such subgroups $H',K'$ exist.
+  \end{proof}
+  
+  
+\begin{problem}{\ }
+\begin{enumerate}
+\item[(a)] Show that there exists a nonabelian group of order $63$.
+
+\begin{proof}
+We will show that there exists a nontrivial homomorphism $\rho\!: \ZZ/9 \to \Aut(\ZZ/7)$. As a consequence, the semidirect product $\ZZ/7 \rtimes_{\rho} \ZZ/9$ is a nonabelian group.
+
+Since $\ZZ/9$ is a cyclic group generated by $1$, the UMP for cyclic groups says that to any homomorphism $\rho\!: \ZZ/9 \to \Aut(\ZZ/7)$ is completely determined by $\alpha = \rho(1)$, and that any $\alpha \in \Aut(\ZZ/7)$ such that $\alpha^9 = \id$ gives rise to such a homomorphism. Moreover, we showed in Problem Set 8 that each $f\in \Aut(\ZZ/7)$ corresponds to an element $a \in (\ZZ/7)^{\times}$, with $f(i) = ai$.
+
+So consider the automorphism $f\!: \ZZ/7 \longrightarrow \ZZ/7$ given by
+$$f(i) = 2i.$$ 
+Note that $2$ is indeed invertible in $\ZZ/7$. Moreover, for all $i \in \ZZ/7$ we have
+$$f^3(i) = 2(2(2i)) = 8i = i,$$
+so $f^3 = \id$. As a consequence, $f^9 = \id$, and thus by the UMP for cyclic groups there is a homomorphism $\rho\!: \ZZ/9 \to \Aut(\ZZ/7)$ with
+$$\rho(1) = f.$$
+Since $f \neq \id$ then $\rho$ is a nontrivial homomorphism, and we conclude that
+$$\ZZ/7 \rtimes_{\rho} \ZZ/9$$
+is a nonabelian group. 
+\end{proof}
+
+
+\item[(b)] Give a presentation for the group you found, with justification.
+
+\begin{proof}
+To give a presentation for this group, let $x = (1,0)$ and $y = (0,1)$, and note that $\ZZ/7 \rtimes_{\rho} \ZZ/9$ is generated by $x$ and $y$: indeed, for any $a \in \ZZ/7$ and $b \in \ZZ/9$ we have
+$$(a,b) = (1,0)^a(0,1)^b = x^ay^b.$$
+Note also that
+$$x^7 = (7,0) = (0,0) \quad \text{ and } \quad y^9 = (0,9) = 0.$$
+Moreover,
+$$yx = (0,1)(1,0) = (0+\rho(1)(1),1+0) = (f(1),1) = (2,1) = x^2y.$$
+We claim that 
+$$\langle x, y \mid x^7 = e, y^9 = e, yx = x^2y \rangle$$
+is a presentation for $\ZZ/7 \rtimes_{\rho} \ZZ/9$. So let
+$$G = \langle u, v \mid u^7 = e, v^9 = e, vu = u^2v \rangle.$$
+By the UMP for presentations, since $x$ and $y$ satisfy
+$$x^7 = e, y^9 = e, yx = x^2y,$$
+then there exists a homomorphism $\varphi\!: G \to \ZZ/7 \rtimes_{\rho} \ZZ/9$ given by
+$$\varphi(u) = x \quad \text{and} \quad \varphi(v) = y.$$
+We showed that $x$ and $y$ generate $\ZZ/7 \rtimes_{\rho} \ZZ/9$, so this homomorphism must be surjective. In particular, $|G| \geqslant |\ZZ/7 \rtimes_{\rho} \ZZ/9| = 7 \cdot 9 = 63$. 
+
+On the other hand, in $G$, any expression involving $u$ and $v$ can be rewritten by replacing $v^2u$ by $uv$, so that any element can be written as $u^av^b$ for some integers $a$ and $b$. Since $u^7 = e$ and $v^9 = e$, any element in $G$ can then be written as
+$$u^av^b \quad \text{ where } 0 \leqslant a \leqslant 6 \text{ and } 0 \leqslant b \leqslant 8.$$
+There are $9 \cdot 7 = 63$ expressions of this form, and thus $|G| \geqslant 63$. We conclude that 
+$$|G| = 63 = |\ZZ/7 \rtimes_{\rho} \ZZ/9|,$$ 
+so that the surjective map $\varphi$ must in fact be an isomorphism, proving that
+$$\langle x, y \mid x^7 = e, y^9 = e, yx = x^2y \rangle$$
+is a presentation for $\ZZ/7 \rtimes_{\rho} \ZZ/9$.
+\end{proof}
+
+
+\end{enumerate}
+\end{problem}
+
+
+
+
+
+
+\end{document}
