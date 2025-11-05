@@ -1,0 +1,111 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=1in]{geometry}
+\usepackage{paralist,amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,colonequals}
+\usepackage[shortlabels]{enumitem}
+\usepackage[all]{xy}
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\solutione}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{leaf}This solution is embargoed.}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+
+\newcommand{\rsa}{\rightsquigarrow}
+
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+
+\DeclareMathOperator{\ord}{ord}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{Classifying groups up to isomorphism}
+	
+	
+	\
+	
+	
+	\begin{enumerate}
+	\itemA Classify all \emph{abelian} groups of order $72$ up to isomorphism. For each isomorphism class,  give its expression in invariant factor form. 
+	
+	\
+	
+	\itemA Let $p<q$ be primes.
+	\begin{enumerate}
+	\itema Show that if $p$ does not divide $q-1$, then any group of order $pq$ is isomorphic to $C_{pq}$ by the following steps:
+	\begin{itemize}
+	\item Use Sylow's Theorem to count the number of Sylow subgroups.
+	\item Apply the Recognition Theorem for direct products.
+	\end{itemize} 
+	\itema Show from that if $p$ does divide $q-1$, then there are exactly two groups of order $pq$ up to isomorphism by the following steps:
+		\begin{itemize}
+	\item Use Sylow's Theorem to count the number of Sylow subgroups.
+	\item Apply the Recognition Theorem for semidirect products.
+	\item Use an Exercise from class about when two semidirect products are isomorphic.
+	\end{itemize} 
+	\end{enumerate}
+	
+	\
+	
+	
+	\itemB Let $p$ be a prime integer. Let $G$ be a group of order $p^2$.
+	\begin{enumerate}
+	\itemb Show\footnote{Hint: If not, what can you say about $Z(G)$ and $G/Z(G)$?} that $G$ is abelian.
+	\itemb Classify all groups of order $p^2$ up to isomorphism.
+	\end{enumerate}
+	
+	\
+	
+	\itemB Let $p,q$ be primes such that $q=p+2$ and $p\geq 5$. Show that any group of order $p^2q^2$ is either isomorphic to a cyclic group or a product of two cyclic groups.  
+	
+
+
+\end{enumerate}
+
+\end{document}
