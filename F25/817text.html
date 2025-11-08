@@ -197,7 +197,24 @@
 </ol>
 
 </ol>
+
+<li><a href="#Rings">Rings</a></li>
+<ol start=8><li><a href="#sec-8">An introduction to rings</a></li>
+<ol><li><a href="#sec-8-1-heading">Definitions and first examples</a></li>
+<li><a href="#sec-8-2-heading">Units and zerodivisors</a></li>
+<li><a href="#sec-8-3-heading">Subrings</a></li>
+<li><a href="#sec-8-4-heading">Ideals</a></li>
+<li><a href="#sec-8-5-heading">Homomorphisms</a></li>
+<li><a href="#sec-8-6-heading">Quotient rings</a></li>
+<li><a href="#sec-8-7-heading">The Isomorphism Theorems for rings</a></li>
+<li><a href="#sec-8-8-heading">Prime and maximal ideals in commutative rings</a></li>
+</ol>
+
+
+
 </ul></nav>
+
+
 <main aria-labelledby="page-title" id="main-content" role="main">
 <section aria-labelledby="intro-heading" id="introduction">
 <h1 id="intro-heading">Introduction</h1>
@@ -6479,6 +6496,1438 @@ In this chapter we discuss some important ways to build new groups out of smalle
     <p>If \(p =2\) and \(q\) is any odd prime, then there are two groups of order \(2q\) up to isomorphism: \(C_{2q}\) and \(D_{q}\).</p>
   </section>
 </section>
+
+
+<h1 id="Rings">Rings</h1>
+<section aria-labelledby="lecture-heading" id="an introduction to rings">
+<h1 id="sec-8">8. An Introduction to Rings</h1>
+The next major topic is this class is rings. 
+
+
+
+  <h2 id="sec-8-1-heading">8.1 Definitions and examples</h2>
+
+  <section class="callout definition" role="region" aria-labelledby="def-8-1-1">
+    <h3 id="def-8-1-1">Definition 8.1.1</h3>
+    <p>A <strong>ring</strong> is a set \(R\) equipped with two binary operations, \(+\) and \(\cdot\), satisfying:</p>
+    <ul>
+      <li>\((R,+)\) is an abelian group. We use additive notation: the identity element for \(+\) is denoted by \(0\) and the inverse of an element \(r\) for \(+\) is written as \(-r\).</li>
+      <li>The operation \(\cdot\) is associative, making \((R,\cdot)\) a semigroup.</li>
+      <li>There is a multiplicative identity element, written as \(1\), such that
+        \[
+          1 \cdot a = a = a \cdot 1
+        \]
+        for all \(a \in R\), and thus \((R, \cdot)\) is a monoid.
+      </li>
+      <li>Distributivity:<span class="index">distributivity</span> For all \(a,b,c \in R\), we have
+        \[
+        a \cdot (b + c) = a \cdot b + a \cdot c \quad \text{and} \quad (a + b) \cdot c = a \cdot c + b \cdot c.
+        \]
+      </li>
+      <li>We also require \(0 \neq 1\).</li>
+    </ul>
+    <p>We sometimes write \(0_R\) and \(1_R\) if we need to emphasize what ring these elements live in.</p>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-8-1-2">
+    <h3 id="def-8-1-2">Definition 8.1.2</h3>
+    <p>An object satisfying just the first three conditions, but without a multiplicative identity, is a <strong>nonunital ring</strong> or a <strong>rng</strong>. To emphasize that \(R\) has a multiplicative identity, one might say that a ring is <strong>unital</strong>.</p>
+    <p>While some authors consider nonunital rings, in this class all our rings will be unital.</p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rem-8-1-3">
+    <h3 id="rem-8-1-3">Remark 8.1.3</h3>
+    <p>If we drop the requirement that \(0 \neq 1\), we may consider the <strong>zero ring</strong>, which is the set \(\{ 0 \}\) together with the only possible operations on it.
+      Conversely, if \(1 = 0\) in a ring, then \(R = \{0\}\), since in this case all \(a \in R\) satisfy \(a \cdot 0 = 0\) and hence \(a = a \cdot 1 = a \cdot 0 = 0\).</p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-8-1-4">
+    <h3 id="ex-8-1-4">Example 8.1.4</h3>
+    <p>The integers with the usual addition and multiplication form a ring \((\mathbb{Z},+,\cdot)\).</p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rem-8-1-5">
+    <h3 id="rem-8-1-5">Remark 8.1.5</h3>
+    <p>The last condition, asking that \(1 \neq 0\), is not universal: some authors allow the <em>zero ring</em>, which is the ring with only one element. Requiring \(0 \neq 1\) is really asking that \(R\) should have at least two elements.</p>
+  </section>
+
+  <section class="callout lemma" role="region" aria-labelledby="lem-8-1-6">
+    <h3 id="lem-8-1-6">Lemma 8.1.6 (Ring arithmetic)</h3>
+    <p>The following hold for any ring \(R\) and all \(a,b \in R\):</p>
+    <ol>
+      <li>\(a \cdot 0 = 0 = 0 \cdot a\),</li>
+      <li>\(({-}a)b = -(ab) = a({-}b)\),</li>
+      <li>\(({-}a)({-}b) = ab\).</li>
+      <li>\(1\) is unique, and</li>
+      <li>\(({-}1)a = -a\).</li>
+    </ol>
+  </section>
+
+    <section class="callout proof" role="region" aria-labelledby="prf-8-1-6">
+      <h3 id="prf-8-1-6">Proof of Lemma 8.1.6</h3>
+      <ol>
+        <li>
+          <p>Note that
+            \[
+              a \cdot 0 = a \cdot (0+0) = a \cdot 0 + a \cdot 0.
+            \]
+            By subtracting \(a \cdot 0\) on both sides, we conclude that
+            \[
+              a \cdot 0 = a \cdot (0+0) = 0.
+            \]
+            Analogously, \(0 \cdot a = 0\).</p>
+        </li>
+        <li>
+          <p>By distributivity,
+            \[
+              ab + ({-}a)b = (a-a)b = 0 \cdot b = 0.
+            \]
+            Thus \(({-}a)b = -ab\). Analogously, \(a({-}b) = -ab\).</p>
+        </li>
+        <li>
+          <p>Applying the previous property twice, and noting that \(-(-x)=x\) by properties of group operations, we get
+            \[
+              ({-}a)({-}b) = -(a({-}b)) = -(-ab) = ab.
+            \]</p>
+        </li>
+        <li>
+          <p>Note that \((R, \cdot)\) is a monoid, and thus the identity \(1\) is unique, as is the case for groups.</p>
+        </li>
+        <li>
+          <p>We have \(({-}1)a = - 1 \cdot a = -a\).</p>
+        </li>
+      </ol>
+    </section>
+
+
+  <p>There are some additional conditions we might ask for a ring to satisfy, and that are so important they have their own names:</p>
+
+  <section class="callout definition" role="region" aria-labelledby="def-8-1-7">
+    <h3 id="def-8-1-7">Definition 8.1.7</h3>
+    <p>A ring \(R\) is</p>
+    <ul>
+      <li>a <strong>commutative ring</strong> if \(\cdot\) is commutative, meaning that for all \(a,b \in R\) <sup>1</sup>
+        \[
+          a \cdot b = b \cdot a.
+        \]
+        <small><sup>1</sup> The word <em>abelian</em> is never used in the context of rings, except to say things like “the additive group \((R,+)\) is abelian”.</small>
+      </li>
+      <li>a <strong>noncommutative ring</strong> if it is not commutative.</li>
+      <li>a <strong>division ring</strong> if \((R - \{0\}, \cdot)\) is a group, meaning that every nonzero element has a multiplicative inverse.</li>
+      <li>a <strong>field</strong> if it is a commutative division ring.</li>
+    </ul>
+  </section>
+
+  <p>We are now ready to see many examples of rings.</p>
+
+  <section class="callout example" role="region" aria-labelledby="ex-8-1-8">
+    <h3 id="ex-8-1-8">Example 8.1.8</h3>
+    <ol>
+      <li>The ring \(\mathbb{Z}\) is a commutative ring.</li>
+      <li>Let \(n \geqslant 2\). The set \(\mathbb{Z}/n\) of integers modulo \(n\) is a commutative ring under addition and multiplication modulo \(n\). Note that \(\mathbb{Z}/n\) is a field if any only if \(n\) is prime.</li>
+      <li>The familiar sets of numbers \(\mathbb{Q}\), \(\mathbb{R}\), \(\mathbb{C}\) are fields.</li>
+      <li><strong>(Matrix ring)</strong> <span class="index">matrix ring</span> <span class="index">\(\mathrm{Mat}_n(R)\)</span> If \(R\) is any ring, not necessarily commutative, then the set \(\mathrm{Mat}_{n}(R)\) of \(n \times n\) matrices with entries in \(R\) is a ring with the usual rules for addition and multiplication of square matrices.</li>
+      <li><strong>(The endomorphism ring of an abelian group)</strong> Let \(A = (A, +)\) be any abelian group, and set \(\mathrm{End}_{Ab}(A)\) to be the collection of endomorphisms of \(A\) — that is, the set of group homomorphisms \(f\!: A \longrightarrow A\) from \(A\) to itself. 
+        This set of endomorphisms \(\mathrm{End}_{Ab}(A)\) is a ring with pointwise addition
+        \[
+          (f + g)(a) := f(a) + g(a)
+        \]
+        and multiplication given by composition of functions
+        \[
+          f \cdot g := f \circ g.
+        \]
+        The additive identity is the \(0\)-map and the multiplicative identity is the identity map. 
+        This is almost always a noncommutative ring.</li>
+      <li><strong>(The real Hamiltonian quaternion ring)</strong> <span class="index">quaternion ring</span> Let \(i\), \(j\), \(k\) be formal symbols and set \(\mathcal{H}\) to be the four dimensional \(\mathbb{R}\)-vector space consisting of all expressions of the form \(a + bi + cj + dk\) with \(a,b,c,d \in \mathbb{R}\). We claim that this can be given a ring structure, as follows. Addition is vector space addition:
+        \[
+          (a + bi + cj + dk) +(a' + b'i + c'j + d'k) = (a + a') + (b + b') i + (c + c')j + (d + d')k.
+        \]
+        Moreover, multiplication is uniquely determined by the axioms of a ring together with the rules
+        \[
+          i^2 = j^2 = k^2 = -1,\quad -ji = ij = k,\quad -kj = jk = i,\quad -ik = ki = j.
+        \]
+        and the fact that the real coefficients commute with each other and \(i\), \(j\), \(k\).<br>
+        It is not obvious that the multiplication defined in this way satisfies associativity, but in fact it does, and this amounts to conditions very similar to the associativity of the group \(Q_8\), which we discussed in with the quaternion group.<br>
+        This ring \(\mathcal{H}\) is a division ring, since one can check that
+        \[
+          (a + bi + cj + dk)^{-1} = \frac{a -  bi -  cj - dk}{\|a + bi + cj + dk\|}
+        \]
+        where
+        \[
+          \|a + bi + cj + dk \| := a^2 + b^2 + c^2 + d^2.
+        \]
+        In the equation above, \(\|a + bi + cj + dk \|\) is a nonzero real number if \(a + bi + cj + dk\) is not the zero element. The quantity \(\|a + bi + cj + dk \|\) is called the <strong>norm</strong> of the quaternion \(a + bi + cj + dk\).
+      </li>
+      <li>If \(X\) is a set and \(R\) is a ring, let \(\mathrm{Fun}(X, R)\) be the collection of set-theoretic functions from \(X\) to \(R\), and consider the pointwise addition and multiplication of functions:
+        \[
+          (f + g)(x) := f(x) + g(x) \qquad \text{and} \qquad (f \cdot g)(x) := f(x) \cdot g(x)
+        \]
+        The set \(\mathrm{Fun}(X,R)\) is a ring with these operations. In this ring, the zero is the function that is constantly equal to zero, and the identity is the constant function equal to \(1\).
+        If \(X\) is a finite set and \(|X|=n\), then \(\mathrm{Fun}(X,R)\) may be identified with \(R^n=\underbrace{R \times \cdots \times R}_n\), the direct product of \(n\) copies of \(R\).</li>
+    </ol>
+  </section>
+
+  <p>Just like with groups, there are constructions that allow us to take old rings and build new ones.</p>
+
+  <section class="callout definition" role="region" aria-labelledby="def-8-1-9">
+    <h3 id="def-8-1-9">Definition 8.1.9 (Direct product of rings)</h3>
+    <p>Let \(R\) and \(S\) be two rings.
+      The cartesian product \(R\times S\) has a natural ring structure with addition and multiplication defined componentwise:
+      \[
+        (a,b)+(c,d)=(a+c,b+d) \qquad \text{and } \qquad (a,b)\cdot(c,d)=(a\cdot c,b\cdot d).
+      \]
+      The additive identity is \(0_{R \times S} = (0_R, 0_{S})\) and the multiplicative identity is \(1_{R \times S} = (1_R, 1_{S})\).</p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-8-1-10">
+    <h3 id="ex-8-1-10">Exercise 8.1.10</h3>
+    <p>Check that the direct product of two rings is a ring. Moreover, prove that \(R \times S\) is a commutative ring if and only if \(R\) and \(S\) are both commutative.</p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-8-1-11">
+    <h3 id="ex-8-1-11">Exercise 8.1.11</h3>
+    <p>Show that the direct product of two fields is <em>never</em> a field.</p>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-8-1-12">
+    <h3 id="def-8-1-12">Definition 8.1.12 (Polynomial ring)</h3>
+    <p>If \(R\) is any ring and \(x\) is a “variable”, then \(R[x]\) denotes the collection of \(R\)-linear combination of powers of \(x\) — i.e., formal expressions of the form
+      \[
+        r_0 + r_1x + r_2x^2 + \cdots + r_nx^n
+      \]
+      with \(n \geqslant 0\) and \(r_i \in R\), and two such expressions are deemed equal if their coefficients are the same.</p>
+
+    <p>We make \(R[x]\) into a ring by the usual rule for adding and multiplying polynomial expressions, treating \(x\) as commuting with all elements of \(R\). So
+      \[
+      (r_0 + r_1x + r_2x^2 + \cdots + r_nx^n) + (r'_0 + r'_1x + r'_2x^2 + \cdots + r'_mx^m) = (r_0 + r'_0) + (r_1+ r'_1)x  + \cdots
+      \]
+      or more precisely, setting \(r_i = 0\) for \(i&gt;n\) and \(r_i'=0\) for \(i&gt;m\),
+      \[
+      (r_0 + r_1x + r_2x^2 + \cdots + r_nx^n) + (r'_0 + r'_1x + r'_2x^2 + \cdots + r'_mx^m) = \sum_{i=0}^{\max{m,n}} (r_i+r_i') x^i,
+      \]
+      while
+      \[
+      (r_0 + r_1x + r_2x^2 + \cdots + r_nx^n) \cdot (r'_0 + r'_1x + r'_2x^2 + \cdots + r'_mx^m) = \sum_{k} \left( \, \sum_{a+b = k} r_ar'_b \right) x^k.
+      \]
+      This ring \(R[x]\) is the <strong>polynomial ring</strong> in one variable over \(R\). One can also talk about polynomial rings in many variables. For a finite set of variables \(x_1, \ldots, x_n\), the ring \(R[x_1, \ldots x_n]\) can be constructed inductively by setting
+      \[
+        R[x_1, \ldots x_n] = R[x_1, \ldots, x_{n-1}][x_n].
+      \]
+      More generally, given an infinite set of variables \(X\), an element in the polynomial ring \(R[X]\) can be obtained by formally adding finitely many <strong>monomials</strong> in \(X\) with coefficients in \(R\), which are terms of the form \(r x_1^{a_1} \cdots x_n^{a_n}\) with \(x_i \in X\) and integers \(a_i \geqslant 0\). Each polynomial in \(R[X]\) uses only finitely many variables, and thus sums and products of two elements are obtained as in the polynomial ring in that finite set of variables.</p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-8-1-13">
+    <h3 id="ex-8-1-13">Exercise 8.1.13</h3>
+    <p>Check that if \(R\) is a ring then so is \(R[x]\). Moreover, show that if \(R\) is commutative, then so is \(R[x]\).</p>
+  </section>
+
+  <p>We will later discuss polynomial rings in more detail. For now, we note that in many circumstances when one says <em>a polynomial ring</em>, one often means a polynomial ring <em>over a field</em>.</p>
+</section>
+
+
+<section id="units-and-zerodivisors" aria-labelledby="sec-8-2-heading">
+  <h2 id="sec-8-2-heading">8.2 Units and Zerodivisors</h2>
+
+  <p>Elements in a ring might have certain special properties:</p>
+
+  <section class="callout definition" role="region" aria-labelledby="def-8-2-1">
+    <h3 id="def-8-2-1">Definition 8.2.1</h3>
+    <p>An element \(a\) of a ring is called a <strong>unit</strong> if there exists \(b \in R\) such that \(ab = 1\) and \(ba = 1\).
+    The set of all units of a ring \(R\) is denoted \(R^{\times}\).</p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-8-2-2">
+    <h3 id="ex-8-2-2">Exercise 8.2.2</h3>
+    <p>Show that if \(a\) is a unit in a ring \(R\), then there is a unique \(b \in R\) such that \(ab=1\) and \(ba=1\).</p>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-8-2-3">
+    <h3 id="def-8-2-3">Definition 8.2.3</h3>
+    <p>Let \(a\) be a unit in a ring \(R\). The unique \(b \in R\) such that \(ab=1=ba\) is called the <strong>inverse</strong> of \(a\), denoted by \(a^{-1}\).</p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-8-2-4">
+    <h3 id="ex-8-2-4">Exercise 8.2.4</h3>
+    <p>Show that the set of units in a ring \(R\) forms a group \((R^{\times}, \cdot)\) with respect to multiplication.</p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-8-2-5">
+    <h3 id="ex-8-2-5">Example 8.2.5</h3>
+    <ol>
+      <li>The units in \(\mathbb{Z}\) are \(\mathbb{Z}^{\times} = \{ \pm 1 \}\).</li>
+      <li>For all \(n \geqslant 2\),
+      <div class="math">\[\mathbb{Z}/n^{\times} = \{ [j]_n \mid \gcd(j,n)=1 \}.\]</div></li>
+      <li>For all \(n \geqslant 1\) and any field \(F\),
+      <div class="math">\[\mathrm{Mat}_n(F)^{\times} = \mathrm{GL}_n(F).\]</div></li>
+    </ol>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-8-2-6">
+    <h3 id="ex-8-2-6">Exercise 8.2.6</h3>
+    <p>Let \(R\) be a ring. Find all the units of \(R[x]\).</p>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-8-2-7">
+    <h3 id="def-8-2-7">Definition 8.2.7</h3>
+    <p>A <strong>zerodivisor</strong> in a ring \(R\) is an element \(x \in R\) such that \(x 
+\neq 0\) but either \(xy = 0\) or \(yx=0\) for some \(y 
+\neq 0\).</p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-8-2-8">
+    <h3 id="ex-8-2-8">Example 8.2.8</h3>
+    <p>The ring \(\mathrm{Mat}_2(\mathbb{R})\) has many zerodivisors: for example,
+    <div class="math">\[A = \begin{bmatrix} 0 & 1 \\ 0 & 0 \end{bmatrix}\]</div>
+    is a zerodivisor since \(A^2 = 0\).</p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-8-2-9">
+    <h3 id="ex-8-2-9">Example 8.2.9</h3>
+    <p>In the ring \(\mathbb{Z}/6\), the element \([2]_6\) is a zerodivisor since \([2]_6[3]_6 = 0\).</p>
+  </section>
+
+  <section class="callout lemma" role="region" aria-labelledby="lem-8-2-10">
+    <h3 id="lem-8-2-10">Lemma 8.2.10</h3>
+    <p>Let \(R\) be any ring. There is no element \(r \in R\) that is both a unit and a zerodivisor.</p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-8-2-10">
+    <h3 id="prf-8-2-10">Proof (of Lemma 8.2.10)</h3>
+    <p>Suppose that \(a\) is both a zerodivisor and a unit. Then there exists \(b 
+\neq 0\) such that \(ab=0\) or \(ba=0\). Multiplying either of these equations by \(a^{-1}\) gives \(b=0\), which is a contradiction.</p>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-8-2-11">
+    <h3 id="def-8-2-11">Definition 8.2.11</h3>
+    <p>A ring \(R\) is an <strong>integral domain</strong>, often shortened to <strong>domain</strong>, if \(R\) is commutative and has no zerodivisors.</p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-8-2-12">
+    <h3 id="rmk-8-2-12">Remark 8.2.12</h3>
+    <p>If one allows the zero ring, then in the definition of a domain we should explicitly require \(1 
+\neq 0\). Moreover, if one allows for nonunital rings, then we should also require all domains to be unital.</p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-8-2-13">
+    <h3 id="rmk-8-2-13">Remark 8.2.13</h3>
+    <p>Any domain \(R\) satisfies what is known as the <strong>cancellation rule</strong>: given any nonzero element \(a \in R\),
+    <div class="math">\[ab = ac \implies b = c.\]</div>
+    Indeed, the equality
+    <div class="math">\[ab = ac \implies a(b-c) = 0,\]</div>
+    but since \(a\) is not a zerodivisor we must have \(b-c = 0\).</p>
+    <p>The cancellation rule does not hold if \(R\) is not a domain: if \(a\) and \(b\) are nonzero and \(ab=0\), then \(ab=a \cdot 0\) even though \(b 
+\neq 0\).</p>
+  </section>
+
+  <section class="callout corollary" role="region" aria-labelledby="cor-8-2-14">
+    <h3 id="cor-8-2-14">Corollary 8.2.14</h3>
+    <p>Every field is a domain.</p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-8-2-14">
+    <h3 id="prf-8-2-14">Proof (of Corollary 8.2.14)</h3>
+    <p>If \(R\) is a field, then every nonzero \(r \in R\) is a unit, and thus by Lemma 8.2.10 \(r\) is not a zerodivisor. Thus \(R\) has no zerodivisors, and must be a domain.</p>
+  </section>
+
+  <p>In contrast, not every domain must be a field.</p>
+
+  <section class="callout example" role="region" aria-labelledby="ex-8-2-15">
+    <h3 id="ex-8-2-15">Example 8.2.15</h3>
+    <p>The ring \(\mathbb{Z}\) is a domain but not a field.</p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-8-2-16">
+    <h3 id="ex-8-2-16">Example 8.2.16</h3>
+    <p>Fix an integer \(n \geqslant 2\) and consider the ring \(\mathbb{Z}/n\). If \(n\) is composite, say \(n = ab\) with \(1 < a, b < n\), then \([a]_n[b]_n = 0\) in \(\mathbb{Z}/n\). In particular, \([a]_n\) and \([b]_n\) are zerodivisors and \(\mathbb{Z}/n\) is not a domain.</p>
+    <p>In contrast, if \(n\) is prime then \(\mathbb{Z}/n\) is a field, and thus in particular it is a domain. Putting all this together, we see that
+\[\mathbb{Z}/n 	\text{ is a domain } \iff \mathbb{Z}/n 	\text{ is prime } \iff \mathbb{Z}/n 	\text{ is a field.}\]
+  </section>
+
+  <p>This is a special case of a more general fact:</p>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-8-2-17">
+    <h3 id="ex-8-2-17">Exercise 8.2.17</h3>
+    <p>Show that every finite domain is a field.</p>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-8-2-18">
+    <h3 id="def-8-2-18">Definition 8.2.18</h3>
+    <p>An element \(a\) in a ring \(R\) is <strong>nilpotent</strong> if \(a^n = 0\) for some integer \(n \geqslant 1\).</p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-8-2-19">
+    <h3 id="ex-8-2-19">Exercise 8.2.19</h3>
+    <p>Show that if \(a\) is a nonzero nilpotent element, then \(a\) is a zerodivisor.</p>
+  </section>
+
+  <p>Thus there are no nontrivial nilpotent elements in a domain.</p>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-8-2-20">
+    <h3 id="ex-8-2-20">Exercise 8.2.20</h3>
+    <p>Show that if \(a\) is a nilpotent element in a ring \(R\), then \(1-a\) is a unit.</p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-8-2-21">
+    <h3 id="ex-8-2-21">Exercise 8.2.21</h3>
+    <p>Given an integer \(n \geqslant 1\), describe all the nilpotent elements in \(\mathbb{Z}/n\).</p>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-8-2-22">
+    <h3 id="def-8-2-22">Definition 8.2.22</h3>
+    <p>An element \(a\) in a ring \(R\) is <strong>idempotent</strong> if \(a^2 = a\).</p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-8-2-23">
+    <h3 id="ex-8-2-23">Exercise 8.2.23</h3>
+    <p>Show that if \(e\) is an idempotent element in a ring \(R\), then \(1-e\) is also an idempotent element.</p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-8-2-24">
+    <h3 id="ex-8-2-24">Exercise 8.2.24</h3>
+    <p>Show that if \(F\) is a field, then \(0\) and \(1\) are the only idempotent elements.</p>
+  </section>
+</section>
+
+
+
+<section id="subrings" aria-labelledby="sec-8-3-heading">
+  <h2 id="sec-8-3-heading">8.3 Subrings</h2>
+
+  <section class="callout definition" role="region" aria-labelledby="def-8-3-1">
+    <h3 id="def-8-3-1">Definition 8.3.1</h3>
+    <p>A <strong>subring</strong> of a ring \(R\) is a subset \(S \subseteq R\) such that \(S\) is a ring under the operations of \(R\) and \(1_S = 1_R\).
+    When \(R\) is a field, a subring of \(R\) that is also a field is called a <strong>subfield</strong> of \(R\).</p>
+  </section>
+
+  <p>Some authors do not include the condition that \(1_S = 1_R\) in their definition of subring. However, we think of the identity as part of the basic data of the ring, and thus it is desirable for it to be shared with any subring. As we will see later when we define ideals, this will make our definition of ideal <em>quite</em> different in practice from what we would get if we allowed a subring to not be unital, or not share the multiplicative identity with the original ring.</p>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-8-3-2">
+    <h3 id="ex-8-3-2">Exercise 8.3.2</h3>
+    <p>Prove that for a ring \(R\), a subset \(S\) of \(R\) is a subring if and only if
+    \(1_R \in S\) and for all \(x,y \in S\) we have \(x-y \in S\) and \(xy \in S\).</p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-8-3-3">
+    <h3 id="ex-8-3-3">Exercise 8.3.3</h3>
+    <p>Any subring of a commutative ring is a commutative ring. Any subring of a domain is a domain.</p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-8-3-4">
+    <h3 id="ex-8-3-4">Exercise 8.3.4</h3>
+    <p>Prove that the set of \(\mathbb{R}\)-linear combinations of
+\[
+\begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix},\quad
+\begin{bmatrix} \sqrt{-1} & 0 \\ 0 & -\sqrt{-1} \end{bmatrix},\quad
+\begin{bmatrix} 0 & 1 \\ -1 & 0 \end{bmatrix},\quad
+\begin{bmatrix} 0 & \sqrt{-1} \\ \sqrt{-1} & 0 \end{bmatrix}
+\]
+
+    forms a subring of \(\mathrm{Mat}_2(\mathbb{C})\).</p>
+  </section>
+
+  <p>We will later define what it means for two rings to be isomorphic. The ring in Exercise 8.3.4 is isomorphic to the quaternions ring \(\mathcal{H}\).</p>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-8-3-5">
+    <h3 id="rmk-8-3-5">Remark 8.3.5</h3>
+    <p>Let \(F\) be a ring and \(R = \mathrm{Mat}_n(F)\) with \(n \geqslant 2\). Let \(S\) be the subset of \(R\) consisting of matrices whose only nonzero element is in the upper left corner. Then \(S\) is a ring under same operations as \(R\), and in fact \(S \cong R\), but \(S\) is not a subring of \(R\) according to our definition, since \(1_S 
+eq 1_R\).</p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-8-3-6">
+    <h3 id="ex-8-3-6">Example 8.3.6</h3>
+    <ul>
+      <li>The following is a chain of subrings:
+      \[
+        \mathbb{Z} \subseteq \mathbb{Q} \subseteq \mathbb{R} \subseteq \mathbb{C} \subseteq \mathcal{H}.
+      \]
+      In the last containment, we think of \(\mathbb{C}\) as those elements \(a + bi + cj + dk\) of \(\mathcal{H}\) with \(c=d=0\).</li>
+      <li>For any ring \(R\) and integer \(n \geqslant 1\), the set of scalar matrices
+      \[
+        \{ rI_n \mid r \in R \}
+      \]
+      is a subring of \(\mathrm{Mat}_n(R)\).</li>
+      <li>For any ring \(R\) and integer \(n \geqslant 1\), the set of all diagonal matrices is a subring of \(\mathrm{Mat}_n(R)\).</li>
+      <li>The set
+      \[
+        \mathbb{Z}[i] = \{ a + bi \mid a,b \in \mathbb{Z} \}
+      \]
+      is a subring of \(\mathbb{C}\) called the ring of <strong>Gaussian integers</strong>.</li>
+    </ul>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-8-3-7">
+    <h3 id="def-8-3-7">Definition 8.3.7</h3>
+    <p>The <strong>center</strong> of a ring \(R\) is the set
+    \[
+      \mathrm{Z}(R) = \{ z \in R \mid zr = rz 	ext{ for all } r \in R \}.
+    \]
+    An element in \(R\) is called <strong>central</strong> if it is in the center of \(R\).</p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-8-3-8">
+    <h3 id="ex-8-3-8">Exercise 8.3.8</h3>
+    <p>Show that the center \(\mathrm{Z}(R)\) is a subring of \(R\).</p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-8-3-9">
+    <h3 id="ex-8-3-9">Example 8.3.9</h3>
+    <p>If \(R\) is commutative, then \(\mathrm{Z}(R) = R\).</p>
+  </section>
+
+  <p>The center measures how far \(R\) is from being commutative.</p>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-8-3-10">
+    <h3 id="ex-8-3-10">Exercise 8.3.10</h3>
+    <p>Show that the center of \(\mathcal{H}\) is \(\mathbb{R}\).</p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-8-3-11">
+    <h3 id="ex-8-3-11">Exercise 8.3.11</h3>
+    <p>Show that for any commutative ring \(R\), the center of \(\mathrm{Mat}_n(R)\) is the collection of scalar matrices.</p>
+  </section>
+
+  <section class="callout lemma" role="region" aria-labelledby="lem-8-3-12">
+    <h3 id="lem-8-3-12">Lemma 8.3.12</h3>
+    <p>Let \(d\) be a squarefree integer, meaning that the prime factorization of \(d\) has no repeated primes. Then 
+    \[
+      \mathbb{Q}(\sqrt{d}) = \{ a + b\sqrt{d} \mid a,b \in \mathbb{Q} \}
+    \]
+    is a subfield of the field \(\mathbb{C}\). Moreover,
+    \[
+      \mathbb{Z}[\sqrt{d}] = \{ a + b\sqrt{d} \mid a,b \in \mathbb{Z} \}
+    \]
+    is a subring of \(\mathbb{Q}(\sqrt{d})\).</p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-8-3-12">
+    <h3 id="prf-8-3-12">Proof (of Lemma 8.3.12)</h3>
+    <p>We leave it as an exercise to prove that \(\mathbb{Q}(\sqrt{d})\) and \(\mathbb{Z}[\sqrt{d}]\) are closed under subtraction and products and contain \(1\), and thus are subrings of \(\mathbb{C}\) by the Subring Test (Exercise 8.3.2).</p>
+    <p>It remains to show that \(\mathbb{Q}(\sqrt{d})\) is a field, which amounts to the claim that it is closed under taking inverses of nonzero elements.
+    Suppose \(r + q\sqrt{d} 
+\neq 0\). Then its inverse in \(\mathbb{C}\) is
+\[
+  (r + q\sqrt{d})^{-1} = \frac{r - q\sqrt{d}}{r^2 - dq^2} \in \mathbb{Q}(\sqrt{d}).
+\]
+    To see that this expression makes sense, note that if \(r^2 - dq^2 = 0\), then either \(r=q=0\) or \(d=(r/q)^2\). But \(r=q=0\) contradicts the assumption that \(r + q\sqrt{d} 
+eq 0\), and \(d=(r/q)^2\) would make \(d\) a perfect square, contradicting that \(d\) is squarefree.</p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-8-3-13">
+    <h3 id="rmk-8-3-13">Remark 8.3.13</h3>
+    <p>In Lemma 8.3.12, note that we allow \(d\) to be negative. For instance, it applies to \(\mathbb{Q}(\sqrt{-5})\) and \(\mathbb{Z}[\sqrt{-5}]\). Indeed, this is a classic example, as \(\mathbb{Z}[\sqrt{-5}]\) is a ring that is not a unique factorization domain (UFD), something we will discuss later.</p>
+    <p>It also makes sense to speak of \(\mathbb{Q}(\sqrt{d})\) and \(\mathbb{Z}[\sqrt{d}]\) when \(d\) has repeated prime factors, but it just leads to redundant examples. For instance, if \(d = 12\), then \(\mathbb{Q}(\sqrt{12}) = \mathbb{Q}(\sqrt{3})\) and \(\mathbb{Z}[\sqrt{12}] = \mathbb{Z}[\sqrt{3}]\).</p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-8-3-14">
+    <h3 id="ex-8-3-14">Example 8.3.14</h3>
+    <p>The ring \(\mathbb{Z}[\sqrt{d}]\) is an integral domain: it is a subring of \(\mathbb{C}\), and \(\mathbb{C}\) is a domain and thus a field.</p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-8-3-15">
+    <h3 id="rmk-8-3-15">Remark 8.3.15</h3>
+    <p>The difference in notation (more precisely, in the parentheses) between \(\mathbb{Z}[\sqrt{d}]\) and \(\mathbb{Q}(\sqrt{d})\) will be explained next semester. In short, if \(R\) is a subring of \(S\) and \(s \in S\), then \(R[s]\) is the smallest subring of \(S\) that contains both \(R\) and \(s\); similarly, for a subfield \(F\) of a field \(L\) and an element \(a \in L\), \(F(a)\) denotes the smallest subfield of \(L\) containing \(F\) and \(a\). In this case, the sets \(\mathbb{Z}[\sqrt{d}]\) and \(\mathbb{Q}(\sqrt{d})\) happen to look very similar.</p>
+  </section>
+</section>
+
+
+
+<section id="ideals" aria-labelledby="sec-8-4-heading">
+  <h2 id="sec-8-4-heading">8.4 Ideals</h2>
+
+  <section class="callout notation" role="region" aria-labelledby="not-8-4-1">
+    <h3 id="not-8-4-1">Notation 8.4.1</h3>
+    <p>Given a ring \(R\) and a subset \(S \subseteq R\), we write</p>
+    <div class="math">
+      \[
+        RS := \{ ra \mid a \in S,\; r \in R \}
+        \qquad\text{and}\qquad
+        SR := \{ ar \mid a \in S,\; r \in R \}.
+      \]
+    </div>
+    <p>If \(S = \{ a \}\), then we write \(Ra\) instead of \(R\{ a \}\) and \(aR\) instead of \(\{ a \}R\). Finally, given \(a,b \in R\), we write</p>
+    <div class="math">
+      \[
+        Ra + R b := \{ ra + sb \mid r,s \in R \}.
+      \]
+    </div>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-8-4-2">
+    <h3 id="def-8-4-2">Definition 8.4.2</h3>
+    <p>For a ring \(R\), an <strong>ideal</strong> (or a <strong>two sided ideal</strong>) of \(R\) is a nonempty subset \(I\) such that</p>
+    <ul>
+      <li><em>Closure under addition:</em> \((I,+)\) is a subgroup of \((R,+)\).</li>
+      <li><em>Absorption:</em> for all \(r \in R\) and \(a \in I\), we have \(ra \in I\) and \(ar \in I\). More concisely: \(RI \subseteq I\) and \(IR \subseteq I\).</li>
+    </ul>
+  </section>
+
+  <p>For noncommutative rings, one speaks also about left ideals and right ideals.</p>
+
+  <section class="callout definition" role="region" aria-labelledby="def-8-4-3">
+    <h3 id="def-8-4-3">Definition 8.4.3</h3>
+    <p>A <strong>left ideal</strong> of a ring \(R\) is a subgroup \(I\) of \((R,+)\) which satisfies \(RI \subseteq I\), while a <strong>right ideal</strong> is a subgroup \(I\) of \((R,+)\) which satisfies \(IR \subseteq I\).</p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-8-4-4">
+    <h3 id="rmk-8-4-4">Remark 8.4.4</h3>
+    <p>Our definition of rings, or more precisely our insistence that all rings have \(1\), makes ideals and subrings very different beasts. If an ideal \(I\) contains \(1\), then by the absorption property we must have \(I = R\), since for all \(a \in R\) we have \(a = a \cdot 1 \in I\). Thus the only subset of \(R\) that is both an ideal and a subring is \(R\) itself.</p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-8-4-5">
+    <h3 id="ex-8-4-5">Example 8.4.5</h3>
+    <ol>
+      <li>Every ring \(R\) has at least two ideals: \(\{0\}\) and \(R\) itself.</li>
+      <li>The ideals of \(\mathbb{Z}\) are of the form \(\mathbb{Z} \cdot n\) for various \(n\) (we will prove this later). One can show (exercise!) that
+        <div class="math">
+          \[
+            \mathbb{Z} \cdot 6 + \mathbb{Z} \cdot 10
+            = \{\, m \cdot 6 + n \cdot 10 \mid m,n \in \mathbb{Z} \,\}
+            = \mathbb{Z} \cdot 2.
+          \]
+        </div>
+      </li>
+      <li>
+        The sets
+        <div class="math">
+          \[
+          R_i=\left\{
+          \begin{bmatrix}
+          0 & 0 & \cdots & 0\\
+          \vdots & \vdots & \ddots & \vdots \\
+          a_{i1} & a_{i2} & \cdots & a_{in}\\
+          \vdots & \vdots &  & \vdots \\
+          0 & 0 & \cdots & 0
+          \end{bmatrix}\right\},
+          \qquad
+          L_j=\left\{
+          \begin{bmatrix}
+          0 & \cdots & a_{j1} & \cdots & 0\\
+          \vdots & \ddots & \vdots &  & \vdots\\
+          0 & \cdots & a_{ji} & \cdots & 0\\
+          \vdots &  & \vdots & \ddots & \vdots\\
+          0 & \cdots & a_{jn} & \cdots & 0
+          \end{bmatrix}\right\},
+          \]
+        </div>
+        are a right ideal and a left ideal of \(\mathrm{Mat}_n(R)\) respectively. Neither of these are two-sided ideals if \(n \geqslant 2\).
+      </li>
+    </ol>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-8-4-6">
+    <h3 id="def-8-4-6">Definition 8.4.6</h3>
+    <p>An ideal \(I\) in a ring \(R\) is a <strong>proper ideal</strong> if \(I \neq R\), and <strong>nontrivial</strong> if \(I \neq \{0\}\).</p>
+    <p>Some authors might say an ideal is nontrivial to mean it is proper and nontrivial.</p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="exr-8-4-7">
+    <h3 id="exr-8-4-7">Exercise 8.4.7</h3>
+    <p>Prove that an ideal \(I\) is proper if and only if \(I\) contains no units.</p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="exr-8-4-8">
+    <h3 id="exr-8-4-8">Exercise 8.4.8</h3>
+    <p>Let \(R\) be a commutative ring. Show that \(R\) is a field if and only if \(R\) has only two ideals, \(\{0\}\) and \(R\).</p>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-8-4-9">
+    <h3 id="def-8-4-9">Definition 8.4.9</h3>
+    <p>A ring \(R\) is a <strong>simple ring</strong> if it has no proper nontrivial ideals, meaning that the only ideals of \(R\) are \(R\) and \(\{0\}\).</p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="exr-8-4-10">
+    <h3 id="exr-8-4-10">Exercise 8.4.10</h3>
+    <p>If \(F\) is a field or, more generally, a division ring, and \(n \geqslant 1\) is an integer, prove that \(\mathrm{Mat}_{n \times n}(F)\) is a simple ring.</p>
+  </section>
+
+  <p>Here are some operations that one can perform with ideals.</p>
+
+  <section class="callout lemma" role="region" aria-labelledby="lem-8-4-11">
+    <h3 id="lem-8-4-11">Lemma 8.4.11</h3>
+    <p>Let \(R\) be a ring and let \(I\) and \(J\) be ideals of \(R\). Then</p>
+    <ol>
+      <li>The sum of ideals
+        <div class="math">
+          \[
+            I + J := \{ a + b \mid a \in I,\; b \in J \}
+          \]
+        </div>
+        is an ideal.</li>
+      <li>The intersection of ideals is an ideal: \(I \cap J\) is an ideal, and more generally the intersection
+        <div class="math">
+          \[
+            \bigcap_{\alpha \in J} I_\alpha
+          \]
+        </div>
+        of any collection of ideals \(I_\alpha\) of \(R\) is an ideal.</li>
+      <li>The product of ideals is an ideal:
+        <div class="math">
+          \[
+            IJ := \left\{ \sum_{i=1}^n a_i b_i \,\middle|\, n \geqslant 0,\; a_i \in I,\; b_i \in J \right\}
+          \]
+        </div>
+        is an ideal such that \(IJ \subseteq I \cap J\).</li>
+    </ol>
+    <p>The set of all ideals of a ring \(R\) is a lattice with respect to the partial order given by containment. In this lattice, the supremum of a pair of ideals \(I\) and \(J\) is \(I+J\) and the infimum is \(I \cap J\).</p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="exr-8-4-12">
+    <h3 id="exr-8-4-12">Exercise 8.4.12</h3>
+    <p>Prove Lemma 8.4.11.</p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-8-4-13">
+    <h3 id="rmk-8-4-13">Remark 8.4.13</h3>
+    <p>However, the union of ideals is typically <em>not</em> an ideal. For example, in \(\mathbb{Z}\), the sets of even integers \(I = 2\mathbb{Z}\) and multiples of \(3\), \(J = 3\mathbb{Z}\), are both ideals, but \(I \cup J\) is not an ideal since it contains \(2\) and \(3\) but it does not contain
+    \(1 = 3 - 2\).</p>
+  </section>
+
+  <p>However, the union of <em>nested</em> ideals is an ideal.</p>
+
+  <section class="callout exercise" role="region" aria-labelledby="exr-8-4-14">
+    <h3 id="exr-8-4-14">Exercise 8.4.14</h3>
+    <p>Let \(\{ I_\lambda \}_{\lambda \in \Lambda}\) be a chain of ideals, meaning that for all \(\alpha, \beta \in \Lambda\) we have \(I_{\alpha} \subseteq I_{\beta}\) or \(I_{\beta} \subseteq I_{\alpha}\). Show that</p>
+    <div class="math">
+      \[
+        \bigcup_{\lambda \in \Lambda} I_{\lambda}
+      \]
+    </div>
+    <p>is an ideal.</p>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-8-4-15">
+    <h3 id="def-8-4-15">Definition 8.4.15</h3>
+    <p>Let \(R\) be a ring and consider a subset \(S \subseteq R\). The <strong>ideal generated by</strong> \(S\), denoted \((S)\), is the intersection of all the ideals of \(R\) that contain \(S\). When \(S = \{ a_1, \ldots, a_n \}\), we may write \((a_1, \ldots, a_n)\) instead of \((\{ a_1, \ldots, a_n \})\).</p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-8-4-16">
+    <h3 id="rmk-8-4-16">Remark 8.4.16</h3>
+    <p>Let \(S\) be a subset of a ring \(R\). By Lemma 8.4.11, the ideal generated by \(S\) is indeed an ideal.</p>
+  </section>
+
+  <p>The ideal generated by \(S\) is the smallest ideal of \(R\) that contains \(S\).</p>
+
+  <section class="callout exercise" role="region" aria-labelledby="exr-8-4-17">
+    <h3 id="exr-8-4-17">Exercise 8.4.17</h3>
+    <p>Let \(A\) be any subset of a ring \(R\). The ideal generated by \(A\) is given by</p>
+    <div class="math">
+      \[
+        (A)=\left\lbrace \sum_{i=1}^n x_i a_i y_i \,\middle\vert\, n \geqslant 0,\; a_i \in A,\; x_i, y_i \in R \right\rbrace.
+      \]
+    </div>
+    <p>If \(R\) is commutative and \(A\) is any subset, then we can simplify this to</p>
+    <div class="math">
+      \[
+        (A)=\left\{\sum_{i=1}^n r_i a_i \mid n \geqslant 0,\; r_i \in R,\; a_i \in A\right\}.
+      \]
+    </div>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-8-4-18">
+    <h3 id="def-8-4-18">Definition 8.4.18</h3>
+    <p>Let \(R\) be a ring. Given an ideal \(I\) and a subset \(S\) of \(R\), we say that \(S\) <strong>generates</strong> \(I\) if \((S) = I\), and we call the elements of \(S\) <strong>generators</strong> of \(I\).</p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-8-4-19">
+    <h3 id="rmk-8-4-19">Remark 8.4.19</h3>
+    <p>Suppose that \(R\) is a commutative ring. Given generators for \(I\) and \(J\), say \(I = (S)\) and \(J = (T)\), the set \(\{ st \mid s \in S,\; t \in T \}\) generates \(IJ\), while the set \(S \cup T\) generates \(I + J\).</p>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-8-4-20">
+    <h3 id="def-8-4-20">Definition 8.4.20</h3>
+    <p>We say an ideal \(I\) is <strong>finitely generated</strong> if \(I = (S)\) for some finite subset \(S\) of \(R\).</p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-8-4-21">
+    <h3 id="rmk-8-4-21">Remark 8.4.21</h3>
+    <p>Note that if \(A = \{a_1, \dots, a_n \}\) and \(R\) is commutative, then</p>
+    <div class="math">
+      \[
+        (a_1, \ldots, a_n) = Ra_1 + \cdots + Ra_n
+        = \{ r_1 a_1 + \cdots + r_n a_n \mid r_i \in R \}.
+      \]
+    </div>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-8-4-22">
+    <h3 id="def-8-4-22">Definition 8.4.22</h3>
+    <p>An ideal of \(R\) is <strong>principal</strong> if it can be generated by one element, meaning that \(I = (a)\) for some \(a \in R\).</p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-8-4-23">
+    <h3 id="ex-8-4-23">Example 8.4.23</h3>
+    <p>In \(R = \mathbb{Z}[x]\), we have</p>
+    <div class="math">
+      \[
+        I = (2 , x) = \{\, 2f(x) + xg(x) \mid f(x), g(x) \in \mathbb{Z}[x] \,\}.
+      \]
+    </div>
+    <p>Thus \(I\) is the set of polynomials with integer coefficients whose constant term is even. One can show that this ideal <em>cannot</em> be generated by a single element, so it is not a principal ideal.</p>
+  </section>
+
+  <p>We will primarily use this notion when \(R\) is commutative.</p>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-8-4-24">
+    <h3 id="rmk-8-4-24">Remark 8.4.24</h3>
+    <p>Note that if \(R\) is commutative and \(I = (a)\), then
+      \(I = Ra = \{ ra \mid r \in R \}\) by Exercise 8.4.17, since an expression of the form
+      \(r_1 a + \cdots + r_m a\) can be rewritten as \(ra\) with \(r = r_1 + \cdots + r_m\). Note, however, that this does not work for noncommutative rings.</p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-8-4-25">
+    <h3 id="ex-8-4-25">Example 8.4.25</h3>
+    <ol>
+      <li>We will later show that every ideal of \(\mathbb{Z}\) is principal, so all ideals in \(\mathbb{Z}\) are of the form \(I=(n) = \mathbb{Z} \cdot n\) for some \(n\in \mathbb{Z}\).</li>
+      <li>We will later show that for any field \(F\), every ideal of \(F[x]\) is principal.</li>
+      <li>For any field \(F\), every ideal in \(F[x_1,\ldots,x_n]\) is finitely generated, but not necessarily principal when \(n \geqslant 2\). This fact is the Hilbert Basis Theorem, an elementary result in Commutative Algebra which we will <em>not</em> prove in the class.</li>
+    </ol>
+  </section>
+</section>
+
+
+<section id="homomorphisms" aria-labelledby="sec-8-5-heading">
+  <h2 id="sec-8-5-heading">8.5 Homomorphisms</h2>
+
+  <p>A homomorphism of rings is a function between two rings that preserves the ring structure: the addition, multiplication, and \(1\).</p>
+
+  <section class="callout definition" role="region" aria-labelledby="def-8-5-1">
+    <h3 id="def-8-5-1">Definition 8.5.1</h3>
+    <p>For rings \(R\) and \(S\), a <strong>ring homomorphism</strong> (also called a <strong>ring map</strong>) from \(R\) to \(S\) is a function \(f\!: R \to S\) that satisfies the following properties:</p>
+    <ol>
+      <li>\(f(x + y) = f(x) + f(y)\) for all \(x,y \in R\);</li>
+      <li>\(f(x \cdot y) = f(x) \cdot f(y)\) for all \(x,y \in R\);</li>
+      <li>\(f(1_R) = 1_S\).</li>
+    </ol>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-8-5-2">
+    <h3 id="rmk-8-5-2">Remark 8.5.2</h3>
+    <p>Equivalently, \(f\) is a ring homomorphism if \(f\) is both a homomorphism of abelian groups \((R, +) \longrightarrow (S,+)\) and a <em>homomorphism of monoids</em> from \((R, \cdot)\) to \((S, \cdot)\).<sup>1</sup></p>
+    <p><sup>1</sup>By definition, a homomorphism of monoids preserves the binary operation and sends the identity to the identity.</p>
+  </section>
+
+  <p>We really must require \(f(1_R) = 1_S\), since this is not a consequence of the first two conditions.</p>
+
+  <section class="callout example" role="region" aria-labelledby="ex-8-5-3">
+    <h3 id="ex-8-5-3">Example 8.5.3</h3>
+    <p>The map from \(\mathbb{R}\) to \(\mathrm{Mat}_{2}(\mathbb{R})\) sending</p>
+    <div class="math">
+      \[
+      r \longmapsto \begin{bmatrix} r & 0 \\ 0 & 0 \end{bmatrix}
+      \]
+    </div>
+    <p>preserves addition and multiplication, but it does not send \(1\) to \(1\).</p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-8-5-4">
+    <h3 id="ex-8-5-4">Example 8.5.4</h3>
+    <p>The map \(\mathbb{R} \to \mathrm{Mat}_{n \times n}(\mathbb{R})\) sending \(r\) to \(rI_n\) is a ring homomorphism.</p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="exr-8-5-5">
+    <h3 id="exr-8-5-5">Exercise 8.5.5 (\(\mathbb{Z}\) is an initial object)</h3>
+    <p>Prove that for any ring \(S\) there is a unique ring homomorphism \(f\!: \mathbb{Z} \to S\) given by sending \(n\) to \(n \cdot 1_S\).</p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-8-5-6">
+    <h3 id="ex-8-5-6">Example 8.5.6</h3>
+    <p>Fix a commutative ring \(R\), an element \(a \in R\), and an indeterminate \(x\). The <em>evaluation at \(a\)</em> map is the function \(f\!: R[x] \to R\) given by</p>
+    <div class="math">
+      \[
+      f\!\left(\sum_i r_i x^i\right) = \sum_i r_i a^i.
+      \]
+    </div>
+    <p>This is a ring homomorphism.</p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="exr-8-5-7">
+    <h3 id="exr-8-5-7">Exercise 8.5.7</h3>
+    <p>Prove that for any commutative ring \(R\) and any element \(a \in R\), there is a unique ring homomorphism \(\mathbb{Z}[x] \to R\) that sends \(x\) to \(a\).</p>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-8-5-8">
+    <h3 id="def-8-5-8">Definition 8.5.8</h3>
+    <p>Let \(f\!: R \longrightarrow S\) be a ring homomorphism. The <strong>kernel</strong> of \(f\) is</p>
+    <div class="math">
+      \[
+      \ker(f) := \{ x \in R \mid f(x) = 0 \}.
+      \]
+    </div>
+  </section>
+
+  <section class="callout lemma" role="region" aria-labelledby="lem-8-5-9">
+    <h3 id="lem-8-5-9">Lemma 8.5.9</h3>
+    <p>If \(f\!: R \to S\) is a ring homomorphism, then:</p>
+    <ol>
+      <li>\(f(0_R) = 0_S\);</li>
+      <li>\(f(-x) = -f(x)\);</li>
+      <li>If \(u \in R^\times\) then \(f(u) \in S^\times\) and \(f(u^{-1}) = f(u)^{-1}\);</li>
+      <li>The image \(\mathrm{im}(f)\) is a subring of \(S\);</li>
+      <li>The kernel \(\ker(f)\) is an ideal of \(R\);</li>
+      <li>\(f\) is injective if and only if \(\ker(f) = \{0\}\).</li>
+    </ol>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-8-5-9">
+    <h3 id="prf-8-5-9">Proof (of Lemma 8.5.9)</h3>
+    <p>By definition, \(f\) is a homomorphism of additive groups, and thus \(f(0_R) = 0_S\) and \(f(-x) = -f(x)\).</p>
+    <p>The fact that units are sent to units follows since \(f(1_R)=1_S\):</p>
+    <div class="math">
+      \[
+      1 = f(1) = f(u u^{-1}) = f(u)f(u^{-1}), \quad \text{and similarly } f(u^{-1})f(u)=1.
+      \]
+    </div>
+    <p>Hence \(f(u^{-1}) = f(u)^{-1}\).</p>
+    <p>To show that \(\mathrm{im}(f)\) is a subring, note \(1_S=f(1_R)\in\mathrm{im}(f)\). For \(a=f(x)\) and \(b=f(y)\) we have</p>
+    <div class="math">
+      \[
+      a-b=f(x-y)\in\mathrm{im}(f), \qquad ab=f(xy)\in\mathrm{im}(f).
+      \]
+    </div>
+    <p>Thus, by the Subring Test, \(\mathrm{im}(f)\) is a subring of \(S\).</p>
+    <p>The kernel \(\ker(f)\) is a subgroup under \(+\) and is closed under multiplication by all elements of \(R\): if \(a\in\ker(f)\) and \(r\in R\), then \(f(ra)=f(r)f(a)=f(r)\cdot0=0\), so \(ra\in\ker(f)\), and likewise \(ar\in\ker(f)\).</p>
+    <p>Finally, \(f\) is injective iff \(\ker(f)=\{0\}\) by the standard group-homomorphism argument.</p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-8-5-10">
+    <h3 id="rmk-8-5-10">Remark 8.5.10</h3>
+    <p>In fact, a subset \(I\) of a ring \(R\) is an ideal if and only if it is the kernel of some ring homomorphism with source \(R\).</p>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-8-5-11">
+    <h3 id="def-8-5-11">Definition 8.5.11</h3>
+    <p>Given rings \(R\) and \(S\), a <strong>ring isomorphism</strong> from \(R\) to \(S\) is a ring homomorphism \(f\!: R \to S\) such that there exists a ring homomorphism \(g\!: S \to R\) with</p>
+    <div class="math">
+      \[
+      f \circ g = \mathrm{id}_S, \qquad g \circ f = \mathrm{id}_R.
+      \]
+    </div>
+    <p>In that case, we write \(f^{-1}\) to denote the homomorphism \(g\). Two rings \(R\) and \(S\) are isomorphic, written \(R \cong S\), if there exists such an isomorphism.</p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="exr-8-5-12">
+    <h3 id="exr-8-5-12">Exercise 8.5.12</h3>
+    <p>Show that if \(f\!: R \to S\) is a bijective ring homomorphism, then \(f\) is an isomorphism. Moreover, show that the composition of two ring homomorphisms (respectively, isomorphisms) is again a ring homomorphism (respectively, isomorphism).</p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="exr-8-5-13">
+    <h3 id="exr-8-5-13">Exercise 8.5.13</h3>
+    <p>Fix a ring \(R\) and integer \(n \geqslant 1\). Recall that the collection \(S\) of all diagonal matrices in \(\mathrm{Mat}_{n}(R)\) is a subring of \(\mathrm{Mat}_{n}(R)\). Prove that</p>
+    <div class="math">
+      \[
+      S \cong \underset{n\text{ times}}{\underbrace{R \times \cdots \times R}}.
+      \]
+    </div>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="exr-8-5-14">
+    <h3 id="exr-8-5-14">Exercise 8.5.14</h3>
+    <p>Show that the following are ring isomorphism invariants:</p>
+    <ol>
+      <li>All group isomorphism invariants of the additive group, including the isomorphism class (i.e. if \(R \cong S\) then \((R,+) \cong (S,+)\)).</li>
+      <li>The properties of being commutative, a division ring, a field, or an integral domain.</li>
+      <li>The cardinality of the set of zero divisors.</li>
+      <li>All group isomorphism invariants of the group of units (i.e. if \(R \cong S\) then \((R^\times, \cdot) \cong (S^\times, \cdot)\)).</li>
+      <li>The isomorphism type of the center: if \(R \cong S\) then \(\mathrm{Z}(R) \cong \mathrm{Z}(S)\).</li>
+    </ol>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="exr-8-5-15">
+    <h3 id="exr-8-5-15">Exercise 8.5.15</h3>
+    <p>Let \(f\!: R \to S\) be a ring homomorphism. Show the following:</p>
+    <ol>
+      <li>If \(I\) is an ideal in \(R\), then \(f(I)\) is an ideal of \(f(R)\).</li>
+      <li>If \(I\) is an ideal of \(S\), then \(f^{-1}(I)\) is an ideal of \(R\).</li>
+    </ol>
+  </section>
+
+  <p><strong>Warning!</strong> The image of an ideal under a ring homomorphism is not necessarily an ideal of the target ring.</p>
+
+  <section class="callout example" role="region" aria-labelledby="ex-8-5-16">
+    <h3 id="ex-8-5-16">Example 8.5.16</h3>
+    <p>Let \(k\) be a field and \(x\) an indeterminate. Consider the subring of \(S = k[x]\) consisting of polynomials where all terms have even degree, given by</p>
+    <div class="math">
+      \[
+      R = k[x^2] := \{ r_0 + r_1 x^2 + \cdots + r_n x^{2n} \mid r_i \in k \}.
+      \]
+    </div>
+    <p>The inclusion map \(i\!: R \to S\) is a ring homomorphism. Consider the ideal \(I = (x^2)\) of \(R\). Its image \(J = i(I)\) under \(i\) is <em>not</em> an ideal of \(S\): because \(x^2 \in J\) but \(x \cdot x^2 = x^3 \notin J\).</p>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-8-5-17">
+    <h3 id="def-8-5-17">Definition 8.5.17</h3>
+    <p>Let \(R\) and \(S\) be commutative rings. Given a ring homomorphism \(f\!: R \to S\) and an ideal \(I\) in \(R\), the <strong>expansion</strong> of \(I\) into \(S\) is the ideal of \(S\) given by \(S f(I)\), sometimes denoted \(SI\).</p>
+  </section>
+</section>
+
+
+
+<section id="quotient-rings" aria-labelledby="sec-8-6-heading">
+  <h2 id="sec-8-6-heading">8.6 Quotient Rings</h2>
+
+  <p>We should think of a two-sided ideal as analogous to a normal subgroup of a group, for two related reasons:</p>
+  <ul>
+    <li>They are the things that occur as kernels of homomorphisms.</li>
+    <li>They are the things you are allowed to mod out by.</li>
+  </ul>
+
+  <p>Suppose \(I\) is a proper ideal of a ring \(R\). Recall this includes the fact that \(I\) is a subgroup of \((R,+)\), and hence it is a normal subgroup since \((R,+)\) is abelian. Thus, \(R/I\) is an abelian group under \(+\). Since we use additive notation, a typical element of this group is of the form \(r+I\) for \(r\in R\), and</p>
+
+  <div class="math">\[
+    a + I = b + I \iff a - b \in I.
+  \]</div>
+
+  <p>This quotient group also inherits a ring structure from \(R\):</p>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-8-6-1">
+    <h3 id="thm-8-6-1">Theorem 8.6.1</h3>
+    <p>If \(R\) is a ring and \(I\) is a proper (two-sided) ideal, then the binary operation</p>
+    <div class="math">\[
+      (r + I)\cdot(s + I) := rs + I
+    \]</div>
+    <p>on \(R/I\) is well-defined and makes \((R/I, +, \cdot)\) into a ring, where \(+\) is the operation induced by addition on \(R\). The one in this ring is \(1+I\). Moreover, the map \(\pi\!: R \to R/I\) with \(\pi(r)=r+I\) is a ring homomorphism.</p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-8-6-1">
+    <h3 id="prf-8-6-1">Proof (of Theorem 8.6.1)</h3>
+    <p>The main point is the well-definedness of the operation. Suppose \(r+I = r'+I\) and \(s+I = s'+I\). Then \(r = r' + a\) and \(s = s' + b\) for some \(a,b\in I\), and hence</p>
+    <div class="math">\[
+      rs = r's' + r'b + a s' + a b.
+    \]</div>
+    <p>Since \(I\) is a two-sided ideal, \(r'b\), \(as'\), and \(ab\) all belong to \(I\), and so does their sum. It follows that \(rs + I = r's' + I\), proving that the operation is well-defined.</p>
+    <p>To show that \(R/I\) is a ring, note that it is already an abelian group under addition. Associativity of multiplication follows from that in \(R\). Moreover, \(1+I\) acts as a multiplicative identity since \(1\) does in \(R\), and the distributive laws descend directly from those in \(R\).</p>
+    <p>Finally, \(\pi(1)=1+I\) by definition, and \(\pi\) preserves products by construction, hence \(\pi\) is a ring homomorphism.</p>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-8-6-2">
+    <h3 id="def-8-6-2">Definition 8.6.2</h3>
+    <p>The ring \(R/I\) with the operations \(+\) and \(\cdot\) induced from \(R\) is the <strong>quotient ring</strong> of \(R\) modulo \(I\). The ring homomorphism \(\pi\!: R \to R/I\) sending \(r\) to \(r+I\) is called the <strong>canonical surjection</strong>, <strong>canonical map</strong>, or <strong>quotient map</strong>.</p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-8-6-3">
+    <h3 id="rmk-8-6-3">Remark 8.6.3</h3>
+    <p>In the quotient ring \(R/I\), the zero element is \(0+I\) and the one is \(1+I\).</p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-8-6-4">
+    <h3 id="ex-8-6-4">Example 8.6.4</h3>
+    <p>Given an ideal \(I=(n)\) in the ring \(\mathbb{Z}\), the quotient ring \(\mathbb{Z}/(n)\) is the familiar ring \(\mathbb{Z}/n\).</p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-8-6-5">
+    <h3 id="ex-8-6-5">Example 8.6.5</h3>
+    <p>Let \(R = \mathbb{R}[x]\) and \(I = (x^2 + 1)\). Then we may form the quotient ring</p>
+    <div class="math">\[
+      R/I = \mathbb{R}[x]/(x^2 + 1).
+    \]</div>
+    <p>Intuitively, we are starting with \(\mathbb{R}\), adjoining an element \(x\), and imposing that \(x^2 = -1\), so we should obtain \(\mathbb{C}\). We will prove this carefully in <a href="#qt-by-x2-plus-1">Lemma 8.7.?</a>.</p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-8-6-6">
+    <h3 id="ex-8-6-6">Example 8.6.6</h3>
+    <p>More generally, let \(R\) be any commutative ring, \(x\) an indeterminate, and suppose \(f(x)\) is a monic polynomial, say</p>
+    <div class="math">\[
+      f(x) = x^n + r_{n-1} x^{n-1} + \cdots + r_1 x + r_0
+    \]</div>
+    <p>for some \(r_0, \ldots, r_{n-1} \in R\). Set \(S = R[x]/(f(x))\). One should think of this as adjoining a new ring element \(\overline{x}\) to \(S\) and imposing the relation given by \(f\):</p>
+    <div class="math">\[
+      \overline{x}^n = -r_{n-1}\overline{x}^{n-1} - \cdots - r_1 \overline{x} - r_0.
+    \]</div>
+    <p>In fact, the elements of \(S\) are in bijective correspondence with polynomials of degree at most \(n-1\):</p>
+    <div class="math">\[
+      \{ a_0 + \cdots + a_{n-1} x^{n-1} \mid a_i \in R \} \longrightarrow S, \quad g \mapsto g + I.
+    \]</div>
+
+    <p>For instance, the ring</p>
+    <div class="math">\[
+      S = \mathbb{Q}[x]/(x^4 + x^3 + x^2 + x + 1)
+    \]</div>
+    <p>can be thought of as taking \(\mathbb{Q}\) and adjoining an element \(\zeta_5\) such that</p>
+    <div class="math">\[
+      \zeta_5^4 + \zeta_5^3 + \zeta_5^2 + \zeta_5 + 1 = 0
+      \implies -\zeta_5(\zeta_5^4 + \zeta_5^3 + \zeta_5^2 + \zeta_5 + 1) = 1.
+    \]</div>
+    <p>Thus this new element \(\zeta_5\) is invertible; in fact, one can show that \(S\) is a field and is isomorphic to \(\mathbb{Q}(\zeta_5)\), the smallest subfield of \(\mathbb{C}\) containing both \(\mathbb{Q}\) and \(\zeta_5 = e^{2\pi i/5}\).</p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-8-6-7">
+    <h3 id="ex-8-6-7">Example 8.6.7</h3>
+    <p>Many rings of interest in commutative algebra arise from the construction</p>
+    <div class="math">\[
+      F[x_1, \dots, x_n]/I
+    \]</div>
+    <p>for some field \(F\), integer \(n \geqslant 1\), and ideal \(I \subseteq F[x_1, \dots, x_n]\). By the Hilbert Basis Theorem, every such ideal is finitely generated, so the ring has the form</p>
+    <div class="math">\[
+      F[x_1, \dots, x_n]/(f_1, \dots, f_m),
+    \]</div>
+    <p>where each \(f_j\) is a polynomial in \(x_1, \dots, x_n\). You should think of this as starting with \(F\), adjoining \(n\) new elements, and then imposing \(m\) relations among them. In commutative rings, relations involve both addition and multiplication.</p>
+  </section>
+</section>
+
+
+
+
+
+
+<section id="isomorphism-theorems-for-rings" aria-labelledby="sec-8-7-heading">
+  <h2 id="sec-8-7-heading">8.7 The Isomorphism Theorems for Rings</h2>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-8-7-1">
+    <h3 id="thm-8-7-1">Theorem 8.7.1 (Universal Mapping Property for Quotient Rings)</h3>
+    <p>Let \(R\) be a ring and \(I\) a (two-sided) ideal in \(R\), and let \(\pi: R \to R/I\) be the canonical surjection.
+    If \(f\!: R \to S\) is a ring homomorphism such that \(I \subseteq \ker(f)\), there exists a unique ring homomorphism \(\overline{f}: R/I \to S\) such that the following diagram commutes:
+
+\[
+\begin{CD}
+R @>{f}>> S \\
+@V{\pi}VV @| \\
+R/I @>>{\overline{f}}> S
+\end{CD}
+\]
+
+
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-8-7-1">
+    <h3 id="prf-8-7-1">Proof (of Theorem 8.7.1)</h3>
+    <p>Ignoring the multiplication operation, we already know from \Cref{UMP quotient group} that there is a unique group homomorphism \(\overline{f}\) of abelian groups from \((R/I, +)\) to \((S, +)\) such that
+    \(\overline{f}  \circ \pi = f\).
+    It remains only to check that \(\overline{f}\) preserves multiplication and sends \(1\) to \(1\).
+    Given elements \(r + I, s + I \in R/I\), we have</p>
+    <div class="math">\[
+      \overline{f}((r+I)(s + I)) = \overline{f}(rs + I) = f(rs) = f(r)f(s) = f(r + I) f(s +I),
+    \]</div>
+    <p>since \(f\) preserves multiplication. Finally,</p>
+    <div class="math">\[
+      \overline{f}(1_{R/I}) = \overline{f}(1_R + I) = f(1_R) = 1_S
+    \]</div>
+    <p>since \(f\) sends \(1_R\) to \(1_S\).</p>
+  </section>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-8-7-2">
+    <h3 id="thm-8-7-2">Theorem 8.7.2 (First Isomorphism Theorem for Rings)</h3>
+    <p>If \(f\!: R \to S\) is a ring homomorphism, there is an isomorphism</p>
+  
+\[
+\begin{array}{rcl}
+\overline{f}: R/\ker(f) & \xrightarrow{\ \cong\ } & \mathrm{im}(f) \\[4pt]
+r+\ker(f) & \longmapsto & f(r)
+\end{array}
+\]
+
+    <p>In particular, if \(f\) is surjective, then</p>
+    <div class="math">\[
+      R/\ker(f)\cong S.
+    \]</div>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-8-7-2">
+    <h3 id="prf-8-7-2">Proof (of Theorem 8.7.2)</h3>
+    <p>Taking \(I = \ker(f)\) in the UMP for quotient rings, we have a ring homomorphism \(\overline{f}: R/\ker(f) \to S\). By the formula for \(\overline{f}\) we immediately get that \(\mathrm{im}(\overline{f}) = \mathrm{im}(f)\). Its kernel is</p>
+    <div class="math">\[
+      \{r + I \mid f(r) = 0\} = \{0_{R/I}\}
+    \]</div>
+    <p>and hence \(\overline{f}\) is injective. The result follows.</p>
+  </section>
+
+  <p>Here is a nice application of the First Isomorphism Theorem:</p>
+
+  <section class="callout example" role="region" aria-labelledby="ex-8-7-3">
+    <h3 id="ex-8-7-3">Example 8.7.3</h3>
+    <p>Recall that \(\mathbb{R}[x]/(x^2+1)\) ought to be \(\mathbb{C}\).
+    To prove this, we define a map</p>
+    <div class="math">\[
+      \phi\!: \mathbb{R}[x] \longrightarrow \mathbb{C}
+    \]</div>
+    <p>sending \(f(x)\) to \(f(i)\), the evaluation of \(f\) at \(i\). It is easy to check \(\phi\) is a ring homomorphism, but we leave the details as an exercise.
+    This map is surjective since elements of the form \(a + bx\) in the source map to all possible complex numbers under \(\phi\).</p>
+    <p>We claim the kernel of \(\phi\) is \((x^2 +1)\). Note that</p>
+    <div class="math">\[
+      x^2 + 1 \in \ker(\phi)
+    \]</div>
+    <p>and it follows that</p>
+    <div class="math">\[
+      (x^2 + 1) \subseteq \ker(\phi),
+    \]</div>
+    <p>since \(\ker(\phi)\) is a two-sided ideal.</p>
+    <p>Suppose \(\phi(f(x)) = 0\). By the Division Algorithm in the polynomial ring \(\mathbb{R}[x]\), which we will cover in more detail later, we can write</p>
+    <div class="math">\[
+      f(x) = (x^2 + 1)q(x) + r(x)
+    \]</div>
+    <p>with the degree of \(r(x)\) at most \(1\).
+    So \(r(x) = a + bx\) for real numbers \(a\) and \(b\). If \(r(x) \neq 0\), so that at least one of \(a\) or \(b\) is nonzero, then</p>
+    <div class="math">\[
+      r(i) = a + bi \neq 0
+    \]</div>
+    <p>since a complex number is \(0\) only if both components are, which would contradict the fact that \(f(i) = 0\). So we must have \(r(x) = 0\) and hence \(f(x) \in (x^2 +1)\).</p>
+    <p>Applying the \hyperref[First Isomorphism Theorem for rings]{First Isomorphism Theorem for rings}, we get</p>
+    <div class="math">\[
+      \mathbb{R}[x]/(x^2+1) \cong \mathbb{C}
+    \]</div>
+    <p>via the map sending \(f(x) + (x^2 + 1)\) to \(f(i)\).</p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-8-7-4">
+    <h3 id="ex-8-7-4">Example 8.7.4</h3>
+    <p>Similarly, we may define \(\phi\!: \mathbb{Q}[x] \to \mathbb{C}\) by \(\phi(p(x)) = p(\zeta_5)\). We will skip the details, but its image of \(\mathbb{Q}(\zeta_5)\) and its kernel is \((x^4+x^3+x^2+x+1)\) and hence we declared \(\mathbb{Q}[x]/(x^4+x^3+x^2+x+1) \cong \mathbb{Q}(\zeta_5)\).</p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-8-7-5">
+    <h3 id="ex-8-7-5">Exercise 8.7.5</h3>
+    <p><strong>(Second Isomorphism Theorem setup)</strong> Let \(S\) be a subring of a ring \(R\) and let \(I\) be an ideal of \(R\). Show that
+    Show that</p>
+    <div class="math">\[
+      S + I = \{s + i \mid s \in S, i \in I\}
+    \]</div>
+    <p>is a subring of \(R\) and \(S \cap I\) is an ideal of \(S\).</p>
+  </section>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-8-7-6">
+    <h3 id="thm-8-7-6">Theorem 8.7.6 (Second Isomorphism Theorem for rings)</h3>
+    <p>Let \(S\) be a subring of a ring \(R\) and let \(I\) be an ideal of \(R\). Then</p>
+    <div class="math">\[
+      S + I = \{s + i \mid s \in S, i \in I\}
+    \]</div>
+    <p>is a subring of \(R\), \(S \cap I\) is an ideal of \(S\), and</p>
+    <div class="math">\[
+      \frac{S+I}{I}\cong \frac{S}{S\cap I}.
+    \]</div>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-8-7-6">
+    <h3 id="prf-8-7-6">Proof (of Theorem 8.7.6)</h3>
+    <p>The first two facts are the exercise above.
+    The map \(f\!: S+I \to \frac{S}{S\cap I}\) sending \(s+i\) to \(s+i+I = s+I\) is a homomorphism of rings since it is the composition of a subring inclusion with the canonical quotient map. It is surjective by definition, and the kernel is</p>
+    <div class="math">\[
+      \ker(f) = \{ s+i \mid s \in S, i \in I, s+I = I\} = I.
+    \]</div>
+    <p>The result now follows from the First Isomorphism Theorem for rings.</p>
+  </section>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-8-7-7">
+    <h3 id="thm-8-7-7">Theorem 8.7.7 (Cancelling Isomorphism Theorem for rings)</h3>
+    <p>If \(R\) is a ring and \(I \subseteq J\) are two ideals of \(R\), then \(J/I\) is an ideal of \(R/I\) and</p>
+    <div class="math">\[
+      \frac{R/I}{J/I} \cong R/J \quad \text{ via } \quad (r + I) + J/I \longmapsto r + J.
+    \]</div>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-8-7-7">
+    <h3 id="prf-8-7-7">Proof (of Theorem 8.7.7)</h3>
+    <p>If we ignore multiplication, we know that \((J/I,+)\) is a subgroup of \((R/I,+)\) and that there is an isomorphism of abelian groups</p>
+    <div class="math">\[
+      (R/I)/(J/I) \cong R/J
+    \]</div>
+    <p>given by</p>
+    <div class="math">\[
+      (r + I) + J/I \mapsto r + J.
+    \]</div>
+    <p>One just needs to check that \(J/I\) is a two-sided ideal of \(R/I\) and the indicated bijection preserves multiplication, which we leave as an elementary exercise.</p>
+  </section>
+
+  <p>The following will be helpful in discussing some interesting examples:</p>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-8-7-8">
+    <h3 id="ex-8-7-8">Exercise 8.7.8 (Reduction homomorphism)</h3>
+    <p>Given a ring map \(\phi\!: R \to S\) between commutative rings, there is an induced ring map</p>
+    <div class="math">\[
+      \rho\!: R[x] \to S[x] \quad \text{ given by } \quad \rho\left(\sum_i r_i x^i\right)=\sum_i \phi(r_i) x^i.
+    \]</div>
+    <p>That is, \(\rho\) consists of by applying \(\phi\) to the coefficients of each polynomials.</p>
+  </section>
+
+  <p>The proof is just a tedious check of the axioms, and so we leave it as an exercise.</p>
+
+  <section class="callout example" role="region" aria-labelledby="ex-8-7-9">
+    <h3 id="ex-8-7-9">Example 8.7.9</h3>
+    <p>In particular, for \(I\) an ideal of \(R\), taking \(S = R/I\) and \(\phi\) to be the canonical homomorphism, the exercise implies that there is a ring homomorphism</p>
+    <div class="math">\[
+      \rho\!: R[x] \to \frac{R}{I}[x]
+    \]</div>
+    <p>given by</p>
+    <div class="math">\[
+      \rho\left(\sum_i r_i x^i\right) = \sum_i (r_i + I) x^i
+    \]</div>
+    <p>Thus \(\rho\) is given by modding out the coefficients by \(I\). In this case, the kernel of \(\rho\) is the collection of polynomials with coefficient in \(I\), which we denote by \(I[x]\). By the \ref{First Isomorphism Theorem for rings}{First Isomorphism Theorem}, we conclude that</p>
+    <div class="math">\[
+      \frac{R[x]}{I[x]} \cong \frac{R}{I}[x].
+    \]</div>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-8-7-10">
+    <h3 id="ex-8-7-10">Example 8.7.10</h3>
+    <p>Consider the ideal \(J = (2, x^2 + x + 1)\) of \(\mathbb{Z}[x]\). Explicitly, we have</p>
+    <div class="math">\[
+      J =\{ p(x)\cdot 2 + q(x)(x^2 + x+ 1) \mid p(x),q(x)\in\mathbb{Z}[x]\}.
+    \]</div>
+    <p>Suppose we want to understand \(\mathbb{Z}[x]/J\). Then the Cancelling Isomorphism Theorem is our friend.
+    Set \(I = (2) = \mathbb{Z}[x] \cdot 2\) and note that \(I \subseteq J\), and so by theCancelling Isomorphism Theorem we have</p>
+    <div class="math">\[
+      \frac{\mathbb{Z}[x]}{J} \cong \frac{\mathbb{Z}[x]/I}{J/I}.
+    \]</div>
+    <p>By the example above,</p>
+    <div class="math">\[
+      \frac{\mathbb{Z}[x]}{I} \cong \frac{\mathbb{Z}}{2}[x].
+    \]</div>
+    <p>As we did for groups, we will write \(J/I\) to denote the image of \(J\) under the quotient map \(\pi:\mathbb{Z}[x]\to \mathbb{Z}[x]/I\).
+    Since \(J\) is generated by \(2\) and \(x^2+x+1\) and \(I\) is generated by \(2\), one can show that \(J/(2)\) is the principal ideal of \(\mathbb{Z}[x]/(2)\) generated by the coset represented by \(x^2+x+1\). Under the identification</p>
+    <div class="math">\[
+      \mathbb{Z}[x]/(2) \cong (\mathbb{Z}/2)[x],
+    \]</div>
+    <p>this ideal \(J/(2)\) corresponds to the principal ideal of \((\mathbb{Z}/2)[x]\) generated by \(x^2+x+1 \in (\mathbb{Z}/2)[x]\).
+    We obtain a ring isomorphism</p>
+    <div class="math">\[
+      \mathbb{Z}[x]/J \cong \frac{(\mathbb{Z}/2) [x]}{(x^2+x+1)}.
+    \]</div>
+  </section>
+
+  <p>Looking ahead a bit, we note that the quadratic polynomial \(x^2+x+1\) has no roots in the field \(\mathbb{Z}/2\), as the only possibilities are \(0\) and \(1\), and neither is a root. As we will prove in soon, this implies \((\mathbb{Z}/2) [x]/(x^2+x+1)\) is a field, and thus \(\mathbb{Z}[x]/J\) is a field.</p>
+
+  <p>As discussed before, the set of all all ideals in a ring \(R\) is a partially ordered set with respect to the order given by containment.</p>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-8-7-11">
+    <h3 id="thm-8-7-11">Theorem 8.7.11 (Lattice Theorem for Quotient Rings)</h3>
+    <p>Suppose \(R\) is a ring and \(I\) is a two-sided ideal of \(R\), and write \(\pi\!: R \to R/I\) for the quotient map.
+    There is a bijection</p>
+   \[
+\begin{array}{rcl}
+\{\text{ideals of } R \text{ containing } I\}
+& \longleftrightarrow &
+\{\text{ideals of } R/I\} \\[6pt]
+J & \longmapsto & \pi(J) = J/I \\[6pt]
+\pi^{-1}(L) & \longmapsfrom & L
+\end{array}
+\]
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-8-7-11">
+    <h3 id="prf-8-7-11">Proof (of Theorem 8.7.11)</h3>
+    <p>By the Lattice Isomorphism Theorem, we know that there is a bijection of subgroups (under \(+\)) of \(R\) that contain \(I\) and subgroups of \(R/I\), given by these formulas. It remains to pprove that this correspondence preserves the property of being an ideal, which we leave as an exercise.</p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-8-7-12">
+    <h3 id="ex-8-7-12">Example 8.7.12</h3>
+    <p>We claimed above that \(\mathbb{Z}[x]/(2, x^2+x+1)\) is a field. Since a field has only two ideals, \(\{0\}\) and the field itself, we deduce, using the Lattice Isomorphism Theorem, that there are only two ideals in \(\mathbb{Z}[x]\) that contain \((2, x^2+ x+1)\), namely</p>
+    <div class="math">\[
+      (2, x^2+ x+1)=\pi^{-1}(0) \quad \text{ and } \quad \mathbb{Z}/[x]=\pi^{-1}(F).
+    \]</div>
+  </section>
+</section>
+
+
+<section id="prime-and-maximal-ideals" aria-labelledby="sec-8-8-heading">
+  <h2 id="sec-8-8-heading">8.8 Prime and maximal ideals in commutative rings</h2>
+
+  <section class="callout definition" role="region" aria-labelledby="def-8-8-1">
+    <h3 id="def-8-8-1">Definition 8.8.1</h3>
+    <p>A <strong>maximal ideal</strong> of a ring \(R\) is an ideal that is maximal with respect to containment among all <em>proper</em> ideals of \(R\). More precisely, an ideal \(M\) is maximal if \(M \neq R\) and for all ideals \(I\) in \(R\),
+    \[
+      M \subseteq I \implies M = I \text{ or } I = R.
+    \]
+    Thus the only ideals of \(R\) containing \(M\) are \(M\) and \(R\).</p>
+    <p>Let \(R\) be a commutative ring.
+    A <strong>prime ideal</strong> of \(R\) is a <em>proper</em> ideal \(P\) such that
+    \[
+      xy \in P \implies x \in P \text{ or } y \in P.
+    \]
+    </p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-8-8-2">
+    <h3 id="ex-8-8-2">Example 8.8.2</h3>
+    <p>In \(\mathbb{Z}\), the prime ideals are \((0)\) and the ideals generated by prime integers \(P=(p)\), where \(p\) is a prime integer. The maximal ideals are the ideals generated by prime integers. In particular, \((0)\) is prime but not maximal.</p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-8-8-3">
+    <h3 id="ex-8-8-3">Example 8.8.3</h3>
+    <p>In \(\mathbb{Z}[i]\), we claim that the ideal \((13)\) is not prime. On the one hand, 
+    \[
+      13=(3+2i)(3-2i)\in(13)
+    \]
+    but we claim that
+    \[
+      3+2i \notin (13) \quad \text{ and } \quad 3-2i \notin (13).
+    \]
+    To see this, let \(N\) be the square of the complex norm function, meaning that \(N(a+bi) = a^2 + b^2\) for any \(a, b \in \mathbb{R}\).
+    Now note that if \(3\pm 2i = 13 \alpha\) for some \(\alpha \in \mathbb{Z}[i]\), then
+    \[
+      N(3\pm 2i)=N(13)N(\alpha),
+    \]
+    so it would follow that 
+    \[
+      13= N(3\pm 2i) = 13^2 N(\alpha)
+    \]
+    with \(N(\alpha) \in \mathbb{Z}\), which is impossible.</p>
+  </section>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-8-8-4">
+    <h3 id="thm-8-8-4">Theorem 8.8.4</h3>
+    <p>Let \(R\) be a commutative ring and let \(Q\) be an ideal of \(R\). </p>
+    <ol style="margin-left:20px">
+      <li>The ideal \(Q\) is maximal if and only if \(R/Q\) is a field. </li>
+      <li>The ideal \(Q\) is prime if and only if \(R/Q\) is a domain. </li>
+      <li>Every maximal ideal of \(R\) is prime.</li>
+    </ol>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-8-8-4">
+    <h3 id="prf-8-8-4">Proof (of Theorem 8.8.4)</h3>
+    <p>By the Lattice Isomorphism Theorem, the ideals of \(R/Q\) are of the form \(I/Q\), where \(I\) is an ideal in \(R\) containing \(Q\).</p>
+    <p>By earlier work, \(R/Q\) is a field if and only if \(R/Q\) has only two ideals, \(\{ 0 \} = Q/Q\) and \(R/Q\). Thus \(R/Q\) is a field if and only if the only ideals that contain \(Q\) are \(Q\) and \(R\).</p>
+    <p>Now suppose \(Q\) is prime. If 
+    \[
+      (r + I)(r' + I) = 0 + I,
+    \]
+    then \(rr' \in I\) and hence either \(r \in I\) or \(r' \in I\), so that either 
+    \[
+      r + I = 0 \quad \text{or} \quad r'+ I  = 0.
+    \]
+    Since \(R\) is commutative, then \(R/I\) is also commutative, and since \(Q\) is a proper, then \(R/I\) is not the zero ring. This proves that \(R/Q\) is a domain.</p>
+    <p>Conversely, suppose that \(R/Q\) is a domain. Since \(R/Q\) is not the zero ring, \(Q\) is proper. If \(x,y \in R\) satisfy \(xy \in I\), then 
+    \[
+      (x + I)(y + I) = 0
+    \]
+    in \(R/Q\), and hence either \(x+ Q = 0\) or \(y + Q = 0\). It follows \(x \in Q\) or \(y \in Q\). This proves that \(Q\) is prime.</p>
+    <p>If \(Q\) is maximal, then \(R/Q\) is a field, which in particular implies that \(R/Q\) is a domain, and thus \(Q\) is prime. </p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-8-8-5">
+    <h3 id="ex-8-8-5">Exercise 8.8.5</h3>
+    <p>Show that the ideal \((2,x)\) in \(\mathbb{Z}[x]\) is maximal (and thus prime). In contrast, the ideals \((2)\) and \((x)\) are prime but not maximal.</p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-8-8-6">
+    <h3 id="ex-8-8-6">Example 8.8.6</h3>
+    <p>For a field \(F\), the ideal \(I = (x_1 - a_1, \dots, x_n - a_n)\) of the polynomial ring \(F[x_1, \dots, x_n]\) is maximal. This holds because
+      \(I\) is the kernel of the surjective ring homomorphism \(F[x_1, \dots, x_n] \to F\) given by evalating polynomials at \((a_1, \dots, a_n)\).</p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-8-8-7">
+    <h3 id="ex-8-8-7">Exercise 8.8.7</h3>
+    <p>Show that \(f\!: R \longrightarrow S\) is a ring homomorphism and \(S\) is a domain, then \(\ker(f)\) is a prime ideal.</p>
+  </section>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-8-8-8">
+    <h3 id="thm-8-8-8">Theorem 8.8.8</h3>
+    <p>Every commutative ring has a maximal ideal.</p>
+  </section>
+
+  <p>Fun fact: this is actually <em>equivalent</em> to the Axiom of Choice. We will prove it (but not its equivalence to the Axiom of Choice!) using Zorn's Lemma, another equivalent version of the Axiom of Choice. Zorn's Lemma is a statement about partially ordered sets. Given a partially ordered set \(S\), a chain in \(S\) is a totally ordered subset of \(S\).</p>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-8-8-9">
+    <h3 id="thm-8-8-9">Theorem 8.8.9 (Zorn's Lemma)</h3>
+    <p>Let \(S\) be a nonempty partially ordered set \(S\) such that every chain in \(S\) has an upper bound in \(S\). Then \(S\) contains at least one maximal element.</p>
+  </section>
+
+  <p>We can now prove every ring has a maximal ideal; in fact, we will prove something stronger:</p>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-8-8-10">
+    <h3 id="thm-8-8-10">Theorem 8.8.10</h3>
+    <p>Given a commutative ring \(R\), every proper ideal \(I \neq R\) is contained in some maximal ideal.</p>
+  </section>
+</section>
+
+
 
 
 </main>

@@ -322,7 +322,7 @@ Given a group $G$, we can refer to \emph{the} identity of $G$. Similarly, given 
 
 \begin{definition}
 	Let $G$ be a group, $x \in G$, and $n \geqslant 1$ be an integer. We write $x^n$ to denote the element obtained by multiplying $x$ with itself $n$ times:
-	$$x^n \colonequals \underset{n \textrm{ times}}{\underbrace{x \cdots x}}.$$
+	$$x^n := \underset{n \textrm{ times}}{\underbrace{x \cdots x}}.$$
 \end{definition}
 
 \newpage
@@ -340,7 +340,7 @@ Let $G$ be a group and let $x,y,z, a_1,\ldots,a_n \in G$. Show that the followin
 \end{exercise}
 
 \begin{notation}
-	Given a group $G$, an element $x \in G$, and a positive integer $n$, we write $x^{-n} \colonequals (x^n)^{-1}$.
+	Given a group $G$, an element $x \in G$, and a positive integer $n$, we write $x^{-n} := (x^n)^{-1}$.
 \end{notation}
 
 Note that by \Cref{exercise properties of group elements}, $x^{-n} = (x^{-1})^n$.
@@ -360,13 +360,13 @@ Often, but not always, the group operation for an abelian group is written as $+
 \item The \df{trivial group} is the group with a single element $\{e\}$. This is an abelian group. 
 \item  The pairs $(\mathbb{Z}, +)$, $(\mathbb{Q}, +)$, $(\mathbb{R}, +)$ and $(\C,+)$ are abelian groups. 
 \item For any $n$, let $\mathbb{Z}/n$ denote the integers modulo $n$. Then $(\mathbb{Z}/n, +)$ is an abelian group where $+$ denotes addition modulo $n$.
-\item For any field $F$, such as $\mathbb{Q}$, $\mathbb{R}$, $\C$ or $\mathbb{Z}/p$ for a prime $p$, the set $F^\times \colonequals F \setminus \{0\}$ is an abelian group under multiplication. We will later formally define what a field is, but these fields might already be familiar to you.
+\item For any field $F$, such as $\mathbb{Q}$, $\mathbb{R}$, $\C$ or $\mathbb{Z}/p$ for a prime $p$, the set $F^\times := F \setminus \{0\}$ is an abelian group under multiplication. We will later formally define what a field is, but these fields might already be familiar to you.
 \end{enumerate}
 \end{example}
 
 \begin{example} 
 Let $F$ be any field. If you are not yet familiar with fields, the real or complex numbers are excellent examples.  Consider a positive integer $n$, and let 
-$$\GL_n(F) \colonequals \{ \text{invertible }  n \times n \text{ matrices with entries in } F \}.$$
+$$\GL_n(F) := \{ \text{invertible }  n \times n \text{ matrices with entries in } F \}.$$
 An invertible matrix is one that has a two-sided (multiplicative) inverse. It turns out that if an $n \times n$ matrix $M$ has a left inverse $N$ then that inverse $N$ is automatically a right inverse too, and vice-versa; this is a consequence of a more general fact we mentioned in \Cref{note on inverses in monoids}.
 
 It it not hard to see that $\GL_n(F)$ is a nonabelian group under matrix multiplication. Note that $(\GL_1(F), \cdot)$ is simply $(F^\times, \cdot)$. 	
@@ -378,7 +378,7 @@ Even if the group is not abelian, the set of elements that commute with every ot
 
 \begin{definition}\index{center of a group}
 	Let $G$ be a group. The {\bf center} of $G$ is the set
-	$$\mathrm{Z}(G) \colonequals \lbrace x \in G \mid xy = yx \textrm{ for all } y \in G \rbrace.$$
+	$$\mathrm{Z}(G) := \lbrace x \in G \mid xy = yx \textrm{ for all } y \in G \rbrace.$$
 \end{definition}
 
 \begin{remark}
@@ -474,7 +474,7 @@ For any set $X$, the {\bf permutation group} \index{permutation group of a set $
 \end{definition}
 
 \begin{notation}\index{$[n]$}
-For an integer $n \geqslant 1$, we write $[n] \colonequals \{1,\ldots,n\}$ and $S_n \colonequals \Perm([n])$. An element of $S_n$ is called a \df{permutation on $n$ symbols}, sometimes also called a permutation on $n$ letters or $n$ elements. 
+For an integer $n \geqslant 1$, we write $[n] := \{1,\ldots,n\}$ and $S_n := \Perm([n])$. An element of $S_n$ is called a \df{permutation on $n$ symbols}, sometimes also called a permutation on $n$ letters or $n$ elements. 
 \end{notation}
 
 
@@ -1395,7 +1395,7 @@ Note, however, that not all choices of images for the generators might actually 
 
 \begin{definition}\index{$\ker(f)$}\index{kernel of a group homomorphism}
 The \df{image} of a group homomorphism $f\!: G \longrightarrow G$ is 
-$$\mathrm{im}(f) \colonequals \{f(g) \mid g \in G \}.$$
+$$\mathrm{im}(f) := \{f(g) \mid g \in G \}.$$
 \end{definition}
 
 Notice that $f\!: G \to H$ is surjective if and only if $\mathrm{im}(f) = H$.
@@ -1403,7 +1403,7 @@ Notice that $f\!: G \to H$ is surjective if and only if $\mathrm{im}(f) = H$.
 
 \begin{definition}\index{$\ker(f)$}\index{kernel of a group homomorphism}
 The \df{kernel} of a group homomorphism $f\!: G \longrightarrow G$ is 
-$$\ker(f) \colonequals \{g \in G \mid f(g) = e_H\}.$$
+$$\ker(f) := \{g \in G \mid f(g) = e_H\}.$$
 \end{definition}
 
 \begin{remark}
@@ -1563,7 +1563,7 @@ $$\xymatrix@R=1mm{\rho\!: G \ar[r] & \Perm(S) \\ g \ar@{|->}[r] & \mu_g}$$
 is a well-defined homomorphism of groups. 
 
 \item Conversely, if $\rho: G \to \Perm(S)$ is a group homomorphism, then the rule 
-$$g \cdot s \colonequals (\rho(g))(s)$$
+$$g \cdot s := (\rho(g))(s)$$
 defines an action of $G$ on $S$. 
 \end{enumerate}
 \end{lemma}
@@ -1620,7 +1620,7 @@ $$e_G s = \rho(e_G)(s) = \mathrm{id}(s) = s.\qedhere$$
 
 \begin{definition}\index{orbit (of an action)}\index{$\mathrm{Orb}_G(s)$}
  Let $G$ be a group acting on a set $S$. The equivalence relation on $S$ induced by the action of $G$, written $\sim_G$, is defined by $s\sim_G t$ if and only if there is a $g \in G$ such that $t=g\cdot s$.  The equivalence classes of $\sim_G$ are called {\bf orbits}: the equivalence class
- $$\mathrm{Orb}_G(s) \colonequals \{g\cdot s \ | \ g\in G\}$$ 
+ $$\mathrm{Orb}_G(s) := \{g\cdot s \ | \ g\in G\}$$ 
  is the orbit of $s$. The set of equivalence classes with respect to $\sim_G$ is written $S/G$.
  \end{definition}
  
@@ -1693,7 +1693,7 @@ $$\mathrm{Orb}_G(p)=S \textrm{ for all } p\in S.$$
 \section{Examples of group actions}
 
 \begin{example}[Trivial action] 
-For any group $G$ and any set $S$, $g \cdot s \colonequals s$ defines an action, the \df{trivial action}. The associated group homomorphism is the map
+For any group $G$ and any set $S$, $g \cdot s := s$ defines an action, the \df{trivial action}. The associated group homomorphism is the map
 $$\xymatrix@R=0.1mm{G \ar[r] & \Perm(S) \\ g \ar@{|->}[r] & \mathrm{id}_S.}$$
 A trivial action is not faithful unless the group $G$ is trivial; in fact, the corresponding group homomorphism is trivial.
 \end{example}
@@ -1714,7 +1714,7 @@ The action of $D_{n}$ on the $n$ vertices of $P_n$ is faithful; in fact, we saw 
 
 \begin{example}[group acting on itself by left multiplication]
 Let $G$ be any group and define an action $\cdot$ of $G$ on $G$ (regarded as just a set) by the rule
-$$g \cdot x \colonequals g  x.$$
+$$g \cdot x := g  x.$$
 This is an action, since multiplication is associative and $e_G \cdot x = x$ for all $x$; it is know as the \df{left regular action} of $G$ on itself.
 
 The left regular action of $G$ on itself is faithful, since if $g \cdot x = x$ for all $x$ (or even for just one $x$), then $g = e$. It follows that the associated homomorphism is injective.
@@ -1725,7 +1725,7 @@ This action is also transitive: given any $g \in G$, $g = g \cdot e$, and thus $
 
 \begin{example}[conjugation]\index{action by conjugation}\index{conjugation action}
 Let $G$ be any group and fix an element $g \in G$. Define the {\df conjugation action} of $G$ on itself by setting
-$$g\cdot x \colonequals gxg^{-1} \textrm{ for any } g,x\in G.$$
+$$g\cdot x := gxg^{-1} \textrm{ for any } g,x\in G.$$
 The action of $G$ on itself by conjugation is  not necessarily faithful. In fact, we claim that the kernel of the permutation representation $\rho\!:G\to \Perm(G)$ for the conjugation action is the center $\mathrm{Z}(G)$. Indeed,
 $$g\in \ker\rho\iff g\cdot x=x \textrm{ for all } x\in G \iff gxg^{-1}=x \textrm{ for all } x\in G$$
 $$ \iff gx=xg \textrm{ for all } x\in G \iff g\in \mathrm{Z}(G). $$
@@ -1814,7 +1814,7 @@ Let $G$ be a group.
 \item Let $J$ be any (index) set. If $H_\alpha$ is a subgroup of $G$ for all $\alpha \in J$, then $H=\bigcap_{\alpha\in J} H_\alpha$ is a subgroup of $G$.
  \item If $f: G \to H$ is a homomorphism of groups, then $\mathrm{im}(f)$ is a subgroup of $H$.
  \item If $f: G \to H$ is a homomorphism of groups, and $K$ is a subgroup of $G$, then 
- $$f(K) \colonequals \{ f(g) \mid g \in K \}$$
+ $$f(K) := \{ f(g) \mid g \in K \}$$
 is a subgroup of $H$.
  \item If $f: G \to H$ is a homomorphism of groups, then $\ker(f)$ is a subgroup of $G$.
  \item The center $\mathrm{Z}(G)$ is a subgroup of $G$.
@@ -1846,14 +1846,14 @@ is a subgroup of $H$.
 
 \begin{example}
 For any field $F$, the \df{special linear group}
-$$\SL_n(F) \colonequals \{A \mid A = n\times n \text{ matrix with entries in } F, \det(A)=1_F\}$$
+$$\SL_n(F) := \{A \mid A = n\times n \text{ matrix with entries in } F, \det(A)=1_F\}$$
 is a subgroup of the general linear group $\GL_n(F)$. To prove this, note that $\SL_n(F)$ is the kernel of the determinant map $\det\!:\GL_n(F)\to F^\times$, which is one of the homomorphisms in \Cref{homomorphism examples}. By \Cref{subgroups examples}, this implies that $\SL_n(F)$ is indeed a subgroup of $\GL_n(F)$.
 \end{example}
 
 
 \begin{definition}\index{preimage of a homomorphism}\index{$f^{-1}$ (for a homomorphism $f$)}
 Let $f\!:G\to H$ be a group homomorphism and $K\leq H$. The {\bf preimage} of $K$ is given by
-$$f^{-1}(K) \colonequals \{g\in G \mid f(g)\in K\}$$
+$$f^{-1}(K) := \{g\in G \mid f(g)\in K\}$$
 \end{definition}
 
 
@@ -1874,7 +1874,7 @@ In fact, this is the subgroup generated by $r$.
 
 \begin{definition}\index{subgroup generated by a set}\index{cyclic subgroup generated by an element}
 Given a group $G$ and a subset $X$ of $G$, the {\bf subgroup of $G$ generated by $X$} is
-$$\langle X \rangle \colonequals \bigcap_{\substack{H \leq G \\ H \supseteq X}} H.$$
+$$\langle X \rangle := \bigcap_{\substack{H \leq G \\ H \supseteq X}} H.$$
 If $X=\{x\}$ is a set with one element, then we write $\langle X \rangle=\langle x \rangle$ and we refer to this as the {\bf cyclic subgroup generated by} $x$. More generally, when $X = \{ x_1, \ldots, x_n \}$ is finite, we may write $\langle x_1, \ldots, x_n \rangle$ instead of $\langle X \rangle$. Finally, given two subsets $X$ and $Y$ of $G$, we may sometimes write $\langle X, Y \rangle$ instead of $\langle X \cup Y \rangle$.
 \end{definition}
 
@@ -2081,7 +2081,7 @@ Let $G$ be a group and $x \in G$. If $x^m = e$ then $|x|$ divides $m$.
 \end{lemma}
 
 %\begin{proof} 
-%Let $n \colonequals |x|$. By the Division Algorithm, we can write $m = nq + r$ for some $0 \leqslant r < n$. We now have 
+%Let $n := |x|$. By the Division Algorithm, we can write $m = nq + r$ for some $0 \leqslant r < n$. We now have 
 %$$x^r = (x^n)^qx^r = x^m = e$$ 
 %and so, by the definition of order and since $r<n$, it must be that $r = 0$.
 %\end{proof}
@@ -2115,7 +2115,7 @@ $$x^m=x^{nq+r}=(x^n)^qx^r=x^r.$$
 This shows that every element in $G$ can be written in the form $x^r$ with $0 \leqslant r < n$, so
 $$G = \{x^0, x^1, \dots, x^{n-1}\} \qquad \textrm{and} \qquad |G| = n.$$
 
-\item Let $k$ be any integer. Set $y \colonequals x^k$ and $d \colonequals \gcd(n,k)$, and note that $n=da, k=db$ for some $a,b\in \mathbb{Z}$ such that $\gcd(a,b)=1$. 
+\item Let $k$ be any integer. Set $y := x^k$ and $d := \gcd(n,k)$, and note that $n=da, k=db$ for some $a,b\in \mathbb{Z}$ such that $\gcd(a,b)=1$. 
 We have
 $$y^a=x^{ka}=x^{dba}=(x^n)^b=e,$$ 
 so $|y|$ divides $a$ by \Cref{order of an element divides any power that is identity}. On the other hand, $x^{k|y|}=y^{|y|}=e$, so again by \Cref{order of an element divides any power that is identity} we have $n$ divides $k|y|$. 
@@ -2129,7 +2129,7 @@ $$|y|=a=\frac{n}{\gcd(k,n)}.$$
 
 
 \item Consider any subgroup $H$ of $G$ with $H \neq \{ e \}$, and set 
-$$k \colonequals \min \{i \in \mathbb{Z} \mid i>0 \textrm{ and } g^i\in H\}.$$ 
+$$k := \min \{i \in \mathbb{Z} \mid i>0 \textrm{ and } g^i\in H\}.$$ 
 On the one hand, $H \supseteq \langle g^k \rangle$, since $H \ni g^k$ and $H$ is closed for products. Moreover, given any other positive integer $i$, we can again write $i = kq+r$ for some integers $q, r$ with $0 \leqslant r < k$, and
 $$g^r = g^{i-kq} = g^i (g^k)^q \in H,$$
 so by minimality of $r$ we conclude that $r = 0$. Therefore, $k | r$, and thus we conclude that
@@ -2261,11 +2261,11 @@ $$f(x^ix^j)=f(x^{i+j})=y^{i+j}=y^iy^j=f(x^i)f(x^j).\qedhere$$
 
 \begin{definition}\index{$C_\infty$}\index{$C_n$}
 The \df{infinite cyclic group} is the group 
-$$C_\infty \colonequals \{a^i | i \in \mathbb{Z}\}$$ 
+$$C_\infty := \{a^i | i \in \mathbb{Z}\}$$ 
 with multiplication $a^ia^j = a^{i+j}$. 
 
 For any natural number $n$, the \df{cyclic group of order $n$} is the group 
-$$C_n \colonequals \{a^i | i \in \{0,\dots,n-1\}\}$$ 
+$$C_n := \{a^i | i \in \{0,\dots,n-1\}\}$$ 
 with multiplication $a^ia^j = a^{i+j \pmod n}$. 
 \end{definition}
 
@@ -2293,7 +2293,7 @@ By \Cref{UMP for cyclic groups}, there are homomorphisms $f\!: G \to H$ and $g\!
 \begin{example} 
 	
 For a fixed $n \geqslant 1$,  
-$$\mu_n \colonequals \{z \in \C \mid z^n = 1\}$$
+$$\mu_n := \{z \in \C \mid z^n = 1\}$$
 is a subgroup of $(\C \setminus \{0\}, \cdot)$. 
 Since $ \| z^n \| = \|z\|^n =1$ for any $z \in \mu_n$, then we can write $z = e^{ri}$ for some real number $r$. Moreover, the equality $1 = z^n = e^{nri}$ implies that $nr$ is an integer multiple of $2 \pi$. It follows that
 $$\mu_n = \{1, e^{2 \pi i/n}, e^{4 \pi i/n}, \cdots , e^{(n-1) 2 \pi i/n}\}$$
@@ -2320,9 +2320,9 @@ This idea still works if we replace $\mathbb{Z}$ by an arbitrary group, but one 
  
 Let $G$ be a group and consider an equivalence relation $\sim$ on $G$.
 Let $G/\sim$ denote the set of equivalence classes for $\sim$ and write $[g]$ for the equivalence class that the element $g \in G$ belongs to, that is
-$$[x] \colonequals \{g \in G \mid g \sim x\}.$$
+$$[x] := \{g \in G \mid g \sim x\}.$$
 When does $G/\sim$ acquire the structure of a group under the operation
-$$[x] \cdot [y] \colonequals [xy] \ ?$$
+$$[x] \cdot [y] := [xy] \ ?$$
 Right away, we should be worried about whether this operation is well-defined, meaning that it is independent of our choice of representatives for each class. That is, if $[x] = [x']$ and $[y] = [y']$  then must $[xy] = [x'y']$? In other words, if $x \sim x'$ and $y \sim y'$, must $xy \sim x'y'$? 
 
 
@@ -2382,9 +2382,9 @@ But how do we come up with equivalence relations that are compatible with the gr
  The equivalence relation $\sim_H$ on $G$ induced by the left action of $H$ is given by 
  $$a \sim_H b \textrm{ if and only if } b = ha \text{ for some } h \in H.$$ 
  The equivalence class of $g \in G$, also called the {\bf orbit} of $g$, and also called the {\bf right coset} of $H$ in $G$ containing $g$, is
- $$Hg \colonequals \{hg \mid h \in H\}.$$ 
+ $$Hg := \{hg \mid h \in H\}.$$ 
  There is also a {\bf left coset} of $H$ in $G$ containing $g$, defined by
- $$gH \colonequals \{gh \mid h \in H\}.$$ 
+ $$gH := \{gh \mid h \in H\}.$$ 
 \end{definition}
 
 
@@ -2661,7 +2661,7 @@ Let $G$ be a group. An equivalence relation $\sim$ on $G$ is compatible with mul
 \end{lemma}
 
 \begin{proof}
-($\Rightarrow$) Suppose $\sim$ is compatible with multiplication, and set $N \colonequals \{g \in G \mid g \sim e\}$. Then we claim that $N\trianglelefteq G$ and $\sim=\sim_N$.
+($\Rightarrow$) Suppose $\sim$ is compatible with multiplication, and set $N := \{g \in G \mid g \sim e\}$. Then we claim that $N\trianglelefteq G$ and $\sim=\sim_N$.
 
 To see that $N\trianglelefteq G$, let $n\in N$ and $g\in G$. Since $n\in N$, then $n \sim e$, and thus since $\sim$ is compatible with multiplication we conclude that for all $g \in G$ we have
 $$gng^{-1}\sim geg^{-1} = e \in N.$$ 
@@ -2684,13 +2684,13 @@ $$ab^{-1} = h \implies a = hb. \iff a \sim_H b.$$
 
 \begin{definition}\label{$G/N$}
 Let $N$ be a normal subgroup of a group $G$. The \df{quotient group} $G/N$ is the group $G/\sim_N$, where $\sim_N$ is the equivalence relation induced by the left action of $N$ on $G$. Thus $G/N$ is the set of left cosets of $N$ in $G$, and the multiplication is given by 
-$$xN\cdot yN \colonequals (xy)N.$$ 
+$$xN\cdot yN := (xy)N.$$ 
 The identity elements is $e_GN = N$ and for each $g \in G$, the inverse of $gN$ is $(gN)^{-1} = g^{-1}N$.
 \end{definition}
 
 \begin{remark}
 	Note that, by  Lemma \ref{coset partition}, $G/N$ is also the set of right  cosets of $N$ in $G$ with multiplication given by 
-	$$Nx\cdot Ny \colonequals N(xy).$$
+	$$Nx\cdot Ny := N(xy).$$
 \end{remark}
 
 
@@ -2791,10 +2791,10 @@ A subgroup $N$ of a group $G$ is normal in $G$ if and only if $N$ is the kernel 
 
 \begin{definition}\index{$G'$}\index{$[G,G]$}\index{$[g,h]$}
 Let $G$ be any group. For $x,y \in G$, the \df{commutator} of $x$ and $y$ is the element 
-$$[x,y] \colonequals xyx^{-1}y^{-1}.$$ 
+$$[x,y] := xyx^{-1}y^{-1}.$$ 
 
 The \df{commutator subgroup} or \df{derived subgroup} of $G$, denoted by $G'$ or $[G,G]$, is the subgroup generated by all commutators of elements in $G$. More precisely,
-$$[G,G] \colonequals \langle [x,y] \mid x, y \in G \rangle.$$
+$$[G,G] := \langle [x,y] \mid x, y \in G \rangle.$$
 \end{definition}
 
 
@@ -2822,7 +2822,7 @@ $$[x,y]^{-1} = yxy^{-1}x^{-1} = [y,x].$$
   
 \begin{definition}\label{abelianization of a group}
 Let $G$ be a group and $[G,G]$ be its commutator subgroup. The associated quotient group 
-$$G^{\textrm{ab}} \colonequals G/[G,G]$$ 
+$$G^{\textrm{ab}} := G/[G,G]$$ 
 is called the \df{abelianization} of $G$.\index{$G^{\textrm{ab}}$}
 \end{definition}  
 
@@ -2860,7 +2860,7 @@ commutes, meaning that $\overline{f} \circ \pi = f$.
 \vspace{0.5em}
 
 Moreover, $\mathrm{im}(f) = \mathrm{im}(\overline{f})$. In particular, if $f$ is surjective, then $\overline{f}$ is also surjective. Finally,
-$$\ker(\overline{f}) = \ker(f)/N \colonequals \{ g N \mid f(g) = e_H\}.$$
+$$\ker(\overline{f}) = \ker(f)/N := \{ g N \mid f(g) = e_H\}.$$
 \end{theorem}
 
 
@@ -2987,7 +2987,7 @@ To set up the Second Isomorphism Theorem, we need some more background first.
 
 \begin{definition}\index{$HK$}
 Given subgroups $H$ and $K$ of a group $G$, we define the subset $HK$ of $G$ by
-$$HK \colonequals \{hk \mid h \in H, k\in K\}.$$	
+$$HK := \{hk \mid h \in H, k\in K\}.$$	
 \end{definition}
 
 Note that $HK$ is in general only a subset of $G$, not a subgroup.
@@ -3464,7 +3464,7 @@ Let $X$ be a regular dodecahedron, with $12$ faces, centered at the origin in $\
 
 
 Let $G$ be the group of isometries of the dodecahedron that preserve orientation:
-$$G \colonequals \{\alpha : \mathbb{R}^3 \to \mathbb{R}^3 \mid \text{$\alpha$ is an isometry, $\alpha$ preserves orientation, and } \alpha(X) = X\}.$$
+$$G := \{\alpha : \mathbb{R}^3 \to \mathbb{R}^3 \mid \text{$\alpha$ is an isometry, $\alpha$ preserves orientation, and } \alpha(X) = X\}.$$
 This is a subgroup of the group of all bijections from $\mathbb{R}^3$ to $\mathbb{R}^3$. Though not obvious, every element of $G$ is given as rotation about a line of symmetry. There are three kinds of such lines: those joining midpoints of opposite face, those joining midpoints of opposite edges, and those joining opposite vertices.  To count the number of elements of $G$ informally, think about an isometry as picking up a dodecaedron that was lying on a table and replacing it in the same location.  To do this, one must first pick one of the twelve faces to place on the table, and, for each possible face, there are five ways to orient it. Thus 
 $$|G|=12 \cdot 5 = 60.$$
 
@@ -3486,7 +3486,7 @@ Let $G$ be a group. As we saw before, $G$ acts on $S = G$ by conjugation: the ac
 Let $G$ be a group. Two elements $g,g' \in G$ are {\bf conjugate} if there exists $h \in G$ such that 
 $$g' = hgh^{-1}.$$
 Equivalently, $g$ and $g'$ are conjugate if they are in the same orbit of the conjugation action. The \df{conjugacy class} of an element $g \in G$ is 
-$$[g]_c \colonequals \{hgh^{-1} \mid h \in G\}.$$ 
+$$[g]_c := \{hgh^{-1} \mid h \in G\}.$$ 
 Equivalently, the conjugacy class of $g$ is the orbit of $g$ under the conjugation action. 
 \end{definition}
 
@@ -3564,15 +3564,15 @@ $$1 + 10 + 20 + 30 + 24 + 15 + 20 = 120 = 5!.$$
 
 \begin{definition}\index{centralizer}\index{$C_G(a)$}
 Let $G$ be a group and $a\in G$. The \df{centralizer} of $a$ is the set of elements of $G$ that commute with $a$: 
-$$C_G(a) \colonequals \{x \in G \mid xa=ax\}.$$
+$$C_G(a) := \{x \in G \mid xa=ax\}.$$
 More generally, given a subset $S \subseteq G$, the \df{centralizer} of $S$ is the set
-$$C_G(S) \colonequals \{x \in G \mid xs=sx \textrm{ for all } s \in S \}$$
+$$C_G(S) := \{x \in G \mid xs=sx \textrm{ for all } s \in S \}$$
 \end{definition}
 
 
 \begin{definition}\index{normalizer}\index{$N_G(a)$}
 Let $G$ be a group and consider a subset $S \subseteq G$. The \df{normalizer} of $S$ is the set 
-$$N_G(S) \colonequals \{g \in G \mid gSg^{-1}=S\}.$$
+$$N_G(S) := \{g \in G \mid gSg^{-1}=S\}.$$
 \end{definition}
 
 
@@ -3951,7 +3951,7 @@ The first one arises from the action of a group on the collection of left cosets
 More precisely, let $G$ be a group and $H$ a subgroup, and let $\mathcal{L}$ denote the collection of left cosets of $H$ in $G$: 
 $$\mathcal{L} = \{xH \mid x \in G\}.$$ 
 When $H$ is normal, $\mathcal{L}$ is the quotient group $\mathcal{L} = G/H$, but note that we are not assuming that $H$ is normal. Then $G$ acts on $\mathcal{L}$ via the rule
-$$g \cdot (xH) \colonequals (gx)H.$$
+$$g \cdot (xH) := (gx)H.$$
 This action is transitive: for all $x$, 
 $$xH = x \cdot (eH).$$ 
 The stabilizer of the element $H \in \mathcal{L}$ is
@@ -4019,7 +4019,7 @@ Since $eHe^{-1} = H$, we conclude that $\ker(g) \subseteq H$.
 
 
 \begin{proof} 
-The action of $G$ on the set of left cosets of $H$ in $G$ by left multiplication induces a homomorphism $\rho\!: G \to S_p$. By the Lemma above, its kernel $N \colonequals \ker(\rho)$ is contained in $H$. By the First Isomorphism Theorem,
+The action of $G$ on the set of left cosets of $H$ in $G$ by left multiplication induces a homomorphism $\rho\!: G \to S_p$. By the Lemma above, its kernel $N := \ker(\rho)$ is contained in $H$. By the First Isomorphism Theorem,
 $$[G:N] = |G/N| = |\mathrm{im}(f)|.$$
 By Lagrange's Theorem, since $\mathrm{im}(f)$ is a subgroup of $S_p$ then $[G:N] = |\mathrm{im}(f)|$ divides $|S_p|=p!$.
 On the other hand, $[G:N]$ divides $|G|$ by Lagrange's Theorem. Since $[G:N]$ divides both $|G|$ and $p!$, it must divide $\gcd(|G|,p!)$. Since $p$ is the smallest prime divisor of $G$, we must have 
@@ -4102,7 +4102,7 @@ By \Cref{conjugation on subgroups is an action and conjugate subgroups have same
 
 
 Since $|H| = |xHx^{-1}|$ for all $x \in G$, we can fix a natural number $n$, set
-$$\mathcal{S}_n(G) \colonequals \{H \mid H \leq G  \text{ and } |H| = n\},$$ 
+$$\mathcal{S}_n(G) := \{H \mid H \leq G  \text{ and } |H| = n\},$$ 
 and consider the action of $G$ on $\mathcal{S}_n(G)$ by conjugation.
 This idea will be exploited in the next section. 
 
@@ -4138,7 +4138,7 @@ We start by proving a very powerful statement: that every finite group whose ord
 Let $S$ denote the set of ordered $p$-tuples of elements of $G$ whose product is $e$:
 $$S = \{(x_1, \dots, x_p) \mid x_i \in G \textrm{ and } x_1 x_2 \cdots x_p = e\}.$$
 Consider 
-$$G^{ p-1} \colonequals \underbrace{G\times \dots\times G}_{p-1 \text{ factors }}$$
+$$G^{ p-1} := \underbrace{G\times \dots\times G}_{p-1 \text{ factors }}$$
 and the map
 $$\xymatrix@R=1mm{G^{p-1} \ar[r]^-{\phi} & S \\ (x_1, \dots, x_{p-1}) \ar@{|->}[r] &
 (x_1, \dots, x_{p-1}, x_{p-1}^{-1} \cdots x_{1}^{-1}).}$$
@@ -4149,7 +4149,7 @@ is a two-sided inverse of the map above. Therefore, $|S| = |G^{p-1}| = |G|^{p-1}
 Let $C_p$ denote cyclic subgroup of $S_p$ of order $p$ generated by the $p$-cycle 
 $$\sigma = (1 \, 2 \, \cdots \, p).$$ 
 The following rule gives an action of $C_p$ on $S$:
-$$\sigma^i \cdot (x_1, \dots, x_p) \colonequals
+$$\sigma^i \cdot (x_1, \dots, x_p) :=
 (x_{\sigma^i(1)}, \dots, x_{\sigma^i(p)}) = (x_{1+i}, x_{2+i}, \dots, x_{p+i}),$$
 where the indices are taken modulo $p$.
 We should check that this is indeed an action. On the one hand, $\sigma^0$ is the identity map, so
@@ -4208,7 +4208,7 @@ conceivable power of $p$ according to Lagrange's Theorem.
 
 \begin{definition}\index{$\mathrm{Syl}_p(G)$}\index{$n_p$}
 	We will denote the collection of all Sylow $p$-subgroups of $G$ by $\mathrm{Syl}_p(G)$.	
-	%, and the number of Sylow $p$-subgroups is denoted by $n_p \colonequals |\mathrm{Syl}_p(G)|$.
+	%, and the number of Sylow $p$-subgroups is denoted by $n_p := |\mathrm{Syl}_p(G)|$.
 \end{definition}
 
 This is, of course, not very interesting unless $e>0$. Nevertheless, we allow that case.
@@ -4250,7 +4250,7 @@ Let $G$ be a finite group, $p$ a prime, $P$ a Sylow $p$-subgroup of $G$, and $Q$
 \begin{proof}
 $(\subseteq)$ Since $P \leq N_G(P)$, then $Q \cap P \leq Q \cap N_G(P)$. 
 
-$(\supseteq)$ Let $H \colonequals  Q \cap N_G(P)$. Since $H \subseteq N_G(P)$, then $PH=HP$, so  we get that $PH$ is a subgroup of $G$. 
+$(\supseteq)$ Let $H :=  Q \cap N_G(P)$. Since $H \subseteq N_G(P)$, then $PH=HP$, so  we get that $PH$ is a subgroup of $G$. 
 By the Diamond Isomorphism Theorem, we have
 $$|PH| = \frac{|P| \cdot |H|}{|P \cap H|}$$
 and since each of $|P|$, $|H|$, and $|P \cap H|$ is a power of $p$, we conclude that the order of $PH$ is also a power of $p$. In particular, $PH$ is a $p$-subgroup of $G$. On the other hand, $P \leq PH$ and $P$ is already a $p$-subgroup of the largest possible order, so we must have $P = PH$. Note that $H \leq PH$ always holds. We conclude that $H \leq P$ and thus $H \leq Q \cap P$.
@@ -4288,7 +4288,7 @@ When $|G| = 1$, $\{e\}$ is a Sylow $p$-subgroup by our convention. In fact, this
 So suppose that $p$ divides $|G|$ and every group of order $n < |G|$ has a Sylow $p$-subgroup. We will consider two cases, depending on whether $p$ divides $|\mathrm{Z}(G)|$. 
 %$|G| = 1$ or, more generally, if $p$ does not divide $|G|$,
 
-If $p$ divides $|\mathrm{Z}(G)|$, then by Cauchy's Theorem there is an element $z \in \mathrm{Z}(G)$ of order $p$. Set $N \colonequals \langle z \rangle$. Since $z \in \mathrm{Z}(G)$, then for all $g \in G$ we have
+If $p$ divides $|\mathrm{Z}(G)|$, then by Cauchy's Theorem there is an element $z \in \mathrm{Z}(G)$ of order $p$. Set $N := \langle z \rangle$. Since $z \in \mathrm{Z}(G)$, then for all $g \in G$ we have
 $$gz^ig^{-1} = z^i \in N,$$
 and thus $N \trianglelefteq G$. 
 Since 
@@ -4300,7 +4300,7 @@ $$|G| = |\mathrm{Z}(G)| + \sum_{i=1}^k [G: C_G(g_i)].$$
 Suppose that $p$ divides $[G:C_G(g_i)]$ for all $i$. Since $p$ also divides $|G|$, then this would imply that $p$ divides $|\mathrm{Z}(G)|$, but we assumed that $p$ does not divide $|\mathrm{Z}(G)|$. We conclude that $p$ does not divide $[G:C_G(g_i)]$ for some $i$. 
 
 Note that $[G:C_G(g_i)]$ divides $|G|$ by Lagrange's Theorem, and thus it must divide $m$. Set 
-$$d \colonequals \frac{m}{[G:C_G(g_i)]}.$$ 
+$$d := \frac{m}{[G:C_G(g_i)]}.$$ 
 Then
 $$|C_G(g_i)|= \frac{|G|}{[G:C_G(g_i)]} = \frac{p^em}{[G:C_G(g_i)]} = p^e d,$$ 
 and note that $p$ does not divide $d$ since it does not divide $m$. Since $g_i$ is not central, then $e \notin C_G(g_i)$, and in particular $|C_G(g_i)| < |G|$. By induction hypothesis, $C_G(g_i)$ contains a subgroup $S$ of order $p^e$. But $S$ is also a subgroup of $G$, and it has order $p^e$, as desired.
@@ -4312,7 +4312,7 @@ This completes the proof of $(1)$: we have shown that $G$ contains a subgroup of
 
 To prove $(2)$ and $(3)$, let $P$ be a Sylow $p$-subgroup and let $Q$ be any $p$-subgroup. 
 Let $\mathcal{S}_P$ denote the collection of all conjugates of $P$: 
-$$\cS_P \colonequals \{ gPg^{-1} \mid g \in G\}.$$
+$$\cS_P := \{ gPg^{-1} \mid g \in G\}.$$
 By definition, $G$ acts transitively on $\cS_P$ by conjugation. Restricting that action to $Q$, we get an action of $Q$ on $\cS_P$, though note that we do now know if that action is transitive. 
 The key to proving parts $(2)$ and $(3)$ of the Sylow Theorem is to analyze the action of $Q$ on $\cS_P$.
 
@@ -4391,7 +4391,7 @@ so $n_3 \in \{1, 4 \}$.
 If either of these numbers is $1$, we have a unique subgroup of order $4$ or of order $3$, and such a subgroup must be normal. 
 
 Suppose that $n_3 \neq 1$, which leaves us with $n_3 = 4$. Let $P_1$, $P_2$, $P_3$, and $P_4$ be the Sylow $3$-subgroups of $G$. Consider any $i \neq j$. Since $P_i \cap P_j$ is a subgroup of $P_i$, its order must divide $3$. On the other hand, $P_i$ and $P_j$ are distinct groups of order $3$, so $|P_i \cap P_j| < 3$, and we conclude that  $|P_i \cap P_j| = 1$. Therefore, $P_i \cap P_j = \{e\}$ for all $i \neq j$. Thus the {\em set} 
-$$T \colonequals \bigcup_{i=1}^4 P_i$$ 
+$$T := \bigcup_{i=1}^4 P_i$$ 
 has $9$ elements: the identity $e$ and $8$ other distinct elements. Since each $P_i$ has order $3$, those $8$ elements must all have order $3$. Note, moreover, that any other potential element of order $3$ would generate its own Sylow $3$-subgroup, so this is a complete count of all the elements of order $3$. We conclude that there are $8$ elements of order $3$ in $G$.
 
 In particular, there are $9$ elements in $G$ that are either the identity or have order $3$, and thus there are only $12-9=3$ elements in $G$ of order not $3$, say $a, b, c$.
@@ -4402,7 +4402,7 @@ Now consider any Sylow $2$-subgroup $Q$, which has $4$ elements. None of its ele
 
 \begin{remark}[Warning!]
 In \Cref{example sylow 12}, it would not be so easy to count the elements of order $2$ and $4$. We do know that every element in 
-$$S \colonequals \bigcup_i Q_i$$ 
+$$S := \bigcup_i Q_i$$ 
 has order $1$, $2$, or $4$, but the size of this set is harder to calculate. The issue is that $Q_i \cap Q_j$ might have order $2$ for distinct $i$ and $j$. The best we can say for sure is that $S$ has at least $4 + 4 - 2 = 6$ elements.
 \end{remark}
 
@@ -4447,11 +4447,11 @@ equipped with the operation defined by
 $$(g_i)_{i \in  I} (h_i)_{i \in I} = (g_i h_i)_{i \in I}.$$ 
 
 The {\bf direct sum} of the groups $G_i$ is the subgroup of the direct product of  $\{ G_i \}_{i \in I}$ given by
-$$\bigoplus_{i \in i} G_i \colonequals \{(g_i)_{i \in I} \in \prod_{i \in I} G_i \mid  g_i = e_{G_i} \text{ for all but finitely many } i \in I \}.$$ 
+$$\bigoplus_{i \in i} G_i := \{(g_i)_{i \in I} \in \prod_{i \in I} G_i \mid  g_i = e_{G_i} \text{ for all but finitely many } i \in I \}.$$ 
 In particular, the direct sum of $\{ G_i \}_{i \in I}$ has the same operation as the direct product. 
 
 When $I$ is finite, say $I = \{ 1, \ldots, n \}$, we write
-$$G_1 \times \cdots \times G_n \colonequals \prod_{i = 1}^n G_i.$$
+$$G_1 \times \cdots \times G_n := \prod_{i = 1}^n G_i.$$
 \end{definition}
 
 
@@ -4601,7 +4601,7 @@ This motivates the following definition:
 
 \begin{definition}
  Let $H$ and $K$ be groups and let $\rho\!: K \to \mathrm{Aut}(H)$ be a homomorphism. The (external) \df{semidirect product} induced by $\rho$ is the set $H \times K$ equipped with the binary operation defined by 
- $$(h_1,k_1)(h_2,k_2) \colonequals (h_1\rho(k_1)(h_2),k_1k_2).$$
+ $$(h_1,k_1)(h_2,k_2) := (h_1\rho(k_1)(h_2),k_1k_2).$$
  This group is denoted by $H \sdp_\rho K$.
  \end{definition}
  
@@ -4690,11 +4690,11 @@ $$kek^{-1} = e,$$
 which shows that any for any $(a,e) \in \mathrm{im}(H)$ and any $(h,k) \in H \sdp_\rho K$,
 $$(h,k) (a, e) (h,k)^{-1} \in \mathrm{im}(i).$$
 Let us write the image of $i$, which we now know is a normal subgroup of $H \sdp_\rho K$, as
-$$H' \colonequals \mathrm{im}(i) = \{(y,e) \mid y \in H\} \trianglelefteq  H \sdp_\rho K.$$
+$$H' := \mathrm{im}(i) = \{(y,e) \mid y \in H\} \trianglelefteq  H \sdp_\rho K.$$
 Similarly, the function
 $$j\!: K \to H \sdp_\rho K \quad \text{given by } j(x) = (e,x)$$
 is also an injective homomorphism (exercise!), and thus its image 
-$$K' \colonequals \{(e,x) \mid x \in H \} \leq H \sdp_\rho K$$
+$$K' := \{(e,x) \mid x \in H \} \leq H \sdp_\rho K$$
 is isomorphic to $K$. 
 Finally, given any $(h,k) \in H \sdp_{\rho} K$, we can write
 $$ (h,k) = (h\rho(e)(e),k) = (h,e)(e,k) \in H'K',$$
@@ -4780,7 +4780,7 @@ Note that the first two axioms are just the axioms for a group action. So given 
 $$\rho(g) (h_1 \cdot_H h_2) = \rho(g)(h_1) \, \rho(g)(h_2).$$
 This condition simply says that $\rho(g)$ must be a homomorphism. Since $\rho(g)$ is already a bijection, we conclude that $\rho(g)$ must be an automorphism of $H$. 
 Conversely, given any homomorphism $\rho\!: K \to \mathrm{Aut}(H)$, we can define a group action of $K$ on $H$ via automorphisms by setting
-$$k \cdot h \colonequals \rho(k)(h).$$
+$$k \cdot h := \rho(k)(h).$$
 Since $\mathrm{Aut}(H) \subseteq \Perm(H)$, we can extend $\rho$ to a homomorphism $K \to \Perm(H)$, which we saw in \Cref{permutation representation} is equivalent to the action of $K$ on $H$ we just defined. That action satisfies
 $$\begin{aligned}
 k \cdot (h_1 \cdot_H h_2) & = \rho(k)(h_1 \cdot_H h_2) \\
@@ -5214,13 +5214,13 @@ We are now ready to see many examples of rings.
 \item The familiar sets of numbers $\mathbb{Q}$, $\mathbb{R}$, $\C$ are fields.
 
 
-\item ({\bf Matrix ring})\index{matrix ring}\index{$\Mat_n(R)$} If $R$ is any ring, not necessarily commutative, then the set $\Mat_{n}(R)$ of $n \times n$ matrices with entries in $R$ is a ring with the usual rules for addition and multiplication of square matrices.
+\item ({\bf Matrix ring})\index{matrix ring}\index{$\mathrm{Mat}_n(R)$} If $R$ is any ring, not necessarily commutative, then the set $\mathrm{Mat}_{n}(R)$ of $n \times n$ matrices with entries in $R$ is a ring with the usual rules for addition and multiplication of square matrices.
 
 \item ({\bf The endomorphism ring of an abelian group}) Let $A = (A, +)$ be any abelian group, and set $\End_{Ab}(A)$ to be the collection of endomorphisms of $A$ --- that is, the set of group homomorphisms $f\!: A \longrightarrow A$ from $A$ to itself. 
 This set of endomorphisms $\End_{Ab}(A)$ is a ring with pointwise addition 
-$$(f + g)(a) \colonequals f(a) + g(a)$$ 
+$$(f + g)(a) := f(a) + g(a)$$ 
 and multiplication given by composition of functions
-$$f \cdot g \colonequals f \circ g.$$ 
+$$f \cdot g := f \circ g.$$ 
 The additive identity is the $0$-map and the multiplicative identity is the identity map. 
 This is almost always a noncommutative ring.
 
@@ -5240,25 +5240,11 @@ $$\|a + bi + cj + dk \| := a^2 + b^2 + c^2 + d^2.$$
 In the equation above, $\|a + bi + cj + dk \|$ is a nonzero real number if $a + bi + cj + dk$ is not the zero element. The quantity $\|a + bi + cj + dk \|$ is called the \df{norm} of the quaternion $a + bi + cj + dk$.
 
 
-%Once we learn about subrings, one can also describe $\mathcal{H}$ as the subring of $\Mat_{2}(\C)$ given as set of all $\R$-linear combinations of the four matrices 
-%$$\begin{bmatrix}
-%1 & 0 \\ 0 & 1
-%\end{bmatrix},
-%\begin{bmatrix}
-%\sqrt{-1} & 0 \\ 0 & -\sqrt{-1} 
-%\end{bmatrix},
-%\begin{bmatrix}
-%0 & 1 \\ -1 & 0 
-%\end{bmatrix},
-%\begin{bmatrix}
-%0 & \sqrt{-1} \\ \sqrt{-1} & 0 
-%\end{bmatrix}.$$
 
-
-%\item If $X$ is a set and $R$ is a ring, let $\Fun(X, R)$ be the collection of set-theoretic functions from $X$ to $R$, and consider the pointwise addition and multiplication of functions:
-%$$(f + g)(x) \colonequals f(x) + g(x) \qquad \text{and} \qquad (f \cdot g)(x) \colonequals f(x) \cdot g(x)$$
-%The set $\Fun(X,R)$ is a ring with these operations. In this ring, the zero is the function that is constantly equal to zero, and the identity is the constant function equal to $1$.
-%If $X$ is a finite set and $|X|=n$, then $\Fun(X,R)$ may be identified with $R^n=\underbrace{R \times \cdots \times R}_n$, the direct product of $n$ copies of $R$.
+\item If $X$ is a set and $R$ is a ring, let $\Fun(X, R)$ be the collection of set-theoretic functions from $X$ to $R$, and consider the pointwise addition and multiplication of functions:
+$$(f + g)(x) := f(x) + g(x) \qquad \text{and} \qquad (f \cdot g)(x) := f(x) \cdot g(x)$$
+The set $\Fun(X,R)$ is a ring with these operations. In this ring, the zero is the function that is constantly equal to zero, and the identity is the constant function equal to $1$.
+If $X$ is a finite set and $|X|=n$, then $\Fun(X,R)$ may be identified with $R^n=\underbrace{R \times \cdots \times R}_n$, the direct product of $n$ copies of $R$.
 \end{enumerate}
 \end{example}
 
@@ -5299,7 +5285,7 @@ while
 $$(r_0 + r_1x + r_2x^2 + \cdots + r_nx^n) \cdot (r'_0 + r'_1x + r'_2x^2 + \cdots + r'_mx^m) = \sum_{k} \left( \, \sum_{a+b = k} r_ar'_b \right) x^k.$$
 This ring $R[x]$ is the \df{polynomial ring} in one variable over $R$. One can also talk about polynomial rings in many variables. For a finite set of variables $x_1, \ldots, x_n$, the ring $R[x_1, \ldots x_n]$ can be constructed inductively by setting
 $$R[x_1, \ldots x_n] = R[x_1, \ldots, x_{n-1}][x_n].$$
-More generally, given an infinite set of variables $X$, an element in the polynomial ring $R[X]$ can be obtained by formally adding finitely many \df{monomials} in $X$ with coefficients in $R$, which are terms of the form $rx_1^{a^1} \cdots x_n^{a_n}$ with $x_i \in X$ and integers $a_i \geqslant 0$. Each polynomial in $R[X]$ uses only finitely many variables, and thus sums and products of two elements are obtained as in the polynomial ring in that finite set of variables.
+More generally, given an infinite set of variables $X$, an element in the polynomial ring $R[X]$ can be obtained by formally adding finitely many \df{monomials} in $X$ with coefficients in $R$, which are terms of the form $rx_1^{a_1} \cdots x_n^{a_n}$ with $x_i \in X$ and integers $a_i \geqslant 0$. Each polynomial in $R[X]$ uses only finitely many variables, and thus sums and products of two elements are obtained as in the polynomial ring in that finite set of variables.
 \end{definition}
 
 
@@ -5340,14 +5326,13 @@ The set of all units of a ring $R$ is denoted $R^\times$. \index{$R^\times$}
 \end{exercise}
 
 
-\begin{example}$\,$
-\vspace{-0.5em}
+\begin{example}
 \begin{enumerate}[itemsep=-0.1em]
 	\item The units in $\mathbb{Z}$ are $\mathbb{Z}^\times = \{\pm 1\}$.
 	\item For all $n \geqslant 2$, 
 	$$\mathbb{Z}/n^\times = \{[j]_n \mid \gcd(j,n) = 1 \}.$$
 	\item For all $n \geqslant 1$ and any field $F$,
-$$\Mat_{n}(F)^\times = \GL_n(F).$$
+$$\mathrm{Mat}_{n}(F)^\times = \GL_n(F).$$
 \end{enumerate}
 \end{example}
 
@@ -5363,7 +5348,7 @@ A \df{zerodivisor} in a ring $R$ is an element $x \in R$ such that $x \neq 0$ bu
 
 
 \begin{example} 
-The ring $\Mat_{2}(\mathbb{R})$ has lots of zerodivisors: for example, 
+The ring $\mathrm{Mat}_{2}(\mathbb{R})$ has lots of zerodivisors: for example, 
 $$A = \begin{bmatrix} 0 & 1 \\ 0 & 0 \end{bmatrix}$$ 
 is a zerodivisor since $A^2 = 0$.
 \end{example}
@@ -5511,14 +5496,14 @@ $$\begin{bmatrix}
 \begin{bmatrix}
 0 & \sqrt{-1} \\ \sqrt{-1} & 0 
 \end{bmatrix}.$$
-forms a subring of $\Mat_{2}(\C)$. 
+forms a subring of $\mathrm{Mat}_{2}(\C)$. 
 \end{exercise}
 
 We will later defined what it means for two rings to be isomorphic. The ring in \Cref{exercise quaternions ring} is isomorphic to the quaternions ring $\mathcal{H}$. 
 
 
 \begin{remark}
-Let $F$ be a ring and $R = \Mat_{n}(F)$ with $n \geqslant 2$. Let $S$ be the subset of $R$ consisting of matrices whose only nonzero element is in the upper left corner. Then $S$ is a ring under same operations as $R$, and in fact $S \cong R$, but $S$ is not a subring of $S$ according to our definition, since $1_S \neq 1_R$.
+Let $F$ be a ring and $R = \mathrm{Mat}_{n}(F)$ with $n \geqslant 2$. Let $S$ be the subset of $R$ consisting of matrices whose only nonzero element is in the upper left corner. Then $S$ is a ring under same operations as $R$, and in fact $S \cong R$, but $S$ is not a subring of $S$ according to our definition, since $1_S \neq 1_R$.
 \end{remark}
 
 
@@ -5531,8 +5516,8 @@ In the last containment, we think of $\C$ as those elements $a + bi + cj + dk$ o
   $\mathcal{H}$ with $c=d=0$.
 \item For any ring $R$ and integer $n \geqslant 1$, the set of scalar matrices
 $$\{ rI_n \mid r \in R \}$$ 
-is a subring of $\Mat_{n}(R)$.
- \item For any ring $R$ and integer $n \geqslant 1$, the set of all diagonal matrices is a subring of $\Mat_{n}(R)$. 
+is a subring of $\mathrm{Mat}_{n}(R)$.
+ \item For any ring $R$ and integer $n \geqslant 1$, the set of all diagonal matrices is a subring of $\mathrm{Mat}_{n}(R)$. 
 \item The set 
 $$\mathbb{Z}[i]=\left \{ a+bi\mid a,b \in \mathbb{Z} \right\}$$ 
 is a subring of $\C$ called the ring of \df{Gaussian integers}.
@@ -5542,7 +5527,7 @@ is a subring of $\C$ called the ring of \df{Gaussian integers}.
 
 \begin{definition}\index{center of a ring}\index{$\mathrm{Z}(R)$}\index{central element}
 The {\bf center} of a ring $R$ is the set
-$$\mathrm{Z}(R) \colonequals \{z \in R \mid zr = rz \text{ for all } r \in R\}.$$
+$$\mathrm{Z}(R) := \{z \in R \mid zr = rz \text{ for all } r \in R\}.$$
 An element in $R$ is called {\bf central} if it is in the center of $R$.
 \end{definition}
 
@@ -5562,16 +5547,16 @@ Show that the center of $\mathcal{H}$ is $\mathbb{R}$.
 \end{exercise}
 
 \begin{exercise}
-Show that for any commutative ring $R$, the center of $\Mat_{n}(R)$ is the collection of scalar matrices.
+Show that for any commutative ring $R$, the center of $\mathrm{Mat}_{n}(R)$ is the collection of scalar matrices.
 \end{exercise}
 
 
 
 \begin{lemma}\label{Z sqrt d}
 Let $d$ be a squarefree integer, meaning that the prime factorization of $d$ has no repeated primes. Then 
-$$\mathbb{Q}(\sqrt {d}) \colonequals \{a + b\sqrt{d} \mid a,b \in \mathbb{Q}\}$$ 
+$$\mathbb{Q}(\sqrt {d}) := \{a + b\sqrt{d} \mid a,b \in \mathbb{Q}\}$$ 
 is a subfield of the field $\C$. Moreover, 
-$$\mathbb{Z}[\sqrt{d}] \colonequals \{a + b\sqrt{d} \mid a,b \in \mathbb{Z}\}$$ 
+$$\mathbb{Z}[\sqrt{d}] := \{a + b\sqrt{d} \mid a,b \in \mathbb{Z}\}$$ 
 is a subring of $\mathbb{Q}(\sqrt{d})$. 
 \end{lemma}
 
@@ -5607,9 +5592,9 @@ It does make sense to speak of $\mathbb{Q}(\sqrt{d})$ and $\mathbb{Z}[\sqrt{d}]$
 
 \begin{notation}
 Given a ring $R$ and a subset $S \subseteq R$, we write
-	$$RS \colonequals \{ ra \mid a \in S, r \in R \} \qquad \text{and} \qquad SR \colonequals \{ ar \mid a \in S, r \in R \}.$$
+	$$RS := \{ ra \mid a \in S, r \in R \} \qquad \text{and} \qquad SR := \{ ar \mid a \in S, r \in R \}.$$
 If $S = \{ a \}$, then we $Ra$ instead of $R \{ a \}$ and $aR$ instead of $\{ a \}R$. Finally, given $a, b \in R$, we write
-$$Ra + R b \colonequals \{ ra + sb \mid r, s \in R \}.$$
+$$Ra + R b := \{ ra + sb \mid r, s \in R \}.$$
 \end{notation}
 
 
@@ -5657,7 +5642,7 @@ $$\mathbb{Z} \cdot 6 + \mathbb{Z} \cdot 10 = \mathbb{Z} \cdot 2.$$
       \cdots & \cdots & \cdots & \cdots \\ 0 & \cdots & a_{jn} &\cdots & 0\\\end{bmatrix}\right\}$ are a 
 
 \noindent      
-right ideal and a left ideal of $\Mat_n(R)$ respectively. Neither of these are two-sided ideals if $n \geqslant 2$.	
+right ideal and a left ideal of $\mathrm{Mat}_n(R)$ respectively. Neither of these are two-sided ideals if $n \geqslant 2$.	
 \end{enumerate}
 \end{example}
 
@@ -5684,7 +5669,7 @@ Prove that an ideal $I$ is proper if and only if $I$ contains no units.
 \end{definition}
 
 \begin{exercise} 
-If $F$ is a field  or, more generally, a division ring, and $n \geqslant 1$ is an integer, prove that $\Mat_{n \times n}(F)$ is a simple ring.
+If $F$ is a field  or, more generally, a division ring, and $n \geqslant 1$ is an integer, prove that $\mathrm{Mat}_{n \times n}(F)$ is a simple ring.
 \end{exercise}
 
 
@@ -5695,13 +5680,13 @@ Let $R$ be a ring and let $I$ and $J$ be ideals of $R$.
 Then
 \begin{enumerate}[itemsep=0.1em]
 \item The sum of ideals 
-$$I + J \colonequals \{a + b \mid a \in I, b \in J\}$$
+$$I + J := \{a + b \mid a \in I, b \in J\}$$
 is an ideal.
 \item The intersection of ideals is an ideal: $I\cap J$ is an ideal, and more generally the intersection 
 $$\bigcap_{\alpha \in J} I_\alpha$$ 
 of any collection of ideals $I_\alpha$ of $R$ is an ideal.
 \item The product of ideals is an ideal:
-$$IJ \colonequals \left\lbrace \sum_{i=1}^n a_ib_i \mid n \geqslant 0, a_i \in I, b_j\in J \right\rbrace$$ 
+$$IJ := \left\lbrace \sum_{i=1}^n a_ib_i \mid n \geqslant 0, a_i \in I, b_j\in J \right\rbrace$$ 
 is an ideal such that $IJ \subseteq I\cap J$. 
 \end{enumerate}
 The set of all ideals of a ring $R$ is a lattice with respect to the partial order given by containment. In this lattice, the supremum of a pair of ideals $I$ and $J$ is $I+J$ and the infimum is $I\cap J$.
@@ -5835,7 +5820,7 @@ Equivalently, $f$ is a ring homomorphisms if $f$ is a homomorphism of abelian gr
 We really must require $f(1_R) = 1_S$, since this is not a consequence of the first two conditions.
   
 \begin{example} 
-The map from $\mathbb{R}$ to $\Mat_{2}(\mathbb{R})$ sending 
+The map from $\mathbb{R}$ to $\mathrm{Mat}_{2}(\mathbb{R})$ sending 
 $$r \mapsto \begin{bmatrix} r & 0 \\0  & 0 \\ \end{bmatrix}$$
 preserves addition and multiplication, but it does not sent $1$ to $1$.  	
 \end{example}
@@ -5843,7 +5828,7 @@ preserves addition and multiplication, but it does not sent $1$ to $1$.
 
   
 \begin{example} 
-The map $\mathbb{R}  \to \Mat_{n \times n}(\mathbb{R})$ sending $r$ to $rI_n$ is a ring homomorphism. 	
+The map $\mathbb{R}  \to \mathrm{Mat}_{n \times n}(\mathbb{R})$ sending $r$ to $rI_n$ is a ring homomorphism. 	
 \end{example}
 
 
@@ -5869,7 +5854,7 @@ Prove that for any commutative ring $R$ and any element $a \in R$, there is a un
 
 \begin{definition}
 	Let $f\!: R \longrightarrow S$ be a ring homomorphism. The \df{kernel} of $f$ is
-	$$\ker(f) \colonequals \{ x \in R \mid f(x) = 0 \}.$$
+	$$\ker(f) := \{ x \in R \mid f(x) = 0 \}.$$
 \end{definition}
 
 
@@ -5929,7 +5914,7 @@ Two rings $R$ and $S$ are isomorphic, written $R \cong S$, if there is an isomor
 
 
 \begin{exercise} 
-Fix a ring $R$ and integer $n \geqslant 1$. Recall that the collection $S$ of all diagonal matrices in $\Mat_{n}(R)$ is a subring of $\Mat_{n}(R)$. Prove that 
+Fix a ring $R$ and integer $n \geqslant 1$. Recall that the collection $S$ of all diagonal matrices in $\mathrm{Mat}_{n}(R)$ is a subring of $\mathrm{Mat}_{n}(R)$. Prove that 
 $$S \cong \underset{n \text{ times}}{\underbrace{R \times \cdots \times R}}.$$
 \end{exercise}
 
@@ -5961,7 +5946,7 @@ Warning! The image of an ideal by a ring homomorphism is however not necessarily
 
 \begin{example}
 	Let $k$ be a field and $x$ be an indeterminate. Consider the subring of $S = k[x]$ of polynomials where all the terms have even degree, given by
-	$$R = k[x^2] \colonequals \{ r_0 + r_1 x^2 + \cdots r_n x^{2n} \mid r_i \in R \}.$$
+	$$R = k[x^2] := \{ r_0 + r_1 x^2 + \cdots r_n x^{2n} \mid r_i \in R \}.$$
 	The inclusion map $i\!: R \to S$ is a ring homomorphism. Moreover, consider the ideal $I = (x^2)$ of $R$. Its image $J = i(I)$ under $i$ is \emph{not} an ideal of $S$: for example, because $x^2 \in J$ but $x \cdot x^2 = x^3 \notin J$.
 \end{example}
 
@@ -5992,8 +5977,8 @@ This quotient group also inherits a ring structure from $R$:
 
 \begin{theorem} 
 If $R$ is a ring and $I$ is a proper (two-sided) ideal, then the binary operation 
-$$(r + I) \cdot (s +I) \colonequals rs + I$$
-on $R/I$ is well-defined and makes $(R/I, +, \cdot)$ into a ring, where $+$ is the operation induced by addition on $R$. The one in this ring is $1+I$.  Moreover, the map $\pi\!: R \to R/I$ with $\pi(r) = r +I$ is a ring homomorphism	.
+$$(r + I) \cdot (s +I) := rs + I$$
+on $R/I$ is well-defined and makes $(R/I, +, \cdot)$ into a ring, where $+$ is the operation induced by addition on $R$. The one in this ring is $1+I$.  Moreover, the map $\pi\!: R \to R/I$ with $\pi(r) = r +I$ is a ring homomorphism.
 \end{theorem}
 
 \begin{proof} 
@@ -6344,7 +6329,7 @@ We can now prove every ring has a maximal ideal; in fact, we will prove somethin
 
 %
 %\begin{proof}
-%Fix a ring $R$ and a proper ideal $I$. Let $S$ be the set of all proper ideals $J$ in $R$ such that $J \supseteq I$, which is partially ordered with the inclusion order $\subseteq$. We claim that \hyperref[Zorn's Lemma]{Zorn's Lemma} applies to $S$. First, $S$ is nonempty, since it contains $I$. Now consider a chain of proper ideals in $R$, say $\{ J_i \}_i$, all of which contain $I$. Notice that $J \colonequals \bigcup_i J_i$ is an ideal as well (exercise!), and moreover $J \neq R$ since $1 \notin J_i$ for all $i$.\footnote{Note that unions of ideals are not ideals in general, but a union of totally ordered ideals \emph{is} an ideal.} Since each $J_i \supseteq I$, we conclude that $J \supseteq I$. Thus we have checked that $J \in S$. Now this ideal $J \in S$ is an upper bound for our chain $\{ J_i \}_i$, and thus \hyperref[Zorn's Lemma]{Zorn's Lemma} applies to $S$. We conclude that $S$ has a maximal element.
+%Fix a ring $R$ and a proper ideal $I$. Let $S$ be the set of all proper ideals $J$ in $R$ such that $J \supseteq I$, which is partially ordered with the inclusion order $\subseteq$. We claim that \hyperref[Zorn's Lemma]{Zorn's Lemma} applies to $S$. First, $S$ is nonempty, since it contains $I$. Now consider a chain of proper ideals in $R$, say $\{ J_i \}_i$, all of which contain $I$. Notice that $J := \bigcup_i J_i$ is an ideal as well (exercise!), and moreover $J \neq R$ since $1 \notin J_i$ for all $i$.\footnote{Note that unions of ideals are not ideals in general, but a union of totally ordered ideals \emph{is} an ideal.} Since each $J_i \supseteq I$, we conclude that $J \supseteq I$. Thus we have checked that $J \in S$. Now this ideal $J \in S$ is an upper bound for our chain $\{ J_i \}_i$, and thus \hyperref[Zorn's Lemma]{Zorn's Lemma} applies to $S$. We conclude that $S$ has a maximal element.
 %
 %There is a subtle point missing: we have shown that there is a maximal element $M$ in $S$ containing $I$, but we have yet to show that this maximal element is a maximal ideal of $R$. Finally, suppose that $L$ is an ideal in $R$ with $L \supseteq M$. Since $M$ contains $J$, so does $L$. If $L \in S$, by the maximality of $M$ we must have $L = M$. Since $L$ already satisfies $L \supseteq J$, if $L \notin S$ then we must have $L = R$.
 %\end{proof}
@@ -6462,14 +6447,14 @@ If $\deg(g) = 0$, then by \Cref{units in F[x]} $g$ must be a unit, so consider $
 $$f = g(g^{-1}f) = qf+r.$$
 Now when $\deg(g)>0$, let $g = a_nx^n + $ lower order terms, with $a_n \ne 0$ and $n > 0$. If $f = 0$, then $q=r=0$ works, so we might as well assume $f = b_m x^m + $ lower order terms, with $b_m \neq 0$ and $m \geqslant 0$.
 We proceed by complete induction on $m = \deg(f)$. If $m < n$, we may take $q = 0$ and $r = f$. Assume $m \geqslant n$, and consider
-$$h \colonequals f - g \cdot (b_m/a_m) x^{m- n} = (b_m - a_m(b_m/a_m)) x^m + \text{lower order terms}.$$
+$$h := f - g \cdot (b_m/a_m) x^{m- n} = (b_m - a_m(b_m/a_m)) x^m + \text{lower order terms}.$$
 We have $\deg(h) < m$, and thus  by induction, $h = g \cdot q' + r$ with $r = 0$ or $\deg(r) < \deg(g)$. Thus
 $$f = h + g \cdot (b_m/a_m) x^{m-n} =  g \cdot q' + r' + g \cdot (b_m/a_m) x^{m-n} = g q + r$$
 where $q = q' + (b_m/a_m) x^{m-n}$.
 \end{proof}
 
 \begin{corollary}\label{F[x] is an euclidean domain}
-Given a field $F$, $F[x]$ is an Euclidean domain. In particular, the function $N\!: F[x] \setminus \{ 0 \} \longrightarrow \mathbb{Z}_{\geqslant 0}$ given by $N(f(x)) \colonequals \deg(f(x))$ is an Euclidean function.
+Given a field $F$, $F[x]$ is an Euclidean domain. In particular, the function $N\!: F[x] \setminus \{ 0 \} \longrightarrow \mathbb{Z}_{\geqslant 0}$ given by $N(f(x)) := \deg(f(x))$ is an Euclidean function.
 \end{corollary}
 
 
@@ -7061,7 +7046,7 @@ A \df{right $R$-module} is an abelian group $(M,+)$ together with an action of $
 By default, we will be studying left $R$-modules. To make the writing less heavy, we will sometimes say \df{$R$-module} rather than left $R$-module whenever there is no ambiguity. 
 
 \begin{remark} 
-If $R$ is a commutative ring, then any left $R$-module $M$ may be regarded as a right $R$-module by setting $m r \colonequals r m$.  Likewise, any right $R$-module may be regarded as a left $R$-module. Thus for commutative rings, we just refer to modules, and not left or right modules.
+If $R$ is a commutative ring, then any left $R$-module $M$ may be regarded as a right $R$-module by setting $m r := r m$.  Likewise, any right $R$-module may be regarded as a left $R$-module. Thus for commutative rings, we just refer to modules, and not left or right modules.
 \end{remark}
 
 
@@ -7150,7 +7135,7 @@ $$\begin{bmatrix} r_1\\ \vdots\\r_n \end{bmatrix} +\begin{bmatrix} r'_1\\ \vdots
 We will often write the elements of $R^n$ as $n$-tuples $(r_1, \ldots, r_n)$ instead. Notice that $R$ is the free $R$-module of rank $1$.
 \item More generally, given a collection of $R$-modules $\{ A_i \}$, the abelian group
 $$\bigoplus_i A_i = \{ (a_i)_i \mid a_i \in A_i, a_i = 0 \textrm{ for all $i$ but finitely many} \}$$
-is an $R$-module with the $R$-action $r(a_i) \colonequals (ra_i)$.
+is an $R$-module with the $R$-action $r(a_i) := (ra_i)$.
 \end{enumerate}
 \end{example}
 
@@ -7199,13 +7184,13 @@ Let $R$ be a ring and let $M$ be a subset of $R$. Then $M$ is a left (respective
 
 \begin{exercise}\index{$A+B$}\index{sum of modules}\label{sum and intersection of submods}
 	Let $R$ be a ring and let $A$ and $B$ be submodules of an $R$-module $M$. Then the {\bf sum} of $A$ and $B$,
-	$$A + B \colonequals \{ a + b \mid a \in A, b \in B \},$$
+	$$A + B := \{ a + b \mid a \in A, b \in B \},$$
 	and $A \cap B$ are both $R$-submodules of $M$.
 \end{exercise}
 
 \begin{exercise}
 Let $R$ be a commutative ring with $1\neq 0$, let $I$ be an ideal of $R$ and let $M$ be an $R$-module. Show that\index{$IM$}
-$$IM \colonequals \left\{\sum_{k=1}^n j_km_k \mid n \geqslant 0, j_k \in I, m_k \in M \text{ for } 1 \leqslant k \leqslant n \right\}$$
+$$IM := \left\{\sum_{k=1}^n j_km_k \mid n \geqslant 0, j_k \in I, m_k \in M \text{ for } 1 \leqslant k \leqslant n \right\}$$
 is a submodule of $M$.
 \end{exercise}
 
@@ -7220,7 +7205,7 @@ When $R = \mathbb{Z}$, then the class of $R$-modules is simply the class of all 
 
 \begin{definition}
 	Let $R$ be a ring with $1 \neq 0$ and let $M$ be an $R$-module. Given elements $m_1, \ldots, m_n \in M$, the \df{submodule generated by}\index{generated by} $m_1, \ldots, m_n$ is the subset of $M$ given by
-	$$Rm_1 + \cdots + Rm_n \colonequals \{ r_1 m_1 + \cdots + r_n m_n \mid r_1, \ldots, r_n \in R\}.$$
+	$$Rm_1 + \cdots + Rm_n := \{ r_1 m_1 + \cdots + r_n m_n \mid r_1, \ldots, r_n \in R\}.$$
 \end{definition}
 
 \begin{exercise}
@@ -7235,7 +7220,7 @@ Let $R$ be a ring with $1 \neq 0$ and $M$ be an $R$-module. Given $m_1, \ldots, 
 
 \begin{definition}
 Let $R$ be a ring with $1 \neq 0$. An $R$-module $M$ is \df{cyclic} if there exists an element $m \in M$ such that
-$$M = Rm \colonequals \{ rm \mid r \in R \}.$$
+$$M = Rm := \{ rm \mid r \in R \}.$$
 \end{definition}
 %
 %We will discuss finitely generated modules and sets of generators in more detail later.
@@ -7261,7 +7246,7 @@ Note that the second module structure on $M$ obtained via restriction of scalars
 
 \begin{example}
 If $I$ is an ideal of a ring $R$, applying restriction of scalars along the quotient homomorphism $q\!:R\to R/I$ tells us that any left $R/I$-module is also a left $R$-module. In particular, applying this to the $R/I$-module $R/I$ makes $R/I$ a left and right $R$-module by restriction of scalars along the quotient homomorphism. Thus the $R$-action on $R/I$ is given by
-$$r \cdot (a + I) \colonequals ra + I.$$
+$$r \cdot (a + I) := ra + I.$$
 \end{example}
 
 \begin{example}
@@ -7330,9 +7315,9 @@ One should think of a module isomorphism as a relabelling of the names of the el
 \begin{definition}\index{image of a homomorphism}\index{kernel of a homomorphism}\index{$\ker(f)$}\index{$\mathrm{im}(f)$}
 
 	Let $f\!: M \to N$ be a homomorphism of $R$-modules. The \df{kernel} of $f$ is
-	$$\ker(f) \colonequals \{ m \in M \mid f(m) = 0 \}.$$
+	$$\ker(f) := \{ m \in M \mid f(m) = 0 \}.$$
 	The \df{image} of $f$, denoted $\mathrm{im}(f)$ or $f(M)$, is
-	$$\mathrm{im}(f) \colonequals \{ f(m) \mid m \in M \}.$$
+	$$\mathrm{im}(f) := \{ f(m) \mid m \in M \}.$$
 \end{definition}
 
  
@@ -7362,9 +7347,9 @@ However, two homomorphisms from $M$ to $N$ are not composable unless $M = N$, so
 
 When $R$ is commutative, $\Hom_R(M,N)$ is, however, an $R$-module; let us describe its $R$-module structure.
 	Given $f, g \in \Hom_R(M,N)$, $f+g$ is the map defined by
-	$$(f+g)(m) \colonequals f(m) + g(m),$$ 
+	$$(f+g)(m) := f(m) + g(m),$$ 
 	and given $r \in R$ and $f \in \Hom_R(M,N)$, $r \cdot f$ is the $R$-module homomorphism defined by
-	$$(r \cdot f) (m) \colonequals r \cdot f(m) = f(rm).$$
+	$$(r \cdot f) (m) := r \cdot f(m) = f(rm).$$
 	The zero element of $\Hom_R(M,N)$ is the {\bf zero map}, the constant equal to $0_N$.
 
 \begin{lemma}\label{Hom is an Rmod}
@@ -7397,7 +7382,7 @@ For any commutative ring $R$ with $1\neq 0$ and any $R$-module $M$ there is an i
 Before we write a formal proof, it helps to think about \emph{why} this theorem is true. What does it mean to give an $R$-module homomorphism $f\!: R \to M$? More precisely, what information do we need to determine such an $f$? Do we need to be given the values of $f(r)$ for every $r \in R$? Since $f$ is a homomorphism of $R$-modules, for any $r \in R$ we have
 $$f(r) = f(r \cdot 1) = rf(1),$$
 so the value of $f(1)$ \emph{completely determines} which $R$-module homomorphism we are talking about. On the other hand, we can choose \emph{any} $m \in M$ to be the image of $1$, since thanks to the axioms for modules, the function
-$$f(r) \colonequals rm$$
+$$f(r) := rm$$
 is a well-defined $R$-module homomorphism for any $m \in M$. In summary, to give an $R$-module homomorphism $R \to M$ is the same as choosing an element $m \in M$, and $\Hom_R(R,M)\cong M$.
 
 
@@ -7424,7 +7409,7 @@ This shows that $f$ is an $R$-module isomorphism.
 
 
 Given an $R$-algebra $A$, the $R$-algebra structure on $A$ induces a natural $R$-module structure: given elements $r \in R$ and $a \in A$, the $R$-action is defined by 
-$$r \cdot a \colonequals f(r) a,$$
+$$r \cdot a := f(r) a,$$
 where the product on the right is the multiplication in $A$. Similarly, we get a natural right $R$-module structure on $A$, and since by definition $f(R)$ is contained in the center of $A$, we obtain what is called a \emph{balanced bimodule} structure on $A$. We will discuss these further in Homological Algebra next Fall.
 
 
@@ -7464,7 +7449,7 @@ Let $R$ be a commutative ring with $1 \neq 0$ and let $M$ be an $R$-module. Then
 
 \begin{definition} 
 Let $R$ be a ring, let $M$ be an $R$-module, and let $N$ be a submodule of M. The quotient module $M/N$ is the quotient group $M/N$ with R action defined by 
-$$r(m + N) \colonequals rm + N$$ 
+$$r(m + N) := rm + N$$ 
 for all $r \in R$ and $m + N \in M/N$.
 \end{definition}
 
@@ -7561,7 +7546,7 @@ Let $R$ be a ring, let $N$ be a R-submodule of an $R$-module $M$, and let $q\!: 
 $$\xymatrix@R=1mm{ \{R\text{-submodules of } M \text{ containing }N\} \ar[r]^-{\Psi} & \{R\text{-submodules of }M/N\} \\ 
 K \ar@{|->}[r] & K/N }$$
 is a bijection, with inverse defined by 
-$$\Psi^{-1}(T) \colonequals q^{-1}(T) = \{ a \in M \mid a+N \in T \}$$ 
+$$\Psi^{-1}(T) := q^{-1}(T) = \{ a \in M \mid a+N \in T \}$$ 
 for each $R$-submodule $T$ of $M/N$. Moreover, $\Psi$ and $\Psi^{-1}$ preserve sums and intersections of submodules.
 \end{theorem}
 
@@ -7624,7 +7609,7 @@ Let $M$ be an $R$-module. A \df{linear combination} of finitely many elements $a
 
 \begin{definition} 
 Let $R$ be a ring with $1 \neq 0$ and let $M$ be an $R$-module. For a subset $A$ of $M$, the submodule of $M$ \df{generated by} $A$ is 
-$$RA \colonequals \{r_1a_1 + \dots + r_na_n \mid n \geq  0,  r_i \in R,  a_i\in A\}.$$ 
+$$RA := \{r_1a_1 + \dots + r_na_n \mid n \geq  0,  r_i \in R,  a_i\in A\}.$$ 
 We say $M$ is \df{generated by} $A$ if $M=RA$. 
 If $M$ is an $F$-vector space, we say that $M$ is \df{spanned by} a set $A$ instead of generated by $A$.
 
@@ -7706,7 +7691,7 @@ for some $r_a, s_b \in R$.
 Then
 $$\sum_{a\in A_1\cap A_2} (r_a-s_a)a+\sum_{a\in A_1\setminus A_2} r_aa-\sum_{a \in A_2\setminus A_1} s_aa=0.$$
 Since $A$ is a linearly independent set, we conclude that $r_a=s_a$ for $a\in A_1\cap A_2$, $r_a=0_R$ for $a\in A_1\setminus A_2$, and $s_a=0_R$ for $a \in A_2\setminus A_1$. Set 
-$$B \colonequals \{a \in A_1\cap A_2 \mid r_a \neq 0_R\}.$$ 
+$$B := \{a \in A_1\cap A_2 \mid r_a \neq 0_R\}.$$ 
 Then 
 $$m = \displaystyle\sum_{a\in B}r_aa$$
 is the unique way of writing $m$ as a linear combination of elements of $A$ with nonzero coefficients.
@@ -7797,9 +7782,9 @@ Earlier, we described the $R$-module structure on the direct sum of $R$-modules;
 
 \begin{definition}
 Let $R$ be a ring. Let $\{ M_a \}_{a \in J}$ be a collection of $R$-modules. The \df{direct product} of the R-modules $M_a$ is the Cartesian product 
-$$\prod_{a \in J} M_a \colonequals \{ (m_a)_{a \in J} \mid m_a \in M_a \}$$ 
+$$\prod_{a \in J} M_a := \{ (m_a)_{a \in J} \mid m_a \in M_a \}$$ 
 with addition defined by 
-$$(m_a)_{a \in J}+(n_a)_{a \in J} \colonequals (m_a+n_a)_{a \in J}$$
+$$(m_a)_{a \in J}+(n_a)_{a \in J} := (m_a+n_a)_{a \in J}$$
 and $R$-action defined by $$r(m_a)_{a \in J} = (rm_a)_{a \in J}.$$ 
 
 The \df{direct sum} of the $R$-modules $M_a$ is the $R$-submodule $\bigoplus_{a \in J} M_a$ of the direct product $\prod_{a \in J} M_a$ given by 
@@ -7848,7 +7833,7 @@ Note, however, that $\iota_i\circ\pi_i\neq \mathrm{id}$.
 
 
 Recall that for a subset $A$ of an $F$-vector space $V$, the \df{span} of $A$, denoted $\Span(A)$, is the subspace generated by $A$:
-$$\Span(A) \colonequals \{\sum_{i=1}^n c_ia_i \mid n \geqslant 0, c_i\in F, a_i \in A \}.$$
+$$\Span(A) := \{\sum_{i=1}^n c_ia_i \mid n \geqslant 0, c_i\in F, a_i \in A \}.$$
 
 %The following Lemma will prove useful towards that goal:
 
@@ -7918,7 +7903,7 @@ $\mathbb{R}$ has a basis as a $\mathbb{Q}$-vector space; just don't ask me what 
 
 
 We will now prove \Cref{basisexist}.
-But before we give a formal proof, let's first give a heuristic proof. To so that, start with $I$. If $\Span(I) = V$, then $B = I$ does the job. If not, then since $\Span(S)=V$, there must be a $v \in S \setminus \Span(I)$. Let $I' \colonequals I \cup \{v\}$. Then $I' \subseteq S$ and, by \Cref{lem1116}, $I'$ is linearly independent. 
+But before we give a formal proof, let's first give a heuristic proof. To so that, start with $I$. If $\Span(I) = V$, then $B = I$ does the job. If not, then since $\Span(S)=V$, there must be a $v \in S \setminus \Span(I)$. Let $I' := I \cup \{v\}$. Then $I' \subseteq S$ and, by \Cref{lem1116}, $I'$ is linearly independent. 
 If $\Span(I') = V$, we have found our $B$, and if not we construct $I''$ from $I'$ just as we constructed $I'$ from $I$. At this point we would like to say that this process cannot go on for ever, and this is more-or-less true. But at least in an infinite dimensional setting, we need to use Zorn's Lemma to complete the proof rigorously.
 
 
@@ -8054,7 +8039,7 @@ we see that the element $x^{M+1}$ is not be in the span of $\{f_1 , \dots , f_n\
 
 \begin{example}
 Consider the real vector space 
-$$V \colonequals \mathbb{R}^\N = \mathbb{R}\times \mathbb{R}\times \mathbb{R} \times \cdots.$$ 
+$$V := \mathbb{R}^\N = \mathbb{R}\times \mathbb{R}\times \mathbb{R} \times \cdots.$$ 
 This space can be identified with sequences $\{a_n\}$ of real numbers. One might be interested in a basis for this vector space. At first glance, the most obvious choice for a basis would be $E = \{e_1,e_2,\ldots\}$. It turns out that $E$ is the basis for the direct sum $\bigoplus_{i\in \N}\mathbb{R}$. However, it is immediate that this set does not span $V$, as $v = (1,1,\ldots)$ can not be represented as a finite linear combination of these elements. Since $v$ is not in $\Span(E)$, then by \Cref{lem1116} we know that $E \cup \{v\}$ is a linearly independent set. However, this new set $E \cup \{v\}$ does not span $V$ either, as $(1, 2, 3, 4, \ldots)$ is not in the span of $E \cup \{v\}$. We know that $V$ has a basis, but it can be shown that no countable collection of vectors forms a basis for this space, and in fact $\dim_\mathbb{R} (\mathbb{R}^\N) =|\mathbb{R}|$. 
 \end{example}
 
@@ -8410,7 +8395,7 @@ Moreover, submodules of free modules are not necessarily free. First, we need th
 
 \begin{definition}
 	Let $R$ be a commutative ring and let $M$ be an $R$-module. The \df{annihilator} of $M$ is
-	$$\ann_R(M) \colonequals \{ r \in R \mid rm = 0 \text{ for all } m \in M \}.$$
+	$$\ann_R(M) := \{ r \in R \mid rm = 0 \text{ for all } m \in M \}.$$
 \end{definition}
 
 
@@ -8604,7 +8589,7 @@ $$
 
 
 
-We can go further. Set $m_1' \colonequals m_1 + 2m_2$. Then $m_1'$ and $m_2$ also form a generating set of $M$. The relation on $m_1, m_2$ translates to
+We can go further. Set $m_1' := m_1 + 2m_2$. Then $m_1'$ and $m_2$ also form a generating set of $M$. The relation on $m_1, m_2$ translates to
 $$
 -24m'_1  +2 m_2 = 0
 $$
@@ -8766,7 +8751,7 @@ Let $R$ be a commutative ring. If $R$ is a noetherian ring, then every submodule
 We will first prove that for each $n \geqslant 1$, every submodule of $R^n$ is finitely generated. The base case $n=1$ holds by \Cref{noetherian iff ideals fg}, since a submodule of $R^1$ is the same thing as an ideal of $R$.
 Assume $n > 1$ and that every submodule of $R^{n-1}$ is finitely generated. Let $M$ be any submodule of $R^n$. Define
 $$\pi\!: R^n \twoheadrightarrow R^1$$
-to be the projection onto the last component of $R^n$. The kernel of $\pi$ may be identified with $R^{n-1}$, and so $N \colonequals \ker(\pi) \cap M$ is a submodule of $R^{n-1}$. By assumption, $N$ is finitely generated. The image $\pi(M)$ is a submodule of $R^1$, that is, an ideal of $R$, and so it too is finitely generated by \Cref{noetherian iff ideals fg}. Furthermore, by the \hyperref[first iso thm]{First Isomorphism Theorem} $M/\ker(\pi)\cong \pi(M)$.
+to be the projection onto the last component of $R^n$. The kernel of $\pi$ may be identified with $R^{n-1}$, and so $N := \ker(\pi) \cap M$ is a submodule of $R^{n-1}$. By assumption, $N$ is finitely generated. The image $\pi(M)$ is a submodule of $R^1$, that is, an ideal of $R$, and so it too is finitely generated by \Cref{noetherian iff ideals fg}. Furthermore, by the \hyperref[first iso thm]{First Isomorphism Theorem} $M/\ker(\pi)\cong \pi(M)$.
 By \Cref{lem:fg}, we deduce that $M$ is a finitely generated module.
 
 %I claim $n_1, \dots, n_r, m_1, \dots, m_s$ generate $M$. Pick $y \in
@@ -8966,7 +8951,7 @@ Moreover, $r$ and $s$ are uniquely determined by $M$, and the list $p_1^{e_1},\l
  
 \begin{proof}
 First, write $M$ in invariant factor form $M \cong R^r \oplus R/(d_1) \oplus \dots \oplus R/(d_k)$. Then write each invariant factor as a product of prime powers 
-$$d_i \colonequals \prod_{j=n_i}^{n_{i+1}} p_j^{e_j},$$ 
+$$d_i := \prod_{j=n_i}^{n_{i+1}} p_j^{e_j},$$ 
 and recall that by the CRT we have
 $$R/(d_i)\cong R/(p_{n_i}^{e_{n_i}})\oplus\dots\oplus R/(p_{n_{i+1}}^{e_{n_{i+1}}}).$$ 
 Substituting into the invariant factor form gives the desired result. Uniqueness follows from the uniqueness of the invariant factor form and of the prime factorizations of each $d_i$.
@@ -9038,10 +9023,10 @@ Finally, applying elementary row and column operations corresponds to multiplyin
 
 
 \begin{proof}
-	By definition of greatest common divisor, $(x,y) = (\gcd(x,y))$, so there exist $a, b \in R$ such that $ax+by = \gcd(x,y)$. Write $g \colonequals \gcd(x,y)$ and $h = \gcd(a,b)$. Then $ax+by$ is a multiple of $gh$, but since $ax+by = g$ and $R$ is a domain, we conclude that $h$ must be a unit, and $(a,b) = (h) = (1)$. In particular, we can find $c, d \in R$ such that $ad-bc = 1$. Finally, $bx+cy \in (x,y) = (g)$, so 
+	By definition of greatest common divisor, $(x,y) = (\gcd(x,y))$, so there exist $a, b \in R$ such that $ax+by = \gcd(x,y)$. Write $g := \gcd(x,y)$ and $h = \gcd(a,b)$. Then $ax+by$ is a multiple of $gh$, but since $ax+by = g$ and $R$ is a domain, we conclude that $h$ must be a unit, and $(a,b) = (h) = (1)$. In particular, we can find $c, d \in R$ such that $ad-bc = 1$. Finally, $bx+cy \in (x,y) = (g)$, so 
 	$$\begin{bmatrix} a & b \\ c & d \end{bmatrix} \begin{bmatrix} x \\ y\end{bmatrix} = \begin{bmatrix} g \\ eg \end{bmatrix}.$$
 	Now we can apply the row operation that adds $-e$ times the first row to the second row: by setting
-	$$P \colonequals \begin{bmatrix} 1 & 0 \\ -e & 1 \end{bmatrix} \begin{bmatrix} a & b \\ c & d \end{bmatrix} = \begin{bmatrix} a & b \\ c-ea & b-de \end{bmatrix}.$$
+	$$P := \begin{bmatrix} 1 & 0 \\ -e & 1 \end{bmatrix} \begin{bmatrix} a & b \\ c & d \end{bmatrix} = \begin{bmatrix} a & b \\ c-ea & b-de \end{bmatrix}.$$
 	we get
 	$$P \begin{bmatrix} x \\ y\end{bmatrix} = \begin{bmatrix} g \\ 0 \end{bmatrix}.$$
 	Finally, one can easily check that
@@ -9092,7 +9077,7 @@ $$\begin{bmatrix}
 with the same gcd as $A$. If $a$ happens to divide all the entries on the first row and column, then we can simply apply elementary row and column operations to get to the desired form. Suppose there exists $b$ on the first column such that $a \nmid b$. Then we may apply an elementary row operation switching rows so that $b=a_{2,1}$ is on the first column, second row. By \Cref{lemma gcd move by invertible}, we can now find an invertible matrix $C \in \M_2(R)$ such that
 $$C \begin{bmatrix} a \\ b \end{bmatrix} = \begin{bmatrix} \gcd(a,b) \\ 0 \end{bmatrix}.$$
 Consider the $m\times m$ matrix
-$$P \colonequals \begin{bmatrix}	 C & 0 \\ 0 & I_{m-2} \end{bmatrix}.$$
+$$P := \begin{bmatrix}	 C & 0 \\ 0 & I_{m-2} \end{bmatrix}.$$
 Note that $PA$ has $(PA)_{1,1} = \gcd(a,b)$ and $(PA)_{2,1} = 0$, so this step replaces $a$ by $\gcd(a,b)$ and $b$ by $0$. By \Cref{lemma gcd stays the same}, $\gcd(PA) = \gcd(A)$. We can keep repeating this until the top left corner entry divides every entry on the first column, and this process must stop after at most $m-1$ steps, since there are only $m$ elements on the first column.
 
 Similarly, if there exists $b$ on the first row that $a$ does not divide, we can repeat this process by instead multiplying $A$ on the left by an invertible matrix, until we zero out all the remaining entries on the first row and column.
@@ -9175,7 +9160,7 @@ Now
 $$(\pi \circ t_{xI_n - A})(e_i)=\pi((xI_n - A)e_i)=(xI_n - A)\pi(e_i)=(xI_n - A)b_i=xb_i-Ab_i=t(b_i)-t(b_i)=0.$$ 
 %by definition of how $x$ acts on $F^n_A$. 
 This proves $\mathrm{im}(xI_n - a) \subseteq \ker(\pi)$. It follows by \Cref{UMP quotient modules} that there is a surjection of $F[x]$-modules
-$$W \colonequals F[x]^n/\mathrm{im}(xI_n - A) \twoheadrightarrow V_t.$$
+$$W := F[x]^n/\mathrm{im}(xI_n - A) \twoheadrightarrow V_t.$$
 We may also regard this as a surjection of $F$-vector spaces. Since $\dim_F(V_t) = n$ and the map above is surjective, we have $\dim_F(W)\geqslant n$, which follows from the \hyperref[rank nulity]{Rank Nulity Theorem}. To establish that the map above is an isomorphism, it suffices to show that $\dim_F(W) \leqslant n$. 
 
 Denote by $c_i=e_i+\mathrm{im}(xI_n - A)$ the image of the standard basis of $F[x]^n$ in $W$.
@@ -9225,7 +9210,7 @@ For a monic polynomial $f(x) = x^n + a_{n-1}x^{n-1} +
   \cdots a_1 x + a_0$ with $n \geqslant 1$, the classes of $1, x, \dots,
   x^{n-1}$ form a basis for
   $F[x]/(f(x))$ regarded as an $F$-vector space. Relative to this basis, the $F$-linear operator $\l_x: F[x]/(f(x)) \to F[x]/(f(x))$ defined by $\l_x(v)=xv$ is given by the following matrix:
-$$C(f) \colonequals
+$$C(f) :=
 \begin{bmatrix}
 0 & 0 &\cdots & 0 & -a_0 \\
 1 & 0 & \cdots & 0 & -a_1 \\
@@ -9267,7 +9252,7 @@ A_1 & 0 & \cdots & 0 \\
 %\begin{definition}
 %Let $F$ be a field and let $A \in \M_m(F)$ and $B \in \M_n(F)$. The matrix $A \oplus B$ is the matrix $[c_{ij}] \in \M_{m+n}(F)$ defined by $c_{ij} = a_{ij}$ for all $1 \leqslant i,j \leq m, c_{ij} = b_{i-m,j-m}$ for all $m+1 \leqslant i,j \leqslant m+n$, and $c_{ij} = 0$ otherwise.
 %This means that
-%$$A\oplus B \colonequals \begin{bmatrix} A & 0 \\ 0 & B\end{bmatrix}.$$
+%$$A\oplus B := \begin{bmatrix} A & 0 \\ 0 & B\end{bmatrix}.$$
 %\end{definition}
 
 
@@ -9568,7 +9553,7 @@ $$\begin{bmatrix}
 0 & 0 & 0 \\
 \end{bmatrix}$$
 and hence the matrix for $T$ is $T' + 2 I_3$:
-$$J_3(2) \colonequals 
+$$J_3(2) := 
 \begin{bmatrix}
 2 & 1 & 0 \\
 0 & 2 & 1 \\
@@ -9616,8 +9601,8 @@ The key point is the following: the assumption that $c$ completely factors into 
 The proof then follows along the lines of \Cref{example JCF}. 
 First write $V_t$ in terms of the elementary divisors, as follows $$V_t\cong F[x]/((x - r_1)^{e_1})\oplus \dots \oplus F[x]/((x - r_s)^{e_s}).$$
 Then pick bases $B'_i=\{\overline{(x-r_i)^{e_i-1}}, \ldots, \overline{x-r_i}, \overline{1}\}$ for each of the summands and set 
-$$B \colonequals \bigcup_{i=1}^s \iota_i(B'_i).$$
-All that remains to show is that the matrix representing multiplication by $x$ on each summand is $J_{e_i}(r_i)$. More precisely, we want to compute the matrix representing the $F$-linear transformation $T\!: F[x]/((x-r)^e) \xrightarrow{x} F[x]/((x-r)^e)$ in the basis $B = \{\overline{(x-r)^{e-1}}, \ldots, \overline{x-r}, \overline{1}\}$. Let $T' \colonequals T - r \cdot \mathrm{id}$, and note that
+$$B := \bigcup_{i=1}^s \iota_i(B'_i).$$
+All that remains to show is that the matrix representing multiplication by $x$ on each summand is $J_{e_i}(r_i)$. More precisely, we want to compute the matrix representing the $F$-linear transformation $T\!: F[x]/((x-r)^e) \xrightarrow{x} F[x]/((x-r)^e)$ in the basis $B = \{\overline{(x-r)^{e-1}}, \ldots, \overline{x-r}, \overline{1}\}$. Let $T' := T - r \cdot \mathrm{id}$, and note that
 $$T'(\overline{(x-r)^{e-1}}) = 0$$
 and
 $$T'(\overline{(x-r)^{i}}) = \overline{(x-r)^{i+1}} \textrm{ for all } i < e-1.$$
@@ -9724,7 +9709,7 @@ Here are some important examples of multiplicatively closed subsets:
 
 \begin{definition}[Localization]
 Let $R$ be a domain and $W$ be a multiplicative set. The {\bf localization}\index{localization of a domain} of $R$ at $W$ is the ring 
-$$W^{-1} R \colonequals \left\{ \frac{r}{w} \ \Big| \ r\in R, w\in W \right\} / \sim$$
+$$W^{-1} R := \left\{ \frac{r}{w} \ \Big| \ r\in R, w\in W \right\} / \sim$$
 where $\sim$ is the equivalence relation given by
 $$\displaystyle \frac{r}{w}\sim \frac{r'}{w'} \textrm{ if } rw'=r'w.$$ 
 The operations are given by 
@@ -9733,7 +9718,7 @@ The operations are given by
 	There is a canonical ring homomorphism 
 	$$\xymatrix@R=1mm{R \ar[r] & W^{-1}R \\ r \ar@{|->}[r] & \frac{r}{1}}.$$
 %	Given an ideal $I$ in $W^{-1}R$, we write $I \cap R$ for its preimage of $I$ in $R$ via the canonical map $\xymatrix{R \ar[r] & W^{-1}R}$.\index{$I \cap R$} This is the contraction of $I$ into $R$ via the canonical map. Given an ideal $I$ in $R$, we write 
-%	$$W^{-1} I \colonequals \left\lbrace \frac{a}{w} \mid a \in I, w \in W \rbrace\right.$$
+%	$$W^{-1} I := \left\lbrace \frac{a}{w} \mid a \in I, w \in W \rbrace\right.$$
 \end{definition}
 
 We write elements in $W^{-1}R$ in the form $\frac{r}{w}$ even though they are equivalence classes of such expressions.
@@ -9824,7 +9809,7 @@ This result is at least a tiny bit surprising. Note that there are many irreduci
 \begin{proof}
 We will prove the contrapositive, so we will show that if $f \in R[x]$ is reducible in $F[x]$, then it is also reducible in $R[x]$. Suppose $f$ factors nontrivially as $f = AB$ in $F[x]$.
 Since $F$ is a field, the units of $F[x]$ are the nonzero constant polynomials, and so having a nontrivial factorization means $\deg(A), \deg(B) > 0$.
-All the coefficients of $A$ and $B$ are fractions, and so we may clear denominators --- that is, we can find nonzero elements $r,s \in R$ (e.g., by taking the product of all the denominators) such that $a \colonequals r A$ and $b \colonequals s B$ both belong to $R[x]$.  Set $d = rs$ and observe that we have
+All the coefficients of $A$ and $B$ are fractions, and so we may clear denominators --- that is, we can find nonzero elements $r,s \in R$ (e.g., by taking the product of all the denominators) such that $a := r A$ and $b := s B$ both belong to $R[x]$.  Set $d = rs$ and observe that we have
 $$d f = a b$$
 with $d \in R$ and $f,a,b \in R[x]$. 
   
@@ -10009,13 +9994,13 @@ A \df{field extension} is an inclusion of one field $F$ into a larger field $L$,
 So a field extension is just another name for a subfield, but the emphasis is different. We think of $F$ as coming first and $L$ later. 
 
 \begin{remark} 
-If $F \subseteq L$ is a field extension, then $L$ is in particular an $F$-vector space. This is a special case of the more general fact that if $\phi\!: R \to S$ is a ring homomorphism, then $S$ is a left $R$-module via $r \cdot s \colonequals \phi(r)s$ by restriction of scalars.
+If $F \subseteq L$ is a field extension, then $L$ is in particular an $F$-vector space. This is a special case of the more general fact that if $\phi\!: R \to S$ is a ring homomorphism, then $S$ is a left $R$-module via $r \cdot s := \phi(r)s$ by restriction of scalars.
 \end{remark}
 
 
 \begin{definition} 
 The {\bf degree} of a field extension $L/F$ is
-$$[L:F] \colonequals \dim_F(L).$$
+$$[L:F] := \dim_F(L).$$
 A field extension is {\bf finite} if its degree is finite.\index{finite field extension}\index{$[L:F]$}\index{degree of a field extension}
 \end{definition}
 
@@ -10039,7 +10024,7 @@ Let $F$ be a field, $p \in F[x]$ with $\deg(p) \geqslant 1$, and $L = F[x]/(p)$.
 \item $L/F$ is a field extension via the map 
 $$\xymatrix@R=1mm{F \ar[r] & L \\ f \ar@{|->}[r] & f+(p).} \vspace{-1em}$$
 \item The degree of the extension is $[L:F]=\deg(p)$.
-\item The element $\overline{x} \colonequals x+(p)\in L$ is a root of $p$ in $L$.
+\item The element $\overline{x} := x+(p)\in L$ is a root of $p$ in $L$.
 \end{enumerate}
 \end{theorem}
  
@@ -10076,7 +10061,7 @@ $$F(\alpha) \quad = \bigcap_{\substack{E \text{ field } \\ F \cup \{ \alpha \}  
 
 \begin{definition}
 	Let $F \subseteq L$ be a field extension and $\alpha \in L$. We write
-	$$F[\alpha] \colonequals \{f(\alpha) \mid f\in F[x]\}.$$
+	$$F[\alpha] := \{f(\alpha) \mid f\in F[x]\}.$$
 \end{definition}
 
 \begin{remark}
@@ -10135,7 +10120,7 @@ $$F = \{ \alpha + \beta \sqrt{3} \mid \alpha, \beta \in E\} =\{(a + b \sqrt{2}) 
 $$ and %since $x^2-3$ is irreducible over $E$ 
 On the other hand, $E \neq F$, so we conclude that $[F:E] = 2$. 
 
-We claim that $F$ is in fact a simple extension of $\mathbb{Q}$; more precisely, that $\mathbb{Q}(\sqrt{2} + \sqrt{3}) = F$. Set $\beta \colonequals \sqrt{2} + \sqrt{3}$. Note that $\beta^2 = 5 + 2 \sqrt{6}$ and
+We claim that $F$ is in fact a simple extension of $\mathbb{Q}$; more precisely, that $\mathbb{Q}(\sqrt{2} + \sqrt{3}) = F$. Set $\beta := \sqrt{2} + \sqrt{3}$. Note that $\beta^2 = 5 + 2 \sqrt{6}$ and
 $$\beta^3 = 5 \sqrt{2} + 5 \sqrt{3} + 4 \sqrt{3} + 6 \sqrt{2} = 11 \sqrt{2} + 9 \sqrt{3}.$$
 So $\frac{1}{2}(\beta^3 - 9 \beta) = \sqrt{2}$, and hence $\sqrt{2} \in \mathbb{Q}(\beta)$. Likewise, $\sqrt{3} = -\frac{1}{2}(\beta^3 - 11 \beta) \in \mathbb{Q}(\beta)$. So $\mathbb{Q}(\beta) = \mathbb{Q}(\sqrt{2},\sqrt{3})$.
 This shows that $\mathbb{Q}(\sqrt{2}, \sqrt{3})/\mathbb{Q}$ is simple and $\sqrt{2} + \sqrt{3}$ is a primitive element of this field extension.
@@ -10154,7 +10139,7 @@ $$\xymatrix@R=1mm{\frac{F[x]}{(p(x))} \ar[r] & F(\alpha) \\ x + (p(x)) \ar@{|->}
 
 
 \begin{proof}
-Let $\tilde{\phi}\!: F[x] \to F(\alpha)$ be the evaluation homomorphism that sends $x \mapsto \alpha$; more precisely, $\tilde{\phi}(f(x) \colonequals f(\alpha)$, and the restriction of this map to $F$ is the identity on $F$. Since $p(\alpha)=0$, we have $(p(x)) \subseteq \ker({\tilde{\phi}})$, and since $(p(x))$ is a maximal ideal and $\ker({\tilde{\phi}}) \neq F[x]$, we conclude that $(p(x))=\ker({\tilde{\phi}})$. 
+Let $\tilde{\phi}\!: F[x] \to F(\alpha)$ be the evaluation homomorphism that sends $x \mapsto \alpha$; more precisely, $\tilde{\phi}(f(x) := f(\alpha)$, and the restriction of this map to $F$ is the identity on $F$. Since $p(\alpha)=0$, we have $(p(x)) \subseteq \ker({\tilde{\phi}})$, and since $(p(x))$ is a maximal ideal and $\ker({\tilde{\phi}}) \neq F[x]$, we conclude that $(p(x))=\ker({\tilde{\phi}})$. 
 
 Now by \Cref{UMP quotient modules} we get an injective ring homomorphism
 $$\phi\!: \frac{F[x]}{(p(x))} \to F(\alpha)$$
@@ -10262,7 +10247,7 @@ The element $i \in \C$ is algebraic over $\mathbb{R}$, since $i^2+1=0$. In fact,
 \begin{theorem}\label{thm algebraic vs transcendental elements}  
 Suppose $L/F$ is a field extension and $\alpha \in L$.
 \begin{enumerate}[label=(\arabic*)]
-\item The set $I \colonequals \{f(x) \in F[x] \mid f(\alpha) = 0\}$ is an ideal of $F[x]$.
+\item The set $I := \{f(x) \in F[x] \mid f(\alpha) = 0\}$ is an ideal of $F[x]$.
 \item $I = 0$ if and only if $\alpha$ is transcendental over $F$. Equivalently, $I \neq 0$ if and only if $\alpha$ is algebraic over $F$.
 \item If $\alpha$ is algebraic over $F$, meaning $I \neq 0$, then the unique monic generator $m_{\alpha, F}(x)$ of the ideal $I$ is irreducible.
 \item If $\alpha$ is algebraic over $F$, then there is an isomorphism of fields
@@ -10271,7 +10256,7 @@ sending $F$ identically to $F$ and sending $x$ to $\alpha$.
 \item The element $\alpha$ is algebraic over $F$ if and only if $[F(\alpha): F] < \infty$. In this case,
 $$[F(\alpha): F] = \deg(m_{\alpha, F}(x)).$$
 \item The element $\alpha$ is transcendental over $F$ if and only if $[F(\alpha): F] = \infty$. In this case, there is an isomorphism of fields between $F(\alpha)$ and the field of fractions of $F[x]$:
-$$F(\alpha) \cong F(x) \colonequals \left\lbrace\frac{g(x)}{f(x)}\mid  g \neq 0 \right\rbrace$$
+$$F(\alpha) \cong F(x) := \left\lbrace\frac{g(x)}{f(x)}\mid  g \neq 0 \right\rbrace$$
 sending $F$ identically to $F$ and sending $x$ to $\alpha$.
 \end{enumerate}
 \end{theorem}
@@ -10320,7 +10305,7 @@ In particular, the composition of two finite extensions of fields is again a fin
 
 \begin{proof}
 Let $A \subseteq K$ be a basis for $K$ as an $L$-vector space and let $B \subseteq L$ be a basis for $L$ as an $F$-vector space. Consider the subset of $K$ given by 
-$$AB \colonequals \{ab \mid a \in A, b \in B\}.$$ 
+$$AB := \{ab \mid a \in A, b \in B\}.$$ 
 First, we claim that $AB$ is a basis of $K$ as an $F$-vector space. For $a \in K$, we have $a = \sum_i l_i a_i$ for some $a_1, \dots, a_m \in A$ and $l_1, \dots, l_m \in L$. For each $i$, $l_i$ is an $F$-linear combination of a finite set of elements of $B$. Combining these gives that $a$ is in the $F$-span of $AB$. To prove linear independence, it suffices to prove that if $a_1, \dots, a_m$ and $b_1, \dots, b_n$ be distinct elements of $A$ and $B$ respectively, then the set $\{a_ib_j\}$ is linearly independent.
 Suppose $\sum_{i,j} f_{i,j} a_i b_j = 0$ for some $f_{i,j} \in F$. Since the $b_j$ are $L$-linearly independent and
 $$\sum_{i,j} f_{i,j} a_i b_j = \sum_j \left(\sum_i f_{i,j} a_i \right) b_j$$
@@ -10552,7 +10537,7 @@ Let us assume the claim holds. By using this fact repeatedly, we may form a towe
 $$F = F_0 \subseteq F_1 \subseteq F_2 \subseteq  \cdots$$
 such that, for all $i$, the extension $F_i \subseteq F_{i+1}$ is algebraic and every nonconstant polynomial in $F_i[x]$ has at least one root in $F_{i+1}$. At each step, we apply the claim to $F_i$ to construct~$F_{i+1}$.
 
-Let $E \colonequals \cup_i F_i$. One can show $E$ is a field and $F \subseteq E$ is algebraic (exercise). 
+Let $E := \cup_i F_i$. One can show $E$ is a field and $F \subseteq E$ is algebraic (exercise). 
 Given $f \in F[x]$, by assumption $f$ has a root $\alpha$ in $F_1$, and hence $f$ factors as $f(x) = (x-\alpha) g(x)$ for $g(x) \in F_1[x]$. But then $g$ has a root in $F_2$ and hence factors in $F_2[x]$. Repeating this we see $f$ splits completely into linear factors in $F_n[x]$, where $n = \deg(f)$, and thus $f$ splits completely into linear factors in $E[x]$. By \Cref{lemma for existence and uniqueness of alg closures}, $E$ is an algebraic closure of $F$.
 
 \underline{Proof of Claim}:
@@ -10562,7 +10547,7 @@ Now we form the rather large polynomial ring $R = F[y_f \mid f \in S]$. Let $I$ 
 $$1 = g_1 f_1(y_{f_1}) + \cdots + g_m f_m(y_{f_m})$$
 in $R$. There exists finite extension $E$ of $F$ in which each $f_i$ has a root $\alpha_i$: by \Cref{degreeF(a)}, $f_i$ has a root $\alpha_i$ in some extension of $F$, and $F(\alpha_1, \ldots, \alpha_n)$ is a finite extension of $F$ by \Cref{adjoining finitely many algebraic elements is finite}. Evaluating the above equation by setting $y_{f_i} = \alpha_i$, we get $1 = 0$, which is impossible. This shows that $I$ must be a proper ideal. 
 
-Since $I$ is a proper ideal, it is contained in some maximal ideal $\m$. The quotient ring $K \colonequals R/\m$ is a field, and the composition $F \hookrightarrow R \twoheadrightarrow K$ is a ring map $F \to K$ between two fields, and thus must be injective. By a slight abuse of notation, we will think of this map as an actual inclusion. 
+Since $I$ is a proper ideal, it is contained in some maximal ideal $\m$. The quotient ring $K := R/\m$ is a field, and the composition $F \hookrightarrow R \twoheadrightarrow K$ is a ring map $F \to K$ between two fields, and thus must be injective. By a slight abuse of notation, we will think of this map as an actual inclusion. 
 For any $f \in S$, in $K$ we have $f(y_f) = 0$, so the image $\overline{y_f} \in K$ of $y_f \in R$ is a root of $f$. We have constructed a field extension $F \subseteq K$ such that every $f \in S$ has a least one root in~$K$. 
 
 We are not quite done since it is not clear that $K$ is algebraic over $F$. For each $f \in S$, pick a root $\beta_f \in K$ of $f$. Let $L=F(\beta_f \mid f \in S) \subseteq K$.
@@ -10575,7 +10560,7 @@ Then $L$ is algebraic over $F$ and every member of $S$ has at least one root in 
 Suppose $L$ and $L'$ are two algebraic closures of $F$.
 Let $S$ be the set of pairs $(E,i)$ where $E$ is a subfield of $L$ that contains $F$ and $i: E \hookrightarrow L'$ is a ring homomorphism with $i|_F = \mathrm{id}_F$. Make $S$ into a poset by declaring that $(E,i) \leq (E',i')$ whenever $E \subseteq E'$ and $i'|_E = i$.
 
-One can show (exercise!) that $S$ satisfies the hypotheses of Zorn's Lemma, and hence it has a maximal element $(E,i)$. We claim $E$ must equal $L$. If not, we can find $\alpha \in L \setminus E$. Let $p(x) = m_{\alpha, E}$ and set $E' \colonequals i(E)$. So $i$ maps $E$ isomorphically onto $E'$.
+One can show (exercise!) that $S$ satisfies the hypotheses of Zorn's Lemma, and hence it has a maximal element $(E,i)$. We claim $E$ must equal $L$. If not, we can find $\alpha \in L \setminus E$. Let $p(x) = m_{\alpha, E}$ and set $E' := i(E)$. So $i$ maps $E$ isomorphically onto $E'$.
 Let $p'(x)$ be the polynomial in $E'[x]$ corresponding to $p(x)$ via $i$, and pick any root $\alpha'$ of $p'(x)$ in $L'$.
 By \Cref{extending identity on F to iso}, there is an isomorphism $E(\alpha) \to E'(\alpha')$
 extending the isomorphism $i$. Since $E(\alpha) \subseteq L$, and by assumption $\alpha \notin E$, this contradicts the maximality of $(E, i)$.
@@ -10819,7 +10804,7 @@ By \Cref{degree splitting field n!}, $[L:\mathbb{Q}] \leqslant 6$, so we conclud
 \begin{example} 
 Let $f(x) = x^n -1 \in \mathbb{Q}[x]$. Then $f$ splits completely in
   $\C[x]$, and its $n$ many roots are the $n$th roots of $1$. One of these
-  is $\zeta_n \colonequals e^{2 \pi i/n}$. Notice that every other $n$th root of $1$ is a power of this one. 
+  is $\zeta_n := e^{2 \pi i/n}$. Notice that every other $n$th root of $1$ is a power of this one. 
 Thus $\mathbb{Q}(\zeta_n)$ is the splitting field of $x^n-1$ over $\mathbb{Q}$. 
 %This field is called the \df{cyclotomic field} of $n$th roots of 1 over $\mathbb{Q}$. 
 This is a somewhat special example: upon adjoining one of the roots of $f$ we got all the others for free. This happens in other examples too, but it is certainly {\em not} a general principle.
@@ -10988,7 +10973,7 @@ An algebraic field extension $L/F$ is {\bf separable} if for every $\alpha \in L
 
 
 \begin{exercise}\label{separable just check generators}
-	Let $\alpha_1, \ldots, \alpha_n$ be algebraic elements over $F$, and let $L \colonequals F(\alpha_1, \ldots, \alpha_n)$. Show that the extension $F \subseteq L$ is separable if and only if $m_{\alpha_i, F}$ is separable for every $i$.
+	Let $\alpha_1, \ldots, \alpha_n$ be algebraic elements over $F$, and let $L := F(\alpha_1, \ldots, \alpha_n)$. Show that the extension $F \subseteq L$ is separable if and only if $m_{\alpha_i, F}$ is separable for every $i$.
 \end{exercise}
 
 
@@ -11030,7 +11015,7 @@ Let $F$ be a field with prime characteristic $\ch(F) = p$.
 
 \begin{proof}$\,$
 \begin{enumerate}[label=\alph*),leftmargin=15pt]
-\item In general, for such $F$ and $b$, let $\alpha$ be a root of $x^p - b$ in some field extension of $F$ and let $L \colonequals F(\alpha)$. We claim that $F \subseteq L$ is not separable; specifically, we claim $m \colonequals m_{\alpha, F}$ is not separable.
+\item In general, for such $F$ and $b$, let $\alpha$ be a root of $x^p - b$ in some field extension of $F$ and let $L := F(\alpha)$. We claim that $F \subseteq L$ is not separable; specifically, we claim $m := m_{\alpha, F}$ is not separable.
 Since $\alpha$ is a root of $x^p - b$, we have $m \mid x^p - b$. In $L[x]$,
 by the \hyperref[freshmans dream]{Freshman's Dream} we have
 $$(x-\alpha)^p = x^p - \alpha^p = x^p -b.$$
@@ -11180,11 +11165,11 @@ showing that $\sigma(\alpha)$ is also a root of $q$.\qedhere
 We now come to the main idea connecting field extensions and groups. It concerns the {\em action} of the group of automorphisms of a splitting field of a polynomial on the set of roots of that polynomial.
 
 \begin{theorem}\label{aut splitting field sn}
-Let $L$ be the splitting field of a polynomial $f \in F[x]$. Let $S$ be the set of distinct roots of $f$ in $L$, and let $n \colonequals |S|$. 
+Let $L$ be the splitting field of a polynomial $f \in F[x]$. Let $S$ be the set of distinct roots of $f$ in $L$, and let $n := |S|$. 
 
 \begin{enumerate}[label=\alph*),leftmargin=15pt]
 \item The group $Aut(L/F)$ acts faithfully on $S$, via 
-$$\sigma \cdot b \colonequals \sigma(b)$$
+$$\sigma \cdot b := \sigma(b)$$
 for all $\sigma \in \mathrm{Aut}(L/F)$ and $b \in S$, and hence $\mathrm{Aut}(L/F)$ is isomorphic to a subgroup of $S_n$. 
 \item If $f \in F[x]$ is an irreducible polynomial, then $\mathrm{Aut}(L/F)$ acts transitively on $S$.
 \end{enumerate}
@@ -11229,7 +11214,7 @@ Let $F$ be a field and $L~=~F(a_1, \ldots, a_n)$, where $a_1,\ldots, a_n$ are el
 A typical question that arises from \Cref{aut splitting field sn} is to explicitly identify the automorphisms of a splitting field extension as a subgroup of the symmetric group.
 
 \begin{example} 
-Let $L$ be the splitting field of $f = x^3-2 \in \mathbb{Q}[x]$ and $G \colonequals \mathrm{Aut}(L/\mathbb{Q})$. Recall from \Cref{example splitting field x3-2} that $L = \mathbb{Q}(\sqrt[3]{2}, \zeta)$, where $\zeta = e^{2 \pi i/3}$, and that $[L:\mathbb{Q}] = 6$.
+Let $L$ be the splitting field of $f = x^3-2 \in \mathbb{Q}[x]$ and $G := \mathrm{Aut}(L/\mathbb{Q})$. Recall from \Cref{example splitting field x3-2} that $L = \mathbb{Q}(\sqrt[3]{2}, \zeta)$, where $\zeta = e^{2 \pi i/3}$, and that $[L:\mathbb{Q}] = 6$.
 Let us write the roots of $f$ as 
 $$\alpha_1 = \sqrt[3]{2}, \alpha_2 = \zeta \alpha_1, \alpha_3 = \zeta^2 \alpha_1.$$
 From \Cref{aut splitting field sn}, $G$ acts transitively on $\{\alpha_1, \alpha_2, \alpha_3\}$, and hence $G$ is isomorphic to a subgroup of $S_3$.
@@ -11255,7 +11240,7 @@ Since $\mathbb{Q}(\alpha_1) \subseteq \mathbb{R}$ and $L$ contains elements that
 
 
 
-Set $G \colonequals \mathrm{Aut}(L/\mathbb{Q})$. We know $G$ is isomorphic to a subgroup of $S_4$. Since $L= \mathbb{Q}(\alpha_1, i)$, by \Cref{aut elements determined by image of gens} any $\tau \in G$ is uniquely determined by what it does to $\alpha_1$ and $i$. Such a $\tau$ must send $\alpha_1$ to a root of $f$, and thus to one of $\alpha_1, \ldots, \alpha_4$. Moreover, since $i$ is a root of $x^2 + 1$, so is $\tau(i)$, by \Cref{lemma roots}, and thus $\tau$ must send $i$ to $\pm i$. By combining the possibilities for $\tau(\alpha_1)$ and $\tau(i)$, we have at most $8$ possibilities, so $|G| \leqslant 8$. In particular, $G$ corresponds to a {\em proper} subgroup of $S_4$, and so the roots of $x^4-2$ do not have as many symmetries as are conceivable.
+Set $G := \mathrm{Aut}(L/\mathbb{Q})$. We know $G$ is isomorphic to a subgroup of $S_4$. Since $L= \mathbb{Q}(\alpha_1, i)$, by \Cref{aut elements determined by image of gens} any $\tau \in G$ is uniquely determined by what it does to $\alpha_1$ and $i$. Such a $\tau$ must send $\alpha_1$ to a root of $f$, and thus to one of $\alpha_1, \ldots, \alpha_4$. Moreover, since $i$ is a root of $x^2 + 1$, so is $\tau(i)$, by \Cref{lemma roots}, and thus $\tau$ must send $i$ to $\pm i$. By combining the possibilities for $\tau(\alpha_1)$ and $\tau(i)$, we have at most $8$ possibilities, so $|G| \leqslant 8$. In particular, $G$ corresponds to a {\em proper} subgroup of $S_4$, and so the roots of $x^4-2$ do not have as many symmetries as are conceivable.
 
 {\em Claim:} $|G| = 8$ and $G$ is isomorphic to the subgroup of $S_4$ generated by $(2 \, 4)$ and $(1 \,2 \, 3 \,4)$. 
 
@@ -11384,7 +11369,7 @@ We will need the following notation.
 
 \begin{definition} 
 If $G$ is subgroup of $\mathrm{Aut}(L)$, the \df{subfield of $L$ fixed by $G$}, denoted $L^G$, is by definition
-$$L^G \colonequals \{ \alpha \in L \mid s(\alpha) = \alpha, \text{ for all $s \in G$}\}.$$
+$$L^G := \{ \alpha \in L \mid s(\alpha) = \alpha, \text{ for all $s \in G$}\}.$$
 Note that the textbook writes this as $L_G$.
 \end{definition}
 
@@ -11438,7 +11423,7 @@ and we also know that $[L:F] = |\Gal(L/F)|$. Therefore, $[L^{\Gal(L/F)}:F] = 1$ 
 We know from \Cref{example galois} that $L = \mathbb{Q}(\sqrt[4]{2}, i)$ is Galois over $\mathbb{Q}$ with Galois group $D_4$. More precisely, this identification is given by writting 
 $$\alpha_1 = \sqrt[4][2], \quad \alpha_2 = i\sqrt[4]{2}, \quad \alpha_3 = -\sqrt[4]{2}, \quad \alpha_4 = -i\sqrt[4]{2}$$ 
 and labelling the four corners of a square with $\alpha_1, \ldots, \alpha_4$, counter-clockwise.  Consider 
-$$\beta \colonequals \alpha_1 + \cdots \alpha_4$$ 
+$$\beta := \alpha_1 + \cdots \alpha_4$$ 
 and $\gamma = \alpha_1 \cdots \alpha_4$. Then each of $\beta$ and $\gamma$ are fixed by every Galois automorphism and hence by \Cref{galois extension base is exactly the fixed points} $\beta$ and $\gamma$ must be rational. In fact, one can easily see that $\beta = 0$ and $\gamma = 2$, but notice that the exact same reasoning would apply in general to the sum of roots and the product of roots in the splitting field of any separable polynomial.
 \end{example}
 
@@ -11453,7 +11438,7 @@ For every $\alpha \in L$, $m_{\alpha, F}$ is separable and all of its roots belo
 \begin{proof}
 Let $\alpha \in L$ and consider the orbit $\alpha_1 = \alpha, \ldots, \alpha_m$
 of $\alpha$ under the action of $\Gal(L/F)$. Set
-$$f \colonequals (x-\alpha_1) \cdots (x-\alpha_m).$$
+$$f := (x-\alpha_1) \cdots (x-\alpha_m).$$
 For any $\tau \in \Gal(L/F)$, since $\tau$ permutes the elements of any orbit then
 $$f^\tau = (x-\tau(\alpha_1)) \cdots (x-\tau(\alpha_m)) = f.$$
 This proves that $f$ has all its coefficients in the field $F^{\Gal(L/F)}$, which by \Cref{galois extension base is exactly the fixed points} coincides with the field $F$.
@@ -11483,7 +11468,7 @@ For the reverse direction, suppose that $F \subseteq L$ is a Galois extension. I
 By \Cref{galois extension all min pols separable}, each $m_{\beta_i,F}$ is separable and all of its roots belong to $L$. Moreover, if $\gamma_i$ is a root of $m_{\beta_i,F}$ and $i \neq j$, then we claim that $\gamma_i$ is not a root of $m_{\beta_j,F}$. Indeed, if $m_{\beta_j,F}(\beta_i) = 0$, then $m_{\alpha_i,F} | m_{\alpha_j,F}$, but they are both monic irreducible polynomials over $F$, so we must have $m_{\alpha_i,F} = m_{\alpha_j,F}$.
 
 Let $m_1, \ldots, m_s$ be the distinct polynomials among the $m_{\beta_i,F}$, and set
-$$g \colonequals \prod_{i=1}^s m_i.$$ 
+$$g := \prod_{i=1}^s m_i.$$ 
 Since distinct $m_i$ do not share any common roots and all the $m_i$ are separable, their product $g$ is also separable. Moreover, all of the roots of $g$ belong to $L$, and hence the splitting field of $g$ is contained in $L$. Since $\beta_i$ is a root of $g$ for all $i$, $L = F(\beta_1, \ldots, \beta_n)$ must be precisely the splitting field of~$g$.
 \end{proof}
 
@@ -11577,7 +11562,7 @@ $$\Psi^{-1} \circ \Psi(E) = \Psi(\Gal(L/E)) = L^{\Gal(L/E)} = E.$$
 This establishes the fact that $\Psi$ is indeed a bijective correspondence.
 
 
-Now we check that $\Psi$ satisfies the given list of properties. For brevity, set $G \colonequals \Gal(L/F)$.
+Now we check that $\Psi$ satisfies the given list of properties. For brevity, set $G := \Gal(L/F)$.
 
 \begin{enumerate}[leftmargin=20pt,label=(\alph*)]
 \item The fact that the correspondence is order reversing follows from the definitions. Given intermediate fields $E_1 \subseteq E_2$, any automorphism of $L$ that preserves $E_2$ must also preserve $E_1$, thus $\Gal(L/E_2) \supseteq \Gal(L/E_1)$. Conversely, if $H_1 \leq H_2 \leq \Gal(L/E)$, then every $x \in L$ that is fixed by every $\sigma \in H_2$ must also be fixed in particular by every element of $H_1$, so $L^{H_2} \supseteq L^{H_1}$.
@@ -11597,7 +11582,7 @@ We have shown that if $E$ is Galois over $F$, then the corresponding subgroup $\
 
 For the converse, consider a normal subgroup $N \nsg G$ and the corresponding intermediate field $E = L^N$, so that $N = \Gal(L/E)$.  We will show that $E$ is the splitting field over $F$ of a separable polynomial in $F[x]$, and hence is Galois over $F$ by \Cref{splitting fields of separable polynomials are galois}.
 
-Pick any $\alpha \in E$ and set $m \colonequals m_{\alpha, F}$. By \Cref{galois extension all min pols separable}, $m$ is separable and all of its roots belong to $L$. We claim that all the roots must in fact belong to $E$. Since $m$ is irreducible and $L/F$ is Galois, by \Cref{galois extension all min pols separable} $G$ acts transitively on the set of roots of $m$.
+Pick any $\alpha \in E$ and set $m := m_{\alpha, F}$. By \Cref{galois extension all min pols separable}, $m$ is separable and all of its roots belong to $L$. We claim that all the roots must in fact belong to $E$. Since $m$ is irreducible and $L/F$ is Galois, by \Cref{galois extension all min pols separable} $G$ acts transitively on the set of roots of $m$.
 %%%%see Lemma below?  
 Thus, given be any other root $\beta \in L$ of $m$, there is a $\sigma \in G$ with $\sigma(\alpha) = \beta$. Since $N$ is normal, for any $\tau \in N$ we have  $\sigma \tau' = \tau \sigma$ for some $\tau' \in N$. But $\tau' \in N$ fixes $E$, so $\tau'(\alpha) = \alpha$. Therefore,
 $$\beta = \sigma(\alpha) = \sigma \tau'(\alpha) = \tau \sigma(\alpha) = \tau(\beta)$$
@@ -11644,7 +11629,7 @@ This is just a fancy way to rephrase the fact that intermediate fields correspon
 
 \begin{example}
 Let $L$ be the splitting field of $x^4 - 2$ over $\mathbb{Q}$. Let us use the \hyperref[Fundamental Theorem of Galois Theory]{Fundamental Theorem of Galois Theory} to list all intermediate fields for $L/\mathbb{Q}$ and to determine which are Galois over $\mathbb{Q}$.
-By \Cref{example galois}, we know $G \colonequals \Gal(L/\mathbb{Q})$ corresponds to the $8$ element subgroup of $S_4$ generated by $\sigma = (2 \, 4)$ and $\tau = (1 \, 2 \,  3 \, 4)$, where we number the roots of $x^4-2$ as 
+By \Cref{example galois}, we know $G := \Gal(L/\mathbb{Q})$ corresponds to the $8$ element subgroup of $S_4$ generated by $\sigma = (2 \, 4)$ and $\tau = (1 \, 2 \,  3 \, 4)$, where we number the roots of $x^4-2$ as 
 $$\alpha_1 = \sqrt[4]{2}, \quad \alpha_2 = i \alpha_1, \quad \alpha_3 = -\alpha_1, \quad \alpha_4 = -i \alpha_1.$$
 We saw in \Cref{example galois} that this group is isomorphic to $D_4$, and we can make this isomorphism explicit by labeling the four corners of a square $1$, $2$, $3$, $4$ counterclockwise, so that $\tau$ is rotation by $90$ degrees and $\sigma$ is reflection about the line joining vertices $1$ and $3$.
 %\begin{center}
@@ -11707,7 +11692,7 @@ The intermediate fields are the fixed subfields of $L$ associated to each of the
 The field $E_1$ has degree $4 = [G:H_1]$ over $\mathbb{Q}$. Since $\alpha_1$ and $\alpha_3$ belong to $E_1$ and $[\mathbb{Q}(\alpha_1):\mathbb{Q}]=4$, we must have $E_1 = \mathbb{Q}(\alpha_1)$. Likewise, $E_2 = \mathbb{Q}(\alpha_2)$.
 
 The field $E_3$ also has degree $4$ over $\mathbb{Q}$. Let 
-$$\beta \colonequals \alpha_1 + \alpha_2 = (1+i)\sqrt[4]{2} \in E_3.$$ 
+$$\beta := \alpha_1 + \alpha_2 = (1+i)\sqrt[4]{2} \in E_3.$$ 
 If $[\mathbb{Q}(\beta):\mathbb{Q}] = 2$, then $\beta$ would be fixed by a subgroup of index $2$ that contains $(1 \, 2)(3 \, 4)$, and the only possibility is $H_8$. But $(1 \, 4)(2 \, 3)$ sends $\beta$ to $\alpha_4 + \alpha_3 = - \beta \neq \beta$. So we must have $[\mathbb{Q}(\beta):\mathbb{Q}] = 4$ and hence $E_3 = \mathbb{Q}(\beta)$.
 We claim that $E_4 = \mathbb{Q}((1-i) \alpha_1)$, $E_5 = \mathbb{Q}(\sqrt{2},i)$, and $E_7 = \mathbb{Q}(\sqrt{2})$, and leave it as an exercise.
 
@@ -11728,7 +11713,7 @@ As an example, to see directly that $E_3$ is not Galois over $\mathbb{Q}$, note 
 
 
 \begin{remark}
-	Let $F \subseteq L$ be a Galois extension and consider an intermediate field $E$ such that $E/F$ is Galois, with corresponding normal subgroup $N \colonequals \Gal(E/F) \nsg \Gal(L/F)$. Part (d) of the \hyperref[Fundamental Theorem of Galois Theory]{Fundamental Theorem} says there is an isomorphism $\Gal(E/F) \cong \Gal(L/F)/N$. In fact, the proof shows that the map
+	Let $F \subseteq L$ be a Galois extension and consider an intermediate field $E$ such that $E/F$ is Galois, with corresponding normal subgroup $N := \Gal(E/F) \nsg \Gal(L/F)$. Part (d) of the \hyperref[Fundamental Theorem of Galois Theory]{Fundamental Theorem} says there is an isomorphism $\Gal(E/F) \cong \Gal(L/F)/N$. In fact, the proof shows that the map
 	$$\xymatrix@R=1mm{\phi: G \ar[r] & \Gal(E/F) \\ \sigma \ar@{|->}[r] & \phi(\sigma) = \sigma|_E.}$$
 is surjective. This says that every $\tau \in \Gal(E/F)$ can be lifted to some $\sigma \in \Gal(L/F)$, so that $\tau = \sigma|_E$. 
 
@@ -11768,7 +11753,7 @@ The first ingredient we need is to better understand the process of taking roots
 
 \begin{definition}\index{$\mu_n(K)$}
 A \df{primitive $n$th root of unity} over an arbitrary field $F$ is an element $\zeta$ in the splitting field $K$ of $x^n - 1$ over $F$ (or in the algebraic closure $\overline{F}$) such that $\zeta$ generates the (multiplicative) subgroup of $K$:
-$$\mu_n(K) \colonequals \{\alpha \in K \mid \alpha^n = 1\} \leq (K^\times, \cdot).$$
+$$\mu_n(K) := \{\alpha \in K \mid \alpha^n = 1\} \leq (K^\times, \cdot).$$
 \end{definition}
 
 \begin{exercise}
