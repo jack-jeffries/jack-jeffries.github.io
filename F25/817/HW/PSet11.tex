@@ -1,0 +1,135 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,enumerate}
+\usepackage[]{graphicx}
+\usepackage{color,subfigure}
+\definecolor{scarlet}{rgb}{0.81,0,0}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage[all]{xypic}
+\usepackage[colorlinks=true,citecolor=scarlet,linkcolor=scarlet]{hyperref}
+\usepackage{colonequals}
+
+\usepackage{fancyhdr, lastpage}
+\pagestyle{fancy}
+\fancyfoot[C]{{\thepage} of \pageref{LastPage}}
+
+
+
+\DeclareMathOperator{\mSpec}{mSpec}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Ass}{Ass}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\height}{height}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\ann}{ann}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\coker}{coker}
+%\DeclareMathOperator{\ker}{ker}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\M}{M}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\ch}{char}
+\DeclareMathOperator{\Aut}{Aut}
+
+%\DeclareMathOperator{\dim}{dim}
+
+\DeclareMathOperator{\lcm}{lcm}
+
+\def\ra{\rightarrow}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\ov}[1]{\overline{#1}}
+\newcommand{\norm}{\trianglelefteq}
+
+\def\ov#1{\overline{#1}}
+
+
+\title{}
+\date{\vspace{-0.5in}}
+
+\makeatletter
+\g@addto@macro\@floatboxreset\centering
+\makeatother
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+
+\begin{document}
+
+\thispagestyle{fancy}
+\pagestyle{fancy}
+\rhead{UNL $\mid$ Fall 2025}
+\lhead{Introduction to Modern Algebra I}
+
+\vspace{3em}
+
+\begin{center}
+	{\LARGE Problem Set 11 \\}
+	Due Thursday, November 20
+\end{center}
+
+\
+
+\noindent
+{\bf Instructions:}
+You are encouraged to work together on these problems, but each student should hand in their own final draft, written in a way that indicates their individual understanding of the solutions. Never submit something for grading that you do not completely understand. You cannot use any resources besides me, your classmates, and our course notes.
+
+
+I will post the .tex code for these problems for you to use if you wish to type your homework. If you prefer not to type, please  {\em write neatly}. As a matter of good proof writing style, please use complete sentences and correct grammar. You may use any result stated or proven in class or in a homework problem, provided you reference it appropriately by either stating the result or stating its name (e.g. the definition of ring or Lagrange's Theorem). Please do not refer to theorems by their number in the course notes, as that can change.
+
+\
+
+
+\begin{problem} Prove that a finite domain (i.e., an integral domain that is finite as a set) is a field.
+\end{problem}
+
+\
+
+\begin{problem}
+Define $N\!: \C \to \R$ to be the square of the complex norm; that is,  
+$$N(a+bi) = (a+bi)(a-bi) = a^2+b^2.$$
+You can use without proof that $N$ satisfies $N(\alpha \beta)=N(\alpha)N(\beta)$ for any $\alpha, \beta \in \C$.
+
+\begin{enumerate}[a)]
+\item Show that the only units of $\ZZ[i]$ are $\pm 1$ and $\pm i$.
+
+\item Prove that the only units of the ring $\ZZ[\sqrt{-5}]$ are $\pm 1$.
+  
+\item Are there units in $\ZZ[\sqrt{2}]$ other than $\pm 1$? 
+\end{enumerate}
+\end{problem}
+
+\
+
+\begin{problem}
+Let $R$ be a ring and $R[X]$ be a polynomial ring over $R$. For a nonzero element
+\[ f(X) =  r_0 + r_1 X + \cdots + r_n X^n \in R[X]\]
+we define the $\mathrm{degree}$ of $f(X)$ to be $\max\{ i \ | \ r_i\neq 0\}$, denoted $\mathrm{deg}(f(X))$. Show that if $R$ has no zerodivisors, then $R[X]$ has no zerodivisors, and \[ \mathrm{deg}(f(X) g(X)) = \mathrm{deg}(f(X)) + \mathrm{deg}(g(X))\] for all nonzero polynomials $f(X),g(X) \in R[X]$.
+\end{problem}
+
+
+\
+
+\begin{problem}
+Let $R$ be a ring.	
+
+\begin{enumerate}[a)]
+\item Prove that an ideal $I$ of $R$ is proper if and only if $I$ contains no units.
+
+\item Assume $R$ is commutative.  Show that $R$ is a field if and only if its only ideals are $\{0\}$ and~$R$.
+
+\item Show that the only ideals of $R = \mathrm{Mat}_{2 \times 2}(\R)$ are $\{0\}$ and $R$, and yet $R$ is not a division ring.
+\end{enumerate}
+\end{problem}
+
+
+\end{document}

@@ -191,7 +191,9 @@ then there exists a homomorphism $\varphi\!: G \to \ZZ/7 \rtimes_{\rho} \ZZ/9$ g
 $$\varphi(u) = x \quad \text{and} \quad \varphi(v) = y.$$
 We showed that $x$ and $y$ generate $\ZZ/7 \rtimes_{\rho} \ZZ/9$, so this homomorphism must be surjective. In particular, $|G| \geqslant |\ZZ/7 \rtimes_{\rho} \ZZ/9| = 7 \cdot 9 = 63$. 
 
-On the other hand, in $G$, any expression involving $u$ and $v$ can be rewritten by replacing $v^2u$ by $uv$, so that any element can be written as $u^av^b$ for some integers $a$ and $b$. Since $u^7 = e$ and $v^9 = e$, any element in $G$ can then be written as
+On the other hand, in $G$, any element can\footnote{Indeed, any element can be written in the form $g=u^{i_1} v^{j_1} \cdots u^{i_m} v^{j_m}$ for some integers $i_t, j_t$ by definition of free group, and using the relations $u^7 = e$ and $v^9 = e$ in $G$ we can take $i_t,j_t\geq 0$. We show the claim holds for any $g$ with an expression of this form by induction on $n=\sum i_t + \sum j_t$. We can take $n=0$ as the base case, in which $g=e$ and the claim is clear. Then for an arbitrary element $g$ as above with $n\geq 1$, we can either write $g=g' u$, $g=g' v$ and rewrite $g'= u^i v^j$ by induction hypothesis. Then $g' v = u^i v^{j+1}$ and $g' u= u^i v^j u = u^{i+1} v^{2j}$ (using the relation $vu=u^2v$ repeatedly) completing the induction and justifying the claim.}
+be written as $u^av^b$ for some integers $a$ and $b$ by replacing $v^2u$ by $uv$.  
+ so that  Since $u^7 = e$ and $v^9 = e$, any element in $G$ can then be written as
 $$u^av^b \quad \text{ where } 0 \leqslant a \leqslant 6 \text{ and } 0 \leqslant b \leqslant 8.$$
 There are $9 \cdot 7 = 63$ expressions of this form, and thus $|G| \geqslant 63$. We conclude that 
 $$|G| = 63 = |\ZZ/7 \rtimes_{\rho} \ZZ/9|,$$ 
