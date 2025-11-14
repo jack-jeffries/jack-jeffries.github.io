@@ -1,0 +1,178 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{paralist,amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,colonequals}
+\usepackage[shortlabels]{enumitem}
+\usepackage[all]{xy}
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\solutione}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{leaf}This solution is embargoed.}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+
+\newcommand{\rsa}{\rightsquigarrow}
+
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+
+\DeclareMathOperator{\ord}{ord}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{1}
+	
+	\thispagestyle{empty}
+	
+	\section*{Ideals}
+	
+	
+\begin{framed}
+\textsc{Definition:} Let $R$ be a ring. An \textbf{ideal} of $R$ (also called a \textbf{two-sided ideal}) is a nonempty subset of $R$ such that
+\begin{enumerate}
+\item $I$ is closed under addition: for all $a,b\in I$, we have $a+b\in I$.
+\item $I$ absorbs multiplication: for all $r\in R$ and $a\in I$, we have $ra\in I$ and $ar\in I$.
+\end{enumerate}
+A \textbf{left ideal} of $R$ is a nonempty subset of $R$ such that
+\begin{enumerate}
+\item $I$ is closed under addition: for all $a,b\in I$, we have $a+b\in I$.
+\item[(2$\ell$)] $I$ absorbs left multiplication: for all $r\in R$ and $a\in I$, we have $ra\in I$.
+\end{enumerate}
+The definition of \textbf{right ideal} is analogous.
+
+\
+
+\textsc{Lemma 1 (General recipes for ideals):} Let $R$ be a ring.
+\begin{enumerate}[(i)]
+\item If $I,J$ are ideals, then $I+J \colonequals \{ a + b \ | \ a\in I, b\in J\}$ is an ideal.
+\item If $I,J$ are ideals, then $IJ := \{ \sum_{i=1}^n a_i b_i \ | \ a_i \in I, b_i\in J\}$ is an ideal.
+\item If $\{ I_{\alpha} \}_{\alpha\in A}$ is an arbitrary collection of ideals of $R$, then $\bigcap_{\alpha\in A} I_\alpha$ is an ideal.
+\item If $\{ I_{\alpha} \}_{\alpha\in A}$ is a \emph{chain}\footnotemark\,of ideals, then $\bigcup_{\alpha\in A} I_\alpha$ is an ideal.
+\item If $I$ is an ideal, then $I[x] \colonequals \{ a_0 + a_1 x + \cdots + a_n x^n \ | \ a_i \in I\}$ is an ideal of $R[x]$.
+\end{enumerate}
+\end{framed}
+\footnotetext[1]{This means that for all $\alpha,\beta\in A$, either $I_\alpha\subseteq I_\beta$ or $I_\beta\subseteq I_\alpha$.}
+	
+	\begin{enumerate}
+	\itemA Working with the definition: 
+	\begin{enumerate}
+	\itema If $I$ is an ideal (or left ideal) of $R$, explain why $0\in I$ and $(I,+)$ is a subgroup of $(R,+)$.
+	\solution{Since $I\neq \varnothing$, take $a\in I$, and we have $0=0 \cdot a \in I$. To complete the two-step test, we just need to check that $I$ is closed under additive inverses: give $a\in I$, we have $-a = (-1)a\in I$.}
+	\itema Very quickly explain why  $\{0\}$ and $R$ are ideals of $R$. We say that an ideal is \textbf{nontrivial} if $I\neq 0$ and proper if $I\neq R$.
+	\solution{$\{0\}$ is closed under addition since $0+0=0$ and absorbs multiplication since $r \cdot 0 = 0 = 0 \cdot r$ for all $r\in R$. $R$ is closed under addition and absorbs multiplication since addition and multiplication are operations on $R$.}
+	\itema Explain why an ideal $I\subseteq R$ is proper if and only if $1\notin I$.
+	\solution{If $1\notin I$, then clearly $I\neq R$. If $1\in I$, then for any $r\in R$, $r=1\cdot r\in I$.}
+	\itema Quickly explain why ``ideal,'' ``left ideal,'' and ``right ideal'' are identical notions in a commutative ring.
+		\solution{Absorbs left multiplication is the same as absorbs multiplication (or right multiplication).}
+	\end{enumerate} 
+
+	\
+	
+	
+	\itemA Show that the subset 
+	\[ \left\{ \begin{bmatrix} a & 0 \\ b & 0 \end{bmatrix} \ | \ a,b\in \mathbb{R} \right\} \subseteq \mathrm{Mat}_2(\mathbb{R})\] 
+	is a left ideal, but is not a (two-sided) ideal.
+	
+	\solution{It is a left ideal since 
+	\[ \begin{bmatrix} c & d \\ e & f\end{bmatrix} \begin{bmatrix} a & 0 \\ b & 0 \end{bmatrix} = \begin{bmatrix} ca+db & 0 \\ ea+fb & 0 \end{bmatrix}\] is in the subset, but not an ideal since, for example,
+		\[ \begin{bmatrix} 1 & 0 \\ 0 & 0 \end{bmatrix} \begin{bmatrix} 0 & 1 \\ 0 & 0\end{bmatrix} =\begin{bmatrix} 0 & 1 \\ 0 & 0\end{bmatrix}\] is not.}
+	
+	\itemB Prove parts (i) and (v) of Lemma 1.
+	
+	\
+	
+	\itemB Show\footnote{Hint: Consider $2\mathbb{Z} , 3\mathbb{Z} \subseteq \mathbb{Z}$.} that the union of two ideals does not have to be an ideal in general. 
+
+\
+
+	\itemB Prove parts (ii)--(iv) of Lemma 1.
+	
+	\
+	
+
+\end{enumerate}
+
+\newpage
+
+\begin{framed}
+
+\textsc{Definition:} Let $R$ be a ring. and $S \subseteq R$ be a subset. The \textbf{ideal generated by $S$} is the ideal
+\[ (S) = \bigcap\limits_{\substack{{I \ \mathrm{ideal}} \\ {I \supseteq S} }} I. \]
+An ideal is \textbf{principal} if $I=(a)$ for a single element $a\in R$.
+
+\
+
+\textsc{Lemma 2 (Ideal generated a subset):} Let $R$ be a ring and $S\subseteq R$. 
+\begin{enumerate}[(i)]
+\item There is an equality $(S) = \{ \sum_{i=1}^n r_i a_i r'_i \ | \ r_i, r'_i \in R, a_i \in S\}$.
+\item If $R$ is commutative, then $(S) = \{ \sum_{i=1}^n r_i a_i \ | \ r_i \in R, a_i \in S\}$.
+\item If $R$ is commutative and $a\in R$, then $(a) = \{ ra \ | \ r\in R\}$.
+\end{enumerate}
+\end{framed}
+
+\begin{enumerate}
+\setcounter{enumi}{5}
+\itemA Let $R=\mathbb{Z}[x]$. Use the Lemma to quickly explain the following:
+\begin{enumerate}
+\itema $(2)$ is the set of all integer polynomials with every coefficient even.
+\solution{We have $(2) = \{ 2 (a_0 + a_1 x + \cdots + a_n x^n)\} = \{ 2 a_0 + 2 a_1 + \cdots + 2 a_n x^n\}$.}
+\itema $(x)$ is the set of all integer polynomials with zero constant term.
+\solution{We have $(x) = \{ x (a_0 + a_1 x + \cdots + a_n x^n)\} = \{ a_0 x  + \cdots + a_n x^{n+1} \} = \{ b_1 x  + \cdots + b_{n} x^{n} \}$.}
+\itema $(2,x)$ is the set of all integer polynomials with even constant term.
+\solution{For $f\in (2,x)$ we can write $f= }
+\end{enumerate}
+
+
+
+
+\itemB Show\footnote{Hint: If $(2,x) = (f)$, with $f=a_0 + a_1 x + \cdots +a_n x^n$, note that $2, x \in (f)$. What can you say about $a_0$?}  that the ideal $(2,x)$ in $\mathbb{Z}[x]$ is not principal.
+
+\
+
+
+\itemB Show that if $R$ is noncommutative then one can\footnote{Hint: You can use the fact that you will prove in HW\#11 that $\mathrm{Mat}_n(F)$ has no nontrivial proper ideals if $F$ is a field.} have $(a) \supsetneqq \{ r a r' \ | \ r, r' \in R\}$.
+\end{enumerate}
+
+
+\end{document}
