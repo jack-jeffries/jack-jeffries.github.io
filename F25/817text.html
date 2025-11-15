@@ -7630,8 +7630,20 @@ r+\ker(f) & \longmapsto & f(r)
     <p>via the map sending \(f(x) + (x^2 + 1)\) to \(f(i)\).</p>
   </section>
 
- <section class="callout example" role="region" aria-labelledby="ex-8-7-9">
-    <h3 id="ex-8-7-4">Example 8.7.4</h3>
+<p>The following will be helpful in discussing some interesting examples:</p>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-8-7-4">
+    <h3 id="ex-8-7-4">Exercise 8.7.4</h3>
+    <p>Given a ring map \(\phi\!: R \to S\) between commutative rings, there is an induced ring map</p>
+    <div class="math">\[
+      \rho\!: R[x] \to S[x] \quad \text{ given by } \quad \rho\left(\sum_i r_i x^i\right)=\sum_i \phi(r_i) x^i.
+    \]</div>
+    <p>That is, \(\rho\) consists of by applying \(\phi\) to the coefficients of each polynomials.</p>
+  </section>
+
+
+ <section class="callout example" role="region" aria-labelledby="ex-8-7-5">
+    <h3 id="ex-8-7-5">Example 8.7.5</h3>
     <p>In particular, for \(I\) an ideal of \(R\), taking \(S = R/I\) and \(\phi\) to be the canonical homomorphism, the exercise implies that there is a ring homomorphism</p>
     <div class="math">\[
       \rho\!: R[x] \to \frac{R}{I}[x]
@@ -7646,8 +7658,8 @@ r+\ker(f) & \longmapsto & f(r)
     \]</div>
   </section>
 
-  <section class="callout exercise" role="region" aria-labelledby="ex-8-7-5">
-    <h3 id="ex-8-7-5">Exercise 8.7.5</h3>
+  <section class="callout exercise" role="region" aria-labelledby="ex-8-7-6">
+    <h3 id="ex-8-7-6">Exercise 8.7.6</h3>
     <p><strong>(Second Isomorphism Theorem setup)</strong> Let \(S\) be a subring of a ring \(R\) and let \(I\) be an ideal of \(R\). Show that
     Show that</p>
     <div class="math">\[
@@ -7656,8 +7668,8 @@ r+\ker(f) & \longmapsto & f(r)
     <p>is a subring of \(R\) and \(S \cap I\) is an ideal of \(S\).</p>
   </section>
 
-  <section class="callout theorem" role="region" aria-labelledby="thm-8-7-6">
-    <h3 id="thm-8-7-6">Theorem 8.7.6 (Second Isomorphism Theorem for rings)</h3>
+  <section class="callout theorem" role="region" aria-labelledby="thm-8-7-7">
+    <h3 id="thm-8-7-7">Theorem 8.7.7 (Second Isomorphism Theorem for rings)</h3>
     <p>Let \(S\) be a subring of a ring \(R\) and let \(I\) be an ideal of \(R\). Then</p>
     <div class="math">\[
       S + I = \{s + i \mid s \in S, i \in I\}
@@ -7669,7 +7681,7 @@ r+\ker(f) & \longmapsto & f(r)
   </section>
 
   <section class="callout proof" role="region" aria-labelledby="prf-8-7-6">
-    <h3 id="prf-8-7-6">Proof (of Theorem 8.7.6)</h3>
+    <h3 id="prf-8-7-8">Proof (of Theorem 8.7.8)</h3>
     <p>The first two facts are the exercise above.
     The map \(f\!: S+I \to \frac{S}{S\cap I}\) sending \(s+i\) to \(s+i+I = s+I\) is a homomorphism of rings since it is the composition of a subring inclusion with the canonical quotient map. It is surjective by definition, and the kernel is</p>
     <div class="math">\[
@@ -7678,8 +7690,8 @@ r+\ker(f) & \longmapsto & f(r)
     <p>The result now follows from the First Isomorphism Theorem for rings.</p>
   </section>
 
-  <section class="callout theorem" role="region" aria-labelledby="thm-8-7-7">
-    <h3 id="thm-8-7-7">Theorem 8.7.7 (Cancelling Isomorphism Theorem for rings)</h3>
+  <section class="callout theorem" role="region" aria-labelledby="thm-8-7-9">
+    <h3 id="thm-8-7-9">Theorem 8.7.9 (Cancelling Isomorphism Theorem for rings)</h3>
     <p>If \(R\) is a ring and \(I \subseteq J\) are two ideals of \(R\), then \(J/I\) is an ideal of \(R/I\) and</p>
     <div class="math">\[
       \frac{R/I}{J/I} \cong R/J \quad \text{ via } \quad (r + I) + J/I \longmapsto r + J.
@@ -7687,7 +7699,7 @@ r+\ker(f) & \longmapsto & f(r)
   </section>
 
   <section class="callout proof" role="region" aria-labelledby="prf-8-7-7">
-    <h3 id="prf-8-7-7">Proof (of Theorem 8.7.7)</h3>
+    <h3 id="prf-8-7-9">Proof (of Theorem 8.7.9)</h3>
     <p>If we ignore multiplication, we know that \((J/I,+)\) is a subgroup of \((R/I,+)\) and that there is an isomorphism of abelian groups</p>
     <div class="math">\[
       (R/I)/(J/I) \cong R/J
@@ -7699,23 +7711,11 @@ r+\ker(f) & \longmapsto & f(r)
     <p>One just needs to check that \(J/I\) is a two-sided ideal of \(R/I\) and the indicated bijection preserves multiplication, which we leave as an elementary exercise.</p>
   </section>
 
-  <p>The following will be helpful in discussing some interesting examples:</p>
-
-  <section class="callout exercise" role="region" aria-labelledby="ex-8-7-8">
-    <h3 id="ex-8-7-8">Exercise 8.7.8 (Reduction homomorphism)</h3>
-    <p>Given a ring map \(\phi\!: R \to S\) between commutative rings, there is an induced ring map</p>
-    <div class="math">\[
-      \rho\!: R[x] \to S[x] \quad \text{ given by } \quad \rho\left(\sum_i r_i x^i\right)=\sum_i \phi(r_i) x^i.
-    \]</div>
-    <p>That is, \(\rho\) consists of by applying \(\phi\) to the coefficients of each polynomials.</p>
-  </section>
-
-  <p>The proof is just a tedious check of the axioms, and so we leave it as an exercise.</p>
-
+  
  
 
-  <section class="callout example" role="region" aria-labelledby="ex-8-7-9">
-    <h3 id="ex-8-7-9">Example 8.7.9</h3>
+  <section class="callout example" role="region" aria-labelledby="ex-8-7-10">
+    <h3 id="ex-8-7-10">Example 8.7.10</h3>
     <p>Consider the ideal \(J = (2, x^2 + x + 1)\) of \(\mathbb{Z}[x]\). Explicitly, we have</p>
     <div class="math">\[
       J =\{ p(x)\cdot 2 + q(x)(x^2 + x+ 1) \mid p(x),q(x)\in\mathbb{Z}[x]\}.
@@ -7744,8 +7744,8 @@ r+\ker(f) & \longmapsto & f(r)
 
   <p>As discussed before, the set of all all ideals in a ring \(R\) is a partially ordered set with respect to the order given by containment.</p>
 
-  <section class="callout theorem" role="region" aria-labelledby="thm-8-7-10">
-    <h3 id="thm-8-7-10">Theorem 8.7.10 (Lattice Theorem for Quotient Rings)</h3>
+  <section class="callout theorem" role="region" aria-labelledby="thm-8-7-11">
+    <h3 id="thm-8-7-11">Theorem 8.7.11 (Lattice Theorem for Quotient Rings)</h3>
     <p>Suppose \(R\) is a ring and \(I\) is a two-sided ideal of \(R\), and write \(\pi\!: R \to R/I\) for the quotient map.
     There is a bijection</p>
    \[
@@ -7760,12 +7760,12 @@ J & \longmapsto & \pi(J) = J/I \\[6pt]
   </section>
 
   <section class="callout proof" role="region" aria-labelledby="prf-8-7-11">
-    <h3 id="prf-8-7-10">Proof (of Theorem 8.7.10)</h3>
-    <p>By the Lattice Isomorphism Theorem, we know that there is a bijection of subgroups (under \(+\)) of \(R\) that contain \(I\) and subgroups of \(R/I\), given by these formulas. It remains to pprove that this correspondence preserves the property of being an ideal, which we leave as an exercise.</p>
+    <h3 id="prf-8-7-10">Proof (of Theorem 8.7.11)</h3>
+    <p>By the Lattice Isomorphism Theorem, we know that there is a bijection of subgroups (under \(+\)) of \(R\) that contain \(I\) and subgroups of \(R/I\), given by these formulas. It remains to prove that this correspondence preserves the property of being an ideal, which we leave as an exercise.</p>
   </section>
 
   <section class="callout example" role="region" aria-labelledby="ex-8-7-11">
-    <h3 id="ex-8-7-11">Example 8.7.11</h3>
+    <h3 id="ex-8-7-12">Example 8.7.12</h3>
     <p>We claimed above that \(\mathbb{Z}[x]/(2, x^2+x+1)\) is a field. Since a field has only two ideals, \(\{0\}\) and the field itself, we deduce, using the Lattice Isomorphism Theorem, that there are only two ideals in \(\mathbb{Z}[x]\) that contain \((2, x^2+ x+1)\), namely</p>
     <div class="math">\[
       (2, x^2+ x+1)=\pi^{-1}(0) \quad \text{ and } \quad \mathbb{Z}/[x]=\pi^{-1}(F).
