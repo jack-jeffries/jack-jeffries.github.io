@@ -7660,21 +7660,21 @@ r+\ker(f) & \longmapsto & f(r)
 
   <section class="callout exercise" role="region" aria-labelledby="ex-8-7-6">
     <h3 id="ex-8-7-6">Exercise 8.7.6</h3>
-    <p><strong>(Second Isomorphism Theorem setup)</strong> Let \(S\) be a subring of a ring \(R\) and let \(I\) be an ideal of \(R\). Show that
+    <p> Let \(S\) be a subring of a ring \(R\) and let \(I\) be an ideal of \(R\).
     Show that</p>
     <div class="math">\[
       S + I = \{s + i \mid s \in S, i \in I\}
     \]</div>
-    <p>is a subring of \(R\) and \(S \cap I\) is an ideal of \(S\).</p>
+    <p>is a subring of \(R\) and \(I\) is an ideal of \(S +I\).</p>
   </section>
 
   <section class="callout theorem" role="region" aria-labelledby="thm-8-7-7">
-    <h3 id="thm-8-7-7">Theorem 8.7.7 (Second Isomorphism Theorem for rings)</h3>
+    <h3 id="thm-8-7-7">Theorem 8.7.7 (Diamond Isomorphism Theorem for rings)</h3>
     <p>Let \(S\) be a subring of a ring \(R\) and let \(I\) be an ideal of \(R\). Then</p>
     <div class="math">\[
       S + I = \{s + i \mid s \in S, i \in I\}
     \]</div>
-    <p>is a subring of \(R\), \(S \cap I\) is an ideal of \(S\), and</p>
+    <p>is a subring of \(R\), \(I\) is an ideal of \(S+I\), \(I \cap S\)  is an ideal of \(S\) and</p>
     <div class="math">\[
       \frac{S+I}{I}\cong \frac{S}{S\cap I}.
     \]</div>
@@ -7683,11 +7683,7 @@ r+\ker(f) & \longmapsto & f(r)
   <section class="callout proof" role="region" aria-labelledby="prf-8-7-6">
     <h3 id="prf-8-7-8">Proof (of Theorem 8.7.8)</h3>
     <p>The first two facts are the exercise above.
-    The map \(f\!: S+I \to \frac{S}{S\cap I}\) sending \(s+i\) to \(s+i+I = s+I\) is a homomorphism of rings since it is the composition of a subring inclusion with the canonical quotient map. It is surjective by definition, and the kernel is</p>
-    <div class="math">\[
-      \ker(f) = \{ s+i \mid s \in S, i \in I, s+I = I\} = I.
-    \]</div>
-    <p>The result now follows from the First Isomorphism Theorem for rings.</p>
+    The map \(f\!: S \to \frac{S+I}{I} \) sending \( s\) to \(s+I\) is a homomorphism of rings since it is the composition of a subring inclusion with the canonical quotient map. It is surjective since an arbitrary element \( s+ i + I \in \frac{S+I}{I}\) can be rewritten as \(s+I\), and the kernel is \(I \cap S\). The result now follows from the First Isomorphism Theorem for rings.</p>
   </section>
 
   <section class="callout theorem" role="region" aria-labelledby="thm-8-7-9">
