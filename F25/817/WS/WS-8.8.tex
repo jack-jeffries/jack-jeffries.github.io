@@ -1,0 +1,132 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=.43in]{geometry}
+\usepackage{paralist,amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,colonequals}
+\usepackage[shortlabels]{enumitem}
+\usepackage[all]{xy}
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\solutione}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{leaf}This solution is embargoed.}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+
+\newcommand{\rsa}{\rightsquigarrow}
+
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+
+\DeclareMathOperator{\ord}{ord}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{Maximal ideals and prime ideals}
+	
+	
+\begin{framed}
+\textsc{Definition:} Let $R$ be a ring.
+\begin{enumerate}[(i)]
+\item An ideal $I$ of $R$ is a \textbf{maximal ideal} if $I$ is proper and for any proper ideal $J$, $I\subseteq J$ implies $I=J$.
+\item Let $R$ be commutative. An ideal $I$ of $R$ is a \textbf{prime ideal} if $I$ is proper and $ab\in I$ implies $a\in I$ or $b\in I$.
+\end{enumerate}
+
+\
+
+\textsc{Theorem:} Let $R$ be a commutative ring and $I$ an ideal.
+\begin{enumerate}[(i)]
+\item The ideal $I$ is maximal if and only if $R/I$ is a field.
+\item The ideal $I$ is prime if and only if $R/I$ is an integral domain.
+\end{enumerate}
+
+
+\end{framed}
+	\begin{enumerate}
+	\itemA 	
+
+\end{enumerate}
+
+
+\begin{framed}
+\textsc{Theorem:} Let $R$ be a ring. Then $R$ has a maximal ideal.
+
+\
+
+\textsc{Definition:} Let $(P,\leq)$ be a partially ordered set.
+\begin{enumerate}[(i)]
+\item A \textbf{maximal element} of $P$ is an element $x\in P$ such that $x\geq y$ for all $y\in P$.
+\item A subset $X$ of $P$ is a \textbf{chain} if for all $x,y\in X$ either $x\leq y$ or $y\leq x$.
+\item A \textbf{upper bound} for a subset $X$ is an element $x$ such that $x\geq y$ for all $y\in X$.
+\end{enumerate}
+
+\textsc{Zorn's Lemma:} Let $(P,\leq)$ be a nonempty partially ordered set. If every chain $C\subseteq P$ has an upper bound $c\in C$, then $P$ has a maximal element.
+\end{framed}
+
+\begin{enumerate}
+\setcounter{enumi}{1}
+\itemA Understanding Zorn's Lemma:
+\begin{enumerate}
+\itema The most common use of Zorn's Lemma occurs in the following situation: $P$ is the collection of all subsets of some set $Y$ ordered by inclusion ($A\leq B$ if and only if $A\subseteq B$), and $S$ is some special family of subsets of $Y$. Rewrite\footnote{Meaning replace all $\leq$ with $\subseteq$ and unpackage the definitions of maximal element and upper bound.} the statement of Zorn's Lemma in this context.
+\itema Let $Y=\mathbb{Z}$ and $P$ be the collection of all \emph{finite} subsets of $Y$. Explain why there is no maximal element of $P$.
+\end{enumerate}
+
+\
+
+\itemA Prove the Theorem.
+
+\
+
+\itemB Prove that every proper ideal is contained in a maximal ideal.
+
+\
+
+\itemB Prove that every prime ideal contains a minimal prime ideal.
+
+\end{enumerate}
+
+
+\end{document}
