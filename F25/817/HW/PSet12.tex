@@ -1,0 +1,132 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,enumerate}
+\usepackage[]{graphicx}
+\usepackage{color,subfigure}
+\definecolor{scarlet}{rgb}{0.81,0,0}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage[all]{xypic}
+\usepackage[colorlinks=true,citecolor=scarlet,linkcolor=scarlet]{hyperref}
+\usepackage{colonequals}
+
+\usepackage{fancyhdr, lastpage}
+\pagestyle{fancy}
+\fancyfoot[C]{{\thepage} of \pageref{LastPage}}
+
+
+
+\DeclareMathOperator{\mSpec}{mSpec}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Ass}{Ass}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\height}{height}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\ann}{ann}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\coker}{coker}
+%\DeclareMathOperator{\ker}{ker}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\M}{M}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\ch}{char}
+\DeclareMathOperator{\Aut}{Aut}
+
+%\DeclareMathOperator{\dim}{dim}
+
+\DeclareMathOperator{\lcm}{lcm}
+
+\def\ra{\rightarrow}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\ov}[1]{\overline{#1}}
+\newcommand{\norm}{\trianglelefteq}
+
+\def\ov#1{\overline{#1}}
+
+
+\title{}
+\date{\vspace{-0.5in}}
+
+\makeatletter
+\g@addto@macro\@floatboxreset\centering
+\makeatother
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+
+\begin{document}
+
+\thispagestyle{fancy}
+\pagestyle{fancy}
+\rhead{UNL $\mid$ Fall 2025}
+\lhead{Introduction to Modern Algebra I}
+
+\vspace{3em}
+
+\begin{center}
+	{\LARGE Problem Set 12 \\}
+	Due Thursday, December 4
+\end{center}
+
+\
+
+\noindent
+{\bf Instructions:}
+You are encouraged to work together on these problems, but each student should hand in their own final draft, written in a way that indicates their individual understanding of the solutions. Never submit something for grading that you do not completely understand. You cannot use any resources besides me, your classmates, and our course notes.
+
+
+I will post the .tex code for these problems for you to use if you wish to type your homework. If you prefer not to type, please  {\em write neatly}. As a matter of good proof writing style, please use complete sentences and correct grammar. You may use any result stated or proven in class or in a homework problem, provided you reference it appropriately by either stating the result or stating its name (e.g. the definition of ring or Lagrange's Theorem). Please do not refer to theorems by their number in the course notes, as that can change.
+
+\
+
+\begin{problem}
+	Let $I = (2,x)$ in $R = \ZZ[x]$.
+\begin{enumerate}[(a)]
+		\item Show that $\mathfrak{m} = (2, x)$ is a maximal ideal.
+		
+		\item Show that $(2,x)$ is not a principal ideal.		
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+Let $I$ and $J$ be ideals of a commutative ring $R$ with $1 \neq 0$. 
+You can use without proof that $I+J$, $I \cap J$, and $IJ$ are ideals of $R$.
+
+\begin{enumerate}[(a)]
+\item Show that $IJ \subseteq I \cap J$.
+
+\item Give an example where $IJ \neq I \cap J$.
+
+\item Suppose that $I + J = R$. Show that $IJ = I \cap J$.
+
+
+\item Suppose $m$ and $n$ are distinct maximal ideals of a commutative ring $R$.  Prove that $mn=m\cap n$. 
+
+\noindent
+Hint: First consider $m + n$.
+
+
+\item Suppose that $I + J = R$. Show that there is a ring isomorphism $R/(I\cap J) \cong  R/I\times R/J$. 
+
+\end{enumerate}
+\end{problem}
+
+
+
+\begin{problem}
+Let $R$ be a commutative ring. Prove\footnote{Note: $(0)$ is not prime unless $R$ is a domain.} that the set of prime ideals of $R$ has a minimal element with respect to inclusion.
+\end{problem}
+
+
+To be continued\dots
+
+\end{document}
