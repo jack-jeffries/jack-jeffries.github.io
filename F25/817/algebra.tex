@@ -6400,7 +6400,7 @@ are equally acceptable, since $|-3| < 5$.
 Let $R$ be a commutative ring with $1 \neq 0$. Consider a nonzero polynomial 
 $$f = \sum_{i=0}^n a_i x^i\in R[x]$$ 
 with $a_n \neq 0$.
-The {\bf degree} of $f$ is $\deg(f) = n$, and the \df{leading coefficient} of $f$ is $\lc(f) = a_n$. The $0$ polynomial does not have a degree nor a leading coefficient.
+The {\bf degree} of $f$ is $\deg(f) = n$, and the \df{leading coefficient} of $f$ is $\mathrm{lc}(f) = a_n$. The $0$ polynomial does not have a degree nor a leading coefficient.
 \end{definition}
 
 
@@ -6409,7 +6409,7 @@ The {\bf degree} of $f$ is $\deg(f) = n$, and the \df{leading coefficient} of $f
 Let $R$ be an integral domain and $f, g \in R[x]$ be nonzero polynomials. Then:
 \begin{enumerate}[itemsep=-0.1em,leftmargin=20pt]
 \vspace{-0.5em}
-\item The product $fg$ is nonzero and $\lc(f \cdot g) = \lc(f) \cdot \lc(g)$.
+\item The product $fg$ is nonzero and $\mathrm{lc}(f \cdot g) = \mathrm{lc}(f) \cdot \mathrm{lc}(g)$.
 In particular, $R[x]$ is a domain.
 \item We have $\deg(f g)=\deg(f)+\deg(g)$.
 \item The units of $R[x]$ are the constant polynomials given by units of $R$: $R[x]^\times=R^\times$.
@@ -6419,10 +6419,14 @@ In particular, $R[x]$ is a domain.
 \begin{proof}
 If $f = a_n x^n$ + lower order terms, with $a_n \neq 0$ and $g =b_m x^m + $ lower order terms with $b_m \neq 0$, then $fg = a_n b_m x^{m+n} + $ lower order terms. 
 Since $R$ is a domain, $a_n b_m \neq 0$, so
-$$fg \neq 0, \quad \lc(f \cdot g) = \lc(f) \cdot \lc(g), \quad \text{and} \quad \deg(f g)=\deg(f)+\deg(g).$$
+$$fg \neq 0, \quad \mathrm{lc}(f \cdot g) = \mathrm{lc}(f) \cdot \mathrm{lc}(g), \quad \text{and} \quad \deg(f g)=\deg(f)+\deg(g).$$
 If $r \in R$ is a unit, then the constant polynomial $r$ is also a unit in $R[x]$. Conversely, suppose that $f \in R[x]^\times$ has inverse $g$. Then 
 $$0 = \deg(1) = \deg(fg) = \deg(f) + \deg(g) \implies \deg(f) = \deg(g) = 0.\qedhere$$
 \end{proof}
+
+\begin{remark}
+If $R$ is a commutative ring and $\mathrm{lc}(f)$ is a nonzerodivisor, then equality in part (1) and the conclusion of part (2) above hold by the same proof.
+\end{remark}
 
 
 \begin{corollary}\label{units in F[x]}
@@ -6434,21 +6438,23 @@ There is also a well-known Division Algorithm for polynomials in one variable.
 
 
 \begin{theorem}[Division Algorithm for polynomials]\label{division algorithm polynomials}
-Let $F$ be a field and consider $R = F[x]$. Given polynomials $f$ and $g$ in $F[x]$ with $g \neq 0$, there exist unique polynomials $q$ and $r$ such that 
+Let $A$ be a commutative ring, and consider $R = A[x]$. Given polynomials $f$ and $g$ in $A[x]$ such that $\mathrm{lc}(g) \in A^\times$, there exist unique polynomials $q$ and $r$ such that 
 $$f = gq + r \qquad \text{and} \qquad r=0 \text{ or } \deg(r) < \deg(g).$$
 \end{theorem}
 
 
-\begin{proof}
+\begin{proof} We first show existence.
 Fix $f$ and $g \neq 0$.
-If $\deg(g) = 0$, then by \Cref{units in F[x]} $g$ must be a unit, so consider $q = g^{-1}f$ and $r = 0$, and note that
+If $\deg(g) = 0$, then $g$ is a unit, so consider $q = g^{-1}f$ and $r = 0$, and note that
 $$f = g(g^{-1}f) = qf+r.$$
-Now when $\deg(g)>0$, let $g = a_nx^n + $ lower order terms, with $a_n \ne 0$ and $n > 0$. If $f = 0$, then $q=r=0$ works, so we might as well assume $f = b_m x^m + $ lower order terms, with $b_m \neq 0$ and $m \geqslant 0$.
+Now when $\deg(g)>0$, let $g = a_nx^n + $ lower order terms, with $a_n \in A^\times$ and $n > 0$. If $f = 0$, then $q=r=0$ works, so we might as well assume $f = b_m x^m + $ lower order terms, with $b_m \neq 0$ and $m \geqslant 0$.
 We proceed by complete induction on $m = \deg(f)$. If $m < n$, we may take $q = 0$ and $r = f$. Assume $m \geqslant n$, and consider
 $$h := f - g \cdot (b_m/a_m) x^{m- n} = (b_m - a_m(b_m/a_m)) x^m + \text{lower order terms}.$$
 We have $\deg(h) < m$, and thus  by induction, $h = g \cdot q' + r$ with $r = 0$ or $\deg(r) < \deg(g)$. Thus
 $$f = h + g \cdot (b_m/a_m) x^{m-n} =  g \cdot q' + r' + g \cdot (b_m/a_m) x^{m-n} = g q + r$$
 where $q = q' + (b_m/a_m) x^{m-n}$.
+
+For uniqueness, if $qg+r = f = q' g + r'$ with $q,r$ and $q',r'$ as in the statement, we have $(q-q') g = (r-r')$. If $r-r'\neq 0$, then this is a polynomial of degree less than $n$, but by the remark above, if $(q-q') g\neq 0$, its degree must be at least $n$. This is a contradiction, so $r-r'=0$, so $r=r'$, and $(q-q')g=0$. Again by the remark, this implies $q-q'-0$ so $q=q'$.
 \end{proof}
 
 \begin{corollary}\label{F[x] is an euclidean domain}
@@ -6457,20 +6463,21 @@ Given a field $F$, $F[x]$ is an Euclidean domain. In particular, the function $N
 
 
 \begin{proof}
-	Apply the \hyperref[division algorithm polynomials]{Division Algorithm} for polynomials.
+	Since $F$ is a field, for any nonzero polynomial in $F[x]$, the leading coefficient is a unit. Apply the Division Algorithm for polynomials.
 \end{proof}
 
 
 \begin{corollary}
-	Let $F$ be a field and let $f = a_nx^n + \ldots + a_0 \in F[x]$ be a polynomial with $a_n \neq 0$ and $n \geqslant 1$. Then every nonzero element of $F[x]/(f)$ is of the form $g + (f)$ for some polynomial $g$ of degree $\deg(g)<n$. Moreover, if $g$ and $h$ are distinct polynomials in $F[x]$ of degree strictly less than $n$, then $g+(f) \neq h + (f)$.
+	Let $F$ be a field and let $f = a_nx^n + \cdots + a_0 \in F[x]$ be a polynomial with $a_n \neq 0$ and $n \geqslant 1$. Then every nonzero element of $F[x]/(f)$ is of the form $g + (f)$ for some polynomial $g$ of degree $\deg(g)<n$. Moreover, if $g$ and $h$ are distinct polynomials in $F[x]$ of degree strictly less than $n$, then $g+(f) \neq h + (f)$.
 	
-	Thus the set of elements in $F[x]/(f)$ is precisely the set
-	$$\{ g+(f) \mid g \in F[x], \deg(g)< n \}.$$
+	Thus, there is a bijection
+	\[\begin{array}{ccc}  \displaystyle\frac{F[x]}{(f)} &\longleftrightarrow & \{ \text{polynomials of degree $<n$} \} \\
+	g + (f) & \longleftarrow & g \end{array}\]
 \end{corollary}
 
 
 \begin{proof}
-	First, consider any $g \in F[x]$. By the \hyperref[Division Algorithm]{division algorithm polynomials}, we can find polynomials $q$ and $r$ such that $g=qf+r$ and $r = 0$ or $\deg(r)<\deg(f)=n$. Then
+	First, consider any $g \in F[x]$. By the Division Algorithm, we can find polynomials $q$ and $r$ such that $g=qf+r$ and $r = 0$ or $\deg(r)<\deg(f)=n$. Then
 	$$g + (f) = qf+r+(f) = r+(f).$$
 	On the other hand, consider any nonzero element $g+(f) = h+(f)$ in $F[f]/(f)$, so that in particular $f, g \neq 0$, and assume that $\deg(g), \deg(h) < n$. Then $g-h \in (f)$. By \Cref{degree of products of polynomials over domains}, the degree of any nonzero multiple of $f$ is at least $n$, but $\deg(g-h) < n$. We conclude that $g-h$ must be zero, so that $g=h$.
 \end{proof}
@@ -6659,7 +6666,7 @@ Let $R$ be a domain.
 \begin{remark}
 The condition that a nonzero nonunit element $p \in R$ is a prime element can be rephrased as follows: 
 $$ab \in (p) \implies a \in (p) \text{ or } b \in (p).$$
-That is, $p$ is a prime element if and only if $(p)$ is a nonzero prime ideal 
+That is, $p$ is a prime element if and only if $(p)$ is a nonzero prime ideal. 
 \end{remark}
 
 
