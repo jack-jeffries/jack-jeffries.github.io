@@ -195,7 +195,6 @@
 <li><a href="#sec-7-3-heading">Finitely generated abelian groups</a></li>
 <li><a href="#sec-7-4-heading">Classifying groups of a fixed order</a></li>
 </ol>
-
 </ol>
 
 <li><a href="#Rings">Rings</a></li>
@@ -209,6 +208,21 @@
 <li><a href="#sec-8-7-heading">The Isomorphism Theorems for rings</a></li>
 <li><a href="#sec-8-8-heading">Prime and maximal ideals in commutative rings</a></li>
 </ol>
+
+
+<li><a href="#sec-9">Nice classes of domains</a></li>
+<ol><li><a href="#sec-9-1-heading">Euclidean domains</a></li>
+<li><a href="#sec-9-2-heading">Principal ideal domains (PIDs)</a></li>
+<li><a href="#sec-9-3-heading">Unique factorization domains (UFDs)</a></li>
+</ol>
+
+
+<li><a href="#sec-10">Irreducibility criteria</a></li>
+<ol><li><a href="#sec-10-1-heading">Gauss' Lemma</a></li>
+<li><a href="#sec-10-2-heading">Eisenstein's criterion</a></li>
+</ol>
+
+
 
 
 
@@ -7882,6 +7896,984 @@ J & \longmapsto & \pi(J) = J/I \\[6pt]
   </section>
 </section>
 
+
+
+
+<section aria-labelledby="lecture-heading" id="nice domains">
+<h1 id="sec-9">9. Nice classes of domains</h1>
+
+A number of important examples of rings are integral domains with additional nice properties. We will now focus on some special classes of integral domains.
+
+
+<section id="euclidean-domains" aria-labelledby="sec-9-1-heading">
+  <h2 id="sec-9-1-heading">9.1 Euclidean domains</h2>
+
+  <p>An Euclidean domain is a domain with some additional structure, designed to mimic the parallel facts that there is a notion of division with remainder in both \(\mathbb{Z}\) and \(F[x]\), with \(F\) a field.</p>
+
+  <section class="callout definition" role="region" aria-labelledby="def-9-1-1">
+    <h3 id="def-9-1-1">Definition 9.1.1</h3>
+    <p>An <strong>Euclidean domain</strong> is an integral domain \(R\) together with a function
+    \[
+      N\!: R \setminus \{0\} \to \mathbb{Z}_{\geqslant 0}
+    \]
+    satisfying the following property:
+    for any two elements \(a, b \in R\) with \(b \neq 0\), there are elements \(q\) and \(r\) of \(R\) such that
+    \[
+      a = bq + r \text{ and \(r=0\) or \(N(r) < N(b)\).}
+    \]
+    The function \(N\) is an <strong>Euclidean function</strong> for \(R\). If \(N\) satisfies \(N(ab) = N(a)N(b)\), then \(N\) is called a <strong>norm function</strong>.</p>
+  </section>
+
+  <p>One sometimes says that an Euclidean domain has a division algorithm, but that is misleading: there need not be an algorithm to find \(q\) and \(r\) given \(a\) and \(b\), and neither \(q\) nor \(r\) need to be unique. Finally, the Euclidean function \(N\) is <em>not</em> required to satisfy any sort of multiplicative property, but in some examples it does, and in those examples it is called a norm function.</p>
+
+  <section class="callout example" role="region" aria-labelledby="ex-9-1-2">
+    <h3 id="ex-9-1-2">Example 9.1.2</h3>
+    <p>A degenerate example of an Euclidean domain is a field \(F\) equipped with the trivial norm \(N(x) = 0\) for all \(x \neq 0\), or really any function \(N\!: F \setminus \{0\} \to \mathbb{Z}_{\geqslant 0}\). Indeed, given \(a,b \in F\) with \(b \neq 0\), we have</p>
+    <p>
+      \[
+        a = b(ab^{-1}) + 0,
+      \]
+    </p>
+    <p>thus \(q = ab^{-1}\) and \(r=0\) satisfy the definition.</p>
+
+    <p>\newpage
+    This calculation shows, more generally, that if \(b\) is a unit, then for all \(a\) there exists an equation \(a = bq + r\) with \(r = 0\), not matter what \(N\) we use.</p>
+  </section>
+
+  <p>The canonical example of an Euclidean domain is \(\mathbb{Z}\).</p>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-9-1-3">
+    <h3 id="thm-9-1-3">Theorem 9.1.3 (Division Algorithm for \(\mathbb{Z}\))</h3>
+    <p>For any two integers \(a, b\) with \(b \neq 0\), there are (unique) integers integers \(q\) and \(r\) such that 
+    \[
+      a = qb + r \quad \text{ and } \quad 0 \leqslant r < |b|.
+    \]
+    </p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-9-1-4">
+    <h3 id="ex-9-1-4">Example 9.1.4</h3>
+    <p>Let \(R = \mathbb{Z}\) with \(N(m) = |m|\) for all \(m \neq 0\). This ring is an Euclidean Domain because of the familiar Division Algorithm for integers. Notice however that the Division Algorithm gives us something stronger: if we add in the additional requirement that when dividing \(a\) by \(b\) the remainder \(r\) must satisfy \(0 \leqslant r < |b|\), then that remainder is unique.</p>
+    <p>However, this uniqueness is not part of the abstract theory since it does not generalize to all cases well. And in fact, even in this case there is no uniqueness: following only the definition, we have nonunique remainders, as for example when \(a = 12\) and \(b = 5\), then both
+    \[
+      12 = 2 \cdot 5 + 2 \qquad \text{and} \qquad 12 = 3 \cdot 5 + (-3)
+    \]
+    are equally acceptable, since \(|-3| < 5\).</p>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-9-1-5">
+    <h3 id="def-9-1-5">Definition 9.1.5</h3>
+    <p>Let \(R\) be a commutative ring with \(1 \neq 0\). Consider a nonzero polynomial 
+    \[
+      f = \sum_{i=0}^n a_i x^i\in R[x]
+    \]
+    with \(a_n \neq 0\).
+    The <strong>degree</strong> of \(f\) is \(\deg(f) = n\), and the <strong>leading coefficient</strong> of \(f\) is \(\mathrm{lc}(f) = a_n\). The \(0\) polynomial does not have a degree nor a leading coefficient.</p>
+  </section>
+
+  <section class="callout lemma" role="region" aria-labelledby="lem-9-1-6">
+    <h3 id="lem-9-1-6">Lemma 9.1.6</h3>
+    <p>Let \(R\) be an integral domain and \(f, g \in R[x]\) be nonzero polynomials. Then:</p>
+    <ol style="margin-left:20px">
+      <li>The product \(fg\) is nonzero and \(\mathrm{lc}(f \cdot g) = \mathrm{lc}(f) \cdot \mathrm{lc}(g)\).
+      In particular, \(R[x]\) is a domain.</li>
+      <li>We have \(\deg(f g)=\deg(f)+\deg(g)\).</li>
+      <li>The units of \(R[x]\) are the constant polynomials given by units of \(R\): \(R[x]^\times=R^\times\).</li>
+    </ol>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-9-1-6">
+    <h3 id="prf-9-1-6">Proof (of Lemma 9.1.6)</h3>
+    <p>If \(f = a_n x^n\) + lower order terms, with \(a_n \neq 0\) and \(g =b_m x^m +\) lower order terms with \(b_m \neq 0\), then \(fg = a_n b_m x^{m+n} +\) lower order terms. 
+    Since \(R\) is a domain, \(a_n b_m \neq 0\), so
+    \[
+      fg \neq 0, \quad \mathrm{lc}(f \cdot g) = \mathrm{lc}(f) \cdot \mathrm{lc}(g), \quad \text{and} \quad \deg(f g)=\deg(f)+\deg(g).
+    \]
+    If \(r \in R\) is a unit, then the constant polynomial \(r\) is also a unit in \(R[x]\). Conversely, suppose that \(f \in R[x]^\times\) has inverse \(g\). Then 
+    \[
+      0 = \deg(1) = \deg(fg) = \deg(f) + \deg(g) \implies \deg(f) = \deg(g) = 0. 
+    \]
+    </p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-9-1-7">
+    <h3 id="rmk-9-1-7">Remark 9.1.7</h3>
+    <p>If \(R\) is a commutative ring and \(\mathrm{lc}(f)\) is a nonzerodivisor, then equality in part (1) and the conclusion of part (2) above hold by the same proof.</p>
+  </section>
+
+  <section class="callout corollary" role="region" aria-labelledby="cor-9-1-8">
+    <h3 id="cor-9-1-8">Corollary 9.1.8</h3>
+    <p>If \(F\) is a field, then \(f \in F[x]\) is a unit if and only if \(f \neq 0\) and \(\deg(f) = 0\).</p>
+  </section>
+
+  <p>There is also a well-known Division Algorithm for polynomials in one variable.</p>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-9-1-9">
+    <h3 id="thm-9-1-9">Theorem 9.1.9 (Division Algorithm for polynomials)</h3>
+    <p>Let \(A\) be a commutative ring, and consider \(R = A[x]\). Given polynomials \(f\) and \(g\) in \(A[x]\) such that \(\mathrm{lc}(g) \in A^\times\), there exist unique polynomials \(q\) and \(r\) such that 
+    \[
+      f = gq + r \qquad \text{and} \qquad r=0 \text{ or } \deg(r) < \deg(g).
+    \]
+    </p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-9-1-9">
+    <h3 id="prf-9-1-9">Proof (of Theorem 9.1.9)</h3>
+    <p>We first show existence.
+    Fix \(f\) and \(g \neq 0\).
+    If \(\deg(g) = 0\), then \(g\) is a unit, so consider \(q = g^{-1}f\) and \(r = 0\), and note that
+    \[
+      f = g(g^{-1}f) = qf+r.
+    \]
+    Now when \(\deg(g)>0\), let \(g = a_nx^n +\) lower order terms, with \(a_n \in A^\times\) and \(n > 0\). If \(f = 0\), then \(q=r=0\) works, so we might as well assume \(f = b_m x^m +\) lower order terms, with \(b_m \neq 0\) and \(m \geqslant 0\).
+    We proceed by complete induction on \(m = \deg(f)\). If \(m < n\), we may take \(q = 0\) and \(r = f\). Assume \(m \geqslant n\), and consider
+    \[
+      h := f - g \cdot (b_m/a_m) x^{m- n} = (b_m - a_m(b_m/a_m)) x^m + \text{lower order terms}.
+    \]
+    We have \(\deg(h) < m\), and thus  by induction, \(h = g \cdot q' + r\) with \(r = 0\) or \(\deg(r) < \deg(g)\). Thus
+    \[
+      f = h + g \cdot (b_m/a_m) x^{m-n} =  g \cdot q' + r' + g \cdot (b_m/a_m) x^{m-n} = g q + r
+    \]
+    where \(q = q' + (b_m/a_m) x^{m-n}\).</p>
+
+    <p>For uniqueness, if \(qg+r = f = q' g + r'\) with \(q,r\) and \(q',r'\) as in the statement, we have \((q-q') g = (r-r')\). If \(r-r'\neq 0\), then this is a polynomial of degree less than \(n\), but by the remark above, if \((q-q') g\neq 0\), its degree must be at least \(n\). This is a contradiction, so \(r-r'=0\), so \(r=r'\), and \((q-q')g=0\). Again by the remark, this implies \(q-q'-0\) so \(q=q'\).</p>
+  </section>
+
+  <section class="callout corollary" role="region" aria-labelledby="cor-9-1-10">
+    <h3 id="cor-9-1-10">Corollary 9.1.10</h3>
+    <p>Given a field \(F\), \(F[x]\) is an Euclidean domain. In particular, the function \(N\!: F[x] \setminus \{ 0 \} \longrightarrow \mathbb{Z}_{\geqslant 0}\) given by \(N(f(x)) := \deg(f(x))\) is an Euclidean function.</p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-9-1-10">
+    <h3 id="prf-9-1-10">Proof (of Corollary 9.1.10)</h3>
+    <p>Since \(F\) is a field, for any nonzero polynomial in \(F[x]\), the leading coefficient is a unit. Apply the Division Algorithm for polynomials.</p>
+  </section>
+
+  <section class="callout corollary" role="region" aria-labelledby="cor-9-1-11">
+    <h3 id="cor-9-1-11">Corollary 9.1.11</h3>
+    <p>Let \(F\) be a field and let \(f = a_nx^n + \cdots + a_0 \in F[x]\) be a polynomial with \(a_n \neq 0\) and \(n \geqslant 1\). Then every nonzero element of \(F[x]/(f)\) is of the form \(g + (f)\) for some polynomial \(g\) of degree less than \(n = \mathrm{deg}(g)\). Moreover, if \(g\) and \(h\) are distinct polynomials in \(F[x]\) of degree strictly less than \(n\), then \(g+(f) \neq h + (f)\).</p>
+    <p>Thus, there is a bijection
+\[
+\begin{array}{ccc}
+\dfrac{F[x]}{(f)} & \longleftrightarrow & \{\, \text{polynomials of degree } < n \,\} \\[6pt]
+g + (f) & \longleftarrow & g
+\end{array}
+\]
+    </p>
+which is an isomorphism of additive groups \( (\dfrac{F[x]}{(f)},+) \cong (F,+)^{\times n}.\)
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-9-1-11">
+    <h3 id="prf-9-1-11">Proof (of Corollary 9.1.11)</h3>
+    <p>First, consider any \(g \in F[x]\). By the Division Algorithm, we can find polynomials \(q\) and \(r\) such that \(g=qf+r\) and \(r = 0\) or \(\deg(r)<\deg(f)=n\). Then
+    \[
+      g + (f) = qf+r+(f) = r+(f).
+    \]
+    On the other hand, consider any nonzero element \(g+(f) = h+(f)\) in \(F[f]/(f)\), so that in particular \(f, g \neq 0\), and assume that \(\deg(g), \deg(h) < n\). Then \(g-h \in (f)\). By above, the degree of any nonzero multiple of \(f\) is at least \(n\), but \(\deg(g-h) < n\). We conclude that \(g-h\) must be zero, so that \(g=h\). In particular, this shows that the map in the statement is bijective; one easily also checks that it is a homomorphism of additive groups.</p>
+  </section>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-9-1-12">
+    <h3 id="thm-9-1-12">Theorem 9.1.12</h3>
+    <p>The ring \(R = \mathbb{Z}[i]\) of Gaussian integers is a Euclidean domain with \(N\) the usual complex (Euclidean) square norm \(N(a+bi)=a^2+b^2\).</p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-9-1-12">
+    <h3 id="prf-9-1-12">Proof (of Theorem 9.1.12)</h3>
+    <p>Let \(\alpha\), \(\beta \in \mathbb{Z}[i]\). Note that
+    \[
+      \mathbb{Z}[i] \subseteq \mathbb{Q}(i) = \{ a + bi \mid a, b \in \mathbb{Q} \},
+    \]
+    and consider 
+    \[
+      \frac{\alpha}{\beta}=p+qi \in \mathbb{Q}(i).
+    \]
+    Now pick \(s,t\in\mathbb{Z}\) so that \(|p-s| \leqslant \frac{1}{2}\) and \(|q-t| \leqslant \frac{1}{2}\). We have
+    \[
+      \alpha = \beta(s+ti)+\beta(p+qi)-\beta(s+ti).
+    \]
+    Set \(q=s+ti \in \mathbb{Z}[x]\), and 
+    \[
+      r=\beta(p+qi)-\beta(s+ti)=\beta(s+ti-(p+qi)) \in \mathbb{Z}[i].
+    \]
+    Moreover, note that
+    \[
+      \alpha = \beta (s+ti) + r.
+    \]
+    If \(r=0\), then we are done.
+    If \(r\neq 0\), we need to check that \(N(r) < N(\beta)\). Using that \(N\) is multiplicative, the Pythagorean Theorem, and the choice for \(s,t\), we have
+    \[
+      N(r)=N(\beta(s+ti-(p+qi)))=N(\beta)N(s+ti-(p+qi))\leqslant N(\beta)\cdot \left( \frac{1}{4}+\frac{1}{4} \right) < N(\beta).
+    \]
+    Thus the norm function \(N\) makes \(\mathbb{Z}[i]\) into a Euclidean domain.</p>
+  </section>
+</section>
+
+
+<section id="principal-ideal-domains" aria-labelledby="sec-9-2-heading">
+  <h2 id="sec-9-2-heading">9.2 Principal ideal domains (PIDs)</h2>
+
+  <p>One of the key features of Euclidean domains is that they are examples of PIDs:</p>
+
+  <section class="callout definition" role="region" aria-labelledby="def-9-2-1">
+    <h3 id="def-9-2-1">Definition 9.2.1</h3>
+    <p>A <strong>principal ideal domain</strong>, often shortened to <strong>PID</strong>, is a domain \(R\) where all ideals are principal, meaning that for every ideal \(I\) there exists \(a \in R\) such that \(I = (a)\).</p>
+  </section>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-9-2-2">
+    <h3 id="thm-9-2-2">Theorem 9.2.2</h3>
+    <p>Every Euclidean domain is a PID.</p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-9-2-2">
+    <h3 id="prf-9-2-2">Proof (of Theorem 9.2.2)</h3>
+    <p>Let \(N\) be a norm function making \(R\) into a Euclidean domain, and fix an ideal \(I\) in \(R\). If \(I\) is the zero ideal, then \(I = (0)\) is principal.
+    Otherwise, pick a nonzero element \(b \in I\) with \(N(b)\) as small as possible. Note that such \(b\) exists by the Well-Ordering Principle. We claim that \(I = (b)\). On the one hand, since \(b \in I\) then \((b) \subseteq I\). On the other hand, given \(a \in I\),
+    \[
+      a = bq + r
+    \]
+    and either \(r = 0\) or \(N(r) < N(b)\). But note that \(r = a - bq \in I\), and we cannot have both \(r \neq 0\) and \(N(r) < N(b)\) since \(b\) was chosen to have smallest possible norm among elements of \(I\).
+    So it must be that \(r = 0\), and hence \(a \in (b)\).</p>
+  </section>
+
+  <section class="callout corollary" role="region" aria-labelledby="cor-9-2-3">
+    <h3 id="cor-9-2-3">Corollary 9.2.3</h3>
+    <p>Let \(F\) be a field.
+    The rings \(\mathbb{Z}\), \(\mathbb{Z}[i]\), and \(F[x]\)  are all PIDs.</p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-9-2-3">
+    <h3 id="prf-9-2-3">Proof (of Corollary 9.2.3)</h3>
+    <p>As we saw in the previous section, all of these rings are Euclidean domains.</p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-9-2-4">
+    <h3 id="ex-9-2-4">Exercise 9.2.4</h3>
+    <p>Show that \(\mathbb{Z}[\sqrt{-2}]\) is a PID.</p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-9-2-5">
+    <h3 id="ex-9-2-5">Example 9.2.5</h3>
+    <p>The ring \(\mathbb{Z}[x]\) is not a Euclidean domain, since \(\mathbb{Z}[x]\) is not a PID: for example, the ideal \((2,x)\) is not principal. Similarly, the ring \(F[x,y]\) is not a Euclidean domain since it is not a PID (e.g., \((x,y)\) is not principal).</p>
+  </section>
+
+  <p>The converse of the Theorem above is false:</p>
+
+  <section class="callout example" role="region" aria-labelledby="ex-9-2-6">
+    <h3 id="ex-9-2-6">Example 9.2.6 (A PID that is not an Euclidean domain)</h3>
+    <p>The ring 
+    \[
+      \mathbb{Z}\left[ \frac{1 + \sqrt{-19}}{2}\right]=\left\{a+ b \, \frac{1 + \sqrt{-19}}{2} \mid a,b\in \mathbb{Z}\right\}
+    \]
+    is a PID, but not a Euclidean domain. This is the simplest example of such a ring, but the proofs of these claims are not easy, so we will not discuss them in this class.</p>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-9-2-7">
+    <h3 id="def-9-2-7">Definition 9.2.7</h3>
+    <p>Let \(R\) be a commutative ring and let \(a,b \in R\).</p>
+    <ul style="margin-left:10pt">
+      <li>
+      The element \(b\) is a <strong>divisor</strong> of \(a\), and \(a\) is a <strong>multiple</strong> of \(b\), written \(b\mid a\), if there is an element \(x \in R\) with \(a = bx\). Equivalently, \(b \mid a\) if and only if  \(a \in (b)\).</li>
+      <li>We say \(a\) and \(b\) are <strong>associates</strong> if \(a = ub\) for some unit \(u \in R\). Note that this condition is symmetric, since if \(a = ub\) then \(b = u^{-1}a\) and \(u^{-1}\) is also a unit.</li>
+      <li>A <strong>greatest common divisor</strong>, or <strong>gcd</strong>, of \(a\) and \(b\) is an element \(d \in R\) satisfying \(d \mid a\), \(d \mid b\), and
+      \[
+        e \mid a \quad \text{ and } \quad e \mid b \quad \implies \quad e \mid d.
+      \]</li>
+      <li>A <strong>least common multiple</strong>, or <strong>lcm</strong>, of \(a\) and \(b\) is an element \(m \in R\) satisfying \(a \mid m\), \(b \mid m\), and whenever \(a \mid m'\) and \(b \mid m'\) then \(m \mid m'\).</li>
+    </ul>
+  </section>
+
+  <section class="callout lemma" role="region" aria-labelledby="lem-9-2-8">
+    <h3 id="lem-9-2-8">Lemma 9.2.8</h3>
+    <p>Assume \(R\) is a domain and \(x, y \in R\). The following are equivalent:</p>
+    <ol style="margin-left:20px">
+      <li>\(x\) and \(y\) are associates,</li>
+      <li>\((x) = (y)\), and</li>
+      <li>\(x\) and \(y\) divide each other, meaning that \(x \mid y\) and \(y \mid x\).</li>
+    </ol>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-9-2-8">
+    <h3 id="prf-9-2-8">Proof (of Lemma 9.2.8)</h3>
+    <p>The equivalence of the latter two is clear (and does not require that \(R\) be a domain), since \(x \mid y\) if and only if \(y \in (x)\) if and only if \((y) \subseteq (x)\).</p>
+
+    <p>Assume (3) holds. Then \(x \in (y)\) and so \(x = yu\) for some \(u \in R\).  Similarly \(y = xs\) and hence \(y = yus\), which implies \(y(1-us)=0\). 
+    Since \(R\) is a domain, either \(y = 0\) or \(su = 1\). If \(y = 0\), then \(x = yu = 0 = y\). If \(y \neq 0\) then    \(u\) is  a unit (with inverse \(s\)).</p>
+
+    <p>Conversely, suppose (1) holds, so that \(x = uy\) for some unit \(u\). Then \(y \mid x\), and since we also have \(y = u^{-1}x\), it follows that \(x \mid y\).</p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-9-2-9">
+    <h3 id="rmk-9-2-9">Remark 9.2.9</h3>
+    <p>Greatest common divisors and least common multiples are not uniquely defined. For example, in \(\mathbb{Z}\), both \(2\) and \(-2\) are greatest common divisors of \(4\) and \(6\).
+    But, at least  in a domain, they are unique up to associates. That is, if \(g\) and \(g'\) are both gcds of the same pair of elements in a domain \(R\), then \(g\)
+    and \(g'\) are associates, and similarly for lcms. This follows from the lemma on associates since, by definition, \(g\) and \(g'\) would have to divide each other.</p>
+  </section>
+
+  <p>Gcds (and lcms) need not exist, in general, but here is a situation in which they do:</p>
+
+  <section class="callout lemma" role="region" aria-labelledby="lem-9-2-10">
+    <h3 id="lem-9-2-10">Lemma 9.2.10</h3>
+    <p>If \(R\) is a PID and \(a,b\in R\), then  \((a,b) = (g)\) for some \(g \in R\), and any such \(g\) is a gcd of \(a\) and \(b\).</p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-9-2-10">
+    <h3 id="prf-9-2-10">Proof (of Lemma 9.2.10)</h3>
+    <p>The existence of \(g\) is granted by the definition in a PID: the ideal \((a,b)\) must be principal.
+    Now since \(a, b \in (g)\), we have \(g \mid a\) and \(g\mid b\), so \(g\) is a common divisor of \(a\) and \(b\).
+    Given any other \(h\) such that \(h \mid a\) and \(h \mid b\), we have \(a,b\in (h)\), so \((g)=(a,b)\subseteq (h)\) since \((h)\) is an ideal.
+    As a consequence, \(g \in (h)\), and hence \(h \mid g\). We conclude that \(g\) is a greatest common divisor of \(a\) and \(b\).</p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-9-2-11">
+    <h3 id="rmk-9-2-11">Remark 9.2.11</h3>
+    <p>Let \(R\) be a PID.
+    Using the lemma on associates
+    we may describe all the ideals that contains a given ideal \((a) \subseteq R\): they are given by the collection of divisors of \(a\) up to associates. For instance, in \(\mathbb{Q}[x]\) there are \(8\) ideals that contain \((x^4-1)\), since 
+    \[
+      x^4-1 = (x^2+1)(x-1)(x+1)
+    \] 
+    has \(8\) divisors (including \(1\) and \(x^4-1\) itself).</p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-9-2-12">
+    <h3 id="rmk-9-2-12">Remark 9.2.12</h3>
+    <p>If \(R\) is not only a PID but also an Euclidean domain, then the Euclidean algorithm can be used to compute a gcd of any two nonzero \(a,b\in R\). This is slightly misleading, since the
+    “division algorithm” in the definition of an Euclidean domain is not really an algorithm. But for \(\mathbb{Z}\) and \(F[x]\) it is truly an algorithm, and you probably used it to find gcds
+    before in your life.</p>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-9-2-13">
+    <h3 id="def-9-2-13">Definition 9.2.13</h3>
+    <p>Let \(R\) be a domain.</p>
+    <ol style="margin-left:20px">
+      <li>An element \(p \in R\) is a <strong>prime</strong> element if \(p \neq 0\), \(p\) is not a unit,  and 
+      \[
+        p \mid ab \implies p \mid a \text{ or } p \mid b.
+      \]</li>
+      <li>An element \(r \in R\) is <strong>irreducible</strong> if \(r\neq 0\), \(r\) is not a unit, and for all \(x,y \in R\)
+      \[
+        r = xy \implies x \text{ is a unit or } y \text{ is a unit}.
+      \]</li>
+    </ol>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-9-2-14">
+    <h3 id="rmk-9-2-14">Remark 9.2.14</h3>
+    <p>The condition that a nonzero nonunit element \(p \in R\) is a prime element can be rephrased as follows: 
+    \[
+      ab \in (p) \implies a \in (p) \text{ or } b \in (p).
+    \]
+    That is, \(p\) is a prime element if and only if \((p)\) is a nonzero prime ideal.</p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-9-2-15">
+    <h3 id="ex-9-2-15">Example 9.2.15</h3>
+    <ol style="margin-left:20px">
+      <li>The prime elements of \(\mathbb{Z}\) are the prime integers (where we allow both positive and negative primes); these are also the irreducible elements.</li>
+      <li>Any element \(a \in \mathbb{Z}[i]\) with \(N(a)\) a prime integer is irreducible (exercise!). For example, \(1+2i\) is irreducible.</li>
+      <li>The element \(13=(2+3i)(2-3i)\) is not irreducible in \(\mathbb{Z}[i]\).</li>
+      <li>We claim that the polynomial \(x^2+x+1 \in (\mathbb{Z}/2)[x]\) is irreducible. Indeed, if it factors nontrivially, it must factor as a product of two linear polynomials, say 
+      \[
+        x^2+x+[1]=(x+[a])(x+[b]).
+      \]
+      Then \(-[b]\) is a root for \(x^2+x+[1]\). But neither \([0]\) nor \([1]\) are roots for this polynomial, which is a contradiction.</li>
+    </ol>
+  </section>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-9-2-16">
+    <h3 id="thm-9-2-16">Theorem 9.2.16</h3>
+    <p>Let \(R\) be a domain and let \(r\in R\).</p>
+    <ol style="margin-left:20px">
+      <li>If \(r\) is a prime element, then \(r\) is irreducible.</li>
+      <li>Assume \(R\) is a PID. The following are equivalent:
+        <ol style="margin-left:20px">
+          <li>\(r\) is prime,</li>
+          <li>\(r\) is irreducible, and</li>
+          <li>the ideal \((r)\) generated by \(r\) is a maximal ideal.</li>
+        </ol>
+      </li>
+    </ol>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-9-2-16">
+    <h3 id="prf-9-2-16">Proof (of Theorem 9.2.16)</h3>
+    <p>Suppose \(R\) is a domain and that \(r\) is prime. Then by definition \(r \neq 0\) and \(r\) is not a unit. Suppose \(r = yz\). Then \(yz \in (r)\) and hence by definition either \(y \in (r)\) or \(z \in (r)\). If \(y \in (r)\), we have \(y = rt\) for some \(t\) and so \(y = yzt\). Since \(r \neq 0\), \(y \neq 0\), and \(R\) is a domain, we must have \(zt = 1\), showing that \(z\) is a unit.</p>
+
+    <p>Assume \(R\) is a PID. We just showed that (a) implies (b).
+    To show that (b) implies (c), assume \(r\) is irreducible. Then by definition \(r\) is not a unit, and hence \((r)\) is a proper ideal. This ideal is therefore contained in some maximal ideal \(M\) by a Theorem. We will show that \((r)= M\), and hence \((r)\) is a maximal ideal.
+    Since \(R\) is a PID, all ideals are principal, and thus \(M = (y)\) for some \(y\), so that \(r = yt\) for some \(t\). But \(r\) is irreducible and \(y\) is not a unit, which forces \(t\) to be a unit and hence \((r) = (y) = M\).</p>
+
+    <p>Finally, (c) implies (a) since all maximal ideals are prime. In particular, \((r)\) is a prime ideal and hence \(r\) is a prime element.</p>
+  </section>
+
+  <section class="callout corollary" role="region" aria-labelledby="cor-9-2-17">
+    <h3 id="cor-9-2-17">Corollary 9.2.17</h3>
+    <p>In any PID, every nonzero prime ideal is maximal.</p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-9-2-17">
+    <h3 id="prf-9-2-17">Proof (of Corollary 9.2.17)</h3>
+    <p>Let \(Q\) be a nonzero prime ideal in the PID \(R\). Since \(R\) is a PID, \(Q = (r)\) for some nonzero element \(r \in R\), and in particular \(r\) is a prime element. Thus, \(Q = (r)\) must be a maximal ideal.</p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-9-2-18">
+    <h3 id="ex-9-2-18">Example 9.2.18</h3>
+    <p>Let \(F\) be a field and let \(p \in F[x]\) be a nonzero polynomial. Since \(F[x]\) is a PID, the quotient \(F[x]/(p)\) is a field if and only if \(p\) is irreducible.</p>
+
+    <p>If \(p\) is quadratic, then it is irreducible if and only if it has no roots. 
+    For example, we deduce from these observations that the ring \((\mathbb{Z}/2)[x]/(x^2+x+1)\) is a field, which we claimed in an example earlier.</p>
+  </section>
+</section>
+
+
+<section id="unique-factorization-domains" aria-labelledby="sec-9-3-heading">
+  <h2 id="sec-9-3-heading">9.3 Unique factorization domains (UFDs)</h2>
+
+  <section class="callout definition" role="region" aria-labelledby="def-9-3-1">
+    <h3 id="def-9-3-1">Definition 9.3.1</h3>
+    <p>
+      A ring \(R\) is called a <strong>unique factorization domain</strong>, or <strong>UFD</strong> for short, if \(R\) is an integral domain and the following hold:
+    </p>
+    <ol style="margin-left:20px">
+      <li>
+        For every nonzero element \(r \in R\)  we have 
+        \[
+          r = up_1 \cdots p_n
+        \]
+        for some unit \(u\), some integer \(n \geqslant 0\), and some (not necessarily distinct) irreducible elements \(p_1, \dots, p_n  \in R\).
+      </li>
+      <li>
+        Such factorizations are unique up to ordering and associates: if
+        \[
+          r = vq_1 \cdots q_m
+        \]
+        is another such factorization with \(v\) a unit and each \(q_i\) irreducible, then \(m = n\) and there is a permutation \(\sigma\) such that, for all \(i\), the elements \(p_i\) and \(q_{\sigma(i)}\) are associates.
+      </li>
+    </ol>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-9-3-2">
+    <h3 id="rmk-9-3-2">Remark 9.3.2</h3>
+    <p>
+      Note that units admit irreducible factorizations according to this definition by taking \(n = 0\).
+    </p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-9-3-3">
+    <h3 id="ex-9-3-3">Example 9.3.3</h3>
+    <ol style="margin-left:20px">
+      <li>The ring \(\mathbb{Z}\) is a UFD by the Fundamental Theorem of Arithmetic.</li>
+      <li>Given a field \(F\), \(F[x]\) is a UFD: \(F[x]\) is an Euclidean domain and we will soon show that all Euclidean domains are UFDs.</li>
+      <li>It follows that \(F[x_1, \dots, x_n]\) is a UFD for all \(n\). Note that if \(n > 1\), this ring is not a PID and hence not a Euclidean domain.</li>
+    </ol>
+  </section>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-9-3-4">
+    <h3 id="thm-9-3-4">Theorem 9.3.4</h3>
+    <p>
+      If \(R\) is a UFD, then \(R[x]\) is also a UFD.
+    </p>
+    <p>We will give a proof of this theorem later, time permitting.</p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-9-3-5">
+    <h3 id="ex-9-3-5">Example 9.3.5 (A UFD that is not a PID)</h3>
+    <p>
+      Let \(F\) be a field and fix an integer \(n \geqslant 1\). Since \(F[x]\) is a UFD, by applying the Theorem above repeatedly we conclude that \(F[x_1, \dots, x_n]\) is also a UFD. However, \(F[x_1, \ldots, x_n]\) is not a PID when \(n&gt;1\), as one can show that \((x_1, \ldots, x_n)\) is not a principal ideal.
+    </p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-9-3-6">
+    <h3 id="ex-9-3-6">Example 9.3.6 (Another UFD that is not a PID)</h3>
+    <p>
+      The ideal \((2,x)\) in \(\mathbb{Z}[x]\) is not principal. Thus \(\mathbb{Z}[x]\) is not a PID, and therefore it is also not an Euclidean domain. On the other hand, \(\mathbb{Z}\) is a UFD and thus  \(\mathbb{Z}[x]\) must also be a UFD.
+    </p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-9-3-7">
+    <h3 id="ex-9-3-7">Example 9.3.7 (A domain that is not a UFD)</h3>
+    <p>
+      We claim that the ring \(\mathbb{Z}[\sqrt{-5}]\) is a domain that is {\em not} a UFD. Note that 
+      \[
+        6=(1 + \sqrt{-5}) (1 - \sqrt{-5})=2\cdot 3,
+      \] 
+      and one can show that each of \(1 + \sqrt{-5}\), \(1 - \sqrt{-5}\), \(2\), and \(3\) are irreducible by checking their norms (exercise!). 
+      Moreover, recall the only units in this ring are \(\pm 1\), so these elements are not associates of each other. 
+    </p>
+    <p>
+      Notice also that \(\mathbb{Z}[\sqrt{-5}]\) contains elements that are irreducible but not prime: for example, \(2\) is irreducible but not prime. Compare with a Theorem below. 
+    </p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-9-3-8">
+    <h3 id="ex-9-3-8">Exercise 9.3.8</h3>
+    <p>
+      Let \(R\) be a UFD. Given \(a, b \in R\), let
+      \[
+        a = up_1^{e_1} \cdots p_m^{e_m} \quad \text{and} \quad b = vp_1^{f_1} \cdots p_m^{f_m}
+      \] 
+      for irreducible elements \(p_1, \dots, p_m\) such that \(p_i\) and \(p_j\) are not associates for all \(i \neq j\), integers \(e_i \geqslant 0\), \(f_j \geqslant 0\) and units \(u\) and \(v\). Show that:
+    </p>
+    <ol style="margin-left:20px">
+      <li>We have \(a \mid b\) if and only if \(e_i \leqslant f_i\) for all \(i\).</li>
+      <li>The gcd of \(a\) and \(b\) exists and is given by 
+        \[
+          \gcd(a,b) = p_1^{h_1} \cdots p_m^{h_m}
+        \]
+        with 
+        \[
+          h_i = \min \{e_i, f_i\}
+        \] 
+        for all \(i\) (or any associate of this).</li>
+      <li>The lcm of \(a\) and \(b\) exists and is given by
+        \[
+          \mathrm{lcm}(a,b) = p_1^{g_1} \cdots p_m^{g_m}
+        \] 
+        with 
+        \[
+          g_i = \max \{ e_i, f_i \}
+        \] 
+        for all \(i\) (or any associate of this).</li>
+    </ol>
+  </section>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-9-3-9">
+    <h3 id="thm-9-3-9">Theorem 9.3.9</h3>
+    <p>
+      If \(R\) is a UFD, then an element of \(R\) is irreducible if and only if it is prime.
+    </p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-9-3-9">
+    <h3 id="prf-9-3-9">Proof (of Theorem 9.3.9)</h3>
+    <p>
+      By a Lemma above, every prime element in \(R\) is irreducible. Suppose \(r \in R\) is irreducible and that \(r \mid a b\) for some \(a, b \in R\). We must show that \(r \mid a\) or \(r \mid b\). Let 
+      \[
+        a = u p_1 \cdots p_s \quad \text{ and } \quad b = v q_1 \cdots q_t
+      \] 
+      with \(u\) and \(v\) units, each \(p_i\) and \(q_j\) irreducible, and \(s,t \geqslant 0\). 
+      Since \(r\) is irreducible, 
+      \[
+        r= uv a_1 \cdots a_s b_1 \cdots b_t
+      \] 
+      gives two irreducible factorization of the same element. So we must have either 
+      \[
+        s=0 \quad \text{and} \quad r \cdot (uv)^{-1} = b
+      \] 
+      or 
+      \[
+        t=0 \quad \text{and } \quad r \cdot (uv)^{-1} = a.
+      \] 
+      Thus \(r \mid b\) or \(r \mid a\). This proves that \(r\) is prime.
+    </p>
+  </section>
+
+  <p>
+    Our next goal is to show that every PID is a UFD. First, we show the following partial converse to an earlier result.
+  </p>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-9-3-10">
+    <h3 id="thm-9-3-10">Theorem 9.3.10 (Uniqueness of factorizations under certain conditions)</h3>
+    <p>
+      Assume \(R\) is a domain such that every irreducible element is a prime element.
+      Given a nonzero \(r \in R\), if 
+      \[
+        r = up_1 \cdots p_n = vq_1 \cdots q_m
+      \] 
+      are two different irreducible factorization of \(r\), then \(n=m\) and there is a permutation \(\sigma\) such that, for all \(i\), the elements \(p_i\) and \(q_{\sigma(i)}\) are associates.  	
+    </p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-9-3-10">
+    <h3 id="prf-9-3-10">Proof (of Theorem 9.3.10)</h3>
+    <p>
+      Without loss of generality, assume \(n \leqslant m\). We will use induction on \(m\).
+    </p>
+    <p>
+      If \(m = 0\), since we assume \(n \leqslant m\), we must have \(n = 0\) too, and we are done. So assume \(m > 0\) and that all irreducible factorizations with at most \(m-1\) irreducible factors are unique up to reordering and taking associates.
+    </p>
+    <p>
+      Since we are assuming that all irreducible elements are prime elements, in particular \(q_m\) is prime. Since \(q_m\) divides \(r = vp_1 \cdots p_n\), we must have that \(q_m\) divides \(p_j\) for some \(j\). Note that \(q_m\) cannot divide a unit or else it would be a unit. In particular, \(n \geqslant 1\). After reordering, we may assume \(j = n\). Thus \(p_n = q_m w\) for some \(w \in R\). Since \(p_n\) is irreducible and \(q_m\) is not a unit, \(w\) must be a unit and hence \(p_n\) and \(q_m\) are associates.  We get
+      \[
+        vq_1 \cdots q_m = (uw)p_1 \cdots p_{n-1} q_m
+      \]
+      with \(uw \in R^\times\). Since \(R\) is a domain, we may divide by \(q_m\) to obtain
+      \[
+        vq_1 \cdots q_{m-1} = (uw)p_1 \cdots p_{n-1}
+      \]
+      By the induction hypothesis, \(n-1=m-1\), and hence \(n=m\), and \(p_1, \ldots, p_{n-1}\) are associates of \(q_1, \ldots,  q_{m-1}\) in some order. Since \(p_n\) and \(q_m\) are associates, this completes our proof.
+    </p>
+  </section>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-9-3-11">
+    <h3 id="thm-9-3-11">Theorem 9.3.11</h3>
+    <p>
+      Every PID is a UFD.
+    </p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-9-3-11">
+    <h3 id="prf-9-3-11">Proof (of Theorem 9.3.11)</h3>
+    <p>
+      Let \(R\) be a PID.
+      We know that every irreducible element is a prime element, and irreducible factorizations are unique when they exist. 
+      It remains to show that every nonzero element \(r \in R\) has at least one irreducible factorization. Suppose this is not the case. Then \(r\) must not be a unit and it must not be irreducible, and so \(r\) must factor nontrivially as \(r =x_1 y_1\) with neither \(x_1\) nor \(y_1\) a unit. Likewise, both \(x_1\) and \(y_1\) cannot be irreducible. Without loss of generality, say it is \(y_1\), so that \(y_1\) admits a nontrivial factorization \(y_1 = x_2 y_2\). At least one of these is not irreducible, say it is \(y_2\) so that \(y_2 = x_3 y_3\) and \(r = x_1x_2x_3y_3\). 
+      Continuing in this way, we construct an infinite sequence of elements \(y_1, y_2, \dots\).
+      Since \(y_i = y_{i+1}x_{i+1}\) we have \((y_i) \subseteq (y_{i+1})\), and since \(x_{i+1}\) is not a unit \((y_i) \subsetneq (y_{i+1})\) for all \(i\).
+      That is, we have constructed an infinite, strictly ascending chain of ideals
+      \[
+        (y_1) \subsetneq (y_2) \subsetneq (y_3) \subsetneq \cdots.
+      \]
+      We claim this is impossible. To show that, let 
+      \[
+        I = \bigcup_i (y_i).
+      \] 
+      While the union of ideals is not usually an ideal, the union of any nested chain of ideals is indeed an ideal. Since \(R\) is a PID, we must have \(I = (z)\) for some \(z\). But then \(z \in (y_i)\) for
+      some \(i\), and it follows that 
+      \[
+        (y_i) = (y_{i+1}) = \cdots.
+      \]
+      This is a contradiction, and thus we conclude that \(R\) is in fact a UFD.
+    </p>
+  </section>
+  </section>
+
+
+<section aria-labelledby="lecture-heading" id="nice domains">
+<h1 id="sec-10">10. Irreducibility criteria</h1>
+
+
+<section id="gauss-lemma" aria-labelledby="sec-10-1-heading">
+  <h2 id="sec-10-1-heading">10.1 Gauss' Lemma</h2>
+
+  <section class="callout definition" role="region" aria-labelledby="def-10-1-1">
+    <h3 id="def-10-1-1">Definition 10.1.1 (Field of fractions)</h3>
+    <p>
+      Let \(R\) be a domain. The <strong>field of fractions</strong> of \(R\) is the field
+    </p>
+    <p>
+      \[
+        \mathrm{Frac}(R) := \left\{ \frac{r}{u} \ \Big| \ r,u\in R, \ u\neq 0 \right\} / \sim
+      \]
+    </p>
+    <p>
+      where \(\sim\) is the equivalence relation given by
+    </p>
+    <p>
+      \[
+        \frac{r}{u}\sim \frac{r'}{u'} \textrm{ if } ru'=r'u.
+      \]
+    </p>
+    <p>
+      The operations are given by 
+      \[
+        \frac{r}{v}+\frac{s}{w}=\frac{rw+sv}{vw} \qquad \text{and} \qquad  \frac{r}{v}\frac{s}{w}=\frac{rs}{vw}.
+      \]
+      The zero in \(\mathrm{Frac}(R)\) is the element \(\frac{0}{1}\) and the identity is the element \(\frac{1}{1}\).
+      There is an injective ring homomorphism 
+    </p>
+    <p>
+      \[
+        \begin{aligned}
+          R &\to \mathrm{Frac}(R) \\
+          r &\mapsto \frac{r}{1}
+        \end{aligned}
+      \]
+    </p>
+  </section>
+
+  <p>
+    We write elements in \(\mathrm{Frac}(R)\) in the form \(\frac{r}{u}\) even though they are equivalence classes of such expressions.
+  </p>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-10-1-2">
+    <h3 id="ex-10-1-2">Exercise 10.1.2</h3>
+    <p>
+      Check that \(\mathrm{Frac}(R)\) is indeed a field and the map given above is a ring homomorphism.
+    </p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-10-1-3">
+    <h3 id="ex-10-1-3">Example 10.1.3</h3>
+    <ol style="margin-left:20px">
+      <li>
+        For \(R = \mathbb{Z}\), the construction of the field of fractions of \(\mathbb{Z}\) recovers \(\mathbb{Q}\).
+      </li>
+      <li>
+        The field of fractions of \(R = \mathbb{R}[x]\) is the field of rational functions \(\mathbb{R}(x)\).
+      </li>
+      <li>
+        We may identify the field of fractions of \(R = \mathbb{Z}[i]\) with \(\mathbb{Q}(i)\).
+      </li>
+    </ol>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-10-1-4">
+    <h3 id="ex-10-1-4">Exercise 10.1.4</h3>
+    <p>
+      Establish the following universal mapping property for the field of fractions construction:
+    </p>
+    <p>
+      Let \(R\) be an integral domain and \(F\) its field of fractions. Given an injective ring homomorphism \(f\!: R \to E\) where \(E\) is a field, there is a unique ring homomorphism \(\tilde{f}: F \to E\) such that \(\tilde{f} \circ \iota = f\). Moreover, \(\tilde{f}\) is also injective. In fact,
+    </p>
+    <p>
+      \[
+        \tilde{f} \left( \frac{a}{b} \right) = \frac{f(a)}{f(b)}.
+      \]
+    </p>
+  </section>
+
+  <section class="callout lemma" role="region" aria-labelledby="lem-10-1-5">
+    <h3 id="lem-10-1-5">Lemma 10.1.5</h3>
+    <p>
+      Suppose \(R\) is an integral domain, \(f, g \in R[x]\), and that \(p\) is a prime element of \(R\). If \(p\) divides all of the coefficients of \(fg\), then \(p\) divides all of the coefficients of \(f\) or all the coefficients of \(g\).
+    </p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-10-1-5">
+    <h3 id="prf-10-1-5">Proof (of Lemma 10.1.5)</h3>
+    <p>
+      Let \(R[x] \to (R/(p))[x]\) be the map \(h(x) \mapsto \overline{h}(x)\) that mods out the coefficients by \(p\). 
+      Since this is a ring homomorphism, we have 
+      \[
+        \overline{f g}(x) = \overline{f}(x) \overline{g}(x).
+      \] 
+      Since we assume \(p\) divides every coefficient of \(f\), we have
+      \[
+        \overline{f}(x) \overline{g}(x)= \overline{f \cdot g}(x) =  0
+      \]
+      in \((R/(p))[x]\). Since \(p\) is prime, \(R/(p)\) is an integral domain and thus, as we proved before, \(R/(p)[x]\) is also an integral domain.
+      We must therefore have \(\overline{f}(x) = 0\) or \(\overline{g}(x) = 0\); that is, either \(p\) divides every coefficient of \(f\) or it divides every coefficient of \(g\).
+    </p>
+  </section>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-10-1-6">
+    <h3 id="thm-10-1-6">Theorem 10.1.6 (Gauss' Lemma)</h3>
+    <p>
+      Let \(R\) be a UFD with field of fractions \(F\). Regard \(R\) as a subring of \(F\) (via the canonical map) and view elements in \(R[x]\) as also being elements of \(F[x]\) via the induced map \(R[x]\hookrightarrow F[x]\).
+      If \(f\) is irreducible in \(R[x]\), then \(f\) remains irreducible when regarded as an element of \(F[x]\).
+    </p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-10-1-7">
+    <h3 id="rmk-10-1-7">Remark 10.1.7</h3>
+    <p>
+      This result is at least a tiny bit surprising. Note that there are many irreducible polynomials in \(\mathbb{R}[x]\) that do not remain irreducible in the larger ring \(\mathbb{C}[x]\), such as \(x^2 + 1\). So, in general, one might think that passing to a larger ring of coefficients would cause some irreducible polynomial to become reducible. Gauss' Lemma says that this is {\em not} the case if the larger ring is the field of fractions of the smaller one (provided the smaller one is a UFD). 
+    </p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-10-1-6">
+    <h3 id="prf-10-1-6">Proof (of Theorem 10.1.6)</h3>
+    <p>
+      We will prove the contrapositive, so we will show that if \(f \in R[x]\) is reducible in \(F[x]\), then it is also reducible in \(R[x]\). Suppose \(f\) factors nontrivially as \(f = AB\) in \(F[x]\).
+      Since \(F\) is a field, the units of \(F[x]\) are the nonzero constant polynomials, and so having a nontrivial factorization means \(\deg(A), \deg(B) &gt; 0\).
+      All the coefficients of \(A\) and \(B\) are fractions, and so we may clear denominators — that is, we can find nonzero elements \(r,s \in R\) (e.g., by taking the product of all the denominators) such that \(a := r A\) and \(b := s B\) both belong to \(R[x]\). Set \(d = rs\) and observe that we have
+      \[
+        d f = a b
+      \]
+      with \(d \in R\) and \(f,a,b \in R[x]\). 
+    </p>
+    <p>
+      If \(d\) is a unit in \(R\), then we are done since then 
+      \[
+        f = (d^{-1}a) b
+      \]
+      is a nontrivial factorization in \(R[x]\), given that \(R[x]^\times = R^\times\) and that \(\deg(a), \deg(b) &gt; 0\).
+    </p>
+    <p>
+      Since \(R\) is a UFD, we have \(d = p_1 \cdots p_m\), for some \(m \geqslant 1\), with each \(p_i\) irreducible and hence prime.
+      Since \(p_m\) divides every coefficient of \(d f\), by the Lemma above \(p_m\) must also either divide every coefficient of \(a\) or divide every coefficient of \(b\).
+      So, upon dividing through by \(p_1\) we obtain
+      \[
+        d_1 f = a_1 b_1
+      \]
+      with \(a_1, b_1 \in R[x]\) and \(d_1 = p_1 \cdots p_{m-1} \in R\). 
+      More precisely, if \(p\) divides \(a\) then \(a_1 = a/p\) and \(b_1 = b\) and if \(p\) divides \(b\) then \(a_1 = a\) and \(b_1 = b/p\).
+    </p>
+    <p>
+      By the same reasoning, we may divide by \(p_{m-1}\) to obtain
+      \[
+        d_2 f = a_2 b_2
+      \]
+      with \(a_2, b_2 \in R[x]\) and \(d_3 = p_1 \cdots p_{m-3} \in R\). 
+      Continuing in this way, we arrive at an equation of the form 
+      \[
+        f = a_m b_m
+      \]
+      in \(R[x]\) with \(\deg(a_m) = \deg(A) &gt; 0\) and \(\deg(b_m) = \deg(B) &gt; 0\). This proves \(f\) is reducible in \(R[x]\). 
+    </p>
+  </section>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-10-1-8">
+    <h3 id="thm-10-1-8">Theorem 10.1.8</h3>
+    <p>
+      Let \(R\) be a UFD with field of fractions \(F\). Regard \(R\) as a subring of \(F\) (via the canonical map) and view elements in \(R[x]\) as also being elements of \(F[x]\) via the induced map \(R[x]\hookrightarrow F[x]\).
+      Let \(f \in R[x]\). If \(f\) is irreducible when regarded as an element in \(F[x]\) and the \(\gcd\) of the coefficients of \(f\) is a unit in \(R\), then \(f\) is irreducible as an element of \(R[x]\).
+    </p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-10-1-9">
+    <h3 id="rmk-10-1-9">Remark 10.1.9</h3>
+    <p>
+      This is false if the gcd of the coefficients of \(f\) is not a unit. To see this, note that \(2x + 6\) is irreducible in \(\mathbb{Q}[x]\) but not in \(\mathbb{Z}[x]\), since it factors as \(2(x+3)\). In \(\mathbb{Q}[x]\), however, this factorization is trivial because \(2\) is a unit. 
+    </p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-10-1-8">
+    <h3 id="prf-10-1-8">Proof (of Theorem 10.1.8)</h3>
+    <p>
+      We again prove the contrapositive: we will show that if \(f\) is reducible in \(R[x]\) then either the gcd of the coefficients of \(f\) is not a unit or \(f\) remains reducible in \(F[x]\). 
+    </p>
+    <p>
+      Suppose \(f\) factors nontrivially in \(R[x]\) as \(f = g h\) with \(g\) and \(h\) nonunits.
+      If both \(g\) and \(h\) have positive degree, then they remain nonunits in \(F[x]\), and so \(f\) is reducible in that ring too. Otherwise, suppose \(g\) is the constant polynomial \(c\).
+      Then, since \(c\) is a nonunit in \(R\) and \(f = c h\), the gcd of the coefficients of \(f\) is not a unit. 
+    </p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-10-1-10">
+    <h3 id="ex-10-1-10">Example 10.1.10</h3>
+    <p>
+      Let us use Gauss's Lemma to show that the polynomial 
+      \[
+        f = x^4 + 7x^3 + 18x^2 + 31
+      \] 
+      is irreducible in \(\mathbb{Q}[x]\). First, one can check that \(f\) has no roots in \(\mathbb{Q}\) by
+      the Rational Root Test, but that does not mean it does not factor as a product of two irreducible quadratics.
+    </p>
+    <p>
+      By Gauss's Lemma, if \(f\) is irreducible in \(\mathbb{Z}[x]\) then it is irreducible in \(\mathbb{Q}[x]\). Working in \(\mathbb{Z}[x]\) has the advantage that we can mod out by a prime:
+    </p>
+    <p>
+      Suppose \(f\) did factor nontrivially in \(\mathbb{Z}[x]\). Then, since \(f\) is monic, it would factor as \(f = g h\) with \(g\) and \(h\) monic polynomials in \(\mathbb{Z}[x]\) each of degree at least one. For any prime integer \(p\), we would have 
+      \[
+        \overline{f} = \overline{g} \overline{h}
+      \] 
+      in \((\mathbb{Z}/p)[x]\) with \(\deg(\overline{g}) = \deg(g)\) and \(\deg(\overline{h}) = \deg(h)\), since \(g\) and \(h\) are monic. 
+    </p>
+    <p>
+      Let \(p = 2\). We have 
+      \[
+        \overline{f} = x^4 + x^3 + 1 \in (\mathbb{Z}/2)[x].
+      \] 
+      This polynomial does not have a root, as the only possibilities are \(0\) and \(1\), and hence it has no linear factors. Therefore, \(\overline{g}\) and \(\overline{h}\) must be irreducible of degree \(2\). 
+      But the only irreducible polynomial of degree \(2\) in \((\mathbb{Z}/2)[x]\) is \(q = x^2+x + 1\), since we can check one by one and see that all the other three quadratic polynomials have roots.
+      Since 
+      \[
+        q^2 = x^4 + x^2 + 1 \ne \overline{f},
+      \] 
+      we have reached a contradiction. We conclude that \(f\) is irreducible in \(\mathbb{Q}[x]\). 
+    </p>
+  </section>
+
+</section>
+
+
+<section id="eisensteins-criterion" aria-labelledby="sec-10-2-heading">
+  <h2 id="sec-10-2-heading">10.2 Eisenstein's Criterion</h2>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-10-2-1">
+    <h3 id="thm-10-2-1">Theorem 10.2.1 (Eisenstein's Criterion)</h3>
+    <p>
+      Let \(R\) be a domain and consider a monic polynomial
+      \[
+        f = x^n + a_{n-1} x^{n-1} + \cdots + a_1 x + a_0 \in R[x]
+      \]
+      of degree \(n \geqslant 1\). If there exists a prime ideal \(P\) of \(R\) such that
+      \(\,a_0, \dots, a_{n-1} \in P\,\) and \(a_0 \notin P^2\), then \(f\) is irreducible in \(R[x]\).
+    </p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-10-2-1">
+    <h3 id="prf-10-2-1">Proof (of Theorem 10.2.1)</h3>
+    <p>
+      Suppose, by contradiction, that \(f\) is reducible. Since it is monic, we would be able to factor it as
+      \(f = gh\), where \(g\) and \(h\) are polynomials in \(R[x]\setminus R[x]^\times\). Since the leading
+      coefficients of \(g\) and \(h\) multiply to \(1\), those coefficients must be units in \(R\). We may thus
+      assume that \(g\) and \(h\) are monic by multiplying each of these by the inverse of their leading coefficient.
+    </p>
+    <p>
+      Consider the canonical quotient \(R \to R/P\) and the induced reduction homomorphism
+      \(R[x] \to (R/P)[x]\), and write \(\overline{p}\) for the image of \(p\) in \((R/P)[x]\). Then in the ring
+      \((R/P)[x]\) we have the identity
+      \[
+        x^n = \overline{f}(x) = \overline{g}(x)\,\overline{h}(x).
+      \]
+      Set \(T = R/P\) and notice that \(T\) is a domain. We now need an
+      auxiliary claim.
+    </p>
+    <p>
+      <strong>Claim.</strong> If \(T\) is a domain and \(\overline{g}, \overline{h} \in T[x]\) are monic polynomials
+      such that \(\overline{g}\,\overline{h} = x^n\), then \(\overline{g} = x^m\) and \(\overline{h} = x^{n-m}\) for
+      some \(1 \leqslant m \leqslant n\).
+    </p>
+    <p>
+      <em>Proof of claim.</em> Let
+      \[
+        g = x^m + a_{m-1} x^{m-1} + \cdots + a_0
+        \quad\text{and}\quad
+        h(x) = x^{n-m} + b_{n-m-1} x^{m-1} + \cdots + b_0.
+      \]
+      Let \(j\) be the least integer such that \(a_j \neq 0\) and \(i\) the least integer such that \(b_i \neq 0\).
+      Set \(a_m = 1 = b_{n-m}\). The coefficient of \(x^{i+j}\) in \(g(x) h(z)\) is
+      \(\sum_{s + t = i + j} a_s b_t\). The only nonzero term here is the term \(a_j b_i\), which is indeed
+      nonzero since \(R\) is a domain, and hence the degree \(i+j\) term of \(g h\) is nonzero. This forces
+      \(i = m\) and \(j = n\).
+    </p>
+    <p>
+      The Claim thus gives that \(\overline{g}\) and \(\overline{h}\) have zero constant terms or, in other words,
+      the constant terms of \(g\) and \(h\) are both in \(P\). The constant term of \(f = g \cdot h\) is thus in
+      \(P^2\), which is a contradiction.
+    </p>
+  </section>
+
+  <p>
+    If \(R\) is UFD, such as \(\mathbb{Z}\), we may consider the special case where \(P\) is a principal ideal.
+  </p>
+
+  <section class="callout corollary" role="region" aria-labelledby="cor-10-2-2">
+    <h3 id="cor-10-2-2">Corollary 10.2.2</h3>
+    <p>
+      Let \(R\) be a UFD and consider
+      \[
+        f = x^n + a_{n-1} x^{n-1} + \cdots + a_1 x + a_0 \in R[x]
+      \]
+      with \(n \geqslant 1\). If there is a prime element \(p\) such that \(p \mid a_i\) for
+      \(i = 0, \dots, n-1\), and \(p^2 \nmid a_0\), then \(f\) is irreducible.
+    </p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-10-2-3">
+    <h3 id="ex-10-2-3">Example 10.2.3</h3>
+    <p>
+      For example, \(x^n - p \in \mathbb{Z}[x]\) is irreducible for all \(n \geqslant 1\) and all primes \(p\).
+      By Gauss's Lemma, it is irreducible in \(\mathbb{Q}[x]\) too. This implies, as an application of a homework
+      problem, that
+      \[
+        \mathbb{Q}[x]/(x^n - p)
+      \]
+      is a field. In fact, this field is isomorphic to \(\mathbb{Q}(\sqrt[n]{p})\), the smallest subfield of \(\C\)
+      that contains \(\mathbb{Q}\) and \(\sqrt[n]{p}\).
+    </p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-10-2-4">
+    <h3 id="ex-10-2-4">Example 10.2.4</h3>
+    <p>
+      Let \(F\) be any field. We claim that the polynomial
+      \[
+        f(x,y) = x^3 + y^5 x + y
+      \]
+      is irreducible in \(F[x,y]\). To prove this, let us think of \(F[x,y]\) as \(F[x,y] = R[x]\) where
+      \(R = F[y]\), so that
+      \[
+        f = x^3 + r_1 x + r_0
+      \]
+      with \(r_1 = y^5\) and \(r_0 = y\). Note that \(y\) is a prime element of \(R\) that divides \(r_1\) and \(r_0\),
+      but \(y^2\) does not divide \(r_0\). So, by Eisenstein's Criterion, \(f\) is irreducible.
+    </p>
+  </section>
+</section>
 
 
 
