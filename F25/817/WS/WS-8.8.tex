@@ -71,7 +71,7 @@
 \begin{framed}
 \textsc{Definition:} Let $R$ be a ring.
 \begin{enumerate}[(i)]
-\item An ideal $I$ of $R$ is a \textbf{maximal ideal} if $I$ is proper and for any proper ideal $J$, $I\subseteq J$ implies $I=J$.
+\item An ideal $I$ of $R$ is a \textbf{maximal ideal} if $I$ is proper and for any proper ideal $J$, $I\subseteq J$ implies $I=J$. That is, $I$ is maximal under containment among all proper ideals of $R$.
 \item Let $R$ be commutative. An ideal $I$ of $R$ is a \textbf{prime ideal} if $I$ is proper and $ab\in I$ implies $a\in I$ or $b\in I$.
 \end{enumerate}
 
@@ -88,8 +88,9 @@
 	\begin{enumerate}
 	\itemA Prime ideals vs maximal ideals:
 	\begin{enumerate}
-	\itema Use the theorem to quickly explain why every maximal ideal in a commutative ring is prime.
+	\itema Use Theorem 1 to quickly explain why every maximal ideal in a commutative ring is prime.
 	\itema Show that the ideal $(2)$ in $\mathbb{Z}[x]$ is prime but not maximal.
+	\itema Identify a maximal ideal in $\mathbb{Z}[x]$.
 	\end{enumerate}
 	
 	\
@@ -106,22 +107,22 @@
 
 \textsc{Definition:} Let $(P,\leq)$ be a partially ordered set.
 \begin{enumerate}[(i)]
-\item A \textbf{maximal element} of $P$ is an element $x\in P$ such that $x\geq y$ for all $y\in P$.
+\item A \textbf{maximal element} of $P$ is an element $x\in P$ such that for all $y\in P$,  one has $y\leq x$.
+\item A \textbf{upper bound} for a subset $X$ is an element $x\in P$ such that for all $y\in X$, one has $y \leq x$.
 \item A subset $X$ of $P$ is a \textbf{chain} if for all $x,y\in X$ either $x\leq y$ or $y\leq x$.
-\item A \textbf{upper bound} for a subset $X$ is an element $x$ such that $x\geq y$ for all $y\in X$.
 \end{enumerate}
 
 \
 
-\textsc{Zorn's Lemma:} Let $(P,\leq)$ be a nonempty partially ordered set. If every chain $C\subseteq P$ has an upper bound $c\in C$, then $P$ has a maximal element.
+\textsc{Zorn's Lemma:} Let $(P,\leq)$ be a nonempty partially ordered set. If every chain $C\subseteq P$ has an upper bound $c\in P$, then $P$ has a maximal element.
 \end{framed}
 
 \begin{enumerate}
 \setcounter{enumi}{2}
-\itemA Understanding Zorn's Lemma:
+\itemA Zorn's Lemma warmup.
 \begin{enumerate}
-\itema The most common use of Zorn's Lemma occurs in the following situation: $P$ is the collection of all subsets of some set $Y$ ordered by inclusion ($A\leq B$ if and only if $A\subseteq B$), and $S$ is some special family of subsets of $Y$. Rewrite\footnote{Meaning replace all $\leq$ with $\subseteq$ and unpackage the definitions of maximal element and upper bound.} the statement of Zorn's Lemma in this context.
-\itema Let $Y=\mathbb{Z}$ and $P$ be the collection of all \emph{finite} subsets of $Y$. Explain why there is no maximal element of $P$.
+\itema The most common use of Zorn's Lemma occurs in the following situation: $\mathcal{P}(Y)$ is the collection of all subsets of some set $Y$ ordered by inclusion ($A\leq B$ if and only if $A\subseteq B$), and $P$ is some special family of subsets of $\mathcal{P}(Y)$. Rewrite\footnote{Meaning replace all $\leq$ with $\subseteq$ and unpackage the definitions of maximal element and upper bound.} the statement of Zorn's Lemma in this context.
+\itema In the context above, explain how to use Zorn's lemma to try to show the existence of a \emph{minimal element} of $P$. 
 \end{enumerate}
 
 \
@@ -130,7 +131,7 @@
 
 \
 
-\itemB Prove that every proper ideal is contained in a maximal ideal.
+\itemB Prove or disprove: Any group $G$ has a maximal proper subgroup (meaning a proper subgroup that is maximal among all proper subgroups).
 
 \
 
