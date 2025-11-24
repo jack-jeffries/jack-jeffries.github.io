@@ -2,7 +2,7 @@
 
 
 \usepackage{times}
-\usepackage[margin=.8in]{geometry}
+\usepackage[margin=.5in]{geometry}
 \usepackage{paralist,amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,colonequals}
 \usepackage[shortlabels]{enumitem}
 \usepackage[all]{xy}
@@ -89,13 +89,32 @@
 	\itemA Prime ideals vs maximal ideals:
 	\begin{enumerate}
 	\itema Use Theorem 1 to quickly explain why every maximal ideal in a commutative ring is prime.
+	\solution{We have $I$ is maximal implies $R/I$ is a field, which implies $R/I$ is a domain, which implies $I$ is prime.}
 	\itema Show that the ideal $(2)$ in $\mathbb{Z}[x]$ is prime but not maximal.
+		\solution{$\mathbb{Z}[x]/(2) \cong \mathbb{Z}/2[x]$, which is a domain but not a field.}
 	\itema Identify a maximal ideal in $\mathbb{Z}[x]$.
+			\solution{The ideal $(2,x)$ is maximal, since $\mathbb{Z}[x]/(2,x) \cong \mathbb{Z}/2$.}
 	\end{enumerate}
-	
-	\
+
+
+\
 	
 	\itemA Prove\footnote{Hint: For part (i), you might want use a HW problem characterizing fields in terms of ideals.} Theorem 1.
+\solution{ (i) By the Lattice Isomorphism Theorem, the ideals of $R/Q$ are of the form $I/Q$, where $I$ is an ideal in $R$ containing $Q$.
+
+By an exercise, $R/Q$ is a field if and only if $R/Q$ has only two ideals, $\{ 0 \} = Q/Q$ and $R/Q$. Thus $R/Q$ is a field if and only if the only ideals that contain $Q$ are $Q$ and $R$.
+
+(ii) Now suppose $Q$ is prime. If 
+$$(r + I)(r' + I) = 0 + I,$$ 
+then $rr' \in I$ and hence either $r \in I$ or $r' \in I$, so that either 
+$$r + I = 0 \quad \text{or} \quad r'+ I  = 0.$$
+Since $R$ is commutative, then $R/I$ is also commutative, and since $Q$ is a proper, then $R/I$ is not the zero ring. This proves that $R/Q$ is a domain.
+
+Conversely, suppose that $R/Q$ is a domain. Since $R/Q$ is not the zero ring, $Q$ is proper. If $x,y \in R$ satisfy $xy \in I$, then 
+$$(x + I)(y + I) = 0$$ 
+in $R/Q$, and hence either $x+ Q = 0$ or $y + Q = 0$. It follows $x \in Q$ or $y \in Q$. This proves that $Q$ is prime.
+}
+
 \end{enumerate}
 
 \
@@ -107,7 +126,7 @@
 
 \textsc{Definition:} Let $(P,\leq)$ be a partially ordered set.
 \begin{enumerate}[(i)]
-\item A \textbf{maximal element} of $P$ is an element $x\in P$ such that for all $y\in P$,  one has $y\leq x$.
+\item A \textbf{maximal element} of $P$ is an element $x\in P$ such that for all $y\in P$,  one has $x\leq y$ implies $x=y$.
 \item A \textbf{upper bound} for a subset $X$ is an element $x\in P$ such that for all $y\in X$, one has $y \leq x$.
 \item A subset $X$ of $P$ is a \textbf{chain} if for all $x,y\in X$ either $x\leq y$ or $y\leq x$.
 \end{enumerate}
@@ -122,14 +141,16 @@
 \itemA Zorn's Lemma warmup.
 \begin{enumerate}
 \itema The most common use of Zorn's Lemma occurs in the following situation: $\mathcal{P}(Y)$ is the collection of all subsets of some set $Y$ ordered by inclusion ($A\leq B$ if and only if $A\subseteq B$), and $P$ is some special family of subsets of $\mathcal{P}(Y)$. Rewrite\footnote{Meaning replace all $\leq$ with $\subseteq$ and unpackage the definitions of maximal element and upper bound.} the statement of Zorn's Lemma in this context.
+\solution{If, $P$ is nonempty and for any nested family of subsets $\{A_\alpha\}_{\alpha}$ with $A_\alpha\in P$ for all $\alpha$, there is some $B\in P$ such that $A_\alpha \subseteq B$ for all $\alpha$, then there is some element $X\in P$ that is not properly contained in any element of $P$.}
 \itema In the context above, explain how to use Zorn's lemma to try to show the existence of a \emph{minimal element} of $P$. 
+\solution{We can consider $P$ as a poset with the alternative partial order $A\leq B$ if and only if $A\supseteq B$. A maximal element of this poset corresponds to a minimal element of $P$ under containment.}
 \end{enumerate}
 
 \
 
 \itemA Prove Theorem 2.
 
-\
+\solution{Fix a ring $R$. Let $S$ be the set of all proper ideals $J$ in $R$, which is partially ordered with the inclusion order $\subseteq$. We claim that {Zorn's Lemma} applies to $S$. First, $S$ is nonempty, since it contains $I$. Now consider a chain of proper ideals in $R$, say $\{ J_i \}_i$, all of which contain $I$. Notice that $J := \bigcup_i J_i$ is an ideal as well (exercise!), and moreover $J \neq R$ since $1 \notin J_i$ for all $i$.\footnote{Note that unions of ideals are not ideals in general, but a union of totally ordered ideals \emph{is} an ideal.} Since each $J_i \supseteq I$, we conclude that $J \supseteq I$. Thus we have checked that $J \in S$. Now this ideal $J \in S$ is an upper bound for our chain $\{ J_i \}_i$, and thus {Zorn's Lemma} applies to $S$. We conclude that $S$ has a maximal element. Such an element is, by definition, a maximal ideal of $R$.}
 
 \itemB Prove or disprove: Any group $G$ has a maximal proper subgroup (meaning a proper subgroup that is maximal among all proper subgroups).
 
