@@ -7921,10 +7921,10 @@ A number of important examples of rings are integral domains with additional nic
     \[
       a = bq + r \text{ and \(r=0\) or \(N(r) < N(b)\).}
     \]
-    The function \(N\) is an <strong>Euclidean function</strong> for \(R\). If \(N\) satisfies \(N(ab) = N(a)N(b)\), then \(N\) is called a <strong>norm function</strong>.</p>
+    The function \(N\) is an <strong>Euclidean function</strong> or <strong>norm function</strong>for \(R\).</p>
   </section>
 
-  <p>One sometimes says that an Euclidean domain has a division algorithm, but that is misleading: there need not be an algorithm to find \(q\) and \(r\) given \(a\) and \(b\), and neither \(q\) nor \(r\) need to be unique. Finally, the Euclidean function \(N\) is <em>not</em> required to satisfy any sort of multiplicative property, but in some examples it does, and in those examples it is called a norm function.</p>
+  <p>One sometimes says that an Euclidean domain has a division algorithm, but that is misleading: there need not be an algorithm to find \(q\) and \(r\) given \(a\) and \(b\), and neither \(q\) nor \(r\) need to be unique. In some examples, we also have \(N\) satisfies \(N(ab) = N(a)N(b)\), then \(N\) is called a <strong>multiplicative</strong> norm function. Finally, the norm function \(N\) is <em>not</em> required to satisfy any sort of multiplicative property, but in some examples it does, and in those examples it is called a norm function.</p>
 
   <section class="callout example" role="region" aria-labelledby="ex-9-1-2">
     <h3 id="ex-9-1-2">Example 9.1.2</h3>
@@ -7936,7 +7936,7 @@ A number of important examples of rings are integral domains with additional nic
     </p>
     <p>thus \(q = ab^{-1}\) and \(r=0\) satisfy the definition.</p>
 
-    <p>\newpage
+    <p>
     This calculation shows, more generally, that if \(b\) is a unit, then for all \(a\) there exists an equation \(a = bq + r\) with \(r = 0\), not matter what \(N\) we use.</p>
   </section>
 
@@ -8237,7 +8237,8 @@ which is an isomorphism of additive groups \( (\dfrac{F[x]}{(f)},+) \cong (F,+)^
 
   <section class="callout remark" role="region" aria-labelledby="rmk-9-2-12">
     <h3 id="rmk-9-2-12">Remark 9.2.12</h3>
-    <p>If \(R\) is not only a PID but also an Euclidean domain, then the Euclidean algorithm can be used to compute a gcd of any two nonzero \(a,b\in R\). This is slightly misleading, since the
+    <p>If \(R\) is not only a PID but also an Euclidean domain, then the Euclidean algorithm can be used to compute a gcd of any two nonzero \(a,b\in R\): if \(N(a) \geq N(b)\) and \( a = bq +r \) with \(N(r) < N(b)\) or \(r=0\), then \( \mathrm{gcd}(a,b) = \mathrm{gcd}(b,r)\) (exercise!), and repeat. 
+ This is slightly misleading, since the
     “division algorithm” in the definition of an Euclidean domain is not really an algorithm. But for \(\mathbb{Z}\) and \(F[x]\) it is truly an algorithm, and you probably used it to find gcds
     before in your life.</p>
   </section>
