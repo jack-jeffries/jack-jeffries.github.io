@@ -8448,23 +8448,16 @@ which is an isomorphism of additive groups \( (\dfrac{F[x]}{(f)},+) \cong (F,+)^
   <section class="callout proof" role="region" aria-labelledby="prf-9-3-9">
     <h3 id="prf-9-3-9">Proof (of Theorem 9.3.9)</h3>
     <p>
-      By a Lemma above, every prime element in \(R\) is irreducible. Suppose \(r \in R\) is irreducible and that \(r \mid a b\) for some \(a, b \in R\). We must show that \(r \mid a\) or \(r \mid b\). Let 
+      By a Lemma above, every prime element in \(R\) is irreducible. Suppose \(x \in R\) is irreducible and that \(x \mid a b\) for some \(a, b \in R\), so \(xy=ab\) for some \(y\in R\). We must show that \(x \mid a\) or \(x \mid b\). Let 
       \[
-        a = u p_1 \cdots p_s \quad \text{ and } \quad b = v q_1 \cdots q_t
+        a = u p_1 \cdots p_s \ ,\quad  b = v q_1 \cdots q_t \ , \quad \text{and} \ y= w r_1 \cdots r_\ell
       \] 
-      with \(u\) and \(v\) units, each \(p_i\) and \(q_j\) irreducible, and \(s,t \geqslant 0\). 
+      with \(u, v, w\) units, each \(p_i, q_j, r_k\) irreducible. 
       Since \(r\) is irreducible, 
       \[
-        r= uv a_1 \cdots a_s b_1 \cdots b_t
+        w x r_1 \cdots r_\ell= uv p_1 \cdots p_s q_1 \cdots q_t
       \] 
-      gives two irreducible factorization of the same element. So we must have either 
-      \[
-        s=0 \quad \text{and} \quad r \cdot (uv)^{-1} = b
-      \] 
-      or 
-      \[
-        t=0 \quad \text{and } \quad r \cdot (uv)^{-1} = a.
-      \] 
+      gives two irreducible factorization of the same element. So \(x \) must be associate to some \( p_i \) or some \( q_i\).
       Thus \(r \mid b\) or \(r \mid a\). This proves that \(r\) is prime.
     </p>
   </section>
@@ -8498,7 +8491,7 @@ which is an isomorphism of additive groups \( (\dfrac{F[x]}{(f)},+) \cong (F,+)^
       \[
         vq_1 \cdots q_m = (uw)p_1 \cdots p_{n-1} q_m
       \]
-      with \(uw \in R^\times\). Since \(R\) is a domain, we may divide by \(q_m\) to obtain
+      with \(uw \in R^\times\). Since \(R\) is a domain, we may cancel \(q_m\) to obtain
       \[
         vq_1 \cdots q_{m-1} = (uw)p_1 \cdots p_{n-1}
       \]

@@ -1,0 +1,137 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,enumerate}
+\usepackage[]{graphicx}
+\usepackage{color,subfigure}
+\definecolor{scarlet}{rgb}{0.81,0,0}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage[all]{xypic}
+\usepackage[colorlinks=true,citecolor=scarlet,linkcolor=scarlet]{hyperref}
+\usepackage{colonequals}
+
+\usepackage{fancyhdr, lastpage}
+\pagestyle{fancy}
+\fancyfoot[C]{{\thepage} of \pageref{LastPage}}
+
+
+
+\DeclareMathOperator{\mSpec}{mSpec}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Ass}{Ass}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\height}{height}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\ann}{ann}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\coker}{coker}
+%\DeclareMathOperator{\ker}{ker}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\M}{M}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\ch}{char}
+\DeclareMathOperator{\Aut}{Aut}
+
+%\DeclareMathOperator{\dim}{dim}
+
+\DeclareMathOperator{\lcm}{lcm}
+
+\def\ra{\rightarrow}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\ov}[1]{\overline{#1}}
+\newcommand{\norm}{\trianglelefteq}
+
+\def\ov#1{\overline{#1}}
+
+
+\title{}
+\date{\vspace{-0.5in}}
+
+\makeatletter
+\g@addto@macro\@floatboxreset\centering
+\makeatother
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+
+\begin{document}
+
+\thispagestyle{fancy}
+\pagestyle{fancy}
+\rhead{UNL $\mid$ Fall 2025}
+\lhead{Introduction to Modern Algebra I}
+
+\vspace{3em}
+
+\begin{center}
+	{\LARGE Problem Set 12 \\}
+	Due Thursday, December 4
+\end{center}
+
+\
+
+\noindent
+{\bf Instructions:}
+You are encouraged to work together on these problems, but each student should hand in their own final draft, written in a way that indicates their individual understanding of the solutions. Never submit something for grading that you do not completely understand. You cannot use any resources besides me, your classmates, and our course notes.
+
+
+I will post the .tex code for these problems for you to use if you wish to type your homework. If you prefer not to type, please  {\em write neatly}. As a matter of good proof writing style, please use complete sentences and correct grammar. You may use any result stated or proven in class or in a homework problem, provided you reference it appropriately by either stating the result or stating its name (e.g. the definition of ring or Lagrange's Theorem). Please do not refer to theorems by their number in the course notes, as that can change.
+
+\
+
+\begin{problem}
+Consider the ring $R = \Z[x]$ and the ideal $I = (3, x^3 + x + 1)$.
+
+
+\begin{enumerate}[(a)]
+	\item Show that $R/I \cong (\Z/3)[x]/(x^3 + x + 1)$.
+		
+	\item Find, with proof, all the ideals of $R$ that contain $I$.
+\end{enumerate}
+\end{problem}
+
+
+\
+
+
+
+
+\begin{problem}
+Let $R = \Z[\sqrt{-5}]$ where $\sqrt{-5}=\sqrt{5}\cdot {i}\in \C$ and $ \Z[\sqrt{-5}]=\{a+b\sqrt{-5}\mid a,b\in\Z\}$.
+\begin{enumerate}[(a)]
+\item Prove that $R\cong \Z[x]/(x^2+5)$ and, for integers $p\geq 2$, $R/(p)\cong (\Z/p)[x]/(x^2+[5]_p)$.
+ \item Let $p$ be a prime integer. Show that $p$ is a prime element in $R$ if and only if the polynomial $x^2+[5]_p \in (\Z/p)[x]$ does not have a root in $\Z/p$. 
+\item Show that the integer $7$ is irreducible\footnote{Hint: Consider the complex norm $N:\C \to \R$ given by $N(a+bi)= (a+bi)(a-bi)=a^2 + b^2$. You can use without proof that $N(\alpha \beta) = N(\alpha)N(\beta)$.}  in $R$, but is not a prime element in $R$.
+\end{enumerate}
+\end{problem}
+
+\
+
+
+
+\begin{problem}
+Let $R = \Z[\sqrt{-2}]$  where $\sqrt{-2}=\sqrt{2}\cdot {i}\in \C$ and $ \Z[\sqrt{-2}]=\{a+b\sqrt{-2}\mid a,b\in\Z\}$.
+\begin{enumerate}[(a)]
+\item Show that $R$ is a Euclidean domain.
+\item Show that $R/(5)$ is a field.
+\item Show that for any nonzero ideal $I\subseteq R$, the quotient ring $R/I$ is finite.
+\end{enumerate}
+\end{problem}
+
+
+\
+
+
+
+
+
+\end{document}
