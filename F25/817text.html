@@ -8868,6 +8868,141 @@ which is an isomorphism of additive groups \( (\dfrac{F[x]}{(f)},+) \cong (F,+)^
   </section>
 </section>
 
+<section id="applications-of-gauss-lemma" aria-labelledby="sec-10-3-heading">
+  <h2 id="sec-10-3-heading">10.3 Applications of Gauss' Lemma</h2>
+
+  <p>
+    In this section, we will give a couple more applications of Gauss' Lemma. First we make a convenient definition.
+  </p>
+
+  <section class="callout definition" role="region" aria-labelledby="def-10-3-1">
+    <h3 id="def-10-3-1">Definition 10.3.1</h3>
+    <p>
+      Suppose \(R\) is a UFD and \(f(x) \in R[x]\). A <em>content of \(f(x)\)</em>, denoted \(\mathrm{cont}(f) \in R\), is a gcd of the coefficients of \(f(x)\).
+      We say \(f(x)\) is <em>primitive</em> if \(\mathrm{cont}(f(x))\) is a unit.
+    </p>
+  </section>
+
+  <p>
+    Note that a content of \(f\) is a unit if and only if every other content of \(f\) is also a unit. By Gauss' Lemma, in the setting of the definition a primitive polynomial in \(R[x]\) that is irreducible over \(\mathrm{Frac}(R)[x]\) is irreducible over \(R[x]\).
+  </p>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-10-3-2">
+    <h3 id="ex-10-3-2">Exercise 10.3.2</h3>
+    <p>
+      Assume \(R\) is a UFD and \(f(x), g(x) \in R[x]\).
+      Then \(f(x)\) and \(g(x)\) are primitive if and only if \(f(x) g(x)\) is primitive.
+    </p>
+  </section>
+
+  <section class="callout lemma" role="region" aria-labelledby="lem-10-3-3">
+    <h3 id="lem-10-3-3">Lemma 10.3.3</h3>
+    <p>
+      Suppose \(R\) is a UFD. Any primitive polynomial \(f(x)\) of positive degree in \(R[x]\) factors as a product of primitive irreducible polynomials.
+    </p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-10-3-3">
+    <h3 id="prf-10-3-3">Proof (of Lemma 10.3.3)</h3>
+    <p>
+      If \(f(x)\) is irreducible, there is nothing to prove. Otherwise there is a nontrivial factorization \(f(x) = a(x) b(x)\), and since \(f(x)\) is primitive, we must have \(\deg(a(x)) &lt;\deg(f(x))\) and \(\deg(b(x)) &lt;\deg(f(x))\).
+      Moreover, by the exercise above, each of \(a(x)\) and \(b(x)\) must also be primitive. The existence of irreducible factorizations for primitive polynomials thus follows by induction on degree.
+    </p>
+  </section>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-10-3-4">
+    <h3 id="thm-10-3-4">Theorem 10.3.4</h3>
+    <p>
+      Let \(R\) be a UFD. Then the polynomial ring \(R[x]\) is a UFD.
+    </p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-10-3-4">
+    <h3 id="prf-10-3-4">Proof (of Theorem 10.3.4)</h3>
+    <p>
+      We first show factorizations exist.
+      Let \(f(x) \in R[x]\).
+      Since \(R\) is UFD, we may consider its content \(c = \mathrm{cont}(f)\),
+      so that \(f(x) = c f'(x)\) with \(f'(x)\) primitive.
+      Now \(c\) factors in \(R\) into irreducibles and this remains an irreducible
+      factorization of \(c\) in \(R[x]\). So it suffices to prove \(f'(x)\) has an
+      irreducible factorization too, which follows from the previous lemma.
+    </p>
+    <p>
+      For uniqueness, suppose we have two products of irreducible elements of \(R[x]\) that are equal. Among the factors involved, we first write the
+      constant factors and the the nonconstant ones, getting an equation of the form
+      \[
+        d_1 \cdots d_m p_1(x) \cdots p_n(x) =
+        e_1 \cdots e_s q_1(x) \cdots q_t(x),
+      \]
+      where \(d_i, e_j\) are irreducible elements of \(R\) and \(p_i, q_j\) are
+      irreducible polynomials of degree at least one. Note that each of
+      \(p_i, q_j\) must be primitive (since a nonprimitive polynomial \(p(x)\)
+      factors as \(\mathrm{cont}(p) p'(x)\)).
+      By the exercise, \(p_1(x) \cdots p_n(x)\) and \(q_1(x) \cdots q_t(x)\) are also primitive. It follows that
+      \(d_1 \cdots d_m\) is the content of
+      \(d_1 \cdots d_m p_1(x) \cdots p_n(x)\) and
+      \(e_1 \cdots e_m\) is the content \(e_1 \cdots e_s q_1(x) \cdots q_t(x)\). Since these are equal, \(d_1 \cdots d_m\) and \(e_1
+      \cdots e_s\) agree up to a unit factor and hence, since \(R\) is a UFD,
+      we have \(s = m\) and, after reordering, \(d_i\) and \(e_i\) are
+      associates, for all \(i\).
+    </p>
+    <p>
+      We may now cancel \(d_1, \dots, d_m\) to get that
+      \[
+        p_1(x) \cdots p_n(x) = u q_1(x) \cdots q_t(x)
+      \]
+      for some unit \(u\) of \(R\), and it remains to prove \(n = t\) and, after
+      reordering, that \(p_i\) and \(q_i\) are associates, for all \(i\).
+      Let \(F\) be the field of fractions of \(R\). We know \(F[x]\) is a Euclidean domain and
+      hence it is a PID and hence a UFD. Moreover, by Gauss' Lemma, each \(p_i, q_j\) remains irreducible in \(F[x]\).
+      Thus \(n = t\) and, after reordering, \(p_i(x)\) and \(q_i(x)\) are associate in \(F[x]\), for all \(i\). This means that for each \(i\) we have \(p_i(x) = \frac{r_i}{s_i} q_i\), for some non-zero elements \(r_i,s_i\) of \(R\), and hence \(s_i p_i(x) = r_i q_i(x)\). But since \(p_i, q_j\) are primitive, we have \(s_i = \mathrm{cont}(s_i p_i(x))\)
+      and \(r_i = \mathrm{cont}(r_i q_i(x))\). It follows that \(s_i\) and \(r_i\) are
+      associates in \(R\) and hence \(p_i = u q_i\) for some unit \(u\).
+    </p>
+  </section>
+
+  <section class="callout corollary" role="region" aria-labelledby="cor-10-3-5">
+    <h3 id="cor-10-3-5">Corollary 10.3.5</h3>
+    <p>
+      Let \(F\) be a field. Then \(F[x_1,\dots,x_n]\) and \(\mathbb{Z}[x_1,\dots,x_n]\) are UFDs.
+    </p>
+  </section>
+
+  <p>
+    The next application may be familiar from elementary algebra.
+  </p>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-10-3-6">
+    <h3 id="thm-10-3-6">Theorem 10.3.6 (Rational root test)</h3>
+    <p>
+      Let \(R\) be a UFD, and \(F=\mathrm{Frac}(R)\).
+      Let
+      \[
+        f(x) = a_n x^n + \cdots + a_1 x + a_0 \in R[x],
+      \]
+      and \(a_n,a_0\neq 0\) in \(R\).
+      Suppose that \(p/q\in F\) is a root of \(f\) with \(p/q\) in lowest terms, meaning \(p\) and \(q\) have no common nonunit divisor in \(R\). Then \(p \mid a_0\) and \(q \mid a_n\).
+    </p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-10-3-6">
+    <h3 id="prf-10-3-6">Proof (of Theorem 10.3.6)</h3>
+    <p>
+      If \(p/q\) is a root of \(f\), then \(x-p/q\) divides \(f\) in \(F[x]\) and likewise \(qx-p\) divides \(f\) in \(F[x]\), so we can write \(f= (qx-p)g\) for some \(g\in F[x]\); we can then write \(df = (qx-p)g'\) for some \(g'\in R[x]\) and \(d\in R\). By Gauss' Lemma, since \(qx-p\) is irreducible over \(F[x]\) and is primitive, it is irreducible over \(R[x]\). Since \(R[x]\) is a UFD, \(qx-p\) is a prime element, and for degree reasons, \(qx-p \nmid d\), so \(qx-p \mid f\). By distributing coefficients, one finds that the leading coefficient of \(f\) must be a multiple of \(q\), and the constant coefficient must be a multiple of \(p\).
+    </p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-10-3-7">
+    <h3 id="ex-10-3-7">Example 10.3.7</h3>
+    <p>
+      The polynomial \(x^5- x + 6 \in \mathbb{Q}[x]\) has no rational roots. Indeed, by the rational root test, any rational root would be of the form \(p/q\) with \(p \mid 6\) and \(q \mid 1\). Thus, it suffices to check \(\pm 1, \pm 2, \pm 3, \pm 6\), and none of these is a root.
+    </p>
+  </section>
+
+</section>
+
+
 
 
 </main>
