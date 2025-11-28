@@ -1,0 +1,113 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=1in]{geometry}
+\usepackage{paralist,amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,colonequals}
+\usepackage[shortlabels]{enumitem}
+\usepackage[all]{xy}
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\solutione}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{leaf}This solution is embargoed.}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+
+\newcommand{\rsa}{\rightsquigarrow}
+
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+
+\DeclareMathOperator{\ord}{ord}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{Eisenstein's Criterion}
+	
+	
+\begin{framed}
+\textsc{Eisenstein's criterion:} Let $R$ be a domain and \[ f= x^n + a_{n-1} x^{n-1} + \cdots + a_0 \]
+be a monic polynomial of degree at least one. If there is a prime ideal $P$ of $R$ such that $a_0 ,\dots,a_{n-1} \in P$ but $a_0\notin P^2$, then $f$ is irreducible in $R[x]$.
+
+\
+
+\textsc{Corollary:} Let $R$ be a UFD and  \[ f= x^n + a_{n-1} x^{n-1} + \cdots + a_0 \]
+be a monic polynomial of degree at least one. If there is an irreducible element $p\in R$ such that $p \, | \, a_i$ for $i=0,\dots,n-1$ and $p^2 \, \nmid \, a_0$, then $f$ is irreducible in $R[x]$.
+\end{framed}
+
+
+\
+
+\begin{enumerate}
+\itemA Examples:
+\begin{enumerate}
+\itema Show that the polynomial $x^5 - 6x + 18$ is irreducible in $\mathbb{Z}[x]$. 
+\itema Let $p$ be a prime number and $n\geq 1$. Show that $x^n - p$ is irreducible in $\mathbb{Z}[x]$.
+\itema Show that the polynomials from the previous parts are irreducible over $\mathbb{Q}[x]$.
+\itema Let $F$ be a field. Show that $x^2 + xy + y$ is irreducible in $F[x,y]$.
+\end{enumerate}
+
+
+\
+
+\itemA Proof of Eisenstein's Criterion:
+\begin{enumerate}
+\itema Prove the following Lemma: If $T$ is an integral domain and $g,h\in T[x]$ are polynomials such that $gh = x^n$ for some $n\geq 1$, then $g=x^i$ and $h=x^j$ for some $0\leq i,j, \leq n$ with $i+j=n$.
+\itema In the setting of Eisenstein's criterion, suppose that $f=GH$ for some $G,H\in R[x]$ of positive degree. Apply the Lemma with $T=R/P$. What can you deduce about $G,H$?
+\itema Consider the constant coefficient of $GH$, and obtain a decisive contradiction.
+\end{enumerate}
+
+\
+
+\itemB More Examples:
+\begin{enumerate}
+\itemb Show that the polynomial $x^3+y^3+z^3$ is irreducible in $\mathbb{C}[x,y,z]$.
+\itemb Show that\footnote{Hint: Show that $f(x+1)$ is irreducible.} the polynomial $x^4+ x^3+ x^2 + x + 1$ is irreducible in $\mathbb{Q}[x]$. 
+\itemb Let $p$ be a prime integer. Show that $x^{p-1} + x^{p-2} + \cdots + 1$ is irreducible in $\mathbb{Q}[x]$.
+\end{enumerate}
+\end{enumerate}
+
+\end{document}
