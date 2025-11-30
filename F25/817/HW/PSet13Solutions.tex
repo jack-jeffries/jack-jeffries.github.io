@@ -1,0 +1,203 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,enumerate}
+\usepackage[]{graphicx}
+\usepackage{color,subfigure}
+\definecolor{scarlet}{rgb}{0.81,0,0}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage[all]{xypic}
+\usepackage[colorlinks=true,citecolor=scarlet,linkcolor=scarlet]{hyperref}
+\usepackage{colonequals}
+
+\usepackage{fancyhdr, lastpage}
+\pagestyle{fancy}
+\fancyfoot[C]{{\thepage} of \pageref{LastPage}}
+
+
+
+\DeclareMathOperator{\mSpec}{mSpec}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Ass}{Ass}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\height}{height}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\ann}{ann}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\coker}{coker}
+%\DeclareMathOperator{\ker}{ker}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\M}{M}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\ch}{char}
+\DeclareMathOperator{\Aut}{Aut}
+
+%\DeclareMathOperator{\dim}{dim}
+
+\DeclareMathOperator{\lcm}{lcm}
+
+\def\ra{\rightarrow}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\ov}[1]{\overline{#1}}
+\newcommand{\norm}{\trianglelefteq}
+
+\def\ov#1{\overline{#1}}
+
+
+\title{}
+\date{\vspace{-0.5in}}
+
+\makeatletter
+\g@addto@macro\@floatboxreset\centering
+\makeatother
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+
+\begin{document}
+
+\thispagestyle{fancy}
+\pagestyle{fancy}
+\rhead{UNL $\mid$ Fall 2025}
+\lhead{Introduction to Modern Algebra I}
+
+\vspace{3em}
+
+\begin{center}
+	{\LARGE Problem Set 13 \\}
+	Due Wednesday, December 10
+\end{center}
+
+\
+
+\noindent
+{\bf Instructions:}
+You are encouraged to work together on these problems, but each student should hand in their own final draft, written in a way that indicates their individual understanding of the solutions. Never submit something for grading that you do not completely understand. You cannot use any resources besides me, your classmates, and our course notes.
+
+
+I will post the .tex code for these problems for you to use if you wish to type your homework. If you prefer not to type, please  {\em write neatly}. As a matter of good proof writing style, please use complete sentences and correct grammar. You may use any result stated or proven in class or in a homework problem, provided you reference it appropriately by either stating the result or stating its name (e.g. the definition of ring or Lagrange's Theorem). Please do not refer to theorems by their number in the course notes, as that can change.
+
+\
+
+\begin{problem}
+Consider the ring $R = \Z[x]$ and the ideal $I = (3, x^3 + x + 1)$.
+
+
+\begin{enumerate}[(a)]
+	\item Show that $R/I \cong (\Z/3)[x]/(x^3 + x + 1)$.
+	
+	\begin{proof} 
+Using the Third Isomorphism Theorem, we have
+    $$\Z[x]/I \cong (\Z[x]/(3))/(x^3+x+1).$$
+    Now consider the map quotient map $\pi\!: \Z \to \Z/3$, and let
+    $$\varphi\!: \Z[x] \longrightarrow (\Z/3)[x]$$
+    be the ring homomorphism defined by
+    $$\varphi(a_0 + a_1x + \cdots + a_nx^n) = \pi(a_0) + \pi(a_1) x + \cdots + \pi(a_n)x^n.$$
+    A polynomial is in $\ker(\varphi)$ if and only if all its coefficients are multiples of $3$, and thus $\ker(\varphi) = (3)$. Moreover, $\varphi$ is surjective by construction. By the First Isomorphism Theorem, we conclude that
+    $$\Z[x]/(3) \cong (\Z/3)[x].$$ 
+    Therefore,
+    $$\Z[x]/I \cong (\Z/3)[x]/(x^3+x+1).\qedhere$$ 
+\end{proof}
+
+		
+	\item Find, with proof, all the ideals of $R$ that contain $I$.
+	
+	\begin{proof}
+By the Lattice Isomorphism Theorem, the ideals of $(\Z/3)[x]/(x^3+x+1)$ correspond to the ideals of $(\Z/3)[x]$ that contain $x^3 + x +1$. Since $\Z/3$ is a field, $\Z/3[x]$ is a PID. Given any $f \in \Z/3[z]$, $(f) \supseteq (x^3 + x +1)$ if and only if $f$ divides $x^3 + x +1$. 
+
+The ring $\Z/3$ is a field, and over $\Z/3$ the polynomial $x^3 + x +1$ factors as 
+$$x^3 + x +1 = (x-1)(x^2+x-1).$$ 
+The polynomial $x^2+x-1$ has no roots in $\Z/3$, which we can check by explicitly evaluating it at all the three elements of $\Z/3$. Hence, by degree
+    considerations, $x^2+x-1$ must be irreducible, as any factor would have degree $1$ and lead to a root. 
+    
+Thus the ideals of $\Z/3[x]$ that contain $x^3 + x +1$ are $(1)$, $(x^3+x+1)$, $(x-1)$ and $(x^2+x-1)$.
+This gives $4$ ideals of $\Z[x]$ that contain $I$: $\Z[x]$, $I$, $(3, x-1)$ and $(3, x^2+x+1)$.
+\end{proof}
+
+\end{enumerate}
+\end{problem}
+
+
+\
+
+
+
+
+\begin{problem}
+Let $R = \Z[\sqrt{-5}]$ where $\sqrt{-5}=\sqrt{5}\cdot {i}\in \C$ and $ \Z[\sqrt{-5}]=\{a+b\sqrt{-5}\mid a,b\in\Z\}$.
+\begin{enumerate}[(a)]
+\item Prove that $R\cong \Z[x]/(x^2+5)$ and, for integers $p\geq 2$, $R/(p)\cong (\Z/p)[x]/(x^2+[5]_p)$.
+
+\begin{proof}
+Consider the evaluation homomorphism $\phi:\Z[x]\to R$ that sends $f(x)\mapsto f(\sqrt{-5})$. 
+Since $\phi(ax+b)=a\sqrt{-5}+b$ for all $a,b\in\Z$ we see that $\phi$ is onto. 
+Let $f\in \ker(\phi)$. Then by long division $f(x)=(x^2+5)q(x)+r(x)$ for some $q,r\in \Z[x]$ such that either $r=0$ or $\deg(r)\leq 1$. Thus $r(x)=ax+b$ for some $a,b\in \Z$ and so $0=f(\sqrt{-5})=a\sqrt{-5}+b$. If $a\neq 0$ then we obtain $\sqrt{-5}=-b/a\in \Q$, a contradiction, so it must be that $a=0$ and consequently $b=0$. This shows that $\ker(\phi)=(x^2+5)$ and by the First Isomorphism Theorem we conclude that there is an isomorphism $\ov{\phi}: \Z[x]/(x^2+5) \to R, \ov{\phi}(f(x)+(x^2+5))=f(\sqrt{-5})$ .
+
+Now the image of $(p)$ under $ \ov{\phi}$ is the ideal $(p)+(x^2+5)/(x^2+5)$ of  $\Z[x]/(x^2+5)$, therefore there is an induced isomorphism $$R/(p)\cong \frac{\Z[x]/(x^2+5)}{(p)+(x^2+5)/(x^2+5)}$$ and the third isomorphism theorem can be applied to deduce 
+$$R/(p)\cong \Z[x]/(x^2+5)/(p)+(x^2+5)/(x^2+5)\cong \Z[x]/(p,x^2+5).$$
+
+Finally, consider the composition of the reduction homomorphism $r:\Z[x]\to(\Z/p)[x]$ and the quotient map 
+$q':(\Z/p)[x]\to (\Z/p)[x]/(x^2+5)$. Then $\ker(q'\circ r)=(p,x^2+5)$ and since $r$ and $q'$ are onto so is $q'\circ r$. Thus again by the first isomorphism theorem we obtain $$\Z[x]/(p,x^2+5)\cong (\Z/p)[x]/(x^2+5).$$
+Putting this together with the isomorphism displayed above gives
+$$R/(p)\cong (\Z/p)[x]/(x^2+5).$$
+\end{proof}
+
+
+\item Show that the integer $7$ is irreducible\footnote{Hint: Consider the complex norm $N:\C \to \R$ given by $N(a+bi)= (a+bi)(a-bi)=a^2 + b^2$. You can use without proof that $N(\alpha \beta) = N(\alpha)N(\beta)$.}  in $R$, but is not a prime element in $R$.
+
+\begin{proof}
+First we show that $7$ is irreducible. Suppose that $7=\alpha\beta$ for some $\alpha,\beta\in \mathbb{Z}[\sqrt{-5}]$. Note that for $a+b\sqrt{-5}\in \mathbb{Z}[\sqrt{-5}]$, we have $N(a+b\sqrt{-5}) = a^2 + 5 b^2 \in \mathbb{Z}\geq 0$. Then, following the hint, we have $49 = N(7) = N(\alpha) N(\beta)$ with $N(\alpha), N(\beta)\in \mathbb{Z}\geq 0$. Thus without loss of generality we either have $N(\alpha) = N(\beta)= 7$ or $N(\alpha) = 49$ and $N(\beta)=1$.
+
+The first case is impossible, since we would have $\alpha= a + b \sqrt{-5}$ with $a,b\in \mathbb{Z}$ and $a^2 + 5 b^2 = 7$, but no such integers $a,b$ exist, as we would have $|a| ,|b| \leq 2$, and none of the nine possible cases yields a norm of $7$. In the second case, $N(\beta)=1$ implies $\beta= a + b \sqrt{-5}$ with $a^2+5b^2 = 1$, so $b=0$ and $a=\pm 1$; thus $\beta=\pm 1$, which in either case is a unit, since $1 = 1^{-1} $ and $-1 = {(-1)}^{-1}$. We conclude that $7$ is an irreducible element.
+
+Now we show that $7$ is not prime. We know that $7$ is prime if and only if the ideal $(7)$ of $R$ is prime if and only if $R/(7)$ is a domain. By part (a), we have $R/(7) \cong (\mathbb{Z}/7)[x] / (x^2 + [5]_7)$, and since being a domain is an isomorphism invariant, it suffices to show that $(x^2+ [5]_7)$ is not a prime ideal. Indeed, $x^2 + [5]_7 = (x-[3]_7)(x+[3]_7)$ shows that $x^2 + [5]_7$ is reducible, so the ideal it generates is not prime.
+\end{proof}
+\end{enumerate}
+\end{problem}
+
+\
+
+
+
+\begin{problem}
+Let $R = \Z[\sqrt{-2}]$  where $\sqrt{-2}=\sqrt{2}\cdot {i}\in \C$ and $ \Z[\sqrt{-2}]=\{a+b\sqrt{-2}\mid a,b\in\Z\}$.
+\begin{enumerate}[(a)]
+\item Show that $R$ is a Euclidean domain.
+  \begin{proof}
+Let $\alpha$, $\beta$  $\in\Z[\sqrt{-2}]$ and let $\frac{\alpha}{\beta}=p+q\sqrt{-2}\in \Q(\sqrt{-2})$ (here we use that the fraction field of $\Z[\sqrt{-2}]$ is $\Q(\sqrt{-2})$). Now pick $s,t\in\Z$ so that $|p-s|\leq 1/2$ and $|q-t|\leq 1/2$. We have
+$$\alpha=\beta(s+t\sqrt{-2})+\beta(p+q\sqrt{-2})-\beta(s+t\sqrt{-2}).$$
+Set $q=s+t\sqrt{-2}$ and set $r=\beta(p+q\sqrt{-2})-\beta(s+t\sqrt{-2})=\beta(s+t\sqrt{-2}-(p+q\sqrt{-2}))$ and notice that $q\in \Z[\sqrt{-2}]$ because $s,t\in\Z$ and $r\in \Z[\sqrt{-2}]$ by closure. If $r=0$ we're good, and if $r\neq 0$ then, using that the complex squared norm is multiplicative as well as the Pythagorean Theorem and the choice for $s,t$, we have
+$$N(r)=N(\beta(s+t\sqrt{-2}-(p+t\sqrt{-2})))=N(\beta)N(s+t\sqrt{-2}-(p+q\sqrt{-2}))$$
+$$\leq N(\beta)\cdot(1/4+2\cdot1/4)=N(\beta)\cdot\frac{3}{4}<N(\beta).$$
+Thus the norm function $N$ makes $\Z[i]$ into a Euclidean domain.
+\end{proof}
+\item Show that $R/(5)$ is a field.
+\begin{proof}
+We claim that $5$ is irreducible in $R$. Indeed, if $5=\alpha\beta$, we have $25= N(\alpha)N(\beta)$ with $N(\alpha),N(\beta)\in \mathbb{Z}_{\geq 0}$. We can see that $N(\alpha)=5$ is impossible by an analysis of cases, and if $N(\alpha)=1$ then $\alpha=\pm 1$ is a unit, similarly to above. We conclude that $5$ is irreducible. Since $R$ is a Euclidean domain, and hence a PID, we then know that $(5)$ is a maximal ideal, so $R/(5)$ is a field. 
+\end{proof}
+\item Show that for any nonzero ideal $I\subseteq R$, the quotient ring $R/I$ is finite.
+\begin{proof}
+Since $R$ is a PID, we can write $I=(f)$ and note that $f\neq 0$ since $I\neq \{0\}$. We claim that for any element $x\in R/I$ there is some $g\in R$ such that $x=g+I$ and $N(g)\leq N(f)$ or $g=0$. Indeed, by division, if $x=r+I$, we have $r=qf + g$ with $N(g)\leq N(f)$; then $x = g+I$ since $r-g=qf\in I$.
+
+Now, we note that for any $n\in \mathbb{Z}\geq 0$, the set $S_n = \{ \alpha\in R \ | \ N(r) < n\}$ is finite: indeed, if $N(a+b\sqrt{-2}) < n$, then $a^2 + 2b^2 < n$ implies $|a| , |b| <n$. By the previous claim, the map $S_n \cup \{0\} \to R/I$ given by $r \mapsto r+I$ is surjective, so $R/I$ is finite.
+\end{proof}
+\end{enumerate}
+\end{problem}
+
+
+\
+
+
+
+
+
+\end{document}
