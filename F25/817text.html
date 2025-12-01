@@ -8028,13 +8028,13 @@ A number of important examples of rings are integral domains with additional nic
     Now when \(\deg(g)>0\), let \(g = a_nx^n +\) lower order terms, with \(a_n \in A^\times\) and \(n > 0\). If \(f = 0\), then \(q=r=0\) works, so we might as well assume \(f = b_m x^m +\) lower order terms, with \(b_m \neq 0\) and \(m \geqslant 0\).
     We proceed by complete induction on \(m = \deg(f)\). If \(m < n\), we may take \(q = 0\) and \(r = f\). Assume \(m \geqslant n\), and consider
     \[
-      h := f - g \cdot (b_m/a_m) x^{m- n} = (b_m - a_m(b_m/a_m)) x^m + \text{lower order terms}.
+      h := f - g \cdot (b_m/a_n) x^{m- n} = (b_m - a_n(b_m/a_n)) x^m + \text{lower order terms}.
     \]
-    We have \(\deg(h) < m\), and thus  by induction, \(h = g \cdot q' + r\) with \(r = 0\) or \(\deg(r) < \deg(g)\). Thus
+    We have \(\deg(h) < n\), and thus  by induction, \(h = g \cdot q' + r\) with \(r = 0\) or \(\deg(r) < \deg(g)\). Thus
     \[
-      f = h + g \cdot (b_m/a_m) x^{m-n} =  g \cdot q' + r' + g \cdot (b_m/a_m) x^{m-n} = g q + r
+      f = h + g \cdot (b_m/a_n) x^{m-n} =  g \cdot q' + r' + g \cdot (b_m/a_n) x^{m-n} = g q + r
     \]
-    where \(q = q' + (b_m/a_m) x^{m-n}\).</p>
+    where \(q = q' + (b_m/a_n) x^{m-n}\).</p>
 
     <p>For uniqueness, if \(qg+r = f = q' g + r'\) with \(q,r\) and \(q',r'\) as in the statement, we have \((q-q') g = (r-r')\). If \(r-r'\neq 0\), then this is a polynomial of degree less than \(n\), but by the remark above, if \((q-q') g\neq 0\), its degree must be at least \(n\). This is a contradiction, so \(r-r'=0\), so \(r=r'\), and \((q-q')g=0\). Again by the remark, this implies \(q-q'-0\) so \(q=q'\).</p>
   </section>
