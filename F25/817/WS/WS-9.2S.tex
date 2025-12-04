@@ -1,0 +1,196 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=1in]{geometry}
+\usepackage{paralist,amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,colonequals}
+\usepackage[shortlabels]{enumitem}
+\usepackage[all]{xy}
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\solutione}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{leaf}This solution is embargoed.}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+
+\newcommand{\rsa}{\rightsquigarrow}
+
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+
+\DeclareMathOperator{\ord}{ord}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{1}
+	
+	\thispagestyle{empty}
+	
+	\section*{Principal Ideal Domains}
+	
+	
+\begin{framed}
+\textsc{From last time:} 
+\begin{itemize}
+\item A \textbf{principal ideal domain} (\textbf{PID}) is an integral domain in which every ideal is principal.
+\item Every Euclidean domain is a PID, but the converse is false.
+\end{itemize}
+
+\
+
+\textsc{Definition:} Let $R$ be a commutative ring, and $a,b\in R$.
+\begin{itemize}
+\item If there is some $c\in R$ such that $a=bc$, then we say $b$ \textbf{divides} $a$, or $b$ is a \textbf{divisor} of $a$, or $a$ is a \textbf{multiple} of $b$, and write $b \, | \, a$.
+\item We say $a$ and $b$ are \textbf{associates} if $a = ub$ for some unit $u$. Note that this relation is symmetric, since $b=u^{-1} a$ in this case.
+\item A \textbf{greatest common divisor} or \textbf{gcd} of $a$ and $b$ is an element $d\in R$ such that
+\begin{itemize}
+\item $d$ is a common divisor of $a$ and $b$, meaning $d\, | \, a$ and $d \, | \, b$, and
+\item any common divisor of $a$ and $b$ also divides $d$, meaning if $c\, | \, a$ and $c \, | \, b$, then $c \, | \, d$.
+\end{itemize}
+\item A \textbf{least common multiple} or \textbf{lcm} of $a$ and $b$ is a common multiple of $a$ and $b$ that divides any common multiple of $a$ and $b$.
+\end{itemize}
+\end{framed}
+
+
+\
+
+\begin{enumerate}
+\itemA Divisibility and principal ideals: Let $R$ be a commutative ring, and $a,b\in R$.
+\begin{enumerate}
+\itema Show that $(a) \subseteq (b)$ if and only if $b\, | \, a$.
+\solution{If $(a) \subseteq (b)$, then $a\in (b)$, so $a=bx$ for some $x$, and hence $b \,|\, a$. Conversely, if $b \, | \, a$, then $a=bx$ for some $x$, so $a\in (b)$, and by definition of generates, since $(b)$ is an ideal, we must have $(a) \subseteq (b)$.}
+\itema Show that $(a) = (b)$ if and only if $a\, | \, b$ and $b\, | \, a$.
+\solution{This follows from the previous part since $(a) = (b)$ if and only if $(a) \subseteq (b)$ and $(b)\subseteq (a)$.}
+\itema If $R$ is an integral domain, show that $a$ and $b$ are associates if and only if $(a)=(b)$.
+\solution{ If $a,b$ are associates, write $a=ub$, so $b\, | \, a$, and $b=u^{-1}a$, so $a \ | \ b$, and thus $(a)=(b)$ by the previous part. Conversely, if $(a)=(b)$, then by the previous part $a=bx$ and $b=ay$ for some $x,y\in R$, so $a=xya$. Since $R$ is a domain, $xy=1$, so $x$ is a unit, and from $a=bx$ we conclude $a,b$ are associates.}
+%\itema Use the above to find \emph{all} of the ideals of $\mathbb{Q}[x]$ that contain $(x^4-1)$.
+%\itema Use the above to find \emph{all} of the ideals of $\displaystyle \frac{\mathbb{Q}[x]}{(x^4-1)}$.
+\end{enumerate}
+
+\
+
+\itemA GCDs: Let $R$ be an integral domain, and $a,b\in R$.
+\begin{enumerate}
+\itema If $R$ is an integral domain, and $d$ and $e$ are two GCDs of $a$ and $b$, show that $d$ and $e$ are associates.
+\solution{Since $e$ is a common divisor, and $d$ is  GCD, we have $e\, | \, d$. Switching roles, $d \, | \, e$ as well, so $d$ and $e$ are associates by the previous part.}
+\itema If $(a,b)=(d)$, show that $d$ is a GCD of $a$ and $b$.
+\solution{First, $a \in (a,b) = (d)$ implies $d\, | \, a$, and likewise for $b$, so $d$ is a common divisor. Now, if $e$ is any common divisor of $a$ and $b$, then $a\in (e)$ and $b\in (e)$ implies $(a,b) \subseteq (e)$ by definition of generates, so $(d) \subseteq (e)$ and $e\, | \, d$, as required.}
+\itema Use the previous to fill in the blanks: \\
+If $R$ is a \underline{\phantom{DOMAIN}} then GCDs are unique \underline{\phantom{UP TO ASSOCIATES}}.\\
+ If $R$ is a \underline{\phantom{PID PID}} then GCDs exist. \\
+ \solution{If $R$ is a \underline{{DOMAIN}} then GCDs are unique \underline{{UP TO ASSOCIATES}}.\\
+  If $R$ is a \underline{{PID}} then GCDs exist. }
+\end{enumerate}
+
+\
+
+\itemB Euclidean algorithm: Let $R$ be an integral domain.
+\begin{enumerate}
+\itemb What is $\mathrm{gcd}(x,0)$ for $x\neq 0$?
+\itemb If $a = bq + r$, show that $\mathrm{gcd}(a,b) = \mathrm{gcd}(b,r)$.
+\itemb If $R$ is a Euclidean domain, use the previous two steps to give an algorithm to compute a GCD of two elements.
+\itemb Use this to find a single generator for the ideal $(x^6-1, x^5 - x^4 -1)$ in $\mathbb{Q}[x]$.
+\itemb Use this to find a single generator for the ideal $(13, 12-5i)$ in $\mathbb{Z}[i]$.
+\end{enumerate}
+\end{enumerate}
+
+
+
+\begin{framed}
+\textsc{Definition:} Let $R$ be a domain and $r\in R$.
+\begin{enumerate}[(i)]
+\item We say that $r$ is \textbf{irreducible} if $r\neq 0$, $r$ is not a unit, and $r=ab$ implies either $a$ or $b$ is a unit.
+\item We say that $r$ is \textbf{prime} if $r\neq 0$, $r$ is not a unit, and $r\, | \, ab$ implies $r\, | \, a$ or  $r\, | \, b$.
+\end{enumerate}
+
+\
+
+\textsc{Remark:} An element $r$ of a domain $R$ is prime if and only if $(r)$ is a prime ideal.
+
+\
+
+\textsc{Theorem:} Let $R$ be an integral domain and $r\in R$.
+\begin{enumerate}[(i)]
+\item If $r$ is prime, then $r$ is irreducible.
+\item If $R$ is a PID, and $r$ is irreducible, then $r$ is prime. Moreover, in this case $(r)$ is a maximal ideal.
+\end{enumerate}
+\end{framed}
+
+
+\begin{enumerate}
+\setcounter{enumi}{3}
+\itemA Examples of irreducible elements:
+\begin{enumerate}
+\itema Show\footnote{Hint: $5=2^2+1^2$.} that $5$ is not irreducible in $\mathbb{Z}[i]$.
+\solution{We have $5= (2+i)(2-i)$. We claim that neither $2+i$ nor $2-i$ is a unit. To see it, consider $N: \mathbb{Z}[i]\smallsetminus \{0\} \to \mathbb{Z}_{\geq 0}$. This is multiplicative, so if $\alpha \beta = 1$ in $\mathbb{Z}[i]$, then $N(\alpha) N(\beta) = 1$ in $\mathbb{Z}_{\geq 0}$ so $N(\alpha) = 1$, but $N(2\pm i) = 5$.}
+\itema Show\footnote{Hint: If $f=gh$ with $g,h$ nonunits, argue that without loss of generality we can take $g=x-[n]$ for some $n$, and show that this is impossible.} that $f=x^2 + [1]$ is irreducible in $\mathbb{Z}/3[x]$. \solution{If $f=gh$, then $2 = \deg(f) = \deg(g) + \deg(h)$. A polynomial of degree $0$ is a nonzero constant, which is a unit in $\mathbb{Z}/3$ since it is a field. Thus, if $f$ is reducible, we have $\deg(g)=1$, and dividing through by the leading coefficient and moving that over to $h$, we can take $g=x-[n]$. But then $[n]$ would be a root of $f$ in $\mathbb{Z}/3$. Plugging in $[n]=[0],[1],[2]$ we see that there are no roots, so this is impossible. We conclude that $f$ is irreducible.} 
+\itema Use the Theorem to deduce that $\displaystyle \frac{\mathbb{Z}[i]}{(5)}$ is \emph{not} an integral domain, and $\displaystyle \frac{\mathbb{Z}/3[x]}{(x^2 + [1])}$ \emph{is} a field.
+\solution{Since prime elements are irreducible and $5$ is reducible, it is not a prime element in $\mathbb{Z}[i]$. Thus $(5)$ is not a prime ideal, so $\displaystyle \frac{\mathbb{Z}[i]}{(5)}$ is not an integral domain.
+
+Now, $\mathbb{Z}/3[x]$ is a PID, and $x^2 + [1]$ is an irreducible element, so by the theorem, $(x^2+[1])$ is a maximal ideal. Thus $\displaystyle \frac{\mathbb{Z}/3[x]}{(x^2 + [1])}$ {is} a field.}
+\end{enumerate}
+
+\
+
+\itemB Proof of Theorem:
+\begin{enumerate}
+\itemb Prove part (i) of the Theorem.
+\solution{Suppose that $r$ is prime and $r= ab$. Then $r \, | \, ab$ implies, without loss of generality, that $r\, | \, a$, so there is some $x$ such that $a=abx$. Then $bx=1$ so $b$ is a unit. This show that $r$ is irreducible.} 
+\itemb Let $R$ be a PID and $r\in R$ irreducible. Explain why\footnote{Hint: We showed that every ring contains a maximal ideal. It follows from this fact and the Lattice Isomorphism theorem that every proper ideal is contained in a maximal ideal.} there exists some element $s\in R$ such that $(s)$ is a maximal ideal and $(r)\subseteq (s)$.
+\solution{Following the hint, we have that $(r)$ is contained in some maximal ideal $I$. Since $R$ is a PID, $I=(s)$ for some $s$.}
+
+\itemb Show that $(r)=(s)$, and conclude the proof of part (ii).
+\solution{Note that $s$ must be nonzero since $0\neq r\in I$, and not a unit since $I\neq R$. Then $s \, | \, r$, so $r= sx$ for some $x$. But $r$ is irreducible and $s$ is not a unit, so $x$ is a unit. Thus from the above, $(r)= (s)$, and hence $(r)$ is maximal.}
+\end{enumerate}
+
+\
+
+\itemB More irreducible elements:
+\begin{enumerate}
+\itemb Let $F$ be a field. Show that any polynomial $f\in F[x]$ of degree at least two that has a root is reducible.
+\itemb Give an example of a reducible polynomial over a field with no root.
+\itemb Show that $11$ is irreducible\footnote{Hint: You can use the fact that the norm function $N(a+bi) = a^2 + b^2$ is multiplicative.} in $\mathbb{Z}[i]$.
+
+\end{enumerate}
+\end{enumerate}
+
+\end{document}
