@@ -8698,18 +8698,26 @@ which is an isomorphism of additive groups \( (\dfrac{F[x]}{(f)},+) \cong (F,+)^
     </p>
   </section>
 
+ <section class="callout definition" role="region" aria-labelledby="def-10-3-1">
+    <h3 id="def-10-1-7">Definition 10.1.7</h3>
+    <p>
+      Suppose \(R\) is a UFD and \(f(x) \in R[x]\). A <em>content of \(f(x)\)</em>, denoted \(\mathrm{cont}(f) \in R\), is a gcd of the coefficients of \(f(x)\).
+      We say \(f(x)\) is <em>primitive</em> if \(\mathrm{cont}(f(x))\) is a unit.
+    </p>
+  </section>
+
   <section class="callout theorem" role="region" aria-labelledby="thm-10-1-8">
     <h3 id="thm-10-1-8">Theorem 10.1.8</h3>
     <p>
       Let \(R\) be a UFD with field of fractions \(F\). Regard \(R\) as a subring of \(F\) (via the canonical map) and view elements in \(R[x]\) as also being elements of \(F[x]\) via the induced map \(R[x]\hookrightarrow F[x]\).
-      Let \(f \in R[x]\). If \(f\) is irreducible when regarded as an element in \(F[x]\) and the \(\gcd\) of the coefficients of \(f\) is a unit in \(R\), then \(f\) is irreducible as an element of \(R[x]\).
+      Let \(f \in R[x]\). If \(f\) is irreducible when regarded as an element in \(F[x]\) and  \(f\) is primitive, then \(f\) is irreducible as an element of \(R[x]\).
     </p>
   </section>
 
   <section class="callout remark" role="region" aria-labelledby="rmk-10-1-9">
     <h3 id="rmk-10-1-9">Remark 10.1.9</h3>
     <p>
-      This is false if the gcd of the coefficients of \(f\) is not a unit. To see this, note that \(2x + 6\) is irreducible in \(\mathbb{Q}[x]\) but not in \(\mathbb{Z}[x]\), since it factors as \(2(x+3)\). In \(\mathbb{Q}[x]\), however, this factorization is trivial because \(2\) is a unit. 
+      This is false if \(f\) is not primitive. To see this, note that \(2x + 6\) is irreducible in \(\mathbb{Q}[x]\) but not in \(\mathbb{Z}[x]\), since it factors as \(2(x+3)\). In \(\mathbb{Q}[x]\), however, this factorization is trivial because \(2\) is a unit. In fact, the converse of the Theorem is also true (exercise).
     </p>
   </section>
 
@@ -8757,6 +8765,37 @@ which is an isomorphism of additive groups \( (\dfrac{F[x]}{(f)},+) \cong (F,+)^
         q^2 = x^4 + x^2 + 1 \ne \overline{f},
       \] 
       we have reached a contradiction. We conclude that \(f\) is irreducible in \(\mathbb{Q}[x]\). 
+    </p>
+  </section>
+
+ <p>
+    The next application may be familiar from elementary algebra.
+  </p>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-10-3-6">
+    <h3 id="thm-10-1-6">Theorem 10.1.12 (Rational root test)</h3>
+    <p>
+      Let \(R\) be a UFD, and \(F=\mathrm{Frac}(R)\).
+      Let
+      \[
+        f(x) = a_n x^n + \cdots + a_1 x + a_0 \in R[x],
+      \]
+      and \(a_n,a_0\neq 0\) in \(R\).
+      Suppose that \(p/q\in F\) is a root of \(f\) with \(p/q\) in lowest terms, meaning \(p\) and \(q\) have no common nonunit divisor in \(R\). Then \(p \mid a_0\) and \(q \mid a_n\).
+    </p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-10-3-6">
+    <h3 id="prf-10-1-12">Proof (of Theorem 10.1.12)</h3>
+    <p>
+      If \(p/q\) is a root of \(f\), then \(x-p/q\) divides \(f\) in \(F[x]\) and likewise \(qx-p\) divides \(f\) in \(F[x]\), so we can write \(f= (qx-p)g\) for some \(g\in F[x]\); we can then write \(df = (qx-p)g'\) for some \(g'\in R[x]\) and \(d\in R\). By Gauss' Lemma, since \(qx-p\) is irreducible over \(F[x]\) and is primitive, it is irreducible over \(R[x]\). Since \(R[x]\) is a UFD, \(qx-p\) is a prime element, and for degree reasons, \(qx-p \nmid d\), so \(qx-p \mid f\). By distributing coefficients, one finds that the leading coefficient of \(f\) must be a multiple of \(q\), and the constant coefficient must be a multiple of \(p\).
+    </p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-10-3-7">
+    <h3 id="ex-10-1-13">Example 10.1.13</h3>
+    <p>
+      The polynomial \(x^5- x + 6 \in \mathbb{Q}[x]\) has no rational roots. Indeed, by the rational root test, any rational root would be of the form \(p/q\) with \(p \mid 6\) and \(q \mid 1\). Thus, it suffices to check \(\pm 1, \pm 2, \pm 3, \pm 6\), and none of these is a root.
     </p>
   </section>
 
@@ -8869,26 +8908,16 @@ which is an isomorphism of additive groups \( (\dfrac{F[x]}{(f)},+) \cong (F,+)^
 </section>
 
 <section id="applications-of-gauss-lemma" aria-labelledby="sec-10-3-heading">
-  <h2 id="sec-10-3-heading">10.3 Applications of Gauss' Lemma</h2>
+  <h2 id="sec-10-3-heading">10.3 Polynomial rings over UFDs</h2>
 
   <p>
-    In this section, we will give a couple more applications of Gauss' Lemma. First we make a convenient definition.
+    In this section, we complete the proof of Theorem 10.1.4.
   </p>
 
-  <section class="callout definition" role="region" aria-labelledby="def-10-3-1">
-    <h3 id="def-10-3-1">Definition 10.3.1</h3>
-    <p>
-      Suppose \(R\) is a UFD and \(f(x) \in R[x]\). A <em>content of \(f(x)\)</em>, denoted \(\mathrm{cont}(f) \in R\), is a gcd of the coefficients of \(f(x)\).
-      We say \(f(x)\) is <em>primitive</em> if \(\mathrm{cont}(f(x))\) is a unit.
-    </p>
-  </section>
-
-  <p>
-    Note that a content of \(f\) is a unit if and only if every other content of \(f\) is also a unit. By Gauss' Lemma, in the setting of the definition a primitive polynomial in \(R[x]\) that is irreducible over \(\mathrm{Frac}(R)[x]\) is irreducible over \(R[x]\).
-  </p>
+ 
 
   <section class="callout exercise" role="region" aria-labelledby="ex-10-3-2">
-    <h3 id="ex-10-3-2">Exercise 10.3.2</h3>
+    <h3 id="ex-10-3-1">Exercise 10.3.1</h3>
     <p>
       Assume \(R\) is a UFD and \(f(x), g(x) \in R[x]\).
       Then \(f(x)\) and \(g(x)\) are primitive if and only if \(f(x) g(x)\) is primitive.
@@ -8896,14 +8925,14 @@ which is an isomorphism of additive groups \( (\dfrac{F[x]}{(f)},+) \cong (F,+)^
   </section>
 
   <section class="callout lemma" role="region" aria-labelledby="lem-10-3-3">
-    <h3 id="lem-10-3-3">Lemma 10.3.3</h3>
+    <h3 id="lem-10-3-3">Lemma 10.3.2</h3>
     <p>
       Suppose \(R\) is a UFD. Any primitive polynomial \(f(x)\) of positive degree in \(R[x]\) factors as a product of primitive irreducible polynomials.
     </p>
   </section>
 
   <section class="callout proof" role="region" aria-labelledby="prf-10-3-3">
-    <h3 id="prf-10-3-3">Proof (of Lemma 10.3.3)</h3>
+    <h3 id="prf-10-3-2">Proof (of Lemma 10.3.2)</h3>
     <p>
       If \(f(x)\) is irreducible, there is nothing to prove. Otherwise there is a nontrivial factorization \(f(x) = a(x) b(x)\), and since \(f(x)\) is primitive, we must have \(\deg(a(x)) &lt;\deg(f(x))\) and \(\deg(b(x)) &lt;\deg(f(x))\).
       Moreover, by the exercise above, each of \(a(x)\) and \(b(x)\) must also be primitive. The existence of irreducible factorizations for primitive polynomials thus follows by induction on degree.
@@ -8911,14 +8940,14 @@ which is an isomorphism of additive groups \( (\dfrac{F[x]}{(f)},+) \cong (F,+)^
   </section>
 
   <section class="callout theorem" role="region" aria-labelledby="thm-10-3-4">
-    <h3 id="thm-10-3-4">Theorem 10.3.4</h3>
+    <h3 id="thm-10-3-3">Theorem 10.1.4</h3>
     <p>
       Let \(R\) be a UFD. Then the polynomial ring \(R[x]\) is a UFD.
     </p>
   </section>
 
   <section class="callout proof" role="region" aria-labelledby="prf-10-3-4">
-    <h3 id="prf-10-3-4">Proof (of Theorem 10.3.4)</h3>
+    <h3 id="prf-10-3-4">Proof (of Theorem 10.1.4)</h3>
     <p>
       We first show factorizations exist.
       Let \(f(x) \in R[x]\).
@@ -8969,36 +8998,7 @@ which is an isomorphism of additive groups \( (\dfrac{F[x]}{(f)},+) \cong (F,+)^
     </p>
   </section>
 
-  <p>
-    The next application may be familiar from elementary algebra.
-  </p>
-
-  <section class="callout theorem" role="region" aria-labelledby="thm-10-3-6">
-    <h3 id="thm-10-3-6">Theorem 10.3.6 (Rational root test)</h3>
-    <p>
-      Let \(R\) be a UFD, and \(F=\mathrm{Frac}(R)\).
-      Let
-      \[
-        f(x) = a_n x^n + \cdots + a_1 x + a_0 \in R[x],
-      \]
-      and \(a_n,a_0\neq 0\) in \(R\).
-      Suppose that \(p/q\in F\) is a root of \(f\) with \(p/q\) in lowest terms, meaning \(p\) and \(q\) have no common nonunit divisor in \(R\). Then \(p \mid a_0\) and \(q \mid a_n\).
-    </p>
-  </section>
-
-  <section class="callout proof" role="region" aria-labelledby="prf-10-3-6">
-    <h3 id="prf-10-3-6">Proof (of Theorem 10.3.6)</h3>
-    <p>
-      If \(p/q\) is a root of \(f\), then \(x-p/q\) divides \(f\) in \(F[x]\) and likewise \(qx-p\) divides \(f\) in \(F[x]\), so we can write \(f= (qx-p)g\) for some \(g\in F[x]\); we can then write \(df = (qx-p)g'\) for some \(g'\in R[x]\) and \(d\in R\). By Gauss' Lemma, since \(qx-p\) is irreducible over \(F[x]\) and is primitive, it is irreducible over \(R[x]\). Since \(R[x]\) is a UFD, \(qx-p\) is a prime element, and for degree reasons, \(qx-p \nmid d\), so \(qx-p \mid f\). By distributing coefficients, one finds that the leading coefficient of \(f\) must be a multiple of \(q\), and the constant coefficient must be a multiple of \(p\).
-    </p>
-  </section>
-
-  <section class="callout example" role="region" aria-labelledby="ex-10-3-7">
-    <h3 id="ex-10-3-7">Example 10.3.7</h3>
-    <p>
-      The polynomial \(x^5- x + 6 \in \mathbb{Q}[x]\) has no rational roots. Indeed, by the rational root test, any rational root would be of the form \(p/q\) with \(p \mid 6\) and \(q \mid 1\). Thus, it suffices to check \(\pm 1, \pm 2, \pm 3, \pm 6\), and none of these is a root.
-    </p>
-  </section>
+ 
 
 </section>
 
