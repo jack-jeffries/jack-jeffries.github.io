@@ -1,0 +1,107 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=1in]{geometry}
+\usepackage{paralist,amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,colonequals}
+\usepackage[shortlabels]{enumitem}
+\usepackage[all]{xy}
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\solutione}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{leaf}This solution is embargoed.}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+
+\newcommand{\rsa}{\rightsquigarrow}
+
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+\newcommand\blank[1]{\underline{\phantom{ #1 }}}
+\newcommand\Ar{$\Longrightarrow$ }
+\newcommand\Arr{$\Longleftrightarrow$ }
+
+\DeclareMathOperator{\ord}{ord}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{Fill in the blank ring review}
+
+	
+	\begin{framed}Fill in the blanks. Be sure to choose the most general/strongest correct answer when more than one correct answer is possible.\end{framed}
+	
+	\
+	
+	\begin{itemize}
+	\item The kernel of a ring homomorphism is a(n) \blank{abcdefgh}.
+	\item The image of a ring homomorphism is a(n) \blank{abcdefgh}.
+\item Use the candidates below to fill in the following:\\ \blank{abcdefghij} \Ar \blank{abcdefghij} \Ar \blank{abcdefghij} \Ar \blank{abcdefghij} \Ar \blank{abcdefghij}.
+\begin{itemize}
+\item domain
+\item Euclidean domain
+\item field
+\item PID
+\item UFD
+\end{itemize}
+\item In a ring, unit \blank{abcdefgh} zerodivisor.
+\item A commutative ring has (exact) division by nonzero elements if it is a \blank{abcdefg}.
+\item A commutative ring has cancellation by nonzero elements if it is a \blank{abcdefg}.
+\item A commutative ring has division with remainder by nonzero elements if it is a  \blank{abcdefg}.
+\item In\footnote{Express in terms of divides.} a commutative ring, $(a) \subseteq (b)$ \Arr \blank{abcdefgh}.
+\item In\footnotemark[2] a commutative ring, $(a) = (b)$ \Arr \blank{abcdefgh}.
+\item In\footnote{Express in terms of a word.} a \blank{abcdefg}, $(a) = (b)$ \Arr \blank{abcdegh}.
+\item In a \blank{abcdefg}, GCDs exist.
+\item In a \blank{abcdefg}, the GCD of two elements is a linear combination of them.
+\item In a \blank{abcdefg}, GCDs are unique \blank{abcdefghijklmnop}.
+\item In a \blank{abcdefg}, maximal ideal \Ar prime ideal.
+\item In a \blank{abcdefg}, (nonzero) prime ideal \Ar maximal ideal.
+\item In a commutative ring $R$, $I$ is a maximal ideal \Arr $R/I$ \blank{abcdefghijkl}.
+\item In a commutative ring $R$, $I$ is a prime ideal \Arr $R/I$ \blank{abcdefghijkl}.
+\item In a \blank{abcdefg}, prime element \Ar irreducible element.
+\item In a \blank{abcdefg}, irreducible element \Ar prime element.
+\end{itemize}
+	
+	
+\end{document}
