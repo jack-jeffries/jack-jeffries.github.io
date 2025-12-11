@@ -8813,15 +8813,19 @@ which is an isomorphism of additive groups \( (\dfrac{F[x]}{(f)},+) \cong (F,+)^
       \[
         \overline{f} = x^4 + x^3 + 1 \in (\mathbb{Z}/2)[x].
       \] 
-      This polynomial does not have a root, as the only possibilities are \(0\) and \(1\), and hence it has no linear factors. Therefore, \(\overline{g}\) and \(\overline{h}\) must be irreducible of degree \(2\). 
-      But the only irreducible polynomial of degree \(2\) in \((\mathbb{Z}/2)[x]\) is \(q = x^2+x + 1\), since we can check one by one and see that all the other three quadratic polynomials have roots.
-      Since 
-      \[
-        q^2 = x^4 + x^2 + 1 \ne \overline{f},
-      \] 
-      we have reached a contradiction. We conclude that \(f\) is irreducible in \(\mathbb{Q}[x]\). 
+      This polynomial does not have a root, as the only possibilities are \(0\) and \(1\), and hence it has no linear factors. Therefore, \(\overline{g}\) and \(\overline{h}\) must have degree \(2\). 
+We can assume that both are monic, and write a factorization
+\[ x^4 + x^3 +1 = (x^2 + ax + b)(x^2 + cx + d)\] 
+to get a system of equations
+\[ a+c = 1, \ b + ac + d = 0, \ ad+bc = 0,  \, bd=1\]
+in \( \mathbb{Z}/2\). We get \(b=d=1\) from the last, \(ac=0\) from the second, \( a=0\) and \(c=1\) without loss of generality from the first, but then \(ad+bc=1\), so there is no solution. 
+ We conclude that \(f\) is irreducible in \(\mathbb{Q}[x]\). 
     </p>
   </section>
+
+
+
+
 
  <p>
     The next application may be familiar from elementary algebra.
@@ -8853,6 +8857,16 @@ which is an isomorphism of additive groups \( (\dfrac{F[x]}{(f)},+) \cong (F,+)^
       The polynomial \(x^5- x + 6 \in \mathbb{Q}[x]\) has no rational roots. Indeed, by the rational root test, any rational root would be of the form \(p/q\) with \(p \mid 6\) and \(q \mid 1\). Thus, it suffices to check \(\pm 1, \pm 2, \pm 3, \pm 6\), and none of these is a root.
     </p>
   </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-10-3-7">
+    <h3 id="ex-10-1-14">Example 10.1.14</h3>
+    <p>
+      Let us show that 
+\[ f(x) = x^4 + 2x^2 + x + 9 \]
+is irreducible in \( \mathbb{Q}[x]\). Again, by Gauss' Lemma, it suffices to show that \( f(x) \) is irreducible in \( \mathbb{Z}[x]\).  Note that \( f\) is monic, so given a factorization \( f =gh\), with \(g,h\) nonconstant, we can assume \(g, h\) are monic in \(\mathbb{Z}[x]\). Reducing modulo \( 3\) we get \( \overline{f} = x^4 - x^2 + x = x (x^3 - x +1)\) with both factors irreducible, since the latter has no root. Thus, by unique factorization, since \(g,h\) are monic, we must have \( \overline{g} = x \) and \( \overline{h} = x^3-x+1\) or vice versa. This implies that \(f\) has a linear factor in \(\mathbb{Q}[x]\), and hence has a root. By the Rational root theorem, this must be one of \( \pm 1, \pm 3, \pm 9\). Plugging these in, we see there is no such root. We conclude that \(f\) is irreducible in \(\mathbb{Q}[x]\). 
+    </p>
+  </section>
+
 
 </section>
 
