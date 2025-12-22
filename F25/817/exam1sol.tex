@@ -1,0 +1,179 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,enumerate}
+\usepackage[]{graphicx}
+\usepackage{color,subfigure}
+\definecolor{scarlet}{rgb}{0.81,0,0}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage[all]{xypic}
+\usepackage[colorlinks=true,citecolor=scarlet,linkcolor=scarlet]{hyperref}
+\usepackage{colonequals}
+
+\usepackage{fancyhdr, lastpage}
+\pagestyle{fancy}
+\fancyfoot[C]{{\thepage} of \pageref{LastPage}}
+
+
+
+\DeclareMathOperator{\mSpec}{mSpec}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Ass}{Ass}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\height}{height}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\ann}{ann}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\coker}{coker}
+%\DeclareMathOperator{\ker}{ker}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\M}{M}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\ch}{char}
+\DeclareMathOperator{\Aut}{Aut}
+%\DeclareMathOperator{\dim}{dim}
+
+\DeclareMathOperator{\lcm}{lcm}
+
+\def\ra{\rightarrow}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\ov}[1]{\overline{#1}}
+
+\def\ov#1{\overline{#1}}
+
+
+\title{}
+\date{\vspace{-0.5in}}
+
+\makeatletter
+\g@addto@macro\@floatboxreset\centering
+\makeatother
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+
+\begin{document}
+
+\thispagestyle{fancy}
+\pagestyle{fancy}
+\rhead{UNL $\mid$ Fall 2025}
+\lhead{Introduction to Modern Algebra I}
+
+\vspace{3em}
+
+\begin{center}
+	{\LARGE Midterm Exam}
+\end{center}
+
+\
+
+\noindent
+{\bf Instructions:}
+Solve \emph{two} problems from Part 1 and \emph{two} problems from Part 2. You may use any results proved in class or in the problem sets, except for the specific question being asked. You should clearly state any facts you are using. You are also allowed to use anything stated in
+one problem to solve a different problem, even if you have not yet proved it. Remember to show
+all your work, and to write clearly and using complete sentences. No calculators, notes, cellphones,
+smartwatches, or other outside assistance allowed.
+
+\section*{Part 1: Old problems}
+
+Choose \emph{two} of the following problems.
+
+\begin{enumerate}
+ 
+ \item[(1)] Prove that, for any $n\geq 2$, there is no nontrivial\footnote{Recall that a homomorphism is \emph{trivial} if its image is $\{e\}$.} group homomorphism $\Z/n \to \Z$.
+ 
+ \begin{proof}
+ Let $\phi: Z/n \to \Z$ be a group homomorphism. Then 
+ \[ 0 = \phi ([0]) = \phi(\underbrace{[1] + \cdots + [1]}_{n \, \text{times}}) = \underbrace{ \phi([1]) + \cdots + \phi([1])}_{n \, \text{times}} = n \phi([1]) \]
+ and since $n\neq 0$, we must have $\phi([1])=0$. Thus $\phi$ is trivial.
+ \end{proof} 
+           
+            
+ \item[(2)] Let $G$ be a group and $H$ a subgroup of $G$. The centralizer of $H$ in $G$ is the set of elements of $G$ that commute with each element of $H$:
+  $$
+  C_G(H) := \{g \in G \mid gh = hg \text{ for all $h \in H$} \} = \{g \in G \mid ghg^{-1} = h \text{ for all $h \in H$} \}.
+  $$
+  Prove that if $H$ is normal in $G$, then $G/C_G(H)$ is isomorphic to a subgroup of the automorphism group of $H$.
+  \begin{proof}
+  Note that since $H$ is normal, for any $g\in G$ the map $c_g:G\to G$ given by $c_g(x) = gxg^{-1}$ restricts to a map $H\to H$. Moreover, $c_g$ is an automorphism of $H$: it is a homomorphism since $c_g(hh') = ghh'g^{-1} = ghg^{-1} gh'g^{-1} = c_g(h) c_g(h')$, and it has inverse $c_{g^{-1}}$.
+  
+  We claim that the map $\psi: G\to \mathrm{Aut}(H)$ given by $\psi(g) = c_g$ is a homomorphism. Indeed, to show that $\psi(gg') = \psi(g)\psi(g')$ for $g,g'\in G$, we compute for $h\in H$:
+  \[ \psi(gg')(h) = c_{gg'}(h) = gg' h (gg')^{-1} = g g' h g'^{-1} g^{-1} = c_g(c_{g'}(h)) = (\psi(g)\circ\psi(g')) (h).\]
+  Thus $\psi$ is a homomorphism. The kernel of $\psi$ is $C_G(H)$, since
+  \[ \psi(g) = e_H \ \Longleftrightarrow \ c_g(h) = h \ \text{for all} \ h\in H  \  \Longleftrightarrow \ ghg^{-1} = h \ \text{for all} \ h\in H  \  \Longleftrightarrow \ g\in C_G(H).\]
+  Thus, by the First Isomorphism Theorem, \[G/C_G(H) \cong \mathrm{im}(\psi) \leq \mathrm{Aut}(H).\qedhere\]
+  \end{proof}
+ 
+   \item[(3)] Let $G$ be a group of order $p^n$, for some prime $p$ and some $n\geq 1$, acting on a finite set $X$.
+ Suppose $p$ does not divide $\# X$. Prove that there exists some element of $X$ that is fixed by all elements of $G$.
+ 
+\begin{proof}
+By the Orbit-Stabilizer Theorem, every orbit in $X$ has cardinality dividing the order of $G$. Thus, every nontrivial orbit has cardinality a power of $p$, and in particular, a multiple of $p$. Suppose that there are no fixed points. Then we have 
+\[ |X| = \sum_i | \mathrm{Orb}(x_i) |,\]
+where $x_i$ are representatives of the distinct orbits. By the observations above, the right hand side is a sum of multiples of $p$, and hence a multiple of $p$. Thus $|X|$ is a multiple of $p$. We conclude that if $p$ does not divide $|X|$, then there is a fixed point.
+\end{proof}
+
+
+     
+    
+
+
+ \end{enumerate}
+
+
+
+\section*{Part 2: New problems}
+
+Choose \emph{two} of the following problems.
+
+\begin{enumerate}
+ 
+ \item[(4)] Let $G$ be a nontrivial finite group. Show\footnote{Note that you cannot use Cauchy's Theorem, since we have not shown it yet. Instead, for the forward direction, you might consider showing first that $G=\langle g\rangle$ for some $g\neq e$.}  that $G$ has no nontrivial proper subgroups if and only if $|G|$ is prime. 
+
+\begin{proof}
+Suppose that $G$ is a nontrivial finite group with no proper subgroups. Then there exists some $g\neq e$ and we must have $\langle g \rangle = G$ by assumption. In particular, $G$ is cyclic with generator $g$. Let $|G|=n$. If $n=ab$ for some $a,b>1$, then $\langle g^a \rangle$ is a nontrivial proper subgroup of order $b$, so we must have that $|G|$ is prime.
+
+Suppose that $|G|=p$ is prime. If $H\leq G$, then $|H|$ divides $|G|$ by Lagrange, so $|H|=1$ or $|H|=p$. In the first case $H=\{e\}$ is trivial, and in the second case $H=G$ is improper. Thus $G$ has no nontrivial proper subgroups.
+\end{proof}
+
+
+\item[(5)] Let $G$ be a group, and $H, H'$ be two subgroups of $G$. Prove that $H\cup H'$ is a subgroup of $G$ if and only if $H\subseteq H'$ or $H' \subseteq H$.
+\begin{proof}
+Let $H,H'$ be subgroups of $G$. If $H\subseteq H'$, then $H\cup H'= H'$ is a subgroup of $G$, and if $H' \subseteq H$, then $H \cup H' = H$ is a subgroup of $G$.
+
+Now suppose that $H \not \subseteq H'$ and $H' \not\subseteq H$. Then there exists some $h\in H\smallsetminus H'$ and there exists some $h' \in H' \smallsetminus H$. We claim that $hh'\notin H\cup H'$. Indeed, if $hh'\in H$, then $h' = h^{-1} h h'  \in H$ since $H$ is closed under inverses and products, yielding a contradiction; if $hh'\in H'$, then $h= hh'h'^{-1} \in H'$, also a contradiction. Thus, $H\cup H'$ is not closed under products, and is thus not a subgroup of $G$.
+\end{proof}
+
+
+
+
+
+
+\item[(6)] Let $G$ be a group and $N\leq H$ two subgroups of $G$.
+\begin{enumerate}
+\item[(a)] Give an example such that $N\trianglelefteq H$ and $H\trianglelefteq G$ but $N$ is not normal in $G$.
+\begin{proof}
+There are many examples. One possibility is given by $N=\langle s \rangle$, $H=\langle s, r^2 \rangle$, and $G=D_4$. To see it, we claim that $H = \{ e, s, r^2, r^2 s\}$ is a group of order $4$. Indeed, we check that $H$ is closed under multiplication and inverses: products with $e$ are trivial, and $s s = e$, $s r^2 = r^2 s$, $s (r^2 s) = r^2$, $r^2 s = r^2 s$,  
+$(r^2)^2 = e$, $(r^2 s) s=  r^2$, $r^2 (r^2 s) = s$,  $(r^2 s)^2 = e$ verifies the rest. Since $[G:H]=[H:N]=2$, then $N\trianglelefteq H$ and $H\trianglelefteq G$. But $rsr^{-1} = r^2 s$ shows that $N$ is not normal in $G$.
+\end{proof}
+
+\item[(b)] Suppose that $N\trianglelefteq G$ and $G/N$ is abelian. Prove that $H \trianglelefteq G$ and $G/H$ is abelian. 
+\begin{proof}
+By the Lattice Isomorphism Theorem that there is a bijection between subgroups of $G$ containing $N$ and subgroups of $G/N$ given by $H \mapsto H/N$, and under this correspondence, normal subgroups correspond to normal subgroups. Since $G/N$ is abelian, every subgroup of $G/N$ is normal; in particular $H/N \trianglelefteq G/N$, so by the Lattice Isomorphism Theorem, $H\trianglelefteq G$. By the Cancellation Isomorphism Theorem we also have, $G/H \cong (G/N)/(H/N)$. In particular, $G/H$ is a quotient of an abelian group, so is also abelian.
+\end{proof}
+
+\end{enumerate}
+
+\end{enumerate}
+
+
+
+\end{document}
