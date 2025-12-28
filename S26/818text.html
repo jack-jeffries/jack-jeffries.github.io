@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Math 818: Introduction to Modern Algebra II (Spring 2026)</title>
+<!-- MathJax (accessible by default) -->
+<script async="" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+    :root{
+      --accent:#1f2937; /* dark gray (good contrast) */
+      --bg-soft:#f5f5f5; /* soft background for callouts */
+      --border:#374151;  /* darker border for AA contrast */
+      --link:#800000;    /* UNL scarlet */
+      --text:#111827;    /* near-black text */
+      --muted:#4b5563;   /* muted headings */
+      --focus:#ffbf47;   /* high-contrast focus outline */
+    }
+    html:focus-within { scroll-behavior: smooth; }
+    body{
+      margin:0;
+      color:var(--text);
+      background:#fff;
+     font-family: Baskerville, "Times New Roman", Times, serif;
+     line-height:1.6;
+    }
+    a{ color:var(--link); }
+    a:focus, button:focus, [tabindex]:focus{
+      outline:3px solid var(--focus);
+      outline-offset:2px;
+    }
+    .container{
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1rem 1rem 3rem;
+    }
+    /* Skip link */
+    .skip-link{
+      position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden;
+    }
+    .skip-link:focus{
+      position:static; width:auto; height:auto; padding:.5rem .75rem; background:#000; color:#fff;
+      display:inline-block; margin: .5rem 1rem;
+    }
+
+    header[role="banner"]{
+      padding: 2rem 0 1rem;
+      border-bottom: 2px solid var(--border);
+    }
+    header h1{
+      margin:.25rem 0 0;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      font-weight: 700;
+      line-height:1.25;
+    }
+    header p{
+      margin: .25rem 0 0;
+      color: var(--muted);
+      font-family: "Helvetica Neue", Arial, sans-serif;
+    }
+
+    nav[aria-label="Table of contents"]{
+      padding: 1rem 0 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    nav[aria-label="Table of contents"] ul{
+      margin:.25rem 0 0 1rem;
+    }
+
+    main h2, main h3{
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      line-height:1.3;
+    }
+    main h2{ margin-top: 2rem; }
+    main h3{ margin-top: 1.5rem; }
+
+    /* Callout blocks */
+    .callout{
+      background: var(--bg-soft);
+      border-left: 6px solid var(--border);
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+    .callout h3{
+      margin: 0 0 .5rem;
+    }
+    .callout p{ margin: .5rem 0; }
+
+    blockquote{
+      border-left: 6px solid var(--border);
+      padding: .5rem 1rem;
+      background: #fafafa;
+      margin: 1rem 0;
+      font-style: italic;
+    }
+
+    /* Math blocks helper (optional role hook) */
+    .math-display{ margin: .75rem 0; }
+    .visually-hidden{
+      position:absolute !important;
+      height:1px; width:1px;
+      overflow:hidden; clip:rect(1px,1px,1px,1px);
+      white-space:nowrap; border:0; padding:0; margin:-1px;
+    }
+    /* Link styles inside callouts for better contrast */
+    .callout a{ text-decoration: underline; }
+
+    /* Lists spacing */
+    ul, ol{ padding-left: 1.25rem; }
+  </style>
+
+
+<style>
+    .shapes-container {
+      display: flex;
+      justify-content: center;
+      gap: 2rem; /* space between shapes */
+      margin-top: 2rem;
+    }
+    figure {
+      text-align: center;
+    }
+    svg {
+      display: block;
+      margin: 0 auto;
+    }
+  </style>
+
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="container">
+<header role="banner">
+<h1 id="page-title">Math 818: Introduction to Modern Algebra II (Spring 2026)</h1>
+<p aria-label="Author">Instructor: Jack Jeffries</p>
+</header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Table of contents (manual, descriptive, navigable) -->
+<nav aria-label="Table of contents">
+<h2 id="toc">Contents</h2>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#modules">An introduction to modules</a></li>
+<ol start=11><li><a href="#sec-11">Modules</a></li>
+<ol><li><a href="#sec-11-1-heading">Definitions and first examples</a></li>
+<li><a href="#sec-11-2-heading">Submodules and restriction of scalars</a></li>
+<li><a href="#sec-11-3-heading">Module homomorphisms and isomorphisms</a></li>
+<li><a href="#sec-11-4-heading">Module generators, bases and free modules</a></li>
+</ol>
+
+</ol>
+</ul></nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<main aria-labelledby="page-title" id="main-content" role="main">
+<section aria-labelledby="intro-heading" id="introduction">
+<h1 id="intro-heading">Introduction</h1>
+<p>
+          These are the lecture notes and class materials for Math 818 Introduction to Modern Algebra II
+          in Spring 2026. This is the second part of a two-part course on groups, rings, modules, and fields.
+          In this second half, we will discuss module theory, with a focus on the structure theory of modules over PIDs and applications to linear algebra, field theory, and Galois theory.
+          A major goal of this course is to prepare graduate students for the PhD qualifying exam in algebra.
+        </p>
+
+<p> The lecture notes for Math 817 Introduction to Modern Algebra I can be found here:
+<a href="https://jack-jeffries.github.io/F25/817text.html">Math 817 lecture notes</a>.</p>
+
+<p>
+          The lecture notes draw heavily on
+          <a aria-label="Eloísa Grifo’s Algebra Notes, PDF in a new tab" href="https://eloisagrifo.github.io/Teaching/algebra.pdf" rel="noopener" target="_blank">
+            Eloísa Grifo’s Algebra Notes (PDF, opens in new tab)
+          </a>,
+          which in turn draw from earlier lecture notes of Mark Walker and Alexandra Seceleanu.
+          The textbook <em>Abstract Algebra</em> by Dummit and Foote is a good resource covering similar material.
+        </p>
+</section>
+
+
+
+
+
+<h1 id="Modules">Modules</h1>
+<section aria-labelledby="lecture-heading" id="modules">
+<h1 id="lecture-heading">11. An Introduction to Modules</h1>
+
+<p>
+          Modules are a generalization of the concept of a vector space to any ring of scalars in place of a field. While vector spaces are key examples of modules, many of the basic facts we are used to from linear algebra are often a little more subtle over a general ring.      </p>
+
+
+
+<section id="modules-definition-and-examples" aria-labelledby="sec-11-1-heading">
+  <h2 id="sec-11-1-heading">11.1 Definitions and first examples</h2>
+
+  <section class="callout definition" role="region" aria-labelledby="def-11-1-1">
+    <h3 id="def-11-1-1">Definition 11.1.1</h3>
+    <p>
+      Let \(R\) be a ring with \(1 \neq 0\). A <strong>left \(R\)-module</strong> is an abelian group \((M,+)\)  together with an action \(R \times M \to M\) of \(R\) on \(M\), written as \((r,m) \mapsto rm\), such that for all \(r,s \in R\) and \(m,n \in M\) we have the following:
+    </p>
+    <ul>
+      <li>\((r + s)m = rm + sm\),</li>
+      <li>\((rs)m = r(sm)\),</li>
+      <li>\(r(m + n) = rm + rn\), and</li>
+      <li>\(1m = m\).</li>
+    </ul>
+    <p>
+      A <strong>right \(R\)-module</strong> is an abelian group \((M,+)\) together with an action of \(R\) on \(M\), written as \(M \times R \to M, (m,r)\mapsto mr\), such that for all \(r,s \in R\) and \(m,n \in M\) we have
+    </p>
+    <ul>
+      <li>\(m(r + s) = mr + ms\),</li>
+      <li>\(m(rs) = (mr)s\),</li>
+      <li>\((m + n)r = mr + nr\), and</li>
+      <li>\(m1 = m\).</li>
+    </ul>
+  </section>
+
+  <p>
+    By default, we will be studying left \(R\)-modules. To make the writing less heavy, we will sometimes say <strong>\(R\)-module</strong> rather than left \(R\)-module whenever there is no ambiguity.
+  </p>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-11-1-2">
+    <h3 id="rmk-11-1-2">Remark 11.1.2</h3>
+    <p>
+      If \(R\) is a commutative ring, then any left \(R\)-module \(M\) may be regarded as a right \(R\)-module by setting \(m r := r m\). Likewise, any right \(R\)-module may be regarded as a left \(R\)-module. Thus for commutative rings, we just refer to modules, and not left or right modules.
+    </p>
+  </section>
+
+  <section class="callout lemma" role="region" aria-labelledby="lem-11-1-3">
+    <h3 id="lem-11-1-3">Lemma 11.1.3 (Arithmetic in modules)</h3>
+    <p>
+      Let \(R\) be a ring with \(1_R \neq 0_R\) and \(M\) be an \(R\)-module. Then \(0_Rm = 0_M\) and \((-1_R)m = -m\) for all \(m \in M\).
+    </p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-11-1-3">
+    <h3 id="prf-11-1-3">Proof (of Lemma 11.1.3)</h3>
+    <p>
+      Let \(m \in M\). Then
+      \[
+        0_R m = (0_R + 0_R) m = 0_Rm + 0_Rm.
+      \]
+      Since \(M\) is an abelian group, the element \(0_Rm\) has an additive inverse, \(-0_Rm\), so adding it on both sides we see that
+      \[
+        0_M = 0_Rm.
+      \]
+      Moreover,
+      \[
+        m + (-1_R)m = 1_R m + (-1_R)m = (1_R - 1_R)m = 0_R m = 0_M,
+      \]
+      so \((-1_R)m = -m\).
+    </p>
+  </section>
+
+  <p>
+    Typically, one first encounters modules in an undergraduate linear algebra course: the vector spaces from linear algebra are modules over fields. Later we will see that vector spaces are much simpler modules than modules over other rings. So while one might take linear algebra and vector spaces as an inspiration for what to expect from a module, be warned that this perspective can often be deceiving.
+  </p>
+
+  <section class="callout definition" role="region" aria-labelledby="def-11-1-4">
+    <h3 id="def-11-1-4">Definition 11.1.4</h3>
+    <p>
+      Let \(F\) be a field. A <strong>vector space</strong> over \(F\) is an \(F\)-module.
+    </p>
+  </section>
+
+  <p>
+    We will see more about vector spaces soon. Note that many of the concepts we will introduce have special names in the case of vector spaces. Here are some other important examples:
+  </p>
+
+  <section class="callout lemma" role="region" aria-labelledby="lem-11-1-5">
+    <h3 id="lem-11-1-5">Lemma 11.1.5</h3>
+    <p>
+      Let \(M\) be a set with a binary operation \(+\). Then
+    </p>
+    <ol style="margin-left:20px">
+      <li>\(M\) is an abelian group if and only if \(M\) is a \(\mathbb{Z}\)-module.</li>
+      <li>\(M\) is an abelian group such that \(nm:=\underbrace{ m + \cdots + m}_{n \textrm{ times}}=0_M\) for all \(m\in M\) if and only if \(M\) has a \(\mathbb{Z}/n\)-module structure.</li>
+    </ol>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-11-1-5">
+    <h3 id="prf-11-1-5">Proof (of Lemma 11.1.5)</h3>
+    <p>
+      First, we show 1). If \(M\) is a \(\mathbb{Z}\)-module, then \((M,+)\) is an abelian group by definition of module. Conversely, if \((M,+)\) is an abelian group then there is a unique \(\mathbb{Z}\)-module structure on \(M\) given by the formulas below. The uniqueness of the \(\mathbb{Z}\) action follows from the identities below in which the right hand side is determined only by the abelian group structure of \(M\). The various identities follow from the axioms of a module:
+      \[
+      \begin{cases}
+      i \cdot m = (\underbrace{1 + \cdots + 1}_i) \cdot m = \underbrace{1   \cdot m + \cdots +1 \cdot m}_i
+      = \underbrace{ m + \cdots + m}_i & \text{ if } i>0\\
+      0 \cdot m = 0_M & \\
+      i \cdot m = - (-i) \cdot m = - (\underbrace{m + \cdots + m}_{-i}) &  \text{ if } i<0.
+      \end{cases}
+      \]
+      We leave it as an exercise to check that this \(\mathbb{Z}\)-action really satisfies the module axioms.
+    </p>
+    <p>
+      Now we show 2). If \(M\) is a \(\mathbb{Z}/n\) module, then \((M,+)\) is an abelian group by definition, and \(nm= \underbrace{ m + \cdots + m}_n=\underbrace{[1]_n   \cdot m + \cdots +[1]_n \cdot m}_n=[0]_nm=0_M\).
+    </p>
+    <p>
+      Conversely, there is a unique \(\mathbb{Z}/n\)-module structure on \(M\) given by the formulas below, which are analogous to the ones above:
+      \[
+      \begin{cases}
+      [i]_n \cdot m = (\underbrace{[1]_n+ \cdots + [1]_n}_i) \cdot m = \underbrace{[1]_n   \cdot m + \cdots +[1]_n \cdot m}_i= \underbrace{ m + \cdots + m}_i & \text{ if } i>0\\
+      0 \cdot m = 0_M &\\
+      [i]_n \cdot m = - (-[i]_n) \cdot m = - (\underbrace{m + \cdots + m}_{-i}) &  \text{ if } i<0.
+      \end{cases}
+      \]
+      These formulas are well-defined, meaning they are independent of the choice of representative for \([i]_n\), because of the assumption that \(nm=0_M\). Again checking that this \(\mathbb{Z}/n\)-action really satisfies the module axioms is left as an exercise.
+    </p>
+  </section>
+
+  <p>
+    The proposition above says in particular that any group of the form
+    \[
+      G=\mathbb{Z}^\ell\times \mathbb{Z}/d_1\times \dots\times \mathbb{Z}/d_m
+    \]
+    is a \(\mathbb{Z}\)-module, and if \(\ell=0, m \geqslant 1\) and \(d_i \mid n\) for \(1 \leqslant i \leqslant m\) then \(G\) is also a \(\mathbb{Z}/n\)-module. In particular, the Klein group is a \(\mathbb{Z}/2\)-module.
+  </p>
+
+  <p>
+    In contrast to vector spaces, for \(M\) a module over a ring \(R\), it can happen that \(rm=0\) for some \(r \in R\) and \(m \in M\) such that \(r \neq 0_R\) and \(m \neq 0_M\). For example, in the Klein group \(K_4\) viewed as a \(\mathbb{Z}\)-module we have \(2m=0\) for all \(m \in K_4\).
+  </p>
+
+  <section class="callout example" role="region" aria-labelledby="ex-11-1-6">
+    <h3 id="ex-11-1-6">Example 11.1.6</h3>
+    <ol style="margin-left:20px">
+      <li>The trivial \(R\)-module is \(0=\{0\}\) with \(r0=0\) for any \(r\in R\).</li>
+      <li>If \(R\) is any ring, then \(R\) is a left and right \(R\)-module via the action of \(R\) on itself given by its internal multiplication.</li>
+      <li>If \(I\) is a left (respectively, right) ideal of a ring \(R\) then \(I\) is a left (respectively, right) \(R\)-module with respect to the action of \(R\) on \(I\) by internal multiplication.</li>
+      <li>
+        If \(R\) is a subring of a ring \(S\), then \(S\) is an \(R\)-module with respect to the action of \(R\) on \(S\) by internal multiplication in \(S\).
+      </li>
+      <li>
+        If \(R\) is a commutative ring with \(1 \neq 0\), then \(R[x_1,\ldots,x_n]\) is an \(R\)-module for any \(n \geqslant 1\). This is a special case of (4).
+      </li>
+      <li>
+        If \(R\) is a commutative ring, let \( M_n(R)\) denote the set of \(n \times n\) matrices with entries in \(R\). Then \( M_n(R)\) is an \(R\)-module for \(n\geqslant 1\), with the \(R\)-action given by multiplying all the entries of the given matrix by the given element of \(R\).
+      </li>
+      <li>
+        The <strong>free module</strong> over \(R\) of rank \(n\) is the set
+        \[
+          R^n=\left\{\begin{bmatrix} r_1\\ \vdots\\r_n \end{bmatrix} \mid r_i\in R, 1 \leqslant i \leqslant n\right\}
+        \]
+        with componentwise addition and multiplication by elements of \(R\), as follows:
+        \[
+          \begin{bmatrix} r_1\\ \vdots\\r_n \end{bmatrix} +\begin{bmatrix} r'_1\\ \vdots\\r'_n \end{bmatrix} =\begin{bmatrix} r_1+r'_1\\ \vdots\\r_n +r'_n\end{bmatrix} \text{ and } r\begin{bmatrix} r_1\\ \vdots\\r_n \end{bmatrix}=\begin{bmatrix} rr_1\\ \vdots\\ rr_n \end{bmatrix}.
+        \]
+        We will often write the elements of \(R^n\) as \(n\)-tuples \((r_1, \ldots, r_n)\) instead. Notice that \(R\) is the free \(R\)-module of rank \(1\).
+      </li>
+      <li>
+        More generally, given a collection of \(R\)-modules \(\{ A_i \}\), the abelian group
+        \[
+          \bigoplus_i A_i = \{ (a_i)_i \mid a_i \in A_i, a_i = 0 \textrm{ for all } i \textrm{ but finitely many} \}
+        \]
+        is an \(R\)-module with the \(R\)-action \(r(a_i) := (ra_i)\).
+      </li>
+    </ol>
+  </section>
+
+</section>
+
+
+
+
+<section id="submodules-and-restriction-of-scalars" aria-labelledby="sec-11-2-heading">
+  <h2 id="sec-11-2-heading">11.2 Submodules and restriction of scalars</h2>
+
+  <section class="callout definition" role="region" aria-labelledby="def-11-2-1">
+    <h3 id="def-11-2-1">Definition 11.2.1</h3>
+    <p>
+      Let \(R\) be a ring and let \(M\) be a left \(R\)-module. An <strong>\(R\)-submodule</strong> of \(M\) is a subgroup \(N\) (under addition) of \(M\) satisfying \(rn \in N\) for all \(r \in R\) and \(n \in N\).
+    </p>
+  </section>
+
+  <p>
+    The submodules of an \(R\)-module \(M\) are precisely the subsets of \(M\) which are modules in their own right, via the same \(R\)-action as we are considering for \(M\).
+  </p>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-11-2-2">
+    <h3 id="ex-11-2-2">Exercise 11.2.2</h3>
+    <p>
+      Show that if \(N\) is a submodule of \(M\), then \(N\) is an \(R\)-module via the restriction of the action of \(R\) on \(M\) to the subset \(N\).
+    </p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-11-2-3">
+    <h3 id="ex-11-2-3">Example 11.2.3</h3>
+    <p>
+      Every \(R\)-module \(M\) has two <strong>trivial submodules</strong>: \(M\) itself and the <strong>zero module</strong> \(0 = \{ 0_M \}\). A submodule \(N\) of \(M\) is <strong>nontrivial</strong> if \(N \neq M\) and \(N \neq 0\).
+    </p>
+  </section>
+
+  <section class="callout lemma" role="region" aria-labelledby="lem-11-2-4">
+    <h3 id="lem-11-2-4">Lemma 11.2.4 (Submodule tests)</h3>
+    <p>
+      Let \(R\) be a ring with \(1 \neq  0\) and let \(M\) be a left \(R\)-module.
+      Let \(N\) be a nonempty of \(M\).
+    </p>
+    <ol style="margin-left:20px">
+      <li>
+        (Two-step test) \(N\) is an \(R\)-submodule of \(M\) if and only if \(n+n' \in N\) and \(rn \in N\) for all \(n,n'\in N\) and \(r\in R\).
+      </li>
+      <li>
+        (One-step test) \(N\) is an \(R\)-submodule of \(M\) if and only if \(rn+n'\in N\) for all \(n,n'\in N\) and \(r\in R\).
+      </li>
+    </ol>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-11-2-4">
+    <h3 id="prf-11-2-4">Proof (of Lemma 11.2.4)</h3>
+    <p>
+      Exercise.
+    </p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-11-2-5">
+    <h3 id="ex-11-2-5">Example 11.2.5</h3>
+    <p>
+      Let \(R\) be a ring and let \(M\) be a subset of \(R\). Then \(M\) is a left (respectively, right)  \(R\)-submodule of \(R\) if and only if \(M\) is a left (respectively, right) ideal of R.
+    </p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-11-2-6">
+    <h3 id="ex-11-2-6">Exercise 11.2.6</h3>
+    <p>
+      Let \(R\) be a ring and let \(A\) and \(B\) be submodules of an \(R\)-module \(M\). Then the <strong>sum</strong> of \(A\) and \(B\),
+      \[
+        A + B := \{ a + b \mid a \in A, b \in B \},
+      \]
+      and \(A \cap B\) are both \(R\)-submodules of \(M\).
+    </p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-11-2-7">
+    <h3 id="ex-11-2-7">Exercise 11.2.7</h3>
+    <p>
+      Let \(R\) be a commutative ring with \(1\neq 0\), let \(I\) be an ideal of \(R\) and let \(M\) be an \(R\)-module. Show that
+      \[
+        IM := \left\{\sum_{k=1}^n j_km_k \mid n \geqslant 0, j_k \in I, m_k \in M \text{ for } 1 \leqslant k \leqslant n \right\}
+      \]
+      is a submodule of \(M\).
+    </p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-11-2-8">
+    <h3 id="ex-11-2-8">Example 11.2.8</h3>
+    <p>
+      When \(R\) is a field, the submodules of a vector space \(V\) are precisely the subspaces of \(V\).
+      When \(R = \mathbb{Z}\), then the class of \(R\)-modules is simply the class of all abelian groups. The submodules of a \(\mathbb{Z}\)-module \(M\) coincide with the subgroups of the abelian group \(M\).
+    </p>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-11-2-9">
+    <h3 id="def-11-2-9">Definition 11.2.9</h3>
+    <p>
+      Let \(R\) be a ring with \(1 \neq 0\) and let \(M\) be an \(R\)-module. Given elements \(m_1, \ldots, m_n \in M\), the <strong>submodule generated by</strong> \(m_1, \ldots, m_n\) is the subset of \(M\) given by
+      \[
+        Rm_1 + \cdots + Rm_n := \{ r_1 m_1 + \cdots + r_n m_n \mid r_1, \ldots, r_n \in R\}.
+      \]
+    </p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-11-2-10">
+    <h3 id="ex-11-2-10">Exercise 11.2.10</h3>
+    <p>
+      Let \(R\) be a ring with \(1 \neq 0\) and \(M\) be an \(R\)-module. Given \(m_1, \ldots, m_n \in M\), the submodule generated by \(m_1, \ldots, m_n\) is indeed a submodule of \(M\). Moreover, this is the smallest submodule of \(M\) that contains \(m_1, \ldots, m_n\), meaning that every submodule of \(M\) containing \(m_1, \ldots, m_n\) must also contain \(R m_1 + \cdots + R m_n\).
+    </p>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-11-2-11">
+    <h3 id="def-11-2-11">Definition 11.2.11</h3>
+    <p>
+      Let \(R\) be a ring with \(1 \neq 0\). An \(R\)-module \(M\) is <strong>cyclic</strong> if there exists an element \(m \in M\) such that
+      \[
+        M = Rm := \{ rm \mid r \in R \}.
+      \]
+    </p>
+  </section>
+
+  <p>
+    Given an \(R\)-module \(M\), the ring \(R\) is sometimes referred to as the <strong>ring of scalars</strong>, by analogy to the vector space case. Given an action of a ring of scalars on a module, we can sometimes produce an action of a different ring of scalars on the same set, producing a new module structure.
+  </p>
+
+  <section class="callout lemma" role="region" aria-labelledby="lem-11-2-12">
+    <h3 id="lem-11-2-12">Lemma 11.2.12 (Restriction of scalars)</h3>
+    <p>
+      Let \(\phi\!: R \to S\) be a ring homomorphism. Any left \(S\)-module \(M\) may be regarded via <strong>restriction of scalars</strong> as a left \(R\)-module with \(R\)-action  defined by \(r m := \phi(r)m\) for any \(m\in M\).
+      In particular, if \(R\) is a subring of a ring \(S\), then any left \(S\)-module \(M\) may be regarded via restriction of scalars as a left \(R\)-module with \(R\)-action defined by the action of the elements of \(R\) viewed as elements of \(S\).
+    </p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-11-2-12">
+    <h3 id="prf-11-2-12">Proof (of Lemma 11.2.12)</h3>
+    <p>
+      Let \(r,s \in R\) and \(m,n \in M\). One checks that the axioms in the definition of a module hold for the given action using properties of ring homomorphisms. For example:
+      \[
+        (r+s)m=\phi(r + s)m= (\phi(r)+\phi(s))m=\phi(r)m + \phi(s)m=rm+sm.
+      \]
+      The remaining properties are left as an exercise.
+    </p>
+  </section>
+
+  <p>
+    Note that the second module structure on \(M\) obtained via restriction of scalars is induced by the original module structure, so the two are related. In general, one can give different module structures on the same abelian group over different, possibly unrelated, rings.
+  </p>
+
+  <section class="callout example" role="region" aria-labelledby="ex-11-2-13">
+    <h3 id="ex-11-2-13">Example 11.2.13</h3>
+    <p>
+      If \(I\) is an ideal of a ring \(R\), applying restriction of scalars along the quotient homomorphism \(q\!:R\to R/I\) tells us that any left \(R/I\)-module is also a left \(R\)-module. In particular, applying this to the \(R/I\)-module \(R/I\) makes \(R/I\) a left and right \(R\)-module by restriction of scalars along the quotient homomorphism. Thus the \(R\)-action on \(R/I\) is given by
+      \[
+        r \cdot (a + I) := ra + I.
+      \]
+    </p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-11-2-14">
+    <h3 id="ex-11-2-14">Example 11.2.14</h3>
+    <p>
+      Given any ring \(R\) there exists a unique ring homomorphism \(\mathbb{Z} \to R\). Thus any \(R\)-module can be given the structure of a \(\mathbb{Z}\)-module by restriction of scalars along this unique map. Note also that a module over any ring is in particular an abelian group, so we can always regard any \(R\)-module as a \(\mathbb{Z}\)-module by forgetting the \(R\)-action and focusing only on the abelian group structure. These two constructions --- the restriction of scalars to \(\mathbb{Z}\) and the <em>forgetful functor</em> --- actually coincide.
+    </p>
+  </section>
+
+  <p>
+    The next example explains why restriction of scalars is called a <em>restriction</em>.
+  </p>
+
+  <section class="callout example" role="region" aria-labelledby="ex-11-2-15">
+    <h3 id="ex-11-2-15">Example 11.2.15</h3>
+    <p>
+      Let \(R\) be a subring of \(S\), and let \(i\!: R \to S\) be the inclusion map, which must by definition be a ring homomorphism. Applying restriction of scalars to an \(S\)-module \(M\) via \(i\) is the same as simply <em>restricting</em> our scalars to the elements of \(R\).
+    </p>
+  </section>
+
+</section>
+
+
+<section id="module-homomorphisms-and-isomorphisms" aria-labelledby="sec-11-3-heading">
+  <h2 id="sec-11-3-heading">11.3 Module homomorphisms and isomorphisms</h2>
+
+  <section class="callout definition" role="region" aria-labelledby="def-11-3-1">
+    <h3 id="def-11-3-1">Definition 11.3.1</h3>
+    <p>
+      Given \(R\)-modules \(M\) and \(N\), an <strong>\(R\)-module homomorphism</strong> from \(M\) to \(N\) is a function \(f\!: M \to N\) such that for all \(r \in R\) and \(m,n \in M\) we have
+    </p>
+    <ul style="margin-left:20px">
+      <li>\(f(m+n)=f(m)+f(n)\)</li>
+      <li>\(f(rm) = rf(m)\).</li>
+    </ul>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-11-3-2">
+    <h3 id="rmk-11-3-2">Remark 11.3.2</h3>
+    <p>
+      The condition \(f(m+n)=f(m)+f(n)\) says that \(f\) is a homomorphism of abelian groups, and the condition \(f(rm) = rf(m)\) says that \(f\) is \(R\)-linear, meaning that it preserves the \(R\)-action. Since \(f\) is a homomorphism of abelian groups, it follows that \(f(0) = 0\) must hold.
+    </p>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-11-3-3">
+    <h3 id="def-11-3-3">Definition 11.3.3</h3>
+    <p>
+      Let \(M\) and \(N\) be vector spaces over a field \(F\). A <strong>linear transformation</strong> from \(M\) to \(N\) is an \(F\)-module homomorphism \(M \to N\).
+    </p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-11-3-4">
+    <h3 id="ex-11-3-4">Example 11.3.4</h3>
+    <p>
+      Let \(R\) be a commutative ring and \(M\) be an \(R\)-module. For each \(r \in R\), the multiplication map \(\mu_r\!: M \to M\) given by \(\mu_r(m) = rm\) is a homomorphism of \(R\)-modules: indeed, by the definition of \(R\)-module we have
+      \[
+        \mu_r(m+n) = r(m+n) = rm+rn = \mu_r(m) + \mu_r(n),
+      \]
+      and
+      \[
+        \mu_r(sm) = r(sm) = (rs)m = (sr)m = s (rm) = s \mu_r(m).
+      \]
+      Note that \(R\) is not commutative, the left multiplication map \(\mu_r\!:M\to M\) is not a homomorphism of (left) \(R\)-modules.
+    </p>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-11-3-5">
+    <h3 id="def-11-3-5">Definition 11.3.5</h3>
+    <p>
+      An \(R\)-module homomorphism \(h\!: M \to N\) is an <strong>\(R\)-module isomorphism</strong> if there is an \(R\)-module homomorphism \(g: N \to M\) such that
+      \(h \circ g = \mathrm{id}_N\) and \(g \circ h = \mathrm{id}_M\). We say \(M\) and \(N\) are <strong>isomorphic</strong>, denoted \(M \cong N\), if there exists an isomorphism \(M \to N\).
+    </p>
+  </section>
+
+  <p>
+    To check that an \(R\)-module homomorphism \(f\!: M \to N\) is an isomorphism, it is sufficient to check that it is bijective.
+  </p>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-11-3-6">
+    <h3 id="ex-11-3-6">Exercise 11.3.6</h3>
+    <p>
+      Let \(f\!: M \to N\) be a homomorphism of \(R\)-modules. Show that if \(f\) is bijective, then its set-theoretic inverse \(f^{-1}\!: N \to M\) is an \(R\)-module homomorphism. Therefore, every bijective homomorphism of \(R\)-modules is an isomorphism.
+    </p>
+  </section>
+
+  <p>
+    One should think of a module isomorphism as a relabelling of the names of the elements of the module. If two modules are isomorphic, that means that they are <em>essentially the same</em>, up to renaming the elements.
+  </p>
+
+  <section class="callout definition" role="region" aria-labelledby="def-11-3-7">
+    <h3 id="def-11-3-7">Definition 11.3.7</h3>
+    <p>
+      Let \(f\!: M \to N\) be a homomorphism of \(R\)-modules. The <strong>kernel</strong> of \(f\) is
+      \[
+        \ker(f) := \{ m \in M \mid f(m) = 0 \}.
+      \]
+      The <strong>image</strong> of \(f\), denoted \(\mathrm{im}(f)\) or \(f(M)\), is
+      \[
+        \mathrm{im}(f) := \{ f(m) \mid m \in M \}.
+      \]
+    </p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-11-3-8">
+    <h3 id="ex-11-3-8">Exercise 11.3.8</h3>
+    <p>
+      Let \(R\) be a ring with \(1 \neq  0\), let \(M\) be an \(R\)-module, and let \(N\) be an \(R\)-submodule of \(M\). Then the inclusion map \(i\!: N \to M\) is an \(R\)-module homomorphism.
+    </p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-11-3-9">
+    <h3 id="ex-11-3-9">Exercise 11.3.9</h3>
+    <p>
+      If \(f\!: M \to N\) is an \(R\)-module homomorphism, then \(\ker(h)\) is an \(R\)-submodule of \(M\) and \(\mathrm{im}(f)\) is an \(R\)-submodule of \(N\).
+    </p>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-11-3-10">
+    <h3 id="def-11-3-10">Definition 11.3.10</h3>
+    <p>
+      Let \(R\) be a ring and let \(M\) and \(N\) be \(R\)-modules. Then \(\mathrm{Hom}_R(M,N)\) denotes the set of all \(R\)-module homomorphisms from \(M\) to \(N\), and \(\mathrm{Hom}_R(M)\) denotes the set \(\mathrm{Hom}_R(M,M)\). We call \(\mathrm{Hom}(M)\) the <strong>endomorphism ring</strong> of \(M\), and elements of \(\mathrm{Hom}(M)\) are called <strong>endomorphisms</strong> of \(M\).
+    </p>
+  </section>
+
+  <p>
+    The endomorphism ring of an \(R\)-module \(M\) is called that because it <em>is</em> a ring, with multiplication given by composition of endomorphisms, \(0\) given by the zero map (the constant equal to \(0\)), and \(1\) given by the identity map.
+    However, two homomorphisms from \(M\) to \(N\) are not composable unless \(M = N\), so \(\mathrm{Hom}_R(M,N)\) is not a ring.
+  </p>
+
+  <p>
+    When \(R\) is commutative, \(\mathrm{Hom}_R(M,N)\) is, however, an \(R\)-module; let us describe its \(R\)-module structure.
+    Given \(f, g \in \mathrm{Hom}_R(M,N)\), \(f+g\) is the map defined by
+    \[
+      (f+g)(m) := f(m) + g(m),
+    \]
+    and given \(r \in R\) and \(f \in \mathrm{Hom}_R(M,N)\), \(r \cdot f\) is the \(R\)-module homomorphism defined by
+    \[
+      (r \cdot f) (m) := r \cdot f(m) = f(rm).
+    \]
+    The zero element of \(\mathrm{Hom}_R(M,N)\) is the <strong>zero map</strong>, the constant equal to \(0_N\).
+  </p>
+
+  <section class="callout lemma" role="region" aria-labelledby="lem-11-3-11">
+    <h3 id="lem-11-3-11">Lemma 11.3.11</h3>
+    <p>
+      Let \(M\) and \(N\) be \(R\)-modules over a commutative ring \(R\). Then the addition and multiplication by scalars defined above make \(\mathrm{Hom}_R(M,N)\) an \(R\)-module.
+    </p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-11-3-11">
+    <h3 id="prf-11-3-11">Proof (of Lemma 11.3.11)</h3>
+    <p>
+      There are many things to check, including:
+    </p>
+    <ul style="margin-left:20px">
+      <li>
+        The addition and the \(R\)-action are both well-defined: given \(f,g\in \mathrm{Hom}_R(M,N)\) and \(r\in R\), we always have \(f+g, rf\in \mathrm{Hom}_R(M,N)\).
+      </li>
+      <li>
+        The axioms of an \(R\)-module are satisfied for \(\mathrm{Hom}_R(M,N)\).
+      </li>
+    </ul>
+    <p>
+      We leave the details as exercises.
+    </p>
+  </section>
+
+  <p>
+    We will see later that for an \(n\)-dimensional vector space \(V\) over a field \(F\), there is an isomorphism of vector spaces \(\mathrm{Hom}_F(V)\cong M_n(F)\). This says that every linear transformation \(T:V\to V\) corresponds to some \(n\times n\) matrix. However, the story for general \(R\)-modules is a lot more complicated.
+  </p>
+
+  <section class="callout lemma" role="region" aria-labelledby="lem-11-3-12">
+    <h3 id="lem-11-3-12">Lemma 11.3.12</h3>
+    <p>
+      For any commutative ring \(R\) with \(1\neq 0\) and any \(R\)-module \(M\) there is an isomorphism of \(R\)-modules \(\mathrm{Hom}_R(R,M)\cong M\).
+    </p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-11-3-12">
+    <h3 id="prf-11-3-12">Proof (of Lemma 11.3.12)</h3>
+    <p>
+      Let \(f\!:M\to \mathrm{Hom}_R(R,M)\) be given for each \(m\in M\) by \(f(m)=\phi_m\) where \(\phi_m\) is the map defined by \(\phi_m(r)=rm\) for all \(r\in R\). Now we have many things to check:
+    </p>
+    <ul style="margin-left:20px">
+      <li>
+        \(f\) is well-defined, meaning that for any \(m\in M\), its image \(f(m) = \phi_m\) is an element of \(\mathrm{Hom}_R(R,M)\), since
+        \[
+          \phi_m(r_1+r_2)=(r_1+r_2)m=r_1m+r_2m=\phi_m(r_1)+\phi_m(r_2)
+        \]
+        \[
+          \phi_m(r_1r_2)=(r_1r_2)m=r_1(r_2m)=r_1\phi_m(r_2)
+        \]
+        for all \(r_1,r_2\in R\).
+      </li>
+      <li>
+        \(f\) is an \(R\)-module homomorphism, since
+        \[
+          \phi_{m_1+m_2}(r)=r(m_1+m_2)=rm_1+rm_2=\phi_{m_1}(r)+\phi_{m_2}(r)
+        \]
+        \[
+          \phi_{r'm}(r)=r(r'm)=(rr')m=r'(rm)=r'\phi_{m}(r)
+        \]
+      </li>
+      <li>
+        \(f\) is injective, since \(\phi_m=\phi_{m'}\) implies in particular that \(\phi_m(1_R)=\phi_{m'}(1_R)\), which by definition of \(\phi_{-}\) means that \(m=m'\).
+      </li>
+      <li>
+        \(f\) is surjective, since for \(\psi \in \mathrm{Hom}_R(R,M)\) we have \(\psi(r)=\psi(r1_R)=r\psi(1_R)\) for all \(r\in R\), so \(\psi=\phi_{\psi(1_R)}\).
+      </li>
+    </ul>
+    <p>
+      This shows that \(f\) is an \(R\)-module isomorphism.
+    </p>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-11-3-13">
+    <h3 id="def-11-3-13">Definition 11.3.13</h3>
+    <p>
+      Let \(R\) be a commutative ring with \(1_R \neq 0_R\). An <strong>\(R\)-algebra</strong> is a ring \(A\) with \(1_A \neq 0_A\) together with a ring homomorphism \(f\!: R \to A\) such that \(f(R)\) is contained in the center of \(A\).
+    </p>
+  </section>
+
+  <p>
+    Given an \(R\)-algebra \(A\), the \(R\)-algebra structure on \(A\) induces a natural \(R\)-module structure: given elements \(r \in R\) and \(a \in A\), the \(R\)-action is defined by
+    \[
+      r \cdot a := f(r) a,
+    \]
+    where the product on the right is the multiplication in \(A\). Similarly, we get a natural right \(R\)-module structure on \(A\), and since by definition \(f(R)\) is contained in the center of \(A\), we obtain what is called a <em>balanced bimodule</em> structure on \(A\).
+  </p>
+
+  <section class="callout example" role="region" aria-labelledby="ex-11-3-14">
+    <h3 id="ex-11-3-14">Example 11.3.14</h3>
+    <p>
+      Let \(R\) be a commutative ring with \(1_R \neq 0_R\). The ring \(R[x_1,\ldots, x_n]\) together with the inclusion map \(R \hookrightarrow R[x_1,\ldots, x_n]\) is an \(R\)-algebra. More generally, any quotient of \(R[x_1,\ldots, x_n]\) is an \(R\)-algebra.
+    </p>
+    <p>
+      The ring of matrices \(M_n(R)\) with the homomorphism \(r \mapsto r I_n\) is also an \(R\)-algebra.
+    </p>
+  </section>
+
+  <section class="callout lemma" role="region" aria-labelledby="lem-11-3-15">
+    <h3 id="lem-11-3-15">Lemma 11.3.15</h3>
+    <p>
+      Let \(R\) be a commutative ring with \(1 \neq 0\) and let M be an \(R\)-module. Then \(\mathrm{End}_R(M)\) is an \(R\)-algebra, with addition and \(R\)-action defined as above, and multiplication defined by composition \((fg)(m) = f(g(m))\) for all \(f,g \in \mathrm{End}_R(M)\) and all \(m \in M\).
+    </p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-11-3-15">
+    <h3 id="prf-11-3-15">Proof (of Lemma 11.3.15)</h3>
+    <p>
+      There are many things to check here, including that:
+    </p>
+    <ul style="margin-left:20px">
+      <li>The axioms of a (unital) ring are satisfied for \(\mathrm{End}_R(M)\).</li>
+      <li>
+        There is a ring homomorphism \(f\!:R\to \mathrm{End}_R(M)\) such that \(f(1_R)=1_{\mathrm{End}_R(M)}=\mathrm{id}_M\) and \(f(R)\subseteq \mathrm{Z}(\mathrm{End}_R(M))\).
+      </li>
+    </ul>
+    <p>
+      We will just check the last item and leave the others as exercises. Define \(f\!:R\to \mathrm{End}_R(M)\) by \(f(r)=r\mathrm{id}_M\). Notice that this element \(f(r)\) is the map \(\mu_r\). Then
+      \[
+        f(r+s)=(r+s)\mathrm{id}_M=r\mathrm{id}_M+s\mathrm{id}_M=f(r)+f(s)
+      \]
+      and
+      \[
+        f(rs)=(rs)\mathrm{id}_M=(r\mathrm{id}_M)\circ(s\mathrm{id}_M)=f(r)f(s)
+      \]
+      show that \(f\) is a ring homomorphism. Moreover, \(\mathrm{id}_M\in \mathrm{Z}(\mathrm{End}_R(M))\), and one can check easily that \(\mu_r \in \mathrm{Z}(\mathrm{End}_R(M))\): given any other \(g \in \mathrm{End}_R(M)\), and any \(m \in M\), since \(g\) is \(R\)-linear we have
+      \[
+        (g \circ \mu_r)(m) = g(\mu_r(m)) = g(rm) = rg(m) = (\mu_r \circ g) (m).
+      \]
+      This shows that \(f(R)\) is contained in the center of \(\mathrm{End}_R(M)\).
+    </p>
+  </section>
+
+  <section class="callout remark" role="region" aria-labelledby="rmk-11-3-16">
+    <h3 id="rmk-11-3-16">Remark 11.3.16</h3>
+    <p>
+      Let \(R\) be a commutative ring with \(1 \neq 0\) and let \(M\) be an \(R\)-module. Then \(M\) is also an \(\mathrm{End}_R(M)\)-module with the action \(\phi m=\phi(m)\) for any \(\phi\in \mathrm{End}_R(M)\), \(m\in M\).
+    </p>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-11-3-17">
+    <h3 id="def-11-3-17">Definition 11.3.17</h3>
+    <p>
+      Let \(R\) be a ring, let \(M\) be an \(R\)-module, and let \(N\) be a submodule of \(M\). The <em>quotient module</em> \(M/N\) is the quotient group \(M/N\) with R action defined by
+      \[
+        r(m + N) := rm + N
+      \]
+      for all \(r \in R\) and \(m + N \in M/N\).
+    </p>
+  </section>
+
+  <section class="callout lemma" role="region" aria-labelledby="lem-11-3-18">
+    <h3 id="lem-11-3-18">Lemma 11.3.18</h3>
+    <p>
+      Let \(R\) be a ring, let \(M\) be an \(R\)-module, and let \(N\) be a submodule of \(M\). The quotient module \(M/N\) is an \(R\)-module, and the quotient map \(q\!: M \to M/N\) is an \(R\)-module homomorphism with kernel \(\ker(q) = N\).
+    </p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-11-3-18">
+    <h3 id="prf-11-3-18">Proof (of Lemma 11.3.18)</h3>
+    <p>
+      Among the many things to check here, we will only check the well-definedness of the \(R\)-action on \(M\), and leave the others as exercises.
+      To check well-definedness, consider \(m+N=m'+N\). Then \(m-m'\in N\), so \(r(m-m')\in N\) by the definition of submodule. This gives that \(rm-rm'\in N\), hence \(rm+N=rm'+N\).
+    </p>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-11-3-19">
+    <h3 id="def-11-3-19">Definition 11.3.19</h3>
+    <p>
+      Given an \(R\)-module \(M\) and a submodule \(N\) of \(M\), the map \(q\!: M \to M/N\) is the <strong>canonical quotient map</strong>, or simply the canonical map from \(M\) to \(N\).
+    </p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-11-3-20">
+    <h3 id="ex-11-3-20">Example 11.3.20</h3>
+    <p>
+      If \(R\) is a field, quotient modules are the same thing as quotient vector spaces.
+      When \(R = \mathbb{Z}\), recall that \(\mathbb{Z}\)-modules are the same as abelian groups. Quotients of \(\mathbb{Z}\)-modules coincide with quotients of abelian groups.
+    </p>
+  </section>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-11-3-21">
+    <h3 id="thm-11-3-21">Theorem 11.3.21 (Universal mapping property for quotient modules)</h3>
+    <p>
+      Let \(N\) be a submodule of \(M\), let \(T\) be an \(R\)-module, and let \(f: M \to T\) be an \(R\)-module homomorphism.
+      If \(N \subseteq \ker f\), then the function
+      \[
+\begin{aligned}
+        M/N &\longrightarrow & T \\ m+N &\longmapsto& f(m)
+\end{aligned}
+      \]
+      is a well-defined \(R\)-module homomorphism. In fact, \(\overline{f}: M/N \to T\) is the unique \(R\)-module homomorphism such that \(\overline{f} \circ q = f\), where \(q\!: M \to M/N\) denotes the canonical map.
+    </p>
+  </section>
+
+
+
+  <section class="callout proof" role="region" aria-labelledby="prf-11-3-21">
+    <h3 id="prf-11-3-21">Proof (of Theorem 11.3.21)</h3>
+    <p>
+      By 817, we already know that \(\overline{f}\) is a well-defined homomorphism of groups under \(+\) and that it is the unique one such that \(\overline{f} \circ q = f\).
+      It remains only to show \(\overline{f}\) is an \(R\)-linear map:
+      \[
+        \overline{f}(r (m +N)) = \overline{f} (rm + N) = f(rm) = r f(m) = r \overline{f}(m + N).
+      \]
+      where the third equation uses that \(f\) preserves scaling.
+    </p>
+  </section>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-11-3-22">
+    <h3 id="thm-11-3-22">Theorem 11.3.22 (First Isomorphism Theorem)</h3>
+    <p>
+      Let \(N\) be an \(R\)-module and let \(h: M \to N\) be an \(R\)-module homomorphism. Then \(\ker(h)\) is a submodule of \(M\) and there is an \(R\)-module isomorphism \(M/\ker(h) \cong \mathrm{im}(h)\).
+    </p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-11-3-22">
+    <h3 id="prf-11-3-22">Proof (of Theorem 11.3.22)</h3>
+    <p>
+      If we forget the multiplication by scalars in \(R\), by the First Isomorphism Theorem for Groups, we know that there is an isomorphism of abelian groups under \(+\), given by
+      \[
+\begin{aligned}
+        M/\mathrm{ker}(h) &\longrightarrow & \mathrm{im}(h) \\ m+\mathrm{ker}(h) &\longmapsto& h(m).
+\end{aligned}
+      \]
+
+      It remains only to show this map preserves multiplication by scalars. And indeed:
+      \[
+        \begin{aligned}
+        \overline{h}(r(m+\ker(h))) & = \overline{h}(rm+\ker(h)) & \textrm{by definition of the \(R\)-action on } M/\ker(h)\\
+        & = h(rm) & \textrm{by definition of } \overline{h} \\
+        & = rh(m) & \textrm{ since \(h\) is an \(R\)-module homomorphism} \\
+        & = r \overline{h}(m+ \ker h) & \textrm{by definition of } h.
+        \end{aligned}
+      \]
+    </p>
+  </section>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-11-3-23">
+    <h3 id="thm-11-3-23">Theorem 11.3.23 (Diamond Isomorphism Theorem)</h3>
+    <p>
+      Let \(A\) and \(B\) be submodules of \(M\), and let \(A + B = \{a+b \mid a \in A, b \in B\}\). Then \(A + B\) is a submodule of \(M\), \(A \cap B\) is a submodule of \(A\), and there is an \(R\)-module isomorphism \((A + B)/B \cong A/(A \cap B)\).
+    </p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-11-3-23">
+    <h3 id="prf-11-3-23">Proof (of Theorem 11.3.23)</h3>
+    <p>
+      We know that \(A+B\) and \(A \cap B\) are submodules of \(M\). By the Diamond Isomorphism Theorem for Groups, there is an isomorphism of abelian groups
+      \[\begin{aligned}
+        A/(A \cap B) &\cong (A+B)/B \\ a + (A\cap B) &\mapsto a + B\end{aligned}
+      \]
+      It remains only to show \(h\) preserves multiplication by scalars:
+      \[
+        h(r(a+(A \cap B))) = h(ra + A \cap B) = ra + B = r(a +B) = rh(a + (A \cap B)).
+      \]
+    </p>
+  </section>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-11-3-24">
+    <h3 id="thm-11-3-24">Theorem 11.3.24 (Cancelling Isomorphism Theorem)</h3>
+    <p>
+      Let \(A\) and \(B\) be submodules of \(M\) with \(A \subseteq B\). Then there is an \(R\)-module isomorphism \((M/A)/(B/A) \cong M/B\).
+    </p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-11-3-24">
+    <h3 id="prf-11-3-24">Proof (of Theorem 11.3.24)</h3>
+    <p>
+      From 817, we know that \(B/A\) is a subgroup of \(M/A\) under \(+\).
+      Given \(r \in R\) and \(b +A \in B/A\) we have \(r(b+A) = rb + A\) which belongs to \(B/A\) since \(rb \in B\). This proves \(B/A\) is a submodule of \(M/A\).
+      By the Cancelling Isomorphism Theorem for Groups, there is an isomorphism of abelian groups
+
+    \[\begin{aligned}
+        (M/A)/(B/A) &\cong M/B \\ (m+A) + B/A  &\mapsto m + B \end{aligned}
+      \]
+      and it remains only to show this map is \(R\)-linear:
+      \[
+        \begin{aligned}
+        h(r((m+A) + B/A)) = & h(r(m+A) + B/A) = h((rm + A) + B/A) \\
+        & = rm   + B = r(m +B)\\
+        & = r h((m+A) + B/A).
+        \end{aligned}
+      \]
+    </p>
+  </section>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-11-3-25">
+    <h3 id="thm-11-3-25">Theorem 11.3.25 (Lattice Isomorphism Theorem)</h3>
+    <p>
+      Let \(R\) be a ring, let \(N\) be a R-submodule of an \(R\)-module \(M\), and let \(q\!: M \to M/N\) be the quotient map. Then the function
+\[ \begin{aligned}
+\{ R\text{-submodules of } M \text{ containing }N\} &\longrightarrow {R\text{-submodules of }M/N\} \\
+K &\longmapsto K/N\end{aligned}\]
+      is a bijection, with inverse defined by
+      \[
+        \Psi^{-1}(T) := q^{-1}(T) = \{ a \in M \mid a+N \in T \}
+      \]
+      for each \(R\)-submodule \(T\) of \(M/N\). Moreover, \(\Psi\) and \(\Psi^{-1}\) preserve sums and intersections of submodules.
+    </p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-11-3-25">
+    <h3 id="prf-11-3-25">Proof (of Theorem 11.3.25)</h3>
+    <p>
+      From 817, we know there is a bijection between the set of subgroups of \(M\) and that contain \(N\) and subgroups of the quotient group \(M/N\), given by the same map \(\Psi\).
+      We just need to prove that these maps send submodules to submodules.
+      If \(K\) is a submodule of \(M\) containing \(N\), then by the Cancelling Isomorphism Theorem we know that \(K/N\) is a submodule of \(M/N\).
+      If \(T\) is a submodule of \(M/N\), then \(\pi^{-1}(T)\) is an abelian group, by 817. For \(r \in R\) and \(m \in \pi^{-1}(T)\), we have \(\pi(m) \in T\), and hence \(\pi(rm) = r\pi(m) \in T\) too, since \(T\) is a submodule. This proves \(\pi^{-1}(T)\) is a submodule.
+    </p>
+  </section>
+
+  <p>
+    We come to a very important class of examples which will help us study linear transformations using module theory.
+  </p>
+
+  <section class="callout lemma" role="region" aria-labelledby="lem-11-3-26">
+    <h3 id="lem-11-3-26">Lemma 11.3.26 (\(F[x]\)-modules)</h3>
+    <p>
+      Let \(F\) be a field. There is a bijection
+      \[
+        \begin{aligned}
+        \{V \ | \  V \ \text{a} \ F[x]\text{-module}\} &\longleftrightarrow \{(V,T) \ | \  V \ \text{a} \ F\text{-vector space}, \ T\in \mathrm{Hom}_F(V)\}\\
+        V &\longmapsto  \ (V, \mu_x:V\to V).
+        \end{aligned}
+      \]
+    </p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-11-3-26">
+    <h3 id="prf-11-3-26">Proof (of Lemma 11.3.26)</h3>
+    <p>
+      If \(V\) is an \(F[x]\) module then \(V\) is an \(F\)-vector space by restriction of scalars along the inclusion \(F \hookrightarrow F[x]\). Let \(T:V\to V\) be defined by \(T(v)=xv\). To show that \(T\in \mathrm{Hom}_F(V)\), note that for any \(c\in F\) and \(v,v_1, v_2\in V\) the axioms of the \(F[x]\)-module give us
+      \[
+        T(v_1+v_2)=x(v_1+v_2)=xv_1+xv_2=T(v_1)+T(v_2) \textrm{
+        and } T(cv)=x(cv)=c(xv).
+      \]
+    </p>
+    <p>
+      Conversely, let \(V\) be an \(F\)-vector space and \(T\in \mathrm{Hom}_F(V)\). We claim that the action of of \(F[x]\) on \(V\) given by
+      \[
+        f(x)v=(f(T))(v)
+      \]
+      satisfies the axioms for a module (exercise!). Alternatively, we can explain this module structure in a more conceptual way, as follows. Consider the evaluation homomorphism \(\varphi:F[x]\to \mathrm{Hom}_F(V), \quad \varphi(f(x))=f(T)\). Since \(V\) is an  \(\mathrm{Hom}_F(V)\)-module by Remark \ref{rem:endmodule}, then \(V\) is also an \(F[x]\)-module by restriction of scalars along \(\varphi\); the \(F[x]\) action is the one we described above:
+      \[
+        f(x)v= \varphi(f)(v) = (f(T))(v)
+      \]
+    </p>
+    <p>
+      Finally, one can check that the two constructions above are inverse to each other.
+    </p>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-11-3-27">
+    <h3 id="def-11-3-27">Definition 11.3.27</h3>
+    <p>
+      We shall denote the \(F[x]\)-module structure on an \(F\)-vector space \(V\) induced by \(T \in \mathrm{Hom}_F(V)\) by \(V_T\).
+    </p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-11-3-28">
+    <h3 id="ex-11-3-28">Example 11.3.28</h3>
+    <p>
+      The proposition above says that if we fix an \(F\)-vector space \(V\) then any linear transformation \(T\) gives a different \(F[x]\) module structure on \(V\). For example,
+    </p>
+    <ul style="margin-left:20px">
+      <li>
+        For \(T=0\), the action of \(F[x]\) on the module \(V_0\) is given by scaling by the constant coefficient of \(f\): if \(f=a^nx^n+\dots+a_0\), then
+        \[
+          f(x)v=(f(0))v=a_0v \text{ for all } f\in F[x].
+        \]
+      </li>
+      <li>
+        For \(T\) the shift operator that takes \(T(e_i)=e_{i-1}\), where \(e_i\) is the \(i\)-th standard basis vector, the action of \(F[x]\) on \(V_T\) is determined by
+        \[
+          x^m\begin{bmatrix}v_1\\\vdots\\v_{n-m}\\v_{n-m+1}\\\vdots\\v_n\end{bmatrix}=\begin{bmatrix}v_{m+1}\\\vdots\\v_n \\0\\\vdots\\0\end{bmatrix}.
+        \]
+      </li>
+    </ul>
+  </section>
+
+</section>
+
+<section id="module-generators-bases-and-free-modules" aria-labelledby="sec-11-4-heading">
+  <h2 id="sec-11-4-heading">11.4 Module generators, bases and free modules</h2>
+
+  <section class="callout definition" role="region" aria-labelledby="def-11-4-1">
+    <h3 id="def-11-4-1">Definition 11.4.1</h3>
+    <p>
+      Let \(M\) be an \(R\)-module. A <strong>linear combination</strong> of finitely many elements \(a_1,\dots,a_n\) of \(M\) is an element of \(M\) of the form \(r_1m_1 + \dots + r_nm_n\) for some \(r_1,\ldots,r_n \in R\).
+    </p>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-11-4-2">
+    <h3 id="def-11-4-2">Definition 11.4.2</h3>
+    <p>
+      Let \(R\) be a ring with \(1 \neq 0\) and let \(M\) be an \(R\)-module. For a subset \(A\) of \(M\), the submodule of \(M\) <strong>generated by</strong> \(A\) is
+      \[
+        RA := \{r_1a_1 + \dots + r_na_n \mid n \geq  0,  r_i \in R,  a_i\in A\}.
+      \]
+      We say \(M\) is <strong>generated by</strong> \(A\) if \(M=RA\).
+      If \(M\) is an \(F\)-vector space, we may say that \(M\) is <strong>spanned by</strong> a set \(A\) instead of generated by \(A\).
+    </p>
+    <p>
+      A module M is <strong>finitely generated</strong> if there is a finite subset \(A\) of \(M\) that generates \(M\). If \(A = {a}\) has a single element, the module \(RA= Ra\) is called <strong>cyclic</strong>.
+    </p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-11-4-3">
+    <h3 id="ex-11-4-3">Exercise 11.4.3</h3>
+    <p>
+      Let \(M\) be an \(R\)-module and let \(A \subseteq M\). Then \(RA\) is the smallest submodule of \(M\) containing \(A\), that is
+      \[
+        RA \quad = \bigcap\limits_{A\subseteq N, N \text{ submodule of }M} N.
+      \]
+    </p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-11-4-4">
+    <h3 id="ex-11-4-4">Exercise 11.4.4</h3>
+    <p>
+      Being finitely generated and being cyclic are \(R\)-module isomorphism invariants.
+    </p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-11-4-5">
+    <h3 id="ex-11-4-5">Example 11.4.5</h3>
+    <p>
+      Let \(R\) be a ring with \(1 \neq 0\).
+    </p>
+    <ol style="margin-left:20px">
+      <li>\(R = R1\) is cyclic.</li>
+      <li>\(R \oplus R\) is generated by \(\{(1,0),(0,1)\}\).</li>
+      <li>\(R[x]\) is generated as an \(R\)-module by the set \(\{1,x,x^2,\ldots, x^n,\ldots\}\) of monic monomials in the variable \(x\).</li>
+      <li>
+        Let \(M = \mathbb{Z}[x,y]\). \(M\) is generated by
+        <ul style="margin-left:20px">
+          <li>\(\{1,x,y\}\) as a ring,</li>
+          <li>\(\{1,y,y^2,\ldots, y^n,\ldots\}\) as an \(\mathbb{Z}[x]\)-module, and</li>
+          <li>\(\{x^iy^j \mid  i,j \in \mathbb{Z}_{\geqslant 0}\}\) as a group (\(\mathbb{Z}\)-module).</li>
+        </ul>
+      </li>
+    </ol>
+  </section>
+
+  <section class="callout lemma" role="region" aria-labelledby="lem-11-4-6">
+    <h3 id="lem-11-4-6">Lemma 11.4.6</h3>
+    <p>
+      Let \(R\) be a ring with \(1 \neq 0\), let \(M\) be an \(R\)-module, and let \(N\) be an \(R\)-submodule of \(M\).
+    </p>
+    <ol style="margin-left:20px">
+      <li>If \(M\) is finitely generated as an \(R\)-module, then so is \(M/N\).</li>
+      <li>If \(N\) and \(M/N\) are finitely generated as \(R\)-modules, then so is \(M\).</li>
+    </ol>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-11-4-6">
+    <h3 id="prf-11-4-6">Proof (of Lemma 11.4.6)</h3>
+    <p>
+      The proof of (2) will be a problem set question. To show (1), note that if \(M=RA\) then \(M/N=R\bar{A}\), where \(\bar{A}=\{a+N \mid a\in A\}\).
+    </p>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-11-4-7">
+    <h3 id="def-11-4-7">Definition 11.4.7</h3>
+    <p>
+      Let \(M\) be an \(R\)-module and let \(A\) be a subset of \(M\). The set \(A\) is <strong>linearly independent</strong> if whenever \(r_1,\ldots,r_n \in R\) and \(a_1,\ldots ,a_n\) are distinct elements of \(A\) satisfying \(r_1a_1 + \dots + r_na_n = 0\), then \(r_1 = \dots = r_n = 0\). Otherwise \(A\) is <strong>linearly dependent</strong>.
+    </p>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-11-4-8">
+    <h3 id="def-11-4-8">Definition 11.4.8</h3>
+    <p>
+      A subset \(A\) of an \(R\)-module \(M\) is a <strong>basis</strong> of \(M\) if \(A\) is linearly independent and generates \(M\). An \(R\)-module M is a <strong>free</strong> \(R\)-module if \(M\) has a basis.
+    </p>
+  </section>
+
+  <p>
+    We will later see that over a field, every module is free. However, when \(R\) is not a field, there are \(R\)-modules that are not free; in fact, <em>most</em> modules are not free.
+  </p>
+
+  <section class="callout example" role="region" aria-labelledby="ex-11-4-9">
+    <h3 id="ex-11-4-9">Example 11.4.9</h3>
+    <p>
+      Here are some examples of free modules:
+    </p>
+    <ol style="margin-left:20px">
+      <li>If we think of \(R\) as a module over itself, it is free with basis \(\{1\}\).</li>
+      <li>The module \(R \oplus R\) is free with basis \(\{(1,0),(0,1)\}\).</li>
+      <li>The \(R\)-module \(R[x]\) is free, and \(\{1,x,x^2,\ldots, x^n,\ldots\}\) is a basis.</li>
+      <li>
+        Let \(M = \mathbb{Z}[x,y]\). Then \(\{1,y,y^2,\ldots, y^n,\ldots\}\) is a basis for the \(\mathbb{Z}[x]\)-module \(M\), and \(\{x^iy^j \mid  i,j \in \mathbb{Z}_{\geqslant 0}\}\) is a basis for the \(\mathbb{Z}\)-module \(M.\)
+      </li>
+    </ol>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-11-4-10">
+    <h3 id="ex-11-4-10">Example 11.4.10</h3>
+    <p>
+      \(\mathbb{Z}/2\) is not a free \(\mathbb{Z}\)-module. Indeed suppose that \(A\) is a basis for \(\mathbb{Z}/2\) and \(a\in A\). Then \(2a=0\) so \(A\) cannot be linearly independent, a contradiction.
+    </p>
+  </section>
+
+  <section class="callout lemma" role="region" aria-labelledby="lem-11-4-11">
+    <h3 id="lem-11-4-11">Lemma 11.4.11</h3>
+    <p>
+      If \(A\) is a basis of \(M\) then every nonzero element \(0\neq m\in M\) can be written uniquely as \(m=r_1a_1 + \dots + r_na_n\) with \(a_i\) distinct elements of \(A\) and \(r_i\neq 0\).
+    </p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-11-4-11">
+    <h3 id="prf-11-4-11">Proof (of Lemma 11.4.11)</h3>
+    <p>
+      Suppose that if \(m\neq 0\) and \(A_1,A_2\) are finite subsets of \(A\) such that
+      \[
+        m=\sum_{a\in A_1}r_aa=\sum_{b\in A_2}s_bb
+      \]
+      for some \(r_a, s_b \in R\).
+      Then
+      \[
+        \sum_{a\in A_1\cap A_2} (r_a-s_a)a+\sum_{a\in A_1\setminus A_2} r_aa-\sum_{a \in A_2\setminus A_1} s_aa=0.
+      \]
+      Since \(A\) is a linearly independent set, we conclude that \(r_a=s_a\) for \(a\in A_1\cap A_2\), \(r_a=0_R\) for \(a\in A_1\setminus A_2\), and \(s_a=0_R\) for \(a \in A_2\setminus A_1\). Set
+      \[
+        B := \{a \in A_1\cap A_2 \mid r_a \neq 0_R\}.
+      \]
+      Then
+      \[
+        m = \displaystyle\sum_{a\in B}r_aa
+      \]
+      is the unique way of writing \(m\) as a linear combination of elements of \(A\) with nonzero coefficients.
+    </p>
+  </section>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-11-4-12">
+    <h3 id="thm-11-4-12">Theorem 11.4.12</h3>
+    <p>
+      Let \(R\) be a ring, \(M\) be a free \(R\)-module with basis \(B\), \(N\) be any \(R\)-module, and let \(j: B \to N\) be any function. Then there is a unique \(R\)-module homomorphism \(h: M \to N\) such that \(h(b) = j(b)\) for all \(b \in B\).
+    </p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-11-4-12">
+    <h3 id="prf-11-4-12">Proof (of Theorem 11.4.12)</h3>
+    <p>
+      We have two things to prove: existence and uniqueness.
+    </p>
+
+    <p>
+      <em>Existence:</em> Any \(0\neq m\in M\) can be written uniquely as
+      \[
+        m=r_1b_1+\dots+r_nb_n
+      \]
+      with \(b_i\in B\) distinct and \(0 \neq r_i \in R\). Define \(h\!: M \to N\) by
+      \[
+        \begin{cases}
+        h(r_1b_1+\dots+r_nb_n) = r_1j(b_1) + \cdots +r_nj(b_n) & \text{ if } r_1b_1 + \cdots + r_nb_n \neq 0\\
+        h(0_M)=0_N
+        \end{cases}
+      \]
+      One can check that this satisfies the conditions to be an \(R\)-module homomorphism (exercise!).
+    </p>
+
+    <p>
+      <em>Uniqueness:</em> Let \(h:M\to N\) be an \(R\)-module homomorphism such that \(h(b_i)=j(b_i)\). Then in particular \(h\!:(M,+)\to (N,+)\) is a group homomorphism and therefore \(h(0_M)=0_N\) by properties of group homomorphisms. Furthermore, if \(m=r_1b_1+\dots+r_nb_n\) then
+      \[
+        h(m)=h(r_1b_1+\dots+r_nb_n)=r_1h(b_1)+\dots+r_nh(b_n)=r_1j(b_1)+\dots+r_nj(b_n)
+      \]
+      by the definition of homomorphism, and because \(h(b_i)=j(b_i)\).
+    </p>
+  </section>
+
+  <section class="callout corollary" role="region" aria-labelledby="cor-11-4-13">
+    <h3 id="cor-11-4-13">Corollary 11.4.13</h3>
+    <p>
+      If \(A\) and \(B\) are sets of the same cardinality, and fix a bijection \(j:A\to B\). If \(M\) and \(N\) are free \(R\)-modules with bases \(A\) and \(B\) respectively, then there is an isomorphism of \(R\)-modules \(M \cong N\).
+    </p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-11-4-13">
+    <h3 id="prf-11-4-13">Proof (of Corollary 11.4.13)</h3>
+    <p>
+      Let \(g:M\to N\) and \(h:N\to M\) be the module homomorphisms induced by the bijection \(j:A\to B\) and its inverse \(j^{-1}:B\to A\), which exist by the UMP for free module. We will show that \(h\) and \(g\) are inverse homomorphisms.
+      First, note that \(g \circ h:N\to N\) is an \(R\)-module homomorphism and \((g \circ h)(b) = g(j^{-1}(b))=j(j^{-1}(b))=b\) for every \(b\in B\). Since the identity map \(\mathrm{id}_N\) is an \(R\)-module homomorphism and \(id_N(b)=b\) for every \(b\in B\), by the uniqueness in the UMP for free modules we have \(g \circ h = \mathrm{id}_n\). Similarly, one shows that \(h \circ g = \mathrm{id}_M\).
+    </p>
+  </section>
+
+  <p>
+    The corollary gives that, up to isomorphism, there is only one free module with basis \(A\), provided such a module exists. But does a free module generated by a given set \(A\) exist? It turns out it does.
+  </p>
+
+  <section class="callout definition" role="region" aria-labelledby="def-11-4-14">
+    <h3 id="def-11-4-14">Definition 11.4.14</h3>
+    <p>
+      Let \(R\) be a ring and let \(A\) be a set. The free \(R\)-module generated by \(A\), denoted \(F_R(A)\) is the set of formal sums
+    </p>
+    <p>
+      \[
+        \begin{align*}
+        F_R(A) &= \{r_1a_1 + \dots + r_na_n \mid n \geqslant 0, r_i \in R, a_i \in A\} \\
+        &= \left\lbrace \sum_{a \in A} r_aa \mid r_a \in R, r_a = 0 \text{ for all but finitely many }a \right\rbrace,
+        \end{align*}
+      \]
+      with addition defined by
+      \[
+        \left(\sum_{a \in A} r_aa\right) + \left(\sum_{a \in A} s_aa \right) = \sum_{a \in A} (r_a + s_a)a
+      \]
+      and \(R\)-action defined by
+      \[
+        r \left(\sum_{a \in A} r_aa \right) = \sum_{a \in A} (rr_a)a.
+      \]
+    </p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-11-4-15">
+    <h3 id="ex-11-4-15">Exercise 11.4.15</h3>
+    <p>
+      This construction \(F_R(A)\) results in an \(R\)-module, which is free with basis \(A\), and \(F_R(A)\cong \bigoplus_{a\in A}R\).
+    </p>
+  </section>
+
+  <section class="callout theorem" role="region" aria-labelledby="thm-11-4-16">
+    <h3 id="thm-11-4-16">Theorem 11.4.16 (Uniqueness of rank over commutative rings)</h3>
+    <p>
+      Let \(R\) be a commutative ring with \(1 \neq 0\) and let \(M\) be a free \(R\)-module. If \(A\) and \(B\) are both bases for \(M\), then \(A\) and \(B\) have the same cardinality, meaning that there exists a bijection \(A \to B\).
+    </p>
+  </section>
+
+  <section class="callout proof" role="region" aria-labelledby="prf-11-4-16">
+    <h3 id="prf-11-4-16">Proof (of Theorem 11.4.16)</h3>
+    <p>
+      You will show this in the next problem set (at least in the case where \(M\) has a finite basis).
+    </p>
+  </section>
+
+  <section class="callout definition" role="region" aria-labelledby="def-11-4-17">
+    <h3 id="def-11-4-17">Definition 11.4.17</h3>
+    <p>
+      Let \(R\) be a commutative ring with \(1\neq 0\) and let \(M\) be a free \(R\)-module. The <strong>rank</strong> of \(M\) is the cardinality of any basis of \(M\).
+    </p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-11-4-18">
+    <h3 id="ex-11-4-18">Example 11.4.18</h3>
+    <p>
+      Let \(R\) be a commutative ring with \(1 \neq 0\). The rank of \(R^n\) is \(n\). Note that, any free \(R\)-module of rank \(n\) must be isomorphic to \(R^n\).
+    </p>
+  </section>
+
+  <p>
+    Earlier, we described the \(R\)-module structure on the direct sum of \(R\)-modules; this is how we construct \(R^n\), by taking the direct sum of \(n\) copies of the \(R\)-module \(R\). This construction can also be described as the direct product of \(n\) copies of \(R\). However, the direct sum and direct product are two different constructions.
+  </p>
+
+  <section class="callout definition" role="region" aria-labelledby="def-11-4-19">
+    <h3 id="def-11-4-19">Definition 11.4.19</h3>
+    <p>
+      Let \(R\) be a ring. Let \(\{ M_a \}_{a \in J}\) be a collection of \(R\)-modules. The <strong>direct product</strong> of the R-modules \(M_a\) is the Cartesian product
+      \[
+        \prod_{a \in J} M_a := \{ (m_a)_{a \in J} \mid m_a \in M_a \}
+      \]
+      with addition defined by
+      \[
+        (m_a)_{a \in J}+(n_a)_{a \in J} := (m_a+n_a)_{a \in J}
+      \]
+      and \(R\)-action defined by \[
+        r(m_a)_{a \in J} = (rm_a)_{a \in J}.
+      \]
+    </p>
+    <p>
+      The <strong>direct sum</strong> of the \(R\)-modules \(M_a\) is the \(R\)-submodule \(\bigoplus_{a \in J} M_a\) of the direct product \(\prod_{a \in J} M_a\) given by
+      \[
+        \bigoplus_{a \in J} M_a = \{(m_a)_{a \in J} \mid m_a = 0 \text{ for all but finitely many } a \}.
+      \]
+    </p>
+  </section>
+
+  <section class="callout exercise" role="region" aria-labelledby="ex-11-4-20">
+    <h3 id="ex-11-4-20">Exercise 11.4.20</h3>
+    <p>
+      The direct sum and the direct product of an arbitrary family of \(R\)-modules are \(R\)-modules.
+    </p>
+  </section>
+
+  <section class="callout example" role="region" aria-labelledby="ex-11-4-21">
+    <h3 id="ex-11-4-21">Example 11.4.21</h3>
+    <p>
+      Suppose that \(|A| = n &lt; \infty\). Let \(M_1,\ldots,M_n\) be \(R\)-modules. The direct product module \(M_1 \times \dots \times M_n\) is the abelian group \(M_1 \times \dots \times M_n\) with ring action given by \(r(m_1,\ldots,m_n) = (rm_1,\ldots,rm_n)\) for all \(r \in R\) and \(m_i \in M_i\). Comparing the definitions we see  that
+      \[
+        M_1 \times \dots \times M_n = M_1 \oplus \dots \oplus M_n.
+      \]
+    </p>
+    <p>
+      If \(M_i=R\) for \(1 \leqslant i \leqslant n\), then we denote \(R^n = \underbrace{R\times  \dots \times R}_n=\underbrace{R\oplus  \dots \oplus R}_n\).
+    </p>
+  </section>
+
+  <p>
+    It is useful to talk about maps from the factors/summands to the direct product/ direct sum and conversely.
+  </p>
+
+  <section class="callout definition" role="region" aria-labelledby="def-11-4-22">
+    <h3 id="def-11-4-22">Definition 11.4.22</h3>
+    <p>
+      For \(i\in J\) the <em>inclusion of the \(i\)-th factor</em> into a direct product or direct sum is the map
+      \[
+        \iota_i\!: M_i \to \prod_{a \in J} M_a \text{ or } \iota_i\!: M_i \to \bigoplus_{a \in J} M_a, \iota_i(m)=(m_a)_{a \in J}, \text{ where } m_a=\begin{cases} m & \text{ if } a = i \\ 0 & \text{ if } a \neq i \end{cases}.
+      \]
+    </p>
+    <p>
+      For \(i\in J\) the \(i\)-th <em>projection map</em> from a direct product or a direct sum module is
+      \[
+        \pi_i\!: \prod_{a \in J} M_a \to M_i \text{ or } \pi_i:\bigoplus_{a \in J} M_a \to M_i, \pi_i \left((m_a)_{a \in J}\right)=m_i.
+      \]
+    </p>
+  </section>
+
+  <section class="callout lemma" role="region" aria-labelledby="lem-11-4-23">
+    <h3 id="lem-11-4-23">Lemma 11.4.23</h3>
+    <p>
+      Projections from direct products or sums of \(R\)-module, inclusions into direct products or sums of \(R\)-modules, and products of \(R\)-module homomorphisms are \(R\)-module homomorphisms. Furthermore, inclusions are injective, projections are surjective, and
+      \[
+        \pi_i\circ \iota_i=\mathrm{id}_{M_i}.
+      \]
+      Also, \(\iota_i(M_i)\) is an \(R\)-submodule of the direct product/sum which is isomorphic to \(M_i\).
+    </p>
+  </section>
+
+  <p>
+    Note, however, that \(\iota_i\circ\pi_i\neq \mathrm{id}\).
+  </p>
+</section>
+
+
+
+</main>
+<footer aria-label="Course footer" role="contentinfo">
+<p>© 2026 Math 818 — Introduction to Modern Algebra II</p>
+</footer>
+</div>
+</body>
+</html>
