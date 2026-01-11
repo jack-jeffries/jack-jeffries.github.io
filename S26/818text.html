@@ -392,10 +392,7 @@
       <li>
         If \(R\) is a ring with \(1 \neq 0\), then \(R[x_1,\ldots,x_n]\) is an \(R\)-module for any \(n \geqslant 1\). This is a special case of (4).
       </li>
-      <li>
-        If \(R\) is a ring, let \( M_n(R)\) denote the ring of \(n \times n\) matrices with entries in \(R\). Then the set of \(n\times 1\) column vectors with entries in \(R\) is a left \(M_n(R)\)-module, and the set of \(1\times n\) row vectors with entries in \(R\) is a right \(M_n(R)\)-module, with the usual coordinatewise vector-plus-vector addition and usual matrix-times-vector multiplication.
-      </li>
-      <li>
+   <li>
         The <strong>standard free module</strong> over \(R\) of rank \(n\) is the set
         \[
           R^n=\left\{\begin{bmatrix} r_1\\ \vdots\\r_n \end{bmatrix} \mid r_i\in R, 1 \leqslant i \leqslant n\right\}
@@ -407,12 +404,18 @@
         We will often write the elements of \(R^n\) as \(n\)-tuples \((r_1, \ldots, r_n)\) instead. Notice that \(R\) is the free \(R\)-module of rank \(1\).
       </li>
       <li>
-        More generally, given a collection of \(R\)-modules \(\{ A_i \}\), the abelian group
+        More generally, given a collection of \(R\)-modules \(\{ A_i \}\), the abelian groups
+\[ \bigprod_i A_i = \{ (a_i)_i \mid a_i \in A_i \}\]
+and
         \[
-          \bigoplus_i A_i = \{ (a_i)_i \mid a_i \in A_i, a_i = 0 \textrm{ for all } i \textrm{ but finitely many} \}
+          \bigoplus_i A_i = \{ (a_i)_i \mid a_i \in A_i, a_i = 0 \textrm{ for all but finitely many} i \,\}
         \]
-        is an \(R\)-module with the \(R\)-action \(r(a_i) := (ra_i)\).
+        are \(R\)-modules with the \(R\)-action \(r(a_i) := (ra_i)\).
       </li>
+      <li>
+        If \(R\) is a ring, let \( M_n(R)\) denote the ring of \(n \times n\) matrices with entries in \(R\). Then the set of \(n\times 1\) column vectors with entries in \(R\) is a left \(M_n(R)\)-module, and the set of \(1\times n\) row vectors with entries in \(R\) is a right \(M_n(R)\)-module, with the usual coordinatewise vector-plus-vector addition and usual matrix-times-vector multiplication.
+      </li>
+  
     </ol>
   </section>
 
@@ -427,18 +430,15 @@
   <section class="callout definition" role="region" aria-labelledby="def-11-2-1">
     <h3 id="def-11-2-1">Definition 11.2.1</h3>
     <p>
-      Let \(R\) be a ring and let \(M\) be a left \(R\)-module. An <strong>\(R\)-submodule</strong> of \(M\) is a subgroup \(N\) (under addition) of \(M\) satisfying \(rn \in N\) for all \(r \in R\) and \(n \in N\).
+      Let \(R\) be a ring and let \(M\) be a left \(R\)-module. An <strong>\(R\)-submodule</strong> of \(M\) is a subset \(N\subseteq M\) that is an \(R\)-module with the same addition and \(R\)-action as \(M\).
     </p>
   </section>
 
-  <p>
-    The submodules of an \(R\)-module \(M\) are precisely the subsets of \(M\) which are modules in their own right, via the same \(R\)-action as we are considering for \(M\).
-  </p>
 
   <section class="callout exercise" role="region" aria-labelledby="ex-11-2-2">
     <h3 id="ex-11-2-2">Exercise 11.2.2</h3>
-    <p>
-      Show that if \(N\) is a submodule of \(M\), then \(N\) is an \(R\)-module via the restriction of the action of \(R\) on \(M\) to the subset \(N\).
+    <p> Show that a subset \(N\subseteq M\) is a submodule if and only if it is a
+subgroup under addition of \(M\) satisfying \(rn \in N\) for all \(r \in R\) and \(n \in N\).    
     </p>
   </section>
 
