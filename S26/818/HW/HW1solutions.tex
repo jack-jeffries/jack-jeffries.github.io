@@ -92,7 +92,20 @@ I will post the .tex code for these problems for you to use if you wish to type 
 \begin{problem} Refresh your knowledge of Gauss' Lemma, and read the short Section 10.2 from the Math 817 lecture notes on Eisenstein's Criterion. Then
  \begin{enumerate}
 \item[(a)] Prove that the polynomial $x^2 + y^2 -1$ is irreducible in $\Q[x,y]$.
+
+\begin{proof}
+Recall that $\Q[x,y]=\Q[x][y]$. Consider the prime ideal $P=(x-1) \subseteq \Q[x]$; this is prime since $x-1$ is irreducible and $\Q[x]$ is a UFD. Note that $x^2-1=(x-1)(x+1) \in P$ since $x-1 \ | \ x^2-1$ but $x^2-1\notin P^2$ since $(x-1)^2 \ | \ x^2-1$. Since $0\in P$, and the leading coefficient of $x^2 + y^2 -1$ as a polynomial in $y$ is $1$, the hypotheses of Eisenstein's criterion apply, so this polynomial is irreducible.
+\end{proof}
+
   \item[(b)] Prove\footnote{Hint: Consider this polynomial in $\Z[x]$ and go modulo $2$.} that $5x^4 + 7x^3 + 11x^2 +6x + 1$ is irreducible in $\Q[x]$.
+  
+  \begin{proof}
+By Gauss' Lemma, it suffices to show that $f(x)=5x^4 + 7x^3 + 11x^2 +6x + 1$ is irreducible in $\Z[x]$. Suppose that $f=gh$, with $g,h\in \Z[x]$; we want to show that either $g$ or $h$ is a unit. Consider the surjective homomorphism $\pi: \Z[x] \to \Z/2[x]$ given by reducing the coefficients modulo $2$. We have
+\[ \pi(f) = x^4 + x^3 + x^2 +1 \o
+
+
+\end{proof}
+
   \item[(c)] Let $p$ be a prime number. Prove\footnote{Hint: Consider $f(x+1)$. You can use without proof that the binomial theorem holds in any commutative ring~$R$: for any $A,B\in R$ and positive integer $n$, \[ (A+B)^n = \sum_{i=0}^n \binom{n}{i} A^i B^{n-i}, \qquad \text{where} \ \binom{n}{i} = \frac{n!}{i!(n-i)!} \in \Z_{\geq 0}.\]}
   that the polynomial $f(x) = x^{p-1} + x^{p-2} + \cdots  + x + 1$ is irreducible in $\Q[x]$.
 \end{enumerate}
