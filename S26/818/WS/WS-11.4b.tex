@@ -2,7 +2,7 @@
 
 
 \usepackage{times}
-\usepackage[margin=0.8in]{geometry}
+\usepackage[margin=0.75in]{geometry}
 \usepackage{paralist,amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals}
 \usepackage[outline]{contour}
 \contourlength{.4pt}
@@ -68,24 +68,42 @@
 	
 
 \begin{framed}
+\textsc{Proposition:} Let $R$ be a ring and $F$ be a free module with basis $B$. Then every element of $f\in F$ admits a unique expression as a linear combination\footnotemark[1] of elements of $B$.
 
-Bases and unique expression
+\
 
-UMP for free modules
-
+\textsc{Universal mapping property for free modules:} Let $R$ be a ring and $F$ be a free module with basis $B$. Let $N$ be an arbitrary $R$-module. Then for any function $j:B\to N$, there is a unique $R$-module homomorphism $h:F\to N$ such that $h(b) = j(b)$ for all $b\in B$.
 \end{framed}
+\footnotetext[1]{Recall that a linear combination of $B$ is a sum of the form $r_1 b_1 + \cdots + r_n b_n$ for some finite list of elements $b_1,\dots,b_n\in B$ and $r_1,\dots,r_n\in R$.}
 
 \begin{enumerate}
-\itemA 
+\itemA Let $R$ be a ring and $n\in \Z_{>0}$. The \textbf{standard free module of rank $\boldsymbol{n}$} and its \textbf{standard basis} are, respectively,
+\[ {\small R^n = \left\{ \begin{bmatrix} r_1\\ r_2 \\ \vdots \\ r_n \end{bmatrix} \ \Big| \ r_i\in R \right\} \quad \text{and} \quad \text{the set with elements} \  e_1 = \begin{bmatrix} 1 \\ 0 \\  \vdots \\ 0 \end{bmatrix}, e_2 = \begin{bmatrix} 0 \\ 1 \\  \vdots \\ 0 \end{bmatrix}, \dots, e_n =  \begin{bmatrix} 0 \\ 0 \\  \vdots \\ 1 \end{bmatrix}.}\]
+We also write elements in the form $(r_1,\dots, r_n)$.
+\begin{enumerate}
+\itema Let $R=\Z[x]$ and $M=R^3$. Give the unique expression of $v= (2x + 3, 1, x^4)$ as a linear combination of the standard basis. 
+\itema Let $R=\Z[x]$, and $M=R^3$, and $N=\Z/5[x]$. Let $h:M\to N$ be the unique $R$-linear map such that $h(e_1) =[2]$, $h(e_2) =[0]$, and $h(e_3)=x$. Compute $h(v)$.
+\end{enumerate}
+
+\
+
+\itemA Proving things.
+\begin{enumerate}
+\itema Prove the Proposition above.
+\itema Prove the UMP for free modules above.
+\end{enumerate}
+
+
+
 
 \end{enumerate}
 
 
 
 \begin{framed}
-\textsc{Theorem 2:} Let $R$ be a ring. Let $F$ be a free module with a basis $B$, and $F'$ be a free module with a basis $B'$.
+\textsc{Theorem:} Let $R$ be a ring. Let $F$ be a free module with a basis $B$, and $F'$ be a free module with a basis $B'$.
 \begin{enumerate}
-\item If $|B| = |B'|$ (meaning there is a set bijection between $B$ and $B'$), then $F\cong F'$.
+\item If $|B| = |B'|$, meaning there is a set bijection between $B$ and $B'$, then $F\cong F'$.
 \item Let $R$ be a commutative ring. If $F\cong F'$, then $|B|=|B'|$.
 \end{enumerate}
 
@@ -97,17 +115,18 @@ UMP for free modules
 
 
 \begin{enumerate}
-\itemA Theorem 2:
+\setcounter{enumi}{2}
+\itemA Rank:
 \begin{enumerate}
-\itema What about the Definition above needs justification? Use Theorem 2 to justify it.
+\itema What about the Definition above needs justification? Use the Theorem to justify it.
 \itema Prove part (1) of Theorem 2. (We will prove part (2) later as a consequence of the same result in the special case of vector spaces.)
 \end{enumerate}
 
 \
 
-\itemB Let $R = M_{\infty}(\R)$ be the ring of countably infinite matrices with real entries:
+\itemB Let $A = M_{\infty}(\R)$ be the ring of countably infinite matrices with real entries:
 \[ M_{\infty}(\R) =\{  [a_{ij}]_{\substack{i=1,2,3,\dots \\ j=1,2,3,\dots}} \ | \ a_{ij}\neq 0 \ \text{for at most finitely many pairs} \ (i,j) \}\]
-with usual matrix addition and multiplication; you do not have to prove that this is a ring. Prove\footnote{Hint: Consider the map sending a matrix $[a_{ij}]$ to the pair of matrices $([a_{i,2j-1}],[a_{i,2j}])$ reconstituted from its odd columns and its even columns.} that $R^1 \cong R^2$ as $R$-modules. What does this say about Theorem 2?
+with usual matrix addition and multiplication; you do not have to prove that this is a ring. Prove\footnote[2]{Hint: Consider the map sending a matrix $[a_{ij}]$ to the pair of matrices $([a_{i,2j-1}],[a_{i,2j}])$ reconstituted from its odd columns and its even columns.} that $A^1 \cong A^2$ as $A$-modules. What does this say about the Theorem?
 
 \end{enumerate}
 
