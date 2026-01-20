@@ -100,14 +100,37 @@ Recall that $\Q[x,y]=\Q[x][y]$. Consider the prime ideal $P=(x-1) \subseteq \Q[x
   \item[(b)] Prove\footnote{Hint: Consider this polynomial in $\Z[x]$ and go modulo $2$.} that $5x^4 + 7x^3 + 11x^2 +6x + 1$ is irreducible in $\Q[x]$.
   
   \begin{proof}
-By Gauss' Lemma, it suffices to show that $f(x)=5x^4 + 7x^3 + 11x^2 +6x + 1$ is irreducible in $\Z[x]$. Suppose that $f=gh$, with $g,h\in \Z[x]$; we want to show that either $g$ or $h$ is a unit. Consider the surjective homomorphism $\pi: \Z[x] \to \Z/2[x]$ given by reducing the coefficients modulo $2$. We have
-\[ \pi(f) = x^4 + x^3 + x^2 +1 \o
+By Gauss' Lemma, it suffices to show that $f(x)=5x^4 + 7x^3 + 11x^2 +6x + 1$ is irreducible in $\Z[x]$. Suppose that $f=gh$, with $g,h\in \Z[x]$; we want to show that either $g$ or $h$ is a unit. Without loss of generality, we can consdier three cases: $\deg(g)=0$ and $\deg(h)=4$; $\deg(g)=1$ and $\deg(h)=3$; or $\deg(g)=2$ and $\deg(h)=2$. 
 
+We make some remarks before we separate the three cases. Note that the leading coefficient of $g$ times that of $h$ is $5$, so the leading coefficients of $g$ and $h$ are $\pm1$ or $\pm 5$.
 
+Consider the surjective homomorphism $\pi: \Z[x] \to \Z/2[x]$ given by reducing the coefficients modulo $2$. Since the leading coefficients of $g$ and $h$ are odd, the degree of $\pi(g)$ equals that of $g$, and likewise for $h$.  We have
+\[ \pi(f) = x^4 + x^3 + x^2 +1 = (x+1)(x^3+x+1) \qquad \text{in} \ \Z/2[x].\]
+The polynomial $x+1$ is irreducible for degree reasons, and $p(x)=x^3+x+1$ has no roots since $p(0)=p(1)=0$, and thus $p(x)$ is irreducible in $\Z/2[x]$ since any factorization into nonunits would have a factor of degree one, which would have a root.
+
+We now analyze the cases:
+\begin{itemize}
+\item $\deg(g)=0$ and $\deg(h)=4$: Based on the leading coefficients, we either have $g=\pm1$ or $g=\pm 5$. If $f$ were a multiple of $5$, then each coefficient would be, but this is not so. Thus, in this case $g=\pm1$, which is a unit.
+\item $\deg(g)=1$ and $\deg(h)=3$: In this case, $g$ yields a root over $\Q$. By the Rational Root Theorem, any rational root of $f$ is of the form $\pm 1$ or $\pm 1/5$. Plugging each of these four into $f$ shows that none is a root, so this case does not occur.
+\item $\deg(g)=\deg(h)=2$: In this case, we have $\pi(f)=\pi(g)\pi(h)$ with $\deg(\pi(g))=\deg(\pi(h))=2$. However, $\pi(f)$ factors as a product of irreducibles of degrees $1$ and $3$ in $\Z/2[x]$. As $p(x)$ is prime, $p(x)$ divides either $\pi(g)$ or $\pi(h)$. It follows that either $\pi(g)$ or $\pi(h)$ has degree at least $3$, so this case does not occur.
+\end{itemize}
+This completes the proof.
 \end{proof}
 
   \item[(c)] Let $p$ be a prime number. Prove\footnote{Hint: Consider $f(x+1)$. You can use without proof that the binomial theorem holds in any commutative ring~$R$: for any $A,B\in R$ and positive integer $n$, \[ (A+B)^n = \sum_{i=0}^n \binom{n}{i} A^i B^{n-i}, \qquad \text{where} \ \binom{n}{i} = \frac{n!}{i!(n-i)!} \in \Z_{\geq 0}.\]}
   that the polynomial $f(x) = x^{p-1} + x^{p-2} + \cdots  + x + 1$ is irreducible in $\Q[x]$.
+  
+  \begin{proof}
+  We again apply Gauss' Lemma and aim to show that $f(x)$ is irreducible in $\Z[x]$.
+Consider the homomorphism $\phi:\Z[x] \to \Z[x]$ mapping $f(x) \mapsto f(x+1)$; this is an evaluation homomorphism. This is bijective since the map $f(X)\mapsto f(x-1)$ is its inverse. It follows that $f(x+1)$ is irreducible if and only if $f(x)$ is.
+
+Now note that $f(x) (x-1) = x^p-1$, so 
+\[f(x+1) x= (x+1)^p-1 = x^p + \binom{p}{1} x^{p-1} + \cdots + \binom{p}{p-1} x,\]
+and thus
+\[ f(x+1) = x^{p-1} + \binom{p}{1} x^{p-2} + \cdots + \binom{p}{p-1}.\]
+ 
+ Now, for $p$ prime, we have $\binom{p}{i} = \frac{p!}{i! (p-i)!}$, so $i! (p-i)! \binom{p}{i} = p!$ in $\Z$. For $1\leq i \leq p-1$, the factorials $i! (p-i)!$ are not multiples of $p$, since they are products of integers less than $p$; since $p$ divides $p!$, we must have that $p$ divides $\binom{p}{i}$ by definition of prime. Also, $\binom{p}{p-1}=p$ which is not a multiple of $p^2$. Thus, Eisenstein's criterion applies to $f(x+1)$, which is thus irreducible.
+  \end{proof}
 \end{enumerate}
 \end{problem}
 
@@ -120,22 +143,87 @@ By Gauss' Lemma, it suffices to show that $f(x)=5x^4 + 7x^3 + 11x^2 +6x + 1$ is 
 
 \
 
+\begin{proof}
+Note that $0\in \ann_R(M)$ since $0\cdot m = 0$ for all $m\in M$.Let $a,b\in \ann_R(M)$. Then for any $m\in M$, $(a+b)m=am+bm = 0$, so $r+s\in M$. Let $a\in \ann_R(M)$ and $r\in R$. Then $(ra)m = r(am) = r0=0$, and $(ar)m = a(rm) = 0$. Thus, by the two-step test for ideals, the set $\ann_R(M)$ is a two-sided ideal.
+\end{proof}
+
 \begin{problem} Let $R$ be a ring and $M$ be a left $R$-module.
 \begin{enumerate}
 \item[(a)] Let $I$ be a left ideal, and define 
 \[ IM\colonequals \{ \sum_i a_i m_i \ | \ a_i \in I, m_i\in M\}.\] Show that $IM$ is a submodule of $M$.
+
+\begin{proof} 
+We use the two-step test. Note first that $0\in I$ and $0\in M$ yields $0=o\cdot 0 \in IM$. Now for $\sum_i a_i m_i, \sum_j a'_j m'_j  \in IM$, their sum is in $IM$. For $r\in R$, and $\sum_i a_i m_i \in IM$, we have $r \left(\sum_i a_i m_i\right) = \sum_i r(a_i m_i) = \sum_i (ra_i) m_i$, and since $ra_i\in I$, this is in $IM$. Thus, this is a submodule.
+\end{proof}
+
 \item[(b)] Show that if $I$ is a two-sided ideal and $IM=0$, then $M$ is a left $R/I$-module by the rule $(r+I) m \colonequals rm$.
+
+\begin{proof}
+First we check that this operation is well-defined. Indeed, if $r+I=s+I$, then $r-s\in I$, so for $m\in M$,  $rm-sm = (r-s)m=0$, and hence $rm=sm$. The module axioms now follow from those for $M$ as an $R$-module:  Let $r+I, s+I \in R/I$ and $m,n\in M$.
+\begin{itemize}
+\item $(r+I + s+I) m = (r+s +I) m = (r+s)m = rm + sm = (r+I)m + (s+I)m$.
+\item $((r+I)(s+I)) m = (rs+I)m = (rs)m = r(sm) = (r+I)(sm) = (r+I)( (s+I) m)$.
+\item $(r+I)(m+n) = r(m+n) = rm+rn = (r+I)m + (r+I)n$.
+\item $(1+I)m = 1m = m$.
+\end{itemize}
+\end{proof}
+
+
 \item[(c)] Show that if $I$ is a two-sided ideal, then $M/IM$ is an $R/I$-module.
+\begin{proof} Note that $I (M/IM) = 0$. The assertion then follows from the previous part.
+\end{proof}
 \end{enumerate}
 \end{problem}
 
 
-\newpage
-
 \begin{problem} Let $R$ be a commutative ring, $M$ a module, and $I$ an ideal.
 \begin{enumerate}
 \item[(a)] Prove that ${}_{I} M:=\{ m\in M \ | \ am=0 \ \text{for all} \ a\in I\}$ is a submodule of $M$.
+\begin{proof}
+We use the two-step test. Note first that $0 \in {}_{I} M$. Then let $m,n\in {}_{I} M$. Let $a\in I$. Then $a(m+n) = am+an = 0+0 = 0$. Thus, $m+n\in {}_{I} M$. Now let $m\in {}_{I} M$ and $r\in R$. Let $a\in I$. Then $a(rm) = (ar)m = (ra) m = r(am) = r0 = 0$. Thus $rm\in {}_{I} M$. It follows that ${}_{I} M$ is a submodule.
+\end{proof}
 \item[(b)] Prove that $\Hom_R(R/I,M)\cong {}_{I} M$.
+\begin{proof}
+Consider the map
+$$\xymatrix@R=1mm{\Hom_R(R/I,M) \ar[r]^-{\Psi} & N \\ f \ar@{|->}[r] & f(1+I).}$$
+We claim that this is a well-defined isomorphism of $R$-modules.
+\begin{itemize}
+	\item Given any $f \in \Hom_R(R/I,M)$, we need to check that $\Psi(f) \in N$. Consider $a \in I$ and $f \in \Hom_R(R/I,M)$. Then $a+I = 0+I$, and since $f$ is a homomorphism of $R$-modules, we have
+	$$a\Psi(f) = af(1+I) = f(a+I) = f(0+I) = 0.$$
+	Thus $\Psi(f) \in N$.
+	\item We claim that $\Psi$ is an $R$-module homomorphism. Given $f, g \in \Hom_R(R/I,M)$, we have
+	$$\begin{aligned}
+	\Psi(f+g) = (f+g)(1+I) \\
+	& = f(1+I)+g(1+I) & \textrm{by definition of } f+g \\
+	& = \Psi(f) + \Psi(g).
+	\end{aligned}$$
+	Moreover, for any $r \in R$ we have
+		$$\begin{aligned}
+	\Psi(rf) = (rf)(1+I) \\
+	& = f(r(1+I)) & \textrm{by definition of } rf \\
+	& = rf(1+I) & \textrm{since $f$ is a homomorphism of $R$-modules}\\
+	& = r\Psi(f).
+	\end{aligned}$$
+	\item We claim that $\Psi$ is injective. Indeed, given $f, g \in \Hom_R(R/I,M)$, 
+	$$\Psi(f)=\Psi(g) \implies f(1+I) = g(1+I),$$
+	but the image of $1+I$ completely determines the homomorphism, so this implies that $f=g$.
+	\item We claim that $\Psi$ is surjective. Given $n \in N$, consider the function
+	$$\xymatrix@R=1mm{R/I \ar[r]^-f & M \\ r \ar@{|->}[r] & rn.}$$
+	Given any $r+I = s+I$ in $R/I$, we have $r-s \in I$. Since $n \in N$, we conclude that
+	$$(r-s)n = 0 \implies rn=sn.$$
+	Thus $f(r+I) = f(s+I)$, and $f$ is a well-defined function. Moreover, for any $r+I, s+I \in R/I$ and any $t \in R$, we have
+	$$f((r+I)+(s+I)) = f((r+s)+I) = (r+s)n = rn + sn = f(r+I) + f(s+I),$$
+	and
+	$$f(t(r+I)) = f(tr+I) = (tr)n = t(rn) = tf(n).$$
+	Therefore, $f$ is a homomorphism of $R$-modules. By construction, we see that 
+	$$\Psi(f) = f(1+I)=1n=n.$$
+	We conclude that $\Psi$ is indeed surjective
+\end{itemize}
+We have shown that $\Psi$ is an isomorphism of $R$-modules.	
+\end{proof}
+
+
+
 \end{enumerate}
 \end{problem}
 
