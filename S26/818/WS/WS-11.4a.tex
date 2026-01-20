@@ -103,7 +103,14 @@
 \itema Does every generating set of $M$ consist of a single element?
 \end{enumerate}
 
-\
+\solution{
+\begin{enumerate}
+\itema Let $S\neq \varnothing$ and $m\in S$. Then $n\cdot m=0$ but $n\neq 0$ in $\Z$, so $M$ is not linearly independent.
+\itema $M$ has no nonempty linearly independent subset, there there can be no nonempty basis. Also, the empty set is not a basis, since it does not span $M$.
+\itema The element $[1]_n$ spans $M$, since any element $[i]_n$ can be written as $i \cdot [1]_n$.
+\itema No; $\{ [0]_n,[1]_n\}$ is also a generating set, for example.
+\end{enumerate}
+}
 
 \itemA Let $R$ be a commutative ring. Let $R[x]$ be a polynomial ring over $R$.
 \begin{enumerate}
@@ -113,11 +120,22 @@
 \itema Give a different example of a basis for $R[x]$.
 \end{enumerate}
 
-\
+\solution{
+\begin{enumerate}
+\itema Any element of $R[x]$ can be written as $r_n x^n + \cdots + r_0$ for some $r_0,\dots,r_n\in R$, so these elements generate. If  $r_n x^n + \cdots + r_0$ is the zero of $R[x]$ then all the coefficients are zero, so these elements are linearly independent.
+\itema The set $\{1\}$ works, for example.
+\itema The set $\{1,x,x^2,\dots ,2\}$ works, for example.
+\itema The set $\{-1,x,x^2,\dots\}$ is another basis. 
+\end{enumerate}
+}
 
 \itemA Show that an $R$-module $M$ is cyclic if and only if $M\cong R/I$ for some left ideal $I$.
 
-\
+\solution{
+For a module of the form $R/I$, the element $1+I$ is a generator, since any element $r+I$ can be written as $r(1+I)$. If $\psi:R/I \to M$ is an isomorphism, then $\psi(1+I)$ is a generator, since any element can be written as $\psi(r+I) = \psi(r(1+I)) = r \psi(1+I)$. Thus, if $M\cong R/I$, then $M$ is cyclic.
+
+Now suppose that $M$ is cyclic, and write $M=Rm$. Consider the homomorphism $\phi:R\to M$ given by $\phi(r)=rm$. This map is an $R$-module homomorphism by an argument similar to class. The image of $\phi$ is $Rm = M$, so $\phi$ is cyclic. The kernel of $\phi$ is a submodule of $R$, which is a left ideal. By the First Isomorphism Theorem, we are done.
+}
 
 
 
