@@ -59,7 +59,7 @@
 
 
 \begin{document}
-\showsol{0}
+\showsol{1}
 	
 	\thispagestyle{empty}
 	
@@ -100,7 +100,7 @@ We also write elements in the form $(r_1,\dots, r_n)$.
 \end{enumerate}
 \solution{
 \begin{enumerate}
-\itema Let $f\in F$. Since $B$ is a basis, there is at least one expression $f= r_1 b_1 + \cdots +r_n b_n$ with $r_i\in R$ and $b_i \in B$ because $B$ spans $F$. Given another, by including some extra zero coefficients (to both expressions), we can assume the other uses the same elements of $B$, so take $f=r'_1 b_1 + \cdots + r'_n b_n$. Then after subtracting we get
+\itema Let $f\in F$. Since $B$ is a basis, there is at least one expression $f= r_1 b_1 + \cdots +r_n b_n$ with $r_i\in R$ and $b_i \in B$ because $B$ generates $F$. Given another, by including some extra zero coefficients (to both expressions), we can assume the other uses the same elements of $B$, so take $f=r'_1 b_1 + \cdots + r'_n b_n$. Then after subtracting we get
 \[ 0 = f-f = \sum_i r_i b_i - \sum_i r'_i b_i = \sum_i (r_i-r'_i) b_i,\]
 so $r_i-r'_i=0$ by linear independence, and hence $r_i=r'_i$ for all $i$. This shows uniqueness.
 \itemb First we show uniqueness. By the Proposition, we can write $f= \sum_i r_i b_i$ in a unique way, and we must have $h(f) = h(\sum_i r_i b_i) = \sum_i r_i h(b_i) = \sum_i r_i j(b_i)$. This gives a unique value for each $f\in F$. For existence, we check that the function given by this formula is an $R$-module homomorphism. To do it, let $f,f'\in F$. Then, after adding some zero coefficients if necessary, we can write $f=\sum_i r_i b_i$ and $f'=\sum_i r'_i b_i$. Then $f+f' = \sum_i (r_i + r'_i) b_i$, suing the module axioms. We then have 
