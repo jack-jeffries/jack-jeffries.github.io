@@ -2,7 +2,7 @@
 
 
 \usepackage{times}
-\usepackage[margin=0.75in]{geometry}
+\usepackage[margin=0.70in]{geometry}
 \usepackage{paralist,amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals}
 \usepackage[outline]{contour}
 \contourlength{.4pt}
@@ -85,14 +85,29 @@ We also write elements in the form $(r_1,\dots, r_n)$.
 \itema Let $R=\Z[x]$, and $M=R^3$, and $N=\Z/5[x]$. Let $h:M\to N$ be the unique $R$-linear map such that $h(e_1) =[2]$, $h(e_2) =[0]$, and $h(e_3)=x$. Compute $h(v)$.
 \end{enumerate}
 
-\
+\solution{
+\begin{enumerate}
+\itema $v=(2x+3)e_1 + e_2 + x^4 e_3$.
+\itema $h(v) = (2x+3) [2] + [0] + x^4 \cdot x = x^5 + [4]x+[1]$.
+\end{enumerate}
+}
+
 
 \itemA Proving things.
 \begin{enumerate}
 \itema Prove the Proposition above.
-\itema Prove the UMP for free modules above.
+\itemb Prove the UMP for free modules above.
 \end{enumerate}
-
+\solution{
+\begin{enumerate}
+\itema Let $f\in F$. Since $B$ is a basis, there is at least one expression $f= r_1 b_1 + \cdots +r_n b_n$ with $r_i\in R$ and $b_i \in B$ because $B$ spans $F$. Given another, by including some extra zero coefficients (to both expressions), we can assume the other uses the same elements of $B$, so take $f=r'_1 b_1 + \cdots + r'_n b_n$. Then after subtracting we get
+\[ 0 = f-f = \sum_i r_i b_i - \sum_i r'_i b_i = \sum_i (r_i-r'_i) b_i,\]
+so $r_i-r'_i=0$ by linear independence, and hence $r_i=r'_i$ for all $i$. This shows uniqueness.
+\itemb First we show uniqueness. By the Proposition, we can write $f= \sum_i r_i b_i$ in a unique way, and we must have $h(f) = h(\sum_i r_i b_i) = \sum_i r_i h(b_i) = \sum_i r_i j(b_i)$. This gives a unique value for each $f\in F$. For existence, we check that the function given by this formula is an $R$-module homomorphism. To do it, let $f,f'\in F$. Then, after adding some zero coefficients if necessary, we can write $f=\sum_i r_i b_i$ and $f'=\sum_i r'_i b_i$. Then $f+f' = \sum_i (r_i + r'_i) b_i$, suing the module axioms. We then have 
+\[ h(f+ f') = \sum_i (r_i + r'_i) j(b_i) = \sum_i r_i j(b_i) + \sum_i r'_i j(b_i) = h(f) + h(f').\]
+The check that $h$ is compatible with multiplication by scalars is similar.
+\end{enumerate}
+}
 
 
 
@@ -119,10 +134,16 @@ We also write elements in the form $(r_1,\dots, r_n)$.
 \itemA Rank:
 \begin{enumerate}
 \itema What about the Definition above needs justification? Use the Theorem to justify it.
-\itema Prove part (1) of Theorem 2. (We will prove part (2) later as a consequence of the same result in the special case of vector spaces.)
+\itema Prove part (1) of the Theorem. (We will prove part (2) later as a consequence of the same result in the special case of vector spaces.)
 \end{enumerate}
 
-\
+\solution{
+\begin{enumerate}
+\itema That every basis has the same size. That follows from part (2) in the case $F=F'$.
+\itema Let $j:B\to B'$ be a bijection. Since $B' \subseteq F'$, by the UMP for free modules, there is a unique $R$-linear map $h: F \to F'$ such that $h|_B = j$. Then, using the inverse map $j^{-1}: B'\to B$, since $B\subseteq F$, the UMP for free modules gives us a unique $R$-linear map $h': F' \to F$ such that $h'|_{B'}=j^{-1}$. Consider the composition $h' \circ h: F\to F$. Its restriction to $B$ is the identity map. Thus, again by UMP, $h' \circ h$ is the identity on $F$. Along similar lines, the composition $h\circ h': F' \to F'$ is the identity. It follows that $F\cong F'$.
+\end{enumerate}
+}
+
 
 \itemB Let $A = M_{\infty}(\R)$ be the ring of countably infinite matrices with real entries:
 \[ M_{\infty}(\R) =\{  [a_{ij}]_{\substack{i=1,2,3,\dots \\ j=1,2,3,\dots}} \ | \ a_{ij}\neq 0 \ \text{for at most finitely many pairs} \ (i,j) \}\]
