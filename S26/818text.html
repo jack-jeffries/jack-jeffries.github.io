@@ -168,7 +168,9 @@
 <li><a href="#sec-11-4-heading">Module generators, bases and free modules</a></li>
 </ol>
 <li><a href="#sec-12">Vector spaces</a></li>
-<ol><li><a href="#sec-12-1-heading">Classification of vector spaces and dimension</li>
+<ol><li><a href="#sec-12-1-heading">Classification of vector spaces and dimension</a></li>
+<li><a href="#sec-12-2-title">Linear transformations and homomorphisms between free modules</a></li>
+<li><a href="#sec-12-3-title">Change of basis</a></li>
 </ol>
 
 </ol>
@@ -1452,7 +1454,7 @@ K &\longmapsto K/N .
 
 
 
-<!--
+
 
 <h1 id="lecture-heading">12. Vector Spaces</h1>
 
@@ -1460,11 +1462,7 @@ K &\longmapsto K/N .
 
     </p>
 
-
-
-
-
-<section id="classification-of-vector-spaces-and-dimension" aria-labelledby="sec-12-1-heading">
+<section id="sec-12-1" class="section" aria-labelledby="sec-12-1-title">
   <h2 id="sec-12-1-heading">12.1 Classification of vector spaces and dimension</h2>
 
   <p>
@@ -1474,106 +1472,122 @@ K &\longmapsto K/N .
     \mathrm{span}(A) := \left\{\sum_{i=1}^n c_i a_i \mid n \geqslant 0, c_i\in F, a_i \in A \right\}.
   \]
 
-  <section class="callout lemma" role="region" aria-labelledby="lem-12-1-1">
-    <h3 id="lem-12-1-1">Lemma 12.1.1</h3>
-    <p>
-      Suppose \(I\) is a linearly independent subset of an \(F\)-vector space \(V\) and \(v \in V \setminus \mathrm{span}(I)\), then \(I \cup \{v\}\) is also linearly independent.
-    </p>
+  <section id="lem-12-1-1" class="callout lemma" aria-labelledby="lem-12-1-1-title">
+    <h3 id="lem-12-1-1-title">Lemma 12.1.1</h3>
+    <div class="callout-body">
+      <p>
+        Suppose \(I\) is a linearly independent subset of an \(F\)-vector space \(V\) and \(v \in V \setminus \mathrm{span}(I)\), then \(I \cup \{v\}\) is also linearly independent.
+      </p>
+    </div>
   </section>
 
-  <section class="callout proof" role="region" aria-labelledby="prf-12-1-1">
-    <h3 id="prf-12-1-1">Proof (of Lemma 12.1.1)</h3>
-    <p>
-      Let \(w_1, \dots, w_n\) be any list of distinct elements of \(I \cup \{v\}\) and suppose that \(\sum_i c_i w_i = 0\) for some \(c_i \in F\).
-      If none of the \(w_i\)'s is equal to \(v\), then \(c_i = 0\) for all \(i\), since \(I\) is linearly independent. Without loss of generality, say \(w_1 = v\). If \(c_1 = 0\) then \(c_i = 0\) for all \(i\) by the same reasoning as in the previous case. If \(c_1 \ne 0\), then
-    </p>
-    \[
-      v = \sum_{i \geqslant 2} \frac{c_i}{c_1} w_i \in \mathrm{span}(I),
-    \]
-    <p>
-      contrary to assumption. This proves that \(I \cup \{v\}\) is a linearly independent set.
-    </p>
+  <section id="proof-lem-12-1-1" class="callout proof" aria-labelledby="proof-lem-12-1-1-title">
+    <h3 id="proof-lem-12-1-1-title">Proof of Lemma 12.1.1</h3>
+    <div class="callout-body">
+      <p>
+        Let \(w_1, \dots, w_n\) be any list of distinct elements of \(I \cup \{v\}\) and suppose that \(\sum_i c_i w_i = 0\) for some \(c_i \in F\).
+        If none of the \(w_i\)'s is equal to \(v\), then \(c_i = 0\) for all \(i\), since \(I\) is linearly independent. Without loss of generality, say \(w_1 = v\). If \(c_1 = 0\) then \(c_i = 0\) for all \(i\) by the same reasoning as in the previous case. If \(c_1 \ne 0\), then
+      </p>
+      \[
+        v = \sum_{i \geqslant 2} \frac{c_i}{c_1} w_i \in \mathrm{span}(I),
+      \]
+      <p>
+        contrary to assumption. This proves that \(I \cup \{v\}\) is a linearly independent set.
+      </p>
+    </div>
   </section>
 
-  <section class="callout theorem" role="region" aria-labelledby="thm-12-1-2">
-    <h3 id="thm-12-1-2">Theorem 12.1.2</h3>
-    <p>
-      Let \(V\) be an \(F\)-vector space and assume \(I \subseteq S \subseteq V\) are subsets such that \(I\) is linearly independent and \(S\) spans \(V\). Then there is a subset \(B\) with \(I \subseteq B \subseteq S\) such that \(B\) is a basis.
-    </p>
+  <section id="thm-12-1-2" class="callout theorem" aria-labelledby="thm-12-1-2-title">
+    <h3 id="thm-12-1-2-title">Theorem 12.1.2</h3>
+    <div class="callout-body">
+      <p>
+        Let \(V\) be an \(F\)-vector space and assume \(I \subseteq S \subseteq V\) are subsets such that \(I\) is linearly independent and \(S\) spans \(V\). Then there is a subset \(B\) with \(I \subseteq B \subseteq S\) such that \(B\) is a basis.
+      </p>
+    </div>
   </section>
 
-  <p>
-    Before we prove this theorem, note that a corollary of Theorem 12.1.2 is that every vector space has a basis; in particular, this says that every module over a field is free!
-  </p>
+  <p>Before we prove this theorem, we note the following corollary:</p>
 
-  <section class="callout corollary" role="region" aria-labelledby="cor-12-1-3">
-    <h3 id="cor-12-1-3">Corollary 12.1.3  (Every vector space has a basis)</h3>
-    <p>
-      Every vector space \(V\) has a basis. Moreover, every linearly independent subset of \(V\) is contained in some basis, and every set of vectors that spans \(V\) contains some basis.
-    </p>
+  <section id="cor-12-1-3" class="callout corollary" aria-labelledby="cor-12-1-3-title">
+    <h3 id="cor-12-1-3-title">Corollary 12.1.3 (Every vector space has a basis)</h3>
+    <div class="callout-body">
+      <p>
+        Every vector space \(V\) has a basis, and hence is a free module. Moreover, every linearly independent subset of \(V\) is contained in some basis, and every set of vectors that spans \(V\) contains some basis.
+      </p>
+    </div>
   </section>
 
-  <section class="callout proof" role="region" aria-labelledby="prf-12-1-3">
-    <h3 id="prf-12-1-3">Proof (of Corollary 12.1.3)</h3>
-    <p>
-      For this first part, apply the theorem with \(I = \varnothing\) and \(S = V\). For the second and third, use \(I\) arbitrary and \(S = V\) and \(I = \varnothing\) and \(S\) arbitrary, respectively.
-    </p>
+  <section id="proof-cor-12-1-3" class="callout proof" aria-labelledby="proof-cor-12-1-3-title">
+    <h3 id="proof-cor-12-1-3-title">Proof of Corollary 12.1.3</h3>
+    <div class="callout-body">
+      <p>
+        For this first part, apply the theorem with \(I = \varnothing\) and \(S = V\). For the second and third, use \(I\) arbitrary and \(S = V\) and \(I = \varnothing\) and \(S\) arbitrary, respectively.
+      </p>
+    </div>
   </section>
 
-  <section class="callout example" role="region" aria-labelledby="ex-12-1-4">
-    <h3 id="ex-12-1-4">Example 12.1.4</h3>
-    <p>
-      \(\mathbb{R}\) has a basis as a \(\mathbb{Q}\)-vector space. Note that such a basis consists of at most one rational number, since any two rational numbers are linearly dependent over \(\mathbb{Q}\).
-    </p>
+  <section id="ex-12-1-4" class="callout example" aria-labelledby="ex-12-1-4-title">
+    <h3 id="ex-12-1-4-title">Example 12.1.4</h3>
+    <div class="callout-body">
+      <p>
+        \(\mathbb{R}\) has a basis as a \(\mathbb{Q}\)-vector space; just don't ask me what it looks like.
+      </p>
+    </div>
   </section>
 
-  <p>
-    We will now prove Theorem 12.1.2.
-    But before we give a formal proof, let's first give a heuristic proof. To so that, start with \(I\). If \(\mathrm{span}(I) = V\), then \(B = I\) does the job. If not, then since \(\mathrm{span}(S)=V\), there must be a \(v \in S \setminus \mathrm{span}(I)\). Let \(I' := I \cup \{v\}\). Then \(I' \subseteq S\) and, by Lemma 11.1.1, \(I'\) is linearly independent.
-    If \(\mathrm{span}(I') = V\), we have found our \(B\), and if not we construct \(I''\) from \(I'\) just as we constructed \(I'\) from \(I\). At this point we would like to say that this process cannot go on for ever, and this is more-or-less true. But at least in an infinite dimensional setting, we need to use Zorn's Lemma to complete the proof rigorously.
-  </p>
+  <section id="proof-thm-12-1-2" class="callout proof" aria-labelledby="proof-thm-12-1-2-title">
+    <h3 id="proof-thm-12-1-2-title">Proof of Theorem 12.1.2</h3>
+    <div class="callout-body">
+      <p>
+        Let \(\mathcal{P}\) denote the collection of all subsets \(X\) of \(V\) such that \(I \subseteq X \subseteq S\) and \(X\) is linearly independent. We make \(\mathcal{P}\) into a poset by the order relation given by set containment \(\subseteq\). We note that \(\mathcal{P}\) is not empty since, for example \(I \in \mathcal{P}\).
+      </p>
 
-  <section class="callout proof" role="region" aria-labelledby="prf-12-1-2">
-    <h3 id="prf-12-1-2">Proof (of Theorem 12.1.2)</h3>
-    <p>
-      Let \(\mathcal{P}\) denote the collection of all subsets \(X\) of \(V\) such that \(I \subseteq X \subseteq S\) and \(X\) is linearly independent. We make \(\mathcal{P}\) into a poset by the order relation given by set containment \(\subseteq\). We note that \(\mathcal{P}\) is not empty since, for example \(I \in \mathcal{P}\).
-    </p>
-    <p>
-      Let \(\mathcal{T}\) be any nonempty chain in \(\mathcal{P}\). Let \(Z = \bigcup_{Y \in \mathcal{T}} Y\). We claim \(Z \in \mathcal{P}\). Given \(z_1, \dots, z_m \in Z\), for each \(i\) we have \(z_i \in Y_i\) for some \(Y_i \in T\). Since \(T\) is totally ordered, one of \(Y_1, \dots, Y_m\) contains all the others and hence contains all the \(z_i\)'s.
-      Since \(Y_i\) is linearly independent, this shows \(z_1, \dots, z_m\) are linearly independent. Thus \(Z\) is linearly independent. Since \(\mathcal{T}\) is non-empty, \(Z \supseteq I\) and hence \(Z \in \mathcal{P}\). It is an upper bound for \(\mathcal{T}\) by construction.
-    </p>
-    <p>
-      By Zorn's Lemma, \(\mathcal{P}\) has a maximal element \(B\), which we claim is a basis for \(V\). Note that \(B\) is linearly independent and \(I \subseteq B \subseteq S\) by construction. We need to show that it spans \(V\). Suppose not. Since \(S\) spans \(V\), if \(S \subseteq \mathrm{span}(B)\), then \(\mathrm{span}(B)\) would have to be all of \(V\). So, there is at least one \(v \in S\) such that \(v \notin \mathrm{span}(B)\), and set \(X := B \cup \{v\}\).
-      Clearly, \(I \subset X \subseteq S\) and, by Lemma 11.1.1, \(X\) is linearly independent. This shows that \(X\) is an element of \(\mathcal{P}\) that is strictly bigger than \(B\), contrary to the maximality of \(B\).
-    </p>
+      <p>
+        Let \(\mathcal{T}\) be any nonempty chain in \(\mathcal{P}\). Let \(Z = \bigcup_{Y \in \mathcal{T}} Y\). We claim \(Z \in \mathcal{P}\). Given \(z_1, \dots, z_m \in Z\), for each \(i\) we have \(z_i \in Y_i\) for some \(Y_i \in T\). Since \(T\) is totally ordered, one of \(Y_1, \dots, Y_m\) contains all the others and hence contains all the \(z_i\)'s.
+        Since \(Y_i\) is linearly independent, this shows \(z_1, \dots, z_m\) are linearly independent. Thus \(Z\) is linearly independent. Since \(\mathcal{T}\) is non-empty, \(Z \supseteq I\) and hence \(Z \in \mathcal{P}\). It is an upper bound for \(\mathcal{T}\) by construction.
+      </p>
+
+      <p>
+        By Zorn's Lemma, \(\mathcal{P}\) has a maximal element \(B\), which we claim is a basis for \(V\). Note that \(B\) is linearly independent and \(I \subseteq B \subseteq S\) by construction. We need to show that it spans \(V\). Suppose not. Since \(S\) spans \(V\), if \(S \subseteq \mathrm{span}(B)\), then \(\mathrm{span}(B)\) would have to be all of \(V\). So, there is at least one \(v \in S\) such that \(v \notin \mathrm{span}(B)\), and set \(X := B \cup \{v\}\).
+        Clearly, \(I \subset X \subseteq S\) and, by Lemma 12.1.1, \(X\) is linearly independent. This shows that \(X\) is an element of \(\mathcal{P}\) that is strictly bigger than \(B\), contrary to the maximality of \(B\).
+      </p>
+    </div>
   </section>
 
-  <section class="callout corollary" role="region" aria-labelledby="cor-12-1-5">
-    <h3 id="cor-12-1-5">Corollary 12.1.5</h3>
-    <p>
-      Let \(F\) be a field and \(W\) be a subspace of the \(F\)-vector space \(V\). Then every basis of \(W\) extends to a basis of \(V\), that is, if \(B\) is a basis of \(W\) then there exists a basis \(\tilde{B}\) of \(V\) such that \(B\) is a subset of \(\tilde{B}\).
-    </p>
+  <section id="cor-12-1-5" class="callout corollary" aria-labelledby="cor-12-1-5-title">
+    <h3 id="cor-12-1-5-title">Corollary 12.1.5</h3>
+    <div class="callout-body">
+      <p>
+        Let \(F\) be a field and \(W\) be a subspace of the \(F\)-vector space \(V\). Then every basis of \(W\) extends to a basis of \(V\), that is, if \(B\) is a basis of \(W\) then there exists a basis \(\tilde{B}\) of \(V\) such that \(B\) is a subset of \(\tilde{B}\).
+      </p>
+    </div>
   </section>
 
-  <section class="callout proof" role="region" aria-labelledby="prf-12-1-5">
-    <h3 id="prf-12-1-5">Proof (of Corollary 12.1.5)</h3>
-    <p>
-      Apply Theorem 12.1.2 with \(B = I\) and \(S = V\). Since \(B\) is a basis of \(W\), \(B\) is linearly independent, and \(B\) remains linearly independent when regarded as a subset of \(V\).
-    </p>
+  <section id="proof-cor-12-1-5" class="callout proof" aria-labelledby="proof-cor-12-1-5-title">
+    <h3 id="proof-cor-12-1-5-title">Proof of Corollary 12.1.5</h3>
+    <div class="callout-body">
+      <p>
+        Apply Theorem 12.1.2 with \(B = I\) and \(S = V\). Since \(B\) is a basis of \(W\), \(B\) is linearly independent, and \(B\) remains linearly independent when regarded as a subset of \(V\).
+      </p>
+    </div>
   </section>
 
-  <section class="callout remark" role="region" aria-labelledby="rmk-12-1-6">
-    <h3 id="rmk-12-1-6">Remark 12.1.6</h3>
-    <p>
-      It is <em>not</em> true that, with the notation of the previous Corollary, if \(\tilde{B}\) is a basis of \(V\) then there exists a basis \(B\) of \(W\) such that \(B\) is a subset of \(\tilde{B}\). For instance, take \(F = \mathbb{R}\), \(V = \mathbb{R}^2\), \(\tilde{B} = \{(1,0), (0,1)\}\) and \(W\) the subspace spanned by \((1,1)\).
-    </p>
+  <section id="rmk-12-1-6" class="callout remark" aria-labelledby="rmk-12-1-6-title">
+    <h3 id="rmk-12-1-6-title">Remark 12.1.6</h3>
+    <div class="callout-body">
+      <p>
+        It is <em>not</em> true that, with the notation of the previous Corollary, if \(\tilde{B}\) is a basis of \(V\) then there exists a basis \(B\) of \(W\) such that \(B\) is a subset of \(\tilde{B}\). For instance, take \(F = \mathbb{R}\), \(V = \mathbb{R}^2\), \(\tilde{B} = \{(1,0), (0,1)\}\) and \(W\) the subspace spanned by \((1,1)\).
+      </p>
+    </div>
   </section>
 
-  <section class="callout definition" role="region" aria-labelledby="def-12-1-7">
-    <h3 id="def-12-1-7">Definition 12.1.7</h3>
-    <p>
-      A vector space is <strong>finite dimensional</strong> if there is spanned by a finite subset.
-    </p>
+  <section id="def-12-1-7" class="callout definition" aria-labelledby="def-12-1-7-title">
+    <h3 id="def-12-1-7-title">Definition 12.1.7</h3>
+    <div class="callout-body">
+      <p>
+        A vector space is <strong>finite dimensional</strong> if there is spanned by a finite subset.
+      </p>
+    </div>
   </section>
 
   <p>
@@ -1581,266 +1595,783 @@ K &\longmapsto K/N .
   </p>
 
   <p>
-    The following is an essential property of vector spaces that eventually will allow us to compare bases in terms of size. We first prepare with some quick remarks on size for possibly infinite sets. We say that two sets \(X,Y\) have the same size and write \(|X|=|Y|\) if there is a bijective function from \(X\) to \(Y\). If there is an injective function \(X \hookrightarrow Y\), then we write \(|X|\leq |Y|\). It is a consequence of the axiom of choice that \(|X|\leq |Y|\) and \(|Y|\leq |X|\) implies \(|X|=|Y|\).
+    The following is an essential property of vector spaces that eventually will allow us to compare bases in terms of size. We first prepare with some quick remarks on size for possibly infinite sets. We say that two sets \(X,Y\) have the same size and write \(|X|=|Y|\) if there is a bijective function from \(X\) to \(Y\). If there is an injective function \(X \hookrightarrow Y\), then we write \(|X|\leq |Y|\). It is a consequence of the axiom of choice called the Cantor-Bernstein Theorem that \(|X|\leq |Y|\) and \(|Y|\leq |X|\) implies \(|X|=|Y|\).
   </p>
 
-  <section class="callout lemma" role="region" aria-labelledby="lem-12-1-8">
-    <h3 id="lem-12-1-8">Lemma 12.1.8 (Exchange Property)</h3>
-    <p>
-      Let \(B\) be a basis for a vector space \(V\) and consider any set of linearly independent vectors \(I \subseteq V\). Then there is a subset \(S \subseteq B\) such that \(|I|=|S|\) and
-      \((B \smallsetminus S) \cup I\) is also a basis for \(V\).
-    </p>
+  <section id="lem-12-1-8" class="callout lemma" aria-labelledby="lem-12-1-8-title">
+    <h3 id="lem-12-1-8-title">Lemma 12.1.8 (Exchange Property)</h3>
+    <div class="callout-body">
+      <p>
+        Let \(B\) be a basis for a vector space \(V\) and consider any set of linearly independent vectors \(I \subseteq V\). Then there is a subset \(A \subseteq B\) such that \(|I|=|A|\) and
+        \((B \smallsetminus A) \cup I\) is also a basis for \(V\).
+      </p>
+    </div>
   </section>
 
-  <section class="callout proof" role="region" aria-labelledby="prf-12-1-8">
-    <h3 id="prf-12-1-8">Proof (of Lemma 12.1.8)</h3>
-    <p>
-      First we show we can swap out one element of \(B\) for one nonzero element \(\{a\}\). In this case, we will show the stronger statement that for any subset \(B_0 \subseteq B\), and any element \(a\notin \mathrm{span}(B_0)\), there is some \(b\in B\smallsetminus B_0\) such that \(B\smallsetminus \{b\} \cup \{a\}\) is a basis for \(V\).
-    </p>
-    <p>
-      Since \(B\) is a basis, we can write
+  <section id="proof-lem-12-1-8" class="callout proof" aria-labelledby="proof-lem-12-1-8-title">
+    <h3 id="proof-lem-12-1-8-title">Proof of Lemma 12.1.8</h3>
+    <div class="callout-body">
+      <p>
+        First we show we can swap out one element of \(B\) for one nonzero element \(\{a\}\). In this case, we will show the stronger statement that for any subset \(B_0 \subseteq B\), and any element \(a\notin \mathrm{span}(B_0)\), there is some \(b\in B\smallsetminus B_0\) such that \(B\smallsetminus \{b\} \cup \{a\}\) is a basis for \(V\).
+      </p>
+
+      <p>
+        Since \(B\) is a basis, we can write
+      </p>
       \[
         a = \sum_i \lambda_i b_i
       \]
-      for some elements \(b_i \in B\). Since \(a\notin \mathrm{span}(B_0)\), we have \(\lambda_i\neq 0\) for some \(b_i\notin B_0\); say \(\lambda_1\neq 0\). We claim that \(B' := B\smallsetminus \{ b_1\} \cup \{a\}\) is a basis.
-    </p>
-    <p>
-      First, to see that \(B'\) spans, it suffices to show that \(b_1 \in \mathrm{span} ( B\smallsetminus \{ b_1\} \cup \{c\} )\) since we then have \(B \subseteq \mathrm{span} ( B\smallsetminus \{ b_1\} \cup \{c\} )\), so \(V = \mathrm{span}(B) \subseteq \mathrm{span} ( B\smallsetminus \{ b_1\} \cup \{c\} )\). To see that, we can solve the equation above for \(b_1\) in terms of \(c\) and the other \(b_i\)'s.
-    </p>
-    <p>
-      Second, to see that \(B'\) is linearly independent, note that any nonzero relation on \(B'\) have a nonzero coefficient on \(c\), since the other elements are part of a basis and hence linearly independent. Then, given any linear dependence relation on \(c\) and \(b_2,\dots,b_n\), we could solve for \(c\) and express \(c\) in terms of \(b_2,\dots,b_n\). But this would contradict that \(c\) has a unique expression in terms of the basis \(B\), in light of the given expression we started with. Thus, \(B'\) is a basis.
-    </p>
-    <p>
-      Consider the collection of pairs \((I', S')\) with \(I' \subseteq I\), \(S' \subseteq S\), and \(|I'|=|S'|\) with the property that \(B\smallsetminus S' \cup I'\) is a basis for \(V\). By a Zorn's Lemma argument (left as an exercise), there is a maximal such pair under the partial order \((I',S')\leq (I'',S'')\) if \(I'\subseteq I''\) and \(S'\subseteq S''\). Let \((I_0,S_0)\) be a maximal element. We will argue that \(I_0=I\).
-    </p>
-    <p>
-      To obtain a contradiction, suppose otherwise, and let \(a\in I \smallsetminus I_0\). Apply the special case above to the basis \((B\smallsetminus S_0) \cup I_0\) and special subset \(I_0\): since \(I\) is linearly independent, \(a\notin \mathrm{span}(I_0)\). Then by the special case, there is some \(b\in B\smallsetminus S_0\) such that \((B\smallsetminus (S_0  \cup \{b\}) \cup (I_0 \cup \{a\})\) is a basis. This contradicts the maximality of \((I_0,S_0)\), so we deduce that \(I_0=I\) as required.
-    </p>
+      <p>
+        for some elements \(b_i \in B\). Since \(a\notin \mathrm{span}(B_0)\), we have \(\lambda_i\neq 0\) for some \(b_i\notin B_0\); say \(\lambda_1\neq 0\). We claim that \(B' := B\smallsetminus \{ b_1\} \cup \{a\}\) is a basis.
+      </p>
+
+      <p>
+        First, to see that \(B'\) spans, it suffices to show that \(b_1 \in \mathrm{span} ( B\smallsetminus \{ b_1\} \cup \{c\} )\) since we then have \(B \subseteq \mathrm{span} ( B\smallsetminus \{ b_1\} \cup \{c\} )\), so \(V = \mathrm{span}(B) \subseteq \mathrm{span} ( B\smallsetminus \{ b_1\} \cup \{c\} )\). To see that, we can solve the equation above for \(b_1\) in terms of \(c\) and the other \(b_i\)'s.
+      </p>
+
+      <p>
+        Second, to see that \(B'\) is linearly independent, note that any nonzero relation on \(B'\) have a nonzero coefficient on \(c\), since the other elements are part of a basis and hence linearly independent. Then, given any linear dependence relation on \(c\) and \(b_2,\dots,b_n\), we could solve for \(c\) and express \(c\) in terms of \(b_2,\dots,b_n\). But this would contradict that \(c\) has a unique expression in terms of the basis \(B\), in light of the given expression we started with. Thus, \(B'\) is a basis.
+      </p>
+
+      <p>
+        Consider the collection of pairs \((I', A')\) with \(I' \subseteq I\), \(A' \subseteq A\), and \(|I'|=|A'|\) with the property that \(B\smallsetminus A' \cup I'\) is a basis for \(V\). By a Zorn's Lemma argument (left as an exercise), there is a maximal such pair under the partial order \((I',A')\leq (I'',A'')\) if \(I'\subseteq I''\) and \(A'\subseteq A''\). Let \((I_0,A_0)\) be a maximal element. We will argue that \(I_0=I\).
+      </p>
+
+      <p>
+        To obtain a contradiction, suppose otherwise, and let \(a\in I \smallsetminus I_0\). Apply the special case above to the basis \((B\smallsetminus A_0) \cup I_0\) and special subset \(I_0\): since \(I\) is linearly independent, \(a\notin \mathrm{span}(I_0)\). Then by the special case, there is some \(b\in B\smallsetminus A_0\) such that \( B\smallsetminus (A_0  \cup \{b\}) \cup (I_0 \cup \{a\})\) is a basis. This contradicts the maximality of \((I_0,A_0)\), so we deduce that \(I_0=I\) as required.
+      </p>
+    </div>
   </section>
+</section>
+
 
   <p>
     It follows that all bases for the same vector space have the same cardinality.
   </p>
 
-  <section class="callout theorem" role="region" aria-labelledby="thm-12-1-9">
-    <h3 id="thm-12-1-9">Theorem 12.1.9 (Dimension Theorem)</h3>
-    <p>
-      Any two bases of the same vector space have the same cardinality.
-    </p>
+  <section id="thm-12-1-9" class="callout theorem" aria-labelledby="thm-12-1-9-title">
+    <h3 id="thm-12-1-9-title">Theorem 12.1.9 (Dimension Theorem)</h3>
+    <div class="callout-body">
+      <p>
+        Any two bases of the same vector space have the same cardinality.
+      </p>
+    </div>
   </section>
 
-  <section class="callout proof" role="region" aria-labelledby="prf-12-1-9">
-    <h3 id="prf-12-1-9">Proof (of Theorem 12.1.9)</h3>
-    <p>
-      Let \(B, B'\) be two bases for \(V\). Applying the Exchange Lemma with \(C=B'\), there is a subset \(A\subseteq B\) with \(|A|=|B'|\), so \(|B'|\leq |B|\). Swapping roles, one has \(|B| \leq |B'|\) as well.
-    </p>
+  <section id="proof-thm-12-1-9" class="callout proof" aria-labelledby="proof-thm-12-1-9-title">
+    <h3 id="proof-thm-12-1-9-title">Proof of Theorem 12.1.9</h3>
+    <div class="callout-body">
+      <p>
+        Let \(B, B'\) be two bases for \(V\). Applying the Exchange Lemma with \(C=B'\), there is a subset \(C\subseteq B\)
+        with \(|C|=|B'|\), so \(|B'|\leq |B|\). Swapping roles, one has \(|B| \leq |B'|\) as well.
+      </p>
+    </div>
   </section>
 
-  <section class="callout definition" role="region" aria-labelledby="def-12-1-10">
-    <h3 id="def-12-1-10">Definition 12.1.10</h3>
-    <p>
-      The <strong>dimension</strong> of a vector space \(V\), denoted \(\dim_F(V)\) or \(\dim(V)\), is the cardinality of any of its bases.
-    </p>
+  <section id="def-12-1-10" class="callout definition" aria-labelledby="def-12-1-10-title">
+    <h3 id="def-12-1-10-title">Definition 12.1.10</h3>
+    <div class="callout-body">
+      <p>
+        The <strong>dimension</strong> of a vector space \(V\), denoted \(\dim_F(V)\) or \(\dim(V)\), is the cardinality of
+        any of its bases.
+      </p>
+    </div>
   </section>
 
-  <section class="callout example" role="region" aria-labelledby="ex-12-1-11">
-    <h3 id="ex-12-1-11">Example 12.1.11</h3>
-    <p>
-      \(\dim_F(F^n) = |\{e_1,e_2,\ldots,e_n\}| = n.\)
-    </p>
-  </section>
-
-  <section class="callout theorem" role="region" aria-labelledby="thm-12-1-12">
-    <h3 id="thm-12-1-12">Theorem 12.1.12 (Classification of finitely generated vector spaces)</h3>
-    <p>
-      Let \(F\) be a field.
-    </p>
-    <ol style="margin-left:20px">
-      <li>Every finitely generated vector space over \(F\) is isomorphic to \(F^n\) for \(n=\dim_F(V)\).</li>
-      <li>For any \(m,n \in \mathbb{Z}_{\geqslant 0}\), \(F^m \cong F^n\) if and only if \(m = n\).</li>
-    </ol>
-  </section>
-
-  <section class="callout proof" role="region" aria-labelledby="prf-12-1-12">
-    <h3 id="prf-12-1-12">Proof (of Theorem 12.1.12)</h3>
-    <p>
-      To show (1), let \(V\) be a finite dimensional \(F\)-vector space. Then \(F\) has a finite spanning set \(S\) and by Theorem 12.1.2 there is a basis \(B\subseteq S\) for \(V\). Notice that \(B\) is necessarily finite and \(V=FB\). Set \(|B|=n\) and \(B=\{b_1,\ldots,b_n\}\). By the UMP for free modules, there is a linear transformation \(f\!:F^n\to V\) such that \(f(e_i)=b_i\) as well as a linear transformation \(g\!:V\to F^n\) such that \(g(b_i)=e_i\). Then both \(f\circ g:V\to V\) and \(g\circ f:F^n\to F^n\) are linear transformation which agree with the identity map on a basis. Hence by the uniqueness part of the UMP for free modules we have \(f\circ g=\mathrm{id}_V\) and \(g\circ f=\mathrm{id}_{F^n}\).
-      Therefore, these maps are the desired isomorphisms.
-    </p>
-    <p>
-      To show (2), let \(\varphi:F^m\cong F^n\) be a vector space isomorphism and let \(B\) be a basis of \(F^m\). We claim that \(\varphi(B)\) is a basis for \(F^n\). Indeed, if
-    </p>
-    \[
-      \sum_{i=1}^m c_i \varphi(b_i)=0 \quad \textrm{then} \quad \varphi \left(\sum_{i=1}^m c_i b_i \right)=0,
-      \quad \textrm{so} \quad \sum_{i=1}^m c_i b_i=0
-    \]
-    <p>
-      since \(\varphi\) is injective. But \(B\) is linearly independent, so we must have \(c_i=0\) for all \(1 \leqslant i \leqslant m\). If \(v\in F^n\), then since \(B\) spans \(F^m\) we have
-    </p>
-    \[
-      \varphi^{-1}(v)=\sum_{i=1}^m c_i b_i
-    \]
-    <p>
-      for some \(c_i\). Thus
-    </p>
-    \[
-      v=\sum_{i=1}^m c_i\varphi(b_i),
-    \]
-    <p>
-      which shows \(\varphi(B)\) spans \(F^n\).
-      By the \hyperref[thm1116a]{Dimension Theorem}, we have
-    </p>
-    \[
-      \dim_F(F^n)=n=|\varphi(B)|=|B|=m.
-    \]
-  </section>
-
-  <section class="callout remark" role="region" aria-labelledby="rmk-12-1-13">
-    <h3 id="rmk-12-1-13">Remark 12.1.13</h3>
-    <ol style="margin-left:20px">
-      <li>The same proof as in part (1) above shows that every finitely generated free \(R\)-module is isomorphic to \(R^n\) for some \(n \geqslant 0\).</li>
-      <li>Part (2) of the classification of fg vector spaces can be extended to modules over commutative rings as stated in \(\Cref{thm:rank}\); this is a problem in the homework.</li>
-      <li>The classification of fg vector spaces yields that dimension is an isomorphism invariant.</li>
-    </ol>
-  </section>
-
-  <section class="callout corollary" role="region" aria-labelledby="cor-12-1-14">
-    <h3 id="cor-12-1-14">Corollary 12.1.14</h3>
-    <p>
-      Two finite dimensional vector spaces \(V\) and \(V'\) over the same field \(F\) are isomorphic if and only if \(\dim_F(V) = \dim_F(V')\).
-    </p>
-  </section>
-
-  <section class="callout proof" role="region" aria-labelledby="prf-12-1-14">
-    <h3 id="prf-12-1-14">Proof (of Corollary 12.1.14)</h3>
-    <p>
-      By \(\Cref{classification of fg vector spaces}\), \(V\) and \(V'\) are both of the form \(V \cong F^m\) and \(V'\cong F^n\), while \(F^m \cong F^n\) if and only if \(m=n\).
-    </p>
+  <section id="ex-12-1-11" class="callout example" aria-labelledby="ex-12-1-11-title">
+    <h3 id="ex-12-1-11-title">Example 12.1.11</h3>
+    <div class="callout-body">
+      <p>
+        \(\dim_F(F^n) = |\{e_1,e_2,\ldots,e_n\}| = n.\)
+      </p>
+    </div>
   </section>
 
   <p>
-    A word on infinite-dimensional vector spaces.
+    While one can talk about infinite cardinals, we'll generally say that dimension is a natural number or \(\infty\).
   </p>
 
-  <section class="callout example" role="region" aria-labelledby="ex-12-1-15">
-    <h3 id="ex-12-1-15">Example 12.1.15</h3>
-    <p>
-      Consider the vector space \(F[x]\). This cannot be a finite dimensional vector space. For instance, if \(\{f_1 , \dots , f_n\}\) were a basis, then setting
-    </p>
-    \[
-      M = \max_{1 \leqslant j \leqslant n}\{ \deg(f_j)\}
-    \]
-    <p>
-      we see that the element \(x^{M+1}\) is not be in the span of \(\{f_1 , \dots , f_n\}\). We can find a basis for this space though. Consider the collection \(B = \{1, x, x^2 , \ldots \}\). This set is linearly independent and spans \(F[x]\), thus it forms a basis for \(F[x]\). This basis is <em>countable</em>, so \(\dim_F(F[x])= \aleph_0 = |\mathbb{N}|\).
-    </p>
+  <section id="thm-12-1-12" class="callout theorem" aria-labelledby="thm-12-1-12-title">
+    <h3 id="thm-12-1-12-title">Theorem 12.1.12 (Classification of finitely generated vector spaces)</h3>
+    <div class="callout-body">
+      <p>Let \(F\) be a field.</p>
+      <ol class="enumerate" style="list-style-type: none; padding-left: 0; margin-left: 0;">
+        <li>(1) Every finitely generated vector space over \(F\) is isomorphic to \(F^n\) for \(n=\dim_F(V)\).</li>
+        <li>(2) For any \(m,n \in \mathbb{Z}_{\geqslant 0}\), \(F^m \cong F^n\) if and only if \(m = n\).</li>
+        <li>(3) Two finite dimensional vector spaces \(V,V'\) are isomorphic if and only if \(\dim_F(V)=\dim_F(V')\).</li>
+      </ol>
+    </div>
   </section>
 
-  <section class="callout example" role="region" aria-labelledby="ex-12-1-16">
-    <h3 id="ex-12-1-16">Example 12.1.16</h3>
-    <p>
-      Consider the real vector space
-    </p>
-    \[
-      V := \mathbb{R}^\mathbb{N} = \mathbb{R}\times \mathbb{R}\times \mathbb{R} \times \cdots.
-    \]
-    <p>
-      This space can be identified with sequences \(\{a_n\}\) of real numbers. One might be interested in a basis for this vector space. At first glance, the most obvious choice for a basis would be \(E = \{e_1,e_2,\ldots\}\). It turns out that \(E\) is the basis for the direct sum \(\bigoplus_{i\in \mathbb{N}}\mathbb{R}\). However, it is immediate that this set does not span \(V\), as \(v = (1,1,\ldots)\) can not be represented as a finite linear combination of these elements. Since \(v\) is not in \(\mathrm{span}(E)\), then by Lemma 11.1.1 we know that \(E \cup \{v\}\) is a linearly independent set. However, this new set \(E \cup \{v\}\) does not span \(V\) either, as \((1, 2, 3, 4, \ldots)\) is not in the span of \(E \cup \{v\}\). We know that \(V\) has a basis, but it can be shown that no countable collection of vectors forms a basis for this space, and in fact \(\dim_\mathbb{R} (\mathbb{R}^{\mathbb{N}}) =|\mathbb{R}|\).
-    </p>
+  <section id="proof-thm-12-1-12" class="callout proof" aria-labelledby="proof-thm-12-1-12-title">
+    <h3 id="proof-thm-12-1-12-title">Proof of Theorem 12.1.12</h3>
+    <div class="callout-body">
+      <p>
+        To show (1), let \(V\) be a finite dimensional \(F\)-vector space. Then \(F\) has a finite spanning set \(S\) and by
+        Theorem 12.1.2 there is a basis \(B\subseteq S\) for \(V\). Notice that \(B\) is necessarily finite and \(V=FB\).
+        Set \(|B|=n\) and \(B=\{b_1,\ldots,b_n\}\). By the UMP for free modules, there is a linear transformation
+        \(f\!:F^n\to V\) such that \(f(e_i)=b_i\) as well as a linear transformation \(g\!:V\to F^n\) such that
+        \(g(b_i)=e_i\). Then both \(f\circ g:V\to V\) and \(g\circ f:F^n\to F^n\) are linear transformation which agree
+        with the identity map on a basis. Hence by the uniqueness part of the UMP for free modules we have
+        \(f\circ g=\mathrm{id}_V\) and \(g\circ f=\mathrm{id}_{F^n}\). Therefore, these maps are the desired isomorphisms.
+      </p>
+
+      <p>
+        To show (2), let \(\varphi:F^m\cong F^n\) be a vector space isomorphism and let \(B\) be a basis of \(F^m\). We
+        claim that \(\varphi(B)\) is a basis for \(F^n\). Indeed, if
+      </p>
+
+      \[
+        \sum_{i=1}^mc_i\varphi(b_i)=0 \quad \textrm{then} \quad \varphi \left(\sum_{i=1}^mc_ib_i \right)=0,
+        \quad \textrm{so} \quad \sum_{i=1}^mc_ib_i=0
+      \]
+
+      <p>
+        since \(\varphi\) is injective. But \(B\) is linearly independent, so we must have \(c_i=0\) for all
+        \(1 \leqslant i \leqslant m\). If \(v\in F^n\), then since \(B\) spans \(F^m\) we have
+      </p>
+
+      \[
+        \varphi^{-1}(v)=\sum_{i=1}^mc_ib_i
+      \]
+
+      <p>
+        for some \(c_i\). Thus
+      </p>
+
+      \[
+        v=\sum_{i=1}^mc_i\varphi(b_i),
+      \]
+
+      <p>
+        which shows \(\varphi(B)\) spans \(F^n\). By the Dimension Theorem, we have
+      </p>
+
+      \[
+        \dim_F(F^n)=n=|\varphi(B)|=|B|=m.
+      \]
+
+      <p>
+        Part (3) is immediate from (1) and (2).
+      </p>
+    </div>
+  </section>
+
+  <section id="rmk-12-1-13" class="callout remark" aria-labelledby="rmk-12-1-13-title">
+    <h3 id="rmk-12-1-13-title">Remark 12.1.13</h3>
+    <div class="callout-body">
+      <ol class="enumerate" style="list-style-type: none; padding-left: 0; margin-left: 0;">
+        <li>(1) The same proof as in part (1) of the classification of finitely generated vector spaces above shows that every finitely generated free \(R\)-module is isomorphic to \(R^n\) for some \(n \geqslant 0\).</li>
+        <li>(2) Part (2) of the classification of finitely generated vector spaces can be extended to modules over commutative rings as stated in the previous section; this is a problem in the homework.</li>
+        <li>(3) The classification of finitely generated vector spaces yields that dimension is an isomorphism invariant. Moreover, it is a complete isomorphism invariant in the sense that if two module have the same dimension, then they are isomorphic.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="rmk-12-1-14" class="callout remark" aria-labelledby="rmk-12-1-14-title">
+    <h3 id="rmk-12-1-14-title">Remark 12.1.14</h3>
+    <div class="callout-body">
+      <p>
+        Part (3) of the previous Theorem holds for infinite-dimensional vector spaces in the following form: two vector
+        spaces \(V\) and \(V'\) are isomorphic if and only if their dimensions are equal in the sense that there exists a
+        bijection between some basis of \(V\) and some basis of \(V'\).
+      </p>
+    </div>
+  </section>
+
+  <p>A word on infinite-dimensional vector spaces.</p>
+
+  <section id="ex-12-1-15" class="callout example" aria-labelledby="ex-12-1-15-title">
+    <h3 id="ex-12-1-15-title">Example 12.1.15</h3>
+    <div class="callout-body">
+      <p>
+        Consider the vector space \(F[x]\). This cannot be a finite dimensional vector space. For instance, if
+        \(\{f_1 , \dots , f_n\}\) were a basis, then setting
+      </p>
+      \[
+        M = \max_{1 \leqslant j \leqslant n}\{ \deg(f_j)\}
+      \]
+      <p>
+        we see that the element \(x^{M+1}\) is not be in the span of \(\{f_1 , \dots , f_n\}\). We can find a basis for this
+        space though. Consider the collection \(B = \{1, x, x^2 , \ldots \}\). This set is linearly independent and spans
+        \(F[x]\), thus it forms a basis for \(F[x]\). This basis is <em>countable</em>, so
+        \(\dim_F(F[x])= |\mathbb{N}|\).
+      </p>
+    </div>
+  </section>
+
+  <section id="ex-12-1-16" class="callout example" aria-labelledby="ex-12-1-16-title">
+    <h3 id="ex-12-1-16-title">Example 12.1.16</h3>
+    <div class="callout-body">
+      <p>
+        Consider the real vector space
+      </p>
+      \[
+        V := \mathbb{R}^\mathbb{N} = \mathbb{R}\times \mathbb{R}\times \mathbb{R} \times \cdots.
+      \]
+      <p>
+        This space can be identified with sequences \(\{a_n\}\) of real numbers. One might be interested in a basis for this
+        vector space. At first glance, the most obvious choice for a basis would be \(E = \{e_1,e_2,\ldots\}\). It turns out
+        that \(E\) is the basis for the direct sum \(\bigoplus_{i\in \N}\mathbb{R}\). However, it is immediate that this set
+        does not span \(V\), as \(v = (1,1,\ldots)\) can not be represented as a finite linear combination of these elements.
+        Since \(v\) is not in \(\mathrm{span}(E)\), then we know that \(E \cup \{v\}\) is a linearly independent set.
+        However, this new set \(E \cup \{v\}\) does not span \(V\) either, as \((1, 2, 3, 4, \ldots)\) is not in the span of
+        \(E \cup \{v\}\). We know that \(V\) has a basis, but it can be shown that no countable collection of vectors forms a
+        basis for this space, and in fact \(\dim_\mathbb{R} (\mathbb{R}^\mathbb{N}) =|\mathbb{R}|\).
+      </p>
+    </div>
+  </section>
+
+  <section id="ex-12-1-17" class="callout example" aria-labelledby="ex-12-1-17-title">
+    <h3 id="ex-12-1-17-title">Example 12.1.17</h3>
+    <div class="callout-body">
+      <p>
+        One can show that \(\dim_{\mathbb{Q}}(\mathbb{R})=|\mathbb{R}|\), and \(\dim_{\mathbb{Q}}(\mathbb{C})=|\mathbb{C}| = |\mathbb{R}|\), so \(\mathbb{R}\cong \mathbb{C}\) as \(\mathbb{Q}\)-vector spaces. In particular, \((\mathbb{R},+)\cong (\mathbb{C},+)\) as groups.
+      </p>
+    </div>
   </section>
 
   <p>
     We now deduce some formulas that relate the dimensions of various vector spaces.
   </p>
 
-  <section class="callout theorem" role="region" aria-labelledby="thm-12-1-17">
-    <h3 id="thm-12-1-17">Theorem 12.1.17</h3>
-    <p>
-      Let \(W\) be a subspace of a vector space \(V\). Then
-      \[
-        \dim(V) = \dim(W) + \dim(V/W).
-      \]
-    </p>
+  <section id="thm-12-1-18" class="callout theorem" aria-labelledby="thm-12-1-18-title">
+    <h3 id="thm-12-1-18-title">Theorem 12.1.18</h3>
+    <div class="callout-body">
+      <p>
+        Let \(W\) be a subspace of a vector space \(V\). Then
+        \[
+          \dim(V) = \dim(W) + \dim(V/W).
+        \]
+      </p>
+    </div>
   </section>
 
   <p>
-    Here the dimension of a vector space is understood to be either a nonnegative integer or \(\infty\), and the arithmetic of the formula is understood to follow the rules \(n+\infty=\infty=\infty+\infty\) for any \(n\in \mathbb{Z}_{\geqslant 0}\).
-    We leave the proof for Problem Set 4.
+    Here the dimension of a vector space is understood to be either a nonnegative integer or \(\infty\), and the arithmetic
+    of the formula is understood to follow the rules \(n+\infty=\infty=\infty+\infty\) for any
+    \(n\in \mathbb{Z}_{\geqslant 0}\). The proof follows from the Problem #1 in Problem Set #2.
   </p>
 
-  <section class="callout example" role="region" aria-labelledby="ex-12-1-18">
-    <h3 id="ex-12-1-18">Example 12.1.18</h3>
-    <p>
-      Consider the vector space \(V = \mathbb{R}^2\) and its subspace \(W=\mathrm{span}\{e_1\}\). Then the quotient vector space \(V/W\) is, by definition,
-    </p>
-    \[
-      V/W=\{(x,y)+W \mid (x,y)\in \mathbb{R}^2\}.
-    \]
-    <p>
-      Looking at each coset we see that
-    </p>
-    \[
-      (x,y)+W=(x,y)+\mathrm{span}\{e_1\}=\{(x,y)+(a,0)\mid a\in \mathbb{R}\}=\{(t,y)\mid t\in \mathbb{R}\},
-    \]
-    <p>
-      so \((x,y)+W\) is geometrically a line parallel to the \(x\)-axis and having the \(y\)-intercept \(y\). It is intuitively natural to identify such a line with its intercept, which gives a map
-    </p>
-    \[
-      V/W\to \mathrm{span}\{e_2\} \quad (x,y)+W \mapsto (0,y).
-    \]
-    <p>
-      It turns out that this map is a vector space isomorphism, hence
+  <section id="ex-12-1-19" class="callout example" aria-labelledby="ex-12-1-19-title">
+    <h3 id="ex-12-1-19-title">Example 12.1.19</h3>
+    <div class="callout-body">
+      <p>
+        Consider the vector space \(V = \mathbb{R}^2\) and its subspace \(W=\mathrm{span}\{e_1\}\). Then the quotient vector
+        space \(V/W\) is, by definition,
+      </p>
       \[
-        \dim(V/W) = \dim(\mathrm{span}\{e_2\}) = 1
+        V/W=\{(x,y)+W \mid (x,y)\in \mathbb{R}^2\}.
       \]
-      and we can check that
+      <p>
+        Looking at each coset we see that
+      </p>
       \[
-        \dim(W) + \dim(V/W) = 1+1 = 2 = \dim(V).
+        (x,y)+W=(x,y)+\mathrm{span}\{e_1\}=\{(x,y)+(a,0)\mid a\in \mathbb{R}\}=\{(t,y)\mid t\in \mathbb{R}\},
       \]
-    </p>
+      <p>
+        so \((x,y)+W\) is geometrically a line parallel to the \(x\)-axis and having the \(y\)-intercept \(y\). It is
+        intuitively natural to identify such a line with its intercept, which gives a map
+      </p>
+      \[
+        V/W\to \mathrm{span}\{e_2\} \quad (x,y)+W \mapsto (0,y).
+      \]
+      <p>
+        It turns out that this map is a vector space isomorphism, hence
+        \[
+          \dim(V/W) = \dim(\mathrm{span}\{e_2\}) = 1
+        \]
+        and we can check that
+        \[
+          \dim(W) + \dim(V/W) = 1+1 = 2 = \dim(V).
+        \]
+      </p>
+    </div>
   </section>
 
   <p>
-    If \(V\) and \(W\) are both infinite dimensional vector spaces, it can happen that \(V/W\) is finite dimensional but also that it is infinite dimensional.
+    If \(V\) and \(W\) are both infinite dimensional vector spaces, it can happen that \(V/W\) is finite dimensional but
+    also that it is infinite dimensional.
   </p>
 
-
-  <section class="callout definition" role="region" aria-labelledby="def-12-1-20">
-    <h3 id="def-12-1-20">Definition 12.1.19</h3>
-    <p>
-      Let \(T\!: V \to W\) be a linear transformation. The <strong>nullspace</strong> of \(T\) is \(\ker(T)\). The <strong>rank</strong> of \(T\) is \(\dim(\mathrm{im}(T))\).
-    </p>
+  <section id="ex-12-1-20" class="callout example" aria-labelledby="ex-12-1-20-title">
+    <h3 id="ex-12-1-20-title">Example 12.1.20</h3>
+    <div class="callout-body">
+      <p>
+        Let \(V=F[x]\), which we saw in Example 12.1.15 is an infinite dimensional vector space over \(F\). Fix a polynomial
+        \(f\) with \(\deg(f)=d\), and note that the ideal \((f)\) of \(F[x]\) generated by \(f\) is also an \(F\)-vector
+        subspace of \(F[x]\) via restriction of scalars. We will show later that \(\dim(F[x]/(f))=d\). In contrast, the
+        subspace \(E\) of all even degree polynomials in \(F[x]\) together with the zero polynomial satisfies
+        \(\dim(F[x]/E)=\infty\).
+      </p>
+    </div>
   </section>
 
-  <section class="callout corollary" role="region" aria-labelledby="cor-12-1-21">
-    <h3 id="cor-12-1-21">Corollary 12.1.20 (Rank-Nullity Theorem)</h3>
-    <p>
-      Let \(f\!: V \to W\) be a linear transformation. Then
-      \[
-        \dim(\ker(f)) + \dim(\mathrm{im}(f)) = \dim(V).
-      \]
-    </p>
+  <section id="def-12-1-21" class="callout definition" aria-labelledby="def-12-1-21-title">
+    <h3 id="def-12-1-21-title">Definition 12.1.21</h3>
+    <div class="callout-body">
+      <p>
+        Let \(T\!: V \to W\) be a linear transformation. The <strong>nullspace</strong> of \(T\) is \(\ker(T)\). The
+        <strong>rank</strong> of \(T\) is \(\dim(\mathrm{im}(T))\).
+      </p>
+    </div>
   </section>
 
-  <section class="callout proof" role="region" aria-labelledby="prf-12-1-21">
-    <h3 id="prf-12-1-21">Proof (of Corollary 12.1.20)</h3>
-    <p>
-      By the \hyperref[first iso thm]{First Isomorphism Theorem for modules} we have \(V/\ker(f)\cong\mathrm{im}(f)\), thus
-      \[
-        \dim\left(V/\ker(f)\right)=\dim(\mathrm{im}(V)).
-      \]
-      By \(\Cref{dimension formula subspaces}\), we have
-      \[
-        \dim(V)=\dim(\ker(V))+\dim\left(V/\ker(f)\right).
-      \]
-      Thus
-      \[
-        \dim(V)=\dim(\ker(V))+\dim\left(V/\ker(f)\right) = \dim(\ker(V)) + \dim(\mathrm{im}(V)).
-      \]
-    </p>
+  <section id="cor-12-1-22" class="callout corollary" aria-labelledby="cor-12-1-22-title">
+    <h3 id="cor-12-1-22-title">Corollary 12.1.22 (Rank-Nullity Theorem)</h3>
+    <div class="callout-body">
+      <p>
+        Let \(f\!: V \to W\) be a linear transformation. Then
+        \[
+          \dim(\ker(f)) + \dim(\mathrm{im}(f)) = \dim(V).
+        \]
+      </p>
+    </div>
   </section>
 
+  <section id="proof-cor-12-1-22" class="callout proof" aria-labelledby="proof-cor-12-1-22-title">
+    <h3 id="proof-cor-12-1-22-title">Proof of Corollary 12.1.22</h3>
+    <div class="callout-body">
+      <p>
+        By the First Isomorphism Theorem for modules we have \(V/\ker(f)\cong\mathrm{im}(f)\),
+        thus
+        \[
+          \dim\left(V/\ker(f)\right)=\dim(\mathrm{im}(V)).
+        \]
+        By Theorem 12.1.18, we have
+        \[
+          \dim(V)=\dim(\ker(V))+\dim\left(V/\ker(f)\right).
+        \]
+        Thus
+        \[
+          \dim(V)=\dim(\ker(V))+\dim\left(V/\ker(f)\right) = \dim(\ker(V)) + \dim(\mathrm{im}(V)).
+        \]
+      </p>
+    </div>
+  </section>
+
+
+<section id="sec-12-2" class="section" aria-labelledby="sec-12-2-title">
+  <h2 id="sec-12-2-title">12.2 Linear transformations and homomorphisms between free modules</h2>
+
+  <section id="def-12-2-1" class="callout definition" aria-labelledby="def-12-2-1-title">
+    <h3 id="def-12-2-1-title">Definition 12.2.1 (The matrix of a homomorphism between free modules)</h3>
+    <div class="callout-body">
+      <p>
+        Let \(R\) be a commutative ring with \(1\neq 0\).
+        Let \(V\) be a finitely generated free \(R\)-modules of rank \(n\), and let \(W\) be a finitely generated free \(R\)-module of rank \(m\). Let \(B=\{b_1, \dots, b_n\}\) and \(C=\{c_1, \dots, c_m\}\) be <em>ordered</em> bases of \(V,W\).
+        Given an \(R\)-module homomorphism \(f: V \to W\), we define elements \(a_{ij}\in R\) for \(1 \leqslant i \leqslant m\) and \(1 \leqslant j \leqslant n\) by the formulas
+      </p>
+
+      \[
+        f(b_i) = \sum_{j=1}^m a_{j,i} c_j.
+        \tag{12.2.1}\label{eq-12-2-aij}
+      \]
+
+      <p>
+        The matrix
+      </p>
+
+      \[
+        [f]_B^C=
+        \begin{bmatrix}
+        a_{1,1} & a_{1,2} & \cdots & a_{1,n} \\
+        a_{2,1} & a_{2,2} & \cdots & a_{2,n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{m,1} & a_{m,2} & \cdots & a_{m,n} \\
+        \end{bmatrix}
+      \]
+
+      <p>
+        is said to <strong>represent</strong> the homomorphism \(f\) with respect to the bases \(B\) and \(C\). <span class="nowrap">(\(\,[f]_B^C\,\))</span>
+      </p>
+    </div>
+  </section>
+
+  <section id="rmk-12-2-2" class="callout remark" aria-labelledby="rmk-12-2-2-title">
+    <h3 id="rmk-12-2-2-title">Remark 12.2.2</h3>
+    <div class="callout-body">
+      <p>
+        By Lemma 11.4.11, the coefficients \(a_{j,i}\) in equation \(\eqref{eq-12-2-aij}\) are uniquely determined by the \(f(b_i)\) and the elements of \(C\).
+        The coefficients \(a_{j,i}\) corresponding to \(f(b_i)\) form the \(i\)th column of \([f]_B^C\).
+        Note that \([f]_B^C\) is an \(m\times n\) matrix with entries in \(R\).
+      </p>
+    </div>
+  </section>
+
+  <section id="def-12-2-3" class="callout definition" aria-labelledby="def-12-2-3-title">
+    <h3 id="def-12-2-3-title">Definition 12.2.3</h3>
+    <div class="callout-body">
+      <p>
+        Let \(V\) and \(W\) be finite \(F\)-vector spaces of dimension \(n\) and \(m\) with ordered bases \(B\) and \(C\), respectively, and let \(f\!:V\to W\) be a linear transformation. The matrix \([f]_B^C\) is called the <strong>matrix of the linear transformation</strong> \(f\) with respect to the bases \(B\) and \(C\).
+      </p>
+    </div>
+  </section>
+
+  <section id="ex-12-2-4" class="callout example" aria-labelledby="ex-12-2-4-title">
+    <h3 id="ex-12-2-4-title">Example 12.2.4</h3>
+    <div class="callout-body">
+      <p>
+        If \(\mathrm{id}_V\!: V \to V\) is the identity automorphism of an \(n\)-dimensional free \(R\)-module \(V\), then for any basis \(B\) of \(V\) we have \(\mathrm{id}_V(b_i) = b_i\) for all \(i\) and hence
+      </p>
+      \[
+        [\mathrm{id}_V]^B_B = I_n.
+      \]
+    </div>
+  </section>
+
+  <section id="ex-12-2-5" class="callout example" aria-labelledby="ex-12-2-5-title">
+    <h3 id="ex-12-2-5-title">Example 12.2.5</h3>
+    <div class="callout-body">
+      <p>
+        Let \(P_3\) denote the the \(F\)-vector space of polynomials of degree at most 3 (including the zero polynomial) and consider the linear transformation \(d:P_3\to P_3\) given by taking the derivative \(d(f)=f'\). Let \(B=\{1,x,x^2,x^3\}\). Then
+      </p>
+      \[
+        [f]_B^B=
+        \begin{bmatrix}
+        0 & 1 &0 & 0 \\
+        0 &0 & 2 & 0 \\
+        0& 0& 0& 3 \\
+        0 & 0 &0 & 0 \\
+        \end{bmatrix}.
+      \]
+    </div>
+  </section>
+
+  <section id="ex-12-2-6" class="callout example" aria-labelledby="ex-12-2-6-title">
+    <h3 id="ex-12-2-6-title">Example 12.2.6</h3>
+    <div class="callout-body">
+      <p>
+        Let \(F\) be a field and consider a linear transformation \(f\!:V\to W\), where \(V=F^n\) and \(W=F^m\). Consider also the standard ordered bases \(B\) and \(C\), i.e. \(b_i=e_i\in V\) and \(c_i=e_i\in W\). Then for any
+      </p>
+      \[
+        v =
+        \begin{bmatrix}
+        \ell_1\\
+        \vdots\\
+        \ell_n
+        \end{bmatrix}
+        =\sum_i \ell_i b_i
+      \]
+      <p>
+        in \(V\) we have
+      </p>
+      \[
+        f \left( \sum \ell_i b_i \right) = \sum_i \ell_i f(b_i).
+      \]
+      <p>
+        Each \(f(b_i)\) can be written uniquely as a linear combination of the \(c_j\)'s as in \(\eqref{eq-12-2-aij}\):
+      </p>
+      \[
+        f(b_i) = \sum_j a_{j,i} c_j.
+      \]
+      <p>
+        Then we get
+      </p>
+      \[
+        f(v) = \sum_i\ell_i\left( \sum_{j} a_{j,i} c_j \right)= \sum_j \left(\sum_i a_{j,i} \ell_i\right) c_j.
+      \]
+      <p>
+        In other words, we have
+      </p>
+      \[
+        f(v) =
+        \begin{bmatrix}
+        \sum_i a_{1,i} \ell_i \\
+        \vdots\\
+        \sum_i a_{m,i} \ell_i
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+        a_{1,1} & a_{1,2} & \cdots & a_{1,n} \\
+        a_{2,1} & a_{2,2} & \cdots & a_{2,n} \\
+        \vdots & \vdots & \ddots & \vdots \\
+        a_{m,1} & a_{m,2} & \cdots & a_{m,n} \\
+        \end{bmatrix}
+        \cdot
+        \begin{bmatrix} \ell_1\\\vdots\\ \ell_n\end{bmatrix}
+        =[f]_B^C\cdot v.
+      \]
+      <p>
+        This says that any linear transformation \(f\!:F^n\to F^m\) is given by multiplication by a matrix, since we noticed above that \(f(v) = [f]_B^C\cdot v\). The same type of statement holds for free modules over commutative rings, and we will show it below in Proposition 12.2.7.
+      </p>
+    </div>
+  </section>
+
+  <section id="prop-12-2-7" class="callout theorem" aria-labelledby="prop-12-2-7-title">
+    <h3 id="prop-12-2-7-title">Proposition 12.2.7</h3>
+    <div class="callout-body">
+      <p>
+        Let \(R\) be a commutative ring with \(1\neq 0\). Let \(V\) and \(W\) be finitely generated free \(R\)-modules of ranks \(n\) and \(m\) respectively. Fixing ordered bases \(B\) for \(V\) and \(C\) for \(W\) gives an isomorphism of \(R\)-modules
+      </p>
+      \[
+        \mathrm{Hom}_R(V, W) \cong \mathrm{M}_{m,n}(R) \qquad f\mapsto [f]_B^C.
+      \]
+      <p>
+        If \(V=W\), so that in particular \(m=n\), and \(B=C\), then the above map is an \(R\)-algebra isomorphism \(\mathrm{End}_R(V)\cong\mathrm{M}_n(R)\).
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-prop-12-2-7" class="callout proof" aria-labelledby="proof-prop-12-2-7-title">
+    <h3 id="proof-prop-12-2-7-title">Proof of Proposition 12.2.7</h3>
+    <div class="callout-body">
+      <p>
+        Let \(\varphi\!:\mathrm{Hom}_R(V, W) \to \mathrm{M}_{m,n}(R)\) be defined by \(\varphi(f)=[f]_B^C\).
+        We need to check that \(\varphi\) is a homomorphism of \(R\)-modules, which translates into \([f+g]_B^C=[f]_B^C+[g]_B^C\) and \([\lambda f]_B^C=\lambda[f]_B^C\) for any \(f,g \in \mathrm{Hom}_R(V, W)\) and \(\lambda\in R\).
+        Let \(A=[f]_B^C\) and \(A'=[g]_B^C\). Then
+      </p>
+      \[
+        (f+g)(b_i)=f(b_i)+g(b_i)= \sum_j a_{j,i} c_j+ \sum_j a'_{j,i} c_j= \sum_j (a_{j,i}+a'_{i,j}) c_j
+      \]
+      <p>
+        gives \([f+g]_B^C=A+A'\) and
+      </p>
+      \[
+        (\lambda f)(b_i)=\lambda\left( \sum_j a_{j,i} c_j\right)= \sum_j (\lambda a_{j,i}) c_j
+      \]
+      <p>
+        gives \([\lambda f]_B^C=\lambda A\).
+        We leave the proof that for \(f,g\in \mathrm{End}_R(V)\) we have \([f\circ g]_B^B=[f]_B^B[g]_B^B\) as an exercise.
+      </p>
+
+      <p>
+        Finally, the argument described in Example 12.2.6 also works for any ring \(R\), and it can be adapted for any two chosen basis \(B\) and \(C\), showing that \(\varphi\) is a bijection.
+      </p>
+    </div>
+  </section>
+
+  <section id="cor-12-2-8" class="callout corollary" aria-labelledby="cor-12-2-8-title">
+    <h3 id="cor-12-2-8-title">Corollary 12.2.8</h3>
+    <div class="callout-body">
+      <p>
+        For any field \(F\) and finite \(F\)-vector spaces \(V\) and \(W\) of dimension \(n\) and \(m\) respectively, \(\dim(\mathrm{Hom}_F(V, W))=mn\).
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-cor-12-2-8" class="callout proof" aria-labelledby="proof-cor-12-2-8-title">
+    <h3 id="proof-cor-12-2-8-title">Proof of Corollary 12.2.8</h3>
+    <div class="callout-body">
+      <p>
+        The isomorphism \(\mathrm{Hom}_F(V, W) \cong \mathrm{M}_{m,n}(F)\) gives
+      </p>
+      \[
+        \dim \left(\mathrm{Hom}_F(V, W) \right) = \dim \left( \mathrm{M}_{m,n}(F) \right)=mn.
+      \]
+    </div>
+  </section>
 </section>
--->
+
+
+<section id="sec-12-3" class="section" aria-labelledby="sec-12-3-title">
+  <h2 id="sec-12-3-title">12.3 Change of basis</h2>
+
+  <section id="def-12-3-1" class="callout definition" aria-labelledby="def-12-3-1-title">
+    <h3 id="def-12-3-1-title">Definition 12.3.1</h3>
+    <div class="callout-body">
+      <p>
+        Let \(V\) be a finitely generated free module over a commutative ring \(R\), and let \(B\) and \(C\) be bases of \(V\).
+        Let \(\mathrm{id}_V\) be the identity map on \(V\).
+        Then \([\mathrm{id}_V]_B^{C}\) is a matrix called the <strong>change of basis matrix</strong> from \(B\) to \(C\).
+      </p>
+    </div>
+  </section>
+
+  <p>
+    In Proposition&nbsp;12.3.6 we will show that \([\mathrm{id}_V]_B^{C}\) is invertible with inverse
+    \(\left([\mathrm{id}_V]_B^{C}\right)^{-1}=[\mathrm{id}_V]_{C}^B\).
+  </p>
+
+  <section id="ex-12-3-2" class="callout example" aria-labelledby="ex-12-3-2-title">
+    <h3 id="ex-12-3-2-title">Example 12.3.2</h3>
+    <div class="callout-body">
+      <p>
+        Consider the subspace \(V = P_2\) of \(F[x]\) of all polynomials of degree up to \(2\), and the bases
+        \(B = \{1, x, x^2\}\) and \(C = \{1,x-2,(x-2)^2\}\) of \(V\).
+        We calculate the change of basis matrix. We have
+      </p>
+      \[
+        \begin{aligned}
+        \mathrm{id}_V(1) &= 1, \\
+        \mathrm{id}_V(x) &= 2\cdot1+1\cdot(x-2), \\
+        \mathrm{id}_V(x^2) &= 4\cdot1 +4\cdot(x-2)+1\cdot(x-2)^2.
+        \end{aligned}
+      \]
+      <p>
+        Thus, the change of basis matrix is given by
+      </p>
+      \[
+        [\mathrm{id}_V]_B^{C} =
+        \begin{bmatrix}
+        1 & 2 & 4\\
+        0 & 1 & 4\\
+        0 & 0 & 1
+        \end{bmatrix}.
+      \]
+    </div>
+  </section>
+
+  <section id="lem-12-3-3" class="callout lemma" aria-labelledby="lem-12-3-3-title">
+    <h3 id="lem-12-3-3-title">Lemma 12.3.3</h3>
+    <div class="callout-body">
+      <p>
+        If \(V,W,U\) are finitely generated free \(R\)-modules with ordered bases \(B\), \(C\), and \(D\),
+        respectively, and \(f\!: V \to W\) and \(g\!: W \to U\) are \(R\)-module homomorphisms, then
+      </p>
+      \[
+        [g\circ f]_B^D=[g]_C^D \cdot [f]_B^C.
+      \]
+    </div>
+  </section>
+
+  <section id="proof-lem-12-3-3" class="callout proof" aria-labelledby="proof-lem-12-3-3-title">
+    <h3 id="proof-lem-12-3-3-title">Proof of Lemma 12.3.3</h3>
+    <div class="callout-body">
+      <p>
+        Given \(v \in V\), we have
+      </p>
+      \[
+        (g \circ f)(v) = g(f(v))=g([f]_B^Cv)=[g]_C^D([f]_B^Cv)=([g]_C^D[f]_B^C)v,
+      \]
+      <p>
+        so \([g \circ f]_B^D=[g]_C^D[f]_B^C\).
+      </p>
+    </div>
+  </section>
+
+  <section id="def-12-3-4" class="callout definition" aria-labelledby="def-12-3-4-title">
+    <h3 id="def-12-3-4-title">Definition 12.3.4</h3>
+    <div class="callout-body">
+      <p>
+        Let \(V\) be a finitely generated free module over a commutative ring \(R\).
+        Two \(R\)-module homomorphisms \(f,g: V \to V\) are <strong>similar</strong> if there is a bijective linear transformation
+        \(h: V \to V\) such that \(g = h\circ f \circ h^{-1}\).
+        Two \(n \times n\) matrices \(A\) and \(B\) with entries in \(R\) are <strong>similar</strong>
+        if there is an invertible \(n \times n\) matrix \(P\) such that \(B = PAP^{-1}\).
+      </p>
+    </div>
+  </section>
+
+  <section id="rmk-12-3-5" class="callout remark" aria-labelledby="rmk-12-3-5-title">
+    <h3 id="rmk-12-3-5-title">Remark 12.3.5</h3>
+    <div class="callout-body">
+      <p>
+        For elements \(A,B\in \mathrm{GL}_n(R)\), the notions of similar and conjugate are the same.
+      </p>
+    </div>
+  </section>
+
+  <section id="thm-12-3-6" class="callout theorem" aria-labelledby="thm-12-3-6-title">
+    <h3 id="thm-12-3-6-title">Theorem 12.3.6</h3>
+    <div class="callout-body">
+      <p>
+        Let \(V, W\) be finitely generated free modules over a commutative ring \(R\),
+        let \(B\) and \(B'\) be bases of \(V\), let \(C\) and \(C'\) be bases of \(W\),
+        and let \(f: V \to W\) be a homomorphism. Then
+      </p>
+      \[
+        [f]_{B'}^{C'} = [\mathrm{id}_W]_C^{C'} [f]_B^C [\mathrm{id}_V]_{B'}^{B}.
+      \]
+      <p>
+        In particular, if \(g\!: V \to V\) is an \(R\)-module homomorphism,
+        then \([g]_B^B\) and \([g]_{B'}^{B'}\) are similar.
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-thm-12-3-6" class="callout proof" aria-labelledby="proof-thm-12-3-6-title">
+    <h3 id="proof-thm-12-3-6-title">Proof of Theorem 12.3.6</h3>
+    <div class="callout-body">
+      <p>
+        Since \(f=\mathrm{id}_W\circ f\circ \mathrm{id}_V\), by Lemma&nbsp;12.3.3 we have
+      </p>
+      \[
+        [f]_{B'}^{C'} = [\mathrm{id}_W]_C^{C'} [f]_B^C [\mathrm{id}_V]_{B'}^{B}.
+      \]
+      <p>
+        Setting \(V=W\), \(B=C\), \(B'=C'\), and \(f=\mathrm{id}_V\), we obtain
+      </p>
+      \[
+        I = [\mathrm{id}_V]_B^{B'} [\mathrm{id}_V]_{B'}^{B}.
+      \]
+      <p>
+        Setting \(P=[\mathrm{id}_V]_B^{B'}\), this shows that \(P^{-1}=[\mathrm{id}_V]_{B'}^{B}\).
+        Substituting into the general formula yields
+      </p>
+      \[
+        [g]_{B'}^{B'} = P[g]_B^B P^{-1},
+      \]
+      <p>
+        which proves the similarity statement.
+      </p>
+    </div>
+  </section>
+
+  <p>
+    We now come to certain special changes of basis and their matrices:
+  </p>
+
+  <section id="def-12-3-7" class="callout definition" aria-labelledby="def-12-3-7-title">
+    <h3 id="def-12-3-7-title">Definition 12.3.7</h3>
+    <div class="callout-body">
+      <p>
+        Let \(R\) be a commutative ring with \(1 \neq 0\), let \(M\) be a free \(R\)-module of finite rank \(n\),
+        and let \(B = \{b_1,\dots ,b_n\}\) be an ordered basis for \(M\).
+        An <strong>elementary basis change operation</strong> on the basis \(B\) is one of the following:
+      </p>
+      <ol>
+        <li>Replacing \(b_i\) by \(b_i + rb_j\) for some \(i \neq j\) and some \(r\in R\),</li>
+        <li>Replacing \(b_i\) by \(ub_i\) for some \(i\) and some unit \(u\in R^\times\),</li>
+        <li>Swapping the indices of \(b_i\) and \(b_j\) for some \(i \neq j\).</li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="def-12-3-8" class="callout definition" aria-labelledby="def-12-3-8-title">
+    <h3 id="def-12-3-8-title">Definition 12.3.8</h3>
+    <div class="callout-body">
+      <p>
+        Let \(R\) be a commutative ring with \(1 \neq 0\).
+        An <strong>elementary row operation</strong> on a matrix \(A \in \M_{m,n}(R)\) is one of the following:
+      </p>
+      <ol>
+        <li>Adding an element of \(R\) times a row of \(A\) to a different row of \(A\),</li>
+        <li>Multiplying a row of \(A\) by a unit of \(R\),</li>
+        <li>Interchanging two rows of \(A\).</li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="def-12-3-9" class="callout definition" aria-labelledby="def-12-3-9-title">
+    <h3 id="def-12-3-9-title">Definition 12.3.9</h3>
+    <div class="callout-body">
+      <p>
+        Let \(R\) be a commutative ring with \(1 \neq 0\).
+        An <strong>elementary matrix</strong> over \(R\) is an \(n \times n\) matrix obtained from \(I_n\)
+        by applying a single elementary row operation.
+      </p>
+    </div>
+  </section>
+
+  <section id="rmk-12-3-10" class="callout remark" aria-labelledby="rmk-12-3-10-title">
+    <h3 id="rmk-12-3-10-title">Remark 12.3.10</h3>
+    <div class="callout-body">
+      <ul>
+        <li>
+          An elementary matrix is the change of basis matrix \([\mathrm{id}_V]_{B'}^{B}\)
+          corresponding to an elementary basis change.
+        </li>
+        <li>
+          If \(A \in \M_{n,q}(R)\), then \(EA\) performs the corresponding elementary row operation on \(A\).
+        </li>
+        <li>
+          If \(B \in \M_{m,n}(R)\), then \(BE\) performs the corresponding elementary column operation on \(B\).
+        </li>
+      </ul>
+    </div>
+  </section>
+</section>
 
 
 

@@ -133,8 +133,7 @@
 
 \newcommand{\cZ}{\mathcal{Z}}
 \newcommand{\cI}{\mathcal{I}}
-\newcommand{\cP}{\mathcal{P}}
-\newcommand{\cT}{\mathcal{T}}
+
 \newcommand{\m}{\mathfrak{m}}
 
 \newcommand{\s}{\sigma}
@@ -7369,15 +7368,7 @@ Let $N$ be a nonempty of $M$.
 Exercise.
 \end{proof}
 
-%\begin{example}$\,$
-%\begin{enumerate}[label=(\arabic*)]
-%\item Let $R$ be a ring and let $M$ be a subset of $R$. Then $M$ is a left (respectively, right)  $R$-submodule of~$R$ if and only if $M$ is a left (respectively, right) ideal of R.
-%
-%\item Consider the free $R$-module of rank $n+1$, $R^{n+1}$, and the inclusion of $R^{n}$ into $R^{n+1}$ via
-%$$\begin{bmatrix} r_1\\ \vdots\\r_n \end{bmatrix} \mapsto \begin{bmatrix} r_1\\ \vdots\\r_n \\ 0 \end{bmatrix}.$$
-%The image of $R^n$ via this map is a submodule of $R^{n+1}$. 
-%\end{enumerate}
-%\end{example}
+
 
 \begin{example}
 Let $R$ be a ring and let $M$ be a subset of $R$. Then $M$ is a left (respectively, right)  $R$-submodule of~$R$ if and only if $M$ is a left (respectively, right) ideal of R.
@@ -8047,10 +8038,10 @@ contrary to assumption. This proves that $I \cup \{v\}$ is a linearly independen
  Let $V$ be an $F$-vector space and assume $I \subseteq S \subseteq V$ are subsets such that $I$ is linearly independent and $S$ spans $V$. Then there is a subset $B$ with $I \subseteq B \subseteq S$ such that $B$ is a basis.
 \end{theorem}
 
-Before we prove this theorem, note that a corollary of \Cref{basisexist} is that every vector space has a basis; in particular, this says that every module over a field is free!
+Before we prove this theorem, we note the following corollary:
 
 \begin{corollary}\label{every vector space has a basis}
-Every vector space $V$ has a basis. Moreover, every linearly independent subset of $V$ is contained in some basis, and every set of vectors that spans $V$ contains some basis.  
+Every vector space $V$ has a basis, and hence is a free module. Moreover, every linearly independent subset of $V$ is contained in some basis, and every set of vectors that spans $V$ contains some basis. 
 \end{corollary}
 
 \begin{proof} 
@@ -8064,19 +8055,14 @@ $\mathbb{R}$ has a basis as a $\mathbb{Q}$-vector space; just don't ask me what 
 \end{example}
 
 
-%We will now prove \Cref{basisexist}.
-%But before we give a formal proof, let's first give a heuristic proof. To so that, start with $I$. If $\mathrm{span}(I) = V$, then $B = I$ does the job. If not, then since $\mathrm{span}(S)=V$, there must be a $v \in S \setminus \mathrm{span}(I)$. Let $I' := I \cup \{v\}$. Then $I' \subseteq S$ and, by \Cref{lem1116}, $I'$ is linearly independent. 
-%If $\mathrm{span}(I') = V$, we have found our $B$, and if not we construct $I''$ from $I'$ just as we constructed $I'$ from $I$. At this point we would like to say that this process cannot go on for ever, and this is more-or-less true. But at least in an infinite dimensional setting, we need to use Zorn's Lemma to complete the proof rigorously.
-
-
 \begin{proof}[Proof of \Cref{basisexist}]
-Let $\cP$ denote the collection of all subsets $X$ of $V$ such that $I \subseteq X \subseteq S$ and $X$ is linearly independent. We make $\cP$ into a poset by the order relation given by set containment $\subseteq$. We note that $\cP$ is not empty since, for example $I \in \cP$. 
+Let $\mathcal{P}$ denote the collection of all subsets $X$ of $V$ such that $I \subseteq X \subseteq S$ and $X$ is linearly independent. We make $\mathcal{P}$ into a poset by the order relation given by set containment $\subseteq$. We note that $\mathcal{P}$ is not empty since, for example $I \in \mathcal{P}$. 
 
-Let $\cT$ be any nonempty chain in $\cP$. Let $Z = \bigcup_{Y \in \cT} Y$. We claim $Z \in \cP$. Given  $z_1, \dots, z_m \in Z$, for each $i$ we have $z_i \in Y_i$ for some $Y_i \in T$. Since $T$ is totally ordered, one of $Y_1, \dots, Y_m$ contains all the others and hence contains all the $z_i$'s. 
-Since $Y_i$ is linearly independent, this shows $z_1, \dots, z_m$ are linearly independent. Thus $Z$ is linearly independent. Since $\cT$ is non-empty, $Z \supseteq I$ and hence $Z \in \cP$. It is an upper bound for $\cT$ by construction. 
+Let $\mathcal{T}$ be any nonempty chain in $\mathcal{P}$. Let $Z = \bigcup_{Y \in \mathcal{T}} Y$. We claim $Z \in \mathcal{P}$. Given  $z_1, \dots, z_m \in Z$, for each $i$ we have $z_i \in Y_i$ for some $Y_i \in T$. Since $T$ is totally ordered, one of $Y_1, \dots, Y_m$ contains all the others and hence contains all the $z_i$'s. 
+Since $Y_i$ is linearly independent, this shows $z_1, \dots, z_m$ are linearly independent. Thus $Z$ is linearly independent. Since $\mathcal{T}$ is non-empty, $Z \supseteq I$ and hence $Z \in \mathcal{P}$. It is an upper bound for $\mathcal{T}$ by construction. 
 
-By Zorn's Lemma, $\cP$ has a maximal element $B$, which we claim is a basis for $V$. Note that $B$ is linearly independent and  $I \subseteq B \subseteq S$ by construction. We need to show that it spans $V$. Suppose not. Since $S$ spans $V$, if $S \subseteq \mathrm{span}(B)$, then $\mathrm{span}(B)$ would have to be all of $V$. So, there is at least one $v \in S$ such that $v \notin \mathrm{span}(B)$, and set $X := B \cup \{v\}$.
-Clearly, $I \subset X \subseteq S$ and, by \Cref{lem1116}, $X$ is linearly independent. This shows that $X$ is an element of $\cP$ that is strictly bigger than $B$, contrary to the maximality of $B$. 
+By Zorn's Lemma, $\mathcal{P}$ has a maximal element $B$, which we claim is a basis for $V$. Note that $B$ is linearly independent and  $I \subseteq B \subseteq S$ by construction. We need to show that it spans $V$. Suppose not. Since $S$ spans $V$, if $S \subseteq \mathrm{span}(B)$, then $\mathrm{span}(B)$ would have to be all of $V$. So, there is at least one $v \in S$ such that $v \notin \mathrm{span}(B)$, and set $X := B \cup \{v\}$.
+Clearly, $I \subset X \subseteq S$ and, by \Cref{lem1116}, $X$ is linearly independent. This shows that $X$ is an element of $\mathcal{P}$ that is strictly bigger than $B$, contrary to the maximality of $B$. 
 \end{proof}
 
 
@@ -8133,6 +8119,12 @@ To obtain a contradiction, suppose otherwise, and let $a\in I \smallsetminus I_0
 
 
 
+
+
+
+
+
+
 It follows that all bases for the same vector space have the same cardinality.
 
 
@@ -8164,6 +8156,7 @@ Let $B, B'$ be two bases for $V$. Applying the Exchange Lemma with $C=B'$, there
 \begin{enumerate}[label=(\arabic*),itemsep=0mm]
 \item Every finitely generated vector space over $F$ is isomorphic to $F^n$ for $n=\dim_F(V)$. 
 \item For any $m,n \in \mathbb{Z}_{\geqslant 0}$,  $F^m \cong F^n$ if and only if $m = n$.
+\item Two finite dimensional vector spaces $V,V'$ are isomorphic if and only if $\dim_F(V)=\dim_F(V')$.
 \end{enumerate}
 \end{theorem}
 
@@ -8181,6 +8174,8 @@ $$v=\sum_{i=1}^mc_i\varphi(b_i),$$
 which shows $\varphi(B)$ spans $F^n$.
 By the Dimension Theorem, we have 
 $$\dim_F(F^n)=n=|\varphi(B)|=|B|=m.\qedhere$$
+
+Part (3) is immediate from (1) and (2).
 \end{proof}
 
 
@@ -8188,20 +8183,12 @@ $$\dim_F(F^n)=n=|\varphi(B)|=|B|=m.\qedhere$$
 \begin{enumerate}[label=(\arabic*),itemsep=0mm]
 \item The same proof as in part (1) of the classification of finitely generated vector spaces above shows that every finitely generated free $R$-module is isomorphic to $R^n$ for some $n \geqslant 0$.
 \item Part (2) of the classification of finitely generated vector spaces can be extended to modules over commutative rings as stated in the previous section; this is a problem in the homework.
-\item The classification of finitely generated vector spaces yields that dimension is an isomorphism invariant. Moreover, it is a complete isomorphism invariant in the sense that if two module have the same dimension, then they are isomorphic, as we note below.
+\item The classification of finitely generated vector spaces yields that dimension is an isomorphism invariant. Moreover, it is a complete isomorphism invariant in the sense that if two module have the same dimension, then they are isomorphic.
 \end{enumerate}
 \end{remark}
 
-\begin{corollary}
-Two finite dimensional vector spaces $V$ and $V'$ over the same field $F$ are isomorphic if and only if $\dim_F(V) = \dim_F(V')$.
-\end{corollary}
-
-\begin{proof}
-	By the classification of finitely generated vector spaces, $V$ and $V'$ are both of the form $V \cong F^m$ and $V'\cong F^n$, while $F^m \cong F^n$ if and only if $m=n$.
-\end{proof}
-
 \begin{remark}
-The Corollary also holds in the case of infinite-dimensional vector spaces in the following form: two vector spaces $V$ and $V'$ are isomorphic if and only if their dimensions are equal in the sense there exists a bijection between some basis of $V$ and some basis of $V'$.
+Part (3) of the previous Theorem holds for infinite-dimensional vector spaces in the following form: two vector spaces $V$ and $V'$ are isomorphic if and only if their dimensions are equal in the sense that there exists a bijection between some basis of $V$ and some basis of $V'$.
 \end{remark}
 
 A word on infinite-dimensional vector spaces.
@@ -8209,7 +8196,7 @@ A word on infinite-dimensional vector spaces.
 \begin{example}\label{F[x] infinite dim}
 Consider the vector space $F[x]$. This cannot be a finite dimensional vector space. For instance, if $\{f_1 , \dots , f_n\}$ were a basis, then setting
 $$M = \max_{1 \leqslant j \leqslant n}\{ \deg(f_j)\}$$
-we see that the element $x^{M+1}$ is not be in the span of $\{f_1 , \dots , f_n\}$. We can find a basis for this space though. Consider the collection $B = \{1, x, x^2 , \ldots \}$. This set is linearly independent and spans $F[x]$, thus it forms a basis for $F[x]$. This basis is {\em countable}, so $\dim_F(F[x])= \aleph_0 = |\N|$.
+we see that the element $x^{M+1}$ is not be in the span of $\{f_1 , \dots , f_n\}$. We can find a basis for this space though. Consider the collection $B = \{1, x, x^2 , \ldots \}$. This set is linearly independent and spans $F[x]$, thus it forms a basis for $F[x]$. This basis is {\em countable}, so $\dim_F(F[x])= |\N|$.
 \end{example}
 
 \begin{example}
@@ -8232,8 +8219,7 @@ We now deduce some formulas that relate the dimensions of various vector spaces.
  $$\dim(V) = \dim(W) + \dim(V/W).$$
  \end{theorem}
  
-Here the dimension of a vector space is understood to be either a nonnegative integer or $\infty$, and the arithmetic of the formula is understood to follow the rules  $n+\infty=\infty=\infty+\infty$ for any $n\in \mathbb{Z}_{\geqslant 0}$. 
-We leave the proof for Problem Set 4.
+Here the dimension of a vector space is understood to be either a nonnegative integer or $\infty$, and the arithmetic of the formula is understood to follow the rules  $n+\infty=\infty=\infty+\infty$ for any $n\in \mathbb{Z}_{\geqslant 0}$. The proof follows from the Problem \#1 in Problem Set \#2.
  
 
 
@@ -8285,10 +8271,6 @@ $$\dim(V)=\dim(\ker(V))+\dim\left(V/\ker(f)\right) = \dim(\ker(V)) + \dim(\mathr
  
 \section{Linear transformations and homomorphisms between free modules}
 
-
-\begin{exercise}\label{lem:uniqueaij}
-If $W$ is a free $R$-module with basis $C=\{c_1, \dots, c_m\}$ and $w\in W$, then $w$ can be written {\em uniquely} as $w=\sum_{j=1}^m a_j c_j$ with $a_1,\ldots, a_m\in R$.
-\end{exercise}
 
 
 \begin{definition}[The matrix of a homomorphism between free modules] 
@@ -8459,7 +8441,6 @@ $[\mathrm{id}_V]_B^{C} = \begin{bmatrix}
 
 
 
-%We now record a general result regarding the matrix representing the composition of two linear transformations.
  
 \begin{lemma}\label{lem:matcompos}
  If $V,W,U$ are finitely generated free $R$-modules spaces with ordered bases $B$, $C$, and $D$, respectively, and $f\!: V \to W$ and $g\!: W \to U$ are $R$-module homomorphisms, then 
