@@ -1489,7 +1489,7 @@ K &\longmapsto K/N .
         If none of the \(w_i\)'s is equal to \(v\), then \(c_i = 0\) for all \(i\), since \(I\) is linearly independent. Without loss of generality, say \(w_1 = v\). If \(c_1 = 0\) then \(c_i = 0\) for all \(i\) by the same reasoning as in the previous case. If \(c_1 \ne 0\), then
       </p>
       \[
-        v = \sum_{i \geqslant 2} \frac{c_i}{c_1} w_i \in \mathrm{span}(I),
+        v = \sum_{i \geqslant 2} \frac{-c_i}{c_1} w_i \in \mathrm{span}(I),
       \]
       <p>
         contrary to assumption. This proves that \(I \cup \{v\}\) is a linearly independent set.
@@ -1612,26 +1612,27 @@ K &\longmapsto K/N .
     <h3 id="proof-lem-12-1-8-title">Proof of Lemma 12.1.8</h3>
     <div class="callout-body">
       <p>
-        First we show we can swap out one element of \(B\) for one nonzero element \(\{a\}\). In this case, we will show the stronger statement that for any subset \(B_0 \subseteq B\), and any element \(a\notin \mathrm{span}(B_0)\), there is some \(b\in B\smallsetminus B_0\) such that \(B\smallsetminus \{b\} \cup \{a\}\) is a basis for \(V\).
+        First we show we can swap out one element of \(B\) for one nonzero element \(\{v\}\). In this case, we will show the stronger statement that for any subset \(B_0 \subseteq B\), and any element \(a\notin \mathrm{span}(B_0)\), there is some \(b\in B\smallsetminus B_0\) such that \(B\smallsetminus \{b\} \cup \{v\}\) is a basis for \(V\).
       </p>
 
       <p>
         Since \(B\) is a basis, we can write
       </p>
       \[
-        a = \sum_i \lambda_i b_i
+        v = \sum_i \lambda_i b_i
       \]
       <p>
-        for some elements \(b_i \in B\). Since \(a\notin \mathrm{span}(B_0)\), we have \(\lambda_i\neq 0\) for some \(b_i\notin B_0\); say \(\lambda_1\neq 0\). We claim that \(B' := B\smallsetminus \{ b_1\} \cup \{a\}\) is a basis.
+        for some elements \(b_i \in B\). Since \(v\notin \mathrm{span}(B_0)\), we have \(\lambda_i\neq 0\) for some \(b_i\notin B_0\); say \(\lambda_1\neq 0\). We claim that \(B' := B\smallsetminus \{ b_1\} \cup \{v\}\) is a basis.
       </p>
 
       <p>
-        First, to see that \(B'\) spans, it suffices to show that \(b_1 \in \mathrm{span} ( B\smallsetminus \{ b_1\} \cup \{c\} )\) since we then have \(B \subseteq \mathrm{span} ( B\smallsetminus \{ b_1\} \cup \{c\} )\), so \(V = \mathrm{span}(B) \subseteq \mathrm{span} ( B\smallsetminus \{ b_1\} \cup \{c\} )\). To see that, we can solve the equation above for \(b_1\) in terms of \(c\) and the other \(b_i\)'s.
+<i>\(B'\) is linearly independent:</i> By Lemma 12.2.1, it suffices to show that \(v\notin \mathrm{span}(B\smallsetminus \{b_1\})\). Indeed, if it were, then writing \(v\) as a linear combination of \(B\smallsetminus \{b_1\}\) and the linear combination \(v = \sum_i \lambda_i b_i\) with \(b_1\neq 0\) would give two different expressions of \(v\) in the basis \(B\), a contradiction.
       </p>
 
       <p>
-        Second, to see that \(B'\) is linearly independent, note that any nonzero relation on \(B'\) have a nonzero coefficient on \(c\), since the other elements are part of a basis and hence linearly independent. Then, given any linear dependence relation on \(c\) and \(b_2,\dots,b_n\), we could solve for \(c\) and express \(c\) in terms of \(b_2,\dots,b_n\). But this would contradict that \(c\) has a unique expression in terms of the basis \(B\), in light of the given expression we started with. Thus, \(B'\) is a basis.
+     <i>\(B'\) spans \(V\):</i> First, we note that it suffices to show that \(b_1\) in the span of \(V\): once we have shown this, we can write any element of \(V\) as a linear combination of elements of \(B\), and just replace the term with \(b_1\) with a linear combination of elements of \(B'\) by substituting. To this end, by the contrapositive of Lemma 12.2.1, it suffices to show that \(B' \cup \{b_1\}\) is not linearly dependent, and our staring expression \(v = \sum_i \lambda_i b_i\) does this.
       </p>
+This concludes the case of one element. For the general case, we set up a Zorn's Lemma argument.
 
       <p>
         Consider the collection of pairs \((I', A')\) with \(I' \subseteq I\), \(A' \subseteq A\), and \(|I'|=|A'|\) with the property that \(B\smallsetminus A' \cup I'\) is a basis for \(V\). By a Zorn's Lemma argument (left as an exercise), there is a maximal such pair under the partial order \((I',A')\leq (I'',A'')\) if \(I'\subseteq I''\) and \(A'\subseteq A''\). Let \((I_0,A_0)\) be a maximal element. We will argue that \(I_0=I\).
