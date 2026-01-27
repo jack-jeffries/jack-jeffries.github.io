@@ -1581,35 +1581,24 @@ K &\longmapsto K/N .
     </div>
   </section>
 
-  <section id="def-12-1-7" class="callout definition" aria-labelledby="def-12-1-7-title">
-    <h3 id="def-12-1-7-title">Definition 12.1.7</h3>
-    <div class="callout-body">
-      <p>
-        A vector space is <strong>finite dimensional</strong> if there is spanned by a finite subset.
-      </p>
-    </div>
-  </section>
 
   <p>
-    Thanks to Theorem 12.1.2, this is equivalent to the property that it has a finite basis. In the language of modules, a finite dimensional vector space is just a finitely generated \(F\)-module.
-  </p>
-
-  <p>
-    The following is an essential property of vector spaces that eventually will allow us to compare bases in terms of size. We first prepare with some quick remarks on size for possibly infinite sets. We say that two sets \(X,Y\) have the same size and write \(|X|=|Y|\) if there is a bijective function from \(X\) to \(Y\). If there is an injective function \(X \hookrightarrow Y\), then we write \(|X|\leq |Y|\). It is a consequence of the axiom of choice called the Cantor-Bernstein Theorem that \(|X|\leq |Y|\) and \(|Y|\leq |X|\) implies \(|X|=|Y|\).
+    The following is an essential property of vector spaces that eventually will allow us to compare bases in terms of size.
   </p>
 
   <section id="lem-12-1-8" class="callout lemma" aria-labelledby="lem-12-1-8-title">
-    <h3 id="lem-12-1-8-title">Lemma 12.1.8 (Exchange Property)</h3>
+    <h3 id="lem-12-1-8-title">Lemma 12.1.7 (Exchange Property)</h3>
     <div class="callout-body">
       <p>
-        Let \(B\) be a basis for a vector space \(V\) and consider any set of linearly independent vectors \(I \subseteq V\). Then there is a subset \(A \subseteq B\) such that \(|I|=|A|\) and
-        \((B \smallsetminus A) \cup I\) is also a basis for \(V\).
+        Let \(B\) be a basis for a vector space \(V\) and consider any set of linearly independent vectors \(I \subseteq V\). Then there is a subset \(A \subseteq B\) such that 
+<ul><li>\(|I|=|A|\) (meaning that there is a bijection \( I \leftrightarrow A\), and</li>
+<li> \((B \smallsetminus A) \cup I\) is also a basis for \(V\).</li></ul>
       </p>
     </div>
   </section>
 
-  <section id="proof-lem-12-1-8" class="callout proof" aria-labelledby="proof-lem-12-1-8-title">
-    <h3 id="proof-lem-12-1-8-title">Proof of Lemma 12.1.8</h3>
+  <section id="proof-lem-12-1-7" class="callout proof" aria-labelledby="proof-lem-12-1-8-title">
+    <h3 id="proof-lem-12-1-7-title">Proof of Lemma 12.1.7</h3>
     <div class="callout-body">
       <p>
         First we show we can swap out one element of \(B\) for one nonzero element \(\{v\}\). In this case, we will show the stronger statement that for any subset \(B_0 \subseteq B\), and any element \(a\notin \mathrm{span}(B_0)\), there is some \(b\in B\smallsetminus B_0\) such that \(B\smallsetminus \{b\} \cup \{v\}\) is a basis for \(V\).
@@ -1650,22 +1639,49 @@ This concludes the case of one element. For the general case, we set up a Zorn's
     It follows that all bases for the same vector space have the same cardinality.
   </p>
 
-  <section id="thm-12-1-9" class="callout theorem" aria-labelledby="thm-12-1-9-title">
-    <h3 id="thm-12-1-9-title">Theorem 12.1.9 (Dimension Theorem)</h3>
+  <section id="thm-12-1-8" class="callout theorem" aria-labelledby="thm-12-1-9-title">
+    <h3 id="thm-12-1-8-title">Theorem 12.1.8 (Dimension Theorem)</h3>
     <div class="callout-body">
       <p>
-        Any two bases of the same vector space have the same cardinality.
+        Let \(V\) be a vector space, and \(B,B'\) be two bases for \(V\). Then \(|B| = |B'|\), meaning there is a bijection \(B\leftrightarrow B'\).
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-thm-12-1-8" class="callout proof" aria-labelledby="proof-thm-12-1-9-title">
+    <h3 id="proof-thm-12-1-8-title">Proof of Theorem 12.1.8</h3>
+    <div class="callout-body">
+      <p>
+        Let \(B, B'\) be two bases for \(V\). Applying the Exchange Lemma with \(C=B'\), there is a subset \(C\subseteq B\)
+        with \(|C|=|B'|\), so there is an injective map \(B' \hookrightarrow B\). Switching roles, there is an injective map \(B\hookrightarrow B'\). It follows from a result in set theory (the Cantor-Bernstein theorem) that there is a bijection \( B\leftrightarrow B'\).
+      </p>
+    </div>
+  </section>
+
+  <section id="thm-12-1-9" class="callout theorem" aria-labelledby="thm-12-1-9-title">
+    <h3 id="thm-12-1-9-title">Corollary 12.1.9</h3>
+    <div class="callout-body">
+      <p>
+        Let \(F\) be a field. Let \(V\) be a vector space with a basis \(B\) and \(V'\) be a vector space with a basis \(B'\). Then
+\[ V\cong V' \quad \Longleftrightarrow \quad |B|=|B'|.\]
       </p>
     </div>
   </section>
 
   <section id="proof-thm-12-1-9" class="callout proof" aria-labelledby="proof-thm-12-1-9-title">
-    <h3 id="proof-thm-12-1-9-title">Proof of Theorem 12.1.9</h3>
+    <h3 id="proof-thm-12-1-9-title">Proof of Corollary 12.1.9</h3>
     <div class="callout-body">
       <p>
-        Let \(B, B'\) be two bases for \(V\). Applying the Exchange Lemma with \(C=B'\), there is a subset \(C\subseteq B\)
-        with \(|C|=|B'|\), so \(|B'|\leq |B|\). Swapping roles, one has \(|B| \leq |B'|\) as well.
+        The (\(\Leftarrow\)) implication is a special case of Corollary 11.4.13. For the (\(\Rightarrow\)) implication, we claim that if \(\phi: V\to V'\) is an isomorphism, then \(\phi(B)\) is a basis for \(V'\):</p>
+
+<p><i>\(\phi(B)\) is linearly independent:</i> Let \(\phi(b_1),\dots,\phi(b_n)\in \phi(B)\) and \( \lambda_1 \phi(b_1) + \cdots+ \lambda_n \phi(b_n) = 0\). Then \[ 0=  \lambda_1 \phi(b_1) + \cdots+ \lambda_n \phi(b_n) = \phi(  \lambda_1 b_1 + \cdots+ \lambda_n b_n)\] and \(\phi\) is injective so \( \lambda_1 b_1 + \cdots+ \lambda_n b_n=0\). Since \(B\) is linearly independent, we have \(\lambda_1 = \cdots=\lambda_n=0\).
       </p>
+
+<p><i>\(\phi(B)\) spans \(V'\):</i> Since \(\phi\) is surjective, for any \(v'\in V'\) we can write \(v'=\phi(v)\) for some \(v\in V\). Then we can write \(v=\lambda_1 b_1 + \cdots + \lambda_n b_n\) for some \(\lambda_i\in F\) and \(b_i\in B\), and then 
+\[ v' = \phi(v) = \phi(\lambda_1 b_1 + \cdots + \lambda_n b_n) = \lambda_1 \phi(b_1) + \cdots+ \lambda_n \phi(b_n).\]
+      </p>
+
+<p>Thus, \(\phi(B)\) is a basis for \(V'\). Since \(\phi\) is a bijection, we have \(|B|=|\phi(B)|\), and by the previous Theorem, \(|\phi(B)|=|B'|\).</p>
     </div>
   </section>
 
@@ -1679,6 +1695,7 @@ This concludes the case of one element. For the general case, we set up a Zorn's
     </div>
   </section>
 
+
   <section id="ex-12-1-11" class="callout example" aria-labelledby="ex-12-1-11-title">
     <h3 id="ex-12-1-11-title">Example 12.1.11</h3>
     <div class="callout-body">
@@ -1688,18 +1705,20 @@ This concludes the case of one element. For the general case, we set up a Zorn's
     </div>
   </section>
 
+
+
   <p>
-    While one can talk about infinite cardinals, we'll generally say that dimension is a natural number or \(\infty\).
+    While one can talk about infinite cardinals, we'll generally say that dimension is a natural number or \(\infty\). We restate the results above specifically in the finite-dimensional case for easy reference.
   </p>
 
   <section id="thm-12-1-12" class="callout theorem" aria-labelledby="thm-12-1-12-title">
     <h3 id="thm-12-1-12-title">Theorem 12.1.12 (Classification of finite dimensional vector spaces)</h3>
     <div class="callout-body">
-      <p>Let \(F\) be a field.</p>
+      <p>Let \(F\) be a field. Let \(V\) be a vector space of dimension \(n\), and \(W\) be a vector space of dimension \(m\).</p>
       <ol class="enumerate" style="list-style-type: none; padding-left: 0; margin-left: 0;">
-        <li>(1) Every finitely generated vector space over \(F\) is isomorphic to \(F^n\) for \(n=\dim_F(V)\).</li>
-        <li>(2) For any \(m,n \in \mathbb{Z}_{\geqslant 0}\), \(F^m \cong F^n\) if and only if \(m = n\).</li>
-        <li>(3) Two finite dimensional vector spaces \(V,V'\) are isomorphic if and only if \(\dim_F(V)=\dim_F(V')\).</li>
+        <li>(1) \(V\cong W\) if and only if \(n = m\).</li>
+        <li>(2) \(V \cong F^n\).</li>
+     <li>(2) \(F^n \cong F^m\) if and only if \(m=n\).</li>
       </ol>
     </div>
   </section>
@@ -1707,83 +1726,24 @@ This concludes the case of one element. For the general case, we set up a Zorn's
   <section id="proof-thm-12-1-12" class="callout proof" aria-labelledby="proof-thm-12-1-12-title">
     <h3 id="proof-thm-12-1-12-title">Proof of Theorem 12.1.12</h3>
     <div class="callout-body">
-      <p>
-        To show (1), let \(V\) be a finite dimensional \(F\)-vector space. Then \(F\) has a finite spanning set \(S\) and by
-        Theorem 12.1.2 there is a basis \(B\subseteq S\) for \(V\). Notice that \(B\) is necessarily finite and \(V=FB\).
-        Set \(|B|=n\) and \(B=\{b_1,\ldots,b_n\}\). By the UMP for free modules, there is a linear transformation
-        \(f\!:F^n\to V\) such that \(f(e_i)=b_i\) as well as a linear transformation \(g\!:V\to F^n\) such that
-        \(g(b_i)=e_i\). Then both \(f\circ g:V\to V\) and \(g\circ f:F^n\to F^n\) are linear transformation which agree
-        with the identity map on a basis. Hence by the uniqueness part of the UMP for free modules we have
-        \(f\circ g=\mathrm{id}_V\) and \(g\circ f=\mathrm{id}_{F^n}\). Therefore, these maps are the desired isomorphisms.
-      </p>
-
-      <p>
-        To show (2), let \(\varphi:F^m\cong F^n\) be a vector space isomorphism and let \(B\) be a basis of \(F^m\). We
-        claim that \(\varphi(B)\) is a basis for \(F^n\). Indeed, if
-      </p>
-
-      \[
-        \sum_{i=1}^mc_i\varphi(b_i)=0 \quad \textrm{then} \quad \varphi \left(\sum_{i=1}^mc_ib_i \right)=0,
-        \quad \textrm{so} \quad \sum_{i=1}^mc_ib_i=0
-      \]
-
-      <p>
-        since \(\varphi\) is injective. But \(B\) is linearly independent, so we must have \(c_i=0\) for all
-        \(1 \leqslant i \leqslant m\). If \(v\in F^n\), then since \(B\) spans \(F^m\) we have
-      </p>
-
-      \[
-        \varphi^{-1}(v)=\sum_{i=1}^mc_ib_i
-      \]
-
-      <p>
-        for some \(c_i\). Thus
-      </p>
-
-      \[
-        v=\sum_{i=1}^mc_i\varphi(b_i),
-      \]
-
-      <p>
-        which shows \(\varphi(B)\) spans \(F^n\). By the Dimension Theorem, we have
-      </p>
-
-      \[
-        \dim_F(F^n)=n=|\varphi(B)|=|B|=m.
-      \]
-
-      <p>
-        Part (3) is immediate from (1) and (2).
-      </p>
+      <p>Part (1) follows from of Corollary 12.1.9. Part (2) and (3) are special cases, in light of Example 12.1.11.</p>
+        
     </div>
   </section>
 
   <section id="rmk-12-1-13" class="callout remark" aria-labelledby="rmk-12-1-13-title">
     <h3 id="rmk-12-1-13-title">Remark 12.1.13</h3>
     <div class="callout-body">
-      <ol class="enumerate" style="list-style-type: none; padding-left: 0; margin-left: 0;">
-        <li>(1) The same proof as in part (1) of the classification of finitely generated vector spaces above shows that every finitely generated free \(R\)-module is isomorphic to \(R^n\) for some \(n \geqslant 0\).</li>
-        <li>(2) Part (2) of the classification of finitely generated vector spaces can be extended to modules over commutative rings as stated in the previous section; this is a problem in the homework.</li>
-        <li>(3) The classification of finitely generated vector spaces yields that dimension is an isomorphism invariant. Moreover, it is a complete isomorphism invariant in the sense that if two module have the same dimension, then they are isomorphic.</li>
-      </ol>
+The previous results says in particular that dimension is an isomorphism invariant for a vector space. You will show in the Homework that rank is an isomorphism invariant over commutative rings. 
     </div>
   </section>
 
-  <section id="rmk-12-1-14" class="callout remark" aria-labelledby="rmk-12-1-14-title">
-    <h3 id="rmk-12-1-14-title">Remark 12.1.14</h3>
-    <div class="callout-body">
-      <p>
-        Part (3) of the previous Theorem holds for infinite-dimensional vector spaces in the following form: two vector
-        spaces \(V\) and \(V'\) are isomorphic if and only if their dimensions are equal in the sense that there exists a
-        bijection between some basis of \(V\) and some basis of \(V'\).
-      </p>
-    </div>
-  </section>
 
-  <p>A word on infinite-dimensional vector spaces.</p>
+
+  <p>Let us consider a few infinite-dimensional vector spaces.</p>
 
   <section id="ex-12-1-15" class="callout example" aria-labelledby="ex-12-1-15-title">
-    <h3 id="ex-12-1-15-title">Example 12.1.15</h3>
+    <h3 id="ex-12-1-15-title">Example 12.1.14</h3>
     <div class="callout-body">
       <p>
         Consider the vector space \(F[x]\). This cannot be a finite dimensional vector space. For instance, if
@@ -1802,7 +1762,7 @@ This concludes the case of one element. For the general case, we set up a Zorn's
   </section>
 
   <section id="ex-12-1-16" class="callout example" aria-labelledby="ex-12-1-16-title">
-    <h3 id="ex-12-1-16-title">Example 12.1.16</h3>
+    <h3 id="ex-12-1-16-title">Example 12.1.15</h3>
     <div class="callout-body">
       <p>
         Consider the real vector space
@@ -1827,6 +1787,8 @@ This concludes the case of one element. For the general case, we set up a Zorn's
     <h3 id="ex-12-1-17-title">Example 12.1.17</h3>
     <div class="callout-body">
       <p>
+Since \(\mathbb{Q}\) is a subring of \(\mathbb{R}\), we have that \(\mathbb{R}\) is a \(\mathbb{Q\)-vector space, and likewise with \(\mathbb{C}\).
+
         One can show that \(\dim_{\mathbb{Q}}(\mathbb{R})=|\mathbb{R}|\), and \(\dim_{\mathbb{Q}}(\mathbb{C})=|\mathbb{C}| = |\mathbb{R}|\), so \(\mathbb{R}\cong \mathbb{C}\) as \(\mathbb{Q}\)-vector spaces. In particular, \((\mathbb{R},+)\cong (\mathbb{C},+)\) as groups.
       </p>
     </div>
