@@ -1,0 +1,130 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,enumerate,bbm}
+\usepackage[]{graphicx}
+\usepackage{color,subfigure}
+\definecolor{scarlet}{rgb}{0.81,0,0}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage[all]{xypic}
+\usepackage[colorlinks=true,citecolor=scarlet,linkcolor=scarlet]{hyperref}
+\usepackage{colonequals}
+
+\usepackage{fancyhdr, lastpage}
+\pagestyle{fancy}
+\fancyfoot[C]{{\thepage} of \pageref{LastPage}}
+
+
+
+\DeclareMathOperator{\mSpec}{mSpec}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Ass}{Ass}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\height}{height}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\ann}{ann}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\coker}{coker}
+%\DeclareMathOperator{\ker}{ker}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\M}{M}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\ch}{char}
+\DeclareMathOperator{\Aut}{Aut}
+
+%\DeclareMathOperator{\dim}{dim}
+
+\DeclareMathOperator{\lcm}{lcm}
+
+\def\ra{\rightarrow}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\ov}[1]{\overline{#1}}
+\newcommand{\norm}{\trianglelefteq}
+
+\def\ov#1{\overline{#1}}
+
+
+\title{}
+\date{\vspace{-0.5in}}
+
+\makeatletter
+\g@addto@macro\@floatboxreset\centering
+\makeatother
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+
+\begin{document}
+
+\thispagestyle{fancy}
+\pagestyle{fancy}
+\rhead{UNL $\mid$ Spring 2026}
+\lhead{Introduction to Modern Algebra II}
+
+\vspace{3em}
+
+\begin{center}
+	{\LARGE Problem Set 3 \\}
+	Due Thursday, February 4
+\end{center}
+
+\
+
+\noindent
+{\bf Instructions:}
+You are encouraged to work together on these problems, but each student should hand in their own final draft, written in a way that indicates their individual understanding of the solutions. Never submit something for grading that you do not completely understand. You cannot use any resources besides me, your classmates, and our course notes.
+
+
+I will post the .tex code for these problems for you to use if you wish to type your homework. If you prefer not to type, please  {\em write neatly}. As a matter of good proof writing style, please use complete sentences and correct grammar. You may use any result stated or proven in class or in a homework problem, provided you reference it appropriately by either stating the result or stating its name (e.g. the definition of ring or Lagrange's Theorem). Please do not refer to theorems by their number in the course notes, as that can change.
+
+
+\smallskip
+
+\begin{problem} Let $F$ be a field, and $V$ be a finite-dimensional $F$-vector space. Let $W$ be a subspace of $V$. Show that $W=V$ if and only if $\dim(W)=\dim(V)$.
+\end{problem}
+
+\
+
+\begin{problem}
+	Let $R$ be a commutative ring. Show that if every $R$-module is free then $R$ is a field.
+\end{problem}
+
+\
+
+
+\begin{problem}
+Prove that\footnote{Hint: Show that if $I$ is any ideal of $R$, then $R^n/IR^n \cong (R/I)^n$ as $R/I$-modules, and consider the case when $I$ is a maximal.} if $R$ is a commutative ring then $R^m \cong R^n$ as $R$-modules if and only if $m = n$.
+\end{problem}
+
+
+\
+
+\begin{problem} Let $F$ be a field, and $V$ be a finite-dimensional $F$-vector space. Let $T:V\to V$ be a linear transformation.
+\begin{enumerate}[(a)]
+\item Show that if $T^2=0$, then $\mathrm{rank}(T)\leq \frac{1}{2}\dim(V)$.
+\item Show that $\dim(\mathrm{ker}(T^2)) \leq 2 \dim(\mathrm{ker}(T))$.
+\end{enumerate}
+\end{problem}
+
+\
+
+\begin{problem} Let $F$ be a field, and $V$ and $W$ be $F$-vector spaces with $\dim(V)=n$ and $\dim(W)=m$.
+\begin{enumerate}[(a)]
+\item Let $T:V\to W$ be a linear transformation. Show that there exist bases $B$ for $V$ and $C$ for $W$ such that 
+\[ [T]_B^C = \begin{bmatrix} \mathbbm{1}_{k\times k} & {0}_{k\times (n-k)} \\ {0}_{(m-k)\times k} & {0}_{(m-k)\times(n-k)}\end{bmatrix}\]
+where $\mathbbm{1}_{k\times k}$ is a $k\times k$ identity matrix and ${0}_{i\times j}$ is an $i\times j$ matrix of zeroes.
+\item Let $T:V\to V$ be a linear transformation. Show that there exists a basis $B$ for $V$ such that
+\[ [T]_B^B = \begin{bmatrix} \mathbbm{1}_{k\times k} & {0}_{k\times (n-k)} \\ {0}_{(n-k)\times k} & {0}_{(n-k)\times(n-k)}\end{bmatrix}\]
+if and only if $T^2=T$.
+\end{enumerate}
+\end{problem}
+\end{document}
