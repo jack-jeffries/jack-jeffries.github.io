@@ -1,0 +1,152 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=.5in]{geometry}
+\usepackage{paralist,amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals}
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\solutione}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{leaf}This solution is embargoed.}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+
+\newcommand{\rsa}{\rightsquigarrow}
+
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+
+\DeclareMathOperator{\ord}{ord}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{Homomorphisms between free modules and matrices}
+	
+\begin{framed}
+\textsc{Definition:} Let $R$ be a commutative ring. Let $V$ be a free $R$-module with ordered basis ${\mathcal{B}=\{b_1,\dots,b_n\}}$ and let $W$ be a free $R$-module with ordered basis ${\mathcal{C}=\{c_1,\dots,c_m\}}$. 
+Given an \mbox{$R$-module} homomorphism $T\colon V\to W$, for each $j=1,\dots n$, write 
+\[\tag{$\clubsuit$} T(b_j) = r_{1,j} c_1 + \cdots + r_{n,j} c_n \]
+for some $r_{i,j}\in R$. The matrix
+\[ [T]_{\mathcal{B}}^{\mathcal{C}} = \begin{bmatrix}  
+r_{1,1} & r_{1,2} & \cdots & r_{1,n} \\
+r_{2,1} & r_{2,2} & \cdots & r_{2,n} \\
+\vdots & \vdots & \ddots & \vdots \\
+r_{m,1} & r_{m,2} & \cdots & r_{m,n} \end{bmatrix}\]
+is the \textbf{matrix representing $T$ in the bases $\mathcal{B}$ and $\mathcal{C}$.}
+
+\
+
+
+\textsc{Lemma:} Let $R$ be a commutative ring. Consider the standard bases $\mathcal{E}$ on $R^n$ and $\mathcal{E}'$ on $R^m$. For any linear transformation $T:R^n \to R^m$, we have
+\[ T(v) =  [T]_{\mathcal{E}}^{\mathcal{E}'} \cdot v, \quad \text{where the RHS is usual matrix-times-vector multiplication.}\]
+ \end{framed}
+
+\begin{enumerate}
+\itemA Warming up with the definition:
+\begin{enumerate}
+\itema If $R$ is a field $F$, translate everything\footnote{You can do this aloud instead of rewriting everything.} in the definition into linear algebra terms.
+\itema Use the equation ($\clubsuit$) to explain as concretely as possible what the $j$-th column of $[T]_{\mathcal{B}}^{\mathcal{C}}$ means in terms of $T$, $\mathcal{B}$, and $\mathcal{C}$.
+\itema Explain why the entries $r_{i,j}$ are well-defined.
+\itema \emph{Just using your answer for part \textbf{(b)} and not looking at the formula}, describe the dimensions of the matrix $[T]_{\mathcal{B}}^{\mathcal{C}}$ in terms of the rank of $V$ and the rank of $W$.
+\itema Let $V$ be the $\mathbb{R}$-vector space of polynomials in $\mathbb{R}[x]$ of degree at most $2$ along with the zero polynomial. The derivative map $\frac{d}{dx}$ is a linear transformation from $V$ to $V$. Choose a basis $\mathcal{B}$ for $V$ and compute the matrix $[\frac{d}{dx}]_{\mathcal{B}}^{\mathcal{B}}$.
+\itema Find another basis $\mathcal{C}$ for $V$ such that  $[\frac{d}{dx}]_{\mathcal{B}}^{\mathcal{C}} = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0\end{bmatrix}$.
+\end{enumerate}
+
+\smallskip
+
+
+\itemB Prove the Lemma above.
+\end{enumerate}
+
+\smallskip
+%
+%
+%\begin{framed}
+%\textsc{Definition:} Let $R$ be a commutative ring. Let $V$ be a free $R$-module with ordered basis ${\mathcal{B}=\{b_1,\dots,b_n\}}$. For any $v\in V$, let $[v]_{\mathcal{B}}$ denote the vector $(r_1,\dots,r_n)\in R^n$, where ${v=r_1 b_1 + \cdots + r_n b_n}$.
+%
+%\ 
+%
+%\textsc{Lemma:} Let $R$ be a commutative ring. Let $V$ be a free $R$-module with ordered basis ${\mathcal{B}=\{b_1,\dots,b_n\}}$ and let $W$ be a free $R$-module with ordered basis ${\mathcal{C}=\{c_1,\dots,c_m\}}$.  Given an \mbox{$R$-module} homomorphism $T\colon V\to W$, for any $v\in V$ we have
+%\[ [T(v)]_{\mathcal{C}} = [T]_{\mathcal{B}}^{\mathcal{C}} [v]_{\mathcal{B}}, \quad \text{where the RHS is usual matrix-times-vector multiplication.}\]
+%\end{framed}
+
+
+
+\begin{framed}
+\textsc{Proposition:} Let $R$ be a commutative ring. Let $V$ be a free $R$-module with ordered basis ${\mathcal{B}=\{b_1,\dots,b_n\}}$ and let $W$ be a free $R$-module with ordered basis ${\mathcal{C}=\{c_1,\dots,c_m\}}$. Then the map
+\[ \begin{array}{ccc} \mathrm{Hom}_R(V,W) &\longrightarrow &\mathrm{Mat}_{m\times n}(R) \\
+T &\longmapsto & [T]_{\mathcal{B}}^{\mathcal{C}}\end{array}\]
+is bijective. Moreover, this is an isomorphism of $R$-modules. 
+
+When $V=W$ and ${\mathcal{B}}={\mathcal{C}}$, the same map
+\[ \begin{array}{ccc} \mathrm{End}_R(V) &\longrightarrow &\mathrm{Mat}_{n\times n}(R) \\
+T &\longmapsto & [T]_{\mathcal{B}}^{\mathcal{B}}\end{array}\]
+is an isomorphism of rings.
+ \end{framed}
+
+
+\begin{enumerate}
+\setcounter{enumi}{2}
+
+\itemA  Use the Lemma to explain\footnote{You can use without proof that for $A\in\mathrm{Mat}_{m\times n}(R)$, the map $R^n\to R^m$ given by $v\mapsto Av$ is an $R$-module homomorphism.} why the map $T\mapsto [T]_{\mathcal{E}}^{\mathcal{E}'}$ is bijective in the setting of the Lemma.
+
+\
+
+\itemB Prove the Proposition above.
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
