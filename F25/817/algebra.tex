@@ -8382,7 +8382,7 @@ This says that any linear transformation $f\!:F^n\to F^m$ is given by multiplica
 
 \begin{theorem}
 \label{prop:hommat}
-Let $R$ be a commutative ring with $1\neq 0$. Let $V$ and $W$ be finitely generated free $R$-modules of ranks $n$ and $m$ respectively. Fixing ordered bases $B$ for $V$ and $C$ for $W$ gives an isomorphism of $R$-modules
+Let $R$ be a commutative ring. Let $V$ and $W$ be finitely generated free $R$-modules of ranks $n$ and $m$ respectively. Fixing ordered bases $B$ for $V$ and $C$ for $W$ gives an isomorphism of $R$-modules
 $$\Hom_R(V, W) \cong \M_{m,n}(R) \qquad f\mapsto [f]_B^C.$$
 If $V=W$, so that in particular $m=n$, and $B=C$, then the above map is an $R$-algebra isomorphism $\End_R(V)\cong\M_n(R)$.
 \end{theorem}
@@ -8411,6 +8411,35 @@ The isomorphism $\Hom_F(V, W) \cong \M_{m,n}(F)$ gives
 $$\dim \left(\Hom_F(V, W) \right) = \dim \left( \M_{m,n}(F) \right)=mn.\qedhere$$ 
 \end{proof}
  
+ 
+ To explain in what sense the matrix $[f]_B^C$ represents the linear transformation $f$, it is convenient to use the notion of coordinates with respect to a basis. We prepare for this with an exercise that we will reuse again later.
+ 
+ \begin{exercise} Let $R$ be a commutative ring and $V$ be a free module with a basis $B$. Let $M$ be an arbitrary $R$-module and let $\phi: V\to M$ be an $R$-module homomorphism. Then
+ \begin{enumerate}
+ \item $\phi$ is injective if and only if $\phi(B)$ is linearly independent.
+ \item $\phi$ is surjective if and only if $\phi(B)$ generates $M$.
+ \item $\phi$ is an isomorphism if and only if $\phi(B)$ is a basis for $M$.
+ \end{enumerate}
+ \end{exercise}
+ 
+ \begin{definition} Let $R$ be a commutative ring and $V$ be a free module with basis $B=\{b_1,\dots,b_n\}$. Consider the $R$-module homomorphism $\phi:V\to R^n$ with $\phi(b_i) = e_i$; there is a unique such map by the UMP for free modules, and it is an isomorphism by the previous exercise. We call $\phi(v)$ the \df{vector of $B$-coordinates} of $v$, denoted $[v]_B$.
+ \end{definition}
+ 
+\begin{remark} Note that 
+\[ [v]_B = (r_1,\dots,r_n) \Leftrightarrow v= r_1 b_1+ \cdots +r_n b_n\]
+since $\phi(r_1 b_1 + \cdots + r_n b_n) = r_1 e_1 + \cdots + r_n e_n = (r_1,\dots,r_n)$ and $\phi$ is injective.
+\end{remark}
+
+\begin{proposition}
+Let $R$ be a commutative ring. Let $V$ be a free module with ordered basis $B$ and $W$ be a free module with ordered basis $C$. Then
+\[ [T(v)]_C = [T]_B^C \cdot [v]_B\]
+for all $v\in V$.
+\end{proposition}
+\begin{proof}
+Let $v\in V$ and write $[v]_B = (r_1,\dots,r_n)$, so $v=\sum_j r_j b_j$. Write $[T]_B^C=[a_{i,j}]$. Then 
+\[ T(v) = T(\sum_j r_j b_j) = \sum_j r_j T(b_j) = \sum_j r_j (\sum_i a_{i,j} c_i) = \sum_i (\sum_j a_{i,j} r_j) c_i.\]
+Thus the $i$-th entry of $[T(v)]_C$ is $\sum_j a_{i,j} r_j$. On the other hand, multiplying out $[T]_B^C \cdot [v]_B = [a_{i,j}] (r_1,\dots,r_n)$, the $i$-th entry is also $\sum_j a_{i,j} r_j$. 
+\end{proof}
 
 
 
