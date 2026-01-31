@@ -171,6 +171,7 @@
 <ol><li><a href="#sec-12-1-heading">Classification of vector spaces and dimension</a></li>
 <li><a href="#sec-12-2-title">Linear transformations and homomorphisms between free modules</a></li>
 <li><a href="#sec-12-3-title">Change of basis</a></li>
+<li><a href="#sec-12-4-title">Determinants</a></li>
 </ol>
 
 </ol>
@@ -2068,10 +2069,10 @@ Since \(\mathbb{Q}\) is a subring of \(\mathbb{R}\), we have that \(\mathbb{R}\)
         Let \(R\) be a commutative ring with \(1\neq 0\). Let \(V\) and \(W\) be finitely generated free \(R\)-modules of ranks \(n\) and \(m\) respectively. Fixing ordered bases \(B\) for \(V\) and \(C\) for \(W\) gives an isomorphism of \(R\)-modules
       </p>
       \[
-        \mathrm{Hom}_R(V, W) \cong \mathrm{M}_{m,n}(R) \qquad f\mapsto [f]_B^C.
+        \mathrm{Hom}_R(V, W) \cong \mathrm{Mat}_{m,n}(R) \qquad f\mapsto [f]_B^C.
       \]
       <p>
-        If \(V=W\), so that in particular \(m=n\), and \(B=C\), then the above map is an \(R\)-module isomorphism \(\mathrm{End}_R(V)\cong\mathrm{M}_n(R)\), and an isomorphism of rings as well.
+        If \(V=W\), so that in particular \(m=n\), and \(B=C\), then the above map is an \(R\)-module isomorphism \(\mathrm{End}_R(V)\cong\mathrm{Mat}_n(R)\), and an isomorphism of rings as well.
       </p>
     </div>
   </section>
@@ -2080,7 +2081,7 @@ Since \(\mathbb{Q}\) is a subring of \(\mathbb{R}\), we have that \(\mathbb{R}\)
     <h3 id="proof-prop-12-2-7-title">Proof of Proposition 12.2.7</h3>
     <div class="callout-body">
       <p>
-        Let \(\varphi\!:\mathrm{Hom}_R(V, W) \to \mathrm{M}_{m,n}(R)\) be defined by \(\varphi(f)=[f]_B^C\).
+        Let \(\varphi\!:\mathrm{Hom}_R(V, W) \to \mathrm{Mat}_{m,n}(R)\) be defined by \(\varphi(f)=[f]_B^C\).
         We need to check that \(\varphi\) is a homomorphism of \(R\)-modules, which translates into \([f+g]_B^C=[f]_B^C+[g]_B^C\) and \([\lambda f]_B^C=\lambda[f]_B^C\) for any \(f,g \in \mathrm{Hom}_R(V, W)\) and \(\lambda\in R\).
         Let \(A=[f]_B^C\) and \(A'=[g]_B^C\). Then
       </p>
@@ -2117,61 +2118,151 @@ Since \(\mathbb{Q}\) is a subring of \(\mathbb{R}\), we have that \(\mathbb{R}\)
     <h3 id="proof-cor-12-2-8-title">Proof of Corollary 12.2.8</h3>
     <div class="callout-body">
       <p>
-        The isomorphism \(\mathrm{Hom}_F(V, W) \cong \mathrm{M}_{m,n}(F)\) gives
+        The isomorphism \(\mathrm{Hom}_F(V, W) \cong \mathrm{Mat}_{m,n}(F)\) gives
       </p>
       \[
-        \dim \left(\mathrm{Hom}_F(V, W) \right) = \dim \left( \mathrm{M}_{m,n}(F) \right)=mn.
+        \dim \left(\mathrm{Hom}_F(V, W) \right) = \dim \left( \mathrm{Mat}_{m,n}(F) \right)=mn.
       \]
     </div>
   </section>
+
+ To explain in what sense the matrix \([f]_B^C\) represents the linear transformation \(f\), it is convenient to use the notion of coordinates with respect to a basis. We prepare for this with an exercise that we will also reuse later.
+
+
+<section id="ex-12-2-9" class="callout exercise" aria-labelledby="ex-12-2-9-title">
+  <h3 id="ex-12-2-9-title">Exercise 12.2.9</h3>
+  <div class="callout-body">
+    <p>
+      Let \(R\) be a commutative ring and \(V\) be a free module with a basis \(B\).
+      Let \(M\) be an arbitrary \(R\)-module and let \(\phi: V\to M\) be an \(R\)-module homomorphism. Then:
+    </p>
+    <ol>
+      <li>\(\phi\) is injective if and only if \(\phi(B)\) is linearly independent.</li>
+      <li>\(\phi\) is surjective if and only if \(\phi(B)\) generates \(M\).</li>
+      <li>\(\phi\) is an isomorphism if and only if \(\phi(B)\) is a basis for \(M\).</li>
+    </ol>
+  </div>
+</section>
+
+<section id="def-12-2-10" class="callout definition" aria-labelledby="def-12-2-10-title">
+  <h3 id="def-12-2-10-title">Definition 12.2.10</h3>
+  <div class="callout-body">
+    <p>
+      Let \(R\) be a commutative ring and \(V\) be a free module with basis
+      \(B=\{b_1,\dots,b_n\}\).
+      Consider the \(R\)-module homomorphism \(\phi:V\to R^n\) with
+      \(\phi(b_i)=e_i\).
+      There is a unique such map by the UMP for free modules, and it is an
+      isomorphism by the previous exercise.
+      We call \(\phi(v)\) the <strong>vector of \(B\)-coordinates</strong> of \(v\),
+      denoted \([v]_B\).
+    </p>
+  </div>
+</section>
+
+<section id="rmk-12-2-11" class="callout remark" aria-labelledby="rmk-12-2-11-title">
+  <h3 id="rmk-12-2-11-title">Remark 12.2.11</h3>
+  <div class="callout-body">
+    <p>
+      Note that
+    </p>
+    \[
+      [v]_B = (r_1,\dots,r_n) \Longleftrightarrow
+      v = r_1 b_1 + \cdots + r_n b_n,
+    \]
+    <p>
+      since
+      \(\phi(r_1 b_1 + \cdots + r_n b_n)
+        = r_1 e_1 + \cdots + r_n e_n
+        = (r_1,\dots,r_n)\)
+      and \(\phi\) is injective.
+    </p>
+  </div>
+</section>
+
+<section id="prop-12-2-12" class="callout proposition" aria-labelledby="prop-12-2-12-title">
+  <h3 id="prop-12-2-12-title">Proposition 12.2.12</h3>
+  <div class="callout-body">
+    <p>
+      Let \(R\) be a commutative ring.
+      Let \(V\) be a free module with ordered basis \(B\) and \(W\) be a free module
+      with ordered basis \(C\).
+      Let \(f:V\to W\) be a linear transformation. Then
+    </p>
+    \[
+      [f(v)]_C = [f]_B^C \cdot [v]_B
+    \]
+    <p>
+      for all \(v\in V\).
+    </p>
+  </div>
+</section>
+
+<section id="proof-prop-12-2-12" class="callout proof" aria-labelledby="proof-prop-12-2-12-title">
+  <h3 id="proof-prop-12-2-12-title">Proof of Proposition 12.2.12</h3>
+  <div class="callout-body">
+    <p>
+      Let \(v\in V\) and write \([v]_B = (r_1,\dots,r_n)\), so
+      \(v=\sum_j r_j b_j\).
+      Write \([f]_B^C=[a_{i,j}]\).
+      Then
+    </p>
+    \[
+      f(v)
+      = f\!\left(\sum_j r_j b_j\right)
+      = \sum_j r_j f(b_j)
+      = \sum_j r_j \left(\sum_i a_{i,j} c_i\right)
+      = \sum_i \left(\sum_j a_{i,j} r_j\right) c_i.
+    \]
+    <p>
+      Thus the \(i\)-th entry of \([f(v)]_C\) is \(\sum_j a_{i,j} r_j\).
+      On the other hand, multiplying out
+      \([f]_B^C \cdot [v]_B = [a_{i,j}](r_1,\dots,r_n)\),
+      the \(i\)-th entry is also \(\sum_j a_{i,j} r_j\).
+    </p>
+  </div>
+</section>
+
 </section>
 
 
 <section id="sec-12-3" class="section" aria-labelledby="sec-12-3-title">
-  <h2 id="sec-12-3-title">12.3 Change of basis</h2>
+  <h2 id="sec-12-3-heading">12.3 Change of basis</h2>
 
   <section id="def-12-3-1" class="callout definition" aria-labelledby="def-12-3-1-title">
     <h3 id="def-12-3-1-title">Definition 12.3.1</h3>
     <div class="callout-body">
       <p>
-        Let \(V\) be a finitely generated free module over a commutative ring \(R\), and let \(B\) and \(C\) be bases of \(V\).
-        Let \(\mathrm{id}_V\) be the identity map on \(V\).
-        Then \([\mathrm{id}_V]_B^{C}\) is a matrix called the <strong>change of basis matrix</strong> from \(B\) to \(C\).
+        Let \(V\) be a finitely generated free module over a commutative ring \(R\), and let \(B\) and \(C\) be bases of \(V\). Let \(\mathrm{id}_V\) be the identity map on \(V\). Then \([\mathrm{id}_V]_B^{C}\) is a matrix called the <strong>change of basis matrix</strong> from \(B\) to \(C\).
       </p>
     </div>
   </section>
 
   <p>
-    In Proposition&nbsp;12.3.6 we will show that \([\mathrm{id}_V]_B^{C}\) is invertible with inverse
-    \(\left([\mathrm{id}_V]_B^{C}\right)^{-1}=[\mathrm{id}_V]_{C}^B\).
+    In Theorem 12.3.6 we will show that \([\mathrm{id}_V]_B^{C}\) is invertible with inverse \(\left([\mathrm{id}_V]_B^{C}\right)^{-1}=[\mathrm{id}_V]_{C}^B\).
   </p>
 
   <section id="ex-12-3-2" class="callout example" aria-labelledby="ex-12-3-2-title">
     <h3 id="ex-12-3-2-title">Example 12.3.2</h3>
     <div class="callout-body">
       <p>
-        Consider the subspace \(V = P_2\) of \(F[x]\) of all polynomials of degree up to \(2\), and the bases
-        \(B = \{1, x, x^2\}\) and \(C = \{1,x-2,(x-2)^2\}\) of \(V\).
-        We calculate the change of basis matrix. We have
+        Consider the subspace \(V = P_2\) of \(F[x]\) of all polynomials of degree up to \(2\), and the bases \(B = \{1, x, x^2\}\) and \(C = \{1,x-2,(x-2)^2\}\) of \(V\). We calculate the change of basis matrix. We have
       </p>
       \[
         \begin{aligned}
-        \mathrm{id}_V(1) &= 1, \\
-        \mathrm{id}_V(x) &= 2\cdot1+1\cdot(x-2), \\
-        \mathrm{id}_V(x^2) &= 4\cdot1 +4\cdot(x-2)+1\cdot(x-2)^2.
+        \mathrm{id}_V(1) &=1 ,\\
+        \mathrm{id}_V(x) &=2\cdot1+1\cdot(x-2), \\
+        \mathrm{id}_V(x^2) &=4\cdot1 +4\cdot(x-2)+1\cdot(x-2)^2.
         \end{aligned}
       \]
       <p>
         Thus, the change of basis matrix is given by
-      </p>
-      \[
-        [\mathrm{id}_V]_B^{C} =
-        \begin{bmatrix}
+        \([\mathrm{id}_V]_B^{C} = \begin{bmatrix}
         1 & 2 & 4\\
         0 & 1 & 4\\
         0 & 0 & 1
-        \end{bmatrix}.
-      \]
+        \end{bmatrix}.\)
+      </p>
     </div>
   </section>
 
@@ -2179,12 +2270,9 @@ Since \(\mathbb{Q}\) is a subring of \(\mathbb{R}\), we have that \(\mathbb{R}\)
     <h3 id="lem-12-3-3-title">Lemma 12.3.3</h3>
     <div class="callout-body">
       <p>
-        If \(V,W,U\) are finitely generated free \(R\)-modules with ordered bases \(B\), \(C\), and \(D\),
-        respectively, and \(f\!: V \to W\) and \(g\!: W \to U\) are \(R\)-module homomorphisms, then
+        If \(V,W,U\) are finitely generated free \(R\)-modules with ordered bases \(B\), \(C\), and \(D\), respectively, and \(f\!: V \to W\) and \(g\!: W \to U\) are \(R\)-module homomorphisms, then
+        \([g\circ f]_B^D=[g]_C^D \cdot [f]_B^C.\)
       </p>
-      \[
-        [g\circ f]_B^D=[g]_C^D \cdot [f]_B^C.
-      \]
     </div>
   </section>
 
@@ -2192,14 +2280,11 @@ Since \(\mathbb{Q}\) is a subring of \(\mathbb{R}\), we have that \(\mathbb{R}\)
     <h3 id="proof-lem-12-3-3-title">Proof of Lemma 12.3.3</h3>
     <div class="callout-body">
       <p>
-        Given \(v \in V\), we have
+        It suffices to check that \([g\circ f]_B^D \cdot p=[g]_C^D \cdot [f]_B^C \cdot p\) for any \(p\in R^n\) where \(n=\rank(V)\). (In fact, we can just take \(p=e_j\) for each \(j\), since \(Ae_j\) is the \(j\)th column of \(A\).) We can write \(p=[v]_B\) for some \(v\in V\). Then
       </p>
       \[
-        (g \circ f)(v) = g(f(v))=g([f]_B^Cv)=[g]_C^D([f]_B^Cv)=([g]_C^D[f]_B^C)v,
+        [g\circ f]_B^D [v]_B = [(g\circ f)(v)]_B = [g(f(p))]_B = [g]_C^D [f(v)]_C = [g]_C^D ([f]_B^C [v]_B) = ([g]_C^D [f]_B^C) [v]_B.
       \]
-      <p>
-        so \([g \circ f]_B^D=[g]_C^D[f]_B^C\).
-      </p>
     </div>
   </section>
 
@@ -2207,11 +2292,7 @@ Since \(\mathbb{Q}\) is a subring of \(\mathbb{R}\), we have that \(\mathbb{R}\)
     <h3 id="def-12-3-4-title">Definition 12.3.4</h3>
     <div class="callout-body">
       <p>
-        Let \(V\) be a finitely generated free module over a commutative ring \(R\).
-        Two \(R\)-module homomorphisms \(f,g: V \to V\) are <strong>similar</strong> if there is a bijective linear transformation
-        \(h: V \to V\) such that \(g = h\circ f \circ h^{-1}\).
-        Two \(n \times n\) matrices \(A\) and \(B\) with entries in \(R\) are <strong>similar</strong>
-        if there is an invertible \(n \times n\) matrix \(P\) such that \(B = PAP^{-1}\).
+        Let \(V\) be a finitely generated free module over a commutative ring \(R\). Two \(R\)-module homomorphisms \(f,g: V \to V\) are <strong>similar</strong> if there is a bijective linear transformation \(h: V \to V\) such that \(g = h\circ f \circ h^{-1}\). Two \(n \times n\) matrices \(A\) and \(B\) with entries in \(R\) are <strong>similar</strong> if there is an invertible \(n \times n\) matrix \(P\) such that \(B = PAP^{-1}\).
       </p>
     </div>
   </section>
@@ -2220,7 +2301,7 @@ Since \(\mathbb{Q}\) is a subring of \(\mathbb{R}\), we have that \(\mathbb{R}\)
     <h3 id="rmk-12-3-5-title">Remark 12.3.5</h3>
     <div class="callout-body">
       <p>
-        For elements \(A,B\in \mathrm{GL}_n(R)\), the notions of similar and conjugate are the same.
+        For elements \(A,B\in \textrm{GL}_n(R)\), the notions of similar and conjugate are the same.
       </p>
     </div>
   </section>
@@ -2229,16 +2310,13 @@ Since \(\mathbb{Q}\) is a subring of \(\mathbb{R}\), we have that \(\mathbb{R}\)
     <h3 id="thm-12-3-6-title">Theorem 12.3.6</h3>
     <div class="callout-body">
       <p>
-        Let \(V, W\) be finitely generated free modules over a commutative ring \(R\),
-        let \(B\) and \(B'\) be bases of \(V\), let \(C\) and \(C'\) be bases of \(W\),
-        and let \(f: V \to W\) be a homomorphism. Then
+        Let \(V, W\) be finitely generated free modules over a commutative ring \(R\), let \(B\) and \(B'\) be bases of \(V\), let \(C\) and \(C'\) be bases of \(W\), and let \(f: V \to W\) be a homomorphism. Then
       </p>
       \[
-        [f]_{B'}^{C'} = [\mathrm{id}_W]_C^{C'} [f]_B^C [\mathrm{id}_V]_{B'}^{B}.
+        [f]_{B'}^{C'} = [\mathrm{id}_W]_C^{C'} [f]_B^C [\mathrm{id}_V]_{B'}^{B}
       \]
       <p>
-        In particular, if \(g\!: V \to V\) is an \(R\)-module homomorphism,
-        then \([g]_B^B\) and \([g]_{B'}^{B'}\) are similar.
+        In particular, if \(g\!: V \to V\) is an \(R\)-module homomorphism, then \([g]_B^B\) and \([g]_{B'}^{B'}\) are similar.
       </p>
     </div>
   </section>
@@ -2247,27 +2325,27 @@ Since \(\mathbb{Q}\) is a subring of \(\mathbb{R}\), we have that \(\mathbb{R}\)
     <h3 id="proof-thm-12-3-6-title">Proof of Theorem 12.3.6</h3>
     <div class="callout-body">
       <p>
-        Since \(f=\mathrm{id}_W\circ f\circ \mathrm{id}_V\), by Lemma&nbsp;12.3.3 we have
+        Since \(f=\mathrm{id}_W\circ f\circ \mathrm{id}_V\), by Lemma 12.3.3 we have
       </p>
       \[
         [f]_{B'}^{C'} = [\mathrm{id}_W]_C^{C'} [f]_B^C [\mathrm{id}_V]_{B'}^{B}.
       \]
       <p>
-        Setting \(V=W\), \(B=C\), \(B'=C'\), and \(f=\mathrm{id}_V\), we obtain
+        Setting \(V=W\), \(B=C\), \(B'=C'\), and \(f=\mathrm{id}_V\) in the displayed equation we have \([\mathrm{id}_V]_{B'}^{B'} = [\mathrm{id}_V]_B^{B'} [\mathrm{id}_V]_B^B [\mathrm{id}_V]_{B'}^{B}\). Notice that \([\mathrm{id}_V]_{B}^{B} =[\mathrm{id}_V]_{B'}^{B'} =I\) is the identity matrix, so the previous formula says that
       </p>
       \[
-        I = [\mathrm{id}_V]_B^{B'} [\mathrm{id}_V]_{B'}^{B}.
+        I = [\mathrm{id}_V]_B^{B'} I [\mathrm{id}_V]_{B'}^{B}.
       \]
       <p>
-        Setting \(P=[\mathrm{id}_V]_B^{B'}\), this shows that \(P^{-1}=[\mathrm{id}_V]_{B'}^{B}\).
-        Substituting into the general formula yields
+        Setting \(P= [\mathrm{id}_V]_B^{B'} \), we notice that the previous identity gives \(P^{-1}=[\mathrm{id}_V]_{B'}^{B}\).
+      </p>
+
+      <p>
+        Now set \(V=W,B=C,B'=C'\) and \(f=g\) in the displayed equation to obtain
       </p>
       \[
-        [g]_{B'}^{B'} = P[g]_B^B P^{-1},
+        [g]_{B'}^{B'} = [\mathrm{id}_V]_B^{B'} [g]_B^B [\mathrm{id}_V]_{B'}^{B}=P[g]_B^B P^{-1}.
       \]
-      <p>
-        which proves the similarity statement.
-      </p>
     </div>
   </section>
 
@@ -2279,14 +2357,18 @@ Since \(\mathbb{Q}\) is a subring of \(\mathbb{R}\), we have that \(\mathbb{R}\)
     <h3 id="def-12-3-7-title">Definition 12.3.7</h3>
     <div class="callout-body">
       <p>
-        Let \(R\) be a commutative ring with \(1 \neq 0\), let \(M\) be a free \(R\)-module of finite rank \(n\),
-        and let \(B = \{b_1,\dots ,b_n\}\) be an ordered basis for \(M\).
-        An <strong>elementary basis change operation</strong> on the basis \(B\) is one of the following:
+        Let \(R\) be a commutative ring with \(1 \neq 0\), let \(M\) be a free \(R\)-module of finite rank \(n\), and let \(B = \{b_1,\dots ,b_n\}\) be an ordered basis for \(M\). An <strong>elementary basis change operation</strong> on the basis \(B\) is one of the following three types of operations to produce a new basis \(B'=\{b'_1,\dots,b'_n\}\):
       </p>
-      <ol>
-        <li>Replacing \(b_i\) by \(b_i + rb_j\) for some \(i \neq j\) and some \(r\in R\),</li>
-        <li>Replacing \(b_i\) by \(ub_i\) for some \(i\) and some unit \(u\in R^\times\),</li>
-        <li>Swapping the indices of \(b_i\) and \(b_j\) for some \(i \neq j\).</li>
+      <ol class="enumerate" style="margin-top:0.25rem;">
+        <li>
+          Replacing \(b_j\) by \(r b_i + b_j\) for some \(i \neq j\) and some \(r\in R\); that is,  \(b'_j = rb_i + b_j\) and \(b'_k = b_k\) for \(k\neq j\).
+        </li>
+        <li>
+          Replacing \(b_i\) by \(ub_i\) for some \(i\) and some unit \(u\) of \(R\); that is, \(b'_i=  u b_i\) and \(b'_k = b_k\) for \(k\neq i\).
+        </li>
+        <li>
+          Swapping the indices of \(b_i\) and \(b_j\) for some \(i \neq j\); that is, \(b'_i= b_j\), \(b'_j=b_i\), and \(b'_k = b_k\) for \(k\neq i,j\).
+        </li>
       </ol>
     </div>
   </section>
@@ -2295,14 +2377,16 @@ Since \(\mathbb{Q}\) is a subring of \(\mathbb{R}\), we have that \(\mathbb{R}\)
     <h3 id="def-12-3-8-title">Definition 12.3.8</h3>
     <div class="callout-body">
       <p>
-        Let \(R\) be a commutative ring with \(1 \neq 0\).
-        An <strong>elementary row operation</strong> on a matrix \(A \in \M_{m,n}(R)\) is one of the following:
+        Let \(R\) be a commutative ring with \(1 \neq 0\). An <strong>elementary column operation</strong> on a matrix \(A \in \mathrm{Mat}_{m,n}(R)\) is one of the following three types of operations:
       </p>
-      <ol>
-        <li>Adding an element of \(R\) times a row of \(A\) to a different row of \(A\),</li>
-        <li>Multiplying a row of \(A\) by a unit of \(R\),</li>
-        <li>Interchanging two rows of \(A\).</li>
+      <ol class="enumerate" style="margin-top:0.25rem;">
+        <li>Adding an element of \(R\) times a column of \(A\) to a different column of \(A\).</li>
+        <li>Multiplying a column of \(A\) by a unit of \(R\).</li>
+        <li>Interchanging two columns of \(A\).</li>
       </ol>
+      <p>
+        We define a <strong>elementary row operation</strong> analogously.
+      </p>
     </div>
   </section>
 
@@ -2310,32 +2394,392 @@ Since \(\mathbb{Q}\) is a subring of \(\mathbb{R}\), we have that \(\mathbb{R}\)
     <h3 id="def-12-3-9-title">Definition 12.3.9</h3>
     <div class="callout-body">
       <p>
-        Let \(R\) be a commutative ring with \(1 \neq 0\).
-        An <strong>elementary matrix</strong> over \(R\) is an \(n \times n\) matrix obtained from \(I_n\)
-        by applying a single elementary row operation.
+        Let \(R\) be a commutative ring with \(1 \neq 0\). An <strong>elementary matrix</strong> over \(R\) is an \(n \times n\) matrix of one of the following three forms:
       </p>
+      <ol class="enumerate" style="margin-top:0.25rem;">
+        <li>
+          For \(r \in R\) and \(1 \leqslant i,j \leqslant n\) with \(i \neq j\), let \(E_{i,j}(r)\) be the matrix with \(1\)s on the diagonal, \(r\) in the \((i,j)\) position, and \(0\) everywhere else.
+        </li>
+        <li>
+          For \(u \in R^\times\) and \(1\leqslant i \leqslant n\) let \(E_i(u)\) denote the matrix with \((i,i)\) entry \(u\), \((j,j)\) entry \(1\) for all \(j \neq i\), and \(0\) everywhere else.
+        </li>
+        <li>
+          For \(1 \leqslant i,j \leqslant n\) with \(i \neq j\), let \(E_{(i,j)}\) denote the matrix with \(1\) in the \((i,j)\) and \((j,i)\) positions and in the \((l,l)\) positions for all \(l\not \in \{i,j\}\), and \(0\) in all other entries.
+        </li>
+      </ol>
     </div>
   </section>
 
   <section id="rmk-12-3-10" class="callout remark" aria-labelledby="rmk-12-3-10-title">
     <h3 id="rmk-12-3-10-title">Remark 12.3.10</h3>
     <div class="callout-body">
-      <ul>
+      <p>
+        The elementary matrices \(E_i(u)\) and \(E_{(i,j)}\) are symmetric and the transpose of \(E_{i,j}(r)\) is \(E_{j,i}(r)\). In particular, the transpose of an elementary matrix is an elementary matrix.
+      </p>
+    </div>
+  </section>
+
+  <section id="lem-12-3-11" class="callout lemma" aria-labelledby="lem-12-3-11-title">
+    <h3 id="lem-12-3-11-title">Lemma 12.3.11</h3>
+    <div class="callout-body">
+      <p>
+        Let \(E\) be an \(n \times n\) elementary matrix.
+      </p>
+      <ol class="enumerate" style="margin-top:0.25rem;">
         <li>
-          An elementary matrix is the change of basis matrix \([\mathrm{id}_V]_{B'}^{B}\)
-          corresponding to an elementary basis change.
+          \(E\) is the change of basis matrix \([\mathrm{id}]_{B'}^B\) for the corresponding elementary basis change operation from \(B\) to \(B'\).
         </li>
         <li>
-          If \(A \in \M_{n,q}(R)\), then \(EA\) performs the corresponding elementary row operation on \(A\).
+          If \(B \in \mathrm{Mat}_{m,n}(R)\), then the result of performing the corresponding elementary column operation on \(B\) is the product matrix \(BE\).
+          Explicitly,
+          <ul class="itemize" style="margin-top:0.25rem;">
+            <li>
+              \(AE_{i,j}(r)\) is the matrix obtained from \(A\) by replacing
+              \[
+                \mathrm{col}_j(A) \quad \rightsquigarrow \quad \mathrm{col}_j(A) + r \cdot \mathrm{col}_i(A).
+              \]
+            </li>
+            <li>
+              \(AE_{i}(u)\) is the matrix obtained from \(A\) by replacing
+              \[
+                \mathrm{col}_i(A)\quad \rightsquigarrow \quad  u \cdot \mathrm{col}_i(A).
+              \]
+            </li>
+            <li>
+              \(A E_{(i,j)}\) is the matrix obtained from \(A\) by replacing
+              \[
+                \begin{aligned} &\mathrm{col}_i(A)\quad \rightsquigarrow \quad  \mathrm{col}_j(A)\\
+                 &\mathrm{col}_j(A)\quad \rightsquigarrow \quad  \mathrm{col}_i(A) \end{aligned}
+              \]
+            </li>
+          </ul>
         </li>
         <li>
-          If \(B \in \M_{m,n}(R)\), then \(BE\) performs the corresponding elementary column operation on \(B\).
+          If \(B \in \mathrm{Mat}_{n,q}(R)\), then the result of performing the corresponding elementary row operation on \(A\) is the product matrix \(E^T B\).
+          Explicitly,
+          <ul class="itemize" style="margin-top:0.25rem;">
+            <li>
+              \(E_{i,j}(r) B\) is the matrix obtained from \(B\) by replacing
+              \[
+                \mathrm{row}_i(A) \quad \rightsquigarrow \quad \mathrm{row}_i(A) + r \cdot \mathrm{row}_j(A).
+              \]
+            </li>
+            <li>
+              \(E_{i}(u) B\) is the matrix obtained from \(B\) by replacing
+              \[
+                \mathrm{row}_i(A)\quad \rightsquigarrow \quad  u \cdot \mathrm{row}_i(A).
+              \]
+            </li>
+            <li>
+              \(E_{(i,j)} B\) is the matrix obtained from \(B\) by replacing
+              \[
+                \begin{aligned} &\mathrm{row}_i(A)\quad \rightsquigarrow \quad  \mathrm{row}_j(A)\\
+                 &\mathrm{row}_j(A)\quad \rightsquigarrow \quad  \mathrm{row}_i(A) \end{aligned}
+              \]
+            </li>
+          </ul>
         </li>
-      </ul>
+      </ol>
+    </div>
+  </section>
+
+  <section id="proof-lem-12-3-11" class="callout proof" aria-labelledby="proof-lem-12-3-11-title">
+    <h3 id="proof-lem-12-3-11-title">Proof of Lemma 12.3.11</h3>
+    <div class="callout-body">
+      <ol class="enumerate" style="margin-top:0.25rem;">
+        <li>
+          By definition, the \(j\)-th column of \([\mathrm{id}]_{B'}^B\) gives the coefficients for \(b'_j\) as a linear combination of the elements of \(B\). In each case, we check that the matrix \(E\) agrees with the specified combinations in the definition of the basis operation.
+        </li>
+        <li>
+          It suffices to check this for a row vector, since the \(i\)-th row of \(BE\) can be computed as the \(i\)-th row of \(B\) multiplies by \(E\). Then one can verify this by case-by-case multiplication.
+        </li>
+        <li>
+          Similar to (2).
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="rmk-12-3-12" class="callout remark" aria-labelledby="rmk-12-3-12-title">
+    <h3 id="rmk-12-3-12-title">Remark 12.3.12</h3>
+    <div class="callout-body">
+      <p>
+        To remember the relationship between elementary matrices and elementary operations, it suffices to remember that
+      </p>
+      <ol class="enumerate" style="margin-top:0.25rem;">
+        <li>Row operations correspond to multiplication on the left and column operations correspond to multiplication on the right, and</li>
+        <li>The elementary matrix corresponding to an elementary row or column operation is the matrix that results from applying that operation to the identity matrix.</li>
+      </ol>
+      <p>
+        Indeed, (2) follows from taking \(A=I\) or \(B=I\) in the Lemma.
+      </p>
     </div>
   </section>
 </section>
 
+
+<section id="sec-12-4" class="section" aria-labelledby="sec-12-4-title">
+  <h2 id="sec-12-4-title">12.4 Determinants</h2>
+
+  <p>
+    We briefly cover some of the key facts about determinants that we will need later.
+  </p>
+
+  <section id="def-12-4-1" class="callout definition" aria-labelledby="def-12-4-1-title">
+    <h3 id="def-12-4-1-title">Definition 12.4.1</h3>
+    <div class="callout-body">
+      <p>
+        Let \(R\) be a commutative ring. We define the function
+      </p>
+      \[
+        \det: \mathrm{Mat}_{n\times n}(R) \to R
+      \]
+      <p>
+        by the rule
+      </p>
+      \[
+        \det(A) = \sum_{i\in S_n} \mathrm{sgn}(\sigma) \prod_{i=1}^n {a_{i,\sigma(i)}}
+      \]
+      <p>
+        for a matrix \(A=[a_{i,j}]\).
+        We call \(\det(A)\) the <strong>determinant</strong> of \(A\).
+      </p>
+    </div>
+  </section>
+
+  <section id="ex-12-4-2" class="callout example" aria-labelledby="ex-12-4-2-title">
+    <h3 id="ex-12-4-2-title">Example 12.4.2</h3>
+    <div class="callout-body">
+      <p>
+        If \(A= \begin{bmatrix} a_{11} & a_{12} \\ a_{21} & a_{22}\end{bmatrix}\), then \(\det(A)=a_{11} a_{22} - a_{12} a_{21}\).
+      </p>
+
+      <p>
+        If \(A\) is an upper triangular matrix, so that \(a_{ij}=0\) for \(j>i\), then there is only one nonzero term in the sum, and \(\det(A)\) is the product of the diagonal entries.
+      </p>
+    </div>
+  </section>
+
+  <section id="def-12-4-3" class="callout definition" aria-labelledby="def-12-4-3-title">
+    <h3 id="def-12-4-3-title">Definition 12.4.3</h3>
+    <div class="callout-body">
+      <p>
+        Let \(R\) be a commutative ring. Let \(\phi: \underbrace{R^n \times \cdots \times R^n}_{n-\text{times}} \to R\) be a function. We say that
+      </p>
+
+      <ol>
+        <li>
+          <p>
+            \(\phi\) is <strong>multilinear</strong> if for each \(i=1,\dots,n\) we have
+          </p>
+          \[
+            \phi( v_1,\dots,v_{i-1},  v_i + v'_i, v_{i+1},\dots, v_n) = \phi( v_1,\dots,v_{i-1},  v_i, v_{i+1},\dots, v_n) + \phi( v_1,\dots,v_{i-1},  v'_i, v_{i+1},\dots, v_n)
+          \]
+          <p>
+            and
+          </p>
+          \[
+            \phi( v_1,\dots,v_{i-1},  r v_i, v_{i+1},\dots, v_n) = \phi( v_1,\dots,v_{i-1},  v_i, v_{i+1},\dots, v_n) + r \phi( v_1,\dots,v_{i-1},  v_i, v_{i+1},\dots, v_n)
+          \]
+          <p>
+            for all \(v_1,\dots,v_n, v'_i \in R^n\) and \(r\in R\); i.e., when all but one entry is fixed, the function \(R^n \to R\) in the remaining output is an \(R\)-module homomorphism.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            \(\phi\) is <strong>alternating</strong> if \(\phi(v_1,\dots,v_n)=0\) whenever \(v_i=v_j\) for some \(i\neq j\).
+          </p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="lem-12-4-4" class="callout lemma" aria-labelledby="lem-12-4-4-title">
+    <h3 id="lem-12-4-4-title">Lemma 12.4.4</h3>
+    <div class="callout-body">
+      <p>
+        Let \(\phi: \underbrace{R^n \times \cdots \times R^n}_{n-\text{times}} \to R\) be a multilinear alternating function. Then for any \(\sigma\in S_n\) and any vectors \(v_1,\dots,v_n\in R^n\), we have
+      </p>
+      \[
+        \phi(v_{\sigma(1)}, v_{\sigma(2)},\dots,v_{\sigma(n)}) = \mathrm{sgn}(\sigma) \phi(v_1, v_2,\dots,v_n).
+      \]
+    </div>
+  </section>
+
+  <section id="proof-lem-12-4-4" class="callout proof" aria-labelledby="proof-lem-12-4-4-title">
+    <h3 id="proof-lem-12-4-4-title">Proof of Lemma 12.4.4</h3>
+    <div class="callout-body">
+      <p>
+        First, we consider the case of the transposition \((1\, 2)\). Note that
+      </p>
+      \[
+        \begin{aligned}
+        0 &= \phi(v_1+v_2, v_1+ v_2,\dots,v_n) = \phi(v_1, v_1+ v_2,\dots,v_n) + \phi(v_2, v_1+ v_2,\dots,v_n) \\
+        & = \phi(v_1, v_1,\dots,v_n) + \phi(v_2, v_1,\dots,v_n) +  \phi(v_1, v_2,\dots,v_n) + \phi(v_2, v_2,\dots,v_n) \\
+        & =   \phi(v_2, v_1,\dots,v_n) +  \phi(v_1, v_2,\dots,v_n) ,
+        \end{aligned}
+      \]
+      <p>
+        so \(\phi(v_2, v_1,\dots,v_n) =  - \phi(v_1, v_2,\dots,v_n)\). The case of an arbitrary transposition follows in the same way. For an arbitrary permutation \(\sigma\), we can write \(\sigma\) as a product of \(t\) transpositions for some \(t\). Applying the case of one transposition \(t\) times yields
+      </p>
+    </div>
+  </section>
+
+  <section id="thm-12-4-5" class="callout theorem" aria-labelledby="thm-12-4-5-title">
+    <h3 id="thm-12-4-5-title">Theorem 12.4.5</h3>
+    <div class="callout-body">
+      <p>
+        Let \(R\) be a commutative ring. Identify \(\mathrm{Mat}_{n\times n}(R)\) with \(\underbrace{R^n \times \cdots \times R^n}_{n-\text{times}}\) mapping \(A\) to the \(n\)-tuple of columns of \(A\). Then \(\det\) is the unique function \(\mathrm{Mat}_{n\times n} \to R\) that is multilinear, alternating, and satisfies \(\det(I) = 1\).
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-thm-12-4-5" class="callout proof" aria-labelledby="proof-thm-12-4-5-title">
+    <h3 id="proof-thm-12-4-5-title">Proof of Theorem 12.4.5 (Sketch)</h3>
+    <div class="callout-body">
+      <p>
+        The verification that \(\det\) has these properties is straightforward but messy. To show uniqueness, we can use multlinearity to show that the value of a function with these properties is determined by the values when each column is a standard vector \(e_i\). We can then use the alternating property and Lemma 12.4.4 to show that the value is determined by the value at the identity matrix.
+      </p>
+    </div>
+  </section>
+
+  <p>
+    Our next goal is to prove the familiar multiplicative property for determinants.
+  </p>
+
+  <section id="prop-12-4-6" class="callout proposition" aria-labelledby="prop-12-4-6-title">
+    <h3 id="prop-12-4-6-title">Proposition 12.4.6</h3>
+    <div class="callout-body">
+      <p>
+        Let \(R\) be a commutative ring. Let \(A\) be a square matrix and let \(B\) be a matrix obtained from \(A\)
+        by a single elementary column operation:
+      </p>
+      <ul>
+        <li>If the operation is of type I, \(\det(B) = \det(A)\).</li>
+        <li>If the operation is of type II, given by multiplying a column of \(A\) by a unit \(u\), then \(\det(B) = u \det(A)\).</li>
+        <li>If the operation is of type III, \(\det(B) = - \det(A)\).</li>
+      </ul>
+      <p>
+        In particular, if \(A\) is an arbitrary matrix and \(E\) is an elementary matrix, then \(\det(EA)=\det(E)\det(A)\).
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-prop-12-4-6" class="callout proof" aria-labelledby="proof-prop-12-4-6-title">
+    <h3 id="proof-prop-12-4-6-title">Proof of Proposition 12.4.6</h3>
+    <div class="callout-body">
+      <p>
+        The first case follows from multilinearity and alternating properties: For notational simplicity say \(A = (v_1, v_2, \dots)\) and
+        \(B = (v_1 + rv_2, v_2, \dots)\). Then
+      </p>
+      \[
+        \det(B) = \det(v_1, v_2, \dots) + r \det(v_2, v_2, \dots) = \det(A) + r \cdot 0 = \det(A)
+      \]
+      <p>
+        The second case is immediate from (the second part of) \(R\)-multilinearity.
+        The last case is a special case of Lemma 12.4.4.
+      </p>
+
+      <p>
+        The final claim comes from noting that \(\det(E)=1,u,-1\) in the three cases, respectively.
+      </p>
+    </div>
+  </section>
+
+  <section id="cor-12-4-7" class="callout corollary" aria-labelledby="cor-12-4-7-title">
+    <h3 id="cor-12-4-7-title">Corollary 12.4.7</h3>
+    <div class="callout-body">
+      <p>
+        For \(R = F\) a field, we have \(\det(A) \ne 0\) if and only if \(A\) is invertible.
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-cor-12-4-7" class="callout proof" aria-labelledby="proof-cor-12-4-7-title">
+    <h3 id="proof-cor-12-4-7-title">Proof of Corollary 12.4.7</h3>
+    <div class="callout-body">
+      <p>
+        If \(A\) is not invertible, then the span of the columns of \(A\) is a proper subspace of \(F^n\) and hence
+        the columns of \(A\) must be linearly dependent. Say the \(i\)-th column is a linear combination of the rest: \(v_i = \sum_{j \ne i} c_j v_j\).
+        Then
+      </p>
+      \[
+        \det(v_1, \dots, v_n) = \sum_{j \ne i} c_j \det(\text{a matrix with the \(i\)-th and \(j\)-th columns equal}) = 0.
+      \]
+      <p>
+        If \(A\) is invertible, then we can write \(A\) as a product of elementary matrices (this is a result that we stated before, but will prove soon). The result thus follows from the Proposition 12.4.6 and the fact that \(\det(I_n) = 1\).
+      </p>
+    </div>
+  </section>
+
+  <section id="thm-12-4-8" class="callout theorem" aria-labelledby="thm-12-4-8-title">
+    <h3 id="thm-12-4-8-title">Theorem 12.4.8</h3>
+    <div class="callout-body">
+      <p>
+        Let \(R\) be an integral domain. Then for any matrices \(A, B \in \mathrm{Mat}_{n \times n}(R)\) we have
+      </p>
+      \[
+        \det(AB) = \det(A) \det(B).
+      \]
+    </div>
+  </section>
+
+  <section id="proof-thm-12-4-8" class="callout proof" aria-labelledby="proof-thm-12-4-8-title">
+    <h3 id="proof-thm-12-4-8-title">Proof of Theorem 12.4.8</h3>
+    <div class="callout-body">
+      <p>
+        First we will consider the case where \(R=F\) is a field.
+      </p>
+
+      <p>
+        If \(A\) is not invertible, neither is \(AB\), since \(\mathrm{im}(AB) \subseteq \mathrm{im}(A)\),
+        and if \(B\) is not invertible, neither is is \(AB\), since \(\ker(AB) \supseteq \ker(A)\).
+        So, by the Proposition 12.4.6, if either \(A\) or \(B\) is not invertible, both sides of the equation are \(0\).
+      </p>
+
+      <p>
+        Assume now that \(A\) and \(B\) are both invertible. Then by the Proposition 12.4.6 we have
+      </p>
+      \[
+        A = E_1 \cdots E_n
+      \]
+      <p>
+        and
+      </p>
+      \[
+        B = F_1 \cdots F_m
+      \]
+      <p>
+        and hence
+      </p>
+      \[
+        AB = E_1 \cdots E_n F_1 \cdots F_m
+      \]
+      <p>
+        where the \(E_i\)'s and \(F_j\)'s are elementary matrices.
+      </p>
+
+      <p>
+        Applying Corollary 12.4.7 repeatedly gives
+      </p>
+      \[
+        \det(AB) = \det(E_1 \cdots E_n F_1 \cdots F_{m-1}) \det(F_m) = \cdots
+        = \det(E_1) \cdots \det(E_n) \det(F_1) \cdots \det(F_m)
+      \]
+      <p>
+        and similarly
+      </p>
+      \[
+        \det(A) \det(B) = \left(\det(E_1) \cdots \det(E_n)\right) \left( \det(F_1) \cdots \det(F_m)\right).
+      \]
+
+      <p>
+        Now, for an integral domain \(R\), consider its fraction field \(F\), and identify \(R\subseteq F\) as a subring. To compute \(\det(A)\), \(\det(B)\), and \(\det(AB)\) we can replace \(R\) by \(F\), and are done by the field case.
+      </p>
+    </div>
+  </section>
+</section>
 
 
 </main>

@@ -8383,19 +8383,19 @@ This says that any linear transformation $f\!:F^n\to F^m$ is given by multiplica
 \begin{theorem}
 \label{prop:hommat}
 Let $R$ be a commutative ring. Let $V$ and $W$ be finitely generated free $R$-modules of ranks $n$ and $m$ respectively. Fixing ordered bases $B$ for $V$ and $C$ for $W$ gives an isomorphism of $R$-modules
-$$\Hom_R(V, W) \cong \M_{m,n}(R) \qquad f\mapsto [f]_B^C.$$
+$$\Hom_R(V, W) \cong \mathrm{Mat}_{m,n}(R) \qquad f\mapsto [f]_B^C.$$
 If $V=W$, so that in particular $m=n$, and $B=C$, then the above map is an $R$-algebra isomorphism $\End_R(V)\cong\M_n(R)$.
 \end{theorem}
  
 \begin{proof}
-Let $\varphi\!:\Hom_R(V, W) \to \M_{m,n}(R)$ be defined by $\varphi(f)=[f]_B^C$. 
+Let $\varphi\!:\Hom_R(V, W) \to \mathrm{Mat}_{m,n}(R)$ be defined by $\varphi(f)=[f]_B^C$. 
 We need to check that $\varphi$ is a homomorphism of $R$-modules, which translates into $[f+g]_B^C=[f]_B^C+[g]_B^C$ and $[\lambda f]_B^C=\lambda[f]_B^C$ for any $f,g \in \Hom_R(V, W)$ and $\lambda\in R$. 
 Let $A=[f]_B^C$ and $A'=[g]_B^C$. Then 
 $$(f+g)(b_i)=f(b_i)+g(b_i)= \sum_j a_{j,i} c_j+ \sum_j a'_{j,i} c_j= \sum_j (a_{j,i}+a'_{i,j}) c_j$$
 gives $[f+g]_B^C=A+A'$ and
 $$(\lambda f)(b_i)=\lambda\left( \sum_j a_{j,i} c_j\right)= \sum_j (\lambda a_{j,i}) c_j$$
 gives $[\lambda f]_B^C=\lambda A$.
-We leave the proof that for $f,g\in \End_R(V)$ we have $[f\circ g]_B^B=[f]_B^B[g]_B^B$ as an exercise.
+We leave the proof that for $f,g\in \End_R(V)$ we have $[f\circ g]_B^B=[f]_B^B[g]_B^B$ as an exercise. (This also follows from a more general statement in the next section.)
 
 Finally, the argument described in \Cref{linear transf mult by matrices} also works for any ring $R$, and it can be adapted for any two chosen basis $B$ and $C$, showing that $\varphi$ is a bijection.
 \end{proof}
@@ -8407,12 +8407,12 @@ For any field $F$ and finite $F$-vector spaces $V$ and $W$ of dimension $n$ and 
 \end{corollary}
 
 \begin{proof}
-The isomorphism $\Hom_F(V, W) \cong \M_{m,n}(F)$ gives 
-$$\dim \left(\Hom_F(V, W) \right) = \dim \left( \M_{m,n}(F) \right)=mn.\qedhere$$ 
+The isomorphism $\Hom_F(V, W) \cong \mathrm{Mat}_{m,n}(F)$ gives 
+$$\dim \left(\Hom_F(V, W) \right) = \dim \left( \mathrm{Mat}_{m,n}(F) \right)=mn.\qedhere$$ 
 \end{proof}
  
  
- To explain in what sense the matrix $[f]_B^C$ represents the linear transformation $f$, it is convenient to use the notion of coordinates with respect to a basis. We prepare for this with an exercise that we will reuse again later.
+ To explain in what sense the matrix $[f]_B^C$ represents the linear transformation $f$, it is convenient to use the notion of coordinates with respect to a basis. We prepare for this with an exercise that we will also reuse later.
  
  \begin{exercise} Let $R$ be a commutative ring and $V$ be a free module with a basis $B$. Let $M$ be an arbitrary $R$-module and let $\phi: V\to M$ be an $R$-module homomorphism. Then
  \begin{enumerate}
@@ -8431,15 +8431,20 @@ since $\phi(r_1 b_1 + \cdots + r_n b_n) = r_1 e_1 + \cdots + r_n e_n = (r_1,\dot
 \end{remark}
 
 \begin{proposition}
-Let $R$ be a commutative ring. Let $V$ be a free module with ordered basis $B$ and $W$ be a free module with ordered basis $C$. Then
-\[ [T(v)]_C = [T]_B^C \cdot [v]_B\]
+Let $R$ be a commutative ring. Let $V$ be a free module with ordered basis $B$ and $W$ be a free module with ordered basis $C$. Let $f:V\to W$ be a linear transformation.
+\[ [f(v)]_C = [f]_B^C \cdot [v]_B\]
 for all $v\in V$.
 \end{proposition}
 \begin{proof}
-Let $v\in V$ and write $[v]_B = (r_1,\dots,r_n)$, so $v=\sum_j r_j b_j$. Write $[T]_B^C=[a_{i,j}]$. Then 
-\[ T(v) = T(\sum_j r_j b_j) = \sum_j r_j T(b_j) = \sum_j r_j (\sum_i a_{i,j} c_i) = \sum_i (\sum_j a_{i,j} r_j) c_i.\]
-Thus the $i$-th entry of $[T(v)]_C$ is $\sum_j a_{i,j} r_j$. On the other hand, multiplying out $[T]_B^C \cdot [v]_B = [a_{i,j}] (r_1,\dots,r_n)$, the $i$-th entry is also $\sum_j a_{i,j} r_j$. 
+Let $v\in V$ and write $[v]_B = (r_1,\dots,r_n)$, so $v=\sum_j r_j b_j$. Write $[f]_B^C=[a_{i,j}]$. Then 
+\[ f(v) = f(\sum_j r_j b_j) = \sum_j r_j f(b_j) = \sum_j r_j (\sum_i a_{i,j} c_i) = \sum_i (\sum_j a_{i,j} r_j) c_i.\]
+Thus the $i$-th entry of $[f(v)]_C$ is $\sum_j a_{i,j} r_j$. On the other hand, multiplying out $[f]_B^C \cdot [v]_B = [a_{i,j}] (r_1,\dots,r_n)$, the $i$-th entry is also $\sum_j a_{i,j} r_j$. 
 \end{proof}
+
+We will note now an important fact that we will prove later in more generality.
+
+\begin{lemma} Let $F$ be a field. Any invertible matrix over $F$ is equal to a product of elementary matrices.
+\end{lemma}
 
 
 
@@ -8450,7 +8455,7 @@ Thus the $i$-th entry of $[T(v)]_C$ is $\sum_j a_{i,j} r_j$. On the other hand, 
 Let $V$ be a finitely generated free module over a commutative ring $R$, and let $B$ and $C$ be bases of $V$. Let $\mathrm{id}_V$ be the identity map on $V$. Then $[\mathrm{id}_V]_B^{C}$ is a matrix called the \df{change of basis matrix} from $B$ to $C$.
 \end{definition}
  
-In \Cref{prop:changebase} we will show that $[\mathrm{id}_V]_B^{C}$ is invertible with inverse $\left([\mathrm{id}_V]_B^{C}\right)^{-1}=[\mathrm{id}_V]_{C}^B$.
+We will show soon that $[\mathrm{id}_V]_B^{C}$ is invertible with inverse $\left([\mathrm{id}_V]_B^{C}\right)^{-1}=[\mathrm{id}_V]_{C}^B$.
 
 \begin{example}
 Consider the subspace $V = P_2$ of $F[x]$ of all polynomials of degree up to $2$, and the bases $B = \{1, x, x^2\}$ and $C = \{1,x-2,(x-2)^2\}$ of $V$. We calculate the change of basis matrix. We have
@@ -8472,7 +8477,7 @@ $[\mathrm{id}_V]_B^{C} = \begin{bmatrix}
 
  
 \begin{lemma}\label{lem:matcompos}
- If $V,W,U$ are finitely generated free $R$-modules spaces with ordered bases $B$, $C$, and $D$, respectively, and $f\!: V \to W$ and $g\!: W \to U$ are $R$-module homomorphisms, then 
+ If $V,W,U$ are finitely generated free $R$-modules with ordered bases $B$, $C$, and $D$, respectively, and $f\!: V \to W$ and $g\!: W \to U$ are $R$-module homomorphisms, then 
  $$[g\circ f]_B^D=[g]_C^D \cdot [f]_B^C.$$
 \end{lemma}
  
@@ -8480,10 +8485,8 @@ $[\mathrm{id}_V]_B^{C} = \begin{bmatrix}
 
 
 
-\begin{proof}
-Given $v \in V$, we have
-$$(g \circ f)(v) = g(f(v))=g([f]_B^Cv)=[g]_C^D([f]_B^Cv)=([g]_C^D[f]_B^C)v,$$
-so $[g \circ f]_B^D=[g]_C^D[f]_B^C$.
+\begin{proof} It suffices to check that $[g\circ f]_B^D \cdot p=[g]_C^D \cdot [f]_B^C \cdot p$ for any $p\in R^n$ where $n=\rank(V)$. (In fact, we can just take $p=e_j$ for each $j$, since $Ae_j$ is the $j$th column of $A$.) We can write $p=[v]_B$ for some $v\in V$. Then 
+\[ [g\circ f]_B^D [v]_B = [(g\circ f)(v)]_B = [g(f(p))]_B = [g]_C^D [f(v)]_C = [g]_C^D ([f]_B^C [v]_B) = ([g]_C^D [f]_B^C) [v]_B.\]
 \end{proof} 
 
 
@@ -8521,148 +8524,224 @@ $$[g]_{B'}^{B'} = [\mathrm{id}_V]_B^{B'} [g]_B^B [\mathrm{id}_V]_{B'}^{B}=P[g]_B
 We now come to certain special changes of basis and their matrices:
 
 \begin{definition}
-Let $R$ be a commutative ring with $1 \neq 0$, let $M$ be a free $R$-module of finite rank $n$, and let $B = \{b_1,\dots ,b_n\}$ be an ordered basis for $M$. An \df{elementary basis change operation} on the basis $B$ is one of the following three types of operations: 
+Let $R$ be a commutative ring with $1 \neq 0$, let $M$ be a free $R$-module of finite rank $n$, and let $B = \{b_1,\dots ,b_n\}$ be an ordered basis for $M$. An \df{elementary basis change operation} on the basis $B$ is one of the following three types of operations to produce a new basis $B'=\{b'_1,\dots,b'_n\}$:
 \begin{enumerate}[itemsep=0mm,label=\arabic*.]
-\item Replacing $b_i$ by $b_i + rb_j$ for some $i \neq j$ and some $r\in R$,
-\item Replacing $b_i$ by $ub_i$ for some $i$ and some unit $u$ of $R$,
- \item Swapping the indices of $b_i$ and $b_j$ for some $i \neq j$.
+\item Replacing $b_j$ by $r b_i + b_j$ for some $i \neq j$ and some $r\in R$; that is,  $b'_j = rb_i + b_j$ and $b'_k = b_k$ for $k\neq j$.
+\item Replacing $b_i$ by $ub_i$ for some $i$ and some unit $u$ of $R$; that is, $b'_i=  u b_i$ and $b'_k = b_k$ for $k\neq i$.
+ \item Swapping the indices of $b_i$ and $b_j$ for some $i \neq j$; that is, $b'_i= b_j$, $b'_j=b_i$, and $b'_k = b_k$ for $k\neq i,j$.
  \end{enumerate}
  \end{definition}
  
 
 
 \begin{definition} 	
-Let $R$ be a commutative ring with $1 \neq 0$. An \df{elementary row operation} on a matrix $A \in \M_{m,n}(R)$ is one of the following three types of operations: 
+Let $R$ be a commutative ring with $1 \neq 0$. An \df{elementary column operation} on a matrix $A \in \mathrm{Mat}_{m,n}(R)$ is one of the following three types of operations: 
 \begin{enumerate}[itemsep=0mm,label=\arabic*.]
-\item Adding an element of $R$ times a row of $A$ to a different row of $A$. 
-\item Multiplying a row of $A$ by a unit of $R$.
-\item  Interchanging two rows of $A$.
+\item Adding an element of $R$ times a column of $A$ to a different column of $A$. 
+\item Multiplying a column of $A$ by a unit of $R$.
+\item  Interchanging two columns of $A$.
 \end{enumerate}
+We define a \textbf{elementary row operation} analogously.
 \end{definition}
 
 
+
 \begin{definition} 
-Let $R$ be a commutative ring with $1 \neq 0$. An \df{elementary matrix} over $R$ is an $n \times n$ matrix obtained from $I_n$ by applying a single elementary row operation:
+Let $R$ be a commutative ring with $1 \neq 0$. An \df{elementary matrix} over $R$ is an $n \times n$ matrix of one of the following three forms:
 \begin{enumerate}
-\item For $r \in R$ and $1 \leqslant i,j \leqslant n$ with $i \neq j$, let $E_{i,j}(r)$ be the matrix with $1$s on the diagonal, $r$ in the $(i,j)$ position, and $0$ everywhere else. 
+\item For $r \in R$ and $1 \leqslant i,j \leqslant n$ with $i \neq j$, let $E_{i,j}(r)$ be the matrix with $1$s on the diagonal, $r$ in the $(i,j)$ position, and $0$ everywhere else.
 \item For $u \in R^\times$ and $1\leqslant i \leqslant n$ let $E_i(u)$ denote the matrix with $(i,i)$ entry $u$, $(j,j)$ entry $1$ for all $j \neq i$, and $0$ everywhere else. 
 \item For $1 \leqslant i,j \leqslant n$ with $i \neq j$, let $E_{(i,j)}$ denote the matrix with $1$ in the $(i,j)$ and $(j,i)$ positions and in the $(l,l)$ positions for all $l\not \in \{i,j\}$, and 0 in all other entries.
 \end{enumerate}
 	\end{definition}
-
-
-
-\begin{remark} 
-Let $E$ be an $n \times n$ elementary matrix. 
-\begin{itemize}[leftmargin=10pt]
-\item $E$ is the change of basis matrix $[\mathrm{id}_V]_{B'}^{B}$, where $B$ is any basis of $V$ and $B'$ is the basis obtained from $B$ by the corresponding elementary basis change operation.
-\item If $A \in \M_{n,q}(R)$, then the product matrix $EA$ is the result of performing the corresponding elementary row operation on $A$. 
-\item If $B \in \M_{m,n}(R)$, then the product matrix $BE$ is the result of performing the corresponding elementary column operation on $B$.
-\end{itemize}
-\end{remark}
-
-
-
-\section{A warning on the differences between vector spaces and general free modules}
-
-Many of the nice theorems we showed about vector spaces, basis, and dimension do not extend well to general free modules over a commutative ring. Most importantly, \Cref{basisexist}, which says that for a vector space $V$ every linearly independent set can be extended to a basis and every set that spans $V$ contains a basis, does not hold in general, even in simple cases.
-
-\begin{example}
-	Let $R = \mathbb{Z}$ and consider the free $R$-module $R$. The set $\{ 2 \}$ is linearly independent but it is not a basis for $R$; given any other element $n \in R$, $\{ 2, n \}$ is necessarily linearly dependent, since $n \cdot 2 - 2 \cdot n = 0$. Thus we cannot extend $\{ 2 \}$ to a basis of this free module.
 	
-	Conversely the set $\{2, 3 \}$ spans the free module $R = \mathbb{Z}$, but it is not linearly independent, and the subsets $\{ 2 \}$ and $\{ 3 \}$ do not generate the entire free module $R$.
-\end{example}
+	\begin{remark}
+	The elementary matrices $E_i(u)$ and $E_{(i,j)}$ are symmetric and the transpose of $E_{i,j}(r)$ is $E_{j,i}(r)$. In particular, the transpose of an elementary matrix is an elementary matrix.
+	\end{remark}
 
 
-The failure of \Cref{basisexist} leads to the failure of other properties we might expect. For example, one can show that \Cref{basisexist} implies that if $W$ is a subspace of $V$, then $\dim(W) \leqslant \dim(V)$. But when $R$ is a general commutative ring, submodules of free modules do not have to be free, so we can't even talk about dimension; and if we count the number of generators needed, even cyclic modules might have submodules that are not cyclic.
+\begin{lemma}
+Let $E$ be an $n \times n$ elementary matrix.
+\begin{enumerate}
+\item $E$ is the change of basis matrix $[\mathrm{id}]_{B'}^B$ for the corresponding elementary basis change operation from $B$ to $B'$.
+\item If $B \in \mathrm{Mat}_{m,n}(R)$, then the result of performing the corresponding elementary column operation on $B$ is the product matrix $BE$.
+Explicitly,
 
-\begin{example}
-	Let $R$ be a ring an $I$ be an ideal that is not principal. For example, we can take $R = k[x,y]$ with $k$ a field and $I = (x,y)$. Then the $R$-module $R$ is cyclic, while the submodule $I$ needs at least $2$ generators.
-\end{example}
+\begin{itemize}
+\item $AE_{i,j}(r)$ is the matrix obtained from $A$ by replacing 
+\[ \mathrm{col}_j(A) \quad \rightsquigarrow \quad \mathrm{col}_j(A) + r \cdot \mathrm{col}_i(A).\]
+\item $AE_{i}(u)$ is the matrix obtained from $A$ by replacing 
+\[ \mathrm{col}_i(A)\quad \rightsquigarrow \quad  u \cdot \mathrm{col}_i(A).\]
+\item $A E_{(i,j)}$ is the matrix obtained from $A$ by replacing 
+\[ \begin{aligned} &\mathrm{col}_i(A)\quad \rightsquigarrow \quad  \mathrm{col}_j(A)\\
+ &\mathrm{col}_j(A)\quad \rightsquigarrow \quad  \mathrm{col}_i(A) \end{aligned}\]
+\end{itemize}
 
-Moreover, submodules of free modules are not necessarily free. First, we need the following useful definition:
+\item  If $B \in \mathrm{Mat}_{n,q}(R)$, then the result of performing the corresponding elementary row operation on $A$ is the product matrix $E^T B$. 
+Explicitly,
 
-\begin{definition}
-	Let $R$ be a commutative ring and let $M$ be an $R$-module. The \df{annihilator} of $M$ is
-	$$\ann_R(M) := \{ r \in R \mid rm = 0 \text{ for all } m \in M \}.$$
-\end{definition}
+\begin{itemize}
+\item $E_{i,j}(r) B$ is the matrix obtained from $B$ by replacing  \[ \mathrm{row}_i(A) \quad \rightsquigarrow \quad \mathrm{row}_i(A) + r \cdot \mathrm{row}_j(A).\]
 
-
-\begin{exercise}
-	Show that the annihilator of an $R$-module $M$ is an ideal of $R$.
-\end{exercise}
+\item $E_{i}(u) B$ is the matrix obtained from $B$ by replacing \[ \mathrm{row}_i(A)\quad \rightsquigarrow \quad  u \cdot \mathrm{row}_i(A).\]
+\item $E_{(i,j)} B$ is the matrix obtained from $B$ by replacing \[ \begin{aligned} &\mathrm{row}_i(A)\quad \rightsquigarrow \quad  \mathrm{row}_j(A)\\
+ &\mathrm{row}_j(A)\quad \rightsquigarrow \quad  \mathrm{row}_i(A) \end{aligned}\]
+\end{itemize}
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+\begin{enumerate}
+\item By definition, the $j$-th column of $[\mathrm{id}]_{B'}^B$ gives the coefficients for $b'_j$ as a linear combination of the elements of $B$. In each case, we check that the matrix $E$ agrees with the specified combinations in the definition of the basis operation.
+\item It suffices to check this for a row vector, since the $i$-th row of $BE$ can be computed as the $i$-th row of $B$ multiplies by $E$. Then one can verify this by case-by-case multiplication.
+\item Similar to (2).
+\end{enumerate}
+\end{proof}
 
 
 \begin{remark}
-	Note that if $F$ is a free $R$-module, then $\ann(F) = (0)$. Indeed, given a choice of basis for $F$, if $r \in \ann(F)$, then in particular $r$ must kill all the basis elements. So $rv = 0$ for any $v$ in our chosen basis, but since the basis is a linearly independent set we must have $r=0$.
+To remember the relationship between elementary matrices and elementary operations, it suffices to remember that 
+\begin{enumerate}
+\item Row operations correspond to multiplication on the left and column operations correspond to multiplication on the right, and 
+\item The elementary matrix corresponding to an elementary row or column operation is the matrix that results from applying that operation to the identity matrix.
+\end{enumerate}
+Indeed, (2) follows from taking $A=I$ or $B=I$ in the Lemma.
 \end{remark}
 
+\section{Determinants}
+
+We briefly cover some of the key facts about determinants that we will need later.
+
+\begin{definition} Let $R$ be a commutative ring. We define the function
+\[ \det: \mathrm{Mat}_{n\times n}(R) \to R\] by the rule
+\[ \det(A) = \sum_{i\in S_n} \mathrm{sgn}(\sigma) \prod_{i=1}^n {a_{i,\sigma(i)}}\]
+for a matrix $A=[a_{i,j}]$.
+We call $\det(A)$ the \textbf{determinant} of $A$.
+\end{definition}
 
 \begin{example}
-	Let $k$ be a field and $R = k[x]/(x^2)$. The submodule $I = (x)$ of the free module $R$ is not free: it is cyclic, generated by $x$, but $\ann(I) = (x)$ is nontrivial, and thus $I$ is not free.
+If $A= \begin{bmatrix} a_{11} & a_{12} \\ a_{21} & a_{22}\end{bmatrix}$, then $\det(A)=a_{11} a_{22} - a_{12} a_{21}$. 
+
+If $A$ is an upper triangular matrix, so that $a_{ij}=0$ for $j>i$, then there is only one nonzero term in the sum, and $\det(A)$ is the product of the diagonal entries.
 \end{example}
 
 
+\begin{definition} Let $R$ be a commutative ring. Let $\phi: \underbrace{R^n \times \cdots \times R^n}_{n-\text{times}} \to R$ be a function. We say that
+\begin{enumerate}
+\item  $\phi$ is \textbf{multilinear} if for each $i=1,\dots,n$ we have
+\[ \phi( v_1,\dots,v_{i-1},  v_i + v'_i, v_{i+1},\dots, v_n) = \phi( v_1,\dots,v_{i-1},  v_i, v_{i+1},\dots, v_n) + \phi( v_1,\dots,v_{i-1},  v'_i, v_{i+1},\dots, v_n)\]
+and
+\[ \phi( v_1,\dots,v_{i-1},  r v_i, v_{i+1},\dots, v_n) = \phi( v_1,\dots,v_{i-1},  v_i, v_{i+1},\dots, v_n) + r \phi( v_1,\dots,v_{i-1},  v_i, v_{i+1},\dots, v_n)\]
+for all $v_1,\dots,v_n, v'_i \in R^n$ and $r\in R$; i.e., when all but one entry is fixed, the function $R^n \to R$ in the remaining output is an $R$-module homomorphism.
+\item $\phi$ is \textbf{alternating} if $\phi(v_1,\dots,v_n)=0$ whenever $v_i=v_j$ for some $i\neq j$.
+\end{enumerate}
+\end{definition}
+
+\begin{lemma} Let $\phi: \underbrace{R^n \times \cdots \times R^n}_{n-\text{times}} \to R$ be a multilinear alternating function. Then for any $\sigma\in S_n$ and any vectors $v_1,\dots,v_n\in R^n$, we have
+\[ \phi(v_{\sigma(1)}, v_{\sigma(2)},\dots,v_{\sigma(n)}) = \mathrm{sgn}(\sigma) \phi(v_1, v_2,\dots,v_n).\]
+\end{lemma}
+\begin{proof}
+First, we consider the case of the transposition $(1\, 2)$. Note that
+\[\begin{aligned} 0 &= \phi(v_1+v_2, v_1+ v_2,\dots,v_n) = \phi(v_1, v_1+ v_2,\dots,v_n) + \phi(v_2, v_1+ v_2,\dots,v_n) \\
+& = \phi(v_1, v_1,\dots,v_n) + \phi(v_2, v_1,\dots,v_n) +  \phi(v_1, v_2,\dots,v_n) + \phi(v_2, v_2,\dots,v_n) \\&=   \phi(v_2, v_1,\dots,v_n) +  \phi(v_1, v_2,\dots,v_n) ,\end{aligned}\]
+so $ \phi(v_2, v_1,\dots,v_n) =  - \phi(v_1, v_2,\dots,v_n)$. The case of an arbitrary transposition follows in the same way. For an arbitrary permutation $\sigma$, we can write $\sigma$ as a product of transpositions, and the claim follows by a straightforward induction.
+\end{proof}
+
+
+\begin{theorem} Let $R$ be a commutative ring. Identify $\mathrm{Mat}_{n\times n}(R)$ with $\underbrace{R^n \times \cdots \times R^n}_{n-\text{times}}$ mapping $A$ to the $n$-tuple of columns of $A$. Then $\det$ is the unique function $\mathrm{Mat}_{n\times n} \to R$ that is multilinear, alternating, and satisfies $\det(I) = 1$.
+\end{theorem}
+\begin{proof}[Sketch of proof]
+The verification that $\det$ has these properties is straightforward but messy. To show uniqueness, we can use multlinearity to show that the value of a function with these properties is determined by the values when each column is a standard vector $e_i$. We can then use the alternating property and the Lemma to show that the value is determined by the value at the identity matrix.
+\end{proof}
+
+Our next goal is to prove the familiar multiplicative property for determinants. 
+
+\begin{proposition}  Let $R$ be a commutative ring. Let $A$ be a square matrix and let $B$ be a matrix obtained from $A$
+  by a single elementary column operation: 
+  \begin{itemize}
+  \item If the operation is of type I, $\det(B) = \det(A)$.
+  \item If the operation is of type II, given by multiplying a column of $A$ by a unit $u$, then $\det(B) = u \det(A)$.
+  \item If the operation is of type III, $\det(B) = - \det(A)$.
+    \end{itemize}
+    In particular, if $A$ is an arbitrary matrix and $E$ is an elementary matrix, then $\det(EA)=\det(E)\det(A)$.
+\end{proposition}
+
+\begin{proof} The first case follows from  multilinearity and alternating properties: For notational simplicity say $A = (v_1, v_2, \dots)$ and
+  $B = (v_1 + rv_2, v_2, \dots)$. Then
+  $$
+  \det(B) = \det(v_1, v_2, \dots) + r \det(v_2, v_2, \dots) = \det(A) + r \cdot 0 = \det(A)
+  $$
+
+The second case is immediate from (the second part of) $R$-multilinearity.
+The last case is a special case of Lemma. 
+
+The final claim comes from noting that $\det(E)=1,u,-1$ in the three cases, respectively.
+\end{proof}
+
+
+\begin{corollary}
+  For $R = F$ a field, we have $\det(A) \ne 0$ if and only if $A$ is invertible.
+\end{corollary}
+
+\begin{proof}
+If $A$ is not invertible, then the span of the columns of $A$ is a proper subspace of $F^n$ and hence
+the columns of $A$ must be linearly dependent. Say the $i$-th column is a linear combination of the rest: $v_i = \sum_{j \ne i} c_j v_j$.
+ Then 
+$$
+\det(v_1, \dots, v_n) = \sum_{j \ne i} c_j \det(\text{a matrix with the $i$-th and $j$-th columns equal}) = 0.
+$$
+
+If $A$ is invertible, then we can write $A$ as a product of elementary matrices (this is a result that we stated before, but will prove soon). The result thus follows from the Proposition and the fact that $\det(I_n) = 1$. 
+\end{proof}
+
+
+
+
+
+\begin{theorem} Let $R$ be an integral domain. Then for any matrices $A, B \in \mathrm{Mat}_{n \times n}(R)$ we have
+$$
+\det(AB) = \det(A) \det(B).
+$$
+\end{theorem}
+
+  \begin{proof}
+  First we will consider the case where $R=F$ is a field.
+  
+    If $A$ is not invertible, neither is $AB$, since $\mathrm{im}(AB) \subseteq \mathrm{im}(A)$, 
+and if $B$ is not invertible, neither is is $AB$, since $\ker(AB) \supseteq \ker(A)$.  
+So, by the Proposition, if either $A$ or $B$ is not invertible, both sides of the equation are $0$.
+
+Assume now that $A$ and $B$ are both invertible.  Then by the Proposition we have
+$$
+A = E_1 \cdots E_n 
+$$
+and
+$$
+B = F_1 \cdots F_m
+$$
+and hence
+$$
+AB = E_1 \cdots E_n F_1 \cdots F_m
+$$
+where the $E_i$'s and $F_j$'s are elementary matrices.
+
+Applying Corollary \ref{cor220} repeatedly gives
+$$
+\det(AB) = \det(E_1 \cdots E_n F_1 \cdots F_{m-1}) \det(F_m) = \cdots
+= \det(E_1) \cdots \det(E_n) \det(F_1) \cdots \det(F_m)
+$$
+and similarly
+$$
+\det(A) \det(B) = \left(\det(E_1) \cdots \det(E_n)\right) \left( \det(F_1) \cdots \det(F_m)\right).
+$$
+
+Now, for an integral domain $R$, consider its fraction field $F$, and identify $R\subseteq F$ as a subring. To compute $\det(A), \det(B)$, and $\det(AB)$ we can replace $R$ by $F$, and are done by the field case.
+\end{proof}
 
 
 \chapter{Finitely generated modules over PIDs}
 
 We have seen that every module over a field is free. In contrast, whenever $R$ is a commutative ring that is not a field, we can always construct modules that are not free. We will see that, however, every module is still a quotient of a free module. Describing that quotient explicitly is to give a presentation for the module, similarly to how we gave presentations for groups. We will study the particular case of finitely generated modules over PIDs in more detail.
 
-\section{Every module is a quotient of a free module}\label{section mods quotients of free mods}
-
-
-
-
-\begin{lemma}
-	Given any ring $R$ with $1 \neq 0$, any direct sum of copies of $R$ is always a free $R$-module.
-\end{lemma}
-
-\begin{proof}
-	Suppose that $F = \bigoplus_{i \in \Lambda} R$ is a direct sum of copies of $R$ indexed by some set $\Lambda$. The tuples 
-	$$e_i = (a_{j})_{j \in \Lambda} \quad \textrm{with } a_j = 0 \textrm{ for all } j \neq i \textrm{ and } a_i = 1$$
-	generate $F$, since we can write any element as 
-	$$(c_i)_{i \in \Lambda} = \sum_{i \in \Lambda} c_i e_i.$$
-	Notice that by definition $c_i \neq 0$ for only finitely many $i$, so the sum on the right has finitely many nonzero terms. Moreover, the $e_i$ are linearly independent, and thus they form a basis for $F$.
-\end{proof}
-
-
-We will show in the next chapter that every when $R$ is a field, every $R$-module is free. In contrast, we will also see that if $R$ is a commutative ring that is not a field, there always exists an $R$-module that is not free -- in fact, given a ring $R$ that is not a field, one can give a very concrete recipe for building nonfree modules.
-
-However, even though not all modules are free, what is true is that every $R$-module can be written as a quotient of a free module, as follows. Given a module $M$, first take a generating set for $M$, say $\Gamma = \{ m_i \}_{i \in \Lambda}$. Notice that a generating set always exists: for example, we can take $\Gamma = M$, though of course that is a bit of an overkill, since it's quite likely that some elements can be obtained from linear combinations of others.
-
-Next, we construct a free module on the set $\Lambda$; more precisely, we take a free module on as many generators as generators for $M$ that we picked. Now the map
-$$\xymatrix@R=0.5em{\displaystyle\bigoplus_{i \in \Lambda} R \ar[r]^-{\pi} & M \\ (r_i) \ar@{|->}[r] & \displaystyle\sum_{i \in \Lambda} r_i m_i.}$$
-Notice this map actually makes sense: the tuples $(r_i)$ have only finitely many nonzero entries, and thus $\sum_{i \in \Lambda} r_i m_i$ is a (finite) linear combination of our chosen generators. Moreover, since we chose the $m_i$ to be generators for $M$, this map $\pi$ is surjective. It is also easy to check that it is an $R$-module homomorphism: in fact, this is the $R$-module homomorphism we would get from \Cref{UMPfreemod} by setting $e_i \mapsto m_i$.
-
-
-By the \hyperref[first iso thm]{First Isomorphism Theorem},
-$$M \cong \displaystyle\bigoplus_{i \in \Lambda} R/\ker \pi.$$
-This shows the following:
-
-
-\begin{theorem}
-	Every $R$-module is a quotient of a free $R$-module.
-\end{theorem}
-
-
-Notice that the map $\pi$ we constructed above depends on a choice of generating set for $M$. Given the map $\pi$ corresponding to the set of generators $\Gamma = \{ m_i \}$, each element in $\ker (\pi)$ is a \df{relation} among the generators for $M$: the tuple $(r_i)$ is a relation for the generators $\{ m_i \}$ if
-$$\sum_{i \in \Lambda} r_i m_i = 0.$$
-A nonzero relation among the $m_i$ tells us that the set $\{ m_i \}$ is linearly dependent. Thus we see that
-\begin{center}
-	$\pi$ is injective $\iff$ $\{ m_i \}$ is linearly independent $\iff$ $\{ m_i \}$ is a basis for $M$.
-\end{center}
-
-In particular, the existence of such a map $\pi$ that is injective is equivalent to $M$ being free. Since $\pi$ is always surjective (as long as $\{ m_i \}$ forms a generating set for $M$, we can now rephrase this as
-\begin{center}
-	$\pi$ is an isomorphism $\iff$ $\{ m_i \}$ is a basis for $M$.
-\end{center}
-
-The module $M$ is free if and only if we can find a basis for $M$, thus $M$ if $M$ is free then $M$ is isomorphic to a direct sum of copies of $R$. Since we have already shown that a direct sum of copies of $R$ is free, we conclude the following:
-
-\begin{theorem}
-	An $R$-module is free if and only if it is isomorphic to a direct sum of copies of $R$.
-\end{theorem}
 
 
 
@@ -8673,13 +8752,14 @@ Writing a given $R$-module $M$ as a quotient of a free module is giving a {\bf p
 In 817, we studied presentations for groups; these consisted of a set of generators and a set (normal subgroup) of relations among these generators. Presentations are important for modules as well. In this case, the relations are encoded by a matrix, or equivalently by a homomorphism between a pair of free modules. We study below how the change of basis techniques can be applied to unravel the structure of a module starting with its presentation.
 
 
+
   
 \begin{definition} 
-Let $R$ be a commutative ring with $1 \neq 0$, let $A \in \M_{m,n}(R)$, and let $t_A\!: R^n \to R^m$ be the $R$-module homomorphism represented by $A$ with respect to the standard bases. Notice that this homomorphism is given by the rule $t_A(v)=Av$. The \df{$R$-module presented by $A$} is the $R$-module $R^m/\mathrm{im}(t_A)$.
+Let $R$ be a commutative ring with $1 \neq 0$, let $A \in \mathrm{Mat}_{m,n}(R)$, and let $t_A\!: R^n \to R^m$ be the $R$-module homomorphism represented by $A$ with respect to the standard bases. Notice that this homomorphism is given by the rule $t_A(v)=Av$. The \df{$R$-module presented by $A$} is the $R$-module $R^m/\mathrm{im}(t_A)$.
  \end{definition}
  
  
-The $R$-module $M$ presented by $A \in \M_{m,n}(R)$ has $m$ generators and $n$ relations. Each row of $A$ corresponds to a generator for $M$, while each column encodes a relation among those generators. More precisely, the relations among the $m$ generators are themselves \emph{generated} by the $n$ generators of $\mathrm{im}(t_A)$, which are the images of the standard basis of $R^n$ by $t_A$.
+The $R$-module $M$ presented by $A \in \mathrm{Mat}_{m,n}(R)$ has $m$ generators and $n$ relations. Each row of $A$ corresponds to a generator for $M$, while each column encodes a relation among those generators. More precisely, the relations among the $m$ generators are themselves \emph{generated} by the $n$ generators of $\mathrm{im}(t_A)$, which are the images of the standard basis of $R^n$ by $t_A$.
  
  
 \begin{example}
@@ -8807,7 +8887,7 @@ $M'=\mathbb{Z}^2/\mathrm{im}(t_D)\cong \mathbb{Z} \oplus \mathbb{Z}/2$.
 
 
 \begin{lemma} 
-Let $R$ be a commutative ring with $1 \neq 0$, $A \in \M_{m,n}(R)$ and $B \in M_{m',n'}(R)$ for some $m,n,m',n' \geqslant 1$. Then $A$ and $B$ present isomorphic $R$-modules if $B$ can be obtained from $A$ by any finite sequence of operations of the following form: 
+Let $R$ be a commutative ring with $1 \neq 0$, $A \in \mathrm{Mat}_{m,n}(R)$ and $B \in M_{m',n'}(R)$ for some $m,n,m',n' \geqslant 1$. Then $A$ and $B$ present isomorphic $R$-modules if $B$ can be obtained from $A$ by any finite sequence of operations of the following form: 
 \begin{enumerate}[label=(\arabic*),leftmargin=20pt]
 \item an elementary row operation, 
 \item an elementary column operation,
@@ -8870,7 +8950,17 @@ Finally, for operations (4) and (6), since the isomorphism relation is reflexive
 \end{proof}
 
  
-Which modules have finite presentations? The discussion in \Cref{section mods quotients of free mods} shows that the answer is every module. But if we want to make the presentation be finite (that is, so that the matrix describing the module has finitely many rows and columns) then we need to restrict ourselves to finitely generated modules. This in general does not suffice to guarantee that there will only be finitely many generators for the submodule of relations.
+Which modules have presentations? If we take this in a broad sense, the answer is every module.
+
+
+\begin{theorem}
+Let $R$ be a ring and $M$ be a module. Then there exists a free module $F$ and a submodule $G\subseteq F$ such that $M\cong F/G$.
+\end{theorem}
+\begin{proof}
+Let $S$ be a generating set for $M$, and let $F_R(S)$ be the free module with basis $S$. By the UMP for free modules, there is a unique homomorphism $\phi$ such that for each $s\in S$, $\phi(s) =s$. Since $S$ generates $M$, this map is surjective by an Exercise from earlier. Thus, the First Isomorphism Theorem, $M\cong F_R(S)/\ker(\phi)$.
+\end{proof} 
+
+If we want to make the presentation be finite (that is, so that the matrix describing the module has finitely many rows and columns) then we need to restrict ourselves to finitely generated modules. This in general does not suffice to guarantee that there will only be finitely many generators for the submodule of relations.
 
 It might seem like no submodule of a finitely generated module could ever fail to itself be finitely generated, but indeed this happens! 
 
@@ -8935,10 +9025,10 @@ We just showed that any finitely generated module $M$ over a PID has a finite pr
 
  
 \begin{theorem}[Smith Normal Form (SNF)]\label{Smith Normal Form}
- Let $R$ be a PID and let $A \in \M_{m,n}(R)$. Then there exist invertible matrices $P$ and $Q$ such that $M = PAQ = [a_{ij}]$ satisfies the following: all nondiagonal entries of $M$ are 0, meaning $a_{ij} = 0$ if $i \neq j$, and the diagonal entries of $M$ satisfy 
+ Let $R$ be a PID and let $A \in \mathrm{Mat}_{m,n}(R)$. Then there exist invertible matrices $P$ and $Q$ such that $M = PAQ = [a_{ij}]$ satisfies the following: all nondiagonal entries of $M$ are 0, meaning $a_{ij} = 0$ if $i \neq j$, and the diagonal entries of $M$ satisfy 
 $$a_{11} \mid a_{22} \mid a_{33} \mid \cdots.$$ 
 Moreover, the number $\ell$ of nonzero entries of $M$ is uniquely determined by $A$, and the nonzero diagonal entries $a_{11},\ldots, a_{\ell \ell}$ are unique up to multiplication by units.
-% Let $R$ be a PID and let $A \in \M_{m,n}(R)$. Then there is a sequence of elementary row and column operations that transform $A$ into a matrix $M = [a_{ij}]$ such that all nondiagonal entries of $M$ are 0 and the diagonal entries of $M$ satisfy 
+% Let $R$ be a PID and let $A \in \mathrm{Mat}_{m,n}(R)$. Then there is a sequence of elementary row and column operations that transform $A$ into a matrix $M = [a_{ij}]$ such that all nondiagonal entries of $M$ are 0 and the diagonal entries of $M$ satisfy 
 %$$a_{11} \mid a_{22} \mid a_{33} \mid \cdots.$$ 
 %Moreover, the number $\ell$ of nonzero entries of $M$ is uniquely determined by $A$, and the nonzero diagonal entries $a_{11},\ldots, a_{\ell \ell}$ are unique up to multiplication by units.
 \end{theorem}
@@ -8959,7 +9049,7 @@ To transform a matrix $A$ into its Smith Normal Form, we will use a sequence of 
 Before we prove \Cref{Smith Normal Form}, let's see how to classify modules over PIDs using the Smith Normal Form for their presentation matrix. First, we need a lemma on how to interpret the module presented by a matrix in Smith Normal Form; we leave the proof as an exercise.
  
 \begin{lemma}\label{module given by SNF}
-Let $R$ be a commutative ring with $1 \neq 0$, let $m \geqslant n$, let $A = [a_{ij}] \in \M_{m,n}(R)$ be a matrix such that all nondiagonal entries of $A$ are 0, and let $M$ be the $R$-module presented by $A$. Then $M \cong R^{m-n} \oplus R/(a_{11}) \oplus \dots \oplus R/(a_{nn})$.
+Let $R$ be a commutative ring with $1 \neq 0$, let $m \geqslant n$, let $A = [a_{ij}] \in \mathrm{Mat}_{m,n}(R)$ be a matrix such that all nondiagonal entries of $A$ are 0, and let $M$ be the $R$-module presented by $A$. Then $M \cong R^{m-n} \oplus R/(a_{11}) \oplus \dots \oplus R/(a_{nn})$.
 \end{lemma}
 
 
@@ -9115,14 +9205,14 @@ We have yet to show \Cref{Smith Normal Form}: every matrix over a PID has a Smit
 
 
 \begin{definition}
-Let $R$ be a PID and let $a_1, \ldots, a_n \in R$. The \df{greatest common divisor} or \df{gcd} of $a_1, \ldots, a_n$, denoted $\gcd(a_1, \ldots, a_n)$, is a generator for the principal ideal $(a_1, \ldots, a_n)$. Given a matrix $A \in \M_{m,n}(R)$, $\gcd(A)$ is the gcd of the entries of $A$. We adopt the convention that $\gcd(0,0)=0$ and thus if $A$ is the matrix of all zeroes, then $\gcd(A) = 0$.
+Let $R$ be a PID and let $a_1, \ldots, a_n \in R$. The \df{greatest common divisor} or \df{gcd} of $a_1, \ldots, a_n$, denoted $\gcd(a_1, \ldots, a_n)$, is a generator for the principal ideal $(a_1, \ldots, a_n)$. Given a matrix $A \in \mathrm{Mat}_{m,n}(R)$, $\gcd(A)$ is the gcd of the entries of $A$. We adopt the convention that $\gcd(0,0)=0$ and thus if $A$ is the matrix of all zeroes, then $\gcd(A) = 0$.
 \end{definition}
  
 Notice that the greatest common divisor is only defined up to multiplication by a unit. 
 
 \begin{lemma}\label{lemma gcd stays the same} 
-Let $R$ is a PID. Let $A \in \M_{m,n}(R)$ be any matrix and let $P \in \M_m(R)$ and $Q \in \M_n(R)$ be invertible matrices. Then $\gcd(A) = \gcd(PA) = \gcd(QA)$.
-In particular, if $B \in \M_{m,n}(R)$ and $B$ is obtained from $A$ by a finite sequence of elementary row and column operations, then $\gcd(A) = \gcd(B)$. 
+Let $R$ is a PID. Let $A \in \mathrm{Mat}_{m,n}(R)$ be any matrix and let $P \in \M_m(R)$ and $Q \in \M_n(R)$ be invertible matrices. Then $\gcd(A) = \gcd(PA) = \gcd(QA)$.
+In particular, if $B \in \mathrm{Mat}_{m,n}(R)$ and $B$ is obtained from $A$ by a finite sequence of elementary row and column operations, then $\gcd(A) = \gcd(B)$. 
 \end{lemma}
 
 \begin{proof}
@@ -9133,7 +9223,7 @@ We need to show that $(a_1, \ldots, a_m) = (b_1, \ldots, b_m)$. On the one hand,
 $$\begin{bmatrix} a_1 \\ \vdots \\ a_m\end{bmatrix} = P^{-1}(PA) = P^{-1} \begin{bmatrix} b_1 \\ \vdots \\ b_m\end{bmatrix}$$
 so each $a_j$ is a combination of the $b_i$, and $a_j \in (b_1, \ldots, b_m)$. We conclude that we have an equality of ideals $(a_1, \ldots, a_m) = (b_1, \ldots, b_m)$, and thus multiplying a column vector by an invertible matrix does not change the greatest common divisor of the entries.
 
-Now given $A \in \M_{m,n}(R)$, if we denote the $i$th column of $A$ by $A_i$, we have
+Now given $A \in \mathrm{Mat}_{m,n}(R)$, if we denote the $i$th column of $A$ by $A_i$, we have
 $$PA = \begin{bmatrix} PA_1 & \cdots & PA_m \end{bmatrix}.$$
 Since the gcd of each column remains the same, the gcd of all the entries does not change.
 
@@ -9147,7 +9237,7 @@ Finally, applying elementary row and column operations corresponds to multiplyin
 
 
 \begin{lemma}\label{lemma gcd move by invertible}
-	Let $R$ be a PID and $x, y \in R$. There exists an invertible $2 \times 2$ matrix $P \in \M_{2}(R)$ such that
+	Let $R$ be a PID and $x, y \in R$. There exists an invertible $2 \times 2$ matrix $P \in \mathrm{Mat}_{2}(R)$ such that
 	$$P \begin{bmatrix} x \\ y\end{bmatrix} = \begin{bmatrix} \gcd(x,y) \\ 0 \end{bmatrix}.$$
 \end{lemma}
 
@@ -9179,7 +9269,7 @@ We are now finally ready to show that every matrix over a PID can be put into Sm
 
 
 {\bf Theorem \ref{Smith Normal Form}.} (Smith Normal Form)
- Let $R$ be a PID and let $A \in \M_{m,n}(R)$. There exist invertible matrices $P$ and $Q$ such that $M = PAQ = [a_{ij}]$ satisfies the following: all nondiagonal entries of $M$ are 0, meaning $a_{ij} = 0$ if $i \neq j$, and the diagonal entries of $M$ satisfy 
+ Let $R$ be a PID and let $A \in \mathrm{Mat}_{m,n}(R)$. There exist invertible matrices $P$ and $Q$ such that $M = PAQ = [a_{ij}]$ satisfies the following: all nondiagonal entries of $M$ are 0, meaning $a_{ij} = 0$ if $i \neq j$, and the diagonal entries of $M$ satisfy 
 $$a_{11} \mid a_{22} \mid a_{33} \mid \cdots.$$ 
 Moreover, the number $\ell$ of nonzero entries of $M$ is uniquely determined by $A$, and the nonzero diagonal entries $a_{11},\ldots, a_{\ell \ell}$ are unique up to multiplication by units.
 
@@ -9376,11 +9466,11 @@ A_1 & 0 & \cdots & 0 \\
 \end{bmatrix}.$$
 \end{definition}
 
-%$A_1 \in \M_{n_1 \times n_1}(F), \ldots, A_m \in \M_{n_m \times n_m}(F)$,
+%$A_1 \in \mathrm{Mat}_{n_1 \times n_1}(F), \ldots, A_m \in \mathrm{Mat}_{n_m \times n_m}(F)$,
 
 %
 %\begin{definition}
-%Let $F$ be a field and let $A \in \M_m(F)$ and $B \in \M_n(F)$. The matrix $A \oplus B$ is the matrix $[c_{ij}] \in \M_{m+n}(F)$ defined by $c_{ij} = a_{ij}$ for all $1 \leqslant i,j \leq m, c_{ij} = b_{i-m,j-m}$ for all $m+1 \leqslant i,j \leqslant m+n$, and $c_{ij} = 0$ otherwise.
+%Let $F$ be a field and let $A \in \M_m(F)$ and $B \in \M_n(F)$. The matrix $A \oplus B$ is the matrix $[c_{ij}] \in \mathrm{Mat}_{m+n}(F)$ defined by $c_{ij} = a_{ij}$ for all $1 \leqslant i,j \leq m, c_{ij} = b_{i-m,j-m}$ for all $m+1 \leqslant i,j \leqslant m+n$, and $c_{ij} = 0$ otherwise.
 %This means that
 %$$A\oplus B := \begin{bmatrix} A & 0 \\ 0 & B\end{bmatrix}.$$
 %\end{definition}
