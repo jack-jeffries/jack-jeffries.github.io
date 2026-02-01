@@ -7323,7 +7323,7 @@ In contrast to vector spaces, for $M$ a module over a ring $R$, it can happen th
 \item\label{subring module} If $R$ is a subring of a ring $S$, then $S$ is an $R$-module with respect to the action of $R$ on $S$ by internal multiplication in $S$.
 \item If $R$ is a commutative ring with $1 \neq 0$, then $R[x_1,\ldots,x_n]$ is an $R$-module for any $n \geqslant 1$. This is a special case of \ref{subring module}.
 %\item If $R$ is a commutative ring and $G$ is a group, then $R[G]$ is an $R$-module. This is a special case of \ref{subring module}.
-\item If $R$ is a commutative ring, let $\M_n(R)$ denote the set of $n \times n$ matrices with entries in $R$. Then $\M_n(R)$ is an $R$-module for $n\geqslant 1$, with the $R$-action given by multiplying all the entries of the given matrix by the given element of $R$.
+\item If $R$ is a commutative ring, let $\mathrm{Mat}_n(R)$ denote the set of $n \times n$ matrices with entries in $R$. Then $\mathrm{Mat}_n(R)$ is an $R$-module for $n\geqslant 1$, with the $R$-action given by multiplying all the entries of the given matrix by the given element of $R$.
 \item The \df{free module} over $R$ of rank $n$ is the set
 $$R^n=\left\{\begin{bmatrix} r_1\\ \vdots\\r_n \end{bmatrix} \mid r_i\in R, 1 \leqslant i \leqslant n\right\}$$
 with componentwise addition and multiplication by elements of $R$, as follows:
@@ -8384,7 +8384,7 @@ This says that any linear transformation $f\!:F^n\to F^m$ is given by multiplica
 \label{prop:hommat}
 Let $R$ be a commutative ring. Let $V$ and $W$ be finitely generated free $R$-modules of ranks $n$ and $m$ respectively. Fixing ordered bases $B$ for $V$ and $C$ for $W$ gives an isomorphism of $R$-modules
 $$\Hom_R(V, W) \cong \mathrm{Mat}_{m,n}(R) \qquad f\mapsto [f]_B^C.$$
-If $V=W$, so that in particular $m=n$, and $B=C$, then the above map is an $R$-algebra isomorphism $\End_R(V)\cong\M_n(R)$.
+If $V=W$, so that in particular $m=n$, and $B=C$, then the above map is an $R$-algebra isomorphism $\End_R(V)\cong\mathrm{Mat}_n(R)$.
 \end{theorem}
  
 \begin{proof}
@@ -8737,6 +8737,17 @@ $$
 Now, for an integral domain $R$, consider its fraction field $F$, and identify $R\subseteq F$ as a subring. To compute $\det(A), \det(B)$, and $\det(AB)$ we can replace $R$ by $F$, and are done by the field case.
 \end{proof}
 
+Even when $A$ and $B$ aren't square, we can still say the following.
+
+\begin{proposition}
+Let $R$ be a commutative ring. Let $A\in \mathrm{Mat}_{n\times m}(R)$ and $B\in \mathrm{Mat}_{m\times n}(R)$ with $m\geq n$. For a subset $I=\{i_1,\dots,i_n\} \subseteq [m]$ with $|I|=n$, let $A_I$ denote the submatrix of $A$ with columns indexed by $I$ (in increasing order). Then \[ \det(AB) \in ( \{ \det(A_I) \ | \ I\subseteq [m] , \ |I|=n\}).\]
+\end{proposition}
+
+\begin{proof} Let $a_1,\dots,a_m$ be the columns of $A$. We can write the $j$-th column of $AB$ as
+$\sum_{i=1}^m b_{i,j} a_i$. Then, by multilinearity,
+\[\begin{aligned} \det(AB) &= \det \begin{bmatrix} \sum_{i_1=1}^m b_{i_1,1} a_{i_1} & \cdots & \sum_{i_n=1}^m b_{i_n,n} a_{i_n} \end{bmatrix} \\&= \sum_{1\leq i_1,\dots,i_n \leq m} b_{i_1,1} \cdots b_{i_n,n} \det\begin{bmatrix} a_{i_1} & \cdots & a_{i_n} \end{bmatrix}.\end{aligned}\]
+By the alternating property, we can rewrite each $\det\begin{bmatrix} a_{i_1} & \cdots & a_{i_n} \end{bmatrix}$ as either zero, or the determinant of a submatrix with columns $i_1<i_2<\dots<i_n$, up to sign. This gives $\det(AB)$ as an $R$-linear combination of the determinants $\det(A_I)$.
+\end{proof}
 
 \chapter{Finitely generated modules over PIDs}
 
@@ -9026,25 +9037,17 @@ We just showed that any finitely generated module $M$ over a PID has a finite pr
  
 \begin{theorem}[Smith Normal Form (SNF)]\label{Smith Normal Form}
  Let $R$ be a PID and let $A \in \mathrm{Mat}_{m,n}(R)$. Then there exist invertible matrices $P$ and $Q$ such that $M = PAQ = [a_{ij}]$ satisfies the following: all nondiagonal entries of $M$ are 0, meaning $a_{ij} = 0$ if $i \neq j$, and the diagonal entries of $M$ satisfy 
-$$a_{11} \mid a_{22} \mid a_{33} \mid \cdots.$$ 
-Moreover, the number $\ell$ of nonzero entries of $M$ is uniquely determined by $A$, and the nonzero diagonal entries $a_{11},\ldots, a_{\ell \ell}$ are unique up to multiplication by units.
-% Let $R$ be a PID and let $A \in \mathrm{Mat}_{m,n}(R)$. Then there is a sequence of elementary row and column operations that transform $A$ into a matrix $M = [a_{ij}]$ such that all nondiagonal entries of $M$ are 0 and the diagonal entries of $M$ satisfy 
-%$$a_{11} \mid a_{22} \mid a_{33} \mid \cdots.$$ 
-%Moreover, the number $\ell$ of nonzero entries of $M$ is uniquely determined by $A$, and the nonzero diagonal entries $a_{11},\ldots, a_{\ell \ell}$ are unique up to multiplication by units.
+$$a_{11} \mid a_{22} \mid a_{33} \mid \cdots.$$
+Moreover, the number $\ell$ of nonzero entries of $M$ is uniquely determined by $A$, and the nonzero diagonal entries $a_{11},\ldots, a_{\ell \ell}$ are unique up to associates.
+
+Furthermore, if $R$ is a Euclidean domain, then $P$ and $Q$ can be chosen to be a product of elementary matrices.
 \end{theorem}
  
-% 
-%
-%
-%\begin{example} 
-%	If $A$ is a $1 \times 2$ matrix, the existence portion of the \hyperref[Smith Normal Form]{Smith Normal Form} amounts to the Euclidean algorithm: given $(x,y)$, by subtracting a multiple of the one entry to the other in the usual back-and-forth way, we eventually arrive at $(\gcd(x,y), 0)$.  
-%\end{example}
 
-\begin{remark}
 Elementary row and column operations correspond to multiplication by elementary matrices, which are invertible, and that the composition of invertible matrices is invertible. So whenever we apply elementary row and column operations, we can translate it into multiplication by an invertible matrix on the left or the right, respectively. 
 
 To transform a matrix $A$ into its Smith Normal Form, we will use a sequence of steps that all correspond to multiplication by invertible matrices. Many of those steps will actually be elementary row and column operations, which correspond to multiplication by an elementary matrix. Elementary matrices are invertible, and a product of invertible matrices is invertible, and so any finite sequence of elementary row and column operations can be described by multiplication by an invertible matrix. However, in general not every invertible matrix can be obtained as a product of elementary matrices. In fact, there are examples of PIDs $R$ and matrices $A$ for which the Smith Normal Form cannot be obtained by simply taking a sequence of elementary row and column operations. However, it is not easy to give such an example, in part because when our PID $R$ is nice enough, the Smith Normal Form can in fact be obtained by simply taking a sequence of elementary row and column operations. This is the case for Euclidean domains: over such rings, the Euclidean Algorithm for finding the gcd of two elements works, and it's the key step we will need to find a Smith Normal Form. When $R$ is a general PID, however, we need to work a little harder.
-\end{remark}
+
 
 Before we prove \Cref{Smith Normal Form}, let's see how to classify modules over PIDs using the Smith Normal Form for their presentation matrix. First, we need a lemma on how to interpret the module presented by a matrix in Smith Normal Form; we leave the proof as an exercise.
  
@@ -9197,52 +9200,76 @@ Moreover, $r$, $p_i$, and $e_i$ are all uniquely determined by $G$.
 \end{corollary}
 
 
+\section{Proof of the Smith Normal Form Theorem}
+
 
 
 We have yet to show \Cref{Smith Normal Form}: every matrix over a PID has a Smith Normal Form. We will need a few auxiliary lemmas.
 
 
+We recall some facts about greatest common divisors. We discussed the following for two elements in 817; the generalizations to any finite set is straightforward.
+
+\begin{remark} Let $R$ be an integral domain and let $a_1, \ldots, a_n \in R$.  A \df{greatest common divisor} or \df{gcd} of $a_1, \ldots, a_n$, denoted $\gcd(a_1, \ldots, a_n)$, is an element $a\in R$ such that
+\begin{itemize}
+\item $a$ divides $a_i$ for each $i$, and
+\item if $b$ divides each $a_i$, then $b$ divides $a$.
+\end{itemize}
+If a greatest common divisor exists, then it is unique up to associates. If $R$ is a PID, then $a$ is a GCD of $a_1,\dots,a_n$ if and only if $(a)=(a_1,\dots,a_n)$.
+\end{remark}
 
 
 \begin{definition}
-Let $R$ be a PID and let $a_1, \ldots, a_n \in R$. The \df{greatest common divisor} or \df{gcd} of $a_1, \ldots, a_n$, denoted $\gcd(a_1, \ldots, a_n)$, is a generator for the principal ideal $(a_1, \ldots, a_n)$. Given a matrix $A \in \mathrm{Mat}_{m,n}(R)$, $\gcd(A)$ is the gcd of the entries of $A$. We adopt the convention that $\gcd(0,0)=0$ and thus if $A$ is the matrix of all zeroes, then $\gcd(A) = 0$.
+Let $R$ be a PID and $A \in \mathrm{Mat}_{m,n}(R)$. We define $\gcd(A)$ to be a gcd of the entries of $A$. We adopt the convention that if $A$ is the matrix of all zeroes, then $\gcd(A) = 0$.
 \end{definition}
+
  
-Notice that the greatest common divisor is only defined up to multiplication by a unit. 
-
-\begin{lemma}\label{lemma gcd stays the same} 
-Let $R$ is a PID. Let $A \in \mathrm{Mat}_{m,n}(R)$ be any matrix and let $P \in \M_m(R)$ and $Q \in \M_n(R)$ be invertible matrices. Then $\gcd(A) = \gcd(PA) = \gcd(QA)$.
-In particular, if $B \in \mathrm{Mat}_{m,n}(R)$ and $B$ is obtained from $A$ by a finite sequence of elementary row and column operations, then $\gcd(A) = \gcd(B)$. 
-\end{lemma}
-
-\begin{proof}
-First, suppose that $n=1$, meaning that $A$ is a column, say
-$$A = \begin{bmatrix} a_1 \\ \vdots \\ a_m\end{bmatrix} \textrm{ and let }
-PA = \begin{bmatrix} b_1 \\ \vdots \\ b_m \end{bmatrix}.$$
-We need to show that $(a_1, \ldots, a_m) = (b_1, \ldots, b_m)$. On the one hand, each $b_i$ is a linear combination of the $a_j$, so $(b_1, \ldots, b_m) \subseteq (a_1, \ldots, a_m)$. On the other hand, 
-$$\begin{bmatrix} a_1 \\ \vdots \\ a_m\end{bmatrix} = P^{-1}(PA) = P^{-1} \begin{bmatrix} b_1 \\ \vdots \\ b_m\end{bmatrix}$$
-so each $a_j$ is a combination of the $b_i$, and $a_j \in (b_1, \ldots, b_m)$. We conclude that we have an equality of ideals $(a_1, \ldots, a_m) = (b_1, \ldots, b_m)$, and thus multiplying a column vector by an invertible matrix does not change the greatest common divisor of the entries.
-
-Now given $A \in \mathrm{Mat}_{m,n}(R)$, if we denote the $i$th column of $A$ by $A_i$, we have
-$$PA = \begin{bmatrix} PA_1 & \cdots & PA_m \end{bmatrix}.$$
-Since the gcd of each column remains the same, the gcd of all the entries does not change.
-
-To show that $\gcd(AQ)=\gcd(A)$, note that transposing a matrix does not change its gcd nor the fact that its invertible, so we can apply what we have already shown:
-$$\gcd(AQ) = \gcd((AQ)^T) = \gcd(Q^TA^T)=\gcd(A^T) = \gcd(A).$$
-
-Finally, applying elementary row and column operations corresponds to multiplying by an elementary matrix on the left or right, and elementary matrices are invertible.
-\end{proof}
+ \begin{lemma}
+ Let $R$ be a commutative ring. Let $A \in \mathrm{Mat}_{m,n}(R)$ be any matrix and let $P \in \mathrm{Mat}_m(R)$ and $Q \in \mathrm{Mat}_n(R)$ be invertible matrices. Then for any $t\geq 0$, we have $I_t(A) = I_t(PAQ)$, where $I_t$ denotes the ideal generated by all $t\times t$ minors of a matrix.
+ 
+ In particular, $\gcd(A) = \gcd(PAQ)$.
+ \end{lemma}
+ 
+ 
+ 
+% 
+%\begin{lemma}\label{lemma gcd stays the same} 
+%Let $R$ is a PID. Let $A \in \mathrm{Mat}_{m,n}(R)$ be any matrix and let $P \in \mathrm{Mat}_m(R)$ and $Q \in \mathrm{Mat}_n(R)$ be invertible matrices. Then $\gcd(A) = \gcd(PA) = \gcd(QA)$.
+%In particular, if $B \in \mathrm{Mat}_{m,n}(R)$ and $B$ is obtained from $A$ by a finite sequence of elementary row and column operations, then $\gcd(A) = \gcd(B)$. 
+%\end{lemma}
+%
+%\begin{proof}
+%First, suppose that $n=1$, meaning that $A$ is a column, say
+%$$A = \begin{bmatrix} a_1 \\ \vdots \\ a_m\end{bmatrix} \textrm{ and let }
+%PA = \begin{bmatrix} b_1 \\ \vdots \\ b_m \end{bmatrix}.$$
+%We need to show that $(a_1, \ldots, a_m) = (b_1, \ldots, b_m)$. On the one hand, each $b_i$ is a linear combination of the $a_j$, so $(b_1, \ldots, b_m) \subseteq (a_1, \ldots, a_m)$. On the other hand, 
+%$$\begin{bmatrix} a_1 \\ \vdots \\ a_m\end{bmatrix} = P^{-1}(PA) = P^{-1} \begin{bmatrix} b_1 \\ \vdots \\ b_m\end{bmatrix}$$
+%so each $a_j$ is a combination of the $b_i$, and $a_j \in (b_1, \ldots, b_m)$. We conclude that we have an equality of ideals $(a_1, \ldots, a_m) = (b_1, \ldots, b_m)$, and thus multiplying a column vector by an invertible matrix does not change the greatest common divisor of the entries.
+%
+%Now given $A \in \mathrm{Mat}_{m,n}(R)$, if we denote the $i$th column of $A$ by $A_i$, we have
+%$$PA = \begin{bmatrix} PA_1 & \cdots & PA_m \end{bmatrix}.$$
+%Since the gcd of each column remains the same, the gcd of all the entries does not change.
+%
+%To show that $\gcd(AQ)=\gcd(A)$, note that transposing a matrix does not change its gcd nor the fact that its invertible, so we can apply what we have already shown:
+%$$\gcd(AQ) = \gcd((AQ)^T) = \gcd(Q^TA^T)=\gcd(A^T) = \gcd(A).$$
+%
+%Finally, applying elementary row and column operations corresponds to multiplying by an elementary matrix on the left or right, and elementary matrices are invertible.
+%\end{proof}
 
 
 
 
 \begin{lemma}\label{lemma gcd move by invertible}
-	Let $R$ be a PID and $x, y \in R$. There exists an invertible $2 \times 2$ matrix $P \in \mathrm{Mat}_{2}(R)$ such that
-	$$P \begin{bmatrix} x \\ y\end{bmatrix} = \begin{bmatrix} \gcd(x,y) \\ 0 \end{bmatrix}.$$
+	Let $R$ be a PID and $x, y \in R$. Let $g$ be a GCD of $x$ and $y$.
+	\begin{enumerate}
+	\item There exists an invertible $2 \times 2$ matrix $P \in \mathrm{Mat}_{2}(R)$ such that
+	$$P \begin{bmatrix} x \\ y\end{bmatrix} = \begin{bmatrix} g \\ 0 \end{bmatrix}.$$
+	\item If $R$ is a Euclidean domain, then $P$ can be chosen to be a product of elementary matrices.
+	\end{enumerate}
 \end{lemma}
 
 
 \begin{proof}
+We first prove part (1).
 	By definition of greatest common divisor, $(x,y) = (\gcd(x,y))$, so there exist $a, b \in R$ such that $ax+by = \gcd(x,y)$. Write $g := \gcd(x,y)$ and $h = \gcd(a,b)$. Then $ax+by$ is a multiple of $gh$, but since $ax+by = g$ and $R$ is a domain, we conclude that $h$ must be a unit, and $(a,b) = (h) = (1)$. In particular, we can find $c, d \in R$ such that $ad-bc = 1$. Finally, $bx+cy \in (x,y) = (g)$, so 
 	$$\begin{bmatrix} a & b \\ c & d \end{bmatrix} \begin{bmatrix} x \\ y\end{bmatrix} = \begin{bmatrix} g \\ eg \end{bmatrix}.$$
 	Now we can apply the row operation that adds $-e$ times the first row to the second row: by setting
@@ -9250,52 +9277,40 @@ Finally, applying elementary row and column operations corresponds to multiplyin
 	we get
 	$$P \begin{bmatrix} x \\ y\end{bmatrix} = \begin{bmatrix} g \\ 0 \end{bmatrix}.$$
 	Finally, one can easily check that
-	$$P^{-1} = \begin{bmatrix} d & -b \\ -c & a \end{bmatrix}  \begin{bmatrix} 1 & 0 \\ e & 1 \end{bmatrix}.\qedhere$$
+	$$P^{-1} = \begin{bmatrix} d & -b \\ -c & a \end{bmatrix}  \begin{bmatrix} 1 & 0 \\ e & 1 \end{bmatrix}.$$
+	
+	We now prove part (2). We proceed by induction on $M= \min\{N(x),N(y)\}$. If $M=0$ then either $x$ or $y$ has norm zero and hence is a unit. Swapping rows if necessary (which is an elementary operation), we can assume $x$ is a unit, and hence the GCD of $x$ and $y$. Then
+	\[  \begin{bmatrix} 1 & 0 \\ -yx^{-1} & 1 \end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix} = \begin{bmatrix} x \\ 0 \end{bmatrix}. \]
+	For the inductive step, again swapping if necessary, we can assume that $N(x)\geq N(y)$. By the division algorithm, we can write $x=qy+r$ with either $r=0$ or $N(r)<N(y)$. Note that the GCD $g$ of $x$ and $y$ is equal to the GCD of $y$ and $r$. We have
+	\[  \begin{bmatrix} 1 & -q \\ 0 & 1\end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix} = \begin{bmatrix} r \\ y \end{bmatrix}. \]
+If $r=0$ we are done; otherwise we can apply the induction hypothesis to find some product of elementary matrices $P$ such that 
+\[ P \begin{bmatrix} r \\ y \end{bmatrix} = \begin{bmatrix} g \\ 0\end{bmatrix} . \]
+Then $\begin{bmatrix} 1 & -q \\ 0 & 1\end{bmatrix}  P$ is the product we seek.
 \end{proof}
 
 
 By transposing the matrices in \Cref{lemma gcd move by invertible}, we can show that there exists an invertible $2 \times 2$ matrix $Q$ such that
-$$\begin{bmatrix} x & y\end{bmatrix} Q = \begin{bmatrix} \gcd(x,y) & 0 \end{bmatrix}.$$
+$$\begin{bmatrix} x & y\end{bmatrix} Q = \begin{bmatrix} g & 0 \end{bmatrix}.$$
 
+The following Lemma is the key step in the proof existence of the Smith Normal Form.
 
-\begin{exercise}\label{exercise minors}
-Show that for any $i \geqslant 1$ and any commutative ring $R$, the ideal generated by the $i \times i$ minors of a matrix with entries in $R$ is unchanged by row and column operations.
-\end{exercise}
-
-
-We are now finally ready to show that every matrix over a PID can be put into Smith Normal Form.
-
-\
-
-
-{\bf Theorem \ref{Smith Normal Form}.} (Smith Normal Form)
- Let $R$ be a PID and let $A \in \mathrm{Mat}_{m,n}(R)$. There exist invertible matrices $P$ and $Q$ such that $M = PAQ = [a_{ij}]$ satisfies the following: all nondiagonal entries of $M$ are 0, meaning $a_{ij} = 0$ if $i \neq j$, and the diagonal entries of $M$ satisfy 
-$$a_{11} \mid a_{22} \mid a_{33} \mid \cdots.$$ 
-Moreover, the number $\ell$ of nonzero entries of $M$ is uniquely determined by $A$, and the nonzero diagonal entries $a_{11},\ldots, a_{\ell \ell}$ are unique up to multiplication by units.
-
-
-\begin{proof}%[Proof of \Cref{Smith Normal Form}]
-Before we begin, note that we will apply a sequence of steps that correspond to multiplication by an invertible matrix on the left or right, and by \Cref{lemma gcd stays the same}, none of these steps will change the gcd.
-
-To prove existence of such a matrix $M$, we claim we can multiply $A$ on the right and the left by invertible matrices to transform it into a matrix of the form 
-$$\begin{bmatrix}
+\begin{lemma} Let $R$ be a PID and let $A \in \mathrm{Mat}_{m,n}(R)$. There exist invertible matrices $P$ and $Q$ such that $PAQ$ is of the form
+ $$\begin{bmatrix}
 g & 0 \\
 0 & B \\
 \end{bmatrix}$$
-for some $(n-1) \times (m-1)$ matrix $B$, where $g = \gcd(A)$.
-If our claim holds, then we are done: notice that $g$ divides every entry of $B$, since $\gcd(A) = \gcd(g,B)$ by \Cref{lemma gcd stays the same}, and so by applying this fact to $B$, and then over and over again, we arrive at a matrix of the desired form $M$. Notice moreover that if $C$ is an invertible matrix, then so is
-$$\begin{bmatrix}
-1 & 0 \\
-0 & C \\
-\end{bmatrix}.$$
+for some $(n-1) \times (m-1)$ matrix $B$, where $g = \gcd(A)$, and if $R$ is Euclidean, $P$ and $Q$ are products of elementary matrices.
+\end{lemma}
 
-To construct a matrix in the form above, let $a$ be the upper left $(1,1)$ entry of $A$. First, we are going to show that we can turn $A$ into a matrix of the form
+\begin{proof}
+let $a$ be the upper left $(1,1)$ entry of $A$. First, we are going to show that we can turn $A$ into a matrix of the form
 $$\begin{bmatrix}
 * & 0 \\
 0 & B \\
 \end{bmatrix}$$
-with the same gcd as $A$. If $a$ happens to divide all the entries on the first row and column, then we can simply apply elementary row and column operations to get to the desired form. Suppose there exists $b$ on the first column such that $a \nmid b$. Then we may apply an elementary row operation switching rows so that $b=a_{2,1}$ is on the first column, second row. By \Cref{lemma gcd move by invertible}, we can now find an invertible matrix $C \in \M_2(R)$ such that
-$$C \begin{bmatrix} a \\ b \end{bmatrix} = \begin{bmatrix} \gcd(a,b) \\ 0 \end{bmatrix}.$$
+with the same gcd as $A$. If $a$ happens to divide all the entries on the first row and column, then we can simply apply elementary row and column operations to get to the desired form. Suppose there exists $b$ on the first column such that $a \nmid b$. Then we may apply an elementary row operation switching rows so that $b=a_{2,1}$ is on the first column, second row. By \Cref{lemma gcd move by invertible}, we can now find an invertible matrix $C \in \mathrm{Mat}_2(R)$ such that
+$$C \begin{bmatrix} a \\ b \end{bmatrix} = \begin{bmatrix} \gcd(a,b) \\ 0 \end{bmatrix},$$
+and in the Euclidean case, this is a product of elementary matrices.
 Consider the $m\times m$ matrix
 $$P := \begin{bmatrix}	 C & 0 \\ 0 & I_{m-2} \end{bmatrix}.$$
 Note that $PA$ has $(PA)_{1,1} = \gcd(a,b)$ and $(PA)_{2,1} = 0$, so this step replaces $a$ by $\gcd(a,b)$ and $b$ by $0$. By \Cref{lemma gcd stays the same}, $\gcd(PA) = \gcd(A)$. We can keep repeating this until the top left corner entry divides every entry on the first column, and this process must stop after at most $m-1$ steps, since there are only $m$ elements on the first column.
@@ -9313,12 +9328,36 @@ $$\begin{bmatrix}
 \gcd(A) & 0 \\
 0 & B \\
 \end{bmatrix}.$$
+\end{proof}
+
+
+
+We are now finally ready to show that every matrix over a PID can be put into Smith Normal Form.
+
+
+\begin{theorem}
+ Let $R$ be a PID and let $A \in \mathrm{Mat}_{m,n}(R)$. There exist invertible matrices $P$ and $Q$ such that $M = PAQ = [a_{ij}]$ satisfies the following: all nondiagonal entries of $M$ are 0, meaning $a_{ij} = 0$ if $i \neq j$, and the diagonal entries of $M$ satisfy 
+$$a_{11} \mid a_{22} \mid a_{33} \mid \cdots.$$ 
+Moreover, the number $\ell$ of nonzero entries of $M$ is uniquely determined by $A$, and the nonzero diagonal entries $a_{11},\ldots, a_{\ell \ell}$ are unique up to multiplication by units.
+Furthermore, if $R$ is a Euclidean domain, that $P$ and $Q$ can be chosen to be products of elementary matrices.
+\end{theorem}
+
+
+\begin{proof}
+Before we begin, note that we will apply a sequence of steps that correspond to multiplication by an invertible matrix on the left or right, and by \Cref{lemma gcd stays the same}, none of these steps will change the gcd.
+
+
+If our claim holds, then existence follows: notice that $g$ divides every entry of $B$, since $\gcd(A) = \gcd(g,B)$ by \Cref{lemma gcd stays the same}, and so by applying this fact to $B$, and then over and over again, we arrive at a matrix of the desired form $M$. Notice moreover that if $C$ is an invertible matrix, then so is
+$$\begin{bmatrix}
+1 & 0 \\
+0 & C \\
+\end{bmatrix}.$$
 
 
 
 Now it remains to show the uniqueness portion of the theorem. 
 For any $i$ and any matrix $B$, let $\gcd_i(B)$ denote the gcd of all the $i \times i$ minors of $B$. 
-By \Cref{exercise minors}, $\gcd_i$ is unchanged by row and column operations, so $\gcd_i(A) = \gcd_i(M)$.
+By the Lemma, $\gcd_i$ is unchanged by multiplication by an invertible matrix, so $\gcd_i(A) = \gcd_i(M)$.
 
 For a matrix of the form $M$, the only minors that are nonzero are those where the choices of columns and rows are the same, and hence the only nonzero $i \times i$ minors of $M$ are $g_{s_1} \cdots g_{s_i}$ for some $s_1 < \cdots < s_i$. Since $g_{s_1} \cdots g_{s_i}$ divide each other, it follows that
 $${\gcd}_i(A) = {\gcd}_i(M) = g_1 \cdots g_i.$$ 
@@ -9355,7 +9394,7 @@ $$M \cong k[x]/(x-1) \oplus k[x]/(x-2).$$
  
 \section{Rational canonical form}
 
- Recall that given an $F$-vector space $V$ with $\dim_F(V)=n$ and an ordered basis $B$ for $V$ we have proven in Proposition \ref{prop:hommat} that $\End_F(V)\cong \M_n(F)$ via the maps $t\mapsto [t]_B^B$ and $A\mapsto t_A$.
+ Recall that given an $F$-vector space $V$ with $\dim_F(V)=n$ and an ordered basis $B$ for $V$ we have proven in Proposition \ref{prop:hommat} that $\End_F(V)\cong \mathrm{Mat}_n(F)$ via the maps $t\mapsto [t]_B^B$ and $A\mapsto t_A$.
 Recall also from \Cref{F[x]mod} that to give a finitely generated module over $F[x]$ is the same data as a finite dimensional vector space $V$ and a linear transformation $V \to V$:
  
 \begin{definition} 
@@ -9364,7 +9403,7 @@ $$(r_nx^n + \dots+ r_0)v = r^nt^n(v) + \dots + r_0v \quad \text{ for all } r_nx^
 \end{definition}
  
 \begin{theorem}\label{presents F[x] module}
-Let $F$ be a field, let $V$ be an $F$-vector space of dimension $n$, let $t\!: V \to V$ be a linear transformation, let $B$ be an ordered basis for $V$, and let $A = [t]_B^B$. Then the matrix $xI_n - A \in \M_n(F[x])$ presents the $F[x]$-module $V_t$.
+Let $F$ be a field, let $V$ be an $F$-vector space of dimension $n$, let $t\!: V \to V$ be a linear transformation, let $B$ be an ordered basis for $V$, and let $A = [t]_B^B$. Then the matrix $xI_n - A \in \mathrm{Mat}_n(F[x])$ presents the $F[x]$-module $V_t$.
 \end{theorem}
 
 \begin{proof} 
@@ -9411,7 +9450,7 @@ The polynomials $g_1,\ldots,g_k$ in \Cref{cor:IFendo} are called the \df{invaria
 
 \begin{example}\label{ex:SNF}
 Let 
-$$A= \begin{bmatrix} 1 & 1 \\ 0 & 1  \end{bmatrix}\in \M_2(\mathbb{Q}).$$ 
+$$A= \begin{bmatrix} 1 & 1 \\ 0 & 1  \end{bmatrix}\in \mathrm{Mat}_2(\mathbb{Q}).$$ 
 Then 
 $$xI_2-A= \begin{bmatrix} x-1 & -1 \\ 0 & x-1  \end{bmatrix}.$$
 
@@ -9470,7 +9509,7 @@ A_1 & 0 & \cdots & 0 \\
 
 %
 %\begin{definition}
-%Let $F$ be a field and let $A \in \M_m(F)$ and $B \in \M_n(F)$. The matrix $A \oplus B$ is the matrix $[c_{ij}] \in \mathrm{Mat}_{m+n}(F)$ defined by $c_{ij} = a_{ij}$ for all $1 \leqslant i,j \leq m, c_{ij} = b_{i-m,j-m}$ for all $m+1 \leqslant i,j \leqslant m+n$, and $c_{ij} = 0$ otherwise.
+%Let $F$ be a field and let $A \in \mathrm{Mat}_m(F)$ and $B \in \mathrm{Mat}_n(F)$. The matrix $A \oplus B$ is the matrix $[c_{ij}] \in \mathrm{Mat}_{m+n}(F)$ defined by $c_{ij} = a_{ij}$ for all $1 \leqslant i,j \leq m, c_{ij} = b_{i-m,j-m}$ for all $m+1 \leqslant i,j \leqslant m+n$, and $c_{ij} = 0$ otherwise.
 %This means that
 %$$A\oplus B := \begin{bmatrix} A & 0 \\ 0 & B\end{bmatrix}.$$
 %\end{definition}
@@ -9504,13 +9543,13 @@ By \Cref{cor:IFendo}, $V_t \cong \bigoplus_{i=1}^k F[x]/(g_i(x))$ for some uniqu
 \end{proof}
 
 \begin{definition}
-In the setup of \Cref{RCF}, the matrix $C(g_1) \oplus \cdots \oplus C(g_k)$ is called the \df{rational canonical form} (RCF) of the linear transformation $t$. The rational canonical form of a matrix $A\in \M_n(F)$ is defined to be the rational canonical form of the endomorphism $t_A$ represented by $A$ with respect to the standard basis of $F^n$.
+In the setup of \Cref{RCF}, the matrix $C(g_1) \oplus \cdots \oplus C(g_k)$ is called the \df{rational canonical form} (RCF) of the linear transformation $t$. The rational canonical form of a matrix $A\in \mathrm{Mat}_n(F)$ is defined to be the rational canonical form of the endomorphism $t_A$ represented by $A$ with respect to the standard basis of $F^n$.
 \end{definition}
 
 
 
 \begin{example}
-Let $ A= \begin{bmatrix} 1 & 1 \\ 0 & 1  \end{bmatrix}\in \M_2(\mathbb{Q})$ as in \Cref{ex:SNF}. 
+Let $ A= \begin{bmatrix} 1 & 1 \\ 0 & 1  \end{bmatrix}\in \mathrm{Mat}_2(\mathbb{Q})$ as in \Cref{ex:SNF}. 
 Because the only invariant factor of $xI_2 - A$ is $(x-1)^2$, the Rational Canonical Form of $t_A$ is 
 $$RCF(A)=C((x-1)^2)=C(x^2-2x+1)=\begin{bmatrix} 0 & -1 \\ 1 & 2 \end{bmatrix}.$$
 \end{example}
@@ -9525,7 +9564,7 @@ We will later show that two matrices have the same Rational Canonical Form if an
 
 
 \begin{definition}
-Let $F$ be a field and let $A \in \M_n(F)$. The \df{characteristic polynomial} of $A$ is the polynomial $c_A = \det(xI_n - A)$.
+Let $F$ be a field and let $A \in \mathrm{Mat}_n(F)$. The \df{characteristic polynomial} of $A$ is the polynomial $c_A = \det(xI_n - A)$.
 \end{definition}
 
 
@@ -9537,7 +9576,7 @@ Let $V$ be an $F$-vector space of dimension $n$, and let $t: V \to V$ be a linea
 Characteristic polynomials are well-defined.
 
 \begin{remark}\label{remark ct invariant under base change}
-	We need to check that the characteristic polynomial of a linear transformation is invariant under base changes. More precisely, we need to check that if we choose two different basis $B$ and $B'$ for $V$, then the matrices $A = [t]_{B}^B$ and $C = [t]_{B'}^{B'}$ have the same characteristic polynomial. First, recall that $A$ and $C$ are similar matrices, by \Cref{prop:changebase}, so $C = PAP^{-1}$ for some invertible matrix $P$. Moreover, diagonal matrices are in the center of $\M_n(R)$, meaning they commute with other matrices, and thus we have the following:
+	We need to check that the characteristic polynomial of a linear transformation is invariant under base changes. More precisely, we need to check that if we choose two different basis $B$ and $B'$ for $V$, then the matrices $A = [t]_{B}^B$ and $C = [t]_{B'}^{B'}$ have the same characteristic polynomial. First, recall that $A$ and $C$ are similar matrices, by \Cref{prop:changebase}, so $C = PAP^{-1}$ for some invertible matrix $P$. Moreover, diagonal matrices are in the center of $\mathrm{Mat}_n(R)$, meaning they commute with other matrices, and thus we have the following:
 	$$\begin{aligned}
 	\det(xI_n-C) & = \det(xI_n-PAP^{-1}) \\
 	& = \det(P(xI_n-A)P^{-1}) \\
@@ -9553,7 +9592,7 @@ For any matrices $A$ and $B$, $c_{A \oplus B} = c_Ac_B$.
 
 
 \begin{definition}
-Let $F$ be a field and let $A \in \M_n(F)$. The \df{minimal polynomial} of $A$, denoted $m_A$, is the unique monic polynomial that generates the principal ideal
+Let $F$ be a field and let $A \in \mathrm{Mat}_n(F)$. The \df{minimal polynomial} of $A$, denoted $m_A$, is the unique monic polynomial that generates the principal ideal
 $$\{ f(x) \in F[x] \mid f(A) = 0 \}.$$
 \end{definition}
 
@@ -9604,7 +9643,7 @@ We can now prove the famous Caley-Hamilton theorem.
 
 
 \begin{theorem}[Cayley-Hamilton]\label{cayley-hamilton}
-	Let $F$ be a field, and let $V$ be a finite dimensional $F$-vector space. If $t: V \to V$ is a linear transformation, then $m_t \mid c_t$, and hence $c_t(t) = 0$. Similarly, for any matrix $A \in \M_n(F)$ over a field $F$ we have $m_A | c_A$ and $c_A(A) = 0$.
+	Let $F$ be a field, and let $V$ be a finite dimensional $F$-vector space. If $t: V \to V$ is a linear transformation, then $m_t \mid c_t$, and hence $c_t(t) = 0$. Similarly, for any matrix $A \in \mathrm{Mat}_n(F)$ over a field $F$ we have $m_A | c_A$ and $c_A(A) = 0$.
 \end{theorem}
 
 
@@ -9637,7 +9676,7 @@ It follows that $c_t$ and $m_t$ have the same roots, not counting multiplicities
 
 
 \begin{definition}
-Let $V$ be $t\!: V \to V$ be a linear transformation over a field $F$. A nonzero element $v \in V$ satisfying $t(v) = \lambda v$ for some $\lambda \in F$ is an \df{eigenvector} of $t$ with \df{eigenvalue}~$\lambda$. Similarly, given a matrix $A \in \M_n(F)$, a nonzero $v \in F^n$ satisfying $Av = \lambda v$ for some $\lambda \in F$ is an \df{eigenvector} of $A$ with \df{eigenvalue} $\lambda$.
+Let $V$ be $t\!: V \to V$ be a linear transformation over a field $F$. A nonzero element $v \in V$ satisfying $t(v) = \lambda v$ for some $\lambda \in F$ is an \df{eigenvector} of $t$ with \df{eigenvalue}~$\lambda$. Similarly, given a matrix $A \in \mathrm{Mat}_n(F)$, a nonzero $v \in F^n$ satisfying $Av = \lambda v$ for some $\lambda \in F$ is an \df{eigenvector} of $A$ with \df{eigenvalue} $\lambda$.
 \end{definition}
 
 
@@ -9673,7 +9712,7 @@ Finally, to show that $(1) \Leftrightarrow (2)$, notice that the scalar $\lambda
 
 
 \begin{theorem}
-Let $F$ be a field and let $A, A' \in \M_n(F)$. The following are equivalent:
+Let $F$ be a field and let $A, A' \in \mathrm{Mat}_n(F)$. The following are equivalent:
 \begin{enumerate}[leftmargin=17pt,label=(\arabic*)]
 \item $A$ and $A'$ are similar matrices. 
 %\item $A$ and $A'$ represent the same linear transformation $t:F^n\to F^n$.
@@ -9758,7 +9797,7 @@ $$A =
 0 & 0 & 8 \\
 1 & 0 & -12 \\
 0 & 0 & 6 
-\end{bmatrix}=C((x-2)^3)\in \M_3(\mathbb{Q}).$$
+\end{bmatrix}=C((x-2)^3)\in \mathrm{Mat}_3(\mathbb{Q}).$$
  This means we can interpret this matrix as arising from the linear transformation $\l_x$ on 
 $$V = \mathbb{Q}[x]/(x-2)^3$$
 given by multiplication by $x$. Recall that the basis that gives the matrix $A$ is
@@ -9842,7 +9881,7 @@ Since $T = T' + r \mathrm{id}$, we conclude that $[T]_B^B$ is indeed given by th
 \begin{definition}
 Let $F$ be a field, $V$ be a finite dimensional vector space, and let $t: V \to V$ be a linear transformation satisfying the property that the characteristic polynomial $c_t$ of $t$ factors completely into linear factors and has elementary divisors $(x - r_1)^{e_1},\ldots,(x - r_s)^{e_s}$. The matrix $J_{e_1}(r_1) \oplus \dots \oplus J_{e_s}(r_s)$ is a \df{Jordan canonical form} (JCF) of $t$. 
 
-A \df{Jordan canonical form} for $A \in \M_n(F)$ is a Jordan canonical form for the linear transformation $t_A\!: F^n \to F^n$ such that $A = [t]_E^E$ in the standard basis $E$ of $F^n$.
+A \df{Jordan canonical form} for $A \in \mathrm{Mat}_n(F)$ is a Jordan canonical form for the linear transformation $t_A\!: F^n \to F^n$ such that $A = [t]_E^E$ in the standard basis $E$ of $F^n$.
 \end{definition}
 
 
@@ -9859,12 +9898,12 @@ w & 0 \\
 0 & \overline{w} \\
 \end{bmatrix}.$$ 
 The latter matrix is the JCF of $A$, and in this case the JCF is a diagonal matrix.
-Notice that if we consider $A\in \M_2(\mathbb{R})$ then the characteristic polynomials fails to factor into linear factors. Hence $A\in \M_2(\mathbb{R})$ does not have a JCF.
+Notice that if we consider $A\in \mathrm{Mat}_2(\mathbb{R})$ then the characteristic polynomials fails to factor into linear factors. Hence $A\in \mathrm{Mat}_2(\mathbb{R})$ does not have a JCF.
 \end{example}
 
 
 \begin{definition} 
-Let $F$ be a field, let $V$ be a finite dimensional vector space, and let $t: V \to V$ be a linear transformation. Then $t$ is \df{diagonalizable} if there is a basis $B$ for $V$ such that the matrix $[t]_B^B$ is a diagonal matrix.  Let $A \in \M_n(F)$. Then $A$ is \df{diagonalizable} if $A$ is similar to a diagonal matrix.
+Let $F$ be a field, let $V$ be a finite dimensional vector space, and let $t: V \to V$ be a linear transformation. Then $t$ is \df{diagonalizable} if there is a basis $B$ for $V$ such that the matrix $[t]_B^B$ is a diagonal matrix.  Let $A \in \mathrm{Mat}_n(F)$. Then $A$ is \df{diagonalizable} if $A$ is similar to a diagonal matrix.
 \end{definition}
 
 
