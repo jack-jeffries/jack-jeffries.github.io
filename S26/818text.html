@@ -2227,7 +2227,7 @@ Since \(\mathbb{Q}\) is a subring of \(\mathbb{R}\), we have that \(\mathbb{R}\)
 
 
 <section id="sec-12-3" class="section" aria-labelledby="sec-12-3-title">
-  <h2 id="sec-12-3-heading">12.3 Change of basis</h2>
+  <h2 id="sec-12-3-title">12.3 Change of basis</h2>
 
   <section id="def-12-3-1" class="callout definition" aria-labelledby="def-12-3-1-title">
     <h3 id="def-12-3-1-title">Definition 12.3.1</h3>
@@ -2709,7 +2709,7 @@ In particular,
     <h3 id="thm-12-4-8-title">Theorem 12.4.8</h3>
     <div class="callout-body">
       <p>
-        Let \(R\) be an integral domain. Then for any matrices \(A, B \in \mathrm{Mat}_{n \times n}(R)\) we have
+        Let \(R\) be a commutative ring. Then for any matrices \(A, B \in \mathrm{Mat}_{n \times n}(R)\) we have
       </p>
       \[
         \det(AB) = \det(A) \det(B).
@@ -2769,8 +2769,62 @@ In particular,
       <p>
         Now, for an integral domain \(R\), consider its fraction field \(F\), and identify \(R\subseteq F\) as a subring. To compute \(\det(A)\), \(\det(B)\), and \(\det(AB)\) we can replace \(R\) by \(F\), and are done by the field case.
       </p>
+
+<p>One can apply a similar trick for arbitrary commutative rings, but we'll skip this for now.</p>
     </div>
   </section>
+
+
+<section id="prop-12-4-9" class="callout proposition" aria-labelledby="prop-12-4-9-title">
+  <h3 id="prop-12-4-9-title">Proposition 12.4.9</h3>
+  <div class="callout-body">
+    <p>
+      Let \(R\) be a commutative ring. Let \(A\in \mathrm{Mat}_{n\times m}(R)\) and
+      \(B\in \mathrm{Mat}_{m\times n}(R)\) with \(m\geq n\).
+      For a subset \(I=\{i_1,\dots,i_n\} \subseteq [m]\) with \(|I|=n\), let \(A_I\)
+      denote the submatrix of \(A\) with columns indexed by \(I\) (in increasing order).
+      Then
+    </p>
+    \[
+      \det(AB) \in
+      \left( \{ \det(A_I) \mid I\subseteq [m],\ |I|=n\} \right).
+    \]
+  </div>
+</section>
+
+<section id="proof-prop-12-4-9" class="callout proof" aria-labelledby="proof-prop-12-4-9-title">
+  <h3 id="proof-prop-12-4-9-title">Proof of Proposition 12.4.9</h3>
+  <div class="callout-body">
+    <p>
+      Let \(a_1,\dots,a_m\) be the columns of \(A\). We can write the \(j\)-th column
+      of \(AB\) as \(\sum_{i=1}^m b_{i,j} a_i\). Then, by multilinearity,
+    </p>
+    \[
+      \begin{aligned}
+      \det(AB)
+      &= \det
+      \begin{bmatrix}
+      \sum_{i_1=1}^m b_{i_1,1} a_{i_1} & \cdots &
+      \sum_{i_n=1}^m b_{i_n,n} a_{i_n}
+      \end{bmatrix} \\
+      &= \sum_{1\leq i_1,\dots,i_n \leq m}
+      b_{i_1,1} \cdots b_{i_n,n}
+      \det
+      \begin{bmatrix}
+      a_{i_1} & \cdots & a_{i_n}
+      \end{bmatrix}.
+      \end{aligned}
+    \]
+    <p>
+      By the alternating property, we can rewrite each
+      \(\det\begin{bmatrix} a_{i_1} & \cdots & a_{i_n} \end{bmatrix}\)
+      as either zero, or the determinant of a submatrix with columns
+      \(i_1<i_2<\dots<i_n\), up to sign. This gives \(\det(AB)\) as an
+      \(R\)-linear combination of the determinants \(\det(A_I)\).
+    </p>
+  </div>
+</section>
+
 </section>
 
 
