@@ -1,0 +1,135 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=.8in]{geometry}
+\usepackage{paralist,amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals}
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\solutione}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{leaf}This solution is embargoed.}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+
+\newcommand{\rsa}{\rightsquigarrow}
+
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+
+\DeclareMathOperator{\ord}{ord}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{Determinants}
+	
+\begin{framed}
+\textsc{Definition:} Let $R$ be a commutative ring, and $A\in \mathrm{Mat}_{n\times n}(R)$. The determinant of $M$ is 
+\[ \det(A) = \sum_{\sigma \in S_n} \mathrm{sgn}(\sigma) \prod_{i=1}^n x_{i, \sigma(i)}.\]
+
+\
+
+
+\textsc{Theorem 1:} Identify $\mathrm{Mat}_{n\times n}(R)$ with $\underbrace{R^n \times \cdots \times R^n}_{n \, \text{times}}$ by considering a matrix as an $n$-tuple of columns. The determinant is the unique function 
+\[ \det\colon \underbrace{R^n \times \cdots \times R^n}_{n \text{times}}\to R\] that satisfies the following three properties:
+\begin{itemize}
+\item  $\det$ is \textbf{multilinear}, meaning 
+\[\begin{aligned}  \det(v_1,\dots,v_{i-1}, \boldsymbol{v + w},v_{i+1},\dots,v_n) &=  \det(v_1,\dots,v_{i-1}, \boldsymbol{v},v_{i+1},\dots,v_n) \\&  + \det(v_1,\dots,v_{i-1}, \boldsymbol{w},v_{i+1},\dots,v_n) \\ \det(v_1,\dots,v_{i-1}, \boldsymbol{rv},v_{i+1},\dots,v_n) &= \boldsymbol{r} \det(v_1,\dots,v_{i-1}, \boldsymbol{v},v_{i+1},\dots,v_n) \end{aligned} \]
+\item $\det$ is \textbf{alternating}, meaning
+\[ \det(v_1,\dots,v_n) = 0 \qquad \text{if} \ v_i=v_j \ \text{for some} \ i\neq j.\]
+\item $\det(e_1,\dots,e_n) = 1$.
+\end{itemize}
+
+\
+
+
+\textsc{Lemma:} Let $F\colon \underbrace{R^n \times \cdots \times R^n}_{n \text{times}}\to R$ be an alternating multilinear function. Then \[ F(v_{\sigma(1)},\dots,v_{\sigma(n)}) = \mathrm{sgn}(\sigma) F(v_1,\dots,v_n).\]
+ \end{framed}
+
+\begin{enumerate}
+\itemA 
+
+\end{enumerate}
+
+
+
+
+\begin{framed}
+\textsc{Theorem 2:} Let $R$ be a commutative ring and $A,B\in \mathrm{Mat}_{n\times n}(R)$. Then \[ \det(AB) = \det(A) \det(B).\]
+
+\
+
+\textsc{Proposition:} Let $R$ be a commutative ring. Let $A$ be a square matrix, and $B$ be a matrix obtained from $A$ by an elementary column operation.
+\begin{itemize}
+\item For the operation ``add $r\in R$ times column $i$ to column $j$'' we have $\det(B) = \det(A)$.
+\item For the operation ``multiply column $i$ by $u\in R^\times$'' we have  $\det(B) = u \det(A)$.
+\item For the operation ``swap column $i$ and column $j$'' we have  $\det(B) = -\det(A)$.
+\end{itemize}
+ \end{framed}
+
+
+\begin{enumerate}
+\setcounter{enumi}{2}
+
+\itemA  Prove the Proposition.
+
+\itemA Proof of Theorem in the case $R=F$ is a field:
+\begin{enumerate}
+\itema Use the Proposition (and the fact that over a field every invertible matrix is a product of elementary matrices) that if $A$ is invertible, then $\det(A)\neq 0$.
+\itema Show\footnote{Hint: First show that the columns of $A$ are linearly dependent, and express some $v_i$ as a linear combination of the others.} that if $A$ is not invertible, then $\det(A)=0$. 
+\itema 
+\end{enumerate}
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+\end{document}
