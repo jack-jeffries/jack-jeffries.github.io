@@ -1,0 +1,155 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,enumerate,bbm}
+\usepackage[]{graphicx}
+\usepackage{color,subfigure}
+\definecolor{scarlet}{rgb}{0.81,0,0}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage[all]{xypic}
+\usepackage[colorlinks=true,citecolor=scarlet,linkcolor=scarlet]{hyperref}
+\usepackage{colonequals}
+
+\usepackage{fancyhdr, lastpage}
+\pagestyle{fancy}
+\fancyfoot[C]{{\thepage} of \pageref{LastPage}}
+
+
+
+\DeclareMathOperator{\mSpec}{mSpec}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Ass}{Ass}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\height}{height}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\ann}{ann}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\coker}{coker}
+%\DeclareMathOperator{\ker}{ker}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\M}{M}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\ch}{char}
+\DeclareMathOperator{\Aut}{Aut}
+
+%\DeclareMathOperator{\dim}{dim}
+
+\DeclareMathOperator{\lcm}{lcm}
+
+\def\ra{\rightarrow}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\ov}[1]{\overline{#1}}
+\newcommand{\norm}{\trianglelefteq}
+
+\def\ov#1{\overline{#1}}
+
+
+\title{}
+\date{\vspace{-0.5in}}
+
+\makeatletter
+\g@addto@macro\@floatboxreset\centering
+\makeatother
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+
+\begin{document}
+
+\thispagestyle{fancy}
+\pagestyle{fancy}
+\rhead{UNL $\mid$ Spring 2026}
+\lhead{Introduction to Modern Algebra II}
+
+\vspace{3em}
+
+\begin{center}
+	{\LARGE Problem Set 3 \\}
+	Due Thursday, February 4
+\end{center}
+
+\
+
+\noindent
+{\bf Instructions:}
+You are encouraged to work together on these problems, but each student should hand in their own final draft, written in a way that indicates their individual understanding of the solutions. Never submit something for grading that you do not completely understand. You cannot use any resources besides me, your classmates, and our course notes.
+
+
+I will post the .tex code for these problems for you to use if you wish to type your homework. If you prefer not to type, please  {\em write neatly}. As a matter of good proof writing style, please use complete sentences and correct grammar. You may use any result stated or proven in class or in a homework problem, provided you reference it appropriately by either stating the result or stating its name (e.g. the definition of ring or Lagrange's Theorem). Please do not refer to theorems by their number in the course notes, as that can change.
+
+
+\smallskip
+
+\begin{problem} Let $F$ be a field, and $V$ be a finite-dimensional $F$-vector space. Let $W$ be a subspace of $V$. Show that $W=V$ if and only if $\dim(W)=\dim(V)$.
+\end{problem}
+
+\begin{proof} If $W=V$, then $\dim(W)=\dim(V)$. Conversely, if $W\subseteq V$ and $\dim(W)=\dim(V)$, we have $\dim(V)=\dim(W) + \dim(V/W)$, so $\dim(V/W)=0$. This implies that $V/W=0$, so $W=V$.
+\end{proof}
+
+\begin{problem}
+	Let $R$ be a commutative ring. Show that if every $R$-module is free then $R$ is a field.
+\end{problem}
+
+\begin{proof} Suppose that $R$ is a commutative ring that is not a field. Then, from a problem from 817, there exists a proper nonzero ideal $I$. 
+
+We claim that $R/I$ is not a free module. By way of contradiction, suppose that there exists a basis $B$. Since $R/I\neq 0$, we must have $B\neq \varnothing$. Take $r+I \in B$. Then for $a\in I\neq 0$, we have $a(r+I) = 0$ in $R/I$. This gives a nontrivial dependence relation on $B$, so $B$ is not a basis. This shows that $R/I$ is not free. 
+\end{proof}
+
+\begin{problem}
+Prove that\footnote{Hint: Consider $R^n/\mathfrak{m} R^n$ for a maximal ideal $\mathfrak{m}$.} if $R$ is a commutative ring then $R^m \cong R^n$ as $R$-modules if and only if $m = n$.
+\end{problem}
+\begin{proof}
+We prepare with a Lemma:
+
+\textsc{Lemma:} If $I$ is an ideal of $R$, then $R^n/ I R^n \cong (R/I)^n$.
+\textsc{Proof:} Let $f\!: R^n \to (R/I)^n$ be the unique $R$-module homomorphism  such that $f(e_i) = \ov{e_i}$, where $e_i$ is the vector with a $1$ in the $i$th position and $0$ elsewhere, and $\ov{e}_i$ is the vector with $1+I$ in the $i$th position and $0+I$ elsewhere. Such a map exists by the UMP for free modules since $\{e_1, \ldots, e_n\}$ form a basis for $R^n$. 
+
+Since the $\ov{e}_i$ form a basis for $(R/I)^n$ and since $\im(f)$ is a subspace of $(R/I)^n$ that contains all the $\ov{e}_i$, it follows that $\im(f)=(R/I)^n$, and thus $f$ is surjective. A vector $(a_1, \dots, s_n)$ is in the kernel of $f$ if and only if  $(a_1+I,\ldots,a_n+I)= (0+I,\ldots, 0+I)$, or equivalently $a_i\in I$ for all~$i$. Therefore 
+$$\ker(f)=\{(a_1,\ldots,a_n)\mid a_i\in I\}=\left\{\sum_{i=1}^na_i e_i\mid a_i\in I\right\}=IR^n.$$
+The last equality follows because the containment $\subseteq$ holds by definition of $IR^n$ and the containment $\supseteq$ is justified by the calculations below:
+$$IR^n=\left\{\sum_{i=1}^mb_i r_i\mid b_i\in I,r_i\in R^n\right\}=\left\{\sum_{i=1}^mb_i \sum_{j=1}^n c_{ij} e_j \mid b_i\in I,c_{ij}\in R\right\}$$
+$$=\left\{ \sum_{j=1}^n \left(\sum_{i=1}^mb_i c_{ij}\right) e_j \mid b_i\in I,c_{ij}\in R \Rightarrow b_ic_{ij}\in I\right\}.$$
+
+So, by the first isomorphism theorem, $f$ induces an {\bf $R$-module} isomorphism
+$$
+\ov{f}: R^n/IR^n \xrightarrow{\, \cong \,} (R/I)^n.
+$$
+
+Moreover, both the source and target of $\ov{f}$ are $R/I$-modules: the right-hand side for obvious reasons and the left-hand side by part a). We actually want $\ov{f}$ to be an $R/I$-module isomorphism. We already know that $\ov{f}$ preserves sums, since it is an $R$-module homomorphism. All that remains is to check that $\ov{f}$ is $R/I$-linear. Since $\ov{f}$ is $R$-linear: 
+$$\ov{f}((r+I)(m+IR^n))=\ov{f}((rm+IR^n))=f(rm)=rf(m)=(r+I)\ov{f}(m+IR^n).$$
+The last equality follows since $R/I$ acts on $(R/I)^n$ by $(r+I)t=rt$ for any $t\in (R/I)^n$.\qed
+
+We 
+
+
+
+
+\begin{problem} Let $F$ be a field, and $V$ be a finite-dimensional $F$-vector space. Let $T:V\to V$ be a linear transformation.
+\begin{enumerate}[(a)]
+\item Show that if $T^2=0$, then $\mathrm{rank}(T)\leq \frac{1}{2}\dim(V)$.
+\item Show that $\dim(\mathrm{ker}(T^2)) \leq 2 \dim(\mathrm{ker}(T))$.
+\end{enumerate}
+\end{problem}
+
+\
+
+\begin{problem} Let $F$ be a field, and $V$ and $W$ be $F$-vector spaces with $\dim(V)=n$ and $\dim(W)=m$.
+\begin{enumerate}[(a)]
+\item Let $T:V\to W$ be a linear transformation. Show that there exist bases $B$ for $V$ and $C$ for $W$ such that 
+\[ [T]_B^C = \begin{bmatrix} \mathbbm{1}_{k\times k} & {0}_{k\times (n-k)} \\ {0}_{(m-k)\times k} & {0}_{(m-k)\times(n-k)}\end{bmatrix}\]
+where $\mathbbm{1}_{k\times k}$ is a $k\times k$ identity matrix and ${0}_{i\times j}$ is an $i\times j$ matrix of zeroes.
+\item Let $T:V\to V$ be a linear transformation. Show that there exists a basis $B$ for $V$ such that
+\[ [T]_B^B = \begin{bmatrix} \mathbbm{1}_{k\times k} & {0}_{k\times (n-k)} \\ {0}_{(n-k)\times k} & {0}_{(n-k)\times(n-k)}\end{bmatrix}\]
+if and only if $T^2=T$.
+\end{enumerate}
+\end{problem}
+\end{document}
