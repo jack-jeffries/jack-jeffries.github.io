@@ -2,7 +2,7 @@
 
 
 \usepackage{times}
-\usepackage[margin=.8in]{geometry}
+\usepackage[margin=1in]{geometry}
 \usepackage{paralist,amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals}
 \usepackage[outline]{contour}
 \contourlength{.4pt}
@@ -66,7 +66,7 @@
 	\section*{Determinants}
 	
 \begin{framed}
-\textsc{Definition:} Let $R$ be a commutative ring, and $A\in \mathrm{Mat}_{n\times n}(R)$. The determinant of $M$ is 
+\textsc{Definition:} Let $R$ be a commutative ring, and $A\in \mathrm{Mat}_{n\times n}(R)$. The \textbf{determinant} of $A$ is 
 \[ \det(A) = \sum_{\sigma \in S_n} \mathrm{sgn}(\sigma) \prod_{i=1}^n x_{i, \sigma(i)}.\]
 
 \
@@ -81,20 +81,35 @@
 \[ \det(v_1,\dots,v_n) = 0 \qquad \text{if} \ v_i=v_j \ \text{for some} \ i\neq j.\]
 \item $\det(e_1,\dots,e_n) = 1$.
 \end{itemize}
+ \end{framed}
+
+\begin{enumerate}
+\itemA Working with Theorem 1:
+\begin{enumerate}
+\itema Use Theorem 1 to explain why the determinant of a diagonal matrix is the product of its diagonal entries.
+\itema Use Theorem 1 to show that if some column of $A$ is a linear combination of the other columns of $A$, then $\det(A)=0$.
+\itema Use part (a) to show that if $R=F$ is a field, and $A$ is not invertible, then $\det(A)=0$.
+\itema Use Theorem 1 to show\footnote{Hint: Consider $\det(\boldsymbol{v_1} + \boldsymbol{v_2},\boldsymbol{v_1}+ \boldsymbol{v_2}, v_3,\dots,v_n)$.} that 
+\[  \det(\boldsymbol{v_2},\boldsymbol{v_1}, v_3,\dots,v_n) = - \det(\boldsymbol{v_1},\boldsymbol{v_2}, v_3,\dots,v_n).\]
+Likewise, the same holds for swapping any two entries.
+\end{enumerate}
+
 
 \
 
 
-\textsc{Lemma:} Let $F\colon \underbrace{R^n \times \cdots \times R^n}_{n \text{times}}\to R$ be an alternating multilinear function. Then \[ F(v_{\sigma(1)},\dots,v_{\sigma(n)}) = \mathrm{sgn}(\sigma) F(v_1,\dots,v_n).\]
- \end{framed}
-
+\itemB Uniqueness part of Theorem 1:
 \begin{enumerate}
-\itemA 
-
+\itemb Use 1(d) to show that for any $\sigma\in S_n$,
+\[  \det(v_{\boldsymbol{\sigma(1)}},\dots,v_{\boldsymbol{\sigma(n)}}) = \mathrm{sgn}(\sigma) \det(v_1,\dots,v_n).\]
+\itemb Explain the following claim: if $F\colon  \underbrace{R^n \times \cdots \times R^n}_{n \text{times}}\to R$ is multilinear, then $F$ is completely determined by $F(e_{i_1},\dots,e_{i_n})$ for $1\leq i_1,\dots,i_n \leq n$.
+\itemb Explain the following claim:  if $F\colon  \underbrace{R^n \times \cdots \times R^n}_{n \text{times}}\to R$ is multilinear and alternating, then $F$ is completely determined by $F(e_1,\dots,e_n)$.
 \end{enumerate}
 
 
+\end{enumerate}
 
+\newpage
 
 \begin{framed}
 \textsc{Theorem 2:} Let $R$ be a commutative ring and $A,B\in \mathrm{Mat}_{n\times n}(R)$. Then \[ \det(AB) = \det(A) \det(B).\]
@@ -113,14 +128,33 @@
 \begin{enumerate}
 \setcounter{enumi}{2}
 
-\itemA  Prove the Proposition.
+\itemA  Use Theorem 1 to prove the Proposition.
 
-\itemA Proof of Theorem in the case $R=F$ is a field:
+\
+
+\itemA Use the Proposition (and not the definition) to compute $\mathrm{det} \begin{bmatrix} 1 & 2 & 3 \\ 2 & 5 & 8 \\ 3 & 7 & 13 \end{bmatrix} \in \mathrm{Mat}_{3\times 3}(\Z)$.
+
+\
+
+\itemA Proof of Theorem 2 in the case $R=F$ is a field:
 \begin{enumerate}
-\itema Use the Proposition (and the fact that over a field every invertible matrix is a product of elementary matrices) that if $A$ is invertible, then $\det(A)\neq 0$.
-\itema Show\footnote{Hint: First show that the columns of $A$ are linearly dependent, and express some $v_i$ as a linear combination of the others.} that if $A$ is not invertible, then $\det(A)=0$. 
-\itema 
+\itema Prove Theorem 2 in the case $B=E$ is an elementary matrix.
+\itema Prove\footnote{Hint: You can use the fact that over a field, every invertible matrix is a product of elementary matrices} Theorem 2 in the case $A$ and $B$ are both invertible matrices.
+\itema Show that $AB$ is invertible if and only if $A$ and $B$ are both invertible.
+\itema Show\footnote{Hint: Use part (a) and 1(c).} that $\det(A)\in F^\times$ if and only if $A$ is invertible.
+\itema Complete the proof of Theorem 2 in the field case.
 \end{enumerate}
+
+\
+
+\itemB Prove that $\det(A)=\det(A^T)$.
+
+\
+
+\itemB Prove the Laplace expansion formula (along the first column): for $A\in \mathrm{Mat}_{n\times n}(R)$,
+\[ \det(A) = \sum_{i=1}^n (-1)^{i+1} a_{i,1} \det(\widehat{A}_{i,1}),\]
+where $\widehat{A}_{i,1}$ is the $(n-1)\times(n-1)$ matrix obtained from $A$ by removing the $i$th row and first column.
+
 
 \end{enumerate}
 
