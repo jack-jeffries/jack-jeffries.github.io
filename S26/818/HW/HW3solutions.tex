@@ -111,6 +111,8 @@ Prove that\footnote{Hint: Consider $R^n/\mathfrak{m} R^n$ for a maximal ideal $\
 We prepare with a Lemma:
 
 \textsc{Lemma:} If $I$ is an ideal of $R$, then $R^n/ I R^n \cong (R/I)^n$.
+
+
 \textsc{Proof:} Let $f\!: R^n \to (R/I)^n$ be the unique $R$-module homomorphism  such that $f(e_i) = \ov{e_i}$, where $e_i$ is the vector with a $1$ in the $i$th position and $0$ elsewhere, and $\ov{e}_i$ is the vector with $1+I$ in the $i$th position and $0+I$ elsewhere. Such a map exists by the UMP for free modules since $\{e_1, \ldots, e_n\}$ form a basis for $R^n$. 
 
 Since the $\ov{e}_i$ form a basis for $(R/I)^n$ and since $\im(f)$ is a subspace of $(R/I)^n$ that contains all the $\ov{e}_i$, it follows that $\im(f)=(R/I)^n$, and thus $f$ is surjective. A vector $(a_1, \dots, s_n)$ is in the kernel of $f$ if and only if  $(a_1+I,\ldots,a_n+I)= (0+I,\ldots, 0+I)$, or equivalently $a_i\in I$ for all~$i$. Therefore 
@@ -124,11 +126,26 @@ $$
 \ov{f}: R^n/IR^n \xrightarrow{\, \cong \,} (R/I)^n.
 $$
 
-Moreover, both the source and target of $\ov{f}$ are $R/I$-modules: the right-hand side for obvious reasons and the left-hand side by part a). We actually want $\ov{f}$ to be an $R/I$-module isomorphism. We already know that $\ov{f}$ preserves sums, since it is an $R$-module homomorphism. All that remains is to check that $\ov{f}$ is $R/I$-linear. Since $\ov{f}$ is $R$-linear: 
+Moreover, both the source and target of $\ov{f}$ are $R/I$-modules: the right-hand side for obvious reasons and the left-hand side by an earlier exercise. We actually want $\ov{f}$ to be an $R/I$-module isomorphism. We already know that $\ov{f}$ preserves sums, since it is an $R$-module homomorphism. All that remains is to check that $\ov{f}$ is $R/I$-linear. Since $\ov{f}$ is $R$-linear: 
 $$\ov{f}((r+I)(m+IR^n))=\ov{f}((rm+IR^n))=f(rm)=rf(m)=(r+I)\ov{f}(m+IR^n).$$
 The last equality follows since $R/I$ acts on $(R/I)^n$ by $(r+I)t=rt$ for any $t\in (R/I)^n$.\qed
 
-We 
+Now assume that $\varphi:R^n \to R^m$ is an $R$-module isomorphism. Take any maximal ideal $\m$ of $R$, which exists by a result from Math 817. Consider the quotient map $q\!:R^m\to R^m/\m R^m$ and the composite map $\psi=q\circ \varphi$. This is an $R$-module homomorphism, which is surjective since both $q$ and $\varphi$ are surjective. 
+Let's consider the kernel of $\psi$. We know that $\ker q = \m R^m$, since $q$ is the canonical projection. Since $\varphi$ is injective, the kernel of $\psi$ is just the preimage of $\m R^n$ via $\varphi$:
+$$\ker(\psi)=\psi^{-1}(0)=\varphi^{-1}(q^{-1}(0))=\varphi^{-1}(\m R^m).$$
+But $\varphi^{-1}$ is an $R$-module homomorphism as well, so
+$$\ker(\psi) = \m\varphi^{-1}(R^m)=\m R^n.$$
+The First Isomorphism Theorem now gives the existence of an $R$-module isomorphism 
+$$\ov{\psi}:R^n/\m R^n\to R^m/\m R^m \quad \ov{\psi}(m+\m R^n)=\psi(m).$$
+We claim that $\ov{\psi}$ is in fact an $R/\m$-module homomorphism; we need to check that this is an $R/\m$-linear map:
+$$\ov{\psi}((r+\m)(m+\m R^n))=\ov{\psi}(rm+\m R^n)=\psi(rm)=r\psi(m)=(r+I)\ov{\psi}(m+\m R^n),$$
+where the last equality uses again the formula for the $R/\m$-action on $R^m/\m R^m$.
+
+Using part a), we have the further isomorphisms
+$$ (R/\m)^n\cong R^n/\m R^n \cong R^m/\m R^m \cong (R/\m)^m.$$
+
+Now rewriting the above isomorphism in terms of the field $F=R/\m$ gives $F^n\cong F^m$ as $F$-vector spaces, and we know from class that this is true if and only if $m=n$. 
+\end{proof}
 
 
 
@@ -136,7 +153,26 @@ We
 \begin{problem} Let $F$ be a field, and $V$ be a finite-dimensional $F$-vector space. Let $T:V\to V$ be a linear transformation.
 \begin{enumerate}[(a)]
 \item Show that if $T^2=0$, then $\mathrm{rank}(T)\leq \frac{1}{2}\dim(V)$.
+
+\begin{proof}
+	By the Rank-Nullity Theorem, we have
+$$\dim(\ker(T)) + \mathrm{rank}(T) = \dim(V).$$
+Since $T \circ T  = 0$, we have $\im(T) \subseteq \ker(T)$. Then any basis of $\im(T)$ can be extended to a bases of $\ker(T)$, and thus
+$$\mathrm{rank}(T) \leqslant \dim(\ker(T)).$$
+So 
+$$\dim(V) =  \dim(\ker(T)) + \dim(\im(T)) \geqslant \dim(\im(T)) + \dim(\im(T)) = 2 \rank(T),$$ 
+which implies the result.
+\end{proof}
+
 \item Show that $\dim(\mathrm{ker}(T^2)) \leq 2 \dim(\mathrm{ker}(T))$.
+
+
+\begin{proof}
+Let $I=\im(T)$ and consider $T|_I\colon I\to T$. Note that $T^2(V) = T|_I(I)$. We also have $\dim(I) = \dim(V) - \dim(\ker(T))$ by the Rank-Nullity Theorem and $\mathrm{rank}(T|_I) = \dim(I) - \dim(\ker(T|_I))$. Since $\ker(T|_I) = \ker(T) \cap I$, we have $\dim(\ker(T|_I)) \leq \dim(\ker(T))$. All together, we have
+\[\begin{aligned} \mathrm{rank}(T^2)) &= \mathrm{rank}(T|_I) = \dim(I) - \dim(\ker(T|_I)) \\
+&= \dim(V) - \dim(\ker(T)) - \dim(\ker(T|_I)) \geq \dim(V) - 2 \dim(\ker(T)) \end{aligned}\]
+and by one more application of Rank-Nullity, $\dim(\mathrm{ker}(T^2)) \leq 2 \dim(\mathrm{ker}(T))$
+\end{proof}
 \end{enumerate}
 \end{problem}
 
@@ -147,9 +183,21 @@ We
 \item Let $T:V\to W$ be a linear transformation. Show that there exist bases $B$ for $V$ and $C$ for $W$ such that 
 \[ [T]_B^C = \begin{bmatrix} \mathbbm{1}_{k\times k} & {0}_{k\times (n-k)} \\ {0}_{(m-k)\times k} & {0}_{(m-k)\times(n-k)}\end{bmatrix}\]
 where $\mathbbm{1}_{k\times k}$ is a $k\times k$ identity matrix and ${0}_{i\times j}$ is an $i\times j$ matrix of zeroes.
+
+\begin{proof}
+Take a basis for $\ker(T) \subseteq V$, and call it $b_{k+1},\dots,b_n$. We can extend this to a basis for $V$, and let $b_1,\dots,b_n$ be this basis. Note that $T(b_1),\dots,T(b_k)$ are linearly independent: if 
+\[ f_1 T(b_1) + \cdots f_k T(b_k)=0,\]
+then $T(f_1 b_1 + \cdots + f_k b_k) = 0$, so $v= f_1 b_1 + \cdots + f_k b_k \in \ker(T)$, and hence $v$ is in the span of $b_{k+1},\dots,b_n$; this is only possible if $f_i=0$ for all $i$. Set $c_1=T(b_1), \dots, c_k = T(b_k)$, and extend $c_1,\dots,c_k$ to a basis for $V$. It follows from the definition that $[T]_B^C$ is as claimed.
+\end{proof}
+
 \item Let $T:V\to V$ be a linear transformation. Show that there exists a basis $B$ for $V$ such that
 \[ [T]_B^B = \begin{bmatrix} \mathbbm{1}_{k\times k} & {0}_{k\times (n-k)} \\ {0}_{(n-k)\times k} & {0}_{(n-k)\times(n-k)}\end{bmatrix}\]
 if and only if $T^2=T$.
+
+\begin{proof} Suppose there is a basis for which the matrix is as claimed. Then $[T^2]_B^B = ([T]_B^B)^2 = [T]_B^B$, so $T^2=T$.
+
+Now suppose that $T^2=T$. Then for any $v=T(w) \in \im(T)$, we have $T(v) = T^2(w) = T(w) = v$, and in particular, $\ker(T) \cap \im(T)=0$. By the Rank-Nullity Theorem, the dimension of $\ker(T)$ and the dimension of $\im(T)$ add up to $\dim(V)$. Take a basis $b_1,\dots,b_k$ for $\im(T)$ and a basis $b_{k+1},\dots,b_n$ for $\ker(T)$; we claim that the union is a basis for $V$. Indeed, if $f_1 b_1 + \cdots f_n b_n =0$, then $f_1 b_1 + \dots + f_k  b_k = -f_{k+1} b_{k+1} - \cdots - f_n b_n \in \ker(T) \cap \im(T) = 0$, and hten each $f_i=0$ by linear independence of each basis. Thus $b_1,\dots,b_n$ is linearly independent, and the span of this set is a subspace of dimension $n$, so is equal to $V$ by the first problem. 
+\end{proof}
 \end{enumerate}
 \end{problem}
 \end{document}
