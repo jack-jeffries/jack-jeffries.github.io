@@ -9240,32 +9240,6 @@ We will use the following fact that you proved in the Homework.
  
  
  
-% 
-%\begin{lemma}\label{lemma gcd stays the same} 
-%Let $R$ is a PID. Let $A \in \mathrm{Mat}_{m,n}(R)$ be any matrix and let $P \in \mathrm{Mat}_m(R)$ and $Q \in \mathrm{Mat}_n(R)$ be invertible matrices. Then $\gcd(A) = \gcd(PA) = \gcd(QA)$.
-%In particular, if $B \in \mathrm{Mat}_{m,n}(R)$ and $B$ is obtained from $A$ by a finite sequence of elementary row and column operations, then $\gcd(A) = \gcd(B)$. 
-%\end{lemma}
-%
-%\begin{proof}
-%First, suppose that $n=1$, meaning that $A$ is a column, say
-%$$A = \begin{bmatrix} a_1 \\ \vdots \\ a_m\end{bmatrix} \textrm{ and let }
-%PA = \begin{bmatrix} b_1 \\ \vdots \\ b_m \end{bmatrix}.$$
-%We need to show that $(a_1, \ldots, a_m) = (b_1, \ldots, b_m)$. On the one hand, each $b_i$ is a linear combination of the $a_j$, so $(b_1, \ldots, b_m) \subseteq (a_1, \ldots, a_m)$. On the other hand, 
-%$$\begin{bmatrix} a_1 \\ \vdots \\ a_m\end{bmatrix} = P^{-1}(PA) = P^{-1} \begin{bmatrix} b_1 \\ \vdots \\ b_m\end{bmatrix}$$
-%so each $a_j$ is a combination of the $b_i$, and $a_j \in (b_1, \ldots, b_m)$. We conclude that we have an equality of ideals $(a_1, \ldots, a_m) = (b_1, \ldots, b_m)$, and thus multiplying a column vector by an invertible matrix does not change the greatest common divisor of the entries.
-%
-%Now given $A \in \mathrm{Mat}_{m,n}(R)$, if we denote the $i$th column of $A$ by $A_i$, we have
-%$$PA = \begin{bmatrix} PA_1 & \cdots & PA_m \end{bmatrix}.$$
-%Since the gcd of each column remains the same, the gcd of all the entries does not change.
-%
-%To show that $\gcd(AQ)=\gcd(A)$, note that transposing a matrix does not change its gcd nor the fact that its invertible, so we can apply what we have already shown:
-%$$\gcd(AQ) = \gcd((AQ)^T) = \gcd(Q^TA^T)=\gcd(A^T) = \gcd(A).$$
-%
-%Finally, applying elementary row and column operations corresponds to multiplying by an elementary matrix on the left or right, and elementary matrices are invertible.
-%\end{proof}
-
-
-
 
 \begin{lemma}\label{lemma gcd move by invertible}
 	Let $R$ be a PID and $x, y \in R$. Let $g$ be a GCD of $x$ and $y$.

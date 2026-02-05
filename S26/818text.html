@@ -3326,6 +3326,305 @@ We will need the following fact.
 </section>
 
 
+<section id="sec-13-3" class="section" aria-labelledby="sec-13-3-title">
+  <h2 id="sec-13-3-heading">13.3 Classification of finitely generated modules over PIDs</h2>
+
+  <p>
+    We just showed that any finitely generated module \(M\) over a PID has a finite presentation matrix \(A\). We will discuss a canonical form for such a matrix \(A\) and the consequences it has on determining the isomorphism type of \(M\).
+  </p>
+
+  <section id="thm-13-3-1" class="callout theorem" aria-labelledby="thm-13-3-1-title">
+    <h3 id="thm-13-3-1-title">Theorem 13.3.1 (Smith Normal Form (SNF))</h3>
+    <div class="callout-body">
+      <p>
+        Let \(R\) be a PID and let \(A \in \mathrm{Mat}_{m,n}(R)\). Then there exist invertible matrices \(P\) and \(Q\) such that \(M = PAQ = [a_{ij}]\) satisfies the following: all nondiagonal entries of \(M\) are \(0\), meaning \(a_{ij} = 0\) if \(i \neq j\), and the diagonal entries of \(M\) satisfy
+      </p>
+      \[
+        a_{11} \mid a_{22} \mid a_{33} \mid \cdots.
+      \]
+      <p>
+        Moreover, the number \(\ell\) of nonzero entries of \(M\) is uniquely determined by \(A\), and the nonzero diagonal entries \(a_{11},\ldots, a_{\ell \ell}\) are unique up to associates.
+      </p>
+      <p>
+        Furthermore, if \(R\) is a Euclidean domain, then \(P\) and \(Q\) can be chosen to be a product of elementary matrices.
+      </p>
+    </div>
+  </section>
+
+  <p>
+    Elementary row and column operations correspond to multiplication by elementary matrices, which are invertible, and that the composition of invertible matrices is invertible. So whenever we apply elementary row and column operations, we can translate it into multiplication by an invertible matrix on the left or the right, respectively.
+  </p>
+
+  <p>
+    To transform a matrix \(A\) into its Smith Normal Form, we will use a sequence of steps that all correspond to multiplication by invertible matrices. Many of those steps will actually be elementary row and column operations, which correspond to multiplication by an elementary matrix. Elementary matrices are invertible, and a product of invertible matrices is invertible, and so any finite sequence of elementary row and column operations can be described by multiplication by an invertible matrix. However, in general not every invertible matrix can be obtained as a product of elementary matrices. In fact, there are examples of PIDs \(R\) and matrices \(A\) for which the Smith Normal Form cannot be obtained by simply taking a sequence of elementary row and column operations. However, it is not easy to give such an example, in part because when our PID \(R\) is nice enough, the Smith Normal Form can in fact be obtained by simply taking a sequence of elementary row and column operations. This is the case for Euclidean domains: over such rings, the Euclidean Algorithm for finding the gcd of two elements works, and it's the key step we will need to find a Smith Normal Form. When \(R\) is a general PID, however, we need to work a little harder.
+  </p>
+
+  <p>
+    Before we prove Theorem 13.3.1, let's see how to classify modules over PIDs using the Smith Normal Form for their presentation matrix. First, we need a lemma on how to interpret the module presented by a matrix in Smith Normal Form; we leave the proof as an exercise.
+  </p>
+
+  <section id="lem-13-3-2" class="callout lemma" aria-labelledby="lem-13-3-2-title">
+    <h3 id="lem-13-3-2-title">Lemma 13.3.2</h3>
+    <div class="callout-body">
+      <p>
+        Let \(R\) be a commutative ring with \(1 \neq 0\), let \(m \geqslant n\), let \(A = [a_{ij}] \in \mathrm{Mat}_{m,n}(R)\) be a matrix such that all nondiagonal entries of \(A\) are \(0\), and let \(M\) be the \(R\)-module presented by \(A\). Then \(M \cong R^{m-n} \oplus R/(a_{11}) \oplus \dots \oplus R/(a_{nn})\).
+      </p>
+    </div>
+  </section>
+
+  <section id="thm-13-3-3" class="callout theorem" aria-labelledby="thm-13-3-3-title">
+    <h3 id="thm-13-3-3-title">Theorem 13.3.3 (Classification of finitely generated modules over a PID using invariant factors)</h3>
+    <div class="callout-body">
+      <p>
+        Let \(R\) be a PID and let \(M\) be a finitely generated module. Then there exist \(r \geqslant 0\), \(k \geqslant 0\), and nonzero nonunit elements \(d_1,\ldots, d_k\) of \(R\) satisfying \(d_1 \mid  d_2 \mid \dots \mid d_k\) such that
+      </p>
+      \[
+        M \cong R^r \oplus R/(d_1) \oplus \dots \oplus R/(d_k).
+      \]
+      <p>
+        Moreover \(r\) and \(k\) are uniquely determined by \(M\), and the \(d_i\) are unique up to associates.
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-thm-13-3-3" class="callout proof" aria-labelledby="proof-thm-13-3-3-title">
+    <h3 id="proof-thm-13-3-3-title">Proof of Theorem 13.3.3</h3>
+    <div class="callout-body">
+      <p>
+        By Theorem 13.2.3, \(M\) has a presentation matrix \(A\). By Theorem 13.3.1, \(A\) can be put into Smith Normal Form \(B\), where the diagonal entries of \(B\) are \(b_1, \ldots, b_\ell\) and satisfy \(b_1 \mid b_2 \mid \cdots \mid b_k\). Moreover, \(k\) is unique and the \(d_i\) are uniquely determined up to associates (ie, up to multiplication by units) by \(A\), hence by \(B\). By Theorem 13.2.3, \(M\) is isomorphic to the module presented by \(B\).
+        By Lemma 13.3.2, this is isomorphic to
+      </p>
+      \[
+        M \cong R^r \oplus R/(b_1) \oplus \dots \oplus R/(b_\ell).
+      \]
+      <p>
+        Finally, some of these \(b_i\) might be units; let \(d_1 \mid \cdots \mid d_k\) be the nonunits among the \(b_i\), and note that if \(u\) is a unit, then \(R/(u) \cong (0)\). We conclude that
+      </p>
+      \[
+        M \cong R^r \oplus R/(d_1) \oplus \dots \oplus R/(d_k),
+      \]
+      <p>
+        as desired.
+      </p>
+    </div>
+  </section>
+
+  <section id="def-13-3-4" class="callout definition" aria-labelledby="def-13-3-4-title">
+    <h3 id="def-13-3-4-title">Definition 13.3.4</h3>
+    <div class="callout-body">
+      <p>
+        Let \(R\) be a PID, let \(r \geqslant 0, k \geqslant 0\), and let \(d_1,\ldots, d_k\) be nonzero nonunit elements of \(R\) satisfying \(d_1 \mid d_2 \mid \dots \mid d_k\). Let \(M\) be any \(R\)-module such that
+      </p>
+      \[
+        M \cong R^r \oplus R/(d_1) \oplus \dots \oplus R/(d_k).
+      \]
+      <p>
+        We say \(M\) has <strong>free rank</strong> \(r\) and <strong>invariant factors</strong> \(d_1,\ldots,d_k\).
+      </p>
+    </div>
+  </section>
+
+  <p>
+    Notice that the invariant factors of \(M\) are only defined up to multiplication by units.
+  </p>
+
+  <section id="rmk-13-3-5" class="callout remark" aria-labelledby="rmk-13-3-5-title">
+    <h3 id="rmk-13-3-5-title">Remark 13.3.5</h3>
+    <div class="callout-body">
+      <p>
+        The classification theorem can be interpreted as saying that \(M\) decomposes into a free submodule \(R^r\) and a torsion submodule \(\mathrm{Tor}(M)=R/(d_1) \oplus \dots \oplus R/(d_k)\).
+      </p>
+    </div>
+  </section>
+
+  <section id="cor-13-3-6" class="callout corollary" aria-labelledby="cor-13-3-6-title">
+    <h3 id="cor-13-3-6-title">Corollary 13.3.6 (Classification of finitely generated abelian groups)</h3>
+    <div class="callout-body">
+      <p>
+        Let \(G\) be a finitely generated abelian group. Then
+      </p>
+      \[
+        G \cong \mathbb{Z}^r \oplus \mathbb{Z}/n_1 \oplus \dots \oplus \mathbb{Z}/n_k
+      \]
+      <p>
+        for some \(r \geqslant 0\), \(k \geqslant 0\), and \(n_i \geqslant 2\) for all \(i\), satisfying \(n_{i+1} \mid n_i\) for all \(i\). Moreover, the integers \(r\), \(k\), and \(n_1,\ldots n_k\) are uniquely determined by \(G\).
+      </p>
+    </div>
+  </section>
+
+  <section id="ex-13-3-7" class="callout example" aria-labelledby="ex-13-3-7-title">
+    <h3 id="ex-13-3-7-title">Example 13.3.7</h3>
+    <div class="callout-body">
+      <p>
+        Consider the \(\mathbb{Z}\)-module \(M\) presented by the matrix
+      </p>
+      \[
+        A=\begin{bmatrix}
+        1 & 6 & 5 & 2 \\
+        2 & 1 & -1 & 0 \\
+        3 & 0 & 3 & 0
+        \end{bmatrix}.
+      \]
+      <p>
+        We can obtain the Smith Normal Form as follows:
+      </p>
+      \[
+        A=\begin{bmatrix}
+        1 & 6 & 5 & 2 \\
+        2 & 1 & -1 & 0 \\
+        3 & 0 & 3 & 0
+        \end{bmatrix} \xrightarrow[R3 \to R3-3R1]{R2 \to R2-2R1}
+        \begin{bmatrix}
+        1 & 6 & 5 & 2 \\
+        0 & -11 & -11 & -4 \\
+        0 & -18 & -12 & -6
+        \end{bmatrix} \rightarrow
+        \begin{bmatrix}
+        1 & 0 & 0  & 0 \\
+        0 & -11 & -11 & -4 \\
+        0 & -18 & -12 & -6
+        \end{bmatrix}
+      \]
+      \[
+        \xrightarrow{C2 \leftrightarrow C4}
+        \begin{bmatrix}
+        1 & 0 & 0  & 0 \\
+        0 & -4 & -11 & -11 \\
+        0 & -6 & -12 & -18
+        \end{bmatrix}
+        \xrightarrow[C4 \to C4 + 3C1]{C3 \to C3+2C2}
+        \begin{bmatrix}
+        1 & 0 & 0  & 0 \\
+        0 & -4 & -3 & 1 \\
+        0 & -6 & 0 & 0
+        \end{bmatrix}
+        \xrightarrow{C2 \leftrightarrow C4}
+        \begin{bmatrix}
+        1 & 0 & 0  & 0 \\
+        0 & 1 & -3 & -4 \\
+        0 & 0 & 0 & -6
+        \end{bmatrix}
+      \]
+      \[
+        \rightarrow
+        \begin{bmatrix}
+        1 & 0 & 0  & 0 \\
+        0 & 1 & 0 & 0\\
+        0 & 0 & 0 & -6
+        \end{bmatrix}
+        \xrightarrow{C3 \leftrightarrow C4}
+        \begin{bmatrix}
+        1 & 0 & 0  & 0 \\
+        0 & 1 & 0 & 0\\
+        0 & 0 & -6 & 0
+        \end{bmatrix}
+        \xrightarrow{C3 \to -C3}
+        \begin{bmatrix}
+        1 & 0 & 0  & 0 \\
+        0 & 1 & 0 & 0\\
+        0 & 0 & 6 & 0
+        \end{bmatrix}
+        .
+      \]
+      <p>
+        Thus the Smith normal form of \(A\) is
+      </p>
+      \[
+        M=\begin{bmatrix}
+        1 & 0 & 0 & 0 \\
+        0 & 1 & 0 & 0 \\
+        0 & 0 & 6 & 0
+        \end{bmatrix},
+      \]
+      <p>
+        with invariant factor \(d_1=6\). Notice that the two ones are not invariant factors: we only care about nonunits. Therefore we have
+      </p>
+      \[
+        M\cong \mathbb{Z}/(1)\oplus \mathbb{Z}/(1)\oplus \mathbb{Z}/(6)\cong \mathbb{Z}/(6).
+      \]
+    </div>
+  </section>
+
+  <p>
+    Here is a spinoff of the classification theorem.
+  </p>
+
+  <section id="thm-13-3-8" class="callout theorem" aria-labelledby="thm-13-3-8-title">
+    <h3 id="thm-13-3-8-title">Theorem 13.3.8 (Classification of finitely generated modules over a PID using elementary divisors)</h3>
+    <div class="callout-body">
+      <p>
+        Let \(R\) be a PID and let \(M\) be a finitely generated module. Then there exist \(r \geqslant 0\), \(s \geqslant 0\), prime elements \(p_1,\ldots,p_s\) of \(R\) (not necessarily distinct), and \(e_1,\ldots ,e_s \geqslant 1\) such that
+      </p>
+      \[
+        M \cong R^r \oplus R/(p_1^{e_1}) \oplus \cdots \oplus R/(p_s^{e_s}).
+      \]
+      <p>
+        Moreover, \(r\) and \(s\) are uniquely determined by \(M\), and the list \(p_1^{e_1},\ldots, p_s^{e_s}\) is unique up to associates and reordering.
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-thm-13-3-8" class="callout proof" aria-labelledby="proof-thm-13-3-8-title">
+    <h3 id="proof-thm-13-3-8-title">Proof of Theorem 13.3.8</h3>
+    <div class="callout-body">
+      <p>
+        First, write \(M\) in invariant factor form \(M \cong R^r \oplus R/(d_1) \oplus \dots \oplus R/(d_k)\). Then write each invariant factor as a product of prime powers
+      </p>
+      \[
+        d_i := \prod_{j=n_i}^{n_{i+1}} p_j^{e_j},
+      \]
+      <p>
+        and recall that by the CRT we have
+      </p>
+      \[
+        R/(d_i)\cong R/(p_{n_i}^{e_{n_i}})\oplus\dots\oplus R/(p_{n_{i+1}}^{e_{n_{i+1}}}).
+      \]
+      <p>
+        Substituting into the invariant factor form gives the desired result. Uniqueness follows from the uniqueness of the invariant factor form and of the prime factorizations of each \(d_i\).
+      </p>
+    </div>
+  </section>
+
+  <section id="def-13-3-9" class="callout definition" aria-labelledby="def-13-3-9-title">
+    <h3 id="def-13-3-9-title">Definition 13.3.9</h3>
+    <div class="callout-body">
+      <p>
+        Let \(R\) be a PID, let \(r \geqslant 0\), \(s \geqslant 0\), \(p_1,\ldots,p_s\) be prime elements of \(R\), and let \(e_1,\ldots,e_s \geqslant 1\). Let \(M\) be the \(R\)-module \(M \cong R^r \oplus R/(p_1^{e_1}) \oplus \dots \oplus R/(p_s^{e_s})\). The elements \(p_1^{e_1},\ldots, p_s^{e_s}\) of \(R\) are the <strong>elementary divisors</strong> of \(M\).
+      </p>
+    </div>
+  </section>
+
+  <p>
+    Careful that a particular prime might appear repeatedly in the elementary divisors of a particular module.
+  </p>
+
+  <section id="ex-13-3-10" class="callout example" aria-labelledby="ex-13-3-10-title">
+    <h3 id="ex-13-3-10-title">Example 13.3.10</h3>
+    <div class="callout-body">
+      <p>
+        When \(R = \mathbb{Z}\) and \(M = \mathbb{Z}/(6)\), we can write \(M\cong \mathbb{Z}/(2)\oplus \mathbb{Z}/(3)\), so the elementary divisors are \(2\) and \(3\).
+      </p>
+    </div>
+  </section>
+
+  <section id="cor-13-3-11" class="callout corollary" aria-labelledby="cor-13-3-11-title">
+    <h3 id="cor-13-3-11-title">Corollary 13.3.11</h3>
+    <div class="callout-body">
+      <p>
+        Let \(G\) be a finitely generated abelian group. Then there exist \(r,s \geqslant 0\), prime integers \(p_1, \ldots, p_s\), and positive integers \(e_i \geqslant 1\) such that
+      </p>
+      \[
+        G \cong \mathbb{Z}^r\oplus \mathbb{Z}/p_1^{e_1} \oplus \dots \oplus \mathbb{Z}/p_s^{e_s}.
+      \]
+      <p>
+        Moreover, \(r\), \(p_i\), and \(e_i\) are all uniquely determined by \(G\).
+      </p>
+    </div>
+  </section>
+
+</section>
+
+
 
 </main>
 <footer aria-label="Course footer" role="contentinfo">
