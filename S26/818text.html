@@ -2828,6 +2828,505 @@ In particular,
 </section>
 
 
+
+
+<section id="ch-13" class="chapter" aria-labelledby="ch-13-title">
+  <h1 id="ch-13-title">Chapter 13 Finitely generated modules over PIDs</h1>
+
+  <p>
+    We have seen that every module over a field is free. In contrast, whenever \(R\) is a commutative ring that is not a field, we can always construct modules that are not free. We will see that, however, every module is still a quotient of a free module. Describing that quotient explicitly is to give a presentation for the module, similarly to how we gave presentations for groups. We will study the particular case of finitely generated modules over PIDs in more detail.
+  </p>
+
+  <section id="sec-13-1" class="section" aria-labelledby="sec-13-1-title">
+    <h2 id="sec-13-1-heading">13.1 The module presented by a matrix</h2>
+
+    <p>
+      Writing a given \(R\)-module \(M\) as a quotient of a free module is giving a <strong>presentation</strong> for \(M\).
+      In 817, we studied presentations for groups; these consisted of a set of generators and a set (normal subgroup) of relations among these generators. Presentations are important for modules as well. In this case, the relations are encoded by a matrix, or equivalently by a homomorphism between a pair of free modules. We study below how the change of basis techniques can be applied to unravel the structure of a module starting with its presentation.
+    </p>
+
+    <section id="def-13-1-1" class="callout definition" aria-labelledby="def-13-1-1-title">
+      <h3 id="def-13-1-1-title">Definition 13.1.1</h3>
+      <div class="callout-body">
+        <p>
+          Let \(R\) be a commutative ring with \(1 \neq 0\), let \(A \in \mathrm{Mat}_{m,n}(R)\), and let \(t_A\!: R^n \to R^m\) be the \(R\)-module homomorphism represented by \(A\) with respect to the standard bases; i.e., the homomorphism given by the rule \(t_A(v)=Av\). The <strong>\(R\)-module presented by \(A\)</strong> is the \(R\)-module \(R^m/\mathrm{im}(t_A)\).
+        </p>
+      </div>
+    </section>
+
+    <p>
+      The \(R\)-module \(M\) presented by \(A \in \mathrm{Mat}_{m,n}(R)\) has \(m\) generators and \(n\) relations. Each row of \(A\) corresponds to a generator for \(M\), while each column encodes a relation among those generators. More precisely, the relations among the \(m\) generators are themselves <em>generated</em> by the \(n\) generators of \(\mathrm{im}(t_A)\), which are the images of the standard basis of \(R^n\) by \(t_A\).
+    </p>
+
+    <section id="ex-13-1-2" class="callout example" aria-labelledby="ex-13-1-2-title">
+      <h3 id="ex-13-1-2-title">Example 13.1.2</h3>
+      <div class="callout-body">
+        <p>
+          The \(\mathbb{Z}\)-module \(M = \mathbb{Z}/6\) is presented by
+        </p>
+        \[
+          \mathbb{Z} \xrightarrow{6} \mathbb{Z},
+        \]
+        <p>
+          since \(M \cong \mathbb{Z}/ \mathrm{im}(t_6) = \mathbb{Z}/(6)\). Notice here we abused notation and wrote \(6\) instead of the \(1 \times 1\) matrix \(\left[ 6 \right]\).
+        </p>
+      </div>
+    </section>
+
+    <section id="ex-13-1-3" class="callout example" aria-labelledby="ex-13-1-3-title">
+      <h3 id="ex-13-1-3-title">Example 13.1.3</h3>
+      <div class="callout-body">
+        <p>
+          Let \(R = k[x,y]\), where \(k\) is a field, and \(I = (x,y)\). The \(R\)-module \(M = R/I\) has \(1\) generator, \(m = 1+I\), so we can write a presentation for \(M\) of the form \(F \xrightarrow{p} R\) for some free module \(F\) and some \(R\)-module homomorphism \(p\). To find such an \(F\), we need to ask about the relations among the generators of \(M\). For any \(a \in I\), we have the relation \(am = 0\), so \(I\) is the <strong>module of relations</strong> for this presentation of \(M\).
+        </p>
+
+        <p>
+          How many generators does the module of relations have? In this case, we need \(2\): the relations \(xm = 0\) and \(ym=0\) generate <em>all</em> the relations, since for any \(a \in I\), we can write \(a = rx+sy\) for some \(x, y \in R\), and thus \(am = 0\) can be rewritten as \(r(xm) + s(ym) = 0\), which is a linear combination of the two relations \(xm=0\) and \(ym=0\). Finally, we have the following presentation for \(M\):
+        </p>
+
+        \[
+          R^2 \xrightarrow{\begin{bmatrix} x & y \end{bmatrix}} R.
+        \]
+        <p>
+          Indeed, the image of \(\begin{bmatrix} x & y \end{bmatrix}\) is \((x,y)\), and \(M \cong R/(x,y)\).
+        </p>
+      </div>
+    </section>
+
+    <p>
+      Conversely, we might be given a matrix and ask about what module it represents; one thing to keep in mind is that some presentations might be inefficient, either by having more generators or more relations than necessary. We want to answer to key questions: given a presentation for a module, how to find a more efficient presentation; and how to decide if two different presentations actually give us isomorphic modules. Keeping these goals in mind, let's try a more elaborate example.
+    </p>
+
+    <section id="ex-13-1-4" class="callout example" aria-labelledby="ex-13-1-4-title">
+      <h3 id="ex-13-1-4-title">Example 13.1.4</h3>
+      <div class="callout-body">
+        <p>
+          Consider the matrix
+        </p>
+        \[
+          A =
+          \begin{bmatrix}
+          2 & 1 & 0 \\
+          3 & 9 & 5 \\
+          1 & -2 & 7 \\
+          0 & 1 & 2 \\
+          \end{bmatrix}.
+        \]
+        <p>
+          What \(\mathbb{Z}\)-module \(M\) is presented by \(A\)?
+          Formally, \(M\) is the quotient module \(M=\mathbb{Z}^4/\mathrm{im}(t_A)\), where \(t_A \!:\mathbb{Z}^3 \to \mathbb{Z}^4\) is defined by \(t_A(v)=Av\). Since \(\mathbb{Z}^4\) is generated by its standard basis elements \(\{e_1,e_2,e_3,e_4\}\), we deduce as in Lemma \(\ref{lem:fg}\) that \(M=\mathbb{Z}^4/\mathrm{im}(t_A)\) is generated by the cosets of the \(e_i\). To keep the notation short, we set \(m_i=e_i+\mathrm{im}(t_A)\).
+        </p>
+
+        <p>
+          Let \(N=\mathrm{im}(t_A)\) and note that \(N\) is the submodule of \(\mathbb{Z}^4\) generated by the columns of \(A\):
+        </p>
+
+        \[
+          N=R\left\{\begin{bmatrix} 2 \\ 3 \\ 1\\ 0 \end{bmatrix}, \begin{bmatrix} 1 \\ 9 \\ -2 \\1 \end{bmatrix},\begin{bmatrix} 0 \\ 5 \\ 7\\2 \end{bmatrix}\right\}=R\{2e_1 + 3e_2 + e_3,e_1 + 9e_2 -2 e_3 + e_4, 5e_2 + 7 e_3 + 2 e_4  \}.
+        \]
+
+        <p>
+          Since \(N\) maps to \(0\) under the quotient map \(q\!:\mathbb{Z}^4\to M=\mathbb{Z}^4/N\), the relations of \(M\)
+          can be written as
+        </p>
+
+        \[
+          \begin{cases}
+          2m_1 + 3m_2 + m_3 & = 0 \\
+          m_1 + 9m_2 -2 m_3 + m_4 & = 0 \\
+          5m_2 + 7 m_3 + 2 m_4 & = 0.
+          \end{cases}
+        \]
+
+        <p>
+          We can now see that this is a rather inefficient presentation, since we can clearly use the first equation to solve for for \(m_3=-2m_1 - 3m_2\). This implies that \(M\) can be generated using only \(m_1, m_2\) and \(m_4\), that is
+        </p>
+
+        \[
+          M=R\{m_1,m_2,m_3,m_4\}=R\{m_1,m_2,m_4\}.
+        \]
+
+        <p>
+          This eliminates the first equation and the latter two become
+        </p>
+
+        \[
+          \begin{cases}
+          5m_1 + 15m_2 + m_4 & = 0 \\
+          -14m_2  -16m_2 + 2m_4 & = 0 \\
+          \end{cases}
+        \]
+
+        <p>
+          Now we can also eliminate \(m_4\), i.e  leaving just two generators \(m_1, m_2\) that satisfy
+        </p>
+
+        \[
+          -24m_1 -46m_2 = 0.
+        \]
+
+        <p>
+          Another way to do this is to look at the matrix \(A\) and use elementary row operations to ``make zeros&quot; on the 1st and 2nd columns, as follows:
+        </p>
+
+        \[
+          A =
+          \begin{bmatrix}
+          2 & 1 & 0 \\
+          3 & 9 & 5 \\
+          1 & -2 & 7 \\
+          0 & 1 & 2 \\
+          \end{bmatrix}
+          \rightarrow
+          \begin{bmatrix}
+          0 & 5 & -14 \\
+          0 & 15 & -16 \\
+          1 & -2 & 7 \\
+          0 & 1 & 2 \\
+          \end{bmatrix}
+          \rightarrow
+          \begin{bmatrix}
+          0 & 0 & -24 \\
+          0 & 0 & -46 \\
+          1 & 0 & 13\\
+          0 & 1 & 0 \\
+          \end{bmatrix}
+        \]
+
+        <p>
+          Eliminating the generators \(m_3\) and \(m_4\) amounts to dropping the first two columns (which are the 3rd and 4th standard basis vectors) as well as the last two rows. As we will prove soon, this shows that the \(\mathbb{Z}\)-module presented by \(A\) is isomorphic to the \(\mathbb{Z}\)-module presented by
+        </p>
+
+        \[
+          B=
+          \begin{bmatrix} -24 \\ - 46
+          \end{bmatrix}.
+        \]
+
+        <p>
+          We can go further. Set \(m_1' := m_1 + 2m_2\). Then \(m_1'\) and \(m_2\) also form a generating set of \(M\). The relation on \(m_1, m_2\) translates to
+        </p>
+
+        \[
+          -24m'_1  +2 m_2 = 0
+        \]
+        <p>
+          given by the matrix
+        </p>
+
+        \[
+          C = E_{2,1}(-2)B=
+          \begin{bmatrix} -24 \\ 2
+          \end{bmatrix}.
+        \]
+
+        <p>
+          Note that we have done a row operation (subtract twice row 1 from row 2) to get from \(B\) to \(C\).
+          Continuing in this fashion by adding 12 row 2 to row 1 we also form
+        </p>
+
+        \[
+          D = E_{1,2}(12)C=
+          \begin{bmatrix} 0 \\ 2
+          \end{bmatrix},
+        \]
+
+        <p>
+          The last matrix \(D\) presents the module \(M'=\mathbb{Z}^2/\mathrm{im}(t_D)\) with generators \(a, b\), where
+        </p>
+
+        \[
+          a=e_1+\mathrm{im}(t_D), \quad b=e_2+\mathrm{im}(t_D)
+        \]
+        <p>
+          and relation \(2a = 0\). This module \(M'\) is isomorphic to our original module \(M\). As we will see, this proves \(M \cong \mathbb{Z} \oplus \mathbb{Z}/2\). An explicit isomorphism between \(M'\) and \(\mathbb{Z} \oplus \mathbb{Z}/2\) is given by sending \(\mathbb{Z}^2\to \mathbb{Z} \oplus \mathbb{Z}/2\) by the unique \(\mathbb{Z}\)-module homomorphism defined by
+        </p>
+
+        \[
+          e_1\mapsto (1,0) \textrm{ and } e_2\mapsto (0,[1]_2).
+        \]
+
+        <p>
+          Now notice that the kernel of this homomorphism is the submodule \((2e_2)\mathbb{Z}=\mathrm{im}(t_D)\). Then the first isomorphism theorem gives
+          \(M'=\mathbb{Z}^2/\mathrm{im}(t_D)\cong \mathbb{Z} \oplus \mathbb{Z}/2\).
+        </p>
+      </div>
+    </section>
+
+    <section id="lem-13-1-5" class="callout lemma" aria-labelledby="lem-13-1-5-title">
+      <h3 id="lem-13-1-5-title">Lemma 13.1.5</h3>
+      <div class="callout-body">
+        <p>
+          Let \(R\) be a commutative ring with \(1 \neq 0\), \(A \in \mathrm{Mat}_{m,n}(R)\) and \(B \in M_{m',n'}(R)\) for some \(m,n,m',n' \geqslant 1\). Then \(A\) and \(B\) present isomorphic \(R\)-modules if \(B\) can be obtained from \(A\) by any finite sequence of operations of the following form:
+        </p>
+
+        <ol class="paren-list">
+          <li>an elementary row operation,</li>
+          <li>an elementary column operation,</li>
+          <li>deletion of the \(j\)th column and \(i\)th row of \(A\) if \(Ae_j = e_i\), that is, if the \(j\)th column of \(A\) is the vector \(e_i\),</li>
+          <li>the reverse of 3: insertion of a row and column satisfying \(Ae_j = e_i\),</li>
+          <li>deletion of a column of all \(0\)'s,</li>
+          <li>the reverse of 5: insertion of a column of all \(0\)s.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="proof-lem-13-1-5" class="callout proof" aria-labelledby="proof-lem-13-1-5-title">
+      <h3 id="proof-lem-13-1-5-title">Proof of Lemma 13.1.5</h3>
+      <div class="callout-body">
+        <p>
+          It is sufficient to show that each individual operation gives an isomorphism, as the composition of isomorphisms is an isomorphism.
+        </p>
+
+        <p>
+          For operations (1) and (2), consider matrices \(A\) and \(A'\) where \(A'\) is obtained from \(A\) by the given elementary row/column operation, and set \(M = R^m/\mathrm{im}(t_A)\) and \(M' = R^{m'}/\mathrm{im}(t_{A'})\). We need to prove that there is an isomorphism \(M \cong M'\).
+        </p>
+
+        <p>
+          In case (1), where we have an elementary row operation, let \(E\) be the corresponding elementary matrix. Since \(A' = E A\), the isomorphism \(E: R^n \to R^n\) maps \(\mathrm{im}(A)\) bijectively onto \(\mathrm{im}(A')\). Thus \(Q\) induces an isomorphism
+        </p>
+
+        \[
+          M = R^m/\mathrm{im}(t_A) \xrightarrow{\cong} R^m/\mathrm{im}(t_{A'}) = M'.
+        \]
+
+        <p>
+          In case (2), where we have an elementary column operation, let \(E\) be the corresponding elementary matrix. Since \(A'=AE\) and since \(E\) is an isomorphism, we have
+        </p>
+
+        \[
+          \mathrm{im}(t_{A'}) = \mathrm{im}(t_{AE})=\mathrm{im}(t_A\circ t_E)=\mathrm{im}(t_A)
+        \]
+        <p>
+          and so \(m=m'\) and \(M = R^m/\mathrm{im}(t_A) = R^{m'}/\mathrm{im}(t_{A'}) = M'\). In fact, note that for this one we get equality, not merely an isomorphism.
+        </p>
+
+        <p>
+          For case (3), we have \(m'=m-1\) and \(n'=n-1\).
+          Since \(R^m\) is free, by the <a href="#UMPfreemod">UMP for free modules</a> there is a unique \(R\)-module homomorphism
+          \(p\!: R^{m} \to R^{m-1}\) sending
+        </p>
+
+        \[
+          \begin{aligned}
+          e_1 \mapsto e'_1, & \ldots, e_{i-1} \mapsto e'_{i-1}\\
+          & e_i \mapsto 0\\
+          e_{i+1} \mapsto e'_{i}, & \ldots, e_{m} \mapsto e'_{m-1}
+          \end{aligned}
+        \]
+
+        <p>
+          Similarly, there is a unique \(R\)-module homomorphism \(q\!: R^{n} \to R^{n-1}\) sending
+        </p>
+
+        \[
+          \begin{aligned}
+          e_1 \mapsto e'_1, &\ldots, e_{j-1} \mapsto e'_{j-1}, \\
+          e_j &\mapsto 0, \\
+          e_{j+1} \mapsto e'_{j}, &\ldots, e_n \mapsto e'_{n-1}.
+          \end{aligned}
+        \]
+
+        <p>
+          Here the elements \(e_i\) are part of a standard basis for \(R^n\) or for \(R^m\), while the elements \(e'_i\) are part of a standard basis for \(R^{n-1}\) or for \(R^{m-1}\).
+          Then the diagram
+        </p>
+
+       \[
+\begin{array}{ccc}
+R^n & \xrightarrow{\;A\;} & R^m \\
+\Big\downarrow\rlap{\scriptstyle q} & & \Big\downarrow\rlap{\scriptstyle p} \\
+R^{n-1} & \xrightarrow{\;A'\;} & R^{m-1}
+\end{array}
+\]
+
+        <p>
+          commutes by the definition of \(A'\). In particular, \(p(\mathrm{im}(t_A)) \subseteq \mathrm{im}(t_{A'})\) and so \(p\) induces an \(R\)-module homomorphism
+        </p>
+
+        \[
+          \overline{p}\!: M \to M',
+        \]
+        <p>
+          and we claim \(\overline{p}\) is bijective.
+        </p>
+
+        <p>
+          Since \(p\) is onto, so is \(\overline{p}\). Suppose \(m \in \ker(\overline{p})\). Then \(m = v + \mathrm{im}(t_A)\) for some \(v \in R^m\) and \(p(v) \in \mathrm{im}(t_{A'})\). Say \(p(v) = A' w\). Since \(q\) is onto, \(w = q(u)\) for some \(u\). Then
+        </p>
+
+        \[
+          p(v - Au) = p(v) - pA(u) = p(v) - A'q(u) = p(v) - A'w = p(v) - p(v) = 0,
+        \]
+
+        <p>
+          and thus \(v - Au \in \ker(p)\). Now, the kernel of \(p\) is
+          clearly \(Re_i\), so that \(v - Au = re_i\) for some \(r\). Finally, since \(Ae_j = e_i\), we have \(A(re_j) = re_i = v - Au\) and hence \(v = A(u + re_j)\), which proves
+          \(v=t_A(u+re_j) \in \mathrm{im}(t_A)\) and hence that  \(m = 0\).
+        </p>
+
+        <p>
+          For (5), it is clear that the columns of \(A'\) generate the same submodule of \(R^m\) as do the columns of \(A\), and thus \(M = M'\).
+        </p>
+
+        <p>
+          Finally, for operations (4) and (6), since the isomorphism relation is reflexive, the statements of parts (3) and (5) show that parts (4) and (6) are true as well.
+        </p>
+      </div>
+    </section>
+  </section>
+</section>
+
+
+
+
+<section id="sec-13-2" class="section" aria-labelledby="sec-13-2-title">
+  <h2 id="sec-13-2-heading">13.2 Existence of presentations</h2>
+
+  <p>
+    Which modules have presentations? If we take this in a broad sense, the answer is every module.
+  </p>
+
+  <section id="thm-13-2-1" class="callout theorem" aria-labelledby="thm-13-2-1-title">
+    <h3 id="thm-13-2-1-title">Theorem 13.2.1</h3>
+    <div class="callout-body">
+      <p>
+        Let \(R\) be a ring and \(M\) be a module. Then there exist free modules \(F,G\) and a homomorphism \(\alpha\colon G\to F\) such that \(M\cong F/ \mathrm{im}(\alpha)\).
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-thm-13-2-1" class="callout proof" aria-labelledby="proof-thm-13-2-1-title">
+    <h3 id="proof-thm-13-2-1-title">Proof of Theorem 13.2.1</h3>
+    <div class="callout-body">
+      <p>
+        Let \(S\) be a generating set for \(M\), and let \(F= F_R(S)\) be the free module with basis \(S\). By the UMP for free modules, there is a unique homomorphism \(\phi\) such that for each \(s\in S\), \(\phi(s) =s\). Since \(S\) generates \(M\), this map is surjective by an Exercise from earlier.
+      </p>
+
+      <p>
+        Let \(K=\ker(\phi)\), and let \(S'\) be a generating set for \(K\). Set \(G=F_R(S')\) to be the free module with basis \(S'\). By the UMP for free modules again, there is a unique \(\alpha\colon G\to F\) such that for each \(s'\in S'\), \(\alpha(s') =s'\). We claim that \(\mathrm{im}(\alpha) = K\) (left as an exercise).
+      </p>
+
+      <p>
+        Thus, the First Isomorphism Theorem, \(M\cong F/K = F/\mathrm{im}(\alpha)\).
+      </p>
+    </div>
+  </section>
+
+  <p>
+    Suppose that \(R\) is commutative. In the setting of the previous Theorem, if \(F\) is free of rank \(m\), and \(G\) is free of finite rank \(n\), then by picking bases for \(F\) and \(G\), we can rewrite \(\alpha:G\to F\) as \(t_A: R^n \to R^m\) for some matrix \(A\).
+  </p>
+
+  <p>
+    Since this would yield \(m\) generators for \(M\), this can only happen if \(M\) is finitely generated. This in general does not suffice to guarantee that there will only be finitely many generators for the submodule of relations.
+  </p>
+
+  <p>
+    It might seem like no submodule of a finitely generated module could ever fail to itself be finitely generated, but indeed this happens!
+  </p>
+
+  <section id="ex-13-2-2" class="callout example" aria-labelledby="ex-13-2-2-title">
+    <h3 id="ex-13-2-2-title">Example 13.2.2</h3>
+    <div class="callout-body">
+      <p>
+        Let \(k\) be a field and \(R = k[x_1, x_2, \ldots]\) be a polynomial ring in infinitely many variables. When we think of \(R\) as a module over itself, it is finitely generated, by the element \(1\). However, there are submodules of \(R\) that are not finitely generated: for example, the ideal \((x_1, x_2, \ldots)\) generated by all the variables.
+      </p>
+    </div>
+  </section>
+
+We will need the following fact.
+
+  <section id="ex-13-2-3" class="callout exercise" aria-labelledby="ex-13-2-3-title">
+    <h3 id="ex-13-2-3-title">Exercise 13.2.3</h3>
+    <div class="callout-body">
+      <p>
+        Let \(M\) be a module and \(N\) be a submodule. If \(N\) and \(M/N\) are finitely generated, then \(M\) is finitely generated.
+    </div>
+  </section>
+
+
+
+  <section id="thm-13-2-4" class="callout theorem" aria-labelledby="thm-13-2-4-title">
+    <h3 id="thm-13-2-4-title">Theorem 13.2.4</h3>
+    <div class="callout-body">
+      <p>
+        Let \(R\) be a PID. Then every submodule of a finitely generated module is also finitely generated.
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-thm-13-2-4" class="callout proof" aria-labelledby="proof-thm-13-2-3-title">
+    <h3 id="proof-thm-13-2-4-title">Proof of Theorem 13.2.4</h3>
+    <div class="callout-body">
+      <p>
+        We will first prove that for each \(n \geqslant 1\), every submodule of \(R^n\) is finitely generated. The base case \(n=1\) holds by the definition, since a submodule of \(R^1\) is the same thing as an ideal of \(R\), and every ideal is generated by one element.
+        Assume \(n &gt; 1\) and that every submodule of \(R^{n-1}\) is finitely generated. Let \(M\) be any submodule of \(R^n\). Define
+      </p>
+      \[
+        \pi\!: R^n \twoheadrightarrow R^1
+      \]
+      <p>
+        to be the projection onto the last component of \(R^n\). The kernel of \(\pi\) may be identified with \(R^{n-1}\), and so \(N := \ker(\pi) \cap M\) is a submodule of \(R^{n-1}\). By assumption, \(N\) is finitely generated. The image \(\pi(M)\) is a submodule of \(R^1\), that is, an ideal of \(R\), and so it too is principal. Furthermore, by the First Isomorphism Theorem \(M/\ker(\pi)\cong \pi(M)\).
+        By the Exercise above, we deduce that \(M\) is a finitely generated module.
+      </p>
+
+      <p>
+        Now let \(T\) be any finitely generated \(R\)-module and \(N \subseteq T\) any submodule. Since \(T\) is finitely generated, there exists a surjective \(R\)-module homomorphism \(q\!: R^n \twoheadrightarrow T\) for some \(n\). Then \(q^{-1}(N)\) is a submodule of \(R^n\) and hence it is finitely generated by the case we already proved, say by element \(v_1, \dots , v_m \in q^{-1}(N)\). We claim that \(q(v_1), \dots, q(v_m)\) generate \(N\). Given any \(a \in N\), since \(q\) is surjective we can find some \(b \in q^{-1}(N)\) such that \(q(b) = a\). Since \(v_1, \ldots, v_m\) generated \(q^{-1}(N)\), we can find \(c_1, \ldots, c_m \in R\) such that
+      </p>
+      \[
+        b = c_1 v_1 + \cdots + c_m v_m \implies c_1 q(v_1) + \cdots + c_m q(v_m) = q(c_1 v_1 + \cdots + c_m v_m) = q(b) = a.
+      \]
+    </div>
+  </section>
+
+  <section id="thm-13-2-5" class="callout theorem" aria-labelledby="thm-13-2-5-title">
+    <h3 id="thm-13-2-5-title">Theorem 13.2.5</h3>
+    <div class="callout-body">
+      <p>
+        Any finitely generated module \(M\) over a PID \(R\) has a finite presentation given by an \(m \times n\) matrix \(A\), that is, there is an isomorphism
+      </p>
+      \[
+        M\cong R^m/\mathrm{im}(t_A),
+      \]
+      <p>
+        where \(t_A\!: R^n \to R^m\) is the map on free modules \(t_A(v)=Av\) induced by \(A\).
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-thm-13-2-5" class="callout proof" aria-labelledby="proof-thm-13-2-4-title">
+    <h3 id="proof-thm-13-2-5-title">Proof of Theorem 13.2.5</h3>
+    <div class="callout-body">
+      <p>
+        Let \(M\) be a finitely generated module over a PID. We follow the argument of Theorem~\ref{presentation-thm}. Choose a finite generating set \(y_1, \dots y_m\) of \(M\) and obtain an \(R\)-module map
+        \(\pi\!: R^m \to M\)
+        that sends \(e_i\) to \(y_i\), by using the \hyperref[UMPfreemod]{UMP for free modules}. Since every element in \(M\) is given as a linear combination of the \(y_i\), the map \(\pi\) is surjective. Notice, however, that this representation as a linear combination of the \(y_i\) is not necessarily unique, so \(\pi\) might have a nontrivial kernel.
+      </p>
+
+      <p>
+        Since \(R^m\) is finitely generated and \(R\) is a PID, the submodule \(\ker(\pi)\) is also finitely generated, say by \(z_1, \dots, z_n\). This too leads to a
+        surjective \(R\)-module map \(g\!: R^n \to \ker(\pi)\) that sends \(e_i \mapsto z_i\).
+        The composition of \(g\!: R^n \twoheadrightarrow \ker(\pi)\) followed by the inclusion of \(\iota\!: \ker(\pi) \hookrightarrow R^m\) is an \(R\)-module homomorphism \(t=\iota \circ g:R^n \to R^m\) and hence by the correspondence between matrices and homomorphisms, we know \(t\) is given by a \(m \times n\) matrix \(A=[t]_B^C\) with respect to the standard bases of \(R^m\) and \(R^n\) respectively, meaning \(t=t_A\).
+      </p>
+
+      <p>
+        It remains to show that \(M\cong R^m/\mathrm{im}(t_A)\). First note that since \(t_A=\iota \circ g\) and \(g\) is surjective we have
+      </p>
+      \[
+        \mathrm{im}(t_A)=\mathrm{im}(\iota \circ g)=\iota(\mathrm{im}(g))=\iota(\ker(\pi))=\ker(\pi).
+      \]
+      <p>
+        By the First Isomorphism Theorem we now have
+      </p>
+      \[
+        M = \mathrm{im}(\pi)\cong R^m/\ker(\pi)= R^m/\mathrm{im}(t_A).
+      \]
+    </div>
+  </section>
+</section>
+
+
+
 </main>
 <footer aria-label="Course footer" role="contentinfo">
 <p>© 2026 Math 818 — Introduction to Modern Algebra II</p>

@@ -8757,7 +8757,7 @@ We have seen that every module over a field is free. In contrast, whenever $R$ i
 
 
 
-\section{Presentations of modules}
+\section{The module presented by a matrix}
 
 Writing a given $R$-module $M$ as a quotient of a free module is giving a {\bf presentation} for $M$.
 In 817, we studied presentations for groups; these consisted of a set of generators and a set (normal subgroup) of relations among these generators. Presentations are important for modules as well. In this case, the relations are encoded by a matrix, or equivalently by a homomorphism between a pair of free modules. We study below how the change of basis techniques can be applied to unravel the structure of a module starting with its presentation.
@@ -8960,18 +8960,26 @@ For (5), it is clear that the columns of $A'$ generate the same submodule of $R^
 Finally, for operations (4) and (6), since the isomorphism relation is reflexive, the statements of parts (3) and (5) show that parts (4) and (6) are true as well.
 \end{proof}
 
+\section{Existence of presentations}
+
  
 Which modules have presentations? If we take this in a broad sense, the answer is every module.
 
 
-\begin{theorem}
-Let $R$ be a ring and $M$ be a module. Then there exists a free module $F$ and a submodule $G\subseteq F$ such that $M\cong F/G$.
+\begin{theorem}\label{presentation-thm}
+Let $R$ be a ring and $M$ be a module. Then there exist free modules $F,G$ and a homomorphism $\alpha\colon G\to F$ such that $M\cong F/ \mathrm{im}(\alpha)$. 
 \end{theorem}
 \begin{proof}
-Let $S$ be a generating set for $M$, and let $F_R(S)$ be the free module with basis $S$. By the UMP for free modules, there is a unique homomorphism $\phi$ such that for each $s\in S$, $\phi(s) =s$. Since $S$ generates $M$, this map is surjective by an Exercise from earlier. Thus, the First Isomorphism Theorem, $M\cong F_R(S)/\ker(\phi)$.
+Let $S$ be a generating set for $M$, and let $F= F_R(S)$ be the free module with basis $S$. By the UMP for free modules, there is a unique homomorphism $\phi$ such that for each $s\in S$, $\phi(s) =s$. Since $S$ generates $M$, this map is surjective by an Exercise from earlier. 
+
+Let $K=\ker(\phi)$, and let $S'$ be a generating set for $K$. Set $G=F_R(S')$ to be the free module with basis $S'$. By the UMP for free modules again, there is a unique $\alpha\colon G\to F$ such that for each $s'\in S'$, $\alpha(s') =s'$. We claim that $\mathrm{im}(\alpha) = K$ (left as an exercise).
+
+Thus, the First Isomorphism Theorem, $M\cong F/K = F/\mathrm{im}(\alpha)$.
 \end{proof} 
 
-If we want to make the presentation be finite (that is, so that the matrix describing the module has finitely many rows and columns) then we need to restrict ourselves to finitely generated modules. This in general does not suffice to guarantee that there will only be finitely many generators for the submodule of relations.
+Suppose that $R$ is commutative. In the setting of the previous Theorem, if $F$ is free of rank $m$, and $G$ is free of finite rank $n$, then by picking bases for $F$ and $G$, we can rewrite $\alpha:G\to F$ as $t_A: R^n \to R^m$ for some matrix $A$.
+
+Since this would yield $m$ generators for $M$, this can only happen if $M$ is finitely generated. This in general does not suffice to guarantee that there will only be finitely many generators for the submodule of relations.
 
 It might seem like no submodule of a finitely generated module could ever fail to itself be finitely generated, but indeed this happens! 
 
@@ -9011,8 +9019,8 @@ $$M\cong R^m/\mathrm{im}(t_A),$$
 where $t_A\!: R^n \to R^m$ is the map on free modules $t_A(v)=Av$ induced by $A$.
 \end{theorem}
 
-\begin{proof}
-Let $M$ be a finitely generated module over a PID. We start by following the general argument we described in \Cref{section mods quotients of free mods}: we choose a finite generating set $y_1, \dots y_m$ of $M$ and obtain an $R$-module map
+\begin{proof} 
+Let $M$ be a finitely generated module over a PID. We follow the argument of Theorem~\ref{presentation-thm}. Choose a finite generating set $y_1, \dots y_m$ of $M$ and obtain an $R$-module map
 $\pi\!: R^m \to M$
 that sends $e_i$ to $y_i$, by using the \hyperref[UMPfreemod]{UMP for free modules}. Since every element in $M$ is given as a linear combination of the $y_i$, the map $\pi$ is surjective. Notice, however, that this representation as a linear combination of the $y_i$ is not necessarily unique, so $\pi$ might have a nontrivial kernel. 
 
@@ -9222,6 +9230,7 @@ If a greatest common divisor exists, then it is unique up to associates. If $R$ 
 Let $R$ be a PID and $A \in \mathrm{Mat}_{m,n}(R)$. We define $\gcd(A)$ to be a gcd of the entries of $A$. We adopt the convention that if $A$ is the matrix of all zeroes, then $\gcd(A) = 0$.
 \end{definition}
 
+We will use the following fact that you proved in the Homework.
  
  \begin{lemma}
  Let $R$ be a commutative ring. Let $A \in \mathrm{Mat}_{m,n}(R)$ be any matrix and let $P \in \mathrm{Mat}_m(R)$ and $Q \in \mathrm{Mat}_n(R)$ be invertible matrices. Then for any $t\geq 0$, we have $I_t(A) = I_t(PAQ)$, where $I_t$ denotes the ideal generated by all $t\times t$ minors of a matrix.
