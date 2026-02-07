@@ -95,7 +95,23 @@ Likewise, the same holds for swapping any two entries.
 \end{enumerate}
 
 
-\
+\solution{
+\begin{enumerate}
+\itema We have 
+\[ \det \begin{bmatrix} r_1 & 0 & \cdots & 0 \\ 0 & r_2 & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & r_n\end{bmatrix} = \det( r_1 e_1 , r_2 e_2 , \dots, r_n e_n) = r_1 r_2 \cdots r_n \det(e_1,e_2,\dots,e_n) = r_1 r_2 \cdots r_n.\]
+\itema Say $v_1 = \sum_{j>1 } r_j v_j$; then 
+\[ \det( \sum_{j>1 } r_j v_j, v_2,\dots,v_n) = \sum_{j>1 } r_j \det(v_j, v_2,\dots,v_n) = 0.\]
+A similar argument applies when another entry is a sum of the others.
+\itema Note that if one column is a linear combination of the others that the columns are linearly dependent, and conversely, if the columns are linearly dependent, since $F$ is a field, one can solve for one of the columns as a linear combination of the others. Now we claim that if the columns of $A$ are linearly independent, then $A$ is invertible. Indeed, if the columns are linearly independent then the kernel of the linear transformation $t_A: F^n \to F^n$ of multiplication by $A$ is zero (since a vector in the null space gives a dependence relation on the columns), and the dimension of the image is $n$ by Rank-Nullity, so $t_A$ is bijective, and hence an isomorphism. Thus $A$ has an inverse, given by the matrix of the inverse of $t_A$ in the standard bases.
+
+Thus, if $A$ is not invertible, some columns of $A$ is a linear combination of the others, and $\det(A)=0$ by part (b).
+\itema We have
+\[\begin{aligned} 0 &=\det(v_1+v_2,v_1+v_2, \dots) = \det(v_1+v_2,v_1,\dots) +  \det(v_1+v_2,v_2,\dots) \\
+&=  \det(v_1,v_1,\dots) +  \det(v_1,v_2,\dots) +  \det(v_2,v_1,\dots) +  \det(v_2,v_2,\dots) \\
+&=  \det(v_1,v_2,\dots) +  \det(v_2,v_1,\dots)\end{aligned}\]
+and the claim follows.
+\end{enumerate}
+}
 
 
 \itemB Uniqueness part of Theorem 1:
@@ -130,11 +146,22 @@ Likewise, the same holds for swapping any two entries.
 
 \itemA  Use Theorem 1 to prove the Proposition.
 
-\
+\solution{Write $A= \begin{bmatrix} v_1 & v_2 & \cdots & v_n\end{bmatrix}$. 
+
+Say that $B$ is obtained from $A$ by adding $r$ times column $1$ to column $2$. Then $B= \begin{bmatrix} v_1 & v_2 + r v_1 & \cdots & v_n\end{bmatrix}$ and 
+\[ \det(B) = \det(\begin{bmatrix} v_1 & v_2  & \cdots & v_n\end{bmatrix}) +  r \det(\begin{bmatrix} v_1 & v_1 & \cdots & v_n\end{bmatrix} ) = \det(A).\]
+Similarly for $i$ and $j$ in place of $1$ and $2$.
+
+Say that $B$ is obtained from $A$ by multiplying column $1$ by $u$. Then
+$B= \begin{bmatrix} u v_1 & v_2  & \cdots & v_n\end{bmatrix})$ and 
+\[ \det(B)= \det(\begin{bmatrix} u v_1 & v_2  & \cdots & v_n\end{bmatrix}) = u \det(A).\]
+Similarly for general $i$.
+
+The column swap operation was 1(d).}
 
 \itemA Use the Proposition (and not the definition) to compute $\mathrm{det} \begin{bmatrix} 1 & 2 & 3 \\ 2 & 5 & 8 \\ 3 & 7 & 13 \end{bmatrix} \in \mathrm{Mat}_{3\times 3}(\Q)$.
 
-\
+\solution{$2$}
 
 \itemA Proof of Theorem 2 in the case $R=F$ is a field:
 \begin{enumerate}
@@ -145,7 +172,16 @@ Likewise, the same holds for swapping any two entries.
 \itema Complete the proof of Theorem 2 in the field case.
 \end{enumerate}
 
-\
+\solution{
+\begin{enumerate}
+\itema Recall that $AE$ is the matrix obtained from $A$ by an elementary column operation of the same ``type''. Moreover, $E$ is the matrix obtained from the identity by the same elementary column operation. Thus, when $E$ is type I, we have $\det(E) = 1$ and $\det(AE) = \det(A)$ by the Proposition, so the claim holds. We check type II and type III in the same way.
+\itema Let $B= E_1 \dots E_n$. By part (a) and induction on $n$, we have $\det(B) = \det(E_1) \cdots \det(E_n)$, and also by part (a) and induction on $n$, we have $\det(AB) = \det(A) \det(E_1) \cdots \det(E_n)$, so $\det(AB) = \det(A) \det(B)$.
+\itema If $A$ and $B$ are invertible, then $(AB)B^{-1}A^{-1} = B^{-1} A^{-1} (AB) = I$. If $AB$ is invertible, then $A (B (AB)^{-1}) = I$ implies that $t_A$ is surjective, and hence bijective by a Rank-Nullity argument akin to 1(c). Similarly, $((AB)^{-1} A) B = I$ implies that $t_B$ is injective, and hence surjective by a Rank-Nullity argument akin to 1(c).
+\itema If $A$ is invertible, then $A$ is a product of elementary matrices, which all have nonzero determinant, so $\det(A)\in F^\times$ by (b). If $A$ is not invertible, then $\det(A)=0$ by 1(c).
+\itema The case where $\det(A)=0$ or $\det(B)=0$ follows from (c) and (d). The case where $\det(A)\neq 0$ and $\det(B)\neq 0$ follows from (d) and (b).
+\end{enumerate}
+
+}
 
 \itemB Prove that $\det(A)=\det(A^T)$.
 
