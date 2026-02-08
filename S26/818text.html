@@ -173,6 +173,11 @@
 <li><a href="#sec-12-3-title">Change of basis</a></li>
 <li><a href="#sec-12-4-title">Determinants</a></li>
 </ol>
+<li><a href="#sec-13">Finitely generated modules over PIDs</a></li>
+<ol><li><a href="#sec-13-1-heading">The module presented by a matrix</a></li>
+<li><a href="#sec-13-2-title">Existence of presentations</a></li>
+<li><a href="#sec-13-3-title">Classification of finitely generated modules over PIDs</a></li>
+</ol>
 
 </ol>
 </ul></nav>
@@ -499,7 +504,7 @@ is a submodule of \(M\). If \(\{A_i \ | \ i\in I\}\) is a collection of submodul
   <section class="callout exercise" role="region" aria-labelledby="ex-11-2-7">
     <h3 id="ex-11-2-7">Exercise 11.2.7</h3>
     <p>
-      Let \(R\) be a commutative ring with \(1\neq 0\), let \(I\) be an ideal of \(R\) and let \(M\) be an \(R\)-module. Show that
+      Let \(R\) be a commutative ring , let \(I\) be an ideal of \(R\) and let \(M\) be an \(R\)-module. Show that
       \[
         IM := \left\{\sum_{k=1}^n j_km_k \mid n \geqslant 0, j_k \in I, m_k \in M \text{ for } 1 \leqslant k \leqslant n \right\}
       \]
@@ -746,7 +751,7 @@ An \(R\)-module homomorphism is also called an <strong>\(R\)-linear</strong> map
   <section class="callout lemma" role="region" aria-labelledby="lem-11-3-12">
     <h3 id="lem-11-3-12">Lemma 11.3.12</h3>
     <p>
-      For any commutative ring \(R\) with \(1\neq 0\) and any \(R\)-module \(M\) there is an isomorphism of \(R\)-modules \(\mathrm{Hom}_R(R,M)\cong M\).
+      For any commutative ring \(R\)  and any \(R\)-module \(M\) there is an isomorphism of \(R\)-modules \(\mathrm{Hom}_R(R,M)\cong M\).
     </p>
   </section>
 
@@ -1359,7 +1364,7 @@ K &\longmapsto K/N .
   <section class="callout definition" role="region" aria-labelledby="def-11-4-17">
     <h3 id="def-11-4-17">Definition 11.4.17</h3>
     <p>
-      Let \(R\) be a commutative ring with \(1\neq 0\) and let \(M\) be a free \(R\)-module. The <strong>rank</strong> of \(M\) is the cardinality of any basis of \(M\).
+      Let \(R\) be a commutative ring  and let \(M\) be a free \(R\)-module. The <strong>rank</strong> of \(M\) is the cardinality of any basis of \(M\).
     </p>
   </section>
 
@@ -1922,7 +1927,7 @@ Since \(\mathbb{Q}\) is a subring of \(\mathbb{R}\), we have that \(\mathbb{R}\)
     <h3 id="def-12-2-1-title">Definition 12.2.1 (The matrix of a homomorphism between free modules)</h3>
     <div class="callout-body">
       <p>
-        Let \(R\) be a commutative ring with \(1\neq 0\).
+        Let \(R\) be a commutative ring .
         Let \(V\) be a finitely generated free \(R\)-module of rank \(n\), and let \(W\) be a finitely generated free \(R\)-module of rank \(m\). Let \(B=\{b_1, \dots, b_n\}\) and \(C=\{c_1, \dots, c_m\}\) be <em>ordered</em> bases of \(V,W\).
         Given an \(R\)-module homomorphism \(f: V \to W\), we define elements \(a_{ij}\in R\) for \(1 \leqslant i \leqslant m\) and \(1 \leqslant j \leqslant n\) by the formulas
       </p>
@@ -2066,7 +2071,7 @@ Since \(\mathbb{Q}\) is a subring of \(\mathbb{R}\), we have that \(\mathbb{R}\)
     <h3 id="prop-12-2-7-title">Proposition 12.2.7</h3>
     <div class="callout-body">
       <p>
-        Let \(R\) be a commutative ring with \(1\neq 0\). Let \(V\) and \(W\) be finitely generated free \(R\)-modules of ranks \(n\) and \(m\) respectively. Fixing ordered bases \(B\) for \(V\) and \(C\) for \(W\) gives an isomorphism of \(R\)-modules
+        Let \(R\) be a commutative ring . Let \(V\) and \(W\) be finitely generated free \(R\)-modules of ranks \(n\) and \(m\) respectively. Fixing ordered bases \(B\) for \(V\) and \(C\) for \(W\) gives an isomorphism of \(R\)-modules
       </p>
       \[
         \mathrm{Hom}_R(V, W) \cong \mathrm{Mat}_{m,n}(R) \qquad f\mapsto [f]_B^C.
@@ -2950,7 +2955,7 @@ We also have the following:
         \]
 
         <p>
-          We can now see that this is a rather inefficient presentation, since we can clearly use the first equation to solve for for \(m_3=-2m_1 - 3m_2\). This implies that \(M\) can be generated using only \(m_1, m_2\) and \(m_4\), that is
+          We can now see that this is a rather inefficient presentation, since we can clearly use the first equation to solve for \(m_3=-2m_1 - 3m_2\). This implies that \(M\) can be generated using only \(m_1, m_2\) and \(m_4\), that is
         </p>
 
         \[
@@ -2964,7 +2969,7 @@ We also have the following:
         \[
           \begin{cases}
           5m_1 + 15m_2 + m_4 & = 0 \\
-          -14m_2  -16m_2 + 2m_4 & = 0 \\
+          -14m_1  -16m_2 + 2m_4 & = 0 \\
           \end{cases}
         \]
 
@@ -2999,8 +3004,8 @@ We also have the following:
           \begin{bmatrix}
           0 & 0 & -24 \\
           0 & 0 & -46 \\
-          1 & 0 & 13\\
-          0 & 1 & 0 \\
+          1 & 0 & 11\\
+          0 & 1 & 2 \\
           \end{bmatrix}
         \]
 
@@ -3309,9 +3314,9 @@ We will need the following fact.
     <h3 id="proof-thm-13-2-5-title">Proof of Theorem 13.2.5</h3>
     <div class="callout-body">
       <p>
-        Let \(M\) be a finitely generated module over a PID. We follow the argument of Theorem~\ref{presentation-thm}. Choose a finite generating set \(y_1, \dots y_m\) of \(M\) and obtain an \(R\)-module map
+        Let \(M\) be a finitely generated module over a PID. We follow the argument of Theorem 13.2.1. Choose a finite generating set \(y_1, \dots y_m\) of \(M\) and obtain an \(R\)-module map
         \(\pi\!: R^m \to M\)
-        that sends \(e_i\) to \(y_i\), by using the \hyperref[UMPfreemod]{UMP for free modules}. Since every element in \(M\) is given as a linear combination of the \(y_i\), the map \(\pi\) is surjective. Notice, however, that this representation as a linear combination of the \(y_i\) is not necessarily unique, so \(\pi\) might have a nontrivial kernel.
+        that sends \(e_i\) to \(y_i\), by using the UMP for free modules. Since every element in \(M\) is given as a linear combination of the \(y_i\), the map \(\pi\) is surjective. Notice, however, that this representation as a linear combination of the \(y_i\) is not necessarily unique, so \(\pi\) might have a nontrivial kernel.
       </p>
 
       <p>
