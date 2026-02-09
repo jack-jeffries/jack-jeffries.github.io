@@ -3077,8 +3077,8 @@ We also have the following:
         </p>
 
         <ol class="paren-list">
-          <li>an elementary row operation,</li>
-          <li>an elementary column operation,</li>
+          <li>\(B=PA\) for some invertible matrix \(P\); for example, an elementary row operation,</li>
+          <li>\(B=AQ\) for some invertible matrix \(Q\); for example, an elementary column operation,</li>
           <li>deletion of the \(j\)th column and \(i\)th row of \(A\) if \(Ae_j = e_i\), that is, if the \(j\)th column of \(A\) is the vector \(e_i\),</li>
           <li>the reverse of 3: insertion of a row and column satisfying \(Ae_j = e_i\),</li>
           <li>deletion of a column of all \(0\)'s,</li>
@@ -3095,27 +3095,16 @@ We also have the following:
         </p>
 
         <p>
-          For operations (1) and (2), consider matrices \(A\) and \(A'\) where \(A'\) is obtained from \(A\) by the given elementary row/column operation, and set \(M = R^m/\mathrm{im}(t_A)\) and \(M' = R^{m'}/\mathrm{im}(t_{A'})\). We need to prove that there is an isomorphism \(M \cong M'\).
+          We start with (2). Since \(Q\) is invertible, \(t_Q\) is an invertible homomorphism, so \(t_Q\) is surjective. Then \(\mathrm{im}(t_{AQ}) = \mathrm{im}(t_A \circ t_Q) = \mathrm{im}(t_A)\). Thus \(R^m/ \mathrm{im}(t_{AQ}) = R^m / \mathrm{im}(t_{A})\). Note that we have equality and not just isomorphism in this case.
         </p>
 
         <p>
-          In case (1), where we have an elementary row operation, let \(E\) be the corresponding elementary matrix. Since \(A' = E A\), the isomorphism \(E: R^n \to R^n\) maps \(\mathrm{im}(A)\) bijectively onto \(\mathrm{im}(A')\). Thus \(Q\) induces an isomorphism
+          In case (1), the map \(t_P : R^m \to R^m\) is an isomorphism. We have \(t_P (\mathrm{im}(t_A)) = \mathrm{im}(t_{PA})\). Then the map
+\[ R^m \xrightarrow{t_P} R^m \xrightarrow{\pi} R^m / \mathrm{im}(t_{PA})\]
+is surjective with kernel \(\mathrm{im}(t_A)\), so there is an isomorphism \(R^m/\mathrm{im}(t_A) \con R^m/ \mathrm{im}(t_{PA})\) by the First Isomorphism Theorem.
         </p>
 
-        \[
-          M = R^m/\mathrm{im}(t_A) \xrightarrow{\cong} R^m/\mathrm{im}(t_{A'}) = M'.
-        \]
 
-        <p>
-          In case (2), where we have an elementary column operation, let \(E\) be the corresponding elementary matrix. Since \(A'=AE\) and since \(E\) is an isomorphism, we have
-        </p>
-
-        \[
-          \mathrm{im}(t_{A'}) = \mathrm{im}(t_{AE})=\mathrm{im}(t_A\circ t_E)=\mathrm{im}(t_A)
-        \]
-        <p>
-          and so \(m=m'\) and \(M = R^m/\mathrm{im}(t_A) = R^{m'}/\mathrm{im}(t_{A'}) = M'\). In fact, note that for this one we get equality, not merely an isomorphism.
-        </p>
 
         <p>
           For case (3), we have \(m'=m-1\) and \(n'=n-1\).

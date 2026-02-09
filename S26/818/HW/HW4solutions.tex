@@ -106,16 +106,23 @@ There are multiple possibilities. One is
 \begin{proof} We recall that applying an ERO to $M$ is the same as replacing $M$ by $EM$, where $E$ is the matrix obtained by applying the same operation to the identity matrix; the same holds for a column operation except with $ME$. Thus, let 
 \[ E_{i} = \begin{bmatrix} [2] & 0 \\ 0 & [1] \end{bmatrix}, \ E_{ii} = \begin{bmatrix} [1] & -x \\ 0 & [1] \end{bmatrix}, \ \text{and} \  E_{iii}= \begin{bmatrix} [1] & x+[1] \\ 0 & [1] \end{bmatrix}.\]
 We then have $A' = E_{ii} E_{i} A E_{iii}$, so we can take
-\[ P = E_{ii} E_{i} = \begin{bmatrix} [2] & 0 \\ x & [1] \end{bmatrix}, \ \text{and} \ Q=E_{iii}.\]
+\[ P = E_{ii} E_{i} = \begin{bmatrix} [2] & 0 \\ x & [1] \end{bmatrix}, \ \text{and} \ Q=E_{iii}.\qedhere\]
 \end{proof}
 \item Using your transformations from (a), find bases $B, C$ for $R^2$ such that $[t_A]_B^C = A'$.
 \begin{proof}
-We first reinterpret each of our elementary matrices as a change of basis matrix for an elementary operation. Let $D=\{d_1,d_2\}$ be a basis for $R^2$.
+Recall that any elementary matrix is a change of basis matrix for an elementary basis change operation. Let $B_0$ be the standard basis for $R^2$. Then we can write
+\[ A' = E_{ii} E_i A E_{iii} = [\mathrm{id}_{R^2}]_{C_1}^{C_2} [\mathrm{id}_{R^2}]_{B_0}^{C_1} [t_A]_{B_0}^{B_0} [\mathrm{id}_{R^2}]^{B_0}_{B_1} = [t_A]_{B_1}^{C_2}\]
+for some bases $B_1,C_1,C_2$.
+
+We reinterpret each of our elementary matrices as a change of basis matrix. 
 \begin{enumerate}[(i)]
-\item  $E_i$ is the change of basis matrix $[\mathrm{id}_{R^2}]_{D'}^D$ where $D'=\{[2] d_1, d_2\}$.
-\item $E_{ii}$ is the change of basis matrix $[\mathrm{id}_{R^2}]_{D'}^D$ where $D'=\{d_1, d_2\}$.
-\item Add $x+[1]$ times column $1$ to column $2$. \qedhere
+\item  $E_i$ is the change of basis matrix $[\mathrm{id}_{R^2}]_{D'}^D$ where $D'=\{[2] d_1, d_2\}$. Setting $D'=B_0= \{e_1,e_2\}$, we have that $D=C_1$ is given by $\{2e_1,e_2\}$.
+\item $E_{ii}$ is the change of basis matrix $[\mathrm{id}_{R^2}]_{D'}^D$ where $D'=\{d_1, d_2 -x d_1\}$. Setting $D'=C_1 = \{[2]e_1,e_2\}$, we have that $D=C_2 = \{[2]e_1, e_2 + [2]x e_1\}$.
+\item $E_{iii}$ is the change of basis matrix $[\mathrm{id}_{R^2}]_{D'}^D$ where $D'=\{d_1 + (x+[1])d_2, d_2\}$. Setting $D=B_0 = \{e_1, e_2\}$, we have that $D'=B_1=\{ e_1 + (x+[1]) e_2, e_2\}$. 
 \end{enumerate}
+Thus, 
+\[ B = \left\{ \begin{bmatrix} [1] \\ x+[1] \end{bmatrix} , \begin{bmatrix} [0] \\ [1] \end{bmatrix}\right\} \quad \text{and} \quad C= \left\{ \begin{bmatrix} [2] \\ [0] \end{bmatrix} , \begin{bmatrix} [2]x \\ [1] \end{bmatrix}\right\}.\qedhere\]
+\end{proof}
 \end{enumerate}
 
 
@@ -125,19 +132,47 @@ We first reinterpret each of our elementary matrices as a change of basis matrix
 Let $R$ be a commutative ring. We say that two matrices $A,B\in \mathrm{Mat}_{m\times n}(R)$ are \textbf{row equivalent} if there exists a sequence of elementary row operations that transforms $A$ into $B$. 
 \begin{enumerate}[(a)]
 \item Prove that row equivalence is an equivalence relation.
+  \begin{proof} Let $\sim$ denote row equivalence. Note that $A \sim B$ if and only if $B = E_r \cdots E_1 A$ for some elementary matrices $E_1, \dots, E_r$.
+    $A \sim A$ since the identity map is an elementary matrix (e.g., it's $E_1(1)$.) 
+    If $A \sim B$, then $B = E_r \cdots E_1 A$ for some elementary matrices $E_1, \dots, E_r$ and hence $A = E_1^{-1} \cdots E_r^{-1} B$ and, since  the inverse of an elementary
+    matrix is an elementary matrix (shown in class), this proves $B \sim A$. If $A \sim B$ and $B \sim C$ then
+    $B = E_r \cdots E_1 A$ and $C = E_s \cdots E_{r+1} B$     for some elementary matrices $E_1, \dots, E_r, E_{r+1}, \dots, E_s$ and hence $C = E_s \cdots E_1 A$ so that $A \sim
+    C$.
+  \end{proof}
+
 \item Suppose that every invertible matrix over $R$ is a product of elementary matrices over $R$. (We stated in class that this is true over any field.) Prove that every invertible $n \times n$ matrix over $R$ is row equivalent to the $n \times n$ identity matrix.
+
+\begin{proof}
+We show by induction on $m$ that any product $E_m E_{m-1} \cdots E_1$ of elementary matrices is row equivalent to the identity matrix. For $m=1$, we noted this in class (alternatively, we check the three cases). If the claim holds for some $m$, consider a product of the form $E_{m+1} E_m E_{m-1} \cdots E_1$. Then $E_m E_{m-1} \cdots E_1$ is row equivalent to $I$, and $E_{m+1} (E_m E_{m-1} \cdots E_1)$ is row equivalent to $E_m E_{m-1} \cdots E_1$, so the claim follows from part (a).
+\end{proof}
 \item Give an example of two $n \times n$ matrices over $\mathbb{R}$ that have the same rank\footnote{\textsc{Definition:} For a matrix $A\in \mathrm{Mat}_{m\times n}(F)$ over a field $F$ we define the \textbf{rank} of $A$ to be the rank of the linear transformation $t_A\colon F^n\to F^m$ given by $t_A(v) = Av$.} but are not row equivalent.
+\begin{proof}
+One can take $A=\begin{bmatrix} 1 & 0\end{bmatrix}$ and $B= \begin{bmatrix} 0 &1\end{bmatrix}$ in $\mathrm{Mat}_{1\times 2}(\mathbb{R})$. No row operation can turn $A$ into a matrix with a nonzero second entry.
+\end{proof}
 \end{enumerate}
 \end{problem}
 
-\newpage 
+
 
 \begin{problem} Let $R$ be a commutative ring. For a matrix $M$ with entries in $R$, a $\boldsymbol{t\times t}$ \textbf{minor} of $M$ is a determinant $\det(M')$ of a matrix $M'$ obtained from selecting $t$ rows and $t$ columns of $M$.
 We\footnote{You can use Proposition 12.4.9 and Exercise 12.4.10 without proof.} write $I_t(M)$ for the ideal of $R$ generated by all $t\times t$ minors of $M$.
 \begin{enumerate}[(a)]
 \item Let $A$ be an $m\times k$ matrix and $B$ be a $k\times n$ matrix. Let $t\leq \min\{m,k,n\}$. Show that $I_t(AB) \subseteq I_t(A)$.
+\begin{proof}
+By definition $I_t(AB)$ is generated by all the determinants of matrices obtained from $AB$ by choosing a subset $I \subseteq\{1,\dots,m\}$ of size $t$, a subset $J=\subseteq \{1,\dots, n\}$ of size $t$, and taking $(AB)'$ as the submatrix of $AB$ with rows $I$ and columns $J$. It suffices to show that $\det((AB)')\in I_t(A)$ for any such $I,J$, since $I_t(AB)$ is the unique smallest ideal containing all of these elements.
+
+Let $A'$ be the $t\times k$ submatrix of $A$ with rows $I$, and let $B'$ be the $k\times t$ submatrix of $B$ with columns $J$. Note that $(AB)' = A' B'$. Then by a Proposition from class, we have $\det(A'B')\in I_t(A')$, and by definition, we have $I_t(A')\subseteq I_t(A)$. This shows the claim.
+\end{proof}
+
 \item In the same setting as part (a), show that $I_t(AB) \subseteq I_t(B)$.
+\begin{proof} 
+Note that $(AB)^T = B^T A^T$. Since determinants are preserved by transposes, using part (a) we have \[I_t(AB) = I_t((AB)^T) \subseteq I_t(B^T A^T) \subseteq I_t(B^T) =I_t(B).\qedhere\]
+\end{proof}
 \item Let $A$ be an $m\times n$ matrix. Let $P$ be an invertible $m\times m$ matrix and $Q$ be an invertible $n\times n$ matrix. Let $t\leq \min\{m,n\}$. Show that $I_t(A) = I_t(PAQ)$.
+\begin{proof} Using part (a) and part (b) we have
+\[ I_t(PAQ) = I_t(P(AQ)) \subseteq I_t(AQ) \subseteq I_t(A).\]
+Writing $A = P^{-1} (PAQ) Q^{-1}$ and applying the same argument we also get $I_t(A) \subseteq I_t(PAQ)$. Thus, equality holds.
+\end{proof}
 \end{enumerate}
 \end{problem}
 
@@ -147,6 +182,11 @@ We\footnote{You can use Proposition 12.4.9 and Exercise 12.4.10 without proof.} 
 \begin{enumerate}[(a)]
 \item Prove that
 \[ \mathrm{rank}(A)=\min\{ t\geq 1 \ | \ A=BC \ \text{for some} \ B\in \mathrm{Mat}_{m\times t}(F), \ C\in \mathrm{Mat}_{t\times n}(F)\}.\]
+\begin{proof}
+To show the inequality ($\leq$) it suffices to find such matrices $BC$ of the appropriate size. Let $a_1,\dots,a_n$ be the columns of $A$ and $t$ be the rank of $A$. Let $v_1,\dots,v_t$ be a basis for $\mathrm{im}(t_A)$ and set $C$ to be the matrix with columns $v_1,\dots,v_t$. We can write $v_i = \sum_{j} b_{ij}$ for some $b_{ij}\in F$. Then $A=BC$.
+
+For the other inequality, note that $\mathrm{im}(t_{BC}) \subseteq \mathrm{im}(t_B)$, and by Rank-Nullity, ${\dim( \mathrm{im}(t_B))\leq t}$. 
+\end{proof}
 \item Prove that
 \[ \mathrm{rank}(A)=\max\{ t\geq 1 \ | \  I_t(A) \neq 0\}.\]
 \end{enumerate}

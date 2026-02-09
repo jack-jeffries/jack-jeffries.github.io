@@ -1,0 +1,140 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=.9in]{geometry}
+\usepackage{paralist,amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals}
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\solutione}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{leaf}This solution is embargoed.}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+
+\newcommand{\rsa}{\rightsquigarrow}
+
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+
+\DeclareMathOperator{\ord}{ord}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{Smith Normal Form}
+	
+\begin{framed}
+\textsc{Theorem (Smith Normal Form):} Let $R$ be a PID. Let $A\in \mathrm{Mat}_{m\times n}(R)$.
+\begin{enumerate}
+\item[(i)] There exist invertible matrices $P,Q$ such that
+\begin{itemize}
+\item $PAQ=D$ is diagonal, meaning $d_{ij}=0$ whenever $i\neq j$, and
+\item $d_{11} \, | \, d_{22} \, | \, \cdots \, | \, d_{tt}$, where $d_{tt}$ is the last nonzero diagonal entry.
+\end{itemize}
+\item[(ii)]  The elements $d_{ii}$ are unique up to associate, meaning that if $D'=[d'_{ij}]$ is another diagonal matrix as in (1), then for each $d'_{ii}$ is a unit times $d_{ii}$.
+\item[(iii)]  If $R$ is a Euclidean domain, then $P,Q$ can be taken to be products of elementary matrices.
+\end{enumerate}
+
+\
+
+\textsc{Structure Theorem for Finitely Generated Modules over PIDs (Invariant Factor Form):} Let $R$ be a PID. Let $M$ be a finitely generated $R$-module. Then there exist $r,t\geq 0$ and $a_1, \dots, a_t\in R$ such that
+\begin{itemize}
+\item $M\cong R^r \oplus R/(a_1) \oplus R/(a_2) \oplus \cdots  \oplus R/(a_t)$, and
+\item $a_1 \, | \, a_2 \, | \, \cdots \, | \, a_t$.
+\end{itemize}
+Moreover, each $a_i$ is uniquely determined up to associates.   
+ \end{framed}
+
+\begin{enumerate}
+\itemA Let $R$ be a commutative ring, and $D\in \mathrm{Mat}_{m\times n}(R)$ be a diagonal matrix with nonzero diagonal entries $d_{11},\dots,d_{tt}$. Prove that the module presented by $D$ is
+\[ R/(d_{11}) \oplus R/(d_{22}) \oplus \cdots \oplus R/(d_{tt}) \oplus R^{m-t}.\]
+
+\
+
+\itemA Use the Smith Normal Form Theorem to deduce the Structure Theorem for Finitely Generated Modules over PIDs (Invariant Factor Form).
+
+\
+
+\itemA State the Structure Theorem for Finitely Generated Abelian Groups (Invariant Factor Form), and deduce it from the PID Theorem.
+
+\
+
+\itemA Let $R$ be a Euclidean domain. Use the Smith Normal Form Theorem to deduce that any invertible matrix over $R$ is a product of elementary matrices.
+
+\
+
+\itemA Prove\footnote{Hint: In HW\#4, you proved that $I_t(PAQ)=I_t(A)$ for invertible matrices $P,Q$.} the uniqueness part of Smith Normal Form Theorem.
+
+\
+
+\end{enumerate}
+
+\begin{framed}
+\textsc{Definition:} Let $R$ be a domain and $M$ be an $R$-module. We say that $M$ is \textbf{torsionfree} if for $r\in R$ and $m\in M$, $rm=0$ implies $r=0$ or $m=0$.
+ \end{framed}
+ 
+ \begin{enumerate}\setcounter{enumi}{5}
+ \itemA Let $R$ be a PID.
+ \begin{enumerate}
+ \itema Show that any finitely generated torsionfree $R$-module is free.
+ \itema Prove or disprove: any torsionfree $R$-module is free.
+ \end{enumerate}
+ \end{enumerate}
+ 
+ \newpage
+
+
+\begin{framed}
+\textsc{Structure Theorem for Finitely Generated Modules over PIDs (Elementary Divisor Form):} Let $R$ be a PID. Let $M$ be a finitely generated $R$-module. Then there exist $r,s\geq 0$ and prime elements $p_1, \dots, p_s\in R$ such that
+ $M\cong R^r \oplus R/(p_1^{e_1}) \oplus \cdots  \oplus R/(p_s^{e_s})$, and
+Moreover, the list $p_1^{e_1},\dots,p_s^{e_s}$ is unique up to reordering and associates.
+ \end{framed}
+
+
+
+
+
+
+\end{document}
