@@ -73,8 +73,8 @@
 \vspace{3em}
 
 \begin{center}
-	{\LARGE Problem Set 4 \\}
-	Due Thursday, February 11
+	{\LARGE Problem Set 5 \\}
+	Due Thursday, February 19
 \end{center}
 
 \
@@ -89,21 +89,69 @@ I will post the .tex code for these problems for you to use if you wish to type 
 
 \smallskip
 
+\begin{problem} Let $R$ be a commutative ring. Let $D=[d_{ij}] \in \mathrm{Mat}_{m\times n}(R)$. Suppose that $d_{11},\dots,d_{tt}\neq 0$ for some $t\leq \min\{m,n\}$, and that every other entry of $D$ is zero. Let $M$ be the module presented by $D$.
+\begin{enumerate}[(a)]
+\item Show that $M$ is isomorphic to
+\[ R^{m-t} \oplus R/(d_{11}) \oplus \cdots \oplus R/(d_{tt}).\]
+ \item Suppose that $d_{11} \ | \ \cdots \ | \ d_{tt}$. Give a formula for the annihilator of $M$ in terms of $m,n,t$ and the entries $d_{ii}$.
+ \end{enumerate}
+ \end{problem}
+ 
+ \
+
+\begin{problem} Let $R$ be a domain. An $R$-module $M$ is \textbf{torsionfree} if for $r\in R$ and $m\in M$, we have $rm=0$ implies $r=0$ or $m=0$.
+\begin{enumerate}[(a)]
+\item Show that if $R$ is a PID and $M$ is a finitely generated torsionfree module, them $M$ is free.
+\item Give an example of a torsionfree module $M$ over a PID $R$ such that $M$ is not free.
+\item Give an example of a finitely generated torsionfree module $M$ over a domain $R$ such that $M$ is not free.
+\end{enumerate}
+\end{problem}
+
+\
+
 
 \begin{problem}
-Let $R=\ZZ[X]$ and let $f:R^2 \to R$ be the linear transformation $f\left( \begin{bmatrix} p \\ q\end{bmatrix}\right) = 2p+Xq$. Show that there do not exist basis $B$ for $R^2$ and $C$ for $R$ and $r\in R$ for which $[f]_B^C = \begin{bmatrix} r & 0 \end{bmatrix}$.
+Let $K$ be a field, and $G$ be a finite subgroup of $K^\times$. Show\footnote{Hint: Consider the elementary divisors of $G$, and let $e$ be the largest one. Show that every element of $G$ is a root of the polynomial $x^e-1 \in K[x]$.}\footnote{Note that as a special case of this, $(\Z/p)^\times$ is cyclic.} that $G$ is cyclic.
 \end{problem}
 
+
+\newpage
 
 \begin{problem}
-Let $K$ be a field, and $G$ be a finite subgroup of $K^\times$. Show that $G$ is cyclic.
+Let 
+\[ A = \begin{bmatrix}75&-51&5&-26\\
+-112&74&8&36\\
+-36&24&0&12\end{bmatrix} \in \mathrm{Mat}_{3\times 4}(\Z).\]
+Let $t_A$ be the $\Z$-module homomorphism $v\mapsto Av$.
+ The Smith Normal Form is given by $A=PDQ$ where
+\[ P= \begin{bmatrix}
+1&1&-2\\
+0&1&3\\
+0&0&1
+\end{bmatrix}, \ D=\begin{bmatrix}
+1&0&0&0\\
+0&2&0&0\\
+0&0&12&0
+\end{bmatrix}, \ \text{and} \ Q=\begin{bmatrix}
+7&-5&-3&-2\\
+-2&1&4&0\\
+-3&2&0&1\\
+0&0&1&0
+\end{bmatrix}.\]
+The inverses of $P$ and $Q$ are given by
+\[ P^{-1} = \begin{bmatrix}
+1&-1&5\\
+0&1&-3\\
+0&0&1
+\end{bmatrix} \  \text{and} \  Q^{-1} = \begin{bmatrix} -1&-1&-2&1\\
+-2&-1&-4&-2\\
+0&0&0&1\\
+1&-1&3&7
+\end{bmatrix}.\]
 \end{problem}
-Note that $(\Z/p)^\times$ is cyclic, as a consequence of this.
-
-
-\begin{problem} Prove\footnote{Hint: \begin{itemize}
-\item Fix a basis $B$ for $F$. Let $\mathcal{P}= \{ A \subseteq B \ | \ RA \cap M \ \text{is free}\}$. Show that $\mathcal{P}$ has a maximal element.
-\item Let $A\in \mathcal{P}$ be a maximal element, and suppose that there is some $b\in B\smallsetminus A$. Consider the map ${\pi\colon R(A\cup \{b\}) \cap M \to R}$ that maps an element to its $b$-coefficient.
-\end{itemize}} that if $R$ is a PID, $F$ is a free module, and $M\subseteq F$ is a submodule (not necessarily finitely generated) then $M$ is free.
-\end{problem}
+\begin{enumerate}[(a)]
+\item Find the simplest representative, up to isomorphism, of the module presented by $A$.
+\item Find a basis for $\mathrm{im}(t_A) \subseteq \Z^3$.
+\item Find a basis for $\mathrm{ker}(t_A) \subseteq \Z^4$.
+\end{enumerate}
 \end{document}
