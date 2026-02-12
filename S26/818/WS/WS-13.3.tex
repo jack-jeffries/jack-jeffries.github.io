@@ -2,7 +2,7 @@
 
 
 \usepackage{times}
-\usepackage[margin=.9in]{geometry}
+\usepackage[margin=1in]{geometry}
 \usepackage{paralist,amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals}
 \usepackage[outline]{contour}
 \contourlength{.4pt}
@@ -73,8 +73,8 @@
 \item $PAQ=D$ is diagonal, meaning $d_{ij}=0$ whenever $i\neq j$, and
 \item $d_{11} \, | \, d_{22} \, | \, \cdots \, | \, d_{tt}$, where $d_{tt}$ is the last nonzero diagonal entry.
 \end{itemize}
-\item[(ii)]  The elements $d_{ii}$ are unique up to associate, meaning that if $D'=[d'_{ij}]$ is another diagonal matrix as in (1), then for each $d'_{ii}$ is a unit times $d_{ii}$.
-\item[(iii)]  If $R$ is a Euclidean domain, then $P,Q$ can be taken to be products of elementary matrices.
+\item[(ii)]  The elements $d_{ii}$ are unique up to associate, meaning that if $D'=[d'_{ij}]$ is another diagonal matrix as in (i), then for each $d'_{ii}$ is a unit times $d_{ii}$.
+\item[(iii)]  If $R$ is a Euclidean domain, then $P,Q$ can be taken as products of elementary matrices.
 \end{enumerate}
 
 \
@@ -106,11 +106,6 @@ Moreover, each $a_i$ is uniquely determined up to associates.
 \itemA Let $R$ be a Euclidean domain. Use the Smith Normal Form Theorem to deduce that any invertible matrix over $R$ is a product of elementary matrices.
 
 \
-
-\itemA Prove\footnote{Hint: In HW\#4, you proved that $I_t(PAQ)=I_t(A)$ for invertible matrices $P,Q$.} the uniqueness part (ii) of Smith Normal Form Theorem.
-
-\
-
 \end{enumerate}
 
 \begin{framed}
@@ -119,13 +114,13 @@ Moreover, each $a_i$ is uniquely determined up to associates.
  
  \
  
- \begin{enumerate}\setcounter{enumi}{5}
- \itemA Let $R$ be a PID.
+ \begin{enumerate}\setcounter{enumi}{4}
+ \itemB Let $R$ be a PID.
  \begin{enumerate}
- \itema Show that any finitely generated torsionfree $R$-module is free.
- \itema Show that any submodule of a finitely generated free $R$-module is free.
- \itema Prove or disprove: any torsionfree $R$-module is free.
- \itemb Prove or disprove: any submodule of a free $R$-module is free.
+ \itemb Show that any finitely generated torsionfree $R$-module is free.
+ \itemb Show that any submodule of a finitely generated free $R$-module is free.
+ \itemb Prove or disprove: any torsionfree $R$-module is free.
+ \itemc Prove or disprove: any submodule of a free $R$-module is free.
  \end{enumerate}
  \end{enumerate}
  
@@ -138,7 +133,33 @@ Moreover, each $a_i$ is uniquely determined up to associates.
 Moreover, the list $p_1^{e_1},\dots,p_s^{e_s}$ is unique up to reordering and associates.
  \end{framed}
 
+\begin{enumerate}
+\setcounter{enumi}{5}
+\itemA Converting between forms:
+\begin{enumerate}
+\item[] To convert a cyclic module $R/(a)$ to elementary divisor form, write $f=p_1^{e_1}\cdots p_s^{e_s}$ as a product of prime powers, and use CRT get
+\[ R/a \cong R/{p_1^{e_1}} \oplus \cdots \oplus \Z/{p_s^{e_s}}.\]
+\itema Convert the $\R[x]$-module
+\[ \R[x]^2 \oplus \R[x]/(x-1) \oplus \R[x]/(x-1)^2 \oplus \R[x]/((x-1)^2 (x+1))\]
+to elementary divisor form.
+\item[] To convert a module from elementary divisor form to invariant factor form, 
+\begin{itemize} 
+\item For each distinct prime $p_j$ occurring, take the largest power $E_j$ it has in an elementary divisor, and combine and combine $\bigoplus_j R/ p_j^{E_j} \cong \Z/(p_1^{E_1} \cdots p_\ell^{E_\ell})$ via CRT. If there's more than one copy of  $R/p_j^{E_j}$, just take one of the copies and leave the rest.
+\item Repeat with the remaining factors.
+\end{itemize}
+\itema Convert $\R[x] / (x) \oplus \R[x] / (x^2) \oplus \R[x]/(x-3) \oplus \R[x] / (x-7)^3$ to invariant factor form.
+\end{enumerate}
 
+\
+
+\itemB Uniqueness of Smith Normal Form:
+\begin{enumerate}
+\itemb Let $D$ be a diagonal matrix and $d_{11} \ | \ d_{22} \ | \ \cdots \ | \ d_{tt}$. Show that $I_r(D) = ( d_{11} \cdots d_{rr} )$.
+\itemb Prove the uniqueness of the Smith Normal Form.
+\end{enumerate} 
+\end{enumerate} 
+
+\
 
 
 
