@@ -9275,44 +9275,42 @@ Then $\begin{bmatrix} 1 & -q \\ 0 & 1\end{bmatrix}  P$ is the product we seek.
 By transposing the matrices in \Cref{lemma gcd move by invertible}, we can show that there exists an invertible $2 \times 2$ matrix $Q$ such that
 $$\begin{bmatrix} x & y\end{bmatrix} Q = \begin{bmatrix} g & 0 \end{bmatrix}.$$
 
-The following Lemma is the key step in the proof existence of the Smith Normal Form.
 
-\begin{lemma} Let $R$ be a PID and let $A \in \mathrm{Mat}_{m,n}(R)$. There exist invertible matrices $P$ and $Q$ such that $PAQ$ is of the form
- $$\begin{bmatrix}
-g & 0 \\
-0 & B \\
-\end{bmatrix}$$
-for some $(n-1) \times (m-1)$ matrix $B$, where $g = \gcd(A)$, and if $R$ is Euclidean, $P$ and $Q$ are products of elementary matrices.
-\end{lemma}
 
 \begin{proof}
-let $a$ be the upper left $(1,1)$ entry of $A$. First, we are going to show that we can turn $A$ into a matrix of the form
-$$\begin{bmatrix}
-* & 0 \\
-0 & B \\
-\end{bmatrix}$$
-with the same gcd as $A$. If $a$ happens to divide all the entries on the first row and column, then we can simply apply elementary row and column operations to get to the desired form. Suppose there exists $b$ on the first column such that $a \nmid b$. Then we may apply an elementary row operation switching rows so that $b=a_{2,1}$ is on the first column, second row. By \Cref{lemma gcd move by invertible}, we can now find an invertible matrix $C \in \mathrm{Mat}_2(R)$ such that
-$$C \begin{bmatrix} a \\ b \end{bmatrix} = \begin{bmatrix} \gcd(a,b) \\ 0 \end{bmatrix},$$
-and in the Euclidean case, this is a product of elementary matrices.
-Consider the $m\times m$ matrix
-$$P := \begin{bmatrix}	 C & 0 \\ 0 & I_{m-2} \end{bmatrix}.$$
-Note that $PA$ has $(PA)_{1,1} = \gcd(a,b)$ and $(PA)_{2,1} = 0$, so this step replaces $a$ by $\gcd(a,b)$ and $b$ by $0$. By \Cref{lemma gcd stays the same}, $\gcd(PA) = \gcd(A)$. We can keep repeating this until the top left corner entry divides every entry on the first column, and this process must stop after at most $m-1$ steps, since there are only $m$ elements on the first column.
+We show the existence of such matrices $P$, $Q$ in steps.
 
-Similarly, if there exists $b$ on the first row that $a$ does not divide, we can repeat this process by instead multiplying $A$ on the left by an invertible matrix, until we zero out all the remaining entries on the first row and column.
-Finally, we arrive at a matrix of the form 
-$$\begin{bmatrix}
-a & 0 \\
-0 & B \\
-\end{bmatrix}.$$
-If $a = \gcd(A)$, we are done. If not, then we can find some entry $b=a_{i,j}$ such that $a \nmid b$. We can then add the $j$th column to the first column, which puts $b$ into the first column without affecting $a$, since the remainder of the top row is zero. But this brings us back to the previous situation, and we have already shown that we can replace the top left corner by $\gcd(a,b)$.
 
-At each step, we replace $a$ by some $c$ with is both a divisor of $a$ and a multiple of $\gcd(A)$. Our ring $R$ is a UFD, so there are finitely many factors of $a/\gcd(A)$, and this process must stop. This shows that we can eventually replace $A$ by
-$$\begin{bmatrix}
-\gcd(A) & 0 \\
-0 & B \\
-\end{bmatrix}.$$
+\textbf{Step 1:} There exists an invertible  (elementary, if $R$ is Euclidean) matrix $P'$ such that $P' A = A'$ with $A'$ of the form 
+\[\begin{bmatrix} a & ? & \cdots & ? \\ 0 & ? & \cdots & ? \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & ? & \cdots & ? \end{bmatrix},\]
+with $a$ the gcd of column $1$ of $A$.
+
+We can replace the first two entries of the first column by their gcd and $0$, using the Lemma (completing such a matrix to the right size). Then we apply the same thing to the first and third entries of the first column, and continue for each entry.
+
+\textbf{Step 2:} There exists an invertible  (elementary, if $R$ is Euclidean) matrix $Q'$ such that $A' Q' = A''$ with $A''$ of the form 
+\[\begin{bmatrix} a & 0 & \cdots & 0 \\ 0 & ? & \cdots & ? \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & ? & \cdots & ? \end{bmatrix},\]
+with $a$ the gcd of row $1$ of $A'$.
+
+This follows from the same approach as Step 2.
+
+\textbf{Step 3:} There exist invertible (elementary, if $R$ is Euclidean) matrices $P'',Q''$ such that $P'' A Q'' = A_1$ with $A_1$ of the form 
+\[\begin{bmatrix} a & 0 & \cdots & 0 \\ 0 & ? & \cdots & ? \\
+\vdots & \vdots & \ddots & \vdots \\
+0 & ? & \cdots & ? \end{bmatrix},\]
+with $a$ the gcd of the starting matrix $A$.
+
+Applying Step 1 and Step 2, if $a$ is the gcd of the starting matrix $A$, then we're done. Otherwise proceed by induction on the number of prime factors of $a/\gcd(A)$. Let $p$ be an irreducible factor of $a/\gcd(A)$. Then $p$ does not divide some entry $b$ of $A$. After an elementary column operation, we can bring this element to the first column of $A$, without affecting the top left entry. Then applying Step 2 again, we can replace $a$ with $\gcd(a,b)$, and this strictly divides $a$. By induction we are done.
+
+
+\textbf{Step 4:} Completing existence proof.
+We have a block matrix of the form $\begin{bmatrix} a_1 & 0 \\ 0 & B_1\end{bmatrix}$, where $a_1 = \gcd(A)$ divides every element of $B_1$, so $a_1 \ | \ \gcd(B_1)$. Now we can apply Step 3 to $B$ without affecting the first row and column. This gives us
+\[ \begin{bmatrix} a_1 & 0 & 0 \\ 0 & a_2 & 0 \\ 0 & 0 & B_2 \end{bmatrix}\]
+where $a_2= \gcd(B_1)$ and $a_2 \ | \ \gcd(B_2)$. This ends in a matrix of the form we seek.
 \end{proof}
-
 
 
 We are now finally ready to show that every matrix over a PID can be put into Smith Normal Form.
