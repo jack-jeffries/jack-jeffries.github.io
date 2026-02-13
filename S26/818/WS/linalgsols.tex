@@ -29,6 +29,13 @@
 
 \newcommand{\rsa}{\rightsquigarrow}
 
+\newcommand{\T}{{\color{leaf}TRUE}}
+\newcommand{\F}{{\color{chianti}FALSE}}
+
+\newcommand{\E}{{\color{meretale}EUC}}
+
+\newcommand{\Tt}{{\color{orange}TRUE}}
+\newcommand{\FE}{{\color{orange}F}/{\color{meretale}EUC} }
 
 \newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
 \newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
@@ -70,63 +77,63 @@
 	\section*{Linear algebra review}
 
 	
-	\begin{framed}Determine whether each statement is true when $R$ is a field, is a PID, or is an arbitrary commutative ring (CR). Throughout, $M, N$ are $R$-modules and $A, B$ are matrices. We write $M\subseteq N$ to mean $M$ is an $R$-submodule of $N$.\end{framed}
+	\begin{framed}Determine whether each statement is true when $R$ is a field, is a PID, or is an arbitrary commutative ring (CR). Throughout, $M, N$ are $R$-modules and $A, B$ are (finite) matrices. We write $M\subseteq N$ to mean $M$ is an $R$-submodule of $N$.\end{framed}
 	
 	\
 	
 	\begin{tabular}{l|c|c|c|}
 	& Field & PID & CR \\ 
 	\hline
-(1) Every $M$ is free. &&&\\ 
+(1) Every $M$ is free. &\T&\F&\F\\ 
 	\hline
-(2) If $M$ is torsionfree, then $M$ is free.&&&\\ 
+(2) If $M$ is torsionfree, then $M$ is free.&\T&\F&\F\\ 
 	\hline
-(3) If $M$ is finitely generated and torsionfree, then $M$ is free.&&&\\ 
+(3) If $M$ is finitely generated and torsionfree, then $M$ is free.&\T&\T&\F\\ 
 	\hline
-(4) If $M$ is finitely generated and free and $N\subseteq M$, then $N$ is free. &&&\\ 
+(4) If $M$ is finitely generated and free and $N\subseteq M$, then $N$ is free. &\T&\T&\F\\ 
 	\hline
-(5) If $M$ is finitely generated and $N\subseteq M$, then $N$ is fin.~generated.&&&\\ 
+(5) If $M$ is finitely generated and $N\subseteq M$, then $N$ is finitely~generated.&\T&\T&\F\\ 
 	\hline
-(6) If $M$ is finitely generated, $N\subseteq M$, and $N\cong M$, then $N=M$.&&&\\ 
+(6) If $M$ is finitely generated, $N\subseteq M$, and $N\cong M$, then $N=M$.&\T&\F&\F\\ 
 	\hline
-(7) If $M$ is finitely generated and $f:M\to M$ is injective, then $f$ is an iso.&&&\\ 
+(7) If $M$ is finitely generated and $f:M\to M$ is injective, then $f$ is an iso.&\T&\F&\F\\ 
 	\hline
-(8) If $M$ is finitely generated and $f:M\to M$ is surjective, then $f$ is an iso.&&&\\
+(8) If $M$ is finitely generated and $f:M\to M$ is surjective, then $f$ is an iso.&\T&\T&\Tt\\
 	\hline
-(9) If $M$ is a free module and $N\subseteq M$, then $N$ is free.&&&\\
+(9) If $M$ is a free module and $N\subseteq M$, then $N$ is free.&\T&\Tt&\F\\
 	\hline
 
-(10) For any matrix $A$ there are invertible $P,Q$ s.t.~$PAQ$ is diagonal.&&&\\
+(10) For any matrix $A$ there are invertible $P,Q$ s.t.~$PAQ$ is diagonal.&\T&\T&\F\\
 	\hline
-(11) Any matrix $A$ can be turned into a diagonal matrix with EROs and ECOs.&&&\\
+(11) Any matrix $A$ can be turned into a diagonal matrix with EROs and ECOs.&\T&\FE&\F\\
 	\hline
-(12) Any invertible matrix $A$ can be turned into a diagonal matrix with EROs.&&&\\
+(12) Any invertible matrix $A$ can be turned into a diagonal matrix with EROs.&\T&\FE&\F\\
 	\hline
-(13) Any matrix $A$ can be turned into a diagonal matrix with EROs.&&&\\
+(13) Any matrix $A$ can be turned into a diagonal matrix with EROs.&\F&\F&\F\\
 	\hline
-(14) An $n\times n$ matrix $A$ is invertible if and only if $\det(A)\neq 0$.&&&\\
+(14) An $n\times n$ matrix $A$ is invertible if and only if $\det(A)\neq 0$.&\T&\F&\F\\
 	\hline
-(15) An $n\times n$ matrix $A$ is invertible if and only if the columns of $A$ are LI.&&&\\
+(15) An $n\times n$ matrix $A$ is invertible if and only if the columns of $A$ are LI.&\T&\F&\F\\
 	\hline
-(16) An $n\times n$ matrix $A$ is invertible if and only if $\exists B$ with $AB=I_n$.&&&\\
+(16) An $n\times n$ matrix $A$ is invertible if and only if $\exists B$ with $AB=I_n$.&\T&\T&\Tt\\
 	\hline
-(17) An $n\times n$ matrix $A$ is invertible if and only if $\exists B$ with $BA=I_n$.&&&\\
+(17) An $n\times n$ matrix $A$ is invertible if and only if $\exists B$ with $BA=I_n$.&\T&\T&\Tt\\
 	\hline
-(18) If $M$ is free and $S\subseteq M$ is LI, then $S$ is a subset of a basis.&&&\\
+(18) If $M$ is free and $S\subseteq M$ is LI, then $S$ is a subset of a basis.&\T&\F&\F\\
 	\hline
-(19) If $M$ is free and $S\subseteq M$ generates $M$, then $S$ contains a basis.&&&\\
+(19) If $M$ is free and $S\subseteq M$ generates $M$, then $S$ contains a basis.&\T&\F&\F \\
 	\hline
-(20) If $M\cong N$ are free then $\mathrm{rank}(M) =\mathrm{rank}(N)$. &&&\\
+(20) If $M\cong N$ are free then $\mathrm{rank}(M) =\mathrm{rank}(N)$. &\T&\T&\T \\
 	\hline
-(21) If $M\twoheadrightarrow N$ are free then $\mathrm{rank}(M)\geq \mathrm{rank}(N)$. &&&\\
+(21) If $M\twoheadrightarrow N$ are free then $\mathrm{rank}(M)\geq \mathrm{rank}(N)$. &\T&\T&\T \\
 	\hline
-(22) If $M\subseteq N$ are free then $\mathrm{rank}(M)\leq \mathrm{rank}(N)$. &&&\\
+(22) If $M\subseteq N$ are free then $\mathrm{rank}(M)\leq \mathrm{rank}(N)$. &\T&\T&\Tt\\
 	\hline
-(23) If $M\subseteq N$ and $N$ can be generated by $n$ elements then so can $M$. &&&\\
+(23) If $M\subseteq N$ and $N$ can be generated by $n$ elements then so can $M$. &\T&\T&\F\\
 	\hline
-(24) If $M\subseteq N$ and $N$ can be generated by $n$ elements then so can $N/M$. &&&\\
+(24) If $M\subseteq N$ and $N$ can be generated by $n$ elements then so can $N/M$. &\T&\T&\T\\
 	\hline
-(25) If $M\subseteq N$ and both $M$ and $N/M$ are free, then $N$ is free.&&&\\
+(25) If $M\subseteq N$ and both $M$ and $N/M$ are free, then $N$ is free.&\T&\T&\T\\
 	\hline
 	\end{tabular}
 
