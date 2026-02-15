@@ -1,0 +1,173 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=1in]{geometry}
+\usepackage{paralist,amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals}
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\solutione}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{leaf}This solution is embargoed.}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+
+\newcommand{\rsa}{\rightsquigarrow}
+
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+
+\DeclareMathOperator{\ord}{ord}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+\section*{Linear algebra and matrices review}
+
+\begin{enumerate}
+
+\item	 Let $F$ be a field and $A\in \mathrm{Mat}_{m\times n}(F)$.
+\begin{enumerate}
+\item Explain why the columns of $A$ generate $\mathrm{im}(t_A)$.
+\item The \textbf{rank} of $A$ is $\dim(\mathrm{im}(t_A))$. Explain why $\mathrm{rank}(A)$ is the maximal number of linearly independent columns of $A$).
+\item Show that the following are equivalent:
+\begin{itemize}
+\item $\mathrm{rank}(A) = m$
+\item $t_A$ is surjective
+\item There is some $B\in \mathrm{Mat}_{n\times m}(F)$ such that $AB=I_n$.
+\end{itemize}
+\item Show that the following are equivalent:
+\begin{itemize}
+\item $\mathrm{rank}(A) = n$
+\item $t_A$ is injective
+\item There is some $B\in \mathrm{Mat}_{n\times m}(F)$ such that $BA=I_n$.
+\end{itemize}
+\item Suppose that $m=n$. List a bunch of things that are equivalent.
+\end{enumerate}
+
+\
+
+
+\item Let $R$ be a commutative ring and $A\in \mathrm{Mat}_{m\times n}(R)$.
+\begin{enumerate}
+\item If $P$ is an invertible $m\times m$ matrix, explain the following:\\ (i) $\ker(t_A) = \ker(t_{PA})$ \  (ii) $\ker(t_A) \cong \ker(t_{PA})$ \ (iii) typically $\ker(t_A) \neq \ker(t_{PA})$.
+\item If $Q$ is an invertible $n\times n$ matrix, what are the analogous statements for $t_{AQ}$?
+\item What do (a) and (b) say about elementary operations?
+\item When $R$ is a field, what does (c) say about rank?
+\end{enumerate}
+
+\
+
+\item Let $R$ be a commutative ring. Let $\mathcal{P}=\{p_1,\dots,p_m\}$ be a basis for $R^m$ and ${\mathcal{Q}=\{q_1,\dots,q_n\}}$ be a basis for $R^n$. For $A\in \mathrm{Mat}_{m\times n}(R)$, find an explicit formula for $[t_A]_{\mathcal{Q}}^{\mathcal{P}}$ in terms of $A$,  $P=[p_1\cdots p_m]$, and $Q=[q_1 \cdots q_n]$. 
+
+\
+
+\item Let $R$ be a commutative ring, and $D\in \mathrm{Mat}_{m\times n}(R)$ be a diagonal matrix (meaning $d_{ij}=0$ for $i\neq j$) with nonzero diagonal entries $d_{11},\dots,d_{rr}$. Suppose that $d_{ii} \ | \ d_{i+1,i+1}$ for all $1\leq i < r$. Show that 
+\[ I_t(D) = \begin{cases} d_{11} \cdots d_{tt} & \text{if} \ t\leq r \\
+0 & \text{if} \ t > r.\end{cases}\]
+
+\end{enumerate}
+
+
+\vfill
+
+{\small
+\begin{framed}
+ \begin{itemize}
+ \item Let $V$ be an $F$-vector space. If $I \subseteq S$ are subsets of $V$ such that $I$ is linearly independent and $S$ spans $V$, then there is a basis $B$ for $V$ such that $I\subseteq B \subseteq V$.
+ \item Let $\phi:V\to W$ be a linear transformation of $F$-vector spaces. Then 
+ \[\dim(\mathrm{im}(\phi)) + \dim(\mathrm{ker}(\phi))=\dim(V).\]
+  \item For a commutative ring $R$ and a matrix $A\in \mathrm{Mat}_{m\times n}(R)$ we have a linear transformation $t_A\colon R^n\to R^m$ by $t_A(v) = Av$.
+ \item For a commutative ring $R$, an $R$-module homomorphism of free modules $\phi\colon V\to W$, and bases $\mathcal{B}$ for $V$ and $\mathcal{C}$ for $W$, we have a matrix $[\phi]_{\mathcal{B}}^{\mathcal{C}}$ such that $[\phi]_{\mathcal{B}}^{\mathcal{C}} [v]_{\mathcal{B}} = [\phi(v)]_{\mathcal{C}}$.
+
+% \item Let $R$ be a commutative ring and $A,B\in \mathrm{Mat}_{n\times n}(R)$. Then $\det(AB)=\det(A)\det(B)$.
+ %\item  Let $R$ be a commutative ring and $A,B$ that can be multiplied. Then $I_t(AB) \subseteq I_t(A) \cap I_t(B)$.
+  \end{itemize}
+ \end{framed}
+ }
+ \newpage
+
+
+\section*{Modules and presentations review}
+
+\begin{enumerate}
+\item Let $R$ be a ring, $M$ an $R$-module, and $N\subseteq M$ be a submodule. 
+\begin{enumerate}
+\item Show that if $M$ can be generated by $a$ elements, then $N$ can be generated by $a$ elements.
+\item Show that if $N$ can be generated by $b$ elements and $M/N$ can be generated by $c$ elements, then $M$ can be generated by $b+c$ elements.
+\end{enumerate}
+
+\
+
+\item Let $R$ be a ring and $M$ be an $R$-module.
+\begin{enumerate}
+\item Show that $M$ is finitely generated if and only if there is a surjective $R$-module homomorphism $\pi: R^m \to M$ for some $n$.
+\item The set of \textbf{relations} on a (finite) set of elements $a_1,\dots,a_m\in M$ is 
+\[ \mathrm{Rel}(a_1,\dots,a_m) = \{ (r_1,\dots,r_m) \in R^m \ | \ r_1 a_1 + \cdots + r_m a_m = 0\}.\]
+Express $\mathrm{Rel}(a_1,\dots,a_m)$ as the kernel of a homomorphism. Deduce that the set of relations is a module.
+\item We say that a module $M$ is \textbf{finitely presented} if there exists a finite generating set $\{a_1,\dots,a_m\}$ for $M$ such that  $\mathrm{Rel}(a_1,\dots,a_m)$ is also finitely generated. Show that $M$ is finitely presented if and only if there is a homomorphism of finite rank free modules $\alpha:R^n \to R^m$ such that $M\cong R^m/\mathrm{im}(\alpha)$.
+\item Suppose that $R$ is commutative. Show that $M$ is finitely presented if and only if there is some matrix $A$ such that $M\cong R^m / \mathrm{im}(t_A)$.
+\end{enumerate}
+
+\
+
+\item Let $R$ be a commutative ring, and $D\in \mathrm{Mat}_{m\times n}(R)$ be a diagonal matrix (meaning $d_{ij}=0$ for $i\neq j$) with nonzero diagonal entries $d_{11},\dots,d_{rr}$. Prove that the module presented by~$D$ is isomorphic to
+\[  R/(d_{11}) \oplus R/(d_{22}) \oplus \cdots \oplus R/(d_{rr}) \oplus R^{m-r}.\]
+
+
+
+
+\end{enumerate}
+
+\vfill
+
+{\small
+\begin{framed}
+ \begin{itemize}
+ \item Let $R$ be a ring, $M$ a module, and $S\subseteq M$. Then $S$ \textbf{generates} $M$ if no proper submodule of $M$ contains $S$. Equivalently, every element of $M$ is an $R$-linear combination of elements of $S$.
+ \item Let $R$ be a commutative ring and $A\in \mathrm{Mat}_{m\times n}(R)$. The \textbf{module presented by $A$} is $R^m / \mathrm{im}(t_A)$.
+  \end{itemize}
+ \end{framed}
+ }
+\end{document}
