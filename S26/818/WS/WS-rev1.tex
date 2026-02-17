@@ -21,9 +21,14 @@
 \newcommand{\inv}{^{-1}}
 \newcommand{\dabs}[1]{\left| #1 \right|}
 \newcommand{\ds}{\displaystyle}
-\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} {}}
 \newcommand{\solutione}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{leaf}This solution is embargoed.}\end{framed}} { \ }}
 \newcommand{\showsol}[1]{\def\displaysol{#1}}
+
+\newcommand{\nosolfill}{\ifthenelse {\equal{\displaysol}{1}} {} {\vfill}}
+\newcommand{\nosolpage}{\ifthenelse {\equal{\displaysol}{1}} {} {\newpage}}
+\newcommand{\nosolonly}[1]{\ifthenelse {\equal{\displaysol}{1}} {} {{#1}}}
+
 
 \newcommand{\rsa}{\rightsquigarrow}
 
@@ -74,20 +79,44 @@
 \item	 Let $F$ be a field and $A\in \mathrm{Mat}_{m\times n}(F)$.
 \begin{enumerate}
 \item Explain why the columns of $A$ generate $\mathrm{im}(t_A)$.
+\solution{Write $A= [a_1 \cdots a_n]$. Then 
+$\mathrm{im}(t_A) = \{ A v \ | \ v\in F^n \} \\= {\{ v_1 a_1 + \cdots + v_n a_n \ | \ v_1,\dots,v_n\in F\}} = {F\{ a_1,\dots,a_n\}}.$}
 \item The \textbf{rank} of $A$ is $\dim(\mathrm{im}(t_A))$. Explain why $\mathrm{rank}(A)$ is the maximal number of linearly independent columns of $A$.
+\solution{Let $r=\mathrm{rank}(A)$. Since $S=\{a_1,\dots,a_n\}$ spans $\mathrm{im}(t_A)$, there is a subset $B\subseteq S$ that is a basis for $\mathrm{im}(t_A)$, and by definition, $|B|=r$. In particular, there are $r$ linearly independent columns of $A$. There can't be $t>r$ linearly independent columns of $A$, since such a set would be contained in a basis $B'$ for $\mathrm{im}(t_A)$, and we would have $|B'|\geq t>r$, contradicting that every basis has the same size.} 
 \item Show that the following are equivalent:
-\begin{itemize}
+\begin{enumerate}
 \item $\mathrm{rank}(A) = m$;
 \item $t_A$ is surjective;
-\item There is some $B\in \mathrm{Mat}_{n\times m}(F)$ such that $AB=I_n$.
-\end{itemize}
+\item There is some $B\in \mathrm{Mat}_{n\times m}(F)$ such that $AB=I_m$.
+\end{enumerate}
+\solution{(i) $\Leftrightarrow$ (ii): Since $\mathrm{im}(t_A)$ is a subspace of $F^m$, we have $\mathrm{im}(t_A)= F^m$ if and only if $\dim(\mathrm{im}(t_A)) = \dim(F^m)$. Since the left-hand side is $\mathrm{rank}(A)$ and the right-hand side is $m$, we are done.
+
+(iii)$\Rightarrow$ (ii): Let $v\in F^n$. Then $v = (AB)v = A(Bv) = t_A( Bv)$, so $t_A$ is surjective.
+
+(ii) $\Rightarrow$ (iii): Since $t_A$ is surjective, we can write $e_i = t_A(w_i)$ for some $w_i\in F^n$, where $e_i$ is the $i$th standard basis vector in $F^m$. By the UMP for free modules, there is a linear transformation $\phi: F^m \to F^n$ such that $\phi(e_i) = w_i$ for all $i$; let $B$ be the matrix of this transformation (i.e., $B= [w_1 \cdots w_m]$). We claim that $t_A t_B$ is the identity. Again by the UMP for free modules, it suffices to check that $t_A t_B (e_i) = e_i$ for all $i$, and this follows from the computations above. Thus $t_{AB} = t_A t_B = \mathrm{id} = t_{I_m}$, so $AB=I_m$.
+} 
 \item Show that the following are equivalent:
-\begin{itemize}
+\begin{enumerate}
 \item $\mathrm{rank}(A) = n$;
 \item $t_A$ is injective;
 \item There is some $B\in \mathrm{Mat}_{n\times m}(F)$ such that $BA=I_n$.
-\end{itemize}
+\end{enumerate}
+\solution{(i) $\Leftrightarrow$ (ii): Note that $t_A$ is injective if and only if $\dim(\mathrm{ker}(t_A))=0$. By Rank-Nullity the left-hand side is $n -\mathrm{rank}(A)$, and we are done.
+
+(iii)$\Rightarrow$ (ii): Let $v\in \mathrm{ker}(t_A)$, so $Av=0$. Then $v= BAv=  B0 = 0$. Thus, $t_A$ is injective.
+
+(ii) $\Rightarrow$ (iii): Since $t_A$ is surjective, the vectors $v_i = t_A(e_i)$ for $i=1,\dots,n$ are linearly independent in $F^m$. Extend this set to a basis $v_1,\dots, v_m$ of $F^m$. By the UMP for free modules, we can take a linear transformation $\phi: F^m \to F^n$ such that $\phi(v_i) = e_i$ for $i=1,\dots,n$. Let $B$ be the matrix of $\phi$. Then $t_B t_A (e_i) = e_i$ for all $i$, so $BA=I_n$ by a similar argument to the above.
+} 
 \item Suppose that $m=n$. List a bunch of things that are equivalent.
+\solution{
+\begin{itemize}
+\item $A$ is invertible
+\item $t_A$ is injective
+\item $t_A$ is surjective
+\item There is some $B$ such that $BA=I_n$.
+\item There is some $B$ such that $AB=I_m$.
+\end{itemize}
+}
 \end{enumerate}
 
 \
@@ -97,30 +126,50 @@
 \begin{enumerate}
 \item If $P$ is an invertible $m\times m$ matrix and $Q$ is an invertible $n\times n$ matrix,
 \begin{enumerate}
-\item Explain why $\ker(t_A) = \ker(t_{PA})$
+\item Explain why $\ker(t_A) = \ker(t_{PA})$.
 \item Give a formula for $\ker(t_{AQ})$ in terms of $\ker(t_A)$ and $t_Q$ or $t_{Q^{-1}}$.
 \item Explain why $\ker(t_{A}) \cong \ker(t_{AQ})$.
-\end{enumerate} 
+\end{enumerate}
+\solution{
+\begin{enumerate}
+\item If $v\in \ker(t_A)$, then $Av=0$ and then $PAv=P0=0$ so $v\in \ker(t_{PA})$. Conversely, if $v\in \ker(t_{PA})$, then $PAv=0$ and then $Av =P^{-1}PAv =0$, so $v\in \ker(t_{A})$.
+\item We claim that $\ker(t_{AQ}) = t_{Q^{-1}} (\ker(t_A))$. Indeed, if $v\in \ker(t_{AQ})$, then $AQv=0$, so $Qv\in \ker(t_A)$, and hence $t_{Q^{-1}}(v) \in \ker(t_A)$. The reverse containment is similar.
+\item The maps $t_{Q^{-1}}$ and $t_Q$ give mutually inverse isomorphisms form $\ker(t_A)$ to $\ker(t_{AQ})$.
+\end{enumerate}
+}
 \item What are the analogous statements for $\mathrm{im}(t_A)$?
+\solution{
+\begin{enumerate}
+\item $\mathrm{im}(t_A) = \mathrm{im}(t_{AQ})$.
+\item $\mathrm{im}(t_{PA}) = t_P(\mathrm{im}(t_A))$.
+\item $\mathrm{im}(t_{PA}) \cong \mathrm{im}(t_A)$.
+\end{enumerate}
+The proofs are similar to those for the kernels.
+}
 \item What do (a) and (b) say about elementary operations?
+\solution{EROs preserve the kernel and ECOs preserve the image.} 
 \item When $R$ is a field, what does (c) say about rank?
+\solution{EROs and ECOs preserve the rank.}
 \end{enumerate}
 
 \
 
 \item Let $R$ be a commutative ring. Let $\mathcal{P}=\{p_1,\dots,p_m\}$ be a basis for $R^m$ and ${\mathcal{Q}=\{q_1,\dots,q_n\}}$ be a basis for $R^n$. For $A\in \mathrm{Mat}_{m\times n}(R)$, find an explicit formula for $[t_A]_{\mathcal{Q}}^{\mathcal{P}}$ in terms of $A$ and the matrices  $P=[p_1\cdots p_m]$ and $Q=[q_1 \cdots q_n]$. 
 
-%\
+\solution{  \[ [t_A]_{\mathcal{Q}}^{\mathcal{P}} = P^{-1} A Q.\]
+ One way to see this is by using change of basis matrices: writing $\mathrm{std}_n$ for the standard basis of $R^n$ and likewise for $R^m$, we have$[\mathrm{id}_{R^m}]^{\mathrm{std}_m}_{\mathcal{P}} = P$ and ${[\mathrm{id}_{R^n}]^{\mathrm{std}_n}_{\mathcal{Q}} = Q}$. Thus 
+\[ [t_A]_{\mathcal{Q}}^{\mathcal{P}} = [\mathrm{id}]_{\mathrm{std}_m}^{\mathcal{P}} [t_A]_{\mathrm{std}_n}^{\mathrm{std}_m} [\mathrm{id}]_{\mathcal{Q}}^{\mathrm{std}_n} = P^{-1} A Q.\]
 
-%\item Let $R$ be a commutative ring, and $D\in \mathrm{Mat}_{m\times n}(R)$ be a diagonal matrix (meaning $d_{ij}=0$ for $i\neq j$) with nonzero diagonal entries $d_{11},\dots,d_{rr}$. Suppose that $d_{ii} \ | \ d_{i+1,i+1}$ for all $1\leq i < r$. Show that 
-%\[ I_t(D) = \begin{cases} d_{11} \cdots d_{tt} & \text{if} \ t\leq r \\
-%0 & \text{if} \ t > r.\end{cases}\]
+
+Alternatively, we can check the definition: the $j$th column of $[t_A]_{\mathcal{Q}}^{\mathcal{P}}$ is the $\mathcal{P}$-coordinate vector of $t_A(q_j)$. Then $v=t_A(q_j)$ is the $j$th column of $AQ$. If $v=a_1 p_1 + \cdots + a_m p_m$, then $v=P (a_1,\dots,a_m)$, so $(a_1,\dots,a_m) = P^{-1} v$. Thus, the $j$th column of $[t_A]_{\mathcal{Q}}^{\mathcal{P}}$ is the $j$th column of $P^{-1}AQ$.
+}
 
 \end{enumerate}
 
 
-\vfill
+\nosolfill
 
+\nosolonly{
 {\small
 \begin{framed}
  \begin{itemize}
@@ -134,8 +183,8 @@
  %\item  Let $R$ be a commutative ring and $A,B$ that can be multiplied. Then $I_t(AB) \subseteq I_t(A) \cap I_t(B)$.
   \end{itemize}
  \end{framed}
- }
- \newpage
+ }}
+ \nosolpage
 
 
 \section*{Modules and presentations review}
@@ -146,7 +195,9 @@
 \item Let $R$ be a ring, $M$ an $R$-module, and $N\subseteq M$ be a submodule. 
 \begin{enumerate}
 \item Show that if $M$ can be generated by $a$ elements, then $M/N$ can be generated by $a$ elements.
+\solution{Suppose that $M=R\{m_1,\dots,m_a\}$. We claim that $\{m_1+N,\dots,m_a+N\}$ generates $M/N$. Indeed,  $m+N\in M/N$. Then $m=\sum r_i m_i$ for some $r_i\in R$, so $m+N= \sum r_i (m_i +N)$.}
 \item Show that if $N$ can be generated by $b$ elements and $M/N$ can be generated by $c$ elements, then $M$ can be generated by $b+c$ elements.
+\solution{Let $n_1,\dots, n_b$ generate $N$ and $m_1+N,\dots, m_c+N$ generate $M/N$. We claim that $n_1,\dots,n_b, m_1,\dots,m_c$ generate $M$. Indeed, if $m\in M$, we can write $m+N = r_1 (m_1 + N) + \cdots + r_c (m_c + N)$, so $n:= m - (r_1 m_1 + \cdots +  r_c m_c) \in N$. Then we can write $n = s_1 n_1 + \cdots + s_b n_b$, so $m= r_1 m_1 + \cdots +  r_c m_c +  s_1 n_1 + \cdots + s_b n_b$. This shows the claim.}
 \end{enumerate}
 
 \
@@ -154,25 +205,38 @@
 \item Let $R$ be a ring and $M$ be an $R$-module.
 \begin{enumerate}
 \item Show that $M$ is finitely generated if and only if there is a surjective $R$-module homomorphism $\pi: R^m \to M$ for some $m$.
+\solution{First, suppose that $M$ is finitely generated and write $M=R\{m_1,\dots,m_a\}$. Consider the homomorphism $\pi:R^a \to M$ mapping $\pi(e_i) = m_i$. Then since $\{m_1,\dots,m_a\} \subseteq \mathrm{im}(\pi)$, we must have $\mathrm{im}(\pi) = M$, so $\pi$ is surjective.
+
+Now suppose that we have such a surjection $\pi$. Then $M\cong R^m/K$ for some $K$ the First Isomorphism Theorem, so by (1a), $M$ is finitely generated.}
 \item The set of \textbf{relations} on a (finite) set of elements $a_1,\dots,a_m\in M$ is 
 \[ \mathrm{Rel}(a_1,\dots,a_m) = \{ (r_1,\dots,r_m) \in R^m \ | \ r_1 a_1 + \cdots + r_m a_m = 0\}.\]
 Express $\mathrm{Rel}(a_1,\dots,a_m)$ as the kernel of a homomorphism. Deduce that the set of relations is a module.
+\solution{Consider the homomorphism from $R^m \to M$ mapping $e_i \mapsto m_i$. Then $\mathrm{Rel}(a_1,\dots,a_m)$ is the kernel of this homomorphism. Thus, it is a submodule.
+}
 \item We say that a module $M$ is \textbf{finitely presented} if there exists a finite generating set $\{a_1,\dots,a_m\}$ for $M$ such that  $\mathrm{Rel}(a_1,\dots,a_m)$ is also finitely generated. Show that $M$ is finitely presented if and only if there is a homomorphism of finite rank free modules $\alpha:R^n \to R^m$ such that $M\cong R^m/\mathrm{im}(\alpha)$.
+\solution{
+Suppose that $M$ is finitely presented, and take a finite generating set $\{a_1,\dots,a_m\}$ for $M$ such that  $\mathrm{Rel}(a_1,\dots,a_m)$ is also finitely generated. Let $\{v_1,\dots,v_n\}$ be a generating set for $\mathrm{Rel}(a_1,\dots,a_m)$. Define $\alpha: R^n \to R^m$ such that $\alpha(e_i) = v_i$. Then the image of $\alpha$ is $\mathrm{Rel}(a_1,\dots,a_m)$ by an argument similar to (2a). As in (2a), we have a surjective homomorphism $\pi: R^m \to M$ mapping $e_i \mapsto a_i$, and as in (2b) the kernel is $\mathrm{Rel}(a_1,\dots,a_m)$. Using the First Isomorphism Theorem, $M\cong R^m/ \ker(\pi) = R^m/\mathrm{Rel}(a_1,\dots,a_m) = R^m / \mathrm{im}(\alpha)$.
+
+Conversely, suppose that $M\cong R^m/\mathrm{im}(\alpha)$ for some $\alpha:R^n\to R^m$. By (2a), $M$ is finitely generated, namely by the images of $e_i$ in the quotient $R^m/\mathrm{im}(\alpha)$. We claim that $\mathrm{Rel}(a_1,\dots,a_m) =  \mathrm{im}(\alpha)$. Indeed, this is just a special case of what we showed in (2b). Finally, we note that $\mathrm{im}(\alpha)$ is generated by $\alpha(e_1),\dots,\alpha(e_n)$.
+}
 \item Suppose that $R$ is commutative. Show that $M$ is finitely presented if and only if there is some matrix $A$ such that $M\cong R^m / \mathrm{im}(t_A)$.
+\solution{
+This follows from (2c), since any $\alpha$ is $t_A$ for some matrix. 
+}
 \end{enumerate}
 
 \
 
 \item Let $R$ be a commutative ring, and $D\in \mathrm{Mat}_{m\times n}(R)$ be a diagonal matrix (meaning $d_{ij}=0$ for $i\neq j$) with nonzero diagonal entries $d_{11},\dots,d_{rr}$. Prove that the module presented by~$D$ is isomorphic to
 \[  R/(d_{11}) \oplus R/(d_{22}) \oplus \cdots \oplus R/(d_{rr}) \oplus R^{m-r}.\]
-
-
+\solutione
 
 
 \end{enumerate}
 
-\vfill
+\nosolfill
 
+\nosolonly{
 {\small
 \begin{framed}
  \begin{itemize}
@@ -180,5 +244,5 @@ Express $\mathrm{Rel}(a_1,\dots,a_m)$ as the kernel of a homomorphism. Deduce th
  \item Let $R$ be a commutative ring and $A\in \mathrm{Mat}_{m\times n}(R)$. The \textbf{module presented by $A$} is $R^m / \mathrm{im}(t_A)$.
   \end{itemize}
  \end{framed}
- }
+ }}
 \end{document}
