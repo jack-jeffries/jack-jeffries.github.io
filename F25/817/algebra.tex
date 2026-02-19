@@ -7743,44 +7743,6 @@ If $T$ is a submodule of $M/N$, then $\pi^{-1}(T)$ is an abelian group, by 817. 
 
 
 
-We come to a very important class of examples which will help us study linear transformations using module theory.
-
-\begin{lemma}[{$F[x]$-modules}]\label{F[x]mod}
-Let $F$ be a field. There is a bijection
-\[\begin{aligned} \{V \ | \  V \ \text{a} \ F[x]\text{-module}\} &\longleftrightarrow \{(V,T) \ | \  V \ \text{a} \ F\text{-vector space}, \ T\in \End_F(V)\}\\
-V &\longmapsto  \ (V, \mu_x:V\to V).
-\end{aligned}\]
-\end{lemma}
-
-\begin{proof}
-If $V$ is an $F[x]$ module then $V$ is an $F$-vector space by restriction of scalars along the inclusion $F \hookrightarrow F[x]$. Let $T:V\to V$ be defined by $T(v)=xv$. To show that $T\in \End_F(V)$, note that for any $c\in F$ and $v,v_1, v_2\in V$ the axioms of the $F[x]$-module give us
-$$T(v_1+v_2)=x(v_1+v_2)=xv_1+xv_2=T(v_1)+T(v_2) \textrm{  
-and } T(cv)=x(cv)=c(xv).$$
-
-Conversely, let $V$ be an $F$-vector space and $T\in \End_F(V)$. We claim that the action of of $F[x]$ on $V$ given by 
-$$f(x)v=(f(T))(v)$$
-satisfies the axioms for a module (exercise!). Alternatively, we can explain this module structure in a more conceptual way, as follows. Consider the evaluation homomorphism $\varphi:F[x]\to \End_F(V), \quad \varphi(f(x))=f(T)$. Since $V$ is an  $\End_F(V)$-module by Remark \ref{rem:endmodule}, then $V$ is also an $F[x]$-module by restriction of scalars along $\varphi$; the $F[x]$ action is the one we described above:
-$$f(x)v= \varphi(f)(v) = (f(T))(v)$$
-
-Finally, one can check that the two constructions above are inverse to each other.
-\end{proof}
-
-\begin{notation}
-We shall denote the $F[x]$-module structure on an $F$-vector space $V$ induced by $T \in \End_F(V)$ by $V_T$.
-\end{notation}
-
-\begin{example}
-The proposition above says that if we fix an $F$-vector space $V$ then any linear transformation $T$ gives a different $F[x]$ module structure on $V$. For example,
-\begin{itemize}
-\item For $T=0$, the action of $F[x]$ on the module $V_0$ is given by scaling by the constant coefficient of $f$: if $f=a^nx^n+\dots+a_0$, then 
-$$f(x)v=(f(0))v=a_0v \text{ for all } f\in F[x].$$
-\item For $T$ the shift operator that takes $T(e_i)=e_{i-1}$, where $e_i$ is the $i$-th standard basis vector, the action of $F[x]$ on $V_T$ is determined by
-%the $F[x]$-module $V_T$  has the action 
-$x^m\begin{bmatrix}v_1\\\vdots\\v_{n-m}\\v_{n-m+1}\\\vdots\\v_n\end{bmatrix}=\begin{bmatrix}v_{m+1}\\\vdots\\v_n \\0\\\vdots\\0\end{bmatrix}$.
-\end{itemize}
-\end{example}
-
-
 
 
 
@@ -9328,60 +9290,104 @@ $$M \cong k[x]/(x-1) \oplus k[x]/(x-2).$$
 
 
 \chapter{Canonical forms for endomorphisms} 
- 
-\section{Rational canonical form}
 
- Recall that given an $F$-vector space $V$ with $\dim_F(V)=n$ and an ordered basis $B$ for $V$ we have proven in Proposition \ref{prop:hommat} that $\End_F(V)\cong \mathrm{Mat}_n(F)$ via the maps $t\mapsto [t]_B^B$ and $A\mapsto t_A$.
-Recall also from \Cref{F[x]mod} that to give a finitely generated module over $F[x]$ is the same data as a finite dimensional vector space $V$ and a linear transformation $V \to V$:
+We will now apply the structure theory for modules over PIDs to study matrices over fields. 
+
+
+\section{The module associated to an $F$-linear endomorphism}
  
-\begin{definition} 
-Let $F$ be a field, let $V$ be a finite dimensional vector space over $F$, and let $t: V \to V$ be a linear transformation. The $F[x]$-module $V_t$ is defined to be the vector space $V$ with the unique $F[x]$-action satisfying $xv = t(v)$ for all $v \in V$. That is, 
-$$(r_nx^n + \dots+ r_0)v = r^nt^n(v) + \dots + r_0v \quad \text{ for all } r_nx^n + \dots + r_0 \in F[x].$$
+For any linear transformation from an $F$-vector space to itself, we can construct a module over a polynomial ring $F[x]$.
+
+\begin{definition}
+Let $F$ be a field, and $V$ be an $F$-vector space. Let $\phi:V\to V$ be a linear transformation. For any polynomial 
+\[ f(x) = a_n x^n + \cdots + a_1 x + a_0,\]
+we have an $F$-linear transformation $f(\phi): V\to V$ given by
+\[ f(\phi) = a_n \phi^n + \cdots  + a_1 \phi + a_0 \mathrm{id}_V.\]
+We define a $V_\phi$ to be the $F[x]$-module with underlying additive group $(V,+)$ and $F[x]$-action given by
+\[ f(x) \cdot v = f(\phi)(v).\]
 \end{definition}
+
+That is, $V_\phi$ is the same $F$-vector space as $V$, with a bigger action where the action of $x$ on $V$ is given by $\phi$. Of course, one has to verify that this definition satisfies the module axioms. We leave this for you as an exercise if you want more practice with the module axioms.
+
+Every $F[x]$-module can be thought of this way.
+
+
+\begin{lemma}[{$F[x]$-modules}]\label{F[x]mod}
+Let $F$ be a field. There is a bijection
+\[\begin{aligned} \{V \ | \  V \ \text{a} \ F[x]\text{-module}\} &\longleftrightarrow \{(V,\phi) \ | \  V \ \text{a} \ F\text{-vector space}, \ \phi\in \End_F(V)\}\\
+V &\rightarrow \ (V, \mu_x:V\to V)\\
+W_{\phi} &\leftarrow (W,\phi),
+\end{aligned}\]
+where $\mu_x:V\to V$ is the map of multiplication by $x$ on the $F[x]$-module $V$.
+\end{lemma}
+
+\begin{proof}
+If $V$ is an $F[x]$-module then $V$ is an $F$-vector space by restriction of scalars along the inclusion $F \hookrightarrow F[x]$. Let $\mu_x:V\to V$ be as above. To show that $\mu_x\in \End_F(V)$, note that for any $c\in F$ and $v,v_1, v_2\in V$ the axioms of the $F[x]$-module give us
+$$\mu_x(v_1+v_2)=x(v_1+v_2)=xv_1+xv_2=\mu_x(v_1)+\mu_x(v_2) \textrm{  
+and } \mu_x(cv)=x(cv)=c \mu_x(v).$$
+
+The construction $(W,\phi) \to W_\phi$ was discussed above. It remains to check that these are mutually inverse constructions, which we leave for you.
+\end{proof}
+
+\begin{example}
+Let $F=\mathbb{R}$, and $V=\mathbb{R}^2$.
+\begin{enumerate}
+\item For $\phi=0$, in the $\mathbb{R}[x]$-module $V_\phi$, we have $x \cdot \begin{bmatrix} \lambda_1 \\ \lambda_2 \end{bmatrix}= \begin{bmatrix} 0 \\ 0 \end{bmatrix}$ and more generally
+\[ (c_n x^n +\cdots + c_0) \cdot \begin{bmatrix}  \lambda_1 \\  \lambda_2 \end{bmatrix} = \cdot \begin{bmatrix} c_0  \lambda_1 \\ c_0  \lambda_2 \end{bmatrix}.\]
+The $\mathbb{R}[x]$-module $V_\phi$ is evidently generated by $e_1$ and $e_2$, since any element of $V_\phi$ can we written $\lambda_1 e_1 +  \lambda_2 e_2$. (We didn't even need to use the $x$'s!).
+Since $x$ times any vector $v\in V$ is zero, $x\in \mathrm{ann}_{\mathbb{R}[x]}(V_\phi)$. You can check that $\mathrm{ann}_{\mathbb{R}[x]}(V_\phi) = (x)$.
+\item Let $\phi$ be the linear transformation of rotation by $\pi/3$ counterclockwise. The standard basis vectors $e_1, e_2$ generate $V_\phi$, since any element is an $\mathbb{R}$-linear combination of $e_1,e_2$. Even better, $V_\phi$ is generated by $e_1$ as an $\mathbb{R}[x]$-module, since $e_1$ and $x e_1 = \begin{bmatrix} \sqrt{3}/2 \\ 1/2 \end{bmatrix}$ are $\mathbb{R}$-linearly independent, so any $v\in V_\phi$ can be written as $\lambda_1 e_1 + \lambda_2 x e_1 = (\lambda_2 x + \lambda_1) e_1$.
+
+Since $\phi^6$ is the identity on $V$, we have $(x^6-1)v= \phi^6(v) - v = 0$ for all $v\in V$. It follows that $x^6-1$ annihilates $V_\phi$. We will see soon that $\mathrm{ann}_{\mathbb{R}[x]}(V_\phi) = (x^2 - x + 1)$.
+\end{enumerate}
+\end{example}
+
+We can give a presentation for $V_\phi$ in general by choosing a basis for $V$. Recall that given an $F$-vector space $V$ with $\dim_F(V)=n$ and an ordered basis $B$ for $V$ we have proven that $\End_F(V)\cong \mathrm{Mat}_n(F)$ via the maps $\phi\mapsto [\phi]_B^B$ and $A\mapsto \phi_A$.
+
  
 \begin{theorem}\label{presents F[x] module}
-Let $F$ be a field, let $V$ be an $F$-vector space of dimension $n$, let $t\!: V \to V$ be a linear transformation, let $B$ be an ordered basis for $V$, and let $A = [t]_B^B$. Then the matrix $xI_n - A \in \mathrm{Mat}_n(F[x])$ presents the $F[x]$-module $V_t$.
+Let $F$ be a field, let $V$ be an $F$-vector space of dimension $n$, let $\phi\!: V \to V$ be a linear transformation, let $B$ be an ordered basis for $V$, and let $A = [\phi]_B^B$. Then the matrix $xI_n - A \in \mathrm{Mat}_n(F[x])$ presents the $F[x]$-module $V_\phi$.
 \end{theorem}
 
 \begin{proof} 
-Let $B=\{b_1, \dots, b_n\}$ be any basis for $V$, and note that $B$ is a generating set for $V_t$ as a module over $F[x]$. As we described in \Cref{section mods quotients of free mods}, $V_t$ can then be written as a quotient of $F[x]^n$. More precisely, let $e_1, \dots, e_n$ denote the standard $F[x]$-basis for the free $F[x]$-module $F[x]^n$, and let $\pi\!: F[x]^n \to V_t$ be the surjective $F[x]$-module homomorphism sending $e_i$ to $b_i$. That is,
+Let $B=\{b_1, \dots, b_n\}$ be any basis for $V$, and note that $B$ is a generating set for $V_t$ as a module over $F[x]$. Then $V_\phi$ can then be written as a quotient of $F[x]^n$. More precisely, let $e_1, \dots, e_n$ denote the standard $F[x]$-basis for the free $F[x]$-module $F[x]^n$, and let $\pi\!: F[x]^n \to V_\phi$ be the surjective $F[x]$-module homomorphism sending $e_i$ to $b_i$. That is,
 $$
-\pi((g_1(x), \dots, g_n(x)) = \pi \left( \sum_{i=1}^n g_i(x) e_i \right) = \sum_{i=1}^n g_i(x) b_i = \sum_{i=1}^n g_i(t) b_i.
+\pi((g_1(x), \dots, g_n(x)) = \pi \left( \sum_{i=1}^n g_i(x) e_i \right) = \sum_{i=1}^n g_i(x) b_i = \sum_{i=1}^n g_i(\phi) b_i.
 $$
-By the \hyperref[first iso thm]{First Isomorphism Theorem}, we have $V_t\cong F[x]^n/\ker(\pi)$. On the other hand, the matrix $xI_n - A$ determines a map
-$$t_{xI_n - A}: F[x]^n \to F[x]^n,$$
-and to show that $V_t\cong F[x]^n/\mathrm{im}(t_{xI_n - A})$ it suffices to show  that $\mathrm{im}(t_{xI_n - A}) = \ker(\pi)$.
+By the First Isomorphism Theorem, we have $V_\phi\cong F[x]^n/\ker(\pi)$. On the other hand, the matrix $xI_n - A$ determines a map
+$$\phi_{xI_n - A}: F[x]^n \to F[x]^n,$$
+and to show that $V_\phi\cong F[x]^n/\mathrm{im}(\phi_{xI_n - A})$ it suffices to show  that $\mathrm{im}(\phi_{xI_n - A}) = \ker(\pi)$.
 Now
 %The composition $\pi \circ t_{xI_n - A}$ satisfies
-$$(\pi \circ t_{xI_n - A})(e_i)=\pi((xI_n - A)e_i)=(xI_n - A)\pi(e_i)=(xI_n - A)b_i=xb_i-Ab_i=t(b_i)-t(b_i)=0.$$ 
+$$(\pi \circ \phi_{xI_n - A})(e_i)=\pi((xI_n - A)e_i)=(xI_n - A)\pi(e_i)=(xI_n - A)b_i=xb_i-Ab_i=\phi(b_i)-\phi(b_i)=0.$$ 
 %by definition of how $x$ acts on $F^n_A$. 
-This proves $\mathrm{im}(xI_n - a) \subseteq \ker(\pi)$. It follows by \Cref{UMP quotient modules} that there is a surjection of $F[x]$-modules
-$$W := F[x]^n/\mathrm{im}(xI_n - A) \twoheadrightarrow V_t.$$
-We may also regard this as a surjection of $F$-vector spaces. Since $\dim_F(V_t) = n$ and the map above is surjective, we have $\dim_F(W)\geqslant n$, which follows from the \hyperref[rank nulity]{Rank Nulity Theorem}. To establish that the map above is an isomorphism, it suffices to show that $\dim_F(W) \leqslant n$. 
+This proves $\mathrm{im}(xI_n - a) \subseteq \ker(\pi)$. It follows by UMP for quotient modules that there is a surjection of $F[x]$-modules
+$$W := F[x]^n/\mathrm{im}(xI_n - A) \twoheadrightarrow V_\phi.$$
+We may also regard this as a surjection of $F$-vector spaces. Since $\dim_F(V_\phi) = n$ and the map above is surjective, we have $\dim_F(W)\geqslant n$, which follows from the Rank Nulity Theorem. To establish that the map above is an isomorphism, it suffices to show that $\dim_F(W) \leqslant n$. 
 
 Denote by $c_i=e_i+\mathrm{im}(xI_n - A)$ the image of the standard basis of $F[x]^n$ in $W$.
 The $i$th column of $xI_n - A$ gives the relation $x c_i = v_i$ in
 $W$, where $v_i$ is the $i$-th column of $A$. It follows that $p(x) c_i = p(A) c_i$ in $W$ for any
 polynomial $p(x)$. Thus a typical element of $W$, given by $\sum_i g_i(x) c_i$, is equal to $g_1(A) c_1 + \cdots + g_n(A) c_n$. Such an
 expression belongs to the $F$-span of $c_1, \ldots, c_n$ in $W$; that is;
-$c_1, \ldots, c_n$ span $W$ as an $F$-vector space. Therefore, we have the desired inequality  $\dim_F(W) \leqslant n$, which completes our proof.
+$c_1, \ldots, c_n$ span $W$ as an $F$-vector space. Therefore, we have the desired inequality $\dim_F(W) \leqslant n$, which completes our proof.
 \end{proof}
 
 
 
 \begin{corollary}\label{cor:IFendo}
-Suppose $F$ is a field, $V$ is an $F$-vector space, and $t\!:V\to V$ is a linear transformation. There exist unique monic polynomials $g_1 | \cdots | g_k \in F[x]$ of positive degree and an $F[x]$-module isomorphism 
+Suppose $F$ is a field, $V$ is an $F$-vector space, and $\phi\!:V\to V$ is a linear transformation. There exist unique monic polynomials $g_1 | \cdots | g_k \in F[x]$ of positive degree and an $F[x]$-module isomorphism 
 $$V_{t} \cong F[x]/(g_1)\oplus \cdots \oplus F[x]/(g_k).$$ 
-The polynomials $g_1,\ldots, g_k$ are both the invariant factors of the $F[x]$-module $V_{t}$ and the entries on the diagonal of the Smith normal form of $xI_n-[t]_B^B$ for any basis $B$ of $V$.
+The polynomials $g_1,\ldots, g_k$ are both the invariant factors of the $F[x]$-module $V_{\phi}$ and the entries on the diagonal of the Smith normal form of $xI_n-[\phi]_B^B$ for any basis $B$ of $V$.
 \end{corollary}
 
 \begin{proof}
-\Cref{presents F[x] module} says that $xI_n-[t]_B^B$ presents the $F[x]$-module $V_t$, and the remainder of the statement is an immediate application of the \hyperref[classification elementary divisors]{Classification of finitely generated modules over PIDs} to this special case once we show that there is no free summand. Note that $F[x]$ is an infinite dimensional vector space over $F$, while $V_t$ is a finite dimensional vector space. If $V_t$ had a free summand, then it would contain an infinite linearly independent set over $F$, and thus it could not be finite-dimensional.
+The statement says that $xI_n-[t]_B^B$ presents the $F[x]$-module $V_\phi$, and the remainder of the statement is an immediate application of the Classification of finitely generated modules over PIDs to this special case once we show that there is no free summand. Note that $F[x]$ is an infinite dimensional vector space over $F$, while $V_\phi$ is a finite dimensional vector space. If $V_\phi$ had a free summand, then it would contain an infinite linearly independent set over $F$, and thus it could not be finite-dimensional.
 \end{proof}
 
 
 \begin{definition}
-The polynomials $g_1,\ldots,g_k$ in \Cref{cor:IFendo} are called the \df{invariant factors} of the linear transformation $t$.
+The polynomials $g_1,\ldots,g_k$ in \Cref{cor:IFendo} are called the \df{invariant factors} of the linear transformation $\phi$.
 \end{definition}
 
 
@@ -9397,15 +9403,22 @@ be the Smith Normal Form of $xI_2-A$. Recall from the proof of \Cref{Smith Norma
 \end{example}
 
 
-%\Cref{cor:IFendo} gives us Rational Canonical Form of the matrix $A$. This follows from the following lemma:
+We know that for linear transformation $\alpha\neq \beta$ from $V\to V$, the modules $V_\alpha$ and $V_\beta$ are not equal. It is natural to ask when they are isomorphic. You will show the following in Problem Set \#7:
 
-You will show the following lemma in Problem Set 6:
+\begin{exercise}
+Let $F$ be a field and $V=F^n$. Let $A,B\in \mathrm{Mat}_{n\times n}(F)$. Then $V_{t_A}$ and $V_{t_B}$ are isomorphic if and only if $A$ and $B$ are similar matrices, i.e., there is some invertible matrix $P$ such that $B=PAP^{-1}$.
+\end{exercise}
+
+
+\section{Rational canonical form}
+
+You will show the following lemma in Problem Set \#6:
 
 \begin{lemma}\label{lem:companion}
 For a monic polynomial $f(x) = x^n + a_{n-1}x^{n-1} +
   \cdots a_1 x + a_0$ with $n \geqslant 1$, the classes of $1, x, \dots,
   x^{n-1}$ form a basis for
-  $F[x]/(f(x))$ regarded as an $F$-vector space. Relative to this basis, the $F$-linear operator $\l_x: F[x]/(f(x)) \to F[x]/(f(x))$ defined by $\l_x(v)=xv$ is given by the following matrix:
+  $F[x]/(f(x))$ regarded as an $F$-vector space. Relative to this basis, the $F$-linear operator $\mu_x: F[x]/(f(x)) \to F[x]/(f(x))$ defined by $\mu_x(v)=xv$ is given by the following matrix:
 $$C(f) :=
 \begin{bmatrix}
 0 & 0 &\cdots & 0 & -a_0 \\
@@ -9424,9 +9437,6 @@ $$C(f) :=
 
 	
 
-%Proof in Problem Set 6?
-
-
 \begin{definition} 
 In the setup of \Cref{lem:companion}, the matrix $C(f)$ is called the \df{companion matrix} of the monic polynomial $f$.
 \end{definition}
@@ -9442,15 +9452,6 @@ A_1 & 0 & \cdots & 0 \\
 \end{bmatrix}.$$
 \end{definition}
 
-%$A_1 \in \mathrm{Mat}_{n_1 \times n_1}(F), \ldots, A_m \in \mathrm{Mat}_{n_m \times n_m}(F)$,
-
-%
-%\begin{definition}
-%Let $F$ be a field and let $A \in \mathrm{Mat}_m(F)$ and $B \in \mathrm{Mat}_n(F)$. The matrix $A \oplus B$ is the matrix $[c_{ij}] \in \mathrm{Mat}_{m+n}(F)$ defined by $c_{ij} = a_{ij}$ for all $1 \leqslant i,j \leq m, c_{ij} = b_{i-m,j-m}$ for all $m+1 \leqslant i,j \leqslant m+n$, and $c_{ij} = 0$ otherwise.
-%This means that
-%$$A\oplus B := \begin{bmatrix} A & 0 \\ 0 & B\end{bmatrix}.$$
-%\end{definition}
-
 
 \begin{remark}\label{remark RCF}
 If $f:V_1\to W_1$ and $g:V_2\to W_2$ are linear transformations, then the map $f\oplus g:V_1\oplus V_2\to W_1\oplus W_2$ given by $(f\oplus g)(a,c)= (f(a),g(c))$ is a linear transformation. If $B_i$ is a basis for $V_i$ and $C_i$ is a basis for $W_i$, and $\iota_i: A_i \hookrightarrow A_1 \oplus A_2$ are the natural inclusions, then $\mathcal{B}=\iota_1(B_1)\cup \iota_2(B_2)$ is a basis for $V_1\oplus V_2$, $\mathcal{C}=\iota_1(C_1)\cup \iota_2(C_2)$ is a basis for $W_1\oplus W_2$, and
@@ -9463,24 +9464,24 @@ $$[f\oplus g]_{\mathcal{B}}^{\mathcal{C}}=
 
 
 \begin{theorem}[Rational Canonical Form]\label{RCF}
-Let $F$ be a field, $V$ a finite dimensional $F$-vector space, and $t\!: V \to V$ an $F$-linear transformation. There is a basis $B$ of $V$ such that 
-$$[t]_B^B=C(g_1) \oplus \cdots \oplus C(g_k) =
+Let $F$ be a field, $V$ a finite dimensional $F$-vector space, and $\phi \!: V \to V$ an $F$-linear transformation. There is a basis $B$ of $V$ such that 
+$$[\phi]_B^B=C(g_1) \oplus \cdots \oplus C(g_k) =
 \begin{bmatrix}
 C(g_1) & 0 & 0 & \cdots & 0 \\
 0 & C(g_2)  & 0 & \cdots & 0 \\
 \vdots & \vdots & \ddots &  & \vdots \\
 0 & 0 & \cdots & 0 & C(g_k) \\
 \end{bmatrix}$$
-where $g_1, \dots, g_k$ are the invariant factors of $t$, meaning they are monic polynomials of positive degree such that $g_1 \mid g_2 \mid \cdots \mid g_k$. Moreover, the polynomials $g_1, \dots, g_k$ are unique.
+where $g_1, \dots, g_k$ are the invariant factors of $t$, meaning in particular they are monic polynomials of positive degree such that $g_1 \mid g_2 \mid \cdots \mid g_k$. Moreover, the polynomials $g_1, \dots, g_k$ are unique.
 \end{theorem}
 
 
 \begin{proof} 
-By \Cref{cor:IFendo}, $V_t \cong \bigoplus_{i=1}^k F[x]/(g_i(x))$ for some unique $g_i$ as in the statement. Set $V_i=F[x]/(g_i(x))$ and note that $V_t=V_1\oplus \dots \oplus V_k$. The map $\l_x\!:V_t\to V_t$ given by multiplication by $x$ preserves each summand in this decomposition: $\l_x(V_i)\subseteq V_i$. Thus if we choose a basis $B_i$ of each summand $V_i$ and set $B=\bigcup_{i=1}^k \iota_i(B_i)$, by \Cref{remark RCF}, $B$ is a basis of $V_t$ and $[t]_B^B=[t|_{V_1}]_{B_1}^{B_1}\oplus \dots \oplus [t|_{V_k}]_{B_k}^{B_k}$. The result now follows from \Cref{lem:companion}.
+By \Cref{cor:IFendo}, $V_\phi \cong \bigoplus_{i=1}^k F[x]/(g_i(x))$ for some unique $g_i$ as in the statement. Set $V_i=F[x]/(g_i(x))$ and note that $V_\phi=V_1\oplus \dots \oplus V_k$. The map $\mu _x\!:V_\phi\to V_\phi $ given by multiplication by $x$ preserves each summand in this decomposition: $\mu_x(V_i)\subseteq V_i$. Thus if we choose a basis $B_i$ of each summand $V_i$ and set $B=\bigcup_{i=1}^k \iota_i(B_i)$, by \Cref{remark RCF}, $B$ is a basis of $V_\phi$ and $[\phi]_B^B=[\phi|_{V_1}]_{B_1}^{B_1}\oplus \dots \oplus [\phi|_{V_k}]_{B_k}^{B_k}$. The result now follows from \Cref{lem:companion}.
 \end{proof}
 
 \begin{definition}
-In the setup of \Cref{RCF}, the matrix $C(g_1) \oplus \cdots \oplus C(g_k)$ is called the \df{rational canonical form} (RCF) of the linear transformation $t$. The rational canonical form of a matrix $A\in \mathrm{Mat}_n(F)$ is defined to be the rational canonical form of the endomorphism $t_A$ represented by $A$ with respect to the standard basis of $F^n$.
+In the setup of \Cref{RCF}, the matrix $C(g_1) \oplus \cdots \oplus C(g_k)$ is called the \df{rational canonical form} (RCF) of the linear transformation $\phi$. The rational canonical form of a matrix $A\in \mathrm{Mat}_n(F)$ is defined to be the rational canonical form of the endomorphism $t_A$ represented by $A$ with respect to the standard basis of $F^n$.
 \end{definition}
 
 
@@ -9492,7 +9493,24 @@ $$RCF(A)=C((x-1)^2)=C(x^2-2x+1)=\begin{bmatrix} 0 & -1 \\ 1 & 2 \end{bmatrix}.$$
 \end{example}
 
 
-We will later show that two matrices have the same Rational Canonical Form if and only if they are similar.
+The rational canonical form is canonical in that it uniquely characterizes the similarity class of a matrix.
+
+\begin{theorem}
+Let $F$ be a field and let $A, B \in \mathrm{Mat}_n(F)$. The following are equivalent:
+\begin{enumerate}[leftmargin=17pt,label=(\arabic*)]
+\item $A$ and $B$ are similar matrices. 
+\item $A$ and $B$ have the same Rational Canonical Form. 
+\item $A$ and $B$ have the same invariant factors. 
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+To show $(1)\Rightarrow (2)$, suppose $A$ is similar to $B$. Then there exists an invertible matrix $P$ such that $B = PAP^{-1}$, and thus 
+$$xI_n-B = xI_n PAP^{-1} = P(xI_n - A) P^{-1}.$$
+Thus the matrices $xI_n-A$ and $xI_n-B$ are also similar. Moreover, similar matrices have the same Smith Normal Form, since they present isomorphic modules and thus $A$ and $B$ have the Rational Canonical Form. The invariant factors can be read off of the Rational Canonical Form, and thus $(2)\Rightarrow (3)$.
+
+Finally, to show $(3)\Rightarrow (1)$ notice that if $A$ and $B$ have the same invariant factors then by the Structure Theorem of Finitely Generated Modules over PIDs, there is an isomorphism of $F[x]$-modules $F^n_{t_A} \cong F^n_{t_{B}}$, which implies by a homework problem in Problem Set \#7 that $A$ and $B$ must be similar.
+\end{proof}
 
 
 
@@ -9576,7 +9594,7 @@ By Problem Set 5, $\ann_{F[x]}(V_t)=(g_k)$, and since $g_k$ is monic we deduce t
 \end{proof}
 
 
-We can now prove the famous Caley-Hamilton theorem.
+We can now prove the famous Cayley-Hamilton theorem.
 
 
 \begin{theorem}[Cayley-Hamilton]\label{cayley-hamilton}
@@ -9648,24 +9666,7 @@ Finally, to show that $(1) \Leftrightarrow (2)$, notice that the scalar $\lambda
 
 
 
-\begin{theorem}
-Let $F$ be a field and let $A, A' \in \mathrm{Mat}_n(F)$. The following are equivalent:
-\begin{enumerate}[leftmargin=17pt,label=(\arabic*)]
-\item $A$ and $A'$ are similar matrices. 
-%\item $A$ and $A'$ represent the same linear transformation $t:F^n\to F^n$.
-\item $A$ and $A'$ have the same Rational Canonical Form. 
-\item $A$ and $A'$ have the same invariant factors. 
-\end{enumerate}
-\end{theorem}
-
-\begin{proof}
-To show $(1)\Rightarrow (2)$, suppose $A$ is similar to $A'$. Then there exists an invertible matrix $P$ such that $A' = PAP^{-1}$, and thus 
-$$xI_n-A' = xI_n PAP^{-1} = P(xI_n - A) P^{-1}.$$
-Thus the matrices $xI_n-A$ and $xI_n-A'$ are also similar. Moreover, by definition we see that similar matrices have the same Smith normal form, and thus $A$ and $A'$ have the Rational Canonical Form. The invariant factors can be read off of the Rational Canonical Form, and thus $(2)\Rightarrow (3)$.
-
-Finally, to show $(3)\Rightarrow (1)$ notice that if $A$ and $A'$ have the same invariant factors then there is an isomorphism of $F[x]$-modules $F^n_{t_A} \cong F^n_{t_{A'}}$, which implies by a homework problem in Problem Set 6 that $A$ and $A'$ must be similar.
-\end{proof}
-
+\
 
 
 

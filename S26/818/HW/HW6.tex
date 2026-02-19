@@ -1,0 +1,140 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,enumerate,bbm}
+\usepackage[]{graphicx}
+\usepackage{color,subfigure}
+\definecolor{scarlet}{rgb}{0.81,0,0}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage[all]{xypic}
+\usepackage[colorlinks=true,citecolor=scarlet,linkcolor=scarlet]{hyperref}
+\usepackage{colonequals}
+
+\usepackage{fancyhdr, lastpage}
+\pagestyle{fancy}
+\fancyfoot[C]{{\thepage} of \pageref{LastPage}}
+
+
+
+\DeclareMathOperator{\mSpec}{mSpec}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Ass}{Ass}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\height}{height}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\ann}{ann}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\coker}{coker}
+%\DeclareMathOperator{\ker}{ker}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\M}{M}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\ch}{char}
+\DeclareMathOperator{\Aut}{Aut}
+
+%\DeclareMathOperator{\dim}{dim}
+
+\DeclareMathOperator{\lcm}{lcm}
+
+\def\ra{\rightarrow}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\ov}[1]{\overline{#1}}
+\newcommand{\norm}{\trianglelefteq}
+
+\def\ov#1{\overline{#1}}
+
+
+\title{}
+\date{\vspace{-0.5in}}
+
+\makeatletter
+\g@addto@macro\@floatboxreset\centering
+\makeatother
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+
+\begin{document}
+
+\thispagestyle{fancy}
+\pagestyle{fancy}
+\rhead{UNL $\mid$ Spring 2026}
+\lhead{Introduction to Modern Algebra II}
+
+\vspace{3em}
+
+\begin{center}
+	{\LARGE Problem Set 5 \\}
+	Due Thursday, February 19
+\end{center}
+
+\
+
+\noindent
+{\bf Instructions:}
+You are encouraged to work together on these problems, but each student should hand in their own final draft, written in a way that indicates their individual understanding of the solutions. Never submit something for grading that you do not completely understand. You cannot use any resources besides me, your classmates, and our course notes.
+
+
+I will post the .tex code for these problems for you to use if you wish to type your homework. If you prefer not to type, please  {\em write neatly}. As a matter of good proof writing style, please use complete sentences and correct grammar. You may use any result stated or proven in class or in a homework problem, provided you reference it appropriately by either stating the result or stating its name (e.g. the definition of ring or Lagrange's Theorem). Please do not refer to theorems by their number in the course notes, as that can change.
+
+
+\
+
+\begin{problem}
+Consider the matrix 
+$$A=\begin{bmatrix}
+x & 1 & 0 \\
+1 & x & -3 \\
+0 & 0 & x-1
+\end{bmatrix}
+\in \mathrm{Mat}_{3\times 3}(R),$$ 
+where $R=\Q[x]$. 
+\begin{enumerate}[(a)]
+\item Determine the Smith normal form for $A$.
+\item Determine the representative in the isomorphism class of the module presented by $A$ which is written in invariant factor form and in elementary divisor form.
+\end{enumerate}
+\end{problem}
+
+\
+
+
+\begin{problem} Let $R$ be a domain. An $R$-module $M$ is \textbf{torsionfree} if for $r\in R$ and $m\in M$, we have $rm=0$ implies $r=0$ or $m=0$.
+\begin{enumerate}[(a)]
+\item Show that if $R$ is a PID and $M$ is a finitely generated torsionfree module, then $M$ is free.
+\item Give an example of a torsionfree module $M$ over a PID $R$ such that $M$ is not free.
+\item Give an example of a finitely generated torsionfree module $M$ over a domain $R$ such that $M$ is not free.
+\end{enumerate}
+\end{problem}
+
+\
+
+
+
+\begin{problem}
+Let $F$ be a field and consider a monic polynomial $f(x)=x^n+a_{n-1}x^{n-1}+\cdots+a_1x+a_0$ in $F[x]$ with $n \geqslant 1$.
+\begin{enumerate}[(a)]
+\item Show that the principal ideal $(f(x))$ is a subspace of the $F$-vector space $F[x]$.
+\item Show that  the set $B=\{\ov{1},\ov{x},\ldots,\ov{x^{n-1}}\}$, where $\ov{x^i}=x^i+(f(x))$, is a basis for the quotient $F$-vector space $F[x]/(f(x))$.
+\item Consider the linear transformation $\l_x : F [x]/(f (x)) \to F[x]/(f(x))$ defined by $\l_x(v)=\ov{x}v$ for any $v\in F [x]/(f (x))$. Find the matrix representing $\l_x$ in the basis $B$ from part (b).
+\end{enumerate}	
+\end{problem}
+
+\
+
+\begin{problem}
+Let $K$ be a field, and $G$ be a finite subgroup of $K^\times$. Show\footnote{Hint: Consider the invariant factors of $G$, and let $e$ be the largest one. Show that every element of $G$ is a root of the polynomial $x^e-1 \in K[x]$.}\footnote{Note that as a special case of this, $(\Z/p)^\times$ is cyclic.} that $G$ is cyclic.
+\end{problem}
+
+
+
+
+\end{document}

@@ -179,6 +179,11 @@
 <li><a href="#sec-13-3-heading">Classification of finitely generated modules over PIDs</a></li>
 <li><a href="#sec-13-4-heading">Proof of the Smith Normal Form Theorem</a></li>
 </ol>
+<li><a href="#ch-14-title">Canonical forms for endomorphisms</a></li>
+<ol><li><a href="#sec-14-1-heading">The module associated to an \(F\)-linear endomorphism</a></li>
+<li><a href="#sec-14-2-heading">Rational canonical form</a></li>
+</ol>
+
 
 </ol>
 </ul></nav>
@@ -3858,6 +3863,415 @@ We will need the following fact.
     </div>
   </section>
 </section>
+
+
+<section id="ch-14" class="chapter" aria-labelledby="ch-14-title">
+  <h1 id="ch-14-title">Chapter 14 Canonical forms for endomorphisms</h1>
+
+On obvious case where the structure theory of modules over PIDs applies is in the case of the integers: we obtain the structure theory of finitely generated abelian groups and a method to solve systems of linear equations over integers. We mow move to another key application of this theory: classifying linear transformations and matrices up to similarity.
+
+
+
+
+<section id="sec-14-1" class="section" aria-labelledby="sec-14-1-title">
+  <h2 id="sec-14-1-heading">14.1 The module associated to an \(F\)-linear endomorphism</h2>
+
+  <p>
+    For any linear transformation from an \(F\)-vector space to itself, we can construct a module over a polynomial ring \(F[x]\).
+  </p>
+
+  <section id="def-14-1-1" class="callout definition" aria-labelledby="def-14-1-1-title">
+    <h3 id="def-14-1-1-title">Definition 14.1.1</h3>
+    <div class="callout-body">
+      <p>
+        Let \(F\) be a field, and \(V\) be an \(F\)-vector space. Let \(\phi:V\to V\) be a linear transformation. For any polynomial
+      </p>
+      \[
+        f(x) = a_n x^n + \cdots + a_1 x + a_0,
+      \]
+      <p>
+        we have an \(F\)-linear transformation \(f(\phi): V\to V\) given by
+      </p>
+      \[
+        f(\phi) = a_n \phi^n + \cdots  + a_1 \phi + a_0 \mathrm{id}_V.
+      \]
+      <p>
+        We define a \(V_\phi\) to be the \(F[x]\)-module with underlying additive group \((V,+)\) and \(F[x]\)-action given by
+      </p>
+      \[
+        f(x) \cdot v = f(\phi)(v).
+      \]
+    </div>
+  </section>
+
+  <p>
+    That is, \(V_\phi\) is the same \(F\)-vector space as \(V\), with a bigger action where the action of \(x\) on \(V\) is given by \(\phi\). Of course, one has to verify that this definition satisfies the module axioms. We leave this for you as an exercise if you want more practice with the module axioms.
+  </p>
+
+  <p>
+    Every \(F[x]\)-module can be thought of this way.
+  </p>
+
+  <section id="lem-14-1-2" class="callout lemma" aria-labelledby="lem-14-1-2-title">
+    <h3 id="lem-14-1-2-title">Lemma 14.1.2</h3> Let \( F\) be a field. Then there is a bijective correspondence:
+    <div class="callout-body">
+      \[
+        \begin{aligned} \{V \ | \  V \ \text{a} \ F[x]\text{-module}\} &\longleftrightarrow \{(V,\phi) \ | \  V \ \text{a} \ F\text{-vector space}, \ \phi\in \mathrm{End}_F(V)\}\\
+        V &\rightarrow \ (V, \mu_x:V\to V)\\
+        W_{\phi} &\leftarrow (W,\phi),
+        \end{aligned}
+      \]
+      <p>
+        where \(\mu_x:V\to V\) is the map of multiplication by \(x\) on the \(F[x]\)-module \(V\).
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-lem-14-1-2" class="callout proof" aria-labelledby="proof-lem-14-1-2-title">
+    <h3 id="proof-lem-14-1-2-title">Proof of Lemma 14.1.2</h3>
+    <div class="callout-body">
+      <p>
+        If \(V\) is an \(F[x]\)-module then \(V\) is an \(F\)-vector space by restriction of scalars along the inclusion \(F \hookrightarrow F[x]\). Let \(\mu_x:V\to V\) be as above. To show that \(\mu_x\in \mathrm{End}_F(V)\), note that for any \(c\in F\) and \(v,v_1, v_2\in V\) the axioms of the \(F[x]\)-module give us
+      </p>
+      \[
+        \mu_x(v_1+v_2)=x(v_1+v_2)=xv_1+xv_2=\mu_x(v_1)+\mu_x(v_2) \textrm{
+        and } \mu_x(cv)=x(cv)=c \mu_x(v).
+      \]
+      <p>
+        The construction \((W,\phi) \to W_\phi\) was discussed above. It remains to check that these are mutually inverse constructions, which we leave for you.
+      </p>
+    </div>
+  </section>
+
+  <section id="ex-14-1-3" class="callout example" aria-labelledby="ex-14-1-3-title">
+    <h3 id="ex-14-1-3-title">Example 14.1.3</h3>
+    <div class="callout-body">
+      <p>
+        Let \(F=\mathbb{R}\), and \(V=\mathbb{R}^2\).
+      </p>
+      <ol>
+        <li>
+          <p>
+            For \(\phi=0\), in the \(\mathbb{R}[x]\)-module \(V_\phi\), we have \(x \cdot \begin{bmatrix} \lambda_1 \\ \lambda_2 \end{bmatrix}= \begin{bmatrix} 0 \\ 0 \end{bmatrix}\) and more generally
+          </p>
+          \[
+            (c_n x^n +\cdots + c_0) \cdot \begin{bmatrix}  \lambda_1 \\  \lambda_2 \end{bmatrix} = \begin{bmatrix} c_0  \lambda_1 \\ c_0  \lambda_2 \end{bmatrix}.
+          \]
+          <p>
+            The \(\mathbb{R}[x]\)-module \(V_\phi\) is evidently generated by \(e_1\) and \(e_2\), since any element of \(V_\phi\) can we written \(\lambda_1 e_1 +  \lambda_2 e_2\). (We didn't even need to use the \(x\)'s!).
+            Since \(x\) times any vector \(v\in V\) is zero, \(x\in \mathrm{ann}_{\mathbb{R}[x]}(V_\phi)\). You can check that \(\mathrm{ann}_{\mathbb{R}[x]}(V_\phi) = (x)\).
+          </p>
+        </li>
+        <li>
+          <p>
+            Let \(\phi\) be the linear transformation of rotation by \(\pi/3\) counterclockwise. The standard basis vectors \(e_1, e_2\) generate \(V_\phi\), since any element is an \(\mathbb{R}\)-linear combination of \(e_1,e_2\). Even better, \(V_\phi\) is generated by \(e_1\) as an \(\mathbb{R}[x]\)-module, since \(e_1\) and \(x e_1 = \begin{bmatrix} \sqrt{3}/2 \\ 1/2 \end{bmatrix}\) are \(\mathbb{R}\)-linearly independent, so any \(v\in V_\phi\) can be written as \(\lambda_1 e_1 + \lambda_2 x e_1 = (\lambda_2 x + \lambda_1) e_1\).
+          </p>
+          <p>
+            Since \(\phi^6\) is the identity on \(V\), we have \((x^6-1)v= \phi^6(v) - v = 0\) for all \(v\in V\). It follows that \(x^6-1\) annihilates \(V_\phi\). We will see soon that \(\mathrm{ann}_{\mathbb{R}[x]}(V_\phi) = (x^2 - x + 1)\).
+          </p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <p>
+    We can give a presentation for \(V_\phi\) in general by choosing a basis for \(V\). Recall that given an \(F\)-vector space \(V\) with \(\dim_F(V)=n\) and an ordered basis \(B\) for \(V\) we have proven that \(\mathrm{End}_F(V)\cong \mathrm{Mat}_n(F)\) via the maps \(\phi\mapsto [\phi]_B^B\) and \(A\mapsto \phi_A\).
+  </p>
+
+  <section id="thm-14-1-4" class="callout theorem" aria-labelledby="thm-14-1-4-title">
+    <h3 id="thm-14-1-4-title">Theorem 14.1.4</h3>
+    <div class="callout-body">
+      <p>
+        Let \(F\) be a field, let \(V\) be an \(F\)-vector space of dimension \(n\), let \(\phi\!: V \to V\) be a linear transformation, let \(B\) be an ordered basis for \(V\), and let \(A = [\phi]_B^B\). Then the matrix \(xI_n - A \in \mathrm{Mat}_n(F[x])\) presents the \(F[x]\)-module \(V_\phi\).
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-thm-14-1-4" class="callout proof" aria-labelledby="proof-thm-14-1-4-title">
+    <h3 id="proof-thm-14-1-4-title">Proof of Theorem 14.1.4</h3>
+    <div class="callout-body">
+      <p>
+        Let \(B=\{b_1, \dots, b_n\}\) be any basis for \(V\), and note that \(B\) is a generating set for \(V_t\) as a module over \(F[x]\). Then \(V_\phi\) can then be written as a quotient of \(F[x]^n\). More precisely, let \(e_1, \dots, e_n\) denote the standard \(F[x]\)-basis for the free \(F[x]\)-module \(F[x]^n\), and let \(\pi\!: F[x]^n \to V_\phi\) be the surjective \(F[x]\)-module homomorphism sending \(e_i\) to \(b_i\). That is,
+      </p>
+      \[
+        \pi((g_1(x), \dots, g_n(x)) = \pi \left( \sum_{i=1}^n g_i(x) e_i \right) = \sum_{i=1}^n g_i(x) b_i = \sum_{i=1}^n g_i(\phi) b_i.
+      \]
+      <p>
+        By the First Isomorphism Theorem, we have \(V_\phi\cong F[x]^n/\ker(\pi)\). On the other hand, the matrix \(xI_n - A\) determines a map
+      </p>
+      \[
+        \phi_{xI_n - A}: F[x]^n \to F[x]^n,
+      \]
+      <p>
+        and to show that \(V_\phi\cong F[x]^n/\mathrm{im}(\phi_{xI_n - A})\) it suffices to show  that \(\mathrm{im}(\phi_{xI_n - A}) = \ker(\pi)\).
+        Now
+      </p>
+      \[
+        (\pi \circ \phi_{xI_n - A})(e_i)=\pi((xI_n - A)e_i)=(xI_n - A)\pi(e_i)=(xI_n - A)b_i=xb_i-Ab_i=\phi(b_i)-\phi(b_i)=0.
+      \]
+      <p>
+        This proves \(\mathrm{im}(xI_n - a) \subseteq \ker(\pi)\). It follows by UMP for quotient modules that there is a surjection of \(F[x]\)-modules
+      </p>
+      \[
+        W := F[x]^n/\mathrm{im}(xI_n - A) \twoheadrightarrow V_\phi.
+      \]
+      <p>
+        We may also regard this as a surjection of \(F\)-vector spaces. Since \(\dim_F(V_\phi) = n\) and the map above is surjective, we have \(\dim_F(W)\geqslant n\), which follows from the Rank Nulity Theorem. To establish that the map above is an isomorphism, it suffices to show that \(\dim_F(W) \leqslant n\).
+      </p>
+
+      <p>
+        Denote by \(c_i=e_i+\mathrm{im}(xI_n - A)\) the image of the standard basis of \(F[x]^n\) in \(W\).
+        The \(i\)th column of \(xI_n - A\) gives the relation \(x c_i = v_i\) in
+        \(W\), where \(v_i\) is the \(i\)-th column of \(A\). It follows that \(p(x) c_i = p(A) c_i\) in \(W\) for any
+        polynomial \(p(x)\). Thus a typical element of \(W\), given by \(\sum_i g_i(x) c_i\), is equal to \(g_1(A) c_1 + \cdots + g_n(A) c_n\). Such an
+        expression belongs to the \(F\)-span of \(c_1, \ldots, c_n\) in \(W\); that is;
+        \(c_1, \ldots, c_n\) span \(W\) as an \(F\)-vector space. Therefore, we have the desired inequality \(\dim_F(W) \leqslant n\), which completes our proof.
+      </p>
+    </div>
+  </section>
+
+  <section id="cor-14-1-5" class="callout corollary" aria-labelledby="cor-14-1-5-title">
+    <h3 id="cor-14-1-5-title">Corollary 14.1.5</h3>
+    <div class="callout-body">
+      <p>
+        Suppose \(F\) is a field, \(V\) is an \(F\)-vector space, and \(\phi\!:V\to V\) is a linear transformation. There exist unique monic polynomials \(g_1 | \cdots | g_k \in F[x]\) of positive degree and an \(F[x]\)-module isomorphism
+      </p>
+      \[
+        V_{t} \cong F[x]/(g_1)\oplus \cdots \oplus F[x]/(g_k).
+      \]
+      <p>
+        The polynomials \(g_1,\ldots, g_k\) are both the invariant factors of the \(F[x]\)-module \(V_{\phi}\) and the entries on the diagonal of the Smith normal form of \(xI_n-[\phi]_B^B\) for any basis \(B\) of \(V\).
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-cor-14-1-5" class="callout proof" aria-labelledby="proof-cor-14-1-5-title">
+    <h3 id="proof-cor-14-1-5-title">Proof of Corollary 14.1.5</h3>
+    <div class="callout-body">
+      <p>
+        The statement says that \(xI_n-[t]_B^B\) presents the \(F[x]\)-module \(V_\phi\), and the remainder of the statement is an immediate application of the Classification of finitely generated modules over PIDs to this special case once we show that there is no free summand. Note that \(F[x]\) is an infinite dimensional vector space over \(F\), while \(V_\phi\) is a finite dimensional vector space. If \(V_\phi\) had a free summand, then it would contain an infinite linearly independent set over \(F\), and thus it could not be finite-dimensional.
+      </p>
+    </div>
+  </section>
+
+  <section id="def-14-1-6" class="callout definition" aria-labelledby="def-14-1-6-title">
+    <h3 id="def-14-1-6-title">Definition 14.1.6</h3>
+    <div class="callout-body">
+      <p>
+        The polynomials \(g_1,\ldots,g_k\) in Corollary 14.1.5 are called the <strong>invariant factors</strong> of the linear transformation \(\phi\).
+      </p>
+    </div>
+  </section>
+
+  <section id="ex-14-1-7" class="callout example" aria-labelledby="ex-14-1-7-title">
+    <h3 id="ex-14-1-7-title">Example 14.1.7</h3>
+    <div class="callout-body">
+      <p>
+        Let
+      </p>
+      \[
+        A= \begin{bmatrix} 1 & 1 \\ 0 & 1  \end{bmatrix}\in \mathrm{Mat}_2(\mathbb{Q}).
+      \]
+      <p>
+        Then
+      </p>
+      \[
+        xI_2-A= \begin{bmatrix} x-1 & -1 \\ 0 & x-1  \end{bmatrix}.
+      \]
+      <p>
+        We could compute the invariant factors of \(t\!:\mathbb{Q}^2\to\mathbb{Q}^2\) by appealing to the Smith Normal Form of \(xI_2-A\), but let us try another way. Let
+      </p>
+      \[
+        \begin{bmatrix} d_1 & 0 \\ 0 & d_2 \end{bmatrix}
+      \]
+      <p>
+        be the Smith Normal Form of \(xI_2-A\). Recall from the proof of Smith Normal Form that \(d_1\) is the gcd of the entries of \(xI_2-A\) and \(d_1d_2=\det(xI_2-A)\). Thus \(d_2=\det(xI_2-A)=(x-1)^2\) and \(d_1=1\). Therefore the only invariant factor of \(t_A\) is \((x-1)^2\).
+      </p>
+    </div>
+  </section>
+
+  <p>
+    We know that for linear transformation \(\alpha\neq \beta\) from \(V\to V\), the modules \(V_\alpha\) and \(V_\beta\) are not equal. It is natural to ask when they are isomorphic. You will show the following in Problem Set \(\#7\):
+  </p>
+
+  <section id="exr-14-1-8" class="callout exercise" aria-labelledby="exr-14-1-8-title">
+    <h3 id="exr-14-1-8-title">Exercise 14.1.8</h3>
+    <div class="callout-body">
+      <p>
+        Let \(F\) be a field and \(V=F^n\). Let \(A,B\in \mathrm{Mat}_{n\times n}(F)\). Then \(V_{t_A}\) and \(V_{t_B}\) are isomorphic if and only if \(A\) and \(B\) are similar matrices, i.e., there is some invertible matrix \(P\) such that \(B=PAP^{-1}\).
+      </p>
+    </div>
+  </section>
+
+</section>
+
+
+<section id="sec-14-2" class="section" aria-labelledby="sec-14-2-title">
+  <h2 id="sec-14-2-title">14.2 Rational canonical form</h2>
+
+  <p>
+    You will show the following lemma in Problem Set #6:
+  </p>
+
+  <section id="lem-14-2-1" class="callout lemma" aria-labelledby="lem-14-2-1-title">
+    <h3 id="lem-14-2-1-title">Lemma 14.2.1</h3>
+    <div class="callout-body">
+      <p>
+        For a monic polynomial \(f(x) = x^n + a_{n-1}x^{n-1} + \cdots a_1 x + a_0\) with \(n \geqslant 1\), the classes of \(1, x, \dots, x^{n-1}\) form a basis for \(F[x]/(f(x))\) regarded as an \(F\)-vector space. Relative to this basis, the \(F\)-linear operator \(\mu_x: F[x]/(f(x)) \to F[x]/(f(x))\) defined by \(\mu_x(v)=xv\) is given by the following matrix:
+      </p>
+      \[
+        C(f) :=
+        \begin{bmatrix}
+        0 & 0 &\cdots & 0 & -a_0 \\
+        1 & 0 & \cdots & 0 & -a_1 \\
+        0 & 1 & \ddots & 0 & -a_2 \\
+        \vdots & \ddots & \ddots & \vdots & \vdots \\
+        0 & \cdots & 0 & 1 & -a_{n-1} \\
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+        0 & \cdots & 0 & -a_0 \\
+        &&& -a_1 \\
+        & I_{n-1}&& \vdots\\
+        &&& -a_{n-1} \\
+        \end{bmatrix}.
+      \]
+    </div>
+  </section>
+
+  <section id="def-14-2-2" class="callout definition" aria-labelledby="def-14-2-2-title">
+    <h3 id="def-14-2-2-title">Definition 14.2.2</h3>
+    <div class="callout-body">
+      <p>
+        In the setup of <a href="#lem-14-2-1">Lemma 14.2.1</a>, the matrix \(C(f)\) is called the <strong>companion matrix</strong> of the monic polynomial \(f\).
+      </p>
+    </div>
+  </section>
+
+  <section id="def-14-2-3" class="callout definition" aria-labelledby="def-14-2-3-title">
+    <h3 id="def-14-2-3-title">Definition 14.2.3</h3>
+    <div class="callout-body">
+      <p>
+        Given square matrices \(A_1, \ldots, A_m\) with entries in a ring \(R\), not necessarily of the same size, we define \(A_1 \oplus \cdots \oplus A_m\) to be the block diagonal matrix
+        <span class="index">direct sum of matrices</span>
+      </p>
+      \[
+        \begin{bmatrix}
+        A_1 & 0 & \cdots & 0 \\
+        0 & A_2 &  \cdots & 0 \\
+        \vdots & & \ddots & \vdots \\
+        0 & \cdots & 0 & A_m \\
+        \end{bmatrix}.
+      \]
+    </div>
+  </section>
+
+  <section id="rmk-14-2-4" class="callout remark" aria-labelledby="rmk-14-2-4-title">
+    <h3 id="rmk-14-2-4-title">Remark 14.2.4</h3>
+    <div class="callout-body">
+      <p>
+        If \(f:V_1\to W_1\) and \(g:V_2\to W_2\) are linear transformations, then the map \(f\oplus g:V_1\oplus V_2\to W_1\oplus W_2\) given by \((f\oplus g)(a,c)= (f(a),g(c))\) is a linear transformation. If \(B_i\) is a basis for \(V_i\) and \(C_i\) is a basis for \(W_i\), and \(\iota_i: A_i \hookrightarrow A_1 \oplus A_2\) are the natural inclusions, then \(\mathcal{B}=\iota_1(B_1)\cup \iota_2(B_2)\) is a basis for \(V_1\oplus V_2\), \(\mathcal{C}=\iota_1(C_1)\cup \iota_2(C_2)\) is a basis for \(W_1\oplus W_2\), and
+      </p>
+      \[
+        [f\oplus g]_{\mathcal{B}}^{\mathcal{C}}=
+        \begin{bmatrix}
+        [f]_{B_1}^{C_1} & 0 \\
+        0 & [g]_{B_2}^{C_2}
+        \end{bmatrix}.
+      \]
+    </div>
+  </section>
+
+  <section id="thm-14-2-5" class="callout theorem" aria-labelledby="thm-14-2-5-title">
+    <h3 id="thm-14-2-5-title">Theorem 14.2.5 (Rational Canonical Form)</h3>
+    <div class="callout-body">
+      <p>
+        Let \(F\) be a field, \(V\) a finite dimensional \(F\)-vector space, and \(\phi \!: V \to V\) an \(F\)-linear transformation. There is a basis \(B\) of \(V\) such that
+      </p>
+      \[
+        [\phi]_B^B=C(g_1) \oplus \cdots \oplus C(g_k) =
+        \begin{bmatrix}
+        C(g_1) & 0 & 0 & \cdots & 0 \\
+        0 & C(g_2)  & 0 & \cdots & 0 \\
+        \vdots & \vdots & \ddots &  & \vdots \\
+        0 & 0 & \cdots & 0 & C(g_k) \\
+        \end{bmatrix}
+      \]
+      <p>
+        where \(g_1, \dots, g_k\) are the invariant factors of \(t\), meaning in particular they are monic polynomials of positive degree such that \(g_1 \mid g_2 \mid \cdots \mid g_k\). Moreover, the polynomials \(g_1, \dots, g_k\) are unique.
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-thm-14-2-5" class="callout proof" aria-labelledby="proof-thm-14-2-5-title">
+    <h3 id="proof-thm-14-2-5-title">Proof of Theorem 14.2.5</h3>
+    <div class="callout-body">
+      <p>
+        By Corollary 14.1.5, \(V_\phi \cong \bigoplus_{i=1}^k F[x]/(g_i(x))\) for some unique \(g_i\) as in the statement. Set \(V_i=F[x]/(g_i(x))\) and note that \(V_\phi=V_1\oplus \dots \oplus V_k\). The map \(\mu _x\!:V_\phi\to V_\phi \) given by multiplication by \(x\) preserves each summand in this decomposition: \(\mu_x(V_i)\subseteq V_i\). Thus if we choose a basis \(B_i\) of each summand \(V_i\) and set \(B=\bigcup_{i=1}^k \iota_i(B_i)\), by the previous remark, \(B\) is a basis of \(V_\phi\) and \([\phi]_B^B=[\phi|_{V_1}]_{B_1}^{B_1}\oplus \dots \oplus [\phi|_{V_k}]_{B_k}^{B_k}\). The result now follows from the Lemma from the Homework.
+      </p>
+    </div>
+  </section>
+
+  <section id="def-14-2-6" class="callout definition" aria-labelledby="def-14-2-6-title">
+    <h3 id="def-14-2-6-title">Definition 14.2.6</h3>
+    <div class="callout-body">
+      <p>
+        In the setup of <a href="#thm-14-2-5">Theorem 14.2.5</a>, the matrix \(C(g_1) \oplus \cdots \oplus C(g_k)\) is called the <strong>rational canonical form</strong> (RCF) of the linear transformation \(\phi\). The rational canonical form of a matrix \(A\in \mathrm{Mat}_n(F)\) is defined to be the rational canonical form of the endomorphism \(t_A\) represented by \(A\) with respect to the standard basis of \(F^n\).
+      </p>
+    </div>
+  </section>
+
+  <section id="ex-14-2-7" class="callout example" aria-labelledby="ex-14-2-7-title">
+    <h3 id="ex-14-2-7-title">Example 14.2.7</h3>
+    <div class="callout-body">
+      <p>
+        Let \( A= \begin{bmatrix} 1 & 1 \\ 0 & 1  \end{bmatrix}\in \mathrm{Mat}_2(\mathbb{Q})\). We showed earlier that the unique invariant factor of \(xI_2 - A\) is \( (x-1)^2\).
+        Thus, the Rational Canonical Form of \(t_A\) is
+      </p>
+      \[
+        RCF(A)=C((x-1)^2)=C(x^2-2x+1)=\begin{bmatrix} 0 & -1 \\ 1 & 2 \end{bmatrix}.
+      \]
+    </div>
+  </section>
+
+  <p>
+    The rational canonical form is canonical in that it uniquely characterizes the similarity class of a matrix.
+  </p>
+
+  <section id="thm-14-2-8" class="callout theorem" aria-labelledby="thm-14-2-8-title">
+    <h3 id="thm-14-2-8-title">Theorem 14.2.8</h3>
+    <div class="callout-body">
+      <p>
+        Let \(F\) be a field and let \(A, B \in \mathrm{Mat}_n(F)\). The following are equivalent:
+      </p>
+      <ol class="enum-paren" style="margin-left: 1.2em;">
+        <li>\(A\) and \(B\) are similar matrices.</li>
+        <li>\(A\) and \(B\) have the same Rational Canonical Form.</li>
+        <li>\(A\) and \(B\) have the same invariant factors.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="proof-thm-14-2-8" class="callout proof" aria-labelledby="proof-thm-14-2-8-title">
+    <h3 id="proof-thm-14-2-8-title">Proof of Theorem 14.2.8</h3>
+    <div class="callout-body">
+      <p>
+        To show \((1)\Rightarrow (2)\), suppose \(A\) is similar to \(B\). Then there exists an invertible matrix \(P\) such that \(B = PAP^{-1}\), and thus
+      </p>
+      \[
+        xI_n-B = xI_n - PAP^{-1} = P(xI_n - A) P^{-1}.
+      \]
+      <p>
+        Thus the matrices \(xI_n-A\) and \(xI_n-B\) are also similar. Moreover, similar matrices have the same Smith Normal Form, since they present isomorphic modules and thus \(A\) and \(B\) have the Rational Canonical Form. The invariant factors can be read off of the Rational Canonical Form, and thus \((2)\Rightarrow (3)\).
+      </p>
+
+      <p>
+        Finally, to show \((3)\Rightarrow (1)\) notice that if \(A\) and \(B\) have the same invariant factors then by the Structure Theorem of Finitely Generated Modules over PIDs, there is an isomorphism of \(F[x]\)-modules \(F^n_{t_A} \cong F^n_{t_{B}}\), which implies by a homework problem in Problem Set #7 that \(A\) and \(B\) must be similar.
+      </p>
+    </div>
+  </section>
+</section>
+
 
 
 </main>

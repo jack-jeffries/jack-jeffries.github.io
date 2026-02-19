@@ -90,27 +90,28 @@ Moreover, $r,t$ are uniquely determined, and each $a_i$ is uniquely determined u
  \
 
 \begin{enumerate}
-\itemA Let $R$ be a commutative ring, and $D\in \mathrm{Mat}_{m\times n}(R)$ be a diagonal matrix with nonzero diagonal entries $d_{11},\dots,d_{tt}$. Prove that the module presented by $D$ is
-\[  R/(d_{11}) \oplus R/(d_{22}) \oplus \cdots \oplus R/(d_{tt}) \oplus R^{m-t}.\]
+%\itemA Let $R$ be a commutative ring, and $D\in \mathrm{Mat}_{m\times n}(R)$ be a diagonal matrix with nonzero diagonal entries $d_{11},\dots,d_{tt}$. Prove that the module presented by $D$ is
+%\[  R/(d_{11}) \oplus R/(d_{22}) \oplus \cdots \oplus R/(d_{tt}) \oplus R^{m-t}.\]
+%
+%\solution{Let $M$ be the module presented by $D$ and $N$ be the module given above. Consider the map from $\phi: R^m \to N$ given by
+%\[ \phi(e_i) = \begin{cases} ([0],\dots,[1]_\text{$i$th position}, \dots, [0], (0,\dots,0)) &\text{if} \ i\leq t \\
+%([0], \cdots, [0], (0,\dots, 1_\text{$(i-t)$th position}, \dots ,0)) &\text{if} \ i> t. \end{cases}\]
+%A unique such map exists by UMP for free modules. The map $\phi$ is surjective, since any element of $N$ is an $R$-linear combination of the images $\phi(e_i)$ of the generators. We claim that $\ker(\phi) = \mathrm{im}(t_D)$.
+%Indeed, 
+%\[ \begin{aligned} (r_1,\dots,r_m) \in \ker(\phi) &\Longleftrightarrow ([r_1]_{(d_{11})},\dots, [r_t]_{(d_{tt})}, (r_{t+1},\dots,r_m) ) = 0 \\
+%& \Longleftrightarrow r_1 \in (d_{11}) , \dots,r_t\in (d_{tt}) , r_{t+1} = \cdots = r_m = 0\\
+%& \Longleftrightarrow r_1 = d_{11} s_1, \dots,r_t = d_{tt} s_t , \text{ some } s_i\in R, \text{ and } r_{t+1} = \cdots = r_m = 0\\
+%& \Longleftrightarrow (r_1,\dots,r_m) = t_D(s_1,\dots,s_t, s_{t+1} ,\dots, s_{n}) , \text{ some } s_i\in R\\
+%& \Longleftrightarrow (r_1,\dots,r_m) \in \mathrm{im}(t_D).\end{aligned}\]
+%}
 
-\solution{Let $M$ be the module presented by $D$ and $N$ be the module given above. Consider the map from $\phi: R^m \to N$ given by
-\[ \phi(e_i) = \begin{cases} ([0],\dots,[1]_\text{$i$th position}, \dots, [0], (0,\dots,0)) &\text{if} \ i\leq t \\
-([0], \cdots, [0], (0,\dots, 1_\text{$(i-t)$th position}, \dots ,0)) &\text{if} \ i> t. \end{cases}\]
-A unique such map exists by UMP for free modules. The map $\phi$ is surjective, since any element of $N$ is an $R$-linear combination of the images $\phi(e_i)$ of the generators. We claim that $\ker(\phi) = \mathrm{im}(t_D)$.
-Indeed, 
-\[ \begin{aligned} (r_1,\dots,r_m) \in \ker(\phi) &\Longleftrightarrow ([r_1]_{(d_{11})},\dots, [r_t]_{(d_{tt})}, (r_{t+1},\dots,r_m) ) = 0 \\
-& \Longleftrightarrow r_1 \in (d_{11}) , \dots,r_t\in (d_{tt}) , r_{t+1} = \cdots = r_m = 0\\
-& \Longleftrightarrow r_1 = d_{11} s_1, \dots,r_t = d_{tt} s_t , \text{ some } s_i\in R, \text{ and } r_{t+1} = \cdots = r_m = 0\\
-& \Longleftrightarrow (r_1,\dots,r_m) = t_D(s_1,\dots,s_t, s_{t+1} ,\dots, s_{n}) , \text{ some } s_i\in R\\
-& \Longleftrightarrow (r_1,\dots,r_m) \in \mathrm{im}(t_D).\end{aligned}\]
-}
 
 
 \itemA Use the Smith Normal Form Theorem to deduce the Structure Theorem for Finitely Generated Modules over PIDs (Invariant Factor Form).
 
 \solution{From a Lemma in class, we know that $A$ and $PAQ=D$ present isomorphic modules. Then using the previous exercise, we get that $D$ presents a module of the form we seek.}
 
-\itemA State the Structure Theorem for Finitely Generated Abelian Groups (Invariant Factor Form), and deduce it from the PID Theorem.
+\itemA Remember/state the Structure Theorem for Finitely Generated Abelian Groups (Invariant Factor Form), and deduce it from the PID Theorem.
 
 \solution{\textsc{Structure Theorem for Finitely Generated Abelian Groups (Invariant Factor Form):} Let $M$ be a finitely generated abelian group. Then there exist $r,t\geq 0$ and $a_1, \dots, a_t>0$ such that
 \begin{itemize}
@@ -123,14 +124,69 @@ Moreover, $r,t$ are uniquely determined.
 This is a special case of the PID theorem since every abelian groups are the same thing as $\Z$-modules, $\Z$ is a PID, and unique up to associate in $\Z$ is same thing as unique up to sign, and since we chose positive numbers, this is actually unique.}
 
 
-\itemA Let $R$ be a Euclidean domain. Use the Smith Normal Form Theorem to deduce that any invertible matrix over $R$ is a product of elementary matrices.
+\itemB Let $R$ be a Euclidean domain. Use the Smith Normal Form Theorem to deduce\footnote{Hint: Suppose that $D$ is diagonal and invertible. What can you say about the diagonal entries of $D$?} that any invertible matrix over $R$ is a product of elementary matrices.
 
 \solution{Let $A$ be invertible and write $PAQ=D$ following the theorem. Note that $D$ is invertible and diagonal. We claim that $D$ must be a square matrix with unit diagonal entries. Such a matrix is invertible, and one can check directly that if any entry is not a unit, then $D$ is not surjective. We can choose $D$ to be the identity matrix by using some elementary row operations. Now $A=P^{-1} I Q^{-1} = P^{-1} Q^{-1}$, and $P^{-1}$ and $Q^{-1}$ are products of elementary matrices, since the inverse of an elementary matrix is an elementary matrix.}
 \end{enumerate}
 
+
+
+\newpage
+
+
 \begin{framed}
-\textsc{Definition:} Let $R$ be a domain and $M$ be an $R$-module. We say that $M$ is \textbf{torsionfree} if for $r\in R$ and $m\in M$, we have $rm=0$ implies $r=0$ or $m=0$.
+\textsc{Structure Theorem for Finitely Generated Modules over PIDs (Elementary Divisor Form):} Let $R$ be a PID. Let $M$ be a finitely generated $R$-module. Then there exist $r,s\geq 0$ and prime elements $p_1, \dots, p_s\in R$ such that
+ $M\cong R^r \oplus R/(p_1^{e_1}) \oplus \cdots  \oplus R/(p_s^{e_s})$.
+Moreover, the number $r$ is uniquely determined and the list $p_1^{e_1},\dots,p_s^{e_s}$ is unique up to reordering and associates.
+
+
+\
+
+\textsc{CRT (from 817 HW):} Let $R$ be a commutative ring, and $I,J$ ideals such that $I+J=R$. Then $R/IJ \cong R/I \times R/J$ as rings, and hence also as $R$-modules.
  \end{framed}
+
+\begin{enumerate}
+\setcounter{enumi}{3}
+\itemA Converting between forms:
+\begin{enumerate}
+\item[$\star$] To convert a cyclic module $R/(a)$ to elementary divisor form, write $f=p_1^{e_1}\cdots p_s^{e_s}$ as a product of prime powers, and use CRT to get
+\[ R/a \cong R/(p_1^{e_1}) \oplus \cdots \oplus R/(p_s^{e_s}).\]
+\itema Convert the $\R[x]$-module
+\[ \R[x]^2 \oplus \R[x]/(x-1) \oplus \R[x]/(x^2-1) \oplus \R[x]/((x-1) (x^2-1))\]
+to elementary divisor form.
+\item[$\star$] To convert a module from elementary divisor form to invariant factor form, 
+\begin{enumerate} 
+\item[$-$] For each distinct prime $p_j$ occurring, take the largest power $E_j$ it has in an elementary divisor, and combine and combine $\bigoplus_j R/ p_j^{E_j} \cong R/(p_1^{E_1} \cdots p_\ell^{E_\ell})$ via CRT. If there's more than one copy of  $R/p_j^{E_j}$, just take one of the copies and leave the rest.
+\item[$-$] Repeat with the remaining factors.
+\end{enumerate}
+\itema Convert $\R[x] / (x) \oplus \R[x] / (x^2) \oplus (\R[x]/(x-3))^{\oplus 2} \oplus \R[x] / ((x-7)^3)$ to invariant factor form.
+\end{enumerate}
+
+\solution{
+\begin{enumerate}
+\itema $\R[x]^2 \oplus (\R/(x-1))^{\oplus 2} \oplus \R/((x-1)^2) \oplus \R/((x+1)^2)$
+\itema $\R[x]/(x(x-3)) \oplus  \R[x]/( (x-3) (x^2)  (x-7)^3)$
+\end{enumerate}}
+
+
+\end{enumerate}
+
+
+
+%\itemB Uniqueness of Smith Normal Form:
+%\begin{enumerate}
+%\itemb Let $D$ be a diagonal matrix and $d_{11} \ | \ d_{22} \ | \ \cdots \ | \ d_{tt}$. Show that $I_r(D) = ( d_{11} \cdots d_{rr} )$.
+%\itemb Prove the uniqueness of the Smith Normal Form.
+%\end{enumerate} 
+%\end{enumerate} 
+%
+%\
+%
+
+
+
+\textsc{Definition:} Let $R$ be a domain and $M$ be an $R$-module. We say that $M$ is \textbf{torsionfree} if for $r\in R$ and $m\in M$, we have $rm=0$ implies $r=0$ or $m=0$.
+
  
  \
  
@@ -143,48 +199,6 @@ This is a special case of the PID theorem since every abelian groups are the sam
  \itemc Prove or disprove: any submodule of a free $R$-module is free.
  \end{enumerate}
  \end{enumerate}
- 
- \newpage
-
-
-\begin{framed}
-\textsc{Structure Theorem for Finitely Generated Modules over PIDs (Elementary Divisor Form):} Let $R$ be a PID. Let $M$ be a finitely generated $R$-module. Then there exist $r,s\geq 0$ and prime elements $p_1, \dots, p_s\in R$ such that
- $M\cong R^r \oplus R/(p_1^{e_1}) \oplus \cdots  \oplus R/(p_s^{e_s})$, and
-Moreover, the list $p_1^{e_1},\dots,p_s^{e_s}$ is unique up to reordering and associates.
- \end{framed}
-
-\begin{enumerate}
-\setcounter{enumi}{5}
-\itemA Converting between forms:
-\begin{enumerate}
-\item[$\star$] To convert a cyclic module $R/(a)$ to elementary divisor form, write $f=p_1^{e_1}\cdots p_s^{e_s}$ as a product of prime powers, and use CRT get
-\[ R/a \cong R/{p_1^{e_1}} \oplus \cdots \oplus R/{p_s^{e_s}}.\]
-\itema Convert the $\R[x]$-module
-\[ \R[x]^2 \oplus \R[x]/(x-1) \oplus \R[x]/(x^2-1) \oplus \R[x]/((x-1) (x^2-1))\]
-to elementary divisor form.
-\item[$\star$] To convert a module from elementary divisor form to invariant factor form, 
-\begin{enumerate} 
-\item[$\bullet$] For each distinct prime $p_j$ occurring, take the largest power $E_j$ it has in an elementary divisor, and combine and combine $\bigoplus_j R/ p_j^{E_j} \cong R/(p_1^{E_1} \cdots p_\ell^{E_\ell})$ via CRT. If there's more than one copy of  $R/p_j^{E_j}$, just take one of the copies and leave the rest.
-\item[$\bullet$] Repeat with the remaining factors.
-\end{enumerate}
-\itema Convert $\R[x] / (x) \oplus \R[x] / (x^2) \oplus (\R[x]/(x-3))^{\oplus 2} \oplus \R[x] / (x-7)^3$ to invariant factor form.
-\end{enumerate}
-
-\solution{
-\begin{enumerate}
-\itema $\R[x]^2 \oplus (\R/(x-1))^{\oplus 2} \oplus \R/((x-1)^2) \oplus \R/((x+1)^2)$
-\itema $\R[x]/(x(x-3)) \oplus  \R[x]/( (x-3) (x^2)  (x-7)^3)$
-\end{enumerate}}
-
-\itemB Uniqueness of Smith Normal Form:
-\begin{enumerate}
-\itemb Let $D$ be a diagonal matrix and $d_{11} \ | \ d_{22} \ | \ \cdots \ | \ d_{tt}$. Show that $I_r(D) = ( d_{11} \cdots d_{rr} )$.
-\itemb Prove the uniqueness of the Smith Normal Form.
-\end{enumerate} 
-\end{enumerate} 
-
-\
-
 
 
 
