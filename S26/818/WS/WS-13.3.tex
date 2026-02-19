@@ -90,28 +90,11 @@ Moreover, $r,t$ are uniquely determined, and each $a_i$ is uniquely determined u
  \
 
 \begin{enumerate}
-%\itemA Let $R$ be a commutative ring, and $D\in \mathrm{Mat}_{m\times n}(R)$ be a diagonal matrix with nonzero diagonal entries $d_{11},\dots,d_{tt}$. Prove that the module presented by $D$ is
-%\[  R/(d_{11}) \oplus R/(d_{22}) \oplus \cdots \oplus R/(d_{tt}) \oplus R^{m-t}.\]
-%
-%\solution{Let $M$ be the module presented by $D$ and $N$ be the module given above. Consider the map from $\phi: R^m \to N$ given by
-%\[ \phi(e_i) = \begin{cases} ([0],\dots,[1]_\text{$i$th position}, \dots, [0], (0,\dots,0)) &\text{if} \ i\leq t \\
-%([0], \cdots, [0], (0,\dots, 1_\text{$(i-t)$th position}, \dots ,0)) &\text{if} \ i> t. \end{cases}\]
-%A unique such map exists by UMP for free modules. The map $\phi$ is surjective, since any element of $N$ is an $R$-linear combination of the images $\phi(e_i)$ of the generators. We claim that $\ker(\phi) = \mathrm{im}(t_D)$.
-%Indeed, 
-%\[ \begin{aligned} (r_1,\dots,r_m) \in \ker(\phi) &\Longleftrightarrow ([r_1]_{(d_{11})},\dots, [r_t]_{(d_{tt})}, (r_{t+1},\dots,r_m) ) = 0 \\
-%& \Longleftrightarrow r_1 \in (d_{11}) , \dots,r_t\in (d_{tt}) , r_{t+1} = \cdots = r_m = 0\\
-%& \Longleftrightarrow r_1 = d_{11} s_1, \dots,r_t = d_{tt} s_t , \text{ some } s_i\in R, \text{ and } r_{t+1} = \cdots = r_m = 0\\
-%& \Longleftrightarrow (r_1,\dots,r_m) = t_D(s_1,\dots,s_t, s_{t+1} ,\dots, s_{n}) , \text{ some } s_i\in R\\
-%& \Longleftrightarrow (r_1,\dots,r_m) \in \mathrm{im}(t_D).\end{aligned}\]
-%}
+\itemA Use the \textsc{Smith Normal Form Theorem} and a homework problem to deduce the existence part of the \textsc{Structure Theorem for Finitely Generated Modules over PIDs (Invariant Factor Form)}.
 
+\solution{From a Lemma in class, we know that $A$ and $PAQ=D$ present isomorphic modules. Then using the homework problem, we get that $D$ presents a module of the form we seek.}
 
-
-\itemA Use the Smith Normal Form Theorem to deduce the Structure Theorem for Finitely Generated Modules over PIDs (Invariant Factor Form).
-
-\solution{From a Lemma in class, we know that $A$ and $PAQ=D$ present isomorphic modules. Then using the previous exercise, we get that $D$ presents a module of the form we seek.}
-
-\itemA Remember/state the Structure Theorem for Finitely Generated Abelian Groups (Invariant Factor Form), and deduce it from the PID Theorem.
+\itemA Remember/state the \textsc{Structure Theorem for Finitely Generated Abelian Groups (Invariant Factor Form)}, and deduce it from the \textsc{Structure Theorem for Finitely Generated Modules over PIDs (Invariant Factor Form)}.
 
 \solution{\textsc{Structure Theorem for Finitely Generated Abelian Groups (Invariant Factor Form):} Let $M$ be a finitely generated abelian group. Then there exist $r,t\geq 0$ and $a_1, \dots, a_t>0$ such that
 \begin{itemize}
@@ -124,12 +107,22 @@ Moreover, $r,t$ are uniquely determined.
 This is a special case of the PID theorem since every abelian groups are the same thing as $\Z$-modules, $\Z$ is a PID, and unique up to associate in $\Z$ is same thing as unique up to sign, and since we chose positive numbers, this is actually unique.}
 
 
-\itemB Let $R$ be a Euclidean domain. Use the Smith Normal Form Theorem to deduce\footnote{Hint: Suppose that $D$ is diagonal and invertible. What can you say about the diagonal entries of $D$?} that any invertible matrix over $R$ is a product of elementary matrices.
+\itemB Let $R$ be a Euclidean domain. Use the \textsc{Smith Normal Form Theorem} to deduce\footnote{Hint: Suppose that $D$ is diagonal and invertible. What can you say about the diagonal entries of $D$?} that any invertible matrix over $R$ is a product of elementary matrices.
 
 \solution{Let $A$ be invertible and write $PAQ=D$ following the theorem. Note that $D$ is invertible and diagonal. We claim that $D$ must be a square matrix with unit diagonal entries. Such a matrix is invertible, and one can check directly that if any entry is not a unit, then $D$ is not surjective. We can choose $D$ to be the identity matrix by using some elementary row operations. Now $A=P^{-1} I Q^{-1} = P^{-1} Q^{-1}$, and $P^{-1}$ and $Q^{-1}$ are products of elementary matrices, since the inverse of an elementary matrix is an elementary matrix.}
+
+
+\itemB Proof of the uniqueness part of the \textsc{Structure Theorem for Finitely Generated Modules over PIDs (Invariant Factor Form)}: Suppose that 
+\[ R^m \oplus R/(d_1) \oplus \cdots \oplus R/(d_n) \cong R^{m'} \oplus R/(d'_1) \oplus \cdots \oplus R/(d'_{n'})\]
+and $d_1 \,|\, \cdots \,|\, d_n$ and also $d'_1\,|\, \cdots \,|\, d'_{n'}$ with $n\geq n'$. We proceed by induction on $n$.
+\begin{enumerate}
+\itemb Deal with the base case $n=0$ (so $n'=0$).
+\itemb Suppose that $n>0$. Let $\phi$ be and isomorphism from left to right, and ${m= (0, 0, \dots, 1+(d_n))}$ in the left-hand side. Show that $\mathrm{ann}_R(\phi(m)) = (d_n)$.
+\itemb Show that $n'>0$ and that $d_n \,|\, \ d'_n$.
+\itemb Show that $d_n$ and $d'_n$ are associates.
+\itemb Complete the induction step and the proof.
 \end{enumerate}
-
-
+\end{enumerate}
 
 \newpage
 
@@ -146,7 +139,7 @@ Moreover, the number $r$ is uniquely determined and the list $p_1^{e_1},\dots,p_
  \end{framed}
 
 \begin{enumerate}
-\setcounter{enumi}{3}
+\setcounter{enumi}{4}
 \itemA Converting between forms:
 \begin{enumerate}
 \item[$\star$] To convert a cyclic module $R/(a)$ to elementary divisor form, write $f=p_1^{e_1}\cdots p_s^{e_s}$ as a product of prime powers, and use CRT to get
@@ -190,7 +183,7 @@ to elementary divisor form.
  
  \
  
- \begin{enumerate}\setcounter{enumi}{4}
+ \begin{enumerate}\setcounter{enumi}{5}
  \itemB Let $R$ be a PID.
  \begin{enumerate}
  \itemb Show that any finitely generated torsionfree $R$-module is free.
