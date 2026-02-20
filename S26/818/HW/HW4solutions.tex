@@ -190,7 +190,11 @@ For the other inequality, note that $\mathrm{im}(t_{BC}) \subseteq \mathrm{im}(t
 \item Prove that
 \[ \mathrm{rank}(A)=\max\{ t\geq 1 \ | \  I_t(A) \neq 0\}.\]
 \end{enumerate}
-\begin{proof} From an earlier problem set, we can find bases $\mathcal{B}$ and $\mathcal{C}$ such that $[t_A]_{\mathcal{B}}^{\mathcal{C}}$ is of the form 
+\begin{proof} From Problem \#5 of HW\#3, we can find bases $\mathcal{B}$ and $\mathcal{C}$ such that $[t_A]_{\mathcal{B}}^{\mathcal{C}}$ is of the form $D=\begin{bmatrix} \mathbbm{1}_{k\times k} & {0}_{k\times (n-k)} \\ {0}_{(m-k)\times k} & {0}_{(m-k)\times(n-k)}\end{bmatrix}$ for some $k$. 
+
+Note that $\mathrm{rank}(t_A) = k$. Indeed, if $\mathcal{C}=\{c_1,\dots,c_m\}$, then $\{c_1,\dots,c_k\}$ is a basis for $\mathrm{im}(t_A)$.
+
+We claim that $k=\max\{ t \ | \ I_t(A)\neq 0\}$. Indeed, we can write $D=PAQ$ for some invertible change of basis matrices $P,Q$; concretely $ D= [t_A]_{\mathcal{B}}^{\mathcal{C}} =[\mathrm{id}]_{\mathrm{std}}^{\mathcal{C}} [t_A]_{\mathrm{std}}^{\mathrm{std}} [\mathrm{id}]_{\mathcal{B}}^{\mathrm{std}} = P A Q$ for $P=[\mathrm{id}]_{\mathrm{std}}^{\mathcal{C}} $ and $Q=[\mathrm{id}]_{\mathcal{B}}^{\mathrm{std}}$, where $\mathrm{std}$ denotes the standard basis. Thus $I_t(D) = I_t(A)$ for all $t>0$ by Problem \#3. Then $1\in I_t(D)$ for $t\leq k$ (since $D$ has an identity $t\times t$ submatrix), and $I_t(D)=0$ for $t>k$  (since any $t\times t$ submatrix of $D$ has a zero row). This shows the claim and completes the proof.
 \end{proof}
 \end{problem}
 
