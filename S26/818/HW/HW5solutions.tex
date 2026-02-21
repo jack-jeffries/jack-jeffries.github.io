@@ -1,0 +1,218 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,enumerate,bbm}
+\usepackage[]{graphicx}
+\usepackage{color,subfigure}
+\definecolor{scarlet}{rgb}{0.81,0,0}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage[all]{xypic}
+\usepackage[colorlinks=true,citecolor=scarlet,linkcolor=scarlet]{hyperref}
+\usepackage{colonequals}
+
+\usepackage{fancyhdr, lastpage}
+\pagestyle{fancy}
+\fancyfoot[C]{{\thepage} of \pageref{LastPage}}
+
+
+
+\DeclareMathOperator{\mSpec}{mSpec}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Ass}{Ass}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\height}{height}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\ann}{ann}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\coker}{coker}
+%\DeclareMathOperator{\ker}{ker}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\M}{M}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\ch}{char}
+\DeclareMathOperator{\Aut}{Aut}
+
+%\DeclareMathOperator{\dim}{dim}
+
+\DeclareMathOperator{\lcm}{lcm}
+
+\def\ra{\rightarrow}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\ov}[1]{\overline{#1}}
+\newcommand{\norm}{\trianglelefteq}
+
+\def\ov#1{\overline{#1}}
+
+
+\title{}
+\date{\vspace{-0.5in}}
+
+\makeatletter
+\g@addto@macro\@floatboxreset\centering
+\makeatother
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+
+\begin{document}
+
+\thispagestyle{fancy}
+\pagestyle{fancy}
+\rhead{UNL $\mid$ Spring 2026}
+\lhead{Introduction to Modern Algebra II}
+
+\vspace{3em}
+
+\begin{center}
+	{\LARGE Problem Set 5 \\}
+	Due Thursday, February 19
+\end{center}
+
+\
+
+\noindent
+{\bf Instructions:}
+You are encouraged to work together on these problems, but each student should hand in their own final draft, written in a way that indicates their individual understanding of the solutions. Never submit something for grading that you do not completely understand. You cannot use any resources besides me, your classmates, and our course notes.
+
+
+I will post the .tex code for these problems for you to use if you wish to type your homework. If you prefer not to type, please  {\em write neatly}. As a matter of good proof writing style, please use complete sentences and correct grammar. You may use any result stated or proven in class or in a homework problem, provided you reference it appropriately by either stating the result or stating its name (e.g. the definition of ring or Lagrange's Theorem). Please do not refer to theorems by their number in the course notes, as that can change.
+
+
+\smallskip
+
+\begin{problem} Let $R$ be a commutative ring. Let $D=[d_{ij}] \in \mathrm{Mat}_{m\times n}(R)$. Suppose that $d_{11},\dots,d_{tt}\neq 0$ for some $t\leq \min\{m,n\}$, and that every other entry of $D$ is zero. Let $M$ be the module presented by $D$.
+\begin{enumerate}[(a)]
+\item Show that $M$ is isomorphic to
+\[ R^{m-t} \oplus R/(d_{11}) \oplus \cdots \oplus R/(d_{tt}).\]
+
+
+\begin{proof}
+Consider the map $\phi: R^m \to R^{m-t} \oplus R/(d_{11}) \oplus R/(d_{22}) \oplus \dots \oplus R/(d_{tt})$ given by $\phi((r_1, \ldots, r_t, r_{t+1},\ldots, r_m))= (r_{t+1},\ldots, r_m, r_1+(d_{11}) , \ldots, r_t+(d_{tt}))$.
+
+{\em Claim 1:} $\phi$ is a surjective $R$-module homomorphism. 
+The fact that $\phi$ is surjective is clear from the definition. To see that $\phi$ is an $R$-module homomorphism, we can check the definition directly (omitted) or realize this as a map coming from the UMP for free modules (omitted).
+
+{\em Claim 2:} $\ker(\phi)=\im(t_D)$, for $t_D:R^n\to R^m$ the linear transformation $t_D(v)=Dv$.
+
+Let $(r_1,\ldots,r_m)\in\ker(\phi)$. Then $r_i+(a_{ii})=0+(d_{ii})$ or equivalently $r_i\in(d_{ii})$ if $1\leq i\leq t$ and $r_i=0$ if $n+1\leq i\leq m$. It follows that 
+$$\ker(\phi)=0_{R^{m-t}} \oplus (d_{11})\oplus\dots\oplus (d_{tt}).$$
+
+On the other hand, we have
+$$\im(t_D)=\{Dv \mid v=(r_1,\ldots, r_n)\in R^n\}=\{(0,\dots,0, d_{11}r_1,\ldots, d_{tt}r_t)\mid (r_1,\ldots, r_n)\in R^n\}$$
+$$=0_{R^{m-t}} \oplus (d_{11})\oplus\dots\oplus (d_{tt})$$
+which gives the desired equality.
+
+By the First Isomorphism Theorem applied to $\phi$ and Claim 2, we conclude that 
+$$R^{m-t} \oplus R/(d_{11}) \oplus R/(d_{22}) \oplus \dots \oplus R/(d_{tt}) \cong R^m/\ker(\phi)=R^m/\im(t_D)=M.$$
+
+
+\end{proof}
+
+ \item Suppose that $d_{11} \ | \ \cdots \ | \ d_{tt}$. Give a formula for the annihilator of $M$ in terms of $m,n,t$ and the entries $d_{ii}$.
+ 
+ \begin{proof}
+First, consider the case $m>t$. We claim that in this case $\mathrm{ann}_R(M) = 0$. Note that $0\in \ann_R(M)$ always so we just need to show that $0$ is the only element of the annihilator.
+
+Note first that isomorphic modules have equal annihilators. Indeed, if $\phi:M\to N$ is an isomorphism and $r\in \ann_R(M)$, we claim that $r\in \ann_R(N)$; if $n\in N$, we can write $n=\phi(m)$ for some $m\in M$, and then $rn = r\phi(m) = \phi(rm) = \phi(0)=0$. Since we have an inverse isomorphism $\phi^{-1}:N\to M$, we have $\ann_R(M) \subseteq \ann_R(N)$ and $\ann_R(N) \subseteq \ann_R(M)$, so equality holds.
+
+By part (a) and the remark above, we instead consider $R^{m-t} \oplus R/(d_{11}) \oplus \cdots \oplus R/(d_{tt})$. Let $e$ be a basis vector for $R^{m-t}$, and $(e,0,\dots,0) \in R^{m-t} \oplus R/(d_{11}) \oplus \cdots \oplus R/(d_{tt})$. Then if $r  (e,0,\dots,0) = 0$, we must have $re=0$ in $R^{m-t}$, which implies $r=0$. This shows the claim.
+
+Now we consider the case $m=t$. We claim that $\mathrm{ann}_R(M) = (d_{tt})$ in this case.
+
+We again consider the annihilator of $R/(d_{11}) \oplus \cdots \oplus R/(d_{tt})$ by part (a). If $r\in (d_{tt})$ then $r\in (d_{ii})$ for all $i$, so $r(a_1 + (d_{11}) , \dots, a_t + (d_{tt}) ) = (ra_1 + (d_{11}, \dots,ra_t + (d_{tt})) = ( 0 + (d_{11}) , \dots, 0 + (d_{tt}))$, the zero element, so $r$ is an element of the annihilator. Conversely, if $r$ annihilates this module, then 
+\[( 0 + (d_{11}) , \dots, 0 + (d_{tt})) = r( 0 + (d_{11}) , \dots, 1 + (d_{tt})) = ( 0 + (d_{11}) , \dots, r + (d_{tt})),\]
+so $r\in (d_{tt})$.
+\end{proof}
+
+ \end{enumerate}
+ \end{problem}
+ 
+\
+
+\begin{problem}
+Let 
+\[ A = \begin{bmatrix}75&-51&5&-26\\
+-112&74&8&36\\
+-36&24&0&12\end{bmatrix} \in \mathrm{Mat}_{3\times 4}(\Z).\]
+Let $t_A$ be the $\Z$-module homomorphism $v\mapsto Av$.
+ The Smith Normal Form is given by $A=PDQ$ where
+\[ P= \begin{bmatrix}
+1&1&-2\\
+0&1&3\\
+0&0&1
+\end{bmatrix}, \ D=\begin{bmatrix}
+1&0&0&0\\
+0&2&0&0\\
+0&0&12&0
+\end{bmatrix}, \ \text{and} \ Q=\begin{bmatrix}
+7&-5&-3&-2\\
+-2&1&4&0\\
+-3&2&0&1\\
+0&0&1&0
+\end{bmatrix}.\]
+The inverses of $P$ and $Q$ are given by
+\[ P^{-1} = \begin{bmatrix}
+1&-1&5\\
+0&1&-3\\
+0&0&1
+\end{bmatrix} \  \text{and} \  Q^{-1} = \begin{bmatrix} -1&-1&-2&1\\
+-2&-1&-4&-2\\
+0&0&0&1\\
+1&-1&3&7
+\end{bmatrix}.\]
+\end{problem}
+\begin{enumerate}[(a)]
+\item Find the simplest representative, up to isomorphism, of the module presented by $A$.
+\begin{proof}
+From a Theorem in class, we know that multiplying on either side by an invertible matrix produces an isomorphic module. Thus the module presented by $A$ is isomorphic to the module presented by $D$. We also know that we can ignore a column of zeroes in the presenting matrix and obtain an isomorphic matrix, so we can consider the module presented by
+\[\begin{bmatrix}
+1&0&0\\
+0&2&0\\
+0&0&12
+\end{bmatrix}.\]
+We also know that we can remove a column with a single $1$ entry and remove the corresponding row, so we can consider the module presented by
+\[\begin{bmatrix}
+2&0\\
+0&12
+\end{bmatrix}.\]
+From the previous exercise, this is isomorphic to $\Z/2 \oplus \Z/12$.
+
+\end{proof}
+\item Find a basis for $\mathrm{im}(t_A) \subseteq \Z^3$.
+\begin{proof}
+
+\textit{Claim:} $\mathrm{im}(t_A) = t_P(\mathrm{im}(t_D))$. 
+
+\textit{Proof of claim:} To show the $\supseteq$ containment, let $v\in\mathrm{im}(t_D)$, so $v=Dw$ for some $w$. Then $t_P(v) = PDw = PDQ (Q^{-1}w)$, so $t_P(v)\in \mathrm{im}(t_A)$. Thus $\mathrm{im}(t_A) \supseteq t_P(\mathrm{im}(t_D))$.
+
+To show that $\subseteq$ containment, let $v\in \mathrm{im}(t_A)$, so $v=Aw$ for some $w$. Thus $v=PDQw = t_P(t_D(Qw))$, so $v\in t_P(\mathrm{im}(t_D))$. Thus $\mathrm{im}(t_A) \subseteq t_P(\mathrm{im}(t_D))$.
+
+Now, since $t_P$ is an isomorphism and $e_1, 2e_2, 12e_3$ form a basis for $\mathrm{im}(t_D)$, a basis for $t_P(\mathrm{im}(t_D))$ is given by $t_P(e_1), t_P(2e_2), t_P(12e_3)$; namely
+\[ \left\{ \begin{bmatrix} 1 \\ 0 \\ 0 \end{bmatrix} , \begin{bmatrix} 2 \\ 2 \\ 0 \end{bmatrix} ,\begin{bmatrix} -24 \\ 36 \\ 12 \end{bmatrix} \right\}.\]
+\end{proof}
+\item Find a basis for $\mathrm{ker}(t_A) \subseteq \Z^4$.
+\begin{proof}
+
+\textit{Claim:} $\mathrm{ker}(t_A) = t_{Q^{-1}}(\mathrm{ker}(t_D))$. 
+
+
+\textit{Proof of claim:} To show the $\supseteq$ containment, let $v\in\mathrm{ker}(t_D)$, so $Dv=0$. Then $A t_{Q^{-1}}(v) = PDQ Q^{-1}v = PDv = 0$, so $t_{Q^{-1}}(v)\in \mathrm{ker}(t_A)$. 
+
+To show that $\subseteq$ containment, let $v\in \mathrm{ker}(t_A)$, so $Av=0$. Then $v=t_{Q^{-1}}(Qv)$, and $DQv = P^{-1} A v = P^{-1} 0 = 0$, so $Qv\in \mathrm{ker}(t_D)$. Thus $v\in t_{Q^{-1}}(\mathrm{ker}(t_D))$.
+
+Now, since $t_{Q^{-1}}$ is an isomorphism and $e_4$ forms a basis for $\mathrm{ker}(t_D)$, a basis for $t_{Q^{-1}}(\mathrm{ker}(t_D))$ is given by $t_{Q^{-1}}(e_4)$; namely
+\[ \left\{ \begin{bmatrix} 1 \\ -2 \\ 1 \\ 7 \end{bmatrix} \right\}.\]
+\end{proof}
+\end{enumerate}
+
+
+\end{document}
