@@ -3401,6 +3401,7 @@ We will need the following fact.
   <section id="proof-thm-13-3-3" class="callout proof" aria-labelledby="proof-thm-13-3-3-title">
     <h3 id="proof-thm-13-3-3-title">Proof of Theorem 13.3.3</h3>
     <div class="callout-body">
+<p><i>Existence:</i></p>
       <p>
         By Theorem 13.2.3, \(M\) has a presentation matrix \(A\). By Theorem 13.3.1, \(A\) can be put into Smith Normal Form \(B\), where the diagonal entries of \(B\) are \(b_1, \ldots, b_\ell\) and satisfy \(b_1 \mid b_2 \mid \cdots \mid b_k\). Moreover, \(k\) is unique and the \(d_i\) are uniquely determined up to associates (ie, up to multiplication by units) by \(A\), hence by \(B\). By Theorem 13.2.3, \(M\) is isomorphic to the module presented by \(B\).
         By Lemma 13.3.2, this is isomorphic to
@@ -3417,6 +3418,14 @@ We will need the following fact.
       <p>
         as desired.
       </p>
+
+<p><i>Uniqueness:</i></p>
+
+<p>For uniqueness, we show by induction on \(\max\{k,k'\}\) that if 
+\[M = R^r \oplus R/(d_1) \oplus \dots \oplus R/(d_k) \cong N= R^{r'} \oplus R/(d'_1) \oplus \dots \oplus R/(d'_{k'})\]
+with \(d_1 | \cdots  | d_k\) and \(d'_1 | \cdots | d'_{k'}\), then \(r=r'\),  \(k=k'\), and \(d_i\) and \(d'_i\) are associates for all \(i\). If \(k=k'=0\) then this follows from invariance of rank for free modules over commutative rings, which you proved in the homework. If \(k>0\), then consider the element \(m=\iota(1+(d_k))\in M\) and let \(n=\iota(1+(d'_{k'}))\in N\). Note that \(\mathrm{ann}_R(m)= (d_k)\), and since \(\phi\) is an isomorphism, we also have \(\mathrm{ann}_R(\phi(m))= (d_k)\). On the other hand, any element of \(N\) with nonzero annihilator must have \(R^{r'}\) component zero, and must then be annihilated by \(d'_{k'}\). It follows that \(d'_{k'}\in (d_k)\), so \(d_k \ | \ d'_{k'}\). Switching roles, we must also have \(d'_{k'} \ | \ d_k\), so \(d_k\) and \(d'_{k'}\) are associates. Now, we claim that there is an \(R\)-module isomorphism \(\psi: N \to N\) such that \(\psi(\phi(m)) = n\) (left as exercise). It follows that \(\psi \circ \phi: M\to N\) is an isomorphism and \(\psi\circ \phi(\iota(R/(d_k))) = \iota(R/(d'_{k'}))\). We get an induced isomorphism
+\[ R^r \oplus R/(d_1) \oplus \dots \oplus R/(d_{k-1}) \cong M/ \iota(R/(d_k)) \cong N/ \iota(R/(d'_{k'})) \cong R^{r'} \oplus R/(d'_1) \oplus \dots \oplus R/(d'_{k'-1}).\]
+It then follows from the induction hypothesis that \(r=r'\), \(k=k'\), and \(d_i\) and \(d'_i\) are associates for \( i\lt k \). Since we already saw that \(d_k\) and \(d'_{k'}\) are associates, the induction is complete.</p>
     </div>
   </section>
 
@@ -3445,6 +3454,8 @@ We will need the following fact.
       <p>
         The classification theorem can be interpreted as saying that \(M\) decomposes into a free submodule \(R^r\) and a torsion submodule \(\mathrm{Tor}(M)=R/(d_1) \oplus \dots \oplus R/(d_k)\).
       </p>
+
+
     </div>
   </section>
 
@@ -3696,30 +3707,8 @@ We will need the following fact.
     <h3 id="proof-lem-13-4-3-title">Proof of Lemma 13.4.3</h3>
     <div class="callout-body">
       <p>
-        We first prove part (1).
-        By definition of greatest common divisor, \((x,y) = (\gcd(x,y))\), so there exist \(a, b \in R\) such that \(ax+by = \gcd(x,y)\). Write \(g := \gcd(x,y)\) and \(h = \gcd(a,b)\). Then \(ax+by\) is a multiple of \(gh\), but since \(ax+by = g\) and \(R\) is a domain, we conclude that \(h\) must be a unit, and \((a,b) = (h) = (1)\). In particular, we can find \(c, d \in R\) such that \(ad-bc = 1\). Finally, \(bx+cy \in (x,y) = (g)\), so
-      </p>
-      \[
-        \begin{bmatrix} a & b \\ c & d \end{bmatrix} \begin{bmatrix} x \\ y\end{bmatrix} = \begin{bmatrix} g \\ eg \end{bmatrix}.
-      \]
-      <p>
-        Now we can apply the row operation that adds \(-e\) times the first row to the second row: by setting
-      </p>
-      \[
-        P := \begin{bmatrix} 1 & 0 \\ -e & 1 \end{bmatrix} \begin{bmatrix} a & b \\ c & d \end{bmatrix} = \begin{bmatrix} a & b \\ c-ea & b-de \end{bmatrix}.
-      \]
-      <p>
-        we get
-      </p>
-      \[
-        P \begin{bmatrix} x \\ y\end{bmatrix} = \begin{bmatrix} g \\ 0 \end{bmatrix}.
-      \]
-      <p>
-        Finally, one can easily check that
-      </p>
-      \[
-        P^{-1} = \begin{bmatrix} d & -b \\ -c & a \end{bmatrix}  \begin{bmatrix} 1 & 0 \\ e & 1 \end{bmatrix}.
-      \]
+       We first prove part (1). Let \(g\) be a gcd of \(x\) and \(y\), so \((x,y) = (\gcd(x,y))\). Thus, there exist \(a, b \in R\) such that \(ax+by = g\). Since \(g\) divides \(x\), we can write \(x=g x'\) for some \(x'\in R\), and likewise we can write \(y=gy'\) for some \(y'\in R\). Then \(a g x' + b g y' = g\), and since \(R\) is a domain, \(a x' + b y' =1\). Set \(P= \begin{bmatrix} a & b \\ -y' & x' \end{bmatrix}\). Then \(P \begin{bmatrix} x \\ y\end{bmatrix} = \begin{bmatrix} g & 0\end{bmatrix}\), since \(-y' x + x' y = g(-y' x' + x' y') = 0\). To check that \(P\) is invertible, we claim that \(P^{-1} = \begin{bmatrix} x' & -b \\ y' & a\end{bmatrix}\), which can be checked directly by multiplying this matrix on both sides with \(P\).
+</p>
 
       <p>
         We now prove part (2). Let \(N\) be a Euclidean norm for \(R\). We proceed by induction on \(M= \min\{N(x),N(y)\}\). If \(M=0\) then either \(x\) or \(y\) has norm zero and hence is a unit. Swapping rows if necessary (which is an elementary operation), we can assume \(x\) is a unit, and hence the GCD of \(x\) and \(y\). Then

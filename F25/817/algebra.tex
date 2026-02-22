@@ -9039,6 +9039,12 @@ $$M \cong R^r \oplus R/(b_1) \oplus \dots \oplus R/(b_\ell).$$
 Finally, some of these $b_i$ might be units; let $d_1 | \cdots | d_k$ be the nonunits among the $b_i$, and note that if $u$ is a unit, then $R/(u) \cong (0)$. We conclude that
 $$M \cong R^r \oplus R/(d_1) \oplus \dots \oplus R/(d_k),$$
 as desired.
+
+For uniqueness, we show by induction on $\max\{k,k'\}$ that if 
+\[M = R^r \oplus R/(d_1) \oplus \dots \oplus R/(d_k) \cong N= R^{r'} \oplus R/(d'_1) \oplus \dots \oplus R/(d'_{k'})\]
+with $d_1 | \cdots  | d_k$ and $d'_1 | \cdots | d'_{k'}$, then $r=r'$,  $k=k'$, and $d_i$ and $d'_i$ are associates for all $i$. If $k=k'=0$ then this follows from invariance of rank for free modules over commutative rings, which you proved in the homework. If $k>0$, then consider the element $m=\iota(1+(d_k))\in M$ and let $n=\iota(1+(d'_{k'}))\in N$. Note that $\ann_R(m)= (d_k)$, and since $\phi$ is an isomorphism, we also have $\ann_R(\phi(m))= (d_k)$. On the other hand, any element of $N$ with nonzero annihilator must have $R^{r'}$ component zero, and must then be annihilated by $d'_{k'}$. It follows that $d'_{k'}\in (d_k)$, so $d_k \ | \ d'_{k'}$. Switching roles, we must also have $d'_{k'} \ | \ d_k$, so $d_k$ and $d'_{k'}$ are associates. Now, we claim that there is an $R$-module isomorphism $\psi: N \to N$ such that $\psi(\phi(m)) = n$ (left as exercise). It follows that $\psi \circ \phi: M\to N$ is an isomorphism and $\psi\circ \phi(\iota(R/(d_k))) = \iota(R/(d'_{k'}))$. We get an induced isomorphism
+\[ R^r \oplus R/(d_1) \oplus \dots \oplus R/(d_{k-1}) \cong M/ \iota(R/(d_k)) \cong N/ \iota(R/(d'_{k'})) \cong R^{r'} \oplus R/(d'_1) \oplus \dots \oplus R/(d'_{k'-1}.\]
+It then follows from the induction hypothesis that $r=r'$, $k=k'$, and $d_i$ and $d'_i$ are associates for $i<k$. Since we already saw that $d_k$ and $d'_{k'}$ are associates, the induction is complete.
 \end{proof}
 
 \begin{definition} 
@@ -9205,15 +9211,12 @@ We will use the following fact that you proved in the Homework.
 
 
 \begin{proof}
-We first prove part (1).
-	By definition of greatest common divisor, $(x,y) = (\gcd(x,y))$, so there exist $a, b \in R$ such that $ax+by = \gcd(x,y)$. Write $g := \gcd(x,y)$ and $h = \gcd(a,b)$. Then $ax+by$ is a multiple of $gh$, but since $ax+by = g$ and $R$ is a domain, we conclude that $h$ must be a unit, and $(a,b) = (h) = (1)$. In particular, we can find $c, d \in R$ such that $ad-bc = 1$. Finally, $bx+cy \in (x,y) = (g)$, so 
-	$$\begin{bmatrix} a & b \\ c & d \end{bmatrix} \begin{bmatrix} x \\ y\end{bmatrix} = \begin{bmatrix} g \\ eg \end{bmatrix}.$$
-	Now we can apply the row operation that adds $-e$ times the first row to the second row: by setting
-	$$P := \begin{bmatrix} 1 & 0 \\ -e & 1 \end{bmatrix} \begin{bmatrix} a & b \\ c & d \end{bmatrix} = \begin{bmatrix} a & b \\ c-ea & b-de \end{bmatrix}.$$
-	we get
-	$$P \begin{bmatrix} x \\ y\end{bmatrix} = \begin{bmatrix} g \\ 0 \end{bmatrix}.$$
-	Finally, one can easily check that
-	$$P^{-1} = \begin{bmatrix} d & -b \\ -c & a \end{bmatrix}  \begin{bmatrix} 1 & 0 \\ e & 1 \end{bmatrix}.$$
+We first prove part (1). Let $g$ be a gcd of $x$ and $y$, so $(x,y) = (\gcd(x,y))$. Thus, there exist $a, b \in R$ such that $ax+by = g$. 
+Since $g$ divides $x$, we can write $x=g x'$ for some $x'\in R$, and likewise we can write $y=gy'$ for some $y'\in R$. Then $a g x' + b g y' = g$, and since $R$ is a domain, $a x' + b y' =1$.
+
+Set $P= \begin{bmatrix} a & b \\ -y' & x' \end{bmatrix}$. Then $P \begin{bmatrix} x \\ y\end{bmatrix} = \begin{bmatrix} g & 0\end{bmatrix}$, since $-y' x + x' y = g(-y' x' + x' y') = 0$. To check that $P$ is invertible, we claim that $P^{-1} = \begin{bmatrix} x' & -b \\ y' & a\end{bmatrix}$, which can be checked directly by multiplying this matrix on both sides with $P$.
+
+
 	
 	We now prove part (2). Let $N$ be a Euclidean norm for $R$. We proceed by induction on $M= \min\{N(x),N(y)\}$. If $M=0$ then either $x$ or $y$ has norm zero and hence is a unit. Swapping rows if necessary (which is an elementary operation), we can assume $x$ is a unit, and hence the GCD of $x$ and $y$. Then
 	\[  \begin{bmatrix} 1 & 0 \\ -yx^{-1} & 1 \end{bmatrix} \begin{bmatrix} x \\ y \end{bmatrix} = \begin{bmatrix} x \\ 0 \end{bmatrix}. \]
@@ -9263,8 +9266,8 @@ A similar argument applies if $a$ does not divide some entry of the first column
 
 If $a$ does divide every entry of the first row and first column, proceed as in case 1 to clear out the rest of the first row and column, and then add a row containing an entry $b$ that does not divide $a$ to the first row. Then proceed as in the first part of this case.
 
-\textbf{Proof of uniqueness:} For a matrix of the form $D$, the only minors that are nonzero are those where the choices of columns and rows are the same, and hence the only nonzero $t \times t$ minors of $M$ are $d_{s_1} \cdots d_{s_t}$ for some $s_1 < \cdots < s_t$. Since $d_{s_1} \cdots d_{s_t}$ divide each other, it follows that $I_t(A) = I_t(D) = d_1 \cdots d_t$.
-This proves uniqueness, for it shows that $d_1, \dots, d_{\ell}$ are all defined from $A$ directly, without any choices.
+\textbf{Proof of uniqueness:} For a matrix of the form $D$, the only minors that are nonzero are those where the choices of columns and rows are the same, and hence the only nonzero $t \times t$ minors of $M$ are $d_{s_1} \cdots d_{s_t}$ for some $s_1 < \cdots < s_t$. Using the assumption that $d_{s_1} \cdots d_{s_t}$ divide each other, it follows that $I_t(A) = I_t(D) = (d_1 \cdots d_t)$.
+Since two elements in a domain generate the same ideal if and only if they are associates, the elements $d_1\cdots d_t$ are uniquely determined up to associates by $A$.
 \end{proof}
 
 
