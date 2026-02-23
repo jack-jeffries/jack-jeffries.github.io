@@ -24,6 +24,9 @@
 \newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
 \newcommand{\solutione}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{leaf}This solution is embargoed.}\end{framed}} { \ }}
 \newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\nosolfill}{\ifthenelse {\equal{\displaysol}{1}} {} {\vfill}}
+\newcommand{\nosolpage}{\ifthenelse {\equal{\displaysol}{1}} {} {\newpage}}
+\newcommand{\nosolonly}[1]{\ifthenelse {\equal{\displaysol}{1}} {} {{#1}}}
 
 \newcommand{\rsa}{\rightsquigarrow}
 
@@ -124,7 +127,8 @@ and $d_1 \,|\, \cdots \,|\, d_n$ and also $d'_1\,|\, \cdots \,|\, d'_{n'}$ with 
 \end{enumerate}
 \end{enumerate}
 
-\newpage
+\nosolfill
+\nosolpage
 
 
 \begin{framed}
@@ -183,16 +187,17 @@ to elementary divisor form.
 % 
 % \
 % 
-% \begin{enumerate}\setcounter{enumi}{5}
-% \itemB Let $R$ be a PID.
-% \begin{enumerate}
-% \itemb Show that any finitely generated torsionfree $R$-module is free.
-% \itemb Show that any submodule of a finitely generated free $R$-module is free.
-% \itemb Prove or disprove: any torsionfree $R$-module is free.
-% \itemc Prove or disprove: any submodule of a free $R$-module is free.
-% \end{enumerate}
-% \end{enumerate}
-
+\nosolonly{
+ \begin{enumerate}\setcounter{enumi}{5}
+ \itemB Let $R$ be a PID.
+ \begin{enumerate}
+ \itemb Show that any finitely generated torsionfree $R$-module is free.
+ \itemb Show that any submodule of a finitely generated free $R$-module is free.
+ \itemb Prove or disprove: any torsionfree $R$-module is free.
+ \itemc Prove or disprove: any submodule of a free $R$-module is free.
+ \end{enumerate}
+ \end{enumerate}
+}
 
 
 \end{document}
