@@ -24,6 +24,9 @@
 \newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
 \newcommand{\solutione}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{leaf}This solution is embargoed.}\end{framed}} { \ }}
 \newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\nosolfill}{\ifthenelse {\equal{\displaysol}{1}} {} {\vfill}}
+\newcommand{\nosolpage}{\ifthenelse {\equal{\displaysol}{1}} {} {\newpage}}
+\newcommand{\nosolonly}[1]{\ifthenelse {\equal{\displaysol}{1}} {} {{#1}}}
 
 \newcommand{\rsa}{\rightsquigarrow}
 
@@ -79,7 +82,7 @@
 
 \
 
-\textsc{Structure Theorem for Finitely Generated Modules over PIDs (Invariant Factor Form):} Let $R$ be a PID. Let $M$ be a finitely generated $R$-module. Then there exist $r,t\geq 0$ and $a_1, \dots, a_t\in R$ such that
+\textsc{Structure Theorem for Finitely Generated Modules over PIDs (Invariant Factor Form):} Let $R$ be a PID. Let $M$ be a finitely generated $R$-module. Then there exist $r,t\geq 0$ and nonzero nonunit elements $a_1, \dots, a_t\in R$ such that
 \begin{itemize}
 \item $M\cong R^r \oplus R/(a_1) \oplus R/(a_2) \oplus \cdots  \oplus R/(a_t)$, and
 \item $a_1 \, | \, a_2 \, | \, \cdots \, | \, a_t$.
@@ -92,7 +95,7 @@ Moreover, $r,t$ are uniquely determined, and each $a_i$ is uniquely determined u
 \begin{enumerate}
 \itemA Use the \textsc{Smith Normal Form Theorem} and a homework problem to deduce the existence part of the \textsc{Structure Theorem for Finitely Generated Modules over PIDs (Invariant Factor Form)}.
 
-\solution{From a Lemma in class, we know that $A$ and $PAQ=D$ present isomorphic modules. Then using the homework problem, we get that $D$ presents a module of the form we seek.}
+\solution{From a Lemma in class, we know that $A$ and $PAQ=D$ present isomorphic modules. We can get rid of any columns of zeroes, and given any unit $d_{ii}$'s, we can scratch off that row and column. We end up with the}
 
 \itemA Remember/state the \textsc{Structure Theorem for Finitely Generated Abelian Groups (Invariant Factor Form)}, and deduce it from the \textsc{Structure Theorem for Finitely Generated Modules over PIDs (Invariant Factor Form)}.
 
@@ -117,14 +120,15 @@ This is a special case of the PID theorem since every abelian groups are the sam
 and $d_1 \,|\, \cdots \,|\, d_n$ and also $d'_1\,|\, \cdots \,|\, d'_{n'}$ with $n\geq n'$. We proceed by induction on $n$.
 \begin{enumerate}
 \itemb Deal with the base case $n=0$ (so $n'=0$).
-\itemb Suppose that $n>0$. Let $\phi$ be and isomorphism from left to right, and ${m= (0, 0, \dots, 1+(d_n))}$ in the left-hand side. Show that $\mathrm{ann}_R(\phi(m)) = (d_n)$.
+\itemb Suppose that $n>0$. Let $\phi$ be an isomorphism from left to right, and ${m= (0, 0, \dots, 1+(d_n))}$ in the left-hand side. Show that $\mathrm{ann}_R(\phi(m)) = (d_n)$.
 \itemb Show that $n'>0$ and that $d_n \,|\, \ d'_n$.
 \itemb Show that $d_n$ and $d'_n$ are associates.
 \itemb Complete the induction step and the proof.
 \end{enumerate}
 \end{enumerate}
 
-\newpage
+\nosolfill
+\nosolpage
 
 
 \begin{framed}
@@ -183,16 +187,17 @@ to elementary divisor form.
 % 
 % \
 % 
-% \begin{enumerate}\setcounter{enumi}{5}
-% \itemB Let $R$ be a PID.
-% \begin{enumerate}
-% \itemb Show that any finitely generated torsionfree $R$-module is free.
-% \itemb Show that any submodule of a finitely generated free $R$-module is free.
-% \itemb Prove or disprove: any torsionfree $R$-module is free.
-% \itemc Prove or disprove: any submodule of a free $R$-module is free.
-% \end{enumerate}
-% \end{enumerate}
-
+\nosolonly{
+ \begin{enumerate}\setcounter{enumi}{5}
+ \itemB Let $R$ be a PID.
+ \begin{enumerate}
+ \itemb Show that any finitely generated torsionfree $R$-module is free.
+ \itemb Show that any submodule of a finitely generated free $R$-module is free.
+ \itemb Prove or disprove: any torsionfree $R$-module is free.
+ \itemc Prove or disprove: any submodule of a free $R$-module is free.
+ \end{enumerate}
+ \end{enumerate}
+}
 
 
 \end{document}
