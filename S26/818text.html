@@ -3790,10 +3790,10 @@ It then follows from the induction hypothesis that \(r=r'\), \(k=k'\), and \(d_i
 
       <p><strong>Proof of Key Claim, case 1:</strong> In the setting of the key claim, suppose that \(d_1= \gcd(A)\) occurs as some entry of \(A\). After swapping rows and columns (which corresponds to multiplication by elementary matrices), we can assume that \(d_1\) is the top left entry of \(A\). Now, every element of the first row and the first column (and every entry!) is a multiple of \(d_1\), so we can subtract a suitable multiple of row one from each row (which corresponds to multiplication by elementary matrices) to get zeroes in the other entries of the first row. After that, do the same with the columns. Then we are done.</p>
 
-      <p><strong>Proof of Key Claim, case 2:</strong> Without assuming that \(d_1=\gcd(A)\) does not occur as any entry of \(A\), Choose an entry \(a\) of \(A\) for which the number of irreducible factors of \(a/d_1\) is minimal. We proceed by induction on the number of such factors; the base case where this number is zero is case 1 above. Using row and column operations, we can put \(a\) in the top left entry.</p>
+      <p><strong>Proof of Key Claim, case 2:</strong> Without assuming that \(d_1=\gcd(A)\) occurs as an entry of \(A\), choose an entry \(a\) of \(A\) for which the number of irreducible factors of \(a/d_1\) is minimal. We proceed by induction on the number of such factors; the base case where this number is zero is case 1 above. Using row and column operations, we can put \(a\) in the top left entry.</p>
 
       <p>
-        If \(a\) does not divide some entry \(b\) of the first row, use a column operation to put \(b\) in the \(1,2\) position. Using the Lemma, we can multiply by a suitable matrix to replace \(a,b\) by \(\gcd(a,b)\) and \(0\). Since \(a\) does not divide \(b\) and \(d_1 \ | \ \gcd(a,b) \ | \ a\), the number of irreducible factors of \(\gcd(a,b)/d_1\) must be strictly less than that of \(a/b\). We can then apply the induction hypothesis.
+        If \(a\) does not divide some entry \(b\) of the first row, use a column operation to put \(b\) in the \(1,2\) position. Using the Lemma, we can multiply by a suitable matrix to replace \(a,b\) by \(\gcd(a,b)\) and \(0\). Since \(a\) does not divide \(b\) and \(d_1 \ | \ \gcd(a,b) \ | \ a\), the number of irreducible factors of \(\gcd(a,b)/d_1\) must be strictly less than that of \(a/d_1\). We can then apply the induction hypothesis.
       </p>
 
       <p>
