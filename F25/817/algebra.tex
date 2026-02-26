@@ -9527,14 +9527,13 @@ Let $F$ be a field and let $A \in \mathrm{Mat}_n(F)$. The \df{characteristic pol
 
 
 \begin{definition}
-Let $V$ be an $F$-vector space of dimension $n$, and let $t: V \to V$ be a linear transformation. The \df{characteristic polynomial} of $t$, denoted $c_t$, is the characteristic polynomial $c_A$ for a matrix $A = [t]_B^B$ with respect to some ordered basis $B$ of $V$.
+Let $V$ be an $F$-vector space of dimension $n$, and let $\phi: V \to V$ be a linear transformation. The \df{characteristic polynomial} of $t$, denoted $c_\phi$, is the characteristic polynomial $c_A$ for a matrix $A = [\phi]_B^B$ with respect to some ordered basis $B$ of $V$.
 \end{definition}
 
-%Notice that $c_A$ is a polynomial of degree $n$. 
 Characteristic polynomials are well-defined.
 
 \begin{remark}\label{remark ct invariant under base change}
-	We need to check that the characteristic polynomial of a linear transformation is invariant under base changes. More precisely, we need to check that if we choose two different basis $B$ and $B'$ for $V$, then the matrices $A = [t]_{B}^B$ and $C = [t]_{B'}^{B'}$ have the same characteristic polynomial. First, recall that $A$ and $C$ are similar matrices, by \Cref{prop:changebase}, so $C = PAP^{-1}$ for some invertible matrix $P$. Moreover, diagonal matrices are in the center of $\mathrm{Mat}_n(R)$, meaning they commute with other matrices, and thus we have the following:
+	We need to check that the characteristic polynomial of a linear transformation is invariant under base changes. More precisely, we need to check that if we choose two different basis $B$ and $B'$ for $V$, then the matrices $A = [\phi]_{B}^B$ and $C = [\phi]_{B'}^{B'}$ have the same characteristic polynomial. First, recall that $A$ and $C$ are similar matrices, by \Cref{prop:changebase}, so $C = PAP^{-1}$ for some invertible matrix $P$. Moreover, diagonal matrices are in the center of $\mathrm{Mat}_n(R)$, meaning they commute with other matrices, and thus we have the following:
 	$$\begin{aligned}
 	\det(xI_n-C) & = \det(xI_n-PAP^{-1}) \\
 	& = \det(P(xI_n-A)P^{-1}) \\
@@ -9555,45 +9554,43 @@ $$\{ f(x) \in F[x] \mid f(A) = 0 \}.$$
 \end{definition}
 
 \begin{definition}
- Let $V$ be an $F$-vector space of dimension $n$, and let $t\!: V \to V$ be a linear transformation. The \df{minimal polynomial} of $t$, denoted $m_t$, is the unique monic polynomial generating the ideal $\ann_{F[x]}(V_t)$ in the PID $F[x]$.
+ Let $V$ be an $F$-vector space of dimension $n$, and let $\phi\!: V \to V$ be a linear transformation. The \df{minimal polynomial} of $\phi$, denoted $m_\phi$, is the unique monic polynomial generating the ideal $\ann_{F[x]}(V_\phi)$ in the PID $F[x]$.
  \end{definition}
  
  
 \begin{lemma}\label{minimal polys ann vs matrix coincide}
-Let $F$ be a field. Let $V$ be an $F$-vector space of dimension $n$ with basis $B$ and let $t: V \to V$ be a linear transformation. The minimal polynomial $m_A$ of $A = [t]_B^B$ satisfies $m_A = m_t$.
+Let $F$ be a field. Let $V$ be an $F$-vector space of dimension $n$ with basis $B$ and let $\phi: V \to V$ be a linear transformation. The minimal polynomial $m_A$ of $A = [\phi]_B^B$ satisfies $m_A = m_\phi$.
 \end{lemma}
 
 \begin{proof}
-Since $m_A$ and $m_t$ are both monic, it's sufficient to show ${\ann}_{F[x]}(V_t)=(m_A)$. Indeed, 
+Since $m_A$ and $m_t$ are both monic, it's sufficient to show ${\ann}_{F[x]}(V_\phi)=(m_A)$. Indeed, 
 $$\begin{aligned}
-f\in {\ann}_{F[x]}(V_t) & \iff f(x)v=0 \textrm{ for all } v\in V_t\\
-  & \iff f(A)v=0 \textrm{ for all } v\in V_t\\
-   & \iff \ker(f(A))= V_t\\
-    & \iff \rank(f(A))=0 && \textrm{by the \hyperref[rank nulity]{Rank-Nulity Theorem}}\\
+f\in {\ann}_{F[x]}(V_\phi) & \iff f(x)v=0 \textrm{ for all } v\in V_\phi\\
+  & \iff f(A)v=0 \textrm{ for all } v\in V_\phi\\
+   & \iff \ker(f(A))= V_\phi\\
+    & \iff \rank(f(A))=0 && \textrm{by the Rank-Nulity Theorem}\\
      & \iff f(A)=0\\
        & \iff f\in (m_A) && \textrm{by definition of } m_A.\qedhere
 \end{aligned}$$
 \end{proof}
 
 \begin{remark}
-If $m(x)$ is the minimal polynomial of an endomorphism $t$ and $f(x)$ is another polynomial such that $f(x)$ annihilates $V_t$, then $f(x) \in \ann(V_t) = (m(x))$, and thus $m(x) | f(x)$.
+If $m(x)$ is the minimal polynomial of an endomorphism $t$ and $f(x)$ is another polynomial such that $f(x)$ annihilates $V_t$, then $f(x) \in \ann(V_\phi) = (m(x))$, and thus $m(x) | f(x)$.
 
-Similarly, suppose that $m(x)$ is the minimal polynomial of a matrix $A$ and $f(x)$ is another polynomial such that $f(A)=0$. By \Cref{minimal polys ann vs matrix coincide}, we know that $m(x)$ is also the minimal polynomial of the linear transformation $t: v \mapsto Av$, and that $f(x)$ also annihilates $V_t$. Thus we can also conclude that $m(x)\mid f(x)$.
+Similarly, suppose that $m(x)$ is the minimal polynomial of a matrix $A$ and $f(x)$ is another polynomial such that $f(A)=0$. By \Cref{minimal polys ann vs matrix coincide}, we know that $m(x)$ is also the minimal polynomial of the linear transformation $t: v \mapsto Av$, and that $f(x)$ also annihilates $V_\phi$. Thus we can also conclude that $m(x)\mid f(x)$.
 \end{remark}
 
 
 \begin{lemma}\label{cayley hamilton c = product of gs and m=largest g}
-Let $F$ be a field, let $V$ be a finite dimensional $F$-vector space, and $t\!: V \to V$ be a linear transformation with invariant factors $g_1 | \cdots | g_k$. Then $c_t = g_1 \cdots g_k$ and $m_t = g_k$.
+Let $F$ be a field, let $V$ be a finite dimensional $F$-vector space, and $\phi\!: V \to V$ be a linear transformation with invariant factors $g_1 | \cdots | g_k$. Then $c_\phi = g_1 \cdots g_k$ and $m_\phi = g_k$.
 \end{lemma}
 
 
 
 \begin{proof}
-%By \Cref{remark ct invariant under base change}, $c_t$ is invariant under base change, and thus we have 
-% $$c_t=c_{C(g_1)\oplus \cdots \oplus C(g_k)} = c_{C(g_1)} \cdots c_{C(g_k)} = g_1 \cdots g_k.$$
-The product of the elements on the diagonal of the Smith Normal Form of $xI_n-A$ is the determinant of $xI_n-A$. Thus the product of the invariant factors $g_1 \cdots g_k$ of $V_t$ is the characteristic polynomial $c_t$ of $t$. Notice here that we chose our invariant factors $g_1, \ldots, g_k$ to be monic, so that $g_1 \cdots g_k$ is monic, and thus actually equal to $c_t$ (not just up to multiplication by a unit).
+The product of the elements on the diagonal of the Smith Normal Form of $xI_n-A$ is the determinant of $xI_n-A$. Thus the product of the invariant factors $g_1 \cdots g_k$ of $V_\phi$ is the characteristic polynomial $c_\phi$ of $\phi$. Notice here that we chose our invariant factors $g_1, \ldots, g_k$ to be monic, so that $g_1 \cdots g_k$ is monic, and thus actually equal to $c_\phi$ (not just up to multiplication by a unit).
 
-By Problem Set 5, $\ann_{F[x]}(V_t)=(g_k)$, and since $g_k$ is monic we deduce that $m_t=g_k$.
+By Problem Set 5, $\ann_{F[x]}(V_\phi)=(g_k)$, and since $g_k$ is monic we deduce that $m_\phi=g_k$.
 \end{proof}
 
 
@@ -9601,12 +9598,12 @@ We can now prove the famous Cayley-Hamilton theorem.
 
 
 \begin{theorem}[Cayley-Hamilton]\label{cayley-hamilton}
-	Let $F$ be a field, and let $V$ be a finite dimensional $F$-vector space. If $t: V \to V$ is a linear transformation, then $m_t \mid c_t$, and hence $c_t(t) = 0$. Similarly, for any matrix $A \in \mathrm{Mat}_n(F)$ over a field $F$ we have $m_A | c_A$ and $c_A(A) = 0$.
+	Let $F$ be a field, and let $V$ be a finite dimensional $F$-vector space. If $\phi: V \to V$ is a linear transformation, then $m_\phi \mid c_\phi$, and hence $c_\phi(\phi) = 0$. Similarly, for any matrix $A \in \mathrm{Mat}_n(F)$ over a field $F$ we have $m_A | c_A$ and $c_A(A) = 0$.
 \end{theorem}
 
 
 \begin{proof}
-Let $A = [t]_B^B$ for some basis $B$ of $V$. Note that the statements about $A$ and $t$ are equivalent, since by definition $c_A = c_t$, while $m_A=m_t$ we have $f(A) = 0$ if and only if $f(t) = 0$. So write $m= m_A=m_t$ and $c=c_A=c_t$.
+Let $A = [\phi]_B^B$ for some basis $B$ of $V$. Note that the statements about $A$ and $\phi$ are equivalent, since by definition $c_A = c_\phi$, while $m_A=m_t$ we have $f(A) = 0$ if and only if $f(\phi) = 0$. So write $m= m_A=m_\phi$ and $c=c_A=c_\phi$.
 
  
 	By \Cref{cayley hamilton c = product of gs and m=largest g}, $m = g_k$ and $c = g_1 \cdots g_k$, so $m \mid c$. By definition, we  $m(A) = 0$. Since $m|c$, we conclude that $c(A)=0$.
@@ -9614,7 +9611,7 @@ Let $A = [t]_B^B$ for some basis $B$ of $V$. Note that the statements about $A$ 
 
 
 \begin{remark}
-	As a corollary of the \hyperref[cayley-hamilton]{Cayley-Hamilton Theorem}, we obtain that the minimal polynomial of $t\!: V \to V$ has degree at most $n = \dim(V)$, since $m_t$ divides $c_t$, which is a polynomial of degree $n$. 
+	As a corollary of the Cayley-Hamilton Theorem, we obtain that the minimal polynomial of $\phi\!: V \to V$ has degree at most $n = \dim(V)$, since $m_\phi$ divides $c_\phi$, which is a polynomial of degree $n$. 
 \end{remark}
 
 
@@ -9622,60 +9619,37 @@ Let $A = [t]_B^B$ for some basis $B$ of $V$. Note that the statements about $A$ 
 
 
 \begin{lemma}\label{lemma ct divides multiple of mt}
-	Let $F$ be a field and let $V$ be a finite dimensional $F$-vector space. If $t: V \to V$ is a linear transformation, then $c_t \mid m_t^k$.
+	Let $F$ be a field and let $V$ be a finite dimensional $F$-vector space. If $\phi: V \to V$ is a linear transformation, then $c_\phi \mid m_\phi^k$.
 \end{lemma}
 
 \begin{proof}
-	Since $g_i\mid g_k$ for $1\leqslant i \leqslant k$, we have $c_t=g_1 \cdots g_k \mid g_k^k=m_t^k$.
+	Since $g_i\mid g_k$ for $1\leqslant i \leqslant k$, we have $c_\phi=g_1 \cdots g_k \mid g_k^k=m_\phi^k$.
 \end{proof}
 
-It follows that $c_t$ and $m_t$ have the same roots, not counting multiplicities.
+It follows that $c_\phi$ and $m_\phi$ have the same roots, not counting multiplicities.
 
 
 
 \begin{definition}
-Let $V$ be $t\!: V \to V$ be a linear transformation over a field $F$. A nonzero element $v \in V$ satisfying $t(v) = \lambda v$ for some $\lambda \in F$ is an \df{eigenvector} of $t$ with \df{eigenvalue}~$\lambda$. Similarly, given a matrix $A \in \mathrm{Mat}_n(F)$, a nonzero $v \in F^n$ satisfying $Av = \lambda v$ for some $\lambda \in F$ is an \df{eigenvector} of $A$ with \df{eigenvalue} $\lambda$.
+Let $V$ be $\phi\!: V \to V$ be a linear transformation over a field $F$. A nonzero element $v \in V$ satisfying $\phi(v) = \lambda v$ for some $\lambda \in F$ is an \df{eigenvector} of $\phi$ with \df{eigenvalue}~$\lambda$. Similarly, given a matrix $A \in \mathrm{Mat}_n(F)$, a nonzero $v \in F^n$ satisfying $Av = \lambda v$ for some $\lambda \in F$ is an \df{eigenvector} of $A$ with \df{eigenvalue} $\lambda$.
 \end{definition}
 
 
 \begin{theorem}\label{eigenvalues}
 Let $f \in F$. The following are equivalent: 
 \begin{enumerate}[label=(\arabic*)]
-\item $\lambda$ is an eigenvalue of $t$. 
-\item $\lambda$ is a root of $c_t$.
-\item $\lambda$ is a root of $m_t$. 
+\item $\lambda$ is an eigenvalue of $\phi$. 
+\item $\lambda$ is a root of $c_\phi$.
+\item $\lambda$ is a root of $m_\phi$. 
 \end{enumerate}
 \end{theorem}
 
 
 \begin{proof}
-	By the \hyperref[cayley-hamilton]{Cayley-Hamilton Theorem}, $m_t|c_t$, and thus $(3) \Rightarrow (2)$. On the other hand, by \Cref{lemma ct divides multiple of mt} we know that $c_t  \mid m_t^k$, so if $c_t(\lambda) = 0$ then $m_t(\lambda)^k=0$, and since we are over a field, we conclude that $m_t(\lambda) = 0$. This shows $(2) \Rightarrow (3)$.
+	By the Cayley-Hamilton Theorem, $m_\phi|c_\phi$, and thus $(3) \Rightarrow (2)$. On the other hand, by \Cref{lemma ct divides multiple of mt} we know that $c_\phi  \mid m_\phi^k$, so if $c_\phi(\lambda) = 0$ then $m_\phi(\lambda)^k=0$, and since we are over a field, we conclude that $m_\phi(\lambda) = 0$. This shows $(2) \Rightarrow (3)$.
 	
 Finally, to show that $(1) \Leftrightarrow (2)$, notice that the scalar $\lambda\in F$ is an eigenvalue of $A$ if and only if there is a nonzero solution $v$ to $(\lambda I_n-A)v = 0$. This happens if and only if $\lambda I_n - A$ has a nontrivial kernel, or equivalently if $\lambda I - A$ is not invertible. Thus $\lambda\in F$ is an eigenvalue of $A$ if and only if it is a root of its characteristic polynomial $c_A(x)=\det(xI_n-A)$, meaning $c_A(\lambda)=0$.
 \end{proof}
-
-%
-%Here is another consequence of Cayley-Hamilton:
-%
-%\begin{lemma}
-%	For any polynomial $f \in F[x]$, we have $m_{C(f)} = c_{C(f)} = f$.
-%\end{lemma}
-%
-%
-%\begin{proof}
-%The matrix $C(f)$ represents the endomorphism of the vector space $F[x]/(f)$ given by multiplication by $x$, and $\ann(F[x]/(f)) = (f)$. Thus $m_{C(f)} = f$. In particular this yields $\deg(m_{C(f)})=\deg(f)$. The equality $m_{C(f)} =c_{C(f)}$ follows since $m_{C(f)} \mid c_{C(f)}$ and $\deg(m_{C(f)})=\deg(f)=\deg(c_{C(f)})$, while $m_{C(f)}$ and $c_{C(f)}$ are both monic polynomials.
-%\end{proof}
-
-
-
-
-\
-
-
-
-
-
-
 
 
 
@@ -9683,15 +9657,15 @@ Finally, to show that $(1) \Leftrightarrow (2)$, notice that the scalar $\lambda
 
 
 \begin{example}\label{example rotation 60}
-Let us find the minimal and characteristic polynomials of $T: \mathbb{R}^2 \to \mathbb{R}^2$ given as rotation by 60 degrees counter-clockwise. We could write this down as matrix and compute its characteristic polynomial, but a simpler way is to notice that $T^3 = -I_2$, and so $T$ satisfies the polynomial $x^3 + 1 = (x+1)(x^2 - x + 1)$. Its minimal polynomial must therefore divide $x^3 +1$. Since $x^3 +1 = (x+1)(x^2 - x +1)$ and $x^2 - x +1$ is irreducible in $\mathbb{R}[x]$, we conclude that the minimal polynomial of $T$, which we know has degree at most $2$, must be either $x+1$ or $x^2 - x +1$. If $m_T = x+1$, then $T$ would be $-I_2$, which is clearly incorrect. So the minimal polynomial of $T$ must be $x^2 - x +1$. By \hyperref[cayley-hamilton]{Cayley-Hamilton}, this polynomial must divide the characteristic polynomial, and since the latter also has degree two, we conclude that
-$$c_T(x) = x^2 - x + 1.$$
-Since this is irreducible, in this example we have no choice for how to form the invariant factors: there must just be one of them, $c_T(x)$ itself. So
+Let us find the minimal and characteristic polynomials of $\phi: \mathbb{R}^2 \to \mathbb{R}^2$ given as rotation by $\pi/3$ degrees counter-clockwise. We could write this down as matrix and compute its characteristic polynomial, but a simpler way is to notice that $\phi^3 = -I_2$, and so $\phi$ satisfies the polynomial $x^3 + 1 = (x+1)(x^2 - x + 1)$. Its minimal polynomial must therefore divide $x^3 +1$. Since $x^3 +1 = (x+1)(x^2 - x +1)$ and $x^2 - x +1$ is irreducible in $\mathbb{R}[x]$, we conclude that the minimal polynomial of $T$, which we know has degree at most $2$, must be either $x+1$ or $x^2 - x +1$. If $m_\phi = x+1$, then $\phi$ would be $-I_2$, which is clearly incorrect. So the minimal polynomial of $\phi$ must be $x^2 - x +1$. By Cayley-Hamilton, this polynomial must divide the characteristic polynomial, and since the latter also has degree two, we conclude that
+$$c_\phi(x) = x^2 - x + 1.$$
+Since this is irreducible, in this example we have no choice for how to form the invariant factors: there must just be one of them, $c_\phi(x)$ itself. So
 $$C(x^2 - x + 1) = 
 \begin{bmatrix}
 0 & -1 \\
 1 & 1 \\
 \end{bmatrix}$$
-is the rational canonical form of $T$. 
+is the rational canonical form of $\phi$. 
 \end{example}
 
 
@@ -9707,9 +9681,9 @@ $$
 \end{bmatrix}
 $$
 
-By the \hyperref[cayley-hamilton]{Cayley-Hamilton Theorem}, $m_A(x) \mid c_A(x)$. The polynomial $c_A(x)$ is easy to compute since this matrix is upper-triangular:
+By the Cayley-Hamilton Theorem, $m_A(x) \mid c_A(x)$. The polynomial $c_A(x)$ is easy to compute since this matrix is upper-triangular:
 $$c_A(x) = \det(xI_4 - A) = (x-1)^4.$$ 
-So $m_A(x) = (x-1)^j$ for some $j \leqslant 4$. By brute-force, we verify that $(A-I_4)^3 \neq 0$ and thus it must be the case that $m_A(x) = c_A(x) = (x-1)^4$. 
+So $m_A(x) = (x-1)^j$ for some $j \leqslant 4$. By brute force, we verify that $(A-I_4)^3 \neq 0$ and thus it must be the case that $m_A(x) = c_A(x) = (x-1)^4$. 
 \end{example}
 
 \begin{example} 
