@@ -4327,7 +4327,7 @@ On obvious case where the structure theory of modules over PIDs applies is in th
     <h3 id="def-14-3-6-title">Definition 14.3.6</h3>
     <div class="callout-body">
       <p>
-        Let \(V\) be an \(F\)-vector space of dimension \(n\), and let \(\phi\!: V \to V\) be a linear transformation. The <strong>minimal polynomial</strong> of \(\phi\), denoted \(m_\phi\), is the unique monic polynomial generating the ideal \(\ann_{F[x]}(V_\phi)\) in the PID \(F[x]\).
+        Let \(V\) be an \(F\)-vector space of dimension \(n\), and let \(\phi\!: V \to V\) be a linear transformation. The <strong>minimal polynomial</strong> of \(\phi\), denoted \(m_\phi\), is the unique monic polynomial generating the ideal \(\mathrm{ann}_{F[x]}(V_\phi)\) in the PID \(F[x]\).
       </p>
     </div>
   </section>
@@ -4345,16 +4345,16 @@ On obvious case where the structure theory of modules over PIDs applies is in th
     <h3 id="proof-lem-14-3-7-title">Proof of Lemma 14.3.7</h3>
     <div class="callout-body">
       <p>
-        Since \(m_A\) and \(m_t\) are both monic, it's sufficient to show \({\ann}_{F[x]}(V_\phi)=(m_A)\). Indeed,
+        Since \(m_A\) and \(m_t\) are both monic, it's sufficient to show \({\mathrm{ann}}_{F[x]}(V_\phi)=(m_A)\). Indeed,
       </p>
       \[
         \begin{aligned}
-        f\in {\ann}_{F[x]}(V_\phi) & \iff f(x)v=0 \textrm{ for all } v\in V_\phi\\
+        f\in {\mathrm{ann}}_{F[x]}(V_\phi) & \iff f(x)v=0 \textrm{ for all } v\in V_\phi\\
         & \iff f(A)v=0 \textrm{ for all } v\in V_\phi\\
         & \iff \ker(f(A))= V_\phi\\
-        & \iff \rank(f(A))=0 && \textrm{by the Rank-Nulity Theorem}\\
+        & \iff \mathrm{rank}(f(A))=0 && \textrm{by the Rank-Nulity Theorem}\\
         & \iff f(A)=0\\
-        & \iff f\in (m_A) && \textrm{by definition of } m_A.\qedhere
+        & \iff f\in (m_A) && \textrm{by definition of } m_A. 
         \end{aligned}
       \]
     </div>
@@ -4364,7 +4364,7 @@ On obvious case where the structure theory of modules over PIDs applies is in th
     <h3 id="rmk-14-3-8-title">Remark 14.3.8</h3>
     <div class="callout-body">
       <p>
-        If \(m(x)\) is the minimal polynomial of an endomorphism \(t\) and \(f(x)\) is another polynomial such that \(f(x)\) annihilates \(V_\phi\), then \(f(x) \in \ann(V_\phi) = (m(x))\), and thus \(m(x) | f(x)\).
+        If \(m(x)\) is the minimal polynomial of an endomorphism \(t\) and \(f(x)\) is another polynomial such that \(f(x)\) annihilates \(V_\phi\), then \(f(x) \in \mathrm{ann}(V_\phi) = (m(x))\), and thus \(m(x) | f(x)\).
       </p>
 
       <p>
@@ -4390,7 +4390,7 @@ On obvious case where the structure theory of modules over PIDs applies is in th
       </p>
 
       <p>
-        By Problem Set 5, \(\ann_{F[x]}(V_\phi)=(g_k)\), and since \(g_k\) is monic we deduce that \(m_\phi=g_k\).
+        By Problem Set 5, \(\mathrm{ann}_{F[x]}(V_\phi)=(g_k)\), and since \(g_k\) is monic we deduce that \(m_\phi=g_k\).
       </p>
     </div>
   </section>

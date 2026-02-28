@@ -1,0 +1,113 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=.9in]{geometry}
+\usepackage{paralist,amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals}
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\solutione}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{leaf}This solution is embargoed.}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\nosolfill}{\ifthenelse {\equal{\displaysol}{1}} {} {\vfill}}
+\newcommand{\nosolpage}{\ifthenelse {\equal{\displaysol}{1}} {} {\newpage}}
+\newcommand{\nosolonly}[1]{\ifthenelse {\equal{\displaysol}{1}} {} {{#1}}}
+
+\newcommand{\rsa}{\rightsquigarrow}
+
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+
+\DeclareMathOperator{\ord}{ord}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{Rational canonical form}
+	\begin{framed}
+	\textsc{Definition:} Let $F$ be a field. For a monic polynomial \[ f(x) = x^n + a_{n-1} x^{n-1} + \cdots + a_1 x + a_0 \in F[x],\] the \textbf{companion matrix} of $f$ is 
+	\[ C(f) = \begin{bmatrix}
+0 & \cdots & 0 & -a_0 \\
+&&& -a_1 \\
+& I_{n-1}&& \vdots\\
+&&& -a_{n-1} \\
+\end{bmatrix}.\]
+
+\
+
+	\textsc{Rational Canonical Form:} Let $F$ be a field. Let $V$ be a finite dimensional vector space, and $\phi:V\to V$ a linear transformation. Then there is a basis $B$ for $V$ such that
+	\[ [\phi]_B^B = \begin{bmatrix} C(g_1) & 0 & \cdots & 0 \\ 0 & C(g_2) & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & C(g_s)\end{bmatrix}\]
+	where $g_1 | \cdots | g_s$ are the invariant factors\footnotemark[1] of $\phi$. This matrix is called the \textbf{rational canonical form} of $\phi$, or $\mathrm{RCF}(\phi)$.
+	
+	\
+	
+	\textsc{Theorem:} Let $F$ be a field and $A,B\in \mathrm{Mat}_{n\times n}(F)$. The following are equivalent:
+	\begin{enumerate}
+	\item $A$ and $B$ are similar matrices.
+	\item $A$ and $B$ have the same rational canonical form.
+	\item $A$ and $B$ have the same invariant factors.
+	\end{enumerate}
+	\end{framed}
+	\footnotetext[1]{The \textbf{invariant factors} of $\phi$ are the (monic) invariant factors of the {$F[x]$-module}~$V_\phi$.}
+	
+	\begin{enumerate}
+	\itemA Computing some RCFs:
+	\begin{enumerate}
+	\itema Let 
+	
+	\end{enumerate} 
+	
+	\
+	
+	\itemA Classifying matrices up to similarity:	
+	
+	\itemB Uniqueness of rational canonical form:
+
+
+	
+	\end{enumerate}
+
+\end{document}
