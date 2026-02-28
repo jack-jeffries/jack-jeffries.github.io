@@ -1,0 +1,114 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=.9in]{geometry}
+\usepackage{paralist,amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals}
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\solutione}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{leaf}This solution is embargoed.}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\nosolfill}{\ifthenelse {\equal{\displaysol}{1}} {} {\vfill}}
+\newcommand{\nosolpage}{\ifthenelse {\equal{\displaysol}{1}} {} {\newpage}}
+\newcommand{\nosolonly}[1]{\ifthenelse {\equal{\displaysol}{1}} {} {{#1}}}
+
+\newcommand{\rsa}{\rightsquigarrow}
+
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+
+\DeclareMathOperator{\ord}{ord}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{Similarity, invariant factors, and minimal/characteristic polynomials for matrices}
+	
+Throughout, $F$ is a field, and $V$ is an $n$-dimensional $F$-vectorspace. 
+
+\begin{itemize}
+\item For two bases $B$, $B'$ for $V$ and a linear transformation $\phi:V\to V$, the matrices $[\phi]_B^B$ and $[\phi]_{B'}^{B'}$ are similar. Conversely, if $A$ and $A'$ are similar matrices, $A'=[t_A]_B^B$ for some basis $B$ of $F^n$.
+\item Given a linear transformation $\phi:V\to V$, there is an $F[x]$-module $V_\phi$ that is just $V$ as an $F$-vector space and with $F[x]$-action determined by $x\cdot v=\phi(v)$.
+\item The $F[x]$-modules $(F^n)_{t_A}$ and $(F^n)_{t_B}$ are isomorphic if and only if $A$ and $B$ are similar.
+\item The $F[x]$-module $V_{\phi}$ is presented by the matrix $xI_n - [\phi]_B^B$ for any basis $B$ of $V$. In particular, the $F[x]$-module $V_{t_A}$ is presented by the matrix $xI_n - A$.
+\item (\textsc{Invariant factors}) The invariant factors of $\phi$ are the invariant factors of the $F[x]$-module $V_{\phi}$. This consists of monic polynomials $g_1 | \cdots | g_k$.
+\item The companion matrix of a monic polynomial $f(x) = x^n + a_{n-1} x^{n-1} + \cdots + a_1 x + a_0$ is 
+\[ C(f) = \begin{bmatrix}
+0 & \cdots & 0 & -a_0 \\
+&&& -a_1 \\
+& I_{n-1}&& \vdots\\
+&&& -a_{n-1} \\
+\end{bmatrix}.\]
+\item (\textsc{Rational canonical form}) There exists a basis $B$ for $V$ such that
+	\[ [\phi]_B^B = \begin{bmatrix} C(g_1) & 0 & \cdots & 0 \\ 0 & C(g_2) & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & C(g_s)\end{bmatrix},\]
+where $g_1|\cdots|g_s$ are the invariant factors. If there is some basis $B$ where this formula holds with the division condition, then $g_1,\dots,g_s$ must be the invariant factors.
+\item The following are equivalent:
+	\begin{enumerate}
+	\item $A$ and $B$ are similar matrices.
+	\item $A$ and $B$ have the same invariant factors.
+		\item $A$ and $B$ have the same rational canonical form.
+	\end{enumerate}
+\item (\textsc{Characteristic polynomial}) The characterisic polynomial of $\phi$ is $\det(xI_n - [\phi]_B^B)$ for some basis $B$, denoted $c_\phi$.
+\item (\textsc{Minimal polynomial}) The minimal polynomial of $\phi$ is $\mathrm{ann}_{F[x]}(V_\phi)$, denoted $m_\phi$.
+\item (\textsc{Cayley-Hamilton}) $m_\phi | c_\phi$.
+\item Let $g_1,\dots,g_s$ be the invariant factors of $\phi$. Then
+\begin{enumerate}
+\item $\deg(g_1) + \cdots + \deg(g_s)= n$. 
+\item $m_\phi = g_s$.
+\item $c_\phi = g_1\cdots g_s$.
+\item The irreducible factors of $m_\phi$ are the same as the irreducible factors of $c_\phi$.
+\end{enumerate}
+\item The following are equivalent:
+\begin{enumerate}
+\item $\lambda$ is a root of $m_\phi$
+\item $\lambda$ is a root of $c_\phi$
+\item $\lambda$ is an eigenvalue of $\phi$.
+\end{enumerate}
+
+\end{itemize}
+	
+\end{document}

@@ -1,0 +1,148 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=.5in]{geometry}
+\usepackage{paralist,amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals}
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\solutione}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{leaf}This solution is embargoed.}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\nosolfill}{\ifthenelse {\equal{\displaysol}{1}} {} {\vfill}}
+\newcommand{\nosolpage}{\ifthenelse {\equal{\displaysol}{1}} {} {\newpage}}
+\newcommand{\nosolonly}[1]{\ifthenelse {\equal{\displaysol}{1}} {} {{#1}}}
+
+\newcommand{\rsa}{\rightsquigarrow}
+
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+
+\DeclareMathOperator{\ord}{ord}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{Cayley-Hamilton and classifying matrices up to similarity}
+	\begin{framed}
+	\textsc{Definition:} Let $F$ be a field, $V$ an $F$-vector space of dimension $n$, and $\phi:V\to V$ a linear transformation.
+	\begin{itemize}
+	\item The \textbf{characteristic polynomial} of $\phi$ is the polynomial $c_\phi(x) := \det(xI_n  - [\phi]_B^B)$ for some/any basis $B$ of $V$.
+	\item The \textbf{minimal polynomial} of $\phi$ is the monic generator $m_\phi(x)$ of the ideal $\mathrm{ann}_{F[x]}(V_\phi)$. Equivalently, $m_\phi(x)$ is the monic polynomial of smallest degree such that $m_\phi(\phi)=0$.
+\end{itemize}
+We write $c_A(x):=c_{t_A}(x)$ and $m_A(x):=m_{t_A}(x)$ for a matrix $A$.
+
+\
+
+\textsc{Proposition:} Let $F$ be a field, $V$ an $F$-vector space of dimension $n$, and $\phi:V\to V$ a linear transformation. Let $g_1 \ |\  \cdots\  |\ g_k$ be the invariant factors of $\phi$.
+\begin{enumerate}
+\item $m_\phi(x)=g_k$.
+\item $c_\phi(x)=g_1 \cdots g_k$.
+\item $\deg(g_1) + \cdots + \deg(g_k) = n$.
+\end{enumerate}
+
+\medskip
+
+\textsc{Corollary (Cayley-Hamilton):} $m_\phi(x) \  | \ c_\phi(x)$.
+
+\
+
+\textsc{Theorem:} Let $F$ be a field, $V$ an $F$-vector space of dimension $n$, and $\phi:V\to V$ a linear transformation. For $\lambda\in F$, \  $\lambda \ \text{is an eigenvalue of $\phi$} \  \Longleftrightarrow \ m_\phi(\lambda) = 0 \  \Longleftrightarrow \ c_\phi(\lambda) = 0.$
+	\end{framed}
+
+	
+	\begin{enumerate}
+	\itemA Let $A={\small\begin{bmatrix} -11 & -4 & -2 \\ 18 & 7 & 3 \\ 18 & 6 & 4\end{bmatrix}}\in \mathrm{Mat}_3(\Q)$. The SNF of $xI-A\in \mathrm{Mat}_3(\Q[x])$ is ${\small\begin{bmatrix} 1 & 0 & 0 \\ 0& x-1  & 0 \\ 0 & 0 & x^2+x-2\end{bmatrix}}$. Use the results above to answer the following:
+	\begin{enumerate}
+	\itema What is the minimal polynomial of $A$?
+	\itema What is the characteristic polynomial of $A$?
+	\itema What is the RCF of $A$?
+	\itema What are the eigenvalues of $A$?
+	\end{enumerate}
+	
+
+\
+	
+	
+	\itemA Let $F$ be a field, and $A\in \mathrm{Mat}_{n}(F)$ be a nilpotent matrix, meaning that $A^t=0$ for some $t\geq 1$. 
+	\begin{enumerate}
+	\itema Prove that $A^n=0$.
+	\itema If $n=4$, what are the possible lists of invariant factors?
+	\itema For $n=4$, give a complete and nonredudant list of representatives of similarity classes of nilpotent matrices.
+	\end{enumerate}
+	
+	\
+	
+	\itemA Let $f(x)=(x^2-1)(x^4-1) \in \mathbb{Q}[x]$.
+	\begin{enumerate}
+	\itema If $A\in \mathrm{Mat}_6(\Q)$ has characteristic polynomial $c_A(x) = f(x)$, then what are the possible lists of invariant factors of $A$?
+	\itema Give a complete and nonredudant list of representatives of similarity classes of rational matrices with characteristic polynomial $f$.
+	\end{enumerate}
+
+
+\
+
+\itemA Let $F$ be a field.
+\begin{enumerate}
+	\itema Let A and B be two $3 \times 3$ matrices with entries in $F$. Prove A and B are similar if and only if they have the same characteristic polynomial and the same minimum polynomial.
+\itema Show, by way of an example with justification, that the statement in part (a) would become false if $3 \times 3$ were replaced by $4 \times 4$.
+\end{enumerate}
+
+\
+
+\itemA Prove\footnote{Hint: You did most of the work for (1) in a homework problem.} the Proposition and the Theorem.
+
+\
+
+\itemA Give a complete and nonredundant list of representatives for the conjugacy classes of $\mathrm{GL}_3(\Z/2)$.
+
+
+
+
+	
+	\end{enumerate}
+
+\end{document}
