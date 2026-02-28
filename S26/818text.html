@@ -4171,7 +4171,9 @@ On obvious case where the structure theory of modules over PIDs applies is in th
     <h3 id="thm-14-2-5-title">Theorem 14.2.5 (Rational Canonical Form)</h3>
     <div class="callout-body">
       <p>
-        Let \(F\) be a field, \(V\) a finite dimensional \(F\)-vector space, and \(\phi \!: V \to V\) an \(F\)-linear transformation. There is a basis \(B\) of \(V\) such that
+        Let \(F\) be a field, \(V\) a finite dimensional \(F\)-vector space, and \(\phi \!: V \to V\) an \(F\)-linear transformation. </p>
+<ol>
+<li><p>There is a basis \(B\) of \(V\) such that
       </p>
       \[
         [\phi]_B^B=C(g_1) \oplus \cdots \oplus C(g_k) =
@@ -4183,16 +4185,23 @@ On obvious case where the structure theory of modules over PIDs applies is in th
         \end{bmatrix}
       \]
       <p>
-        where \(g_1, \dots, g_k\) are the invariant factors of \(t\), meaning in particular they are monic polynomials of positive degree such that \(g_1 \mid g_2 \mid \cdots \mid g_k\). Moreover, the polynomials \(g_1, \dots, g_k\) are unique.
-      </p>
+        where \(g_1, \dots, g_k\) are the invariant factors of \(\phi\), meaning in particular they are monic polynomials of positive degree such that \(g_1 \mid g_2 \mid \cdots \mid g_k\).
+    </p></li>
+<li>If   \[
+        [\phi]_C^C=C(h_1) \oplus \cdots \oplus C(h_\ell)
+      \]
+  for some basis \(C\), then \(h_i=g_i\) for all \(i\).
+</li></ol>
     </div>
   </section>
 
   <section id="proof-thm-14-2-5" class="callout proof" aria-labelledby="proof-thm-14-2-5-title">
     <h3 id="proof-thm-14-2-5-title">Proof of Theorem 14.2.5</h3>
     <div class="callout-body">
-      <p>
-        By Corollary 14.1.5, \(V_\phi \cong \bigoplus_{i=1}^k F[x]/(g_i(x))\) for some unique \(g_i\) as in the statement. Set \(V_i=F[x]/(g_i(x))\) and note that \(V_\phi=V_1\oplus \dots \oplus V_k\). The map \(\mu _x\!:V_\phi\to V_\phi \) given by multiplication by \(x\) preserves each summand in this decomposition: \(\mu_x(V_i)\subseteq V_i\). Thus if we choose a basis \(B_i\) of each summand \(V_i\) and set \(B=\bigcup_{i=1}^k \iota_i(B_i)\), by the previous remark, \(B\) is a basis of \(V_\phi\) and \([\phi]_B^B=[\phi|_{V_1}]_{B_1}^{B_1}\oplus \dots \oplus [\phi|_{V_k}]_{B_k}^{B_k}\). The result now follows from the Lemma from the Homework.
+      <p><ol><li>
+        By Corollary 14.1.5, \(V_\phi \cong \bigoplus_{i=1}^k F[x]/(g_i(x))\) for some unique \(g_i\) as in the statement. Set \(V_i=F[x]/(g_i(x))\) and note that \(V_\phi=V_1\oplus \dots \oplus V_k\). The map \(\mu _x\!:V_\phi\to V_\phi \) given by multiplication by \(x\) preserves each summand in this decomposition: \(\mu_x(V_i)\subseteq V_i\). Thus if we choose a basis \(B_i\) of each summand \(V_i\) and set \(B=\bigcup_{i=1}^k \iota_i(B_i)\), by the previous remark, \(B\) is a basis of \(V_\phi\) and \([\phi]_B^B=[\phi|_{V_1}]_{B_1}^{B_1}\oplus \dots \oplus [\phi|_{V_k}]_{B_k}^{B_k}\). The result now follows from the Lemma from the Homework.</li>
+<li>We outline the argument, leaving some details for you. Again using the Lemma from the Homework, we have an isomorphism \(V_{t_{C(h_i)}} \cong F[x]/(h_i)\) for each \(i\). We claim that the given equality yields an isomorphism \[ V_\phi \cong V_{t_{C(h_1)}} \oplus \cdots \oplus V_{t_{C(h_\ell)}},\]
+which we leave for you to verify. Then the result follows by the uniqueness statement in the structure theorem for modules over PIDs.
       </p>
     </div>
   </section>
