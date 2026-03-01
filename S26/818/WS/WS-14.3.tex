@@ -2,7 +2,7 @@
 
 
 \usepackage{times}
-\usepackage[margin=.5in]{geometry}
+\usepackage[margin=.55in]{geometry}
 \usepackage{paralist,amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals}
 \usepackage[outline]{contour}
 \contourlength{.4pt}
@@ -70,32 +70,32 @@
 	\begin{framed}
 	\textsc{Definition:} Let $F$ be a field, $V$ an $F$-vector space of dimension $n$, and $\phi:V\to V$ a linear transformation.
 	\begin{itemize}
-	\item The \textbf{characteristic polynomial} of $\phi$ is the polynomial $c_\phi(x) := \det(xI_n  - [\phi]_B^B)$ for some/any basis $B$ of $V$.
+	\item The \textbf{characteristic polynomial} of $\phi$ is the polynomial $c_\phi(x) := \det(xI_n  - [\phi]_B^B)$ for a basis $B$ of $V$.
 	\item The \textbf{minimal polynomial} of $\phi$ is the monic generator $m_\phi(x)$ of the ideal $\mathrm{ann}_{F[x]}(V_\phi)$. Equivalently, $m_\phi(x)$ is the monic polynomial of smallest degree such that $m_\phi(\phi)=0$.
 \end{itemize}
 We write $c_A(x):=c_{t_A}(x)$ and $m_A(x):=m_{t_A}(x)$ for a matrix $A$.
 
-\
+\medskip\medskip
 
-\textsc{Proposition:} Let $F$ be a field, $V$ an $F$-vector space of dimension $n$, and $\phi:V\to V$ a linear transformation. Let $g_1 \ |\  \cdots\  |\ g_k$ be the invariant factors of $\phi$.
+\textsc{Proposition:} Let $F$ be a field, $V$ an $F$-vector space of dimension $n$, and $\phi:V\to V$ a linear transformation. Let $g_1 \ |\  \cdots\  |\ g_k$ be the invariant factors of $\phi$. Then,
 \begin{enumerate}
 \item $m_\phi(x)=g_k$.
 \item $c_\phi(x)=g_1 \cdots g_k$.
-\item $\deg(g_1) + \cdots + \deg(g_k) = n$.
+%\item $\deg(g_1) + \cdots + \deg(g_k) = n$.
 \end{enumerate}
 
 \medskip
 
 \textsc{Corollary (Cayley-Hamilton):} $m_\phi(x) \  | \ c_\phi(x)$.
 
-\
+\medskip\medskip
 
 \textsc{Theorem:} Let $F$ be a field, $V$ an $F$-vector space of dimension $n$, and $\phi:V\to V$ a linear transformation. For $\lambda\in F$, \  $\lambda \ \text{is an eigenvalue of $\phi$} \  \Longleftrightarrow \ m_\phi(\lambda) = 0 \  \Longleftrightarrow \ c_\phi(\lambda) = 0.$
 	\end{framed}
 
 	
 	\begin{enumerate}
-	\itemA Let $A={\small\begin{bmatrix} -11 & -4 & -2 \\ 18 & 7 & 3 \\ 18 & 6 & 4\end{bmatrix}}\in \mathrm{Mat}_3(\Q)$. The SNF of $xI-A\in \mathrm{Mat}_3(\Q[x])$ is ${\small\begin{bmatrix} 1 & 0 & 0 \\ 0& x-1  & 0 \\ 0 & 0 & x^2+x-2\end{bmatrix}}$. Use the results above to answer the following:
+	\itemA Let $A={\small\begin{bmatrix} -11 & -4 & -2 \\ 18 & 7 & 3 \\ 18 & 6 & 4\end{bmatrix}}\in \mathrm{Mat}_3(\Q)$. The SNF of $xI-A\in \mathrm{Mat}_3(\Q[x])$ is ${\small\begin{bmatrix} 1 & 0 & 0 \\ 0& x-1  & 0 \\ 0 & 0 & x^2+x-2\end{bmatrix}}$.
 	\begin{enumerate}
 	\itema What is the minimal polynomial of $A$?
 	\itema What is the characteristic polynomial of $A$?
@@ -104,40 +104,52 @@ We write $c_A(x):=c_{t_A}(x)$ and $m_A(x):=m_{t_A}(x)$ for a matrix $A$.
 	\end{enumerate}
 	
 
-\
+\medskip\medskip
 	
 	
 	\itemA Let $F$ be a field, and $A\in \mathrm{Mat}_{n}(F)$ be a nilpotent matrix, meaning that $A^t=0$ for some $t\geq 1$. 
 	\begin{enumerate}
+	\itema What can you deduce about $m_A(x)$ from the fact that $A^t=0$?
 	\itema Prove that $A^n=0$.
 	\itema If $n=4$, what are the possible lists of invariant factors?
-	\itema For $n=4$, give a complete and nonredudant list of representatives of similarity classes of nilpotent matrices.
+	\itema Give a complete nonredudant list of representatives of similarity classes of $4\times 4$ nilpotent matrices.
 	\end{enumerate}
 	
-	\
+	\medskip\medskip
 	
 	\itemA Let $f(x)=(x^2-1)(x^4-1) \in \mathbb{Q}[x]$.
 	\begin{enumerate}
 	\itema If $A\in \mathrm{Mat}_6(\Q)$ has characteristic polynomial $c_A(x) = f(x)$, then what are the possible lists of invariant factors of $A$?
-	\itema Give a complete and nonredudant list of representatives of similarity classes of rational matrices with characteristic polynomial $f$.
+	\itema Give a complete nonredudant list of representatives of similarity classes of rational matrices with characteristic polynomial $f$.
 	\end{enumerate}
+	
+	
+\medskip\medskip
 
-
-\
-
-\itemA Let $F$ be a field.
+\itemA Proofs:
 \begin{enumerate}
-	\itema Let $A$ and $B$ be two $3 \times 3$ matrices with entries in $F$. Prove $A$ and $B$ are similar if and only if they have the same characteristic polynomial and the same minimal polynomial.
-\itema Show, by way of an example with justification, that the statement in part (a) would become false if $3 \times 3$ were replaced by $4 \times 4$.
+\itema Show that the characteristic polynomial is well-defined (i.e., independent of choice of $B$).
+\itema Prove\footnote{Hint: You did most of the work for (1) in a homework problem.}  the Proposition and deduce Cayley-Hamilton as a Corollary.
+\itema Prove the Theorem.
 \end{enumerate}
 
-\
+\medskip\medskip
 
-\itemA Prove\footnote{Hint: You did most of the work for (1) in a homework problem.} the Proposition and the Theorem.
+\itemB Find the minimal and characteristic polynomials of rotation by $\pi/3$ counterclockwise in $\R^2$.
 
-\
 
-\itemA Give a complete and nonredundant list of representatives for the conjugacy classes of $\mathrm{GL}_3(\Z/2)$.
+\medskip\medskip
+
+\itemB Let $F$ be a field.
+\begin{enumerate}
+	\itemb Let $A$ and $B$ be two $3 \times 3$ matrices with entries in $F$. Prove $A$ and $B$ are similar if and only if they have the same characteristic polynomial and the same minimal polynomial.
+\itemb Show, by way of an example with justification, that the statement in part (a) would become false if $3 \times 3$ were replaced by $4 \times 4$.
+\end{enumerate}
+
+
+\medskip\medskip
+
+\itemB Give a complete nonredundant list of representatives for the conjugacy classes of $\mathrm{GL}_3(\Z/2)$.
 
 
 
