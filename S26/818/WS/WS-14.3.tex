@@ -2,7 +2,7 @@
 
 
 \usepackage{times}
-\usepackage[margin=.55in]{geometry}
+\usepackage[margin=.25 in]{geometry}
 \usepackage{paralist,amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals}
 \usepackage[outline]{contour}
 \contourlength{.4pt}
@@ -75,7 +75,7 @@
 \end{itemize}
 We write $c_A(x):=c_{t_A}(x)$ and $m_A(x):=m_{t_A}(x)$ for a matrix $A$.
 
-\medskip\medskip
+\
 
 \textsc{Proposition:} Let $F$ be a field, $V$ an $F$-vector space of dimension $n$, and $\phi:V\to V$ a linear transformation. Let $g_1 \ |\  \cdots\  |\ g_k$ be the invariant factors of $\phi$. Then,
 \begin{enumerate}
@@ -84,11 +84,11 @@ We write $c_A(x):=c_{t_A}(x)$ and $m_A(x):=m_{t_A}(x)$ for a matrix $A$.
 %\item $\deg(g_1) + \cdots + \deg(g_k) = n$.
 \end{enumerate}
 
-\medskip
+\
 
 \textsc{Corollary (Cayley-Hamilton):} $m_\phi(x) \  | \ c_\phi(x)$.
 
-\medskip\medskip
+\
 
 \textsc{Theorem:} Let $F$ be a field, $V$ an $F$-vector space of dimension $n$, and $\phi:V\to V$ a linear transformation. For $\lambda\in F$, \  $\lambda \ \text{is an eigenvalue of $\phi$} \  \Longleftrightarrow \ m_\phi(\lambda) = 0 \  \Longleftrightarrow \ c_\phi(\lambda) = 0.$
 	\end{framed}
@@ -104,7 +104,13 @@ We write $c_A(x):=c_{t_A}(x)$ and $m_A(x):=m_{t_A}(x)$ for a matrix $A$.
 	\end{enumerate}
 	
 
-\medskip\medskip
+\solution{\begin{enumerate}
+	\itema $x^2+x-2$
+	\itema $(x-1)(x^2+x-2)$
+	\itema ${\small\begin{bmatrix} 1 & 0 & 0 \\ 0& 0  & 2 \\ 0 & 1 & -1\end{bmatrix}}$
+	\itema $1,-2$
+	\end{enumerate}
+}
 	
 	
 	\itemA Let $F$ be a field, and $A\in \mathrm{Mat}_{n}(F)$ be a nilpotent matrix, meaning that $A^t=0$ for some $t\geq 1$. 
@@ -115,7 +121,14 @@ We write $c_A(x):=c_{t_A}(x)$ and $m_A(x):=m_{t_A}(x)$ for a matrix $A$.
 	\itema Give a complete nonredudant list of representatives of similarity classes of $4\times 4$ nilpotent matrices.
 	\end{enumerate}
 	
-	\medskip\medskip
+\solution{\begin{enumerate}
+	\itema $m_A(x) \ | \ x^t$.
+	\itema From part (a), $m_A(t)$ is a power of $x$. Since the degree of $m_A(x)$ is at most $n$, $m_A(x) = x^ j$ for some $j\leq n$. Then $x^n$ is a multiple of $m_A(x)$, so $A^n=0$.
+	\itema Each invariant factor is a power of $x$ dividing the next. We can have $x^4$, $x | x^3$, $x^2|x^2$, $x | x| x^2$ or $x|x|x|x$.
+	\itema We take the RCF of each list above:
+	\[{\small\begin{bmatrix} 0 & 0 & 0 & 0 \\ 1& 0  & 0 & 0  \\  0 & 1 & 0 & 0 \\ 0& 0  & 1& 0  \\\end{bmatrix}}, {\small\begin{bmatrix} 0 & 0 & 0 & 0 \\ 0& 0  & 0 & 0  \\  0 & 1 & 0 & 0 \\ 0& 0  & 1& 0  \\\end{bmatrix}}, {\small\begin{bmatrix} 0 & 0 & 0 & 0 \\ 1& 0  & 0 & 0  \\  0 & 0 & 0 & 0 \\ 0& 0  & 1& 0  \\\end{bmatrix}}, {\small\begin{bmatrix} 0 & 0 & 0 & 0 \\ 0& 0  & 0 & 0  \\  0 & 0 & 0 & 0 \\ 0& 0  & 1& 0  \\\end{bmatrix}}, {\small\begin{bmatrix} 0 & 0 & 0 & 0 \\ 0& 0  & 0 & 0  \\  0 & 0 & 0 & 0 \\ 0& 0  & 0& 0  \\\end{bmatrix}} \]
+	\end{enumerate}
+}
 	
 	\itemA Let $f(x)=(x^2-1)(x^4-1) \in \mathbb{Q}[x]$.
 	\begin{enumerate}
@@ -123,8 +136,15 @@ We write $c_A(x):=c_{t_A}(x)$ and $m_A(x):=m_{t_A}(x)$ for a matrix $A$.
 	\itema Give a complete nonredudant list of representatives of similarity classes of rational matrices with characteristic polynomial $f$.
 	\end{enumerate}
 	
-	
-\medskip\medskip
+\solution{\begin{enumerate}
+	\itema We must have that the product of the invariant factors is $f(x)$, and each one divides the next. The possibilities are $(x^2-1)(x^4-1)$, $x-1 | (x+1)(x^4-1)$, $x+1 | (x-1)(x^4-1)$, $x^2-1 | x^4-1$.
+		\itema We take the RCF of each list above:
+	\[ {\scriptsize \begin{bmatrix}  0 & 0 & 0 & 0 & 0 &  -1 \\   1 & 0 & 0 & 0 & 0 &  0 \\  0 & 1 & 0 & 0 & 0 &  1 \\  0 & 0 & 1 & 0 & 0 &  0 \\  0 & 0 & 0 & 1 & 0 &  1 \\  0 & 0 & 0 & 0 & 1 &  0 \end{bmatrix}}, {\scriptsize \begin{bmatrix}  1 & 0 & 0 & 0 & 0 &  0 \\   0 & 0 & 0 & 0 & 0 &  1 \\  0 & 1 & 0 & 0 & 0 &  1 \\  0 & 0 & 1 & 0 & 0 &  0 \\ 
+	 0 & 0 & 0 & 1 & 0 & 0 \\  0 & 0 & 0 & 0 & 1 &  -1 \end{bmatrix}}, {\scriptsize \begin{bmatrix}  -1 & 0 & 0 & 0 & 0 &  0 \\   0 & 0 & 0 & 0 & 0 &  -1 \\  0 & 1 & 0 & 0 & 0 &  1 \\  0 & 0 & 1 & 0 & 0 &  0 \\ 
+	 0 & 0 & 0 & 1 & 0 & 0 \\  0 & 0 & 0 & 0 & 1 &  1 \end{bmatrix}}, {\scriptsize \begin{bmatrix}  0 & 1 & 0 & 0 & 0 &  0 \\   1 & 0 & 0 & 0 & 0 &  0 \\  0 & 0 & 0 & 0 & 0 &  1 \\  0 & 0 & 1 & 0 & 0 &  0 \\ 
+	 0 & 0 & 0 & 1 & 0 & 0 \\  0 & 0 & 0 & 0 & 1 &  0 \end{bmatrix}} \]
+	\end{enumerate}
+}
 
 \itemA Proofs:
 \begin{enumerate}
@@ -132,6 +152,15 @@ We write $c_A(x):=c_{t_A}(x)$ and $m_A(x):=m_{t_A}(x)$ for a matrix $A$.
 \itema Prove\footnote{Hint: You did most of the work for (1) in a homework problem.}  the Proposition and deduce Cayley-Hamilton as a Corollary.
 \itema Prove the Theorem.
 \end{enumerate}
+
+\solution{\begin{enumerate}
+\itema Set $A=[\phi]_B^B$. Then for any other basis, the matrix $A'$ of $\phi$ is $PAP^{-1}$ for some $P$. Then $xI-A' = P(xI-A)P^{-1}$, so $\det(xI-A' ) = \det(P) \det(xI-A) \det(P^{-1}) = \det(xI-A)$.
+\itema We showed in the Homework for a diagonal matrix with entries dividing each other, if there is a nonzero entry in each row, then the annihilator of the module presented by that matrix is generated by the last entry, Part (1) is a special case of this. Part (2) follows from the formula for the Smith Normal Form in terms of determinants. 
+\itema Since $m_\phi | c_\phi$, any irreducible factor of $m_\phi$ is also an irreducible factor of $c_\phi$. Conversely, given an irreducible factor of $c_\phi$, it must be an irreducible factor of $g_i$ for some $i$ since $F[x]$ is a UFD, and since $g_i \ | \ m_\phi$, it must be an irreducible factor of $m_\phi$. Thus, the irreducible factors of $m_\phi$ and $c_\phi$ are the same. In particular, $(x - \lambda) | m_\phi$ if and only if $(x - \lambda) | c_\phi$, so $\lambda$ is a root of $m_\phi$ if and only if it is a root of $c_\phi$. 
+
+Now, if $\lambda$ is a root of $c_\phi$, then $\det(\lambda I - A) = 0$, so $\ker(A-\lambda I)\neq 0$. A nonzero vector $v\in \ker(A-\lambda I)$ satisfies $Av=\lambda v$, and thus is an eigenvector. The converse is roughly the same.
+\end{enumerate}
+}
 
 \medskip\medskip
 
