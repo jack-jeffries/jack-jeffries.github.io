@@ -9758,22 +9758,22 @@ $$
 
 
 \begin{theorem}[Jordan Canonical Form Theorem]\label{JCF}
-Let $F$ be a field, let $V$ be a finite dimensional vector space, and let $t: V \to V$ be a linear transformation satisfying the property that the characteristic polynomial $c_t$ of $t$ factors completely into linear factors over $F$. Then there is an ordered basis $B$ for $V$ such that 
-$$[t]_B^B = J_{e_1}(r_1) \oplus \dots \oplus J_{e_s}(r_s)=
+Let $F$ be a field, let $V$ be a finite dimensional vector space, and let $\phi: V \to V$ be a linear transformation satisfying the property that the characteristic polynomial $c_\phi(x)$ of $\phi$ factors completely into linear factors over $F$. Then there is an ordered basis $B$ for $V$ such that 
+$$[\phi]_B^B = J_{e_1}(r_1) \oplus \dots \oplus J_{e_s}(r_s)=
 \begin{bmatrix}
 J_{e_1}(r_1) & 0 & 0 & \cdots & 0 \\
 0 &  J_{e_2}(r_2)  & 0 & \cdots & 0 \\
 \vdots & \vdots & \ddots &  & \vdots \\
 0 & 0 & \cdots & 0 &  J_{e_s}(r_s) \\
 \end{bmatrix}$$ 
-such that each $r_i \in F$ is a root of the characteristic polynomial $c_t$ and each $e_i \geqslant 1$. Moreover, the polynomials $(x - r_1)^{e_1},\ldots,(x - r_s)^{e^s}$ are the elementary divisors of the $F[x]$-module $V_t$, and this expression for $[t]_B^B$ is unique up to ordering of the Jordan blocks.
+such that each $r_i \in F$ is a root of the characteristic polynomial $c_\phi(x)$ and each $e_i \geqslant 1$. Moreover, the polynomials $(x - r_1)^{e_1},\ldots,(x - r_s)^{e^s}$ are the elementary divisors of the $F[x]$-module $V_\phi$, and this expression for $[\phi]_B^B$ is unique up to ordering of the Jordan blocks.
 \end{theorem}
  
  
 \begin{proof}
-The key point is the following: the assumption that $c$ completely factors into linear terms guarantees that the elementary divisors of $c$ are of the form $(x-r)^e$.
+The key point is the following: the assumption that $c_\phi(x)$ completely factors into linear terms guarantees that the elementary divisors of $c_\phi(x)$ are of the form $(x-r)^e$.
 The proof then follows along the lines of \Cref{example JCF}. 
-First write $V_t$ in terms of the elementary divisors, as follows $$V_t\cong F[x]/((x - r_1)^{e_1})\oplus \dots \oplus F[x]/((x - r_s)^{e_s}).$$
+First write $V_\phi$ in terms of the elementary divisors, as follows $$V_\phi\cong F[x]/((x - r_1)^{e_1})\oplus \dots \oplus F[x]/((x - r_s)^{e_s}).$$
 Then pick bases $B'_i=\{\overline{(x-r_i)^{e_i-1}}, \ldots, \overline{x-r_i}, \overline{1}\}$ for each of the summands and set 
 $$B := \bigcup_{i=1}^s \iota_i(B'_i).$$
 All that remains to show is that the matrix representing multiplication by $x$ on each summand is $J_{e_i}(r_i)$. More precisely, we want to compute the matrix representing the $F$-linear transformation $T\!: F[x]/((x-r)^e) \xrightarrow{x} F[x]/((x-r)^e)$ in the basis $B = \{\overline{(x-r)^{e-1}}, \ldots, \overline{x-r}, \overline{1}\}$. Let $T' := T - r \cdot \mathrm{id}$, and note that
@@ -9794,9 +9794,9 @@ Since $T = T' + r \mathrm{id}$, we conclude that $[T]_B^B$ is indeed given by th
 
 
 \begin{definition}
-Let $F$ be a field, $V$ be a finite dimensional vector space, and let $t: V \to V$ be a linear transformation satisfying the property that the characteristic polynomial $c_t$ of $t$ factors completely into linear factors and has elementary divisors $(x - r_1)^{e_1},\ldots,(x - r_s)^{e_s}$. The matrix $J_{e_1}(r_1) \oplus \dots \oplus J_{e_s}(r_s)$ is a \df{Jordan canonical form} (JCF) of $t$. 
+Let $F$ be a field, $V$ be a finite dimensional vector space, and let $\phi: V \to V$ be a linear transformation satisfying the property that the characteristic polynomial $c_\phi$ of $\phi$ factors completely into linear factors and has elementary divisors $(x - r_1)^{e_1},\ldots,(x - r_s)^{e_s}$. The matrix $J_{e_1}(r_1) \oplus \dots \oplus J_{e_s}(r_s)$ is a \df{Jordan canonical form} (JCF) of $\phi$. 
 
-A \df{Jordan canonical form} for $A \in \mathrm{Mat}_n(F)$ is a Jordan canonical form for the linear transformation $t_A\!: F^n \to F^n$ such that $A = [t]_E^E$ in the standard basis $E$ of $F^n$.
+A \df{Jordan canonical form} for $A \in \mathrm{Mat}_n(F)$ is a Jordan canonical form for the linear transformation $t_A\!: F^n \to F^n$ of multiplication by $A$.
 \end{definition}
 
 
@@ -9804,8 +9804,8 @@ The same matrix may fail to have a JCF when interpreted as a matrix with entries
 
 
 \begin{example}
-We revisit the example of the rotation by $60^\circ$ but extend scalars to $\C$. That is, start with a matrix $A$ with $c_A(x) = x^2 - x + 1 = (x- w)(x - \overline{w})$ where $w = \frac{1 + \sqrt{3}i}{2}$. Since the minimal polynomial of $A$ is $m_A=x^2 - x + 1$, we deduced in \Cref{example rotation 60} that the only invariant factor of $A$ is $x^2 - x + 1$, and hence the RCF of $A$ is $C(x^2 - x + 1)$. On the other hand, over $\C$ the polynomial $m_A$ factors, say as $x^2-x+1 = (x-w)(x-\overline{w})$, and thus by the CRT
-$$\C[x]/(x^2-x+1) \cong \C[x]/(x-w) \oplus \C[x]/(x-\overline{w}).$$
+We revisit the example of the rotation by $\pi/3$ but extend scalars to $\C$. That is, start with a matrix $A$ with $c_A(x) = x^2 - x + 1 = (x- w)(x - \overline{w})$ where $w = \frac{1 + \sqrt{3}i}{2}$. Since the minimal polynomial of $A$ is $m_A=x^2 - x + 1$, we deduced in \Cref{example rotation 60} that the only invariant factor of $A$ is $x^2 - x + 1$, and hence the RCF of $A$ is $C(x^2 - x + 1)$. On the other hand, over $\mathbb{C}$ the polynomial $m_A$ factors, say as $x^2-x+1 = (x-w)(x-\overline{w})$, and thus by the CRT
+$$\mathbb{C}[x]/(x^2-x+1) \cong \mathbb{C}[x]/(x-w) \oplus \mathbb{C}[x]/(x-\overline{w}).$$
 Therefore,
 $$A \sim C(x-w) \oplus C(x - \overline{w}) = 
 \begin{bmatrix}
@@ -9818,18 +9818,18 @@ Notice that if we consider $A\in \mathrm{Mat}_2(\mathbb{R})$ then the characteri
 
 
 \begin{definition} 
-Let $F$ be a field, let $V$ be a finite dimensional vector space, and let $t: V \to V$ be a linear transformation. Then $t$ is \df{diagonalizable} if there is a basis $B$ for $V$ such that the matrix $[t]_B^B$ is a diagonal matrix.  Let $A \in \mathrm{Mat}_n(F)$. Then $A$ is \df{diagonalizable} if $A$ is similar to a diagonal matrix.
+Let $F$ be a field, let $V$ be a finite dimensional vector space, and let $\phi: V \to V$ be a linear transformation. Then $\phi$ is \df{diagonalizable} if there is a basis $B$ for $V$ such that the matrix $[\phi]_B^B$ is a diagonal matrix.  Let $A \in \mathrm{Mat}_n(F)$. Then $A$ is \df{diagonalizable} if $A$ is similar to a diagonal matrix.
 \end{definition}
 
 
 \begin{theorem}\label{diagonalization}
-Let $F$ be a field, let $V$ be a finite dimensional vector space, and consider a linear transformation $t: V \to V$. The following are equivalent: 
+Let $F$ be a field, let $V$ be a finite dimensional vector space, and consider a linear transformation $\phi: V \to V$. The following are equivalent: 
 \begin{enumerate}[label=(\arabic*)]
-\item $t$ is diagonalizable.
-\item $t$ has a Jordan canonical form $A$ and $A$ is a diagonal matrix. 
-\item $t$ has a Jordan canonical form and all  elementary divisors are of the form $x - r$ with $r \in F$. 
-\item Each invariant factor of $t$ is a product of linear polynomials with no repeated linear factors. 
-\item The minimal polynomial of $t$ is a product of linear polynomials with no repeated linear factors.
+\item $\phi$ is diagonalizable.
+\item $\phi$ has a Jordan canonical form $A$ and $A$ is a diagonal matrix. 
+\item $\phi$ has a Jordan canonical form and all  elementary divisors are of the form $x - r$ with $r \in F$. 
+\item Each invariant factor of $\phi$ is a product of linear polynomials with no repeated linear factors. 
+\item The minimal polynomial of $\phi$ is a product of linear polynomials with no repeated linear factors.
 \end{enumerate}
 \end{theorem}
 
