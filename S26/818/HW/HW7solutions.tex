@@ -1,0 +1,175 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,enumerate,bbm}
+\usepackage[]{graphicx}
+\usepackage{color,subfigure}
+\definecolor{scarlet}{rgb}{0.81,0,0}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage[all]{xypic}
+\usepackage[colorlinks=true,citecolor=scarlet,linkcolor=scarlet]{hyperref}
+\usepackage{colonequals}
+
+\usepackage{fancyhdr, lastpage}
+\pagestyle{fancy}
+\fancyfoot[C]{{\thepage} of \pageref{LastPage}}
+
+
+
+\DeclareMathOperator{\mSpec}{mSpec}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Ass}{Ass}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\height}{height}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\ann}{ann}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\coker}{coker}
+%\DeclareMathOperator{\ker}{ker}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\M}{M}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\ch}{char}
+\DeclareMathOperator{\Aut}{Aut}
+
+%\DeclareMathOperator{\dim}{dim}
+
+\DeclareMathOperator{\lcm}{lcm}
+
+\def\ra{\rightarrow}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\ov}[1]{\overline{#1}}
+\newcommand{\norm}{\trianglelefteq}
+
+\def\ov#1{\overline{#1}}
+
+
+\title{}
+\date{\vspace{-0.5in}}
+
+\makeatletter
+\g@addto@macro\@floatboxreset\centering
+\makeatother
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+
+\begin{document}
+
+\thispagestyle{fancy}
+\pagestyle{fancy}
+\rhead{UNL $\mid$ Spring 2026}
+\lhead{Introduction to Modern Algebra II}
+
+\vspace{3em}
+
+\begin{center}
+	{\LARGE Problem Set 7 \\}
+	Due Thursday, March 5
+\end{center}
+
+\
+
+\noindent
+{\bf Instructions:}
+You are encouraged to work together on these problems, but each student should hand in their own final draft, written in a way that indicates their individual understanding of the solutions. Never submit something for grading that you do not completely understand. You cannot use any resources besides me, your classmates, and our course notes.
+
+
+I will post the .tex code for these problems for you to use if you wish to type your homework. If you prefer not to type, please  {\em write neatly}. As a matter of good proof writing style, please use complete sentences and correct grammar. You may use any result stated or proven in class or in a homework problem, provided you reference it appropriately by either stating the result or stating its name (e.g. the definition of ring or Lagrange's Theorem). Please do not refer to theorems by their number in the course notes, as that can change.
+
+
+\
+
+\begin{problem}
+Let $F$ be a field, let $V$ and $W$ be vector spaces over $F$, let $a\!: V \to V$ and $b\!:W \to W$ be linear transformations and let $V_a$ and $W_b$ be the $F[x]$-modules they determine. 
+\begin{enumerate}[a)]
+\item Show that a function $g: V_a \to W_b$ is an $F[x]$-module homomorphism if and only if 
+\begin{enumerate}[(1)]
+\item $g: V \to W$ is a linear transformation and 
+\item $g \circ a = b \circ g$.
+\end{enumerate} 
+
+\begin{proof}
+Suppose that $F$ is a field, $V,W$ are vector spaces over $F$, $a\!: V \to V$ and $b\!: W \to W$ are linear transformations, 
+%$V_a$ denote the $F[x]$-module that is the vector space $V$ 
+%with the unique $F[x]$-action satisfying $xv = a(v)$ for all $v \in V$. 
+and $g: V_a \ra W_b$ is a function.
+
+$(\Rightarrow)$:  
+Suppose that $g$ is an $F[x]$-module homomorphism.
+Then for all $f \in F[x]$ and $v,v' \in V$, we have
+$g(v+v')=g(v)+g(v')$ and $g(fv)=fg(v)$. Considering the first of these identities together with the second one applied in the particular case where $f\in F$ is a constant polynomial shows that  $g$ is also an $F$-module homomorphism, so (1) holds.
+
+Moreover, using the definition of the $F[x]$-module action on $V_a$ and $W_b$, we have
+$$(g \circ a)(v) = g(a(v)) \stackrel{V_a~action}{=} 
+g(x \cdot v) \stackrel{g~hom}{=} xg(v)
+\stackrel{W_b~action}{=} b(g(v)) = (b \circ g)(v).$$
+Therefore (2) holds.
+
+$(\Leftarrow)$:  
+Suppose that (1) and (2) hold.
+Let $p$ be any element of $F[x]$, and let $v,v' \in V_a$. We can write 
+$$p(x)=f_nx^n + \cdots + f_0=\sum_{i=0}^n f_ix^i$$
+for some $n \geqslant 0$ and $f_n,\ldots,f_0 \in F$.  Property (2) and induction on $i$ gives
+$g \circ a^i = b^i \circ g$ for all $i \geqslant 1$; denote this
+property as (2'). Now we check that $g$ is an $F[x]$-module homomorphism:
+\begin{eqnarray*}
+g(v+v') &=& g(v)+g(v') \text{ by (1)} \\ \\
+g(p(x)v) &= & g\left(\left(\sum_{i=0}^n f_i x^i\right)v\right)
+\stackrel{V_a~action}{=}
+ g\left(\sum_{i=0}^n f_i a^i(v)\right) \stackrel{(i)}{=}
+\sum_{i=0}^n f_i g(a^i(v)))\\
+&\stackrel{(2')}{=}&\sum_{i=0}^n f_i b^i(g(v))) \stackrel{W_b~action}{=}
+\sum_{i=0}^n f_ix^ig(v)= p(x)g(v).
+\end{eqnarray*}
+Hence $g$ is an $F[x]$-module homomorphism.
+\end{proof}
+
+\item Suppose that $V = F^m = W$, and let $A, B \in \M_m(F)$ be the matrices representing the linear transformations $a$ and $b$, respectively, in the standard basis of $F^m$. Show that there is an $F[x]$-module isomorphism $V_a \cong W_b$ if and only if the matrices $A$ and $B$ are similar.
+
+\begin{proof}
+Using part (a), a function $g: V_a \to W_b$ is an $F[x]$-module homomorphism if and only if it is $F$-linear and satisfies $g \circ a = b \circ g$ for some $g$. We showed in class that there is an isomorphism $\Hom_F(V, W) \cong \M_m(F)$; more precisely, we showed that the linear map $g\!:V_a \to W_b$ is $F$-linear if and only if, fixing the standard basis of $V_a = W_b = F^m$, $g$ can be represented by a matrix $P$ such that $g(v)=Pv$ for all $v\in V_a$.
+
+Furthermore, $g$ is an isomorphism if and only if $P$ is invertible. If $g$ is an isomorphism, then $g \circ a =  b \circ g$ holds and thus $PA=BP \iff B=PAP^{-1}$, so $A$ and $B$ being similar. Conversely, if $A$ and $B$ being similar, then there exists some invertible matrix $P$ such that $PA=BP \iff B=PAP^{-1}$. The map $g\!: V \to W$ defined by $g(v) = Pv$ is an isomorphism, since $P$ is invertible, and $PA=BP$ implies $g \circ a =  b \circ g$. We conclude that $g$ gives an isomorphism $V_a \cong W_b$.
+\end{proof}
+
+\end{enumerate}
+\end{problem}
+
+\
+
+\begin{problem}
+	Determine, with justification, if the following two matrices with complex entries are similar.
+	
+	$$A = \begin{bmatrix}
+		0 & -4 & 0 & 0 \\
+		1 & 4 & 0 & 0 \\
+		0 & 0 & 0 & -4 \\
+		0 & 0 & 1 & 4
+	\end{bmatrix} \textrm{ and } B = \begin{bmatrix}
+		2 & 0 & 0 & 0 \\ 0 & 2 & 0 & 0 \\ 0 & 0 & 2 & 0 \\ 0 & 0 & 1 & 2
+	\end{bmatrix}.$$ 
+\end{problem}
+
+\begin{proof}
+Recall that two matrices are similar if and only if they have the same invariant factors. Note that $A$ is in rational canonical form corresponding to two companion matrices of $x^2-4x+4$. In particular, the invariant factors of $A$ are  $(x-2)^2 | (x-2)^2$. Now we compute the invariant factors for $B$. To do this, we compute the Smith Normal Form of \[ xI-B = \begin{bmatrix} 		x-2 & 0 & 0 & 0 \\ 0 & x-2 & 0 & 0 \\ 0 & 0 & x-2 & 0 \\ 0 & 0 & -1 & x-2\end{bmatrix}.\]
+After a row swap and a column swap, we obtain
+ \[\begin{bmatrix} 		-1 & 0 & 0 & x-2 \\ 0 & x-2 & 0 & 0 \\ x-2 & 0 & 0 & 0 \\ 0 & 0 & x-2 & 0 \end{bmatrix}.\]
+Negating the first row, then adding multiples of the first row and column to other rows gives
+ \[\begin{bmatrix} 		1 & 0 & 0 & 0 \\ 0 & x-2 & 0 & 0 \\ 0 & 0 & 0 & (x-2)^2 \\ 0 & 0 & x-2 & 0 \end{bmatrix}.\]
+ After another row and column swap, we obtain the Smith Normal Form
+ \[\begin{bmatrix} 		1 & 0 & 0 & 0 \\ 0 & x-2 & 0 & 0 \\ 0 & 0 & x-2 & 0 \\ 0 & 0 & 0 & (x-2)^2 \end{bmatrix}.\]
+ In particular, the list of invariant factors is $x-2 | x-2 | (x-2)^2$, so $B$ is not similar to $A$.
+\end{proof}
+
+
+\end{document}

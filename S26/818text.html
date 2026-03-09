@@ -182,7 +182,8 @@
 <li><a href="#ch-14-title">Canonical forms for endomorphisms</a></li>
 <ol><li><a href="#sec-14-1-heading">The module associated to an \(F\)-linear endomorphism</a></li>
 <li><a href="#sec-14-2-heading">Rational canonical form</a></li>
-<li><a href="#sec-14-3-title">The Cayley-Hamilton Theorem</a></li>
+<li><a href="#sec-14-3-heading">The Cayley-Hamilton Theorem</a></li>
+<li><a href="#sec-14-4-heading">Jordan canonical form</a></li>
 </ol>
 
 
@@ -4110,7 +4111,7 @@ On obvious case where the structure theory of modules over PIDs applies is in th
   </p>
 
   <section id="lem-14-2-1" class="callout lemma" aria-labelledby="lem-14-2-1-title">
-    <h3 id="lem-14-2-1-title">Lemma 14.2.1</h3>
+    <h3 id="lem-14-2-1-heading">Lemma 14.2.1</h3>
     <div class="callout-body">
       <p>
         For a monic polynomial \(f(x) = x^n + a_{n-1}x^{n-1} + \cdots a_1 x + a_0\) with \(n \geqslant 1\), the classes of \(1, x, \dots, x^{n-1}\) form a basis for \(F[x]/(f(x))\) regarded as an \(F\)-vector space. Relative to this basis, the \(F\)-linear operator \(\mu_x: F[x]/(f(x)) \to F[x]/(f(x))\) defined by \(\mu_x(v)=xv\) is given by the following matrix:
@@ -4276,7 +4277,7 @@ which we leave for you to verify. Then the result follows by the uniqueness stat
 </section>
 
 <section id="sec-14-3" class="section" aria-labelledby="sec-14-3-title">
-  <h2 id="sec-14-3-title">14.3 The Cayley-Hamilton Theorem</h2>
+  <h2 id="sec-14-3-heading">14.3 The Cayley-Hamilton Theorem</h2>
 
   <section id="def-14-3-1" class="callout definition" aria-labelledby="def-14-3-1-title">
     <h3 id="def-14-3-1-title">Definition 14.3.1</h3>
@@ -4497,7 +4498,7 @@ which we leave for you to verify. Then the result follows by the uniqueness stat
     <h3 id="proof-thm-14-3-14-title">Proof of Theorem 14.3.14</h3>
     <div class="callout-body">
       <p>
-        By the Cayley-Hamilton Theorem, \(m_\phi|c_\phi\), and thus \((3) \Rightarrow (2)\). On the other hand, by \(\Cref{lemma ct divides multiple of mt}\) we know that \(c_\phi  \mid m_\phi^k\), so if \(c_\phi(\lambda) = 0\) then \(m_\phi(\lambda)^k=0\), and since we are over a field, we conclude that \(m_\phi(\lambda) = 0\). This shows \((2) \Rightarrow (3)\).
+        By the Cayley-Hamilton Theorem, \(m_\phi|c_\phi\), and thus \((3) \Rightarrow (2)\). On the other hand, we know that \(c_\phi  \mid m_\phi^k\), so if \(c_\phi(\lambda) = 0\) then \(m_\phi(\lambda)^k=0\), and since we are over a field, we conclude that \(m_\phi(\lambda) = 0\). This shows \((2) \Rightarrow (3)\).
       </p>
 
       <p>
@@ -4580,6 +4581,253 @@ which we leave for you to verify. Then the result follows by the uniqueness stat
 </section>
 
 
+
+<section id="sec-14-4" class="section" aria-labelledby="sec-14-4-title">
+  <h2 id="sec-14-4-heading">14.4 Jordan canonical form</h2>
+
+  <p>
+    We now turn to the Jordan canonical form. To motivate it, let us do an example.
+  </p>
+
+  <section id="ex-14-4-1" class="callout example" aria-labelledby="ex-14-4-1-title">
+    <h3 id="ex-14-4-1-title">Example 14.4.1</h3>
+    <div class="callout-body">
+      <p>
+        Let us consider
+      </p>
+      \[
+        A =
+        \begin{bmatrix}
+        0 & 0 & 8 \\
+        1 & 0 & -12 \\
+        0 & 0 & 6
+        \end{bmatrix}
+        =C((x-2)^3)\in \mathrm{Mat}_3(\mathbb{Q}).
+      \]
+      <p>
+        This means we can interpret this matrix as arising from the linear transformation \(\ell_x\) on
+      </p>
+      \[
+        V = \mathbb{Q}[x]/(x-2)^3
+      \]
+      <p>
+        given by multiplication by \(x\). Recall that the basis that gives the matrix \(A\) is
+      </p>
+      \[
+        B=\{\overline{1}, \overline{x}, \overline{x^2}\}.
+      \]
+      <p>
+        But notice that
+      </p>
+      \[
+        B' = \{\overline{(x-2)^2}, \overline{x-2}, \overline{1}\}
+      \]
+      <p>
+        is also a basis of \(V\), and indeed seems like a more pleasing one.
+      </p>
+      <p>
+        Let us calculate what the operator \(T\) does to this alternative basis. We could work this out by brute force, but a cleaner way is to first compute what the operator \(T' = T -2 \mathrm{id}_V\) does. It is clear that \(T'\) is multiplication by \(x-2\), and hence \(T'\) sends each basis element to the previous one, except for the first which is sent to \(0\). That is the matrix of \(T'\) is
+      </p>
+      \[
+        \begin{bmatrix}
+        0 & 1 & 0 \\
+        0 & 0 & 1 \\
+        0 & 0 & 0
+        \end{bmatrix}
+      \]
+      <p>
+        and hence the matrix for \(T\) is \(T' + 2 I_3\):
+      </p>
+      \[
+        J_3(2) :=
+        \begin{bmatrix}
+        2 & 1 & 0 \\
+        0 & 2 & 1 \\
+        0 & 0 & 2
+        \end{bmatrix}.
+      \]
+      <p>
+        This is a <em>Jordan Block</em>.
+      </p>
+    </div>
+  </section>
+
+  <section id="def-14-4-2" class="callout definition" aria-labelledby="def-14-4-2-title">
+    <h3 id="def-14-4-2-title">Definition 14.4.2</h3>
+    <div class="callout-body">
+      <p>
+        Let \(F\) be a field, let \(n > 0\), and let \(r \in F\). The <strong>Jordan block</strong> \(J_n(r)\) is the \(n \times n\) matrix over \(F\) with entries satisfying the following:
+      </p>
+      \[
+        a_{ij} = \begin{cases}
+        r & \textrm{if } i=j \\
+        1 & \textrm{if } j=i+1 \\
+        0 & \textrm{otherwise}.
+        \end{cases}
+      \]
+      <p>
+        Thus a Jordan block looks like
+      </p>
+      \[
+        \begin{bmatrix}
+        r & 1 &  \\
+        & r & \ddots \\
+        & & \ddots & \ddots\\
+        & & & r & 1\\
+        &&&& r
+        \end{bmatrix}.
+      \]
+    </div>
+  </section>
+
+  <section id="thm-14-4-3" class="callout theorem" aria-labelledby="thm-14-4-3-title">
+    <h3 id="thm-14-4-3-title">Theorem 14.4.3 (Jordan Canonical Form Theorem)</h3>
+    <div class="callout-body">
+      <p>
+        Let \(F\) be a field, let \(V\) be a finite dimensional vector space, and let \(\phi: V \to V\) be a linear transformation satisfying the property that the characteristic polynomial \(c_\phi(x)\) of \(\phi\) factors completely into linear factors over \(F\). Then there is an ordered basis \(B\) for \(V\) such that
+      </p>
+      \[
+        [\phi]_B^B = J_{e_1}(r_1) \oplus \dots \oplus J_{e_s}(r_s)=
+        \begin{bmatrix}
+        J_{e_1}(r_1) & 0 & 0 & \cdots & 0 \\
+        0 &  J_{e_2}(r_2)  & 0 & \cdots & 0 \\
+        \vdots & \vdots & \ddots &  & \vdots \\
+        0 & 0 & \cdots & 0 &  J_{e_s}(r_s)
+        \end{bmatrix}
+      \]
+      <p>
+        such that each \(r_i \in F\) is a root of the characteristic polynomial \(c_\phi(x)\) and each \(e_i \geqslant 1\). Moreover, the polynomials \((x - r_1)^{e_1},\ldots,(x - r_s)^{e_s}\) are the elementary divisors of the \(F[x]\)-module \(V_\phi\), and this expression for \([\phi]_B^B\) is unique up to ordering of the Jordan blocks.
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-thm-14-4-3" class="callout proof" aria-labelledby="proof-thm-14-4-3-title">
+    <h3 id="proof-thm-14-4-3-title">Proof of Theorem 14.4.3</h3>
+    <div class="callout-body">
+      <p>
+        The key point is the following: the assumption that \(c_\phi(x)\) completely factors into linear terms guarantees that the elementary divisors of \(c_\phi(x)\) are of the form \((x-r)^e\).
+        The proof then follows along the lines of Example 14.4.1.
+        First write \(V_\phi\) in terms of the elementary divisors, as follows
+      </p>
+      \[
+        V_\phi\cong F[x]/((x - r_1)^{e_1})\oplus \dots \oplus F[x]/((x - r_s)^{e_s}).
+      \]
+      <p>
+        Then pick bases \(B'_i=\{\overline{(x-r_i)^{e_i-1}}, \ldots, \overline{x-r_i}, \overline{1}\}\) for each of the summands and set
+      </p>
+      \[
+        B := \bigcup_{i=1}^s \iota_i(B'_i).
+      \]
+      <p>
+        All that remains to show is that the matrix representing multiplication by \(x\) on each summand is \(J_{e_i}(r_i)\). More precisely, we want to compute the matrix representing the \(F\)-linear transformation \(T\!: F[x]/((x-r)^e) \xrightarrow{x} F[x]/((x-r)^e)\) in the basis \(B = \{\overline{(x-r)^{e-1}}, \ldots, \overline{x-r}, \overline{1}\}\). Let \(T' := T - r \cdot \mathrm{id}\), and note that
+      </p>
+      \[
+        T'(\overline{(x-r)^{e-1}}) = 0
+      \]
+      <p>
+        and
+      </p>
+      \[
+        T'(\overline{(x-r)^{i}}) = \overline{(x-r)^{i+1}} \textrm{ for all } i < e-1.
+      \]
+      <p>
+        Thus the first column of \([T']_B^B\) is zero, and each of the remaining ordered basis vectors is taken to the previous basis vector, so that
+      </p>
+      \[
+        [T']_B^B = \begin{bmatrix}
+        0 & 1 &  \\
+        & 0 & \ddots \\
+        & & \ddots & \ddots\\
+        & & & 0 & 1\\
+        &&&& 0
+        \end{bmatrix}.
+      \]
+      <p>
+        Since \(T = T' + r \mathrm{id}\), we conclude that \([T]_B^B\) is indeed given by the Jordan block \(J_{e}(r)\), as desired.
+      </p>
+    </div>
+  </section>
+
+  <section id="def-14-4-4" class="callout definition" aria-labelledby="def-14-4-4-title">
+    <h3 id="def-14-4-4-title">Definition 14.4.4</h3>
+    <div class="callout-body">
+      <p>
+        Let \(F\) be a field, \(V\) be a finite dimensional vector space, and let \(\phi: V \to V\) be a linear transformation satisfying the property that the characteristic polynomial \(c_\phi\) of \(\phi\) factors completely into linear factors and has elementary divisors \((x - r_1)^{e_1},\ldots,(x - r_s)^{e_s}\). The matrix \(J_{e_1}(r_1) \oplus \dots \oplus J_{e_s}(r_s)\) is a <strong>Jordan canonical form</strong> (JCF) of \(\phi\).
+      </p>
+      <p>
+        A <strong>Jordan canonical form</strong> for \(A \in \mathrm{Mat}_n(F)\) is a Jordan canonical form for the linear transformation \(t_A\!: F^n \to F^n\) of multiplication by \(A\).
+      </p>
+    </div>
+  </section>
+
+  <p>
+    The same matrix may fail to have a JCF when interpreted as a matrix with entries in a smaller field while it has a JCF when interpreted as a matrix with entries in a larger field.
+  </p>
+
+  <section id="ex-14-4-5" class="callout example" aria-labelledby="ex-14-4-5-title">
+    <h3 id="ex-14-4-5-title">Example 14.4.5</h3>
+    <div class="callout-body">
+      <p>
+        We revisit the example of the rotation by \(\pi/3\) but extend scalars to \(\mathbb{C}\). That is, start with a matrix \(A\) with \(c_A(x) = x^2 - x + 1 = (x- w)(x - \overline{w})\) where \(w = \frac{1 + \sqrt{3}i}{2}\). Since the minimal polynomial of \(A\) is \(m_A=x^2 - x + 1\), we deduced earlier that the only invariant factor of \(A\) is \(x^2 - x + 1\), and hence the RCF of \(A\) is \(C(x^2 - x + 1)\). On the other hand, over \(\mathbb{C}\) the polynomial \(m_A\) factors, say as \(x^2-x+1 = (x-w)(x-\overline{w})\), and thus by the CRT
+      </p>
+      \[
+        \mathbb{C}[x]/(x^2-x+1) \cong \mathbb{C}[x]/(x-w) \oplus \mathbb{C}[x]/(x-\overline{w}).
+      \]
+      <p>
+        Therefore,
+      </p>
+      \[
+        A \sim C(x-w) \oplus C(x - \overline{w}) =
+        \begin{bmatrix}
+        w & 0 \\
+        0 & \overline{w} \\
+        \end{bmatrix}.
+      \]
+      <p>
+        The latter matrix is the JCF of \(A\), and in this case the JCF is a diagonal matrix.
+        Notice that if we consider \(A\in \mathrm{Mat}_2(\mathbb{R})\) then the characteristic polynomials fails to factor into linear factors. Hence \(A\in \mathrm{Mat}_2(\mathbb{R})\) does not have a JCF.
+      </p>
+    </div>
+  </section>
+
+  <section id="def-14-4-6" class="callout definition" aria-labelledby="def-14-4-6-title">
+    <h3 id="def-14-4-6-title">Definition 14.4.6</h3>
+    <div class="callout-body">
+      <p>
+        Let \(F\) be a field, let \(V\) be a finite dimensional vector space, and let \(\phi: V \to V\) be a linear transformation. Then \(\phi\) is <strong>diagonalizable</strong> if there is a basis \(B\) for \(V\) such that the matrix \([\phi]_B^B\) is a diagonal matrix. Let \(A \in \mathrm{Mat}_n(F)\). Then \(A\) is <strong>diagonalizable</strong> if \(A\) is similar to a diagonal matrix.
+      </p>
+    </div>
+  </section>
+
+  <section id="thm-14-4-7" class="callout theorem" aria-labelledby="thm-14-4-7-title">
+    <h3 id="thm-14-4-7-title">Theorem 14.4.7</h3>
+    <div class="callout-body">
+      <p>
+        Let \(F\) be a field, let \(V\) be a finite dimensional vector space, and consider a linear transformation \(\phi: V \to V\). The following are equivalent:
+      </p>
+      <ol>
+        <li>\(\phi\) is diagonalizable.</li>
+        <li>\(\phi\) has a Jordan canonical form \(A\) and \(A\) is a diagonal matrix.</li>
+        <li>\(\phi\) has a Jordan canonical form and all elementary divisors are of the form \(x - r\) with \(r \in F\).</li>
+        <li>Each invariant factor of \(\phi\) is a product of linear polynomials with no repeated linear factors.</li>
+        <li>The minimal polynomial of \(\phi\) is a product of linear polynomials with no repeated linear factors.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="proof-thm-14-4-7" class="callout proof" aria-labelledby="proof-thm-14-4-7-title">
+    <h3 id="proof-thm-14-4-7-title">Proof of Theorem 14.4.7</h3>
+    <div class="callout-body">
+      <p>
+        Note that a diagonal matrix is an example of a matrix in JCF. By the uniqueness of the JCF, \((1)\) holds if and only if \((2)\) holds.
+        Moreover, the equivalence of \((2)\) and \((3)\) follows by definition.
+        A matrix has a JCF if and only if its invariant factors factor completely. In this case, the elementary divisors are constructed by decomposing each invariant factor into powers of distinct linear polynomials. This gives that \((3)\) holds if and only if \((4)\) holds.
+        Finally, since the minimal polynomial is one of the invariant factors and every other invariant factor divides it, we get the equivalence between \((4)\) and \((5)\).
+      </p>
+    </div>
+  </section>
+
+</section>
 
 
 </main>

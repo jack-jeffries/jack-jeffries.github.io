@@ -101,66 +101,57 @@ where $R=\Q[x]$.
 \begin{enumerate}[(a)]
 \item Determine the Smith normal form for $A$.
 
-\begin{proof}
-First, we claim that $\ann_R(R/(d))=(d)$. If $r\in(d)$ then $r(x+(d))=rx+(d)=0+(d)$ so $(d)\subseteq \ann_R(R/(d))$. Conversely, if $r\in \ann_R(R/(d))$ then $r(1+(d))=0+(d)$, thus $r\in (d)$. This shows that $\ann_R(R/(d))=(d)$, as claimed.
 
-We claim that if the free rank of $M$ is $r$ and the invariant factors of $M$ are $d_1\mid d_2\mid \ldots\mid d_k$ then 
-$$\ann_R(M)=
-\begin{cases}
-(0) & \text{ if } r>0\\
- (d_k) & \text{ if } r=0. \qedhere
-\end{cases}$$
-Notice that $\ann_R(R)=(0)$, since the only element that kills $1$ is $0$. By Problem 6 we have
-$$\ann_R \left(R^r\oplus R/(d_1)\oplus \cdots \oplus  R/(d_k)\right)=
-\begin{cases}
-\ann_R(R)\cap \ann_R(R/(d_1))\cap \ldots \cap \ann_R(R/(d_k)), r>0\\
-\ann_R(R/(d_1))\cap \ldots \cap \ann_R(R/(d_k)),r=0
-\end{cases}$$
 
-$$
-=
-\begin{cases}
-(0)\cap (d_1)\cap \ldots \cap (d_k) & \text{ if } r>0\\
-(d_1)\cap \ldots \cap (d_k) & \text{ if } r=0
-\end{cases}
-\quad = \quad
-\begin{cases}
-(0) & \text{ if } r>0\\
- (d_k) & \text{ if } r=0
-\end{cases}
-$$
+
+
+\begin{proof}[Solution]
+$
+\begin{pmatrix}x&1&0\\1&x&-3\\0&0&x-1\end{pmatrix}
+\stackrel{(1)}{\ra}
+\begin{pmatrix}1&x&0\\x&1&-3\\0&0&x-1\end{pmatrix}
+\stackrel{(2)}{\ra}
+\begin{pmatrix}1&0&0\\x&-x^2+1&-3\\0&0&x-1\end{pmatrix}
+$
+
+$
+\stackrel{(3)}{\ra}
+\begin{pmatrix}1&0&0\\0&-x^2+1&-3\\0&0&x-1\end{pmatrix}
+\stackrel{(4)}{\ra}
+\begin{pmatrix}1&0&0\\0&-3&-x^2+1\\0&x-1&0\end{pmatrix}
+$
+
+$
+\stackrel{(5)}{\ra}
+\begin{pmatrix}1&0&0\\0&-3&0\\0&x-1&-\frac{1}{3}(x^2-1)(x-1)\end{pmatrix}
+\stackrel{(6)}{\ra}
+\begin{pmatrix}1&0&0\\0&-3&0\\0&0&-\frac{1}{3}(x^2-1)(x-1)\end{pmatrix}$
+
+$\stackrel{(7)}{\ra}
+\begin{pmatrix}1&0&0\\0&1&0\\0&0&(x^2-1)(x-1)\end{pmatrix}$,
+
+where 
+
+(1) is a permutation swapping columns 1 and 2,\\
+(2) adds $-x$ times column 1 to column 2,\\
+(3) adds $-x$ times row 1 to row 2,\\
+(4) is a permutation swapping columns 2 and 3,\\
+(5) adds $-\frac{1}{3}(x^2-1)$ times column 2 to column 3,\\
+(6) adds $-\frac{1}{3}(-x+1)$ times row 2 to row 3,\\
+(7) multiplies row 2 by the unit $-\frac{1}{3}$ in $\R$ and multiplies row 3 by the unit $-3$ in $\R$.
 \end{proof}
 
-\item Determine a generator for the principal ideal $\ann_R(M)$ in terms of the elementary divisors and the free rank of $M$.
+\item Determine the representatives in the isomorphism class of the module presented by $A$ which are written in invariant factor form and in elementary divisor form.
 
-\begin{proof}
-We will show if the free rank of $M$ is $r$ and the elementary divisors are  $p_1^{e_1},\ldots, p_s^{e_s}$ then
-$$\ann_R(M)= \begin{cases}
-(0) & \text{ if } r>0\\
-(\rm{lcm}(p_1^{e_1},\ldots,p_s^{e_s})) & \text{ if } r=0. \qedhere
-\end{cases}$$
+\begin{proof}[Solution]
+Since the unique invariant factor of $A$ is $(x^2-1)(x-1)$ from the SNF, 
+ the invariant factor decomposition of the $\R[x]$-module
+presented by $A$ is $$\R[x]/((x^2-1)(x-1)).$$
 
-
-As in a), we have
-$$\ann_R \left(R^r\oplus R/(p_1^{e_1})\oplus \dots \oplus  R/(p_s^{e_s})\right)
-=
-\begin{cases}
-(0)\cap (p_1^{e_1})\cap \ldots \cap (p_s^{e_s}) & \text{ if } r>0\\
- (p_1^{e_1})\cap \ldots \cap (p_s^{e_s})& \text{ if } r=0.
-\end{cases}$$
-The claim follows if we show that $(p_1^{e_1})\cap \ldots \cap (p_s^{e_s})=(\rm{lcm}(p_1^{e_1},\ldots,p_s^{e_s}))$. Indeed:
-
-$(\subseteq)$ If $r \in (p_1^{e_1})\cap \ldots \cap (p_s^{e_s})$, then $r \in (p_i^{e_i})$ for all $i$, and in particular $p_i^{e_i} | r$ for all $i$. Therefore, $\rm{lcm}(p_1^{e_1},\ldots,p_s^{e_s}) | r$, and thus $r \in (\rm{lcm}(p_1^{e_1},\ldots,p_s^{e_s}))$.
-
-$(\supseteq)$ Suppose that $r \in (\rm{lcm}(p_1^{e_1},\ldots,p_s^{e_s}))$. Thus $p_i^{e_i} | \rm{lcm}(p_1^{e_1},\ldots,p_s^{e_s}) | r$, which by transitivity implies that $p_i^{e_i} | r$, and $r \in (p_i^{e_i})$ for all $i$.
+The elementary divisor decomposition is obtained from the above by using the CRT. It is the last module in the following isomorphism
+$$\R[x]/((x^2-1)(x-1))=\R[x]/((x+1)(x-1)^2)\cong \R[x]/(x+1)\oplus \R[x]/((x-1)^2).\qedhere$$
 \end{proof}
-\end{enumerate}
 \end{problem}
-
-
-
-
-\
 
 
 \begin{problem} Let $R$ be a domain. An $R$-module $M$ is \textbf{torsionfree} if for $r\in R$ and $m\in M$, we have $rm=0$ implies $r=0$ or $m=0$.
