@@ -104,7 +104,7 @@ There are multiple possibilities. One is
 \end{proof}
 \item Using your transformations from (a), find invertible matrices $P,Q$ with entries in $R$ such that $PAQ=A'$.
 \begin{proof} We recall that applying an ERO to $M$ is the same as replacing $M$ by $EM$, where $E$ is the matrix obtained by applying the same operation to the identity matrix; the same holds for a column operation except with $ME$. Thus, let 
-\[ E_{i} = \begin{bmatrix} [2] & 0 \\ 0 & [1] \end{bmatrix}, \ E_{ii} = \begin{bmatrix} [1] & -x \\ 0 & [1] \end{bmatrix}, \ \text{and} \  E_{iii}= \begin{bmatrix} [1] & x+[1] \\ 0 & [1] \end{bmatrix}.\]
+\[ E_{i} = \begin{bmatrix} [2] & 0 \\ 0 & [1] \end{bmatrix}, \ E_{ii} = \begin{bmatrix} [1] &0 \\  -x  & [1] \end{bmatrix}, \ \text{and} \  E_{iii}= \begin{bmatrix} [1] & x+[1] \\ 0 & [1] \end{bmatrix}.\]
 We then have $A' = E_{ii} E_{i} A E_{iii}$, so we can take
 \[ P = E_{ii} E_{i} = \begin{bmatrix} [2] & 0 \\ x & [1] \end{bmatrix}, \ \text{and} \ Q=E_{iii}.\qedhere\]
 \end{proof}
@@ -118,7 +118,7 @@ We reinterpret each of our elementary matrices as a change of basis matrix.
 \begin{enumerate}[(i)]
 \item  $E_i$ is the change of basis matrix $[\mathrm{id}_{R^2}]_{D'}^D$ where $D'=\{[2] d_1, d_2\}$. Setting $D'=B_0= \{e_1,e_2\}$, we have that $D=C_1$ is given by $\{2e_1,e_2\}$.
 \item $E_{ii}$ is the change of basis matrix $[\mathrm{id}_{R^2}]_{D'}^D$ where $D'=\{d_1, d_2 -x d_1\}$. Setting $D'=C_1 = \{[2]e_1,e_2\}$, we have that $D=C_2 = \{[2]e_1, e_2 + [2]x e_1\}$.
-\item $E_{iii}$ is the change of basis matrix $[\mathrm{id}_{R^2}]_{D'}^D$ where $D'=\{d_1 + (x+[1])d_2, d_2\}$. Setting $D=B_0 = \{e_1, e_2\}$, we have that $D'=B_1=\{ e_1 + (x+[1]) e_2, e_2\}$. 
+\item $E_{iii}$ is the change of basis matrix $[\mathrm{id}_{R^2}]_{D'}^D$ where $D'=\{d_1, (x+[1])d_1 + d_2\}$. Setting $D=B_0 = \{e_1, e_2\}$, we have that $D'=B_1=\{ e_1 , (x+[1]) e_1 + e_2\}$. 
 \end{enumerate}
 Thus, 
 \[ B = \left\{ \begin{bmatrix} [1] \\ x+[1] \end{bmatrix} , \begin{bmatrix} [0] \\ [1] \end{bmatrix}\right\} \quad \text{and} \quad C= \left\{ \begin{bmatrix} [2] \\ [0] \end{bmatrix} , \begin{bmatrix} [2]x \\ [1] \end{bmatrix}\right\}.\qedhere\]
