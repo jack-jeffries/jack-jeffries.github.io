@@ -9949,7 +9949,7 @@ First, note that $(p)$ is a nonzero principal ideal in $F[x]$. Recall that over 
 
 We regard $L$ as a field extension of $F$ via the canonical map $F \to L$ sending $f \in F$ to the coset of the constant polynomial $f$. This map is not technically an inclusion map, but since it is an injective map we can pretend that it is an inclusion by identifying $F$ with its image under this map. Note that injectivity of this map follows from the fact that $(p)$ is a proper ideal of $F[x]$, and thus every nonzero constant $a \in F$ is taken to a nonzero element in $L = F[x]/(p)$. 
 
-You showed in Problem Set 6 that if $\deg(p) = n$, then the classes of $1, x, \dots, x^{n-1}$ modulo $(p)$ form basis for $L$ regarded as an $F$-vector space. Therefore, $[L:F]=\deg(p)$. Moreover, we can extend the inclusion $F\subseteq L$ to an inclusion $F[x]\subseteq L[x]$, and thus we can regard $p$ as belonging to $L[x]$. Setting $\overline{x}=x+(p)\in L$, the element $\overline{x}$ is a root of $p(x)\in L[x]$ since 
+You showed in the homework that if $\deg(p) = n$, then the classes of $1, x, \dots, x^{n-1}$ modulo $(p)$ form basis for $L$ regarded as an $F$-vector space. Therefore, $[L:F]=\deg(p)$. Moreover, we can extend the inclusion $F\subseteq L$ to an inclusion $F[x]\subseteq L[x]$, and thus we can regard $p$ as belonging to $L[x]$. Setting $\overline{x}=x+(p)\in L$, the element $\overline{x}$ is a root of $p(x)\in L[x]$ since 
 $$p(\bar{x})=p(x)+ (p(x))=0_L.\qedhere$$
 \end{proof}
 
@@ -9985,7 +9985,7 @@ Note that any subring of $L$ containing $F$ and $\alpha$ must contain all produc
 
 
 
-Here is another way to describe this field $F(\alpha)$. We leave the proof for Problem Set 7.
+Here is another way to describe this field $F(\alpha)$. We leave the proof for the exercises.
 
 \begin{lemma}\label{lemma description F(a)}
  If $F \subseteq L$ is a field extension and $\alpha \in L$, the field $F(\alpha)$ is the fraction field of $F[\alpha]=\{f(\alpha)\mid f\in F[x]\}$: more precisely,
@@ -10023,17 +10023,13 @@ $$F(A) = \bigcap_{E \supseteq F, A} E.$$
 
 \begin{example}\label{example sqrt 2 and 3}
 Regard $\mathbb{Q}$ as a subfield of $\C$ and let $F = \mathbb{Q}(\sqrt{2}, \sqrt{3})$. Setting $E = \mathbb{Q}(\sqrt{2})$, we can also think of $F$ as $F = E(\sqrt{3})$.
-%Thanks to the degree formula
-%$$
-%[F:\mathbb{Q}] = [F:E][E:\mathbb{Q}].
-%$$
+
 We will see shortly that $E=\{a + b \sqrt{2} \mid a,b \in \mathbb{Q}\}$. In other words, $E$ is the set of $\mathbb{Q}$-linear combinations of $1$ and $\sqrt{2}$, so  $[E: \mathbb{Q}] = 2$.
-%Moreover the polynomial $x^3-2$ is irreducible over $\mathbb{Q}$ since it has no rational roots, so by proposition \ref{prop:degreeF(a)}  $[E: \mathbb{Q}] = 2$. 
+
 
 Since $\sqrt{3}^2 \in \mathbb{Q} \subseteq E$, every element in $F$ can be rewritten as an $E$-linear combination of $1$ and $\sqrt{3}$:
 $$F = \{ \alpha + \beta \sqrt{3} \mid \alpha, \beta \in E\} =\{(a + b \sqrt{2}) + (c + d \sqrt{2}) \sqrt{3} \mid a,b,c,d \in \mathbb{Q}\}.
-$$ and %since $x^2-3$ is irreducible over $E$ 
-On the other hand, $E \neq F$, so we conclude that $[F:E] = 2$. 
+$$ and on the other hand, $E \neq F$, so we conclude that $[F:E] = 2$. 
 
 We claim that $F$ is in fact a simple extension of $\mathbb{Q}$; more precisely, that $\mathbb{Q}(\sqrt{2} + \sqrt{3}) = F$. Set $\beta := \sqrt{2} + \sqrt{3}$. Note that $\beta^2 = 5 + 2 \sqrt{6}$ and
 $$\beta^3 = 5 \sqrt{2} + 5 \sqrt{3} + 4 \sqrt{3} + 6 \sqrt{2} = 11 \sqrt{2} + 9 \sqrt{3}.$$
@@ -10043,7 +10039,6 @@ This shows that $\mathbb{Q}(\sqrt{2}, \sqrt{3})/\mathbb{Q}$ is simple and $\sqrt
 
 This example is an illustration of the Primitive Element Theorem, which we might or might not have time to prove this semester: every finite extension of $\mathbb{Q}$ is simple. 
 
-\
 
 Next we will show that if $\alpha$ is a root of a given polynomial $p(x) \in F[x]$, then $F(\alpha)$ is determined by $p(x)$ up to isomorphism.
 
@@ -10117,29 +10112,6 @@ The first equation tells us that $a=-c$, so $0 = ad+bc = a(d-b)$, and since $\ma
 $$b+d+ac = -10 \implies a^2 = 10 \pm 2.$$
 But neither $8$ nor $12$ are squares in $\mathbb{Z}$, so this is impossible.
 \end{example}
-
-
-The previous example partially illustrates a nice trick: to show that a polynomial over $\mathbb{Q}$ is irreducible, we need only to show it is irreducible over $\mathbb{Z}$, and to do that, it is sufficient to show that the polynomial is irreducible modulo a prime. In what follows, we will be very interested in irreducible polynomials, and we might want to use this type of tricks. Before we move on, let's see another example of this technique.
-
-\begin{example}
-	Consider the polynomial $f(x) = x^4-10x^2-19 \in \mathbb{Q}[x]$. We claim it is irreducible, and thanks to Gauss' Lemma it is sufficient to show that $f$ is irreducible over $\mathbb{Z}$. If $f$ is reducible over $\mathbb{Z}$, it must also be reducible over $\mathbb{Z}/(p)$ for all primes, since going modulo $p$ will preserve the fact that $f$ factors. Modulo $3$, our polynomial becomes
-	 $$f(x) = x^4+2x^2+2.$$
-	 Repeating the trick from \Cref{example irreducible root 2+3}, since $x^4$ and $x^2$ take the same values over $\mathbb{Z}/(3)$, we see that for any $a \in \mathbb{Z}/(3)$ we have
-	  $$f(a) = a^4+2a^2+2 = 3a^2+2=2 \neq 0.$$
-	Thus $f$ has no roots modulo $3$, and thus it has no linear factors. Thus if it is reducible, it must be a product of two degree $2$ factors, say
-	$$f(x) = (x^2+ax+b)(x^2+cx+d).$$
-These coefficients must satisfy the following system of equations:
-$$\left\lbrace
-\begin{array}{ll}
-	a+c & = 0 \\
-	b+d+ac & = 2 \\
-	ad+bc & = 0 \\
-	bd & = 2.
-\end{array}
-\right.$$
-Since $a=-c$, we get $a(d-b)=ad+bc = 0 \implies b=d$. Thus the last equation tells us that $b^2=2$, but all squares modulo $3$ are $0$ or $1$, so this is impossible.
-\end{example}
-
 
 
 
@@ -10280,7 +10252,7 @@ Note: this is not a statement about the number of elements in the fields $F$ and
 \end{proof}
 
 
-The converse if false, as shown by the following example:
+The converse is false, as shown by the following example:
 
 \begin{example}\label{example closure of Q}
 Let $\overline{\mathbb{Q}}$ denote the set of complex numbers that are algebraic over $\mathbb{Q}$, which is by definition an algebraic extension of $\mathbb{Q}$. However, we claim that $\overline{\mathbb{Q}}$ is not finite over $\mathbb{Q}$. 

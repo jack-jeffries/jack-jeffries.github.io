@@ -160,8 +160,8 @@
 <h2 id="toc">Contents</h2>
 <ul>
 <li><a href="#introduction">Introduction</a></li>
-<li><a href="#modules">An introduction to modules</a></li>
-<ol start=11><li><a href="#sec-11">Modules</a></li>
+<li><a href="#modules">Modules</a></li>
+<ol start=11><li><a href="#sec-11">An introduction to modules</a></li>
 <ol><li><a href="#sec-11-1-heading">Definitions and first examples</a></li>
 <li><a href="#sec-11-2-heading">Submodules and restriction of scalars</a></li>
 <li><a href="#sec-11-3-heading">Module homomorphisms and isomorphisms</a></li>
@@ -184,13 +184,14 @@
 <li><a href="#sec-14-2-heading">Rational canonical form</a></li>
 <li><a href="#sec-14-3-heading">The Cayley-Hamilton Theorem</a></li>
 <li><a href="#sec-14-4-heading">Jordan canonical form</a></li>
+</ol></ol>
+<li><a href="Fields">Fields</a></li>
+<ol start=15><li><a href="#sec-15">Field extensions</a></li>
+ <ol><li><a href="#sec-15-1-heading">Definition and first properties</a></li>
+<li><a href="#sec-15-2-heading">Algebraic and transcendental extensions</a></li>
 </ol>
-
-
 </ol>
 </ul></nav>
-
-
 
 
 
@@ -4828,6 +4829,803 @@ which we leave for you to verify. Then the result follows by the uniqueness stat
   </section>
 
 </section>
+
+
+<h1 id="Fields">Fields</h1>
+<section aria-labelledby="lecture-heading" id="fields">
+
+<p>The last main algebraic structure we will study this semester is fields. As we will see, the study of fields is intimately connected with the study of polynomials in one variable, and with algebraic numbers (numbers that are roots of a rational polynomial). Later on, groups will return to our study of these notions. </p>
+
+
+<h1 id="sec-15">15. Field Extensions</h1>
+
+<section id="sec-15-1" class="section" aria-labelledby="sec-15-1-title">
+  <h2 id="sec-15-1-heading">15.1 Definition and first properties</h2>
+
+  <section id="def-15-1-1" class="callout definition" aria-labelledby="def-15-1-1-title">
+    <h3 id="def-15-1-1-title">Definition 15.1.1</h3>
+    <div class="callout-body">
+      <p>
+        A <strong>field extension</strong> is an inclusion of one field \(F\) into a larger field \(L\), making \(F\) into a subfield of \(L\). We sometimes write \(F \subseteq L\) and sometimes \(L/F\) to signify that \(L\) is a field extension of \(F\).
+      </p>
+    </div>
+  </section>
+
+  <p>
+    So a field extension is just another name for a subfield, but the emphasis is different. We think of \(F\) as coming first and \(L\) later.
+  </p>
+
+  <section id="rmk-15-1-2" class="callout remark" aria-labelledby="rmk-15-1-2-title">
+    <h3 id="rmk-15-1-2-title">Remark 15.1.2</h3>
+    <div class="callout-body">
+      <p>
+        If \(F \subseteq L\) is a field extension, then \(L\) is in particular an \(F\)-vector space. This is a special case of the more general fact that if \(\phi\!: R \to S\) is a ring homomorphism, then \(S\) is a left \(R\)-module via \(r \cdot s := \phi(r)s\) by restriction of scalars.
+      </p>
+    </div>
+  </section>
+
+  <section id="def-15-1-3" class="callout definition" aria-labelledby="def-15-1-3-title">
+    <h3 id="def-15-1-3-title">Definition 15.1.3</h3>
+    <div class="callout-body">
+      <p>
+        The <strong>degree</strong> of a field extension \(L/F\) is
+      </p>
+      \[
+        [L:F] := \dim_F(L).
+      \]
+      <p>
+        A field extension is <strong>finite</strong> if its degree is finite.
+      </p>
+    </div>
+  </section>
+
+  <p>
+    Here are some examples.
+  </p>
+
+  <section id="ex-15-1-4" class="callout example" aria-labelledby="ex-15-1-4-title">
+    <h3 id="ex-15-1-4-title">Example 15.1.4</h3>
+    <div class="callout-body">
+      <p>
+        Since \(\mathbb{C} = \mathbb{R}(i) = \{a+bi\mid a,b\in \mathbb{R}\}\), we have \([\mathbb{C}: \mathbb{R}] = 2\).
+      </p>
+    </div>
+  </section>
+
+  <section id="ex-15-1-5" class="callout example" aria-labelledby="ex-15-1-5-title">
+    <h3 id="ex-15-1-5-title">Example 15.1.5</h3>
+    <div class="callout-body">
+      <p>
+        We have \([\mathbb{R}:\mathbb{Q}] = \infty\). In fact, to be more precise we should say that \([\mathbb{R}:\mathbb{Q}]\) is the cardinality of \(\mathbb{R}\), but in general we lump all infinite field extensions together when talking about degree, and just write \([L : F] = \infty\).
+      </p>
+    </div>
+  </section>
+
+  <p>
+    Now we show that for any field \(F\) and any nonconstant polynomial \(f\) with coefficients in \(F\), there exists a field extension of \(F\) in which the polynomial \(f\) has at least one root.
+  </p>
+
+  <section id="thm-15-1-6" class="callout theorem" aria-labelledby="thm-15-1-6-title">
+    <h3 id="thm-15-1-6-title">Theorem 15.1.6</h3>
+    <div class="callout-body">
+      <p>
+        Let \(F\) be a field, \(p \in F[x]\) with \(\deg(p) \geqslant 1\), and \(L = F[x]/(p)\). If \(p\) is irreducible, then
+      </p>
+      <ol>
+        <li>
+          <p>
+            \(L/F\) is a field extension via the map
+          </p>
+          \[
+            F\to L \qquad f\mapsto f+(p)
+          \]
+        </li>
+        <li>
+          <p>
+            The degree of the extension is \([L:F]=\deg(p)\).
+          </p>
+        </li>
+        <li>
+          <p>
+            The element \(\overline{x} := x+(p)\in L\) is a root of \(p\) in \(L\).
+          </p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="proof-thm-15-1-6" class="callout proof" aria-labelledby="proof-thm-15-1-6-title">
+    <h3 id="proof-thm-15-1-6-title">Proof of Theorem 15.1.6</h3>
+    <div class="callout-body">
+      <p>
+        First, note that \((p)\) is a nonzero principal ideal in \(F[x]\). Recall that over a PID, ideals generated by an irreducible element are maximal. Since \(p\) is irreducible, we conclude that \((p)\) is maximal, and thus \(F[x]/(p)\) is a field.
+      </p>
+
+      <p>
+        We regard \(L\) as a field extension of \(F\) via the canonical map \(F \to L\) sending \(f \in F\) to the coset of the constant polynomial \(f\). This map is not technically an inclusion map, but since it is an injective map we can pretend that it is an inclusion by identifying \(F\) with its image under this map. Note that injectivity of this map follows from the fact that \((p)\) is a proper ideal of \(F[x]\), and thus every nonzero constant \(a \in F\) is taken to a nonzero element in \(L = F[x]/(p)\).
+      </p>
+
+      <p>
+        You showed in the homework that if \(\deg(p) = n\), then the classes of \(1, x, \dots, x^{n-1}\) modulo \((p)\) form basis for \(L\) regarded as an \(F\)-vector space. Therefore, \([L:F]=\deg(p)\). Moreover, we can extend the inclusion \(F\subseteq L\) to an inclusion \(F[x]\subseteq L[x]\), and thus we can regard \(p\) as belonging to \(L[x]\). Setting \(\overline{x}=x+(p)\in L\), the element \(\overline{x}\) is a root of \(p(x)\in L[x]\) since
+      </p>
+      \[
+        p(\bar{x})=p(x)+ (p(x))=0_L.
+      \]
+    </div>
+  </section>
+
+  <section id="ex-15-1-7" class="callout example" aria-labelledby="ex-15-1-7-title">
+    <h3 id="ex-15-1-7-title">Example 15.1.7</h3>
+    <div class="callout-body">
+      <p>
+        The polynomial \(f(x) = x^2+1\) is irreducible over \(\mathbb{R}\). The previous Theorem says that \(f\) has a root in the extension \(\mathbb{R}[x]/(x^2+1)\), and indeed, \(\mathbb{R}[x]/(x^2+1) \cong \mathbb{C}\), where \(f\) factors completely into linear factors: \(f(x) = (x-i)(x+i)\). In fact, \(\mathbb{R}[x]/(x^2+1) \cong \mathbb{R}[i]\).
+      </p>
+    </div>
+  </section>
+
+  <p>
+    Now that we know that there exists a field extension of \(F\) in which \(p(x)\) has a root, we may wonder about the <em>smallest</em> such extension.
+  </p>
+
+  <section id="def-15-1-8" class="callout definition" aria-labelledby="def-15-1-8-title">
+    <h3 id="def-15-1-8-title">Definition 15.1.8</h3>
+    <div class="callout-body">
+      <p>
+        Let \(F \subseteq L\) be a field extension and \(\alpha \in L\). We write \(F(\alpha)\) for the smallest subfield of \(L\) that contains all of \(F\) and \(\alpha\).
+      </p>
+    </div>
+  </section>
+
+  <p>
+    In contrast with the previous definition, we will also consider the smallest <em>ring</em> containing \(F\) and \(\alpha\).
+  </p>
+
+  <section id="rmk-15-1-9" class="callout remark" aria-labelledby="rmk-15-1-9-title">
+    <h3 id="rmk-15-1-9-title">Remark 15.1.9</h3>
+    <div class="callout-body">
+      <p>
+        Since the intersection of any two subfields of \(L\) is again a subfield, \(F(a)\) exists and is given by
+      </p>
+      \[
+        F(\alpha) \quad = \bigcap_{\substack{E \text{ field } \\ F \cup \{ \alpha \}  \subseteq E   \subseteq  L}} E.
+      \]
+    </div>
+  </section>
+
+  <section id="def-15-1-10" class="callout definition" aria-labelledby="def-15-1-10-title">
+    <h3 id="def-15-1-10-title">Definition 15.1.10</h3>
+    <div class="callout-body">
+      <p>
+        Let \(F \subseteq L\) be a field extension and \(\alpha \in L\). We write
+      </p>
+      \[
+        F[\alpha] := \{f(\alpha) \mid f\in F[x]\}.
+      \]
+    </div>
+  </section>
+
+  <section id="rmk-15-1-11" class="callout remark" aria-labelledby="rmk-15-1-11-title">
+    <h3 id="rmk-15-1-11-title">Remark 15.1.11</h3>
+    <div class="callout-body">
+      <p>
+        Note that any subring of \(L\) containing \(F\) and \(\alpha\) must contain all products of \(\alpha\) and elements of \(F\), and all linear combinations of such things. Thus \(F[\alpha]\) is the smallest subring of \(L\) containing \(F\) and \(\alpha\). Note that our notation does not include \(L\), since in fact \(F[\alpha]\) does not actually depend on the choice of \(L\) as long as \(L \ni \alpha\).
+      </p>
+    </div>
+  </section>
+
+  <p>
+    Here is another way to describe this field \(F(\alpha)\). We leave the proof for the exercises.
+  </p>
+
+  <section id="lem-15-1-12" class="callout lemma" aria-labelledby="lem-15-1-12-title">
+    <h3 id="lem-15-1-12-title">Lemma 15.1.12</h3>
+    <div class="callout-body">
+      <p>
+        If \(F \subseteq L\) is a field extension and \(\alpha \in L\), the field \(F(\alpha)\) is the fraction field of \(F[\alpha]=\{f(\alpha)\mid f\in F[x]\}\): more precisely,
+      </p>
+      \[
+        F(\alpha) = \left\{ \frac{g(\alpha)}{f(\alpha)} \mid g(x), f(x) \in F[x], f(\alpha) \neq 0 \right\}.
+      \]
+    </div>
+  </section>
+
+  <p>
+    Soon we will give an even better description for \(F(\alpha)\) in the case where \(\alpha\) is the root of a polynomial \(p \in F[x]\).
+  </p>
+
+  <section id="def-15-1-13" class="callout definition" aria-labelledby="def-15-1-13-title">
+    <h3 id="def-15-1-13-title">Definition 15.1.13</h3>
+    <div class="callout-body">
+      <p>
+        A field extension \(L/F\) is called <strong>simple</strong> if \(L = F(\alpha)\) for some element \(\alpha\) of \(L\). We call such an \(\alpha\) a <strong>primitive element</strong> for the extension.
+      </p>
+    </div>
+  </section>
+
+  <p>
+    If \(L/F\) is a simple field extension, note that there might be many different elements \(\alpha \in L\) such that \(L = F(\alpha)\). Thus primitive elements are not necessarily unique.
+  </p>
+
+  <section id="ex-15-1-14" class="callout example" aria-labelledby="ex-15-1-14-title">
+    <h3 id="ex-15-1-14-title">Example 15.1.14</h3>
+    <div class="callout-body">
+      <p>
+        The extension \(\mathbb{R} \subseteq \mathbb{C}\) is simple, and \(i\) is a primitive element: \(\mathbb{C} = \mathbb{R}(i)\). For another choice of primitive element, take \(-i\).
+      </p>
+    </div>
+  </section>
+
+  <p>
+    We can generalize this to adjoining a subset instead of a single element.
+  </p>
+
+  <section id="def-15-1-15" class="callout definition" aria-labelledby="def-15-1-15-title">
+    <h3 id="def-15-1-15-title">Definition 15.1.15</h3>
+    <div class="callout-body">
+      <p>
+        If \(F \subseteq L\) is a field extension and \(A\) is any subset of \(L\), the <strong>subfield generated by \(A\) over \(F\)</strong>, denoted \(F(A)\), is the smallest subfield of \(L\) that contains all of \(F\). If \(A = \{a_1, \dots, a_n\}\) is a finite set, we write \(F(a_1, \dots, a_n)\) for \(F(A)\).
+      </p>
+    </div>
+  </section>
+
+  <section id="rmk-15-1-16" class="callout remark" aria-labelledby="rmk-15-1-16-title">
+    <h3 id="rmk-15-1-16-title">Remark 15.1.16</h3>
+    <div class="callout-body">
+      <p>
+        Again, since the intersection of any two subfields of \(L\) is again a subfield, \(F(A)\) exists and is given by
+      </p>
+      \[
+        F(A) = \bigcap_{E \supseteq F, A} E.
+      \]
+    </div>
+  </section>
+
+  <section id="ex-15-1-17" class="callout example" aria-labelledby="ex-15-1-17-title">
+    <h3 id="ex-15-1-17-title">Example 15.1.17</h3>
+    <div class="callout-body">
+      <p>
+        Regard \(\mathbb{Q}\) as a subfield of \(\mathbb{C}\) and let \(F = \mathbb{Q}(\sqrt{2}, \sqrt{3})\). Setting \(E = \mathbb{Q}(\sqrt{2})\), we can also think of \(F\) as \(F = E(\sqrt{3})\).
+      </p>
+
+      <p>
+        We will see shortly that \(E=\{a + b \sqrt{2} \mid a,b \in \mathbb{Q}\}\). In other words, \(E\) is the set of \(\mathbb{Q}\)-linear combinations of \(1\) and \(\sqrt{2}\), so \( [E: \mathbb{Q}] = 2\).
+      </p>
+
+      <p>
+        Since \(\sqrt{3}^2 \in \mathbb{Q} \subseteq E\), every element in \(F\) can be rewritten as an \(E\)-linear combination of \(1\) and \(\sqrt{3}\):
+      </p>
+      \[
+        F = \{ \alpha + \beta \sqrt{3} \mid \alpha, \beta \in E\} =\{(a + b \sqrt{2}) + (c + d \sqrt{2}) \sqrt{3} \mid a,b,c,d \in \mathbb{Q}\}.
+      \]
+      <p>
+        and on the other hand, \(E \neq F\), so we conclude that \([F:E] = 2\).
+      </p>
+
+      <p>
+        We claim that \(F\) is in fact a simple extension of \(\mathbb{Q}\); more precisely, that \(\mathbb{Q}(\sqrt{2} + \sqrt{3}) = F\). Set \(\beta := \sqrt{2} + \sqrt{3}\). Note that \(\beta^2 = 5 + 2 \sqrt{6}\) and
+      </p>
+      \[
+        \beta^3 = 5 \sqrt{2} + 5 \sqrt{3} + 4 \sqrt{3} + 6 \sqrt{2} = 11 \sqrt{2} + 9 \sqrt{3}.
+      \]
+      <p>
+        So \(\frac{1}{2}(\beta^3 - 9 \beta) = \sqrt{2}\), and hence \(\sqrt{2} \in \mathbb{Q}(\beta)\). Likewise, \(\sqrt{3} = -\frac{1}{2}(\beta^3 - 11 \beta) \in \mathbb{Q}(\beta)\). So \(\mathbb{Q}(\beta) = \mathbb{Q}(\sqrt{2},\sqrt{3})\).
+        This shows that \(\mathbb{Q}(\sqrt{2}, \sqrt{3})/\mathbb{Q}\) is simple and \(\sqrt{2} + \sqrt{3}\) is a primitive element of this field extension.
+      </p>
+    </div>
+  </section>
+
+</section>
+
+  <section id="ex-15-1-18" class="callout example" aria-labelledby="ex-15-1-18-title">
+    <h3 id="ex-15-1-18-title">Example 15.1.18</h3>
+    <div class="callout-body">
+      <p>
+        This example is an illustration of the Primitive Element Theorem, which we might or might not have time to prove this semester: every finite extension of \(\mathbb{Q}\) is simple.
+      </p>
+    </div>
+  </section>
+
+  <p>
+    Next we will show that if \(\alpha\) is a root of a given polynomial \(p(x) \in F[x]\), then \(F(\alpha)\) is determined by \(p(x)\) up to isomorphism.
+  </p>
+
+  <section id="thm-15-1-19" class="callout theorem" aria-labelledby="thm-15-1-19-title">
+    <h3 id="thm-15-1-19-title">Theorem 15.1.19</h3>
+    <div class="callout-body">
+      <p>
+        Let \(L/F\) be a field extension and let \(p(x) \in F[x]\) be an irreducible polynomial. If \(p\) has a root \(\alpha \in L\), then there is an isomorphism \(\phi\) with \(\phi\vert_F=\mathrm{id}_F\) and
+      </p>
+     \[
+\begin{array}{rcl}
+\dfrac{F[x]}{(p(x))} & \longrightarrow & F(\alpha) \\
+x + (p(x)) & \longmapsto & \alpha \\
+f(x) + (p(x)) & \longmapsto & f(\alpha)
+\end{array}
+\]
+    </div>
+  </section>
+
+  <section id="proof-thm-15-1-19" class="callout proof" aria-labelledby="proof-thm-15-1-19-title">
+    <h3 id="proof-thm-15-1-19-title">Proof of Theorem 15.1.19</h3>
+    <div class="callout-body">
+      <p>
+        Let \(\tilde{\phi}\!: F[x] \to F(\alpha)\) be the evaluation homomorphism that sends \(x \mapsto \alpha\); more precisely, \(\tilde{\phi}(f(x)) := f(\alpha)\), and the restriction of this map to \(F\) is the identity on \(F\). Since \(p(\alpha)=0\), we have \((p(x)) \subseteq \ker({\tilde{\phi}})\), and since \((p(x))\) is a maximal ideal and \(\ker({\tilde{\phi}}) \neq F[x]\), we conclude that \((p(x))=\ker({\tilde{\phi}})\).
+      </p>
+
+      <p>
+        Now by the UMP for quotients we get an injective ring homomorphism
+      </p>
+      \[
+        \phi\!: \frac{F[x]}{(p(x))} \to F(\alpha)
+      \]
+      <p>
+        such that \(\phi(f(x)+(p(x)))=\tilde{\phi}(f(x))=f(\alpha)\).
+      </p>
+
+      <p>
+        It remains to be shown that \(\phi\) is surjective. We will actually show more, namely that \(\mathrm{im}(\phi)=F[\alpha]=F(\alpha)\). Note first that by the definition of \(\phi\) above, the image of \(\tilde{\phi}\) on \(F[x]\) is \(F[\alpha]\). However, since \(\phi\) is injective the image of \(\tilde{\phi}\) is a field contained in \(F(\alpha)\), and since the smallest field containing \(F[\alpha]\) is \(F(\alpha)\), we must in fact have \(\mathrm{im}({\tilde{\phi}})=F(\alpha)\).
+      </p>
+    </div>
+  </section>
+
+  <p>
+    Let's formalize the extra information we have obtained in the course of proving the theorem. First we used the following useful fact:
+  </p>
+
+  <section id="rmk-15-1-20" class="callout remark" aria-labelledby="rmk-15-1-20-title">
+    <h3 id="rmk-15-1-20-title">Remark 15.1.20</h3>
+    <div class="callout-body">
+      <p>
+        If \(\phi:F\to L\) is an injective ring homomorphism and \(F\) and \(L\) are fields then the image of \(\phi\) is a subfield of \(L\).
+      </p>
+    </div>
+  </section>
+
+  <section id="cor-15-1-21" class="callout corollary" aria-labelledby="cor-15-1-21-title">
+    <h3 id="cor-15-1-21-title">Corollary 15.1.21</h3>
+    <div class="callout-body">
+      <p>
+        Let \(L/F\) be a field extension and let \(p(x) \in F[x]\) be irreducible having a root \(\alpha \in L\). Then \(F[\alpha] = F(\alpha)\).
+      </p>
+    </div>
+  </section>
+
+  <section id="cor-15-1-22" class="callout corollary" aria-labelledby="cor-15-1-22-title">
+    <h3 id="cor-15-1-22-title">Corollary 15.1.22</h3>
+    <div class="callout-body">
+      <p>
+        Let \(p(x)\in F[x]\) be irreducible and let \(\alpha\) and \(\beta\) be two roots of \(p(x)\) in some extensions \(L\) and \(K\) of \(F\). Then \(F(\alpha) \cong F(\beta)\), so that the two roots are algebraically indistinguishable.
+      </p>
+    </div>
+  </section>
+
+  <section id="ex-15-1-23" class="callout example" aria-labelledby="ex-15-1-23-title">
+    <h3 id="ex-15-1-23-title">Example 15.1.23</h3>
+    <div class="callout-body">
+      <p>
+        Taking \(p(x)=x^2+1 \in \mathbb{R}[x]\) with roots \(\alpha = i\) and \(\beta=-i\) in \(\mathbb{C}\), we actually obtain <em>equal</em> fields \(\mathbb{R}(i)=\mathbb{C}=\mathbb{R}(-i)\).
+        But Corollary 15.1.22 gives that there is an interesting isomorphism \(\phi: \mathbb{C} \xrightarrow{\, \cong \,} \mathbb{C}\) that sends \(i\) to \(-i\). In general, we have \(\phi(a + b i) = a - bi\) for \(a,b \in \mathbb{R}\).
+      </p>
+    </div>
+  </section>
+
+  <section id="ex-15-1-24" class="callout example" aria-labelledby="ex-15-1-24-title">
+    <h3 id="ex-15-1-24-title">Example 15.1.24</h3>
+    <div class="callout-body">
+      <p>
+        Another example illustrating Corollary 15.1.22 is that \(\mathbb{Q}(\sqrt{2})\) and \(\mathbb{Q}(-\sqrt{2})\) are isomorphic fields. In fact, they are equal: \(\mathbb{Q}(\sqrt2) = \mathbb{Q}(-\sqrt{2})\). But again Corollary 15.1.22 gives that there is an interesting isomorphism \(\phi: \mathbb{Q}(\sqrt{2}) \xrightarrow{\, \cong \,} \mathbb{Q}(-\sqrt{2}) = \mathbb{Q}(\sqrt{2})\) that sends \(\sqrt{2}\) to \(-\sqrt{2}\). In general, we have \(\phi(a + b \sqrt{2}) = a - b\sqrt{2}\) for \(a,b \in \mathbb{Q}\).
+      </p>
+    </div>
+  </section>
+
+  <p>
+    The two examples above preview the central idea of Galois theory.
+  </p>
+
+  <section id="ex-15-1-25" class="callout example" aria-labelledby="ex-15-1-25-title">
+    <h3 id="ex-15-1-25-title">Example 15.1.25</h3>
+    <div class="callout-body">
+      <p>
+        In the earlier example we showed that \(\mathbb{Q}(\sqrt{2},\sqrt{3})=\mathbb{Q}(\sqrt{2}+\sqrt{3})\). We want to find a polynomial \(p \in \mathbb{Q}[x]\) such that \(\mathbb{Q}(\sqrt{2}+\sqrt{3}) \cong \mathbb{Q}[x]/(p(x))\). Set \(\beta=\sqrt{2}+\sqrt{3}\).
+      </p>
+
+      <p>
+        Note that we have \(\beta^2 = 5 + 2 \sqrt{6}\) and \(\beta^4 = 49 + 20 \sqrt{6}\) and hence \(\beta^4 - 10 \beta^2 + 1 = 0\). So \(\beta\) is a root of \(x^4 - 10 x^2 + 1\). It can be shown that this polynomial is irreducible. How? First, Gauss' Lemma says that it is sufficient to show that it is irreducible in \(\mathbb{Z}[x]\).
+      </p>
+
+      <p>
+        Suppose that \(f\) does factor. Then that factorization will be preserved when we go modulo \(p\) for any prime \(p\). We will use this to show that \(f\) has no linear factors. When we go modulo \(3\), we claim that \(f\) has no roots: indeed, Fermat's Little Theorem says that \(a^3=a\) for all \(a \in \mathbb{Z}/(3)\), so our polynomial becomes
+      </p>
+      \[
+        f(x) = x^4-x^2+1=x^2-x^2+1=1.
+      \]
+      <p>
+        Since there are no roots modulo \(3\), we conclude that \(f\) has no linear factors over \(\mathbb{Z}\) either. Thus if \(f\) factors over \(\mathbb{Z}\), it must factor as a product of degree \(2\) polynomials. Suppose
+      </p>
+      \[
+        f(x) = (x^2+ax+b)(x^2+cx+d).
+      \]
+      <p>
+        These coefficients must satisfy the system
+      </p>
+      \[
+        \left\lbrace
+        \begin{array}{ll}
+          a+c & = 0 \\
+          b+d+ac & = -10 \\
+          ad+bc & = 0 \\
+          bd & = 1 .
+        \end{array}
+        \right.
+      \]
+      <p>
+        The first equation gives \(a=-c\), so \(0 = ad+bc = a(d-b)\), and since \(\mathbb{Z}\) is a domain, we conclude that \(d=b\). Moreover, \(b^2 = 1\), so \(b \in \{-1,1\}\). Finally,
+      </p>
+      \[
+        b+d+ac = -10 \implies a^2 = 10 \pm 2.
+      \]
+      <p>
+        But neither \(8\) nor \(12\) are squares in \(\mathbb{Z}\), so this is impossible.
+      </p>
+    </div>
+  </section>
+
+<section id="sec-15-2" class="section" aria-labelledby="sec-15-2-title">
+  <h2 id="sec-15-2-heading">15.2 Algebraic and transcendental extensions</h2>
+
+  <section id="def-15-2-1" class="callout definition" aria-labelledby="def-15-2-1-title">
+    <h3 id="def-15-2-1-title">Definition 15.2.1</h3>
+    <div class="callout-body">
+      <p>
+        For a field extension \(F \subseteq L\) and \(\alpha \in L\), we say \(\alpha\) is <strong>algebraic</strong> over \(F\) if \(f(\alpha) = 0\) for some nonconstant polynomial \(f \in F[x]\). Otherwise, we say \(\alpha\) is <strong>transcendental</strong> over \(F\).
+      </p>
+    </div>
+  </section>
+
+  <section id="ex-15-2-2" class="callout example" aria-labelledby="ex-15-2-2-title">
+    <h3 id="ex-15-2-2-title">Example 15.2.2</h3>
+    <div class="callout-body">
+      <p>
+        The element \(i \in \mathbb{C}\) is algebraic over \(\mathbb{R}\), since \(i^2+1=0\). In fact, every element of \(\mathbb{C}\) is algebraic over \(\mathbb{R}\), and we will soon see why. In contrast, the numbers \(\pi\) and \(e\) of \(\mathbb{R}\) are transcendental over \(\mathbb{Q}\), though these are both deep facts.
+      </p>
+    </div>
+  </section>
+
+  <section id="thm-15-2-3" class="callout theorem" aria-labelledby="thm-15-2-3-title">
+    <h3 id="thm-15-2-3-title">Theorem 15.2.3</h3>
+    <div class="callout-body">
+      <p>
+        Suppose \(L/F\) is a field extension and \(\alpha \in L\).
+      </p>
+      <ol>
+        <li>
+          The set \(I := \{f(x) \in F[x] \mid f(\alpha) = 0\}\) is an ideal of \(F[x]\).
+        </li>
+        <li>
+          \(I = 0\) if and only if \(\alpha\) is transcendental over \(F\). Equivalently, \(I \neq 0\) if and only if \(\alpha\) is algebraic over \(F\).
+        </li>
+        <li>
+          If \(\alpha\) is algebraic over \(F\), meaning \(I \neq 0\), then the unique monic generator \(m_{\alpha, F}(x)\) of the ideal \(I\) is irreducible.
+        </li>
+        <li>
+          If \(\alpha\) is algebraic over \(F\), then there is an isomorphism of fields
+          \[
+            F(\alpha)  \cong  F[x]/(m_{\alpha, F}(x))
+          \]
+          sending \(F\) identically to \(F\) and sending \(x\) to \(\alpha\).
+        </li>
+        <li>
+          The element \(\alpha\) is algebraic over \(F\) if and only if \([F(\alpha): F] < \infty\). In this case,
+          \[
+            [F(\alpha): F] = \deg(m_{\alpha, F}(x)).
+          \]
+        </li>
+        <li>
+          The element \(\alpha\) is transcendental over \(F\) if and only if \([F(\alpha): F] = \infty\). In this case, there is an isomorphism of fields between \(F(\alpha)\) and the field of fractions of \(F[x]\):
+          \[
+            F(\alpha) \cong F(x) := \left\lbrace\frac{g(x)}{f(x)}\mid  g \neq 0 \right\rbrace
+          \]
+          sending \(F\) identically to \(F\) and sending \(x\) to \(\alpha\).
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="proof-thm-15-2-3" class="callout proof" aria-labelledby="proof-thm-15-2-3-title">
+    <h3 id="proof-thm-15-2-3-title">Proof of Theorem 15.2.3</h3>
+    <div class="callout-body">
+      <p>
+        The set \(I\) is the kernel of the evaluation homomorphism that maps \(x\mapsto \alpha\). This map is a ring homomorphism, and thus \(I\) must be an ideal of \(F[x]\). The content of (2) follows by definition of algebraic and transcendental elements.
+      </p>
+
+      <p>
+        To show (3), assume \(I \neq 0\) and let \(p\) be its unique monic generator. Suppose \(p = f g\). Since \(p(\alpha) = 0\) in \(F\) and \(F\) is a field (and thus a domain), either \(f(\alpha) = 0\) or \(g(\alpha) = 0\). Therefore, either \(f(x) \in I\) or \(g(x) \in I\). This proves \((p)\) is a prime ideal and hence \(p\) is a prime element. Since \(F[x]\) is a PID, it follows that \(p\) is irreducible.
+      </p>
+
+      <p>
+        The statement of (4) is already Theorem 15.1.19.
+      </p>
+
+      <p>
+        Let's show (5). If \(\alpha\) is algebraic over \(F\), then (4) shows that
+      </p>
+      \[
+        [F(\alpha):F] = \deg(m_{\alpha, F}(x)) < \infty.
+      \]
+      <p>
+        For the converse, if \([F(\alpha): F] < \infty\), then the infinite list \(1, \alpha, \alpha^2, \ldots\) of elements of \(F(\alpha)\) must be \(F\)-linearly dependent. Thus \(a_0 + a_1 \alpha + \cdots a_n \alpha^n = 0\) for some \(n\) and some \(a_0, \dots, a_n \in F\) not all zero. This shows \(\alpha\) is the root of a nonzero polynomial.
+      </p>
+
+      <p>
+        To show (6), the map \(\phi\) defined as in (4) is injective. Since the target is a field \(L\) and \(F[x]\) is an integral domain, by the UMP of the fraction field \(\phi\) can be extended to the field of fractions of \(F[x]\), so there is a homomorphism of fields \(\tilde{\phi}: F(x) \to L\). The image of this field map is
+      </p>
+      \[
+        \left\{\frac{g(\alpha)}{f(\alpha)} \mid g,f \in F[x], f(x) \ne 0\right\},
+      \]
+      <p>
+        which is precisely \(F(\alpha)\). The map is injective since it is a field homomorphism that is not identically zero.
+      </p>
+    </div>
+  </section>
+
+  <section id="def-15-2-4" class="callout definition" aria-labelledby="def-15-2-4-title">
+    <h3 id="def-15-2-4-title">Definition 15.2.4</h3>
+    <div class="callout-body">
+      <p>
+        Let \(F \subseteq L\) be a field extension and \(\alpha \in L\), and consider the ideal
+      </p>
+      \[
+        I = \{f(x) \in F[x] \mid f(\alpha) = 0\}.
+      \]
+      <p>
+        The unique monic generator \(m_{\alpha, F}(x)\) for \(I\) is called the <strong>minimal polynomial</strong> of \(\alpha\) over \(F\).
+      </p>
+    </div>
+  </section>
+
+  <section id="rmk-15-2-5" class="callout remark" aria-labelledby="rmk-15-2-5-title">
+    <h3 id="rmk-15-2-5-title">Remark 15.2.5</h3>
+    <div class="callout-body">
+      <p>
+        Note that the minimal polynomial of \(\alpha\) over \(F\), if it exists, must divide every polynomial in \(F[x]\) that has \(\alpha\) as a root. Also, it can be characterized as the monic polynomial in \(F[x]\) of least degree having \(\alpha\) as a root.
+      </p>
+    </div>
+  </section>
+
+  <section id="ex-15-2-6" class="callout example" aria-labelledby="ex-15-2-6-title">
+    <h3 id="ex-15-2-6-title">Example 15.2.6</h3>
+    <div class="callout-body">
+      <p>
+        Note that the minimal polynomial of \(i\) over \(\mathbb{R}\) is \(m_{i,\mathbb{R}}(x) = x^2 + 1\).
+      </p>
+    </div>
+  </section>
+
+  <section id="thm-15-2-7" class="callout theorem" aria-labelledby="thm-15-2-7-title">
+    <h3 id="thm-15-2-7-title">Theorem 15.2.7 (The Degree Formula)</h3>
+    <div class="callout-body">
+      <p>
+        Suppose \(F \subseteq L \subseteq K\) are field extensions. Then
+      </p>
+      \[
+        [K:F] = [K:L] [L:F].
+      \]
+      <p>
+        In particular, the composition of two finite extensions of fields is again a finite extension.
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-thm-15-2-7" class="callout proof" aria-labelledby="proof-thm-15-2-7-title">
+    <h3 id="proof-thm-15-2-7-title">Proof of Theorem 15.2.7</h3>
+    <div class="callout-body">
+      <p>
+        Let \(A \subseteq K\) be a basis for \(K\) as an \(L\)-vector space and let \(B \subseteq L\) be a basis for \(L\) as an \(F\)-vector space. Consider the subset of \(K\) given by
+      </p>
+      \[
+        AB := \{ab \mid a \in A, b \in B\}.
+      \]
+      <p>
+        First, we claim that \(AB\) is a basis of \(K\) as an \(F\)-vector space. For \(a \in K\), we have \(a = \sum_i l_i a_i\) for some \(a_1, \dots, a_m \in A\) and \(l_1, \dots, l_m \in L\). For each \(i\), \(l_i\) is an \(F\)-linear combination of a finite set of elements of \(B\). Combining these gives that \(a\) is in the \(F\)-span of \(AB\).
+      </p>
+
+      <p>
+        To prove linear independence, suppose \(\sum_{i,j} f_{i,j} a_i b_j = 0\) for some \(f_{i,j} \in F\). Since the \(b_j\) are \(L\)-linearly independent and
+      </p>
+      \[
+        \sum_{i,j} f_{i,j} a_i b_j = \sum_j \left(\sum_i f_{i,j} a_i \right) b_j,
+      \]
+      <p>
+        we get that, for each \(j\), \(\sum_i f_{i,j} a_i = 0\). Using now that the \(a_i\) are \(F\)-linearly independent, we conclude that all \(f_{i,j} = 0\). Thus \(AB\) is linearly independent over \(F\).
+      </p>
+
+      <p>
+        In particular, this shows that the elements of the form \(ab\) with \(a \in A\) and \(b \in B\) are all distinct, so \(|AB| = |A| \cdot |B|\). Since \(AB\) is a basis for \(K\) over \(F\), we conclude that
+      </p>
+      \[
+        [K:F] = [K:L] [L:F].
+      \]
+    </div>
+  </section>
+
+
+
+</section>
+
+  <section id="ex-15-2-8" class="callout example" aria-labelledby="ex-15-2-8-title">
+    <h3 id="ex-15-2-8-title">Example 15.2.8</h3>
+    <div class="callout-body">
+      <p>
+        In Example 15.1.25 we showed that \(\mathbb{Q}(\sqrt{2},\sqrt{3}) = \mathbb{Q}(\beta)\) with \(\beta = \sqrt{2} + \sqrt{3}\). We claim that \(m_{\beta, \mathbb{Q}}(x)=x^4-10x^2+1\). By the Degree Formula, we have
+      </p>
+      \[
+        [\mathbb{Q}(\beta):\mathbb{Q}] = [\mathbb{Q}(\beta):E][E:\mathbb{Q}] = 2\cdot 2= 4.
+      \]
+      <p>
+        Thus \(m_{\beta, \mathbb{Q}}(x)\) has degree \(4\). We already know that \(\beta\) is a root of \(x^4 - 10 x^2 + 1\), hence this polynomial is divisible by the minimal polynomial of \(\beta\). Since they are both monic and have degree \(4\), it must be that \(m_{\beta,\mathbb{Q}}(x)=x^4 - 10 x^2 + 1\). Arguing this way, there is no need to check this polynomial is irreducible; it must be by Theorem 15.2.3(3).
+      </p>
+    </div>
+  </section>
+
+  <section id="def-15-2-9" class="callout definition" aria-labelledby="def-15-2-9-title">
+    <h3 id="def-15-2-9-title">Definition 15.2.9</h3>
+    <div class="callout-body">
+      <p>
+        A field extension \(F \subseteq L\) is <strong>algebraic</strong> if every element \(a \in L\) is algebraic over \(F\).
+      </p>
+    </div>
+  </section>
+
+  <section id="def-15-2-10" class="callout definition" aria-labelledby="def-15-2-10-title">
+    <h3 id="def-15-2-10-title">Definition 15.2.10</h3>
+    <div class="callout-body">
+      <p>
+        We say an extension of fields \(F \subseteq L\) is <strong>finite</strong> if it has finite dimension.
+      </p>
+    </div>
+  </section>
+
+  <p>
+    Note: this is not a statement about the number of elements in the fields \(F\) and \(L\).
+  </p>
+
+  <section id="ex-15-2-11" class="callout example" aria-labelledby="ex-15-2-11-title">
+    <h3 id="ex-15-2-11-title">Example 15.2.11</h3>
+    <div class="callout-body">
+      <p>
+        The extension \(\mathbb{R} \subseteq \mathbb{C}\) is finite, since \([\mathbb{C} : \mathbb{R}] = 2\).
+      </p>
+    </div>
+  </section>
+
+  <section id="lem-15-2-12" class="callout lemma" aria-labelledby="lem-15-2-12-title">
+    <h3 id="lem-15-2-12-title">Lemma 15.2.12</h3>
+    <div class="callout-body">
+      <p>
+        Every finite extension of fields is algebraic.
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-lem-15-2-12-1" class="callout proof" aria-labelledby="proof-lem-15-2-12-1-title">
+    <h3 id="proof-lem-15-2-12-1-title">Proof of Lemma 15.2.12 (First proof)</h3>
+    <div class="callout-body">
+      <p>
+        Let \(K \subseteq L\) be a finite field extension, and let \(a \in L\). Since the extension is finite, any infinite set of elements in \(L\) must be linearly dependent over \(F\). In particular, the set
+      </p>
+      \[
+        \{ a^n \mid n \geqslant 0 \}
+      \]
+      <p>
+        is linearly dependent, so there exists \(n\) such that
+      </p>
+      \[
+        \{ 1, a, a^2, \ldots, a^n \}
+      \]
+      <p>
+        is linearly dependent. Writing an equation of linear dependence, say
+      </p>
+      \[
+        b_n a^n + \cdots + b_1a + b_0 = 0
+      \]
+      <p>
+        for some \(b_i \in F\), we might as well assume that \(b_n \neq 0\) (otherwise, replace \(n\) by the largest value of \(i\) such that \(b_i \neq 0\)), and thus after multiplying by \(b_n^{-1}\) we conclude that we can write \(a^n\) in terms of the lower powers of \(a\). In particular, \(a\) is algebraic over \(F\).
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-lem-15-2-12-2" class="callout proof" aria-labelledby="proof-lem-15-2-12-2-title">
+    <h3 id="proof-lem-15-2-12-2-title">Proof of Lemma 15.2.12 (Using the Degree Formula)</h3>
+    <div class="callout-body">
+      <p>
+        Let \(K \subseteq L\) be a finite field extension, and let \(a \in L\). By the Degree Formula, we have
+      </p>
+      \[
+        [L : K] = [L : K(a)][K(a): K],
+      \]
+      <p>
+        and thus \(K \subseteq K(a)\) must be finite. By Theorem 15.2.3(5), \(a\) must be algebraic over \(K\).
+      </p>
+    </div>
+  </section>
+
+  <p>
+    The converse is false, as shown by the following example:
+  </p>
+
+  <section id="ex-15-2-13" class="callout example" aria-labelledby="ex-15-2-13-title">
+    <h3 id="ex-15-2-13-title">Example 15.2.13</h3>
+    <div class="callout-body">
+      <p>
+        Let \(\overline{\mathbb{Q}}\) denote the set of complex numbers that are algebraic over \(\mathbb{Q}\), which is by definition an algebraic extension of \(\mathbb{Q}\). However, we claim that \(\overline{\mathbb{Q}}\) is not finite over \(\mathbb{Q}\).
+      </p>
+
+      <p>
+        First, let \(p\) be any prime integer, \(n>0\) be any integer, and consider the polynomial \(x^n-p\) over \(\mathbb{Q}[x]\). By applying Eisenstein's Criterion with the prime ideal \((p)\), we conclude that \(x^n-p\) is irreducible over \(\mathbb{Z}\). By Gauss' Lemma, \(x^n-p\) is also irreducible over \(\mathbb{Q}\).
+      </p>
+
+      <p>
+        Now \(\overline{\mathbb{Q}}\) contains the subextension \(\mathbb{Q}(a)\), where \(a\) is a root of \(x^n-p\). Since \(x^n-p\) is irreducible over \(\mathbb{Q}\), it is the minimal polynomial of \(a\) over \(\mathbb{Q}\), and thus by Theorem 15.2.3(5) we conclude that the degree of this extension is \([\mathbb{Q}(a):\mathbb{Q}]=n\). Thus \(\overline{\mathbb{Q}}\) contains subextensions of arbitrarily large degree. By the Degree Formula applied to \(\mathbb{Q} \subseteq \mathbb{Q}(a) \subseteq \overline{\mathbb{Q}}\), if \(\overline{\mathbb{Q}}\) had finite degree over \(\mathbb{Q}\) then that degree would be divisible by \(n\) for all \(n\). We conclude that \([\overline{\mathbb{Q}} : \mathbb{Q}] = \infty\).
+      </p>
+    </div>
+  </section>
+
+  <section id="thm-15-2-14" class="callout theorem" aria-labelledby="thm-15-2-14-title">
+    <h3 id="thm-15-2-14-title">Theorem 15.2.14</h3>
+    <div class="callout-body">
+      <p>
+        Given field extensions \(F \subseteq L \subseteq E\), \(L/F\) and \(E/L\) are both algebraic if and only if \(E/F\) is algebraic.
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-thm-15-2-14" class="callout proof" aria-labelledby="proof-thm-15-2-14-title">
+    <h3 id="proof-thm-15-2-14-title">Proof of Theorem 15.2.14</h3>
+    <div class="callout-body">
+      <p>
+        \((\Leftarrow)\) Suppose \(F \subseteq E\) is algebraic. Every element in \(L\) is in \(E\) as well, and thus it is algebraic over \(F\); thus \(F \subseteq L\) is algebraic. Moreover, any element \(\alpha \in E\) is algebraic over \(F\) by assumption, so it satisfies a polynomial with coefficients in \(F\). But any polynomial with coefficients in \(F\) is also a polynomial with coefficients in \(L\), and thus \(\alpha\) is algebraic over \(L\).
+      </p>
+
+      <p>
+        \((\Rightarrow)\) Fix \(\alpha \in E\). We need to prove \(\alpha\) is a root of some monic polynomial with coefficients in \(F\). Since \(\alpha\) is algebraic over \(L\), it is a root of some polynomial \(a_nx^n + \cdots + a_1 x + a_0 \in L[x]\). Note that this polynomial belongs to \(F(a_0,\dots, a_{n})[x]\) too, and so \(\alpha\) is algebraic over \(F(a_0, \dots, a_{n})\).
+      </p>
+
+      <p>
+        Consider the chain of field extensions
+      </p>
+      \[
+        F \subseteq F(a_0) \subseteq F(a_0,a_1) \subseteq \cdots \subseteq F(a_0, a_1, \ldots, a_{n} )\subseteq F(a_0, \ldots, a_{n}, \alpha).
+      \]
+      <p>
+        Each \(a_i \in L\) is algebraic over \(F\) for all \(i\), and \(\alpha\) is algebraic over \(F(a_0, a_1, \dots, a_{n})\), so each step in our tower of extensions consists of adding an algebraic element to the previous field. By Theorem 15.2.3, each step in this chain has finite dimension. By the Degree Formula,
+      </p>
+      \[
+        [F(a_0, \ldots, a_{n}, \alpha): F] = [F(a_0, \ldots, a_{n}, \alpha): F(a_0, \ldots, a_{n})] \cdots [F(a_0): F]
+      \]
+      <p>
+        is finite. Moreover, if we reorder the tower above to start from \(F \subseteq F(\alpha)\), by the Degree Formula we have
+      </p>
+      \[
+        [F(\alpha):F] [F(a_0, \ldots, a_{n}, \alpha): F(\alpha)] = [F(a_0, \ldots, a_{n}, \alpha): F] < \infty.
+      \]
+      <p>
+        Therefore, \([F(\alpha):F]\) is finite. By Theorem 15.2.3(5) again, \(\alpha\) is algebraic over \(F\).
+      </p>
+    </div>
+  </section>
+
+  <p>
+    In the proof of Theorem 15.2.14, we also showed the following corollary of the Degree Formula:
+  </p>
+
+  <section id="cor-15-2-15" class="callout corollary" aria-labelledby="cor-15-2-15-title">
+    <h3 id="cor-15-2-15-title">Corollary 15.2.15</h3>
+    <div class="callout-body">
+      <p>
+        If \(\alpha_1, \ldots, \alpha_n\) are algebraic over \(F\), then \(F \subseteq F(\alpha_1, \ldots, \alpha_n)\) is a finite algebraic extension.
+      </p>
+    </div>
+  </section>
 
 
 </main>
