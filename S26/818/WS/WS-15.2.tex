@@ -1,0 +1,172 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=1 in]{geometry}
+\usepackage{paralist,amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals}
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\solutione}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{leaf}This solution is embargoed.}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\nosolfill}{\ifthenelse {\equal{\displaysol}{1}} {} {\vfill}}
+\newcommand{\nosolpage}{\ifthenelse {\equal{\displaysol}{1}} {} {\newpage}}
+\newcommand{\nosolonly}[1]{\ifthenelse {\equal{\displaysol}{1}} {} {{#1}}}
+
+\newcommand{\rsa}{\rightsquigarrow}
+
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+
+\DeclareMathOperator{\ord}{ord}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{The degree formula and algebraic extensions}
+	\begin{framed}
+	\textsc{Degree Formula:} Let $F\subseteq L \subseteq K$ be field extensions. Then $[K:F] = [K:L] \cdot [L:F]$. In particular, $K/F$ is finite if and only if $K/L$ and $L/F$ are both finite.
+	
+	\
+	
+	\textsc{Definition:} A field extension $L/F$ is \textbf{algebraic} if every $\alpha\in L$ is algebraic over $F$.
+	
+	\
+	
+	\textsc{Proposition:} Any finite field extension is algebraic.
+	
+	\
+	
+	\textsc{Theorem:} Let $F\subseteq L \subseteq K$ be field extensions. Then $K/F$ is algebraic if and only if $K/L$ and $L/F$ are both algebraic.
+		\end{framed}
+
+\
+
+	
+	\begin{enumerate}
+	\itemA Using the Degree Formula: Consider the field $F= \Q(\sqrt{2},\sqrt{3})$.
+		\begin{enumerate}
+		\itema Let $E=\Q(\sqrt{2})$. Use the polynomials $x^2-2 \in \Q[x]$ and $x^2-3 \in E[x]$ to quickly show that $[E:\Q]\leq 2$ and $[F:E]\leq 2$.
+		\itema Explain why $\Q \subsetneqq E \subsetneqq F$, and deduce that $[E:\Q]= 2$ and $[F:E]= 2$.
+		\itema Show that $[F:\Q]=4$.
+		\itema We showed earlier that $F=\Q(\sqrt{2} +\sqrt{3})$ and that $\sqrt{2} + \sqrt{3}$ is a root of the polynomial $p(x) = x^4 - 10x^2 + 1$. Deduce from these facts and from (c) that $p(x)$ is irreducible over $\Q[x]$.
+	\end{enumerate}
+	
+
+\solution{\begin{enumerate}
+	\itema Since $\sqrt{2}$ is a root of $x^2-2$, the degree of its minimal polynomial is at most $2$. Thus $[E:\Q]\leq 2$. Likewise for $\sqrt{3}$.
+	\itema Once we show that these inclusions are proper, the degree must be greater than $1$. We know that $E\neq \Q$ since $\sqrt{2}$ is irrational. To see that $F\neq E$, we just need to show $\sqrt{3}\notin E$. If $(a+b\sqrt{2})^2=3$ with $a,b\in \Q$, then $a^2+2b^2=3$ and $2ab\sqrt{2}=0$. This implies $a=0$ or $b=0$, and either way would contradict that $\sqrt{3}\notin\Q$.
+	\itema This follows from the Degree Formula.
+	\itema We know that $m_{\sqrt{2}+\sqrt{3},\Q}$ has degree $4$ since $\sqrt{2}+\sqrt{3}$ generates an extension of degree $4$. We also know that $p$ is a multiple of this minimal polynomial. Since the degrees agree and $p$ is monic, $p$ must equal the minimal polynomial, and thus, be irreducible. 
+		\end{enumerate}
+}
+		\itemA Use\footnote{Hint: If $L/F$ is finite and $\alpha\in L$, consider $F\subseteq F(\alpha) \subseteq L$.} the Degree Formula to prove the Proposition.
+		
+		\solution{Consider $F\subseteq F(\alpha) \subseteq L$. By the Degree Formula, $F\subseteq F(\alpha)$ is finite. Thus $\alpha$ is algebraic over $F$.}
+		
+		\itemA Proof of Theorem (using the Degree Formula):
+		
+				\begin{enumerate}
+				\itema Prove the $(\Longrightarrow)$ direction using the definitions.
+				\itema For the $(\Longleftarrow)$ direction, take $\alpha\in K$. Explain why there exist $a_0,a_1,\dots,a_n\in L$ such that $\alpha$ is algebraic over $F(a_0,\dots,a_n)$.
+				\itema Consider the tower of field extensions
+				\[ F \subseteq F(a_0) \subseteq F(a_0,a_1)  \subseteq  \cdots  \subseteq  F(a_0,\dots,a_n)  \subseteq F(a_0, \dots ,a_n, \alpha).\]
+				Explain why each inclusion is finite. Then explain why $F(a_0, \dots ,a_n, \alpha)/F$ is finite.
+				\itema Deduce the Theorem.
+		\end{enumerate}
+		
+		\solution{\begin{enumerate}
+	\itema To show that $K/L$ is algebraic, let $\alpha\in K$. Then $\alpha$ is a root of a polynomial with coefficients in $F$ by assumption; such a polynomial can also be considered as a polynomial with coefficients in $L$. Thus $\alpha$ is algebraic over $L$.
+	To show that $L/F$ is algebraic, let $\alpha\in L$. In particular, $\alpha\in K$. Then $\alpha$ is algebraic over $F$ by assumption.
+		\itema We know that $\alpha$ is a root of some polynomial $a_n x^n + \cdots + a_0 \in L[x]$. This polynomial is also a polynomial with coefficients in $F(a_0,\dots,a_n)$.
+	\itema Note that $a_i$ is algebraic over $F$, and hence algebraic over $F(a_0,\dots,a_{i-1})$. Thus, by the structure of simple extensions, these are finite. Likewise for $F(a_0,\dots,a_n)  \subseteq F(a_0, \dots ,a_n, \alpha)$. The Degree Formula applied repeatedly shows that $F(a_0, \dots ,a_n, \alpha)/F$ is finite.
+		\itema The Proposition implies that $F(a_0, \dots ,a_n, \alpha)/F$ is algebraic. In particular, $\alpha$ is algebraic over $F$. This is what we needed to show!
+		\end{enumerate}
+}
+
+\itemB Prove the Degree Formula.
+
+	\end{enumerate}
+	
+	\newpage
+	
+	\begin{framed}
+	
+\textsc{Theorem (Simple extensions):} Let $L/F$ be a field extension and $\alpha\in L$.
+
+\medskip
+
+\begin{enumerate}
+\item $I:=\{ f(x) \in F[x] \ | \ f(\alpha) = 0\}$ is an ideal in $F[x]$.
+
+\medskip
+
+
+\item $I\neq 0$ \ $\Longleftrightarrow$ \ $\alpha$ is algebraic over $F$.
+
+\medskip
+
+\item If $\alpha$ is algebraic over $F$, then the unique monic generator of $I$, denoted $m_{\alpha,F}(x)$, is irreducible.
+
+\medskip
+
+\item  If $\alpha$ is algebraic over $F$, then $F(\alpha) \cong F[x]/(m_{\alpha,F}(x))$.
+
+\medskip
+
+\item $\alpha$ is algebraic over $F$ \ $\Longleftrightarrow$ \ $[F(\alpha):F] < \infty$. \\
+In this case, $[F(\alpha):F] = \deg(m_{\alpha,F})$.
+
+\medskip
+
+\item $\alpha$ is transcendental over $F$ \ $\Longleftrightarrow$ \ $[F(\alpha):F] = \infty$. \\
+In this case, $F(\alpha) \cong F(x)$, the field of rational functions in one variable over $F$.
+\end{enumerate}
+
+\end{framed}
+
+
+\end{document}
