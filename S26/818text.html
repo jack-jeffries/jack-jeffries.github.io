@@ -5627,6 +5627,361 @@ f(x) + (p(x)) & \longmapsto & f(\alpha)
     </div>
   </section>
 
+<section id="sec-15-3" class="section" aria-labelledby="sec-15-3-title">
+  <h2 id="sec-15-3-heading">15.3 Algebraically closed fields and algebraic closure</h2>
+
+  <section id="def-15-3-1" class="callout definition" aria-labelledby="def-15-3-1-title">
+    <h3 id="def-15-3-1-title">Definition 15.3.1</h3>
+    <div class="callout-body">
+      <p>
+        For any field extension \(F \subseteq L\), we define the <strong>algebraic closure</strong> of \(F\) in \(L\) to be the set
+      </p>
+      \[
+        \overline{F}_L= \{ \alpha \in L \mid \alpha \text{ is algebraic over } F \}.
+      \]
+    </div>
+  </section>
+
+  <section id="lem-15-3-2" class="callout lemma" aria-labelledby="lem-15-3-2-title">
+    <h3 id="lem-15-3-2-title">Lemma 15.3.2</h3>
+    <div class="callout-body">
+      <p>
+        For any field extension \(F \subseteq L\), the set \(\overline{F}_L\) is a a subfield of \(L\) that contains~\(F\). Moreover, it is the largest subfield of \(L\) that is algebraic over \(F\).
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-lem-15-3-2" class="callout proof" aria-labelledby="proof-lem-15-3-2-title">
+    <h3 id="proof-lem-15-3-2-title">Proof of Lemma 15.3.2</h3>
+    <div class="callout-body">
+      <p>
+        First, note that every element in \(a \in F\) satisfies the monic polynomial \(x-a\), and thus \(F \subseteq \overline{F}_L\), which is in particular nonempty. The claims that \(F \subseteq \overline{F}_L\) and that \(\overline{F}_L\) is the largest subfield of \(L\) that is algebraic over \(F\) follow from the definition of \(\overline{F}_L\).
+      </p>
+
+      <p>
+        It remains to show that \(\overline{F}_L\) is a field: we need to show that \(\overline{F}_L\) is closed under addition, multiplication, and taking additive and multiplicative inverses. Let \(\alpha, \beta \in \overline{F}_L\). Since \(\alpha\) and \(\beta\) are algebraic over \(F\) and consequently \(\beta\) is algebraic over \(F(\alpha)\), we have that \([F(\alpha):F]<\infty\) and \([F(\alpha,\beta):F(\alpha)]<\infty\). Thus by the \hyperref[deg formula]{Degree Formula} the extension \(F(\alpha,\beta)/F\) is finite, and hence algebraic by \Cref{finite extension algebraic}. It follows that every element of \(F(\alpha,\beta)\) is algebraic over \(F\). In particular \(\alpha\pm\beta\), \(\alpha\beta\), and \(\alpha^{-1}\) (if \(\alpha \neq 0\)) are elements of \(F(\alpha,\beta) \subseteq \overline{F}_L\).
+      </p>
+    </div>
+  </section>
+
+  <p>
+    The notion of algebraic closure is closely related (pun intended) to being algebraically closed.
+  </p>
+
+  <section id="def-15-3-3" class="callout definition" aria-labelledby="def-15-3-3-title">
+    <h3 id="def-15-3-3-title">Definition 15.3.3</h3>
+    <div class="callout-body">
+      <p>
+        A field \(L\) is \strong{algebraically closed} if every polynomial \(f(x) \in L[x]\) that is not a constant has a root in \(L\).
+      </p>
+    </div>
+  </section>
+
+  <p>
+    This is equivalent to the condition that every nonconstant polynomial splits completely into linear factors.
+  </p>
+
+  <section id="ex-15-3-4" class="callout example" aria-labelledby="ex-15-3-4-title">
+    <h3 id="ex-15-3-4-title">Example 15.3.4</h3>
+    <div class="callout-body">
+      <p>
+        The Fundamental Theorem of Algebra says that any polynomial in \(\C[x]\) completely factors as a product of linear terms, thus \(\C\) is an algebraically closed field.
+      </p>
+    </div>
+  </section>
+
+  <section id="lem-15-3-5" class="callout lemma" aria-labelledby="lem-15-3-5-title">
+    <h3 id="lem-15-3-5-title">Lemma 15.3.5</h3>
+    <div class="callout-body">
+      <p>
+        If \(F \subseteq L\) is a field extension with \(L\) algebraically closed, then \(\overline{F}_L\) is also algebraically closed.
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-lem-15-3-5" class="callout proof" aria-labelledby="proof-lem-15-3-5-title">
+    <h3 id="proof-lem-15-3-5-title">Proof of Lemma 15.3.5</h3>
+    <div class="callout-body">
+      <p>
+        Let \(f \in \overline{F}_L[x]\) be a nonconstant polynomial. Since \(\overline{F}_L \subseteq L\), \(f \in L[x]\), and thus \(f\) has a root in \(L\), say \(\alpha \in L\). Since \(\alpha\) satisfies a polynomial in \(\overline{F}_L[x]\), it must then be algebraic over \(\overline{F}_L\). Thus \(\overline{F}_L \subseteq \overline{F}_L(\alpha)\) is an algebraic extension, and \(F \subseteq \overline{F}_L \subseteq \overline{F}_L(\alpha)\) is a composition of two algebraic extensions. By \Cref{algebraictower}, \(F \subseteq \overline{F}_L(\alpha)\) is algebraic. By definition, this says that \(\alpha\) is algebraic over \(F\), and thus \(\alpha \in \overline{F}_L\). Therefore, \(f\) has a root over \(\overline{F}_L\), and \(\overline{F}_L\) is algebraically closed.
+      </p>
+    </div>
+  </section>
+
+  <section id="rem-15-3-6" class="callout remark" aria-labelledby="rem-15-3-6-title">
+    <h3 id="rem-15-3-6-title">Remark 15.3.6</h3>
+    <div class="callout-body">
+      <p>
+        In contrast, if \(L/F\) is a field extension with \(L\) not algebraically closed, then \(\overline{F}_L\) need not be algebraically closed. For example, think of the extremal case when \(F=L\), where we must have \(\overline{F}_L=F\), which is not algebraically closed by assumption.
+      </p>
+    </div>
+  </section>
+
+  <section id="ex-15-3-7" class="callout example" aria-labelledby="ex-15-3-7-title">
+    <h3 id="ex-15-3-7-title">Example 15.3.7</h3>
+    <div class="callout-body">
+      <p>
+        \Cref{remark alg closure is algclosed} shows that the field \(\overline{\mathbb{Q}}\) defined in \Cref{example closure of Q} is algebraically closed.
+      </p>
+    </div>
+  </section>
+
+  <section id="def-15-3-8" class="callout definition" aria-labelledby="def-15-3-8-title">
+    <h3 id="def-15-3-8-title">Definition 15.3.8</h3>
+    <div class="callout-body">
+      <p>
+        Given a field \(F\), a field \(L\) is called an <strong>algebraic closure</strong> of \(F\) if \(F \subseteq L\) is an algebraic field extension and \(L\) is algebraically closed.
+      </p>
+    </div>
+  </section>
+
+  <section id="rem-15-3-9" class="callout remark" aria-labelledby="rem-15-3-9-title">
+    <h3 id="rem-15-3-9-title">Remark 15.3.9</h3>
+    <div class="callout-body">
+      <p>
+        Let \(L\) be an algebraic closure of \(F\). Since \(L\) is algebraically closed by definition, by \Cref{remark alg closure is algclosed} we conclude that \(\overline{F}_L\) is algebraically closed. On the other hand, since \(F \subseteq L\) is algebraic by definition, we conclude that \(\overline{F}_L = L\). This explains why we say \(L\) is an <em>algebraic closure</em> of \(F\).
+      </p>
+    </div>
+  </section>
+
+  <section id="ex-15-3-10" class="callout example" aria-labelledby="ex-15-3-10-title">
+    <h3 id="ex-15-3-10-title">Example 15.3.10</h3>
+    <div class="callout-body">
+      <ol>
+        <li>
+          <p>
+            Since \([\C : \mathbb{R}]=2\), the extension \(\mathbb{R} \subseteq \C\) is finite, and thus by \Cref{finite extension algebraic} the extension \(\mathbb{R} \subseteq \C\) must also be algebraic. Moreover, \(\C\) is algebraically closed by the Fundamental Theorem of Algebra. Thus \(\C\) is an algebraic closure of \(\mathbb{R}\).
+          </p>
+        </li>
+        <li>
+          <p>
+            By \Cref{remark alg closure is algclosed}, an algebraic closure inside an algebraically closed field is algebraically closed. Thus \(\overline{\mathbb{Q}}_\C=\{ z \in \C \mid z \text{ is algebraic over } \mathbb{Q} \}\) is an algebraic closure of \(\mathbb{Q}\).
+          </p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <p>
+    Next we will show that every field has a unique algebraic closure, so we can talk about <em>the</em> algebraic closure of a field. To do that, we first need a lemma.
+  </p>
+
+  <section id="lem-15-3-11" class="callout lemma" aria-labelledby="lem-15-3-11-title">
+    <h3 id="lem-15-3-11-title">Lemma 15.3.11</h3>
+    <div class="callout-body">
+      <p>
+        If \(L/F\) is an algebraic field extension and every nonconstant polynomial \(f(x) \in F[x]\) splits completely into linear factors in \(L[x]\), then \(L\) is algebraically closed and hence is an algebraic closure of \(F\).
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-lem-15-3-11" class="callout proof" aria-labelledby="proof-lem-15-3-11-title">
+    <h3 id="proof-lem-15-3-11-title">Proof of Lemma 15.3.11</h3>
+    <div class="callout-body">
+      <p>
+        Suppose \(g(x) \in L[x]\) is not constant. We need to prove \(g\) has a root in \(L\).
+        We may form a (possibly trivial) algebraic extension \(L \subseteq E\) such that \(g(x)\) has a root \(\alpha\) in \(E\). Note that \(E/F\) is algebraic and hence \(\alpha\) is algebraic over \(F\). So \(\alpha\) is a root of some \(f(x) \in F[x]\). But then \(f(x) = \prod_i (x - \beta_i) \in L[x]\) and it follows that \(\alpha\) must one of the \(\beta_i\), and hence belongs to \(L\).
+      </p>
+    </div>
+  </section>
+
+  <p>
+    We are going to use one more technical result, which will also be helpful to us later.
+  </p>
+
+  <section id="thm-15-3-12" class="callout theorem" aria-labelledby="thm-15-3-12-title">
+    <h3 id="thm-15-3-12-title">Theorem 15.3.12</h3>
+    <div class="callout-body">
+      <p>
+        Let \(F\) be a field, \(f\) be an irreducible nonconstant polynomial, and consider a field isomorphism \(\theta\!: F \to F'\). Consider the isomorphism \(\tilde\theta\!:F[x] \to F'[x]\) induced by \(\theta\), and let \(f'=\tilde\theta(f) \in F'[x]\) be the polynomial corresponding to \(f\). 
+        Let \(\alpha\) be any root of \(f\) in some field extension \(L\) of \(F\), and \(\alpha'\) be any root of \(f'\) in some field extension \(L'\) of \(F'\). Then there exists a field isomorphism
+      </p>
+      \[
+        \widehat{\theta}: F(\alpha) \to F'(\alpha')
+      \]
+      <p>
+        that extends the map \(\theta\) and sends \(\alpha\) to \(\alpha'\).
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-thm-15-3-12" class="callout proof" aria-labelledby="proof-thm-15-3-12-title">
+    <h3 id="proof-thm-15-3-12-title">Proof of Theorem 15.3.12</h3>
+    <div class="callout-body">
+      <p>
+        The key point is that
+      </p>
+      \[
+        F[x]/(f) \cong F(\alpha)
+      \]
+      <p>
+        via a map that is the identity on \(F\) and sends \(x\) to \(\alpha\), as we saw in \Cref{uniqueness of F(alpha) roots}. Thus we have
+      </p>
+      \[
+        F(\alpha) \cong F[x]/(f) \cong F'[x]/(f') \cong F'(\alpha')
+      \]
+      <p>
+        with the middle isomorphism induced by \(\theta\). Tracking through these maps shows that it extends \(\theta\) and sends \(\alpha\) to \(\alpha'\):
+      </p>
+      \[
+        \alpha \mapsto x + (f) \mapsto x + (f') \mapsto \alpha'.
+      \]
+    </div>
+  </section>
+
+  <p>
+    We are now ready to show that every field has an algebraic closure, and that algebraic closures are unique up to isomorphism.
+  </p>
+
+  <section id="thm-15-3-13" class="callout theorem" aria-labelledby="thm-15-3-13-title">
+    <h3 id="thm-15-3-13-title">Theorem 15.3.13 (Existence and uniqueness of algebraic closures)</h3>
+    <div class="callout-body">
+      <p>
+        For any field \(F\), there exists an algebraic closure of \(F\). If \(L\) and \(L'\) are two algebraic closures of the same field \(F\), then there exists a field isomorphism \(\phi: L \xrightarrow{\cong} L'\) such that \(\phi|_F = \mathrm{id}_F\).
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-thm-15-3-13-existence" class="callout proof" aria-labelledby="proof-thm-15-3-13-existence-title">
+    <h3 id="proof-thm-15-3-13-existence-title">Proof of existence of algebraic closures</h3>
+    <div class="callout-body">
+      <p>
+        First, we reduce the proof of existence to the following:
+      </p>
+
+      <p>
+        <u>Claim</u>: There is an algebraic field extension \(F \subseteq L\) such that every nonconstant polynomial in \(F[x]\) has at least one root in \(L\).
+      </p>
+
+      <p>
+        Let us assume the claim holds. By using this fact repeatedly, we may form a tower of field extensions
+      </p>
+      \[
+        F = F_0 \subseteq F_1 \subseteq F_2 \subseteq  \cdots
+      \]
+      <p>
+        such that, for all \(i\), the extension \(F_i \subseteq F_{i+1}\) is algebraic and every nonconstant polynomial in \(F_i[x]\) has at least one root in \(F_{i+1}\). At each step, we apply the claim to \(F_i\) to construct \(F_{i+1}\).
+      </p>
+
+      <p>
+        Let \(E := \cup_i F_i\). One can show \(E\) is a field and \(F \subseteq E\) is algebraic (exercise).
+        Given \(f \in F[x]\), by assumption \(f\) has a root \(\alpha\) in \(F_1\), and hence \(f\) factors as \(f(x) = (x-\alpha) g(x)\) for \(g(x) \in F_1[x]\). But then \(g\) has a root in \(F_2\) and hence factors in \(F_2[x]\). Repeating this we see \(f\) splits completely into linear factors in \(F_n[x]\), where \(n = \deg(f)\), and thus \(f\) splits completely into linear factors in \(E[x]\). By \Cref{lemma for existence and uniqueness of alg closures}, \(E\) is an algebraic closure of \(F\).
+      </p>
+
+      <p>
+        <u>Proof of Claim</u>:
+      </p>
+
+      <p>
+        Let \(S\) be the collection of all nonconstant polynomials with coefficients in \(F\), and for each \(f \in S\), pick an indeterminate \(y_f\).
+        Now we form the rather large polynomial ring \(R = F[y_f \mid f \in S]\). Let \(I\) be the ideal generated by \(f(y_f)\). We claim that  \(I\) is a proper ideal. If not, then \(1 \in I\), so we would have an equation of the form
+      </p>
+      \[
+        1 = g_1 f_1(y_{f_1}) + \cdots + g_m f_m(y_{f_m})
+      \]
+      <p>
+        in \(R\). There exists finite extension \(E\) of \(F\) in which each \(f_i\) has a root \(\alpha_i\): by \Cref{degreeF(a)}, \(f_i\) has a root \(\alpha_i\) in some extension of \(F\), and \(F(\alpha_1, \ldots, \alpha_n)\) is a finite extension of \(F\) by \Cref{adjoining finitely many algebraic elements is finite}. Evaluating the above equation by setting \(y_{f_i} = \alpha_i\), we get \(1 = 0\), which is impossible. This shows that \(I\) must be a proper ideal.
+      </p>
+
+      <p>
+        Since \(I\) is a proper ideal, it is contained in some maximal ideal \(\mathfrak{m}\). The quotient ring \(K := R/\mathfrak{m}\) is a field, and the composition \(F \hookrightarrow R \twoheadrightarrow K\) is a ring map \(F \to K\) between two fields, and thus must be injective. By a slight abuse of notation, we will think of this map as an actual inclusion.
+        For any \(f \in S\), in \(K\) we have \(f(y_f) = 0\), so the image \(\overline{y_f} \in K\) of \(y_f \in R\) is a root of \(f\). We have constructed a field extension \(F \subseteq K\) such that every \(f \in S\) has a least one root in~\(K\).
+      </p>
+
+      <p>
+        We are not quite done since it is not clear that \(K\) is algebraic over \(F\). For each \(f \in S\), pick a root \(\beta_f \in K\) of \(f\). Let \(L=F(\beta_f \mid f \in S) \subseteq K\).
+        Then \(L\) is algebraic over \(F\) and every member of \(S\) has at least one root in \(L\).
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-thm-15-3-13-uniqueness" class="callout proof" aria-labelledby="proof-thm-15-3-13-uniqueness-title">
+    <h3 id="proof-thm-15-3-13-uniqueness-title">Proof of uniqueness of algebraic closures</h3>
+    <div class="callout-body">
+      <p>
+        Suppose \(L\) and \(L'\) are two algebraic closures of \(F\).
+        Let \(S\) be the set of pairs \((E,i)\) where \(E\) is a subfield of \(L\) that contains \(F\) and \(i: E \hookrightarrow L'\) is a ring homomorphism with \(i|_F = \mathrm{id}_F\). Make \(S\) into a poset by declaring that \((E,i) \leq (E',i')\) whenever \(E \subseteq E'\) and \(i'|_E = i\).
+      </p>
+
+      <p>
+        One can show that \(S\) satisfies the hypotheses of Zorn's Lemma, and hence it has a maximal element \((E,i)\). We claim \(E\) must equal \(L\). If not, we can find \(\alpha \in L \setminus E\). Let \(p(x) = m_{\alpha, E}\) and set \(E' := i(E)\). So \(i\) maps \(E\) isomorphically onto \(E'\).
+        Let \(p'(x)\) be the polynomial in \(E'[x]\) corresponding to \(p(x)\) via \(i\), and pick any root \(\alpha'\) of \(p'(x)\) in \(L'\).
+        By \Cref{extending identity on F to iso}, there is an isomorphism \(E(\alpha) \to E'(\alpha')\)
+        extending the isomorphism \(i\). Since \(E(\alpha) \subseteq L\), and by assumption \(\alpha \notin E\), this contradicts the maximality of \((E, i)\).
+      </p>
+
+      <p>
+        Thus we have a field extension \(F \subseteq i(L) \subseteq L'\) with \(i(L) \cong L\) via an isomorphism that fixes \(F\). It follows that \(i(L)\) is also an algebraic closure of \(F\). Since \(L'/F\) is algebraic, we must have \(i(L) = L'\). Thus \(i\) is surjective, and thus an isomorphism.
+      </p>
+    </div>
+  </section>
+
+  <p>
+    We will then be able to talk about not just <em>an</em> algebraic closure of \(F\) but <em>the</em> algebraic closure of \(F\), so we can simplify our notation a bit.
+  </p>
+
+  <section id="def-15-3-14" class="callout definition" aria-labelledby="def-15-3-14-title">
+    <h3 id="def-15-3-14-title">Definition 15.3.14</h3>
+    <div class="callout-body">
+      <p>
+        Given a field \(F\), we will write \(\overline{F}\) for its algebraic closure inside an algebraically closed field extension of \(F\).
+      </p>
+    </div>
+  </section>
+
+  <section id="ex-15-3-15" class="callout example" aria-labelledby="ex-15-3-15-title">
+    <h3 id="ex-15-3-15-title">Example 15.3.15</h3>
+    <div class="callout-body">
+      <p>
+        The field \(\C\) is the algebraic closure of \(\mathbb{R}\), so we write \(\overline{\mathbb{R}} = \C\).
+      </p>
+    </div>
+  </section>
+
+  <section id="ex-15-3-16" class="callout example" aria-labelledby="ex-15-3-16-title">
+    <h3 id="ex-15-3-16-title">Example 15.3.16</h3>
+    <div class="callout-body">
+      <p>
+        In \Cref{example closure of Q}, we defined \(\overline{\mathbb{Q}}\) as the set of complex numbers that are algebraic over \(\mathbb{Q}\). In our notation from this chapter, this is what we denote by \(\overline{\mathbb{Q}}_\C\), the algebraic closure of \(\mathbb{Q}\) in \(\C\). Since \(\C\) is an algebraically closed field, this is <em>the</em> algebraic closure of \(\mathbb{Q}\), which explains our notation \(\overline{\mathbb{Q}}\) from \Cref{example closure of Q}. This field \(\overline{\mathbb{Q}}\) is sometimes called the <strong>field of algebraic numbers</strong>.
+      </p>
+    </div>
+  </section>
+
+  <section id="rem-15-3-17" class="callout remark" aria-labelledby="rem-15-3-17-title">
+    <h3 id="rem-15-3-17-title">Remark 15.3.17</h3>
+    <div class="callout-body">
+      <p>
+        Earlier we used the notation \(\overline{F}_L\) to denote the algebraic closure of \(F\) in \(L\). If \(L\) is an algebraically closed field, then by \Cref{remark alg closure is algclosed} we know that \(\overline{F}_L\) is also algebraically closed, and since it is by definition algebraic over \(F\), then \(\overline{F}_L\) is <em>an</em> algebraic closure of \(F\), so in fact this is <em>the</em> algebraic closure of \(F\) (defined only up to isomorphism).
+      </p>
+
+      <p>
+        In contrast, if \(L\) is not an algebraically closed field, we saw in \Cref{remark alg closure inside not alg closed field} that \(\overline{F}_L\) is not necessarily algebraically closed. In particular, \(\overline{F}_L\) is not necessarily an algebraic closure of \(F\), and thus \(\overline{F}_L\) and \(\overline{F}\) might denote completely different things.
+      </p>
+    </div>
+  </section>
+
+  <p>
+    From now on, many constructions will happen inside an algebraic closure of a given field, and we will use the notation \(\overline{F}\).
+  </p>
+
+  <section id="rem-15-3-18" class="callout remark" aria-labelledby="rem-15-3-18-title">
+    <h3 id="rem-15-3-18-title">Remark 15.3.18</h3>
+    <div class="callout-body">
+      <p>
+        Every algebraically closed field is infinite. Indeed, if \(F\) is a finite field, say \(F = \{ a_1, \ldots, a_n \}\), then the polynomial
+      </p>
+      \[
+        (x-a_1) \cdots (x-a_n) + 1 \in F[x]
+      \]
+      <p>
+        has no roots in \(F\). In particular, the algebraic closure of any finite field is infinite.
+      </p>
+    </div>
+  </section>
+  
+</section>
+
+
 
 </main>
 <footer aria-label="Course footer" role="contentinfo">
