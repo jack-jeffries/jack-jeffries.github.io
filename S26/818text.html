@@ -5981,6 +5981,389 @@ f(x) + (p(x)) & \longmapsto & f(\alpha)
   
 </section>
 
+<section id="sec-15-4" class="section" aria-labelledby="sec-15-4-title">
+  <h2 id="sec-15-4-heading">15.4 Splitting fields</h2>
+
+  <section id="def-15-4-1" class="callout definition" aria-labelledby="def-15-4-1-title">
+    <h3 id="def-15-4-1-title">Definition 15.4.1</h3>
+    <div class="callout-body">
+      <p>
+        Let \(F\) be a field and let \(f \in F[x]\) be a nonconstant polynomial. A <strong>splitting field</strong> of \(f\) over \(F\) is a field extension \(F \subseteq L\) such that \(f\) splits completely into linear factors in \(L[x]\), and \(f\) does not split completely into linear factors over any proper subfield of \(L\) that contains \(F\).
+      </p>
+    </div>
+  </section>
+
+  <p>
+    A splitting field of \(f\) is given by adjoining all the roots of \(f\).
+  </p>
+
+  <section id="lem-15-4-2" class="callout lemma" aria-labelledby="lem-15-4-2-title">
+    <h3 id="lem-15-4-2-title">Lemma 15.4.2</h3>
+    <div class="callout-body">
+      <p>
+        If \(F \subseteq E\) is a field extension such that \(f \in F[x]\) factors in \(E[x]\) as
+      </p>
+      \[
+        f = c\prod_{i=1}^n (x - \alpha_i)
+      \]
+      <p>
+        for some \(c,\alpha_1, \ldots, \alpha_n \in E\), then \(F(\alpha_1,\ldots,\alpha_n)\) is a splitting field for \(f\) over \(F\).
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-lem-15-4-2" class="callout proof" aria-labelledby="proof-lem-15-4-2-title">
+    <h3 id="proof-lem-15-4-2-title">Proof of Lemma 15.4.2</h3>
+    <div class="callout-body">
+      <p>
+        Note that \(c\) is just the coefficient of \(f\) in degree \(n\), and thus \(c \in F\). Thus \(f(x)\) also factors as
+      </p>
+      \[
+        f(x) = c \prod_{i=1}^n (x - \alpha_i)
+      \]
+      <p>
+        in \(F(\alpha_1,\ldots,\alpha_n)[x]\). Hence, given some splitting field \(L\) of \(f\) over \(F\), by the minimality condition in the definition, we must have \(L \subseteq F(\alpha_1,\dots, \alpha_n)\). However, the splitting field \(L\) must contain all roots of \(f\) in order for \(f\) to split completely in \(L[x]\), so we also have \(F(\alpha_1,\dots, \alpha_n) \subseteq L\).
+      </p>
+    </div>
+  </section>
+
+  <section id="rem-15-4-3" class="callout remark" aria-labelledby="rem-15-4-3-title">
+    <h3 id="rem-15-4-3-title">Remark 15.4.3</h3>
+    <div class="callout-body">
+      <p>
+        Note that there may be repetitions in the list \(\alpha_1,\ldots, \alpha_n\), but that does not affect the validity of anything here.
+      </p>
+    </div>
+  </section>
+
+  <section id="thm-15-4-4" class="callout theorem" aria-labelledby="thm-15-4-4-title">
+    <h3 id="thm-15-4-4-title">Theorem 15.4.4 (Existence of splitting fields)</h3>
+    <div class="callout-body">
+      <p>
+        Let \(F\) be a field and \(f \in F[x]\) a nonconstant polynomial. There exists a splitting field \(L\) for \(f\) over \(F\).
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-thm-15-4-4" class="callout proof" aria-labelledby="proof-thm-15-4-4-title">
+    <h3 id="proof-thm-15-4-4-title">Proof of Theorem 15.4.4</h3>
+    <div class="callout-body">
+      <p>
+        Let \(\overline{F}\) be an algebraic closure of \(F\), which exists by the Theorem from last time. Let \(\alpha_1, \ldots, \alpha_m\) be the roots of \(f\) in \(\overline{F}\). By construction, \(F(\alpha_1, \ldots, \alpha_m)\) is a splitting field of \(f\).
+      </p>
+    </div>
+  </section>
+
+  <section id="ex-15-4-5" class="callout example" aria-labelledby="ex-15-4-5-title">
+    <h3 id="ex-15-4-5-title">Example 15.4.5</h3>
+    <div class="callout-body">
+      <ol>
+        <li>
+          <p>
+            As a silly example, if \(f\) already splits into linear factors over \(F[x]\), then \(F\) itself is the splitting field of \(f\) over \(F\).
+          </p>
+        </li>
+        <li>
+          <p>
+            The splitting field of \(f = x^2 + 1\) over \(\mathbb{R}\) is \(\mathbb{C}\): the roots of \(f\) are \(i\) and \(-i\), and \(\mathbb{R}(i,-i) = \mathbb{C}\).
+          </p>
+        </li>
+        <li>
+          <p>
+            Let \(q\) be any irreducible quadratic polynomial in \(\mathbb{R}[x]\). You will show that the splitting field of \(q\) is \(\mathbb{C}\).
+          </p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="rem-15-4-6" class="callout remark" aria-labelledby="rem-15-4-6-title">
+    <h3 id="rem-15-4-6-title">Remark 15.4.6</h3>
+    <div class="callout-body">
+      <p>
+        In general, to form a field extension given by adjoining all the roots of two polynomials \(g_1\) and \(g_2\) amounts to forming a splitting field of their product \(g_1 g_2\). This naturally generalizes to any number of polynomials \(g_1, \ldots, g_n\): to adjoin all the roots of \(g_1, \ldots, g_n\) is the same as forming the splitting field of \(g_1 \cdots g_n\).
+      </p>
+    </div>
+  </section>
+
+  <p>
+    It seems intuitive that by adjoining all the roots of \(f \in F[x]\) to \(F\), we will get a unique field (up to isomorphism). That is, it seems intuitive that splitting fields are unique up to isomorphism. This is indeed true, but the proof is a bit technical. We will actually show something a bit stronger.
+  </p>
+
+  <section id="thm-15-4-7" class="callout theorem" aria-labelledby="thm-15-4-7-title">
+    <h3 id="thm-15-4-7-title">Theorem 15.4.7</h3>
+    <div class="callout-body">
+      <p>
+        Let \(F\) be a field, \(f\) be a nonconstant polynomial, and a field isomorphism \(\theta\!: F \to F'\). Consider the isomorphism \(\tilde\theta\!:F[x] \to F'[x]\) induced by \(\theta\), and let \(f'=\tilde\theta(f) \in F'[x]\) be the polynomial corresponding to \(f\). 
+        Suppose \(L\) is a splitting field of \(f\) over \(F\) and \(L'\) is a splitting field of \(f'\) over \(F'\). Then there is a field isomorphism \(\widehat{\theta}: L \to L'\) extending \(\theta\).
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-thm-15-4-7" class="callout proof" aria-labelledby="proof-thm-15-4-7-title">
+    <h3 id="proof-thm-15-4-7-title">Proof of Theorem 15.4.7</h3>
+    <div class="callout-body">
+      <p>
+        We proceed by induction on the degree \(n\) of \(f\).
+        If \(f\) is linear, then so is \(f'\), and in this case \(L = F\) and \(L' = F'\).
+      </p>
+
+      <p>
+        Let \(p\) be any irreducible factor of \(f\), and let \(\alpha \in L\) be any one of the roots of \(p\).
+        Let \(p'=\tilde\theta(p)\) be the irreducible polynomial in \(F'[x]\) that corresponds to \(p\), and let \(\alpha'\) be any one of the roots of \(p'\). By a Theorem from the previous section, there is an isomorphism
+      </p>
+      \[
+        \phi\!: F(\alpha) \to F'(\alpha')
+      \]
+      <p>
+        extending \(\theta\) and sending \(\alpha\) to \(\alpha'\).
+      </p>
+
+      <p>
+        In \(F(\alpha)\), \(f\) factors as \(f = (x-\alpha) g\), and in \(F'(\alpha')\). Moreover, since \(\phi\) extends \(\theta\) and \(\phi(\alpha) = \alpha'\), it follows that \(\phi(x-\alpha)= x- \alpha'\). Therefore, the corresponding polynomial \(f' = \phi(f)\) factors as \(f' = (x- \alpha') g'\), and we have
+      </p>
+      \[
+        (x-\alpha') \phi(g) = \phi(x-\alpha) \phi(g) = \phi((x-\alpha) g) = \phi(f) = f' = (x-\alpha') g'.
+      \]
+      <p>
+        Since \(F'\) is a domain, we conclude that \(\phi(g) = g'\).
+      </p>
+
+      <p>
+        Since \(L\) is a splitting field of \(f\) over \(F\), \(f\) factors completely over \(L\) and thus so must \(g\). Moreover, any other field \(E \supseteq F(\alpha)\) containing all the roots of \(g\) would also contain \(\alpha\), and thus all the roots of \(f\), and thus \(E = L\).
+        Thus \(L\) is a splitting field for \(g\) over \(F(\alpha)\), and \(L'\) is a splitting field of \(g'\) over \(F(\alpha')\).
+        Since \(\deg(g) < \deg(f) = n\), it follows by induction that there is a field isomorphism \(\widehat{\theta}: L \to L'\) that extends \(\phi\) and hence extends \(\theta\).
+      </p>
+    </div>
+  </section>
+
+  <section id="cor-15-4-8" class="callout corollary" aria-labelledby="cor-15-4-8-title">
+    <h3 id="cor-15-4-8-title">Corollary 15.4.8 (Uniqueness of the splitting field of \(f(x)\) over the base field \(F\))</h3>
+    <div class="callout-body">
+      <p>
+        Any two splitting fields \(L\) and \(L'\) of \(f(x) \in F[x]\) over \(F\) are isomorphic via an isomorphism \(\phi:L\to L'\) that fixes \(F\), i.e. \(\phi|_F=\mathrm{id}_F\).
+      </p>
+    </div>
+  </section>
+
+
+  <p>
+    We will now be referring to <em>the</em> splitting field of \(F\), rather than <em>a</em> splitting field, thanks to the uniqueness result above.
+  </p>
+
+  <section id="cor-15-4-9" class="callout corollary" aria-labelledby="cor-15-4-9-title">
+    <h3 id="cor-15-4-9-title">Corollary 15.4.9</h3>
+    <div class="callout-body">
+      <p>
+        If \(L\) is the splitting field over \(F\) of an irreducible polynomial \(f(x) \in F[x]\) and if \(\alpha, \beta \in L\) are any two roots of \(f\), then there is a field automorphism \(s\!: L \to L\) such that \(s|_F = \mathrm{id}_F\) and \(s(\alpha) = \beta\).
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-cor-15-4-9" class="callout proof" aria-labelledby="proof-cor-15-4-9-title">
+    <h3 id="proof-cor-15-4-9-title">Proof of Corollary 15.4.9</h3>
+    <div class="callout-body">
+      <p>
+        We basically already proved this, but since it is of large importance, let's do so again:
+      </p>
+
+      <p>
+        Since \(\alpha, \beta\) are roots of the same irreducible polynomial, by the uniqueness of roots up to isomorphism there is an isomorphism \(\tau: F(\alpha) \to F(\beta)\) such that \(\tau|_F = \mathrm{id}_F\) and \(\tau(\alpha) = \beta\).
+        We have two field maps, the inclusion \(F(\alpha) \hookrightarrow L\) and the composition of \(F(\alpha) \xrightarrow{\tau} F(\beta) \hookrightarrow L\), and realize \(L\) as the splitting field of \(f\) over \(F(\alpha)\) in two different ways. Since splitting fields are unique, by uniqueness of splitting fields up to isomorphism, an isomorphism such as \(s\) exists.
+      </p>
+    </div>
+  </section>
+
+  <section id="ex-15-4-10" class="callout example" aria-labelledby="ex-15-4-10-title">
+    <h3 id="ex-15-4-10-title">Example 15.4.10</h3>
+    <div class="callout-body">
+      <p>
+        Let \(L\) be the splitting field of \(x^3 - 2\) over \(\mathbb{Q}\), so
+      </p>
+      \[
+        L = \mathbb{Q}(\sqrt[3]{2}, e^{2 \pi i/3}\sqrt[3]{2}, e^{4 \pi i/3}\sqrt[3]{2}).
+      \]
+      <p>
+        Corollary 15.4.9 says that there is a field automorphism \(s\) of \(L\) such that
+      </p>
+      \[
+        s(e^{2 \pi i/3}\sqrt[3]{2}) = e^{4 \pi i/3}\sqrt[3]{2}.
+      \]
+      <p>
+        In fact, complex conjugation gives such an isomorphism.
+      </p>
+
+      <p>
+        Corollary 15.4.9 also says that there is a field automorphism \(\tau\) of \(L\) such that
+      </p>
+      \[
+        \tau(\sqrt[3]{2}) = e^{2 \pi i/3}\sqrt[3]{2},
+      \]
+      <p>
+        but it is not as clear what map this \(\tau\) is.
+      </p>
+    </div>
+  </section>
+
+  <section id="ex-15-4-11" class="callout example" aria-labelledby="ex-15-4-11-title">
+    <h3 id="ex-15-4-11-title">Example 15.4.11</h3>
+    <div class="callout-body">
+      <p>
+        The splitting field of \(f(x) = x^4 - 5x^2 + 6 = (x^2 - 2)(x^2 - 3)\) is
+      </p>
+      \[
+        \mathbb{Q}(\sqrt{2}, -\sqrt{2}, \sqrt{3}, -\sqrt{3}) = \mathbb{Q}(\sqrt{2}, \sqrt{3}) = \mathbb{Q}(\sqrt{2} + \sqrt{3}).
+      \]
+      <p>
+        Note that we have shown the last equality. This is an example where the splitting field of \(f \in F[x]\) is not the algebraic closure of \(F\): we showed that \([\mathbb{Q}(\sqrt{2} + \sqrt{3}) : \mathbb{Q}] = 4\), while Professor Marley showed that \([\overline{\mathbb{Q}} : \mathbb{Q}] = \infty\). Thus \(\mathbb{Q}(\sqrt{2} + \sqrt{3}) \subsetneq \overline{\mathbb{Q}}\).
+      </p>
+    </div>
+  </section>
+
+  <section id="lem-15-4-12" class="callout lemma" aria-labelledby="lem-15-4-12-title">
+    <h3 id="lem-15-4-12-title">Lemma 15.4.12</h3>
+    <div class="callout-body">
+      <p>
+        For every field \(F\) and every nonconstant polynomial \(f \in F[x]\) of degree \(n \geqslant 1\), every splitting field \(L\) for \(f\) over \(F\) satisfies \([L:F]\leqslant n!\).
+      </p>
+    </div>
+  </section>
+
+
+</section>
+
+
+  <section id="proof-lem-15-4-12" class="callout proof" aria-labelledby="proof-lem-15-4-12-title">
+    <h3 id="proof-lem-15-4-12-title">Proof of Lemma 15.4.12</h3>
+    <div class="callout-body">
+      <p>
+        By \Cref{uniqueness of splitting fields}, splitting fields are unique up to isomorphism, so we just need to show that there exists a splitting field \(L\) for \(f\) over \(F\) with \([L:F]\leqslant n!\).
+      </p>
+
+      <p>
+        Intuitively, we just need to adjoin all the roots of \(f\), which is possible since we already know we can adjoint a root of any polynomial. More formally, we start by showing that there is a field extension \(E/F\) such that \(f\) splits completely in \(E[x]\), but without the minimality condition. Proceed by induction on the degree \(n\) of \(f\). In the base case, \(n=1\), so \(f\) is linear and so \(E = F\) works.
+      </p>
+
+      <p>
+        Assume \(f\) has degree \(n>1\). We proved that there exists a field extension \(K\) of \(F\) such that \(f\) has a root \(\alpha\).
+        In \(K[x]\) we have \(f= (x-\alpha) g\) with \(\deg(g) = \deg(f)-1=n-1\). By induction, there is a field extension \(E\) of \(K\) with \([E:K] \leqslant (n-1)!\) in which \(g\) splits completely. Then \(f\) also splits completely in \(E\) and by the Degree Formula,
+      </p>
+      \[
+        [E:F]=[E:K][K:F] \leqslant (n-1)!n=n!.
+      \]
+      <p>
+        Finally, let
+      </p>
+      \[
+        f(x) = \prod_i (x - \alpha_i)
+      \]
+      <p>
+        be the factorization of \(f\) in \(E[x]\), and set \(L = F(\alpha_1, \dots, \alpha_n)\). Thus \(L\) is a splitting field of \(f\) over \(F\). By the Degree Formula,
+      </p>
+      \[
+        [E:F(\alpha_1, \dots, \alpha_n)][F(\alpha_1, \dots, \alpha_n):F] = [E:F] \leqslant n! \implies [F(\alpha_1, \dots, \alpha_n):F] \leqslant n!.
+      \]
+    </div>
+  </section>
+
+  <p>
+    The degree of the splitting field of \(f\) can be \(n!\), but it can also be much smaller.
+  </p>
+
+  <section id="ex-15-4-13" class="callout example" aria-labelledby="ex-15-4-13-title">
+    <h3 id="ex-15-4-13-title">Example 15.4.13</h3>
+    <div class="callout-body">
+      <p>
+        Let us find the splitting field \(L\) of \(x^3 -2\) over \(\mathbb{Q}\), and the degree of this field.
+        Its roots in \(\mathbb{C}\) are \(\sqrt[3]{2}\), \(\zeta_3 \sqrt[3]{2}\), and \(\zeta_3^2 \sqrt[3]{2}\), where \(\zeta_3 = e^{\frac{2 \pi i}{3}}\).
+        So
+      </p>
+      \[
+        L = \mathbb{Q}(\sqrt[3]{2}, \zeta_3 \sqrt[3]{2}, \zeta_3^2 \sqrt[3]{2}).
+      \]
+      <p>
+        It is useful to simplify this a bit, by noting that
+      </p>
+      \[
+        \zeta_3 = \frac{\zeta_3^2 \sqrt[3]{2}}{\zeta_3 \sqrt[3]{2}} \in L
+      \]
+      <p>
+        and thus
+      </p>
+      \[
+        L = \mathbb{Q}(\sqrt[3]{2}, \zeta_3).
+      \]
+
+      <p>
+        We know from \Cref{degree splitting field n!} above that \([L: \mathbb{Q}] \leqslant 3! = 6\). We claim it is exactly \(6\). First, we have
+      </p>
+      \[
+        \mathbb{Q} \subseteq \mathbb{Q}(\sqrt[3]{2}) \subseteq L.
+      \]
+      <p>
+        Moreover, \(x^3 - 2\) is irreducible over \(\mathbb{Q}\), and \(\sqrt[3]{2}\) satisfies this polynomial, so it must be the minimal polynomial of \(\sqrt[3]{2}\) over \(\mathbb{Q}\). Thus \([\mathbb{Q}(\sqrt[3]{2}): \mathbb{Q}] = 3\).
+        Note that \(\mathbb{Q}(\sqrt[3]{2}) \subseteq \mathbb{R}\) but \(\zeta_3\) is not real, so \(\mathbb{Q}(\sqrt[3]{2}) \subseteq L\) has degree at least two. The \hyperref[deg formula]{Degree Formula} shows that
+      </p>
+      \[
+        [L:\mathbb{Q}] =  [L : \mathbb{Q}(\sqrt[3]{2})] [\mathbb{Q}(\sqrt[3]{2}): \mathbb{Q}] \geqslant 3 \cdot 2= 6.
+      \]
+      <p>
+        We know that \([L:\mathbb{Q}] \leqslant 6\), so we conclude that \([L:\mathbb{Q}] = 6\).
+      </p>
+    </div>
+  </section>
+
+  <section id="ex-15-4-14" class="callout example" aria-labelledby="ex-15-4-14-title">
+    <h3 id="ex-15-4-14-title">Example 15.4.14</h3>
+    <div class="callout-body">
+      <p>
+        Let \(f(x) = x^n -1 \in \mathbb{Q}[x]\). Then \(f\) splits completely in
+        \(\mathbb{C}[x]\), and its \(n\) many roots are the \(n\)th roots of \(1\). One of these
+        is \(\zeta_n := e^{2 \pi i/n}\). Notice that every other \(n\)th root of \(1\) is a power of this one.
+        Thus \(\mathbb{Q}(\zeta_n)\) is the splitting field of \(x^n-1\) over \(\mathbb{Q}\).
+        This is a somewhat special example: upon adjoining one of the roots of \(f\) we got all the others for free. This happens in other examples too, but it is certainly <em>not</em> a general principle.
+      </p>
+
+      <p>
+        In particular, we see that the degree of \(\mathbb{Q} \subseteq \mathbb{Q}(\zeta_n)\) is at most \(n\), far less than the bound of \(n!\).
+        In fact, it is at most \(n-1\), since \(f\) factors as \((x-1)(x^{n-1} + \cdots + x + 1)\), and hence the minimum polynomial of \(\zeta_n\) is a divisor of \(x^{n-1} + \cdots + x + 1\).
+      </p>
+
+      <p>
+        When \(n = p\) is prime, then one can show that \(x^{p-1} + \cdots + x + 1\) is irreducible, and hence it must equal the minimum polynomial of \(\zeta_p\). So, in this case, the degree of \(\mathbb{Q} \subseteq \mathbb{Q}(\zeta_p)\) is exactly \(p-1\).
+        However, the degree of \(\mathbb{Q} \subseteq \mathbb{Q}(\zeta_n)\) can be smaller that \(n-1\) in general; for example, when \(n = 4\), \(\zeta_4  = i\) and \([\mathbb{Q}(i): \mathbb{Q}] = 2\). Note that \(x^3 + x^2 + x + 1\) factors as
+      </p>
+      \[
+        x^3 + x^2 + x + 1 = (x^2+1)(x+1)
+      \]
+      <p>
+        and \(m_{i, \mathbb{Q}}(x) = x^2 + 1\).
+      </p>
+    </div>
+  </section>
+
+  <section id="ex-15-4-15" class="callout example" aria-labelledby="ex-15-4-15-title">
+    <h3 id="ex-15-4-15-title">Example 15.4.15</h3>
+    <div class="callout-body">
+      <p>
+        You showed that the splitting field \(F\) of \(f = x^4 + 5 \in \mathbb{Q}[x]\) is a degree \(8\) extension of \(\mathbb{Q}\), and again \(8&lt;4!=24\). This is also an example where adding one root does not give us the entire splitting field: since \(f\) is irreducible over \(\mathbb{Q}\), which one can show via Eisenstein's Criterion, then for any root \(\alpha\) of \(f\) we must have \([\mathbb{Q}(\alpha) : \mathbb{Q}] = 4\), but since \([F:\mathbb{Q}] = 8\), then \(\mathbb{Q}(\alpha)\) must not contain at least one of the other roots of \(f\).
+      </p>
+
+      <p>
+        Here is another interesting feature of this example: let
+      </p>
+      \[
+        \alpha_1 = e^{\pi i/4}\sqrt[4]{5}, \quad
+        \alpha_2 = e^{3\pi i/4}\sqrt[4]{5}, \quad
+        \alpha_3 = e^{5\pi i/4}\sqrt[4]{5}, \quad
+        \alpha_4 = e^{7\pi i/4}\sqrt[4]{5},
+      \]
+      <p>
+        and note that these are the four roots of \(f\). You showed that \(\mathbb{Q}(\alpha_1 + \alpha_4) \subseteq \mathbb{R}\), but since \(\alpha_1, \ldots, \alpha_4 \notin \mathbb{R}\), this says that none of the roots (including \(\alpha_1\) and \(\alpha_2\) is in \(\mathbb{Q}(\alpha_1 + \alpha_4)\). This is in stark contrast with the example \(\mathbb{Q}(\sqrt{2}+\sqrt{3}) = \mathbb{Q}(\sqrt{2}, \sqrt{3})\) from before.
+      </p>
+    </div>
+  </section>
+</section>
 
 
 </main>

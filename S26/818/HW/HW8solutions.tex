@@ -1,0 +1,209 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,enumerate,bbm}
+\usepackage[]{graphicx}
+\usepackage{color,subfigure}
+\definecolor{scarlet}{rgb}{0.81,0,0}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage[all]{xypic}
+\usepackage[colorlinks=true,citecolor=scarlet,linkcolor=scarlet]{hyperref}
+\usepackage{colonequals}
+
+\usepackage{fancyhdr, lastpage}
+\pagestyle{fancy}
+\fancyfoot[C]{{\thepage} of \pageref{LastPage}}
+
+
+
+\DeclareMathOperator{\mSpec}{mSpec}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Ass}{Ass}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\height}{height}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\ann}{ann}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\coker}{coker}
+%\DeclareMathOperator{\ker}{ker}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\M}{M}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\ch}{char}
+\DeclareMathOperator{\Aut}{Aut}
+
+%\DeclareMathOperator{\dim}{dim}
+
+\DeclareMathOperator{\lcm}{lcm}
+
+\def\ra{\rightarrow}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\ov}[1]{\overline{#1}}
+\newcommand{\norm}{\trianglelefteq}
+
+\def\ov#1{\overline{#1}}
+
+
+\title{}
+\date{\vspace{-0.5in}}
+
+\makeatletter
+\g@addto@macro\@floatboxreset\centering
+\makeatother
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+
+\begin{document}
+
+\thispagestyle{fancy}
+\pagestyle{fancy}
+\rhead{UNL $\mid$ Spring 2026}
+\lhead{Introduction to Modern Algebra II}
+
+\vspace{3em}
+
+\begin{center}
+	{\LARGE Problem Set 8 \\}
+	Due Thursday, March 26
+\end{center}
+
+\
+
+\noindent
+{\bf Instructions:}
+You are encouraged to work together on these problems, but each student should hand in their own final draft, written in a way that indicates their individual understanding of the solutions. Never submit something for grading that you do not completely understand. You cannot use any resources besides me, your classmates, and our course notes.
+
+
+I will post the .tex code for these problems for you to use if you wish to type your homework. If you prefer not to type, please  {\em write neatly}. As a matter of good proof writing style, please use complete sentences and correct grammar. You may use any result stated or proven in class or in a homework problem, provided you reference it appropriately by either stating the result or stating its name (e.g. the definition of ring or Lagrange's Theorem). Please do not refer to theorems by their number in the course notes, as that can change.
+
+
+\
+
+\begin{problem} Let 
+\[ A = \begin{bmatrix} -2 & 0 & 0 \\  -1 & -4 & 0 \\ 2 & 4 & 0 \end{bmatrix}  \qquad \text{and} \qquad B = \begin{bmatrix} -2 & 0 & 0 \\  -1 & -4 & -1 \\ 2 & 4 & 0 \end{bmatrix} \in \mathrm{Mat}_{3 \times 3}(\R).\]
+\begin{enumerate}
+\item[(a)] Find the rational canonical form for $A$ and $B$.
+\item[(b)] Find the Jordan canonical form for $A$ and $B$, if they exist.
+\item[(c)] Determine if $A$ and $B$ are diagonalizable.
+\end{enumerate}
+\end{problem}
+
+\begin{proof}
+We begin by computing the invariant factors for $A$ and $B$. Following the usual technique, we find the Smith Normal Form for $xI-A$ and $xI-B$ and use this to compute the invariant factors (omitted here, since we have done this a few times already). In this case, the unique invariant factor of $A$ is $x^3+6x^2+8x=x(x+2)(x+4)$, and the invariant factors of $B$ are $x+2$ and $x^2+4x+4=(x+2)^2$.
+\begin{enumerate}
+\item[(a)] From the invariant factors we write down the RCF:
+\[ \mathrm{RCF}(A) = \begin{bmatrix} 0 & 0 & 0 \\ 1 & 0 & -8 \\ 0 & 1 & -6\end{bmatrix} \qquad  \mathrm{RCF}(B) = \begin{bmatrix} -2 & 0 & 0 \\ 0 & 0 & -4 \\ 0 & 1 & -4 \end{bmatrix} .\]
+\item[(b)] We translate invariant factors into elementary divisors to get the JCF. Note that each invariant factor is a product of linear polynomials so the JCF does exist in each case. The elementary divisors for $A$ are $x, x+2, x+4$, and the elemenray divisors for $B$ are $x+2, (x+2)^2$. Thus we get
+\[ \mathrm{JCF}(A) = \begin{bmatrix} 0 & 0 & 0 \\ 0 & -2 & 0 \\ 0 & 0 & -4 \end{bmatrix} \qquad  \mathrm{JCF}(B) = \begin{bmatrix} -2 & 0 & 0 \\ 0 & -2 & 1 \\ 0 & 0 & -2 \end{bmatrix} .\]
+\item[(c)] We know that a matrix is diagonalizable if and only it has a JCF and the JCF is diagonal, so $A$ is diagonalizable while $B$ is not.
+\end{enumerate}
+
+
+\end{proof}
+
+
+\begin{problem}
+Let $F$ be a field and $A,B\in \mathrm{Mat}_{n}(F)$.
+\begin{enumerate}
+\item[(a)] Show that $A$ is similar to its transpose $A^T$.
+\item[(b)] Let $L\supseteq F$ be a field extension\footnote{That is, $F$ is a subfield of $L$.} of $F$. Show that if $A$ and $B$ are similar over $L$, then $A$ and $B$ are similar over $F$.
+\end{enumerate}
+\end{problem}
+
+\begin{proof}
+\begin{enumerate}
+\item[(a)] We know that two matrices are similar if and  only if they have the same list of invariant factors. Recall that the invariant factors of $A$ can be computed from determinants as follows: if $h_t(A)$ is the monic generator of $I_t(xI-A)$, then the invariant factor $g_t(A)$ is $h_1(A)$ for $t=1$ and $h_t(A)/h_{t-1}(A)$ for $t>1$.
+
+We also note that $I_t(xI-A^T) = I_t( (xI-A)^T ) = I_t(xI-A)$, since the transpose of a submatrix of $A$ is a submatrix of the transpose of $A^T$, and the determinant of a matrix equals that of its transpose. It follows that $h_t(A) = h_t(A^T)$ and thus $g_t(A)=g_t(A^T)$ for all $t$. Thus, $A$ and $A^T$ are similar.
+\item[(b)] Suppose that $A$ and $B$ are similar over $L$. Then $g_t(A)=g_t(B)$ in the notation of the previous part. But $g_t(A)$ does not depend on the field $L$ or $K$, so $A$ and $B$ are similar over $K$.
+\end{enumerate}
+
+\end{proof}
+
+\begin{problem} List all possible rational canonical forms over $\Q$ and Jordan canonical forms over $\C$
+for $8 \times 8$ matrices with determinant $81$ and minimal polynomial $(x-3)^2(x^2 + 1)$. Carefully justify your answer.
+\end{problem}
+
+\begin{proof}
+Note that any invariant factor of $A$ divides the minimal polynomial. Since $A$ is $8 \times 8$, the characteristic polynomial of $A$ has degree $8$ and is the product of all of the invariant factors. Finally, since the determinant of $A$ is $81$, we know that the constant term of the characteristic polynomial is $(-1)^8 81 = 81$. It follows that the characteristic polynomial must be $(x-3)^4 (x^2+1)^2$.
+
+We use this information to give the possible lists of invariant factors over $\Q$. The multiplicities of $x-3$ in the invariant factors must be either $2,2$ or $1,1,2$; note that the multiplicities must be increasing since the invariant factors divide each other, and the last must be $2$ from the minimal polynomial. The multiplicities of $x^2+1$ in the invariant factors must be $1,1$. Thus, the possible lists of invariant factors over $\Q$ are 
+\[ x-3 \, | \, (x-3)(x^2+1) \, | \, (x-3)^2(x^2 + 1)\]
+\[  (x-3)^2(x^2+1) \, | \, (x-3)^2(x^2 + 1).\]
+These give the two RCFs
+\[ \begin{bmatrix} 
+3 & 0 & 0 & 0 & 0 & 0 & 0 & 0  \\
+ 0 & 0 & 0 & 3 & 0 & 0 & 0 & 0  \\ 
+  0 & 1 & 0 & -1 & 0 & 0 & 0 & 0  \\ 
+   0 & 0 & 1 & 3 & 0 & 0 & 0 & 0  \\ 
+    0 & 0 & 0 & 0 & 0 & 0 & 0 & -9  \\ 
+     0 & 0 & 0 & 0 & 1 & 0 & 0 & 6  \\ 
+      0 & 0 & 0 & 0 & 0 & 1 & 0 & -10  \\ 
+       0 & 0 & 0 & 0 & 0 & 0 & 1 & 6  
+       \end{bmatrix} \qquad 
+       \begin{bmatrix} 
+0 & 0 & 0 & -9 & 0 & 0 & 0 & 0  \\
+ 1 & 0 & 0 & 6 & 0 & 0 & 0 & 0  \\ 
+  0 & 1 & 0 & -10 & 0 & 0 & 0 & 0  \\ 
+   0 & 0 & 1 & 6 & 0 & 0 & 0 & 0  \\ 
+    0 & 0 & 0 & 0 & 0 & 0 & 0 & -9  \\ 
+     0 & 0 & 0 & 0 & 1 & 0 & 0 & 6  \\ 
+      0 & 0 & 0 & 0 & 0 & 1 & 0 & -10  \\ 
+       0 & 0 & 0 & 0 & 0 & 0 & 1 & 6  
+       \end{bmatrix}.\]
+      
+       For the JCF over $\C$, we decompose the invariant factors into elementary divisors. These are
+       \[ x-3 , x-3, (x-3)^2, x-i, x-i, x+i, x+i ; \]
+\[(x-3)^2,(x-3)^2, x-i, x-i, x+i, x+i.\]
+This gives the two JCFs
+\[ \begin{bmatrix} 
+3 & 0 & 0 & 0 & 0 & 0 & 0 & 0  \\
+ 0 & 3 & 0 & 0 & 0 & 0 & 0 & 0  \\ 
+  0 & 0 & 3 & 1 & 0 & 0 & 0 & 0  \\ 
+   0 & 0 & 0 & 3 & 0 & 0 & 0 & 0  \\ 
+    0 & 0 & 0 & 0 & i & 0 & 0 & 0  \\ 
+     0 & 0 & 0 & 0 & 0 & i & 0 & 0  \\ 
+      0 & 0 & 0 & 0 & 0 & 0 & -i & 0  \\ 
+       0 & 0 & 0 & 0 & 0 & 0 & 0 & -i  
+       \end{bmatrix} \qquad 
+  \begin{bmatrix} 
+3 & 1 & 0 & 0 & 0 & 0 & 0 & 0  \\
+ 0 & 3 & 0 & 0 & 0 & 0 & 0 & 0  \\ 
+  0 & 0 & 3 & 1 & 0 & 0 & 0 & 0  \\ 
+   0 & 0 & 0 & 3 & 0 & 0 & 0 & 0  \\ 
+    0 & 0 & 0 & 0 & i & 0 & 0 & 0  \\ 
+     0 & 0 & 0 & 0 & 0 & i & 0 & 0  \\ 
+      0 & 0 & 0 & 0 & 0 & 0 & -i & 0  \\ 
+       0 & 0 & 0 & 0 & 0 & 0 & 0 & -i  
+             \end{bmatrix}.\]
+
+\end{proof}
+
+\begin{problem} Let $V$ be a finite-dimensional vector space over a field $F$. Let $\phi:V\to V$ be a linear transformation. For an eigenvalue $\lambda$ of $\phi$, we say that
+\begin{itemize}
+\item the \textbf{arithmetic multiplicity} of $\lambda$ is the multiplicity of $\lambda$ as a root of $c_\phi(x)$; i.e., the largest $e$ such that $(x-\lambda)^e \ | \ c_\phi(x)$, and
+\item the \textbf{geometric multiplicity} of $\lambda$ is the dimension of $\ker(\phi-\lambda \mathrm{id}_V)$.
+\end{itemize}
+Show that $\phi$ is diagonalizable if and only if $c_\phi(x)$ factors as a product of linear factors and for each eigenvalue $\lambda$ of $\phi$, the arithmetic multiplicity of $\lambda$ equals the geometric multiplicity of $\lambda$.
+\end{problem}
+
+\begin{proof}
+We know that $\phi$ is diagonalizable if and only if $c_\phi(x)$ factors as a product of linear factors and the Jordan form of $\phi$ is diagonal. Thus, we can assume that $\phi$ has a Jordan form, and it suffices to show that a matrix $A$ in Jordan canonical form is diagonal if and only if for each eigenvalue $\lambda$ of $\phi$, the arithmetic multiplicity of $\lambda$ equals the geometric multiplicity of $\lambda$.
+
+First, suppose that $A$ is an $n\times n$ diagonal matrix. From the relationship between the Jordan canonical form and the elementary divisors, we know that the number of diagonal entries with value $\lambda$ equals the number $a$ of elementary divisors of the form $x-\lambda$, which is equal to the arithmetic multiplicity of $\lambda$. Then $\phi-\lambda \mathrm{id}_V$ has matrix $A-\lambda I$, which is diagonal, and the number of zero entries on the diagonal is the number of diagonal entries with value $\lambda$ in $A$, also equal to the arithmetic multiplicity. The matrix $A-\lambda I$ has rank $n-a$, so the geometric multiplicity of $\lambda$ is $a$ by Rank-Nullity.
+
+
+Now suppose that $A$ is not a diagonal matrix. Then for some $\lambda$, there is a Jordan block of size $>1$ corresponding to the eigenvalue $\lambda$. Similarly to above, the number of $\lambda$ entries on the diagonal is equal to $a$. Now consider the matrix $A-\lambda I$: this is a matrix in Jordan form (with the eigenvalues shifted from the original by $\lambda$), and each block corresponding to an eigenvalue other than $\lambda$ is invertible. Moreover, some block corresponding to $\lambda$ is nonzero. It follows that the rank of $A-\lambda I$ is at least $n-a+1$, and thus the geometric multiplicity of $\lambda$ is $<a$. This completes the proof.
+\end{proof}
+
+\end{document}
