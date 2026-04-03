@@ -79,14 +79,31 @@ A dollar store calculator can only work with real numbers.
 	
 	\begin{enumerate}
 	\itema What is the set of numbers that can be computed exactly in a dollar store calculator \emph{without using} the $\surd$ key?
+	\solution{$\Q$}
+	
+	\
+	
 	\itema Explain how $\sqrt[4]{2}$ can be computed exactly with a dollar store calculator.
-	\itema Carefully explain why neither $\sqrt[3]{2}$ nor $\sqrt[4]{2}$ can be computed exactly with a dollar store calculator using the $\surd$ key \emph{only once} (at any point, not necessarily at the end).
-	\itema Carefully explain why $\pi$  \emph{cannot} be computed exactly with a dollar store calculator. You can use any facts from analysis that we have assumed in this class.
-		\itema Carefully explain why $\sqrt[3]{2}$  \emph{cannot} be computed exactly with a dollar store calculator.	\end{enumerate}
+	\solution{$\sqrt{\sqrt{2}}$}
+	
+	\
+	
+	\itema Carefully explain\footnote{Hint: Let $\alpha$ be the number that $\surd$ is applied to. Show that the final result must be in $\Q(\sqrt{\alpha})$, and compare $[\Q(\sqrt[n]{2}):\Q]$ with $[\Q(\sqrt{\alpha}):\Q]$.} why neither $\sqrt[3]{2}$ nor $\sqrt[4]{2}$ can be computed exactly with a dollar store calculator using the $\surd$ key \emph{only once} (at any point, not necessarily at the end).
+	\solution{Suppose that $\beta$ can be obtained using $\surd$ only once. Let $\alpha\in \Q$ be the number that you apply $\surd$ to. Since any operation after that is essentially $+,-,\times,\div$ with rational numbers, $\beta\in \Q(\sqrt{\alpha})$. Note that $[\Q(\sqrt{\alpha}):\Q]=2$, and $\beta\in \Q(\sqrt{\alpha})$, we must have $[\Q(\sqrt{\alpha}) : \Q] = [\Q(\sqrt{\alpha}) : \Q(\beta)] [\Q(\beta) : \Q]$ by the Degree Formula. Thus $[\Q(\beta) : \Q] \ | \ 2$. However, the minimal polynomial of $\sqrt[3]{2}$ is $x^3-2$ since this is irreducible (by Gauss+Eisenstein) and monic, and has this as a root; thus $[\Q(\sqrt[3]{2}) : \Q] = 3$. This is a contradiction. Similarly for $\sqrt[4]{2}$.}
+	
+	\
+	
+	\itema Carefully explain\footnote{Hint: Let $\alpha_1,\alpha_2,\dots,\alpha_n$ be the numbers that $\surd$ is applied to, in order. What can you say about $\Q(\sqrt{\alpha_1},\dots,\sqrt{\alpha_n})$?} why $\pi$  \emph{cannot} be computed exactly with a dollar store calculator. You can use any facts from analysis that we have assumed in this class.
+	\solution{Suppose that $\pi$ can be obtained, and let $\alpha_1,\dots,\alpha_n$ be as in the hint. Note that $\Q(\sqrt{\alpha_1},\dots,\sqrt{\alpha_{i+1}})$ is finite, and hence algebraic over $\Q(\sqrt{\alpha_1},\dots,\sqrt{\alpha_{i}})$, since $\sqrt{\alpha_{i+1}}$ is a root of the polynomial $x^2-\alpha_{i+1} \in \Q(\sqrt{\alpha_1},\dots,\sqrt{\alpha_{i}})$ It follows that $\Q(\sqrt{\alpha_1},\dots,\sqrt{\alpha_n})$ is algebraic over $\Q$. Since the final result $\pi$ is in this field, then $\pi$ must be algebraic over $\Q$. This contradicts a fact from analysis.}
+	
+	\
+		\itema Carefully explain\footnotemark[2] why $\sqrt[3]{2}$  \emph{cannot} be computed exactly with a dollar store calculator.
+		\solution{Suppose that $\sqrt[3]{2}$ can be obtained, and let $\alpha_1,\dots,\alpha_n$ be as in the hint. The previous argument shows that $[\Q(\sqrt{\alpha_1},\dots,\sqrt{\alpha_{i+1}}) :\Q(\sqrt{\alpha_1},\dots,\sqrt{\alpha_{i}})]$ is at most $2$; in particular, it is either $1$ or $2$ for each $i$. By the Degree Formula, $[\Q(\sqrt{\alpha_1},\dots,\sqrt{\alpha_n}):\Q]=2^k$ for some $k\leq n$. By the argument from (c), we must have $3 \ | \ 2^k$; this is a contradiction.}
+			\end{enumerate}
 	
 \newpage
 
-	\section*{Compass and straightedge constuctions}
+	\section*{Compass and straightedge constructions}
 		\begin{framed}
 	A \textbf{classical compass and straightedge construction} is a rule to create from an input finite subset of \emph{marked points}  $S\subseteq \R^2$ another point $Z\in \R^2$ by a sequence of the following rules:
 	\begin{itemize}
@@ -103,10 +120,17 @@ A dollar store calculator can only work with real numbers.
 \textsc{Lemma:} Given points $P,Q,P',Q'$, the coordinates of a point $X$ in $L\cap L'$, $L\cap C$, or ${C\cap C'}$ as in the constructions above can be computed from the coordinates of $P,Q,P',Q'$ by a sequence of the operations $+,-,\times,\div,\surd$.
 	\end{framed} 
 	
+	\
 	
 	\begin{enumerate}
 	\itemb Suppose that $S=\{(0,0),(1,0)\}$. Use the \textsc{Lemma} to explain why the coordinates of any point that can be obtained from $S$ by a classical compass and straightedge construction can also be obtained from a dollar store calculator.
-	\itemb \textsc{Squaring the circle:} Given two points $P,Q$, show that is impossible to use a classical compass and straightedge construction to give a line segment $\overline{RS}$ such the area of the square with base $\overline{RS}$ equals the area of the circle with center $P$ passing through $Q$.
-		\itemb \textsc{Doubling the cube:} Given two points $P,Q$, show that is impossible to use a classical compass and straightedge construction to give a line segment $\overline{RS}$ such the volume of the cube with edge $\overline{RS}$ equals twice the volume of the cube with edge $\overline{PQ}$.	
+	
+	\
+	
+	\itemb \textsc{Squaring the circle:} Given two points $P,Q$, show that is impossible to use a classical compass and straightedge construction to give a line segment $\overline{RS}$ such that the area of the square with base $\overline{RS}$ equals the area of the circle with center $P$ passing through $Q$.
+	
+	\
+	
+		\itemb \textsc{Doubling the cube:} Given two points $P,Q$, show that is impossible to use a classical compass and straightedge construction to give a line segment $\overline{RS}$ such that the volume of the cube with edge $\overline{RS}$ equals twice the volume of the cube with edge $\overline{PQ}$.	
 \end{enumerate}
 \end{document}
