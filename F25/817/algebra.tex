@@ -10568,17 +10568,6 @@ of the roots of $p'$. By \Cref{extending identity on F to iso}, there is an isom
 $$\phi\!: F(\alpha) \to F'(\alpha')$$ 
 extending $\theta$ and sending $\alpha$ to $\alpha'$.
 
-%In $F(\alpha)$, $p$ factors as $p = (x-\alpha) g$, and in $F'(\alpha')$, $p' = (x- \alpha') g'$. Moreover, since $\phi$ extends $\theta$ and $\phi(\alpha) = \alpha'$, it follows that $\phi(p)=p'$ and $\phi(x-\alpha)= x- \alpha'$. Thus we have
-%$$(x-\alpha') \phi(g) = \phi(x-\alpha) \phi(g) = \phi((x-\alpha) g) = \phi(p) = p' = (x-\alpha') g'.$$
-%Since $F'$ is a domain, we conclude that $\phi(g) = g'$.
-%
-%
-%
-%Since $L$ is a splitting field of $f$ over $F$, 
-%Note that $L$ is a splitting field of $g$ over $F(\alpha)$ and $L'$ is a splitting field of $g'$ over $F(\alpha')$.
-%
-%
-%Since $\deg(g) < \deg(f) = n$, it follows by induction that there is a field isomorphism $\widehat{\theta}: L \to L'$ that extends $\phi$ and hence extends $\theta$.
 In $F(\alpha)$, $f$ factors as $f = (x-\alpha) g$, and in $F'(\alpha')$. Moreover, since $\phi$ extends $\theta$ and $\phi(\alpha) = \alpha'$, it follows that $\phi(x-\alpha)= x- \alpha'$. Therefore, the corresponding polynomial $f' = \phi(f)$ factors as $f' = (x- \alpha') g'$, and we have
 $$(x-\alpha') \phi(g) = \phi(x-\alpha) \phi(g) = \phi((x-\alpha) g) = \phi(f) = f' = (x-\alpha') g'.$$
 Since $F'$ is a domain, we conclude that $\phi(g) = g'$.
@@ -10591,9 +10580,6 @@ Since $\deg(g) < \deg(f) = n$, it follows by induction that there is a field iso
 \end{proof}
 
 
-%\begin{corollary}[Uniqueness of the splitting field]\label{uniqueness of splitting fields}
-%Given a field $F$, a non constant polynomial $f(x)$, and two splitting fields $L$ and $L'$ for $f$ over $F$, there is a field isomorphism $\hat\theta:l\to L'$ such that $\hat\theta|_F=\mathrm{id}_F$.
-%\end{corollary}
 
 
 \begin{corollary}[Uniqueness of the splitting field of $f(x)$ over the base field $F$]\label{uniqueness of splitting fields}
@@ -10612,10 +10598,7 @@ If $L$ is the splitting field over $F$ of an irreducible polynomial $f(x) \in F[
 \end{corollary}
 
 \begin{proof} 
-We basically already proved this, but since it is of large importance, let's do so again:
-
-Since $\alpha, \beta$ are roots of the same irreducible polynomial, by \Cref{uniqueness of F(alpha) roots} there is an isomorphism $\tau: F(\alpha) \to F(\beta)$ such that $\tau|_F = \mathrm{id}_F$ and $\tau(\alpha) = \beta$.
-We have two field maps, the inclusion $F(\alpha) \hookrightarrow L$ and the composition of $F(\alpha) \xrightarrow{\tau} F(\beta) \hookrightarrow L$, and realize $L$ as the splitting field of $f$ over $F(\alpha)$ in two different ways. Since splitting fields are unique, by \Cref{uniqueness of splitting fields}, an isomorphism such as $s$ exists.
+Since $\alpha, \beta$ are roots of the same irreducible polynomial, there is an isomorphism $\tau: F(\alpha) \to F(\beta)$ such that $\tau|_F = \mathrm{id}_F$ and $\tau(\alpha) = \beta$. Note that $L$ is the splitting field of $f$ over $F(\alpha)$ since $L$ is generated over $F(\alpha)$ by the roots of $f$; likewise for $F(\beta)$. We apply the Theorem with the isomorphism $\tau$ in pace of $\theta$. Note that $\tilde\tau(f)=f$. The Theorem then yields an isomorphism $s\!:L\to L$ such that $s|_{F(\alpha)} = \tau$. In particular $s|_F=\tau|_F = \mathrm{id}_F$ and $s(\alpha)=\beta$.
 \end{proof}
 
 
@@ -10691,7 +10674,6 @@ Let $f(x) = x^n -1 \in \mathbb{Q}[x]$. Then $f$ splits completely in
   $\C[x]$, and its $n$ many roots are the $n$th roots of $1$. One of these
   is $\zeta_n := e^{2 \pi i/n}$. Notice that every other $n$th root of $1$ is a power of this one. 
 Thus $\mathbb{Q}(\zeta_n)$ is the splitting field of $x^n-1$ over $\mathbb{Q}$. 
-%This field is called the \df{cyclotomic field} of $n$th roots of 1 over $\mathbb{Q}$. 
 This is a somewhat special example: upon adjoining one of the roots of $f$ we got all the others for free. This happens in other examples too, but it is certainly {\em not} a general principle.
 
 
@@ -10702,12 +10684,6 @@ When $n = p$ is prime, then one can show that $x^{p-1} + \cdots + x + 1$ is irre
 However, the degree of $\mathbb{Q} \subseteq \mathbb{Q}(\zeta_n)$ can be smaller that $n-1$ in general; for example, when $n = 4$, $\zeta_4  = i$ and $[\mathbb{Q}(i): \mathbb{Q}] = 2$. Note that $x^3 + x^2 + x + 1$ factors as 
 $$x^3 + x^2 + x + 1 = (x^2+1)(x+1)$$
 and $m_{i, \mathbb{Q}}(x) = x^2 + 1$.
-% More generally,
-% whenever $n$ is even we have
-% $$
-% x^{n-1} + \cdots + x + 1 = (x^{(n-1)/2} +1)(x^{(n-1)/2} + x^{(n-1)/2 - 1} + \cdots + x + 1).
-% $$
-%The irreducible polynomial $m_{\zeta_n, \mathbb{Q}}(x)$ is known as the {\em $n$-th cyclotomic polynomial}.
 \end{example}
 
 
@@ -10731,17 +10707,14 @@ and note that these are the four roots of $f$. You showed in Problem Set 9 that 
 
 \section{Separability}
 
-
-%Before we talk about separability, we need a few preliminaries about characteristic.
-
 \begin{definition}
-Let $R$ be a commutative ring. The \df{characteristic} $\ch(R)$ of $R$ is defined to be the smallest positive integer $n$ such that 
+Let $R$ be a commutative ring. The \df{characteristic} $\mathrm{char}(R)$ of $R$ is defined to be the smallest positive integer $n$ such that 
 $$n\cdot 1_R= \underbrace{1_R+\ldots+1_R}_{n}=0_F$$ 
-if such and integer exists, and $0$ otherwise.\index{$\ch(R)$}
+if such and integer exists, and $0$ otherwise.\index{$\mathrm{char}(R)$}
 \end{definition}
  
 \begin{example}
-Here are some familiar examples: $\ch(\mathbb{Z})=0$ and $\ch(\mathbb{Z}/n)=n$.
+Here are some familiar examples: $\mathrm{char}(\mathbb{Z})=0$ and $\mathrm{char}(\mathbb{Z}/n)=n$.
 \end{example}
 
 \begin{definition} 
@@ -10750,13 +10723,13 @@ $$\rm{Frac}\left(\{k1_F \mid k\in \mathbb{Z}\}\right).$$
 \end{definition}
 
 
-You proved the following lemma in Problem Set 8:
+You proved the following lemma in the homework:
 
 \begin{lemma}
  Let $F$ be a field. 
  \begin{enumerate}[label=\alph*),leftmargin=15pt]
  \item The prime field of $F$ is isomorphic to exactly one of the fields $\mathbb{Q}$ or $\mathbb{Z}/p$.
- \item The characteristic $\ch(F)$ is either $0$ or a prime number $p$.
+ \item The characteristic $\mathrm{char}(F)$ is either $0$ or a prime number $p$.
 \end{enumerate}
 \end{lemma}
 
@@ -10878,7 +10851,7 @@ Let $F$ be a field of characteristic zero. Every irreducible polynomial in $F[x]
 \end{corollary}
 
 \begin{proof}
-For every $\alpha \in L$, its minimal polynomial $m_{\alpha, F}$ is nonconstant. Since $\ch(F)=0$, $m'_{\alpha, F} \neq 0$. Since $m_{\alpha, F}$ is irreducible in $F[x]$, \Cref{criteria separability} implies $m_{\alpha, F}(x)$ is separable.
+For every $\alpha \in L$, its minimal polynomial $m_{\alpha, F}$ is nonconstant. Since $\mathrm{char}(F)=0$, $m'_{\alpha, F} \neq 0$. Since $m_{\alpha, F}$ is irreducible in $F[x]$, \Cref{criteria separability} implies $m_{\alpha, F}(x)$ is separable.
 \end{proof}
 
 
@@ -10891,7 +10864,7 @@ For every $\alpha \in L$, its minimal polynomial $m_{\alpha, F}$ is nonconstant.
 
 
 \begin{lemma}\label{separable in char p}
-Let $F$ be a field with prime characteristic $\ch(F) = p$. 
+Let $F$ be a field with prime characteristic $\mathrm{char}(F) = p$. 
 \begin{enumerate}[label=\alph*),leftmargin=15pt]
 \item If $b$ is an element of $F$ that is not a $p$th power of an element of $F$ and $L$ is an algebraic extension of $L$ that contains a root of $x^p - b$, then $F \subseteq L$ is not separable. 
 \item If every element of $F$ is the $p$th power of another element of $F$, then every algebraic extension $F \subseteq L$ is separable.
@@ -11665,15 +11638,15 @@ When $F = \mathbb{Q}$, the element $e^{2 \pi i/n} \in \overline{\mathbb{Q}}$ is 
 \end{example}
 
 \begin{remark}\label{primitive root generates splitting field}
-Note that if $\ch(F) \nmid n$, the polynomial $x^n - 1 \in F[x]$ is separable by \Cref{criteria separability}, since its derivative is $nx^{n-1} \neq 0$ and hence $\gcd(nx^{n-1}, x^n - 1) = 1$. In this case, $|\mu_n(K)|=n$ and so 
+Note that if $\mathrm{char}(F) \nmid n$, the polynomial $x^n - 1 \in F[x]$ is separable by \Cref{criteria separability}, since its derivative is $nx^{n-1} \neq 0$ and hence $\gcd(nx^{n-1}, x^n - 1) = 1$. In this case, $|\mu_n(K)|=n$ and so 
 $$\mu_n(K) =\{1, \zeta, \zeta^2,\ldots, \zeta^{n-1}\}.$$
-However, if $\ch(F) \mid n$ then $\mu_n(K)$ can have fewer than $n$ elements. For example, if $F$ is any field of characteristic $2$, the polynomial $x^2-1=(x-1)^2$ has a unique root over $F$: the unique second root of unity is $1$.
+However, if $\mathrm{char}(F) \mid n$ then $\mu_n(K)$ can have fewer than $n$ elements. For example, if $F$ is any field of characteristic $2$, the polynomial $x^2-1=(x-1)^2$ has a unique root over $F$: the unique second root of unity is $1$.
 \end{remark}
 
 
 
 \begin{theorem}\label{primitive roots unity galois abelian}
-Let $F$ be a field and $n$ a positive integer with $\ch(F) \nmid n$, and let $\zeta \in \overline{F}$ be a primitive $n$th root of unity. The extension $F \subseteq F(\zeta)$ is Galois and $\Gal(F(\zeta)/F)$ is isomorphic to a subgroup of $(\mathbb{Z}/n)^\times$. In particular, $\Gal(F(\zeta)/F)$ is an abelian group.
+Let $F$ be a field and $n$ a positive integer with $\mathrm{char}(F) \nmid n$, and let $\zeta \in \overline{F}$ be a primitive $n$th root of unity. The extension $F \subseteq F(\zeta)$ is Galois and $\Gal(F(\zeta)/F)$ is isomorphic to a subgroup of $(\mathbb{Z}/n)^\times$. In particular, $\Gal(F(\zeta)/F)$ is an abelian group.
 \end{theorem}
 
 \begin{proof}
@@ -11710,7 +11683,7 @@ To show that homomorphism must be surjective, one shows that the degree of the m
 We now cover the Galois groups of polynomials of the form $x^n - a$ in the case where the base field contains all the $n$th roots of unity.
 
 \begin{theorem}\label{root of unity galois group cyclic}
-Let $F$ be a field, $a \in F$, and consider a positive integer $n$ such that $F$ contains a primitive $n$th root of unity and $\ch(F) \nmid n$. Let $L$ be the splitting field of $x^n - a$ over $F$. Then $L/F$ is Galois and $\Gal(L/F)$ is isomorphic to a subgroup of $\mathbb{Z}/n$, and hence it is cyclic.
+Let $F$ be a field, $a \in F$, and consider a positive integer $n$ such that $F$ contains a primitive $n$th root of unity and $\mathrm{char}(F) \nmid n$. Let $L$ be the splitting field of $x^n - a$ over $F$. Then $L/F$ is Galois and $\Gal(L/F)$ is isomorphic to a subgroup of $\mathbb{Z}/n$, and hence it is cyclic.
 \end{theorem}
 
 
@@ -11786,7 +11759,7 @@ Since $V$ has order $4$ and any group of order $4$ is abelian, then $V$ is abeli
 
 
 
-It turns out that there is a close relationship between solvable groups and solvable polynomials. In what follows, $\ch(F) = 0$ is not a necessary assumption, but we included it to make both the statement and the proof simpler.
+It turns out that there is a close relationship between solvable groups and solvable polynomials. In what follows, $\mathrm{char}(F) = 0$ is not a necessary assumption, but we included it to make both the statement and the proof simpler.
 
 \begin{theorem}\label{solvable by radicals implies solvable}
 Assume $F$ is a field of characteristic $0$. If $f \in F[x]$ is solvable by radicals, then the Galois group of the splitting field of $f \in F[x]$ is a solvable group.
