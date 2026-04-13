@@ -1,0 +1,194 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,enumerate,bbm}
+\usepackage[]{graphicx}
+\usepackage{color,subfigure}
+\definecolor{scarlet}{rgb}{0.81,0,0}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage[all]{xypic}
+\usepackage[colorlinks=true,citecolor=scarlet,linkcolor=scarlet]{hyperref}
+\usepackage{colonequals}
+
+\usepackage{fancyhdr, lastpage}
+\pagestyle{fancy}
+\fancyfoot[C]{{\thepage} of \pageref{LastPage}}
+
+
+
+\DeclareMathOperator{\mSpec}{mSpec}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Ass}{Ass}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\height}{height}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\ann}{ann}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\coker}{coker}
+%\DeclareMathOperator{\ker}{ker}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\M}{M}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\ch}{char}
+\DeclareMathOperator{\Aut}{Aut}
+
+%\DeclareMathOperator{\dim}{dim}
+
+\DeclareMathOperator{\lcm}{lcm}
+
+\def\ra{\rightarrow}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\ov}[1]{\overline{#1}}
+\newcommand{\norm}{\trianglelefteq}
+
+\def\ov#1{\overline{#1}}
+
+
+\title{}
+\date{\vspace{-0.5in}}
+
+\makeatletter
+\g@addto@macro\@floatboxreset\centering
+\makeatother
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+
+\begin{document}
+
+\thispagestyle{fancy}
+\pagestyle{fancy}
+\rhead{UNL $\mid$ Spring 2026}
+\lhead{Introduction to Modern Algebra II}
+
+\vspace{3em}
+
+\begin{center}
+	{\LARGE Problem Set 10 \\}
+	Due Thursday, April 9\end{center}
+
+\
+
+\noindent
+{\bf Instructions:}
+You are encouraged to work together on these problems, but each student should hand in their own final draft, written in a way that indicates their individual understanding of the solutions. Never submit something for grading that you do not completely understand. You cannot use any resources besides me, your classmates, and our course notes.
+
+
+I will post the .tex code for these problems for you to use if you wish to type your homework. If you prefer not to type, please  {\em write neatly}. As a matter of good proof writing style, please use complete sentences and correct grammar. You may use any result stated or proven in class or in a homework problem, provided you reference it appropriately by either stating the result or stating its name (e.g. the definition of ring or Lagrange's Theorem). Please do not refer to theorems by their number in the course notes, as that can change.
+
+
+
+\begin{problem}
+Let $E$ be the field extension of $\Q$ obtained by adjoining to $\Q$ all four complex roots of the polynomial $x^4 + 5$.
+That is, $E = \Q(\alpha_1, \alpha_2, \alpha_3, \alpha_4)$ where
+$$\alpha_1 = e^{\pi i/4}\sqrt[4]{5}, \quad
+\alpha_2 = e^{3\pi i/4}\sqrt[4]{5}, \quad
+\alpha_3 = e^{5\pi i/4}\sqrt[4]{5}, \quad
+\alpha_4 = e^{7\pi i/4}\sqrt[4]{5}.$$
+
+\begin{enumerate}[(a)]
+\item Prove that there exists\footnote{Note that $\alpha_1 + \alpha_4$ is a real number; find it explicitly.} 
+ a field extension $\Q \subseteq F$ such that $F \subseteq E$, $F \subseteq \R$, and $[F :\Q]=4$.
+
+	\begin{proof} 
+Note that 
+$$\alpha_1 = \sqrt[4]{5} \cdot \frac{\sqrt{2}}{2} (1 + i) = \frac{\sqrt[4]{20}}{2}(1+i) \quad \textrm{ and } \quad \alpha_4 =\frac{\sqrt[4]{20}}{2}(1-i)$$ 
+so $\alpha_1 + \alpha_4 = \sqrt[4]{20}$.
+         
+Moreover, $\alpha_1 + \alpha_4$ is thus a root of $x^4 - 20$, which is irreducible: using Gauss' Lemma, we just need to show it is irreducible over $\Z$, and Eisenstein's Criterion applies with $p = 5$ to show that $x^4-20$ is irreducible over $\Z$. Hence, $m_{\alpha_1+\alpha_2, \Q}(x) = x^4 -20$.
+Set $F = \Q(\alpha_1 + \alpha_4)$. Then $F \subseteq E$ and $[F :\Q]=4$, as desired. Moreover, $F \subseteq \R$ since $\alpha_1 + \alpha_4 \in \R$ and $\Q \subseteq \R$.
+\end{proof}
+
+
+\item Determine $[E : \Q]$ with justification.
+
+		\begin{proof} 
+By the Degree Formula, $[E: \Q] = [E:F][F:\Q] = [E:F] \cdot 4$. We claim that $E = F(i)$. First note that $\frac{\alpha_1}{\alpha_4} = \frac{1+i}{1-i} = i$ so that $i \in E$ and hence $F(i)
+          \subseteq E$. 
+          
+Since each $\alpha_j$ has the form $\frac{\sqrt[4]{20}}{2}(\pm 1 \pm i)$ and both $\sqrt[4]{20}$ and $i$ belong to $F(i)$, we have $\alpha_j \in F(i)$ for all $j$ and thus $E \subseteq F(i)$. We conclude that $E = F(i)$.
+
+ Since $i$ is a root of $x^2 + 1 \in F[x]$ we have $[F(i): F] \leqslant 2$. Since $F \subseteq \R$, we have $F \neq F(i)$ and thus $[E: F] = 2$. By the Degree Formula, $[E: \Q] = [E : F] [F:\Q] = 2 \cdot 4 = 8$.
+\end{proof}
+\end{enumerate}
+\end{problem}
+
+
+\begin{problem}
+Let $F$ be a field and $f,g \in F[x]$ be nonzero polynomials. Show that $\gcd(f,g) = 1$ in $F[x]$ if and only if $f$ and $g$ have no common roots in an algebraic closure $\overline{F}$ of $F$.
+\end{problem}
+
+
+
+\begin{problem}
+	Let $F \subseteq L$ be a field extension and let $S \subseteq L$ be an arbitrary subset of $L$ whose elements are all algebraic over $F$. Show\footnote{You can use without proof the analogue of Lemma 15.1.12 for larger generating sets: if $F\subseteq L$ is a field extension and $S\subseteq L$, then $F(S) = \{ \frac{f(s_1,\dots,s_t)}{g(s_1,\dots,s_t)} \ | \ s_1,\dots,s_t\in S, \ f(x_1,\dots,x_t), g(x_1,\dots,x_t)\in F[x_1,\dots,x_t], \ g(s_1,\dots,s_t)\neq 0\}$.}
+	 that $F \subseteq F(S)$ is algebraic.
+\end{problem}
+\begin{proof}
+Given $\alpha \in F(S)$, we want to show that $\alpha$ is algebraic over $F$. By the hint, $\alpha$ can be written as a rational function in $S$ with coefficients in $F$, which means it uses only finitely many elements $\alpha_1, \ldots, \alpha_n \in S$, so $\alpha \in F(\alpha_1, \ldots, \alpha_n)$. Since $\alpha_1, \ldots, \alpha_n \in S$ are all algebraic over $F$, the extensions $F \subseteq F(\alpha_1)$, $F(\alpha_1) \subseteq F(\alpha_1, \alpha_2), \ldots, F(\alpha_1, \ldots, \alpha_{n-1}) \subseteq F(\alpha_1, \ldots, \alpha_n)$ are all algebraic. We showed in class that the composition of algebraic extensions is algebraic; thus the tower of algebraic extensions
+	$$F \subseteq F(\alpha_1) \subseteq F(\alpha_1, \alpha_2), \ldots, F(\alpha_1, \ldots, \alpha_{n-1}) \subseteq F(\alpha_1, \ldots, \alpha_n)$$
+	implies that $F \subseteq F(\alpha_1, \ldots, \alpha_n)$ is algebraic. In particular, $\alpha \in F(\alpha_1, \ldots, \alpha_n)$ is algebraic over $F$. We conclude that $F \subseteq F(S)$ is algebraic.
+	\end{proof}
+
+
+\begin{proof}
+We prove the contrapositive: 1 is  not a $\gcd$ for $f$ and $g$ in $F[x]$ if any only if $f$ and $g$ have a common root in an algebraic closure $\ov{F}$ of $F$.
+
+($\Rightarrow$) If $1$ is not a $\gcd$ for $f$ and $g$ in $F[x]$, then $\gcd(f,g)=h\in F[x]$ for some polynomial $h$ with $\deg(h) \geqslant 1$. 
+%If $\gcd(f,g)=0$ then $f=g=0$ since the only polynomial divisible by $0$ is the zero polynomial. Clearly in this case any element of $\ov{F}$ is a common root for $f$ and $g$.  Now suppose $\gcd(f,g)=h\in F[x]$ with $\deg(h)\geqslant 1$. 
+Then since $h$ is nonconstant polynomial, we know $h$ has a root $\alpha\in \ov{F}$. Since $h\mid f$ and $h\mid g$, it follows that $\alpha$ is also a root for both $f$ and $g$.
+
+($\Leftarrow$) Suppose that $f$ and $g$ have a common root $\alpha \in \overline{F}$, that is $f(\alpha)=g(\alpha)=0$. Then $\alpha$ is algebraic over $F$ and hence it has a minimal polynomial $m_{\alpha,F}\in F[x]$. Furthermore, by properties of the minimal polynomial it follows that since $f(\alpha)=0$ then $m_{\alpha,F}\mid f$ and since $g(\alpha)=0$ then $m_{\alpha,F}\mid g$. Thus $m_{\alpha,F}$ is a common divisor for $f,g$ in $F[x]$ and therefore by properties of the gcd $m_{\alpha,F}\mid\gcd(f,g)$. This shows that, since $\deg(m_{\alpha,F})\geqslant 1$, $\deg(\gcd(f,g))\neq 0$, therefore no unit of $F$ can be a gcd for $f,g$ in $F[x]$.
+\end{proof}
+
+
+\begin{problem}
+	Let $L$ be the splitting field of $f = x^5 - 11 \in \Q[x]$.
+	\begin{enumerate}[(a)]
+		\item Find the degree\footnote{Consider the chains $\Q \subseteq \Q(\sqrt[5]{11}) \subseteq L$ and $\Q \subseteq \Q(\xi) \subseteq L$.} of $[L : \Q]$.
+		
+	
+		\item Let $F = \Q(\xi)$, where $\xi = e^{\frac{2 \pi i}{5}}$ is a primitive fifth root of unity. Show that $f$ is irreducible over~$F$.
+	
+
+	\end{enumerate}
+	
+	\begin{proof}$\,$
+\begin{enumerate}[a)]
+	\item First, we claim that $L = \Q(\xi, \sqrt[5]{11})$. On the one hand, the roots of $f$ are $\sqrt[5]{11} \xi^i$ for $i = 0, 1, 2, 3, 4$, so $L = \Q(\sqrt[5]{11} \xi^i \mid 0 \leqslant i \leqslant 4) \subseteq \Q(\xi, \sqrt[5]{11})$. On the other hand,
+	$$\xi = \frac{\sqrt[5]{11} \xi}{\sqrt[5]{11}} \in L,$$
+	so $L = \Q(\xi, \sqrt[5]{11})$.
+	
+	We claim that $f$ is irreducible over $\Q$: indeed, $11$ divides all the coefficients of $f$ of nonmaximal degree but the coefficient of maximal degree, $11^2$ does not divide the degree $0$ coefficient of $f$, and $11$ is prime, so Eisenstein's Criterion says that $f$ is irreducible over $\Z$. By Gauss' Lemma, $f$ is irreducible over $\Q$. Since $\sqrt[5]{11}$ is a root of the monic irreducible polynomial $f$, we conclude that $f$ is the minimal polynomial of $\sqrt[5]{11}$ over $\Q$. Thus $[\Q(\sqrt[5]{11}) : \Q] = 5$.
+	
+	By Problem Set 10, $g = x^4+x^3+x^2+x+1$ is irreducible, since $5$ is prime. Note that $\xi$ is a root of $(x-1)g = x^5-1$ but not a root of $x-1$, so $g(\xi) = 0$. Since $g$ is irreducible, we conclude that $g$ is the minimal polynomial of $\xi$ over $\Q$. Thus $[\Q(\xi) : \Q] = 4$.
+	
+	By the Degree Formula,
+	$$[L : \Q] = [L : \Q(\xi)] [\Q(\xi) : \Q] = 4[L : \Q(\xi)]$$
+	and
+	$$[L : \Q] = [L : \Q(\sqrt[5]{11})] [ \Q(\sqrt[5]{11}) : \Q] = 5 [L : \Q(\sqrt[5]{11})].$$
+Thus $4 | [L : \Q]$ and $5 | [L : \Q]$. Since $\gcd(4,5) = 1$, we conclude that $20 | [L : \Q]$.
+
+Now $\xi$ still satisfies $g$ over $F = \Q(\sqrt[5]{11})$, so $m_{\xi,F} | g$. Thus the degree of $m_{\xi,F}$ is at most $4$, and $[L : \Q(\sqrt[5]{11})] \leqslant 4$. Therefore,
+$$[L : \Q] = 5 [L : \Q(\sqrt[5]{11})] \leqslant 20.$$
+But $20 | [L : \Q]$, so $[L : \Q] = 20$.
+
+\item In the proof of part a) we showed that $[\Q(\sqrt[5]{11}) : \Q] = 5$, $[F : \Q] = [\Q(\xi) : \Q] = 4$, and $[L : \Q] = 20$. Moreover, $L = F(\sqrt[5]{2}$. By the Degree Formula,
+$$[F(\sqrt[5]{2} : F] [F : \Q] = [L : \Q] = 20.$$
+Thus $[F(\sqrt[5]{2} : F] = 4$, so $m_{\sqrt[5]{2},F}$ has degree $5$. Since $f(\sqrt[5]{2}) = 0$ and $f \in F[x]$ is monic, we conclude that $f$ is the minimal polynomial of $\sqrt[5]{2}$ over $F$. In particular, $f$ must be irreducible over $F$.\qedhere
+\end{enumerate}	
+\end{proof}
+
+\end{problem}
+
+
+\end{document}
