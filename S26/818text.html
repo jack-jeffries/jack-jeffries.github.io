@@ -193,6 +193,10 @@
  <li><a href="#sec-15-4-heading">Splitting fields</a></li>
  <li><a href="#sec-15-5-heading">Separability</a></li>
 </ol>
+<li><a href="#sec-16">Galois Theory</a></li>
+<ol><li><a href="#sec-16-1-heading">Group actions on field extensions</a></li>
+<li><a href="#sec-16-2-heading">Automorphism groups of finite field extensions</a></li>
+</ol>
 </ol>
 </ul></nav>
 
@@ -6788,11 +6792,558 @@ You will prove the following Theorem in the homework.
     </div>
   </section>
 
-
-
-
 </section>
 
+<h1 id="sec-16">16. Galois Theory</h1>
+
+We have seen already that the degree of a field extension is a simple yet powerful invariant that can rule out possibilities of certain numbers being expressed in terms of others. Galois theory refines this idea by associating a finer object, a group, to a field extension. This group measures the symmetry of the roots of polynomials.
+
+
+<section id="sec-16-1" class="section" aria-labelledby="sec-16-1-title">
+  <h2 id="sec-16-1-heading">16.1 Group actions on field extensions</h2>
+
+  <section id="def-16-1-1" class="callout definition" aria-labelledby="def-16-1-1-title">
+    <h3 id="def-16-1-1-title">Definition 16.1.1</h3>
+    <div class="callout-body">
+      <p>
+        Let \(K\) be a field. The <strong>automorphism group</strong> of \(K\), denoted \(\mathrm{Aut}(K)\), is the collection of field automorphisms of \(K\), with the binary operation of composition.
+      </p>
+    </div>
+  </section>
+
+  <section id="def-16-1-2" class="callout definition" aria-labelledby="def-16-1-2-title">
+    <h3 id="def-16-1-2-title">Definition 16.1.2</h3>
+    <div class="callout-body">
+      <p>
+        Let \(K/F\) be a field extension. The <strong>automorphism group</strong> of \(K/F\), denoted \(\mathrm{Aut}(K/F)\), is the collection of field automorphisms of \(K\) that restrict to the identity on \(F\), with the binary operation of composition.
+      </p>
+    </div>
+  </section>
+
+  <section id="exr-16-1-3" class="callout exercise" aria-labelledby="exr-16-1-3-title">
+    <h3 id="exr-16-1-3-title">Exercise 16.1.3</h3>
+    <div class="callout-body">
+      <p>
+        Let \(K/F\) be a field extension. Then \(\mathrm{Aut}(K)\) is a group under composition of maps, and \(\mathrm{Aut}(K/F)\) is a subgroup of \(\mathrm{Aut}(K)\).
+      </p>
+    </div>
+  </section>
+
+  <p>
+    Some books write \(\mathrm{Gal}(L/F)\) for \(\mathrm{Aut}(L/F)\), and call it the Galois group of \(L\) over \(F\). We will reserve that notation for a special type of finite extensions -- those that are Galois -- and use only \(\mathrm{Aut}(L/F)\) for the general case.
+  </p>
+
+  <section id="ex-16-1-4" class="callout example" aria-labelledby="ex-16-1-4-title">
+    <h3 id="ex-16-1-4-title">Example 16.1.4</h3>
+    <div class="callout-body">
+      <p>
+        The automorphism group \(\mathrm{Aut}(\mathbb{C}/\mathbb{R})\) has two elements: the identity map and the map given by complex conjugation. The fact that each of these is an element of \(\mathrm{Aut}(\mathbb{C}/\mathbb{R})\) amounts to the fact that complex conjugation commutes with addition and multiplication of complex numbers.
+        To see these are all the automorphisms, suppose \(\tau \in \mathrm{Aut}(\mathbb{C}/\mathbb{R})\). Since \(\tau|_\mathbb{R} = \mathrm{id}_\mathbb{R}\), then for any \(z = a + ib \in \mathbb{C}\) we have \(\tau(z) = a + b \tau(i)\). Moreover,
+      </p>
+      \[
+        -1 =\tau(-1) = \tau(i \cdot i) = \tau(i) \cdot \tau(i),
+      \]
+      <p>
+        and so \(\tau(i) =\pm i\).
+      </p>
+    </div>
+  </section>
+
+  <section id="ex-16-1-5" class="callout example" aria-labelledby="ex-16-1-5-title">
+    <h3 id="ex-16-1-5-title">Example 16.1.5</h3>
+    <div class="callout-body">
+      <p>
+        For any squarefree integer \(d\), the group \(\mathrm{Aut}(\mathbb{Q}(\sqrt{d})/\mathbb{Q})\) also has two elements: the identity and the map defined by \(a + b \sqrt{d} \mapsto a - b \sqrt{d}\). The details are similar to the previous example, so we leave them as an exercise.
+      </p>
+    </div>
+  </section>
+
+  <section id="rmk-16-1-6" class="callout remark" aria-labelledby="rmk-16-1-6-title">
+    <h3 id="rmk-16-1-6-title">Remark 16.1.6</h3>
+    <div class="callout-body">
+      <p>
+        Let \(L\) be a field and let \(\sigma \in \mathrm{Aut}(L)\). Then there is an induced ring homomorphism \((-)^\sigma\!:L[x]\to L[x]\) such that for each \(q = a_nx^n + \cdots + a_0 \in K[x]\), we have
+      </p>
+      \[
+        q^\sigma(x) = \sigma(a_n)x^n + \cdots + \sigma(a_0).
+      \]
+      <p>
+        If \(\sigma \in \mathrm{Aut}(L/K)\) and \(q \in K[x]\), then \(q^\sigma = q\).
+      </p>
+    </div>
+  </section>
+
+  <section id="lem-16-1-7" class="callout lemma" aria-labelledby="lem-16-1-7-title">
+    <h3 id="lem-16-1-7-title">Lemma 16.1.7</h3>
+    <div class="callout-body">
+      <p>
+        Let \(K/F\) be a field extension, \(\sigma \in \mathrm{Aut}(K/F)\), and \(q \in F[x]\).
+      </p>
+      <ol type="a">
+        <li>
+          <p>
+            For all \(c \in K\), we have \(\sigma(q(c))=q(\sigma(c))\).
+          </p>
+        </li>
+        <li>
+          <p>
+            If \(\alpha \in K\) is a root of \(q\), then \(\sigma(\alpha)\) also is a root of \(q\).
+          </p>
+        </li>
+        <li>
+          <p>
+            The group \(\mathrm{Aut}(K/F)\) acts on the set \(S:=\{ \alpha\in K \mid q(\alpha)=0\}\) by \(\sigma \cdot \alpha= \sigma(\alpha)\).
+          </p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="proof-lem-16-1-7" class="callout proof" aria-labelledby="proof-lem-16-1-7-title">
+    <h3 id="proof-lem-16-1-7-title">Proof of Lemma 16.1.7</h3>
+    <div class="callout-body">
+      <ol type="a">
+        <li>
+          <p>
+            By assumption, \(\sigma\) is a homomorphism and it restricts to the identity on \(F\). Thus for any polynomial \(q = a_nx^n + \cdots + a_0 \in F[x]\), we have
+          </p>
+          \[
+            \sigma(q(c)) = \sigma(a_n c^n + \cdots + a_0) = \sigma(a_n) \sigma(c)^n + \cdots + \sigma(a_0) = a_n \sigma(c)^n + \cdots + a_0 = q(\sigma(c))
+          \]
+        </li>
+        <li>
+          <p>
+            If \(\alpha\) is a root of \(f\), then
+          </p>
+          \[
+            \begin{aligned}
+            0 = \sigma(0) & = \sigma(q(\alpha)) \\
+            & = q(\sigma(\alpha)) & \textrm{by a)}\\
+            \end{aligned}
+          \]
+          <p>
+            showing that \(\sigma(\alpha)\) is also a root of \(q\).
+          </p>
+        </li>
+        <li>
+          <p>
+            We have
+          </p>
+          \[
+            \sigma \cdot (\sigma'\cdot b) = \sigma(\sigma' (b)) = (\sigma\circ\sigma')(b) \quad \textrm{for all } \sigma,\sigma' \in G, b\in S,
+          \]
+          \[
+            1_G\cdot b=\mathrm{id}_K(b)=b \quad  \textrm{for all } \sigma \in G \textrm{ and } b\in S,
+          \]
+          <p>
+            so the given formula does indeed define an action of \(G\) on \(S\).
+          </p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <p>
+    We now come to the main idea connecting field extensions and groups. It concerns the <em>action</em> of the group of automorphisms of a splitting field of a polynomial on the set of roots of that polynomial.
+  </p>
+
+  <section id="thm-16-1-8" class="callout theorem" aria-labelledby="thm-16-1-8-title">
+    <h3 id="thm-16-1-8-title">Theorem 16.1.8</h3>
+    <div class="callout-body">
+      <p>
+        Let \(L\) be the splitting field of a polynomial \(f \in F[x]\). Let \(S\) be the set of distinct roots of \(f\) in \(L\), and let \(n := |S|\).
+      </p>
+      <ol type="a">
+        <li>
+          <p>
+            The group \(\mathrm{Aut}(L/F)\) acts faithfully on \(S\), and hence \(\mathrm{Aut}(L/F)\) is isomorphic to a subgroup of \(S_n\).
+          </p>
+        </li>
+        <li>
+          <p>
+            If \(f \in F[x]\) is an irreducible polynomial, then \(\mathrm{Aut}(L/F)\) acts transitively on \(S\).
+          </p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="proof-thm-16-1-8" class="callout proof" aria-labelledby="proof-thm-16-1-8-title">
+    <h3 id="proof-thm-16-1-8-title">Proof of Theorem 16.1.8</h3>
+    <div class="callout-body">
+      <ol type="a">
+        <li>
+          <p>
+            The previous lemma shows that there is a group action. This action is faithful: if \(\sigma\) fixes all the roots \(\alpha_1, \dots, \alpha_n\) of \(f\), then it fixes every element of \(F(\alpha_1, \dots, \alpha_n) = L\). Thus the corresponding group homomorphism \(\mathrm{Aut}(L/F) \to \mathrm{Aut}(S)\) is injective. On the other hand, the group of automorphisms on a set of \(n\) elements is isomorphic to \(S_n\), so we have an inclusion of \(\mathrm{Aut}(L/F)\) into \(S_n\), and thus \(\mathrm{Aut}(L/F)\) is isomorphic to a subgroup of \(S_n\).
+          </p>
+        </li>
+        <li>
+          <p>
+            Let \(\alpha, \beta\) be any two roots of \(f\). There is an isomorphism \(\theta\!: F(\alpha) \to F(\beta)\) that fixes \(F\).
+          </p>
+
+          <p>
+            Our polynomial factors both as \(f = (x-\alpha)g\) and \(f = (x-\beta) h\). Since \(f^\theta = f\) and \((x-\alpha)^\theta = x -\beta\), we must have \(g^\theta = h\). There is an automorphism
+            \(\sigma: L \to L\) that extends \(\theta\). In particular, \(\sigma\) fixes \(F\), since \(\sigma\) extends \(\theta\) and \(\theta|_F = \mathrm{id}_F\), so \(\sigma \in \mathrm{Aut}(L/F)\). Moreover, since \(\sigma\) extends \(\theta\) we have \(\sigma(\alpha) = \theta(\alpha) = \beta\). This proves the action is transitive on the set of roots of any irreducible polynomial.
+          </p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <p>
+    Soon we will show that if \(f \in F[x]\) is separable but not necessarily irreducible, and \(L\) is the splitting field of \(f\), then the orbits of the action of \(\mathrm{Aut}(L/F)\) on the set of roots of \(f\) are precisely the sets of roots of the same irreducible factor of \(f\). But to do so, we will need a little bit of Galois theory.
+  </p>
+
+  <section id="cor-16-1-9" class="callout corollary" aria-labelledby="cor-16-1-9-title">
+    <h3 id="cor-16-1-9-title">Corollary 16.1.9</h3>
+    <div class="callout-body">
+      <p>
+        Let \(L\) be the splitting field of a polynomial \(f \in F[x]\) with \(n\) distinct roots. Then \(|\mathrm{Aut}(L/F)| \leqslant n!\).
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-cor-16-1-9" class="callout proof" aria-labelledby="proof-cor-16-1-9-title">
+    <h3 id="proof-cor-16-1-9-title">Proof of Corollary 16.1.9</h3>
+    <div class="callout-body">
+      <p>
+        We showed that \(\mathrm{Aut}(L/F)\) is isomorphic to a subgroup of \(S_n\), and thus it as at most \(|S_n| = n!\) elements.
+      </p>
+    </div>
+  </section>
+
+  <p>
+    We will give an improved version of this result soon.
+  </p>
+
+  <section id="exr-16-1-10" class="callout exercise" aria-labelledby="exr-16-1-10-title">
+    <h3 id="exr-16-1-10-title">Exercise 16.1.10</h3>
+    <div class="callout-body">
+      <p>
+        Let \(F\) be a field and \(L~=~F(a_1, \ldots, a_n)\), where \(a_1,\ldots, a_n\) are elements in some extension of \(F\) that are algebraic over \(F\). Each element \(\sigma \in \mathrm{Aut}(L/F)\) is uniquely determined by \(\sigma(a_1),\ldots, \sigma(a_n)\).
+      </p>
+    </div>
+  </section>
+
+  <p>
+    A typical question that arises is to explicitly identify the automorphisms of a splitting field extension as a subgroup of the symmetric group.
+  </p>
+
+  <section id="ex-16-1-11" class="callout example" aria-labelledby="ex-16-1-11-title">
+    <h3 id="ex-16-1-11-title">Example 16.1.11</h3>
+    <div class="callout-body">
+      <p>
+        Let \(L\) be the splitting field of \(f = x^3-2 \in \mathbb{Q}[x]\) and \(G := \mathrm{Aut}(L/\mathbb{Q})\). Recall that \(L = \mathbb{Q}(\sqrt[3]{2}, \zeta)\), where \(\zeta = e^{2 \pi i/3}\), and that \([L:\mathbb{Q}] = 6\).
+        Let us write the roots of \(f\) as
+      </p>
+      \[
+        \alpha_1 = \sqrt[3]{2}, \alpha_2 = \zeta \alpha_1, \alpha_3 = \zeta^2 \alpha_1.
+      \]
+      <p>
+         \(G\) acts transitively on \(\{\alpha_1, \alpha_2, \alpha_3\}\), and hence \(G\) is isomorphic to a subgroup of \(S_3\).
+      </p>
+
+      <p>
+        The restriction of complex conjugation to \(L\) determines an element \(s\) of \(G\) or order \(2\), since \(L\) is closed under complex conjugation. We have
+      </p>
+      \[
+        s(\alpha_1) = \alpha_1, s(\alpha_2) = \alpha_3, s(\alpha_3) = \alpha_2
+      \]
+      <p>
+        and so \(s\) corresponds to the permutation \((2 \, 3) \in S_3\).
+      </p>
+
+      <p>
+        Since the action of \(G\) on the roots of \(f\) is transitive, there is also an element \(\tau \in G\) such that \(\tau(\alpha_1) = \alpha_2\). Such a \(\tau\) corresponds to either \((1 \, 2)\), \((1 \, 2 \, 3)\) of \(S_3\). Either way, \(\tau\) and \(s\) generate all of \(S_3\).
+      </p>
+
+      <p>
+        We conclude that \(|G| = 6\), the maximum possible, and \(G\) is isomorphic to \(S_3\). You should think of this as saying that the roots of \(x^3 -2\) are as interchangeable as possible, since \(\mathrm{Aut}(L/\mathbb{Q})\) is as large as possible.
+      </p>
+    </div>
+  </section>
+
+  <section id="ex-16-1-12" class="callout example" aria-labelledby="ex-16-1-12-title">
+    <h3 id="ex-16-1-12-title">Example 16.1.12</h3>
+    <div class="callout-body">
+      <p>
+        Let \(L\) be the splitting field of \(f = x^4-2\) over \(\mathbb{Q}\). The roots of \(f\) are
+      </p>
+      \[
+        \alpha_1 = \sqrt[4]{2}, \quad \alpha_2 = i \alpha_1, \quad \alpha_3 = - \alpha_1, \quad \alpha_4 = -i \alpha_1,
+      \]
+      <p>
+        and \(L = \mathbb{Q}(\alpha_1, i)\). Let us start by computing \([L:\mathbb{Q}]\). Consider the chain of extensions
+      </p>
+      \[
+        \mathbb{Q} \subseteq \mathbb{Q}(\alpha_1) \subseteq L = \mathbb{Q}(\alpha_1)(i).
+      \]
+      <p>
+        The extension \(\mathbb{Q} \subseteq \mathbb{Q}(\alpha_1)\) has degree \(4\), since \(x^4 - 2\) is irreducible, by using Eisenstein's Criterion with the prime \(2\) to show \(f\) is irreducible over \(\mathbb{Z}\), and Gauss' Lemma to show that \(f\) must then also be irreducible over \(\mathbb{Q}\), and the extension \(\mathbb{Q}(\alpha_1) \subseteq L\) has degree at most \(2\), since \(i\) is a root of the degree \(2\) polynomial \(x^2+1\).
+        Since \(\mathbb{Q}(\alpha_1) \subseteq \mathbb{R}\) and \(L\) contains elements that are not real, the extension \(\mathbb{Q}(\alpha_1) \subseteq L\) cannot be trivial, and thus it must have degree exactly \(2\). We conclude that \([L:\mathbb{Q}] = 8\).
+      </p>
+
+      <p>
+        Set \(G := \mathrm{Aut}(L/\mathbb{Q})\). We know \(G\) is isomorphic to a subgroup of \(S_4\). Since \(L= \mathbb{Q}(\alpha_1, i)\), any \(\tau \in G\) is uniquely determined by what it does to \(\alpha_1\) and \(i\). Such a \(\tau\) must send \(\alpha_1\) to a root of \(f\), and thus to one of \(\alpha_1, \ldots, \alpha_4\). Moreover, since \(i\) is a root of \(x^2 + 1\), so is \(\tau(i)\), and thus \(\tau\) must send \(i\) to \(\pm i\). By combining the possibilities for \(\tau(\alpha_1)\) and \(\tau(i)\), we have at most \(8\) possibilities, so \(|G| \leqslant 8\). In particular, \(G\) corresponds to a <em>proper</em> subgroup of \(S_4\), and so the roots of \(x^4-2\) do not have as many symmetries as are conceivable.
+      </p>
+
+      <p>
+        <em>Claim:</em> \(|G| = 8\) and \(G\) is isomorphic to the subgroup of \(S_4\) generated by \((2 \, 4)\) and \((1 \,2 \, 3 \,4)\).
+      </p>
+
+      <p>
+        Let \(s\) be the map obtained by restricting complex conjugation to \(L\), and note that indeed \(s \in \mathrm{Aut}(L/\mathbb{Q})\). This map \(s\) corresponds to \((2 \, 4) \in S_4\).
+      </p>
+
+      <p>
+        Now consider the field extension \(\mathbb{Q}(i) \subseteq L\). Since \([L:\mathbb{Q}] = 8\) and \([\mathbb{Q}(i):\mathbb{Q}] = 2\), by the Degree Formula we must have \([L: \mathbb{Q}(i)] = 4\). Since \(L = \mathbb{Q}(i)(\alpha_1)\), the degree of \(m_{\alpha_1, \mathbb{Q}(i)}\) must be \(4\). In particular, this shows that \(x^4-2\) remains irreducible as a polynomial in \(\mathbb{Q}(i)[x]\). So \(L\) is the splitting field of the irreducible polynomial \(x^4 - 2\) over \(\mathbb{Q}(i)\), and we get that there is an element \(\tau \in \mathrm{Aut}(L/\mathbb{Q}(i))\) such that \(\tau(\alpha_1) = \alpha_2\). We may regard \(\tau\) as an element of \(\mathrm{Aut}(L/\mathbb{Q})\) too. Such a \(\tau\) satisfies \(\tau(i) = i\), so
+      </p>
+      \[
+        \tau(\alpha_2) = \tau(i \alpha_1) = i \tau(\alpha_1) = i \alpha_2 = \alpha_3.
+      \]
+      <p>
+        A key point here is that if we had merely taken \(\tau\) to be an element of \(\mathrm{Aut}(L/\mathbb{Q})\) sending \(\alpha_1\) to \(\alpha_2\), we would have no idea what \(\tau\) does to \(\alpha_2\): it was key to define \(\tau \in \mathrm{Aut}(L/\mathbb{Q}(i))\) as we did. We also get \(\tau(\alpha_3) = \alpha_4\) and \(\tau(\alpha_4) = \alpha_1\), so \(\tau\) corresponds to the permutation \((1 \,2 \, 3 \,4)\).
+      </p>
+
+      <p>
+        The proves that \(G\) is isomorphic to a subgroup of \(S_4\) that contains \((2 \, 4)\) and \((1 \,2 \, 3 \,4)\). Since the subgroup generated by these two elements has order \(8\) and \(|G| \leqslant 8\), then \(G\) must be the subgroup \(\langle (2 \, 4), (1 \,2 \, 3 \,4) \rangle\) of \(S_n\), and \(|G| = 8\).
+      </p>
+
+      <p>
+        Finally, we claim that this subgroup of \(S_4\) is isomorphic to \(D_4\). Indeed, consider a square with
+      </p>
+
+      <div class="math-display">
+        \[
+          \begin{array}{ccc}
+          1 & & 2 \\
+          & \square & \\
+          4 & & 3
+          \end{array}
+        \]
+      </div>
+
+      <p>
+        Let \(\rho \in D_4\) be the clockwise rotation by \(\frac{\pi}{2}\) and \(\tau \in D_4\) is the reflection across the line determined by the vertices \(1\) and \(3\). On the vertices of the square, the element \(\rho\) sends \(1 \mapsto 2\), \(2 \mapsto 3\), \(3 \mapsto 4\), and \(4 \mapsto 1\). Similarly, \(\tau\) switches the vertices \(2\) and \(4\). One can check that the map
+      </p>
+      \[
+        \begin{array}{rcl}
+        G & \longrightarrow & D_4 \\
+        (1 \, 2 \, 3 \, 4) & \longmapsto & \rho \\
+        (2 \, 4) & \longmapsto & \tau
+        \end{array}
+      \]
+      <p>
+        determines an isomorphism.
+      </p>
+    </div>
+  </section>
+</section>
+
+<section id="sec-16-2" class="section" aria-labelledby="sec-16-2-title">
+  <h2 id="sec-16-2-heading">16.2 Automorphism groups of finite field extensions</h2>
+
+  <p>
+    We will now focus on finite field extensions and their automorphism groups. We start by giving a much better upper bound on the order of the automorphism group of a finite field extension.
+  </p>
+
+  <section id="thm-16-2-1" class="callout theorem" aria-labelledby="thm-16-2-1-title">
+    <h3 id="thm-16-2-1-title">Theorem 16.2.1</h3>
+    <div class="callout-body">
+      <p>
+        Let \(L/F\) be a finite field extension. Then
+      </p>
+      <ol>
+        <li>
+          <p>
+            \(|\mathrm{Aut}(L/F)| \leqslant [L : F],\)
+          </p>
+        </li>
+        <li>
+          <p>
+            If \(L\) is the splitting field of a separable polynomial in \(F[x]\), then \(|\mathrm{Aut}(L/F)| = [L : F].\)
+          </p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <p>
+    The key point of the proof is the following.
+  </p>
+
+  <section id="lem-16-2-2" class="callout lemma" aria-labelledby="lem-16-2-2-title">
+    <h3 id="lem-16-2-2-title">Lemma 16.2.2</h3>
+    <div class="callout-body">
+      <p>
+        Let \(L/F\) be a finite field extension. Let \(f\in F[x]\) be an irreducible polynomial, and \(\alpha\in L\) be a root of \(f\). Let \(G=\mathrm{Aut}(L/F)\) and \(H=\mathrm{Aut}(L/F(\alpha))\), which is a subgroup of \(G\). Then
+      </p>
+      <ol>
+        <li>
+          <p>
+            \([G:H]\leq [F(\alpha):F],\)
+          </p>
+        </li>
+        <li>
+          <p>
+            If \(f\) is separable and \(L\) is the splitting field of \(f\), then \([G:H]=  [F(\alpha):F].\)
+          </p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="proof-lem-16-2-2" class="callout proof" aria-labelledby="proof-lem-16-2-2-title">
+    <h3 id="proof-lem-16-2-2-title">Proof of Lemma 16.2.2</h3>
+    <div class="callout-body">
+      <p>
+        Let \(S\) be the set of roots of \(f\) in \(L\).
+        Consider the map
+      </p>
+      \[
+        \begin{aligned}
+        \Psi: G/H &\rightarrow S \\
+        gH & \mapsto g(\alpha)
+        \end{aligned}
+      \]
+      <p>
+        We claim that \(\Psi\) is well-defined and injective. We know that \(g(\alpha)\in S\) for all \(g\in G\) since automorphisms send roots to roots.
+        We then have
+      </p>
+      \[
+        gH=g'H \Leftrightarrow g^{-1}g' \in H \Leftrightarrow g^{-1}g'(\alpha) = \alpha  \Leftrightarrow g(\alpha) = g'(\alpha).
+      \]
+      <p>
+        This shows that \(\Psi\) is well-defined and injective. In particular, \([G:H]\leq |S|\). On the other hand, \(|S|\leq \mathrm{deg}(f)=  [F(\alpha):F]\), and this shows the first statement.
+      </p>
+
+      <p>
+        If \(f\) splits into linear factors in \(L\), then the action of \(G\) on \(S\) is transitive; this means that the map \(\Psi\) is bijective as well, so \([G:H]= |S|\). On the other hand, if \(f\) is separable and \(f\) splits completely in \(L\), we have \(|S|= [F(\alpha):F]\). This shows the second statement.
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-thm-16-2-1" class="callout proof" aria-labelledby="proof-thm-16-2-1-title">
+    <h3 id="proof-thm-16-2-1-title">Proof of Theorem 16.2.1</h3>
+    <div class="callout-body">
+      <p>
+        We proceed by induction on \([L : F]\). In the base case, \([L:F]=1\), and thus \(L = F\), so \(\mathrm{Aut}(L/F)\) is the trivial group, and both statements hold.
+      </p>
+
+      <p>
+        Now let \(n \geqslant 1\) and suppose that \(|\mathrm{Aut}(L/K)| \leqslant [L : K]\) holds for all \(L\) and \(K\) such that \([L : K] < n\). Let \([L : F] = n\). Pick \(\alpha \in L \setminus F\) and consider \(F(\alpha)/F\). Set \(G=\mathrm{Aut}(L/F)\) and \(H=\mathrm{Aut}(L/F(\alpha))\) as in the Lemma.
+      </p>
+
+      <p>
+        Note that since \([F(\alpha):F]>1\), we have \([L:F(\alpha)]<n\).
+        By the induction hypothesis, we have \(|H| \leqslant [L: F(\alpha)]\). Then
+      </p>
+      \[
+        |G| = |H| \cdot [G:H] \leq [L:F(\alpha)] \cdot [F(\alpha) : F] =[L:F],
+      \]
+      <p>
+        showing the first statement.
+      </p>
+
+      <p>
+        For the second statement, write \(f=(x-\alpha)h\) in \(F(\alpha)[x]\), and note that \(h\) is separable (since its factorization over the algebraic closure divides that of \(f\)), and that \(L\) is the splitting field of \(h\) over \(F(\alpha)\). We can then apply the induction hypothesis to say that \(|H|=[L:F(\alpha)]\). Then
+      </p>
+      \[
+        |G| = |H| \cdot [G:H] = [L:F(\alpha)] \cdot [F(\alpha) : F] =[L:F],
+      \]
+      <p>
+        concluding the proof.
+      </p>
+    </div>
+  </section>
+
+  <p>
+    The finite field extensions whose automorphism group is as large as possible are very important, and are the main subject of this final chapter.
+  </p>
+
+  <section id="def-16-2-3" class="callout definition" aria-labelledby="def-16-2-3-title">
+    <h3 id="def-16-2-3-title">Definition 16.2.3</h3>
+    <div class="callout-body">
+      <p>
+        A <em>finite</em> field extension \(F \subseteq L\) is <strong>Galois</strong> if \(|\mathrm{Aut}(L/F) |= [L:F]\). In this case we write \(\mathrm{Gal}(L/F)\) for \(\mathrm{Aut}(L/F)\), and say \(\mathrm{Gal}(L/F)\) is the <strong>Galois group</strong> of \(L\) over \(F\).
+      </p>
+    </div>
+  </section>
+
+  <section id="ex-16-2-4" class="callout example" aria-labelledby="ex-16-2-4-title">
+    <h3 id="ex-16-2-4-title">Example 16.2.4 (a nonexample)</h3>
+    <div class="callout-body">
+      <p>
+        We claim that field extension \(\mathbb{Q} \subseteq \mathbb{Q}(\sqrt[3]{2})\) is not Galois. Indeed, suppose \(s \in \mathrm{Aut}(L/\mathbb{Q})\). Then \(s\) is entirely determined by where it sends \(\sqrt[3]{2}\) and it must send this element to another root of \(x^3 - 2\). But the other two roots of this polynomial are not real, and hence not in \(L\). So \(s(\sqrt[3]{2}) = \sqrt[3]{2}\) and \(s = \mathrm{id}\).
+      </p>
+
+      <p>
+        This shows \(\mathrm{Aut}(L/\mathbb{Q})\) is the trivial group, so \(\mathrm{Aut}(L/\mathbb{Q}) = 1 &lt; 3 = [L:\mathbb{Q}]\). In particular, the extension is not Galois.
+      </p>
+    </div>
+  </section>
+
+  <p>
+    Theorem 16.2.1 tells us how to construct Galois extensions:
+  </p>
+
+  <section id="cor-16-2-5" class="callout corollary" aria-labelledby="cor-16-2-5-title">
+    <h3 id="cor-16-2-5-title">Corollary 16.2.5 (First construction of Galois extensions from splitting fields)</h3>
+    <div class="callout-body">
+      <p>
+        If \(L\) is the splitting field of a separable polynomial \(f \in F[x]\), then \(L/F\) is Galois.
+      </p>
+    </div>
+  </section>
+
+  <section id="def-16-2-6" class="callout definition" aria-labelledby="def-16-2-6-title">
+    <h3 id="def-16-2-6-title">Definition 16.2.6</h3>
+    <div class="callout-body">
+      <p>
+        Let \(f \in F[x]\) be a separable polynomial with splitting field \(L\). The <strong>Galois group</strong> of \(f\) is \(\mathrm{Gal}(L/F)\).
+      </p>
+    </div>
+  </section>
+
+  <p>
+    We will need the following notation.
+  </p>
+
+  <section id="def-16-2-7" class="callout definition" aria-labelledby="def-16-2-7-title">
+    <h3 id="def-16-2-7-title">Definition 16.2.7</h3>
+    <div class="callout-body">
+      <p>
+        If \(G\) is subgroup of \(\mathrm{Aut}(L)\), the <strong>subfield of \(L\) fixed by \(G\)</strong>, denoted \(L^G\), is by definition
+      </p>
+      \[
+        L^G := \{ \alpha \in L \mid s(\alpha) = \alpha, \text{ for all \(s \in G\)}\}.
+      \]
+      <p>
+        Note that the textbook writes this as \(L_G\).
+      </p>
+    </div>
+  </section>
+
+  <section id="exr-16-2-8" class="callout exercise" aria-labelledby="exr-16-2-8-title">
+    <h3 id="exr-16-2-8-title">Exercise 16.2.8</h3>
+    <div class="callout-body">
+      <p>
+        If \(G\) is subgroup of \(\mathrm{Aut}(L)\), show that \(L^G\) is a subfield of \(L\).
+      </p>
+    </div>
+  </section>
+
+  <section id="ex-16-2-9" class="callout example" aria-labelledby="ex-16-2-9-title">
+    <h3 id="ex-16-2-9-title">Example 16.2.9</h3>
+    <div class="callout-body">
+      <p>
+        Let \(G = \mathrm{Aut}(\mathbb{C}/\mathbb{R})\). Then \(\mathbb{C}^G\) is the subgroup of complex numbers fixed by all the elements in \(\mathrm{Aut}(\mathbb{C}/\mathbb{R})\), which we saw earlier has only two elements, the identity and the conjugation map \(s\). Therefore, \(\mathbb{C}^G\) is the set of complex numbers fixed by conjugation, and thus \(\mathbb{C}^{\mathrm{Aut}(\mathbb{C}/\mathbb{R})} = \mathbb{R}\).
+      </p>
+    </div>
+  </section>
+
+</section>
 
 </main>
 <footer aria-label="Course footer" role="contentinfo">
