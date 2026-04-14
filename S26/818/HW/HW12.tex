@@ -1,0 +1,127 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,enumerate,bbm}
+\usepackage[]{graphicx}
+\usepackage{color,subfigure}
+\definecolor{scarlet}{rgb}{0.81,0,0}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage[all]{xypic}
+\usepackage[colorlinks=true,citecolor=scarlet,linkcolor=scarlet]{hyperref}
+\usepackage{colonequals}
+
+\usepackage{fancyhdr, lastpage}
+\pagestyle{fancy}
+\fancyfoot[C]{{\thepage} of \pageref{LastPage}}
+
+
+
+\DeclareMathOperator{\mSpec}{mSpec}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Ass}{Ass}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\height}{height}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\ann}{ann}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\coker}{coker}
+%\DeclareMathOperator{\ker}{ker}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\M}{M}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\ch}{char}
+\DeclareMathOperator{\Aut}{Aut}
+
+%\DeclareMathOperator{\dim}{dim}
+
+\DeclareMathOperator{\lcm}{lcm}
+
+\def\ra{\rightarrow}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\ov}[1]{\overline{#1}}
+\newcommand{\norm}{\trianglelefteq}
+
+\def\ov#1{\overline{#1}}
+
+
+\title{}
+\date{\vspace{-0.5in}}
+
+\makeatletter
+\g@addto@macro\@floatboxreset\centering
+\makeatother
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+
+\begin{document}
+
+\thispagestyle{fancy}
+\pagestyle{fancy}
+\rhead{UNL $\mid$ Spring 2026}
+\lhead{Introduction to Modern Algebra II}
+
+\vspace{3em}
+
+\begin{center}
+	{\LARGE Problem Set 11 \\}
+	Due Thursday, April 16\end{center}
+
+\
+
+\noindent
+{\bf Instructions:}
+You are encouraged to work together on these problems, but each student should hand in their own final draft, written in a way that indicates their individual understanding of the solutions. Never submit something for grading that you do not completely understand. You cannot use any resources besides me, your classmates, and our course notes.
+
+
+I will post the .tex code for these problems for you to use if you wish to type your homework. If you prefer not to type, please  {\em write neatly}. As a matter of good proof writing style, please use complete sentences and correct grammar. You may use any result stated or proven in class or in a homework problem, provided you reference it appropriately by either stating the result or stating its name (e.g. the definition of ring or Lagrange's Theorem). Please do not refer to theorems by their number in the course notes, as that can change.
+
+
+
+\begin{problem}
+	Compute $\mathrm{Gal}(\Q(\sqrt{2},\sqrt{3})/\Q)$.
+\end{problem}
+
+\begin{problem}
+Let $p$ be a prime number and let $L$ be the splitting field of $x^p-2$ over $\Q$. In Problem Set 11, you showed that $L = \Q(b,\zeta)$ for $b = \sqrt[p]{2}$ and $\zeta = e^{2\pi i/p}$, and $[L : \Q] = p(p-1)$.
+\begin{enumerate}[(a)]
+\item  Determine all the elements of $\mathrm{Gal}(L/\Q)$.
+
+\item Decide, with justification, whether $G=\mathrm{Gal}(L/\Q)$ is abelian.
+\end{enumerate}
+\end{problem}
+
+\begin{problem}
+	Let $f(x) \in \Q[x]$ be an irreducible cubic (degree $3$) polynomial having exactly one real root. 
+Let $L$ be the splitting field of $f(x)$ over $\Q$. Show that $\mathrm{Gal}(L/\Q) \cong S_3$.
+\end{problem}
+
+\begin{problem}
+Assume $F \subseteq L$ is a finite extension of fields and that the characteristic of $F$ is $p$, where $p$ is a prime. Suppose there exists an element $a \in L$ such that $a \notin F$ but $a^p \in F$.
+\begin{enumerate}[(a)]
+\item Prove $\sigma(a) = a$ for all $\sigma \in \Aut(L/F)$.
+\item Prove that $F \subseteq L$ is not Galois.
+\end{enumerate}
+\end{problem}  
+
+\begin{problem}
+Let $p$ be a prime, and $n>1$. Let $\mathbb{F}_{p}$ denote the field with $p$ elements, and  $\mathbb{F}_{p^n}$ denote the field with $p^n$ elements. Show that $\mathrm{Gal}(\mathbb{F}_{p^n}/\mathbb{F}_{p})\cong \Z/n$, and find a generator.
+\end{problem}
+
+
+\begin{problem} Solving the cubic:
+
+\end{problem}
+
+
+
+\end{document}
