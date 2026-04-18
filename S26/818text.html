@@ -195,7 +195,8 @@
 </ol>
 <li><a href="#sec-16">Galois Theory</a></li>
 <ol><li><a href="#sec-16-1-heading">Group actions on field extensions</a></li>
-<li><a href="#sec-16-2-heading">Automorphism groups of finite field extensions</a></li>
+<li><a href="#sec-16-2-heading">Galois extensions</a></li>
+<li><a href="#sec-16-3-heading">The Fundamental Theorem of Galois Theory</a></li>
 </ol>
 </ol>
 </ul></nav>
@@ -7142,7 +7143,7 @@ We have seen already that the degree of a field extension is a simple yet powerf
 </section>
 
 <section id="sec-16-2" class="section" aria-labelledby="sec-16-2-title">
-  <h2 id="sec-16-2-heading">16.2 Automorphism groups of finite field extensions</h2>
+  <h2 id="sec-16-2-heading">16.2 Galois extensions</h2>
 
   <p>
     We will now focus on finite field extensions and their automorphism groups. We start by giving a much better upper bound on the order of the automorphism group of a finite field extension.
@@ -7343,6 +7344,569 @@ We have seen already that the degree of a field extension is a simple yet powerf
     </div>
   </section>
 
+</section>
+
+
+<section id="thm-16-2-10" class="callout theorem" aria-labelledby="thm-16-2-10-title">
+  <h3 id="thm-16-2-10-title">Theorem 16.2.10 (Artin's Theorem)</h3>
+  <div class="callout-body">
+    <p>
+      Let \(L\) be any field. If \(G\) is a finite subgroup of \(\mathrm{Aut}(L)\), then \(L^G\) is a subfield of \(L\), the extension \(L/L^G\) is finite and Galois, and \(\mathrm{Gal}(L/L^G) = G\).
+    </p>
+  </div>
+</section>
+
+<p>
+  Note that we really do mean equality here: both \(G\) and \(\mathrm{Gal}(L/L^G)\) are subgroups of \(\mathrm{Aut}(L)\), and the theorem states that they coincide. The containment \(G \subseteq \mathrm{Gal}(L/L^G)\) is clear: if \(\sigma \in G\), then by construction \(\sigma\) fixes every element of \(L^G\) and hence \(\sigma \in \mathrm{Gal}(L/L^G)\). The point of the theorem is that the extension \(L^G \subseteq L\) is always Galois and that if \(\sigma \in \mathrm{Aut}(L)\) fixes every element of \(L^G\) then \(\sigma\) must belong to \(G\).
+</p>
+
+<p>
+  We will not prove <a href="#Artin's theorem">Artin's Theorem</a> right away. Instead, we will first deduce some of its consequences, including the Fundamental Theorem of Galois Theory. We will then illustrate the Fundamental Theorem with many examples and give some consequences of it too. Only then will we circle back to prove <a href="#Artin's theorem">Artin's Theorem</a>.
+</p>
+
+<section id="ex-16-2-11" class="callout example" aria-labelledby="ex-16-2-11-title">
+  <h3 id="ex-16-2-11-title">Example 16.2.11</h3>
+  <div class="callout-body">
+    <p>
+      The group \(G = \{\mathrm{id}_{\mathbb{C}}, \sigma \}\), where \(\sigma\) is complex conjugation, is a finite subgroup of \(\mathrm{Aut}(\mathbb{C})\). <a href="#Artin's theorem">Artin's Theorem</a> tells us that \(\mathbb{C}^G \subseteq \mathbb{C}\) is finite and Galois with Galois group \(G\). It follows that \([\mathbb{C} : \mathbb{C}^G] = |G| = 2\). We already knew all this, since \(\mathbb{C}^G = \mathbb{R}\).
+    </p>
+  </div>
+</section>
+
+<p>
+  As we head towards the Fundamental Theorem of Galois Theory, we start by stating a few helpful corollaries of <a href="#Artin's theorem">Artin's Theorem</a>. These will also allow us to show that finite Galois extensions are precisely the splitting fields of separable polynomials.
+</p>
+
+<section id="cor-16-2-12" class="callout corollary" aria-labelledby="cor-16-2-12-title">
+  <h3 id="cor-16-2-12-title">Corollary 16.2.12</h3>
+  <div class="callout-body">
+    <p>
+      Let \(L/F\) be any Galois extension. Then \(F = L^{\mathrm{Gal}(L/F)}\).
+    </p>
+  </div>
+</section>
+
+<section id="proof-cor-16-2-12" class="callout proof" aria-labelledby="proof-cor-16-2-12-title">
+  <h3 id="proof-cor-16-2-12-title">Proof of Corollary 16.2.12</h3>
+  <div class="callout-body">
+    <p>
+      Note that \(F \subseteq L^{\mathrm{Gal}(L/F)}\) holds by definition, and so
+    </p>
+    \[
+      [L:F] = [L: L^{\mathrm{Gal}(L/F)}][L^{\mathrm{Gal}(L/F)} : F]
+    \]
+    <p>
+      by the Degree Formula. But <a href="#Artin's theorem">Artin's Theorem</a> gives
+    </p>
+    \[
+      [L: L^{\mathrm{Gal}(L/F)}] = |\mathrm{Gal}(L/F)|,
+    \]
+    <p>
+      and we also know that \([L:F] = |\mathrm{Gal}(L/F)|\). Therefore, \([L^{\mathrm{Gal}(L/F)}:F] = 1\) and thus \(F = L^{\mathrm{Gal}(L/F)}\).
+    </p>
+  </div>
+</section>
+
+<section id="ex-16-2-13" class="callout example" aria-labelledby="ex-16-2-13-title">
+  <h3 id="ex-16-2-13-title">Example 16.2.13</h3>
+  <div class="callout-body">
+    <p>
+      We know from an earlier example that \(L = \mathbb{Q}(\sqrt[4]{2}, i)\) is Galois over \(\mathbb{Q}\) with Galois group \(D_4\). More precisely, this identification is given by writting
+    </p>
+    \[
+      \alpha_1 = \sqrt[4]{2}, \quad \alpha_2 = i\sqrt[4]{2}, \quad \alpha_3 = -\sqrt[4]{2}, \quad \alpha_4 = -i\sqrt[4]{2}
+    \]
+    <p>
+      and labelling the four corners of a square with \(\alpha_1, \ldots, \alpha_4\), counter-clockwise. Consider
+    </p>
+    \[
+      \beta := \alpha_1 + \cdots \alpha_4
+    \]
+    <p>
+      and \(\gamma = \alpha_1 \cdots \alpha_4\). Then each of \(\beta\) and \(\gamma\) are fixed by every Galois automorphism and hence by a Corollary to Artin's Theorem, \(\beta\) and \(\gamma\) must be rational. In fact, one can easily see that \(\beta = 0\) and \(\gamma = 2\), but notice that the exact same reasoning would apply in general to the sum of roots and the product of roots in the splitting field of any separable polynomial.
+    </p>
+  </div>
+</section>
+
+<section id="cor-16-2-14" class="callout corollary" aria-labelledby="cor-16-2-14-title">
+  <h3 id="cor-16-2-14-title">Corollary 16.2.14</h3>
+  <div class="callout-body">
+    <p>
+      Let \(F \subseteq L\) be a Galois extension.
+      For every \(\alpha \in L\), \(m_{\alpha, F}\) is separable and all of its roots belong to \(L\). Moreover, \(\mathrm{Gal}(L/F)\) acts transitively on the set of roots of \(m_{\alpha,F}\).
+    </p>
+  </div>
+</section>
+
+<section id="proof-cor-16-2-14" class="callout proof" aria-labelledby="proof-cor-16-2-14-title">
+  <h3 id="proof-cor-16-2-14-title">Proof of Corollary 16.2.14</h3>
+  <div class="callout-body">
+    <p>
+      Let \(\alpha \in L\) and consider the orbit \(\alpha_1 = \alpha, \ldots, \alpha_m\)
+      of \(\alpha\) under the action of \(\mathrm{Gal}(L/F)\). Set
+    </p>
+    \[
+      f := (x-\alpha_1) \cdots (x-\alpha_m).
+    \]
+    <p>
+      For any \(\tau \in \mathrm{Gal}(L/F)\), since \(\tau\) permutes the elements of any orbit then
+    </p>
+    \[
+      f^\tau = (x-\tau(\alpha_1)) \cdots (x-\tau(\alpha_m)) = f.
+    \]
+    <p>
+      This proves that \(f\) has all its coefficients in the field \(F^{\mathrm{Gal}(L/F)}\), which by a Corollary to Artin's Theorem coincides with the field \(F\).
+      Thus \(f \in F[x]\). Moreover, by construction \(f\) is separable. Since \(\alpha\) is a root of \(f\), the minimal polynomial \(m_{\alpha,F}\) must divide \(f\), and thus \(m_{\alpha,F}\) is also separable and has all its roots in \(L\).
+    </p>
+
+    <p>
+      Finally, this also shows that all the roots of \(m_{\alpha,F}\) are on the orbit of \(\alpha\) with respect to the action of \(\mathrm{Gal}(L/F)\), and thus \(\mathrm{Gal}(L/F)\) acts transitively on the set of roots of \(m_{\alpha,F}\).
+    </p>
+  </div>
+</section>
+
+<section id="rmk-16-2-15" class="callout remark" aria-labelledby="rmk-16-2-15-title">
+  <h3 id="rmk-16-2-15-title">Remark 16.2.15</h3>
+  <div class="callout-body">
+    <p>
+      Note that any irreducible polynomial over \(F\) with a root in \(L\) is the minimal polynomial of some element in \(L\).
+      So the Corollary says in particular that if \(F/L\) is Galois and \(f \in F\) is any irreducible polynomial, then \(\mathrm{Gal}(F/L)\) acts transitively on the set of roots of \(f\).
+    </p>
+  </div>
+</section>
+
+<section id="cor-16-2-16" class="callout corollary" aria-labelledby="cor-16-2-16-title">
+  <h3 id="cor-16-2-16-title">Corollary 16.2.16</h3>
+  <div class="callout-body">
+    <p>
+      A finite field extension \(L/F\) is Galois if and only if \(L\) is the splitting field of some separable polynomial with coefficients in \(F\).
+    </p>
+  </div>
+</section>
+
+<section id="proof-cor-16-2-16" class="callout proof" aria-labelledby="proof-cor-16-2-16-title">
+  <h3 id="proof-cor-16-2-16-title">Proof of Corollary 16.2.16</h3>
+  <div class="callout-body">
+    <p>
+      We already proved before that if \(L\) is the splitting field of some separable polynomial \(f \in F[x]\), then \(F \subseteq L\) is Galois.
+    </p>
+
+    <p>
+      For the reverse direction, suppose that \(F \subseteq L\) is a Galois extension. In particular, it is a finite extension, so \(L = F(\beta_1, \ldots, \beta_n)\) for some \(\beta_1, \dots, \beta_n \in L\); for example, the \(\beta_i\) could be chosen to be an \(F\)-basis of \(L\).
+    </p>
+
+    <p>
+      By the Corollary, each \(m_{\beta_i,F}\) is separable and all of its roots belong to \(L\). Moreover, if \(\gamma_i\) is a root of \(m_{\beta_i,F}\) and \(i \neq j\), then we claim that \(\gamma_i\) is not a root of \(m_{\beta_j,F}\). Indeed, if \(m_{\beta_j,F}(\beta_i) = 0\), then \(m_{\alpha_i,F} \mid m_{\alpha_j,F}\), but they are both monic irreducible polynomials over \(F\), so we must have \(m_{\alpha_i,F} = m_{\alpha_j,F}\).
+    </p>
+
+    <p>
+      Let \(m_1, \ldots, m_s\) be the distinct polynomials among the \(m_{\beta_i,F}\), and set
+    </p>
+    \[
+      g := \prod_{i=1}^s m_i.
+    \]
+    <p>
+      Since distinct \(m_i\) do not share any common roots and all the \(m_i\) are separable, their product \(g\) is also separable. Moreover, all of the roots of \(g\) belong to \(L\), and hence the splitting field of \(g\) is contained in \(L\). Since \(\beta_i\) is a root of \(g\) for all \(i\), \(L = F(\beta_1, \ldots, \beta_n)\) must be precisely the splitting field of \(g\).
+    </p>
+  </div>
+</section>
+
+<section id="thm-16-2-17" class="callout theorem" aria-labelledby="thm-16-2-17-title">
+  <h3 id="thm-16-2-17-title">Theorem 16.2.17</h3>
+  <div class="callout-body">
+    <p>
+      Let \(L\) be the splitting field of a separable polynomial \(f \in F[x]\). The orbits of the action of \(\mathrm{Aut}(L/F)\) on the set \(S\) of roots of \(f\) are the subsets of \(S\) that are the roots of the same irreducible factor of \(f\).
+    </p>
+  </div>
+</section>
+
+<section id="proof-thm-16-2-17" class="callout proof" aria-labelledby="proof-thm-16-2-17-title">
+  <h3 id="proof-thm-16-2-17-title">Proof of Theorem 16.2.17</h3>
+  <div class="callout-body">
+    <p>
+      For each \(b \in S\), the orbit of \(b\) is
+    </p>
+    \[
+      \mathrm{Orb}_{\mathrm{Aut}(L/F)}(b) = \{\sigma(b) \mid \sigma\in \mathrm{Aut}(L/F)\}.
+    \]
+    <p>
+      Since \(b\) is a root of \(f\), there exists an irreducible factor \(p \in F[x]\) of \(f\) such that \(b\) is a root of \(p\). Since \(p \in F[x]\), we know that \(\sigma(b)\) is a root of \(p\) for any \(\sigma \in \mathrm{Aut}(L/F)\). Thus the orbit of \(b\) is contained in the set of roots of \(p\) in \(L\).
+    </p>
+
+    <p>
+      By the Theorem on degrees and automorphism groups of splitting fields, \(F \subseteq L\) is a Galois extension. Then \(\mathrm{Gal}(L/F)\) acts transitively on the set of roots of \(p\). Thus every root of \(p\) is in the orbit of \(b\) under the action of \(\mathrm{Aut}(L/F)\). We conclude that the orbit of \(b\) is precisely the set of roots of \(p\).
+    </p>
+  </div>
+</section>
+
+
+
+<section id="sec-16-3" class="section" aria-labelledby="sec-16-3-title">
+  <h2 id="sec-16-3-heading">16.3 The Fundamental Theorem of Galois Theory</h2>
+
+  <section id="def-16-3-1" class="callout definition" aria-labelledby="def-16-3-1-title">
+    <h3 id="def-16-3-1-title">Definition 16.3.1</h3>
+    <div class="callout-body">
+      <p>
+        Given a field extension \(F \subseteq L\), an <strong>intermediate field</strong> is a subfield \(E\) of \(L\) that contains \(F\), so that \(F \subseteq E \subseteq L\).
+      </p>
+    </div>
+  </section>
+
+  <section id="cor-16-3-2" class="callout corollary" aria-labelledby="cor-16-3-2-title">
+    <h3 id="cor-16-3-2-title">Lemma 16.3.2</h3>
+    <div class="callout-body">
+      <p>
+        If \(F \subseteq L\) is Galois, then for any intermediate field \(E\) the extension \(E \subseteq L\) is Galois.
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-cor-16-3-2" class="callout proof" aria-labelledby="proof-cor-16-3-2-title">
+    <h3 id="proof-cor-16-3-2-title">Proof of Lemma 16.3.2</h3>
+    <div class="callout-body">
+      <p>
+        This follows from the characterization of Galois extensions as splitting fields of separable polynomials: if \(L\) is the splitting field over \(F\) of a separable polynomial \(f \in F[x]\), then \(L\) is also the splitting field over \(E\) of the same polynomial \(f\), but now viewed as a polynomial in \(E\).
+      </p>
+    </div>
+  </section>
+
+  <section id="rmk-16-3-3" class="callout remark" aria-labelledby="rmk-16-3-3-title">
+    <h3 id="rmk-16-3-3-title">Remark 16.3.3 (Warning!)</h3>
+    <div class="callout-body">
+      <p>
+        In the setting of the Lemma above, note that \(E\) need not be Galois over the original field \(F\). For example, \(L = \mathbb{Q}(\sqrt[3]{2}, e^{2 \pi i/3})\) is Galois over \(F = \mathbb{Q}\) but we saw that \(E = \mathbb{Q}(\sqrt[3]{2})\) is not Galois over \(\mathbb{Q}\). Nevertheless, the Lemma says that \(L\) is Galois over \(E\).
+      </p>
+    </div>
+  </section>
+
+  <section id="def-16-3-4" class="callout definition" aria-labelledby="def-16-3-4-title">
+    <h3 id="def-16-3-4-title">Definition 16.3.4</h3>
+    <div class="callout-body">
+      <p>
+        Let \(E_1\) and \(E_2\) be two subfields of \(K\). The <strong>composite</strong> of \(E_1\) and \(E_2\), denoted \(E_1 E_2\), is the smallest subfield of \(K\) containing both \(E_1\) and \(E_2\); more precisely, it is the intersection of all the subfields of \(K\) that contain both \(E_1\) and \(E_2\).
+      </p>
+    </div>
+  </section>
+
+  <section id="ex-16-3-5" class="callout example" aria-labelledby="ex-16-3-5-title">
+    <h3 id="ex-16-3-5-title">Example 16.3.5</h3>
+    <div class="callout-body">
+      <p>
+        Let \(E = \mathbb{Q}(\sqrt{2})\) and \(F = \mathbb{Q}(\sqrt[3]{2})\). We claim that the composite of \(E\) and \(F\) is the field \(L = \mathbb{Q}(\sqrt[6]{2})\). On the one hand, \(\sqrt{2} = \sqrt[6]{2}^3 \in L\) and \(\sqrt[3]{2} = \sqrt[6]{2}^2 \in L\), so \(E, F \subseteq L\). On the other hand, any subfield of \(L\) containing both \(E\) and \(F\) must contain
+      </p>
+      \[
+        \frac{\sqrt{2}}{\sqrt[3]{2}} = 2^{\frac{1}{2} - \frac{1}{3}} = 2^{\frac{3-2}{6}} = 2^{\frac{1}{6}} = \sqrt[6]{2}.
+      \]
+      <p>
+        Thus \(L = EF\).
+      </p>
+    </div>
+  </section>
+
+  <section id="rmk-16-3-6" class="callout remark" aria-labelledby="rmk-16-3-6-title">
+    <h3 id="rmk-16-3-6-title">Remark 16.3.6</h3>
+    <div class="callout-body">
+      <p>
+        Let \(F \subseteq L\) be a field extension and consider two intermediary fields \(E_1\) and \(E_2\). If \(E_1 = F(\alpha_1, \ldots, \alpha_n)\) and \(E_2 = F(\beta_1, \ldots, \beta_m)\), then \(E_1 E_2 = F(\alpha_1, \ldots, \alpha_n, \beta_1, \ldots, \beta_m)\). If \(\alpha_1, \ldots, \alpha_n\) is a basis for \(E_1/F\) and \(\beta_1, \ldots, \beta_m\) is a basis for \(E_2/F\), then \(\alpha_i \beta_j\) is a generating set for \(E_1E_2\) over \(F\), so
+      </p>
+      \[
+        [E_1 E_2 : F] \leqslant [E_1 : F][E_2 : F].
+      \]
+      <p>
+        Notice, however, that the inequality might be strict.
+      </p>
+    </div>
+  </section>
+
+  <p>
+    We are finally ready for the Fundamental Theorem of Galois Theory:
+  </p>
+
+  <section id="thm-16-3-7" class="callout theorem" aria-labelledby="thm-16-3-7-title">
+    <h3 id="thm-16-3-7-title">Theorem 16.3.7 (Fundamental Theorem of Galois Theory)</h3>
+    <div class="callout-body">
+      <p>
+        Suppose \(L/F\) is a finite Galois extension. There is a bijection
+      </p>
+      <div class="math-display">
+        \[
+        \begin{array}{rcl}
+        \left\{\text{intermediate fields \(E\), with \(F \subseteq E \subseteq L\)}\right\}
+        & \longleftrightarrow &
+        \left\{\text{subgroups \(H\) of \(\mathrm{Gal}(L/F)\)}\right\} \\
+        E & \longmapsto & \Psi(E)=\mathrm{Gal}(L/E) \\
+        \Psi^{-1}(H) = L^H & \longleftarrow & H
+        \end{array}
+        \]
+      </div>
+
+      <p>
+        Moreover, this bijective correspondence enjoys the following properties:
+      </p>
+      <ol type="a">
+        <li>
+          <p>
+            \(\Psi\) and \(\Psi^{-1}\) each reverse the order of inclusion.
+          </p>
+        </li>
+        <li>
+          <p>
+            \(\Psi\) and \(\Psi^{-1}\) convert between degrees of extensions and indices of subgroups:
+          </p>
+          \[
+            [\mathrm{Gal}(L/F) : H] = [L^H:F] \quad \iff \quad [\mathrm{Gal}(L/F) : \mathrm{Gal}(L/E)] = [E:F].
+          \]
+        </li>
+        <li>
+          <p>
+            Normal subgroups correspond to intermediate fields that are Galois over \(F\):
+          </p>
+          <ul>
+            <li>
+              <p>
+                If \(N \trianglelefteq G\) then \(L^N/F\) is Galois.
+              </p>
+            </li>
+            <li>
+              <p>
+                If \(E/F\) is Galois, then \(\mathrm{Gal}(L/E)\) is a normal subgroup of \(\mathrm{Gal}(L/F)\).
+              </p>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <p>
+            If \(E = L^N\) for a normal subgroup \(N \trianglelefteq \mathrm{Gal}(L/F)\), then \(\mathrm{Gal}(E/F) \cong \mathrm{Gal}(L/F)/N\).
+          </p>
+        </li>
+        <li>
+          <p>
+            If \(H_1, H_2\) are subgroups of \(G\) with fixed subfields \(E_1=L^{H_1}\) and \(E_2=L^{H_2}\), then
+          </p>
+          <ul>
+            <li>
+              <p>
+                \(E_1\cap E_2=L^{\langle H_1,H_2\rangle}\) and \(\mathrm{Gal}(L/E_1\cap E_2)=\langle H_1,H_2\rangle\).
+              </p>
+            </li>
+            <li>
+              <p>
+                \(E_1 E_2=L^{H_1\cap H_2}\) and \(\mathrm{Gal}(L/E_1E_2)=H_1\cap H_2\).
+              </p>
+            </li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="proof-thm-16-3-7" class="callout proof" aria-labelledby="proof-thm-16-3-7-title">
+    <h3 id="proof-thm-16-3-7-title">Proof of Theorem 16.3.7</h3>
+    <div class="callout-body">
+      <p>
+        First, we need to check that both functions are well-defined. For each intermediary field \(E\), we know that \(L/E\) is also Galois, and hence it makes sense to write \(\mathrm{Gal}(L/E)\); moreover, any \(\sigma \in \mathrm{Gal}(L/E)\) is an automorphism of \(L\) that fixes \(E\), and thus \(F \subseteq E\), so \(\sigma \in \mathrm{Gal}(L/F)\). This shows that \(\Psi\) is well-defined. Conversely, given a subgroup \(H\) of \(\mathrm{Gal}(L/F)\), \(L^H\) is a subfield of \(L\).
+      </p>
+
+      <p>
+        Next, we need to check that \(\Psi\) and \(\Psi^{-1}\) are indeed inverse functions. Given a subgroup \(H\) of \(\mathrm{Gal}(L/F)\), we have \(\mathrm{Gal}(L/L^H) = H\) by <a href="#thm-16-2-10">Artin's Theorem</a>. Thus
+      </p>
+      \[
+        \Psi \circ \Psi^{-1}(H) = \Psi(L^H) = \mathrm{Gal}(L/L^H) = H.
+      \]
+      <p>
+        Conversely, given an intermediate field \(E\), \(L/E\) is Galois, and hence \(L^{\mathrm{Gal}(L/E)} = E\). Thus
+      </p>
+      \[
+        \Psi^{-1} \circ \Psi(E) = \Psi(\mathrm{Gal}(L/E)) = L^{\mathrm{Gal}(L/E)} = E.
+      \]
+
+      <p>
+        This establishes the fact that \(\Psi\) is indeed a bijective correspondence.
+      </p>
+
+      <p>
+        Now we check that \(\Psi\) satisfies the given list of properties. For brevity, set \(G := \mathrm{Gal}(L/F)\).
+      </p>
+
+      <ol type="a">
+        <li>
+          <p>
+            The fact that the correspondence is order reversing follows from the definitions. Given intermediate fields \(E_1 \subseteq E_2\), any automorphism of \(L\) that preserves \(E_2\) must also preserve \(E_1\), thus \(\mathrm{Gal}(L/E_2) \supseteq \mathrm{Gal}(L/E_1)\). Conversely, if \(H_1 \leq H_2 \leq \mathrm{Gal}(L/F)\), then every \(x \in L\) that is fixed by every \(\sigma \in H_2\) must also be fixed in particular by every element of \(H_1\), so \(L^{H_2} \supseteq L^{H_1}\).
+          </p>
+        </li>
+
+        <li>
+          <p>
+            By definition of Galois extension, \([L:F] = |G|\). By <a href="#thm-16-2-10">Artin's Theorem</a>, for any subgroup \(H \leq G\) the extension \(L^H \subseteq L\) is also Galois, and thus by definition \([L:L^H] = |H|\). Using the Degree Formula, we have
+          </p>
+          \[
+            [L^H:F] = \frac{[L:F]}{[L:L^H]} = \frac{|G|}{|H|} = [G:H].
+          \]
+          <p>
+            So if \(H = \Psi(E) = \mathrm{Gal}(L/E)\), then \(L^H = E\) and the formula above can be rewritten as
+          </p>
+          \[
+            [\mathrm{Gal}(L/F) : \mathrm{Gal}(L/E)] = [E:F].
+          \]
+        </li>
+
+        <li>
+          <p>
+            Suppose \(E\) is an intermediate field that is Galois over \(F\). Fix \(\sigma \in G\) and \(\alpha \in E\). Since \(E/F\) is Galois, the polynomial \(m_{\alpha,F}\) is separable and all of its roots are in \(E\). Thus, \(\sigma(\alpha)\) is also a root of \(m_{\alpha,F}\), and thus \(\sigma(\alpha) \in E\).
+          </p>
+
+          <p>
+            Suppose \(\tau \in \mathrm{Gal}(L/E)\). For any \(\alpha \in E\) we have \(\sigma(\alpha) \in E\), so \(\tau(\sigma(\alpha)) = \sigma(\alpha)\). Thus
+          </p>
+          \[
+            \sigma^{-1}(\tau(\sigma(\alpha))) = \sigma^{-1}(\sigma(\alpha)) = \alpha.
+          \]
+          <p>
+            This proves that \(\sigma^{-1} \tau \sigma \in \mathrm{Gal}(L/E)\) and hence that \(\mathrm{Gal}(L/E) \trianglelefteq G\).
+          </p>
+
+          <p>
+            For the converse, consider a normal subgroup \(N \trianglelefteq G\) and the corresponding intermediate field \(E = L^N\), so that \(N = \mathrm{Gal}(L/E)\). We will show that \(E\) is the splitting field over \(F\) of a separable polynomial in \(F[x]\), and hence is Galois over \(F\).
+          </p>
+
+          <p>
+            Pick any \(\alpha \in E\) and set \(m := m_{\alpha, F}\). Then \(m\) is separable and all of its roots belong to \(L\). We claim that all the roots must in fact belong to \(E\). Since \(m\) is irreducible and \(L/F\) is Galois, by  \(G\) acts transitively on the set of roots of \(m\).
+          </p>
+
+          <p>
+            Thus, given any other root \(\beta \in L\) of \(m\), there is a \(\sigma \in G\) with \(\sigma(\alpha) = \beta\). Since \(N\) is normal, for any \(\tau \in N\) we have \(\sigma \tau' = \tau \sigma\) for some \(\tau' \in N\). But \(\tau' \in N\) fixes \(E\), so \(\tau'(\alpha) = \alpha\). Therefore,
+          </p>
+          \[
+            \beta = \sigma(\alpha) = \sigma \tau'(\alpha) = \tau \sigma(\alpha) = \tau(\beta),
+          \]
+          <p>
+            which shows that \(\beta\) is also fixed by \(N\). But then \(\beta \in L^N = E\). Therefore, \(E\) contains all the roots of \(m_{\alpha,F}\), and thus \(E\) must contain the splitting field of \(m_{\alpha, F}\).
+          </p>
+
+          <p>
+            We have \(E = F(\alpha_1, \ldots, \alpha_l)\) for some \(\alpha_1, \ldots, \alpha_l \in E\). If \(m_1, \ldots, m_n\) are the distinct polynomials among \(m_{\alpha_1, F}, \ldots, m_{\alpha_l, F}\), then \(E\) is the splitting field of the separable polynomial \(m_1 \cdots m_n\). Thus \(E\) is Galois over \(F\).
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Let \(E = L^N\) for a normal subgroup \(N\) of \(G\). We want to show that \(\mathrm{Gal}(E/F)\) is isomorphic to \(G/N\).
+          </p>
+
+          <p>
+            For each \(\sigma \in G\), we claim that \(\sigma(E) \subseteq E\). For all \(\alpha \in E\) the element \(\sigma(\alpha)\) is also a root of \(m_{\alpha,F}\). But since \(E/F\) is Galois, it must contain all of the roots of \(m_{\alpha,F}\), so \(\sigma(\alpha) \in E\). Thus \(\sigma(E) \subseteq E\), so the restriction of \(\sigma\) to \(E\) determines an injective field homomorphism \(\sigma|_E: E \to E\). Since \(\sigma|_F = \mathrm{id}_F\), this map is also a linear transformation of vector spaces over \(F\). But \(E\) is a finite vector space over \(F\), and any injective linear transformation \(E \to E\) must be bijective. We conclude that \(\sigma|_E\) is an automorphism of \(E\). We thus have a well-defined function
+          </p>
+          \[
+            \begin{array}{rcl}
+            \phi: G & \longrightarrow & \mathrm{Gal}(E/F) \\
+            \sigma & \longmapsto & \phi(\sigma) = \sigma|_E
+            \end{array}
+          \]
+          <p>
+            Moreover, this map is a group homomorphism by construction. The kernel is the subgroup of \(G\) of automorphisms that restrict to the identity on \(E\), which is precisely \(N\). Hence we have an induced injective group homomorphism
+          </p>
+          \[
+            \overline{\phi}: G/N \to \mathrm{Gal}(E/F).
+          \]
+          <p>
+            But \(|G/N| = |\mathrm{Gal}(E/F)|<\infty\), so this map \(\overline{\phi}\) must be an isomorphism.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Let \(H_1\) and \(H_2\) be subgroups of \(G\) with fixed fields \(E_1 = L^{H_1}\) and \(E_2 = L^{H_2}\).
+          </p>
+
+          <p>
+            First, we will show that \(E_1 \cap E_2 = L^{\langle H_1, H_2 \rangle}\). Given any \(\alpha \in E_1 \cap E_2\), \(\sigma(\alpha) = \alpha\) for all \(\sigma \in H_1\) and all \(\sigma \in H_2\), since \(\alpha \in E_1\) and \(\alpha \in E_2\), so \(\alpha \in L^{\langle H_1, H_2 \rangle}\), and \(E_1 \cap E_2 \subseteq L^{\langle H_1, H_2 \rangle}\). Conversely, if \(\alpha \in L^{\langle H_1, H_2 \rangle}\), then \(\sigma(\alpha) = \alpha\) for all \(\sigma \in \langle H_1, H_2 \rangle\), so in particular \(\sigma(\alpha) = \alpha\) for all \(\sigma \in H_i\) and thus \(\alpha \in L^{H_i} = E_i\). We conclude that \(E_1 \cap E_2 = L^{\langle H_1, H_2 \rangle}\).
+          </p>
+
+          <p>
+            Now let us show that \(E_1 E_2 = L^{H_1 \cap H_2}\). Since \(L/F\) is a finite extension, then by the Degree Formula both of the extensions \(E_1/F\) and \(E_2/F\) are finite. Let \(E_1 = F(\alpha_1, \ldots, \alpha_n)\) and \(E_2 = F(\beta_1, \ldots, \beta_m)\), so that \(E_1E_2 = F(\alpha_1, \ldots, \alpha_n, \beta_1, \ldots, \beta_m)\). For any \(\sigma \in H_1 \cap H_2\) we have \(\sigma(\alpha_i) = \alpha_i\) and \(\sigma(\beta_j) = \beta_j\) for each \(i\). Since \(\sigma\) is completely determined by its values on the generators, we have \(\sigma|_{E_1 E_2} = \mathrm{id}_{E_1 E_2}\). We conclude that \(E_1 E_2 \subseteq L^{H_1 \cap H_2}\).
+          </p>
+
+          <p>
+            Moreover, given any \(\sigma \in \mathrm{Gal}(L/E_1 E_2)\), its restriction to \(E_1E_2\) is by definition the identity. Thus its restriction to the subfields \(E_1\) and \(E_2\) must also be the identity, and therefore we have \(\sigma \in \mathrm{Gal}(L/E_1) = H_1\) and \(\sigma \in \mathrm{Gal}(L/E_2) = H_2\). We conclude that \(\sigma \in H_1 \cap H_2\). Thus \(\mathrm{Gal}(L/E_1 E_2) \leq H_1 \cap H_2\). Since \(\Psi\) is order reversing, we conclude that \(E_1 E_2 \supseteq L^{H_1 \cap H_2}\), giving us the desired equality.
+          </p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="cor-16-3-8" class="callout corollary" aria-labelledby="cor-16-3-8-title">
+    <h3 id="cor-16-3-8-title">Corollary 16.3.8</h3>
+    <div class="callout-body">
+      <p>
+        The Galois correspondence induces a lattice isomorphism between the lattice of intermediate fields of a Galois extension \(L/F\) and the dual of the lattice of subgroups of \(\mathrm{Gal}(L/F)\).
+      </p>
+    </div>
+  </section>
+
+  <p>
+    This is just a fancy way to rephrase the fact that intermediate fields correspond to subgroups in an order-reversing bijection.
+  </p>
+
+  <section id="ex-16-3-9" class="callout example" aria-labelledby="ex-16-3-9-title">
+    <h3 id="ex-16-3-9-title">Example 16.3.9</h3>
+    <div class="callout-body">
+      <p>
+        Let \(L\) be the splitting field of \(x^4 - 2\) over \(\mathbb{Q}\). Let us use the Fundamental Theorem of Galois Theory to list all intermediate fields for \(L/\mathbb{Q}\) and to determine which are Galois over \(\mathbb{Q}\).
+      </p>
+
+      <p>
+        We know \(G := \mathrm{Gal}(L/\mathbb{Q})\) corresponds to the \(8\) element subgroup of \(S_4\) generated by \(\sigma = (2 \, 4)\) and \(\tau = (1 \, 2 \, 3 \, 4)\), where we number the roots of \(x^4-2\) as
+      </p>
+      \[
+        \alpha_1 = \sqrt[4]{2}, \quad \alpha_2 = i \alpha_1, \quad \alpha_3 = -\alpha_1, \quad \alpha_4 = -i \alpha_1.
+      \]
+
+      <p>
+        The intermediate fields are the fixed subfields of \(L\) associated to each of these subgroups. The group \(G\) corresponds to \(\mathbb{Q}\) and \(\{e\}\) corresponds to \(L = \mathbb{Q}(\alpha_1, i)\). Set \(E_i = L^{H_i}\).
+      </p>
+
+      <p>
+        The field \(E_1\) has degree \(4 = [G:H_1]\) over \(\mathbb{Q}\). Since \(\alpha_1\) and \(\alpha_3\) belong to \(E_1\) and \([\mathbb{Q}(\alpha_1):\mathbb{Q}]=4\), we must have \(E_1 = \mathbb{Q}(\alpha_1)\). Likewise, \(E_2 = \mathbb{Q}(\alpha_2)\).
+      </p>
+
+      <p>
+        The field \(E_6\) has degree \([G:H_6] = 2\) over \(\mathbb{Q}\), and so we merely need to find a single nonrational element of \(L\) fixed by \(\tau\). Since \(\tau(i) = i\), we get \(E_6 = \mathbb{Q}(i)\).
+      </p>
+
+      <p>
+        Similarly, the field \(E_8\) also has degree \(2\) over \(\mathbb{Q}\) and so we just need to find a single nonrational element fixed by the generators of \(H_8\). Note that
+      </p>
+      \[
+        \alpha_1 \alpha_2 = \alpha_3 \alpha_4 = i \sqrt{2},
+      \]
+      <p>
+        and so \(i \sqrt{2}\) is fixed by both \((1 \, 2)(3 \, 4)\) and \((1 \,4)(2 \, 3)\). Thus \(E_8 =\mathbb{Q}(i \sqrt{2})\).
+      </p>
+    </div>
+  </section>
+
+  <section id="rmk-16-3-10" class="callout remark" aria-labelledby="rmk-16-3-10-title">
+    <h3 id="rmk-16-3-10-title">Remark 16.3.10</h3>
+    <div class="callout-body">
+      <p>
+        Let \(F \subseteq L\) be a Galois extension and consider an intermediate field \(E\) such that \(E/F\) is Galois, with corresponding normal subgroup \(N := \mathrm{Gal}(E/F) \trianglelefteq \mathrm{Gal}(L/F)\). Part (d) of the Fundamental Theorem says there is an isomorphism \(\mathrm{Gal}(E/F) \cong \mathrm{Gal}(L/F)/N\). In fact, the proof shows that the map
+      </p>
+      \[
+        \begin{array}{rcl}
+        \phi: G & \longrightarrow & \mathrm{Gal}(E/F) \\
+        \sigma & \longmapsto & \phi(\sigma) = \sigma|_E
+        \end{array}
+      \]
+      <p>
+        is surjective. This says that every \(\tau \in \mathrm{Gal}(E/F)\) can be lifted to some \(\sigma \in \mathrm{Gal}(L/F)\), so that \(\tau = \sigma|_E\).
+      </p>
+
+      <p>
+        Notice that while the proof shows that for every \(\tau \in \mathrm{Gal}(E/F)\) there exists \(\sigma \in \mathrm{Gal}(L/F)\) such that \(\tau = \sigma|_E\), the proof is very much nonconstructive. In specific examples, one can sometimes determine \(\sigma\) explicitly by using some of the other tricks we have discussed.
+      </p>
+    </div>
+  </section>
 </section>
 
 </main>
