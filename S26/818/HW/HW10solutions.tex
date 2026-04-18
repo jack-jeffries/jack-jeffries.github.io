@@ -127,6 +127,15 @@ Since each $\alpha_j$ has the form $\frac{\sqrt[4]{20}}{2}(\pm 1 \pm i)$ and bot
 Let $F$ be a field and $f,g \in F[x]$ be nonzero polynomials. Show that $\gcd(f,g) = 1$ in $F[x]$ if and only if $f$ and $g$ have no common roots in an algebraic closure $\overline{F}$ of $F$.
 \end{problem}
 
+\begin{proof}
+We prove the contrapositive: 1 is  not a $\gcd$ for $f$ and $g$ in $F[x]$ if any only if $f$ and $g$ have a common root in an algebraic closure $\ov{F}$ of $F$.
+
+($\Rightarrow$) If $1$ is not a $\gcd$ for $f$ and $g$ in $F[x]$, then $\gcd(f,g)=h\in F[x]$ for some polynomial $h$ with $\deg(h) \geqslant 1$. 
+%If $\gcd(f,g)=0$ then $f=g=0$ since the only polynomial divisible by $0$ is the zero polynomial. Clearly in this case any element of $\ov{F}$ is a common root for $f$ and $g$.  Now suppose $\gcd(f,g)=h\in F[x]$ with $\deg(h)\geqslant 1$. 
+Then since $h$ is nonconstant polynomial, we know $h$ has a root $\alpha\in \ov{F}$. Since $h\mid f$ and $h\mid g$, it follows that $\alpha$ is also a root for both $f$ and $g$.
+
+($\Leftarrow$) Suppose that $f$ and $g$ have a common root $\alpha \in \overline{F}$, that is $f(\alpha)=g(\alpha)=0$. Then $\alpha$ is algebraic over $F$ and hence it has a minimal polynomial $m_{\alpha,F}\in F[x]$. Furthermore, by properties of the minimal polynomial it follows that since $f(\alpha)=0$ then $m_{\alpha,F}\mid f$ and since $g(\alpha)=0$ then $m_{\alpha,F}\mid g$. Thus $m_{\alpha,F}$ is a common divisor for $f,g$ in $F[x]$ and therefore by properties of the gcd $m_{\alpha,F}\mid\gcd(f,g)$. This shows that, since $\deg(m_{\alpha,F})\geqslant 1$, $\deg(\gcd(f,g))\neq 0$, therefore no unit of $F$ can be a gcd for $f,g$ in $F[x]$.
+\end{proof}
 
 
 \begin{problem}
