@@ -7237,7 +7237,7 @@ We have seen already that the degree of a field extension is a simple yet powerf
       </p>
 
       <p>
-        Note that since \([F(\alpha):F]>1\), we have \([L:F(\alpha)]<n\).
+        Note that since \([F(\alpha):F]>1\), we have \([L:F(\alpha)] \lt n\).
         By the induction hypothesis, we have \(|H| \leqslant [L: F(\alpha)]\). Then
       </p>
       \[
@@ -7248,7 +7248,7 @@ We have seen already that the degree of a field extension is a simple yet powerf
       </p>
 
       <p>
-        For the second statement, write \(f=(x-\alpha)h\) in \(F(\alpha)[x]\), and note that \(h\) is separable (since its factorization over the algebraic closure divides that of \(f\)), and that \(L\) is the splitting field of \(h\) over \(F(\alpha)\). We can then apply the induction hypothesis to say that \(|H|=[L:F(\alpha)]\). Then
+        For the second statement, note that if \(L\) is a splitting field for \(f\) over \(F\), it is still a splitting field for \(f\) over \(F(\alpha)\). We can then apply the induction hypothesis to say that \(|H|=[L:F(\alpha)]\). Then
       </p>
       \[
         |G| = |H| \cdot [G:H] = [L:F(\alpha)] \cdot [F(\alpha) : F] =[L:F],
@@ -7455,7 +7455,7 @@ We have seen already that the degree of a field extension is a simple yet powerf
       f^\tau = (x-\tau(\alpha_1)) \cdots (x-\tau(\alpha_m)) = f.
     \]
     <p>
-      This proves that \(f\) has all its coefficients in the field \(F^{\mathrm{Gal}(L/F)}\), which by a Corollary to Artin's Theorem coincides with the field \(F\).
+      This proves that \(f\) has all its coefficients in the field \(L^{\mathrm{Gal}(L/F)}\), which by a Corollary to Artin's Theorem coincides with the field \(F\).
       Thus \(f \in F[x]\). Moreover, by construction \(f\) is separable. Since \(\alpha\) is a root of \(f\), the minimal polynomial \(m_{\alpha,F}\) must divide \(f\), and thus \(m_{\alpha,F}\) is also separable and has all its roots in \(L\).
     </p>
 
@@ -7470,7 +7470,7 @@ We have seen already that the degree of a field extension is a simple yet powerf
   <div class="callout-body">
     <p>
       Note that any irreducible polynomial over \(F\) with a root in \(L\) is the minimal polynomial of some element in \(L\).
-      So the Corollary says in particular that if \(F/L\) is Galois and \(f \in F\) is any irreducible polynomial, then \(\mathrm{Gal}(F/L)\) acts transitively on the set of roots of \(f\).
+      So the Corollary says in particular that if \(F/L\) is Galois and \(f \in F\) is any irreducible polynomial with a root in \(L\), then \(\mathrm{Gal}(L/F)\) acts transitively on the set of roots of \(f\).
     </p>
   </div>
 </section>
