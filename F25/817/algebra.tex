@@ -11244,38 +11244,53 @@ and we also know that $[L:F] = |\Gal(L/F)|$. Therefore, $[L^{\Gal(L/F)}:F] = 1$ 
 We know from \Cref{example galois} that $L = \mathbb{Q}(\sqrt[4]{2}, i)$ is Galois over $\mathbb{Q}$ with Galois group $D_4$. More precisely, this identification is given by writting 
 $$\alpha_1 = \sqrt[4][2], \quad \alpha_2 = i\sqrt[4]{2}, \quad \alpha_3 = -\sqrt[4]{2}, \quad \alpha_4 = -i\sqrt[4]{2}$$ 
 and labelling the four corners of a square with $\alpha_1, \ldots, \alpha_4$, counter-clockwise.  Consider 
-$$\beta := \alpha_1 + \cdots \alpha_4$$ 
+$$\beta := \alpha_1 + \cdots + \alpha_4$$ 
 and $\gamma = \alpha_1 \cdots \alpha_4$. Then each of $\beta$ and $\gamma$ are fixed by every Galois automorphism and hence by \Cref{galois extension base is exactly the fixed points} $\beta$ and $\gamma$ must be rational. In fact, one can easily see that $\beta = 0$ and $\gamma = 2$, but notice that the exact same reasoning would apply in general to the sum of roots and the product of roots in the splitting field of any separable polynomial.
 \end{example}
 
 
+\begin{lemma} Let $F\subseteq L$ be a finite field extension. Let $f\in F[x]$ be a separable polynomial, and suppose that $f$ splits as a product of linear factors in $L$. Suppose that $\mathrm{Aut}(L/F)$ acts transitively on the roots of $f$. Then $f$ is irreducible.
+\end{lemma}
+\begin{proof} Suppose that $\mathrm{Aut}(L/F)$ acts transitively on the roots of $f$. Suppose that $f=g_1 \cdots g_t$ for some irreducible polynomials $g_i\in F[x]$. By way of contradiction, assume that $t>1$, and let $g_1(\alpha)=0$ and $g_2(\beta)=0$ for $\alpha,\beta\in L$. Then $g_1 = c_1 m_{\alpha,F}(x)$, and $g_2=c_2 m_{\beta,F}(x)$ for some $c_1,c_2\in F^\times$. There is some $\sigma\in \mathrm{Aut}(L/F)$ such that $\sigma(\alpha)=\beta$, so $\beta$ must be a root of $m_{\alpha,F}(x)$. But then we must have $m_{\alpha,F}(x)=m_{\beta,F}(x)$, so $g_1$ and $g_2$ are associates. This contradicts that $f$ is separable.
+\end{proof}
 
 
-\begin{corollary}\label{galois extension all min pols separable}
+
+\begin{theorem}\label{galois extension all min pols separable}
 Let $F \subseteq L$ be a Galois extension.
 For every $\alpha \in L$, $m_{\alpha, F}$ is separable and all of its roots belong to $L$. Moreover, $\Gal(L/F)$ acts transitively on the set of roots of $m_{\alpha,F}$.
-\end{corollary}
+\end{theorem}
 
 \begin{proof}
 Let $\alpha \in L$ and consider the orbit $\alpha_1 = \alpha, \ldots, \alpha_m$
 of $\alpha$ under the action of $\Gal(L/F)$. Set
 $$f := (x-\alpha_1) \cdots (x-\alpha_m).$$
+We will show that $f=m_{\alpha,F}(x)$. To show this, first we need to show that $f\in F[x]$.
 For any $\tau \in \Gal(L/F)$, since $\tau$ permutes the elements of any orbit then
 $$f^\tau = (x-\tau(\alpha_1)) \cdots (x-\tau(\alpha_m)) = f.$$
 This proves that $f$ has all its coefficients in the field $F^{\Gal(L/F)}$, which by \Cref{galois extension base is exactly the fixed points} coincides with the field $F$.
-Thus $f \in F[x]$. Moreover, by construction $f$ is separable. Since $\alpha$ is a root of $f$, the minimal polynomial $m_{\alpha,F}$ must divide $f$, and thus $m_{\alpha,F}$ is also separable and has all its roots in $L$.
-
-Finally, this also shows that all the roots of $m_{\alpha,F}$ are on the orbit of $\alpha$ with respect to the action of $\Gal(L/F)$, and thus $\Gal(L/F)$ acts transitively on the set of roots of $m_{\alpha,F}$.
+Thus $f \in F[x]$. Since $\alpha$ is a root of $f$, the minimal polynomial $m_{\alpha,F}(x)$ must divide $f$.
+Now, $\Gal(L/F)$ acts transitively on the roots of $f$, since the roots of $f$ are a single orbit by construction. By the previous Lemma, $f$ is irreducible, and since $f$ is monic, we must have $f=m_{\alpha,F}(x)$. In particular, $\Gal(L/F)$ acts transitively on the roots of $m_{\alpha,F}(x)$.
 \end{proof}
 
 
 \begin{remark}
 	Note that any irreducible polynomial over $F$ with a root in $L$ is the minimal polynomial of some element in $L$.
-So \Cref{galois extension all min pols separable} says in particular that if $F/L$ is Galois and $f \in F$ is any irreducible polynomial, then $\Gal(F/L)$ acts transitively on the set of roots of $f$.
+So the previous theorem says in particular that if $F/L$ is Galois and $f \in F$ is any irreducible polynomial, then $\Gal(F/L)$ acts transitively on the set of roots of $f$.
 \end{remark}
 
 
+\begin{corollary}
+	Let $F \subseteq L$ be a Galois extension, and let $f\in F[x]$ be a separable polynomial that splits in $L$. The orbits of the action of $\mathrm{Aut}(L/F)$ on the set $S$ of roots of $f$ are the subsets of $S$ that are the roots of the same irreducible factor of $f$.
+\end{corollary}
 
+\begin{proof}
+For each $b \in S$, the orbit of $b$ is 
+$$\mathrm{Orb}_{\mathrm{Aut}(L/F)}(b) = \{\sigma(b) \mid \sigma\in \mathrm{Aut}(L/F)\}.$$ 
+Since $b$ is a root of $f$, there exists an irreducible factor $p \in F[x]$ of $f$ such that $b$ is a root of $p$. Since $p \in F[x]$, we know that $\sigma(b)$ is a root of $p$ for any $\sigma \in \mathrm{Aut}(L/F)$. Thus the orbit of $b$ is contained in the set of roots of $p$ in $L$.
+
+By the previous Theorem, $\Gal(L/F)$ acts transitively on the set of roots of $p$. Thus every root of $p$ is in the orbit of $b$ under the action of $\mathrm{Aut}(L/F)$. We conclude that the orbit of $b$ is precisely the set of roots of $p$.
+\end{proof}
 
 \begin{corollary}\label{galois iff splitting field of separable poly}
 	A finite field extension $L/F$ is Galois if and only if $L$ is the splitting field of some separable polynomial with coefficients in $F$.
@@ -11294,17 +11309,7 @@ Since distinct $m_i$ do not share any common roots and all the $m_i$ are separab
 \end{proof}
 
 
-\begin{theorem}
-	Let $L$ be the splitting field of a separable polynomial $f \in F[x]$. The orbits of the action of $\mathrm{Aut}(L/F)$ on the set $S$ of roots of $f$ are the subsets of $S$ that are the roots of the same irreducible factor of $f$.
-\end{theorem}
 
-\begin{proof}
-For each $b \in S$, the orbit of $b$ is 
-$$\mathrm{Orb}_{\mathrm{Aut}(L/F)}(b) = \{\sigma(b) \mid \sigma\in \mathrm{Aut}(L/F)\}.$$ 
-Since $b$ is a root of $f$, there exists an irreducible factor $p \in F[x]$ of $f$ such that $b$ is a root of $p$. Since $p \in F[x]$, by \Cref{lemma roots} we know that $\sigma(b)$ is a root of $p$ for any $\sigma \in \mathrm{Aut}(L/F)$. Thus the orbit of $b$ is contained in the set of roots of $p$ in $L$.
-
-By \Cref{galois iff splitting field of separable poly}, $F \subseteq L$ is a Galois extension. By \Cref{galois extension all min pols separable}, $\Gal(L/F)$ acts transitively on the set of roots of $p$. Thus every root of $p$ is in the orbit of $b$ under the action of $\mathrm{Aut}(L/F)$. We conclude that the orbit of $b$ is precisely the set of roots of $p$.
-\end{proof}
 
 
 

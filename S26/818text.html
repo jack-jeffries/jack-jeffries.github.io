@@ -7411,7 +7411,7 @@ We have seen already that the degree of a field extension is a simple yet powerf
   <h3 id="ex-16-2-13-title">Example 16.2.13</h3>
   <div class="callout-body">
     <p>
-      We know from an earlier example that \(L = \mathbb{Q}(\sqrt[4]{2}, i)\) is Galois over \(\mathbb{Q}\) with Galois group \(D_4\). More precisely, this identification is given by writting
+      We know from earlier that \(L = \mathbb{Q}(\sqrt[4]{2}, i)\) is Galois over \(\mathbb{Q}\) with Galois group \(D_4\). More precisely, this identification is given by writing
     </p>
     \[
       \alpha_1 = \sqrt[4]{2}, \quad \alpha_2 = i\sqrt[4]{2}, \quad \alpha_3 = -\sqrt[4]{2}, \quad \alpha_4 = -i\sqrt[4]{2}
@@ -7420,16 +7420,34 @@ We have seen already that the degree of a field extension is a simple yet powerf
       and labelling the four corners of a square with \(\alpha_1, \ldots, \alpha_4\), counter-clockwise. Consider
     </p>
     \[
-      \beta := \alpha_1 + \cdots \alpha_4
+      \beta := \alpha_1 + \cdots + \alpha_4
     \]
     <p>
-      and \(\gamma = \alpha_1 \cdots \alpha_4\). Then each of \(\beta\) and \(\gamma\) are fixed by every Galois automorphism and hence by a Corollary to Artin's Theorem, \(\beta\) and \(\gamma\) must be rational. In fact, one can easily see that \(\beta = 0\) and \(\gamma = 2\), but notice that the exact same reasoning would apply in general to the sum of roots and the product of roots in the splitting field of any separable polynomial.
+      and \(\gamma = \alpha_1 \cdots \alpha_4\). Then each of \(\beta\) and \(\gamma\) are fixed by every Galois automorphism and hence \(\beta\) and \(\gamma\) must be rational. In fact, one can easily see that \(\beta = 0\) and \(\gamma = 2\), but notice that the exact same reasoning would apply in general to the sum of roots and the product of roots in the splitting field of any separable polynomial.
     </p>
   </div>
 </section>
 
-<section id="cor-16-2-14" class="callout corollary" aria-labelledby="cor-16-2-14-title">
-  <h3 id="cor-16-2-14-title">Corollary 16.2.14</h3>
+<section id="lem-16-2-14" class="callout lemma" aria-labelledby="lem-16-2-14-title">
+  <h3 id="lem-16-2-14-title">Lemma 16.2.14</h3>
+  <div class="callout-body">
+    <p>
+      Let \(F\subseteq L\) be a finite field extension. Let \(f\in F[x]\) be a separable polynomial, and suppose that \(f\) splits as a product of linear factors in \(L\). Suppose that \(\mathrm{Aut}(L/F)\) acts transitively on the roots of \(f\). Then \(f\) is irreducible.
+    </p>
+  </div>
+</section>
+
+<section id="proof-lem-16-2-14" class="callout proof" aria-labelledby="proof-lem-16-2-14-title">
+  <h3 id="proof-lem-16-2-14-title">Proof of Lemma 16.2.14</h3>
+  <div class="callout-body">
+    <p>
+      Suppose that \(\mathrm{Aut}(L/F)\) acts transitively on the roots of \(f\). Suppose that \(f=g_1 \cdots g_t\) for some irreducible polynomials \(g_i\in F[x]\). By way of contradiction, assume that \(t>1\), and let \(g_1(\alpha)=0\) and \(g_2(\beta)=0\) for \(\alpha,\beta\in L\). Then \(g_1 = c_1 m_{\alpha,F}(x)\), and \(g_2=c_2 m_{\beta,F}(x)\) for some \(c_1,c_2\in F^\times\). There is some \(\sigma\in \mathrm{Aut}(L/F)\) such that \(\sigma(\alpha)=\beta\), so \(\beta\) must be a root of \(m_{\alpha,F}(x)\). But then we must have \(m_{\alpha,F}(x)=m_{\beta,F}(x)\), so \(g_1\) and \(g_2\) are associates. This contradicts that \(f\) is separable.
+    </p>
+  </div>
+</section>
+
+<section id="thm-16-2-15" class="callout theorem" aria-labelledby="thm-16-2-15-title">
+  <h3 id="thm-16-2-15-title">Theorem 16.2.15</h3>
   <div class="callout-body">
     <p>
       Let \(F \subseteq L\) be a Galois extension.
@@ -7438,8 +7456,8 @@ We have seen already that the degree of a field extension is a simple yet powerf
   </div>
 </section>
 
-<section id="proof-cor-16-2-14" class="callout proof" aria-labelledby="proof-cor-16-2-14-title">
-  <h3 id="proof-cor-16-2-14-title">Proof of Corollary 16.2.14</h3>
+<section id="proof-thm-16-2-15" class="callout proof" aria-labelledby="proof-thm-16-2-15-title">
+  <h3 id="proof-thm-16-2-15-title">Proof of Theorem 16.2.15</h3>
   <div class="callout-body">
     <p>
       Let \(\alpha \in L\) and consider the orbit \(\alpha_1 = \alpha, \ldots, \alpha_m\)
@@ -7449,34 +7467,60 @@ We have seen already that the degree of a field extension is a simple yet powerf
       f := (x-\alpha_1) \cdots (x-\alpha_m).
     \]
     <p>
+      We will show that \(f=m_{\alpha,F}(x)\). To show this, first we need to show that \(f\in F[x]\).
       For any \(\tau \in \mathrm{Gal}(L/F)\), since \(\tau\) permutes the elements of any orbit then
     </p>
     \[
       f^\tau = (x-\tau(\alpha_1)) \cdots (x-\tau(\alpha_m)) = f.
     \]
     <p>
-      This proves that \(f\) has all its coefficients in the field \(L^{\mathrm{Gal}(L/F)}\), which by a Corollary to Artin's Theorem coincides with the field \(F\).
-      Thus \(f \in F[x]\). Moreover, by construction \(f\) is separable. Since \(\alpha\) is a root of \(f\), the minimal polynomial \(m_{\alpha,F}\) must divide \(f\), and thus \(m_{\alpha,F}\) is also separable and has all its roots in \(L\).
-    </p>
-
-    <p>
-      Finally, this also shows that all the roots of \(m_{\alpha,F}\) are on the orbit of \(\alpha\) with respect to the action of \(\mathrm{Gal}(L/F)\), and thus \(\mathrm{Gal}(L/F)\) acts transitively on the set of roots of \(m_{\alpha,F}\).
+      This proves that \(f\) has all its coefficients in the field \(F^{\mathrm{Gal}(L/F)}\), which coincides with the field \(F\).
+      Thus \(f \in F[x]\). Since \(\alpha\) is a root of \(f\), the minimal polynomial \(m_{\alpha,F}(x)\) must divide \(f\).
+      Now, \(\mathrm{Gal}(L/F)\) acts transitively on the roots of \(f\), since the roots of \(f\) are a single orbit by construction. By the previous Lemma, \(f\) is irreducible, and since \(f\) is monic, we must have \(f=m_{\alpha,F}(x)\). In particular, \(\mathrm{Gal}(L/F)\) acts transitively on the roots of \(m_{\alpha,F}(x)\).
     </p>
   </div>
 </section>
 
-<section id="rmk-16-2-15" class="callout remark" aria-labelledby="rmk-16-2-15-title">
-  <h3 id="rmk-16-2-15-title">Remark 16.2.15</h3>
+<section id="rmk-16-2-16" class="callout remark" aria-labelledby="rmk-16-2-16-title">
+  <h3 id="rmk-16-2-16-title">Remark 16.2.16</h3>
   <div class="callout-body">
     <p>
       Note that any irreducible polynomial over \(F\) with a root in \(L\) is the minimal polynomial of some element in \(L\).
-      So the Corollary says in particular that if \(F/L\) is Galois and \(f \in F\) is any irreducible polynomial with a root in \(L\), then \(\mathrm{Gal}(L/F)\) acts transitively on the set of roots of \(f\).
+      So the previous theorem says in particular that if \(F/L\) is Galois and \(f \in F\) is any irreducible polynomial, then \(\mathrm{Gal}(F/L)\) acts transitively on the set of roots of \(f\).
     </p>
   </div>
 </section>
 
-<section id="cor-16-2-16" class="callout corollary" aria-labelledby="cor-16-2-16-title">
-  <h3 id="cor-16-2-16-title">Corollary 16.2.16</h3>
+<section id="cor-16-2-17" class="callout corollary" aria-labelledby="cor-16-2-17-title">
+  <h3 id="cor-16-2-17-title">Corollary 16.2.17</h3>
+  <div class="callout-body">
+    <p>
+      Let \(F \subseteq L\) be a Galois extension, and let \(f\in F[x]\) be a separable polynomial that splits in \(L\). The orbits of the action of \(\mathrm{Aut}(L/F)\) on the set \(S\) of roots of \(f\) are the subsets of \(S\) that are the roots of the same irreducible factor of \(f\).
+    </p>
+  </div>
+</section>
+
+<section id="proof-cor-16-2-17" class="callout proof" aria-labelledby="proof-cor-16-2-17-title">
+  <h3 id="proof-cor-16-2-17-title">Proof of Corollary 16.2.17</h3>
+  <div class="callout-body">
+    <p>
+      For each \(b \in S\), the orbit of \(b\) is
+    </p>
+    \[
+      \mathrm{Orb}_{\mathrm{Aut}(L/F)}(b) = \{\sigma(b) \mid \sigma\in \mathrm{Aut}(L/F)\}.
+    \]
+    <p>
+      Since \(b\) is a root of \(f\), there exists an irreducible factor \(p \in F[x]\) of \(f\) such that \(b\) is a root of \(p\). Since \(p \in F[x]\), we know that \(\sigma(b)\) is a root of \(p\) for any \(\sigma \in \mathrm{Aut}(L/F)\). Thus the orbit of \(b\) is contained in the set of roots of \(p\) in \(L\).
+    </p>
+
+    <p>
+      By the previous Theorem, \(\mathrm{Gal}(L/F)\) acts transitively on the set of roots of \(p\). Thus every root of \(p\) is in the orbit of \(b\) under the action of \(\mathrm{Aut}(L/F)\). We conclude that the orbit of \(b\) is precisely the set of roots of \(p\).
+    </p>
+  </div>
+</section>
+
+<section id="cor-16-2-18" class="callout corollary" aria-labelledby="cor-16-2-18-title">
+  <h3 id="cor-16-2-18-title">Corollary 16.2.18</h3>
   <div class="callout-body">
     <p>
       A finite field extension \(L/F\) is Galois if and only if \(L\) is the splitting field of some separable polynomial with coefficients in \(F\).
@@ -7484,8 +7528,8 @@ We have seen already that the degree of a field extension is a simple yet powerf
   </div>
 </section>
 
-<section id="proof-cor-16-2-16" class="callout proof" aria-labelledby="proof-cor-16-2-16-title">
-  <h3 id="proof-cor-16-2-16-title">Proof of Corollary 16.2.16</h3>
+<section id="proof-cor-16-2-18" class="callout proof" aria-labelledby="proof-cor-16-2-18-title">
+  <h3 id="proof-cor-16-2-18-title">Proof of Corollary 16.2.18</h3>
   <div class="callout-body">
     <p>
       We already proved before that if \(L\) is the splitting field of some separable polynomial \(f \in F[x]\), then \(F \subseteq L\) is Galois.
@@ -7496,7 +7540,7 @@ We have seen already that the degree of a field extension is a simple yet powerf
     </p>
 
     <p>
-      By the Corollary, each \(m_{\beta_i,F}\) is separable and all of its roots belong to \(L\). Moreover, if \(\gamma_i\) is a root of \(m_{\beta_i,F}\) and \(i \neq j\), then we claim that \(\gamma_i\) is not a root of \(m_{\beta_j,F}\). Indeed, if \(m_{\beta_j,F}(\beta_i) = 0\), then \(m_{\alpha_i,F} \mid m_{\alpha_j,F}\), but they are both monic irreducible polynomials over \(F\), so we must have \(m_{\alpha_i,F} = m_{\alpha_j,F}\).
+      By a Theorem above, each \(m_{\beta_i,F}\) is separable and all of its roots belong to \(L\). Moreover, if \(\gamma_i\) is a root of \(m_{\beta_i,F}\) and \(i \neq j\), then we claim that \(\gamma_i\) is not a root of \(m_{\beta_j,F}\). Indeed, if \(m_{\beta_j,F}(\beta_i) = 0\), then \(m_{\alpha_i,F} \mid m_{\alpha_j,F}\), but they are both monic irreducible polynomials over \(F\), so we must have \(m_{\alpha_i,F} = m_{\alpha_j,F}\).
     </p>
 
     <p>
@@ -7510,35 +7554,6 @@ We have seen already that the degree of a field extension is a simple yet powerf
     </p>
   </div>
 </section>
-
-<section id="thm-16-2-17" class="callout theorem" aria-labelledby="thm-16-2-17-title">
-  <h3 id="thm-16-2-17-title">Theorem 16.2.17</h3>
-  <div class="callout-body">
-    <p>
-      Let \(L\) be the splitting field of a separable polynomial \(f \in F[x]\). The orbits of the action of \(\mathrm{Aut}(L/F)\) on the set \(S\) of roots of \(f\) are the subsets of \(S\) that are the roots of the same irreducible factor of \(f\).
-    </p>
-  </div>
-</section>
-
-<section id="proof-thm-16-2-17" class="callout proof" aria-labelledby="proof-thm-16-2-17-title">
-  <h3 id="proof-thm-16-2-17-title">Proof of Theorem 16.2.17</h3>
-  <div class="callout-body">
-    <p>
-      For each \(b \in S\), the orbit of \(b\) is
-    </p>
-    \[
-      \mathrm{Orb}_{\mathrm{Aut}(L/F)}(b) = \{\sigma(b) \mid \sigma\in \mathrm{Aut}(L/F)\}.
-    \]
-    <p>
-      Since \(b\) is a root of \(f\), there exists an irreducible factor \(p \in F[x]\) of \(f\) such that \(b\) is a root of \(p\). Since \(p \in F[x]\), we know that \(\sigma(b)\) is a root of \(p\) for any \(\sigma \in \mathrm{Aut}(L/F)\). Thus the orbit of \(b\) is contained in the set of roots of \(p\) in \(L\).
-    </p>
-
-    <p>
-      By the Theorem on degrees and automorphism groups of splitting fields, \(F \subseteq L\) is a Galois extension. Then \(\mathrm{Gal}(L/F)\) acts transitively on the set of roots of \(p\). Thus every root of \(p\) is in the orbit of \(b\) under the action of \(\mathrm{Aut}(L/F)\). We conclude that the orbit of \(b\) is precisely the set of roots of \(p\).
-    </p>
-  </div>
-</section>
-
 
 
 <section id="sec-16-3" class="section" aria-labelledby="sec-16-3-title">
