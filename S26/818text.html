@@ -7149,115 +7149,115 @@ We have seen already that the degree of a field extension is a simple yet powerf
     We will now focus on finite field extensions and their automorphism groups. We start by giving a much better upper bound on the order of the automorphism group of a finite field extension.
   </p>
 
-  <section id="thm-16-2-1" class="callout theorem" aria-labelledby="thm-16-2-1-title">
-    <h3 id="thm-16-2-1-title">Theorem 16.2.1</h3>
-    <div class="callout-body">
-      <p>
-        Let \(L/F\) be a finite field extension. Then
-      </p>
-      <ol>
-        <li>
-          <p>
-            \(|\mathrm{Aut}(L/F)| \leqslant [L : F],\)
-          </p>
-        </li>
-        <li>
-          <p>
-            If \(L\) is the splitting field of a separable polynomial in \(F[x]\), then \(|\mathrm{Aut}(L/F)| = [L : F].\)
-          </p>
-        </li>
-      </ol>
-    </div>
-  </section>
+<section id="thm-16-2-1" class="callout theorem" aria-labelledby="thm-16-2-1-title">
+  <h3 id="thm-16-2-1-title">Theorem 16.2.1</h3>
+  <div class="callout-body">
+    <p>
+      Let \(L/F\) be a finite field extension. Then
+    </p>
+    <ol>
+      <li>
+        <p>
+          \(|\mathrm{Aut}(L/F)| \leqslant [L : F],\)
+        </p>
+      </li>
+      <li>
+        <p>
+          If \(L\) is the splitting field of a separable polynomial in \(F[x]\), then \(|\mathrm{Aut}(L/F)| = [L : F].\)
+        </p>
+      </li>
+    </ol>
+  </div>
+</section>
 
-  <p>
-    The key point of the proof is the following.
-  </p>
+<p>
+  The key point of the proof is the following.
+</p>
 
-  <section id="lem-16-2-2" class="callout lemma" aria-labelledby="lem-16-2-2-title">
-    <h3 id="lem-16-2-2-title">Lemma 16.2.2</h3>
-    <div class="callout-body">
-      <p>
-        Let \(L/F\) be a finite field extension. Let \(f\in F[x]\) be an irreducible polynomial, and \(\alpha\in L\) be a root of \(f\). Let \(G=\mathrm{Aut}(L/F)\) and \(H=\mathrm{Aut}(L/F(\alpha))\), which is a subgroup of \(G\). Then
-      </p>
-      <ol>
-        <li>
-          <p>
-            \([G:H]\leq [F(\alpha):F],\)
-          </p>
-        </li>
-        <li>
-          <p>
-            If \(f\) is separable and \(L\) is the splitting field of \(f\), then \([G:H]=  [F(\alpha):F].\)
-          </p>
-        </li>
-      </ol>
-    </div>
-  </section>
+<section id="lem-16-2-2" class="callout lemma" aria-labelledby="lem-16-2-2-title">
+  <h3 id="lem-16-2-2-title">Lemma 16.2.2</h3>
+  <div class="callout-body">
+    <p>
+      Let \(L/F\) be a finite field extension. Let \(\alpha\in L\). Let \(G=\mathrm{Aut}(L/F)\) and \(H=\mathrm{Aut}(L/F(\alpha))\), which is a subgroup of \(G\). Then
+    </p>
+    <ol>
+      <li>
+        <p>
+          \([G:H]\leq [F(\alpha):F]\),
+        </p>
+      </li>
+      <li>
+        <p>
+          If \(\alpha\) is a root of a separable polynomial that splits completely into linear factors in \(L\), then \([G:H]=  [F(\alpha):F]\).
+        </p>
+      </li>
+    </ol>
+  </div>
+</section>
 
-  <section id="proof-lem-16-2-2" class="callout proof" aria-labelledby="proof-lem-16-2-2-title">
-    <h3 id="proof-lem-16-2-2-title">Proof of Lemma 16.2.2</h3>
-    <div class="callout-body">
-      <p>
-        Let \(S\) be the set of roots of \(f\) in \(L\).
-        Consider the map
-      </p>
-      \[
-        \begin{aligned}
-        \Psi: G/H &\rightarrow S \\
-        gH & \mapsto g(\alpha)
-        \end{aligned}
-      \]
-      <p>
-        We claim that \(\Psi\) is well-defined and injective. We know that \(g(\alpha)\in S\) for all \(g\in G\) since automorphisms send roots to roots.
-        We then have
-      </p>
-      \[
-        gH=g'H \Leftrightarrow g^{-1}g' \in H \Leftrightarrow g^{-1}g'(\alpha) = \alpha  \Leftrightarrow g(\alpha) = g'(\alpha).
-      \]
-      <p>
-        This shows that \(\Psi\) is well-defined and injective. In particular, \([G:H]\leq |S|\). On the other hand, \(|S|\leq \mathrm{deg}(f)=  [F(\alpha):F]\), and this shows the first statement.
-      </p>
+<section id="proof-lem-16-2-2" class="callout proof" aria-labelledby="proof-lem-16-2-2-title">
+  <h3 id="proof-lem-16-2-2-title">Proof of Lemma 16.2.2</h3>
+  <div class="callout-body">
+    <p>
+      Let \(S\) be the set of roots of \(m_{\alpha,F}(x)\) in \(L\).
+      Consider the map
+    </p>
+    \[
+      \begin{aligned}
+      \Psi: G/H &\rightarrow S \\
+      gH & \mapsto g(\alpha)
+      \end{aligned}
+    \]
+    <p>
+      We claim that \(\Psi\) is well-defined and injective. We know that \(g(\alpha)\in S\) for all \(g\in G\) since automorphisms send roots to roots.
+      We then have
+    </p>
+    \[
+      gH=g'H \Leftrightarrow g^{-1}g' \in H \Leftrightarrow g^{-1}g'(\alpha) = \alpha  \Leftrightarrow g(\alpha) = g'(\alpha).
+    \]
+    <p>
+      This shows that \(\Psi\) is well-defined and injective. In particular, \([G:H]\leq |S|\). On the other hand, \(|S|\leq \deg(m_{\alpha,F})=  [F(\alpha):F]\), and this shows the first statement.
+    </p>
 
-      <p>
-        If \(L\) is the splitting field of \(f\), then the action of \(G\) on \(S\) is transitive; this means that the map \(\Psi\) is bijective as well, so \([G:H]= |S|\). On the other hand, if \(f\) is separable and \(f\) splits completely in \(L\), we have \(|S|= [F(\alpha):F]\). This shows the second statement.
-      </p>
-    </div>
-  </section>
+    <p>
+      Now suppose that \(\alpha\) is a root of a separable polynomial \(f\) that splits into linear factors in \(L\). Then \(m_{\alpha,F}(x) \mid f\), so \(m_{\alpha,F}(x)\) is separable, and \(m_{\alpha,F}(x)\) has all of its roots in \(L\), so \(m_{\alpha,F}(x)\) has \(\deg(m_{\alpha,F})\) many roots in \(L\); i.e., \(|S|=\deg(m_{\alpha,F})\). Moreover, the action of \(G\) on \(S\) is transitive (by a variation on our result on uniqueness of splitting fields). This implies that the map \(\Psi\) is bijective as well, so \([G:H]= |S|=\deg(m_{\alpha,F}) = [F(\alpha):F]\).
+    </p>
+  </div>
+</section>
 
-  <section id="proof-thm-16-2-1" class="callout proof" aria-labelledby="proof-thm-16-2-1-title">
-    <h3 id="proof-thm-16-2-1-title">Proof of Theorem 16.2.1</h3>
-    <div class="callout-body">
-      <p>
-        We proceed by induction on \([L : F]\). In the base case, \([L:F]=1\), and thus \(L = F\), so \(\mathrm{Aut}(L/F)\) is the trivial group, and both statements hold.
-      </p>
+<section id="proof-thm-16-2-1" class="callout proof" aria-labelledby="proof-thm-16-2-1-title">
+  <h3 id="proof-thm-16-2-1-title">Proof of Theorem 16.2.1</h3>
+  <div class="callout-body">
+    <p>
+      We proceed by induction on \([L : F]\). In the base case, \([L:F]=1\), and thus \(L = F\), so \(\mathrm{Aut}(L/F)\) is the trivial group, and both statements hold.
+    </p>
 
-      <p>
-        Now let \(n \geqslant 1\) and suppose that \(|\mathrm{Aut}(L/K)| \leqslant [L : K]\) holds for all \(L\) and \(K\) such that \([L : K] < n\). Let \([L : F] = n\). Pick \(\alpha \in L \setminus F\) and consider \(F(\alpha)/F\). Set \(G=\mathrm{Aut}(L/F)\) and \(H=\mathrm{Aut}(L/F(\alpha))\) as in the Lemma.
-      </p>
+    <p>
+      Now let \(n \geqslant 1\) and suppose that \(|\mathrm{Aut}(L/K)| \leqslant [L : K]\) holds for all \(L\) and \(K\) such that \([L : K] < n\). Let \([L : F] = n\). Pick \(\alpha \in L \setminus F\) and consider \(F(\alpha)/F\). Set \(G=\mathrm{Aut}(L/F)\) and \(H=\mathrm{Aut}(L/F(\alpha))\) as in the Lemma.
+    </p>
 
-      <p>
-        Note that since \([F(\alpha):F]>1\), we have \([L:F(\alpha)] \lt n\).
-        By the induction hypothesis, we have \(|H| \leqslant [L: F(\alpha)]\). Then
-      </p>
-      \[
-        |G| = |H| \cdot [G:H] \leq [L:F(\alpha)] \cdot [F(\alpha) : F] =[L:F],
-      \]
-      <p>
-        showing the first statement.
-      </p>
+    <p>
+      Note that since \([F(\alpha):F]>1\), we have \([L:F(\alpha)]<n\).
+      By the induction hypothesis, we have \(|H| \leqslant [L: F(\alpha)]\). Then
+    </p>
+    \[
+      |G| = |H| \cdot [G:H] \leq [L:F(\alpha)] \cdot [F(\alpha) : F] =[L:F],
+    \]
+    <p>
+      showing the first statement.
+    </p>
 
-      <p>
-        For the second statement, note that if \(L\) is a splitting field for \(f\) over \(F\), it is still a splitting field for \(f\) over \(F(\alpha)\). We can then apply the induction hypothesis to say that \(|H|=[L:F(\alpha)]\). Then
-      </p>
-      \[
-        |G| = |H| \cdot [G:H] = [L:F(\alpha)] \cdot [F(\alpha) : F] =[L:F],
-      \]
-      <p>
-        concluding the proof.
-      </p>
-    </div>
-  </section>
+    <p>
+      For the second statement, note that \(L\) is still the splitting field of \(f\) over \(F(\alpha)\). We can then apply the induction hypothesis to say that \(|H|=[L:F(\alpha)]\). Then
+    </p>
+    \[
+      |G| = |H| \cdot [G:H] = [L:F(\alpha)] \cdot [F(\alpha) : F] =[L:F],
+    \]
+    <p>
+      concluding the proof.
+    </p>
+  </div>
+</section>
 
   <p>
     The finite field extensions whose automorphism group is as large as possible are very important, and are the main subject of this final chapter.

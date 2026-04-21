@@ -10601,6 +10601,8 @@ If $L$ is the splitting field over $F$ of an irreducible polynomial $f(x) \in F[
 Since $\alpha, \beta$ are roots of the same irreducible polynomial, there is an isomorphism $\tau: F(\alpha) \to F(\beta)$ such that $\tau|_F = \mathrm{id}_F$ and $\tau(\alpha) = \beta$. Note that $L$ is the splitting field of $f$ over $F(\alpha)$ since $L$ is generated over $F(\alpha)$ by the roots of $f$; likewise for $F(\beta)$. We apply the Theorem with the isomorphism $\tau$ in pace of $\theta$. Note that $\tilde\tau(f)=f$. The Theorem then yields an isomorphism $s\!:L\to L$ such that $s|_{F(\alpha)} = \tau$. In particular $s|_F=\tau|_F = \mathrm{id}_F$ and $s(\alpha)=\beta$.
 \end{proof}
 
+\begin{remark} The same argument shows the following stronger statement: if $L$ is the splitting field over $F$ of a polynomial $f(x) \in F[x]$, if $g$ is an irreducible factor of $f$, and if $\alpha, \beta \in L$ are any two roots of $g$, then there is a field automorphism $s\!: L \to L$ such that $s|_F = \mathrm{id}_F$ and $s(\alpha) = \beta$.
+\end{remark}
 
 
 
@@ -11112,13 +11114,13 @@ Let $L/F$ be a finite field extension. Then
 The key point of the proof is the following.
 
 \begin{lemma}
-Let $L/F$ be a finite field extension. Let $f\in F[x]$ be an irreducible polynomial, and $\alpha\in L$ be a root of $f$. Let $G=\mathrm{Aut}(L/F)$ and $H=\mathrm{Aut}(L/F(\alpha))$, which is a subgroup of $G$. Then
+Let $L/F$ be a finite field extension. Let $\alpha\in L$. Let $G=\mathrm{Aut}(L/F)$ and $H=\mathrm{Aut}(L/F(\alpha))$, which is a subgroup of $G$. Then
 \begin{enumerate}
 \item $[G:H]\leq [F(\alpha):F]$, 
-\item If $f$ is separable and $L$ is the splitting field of $f$, then $[G:H]=  [F(\alpha):F]$.
+\item If $\alpha$ is a root of a separable polynomial that splits completely into into linear factors in $L$, then $[G:H]=  [F(\alpha):F]$.
 \end{enumerate}
 \end{lemma}
-\begin{proof} Let $S$ be the set of roots of $f$ in $L$. 
+\begin{proof} Let $S$ be the set of roots of $m_{\alpha,F}(x)$ in $L$. 
  Consider the map 
  \[ \begin{aligned} \Psi: G/H &\rightarrow & S \\
  gH & \mapsto & g(\alpha) \end{aligned}\]
@@ -11127,7 +11129,7 @@ We then have
 \[ gH=g'H \Leftrightarrow g^{-1}g' \in H \Leftrightarrow g^{-1}g'(\alpha) = \alpha  \Leftrightarrow g(\alpha) = g'(\alpha).\]
 This shows that $\Psi$ is well-defined and injective. In particular, $[G:H]\leq |S|$. On the other hand, $|S|\leq \mathrm{deg}(f)=  [F(\alpha):F]$, and this shows the first statement.
 
-If $f$ splits into linear factors in $L$, then the action of $G$ on $S$ is transitive; this means that the map $\Psi$ is bijective as well, so $[G:H]= |S|$. On the other hand, if $f$ is separable and $f$ splits completely in $L$, we have $|S|= [F(\alpha):F]$. This shows the second statement.
+Now suppose that $\alpha$ is a root of a separable polynomial $f$ that splits into linear factors in $L$. Then $m_{\alpha,F}(x) | f$, so $m_{\alpha,F}(x)$ is separable, and $m_{\alpha,F}(x)$ has all of its roots in $L$, so $m_{\alpha,F}(x)$ has $\deg(f)$ many roots in $L$; i.e., $|S|=\deg(f)$. Moreover, the action of $G$ on $S$ is transitive (by a variation on our result on uniqueness of splitting fields). This implies that the map $\Psi$ is bijective as well, so $[G:H]= |S|=\deg(f)$.
  \end{proof}
  
 \begin{proof}[Proof of Theorem~\ref{order Galois group}]
@@ -11141,7 +11143,7 @@ By the induction hypothesis, we have $|H| \leqslant [L: F(\alpha)]$. Then
 \[ |G| = |H| \cdot [G:H] \leq [L:F(\alpha)] \cdot [F(\alpha) : F] =[L:F],\]
 showing the first statement.
 
-For the second statement, write $f=(x-\alpha)h$ in $F(\alpha)[x]$, and note that $h$ is separable (since its factorization over the algebraic closure divides that of $f$), and that $L$ is the splitting field of $h$ over $F(\alpha)$. We can then apply the induction hypothesis to say that $|H|=[L:F(\alpha)]$. Then 
+For the second statement, note that $L$ is still the splitting field of $f$ over $F(\alpha)$. We can then apply the induction hypothesis to say that $|H|=[L:F(\alpha)]$. Then 
 Then 
 \[ |G| = |H| \cdot [G:H] = [L:F(\alpha)] \cdot [F(\alpha) : F] =[L:F],\]
 concluding the proof.
