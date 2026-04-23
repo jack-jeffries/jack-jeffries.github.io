@@ -1,0 +1,150 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,enumerate,bbm}
+\usepackage[]{graphicx}
+\usepackage{color,subfigure}
+\definecolor{scarlet}{rgb}{0.81,0,0}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage[all]{xypic}
+\usepackage[colorlinks=true,citecolor=scarlet,linkcolor=scarlet]{hyperref}
+\usepackage{colonequals}
+
+\usepackage{fancyhdr, lastpage}
+\pagestyle{fancy}
+\fancyfoot[C]{{\thepage} of \pageref{LastPage}}
+
+
+
+\DeclareMathOperator{\mSpec}{mSpec}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Ass}{Ass}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\height}{height}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\ann}{ann}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\coker}{coker}
+%\DeclareMathOperator{\ker}{ker}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\M}{M}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\ch}{char}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\GL}{GL}
+
+%\DeclareMathOperator{\dim}{dim}
+
+\DeclareMathOperator{\lcm}{lcm}
+
+\def\ra{\rightarrow}
+\newcommand{\m}{\mathfrak{m}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\ov}[1]{\overline{#1}}
+\newcommand{\norm}{\trianglelefteq}
+
+\def\ov#1{\overline{#1}}
+
+
+\title{}
+\date{\vspace{-0.5in}}
+
+\makeatletter
+\g@addto@macro\@floatboxreset\centering
+\makeatother
+
+\theoremstyle{definition}
+\newtheorem{problem}{Problem}
+
+
+\begin{document}
+
+\thispagestyle{fancy}
+\pagestyle{fancy}
+\rhead{UNL $\mid$ Spring 2026}
+\lhead{Introduction to Modern Algebra II}
+
+\vspace{3em}
+
+\begin{center}
+	{\LARGE Some old qualifying exam questions\\}
+\end{center}
+
+\
+
+
+
+\begin{problem} Consider $f(x) = x^6 + 3 \in \Q[x]$.
+
+    \begin{enumerate}[(a)]
+    \item Let\footnote{Hint: First show $\frac{a^3+1}2$ 
+is primitive 6-th root of unity.} $a$ be a root of $f(x)$ and prove $\Q(a)$ is a Galois field extension of $\Q$. 
+
+\item Find the Galois group $\Gal(\Q(a)/\Q)$.
+
+     \end{enumerate}
+     \end{problem}
+     
+     
+     \begin{problem} Let $A$ be the matrix with entries in $\C$
+     $$
+     A  = \begin{bmatrix}
+       3 & 0 & 0&  0 \\
+       1 & 3 &0 &0\\
+       1 &0 &3 &0 \\
+       0&2&1&3\\
+     \end{bmatrix}
+         $$
+         \begin{enumerate}[(a)]
+         \item Find the Jordan canonical form of $A$.
+         \item Is $A$ similar to
+           $$
+           \begin{bmatrix}
+           0& -9& 0& 0 \\
+           1& 6& 0& 0 \\
+           0& 0& 0& -9 \\
+           0&0&1&6 \\
+         \end{bmatrix}?
+         $$
+
+     
+       \end{enumerate}
+       \end{problem}
+       
+       
+       \begin{problem} Suppose $F \subseteq K$ is a finite extension of fields such that $[K: F]$ is odd. Show that for any $b \in K$ we have $F(b) = F(b^2)$.
+\end{problem}
+
+
+\begin{problem} Find, with justification, a complete and non-redundant list of conjugacy class representatives for the group $\GL_3(\mathbb{F}_2)$, where $\mathbb{F}_2$ is the field with two elements.
+\end{problem}
+
+\begin{problem}
+  Let $p$ be any positive prime integer.
+  \begin{enumerate}[(a)]
+  \item Prove that if $p = k^2 + 1$ for some integer $k$, then $p$ is not an irreducible element of $\Z[i]$.
+  
+\item Prove $x^4 - p$ is irreducible in $\Q(i)[x]$. {\em Tip:} Find the degree of the splitting field of $x^4 - p$ over $\Q(i)$.  
+\end{enumerate}
+\end{problem}
+
+\begin{problem} Let $E/F$ be a field extension and $\sigma:E\to E$ a field homomorphism fixing $F$; i.e., $\sigma(f)=f$ for all $f\in F$.
+\begin{enumerate}[(a)]
+\item Prove that if $E$ is algebraic over $F$ then $\sigma$ is an isomorphism.
+\item Give an example of a specific field extension $E/F$ and a homomorphism $\sigma:E\to E$ fixing $F$ that is not an isomorphism.
+\end{enumerate}
+\end{problem}
+
+\begin{problem} Let $L/F$ be a finite Galois extension with Galois group $G$. Show that $L=F(\alpha)$ if and only if the images of $\alpha$ under $G$ are distinct.
+\end{problem}
+
+
+\end{document}
