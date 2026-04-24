@@ -1,0 +1,164 @@
+\documentclass[12pt]{amsart}
+
+
+\usepackage{times}
+\usepackage[margin=.9 in]{geometry}
+\usepackage{paralist,amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals}
+\usepackage[outline]{contour}
+\contourlength{.4pt}
+\contournumber{10}
+\newcommand{\Bold}[1]{\contour{black}{#1}}
+
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\Gal}{\mathrm{Gal}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\solutione}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{leaf}This solution is embargoed.}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\nosolfill}{\ifthenelse {\equal{\displaysol}{1}} {} {\vfill}}
+\newcommand{\nosolpage}{\ifthenelse {\equal{\displaysol}{1}} {} {\newpage}}
+\newcommand{\nosolonly}[1]{\ifthenelse {\equal{\displaysol}{1}} {} {{#1}}}
+
+\newcommand{\rsa}{\rightsquigarrow}
+
+
+\newcommand\itemA{\stepcounter{enumi}\item[{\Bold{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\Bold{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\Bold{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+
+\DeclareMathOperator{\ord}{ord}
+
+\DeclareMathOperator{\res}{res}
+\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}\mathrm{Gal}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{Solving polynomials by radicals}
+	\begin{framed}
+	\textsc{Definition:} Let $F$ be a field, and $f\in F[x]$. We say that $f$ is \textbf{solvable by radicals} if every root of $f$ can be obtained from elements of $F$ by $+$, $-$, $\times$, $\div$, and taking $n$th roots (for any $n>1$).
+
+		\end{framed}
+
+\
+
+	
+	\begin{enumerate}
+	\itemA Let $F$ be a field of characteristic $\neq 2$. Show that\footnote{Hint: Complete the square!} any quadratic polynomial \[f(x) = ax^2 + bx + c \in F[x]\] is solvable by radicals.
+	
+	\
+	
+	\itemA Solving the cubic: Let $f(x) = x^3 - 3x^2 + 12 x - 7 \in \Q[x]$.
+	\begin{enumerate}
+	\itema Find a $c\in \Q$ such that, setting $y=x+c$, we have $f(y) = y^3 + p y + q$ with no $y^2$ term.
+	\itema Make the \emph{Vieta substitution}\, $y=z-\frac{p}{3z}$, and rewrite the result as a quadratic in $z^3$.
+	\itema Without forgetting that any nonzero complex number has three cube roots, solve for $z$, and use this to solve for $x$.
+	\itema Discuss: what would you do with a general cubic? Explain why any cubic is solvable by radicals (over $\Q$).
+	\end{enumerate}
+	\end{enumerate}
+	
+	\
+	
+	
+		\begin{framed}
+	\textsc{Definition:} Let $G$ be a finite group. We say that $G$ is \textbf{solvable} if there exist subgroups $H_i$ such that \[\{e\} = H_0 \trianglelefteq H_1  \trianglelefteq H_2   \trianglelefteq \cdots  \trianglelefteq H_n = G\] where each consecutive quotient $H_{i+1}/H_i$ is abelian.
+	
+	
+	\
+	
+		\textsc{Theorem:} Let $F$ be a field of characteristic zero, and $f\in F[x]$ be a separable polynomial. If~$f$ is solvable by radicals, then the Galois group\footnotemark\footnotemark\ of $f$ is a solvable group.
+	
+	\
+	
+	
+	\textsc{Lemma:} Let $G$ be a finite group. If $N \trianglelefteq G$, then $G$ is solvable if and only if $N$ and $G/N$ are both solvable.
+
+		\end{framed}
+		\footnotetext[2]{Recall that we have defined the Galois group of a separable polynomial to be the Galois group of its splitting field.} 
+				\footnotetext[3]{The converse is also true, but we won't prove it. Moreover, a version of the theorem is true in arbitrary characteristic.} 
+		
+		\
+		
+			\begin{enumerate}\setcounter{enumi}{2}
+		
+		\itemA Not solving the quintic: Let $f(x) = x^5 - 4x -2 \in \Q[x]$.
+		\begin{enumerate}
+		\itema Show that $f$ is irreducible and has five distinct complex roots, of which three are real\footnote{Hint: Calculus. You might find $x=-1$ and $x=0$ to be convenient test values.}.
+		\itema Show that\footnote{Hint: Use Cauchy's Theorem and complex conjugation.} the Galois group of $f$ is isomorphic to $\mathcal{S}_5$.
+		\itema Use the Theorem to show that $f$ cannot be solved by radicals.
+		\end{enumerate}
+				\end{enumerate}
+
+
+	
+	\newpage
+	
+	\begin{framed}
+	\textsc{Proposition:} Let $F$ be a field of characteristic zero.
+	\begin{enumerate}
+	\item For any $m\geq 1$, the Galois group of $x^m-1$ is abelian.
+	\item If $F$ contains all $m$th roots of $1$ and $a\in F$, then the Galois group of $x^m-a$ is cyclic.
+	\end{enumerate}
+	\end{framed}
+	
+	\begin{enumerate}\setcounter{enumi}{3}
+		\itemA Proof of Proposition $\Longrightarrow$ Theorem: Say that a sequence of fields 
+\[F=F_0 \subseteq F_1 \subseteq \cdots \subseteq F_n\] is a \textbf{radical tower} if for all $i=0,\dots, n-1$,  $F_{i+1}$ is the splitting field of $x^{m_i}-a_i \in F_i[x]$ for some $m_i \geq 2$ and $a_i \in F_i$.
+		\begin{enumerate}
+		\itema Suppose that $\beta$ can be obtained from elements of $F$ by $+$, $-$, $\times$, $\div$, and taking $n$th roots. Explain why there exists a radical tower $F=F_0 \subseteq F_1 \subseteq \cdots \subseteq F_n$
+such that $\beta\in F_n$.
+\itema Suppose that $\beta_1,\dots,\beta_s$ can be obtained from elements of $F$ by $+$, $-$, $\times$, $\div$, and taking $n$th roots. Explain why there exists a radical tower
+$F=F_0 \subseteq F_1 \subseteq \cdots \subseteq F_n$
+such that $\beta_1,\dots,\beta_s \in F_n$.
+\itema Let $F=F_0 \subseteq F_1 \subseteq \cdots \subseteq F_n$
+be a radical tower. Show that $F_n/F$ is Galois.
+\itema Let $F=F_0 \subseteq F_1 \subseteq \cdots \subseteq F_n$
+be a radical tower. Show that $\mathrm{Gal}(F_n/F)$ is solvable.
+\itema Complete the proof of the Theorem.
+		\end{enumerate}
+	
+				
+				\
+				
+			\itemA Proof of Proposition:
+					\begin{enumerate}
+\itema
+
+
+		\end{enumerate}
+	
+						\end{enumerate}	
+\end{document}

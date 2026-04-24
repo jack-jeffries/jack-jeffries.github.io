@@ -5,6 +5,7 @@
 \usepackage[margin=.71 in]{geometry}
 \usepackage{paralist,amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals}
 \usepackage[outline]{contour}
+\usepackage[all]{xy}
 \contourlength{.4pt}
 \contournumber{10}
 \newcommand{\Bold}[1]{\contour{black}{#1}}
@@ -79,7 +80,8 @@ Moreover, this bijective correspondence enjoys the following properties:
 \begin{enumerate}
 \item $\stackrel{\mathrm{Gal}(L/\star)}{\longrightarrow}$ and $\stackrel{L^{\star}}{\longleftarrow}$ each reverse the order of inclusion: 
 \begin{itemize}
-\item[] $E \subseteq E' \Leftrightarrow \mathrm{Gal}(L/E') \leq \mathrm{Gal}(L/E)$
+\item[] $E \subseteq E' \Longleftrightarrow \mathrm{Gal}(L/E') \leq \mathrm{Gal}(L/E)$; \ equivalently
+\item[] $L^H \subseteq L^{H'} \Longleftrightarrow H' \leq H$.
 \end{itemize}
 \item $\stackrel{\mathrm{Gal}(L/\star)}{\longrightarrow}$ and $\stackrel{L^{\star}}{\longleftarrow}$ convert between degrees of extensions and indices of subgroups:  
 \begin{itemize}
@@ -117,26 +119,67 @@ In this case, $\mathrm{Gal}(E/F) = \mathrm{Gal}(L/F) / \mathrm{Gal}(L/E)$.
 	\itema Explicitly identify the intermediate fields $E$.
 	\end{enumerate}
 	
-		\
-		
-		\itemA Show that the maps $\stackrel{\mathrm{Gal}(L/\star)}{\longrightarrow}$ and $\stackrel{L^{\star}}{\longleftarrow}$ give the bijection as stated in the Theorem.
-		
-		\
+		\solution{
+			\begin{enumerate}
+	\itema \[ \xymatrixrowsep{2mm}\xymatrixcolsep{0mm} \xymatrix{ &&&& S_3 \ar@{-}[drrrr]  \ar@{-}[ddllll]   \ar@{-}[ddll]   \ar@{-}[dd] &&&& \\ &&&&&&&& \langle (1\,2\,3)\rangle  \\ \langle (1\,2)\rangle && \langle (1\,3)\rangle && \langle (2\,3)\rangle && \\ &&&& \{e\}  \ar@{-}[ullll]  \ar@{-}[ull]  \ar@{-}[u]  \ar@{-}[uurrrr]  &&&&& }\]
+	\newpage
+	\itema Four:
+	\[ \xymatrixrowsep{2mm}\xymatrixcolsep{0mm} \xymatrix{ &&&& L \ar@{-}[ddrrrr]  \ar@{-}[dllll]   \ar@{-}[dll]   \ar@{-}[d] &&&& \\ ? && ? && ? && \\ &&&&&&&& ?  \\ &&&& \Q  \ar@{-}[uullll]  \ar@{-}[uull]  \ar@{-}[uu]  \ar@{-}[urrrr]  &&&&& }\]
+
+	\itema \[ \xymatrixrowsep{2mm}\xymatrixcolsep{0mm} 
+	\xymatrix{ &&&& S_3 \ar@{-}[drrrr]^2  \ar@{-}[ddllll]_3   \ar@{-}[ddll]^3   \ar@{-}[dd]^3 &&&& \\ &&&&&&&& \langle (1\,2\,3)\rangle  \\ \langle (1\,2)\rangle && \langle (1\,3)\rangle && \langle (2\,3)\rangle && \\ &&&& \{e\}  \ar@{-}[ullll]  \ar@{-}[ull]  \ar@{-}[u]  \ar@{-}[uurrrr]  &&&&& } \xymatrix{ &&&& L \ar@{-}[ddrrrr]  \ar@{-}[dllll]   \ar@{-}[dll]   \ar@{-}[d] &&&& \\ ? && ? && ? && \\ &&&&&&&& ?  \\ &&&& \Q  \ar@{-}[uullll]^3  \ar@{-}[uull]_3  \ar@{-}[uu]_3  \ar@{-}[urrrr]^2  &&&&& }\]
+
+	\itema \[ \xymatrixrowsep{2mm}\xymatrixcolsep{0mm} 
+	\xymatrix{ &&&& S_3 \ar@{-}[drrrr]^2_{\trianglelefteq}  \ar@{-}[ddllll]_3   \ar@{-}[ddll]^3   \ar@{-}[dd]^3 &&&& \\ &&&&&&&& \langle (1\,2\,3)\rangle  \\ \langle (1\,2)\rangle && \langle (1\,3)\rangle && \langle (2\,3)\rangle && \\ &&&& \{e\}  \ar@{-}[ullll]  \ar@{-}[ull]  \ar@{-}[u]  \ar@{-}[uurrrr]  &&&&& } \xymatrix{ &&&& L \ar@{-}[ddrrrr]  \ar@{-}[dllll]   \ar@{-}[dll]   \ar@{-}[d] &&&& \\ ? && ? && ? && \\ &&&&&&&& ?  \\ &&&& \Q  \ar@{-}[uullll]^3  \ar@{-}[uull]_3  \ar@{-}[uu]_3  \ar@{-}[urrrr]_{\mathrm{Gal}}^2  &&&&& }\]		
 	
-	\itemB Let $L/F$ be a finite Galois extension.
+\itema \[ \xymatrixrowsep{2mm}\xymatrixcolsep{0mm} 
+ \xymatrix{ &&&& L \ar@{-}[ddrrrr]  \ar@{-}[dllll]   \ar@{-}[dll]   \ar@{-}[d] &&&& \\ \Q(\sqrt[3]{2}) && \Q(\omega\sqrt[3]{2}) && \Q(\omega^2\sqrt[3]{2}) && \\ &&&&&&&& \Q(\omega)  \\ &&&& \Q  \ar@{-}[uullll]^3  \ar@{-}[uull]_3  \ar@{-}[uu]_3  \ar@{-}[urrrr]_{\mathrm{Gal}}^2  &&&&& }\]		
+	\end{enumerate}
+		
+		}
+		
+			\itemA Let $L/F$ be a finite Galois extension.
 	\begin{enumerate}
-	\itemb When is every intermediate field $E\subseteq L$ Galois over $F$?
-	\itemb If $[L:F]=n$ and $n=p^e m$ for some prime $p$ and positive integer $m$ that is not a multiple of $p$, explain why there exists an intermediate field $E$ with $[E:F]=p^e$.
+	\itema When is every intermediate field $E\subseteq L$ Galois over $F$?
+	\itema If $[L:F]=n$ and $n=p^e m$ for some prime $p$ and positive integer $m$ that is not a multiple of~$p$, explain why there exists an intermediate field $E$ with $[E:F]=m$.
 	\end{enumerate}
 	
-	\
 	
-	\itemB Show that if $L/F$ is Galois with $[L:F]=45$, then there is a unique intermediate field $E$ with $[E:F]=5$.
+\solution{
+	\begin{enumerate}
+	\itema If and only if every subgroups is normal. This happens, for example, if $G$ is abelian.
+	\itema Let $G= \mathrm{Gal}(L/F)$. Then by the Sylow Theorems, there is a subgroup $H\leq G$ of order $p^e$. Then $m = [G:H] = [L^H : F]$, so $E=L^H$ works.
+	\end{enumerate}
+	}
+		
+		\itemA Proof\footnote{Hint: Use Artin's Theorem and its Corollaries generously!} of Fundamental Theorem: 
+		\begin{enumerate}
+		\itema Show that the maps $\stackrel{\mathrm{Gal}(L/\star)}{\longrightarrow}$ and $\stackrel{L^{\star}}{\longleftarrow}$ give the bijection as stated in the Theorem.
+		\itema Prove part (1) of The Fundamental Theorem of Galois Theory. 
+		\itema Prove part (2) of The Fundamental Theorem of Galois Theory.
+		\end{enumerate}
+		
+		\solution{
+		\begin{enumerate}
+		\itema First, we note that these are well-defined: for $E\subseteq L$, $L/E$ is indeed Galois by a Corollary of Artin's Theorem, and $\mathrm{Gal}(L/E)$ is a subgroup of $\mathrm{Gal}(L/F)$. Also, for $H\subseteq G$, $L^H$ is a subfield of $L$ by an exercise, and $L^H$ contains $F$ since every element of $H$ fixes $F$.
+		
+		
+		Let $F\subseteq E \subseteq L$. Then $E$ maps to $\mathrm{Gal}(L/E)\leq \mathrm{Gal}(L/F)$. By a Corollary of Artin's Theorem, we have $L^{\mathrm{Gal}(L/E)} = E$. This shows that one composition is the identity.
+		
+		Let $H\leq \mathrm{Gal}(L/F)$. Then $H$ maps to $L^H$. This maps to $\mathrm{Aut}(L/L^H)$ which is $H$ by Artin's Theorem. This shows that the other composition is the identity.
+		
+		\itema This follows from the definitions: if $E\subseteq E'$, then any automorphism that fixes $E'$ definitely fixes $E$, so $\mathrm{Gal}(L/E') \leq \mathrm{Gal}(L/E)$. For the converse, we write $E=L^H$ and $E'=L^{H'}$; if $H' \leq H$, then anything fixed by all elements of $H$ is fixed by all elements of $H'$, so $E=L^H \subseteq L^{H'}=E'$.
+		
+		\itema By definition of Galois, we have $[L:F] = |\mathrm{Gal}(L/F)|$. Since $L/E$ is also Galois, we have $[L:E] = |\mathrm{Gal}(L/E)|$. Then
+		\[ [E:F] = \frac{[L:F]}{[L:E]} = \frac{|\mathrm{Gal}(L/F)|}{ |\mathrm{Gal}(L/E)|} = [ \mathrm{Gal}(L/F) : \mathrm{Gal}(L/E)].\]
+		\end{enumerate}
+		}
+		
+		
 	
-	\
+
 	
-	\itemB Let $L$ be the splitting field of $x^4-2026$ over $\Q$. Show that there exists a unique field $E\subseteq L$ such that $[E:\Q]=4$ and $E/\Q$ is Galois.
-	
+		
 	\end{enumerate}
 	
 
