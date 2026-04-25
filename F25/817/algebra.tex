@@ -11552,23 +11552,8 @@ Notice that while the proof shows that for every $\tau \in \Gal(E/F)$ there exis
 
 
 
-%\begin{comment}
+
 \section{Solvable polynomials and solvable groups}
-
-
-Galois' theory has many fun applications. There are some famous questions in geometry whose impossibility is shown via Galois theory methods:
-
-\begin{itemize}
-	\item Trisecting an angle: is it possible to trisect any given angle using only a compass and a straightedge?
-	\item Doubling the cube: using only a compass and straightedge, and given a cube, is it possible to construct a cube whose volume is exactly twice the volume of the original cube?
-	\item Squaring the circle: Using only a compass and straightedge, is it possible to construct a square with the same area of a given circle?
-\end{itemize}
-
-All these challenges turn out to be impossible, which one can show using Galois theory. Unfortunately, we will not be proving these here. Instead, we will focus on another famous classical question which is behind the origins of Galois theory:
-
-\begin{question}
-	Does there exist a formula for the roots of a polynomial of of degree $n$ with rational coefficients using only addition, subtraction, multiplication, division, and taking radicals?
-\end{question}
 
 The formulas for the roots of polynomials of degree $2$, $3$, and $4$ have been known for hundreds of years, and they involve only sums, products, quotients, and square roots, cube roots, and fourth roots. It turns out that there are polynomials for which no such formula exists; in fact, there is no general formula for polynomials of degree $5$.
 
@@ -11636,19 +11621,6 @@ This proves that $\Phi(\tau \circ \sigma) = \Phi(\tau) \cdot \Phi(\sigma)$, so $
 If $\Phi(\sigma) = 1$, then $\sigma$ fixes $\zeta$ and hence must be the trivial automorphism. This shows that $\Phi$ is injective.
 \end{proof}
 
-
-
-\begin{corollary}\label{galois group of primitive nth root of 1 over Q}
-For any $n>1$, $\Gal(\mathbb{Q}(e^{2 \pi i/n})/\mathbb{Q}) \cong (\mathbb{Z}/n)^\times$.
-\end{corollary}
-
-\begin{proof}[Sketch of proof]
-Consider the injective group homomorphism
-$$\xymatrix@R=1mm{\Phi\!: \Gal(F(\zeta)/F) \ar[r] & (\mathbb{Z}/n)^{\times} \\ \sigma \ar[r] & \Phi(\sigma) = j & \textrm{where $j$ satisfies $\sigma(\zeta) = \zeta^j$.}}$$
-we constructed in the proof of \Cref{primitive roots unity galois abelian}. We claim that $\Phi$ is an isomorphism.
-
-To show that homomorphism must be surjective, one shows that the degree of the minimal polynomial of $e^{2 \pi i/n}$ is precisely the number of elements of $(\mathbb{Z}/n)^\times$, and thus $|\Gal(\mathbb{Q}(e^{2 \pi i/n}/\mathbb{Q})|=| (\mathbb{Z}/n)^\times|$. We skip this detail.
-\end{proof}
 
 We now cover the Galois groups of polynomials of the form $x^n - a$ in the case where the base field contains all the $n$th roots of unity.
 
@@ -11758,13 +11730,6 @@ are all abelian. These properties imply that $\Gal(E/F)$ is a solvable group, an
 
 In characteristic $0$, the converse of \Cref{solvable by radicals implies solvable} is also true: if the Galois group of $f$ is solvable, then $f$ is solvable by radicals. 
 
-\begin{theorem}
-	Every polynomial $f \in \mathbb{Q}[x]$ of degree at most $4$ is solvable by radicals.
-\end{theorem}
-
-
-The main point is that if $L$ is the splitting field of a polynomial of degree at most $4$, then $\Gal(L/\mathbb{Q}) \nsg S_4$, and that every subgroup of $S_4$ is solvable. Indeed, formulas for the roots of polynomials of degree $2$, $3$, and $4$ have been known for hundreds of years, and they involve only sums, products, quotients, and square roots, cube roots, and fourth roots.
-
 
 We can now prove a theorem that has fascinated mathematicians and nonmathematicians alike for many centuries: the fact that the general quintic cannot be solved. More precisely, there is no formula involving  only radicals, sums, and products for the zeroes of a general polynomial of degree $5$ with rational coefficients. The key point turns out to lie in group theory: $S_5$ is not a solvable group, and there are polynomials $f \in \mathbb{Q}[x]$ of degree $5$ such that the Galois group of the splitting field of $f$ over $\mathbb{Q}$ is $S_5$.
 
@@ -11796,20 +11761,9 @@ The polynomial $f(x) = x^5 - 4x + 2$ is not solvable by radicals over $\mathbb{Q
 One can show it is irreducible in $\mathbb{Q}[x]$ by the usual combination of \hyperref[eisenstein criterion]{Eisenstein's Criterion} and \hyperref[Gauss Lemma]{Gauss' Lemma}. Moreover, we claim that this polynomial has exactly $3$ distinct real roots. Unfortunately, we cannot show this directly by \emph{presenting} such roots, exactly because $f$ is \emph{not} solvable by radicals. One could check this informally by graphing $f$ and checking that indeed it crosses the $x$-axis three times, and noting that all irreducible polynomials over a field of characteristic zero (thus perfect) are separable. If we wanted to check this more carefully, we could use some elementary calculus: $f'(x) = 5x^4 - 4$ has precisely two roots and changes signs at these roots. It follows that $f$ must have exactly $3$ real roots. By \Cref{deg 5 not solvable}, $f$ is not solvable by radicals.
 \end{example}
 
-However, there \emph{are} irreducible polynomials of degree $5$ that are solvable by radicals.
-
-\begin{example}
-	The polynomial $x^5-1 \in \mathbb{Q}[x]$ is solvable by radicals; indeed, its roots are all $5$th roots of unity over $\mathbb{Q}$.	
-	
-	We can check this using Galois Theory. By \Cref{galois group of primitive nth root of 1 over Q}, the splitting field $L$ of $x^5-1$ over $\mathbb{Q}$ satisfies $\Gal(L/\mathbb{Q}) \cong (\mathbb{Z}/5)^\times$. In particular, $\Gal(L/\mathbb{Q})$ is abelian and thus solvable.
-\end{example}
-
-
-More details on the other applications of Galois Theory we mentioned in the beginning of this section can often be found in any standard book on the subject.
 
 
 
-%\begin{comment}
 
 \section{The primitive element theorem}
 
@@ -11957,7 +11911,7 @@ are linear independent if given $\l_i \in F$ such that $\sum_{i=1}^n \l_i
 Let $G$ be a group, $F$ be a field, and let $\chi_j: G \to F^{\times}$ for $j = 1, \dots, m$ be a finite list of distinct characters, meaning that for all $i \neq j$ we have $\chi_i(g) \neq \chi_j(g)$ for at least one $g \in G$. Then $\chi_1, \dots, \chi_m$ are linearly independent.
 \end{theorem}
 
-The Theorem is sort of a \emph{Sophomore's dream}, since it is saying that if a list of a certain sort of vectors in a certain vector space has no repetitions, then the vectors are linearly independent.
+
 
 
 \begin{proof} 
@@ -11967,7 +11921,7 @@ We proceed by induction on $m$.
 
 \underline{Induction Step}:
 Suppose $m > 1$ and that $\sum_{i=1}^m \l_i \chi_i(g) = 0$ for all $g \in G$ for some $\l_i \in F$.  
-%Since $\chi_{1}$ and $\chi_m$ are not identical, there is an $h \in G$ such that $\chi_{1}(h) \ne \chi_m(h)$. 
+
  
 Suppose 
   \begin{equation}

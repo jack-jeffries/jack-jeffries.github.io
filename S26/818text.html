@@ -197,6 +197,8 @@
 <ol><li><a href="#sec-16-1-heading">Group actions on field extensions</a></li>
 <li><a href="#sec-16-2-heading">Galois extensions</a></li>
 <li><a href="#sec-16-3-heading">The Fundamental Theorem of Galois Theory</a></li>
+<li><a href="#sec-16-4-heading">The proof of Artin's Theorem</a></li>
+<li><a href="#sec-16-5-heading">Solvable polynomials and solvable groups</a></li>
 </ol>
 </ol>
 </ul></nav>
@@ -7923,6 +7925,690 @@ We have seen already that the degree of a field extension is a simple yet powerf
     </div>
   </section>
 </section>
+
+
+<section id="sec-16-4" class="section" aria-labelledby="sec-16-4-title">
+  <h2 id="sec-16-4-heading">16.4 The proof of Artin's Theorem</h2>
+
+  <p>
+    We now embark on a proof of Artin's Theorem. A key ingredient is the ``linear independence of characters'', which is useful in other contexts as well, such as representation theory.
+  </p>
+
+  <section id="def-16-4-1" class="callout definition" aria-labelledby="def-16-4-1-title">
+    <h3 id="def-16-4-1-title">Definition 16.4.1</h3>
+    <div class="callout-body">
+      <p>
+        For a group \(G\) and field \(F\), a <strong>character</strong> of \(G\) with values in \(F\) is a group homomorphism of the form
+      </p>
+      \[
+        \chi: G \to F^\times.
+      \]
+    </div>
+  </section>
+
+  <section id="ex-16-4-2" class="callout example" aria-labelledby="ex-16-4-2-title">
+    <h3 id="ex-16-4-2-title">Example 16.4.2</h3>
+    <div class="callout-body">
+      <ol>
+        <li>
+          <p>
+            If \(G = C_n\), cyclic of order \(n\), with generator \(x\), then the UMP for cyclic groups says there is a unique group homomorphism \(G \to \mathbb{C}^\times\) sending \(x\mapsto \zeta_n\), and hence \(x^i \mapsto \zeta_n^i\). This is an example of a character.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            If \(K\) and \(F\) are two fields and \(\phi: K \to F\) is a field map, then \(\phi\) restricts to a character \(\phi': K^\times \to F^\times\).
+          </p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <p>
+    Note that the set \(\Fun(G,F)\) of all functions from \(G\) to \(F\) is an \(F\)-vector space and that the characters f \(G\) are elements of this vector space. Therefore it makes sense to talk about linear independence for sets of characters. A point to observe here is that arbitrary linear combinations \(\sum_i \lambda_i \chi_i\) are not, in general, group homomorphisms.
+  </p>
+
+  <section id="def-16-4-3" class="callout definition" aria-labelledby="def-16-4-3-title">
+    <h3 id="def-16-4-3-title">Definition 16.4.3</h3>
+    <div class="callout-body">
+      <p>
+        For \(G\) and \(F\) and characters \(\chi_1, \dots, \chi_n\), we say these
+        characters are <em>linear independent</em> if whenever
+        \(\sum_{i=1}^n \lambda_i \chi_i=0\) (the constant map \(0\)), we must have \(\lambda_i
+        = 0\) for all \(i\). Making this even more explicit:
+        \(\chi_1, \dots, \chi_n\),
+        are linear independent if given \(\lambda_i \in F\) such that \(\sum_{i=1}^n \lambda_i
+        \chi_i(g) = 0\) for all \(g \in G\), we must have \(\lambda_i = 0\) for all \(i\).
+      </p>
+    </div>
+  </section>
+
+  <section id="thm-16-4-4" class="callout theorem" aria-labelledby="thm-16-4-4-title">
+    <h3 id="thm-16-4-4-title">Theorem 16.4.4 (Linear Independence of Characters)</h3>
+    <div class="callout-body">
+      <p>
+        Let \(G\) be a group, \(F\) be a field, and let \(\chi_j: G \to F^{\times}\) for \(j = 1, \dots, m\) be a finite list of distinct characters, meaning that for all \(i \neq j\) we have \(\chi_i(g) \neq \chi_j(g)\) for at least one \(g \in G\). Then \(\chi_1, \dots, \chi_m\) are linearly independent.
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-thm-16-4-4" class="callout proof" aria-labelledby="proof-thm-16-4-4-title">
+    <h3 id="proof-thm-16-4-4-title">Proof of Theorem 16.4.4</h3>
+    <div class="callout-body">
+      <p>
+        We proceed by induction on \(m\).
+      </p>
+
+      <p>
+        <u>Base case</u>: When \(m=1\), since \(\chi_1(g) \neq 0\) for all \(g\) then \(\lambda_1\chi_1=0\) iff \(\lambda_1=0\).
+      </p>
+
+      <p>
+        <u>Induction Step</u>:
+        Suppose \(m > 1\) and that \(\sum_{i=1}^m \lambda_i \chi_i(g) = 0\) for all \(g \in G\) for some \(\lambda_i \in F\).
+      </p>
+
+      <p>
+        Suppose
+      </p>
+      \[
+        \sum_{i=1}^m \lambda_i \chi_i=0.
+      \]
+      <p>
+        Evaluating this equation at \(hg\) for \(g,h\in G\) and using that \(\chi_i\) are group homomorphisms gives
+      </p>
+      \[
+        0 = \sum_{i=1}^m \lambda_i \chi_i(hg) = \sum_{i=1}^m \lambda_i \chi_i(h) \chi_i(g) \quad \textrm{for all } g,h\in G.
+      \]
+      <p>
+        Multiplying the original equation by \(\chi_1(h)\) gives
+      </p>
+      \[
+        0 = \chi_1(h)\left(\sum_{i=1}^m \lambda_i \chi_i(g) \right) \quad \textrm{for all } g,h\in G.
+      \]
+      <p>
+        Subtracting the previous two equations we get
+      </p>
+      \[
+        \begin{aligned}
+        0
+        &=
+        \chi_1(h)\left(\sum_{i=1}^m \lambda_i \chi_i(g) \right)
+        -
+        \sum_{i=1}^m \lambda_i \chi_i(h) \chi_i(g) \\
+        &=
+        \sum_{i=2}^{m} \left(\chi_1(h) \lambda_i - \chi_i(h) \lambda_i \right) \chi_i(g)
+        \quad \textrm{for all } g,h\in G.
+        \end{aligned}
+      \]
+      <p>
+        Fixing \(h\), the equation above gives a linear dependence between \(\chi_2,\ldots, \chi_m\). Using the induction hypothesis we conclude that
+      </p>
+      \[
+        \chi_{1}(h) \lambda_i - \chi_i(h) \lambda_i = 0 \quad \textrm{for all } h\in G
+      \]
+      <p>
+        for all \(i\), including \(i = m\). Since \(\chi_{1}(h) \ne \chi_m(h)\),
+        we get \(\lambda_m = 0\), and hence the original equation reduces to
+      </p>
+      \[
+        \sum_{i=1}^{m-1} \lambda_i \chi_i(g) = 0, \quad \textrm{for all } g\in G.
+      \]
+      <p>
+        Using the induction hypothesis again it follows that \(\lambda_i = 0\) for all \(i\).
+      </p>
+    </div>
+  </section>
+
+  <section id="ex-16-4-5" class="callout example" aria-labelledby="ex-16-4-5-title">
+    <h3 id="ex-16-4-5-title">Example 16.4.5</h3>
+    <div class="callout-body">
+      <p>
+        Let \(G = C_n\), generated by \(x\), and define
+      </p>
+      \[
+        \begin{array}{rcl}
+        \chi_j\!: G & \longrightarrow & \mathbb{C} \\
+        x & \longmapsto & \chi_j(x) = \zeta_n^j = e^{2 \pi j/n}
+        \end{array}
+      \]
+      <p>
+        for \(j = 0, \ldots, n-1\) by \(\chi_i(x) = \zeta_n^j = e^{2 \pi j/i}\).
+        These are distinct, and hence by linear independence of characters they must be linearly independent.
+      </p>
+    </div>
+  </section>
+
+  <p>
+    We now restate Artin's theorem:
+  </p>
+
+  <section id="thm-16-4-6" class="callout theorem" aria-labelledby="thm-16-4-6-title">
+    <h3 id="thm-16-4-6-title">Theorem 16.4.6 (Artin's Theorem)</h3>
+    <div class="callout-body">
+      <p>
+        Let \(L\) be any field and \(G\) any finite subgroup of \(\mathrm{Aut}(L)\). Then \(L^G\) is a subfield of \(L\), \(L/L^G\) is a finite Galois extension and \(\mathrm{Gal}(L/L^G) = G\).
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-thm-16-4-6" class="callout proof" aria-labelledby="proof-thm-16-4-6-title">
+    <h3 id="proof-thm-16-4-6-title">Proof of Theorem 16.4.6</h3>
+    <div class="callout-body">
+      <p>
+        Let \(G\) be a finite subgroup of \(\mathrm{Aut}(L)\) for a field \(L\). In an earlier exercise, we showed that \(L^G\) is a subfield of \(L\) as an exercise. We will prove the remaining statements. We need to prove \(L/L^G\) is a finite extension and that \([L:L^G] = |\mathrm{Aut}(L/L^G)|\).
+      </p>
+
+      <p>
+        We start by showing that it suffices to show that \([L: L^G] = |G|\). If \([L: L^G] = |G|\) does indeed hold, then in particular \(L/L^G\) is a finite extension. Since \(L^G \subseteq L\) is finite then \(|\mathrm{Aut}(L/L^G)| \leqslant [L:L^G]\). Since \([L: L^G] = |G|\), then we obtain \(|\mathrm{Aut}(L/L^G)| \leqslant |G|\).
+      </p>
+
+      <p>
+        On the other hand, any element in \(G\) fixes \(L^G\) by definition, so \(G \leq \mathrm{Aut}(L/L^G)\). But \(|\mathrm{Aut}(L/L^G)| \leqslant |G|\) and these are both finite groups, so \(G = \mathrm{Aut}(L/L^G)\). From the inequality before we now conclude that \(|\mathrm{Aut}(L/L^G)| = [L:L^G]\), and thus the extension is Galois. Finally, this gives \(\mathrm{Gal}(L/L^G) = \mathrm{Aut}(L/L^G) = G\).
+      </p>
+
+      <p>
+        It remains to prove that \([L: L^G] = |G|\). Let \(n = |G|\) and \(G=\{\sigma_1, \ldots, \sigma_n\}\) with \(\sigma_1 = \mathrm{id}_L\).
+        We know that \([L: L^G] \geqslant n\). We want to show that equality holds.
+        If \([L: L^G] > n\), then we can find \(n+1\) many \(L^G\)-linearly independent elements \(\omega_1, \ldots, \omega_{n+1}\) in \(L\). Consider the system of \(n\) equations with \(n+1\) unknowns
+      </p>
+      \[
+        \left\lbrace\begin{array}{cl}
+        \sigma_1(\omega_1) x_1 + \cdots + \sigma_1(\omega_{n+1}) x_{n+1} & = 0 \\
+        \sigma_2(\omega_1) x_1 + \cdots + \sigma_2(\omega_{n+1}) x_{n+1} & = 0 \\
+        \vdots \\
+        \sigma_n(\omega_1) x_1 + \cdots + \sigma_n(\omega_{n+1}) x_{n+1} & = 0.
+        \end{array}\right.
+      \]
+      <p>
+        Since there are fewer equations than unknowns, this system has a nontrivial solution. Among these, choose the solution that has the least number \(r\) of nonzero components; by reordering the \(\omega_i\) we may assume this solution has the form \((a_1, \ldots, a_r, 0, \ldots, 0)\) with \(a_i \neq 0\) for all \(i\). By scaling, we may assume \(a_r = 1\). Since \(\sigma_1 = \mathrm{id}_G\), the first equation says that
+      </p>
+      \[
+        a_1 \omega_1 + \cdots + a_{r-1} \omega_{r-1} + \omega_r = 0.
+      \]
+      <p>
+        If all the \(a_i\) belong to \(L^G\) then this equation of linear dependence would contradict the linear independence of \(\omega_1, \ldots, \omega_{n+1}\). Thus \(a_i \notin L^G\) for some \(i\). Reordering again, we may assume \(a_1 \notin L^G\).
+        Since \(a_r =1\), note in particular that this shows \(r > 1\).
+        We thus have
+      </p>
+      \[
+        \left\lbrace\begin{array}{cl}
+        \sigma_1(\omega_1) a_1 + \cdots + \sigma_1(\omega_{r-1}) a_{r-1} + \sigma_1(\omega_r)  & = 0 \\
+        \sigma_2(\omega_1) a_1 + \cdots + \sigma_2(\omega_{r-1}) a_{r-1} + \sigma_2(\omega_r)  & = 0 \\
+        \vdots \\
+        \sigma_n(\omega_1) a_1 + \cdots + \sigma_n(\omega_{r-1}) a_{r-1} + \sigma_n(\omega_r)  & = 0.
+        \end{array}\right.
+      \]
+      <p>
+        Now, since \(a_1 \notin L^G\), there is a \(k\) with \(\sigma_k(a_1) \neq a_1\). Apply \(\sigma_k\) to the \(j\)th row to obtain
+      </p>
+      \[
+        \sigma_k \sigma_j(\omega_1) \sigma_k(a_1) + \cdots + \sigma_k \sigma_j(\omega_{r-1})\sigma_k(a_{r-1})
+        + \sigma_k \sigma_j(\omega_{r})  = 0.
+      \]
+      <p>
+        Since \(G\) is a group, as \(j\) ranges over all possibilities, \(\sigma_k \sigma_j\) ranges over all
+        elements of \(G\). Thus
+      </p>
+      \[
+        \sigma_i(\omega_1) \sigma_k(a_1) + \cdots + \sigma_i(\omega_{r-1})\sigma_k(a_{r-1})
+        + \sigma_i(\omega_{r})  = 0 \quad \textrm{for all } 1 \leqslant i \leqslant n.
+      \]
+      <p>
+        For each \(i\), subtracting this equation from the \(i\)th equation in the previous system yields
+      </p>
+      \[
+        \sigma_i(\omega_1) (a_1 -  \sigma_k(a_1)) + \cdots + \sigma_i(\omega_{r-1})(a_{r-1} - \sigma_k(a_{r-1}) ) = 0 \quad \textrm{for all } 1 \leqslant i\leqslant n.
+      \]
+      <p>
+        Since \(a_1 - \sigma_k(a_1) \neq 0\), this is a nontrivial solution to original system of equations with fewer than \(r\) nonzero components, which is a contradiction.
+      </p>
+    </div>
+  </section>
+</section>
+
+
+<section id="sec-16-5" class="section" aria-labelledby="sec-16-5-title">
+  <h2 id="sec-16-5-heading">16.5 Solvable polynomials and solvable groups</h2>
+
+  <p>
+    The formulas for the roots of polynomials of degree \(2\), \(3\), and \(4\) have been known for hundreds of years, and they involve only sums, products, quotients, and square roots, cube roots, and fourth roots. It turns out that there are polynomials for which no such formula exists; in fact, there is no general formula for polynomials of degree \(5\).
+  </p>
+
+  <p>
+    The first ingredient we need is to better understand the process of taking roots. With that in mind, we will now discuss the Galois groups of the splitting fields of polynomials of the form \(x^n - a\). These calculations will be used to prove what Galois himself sort of proved: if the roots of a polynomial can be expressed using iterated radicals, then the Galois group of its splitting field must be a solvable group.
+  </p>
+
+  <section id="def-16-5-1" class="callout definition" aria-labelledby="def-16-5-1-title">
+    <h3 id="def-16-5-1-title">Definition 16.5.1</h3>
+    <div class="callout-body">
+      <p>
+        A <strong>primitive \(n\)th root of unity</strong> over an arbitrary field \(F\) is an element \(\zeta\) in the splitting field \(K\) of \(x^n - 1\) over \(F\) (or in the algebraic closure \(\overline{F}\)) such that \(\zeta\) generates the (multiplicative) subgroup of \(K\):
+      </p>
+      \[
+      \mu_n(K) := \{\alpha \in K \mid \alpha^n = 1\} \leq (K^\times, \cdot).
+      \]
+    </div>
+  </section>
+
+  <section id="exr-16-5-2" class="callout exercise" aria-labelledby="exr-16-5-2-title">
+    <h3 id="exr-16-5-2-title">Exercise 16.5.2</h3>
+    <div class="callout-body">
+      <p>
+        Show that for every field \(K\), every finite subgroup of \(K^\times\) is cyclic.
+      </p>
+    </div>
+  </section>
+
+  <section id="rmk-16-5-3" class="callout remark" aria-labelledby="rmk-16-5-3-title">
+    <h3 id="rmk-16-5-3-title">Remark 16.5.3</h3>
+    <div class="callout-body">
+      <p>
+        In particular, the subgroup \(\mu_n(K)\) of \(K^\times\) of roots of \(x^n-1\) is a cyclic group. As a consequence, a primitive \(n\)th root of unity always exists.
+      </p>
+    </div>
+  </section>
+
+  <section id="rmk-16-5-4" class="callout remark" aria-labelledby="rmk-16-5-4-title">
+    <h3 id="rmk-16-5-4-title">Remark 16.5.4</h3>
+    <div class="callout-body">
+      <p>
+        Let \(F\) be any field and let \(K\) be the splitting field of \(x^n - 1\) over \(F\). Note that if \(\zeta\) is a generator of \(\mu_n(K)\), then in particular \(F(\zeta) \subseteq K\) contains all the roots of \(x^n-1\), and thus \(F(\zeta)\) must be the splitting field of \(x^n-1\).
+      </p>
+
+      <p>
+        Note also that \(\mu_n(K)\) is a cyclic group of finite order, say \(\mu_n(K) \cong \mathbb{Z}/d\). Moreover, \(\zeta\) is a generator of \(\mu_n(K)\). By a result from Math 817, the complete list of primitive \(n\)th roots of unity is
+      </p>
+      \[
+      \zeta^i \quad \textrm{such that } \gcd(i,d) = 1.
+      \]
+    </div>
+  </section>
+
+  <section id="ex-16-5-5" class="callout example" aria-labelledby="ex-16-5-5-title">
+    <h3 id="ex-16-5-5-title">Example 16.5.5</h3>
+    <div class="callout-body">
+      <p>
+        When \(F = \mathbb{Q}\), the element \(e^{2 \pi i/n} \in \overline{\mathbb{Q}}\) is a primitive \(n\)th root of unity. Moreover, the primitive \(n\)th roots of unity over \(\mathbb{Q}\) are precisely the elements of the form \(e^{2 \pi i j/n}\) with for any \(j\) with \(\gcd(n, j) = 1\).
+      </p>
+    </div>
+  </section>
+
+  <section id="rmk-16-5-6" class="callout remark" aria-labelledby="rmk-16-5-6-title">
+    <h3 id="rmk-16-5-6-title">Remark 16.5.6</h3>
+    <div class="callout-body">
+      <p>
+        Note that if \(\mathrm{char}(F) \nmid n\), the polynomial \(x^n - 1 \in F[x]\) is separable, since its derivative is \(nx^{n-1} \neq 0\) and hence \(\gcd(nx^{n-1}, x^n - 1) = 1\). In this case, \(|\mu_n(K)|=n\) and so
+      </p>
+      \[
+      \mu_n(K) =\{1, \zeta, \zeta^2,\ldots, \zeta^{n-1}\}.
+      \]
+      <p>
+        However, if \(\mathrm{char}(F) \mid n\) then \(\mu_n(K)\) can have fewer than \(n\) elements. For example, if \(F\) is any field of characteristic \(2\), the polynomial \(x^2-1=(x-1)^2\) has a unique root over \(F\): the unique second root of unity is \(1\).
+      </p>
+    </div>
+  </section>
+</section>
+
+  <section id="thm-16-5-7" class="callout theorem" aria-labelledby="thm-16-5-7-title">
+    <h3 id="thm-16-5-7-title">Theorem 16.5.7</h3>
+    <div class="callout-body">
+      <p>
+        Let \(F\) be a field and \(n\) a positive integer with \(\mathrm{char}(F) \nmid n\), and let \(\zeta \in \overline{F}\) be a primitive \(n\)th root of unity. The extension \(F \subseteq F(\zeta)\) is Galois and \(\mathrm{Gal}(F(\zeta)/F)\) is isomorphic to a subgroup of \((\mathbb{Z}/n)^\times\). In particular, \(\mathrm{Gal}(F(\zeta)/F)\) is an abelian group.
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-thm-16-5-7" class="callout proof" aria-labelledby="proof-thm-16-5-7-title">
+    <h3 id="proof-thm-16-5-7-title">Proof of Theorem 16.5.7</h3>
+    <div class="callout-body">
+      <p>
+        By the above, \(F(\zeta)\) is the splitting field of \(x^n-1\) over \(F\). As observed above, the polynomial \(x^n - 1\) is separable, and thus \(F(\zeta)/F\) is Galois.
+      </p>
+
+      <p>
+        Given any \(\sigma \in \mathrm{Gal}(F(\zeta)/F)\), by \(\sigma(\zeta)\) is also an \(n\)th root of unity. One can check this explicitly by noting that
+      </p>
+      \[
+        \sigma(\zeta)^n = \sigma(\zeta^n) = \sigma(1) = 1.
+      \]
+      <p>
+        Moreover, we claim that \(\sigma(\zeta)\) must also be a primitive \(n\)th root of unity. Notice that since \(1, \zeta, \zeta^2, \ldots, \zeta^{n-1}\) are distinct, then the elements \(1, \sigma(\zeta), \sigma(\zeta)^2, \ldots, \sigma(\zeta)^{n-1}\) must also be disctinct, since \(\sigma(\zeta^l) = \sigma(\zeta)^l\) for all \(l\).
+      </p>
+
+      <p>
+        This proves that \(\sigma(\zeta) = \zeta^j\) for an integer \(j\) (unique modulo \(n\)) such that \(\gcd(j,n) = 1\).
+        Thus we have a well-defined function
+      </p>
+      \[
+        \begin{array}{rcl}
+        \Phi\!: \mathrm{Gal}(F(\zeta)/F) & \longrightarrow & (\mathbb{Z}/n)^{\times} \\
+        \sigma & \longmapsto & \Phi(\sigma) = j \quad \textrm{where } \sigma(\zeta) = \zeta^j.
+        \end{array}
+      \]
+      <p>
+        Given any other \(\tau \in \mathrm{Gal}(F(\zeta)/F)\), let \(\tau(\zeta) = \zeta^{i}\). Then
+      </p>
+      \[
+        (\tau \circ \sigma)(\zeta) = \tau(\zeta^j) = \tau(\zeta)^j = \zeta^{ij}.
+      \]
+      <p>
+        This proves that \(\Phi(\tau \circ \sigma) = \Phi(\tau) \cdot \Phi(\sigma)\), so \(\Phi\) is a group homomorphism.
+      </p>
+
+      <p>
+        If \(\Phi(\sigma) = 1\), then \(\sigma\) fixes \(\zeta\) and hence must be the trivial automorphism. This shows that \(\Phi\) is injective.
+      </p>
+    </div>
+  </section>
+
+  <p>
+    We now cover the Galois groups of polynomials of the form \(x^n - a\) in the case where the base field contains all the \(n\)th roots of unity.
+  </p>
+
+  <section id="thm-16-5-8" class="callout theorem" aria-labelledby="thm-16-5-8-title">
+    <h3 id="thm-16-5-8-title">Theorem 16.5.8</h3>
+    <div class="callout-body">
+      <p>
+        Let \(F\) be a field, \(a \in F\), and consider a positive integer \(n\) such that \(F\) contains a primitive \(n\)th root of unity and \(\mathrm{char}(F) \nmid n\). Let \(L\) be the splitting field of \(x^n - a\) over \(F\). Then \(L/F\) is Galois and \(\mathrm{Gal}(L/F)\) is isomorphic to a subgroup of \(\mathbb{Z}/n\), and hence it is cyclic.
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-thm-16-5-8" class="callout proof" aria-labelledby="proof-thm-16-5-8-title">
+    <h3 id="proof-thm-16-5-8-title">Proof of Theorem 16.5.8</h3>
+    <div class="callout-body">
+      <p>
+        If \(a = 0\), then \(L = F\) and \(\mathrm{Gal}(L/F)\) is the trivial group, so the result is trivially true. If \(a \neq 0\), then
+      </p>
+      \[
+        \gcd(x^n - a, nx^{n-1}) = 1,
+      \]
+      <p>
+        and hence \(x^n - a\) is separable. We conclude that \(F \subseteq L\) is Galois.
+      </p>
+
+      <p>
+        Let \(\alpha\) be a root of \(x^n - a\) in \(L\), and let \(\zeta \in F\) be a primitive \(n\)th root of unity. Then the roots of \(x^n - a\) are \(\zeta^j \alpha\) for \(j = 0, \ldots, n-1\), and \(L = F(\alpha)\).
+        Also, the elements \(\zeta^j \alpha\) for \(j = 0, \ldots, n-1\) are all distinct, and thus for each \(\sigma \in \mathrm{Gal}(L/F)\) we have \(\sigma(\alpha) = \zeta^j \alpha\) with \(j\) well-defined modulo \(n\). Define
+      </p>
+
+      \[
+        \begin{array}{rcl}
+        \Phi\!: \mathrm{Gal}(L/F) & \longrightarrow & \mathbb{Z}/n \\
+        \sigma & \longmapsto & \Phi(\sigma) = j \quad \textrm{where } \sigma(\alpha) = \zeta^j \alpha.
+        \end{array}
+      \]
+      <p>
+        Notice that such integer \(j\) is unique module \(n\). Let \(\tau(\alpha) = \zeta^{i} \alpha\). Note that \(\zeta \in F\) and hence that it is fixed by \(\tau\). Then
+      </p>
+      \[
+        (\tau \circ \sigma)(\alpha) = \tau(\zeta^j \alpha) = \zeta^j \zeta^{i} \alpha = \zeta^{j + i} \alpha,
+      \]
+      <p>
+        so \(\Psi\) is a group homomorphism. It is injective since \(\Psi(\sigma) = 0\) implies that \(\sigma(\alpha) = \zeta^0 \alpha = \alpha\), so \(\sigma\) fixes \(\alpha\) and hence all of \(L\).
+      </p>
+    </div>
+  </section>
+
+  <p>
+    We are interested in understanding when we can write a formula for all the roots of a given polynomial using only the usual elementary operations and radicals. We formalize this idea as follows:
+  </p>
+
+  <section id="def-16-5-9" class="callout definition" aria-labelledby="def-16-5-9-title">
+    <h3 id="def-16-5-9-title">Definition 16.5.9</h3>
+    <div class="callout-body">
+      <p>
+        For a field \(F\) of characteristic \(0\), we say \(f \in F[x]\) is <strong>solvable by radicals</strong> over \(F\) if there exists a finite chain of field extensions
+      </p>
+      \[
+        F = F_0 \subseteq F_1  \subseteq F_2 \subseteq  \cdots \subseteq F_m
+      \]
+      <p>
+        such that \(f\) splits completely in \(F_m\), and for each \(i\) the field extension \(F_i \subseteq F_{i+1}\) is the splitting field of an polynomial of the form \(x^{n_i} - a_i\) for some positive integer \(n_i\) and some element \(a_i \in F_i\).
+      </p>
+    </div>
+  </section>
+
+  <p>
+    Note that \(a_i = 1\) is allowed here, so that some of the steps may involve adjoining \(n\)th roots of unity. Roughly speaking, \(f\) is solvable by radicals if each of its roots can be written by an expression involving sums, products, and iterated \(n\)th roots of elements of \(F\). Granted, such an expression may perhaps be extremely complicated.
+  </p>
+
+  <section id="ex-16-5-10" class="callout example" aria-labelledby="ex-16-5-10-title">
+    <h3 id="ex-16-5-10-title">Example 16.5.10</h3>
+    <div class="callout-body">
+      <p>
+        The polynomial \(f = ax^2 + bx + c \in \mathbb{Q}[x]\) is solvable by radicals over \(\mathbb{Q}\) since its roots are
+      </p>
+      \[
+        \frac{-b \pm \sqrt{b^2-4ca}}{2a}.
+      \]
+      <p>
+        Explicitly, take \(F_1\) to be the splitting field of \(x^2-(b^2-4ac)\); indeed, \(f\) splits completely in \(F_1\).
+      </p>
+    </div>
+  </section>
+
+  <section id="ex-16-5-11" class="callout example" aria-labelledby="ex-16-5-11-title">
+    <h3 id="ex-16-5-11-title">Example 16.5.11</h3>
+    <div class="callout-body">
+      <p>
+        The polynomial \(f = x^4 + bx^2 + c \in \mathbb{Q}[x]\) is solvable by radicals over \(\mathbb{Q}\) since its roots are
+      </p>
+      \[
+        \pm \sqrt{\frac{-b \pm \sqrt{b^2 - 4c}}{2}}.
+      \]
+      <p>
+        Explicitly, we could set \(F_1\) to be the splitting field of \(x^2 - (b^2 - 4c)\) over \(\mathbb{Q}\), \(F_2\) to be the splitting field of \(x^2 - \left(\frac{-b + \sqrt{b^2 - 4c}}{2}\right)\) over \(F_1\), and \(F_3\) to be the splitting field of \(x^2 - \left(\frac{-b - \sqrt{b^2 - 4c}}{2}\right)\) over \(F_2\). It's not clear if \(F_3 = F_2\) or \(F_3 \subsetneq F_2\), but either way the tower given shows that \(f\) is solvable by radicals.
+      </p>
+    </div>
+  </section>
+  </section>
+
+  <section id="def-16-5-12" class="callout definition" aria-labelledby="def-16-5-12-title">
+    <h3 id="def-16-5-12-title">Definition 16.5.12</h3>
+    <div class="callout-body">
+      <p>
+        A group \(G\) is <strong>solvable</strong> if there is a sequence of subgroups
+      </p>
+      \[
+        \{e\}=N_0 \nsg N_1 \nsg \ldots \nsg N_k = G
+      \]
+      <p>
+        such that for all \(0 \leqslant i \leqslant k-1\) we have \(N_i \nsg N_{i+1} \leq G\) and the quotient groups \(N_{i+1}/N_i\) are abelian.
+      </p>
+    </div>
+  </section>
+
+  <section id="ex-16-5-13" class="callout example" aria-labelledby="ex-16-5-13-title">
+    <h3 id="ex-16-5-13-title">Example 16.5.13</h3>
+    <div class="callout-body">
+      <p>
+        One can show that every group \(G\) with \(|G| < 60\) is solvable.
+      </p>
+    </div>
+  </section>
+
+  <section id="rmk-16-5-14" class="callout remark" aria-labelledby="rmk-16-5-14-title">
+    <h3 id="rmk-16-5-14-title">Remark 16.5.14</h3>
+    <div class="callout-body">
+      <p>
+        Suppose that \(G\) is a finite simple group. Recall that this means that \(G\) has no nontrivial normal subgroups. Then the only sequence of normal subgroups of \(G\) is
+      </p>
+      \[
+        \{ e \} \nsg G,
+      \]
+      <p>
+        and thus \(G\) is solvable if and only if \(G\) is abelian. But the only simple abelian groups are \(\mathbb{Z}/(p)\) for \(p\) a prime, so \(G \cong \mathbb{Z}/(p)\) for some prime \(p\).
+      </p>
+    </div>
+  </section>
+
+  <section id="ex-16-5-15" class="callout example" aria-labelledby="ex-16-5-15-title">
+    <h3 id="ex-16-5-15-title">Example 16.5.15</h3>
+    <div class="callout-body">
+      <p>
+        The groups \(A_5\) and \(S_5\) are not solvable. To see why, recall that \(A_5\) is a finite simple group and it is not abelian, and thus we conclude that \(A_5\) is not solvable. As for \(S_5\), its only nontrivial normal subgroup is \(A_5\), but both \(A_5\) and \(S_5\) are not abelian, so \(S_5\) is not solvable.
+      </p>
+    </div>
+  </section>
+
+  <section id="ex-16-5-16" class="callout example" aria-labelledby="ex-16-5-16-title">
+    <h3 id="ex-16-5-16-title">Example 16.5.16</h3>
+    <div class="callout-body">
+      <p>
+        We claim that the group \(S_4\) is solvable. To see that, consider the subgroup
+      </p>
+      \[
+        V=\{e,(12)(34),(14)(23),(13)(24)\}
+      \]
+      <p>
+        and the following sequence of subgroups:
+      </p>
+      \[
+        \{e\}\nsg V\nsg A_4\nsg S_4.
+      \]
+      <p>
+        Since \(V\) has order \(4\) and any group of order \(4\) is abelian, then \(V\) is abelian. In fact, one can show that \(V \cong \mathbb{Z}/2 \times \mathbb{Z}/2\). Moreover, the quotients \(S_4/A_4\) and \(A_4/V\) have order 2, and thus are abelian.
+      </p>
+    </div>
+  </section>
+
+  <p>
+    It turns out that there is a close relationship between solvable groups and solvable polynomials. In what follows, \(\mathrm{char}(F) = 0\) is not a necessary assumption, but we included it to make both the statement and the proof simpler.
+  </p>
+
+  <section id="thm-16-5-17" class="callout theorem" aria-labelledby="thm-16-5-17-title">
+    <h3 id="thm-16-5-17-title">Theorem 16.5.17</h3>
+    <div class="callout-body">
+      <p>
+        Assume \(F\) is a field of characteristic \(0\). If \(f \in F[x]\) is solvable by radicals, then the Galois group of the splitting field of \(f \in F[x]\) is a solvable group.
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-thm-16-5-17" class="callout proof" aria-labelledby="proof-thm-16-5-17-title">
+    <h3 id="proof-thm-16-5-17-title">Proof (Sketch of proof)</h3>
+    <div class="callout-body">
+      <p>
+        For a suitable \(n\), we may assume there is a tower
+      </p>
+      \[
+        F = F_0 \subseteq F_1 \subseteq \cdots \subseteq F_m
+      \]
+      <p>
+        such that
+      </p>
+      <ul>
+        <li>
+          <p>
+            The splitting field \(L\) of \(f\) satisfies \(L \subseteq F_m\).
+          </p>
+        </li>
+        <li>
+          <p>
+            The splitting field of \(x^n -1\) over \(F\) is \(F_1\).
+          </p>
+        </li>
+        <li>
+          <p>
+            For each \(i \geqslant 1\), \(F_{i+1}\) is the splitting field of \(x^{d_i} - a_i \in F_i[x]\), where \(a_i \in F_i\) and \(d_i \mid n\).
+          </p>
+        </li>
+      </ul>
+
+      <p>
+        Note that \(d_i \mid n\) means that \(F_i\) contains all the \(d_i\)th roots of \(1\), and thus applies to the extension \(F_{i+1}/F_i\) for each \(i \geqslant 1\).
+      </p>
+
+      <p>
+        It turns out that there is an extension \(E\) such that
+      </p>
+      \[
+        F = F_0 \subseteq F_1 \subseteq \cdots \subseteq F_m \subseteq E
+      \]
+      <p>
+        and \(E/F\) is Galois with a chain of normal subgroup inclusions
+      </p>
+      \[
+        \mathrm{Gal}(E/F_m) \nsg \mathrm{Gal}(E/F_{m-1}) \nsg \mathrm{Gal}(E/F_{m-2}) \nsg \cdots \nsg \mathrm{Gal}(E/F_{1}) \nsg \mathrm{Gal}(E/F).
+      \]
+      <p>
+        The key point is that the groups
+      </p>
+      \[
+        \mathrm{Gal}(F_{i+1}/F_i)\cong\mathrm{Gal}(E/F_i)/\mathrm{Gal}(E/F_{i+1}) \text{ for } i = 0, \dots, m-1
+      \]
+      <p>
+        are all abelian. These properties imply that \(\mathrm{Gal}(E/F)\) is a solvable group, and in turn this implies that \(\mathrm{Gal}(L/F)\) is solvable.
+      </p>
+    </div>
+  </section>
+
+  <p>
+    In characteristic \(0\), the converse is also true: if the Galois group of \(f\) is solvable, then \(f\) is solvable by radicals.
+  </p>
+
+  <p>
+    We can now prove a theorem that has fascinated mathematicians and nonmathematicians alike for many centuries: the fact that the general quintic cannot be solved. More precisely, there is no formula involving  only radicals, sums, and products for the zeroes of a general polynomial of degree \(5\) with rational coefficients. The key point turns out to lie in group theory: \(S_5\) is not a solvable group, and there are polynomials \(f \in \mathbb{Q}[x]\) of degree \(5\) such that the Galois group of the splitting field of \(f\) over \(\mathbb{Q}\) is \(S_5\).
+  </p>
+
+  <section id="thm-16-5-18" class="callout theorem" aria-labelledby="thm-16-5-18-title">
+    <h3 id="thm-16-5-18-title">Theorem 16.5.18</h3>
+    <div class="callout-body">
+      <p>
+        If \(f \in \mathbb{Q}[x]\) is any degree \(5\) irreducible polynomial with exactly \(3\) real roots, then \(f\) is not solvable by radicals.
+      </p>
+    </div>
+  </section>
+
+  <section id="proof-thm-16-5-18" class="callout proof" aria-labelledby="proof-thm-16-5-18-title">
+    <h3 id="proof-thm-16-5-18-title">Proof</h3>
+    <div class="callout-body">
+      <p>
+        Let \(L\) be the splitting field of \(f\). It suffices to prove \(\mathrm{Gal}(L/\mathbb{Q})\) is not a solvable group. In fact, we show it is isomorphic to \(S_5\).
+      </p>
+
+      <p>
+        Let \(\alpha_1, \alpha_2, \alpha_3\) be the three real roots of \(f\) and let \(\alpha_4, \alpha_5\) the two complex ones. Note that \(\overline{\alpha_4} = \alpha_5\). Using this ordering of the roots, we identify \(\mathrm{Gal}(L/\mathbb{Q})\) as a subgroup of \(S_5\), and will identify an element of \(\mathrm{Gal}(L/\mathbb{Q})\) sending \(\alpha_i\) to \(\alpha_j\) with a permutation sending \(i\) to \(j\).
+      </p>
+
+      <p>
+        Let \(\sigma\) denote complex conjugation. Note that \(\sigma \in \mathrm{Gal}(L/\mathbb{Q})\), since \(\sigma\) preserves \(\mathbb{Q}\) and \(\alpha_1\), \(\alpha_2\), and \(\alpha_3\), and it switches \(\alpha_4\) and \(\alpha_5\). Thus this element of \(\mathrm{Gal}(L/\mathbb{Q})\) corresponds to the transposition \((4 \, 5) \in S_5\).
+      </p>
+
+      <p>
+        Since \([\mathbb{Q}(\alpha_1): \mathbb{Q}] = 5\), by the Degree Formula, \(5 \mid [L : \mathbb{Q}]\). But the extension is Galois, so \(5 \mid |\mathrm{Gal}(L/\mathbb{Q})|\). Since \(5\) is prime, there is an element \(\tau \in \mathrm{Gal}(L/K)\) of order \(5\) by Cauchy's Theorem. Such an element is necessarily a \(5\)-cycle. The result follows since any \(5\)-cycle and any transposition necessarily generate all of \(S_5\) (exercise).
+      </p>
+
+      <p>
+        Finally, we claim that \(S_5\) is not solvable. First, \(S_5\) is not abelian, so the series
+      </p>
+      \[
+        H_0=\{e\}\leq S_5
+      \]
+      <p>
+        does not work since the unique quotient is not abelian. Moreover, as proven in Math 817, the only nontrivial normal subgroup of \(S_5\) is \(A_5\) and \(A_5\) has no nontrivial normal subgroups. Hence the only possible composition series for \(S_5\) would be
+      </p>
+      \[
+        H_0=\{e\}\leq A_5\leq S_5,
+      \]
+      <p>
+        but in this series the quotient \(A_5/\{e\}\cong A_5\) is not abelian.
+      </p>
+    </div>
+  </section>
+
+  <section id="ex-16-5-19" class="callout example" aria-labelledby="ex-16-5-19-title">
+    <h3 id="ex-16-5-19-title">Example 16.5.19</h3>
+    <div class="callout-body">
+      <p>
+        The polynomial \(f(x) = x^5 - 4x + 2\) is not solvable by radicals over \(\mathbb{Q}\). One can show it is irreducible in \(\mathbb{Q}[x]\) by the usual combination of Eisenstein's Criterion and Gauss' Lemma. Moreover, we claim that this polynomial has exactly \(3\) distinct real roots. Unfortunately, we cannot show this directly by <em>presenting</em> such roots, exactly because \(f\) is <em>not</em> solvable by radicals. One could check this informally by graphing \(f\) and checking that indeed it crosses the \(x\)-axis three times, and noting that all irreducible polynomials over a field of characteristic zero (thus perfect) are separable. If we wanted to check this more carefully, we could use some elementary calculus: \(f'(x) = 5x^4 - 4\) has precisely two roots and changes signs at these roots. It follows that \(f\) must have exactly \(3\) real roots. Thus, \(f\) is not solvable by radicals.
+      </p>
+    </div>
+  </section>
+
 
 </main>
 <footer aria-label="Course footer" role="contentinfo">
