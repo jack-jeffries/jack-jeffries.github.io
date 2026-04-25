@@ -63,7 +63,7 @@
 
 
 \begin{document}
-\showsol{0}
+\showsol{1}
 	
 	\thispagestyle{empty}
 	
@@ -77,17 +77,33 @@
 
 	
 	\begin{enumerate}
-	\itemA Let $F$ be a field of characteristic $\neq 2$. Show that\footnote{Hint: Complete the square!} any quadratic polynomial \[f(x) = ax^2 + bx + c \in F[x]\] is solvable by radicals.
+	\itemA Let $F$ be a field of characteristic $\neq 2$. Show that\footnote{Hint: Complete the square!} any quadratic polynomial \[f(x) = ax^2 + bx + c \in F[x]\] with $a\neq 0$ is solvable by radicals.
 	
-	\
+	\solution{We can rewrite as $x^2 + \frac{b}{a} x + \frac{c}{a} = 0$. Then this is the same as $(x+ \frac{b}{2a})^2 +  
+	 \frac{c}{a} -  \frac{b^2}{4a^2} = 0$. Then $x+\frac{b}{2a} = \pm \frac{\sqrt{ b^2 - 4ac}}{2a}$ and $x = \frac{-b}{2a} \pm \frac{\sqrt{ b^2 - 4ac}}{2a}$.}
 	
 	\itemA Solving the cubic: Let $f(x) = x^3 - 3x^2 + 12 x - 7 \in \Q[x]$.
 	\begin{enumerate}
-	\itema Find a $c\in \Q$ such that, setting $y=x+c$, we have $f(y) = y^3 + p y + q$ with no $y^2$ term.
+	\itema Find a $c\in \Q$ such that, setting $x=y+c$, we have $f(y) = y^3 + p y + q$ with no $y^2$ term.
 	\itema Make the \emph{Vieta substitution}\, $y=z-\frac{p}{3z}$, and rewrite the result as a quadratic in $z^3$.
 	\itema Without forgetting that any nonzero complex number has three cube roots, solve for $z$, and use this to solve for $x$.
 	\itema Discuss: what would you do with a general cubic? Explain why any cubic is solvable by radicals (over $\Q$).
 	\end{enumerate}
+	
+	\solution{ 
+		\begin{enumerate}
+	\itema Take $c=1$ to get $f(x) = (y+1)^3 - 3 (y+1)^2 + 12 (y+1) - 7 = y^3 + 9y +3$.
+	\itema We have $f=(z-\frac{3}{z})^3 + 9(z-\frac{3}{z}) + 3(z-\frac{3}{z}) = z^3 + 3 - \frac{27}{z^3}$. Clearing denominators gives $(z^3)^2 + 3(z^3) - 27 = 0$.
+	\itema We have $z^3 = \frac{-3 \pm \sqrt{9-108}}{2} = \frac{3}{2}(-1\pm i \sqrt{11})$. Then the solutions are
+	\[ z_j= \omega^j \sqrt[3]{ \frac{3}{2}(-1 \pm i \sqrt{11})}, \quad j=0,1,2\]
+	and both choices of $\pm$, and then
+	\[ x= 1 + z_j - 9/z_j.\]
+	\itema It is the same process for any cubic, so this gives a formula in terms of radicals for the roots.
+	\end{enumerate}
+	
+	
+	}
+	
 	\end{enumerate}
 	
 	\
@@ -122,9 +138,19 @@
 		\end{enumerate}
 				\end{enumerate}
 
+\solution{
 
+\begin{enumerate}\setcounter{enumii}{0}
+		\itema Using Gauss and Eisenstein with $p=2$, we see that $f$ is irreducible. Since $\Q$ is perfect, $f$ is separable, so has $5$ distinct complex roots. We have $f'(x) = 5x^4 - 4$, which is positive on $(-\infty, -\sqrt[4]{4/5}) \cup (\sqrt[4]{4/5},\infty)$  and negative in between, so $f$ has one local max and one local min, so there are at most $3$ real roots. There is a positive value at $x=-1$, a negative value at $x=0$. Using the end behavior and the intermediate value theorem, there are at least three real roots, so exactly three. 
+		\itema Recall that the action of the Galois group on the five roots of $f$ is faithful and transitive, so we can identify the Galois group with a subgroup of $\mathcal{S}_5$. Note that $5$ divides the degree of the splitting field. By Cauchy, there is an element of order $5$ in the Galois group. The only elements of order $5$ in $\mathcal{S}_5$ are $5$-cycles, so the Galois group has a $5$-cycle. Complex conjugation exchanges the two nonreal roots of $f$, so it is a transposition. We have shown earlier that a transposition and a $5$-cycle generate all of $\mathcal{S}_5$. Thus, the Galois group is isomorphic to $\mathcal{S}_5$.
+		\itema Suppose that $f$ can be solved by radicals. By the Theorem, $\mathcal{S}_5$ must then be solvable. By the Lemma, a subgroup of a solvable group is solvable, so $\mathcal{A}_5$ is also solvable. But $\mathcal{A}_5$ is simple, and using the definition it is clear that $\mathcal{A}_5$ then cannot be solvable. This is a contradiction.
+		\end{enumerate}
+
+
+
+}
 	
-	\newpage
+	\nosolpage
 	
 	\begin{framed}
 	\textsc{Proposition:} Let $F$ be a field of characteristic zero.
@@ -143,22 +169,72 @@ such that $\beta\in F_n$.
 \itema Suppose that $\beta_1,\dots,\beta_s$ can be obtained from elements of $F$ by $+$, $-$, $\times$, $\div$, and taking $n$th roots. Explain why there exists a radical tower
 $F=F_0 \subseteq F_1 \subseteq \cdots \subseteq F_n$
 such that $\beta_1,\dots,\beta_s \in F_n$.
+\item[]\textsc{Fact:} In the setting of the previous part, one can also arrange that \emph{$F_n/F$ is Galois}.
 \itema Let $F=F_0 \subseteq F_1 \subseteq \cdots \subseteq F_n$
-be a radical tower. Show that $F_n/F$ is Galois.
-\itema Let $F=F_0 \subseteq F_1 \subseteq \cdots \subseteq F_n$
-be a radical tower. Show that $\mathrm{Gal}(F_n/F)$ is solvable.
+be a radical tower with $F_n/F$ Galois. Show that $\mathrm{Gal}(F_n/F)$ is solvable.
 \itema Complete the proof of the Theorem.
 		\end{enumerate}
 	
 				
-				\
-				
-			\itemA Proof of Proposition:
-					\begin{enumerate}
-\itema
-
-
+\solution{
+		\begin{enumerate}
+\itema Consider the sequence of operations used to obtain $\beta$. Until the first root is extracted, we have an element of $F_0$; extracting a root of $a_0\in F_0$ gives an element $\alpha_0$ in the splitting field $F_1$ of $x^{m_0} - a_0$ over $F_0$. Continuing like so, we get the statement.
+\itema By part (a), we can construct a radical tower with $\beta_1\in F_{n_1}$. We can then build a radical tower over $F_{n_1}$ up to $F_{n_2}$ containing $\beta_2$; note that a composition of radical towers is a radical tower. Continuing like so, we get the statement.
+\itema Consider the chain of subgroups $H_i$ corresponding to the fields $F_i$. We have $H_{i+1} = \Gal(F_n / F_{i+1}) \subseteq \Gal(F_n / F_{i})$. Since $F_{i+1}$ is a splitting field of a separable polynomial over $F_i$, it is a Galois extension, so by the Fundamental Theorem corresponds to a normal subgroup. Moreover, the quotient group is $\Gal(F_{i+1}/F_i)$. We can break this extension down into two pieces, by adjoining a roots of unity and then roots of $a_i$. This again gives a factorization of the Galois group into a normal subgroup and a quotient. By the Proposition, both of these are abelian. This shows that $\Gal(F_n/F)$ is solvable.
+\itema Suppose that $f$ is solvable by radicals. Then by part (b), we can embed a splitting field $L$ of $f$ into some $F_n$ at the top of a radical tower, and we can also assume that $F_n/F$ is Galois by the Fact. By part (c), $\Gal(F_n/F)$ is solvable. Since $F\subseteq L \subseteq F_n$ and $L/F$ is Galois, then $\Gal(L/F)$ is a quotient of $\Gal(F_n/F)$ by the Fundamental Theorem. Thus, by the Lemma, $\Gal(L/F)$ is solvable. This completes the proof.
 		\end{enumerate}
+		}
+		
+			
+			\itemA Proof of Proposition (1):
+					\begin{enumerate}
+\itema Let $F$ be a field of characteristic zero, $m\geq 1$, and $K$ be a splitting field of $x^m-1$. Show that\footnote{Hint: Use a homework problem.} the set $\mu_m \subseteq K$ of solutions of $x^m-1$ in $K$ is a cyclic subgroup of $K^\times$.
+\itema Let $\zeta$ be a generator of $\mu_m$. Show that $K=F(\zeta)$.
+\itema Show that the map 
+\[ \begin{array}{ccc}\mathrm{Gal}(K/F) &\longrightarrow& (\Z/m)^\times \\
+\sigma & \mapsto & [i]_m \ \ \ \text{s.t.} \ \sigma(\zeta) = \zeta^i\end{array}\]
+is an injective group homomorphism and deduce part (1) of the Proposition.
+\end{enumerate}
+
+
+\solution{
+		\begin{enumerate}
+
+\itema Recall that we showed that any finite subgroup of the multiplicative group of a field is cyclic. Now, the product of two roots of $x^m-1$ is easily checked to be a root of $x^m-1$, so $\mu_m$ is a subgroup of $K^\times$; moreover there are finitely many. By the exercise, this group is cyclic.
+\itema We can write the roots of $x^m-1$ as $1,\zeta, \dots,\zeta^{m-1}$. Then $K= F(1,\zeta,\dots,\zeta^{m-1}) = F(\zeta)$.
+\itema First, we note that $\sigma(\zeta)$ must be a root of $x^m-1$, so must be $\zeta^i$ for some $i$. Note that since $\zeta^m=1$, we can think of the power of $\zeta$ as an element of $\Z/m$. Let $\sigma,\tau\in \Gal(K/F)$. Set $\sigma(\zeta) = \zeta^i$ and $\tau(\zeta)=\zeta^j$. Then $\sigma \tau(\zeta) = \sigma(\zeta^j) = \sigma(\zeta)^j = (\zeta^i)^j = \zeta^{ij}$. It follows that if $\sigma$ is invertible, then $[i]_m \in (\Z/m)^\times$ and the map given above is a group homomorphism.
+Furthermore, since $\zeta$ generates $K$ over $F$, then  $\sigma$ is determined by the image of $\zeta$; hence the map described is injective.
+
+To deduce the Proposition, we see that $\Gal(K/F)$ is isomorphic to a subgroup of $(\Z/m)^\times$. Since $(\Z/m)^\times$ is abelian, so is $\Gal(K/F)$.
+\end{enumerate}
+}
+
+				
+							\itemA Proof of Proposition (2):
+					\begin{enumerate}
+\itema Let $F$ be a field of characteristic zero containing $m$ distinct $m$th roots of $1$, let $a\in F$, and let $K$ be a splitting field for $x^m-a$. Let $\alpha$ be any root of $x^m-a$. Show that $K = F(\alpha)$.
+\itema Let $\zeta$ be a generator for $\mu_m$ as in the previous problem. Show that the map
+\[ \begin{array}{ccc}\mathrm{Gal}(K/F) &\longrightarrow& \Z/m \\
+\sigma & \mapsto & [i]_m \ \ \ \text{s.t.} \ \sigma(\alpha) = \zeta^i\alpha \end{array}\]
+is an injective group homomorphism and deduce part (2) of the Proposition.
+\end{enumerate}
+
+
+\solution{
+\begin{enumerate}
+\itema Note that for $i=0,\dots,m-1$, we have $(\zeta^i \alpha)^m = \zeta^{im} \alpha_m = a$. Thus, any such $\zeta^i \alpha$  is a root of $x^m-a$. Since $x^m-a$ has at most $m$ roots, this must be every such root. Thus $K=F(\alpha,\zeta \alpha,\dots,\zeta^{m-1}\alpha) = F(\alpha)$.
+\itema First, we note that $\sigma(\alpha)$ must be a root of $x^m-a$, so must be $\zeta^i \alpha$ for some $i=0,\dots,m-1$. Furthermore, since $\alpha$ generates $K$ over $F$, then  $\sigma$ is determined by the image of $\alpha$; hence the map described is injective. To check that it is a group homomorphism, let $\sigma,\tau\in \Gal(K/F)$. Suppose that $\sigma(\alpha)=\zeta^i \alpha$ and $\tau(\alpha) = \zeta^j \alpha$. Then $\sigma \tau (\alpha) = \sigma (\zeta^j \alpha) = \zeta^j \sigma(\alpha) = \zeta^j \zeta^i\alpha = \zeta^{i+j} \alpha$, since $\sigma$ fixes $F$ and $\zeta^j\in F$. Thus $\sigma\tau$ maps to $[i+j]_m$.
+
+To deduce the Proposition, we know that $\mathrm{Gal}(K/F) $ is isomorphic to a subgroup of the cyclic group $\Z/m$, and hence is cyclic.
+\end{enumerate}
+}
+
+
+			
+
+\end{enumerate}
+
+
 	
-						\end{enumerate}	
+							
 \end{document}
