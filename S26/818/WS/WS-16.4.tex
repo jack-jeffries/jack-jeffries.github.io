@@ -63,7 +63,7 @@
 
 
 \begin{document}
-\showsol{1}
+\showsol{0}
 	
 	\thispagestyle{empty}
 	
@@ -120,8 +120,11 @@
 	\
 	
 	
-	\textsc{Lemma:} Let $G$ be a finite group. If $N \trianglelefteq G$, then $G$ is solvable if and only if $N$ and $G/N$ are both solvable.
-
+	\textsc{Lemma:} Let $G$ be a finite group. 
+	\begin{enumerate}
+	\item If $N \trianglelefteq G$, then $G$ is solvable if and only if $N$ and $G/N$ are both solvable.
+	\item If $\{e\} = H_0 \trianglelefteq H_1  \trianglelefteq H_2   \trianglelefteq \cdots  \trianglelefteq H_n = G$ and each consecutive quotient $H_{i+1}/H_i$ is \emph{solvable}, then $G$ is solvable.
+	\end{enumerate}
 		\end{framed}
 		\footnotetext[2]{Recall that we have defined the Galois group of a separable polynomial to be the Galois group of its splitting field.} 
 				\footnotetext[3]{The converse is also true, but we won't prove it. Moreover, a version of the theorem is true in arbitrary characteristic.} 
@@ -132,7 +135,7 @@
 		
 		\itemA Not solving the quintic: Let $f(x) = x^5 - 4x -2 \in \Q[x]$.
 		\begin{enumerate}
-		\itema Show that $f$ is irreducible and has five distinct complex roots, of which three are real\footnote{Hint: Calculus. You might find $x=-1$ and $x=0$ to be convenient test values.}.
+		\itema Show that $f$ is irreducible and has five distinct complex roots, of which three are real\footnote{Hint: Calculus.}.
 		\itema Show that\footnote{Hint: Use Cauchy's Theorem and complex conjugation.} the Galois group of $f$ is isomorphic to $\mathcal{S}_5$.
 		\itema Use the Theorem to show that $f$ cannot be solved by radicals.
 		\end{enumerate}
@@ -161,7 +164,7 @@
 	\end{framed}
 	
 	\begin{enumerate}\setcounter{enumi}{3}
-		\itemA Proof of Proposition $\Longrightarrow$ Theorem: Say that a sequence of fields 
+		\itemA Proof of Proposition $\Longrightarrow$ Theorem: Let $F$ be a field of characteristic zero. Say that a sequence of fields 
 \[F=F_0 \subseteq F_1 \subseteq \cdots \subseteq F_n\] is a \textbf{radical tower} if for all $i=0,\dots, n-1$,  $F_{i+1}$ is the splitting field of $x^{m_i}-a_i \in F_i[x]$ for some $m_i \geq 2$ and $a_i \in F_i$.
 		\begin{enumerate}
 		\itema Suppose that $\beta$ can be obtained from elements of $F$ by $+$, $-$, $\times$, $\div$, and taking $n$th roots. Explain why there exists a radical tower $F=F_0 \subseteq F_1 \subseteq \cdots \subseteq F_n$
@@ -170,6 +173,7 @@ such that $\beta\in F_n$.
 $F=F_0 \subseteq F_1 \subseteq \cdots \subseteq F_n$
 such that $\beta_1,\dots,\beta_s \in F_n$.
 \item[]\textsc{Fact:} In the setting of the previous part, one can also arrange that \emph{$F_n/F$ is Galois}.
+\itema Suppose that $K/F$ is the splitting field of $x^m-a$ for some $m\geq 2$ and $a\in F$. Show that $\Gal(K/F)$ is solvable.
 \itema Let $F=F_0 \subseteq F_1 \subseteq \cdots \subseteq F_n$
 be a radical tower with $F_n/F$ Galois. Show that $\mathrm{Gal}(F_n/F)$ is solvable.
 \itema Complete the proof of the Theorem.
