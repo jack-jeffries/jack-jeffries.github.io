@@ -1,0 +1,209 @@
+\documentclass[12pt]{amsart}
+
+
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,multicol,graphicx,framed,ifthen,color,xcolor,stmaryrd,enumitem,colonequals,hyperref,lettrine}
+\usepackage[symbol]{footmisc}
+\usepackage{kpfonts,baskervald}
+\definecolor{chianti}{rgb}{0.6,0,0}
+\definecolor{meretale}{rgb}{0,0,.6}
+\definecolor{leaf}{rgb}{0,.35,0}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\e}{\varepsilon}
+\newcommand{\inv}{^{-1}}
+\newcommand{\dabs}[1]{\left| #1 \right|}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\solution}[1]{\ifthenelse {\equal{\displaysol}{1}} {\begin{framed}{\color{meretale}\noindent #1}\end{framed}} { \ }}
+\newcommand{\showsol}[1]{\def\displaysol{#1}}
+\newcommand{\rsa}{\rightsquigarrow}
+\newcommand\itemA{\stepcounter{enumi}\item[{\bf{(\theenumi)}}]}
+\newcommand\itemB{\stepcounter{enumi}\item[(\theenumi)]}
+\newcommand\itemC{\stepcounter{enumi}\item[{\it{(\theenumi)}}]}
+\newcommand\itema{\stepcounter{enumii}\item[{\bf{(\theenumii)}}]}
+\newcommand\itemb{\stepcounter{enumii}\item[(\theenumii)]}
+\newcommand\itemc{\stepcounter{enumii}\item[{\it{(\theenumii)}}]}
+\newcommand\itemai{\stepcounter{enumiii}\item[{\bf{(\theenumiii)}}]}
+\newcommand\itembi{\stepcounter{enumiii}\item[(\theenumiii)]}
+\newcommand\itemci{\stepcounter{enumiii}\item[{\it{(\theenumiii)}}]}
+\newcommand\ceq{\colonequals}
+
+\DeclareMathOperator{\res}{res}
+%\setlength\parindent{0pt}
+%\usepackage{times}
+
+%\addtolength{\textwidth}{100pt}
+%\addtolength{\evensidemargin}{-45pt}
+%\addtolength{\oddsidemargin}{-60pt}
+
+\pagestyle{empty}
+%\begin{document}\begin{itemize}
+
+%\thispagestyle{empty}
+
+
+
+
+\begin{document}
+\showsol{0}
+	
+	\thispagestyle{empty}
+	
+	\section*{{\large Math 221 Fall 2026: Differential Equations}\\ MW 8:30am--9:20am, Bessey Hall 117}
+	
+	\
+	
+	\begin{center}{ \textit{\textbf{Welcome to the course!}}}\end{center}
+	
+	\
+	
+		\subsection*{Course Description} In this class, we will discuss some basic terminology and techniques for solving differential equations. In particular, we will discuss first and second-order linear equations, separable equations, Laplace transforms, linear systems, and some applications. This is a fundamental topic, with connections to essentially every branch of science and engineering.
+
+
+	
+
+	\subsection*{Instructor}  Jack Jeffries
+	
+
+
+	\subsection*{Office}  325 Avery Hall
+
+	\subsection*{Email}   jack.jeffries@unl.edu
+	
+	\subsection*{Course Website} \href{https://jack-jeffries.github.io/F26/221.html}{https://jack-jeffries.github.io/F26/221.html}
+
+	\subsection*{Office Hours}  My office hours for the class are:
+\begin{itemize}
+\item TBA 
+\end{itemize} 
+
+	\subsection*{What are office hours?} 
+Office hours are an excellent opportunity to discuss any questions you may have, including homework problems. 
+During the scheduled office hours, I'll be in my office and available to you, so you can drop by and you {do not need an appointment}. If the scheduled times are not compatible with your schedule, please email me to schedule an alternative time. 
+
+
+	\subsection*{Textbook} 
+	
+	TBA
+	
+\subsection*{Course expectations} 
+This is an { in-person} class.  In this course, class time will involve a mix of lecture and groupwork. 
+Please {do not} attend class if you are feeling ill or have tested positive for covid-19. Otherwise, {attendance is expected}. Let me know if you have to miss class, and we can make a plan for you to stay up to date on the material.
+
+
+
+\subsection*{Assessments}
+This class will have regular assignments on Webwork, in-class quizzes and exams, and points for attendance/participation in recitation and lecture.
+
+
+\subsection*{AI statement} 
+I am fully aware that AI tools can solve a typical homework problem in this course, and that using AI will likely play a role in your eventual profession. The purpose of this class is to train you to build a general proficiency and sense for the key notions and techniques of differential equations. Accordingly, using AI tools to solve the Webwork is {not} allowed, and the use of any AI tools on quizzes and exams is strictly prohibited and constitutes a violation of the academic integrity policy. However, you are encouraged to use AI and other technological tools to generate more practice problems and examples, and to explore connections between the content of the class and other disciplines. I am happy to discuss any doubts you have about which uses of AI enhance your learning and which uses stunt your learning. 
+
+\subsection*{Calculators and communication devices} No calculator having a built-in computer algebra system (CAS) will be permitted during any of the exams or quizzes. No phones or any devices capable of wireless communication including smart-watches are permitted either. As a courtesy to others please silence your phones during lecture and recitation.
+
+\subsection*{Midterm and final exam} There will be two {midterms} and one {final exam}, all in-person. The midterms will take place during class, and the tentative midterm days are 
+\begin{itemize}
+\item September 30 (Wednesday)
+\item November 11 (Wedneday)
+
+\end{itemize}
+%\noindent
+The final exam will be 
+{\bf Monday, December~14} from \textbf{7:30am} to \textbf{9:30am} in our usual classroom.
+
+\subsection*{Other important dates} \begin{itemize}
+\item September 4 (Friday):  Last day to file a drop and remove a course from your record.
+\item October 16 (Friday):  Last day to change your grade option to or from ``Pass/No Pass.''
+\item November 13 (Friday):  Last day to drop this course and receive a grade of W. \\(No permission required.) After this date you cannot drop.
+\end{itemize} 
+
+\subsection*{Final grade} Your final grade will be calculated as follows:
+
+\begin{itemize}
+
+	\item Webwork: 10\%
+	\item Quizzes: 20\%
+	\item Midterms: 15\% each
+	\item Final exam: 30\%
+		\item Participation: 10\%
+\end{itemize}
+
+\noindent
+Your final grade will be determined according to the following scale:
+
+\begin{center}
+\hspace{2em}
+\begin{minipage}{0.75\textwidth}
+	\begin{tabular}{|c||c|c|c|c|c|c|c|c|c|c|}
+	\hline
+	Letter grade & A & A- & B+ & B & B- & C+ & C & D \\
+	\hline
+	Cutoff & 93 & 90 & 87 & 83 & 80 & 75 & 70 & 60 \\
+	\hline
+\end{tabular}
+\end{minipage}
+\end{center}
+
+\noindent
+If deemed necessary, minor adjustments to this scale will be made, but only in favor of the students. A grade of A+ may be assigned in the case of truly exceptional work.
+
+\subsection*{Departmental grading appeals policy} 
+The Department of Mathematics does not tolerate discrimination or harassment on the basis of race, gender, religion, or sexual orientation. If you believe you have been subject to such discrimination or harassment, in this or any other math course, please contact the department. If, for this or any other reason, you believe your grade was assigned incorrectly or capriciously, then appeals may be made to (in order) the instructor, the vice chair, the department grading appeals committee, the college grading appeals committee, and the university grading appeals committee.
+
+
+\subsection*{Continuity plans} 
+If in-person classes are canceled, you will be notified of the instructional continuity plan for this class by email.
+
+\subsection*{Followup assessment} If the instructor has any reason to believe that a student may have used used unsanctioned resources on any assessment, they reserve the right to meet with the student in-person and ask that the student clearly explain their work and reasoning on any problem. This includes, but is not limited to, the instructor suspecting that a student used an online answer service resource on a homework assignment or on an exam, or collaborated with or copied off another individual on an exam. Note that students are allowed to freely collaborate on homework problems, but the instructor reserves the right to follow up with any student they suspect did not write up and {understand} their own solutions in their own words.
+
+\subsection*{Resources}All of the resources below are completely {free}:
+\medskip
+
+\noindent
+\href{https://executivevc.unl.edu/academic-navigator-team}{Academic Navigators}. Students experiencing broad academic issues like irregular or stopped class attendance, poor grades or declining performance on assignments, anxiety about academic performance, homesickness or transition issues, lack of belonging, and registration holds can find help with the Academic Navigator Team.  They can help through individualized meetings and connections to campus and community resources.  The Academic Navigators specialize in helping students find tutoring and academic support, and they assist with navigating campus processes like scholarship appeals and enrollment holds.
+\medskip
+\noindent
+\href{https://caps.unl.edu}{Counseling and Psychological Services (CAPS)} 
+is a multidisciplinary team of psychologists and counselors that works collaboratively with Nebraska students to help them explore their feelings and thoughts and learn helpful ways to improve their mental, psychological, and emotional well-being. 
+
+\medskip
+\noindent
+\href{https://success.unl.edu}{Center for Academic Success and Transition (CAST)}
+helps students with overall academic success through coaching about study and life skills like time management, and they can provide success workshops about a variety of study skills like note-taking strategies.  CAST also coordinates a Study Stop that provides tutoring in a variety of academic areas through both appointments and drop-in hours.
+
+\medskip
+\noindent
+\href{https://care.unl.edu}{Center for Advocacy, Response, and Education (CARE)} 
+provides advocacy and support for students, faculty, and staff who have experienced sexual violence, domestic/dating violence, sexual harassment and stalking, and their advocates help with navigating campus and community resources.  CARE will listen and provide support confidentially, and they will support the decision to report or not to report your experience to police, Institutional Equity and Compliance (Title IX), or neither. 
+
+\medskip
+\noindent
+\href{https://resilience.unl.edu/home}{Big Red Resilience and Well-Being} provides one-on-one well-being coaching to any student who wants to enhance their well-being. Trained well-being coaches help students create positive experiences, practice resilience and self-compassion, and find support as they need it.
+
+\medskip
+\noindent
+\href{https://pantry.unl.edu}{Husker Pantry} provides food and hygiene items for free to students who might need them.
+
+\medskip
+\noindent
+\href{https://services.unl.edu/service/huskertech-laptop-checkout}{Equipment checkout} has free 7 day laptop and iPad loans.
+
+
+\medskip
+\noindent
+\href{https://executivevc.unl.edu/evc/initiatives/first-generation-nebraska}{First Gen Nebraska} supports first generation college students. 
+
+\medskip
+\noindent
+\href{https://studentadvocacy.unl.edu}{Student advocacy and support} supports students through personal or life issues. 
+
+
+\subsection*{Other policies and resources}Please read the University course policies and resources, which can be found \href{https://executivevc.unl.edu/academic-excellence/teaching-resources/course-policies}{here}.
+
+
+
+\end{document}
