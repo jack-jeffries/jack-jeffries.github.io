@@ -43,11 +43,20 @@
 \newtheorem{quest}[equation]{Question}
 
 
-\newcommand{\Aug}[2]{\section{August #1, 2026: \textsection{#2}}}
-\newcommand{\Sept}[2]{\section{September #1, 2026: \textsection{#2}}}
-\newcommand{\Oct}[2]{\section{October #1, 2026: \textsection{#2}}}
-\newcommand{\Nov}[2]{\section{November #1, 2026: \textsection{#2}}}
-\newcommand{\Dec}[2]{\section{December #1, 2026: \textsection{#2}}}
+\newcommand{\aug}[2]{\section{August #1, 2026: \textsection{#2}}}
+\newcommand{\sept}[2]{\section{September #1, 2026: \textsection{#2}}}
+\newcommand{\oct}[2]{\section{October #1, 2026: \textsection{#2}}}
+\newcommand{\nov}[2]{\section{November #1, 2026: \textsection{#2}}}
+\newcommand{\dec}[2]{\section{December #1, 2026: \textsection{#2}}}
+
+\newcommand{\Aug}[1]{Aug #1 old}
+\newcommand{\Sept}[1]{Sept #1 old}
+\newcommand{\Oct}[1]{Oct #1 old}
+\newcommand{\Nov}[1]{Nov #1 old}
+\newcommand{\Dec}[1]{Dec #1 old}
+
+\newcommand{\toadd}[1]{{\color{violet} #1 }}
+
 
 \newcommand{\rsa}{\rightsquigarrow}
 
@@ -95,38 +104,9 @@
 
 
 
-\Aug{24}{1.1}
-\Aug{26}{1.2}
-\Aug{31}{1.3}
-\Sept{2}{1.4 \& 1.5}
-\Sept{9}{1.5}
-\Sept{14}{1.6}
-\Sept{16}{1.7 \& 1.8}
-\Sept{21}{2.1}
-\Sept{23}{2.2}
-\Sept{28}{2.3}
-\Sept{30}{2.4}
-\Oct{12}{3.1}
-\Oct{14}{3.2}
-\Oct{21}{3.3}
-\Oct{26}{3.4}
-\Oct{28}{4.1}
-\Nov{2}{4.2}
-\Nov{4}{4.3}
-\Nov{9}{4.4}
-\Nov{11}{5.1}
-\Nov{23}{5.2}
-\Nov{30}{5.3 \& 5.4}
-\Dec{2}{5.4 \& 5.5}
-\Dec{7}{5.6}
+\aug{24}{1.1}
 
-\begin{comment}
-
-%%%%%%%%%%%% OLD STUFF %%%%%%%%%%%%
-
-\Aug{23}
-
-This class is, as its name makes clear, all about differential equations. Let's start with an example that is probably similar to something you've seen in Calculus.
+\subsection*{Differential equations}
 
 \begin{ex}
 The equation
@@ -154,7 +134,64 @@ the \emph{general solution}\index{general solution} is
 
 Guessing, while successful here, is not going to be our preferred method in the class. Let's savor this victory, and be prepared to collect many methods for solving differential equations as we progress through the course.
 
-\subsection*{Types of differential equations (\S1.1)}
+In our first example, we saw that there are many solutions to the differential equation $y'=7y$. To pin one down, we might specify a value for our function at a point. The system
+\[\begin{cases} y' = 7y \\ 
+y(2)=4 \end{cases}\]
+is a example of an \emph{initial value problem (IVP)}\index{initial value problem}\index{IVP}. Geometrically, $y(2)=4$ corresponds to the condition that the graph of our solution passes through $(2,4)$.
+
+
+\begin{ex}\label{ex:first IVP}
+\[\begin{cases} y' = 7y \\ 
+y(2)=4 \end{cases}\]
+is a example of an \emph{initial value problem}. Geometrically, $y(2)=4$ corresponds to the condition that the graph of our solution passes through $(2,4)$.
+
+
+We can solve this using our solution of $y'=7y$ from earlier. We have
+\[ y= Ce^{7x} \qquad y(2)=4\]
+so \[ 4 = C e^{7 \cdot 2}\]
+and \[ C= 4e^{-14}.\]
+That is,
+\[ y= 4e^{-14}e^{7x} = 4 e^{7x-14}.\]
+\end{ex}
+
+
+
+\subsection*{Modeling with differential equations}
+
+
+\begin{ex} \index{population model}A classical model of human population growth is based on the assumption that the rate at which the population of a country grows is proportional to the population of that country. To express this as a differential equation, let $P$ the population of a country. We are interested in how it changes, so let $t$ be a variable for time and view $P$ as a function of $t$.  To say that two things are \emph{proportional}\index{proportional} means that the exists a constant $k$ (called the \emph{constant of proportionality}) such that $k$ times the first quantity is the second quantity. The rate of change of the population is $\frac{dP}{dt}$. Thus, our equation is
+\[ \frac{dP}{dt} = kP \]
+for some constant $k$. We do not know what $k$ is without further information.
+
+This is the only differential equation we've solved! We must have 
+\[ P(t) = C e^{kt}.\]
+Given two data points for any specific population, we can determine $C$ and $k$.
+\end{ex}
+
+Logisitic growth?
+
+
+Let us try to set up a more complicated model.
+
+\begin{ex} \index{mixing model}Say that we have a tank of water. At first, it holds $500$ liters of pure water (no salt). After a switch is flipped, salt water that has 7 grams of salt per liter starts flowing in at a rate of 2 liters per minute, and water from the bottom of the tank starts flowing out at a rate of 2 liters per minute. We assume that the water stays well mixed so that the water flowing out is as salty as the average water in the tank. 
+Let's model the amount of salt in the tank at a given time after the switch is flipped.
+
+Let $A$ be the amount of salt in the tank, in grams, and $t$ be the amount of time since the switch is flipped in minutes.
+We need to understand the rate of change of $A$. Salt enters at a rate of $7 \cdot 2 = 14$ grams per minute. To find the rate at which salt exits, the amount of salt in an average liter of water is $A/500$ grams per liter, so the amount of salt exiting is $2 \cdot A/500 = A/250$.
+
+We obtain the differential equation
+\[ \frac{dA}{dt} = 14 - \frac{A}{250}.\]
+We also have the initial condition $A(0)=0$.
+
+We will learn how to solve systems like this soon.
+\end{ex}
+
+
+
+\aug{26}{1.2}
+
+\subsection*{Types of differential equations}
+
 There are many different ways of throwing together functions and derivatives in an equation, so we'll need some terminology to orient ourselves.
 
 \begin{defn} An \emph{ordinary differential equation (ODE)}\index{ordinary differential equation}\index{ODE} is a differential equation involving only one independent variable; i.e., derivatives with respect to just one variable.
@@ -187,7 +224,7 @@ is a third order ODE, due to the $y'''$ term and
  \[ \frac{d^2 y}{dt^2} + t \frac{dy}{dt} = -y + \cos(ty)\]
  is a second order ODE.
  
- \begin{defn} A \emph{linear}\index{linear} ODE is any ODE of the form
+ \begin{defn} A \emph{linear}\index{linear} ODE is any ODE that can be written in the form
  \[ a_n(t) y^{(n)} + a_{n-1}(t) y^{(n-1)} + \cdots + a_2(t) y'' + a_1(t) y' + a_0(t) y = f(t).\]
  \end{defn}
  For example,
@@ -230,64 +267,272 @@ By the product rule, \[y'=(ax+1) e^{ax} \quad \text{and} \quad y''=(a^2 x + 2a) 
 \item[(5*)] Using only calculus, justify the claim we made earlier that $y=Ce^{ax}$ is the general solution to $y'=ay$ for any $a\in \R$. That is, explain why there aren't any other solutions (exponential or otherwise).
 \end{enumerate}
 
+
+\subsection*{Review of integration} Now we will start to collect some techniques for solving differential equations. Of course integration will play a big role. Let's review some basic techniques of integration. We will usually be using \emph{indefinite integration} or \emph{antidifferentiation} in this class. First, let's recall a list of building block functions whose integrals we need to know. 
+
+\begin{itemize}
+\item $\int x^n \, dx = \frac{x^{n+1}}{n+1} + C$ when $n\neq -1$.
+\item $\int \frac{1}{x} \, dx = \ln|x| + C$.
+\item $\int e^x \, dx = e^x + C$.
+\item $\int \sin(x) \, dx = -\cos(x) + C$.
+\item $\int \cos(x) \, dx = \sin(x) + C$.
+\end{itemize}
+
+Here are a couple more special ones.
+
+\begin{itemize}
+\item $\int \frac{dx}{\sqrt{1-x^2}} = \arcsin(x) + C$.
+\item $\int \frac{dx}{1 + x^2} = \arctan(x) + C$.
+\end{itemize}
+
+We also have many rule for how to integrate complicated functions in terms of integrating smaller parts. There are two easy rules to get us started.
+
+\begin{itemize}
+\item $\int f(x) + g(x) \, dx = \int f(x)  \, dx + \int g(x) \, dx$.
+\item $ \int c f(x) \, dx = c \int f(x)  \, dx$ for any constant $c$.
+\end{itemize}
+
+Unlike with derivatives, there is no direct rule for computing the integral of a composition or a product. Instead, we have ``$u$-substitutions''\index{u-substitution} and ``integration by parts''\index{integration by parts}. 
+
+$u$-substitution is a technique that is likely to work when we can see some function and something like its derivative inside the function we are trying to integrate. In this case, we set the function to be $u$, we set $du= u'(x) \, dx$, and we try to rewrite our integrand as some function of $u$  times $du$ (and get rid of our starting variable entirely). $u$-substitutions also work well when instead of some function of $x$, we have a function of $x-a$ or a function of $ax$ for some constant $a$.
+This is the main technique that we will want to use, other than the basic rules.
+
+\begin{ex}
+To compute $\int x^2 \cos(x^3) \, dx$, take $u=x^3$, so ${du=3x^2 \, dx}$. Then we have ${x^2 \, dx = \frac13 \, du}$, so our integral is \[\int \frac13 \cos(u)\,  du = {\frac13 \sin(u) + C}= \frac13 \sin(x^3) +C.\]
+\end{ex}
+
+
+Integration by parts is a technique that might work when our integrand is a product of two things, one of which we know how to integrate (i.e., looks like the derivative of something). The general rule is if we can find functions $u(x), v(x)$ such that our integral is $\int u \, dv$ (where $dv = v'(x) \, dx$), the we have
+\[ \int  u \, dv = uv -  \int v \, du;\]
+and if we can integrate $ \int v \, du$, we are done. A rule of thumb for what to choose for $u$ vs what to choose for $dv$ in integration by parts is LIATE (log, inverse trig, algebraic, trig, exponential): stuff on the left is usually better for $u$'s and stuff on the right is usually better for $dv$'s.
+
+\begin{ex}
+To compute $\int x e^x \, dx$, take $u=x$ and $dv= e^x \, dx$. Then $du = dx$ and $v=e^x$. Then we have \[\int x e^x \, dx = x e^x - \int e^x \, dx = x e^x - e^x +C = (x-1) e^x +C.\]
+\end{ex}
+
+Last but not least, we have a big table of integrals in the front cover of our text. 
+
+
+\subsection*{Separable first-order equations (\S2.2)} Now we are ready to solve some differential equations! First we will address first-order equations of a special form: separable eqautions.
+
+\begin{defn} A first-order ODE is \emph{separable}\index{separable} if it can be written in the form
+\[ y' = f(x) g(y)\]
+for some function $f$ that only involves the independent variable and some function $g$ that only involves the dependent variable.
+\end{defn}
+
+For example,
+\[ y' = x^2/y, \quad y' = \frac{3 \sqrt{y^2+1}}{\cos(x)}, \quad \text{and} \ y' = 3-y \]
+are all separable (with $f(x)=x^2$ and $g(y)=1/y$ in the first one), but
+\[ y' = x+y \quad \text{and} \quad y'=\sin(xy) \]
+are not. Note that a separable equation may or may not be linear, but is always a first order ODE.
+
+Here's how to solve a separable ODE: Write $y'$ as $\frac{dy}{dx}$ and pretend that the $dy$ and $dx$ are separate things. Take
+\[ \frac{dy}{dx} = f(x)g(y)\]
+and multiply by $dx$ and divide by $dy$ on both sides to get
+\[ \frac{dy}{g(y)} = f(x) \, dx.\]
+(This is why we call the equation separable: the independent and dependent variables now occur on separate sides of the equation.) Now integrate both sides:
+\[ \int \frac{dy}{g(y)} = \int f(x) \, dx,\]
+to get an equation for $x$ and $y$ that is no longer differential!
+
+\begin{slogan} To solve a separable equation, separate and integrate!\end{slogan}
+
+\begin{ex} Let's start with an equation we saw in Example~\ref{ex:first aut}:
+\[ y' = 3-y.\]
+Write this as 
+\[ \frac{dy}{dx} = 3-y\]
+and rearrange to get
+\[ \frac{dy}{3-y} = dx.\]
+Integrate both sides. For the LHS with use the $u$-sub $u=3-y$, so $du = - dy$. The integral becomes
+\[ \int  \frac{dy}{3-y} = \int \frac{-du}{u} = -\ln|u| +C = -\ln|3-y|+C = \ln\frac{1}{|3-y|} +C.\]
+We then get 
+\[ \ln\frac{1}{|3-y|}  = \int  \frac{dy}{3-y} =\int \,dx = x + C.\]
+Note that we only need the constant of integration on one side.
+Then to solve for $y$, take exponentials:
+\[ e^{\ln(\frac{1}{|3-y|})} = e^{x+C},\]
+\[ \frac{1}{|3-y|} = e^{x+C}.\]
+Then 
+\[ |3-y| ={e^{-x-C}}\]
+\[ 3-y =  \pm {e^{-x-C}}\]
+\[ y =  3 \pm {e^{-x-C}}\]
+Since $e^{-x-C}=e^{-x} e^{-C}$ is just some other constant $C'$ times $e^{-x}$, we could also write
+\[ y= 3 + C' e^{-x}.\]
+\end{ex}
+
+\begin{ex} Take
+\[ \frac{dy}{dt} = t + ty^2.\]
+It doesn't look separable yet, but once we factor
+\[ \frac{dy}{dt} = t (1 +y^2),\]
+it becomes clear that it's separable. Separate variables:
+\[ \frac{dy}{1+y^2} = t \, dt,\]
+integrate:
+\[ \int \frac{dy}{1+y^2} = \int t \, dt,\]
+\[ \arctan(y) = \frac{t^2}{2} + C,\]
+and solve for $y$ by taking tangent of both sides:
+\[ y=\tan(\arctan(y)) = \tan\left(  \frac{t^2}{2} + C\right).\]
+This is our general solution!
+\end{ex}
+
+
+\subsection*{Discussion Questions}
+\begin{enumerate}
+\item Which of the following equations is separable?
+\begin{enumerate}
+\item $y' + 2y = x^3$.
+\item $\cos(x) y' = \sin(y)$.
+\item $y' - xy = 1+x+y$.
+\end{enumerate}
+\begin{framed}
+(b) and (c), but not (a)
+\end{framed}
+\item Find the particular solution to the IVP
+\[ \begin{cases} 
+e^{x} \, y' = \frac{1}{y} \\
+y(0) = 1\end{cases}.\]
+\begin{framed}
+This is separable since we rewrite as $y' = e^{-x} \frac{1}{y}$. Then
+\[ y y' = e^{-x} \rsa y  \ dy = e^{-x} \ dx \rsa \int  y  \ dy = \int e^{-x} \ dx,\]
+\[ \rsa \frac{y^2}{2} = -e^{-x} + C \rsa y = \sqrt{C - 2 e^{-x}},\]
+and using the initial condition,
+\[ 1 = y(0) = \sqrt{C - 2 e^{0}} = \sqrt{C-2} \rsa C=3,\]
+so we have
+\[ y = \sqrt{3 - 2 e^{-x}}.\]
+\end{framed}
+\end{enumerate}
+
+Sometimes we encounter integrals that are just impossible:
+
+\begin{ex} Take 
+\[ \frac{dy}{dt} = y e^{-t^2} \, dt\]
+\[\rsa\quad \frac{dy}{y} = e^{-t^2} \, dt\]
+\[\rsa\quad \int \frac{dy}{y} = \int e^{-t^2} \, dt.\]
+The function $e^{-t^2}$ has no elementary antiderivative: it simply is not a function for which we have a name (in the way we usually name functions). Let's just leave it as an integral.
+\[\rsa\quad \ln |y| = \int e^{-t^2} \, dt\]
+\[\rsa\quad |y| = e^{\left(\int e^{-t^2} \, dt\right)}\]
+\[\rsa\quad y =  \pm e^{\left(\int e^{-t^2} \, dt\right)}.\]
+Here we have solved for $y$ \emph{up to an integral} in $t$.\index{solved up to an integral}
+\end{ex}
+
+
+
+\aug{31}{1.3}
+
+
+\subsection*{Solution curves from slope fields} There is a great way to visualize solutions to differential equations without solving them. The idea is to think of $\frac{dy}{dt}$ geometrically as the slope of the graph of $y$.
+
+\begin{ex}\label{ex:first aut} Consider the differential equation 
+\[ y' = 3-y.\]
+We won't try to write down a solution yet. Instead, on the plane, we draw little lines with slope $3-y$ at various points.\\
+\begin{center}\includegraphics[scale=.5]{sf1}\end{center}
+We can use this to sketch the solution to the IVP
+\[\begin{cases} y' = 3-y \\
+y(2)= 2 \end{cases}\]
+by starting at $(2,2)$ and going along with the flow.
+\begin{center}\includegraphics[scale=.5]{sf2}\end{center}
+
+Or 
+\[\begin{cases} y' = 3-y \\
+y(-4)= 4 \end{cases}:\]
+\begin{center}\includegraphics[scale=.5]{sf3}\end{center}
+\end{ex}
+
+The picture we drew above is called a \emph{slope field}.\index{slope field}
+
+\subsection*{Discussion Questions} Draw a slope field for the differential equation
+\[ y'= x+y\] and use it to sketch the solutions with initial conditions
+\begin{enumerate}
+\item $(0,1)$
+\item $(0,0)$
+\item $(0,-1)$
+\item $(0,-2)$
+\end{enumerate}
+\begin{framed}
+\begin{center}\includegraphics[scale=.5]{sf4}\end{center}
+\end{framed}
+
+
+
+\begin{ex} As we discussed, we can use slope fields to try to understand solutions of an IVP without finding a formula for an explicit solution. Let's return to our counterfeiting example (where new good and bad bills were being introduced, and the banks replaced bad ones with good ones). We found the following IVP for our situation:
+\[ \begin{cases} C'(t) = 1-\frac{2C}{10+t} \\
+C(0)=10\end{cases}.\]
+We wanted to know whether the number of counterfeits would continue to grow (and if so, how fast).
+Let's sketch a slope field for our differential equation:
+\begin{center}\includegraphics[scale=.5]{sf7}\end{center}
+and sketch a curve for the initial condition:
+\begin{center}\includegraphics[scale=.5]{sf8}\end{center}
+It looks like the number of counterfeits decreases at first and maybe starts to rebound. We will solve this analytically very soon to confirm our guess.
+\end{ex}
+
+
+
+
+\subsection*{Autonomous differential equations}
+Example~\ref{ex:first aut} belongs to a class of equations that is worth singling out.
+\begin{defn} A differential equation of the form \[ y' = f(y)\]
+ is said to be \emph{autonomous}.\index{autonomous}
+ \end{defn}
+ 
+ The behavior of a solution of an autonomous differential equation is determined entirely by the current value of the function (and not the independent variable).
+ 
+For an autonomous differential equation, whether a solution is increasing, decreasing, or constant at a point only depends on the $y$-value at that point. We can determine this either algebraically or using the slope field.
+
+\begin{ex}
+Consider the autonomous differential equation 
+\[ y' = y^3 - 2y^2.\]
+To figure out when $y$ is increasing, we figure out when $0<y' =  y^3 - 2y^2$.
+We do a little algebra to figure out. Factoring, we see that the zeroes of the right-hand side are $0$ and $2$, so the sign of $y$ can only change at $0$ and $2$. On $(-\infty, 0)$, $y^3 - 2y^2<0$; at $0$, it is zero; on $(0,2)$ it is negative; at $2$, it is $0$; on $(2,\infty)$, it is positive.
+
+Thus, a solution $y$ is increasing when $2 < y <\infty$, is decreasing on $(-\infty,0) \cup (0,\infty)$, and is constant if $y=0$ or $2$.
+
+We can also use the slope field to determine when it is increasing or decreasing.
+\begin{center}\includegraphics[scale=.5]{sf5}\end{center}
+Let's sketch some solutions:
+\begin{center}\includegraphics[scale=.5]{sf6}\end{center}
+\end{ex}
+
+A constant solution to an autonomous differential equation is also called an \emph{equilibrium solution}\index{equilibrium solution}.
+
+
+
+
+\sept{2}{1.4 \& 1.5}
+\sept{9}{1.5}
+\sept{14}{1.6}
+\sept{16}{1.7 \& 1.8}
+\sept{21}{2.1}
+\sept{23}{2.2}
+\sept{28}{2.3}
+\sept{30}{2.4}
+\oct{12}{3.1}
+\oct{14}{3.2}
+\oct{21}{3.3}
+\oct{26}{3.4}
+\oct{28}{4.1}
+\nov{2}{4.2}
+\nov{4}{4.3}
+\nov{9}{4.4}
+\nov{11}{5.1}
+\nov{23}{5.2}
+\nov{30}{5.3 \& 5.4}
+\dec{2}{5.4 \& 5.5}
+\dec{7}{5.6}
+
+%\begin{comment}
+
+%%%%%%%%%%%% OLD STUFF %%%%%%%%%%%%
+
+\Aug{23}
+
+This class is, as its name makes clear, all about differential equations. Let's start with an example that is probably similar to something you've seen in Calculus.
+
+\subsection*{Types of differential equations (\S1.1)}
+
 \subsection*{Initial value problems}
 
-In our first example, we saw that there are many solutions to the differential equation $y'=7y$. To pin one down, we might specify a value for our function at a point. The system
-\[\begin{cases} y' = 7y \\ 
-y(2)=4 \end{cases}\]
-is a example of an \emph{initial value problem (IVP)}\index{initial value problem}\index{IVP}. Geometrically, $y(2)=4$ corresponds to the condition that the graph of our solution passes through $(2,4)$.
-
-
-
-
-\Aug{25}
-
-\begin{ex}\label{ex:first IVP}
-\[\begin{cases} y' = 7y \\ 
-y(2)=4 \end{cases}\]
-is a example of an \emph{initial value problem}. Geometrically, $y(2)=4$ corresponds to the condition that the graph of our solution passes through $(2,4)$.
-
-
-We can solve this using our solution of $y'=7y$ from earlier. We have
-\[ y= Ce^{7x} \qquad y(2)=4\]
-so \[ 4 = C e^{7 \cdot 2}\]
-and \[ C= 4e^{-14}.\]
-That is,
-\[ y= 4e^{-14}e^{7x} = 4 e^{7x-14}.\]
-\end{ex}
 
 \subsection*{Modeling with differential equations (\S1.3)}
 
 Differential equations is one of the most useful areas of math for applications, since so many real life things are described effectively by differential equations. A \emph{mathematical model}\index{mathematical model} is a description of some system or phenomenon by an equation or a formula. A model is rarely perfect, since we can't even know all of the factors that might affect something, but we can often use them to understand things better.
 
-Let's start with a basic example.
-
-\begin{ex} \index{population model}A classical model of human population growth is based on the assumption that the rate at which the population of a country grows is proportional to the population of that country. To express this as a differential equation, let $P$ the population of a country. We are interested in how it changes, so let $t$ be a variable for time and view $P$ as a function of $t$.  To say that two things are \emph{proportional}\index{proportional} means that the exists a constant $k$ (called the \emph{constant of proportionality}) such that $k$ times the first quantity is the second quantity. The rate of change of the population is $\frac{dP}{dt}$. Thus, our equation is
-\[ \frac{dP}{dt} = kP \]
-for some constant $k$. We do not know what $k$ is without further information.
-
-This is the only differential equation we've solved! We must have 
-\[ P(t) = C e^{kt}.\]
-Given two data points for any specific population, we can determine $C$ and $k$.
-\end{ex}
-
-
-
-Let us try to set up a more complicated model.
-
-\begin{ex} \index{mixing model}Say that we have a tank of water. At first, it holds $500$ liters of pure water (no salt). After  switch is flipped, salt water that has 7 grams of salt per liter starts flowing in at a rate of 2 liters per minute, and water from the bottom of the tank starts flowing out at a rate of 2 liters per minute. 
-%We assume that the water stays well mixed so that the water flowing out is as salty as the average water in the tank. 
-Let's model the amount of salt in the tank at a given time after the switch is flipped.
-
-Let $A$ be the amount of salt in the tank, in grams, and $t$ be the amount of time since the switch is flipped in minutes.
-We need to understand the rate of change of $A$. Salt enters at a rate of $7 \cdot 2 = 14$ grams per minute. To find the rate at which salt exits, the amount of salt in an average liter of water is $A/500$ grams per liter, so the amount of salt exiting is $2 \cdot A/500 = A/250$.
-
-We obtain the differential equation
-\[ \frac{dA}{dt} = 14 - \frac{A}{250}.\]
-We also have the initial condition $A(0)=0$.
-
-We will learn how to solve systems like this soon.
-\end{ex}
 
 
 
@@ -298,7 +543,7 @@ We will learn how to solve systems like this soon.
 \subsection*{Discussion Questions}
 
 \index{counterfeit money}
-The government of a country wants to remove counterfeit money from circulation. Say there are 20 million total bills in circulation. Every day, 4 million of its bills pass though federal banks, and every counterfeit bill collected is replaced by a legal one. Say that half of the total bills in circulation today are counterfeit. Let's assume that the total number of bills in circulation stays constant and that no more counterfeit bills are being introduced. Our goal is to find an initial value problem modeling the percentage of counterfeit bills in circulation as time passes. 
+The government of a country wants to remove counterfeit money from circulation. Say there are 20 million total bills in circulation. Every day, 4 million of its bills pass through federal banks, and every counterfeit bill collected is replaced by a legal one. Say that half of the total bills in circulation today are counterfeit. Let's assume that the total number of bills in circulation stays constant and that no more counterfeit bills are being introduced. Our goal is to find an initial value problem modeling the percentage of counterfeit bills in circulation as time passes. 
 
 \begin{enumerate}
 \item Introduce variables to keep track of the quantities we are interested in. What is the independent variable and what is the dependent variable? What are the units for each?
@@ -419,231 +664,7 @@ We have, in the notation of the Theorem,
 These are continuous except when $t=\pm 2$. Thus, any rectangle whose base is contained in $(-2,2)$ will satisfy the hypotheses of the theorem, so $(-2,2)$ is the interval we seek.
 \end{ex}
 
-\subsection*{Solution curves from slope fields (\S 2.1)} There is a great way to visualize solutions to differential equations without solving them. The idea is to think of $\frac{dy}{dt}$ geometrically as the slope of the graph of $y$.
 
-\begin{ex}\label{ex:first aut} Consider the differential equation 
-\[ y' = 3-y.\]
-We won't try to write down a solution yet. Instead, on the plane, we draw little lines with slope $3-y$ at various points.\\
-\begin{center}\includegraphics[scale=.5]{sf1}\end{center}
-We can use this to sketch the solution to the IVP
-\[\begin{cases} y' = 3-y \\
-y(2)= 2 \end{cases}\]
-by starting at $(2,2)$ and going along with the flow.
-\begin{center}\includegraphics[scale=.5]{sf2}\end{center}
-
-Or 
-\[\begin{cases} y' = 3-y \\
-y(-4)= 4 \end{cases}:\]
-\begin{center}\includegraphics[scale=.5]{sf3}\end{center}
-\end{ex}
-
-The picture we drew above is called a \emph{slope field}.\index{slope field}
-
-\subsection*{Discussion Questions} Draw a slope field for the differential equation
-\[ y'= x+y\] and use it to sketch the solutions with initial conditions
-\begin{enumerate}
-\item $(0,1)$
-\item $(0,0)$
-\item $(0,-1)$
-\item $(0,-2)$
-\end{enumerate}
-\begin{framed}
-\begin{center}\includegraphics[scale=.5]{sf4}\end{center}
-\end{framed}
-
-%\begin{comment}
-
-
-
-\Sept{1}
-
-\begin{ex} As we discussed, we can use slope fields to try to understand solutions of an IVP without finding a formula for an explicit solution. Let's return to our counterfeiting example (where new good and bad bills were being introduced, and the banks replaced bad ones with good ones). We found the following IVP for our situation:
-\[ \begin{cases} C'(t) = 1-\frac{2C}{10+t} \\
-C(0)=10\end{cases}.\]
-We wanted to know whether the number of counterfeits would continue to grow (and if so, how fast).
-Let's sketch a slope field for our differential equation:
-\begin{center}\includegraphics[scale=.5]{sf7}\end{center}
-and sketch a curve for the initial condition:
-\begin{center}\includegraphics[scale=.5]{sf8}\end{center}
-It looks like the number of counterfeits decreases at first and maybe starts to rebound. We will solve this analytically very soon to confirm our guess.
-\end{ex}
-
-
-
-
-\subsection*{Autonomous differential equations}
-Example~\ref{ex:first aut} belongs to a class of equations that is worth singling out.
-\begin{defn} A differential equation of the form \[ y' = f(y)\]
- is said to be \emph{autonomous}.\index{autonomous}
- \end{defn}
- 
- The behavior of a solution of an autonomous differential equation is determined entirely by the current value of the function (and not the independent variable).
- 
-For an autonomous differential equation, whether a solution is increasing, decreasing, or constant at a point only depends on the $y$-value at that point. We can determine this either algebraically or using the slope field.
-
-\begin{ex}
-Consider the autonomous differential equation 
-\[ y' = y^3 - 2y^2.\]
-To figure out when $y$ is increasing, we figure out when $0<y' =  y^3 - 2y^2$.
-We do a little algebra to figure out. Factoring, we see that the zeroes of the right-hand side are $0$ and $2$, so the sign of $y$ can only change at $0$ and $2$. On $(-\infty, 0)$, $y^3 - 2y^2<0$; at $0$, it is zero; on $(0,2)$ it is negative; at $2$, it is $0$; on $(2,\infty)$, it is positive.
-
-Thus, a solution $y$ is increasing when $2 < y <\infty$, is decreasing on $(-\infty,0) \cup (0,\infty)$, and is constant if $y=0$ or $2$.
-
-We can also use the slope field to determine when it is increasing or decreasing.
-\begin{center}\includegraphics[scale=.5]{sf5}\end{center}
-Let's sketch some solutions:
-\begin{center}\includegraphics[scale=.5]{sf6}\end{center}
-\end{ex}
-
-A constant solution to an autonomous differential equation is also called an \emph{equilibrium solution}\index{equilibrium solution}.
-
-
-\subsection*{Review of integration} Now we will start to collect some techniques for solving differential equations. Of course integration will play a big role. Let's review some basic techniques of integration. We will usually be using \emph{indefinite integration} or \emph{antidifferentiation} in this class. First, let's recall a list of building block functions whose integrals we need to know. 
-
-\begin{itemize}
-\item $\int x^n \, dx = \frac{x^{n+1}}{n+1} + C$ when $n\neq -1$.
-\item $\int \frac{1}{x} \, dx = \ln|x| + C$.
-\item $\int e^x \, dx = e^x + C$.
-\item $\int \sin(x) \, dx = -\cos(x) + C$.
-\item $\int \cos(x) \, dx = \sin(x) + C$.
-\end{itemize}
-
-Here are a couple more special ones.
-
-\begin{itemize}
-\item $\int \frac{dx}{\sqrt{1-x^2}} = \arcsin(x) + C$.
-\item $\int \frac{dx}{1 + x^2} = \arctan(x) + C$.
-\end{itemize}
-
-We also have many rule for how to integrate complicated functions in terms of integrating smaller parts. There are two easy rules to get us started.
-
-\begin{itemize}
-\item $\int f(x) + g(x) \, dx = \int f(x)  \, dx + \int g(x) \, dx$.
-\item $ \int c f(x) \, dx = c \int f(x)  \, dx$ for any constant $c$.
-\end{itemize}
-
-Unlike with derivatives, there is no direct rule for computing the integral of a composition or a product. Instead, we have ``$u$-substitutions''\index{u-substitution} and ``integration by parts''\index{integration by parts}. 
-
-$u$-substitution is a technique that is likely to work when we can see some function and something like its derivative inside the function we are trying to integrate. In this case, we set the function to be $u$, we set $du= u'(x) \, dx$, and we try to rewrite our integrand as some function of $u$  times $du$ (and get rid of our starting variable entirely). $u$-substitutions also work well when instead of some function of $x$, we have a function of $x-a$ or a function of $ax$ for some constant $a$.
-This is the main technique that we will want to use, other than the basic rules.
-
-\begin{ex}
-To compute $\int x^2 \cos(x^3) \, dx$, take $u=x^3$, so ${du=3x^2 \, dx}$. Then we have ${x^2 \, dx = \frac13 \, du}$, so our integral is \[\int \frac13 \cos(u)\,  du = {\frac13 \sin(u) + C}= \frac13 \sin(x^3) +C.\]
-\end{ex}
-
-
-Integration by parts is a technique that might work when our integrand is a product of two things, one of which we know how to integrate (i.e., looks like the derivative of something). The general rule is if we can find functions $u(x), v(x)$ such that our integral is $\int u \, dv$ (where $dv = v'(x) \, dx$), the we have
-\[ \int  u \, dv = uv -  \int v \, du;\]
-and if we can integrate $ \int v \, du$, we are done. A rule of thumb for what to choose for $u$ vs what to choose for $dv$ in integration by parts is LIATE (log, inverse trig, algebraic, trig, exponential): stuff on the left is usually better for $u$'s and stuff on the right is usually better for $dv$'s.
-
-\begin{ex}
-To compute $\int x e^x \, dx$, take $u=x$ and $dv= e^x \, dx$. Then $du = dx$ and $v=e^x$. Then we have \[\int x e^x \, dx = x e^x - \int e^x \, dx = x e^x - e^x +C = (x-1) e^x +C.\]
-\end{ex}
-
-Last but not least, we have a big table of integrals in the front cover of our text. 
-
-
-\Sept{6}
-
-\subsection*{Separable first-order equations (\S2.2)} Now we are ready to solve some differential equations! First we will address first-order equations of a special form: separable eqautions.
-
-\begin{defn} A first-order ODE is \emph{separable}\index{separable} if it can be written in the form
-\[ y' = f(x) g(y)\]
-for some function $f$ that only involves the independent variable and some function $g$ that only involves the dependent variable.
-\end{defn}
-
-For example,
-\[ y' = x^2/y, \quad y' = \frac{3 \sqrt{y^2+1}}{\cos(x)}, \quad \text{and} \ y' = 3-y \]
-are all separable (with $f(x)=x^2$ and $g(y)=1/y$ in the first one), but
-\[ y' = x+y \quad \text{and} \quad y'=\sin(xy) \]
-are not. Note that a separable equation may or may not be linear, but is always a first order ODE.
-
-Here's how to solve a separable ODE: Write $y'$ as $\frac{dy}{dx}$ and pretend that the $dy$ and $dx$ are separate things. Take
-\[ \frac{dy}{dx} = f(x)g(y)\]
-and multiply by $dx$ and divide by $dy$ on both sides to get
-\[ \frac{dy}{g(y)} = f(x) \, dx.\]
-(This is why we call the equation separable: the independent and dependent variables now occur on separate sides of the equation.) Now integrate both sides:
-\[ \int \frac{dy}{g(y)} = \int f(x) \, dx,\]
-to get an equation for $x$ and $y$ that is no longer differential!
-
-\begin{slogan} To solve a separable equation, separate and integrate!\end{slogan}
-
-\begin{ex} Let's start with an equation we saw in Example~\ref{ex:first aut}:
-\[ y' = 3-y.\]
-Write this as 
-\[ \frac{dy}{dx} = 3-y\]
-and rearrange to get
-\[ \frac{dy}{3-y} = dx.\]
-Integrate both sides. For the LHS with use the $u$-sub $u=3-y$, so $du = - dy$. The integral becomes
-\[ \int  \frac{dy}{3-y} = \int \frac{-du}{u} = -\ln|u| +C = -\ln|3-y|+C = \ln\frac{1}{|3-y|} +C.\]
-We then get 
-\[ \ln\frac{1}{|3-y|}  = \int  \frac{dy}{3-y} =\int \,dx = x + C.\]
-Note that we only need the constant of integration on one side.
-Then to solve for $y$, take exponentials:
-\[ e^{\ln(\frac{1}{|3-y|})} = e^{x+C},\]
-\[ \frac{1}{|3-y|} = e^{x+C}.\]
-Then 
-\[ |3-y| ={e^{-x-C}}\]
-\[ 3-y =  \pm {e^{-x-C}}\]
-\[ y =  3 \pm {e^{-x-C}}\]
-Since $e^{-x-C}=e^{-x} e^{-C}$ is just some other constant $C'$ times $e^{-x}$, we could also write
-\[ y= 3 + C' e^{-x}.\]
-\end{ex}
-
-\begin{ex} Take
-\[ \frac{dy}{dt} = t + ty^2.\]
-It doesn't look separable yet, but once we factor
-\[ \frac{dy}{dt} = t (1 +y^2),\]
-it becomes clear that it's separable. Separate variables:
-\[ \frac{dy}{1+y^2} = t \, dt,\]
-integrate:
-\[ \int \frac{dy}{1+y^2} = \int t \, dt,\]
-\[ \arctan(y) = \frac{t^2}{2} + C,\]
-and solve for $y$ by taking tangent of both sides:
-\[ y=\tan(\arctan(y)) = \tan\left(  \frac{t^2}{2} + C\right).\]
-This is our general solution!
-\end{ex}
-
-
-\subsection*{Discussion Questions}
-\begin{enumerate}
-\item Which of the following equations is separable?
-\begin{enumerate}
-\item $y' + 2y = x^3$.
-\item $\cos(x) y' = \sin(y)$.
-\item $y' - xy = 1+x+y$.
-\end{enumerate}
-\begin{framed}
-(b) and (c), but not (a)
-\end{framed}
-\item Find the particular solution to the IVP
-\[ \begin{cases} 
-e^{x} \, y' = \frac{1}{y} \\
-y(0) = 1\end{cases}.\]
-\begin{framed}
-This is separable since we rewrite as $y' = e^{-x} \frac{1}{y}$. Then
-\[ y y' = e^{-x} \rsa y  \ dy = e^{-x} \ dx \rsa \int  y  \ dy = \int e^{-x} \ dx,\]
-\[ \rsa \frac{y^2}{2} = -e^{-x} + C \rsa y = \sqrt{C - 2 e^{-x}},\]
-and using the initial condition,
-\[ 1 = y(0) = \sqrt{C - 2 e^{0}} = \sqrt{C-2} \rsa C=3,\]
-so we have
-\[ y = \sqrt{3 - 2 e^{-x}}.\]
-\end{framed}
-\end{enumerate}
-
-Sometimes we encounter integrals that are just impossible:
-
-\begin{comment}
-\begin{ex} Take 
-\[ \frac{dy}{dt} = y e^{-t^2} \, dt\]
-\[\rsa\quad \frac{dy}{y} = e^{-t^2} \, dt\]
-\[\rsa\quad \int \frac{dy}{y} = \int e^{-t^2} \, dt.\]
-The function $e^{-t^2}$ has no elementary antiderivative: it simply is not a function for which we have a name (in the way we usually name functions). Let's just leave it as an integral.
-\[\rsa\quad \ln |y| = \int e^{-t^2} \, dt\]
-\[\rsa\quad |y| = e^{\left(\int e^{-t^2} \, dt\right)}\]
-\[\rsa\quad y =  \pm e^{\left(\int e^{-t^2} \, dt\right)}.\]
-Here we have solved for $y$ \emph{up to an integral} in $t$.\index{solved up to an integral}
-\end{ex}
 
 
 \subsection*{Linear equations (\S2.3)} Now we solve another large class of differential equations: first order linear ODE's.\index{first order linear ODE} Let's recall that a differential equation is a first order linear ODE if we can write it in the form
