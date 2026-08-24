@@ -478,6 +478,18 @@ The government of a country wants to remove counterfeit money from circulation. 
 \item Based on your model, when will the total number of counterfeit bills pass below 3 million?
 \end{enumerate}
 
+\begin{framed}
+\begin{enumerate}
+\item Take $t$ for time (number of days after today), and $C$ to be the number of millions of counterfeit bills in circulation. $C$ is dependent on $t$.
+\item First the number of bills that pass through banks on an average day is $4C/20 = C/5$: the proportion of counterfeit bills times the total number of millions of bills passing through the banks. Thus, $C$ decreases by $C/5$ on average each day.
+\item $C'=-C/5$.
+\item $C(0)=10$.
+\item $C(t)=ke^{-t/5}$ is the general solution. We plug in $C(0)=10$ to get $k=10$, so $C(t)=10 e^{-t/5}$.
+\item $C(t)=3$ gives us $10e^{-t/5}=3$. Then $t=-5 \ln(3/10) \approx 6$. It should take about $6$ days.
+\end{enumerate}
+\end{framed}
+
+
 Let's do an experiment to test our model. Each coin you've been given represents a million bills. Some represent valid coins and some represent counterfeits. Every day, take four random coins; replace the counterfeits with legal ones, and leave the legal ones alone.
 
 \begin{enumerate}
@@ -494,6 +506,12 @@ Now let's change our original story. As before, every day, 4 million of its bill
 \item Run an experiment similar to the one above adapted to this situation.
 \item Based on the experiment, what do we expect to happen to the currency as time passes?
 \end{enumerate}
+
+\begin{framed}
+\begin{enumerate}
+\item Let's use $t$ and $C$ as names again. The total number of bills at time $t$ is now $20+2t$. Now $C'(t) = 1 - \frac{4 C}{20+2t} = 1-\frac{2C}{10+t}$, and $C(0)=10$ again.
+\end{enumerate}
+\end{framed}
 
 \end{document}
 
